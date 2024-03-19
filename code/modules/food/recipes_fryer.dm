@@ -1,23 +1,23 @@
-/datum/recipe/fries
+/datum/cooking_recipe/fries
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/rawsticks
 	)
 	result = /obj/item/reagent_containers/food/snacks/fries
 
-/datum/recipe/dishofries
+/datum/cooking_recipe/dishofries
 	required_method = METHOD_DEEPFRY
 	fruit = list("disho" = 1)
 	reagents = list("batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/dishofries
 
-/datum/recipe/jpoppers
+/datum/cooking_recipe/jpoppers
 	required_method = METHOD_DEEPFRY
 	fruit = list("chili" = 1)
 	reagents = list("batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/jalapeno_poppers
 
-/datum/recipe/risottoballs
+/datum/cooking_recipe/risottoballs
 	required_method = METHOD_DEEPFRY
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1, "batter" = 5)
 	items = list(/obj/item/reagent_containers/food/snacks/risotto)
@@ -27,7 +27,7 @@
 
 //Meaty Recipes
 //====================
-/datum/recipe/cubancarp
+/datum/cooking_recipe/cubancarp
 	required_method = METHOD_DEEPFRY
 	fruit = list("chili" = 1)
 	items = list(
@@ -36,7 +36,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/cubancarp
 
-/datum/recipe/batteredsausage
+/datum/cooking_recipe/batteredsausage
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/sausage
@@ -45,7 +45,7 @@
 	reagents = list("batter" = 5)
 
 
-/datum/recipe/katsu
+/datum/cooking_recipe/katsu
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/meat/chicken
@@ -54,7 +54,7 @@
 	reagents = list("beerbatter" = 5)
 
 
-/datum/recipe/pizzacrunch_1
+/datum/cooking_recipe/pizzacrunch_1
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/pizza
@@ -63,7 +63,7 @@
 	reagents = list("batter" = 5)
 
 //Alternate pizza crunch recipe for combination pizzas made in oven
-/datum/recipe/pizzacrunch_2
+/datum/cooking_recipe/pizzacrunch_2
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/variable/pizza
@@ -71,14 +71,14 @@
 	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/crunch
 	reagents = list("batter" = 5)
 
-/datum/recipe/friedmushroom
+/datum/cooking_recipe/friedmushroom
 	required_method = METHOD_DEEPFRY
 	fruit = list("plumphelmet" = 1)
 	reagents = list("beerbatter" = 5)
 	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
 	result = /obj/item/reagent_containers/food/snacks/friedmushroom
 
-/datum/recipe/shrimptempura
+/datum/cooking_recipe/shrimptempura
 	required_method = METHOD_DEEPFRY
 	reagents = list("sodiumchloride" = 2, "batter" = 5)
 	items = list(
@@ -88,7 +88,7 @@
 
 //Sweet Recipes.
 //==================
-/datum/recipe/jellydonut
+/datum/cooking_recipe/jellydonut
 	required_method = METHOD_DEEPFRY
 	reagents = list("berryjuice" = 10, "sugar" = 10, "batter" = 5)
 	items = list(
@@ -97,17 +97,17 @@
 	result = /obj/item/reagent_containers/food/snacks/donut/jelly
 	result_quantity = 2
 
-/datum/recipe/jellydonut/slime
+/datum/cooking_recipe/jellydonut/slime
 	required_method = METHOD_DEEPFRY
 	reagents = list("slimejelly" = 10, "sugar" = 10, "batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/donut/slimejelly
 
-/datum/recipe/jellydonut/cherry
+/datum/cooking_recipe/jellydonut/cherry
 	required_method = METHOD_DEEPFRY
 	reagents = list("cherryjelly" = 10, "sugar" = 10, "batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/donut/cherryjelly
 
-/datum/recipe/donut
+/datum/cooking_recipe/donut
 	required_method = METHOD_DEEPFRY
 	reagents = list("sugar" = 10, "batter" = 5)
 	items = list(
@@ -116,7 +116,7 @@
 	result = /obj/item/reagent_containers/food/snacks/donut/normal
 	result_quantity = 2
 
-/datum/recipe/chaosdonut
+/datum/cooking_recipe/chaosdonut
 	required_method = METHOD_DEEPFRY
 	reagents = list("frostoil" = 10, "capsaicin" = 10, "sugar" = 10, "batter" = 5)
 	reagent_mix = RECIPE_REAGENT_REPLACE //This creates its own reagents
@@ -126,19 +126,19 @@
 	result = /obj/item/reagent_containers/food/snacks/donut/chaos
 	result_quantity = 2
 
-/datum/recipe/funnelcake
+/datum/cooking_recipe/funnelcake
 	required_method = METHOD_DEEPFRY
 	reagents = list("sugar" = 5, "batter" = 10)
 	result = /obj/item/reagent_containers/food/snacks/funnelcake
 
-/datum/recipe/pisanggoreng
+/datum/cooking_recipe/pisanggoreng
 	required_method = METHOD_DEEPFRY
 	fruit = list("banana" = 2)
 	reagent_mix = RECIPE_REAGENT_REPLACE //Simplify end product
 	result = /obj/item/reagent_containers/food/snacks/pisanggoreng
 	reagents = list("batter" = 5)
 
-/datum/recipe/corn_dog
+/datum/cooking_recipe/corn_dog
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/sausage
@@ -147,7 +147,7 @@
 	reagents = list("batter" = 5)
 	result = /obj/item/reagent_containers/food/snacks/corn_dog
 
-/datum/recipe/sweet_and_sour
+/datum/cooking_recipe/sweet_and_sour
 	required_method = METHOD_DEEPFRY
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/bacon,
@@ -156,7 +156,7 @@
 	reagents = list("soysauce" = 5, "batter" = 10)
 	result = /obj/item/reagent_containers/food/snacks/sweet_and_sour
 
-/datum/recipe/generalschicken
+/datum/cooking_recipe/generalschicken
 	required_method = METHOD_DEEPFRY
 	reagents = list("capsaicin" = 2, "sugar" = 2, "batter" = 10)
 	items = list(
@@ -164,7 +164,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/generalschicken
 
-/datum/recipe/chickenwings
+/datum/cooking_recipe/chickenwings
 	required_method = METHOD_DEEPFRY
 	reagents = list("capsaicin" = 5, "batter" = 10)
 	items = list(
@@ -172,7 +172,7 @@
 	)
 	result = /obj/item/storage/box/wings //This is kinda like the donut box.
 
-/datum/recipe/schnitzel
+/datum/cooking_recipe/schnitzel
 	required_method = METHOD_DEEPFRY
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1, "batter" = 10)
 	fruit = list("onion" = 1)
@@ -181,7 +181,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/schnitzel
 
-/datum/recipe/churro
+/datum/cooking_recipe/churro
 	required_method = METHOD_DEEPFRY
 	reagents = list("sugar" = 5, "batter" = 10)
 	items = list(

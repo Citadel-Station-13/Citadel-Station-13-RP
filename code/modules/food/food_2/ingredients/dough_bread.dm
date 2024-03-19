@@ -76,7 +76,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/bread
 	name = "bread"
-	cookstage_information = list(list(0, 1, "fresh white bread"), list(80 SECONDS, 1, "toast"), list(120 SECONDS, 0.8, "burnt toast"), list(140 SECONDS, 0.1, "pure carbon"))
+	cookstage_information = list(list(0, 1, "fresh white bread"), list(60 SECONDS, 1, "fresh white bread"), list(120 SECONDS, 0.8, "toast"), list(140 SECONDS, 0.1, "pure carbon"))
 	desc = "Some plain white bread."
 	icon_state = "bread"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/slice/bread
@@ -85,7 +85,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/slice/bread
 	name = "slice of bread"
-	cookstage_information = list(list(0, 1, "fresh white bread"), list(10 SECONDS, 1, "toast"), list(20 SECONDS, 0.8, "burnt toast"), list(25 SECONDS, 0.1, "crispy pure carbon"))
+	cookstage_information = list(list(0, 1, "fresh white bread"), list(60 SECONDS, 1, "fresh white bread"), list(70 SECONDS, 0.8, "toast"), list(80 SECONDS, 0.1, "crispy pure carbon"))
 	desc = "A slice of bread."
 	icon_state = "breadslice"
 	filling_color = "#D27332"
@@ -116,7 +116,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/slice/cornbread
 	name = "slice of cornbread"
-	cookstage_information = list(list(0, 1, "fresh cornbread"), list(10 SECONDS, 1, "corn toast"), list(20 SECONDS, 0.8, "burnt corn toast"), list(25 SECONDS, 0.1, "crispy pure carbon"))
+	cookstage_information = list(list(0, 1, "fresh cornbread"), list(60 SECONDS, 1, "corn toast"), list(70 SECONDS, 0.8, "burnt corn toast"), list(80 SECONDS, 0.1, "crispy pure carbon"))
 	desc = "A slice of cornbread."
 	icon_state = "cornbreadslice"
 	filling_color = "#c7d232"
@@ -161,7 +161,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/flatbread
 	name = "flatbread"
-	cookstage_information = list(list(0, 1, "flat bread"), list(30 SECONDS, 1, "flat toast"), list(50 SECONDS, 0.8, "burnt flat"), list(100 SECONDS, 0.1, "flat carbon"))
+	cookstage_information = list(list(0, 1, "flat bread"), list(40 SECONDS, 1, "flat bread"), list(50 SECONDS, 0.8, "flat toast"), list(100 SECONDS, 0.1, "flat carbon"))
 	desc = "A flat piece of bread. A crucial part of a pizza base."
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "flatbread"

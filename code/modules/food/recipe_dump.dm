@@ -16,11 +16,11 @@
 		qdel(CR)
 
 	//////////////////////// FOOD
-	var/list/food_recipes = typesof(/datum/recipe) - /datum/recipe
+	var/list/food_recipes = typesof(/datum/cooking_recipe) - /datum/cooking_recipe
 	//Build a useful list
 	for(var/Rp in food_recipes)
 		//Lists don't work with datum-stealing no-instance initial() so we have to.
-		var/datum/recipe/R = new Rp()
+		var/datum/cooking_recipe/R = new Rp()
 		var/obj/res = new R.result()
 
 		var/icon/result_icon = icon(res.icon,res.icon_state)

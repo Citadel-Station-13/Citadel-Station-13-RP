@@ -17,7 +17,7 @@
 	var/operating = 0 // Is it on?
 	var/dirty = 0 // = {0..100} Does it need cleaning?
 	var/broken = 0 // ={0,1,2} How broken is it???
-	var/global/list/datum/recipe/available_recipes // List of the recipes you can use
+	var/global/list/datum/cooking_recipe/available_recipes // List of the recipes you can use
 	var/global/list/acceptable_items // List of the items you can put in
 	var/global/list/acceptable_reagents // List of the reagents you can put in
 	var/global/max_n_of_items = 20
@@ -35,15 +35,15 @@
 	reagents.my_atom = src
 	if (!available_recipes)
 		available_recipes = new
-		for (var/type in (typesof(/datum/recipe)-/datum/recipe))
-			var/datum/recipe/test = new type
+		for (var/type in (typesof(/datum/cooking_recipe)-/datum/cooking_recipe))
+			var/datum/cooking_recipe/test = new type
 			if((test.required_method == appliancetype))
 				available_recipes += test
 			else
 				qdel(test)
 		acceptable_items = new
 		acceptable_reagents = new
-		for (var/datum/recipe/recipe in available_recipes)
+		for (var/datum/cooking_recipe/recipe in available_recipes)
 			for (var/item in recipe.items)
 				acceptable_items |= item
 			for (var/reagent in recipe.reagents)
@@ -252,7 +252,7 @@
 		stop()
 		return
 
-	var/datum/recipe/recipe = select_recipe(available_recipes,src, available_method = METHOD_MICROWAVE)
+	var/datum/cooking_recipe/recipe = select_recipe(available_recipes,src, available_method = METHOD_MICROWAVE)
 	var/obj/cooked
 	if (!recipe)
 		dirty += 1

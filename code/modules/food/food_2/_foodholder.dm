@@ -84,6 +84,12 @@
 			update_icon()
 			return
 		return
+	else if(istype(I, /obj/item/reagent_containers/food/snacks))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			user.visible_message("<span class='notice'>[user] puts [I] into [src].</span>", "<span class='notice'>You put [I] into [src].</span>")
+			update_icon()
+			return
+		return
 	else if(istype(I, /obj/item/food_serving))
 		generate_serving(I, user)
 		update_icon()
@@ -163,7 +169,7 @@
 	for(var/obj/item/reagent_containers/food/snacks/tally_snack in contents)
 		if(istype(tally_snack, /obj/item/reagent_containers/food/snacks/ingredient))
 			continue
-		tally_snack.reagents.trans_to_holder(generated_serving.reagents, tally_snack.reagents.total_volume)
+		tally_snack.reagents.trans_to_holder(generated_serving.reagents, tally_snack.reagents.total_volume, tally_snack.nutriment_desc)
 
 		var/ingredient_fillcolor = tally_snack.filling_color != "#FFFFFF" ? tally_snack.filling_color : AverageColor(get_flat_icon(tally_snack, tally_snack.dir, 0), 1, 1)
 		if(food_color)
@@ -205,7 +211,7 @@
 
 
 /obj/item/reagent_containers/glass/food_holder/proc/check_recipe_completion(var/cook_method = METHOD_MICROWAVE)
-	var/datum/recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src, available_method = cook_method)
+	var/datum/cooking_recipe/our_recipe = select_recipe(GLOB.cooking_recipes, src, available_method = cook_method)
 	if (!our_recipe)
 		return
 	our_recipe.make_food(src)

@@ -1,34 +1,34 @@
 // todo: damn, 2011? sounds like ripe time for refactor / optimizations round 'ere-- [user was banned for this post]
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * *
- * /datum/recipe by rastaf0            13 apr 2011 *
+ * /datum/cooking_recipe by rastaf0            13 apr 2011 *
  * * * * * * * * * * * * * * * * * * * * * * * * * *
  * This is powerful and flexible recipe system.
  * It exists not only for food.
  * supports both reagents and objects as prerequisites.
- * In order to use this system you have to define a deriative from /datum/recipe
+ * In order to use this system you have to define a deriative from /datum/cooking_recipe
  * * reagents are reagents. Acid, milc, booze, etc.
  * * items are objects. Fruits, tools, circuit boards.
  * * result is type to create as new object
  * * time is optional parameter, you shall use in in your machine,
-     default /datum/recipe/ procs does not rely on this parameter.
+     default /datum/cooking_recipe/ procs does not rely on this parameter.
  *
  *  Functions you need:
- *  /datum/recipe/proc/make(var/obj/container as obj)
+ *  /datum/cooking_recipe/proc/make(var/obj/container as obj)
  *    Creates result inside container,
  *    deletes prerequisite reagents,
  *    transfers reagents from prerequisite objects,
  *    deletes all prerequisite objects (even not needed for recipe at the moment).
  *
- *  /proc/select_recipe(list/datum/recipe/available_recipes, obj/obj as obj, exact = 1)
+ *  /proc/select_recipe(list/datum/cooking_recipe/available_recipes, obj/obj as obj, exact = 1)
  *    Wonderful function that select suitable recipe for you.
  *    obj is a machine (or magik hat) with prerequisites,
  *    exact = 0 forces algorithm to ignore superfluous stuff.
  *
  *
  *  Functions you do not need to call directly but could:
- *  /datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
- *  /datum/recipe/proc/check_items(var/obj/container as obj)
+ *  /datum/cooking_recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+ *  /datum/cooking_recipe/proc/check_items(var/obj/container as obj)
  *
  * */
 
@@ -38,7 +38,7 @@
 GLOBAL_LIST_EMPTY(cooking_recipes)
 
 /proc/init_cooking_recipes_glob()
-	for(var/R in subtypesof(/datum/recipe))
+	for(var/R in subtypesof(/datum/cooking_recipe))
 		GLOB.cooking_recipes += new R
 
 
@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 	///The entire quantity of the ingredients are added to the result
 #define RECIPE_REAGENT_SUM 3
 
-/datum/recipe
+/datum/cooking_recipe
 	var/list/reagents // example: = list("berryjuice" = 5) // do not list same reagent twice. coating reagents should go here
 	var/list/items    // example: = list(/obj/item/crowbar = 1, /obj/item/welder = 2) // place /foo/bar before /foo
 	var/list/fruit    // example: = list("fruit" = 3)
@@ -80,7 +80,23 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 	*/
 	//these are string defines, and hence only 1 can be used.
 
-/datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/cooking_recipe/proc/tgui_guidebook_data()
+	var/list/required_reagents = list()
+	var/list/output_reagents = list()
+	for(var/r in reagents)
+		required_reagents[SSchemistry.reagent_lookup[r].name] = reagents[r]
+	for(var/ar in result_reagents)
+		output_reagents[SSchemistry.reagent_lookup[ar].name] = reagents[ar]
+	return list(
+		"result" = result,
+		"result_reagents" = result_reagents,
+		"items" = items,
+		"fruit" = fruit,
+		"reagents" = reagents,
+		"required_method" = required_method
+	)
+
+/datum/cooking_recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
 	if(!reagents || !reagents.len)
 		return 1
 
@@ -100,7 +116,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 		return 0
 	return .
 
-/datum/recipe/proc/check_fruit(var/obj/container)
+/datum/cooking_recipe/proc/check_fruit(var/obj/container)
 	if(!fruit || !fruit.len)
 		return 1
 	. = 1
@@ -122,7 +138,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 					break
 	return .
 
-/datum/recipe/proc/check_items(var/obj/container as obj)
+/datum/cooking_recipe/proc/check_items(var/obj/container as obj)
 	if(!items || !items.len)
 		return 1
 	. = 1
@@ -151,7 +167,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 	return .
 
 //general version
-/datum/recipe/proc/make(var/obj/container as obj)
+/datum/cooking_recipe/proc/make(var/obj/container as obj)
 	var/obj/result_obj = new result(container)
 	if(istype(container, /obj/machinery))
 		var/obj/machinery/machine = container
@@ -167,7 +183,7 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 
 // food-related
 //This proc is called under the assumption that the container has already been checked and found to contain the necessary ingredients
-/datum/recipe/proc/make_food(var/obj/container, var/obj/output)
+/datum/cooking_recipe/proc/make_food(var/obj/container, var/obj/output)
 	if(!output)
 		output = container
 
@@ -305,9 +321,9 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 //When exact is false, extraneous ingredients are ignored
 //When exact is true, extraneous ingredients will fail the recipe
 //In both cases, the full complement of required inredients is still needed
-/proc/select_recipe(var/list/datum/recipe/available_recipes, var/obj/obj as obj, var/exact = 0, var/available_method = METHOD_MICROWAVE)
-	var/list/datum/recipe/possible_recipes = list()
-	for(var/datum/recipe/recipe in available_recipes)
+/proc/select_recipe(var/list/datum/cooking_recipe/available_recipes, var/obj/obj as obj, var/exact = 0, var/available_method = METHOD_MICROWAVE)
+	var/list/datum/cooking_recipe/possible_recipes = list()
+	for(var/datum/cooking_recipe/recipe in available_recipes)
 		if((recipe.check_reagents(obj.reagents) < exact) || (recipe.check_items(obj) < exact) || (recipe.check_fruit(obj) < exact))
 			continue
 		if(recipe.required_method != available_method)

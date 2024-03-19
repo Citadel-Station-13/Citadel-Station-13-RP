@@ -39,7 +39,7 @@
 	// If the machine has multiple output modes, define them here.
 	var/selected_option
 	var/list/output_options = list()
-	var/list/datum/recipe/available_recipes
+	var/list/datum/cooking_recipe/available_recipes
 
 	var/container_type = null
 
@@ -61,8 +61,8 @@
 	if (!available_recipes)
 		available_recipes = new
 
-	for (var/type in subtypesof(/datum/recipe))
-		var/datum/recipe/test = new type
+	for (var/type in subtypesof(/datum/cooking_recipe))
+		var/datum/cooking_recipe/test = new type
 		if ((appliancetype & test.appliance))
 			available_recipes += test
 		else
@@ -385,7 +385,7 @@
 	if(cooked_sound)
 		playsound(get_turf(src), cooked_sound, 50, 1)
 	//Check recipes first, a valid recipe overrides other options
-	var/datum/recipe/recipe = null
+	var/datum/cooking_recipe/recipe = null
 	var/atom/C = null
 	if (CI.container)
 		C = CI.container
