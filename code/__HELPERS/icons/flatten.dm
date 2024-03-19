@@ -253,6 +253,9 @@
 		if(copying.plane != FLOAT_PLANE)
 			// we don't care probably HUD or something lol
 			continue
+		if(copying.appearance_flags & KEEP_APART)
+			// we don't care about HUD / similar; this is a good litmus test
+			continue
 		current_layer = copying.layer
 		// if it's float layer, shove it right above atom.
 		if(current_layer < 0)
@@ -276,6 +279,9 @@
 		// todo: better handling
 		if(copying.plane != FLOAT_PLANE)
 			// we don't care probably HUD or something lol
+			continue
+		if(copying.appearance_flags & KEEP_APART)
+			// we don't care about HUD / similar; this is a good litmus test
 			continue
 		current_layer = copying.layer
 		// if it's float layer, shove it right below atom.
