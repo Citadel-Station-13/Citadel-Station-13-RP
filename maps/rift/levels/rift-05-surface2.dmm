@@ -2794,6 +2794,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/lobby)
 "bDx" = (
@@ -31466,6 +31469,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "tWJ" = (
@@ -32495,11 +32501,17 @@
 	dir = 1
 	},
 /obj/structure/table/steel,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
+/obj/machinery/recharger{
+	pixel_x = 5;
+	pixel_y = 3
 	},
-/obj/item/pen,
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "uLE" = (
