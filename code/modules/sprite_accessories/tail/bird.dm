@@ -3,4 +3,4 @@
 	id = "tail_avian_fantail"
 	icon_state = "fantail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

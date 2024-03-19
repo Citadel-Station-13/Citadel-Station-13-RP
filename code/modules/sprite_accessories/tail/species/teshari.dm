@@ -3,7 +3,7 @@
 	id = "tail_teshari_pattern_f"
 	icon_state = "teshtail_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "teshpattern_fem_tail"
 
 /datum/sprite_accessory/tail/tesh_pattern_fem_alt
@@ -11,7 +11,7 @@
 	id = "tail_teshari_pattern_f2"
 	icon_state = "teshtail_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "teshpattern_fem_alt"
 
 /datum/sprite_accessory/tail/tesh_pattern_male
@@ -19,7 +19,7 @@
 	id = "tail_teshari_pattern_m"
 	icon_state = "teshtail_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "teshpattern_male_tail"
 
 /datum/sprite_accessory/tail/tesh_pattern_male_alt
@@ -27,7 +27,7 @@
 	id = "tail_teshari_pattern_m2"
 	icon_state = "teshtail_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "teshpattern_male_alt"
 
 /datum/sprite_accessory/tail/teshari_fluffytail
@@ -36,7 +36,7 @@
 	icon_state = "teshari_fluffytail"
 	extra_overlay = "teshari_fluffytail_mark"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	front_behind_system_legacy = TRUE
 
 /datum/sprite_accessory/tail/special/teshtailfeathered
@@ -45,14 +45,14 @@
 	icon_state = "teshtail_s"
 	extra_overlay = "teshtail_feathers_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/special/tesharitail_noplume
 	name = "teshari tail, no plumage"
 	id = "tail_teshari3"
 	icon_state = "teshtail_noplume_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_noplume_feathered
 	name = "teshari tail, no plumage w/feathers"
@@ -60,14 +60,14 @@
 	icon_state = "teshtail_noplume_s"
 	extra_overlay = "teshtail_noplume_feathers_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged
 	name = "teshari tail, damaged"
 	id = "tail_teshari5"
 	icon_state = "teshtail_damaged_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_feathered
 	name = "teshari tail, damaged w/feathers"
@@ -75,7 +75,7 @@
 	icon_state = "teshtail_damaged_s"
 	extra_overlay = "teshtail_damaged_feathers_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_unbranded
 	name = "teshari tail, damaged w/ unbranded prosthetic"
@@ -83,7 +83,7 @@
 	icon_state = "teshtail_damaged_s"
 	extra_overlay = "teshtail_damaged_prosthetic_unbranded_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_unbranded_feathered
 	name = "teshari tail, damaged w/feathers + unbranded prosthetic"
@@ -92,7 +92,7 @@
 	extra_overlay = "teshtail_damaged_feathers_s"
 	extra_overlay2 = "teshtail_damaged_prosthetic_unbranded_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_cenilimi
 	name = "teshari tail, damaged w/ Cenilimi Cybernetics prosthetic"
@@ -100,7 +100,7 @@
 	icon_state = "teshtail_damaged_s"
 	extra_overlay = "teshtail_damaged_prosthetic_cenilimi_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_cenilimi_feathered
 	name = "teshari tail, damaged w/feathers + Cenilimi Cybernetics prosthetic"
@@ -109,7 +109,7 @@
 	extra_overlay = "teshtail_damaged_feathers_s"
 	extra_overlay2 = "teshtail_damaged_prosthetic_cenilimi_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_wood
 	id = "tail_teshari11"
@@ -117,7 +117,7 @@
 	icon_state = "teshtail_damaged_s"
 	extra_overlay = "teshtail_damaged_prosthetic_wood_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_wood_feathered
 	name = "teshari tail, damaged w/feathers + wooden prosthetic"
@@ -126,7 +126,7 @@
 	extra_overlay = "teshtail_damaged_feathers_s"
 	extra_overlay2 = "teshtail_damaged_prosthetic_wood_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_sifwood
 	name = "teshari tail, damaged w/ Sivian wooden prosthetic"
@@ -134,7 +134,7 @@
 	icon_state = "teshtail_damaged_s"
 	extra_overlay = "teshtail_damaged_prosthetic_wood_sif_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_damaged_sifwood_feathered
 	name = "teshari tail, damaged w/feathers + Sivian wooden prosthetic"
@@ -143,14 +143,14 @@
 	extra_overlay = "teshtail_damaged_feathers_s"
 	extra_overlay2 = "teshtail_damaged_prosthetic_wood_sif_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby
 	name = "teshari tail, stubby"
 	id = "tail_teshari15"
 	icon_state = "teshtail_stubby_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_feathered
 	name = "teshari tail, stubby w/feathers"
@@ -158,7 +158,7 @@
 	icon_state = "teshtail_stubby_s"
 	extra_overlay = "teshtail_stubby_feathers_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_unbranded
 	name = "teshari tail, stubby w/ unbranded prosthetic"
@@ -166,7 +166,7 @@
 	icon_state = "teshtail_stubby_s"
 	extra_overlay = "teshtail_stubby_prosthetic_unbranded_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_unbranded_feathered
 	name = "teshari tail, stubby w/ feathers + unbranded prosthetic"
@@ -175,7 +175,7 @@
 	extra_overlay = "teshtail_stubby_feathers_s"
 	extra_overlay2 = "teshtail_stubby_prosthetic_unbranded_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_cenilimi
 	name = "teshari tail, stubby w/ Cenilimi Cybernetics prosthetic"
@@ -183,7 +183,7 @@
 	icon_state = "teshtail_stubby_s"
 	extra_overlay = "teshtail_stubby_prosthetic_cenilimi_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_cenilimi_feathered
 	name = "teshari tail, stubby w/ feathers + Cenilimi Cybernetics prosthetic"
@@ -192,7 +192,7 @@
 	extra_overlay = "teshtail_stubby_feathers_s"
 	extra_overlay2 = "teshtail_stubby_prosthetic_cenilimi_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_wood
 	name = "teshari tail, stubby w/ wooden prosthetic"
@@ -200,7 +200,7 @@
 	icon_state = "teshtail_stubby_s"
 	extra_overlay = "teshtail_stubby_prosthetic_wood_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_wood_feathered
 	name = "teshari tail, stubby w/feathers + wooden prosthetic"
@@ -209,7 +209,7 @@
 	extra_overlay = "teshtail_stubby_feathers_s"
 	extra_overlay2 = "teshtail_stubby_prosthetic_wood_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_sifwood
 	name = "teshari tail, stubby w/ Sivian wooden prosthetic"
@@ -217,7 +217,7 @@
 	icon_state = "teshtail_stubby_s"
 	extra_overlay = "teshtail_stubby_prosthetic_wood_sif_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_stubby_sifwood_feathered
 	name = "teshari tail, stubby w/feathers + Sivian wooden prosthetic"
@@ -226,7 +226,7 @@
 	extra_overlay = "teshtail_stubby_feathers_s"
 	extra_overlay2 = "teshtail_stubby_prosthetic_wood_sif_s"
 	species_allowed = list(SPECIES_TESHARI)
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tesharitail_prosthetic_unbranded
 	name = "teshari tail, unbranded prosthetic"

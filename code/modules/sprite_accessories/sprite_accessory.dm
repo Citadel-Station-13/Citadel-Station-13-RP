@@ -67,7 +67,10 @@
 	/// Whether or not the accessory can be affected by colouration.
 	var/do_colouration = 1
 
-	var/color_blend_mode = ICON_MULTIPLY	// If checked.
+	/// use additive color matrix on the main overlay, rather than multiply
+	/// this is slow, please stop using it and do proper greyscales.
+	var/legacy_use_additive_color_matrix = FALSE
+	#warn impl
 
 	/// use front/behind, citadel snowflake for now; only usable on wings/tails
 	var/front_behind_system_legacy = FALSE
@@ -80,16 +83,20 @@
 	var/extra_overlay2
 	var/can_be_hidden = TRUE
 
-/datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side)
+/**
+ * todo: with_base_state completely tramples extra_overlay, extra_overlay2
+ * we need to redo this at some point.
+ */
+/datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state)
 	var/list/layers = list()
 	if(front_behind_system_legacy)
 		var/image/rendering
-		rendering = image(icon, "[icon_state]_FRONT", layer_front)
+		rendering = image(icon, "[with_base_state]_FRONT", layer_front)
 		if(do_colouration)
 			if(length(colors) >= 1)
 				rendering.color = colors[1]
 		layers += rendering
-		rendering = image(icon, "[icon_state]_BEHIND", layer_behind)
+		rendering = image(icon, "[with_base_state]_BEHIND", layer_behind)
 		if(do_colouration)
 			if(length(colors) >= 1)
 				rendering.color = colors[1]
@@ -116,7 +123,7 @@
 		switch(icon_sidedness)
 			if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
 				var/image/rendering
-				rendering = image(icon, icon_state, layer_front)
+				rendering = image(icon, with_base_state, layer_front)
 				if(do_colouration)
 					if(length(colors) >= 1)
 						rendering.color = colors[1]
@@ -133,16 +140,16 @@
 					layers += rendering
 				if(has_add_state)
 					var/image/adding
-					adding = image(icon, "[icon_state]-add", layer_front)
+					adding = image(icon, "[with_base_state]-add", layer_front)
 					layers += adding
 			if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
 				var/image/rendering
-				rendering = image(icon, "[icon_state]-front", layer_front)
+				rendering = image(icon, "[with_base_state]-front", layer_front)
 				if(do_colouration)
 					if(length(colors) >= 1)
 						rendering.color = colors[1]
 				layers += rendering
-				rendering = image(icon, "[icon_state]-behind", layer_behind)
+				rendering = image(icon, "[with_base_state]-behind", layer_behind)
 				if(do_colouration)
 					if(length(colors) >= 1)
 						rendering.color = colors[1]
@@ -167,9 +174,9 @@
 					layers += rendering
 				if(has_add_state)
 					var/image/adding
-					adding = image(icon, "[icon_state]-add-front", layer_front)
+					adding = image(icon, "[with_base_state]-add-front", layer_front)
 					layers += adding
-					adding = image(icon, "[icon_state]-add-behind", layer_behind)
+					adding = image(icon, "[with_base_state]-add-behind", layer_behind)
 					layers += adding
 
 	// emit single

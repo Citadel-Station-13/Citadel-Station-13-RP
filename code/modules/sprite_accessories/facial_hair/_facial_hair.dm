@@ -9,7 +9,7 @@
 /datum/sprite_accessory/facial_hair
 	abstract_type = /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face_or_vr.dmi'
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	apply_restrictions = FALSE
 
 /datum/sprite_accessory/facial_hair/shaved

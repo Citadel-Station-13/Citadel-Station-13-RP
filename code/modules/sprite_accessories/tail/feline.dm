@@ -4,7 +4,7 @@
 	icon_state = "tigertail"
 	ani_state = "tigertail_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "tigertail_mark"
 	extra_overlay_w = "tigertail_mark_w"
 
@@ -13,7 +13,7 @@
 	id = "tail_tiger"
 	icon_state = "tiger"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "tigerinnerwhite"
 
 /datum/sprite_accessory/tail/cat_big
@@ -22,7 +22,7 @@
 	icon_state = "catbig"
 	ani_state = "catbig_wag"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	front_behind_system_legacy = TRUE
 
 /datum/sprite_accessory/tail/kitty
@@ -31,7 +31,7 @@
 	icon_state = "kittydown"
 	ani_state = "kittydown_wag"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /*/datum/sprite_accessory/tail/kitty_tg
 	name = "kitty, colorable, main"
@@ -39,7 +39,7 @@
 	icon_state = "kittytg"
 	ani_state = "kittytg_wag"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	Currently fucked - Tail renders ontop of the player even if it should be invisible. TODO: Find time to fix this.*/
 
 /datum/sprite_accessory/tail/kittyup
@@ -48,7 +48,7 @@
 	icon_state = "kittyup"
 	ani_state = "kittyup_wag"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/liontail
 	name = "Lion Tail (vwag)"
@@ -56,7 +56,7 @@
 	icon_state = "liontail"
 	ani_state = "liontail_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "liontail_markings"
 	extra_overlay_w = "liontail_markings_w"
 
@@ -66,6 +66,6 @@
 	icon_state = "sneptail"
 	ani_state = "sneptail_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "sneptail_mark"
 	extra_overlay_w = "sneptail_mark_w"

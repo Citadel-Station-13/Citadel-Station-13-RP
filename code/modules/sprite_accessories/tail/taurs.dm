@@ -3,7 +3,7 @@
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	do_colouration = 1 // Yes color, using tail color
-	color_blend_mode = ICON_MULTIPLY  // The sprites for taurs are designed for ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE  // The sprites for taurs are designed for ICON_MULTIPLY
 	can_be_hidden = FALSE
 
 	var/icon/suit_sprites = null //File for suit sprites, if any.

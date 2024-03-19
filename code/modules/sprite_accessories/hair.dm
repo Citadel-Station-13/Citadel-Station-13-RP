@@ -4,7 +4,7 @@
 	abstract_type = /datum/sprite_accessory/hair
 	icon = 'icons/mob/human_face_m.dmi'	  // default icon for all hairs
 	//Enhanced colours and hair for all
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	apply_restrictions = FALSE
 	
 	/// ignored if new has_add_state is specified
@@ -19,7 +19,7 @@
 	if(append_s_at_end)
 		icon_state = "[icon_state]_s"
 
-/datum/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side)
+/datum/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state)
 	var/image/rendered = ..()
 	
 	if(do_colouration && ishuman(for_whom))

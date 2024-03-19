@@ -4,7 +4,7 @@
 	icon = 'icons/mob/sprite_accessories/ears.dmi'
 	do_colouration = 0 // Set to 1 to blend (ICON_ADD) hair color
 
-	color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
+	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
 	var/desc = "You should not see this..."
 
 // todo: sort ears by something that makes sense

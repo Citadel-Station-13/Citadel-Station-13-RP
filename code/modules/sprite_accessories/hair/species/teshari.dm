@@ -156,7 +156,7 @@
 	name = "Teshari Sleek"
 	id = "hair_teshari_sleek"
 	icon_state = "teshari_sleek"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -164,7 +164,7 @@
 	name = "Teshari 'The Peel'"
 	id = "hair_teshari_peel"
 	icon_state = "teshari_peel"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -172,7 +172,7 @@
 	name = "Teshari Swept Up"
 	id = "hair_teshari_swept_up"
 	icon_state = "teshari_sweep"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -180,7 +180,7 @@
 	name = "Teshari Aerodynamic"
 	id = "hair_teshari_aerodynamic"
 	icon_state = "teshari_aerodynamic"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -188,7 +188,7 @@
 	name = "Teshari Tall Mohawk"
 	id = "hair_teshari_mohawk_tall"
 	icon_state = "teshari_tallmohawk"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -196,7 +196,7 @@
 	name = "Teshari Cow-lick"
 	id = "hair_teshari_cowlick"
 	icon_state = "teshari_cowlick"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -204,7 +204,7 @@
 	name = "Teshari Spiky alt"
 	id = "hair_teshari_spiky_alt"
 	icon_state = "teshari_spiky2"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -212,7 +212,7 @@
 	name = "Teshari Soap"
 	id = "hair_teshari_soap"
 	icon_state = "teshari_soap"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -220,7 +220,7 @@
 	name = "Teshari Crowned"
 	id = "hair_teshari_crowned"
 	icon_state = "teshari_crowned"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -228,7 +228,7 @@
 	name = "Teshari Crest"
 	id = "hair_teshari_crest"
 	icon_state = "teshari_crest"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -236,7 +236,7 @@
 	name = "Teshari Feather Ponytail"
 	id = "hair_teshari_ponytail"
 	icon_state = "teshari_ponytail"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -244,6 +244,6 @@
 	name = "Teshari Feather Bun"
 	id = "hair_teshari_bun"
 	icon_state = "teshari_bun"
-	color_blend_mode = ICON_ADD
+	legacy_use_additive_color_matrix = TRUE
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
