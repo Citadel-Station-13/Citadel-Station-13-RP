@@ -8787,6 +8787,9 @@
 /area/rnd/secure_storage/critical/vault1)
 "De" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "sheet-silo-surt-mining-transport"
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "Df" = (
@@ -9061,6 +9064,9 @@
 	},
 /obj/structure/sign/warning/moving_parts{
 	pixel_y = -32
+	},
+/obj/machinery/sheet_silo_loader{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
