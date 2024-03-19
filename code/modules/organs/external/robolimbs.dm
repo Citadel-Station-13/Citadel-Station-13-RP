@@ -108,10 +108,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/robo_brute_mod = 1
 	/// Multiplier for incoming burn damage.
 	var/robo_burn_mod = 1
-	/// Cyberlimbs dmi includes a tail sprite to wear.
-	var/includes_tail
-	/// Cyberlimbs dmi includes a wing sprite to wear.
-	var/includes_wing
 	/// If it should make the torso a species
 	var/suggested_species = SPECIES_HUMAN
 	/// Species in this list cannot take these prosthetics.
@@ -120,6 +116,15 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/list/species_alternates = list(SPECIES_TAJ = "Unbranded - Tajaran", SPECIES_UNATHI = "Unbranded - Unathi")
 	/// List of ckeys that are allowed to pick this in charsetup.
 	var/list/whitelisted_to
+	
+	/// typepath or id of sprite accessory to default for, for tail
+	var/tail_spriteacc
+	/// typepath or id of sprite accessory to default for, for wings
+	var/wing_spriteacc
+	/// typepath or id of sprite accessory to default for, for ears
+	var/ears_spriteacc
+	/// typepath or id of sprite accessory to default for, for horns
+	var/horn_spriteacc
 
 /datum/robolimb/unbranded_monitor
 	company = "Unbranded Monitor"

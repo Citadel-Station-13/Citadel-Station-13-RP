@@ -958,18 +958,6 @@
 			message = "snaps [T.his] fingers."
 			playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
 
-		if("swish")
-			src.animate_tail_once()
-
-		if("wag", "sway")
-			src.animate_tail_start()
-
-		if("qwag", "fastsway")
-			src.animate_tail_fast()
-
-		if("swag", "stopsway")
-			src.animate_tail_stop()
-
 		if("vomit")
 			if(isSynthetic())
 				to_chat(src, "<span class='warning'>You are unable to vomit.</span>")

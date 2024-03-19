@@ -325,34 +325,6 @@ var/global/list/wing_icon_cache = list()
 			if(overlays_standing[used_tail_layer] == tail_overlay && tail_overlay.icon_state == t_state)
 				animate_tail_stop()
 
-/mob/living/carbon/human/proc/animate_tail_start()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
-
-/mob/living/carbon/human/proc/animate_tail_fast()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
-
-/mob/living/carbon/human/proc/animate_tail_reset()
-	if(QDESTROYING(src))
-		return
-
-	if(stat != DEAD)
-		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
-	else
-		set_tail_state("[species.get_tail(src)]_static")
-		toggle_tail_vr(FALSE) // So tails stop when someone dies. TODO - Fix this hack ~Leshana
-
-/mob/living/carbon/human/proc/animate_tail_stop()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_static")
-
 /// Wings! See update_icons_vr.dm for more wing procs
 /mob/living/carbon/human/proc/update_wing_showing()
 	if(QDESTROYING(src))

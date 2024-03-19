@@ -49,6 +49,7 @@
 
 	// first, cascade incase we early-abort later
 	if(cascade)
+		var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
 		slot.cascade_render_visibility(owner, target)
 
 	// check existing
@@ -71,16 +72,16 @@
  */
 /datum/inventory/proc/update_slot_render(slot_id, cascade = TRUE)
 	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
-	if(!slot.should_render(owner, target))
-		remove_slot_render(slot_id)
-		return
-		
 	var/obj/item/target = owner.item_by_slot_id(slot_id)
 
 	// first, cascade incase we early-abort later
 	if(cascade)
 		slot.cascade_render_visibility(owner, target)
 
+	if(!slot.should_render(owner, target))
+		remove_slot_render(slot_id)
+		return
+		
 	if(isnull(target))
 		remove_slot_render(slot_id)
 		return
