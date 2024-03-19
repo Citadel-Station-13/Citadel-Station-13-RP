@@ -52,6 +52,13 @@
 	var/icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_IGNORE
 	#warn impl
 
+	//* rendering *//
+	/// overlay/blend this in with ADD mode, rather than overlay mode.
+	/// used for making stuff not look flat and other effects.
+	/// a state with [icon_state]-add will be added.
+	/// -front, -back, -side will be specified as needed too if this is the case.
+	var/has_add_state = FALSE
+
 	//* legacy below
 
 
@@ -76,7 +83,7 @@
 	var/can_be_hidden = TRUE
 
 /datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side)
-	var/list/rendering = list()
+	var/list/layers = list()
 	switch(icon_sidedness)
 		if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
 			var/image/rendering
@@ -84,49 +91,60 @@
 			if(do_colouration)
 				if(length(colors) >= 1)
 					rendering.color = colors[1]
-			rendering += rendering
+			layers += rendering
 			if(extra_overlay)
 				rendering = image(icon, extra_overlay, layer_front)
 				if(length(colors) >= 2)
 					rendering.color = colors[2]
-				rendering += rendering
+				layers += rendering
 			if(extra_overlay2)
 				rendering = image(icon, extra_overlay2, layer_front)
 				if(length(colors) >= 3)
 					rendering.color = colors[3]
-				rendering += rendering
+				layers += rendering
+			if(has_add_state)
+				var/image/adding
+				adding = image(icon, "[icon_state]-add", layer_front)
+				layers += adding
 		if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
 			var/image/rendering
 			rendering = image(icon, "[icon_state]-front", layer_front)
 			if(do_colouration)
 				if(length(colors) >= 1)
 					rendering.color = colors[1]
-			rendering += rendering
+			layers += rendering
 			rendering = image(icon, "[icon_state]-behind", layer_behind)
 			if(do_colouration)
 				if(length(colors) >= 1)
 					rendering.color = colors[1]
-			rendering += rendering
+			layers += rendering
 			if(extra_overlay)
 				rendering = image(icon, "[extra_overlay]-front", layer_front)
 				if(length(colors) >= 2)
 					rendering.color = colors[2]
-				rendering += rendering
+				layers += rendering
 				rendering = image(icon, "[extra_overlay]-behind", layer_behind)
 				if(length(colors) >= 2)
 					rendering.color = colors[2]
-				rendering += rendering
+				layers += rendering
 			if(extra_overlay2)
 				rendering = image(icon, "[extra_overlay2]-front", layer_front)
 				if(length(colors) >= 3)
 					rendering.color = colors[3]
-				rendering += rendering
+				layers += rendering
 				rendering = image(icon, "[extra_overlay2]-behind", layer_behind)
 				if(length(colors) >= 3)
 					rendering.color = colors[3]
-				rendering += rendering
-	
+				layers += rendering
+			if(has_add_state)
+				var/image/adding
+				adding = image(icon, "[icon_state]-add-front", layer_front)
+				layers += adding
+				adding = image(icon, "[icon_state]-add-behind", layer_behind)
+				layers += adding
+
 	// emit single
-	var/image/single = rendering[1]
-	single.overlays = rendering.Copy(2)
+	var/image/single = layers[1]
+	single.overlays = layers.Copy(2)
+
 	return single

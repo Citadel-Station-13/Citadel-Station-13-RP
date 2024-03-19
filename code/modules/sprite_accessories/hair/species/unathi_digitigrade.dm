@@ -5,7 +5,7 @@
 	id = "hair_flatunathi_spines_short"
 	icon_state = "soghun_shortspines_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -14,7 +14,7 @@
 	id = "hair_flatunathi_spines_long"
 	icon_state = "soghun_longspines_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -23,7 +23,7 @@
 	id = "hair_flatunathi_finhawk"
 	icon_state = "fin_hawk_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -32,7 +32,7 @@
 	id = "hair_flatunathi_horns_demon"
 	icon_state = "demon_horn_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -41,7 +41,7 @@
 	id = "hair_flatunathi_horns_swept"
 	icon_state = "swept_horn_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -50,7 +50,7 @@
 	id = "hair_flatunathi_horns_ram"
 	icon_state = "ram_horn_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -59,7 +59,7 @@
 	id = "hair_flatunathi_frills_long"
 	icon_state = "soghun_longfrills_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -68,7 +68,7 @@
 	id = "hair_flatunathi_frills_short"
 	icon_state = "soghun_shortfrills_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -77,7 +77,7 @@
 	id = "hair_flatunathi_horns"
 	icon_state = "soghun_horns_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
 
@@ -86,6 +86,6 @@
 	id = "hair_flatunathi_frills_big"
 	icon_state = "big_frills_digi"
 	icon = 'icons/mob/species/unathidigi/hair.dmi'
-	icon_add = null
+	icon_add_legacy = null
 	species_allowed = list(SPECIES_UNATHI_DIGI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE

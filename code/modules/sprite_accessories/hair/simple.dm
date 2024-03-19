@@ -6,7 +6,7 @@
 	id = "hair-normal-simple"
 	icon = 'icons/mob/sprite_accessory/hair/simple.dmi'
 	icon_state = "normal"
-	icon_add = null
+	icon_add_legacy = null
 	hair_flags = HAIR_TIEABLE
 
 /datum/sprite_accessory/hair/simple_long
@@ -14,7 +14,7 @@
 	id = "hair-long-simple"
 	icon = 'icons/mob/sprite_accessory/hair/simple.dmi'
 	icon_state = "long"
-	icon_add = null
+	icon_add_legacy = null
 	hair_flags = HAIR_TIEABLE
 
 /datum/sprite_accessory/hair/simple_short
@@ -22,5 +22,5 @@
 	id = "hair-short-simple"
 	icon = 'icons/mob/sprite_accessory/hair/simple.dmi'
 	icon_state = "short"
-	icon_add = null
+	icon_add_legacy = null
 	hair_flags = HAIR_TIEABLE

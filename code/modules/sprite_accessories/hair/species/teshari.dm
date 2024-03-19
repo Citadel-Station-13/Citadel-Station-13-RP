@@ -3,7 +3,7 @@
 	name = "Teshari Default"
 	id = "hair_teshari_default"
 	icon_state = "teshari_default"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -11,7 +11,7 @@
 	name = "Teshari Alt. Default"
 	id = "hair_teshari_default_alt"
 	icon_state = "teshari_ears"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -19,7 +19,7 @@
 	name = "Teshari Tight"
 	id = "hair_teshari_tight"
 	icon_state = "teshari_tight"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -27,7 +27,7 @@
 	name = "Teshari Spiky"
 	id = "hair_teshari_spiky"
 	icon_state = "teshari_spiky"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -35,7 +35,7 @@
 	name = "Teshari Spike"
 	id = "hair_teshari_spike"
 	icon_state = "teshari_spike"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -43,7 +43,7 @@
 	name = "Teshari Overgrown"
 	id = "hair_teshari_long"
 	icon_state = "teshari_long"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -51,7 +51,7 @@
 	name = "Teshari Starburst"
 	id = "hair_teshari_burst"
 	icon_state = "teshari_burst"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -59,7 +59,7 @@
 	name = "Teshari Short Starburst"
 	id = "hair_teshari_burst_short"
 	icon_state = "teshari_burst_short"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -67,7 +67,7 @@
 	name = "Teshari Mohawk"
 	id = "hair_teshari_mohawk"
 	icon_state = "teshari_mohawk"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -75,7 +75,7 @@
 	name = "Teshari Pointy"
 	id = "hair_teshari_pointy"
 	icon_state = "teshari_pointy"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -83,7 +83,7 @@
 	name = "Teshari Upright"
 	id = "hair_teshari_upright"
 	icon_state = "teshari_upright"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -91,7 +91,7 @@
 	name = "Teshari Mane"
 	id = "hair_teshari_mane"
 	icon_state = "teshari_mane"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -99,7 +99,7 @@
 	name = "Teshari Droopy"
 	id = "hair_teshari_droopy"
 	icon_state = "teshari_droopy"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -107,7 +107,7 @@
 	name = "Teshari Mushroom"
 	id = "hair_teshari_mushroom"
 	icon_state = "teshari_mushroom"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -115,7 +115,7 @@
 	name = "Teshari Twies"
 	id = "hair_teshari_twies"
 	icon_state = "teshari_twies"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -123,7 +123,7 @@
 	name = "Teshari Backstrafe"
 	id = "hair_teshari_backstrafe"
 	icon_state = "teshari_backstrafe"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -131,7 +131,7 @@
 	name = "Teshari Long way"
 	id = "hair_teshari_longway"
 	icon_state = "teshari_longway"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -139,7 +139,7 @@
 	name = "Teshari Tree"
 	id = "hair_teshari_tree"
 	icon_state = "teshari_tree"
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE
 
@@ -147,7 +147,7 @@
 	name = "Teshari Fluffy Mohawk"
 	id = "hair_teshari_mohawk_fluffy"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "teshari_fluffymohawk"
 	species_allowed = list(SPECIES_TESHARI)
 	apply_restrictions = TRUE

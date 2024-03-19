@@ -29,7 +29,7 @@
 	id = "hair_ahoge"
 	icon_state = "hair_ahoge"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = null
+	icon_add_legacy = null
 
 /datum/sprite_accessory/hair/legacy/bald //Everyone goes bald.
 	name = "Bald"
@@ -160,7 +160,7 @@
 	name = "Floorlength Braid"
 	id = "hair_braid_floorlength"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "hair_braid"
 
 /datum/sprite_accessory/hair/legacy/bun
@@ -433,7 +433,7 @@
 	name = "Hedgehog Hair"
 	id = "hair_hedgehog"
 	icon_state = "hair_hedgehog"
-	icon_add = null
+	icon_add_legacy = null
 
 /datum/sprite_accessory/hair/legacy/hightight
 	name = "High and Tight"
@@ -545,7 +545,7 @@
 	name = "Messy"
 	id = "hair_messy"
 	icon_state = "hair_messy_tg"
-	icon_add = null
+	icon_add_legacy = null
 
 /datum/sprite_accessory/hair/legacy/mohawkunshaven
 	name = "Mohawk Unshaven"
@@ -678,7 +678,7 @@
 	name = "Ponytail 6 but fixed"
 	id = "hair_ponytail6_alt"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "hair_ponytail6"
 
 /datum/sprite_accessory/hair/legacy/sharpponytail
@@ -820,7 +820,7 @@
 	icon_state = "shorthair3a"
 	hair_flags = HAIR_VERY_SHORT
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 
 /datum/sprite_accessory/hair/legacy/short3
 	name = "Short Hair 3"
@@ -1392,21 +1392,21 @@
 	name = "Astolfo"
 	id = "hair_astolfo"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "hair_astolfo"
 
 /datum/sprite_accessory/hair/legacy/awoohair
 	name = "Shoulder-length Messy"
 	id = "hair_messy_shoulder"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "momijihair"
 
 /datum/sprite_accessory/hair/legacy/citheronia_colorable
 	name = "Citheronia Hair"
 	id = "hair_citheronia"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "citheronia_hair_c"
 	do_colouration = 1
 
@@ -1414,14 +1414,14 @@
 	name = "Twin Drills"
 	id = "hair_twindrills"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "hair_twincurl"
 
 /datum/sprite_accessory/hair/legacy/myopia
 	name = "Myopia"
 	id = "hair_myopia"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "myopia"
 	hair_flags = HAIR_VERY_SHORT
 
@@ -1429,28 +1429,28 @@
 	name = "Shortish"
 	id = "hair_shortish"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "bshort-1"
 
 /datum/sprite_accessory/hair/legacy/shortmess
 	name = "Short Mess"
 	id = "hair_short_mess"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "bshort-2"
 
 /datum/sprite_accessory/hair/legacy/peaked
 	name = "Peaked"
 	id = "hair_peaked"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "bshort-3"
 
 /datum/sprite_accessory/hair/legacy/blindbangs
 	name = "Blind Bangs"
 	id = "hair_bangs_blind"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "blindbangs"
 	hair_flags = HAIR_TIEABLE
 
@@ -1458,7 +1458,7 @@
 	name = "Grudge"
 	id = "hair_grudge"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "grudge"
 	hair_flags = HAIR_TIEABLE
 
@@ -1466,153 +1466,153 @@
 	name = "Zone"
 	id = "hair_zone"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "zone"
 /datum/sprite_accessory/hair/legacy/halfcut
 	name = "Halfcut"
 	id = "hair_halfcut"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "halfcut"
 
 /datum/sprite_accessory/hair/legacy/halfcut_smooth
 	name = "Halfcut Smooth"
 	id = "hair_halfcutsmooth"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "halfcut_smooth"
 
 /datum/sprite_accessory/hair/legacy/halfcut_rough
 	name = "Halfcut Rough"
 	id = "hair_halfcutrough"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "halfcut_rough"
 
 /datum/sprite_accessory/hair/legacy/braided_sidetail
 	name = "Braided Sidetail"
 	id = "hair_braidedsidetail"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "braided_sidetail"
 
 /datum/sprite_accessory/hair/legacy/baum
 	name = "Baum"
 	id = "hair_baum"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "baum"
 
 /datum/sprite_accessory/hair/legacy/bluntbangs
 	name = "Blunt Bangs"
 	id = "hair_bluntbangs"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "bluntbangs"
 
 /datum/sprite_accessory/hair/legacy/bluntbangsalt
 	name = "Blunt Bangs 2"
 	id = "hair_bluntbangsalt"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "bluntbangsalt"
 
 /datum/sprite_accessory/hair/legacy/slightlymessy
 	name = "Slightly Messy Long"
 	id = "hair_slightlymessy"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "slightlymessy"
 
 /datum/sprite_accessory/hair/legacy/kisaragi
 	name = "Kisaragi"
 	id = "hair_kisaragi"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "kisaragi"
 
 /datum/sprite_accessory/hair/legacy/fortuneteller
 	name = "Fortune Teller"
 	id = "hair_fortuneteller"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "fortuneteller"
 
 /datum/sprite_accessory/hair/legacy/hajime
 	name = "Hajime"
 	id = "hair_hajime"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "hajime"
 
 /datum/sprite_accessory/hair/legacy/hajimeshort
 	name = "Hajime Short"
 	id = "hair_hajimealt"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "hajimealt"
 
 /datum/sprite_accessory/hair/legacy/quadcurls
 	name = "Quad Curls"
 	id = "hair_quadcurls"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "quadcurls"
 
 /datum/sprite_accessory/hair/legacy/combedback
 	name = "Combed Back"
 	id = "hair_combedback"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "combedback"
 
 /datum/sprite_accessory/hair/legacy/combedbob
 	name = "Combed Bob"
 	id = "hair_combedbob"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "combedbob"
 
 /datum/sprite_accessory/hair/legacy/geisha
 	name = "Geisha"
 	id = "hair_geisha"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "geisha"
 
 /datum/sprite_accessory/hair/legacy/cotton
 	name = "Cotton"
 	id = "hair_cotton"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "cotton"
 
 /datum/sprite_accessory/hair/legacy/cottonalt
 	name = "Cotton Short"
 	id = "hair_cottonalt"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "cottonalt"
 
 /datum/sprite_accessory/hair/legacy/africanpigtails
 	name = "African Pigtails"
 	id = "hair_africanpigtails"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "africanpigtails"
 
 /datum/sprite_accessory/hair/legacy/inari
 	name = "Inari"
 	id = "hair_inari"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "inari"
 
 /datum/sprite_accessory/hair/legacy/rocksatr
 	name = "Rockstar"
 	id = "hair_rockstar"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "rockstar"
 
 /datum/sprite_accessory/hair/legacy/ornateponytail
@@ -1624,61 +1624,61 @@
 	name = "Eagle"
 	id = "hair_eagle"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "eagle"
 
 /datum/sprite_accessory/hair/legacy/macaw
 	name = "Macaw"
 	id = "hair_macaw"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "macaw"
 
 /datum/sprite_accessory/hair/legacy/owl
 	name = "Owl"
 	id = "hair_owl"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "owl"
 
 /datum/sprite_accessory/hair/legacy/falcon
 	name = "Falcon"
 	id = "hair_falcon"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "falcon"
 
 /datum/sprite_accessory/hair/legacy/hummingbird
 	name = "Hummingbird"
 	id = "hair_hummingbird"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "hummingbird"
 
 /datum/sprite_accessory/hair/legacy/magpie
 	name = "Magpie"
 	id = "hair_magpie"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "magpie"
 
 /datum/sprite_accessory/hair/legacy/starling
 	name = "Starling"
 	id = "hair_starling"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "starling"
 
 /datum/sprite_accessory/hair/legacy/stork
 	name = "Stork"
 	id = "hair_stork"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "stork"
 
 /datum/sprite_accessory/hair/legacy/princess
 	name = "Princess"
 	id = "hair_princess"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "princess"

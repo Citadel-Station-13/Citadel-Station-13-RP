@@ -178,27 +178,6 @@ var/global/list/wing_icon_cache = list()
 /mob/living/carbon/human/update_hair()
 	update_eyes() //Pirated out of here, for glowing eyes.
 
-	if(hair_style && (!hair_style.apply_restrictions || (src.species.get_bodytype_legacy(src) in hair_style.species_allowed)))
-		var/icon/grad_s
-		var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-		var/icon/hair_s_add
-		if(hair_style.icon_add)
-			hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
-		if(hair_style.do_colouration)
-			if(grad_style)
-				grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
-				grad_s.Blend(hair_s, ICON_AND)
-				grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
-			hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
-			if(hair_s_add)
-				hair_s.Blend(hair_s_add, ICON_ADD)
-			if(grad_s)
-				hair_s.Blend(grad_s, ICON_OVERLAY)
-
-		face_standing.Blend(hair_s, ICON_OVERLAY)
-		
-	
-
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
 		head_spriteacc_offset = head_organ_vr.head_offset

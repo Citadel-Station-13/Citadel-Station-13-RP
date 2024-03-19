@@ -4,7 +4,7 @@
 	name = "Cobra Hood"
 	id = "hair_unathi_hood"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "soghun_hood"
 
 /datum/sprite_accessory/hair/legacy/una_spines_long
@@ -75,7 +75,7 @@
 	name = "Double Unathi Horns"
 	id = "hair_unathi_horns_double"
 	icon = 'icons/mob/human_face_vr.dmi'
-	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_add_legacy = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "soghun_dubhorns"
 	species_allowed = list(SPECIES_UNATHI, SPECIES_XENOCHIMERA, SPECIES_PROTEAN)
 	apply_restrictions = TRUE
