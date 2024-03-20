@@ -118,9 +118,9 @@ jobs:
 
       - name: Run OpenDream
         if: steps.od-setup.conclusion == 'success' && !cancelled()
-        run: echo "OD_OUTPUT=$(./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING)" >> $GITHUB_ENV
+        run: OD_OUTPUT=$(./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING)
 
-      - name: Annotate output
+      - name: Annotate Output
         run: echo "$OD_OUTPUT" | bash tools/ci/annotate_od.sh
 
 
