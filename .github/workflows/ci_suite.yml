@@ -45,6 +45,10 @@ jobs:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm-${{hashFiles('dependencies.sh')}}
 
+      - name: Install Setuptools
+        run: |
+          pip3 install setuptools
+
       - name: Install Node
         run: tools/bootstrap/node --version
 
@@ -57,58 +61,60 @@ jobs:
       - name: Install Ripgrep
         run: cargo install ripgrep --features pcre2
 
-      # - name: Install Setuptools
-      #   run: |
-      #     pip3 install setuptools
+      - name: Give Linters A Go
+        id: linter-setup
+        run: ':'
 
-      # Begin Linters
-      - name: CI - Parse DM (dreamchecker)
-        run: ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
+    # Begin Linters
+      - name: CI - Grep (string checks)
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/ci/check_grep.sh
 
-      - name: CI - Annotate DM (dreamchecker)
-        if: always()
+      - name: CI - Run DreamChecker
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        shell: bash
         run: ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh
 
+      - name: Run OpenDream
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: ./DMCompiler_linux-x64/DMCompiler tgstation.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
+
       - name: CI - DMI Tests
-        if: always()
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: tools/bootstrap/python -m dmi.test
 
       - name: CI - DMM Tests
-        if: always()
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: tools/bootstrap/python -m mapmerge2.dmm_test
 
-      - name: CI - TGUI
-        if: always()
-        run: tools/build/build --ci lint tgui-test
-
-      - name: CI - Grep (string checks)
-        if: always()
-        run: tools/ci/check_grep.sh
-
       - name: CI - Changelogs
-        if: always()
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: tools/ci/check_changelogs.sh
 
       - name: CI - DME Validation
-        if: always()
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: tools/ci/check_filedirs.sh citadel.dme
 
-      - name: CI - Misc
-        if: always()
-        run: bash tools/ci/check_misc.sh
-      # End Linters
+      - name: CI - TGUI
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/build/build --ci lint tgui-test
 
-  odlint:
-    name: Lint with OpenDream
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup OD
-        run: |
-          bash tools/ci/setup_od.sh
-      - name: Run OD
-        run: |
-          bash tools/ci/run_od.sh
+      - name: CI - Misc
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: bash tools/ci/check_misc.sh
+    # End Linters
+
+  # odlint:
+  #   name: Lint with OpenDream
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Setup OD
+  #       run: |
+  #         bash tools/ci/setup_od.sh
+  #     - name: Run OD
+  #       run: |
+  #         bash tools/ci/run_od.sh
 
   compile_all_maps:
     name: Compile Maps
