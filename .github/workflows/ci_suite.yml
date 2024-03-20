@@ -115,9 +115,14 @@ jobs:
           tag: "latest"
           fileName: "DMCompiler_linux-x64.tar.gz"
           extract: true
+
       - name: Run OpenDream
         if: steps.od-setup.conclusion == 'success' && !cancelled()
-        run: ./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
+        run: echo "OD_OUTPUT=$(./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING)" >> $GITHUB_ENV
+
+      - name: Annotate output
+        run: echo "$OD_OUTPUT" | bash tools/ci/annotate_od.sh
+
 
   compile_all_maps:
     name: Compile Maps
