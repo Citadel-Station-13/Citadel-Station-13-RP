@@ -4126,13 +4126,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
-"lO" = (
-/obj/structure/metal_edge,
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/concrete/tile/indoors,
-/area/security/prison/lower)
 "lP" = (
 /obj/machinery/mech_recharger,
 /obj/machinery/atmospherics/portables_connector{
@@ -8388,16 +8381,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/engineering)
-"Ah" = (
-/obj/structure/metal_edge,
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/machinery/camera/network/security{
-	dir = 6
-	},
-/turf/simulated/floor/concrete/tile/indoors,
-/area/security/prison/lower)
 "Ai" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/concrete/indoors,
@@ -36524,7 +36507,7 @@ ua
 dD
 Lz
 ua
-Ah
+le
 Mk
 Mk
 Mk
@@ -37106,7 +37089,7 @@ ua
 ua
 ua
 ua
-lO
+kM
 dD
 dD
 Vg
