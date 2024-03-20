@@ -57,6 +57,7 @@
 	. = ..()
 	switch(method)
 		if(ATOM_DECONSTRUCT_DISASSEMBLED)
+			NULL_STATEMENT
 		else
 			visible_message(SPAN_WARNING("[src] falls apart."))
 

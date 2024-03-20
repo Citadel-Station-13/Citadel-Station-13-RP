@@ -721,6 +721,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			ui.close()
 			return 0
 		if("Refresh")//Refresh, goes to the end of the proc.
+			NULL_STATEMENT
 		if("Return")//Return
 			if(mode<=9)
 				mode = 0

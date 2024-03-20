@@ -69,6 +69,7 @@
 			if(0)
 				continue
 			if(1)
+				NULL_STATEMENT
 			else
 				break
 		group.contained.len = 0

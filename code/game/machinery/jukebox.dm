@@ -184,6 +184,7 @@
 			return TRUE
 		if("play")
 			if(emagged)
+				NULL_STATEMENT // I can't believe they hugboxed the Jukebox - @Zandario
 				//playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
 				//for(var/mob/living/carbon/M in ohearers(6, src))
 					//if(M.get_ear_protection() >= 2)

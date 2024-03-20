@@ -77,20 +77,17 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	return time2text(station_time(time, TRUE), format)
 
 /**
- * Returns 1 if it is the selected month and day.
+ * Returns TRUE if it is the selected month and day, else it returns FALSE.
  */
 /proc/isDay(var/month, var/day)
-	if(isnum(month) && isnum(day))\
+	if(isnum(month) && isnum(day))
 		/// Get the current month.
 		var/MM = text2num(time2text(world.timeofday, "MM"))
 		/// Get the current day.
 		var/DD = text2num(time2text(world.timeofday, "DD"))
 		if(month == MM && day == DD)
 			return TRUE
-
-		// Uncomment this out when debugging!
-		// else
-		// 	return TRUE
+	return FALSE
 
 /var/next_duration_update = 0
 /var/last_round_duration = 0

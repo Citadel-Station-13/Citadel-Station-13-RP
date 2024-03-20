@@ -360,7 +360,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral/rich/triumph)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/bluegrid)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/greengrid)
 LAVALAND_TURF_CREATE(/turf/unsimulated/mineral/triumph)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/)
+LAVALAND_TURF_CREATE(/turf/simulated/mineral)
 
 
 /turf/simulated/mineral/floor/lavaland

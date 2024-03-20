@@ -28,12 +28,13 @@
 	if(mutation && !(mutation in M.mutations))
 		M.mutations.Add(mutation)
 	if(disability)
-		M.disabilities|=disability
+		M.disabilities |= (disability)
 	if(sdisability)
-		M.sdisabilities|=sdisability
+		M.sdisabilities |= (sdisability)
 	if(activation_message)
 		to_chat(M, SPAN_WARNING("[activation_message]"))
 	else
+		NULL_STATEMENT
 		testing("[name] has no activation message.")
 
 /datum/gene/disability/deactivate(mob/M, connected, flags)
@@ -46,6 +47,7 @@
 	if(deactivation_message)
 		to_chat(M, SPAN_WARNING("[deactivation_message]"))
 	else
+		NULL_STATEMENT
 		testing("[name] has no deactivation message.")
 
 // Note: Doesn't seem to do squat, at the moment. // For at LEAST 4 years. -Zandario

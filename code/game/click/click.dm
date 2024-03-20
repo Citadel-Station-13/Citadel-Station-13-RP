@@ -89,7 +89,9 @@
 		return 1
 	switch(unpacked_params["button"])
 		if("right")
+			NULL_STATEMENT
 		if("left")
+			NULL_STATEMENT
 		if("middle")
 			MiddleClickOn(A)
 			return 1

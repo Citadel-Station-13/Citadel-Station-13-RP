@@ -67,3 +67,7 @@
 /// trait registration defines
 /// due to how defines work, this goes AFTER the trait define!
 #define DATUM_TRAIT(TYPE, TRAIT)
+
+/// A null statement to guard against EmptyBlock lint without necessitating the use of pass()
+/// Used to avoid proc-call overhead. But use sparingly. Probably pointless in most places.
+#define NULL_STATEMENT ;

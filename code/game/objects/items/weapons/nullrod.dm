@@ -357,6 +357,7 @@
 	if(.)
 		return
 	if(used_blessing)
+		NULL_STATEMENT
 	else if(user.mind && (user.mind.isholy))
 		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
 		user.faction |= "carp"

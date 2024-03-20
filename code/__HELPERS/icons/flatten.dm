@@ -201,10 +201,13 @@
 	else
 		dir = A.dir
 	var/ourdir = dir
-	if(!none && ourdir != SOUTH)
+	if(!none && ourdir != SOUTH) // TODO: Figure out a better way to handle this block. @Zandario
 		if(length(icon_states(icon(icon, state, NORTH))))
+			NULL_STATEMENT
 		else if(length(icon_states(icon(icon, state, EAST))))
+			NULL_STATEMENT
 		else if(length(icon_states(icon(icon, state, WEST))))
+			NULL_STATEMENT
 		else
 			ourdir = SOUTH
 

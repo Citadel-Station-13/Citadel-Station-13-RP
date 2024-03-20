@@ -1,4 +1,4 @@
-//1000-1999
+// Preprocessor Configurable Errors (1000-1999)
 #pragma FileAlreadyIncluded error
 #pragma MissingIncludedFile error
 #pragma MisplacedDirective error
@@ -8,7 +8,7 @@
 #pragma WarningDirective warning
 #pragma MiscapitalizedDirective error
 
-//2000-2999
+// Compiler Configurable Errors (2000-2999)
 #pragma SoftReservedKeyword error
 #pragma DuplicateVariable error
 #pragma DuplicateProcDefinition error
@@ -17,6 +17,7 @@
 #pragma PointlessBuiltinCall error
 #pragma SuspiciousMatrixCall error
 #pragma FallbackBuiltinArgument error
+#pragma PointlessScopeOperator error
 #pragma MalformedRange error
 #pragma InvalidRange error
 #pragma InvalidSetStatement error
@@ -25,7 +26,7 @@
 #pragma MissingInterpolatedExpression error
 #pragma AmbiguousResourcePath error
 
-//3000-3999
+// Stylistic Configurable Errors (3000-3999)
 #pragma EmptyBlock error
 #pragma EmptyProc disabled
 #pragma UnsafeClientAccess disabled

@@ -553,6 +553,7 @@ SUBSYSTEM_DEF(zmimic)
 			switch(appearance:plane)
 				// these planes are fine, we don't care
 				if(TURF_PLANE, FLOAT_PLANE)
+					NULL_STATEMENT
 				// these plnaes need to be obliterated due to the usage of
 				// special rendering that will be lost if the plane is changed.
 				if(LIGHTLESS_PLANE)

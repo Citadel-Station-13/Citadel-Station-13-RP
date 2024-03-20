@@ -248,7 +248,6 @@
 			if(prob(25))
 				qdel(src)
 				return
-		else
 	return
 
 /obj/machinery/vv_edit_var(var_name, new_value)

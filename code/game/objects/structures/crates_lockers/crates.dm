@@ -131,7 +131,6 @@
 			if (prob(50))
 				qdel(src)
 			return
-		else
 	return
 
 /obj/structure/closet/crate/update_icon_old()

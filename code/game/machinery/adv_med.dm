@@ -152,7 +152,6 @@
 				//SN src = null
 				qdel(src)
 				return
-		else
 	return
 
 //Body Scan Console
@@ -217,7 +216,6 @@
 				//SN src = null
 				qdel(src)
 				return
-		else
 	return
 
 /obj/machinery/body_scanconsole/proc/findscanner()

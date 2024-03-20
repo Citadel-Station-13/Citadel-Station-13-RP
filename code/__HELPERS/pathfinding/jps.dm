@@ -513,6 +513,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 			// check it's 1. there and 2. we haven't checked it yet and
 			// 3. we can reach it; if not this is just pointless
 			if(isnull(cscan_current) || (cscan_current.pathfinding_cycle == cycle) || !JPS_ADJACENCY_CALL(node_top_pos, cscan_current))
+				NULL_STATEMENT
 			else
 				// perform iteration
 				JPS_CARDINAL_SCAN(cscan_current, node_top_dir)

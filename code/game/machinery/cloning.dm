@@ -442,7 +442,6 @@
 					legacy_ex_act(severity)
 				qdel(src)
 				return
-		else
 	return
 
 /obj/machinery/clonepod/update_icon()

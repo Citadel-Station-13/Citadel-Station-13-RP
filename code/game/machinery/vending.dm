@@ -161,7 +161,6 @@
 					malfunction()
 					return
 				return
-		else
 	return
 
 /obj/machinery/vending/emag_act(var/remaining_charges, var/mob/user)
@@ -2566,4 +2565,3 @@
 	if (emagged || istype(user) && user.species.name == SPECIES_ADHERENT)
 		return ..()
 	to_chat(user, SPAN_WARNING("\The [src] emits a discordant chime."))
-

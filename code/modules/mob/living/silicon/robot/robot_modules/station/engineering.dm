@@ -179,10 +179,10 @@
 /obj/item/robot_module/robot/quad/engi/get_synths(mob/living/silicon/robot/R)
 	. = ..()
 	//Painfully slow charger regen but high capacity. Also starts with low amount.
-	MATTER_SYNTH_WITH_NAME(MATSYN_METAL   , metal   , "Steel reserves"   , 40000)
-	MATTER_SYNTH_WITH_NAME(MATSYN_GLASS   , glass   , "Glass reserves"   , 40000)
-	MATTER_SYNTH_WITH_NAME(MATSYN_WOOD    , wood    , "Wood reserves"    , 40000)
-	MATTER_SYNTH_WITH_NAME(MATSYN_PLASTIC , plastic , "Plastic reserves" , 40000)
+	MATTER_SYNTH_WITH_NAME(MATSYN_METAL,    metal,    "Steel reserves",    40000)
+	MATTER_SYNTH_WITH_NAME(MATSYN_GLASS,    glass,    "Glass reserves",    40000)
+	MATTER_SYNTH_WITH_NAME(MATSYN_WOOD,     wood,     "Wood reserves",     40000)
+	MATTER_SYNTH_WITH_NAME(MATSYN_PLASTIC,  plastic,  "Plastic reserves",  40000)
 	MATTER_SYNTH_WITH_NAME(MATSYN_PLASTEEL, plasteel, "Plasteel reserves", 20000)
 	MATTER_SYNTH(MATSYN_WIRE, wire)
 

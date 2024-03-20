@@ -60,6 +60,7 @@
 		if(null)
 			old.moveToNullspace()
 		if(FALSE)
+			NULL_STATEMENT
 		else
 			old.forceMove(newloc)
 

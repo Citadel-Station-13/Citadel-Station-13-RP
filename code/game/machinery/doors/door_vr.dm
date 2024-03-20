@@ -43,7 +43,7 @@
 
 		var/obj/item/weldingtool/welder = I
 		if(welder.remove_fuel(0,user))
-			to_chat(user, "<span class='notice'>You start weld \the plasteel into place.</span>")
+			to_chat(user, "<span class='notice'>You start weld the plasteel into place.</span>")
 			playsound(src, welder.tool_sound, 50, 1)
 			if(do_after(user, 10 * welder.tool_speed) && welder && welder.isOn())
 				to_chat(user, "<span class='notice'>You finish reinforcing \the [src].</span>")

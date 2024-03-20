@@ -44,6 +44,7 @@
 			var/datum/material/mat = material_parts[material_parts[i]]
 			.[mat.id] += material_costs[i]
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		NULL_STATEMENT
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		var/list/got = material_get_parts()
 		for(var/i in 1 to length(got))
@@ -94,6 +95,7 @@
 			parts[key] = SSmaterials.resolve_material(key)
 		update_material_multi(parts)
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		NULL_STATEMENT
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		material_init_parts()
 		// skip specifying parts because abstracted
@@ -108,6 +110,7 @@
 	if(islist(material_parts))
 		update_material_multi(material_parts)
 	else if(material_parts == MATERIAL_DEFAULT_DISABLED)
+		NULL_STATEMENT
 	else if(material_parts == MATERIAL_DEFAULT_ABSTRACTED)
 		update_material_multi()
 	else

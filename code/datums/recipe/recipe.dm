@@ -262,6 +262,7 @@
 	switch(reagent_mix)
 		if (RECIPE_REAGENT_REPLACE)
 			//We do no transferring
+			NULL_STATEMENT
 		if (RECIPE_REAGENT_SUM)
 			//Sum is easy, just shove the entire buffer into the result
 			temp.reagents.trans_to_holder(tempholder.reagents, temp.reagents.total_volume)

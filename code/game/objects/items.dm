@@ -224,7 +224,6 @@
 			if (prob(5))
 				qdel(src)
 				return
-		else
 	return
 
 //user: The mob that is suiciding
@@ -274,6 +273,7 @@
 	switch(get_weight())
 		if(-INFINITY to 0.1)
 			// todo: put this in when we actually get weight
+			NULL_STATEMENT // Until then...
 			// . += "It looks like it weighs practically nothing."
 		if(0.1 to 0.75)
 			. += "It looks like it weighs very little."

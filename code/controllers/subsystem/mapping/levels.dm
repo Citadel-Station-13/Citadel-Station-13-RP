@@ -281,6 +281,7 @@
 
 	var/map_path = instance.resolve_map_path()
 	if(isfile(map_path))
+		NULL_STATEMENT
 	else if(!fexists(map_path))
 		CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
 	else

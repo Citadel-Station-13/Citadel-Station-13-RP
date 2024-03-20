@@ -99,6 +99,7 @@
 			for(var/V in D.vars)
 				names += V
 		if(VVING_A_LIST)
+			NULL_STATEMENT
 		if(VVING_A_APPEARANCE)
 			for(var/V in global._appearance_var_list)
 				names += V
