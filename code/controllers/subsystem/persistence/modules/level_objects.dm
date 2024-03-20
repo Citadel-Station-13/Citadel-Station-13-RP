@@ -32,7 +32,7 @@
 				)
 			if(OBJ_PERSIST_STATIC_MODE_MAP)
 				query = SSdbcore.NewQuery(
-					"INSERT INTO [format_table_name("persistence_static_mapl_objects")] (generation, object_id, map_id, data) \
+					"INSERT INTO [format_table_name("persistence_static_map_objects")] (generation, object_id, map_id, data) \
 						VALUES (:generation, :object_id, :map_id, :data) ON DUPLICATE KEY UPDATE \
 						data = VALUES(data)",
 					list(

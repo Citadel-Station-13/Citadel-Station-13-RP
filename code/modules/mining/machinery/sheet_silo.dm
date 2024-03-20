@@ -12,6 +12,7 @@
 	desc = "A reinforced materials storage silo. Inserted sheets are protected via stasis field."
 	icon = 'icons/modules/mining/machinery/sheet_silo.dmi'
 	icon_state = "silo"
+	density = TRUE
 
 	/// material id to **sheets**
 	var/list/sheets_by_material = list()
