@@ -118,10 +118,15 @@ jobs:
 
       - name: Run OpenDream
         if: steps.od-setup.conclusion == 'success' && !cancelled()
-        run: OD_OUTPUT=$(./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING)
+        run: ./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
 
-      - name: Annotate Output
-        run: echo "$OD_OUTPUT" | bash tools/ci/annotate_od.sh
+      # Only use if OpenDream CI is fixed. @Zandario
+      # - name: Run OpenDream
+      #   if: steps.od-setup.conclusion == 'success' && !cancelled()
+      #   run: OD_OUTPUT=$(./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING)
+      # - name: Annotate Output
+      #   if: steps.od-setup.conclusion == 'success' && !cancelled()
+      #   run: echo "$OD_OUTPUT" | bash tools/ci/annotate_od.sh
 
 
   compile_all_maps:
