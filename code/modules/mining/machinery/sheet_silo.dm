@@ -30,11 +30,28 @@
 		sheets_by_material[id] = round(sheets_by_material[id] * (persistence_decay_factor ** rounds_since_saved) - persistence_decay_constant * rounds_since_saved)
 
 /obj/machinery/sheet_silo/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	#warn impl
-	. = ..()
+	if(istype(I, /obj/item/stack/material))
+		var/obj/item/stack/material/sheets = I
+		if(!user.transfer_item_to_loc(sheets, src))
+			to_chat(user, SPAN_WARNING("You fail to insert [sheets] into [src]."))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		var/inserted = take_sheets(sheets)
+		user.visible_message(
+			SPAN_NOTICE("[user] inserts [I] into [src]."),
+			SPAN_NOTICE("You insert [inserted] sheets of [I] into [src]."),
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+		)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 /obj/machinery/sheet_silo/proc/take_sheets(obj/item/stack/material/sheets)
-	#warn impl
+	if(sheets.uses_charge)
+		return 0
+	var/mat_id = sheets.material.id
+	var/mat_amount = sheets.amount
+	. = mat_amount
+	sheets.use(mat_amount)
+	sheets_by_material[mat_id] += mat_amount
 
 /obj/machinery/sheet_silo/clone(atom/location, include_contents)
 	var/obj/machinery/sheet_silo/clone = ..()
@@ -46,6 +63,8 @@
 	var/list/transformed_sheets = list()
 	for(var/id in sheets_by_material)
 		var/datum/material/mat = SSmaterials.resolve_material(id)
+		if(isnull(mat))
+			continue
 		if(!persistence_allow_overpowered && (mat.material_flags & MATERIAL_FLAG_CONSIDERED_OVERPOWERED))
 			continue
 		var/amount = sheets_by_material[id]
@@ -85,4 +104,21 @@
 			if(!is_safe_number(amount))
 				return TRUE
 			amount = clamp(amount, 0, sheets_by_material[id])
-			#warn impl
+			if(!amount)
+				return TRUE
+			var/datum/material/dropping = SSmaterials.resolve_material(id)
+			if(isnull(dropping))
+				return TRUE
+			// todo: ughh
+			var/obj/item/stack/material/casted = dropping.stack_type
+			amount = min(amount, initial(casted.max_amount))
+			if(!amount)
+				return TRUE
+			sheets_by_material[id] -= amount
+			if(sheets_by_material[id] <= 0)
+				sheets_by_material -= id
+			var/obj/item/stack/material/dropped = dropping.place_sheet(get_turf(src), amount)
+			if(usr)
+				usr.put_in_hands(dropped)
+				usr.visible_message(SPAN_NOTICE("[usr] retrieves [amount] sheets of [dropping] from [src]."), range = MESSAGE_RANGE_INVENTORY_SOFT)
+			return TRUE

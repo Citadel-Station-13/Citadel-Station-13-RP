@@ -648,6 +648,8 @@
 		if(isnull(mat)) // 'none' option
 			continue
 		. += "Its [key] is made out of [mat.display_name]"
+	if((obj_persist_dynamic_id || obj_persist_static_id) && !(obj_persist_status & OBJ_PERSIST_STATUS_NO_EXAMINE))
+		. += SPAN_BOLDNOTICE("This entity is a persistent entity; it may be preserved into future rounds.")
 
 /obj/proc/examine_integrity(mob/user)
 	. = list()

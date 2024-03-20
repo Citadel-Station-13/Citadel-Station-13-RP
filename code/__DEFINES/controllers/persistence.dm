@@ -22,6 +22,8 @@
 #define OBJ_PERSIST_STATUS_FIRST_GENERATION (1<<2)
 /// do not persist
 #define OBJ_PERSIST_STATUS_NO_THANK_YOU (1<<3)
+/// do not show persistent status on examine
+#define OBJ_PERSIST_STATUS_NO_EXAMINE (1<<4)
 
 //* /obj - obj_persist_dynamic_status *//
 
