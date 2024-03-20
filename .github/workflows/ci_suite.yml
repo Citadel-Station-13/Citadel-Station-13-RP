@@ -19,6 +19,7 @@ jobs:
       - name: Checkout Branch
         uses: actions/checkout@v4
 
+    # Begine Restores
       - name: Restore Bootstrap cache
         uses: actions/cache@v4
         with:
@@ -44,6 +45,7 @@ jobs:
         with:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm-${{hashFiles('dependencies.sh')}}
+    # End Restores
 
       - name: Install Setuptools
         run: |
@@ -60,6 +62,14 @@ jobs:
 
       - name: Install Ripgrep
         run: cargo install ripgrep --features pcre2
+
+      - name: Install OpenDream
+        uses: robinraju/release-downloader@v1.9
+        with:
+          repository: "OpenDreamProject/OpenDream"
+          tag: "latest"
+          fileName: "DMCompiler_linux-x64.tar.gz"
+          extract: true
 
       - name: Give Linters A Go
         id: linter-setup
