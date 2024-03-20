@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from "../../backend";
-import { Button, LabeledList, NumberInput, Section, Stack } from "../../components";
+import { Box, Button, NumberInput, Section, Stack } from "../../components";
 import { Window } from "../../layouts";
 import { MaterialsContext } from "../common/Materials";
 
@@ -11,26 +11,36 @@ interface SheetSiloData {
 export const SheetSilo = (props, context) => {
   const { act, data } = useBackend<SheetSiloData>(context);
   const [dropAmounts, setDropAmounts] = useLocalState<Record<string, number>>(context, 'dropAmounts', {});
+  const setDropAmount = (id: string, amt: number) => {
+    let corrected = { ...dropAmounts };
+    corrected[id] = amt;
+    setDropAmounts(corrected);
+  };
 
   return (
     <Window width={350} height={500} title="Materials Silo">
       <Window.Content>
         <Section fill title="Storage">
-          <LabeledList>
+          <Stack vertical fill>
             {Object.entries(data.stored).map(([k, v]) => (
-              <LabeledList.Item key={k} label={`${data.materialContext.materials[k]?.name || 'UNKNOWN'} - ${v}`}>
+              <Stack.Item key={`${k}-${dropAmounts[k]}`}>
                 <Stack>
+                  <Stack.Item grow={1} style={{ display: "flex", border: "1px solid gray" }} pl={1}>
+                    <Box style={{ "align-self": "center" }} bold>
+                      {data.materialContext.materials[k]?.name || 'UNKNOWN'} - {v}
+                    </Box>
+                  </Stack.Item>
                   <Stack.Item>
-                    <Button icon="plus"
-                      onClick={() => setDropAmounts({ ...dropAmounts, k: dropAmounts[k] + 1 })} />
+                    <Button icon="minus"
+                      onClick={() => setDropAmount(k, (dropAmounts[k] || 1) - 1)} />
                   </Stack.Item>
                   <Stack.Item>
                     <NumberInput width={2.5} value={dropAmounts[k] || 1}
-                      onChange={(e, val) => setDropAmounts({ ...dropAmounts, k: Math.floor(val) })} />
+                      onChange={(e, val) => setDropAmount(k, Math.floor(val))} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button icon="plus"
-                      onClick={() => setDropAmounts({ ...dropAmounts, k: dropAmounts[k] - 1 })} />
+                      onClick={() => setDropAmount(k, (dropAmounts[k] || 1) + 1)} />
                   </Stack.Item>
                   <Stack.Item>
                     <Button icon="eject" onClick={() => act('eject', {
@@ -39,9 +49,9 @@ export const SheetSilo = (props, context) => {
                     })} />
                   </Stack.Item>
                 </Stack>
-              </LabeledList.Item>
+              </Stack.Item>
             ))}
-          </LabeledList>
+          </Stack>
         </Section>
       </Window.Content>
     </Window>
