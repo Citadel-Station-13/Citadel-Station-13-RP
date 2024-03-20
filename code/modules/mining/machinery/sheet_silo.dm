@@ -13,6 +13,7 @@
 	icon = 'icons/modules/mining/machinery/sheet_silo.dmi'
 	icon_state = "silo"
 	density = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	/// material id to **sheets**
 	var/list/sheets_by_material = list()
