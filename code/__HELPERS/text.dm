@@ -457,7 +457,7 @@
  * The icon var could be local in the proc, but it's a waste of resources
  * to always create it and then throw it out.
  */
-GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
+GLOBAL_VAR_INIT(text_tag_icons, new /icon('icons/chattags.dmi'))
 
 /proc/create_text_tag(tagname, tagdesc = tagname, client/C)
 	if(!(C && C.is_preference_enabled(/datum/client_preference/chat_tags)))
