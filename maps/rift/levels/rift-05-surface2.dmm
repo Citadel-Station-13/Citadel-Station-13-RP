@@ -2261,6 +2261,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/photocopier,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "bnf" = (
@@ -3426,7 +3427,7 @@
 	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/monodark,
 /area/security/security_processing)
 "cem" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4484,10 +4485,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/machinery/computer/guestpass{
-	dir = 8;
-	pixel_x = 24
-	},
+/obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "cMt" = (
@@ -6507,12 +6505,19 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/papershredder,
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 8
+	},
+/obj/structure/table/steel,
+/obj/machinery/photocopier/faxmachine{
+	department = "Security"
+	},
+/obj/machinery/air_alarm{
+	dir = 4;
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
@@ -9847,9 +9852,13 @@
 	pixel_y = 7
 	},
 /obj/structure/table/steel,
-/obj/item/pen,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/pen/red{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/pen,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "grI" = (
@@ -12374,14 +12383,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass/security{
-	name = "Processing";
-	req_one_access = list(1,2,4,38)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/door/airlock/glass/security{
+	name = "Security Reception";
+	req_access = list();
+	req_one_access = list(2,4)
+	},
+/turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "hSd" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -13341,9 +13351,6 @@
 /obj/item/extinguisher,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/medsec_maintenance)
-"iBI" = (
-/turf/simulated/floor/tiled/dark,
-/area/security/security_processing)
 "iBU" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin,
@@ -13983,21 +13990,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/chargebay)
-"iXh" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/structure/closet/secure_closet/genpop,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/westleft,
-/turf/simulated/floor/tiled/dark,
-/area/security/security_processing)
 "iXD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/machinery/airlock_sensor{
@@ -20355,6 +20347,7 @@
 	},
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
+/obj/machinery/papershredder,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "mMs" = (
@@ -21106,15 +21099,11 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/westleft,
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "nkD" = (
@@ -21981,15 +21970,11 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/eastleft,
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "nMq" = (
@@ -22072,9 +22057,6 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
-	},
-/obj/machinery/photocopier/faxmachine{
-	department = "Security"
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
@@ -22679,16 +22661,12 @@
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "ogI" = (
-/obj/structure/filingcabinet/chestdrawer{
-	pixel_x = 13;
-	pixel_y = 1
-	},
-/obj/machinery/photocopier{
-	pixel_x = -7
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/light,
+/obj/machinery/computer/security{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "ohi" = (
@@ -22774,15 +22752,11 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/westright,
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "ojJ" = (
@@ -22804,15 +22778,11 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/eastright,
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "olp" = (
@@ -23982,8 +23952,12 @@
 /area/crew_quarters/pool)
 "oXc" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/sec,
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock/glass/security/polarized{
+	id_tint = "seclocker";
+	name = "Locker Room";
+	req_one_access = list(2)
+	},
+/turf/simulated/floor/tiled/steel,
 /area/security/security_lockerroom)
 "oXn" = (
 /obj/effect/floor_decal/spline/plain,
@@ -24703,15 +24677,11 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/westright,
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "pvE" = (
@@ -24908,9 +24878,7 @@
 "pBw" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/computer/security{
-	dir = 1
-	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
 "pBz" = (
@@ -27000,18 +26968,14 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/westright,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "qVn" = (
@@ -28619,7 +28583,7 @@
 	name = "Processing";
 	req_one_access = list(1,2,4,38)
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/monodark,
 /area/security/security_processing)
 "rUn" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -33795,18 +33759,14 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/eastleft,
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "vtu" = (
@@ -34323,15 +34283,11 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/eastleft,
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "vNQ" = (
@@ -35459,18 +35415,14 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/eastright,
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "wCr" = (
@@ -35681,22 +35633,10 @@
 "wKT" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -22
-	},
 /obj/structure/table/steel,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/item/pen{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/pen/red{
-	pixel_x = -2;
-	pixel_y = -2
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
@@ -35749,15 +35689,11 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/genpop,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/eastright,
+/obj/structure/closet/secure_closet/genpop,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "wNZ" = (
@@ -55145,7 +55081,7 @@ xYb
 cjM
 cjM
 cjM
-nkM
+cjM
 pBw
 dMT
 jNi
@@ -55339,7 +55275,7 @@ cjM
 ocm
 gnQ
 cjM
-cjM
+nkM
 ogI
 dMT
 obA
@@ -57079,7 +57015,7 @@ tiu
 bhS
 kxd
 ceg
-iBI
+llM
 llM
 llM
 llM
@@ -57274,11 +57210,11 @@ bhS
 gjq
 keC
 pvp
-iXh
+oji
 tJz
 rDz
 qUR
-iXh
+oji
 oji
 nkq
 rWX
