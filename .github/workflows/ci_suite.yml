@@ -77,7 +77,7 @@ jobs:
 
       - name: Run OpenDream
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
-        run: ./DMCompiler_linux-x64/DMCompiler tgstation.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
+        run: ./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
 
       - name: CI - DMI Tests
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
