@@ -107,12 +107,17 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - name: Setup OD
-        run: |
-          bash tools/ci/setup_od.sh
-      - name: Run OD
-        run: |
-          bash tools/ci/run_od.sh
+      - name: Install OpenDream
+        id: od-setup
+        uses: robinraju/release-downloader@v1.9
+        with:
+          repository: "OpenDreamProject/OpenDream"
+          tag: "latest"
+          fileName: "DMCompiler_linux-x64.tar.gz"
+          extract: true
+      - name: Run OpenDream
+        if: steps.od-setup.conclusion == 'success' && !cancelled()
+        run: ./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
 
   compile_all_maps:
     name: Compile Maps
