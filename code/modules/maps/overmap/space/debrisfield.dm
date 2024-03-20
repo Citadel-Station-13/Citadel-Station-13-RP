@@ -186,7 +186,11 @@
 \[i\]Class\[/i\]: Light Escort Carrier
 \[i\]Transponder\[/i\]: Transmitting (MIL), Weak Signal
 \[b\]Notice\[/b\]: Registration Expired"}
-	rename_areas(newname)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/overmap/entity/visitable/ship/landable/tinycarrier/LateInitialize()
+	. = ..()
+	rename_areas(scanner_name)
 
 /obj/overmap/entity/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
 	var/datum/shuttle/S = SSshuttle.shuttles[shuttle]

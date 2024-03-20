@@ -7,6 +7,7 @@ import {
   Button,
   Section,
   NoticeBox,
+  NumberInput,
   LabeledList,
   Collapsible,
 } from "../components";
@@ -20,6 +21,8 @@ interface VoteContext {
   question: string;
   time_remaining : number;
   secret : BooleanLike;
+  ghost : BooleanLike;
+  ghost_weight : number;
 }
 
 interface VoteChoice {
@@ -41,6 +44,7 @@ export const Vote = (props, context) => {
           {!!admin && (
             <Section title="Admin Options">
               <StartVoteOptions />
+              <VoteConfig />
             </Section>
           )}
           <ChoicesPanel />
@@ -62,7 +66,7 @@ export const Vote = (props, context) => {
 
 const StartVoteOptions = (props, context) => {
   const { act, data } = useBackend<VoteContext>(context);
-  const { vote_happening, secret } = data;
+  const { vote_happening } = data;
   return (
     <Stack.Item>
       <Collapsible title="Start a vote">
@@ -93,13 +97,41 @@ const StartVoteOptions = (props, context) => {
                   Custom Vote
                 </Button>
               </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Collapsible>
+    </Stack.Item>
+  );
+};
+
+const VoteConfig = (props, context) => {
+  const { act, data } = useBackend<VoteContext>(context);
+  const { ghost_weight, secret } = data;
+  return (
+    <Stack.Item>
+      <Collapsible title="Vote settings">
+        <Stack justify="space-between">
+          <Stack.Item>
+            <Stack vertical>
+              <Stack.Item>
+                Ghost weight:
+                <NumberInput
+                  unit={'%'}
+                  step={1}
+                  value={ghost_weight}
+                  minValue={-1}
+                  maxValue={100}
+                  onChange={(e, value) => act('ghost_weight', { ghost_weight: value })}
+                />
+              </Stack.Item>
               <Stack.Item>
                 <Button
                   color={secret ? "green" : "red"}
                   onClick={() => act("hide")}
                   icon={secret ? 'lock' : 'unlock'}
                 >
-                  Hide Votes
+                  {secret ? 'Show' : 'Hide' } Votes
                 </Button>
               </Stack.Item>
             </Stack>
@@ -112,7 +144,7 @@ const StartVoteOptions = (props, context) => {
 // Display choices
 const ChoicesPanel = (props, context) => {
   const { act, data } = useBackend<VoteContext>(context);
-  const { admin, choices, selected_choice, question, secret } = data;
+  const { ghost_weight, ghost, admin, choices, selected_choice, question, secret } = data;
 
   return (
     <Stack.Item grow>
@@ -129,7 +161,7 @@ const ChoicesPanel = (props, context) => {
                       color={
                         selected_choice !== choice.name ? "green" : "grey"
                       }
-                      disabled={choice.name === selected_choice}
+                      disabled={choice.name === selected_choice || (ghost_weight === 0 && ghost)}
                       onClick={() => {
                         act("vote", { index: i + 1 });
                       }}
