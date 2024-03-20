@@ -45,11 +45,6 @@ jobs:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm-${{hashFiles('dependencies.sh')}}
 
-      - name: Install Tools
-        run: |
-          bash tools/ci/install_build_deps.sh
-          bash tools/ci/install_dreamchecker.sh
-
       - name: Install Node
         run: tools/bootstrap/node --version
 
