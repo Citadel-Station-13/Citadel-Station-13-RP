@@ -21,7 +21,7 @@
 	var/list/defaults = deep_copy_list(hotkey_mode? GLOB.hotkey_keybinding_list_by_key : GLOB.classic_keybinding_list_by_key)
 	prefs.keybindings = defaults
 
-	prefs.push_ui_modules(updates = list((key) = list(
+	prefs.push_ui_modules(updates = list((src.key) = list(
 		"keybindings" = prefs.keybindings,
 		"hotkeyMode" = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE],
 	)))
@@ -35,7 +35,7 @@
 			var/value = params["value"]
 			prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = !!value
 			prefs.mark_dirty()
-			prefs.push_ui_modules(updates = list((key) = list(
+			prefs.push_ui_modules(updates = list((src.key) = list(
 				"hotkeyMode" = value,
 			)))
 			prefs.active?.set_macros()
