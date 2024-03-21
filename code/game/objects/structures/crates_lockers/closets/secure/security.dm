@@ -434,7 +434,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 //Custom NT Security Lockers, Only found at central command
 /obj/structure/closet/secure_closet/nanotrasen_security
-	name = "NanoTrasen security officer's locker"
+	name = "Nanotrasen security officer's locker"
 	icon = 'icons/obj/closet.dmi'
 	closet_appearance = /singleton/closet_appearance/secure_closet/sol
 	req_access = list(ACCESS_SECURITY_BRIG)
@@ -479,7 +479,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_commander
-	name = "NanoTrasen commander's locker"
+	name = "Nanotrasen commander's locker"
 	icon = 'icons/obj/closet.dmi'
 	closet_appearance = /singleton/closet_appearance/secure_closet/sol/two/dark
 	req_access = list(ACCESS_SECURITY_BRIG)
@@ -530,7 +530,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_warden
-	name = "NanoTrasen warden's locker"
+	name = "Nanotrasen warden's locker"
 	icon = 'icons/obj/closet.dmi'
 	closet_appearance = /singleton/closet_appearance/secure_closet/sol/two
 	req_access = list(ACCESS_SECURITY_BRIG)

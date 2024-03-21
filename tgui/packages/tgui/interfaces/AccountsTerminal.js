@@ -206,7 +206,7 @@ const ListView = (props, context) => {
   } = data;
 
   return (
-    <Section title="NanoTrasen Accounts" level={2}>
+    <Section title="Nanotrasen Accounts" level={2}>
       {accounts.length && (
         <LabeledList>
           {accounts.map(acc => (

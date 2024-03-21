@@ -1,5 +1,5 @@
 /obj/item/storage/fancy/cigarettes
-	description_fluff = "The Trans-Stellar Duty-Free Cigarette Company was created as an imprint of NanoTrasen.  They are the most boring, tasteless, dry cigarettes on the market, but due to how generic they are, they are still the most well-known and widespread cigarettes in the universe."
+	description_fluff = "The Trans-Stellar Duty-Free Cigarette Company was created as an imprint of Nanotrasen.  They are the most boring, tasteless, dry cigarettes on the market, but due to how generic they are, they are still the most well-known and widespread cigarettes in the universe."
 
 /obj/item/storage/fancy/cigarettes/dromedaryco
 	description_fluff = "DromedaryCo is one of the oldest companies that produces cigarettes.  Being a company that has changed hands and names several times through the years, their cigarettes are now very different from the original, and old-timers tend to complain about the quality of their current product.  While their profits have been dwindling over the past few years due to marketing schemes deemed 'unethical', they still remain on the forefront of the smokeable industry."
@@ -28,7 +28,7 @@
 	description_fluff = "Originally developed as an upscale alternative to tobacco-based cigarettes, Black Stars use a proprietary blend of chemically treated herbs. Although these cigarettes still contain nicotine, they produce a thicker, more richly scented smoke than those using tobacco. Their iconic black filters and papering distinguish them almost as much as the exotic way their cherries glow green."
 
 /obj/item/clothing/mask/smokable/cigarette/cigar
-	description_fluff = "While the label does say that this is a 'premium cigar', it really cannot match other types of cigars on the market.  Is it a quality cigarette?  Perhaps.  Was it hand-made with care?  No.  This is what differentiates between quality products that Gilthari puts out and NanoTrasen 'premium' cigars like this one."
+	description_fluff = "While the label does say that this is a 'premium cigar', it really cannot match other types of cigars on the market.  Is it a quality cigarette?  Perhaps.  Was it hand-made with care?  No.  This is what differentiates between quality products that Gilthari puts out and Nanotrasen 'premium' cigars like this one."
 
 /obj/item/clothing/mask/smokable/cigarette/cigar/cohiba
 	description_fluff = "Cohiba has been a popular cigar company for centuries.  They are still based out of Cuba and refuse to expand and therefore have a very limited quantity, making their cigars coveted all through known space.  Robusto is one of their most popular shapes of cigars."

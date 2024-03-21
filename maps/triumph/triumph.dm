@@ -53,7 +53,7 @@
 	dock_type		= "space"
 	boss_name		= "Central Command"
 	boss_short		= "CentCom"
-	company_name	= "NanoTrasen"
+	company_name	= "Nanotrasen"
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 

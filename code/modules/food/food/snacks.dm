@@ -4456,7 +4456,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/nt_muffin
 	name = "\improper NtMuffin"
-	desc = "A NanoTrasen sponsered biscuit with egg, cheese, and sausage."
+	desc = "A Nanotrasen sponsered biscuit with egg, cheese, and sausage."
 	icon_state = "nt_muffin"
 	nutriment_desc = list("biscuit" = 3)
 	nutriment_amt = 3
