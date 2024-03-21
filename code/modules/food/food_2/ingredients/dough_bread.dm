@@ -107,7 +107,7 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/cornbread
 	name = "cornbread"
-	cookstage_information = list(list(0, 1, "fresh cornbread"), list(20 SECONDS, 1, "toasted cornbread"), list(40 SECONDS, 0.8, "burnt corn toast"), list(100 SECONDS, 0.1, "pure carbon"))
+	cookstage_information = list(list(0, 1, "fresh cornbread"), list(60 SECONDS, 1, "fresh cornbread"), list(80 SECONDS, 0.8, "cornbread toast"), list(120 SECONDS, 0.1, "pure carbon"))
 	icon_state = "A loaf of cornbread."
 	icon_state = "cornbread"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/slice/cornbread
@@ -171,11 +171,13 @@
 /obj/item/reagent_containers/food/snacks/ingredient/frieddoughball
 	name = "fried doughball"
 	desc = "A fried ball of dough. What do you plan to do with this? It probably could've been a croquette or something, but not anymore."
+	cookstage_information = list(list(0, 1, "raw dough"), list(40 SECONDS, 1, "deep-fried dough"), list(50 SECONDS, 0.8, "toasted deep-fried dough"), list(100 SECONDS, 0.1, "a ball of burnt bread"))
 	icon_state = "frieddoughball"
 
 /obj/item/reagent_containers/food/snacks/ingredient/hushpuppy
 	name = "hush puppy"
 	desc = "A fried ball of corn dough. A versatile side dish."
+	cookstage_information = list(list(0, 1, "raw corndough"), list(40 SECONDS, 1, "deep-fried dough"), list(50 SECONDS, 0.8, "toasted deep-fried dough"), list(100 SECONDS, 0.1, "a ball of burnt bread"))
 	icon_state = "frieddoughball"
 
 /obj/item/reagent_containers/food/snacks/ingredient/bun

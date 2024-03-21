@@ -38,7 +38,7 @@
 				cooked_span = "yellow"
 			if(BURNT)
 				cooked_span = "tajaran_signlang"
-		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
+		. += "<span class='notice'>[icon2html(thing = examine_ingredient, target = user)][examine_ingredient.serving_amount] servings of [examine_ingredient.name], which looks </span><span class='[cooked_span]'>[examine_ingredient.cookstage2text()]</span><span class='notice'> and has been cooked for about [examine_ingredient.accumulated_time_cooked / 10] seconds.</span>"
 
 /obj/item/reagent_containers/glass/food_holder/update_icon()
 	var/mutable_appearance/filling_overlay = mutable_appearance(icon, "[icon_state]_filling_overlay")
@@ -127,9 +127,9 @@
 	return FALSE
 
 /obj/item/reagent_containers/glass/food_holder/proc/try_merge(obj/item/reagent_containers/food/snacks/ingredient/I, obj/item/reagent_containers/food/snacks/ingredient/compare_ingredient, mob/user)
-	if(!istype(I))
+	if(I.type != compare_ingredient.type)
 		return
-	if(((compare_ingredient.accumulated_time_cooked - INGREDIENT_COOKTIME_MAX_SEPERATION) < I.accumulated_time_cooked && I.accumulated_time_cooked < (compare_ingredient.accumulated_time_cooked + INGREDIENT_COOKTIME_MAX_SEPERATION)) 	&& (compare_ingredient.cookstage = I.cookstage))
+	if(I.check_merge(compare_ingredient, user))
 		if(user.attempt_insert_item_for_installation(I, src))
 			compare_ingredient.merge_ingredient(I)
 

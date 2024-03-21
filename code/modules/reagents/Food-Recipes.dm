@@ -110,7 +110,7 @@
 /datum/chemical_reaction/food/meatball/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/meatball(location)
+		new /obj/item/reagent_containers/food/snacks/ingredient/meatball(location)
 	return
 
 /datum/chemical_reaction/food/dough
@@ -135,7 +135,7 @@
 	inhibitors = list("egg" = 1, "beer" = 1) //To prevent it messing with batter recipes
 	result_amount = 1
 
-/datum/chemical_reaction/food/dough/on_reaction(datum/reagents/holder, created_volume)
+/datum/chemical_reaction/food/masa/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/corn(location)

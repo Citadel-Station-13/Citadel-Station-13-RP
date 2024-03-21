@@ -149,11 +149,11 @@
 				if("skillet")
 					filling_overlay.pixel_y -= 3
 					if(px > 0) //if px is positive
-						cooktop_overlay = mutable_appearance(icon, "[FH.cooker_overlay]_flip")
+						cooktop_overlay.icon_state = "[FH.cooker_overlay]_flip"
 				if("pan")
 					filling_overlay.pixel_y -= 2
 					if(px > 0) //if px is positive
-						cooktop_overlay = mutable_appearance(icon, "[FH.cooker_overlay]_flip")
+						cooktop_overlay.icon_state = "[FH.cooker_overlay]_flip"
 
 			if(fire_color)
 				fire_overlay = mutable_appearance(icon, "stove_flame")

@@ -200,6 +200,7 @@
 			cooked_info = "thorougly burnt."
 	info += "<span class='notice'>It looks </span><span class='[cooked_span]'>[cooked_info] \n</span>"
 	info += "<span class='notice'>It's been cooked for about [accumulated_time_cooked / 10] seconds. \n</span>" //do we want this on final? trait that lets you see exact cooking time and people without it see general? cooking goggles that let you analyze it??
+	info += "<span class ='notice'>There are [serving_amount] servings.</span>"
 	return info
 
 /obj/item/reagent_containers/food/snacks/ingredient/proc/cookstage2text()

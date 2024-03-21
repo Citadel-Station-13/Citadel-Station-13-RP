@@ -287,7 +287,7 @@
 /datum/cooking_recipe/enchiladas
 	required_method = METHOD_OVEN
 	fruit = list("chili" = 2, "corn" = 1)
-	items = list(/obj/item/reagent_containers/food/snacks/cutlet)
+	items = list(/obj/item/reagent_containers/food/snacks/ingredient/cutlet)
 	result = /obj/item/reagent_containers/food/snacks/enchiladas
 
 /datum/cooking_recipe/monkeysdelight
@@ -381,10 +381,9 @@
 	fruit = list("tomato" = 2, "eggplant" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat = 2,
-		/obj/item/reagent_containers/food/snacks/cutlet = 2
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/lasagna
-	
 
 /datum/cooking_recipe/honeybun
 	required_method = METHOD_OVEN
@@ -398,26 +397,16 @@
 	required_method = METHOD_OVEN
 	fruit = list("chili" = 2)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/cutlet,
-		/obj/item/reagent_containers/food/snacks/tortilla
+		/obj/item/reagent_containers/food/snacks/ingredient/cutlet,
+		/obj/item/reagent_containers/food/snacks/ingredient/tortilla
 	)
 	result = /obj/item/reagent_containers/food/snacks/enchiladas
-
-//Bacon
-/datum/cooking_recipe/bacon_oven
-	required_method = METHOD_OVEN
-	items = list(
-		/obj/item/reagent_containers/food/snacks/rawbacon = 6,
-		/obj/item/reagent_containers/food/snacks/spreads
-	)
-	result = /obj/item/reagent_containers/food/snacks/bacon/oven
-	result_quantity = 6
 
 /datum/cooking_recipe/meat_pocket
 	required_method = METHOD_OVEN
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat,
-		/obj/item/reagent_containers/food/snacks/meatball,
+		/obj/item/reagent_containers/food/snacks/ingredient/meatball,
 		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
 	)
 	result = /obj/item/reagent_containers/food/snacks/meat_pocket
@@ -429,7 +418,7 @@
 	items = list(
 		/obj/item/reagent_containers/food/snacks/ingredient/transformable/dough/flat,
 		/obj/item/reagent_containers/food/snacks/ingredient/cheesewedge,
-		/obj/item/reagent_containers/food/snacks/bacon = 4
+		/obj/item/reagent_containers/food/snacks/ingredient/bacon = 4
 	)
 	result = /obj/item/reagent_containers/food/snacks/bacon_flatbread
 

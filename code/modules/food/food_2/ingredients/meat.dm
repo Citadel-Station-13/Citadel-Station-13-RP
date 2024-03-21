@@ -150,18 +150,10 @@
 	bitesize = 2
 	name_on_cook = "meatball"
 
-/obj/item/reagent_containers/food/snacks/ingredient/cutlet/on_cooked(reached_stage, cook_method)
+/obj/item/reagent_containers/food/snacks/ingredient/meatball/on_cooked(reached_stage, cook_method)
 	if(reached_stage == COOKED)
 		icon_state = "meatball"
 		reagents.add_reagent("protein", 2)
-
-/obj/item/reagent_containers/food/snacks/ingredient/hotdog
-	name = "raw hotdog"
-	desc = "Unrelated to dogs, maybe."
-	cookstage_information = list(list(0, 0.5, "raw meat and sausage casing"), list(30 SECONDS, 1.2, "hotdog"), list(45 SECONDS, 0.9, "rubbery hotdog"), list(60 SECONDS, 0.1, "squishy, ovecooked sausage casing and charred meat"))
-	icon_state = "hotdog"
-	bitesize = 2
-	name_on_cook = "hotdog"
 
 /obj/item/reagent_containers/food/snacks/ingredient/sausage // Buff 6 >> 9
 	name = "sausage"

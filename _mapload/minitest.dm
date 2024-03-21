@@ -2,4 +2,4 @@
 	#error Duplicate FORCE_MAP, what are you doing!?
 #endif
 
-//#define FORCE_MAP "minitest"
+#define FORCE_MAP "minitest"

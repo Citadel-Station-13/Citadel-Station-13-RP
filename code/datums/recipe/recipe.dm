@@ -336,3 +336,4 @@ GLOBAL_LIST_EMPTY(cooking_recipes)
 	else //okay, let's select the most complicated recipe
 		tim_sort(possible_recipes, GLOBAL_PROC_REF(cmp_recipe_complexity_dsc))
 		return possible_recipes[1]
+
