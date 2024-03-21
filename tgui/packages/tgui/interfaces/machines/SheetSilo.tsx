@@ -20,7 +20,7 @@ export const SheetSilo = (props, context) => {
   return (
     <Window width={350} height={500} title="Materials Silo">
       <Window.Content>
-        <Section fill title="Storage">
+        <Section fill title="Storage" scrollable>
           <Stack vertical fill>
             {Object.entries(data.stored).map(([k, v]) => (
               <Stack.Item key={`${k}-${dropAmounts[k]}`}>
