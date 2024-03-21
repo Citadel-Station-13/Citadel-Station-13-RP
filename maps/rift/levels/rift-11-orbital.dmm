@@ -2102,7 +2102,7 @@
 "gH" = (
 /obj/machinery/account_database{
 	dir = 1;
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
