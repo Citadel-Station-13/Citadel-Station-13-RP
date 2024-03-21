@@ -160,7 +160,7 @@
 	unidentified group of pirates. Sometime earlier in the month these pirates descended upon the poor citizens of Mescalero and unleashed an overwhelming orgy of violence.\
 	Seemingly intent on wholesale slaughter, the pirates moved from town to town, farmstead to farmstead, and killed all in their path.\
 	<br><br>\
-	Salvation for the survivors arrived on the night of 9/6/2564 when a NanoTrasen Exploratory Fleet passing through the system performed a routine scouting run on the planet. \
+	Salvation for the survivors arrived on the night of 9/6/2564 when a Nanotrasen Exploratory Fleet passing through the system performed a routine scouting run on the planet. \
 	An NT Official who asked to remain anonymous reported that scouts from the NSV Triumph were the first on scene, where they engaged in a mighty firefight with the pirates. \
 	After destroying a vital command post, the scouting party withdrew and Emergency Response Teams were dispatched to remove the remaining pirate presence. Survivors rescued \
 	by the ERTs numbered in the hundreds, with the majority of the planet's inhabitants having fallen victim to the merciless onslaught. Most of the survivors are currently \
@@ -339,7 +339,7 @@
 
 /datum/lore/codex/page/pirates3
 	name = "Pirate Raids Lock Down the Temhoser Gate, Kill Prominent Naramadi Matriach! - 11/7/2566"
-	data = "With the frontier colonies being more spread out as ever, Piracy is growing rampart in those territories. While Megacorporations such as NanoTrasen, \
+	data = "With the frontier colonies being more spread out as ever, Piracy is growing rampart in those territories. While Megacorporations such as Nanotrasen, \
 	Hepastheus and even Necropolis Industries might protect certain trade routes neccessary for their continued prosperity, it was always assumed that \
 	the three major Galactic powers, that being the Orion Confederacy, Moghes Hegemony and Vikara Combine, will protect that major hyperspace routes from dangers. \
 	That, however, has been proven not to be the case. \

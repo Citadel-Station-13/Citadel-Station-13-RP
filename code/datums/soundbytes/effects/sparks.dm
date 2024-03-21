@@ -1,6 +1,6 @@
 /datum/soundbyte/grouped/sparks
 	name = "Explosion"
-	alias = SFX_ALIAS_EXPLOSION
+	alias = SFX_ALIAS_SPARKS
 	is_sfx = TRUE
 	path = list(
 		'sound/soundbytes/effects/sparks/sparks1.ogg',

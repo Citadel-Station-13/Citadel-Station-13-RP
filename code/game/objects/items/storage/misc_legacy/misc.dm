@@ -15,6 +15,10 @@
 	. = ..()
 	update_icon()
 
+/obj/item/storage/box/donut/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
+
 /obj/item/storage/box/donut/update_icon()
 	cut_overlays()
 	var/i = 0
@@ -41,6 +45,10 @@
 /obj/item/storage/box/wormcan/Initialize(mapload)
 	. = ..()
 	update_icon()
+
+/obj/item/storage/box/wormcan/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/box/wormcan/update_icon(var/itemremoved = 0)
 	if (contents.len == 0)
@@ -112,6 +120,10 @@
 		"Heart" = image(icon = src.icon, icon_state = "paperbag_Heart"),
 		"SmileyFace" = image(icon = src.icon, icon_state = "paperbag_SmileyFace")
 		))
+
+/obj/item/storage/box/papersack/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/box/papersack/update_icon_state()
 	. = ..()

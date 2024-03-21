@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	///Holder to see if it's a syndicate encrypted radio
 	var/syndie = FALSE
 	///Holder to see if it's a CentCom encrypted radio
-	var/centComm = FALSE
+	var/centcom = FALSE
 	slot_flags = SLOT_BELT
 	throw_speed = 2
 	throw_range = 9
@@ -588,7 +588,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
 	if(freq in CENT_FREQS)
-		if(!(src.centComm))//Checks to see if it's allowed on that frequency, based on the encryption keys
+		if(!(src.centcom))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
 	if (!on)
 		return -1
@@ -920,4 +920,4 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 */
 /obj/item/bluespace_radio/commerce
 	name = "commercial subspace radio"
-	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or NanoTrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."
+	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or Nanotrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."

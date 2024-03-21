@@ -2,7 +2,6 @@
 /obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
-	icon = 'icons/obj/objects.dmi'
 	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1
@@ -75,10 +74,6 @@
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
-	// ok this was a bad idea
-	// todo: refactor holders entirely, we shouldn't be cloning mob state???
-	// icon = M.icon	// legacy
-	icon_state = M.icon_state	// legacy
 	add_overlay(MA)
 	name = M.name
 	desc = M.desc

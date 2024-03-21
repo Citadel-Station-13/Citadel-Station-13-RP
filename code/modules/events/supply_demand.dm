@@ -144,7 +144,7 @@
 		MS.send_rc_message(to_department ? to_department : "All Departments", my_department, message, "", "", 2)
 
 //
-//  Supply Demand Datum - Keeps track of what centcomm has demanded
+//  Supply Demand Datum - Keeps track of what centcom has demanded
 //
 
 /datum/supply_demand_order

@@ -1791,7 +1791,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "pG" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "pI" = (

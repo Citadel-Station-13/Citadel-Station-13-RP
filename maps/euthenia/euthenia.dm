@@ -1,6 +1,10 @@
 /datum/map/station/euthenia
 	id = "euthenia"
 	name = "World - Euthenia"
+
+	// todo: remove after dev is done
+	allow_random_draw = FALSE
+
 	levels = list(
 		/datum/map_level/euthenia/deck/four,
 		/datum/map_level/euthenia/deck/three,
@@ -99,7 +103,7 @@
 	dock_type		= "space"
 	boss_name		= "Central Command"
 	boss_short		= "CentCom"
-	company_name	= "NanoTrasen"
+	company_name	= "Nanotrasen"
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 

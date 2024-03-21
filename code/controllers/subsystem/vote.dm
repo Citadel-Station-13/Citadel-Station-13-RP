@@ -22,6 +22,22 @@ SUBSYSTEM_DEF(vote)
 	var/list/voting = list()
 	/// Anonymous votes
 	var/secret = FALSE
+	/// Ghost_weight on votes in %
+	var/ghost_weight_percent = 25
+
+
+/datum/config_entry/number/ghost_weight
+	default = 25
+
+/datum/config_entry/flag/transfer_vote_obfuscation
+	default = FALSE
+
+/datum/config_entry/string/default_on_transfer_tie
+	default = "Extend the Shift"
+
+/datum/controller/subsystem/vote/Initialize(start_timeofday)
+	. = ..()
+	ghost_weight_percent = CONFIG_GET(number/ghost_weight)
 
 /datum/controller/subsystem/vote/fire(resumed)
 	if(mode)
@@ -66,6 +82,8 @@ SUBSYSTEM_DEF(vote)
 	choices.Cut()
 	votes_by_choice.Cut()
 	current_votes.Cut()
+	secret = FALSE
+	ghost_weight_percent = CONFIG_GET(number/ghost_weight)
 
 /datum/controller/subsystem/vote/proc/get_result() // Get the highest number of votes
 	var/greatest_votes = 0
@@ -89,16 +107,18 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/announce_result()
 	var/list/winners = get_result()
 	var/text
+	if(mode == VOTE_CREW_TRANSFER)
+		switch(LAZYLEN(winners))
+			if(0)
+				. = "Initiate Crew Transfer"
+			if(2)
+				. = CONFIG_GET(string/default_on_transfer_tie)
 	if(LAZYLEN(winners) > 0)
 		. = pick(winners)
-
-		if(SSticker.hide_mode == 0) // Announce Extended gamemode, but not other gamemodes
-			text += "<b>Vote Result: [.]</b>"
-		else
-			text += "<b>The vote has ended.</b>"
-
+		text += "<b>Vote Result: [.]</b>"
 	else
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
+
 	for(var/option in choices)
 		text += SPAN_NOTICE("\n[option] - [votes_by_choice[option] || 0]")
 	log_vote(text)
@@ -125,19 +145,22 @@ SUBSYSTEM_DEF(vote)
 		log_game("Rebooting due to restart vote")
 		world.Reboot()
 
-/datum/controller/subsystem/vote/proc/submit_vote(ckey, newVote)
-
+/datum/controller/subsystem/vote/proc/submit_vote(user, ckey, newVote)
+	//if they are a observer or a newplayer(in lobby) use ghost weight, otherwise use 1
+	var/weight = (isobserver(user) || isnewplayer(user)) ? ghost_weight_percent / 100 : 1
 	if(mode)
-		if(config_legacy.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
+		if(weight == 0)
 			return
 		if(newVote)
 			if(current_votes[ckey])
-				votes_by_choice[current_votes[ckey]]--
-			current_votes[ckey] = choices[newVote]
-			votes_by_choice[choices[newVote]]++
+				votes_by_choice[current_votes[ckey][2]] -= current_votes[ckey][1]
+			current_votes[ckey] = list(weight, choices[newVote])
+			votes_by_choice[current_votes[ckey][2]] += current_votes[ckey][1]
 		else
-			votes_by_choice[current_votes[ckey]]--
+			votes_by_choice[current_votes[ckey][2]] -= current_votes[ckey][1]
 			current_votes[ckey] = null
+
+
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, automatic = FALSE, time = config_legacy.vote_period)
 	if(!mode)
@@ -146,7 +169,7 @@ SUBSYSTEM_DEF(vote)
 			if(next_allowed_time > world.time)
 				return 0
 
-		reset()
+		//reset()
 
 		switch(vote_type)
 			if(VOTE_RESTART)
@@ -158,6 +181,7 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Initiate Crew Transfer", "Extend the Shift")
 				votes_by_choice["Initiate Crew Transfer"] = 0
 				votes_by_choice["Extend the Shift"] = 0
+				secret = CONFIG_GET(flag/transfer_vote_obfuscation)
 			if(VOTE_CUSTOM)
 				question = sanitizeSafe(input(usr, "What is the vote for?") as text|null)
 				if(!question)
@@ -180,7 +204,8 @@ SUBSYSTEM_DEF(vote)
 		var/text = "[capitalize(mode)] vote started by [initiator]."
 		if(mode == VOTE_CUSTOM)
 			text += "\n[question]"
-
+		if(ghost_weight_percent <= 0)
+			text += SPAN_NOTICE("\nGhosts are excluded from the vote.")
 		log_vote(text)
 
 		to_chat(world, "<span class='infoplain'><font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>")
@@ -212,7 +237,7 @@ SUBSYSTEM_DEF(vote)
 	// Tracks who is voting
 	if(!(user.client?.ckey in voting))
 		voting += user.client?.ckey
-		current_votes[user.client?.ckey] = null
+		//current_votes[user.client?.ckey] = null
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Vote")
@@ -222,12 +247,14 @@ SUBSYSTEM_DEF(vote)
 	var/list/data = list(
 		"choices" = list(),
 		"question" = question,
-		"selected_choice" = LAZYACCESS(current_votes,user.key) ? LAZYACCESS(current_votes,user.key) : "",
+		"selected_choice" = LAZYACCESS(current_votes,user.key) ? LAZYACCESS(current_votes,user.key)[2] : "",
 		"time_remaining" = time_remaining,
 		"admin" = check_rights_for(user.client, R_ADMIN),
 
 		"vote_happening" = !!choices.len,
 		"secret" = secret,
+		"ghost_weight" = ghost_weight_percent,
+		"ghost" = isobserver(user) || isnewplayer(user),
 	)
 
 	for(var/key in choices)
@@ -265,10 +292,16 @@ SUBSYSTEM_DEF(vote)
 				initiate_vote(VOTE_CUSTOM, usr.key)
 		if("vote")
 			//current_votes[usr.client.ckey] = round(text2num(params["index"]))
-			submit_vote(usr.key,params["index"])
+			submit_vote(usr, usr.key,params["index"])
 		if("unvote")
-			submit_vote(usr.key, null)
+			submit_vote(usr, usr.key, null)
 		if("hide")
-			secret = !secret
-			log_and_message_admins("[usr] made the individual vote numbers [(secret ? "invisibile" : "visible")].")
+			if(admin)
+				secret = !secret
+				log_and_message_admins("[usr] made the individual vote numbers [(secret ? "invisibile" : "visible")].")
+		if("ghost_weight")
+			if(admin)
+				ghost_weight_percent = params["ghost_weight"] ? max(0, text2num(params["ghost_weight"])) : ghost_weight_percent
+				log_and_message_admins("[usr] changed the ghost vote weight to [ghost_weight_percent].")
+
 	return TRUE

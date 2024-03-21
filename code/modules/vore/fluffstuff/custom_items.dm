@@ -951,7 +951,7 @@
 
 	spk.set_up(5, 0, M)
 	spk.attach(M)
-	playsound(T, "sparks", 50, 1)
+	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
 /obj/item/perfect_tele/proc/phase_in(var/mob/M,var/turf/T)
@@ -1016,7 +1016,7 @@
 // A single-beacon variant for use by miners (or whatever)
 /obj/item/perfect_tele/one_beacon
 	name = "mini-translocator"
-	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally. Legal for use in the pursuit of NanoTrasen interests, namely mining and exploration."
+	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally. Legal for use in the pursuit of Nanotrasen interests, namely mining and exploration."
 	icon_state = "minitrans"
 	beacons_left = 1 //Just one
 	cell_type = /obj/item/cell/device
@@ -1108,7 +1108,7 @@
 
 /obj/item/card/id/fluff/xennith
 	name = "\improper Amy Lessen's Central Command ID (Xenobiology Director)"
-	desc = "This ID card identifies Dr. Amelie Lessen as the founder and director of the NanoTrasen Xenobiology Research Department, circa 2553."
+	desc = "This ID card identifies Dr. Amelie Lessen as the founder and director of the Nanotrasen Xenobiology Research Department, circa 2553."
 	icon_state = "centcom"
 	registered_name = "Amy Lessen"
 	assignment = "Xenobiology Director"
