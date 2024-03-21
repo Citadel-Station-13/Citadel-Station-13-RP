@@ -172,10 +172,10 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 
 /datum/robolimb/nanotrasen
-	company = "NanoTrasen"
-	desc = "A simple but efficient robotic limb, created by NanoTrasen."
+	company = "Nanotrasen"
+	desc = "A simple but efficient robotic limb, created by Nanotrasen."
 	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_main.dmi'
-	species_alternates = list(SPECIES_TAJ = "NanoTrasen - Tajaran", SPECIES_UNATHI = "NanoTrasen - Unathi")
+	species_alternates = list(SPECIES_TAJ = "Nanotrasen - Tajaran", SPECIES_UNATHI = "Nanotrasen - Unathi")
 
 /datum/robolimb/mpc
 	company = "Moghes Prosthetics Company"
@@ -183,20 +183,20 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/mpc/mpc.dmi'
 
 /datum/robolimb/nanotrasen_tajaran
-	company = "NanoTrasen - Tajaran"
+	company = "Nanotrasen - Tajaran"
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_SKRELL, SPECIES_ZADDAT)
-	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
+	species_alternates = list(SPECIES_HUMAN = "Nanotrasen")
 	suggested_species = SPECIES_TAJ
-	desc = "A simple but efficient robotic limb, created by NanoTrasen."
+	desc = "A simple but efficient robotic limb, created by Nanotrasen."
 	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_tajaran.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/nanotrasen_unathi
-	company = "NanoTrasen - Unathi"
+	company = "Nanotrasen - Unathi"
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
-	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
+	species_alternates = list(SPECIES_HUMAN = "Nanotrasen")
 	suggested_species = SPECIES_UNATHI
-	desc = "A simple but efficient robotic limb, created by NanoTrasen."
+	desc = "A simple but efficient robotic limb, created by Nanotrasen."
 	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_unathi.dmi'
 	unavailable_to_build = TRUE
 
@@ -233,7 +233,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
 	suggested_species = SPECIES_TESHARI
 	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
-	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
+	species_alternates = list(SPECIES_HUMAN = "Nanotrasen")
 	unavailable_to_build = TRUE
 
 /datum/robolimb/gestaltframe
@@ -582,7 +582,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/zeng_hu)
 
 /obj/item/disk/limb/nanotrasen
-	company = "NanoTrasen"
+	company = "Nanotrasen"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 
 

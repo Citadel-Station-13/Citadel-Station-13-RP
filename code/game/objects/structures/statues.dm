@@ -245,7 +245,7 @@
 //////////////////Memorial/////////////////
 /obj/structure/memorial
 	name = "Memorial Wall"
-	desc = "An obsidian memorial wall listing the names of NanoTrasen employees who have fallen in the pursuit of the Company's goals - both scientific and political."
+	desc = "An obsidian memorial wall listing the names of Nanotrasen employees who have fallen in the pursuit of the Company's goals - both scientific and political."
 	icon = 'icons/obj/structures_64x.dmi'
 	icon_state = "memorial"
 
@@ -261,8 +261,8 @@
 
 /obj/structure/memorial/small/left
 	icon_state = "memorial_l"
-	description_fluff = "This slab has a NanoTrasen logo emblazoned across the top. Below the logo, an inscription has been etched with painstaking precision: 'This memorial stands as a testament to the bravery and ingenuity of the human spirit. NanoTrasen takes great pride in the exemplary service of its employees, and no contributors are more valued than those who made the ultimate sacrifice. Regardless of how far into the stars we reach, we must never forget whose hands have raised us there. Aeternum in Memoria'"
+	description_fluff = "This slab has a Nanotrasen logo emblazoned across the top. Below the logo, an inscription has been etched with painstaking precision: 'This memorial stands as a testament to the bravery and ingenuity of the human spirit. Nanotrasen takes great pride in the exemplary service of its employees, and no contributors are more valued than those who made the ultimate sacrifice. Regardless of how far into the stars we reach, we must never forget whose hands have raised us there. Aeternum in Memoria'"
 
 /obj/structure/memorial/small/right
 	icon_state = "memorial_r"
-	description_fluff = "This slab is marked with a list of names, over which is engraved 'Honor to the Fallen'. The names that appear on this slab are the local NanoTrasen employees who have died in the line of duty. The list is too long to fit on the slab normally - so the stone utilizes a nanotech etch/fill cycle to 'scroll' names from one slot, down to the next. The soft rumbling of stone etching away and filling in is referred to as the 'March of Progress'. Scrolling past on the list are several familiar names: '...Dean Fitzgerald, Demetrius Hill...'"
+	description_fluff = "This slab is marked with a list of names, over which is engraved 'Honor to the Fallen'. The names that appear on this slab are the local Nanotrasen employees who have died in the line of duty. The list is too long to fit on the slab normally - so the stone utilizes a nanotech etch/fill cycle to 'scroll' names from one slot, down to the next. The soft rumbling of stone etching away and filling in is referred to as the 'March of Progress'. Scrolling past on the list are several familiar names: '...Dean Fitzgerald, Demetrius Hill...'"

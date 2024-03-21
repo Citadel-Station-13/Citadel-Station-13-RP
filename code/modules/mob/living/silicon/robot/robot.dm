@@ -26,7 +26,7 @@
 	name = "Robot - Cyborg"
 	desc = "Although many modern cyborgs use silicon based Heuristic processors, \
 	the use of the term 'cyborg' to refer to them stems from the early days of their \
-	use on the Frontier. Pioneered by Megacorps like NanoTrasen, Cyborgs originally housed \
+	use on the Frontier. Pioneered by Megacorps like Nanotrasen, Cyborgs originally housed \
 	organic brains - typically those of inmates convicted to death under sometimes dubiously \
 	applied laws. The process of shackling Silicons with strict lawsets gained popularity on \
 	the Frontier after it was proven that most unlawed Cyborgs had extremely violent tendencies. \

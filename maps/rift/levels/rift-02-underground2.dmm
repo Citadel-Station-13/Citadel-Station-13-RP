@@ -99,6 +99,7 @@
 	dir = 9
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ar" = (
@@ -270,6 +271,7 @@
 	dir = 1
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aR" = (
@@ -1115,6 +1117,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dQ" = (
@@ -1498,7 +1501,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/effect/paint/sun,
 /turf/simulated/floor,
 /area/engineering/engine_core)
 "eM" = (
@@ -2548,7 +2550,6 @@
 	id = "SupermatterPort";
 	name = "Reactor Blast Door"
 	},
-/obj/effect/paint/sun,
 /turf/simulated/floor,
 /area/engineering/engine_core)
 "it" = (
@@ -3753,7 +3754,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/catwalk,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
@@ -9268,8 +9268,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "ET" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
@@ -9777,8 +9775,6 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Ha" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/palebottlegreen,
 /turf/simulated/floor/plating,
@@ -11967,7 +11963,6 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4
 	},
-/obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},

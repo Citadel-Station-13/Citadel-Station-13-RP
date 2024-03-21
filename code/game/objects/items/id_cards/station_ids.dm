@@ -228,7 +228,7 @@
 
 /obj/item/card/id/synthetic
 	name = "\improper Synthetic ID"
-	desc = "Access module for NanoTrasen Synthetics"
+	desc = "Access module for Nanotrasen Synthetics"
 	icon_state = "id-robot"
 	item_state = "idgreen"
 	assignment = "Synthetic"
@@ -372,6 +372,7 @@
 	var/sentence = 0 //Sentance in minutes
 	var/crime = "\[redacted\]"
 
+	job_access_type = null
 	access = list(ACCESS_SECURITY_GENPOP_ENTER)
 
 /obj/item/card/id/prisoner/New()

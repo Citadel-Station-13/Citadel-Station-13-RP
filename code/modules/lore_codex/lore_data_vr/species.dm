@@ -340,7 +340,7 @@
 	deployment and even supervision of other classes of drone. The dividing line between [quick_link("A Class", "A")] and B-class drones becomes apparent when they are taken \
 	out of their area of specialization, with the B-class drones swiftly becoming useless. They incur a hefty fee for the production of the initial \
 	codeline, as their emergent potential is far greater, and a smaller but still substantial fee for the production of forks. The market for B-class \
-	drones is a battleground between Ward-Takahashi and NanoTrasen, with other firms usually producing B-classes for in-house needs."
+	drones is a battleground between Ward-Takahashi and Nanotrasen, with other firms usually producing B-classes for in-house needs."
 
 /datum/lore/codex/page/class_a/add_content()
 	name = "A Class"
@@ -351,7 +351,7 @@
 	drones. The cost of initializing an A-class drone is absolutely massive, as they will be monitored by [quick_link("EIO")] forever. The auditing cost of an A-class drone \
 	codeline is even more staggering, making development and deployment of AGI limited to research, highly difficult and high-throughput operations like habitat \
 	overwatch, and a few risk-taking firms banking on the associated fees dropping. There is not a proper market for A-class drones, although an appreciable \
-	fraction of them are made by [quick_link("NanoTrasen")], with the rest generally being university research projects."
+	fraction of them are made by [quick_link("Nanotrasen")], with the rest generally being university research projects."
 
 /datum/lore/codex/page/class_aa
 	name = "AA Class"

@@ -82,7 +82,7 @@
 
 /obj/item/storage/lockbox/medal
 	name = "lockbox of medals"
-	desc = "A lockbox filled with commemorative medals, it has the NanoTrasen logo stamped on it."
+	desc = "A lockbox filled with commemorative medals, it has the Nanotrasen logo stamped on it."
 	req_access = list(ACCESS_COMMAND_BRIDGE)
 	max_items = 7
 	starts_with = list(

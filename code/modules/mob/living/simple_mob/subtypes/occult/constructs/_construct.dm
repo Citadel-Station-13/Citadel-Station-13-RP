@@ -5,7 +5,7 @@
 /datum/category_item/catalogue/fauna/construct
 	name = "Constructs"
 	desc = "Although much of the information behind these occult constructs \
-	is presumably still classified, NanoTrasen's general briefings have confirmed \
+	is presumably still classified, Nanotrasen's general briefings have confirmed \
 	several key facts. Constructs are animate obsidian statues imbued with strong \
 	paracausal energies. They are considered extremely dangerous, and evidence of \
 	constructs necessitates immediate notification of the PMD."
