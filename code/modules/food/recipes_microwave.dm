@@ -449,7 +449,7 @@
 		/obj/item/reagent_containers/food/snacks/boiledegg
 	)
 	result = /obj/item/reagent_containers/food/snacks/superbiteburger
-#warn todo boil eggs? stove recipe.
+
 /datum/cooking_recipe/candiedapple
 	fruit = list("apple" = 1)
 	reagents = list("water" = 5, "sugar" = 5)

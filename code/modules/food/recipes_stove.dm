@@ -7,7 +7,7 @@
 	result = /obj/item/reagent_containers/food/snacks/stuffing
 
 
-#warn todo improve spaghetti?
+
 /datum/cooking_recipe/boiledspaghetti
 	required_method = METHOD_STOVE
 	reagents = list("water" = 30)

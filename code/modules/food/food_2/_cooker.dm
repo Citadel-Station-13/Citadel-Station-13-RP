@@ -26,7 +26,6 @@
 	var/food_scale_amount = 0.5 //this is a variable, so you can do funny with it!
 
 
-#warn todo: show ingred
 /obj/machinery/cooking/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("It currently contains [LAZYLEN(food_containers)] items:")
