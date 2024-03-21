@@ -377,6 +377,8 @@
 	qdel(query)
 
 	authoritatively_loaded_by_sql = TRUE
+	is_dirty = FALSE
+	update_static_data()
 
 	return TRUE
 
@@ -440,6 +442,8 @@
 
 	if(authoritatively_loaded_by_sql)
 		sql_state_desynced = TRUE
+	is_dirty = FALSE
+	update_static_data()
 
 	return TRUE
 

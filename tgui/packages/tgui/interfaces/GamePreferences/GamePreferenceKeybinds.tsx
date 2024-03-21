@@ -3,7 +3,7 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
-import { NoticeBox, Section, Stack } from "../../components";
+import { Section } from "../../components";
 
 export interface GamePreferenceKeybindMiddlware {
   readonly hotkeyMode: BooleanLike;
@@ -46,18 +46,8 @@ won't be able to access any regular Ctrl binds.<br>";
 
 export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps, context) => {
   return (
-    <Stack fill vertical>
-      <Stack.Item>
-        <NoticeBox>
-          Changes made on this page are applied to the game immediately,
-          but are not saved to storage until you press &apos;Save&apos;.
-        </NoticeBox>
-      </Stack.Item>
-      <Stack.Item grow={1}>
-        <Section fill>
-          Test
-        </Section>
-      </Stack.Item>
-    </Stack>
+    <Section fill>
+      Test
+    </Section>
   );
 };

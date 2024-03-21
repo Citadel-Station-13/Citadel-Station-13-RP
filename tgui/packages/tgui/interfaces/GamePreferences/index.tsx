@@ -11,7 +11,7 @@
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useComputedOnce, useLocalState } from "../../backend";
-import { Button, NoticeBox, Section, Stack, Tooltip } from "../../components";
+import { Button, Flex, Section, Stack, Tooltip } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindMiddlware, GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
@@ -98,7 +98,7 @@ export const GamePreferences = (props, context) => {
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
-            <GamePreferencesTabs />
+            <GamePreferenceHeader />
           </Stack.Item>
           <Stack.Item grow={1}>
             <GamePreferencesBody />
@@ -144,31 +144,31 @@ const GamePreferencesBody = (props, context) => {
   }
 
   return (
-    <Stack fill vertical>
-      <Stack.Item>
-        <NoticeBox>
-          Changes made on this page are applied to the game immediately,
-          but are not saved to storage until you press &apos;Save&apos;.
-        </NoticeBox>
-      </Stack.Item>
-      <Stack.Item grow={1}>
-        <Section fill scrollable>
-          {JSON.stringify(getModuleData(context, 'toggles'))}
-          {JSON.stringify(getModuleData(context, 'keybindings'))}
-          <Stack fill vertical overflowY="auto">
-            {categoryCache[activeCategory].map((subcat) => (
-              <Stack.Item key={subcat}>
-                <h1 style={{ "text-align": "center" }}>{subcat}</h1>
-                {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
-                  <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
-                    setValue={(val) => act('set', { key: entry.key, value: val })} />
-                ))}
-              </Stack.Item>
+    <Section fill scrollable>
+      {JSON.stringify(getModuleData(context, 'keybindings'))}
+      <Stack fill vertical overflowY="auto">
+        {categoryCache[activeCategory].map((subcat) => (
+          <Stack.Item key={subcat}>
+            <h1 style={{ "text-align": "center" }}>{subcat}</h1>
+            {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
+              <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
+                setValue={(val) => act('set', { key: entry.key, value: val })} />
             ))}
-          </Stack>
-        </Section>
-      </Stack.Item>
-    </Stack>
+          </Stack.Item>
+        ))}
+      </Stack>
+    </Section>
+  );
+};
+
+const GamePreferenceHeader = (props, context) => {
+  return (
+    <Flex direction="column">
+      <Flex.Item>
+        <GamePreferencesTabs />
+      </Flex.Item>
+      <Flex.Item />
+    </Flex>
   );
 };
 
@@ -183,21 +183,29 @@ const GamePreferenceFooter = (props: {
         <Stack.Item grow={1}>
           <Tooltip content="Performs a full save of your preferences.">
             <Button.Confirm fluid
-              disabled={!data.dirty} onClick={() => act('save')}
+              textAlign="center"
+              color="transparent"
+              bold={!!data.dirty}
+              onClick={() => act('save')}
               content="Save" />
           </Tooltip>
         </Stack.Item>
         <Stack.Item grow={1}>
           <Tooltip content="Reloads your preferences from disk, discarding all current changes.">
             <Button.Confirm fluid
-              disabled={data.dirty} onClick={() => act('discard')}
+              textAlign="center"
+              color="transparent"
+              bold={!!data.dirty}
+              onClick={() => act('discard')}
               content="Discard" />
           </Tooltip>
         </Stack.Item>
         <Stack.Item grow={1}>
           <Tooltip content="Resets the current page to default.">
             <Button.Confirm fluid
-              disabled={!data.dirty} onClick={() =>
+              textAlign="center"
+              color="transparent"
+              onClick={() =>
                 act('reset', props.activeCategory? { category: props.activeCategory } : {}, props.activeMiddleware)}
               content="Reset to Default" />
           </Tooltip>

@@ -33,6 +33,7 @@
 			prefs.push_ui_modules(updates = list((src.key) = list(
 				"states" = prefs.toggles_by_key,
 			)))
+			prefs.mark_dirty()
 			return TRUE
 
 /datum/game_preference_middleware/toggles/ui_static_data(mob/user, datum/tgui/ui)

@@ -117,11 +117,10 @@ export const backendReducer = (state = initialState, action) => {
     };
     for (let id of Object.keys(payload)) {
       const data = payload[id];
-      const merged = {
-        ...modules[data],
+      modules[id] = {
+        ...modules[id],
         ...data,
       };
-      modules[id] = merged;
     }
     // Return new state
     return {
@@ -327,6 +326,7 @@ type BackendContext = {
   },
   modules: Record<string, any>,
   shared: Record<string, any>,
+  computeCache: Record<string, any>,
   suspending: boolean,
   suspended: boolean,
 };
@@ -415,9 +415,14 @@ export const useComputedOnce = <T>(
 ): T => {
   const { store } = context;
   const state = selectBackend(store.getState());
-  const sharedStates = state.shared ?? {};
-  const sharedState = (key in sharedStates)? sharedStates[key] : valueClosure();
-  return sharedState;
+  if (state.computeCache?.[key]) {
+    return state.computeCache[key];
+  }
+  state.computeCache = {
+    ...state.computeCache,
+  };
+  state.computeCache[key] = valueClosure();
+  return state.computeCache[key];
 };
 
 /**

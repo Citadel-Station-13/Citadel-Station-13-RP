@@ -4,7 +4,7 @@
  */
 import { BooleanLike } from "common/react";
 import { useComputedOnce } from "../../backend";
-import { Button, NoticeBox, Section, Stack, Table } from "../../components";
+import { Button, Section, Stack, Table } from "../../components";
 
 export interface GamePreferenceTogglesMiddleware {
   readonly toggles: Record<string, GamePreferenceToggleSchema>;
@@ -41,38 +41,30 @@ const collectPreferenceToggles = (toggles: Record<string, GamePreferenceToggleSc
 export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProps, context) => {
   const collected: Record<string, string[]> = useComputedOnce(context, 'gamePreferenceToggleCollect', () => collectPreferenceToggles(props.toggles));
   return (
-    <Stack fill vertical>
-      <Stack.Item>
-        <NoticeBox>
-          Changes made on this page are applied to the game immediately,
-          but are not saved to storage until you press &apos;Save&apos;.
-        </NoticeBox>
-      </Stack.Item>
-      <Stack.Item grow={1}>
-        <Section fill scrollable>
-          <Stack vertical>
-            {Object.entries(collected).sort(
-              ([c1, k1], [c2, k2]) => (
-                c1.localeCompare(c2)
-              )
-            ).map(([category, keys]) => (
-              <Stack.Item key={category}>
-                <h1 style={{ "text-align": "center" }}>{category}</h1>
-                <hr />
-                <Table>
-                  {keys.map((key) => {
-                    const toggle = props.toggles[key];
-                    return (
-                      <Table.Row key={toggle.key}>
-                        <Table.Cell width="50%">
-                          <b>{toggle.name}</b>
-                        </Table.Cell>
-                        <Table.Cell>
-                          <Button.Checkbox checked={props.states[toggle.key]}
-                            onClick={() => props.toggleAct(toggle.key, !props.states[toggle.key])}
-                            content={props.states[toggle.key]? toggle.enabled : toggle.disabled}
-                            color="transparent" fluid />
-                          {/* <Stack fill>
+    <Section fill scrollable>
+      <Stack vertical>
+        {Object.entries(collected).sort(
+          ([c1, k1], [c2, k2]) => (
+            c1.localeCompare(c2)
+          )
+        ).map(([category, keys]) => (
+          <Stack.Item key={category}>
+            <h1 style={{ "text-align": "center" }}>{category}</h1>
+            <hr />
+            <Table>
+              {keys.map((key) => {
+                const toggle = props.toggles[key];
+                return (
+                  <Table.Row key={toggle.key}>
+                    <Table.Cell width="50%">
+                      <b>{toggle.name}</b>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button.Checkbox checked={props.states[toggle.key]}
+                        onClick={() => props.toggleAct(toggle.key, !props.states[toggle.key])}
+                        content={props.states[toggle.key]? toggle.enabled : toggle.disabled}
+                        color="transparent" fluid />
+                      {/* <Stack fill>
                         <Stack.Item grow={1}>
                           <Button selected={props.states[toggle.key]} onClick={() => props.toggleAct(toggle.key, true)}
                             content={toggle.enabled} color="transparent" fluid />
@@ -83,16 +75,14 @@ export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProp
                             content={toggle.disabled} color="transparent" fluid />
                         </Stack.Item>
                       </Stack> */}
-                        </Table.Cell>
-                      </Table.Row>
-                    );
-                  })}
-                </Table>
-              </Stack.Item>
-            ))}
-          </Stack>
-        </Section>
-      </Stack.Item>
-    </Stack>
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              })}
+            </Table>
+          </Stack.Item>
+        ))}
+      </Stack>
+    </Section>
   );
 };
