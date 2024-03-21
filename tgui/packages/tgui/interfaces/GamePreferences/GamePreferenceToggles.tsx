@@ -45,7 +45,7 @@ export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProp
       <Stack.Item>
         <NoticeBox>
           Changes made on this page are applied to the game immediately,
-          but are not saved to storage until you press &aposSave&apos.
+          but are not saved to storage until you press &apos;Save&apos;.
         </NoticeBox>
       </Stack.Item>
       <Stack.Item grow={1}>

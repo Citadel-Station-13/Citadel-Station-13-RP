@@ -1,5 +1,5 @@
-import { useBackend } from "../../../backend";
-import { Box, LabeledList, Section } from "../../../components";
+import { useBackend } from "../../../../backend";
+import { Box, LabeledList, Section } from "../../../../components";
 
 export const pda_janitor = (props, context) => {
   const { act, data } = useBackend(context);

@@ -1,5 +1,5 @@
-import { useBackend } from "../../../backend";
-import { Box, Button, LabeledList } from "../../../components";
+import { useBackend } from "../../../../backend";
+import { Box, Button, LabeledList } from "../../../../components";
 
 export const pda_status_display = (props, context) => {
   const { act, data } = useBackend(context);

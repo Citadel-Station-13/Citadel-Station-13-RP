@@ -1,7 +1,7 @@
-import { useBackend } from "../../../backend";
-import { Box, Button, LabeledList, Section } from "../../../components";
+import { useBackend } from "../../../../backend";
+import { Box, Button, LabeledList, Section } from "../../../../components";
 
-export const pda_security = (props, context) => {
+export const pda_medical = (props, context) => {
   const { act, data } = useBackend(context);
 
   const {
@@ -12,7 +12,7 @@ export const pda_security = (props, context) => {
   if (records) {
     const {
       general,
-      security,
+      medical,
     } = records;
 
     return (
@@ -51,31 +51,43 @@ export const pda_security = (props, context) => {
             </Box>
           )}
         </Section>
-        <Section level={2} title="Security Data">
-          {security && (
+        <Section level={2} title="Medical Data">
+          {medical && (
             <LabeledList>
-              <LabeledList.Item label="Criminal Status">
-                {security.criminal}
+              <LabeledList.Item label="Blood Type">
+                {medical.b_type}
               </LabeledList.Item>
-              <LabeledList.Item label="Minor Crimes">
-                {security.mi_crim}
-              </LabeledList.Item>
-              <LabeledList.Item label="Details">
-                {security.mi_crim_d}
-              </LabeledList.Item>
-              <LabeledList.Item label="Major Crimes">
-                {security.ma_crim}
+              <LabeledList.Item label="Minor Disabilities">
+                {medical.mi_dis}
               </LabeledList.Item>
               <LabeledList.Item label="Details">
-                {security.ma_crim_d}
+                {medical.mi_dis_d}
               </LabeledList.Item>
-              <LabeledList.Item label="Important Notes:">
-                {security.notes}
+              <LabeledList.Item label="Major Disabilities">
+                {medical.ma_dis}
+              </LabeledList.Item>
+              <LabeledList.Item label="Details">
+                {medical.ma_dis_d}
+              </LabeledList.Item>
+              <LabeledList.Item label="Allergies">
+                {medical.alg}
+              </LabeledList.Item>
+              <LabeledList.Item label="Details">
+                {medical.alg_d}
+              </LabeledList.Item>
+              <LabeledList.Item label="Current Disease">
+                {medical.cdi}
+              </LabeledList.Item>
+              <LabeledList.Item label="Details">
+                {medical.cdi_d}
+              </LabeledList.Item>
+              <LabeledList.Item label="Important Notes">
+                {medical.notes}
               </LabeledList.Item>
             </LabeledList>
           ) || (
             <Box color="bad">
-              Security record lost!
+              Medical record lost!
             </Box>
           )}
         </Section>

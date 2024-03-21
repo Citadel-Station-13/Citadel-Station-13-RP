@@ -1,7 +1,7 @@
 import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
-import { useBackend } from "../../../backend";
-import { Box, Button, Section } from "../../../components";
+import { useBackend } from "../../../../backend";
+import { Box, Button, Section } from "../../../../components";
 
 // Stolen wholesale from communicators.
 // TGUITODO: Merge PDA & Communicator shared code once both are in

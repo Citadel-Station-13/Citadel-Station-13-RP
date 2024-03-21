@@ -1,7 +1,7 @@
 import { decodeHtmlEntities } from 'common/string';
 import { filter } from 'common/collections';
-import { useBackend, useLocalState } from "../../../backend";
-import { Box, Button, LabeledList, Section } from "../../../components";
+import { useBackend, useLocalState } from "../../../../backend";
+import { Box, Button, LabeledList, Section } from "../../../../components";
 
 export const pda_messenger = (props, context) => {
   const { act, data } = useBackend(context);

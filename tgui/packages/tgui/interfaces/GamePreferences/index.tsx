@@ -11,7 +11,7 @@
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
 import { getModuleData, useBackend, useComputedOnce, useLocalState } from "../../backend";
-import { Button, NoticeBox, Section, Stack } from "../../components";
+import { Button, NoticeBox, Section, Stack, Tooltip } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
 import { GamePreferenceKeybindMiddlware, GamePreferenceKeybindScreen } from "./GamePreferenceKeybinds";
@@ -153,6 +153,7 @@ const GamePreferencesBody = (props, context) => {
       </Stack.Item>
       <Stack.Item grow={1}>
         <Section fill scrollable>
+          {JSON.stringify(getModuleData(context, 'toggles'))}
           {JSON.stringify(getModuleData(context, 'keybindings'))}
           <Stack fill vertical overflowY="auto">
             {categoryCache[activeCategory].map((subcat) => (
@@ -180,20 +181,26 @@ const GamePreferenceFooter = (props: {
     <Section>
       <Stack fill>
         <Stack.Item grow={1}>
-          <Button.Confirm fluid
-            disabled={!data.dirty} onClick={() => act('save')}
-            content="Save" />
+          <Tooltip content="Performs a full save of your preferences.">
+            <Button.Confirm fluid
+              disabled={!data.dirty} onClick={() => act('save')}
+              content="Save" />
+          </Tooltip>
         </Stack.Item>
         <Stack.Item grow={1}>
-          <Button.Confirm fluid
-            disabled={data.dirty} onClick={() => act('discard')}
-            content="Discard" />
+          <Tooltip content="Reloads your preferences from disk, discarding all current changes.">
+            <Button.Confirm fluid
+              disabled={data.dirty} onClick={() => act('discard')}
+              content="Discard" />
+          </Tooltip>
         </Stack.Item>
         <Stack.Item grow={1}>
-          <Button.Confirm fluid
-            disabled={!data.dirty} onClick={() =>
-              act('reset', props.activeCategory? { category: props.activeCategory } : {}, props.activeMiddleware)}
-            content="Reset to Default" />
+          <Tooltip content="Resets the current page to default.">
+            <Button.Confirm fluid
+              disabled={!data.dirty} onClick={() =>
+                act('reset', props.activeCategory? { category: props.activeCategory } : {}, props.activeMiddleware)}
+              content="Reset to Default" />
+          </Tooltip>
         </Stack.Item>
       </Stack>
     </Section>
