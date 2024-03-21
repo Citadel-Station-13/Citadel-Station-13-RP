@@ -1,6 +1,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/egg
 	name = "egg"
 	desc = "An egg!"
+	cookstage_information = list(list(0, 0.5, "raw egg and shell"), list(20 SECONDS, 1.2, "cooked egg"), list(40 SECONDS, 0.7, "overcooked egg"), list(90 SECONDS, 0.1, "sad, burnt egg"))
 	icon_state = "egg"
 	filling_color = "#FDFFD1"
 	volume = 10
@@ -73,8 +74,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/tofu
 	name = "Tofu"
 	desc = "We all love tofu."
-
-
+	cookstage_information = list(list(0, 0.7, "fresh raw tofu"), list(20 SECONDS, 1.2, "cooked tofu"), list(40 SECONDS, 0.7, "overcooked tofu"), list(90 SECONDS, 0.1, "burnt tofu"))
 	filling_color = "#FFFEE0"
 	icon_state = "tofu"
 	nutriment_amt = 6
@@ -90,10 +90,11 @@
 	desc = "A big wheel of delcious space cheese."
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
+	cookstage_information = list(list(0, 1, "cheese"), list(20 SECONDS, 1.2, "cheese"), list(40 SECONDS, 0.7, "cheese"), list(90 SECONDS, 0.1, "burnt cheese"))
 	slices_num = 6
 	filling_color = "#FFF700"
-	nutriment_desc = list("cheese" = 10)
 	nutriment_amt = 10
+	max_servings = 1
 
 /obj/item/reagent_containers/food/snacks/ingredient/cheesewheel/Initialize(mapload)
 	. = ..()
@@ -103,6 +104,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/cheesewedge
 	name = "cheese wedge"
 	desc = "A wedge of delicious space cheese. The wheel it was cut from can't have gone far."
+	cookstage_information = list(list(0, 1, "cheese"), list(20 SECONDS, 1.2, "cheese"), list(40 SECONDS, 0.7, "cheese"), list(90 SECONDS, 0.1, "burnt cheese"))
 	icon_state = "cheesewedge"
 	filling_color = "#FFF700"
 	bitesize = 2
@@ -110,12 +112,13 @@
 /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewheel
 	name = "blue cheese wheel"
 	desc = "A big wheel of mold-infused blue cheese."
+	cookstage_information = list(list(0, 1, "tangy, creamy cheese with sharp notes of butyric acid"), list(20 SECONDS, 1.2, "tangy, creamy cheese with sharp notes of butyric acid"), list(40 SECONDS, 0.7, "tangy, creamy cheese with sharp notes of butyric acid"), list(90 SECONDS, 0.1, "burnt cheese"))
 	icon_state = "bluecheesewheel"
 	slice_path = /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewedge
 	slices_num = 6
 	filling_color = "#f1f0c8"
-	nutriment_desc = list("sour cheese" = 10)
 	nutriment_amt = 10
+	max_servings = 1
 
 /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewheel/Initialize(mapload)
 	. = ..()
@@ -124,7 +127,8 @@
 
 /obj/item/reagent_containers/food/snacks/ingredient/bluecheesewedge
 	name = "blue cheese wedge"
-	desc = "A wedge of moldy blue cheese. The wheel it was cut from can't have gone far."
+	desc = "A wedge of mold-infused blue cheese. The wheel it was cut from can't have gone far."
+	cookstage_information = list(list(0, 1, "tangy, creamy cheese with sharp notes of butyric acid"), list(20 SECONDS, 1.2, "tangy, creamy cheese with sharp notes of butyric acid"), list(40 SECONDS, 0.7, "tangy, creamy cheese with sharp notes of butyric acid"), list(90 SECONDS, 0.1, "burnt cheese"))
 	icon_state = "bluecheesewedge"
 	filling_color = "#f1f0c8"
 	bitesize = 2

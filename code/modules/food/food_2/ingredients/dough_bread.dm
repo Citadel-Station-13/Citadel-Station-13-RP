@@ -181,6 +181,7 @@
 /obj/item/reagent_containers/food/snacks/ingredient/bun
 	name = "bun"
 	desc = "A plain bun."
+	cookstage_information = list(list(0, 1, "fresh bun"), list(10 SECONDS, 1, "toasted bun"), list(20 SECONDS, 0.8, "burnt toast"), list(25 SECONDS, 0.1, "carbonized burger bun"))
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "bun"
 
@@ -196,15 +197,18 @@
 /obj/item/reagent_containers/food/snacks/ingredient/bread/pone
 	name = "corn pone"
 	desc = "A simple unleavened bread made from corn flour."
+	cookstage_information = list(list(0, 1, "dense, heavy cornbread"), list(20 SECONDS, 1, "toasted, heavy cornbread"), list(40 SECONDS, 0.8, "burnt corn toast"), list(100 SECONDS, 0.1, "pure carbon"))
 	icon_state = "cornpone"
 
 /obj/item/reagent_containers/food/snacks/ingredient/bread/damper
 	name = "damper"
 	desc = "A simple unleavened bread made from wheat flour. Typically cooked in the coals of a fire, but any cooking method will do in a pinch."
+	cookstage_information = list(list(0, 1, "dense bread"), list(80 SECONDS, 1, "dense toast"), list(120 SECONDS, 0.8, "burnt dense toast"), list(140 SECONDS, 0.1, "heavy carbon"))
 	icon_state = "damper"
 
 /obj/item/reagent_containers/food/snacks/ingredient/spaghetti
 	name = "raw spaghetti"
 	desc = "Raw, handmade spaghetti noodles."
+	cookstage_information = list(list(0, 1, "raw dough"), list(20 SECONDS, 1, "cooked dough stick"), list(30 SECONDS, 0.8, "burnt dough sticks"), list(50 SECONDS, 0.1, "pure carbon"))
 	icon = 'icons/obj/food_ingredients.dmi'
 	icon_state = "spaghetti"

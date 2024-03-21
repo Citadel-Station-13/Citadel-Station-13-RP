@@ -4597,6 +4597,12 @@
 	..()
 	M.add_chemical_effect(CE_ALCOHOL, 0.02) //Very slightly alcoholic
 
+/datum/reagent/nutriment/cokebatter
+	name = "cola batter"
+	id = "colabatter"
+	nutriment_factor = 30 //this shit got calories for days son
+	taste_description = "space cola"
+
 //=========================
 //Fats
 //=========================
