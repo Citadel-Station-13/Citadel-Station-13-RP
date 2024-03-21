@@ -3194,21 +3194,12 @@
 /turf/simulated/floor/plating,
 /area/exploration)
 "ajM" = (
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -9
-	},
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -9
-	},
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -9
 	},
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
@@ -3421,16 +3412,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "ake" = (
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
 /obj/structure/noticeboard{
 	pixel_y = 29
 	},
+/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/cooking/oven,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "akg" = (
@@ -3562,12 +3551,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "akB" = (
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
@@ -3685,40 +3668,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
-"akT" = (
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
-/obj/structure/table/marble,
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -9
-	},
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 3
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 9
-	},
-/obj/item/reagent_containers/food/condiment/spacespice{
-	pixel_x = -8;
-	pixel_y = 13
-	},
-/obj/item/reagent_containers/food/condiment/enzyme{
-	layer = 5;
-	pixel_y = 16
-	},
-/obj/item/reagent_containers/food/condiment/soysauce{
-	pixel_x = 8;
-	pixel_y = 16
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/kitchen)
 "akU" = (
 /obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/borderfloor{
@@ -3819,6 +3768,34 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
+"alj" = (
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 9
+	},
+/obj/item/reagent_containers/food/condiment/spacespice{
+	pixel_x = -8;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	layer = 5;
+	pixel_y = 16
+	},
+/obj/item/reagent_containers/food/condiment/soysauce{
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/kitchen)
 "alk" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/maintenance/substation/exploration)
@@ -5095,6 +5072,12 @@
 	dir = 10
 	},
 /obj/machinery/light,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/skillet,
+/obj/item/reagent_containers/glass/food_holder/skillet,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aoQ" = (
@@ -6719,12 +6702,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "atj" = (
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
@@ -8641,6 +8618,12 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/skillet,
+/obj/item/reagent_containers/glass/food_holder/skillet,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aya" = (
@@ -9847,12 +9830,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aBM" = (
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
+/obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/cooking,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
@@ -11138,6 +11116,8 @@
 "aFF" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/cooking/fryer,
+/obj/item/reagent_containers/glass/food_holder/fryer_basket,
+/obj/item/reagent_containers/glass/food_holder/fryer_basket,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aFG" = (
@@ -38288,7 +38268,7 @@ aAj
 jsv
 lbu
 akB
-akT
+alj
 ajM
 atj
 lbu
@@ -54293,69 +54273,6 @@ ajp
 aXh
 ajp
 asH
-afq
-afq
-afq
-afq
-afq
-ajp
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-ajp
-afq
-afq
-afq
-afq
-afq
-ajp
-aAs
-asH
-aWs
-afq
-ajp
-ajp
-ajp
-ajp
-ajp
-ajp
-ajp
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-afq
-ajp
-ajp
-afq
-afq
-afq
-afq
-afq
 afq
 afq
 afq

@@ -22,3 +22,9 @@
 	desc = "The most weaponizable of all cooking implements. Other than knives."
 	icon_state = "skillet"
 	cooker_overlay = "skillet"
+
+/obj/item/reagent_containers/glass/food_holder/oventray
+	name = "oven tray"
+	desc = "Big and flat."
+	icon_state = "ovendish"
+	cooker_overlay = "ovendish"

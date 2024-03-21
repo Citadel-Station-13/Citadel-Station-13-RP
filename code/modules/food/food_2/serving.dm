@@ -1,14 +1,27 @@
 
 
 /obj/item/food_serving
-	name = "generic food serving object"
-	desc = "A generic bowl or plate or something. Neat."
+	name = "bowl"
+	desc = "A bowl, for serving food."
 	icon = 'icons/obj/food_ingredients/custom_food.dmi'
 	icon_state = "bowl"
 	var/serving_type = "bowl"
 	var/trash_type
 
 	var/dirty = FALSE //are we dirty
+
+
+/obj/item/food_serving/woodbowl
+	name = "wooden bowl"
+	desc = "A rustic wooden bowl, for serving food."
+	icon_state = "woodbowl"
+	serving_type = "woodbowl"
+
+/obj/item/food_serving/plate
+	name = "plate"
+	desc = "A plate, for serving food."
+	icon_state = "plate"
+	serving_type = "plate"
 
 
 /obj/item/reagent_containers/food/snacks/food_serving
