@@ -22,7 +22,13 @@ export const SheetSilo = (props, context) => {
       <Window.Content>
         <Section fill title="Storage" scrollable>
           <Stack vertical fill>
-            {Object.entries(data.stored).map(([k, v]) => (
+            {Object.entries(data.stored).sort(
+              ([k1, v1], [k2, v2]) => (
+                (data.materialContext.materials[k1]?.name || "AAAAA").localeCompare(
+                  (data.materialContext.materials[k2]?.name || "AAAAA")
+                )
+              )
+            ).map(([k, v]) => (
               <Stack.Item key={`${k}-${dropAmounts[k]}`}>
                 <Stack>
                   <Stack.Item grow={1} style={{ display: "flex", border: "1px solid gray" }} pl={1}>
