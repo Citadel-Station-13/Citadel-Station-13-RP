@@ -4048,7 +4048,7 @@
 /area/centcom/medical)
 "lQ" = (
 /obj/machinery/account_database{
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)

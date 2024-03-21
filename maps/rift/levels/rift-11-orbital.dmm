@@ -306,15 +306,11 @@
 /area/holodeck/source_courtroom)
 "bf" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team";
-	dir = 4
+	dir = 4;
+	name = "Red Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
-"bh" = (
-/turf/space/basic,
-/turf/space/basic,
-/area/space)
 "bi" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -364,9 +360,6 @@
 /area/holodeck/source_picnicarea)
 "bo" = (
 /obj/structure/holostool,
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_picnicarea)
-"bp" = (
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "bq" = (
@@ -765,8 +758,8 @@
 "cB" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
-	icon_state = "right";
-	dir = 4
+	dir = 4;
+	icon_state = "right"
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
@@ -785,9 +778,9 @@
 "cE" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
-	name = "Green Team";
-	dir = 4
+	name = "Green Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
@@ -1254,8 +1247,8 @@
 /area/holodeck/source_meetinghall)
 "eg" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team";
-	dir = 4
+	dir = 4;
+	name = "Red Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1270,8 +1263,8 @@
 /area/holodeck/source_beach)
 "ej" = (
 /obj/machinery/door/window/holowindoor{
-	name = "Red Team";
-	dir = 4
+	dir = 4;
+	name = "Red Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -1878,9 +1871,9 @@
 "fX" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
-	name = "Green Team";
-	dir = 4
+	name = "Green Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
@@ -1898,9 +1891,9 @@
 "ga" = (
 /obj/machinery/door/window/holowindoor{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
-	name = "Green Team";
-	dir = 4
+	name = "Green Team"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
@@ -2109,7 +2102,7 @@
 "gH" = (
 /obj/machinery/account_database{
 	dir = 1;
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -5522,6 +5515,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
+"qL" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "qM" = (
 /obj/machinery/atmospherics/component/unary/cryo_cell,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6606,6 +6605,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
 "xX" = (
@@ -7972,6 +7972,15 @@
 /obj/machinery/vending/tool,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"EI" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "EP" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8885,6 +8894,10 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
+"Ps" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "Pw" = (
 /obj/structure/table/bone,
 /turf/simulated/floor/tiled/dark,
@@ -9318,10 +9331,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
-"Ui" = (
-/obj/structure/fake_stairs/south/bottom,
-/turf/simulated/floor/tiled/dark,
-/area/centcom/command)
 "Uj" = (
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
@@ -9512,10 +9521,6 @@
 /obj/structure/bed/chair/bay/shuttle,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
-"VH" = (
-/obj/structure/fake_stairs/north/bottom,
-/turf/simulated/floor/tiled/dark,
-/area/centcom/command)
 "Wj" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -32137,13 +32142,13 @@ Bv
 Bv
 yw
 TY
-TY
-Ui
+qL
+XJ
 Un
 Un
 Un
-VH
-TY
+XJ
+Ps
 TY
 yw
 Bv
@@ -32331,12 +32336,12 @@ Bv
 Bv
 yw
 TY
-xW
-Ui
+EI
 XJ
 XJ
 XJ
-VH
+XJ
+XJ
 xW
 TY
 yw
@@ -32749,11 +32754,11 @@ Bv
 Bv
 Bv
 Bv
-bh
-bh
-bh
-bh
-bh
+Bv
+Bv
+Bv
+Bv
+Bv
 Bv
 Bv
 Bv
@@ -34418,8 +34423,8 @@ am
 aG
 aH
 aX
-bp
-bp
+bn
+bn
 cp
 aH
 aG
@@ -34612,8 +34617,8 @@ an
 aH
 aG
 aY
-bp
-bp
+bn
+bn
 cq
 aG
 aH
@@ -34806,8 +34811,8 @@ am
 aG
 aW
 bm
-bp
-bp
+bn
+bn
 cr
 cz
 aG
@@ -35000,8 +35005,8 @@ an
 aH
 aX
 bn
-bp
-bp
+bn
+bn
 bn
 cp
 aH
@@ -35581,10 +35586,10 @@ af
 an
 aG
 aY
-bp
-bp
-bp
-bp
+bn
+bn
+bn
+bn
 cq
 aG
 an
