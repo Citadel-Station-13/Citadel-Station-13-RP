@@ -460,7 +460,8 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
 "cn" = (
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/rift/facility/exterior/shuttle)
 "co" = (
 /turf/simulated/wall,
@@ -1779,7 +1780,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "ib" = (
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rwest_mining/surface)
 "ie" = (
 /obj/structure/table/rack,
@@ -3420,9 +3422,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
-"pS" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/turbolift/rwest_mining/surface)
 "pV" = (
 /obj/structure/table/steel,
 /obj/item/measuring_tape,
@@ -4179,6 +4178,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "tA" = (
+/obj/effect/paint_stripe/beige,
 /turf/simulated/wall/r_wall,
 /area/rift/facility/exterior)
 "tB" = (
@@ -5614,7 +5614,6 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2;
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
@@ -7425,9 +7424,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/mixing)
-"Jq" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/rift/facility/interior/elevator)
 "Ju" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -7439,7 +7435,9 @@
 /turf/simulated/floor,
 /area/construction/solarscontrol)
 "Jv" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/wallgunmetal,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/rift/facility/interior/elevator)
 "Jx" = (
 /turf/simulated/wall,
@@ -14614,8 +14612,8 @@ lK
 lK
 lK
 Jv
-Jq
-Jq
+Jv
+Jv
 Jv
 PS
 zQ
@@ -14807,7 +14805,7 @@ lK
 lK
 lK
 lK
-Jq
+Jv
 XL
 XL
 wQ
@@ -15001,7 +14999,7 @@ lK
 lK
 lK
 lK
-Jq
+Jv
 XL
 XL
 wQ
@@ -15196,8 +15194,8 @@ lK
 lK
 lK
 Jv
-Jq
-Jq
+Jv
+Jv
 Jv
 fj
 db
@@ -42609,12 +42607,12 @@ we
 we
 cU
 fh
-pS
+ib
 ib
 xK
 xK
 ib
-pS
+ib
 sv
 sv
 sv
@@ -43579,12 +43577,12 @@ we
 we
 Ec
 UM
-pS
+ib
 ib
 xK
 xK
 ib
-pS
+ib
 we
 we
 we

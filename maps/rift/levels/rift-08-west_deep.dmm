@@ -224,9 +224,6 @@
 /obj/machinery/door/window/brigdoor/southleft,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
-"bZ" = (
-/turf/simulated/floor/tiled/steel/lythios43c,
-/area/rift/facility/interior/underground2)
 "ce" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/monotile,
@@ -366,18 +363,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
-"dG" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
-"dP" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/rwest_mining/deep)
 "dQ" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/near_gateway)
@@ -478,15 +463,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"eT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel/lythios43c,
-/area/rift/facility/interior/underground2)
 "fa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/green{
@@ -1743,7 +1719,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
-	chargelevel = 0;
+	chargelevel = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
@@ -1822,9 +1798,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
-"pH" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
 "pI" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -1991,9 +1964,6 @@
 "rn" = (
 /turf/simulated/wall,
 /area/quartermaster/belterdock)
-"rr" = (
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "rv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -2256,18 +2226,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
-"ud" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
 "ue" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -2379,7 +2337,8 @@
 /turf/simulated/open/lythios43c,
 /area/turbolift/rwest_mining/deep)
 "uZ" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rwest_mining/deep)
 "vc" = (
 /obj/effect/catwalk_plated/dark,
@@ -2692,9 +2651,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/underground2)
-"ys" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/prison)
 "yv" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -2735,7 +2691,7 @@
 /obj/structure/bed/chair,
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
-	chargelevel = 0;
+	chargelevel = 0
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3057,15 +3013,6 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
-"BI" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/underground2)
 "BO" = (
 /obj/structure/table/bench/standard,
@@ -3427,11 +3374,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"Ex" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
-/turf/simulated/floor/tiled/steel/lythios43c,
-/area/rift/facility/interior/underground2)
 "Ez" = (
 /obj/structure/inflatable/door,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3781,9 +3723,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/gateway)
-"HW" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/exterior/bunker/bottom)
 "Ia" = (
 /obj/structure/girder,
 /obj/effect/map_effect/radiation_emitter/strong,
@@ -4166,9 +4105,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
-"Ls" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/rift/facility/interior/elevator)
 "Lv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -4220,7 +4156,7 @@
 "Mc" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
-	chargelevel = 0;
+	chargelevel = 0
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4317,14 +4253,10 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/bunker/bottom)
 "MN" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
+/obj/structure/flora/pottedplant/dead,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/floor/tiled/dark,
+/area/rift/facility/interior/temple)
 "MO" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -4366,10 +4298,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/underground2)
-"Ng" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "Nl" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -4601,9 +4529,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
-"PJ" = (
-/turf/simulated/floor/tiled/steel_dirty,
-/area/rift/facility/interior/underground2)
 "PL" = (
 /obj/machinery/mineral/processing_unit,
 /turf/simulated/floor/plating,
@@ -4838,7 +4763,9 @@
 /turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_deep)
 "SI" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint_stripe/green,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/belter)
 "SJ" = (
 /obj/structure/inflatable,
@@ -5071,19 +4998,10 @@
 "UD" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
-	chargelevel = 0;
+	chargelevel = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
-"UF" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/prison)
 "UN" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -5284,11 +5202,6 @@
 "Wv" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_deep/submap_seedzone)
-"Wx" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
 "Wy" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
@@ -5367,7 +5280,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "Xl" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/wallgunmetal,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/rift/facility/interior/elevator)
 "Xu" = (
 /obj/machinery/door/airlock/glass_science{
@@ -5422,14 +5337,9 @@
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "XT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/outside/west_deep)
 "XU" = (
 /obj/structure/table/reinforced,
 /obj/item/multitool/triumph_buffered,
@@ -5513,9 +5423,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
-"YK" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/prison)
 "YL" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/tiled/dark,
@@ -5904,12 +5811,12 @@ sN
 sN
 sN
 sN
-Wo
-Wo
-Wo
-Wo
-Wo
-Wo
+XT
+XT
+XT
+XT
+XT
+XT
 sN
 sN
 sN
@@ -6098,12 +6005,12 @@ sN
 sN
 sN
 sN
-Wo
+XT
 vo
 vo
 vo
 vo
-Wo
+XT
 sN
 sN
 sN
@@ -6292,12 +6199,12 @@ sN
 sN
 sN
 sN
-Wo
+XT
 vo
 vo
 vo
 vo
-Wo
+XT
 sN
 sN
 sN
@@ -6486,12 +6393,12 @@ sN
 sN
 sN
 sN
-Wo
+XT
 vo
 vo
 vo
 vo
-Wo
+XT
 sN
 sN
 sN
@@ -6680,12 +6587,12 @@ sN
 sN
 sN
 sN
-Wo
+XT
 vo
 vo
 vo
 vo
-Wo
+XT
 sN
 sN
 sN
@@ -6874,12 +6781,12 @@ sN
 sN
 sN
 sN
-Wo
-Wo
-Wo
-Wo
-Wo
-Wo
+XT
+XT
+XT
+XT
+XT
+XT
 sN
 sN
 sN
@@ -8224,7 +8131,7 @@ Cu
 nY
 fQ
 oh
-YK
+uO
 yB
 oh
 XQ
@@ -8413,12 +8320,12 @@ nN
 nN
 oh
 yG
-ys
+uO
 kE
-YK
+uO
 dW
 GO
-YK
+uO
 yB
 gx
 ky
@@ -8806,7 +8713,7 @@ Gx
 nn
 Hs
 oh
-YK
+uO
 JA
 oh
 ky
@@ -9000,7 +8907,7 @@ EN
 lR
 RK
 oh
-YK
+uO
 yB
 oh
 ky
@@ -9367,8 +9274,8 @@ XQ
 XQ
 XQ
 Xl
-Ls
-Ls
+Xl
+Xl
 Xl
 nN
 nN
@@ -9383,7 +9290,7 @@ Ia
 Vr
 oh
 jr
-YK
+uO
 bY
 Pz
 RK
@@ -9560,7 +9467,7 @@ XQ
 XQ
 XQ
 XQ
-Ls
+Xl
 hS
 hS
 SN
@@ -9577,9 +9484,9 @@ QW
 hP
 oh
 sc
-YK
+uO
 mz
-UF
+Pz
 RK
 mz
 uO
@@ -9754,13 +9661,13 @@ XQ
 XQ
 XQ
 XQ
-Ls
+Xl
 hS
 hS
 SN
 nm
 nm
-MN
+rO
 lP
 nP
 NQ
@@ -9768,7 +9675,7 @@ Ie
 Ie
 vJ
 js
-Wx
+nP
 oh
 oh
 oh
@@ -9949,8 +9856,8 @@ XQ
 XQ
 XQ
 Xl
-Ls
-Ls
+Xl
+Xl
 Xl
 nN
 nN
@@ -9965,12 +9872,12 @@ Qi
 cJ
 oh
 jr
-YK
+uO
 bY
 Fg
 QX
 gq
-YK
+uO
 jr
 oh
 XQ
@@ -10349,7 +10256,7 @@ vJ
 UD
 cz
 vJ
-dG
+lP
 nP
 oh
 oh
@@ -10741,7 +10648,7 @@ QW
 Ik
 oh
 iL
-YK
+uO
 mz
 Ha
 RK
@@ -10926,7 +10833,7 @@ qN
 VC
 lL
 lP
-Ex
+hP
 vJ
 vJ
 vJ
@@ -11129,7 +11036,7 @@ Bw
 Mi
 yq
 Mh
-BI
+Mh
 Mh
 Wb
 mr
@@ -11314,16 +11221,16 @@ iq
 iq
 lL
 Fh
-bZ
+Cf
 KD
 nN
-bZ
 Cf
-bZ
+Cf
+Cf
 Fh
-PJ
-bZ
-bZ
+hC
+Cf
+Cf
 Wb
 Wb
 Wb
@@ -11340,10 +11247,10 @@ ah
 bz
 bz
 Fl
-rr
-rr
+WR
+WR
 Gr
-rr
+WR
 gS
 ah
 so
@@ -11508,12 +11415,12 @@ er
 Oy
 zV
 Zl
-XT
+Zl
 Ep
 Nf
 yM
-bZ
-bZ
+Cf
+Cf
 Fh
 hC
 vm
@@ -11534,10 +11441,10 @@ ah
 bz
 bz
 gS
-rr
-rr
+WR
+WR
 Cb
-Ng
+Fl
 Ap
 ah
 so
@@ -11705,7 +11612,7 @@ nN
 nN
 nN
 nN
-ud
+Eh
 Fh
 Fh
 vm
@@ -11728,11 +11635,11 @@ ah
 Sa
 Sa
 Fl
-rr
+WR
 gS
-rr
-rr
-rr
+WR
+WR
+WR
 ah
 so
 so
@@ -11923,7 +11830,7 @@ ah
 ah
 ah
 WR
-rr
+WR
 gS
 Fl
 Gr
@@ -12080,7 +11987,7 @@ XQ
 lL
 zo
 ap
-xo
+MN
 CN
 UN
 CN
@@ -12116,11 +12023,11 @@ ah
 ah
 ah
 ah
-rr
+WR
 Gr
 Fl
 Fl
-rr
+WR
 ah
 so
 so
@@ -12307,11 +12214,11 @@ bz
 Lo
 gS
 Fl
-rr
+WR
 Fl
 Fl
 WR
-rr
+WR
 Gr
 Fl
 Ap
@@ -12493,21 +12400,21 @@ pf
 vm
 dy
 Su
-rr
-rr
-Ng
+WR
+WR
 Fl
-rr
-rr
+Fl
+WR
+WR
 gS
 WR
 Cb
 Gr
-rr
-rr
+WR
+WR
 Fl
-rr
-rr
+WR
+WR
 gS
 ah
 so
@@ -12698,8 +12605,8 @@ ah
 ah
 ah
 ah
-rr
-rr
+WR
+WR
 ah
 ah
 ah
@@ -13072,7 +12979,7 @@ vm
 vm
 vm
 vm
-pH
+Fh
 hP
 nN
 XQ
@@ -13262,11 +13169,11 @@ tq
 tq
 qd
 Hu
-eT
-eT
+ii
+ii
 Zl
 ii
-eT
+ii
 Ca
 nN
 XQ
@@ -18626,8 +18533,8 @@ hW
 hW
 hW
 hW
-HW
-HW
+hW
+hW
 nC
 so
 so
@@ -19403,7 +19310,7 @@ wb
 MM
 gI
 gI
-HW
+hW
 hW
 EX
 nC
@@ -20172,7 +20079,7 @@ HF
 bl
 hW
 hW
-HW
+hW
 gI
 gI
 gI
@@ -36029,7 +35936,7 @@ Jt
 nu
 nu
 Nw
-rr
+WR
 SJ
 XQ
 XQ
@@ -37363,10 +37270,10 @@ QJ
 QJ
 Qk
 uZ
-dP
+uZ
 cK
 cK
-dP
+uZ
 uZ
 Gw
 ll
@@ -37556,12 +37463,12 @@ fM
 QJ
 QJ
 dV
-dP
+uZ
 uW
 uW
 uW
 uW
-dP
+uZ
 lr
 oF
 Ij
@@ -37755,7 +37662,7 @@ uW
 uW
 uW
 uW
-dP
+uZ
 iz
 Oo
 wv
@@ -37949,7 +37856,7 @@ uW
 uW
 uW
 uW
-dP
+uZ
 uu
 Ij
 kk
@@ -38138,12 +38045,12 @@ fM
 QJ
 QJ
 QJ
-dP
+uZ
 uW
 uW
 uW
 uW
-dP
+uZ
 uu
 Ij
 Ij
@@ -38333,10 +38240,10 @@ RO
 RO
 rn
 uZ
-dP
+uZ
 cK
 cK
-dP
+uZ
 uZ
 uu
 dg

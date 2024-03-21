@@ -6,7 +6,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/crew_quarters/public_bunker)
 "ac" = (
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint_stripe/beige,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/turbolift/runder/level2)
 "ad" = (
 /obj/structure/catwalk,
@@ -8600,9 +8602,6 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"CA" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/turbolift/rmine/under2)
 "CB" = (
 /obj/structure/closet/crate,
 /obj/structure/closet/crate,
@@ -9668,7 +9667,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "GG" = (
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rmine/under2)
 "GH" = (
 /obj/structure/cable/yellow{
@@ -10057,9 +10058,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/camera/network/engineering{
-	dir = 2
-	},
+/obj/machinery/camera/network/engineering,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -11001,7 +11000,9 @@
 /area/maintenance/lower/atmos)
 "LG" = (
 /obj/structure/sign/mining,
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rmine/under2)
 "LJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13092,7 +13093,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2;
 	req_one_access = list(18,47)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13131,9 +13131,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/camera/network/engineering{
-	dir = 2
-	},
+/obj/machinery/camera/network/engineering,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -13198,8 +13196,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "TH" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/turbolift/runder/level2)
+/obj/structure/girder,
+/turf/simulated/wall/rshull,
+/area/maintenance/lower/mining)
 "TJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -29851,11 +29850,11 @@ pv
 aX
 bG
 Oq
-TH
 ac
 ac
 ac
-TH
+ac
+ac
 mR
 ll
 fY
@@ -30627,11 +30626,11 @@ mH
 be
 bG
 ew
-TH
 ac
 ac
 ac
-TH
+ac
+ac
 nj
 ll
 fY
@@ -33331,7 +33330,7 @@ Ze
 Tg
 JP
 wj
-CA
+GG
 GG
 GG
 LG
@@ -34102,12 +34101,12 @@ JP
 Ze
 Ze
 Ze
-uK
+TH
 vO
 Tg
 JP
 GE
-CA
+GG
 GG
 GG
 LG

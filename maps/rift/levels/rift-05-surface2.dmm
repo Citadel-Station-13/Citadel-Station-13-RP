@@ -1393,7 +1393,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -2180,7 +2179,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -2245,7 +2243,6 @@
 /area/rnd/research)
 "bmS" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full{
-	id = null;
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
@@ -2880,7 +2877,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -5976,7 +5972,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "dIO" = (
-/turf/simulated/shuttle/wall/voidcraft/red/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/hammerhead/general)
 "dIR" = (
 /obj/machinery/vending,
@@ -6810,7 +6808,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "emT" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/offwhite,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rsurface/level2)
 "enk" = (
 /obj/effect/floor_decal/borderfloor{
@@ -8261,7 +8261,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -8293,7 +8292,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -9099,7 +9097,6 @@
 /area/security/hallway)
 "fSS" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full{
-	id = null;
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
@@ -12555,7 +12552,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -12628,7 +12624,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -13042,9 +13037,6 @@
 /mob/living/bot/medibot/medass,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/medbay_primary_storage)
-"ilr" = (
-/turf/simulated/shuttle/wall/voidcraft/red,
-/area/shuttle/hammerhead/general)
 "imL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -13138,8 +13130,7 @@
 "iqw" = (
 /obj/effect/floor_decal/corner_techfloor_grid/full,
 /obj/machinery/computer/security{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
@@ -15063,8 +15054,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/security{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -17673,7 +17663,6 @@
 	},
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 1;
-	icon_state = "rightsecure";
 	name = "Cockpit Access";
 	req_access = list(2);
 	req_one_access = list(2)
@@ -17842,7 +17831,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -18922,8 +18910,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 9;
-	icon_state = "warning"
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
@@ -19120,8 +19107,7 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "hammerhead_dock";
-	pixel_x = 26;
-	req_one_access = null
+	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hammerhead_bay)
@@ -19734,7 +19720,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -23500,7 +23485,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "oOw" = (
-/turf/simulated/shuttle/wall/voidcraft/red,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/hammerhead/cockpit)
 "oOG" = (
 /turf/simulated/floor/carpet/purcarpet,
@@ -23693,8 +23680,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 6;
-	icon_state = "warning"
+	dir = 6
 	},
 /obj/effect/floor_decal/sign/dock/two,
 /turf/simulated/floor/tiled/techmaint,
@@ -24109,8 +24095,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 5;
-	icon_state = "warning"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
@@ -24274,9 +24259,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
-"pgr" = (
-/turf/simulated/shuttle/wall/voidcraft/red/hard_corner,
-/area/shuttle/hammerhead/cockpit)
 "pgI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -27191,7 +27173,9 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft/red,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/hammerhead/general)
 "rcQ" = (
 /obj/machinery/smartfridge/chemistry,
@@ -28874,8 +28858,7 @@
 	pixel_x = -24
 	},
 /obj/machinery/computer/shuttle_control/explore/hammerhead{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
@@ -31935,7 +31918,6 @@
 "uoE" = (
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 8;
-	icon_state = "rightsecure";
 	name = "Flight Operations Access";
 	req_access = list(2);
 	req_one_access = list(2)
@@ -33996,7 +33978,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -34071,7 +34052,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -34211,7 +34191,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -34674,7 +34653,9 @@
 	pixel_x = -32
 	},
 /obj/structure/sign/warning/high_voltage,
-/turf/simulated/shuttle/wall/voidcraft/red,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/hammerhead/cockpit)
 "wdP" = (
 /obj/item/clothing/head/sombrero,
@@ -35096,7 +35077,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -36839,7 +36819,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -37539,9 +37518,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
-"xUe" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/rsurface/level2)
 "xUy" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Showers"
@@ -52895,7 +52871,7 @@ iCM
 oOw
 hYB
 foa
-pgr
+oOw
 oOw
 qly
 qly
@@ -53147,9 +53123,9 @@ dJn
 mHQ
 akk
 emT
-xUe
-xUe
-xUe
+emT
+emT
+emT
 emT
 jru
 xLE
@@ -53340,11 +53316,11 @@ qUB
 qUB
 mHQ
 gNI
-xUe
+emT
 rCo
 rCo
 rCo
-xUe
+emT
 sfB
 bgP
 bgP
@@ -53534,7 +53510,7 @@ tci
 hhp
 mHQ
 tSy
-xUe
+emT
 rCo
 rCo
 rCo
@@ -53728,11 +53704,11 @@ nQd
 nDw
 pBf
 gZC
-xUe
+emT
 rCo
 rCo
 rCo
-xUe
+emT
 jmj
 bgP
 bgP
@@ -53923,9 +53899,9 @@ sJg
 mHQ
 twZ
 emT
-xUe
-xUe
-xUe
+emT
+emT
+emT
 emT
 hLX
 sJl
@@ -54053,7 +54029,7 @@ qly
 oOw
 oOw
 oOw
-pgr
+oOw
 oUW
 dbt
 djU
@@ -54248,7 +54224,7 @@ qly
 qly
 oOw
 oOw
-pgr
+oOw
 sQt
 oOw
 iag
@@ -54635,10 +54611,10 @@ eqc
 qly
 qly
 qly
-ilr
+dIO
 dIO
 aNv
-ilr
+dIO
 aSz
 bFP
 iCM
@@ -54829,10 +54805,10 @@ eqc
 qly
 qly
 qly
-ilr
+dIO
 lVu
 qnJ
-ilr
+dIO
 nVS
 qkS
 oOw
@@ -55023,7 +54999,7 @@ aTs
 qly
 qly
 qly
-ilr
+dIO
 fnq
 gHJ
 hsv
@@ -55032,7 +55008,7 @@ rLY
 xbD
 cpn
 qLw
-ilr
+dIO
 qly
 qly
 qly
@@ -55217,7 +55193,7 @@ cWw
 qly
 qly
 qly
-ilr
+dIO
 uRH
 aNv
 goD
@@ -55226,7 +55202,7 @@ rLY
 mFf
 nLz
 fdo
-ilr
+dIO
 lrj
 qly
 qly
@@ -55411,7 +55387,7 @@ cWw
 qly
 qly
 qly
-ilr
+dIO
 srt
 gHJ
 hsv
@@ -55605,10 +55581,10 @@ cWw
 qly
 qly
 qly
-ilr
+dIO
 rtv
 mAj
-ilr
+dIO
 oIx
 dzD
 wcF
@@ -55799,10 +55775,10 @@ cWw
 qly
 qly
 qly
-ilr
+dIO
 uRH
 sQe
-ilr
+dIO
 oIx
 uSS
 usH
@@ -55993,10 +55969,10 @@ cWw
 qly
 qly
 qly
-ilr
+dIO
 raP
 tNt
-ilr
+dIO
 uAi
 gOT
 pcN
@@ -56189,14 +56165,14 @@ qly
 qly
 dIO
 rcg
-ilr
-ilr
+dIO
+dIO
 pPV
 kDT
 ybB
 nLz
 hnx
-ilr
+dIO
 aJI
 qly
 qly
@@ -56390,7 +56366,7 @@ cVx
 ieh
 ieh
 vIN
-ilr
+dIO
 qly
 qly
 qly
@@ -56584,7 +56560,7 @@ fZv
 jhd
 vfd
 jwp
-ilr
+dIO
 qly
 qly
 qly
@@ -56768,8 +56744,8 @@ qdY
 fJu
 qly
 qly
-ilr
-ilr
+dIO
+dIO
 ijJ
 bap
 dIO
@@ -56778,8 +56754,8 @@ ceM
 dIO
 kMU
 jNS
-ilr
-ilr
+dIO
+dIO
 qly
 qly
 spg
@@ -56961,20 +56937,20 @@ swv
 pqq
 kAt
 qly
-ilr
-ilr
+dIO
+dIO
 jJS
 slB
 wDF
-ilr
+dIO
 uhb
 iXD
-ilr
+dIO
 cya
 lag
 kCx
-ilr
-ilr
+dIO
+dIO
 qly
 qly
 nxh
@@ -57155,20 +57131,20 @@ qly
 ecx
 qly
 qly
-ilr
+dIO
 mPW
 fdm
 ogH
 vQJ
-ilr
+dIO
 pUZ
 oxe
-ilr
+dIO
 xVE
 frQ
 dRQ
 rsA
-ilr
+dIO
 qly
 qly
 nxh
@@ -57348,22 +57324,22 @@ uAn
 qly
 ecx
 qly
-ilr
-ilr
+dIO
+dIO
 iRD
 qNg
 iRD
 qNg
-ilr
+dIO
 tKD
 qDr
-ilr
+dIO
 iRD
 qNg
 iRD
 qNg
-ilr
-ilr
+dIO
+dIO
 qly
 nxh
 qly
@@ -57542,22 +57518,22 @@ uAn
 qly
 ecx
 qly
-ilr
-ilr
+dIO
+dIO
 xlX
 dym
 xlX
 dym
-ilr
+dIO
 dKZ
 cEL
-ilr
+dIO
 xlX
 dym
 xlX
 dym
-ilr
-ilr
+dIO
+dIO
 qly
 pyL
 rtk
@@ -57736,8 +57712,8 @@ uAn
 qly
 ecx
 qly
-ilr
-ilr
+dIO
+dIO
 qly
 qly
 qly
@@ -57750,8 +57726,8 @@ qly
 qly
 qly
 qly
-ilr
-ilr
+dIO
+dIO
 qly
 nxh
 qly

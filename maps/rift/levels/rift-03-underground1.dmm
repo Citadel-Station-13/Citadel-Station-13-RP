@@ -43,8 +43,9 @@
 /turf/simulated/open,
 /area/rift/station/stairs_two)
 "ai" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/runder/level1)
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/prepainted,
+/area/maintenance/elevator)
 "aj" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -8662,9 +8663,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
-"Bj" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/rmine/under1)
 "Bm" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -8916,8 +8914,7 @@
 "Ck" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/freezer{
-	name = "Prison Kitchen Freezer";
-	req_access = null
+	name = "Prison Kitchen Freezer"
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/security/prison/lower)
@@ -13926,7 +13923,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "SW" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/offwhite,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/runder/level1)
 "SX" = (
 /obj/structure/bed/chair/office/dark{
@@ -15422,7 +15421,9 @@
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
 "XZ" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/beige,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/turbolift/rmine/under1)
 "Ya" = (
 /turf/simulated/wall/r_wall/prepainted/command,
@@ -31121,9 +31122,9 @@ aM
 bb
 VR
 SW
-ai
-ai
-ai
+SW
+SW
+SW
 SW
 cl
 cf
@@ -31314,11 +31315,11 @@ aZ
 aN
 bb
 bl
-ai
+SW
 Xr
 Xr
 Xr
-ai
+SW
 cy
 dP
 ec
@@ -31508,7 +31509,7 @@ aZ
 aO
 bb
 bo
-ai
+SW
 Xr
 Xr
 Xr
@@ -31702,11 +31703,11 @@ aZ
 aS
 bc
 bp
-ai
+SW
 Xr
 Xr
 Xr
-ai
+SW
 cC
 dP
 ec
@@ -31897,9 +31898,9 @@ aL
 bb
 bq
 SW
-ai
-ai
-ai
+SW
+SW
+SW
 SW
 cD
 cs
@@ -34601,8 +34602,8 @@ xA
 IE
 VZ
 XZ
-Bj
-Bj
+XZ
+XZ
 XZ
 ug
 ui
@@ -34794,10 +34795,10 @@ IE
 Ee
 IE
 Wf
-Bj
+XZ
 jM
 jM
-Bj
+XZ
 vT
 wd
 vT
@@ -34988,7 +34989,7 @@ th
 IF
 IE
 Wf
-Bj
+XZ
 jM
 jM
 Uf
@@ -35182,10 +35183,10 @@ uO
 OE
 UQ
 Wf
-Bj
+XZ
 jM
 jM
-Bj
+XZ
 xL
 xL
 XH
@@ -35377,8 +35378,8 @@ Po
 IE
 Ci
 XZ
-Bj
-Bj
+XZ
+XZ
 XZ
 ZG
 xL
@@ -35568,7 +35569,7 @@ IE
 IE
 IE
 IE
-IE
+ai
 IE
 IE
 IE

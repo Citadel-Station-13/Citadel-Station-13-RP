@@ -236,7 +236,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "aaM" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/cockpit)
 "aaO" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -647,7 +649,9 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "acg" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/cockpit)
 "ach" = (
 /obj/structure/bed/chair/sofa/black/left,
@@ -3981,7 +3985,9 @@
 /area/rift/surfaceeva/aa/cliff_north)
 "alQ" = (
 /obj/structure/panic_button,
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/cockpit)
 "alR" = (
 /obj/machinery/door/airlock/glass_external,
@@ -4300,15 +4306,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
-"amD" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/emt/general)
-"amE" = (
-/obj/machinery/light/spot{
-	pixel_y = 32
-	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/emt/cockpit)
 "amH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -4392,7 +4389,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "amT" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -4627,14 +4626,18 @@
 /area/bridge/bridge_hallway)
 "anz" = (
 /obj/structure/panic_button,
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/cockpit)
 "anA" = (
 /obj/structure/shuttle/engine/heater,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "anC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -4870,9 +4873,6 @@
 "aoo" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
-"aop" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/emt/cockpit)
 "aor" = (
 /obj/structure/mirror/long/right{
 	dir = 8;
@@ -6014,7 +6014,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "arm" = (
 /obj/machinery/power/apc/west_mount,
@@ -6659,12 +6661,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
-"atd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/civvie/general)
 "ate" = (
 /obj/random/maintenance/clean,
 /obj/structure/table/rack/shelf/steel,
@@ -6972,7 +6968,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "atW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -7287,7 +7285,9 @@
 /obj/machinery/light/spot{
 	pixel_y = 32
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/cockpit)
 "auM" = (
 /obj/machinery/computer/crew{
@@ -8969,10 +8969,14 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "ayS" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "ayT" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "ayW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
@@ -9410,13 +9414,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "aAl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "aAn" = (
 /obj/machinery/air_alarm{
@@ -9952,7 +9960,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "aBZ" = (
 /obj/structure/railing,
@@ -10509,7 +10519,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "aDL" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/turf/simulated/wall/rshull,
 /area/shuttle/courser/cockpit)
 "aDM" = (
 /obj/structure/table/wooden_reinforced,
@@ -11028,7 +11040,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "aFq" = (
 /obj/structure/catwalk,
@@ -11345,7 +11359,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "aGf" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -11375,7 +11391,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "aGj" = (
 /obj/structure/railing,
@@ -11563,7 +11581,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "aGQ" = (
 /obj/structure/ladder{
@@ -11737,9 +11757,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
-"aHp" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/courser/general)
 "aHq" = (
 /obj/machinery/vending/fitness{
 	dir = 4
@@ -11836,7 +11853,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aHB" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/turf/simulated/wall/rshull,
 /area/shuttle/courser/general)
 "aHC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12020,7 +12039,9 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/turf/simulated/wall/rshull,
 /area/shuttle/courser/cockpit)
 "aId" = (
 /obj/structure/railing,
@@ -12350,7 +12371,9 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/turf/simulated/wall/rshull,
 /area/shuttle/courser/cockpit)
 "aIW" = (
 /obj/structure/handrail,
@@ -13504,9 +13527,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
-"aMk" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/civvie/general)
 "aMm" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
@@ -13800,12 +13820,6 @@
 /obj/effect/shuttle_landmark/rift/deck3/pirate,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
-"aNe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/civvie/general)
 "aNf" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13840,7 +13854,9 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/turf/simulated/wall/rshull,
 /area/shuttle/courser/cockpit)
 "aNk" = (
 /obj/structure/railing,
@@ -13997,7 +14013,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "aNL" = (
 /obj/machinery/conveyor_switch/oneway{
@@ -14511,9 +14529,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
-"aOZ" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/courser/cockpit)
 "aPa" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
@@ -14589,7 +14604,9 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "aPk" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/offwhite,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rsurface/level3)
 "aPl" = (
 /obj/structure/handrail{
@@ -14674,7 +14691,9 @@
 /area/maintenance/commandmaint)
 "aPy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "aPz" = (
 /obj/machinery/light{
@@ -15030,9 +15049,6 @@
 /obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
-"aQs" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/shuttle/civvie/cockpit)
 "aQv" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -15278,7 +15294,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "aRn" = (
 /obj/effect/floor_decal/borderfloor{
@@ -16130,7 +16148,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "aTA" = (
 /obj/effect/floor_decal/techfloor{
@@ -17588,9 +17608,6 @@
 /obj/machinery/chemical_dispenser/catering/bar_alc,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
-"aXM" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/rsurface/level3)
 "aXO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -17598,7 +17615,9 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/violet,
+/turf/simulated/wall/rshull,
 /area/shuttle/courser/cockpit)
 "aXQ" = (
 /obj/structure/disposalpipe/segment,
@@ -18188,7 +18207,9 @@
 /area/rift/surfacebase/outside/outside3)
 "aZB" = (
 /obj/structure/shuttle/engine/heater,
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "aZC" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -18967,7 +18988,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "cOE" = (
 /obj/structure/disposalpipe/segment{
@@ -20967,7 +20990,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "hDW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -24016,7 +24041,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/navy,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/emt/general)
 "peI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -26649,7 +26676,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/green,
+/turf/simulated/wall/rshull,
 /area/shuttle/civvie/general)
 "wdU" = (
 /obj/machinery/light{
@@ -39048,8 +39077,8 @@ aus
 aAl
 aPy
 aPy
-atd
-aMk
+amS
+ayT
 aus
 amj
 aej
@@ -39234,11 +39263,11 @@ aus
 aus
 aRK
 acg
-aMk
+ayT
 pVV
-aMk
+ayT
 pVV
-aMk
+ayT
 aTx
 aGv
 awC
@@ -39424,10 +39453,10 @@ acH
 adx
 aus
 aus
-aQs
+acg
 acg
 dpK
-aQs
+acg
 aeZ
 aGt
 anM
@@ -39621,17 +39650,17 @@ aus
 acg
 asP
 aMI
-aQs
+acg
 atp
 azx
 abr
 aQB
 akn
-aMk
 ayT
 ayT
-aMk
-aMk
+ayT
+ayT
+ayT
 aus
 amn
 aAF
@@ -40203,17 +40232,17 @@ aus
 acg
 adD
 azq
-aQs
+acg
 aRq
 alG
 abv
 aMb
 aEU
-aMk
+ayT
 wcm
 cJZ
-aMk
-aMk
+ayT
+ayT
 aus
 amn
 oRB
@@ -40394,10 +40423,10 @@ acH
 adx
 aus
 aus
-aQs
+acg
 acg
 dpK
-aQs
+acg
 ash
 aGt
 arb
@@ -40592,11 +40621,11 @@ aus
 aus
 aGM
 acg
-aMk
+ayT
 pVV
-aMk
+ayT
 pVV
-aNe
+aRl
 amS
 aUY
 aVR
@@ -40795,7 +40824,7 @@ aRl
 aPy
 aPy
 aNK
-aMk
+ayT
 aus
 atI
 acF
@@ -42567,9 +42596,9 @@ rcq
 oCx
 kIR
 aPk
-aXM
-aXM
-aXM
+aPk
+aPk
+aPk
 aPk
 anE
 jpv
@@ -42760,11 +42789,11 @@ wuI
 rcq
 oCx
 avf
-aXM
+aPk
 aBU
 aBU
 aBU
-aXM
+aPk
 suT
 jpv
 jpv
@@ -42954,7 +42983,7 @@ lmy
 fAb
 oCx
 ezU
-aXM
+aPk
 aBU
 aBU
 aBU
@@ -43148,11 +43177,11 @@ jJn
 wpI
 dLV
 ewE
-aXM
+aPk
 aBU
 aBU
 aBU
-aXM
+aPk
 anE
 jpv
 jpv
@@ -43343,9 +43372,9 @@ fgP
 oCx
 aoN
 aPk
-aXM
-aXM
-aXM
+aPk
+aPk
+aPk
 aPk
 suT
 jpv
@@ -44936,7 +44965,7 @@ vEr
 oFR
 sMe
 cqU
-aHp
+aHB
 aHZ
 aHZ
 aHZ
@@ -44944,7 +44973,7 @@ aHZ
 aHZ
 aHZ
 aHZ
-aHp
+aHB
 aNW
 cvI
 afq
@@ -45055,13 +45084,13 @@ aus
 aus
 aus
 aus
-amD
+ayS
 urI
 urI
-amD
-amD
-amD
-amD
+ayS
+ayS
+ayS
+ayS
 aZB
 awp
 aus
@@ -45130,7 +45159,7 @@ adZ
 aJR
 cvI
 auk
-aHp
+aHB
 aIc
 aIV
 aNi
@@ -45138,7 +45167,7 @@ aNi
 aNi
 aNi
 aXO
-aHp
+aHB
 axe
 cvI
 afq
@@ -45248,7 +45277,7 @@ aus
 aus
 aus
 amh
-amE
+auL
 ayS
 arB
 atM
@@ -45324,15 +45353,15 @@ cvI
 cvI
 cvI
 aJD
-aHp
+aHB
 aIh
 aJM
-aOZ
 aDL
-aOZ
+aDL
+aDL
 aWq
 aYW
-aHp
+aHB
 aNW
 cvI
 afq
@@ -45442,7 +45471,7 @@ aus
 aaM
 bfN
 bfN
-aop
+aaM
 apk
 arO
 aue
@@ -45518,7 +45547,7 @@ aJE
 cvI
 aYe
 aJD
-aHp
+aHB
 aIB
 aKe
 aND
@@ -45526,7 +45555,7 @@ aOH
 aUa
 aWu
 aZr
-aHp
+aHB
 aNW
 cvI
 afq
@@ -45633,10 +45662,10 @@ adx
 aus
 aus
 aaM
-aop
+aaM
 akJ
 auh
-aop
+aaM
 aNX
 aqP
 aqP
@@ -45712,15 +45741,15 @@ anc
 cvI
 aMV
 aRi
-aHp
+aHB
 aIO
 aKK
 aNH
 aOX
 aUP
 aWB
-aOZ
-aHp
+aDL
+aHB
 axe
 cvI
 afq
@@ -45906,12 +45935,12 @@ avs
 cvI
 ayN
 aNv
-aHp
-aOZ
+aHB
+aDL
 aLb
-aOZ
+aDL
 aQb
-aOZ
+aDL
 aWD
 aHB
 aHB
@@ -46100,7 +46129,7 @@ aoV
 glx
 abq
 aNv
-aHp
+aHB
 aIQ
 aMh
 aDL
@@ -46215,10 +46244,10 @@ adx
 aus
 aus
 aaM
-aop
+aaM
 alU
 auK
-aop
+aaM
 aXm
 aqP
 aqP
@@ -46294,12 +46323,12 @@ aGX
 aAz
 aYe
 aNv
-aHp
+aHB
 kjZ
 ekT
 aHB
 aQd
-aHp
+aHB
 fdA
 auv
 tOD
@@ -46412,7 +46441,7 @@ aus
 aaM
 bfN
 bfN
-aop
+aaM
 aqR
 baX
 aue
@@ -46683,14 +46712,14 @@ cvI
 orx
 aNv
 aHS
-aHp
+aHB
 mkN
 leN
 gsH
 eyR
 xvv
-aHp
-aHp
+aHB
+aHB
 aYe
 cvI
 afq
@@ -46801,13 +46830,13 @@ aus
 aus
 aus
 aus
-amD
+ayS
 urI
 urI
-amD
-amD
-amD
-amD
+ayS
+ayS
+ayS
+ayS
 aZB
 awp
 aus
@@ -46877,13 +46906,13 @@ cvI
 aUh
 aql
 aYe
-aHp
-aHp
+aHB
+aHB
 aHB
 aQy
 aHB
-aHp
-aHp
+aHB
+aHB
 aYe
 aoO
 cvI
@@ -47654,11 +47683,11 @@ cvI
 aYe
 aYe
 aYe
-aHp
+aHB
 aHB
 aSg
 aHB
-aHp
+aHB
 aYe
 aYe
 aYe
@@ -47848,11 +47877,11 @@ cvI
 aYe
 aYe
 aYe
-aHp
-aHp
+aHB
+aHB
 aSm
-aHp
-aHp
+aHB
+aHB
 aYe
 aYe
 aYe
@@ -48042,11 +48071,11 @@ cvI
 aYe
 aYe
 aYe
-aHp
+aHB
 aHB
 aTn
 aHB
-aHp
+aHB
 aYe
 aYe
 aYe
@@ -48237,9 +48266,9 @@ aYe
 aYe
 aYe
 aYe
-aHp
+aHB
 aTw
-aHp
+aHB
 aYe
 aYe
 aYe
@@ -48431,9 +48460,9 @@ acz
 aYe
 aYe
 aYe
-aHp
+aHB
 aTB
-aHp
+aHB
 aYe
 aYe
 aYe

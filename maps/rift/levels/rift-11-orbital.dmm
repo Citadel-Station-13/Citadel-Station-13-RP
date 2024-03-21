@@ -198,8 +198,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "aR" = (
-/turf/simulated/shuttle/wall/hard_corner,
-/area/shuttle/supply)
+/obj/effect/paint_stripe/commandblue,
+/turf/simulated/wall/rshull,
+/area/shuttle/escape)
 "aS" = (
 /obj/machinery/door/airlock/medical{
 	name = "Chemistry and Resleeving";
@@ -482,7 +483,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "bF" = (
-/turf/simulated/shuttle/wall,
+/obj/effect/paint/offwhite,
+/turf/simulated/wall/rshull,
 /area/shuttle/supply)
 "bG" = (
 /turf/simulated/shuttle/floor,
@@ -2058,10 +2060,12 @@
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/simulated/terminal)
 "gy" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "gz" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "gC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -2340,7 +2344,8 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/engine)
 "hp" = (
 /obj/machinery/recharger/wallcharger{
@@ -2659,7 +2664,8 @@
 /area/holodeck/holodorm/source_snow)
 "iE" = (
 /obj/machinery/status_display,
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/commandblue,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "iF" = (
 /obj/machinery/portable_atmospherics/canister/air,
@@ -2825,7 +2831,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "jk" = (
 /obj/structure/bed/chair/shuttle,
@@ -2950,7 +2957,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "js" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -3098,13 +3106,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "jQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 9
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "jR" = (
 /obj/structure/window/reinforced,
@@ -3151,13 +3161,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/cyanblue,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "jY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "jZ" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -3278,8 +3290,8 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/terminal)
 "kt" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/cyanblue,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "ku" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3301,6 +3313,13 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
+/area/shuttle/escape)
+"kv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "kw" = (
 /obj/structure/table/standard,
@@ -3975,7 +3994,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "mp" = (
 /obj/structure/table/glass,
@@ -4007,7 +4027,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "ms" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -4099,7 +4120,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "mH" = (
 /obj/structure/window/reinforced{
@@ -4197,7 +4219,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "mR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -4283,7 +4306,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "nc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
@@ -4602,19 +4626,23 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "oc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "od" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/amber,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "oe" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
@@ -4694,7 +4722,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 9
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "ol" = (
 /obj/structure/table/woodentable,
@@ -4821,7 +4850,8 @@
 "oE" = (
 /obj/structure/shuttle/engine/heater,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "oF" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
@@ -5122,7 +5152,8 @@
 /area/shuttle/escape)
 "px" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "py" = (
 /obj/structure/shuttle/engine/heater,
@@ -5133,7 +5164,8 @@
 	landmark_tag = "escape_cc";
 	name = "Escape Shuttle Centcom"
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
+/obj/effect/paint_stripe/amber,
+/turf/simulated/wall/rshull,
 /area/shuttle/escape)
 "pz" = (
 /obj/structure/railing{
@@ -6599,7 +6631,8 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/engine)
 "xW" = (
 /obj/machinery/light{
@@ -7900,7 +7933,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "DR" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/engine)
 "Ef" = (
 /obj/structure/table/rack,
@@ -8013,6 +8047,11 @@
 /obj/machinery/cryopod/robot/door/travel/specops,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Fp" = (
+/obj/machinery/status_display,
+/obj/effect/paint_stripe/maroon,
+/turf/simulated/wall/rshull,
+/area/shuttle/escape)
 "Fv" = (
 /turf/unsimulated/floor/dark,
 /area/tdome)
@@ -8119,8 +8158,10 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "GY" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/shuttle/specops/engine)
+/obj/machinery/status_display,
+/obj/effect/paint_stripe/cyanblue,
+/turf/simulated/wall/rshull,
+/area/shuttle/escape)
 "Ha" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/firstaid/clotting,
@@ -8233,7 +8274,8 @@
 /obj/machinery/flasher{
 	id = "breach_flash"
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/general)
 "IG" = (
 /turf/unsimulated/floor/dark,
@@ -8248,7 +8290,6 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/structure/cable{
@@ -8729,6 +8770,9 @@
 /obj/machinery/pipedispenser/disposal/orderable,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Nh" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/escape)
 "Nn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -8736,7 +8780,8 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/engine)
 "ND" = (
 /obj/effect/step_trigger/lost_in_space,
@@ -9294,7 +9339,6 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/structure/cable{
@@ -9574,10 +9618,12 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/engine)
 "Xo" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/general)
 "Xr" = (
 /obj/structure/cable{
@@ -9634,11 +9680,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/command)
 "XK" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/specops/cockpit)
 "XM" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/shuttle/specops/general)
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/obj/effect/paint_stripe/cyanblue,
+/turf/simulated/wall/rshull,
+/area/shuttle/escape)
 "XN" = (
 /turf/simulated/floor/plating,
 /area/centcom/specops)
@@ -11366,10 +11417,10 @@ gx
 lJ
 mo
 mG
-kt
+px
 nc
 nc
-kt
+px
 ob
 gx
 gx
@@ -11554,11 +11605,11 @@ gx
 gx
 ji
 jP
-kt
+px
 nc
-kt
-kt
-kt
+px
+px
+px
 jQ
 mW
 mW
@@ -11747,7 +11798,7 @@ gx
 hU
 gz
 jj
-jQ
+ok
 jk
 kM
 ll
@@ -11759,7 +11810,7 @@ nd
 mX
 nL
 oc
-kt
+px
 oE
 pu
 gx
@@ -11936,10 +11987,10 @@ hP
 fC
 ge
 gx
-gy
+gz
 gz
 nM
-gy
+aR
 jk
 jR
 rY
@@ -11951,7 +12002,7 @@ mI
 ia
 ia
 nq
-gz
+gy
 od
 oF
 gz
@@ -12129,9 +12180,9 @@ cN
 cN
 fC
 ge
-gy
-gy
 gz
+aR
+aR
 hW
 iE
 aE
@@ -12324,7 +12375,7 @@ cN
 fC
 ge
 gz
-gz
+aR
 hi
 hX
 nM
@@ -12334,12 +12385,12 @@ ku
 ia
 ln
 lL
-gz
+gy
 gy
 mY
 nM
-iE
-gz
+Fp
+gy
 of
 oH
 pw
@@ -13100,7 +13151,7 @@ eW
 fC
 ge
 gz
-gz
+aR
 hm
 ib
 nM
@@ -13110,12 +13161,12 @@ kx
 ia
 lo
 lO
-gz
-gy
+kt
+kt
 mZ
 nM
-iE
-gz
+GY
+kt
 of
 oL
 pv
@@ -13293,9 +13344,9 @@ eX
 fq
 fC
 ge
-gy
-gy
 gz
+aR
+aR
 ic
 iE
 bi
@@ -13304,12 +13355,12 @@ jq
 ia
 lp
 SG
-gy
+kt
 mM
 ia
 Cx
 Cx
-gy
+kt
 oj
 oM
 pw
@@ -13488,23 +13539,23 @@ eY
 fC
 ge
 gx
-gy
+gz
 gz
 nM
-gy
+aR
 jF
 jW
 rY
 ia
 ia
 Jz
-gy
+Nh
 mN
 ia
 ia
 lK
-gz
-od
+kt
+kv
 oO
 gz
 gz
@@ -13687,19 +13738,19 @@ gx
 hU
 gz
 jr
-jX
+ob
 jF
 kO
 lq
 rr
-gy
+kt
 mO
 ia
 ia
 ia
 nO
-oc
-kt
+XM
+px
 oE
 pu
 qe
@@ -13882,17 +13933,17 @@ gx
 gx
 js
 jY
-kt
+px
 nc
-kt
-kt
-kt
+px
+px
+px
 jX
 na
 ni
 nv
 nP
-oc
+XM
 oE
 pu
 gx
@@ -18126,7 +18177,6 @@ hP
 hP
 ag
 hP
-aR
 bF
 bF
 bF
@@ -18134,7 +18184,8 @@ bF
 bF
 bF
 bF
-aR
+bF
+bF
 hP
 ag
 hP
@@ -18319,8 +18370,8 @@ Bv
 hP
 hP
 ag
-aR
-aR
+bF
+bF
 bG
 bG
 bG
@@ -18328,8 +18379,8 @@ bG
 bG
 bG
 bG
-aR
-aR
+bF
+bF
 ag
 hP
 hP
@@ -19095,8 +19146,8 @@ Bv
 hP
 hP
 ag
-aR
-aR
+bF
+bF
 bG
 bG
 cn
@@ -19104,8 +19155,8 @@ bG
 bG
 bG
 bG
-aR
-aR
+bF
+bF
 ag
 hP
 hP
@@ -19290,7 +19341,7 @@ hP
 hP
 ag
 hP
-aR
+bF
 bF
 bF
 bF
@@ -19298,7 +19349,7 @@ cx
 cx
 bF
 bF
-aR
+bF
 hP
 ag
 hP
@@ -21873,13 +21924,13 @@ Rn
 RY
 RY
 RY
-GY
+DR
 jx
 jx
 jx
 jx
 jx
-GY
+DR
 RY
 RY
 SE
@@ -22067,13 +22118,13 @@ Rn
 RY
 RY
 RY
-GY
+DR
 ho
 xV
 xV
 WZ
 Nn
-GY
+DR
 RY
 RY
 SE
@@ -22261,13 +22312,13 @@ Rn
 RY
 RY
 RY
-GY
+DR
 JC
 ER
 Gc
 VB
 Pr
-GY
+DR
 RY
 RY
 SE
@@ -22455,13 +22506,13 @@ Rn
 RY
 RY
 rC
-GY
+DR
 LP
 Cu
 sV
 Kj
 UK
-GY
+DR
 rC
 RY
 SE
@@ -22653,8 +22704,8 @@ DR
 MF
 PI
 DR
-GY
-GY
+DR
+DR
 DR
 Xo
 RY
@@ -22842,7 +22893,7 @@ Cv
 Rn
 RY
 RY
-XM
+Xo
 WL
 Mm
 zw
@@ -22850,7 +22901,7 @@ Gx
 Qd
 Wj
 Ky
-XM
+Xo
 RY
 SE
 Bv
@@ -23036,7 +23087,7 @@ Cv
 Rn
 RY
 RY
-XM
+Xo
 Dq
 Mm
 zi
@@ -23044,7 +23095,7 @@ XK
 XU
 xr
 rJ
-XM
+Xo
 RY
 SE
 Bv
@@ -23230,7 +23281,7 @@ ss
 Rn
 RY
 RY
-XM
+Xo
 Xo
 ZN
 CK
@@ -23424,14 +23475,14 @@ ss
 Rn
 Ta
 RY
-XM
-XM
+Xo
+Xo
 Mm
 zi
 RN
 LR
 SL
-XM
+Xo
 GG
 RY
 SE
@@ -23619,13 +23670,13 @@ Ct
 RY
 RY
 Xo
-XM
+Xo
 PL
 MV
 Rs
 Lu
 Zo
-XM
+Xo
 Xo
 RY
 SE
@@ -23813,13 +23864,13 @@ Ct
 RY
 RY
 KY
-XM
+Xo
 Lk
 wY
 Ug
 Lu
 Zo
-XM
+Xo
 KY
 RY
 SE
@@ -24007,13 +24058,13 @@ Rn
 RY
 RY
 RY
-XM
+Xo
 VD
 QI
 pR
 Lu
 Rw
-XM
+Xo
 RY
 RY
 SE
@@ -24202,11 +24253,11 @@ RY
 RY
 RY
 Xo
-XM
+Xo
 Xo
 TM
 Xo
-XM
+Xo
 Xo
 RY
 RY
@@ -24396,11 +24447,11 @@ RY
 RY
 RY
 KY
-XM
+Xo
 nl
 QO
 DO
-XM
+Xo
 KY
 RY
 RY
@@ -24590,11 +24641,11 @@ RY
 RY
 RY
 RY
-XM
+Xo
 Kp
 Mm
 Dk
-XM
+Xo
 RY
 RY
 RY
