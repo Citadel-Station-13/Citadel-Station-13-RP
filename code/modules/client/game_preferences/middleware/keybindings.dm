@@ -123,3 +123,9 @@
 	if(!initialized)
 		return TRUE
 	return misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
+
+//? UI Design Assertions
+
+#if MAX_KEYS_PER_KEYBIND != 3
+	#error TGUI for prefs is only designed for 3 bindings per keybind datum. Fix it if you want more.
+#endif

@@ -20,6 +20,10 @@
 /// main window split
 #define SKIN_SPLITTER_ID_MAIN "mainwindow.split"
 
+//* Chat System
+#define SKIN_OUTPUT_ID_LEGACY_CHAT "output"
+#define SKIN_BROWSER_ID_CHAT "outputbrowser"
+
 //* Cutscene System
 #define SKIN_BROWSER_ID_CUTSCENE "cutscenebrowser"
 

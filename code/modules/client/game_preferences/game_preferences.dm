@@ -19,7 +19,7 @@
 	// todo: move menu options in here and not from /datum/preferences
 
 	//* Middleware - Keybindings *//
-	/// keybindings - key to list of keys
+	/// keybindings - key to list of keybinds
 	var/list/keybindings
 
 	//* Middleware - Toggles *//
