@@ -13,6 +13,7 @@
 	icon = 'icons/modules/mining/machinery/sheet_silo.dmi'
 	icon_state = "silo"
 	density = TRUE
+	anchored = TRUE
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	/// material id to **sheets**
