@@ -218,8 +218,8 @@
 /datum/keybinding/mob/toggle_gun_mode
 	hotkey_keys = list("J")
 	name = "toggle_gun_mode"
-	full_name = "Toggle gun mode between aiming/hostage-taking and immediate fire."
-	description = ""
+	full_name = "Aim / Fire Toggle"
+	description = "Toggle your gun between taking aim at someone/taking hostages, and immediately firing on click."
 
 /datum/keybinding/mob/toggle_gun_mode/down(client/user)
 	user.mob.toggle_gun_mode()

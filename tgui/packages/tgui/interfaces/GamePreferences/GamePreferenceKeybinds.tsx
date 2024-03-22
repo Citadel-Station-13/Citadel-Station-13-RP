@@ -94,14 +94,20 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
               <Table>
                 {keybinds.map((keybind) => {
                   return (
-                    <Table.Row key={keybind.id} minHeight={2} backgroundColor="#ff0000">
-                      <Table.Cell width="40%" backgroundColor="#00ff00"
+                    <Table.Row key={keybind.id} minHeight={2} backgroundColor="#ff0000"
+                      style={{
+                        border: "1px solid", "border-color": "#ffffff77",
+                      }}>
+                      <Table.Cell width="40%" maxWidth="40%" backgroundColor="#00ff00"
+                        overflow="hidden"
                         style={{ padding: "0 0", "padding-bottom": 0 }}>
                         <Tooltip content={keybind.desc}>
                           <Box height="100%" width="100%" backgroundColor="#0000ff"
-                            style={{ border: "1px solid", "border-color": "#ffffff77",
-                              position: "relative", top: 0, bottom: 0, left: 0, right: 0 }}>
-                            <Box bold>
+                            style={{
+                              "white-space": "nowrap",
+                              position: "relative", top: 0, bottom: 0, left: 0, right: 0,
+                              display: "inline-block" }}>
+                            <Box bold height="100%" width="100%" overflowX="hidden">
                               {keybind.name}
                             </Box>
                           </Box>
@@ -109,8 +115,8 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                       </Table.Cell>
                       {[0, 1, 2].map((i) => (
                         <Table.Cell width="20%" key={i}>
-                          <Box height="100%" width="100%"
-                            style={{ border: "1px solid", "border-color": "#ffffff77", "border-left": "0px" }}>
+                          <Box height="100%" width="100%" overflowX="hidden"
+                            style={{ "background-color": "#0000ff" }}>
                             test
                           </Box>
                         </Table.Cell>
