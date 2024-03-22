@@ -9,6 +9,8 @@
 	desc = "An autoloader for a materials silo."
 	icon = 'icons/modules/mining/machinery/sheet_silo_loader.dmi'
 	icon_state = "loader"
+	anchored = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/sheet_silo_loader/process(delta_time)
 	// todo: lazy-ticking
