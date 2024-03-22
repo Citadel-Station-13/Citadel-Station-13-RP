@@ -31,6 +31,8 @@
 		// this isn't technically mathematically accurate but honestly
 		// i don't care
 		sheets_by_material[id] = max(0, round(sheets_by_material[id] * (persistence_decay_factor ** rounds_since_saved) - persistence_decay_constant * rounds_since_saved))
+		if(!sheets_by_material[id])
+			sheets_by_material -= id
 
 /obj/machinery/sheet_silo/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/stack/material))
