@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+import { BooleanLike, classes, pureComponentHooks } from '../../common/react';
 import { createVNode } from 'inferno';
 import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 import { CSS_COLORS } from '../constants';
@@ -17,7 +17,7 @@ export type BoxProps = ComponentProps & {
   position?: string | BooleanLike;
   overflow?: string | BooleanLike;
   overflowX?: string | BooleanLike;
-  overflowY?: string | BooleanLike;
+  overflowY?: string| BooleanLike;
   top?: string | BooleanLike;
   bottom?: string | BooleanLike;
   left?: string | BooleanLike;

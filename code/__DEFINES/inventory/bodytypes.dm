@@ -60,6 +60,8 @@
 #define BODYTYPE_XENOHYBRID			"xenohybrid"
 /// digitigrade unathi
 #define BODYTYPE_UNATHI_DIGI        "unathi-digi"
+/// ipc - from aurora, currently unused other than in sprites
+#define BODYTYPE_IPC                "ipc"
 /// krisitik
 #define BODYTYPE_KRISITIK			"krisitik"
 
@@ -114,6 +116,7 @@
 #define BODYTYPE_STRING_PHORONOID "phoronoid"
 #define BODYTYPE_STRING_WEREBEAST "werebeast"
 #define BODYTYPE_STRING_XENOHYBRID "xenohybrid"
+#define BODYTYPE_STRING_IPC "ipc"
 #define BODYTYPE_STRING_KRISITIK "krisitik" //Currently Unused until I can do Suit Sprites
 
 /proc/bodytype_to_string(bodytype)
@@ -157,6 +160,8 @@
 			return BODYTYPE_STRING_WEREBEAST
 		if(BODYTYPE_XENOHYBRID)
 			return BODYTYPE_STRING_XENOHYBRID
+		if(BODYTYPE_IPC)
+			return BODYTYPE_STRING_IPC
 		if(BODYTYPE_KRISITIK)
 			return BODYTYPE_STRING_VULPKANIN //Borrowing Vulp Sprites until I can sprite all the space suits.
 		else

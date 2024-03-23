@@ -11,7 +11,7 @@
 	abstract_type = /datum/design
 
 	//? Design Data - Core
-	/// Must be unique - id of design in CamelCase.
+	/// Must be unique - id of design should be 'written-like-this'.
 	var/id
 	/// design flags - see [code/__DEFINES/datums/design.dm]
 	var/design_flags = NONE

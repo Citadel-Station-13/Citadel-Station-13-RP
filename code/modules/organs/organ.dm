@@ -5,6 +5,10 @@
 	drop_sound = 'sound/items/drop/flesh.ogg'
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
+	//* Biology / Identity *//
+	/// what biology we are
+	var/biology_type = BIOLOGY_TYPE_HUMAN
+
 //! ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"
@@ -318,6 +322,7 @@
 /// Being used to make robutt hearts, etc
 /obj/item/organ/proc/robotize()
 	robotic = ORGAN_ROBOT
+	biology_type = BIOLOGY_TYPE_SYNTH
 	src.status &= ~ORGAN_BROKEN
 	src.status &= ~ORGAN_BLEEDING
 	src.status &= ~ORGAN_CUT_AWAY

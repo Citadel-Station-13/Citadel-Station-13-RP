@@ -299,7 +299,12 @@
 			open()
 	..()
 
-/obj/machinery/door/update_icon()
+/obj/machinery/door/update_icon(updates)
+	snowflake_please_refactor_me_later_update_icon_hook()
+	return ..()
+
+// todo: FUCK.
+/obj/machinery/door/proc/snowflake_please_refactor_me_later_update_icon_hook()
 	if(density)
 		icon_state = "door1"
 	else

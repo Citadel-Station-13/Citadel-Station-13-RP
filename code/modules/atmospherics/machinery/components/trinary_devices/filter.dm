@@ -71,13 +71,13 @@
 /obj/machinery/atmospherics/component/trinary/filter/proc/set_rate(liters)
 	flow_setting = clamp(liters, 0, air1.volume)
 
-/obj/machinery/atmospherics/component/trinary/filter/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/trinary/filter/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["filtering"] = filtering
 	.["maxRate"] = air1.volume
 	.["rate"] = flow_setting
 
-/obj/machinery/atmospherics/component/trinary/filter/ui_static_data(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/component/trinary/filter/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["atmosContext"] = global.gas_data.tgui_gas_context()
 

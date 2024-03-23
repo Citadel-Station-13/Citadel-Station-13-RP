@@ -6,30 +6,6 @@
 /// Checks if all high bits in req_mask are set in bitfield.
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
-/// Inverts the colour of an HTML string.
-/// TODO: We can probably do this better these days. @Zandario
-/proc/invertHTML(HTMLstring)
-	if (!(istext(HTMLstring)))
-		CRASH("Given non-text argument!")
-	else if(length(HTMLstring) != 7)
-		CRASH("Given non-HTML argument!")
-	var/textr = copytext(HTMLstring, 2, 4)
-	var/textg = copytext(HTMLstring, 4, 6)
-	var/textb = copytext(HTMLstring, 6, 8)
-	var/r = hex2num(textr)
-	var/g = hex2num(textg)
-	var/b = hex2num(textb)
-	textr = num2hex(255 - r)
-	textg = num2hex(255 - g)
-	textb = num2hex(255 - b)
-	if (length(textr) < 2)
-		textr = "0[textr]"
-	if (length(textg) < 2)
-		textr = "0[textg]"
-	if (length(textb) < 2)
-		textr = "0[textb]"
-	return "#[textr][textg][textb]"
-
 /**
  * Returns location.  Returns null if no location was found.
  *
@@ -219,9 +195,6 @@
 			return TRUE
 	return FALSE
 
-/proc/sign(x)
-	return x!=0?x/abs(x):0
-
 /// Ultra-Fast Bresenham Line-Drawing Algorithm.
 /proc/getline(atom/M,atom/N)
 	/// Starting x coordinate.
@@ -239,9 +212,9 @@
 	/// Absolute value of y distance.
 	var/dyabs = abs(dy)
 	///Sign of x distance (+ or -).
-	var/sdx = sign(dx)
+	var/sdx = SIGN(dx)
 	///Sign of y distance (+ or -).
-	var/sdy = sign(dy)
+	var/sdy = SIGN(dy)
 	/// Counters for steps taken, setting to distance/2.
 	var/x = (dxabs >> 1)
 	/// Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
@@ -490,13 +463,6 @@
 //	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
 //		GLOB.mob_list.Add(M)
 	return moblist
-
-/// Forces a variable to be positive.
-/proc/modulus(variable)
-	if(variable >= 0)
-		return variable
-	if(variable < 0)
-		return -variable
 
 /// Returns the turf located at the map edge in the specified direction relative to A.
 /proc/get_edge_target_turf(atom/A, direction) //Used for mass driver

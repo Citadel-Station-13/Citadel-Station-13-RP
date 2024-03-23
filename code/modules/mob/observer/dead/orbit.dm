@@ -35,7 +35,7 @@
 			update_static_data()
 			. = TRUE
 
-/datum/orbit_menu/ui_static_data(mob/user, datum/tgui/ui)
+/datum/orbit_menu/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	var/list/players = list()

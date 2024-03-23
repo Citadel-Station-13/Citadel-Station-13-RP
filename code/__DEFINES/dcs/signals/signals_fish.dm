@@ -31,7 +31,7 @@
 #define COMSIG_FISHING_ROD_REEL "fishing_rod_reel"
 	#define FISHING_ROD_REEL_HANDLED (1<<0)
 
-/// Sent by the fishing line /datum/beam when fishing line is snapped
+/// Sent by the fishing line /datum/beam_legacy when fishing line is snapped
 #define COMSIG_FISHING_LINE_SNAPPED "fishing_line_interrupted"
 
 //? Fish

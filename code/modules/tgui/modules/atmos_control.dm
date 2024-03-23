@@ -45,7 +45,7 @@
 		ui.open()
 	ui_ref = ui
 
-/datum/tgui_module_old/atmos_control/ui_static_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/atmos_control/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 
 	var/z = get_z(user)
@@ -67,7 +67,7 @@
 			"z" = alarm.z)
 	.["alarms"] = alarms
 
-/datum/tgui_module_old/atmos_control/ui_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/atmos_control/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	var/z = get_z(user)

@@ -1,12 +1,12 @@
-/datum/beam_components_cache
+/datum/beam_legacy_components_cache
 	var/list/beam_components = list()
 
-/datum/beam_components_cache/Destroy()
+/datum/beam_legacy_components_cache/Destroy()
 	for(var/component in beam_components)
 		qdel(component)
 	return ..()
 
-/proc/generate_tracer_between_points(datum/point/starting, datum/point/ending, datum/beam_components_cache/beam_components, beam_type, color, qdel_in = 5, light_range = 2, light_color_override, light_intensity = 1, instance_key)		//Do not pass z-crossing points as that will not be properly (and likely will never be properly until it's absolutely needed) supported!
+/proc/generate_tracer_between_points(datum/point/starting, datum/point/ending, datum/beam_legacy_components_cache/beam_components, beam_type, color, qdel_in = 5, light_range = 2, light_color_override, light_intensity = 1, instance_key)		//Do not pass z-crossing points as that will not be properly (and likely will never be properly until it's absolutely needed) supported!
 	if(!istype(starting) || !istype(ending) || !ispath(beam_type))
 		return
 	var/datum/point/midpoint = point_midpoint_points(starting, ending)

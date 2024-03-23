@@ -95,7 +95,7 @@
 /datum/wires/ui_state()
 	return GLOB.physical_state
 
-/datum/wires/ui_data(mob/user, datum/tgui/ui)
+/datum/wires/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	var/list/replace_colors
 

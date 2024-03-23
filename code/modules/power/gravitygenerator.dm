@@ -251,7 +251,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		ui = new(user, src, "GravityGenerator", name)
 		ui.open()
 
-/obj/machinery/gravity_generator/main/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/gravity_generator/main/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/data[0]
 
 	data["breaker"] = breaker

@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	// Start the special effects.
 	busy = TRUE
 	update_icon()
-	var/datum/beam/scan_beam = user.Beam(target, icon_state = "rped_upgrade", time = scan_delay)
+	var/datum/beam_legacy/scan_beam = user.Beam(target, icon_state = "rped_upgrade", time = scan_delay)
 	var/filter = filter(type = "outline", size = 1, color = "#FFFFFF")
 	target.filters += filter
 	var/list/box_segments = list()

@@ -20,7 +20,7 @@
 
 	var/list/temp = null				// temporary feedback messages
 
-/obj/machinery/computer/telecomms/monitor/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/telecomms/monitor/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["network"] = network

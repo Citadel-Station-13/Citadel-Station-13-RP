@@ -26,6 +26,8 @@ GLOBAL_VAR_INIT(cellefficiency, 1)
 
 /// cost of shield difussion in cell units
 #define CELL_COST_SHIELD_DIFFUSION			120
+/// cost per second in watts of base holofabricator operation per spot beamed
+#define POWER_USAGE_HOLOFABRICATOR 6000
 
 //* Machinery
 

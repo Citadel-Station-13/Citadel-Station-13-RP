@@ -14,7 +14,7 @@
 		ui = new(user, src, "FishCatalog", name)
 		ui.open()
 
-/obj/item/book/fish_catalog/ui_static_data(mob/user, datum/tgui/ui)
+/obj/item/book/fish_catalog/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	var/static/fish_info
 	if(!fish_info)

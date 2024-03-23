@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(tgui_old_rcon_modules)
 	GLOB.tgui_old_rcon_modules -= src
 
 
-/datum/tgui_module_old/rcon/ui_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/rcon/ui_data(mob/user, datum/tgui/ui, is_module)
 	FindDevices() // Update our devices list
 	var/list/data = ..()
 

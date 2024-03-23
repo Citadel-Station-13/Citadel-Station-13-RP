@@ -78,13 +78,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 /datum/color_matrix_editor/ui_state()
 	return GLOB.admin_state
 
-/datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui)
+/datum/color_matrix_editor/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	data["mapRef"] = proxy_view.assigned_map
 
 	return data
 
-/datum/color_matrix_editor/ui_data(mob/user, datum/tgui/ui)
+/datum/color_matrix_editor/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	data["currentColor"] = current_color
 

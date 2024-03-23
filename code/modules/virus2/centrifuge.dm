@@ -42,7 +42,7 @@
 		ui = new(user, src, "IsolationCentrifuge", name)
 		ui.open()
 
-/obj/machinery/computer/centrifuge/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/centrifuge/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	data["antibodies"] = null
 	data["pathogens"] = list()

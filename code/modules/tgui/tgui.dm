@@ -288,18 +288,21 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/list/modules = list()
+	var/list/modules = src_object.ui_static_modules(user, src)
 	// static first
 	if(with_static_data)
-		json_data["static"] = src_object.ui_static_data(user, src, state)
+		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
-			modules[id] = module.ui_static_data(user, src, TRUE)
+			modules[id] = module.ui_static_data(user, src, TRUE) | module.ui_data(user, src, TRUE)
 	if(with_data)
-		json_data["data"] = src_object.ui_data(user, src, state)
+		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
-			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
+			if(islist(modules[id]))
+				modules[id] = modules[id] | module.ui_data(user, src, TRUE)
+			else
+				modules[id] = module.ui_data(user, src, TRUE)
 	if(modules)
 		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)
@@ -489,7 +492,9 @@
 	SIGNAL_HANDLER
 	unregister_module(source)
 
-/datum/tgui/proc/module_send_data(datum/source, mob/user, datum/tgui/ui, list/data)
+/datum/tgui/proc/module_send_data(datum/source, mob/user, datum/tgui/ui, list/data, target_modules)
+	if(!isnull(target_modules) && target_modules == FALSE)
+		return
 	if(!isnull(user) && user != user)
 		return
 	if(!isnull(ui) && ui != src)

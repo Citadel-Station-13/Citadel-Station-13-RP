@@ -107,6 +107,61 @@
 
 // todo: refactor above
 
+//* Afflictions *//
+
+/**
+ * inflicts radiation.
+ * will not heal it.
+ *
+ * @params
+ * - amt - how much
+ * - check_armor - do'th we care about armor?
+ * - def_zone - zone to check if we do
+ */
+/mob/living/proc/afflict_radiation(amt, run_armor, def_zone)
+	if(amt <= 0)
+		return
+	if(run_armor)
+		amt *= 1 - ((legacy_mob_armor(def_zone, ARMOR_RAD)) / 100)
+	radiation += max(0, RAD_MOB_ADDITIONAL(amt, radiation))
+
+/**
+ * heals radiation.
+ *
+ * @params
+ * - amt - how much
+ */
+/mob/living/proc/cure_radiation(amt)
+	if(amt <= 0)
+		return
+	radiation = max(0, radiation - amt)
+
+//* Damage *//
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_brute_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_fire_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_tox_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_oxy_loss(amount)
+	return 0
+
 //* Raw Damage *//
 
 /**
@@ -154,31 +209,209 @@
 	// todo: don't update health immediately
 	. = adjustBruteLoss(brute) + adjustFireLoss(burn)
 
-//? Afflictions
-/**
- * inflicts radiation.
- * will not heal it.
- *
- * @params
- * - amt - how much
- * - check_armor - do'th we care about armor?
- * - def_zone - zone to check if we do
- */
-/mob/living/proc/afflict_radiation(amt, run_armor, def_zone)
-	if(amt <= 0)
+//* Unsorted *//
+
+// Applies direct "cold" damage while checking protection against the cold.
+/mob/living/proc/inflict_cold_damage(amount)
+	amount *= 1 - get_cold_protection(50) // Within spacesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// Ditto, but for "heat".
+/mob/living/proc/inflict_heat_damage(amount)
+	amount *= 1 - get_heat_protection(10000) // Within firesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// and one for electricity because why not
+/mob/living/proc/inflict_shock_damage(amount)
+	electrocute_act(amount, null, 1 - get_shock_protection(), pick(BP_HEAD, BP_TORSO, BP_GROIN))
+
+// also one for water (most things resist it entirely, except for slimes)
+/mob/living/proc/inflict_water_damage(amount)
+	amount *= 1 - get_water_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
+
+// one for abstracted away ""poison"" (mostly because simplemobs shouldn't handle reagents)
+/mob/living/proc/inflict_poison_damage(amount)
+	if(isSynthetic())
 		return
-	if(run_armor)
-		amt *= 1 - ((legacy_mob_armor(def_zone, ARMOR_RAD)) / 100)
-	radiation += max(0, RAD_MOB_ADDITIONAL(amt, radiation))
+	amount *= 1 - get_poison_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
+
+// heal ONE external organ, organ gets randomly selected from damaged ones.
+/mob/living/proc/heal_organ_damage(var/brute, var/burn)
+	adjustBruteLoss(-brute)
+	adjustFireLoss(-burn)
+	src.update_health()
 
 /**
- * heals radiation.
- *
- * @params
- * - amt - how much
+ * @return amount healed
  */
-/mob/living/proc/cure_radiation(amt)
-	if(amt <= 0)
-		return
-	radiation = max(0, radiation - amt)
+/mob/living/proc/heal_overall_damage(var/brute, var/burn)
+	adjustBruteLoss(-brute)
+	adjustFireLoss(-burn)
+	. = brute + burn
+	src.update_health()
 
+/mob/living/proc/getBruteLoss()
+	return bruteloss
+
+/mob/living/proc/getShockBruteLoss()	//Only checks for things that'll actually hurt (not robolimbs)
+	return bruteloss
+
+/mob/living/proc/getActualBruteLoss()	// Mostly for humans with robolimbs.
+	return getBruteLoss()
+
+//'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
+/mob/living/proc/adjustBruteLoss(var/amount,var/include_robo)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_brute_damage_percent))
+				amount *= M.incoming_brute_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	bruteloss = min(max(bruteloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/getOxyLoss()
+	return oxyloss
+
+/mob/living/proc/adjustOxyLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_oxy_damage_percent))
+				amount *= M.incoming_oxy_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	oxyloss = min(max(oxyloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setOxyLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	oxyloss = amount
+
+/mob/living/proc/getToxLoss()
+	return toxloss
+
+/mob/living/proc/adjustToxLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_tox_damage_percent))
+				amount *= M.incoming_tox_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	toxloss = min(max(toxloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setToxLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	toxloss = amount
+
+/mob/living/proc/getFireLoss()
+	return fireloss
+
+/mob/living/proc/getShockFireLoss()	//Only checks for things that'll actually hurt (not robolimbs)
+	return fireloss
+
+/mob/living/proc/getActualFireLoss()	// Mostly for humans with robolimbs.
+	return getFireLoss()
+
+//'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
+/mob/living/proc/adjustFireLoss(var/amount,var/include_robo)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_fire_damage_percent))
+				amount *= M.incoming_fire_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	fireloss = min(max(fireloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/getCloneLoss()
+	return cloneloss
+
+/mob/living/proc/adjustCloneLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_clone_damage_percent))
+				amount *= M.incoming_clone_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+
+	cloneloss = min(max(cloneloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setCloneLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	cloneloss = amount
+
+/mob/living/proc/getBrainLoss()
+	return brainloss
+
+/mob/living/proc/adjustBrainLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	brainloss = min(max(brainloss + amount, 0),(getMaxHealth()*2))
+
+/mob/living/proc/setBrainLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	brainloss = amount
+
+/mob/living/proc/getHalLoss()
+	return halloss
+
+/mob/living/proc/adjustHalLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	if(amount > 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_damage_percent))
+				amount *= M.incoming_damage_percent
+			if(!isnull(M.incoming_hal_damage_percent))
+				amount *= M.incoming_hal_damage_percent
+			if(!isnull(M.disable_duration_percent))
+				amount *= M.incoming_hal_damage_percent
+	else if(amount < 0)
+		for(var/datum/modifier/M in modifiers)
+			if(!isnull(M.incoming_healing_percent))
+				amount *= M.incoming_healing_percent
+	halloss = min(max(halloss + amount, 0),(getMaxHealth()*2))
+	update_health()
+
+/mob/living/proc/setHalLoss(var/amount)
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
+	halloss = amount

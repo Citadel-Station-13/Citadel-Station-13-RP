@@ -261,6 +261,12 @@
 		. += T
 	return pick(.)
 
+/proc/_filter(...)
+	return filter(arglist(args))
+
+/proc/_generator(...)
+	return generator(arglist(args))
+
 /proc/_url_encode(str)
 	return url_encode(str)
 

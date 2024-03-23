@@ -394,7 +394,7 @@
  * Do not do anything that will re-move the atom, or bad things happen.
  * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
  */
-/atom/movable/Crossed(atom/movable/AM, oldloc)
+/atom/movable/Crossed(atom/movable/AM)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)

@@ -49,7 +49,7 @@
 		ui = new(user, src, "DiseaseSplicer", name)
 		ui.open()
 
-/obj/machinery/computer/diseasesplicer/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/diseasesplicer/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["dish_inserted"] = !!dish

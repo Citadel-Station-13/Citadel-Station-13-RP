@@ -183,3 +183,9 @@
  */
 /datum/proc/deserialize(list/data)
 	return TRUE
+
+/**
+ * clone this entity
+ */
+/datum/proc/clone()
+	return new type

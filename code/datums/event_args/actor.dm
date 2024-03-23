@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * used to hold semantic data about an action being done by an actor vs initiator (controller)
  */

@@ -37,7 +37,7 @@
 	var/max_distance = 5
 
 	/// Fishing line visual
-	var/datum/beam/fishing_line
+	var/datum/beam_legacy/fishing_line
 
 /datum/fishing_challenge/New(atom/spot, reward_path, obj/item/fishing_rod/rod, mob/user)
 	src.user = user
@@ -164,7 +164,7 @@
 	if(!completed)
 		complete(FALSE)
 
-/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui)
+/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["difficulty"] = max(1,min(difficulty,100))
 	.["fish_ai"] = fish_ai

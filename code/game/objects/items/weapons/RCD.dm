@@ -207,7 +207,7 @@
 
 	var/true_delay = rcd_results[RCD_VALUE_DELAY] * tool_speed
 
-	var/datum/beam/rcd_beam = null
+	var/datum/beam_legacy/rcd_beam = null
 	if(ranged)
 		var/atom/movable/beam_origin = user // This is needed because mecha pilots are inside an object and the beam won't be made if it tries to attach to them..
 		if(!isturf(beam_origin.loc))

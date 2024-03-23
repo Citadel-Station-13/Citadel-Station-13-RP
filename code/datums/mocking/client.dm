@@ -1,5 +1,5 @@
 /// This should match the interface of /client wherever necessary.
-/datum/client_interface
+/datum/mocking/client
 	/// Player preferences datum for the client
 	var/datum/preferences/prefs
 
