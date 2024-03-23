@@ -163,6 +163,8 @@
 	/// set during move: staged depth; on successful move, we update depth_current if it's different.
 	var/tmp/depth_staged = 0
 
+	var/spam_flag = FALSE //spam emote
+
 //virology stuffs
 	var/list/datum/disease2/disease/virus2 = list()
 	var/image/pathogen
