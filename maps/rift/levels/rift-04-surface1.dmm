@@ -10399,8 +10399,16 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "gVk" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/turbolift/rsurface/level1)
+/obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/paint/black,
+/turf/simulated/floor/plating,
+/area/maintenance/library)
 "gVB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -21369,8 +21377,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/security{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/prison/upper)
@@ -25896,7 +25903,9 @@
 /turf/simulated/open,
 /area/security/prison/upper)
 "qlA" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rmine/surface)
 "qlX" = (
 /obj/structure/railing,
@@ -32386,7 +32395,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "tXx" = (
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/offwhite,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rsurface/level1)
 "tXS" = (
 /obj/structure/closet/firecloset,
@@ -38805,9 +38816,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison/upper)
-"xPm" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/rmine/surface)
 "xPr" = (
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_north)
@@ -54431,11 +54439,11 @@ eEi
 fnp
 rsQ
 smJ
-gVk
 tXx
 tXx
 tXx
-gVk
+tXx
+tXx
 sFI
 oiR
 oiR
@@ -55207,11 +55215,11 @@ eEi
 epV
 rsQ
 wSD
-gVk
 tXx
 tXx
 tXx
-gVk
+tXx
+tXx
 fDe
 oiR
 oiR
@@ -57912,8 +57920,8 @@ tXa
 pMK
 oIR
 qlA
-xPm
-xPm
+qlA
+qlA
 qlA
 vRV
 pbz
@@ -58105,10 +58113,10 @@ ouV
 bXZ
 bXZ
 bXZ
-xPm
+qlA
 cLy
 cLy
-xPm
+qlA
 vRV
 vRV
 qzJ
@@ -58496,7 +58504,7 @@ dMw
 wMZ
 cLy
 cLy
-xPm
+qlA
 vRV
 vRV
 wUt
@@ -58688,8 +58696,8 @@ gvB
 jdt
 nQJ
 qlA
-xPm
-xPm
+qlA
+qlA
 qlA
 usB
 oLb
@@ -60812,7 +60820,7 @@ caZ
 uoZ
 pcy
 pcy
-pcy
+gVk
 pcy
 dpT
 hKa

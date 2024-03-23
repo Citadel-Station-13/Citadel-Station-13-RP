@@ -400,7 +400,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "bs" = (
 /obj/structure/railing{
@@ -714,7 +716,9 @@
 /area/tradeport/commons)
 "cF" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint_stripe/purple,
+/obj/effect/paint/black,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "cG" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
@@ -1860,8 +1864,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Nebula Gas - Employees Only";
-	req_access = list(160);
-	req_one_access = null
+	req_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -2117,7 +2120,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "hL" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2343,7 +2348,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "iA" = (
 /obj/structure/cable/yellow{
@@ -3022,7 +3029,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "kJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3435,8 +3444,7 @@
 "md" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -3796,8 +3804,7 @@
 "ns" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
@@ -3834,7 +3841,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "nC" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -3893,7 +3902,9 @@
 /obj/machinery/holosign/bar{
 	id = "tradersign"
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "nO" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
@@ -3985,9 +3996,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "oj" = (
@@ -5115,7 +5124,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "sP" = (
 /turf/simulated/wall/r_wall,
@@ -5383,7 +5394,6 @@
 /area/tradeport/dock)
 "tP" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -5565,7 +5575,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "uF" = (
 /obj/structure/window/reinforced{
@@ -5922,8 +5934,7 @@
 "vE" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor,
@@ -5969,7 +5980,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "vP" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -6102,7 +6115,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "wn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7103,7 +7118,6 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -7114,7 +7128,6 @@
 	dir = 4;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/mineral/floor/vacuum,
@@ -7562,7 +7575,6 @@
 	pixel_y = -5
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/int_door,
@@ -7701,7 +7713,6 @@
 "BU" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/machinery/access_button/airlock_interior{
@@ -7757,8 +7768,17 @@
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "BZ" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/shuttle/trade_ship/cockpit)
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/paint/black,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
+/area/shuttle/trade_ship/general)
 "Ca" = (
 /obj/machinery/vending/loadout/overwear,
 /turf/simulated/floor/wood,
@@ -8499,9 +8519,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "EQ" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "ER" = (
@@ -8759,7 +8777,9 @@
 /area/shuttle/trade_ship/general)
 "FP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "FQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9065,7 +9085,6 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9640,8 +9659,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/freezer{
 	name = "Nebula Gas - Freezer";
-	req_access = list(160);
-	req_one_access = null
+	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -9800,9 +9818,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -9860,7 +9876,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "Kb" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -10054,7 +10072,6 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/machinery/access_button/airlock_exterior{
@@ -10527,7 +10544,6 @@
 	frequency = 1382;
 	id_tag = "safari_access";
 	name = "John Safari's Adventure Emporium";
-	req_access = null;
 	tag = "safari_door"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10688,7 +10704,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "MX" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/cockpit)
 "MY" = (
 /obj/machinery/door/firedoor{
@@ -11136,9 +11154,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "OE" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -11511,7 +11527,8 @@
 /turf/simulated/floor/airless,
 /area/tradeport/exterior)
 "PJ" = (
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "PL" = (
 /obj/machinery/light{
@@ -11541,7 +11558,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 8018;
 	id_tag = "trade_space_lock";
-	master_tag = null;
 	pixel_x = 25
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
@@ -12063,7 +12079,6 @@
 "RJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/int_door,
@@ -12252,7 +12267,9 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "Su" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "Sy" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -12701,7 +12718,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/black,
+/obj/effect/paint_stripe/purple,
+/turf/simulated/wall/rshull,
 /area/shuttle/trade_ship/general)
 "Ud" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14068,8 +14087,7 @@
 	internal_pressure_bound_default = 4000;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
@@ -14243,13 +14261,7 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 8018;
 	id_tag = "trade_space_lock";
-	pixel_x = -25;
-	tag_airpump = null;
-	tag_chamber_sensor = null;
-	tag_exterior_door = null;
-	tag_exterior_sensor = null;
-	tag_interior_door = null;
-	tag_interior_sensor = null
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -35726,10 +35738,10 @@ Jv
 Jv
 Jv
 Jv
-PJ
+Su
 NP
 NP
-PJ
+Su
 Jv
 Jv
 Jv
@@ -35919,12 +35931,12 @@ Jv
 Jv
 Jv
 Jv
-PJ
+Su
 Su
 EP
 aG
 Su
-PJ
+Su
 Jv
 Jv
 Jv
@@ -36502,10 +36514,10 @@ Jv
 Jv
 Jv
 Su
-BZ
-BZ
+MX
+MX
 vk
-BZ
+MX
 Su
 Jv
 Jv
@@ -36695,12 +36707,12 @@ Jv
 Jv
 Jv
 Jv
-PJ
+Su
 oV
 ZP
 Gb
 TD
-PJ
+Su
 Jv
 Jv
 Jv
@@ -36884,22 +36896,22 @@ dA
 Jv
 Jv
 Jv
-PJ
+Su
 nm
 nm
-PJ
+Su
 Jv
-PJ
-BZ
+Su
+MX
 MX
 nw
 vG
-PJ
+Su
 Jv
-PJ
+Su
 NJ
 NJ
-PJ
+Su
 Jv
 Jv
 NQ
@@ -37077,24 +37089,24 @@ wV
 dA
 Jv
 Jv
-PJ
+Su
 Su
 VQ
 KQ
-PJ
+Su
 Jv
-PJ
+Su
 gi
-BZ
+MX
 mb
 Ra
-PJ
+Su
 Jv
-PJ
+Su
 uA
 UZ
 Su
-PJ
+Su
 Jv
 NQ
 dA
@@ -37271,24 +37283,24 @@ wV
 dA
 Jv
 Jv
-PJ
+Su
 hu
 CW
 vb
-PJ
+Su
 Jv
-PJ
+Su
 yH
 hg
 nt
 De
-PJ
+Su
 Jv
-PJ
+Su
 LK
 ah
 bB
-PJ
+Su
 Jv
 NQ
 dA
@@ -37465,24 +37477,24 @@ wV
 dA
 Jv
 Jv
-PJ
+Su
 Fd
 CW
 DG
-PJ
+Su
 Vd
-PJ
+Su
 Ut
-BZ
+MX
 Sa
 Gd
 PJ
 ek
-PJ
+Su
 qb
 UZ
 eS
-PJ
+Su
 Jv
 NQ
 dA
@@ -37659,24 +37671,24 @@ wV
 dA
 VO
 Jv
-PJ
-PJ
+Su
+Su
 DA
-PJ
-PJ
-PJ
-PJ
+Su
+Su
+Su
+Su
 MX
 Fq
 jC
 BK
-BZ
+MX
 Uc
-PJ
-PJ
+Su
+Su
 cP
-PJ
-PJ
+Su
+Su
 Jv
 gM
 dA
@@ -37853,15 +37865,15 @@ wV
 dA
 Jv
 Jv
-PJ
+Su
 cg
 CW
 hB
 fw
-PJ
-PJ
-PJ
-PJ
+Su
+Su
+Su
+Su
 HX
 aZ
 Su
@@ -37870,7 +37882,7 @@ Fl
 UZ
 UZ
 jJ
-PJ
+Su
 Jv
 NQ
 dA
@@ -38052,7 +38064,7 @@ lf
 CW
 CW
 rR
-PJ
+Su
 TK
 eL
 Er
@@ -38634,14 +38646,14 @@ Fo
 Po
 XV
 yQ
-PJ
+Su
 LJ
 Ct
 UC
 bM
 wZ
 Me
-PJ
+Su
 yf
 HK
 mK
@@ -38823,11 +38835,11 @@ wV
 dA
 Jv
 Jv
-PJ
-PJ
-PJ
-PJ
-PJ
+Su
+Su
+Su
+Su
+Su
 Su
 HT
 Ct
@@ -38836,11 +38848,11 @@ xd
 wZ
 NO
 Su
-PJ
-PJ
-PJ
-PJ
-PJ
+Su
+Su
+Su
+Su
+Su
 Jv
 NQ
 dA
@@ -39018,7 +39030,7 @@ dA
 Jv
 Jv
 Jv
-PJ
+Su
 Su
 ab
 wD
@@ -39033,7 +39045,7 @@ dy
 FR
 Bu
 Su
-PJ
+Su
 Jv
 Jv
 NQ
@@ -39794,7 +39806,7 @@ dA
 Jv
 Jv
 Jv
-PJ
+Su
 Su
 Fr
 uS
@@ -39809,7 +39821,7 @@ fh
 If
 HQ
 Su
-PJ
+Su
 Jv
 Jv
 QS
@@ -39987,8 +39999,8 @@ Qp
 dA
 Jv
 Jv
-PJ
-PJ
+Su
+Su
 Su
 aA
 aA
@@ -40003,8 +40015,8 @@ aA
 aA
 aA
 Su
-PJ
-PJ
+Su
+Su
 Jv
 FS
 dA
@@ -40181,24 +40193,24 @@ sP
 dA
 VO
 nM
-PJ
+Su
 Su
 bI
 Dg
 xK
 xK
-PJ
+Su
 iE
 zE
 zE
 UQ
-PJ
+Su
 ge
 Ow
 uD
 nf
 Su
-PJ
+Su
 nM
 FS
 dA
@@ -40763,7 +40775,7 @@ sP
 qj
 Jv
 Su
-PJ
+Su
 Su
 kq
 im
@@ -40780,7 +40792,7 @@ EM
 tH
 LG
 Su
-PJ
+Su
 Su
 NQ
 qj
@@ -40957,11 +40969,11 @@ Rz
 dA
 Jv
 Jv
-PJ
-PJ
-PJ
+Su
+Su
+Su
 gj
-PJ
+Su
 Su
 Su
 wh
@@ -40970,11 +40982,11 @@ NC
 lX
 Su
 Su
-PJ
+Su
 TZ
 Ka
-PJ
-PJ
+Su
+Su
 Jv
 NQ
 dA
@@ -41156,14 +41168,14 @@ cQ
 ui
 im
 jK
-PJ
+Su
 fS
 lZ
 ze
 XO
 JO
 FD
-PJ
+Su
 sR
 ey
 oK
@@ -41350,14 +41362,14 @@ cQ
 Mh
 FO
 Pv
-PJ
+Su
 fS
 Mq
 NK
 Hn
 JO
 FD
-PJ
+Su
 uP
 II
 QU
@@ -41539,7 +41551,7 @@ Rz
 dA
 Jv
 Jv
-PJ
+Su
 Su
 Bl
 yv
@@ -41556,7 +41568,7 @@ jX
 js
 WT
 Su
-PJ
+Su
 Jv
 NQ
 dA
@@ -41732,8 +41744,8 @@ sP
 Rz
 dA
 Jv
-PJ
-PJ
+Su
+Su
 bJ
 NO
 NO
@@ -41750,8 +41762,8 @@ Ks
 tt
 IC
 SR
-PJ
-PJ
+Su
+Su
 NQ
 nq
 tu
@@ -41926,8 +41938,8 @@ sP
 Rz
 dA
 Jv
-PJ
-PJ
+Su
+Su
 oR
 zG
 pC
@@ -41937,15 +41949,15 @@ nB
 uE
 uE
 uE
-uE
+BZ
 kI
 eP
 Ce
 VX
 Pz
 QY
-PJ
-PJ
+Su
+Su
 NQ
 nq
 dw
@@ -42120,7 +42132,7 @@ sP
 Rz
 dA
 Jv
-PJ
+Su
 iz
 wl
 wl
@@ -42139,7 +42151,7 @@ wl
 wl
 wl
 br
-PJ
+Su
 NQ
 nq
 tu
@@ -42314,26 +42326,26 @@ sP
 sP
 dA
 VO
-PJ
+Su
 uE
 uE
 uE
 uE
-PJ
-PJ
+Su
+Su
 Jv
 Jv
 Jv
 Jv
 Jv
 Jv
-PJ
-PJ
+Su
+Su
 uE
 uE
 uE
 uE
-PJ
+Su
 gM
 nq
 dw
@@ -42508,12 +42520,12 @@ dD
 sP
 dA
 Jv
-PJ
+Su
 Iz
 Iz
 Iz
 Iz
-PJ
+Su
 Jv
 Jv
 Jv
@@ -42522,12 +42534,12 @@ Jv
 Jv
 Jv
 Jv
-PJ
+Su
 Iz
 Iz
 Iz
 Iz
-PJ
+Su
 NQ
 nq
 tu

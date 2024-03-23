@@ -765,7 +765,9 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/facility/interior/medical)
 "iF" = (
-/turf/simulated/shuttle/wall/voidcraft,
+/obj/effect/paint/wallgunmetal,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/rift/facility/interior/elevator)
 "iN" = (
 /obj/machinery/power/terminal{
@@ -2401,8 +2403,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "CN" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/rwest_mining/caves)
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/outside/west_caves)
 "CT" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -2854,9 +2857,6 @@
 /obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
-"Hh" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/rift/facility/interior/elevator)
 "Hi" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -3502,7 +3502,8 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/storage)
 "PP" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint_stripe/beige,
+/turf/simulated/wall/rshull,
 /area/turbolift/rwest_mining/caves)
 "PS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -4702,12 +4703,12 @@ vv
 vv
 vv
 vv
-wS
-wS
-wS
-wS
-wS
-wS
+CN
+CN
+CN
+CN
+CN
+CN
 vv
 vv
 vv
@@ -4896,12 +4897,12 @@ vv
 vv
 vv
 vv
-wS
+CN
 Ts
 Ts
 Ts
 Ts
-wS
+CN
 vv
 vv
 vv
@@ -5090,12 +5091,12 @@ vv
 vv
 vv
 vv
-wS
+CN
 Ts
 Ts
 Ts
 Ts
-wS
+CN
 vv
 vv
 vv
@@ -5284,12 +5285,12 @@ vv
 vv
 vv
 vv
-wS
+CN
 Ts
 Ts
 Ts
 Ts
-wS
+CN
 vv
 vv
 vv
@@ -5478,12 +5479,12 @@ vv
 vv
 vv
 vv
-wS
+CN
 Ts
 Ts
 Ts
 Ts
-wS
+CN
 vv
 vv
 vv
@@ -5672,12 +5673,12 @@ vv
 vv
 vv
 vv
-wS
-wS
-wS
-wS
-wS
-wS
+CN
+CN
+CN
+CN
+CN
+CN
 vv
 vv
 vv
@@ -8164,10 +8165,10 @@ be
 be
 be
 be
-Hh
 iF
 iF
-Hh
+iF
+iF
 BX
 ju
 Cm
@@ -8746,10 +8747,10 @@ be
 be
 be
 be
-Hh
 iF
 iF
-Hh
+iF
+iF
 AF
 aV
 mS
@@ -36161,10 +36162,10 @@ mJ
 XY
 bc
 PP
-CN
+PP
 bP
 bP
-CN
+PP
 PP
 Rs
 ir
@@ -36354,12 +36355,12 @@ wH
 mJ
 XY
 dK
-CN
+PP
 gz
 gz
 gz
 gz
-CN
+PP
 vz
 vz
 ir
@@ -36553,7 +36554,7 @@ gz
 gz
 gz
 gz
-CN
+PP
 vz
 vz
 vz
@@ -36747,7 +36748,7 @@ gz
 gz
 gz
 gz
-CN
+PP
 vz
 vz
 vz
@@ -36936,12 +36937,12 @@ AL
 Vp
 XY
 dK
-CN
+PP
 gz
 gz
 gz
 gz
-CN
+PP
 xU
 Dh
 Dh
@@ -37131,10 +37132,10 @@ Dh
 Dh
 ns
 PP
-CN
+PP
 bP
 bP
-CN
+PP
 PP
 zD
 Sv
