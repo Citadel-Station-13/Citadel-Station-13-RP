@@ -3,7 +3,8 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
-import { useComputedOnce } from "../../backend";
+import { InfernoNode } from "inferno";
+import { useComputedOnce, useLocalState } from "../../backend";
 import { Box, Section, Stack, Table, Tooltip } from "../../components";
 
 export interface GamePreferenceKeybindMiddlware {
@@ -77,9 +78,18 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
   // unfortunately this can't be cached
   // damnit
   const keysByKeybind: Record<string, string[]> = computeBoundKeys(props.bindings);
+  // maybe this shouldn't be a function component
+  // and we should do a window event handler
+  // instead of using a lazy-ass modal
+  // that would probably be smart.
+  // oh well! problems for later.
+  // (we all know no one's touching this again)
+  const [activeCapture, setActiveCapture] = useLocalState<InfernoNode | null>(context, 'activeKeyCapture', null);
 
   return (
     <Section fill scrollable>
+      {/* inject active capture vnode */}
+      {activeCapture}
       <Stack vertical>
         <Stack.Item>
           <Section title="Basic">
@@ -93,8 +103,20 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
               <hr />
               <Table>
                 {keybinds.map((keybind) => {
+                  let boundKeys: string[] = keysByKeybind[keybind.id] || [];
+                  try {
+                    boundKeys.at(0);
+                  }
+                  catch (e) {
+                    return (
+                      <Table.Row>
+                        error on {keybind.id}: {JSON.stringify(boundKeys)}
+                      </Table.Row>
+                    );
+                  }
                   return (
-                    <Table.Row key={keybind.id} minHeight={2} backgroundColor="#ff0000"
+                    <Table.Row key={keybind.id} backgroundColor="#ff0000"
+                      height="2em"
                       style={{
                         border: "1px solid", "border-color": "#ffffff77",
                       }}>
@@ -113,14 +135,22 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                           </Box>
                         </Tooltip>
                       </Table.Cell>
-                      {[0, 1, 2].map((i) => (
-                        <Table.Cell width="20%" key={i}>
-                          <Box height="100%" width="100%" overflowX="hidden"
-                            style={{ "background-color": "#0000ff" }}>
-                            test
-                          </Box>
-                        </Table.Cell>
-                      ))}
+                      {[0, 1, 2].map((i) => {
+                        let bind: string | null
+                          = boundKeys.at(i) || null;
+                        return (
+                          <Table.Cell width="20%" key={i}>
+                            <Box height="100%" width="100%" overflowX="hidden"
+                              italic={!bind}
+                              textColor={bind? undefined : "#777777"}
+                              style={{ "background-color": "#0000ff" }}>
+                              {bind || "Add Bind..."}
+                            </Box>
+                          </Table.Cell>
+                        ); })}
+                      {/* <Table.Cell width="60%">
+                        {JSON.stringify(boundKeys)}
+                      </Table.Cell> */}
                     </Table.Row>
                   );
                 })}
@@ -131,4 +161,11 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
       </Stack>
     </Section>
   );
+};
+
+const KeybindingCaptureComponent = (props: {
+  bindId: string,
+  onCapture: (descriptor: GamePreferenceKeybindDescriptor) => void;
+}, context) => {
+
 };

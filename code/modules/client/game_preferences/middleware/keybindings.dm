@@ -83,6 +83,9 @@
 	prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = \
 		isnull(prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE])? TRUE : !!prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
 	var/list/keys_by_bind_id = list()
+	//! legacy: get rid of known trash values
+	prefs.keybindings -= "Unbound"
+	//! end
 	for(var/key in prefs.keybindings)
 		var/had_something = FALSE
 		if(islist(prefs.keybindings[key]))
