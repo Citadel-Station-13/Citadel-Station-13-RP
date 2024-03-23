@@ -62,6 +62,8 @@ const computeBoundKeys = (keysBound: Record<string, string[]>): Record<string, s
   return computed;
 };
 
+const KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN = "2em";
+
 const HOTKEY_MODE_DESCRIPTION = "Keybindings mode controls how the game behaves with tab and map/input focus.<br>If it is on <b>Hotkeys</b>, the game will always attempt to force you to map focus, meaning keypresses are sent \
 directly to the map instead of the input. You will still be able to use the command bar, but you need to tab to do it every time you click on the game map.<br>\
 If it is on <b>Input</b>, the game will not force focus away from the input bar, and you can switch focus using TAB between these two modes: If the input bar is pink, that means that you are in non-hotkey mode, sending all keypresses of the normal \
@@ -104,32 +106,25 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
               <Table>
                 {keybinds.map((keybind) => {
                   let boundKeys: string[] = keysByKeybind[keybind.id] || [];
-                  try {
-                    boundKeys.at(0);
-                  }
-                  catch (e) {
-                    return (
-                      <Table.Row>
-                        error on {keybind.id}: {JSON.stringify(boundKeys)}
-                      </Table.Row>
-                    );
-                  }
                   return (
-                    <Table.Row key={keybind.id} backgroundColor="#ff0000"
-                      height="2em"
+                    <Table.Row key={keybind.id}
+                      height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
                       style={{
                         border: "1px solid", "border-color": "#ffffff77",
                       }}>
-                      <Table.Cell width="40%" maxWidth="40%" backgroundColor="#00ff00"
-                        overflow="hidden"
-                        style={{ padding: "0 0", "padding-bottom": 0 }}>
+                      <Table.Cell width="40%" maxWidth="40%" backgroundColor="#00ff00">
                         <Tooltip content={keybind.desc}>
-                          <Box height="100%" width="100%" backgroundColor="#0000ff"
+                          <Box width="100%" backgroundColor="#0000ff"
+                            height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
                             style={{
+                              display: "flex",
+                              "align-items": "center",
+                              margin: "0 0",
+                              padding: "0 0",
+                            }}>
+                            <Box bold overflowX="hidden" backgroundColor="#ffff00" style={{
                               "white-space": "nowrap",
-                              position: "relative", top: 0, bottom: 0, left: 0, right: 0,
-                              display: "inline-block" }}>
-                            <Box bold height="100%" width="100%" overflowX="hidden">
+                            }}>
                               {keybind.name}
                             </Box>
                           </Box>
@@ -139,18 +134,30 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                         let bind: string | null
                           = boundKeys.at(i) || null;
                         return (
-                          <Table.Cell width="20%" key={i}>
-                            <Box height="100%" width="100%" overflowX="hidden"
-                              italic={!bind}
-                              textColor={bind? undefined : "#777777"}
-                              style={{ "background-color": "#0000ff" }}>
-                              {bind || "Add Bind..."}
+                          <Table.Cell width="20%" key={i} backgroundColor="#00ff00"
+                            height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
+                            style={{
+                              padding: "0 0",
+                              margin: "0 0",
+                            }}>
+                            <Box width="100%" backgroundColor="#ff0000"
+                              height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
+                              style={{
+                                display: "flex",
+                                "align-items": "center",
+                                "justify-content": "center",
+                                margin: "0 0",
+                                padding: "0, 0",
+                              }}>
+                              <Box width="100%" overflowX="hidden"
+                                italic={!bind}
+                                textColor={bind? undefined : "#777777"}
+                                style={{ "background-color": "#0000ff" }}>
+                                {bind || "Add Bind..."}
+                              </Box>
                             </Box>
                           </Table.Cell>
                         ); })}
-                      {/* <Table.Cell width="60%">
-                        {JSON.stringify(boundKeys)}
-                      </Table.Cell> */}
                     </Table.Row>
                   );
                 })}
