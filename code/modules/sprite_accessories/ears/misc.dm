@@ -3,7 +3,7 @@
 	id = "ears_capra_horns"
 	icon_state = "caprahorns"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/inkling
 	name = "colorable mature inkling tentacles"
@@ -11,21 +11,21 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_state = "inkling-colorable"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/peekinghuman
 	name = "peeking ears"
 	id = "ears_peeking"
 	icon_state = "earpeek"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/sleek
 	name = "sleek ears"
 	id = "ears_sleek"
 	icon_state = "sleek"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/teppiears
 	name = "Teppi Ears"
@@ -34,7 +34,7 @@
 	icon_state = "teppi_ears"
 	extra_overlay = "teppi_ears_inner"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/teppihorns
 	name = "Teppi Horns"
@@ -42,7 +42,7 @@
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
 	icon_state = "teppi_horns"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/teppiearshorns
 	name = "Teppi Ears and Horns"
@@ -52,11 +52,11 @@
 	extra_overlay = "teppi_ears_inner"
 	extra_overlay2 = "teppi_horns"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/zears
 	name = "jagged ears"
 	id = "ears_jagged"
 	icon_state = "zears"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

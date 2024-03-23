@@ -4,7 +4,7 @@
 	icon = 'icons/mob/sprite_accessories/tails.dmi'
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
 
-	color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
+	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
 	var/show_species_tail = 0 // If false, do not render species' tail.
 	var/clothing_can_hide = 1 // If true, clothing with HIDETAIL hides it
 	var/desc = "You should not see this..."

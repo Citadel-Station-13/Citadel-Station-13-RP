@@ -4,7 +4,7 @@
 	id = "ears_squirrel_color"
 	icon_state = "squirrel"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/squirrel_orange
 	name = "squirel, orange"

@@ -3,14 +3,14 @@
 	id = "wing_neckfur"
 	icon_state = "neckfur"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/wing/nevrean
 	name = "nevrean wings/fantail"
 	id = "wing_nevrean_wtail"
 	icon_state = "nevrean_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/wing/sepulchre_c_yw
 	name = "demon wings (colorable)"

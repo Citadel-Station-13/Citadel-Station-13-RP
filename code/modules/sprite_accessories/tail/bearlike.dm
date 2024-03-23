@@ -3,7 +3,7 @@
 	id = "tail_bear"
 	icon_state = "bear"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/bear_brown
 	name = "bear, brown"

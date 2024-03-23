@@ -266,7 +266,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(id)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(id)
 	if(!slot_meta)
 		return FALSE
 	return !(slot_meta.inventory_slot_flags & INV_SLOT_IS_INVENTORY) || !species || (id in species.hud.gear)

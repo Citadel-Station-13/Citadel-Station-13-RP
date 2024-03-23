@@ -10,7 +10,7 @@
 	icon_state = "fenearshc"
 	extra_overlay = "fenears-inner"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/foxears
 	name = "highlander zorren ears"
@@ -22,7 +22,7 @@
 	id = "ears_zorren_high_color"
 	icon_state = "foxearshc"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/sandfox
 	name = "Sandfox Ears"
@@ -31,7 +31,7 @@
 	icon_state = "sandfox"
 	extra_overlay = "sandfox-inner"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 //? vulp
 /datum/sprite_accessory/ears/vulp
@@ -39,7 +39,7 @@
 	id = "ears_vulp_dual"
 	icon_state = "vulp"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "vulp-inner"
 
 /datum/sprite_accessory/ears/vulp_jackal
@@ -47,7 +47,7 @@
 	id = "ears_vulp_thin_dual"
 	icon_state = "vulp_jackal"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "vulp_jackal-inner"
 
 /datum/sprite_accessory/ears/vulp_short
@@ -55,14 +55,14 @@
 	id = "ears_vulp_short"
 	icon_state = "vulp_terrier"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/vulp_short_dc
 	name = "vulpkanin short, dual-color"
 	id = "ears_vulp_short_dual"
 	icon_state = "vulp_terrier"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "vulp_terrier-inner"
 
 //? wolf
@@ -76,7 +76,7 @@
 	id = "ears_wolf_color"
 	icon_state = "wolf"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "wolfinner"
 
 /datum/sprite_accessory/ears/wolf_green
@@ -94,4 +94,4 @@
 	id = "lab_ears"
 	icon_state = "lab"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

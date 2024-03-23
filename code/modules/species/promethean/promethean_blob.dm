@@ -472,8 +472,8 @@
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
-			/datum/inventory_slot_meta/inventory/ears/left,
-			/datum/inventory_slot_meta/inventory/ears/right,
+			/datum/inventory_slot/inventory/ears/left,
+			/datum/inventory_slot/inventory/ears/right,
 		)))
 			blob.mob_radio.forceMove(reform_spot)
 		blob.mob_radio = null

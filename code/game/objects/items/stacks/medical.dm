@@ -56,7 +56,7 @@
 			to_chat(user, "<span class='warning'>You apply the [src], but it seems to have no effect...</span>")
 			use(1)
 			return FALSE
-		H.UpdateDamageIcon()
+		H.update_damage_overlay()
 	else
 		C.heal_organ_damage((src.heal_brute/2), (src.heal_burn/2))
 		user.visible_message( \

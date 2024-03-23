@@ -3,7 +3,7 @@
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	do_colouration = 1 // Yes color, using tail color
-	color_blend_mode = ICON_MULTIPLY  // The sprites for taurs are designed for ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE  // The sprites for taurs are designed for ICON_MULTIPLY
 	can_be_hidden = FALSE
 
 	var/icon/suit_sprites = null //File for suit sprites, if any.
@@ -447,7 +447,6 @@
 	name = "Alraune (natje) (Taur)"
 	icon_state = "alraune_s"
 	ani_state = "alraune_closed_s"
-	ckeys_allowed = list("natje")
 	do_colouration = 0
 	can_ride = 0
 	clip_mask_state = "taur_clip_mask_alraune"
@@ -479,7 +478,6 @@
 	id = "tail_taur_alraune_colorable"
 	icon_state = "alraunecolor_s"
 	ani_state = "alraunecolor_closed_s"
-	ckeys_allowed = null
 	do_colouration = 1
 	extra_overlay = "alraunecolor_markings"
 	extra_overlay_w = "alraunecolor_closed_markings"

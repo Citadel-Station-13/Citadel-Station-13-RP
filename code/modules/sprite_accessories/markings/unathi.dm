@@ -34,61 +34,61 @@
 	name = "Cobra Hood"
 	id = "marking_unathi_hood"
 	icon_state = "unathihood"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathihood_inner
 	name = "Cobra Hood (Inner)"
 	id = "marking_unathi_hood_inner"
 	icon_state = "unathihood_inner"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathidoublehorns
 	name = "Double Unathi Horns"
 	id = "marking_unathi_horns_double"
 	icon_state = "unathidoublehorns"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathihorns
 	name = "Unathi Horns"
 	id = "marking_unathi_horns"
 	icon_state = "unathihorns"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathiramhorns
 	name = "Unathi Ram Horns"
 	id = "marking_unathi_horns_ram"
 	icon_state = "unathiramhorns"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathishortspines
 	name = "Unathi Short Spines"
 	id = "marking_unathi_spines_short"
 	icon_state = "unathishortspines"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathilongspines
 	name = "Unathi Long Spines"
 	id = "marking_unathi_spines_lnog"
 	icon_state = "unathilongspines"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathishortfrills
 	name = "Unathi Short Frills"
 	id = "marking_unathi_frills_short"
 	icon_state = "unathishortfrills"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/unathi/unathilongfrills
 	name = "Unathi Long Frills"
 	id = "marking_unathi_frills_long"
 	icon_state = "unathilongfrills"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)

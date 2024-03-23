@@ -48,6 +48,10 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // Custom procs handle that.
 
+	//! LEGACY, TODO TO REMOVE
+	/// current head overlay pixel y offset
+	var/head_spriteacc_offset = 0
+
 //! ## Hair colour and style
 	var/h_style = "Bald"
 	var/r_hair = 0

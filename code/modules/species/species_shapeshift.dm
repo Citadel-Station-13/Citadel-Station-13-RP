@@ -110,18 +110,16 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
 	for(var/hairstyle in GLOB.legacy_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
-		if(gender == MALE && S.gender == FEMALE)
+		if(gender == MALE && S.random_generation_gender == FEMALE)
 			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(gender == FEMALE && S.random_generation_gender == MALE)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
-		if(gender == MALE && S.gender == FEMALE)
-			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
@@ -305,8 +303,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_ear_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
 		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_ear_styles[instance.name] = path
+		pretty_ear_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_ear_style = tgui_input_list(src, "Pick some ears!", "Character Preference", pretty_ear_styles)
@@ -359,8 +356,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_horn_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
 		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_horn_styles[instance.name] = path
+		pretty_horn_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_horn_style = tgui_input_list(src, "Pick some secondary ears!", "Character Preference", pretty_horn_styles)
@@ -413,8 +409,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_tail_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_tail_lookup)
 		var/datum/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_tail_styles[instance.name] = path
+		pretty_tail_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_tail_style = tgui_input_list(src, "Pick a tail!", "Character Preference", pretty_tail_styles)
@@ -467,8 +462,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_wing_styles = list("None" = null)
 	for(var/path in GLOB.legacy_wing_lookup)
 		var/datum/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_wing_styles[instance.name] = path
+		pretty_wing_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_wing_style = tgui_input_list(src, "Pick some wings!", "Character Preference", pretty_wing_styles)

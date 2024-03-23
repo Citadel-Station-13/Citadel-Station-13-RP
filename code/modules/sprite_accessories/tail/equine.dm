@@ -3,4 +3,4 @@
 	id = "tail_horse"
 	icon_state = "horse"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

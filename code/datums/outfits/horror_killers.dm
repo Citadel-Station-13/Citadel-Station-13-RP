@@ -59,7 +59,7 @@
 	sec_briefcase.contents += new /obj/item/gun/ballistic/revolver/mateba
 	sec_briefcase.contents += new /obj/item/ammo_magazine/s357
 	sec_briefcase.contents += new /obj/item/plastique
-	H.equip_to_slot_or_del(sec_briefcase, /datum/inventory_slot_meta/abstract/hand/left)
+	H.equip_to_slot_or_del(sec_briefcase, /datum/inventory_slot/abstract/hand/left)
 
 /datum/outfit/samurai
 	name = "Vengeful Samurai"

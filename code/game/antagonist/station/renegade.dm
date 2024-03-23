@@ -87,7 +87,7 @@ var/datum/antagonist/renegade/renegades
 	var/obj/item/gun = new gun_type(player)
 
 	// Attempt to put into a container.
-	if(player.equip_to_slot_if_possible(gun, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_FLUFFLESS | INV_OP_SILENT))
+	if(player.equip_to_slot_if_possible(gun, /datum/inventory_slot/abstract/put_in_storage, INV_OP_FLUFFLESS | INV_OP_SILENT))
 		return
 
 	// If that failed, attempt to put into any valid non-handslot

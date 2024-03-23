@@ -3,7 +3,7 @@
 	id = "tail_jagged_flufftail"
 	icon_state = "ztail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/curltail
 	name = "curltail (vwag)"
@@ -11,7 +11,7 @@
 	icon_state = "curltail"
 	ani_state = "curltail_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "curltail_mark"
 	extra_overlay_w = "curltail_mark_w"
 
@@ -20,14 +20,14 @@
 	id = "tail_avian_wagtail"
 	icon_state = "wagtail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/deertail
 	name = "deer tail, dual-color"
 	id = "tail_deer"
 	icon_state = "deertail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "deertail_mark"
 
 /datum/sprite_accessory/tail/Segmentedtail
@@ -35,7 +35,7 @@
 	id = "tail_segmented"
 	icon_state = "Segmentedtail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "Segmentedtailmarking"
 	ani_state = "Segmentedtail_w"
 	extra_overlay_w = "Segmentedtailmarking_w"
@@ -46,4 +46,4 @@
 	icon_state = "straighttail"
 	ani_state = "straighttail_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

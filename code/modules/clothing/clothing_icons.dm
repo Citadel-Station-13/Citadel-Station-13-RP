@@ -1,4 +1,4 @@
-/obj/item/clothing/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/clothing/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	. = ..()
 	if(inhands)
 		return
@@ -9,7 +9,7 @@
 		MA.add_overlay(bloodsies)
 
 //HELMET: May have a lighting overlay
-/obj/item/clothing/head/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/clothing/head/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	. = ..()
 	if(on && (slot_meta.id == SLOT_ID_HEAD))
 		var/bodytype_str = bodytype_to_string(bodytype)
@@ -18,7 +18,7 @@
 		MA.add_overlay(I)
 
 //SUIT: Blood state is slightly different
-/obj/item/clothing/suit/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/clothing/suit/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	. = ..()
 	if(inhands)
 		return

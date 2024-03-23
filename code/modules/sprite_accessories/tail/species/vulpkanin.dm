@@ -3,7 +3,7 @@
 	id = "tail_vulp"
 	icon_state = "vulptail_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/vulp_new
 	name = "new vulp tail (vwag)"
@@ -11,7 +11,7 @@
 	icon_state = "vulptail"
 	ani_state = "vulptail_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "vulptail_mark"
 	extra_overlay_w = "vulptail_mark_w"
 
@@ -20,4 +20,4 @@
 	id = "tail_vulp3"
 	icon_state = "vulptail_alt"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
