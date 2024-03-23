@@ -26,7 +26,7 @@
 	friendly = "pinches"
 
 	meat_amount = 1
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/crab
 
 	say_list_type = /datum/say_list/crab
 
@@ -62,7 +62,7 @@
 
 // Meat!
 
-/obj/item/reagent_containers/food/snacks/meat/crab
+/obj/item/reagent_containers/food/snacks/ingredient/meat/crab
 	name = "meat"
 	desc = "A chunk of meat."
 	icon_state = "crustacean-meat"

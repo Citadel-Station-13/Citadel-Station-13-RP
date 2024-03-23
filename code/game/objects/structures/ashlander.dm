@@ -327,56 +327,6 @@
 	update_icon()
 	return TRUE
 
-//Ashies gotta eat.
-/obj/machinery/appliance/cooker/grill/spit
-	name = "cooking spit"
-	desc = "Primitive structures such as these have been used to cook raw meat for as long as the benefits of such a practice have been known."
-	icon = 'icons/obj/lavaland.dmi'
-	icon_state = "spitgrill_off"
-	food_color = "#630905"
-	on_icon = "spitgrill_on"
-	off_icon = "spitgrill_off"
-	max_contents = 1
-	container_type = /obj/item/reagent_containers/cooking_container/grill/spit
-	use_power = USE_POWER_OFF
-	var/lit = 0
-
-/obj/machinery/appliance/cooker/grill/spit/attempt_toggle_power(mob/user)
-	if (!isliving(user))
-		return
-
-	if (!user.IsAdvancedToolUser())
-		to_chat(user, "You lack the dexterity to do that!")
-		return
-
-	if (user.stat || user.restrained() || user.incapacitated())
-		return
-
-	if (!Adjacent(user) && !issilicon(user))
-		to_chat(user, "You can't reach [src] from here.")
-		return
-
-	if (!lit) //It's not lit.
-		machine_stat &= ~POWEROFF
-		lit = 1
-		user.visible_message("[user] ignites the flame beneath the [src].", "You ignite the flame under the [src].")
-
-	else //Its on, turn it off.
-		lit = 0
-		user.visible_message("[user] douses the flame of the [src].", "You douse the flame.")
-
-	playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 40, 1)
-	update_icon()
-
-/obj/machinery/appliance/cooker/grill/spit/update_icon()
-	. = ..()
-	if(lit)
-		set_light(3, 2, "#FF9933")
-		icon_state = "[on_icon]"
-	else
-		set_light(0)
-		icon_state = "[off_icon]"
-
 /obj/structure/ashlander/statue
 	name = "religious statue"
 	desc = "This statue depicts the Mother, one of the Buried Ones. It has been carved from one giant piece of elderstone. It seems to glow faintly, and the distant ring of the chiming stone fills the air around it. The Mother can be seen standing proudly, one arm outstretched. Floating above her open hand somehow is a small, polished sphere of pure elderstone."

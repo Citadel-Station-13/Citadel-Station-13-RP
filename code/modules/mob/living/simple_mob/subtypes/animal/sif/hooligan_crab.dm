@@ -67,7 +67,7 @@
 	melee_attack_delay = 1 SECOND
 
 	meat_amount = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/crab
 
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"

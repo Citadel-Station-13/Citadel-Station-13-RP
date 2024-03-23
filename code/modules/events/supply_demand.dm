@@ -258,9 +258,9 @@
 //
 
 /datum/event/supply_demand/proc/choose_food_items(var/differentTypes)
-	var/list/types = typesof(/datum/recipe) - /datum/recipe
+	var/list/types = typesof(/datum/cooking_recipe) - /datum/cooking_recipe
 	for(var/i in 1 to differentTypes)
-		var/datum/recipe/R = pick(types)
+		var/datum/cooking_recipe/R = pick(types)
 		types -= R // Don't pick the same thing twice
 		var/chosen_path = initial(R.result)
 		var/chosen_qty = rand(1, 5)

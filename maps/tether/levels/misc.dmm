@@ -448,7 +448,7 @@
 /area/space)
 "eG" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspaghetti,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "eL" = (

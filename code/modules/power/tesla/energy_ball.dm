@@ -76,6 +76,18 @@
 	if(orbiting_balls.len)
 		. += "The amount of orbiting mini-balls is [orbiting_balls.len]."
 
+
+/obj/singularity/energy_ball/attackby(obj/item/W, mob/living/user)
+	if(QDELETED(W))
+		return
+
+	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src]!/span>",\
+		"<span class=\"danger\">You touch \the [W] to \the [src]!\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
+		"<span class=\"warning\">A loud electrical noise fills the room.</span>")
+	qdel(src)
+	new /obj/effect/debris/cleanable/ash(get_turf(user))
+
+
 /obj/singularity/energy_ball/proc/move_the_basket_ball(move_amount, time)
 	//we face the last thing we zapped, so this lets us favor that direction a bit
 	var/move_bias = dir

@@ -180,8 +180,8 @@
 "aQ" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/internal/appendix,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/plating{
 	dir = 1
 	},
@@ -190,7 +190,7 @@
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/internal/brain,
 /obj/item/organ/internal/appendix,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/plating{
 	dir = 1
 	},
@@ -574,7 +574,7 @@
 /area/awaymission/BMPship1)
 "ct" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/item/reagent_containers/food/snacks/hugemushroomslice,
 /obj/item/organ/internal/appendix,
 /turf/simulated/floor/tiled/dark,
@@ -658,7 +658,7 @@
 "cL" = (
 /obj/structure/table/standard,
 /obj/item/material/knife/butch,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor,
 /area/awaymission/BMPship2)
 "cM" = (
@@ -816,8 +816,8 @@
 /area/awaymission/BMPship1)
 "dD" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "dE" = (
@@ -903,7 +903,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship2)
 "dW" = (
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -1697,7 +1697,7 @@
 /area/awaymission/BMPship2)
 "gU" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/ingredient/meat,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "gV" = (

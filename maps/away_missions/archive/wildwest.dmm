@@ -327,11 +327,11 @@
 /area/awaymission/wwmines)
 "bN" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
 /turf/simulated/floor{
 	dir = 5
 	},

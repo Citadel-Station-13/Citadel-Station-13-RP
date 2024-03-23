@@ -417,8 +417,8 @@
 /area/submap/Manor1)
 "bG" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/reagent_containers/food/snacks/sausage,
-/obj/item/reagent_containers/food/snacks/sausage,
+/obj/item/reagent_containers/food/snacks/ingredient/sausage,
+/obj/item/reagent_containers/food/snacks/ingredient/sausage,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bH" = (

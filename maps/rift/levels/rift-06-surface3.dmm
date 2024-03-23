@@ -3194,12 +3194,29 @@
 /turf/simulated/floor/plating,
 /area/exploration)
 "ajM" = (
-/obj/machinery/appliance/cooker/oven,
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3
 	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 9
+	},
+/obj/item/reagent_containers/food/condiment/spacespice{
+	pixel_x = -8;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/food/condiment/hotsauce{
+	pixel_y = 16
+	},
+/obj/item/reagent_containers/food/condiment/coldsauce{
+	pixel_x = 8;
+	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -3395,40 +3412,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "ake" = (
-/obj/structure/table/marble,
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -9
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 3
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 9
-	},
-/obj/item/reagent_containers/food/condiment/spacespice{
-	pixel_x = -8;
-	pixel_y = 13
-	},
-/obj/item/reagent_containers/food/condiment/enzyme{
-	layer = 5;
-	pixel_y = 16
-	},
-/obj/item/reagent_containers/food/condiment/soysauce{
-	pixel_x = 8;
-	pixel_y = 16
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
 /obj/structure/noticeboard{
 	pixel_y = 29
 	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/cooking/oven,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
+/obj/item/reagent_containers/glass/food_holder/oventray,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "akg" = (
@@ -3560,15 +3551,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "akB" = (
-/obj/machinery/appliance/cooker/fryer,
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
+	},
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/catering/bar_soft{
+	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -3680,14 +3668,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
-"akT" = (
-/obj/machinery/appliance/cooker/grill{
-	anchored = 0;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
 "akU" = (
 /obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/borderfloor{
@@ -3744,14 +3724,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
-"alc" = (
-/obj/machinery/appliance/cooker/oven{
-	anchored = 0;
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
 "alf" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -3797,13 +3769,33 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "alj" = (
-/obj/machinery/appliance/mixer/candy{
-	anchored = 0;
-	pixel_x = 2;
-	pixel_y = -2
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 9
+	},
+/obj/item/reagent_containers/food/condiment/spacespice{
+	pixel_x = -8;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	layer = 5;
+	pixel_y = 16
+	},
+/obj/item/reagent_containers/food/condiment/soysauce{
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/kitchen)
 "alk" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/maintenance/substation/exploration)
@@ -5080,6 +5072,12 @@
 	dir = 10
 	},
 /obj/machinery/light,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/skillet,
+/obj/item/reagent_containers/glass/food_holder/skillet,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aoQ" = (
@@ -6053,14 +6051,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/medic_prep)
-"arp" = (
-/obj/machinery/appliance/mixer/cereal{
-	anchored = 0;
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
 "arr" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -6712,15 +6702,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "atj" = (
-/obj/machinery/appliance/cooker/grill,
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
+	},
+/obj/machinery/vending/dinnerware{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -8632,6 +8618,12 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pot,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/pan,
+/obj/item/reagent_containers/glass/food_holder/skillet,
+/obj/item/reagent_containers/glass/food_holder/skillet,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aya" = (
@@ -9297,10 +9289,8 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 5
 	},
-/obj/machinery/vending/dinnerware{
-	dir = 1
-	},
 /obj/machinery/camera/network/civilian,
+/obj/machinery/cooking/grill,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "azT" = (
@@ -9840,36 +9830,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aBM" = (
-/obj/structure/table/marble,
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -9
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 3
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 9
-	},
-/obj/item/reagent_containers/food/condiment/spacespice{
-	pixel_x = -8;
-	pixel_y = 13
-	},
-/obj/item/reagent_containers/food/condiment/hotsauce{
-	pixel_y = 16
-	},
-/obj/item/reagent_containers/food/condiment/coldsauce{
-	pixel_x = 8;
-	pixel_y = 16
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
-	},
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/cooking,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aBO" = (
@@ -11153,10 +11115,9 @@
 /area/exploration/pathfinder_office)
 "aFF" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_soft{
-	pixel_y = 4
-	},
+/obj/machinery/cooking/fryer,
+/obj/item/reagent_containers/glass/food_holder/fryer_basket,
+/obj/item/reagent_containers/glass/food_holder/fryer_basket,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aFG" = (
@@ -16001,7 +15962,6 @@
 /area/rift/surfacebase/outside/outside3)
 "aTa" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/appliance/mixer/cereal,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
@@ -17748,12 +17708,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
-"aYm" = (
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/appliance/mixer/candy,
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/kitchen)
 "aYn" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
@@ -38314,7 +38268,7 @@ aAj
 jsv
 lbu
 akB
-ajM
+alj
 ajM
 atj
 lbu
@@ -39867,7 +39821,7 @@ age
 exk
 aBM
 axO
-aYm
+aTa
 eGU
 axZ
 qSL
@@ -40263,7 +40217,7 @@ aiR
 aGy
 arr
 cnu
-arp
+aUi
 cnu
 cnu
 acH
@@ -40458,7 +40412,7 @@ aGy
 atT
 aks
 avH
-alj
+aUi
 cnu
 adx
 aBl
@@ -40651,7 +40605,7 @@ aAn
 aGy
 aUi
 cnu
-akT
+aUi
 alr
 cnu
 adx
@@ -40845,7 +40799,7 @@ aGy
 aGy
 aUi
 cnu
-alc
+aUi
 cnu
 cnu
 adx

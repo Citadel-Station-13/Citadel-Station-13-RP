@@ -40,7 +40,7 @@
 	movement_cooldown = 5
 
 	meat_amount = 4
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/grubmeat
 
 	response_help = "pokes"
 	response_disarm = "pushes"

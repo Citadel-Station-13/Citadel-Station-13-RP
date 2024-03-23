@@ -31,7 +31,7 @@
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
 	taser_kill = 0
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat
 	bone_type = /obj/item/stack/material/bone
 	hide_type = /obj/item/stack/hairlesshide
 	exotic_type = /obj/item/stack/sinew

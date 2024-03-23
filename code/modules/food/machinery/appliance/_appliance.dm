@@ -1,5 +1,5 @@
 // This folder contains code that was originally ported from Apollo Station and then refactored/optimized/changed.
-
+/*
 // Tracks precooked food to stop deep fried baked grilled grilled grilled diona nymph cereal.
 /obj/item/reagent_containers/food/snacks
 	var/tmp/list/cooked
@@ -39,7 +39,7 @@
 	// If the machine has multiple output modes, define them here.
 	var/selected_option
 	var/list/output_options = list()
-	var/list/datum/recipe/available_recipes
+	var/list/datum/cooking_recipe/available_recipes
 
 	var/container_type = null
 
@@ -48,7 +48,7 @@
 /obj/machinery/appliance/Initialize(mapload, newdir)
 	. = ..()
 	component_parts = list()
-	component_parts += /obj/item/circuitboard/cooking
+	component_parts += /obj/item/circuitboard/appliance
 	component_parts += /obj/item/stock_parts/capacitor
 	component_parts += /obj/item/stock_parts/capacitor
 	component_parts += /obj/item/stock_parts/capacitor
@@ -61,8 +61,8 @@
 	if (!available_recipes)
 		available_recipes = new
 
-	for (var/type in subtypesof(/datum/recipe))
-		var/datum/recipe/test = new type
+	for (var/type in subtypesof(/datum/cooking_recipe))
+		var/datum/cooking_recipe/test = new type
 		if ((appliancetype & test.appliance))
 			available_recipes += test
 		else
@@ -233,7 +233,7 @@
 
 //This function is overridden by cookers that do stuff with containers
 /obj/machinery/appliance/proc/has_space(var/obj/item/I)
-	if (cooking_objs.len >= max_contents)
+	if (cooking_objs.len >= max_contents) 
 		return FALSE
 
 	return TRUE
@@ -385,7 +385,7 @@
 	if(cooked_sound)
 		playsound(get_turf(src), cooked_sound, 50, 1)
 	//Check recipes first, a valid recipe overrides other options
-	var/datum/recipe/recipe = null
+	var/datum/cooking_recipe/recipe = null
 	var/atom/C = null
 	if (CI.container)
 		C = CI.container
@@ -716,7 +716,7 @@
 	active_power_usage = initial(active_power_usage) - scan_rating*10
 	cooking_power = initial(cooking_power) + (scan_rating+cap_rating)/10
 
-/obj/item/circuitboard/cooking
+/obj/item/circuitboard/appliance
 	name = "kitchen appliance circuitry"
 	desc = "The circuitboard for many kitchen appliances. Not of much use."
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
@@ -724,3 +724,4 @@
 							/obj/item/stock_parts/capacitor = 3,
 							/obj/item/stock_parts/scanning_module = 1,
 							/obj/item/stock_parts/matter_bin = 2)
+*/

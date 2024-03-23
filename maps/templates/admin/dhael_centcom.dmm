@@ -12743,7 +12743,7 @@
 /area/centcom/security)
 "Pm" = (
 /obj/structure/table/woodentable,
-/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspaghetti,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Pp" = (

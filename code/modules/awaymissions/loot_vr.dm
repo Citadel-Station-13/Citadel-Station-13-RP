@@ -270,7 +270,7 @@
 			/obj/item/reagent_containers/food/snacks/candiedapple, \
 			/obj/item/reagent_containers/food/snacks/chocolatebar, \
 			/obj/item/reagent_containers/food/snacks/cookie, \
-			/obj/item/reagent_containers/food/snacks/meatball, \
+			/obj/item/reagent_containers/food/snacks/ingredient/meatball, \
 			/obj/item/reagent_containers/food/snacks/plump_pie, \
 			/obj/item/reagent_containers/food/snacks/liquidfood)
 			for(var/i=0,i<num,i++)

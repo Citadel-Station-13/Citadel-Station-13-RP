@@ -13,7 +13,7 @@
 /obj/structure/closet/secure_closet/freezer/meat
 	name = "meat fridge"
 	starts_with = list(
-		/obj/item/reagent_containers/food/snacks/meat/monkey = 10)
+		/obj/item/reagent_containers/food/snacks/ingredient/meat/monkey = 10)
 
 
 /obj/structure/closet/secure_closet/freezer/fridge

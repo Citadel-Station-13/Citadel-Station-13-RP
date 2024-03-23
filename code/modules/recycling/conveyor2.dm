@@ -14,7 +14,7 @@
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	circuit = /obj/item/circuitboard/conveyor
-	speed_process = TRUE
+	speed_process = PROCESS_ON_SSFASTPROCESS
 	/// What we set things to glide size to when they are being moved by us
 	var/conveyor_glide_size = 8
 

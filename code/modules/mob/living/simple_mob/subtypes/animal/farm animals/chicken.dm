@@ -59,7 +59,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	say_list_type = /datum/say_list/chicken
 
 	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken
+	meat_type = /obj/item/reagent_containers/food/snacks/ingredient/meat/chicken
 	bone_amount = 1
 
 	var/eggsleft = 0
@@ -81,8 +81,8 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	return ..()
 
 /mob/living/simple_mob/animal/passive/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/grown)) //feedin' dem chickens
-		var/obj/item/reagent_containers/food/snacks/grown/G = O
+	if(istype(O, /obj/item/reagent_containers/food/snacks/ingredient/grown)) //feedin' dem chickens
+		var/obj/item/reagent_containers/food/snacks/ingredient/grown/G = O
 		if(G.seed && G.seed.kitchen_tag == "wheat")
 			if(!stat && eggsleft < 8)
 				if(!user.attempt_consume_item_for_construction(O))
@@ -103,16 +103,16 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	if((stat != DEAD) && prob(3) && eggsleft > 0)
 		visible_message("[src] [pick("lays an egg.","squats down and croons.","begins making a huge racket.","begins clucking raucously.")]")
 		eggsleft--
-		var/obj/item/reagent_containers/food/snacks/egg/E = new(get_turf(src))
+		var/obj/item/reagent_containers/food/snacks/ingredient/egg/E = new(get_turf(src))
 		E.pixel_x = rand(-6,6)
 		E.pixel_y = rand(-6,6)
 		if(GLOB.chicken_count < GLOB.MAX_CHICKENS && prob(10))
 			START_PROCESSING(SSobj, E)
 
-/obj/item/reagent_containers/food/snacks/egg/var/amount_grown = 0
+/obj/item/reagent_containers/food/snacks/ingredient/egg/var/amount_grown = 0
 
 // This only starts normally if there are less than MAX_CHICKENS chickens
-/obj/item/reagent_containers/food/snacks/egg/process(delta_time)
+/obj/item/reagent_containers/food/snacks/ingredient/egg/process(delta_time)
 	if(isturf(loc))
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)

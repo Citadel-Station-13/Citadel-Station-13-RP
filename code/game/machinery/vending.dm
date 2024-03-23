@@ -1297,6 +1297,9 @@
 	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
 	products = list(
+		/obj/item/food_serving = 24,
+		/obj/item/food_serving/plate = 24,
+		/obj/item/food_serving/woodbowl = 12,
 		/obj/item/tray = 8,
 		/obj/item/material/kitchen/utensil/fork = 6,
 		/obj/item/material/knife/plastic = 6,

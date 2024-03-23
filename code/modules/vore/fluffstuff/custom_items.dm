@@ -490,7 +490,7 @@
 
 //Egg item
 //-------------
-/obj/item/reagent_containers/food/snacks/egg/roiz
+/obj/item/reagent_containers/food/snacks/ingredient/egg/roiz
 	name = "lizard egg"
 	desc = "It's a large lizard egg."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -498,12 +498,12 @@
 	filling_color = "#FDFFD1"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/ingredient/egg/roiz/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("egg", 9)
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/ingredient/egg/roiz/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon ))
 		var/obj/item/pen/crayon/C = W
 		var/clr = C.crayon_color_name
@@ -1223,7 +1223,7 @@
 			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
 			return
 
-		new /obj/item/reagent_containers/food/snacks/egg/roiz/evian(get_turf(src)) //Roiz/evian so it gets all the functionality
+		new /obj/item/reagent_containers/food/snacks/ingredient/egg/roiz/evian(get_turf(src)) //Roiz/evian so it gets all the functionality
 
 		var/index = rand(0,3)
 
@@ -1241,13 +1241,13 @@
 
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/evian
+/obj/item/reagent_containers/food/snacks/ingredient/egg/roiz/evian
 	name = "dragon egg"
 	desc = "A quite large dragon egg!"
 	icon_state = "egg_roiz_yellow"
 
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/evian/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_containers/food/snacks/ingredient/egg/roiz/evian/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon)) //No coloring these ones!
 		return
 	else

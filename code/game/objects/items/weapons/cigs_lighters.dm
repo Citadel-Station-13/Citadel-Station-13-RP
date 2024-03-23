@@ -460,7 +460,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 
 	if (istype(W, /obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/grown/G = W
+		var/obj/item/reagent_containers/food/snacks/ingredient/grown/G = W
 		if (!G.dry)
 			to_chat(user, "<span class='notice'>[G] must be dried before you stuff it into [src].</span>")
 			return
@@ -535,7 +535,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/rollingpaper/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/grown/G = W
+		var/obj/item/reagent_containers/food/snacks/ingredient/grown/G = W
 		if (!G.dry)
 			to_chat(user, "<span class='notice'>[G] must be dried before you roll it into [src].</span>")
 			return
@@ -558,7 +558,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/rollingblunt/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/grown/G = W
+		var/obj/item/reagent_containers/food/snacks/ingredient/grown/G = W
 		if (!G.dry)
 			to_chat(user, "<span class='notice'>[G] must be dried before you roll it into [src].</span>")
 			return

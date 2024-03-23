@@ -331,15 +331,15 @@
 	icon_state = "meat"
 
 /obj/random/meat/item_to_spawn()
-	return pick(prob(60);/obj/item/reagent_containers/food/snacks/meat,
-				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
+	return pick(prob(60);/obj/item/reagent_containers/food/snacks/ingredient/meat,
+				prob(20);/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
+				prob(10);/obj/item/reagent_containers/food/snacks/ingredient/carp,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/human,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi,
-				prob(1);/obj/item/reagent_containers/food/snacks/xenomeat)
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/human,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/monkey,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/corgi,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/xenomeat)
 
 /obj/random/meat/no_sapient
 	name = "random meat"
@@ -348,13 +348,13 @@
 	icon_state = "meat"
 
 /obj/random/meat/no_sapient/item_to_spawn()
-	return pick(prob(60);/obj/item/reagent_containers/food/snacks/meat,
-				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
-				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
+	return pick(prob(60);/obj/item/reagent_containers/food/snacks/ingredient/meat,
+				prob(20);/obj/item/reagent_containers/food/snacks/ingredient/xenomeat/spidermeat,
+				prob(10);/obj/item/reagent_containers/food/snacks/ingredient/carp,
 				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
-				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi)
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/monkey,
+				prob(1);/obj/item/reagent_containers/food/snacks/ingredient/meat/corgi)
 
 /obj/random/material //Random materials for building stuff
 	name = "random material"
