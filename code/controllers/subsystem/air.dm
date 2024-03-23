@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(air)
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
 	wait = 2 SECONDS // seconds (We probably can speed this up actually)
-	subsystem_flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
+	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(air)
 					casted = /datum/gas/oxygen
 				values[i] = initial(casted.id)
 
-/datum/controller/subsystem/air/Preload(recovering)
+/datum/controller/subsystem/air/PreInit()
 	cached_strings = list()
 	generate_atmospheres()
 
@@ -249,7 +249,7 @@ SUBSYSTEM_DEF(air)
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/atom/movable/fire/fire = currentrun[currentrun.len]
 		currentrun.len--

@@ -1,3 +1,5 @@
+///Add an item to the list if not already present, if the list is null it will initialize it
+#define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
 
 //Removes any null entries from the list
 //Returns TRUE if the list had nulls, FALSE otherwise

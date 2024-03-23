@@ -1,7 +1,8 @@
 SUBSYSTEM_DEF(legacy_atc)
 	name = "Lore ATC (Legacy)"
 	init_order = INIT_ORDER_LEGACY_ATC
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_BACKGROUND
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
 	/// How long between ATC traffic
@@ -34,16 +35,12 @@ SUBSYSTEM_DEF(legacy_atc)
 	secchannel = "[rand(850,899)].[rand(1,9)]"
 	sdfchannel = "[rand(900,999)].[rand(1,9)]"
 
-	// 450 was the original time. Reducing to 300 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
-	spawn(300 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
-		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
-		msg("Crew transfer complete. This shift's frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
-		next_message = world.time + initial_delay
-		START_PROCESSING(SSobj, src)
+	msg("Crew transfer complete. This shift's frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
+	next_message = world.time + initial_delay
 
 	return ..()
 
-/datum/controller/subsystem/legacy_atc/process(delta_time)
+/datum/controller/subsystem/legacy_atc/fire()
 	if(world.time >= next_message)
 		next_message = world.time + rand(delay_min, delay_max)
 		random_convo()
@@ -56,12 +53,12 @@ SUBSYSTEM_DEF(legacy_atc)
 	if(!squelched)
 		msg("Ceasing broadcast of ATC communications.")
 		squelched = TRUE
-		STOP_PROCESSING(SSobj, src) //muh performance
+		// STOP_PROCESSING(SSobj, src) //muh performance
 	else
 		if(squelched)
 			msg("Resuming broadcast of ATC communications.")
 			squelched = FALSE
-			START_PROCESSING(SSobj, src)
+			// START_PROCESSING(SSobj, src)
 
 /datum/controller/subsystem/legacy_atc/proc/shift_ending(evac = FALSE)
 	msg("[(LEGACY_MAP_DATUM).shuttle_name], this is [(LEGACY_MAP_DATUM).dock_name] Control, you are cleared to complete routine transfer from [(LEGACY_MAP_DATUM).station_name] to [(LEGACY_MAP_DATUM).dock_name].")

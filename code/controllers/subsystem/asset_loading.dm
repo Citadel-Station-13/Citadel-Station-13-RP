@@ -1,12 +1,10 @@
-/**
- * Allows us to lazyload asset datums.
- * Anything inserted here will fully load if directly gotten.
- * So this just serves to remove the requirement to load assets fully during init.
- */
+/// Allows us to lazyload asset datums
+/// Anything inserted here will fully load if directly gotten
+/// So this just serves to remove the requirement to load assets fully during init
 SUBSYSTEM_DEF(asset_loading)
 	name = "Asset Loading"
 	priority = FIRE_PRIORITY_ASSET_LOADING
-	subsystem_flags = SS_NO_INIT
+	flags = SS_NO_INIT
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	var/list/datum/asset/generate_queue = list()
 

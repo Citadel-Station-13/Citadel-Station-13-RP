@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(used_engine, "None")
 SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
 	init_order = INIT_ORDER_MAPPING
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_NO_FIRE
 
 	/// global mutex for ensuring two map/level load ops don't go at once
 	/// a separate mutex is used at the actual maploader level
@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	unallocated_reserve_area = new
+
 	// load data
 	// todo: refactor
 	load_map_templates()
@@ -57,7 +59,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()
-	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
+	flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 	shelter_templates = SSmapping.shelter_templates
 
 /datum/controller/subsystem/mapping/proc/load_map_templates()

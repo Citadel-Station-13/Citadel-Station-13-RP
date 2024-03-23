@@ -1,7 +1,7 @@
 PROCESSING_SUBSYSTEM_DEF(chemistry)
 	name = "Chemistry"
 	wait = 10
-	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
+	flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
 	init_order = INIT_ORDER_CHEMISTRY
 
 	/// id to instance dict of reagents

@@ -3,7 +3,7 @@
 
 SUBSYSTEM_DEF(research)
 	name = "Research"
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_RESEARCH
 
 	//? designs

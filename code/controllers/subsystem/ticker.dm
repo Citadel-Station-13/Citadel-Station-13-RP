@@ -1,11 +1,13 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
-	wait = 20
 	init_order = INIT_ORDER_TICKER
+
+	priority = FIRE_PRIORITY_TICKER
+	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
-	/// Current state of the game
-	var/static/current_state = GAME_STATE_INIT
+	/// state of current round (used by process()) Use the defines GAME_STATE_* !
+	var/current_state = GAME_STATE_STARTUP
 
 	/// What world.time we ended the game, set at round end.
 	var/static/round_end_time
@@ -76,11 +78,11 @@ SUBSYSTEM_DEF(ticker)
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
-		if(GAME_STATE_INIT)
+		if(GAME_STATE_STARTUP)
 			// We fire after init finishes
 			on_mc_init_finish()
 
@@ -499,7 +501,7 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	mode.process(dt)
 
 	var/game_finished = 0

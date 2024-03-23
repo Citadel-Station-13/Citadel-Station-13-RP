@@ -4,7 +4,7 @@
 SUBSYSTEM_DEF(automata)
 	name = "Automata"
 	wait = 1
-	subsystem_flags = SS_TICKER
+	flags = SS_TICKER
 
 	/// all automata in world
 	var/static/list/datum/automata/automatons = list()

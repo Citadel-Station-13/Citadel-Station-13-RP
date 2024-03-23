@@ -4,7 +4,7 @@
 	var/window_id // window_id is used as the window name for browse and onclose
 	var/width = 0
 	var/height = 0
-	var/atom/ref = null
+	var/datum/weakref/ref = null
 	var/window_options = "can_close=1;can_minimize=1;can_maximize=0;can_resize=1;titlebar=1;" // window option is set using window_id
 	var/stylesheets[0]
 	var/scripts[0]
@@ -12,12 +12,10 @@
 	var/body_elements
 	var/head_content = ""
 	var/content = ""
-	var/static/datum/asset/simple/namespaced/common/common_asset = get_asset_datum(/datum/asset/simple/namespaced/common)
-
 
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, atom/nref = null)
-
 	user = nuser
+	RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(user_deleted))
 	window_id = nwindow_id
 	if (ntitle)
 		title = format_text(ntitle)
@@ -26,7 +24,11 @@
 	if (nheight)
 		height = nheight
 	if (nref)
-		ref = nref
+		ref = WEAKREF(nref)
+
+/datum/browser/proc/user_deleted(datum/source)
+	SIGNAL_HANDLER
+	user = null
 
 /datum/browser/proc/add_head_content(nhead_content)
 	head_content = nhead_content
@@ -60,6 +62,7 @@
 	content += ncontent
 
 /datum/browser/proc/get_header()
+	var/datum/asset/simple/namespaced/common/common_asset = get_asset_datum(/datum/asset/simple/namespaced/common)
 	var/file
 	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()["common.css"]]'>"
 	for (file in stylesheets)
@@ -105,6 +108,7 @@
 	var/window_size = ""
 	if(width && height)
 		window_size = "size=[width]x[height];"
+	var/datum/asset/simple/namespaced/common/common_asset = get_asset_datum(/datum/asset/simple/namespaced/common)
 	common_asset.send(user)
 	if(stylesheets.len)
 		SSassets.transport.send_assets(user, stylesheets)
@@ -117,8 +121,13 @@
 /datum/browser/proc/setup_onclose()
 	set waitfor = 0 //winexists sleeps, so we don't need to.
 	for (var/i in 1 to 10)
-		if (user && winexists(user, window_id))
-			onclose(user, window_id, ref)
+		if (user?.client && winexists(user, window_id))
+			var/atom/send_ref
+			if(ref)
+				send_ref = ref.resolve()
+				if(!send_ref)
+					ref = null
+			onclose(user, window_id, send_ref)
 			break
 
 /datum/browser/proc/close()

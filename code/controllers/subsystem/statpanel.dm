@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
 	init_order = INIT_ORDER_STATPANELS
+	init_stage = INITSTAGE_EARLY
 	priority = FIRE_PRIORITY_STATPANELS
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
@@ -18,11 +19,6 @@ SUBSYSTEM_DEF(statpanels)
 	var/cache_ticket_data
 	/// cached sdql2 data
 	var/cache_sdql_data
-
-/datum/controller/subsystem/statpanels/Initialize()
-	spawn()
-		manual_ticking()
-	return ..()
 
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE, no_tick_check)
 	if(!resumed)
@@ -144,16 +140,3 @@ SUBSYSTEM_DEF(statpanels)
 		. += Q.generate_stat()
 	. = url_encode(json_encode(.))
 	cache_sdql_data = .
-
-/**
- * is this shitcode?
- * yes it is
- * if you wanna do better, do better; i'm not at the point of janking up our MC with my own
- * fuckery.
- *
- * tl;dr this ensures we push data while MC is initializing.
- */
-/datum/controller/subsystem/statpanels/proc/manual_ticking()
-	while(!Master.initialized)
-		fire(null, TRUE)
-		sleep(10)

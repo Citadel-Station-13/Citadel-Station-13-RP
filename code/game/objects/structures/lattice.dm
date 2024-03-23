@@ -25,7 +25,7 @@
 
 	for(var/obj/structure/lattice/LAT in loc)
 		if(LAT != src)
-			stack_trace("multiple lattices found in ([loc.x], [loc.y], [loc.z])")
+			log_mapping("multiple lattices found in ([loc.x], [loc.y], [loc.z])")
 			return INITIALIZE_HINT_QDEL
 
 

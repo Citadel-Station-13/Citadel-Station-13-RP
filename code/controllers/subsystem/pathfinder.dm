@@ -5,7 +5,7 @@
 
 SUBSYSTEM_DEF(pathfinder)
 	name = "Pathfinder"
-	subsystem_flags = SS_NO_INIT | SS_NO_FIRE
+	flags = SS_NO_INIT | SS_NO_FIRE
 
 	/// pathfinding mutex - most algorithms depend on this
 	/// multi "threading" in byond just adds overhead

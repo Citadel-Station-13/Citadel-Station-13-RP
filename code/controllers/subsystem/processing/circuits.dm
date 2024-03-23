@@ -5,7 +5,7 @@
 PROCESSING_SUBSYSTEM_DEF(circuit)
 	name = "Circuit"
 	init_order = INIT_ORDER_CIRCUIT
-	subsystem_flags = SS_NO_FIRE
+	flags = SS_NO_FIRE
 
 	var/cipherkey
 
@@ -18,7 +18,7 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 //	var/cost_multiplier = MINERAL_MATERIAL_AMOUNT / 10 // Each circuit cost unit is 200cm3
 
 /datum/controller/subsystem/processing/circuit/Recover()
-	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
+	flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 
 /datum/controller/subsystem/processing/circuit/Initialize(timeofday)
 	SScircuit.cipherkey = uppertext(random_string(2000+rand(0,10), GLOB.alphabet))

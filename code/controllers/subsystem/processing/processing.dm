@@ -3,7 +3,7 @@
 SUBSYSTEM_DEF(processing)
 	name = "Processing"
 	priority = FIRE_PRIORITY_PROCESS
-	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
+	flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
 	wait = 1 SECONDS
 
 	var/stat_tag = "P" //Used for logging
@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(processing)
 		currentrun = processing.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
 
 	while(current_run.len)
 		var/datum/thing = current_run[current_run.len]

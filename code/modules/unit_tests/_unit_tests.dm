@@ -55,8 +55,13 @@
 #define TEST_DEFAULT 1
 /// After most test steps, used for tests that run long so shorter issues can be noticed faster
 #define TEST_LONGER 10
-/// This must be the last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
-#define TEST_CREATE_AND_DESTROY INFINITY
+/// This must be the one of last tests to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
+#define TEST_CREATE_AND_DESTROY 9001
+/**
+ * For tests that rely on create and destroy having iterated through every (tangible) atom so they don't have to do something similar.
+ * Keep in mind tho that create and destroy will absolutely break the test platform, anything that relies on its shape cannot come after it.
+ */
+#define TEST_AFTER_CREATE_AND_DESTROY INFINITY
 
 /// Change color to red on ANSI terminal output, if enabled with -DANSICOLORS.
 #ifdef ANSICOLORS
@@ -70,7 +75,12 @@
 #else
 #define TEST_OUTPUT_GREEN(text) (text)
 #endif
-
+/// Change color to yellow on ANSI terminal output, if enabled with -DANSICOLORS.
+#ifdef ANSICOLORS
+#define TEST_OUTPUT_YELLOW(text) "\x1B\x5B1;33m[text]\x1B\x5B0m"
+#else
+#define TEST_OUTPUT_YELLOW(text) (text)
+#endif
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
@@ -122,8 +132,14 @@
 #include "subsystem_init.dm"
 // #include "surgeries.dm"
 // #include "teleporters.dm"
+#include "tgui_create_message.dm"
 #include "timer_sanity.dm"
 #include "unit_test.dm"
+// END_INCLUDE
+#ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
+#include "find_reference_sanity.dm"
+#endif
+
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

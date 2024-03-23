@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(materials)
 	name = "Materials"
-	subsystem_flags = NONE
+	flags = NONE
 	init_order = INIT_ORDER_MATERIALS
 	wait = 2 SECONDS
 
@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(materials)
 		src.currentrun = ticking.Copy()
 	var/list/currentrun = src.currentrun
 	var/atom/A
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
 	var/i
 	var/datum/material_trait/trait
 	for(i in length(currentrun) to 1 step -1)

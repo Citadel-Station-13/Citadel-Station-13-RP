@@ -59,7 +59,7 @@
 
 /obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index)
 	if(assembly.anchored_by == src)
-		silent ? null : to_chat(SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
+		silent ? null : to_chat(user, SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
 		return
 	. = ..()
 

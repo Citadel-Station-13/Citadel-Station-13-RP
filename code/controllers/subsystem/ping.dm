@@ -1,15 +1,15 @@
-/**
- *! Copyright (c) 2022 Aleksej Komarov
- *! SPDX-License-Identifier: MIT
+/*!
+ * Copyright (c) 2022 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
 
 SUBSYSTEM_DEF(ping)
 	name = "Ping"
 	priority = FIRE_PRIORITY_PING
+	init_stage = INITSTAGE_EARLY
 	wait = 4 SECONDS
-	subsystem_flags = SS_NO_INIT
-	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-
+	flags = SS_NO_INIT
+	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/ping/stat_entry()
@@ -26,9 +26,6 @@ SUBSYSTEM_DEF(ping)
 	while (currentrun.len)
 		var/client/client = currentrun[currentrun.len]
 		currentrun.len--
-
-		if(!client.initialized)
-			continue
 
 		if (client?.tgui_panel?.is_ready())
 			// Send a soft ping

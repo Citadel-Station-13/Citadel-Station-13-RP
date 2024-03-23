@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(input)
 	name = "Input"
 	wait = 0.25 // scale to 40 fps
 	init_order = INIT_ORDER_INPUT
-	subsystem_flags = NONE
+	flags = NONE
 	priority = FIRE_PRIORITY_INPUT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
