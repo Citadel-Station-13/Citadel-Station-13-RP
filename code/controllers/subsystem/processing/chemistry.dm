@@ -1,8 +1,10 @@
 PROCESSING_SUBSYSTEM_DEF(chemistry)
 	name = "Chemistry"
-	wait = 10
-	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
+	wait = 0.25 SECONDS //You might think that rate_up_lim has to be set to half, but since everything is normalised around delta_time, it automatically adjusts it to be per second. Magic!
 	init_order = INIT_ORDER_CHEMISTRY
+	subsystem_flags = SS_BACKGROUND | SS_POST_FIRE_TIMING | SS_HIBERNATE
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+
 
 	/// id to instance dict of reagents
 	var/list/reagent_lookup = list()

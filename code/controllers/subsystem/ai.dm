@@ -11,8 +11,9 @@ SUBSYSTEM_DEF(ai)
 	var/list/busy_z_levels = list()
 	var/slept_mobs = 0
 
-/datum/controller/subsystem/ai/stat_entry()
-	return ..() + " P:[length(processing)]"
+/datum/controller/subsystem/ai/stat_entry(msg)
+	msg += " P:[length(processing)]"
+	return ..()
 
 /datum/controller/subsystem/ai/fire(resumed = 0)
 	if (!resumed)

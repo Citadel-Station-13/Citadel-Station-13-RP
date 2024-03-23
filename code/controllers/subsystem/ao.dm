@@ -1,15 +1,23 @@
 SUBSYSTEM_DEF(ao)
 	name = "Ambient Occlusion"
+	wait = 0
 	init_order = INIT_ORDER_MISC_LATE
-	wait = 1
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
+	subsystem_flags = SS_HIBERNATE | SS_NO_INIT
 
 	var/idex = 1
-	var/list/image_cache = list()
 	var/list/turf/queue = list()
+	var/list/image_cache = list()
 
-/datum/controller/subsystem/ao/stat_entry()
-	return ..() + "Queue: [queue.len]"
+/datum/controller/subsystem/ao/PreInit()
+	. = ..()
+	hibernate_checks = list(
+		NAMEOF(src, queue),
+	)
+
+/datum/controller/subsystem/ao/stat_entry(msg)
+	msg += "P:[length(queue)]"
+	return ..()
 
 /datum/controller/subsystem/ao/Initialize(start_timeofday)
 	fire(FALSE, TRUE)

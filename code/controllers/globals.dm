@@ -35,8 +35,9 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	return ..()
 
 
-/datum/controller/global_vars/stat_entry()
-	return "Edit"
+/datum/controller/global_vars/stat_entry(msg)
+	msg = "Edit"
+	return msg
 
 
 /datum/controller/global_vars/vv_edit_var(var_name, var_value)
