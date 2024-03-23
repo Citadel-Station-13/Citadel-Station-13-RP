@@ -18,6 +18,10 @@ SUBSYSTEM_DEF(mapping)
 	// this is an acceptable lazy lookup but we need to standardize what this means / look at how this is generated.
 	var/list/areas_in_z = list()
 
+	//! if you are seeing this, someone merged a testmerge only PR. shame on them.
+	/// reservation to avoid 515 bug
+	var/datum/turf_reservation/awful_515_hack
+
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	// load data
 	// todo: refactor
@@ -45,6 +49,10 @@ SUBSYSTEM_DEF(mapping)
 	// finalize
 	// todo: refactor
 	repopulate_sorted_areas()
+
+	//! if you are seeing this, someone merged a testmerge only PR. shame on them.
+	/// allocate a reservation to avoid a 515 bug
+	awful_515_hack = request_block_reservation(1, 1)
 
 	return ..()
 

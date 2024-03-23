@@ -12,7 +12,15 @@
 		mind.active = 1
 		mind.current = src
 
-	loc = null
+	//! if you are seeing this, someone merged a testmerge only PR. shame on them.
+	if(!isnull(SSmapping.awful_515_hack))
+		var/datum/turf_reservation/awful_ass_hack = SSmapping.awful_515_hack
+		var/list/target_coords = awful_ass_hack.bottom_left_coords
+		if(length(target_coords) == 3)
+			loc = locate(target_coords[1], target_coords[2], target_coords[3])
+	else
+		loc = null
+
 	GLOB.player_list |= src
 
 	new_player_panel()
