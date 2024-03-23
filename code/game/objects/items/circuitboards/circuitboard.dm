@@ -14,11 +14,9 @@
 		MAT_GLASS = 250,
 	)
 	origin_tech = list(TECH_DATA = 2)
-	density = FALSE
-	anchored = FALSE
 	w_class = WEIGHT_CLASS_SMALL
-	damage_force = 5.0
-	throw_force = 5.0
+	damage_force = 5
+	throw_force = 5
 	throw_speed = 3
 	throw_range = 15
 	var/build_path = null
@@ -34,8 +32,6 @@
 	 * Example: list(/obj/item/stock_parts/matter_bin = 5)
 	 */
 	var/list/def_components
-
-	var/contain_parts = TRUE
 
 /**
  * called when we are used to construct something.

@@ -46,7 +46,7 @@
 
 /obj/item/circuitboard/firealarm
 	name = T_BOARD("fire alarm")
-	build_path = /obj/machinery/firealarm
+	build_path = /obj/machinery/fire_alarm
 	board_type = new /datum/frame/frame_types/fire_alarm
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 50)
 

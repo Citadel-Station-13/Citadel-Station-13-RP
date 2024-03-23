@@ -1,6 +1,8 @@
 /var/global/list/construction_frame_wall
 /var/global/list/construction_frame_floor
 
+
+
 // TODO: MAKE FRAMES NOT AWFUL
 // WHY IN THE NAME OF THE SEVEN HELLS ARE THEY NOT STATIC DATUMS AT THIS POINT?!
 // WHY ARE VARIABLES HARD TYPECHECKED?
@@ -384,10 +386,7 @@
 					circuit.after_construct(new_machine)
 
 					for(var/obj/O in components)
-						if(circuit.contain_parts)
-							O.loc = new_machine
-						else
-							O.loc = null
+						O.loc = new_machine
 						new_machine.component_parts += O
 
 					circuit.loc = null

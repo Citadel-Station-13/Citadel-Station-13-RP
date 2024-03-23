@@ -100,6 +100,7 @@
 		cost = 5,
 		time = 2 SECONDS,
 	)
+	#warn frame injection
 	. += new /datum/stack_recipe/railing
 	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa middle", product = /obj/structure/bed/chair/sofa, exclusitivity = /obj/structure/bed)
 	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa left", product = /obj/structure/bed/chair/sofa/left, exclusitivity = /obj/structure/bed)
