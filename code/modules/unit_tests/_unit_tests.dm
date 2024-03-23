@@ -55,8 +55,13 @@
 #define TEST_DEFAULT 1
 /// After most test steps, used for tests that run long so shorter issues can be noticed faster
 #define TEST_LONGER 10
-/// This must be the last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
-#define TEST_CREATE_AND_DESTROY INFINITY
+/// This must be the one of last tests to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
+#define TEST_CREATE_AND_DESTROY 9001
+/**
+ * For tests that rely on create and destroy having iterated through every (tangible) atom so they don't have to do something similar.
+ * Keep in mind tho that create and destroy will absolutely break the test platform, anything that relies on its shape cannot come after it.
+ */
+#define TEST_AFTER_CREATE_AND_DESTROY INFINITY
 
 /// Change color to red on ANSI terminal output, if enabled with -DANSICOLORS.
 #ifdef ANSICOLORS
@@ -70,63 +75,46 @@
 #else
 #define TEST_OUTPUT_GREEN(text) (text)
 #endif
-
+/// Change color to yellow on ANSI terminal output, if enabled with -DANSICOLORS.
+#ifdef ANSICOLORS
+#define TEST_OUTPUT_YELLOW(text) "\x1B\x5B1;33m[text]\x1B\x5B0m"
+#else
+#define TEST_OUTPUT_YELLOW(text) (text)
+#endif
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+// BEGIN_INCLUDE
 #include "atmospherics/_atmospherics.dm"
 #include "core/_core.dm"
 #include "datum/_datum.dm"
-#include "elements/_elements.dm"
 #include "human/_human.dm"
 #include "language/_language.dm"
 #include "mob/_mob.dm"
 #include "reagents/_reagents.dm"
 
-// #include "anchored_mobs.dm"
 #include "bad_alcohol_reagents.dm"
 #include "bespoke_id.dm"
-// #include "card_mismatch.dm"
-// #include "chain_pull_through_space.dm"
-// #include "character_saving.dm"
-// #include "combat.dm"
 #include "component_tests.dm"
-// #include "confusion.dm"
-// #include "emoting.dm"
+#include "connect_loc.dm"
 #include "focus_only_tests.dm"
-// #include "heretic_knowledge.dm"
-// #include "holidays.dm"
 #include "initialize_sanity.dm"
-// #include "keybinding_init.dm"
-// #include "machine_disassembly.dm"
+#include "loadout_tests.dm"
 #include "map_template_paths.dm"
-// #include "medical_wounds.dm"
-// #include "merge_type.dm"
-// #include "metabolizing.dm"
-// #include "outfit_sanity.dm"
-// #include "pills.dm"
-// #include "plantgrowth_tests.dm"
-// #include "projectiles.dm"
+#include "materials.dm"
+#include "mapping.dm"
 #include "prototypes.dm"
-// #include "reagent_id_typos.dm"
-// #include "reagent_mod_expose.dm"
-// #include "reagent_mod_procs.dm"
-// #include "reagent_recipe_collisions.dm"
+#include "projectiles.dm"
 #include "resist.dm"
-// #include "say.dm"
-// #include "serving_tray.dm"
-// #include "siunit.dm"
 #include "spawn_humans.dm"
-// #include "species_whitelists.dm"
-// #include "stomach.dm"
 #include "subsystem_init.dm"
-// #include "surgeries.dm"
-// #include "teleporters.dm"
 #include "timer_sanity.dm"
 #include "unit_test.dm"
+
+// END_INCLUDE
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
 #undef TEST_ASSERT_NOTEQUAL
-#undef TEST_FOCUS
+//#undef TEST_FOCUS - This define is used by vscode unit test extension to pick specific unit tests to run and appended later so needs to be used out of scope here
 #endif

@@ -16,4 +16,4 @@
                 if(istype(reagent, /datum/reagent/toxin)) // anything made from literal toxins is unsafe anyway, we don't care
                     any_ethanol=TRUE
             if(!any_ethanol)
-                Fail("[D.result] is alcoholic but can be made with only non-alcoholic ingredients")
+                TEST_FAIL("[D.result] is alcoholic but can be made with only non-alcoholic ingredients")
