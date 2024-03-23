@@ -45,7 +45,8 @@
 
 	//? Context
 	/// open context menus by mob
-	var/list/context_menus
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/context_menus
 
 	//? Economy
 	// todo: move all this to obj level, you aren't going to sell a fucking turf.
@@ -143,16 +144,24 @@
 	//? Materials
 	/// combined material trait flags
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/material_trait_flags = NONE
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_trait_flags = NONE
 	/// material traits on us, associated to metadata
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/list/datum/material_trait/material_traits
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/material_trait/material_traits
 	/// material trait metadata when [material_traits] is a single trait. null otherwise.
-	var/material_traits_data
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_traits_data
 	/// 'stacks' of ticking
 	/// this synchronizes the system so removing one ticking material trait doesn't fully de-tick the entity
 	//! DO NOT FUCK WITH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
-	var/material_ticking_counter = 0
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_ticking_counter = 0
 	/// material trait relative strength
 	/// applies to all traits globally as opposed to just one material parts,
 	/// because this is at /atom level.
@@ -170,13 +179,16 @@
 	/// sorted priority list of datums for handling shieldcalls with
 	/// we use this instead of signals so we can enforce priorities
 	/// this is horrifying.
-	var/list/datum/shieldcall/shieldcalls
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/shieldcall/shieldcalls
 
 	//? Overlays
 	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
-	var/list/managed_vis_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_vis_overlays
 	/// overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
-	var/list/managed_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_overlays
 
 	//? Layers
 	/// Base layer - defaults to layer.
