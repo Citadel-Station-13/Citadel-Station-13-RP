@@ -95,6 +95,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_RECORD_LENGTH		24576
 #define MAX_LNAME_LEN			64
 #define MAX_NAME_LEN			64
+
 /// 512GQ file
 #define MAX_TEXTFILE_LENGTH		128000
 // Event defines.
