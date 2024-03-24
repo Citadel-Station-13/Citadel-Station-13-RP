@@ -67,49 +67,61 @@ export const GamePreferenceEntry = (props: GamePreferenceEntryProps, context) =>
   let innerContent: InfernoNode = null;
   switch (props.schema.type) {
     case 'number':
+      innerContent = (
+        <NumberEntry {...props as any} />
+      );
       break;
     case 'string':
+      innerContent = (
+        <StringEntry {...props as any} />
+      );
       break;
     case 'toggle':
+      innerContent = (
+        <ToggleEntry {...props as any} />
+      );
       break;
     case 'dropdown':
+      innerContent = (
+        <DropdownEntry {...props as any} />
+      );
       break;
     case 'simpleColor':
+      innerContent = (
+        <SimpleColorEntry {...props as any} />
+      );
       break;
   }
   return (
-    <>
-      <Stack>
-        <Stack.Item width="33%">
-          <Stack>
-            <Stack.Item grow>
-              <b>{props.schema.name}</b>
-            </Stack.Item>
-            <Stack.Item>
-              <Tooltip content={props.schema.desc}>
-                <Button icon="questionmark" />
-              </Tooltip>
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
-        <Stack.Item grow>
-          {innerContent}
-        </Stack.Item>
-      </Stack>
-      {JSON.stringify(props)}
-    </>
+    <Stack>
+      <Stack.Item width="33%">
+        <Stack>
+          <Stack.Item grow>
+            <b>{props.schema.name}</b>
+          </Stack.Item>
+          <Stack.Item>
+            <Tooltip content={props.schema.desc}>
+              <Button icon="question" />
+            </Tooltip>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+      <Stack.Item grow>
+        {innerContent}
+      </Stack.Item>
+    </Stack>
   );
 };
 
 const NumberEntry = (props: {
   readonly schema: PreferenceNumberEntrySchema;
   readonly value: number;
-  readonly set: (val: number) => void;
+  readonly setValue: (val: number) => void;
 }, context) => {
   return (
     <NumberInput fluid value={props.value}
       minValue={props.schema.minValue} maxValue={props.schema.maxValue}
-      step={props.schema.roundTo} onInput={(e, val) => props.set(val)} />
+      step={props.schema.roundTo} onInput={(e, val) => props.setValue(val)} />
   );
 };
 
@@ -117,10 +129,10 @@ const StringEntry = (props: {
   // eslint-disable-next-line react/no-unused-prop-types
   readonly schema: PreferenceStringEntrySchema;
   readonly value: string;
-  readonly set: (val: string) => void;
+  readonly setValue: (val: string) => void;
 }, context) => {
   return (
-    <Input fluid value={props.value} onInput={(e, val) => props.set(val)} />
+    <Input fluid value={props.value} onInput={(e, val) => props.setValue(val)} />
   );
 };
 
@@ -128,22 +140,22 @@ const ToggleEntry = (props: {
   // eslint-disable-next-line react/no-unused-prop-types
   readonly schema: PreferenceToggleEntrySchema;
   readonly value: BooleanLike;
-  readonly set: (val: BooleanLike) => void;
+  readonly setValue: (val: BooleanLike) => void;
 }, context) => {
   return (
-    <Button fluid color="transparent"
-      selected={props.value} onClick={() => props.set(!props.value)} />
+    <Button.Checkbox fluid color="transparent" content={props.value? props.schema.enabledName : props.schema.disabledName}
+      checked={props.value} onClick={() => props.setValue(!props.value)} textAlign="center" />
   );
 };
 
 const DropdownEntry = (props: {
   readonly schema: PreferenceDropdownEntrySchema;
   readonly value: string;
-  readonly set: (val: string) => void;
+  readonly setValue: (val: string) => void;
 }, context) => {
   return (
     <Dropdown selected={props.value} options={props.schema.options}
-      onSelected={(v) => props.set(v)} />
+      onSelected={(v) => props.setValue(v)} width="100%" />
   );
 };
 
@@ -151,9 +163,9 @@ const SimpleColorEntry = (props: {
   // eslint-disable-next-line react/no-unused-prop-types
   readonly schema: PreferenceSimpleColorEntrySchema;
   readonly value: ByondColorString;
-  readonly set: (val: ByondColorString) => void;
+  readonly setValue: (val: ByondColorString) => void;
 }, context) => {
   return (
-    <Collapsible>test</Collapsible>
+    <Collapsible color={props.value}>test</Collapsible>
   );
 };

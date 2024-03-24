@@ -10,7 +10,9 @@
 	legacy_savefile_key = "UI_style"
 
 /datum/game_preference_entry/dropdown/hud_style/New()
-	options = all_ui_styles.Copy()
+	options = list()
+	for(var/key in all_ui_styles)
+		options += key
 	..()
 
 /datum/game_preference_entry/dropdown/hud_style/on_set(client/user, value, first_init)
