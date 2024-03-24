@@ -153,7 +153,6 @@ const GamePreferencesBody = (props, context) => {
 
   return (
     <Section fill scrollable>
-      {JSON.stringify(getModuleData(context, 'keybindings'))}
       <Stack fill vertical overflowY="auto">
         {categoryCache[activeCategory].map((subcat) => (
           <Stack.Item key={subcat}>

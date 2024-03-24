@@ -2,6 +2,7 @@
  * @file
  * @license MIT
  */
+import { IEKeyboardEventKeycodeToBYOND } from "common/keyboard";
 import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
 import { BooleanLike } from "common/react";
 import { Component, InfernoNode } from "inferno";
@@ -119,7 +120,6 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                 </Stack>
               </LabeledList.Item>
             </LabeledList>
-            test
           </Section>
           {Object.entries(sortedByCategory).sort(
             ([c1, k1], [c2, k2]) => c1.localeCompare(c2)
@@ -214,7 +214,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
 };
 
 const keyCodeToByond = (code: number): string => {
-
+  return IEKeyboardEventKeycodeToBYOND[code];
 };
 
 // todo: why are we not doing KeyListener?
@@ -316,7 +316,8 @@ class GamePreferenceKeybindCapture extends Component<{
               </Box>
             </Stack.Item>
             <Stack.Item>
-              {JSON.stringify(this.state)}
+              {this.state.alt && "Alt-"}{this.state.ctrl && "Ctrl-"}{this.state.shift && "Shift-"}
+              {this.state.numpad && "Numpad"}{keyCodeToByond(this.state.terminal)}
             </Stack.Item>
           </Stack>
         </Section>
