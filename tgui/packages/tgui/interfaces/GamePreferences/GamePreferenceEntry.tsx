@@ -4,8 +4,8 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
-import { Button, Collapsible, Dropdown, Input, NumberInput, Stack, Tooltip } from "../../components";
-import { ByondAtomColor, ByondColorString } from "../common/Color";
+import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Stack, Tooltip } from "../../components";
+import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 
 interface GamePreferenceEntryProps {
   readonly schema: GamePreferenceEntrySchema;
@@ -119,9 +119,12 @@ const NumberEntry = (props: {
   readonly setValue: (val: number) => void;
 }, context) => {
   return (
-    <NumberInput fluid value={props.value}
-      minValue={props.schema.minValue} maxValue={props.schema.maxValue}
-      step={props.schema.roundTo} onInput={(e, val) => props.setValue(val)} />
+    <>
+      <NumberInput fluid value={props.value}
+        minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
+        step={props.schema.roundTo || undefined} onInput={(e, val) => props.setValue(val)} />
+      {JSON.stringify(props)}
+    </>
   );
 };
 
@@ -144,7 +147,7 @@ const ToggleEntry = (props: {
 }, context) => {
   return (
     <Button.Checkbox fluid color="transparent" content={props.value? props.schema.enabledName : props.schema.disabledName}
-      checked={props.value} onClick={() => props.setValue(!props.value)} textAlign="center" />
+      checked={props.value} onClick={() => props.setValue(!props.value)} />
   );
 };
 
@@ -166,6 +169,11 @@ const SimpleColorEntry = (props: {
   readonly setValue: (val: ByondColorString) => void;
 }, context) => {
   return (
-    <Collapsible color={props.value}>test</Collapsible>
+    <Collapsible title={props.value? (
+      <ColorBox color={props.value} />
+    ) : ""} contentFunction={() => (
+      <ColorPicker currentColor={props.value || "#ffffff"} allowMatrix={false}
+        setColor={(what) => props.setValue(what as ByondColorString)} />
+    )} />
   );
 };

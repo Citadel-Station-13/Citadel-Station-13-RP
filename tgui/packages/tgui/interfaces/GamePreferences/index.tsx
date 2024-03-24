@@ -157,6 +157,7 @@ const GamePreferencesBody = (props, context) => {
         {categoryCache[activeCategory].map((subcat) => (
           <Stack.Item key={subcat}>
             <h1 style={{ "text-align": "center" }}>{subcat}</h1>
+            <hr />
             <Stack vertical>
               {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
                 <Stack.Item key={entry.key}>

@@ -222,7 +222,8 @@
 //* Reset *//
 
 /datum/game_preferences/proc/reset(category)
-	entries_by_key = list()
+	if(!cateogry)
+		entries_by_key = list()
 	for(var/key in SSpreferences.entries_by_key)
 		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		if(category && entry != category)
@@ -232,6 +233,7 @@
 		if(!isnull(active))
 			entry.on_set(active, value, TRUE)
 	mark_dirty()
+	push_ui_data(data = list("values" = entries_by_key))
 
 /datum/game_preferences/proc/full_reset()
 	// reset misc stuff first as everything potentially uses it
@@ -298,6 +300,7 @@
 	if(active)
 		entry.on_set(active, value, FALSE)
 	mark_dirty()
+	push_ui_data(data = list("values" = entries_by_key))
 	return TRUE
 
 /datum/game_preferences/proc/get_entry(datum/game_preference_entry/id_path_instance)

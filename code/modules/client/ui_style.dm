@@ -38,6 +38,8 @@ var/global/list/all_tooltip_styles = list(
 
 // todo: refactor
 /client/proc/set_ui_style(style)
+	if(!usr?.hud_used.adding)
+		return
 	var/UI_style_new = style
 	//update UI
 	var/list/icons = usr.hud_used.adding + usr.hud_used.other + usr.hud_used.hotkeybuttons
@@ -57,6 +59,8 @@ var/global/list/all_tooltip_styles = list(
 
 // todo: refactor
 /client/proc/set_ui_alpha(alpha)
+	if(!usr?.hud_used.adding)
+		return
 	//update UI
 	var/list/icons = usr.hud_used.adding + usr.hud_used.other + usr.hud_used.hotkeybuttons
 	icons.Add(usr.zone_sel)
@@ -71,6 +75,8 @@ var/global/list/all_tooltip_styles = list(
 
 // todo: refactor
 /client/proc/set_ui_color(color)
+	if(!usr?.hud_used.adding)
+		return
 	//update UI
 	var/list/icons = usr.hud_used.adding + usr.hud_used.other + usr.hud_used.hotkeybuttons
 	icons.Add(usr.zone_sel)

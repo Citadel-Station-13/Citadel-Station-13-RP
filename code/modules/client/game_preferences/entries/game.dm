@@ -39,6 +39,9 @@
 	category = GAME_PREFERENCE_CATEGORY_GAME
 	subcategory = "HUD Overlay"
 	default_value = 255
+	min_value = 0
+	max_value = 255
+	round_to_nearest = 1
 	legacy_savefile_key = "UI_style_alpha"
 
 /datum/game_preference_entry/number/hud_alpha/on_set(client/user, value, first_init)
