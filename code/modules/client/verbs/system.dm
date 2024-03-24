@@ -10,7 +10,7 @@
 	set name = "Game Preferences"
 	set category = VERB_CATEGORY_SYSTEM
 
-	preferences.ui_interact(src)
+	preferences.ui_interact(mob)
 
 //? Sound Management
 

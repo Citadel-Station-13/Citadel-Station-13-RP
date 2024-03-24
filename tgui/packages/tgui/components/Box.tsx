@@ -1,4 +1,8 @@
 /**
+ * Basic CSS box.
+ * This is the basic component used for formatting/whatnot.
+ * You should use this instead of <div> unless you're doing very low level work.
+ *
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
@@ -9,6 +13,12 @@ import { createVNode } from 'inferno';
 import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 import { CSS_COLORS } from '../constants';
 import { ComponentProps } from './Component';
+
+// a css value for a numerical unit,
+// or a number to translate into units automatically,
+export type BoxUnit = string | number;
+// a box unit, or none to have the box automatically sized
+export type BoxUnitProp = BoxUnit | null | undefined;
 
 /**
  * Box props basically have all the HTML / CSS props, thanks to being the base
@@ -25,44 +35,44 @@ export type BoxProps = ComponentProps & {
   overflow?: string | BooleanLike;
   overflowX?: string | BooleanLike;
   overflowY?: string | BooleanLike;
-  top?: string | BooleanLike;
-  bottom?: string | BooleanLike;
-  left?: string | BooleanLike;
-  right?: string | BooleanLike;
-  width?: string | BooleanLike;
-  minWidth?: string | BooleanLike;
-  maxWidth?: string | BooleanLike;
-  height?: string | BooleanLike;
-  minHeight?: string | BooleanLike;
-  maxHeight?: string | BooleanLike;
-  fontSize?: string | BooleanLike;
-  fontFamily?: string;
-  lineHeight?: string | BooleanLike;
+  top?: BoxUnitProp;
+  bottom?: BoxUnitProp;
+  left?: BoxUnitProp;
+  right?: BoxUnitProp;
+  width?: BoxUnitProp;
+  minWidth?: BoxUnitProp;
+  maxWidth?: BoxUnitProp;
+  height?: BoxUnitProp;
+  minHeight?: BoxUnitProp;
+  maxHeight?: BoxUnitProp;
+  fontSize?: BoxUnitProp;
+  fontFamily?: string | null;
+  lineHeight?: BoxUnitProp;
   opacity?: number;
-  textAlign?: string | BooleanLike;
-  verticalAlign?: string | BooleanLike;
+  textAlign?: string;
+  verticalAlign?: string;
   inline?: BooleanLike;
   bold?: BooleanLike;
   italic?: BooleanLike;
   nowrap?: BooleanLike;
   preserveWhitespace?: BooleanLike;
-  m?: string | BooleanLike;
-  mx?: string | BooleanLike;
-  my?: string | BooleanLike;
-  mt?: string | BooleanLike;
-  mb?: string | BooleanLike;
-  ml?: string | BooleanLike;
-  mr?: string | BooleanLike;
-  p?: string | BooleanLike;
-  px?: string | BooleanLike;
-  py?: string | BooleanLike;
-  pt?: string | BooleanLike;
-  pb?: string | BooleanLike;
-  pl?: string | BooleanLike;
-  pr?: string | BooleanLike;
-  color?: string | BooleanLike;
-  textColor?: string | BooleanLike;
-  backgroundColor?: string | BooleanLike;
+  m?: BoxUnitProp;
+  mx?: BoxUnitProp;
+  my?: BoxUnitProp;
+  mt?: BoxUnitProp;
+  mb?: BoxUnitProp;
+  ml?: BoxUnitProp;
+  mr?: BoxUnitProp;
+  p?: BoxUnitProp;
+  px?: BoxUnitProp;
+  py?: BoxUnitProp;
+  pt?: BoxUnitProp;
+  pb?: BoxUnitProp;
+  pl?: BoxUnitProp;
+  pr?: BoxUnitProp;
+  color?: string | null;
+  textColor?: string | null;
+  backgroundColor?: string | null;
   fillPositionedParent?: BooleanLike;
   //* baseline DOM / InfernoNode properties start *//
   // anything put in here is directly injected into the element as a style

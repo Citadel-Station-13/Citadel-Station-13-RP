@@ -7,7 +7,7 @@ import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
 import { BooleanLike } from "common/react";
 import { Component, InfernoNode } from "inferno";
 import { useComputedOnce, useLocalState } from "../../backend";
-import { Box, Button, Dimmer, LabeledList, Section, Stack, Table, Tooltip } from "../../components";
+import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "../../components";
 import { KeyEvent } from "../../events";
 import { listenForKeyEvents } from "../../hotkeys";
 
@@ -71,14 +71,28 @@ const computeBoundKeys = (keysBound: Record<string, string[]>): Record<string, s
 
 const KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN = "2em";
 
-const HOTKEY_MODE_DESCRIPTION = "Keybindings mode controls how the game behaves with tab and map/input focus.<br>If it is on <b>Hotkeys</b>, the game will always attempt to force you to map focus, meaning keypresses are sent \
-directly to the map instead of the input. You will still be able to use the command bar, but you need to tab to do it every time you click on the game map.<br>\
-If it is on <b>Input</b>, the game will not force focus away from the input bar, and you can switch focus using TAB between these two modes: If the input bar is pink, that means that you are in non-hotkey mode, sending all keypresses of the normal \
-alphanumeric characters, punctuation, spacebar, backspace, enter, etc, typing keys into the input bar. If the input bar is white, you are in hotkey mode, meaning all keypresses go into the game's keybind handling system unless you \
-manually click on the input bar to shift focus there.<br>\
-Input mode is the closest thing to the old input system.<br>\
-<b>IMPORTANT:</b> While in input mode's non hotkey setting (tab toggled), Ctrl + KEY will send KEY to the keybind system as the key itself, not as Ctrl + KEY. This means Ctrl + T/W/A/S/D/all your familiar stuff still works, but you \
-won't be able to access any regular Ctrl binds.<br>";
+const HOTKEY_MODE_DESCRIPTION = (
+  <>
+    Keybindings mode controls how the game behaves with tab and map/input focus.<br />
+    If it is on <b>Hotkeys</b>, the game will always attempt to force you to map focus,
+    meaning keypresses are sent  directly to the map instead of the input.
+    You will still be able to use the command bar,
+    but you need to tab to do it every time you click on the game map.<br />
+    If it is on <b>Input</b>, the game will not force focus away from the input bar,
+    and you can switch focus using TAB between these two modes:
+    If the input bar is pink, that means that you are in non-hotkey mode,
+    sending all keypresses of the normal
+    alphanumeric characters, punctuation, spacebar, backspace, enter, etc, typing keys into the input bar.
+    If the input bar is white, you are in hotkey mode,
+    meaning all keypresses go into the game&apos;s keybind handling system unless you
+    manually click on the input bar to shift focus there.<br />
+    Input mode is the closest thing to the old input system.<br />
+    <b>IMPORTANT:</b> While in input mode&apos;s non hotkey setting (tab toggled),
+    Ctrl + KEY will send KEY to the keybind system as the key itself, not as Ctrl + KEY.
+    This means Ctrl + T/W/A/S/D/all your familiar stuff still works, but you
+    won&apos;t be able to access any regular Ctrl binds.<br />
+  </>
+);
 
 export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps, context) => {
   // keybinds are naturally sorted by compile order thanks to typesof()
@@ -100,36 +114,35 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
       <Stack vertical>
         <Stack.Item>
           <Section title="Basic">
-            <LabeledList>
-              <LabeledList.Item label={(
+            <Stack>
+              <Stack.Item grow>
                 <Tooltip content={HOTKEY_MODE_DESCRIPTION}>
-                  Hotkey Mode
+                  <Box width="100%" height="100%" style={{ display: "flex", "align-content": "center" }}>
+                    <Box>
+                      Hotkey Mode
+                    </Box>
+                  </Box>
                 </Tooltip>
-              )}>
-                <Stack>
-                  <Stack.Item grow>
-                    <Button content="On" selected={props.hotkeyMode}
-                      color="transparent"
-                      onClick={() => props.setHotkeyMode(true)} />
-                  </Stack.Item>
-                  <Stack.Item grow>
-                    <Button content="Off" selected={!props.hotkeyMode}
-                      color="transparent"
-                      onClick={() => props.setHotkeyMode(false)} />
-                  </Stack.Item>
-                </Stack>
-              </LabeledList.Item>
-            </LabeledList>
+              </Stack.Item>
+              <Stack.Item grow>
+                <Button content="On" selected={props.hotkeyMode}
+                  color="transparent" fluid
+                  onClick={() => props.setHotkeyMode(true)} />
+              </Stack.Item>
+              <Stack.Item grow>
+                <Button content="Off" selected={!props.hotkeyMode}
+                  color="transparent" fluid
+                  onClick={() => props.setHotkeyMode(false)} />
+              </Stack.Item>
+            </Stack>
           </Section>
           {Object.entries(sortedByCategory).sort(
             ([c1, k1], [c2, k2]) => c1.localeCompare(c2)
           ).map(([category, keybinds]) => (
             <Stack.Item key={category}>
               <h2 style={{ "text-align": "center" }}>{category}</h2>
-              <hr />
               <Table style={{
-                "border-top": "1px solid",
-                "border-color": "#ffffff77",
+                "border-bottom": "1px solid #999999",
               }}>
                 {keybinds.map((keybind) => {
                   let boundKeys: string[] = keysByKeybind[keybind.id] || [];
@@ -137,8 +150,7 @@ export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenPr
                     <Table.Row key={keybind.id}
                       height={KEYBIND_ROW_HEIGHT_I_FUCKING_HATE_TABLES_WEBVIEW_WHEN}
                       style={{
-                        border: "1px solid", "border-color": "#ffffff77",
-                        "border-bottom": 0,
+                        "border-top": "1px solid #999999",
                       }}>
                       <Table.Cell width="40%" maxWidth="40%">
                         <Tooltip content={keybind.desc}>
@@ -317,7 +329,7 @@ class GamePreferenceKeybindCapture extends Component<{
             </Stack.Item>
             <Stack.Item>
               {this.state.alt && "Alt-"}{this.state.ctrl && "Ctrl-"}{this.state.shift && "Shift-"}
-              {this.state.numpad && "Numpad"}{keyCodeToByond(this.state.terminal)}
+              {this.state.numpad && "Numpad"}{this.state.terminal? keyCodeToByond(this.state.terminal) : ""}
             </Stack.Item>
           </Stack>
         </Section>

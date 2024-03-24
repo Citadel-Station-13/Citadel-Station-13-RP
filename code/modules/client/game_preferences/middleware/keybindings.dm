@@ -22,7 +22,7 @@
 	prefs.keybindings = defaults
 
 	prefs.push_ui_modules(updates = list((src.key) = list(
-		"keybindings" = prefs.keybindings,
+		"bindings" = prefs.keybindings,
 		"hotkeyMode" = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE],
 	)))
 
@@ -31,8 +31,13 @@
 	if(.)
 		return
 	switch(action)
+		if("reset")
+			handle_reset(prefs)
+			return TRUE
 		if("hotkeys")
 			var/value = params["value"]
+			if(prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] == value)
+				return TRUE
 			prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = !!value
 			prefs.mark_dirty()
 			prefs.push_ui_modules(updates = list((src.key) = list(
@@ -58,11 +63,10 @@
 				prefs.keybindings[replacing_key] -= keybind_id
 			if(isnull(prefs.keybindings[adding_key]))
 				prefs.keybindings[adding_key] = list()
-			if(keybind_id in prefs.keybindings[adding_key])
-				return TRUE
-			prefs.keybindings[adding_key] += keybind_id
+			if(!(keybind_id in prefs.keybindings[adding_key]))
+				prefs.keybindings[adding_key] += keybind_id
 			prefs.push_ui_modules(updates = list((src.key) = list(
-				"keybindings" = prefs.keybindings,
+				"bindings" = prefs.keybindings,
 			)))
 			prefs.active?.update_movement_keys()
 			return TRUE
@@ -73,7 +77,7 @@
 				return TRUE
 			prefs.keybindings[key] -= keybind_id
 			prefs.push_ui_modules(updates = list((src.key) = list(
-				"keybindings" = prefs.keybindings,
+				"bindings" = prefs.keybindings,
 			)))
 			prefs.active?.update_movement_keys()
 			return TRUE

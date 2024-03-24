@@ -84,6 +84,9 @@
 		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		var/value = entries_by_key[entry.key]
 		entry.on_set(active, value, TRUE)
+	for(var/key in GLOB.game_preference_middleware)
+		var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[key]
+		middleware.on_initial_load(src)
 
 /datum/game_preferences/proc/oops_sql_came_back_perform_a_reload()
 	// if we were sql loaded, don't desync from sql
@@ -312,10 +315,16 @@
 /datum/game_preferences/proc/auto_save()
 	if(!is_dirty)
 		return
+	sanitize_everything()
 	save()
 
 /datum/game_preferences/proc/mark_dirty()
 	is_dirty = TRUE
+	push_ui_data(data = list("dirty" = TRUE))
+
+/datum/game_preferences/proc/mark_saved()
+	is_dirty = FALSE
+	push_ui_data(data = list("dirty" = FALSE))
 
 /datum/game_preferences/proc/save()
 	if(!initialized)
@@ -329,9 +338,11 @@
 	if(!initialized)
 		return FALSE
 	if(SSdbcore.Connect())
-		return load_from_sql()
+		. = load_from_sql()
 	else
-		return load_from_file()
+		. = load_from_file()
+	sanitize_everything()
+	initialize_client()
 
 /**
  * this proc does not sanitize!
@@ -377,7 +388,7 @@
 	qdel(query)
 
 	authoritatively_loaded_by_sql = TRUE
-	is_dirty = FALSE
+	mark_saved()
 	update_static_data()
 
 	return TRUE
@@ -413,7 +424,7 @@
 	query.warn_execute(FALSE)
 	qdel(query)
 
-	is_dirty = FALSE
+	mark_saved()
 	authoritatively_loaded_by_sql = TRUE
 	sql_state_desynced = FALSE
 
@@ -442,7 +453,7 @@
 
 	if(authoritatively_loaded_by_sql)
 		sql_state_desynced = TRUE
-	is_dirty = FALSE
+	mark_saved()
 	update_static_data()
 
 	return TRUE
@@ -461,7 +472,7 @@
 		fdel(savefile_path)
 
 	text2file(safe_json_encode(serializing), savefile_path)
-	is_dirty = FALSE
+	mark_saved()
 
 	if(authoritatively_loaded_by_sql)
 		sql_state_desynced = TRUE
@@ -495,10 +506,6 @@
 	.["entries"] = entries
 	.["values"] = entries_by_key
 
-/datum/game_preferences/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-	.["dirty"] = is_dirty
-
 // todo: when do we refactor tgui again i don't like ui_interact because i'm a snowflake who likes being different
 // (real complaint: ui_interact is weird for being called from tgui as well as from external)
 // (update procs should be internally called, imo, not the 'open ui' proc, it leads to)
@@ -513,6 +520,7 @@
 		for(var/key in GLOB.game_preference_middleware)
 			var/datum/game_preference_middleware/middleware = GLOB.game_preference_middleware[key]
 			ui.register_module(middleware, key)
+		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /datum/game_preferences/ui_route(action, list/params, datum/tgui/ui, id)

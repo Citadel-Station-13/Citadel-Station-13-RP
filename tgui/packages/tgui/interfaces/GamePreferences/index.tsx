@@ -153,14 +153,18 @@ const GamePreferencesBody = (props, context) => {
 
   return (
     <Section fill scrollable>
-      <Stack fill vertical overflowY="auto">
+      <Stack vertical>
         {categoryCache[activeCategory].map((subcat) => (
           <Stack.Item key={subcat}>
             <h1 style={{ "text-align": "center" }}>{subcat}</h1>
-            {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
-              <GamePreferenceEntry schema={entry} key={entry.key} value={data.values[entry.key]}
-                setValue={(val) => act('set', { key: entry.key, value: val })} />
-            ))}
+            <Stack vertical>
+              {data.entries.filter((e) => e.category === activeCategory && e.subcategory === subcat).map((entry) => (
+                <Stack.Item key={entry.key}>
+                  <GamePreferenceEntry schema={entry} value={data.values[entry.key]}
+                    setValue={(val) => act('set', { key: entry.key, value: val })} />
+                </Stack.Item>
+              ))}
+            </Stack>
           </Stack.Item>
         ))}
       </Stack>
