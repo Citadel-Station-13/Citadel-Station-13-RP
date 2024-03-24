@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /// key value id = middleware instance
 GLOBAL_LIST_INIT(game_preference_middleware, init_game_preference_middleware())

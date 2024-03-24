@@ -10,9 +10,16 @@ import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 import { CSS_COLORS } from '../constants';
 import { ComponentProps } from './Component';
 
+/**
+ * Box props basically have all the HTML / CSS props, thanks to being the base
+ * definition of, well, everything given this is a wrapper class.
+ *
+ * Things that use Box often can/should override/'augment' some of these,
+ * but all of this is here so typescript knows what is/isn't valid.
+ */
 export type BoxProps = ComponentProps & {
   [key: string]: any;
-  as?: string;
+  as?: keyof InfernoHTML;
   className?: string | undefined;
   position?: string | BooleanLike;
   overflow?: string | BooleanLike;
@@ -57,6 +64,9 @@ export type BoxProps = ComponentProps & {
   textColor?: string | BooleanLike;
   backgroundColor?: string | BooleanLike;
   fillPositionedParent?: BooleanLike;
+  //* baseline DOM / InfernoNode properties start *//
+  // anything put in here is directly injected into the element as a style
+  // this overrides provided style variables
   style?: CSSProperties;
 }
 

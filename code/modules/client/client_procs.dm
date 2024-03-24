@@ -388,9 +388,9 @@
 	// unreference storage datums
 	persistent = null
 	player = null
-	preferences.active = null
-	preferences = null
-	prefs = null
+	if(preferences)
+		preferences.active = null
+		preferences = null
 
 	//* unsorted
 	GLOB.ahelp_tickets.ClientLogout(src)

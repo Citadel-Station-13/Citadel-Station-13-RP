@@ -93,8 +93,15 @@ export const GamePreferences = (props, context) => {
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
 
+  // sigh
+  // this is shitcode
+  // todo: refactor game prefs ui again
+  const [activeCapture, setActiveCapture] = useLocalState<InfernoNode | null>(context, 'activeKeyCapture', null);
+
   return (
     <Window width={600} height={800} title="Game Preferences">
+      {/* inject active capture vnode */}
+      {activeCapture}
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -132,6 +139,7 @@ const GamePreferencesBody = (props, context) => {
               keybind: id,
             }, activeMiddleware)}
             removeBind={(id, key) => act('removeBind', { keybind: id, key: key }, activeMiddleware)}
+            setHotkeyMode={(on) => act('hotkeys', { value: on }, activeMiddleware)}
             {...middlewareData as GamePreferenceKeybindMiddlware} />
         );
       case 'toggles':
