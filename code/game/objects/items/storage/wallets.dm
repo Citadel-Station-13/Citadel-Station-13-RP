@@ -111,7 +111,7 @@
 
 /obj/item/storage/wallet/poly/verb/change_color()
 	set name = "Change Wallet Color"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Change the color of the wallet."
 	set src in usr
 

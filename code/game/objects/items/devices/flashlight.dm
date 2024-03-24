@@ -62,7 +62,7 @@
 
 /obj/item/flashlight/verb/toggle()
 	set name = "Toggle Flashlight Brightness"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	set_brightness(usr)
 
@@ -306,7 +306,7 @@
 
 /obj/item/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(!usr.stat)

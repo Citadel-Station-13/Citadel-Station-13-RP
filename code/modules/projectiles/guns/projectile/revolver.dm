@@ -20,7 +20,7 @@
 /obj/item/gun/ballistic/revolver/verb/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	chamber_offset = 0
 	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \
@@ -71,7 +71,7 @@
 
 /obj/item/gun/ballistic/revolver/detective/verb/rename_gun()
 	set name = "Name Gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to rename your gun. If you're the detective."
 
 	var/mob/M = usr
@@ -99,7 +99,7 @@
 
 /obj/item/gun/ballistic/revolver/detective45/verb/rename_gun()
 	set name = "Name Gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your gun. If you're the Detective."
 
 	var/mob/M = usr
@@ -118,7 +118,7 @@
 
 /obj/item/gun/ballistic/revolver/detective45/verb/reskin_gun()
 	set name = "Resprite gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose a sprite for your gun."
 
 	var/mob/M = usr
@@ -215,7 +215,7 @@
 
 /obj/item/gun/ballistic/revolver/lemat/verb/swap_firingmode()
 	set name = "Swap Firing Mode"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to swap from one method of firing to another."
 
 	var/mob/living/carbon/human/M = usr
@@ -258,7 +258,7 @@
 /obj/item/gun/ballistic/revolver/lemat/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	chamber_offset = 0
 	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \

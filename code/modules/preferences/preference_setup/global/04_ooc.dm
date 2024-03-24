@@ -9,7 +9,6 @@
 /datum/category_item/player_setup_item/player_global/ooc/save_preferences(var/savefile/S)
 	S["ignored_players"]	<< pref.ignored_players
 
-/*
 /datum/category_item/player_setup_item/player_global/ooc/sanitize_preferences()
 	if(isnull(pref.ignored_players))
 		pref.ignored_players = list()
@@ -39,4 +38,3 @@
 			return PREFERENCES_REFRESH
 
 	return ..()
-*/

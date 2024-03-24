@@ -19,7 +19,7 @@
 
 /obj/item/reagent_containers/cartridge/dispenser/verb/set_label_verb()
 	set name = "Set Label"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	var/new_label = input(usr, "Enter a new label.", "Label Cartridge", label) as text|null

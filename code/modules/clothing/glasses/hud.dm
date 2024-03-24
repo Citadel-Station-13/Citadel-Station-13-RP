@@ -219,7 +219,7 @@
 
 /obj/item/clothing/glasses/omnihud/eng/meson/verb/toggleprojector()
 	set name = "Toggle projector"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -275,7 +275,7 @@
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
 	set name = "Switch Eyepatch"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -306,7 +306,7 @@
 
 /obj/item/clothing/glasses/hud/engi/eyepatch/verb/toggleprojector()
 	set name = "Toggle projector"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return

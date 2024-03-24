@@ -38,7 +38,7 @@
 
 // /obj/item/storage/quickdraw/verb/toggle_quickdraw()
 // 	set name = "Switch Quickdraw Mode"
-// 	set category = "Object"
+// 	set category = VERB_CATEGORY_OBJECT
 
 // 	quickmode = !quickmode
 // 	switch (quickmode)

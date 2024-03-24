@@ -139,7 +139,7 @@
 // Add or remove robotic limbs; check refresh_modular_limb_verbs() above.
 /mob/living/carbon/human/proc/attach_limb_verb()
 	set name = "Attach Limb"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Attach a replacement limb."
 
 	var/obj/item/organ/external/E = get_active_held_item()
@@ -168,7 +168,7 @@
 
 /mob/living/carbon/human/proc/detach_limb_verb()
 	set name = "Remove Limb"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Detach one of your limbs."
 
 	var/list/detachable_limbs = get_modular_limbs(return_first_found = FALSE, validate_proc = /obj/item/organ/external/proc/can_remove_modular_limb)

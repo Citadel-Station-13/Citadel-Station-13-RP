@@ -28,7 +28,7 @@
 
 /obj/structure/reagent_dispensers/water_cooler/verb/rotate_clockwise()
 	set name = "Rotate Cooler Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)

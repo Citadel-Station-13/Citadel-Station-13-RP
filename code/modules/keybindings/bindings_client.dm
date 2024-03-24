@@ -17,6 +17,9 @@
 	set instant = TRUE
 	set hidden = TRUE
 
+	if(!preferences.initialized)
+		return
+
 	client_keysend_amount += 1
 
 	var/cache = client_keysend_amount
@@ -72,7 +75,7 @@
 		else
 			full_key = "[AltMod][CtrlMod][ShiftMod][_key]"
 	var/keycount = 0
-	for(var/kb_name in prefs.key_bindings[full_key])
+	for(var/kb_name in preferences.keybindings[full_key])
 		keycount++
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		if(kb.can_use(src) && kb.down(src) && keycount >= MAX_COMMANDS_PER_KEY)
@@ -134,7 +137,7 @@
 
 	// We don't do full key for release, because for mod keys you
 	// can hold different keys and releasing any should be handled by the key binding specifically
-	for (var/kb_name in prefs.key_bindings[_key])
+	for (var/kb_name in preferences.keybindings[_key])
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		if(kb.can_use(src) && kb.up(src))
 			break
@@ -149,13 +152,13 @@
 		return
 	mob.key_focus?.keyLoop(src)
 
-/client/proc/update_movement_keys(datum/preferences/direct_prefs)
-	var/datum/preferences/D = prefs || direct_prefs
-	if(!D?.key_bindings)
+/client/proc/update_movement_keys(datum/game_preferences/direct_prefs)
+	var/datum/game_preferences/D = preferences || direct_prefs
+	if(!D?.keybindings)
 		return
 	movement_keys = list()
-	for(var/key in D.key_bindings)
-		for(var/kb_name in D.key_bindings[key])
+	for(var/key in D.keybindings)
+		for(var/kb_name in D.keybindings[key])
 			switch(kb_name)
 				if("North")
 					movement_keys[key] = NORTH

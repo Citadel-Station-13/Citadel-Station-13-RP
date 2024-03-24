@@ -146,7 +146,7 @@
 			exonet_messages.Add("<b>To [chosen_communicator]:</b><br>[text_message]")
 			log_pda("(DCOMM: [src]) sent \"[text_message]\" to [chosen_communicator]", src)
 			for(var/mob/M in GLOB.player_list)
-				if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
+				if(M.stat == DEAD && M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
 					if(istype(M, /mob/new_player) || M.forbid_seeing_deadchat)
 						continue
 					if(M == src)

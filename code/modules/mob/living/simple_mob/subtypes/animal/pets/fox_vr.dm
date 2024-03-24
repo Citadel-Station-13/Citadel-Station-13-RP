@@ -120,7 +120,7 @@
 
 /mob/living/simple_mob/animal/passive/fox/renault/verb/become_friends()
 	set name = "Become Friends"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src in view(1)
 
 	var/mob/living/L = usr
@@ -179,7 +179,7 @@
 
 /mob/living/simple_mob/animal/passive/fox/fluff/verb/friend()
 	set name = "Become Friends"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src in view(1)
 
 	if(friend && usr == friend)

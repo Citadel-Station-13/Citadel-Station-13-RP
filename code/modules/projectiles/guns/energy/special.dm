@@ -64,7 +64,7 @@
 
 /obj/item/gun/energy/floragun/verb/select_gene()
 	set name = "Select Gene"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	var/genemask = input("Choose a gene to modify.") as null|anything in SSplants.plant_gene_datums

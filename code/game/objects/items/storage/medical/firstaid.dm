@@ -218,7 +218,7 @@
 
 /obj/item/storage/pill_bottle/proc/choose_color()
 	set name = "Recolor bottle"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose a color for the pill bottle."
 
 	var/mob/M = usr

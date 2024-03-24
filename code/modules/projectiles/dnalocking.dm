@@ -33,7 +33,7 @@
 
 /obj/item/gun/verb/give_dna()
 	set name = "Give DNA"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	get_dna(usr)
 
@@ -58,7 +58,7 @@
 
 /obj/item/gun/verb/remove_dna()
 	set name = "Remove DNA"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	clear_dna(usr)
 
@@ -76,7 +76,7 @@
 
 /obj/item/gun/verb/allow_dna()
 	set name = "Toggle DNA Samples Allowance"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	toggledna(usr)
 

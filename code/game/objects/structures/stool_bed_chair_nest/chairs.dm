@@ -158,7 +158,7 @@
 
 /obj/structure/bed/chair/verb/rotate_clockwise()
 	set name = "Rotate Chair Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(!usr || !isturf(usr.loc))

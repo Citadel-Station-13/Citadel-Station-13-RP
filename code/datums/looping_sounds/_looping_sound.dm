@@ -91,7 +91,7 @@
 		if(direct)
 			if(ismob(thing))
 				var/mob/M = thing
-				if(!M.is_preference_enabled(pref_check))
+				if(!M.get_preference_toggle(pref_check))
 					continue
 			SEND_SOUND(thing, S)
 		else

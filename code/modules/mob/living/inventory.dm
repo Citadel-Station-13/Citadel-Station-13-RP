@@ -221,7 +221,7 @@
 
 /mob/living/mode()
 	set name = "Activate Held Object"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 
 	if(world.time <= next_click) // This isn't really a 'click' but it'll work for our purposes.

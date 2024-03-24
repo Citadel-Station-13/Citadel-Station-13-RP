@@ -83,7 +83,7 @@
 /obj/item/reagent_containers/spray/verb/empty()
 
 	set name = "Empty Tank"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if (alert(usr, "Are you sure you want to empty that?", "Empty Tank:", "Yes", "No") != "Yes")

@@ -153,7 +153,7 @@
 /obj/item/clothing/head/pilot/verb/hud_colors()
 	set name = "Alter HUD color"
 	set desc = "Change the color of the piloting HUD."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	var/newcolor = input(usr,"Pick a color!","HUD Color") as null|color

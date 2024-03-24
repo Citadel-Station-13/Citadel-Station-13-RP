@@ -433,7 +433,7 @@
 
 /obj/machinery/microwave/verb/Eject()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject content"
 	usr.visible_message(
 	"<span class='notice'>[usr] tries to open [src] and remove its contents.</span>" ,

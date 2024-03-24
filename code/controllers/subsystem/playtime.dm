@@ -67,6 +67,10 @@ SUBSYSTEM_DEF(playtime)
 			. += PLAYER_PLAYTIME_ROLE(J.id)
 
 /datum/controller/subsystem/playtime/proc/queue_playtimes(client/C)
+	set waitfor = FALSE
+	queue_playtimes_sync(C)
+
+/datum/controller/subsystem/playtime/proc/queue_playtimes_sync(client/C)
 	if(isnull(C))
 		return
 	if(!C.initialized)

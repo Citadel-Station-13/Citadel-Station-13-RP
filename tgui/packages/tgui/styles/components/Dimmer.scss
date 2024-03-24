@@ -4,6 +4,8 @@
  */
 $background-dimness: 0.75 !default;
 
+@use '../base.scss' as base;
+
 .Dimmer {
   // Align everything in the middle.
   // A fat middle finger for anything less than IE11.
@@ -18,5 +20,5 @@ $background-dimness: 0.75 !default;
   right: 0;
   // Dim everything around it
   background-color: rgba(0, 0, 0, $background-dimness);
-  z-index: 1;
+  z-index: base.$layer-base-interrupt;
 }

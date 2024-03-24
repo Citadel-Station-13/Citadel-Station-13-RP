@@ -65,7 +65,8 @@
  */
 /datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
 	log_tgui(user,
-		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
+		// "new [interface] fancy [user?.client?.prefs.tgui_fancy]",
+		"new [interface] fancy 1",
 		src_object = src_object)
 	src.user = user
 	src.src_object = src_object
@@ -112,7 +113,9 @@
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
-			fancy = user.client.prefs.tgui_fancy,
+			// todo: do we need that lmao
+			// fancy = user.client.prefs.tgui_fancy,
+			fancy = TRUE,
 			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
 			))
@@ -275,8 +278,10 @@
 		"refreshing" = refreshing,
 		"window" = list(
 			"key" = window_key,
-			"fancy" = user.client.prefs.tgui_fancy,
-			"locked" = user.client.prefs.tgui_lock,
+			// "fancy" = user.client.prefs.tgui_fancy,
+			// "locked" = user.client.prefs.tgui_lock,
+			"fancy" = TRUE,
+			"locked" = TRUE,
 		),
 		"client" = list(
 			"ckey" = user.client.ckey,
@@ -291,12 +296,12 @@
 	var/list/modules = list()
 	// static first
 	if(with_static_data)
-		json_data["static"] = src_object.ui_static_data(user, src, state)
+		json_data["static"] = src_object.ui_static_data(user, src)
 		for(var/datum/module as anything in modules_registered)
 			var/id = modules_registered[module]
 			modules[id] = module.ui_static_data(user, src, TRUE)
 	if(with_data)
-		json_data["data"] = src_object.ui_data(user, src, state)
+		json_data["data"] = src_object.ui_data(user, src)
 		for(var/datum/module as anything in (with_static_data? modules_registered : modules_processed))
 			var/id = modules_registered[module]
 			modules[id] = modules[id] | module.ui_data(user, src, TRUE)
@@ -458,6 +463,8 @@
 
 /**
  * Registers a datum as a module into this UI.
+ *
+ * todo: why is 'interface' a param again..?
  *
  * @params
  * * module - the module in question

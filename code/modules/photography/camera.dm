@@ -21,7 +21,7 @@
 
 /obj/item/camera/verb/change_size()
 	set name = "Set Photo Focus"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/nsize = input("Photo Size","Pick a size of resulting photo.") as null|anything in list(1,3,5,7)
 	if(nsize)
 		size = nsize

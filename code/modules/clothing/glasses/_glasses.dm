@@ -242,7 +242,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/eyepatchwhite/verb/switcheye()
 	set name = "Switch Eyepatch"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -256,7 +256,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/eyepatch/verb/switcheye()
 	set name = "Switch Eyepatch"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -428,7 +428,7 @@ BLIND     // can't see anything
 	toggle()
 
 /obj/item/clothing/glasses/welding/verb/toggle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust welding goggles"
 	set src in usr
 
@@ -668,7 +668,7 @@ BLIND     // can't see anything
 	toggle()
 
 /obj/item/clothing/glasses/aerogelgoggles/verb/toggle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust Orange Goggles"
 	set src in usr
 

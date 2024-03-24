@@ -97,7 +97,7 @@
 // todo: alt click context radials?
 /obj/item/hypospray/verb/set_transfer_amount()
 	set name = "Set Injection Amount"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(!inject_adjustable)
 		usr.action_feedback(SPAN_WARNING("[src] can't have its injection thresholds changed."), src)

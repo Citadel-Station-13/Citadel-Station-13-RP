@@ -267,7 +267,7 @@
 			var/turf/ear = get_turf(M)
 			if(ear)
 				// Ghostship is magic: Ghosts can hear radio chatter from anywhere
-				if(speaker_coverage[ear] || (istype(M, /mob/observer/dead) && M.is_preference_enabled(/datum/client_preference/ghost_radio)))
+				if(speaker_coverage[ear] || (istype(M, /mob/observer/dead) && M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_radio)))
 					. |= M		// Since we're already looping through mobs, why bother using |= ? This only slows things down.
 	return .
 
@@ -308,11 +308,11 @@
 			switch(type)
 				// Audio messages use ghost_ears.
 				if(1)
-					if(M.is_preference_enabled(/datum/client_preference/ghost_ears))
+					if(M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
 						mobs |= M
 				// Visual messages use ghost_sight.
 				if(2)
-					if(M.is_preference_enabled(/datum/client_preference/ghost_sight))
+					if(M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_sight))
 						mobs |= M
 
 	// For objects below the top level who still want to hear.

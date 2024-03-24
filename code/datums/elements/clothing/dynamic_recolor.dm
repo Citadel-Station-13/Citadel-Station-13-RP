@@ -40,7 +40,7 @@
 
 /obj/item/clothing/proc/dynamic_recolor_verb()
 	set name = "Set Color Style"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Set the coloration of this piece of clothing."
 	set src in usr
 

@@ -67,7 +67,7 @@
 		to_chat(src, "<span class='danger'>You cannot send deadchat emotes (muted).</span>")
 		return
 
-	if(!is_preference_enabled(/datum/client_preference/show_dsay))
+	if(!get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
 		return
 

@@ -173,7 +173,7 @@
 //Create rightclick to view tank settings
 /obj/machinery/oxygen_pump/verb/settings()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Show Tank Settings"
 	nano_ui_interact(usr)
 

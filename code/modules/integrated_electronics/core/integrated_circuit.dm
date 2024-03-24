@@ -115,7 +115,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 /obj/item/integrated_circuit/verb/rename_component()
 	set name = "Rename Circuit"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your circuit, useful to stay organized."
 	set src in usr
 

@@ -13,7 +13,7 @@
 
 /obj/item/hailer/verb/set_message()
 	set name = "Set Hailer Message"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Alter the message shouted by your hailer."
 
 	if(!isnull(insults))

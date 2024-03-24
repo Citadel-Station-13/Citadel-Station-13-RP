@@ -1,4 +1,16 @@
-// todo: this has to be globally cached for new admin panel
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+GLOBAL_LIST_EMPTY(player_data)
+
+/proc/resolve_player_data(ckey, key)
+	ckey = ckey(ckey)	// just in case
+	if(!islist(GLOB.player_data))
+		// we CANNOT RUNTIME
+		GLOB.player_data = list()
+	if(!istype(GLOB.player_data[ckey], /datum/player_data))
+		GLOB.player_data[ckey] = new /datum/player_data(ckey, key)
+	return GLOB.player_data[ckey]
 
 /**
  * holds db-related data
@@ -31,9 +43,12 @@
 	var/player_age
 	/// join date
 	var/player_first_seen
+	/// arbitrary JSON-serializable key-value data
+	/// you must handle errors yourself! we won't handle it for you.
+	var/list/player_misc
 
-/datum/player_data/New(key)
-	src.ckey = ckey(key)
+/datum/player_data/New(ckey, key)
+	src.ckey = ckey
 	if(!src.ckey)
 		return
 	src.key = key
@@ -94,7 +109,7 @@
 			lookup_pid = text2num(lookup_pid)
 		qdel(lookup)
 		lookup = SSdbcore.ExecuteQuery(
-			"SELECT id, flags, datediff(Now(), firstseen), firstseen FROM [format_table_name("player")] WHERE id = :id",
+			"SELECT id, flags, datediff(Now(), firstseen), firstseen, misc FROM [format_table_name("player")] WHERE id = :id",
 			list(
 				"id" = lookup_pid
 			)
@@ -111,6 +126,7 @@
 			player_flags = lookup_flags
 			player_first_seen = lookup.item[4]
 			player_age = lookup_age
+			player_misc = safe_json_decode(lookup.item[5])
 			qdel(lookup)
 			available = TRUE
 		else
@@ -125,6 +141,7 @@
 	// new person!
 	player_age = 0
 	player_flags = NONE
+	player_misc = list()
 	var/datum/db_query/insert
 	if(migrate_firstseen)
 		insert = SSdbcore.ExecuteQuery(
@@ -190,10 +207,11 @@
 
 /datum/player_data/proc/_save()
 	qdel(SSdbcore.ExecuteQuery(
-		"UPDATE [format_table_name("player")] SET flags = :flags WHERE id = :id",
+		"UPDATE [format_table_name("player")] SET flags = :flags, misc = :misc WHERE id = :id",
 		list(
 			"flags" = player_flags,
-			"id" = player_id
+			"id" = player_id,
+			"misc" = safe_json_encode(player_misc, "{}"),
 		)
 	))
 
@@ -211,7 +229,7 @@
 	qdel(SSdbcore.ExecuteQuery(
 		"UPDATE [format_table_name("player")] SET lastseen = Now() WHERE id = :id",
 		list(
-			"id" = player_id
+			"id" = player_id,
 		)
 	))
 	return TRUE
@@ -229,7 +247,7 @@
  *
  * WARNING: without database, or if this is for a guest key, we will never be available.
  */
-/datum/player_data/proc/block_on_available(timeout = INFINITY)
+/datum/player_data/proc/block_on_available(timeout = 10 SECONDS)
 	var/timed_out = world.time + timeout
 	UNTIL(!isnull(available) || world.time > timed_out)
 	return available

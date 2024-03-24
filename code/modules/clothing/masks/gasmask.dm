@@ -74,7 +74,7 @@
 		update_worn_icon()
 
 /obj/item/clothing/mask/gas/half/verb/toggle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust mask"
 	set src in usr
 	adjust_mask(usr)
@@ -368,7 +368,7 @@
 /obj/item/clothing/mask/gas/orchid/verb/toggle_design()
 
 	set name = "Change Design"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	change_mask(usr)

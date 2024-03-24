@@ -57,7 +57,7 @@
 
 /obj/item/card/data/verb/label(t as text)
 	set name = "Label Disk"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if (t)

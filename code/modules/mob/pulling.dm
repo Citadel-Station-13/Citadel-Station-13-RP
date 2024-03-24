@@ -128,7 +128,7 @@
 
 /mob/verb/stop_pulling_verb()
 	set name = "Stop Pulling"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	stop_pulling()
 
 /mob/stop_pulling()

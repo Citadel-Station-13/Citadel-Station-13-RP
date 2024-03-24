@@ -222,7 +222,7 @@
 
 /obj/structure/hoist/verb/collapse_hoist()
 	set name = "Collapse Hoist"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in range(1)
 
 	if (!ishuman(usr))

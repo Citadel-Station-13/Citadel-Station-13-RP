@@ -225,7 +225,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
 /mob/living/verb/ghost()
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
@@ -658,18 +658,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	// Give the ghost a cult icon which should be visible only to itself
 	toggle_icon("cult")
 
-/mob/observer/dead/verb/toggle_anonsay()
-	set category = "Ghost"
-	set name = "Toggle Anonymous Chat"
-	set desc = "Toggles showing your key in dead chat."
-
-	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
-	SScharacters.queue_preferences_save(client.prefs)
-	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
-		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
-	else
-		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")
-
 /mob/observer/dead/canface()
 	return 1
 
@@ -717,7 +705,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/proc/ghost_whisper()
 	set name = "Spectral Whisper"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(is_manifest)  //Only able to whisper if it's hit with a tome.
 		var/list/options = list()

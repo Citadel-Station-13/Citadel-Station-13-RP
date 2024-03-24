@@ -420,7 +420,7 @@
 
 /obj/structure/closet/verb/verb_togglelock()
 	set src in oview(1) // One square distance
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Lock"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
@@ -445,7 +445,7 @@
 
 /obj/structure/closet/verb/verb_toggleopen()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Open"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))

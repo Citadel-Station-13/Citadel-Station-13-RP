@@ -136,7 +136,7 @@
 /*
 /obj/item/clothing/under/det/verb/rollup()
 	set name = "Roll Suit Sleeves"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	var/unrolled = item_state_slots[SLOT_ID_UNIFORM] == initial(snowflake_worn_state)
 	item_state_slots[SLOT_ID_UNIFORM] = unrolled ? "[snowflake_worn_state]_r" : initial(snowflake_worn_state)

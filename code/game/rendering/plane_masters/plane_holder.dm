@@ -70,7 +70,7 @@
 		CRASH("invalid fetch")
 
 /datum/plane_holder/proc/sync_owner(client/C)
-	set_fake_ambient_occlusion(C.is_preference_enabled(/datum/client_preference/ambient_occlusion))
+	set_fake_ambient_occlusion(C.get_preference_entry(/datum/game_preference_entry/toggle/ambient_occlusion))
 
 /datum/plane_holder/proc/set_fake_ambient_occlusion(enabled)
 	return

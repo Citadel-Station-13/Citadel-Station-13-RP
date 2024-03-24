@@ -187,7 +187,7 @@
 
 /obj/machinery/organ_printer/verb/eject_beaker()
 	set name = "Eject Beaker"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != NONE)

@@ -229,10 +229,6 @@ var/list/channel_to_radio_key = new
 	//Autohiss handles auto-rolling tajaran R's and unathi S's/Z's
 	message = handle_autohiss(message, speaking)
 
-	//autocorrect common typos
-	if(client?.is_preference_enabled(/datum/client_preference/autocorrect))
-		message = autocorrect(message)
-
 	//Whisper vars
 	var/w_scramble_range = 3	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers

@@ -67,7 +67,7 @@
 
 /obj/item/tape_recorder/verb/eject()
 	set name = "Eject Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -138,7 +138,7 @@
 
 /obj/item/tape_recorder/verb/record()
 	set name = "Start Recording"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -193,7 +193,7 @@
 
 /obj/item/tape_recorder/verb/stop()
 	set name = "Stop"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -211,7 +211,7 @@
 
 /obj/item/tape_recorder/verb/wipe_tape()
 	set name = "Wipe Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -234,7 +234,7 @@
 
 /obj/item/tape_recorder/verb/playback_memory()
 	set name = "Playback Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -306,7 +306,7 @@
 
 /obj/item/tape_recorder/verb/print_transcript()
 	set name = "Print Transcript"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return

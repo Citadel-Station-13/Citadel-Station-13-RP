@@ -341,7 +341,7 @@
 
 /obj/item/technomancer_core/verb/toggle_lock()
 	set name = "Toggle Core Lock"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Toggles the locking mechanism on your manipulation core."
 
 	var/had = HAS_TRAIT_FROM(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)

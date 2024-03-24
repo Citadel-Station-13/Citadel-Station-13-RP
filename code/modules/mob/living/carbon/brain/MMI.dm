@@ -39,7 +39,7 @@
 /obj/item/mmi/verb/toggle_radio()
 	set name = "Toggle Brain Radio"
 	set desc = "Enables or disables the integrated brain radio, which is only usable outside of a body."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	set popup_menu = 1
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))

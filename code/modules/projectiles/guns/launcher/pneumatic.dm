@@ -34,7 +34,7 @@
 
 /obj/item/gun/launcher/pneumatic/verb/set_pressure() //set amount of tank pressure.
 	set name = "Set Valve Pressure"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in range(0)
 	var/N = input("Percentage of tank used per shot:","[src]") as null|anything in possible_pressure_amounts
 	if (N)

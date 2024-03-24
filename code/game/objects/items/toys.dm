@@ -988,7 +988,7 @@
 
 /obj/item/toy/plushie/verb/rename_plushie()
 	set name = "Name Plushie"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Give your plushie a cute name!"
 	var/mob/M = usr
 	if(!M.mind)

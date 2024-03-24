@@ -252,7 +252,7 @@
 
 /mob/living/simple_mob/verb/access_mob_radio_legacy()
 	set name = "Access Mob Radio"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(isnull(mob_radio))
 		to_chat(usr, SPAN_WARNING("You don't have a radio."))

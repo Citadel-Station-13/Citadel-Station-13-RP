@@ -3,7 +3,7 @@
 	weight = WEIGHT_HIGHEST
 
 /datum/keybinding/client/admin_help
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "admin_help"
 	full_name = "Admin Help"
 	description = "Ask an admin for help."
@@ -13,7 +13,7 @@
 	return TRUE
 
 /datum/keybinding/client/screenshot
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "screenshot"
 	full_name = "Screenshot"
 	description = "Take a screenshot."

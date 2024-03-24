@@ -26,7 +26,7 @@
 
 /obj/item/clothing/suit/space/void/zaddat/verb/custom_suit()
 	set name = "Customize Shroud"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Pick an appearence for your Shroud."
 
 	var/mob/M = usr

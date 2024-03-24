@@ -241,7 +241,7 @@
 
 /mob/living/silicon/check_languages()
 	set name = "Check Known Languages"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src = usr
 
 	var/dat = "<b><font size = 5>Known Languages</font></b><br/><br/>"
@@ -287,7 +287,7 @@
 /mob/living/silicon/verb/pose()
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	pose =  sanitize(input(usr, "This is [src]. It is...", "Pose", null)  as text)
 
@@ -296,7 +296,7 @@
 /mob/living/silicon/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	flavor_text =  sanitize(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
 

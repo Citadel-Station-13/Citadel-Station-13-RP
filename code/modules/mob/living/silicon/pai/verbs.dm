@@ -30,7 +30,7 @@
 
 /mob/living/silicon/pai/lay_down()
 	set name = "Rest"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	// Pass lying down or getting up to our pet human, if we're in a hardsuit.
 	if(src.loc == shell)
@@ -63,7 +63,7 @@
 
 /mob/living/silicon/pai/verb/wipe_software()
 	set name = "Wipe Software"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Wipe your software. This is functionally equivalent to cryo or robotic storage, freeing up your job slot."
 
 	// Make sure people don't kill themselves accidentally

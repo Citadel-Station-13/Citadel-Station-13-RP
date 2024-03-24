@@ -1111,7 +1111,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/roll_sleeves()
 	set name = "Roll Sleeves"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living))
 		return
@@ -1130,7 +1130,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/tuck()
 	set name = "Toggle Shirt Tucking"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)||usr.stat)
 		return
@@ -1145,7 +1145,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/button()
 	set name = "Toggle Shirt Buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)||usr.stat)
 		return
@@ -1303,7 +1303,7 @@
 /*
 /obj/item/clothing/suit/storage/toggle/operations_coat/verb/toggle()
 	set name = "Toggle coat buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!usr.canmove || usr.stat || usr.restrained())

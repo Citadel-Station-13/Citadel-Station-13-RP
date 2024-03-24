@@ -235,7 +235,7 @@
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 
 	if(is_sleeping())

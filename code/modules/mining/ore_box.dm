@@ -84,7 +84,7 @@
 
 /obj/structure/ore_box/verb/empty_box()
 	set name = "Empty Ore Box"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(!istype(usr, /mob/living/carbon/human) && !istype(usr, /mob/living/silicon/robot)) //Only living, intelligent creatures with gripping aparatti can empty ore boxes.

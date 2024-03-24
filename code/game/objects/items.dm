@@ -239,7 +239,7 @@
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(!istype(src.loc, /turf) || usr.stat || usr.restrained() )
@@ -493,7 +493,7 @@
 		else
 			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
 	else
-		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
+		playsound(src, drop_sound, 30)
 
 /obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
@@ -506,7 +506,7 @@
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Pick up"
 
 	if(!(usr)) //BS12 EDIT
@@ -692,7 +692,7 @@ GLOBAL_LIST_EMPTY(blood_overlay_cache)
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/obj/item/I = get_active_held_item()
 	if(I && !(I.atom_flags & ATOM_ABSTRACT))

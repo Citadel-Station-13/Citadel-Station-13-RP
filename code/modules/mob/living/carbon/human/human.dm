@@ -1049,7 +1049,7 @@
 		organ.status |= ORGAN_BLEEDING
 
 /mob/living/carbon/human/verb/check_pulse()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Check pulse"
 	set desc = "Approximately count somebody's pulse. Requires you to stand still at least 6 seconds."
 	set src in view(1)
@@ -1205,7 +1205,7 @@
 		return set_species(/datum/species/human, force = force)
 
 /mob/living/carbon/human/proc/bloody_doodle()
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set name = "Write in blood"
 	set desc = "Use blood on your hands to write a short message on the floor or a wall, murder mystery style."
 
@@ -1399,7 +1399,7 @@
 		return 1
 
 /mob/living/carbon/human/proc/relocate()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Relocate Joint"
 	set desc = "Pop a joint back into place. Extremely painful."
 	set src in view(1)
@@ -1460,7 +1460,7 @@
 /mob/living/carbon/human/verb/toggle_underwear()
 	set name = "Toggle Underwear"
 	set desc = "Shows/hides selected parts of your underwear."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(stat) return
 	var/datum/category_group/underwear/UWC = input(usr, "Choose underwear:", "Show/hide underwear") as null|anything in GLOB.global_underwear.categories
@@ -1477,7 +1477,7 @@
 /mob/living/carbon/human/verb/pull_punches()
 	set name = "Pull Punches"
 	set desc = "Try not to hurt them."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(stat) return
 	pulling_punches = !pulling_punches

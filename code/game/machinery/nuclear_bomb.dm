@@ -213,7 +213,7 @@ var/bomb_set
 	onclose(user, "nukebomb_hack")
 
 /obj/machinery/nuclearbomb/verb/make_deployable()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Make Deployable"
 	set src in oview(1)
 

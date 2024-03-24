@@ -249,7 +249,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	// for(var/m in viewers(A))
 	// 	var/mob/M = m
 	// 	var/client/C = M.client
-	// 	if(C && C.is_preference_enabled(/datum/client_preference/attack_icons))
+	// 	if(C && C.get_preference_toggle(/datum/client_preference/attack_icons))
 	// 		viewing += M.client
 
 	// //Animals attacking each other in the distance, probably. Forgeddaboutit.

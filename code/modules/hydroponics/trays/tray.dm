@@ -380,7 +380,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label()
 
 	set name = "Remove Label"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(usr.incapacitated())
@@ -396,7 +396,7 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/verb/setlight()
 	set name = "Set Light"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(usr.incapacitated())
@@ -641,7 +641,7 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb()
 	set name = "Toggle Tray Lid"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 	if(usr.incapacitated())
 		return

@@ -113,7 +113,7 @@
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if((MUTATION_CLUMSY in usr.mutations) && prob(50))

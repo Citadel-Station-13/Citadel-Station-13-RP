@@ -1880,7 +1880,7 @@
 	var/original_size
 
 /obj/item/clothing/under/bluespace/verb/toggle_fibers()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust fibers"
 	set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
 	set src in usr
@@ -1897,7 +1897,7 @@
 
 /obj/item/clothing/under/bluespace/verb/resize()
 	set name = "Adjust Size"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	bluespace_size(usr)
 
@@ -2000,7 +2000,7 @@
 /*
 /obj/item/clothing/under/antediluvian/verb/switchsprite()
     set name = "Reconfigure Suit"
-    set category = "Object"
+    set category = VERB_CATEGORY_OBJECT
     set src in usr
     if(!istype(usr, /mob/living))
         return

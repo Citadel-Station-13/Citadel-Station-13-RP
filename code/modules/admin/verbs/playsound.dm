@@ -33,7 +33,7 @@
 	message_admins("[key_name_admin(src)] played sound [S]")
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.is_preference_enabled(/datum/client_preference/play_admin_midis)) //if(M.client.prefs.toggles & SOUND_MIDI)
+		if(M.get_preference_toggle(/datum/game_preference_toggle/music/admin)) //if(M.client.prefs.toggles & SOUND_MIDI)
 			admin_sound.volume = vol * M.client.admin_music_volume
 			SEND_SOUND(M, admin_sound)
 			admin_sound.volume = vol
@@ -126,7 +126,7 @@
 			for(var/m in GLOB.player_list)
 				var/mob/M = m
 				var/client/C = M.client
-				if(M.is_preference_enabled(/datum/client_preference/play_admin_midis)) //if(C.prefs.toggles & SOUND_MIDI)
+				if(M.get_preference_toggle(/datum/game_preference_toggle/music/admin)) //if(C.prefs.toggles & SOUND_MIDI)
 					if(!stop_web_sounds)
 						C.tgui_panel?.play_music(web_sound_url, music_extra_data)
 					else
@@ -176,7 +176,7 @@
 		for(var/m in GLOB.player_list)
 			var/mob/M = m
 			var/client/C = M.client
-			if(M.is_preference_enabled(/datum/client_preference/play_admin_midis)) //if(C.prefs.toggles & SOUND_MIDI)
+			if(M.get_preference_toggle(/datum/game_preference_toggle/music/admin)) //if(C.prefs.toggles & SOUND_MIDI)
 				C.tgui_panel?.play_music(web_sound_input, music_extra_data)
 
 	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Manual Play Internet Sound")
