@@ -13,6 +13,7 @@
  */
 /proc/render_hologram_icon(rendering, use_alpha, no_anim, scanlines = TRUE, extra = null)
 	var/icon/processing
+	var/atom/A = rendering
 	if(!isicon(rendering))
 		// cursed : operator; see params for why.
 		processing = get_compound_icon(rendering, no_anim = no_anim)
@@ -28,7 +29,11 @@
 		processing.alpha_mask(icon('icons/system/alphamask_32x32.dmi', scanline_icon_state))
 	if(!isnull(use_alpha))
 		processing.MapColors(arglist(construct_rgba_color_matrix(aa = use_alpha / 255)))
+	usr.client << ftp(processing, "[A.name].png")
 	return processing
+
+/atom/proc/test_proc()
+	render_hologram_icon(src, 210, TRUE, TRUE)
 
 GLOBAL_LIST_EMPTY(hologram_scanline_renders)
 
