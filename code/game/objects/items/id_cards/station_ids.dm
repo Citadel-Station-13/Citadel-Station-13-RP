@@ -360,7 +360,7 @@
 
 /obj/item/card/id/prisoner
 	name = "Prisoner ID card"
-	desc = "A card repressenting incareration. Do not lose."
+	desc = "A card representing someone's incarceration. Do not lose."
 	icon_state = "civilian-id"
 	assignment = "Prisoner"
 	primary_color = rgb(243, 97, 0)
@@ -369,7 +369,7 @@
 	var/points = 0
 
 	var/served = 0 //Time served in seconds
-	var/sentence = 0 //Sentance in minutes
+	var/sentence = 0 //Sentence in minutes
 	var/crime = "\[redacted\]"
 
 	job_access_type = null
@@ -387,7 +387,7 @@
 		update_name(registered_name, assignment)
 		playsound(loc, 'sound/machines/ping.ogg', 50, 1)
 		if(isliving(loc))
-			to_chat(loc, "<span class='boldnotice'>\the [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+			to_chat(loc, "<span class='boldnotice'>\The [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
 		STOP_PROCESSING(SSprocessing, src)
 	else
 		served += 1
@@ -398,13 +398,13 @@
 	var/minutesServed = round(served / 60)
 	var/secondsServed = served - (minutesServed * 60)
 	if(sentence <= 0)
-		to_chat(usr, "<span class='notice'>You are serving a permanent sentence for [crime].</span>")
+		. += "\n<span class='notice'>You are serving a permanent sentence for [crime].</span>"
 	else if(served >= (sentence * 60))
-		to_chat(usr, "<span class='notice'>You have served your sentence for [crime].</span>")
+		. += "\n<span class='notice'>You have served your sentence for [crime].</span>"
 	else
-		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentance for [crime].</span>")
+		. += "\n<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentence for [crime].</span>"
 	if(goal > 0)
-		to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
+		. += "\n<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>"
 
 
 
