@@ -3421,6 +3421,7 @@
 /obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 4
 	},
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/security/prison/lower)
 "jx" = (
@@ -4027,6 +4028,10 @@
 "lB" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/appliance/cooker/fryer,
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
 /turf/simulated/floor/tiled/white,
 /area/security/prison/lower)
 "lC" = (
@@ -4818,6 +4823,8 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "on" = (
@@ -4888,6 +4895,12 @@
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 8
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
@@ -5020,6 +5033,12 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "16-0"
+	},
+/obj/machinery/atmospherics/pipe/zpipe/up/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/security/prison/lower)
@@ -5170,6 +5189,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"pq" = (
+/obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "pr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -5471,6 +5495,15 @@
 "qu" = (
 /obj/structure/closet/crate/freezer,
 /turf/simulated/floor/tiled/freezer/cold,
+/area/security/prison/lower)
+"qw" = (
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor,
 /area/security/prison/lower)
 "qy" = (
 /obj/structure/cable/green{
@@ -6060,6 +6093,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/table/marble,
 /obj/machinery/appliance/mixer/candy,
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/security/prison/lower)
 "sP" = (
@@ -6960,6 +6994,12 @@
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
+"vN" = (
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "vP" = (
 /obj/item/stack/tile/floor,
 /obj/machinery/light/small{
@@ -7916,6 +7956,8 @@
 /obj/machinery/door/airlock/maintenance/sec{
 	req_one_access = null
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /turf/simulated/floor,
 /area/security/prison/lower)
 "yD" = (
@@ -7966,6 +8008,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/concrete/tile/indoors,
+/area/security/prison/lower)
+"yL" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "yM" = (
 /obj/effect/floor_decal/rust,
@@ -8489,12 +8535,6 @@
 /obj/machinery/holoplant,
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
-"Ay" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/concrete/indoors,
-/area/security/prison/lower)
 "Az" = (
 /obj/machinery/door/window/westleft,
 /obj/machinery/door/blast/shutters{
@@ -8662,6 +8702,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
+"Bi" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/security/prison/lower)
 "Bj" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/under1)
@@ -9865,6 +9913,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Fx" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "Fz" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -10291,6 +10343,12 @@
 /obj/machinery/atmospherics/pipe/simple/visible/blue,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"GK" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/turf/simulated/floor,
+/area/security/prison/lower)
 "GM" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 1
@@ -10368,6 +10426,15 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Hb" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 5
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "Hc" = (
 /obj/structure/railing{
 	dir = 4
@@ -11450,6 +11517,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"Kz" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/security/prison/lower)
 "KA" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
@@ -12647,6 +12724,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
+"Og" = (
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 9
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "Oh" = (
 /obj/item/circuitboard/skills{
 	pixel_x = -3;
@@ -12787,6 +12870,12 @@
 "Ox" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/security/prison/lower)
@@ -13372,6 +13461,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/station/protean_nanite_room)
+"QS" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 5
+	},
+/turf/simulated/floor,
+/area/security/prison/lower)
 "QU" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13502,6 +13601,15 @@
 /obj/effect/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"Rq" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 9
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "Rr" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/structure/cable{
@@ -13536,6 +13644,15 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
+"Rx" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "Rz" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -13606,6 +13723,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"RK" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 6
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "RL" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -13701,6 +13827,16 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
+"Sa" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor,
+/area/security/prison/lower)
 "Sb" = (
 /turf/simulated/floor/tiled/white,
 /area/security/prison/lower)
@@ -14229,6 +14365,15 @@
 	},
 /turf/simulated/floor,
 /area/hallway/primary/underone)
+"Uj" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "Ul" = (
 /obj/machinery/space_heater,
 /obj/structure/railing,
@@ -14393,6 +14538,9 @@
 	dir = 1
 	},
 /obj/machinery/scale,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "UL" = (
@@ -15939,6 +16087,12 @@
 "ZH" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/security/prison/lower)
 "ZJ" = (
@@ -32628,7 +32782,7 @@ aa
 aa
 BH
 gq
-vc
+Kz
 vc
 BH
 aa
@@ -33016,7 +33170,7 @@ ua
 ua
 ua
 JJ
-vc
+Kz
 Vd
 VJ
 ua
@@ -33210,9 +33364,9 @@ ua
 Zi
 vc
 JT
-JT
-vc
-vc
+qw
+GK
+QS
 JJ
 ua
 FP
@@ -33406,14 +33560,14 @@ JT
 JT
 JJ
 Oo
-vc
-vc
+Sa
+GK
 yC
 om
-Vg
-Vg
-Vg
-Vg
+pq
+pq
+pq
+Hb
 Vg
 Vg
 wj
@@ -33606,8 +33760,8 @@ ua
 ua
 UJ
 Jy
-Ay
-Vg
+Jy
+Rx
 Vg
 Jy
 UG
@@ -33995,7 +34149,7 @@ Vg
 Vg
 Vg
 Vg
-Vg
+Rx
 Vg
 Vg
 Vg
@@ -34187,9 +34341,9 @@ Vg
 Vg
 Vg
 Vg
-Vg
-Vg
-Vg
+RK
+pq
+Rq
 Vg
 Vg
 Vg
@@ -34381,7 +34535,7 @@ dD
 dD
 dD
 Vg
-Vg
+Rx
 dD
 Tk
 Tk
@@ -34575,7 +34729,7 @@ ei
 ei
 dD
 Vg
-Vg
+Rx
 dD
 OU
 OU
@@ -34769,7 +34923,7 @@ dD
 lE
 Ip
 Vg
-Vg
+Rx
 dD
 Tk
 Tk
@@ -34963,7 +35117,7 @@ dD
 dD
 lm
 Vg
-Vg
+Rx
 dD
 dD
 dD
@@ -35157,7 +35311,7 @@ dD
 dD
 Ip
 Vg
-Vg
+Rx
 dD
 Tk
 Tk
@@ -35350,8 +35504,8 @@ dD
 dD
 dD
 Ip
-Vg
-Vg
+yL
+Uj
 dD
 OU
 OU
@@ -35545,7 +35699,7 @@ dD
 dD
 Ip
 Vg
-Vg
+vN
 dD
 Tk
 Tk
@@ -35738,8 +35892,8 @@ dD
 dD
 dD
 Ip
-Vg
-Vg
+Fx
+Og
 dD
 dD
 dD
@@ -38839,7 +38993,7 @@ ua
 IA
 SE
 pg
-pg
+Bi
 pg
 SE
 eu

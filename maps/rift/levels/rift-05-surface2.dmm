@@ -2925,6 +2925,9 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/security_processing)
 "bHs" = (
@@ -8676,6 +8679,10 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "fEL" = (
@@ -13399,6 +13406,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
+"iED" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "iEO" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/medical,
@@ -15154,6 +15173,9 @@
 "jMp" = (
 /obj/machinery/turnstile/exit{
 	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
@@ -23017,6 +23039,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "oxe" = (
@@ -23606,6 +23631,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"oQZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/security/security_processing)
 "oRp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -24009,6 +24040,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -30776,6 +30810,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "tAT" = (
@@ -31120,6 +31155,9 @@
 /area/crew_quarters/sleep)
 "tJz" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -31927,6 +31965,9 @@
 	dir = 1
 	},
 /obj/structure/curtain/open/black,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "uom" = (
@@ -36514,12 +36555,6 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/red/bordercorner2{
-	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
@@ -56435,7 +56470,7 @@ hpE
 kzS
 bnf
 tkZ
-vCw
+iED
 grI
 nDY
 nQn
@@ -57017,7 +57052,7 @@ kxd
 ceg
 llM
 llM
-llM
+oQZ
 llM
 yeT
 cPE
