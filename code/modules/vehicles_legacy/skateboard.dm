@@ -87,11 +87,22 @@
 			var/turf/T2 = get_step(A, pick(throw_dirs))
 			unload(H)
 			H.throw_at_old(T2, 1, 1, src)
+
+			//Surface injuries
+			H.adjustBruteLoss(rand(3, 5))
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
-				H.setBrainLoss(2,5)
+				//5% chance to suffer severe head trauma because you weren't wearing a helmet
+				if(prob(5))
+					var/obj/item/organ/external/egg = H.get_organ(BP_HEAD)
+					egg?.fracture()
+					H.adjustBrainLoss(rand(5, 10))
+					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
+				else 
+					//Minor brain injury from hitting your head
+					H.adjustBrainLoss(rand(1, 2))
+					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 				H.update_health()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else if (rough_terrain)
 			var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
@@ -100,9 +111,15 @@
 			H.throw_at_old(T2, 1, 1, src)
 			var/head_slot = SLOT_HEAD
 			if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
-				H.setBrainLoss(2,5)
+				if(prob(5))
+					var/obj/item/organ/external/egg = H.get_organ(BP_HEAD)
+					egg?.fracture()
+					H.adjustBrainLoss(rand(5, 10))
+					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
+				else 
+					H.adjustBrainLoss(rand(1, 2))
+					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 				H.update_health()
-			visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 			H.afflict_paralyze(20 * 12)
 		else
 			var/backdir = turn(dir, 180)
