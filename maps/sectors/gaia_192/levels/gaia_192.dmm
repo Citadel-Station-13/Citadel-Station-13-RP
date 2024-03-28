@@ -4340,6 +4340,13 @@
 "xy" = (
 /turf/simulated/wall/wood,
 /area/class_m/inside/cabin)
+"xz" = (
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 9
+	},
+/obj/machinery/vending/food,
+/turf/simulated/floor/tiled/monotile/classm,
+/area/class_m/inside/main)
 "xB" = (
 /obj/structure/railing{
 	dir = 8
@@ -27235,7 +27242,7 @@ lC
 Hw
 pI
 DU
-iG
+xz
 iG
 zO
 pI

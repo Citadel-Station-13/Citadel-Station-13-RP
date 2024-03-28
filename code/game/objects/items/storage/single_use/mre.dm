@@ -22,6 +22,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu2
+	name = "MRE - Menu 2"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 2, margherita."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu2,
@@ -36,6 +37,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu3
+	name = "MRE - Menu 3"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 3, vegetable pizza."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu3,
@@ -50,6 +52,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu4
+	name = "MRE - Menu 4"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 4, hamburger."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu4,
@@ -64,6 +67,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu5
+	name = "MRE - Menu 5"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 5, taco."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu5,
@@ -78,6 +82,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu6
+	name = "MRE - Menu 6"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 6, meatbread."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu6,
@@ -92,6 +97,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu7
+	name = "MRE - Menu 7"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 7, salad."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu7,
@@ -106,6 +112,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu8
+	name = "MRE - Menu 8"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 8, hot chili."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu8,
@@ -260,6 +267,5 @@ MRE Stuff
 
 /obj/item/storage/single_use/mrebag/dessert/menu9
 	starts_with = list(/obj/item/reagent_containers/food/snacks/plumphelmetbiscuit)
-
 /obj/item/storage/single_use/mrebag/dessert/menu11
 	starts_with = list(/obj/item/pen/crayon/rainbow)

@@ -4804,10 +4804,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "cAr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "cAv" = (
@@ -7837,25 +7837,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
-"evU" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "kitchen";
-	name = "Kitchen Shutters"
-	},
-/obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/condiment/small/peppermill{
-	pixel_x = 3
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/kitchen)
 "ewg" = (
 /obj/machinery/photocopier,
 /turf/simulated/floor/wood,
@@ -17250,9 +17231,6 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/upperhall)
-"kfH" = (
-/turf/simulated/floor/lino,
-/area/tether/surfacebase/entertainment/stage)
 "khE" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/tether/surfacebase/surface_three_hall)
@@ -19533,11 +19511,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "lGM" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/rnd/robotics)
+/obj/machinery/vending/mre,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/kitchen)
 "lGR" = (
 /obj/machinery/door/airlock{
 	name = "Unit 3"
@@ -19970,7 +19946,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "lUU" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/computer/arcade/orion_trail{
 	dir = 4
 	},
@@ -32783,8 +32758,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "tjn" = (
@@ -36426,6 +36399,12 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
+/obj/item/reagent_containers/food/condiment/small/peppermill{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/saltshaker{
+	pixel_x = -3
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "viJ" = (
@@ -64389,7 +64368,7 @@ yaQ
 uBR
 qGF
 pHO
-lGM
+qyH
 bLy
 enf
 vnI
@@ -69418,7 +69397,7 @@ oRD
 bnI
 uzF
 vzE
-kfH
+suh
 gYg
 ihh
 qEy
@@ -71935,8 +71914,8 @@ ekY
 mHw
 ekY
 ajq
-evU
-ltI
+lqw
+lGM
 bnz
 eEc
 eEc
