@@ -295,6 +295,8 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	pai.update_action_buttons()
 
 /obj/item/paicard/proc/removePersonality()
+	if(pai)
+		pai.delete_all_holograms()
 	QDEL_NULL(pai)
 	pai = null
 	cached_holo_image = null
