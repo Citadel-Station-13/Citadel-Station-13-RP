@@ -1350,6 +1350,7 @@
 #include "code\game\machinery\teleporter\pad.dm"
 #include "code\game\machinery\teleporter\projector.dm"
 #include "code\game\machinery\vending\drinks.dm"
+#include "code\game\machinery\vending\engineering.dm"
 #include "code\game\machinery\vending\loadout.dm"
 #include "code\game\machinery\vending\medical.dm"
 #include "code\game\machinery\vending\misc.dm"
