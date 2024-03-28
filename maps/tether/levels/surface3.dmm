@@ -18945,10 +18945,14 @@
 	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'";
 	icon_state = "monkey_painting";
 	name = "Mr. Deempisi portrait";
-	pixel_x = 4;
-	pixel_y = 28
+	pixel_x = 8;
+	pixel_y = 29
 	},
 /obj/machinery/camera/network/civilian,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 32;
+	pixel_x = -6
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "loy" = (
@@ -28376,11 +28380,19 @@
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "qyH" = (
-/obj/structure/disposalpipe/segment{
+/obj/machinery/vending/mre,
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/rnd/robotics)
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/kitchen)
 "qyS" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
@@ -31450,9 +31462,6 @@
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
 /area/hydroponics)
-"suh" = (
-/turf/simulated/floor/lino,
-/area/tether/surfacebase/entertainment/stage)
 "suk" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -64583,7 +64592,7 @@ okS
 cMt
 bVC
 njY
-qyH
+lGM
 nnu
 pQw
 pCN
@@ -64769,7 +64778,7 @@ rZl
 gzn
 aji
 azZ
-qyH
+lGM
 hpG
 xxQ
 jed
@@ -69612,7 +69621,7 @@ baa
 rLf
 hdG
 epX
-suh
+kfH
 gYg
 rQu
 qEy
@@ -73101,7 +73110,7 @@ dqn
 ekY
 ekY
 ekY
-lqw
+qyH
 tin
 cou
 kGN
