@@ -1,4 +1,4 @@
-#define MAX_HOLOGRAMS 3
+#define MAX_HOLOGRAMS 5
 
 /datum/category_item/catalogue/fauna/silicon/pai
 	name = "Silicons - pAI"
@@ -125,7 +125,9 @@
 									 /datum/action/pai/change_chassis,
 									 /datum/action/pai/clothing_transform,
 									 /datum/action/pai/revert_to_card,
-									 /datum/action/pai/hologram_display)
+									 /datum/action/pai/hologram_display,
+									 /datum/action/pai/place_hologram,
+									 /datum/action/pai/delete_holograms)
 
 	var/list/active_holograms = list()
 
@@ -329,7 +331,7 @@
 		return /obj/item/clothing/suit
 
 /mob/living/silicon/pai/AltClickOn(var/atom/A)
-	if((isobj(A) || ismob(A)) && in_range_of(src, A) && !istype(A, /obj/item/paicard))
+	if((isobj(A) || ismob(A)) && in_range_of(src, A) && !istype(A, /obj/item/paicard) && !istype(A, /obj/effect/pai_hologram))
 		if(world.time > last_scanned_time + 600)
 			last_scanned_time = world.time
 			scan_object(A)
