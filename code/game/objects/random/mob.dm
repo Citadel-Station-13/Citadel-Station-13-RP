@@ -41,7 +41,8 @@
 	var/build_path = item_to_spawn()
 
 	var/mob/living/simple_mob/M = new build_path(src.loc)
-	ASSERT(istype(M))
+	if(!istype(M))
+		return
 	if(M.has_AI())
 		var/datum/ai_holder/AI = M.ai_holder
 		AI.go_sleep() //Don't fight eachother while we're still setting up!
@@ -170,7 +171,9 @@
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/rapid,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong)
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/suppressor,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/kiting)
 
 /obj/random/mob/robotic/hivebot
 	name = "Random Hivebot"
@@ -181,12 +184,16 @@
 
 /obj/random/mob/robotic/hivebot/item_to_spawn()
 	return pick(prob(10);/mob/living/simple_mob/mechanical/hivebot,
-				prob(15);/mob/living/simple_mob/mechanical/hivebot/swarm,
+				prob(10);/mob/living/simple_mob/mechanical/hivebot/surveyor,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/swarm,
 				prob(10);/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/rapid,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong)
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/suppressor,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/kiting,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/scorcher)
 
 //Mice
 

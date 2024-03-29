@@ -27,19 +27,19 @@
 						"generation" = generation,
 						"object_id" = entity.obj_persist_static_id,
 						"level_id" = entity.obj_persist_static_bound_id || level_id,
-						"data" = entity.serialize(),
+						"data" = safe_json_encode(entity.serialize()),
 					),
 				)
 			if(OBJ_PERSIST_STATIC_MODE_MAP)
 				query = SSdbcore.NewQuery(
-					"INSERT INTO [format_table_name("persistence_static_mapl_objects")] (generation, object_id, map_id, data) \
+					"INSERT INTO [format_table_name("persistence_static_map_objects")] (generation, object_id, map_id, data) \
 						VALUES (:generation, :object_id, :map_id, :data) ON DUPLICATE KEY UPDATE \
 						data = VALUES(data)",
 					list(
 						"generation" = generation,
 						"object_id" = entity.obj_persist_static_id,
 						"map_id" = entity.obj_persist_static_bound_id || map_id,
-						"data" = entity.serialize(),
+						"data" = safe_json_encode(entity.serialize()),
 					),
 				)
 			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
@@ -50,7 +50,7 @@
 					list(
 						"generation" = generation,
 						"object_id" = entity.obj_persist_static_id,
-						"data" = entity.serialize(),
+						"data" = safe_json_encode(entity.serialize()),
 					),
 				)
 			else
@@ -77,7 +77,7 @@
 
 	for(var/obj/entity as anything in entities)
 		var/datum/db_query/query
-		if(entity.obj_persist_dynamic_id)
+		if(entity.obj_persist_dynamic_id != PERSISTENCE_DYNAMIC_ID_AUTOSET)
 			query = SSdbcore.NewQuery(
 				"INSERT INTO [format_table_name("persistence_dynamic_objects")] (id, generation, status, data, prototype_id, level_id, x, y) \
 					VALUES (:status, :data, :prototype, :level, :x, :y) ON DUPLICATE KEY UPDATE \
@@ -87,7 +87,7 @@
 					"id" = entity.obj_persist_dynamic_id,
 					"generation" = generation,
 					"status" = entity.obj_persist_dynamic_status,
-					"data" = entity.serialize(),
+					"data" = safe_json_encode(entity.serialize()),
 					"prototype" = "[entity.type]",
 					"level" = level_id,
 					"x" = entity.x,
@@ -101,7 +101,7 @@
 					VALUES (:status, :data, :prototype, :level, :x, :y)",
 				list(
 					"status" = entity.obj_persist_dynamic_status,
-					"data" = entity.serialize(),
+					"data" = safe_json_encode(entity.serialize()),
 					"prototype" = "[entity.type]",
 					"level" = level_id,
 					"x" = entity.x,
@@ -197,7 +197,7 @@
 	for(var/obj/entity as anything in entities)
 		var/datum/db_query/query
 		var/bind_id
-		switch(entity.obj_persist_dynamic_status)
+		switch(entity.obj_persist_static_mode)
 			if(OBJ_PERSIST_STATIC_MODE_GLOBAL)
 				query = SSdbcore.NewQuery(
 					"SELECT data FROM [format_table_name("persistence_static_global_objects")] \

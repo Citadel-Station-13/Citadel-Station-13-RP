@@ -807,8 +807,8 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/mineshaft)
 "eZ" = (
-/obj/structure/stairs/middle{
-	dir = 2
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/desalinator)
@@ -963,8 +963,8 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/canteen)
 "gC" = (
-/obj/structure/stairs/middle{
-	dir = 4
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/desalinator)
@@ -1414,8 +1414,8 @@
 	},
 /area/tether_away/beach/mineshaft)
 "jJ" = (
-/obj/structure/stairs/middle{
-	dir = 4
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desalinator)
@@ -1601,9 +1601,7 @@
 /turf/simulated/floor/wood/broken,
 /area/tether_away/beach/resort/dorm2)
 "la" = (
-/obj/structure/stairs/middle{
-	dir = 1
-	},
+/obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -2325,8 +2323,8 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm1)
 "rM" = (
-/obj/structure/stairs/middle{
-	dir = 2
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
@@ -5942,7 +5940,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	desc = "Its bone dry.";
-	dir = 2;
 	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
