@@ -2310,6 +2310,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"fJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "fK" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -4497,6 +4504,12 @@
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
+"mT" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "mU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
@@ -4823,8 +4836,8 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply,
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "on" = (
@@ -4896,11 +4909,11 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
@@ -5190,8 +5203,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "pq" = (
-/obj/machinery/atmospherics/pipe/simple/visible/supply,
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "pr" = (
@@ -5326,6 +5341,12 @@
 "pM" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
+"pN" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/security/prison/lower)
 "pO" = (
 /obj/structure/railing{
 	dir = 8
@@ -5548,6 +5569,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"qD" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/security/prison/lower)
 "qF" = (
 /obj/machinery/door/airlock/maintenance/sec{
 	req_one_access = null
@@ -6859,6 +6886,10 @@
 /obj/machinery/pipedispenser/disposal,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"vp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "vq" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /obj/machinery/meter,
@@ -6994,12 +7025,6 @@
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
-"vN" = (
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 8
-	},
-/turf/simulated/floor/concrete/indoors,
-/area/security/prison/lower)
 "vP" = (
 /obj/item/stack/tile/floor,
 /obj/machinery/light/small{
@@ -7414,6 +7439,10 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
+"xi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "xj" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -9331,6 +9360,12 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/security/prison/lower)
+"Dz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "DC" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(47)
@@ -10329,6 +10364,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
+"GG" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "GH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
@@ -10427,11 +10468,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Hb" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
@@ -11011,6 +11052,11 @@
 /obj/item/reagent_containers/spray/squirt,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"IS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "IT" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -12725,9 +12771,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "Og" = (
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
 "Oh" = (
@@ -13602,10 +13649,10 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Rq" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /turf/simulated/floor/concrete/indoors,
@@ -13645,11 +13692,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
 "Rx" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
@@ -13724,10 +13771,10 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "RK" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
 /turf/simulated/floor/concrete/indoors,
@@ -13994,6 +14041,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
+"SD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/concrete/indoors,
+/area/security/prison/lower)
 "SE" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/light{
@@ -14366,11 +14419,9 @@
 /turf/simulated/floor,
 /area/hallway/primary/underone)
 "Uj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 8
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/concrete/indoors,
 /area/security/prison/lower)
@@ -33372,10 +33423,10 @@ ua
 FP
 Vg
 Vg
+GG
 Vg
 Vg
-Vg
-Vg
+mT
 YF
 ua
 Np
@@ -33564,12 +33615,12 @@ Sa
 GK
 yC
 om
-pq
-pq
+IS
+IS
 pq
 Hb
-Vg
-Vg
+vp
+SD
 wj
 ua
 Np
@@ -34342,7 +34393,7 @@ Vg
 Vg
 Vg
 RK
-pq
+IS
 Rq
 Vg
 Vg
@@ -35699,7 +35750,7 @@ dD
 dD
 Ip
 Vg
-vN
+Rx
 dD
 Tk
 Tk
@@ -36087,7 +36138,7 @@ dD
 dD
 Ip
 Vg
-Vg
+Rx
 LR
 Vk
 Vk
@@ -36281,7 +36332,7 @@ dD
 dD
 Xt
 Vg
-Vg
+Rx
 fN
 sP
 sP
@@ -36475,7 +36526,7 @@ dD
 Gf
 Ip
 Vg
-Vg
+Rx
 fN
 sP
 sP
@@ -36669,7 +36720,7 @@ Mk
 Mk
 dD
 Vg
-Vg
+Rx
 fN
 sP
 sP
@@ -36863,7 +36914,7 @@ Vg
 Vg
 Vg
 Vg
-Vg
+Rx
 iA
 sP
 yc
@@ -37051,13 +37102,13 @@ dD
 JV
 yY
 Vg
-Vg
-Vg
-Vg
-Vg
-Vg
-Vg
-Vg
+Dz
+xi
+xi
+xi
+fJ
+IS
+Rq
 lK
 sP
 sP
@@ -37245,11 +37296,11 @@ ua
 ua
 kM
 dD
-dD
+qD
 Vg
 Vg
 Vg
-dD
+pN
 dD
 dD
 lK
