@@ -712,11 +712,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
-"hP" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
-/turf/simulated/floor/tiled/steel/lythios43c,
-/area/rift/facility/interior/underground2)
 "hR" = (
 /obj/structure/bed,
 /turf/simulated/floor/tiled/dark,
@@ -746,9 +741,6 @@
 /obj/item/reagent_containers/food/drinks/metaglass,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost/recreation)
-"hW" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/exterior/bunker/bottom)
 "hX" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/camera/network/mining{
@@ -788,14 +780,14 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/airlock/three)
 "ii" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "sheet-silo-plains-mining-refinery"
 	},
-/turf/simulated/floor/tiled/steel/lythios43c,
-/area/rift/facility/interior/underground2)
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/refinery)
 "il" = (
 /turf/simulated/floor/sky/depths/west/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
@@ -1571,11 +1563,6 @@
 "nN" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/underground2)
-"nP" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
 "nR" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2324,9 +2311,6 @@
 	},
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/belter)
-"uO" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/prison)
 "uP" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -2982,6 +2966,9 @@
 /area/rift/facility/interior/underground2)
 "Bm" = (
 /obj/effect/floor_decal/industrial/loading,
+/obj/machinery/sheet_silo_loader{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/refinery)
 "Bu" = (
@@ -5241,9 +5228,6 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
-"WR" = (
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "WW" = (
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_deep/submap_seedzone)
@@ -5469,14 +5453,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
 "Zl" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
+/obj/machinery/sheet_silo_loader{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/underground2)
+/turf/simulated/mineral/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_deep)
 "Zn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -8705,7 +8686,7 @@ fx
 Bg
 je
 yM
-hP
+Ex
 BW
 Fg
 kE
@@ -9087,7 +9068,7 @@ iJ
 iJ
 nN
 Mc
-hP
+Ex
 nN
 VD
 VD
@@ -9098,7 +9079,7 @@ oh
 oh
 oh
 oh
-Pz
+UF
 mi
 oh
 oh
@@ -9281,7 +9262,7 @@ nN
 nN
 nN
 Eh
-hP
+Ex
 vJ
 vJ
 vJ
@@ -9292,7 +9273,7 @@ oh
 jr
 uO
 bY
-Pz
+UF
 RK
 UC
 hZ
@@ -9475,13 +9456,13 @@ cP
 cP
 EQ
 lP
-nP
+Wx
 vJ
 yT
 ZB
 vJ
 QW
-hP
+Ex
 oh
 sc
 uO
@@ -9489,7 +9470,7 @@ mz
 Pz
 RK
 mz
-uO
+ys
 OW
 oh
 ky
@@ -9669,7 +9650,7 @@ nm
 nm
 rO
 lP
-nP
+Wx
 NQ
 Ie
 Ie
@@ -9863,7 +9844,7 @@ nN
 nN
 nN
 Eh
-hP
+Ex
 vJ
 Ky
 yH
@@ -10057,13 +10038,13 @@ lL
 lL
 lL
 lP
-nP
+Wx
 vJ
 ar
 yH
 vJ
 Qi
-hP
+Ex
 oh
 sc
 kE
@@ -10251,7 +10232,7 @@ zo
 lL
 lL
 Qi
-nP
+Wx
 vJ
 UD
 cz
@@ -10445,7 +10426,7 @@ pX
 lL
 lL
 lP
-nP
+Wx
 vJ
 xN
 Ie
@@ -10454,9 +10435,9 @@ lP
 Vr
 oh
 jr
-uO
+ys
 bY
-Pz
+UF
 RK
 gq
 kE
@@ -10639,7 +10620,7 @@ Oy
 lL
 lL
 Qi
-nP
+Wx
 vJ
 mC
 xc
@@ -11905,7 +11886,7 @@ AO
 AO
 AO
 AO
-AO
+Zl
 WW
 WW
 WW
@@ -12407,7 +12388,7 @@ Fl
 WR
 WR
 gS
-WR
+rr
 Cb
 Gr
 WR
@@ -18719,7 +18700,7 @@ AO
 AO
 so
 bl
-hW
+HW
 gI
 XF
 gI
@@ -18728,7 +18709,7 @@ gI
 hi
 gI
 gI
-hW
+HW
 bl
 so
 so
@@ -18922,7 +18903,7 @@ MM
 gI
 gI
 gI
-hW
+HW
 bl
 so
 so
@@ -19301,7 +19282,7 @@ AO
 AO
 so
 nC
-hW
+HW
 gI
 gI
 MM
@@ -19495,7 +19476,7 @@ AO
 AO
 AO
 nC
-hW
+HW
 gI
 gI
 gI
@@ -19504,8 +19485,8 @@ wb
 MM
 gI
 gI
-hW
-hW
+HW
+HW
 EX
 nC
 so
@@ -19689,8 +19670,8 @@ HF
 AO
 AO
 nC
-hW
-hW
+HW
+HW
 gI
 MM
 MM
@@ -19698,7 +19679,7 @@ MM
 gI
 bl
 gI
-hW
+HW
 nC
 nC
 nC
@@ -19883,7 +19864,7 @@ HF
 HF
 AO
 nC
-hW
+HW
 jz
 bl
 gI
@@ -20086,7 +20067,7 @@ gI
 gI
 gI
 gI
-hW
+HW
 nC
 so
 so
@@ -20271,16 +20252,16 @@ AO
 HF
 HF
 bl
-hW
-hW
+HW
+HW
 jz
-hW
-hW
+HW
+HW
 gI
-hW
+HW
 Vu
-hW
-hW
+HW
+HW
 nC
 so
 so
@@ -34760,7 +34741,7 @@ bp
 qp
 qp
 qp
-Jo
+ii
 Jo
 aV
 Of

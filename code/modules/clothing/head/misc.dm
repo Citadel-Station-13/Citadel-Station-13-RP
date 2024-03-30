@@ -734,3 +734,10 @@
 	desc = "A simple wedge cap with red accents, highly popular within Tri-Star Compact space."
 	icon_state = "eulrhat"
 	body_cover_flags = 0
+
+/obj/item/clothing/head/onestar
+	name = "one star hat"
+	desc = "It's a maroon-ish hat with an odd logo.."
+	icon = 'icons/clothing/head/onestar.dmi'
+	icon_state = "os_cap"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

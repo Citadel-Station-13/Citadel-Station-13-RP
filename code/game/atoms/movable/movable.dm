@@ -28,26 +28,36 @@
 
 	//? Movement
 	/// Whatever we're pulling.
-	var/atom/movable/pulling
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/pulling
 	/// Who's currently pulling us
-	var/atom/movable/pulledby
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/pulledby
 	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
-	var/generic_canpass = TRUE
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/generic_canpass = TRUE
 	/// Pass flags.
 	var/pass_flags = NONE
 	/// movement calls we're in
-	var/in_move = 0
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/in_move = 0
 	/// a direction, or null
-	var/moving_diagonally = NOT_IN_DIAG_STEP
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/moving_diagonally = NOT_IN_DIAG_STEP
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
-	var/atom/movable/moving_from_pull
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/moving_from_pull
 	/// Direction of our last move.
-	var/last_move_dir = NONE
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/last_move_dir = NONE
 	/// Our default glide_size. Null to use global default.
 	var/default_glide_size
 	/// Movement types, see [code/__DEFINES/flags/movement.dm]
 	/// Do *not* manually edit this variable in most cases. Use the helpers in [code/game/atoms/atoms_movement.dm].
-	var/movement_type = MOVEMENT_GROUND
+	/// todo: is there a better way to do this? what if we want to force something to be a movement type on map editor?
+	/// * this variable is a cache variable generated from movement type traits.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/movement_type = MOVEMENT_GROUND
 
 	//? Spacedrift
 	/// Which direction we're drifting
@@ -63,7 +73,8 @@
 
 	//? Perspectives
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
-	var/datum/perspective/self_perspective
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/datum/perspective/self_perspective
 
 	//? Buckling
 	/// do we support the buckling system - if not, none of the default interactions will work, but comsigs will still fire!
@@ -77,7 +88,8 @@
 	/// direction to set buckled mobs to. null to not do that.
 	var/buckle_dir
 	/// buckled mobs, associated to their semantic mode if necessary
-	var/list/mob/buckled_mobs
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/mob/buckled_mobs
 	/// restrained default unbuckle time (NOT TIME TO UN-RESTRAIN, this is time to UNBUCKLE from us)
 	var/buckle_restrained_resist_time = 2 MINUTES
 
@@ -134,9 +146,11 @@
 	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
 	var/blocks_emissive = FALSE
 	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
-	var/atom/movable/emissive_blocker/em_block
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/emissive_blocker/em_block
 	/// Internal holder for emissives. Definitely don't directly use, this is absolutely an insane Citadel Moment(tm).
-	var/atom/movable/emissive_render/em_render
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/emissive_render/em_render
 
 	//? Icon Scale
 	/// Used to scale icons up or down horizonally in update_transform().
@@ -432,6 +446,18 @@
  */
 /atom/movable/proc/is_avoiding_ground()
     return ((movement_type & MOVEMENT_TYPES) != MOVEMENT_GROUND) || throwing
+
+//* Duplication *//
+
+/**
+ * makes a clone of this movable
+ *
+ * @params
+ * * location - where to clone us
+ * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
+ */
+/atom/movable/clone(atom/location, include_contents)
+	return ..(include_contents)
 
 //? Perspectives
 /**
