@@ -118,6 +118,8 @@
 	var/list/constructed_keybinds = list()
 	for(var/key in GLOB.keybindings_by_name)
 		var/datum/keybinding/keybind = GLOB.keybindings_by_name[key]
+		if(!keybind.is_visible(user?.client))
+			continue
 		constructed_keybinds[++constructed_keybinds.len] = keybind.tgui_keybinding_data()
 	.["keybinds"] = constructed_keybinds
 	.["hotkeyMode"] = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]

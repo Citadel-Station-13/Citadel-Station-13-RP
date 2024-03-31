@@ -25,6 +25,9 @@
 /datum/keybinding/proc/can_use(client/user)
 	return TRUE
 
+/datum/keybinding/proc/is_visible(client/user)
+	return TRUE
+
 /**
  * Data for a GamePreferenceKeybind
  */

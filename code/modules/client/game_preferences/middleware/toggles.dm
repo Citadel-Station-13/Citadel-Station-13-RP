@@ -42,6 +42,8 @@
 	var/list/collected_toggles = list()
 	for(var/key in SSpreferences.toggles_by_key)
 		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
+		if(!toggle.is_visible(user?.client))
+			continue
 		collected_toggles[toggle.key] = toggle.tgui_preference_schema()
 	.["toggles"] = collected_toggles
 	.["states"] = prefs.toggles_by_key

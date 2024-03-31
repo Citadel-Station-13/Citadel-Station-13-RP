@@ -21,7 +21,7 @@
 /datum/game_preference_entry/proc/default_value(client/user)
 	return default_value
 
-/datum/game_preference_entry/proc/is_visible(client/user)
+/datum/game_preference_entry/proc/is_visible(client/user, silent)
 	return TRUE
 
 /**

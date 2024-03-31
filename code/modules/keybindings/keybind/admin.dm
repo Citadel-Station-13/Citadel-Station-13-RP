@@ -5,6 +5,9 @@
 /datum/keybinding/admin/can_use(client/user)
 	return user.holder ? TRUE : FALSE
 
+/datum/keybinding/admin/is_visible(client/user)
+	return !!user.holder
+
 /datum/keybinding/admin/admin_say
 	hotkey_keys = list("F5")
 	name = "admin_say"

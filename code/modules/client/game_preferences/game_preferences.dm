@@ -283,7 +283,7 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return toggle.default_value
-	if(!toggle.is_visible(active))
+	if(!toggle.is_visible(active, TRUE))
 		return toggle.default_value
 	return toggles_by_key[toggle.key]
 
@@ -293,7 +293,7 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return FALSE
-	if(!entry.is_visible(active))
+	if(!entry.is_visible(active, TRUE))
 		return FALSE
 	value = entry.filter_value(value)
 	entries_by_key[entry.key] = value
@@ -309,7 +309,7 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return entry.default_value
-	if(!entry.is_visible(active))
+	if(!entry.is_visible(active, TRUE))
 		return entry.default_value
 	return entries_by_key[entry.key]
 
@@ -505,6 +505,8 @@
 	var/list/entries = list()
 	for(var/key in SSpreferences.entries_by_key)
 		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
+		if(!entry.is_visible(user?.client, TRUE))
+			continue
 		entries[++entries.len] = entry.tgui_preference_schema()
 	.["entries"] = entries
 	.["values"] = entries_by_key
@@ -570,7 +572,7 @@
 		CRASH("invalid fetch")
 	if(!initialized || !preferences.initialized)
 		return toggle.default_value
-	if(!toggle.is_visible(src))
+	if(!toggle.is_visible(src, TRUE))
 		return toggle.default_value
 	return preferences.toggles_by_key[toggle.key]
 
@@ -580,7 +582,7 @@
 		CRASH("invalid fetch")
 	if(!initialized)
 		return entry.default_value
-	if(!entry.is_visible(src))
+	if(!entry.is_visible(src, TRUE))
 		return entry.default_value
 	return preferences.entries_by_key[entry.key]
 
@@ -592,7 +594,7 @@
 		CRASH("invalid fetch")
 	if(!client?.initialized || !client.preferences.initialized)
 		return toggle.default_value
-	if(!toggle.is_visible(client))
+	if(!toggle.is_visible(client, TRUE))
 		return toggle.default_value
 	return client.preferences.toggles_by_key[toggle.key]
 
@@ -602,6 +604,6 @@
 		CRASH("invalid fetch")
 	if(!client?.initialized || !client.preferences.initialized)
 		return entry.default_value
-	if(!entry.is_visible(client))
+	if(!entry.is_visible(client, TRUE))
 		return entry.default_value
 	return client.preferences.entries_by_key[entry.key]

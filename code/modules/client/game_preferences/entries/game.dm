@@ -70,4 +70,4 @@
 	legacy_savefile_key = "ooccolor"
 
 /datum/game_preference_entry/simple_color/admin_ooc_color/is_visible(client/user)
-	return check_rights(C = user) && CONFIG_GET(flag/allow_admin_ooccolor)
+	return check_rights(C = user, show_msg = FALSE) && CONFIG_GET(flag/allow_admin_ooccolor)
