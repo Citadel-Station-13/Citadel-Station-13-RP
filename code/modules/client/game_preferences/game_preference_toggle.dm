@@ -253,9 +253,9 @@
 
 /datum/game_preference_toggle/presence/anonymous_ghost_chat
 	name = "Anonymous Ghost Chat"
-	description = "Show ckey when speaking in deadchat."
+	description = "Hide your ckey when speaking in deadchat."
 	key = "anonymous_ghost_chat"
-	default_value = FALSE
+	default_value = TRUE
 
 /datum/game_preference_toggle/presence/show_advanced_who
 	name = "Show Status in Advanced Who"
