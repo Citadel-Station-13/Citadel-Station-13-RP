@@ -140,13 +140,6 @@
 	A.attack_generic(src,rand(5,6),"bitten")
 
 /*
-	pAI
-*/
-
-/mob/living/silicon/pai/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
-	return
-
-/*
 	New Players:
 	Have no reason to click on anything at all.
 */

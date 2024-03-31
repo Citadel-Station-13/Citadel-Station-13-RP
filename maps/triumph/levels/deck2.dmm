@@ -3915,6 +3915,9 @@
 /obj/machinery/air_alarm{
 	pixel_y = 27
 	},
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "sheet-silo-mining"
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "lR" = (
@@ -4099,9 +4102,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
-"mF" = (
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "mG" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/landmark/spawnpoint/job/bartender,
@@ -5863,16 +5863,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
-"rS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled,
-/area/crew_quarters/bar)
 "rT" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -10674,12 +10664,6 @@
 "Gn" = (
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
-"Go" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/bar)
 "Gp" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12654,9 +12638,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"MC" = (
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
 "MD" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -14982,10 +14963,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "Tw" = (
-/obj/structure/flora/pottedplant/orientaltree,
 /obj/machinery/computer/security/telescreen{
 	pixel_x = 32
 	},
+/obj/machinery/vending/mre,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "Ty" = (
@@ -16893,6 +16874,9 @@
 "Zo" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
+	},
+/obj/machinery/sheet_silo_loader{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -27869,7 +27853,7 @@ ix
 Oc
 UC
 DY
-Go
+XI
 Hm
 Qp
 JB
@@ -28260,7 +28244,7 @@ DY
 DY
 DY
 XI
-rS
+TZ
 Ye
 lw
 mc
@@ -33475,7 +33459,7 @@ he
 xY
 Rx
 TH
-MC
+UG
 CM
 oC
 ov
@@ -39101,7 +39085,7 @@ jl
 dy
 gT
 QY
-mF
+Se
 BT
 pm
 du
@@ -42983,7 +42967,7 @@ mc
 mc
 mc
 Sw
-mF
+Se
 BM
 BM
 pW
@@ -43177,9 +43161,9 @@ mc
 mc
 mc
 Sw
-mF
+Se
 BM
-mF
+Se
 Hk
 Zy
 gK
@@ -43567,7 +43551,7 @@ cW
 Sw
 Pb
 BM
-mF
+Se
 Hk
 sq
 sq
@@ -43759,9 +43743,9 @@ aG
 cW
 cW
 rZ
-mF
+Se
 BM
-mF
+Se
 Hk
 Hk
 nV
@@ -43953,9 +43937,9 @@ aG
 cW
 cW
 rZ
-mF
+Se
 BM
-mF
+Se
 CR
 DA
 gK
@@ -44341,9 +44325,9 @@ oj
 cW
 cW
 rZ
-mF
+Se
 BM
-mF
+Se
 Hk
 Hk
 Hk
@@ -44537,8 +44521,8 @@ cW
 Sw
 Ze
 BM
-mF
-mF
+Se
+Se
 tD
 Hk
 md
@@ -45118,7 +45102,7 @@ cW
 cW
 Sw
 JO
-mF
+Se
 ph
 Tb
 Vu
@@ -45312,7 +45296,7 @@ cW
 cW
 Sw
 Sw
-mF
+Se
 ph
 oW
 kV

@@ -105,3 +105,17 @@
 	set desc = "Allows you to pick a scanned object to display from your holoprojector."
 
 	card_hologram_display()
+
+/mob/living/silicon/pai/verb/hologram_place()
+	set name = "Place Hologram"
+	set category = "pAI Commands"
+	set desc = "Allows you to deploy a holographic version of something you have scanned."
+
+	prompt_hologram_placement()
+
+/mob/living/silicon/pai/verb/delete_holograms()
+	set name = "Delete All Holograms"
+	set category = "pAI Commands"
+	set desc = "Allows you to delete all holograms you have placed."
+
+	delete_all_holograms()
