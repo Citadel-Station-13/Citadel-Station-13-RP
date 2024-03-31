@@ -119,14 +119,15 @@ jobs:
       group: run_all_tests-${{ github.ref }}
       cancel-in-progress: true
     runs-on: ubuntu-22.04
+
     services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ROOT_PASSWORD: root
+      mariadb:
+        image: mariadb:latest
         ports:
           - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
     steps:
       - uses: actions/checkout@v3
       - name: Restore BYOND cache

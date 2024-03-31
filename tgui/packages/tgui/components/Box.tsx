@@ -18,7 +18,8 @@ import { ComponentProps } from './Component';
 // or a number to translate into units automatically,
 export type BoxUnit = string | number;
 // a box unit, or none to have the box automatically sized
-export type BoxUnitProp = BoxUnit | null | undefined;
+// boolean is included so the pattern of '!!truthy && 5' can work; boolean values are simply ignored
+export type BoxUnitProp = BoxUnit | null | undefined | boolean;
 
 /**
  * Box props basically have all the HTML / CSS props, thanks to being the base
