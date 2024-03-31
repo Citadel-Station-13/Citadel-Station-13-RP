@@ -10,7 +10,7 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
-import { getModuleData, useBackend, useComputedOnce, useLocalState } from "../../backend";
+import { getModuleData, useBackend, useLocalState } from "../../backend";
 import { Button, Flex, Section, Stack, Tooltip } from "../../components";
 import { Window } from "../../layouts";
 import { GamePreferenceEntry, GamePreferenceEntrySchema } from "./GamePreferenceEntry";
@@ -30,7 +30,7 @@ interface GamePreferencesData {
 const GamePreferencesTabs = (props, context) => {
   const { act, data } = useBackend<GamePreferencesData>(context);
 
-  let categoryCache = useComputedOnce(context, "prefsCategoryCache", () => computeGamePreferenceCategoryCache(data.entries));
+  let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
   let tabs: InfernoNode[] = [];
@@ -89,7 +89,7 @@ const computeGamePreferenceCategoryCache = (entries: GamePreferenceEntrySchema[]
 export const GamePreferences = (props, context) => {
   const { act, data } = useBackend<GamePreferencesData>(context);
 
-  let categoryCache = useComputedOnce(context, "prefsCategoryCache", () => computeGamePreferenceCategoryCache(data.entries));
+  let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
 
@@ -122,7 +122,7 @@ export const GamePreferences = (props, context) => {
 const GamePreferencesBody = (props, context) => {
   const { act, data } = useBackend<GamePreferencesData>(context);
 
-  let categoryCache = useComputedOnce(context, "prefsCategoryCache", () => computeGamePreferenceCategoryCache(data.entries));
+  let categoryCache = computeGamePreferenceCategoryCache(data.entries);
   let [activeCategory, setActiveCategory] = useLocalState<string>(context, "prefsCategoryActive", Object.keys(categoryCache)[0]);
   let [activeMiddleware, setActiveMiddleware] = useLocalState<string | null>(context, "prefsMiddlewareActive", null);
 

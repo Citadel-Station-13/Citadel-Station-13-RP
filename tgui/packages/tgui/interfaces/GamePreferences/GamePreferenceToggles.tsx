@@ -3,7 +3,6 @@
  * @license MIT
  */
 import { BooleanLike } from "common/react";
-import { useComputedOnce } from "../../backend";
 import { Button, Section, Stack, Table } from "../../components";
 
 export interface GamePreferenceTogglesMiddleware {
@@ -39,7 +38,7 @@ const collectPreferenceToggles = (toggles: Record<string, GamePreferenceToggleSc
 };
 
 export const GamePreferenceToggleScreen = (props: GamePreferenceToggleScreenProps, context) => {
-  const collected: Record<string, string[]> = useComputedOnce(context, 'gamePreferenceToggleCollect', () => collectPreferenceToggles(props.toggles));
+  const collected: Record<string, string[]> = collectPreferenceToggles(props.toggles);
   return (
     <Section fill scrollable>
       <Stack vertical>

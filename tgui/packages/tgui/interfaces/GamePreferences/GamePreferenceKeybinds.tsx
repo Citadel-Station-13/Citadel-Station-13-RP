@@ -6,7 +6,7 @@ import { IEKeyboardEventKeycodeToBYOND } from "common/keyboard";
 import { KEY_ALT, KEY_CTRL, KEY_ESCAPE, KEY_SHIFT } from "common/keycodes";
 import { BooleanLike } from "common/react";
 import { Component, InfernoNode } from "inferno";
-import { useComputedOnce, useLocalState } from "../../backend";
+import { useLocalState } from "../../backend";
 import { Box, Button, Dimmer, Section, Stack, Table, Tooltip } from "../../components";
 import { KeyEvent } from "../../events";
 import { listenForKeyEvents } from "../../hotkeys";
@@ -97,7 +97,7 @@ const HOTKEY_MODE_DESCRIPTION = (
 export const GamePreferenceKeybindScreen = (props: GamePreferenceKeybindScreenProps, context) => {
   // keybinds are naturally sorted by compile order thanks to typesof()
   // let's not unnecessarily smash that.
-  const sortedByCategory = useComputedOnce(context, 'gamePreferenceKeybindCollect', () => preprocessKeybinds(props.keybinds));
+  const sortedByCategory = preprocessKeybinds(props.keybinds);
   // unfortunately this can't be cached
   // damnit
   const keysByKeybind: Record<string, string[]> = computeBoundKeys(props.bindings);

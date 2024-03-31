@@ -409,21 +409,25 @@ export const useLocalState = <T>(
  * Used to do initial pre-processing of data.
  *
  * todo: rethink this when we go to react or otherwise rework tgui, this is shitcode-y
+ * todo: this is a bad idea. you know why?
+ * todo: yeah funny thing this persists across window reloads due to store/state
+ * todo: being global. fuck.
+ * todo: we need like a proper hook that doesn't persist.
  */
-export const useComputedOnce = <T>(
-  context: any, key: string, valueClosure: () => T
-): T => {
-  const { store } = context;
-  const state = selectBackend(store.getState());
-  if (state.computeCache?.[key]) {
-    return state.computeCache[key];
-  }
-  state.computeCache = {
-    ...state.computeCache,
-  };
-  state.computeCache[key] = valueClosure();
-  return state.computeCache[key];
-};
+// export const useComputedOnce = <T>(
+//   context: any, key: string, valueClosure: () => T
+// ): T => {
+//   const { store } = context;
+//   const state = selectBackend(store.getState());
+//   if (state.computeCache?.[key]) {
+//     return state.computeCache[key];
+//   }
+//   state.computeCache = {
+//     ...state.computeCache,
+//   };
+//   state.computeCache[key] = valueClosure();
+//   return state.computeCache[key];
+// };
 
 /**
  * Allocates state on Redux store, and **shares** it with other clients

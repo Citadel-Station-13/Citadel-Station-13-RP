@@ -204,10 +204,15 @@
 	preferences = SSpreferences.resolve_game_preferences(key, ckey)
 	preferences.active = src
 	preferences.on_reconnect()
-	if(!preferences.block_on_initialized(5 SECONDS))
+	//? WARNING: SHITCODE ALERT ?//
+	// We allow a client/New sleep because preferences is currently required for
+	// everything else to work
+	// todo: maybe don't do this?
+	if(!UNLINT(preferences.block_on_initialized(5 SECONDS)))
 		security_kick("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
 		stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
 		return
+	//? END ?//
 
 	//* Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
