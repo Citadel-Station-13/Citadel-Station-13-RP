@@ -128,7 +128,7 @@
 		else if(entry.legacy_savefile_key)
 			legacy_savefile[entry.legacy_savefile_key] >> migrated_value
 		if(!isnull(migrated_value))
-			migrated_value = entry.filter_value(active, migrated_value)
+			migrated_value = entry.filter_value(migrated_value)
 			entries_by_key[key] = migrated_value
 
 	var/list/old_toggles
@@ -222,11 +222,11 @@
 //* Reset *//
 
 /datum/game_preferences/proc/reset(category)
-	if(!cateogry)
+	if(!category)
 		entries_by_key = list()
 	for(var/key in SSpreferences.entries_by_key)
 		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
-		if(category && entry != category)
+		if(category && entry.category != category)
 			continue
 		var/value = entry.default_value(active)
 		entries_by_key[entry.key] = value
@@ -295,7 +295,7 @@
 		return FALSE
 	if(!entry.is_visible(active))
 		return FALSE
-	value = entry.filter_value(active, value)
+	value = entry.filter_value(value)
 	entries_by_key[entry.key] = value
 	if(active)
 		entry.on_set(active, value, FALSE)

@@ -4,7 +4,7 @@
  */
 import { BooleanLike } from "common/react";
 import { InfernoNode } from "inferno";
-import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Stack, Tooltip } from "../../components";
+import { Button, Collapsible, ColorBox, Dropdown, Input, NumberInput, Section, Stack, Tooltip } from "../../components";
 import { ByondAtomColor, ByondColorString, ColorPicker } from "../common/Color";
 
 interface GamePreferenceEntryProps {
@@ -119,12 +119,9 @@ const NumberEntry = (props: {
   readonly setValue: (val: number) => void;
 }, context) => {
   return (
-    <>
-      <NumberInput fluid value={props.value}
-        minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
-        step={props.schema.roundTo || undefined} onInput={(e, val) => props.setValue(val)} />
-      {JSON.stringify(props)}
-    </>
+    <NumberInput fluid value={props.value}
+      minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
+      step={props.schema.roundTo || undefined} onInput={(e, val) => props.setValue(val)} />
   );
 };
 
@@ -169,11 +166,15 @@ const SimpleColorEntry = (props: {
   readonly setValue: (val: ByondColorString) => void;
 }, context) => {
   return (
-    <Collapsible title={props.value? (
-      <ColorBox color={props.value} />
+    <Collapsible color="transparent" title={props.value? (
+      <>
+        <ColorBox color={props.value} /> {props.value}
+      </>
     ) : ""} contentFunction={() => (
-      <ColorPicker currentColor={props.value || "#ffffff"} allowMatrix={false}
-        setColor={(what) => props.setValue(what as ByondColorString)} />
+      <Section>
+        <ColorPicker currentColor={props.value || "#ffffff"} allowMatrix={false}
+          setColor={(what) => props.setValue(what as ByondColorString)} />
+      </Section>
     )} />
   );
 };

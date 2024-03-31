@@ -102,7 +102,7 @@
 	/// mandatory
 	var/disabled_name = "Off"
 
-/datum/game_preference_entry/toggle/filter_value(client/user, value)
+/datum/game_preference_entry/toggle/filter_value(value)
 	return !!value
 
 /datum/game_preference_entry/toggle/tgui_preference_schema()
@@ -136,7 +136,12 @@
 	default_value = "#ffffff"
 
 /datum/game_preference_entry/simple_color/filter_value(value)
-	return sanitize_hexcolor(value, desired_format = 6, default = default_value)
+	return sanitize_hexcolor(
+		value,
+		desired_format = 6,
+		include_crunch = TRUE,
+		default = default_value,
+	)
 
 /datum/game_preference_entry/simple_color/tgui_preference_schema()
 	return ..() | list(
