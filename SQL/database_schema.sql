@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   `flags` int(24) NOT NULL DEFAULT 0,
   `firstseen` datetime NOT NULL DEFAULT Now(),
   `lastseen` datetime NOT NULL,
-  `misc` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `misc` MEDIUMTEXT NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

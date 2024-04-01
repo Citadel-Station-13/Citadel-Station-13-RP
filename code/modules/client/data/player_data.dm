@@ -145,18 +145,20 @@ GLOBAL_LIST_EMPTY(player_data)
 	var/datum/db_query/insert
 	if(migrate_firstseen)
 		insert = SSdbcore.ExecuteQuery(
-			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen) VALUES (:flags, :fs, Now())",
+			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, :fs, Now(), :misc)",
 			list(
 				"flags" = player_flags,
-				"fs" = migrate_firstseen
+				"fs" = migrate_firstseen,
+				"misc" = safe_json_encode(player_misc),
 			)
 		)
 		player_first_seen = migrate_firstseen
 	else
 		insert = SSdbcore.ExecuteQuery(
-			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen) VALUES (:flags, Now(), Now())",
+			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, Now(), Now(), :misc)",
 			list(
 				"flags" = player_flags,
+				"misc" = safe_json_encode(player_misc),
 			)
 		)
 		player_first_seen = time_stamp()
