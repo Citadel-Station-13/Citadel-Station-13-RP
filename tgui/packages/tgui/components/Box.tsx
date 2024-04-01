@@ -20,6 +20,8 @@ export type BoxUnit = string | number;
 // a box unit, or none to have the box automatically sized
 // boolean is included so the pattern of '!!truthy && 5' can work; boolean values are simply ignored
 export type BoxUnitProp = BoxUnit | null | undefined | boolean;
+// a box string prop, so BoxUnit but without number
+export type BoxStringProp = string | null | undefined | boolean;
 
 /**
  * Box props basically have all the HTML / CSS props, thanks to being the base
@@ -50,7 +52,7 @@ export type BoxProps = ComponentProps & {
   fontFamily?: string | null;
   lineHeight?: BoxUnitProp;
   opacity?: number;
-  textAlign?: string;
+  textAlign?: BoxStringProp;
   verticalAlign?: string;
   inline?: BooleanLike;
   bold?: BooleanLike;
@@ -71,9 +73,9 @@ export type BoxProps = ComponentProps & {
   pb?: BoxUnitProp;
   pl?: BoxUnitProp;
   pr?: BoxUnitProp;
-  color?: string | null;
-  textColor?: string | null;
-  backgroundColor?: string | null;
+  color?: BoxStringProp;
+  textColor?: BoxStringProp;
+  backgroundColor?: BoxStringProp;
   fillPositionedParent?: BooleanLike;
   //* baseline DOM / InfernoNode properties start *//
   // anything put in here is directly injected into the element as a style
