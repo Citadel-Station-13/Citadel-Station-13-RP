@@ -342,6 +342,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	if(initiator)
 		// if(initiator.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
 			// SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
+		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
 		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b></font>")
