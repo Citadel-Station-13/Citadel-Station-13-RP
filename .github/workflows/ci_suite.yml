@@ -137,7 +137,7 @@ jobs:
           key: ${{ runner.os }}-byond
       - name: Setup database
         run: |
-          sudo systemctl start mariadb
+          sudo systemctl start mariadb.service
           mariadb -u root -proot -e 'CREATE DATABASE ss13_ci;'
           mariadb -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
           mariadb -u root -proot ss13_ci < SQL/unified_schema.sql
