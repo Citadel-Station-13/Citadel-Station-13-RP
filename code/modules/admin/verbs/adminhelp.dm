@@ -254,6 +254,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	for(var/client/X in GLOB.admins)
 		// if(X.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
 			// SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
+		SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X)
 		to_chat(X, chat_msg)
 
