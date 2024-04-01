@@ -140,6 +140,8 @@
 		if(holder.rights & R_ADMIN)
 			ooc_style = "admin"
 
+	var/effective_color = holder && preferences.get_entry(/datum/game_preference_entry/simple_color/admin_ooc_color)
+
 	for(var/client/target in GLOB.clients)
 		if(!target.initialized)
 			continue
@@ -154,10 +156,6 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			var/effective_color = preferences.get_entry(/datum/game_preference_entry/simple_color/admin_ooc_color)
-			var/datum/game_preference_entry/simple_color/admin_ooc_color/entry_casted
-			if(effective_color == initial(entry_casted.default_value))
-				effective_color = null
 			if(effective_color) // keeping this for the badmins
 				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[effective_color]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else

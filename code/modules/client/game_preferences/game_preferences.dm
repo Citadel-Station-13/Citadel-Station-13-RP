@@ -308,9 +308,9 @@
 	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!initialized)
-		return entry.default_value
+		return entry.default_value(active)
 	if(!entry.is_visible(active, TRUE))
-		return entry.default_value
+		return entry.default_value(active)
 	return entries_by_key[entry.key]
 
 //* Save / Load *//
@@ -581,9 +581,9 @@
 	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!initialized)
-		return entry.default_value
+		return entry.default_value(src)
 	if(!entry.is_visible(src, TRUE))
-		return entry.default_value
+		return entry.default_value(src)
 	return preferences.entries_by_key[entry.key]
 
 //? Mob Wrappers ?//
@@ -603,7 +603,7 @@
 	if(isnull(entry))
 		CRASH("invalid fetch")
 	if(!client?.initialized || !client.preferences.initialized)
-		return entry.default_value
+		return entry.default_value(client)
 	if(!entry.is_visible(client, TRUE))
-		return entry.default_value
+		return entry.default_value(client)
 	return client.preferences.entries_by_key[entry.key]
