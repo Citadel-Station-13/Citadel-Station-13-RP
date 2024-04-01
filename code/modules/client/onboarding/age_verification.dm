@@ -53,6 +53,7 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 		return
 
 	if(usr.client.is_age_verified())
+		qdel(ui)
 		return TRUE
 
 	var/player_month = text2num(params["month"])
