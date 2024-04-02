@@ -1,3 +1,11 @@
+/**
+ * make sure to bump schema version and mark changes in database_changelog.md!
+ *
+ * default prefix is rp_
+ * find replace case sensitive rp_
+ * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
+ **/
+
 -- core --
 
 --
@@ -193,10 +201,10 @@ DELIMITER ;
 -- Stores game preferences --
 CREATE TABLE IF NOT EXISTS `rp_game_preferences` (
   `player` INT(11) NOT NULL,
-  `entries` MEDIUMTEXT NOT NULL DEFAULT '{}',
-  `misc` MEDIUMTEXT NOT NULL DEFAULT '{}',
-  `keybinds` MEDIUMTEXT NOT NULL DEFAULT '{}',
-  `toggles` MEDIUMTEXT NOT NULL DEFAULT '{}',
+  `entries` MEDIUMTEXT NOT NULL,
+  `misc` MEDIUMTEXT NOT NULL,
+  `keybinds` MEDIUMTEXT NOT NULL,
+  `toggles` MEDIUMTEXT NOT NULL,
   `modified` DATETIME NOT NULL,
   `version` INT(11) NOT NULL,
   PRIMARY KEY (`player`),
