@@ -119,15 +119,14 @@ jobs:
       group: run_all_tests-${{ github.ref }}
       cancel-in-progress: true
     runs-on: ubuntu-22.04
-
     services:
-      mariadb:
-        image: mariadb:latest
-        ports:
-          - 3306
+      mysql:
+        image: mysql:latest
         env:
           MYSQL_ROOT_PASSWORD: root
-        options: --health-cmd="mariadb-admin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v3
       - name: Restore BYOND cache
@@ -137,12 +136,12 @@ jobs:
           key: ${{ runner.os }}-byond
       - name: Setup database
         run: |
-          sudo systemctl start mariadb.service
-          mariadb -u root -proot -e 'CREATE DATABASE ss13_ci;'
-          mariadb -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
-          mariadb -u root -proot ss13_ci < SQL/unified_schema.sql
-        # mariadb -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
-        # mariadb -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
+          sudo systemctl start mysql
+          mysql -u root -proot -e 'CREATE DATABASE ss13_ci;'
+          mysql -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
+          mysql -u root -proot ss13_ci < SQL/unified_schema.sql
+        # mysql -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
+        # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
       - name: Install rust-g
         run: |
           bash tools/ci/install/install_rust_g.sh
