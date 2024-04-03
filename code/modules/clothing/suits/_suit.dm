@@ -43,4 +43,4 @@
 	. = ..()
 	if(taurized)
 		MA.pixel_x = -16
-		MA.layer = HUMAN_LAYER_SPRITEACC_TAIL + 1	// kick it over tail
+		MA.layer = HUMAN_LAYER_SPRITEACC_TAIL_FRONT + 1	// kick it over tail

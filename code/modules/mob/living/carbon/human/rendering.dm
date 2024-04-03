@@ -64,7 +64,7 @@
 		I.alpha = head_organ.hair_opacity
 
 	set_standing_overlay(HUMAN_OVERLAY_HORNS, rendered)
-	
+
 /mob/living/carbon/human/proc/render_spriteacc_facehair()
 	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & BLOCKHAIR)
 		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
@@ -337,6 +337,34 @@ var/global/list/wing_icon_cache = list()
 		update_tail_showing()
 	return 1
 
+/mob/living/carbon/human/proc/animate_tail_start()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
+
+/mob/living/carbon/human/proc/animate_tail_fast()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
+
+/mob/living/carbon/human/proc/animate_tail_reset()
+	if(QDESTROYING(src))
+		return
+
+	if(stat != DEAD)
+		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
+	else
+		set_tail_state("[species.get_tail(src)]_static")
+		toggle_tail_vr(FALSE) // So tails stop when someone dies. TODO - Fix this hack ~Leshana
+
+/mob/living/carbon/human/proc/animate_tail_stop()
+	if(QDESTROYING(src))
+		return
+
+	set_tail_state("[species.get_tail(src)]_static")
+
 /mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
 	if(!wing_style || !wing_style.ani_state)
 		if(message)
@@ -369,34 +397,6 @@ var/global/list/wing_icon_cache = list()
 			flapping = FALSE
 		update_wing_showing()
 	return 1
-
-/mob/living/carbon/human/proc/animate_tail_start()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
-
-/mob/living/carbon/human/proc/animate_tail_fast()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
-
-/mob/living/carbon/human/proc/animate_tail_reset()
-	if(QDESTROYING(src))
-		return
-
-	if(stat != DEAD)
-		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
-	else
-		set_tail_state("[species.get_tail(src)]_static")
-		toggle_tail_vr(FALSE) // So tails stop when someone dies. TODO - Fix this hack ~Leshana
-
-/mob/living/carbon/human/proc/animate_tail_stop()
-	if(QDESTROYING(src))
-		return
-
-	set_tail_state("[species.get_tail(src)]_static")
 
 /// Wings! See update_icons_vr.dm for more wing procs
 /mob/living/carbon/human/proc/update_wing_showing()
