@@ -135,6 +135,35 @@
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
 
+// Centuries old Civilian Shuttle
+
+/datum/shuttle/autodock/overmap/oldcentury
+	name = "Centuries old Civilian Shuttle"
+	warmup_time = 15
+	shuttle_area = list(/area/shuttle/oldcentury/cockpit, /area/shuttle/oldcentury/general)
+	current_location = "oldcentury_pad"
+	docking_controller_tag = "oldcentury_docker"
+	landmark_transition = "nav_transit_oldcentury"
+	fuel_consumption = 8
+	move_time = 37
+
+/obj/overmap/entity/visitable/ship/landable/oldcentury
+	name = "Centuries old Civilian Shuttle"
+	desc = "Is it... A replica ? Or... the real deal ? This shuttle, based on the Buran shuttle from earth's old days. No teasing, this shuttle is a replica, but still a old and crapy ship."
+	fore_dir = NORTH
+	vessel_mass = 14000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Centuries old Civilian Shuttle"
+	color = "#4cad73" //Greyish green
+
+/area/shuttle/oldcentury
+	name = "Centuries old Civilian Shuttle"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/oldcentury
+	name = "Centuries old Civilian jump console"
+	shuttle_tag = "Centuries old Civilian Shuttle"
+
 //EMT Shuttle
 /datum/shuttle/autodock/overmap/emt
 	name = "Dart EMT Shuttle"
