@@ -318,7 +318,7 @@
 
 /datum/loadout_entry/accessory/civ_exos_mob
 	name = "medical exoframe"
-	description = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance. (This is cosmetic, and does not actually do anything.)"
+	description = "A cheap medical exoframe mass-produced by Nanotrasen and provided to employees who cannot function in gravity without assistance. (This is cosmetic, and does not actually do anything.)"
 	path = /obj/item/clothing/accessory/civ_exos_mob
 
 /datum/loadout_entry/accessory/ante_armband

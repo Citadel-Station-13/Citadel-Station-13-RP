@@ -875,9 +875,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * clones us into a new datum
  */
-/datum/species/proc/clone()
+/datum/species/clone(include_contents)
 	var/datum/species/created = new type
 	created.copy_from(src)
+	return created
 
 /**
  * completely clones us from another species, updating the provided human in the process
