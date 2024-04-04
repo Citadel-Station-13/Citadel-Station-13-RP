@@ -18627,6 +18627,9 @@
 	},
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
+/obj/structure/curtain/open/ashlander{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
 "bIN" = (
@@ -19892,10 +19895,8 @@
 /obj/structure/table/bench/wooden{
 	pixel_x = 15
 	},
-/obj/machinery/air_alarm/alarms_hidden{
-	pixel_y = 24
-	},
 /obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/borderfloorwhite/shifted,
 /turf/simulated/floor/carpet/patterened/green,
 /area/shuttle/oldcentury/general)
 "eDm" = (
@@ -20047,7 +20048,8 @@
 /area/hallway/primary/surfacethree)
 "eJV" = (
 /obj/structure/window/reinforced/polarized{
-	dir = 8
+	dir = 8;
+	id = "Centuries_old_shuttle_general"
 	},
 /obj/machinery/media/jukebox,
 /obj/machinery/door/firedoor/glass{
@@ -20566,7 +20568,8 @@
 /area/shuttle/civvie/general)
 "fIx" = (
 /obj/structure/window/reinforced/polarized{
-	dir = 8
+	dir = 8;
+	id = "Centuries_old_shuttle_general"
 	},
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -21692,10 +21695,12 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "ika" = (
-/obj/effect/floor_decal/rust,
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/obj/structure/window/reinforced/polarized/full{
+	id = "Centuries_old_shuttle_cockpit"
+	},
+/turf/simulated/floor,
 /area/shuttle/oldcentury/general)
 "ikZ" = (
 /obj/machinery/door/firedoor/glass{
@@ -22271,6 +22276,7 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 24
 	},
+/obj/effect/floor_decal/borderfloorwhite/shifted,
 /turf/simulated/floor/carpet/patterened/green,
 /area/shuttle/oldcentury/general)
 "jyZ" = (
@@ -22341,7 +22347,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/window/reinforced/polarized{
-	dir = 8
+	dir = 8;
+	id = "Centuries_old_shuttle_general"
 	},
 /obj/machinery/vending/coffee,
 /obj/machinery/door/firedoor/glass{
@@ -22558,6 +22565,10 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/button/windowtint/multitint{
+	id = "Centuries_old_shuttle_cockpit";
+	pixel_y = -20
+	},
 /turf/simulated/floor,
 /area/shuttle/oldcentury/cockpit)
 "jSm" = (
@@ -25174,6 +25185,10 @@
 	pixel_x = -16
 	},
 /obj/item/toy/plushie/bear_space,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 24
+	},
+/obj/effect/floor_decal/borderfloorwhite/shifted,
 /turf/simulated/floor/carpet/patterened/green,
 /area/shuttle/oldcentury/general)
 "qcL" = (
@@ -25550,7 +25565,8 @@
 /area/maintenance/commandmaint)
 "qVp" = (
 /obj/structure/window/reinforced/polarized{
-	dir = 8
+	dir = 8;
+	id = "Centuries_old_shuttle_general"
 	},
 /obj/structure/table/rack/shelf/steel,
 /obj/structure/flora/pottedplant/shoot{
@@ -25559,6 +25575,11 @@
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite/shifted,
+/obj/machinery/button/windowtint/multitint{
+	id = "Centuries_old_shuttle_general";
+	pixel_x = -11
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
@@ -27675,6 +27696,7 @@
 	dir = 8
 	},
 /obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury/general)
 "vZI" = (
