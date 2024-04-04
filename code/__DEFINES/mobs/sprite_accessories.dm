@@ -23,3 +23,12 @@ DEFINE_BITFIELD(hair_flags, list(
 #define SPRITE_ACCESSORY_ALIGNMENT_BOTTOM "bottom"
 /// center it fully
 #define SPRITE_ACCESSORY_ALIGNMENT_CENTER "center"
+
+//* Sprite Accessory Slots
+
+#define SPRITE_ACCESSORY_SLOT_TAIL "tail"
+#define SPRITE_ACCESSORY_SLOT_WINGS "wings"
+#define SPRITE_ACCESSORY_SLOT_HORNS "horns"
+#define SPRITE_ACCESSORY_SLOT_EARS "ears"
+#define SPRITE_ACCESSORY_SLOT_HAIR "hair"
+#define SPRITE_ACCESSORY_SLOT_FACEHAIR "facehair"

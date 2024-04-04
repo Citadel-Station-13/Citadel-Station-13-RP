@@ -117,12 +117,16 @@
 	var/r_tail3 = 30
 	var/g_tail3 = 30
 	var/b_tail3 = 30
+	// pain
+	var/legacy_tail_variation
 
 	var/datum/sprite_accessory/wing/wing_style = null
 	var/grad_wingstyle = "None"
 	var/r_gradwing = 0
 	var/g_gradwing = 0
 	var/b_gradwing = 0
+	// pain
+	var/legacy_wing_variation
 
 	var/r_wing  = 30
 	var/g_wing  = 30

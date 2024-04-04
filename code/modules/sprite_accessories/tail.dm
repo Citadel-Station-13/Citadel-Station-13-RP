@@ -8,8 +8,11 @@
 	var/show_species_tail = 0 // If false, do not render species' tail.
 	var/clothing_can_hide = 1 // If true, clothing with HIDETAIL hides it
 	var/desc = "You should not see this..."
+	//! legacy
 	var/ani_state // State when wagging/animated
+	//! legacy
 	var/extra_overlay_w // Wagging state for extra overlay
+	//! legacy
 	var/extra_overlay2_w // Tertiary wagging.
 	var/list/hide_body_parts = list() //Uses organ tag defines. Bodyparts in this list do not have their icons rendered, allowing for more spriter freedom when doing taur/digitigrade stuff.
 	var/icon/clip_mask_icon = null //Icon file used for clip mask.

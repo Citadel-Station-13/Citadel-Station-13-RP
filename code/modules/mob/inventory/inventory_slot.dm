@@ -433,8 +433,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 /datum/inventory_slot/inventory/suit/render_cascade_visibility(mob/wearer, obj/item/item)
 	. = ..()
-	wearer.update_tail_showing()
-	wearer.update_wing_showing()
+	var/mob/living/carbon/human/casted = wearer
+	if(!istype(casted))
+		return
+	casted.update_tail_showing()
+	casted.update_wing_showing()
 
 /datum/inventory_slot/inventory/belt
 	name = "belt"

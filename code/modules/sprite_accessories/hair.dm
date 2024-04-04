@@ -6,7 +6,7 @@
 	//Enhanced colours and hair for all
 	legacy_use_additive_color_matrix = FALSE
 	apply_restrictions = FALSE
-	
+
 	/// ignored if new has_add_state is specified
 	var/icon_add_legacy = 'icons/mob/human_face.dmi'
 	var/hair_flags
@@ -19,16 +19,16 @@
 	if(append_s_at_end)
 		icon_state = "[icon_state]_s"
 
-/datum/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state)
+/datum/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
 	var/image/rendered = ..()
-	
+
 	if(do_colouration && ishuman(for_whom))
 		var/mob/living/carbon/human/casted_human = for_whom
 		if(casted_human.grad_style)
 			var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
 			gradient.color = rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
 			rendered.overlays += gradient
-		
+
 	if(has_add_state)
 		// if we have that don't do legacy behavior
 	else if(icon_add_legacy)

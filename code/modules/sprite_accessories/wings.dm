@@ -7,6 +7,7 @@
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
 
 	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
+	//! legacy
 	var/spr_state // State when spreading wings w/o anim
 
 

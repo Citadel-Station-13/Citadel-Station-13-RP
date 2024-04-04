@@ -22,7 +22,7 @@
 
 /datum/sprite_accessory
 	abstract_type = /datum/sprite_accessory
-	
+
 	//* basics *//
 	/// The preview name of the accessory.
 	var/name
@@ -39,6 +39,9 @@
 	var/icon
 	/// The icon_state of the accessory.
 	var/icon_state
+	/// default variation is called 'Normal'
+	/// assoc list; name to state.
+	var/list/variations
 	/// sidedness; how many more states we need to inject for it to work
 	var/icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_NONE
 	#warn impl
@@ -87,7 +90,7 @@
  * todo: with_base_state completely tramples extra_overlay, extra_overlay2
  * we need to redo this at some point.
  */
-/datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state)
+/datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation)
 	var/list/layers = list()
 	if(front_behind_system_legacy)
 		var/image/rendering

@@ -19,6 +19,7 @@
 		HUMAN_LAYER_SPRITEACC_EARS_FRONT,
 		HUMAN_LAYER_SPRITEACC_EARS_BEHIND,
 		0, // TODO
+		null,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -38,6 +39,10 @@
 	if(isnull(horn_style))
 		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
 		return
+	if(hiding_horns && horn_style.can_be_hidden)
+		//! legacy code
+		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
+		return
 	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
 	if(!head_organ || head_organ.is_stump())
 		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
@@ -52,6 +57,7 @@
 		HUMAN_LAYER_SPRITEACC_HORNS_FRONT,
 		HUMAN_LAYER_SPRITEACC_HORNS_BEHIND,
 		0, // TODO
+		null,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -88,6 +94,7 @@
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND,
 		0, // TODO
+		null,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -128,6 +135,7 @@
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND,
 		0, // TODO
+		null,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -141,12 +149,116 @@
 
 	set_standing_overlay(HUMAN_OVERLAY_HAIR, rendered)
 
-//! old code below
-
 /mob/living/carbon/human/proc/render_spriteacc_wings()
+
+	var/datum/sprite_accessory/wing/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
+	if(isnull(rendering))
+		remove_standing_overlay(HUMAN_OVERLAY_WINGS)
+		return
+	if(hiding_wings && rendering.can_be_hidden)
+		//! legacy code
+		remove_standing_overlay(HUMAN_OVERLAY_WINGS)
+		return
+	var/rendered = rendering.render(
+		src,
+		list(
+			rgb(r_wing, g_wing, b_wing),
+			rgb(r_wing2, g_wing2, b_wing2),
+			rgb(r_wing3, g_wing3, b_wing3),
+		),
+		HUMAN_LAYER_SPRITEACC_WINGS_FRONT,
+		HUMAN_LAYER_SPRITEACC_WINGS_BEHIND,
+		0, // TODO
+		null,
+		legacy_wing_variation,
+	)
+	set_standing_overlay(HUMAN_OVERLAY_WINGS, rendered)
+
 
 /mob/living/carbon/human/proc/render_spriteacc_tail()
 
+	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
+	if(isnull(rendering))
+		remove_standing_overlay(HUMAN_OVERLAY_TAIL)
+		return
+	if(hiding_tail && rendering.can_be_hidden)
+		//! legacy code
+		remove_standing_overlay(HUMAN_OVERLAY_TAIL)
+		return
+	var/rendered = rendering.render(
+		src,
+		list(
+			rgb(r_tail, g_tail, b_tail),
+			rgb(r_tail2, g_tail2, b_tail2),
+			rgb(r_tail3, g_tail3, b_tail3),
+		),
+		HUMAN_LAYER_SPRITEACC_TAILS_FRONT,
+		HUMAN_LAYER_SPRITEACC_TAILS_BEHIND,
+		0, // TODO,
+		null,
+		legacy_tail_variation,
+	)
+	set_standing_overlay(HUMAN_OVERLAY_TAILS, rendered)
+
+/mob/living/carbon/human/proc/set_wing_variation(variation)
+	var/datum/sprite_accessory/wing/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
+	if(!rendering.variations?[variation])
+		return
+	legacy_wing_variation = variation
+	render_spriteacc_wings()
+
+/mob/living/carbon/human/proc/set_tail_variation(variation)
+	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
+	if(!rendering.variations?[variation])
+		return
+	legacy_tail_variation = variation
+	render_spriteacc_tail()
+
+/mob/living/carbon/proc/get_sprite_accessory(slot)
+/mob/living/carbon/human/get_sprite_accessory(slot)
+	switch(slot)
+		if(SPRITE_ACCESSORY_SLOT_TAIL)
+			return GLOB.sprite_accessory_tails[tail_style]
+		if(SPRITE_ACCESSORY_SLOT_HAIR)
+			return GLOB.legacy_hair_lookup[h_style]
+		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
+			return GLOB.legacy_facial_hair_lookup[f_style]
+		if(SPRITE_ACCESSORY_SLOT_WINGS)
+			return GLOB.sprite_accessory_wings[wing_style]
+		if(SPRITE_ACCESSORY_SLOT_HORNS)
+			return GLOB.sprite_accessory_ears[horn_style]
+		if(SPRITE_ACCESSORY_SLOT_EARS)
+			return GLOB.sprite_accessory_ears[ear_style]
+
+/mob/living/carbon/proc/render_sprite_accessory(slot)
+/mob/living/carbon/human/render_sprite_accessory(slot)
+	switch(slot)
+		if(SPRITE_ACCESSORY_SLOT_TAIL)
+			render_spriteacc_tail()
+		if(SPRITE_ACCESSORY_SLOT_HAIR)
+			render_spriteacc_hair()
+		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
+			render_spriteacc_facehair()
+		if(SPRITE_ACCESSORY_SLOT_WINGS)
+			render_spriteacc_wings()
+		if(SPRITE_ACCESSORY_SLOT_HORNS)
+			render_spriteacc_horns()
+		if(SPRITE_ACCESSORY_SLOT_EARS)
+			render_spriteacc_ears()
+
+/mob/living/carbon/proc/set_sprite_accessory_variation(slot, variation)
+/mob/living/carbon/human/set_sprite_accessory_variation(slot, variation)
+	switch(slot)
+		if(SPRITE_ACCESSORY_SLOT_TAIL)
+			set_tail_variation(variation)
+		if(SPRITE_ACCESSORY_SLOT_HAIR)
+		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
+		if(SPRITE_ACCESSORY_SLOT_WINGS)
+			set_wing_variation(variation)
+		if(SPRITE_ACCESSORY_SLOT_HORNS)
+		if(SPRITE_ACCESSORY_SLOT_EARS)
+
+//! old code below
 
 //? Sprite Accessories
 var/global/list/wing_icon_cache = list()
@@ -398,29 +510,6 @@ var/global/list/wing_icon_cache = list()
 		update_wing_showing()
 	return 1
 
-/// Wings! See update_icons_vr.dm for more wing procs
-/mob/living/carbon/human/proc/update_wing_showing()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(WING_LAYER)
-
-	if(hiding_wings && wing_style.can_be_hidden)
-		return
-
-	overlays_standing[WING_LAYER] = list()
-
-	var/image/vr_wing_image = get_wing_image(TRUE)
-	if(vr_wing_image)
-		vr_wing_image.layer = HUMAN_LAYER_WING
-		overlays_standing[WING_LAYER] += vr_wing_image
-
-	if(wing_style?.front_behind_system_legacy)
-		var/image/vr_wing_image_2 = get_wing_image(FALSE)
-		vr_wing_image_2.layer = BODY_LAYER - WING_LAYER
-		overlays_standing[WING_LAYER] += vr_wing_image_2
-
-	apply_layer(WING_LAYER)
 
 /mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
 	var/icon/grad_swing
@@ -673,20 +762,6 @@ var/global/list/wing_icon_cache = list()
 
 	set_standing_overlay(HUMAN_OVERLAY_BLOOD, both)
 
-//! disabled for shitcode reasons; rewrite later? it was directly writing to an occupied overlay standing,
-//  which is a memory leak.
-// /mob/living/carbon/human/proc/BloodyMouth()
-
-// 	var/image/both = image(icon = 'icons/effects/effects.dmi', icon_state = "nothing", layer = HUMAN_LAYER_BLOOD)
-
-// 	//"lol", said the scorpion, "lmao"
-// 	var/image/bloodsies	= image(icon = species.get_blood_mask(src), icon_state = "redwings", layer = HUMAN_LAYER_BLOOD)
-// 	bloodsies.color = src.species.blood_color
-// 	both.add_overlay(bloodsies)
-
-// 	overlays_standing[BLOOD_LAYER] = both
-
-// 	apply_layer(BLOOD_LAYER)
 
 //UNDERWEAR OVERLAY
 /mob/living/carbon/human/proc/update_underwear()
