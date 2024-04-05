@@ -138,9 +138,6 @@
 	var/g_wing3 = 30
 	var/b_wing3 = 30
 
-	var/wagging  = 0 //UGH.
-	var/flapping = 0
-	var/spread   = 0
 	/// What's my status?
 	var/vantag_pref = VANTAG_NONE
 	// todo: REOMVE THIS FOR SPECIES VAR CHANGES

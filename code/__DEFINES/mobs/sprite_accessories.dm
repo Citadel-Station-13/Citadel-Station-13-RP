@@ -32,3 +32,9 @@ DEFINE_BITFIELD(hair_flags, list(
 #define SPRITE_ACCESSORY_SLOT_EARS "ears"
 #define SPRITE_ACCESSORY_SLOT_HAIR "hair"
 #define SPRITE_ACCESSORY_SLOT_FACEHAIR "facehair"
+
+//* Sprite Accessory Variations (Standard)
+
+#define SPRITE_ACCESSORY_VARIATION_FLAPPING "Flapping"
+#define SPRITE_ACCESSORY_VARIATION_WAGGING "Wagging"
+#define SPRITE_ACCESSORY_VARIATION_SPREAD "Spread"

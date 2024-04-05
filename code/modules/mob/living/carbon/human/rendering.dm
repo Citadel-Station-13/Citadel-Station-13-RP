@@ -155,7 +155,6 @@
 	set_standing_overlay(HUMAN_OVERLAY_HAIR, rendered)
 
 /mob/living/carbon/human/proc/render_spriteacc_wings()
-
 	var/datum/sprite_accessory/wing/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_WINGS)
@@ -183,7 +182,6 @@
 
 
 /mob/living/carbon/human/proc/render_spriteacc_tail()
-
 	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_TAIL)
@@ -267,10 +265,30 @@
 		if(SPRITE_ACCESSORY_SLOT_HORNS)
 		if(SPRITE_ACCESSORY_SLOT_EARS)
 
+/mob/living/carbon/proc/has_sprite_accessory_variation(slot, variation)
+/mob/living/carbon/human/has_sprite_accessory_variation(slot, variation)
+	var/datum/sprite_accessory/resolved = get_sprite_accessory(slot)
+	return (resolved?.variations?[variation])? TRUE : FALSE
+
+/mob/living/carbon/proc/get_sprite_accessory_variation(slot)
+/mob/living/carbon/human/get_sprite_accessory_variation(slot)
+	var/datum/sprite_accessory/resolved = get_sprite_accessory(slot)
+	if(!length(resolved?.variations))
+		return null
+	var/variation
+	switch(slot)
+		if(SPRITE_ACCESSORY_SLOT_TAIL)
+			variation = legacy_tail_variation
+		if(SPRITE_ACCESSORY_SLOT_HAIR)
+		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
+		if(SPRITE_ACCESSORY_SLOT_WINGS)
+			variation = legacy_wing_variation
+		if(SPRITE_ACCESSORY_SLOT_HORNS)
+		if(SPRITE_ACCESSORY_SLOT_EARS)
+	return (resolved.variations[variation])? variation : null
+
 //! old code below
 
-//? Sprite Accessories
-var/global/list/wing_icon_cache = list()
 
 /mob/living/carbon/human/proc/get_tail_image(front)
 	//If you are FBP with tail style and didn't set a custom one
@@ -320,22 +338,6 @@ var/global/list/wing_icon_cache = list()
 		else
 			return image(tail_s)
 	return null
-
-//HAIR OVERLAY
-/mob/living/carbon/human/update_hair()
-	update_eyes() //Pirated out of here, for glowing eyes.
-
-	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
-	if(istype(head_organ,/obj/item/organ/external/head/vr))
-		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
-		head_spriteacc_offset = head_organ_vr.head_offset
-	else
-		head_spriteacc_offset = 0
-
-	render_spriteacc_ears()
-	render_spriteacc_horns()
-	render_spriteacc_hair()
-	render_spriteacc_facehair()
 
 #warn below
 
@@ -487,38 +489,26 @@ var/global/list/wing_icon_cache = list()
 	set_tail_state("[species.get_tail(src)]_static")
 
 /mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
-	if(!wing_style || !wing_style.ani_state)
+	if(!has_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS, SPRITE_ACCESSORY_VARIATION_FLAPPING))
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
 		return 0
-
-	var/new_flapping = isnull(setting) ? !flapping : setting
-	if(new_flapping != flapping)
-		flapping = setting
-		if(flapping)
-			spread = FALSE
-		update_wing_showing()
+	set_sprite_accessory_variation(
+		SPRITE_ACCESSORY_SLOT_WINGS,
+		get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS) == SPRITE_ACCESSORY_VARIATION_FLAPPING? null : SPRITE_ACCESSORY_VARIATION_FLAPPING,
+	)
 	return 1
 
 /mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
-	if(!wing_style)
+	if(!has_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS, SPRITE_ACCESSORY_VARIATION_SPREAD))
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have wings!</span>")
 		return 0
-
-	if(!wing_style.spr_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
-		return 0
-
-	var/new_spread = isnull(folded) ? !spread : folded
-	if(new_spread != spread)
-		spread = new_spread
-		if(spread)
-			flapping = FALSE
-		update_wing_showing()
+	set_sprite_accessory_variation(
+		SPRITE_ACCESSORY_SLOT_WINGS,
+		get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS) == SPRITE_ACCESSORY_VARIATION_SPREAD? null : SPRITE_ACCESSORY_VARIATION_SPREAD,
+	)
 	return 1
-
 
 /mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
 	var/icon/grad_swing
@@ -563,6 +553,23 @@ var/global/list/wing_icon_cache = list()
 		if(wing_style.center)
 			center_appearance(wing_s, wing_style.dimension_x, wing_style.dimension_y)
 		return image(wing_s, "pixel_x" = -16)
+
+//? FUCK FUCK FUCK FUCK FUCK-
+
+/mob/living/carbon/human/update_hair()
+	update_eyes() //Pirated out of here, for glowing eyes.
+
+	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD)
+	if(istype(head_organ,/obj/item/organ/external/head/vr))
+		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
+		head_spriteacc_offset = head_organ_vr.head_offset
+	else
+		head_spriteacc_offset = 0
+
+	render_spriteacc_ears()
+	render_spriteacc_horns()
+	render_spriteacc_hair()
+	render_spriteacc_facehair()
 
 //? Body
 
