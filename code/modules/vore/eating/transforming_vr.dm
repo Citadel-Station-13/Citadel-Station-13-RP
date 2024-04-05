@@ -162,7 +162,7 @@
 	M.g_wing = O.g_wing
 	M.b_wing = O.b_wing
 	M.wing_style = O.wing_style
-	M.update_wing_showing()
+	M.render_spriteacc_wings()
 	if(message)
 		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
 		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
@@ -180,7 +180,7 @@
 		return
 
 	M.wing_style = O.wing_style
-	M.update_wing_showing()
+	M.render_spriteacc_wings()
 	if(message)
 		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
 		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")

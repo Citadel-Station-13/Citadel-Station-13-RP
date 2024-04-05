@@ -111,37 +111,10 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 		mob_icon.Blend(eyecon, ICON_OVERLAY)
 		icon_cache_key += "[eye_icon]"
 
-	add_overlay(get_hair_icon())
+	add_overlay(owner.render_spriteacc_facehair())
+	add_overlay(owner.render_spriteacc_hair())
 
 	return mob_icon
-
-/obj/item/organ/external/head/proc/get_hair_icon()
-	var/image/res = image('icons/mob/human_face.dmi',"bald_s")
-	//Facial hair
-	if(owner.f_style)
-		var/datum/sprite_accessory/facial_hair_style = GLOB.legacy_facial_hair_lookup[owner.f_style]
-		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in facial_hair_style.species_allowed)))
-			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-			if(facial_hair_style.do_colouration)
-				facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), facial_hair_style.color_blend_mode)
-			res.add_overlay(facial_s)
-
-	//Head hair
-	if(owner.h_style)
-		var/style = owner.h_style
-		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[style]
-		if(owner.head && (owner.head.inv_hide_flags & BLOCKHEADHAIR))
-			if(!(hair_style.hair_flags & HAIR_VERY_SHORT))
-				hair_style = GLOB.legacy_hair_lookup["Short Hair"]
-		if(hair_style && (!hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in hair_style.species_allowed)))
-			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-			var/icon/hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
-			if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)
-				hair_s.Blend(rgb(h_col[1], h_col[2], h_col[3]), ICON_MULTIPLY)
-				hair_s.Blend(hair_s_add, ICON_ADD)
-			res.add_overlay(hair_s)
-
-	return res
 
 /obj/item/organ/external/proc/get_icon(var/skeletal)
 

@@ -342,7 +342,7 @@ var/list/wrapped_species_by_ref = list()
 			g_ears3 = new_color_rgb_list[2]
 			b_ears3 = new_color_rgb_list[3]
 
-	update_hair() //Includes Virgo ears
+	render_spriteacc_ears() //Includes Virgo ears
 
 /mob/living/carbon/human/proc/shapeshifter_select_horns()
 	set name = "Select Secondary Ears"
@@ -395,7 +395,7 @@ var/list/wrapped_species_by_ref = list()
 			g_horn3 = new_color_rgb_list[2]
 			b_horn3 = new_color_rgb_list[3]
 
-	update_hair() //Includes Virgo ears
+	render_spriteacc_ears() //Includes Virgo ears
 
 /mob/living/carbon/human/proc/shapeshifter_select_tail()
 	set name = "Select Tail"
@@ -448,7 +448,7 @@ var/list/wrapped_species_by_ref = list()
 			g_tail3 = new_color_rgb_list[2]
 			b_tail3 = new_color_rgb_list[3]
 
-	update_tail_showing()
+	render_spriteacc_tail()
 
 /mob/living/carbon/human/proc/shapeshifter_select_wings()
 	set name = "Select Wings"
@@ -501,7 +501,7 @@ var/list/wrapped_species_by_ref = list()
 			g_wing3 = new_color_rgb_list[2]
 			b_wing3 = new_color_rgb_list[3]
 
-	update_wing_showing()
+	render_spriteacc_wings()
 
 /mob/living/carbon/human/proc/promethean_toggle_body_transparency()
 

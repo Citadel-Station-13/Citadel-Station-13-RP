@@ -75,7 +75,7 @@
 
 	grad_wingstyle = wing_gradient
 
-	update_wing_showing()
+	render_spriteacc_wings()
 	return 1
 
 /mob/living/carbon/human/proc/change_facial_hair(var/facial_hair_style)

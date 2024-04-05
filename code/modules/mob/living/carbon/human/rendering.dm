@@ -30,6 +30,8 @@
 		var/image/I = rendered
 		I.pixel_y += head_spriteacc_offset
 		I.alpha = head_organ.hair_opacity
+
+	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_EARS, rendered)
 
 /mob/living/carbon/human/proc/render_spriteacc_horns()
@@ -69,6 +71,7 @@
 		I.pixel_y += head_spriteacc_offset
 		I.alpha = head_organ.hair_opacity
 
+	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_HORNS, rendered)
 
 /mob/living/carbon/human/proc/render_spriteacc_facehair()
@@ -106,6 +109,7 @@
 		I.pixel_y += head_spriteacc_offset
 		I.alpha = head_organ.hair_opacity
 
+	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_FACEHAIR, rendered)
 
 /mob/living/carbon/human/proc/render_spriteacc_hair()
@@ -147,6 +151,7 @@
 		I.pixel_y += head_spriteacc_offset
 		I.alpha = head_organ.hair_opacity
 
+	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_HAIR, rendered)
 
 /mob/living/carbon/human/proc/render_spriteacc_wings()
@@ -172,6 +177,8 @@
 		null,
 		legacy_wing_variation,
 	)
+
+	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_WINGS, rendered)
 
 
@@ -192,12 +199,14 @@
 			rgb(r_tail2, g_tail2, b_tail2),
 			rgb(r_tail3, g_tail3, b_tail3),
 		),
-		HUMAN_LAYER_SPRITEACC_TAILS_FRONT,
-		HUMAN_LAYER_SPRITEACC_TAILS_BEHIND,
+		HUMAN_LAYER_SPRITEACC_TAIL_FRONT,
+		HUMAN_LAYER_SPRITEACC_TAIL_BEHIND,
 		0, // TODO,
 		null,
 		legacy_tail_variation,
 	)
+
+	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_TAILS, rendered)
 
 /mob/living/carbon/human/proc/set_wing_variation(variation)

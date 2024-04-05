@@ -436,8 +436,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/mob/living/carbon/human/casted = wearer
 	if(!istype(casted))
 		return
-	casted.update_tail_showing()
-	casted.update_wing_showing()
+	casted.render_spriteacc_tail()
+	casted.render_spriteacc_wings()
 
 /datum/inventory_slot/inventory/belt
 	name = "belt"
