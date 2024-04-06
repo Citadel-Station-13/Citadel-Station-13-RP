@@ -33,6 +33,17 @@
 	/// Determines if the accessory will be skipped or included in random hair generations.
 	/// if set, someone must be this gender to receive it
 	var/random_generation_gender
+	/// can be selected
+	var/selectable = TRUE
+
+	//* coloration *//
+	/// coloration mode
+	//  todo: rigsuit update first, this is a placeholder
+	var/coloration_mode
+	/// color amount when in overlays mode; other colors will be rendered in _2, _3, etc;
+	/// _add will go ontop.
+	//  todo: rigsuit update first, this is a placeholder
+	var/coloration_amount = 1
 
 	//* icon location & base state *//
 	/// The icon file the accessory is located in.
@@ -91,6 +102,8 @@
  * we need to redo this at some point.
  */
 /datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation)
+	if(variations?[with_variation])
+		with_base_state = with_variation
 	var/list/layers = list()
 	if(front_behind_system_legacy)
 		var/image/rendering
