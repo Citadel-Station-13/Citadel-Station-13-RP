@@ -1,24 +1,3 @@
-/datum/sprite_accessory/wing/feathered
-	name = "feathered wings (colorable)"
-	id = "wing_feather"
-	icon_state = "feathered"
-	do_colouration = 1
-	legacy_use_additive_color_matrix = FALSE
-
-/datum/sprite_accessory/wing/feathered_medium
-	name = "medium feathered wings (colorable)" // Keekenox made these feathery things with a little bit more shape to them than the other wings. They are medium sized wing boys.
-	id = "wing_feather_medium"
-	icon_state = "feathered2"
-	spr_state = "feathered2_spr"
-	do_colouration = 1
-	legacy_use_additive_color_matrix = FALSE
-
-/datum/sprite_accessory/wing/feathered_large //Made by Natje!
-	name = "large feathered wings (colorable)"
-	id = "wing_feather_large"
-	icon_state = "feathered3"
-	do_colouration = 1
-	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/wing/harpywings
 	name = "harpy wings (colorable)"
@@ -73,30 +52,3 @@
 	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "harpywings_batmarkings"
 	extra_overlay2 = "neckfur"
-
-/datum/sprite_accessory/wing/angel
-	name = "angel wings"
-	id = "angelwings"
-	icon_state = "angelwings"
-	do_colouration = TRUE
-	legacy_use_additive_color_matrix = FALSE
-	front_behind_system_legacy = TRUE
-
-//64x48 Wings
-/datum/sprite_accessory/wing/seraph
-	name = "seraphim wings (colorable)"
-	id = "wing_seraph"
-	icon = 'icons/mob/sprite_accessories/wings_64x48.dmi'
-	icon_state = "seraph"
-	spr_state = "seraph_spr"
-	do_colouration = 1
-	legacy_use_additive_color_matrix = FALSE
-
-/datum/sprite_accessory/wing/seraph_eyes
-	name = "seraphim wings (colorable, eyes)"
-	id = "wing_serapheye"
-	icon = 'icons/mob/sprite_accessories/wings_64x48.dmi'
-	icon_state = "seraph_eye"
-	spr_state = "seraph_eye_spr"
-	//do_colouration = 1	//Maybe some day we'll allow multi-coloration and I'll make this colorable again too so the eyes can get colors.
-	//legacy_use_additive_color_matrix = FALSE

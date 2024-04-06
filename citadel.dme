@@ -4721,6 +4721,8 @@
 #include "code\modules\sprite_accessories\tail\species\zorren.dm"
 #include "code\modules\sprite_accessories\wings\bat.dm"
 #include "code\modules\sprite_accessories\wings\draconic_furries.dm"
+#include "code\modules\sprite_accessories\wings\feathered-angel.dm"
+#include "code\modules\sprite_accessories\wings\feathered-generic.dm"
 #include "code\modules\sprite_accessories\wings\feathered.dm"
 #include "code\modules\sprite_accessories\wings\insect_not_really_wings.dm"
 #include "code\modules\sprite_accessories\wings\misc.dm"
