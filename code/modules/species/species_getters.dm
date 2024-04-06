@@ -64,15 +64,6 @@
 /datum/species/proc/get_additional_examine_text(mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/get_tail(mob/living/carbon/human/H)
-	return tail
-
-/datum/species/proc/get_tail_animation(mob/living/carbon/human/H)
-	return tail_animation
-
-/datum/species/proc/get_tail_hair(mob/living/carbon/human/H)
-	return tail_hair
-
 /datum/species/proc/get_blood_mask(mob/living/carbon/human/H)
 	return blood_mask
 
@@ -181,11 +172,8 @@
 /datum/species/proc/get_vision_flags(mob/living/carbon/human/H)
 	return vision_flags
 
-/datum/species/proc/get_wing(mob/living/carbon/human/H)
-	return wing
-
-/datum/species/proc/get_wing_animation(mob/living/carbon/human/H)
-	return wing_animation
+/datum/species/proc/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
+	return sprite_accessory_defaults[slot]
 
 //! ## Names
 /datum/species/proc/get_true_name(mob/living/carbon/human/H)

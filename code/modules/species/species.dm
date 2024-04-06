@@ -897,9 +897,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	base_species = to_copy.name
 	icobase = to_copy.icobase
 	deform = to_copy.deform
-	tail = to_copy.tail
-	tail_animation = to_copy.tail_animation
-	icobase_tail = to_copy.icobase_tail
+	sprite_accessory_defaults = to_copy.sprite_accessory_defaults.Copy()
 	color_mult = to_copy.color_mult
 	primitive_form = to_copy.primitive_form
 	species_appearance_flags = to_copy.species_appearance_flags

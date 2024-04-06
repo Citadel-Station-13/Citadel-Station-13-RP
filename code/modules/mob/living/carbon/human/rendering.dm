@@ -234,7 +234,7 @@
 		if(SPRITE_ACCESSORY_SLOT_EARS)
 			. = GLOB.sprite_accessory_ears[ear_style]
 	if(isnull(.))
-		. = species?.sprite_accessory_defaults[slot]
+		. = species?.get_default_sprite_accessory(src, slot)
 
 /mob/living/carbon/proc/render_sprite_accessory(slot)
 /mob/living/carbon/human/render_sprite_accessory(slot)
@@ -314,6 +314,8 @@
 			//check that the animation hasn't changed in the meantime
 			if(overlays_standing[used_tail_layer] == tail_overlay && tail_overlay.icon_state == t_state)
 				animate_tail_stop()
+
+#warn above
 
 /mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
 	if(!tail_style || !tail_style.ani_state)
@@ -576,9 +578,9 @@
 	icon = stand_icon
 
 	//tail
-	update_tail_showing()
+	render_spriteacc_tail()
 	//wing
-	update_wing_showing()
+	render_spriteacc_wings()
 
 /mob/living/carbon/human/proc/update_skin()
 	var/image/skin = species.update_skin(src)

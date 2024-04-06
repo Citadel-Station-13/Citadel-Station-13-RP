@@ -19,12 +19,7 @@
 			gradient.blend_mode = BLEND_INSET_OVERLAY
 			rendered.overlays += gradient
 
-	if(has_add_state)
-		// if we have that don't do legacy behavior
-	else if(icon_add_legacy)
-
 	return rendered
-
 
 // todo: sort ears by something that makes sense
 // todo: tgui choice menu should be modular

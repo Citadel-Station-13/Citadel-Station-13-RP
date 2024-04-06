@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		if(ispath(what, /datum/inventory_slot))
 			var/datum/inventory_slot/resolving = what
 			if(!initial(resolving.id))
-				stack_trace("no id on [reoslving]; cascade render slot targets should have hardcoded ids at this point in time")
+				stack_trace("no id on [resolving]; cascade render slot targets should have hardcoded ids at this point in time")
 			legacy_visibility_sensitive_slots[i] = initial(resolving.id)
 
 	rebuild_rendering_caches()
@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 // todo: shouldn't have to specify bodytype
 /datum/inventory_slot/proc/render(mob/wearer, obj/item/item, bodytype)
-	return item.render_mob_appearance(owner, slot, bodytype)
+	return item.render_mob_appearance(wearer, src, bodytype)
 
 /datum/inventory_slot/proc/should_render(mob/wearer, obj/item/item)
 	return TRUE

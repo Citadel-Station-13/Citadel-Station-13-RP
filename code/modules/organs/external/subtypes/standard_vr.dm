@@ -12,7 +12,7 @@
 	for(var/M in markings)
 		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
-		mark_s.Blend(markings[M]["color"], mark_style.legacy_use_additive_color_matrix? BLEND_ADD : BLEND_MULTIPLY)
+		mark_s.Blend(markings[M]["color"], mark_style.legacy_use_additive_color_matrix? ICON_ADD : ICON_MULTIPLY)
 		overlays_to_add.Add(mark_s) //So when it's not on your body, it has icons
 		mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 		icon_cache_key += "[M][markings[M]["color"]]"
