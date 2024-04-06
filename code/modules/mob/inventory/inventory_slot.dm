@@ -144,6 +144,15 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(!id && (inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
 		id = "[++id_next]"
 
+	// resolve typepaths to ids
+	for(var/i in 1 to length(legacy_visibility_sensitive_slots))
+		var/what = legacy_visibility_sensitive_slots[i]
+		if(ispath(what, /datum/inventory_slot))
+			var/datum/inventory_slot/resolving = what
+			if(!initial(resolving.id))
+				stack_trace("no id on [reoslving]; cascade render slot targets should have hardcoded ids at this point in time")
+			legacy_visibility_sensitive_slots[i] = initial(resolving.id)
+
 	rebuild_rendering_caches()
 
 /datum/inventory_slot/proc/_equip_check(obj/item/I, mob/wearer, mob/user, flags)
@@ -431,7 +440,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		SLOT_ID_SHOES,
 	)
 
-/datum/inventory_slot/inventory/suit/render_cascade_visibility(mob/wearer, obj/item/item)
+/datum/inventory_slot/inventory/suit/cascade_render_visibility(mob/wearer, obj/item/item)
 	. = ..()
 	var/mob/living/carbon/human/casted = wearer
 	if(!istype(casted))
@@ -620,7 +629,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	return image(
 		icon = species.suit_storage_icon,
 		icon_state = item.item_state || item.icon_state,
-		layer = HUMAN_LAYER_SLOT_HUMAN_SLOT_SUITSTORE
+		layer = HUMAN_LAYER_SLOT_SUITSTORE,
 	)
 
 /datum/inventory_slot/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
