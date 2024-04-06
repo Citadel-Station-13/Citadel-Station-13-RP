@@ -27,6 +27,7 @@
 		if(casted_human.grad_style)
 			var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
 			gradient.color = rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
+			gradient.blend_mode = BLEND_INSET_OVERLAY
 			rendered.overlays += gradient
 
 	if(has_add_state)

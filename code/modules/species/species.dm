@@ -4,6 +4,8 @@
  * They are **not** singletons, however, they are globally cached as a static set
  * for use in preferences to determine default properties/whatever
  *
+ * todo: make them singletons
+ *
  * ? Someday we'll rework this. Someday. I believe.
  *
  * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
@@ -40,11 +42,18 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
-	//? Traits / Physiology
+	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
 	/// physiology modifier to add - path or instance
 	var/datum/physiology_modifier/mob_physiology_modifier
+
+	//* Sprite Accessories *//
+	/// default sprite accessories for each slot; will render onto mobs if they don't have one specifically set.
+	/// set to id/typepath to have it resolved during init.
+	var/list/sprite_accessory_defaults = list()
+
+	// todo: old code below
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -114,20 +123,6 @@
 	/// The basic skin colours this species uses.
 	var/list/base_skin_colours
 
-	//? Tail
-	/// Name of tail state in species effects icon file.
-	var/tail
-	/// If set, the icon to obtain tail animation states from.
-	var/tail_animation
-	var/tail_hair
-	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
-	var/icobase_tail = 0
-
-	//? Wing
-	var/wing_hair
-	var/wing
-	var/wing_animation
-	var/icobase_wing
 
 	//? Organs
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
@@ -509,6 +504,8 @@
 				continue
 			built += new path
 		abilities = built
+
+	#warn resolve sprite_accessory's
 
 /**
  * called when we apply to a mob

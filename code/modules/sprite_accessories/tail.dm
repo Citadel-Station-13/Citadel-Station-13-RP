@@ -24,6 +24,23 @@
 	if(clip_mask_icon && clip_mask_state)
 		clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state)
 
+/datum/sprite_accessory/tail/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
+	// awful? yes. :skull:
+	// please don't ever copy this pattern anywhere else.
+	if(with_variation == SPRITE_ACCESSORY_VARIATION_WAGGING && ani_state)
+		var/old1 = icon_state
+		var/old2 = extra_overlay
+		var/old3 = extra_overlay2
+		icon_state = ani_state
+		extra_overlay = extra_overlay_w
+		extra_overlay2 = extra_overlay2_w
+		. = ..()
+		icon_state = old1
+		extra_overlay = old2
+		extra_overlay2 = old3
+	else
+		return ..()
+
 //For all species tails. Includes haircolored tails.
 /datum/sprite_accessory/tail/special
 	abstract_type = /datum/sprite_accessory/tail/special

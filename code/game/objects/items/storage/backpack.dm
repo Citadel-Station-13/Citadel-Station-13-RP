@@ -590,29 +590,29 @@
 	if(!.)
 		return FALSE
 	var/mob/living/carbon/human/H = M
-	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
+	var/datum/sprite_accessory/tail/legacy_taur/TT = H.tail_style
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/horse))
 		item_state = "[icon_base]_horse"
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/wolf))
 		item_state = "[icon_base]_wolf"
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/cow))
 		item_state = "[icon_base]_cow"
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/lizard))
 		item_state = "[icon_base]_lizard"
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/feline))
 		item_state = "[icon_base]_feline"
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/drake))
 		item_state = "[icon_base]_drake"
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/otie))
 		item_state = "[icon_base]_otie"
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
+	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/legacy_taur/deer))
 		item_state = "[icon_base]_deer"
 		return 1
 	else

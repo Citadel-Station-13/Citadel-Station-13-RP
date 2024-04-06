@@ -7,8 +7,23 @@
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
 
 	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
-	//! legacy
-	var/spr_state // State when spreading wings w/o anim
+
+/datum/sprite_accessory/wing/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
+	var/image/rendered = ..()
+
+	if(do_colouration && ishuman(for_whom))
+		var/mob/living/carbon/human/casted_human = for_whom
+		if(casted_human.grad_wingstyle)
+			var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
+			gradient.color = rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
+			gradient.blend_mode = BLEND_INSET_OVERLAY
+			rendered.overlays += gradient
+
+	if(has_add_state)
+		// if we have that don't do legacy behavior
+	else if(icon_add_legacy)
+
+	return rendered
 
 
 // todo: sort ears by something that makes sense

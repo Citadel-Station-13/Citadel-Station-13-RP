@@ -181,9 +181,6 @@
 /datum/species/proc/get_vision_flags(mob/living/carbon/human/H)
 	return vision_flags
 
-/datum/species/proc/get_wing_hair(mob/living/carbon/human/H) //I have no idea what this is even used for other than teshari, but putting it in just in case.
-	return wing_hair //Since the tail has it.
-
 /datum/species/proc/get_wing(mob/living/carbon/human/H)
 	return wing
 
