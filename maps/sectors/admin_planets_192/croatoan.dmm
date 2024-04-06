@@ -6315,7 +6315,7 @@
 	},
 /obj/item/tape_recorder{
 	name = "Recorder Device";
-	desc = "A small recording device. When turned on, it plays a short message. "Weknowyou'refollowingus.Don'tworry,we'llbesurewhathappenedtoDirectorIkantohappenstoyouaswell." It ends abruptly."
+	desc = "A small recording device. When turned on, it plays a short message. 'We know you're following us.Don't worry,we'll be sure what happened to Director Ikanto happens to you as well.' It ends abruptly."
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
