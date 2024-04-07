@@ -18,7 +18,7 @@ AUTO_FRAME_DATUM(solar_panel, 'icons/objects/frames/solar_panel.dmi')
 
 	has_structure_stage_states = FALSE
 
-/datum/frame2/solar_panel/on_item(obj/structure/frame/frame, obj/item/item, datum/event_args/actor/clickchain/click)
+/datum/frame2/solar_panel/on_item(obj/structure/frame2/frame, obj/item/item, datum/event_args/actor/clickchain/click)
 	. = ..()
 	if(.)
 		return
@@ -39,13 +39,13 @@ AUTO_FRAME_DATUM(solar_panel, 'icons/objects/frames/solar_panel.dmi')
 		frame.set_context("tracker", TRUE)
 		return TRUE
 
-/datum/frame2/solar_panel/instance_product(obj/structure/frame/frame)
-	if(frmae.get_context("tracker"))
+/datum/frame2/solar_panel/instance_product(obj/structure/frame2/frame)
+	if(frame.get_context("tracker"))
 		return new /obj/machinery/power/tracker(frame.loc)
 	else
 		return new /obj/machinery/power/solar(frame.loc)
 
-/datum/frame2/solar_panel/instruction_special(obj/structure/frame/frame, datum/event_args/actor/clickchain/click)
+/datum/frame2/solar_panel/instruction_special(obj/structure/frame2/frame, datum/event_args/actor/clickchain/click)
 	. = ..()
 	if(!frame.get_context("tracker"))
 		. += SPAN_NOTICE("Add <b>tracker electronics</b> to make this a solar tracker assembly.")

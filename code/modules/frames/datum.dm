@@ -115,14 +115,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 #warn impl
 
-/datum/frame2/proc/apply_to_frame(obj/structure/frame/frame)
+/datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
 	frame.update_icon()
 
 /**
  * @return finished product
  */
-/datum/frame2/proc/finish_frame(obj/structure/frame/frame, destroy_structure = TRUE)
+/datum/frame2/proc/finish_frame(obj/structure/frame2/frame, destroy_structure = TRUE)
 	ASSERT(isturf(frame.loc))
 	. = instance_product(frame)
 	if(destroy_structure)
@@ -131,16 +131,16 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return finished product
  */
-/datum/frame2/proc/instance_product(obj/structure/frame/frame)
+/datum/frame2/proc/instance_product(obj/structure/frame2/frame)
 	CRASH("abstract proc called.")
 
-/datum/frame2/proc/deconstruct_frame(obj/structure/frame/frame, datum/event_args/actor/actor, put_in_hand_if_possible = TRUE)
+/datum/frame2/proc/deconstruct_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, put_in_hand_if_possible = TRUE)
 	#warn impl
 
 /**
  * @return TRUE / FALSE success / fail
  */
-/datum/frame2/proc/move_frame_forwards(obj/structure/frame/frame, from_stage)
+/datum/frame2/proc/move_frame_forwards(obj/structure/frame2/frame, from_stage)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(frame.stage != from_stage)
 		return FALSE
@@ -149,7 +149,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return TRUE / FALSE success / fail
  */
-/datum/frame2/proc/move_frame_backwards(obj/structure/frame/frame, from_stage)
+/datum/frame2/proc/move_frame_backwards(obj/structure/frame2/frame, from_stage)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(frame.stage != from_stage)
 		return FALSE
@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  *
  * @return TRUE / FALSE success / fail
  */
-/datum/frame2/proc/move_frame_to(obj/structure/frame/frame, from_stage, to_stage)
+/datum/frame2/proc/move_frame_to(obj/structure/frame2/frame, from_stage, to_stage)
 	if(frame.stage != from_stage)
 		return FALSE
 	if(to_stage < 1 || to_stage > stage_count())
@@ -173,7 +173,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		CRASH("attempted to move from the same state to the same state. why?")
 	#warn impl
 
-/datum/frame2/proc/on_examine(obj/structure/frame/frame, datum/event_args/actor/actor, list/examine_list)
+/datum/frame2/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list)
 	examine_list += instruction_forwards(frame, actor)
 	examine_list += instruction_backwards(frame, actor)
 	examine_list += instruction_special(frame, actor)
@@ -182,49 +182,49 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return string
  */
-/datum/frame2/proc/instruction_forwards(obj/structure/frame/frame, datum/event_args/actor/actor)
+/datum/frame2/proc/instruction_forwards(obj/structure/frame2/frame, datum/event_args/actor/actor)
 	#warn impl default
 
 /**
  * @return string
  */
-/datum/frame2/proc/instruction_backwards(obj/structure/frame/frame, datum/event_args/actor/actor)
+/datum/frame2/proc/instruction_backwards(obj/structure/frame2/frame, datum/event_args/actor/actor)
 	#warn impl default
 
 /**
  * @return list(string, ...)
  */
-/datum/frame2/proc/instruction_special(obj/structure/frame/frame, datum/event_args/actor/actor)
+/datum/frame2/proc/instruction_special(obj/structure/frame2/frame, datum/event_args/actor/actor)
 	return list()
 
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_item(obj/structure/frame/frame, obj/item/item, datum/event_args/actor/clickchain/click)
+/datum/frame2/proc/on_item(obj/structure/frame2/frame, obj/item/item, datum/event_args/actor/clickchain/click)
 	#warn impl
 
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_tool(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/clickchain/click, function, flags, hint)
+/datum/frame2/proc/on_tool(obj/structure/frame2/frame, obj/item/tool, datum/event_args/actor/clickchain/click, function, flags, hint)
 	#warn impl
 
 /**
  * @return list
  */
-/datum/frame2/proc/on_tool_query(obj/structure/frame/frame, obj/item/tool, datum/event_args/actor/clickchain/click)
+/datum/frame2/proc/on_tool_query(obj/structure/frame2/frame, obj/item/tool, datum/event_args/actor/clickchain/click)
 	#warn impl
 
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_interact(obj/structure/frame/frame, datum/event_args/actor/clickchain/click)
+/datum/frame2/proc/on_interact(obj/structure/frame2/frame, datum/event_args/actor/clickchain/click)
 	#warn impl
 
 /**
  * @return finished product if finished
  */
-/datum/frame2/proc/try_finish_frame(obj/structure/frame/frame, datum/event_args/actor/actor, destroy_structure = TRUE)
+/datum/frame2/proc/try_finish_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, destroy_structure = TRUE)
 	ASSERT(isturf(frame.loc))
 	if(!obstruction_checks(frame.loc, frame.dir, actor))
 		return
