@@ -7,7 +7,10 @@
 	default_bodytype = BODYTYPE_SERGAL
 	icobase = 'icons/mob/species/naramadi/body.dmi'
 	deform = 'icons/mob/species/naramadi/deformed_body.dmi'
-	tail = "tail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/naramadi,
+	)
 
 	icobase_tail = 1
 	slowdown      = -0.25

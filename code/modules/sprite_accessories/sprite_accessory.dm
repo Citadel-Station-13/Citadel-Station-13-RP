@@ -59,7 +59,6 @@
 	var/variation_animation_time = 2 SECONDS
 	/// sidedness; how many more states we need to inject for it to work
 	var/icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_NONE
-	#warn impl
 
 	//* icon dimensions & alignment *//
 	var/icon_dimension_x = 32

@@ -1165,9 +1165,9 @@
 			if(SPRITE_ACCESSORY_SLOT_HAIR)
 			if(SPRITE_ACCESSORY_SLOT_HORNS)
 				horn_style = accessory
-				r_horns = r_skin
-				g_horns = g_skin
-				b_horns = b_skin
+				r_horn = r_skin
+				g_horn = g_skin
+				b_horn = b_skin
 			if(SPRITE_ACCESSORY_SLOT_TAIL)
 				tail_style = accessory
 				r_tail = r_skin
@@ -1175,9 +1175,9 @@
 				b_tail = b_skin
 			if(SPRITE_ACCESSORY_SLOT_WINGS)
 				wing_style = accessory
-				r_wings = r_skin
-				g_wings = g_skin
-				b_wings = b_skin
+				r_wing = r_skin
+				g_wing = g_skin
+				b_wing = b_skin
 
 	// skip the rest
 	if(skip)
