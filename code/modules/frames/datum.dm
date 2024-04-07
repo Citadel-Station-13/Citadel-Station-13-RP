@@ -95,11 +95,15 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// can set to list of "[NORTH]" = number, as well.
 	var/wall_pixel_y = 16
 
+	/// our icon
+	var/icon
 	/// do we append -stage to structure?
 	/// structure preview state will always be "structure"
 	var/has_structure_stage_states = TRUE
 	/// do we append -stage to items?
 	/// item preview state will always be "item"
+	//  todo: currently unused given lack of support for storing state
+	//  todo: in the future, we will want this. for now, everything is just 'item'.
 	var/has_item_stage_states = FALSE
 
 	/// weight class of item
@@ -112,6 +116,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/item_recycle_time = 0 SECONDS
 	/// cost mult to decon for tool as item
 	var/item_recycle_cost = 1
+	/// what tool, if any, to attempt to set us up in a location
+	var/item_deploy_tool = TOOL_WRENCH
+	/// is tool required for deployment?
+	var/item_deploy_requires_tool = FALSE
+	/// deployment time
+	var/item_deploy_time = 0 SECONDS
+	/// deployment tool cost multiplier
+	var/item_deploy_cost = 1
 
 #warn impl
 
@@ -226,26 +238,47 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2/proc/try_finish_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, destroy_structure = TRUE)
 	ASSERT(isturf(frame.loc))
-	if(!obstruction_checks(frame.loc, frame.dir, actor))
+	if(!completion_checks(frame, frame.loc, frame.dir, actor))
 		return
 	return finish_frame(frame, destroy_structure)
 
 /**
+ * ran only on deployment, not completion
+ * includes obstruction_cycles
+ *
  * regarding direction
  * * is in direction of machine that will be built if non-wall
  * * will be in the direction of the wall from the tile if wall
  *
  * @return TRUE / FALSE
  */
-/datum/frame2/proc/allow_placement(turf/location, dir, datum/event_args/actor/actor, silent)
+/datum/frame2/proc/deployment_checks(obj/item/frame2/frame, turf/location, dir, datum/event_args/actor/actor, silent)
 	if(!wall_frame)
 		#warn not wall frame; check non-blocking
 	#warn wall frame..
 
 /**
+ * ran on deployment as well as completion
+ *
  * @return FALSE if obstructed
  */
-/datum/frame2/proc/obstruction_checks(turf/location, dir, datum/event_args/actor/actor, silent)
+/datum/frame2/proc/completion_checks(obj/structure/frame2/frame, turf/location, dir, datum/event_args/actor/actor, silent)
+	return valid_location(location, dir, actor, silent)
+
+/**
+ * checks if we semantically should even be able to be built here at all;
+ * ran during both deployment and completion
+ *
+ * used for stuff like APCs rejecting areas that shouldn't be powerable/etc
+ *
+ * @params
+ * * entity - either the item or structure frame. this is generic, and is only really used for chat feedback object name purposes.
+ * * location - where it's being built/placed
+ * * dir - direction that it's being built/placed in
+ * * actor - (optional) person doing it
+ * * silent - don't emit chat feedback
+ */
+/datum/frame2/proc/valid_location(obj/entity, turf/location, dir, datum/event_args/actor/actor, silent)
 	return TRUE
 
 #warn guh

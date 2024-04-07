@@ -22,6 +22,7 @@
 		frame = set_frame_to
 	frame = fetch_frame_datum(frame)
 	frame.apply_to_frame(src)
+	#warn /obj rotation system
 	return ..()
 
 /obj/structure/frame2/proc/set_context(key, value)
