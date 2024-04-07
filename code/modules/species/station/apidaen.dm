@@ -9,8 +9,10 @@
 	deform       = 'icons/mob/species/apidaen/body.dmi' // No deformed set has been made yet.
 	preview_icon = 'icons/mob/species/apidaen/preview.dmi'
 	husk_icon    = 'icons/mob/species/apidaen/husk.dmi'
-	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/apidean,
+	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 
