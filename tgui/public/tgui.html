@@ -51,12 +51,15 @@
       ? parseInt(majorVersion, 10)
       : null;
   })();
-  Byond.OUT_OF_THIS_HELL = (function () {
-    return navigator.userAgent.indexOf("Edg/") != -1;
+  // Blink engine version
+  Byond.BLINK = (function () {
+    let groups = navigator.userAgent.match(/Chrome\/(\d+)\./);
+    let majorVersion = groups && groups[1];
+    return majorVersion ? parseInt(majorVersion, 10) : null;
   })();
 
   // Basic checks to detect whether this page runs in BYOND
-  var isByond = (Byond.TRIDENT !== null || window.cef_to_byond || Byond.OUT_OF_THIS_HELL)
+  var isByond = (Byond.TRIDENT !== null || Byond.BLINK !== null  || window.cef_to_byond)
     && location.hostname === '127.0.0.1'
     && location.search !== '?external';
     //As of BYOND 515 the path doesn't seem to include tmp dir anymore if you're trying to open tgui in external browser and looking why it doesn't work
@@ -64,10 +67,10 @@
 
   // Version constants
   Byond.IS_BYOND = isByond;
-  Byond.IS_LTE_IE8 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 4) || Byond.OUT_OF_THIS_HELL;
-  Byond.IS_LTE_IE9 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 5) || Byond.OUT_OF_THIS_HELL;
-  Byond.IS_LTE_IE10 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 6) || Byond.OUT_OF_THIS_HELL;
-  Byond.IS_LTE_IE11 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 7) || Byond.OUT_OF_THIS_HELL;
+  Byond.IS_LTE_IE8 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 4);
+  Byond.IS_LTE_IE9 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 5);
+  Byond.IS_LTE_IE10 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 6);
+  Byond.IS_LTE_IE11 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 7);
 
   // Strict mode flag
   Byond.strictMode = Boolean(Number(parseMetaTag('tgui:strictMode')));
