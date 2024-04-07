@@ -1,22 +1,3 @@
-/**
- *
- * Hello and welcome to sprite_accessories: For sprite accessories, such as hair,
- * facial hair, and possibly tattoos and stuff somewhere along the line. This file is
- * intended to be friendly for people with little to no actual coding experience.
- * The process of adding in new hairstyles has been made pain-free and easy to do.
- * Enjoy! - Doohl
- *
- *
- * Notice: This all gets automatically compiled in a list in dna2.dm, so you do not
- * have to define any UI values for sprite accessories manually for hair and facial
- * hair. Just add in new hair types and the game will naturally adapt.
- *
- * !!WARNING!!: changing existing hair information can be VERY hazardous to savefiles,
- * to the point where you may completely corrupt a server's savefiles. Please refrain
- * from doing this unless you absolutely know what you are doing, and have defined a
- * conversion in savefile.dm
- */
-
 // TODO: actual better way to do these
 // TODO: actual better way to do "can we use this" checks because one whitelist list and a var is fucking horrible to maintain what the fuck
 
@@ -203,3 +184,192 @@
 	single.overlays = layers
 
 	return single
+
+//* Resolution *//
+
+/**
+ * turns a list of SPRITE_ACCESSORY_SLOT_X = accessory into the cached global accessory instances.
+ *
+ * accessory may be an accessory, path, or id string.
+ */
+/proc/resolve_sprite_accessory_key_list_inplace(list/accessories)
+	for(var/key in accessories)
+		var/value = accessories[key]
+		if(ispath(value))
+			var/datum/sprite_accessory/casted = value
+			value = initial(casted.id)
+		if(istext(value))
+			switch(key)
+				if(SPRITE_ACCESSORY_SLOT_EARS)
+					value = GLOB.sprite_accessory_ears[value]
+				if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
+					value = GLOB.sprite_accessory_facial_hair[value]
+				if(SPRITE_ACCESSORY_SLOT_HAIR)
+					value = GLOB.sprite_accessory_hair[value]
+				if(SPRITE_ACCESSORY_SLOT_HORNS)
+					value = GLOB.sprite_accessory_ears[value]
+				if(SPRITE_ACCESSORY_SLOT_TAIL)
+					value = GLOB.sprite_accessory_tails[value]
+				if(SPRITE_ACCESSORY_SLOT_WINGS)
+					value = GLOB.sprite_accessory_wings[value]
+
+/// by id
+GLOBAL_LIST_INIT(sprite_accessory_hair, all_hair_styles())
+/// by id
+GLOBAL_LIST_INIT(sprite_accessory_ears, all_ear_styles())
+/// by id
+GLOBAL_LIST_INIT(sprite_accessory_tails, all_tail_styles())
+/// by id
+GLOBAL_LIST_INIT(sprite_accessory_wings, all_wing_styles())
+/// by id
+GLOBAL_LIST_INIT(sprite_accessory_facial_hair, all_facial_hair_styles())
+/// by id
+GLOBAL_LIST_INIT(sprite_accessory_markings, all_marking_styles())
+
+// todo: most uses of these should either be a direct ref under new marking system or
+// todo: an id to ref.
+// todo: however, there are some legitimate cases of needing fast name lookup,
+// todo: like non-tgui interfaces that let you choose markings
+// todo: do not blindly kill these lists, we'll deal with everything as we go.
+
+// by name
+GLOBAL_LIST(legacy_hair_lookup)
+// by id
+GLOBAL_LIST(legacy_ears_lookup)
+// by id
+GLOBAL_LIST(legacy_wing_lookup)
+// by id
+GLOBAL_LIST(legacy_tail_lookup)
+// by name
+GLOBAL_LIST(legacy_facial_hair_lookup)
+// by name
+GLOBAL_LIST(legacy_marking_lookup)
+
+/proc/all_hair_styles()
+	. = list()
+	var/list/by_name = list()
+	for(var/path in subtypesof(/datum/sprite_accessory/hair))
+		var/datum/sprite_accessory/S = path
+		if(initial(S.abstract_type) == path)
+			continue
+		S = new path
+		if(!S.id)
+			stack_trace("no id on [path]")
+			continue
+		if(.[S.id])
+			stack_trace("duplicate id [S.id] on [path] and [.[S.id]]")
+			continue
+		if(by_name[S.name])
+			stack_trace("duplicate name [S.name] on [path]")
+			continue
+		.[S.id] = S
+		by_name[S.name] = S
+	tim_sort(by_name, GLOBAL_PROC_REF(cmp_text_asc), associative = FALSE)
+	GLOB.legacy_hair_lookup = by_name
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+
+/proc/all_ear_styles()
+	. = list()
+	var/list/by_type = list()
+	for(var/path in subtypesof(/datum/sprite_accessory/ears))
+		var/datum/sprite_accessory/S = path
+		if(initial(S.abstract_type) == path)
+			continue
+		S = new path
+		if(!S.id)
+			stack_trace("no id on [path]")
+			continue
+		if(.[S.id])
+			stack_trace("duplicate id [S.id] on [path] and [.[S.id]]")
+			continue
+		.[S.id] = S
+		by_type[S.type] = S
+	tim_sort(by_type, GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+	GLOB.legacy_ears_lookup = by_type
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+
+/proc/all_wing_styles()
+	. = list()
+	var/list/by_type = list()
+	for(var/path in subtypesof(/datum/sprite_accessory/wing))
+		var/datum/sprite_accessory/S = path
+		if(initial(S.abstract_type) == path)
+			continue
+		S = new path
+		if(!S.id)
+			stack_trace("no id on [path]")
+			continue
+		if(.[S.id])
+			stack_trace("duplicate id [S.id] on [path] and [.[S.id]]")
+			continue
+		.[S.id] = S
+		by_type[S.type] = S
+	tim_sort(by_type, GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+	GLOB.legacy_wing_lookup = by_type
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+
+/proc/all_tail_styles()
+	. = list()
+	var/list/by_type = list()
+	for(var/path in subtypesof(/datum/sprite_accessory/tail))
+		var/datum/sprite_accessory/S = path
+		if(initial(S.abstract_type) == path)
+			continue
+		S = new path
+		if(!S.id)
+			stack_trace("no id on [path]")
+			continue
+		if(.[S.id])
+			stack_trace("duplicate id [S.id] on [path] and [.[S.id]]")
+			continue
+		.[S.id] = S
+		by_type[S.type] = S
+	tim_sort(by_type, GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+	GLOB.legacy_tail_lookup = by_type
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+
+/proc/all_facial_hair_styles()
+	. = list()
+	var/list/by_name = list()
+	for(var/path in subtypesof(/datum/sprite_accessory/facial_hair))
+		var/datum/sprite_accessory/S = path
+		if(initial(S.abstract_type) == path)
+			continue
+		S = new path
+		if(!S.id)
+			stack_trace("no id on [path]")
+			continue
+		if(.[S.id])
+			stack_trace("duplicate id [S.id] on [path] and [.[S.id]]")
+			continue
+		if(by_name[S.name])
+			stack_trace("duplicate name [S.name] on [path]")
+			continue
+		.[S.id] = S
+		by_name[S.name] = S
+	tim_sort(by_name, GLOBAL_PROC_REF(cmp_text_asc), associative = FALSE)
+	GLOB.legacy_facial_hair_lookup = by_name
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)
+
+/proc/all_marking_styles()
+	. = list()
+	var/list/by_name = list()
+	for(var/path in subtypesof(/datum/sprite_accessory/marking))
+		var/datum/sprite_accessory/S = path
+		if(initial(S.abstract_type) == path)
+			continue
+		S = new path
+		if(!S.id)
+			stack_trace("no id on [path]")
+			continue
+		if(.[S.id])
+			stack_trace("duplicate id [S.id] on [path] and [.[S.id]]")
+			continue
+		if(by_name[S.name])
+			stack_trace("duplicate name [S.name] on [path]")
+			continue
+		.[S.id] = S
+		by_name[S.name] = S
+	tim_sort(by_name, GLOBAL_PROC_REF(cmp_text_asc), associative = FALSE)
+	GLOB.legacy_marking_lookup = by_name
+	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc), associative = TRUE)

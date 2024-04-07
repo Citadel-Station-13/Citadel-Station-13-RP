@@ -505,7 +505,7 @@
 			built += new path
 		abilities = built
 
-	#warn resolve sprite_accessory's
+	resolve_sprite_accessory_key_list_inplace(sprite_accessory_defaults)
 
 /**
  * called when we apply to a mob
