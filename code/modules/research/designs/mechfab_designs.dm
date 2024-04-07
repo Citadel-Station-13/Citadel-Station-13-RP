@@ -993,7 +993,7 @@
 	lathe_type = LATHE_TYPE_MECHA
 	category = list("Vehicle")
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6)
-
+/*
 /datum/design/science/mechfab/vehicle/spacebike_chassis
 	design_name = "Spacebike Chassis"
 	desc = "A space-bike's un-assembled frame."
@@ -1009,7 +1009,7 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6, TECH_MAGNET = 3, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 15000, MAT_SILVER = 3000, MAT_PLASTIC = 3000, MAT_OSMIUM = 1000)
 	build_path = /obj/item/vehicle_assembly/quadbike
-
+*/
 /*
 /datum/design/science/mechfab/uav/basic
 	design_name = "UAV - Recon Skimmer"

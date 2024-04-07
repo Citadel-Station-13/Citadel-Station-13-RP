@@ -124,7 +124,7 @@
 		return
 	new board_item_type(newLoc)
 	qdel(src)
-
+/*
 /obj/item/melee/skateboard/improv
 	name = "improvised skateboard"
 	desc = "A skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
@@ -165,7 +165,7 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
 	board_item_type = /obj/vehicle_old/skateboard/scooter
-
+*/
 //Clown Halberd
 /obj/item/melee/clownstaff
 	name = "clown halberd"

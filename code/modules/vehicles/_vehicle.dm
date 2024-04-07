@@ -29,7 +29,9 @@
 	var/list/autogrant_actions_passenger	//plain list of typepaths
 	var/list/autogrant_actions_controller	//assoc list "[bitflag]" = list(typepaths)
 	var/list/mob/occupant_actions			//assoc list mob = list(type = action datum assigned to mob)
-	var/obj/vehicle/trailer
+	var/obj/vehicle/trailer				//what trailer is hitched to this vehicle
+	var/obj/vehicle/trailer_type		//what trailer is allowed to hitch to this vehicle
+	var/is_tugged = FALSE				//Is this vehicle attached to another
 	var/mouse_pointer //do we have a special mouse
 
 /obj/vehicle/Initialize(mapload)
@@ -130,15 +132,21 @@
 		return
 	vehicle_move(direction)
 
+
 /obj/vehicle/proc/vehicle_move(direction)
 	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
 		return FALSE
 	COOLDOWN_START(src, cooldown_vehicle_move, movedelay)
 	if(trailer)
+		//Get the direction from the trailer to the tug
 		var/dir_to_move = get_dir(trailer.loc, loc)
+		//Moves the tug to direction and stores true or false
 		var/did_move = step(src, direction)
+		///If the tug did move
 		if(did_move)
+			///Moves the trailer towards dir_to_move
 			step(trailer, dir_to_move)
+		//return if the trailer moved
 		return did_move
 	else
 		after_move(direction)
@@ -174,6 +182,47 @@
 
 /obj/vehicle/Move(newloc, dir)
 	. = ..()
+	//Not sure what this does vs relaymove() >> vehicle_move() chain
+	//This actually moves a driven vehicle trailer
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, newloc)
 		step(trailer, dir_to_move)
+
+//Take DroppedOn atoms and determine if they are a trailer to be attached, cargo to be loaded, or pass on for passenger procs.
+/obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	if(!istype(dropping) || !isliving(user))
+		return ..()
+	if(istype(dropping, /obj/vehicle/trailer) && proximity <= 1)
+		if(attach_to(dropping, user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	//Attach cargo test here
+	return ..()
+
+//Handles trailer attach and detach attempts. Returns true if it does something else it returns false. Assumes that proximity checks have already been made.
+/obj/vehicle/proc/attach_to(obj/vehicle/trailer/dropping, mob/user)
+	//If its not our allowed trailer, leave this function NOW.
+	if (dropping.type != trailer_type)
+		return FALSE
+	//Is this already THE trailer? Let it go.
+	if (dropping == trailer)
+		trailer = null
+		dropping.is_tugged = FALSE
+		to_chat(user, "<span class='warning'>You unhitch the [src]!</span>")
+		return TRUE
+	//If there is not already a trailer, and the trailer isn't getting pulled already. Tug it.
+	if (trailer == null && dropping.is_tugged == FALSE)
+		trailer = dropping
+		dropping.is_tugged = TRUE
+		to_chat(user, "<span class='notice'>You hitch the [src]!</span>")
+		return TRUE
+	//If we are already tugging a trailer, we can't hitch another.
+	if (trailer != null)
+		to_chat(user, "<span class='warning'>Another trailer is already hitched here!</span>")
+		return TRUE
+	//If the trailer is already hitched to something else, we can't unhitch it.
+	if (dropping.is_tugged != FALSE)
+		to_chat(user, "<span class='warning'>The [src] is already hitched to another vehicle!</span>")
+		return TRUE
+	return FALSE
+
+//Build load() proc here

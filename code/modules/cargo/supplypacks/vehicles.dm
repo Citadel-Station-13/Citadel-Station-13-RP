@@ -1,7 +1,7 @@
 /datum/supply_pack/vehicles
 	group = "Vehicles"
 
-
+/*
 /datum/supply_pack/vehicles/dune_buggy
 	name = "Exploration Dune Buggy"
 	contains = list(
@@ -88,3 +88,4 @@
 	cost = 15
 	container_type = /obj/structure/largecrate
 	container_name = "Cargo Train Trolley Crate"
+*/

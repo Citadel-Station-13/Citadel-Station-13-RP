@@ -112,20 +112,20 @@
 	spawn(1)
 		for(var/obj/O in contents)
 			O.update_icon()
-
+/*
 /obj/structure/largecrate/vehicle/bike
 	name = "spacebike crate"
 	starts_with = list(/obj/structure/vehiclecage/spacebike)
-
+*/
 /obj/structure/largecrate/vehicle/quadbike
 	name = "\improper ATV crate"
 	starts_with = list(/obj/vehicle/ridden/quadbike/random,
 		/obj/item/key/quadbike)
-
+/*
 /obj/structure/largecrate/vehicle/quadtrailer
 	name = "\improper ATV trailer crate"
 	starts_with = list(/obj/structure/vehiclecage/quadtrailer)
-
+*/
 /obj/structure/largecrate/animal
 	icon_state = "lisacrate"
 

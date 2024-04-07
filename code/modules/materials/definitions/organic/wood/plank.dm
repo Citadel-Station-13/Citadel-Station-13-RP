@@ -94,12 +94,14 @@
 		cost = 10,
 		time = 3 SECONDS,
 	)
+	/*
 	recipes += create_stack_recipe_datum(
 		name = "skateboard assembly",
 		product = /obj/item/skateboard_frame,
 		cost = 6,
 		time = 2 SECONDS,
 	)
+	*/
 	recipes += create_stack_recipe_datum(
 		name = "bokken blade",
 		product = /obj/item/bokken_blade,

@@ -458,6 +458,7 @@
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
 */
+/*
 /datum/crafting_recipe/skateboard
 	name = "Skateboard"
 	result = /obj/vehicle_old/skateboard
@@ -475,7 +476,7 @@
 				/obj/item/stack/rods = 12)
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
-
+*/
 /////////
 //Toys///
 /////////
