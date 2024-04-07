@@ -111,7 +111,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	update_bloodsub()
 	update_surgery()
 
-
 // TODO - Move this to where it should go ~Leshana
 /mob/proc/stop_flying()
 	if(QDESTROYING(src))
@@ -121,7 +120,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 /mob/living/carbon/human/stop_flying()
 	if((. = ..()))
-		update_wing_showing()
+		render_spriteacc_wings()
 
 //Stolen from bay for shifting equipment by default and not having to resprite it
 /proc/overlay_image(icon,icon_state,color,flags)

@@ -53,6 +53,10 @@
 	/// default variation is called 'Normal'
 	/// assoc list; name to state.
 	var/list/variations
+	/// time required for one 'cycle' of a variation animation by variation
+	var/list/variation_animation_times
+	/// time required for one 'cycle' of a variation animation, defaulting
+	var/variation_animation_time = 2 SECONDS
 	/// sidedness; how many more states we need to inject for it to work
 	var/icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_NONE
 	#warn impl

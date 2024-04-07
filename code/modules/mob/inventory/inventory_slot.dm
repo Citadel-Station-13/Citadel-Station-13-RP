@@ -367,6 +367,40 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot/inventory/uniform/proc/check_rollsleeve_cache(bodytype, state)
 	return render_rollsleeve_states[bodytype_to_string(bodytype)]?[state]
 
+/datum/inventory_slot/inventory/uniform/should_render(mob/wearer, obj/item/item)
+	if(!ishuman(wearer))
+		return ..()
+	var/mob/living/carbon/human/casted_human = wearer
+	if((casted_human.wear_suit.inv_hide_flags) & HIDEJUMPSUIT)
+		return FALSE
+	return ..()
+
+
+/datum/inventory_slot/inventory/uniform/render(mob/wearer, obj/item/item, bodytype)
+	. = ..()
+	if(!ishuman(wearer))
+		return
+	var/mob/living/carbon/human/human = wearer
+	var/icon/clipmask = human.tail_style?.clip_mask
+	if(!clipmask)
+		return
+	var/tail_rendered = !!human.standing_overlays[HUMAN_OVERLAY_TAIL]
+	if(!tail_rendered)
+		return
+	if(istype(item, /obj/item/clothing/suit))
+		var/obj/item/clothing/suit/suit = item
+		if(suit.inv_hide_flags & HIDETAIL)
+			return
+		if(suit.taurized)
+			return
+	var/list/mutating
+	if(!islist(.))
+		mutating = list(.)
+	else
+		mutating = .
+	for(var/image/appearancelike as anything in .)
+		appearancelike.filters += filter(arglist(alpha_mask_filter(icon = clipmask)))
+
 /datum/inventory_slot/inventory/head
 	name = "head"
 	render_key = "head"
@@ -439,6 +473,29 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		SLOT_ID_UNIFORM,
 		SLOT_ID_SHOES,
 	)
+
+/datum/inventory_slot/inventory/suit/render(mob/wearer, obj/item/item, bodytype)
+	. = ..()
+	if(!ishuman(wearer))
+		return
+	var/mob/living/carbon/human/human = wearer
+	var/icon/clipmask = human.tail_style?.clip_mask
+	if(!clipmask)
+		return
+	var/tail_rendered = !!human.standing_overlays[HUMAN_OVERLAY_TAIL]
+	if(!tail_rendered)
+		return
+	if(istype(item, /obj/item/clothing/suit))
+		var/obj/item/clothing/suit/suit = item
+		if(suit.taurized)
+			return
+	var/list/mutating
+	if(!islist(.))
+		mutating = list(.)
+	else
+		mutating = .
+	for(var/image/appearancelike as anything in .)
+		appearancelike.filters += filter(arglist(alpha_mask_filter(icon = clipmask)))
 
 /datum/inventory_slot/inventory/suit/cascade_render_visibility(mob/wearer, obj/item/item)
 	. = ..()

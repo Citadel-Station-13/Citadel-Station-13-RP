@@ -233,8 +233,6 @@
 			. = GLOB.sprite_accessory_ears[horn_style]
 		if(SPRITE_ACCESSORY_SLOT_EARS)
 			. = GLOB.sprite_accessory_ears[ear_style]
-	if(isnull(.))
-		. = species?.get_default_sprite_accessory(src, slot)
 
 /mob/living/carbon/proc/render_sprite_accessory(slot)
 /mob/living/carbon/human/render_sprite_accessory(slot)
@@ -292,30 +290,16 @@
 
 //! old code below
 
-#warn below
-
 //Not really once, since BYOND can't do that.
 //Update this if the ability to flick() images or make looping animation start at the first frame is ever added.
 //You can sort of flick images now with flick_overlay -Aro
 /mob/living/carbon/human/proc/animate_tail_once()
-	if(QDESTROYING(src))
+	var/datum/sprite_accessory/accessory = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
+	var/variation = get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL)
+	var/time = accessory.variation_animation_times?[SPRITE_ACCESSORY_VARIATION_WAGGING] || accessory.variation_animation_time
+	if(!set_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, SPRITE_ACCESSORY_VARIATION_WAGGING))
 		return
-
-	var/t_state = "[species.get_tail(src)]_once"
-	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
-
-	var/image/tail_overlay = overlays_standing[used_tail_layer]
-	if(tail_overlay && tail_overlay.icon_state == t_state)
-		return //let the existing animation finish
-
-	tail_overlay = set_tail_state(t_state) // Calls remove_layer & apply_layer
-	if(tail_overlay)
-		spawn(20)
-			//check that the animation hasn't changed in the meantime
-			if(overlays_standing[used_tail_layer] == tail_overlay && tail_overlay.icon_state == t_state)
-				animate_tail_stop()
-
-#warn above
+	addtimer(CALLBACK(src, PROC_REF(animate_tail_reset)), time, TIMER_CLIENT_TIME)
 
 /mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
 	if(!tail_style || !tail_style.ani_state)
@@ -330,22 +314,14 @@
 	return 1
 
 /mob/living/carbon/human/proc/animate_tail_start()
-	if(QDESTROYING(src))
-		return
 	set_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, SPRITE_ACCESSORY_VARIATION_WAGGING)
 	// set_tail_state("[species.get_tail(src)]_slow[rand(0,9)]")
 
 /mob/living/carbon/human/proc/animate_tail_fast()
-	if(QDESTROYING(src))
-		return
-
 	set_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, SPRITE_ACCESSORY_VARIATION_WAGGING)
 	// set_tail_state("[species.get_tail(src)]_loop[rand(0,9)]")
 
 /mob/living/carbon/human/proc/animate_tail_reset()
-	if(QDESTROYING(src))
-		return
-
 	set_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, null)
 	// if(stat != DEAD)
 	// 	set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
@@ -354,9 +330,6 @@
 	// 	toggle_tail_vr(FALSE) // So tails stop when someone dies. TODO - Fix this hack ~Leshana
 
 /mob/living/carbon/human/proc/animate_tail_stop()
-	if(QDESTROYING(src))
-		return
-
 	set_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, null)
 
 /mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
@@ -770,34 +743,7 @@
 //? Inventory
 
 /mob/living/carbon/human/update_inv_w_uniform()
-
-	//Shoes can be affected by uniform being drawn onto them
-	update_inv_shoes()
-
-	if(!w_uniform)
-		return
-
-	if(wear_suit && (wear_suit.inv_hide_flags & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/hardsuit))
-		return //Wearing a suit that prevents uniform rendering
-
-	//Build a uniform sprite
-	var/icon/c_mask = tail_style?.clip_mask
-	if(c_mask)
-		var/obj/item/clothing/suit/S = wear_suit
-		if((wear_suit?.inv_hide_flags & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
-			c_mask = null
-	var/list/MA_or_list = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype(src, w_uniform, SLOT_ID_UNIFORM))
-
-	if(c_mask)
-		if(islist(MA_or_list))
-			for(var/mutable_appearance/MA2 as anything in MA_or_list)
-				MA2.filters += filter(type = "alpha", icon = c_mask)
-		else
-			var/mutable_appearance/MA = MA_or_list
-			MA.filters += filter(type = "alpha", icon = c_mask)
-	overlays_standing[UNIFORM_LAYER] = MA_or_list
-
-	apply_layer(UNIFORM_LAYER)
+	inventory.update_slot_render(SLOT_ID_UNIFORM)
 
 /mob/living/carbon/human/update_inv_wear_id()
 	inventory.update_slot_render(SLOT_ID_WORN_ID)
@@ -825,40 +771,7 @@
 	inventory.update_slot_render(SLOT_ID_BELT)
 
 /mob/living/carbon/human/update_inv_wear_suit()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(SUIT_LAYER)
-
-	//Hide/show other layers if necessary
-	update_inv_w_uniform()
-	update_inv_shoes()
-	update_tail_showing()
-	update_wing_showing()
-
-	if(!wear_suit)
-		return //No point, no suit.
-
-	// Part of splitting the suit sprites up
-
-	var/icon/c_mask = null
-	var/tail_is_rendered = (overlays_standing[TAIL_LAYER] || overlays_standing[TAIL_LAYER_ALT])
-	var/valid_clip_mask = tail_style?.clip_mask
-
-	var/obj/item/clothing/suit/S = wear_suit
-	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
-		c_mask = valid_clip_mask
-	var/list/MA_or_list = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype(src, wear_suit, SLOT_ID_SUIT))
-	if(c_mask)
-		if(islist(MA_or_list))
-			for(var/mutable_appearance/MA2 as anything in MA_or_list)
-				MA2.filters += filter(type = "alpha", icon = c_mask)
-		else
-			var/mutable_appearance/MA = MA_or_list
-			MA.filters += filter(type = "alpha", icon = c_mask)
-	overlays_standing[SUIT_LAYER] = MA_or_list
-
-	apply_layer(SUIT_LAYER)
+	inventory.update_slot_render(SLOT_ID_SUIT)
 
 /mob/living/carbon/human/update_inv_wear_mask()
 	inventory.update_slot_render(SLOT_ID_MASK)
