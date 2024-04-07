@@ -192,7 +192,8 @@
 /obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(!istype(dropping) || !isliving(user))
 		return ..()
-	if(istype(dropping, /obj/vehicle/trailer) && proximity <= 1)
+	//Trailer hitch check
+	if(istype(dropping, /obj/vehicle/trailer) && proximity && get_dist(dropping.loc, loc) == 1)
 		if(attach_to(dropping, user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	//Attach cargo test here
