@@ -20,7 +20,7 @@
  * By using the testing("message") proc you can create debug-feedback for people with this uncommented,
  * but not visible in the release version.
  */
-// #define TESTING
+#define TESTING
 #ifdef TESTING
 	#warn compiling in TESTING mode. testing() debug messages will be visible.
 
