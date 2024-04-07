@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta charset="utf-8">
-
-<!-- Inlined metadata -->
-<meta id="tgui:windowId" content="[tgui:windowId]">
-
 <!-- Early setup -->
 <script type="text/javascript">
 (function () {
@@ -56,24 +48,8 @@
   Byond.IS_LTE_IE10 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 6);
   Byond.IS_LTE_IE11 = (Byond.TRIDENT !== null && Byond.TRIDENT <= 7);
 
-  // Strict mode flag
-  Byond.strictMode = Boolean(Number(parseMetaTag('tgui:strictMode')));
-
   // Callbacks for asynchronous calls
   Byond.__callbacks__ = [];
-
-  // Reviver for BYOND JSON
-  // IE8: No reviver for you!
-  // See: https://stackoverflow.com/questions/1288962
-  var byondJsonReviver;
-  if (!Byond.IS_LTE_IE8) {
-    byondJsonReviver = function (key, value) {
-      if (typeof value === 'object' && value !== null && value.__number__) {
-        return parseFloat(value.__number__);
-      }
-      return value;
-    };
-  }
 
   // Makes a BYOND call.
   // See: https://secure.byond.com/docs/ref/skinparams.html
@@ -177,15 +153,6 @@
     }
     props.id = id;
     return Byond.call('winset', props);
-  };
-
-  Byond.parseJson = function (json) {
-    try {
-      return JSON.parse(json, byondJsonReviver);
-    }
-    catch (err) {
-      throw new Error('JSON parsing error: ' + (err && err.message));
-    }
   };
 
   Byond.sendMessage = function (type, payload) {
@@ -439,47 +406,6 @@ window.__augmentStack__ = function (stack, error) {
   return stack + '\nUser Agent: ' + navigator.userAgent;
 };
 
-// Incoming message handling
-// ------------------------------------------------------
-
-// Message handler
-window.update = function (rawMessage) {
-  // Push onto the queue (active during initialization)
-  if (window.update.queueActive) {
-    window.update.queue.push(rawMessage);
-    return;
-  }
-  // Parse the message
-  var message = Byond.parseJson(rawMessage);
-  // Notify listeners
-  var listeners = window.update.listeners;
-  for (var i = 0; i < listeners.length; i++) {
-    listeners[i](message.type, message.payload);
-  }
-};
-
-// Properties and variables of this specific handler
-window.update.listeners = [];
-window.update.queue = [];
-window.update.queueActive = true;
-window.update.flushQueue = function (listener) {
-  // Disable and clear the queue permanently on short delay
-  if (window.update.queueActive) {
-    window.update.queueActive = false;
-    if (window.setTimeout) {
-      window.setTimeout(function () {
-        window.update.queue = [];
-      }, 0);
-    }
-  }
-  // Process queued messages on provided listener
-  var queue = window.update.queue;
-  for (var i = 0; i < queue.length; i++) {
-    var message = Byond.parseJson(queue[i]);
-    listener(message.type, message.payload);
-  }
-};
-
 window.replaceHtml = function (inline_html) {
   var children = document.body.childNodes;
 
@@ -598,17 +524,9 @@ blink {
 }
 </style>
 
-<!-- tgui:inline-css -->
 </head>
 
 <body>
-
-<!-- tgui:inline-polyfill -->
-<!-- tgui:assets -->
-<!-- tgui:inline-html-start -->
-<!-- tgui:inline-html -->
-<!-- tgui:inline-html-end -->
-<!-- tgui:inline-js -->
 
 <!-- Root element for tgui interfaces -->
 <div id="react-root"></div>
@@ -644,10 +562,4 @@ Nanotrasen (c) 2525-2566
   </div>
 </noscript>
 
-<script>
-// Signal tgui that we're ready to receive updates
-Byond.sendMessage('ready');
-</script>
-
 </body>
-</html>
