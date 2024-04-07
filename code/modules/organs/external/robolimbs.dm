@@ -71,6 +71,10 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 				if(species_company in GLOB.all_robolimbs)
 					R.species_alternates[species] = GLOB.all_robolimbs[species_company]
 
+/datum/sprite_accessory/tail/legacy_robolimb
+	do_colouration = FALSE
+	abstract_type = /datum/sprite_accessory/tail/legacy_robolimb
+
 /datum/robolimb
 	/// Shown when selecting the limb.
 	var/company = "Unbranded"
@@ -118,13 +122,14 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/list/whitelisted_to
 
 	/// typepath or id of sprite accessory to default for, for tail
-	var/tail_spriteacc
-	/// typepath or id of sprite accessory to default for, for wings
-	var/wing_spriteacc
-	/// typepath or id of sprite accessory to default for, for ears
-	var/ears_spriteacc
-	/// typepath or id of sprite accessory to default for, for horns
-	var/horn_spriteacc
+	var/datum/sprite_accessory/legacy_includes_tail
+
+/datum/robolimb/New()
+	if(ispath(legacy_includes_tail))
+		var/datum/sprite_accessory/casted = legacy_includes_tail
+		legacy_includes_tail = initial(casted.id)
+	if(istext(legacy_includes_tail))
+		legacy_includes_tail = GLOB.sprite_accessory_tails[legacy_includes_tail]
 
 /datum/robolimb/unbranded_monitor
 	company = "Unbranded Monitor"

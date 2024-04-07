@@ -233,6 +233,9 @@
 			. = GLOB.sprite_accessory_ears[horn_style]
 		if(SPRITE_ACCESSORY_SLOT_EARS)
 			. = GLOB.sprite_accessory_ears[ear_style]
+	if(slot == SPRITE_ACCESSORY_SLOT_TAIL && 1.)
+		var/datum/robolimb/limb = isSynthetic()
+		. = limb?.legacy_includes_tail
 
 /mob/living/carbon/proc/render_sprite_accessory(slot)
 /mob/living/carbon/human/render_sprite_accessory(slot)
