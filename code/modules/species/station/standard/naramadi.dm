@@ -12,7 +12,6 @@
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/naramadi,
 	)
 
-	icobase_tail = 1
 	slowdown      = -0.25
 	snow_movement = -1 // Ignores light snow
 	//darksight = 8
