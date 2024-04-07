@@ -141,6 +141,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return TRUE / FALSE success / fail
  */
 /datum/frame2/proc/move_frame_forwards(obj/structure/frame/frame, from_stage)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(frame.stage != from_stage)
 		return FALSE
 	#warn impl
@@ -149,6 +150,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return TRUE / FALSE success / fail
  */
 /datum/frame2/proc/move_frame_backwards(obj/structure/frame/frame, from_stage)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(frame.stage != from_stage)
 		return FALSE
 	#warn impl
@@ -166,6 +168,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	if(to_stage < 1 || to_stage > stage_count())
 		// check your fucking inputs
 		CRASH("attempted to swap stage past bounds; this is not just a race condition, this means someone fucked up!")
+	if(from_stage == to_stage)
+		// check your fucking inputs
+		CRASH("attempted to move from the same state to the same state. why?")
 	#warn impl
 
 /datum/frame2/proc/on_examine(obj/structure/frame/frame, datum/event_args/actor/actor, list/examine_list)

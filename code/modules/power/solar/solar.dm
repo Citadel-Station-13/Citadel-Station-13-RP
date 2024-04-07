@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/turn_angle = 0
 	var/obj/machinery/power/solar_control/control = null
 
-/obj/machinery/power/solar/Initialize(mapload, obj/item/solar_assembly/S)
+/obj/machinery/power/solar/Initialize(mapload)
 	. = ..()
 	update_icon()
 	connect_to_network()
@@ -153,12 +153,6 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 	obscured = 0		// if hit the edge or stepped 20 times, not obscured
 	update_solar_exposure()
-
-/obj/machinery/power/solar/fake/Initialize(mapload, obj/item/solar_assembly/S)
-	. = ..(mapload, S, FALSE)
-
-/obj/machinery/power/solar/fake/process(delta_time)
-	return PROCESS_KILL
 
 /obj/item/paper/solar
 	name = "paper- 'Going green! Setup your own solar array instructions.'"
