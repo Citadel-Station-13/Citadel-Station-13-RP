@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "tgui-window",
+  "version": "0.0.1",
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
