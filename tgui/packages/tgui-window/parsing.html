@@ -1,4 +1,85 @@
 <head>
+
+type ByondType = {
+
+  /**
+   * True if javascript is running in BYOND.
+   */
+  IS_BYOND: boolean;
+
+
+  /**
+   * True if browser is IE8 or lower.
+   */
+  IS_LTE_IE8: boolean;
+
+  /**
+   * True if browser is IE9 or lower.
+   */
+  IS_LTE_IE9: boolean;
+
+  /**
+   * True if browser is IE10 or lower.
+   */
+  IS_LTE_IE10: boolean;
+
+  /**
+   * True if browser is IE11 or lower.
+   */
+  IS_LTE_IE11: boolean;
+
+  /**
+   * Makes a BYOND call.
+   *
+   * If path is empty, this will trigger a Topic call.
+   * You can reference a specific object by setting the "src" parameter.
+   *
+   * See: https://secure.byond.com/docs/ref/skinparams.html
+   */
+  call(path: string, params: object): void;
+
+  /**
+   * Makes an asynchronous BYOND call. Returns a promise.
+   */
+  callAsync(path: string, params: object): Promise<any>;
+
+  /**
+   * Assigns properties to BYOND skin elements in bulk.
+   */
+  winset(props: object): void;
+
+  /**
+   * Assigns properties to the BYOND skin element.
+   */
+  winset(id: string | null, props: object): void;
+
+  /**
+   * Sets a property on the BYOND skin element to a certain value.
+   */
+  winset(id: string | null, propName: string, propValue: any): void;
+
+  /**
+   * Subscribe to incoming messages that were sent from `/datum/tgui_window`.
+   */
+  subscribe(listener: (type: string, payload: any) => void): void;
+
+  /**
+   * Subscribe to incoming messages *of some specific type*
+   * that were sent from `/datum/tgui_window`.
+   */
+  subscribeTo(type: string, listener: (payload: any) => void): void;
+
+  /**
+   * Loads a stylesheet into the document.
+   */
+  loadCss(url: string): void;
+
+  /**
+   * Loads a script into the document.
+   */
+  loadJs(url: string): void;
+};
+
 <!-- Early setup -->
 <script type="text/javascript">
 (function () {
@@ -109,34 +190,6 @@
     return promise;
   };
 
-  Byond.topic = function (params) {
-    return Byond.call('', params);
-  };
-
-  Byond.command = function (command) {
-    return Byond.call('winset', {
-      command: command,
-    });
-  };
-
-  Byond.winget = function (id, propName) {
-    if (id === null) {
-      id = '';
-    }
-    var isArray = propName instanceof Array;
-    var isSpecific = propName && propName !== '*' && !isArray;
-    var promise = Byond.callAsync('winget', {
-      id: id,
-      property: isArray && propName.join(',') || propName || '*',
-    });
-    if (isSpecific) {
-      promise = promise.then(function (props) {
-        return props[propName];
-      });
-    }
-    return promise;
-  };
-
   Byond.winset = function (id, propName, propValue) {
     if (id === null) {
       id = '';
@@ -153,27 +206,6 @@
     }
     props.id = id;
     return Byond.call('winset', props);
-  };
-
-  Byond.sendMessage = function (type, payload) {
-    var message = typeof type === 'string'
-      ? { type: type, payload: payload }
-      : type;
-    // JSON-encode the payload
-    if (message.payload !== null && message.payload !== undefined) {
-      message.payload = JSON.stringify(message.payload);
-    }
-    // Append an identifying header
-    assign(message, {
-      tgui: 1,
-      window_id: Byond.windowId,
-    });
-    Byond.topic(message);
-  };
-
-  // This function exists purely for debugging, do not use it in code!
-  Byond.injectMessage = function (type, payload) {
-    window.update(JSON.stringify({ type: type, payload: payload }));
   };
 
   Byond.subscribe = function (listener) {
