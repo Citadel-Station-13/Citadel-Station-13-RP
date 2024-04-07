@@ -73,6 +73,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// see /datum/frame2 readme (so up above in this file) for how to do this
 	/// this list *can* be set to null if we don't want people going backwards.
 	var/list/steps_backward
+	/// cached stage count
+	var/stage_count
 
 	/// is this frame freely un/anchorable?
 	var/freely_anchorable = FALSE
@@ -127,6 +129,10 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 #warn impl
 
+/datum/frame2/New()
+	// cache that
+	stage_count = stage_count()
+
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
 	frame.update_icon()
@@ -156,7 +162,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(frame.stage != from_stage)
 		return FALSE
-	#warn impl
+	return move_frame_to(frame, from_stage, from_stage + 1 > stage_count? FRAME_STAGE_FINISH : from_stage + 1)
 
 /**
  * @return TRUE / FALSE success / fail
@@ -165,7 +171,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(frame.stage != from_stage)
 		return FALSE
-	#warn impl
+	return move_frame_to(frame, from_stage, from_stage - 1 > 0? from_stage - 1 : FRAME_STAGE_DECONSTRUCT)
 
 /**
  * If trying to deconstruct or finish the frame, you *must* do:
@@ -184,6 +190,16 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		// check your fucking inputs
 		CRASH("attempted to move from the same state to the same state. why?")
 	#warn impl
+
+	on_frame_step(frame, from_stage, to_stage)
+
+/**
+ * Called when we transition stage.
+ * * called before update_icon() / re-renders
+ * * called before deconstruction/finish
+ */
+/datum/frame2/proc/on_frame_step(obj/structure/frame2/frame, from_stage, to_stage)
+	return
 
 /datum/frame2/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list)
 	examine_list += instruction_forwards(frame, actor)
