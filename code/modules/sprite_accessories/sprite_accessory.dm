@@ -48,7 +48,6 @@
 	/// we will always be able to be re-aligned by the mob for obvious reasons, especially if their
 	/// bodyparts are misaligned when the bodyparts in question are considered our anchors.
 	var/icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_IGNORE
-	#warn impl
 
 	//* rendering *//
 	/// overlay/blend this in with ADD mode, rather than overlay mode.
@@ -68,8 +67,6 @@
 	/// use additive color matrix on the main overlay, rather than multiply
 	/// this is slow, please stop using it and do proper greyscales.
 	var/legacy_use_additive_color_matrix = FALSE
-	#warn impl
-
 	/// use front/behind, citadel snowflake for now; only usable on wings/tails
 	var/front_behind_system_legacy = FALSE
 
@@ -88,6 +85,24 @@
 /datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation)
 	if(variations?[with_variation])
 		with_base_state = with_variation
+	if(legacy_use_additive_color_matrix && colors)
+		// clone list to not mutate original
+		colors = colors.Copy()
+		// transform colors into additive color matrices
+		for(var/i in 1 to length(colors))
+			if(islist(colors[i]))
+				stack_trace("attempted to use a color matrix with legacy additive; this is not supported.")
+				continue
+			if(!istext(colors[i]))
+				stack_trace("attempted to use non-text color string with legacy additive; this is not supported.")
+			var/list/decoded = ReadRGB(colors[i])
+			var/list/computed = list(
+				1, 0, 0,
+				0, 1, 0,
+				0, 0, 1,
+				decoded[1] / 255, decoded[2] / 255, decoded[3] / 255,
+			)
+			colors[i] = computed
 	var/list/layers = list()
 	if(front_behind_system_legacy)
 		var/image/rendering
@@ -182,6 +197,14 @@
 	// emit single
 	var/image/single = new /image
 	single.overlays = layers
+
+	switch(icon_alignment)
+		if(SPRITE_ACCESSORY_ALIGNMENT_BOTTOM)
+			single.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
+		if(SPRITE_ACCESSORY_ALIGNMENT_CENTER)
+			single.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
+			single.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
+		if(SPRITE_ACCESSORY_ALIGNMENT_IGNORE)
 
 	return single
 
