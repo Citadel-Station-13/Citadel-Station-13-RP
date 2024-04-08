@@ -36,7 +36,7 @@
 	intrinsic_languages = LANGUAGE_ID_TESHARI
 	whitelist_languages = list(
 		LANGUAGE_ID_TESHARI,
-		LANGUAGE_ID_SKRELL
+		LANGUAGE_ID_SKRELL,
 	)
 
 	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
