@@ -97,7 +97,7 @@
 /obj/item/megaphone/super/verb/turn_volume_dial()
 	set name = "Change Volume"
 	set desc = "Allows you to change the megaphone's volume."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	adjust_volume(usr)
 
@@ -110,7 +110,7 @@
 /obj/item/megaphone/super/verb/change_font()
 	set name = "Change... Pronunciation?"
 	set desc = "Allows you to change the megaphone's font."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	adjust_font(usr)
 
@@ -123,7 +123,7 @@
 /obj/item/megaphone/super/verb/change_color()
 	set name = "Change... Tune?"
 	set desc = "Allows you to change the megaphone's color."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	adjust_color(usr)
 
