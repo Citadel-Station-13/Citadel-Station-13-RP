@@ -13,7 +13,7 @@
  */
 
 /proc/format_table_name(table as text)
-	return CONFIG_GET(string/feedback_tableprefix) + table
+	return CONFIG_GET(string/sql_tableprefix) + table
 
 /**
  *! Text sanitization

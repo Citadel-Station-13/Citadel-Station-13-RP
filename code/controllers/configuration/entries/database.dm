@@ -1,28 +1,42 @@
 /datum/config_entry/flag/sql_enabled // for sql switching
 	protection = CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/string/address
+/datum/config_entry/string/sql_address
 	default = "localhost"
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
-/datum/config_entry/number/port
+/datum/config_entry/number/sql_port
 	default = 3306
 	min_val = 0
 	max_val = 65535
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
-/datum/config_entry/string/feedback_database
+/datum/config_entry/string/sql_database
 	default = "test"
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
-/datum/config_entry/string/feedback_login
+/datum/config_entry/string/sql_login
 	default = "root"
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
-/datum/config_entry/string/feedback_password
+/datum/config_entry/string/sql_user
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	deprecated_by = /datum/config_entry/string/sql_login
+
+/datum/config_entry/string/sql_user/DeprecationUpdate(value)
+	return value
+
+/datum/config_entry/string/sql_password
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
-/datum/config_entry/string/feedback_tableprefix
+/datum/config_entry/string/sql_server_prefix
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	deprecated_by = /datum/config_entry/string/sql_tableprefix
+
+/datum/config_entry/string/sql_server_prefix/DeprecationUpdate(value)
+	return value
+
+/datum/config_entry/string/sql_tableprefix
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 /datum/config_entry/number/query_debug_log_timeout
@@ -73,46 +87,3 @@
 /// Shouldn't really be set on production servers, primarily for EZDB.
 /datum/config_entry/string/db_daemon
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
-
-// lazy ass. auto updater for sql naming
-/datum/config_entry/string/sql_server_prefix
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
-	deprecated_by = /datum/config_entry/string/feedback_tableprefix
-
-/datum/config_entry/string/sql_server_prefix/DeprecationUpdate(value)
-	return value
-
-/datum/config_entry/string/sql_address
-	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
-	deprecated_by = /datum/config_entry/string/address
-
-/datum/config_entry/string/sql_address/DeprecationUpdate(value)
-	return value
-
-/datum/config_entry/number/sql_port
-	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
-	deprecated_by = /datum/config_entry/number/port
-
-/datum/config_entry/number/sql_port/DeprecationUpdate(value)
-	return value
-
-/datum/config_entry/string/sql_user
-	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
-	deprecated_by = /datum/config_entry/string/feedback_login
-
-/datum/config_entry/string/sql_user/DeprecationUpdate(value)
-	return value
-
-/datum/config_entry/string/sql_password
-	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
-	deprecated_by = /datum/config_entry/string/feedback_password
-
-/datum/config_entry/string/sql_password/DeprecationUpdate(value)
-	return value
-
-/datum/config_entry/string/sql_database
-	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
-	deprecated_by = /datum/config_entry/string/feedback_tableprefix
-
-/datum/config_entry/string/sql_database/DeprecationUpdate(value)
-	return value
