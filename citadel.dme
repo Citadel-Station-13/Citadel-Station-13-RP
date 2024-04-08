@@ -3190,6 +3190,7 @@
 #include "code\modules\maps\misc_maps\lavaland\_lavaland.dm"
 #include "code\modules\maps\overmap\planets\_lythios43c.dm"
 #include "code\modules\maps\overmap\planets\_virgo3b.dm"
+#include "code\modules\maps\overmap\planets\admin_croatoan.dm"
 #include "code\modules\maps\overmap\planets\classd.dm"
 #include "code\modules\maps\overmap\planets\classg.dm"
 #include "code\modules\maps\overmap\planets\classh.dm"
