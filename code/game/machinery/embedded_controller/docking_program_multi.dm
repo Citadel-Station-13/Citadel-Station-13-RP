@@ -159,14 +159,15 @@
 			response_sent = 0
 
 			if (!override_enabled)
-				begin_cycle_in()
+				return
+				//begin_cycle_in()
 
 		if ("prepare_for_undocking")
 			docking_mode = 1
 			response_sent = 0
 
 			if (!override_enabled)
-				stop_cycling()
+				//stop_cycling()
 				close_doors()
 				disable_mech_regulation()
 
@@ -195,21 +196,18 @@
 
 //checks if we are ready for docking
 /datum/computer/file/embedded_program/airlock/multi_docking/proc/ready_for_docking()
-	return done_cycling()
+	return 0
 
 //checks if we are ready for undocking
 /datum/computer/file/embedded_program/airlock/multi_docking/proc/ready_for_undocking()
-	var/ext_closed = check_exterior_door_secured()
-	var/int_closed = check_interior_door_secured()
-	return (ext_closed || int_closed)
+	return 0
 
 /datum/computer/file/embedded_program/airlock/multi_docking/proc/open_doors()
 	toggleDoor(memory["interior_status"], tag_interior_door, memory["secure"], "open")
 	toggleDoor(memory["exterior_status"], tag_exterior_door, memory["secure"], "open")
 
-/datum/computer/file/embedded_program/airlock/multi_docking/cycleDoors(var/target)
-	if (!docking_enabled|| override_enabled)	//only allow the port to be used as an airlock if nothing is docked here or the override is enabled
-		..(target)
+/datum/computer/file/embedded_program/airlock/multi_docking/proc/cycleDoors(var/target)
+	return 0
 
 /datum/computer/file/embedded_program/airlock/multi_docking/proc/send_signal_to_master(var/command)
 	var/datum/signal/signal = new

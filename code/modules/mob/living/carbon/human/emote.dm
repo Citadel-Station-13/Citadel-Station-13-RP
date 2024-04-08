@@ -1055,7 +1055,7 @@
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
@@ -1066,7 +1066,7 @@
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
@@ -1123,7 +1123,6 @@
 			if(toggle_wing_spread(message = 1))
 				m_type = 1
 				message = "[spread ? "extends" : "retracts"] their wings."
-				src.wing_spread_start()
 			else
 				return 1
 		if ("mlem")
@@ -1185,6 +1184,10 @@
 			message = "lets out a squeak."
 			m_type = 2
 			playsound(loc, 'sound/effects/mouse_squeak.ogg', 50, 1, -1)
+		if("mar")
+			message = "lets out a mar."
+			m_type = 2
+			playsound(loc, 'sound/voice/mar.ogg', 50, 1, -1)	
 		if ("nsay")
 			nsay()
 			return TRUE
@@ -1277,6 +1280,8 @@
 	var/new_flapping = isnull(setting) ? !flapping : setting
 	if(new_flapping != flapping)
 		flapping = setting
+		if(flapping)
+			spread = FALSE
 		update_wing_showing()
 	return 1
 
@@ -1294,13 +1299,15 @@
 	var/new_spread = isnull(folded) ? !spread : folded
 	if(new_spread != spread)
 		spread = new_spread
+		if(spread)
+			flapping = FALSE
 		update_wing_showing()
 	return 1
 
 /mob/living/carbon/human/verb/toggle_gender_identity_vr()
 	set name = "Set Gender Identity"
 	set desc = "Sets the pronouns when examined and performing an emote."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	var/new_gender_identity = input("Please select a gender Identity.") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM)
 	if(!new_gender_identity)
 		return 0
@@ -1309,7 +1316,7 @@
 
 /mob/living/carbon/human/verb/switch_tail_layer()
 	set name = "Switch tail layer"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Switch tail layer on top."
 	tail_alt = !tail_alt
 	update_tail_showing()

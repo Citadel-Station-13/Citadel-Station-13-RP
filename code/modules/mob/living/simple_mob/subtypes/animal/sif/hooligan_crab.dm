@@ -59,8 +59,8 @@
 
 	mob_size = MOB_LARGE
 
-	melee_damage_lower = 22
-	melee_damage_upper = 35
+	legacy_melee_damage_lower = 22
+	legacy_melee_damage_upper = 35
 	attack_armor_pen = 35
 	attack_sharp = TRUE
 	attack_edge = TRUE

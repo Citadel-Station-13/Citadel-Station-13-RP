@@ -342,8 +342,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_key = "head"
 	id = SLOT_ID_HEAD
 	sort_order = 10000
-	display_name = "back"
-	display_preposition = "on"
 	display_name = "head"
 	display_preposition = "on"
 	hud_position = ui_head
@@ -558,7 +556,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 /datum/inventory_slot_meta/inventory/suit_storage/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	. = ..()
-	var/obj/item/suit_item = wearer.item_by_slot(SLOT_ID_SUIT)
+	var/obj/item/suit_item = wearer.item_by_slot_id(SLOT_ID_SUIT)
 	if(!suit_item)
 		return FALSE
 	// todo: this check is ass

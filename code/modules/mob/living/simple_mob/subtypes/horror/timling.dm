@@ -22,8 +22,8 @@
 	maxHealth = 200
 	health = 200
 
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 40
 	grab_resist = 100
 
 	response_help = "pets the"

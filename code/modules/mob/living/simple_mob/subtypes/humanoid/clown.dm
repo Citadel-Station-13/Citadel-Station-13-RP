@@ -39,8 +39,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 8
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 10
 	attacktext = list("attacked")
 	attack_sound = 'sound/items/bikehorn.ogg'
 
@@ -94,8 +94,8 @@
 	response_harm = "wallops"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15		//Tac Knife damage
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15		//Tac Knife damage
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -215,8 +215,8 @@
 	movement_cooldown = 0
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30		//Tac Knife damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//Tac Knife damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")

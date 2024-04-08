@@ -5,7 +5,7 @@
 /datum/category_item/catalogue/fauna/construct
 	name = "Constructs"
 	desc = "Although much of the information behind these occult constructs \
-	is presumably still classified, NanoTrasen's general briefings have confirmed \
+	is presumably still classified, Nanotrasen's general briefings have confirmed \
 	several key facts. Constructs are animate obsidian statues imbued with strong \
 	paracausal energies. They are considered extremely dangerous, and evidence of \
 	constructs necessitates immediate notification of the PMD."
@@ -151,8 +151,8 @@
 	if(istype(user, /mob/living/simple_mob/construct/artificer))
 		var/mob/living/simple_mob/construct/artificer/A = user
 		if(health < getMaxHealth())
-			var/repair_lower_bound = A.melee_damage_lower * -1
-			var/repair_upper_bound = A.melee_damage_upper * -1
+			var/repair_lower_bound = A.legacy_melee_damage_lower * -1
+			var/repair_upper_bound = A.legacy_melee_damage_upper * -1
 			adjustBruteLoss(rand(repair_lower_bound, repair_upper_bound))
 			adjustFireLoss(rand(repair_lower_bound, repair_upper_bound))
 			user.visible_message("<span class='notice'>\The [user] mends some of \the [src]'s wounds.</span>")

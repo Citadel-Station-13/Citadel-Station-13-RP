@@ -4,7 +4,7 @@
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blob_resource"
 	desc = "A thin spire of slightly swaying tendrils."
-	max_integrity = 40
+	integrity_max = 40
 	point_return = 15
 	var/resource_delay = 0
 	var/resource_cooldown = 4 SECONDS
@@ -33,5 +33,5 @@
 /obj/structure/blob/resource/sluggish // Tankier, but really slow.
 	name = "sluggish resource blob"
 	desc = "A thin spire of occasionally convulsing tendrils."
-	max_integrity = 80
+	integrity_max = 80
 	resource_cooldown = 8 SECONDS

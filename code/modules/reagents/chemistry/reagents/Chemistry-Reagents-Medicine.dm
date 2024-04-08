@@ -1097,7 +1097,7 @@
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
 	M.adjustToxLoss(-10 * removed)
 	if(prob(60))
-		M.take_organ_damage(4 * removed, 0)
+		M.take_random_targeted_damage(brute = 4 * removed, brute = 0)
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"
@@ -1282,8 +1282,10 @@
 	if(istype(L))
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
-			S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
-			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
+			var/amt = rand(15, 25) * amount * (1-S.water_resist)
+			if(amt>0)
+				S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
+				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
 		remove_self(amount)
 
 /datum/reagent/leporazine
@@ -1596,8 +1598,10 @@
 /datum/reagent/firefighting_foam/touch_mob(mob/living/M, reac_volume)
 	if(istype(M, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
 		var/mob/living/simple_mob/slime/S = M
-		S.adjustToxLoss(15 * reac_volume)
-		S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
+		var/amt = 15 * reac_volume * (1-S.water_resist)
+		if(amt>0)
+			S.adjustToxLoss(amt)
+			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
 
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()

@@ -53,23 +53,19 @@
 
 	outfit_type = /datum/outfit/job/station/research_director
 	desc = "The Research Director manages and maintains the Research department. They are required to ensure the safety of the entire crew, \
-						at least with regards to anything occuring in the Research department, and to inform the crew of any disruptions that \
+						at least with regards to anything occurring in the Research department, and to inform the crew of any disruptions that \
 						might originate from Research. The Research Director often has at least passing knowledge of most of the Research department, but \
 						are encouraged to allow their staff to perform their own duties."
 	alt_titles = list(
 		"Research Supervisor" = /datum/prototype/struct/alt_title/research_supervisor,
-		"Head of Development" = /datum/prototype/struct/alt_title/head_of_development,
-		"Head Scientist" = /datum/prototype/struct/alt_title/head_scientist
+		"Chief Science Officer" = /datum/prototype/struct/alt_title/cso
 		)
 
 /datum/prototype/struct/alt_title/research_supervisor
 	title = "Research Supervisor"
 
-/datum/prototype/struct/alt_title/head_of_development
-	title = "Head of Development"
-
-/datum/prototype/struct/alt_title/head_scientist
-	title = "Head Scientist"
+/datum/prototype/struct/alt_title/cso
+	title = "Chief Science Officer"
 
 /datum/outfit/job/station/research_director
 	name = OUTFIT_JOB_NAME("Research Director")

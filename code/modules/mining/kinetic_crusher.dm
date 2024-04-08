@@ -19,7 +19,7 @@
 	armour_penetration = 10
 	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
 */
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
 	sharp = TRUE
 	edge = TRUE
@@ -77,12 +77,12 @@
 
 /obj/item/kinetic_crusher/emag_act()
 	. = ..()
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		return
-	obj_flags |= EMAGGED
+	obj_flags |= OBJ_EMAGGED
 
 /obj/item/kinetic_crusher/proc/can_mark(mob/living/victim)
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		return TRUE
 	return !ishuman(victim) && !issilicon(victim)
 

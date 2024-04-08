@@ -140,8 +140,8 @@
 	if(istype(user, /mob/living/simple_animal/construct/builder))
 		var/mob/living/simple_animal/construct/builder/B = user
 		if(health < getMaxHealth())
-			var/repair_lower_bound = B.melee_damage_lower * -1
-			var/repair_upper_bound = B.melee_damage_upper * -1
+			var/repair_lower_bound = B.legacy_melee_damage_lower * -1
+			var/repair_upper_bound = B.legacy_melee_damage_upper * -1
 			adjustBruteLoss(rand(repair_lower_bound, repair_upper_bound))
 			adjustFireLoss(rand(repair_lower_bound, repair_upper_bound))
 			user.visible_message("<span class='notice'>\The [user] mends some of \the [src]'s wounds.</span>")
@@ -181,8 +181,8 @@
 	health = 300
 	response_harm   = "harmlessly punches"
 	harm_intent_damage = 0
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 40
 	attack_armor_pen = 60 //Being punched by a living, floating statue.
 	attacktext = list("smashed their armoured gauntlet into")
 	friendly = list("pats")
@@ -268,8 +268,8 @@
 	icon_living = "floating"
 	maxHealth = 200
 	health = 200
-	melee_damage_lower = 25
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 15
 	attack_sharp = 1
 	attack_edge = 1
@@ -304,8 +304,8 @@
 	health = 150
 	response_harm = "viciously beaten"
 	harm_intent_damage = 5
-	melee_damage_lower = 15 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 15 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
+	legacy_melee_damage_upper = 20
 	attacktext = list("rammed")
 	speed = 0
 	environment_smash = 2
@@ -340,8 +340,8 @@
 	speak_emote = list("rumbles")
 	response_harm   = "harmlessly punched"
 	harm_intent_damage = 0
-	melee_damage_lower = 50
-	melee_damage_upper = 50
+	legacy_melee_damage_lower = 50
+	legacy_melee_damage_upper = 50
 	attacktext = list("brutally crushed")
 	friendly = list("pokes") //Anything nice the Behemoth would do would still Kill the Human. Leave it at poke.
 	speed = 5
@@ -399,8 +399,8 @@
 	icon_living = "harvester"
 	maxHealth = 150
 	health = 150
-	melee_damage_lower = 20
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 25
 	attack_sharp = 1
 	attacktext = list("violently stabbed")
 	friendly = list("caresses")

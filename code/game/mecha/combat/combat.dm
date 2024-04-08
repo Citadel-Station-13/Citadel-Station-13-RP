@@ -57,7 +57,7 @@
 			*/
 			if(ishuman(T))
 				var/mob/living/carbon/human/H = T
-	//			if (M.health <= 0) return
+	//			if (M.integrity <= 0) return
 
 				var/obj/item/organ/external/temp = H.get_organ(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
 				if(temp)
@@ -65,9 +65,13 @@
 					switch(damtype)
 						if("brute")
 							H.afflict_unconscious(20 * 1)
-							update |= temp.take_damage(rand(force/2, force), 0)
+							temp.inflict_bodypart_damage(
+								brute = rand(force / 2, force),
+							)
 						if("fire")
-							update |= temp.take_damage(0, rand(force/2, force))
+							temp.inflict_bodypart_damage(
+								burn = rand(force / 2, force),
+							)
 						if("tox")
 							if(H.reagents)
 								if(H.reagents.get_reagent_amount("carpotoxin") + force < force*2)
@@ -105,7 +109,7 @@
 			src.visible_message("[src] pushes [T] out of the way.")
 
 		melee_can_hit = 0
-		if(do_after(melee_cooldown))
+		spawn(melee_cooldown)
 			melee_can_hit = 1
 		return
 
@@ -117,15 +121,11 @@
 				src.occupant_message("You hit [T].")
 				src.visible_message("<font color='red'><b>[src.name] hits [T]</b></font>")
 				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
-
-				if(istype(T, /obj/structure/girder))
-					T:take_damage(force * 3) //Girders have 200 health by default. Steel, non-reinforced walls take four punches, girders take (with this value-mod) two, girders took five without.
-				else
-					T:take_damage(force)
+				T.inflict_atom_damage(force, MELEE_TIER_HEAVY, ARMOR_MELEE, weapon = src)
 
 				melee_can_hit = 0
 
-				if(do_after(melee_cooldown))
+				spawn(melee_cooldown)
 					melee_can_hit = 1
 	return
 

@@ -4,6 +4,8 @@
 GLOBAL_LIST_EMPTY(radial_menus)
 
 // Ported from TG
+// todo: rewrite all of this, the code's too messy
+// todo: screen/context/radial, screen/context/list
 
 /atom/movable/screen/radial
 	icon = 'icons/mob/radial.dmi'
@@ -11,6 +13,10 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	plane = ABOVE_HUD_PLANE
 	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR | KEEP_APART | RESET_TRANSFORM | RESET_ALPHA | RESET_COLOR
 	var/datum/radial_menu/parent
+
+/atom/movable/screen/radial/Destroy()
+	parent = null
+	return ..()
 
 /atom/movable/screen/radial/slice
 	icon_state = "radial_slice"
@@ -84,6 +90,13 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
+
+/datum/radial_menu/Destroy()
+	Reset()
+	hide()
+	QDEL_NULL(close_button)
+	QDEL_LIST(elements)
+	return ..()
 
 //If we swap to vis_contens inventory these will need a redo
 /datum/radial_menu/proc/check_screen_border(mob/user)
@@ -234,8 +247,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		choices += id
 		choices_values[id] = E
 		if(new_choices[E])
-			var/I = extract_image(new_choices[E])
+			var/image/I = extract_image(new_choices[E])
 			if(I)
+				//! perform fixup
+				I.plane = FLOAT_PLANE
+				I.layer = FLOAT_LAYER
+				//! end
 				choices_icons[id] = I
 	setup_menu(use_tooltips)
 
@@ -280,11 +297,6 @@ GLOBAL_LIST_EMPTY(radial_menus)
 				next_check = world.time + check_delay
 		stoplag(1)
 
-/datum/radial_menu/Destroy()
-	Reset()
-	hide()
-	. = ..()
-
 /*
 	Presents radial menu to user anchored to anchor (or user if the anchor is currently in users screen)
 	Choices should be a list where list keys are movables or text used for element names and return value
@@ -314,3 +326,13 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	QDEL_NULL(menu)
 	GLOB.radial_menus -= uniqueid
 	return answer
+
+/datum/radial_menu/context_menu
+	/// host atom
+	var/atom/host
+	// todo: this needs such a drastic fucking refactor along with the rest of this file i'm going to scream
+
+/datum/radial_menu/context_menu/Destroy()
+	LAZYREMOVE(host.context_menus, current_user)
+	host = null
+	return ..()

@@ -11,7 +11,7 @@ var/list/floor_light_cache = list()
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = LIGHT
-	materials = list(MAT_STEEL = 2500, MAT_GLASS = 2750)
+	materials_base = list(MAT_STEEL = 2500, MAT_GLASS = 2750)
 
 	var/on
 	var/damaged
@@ -178,6 +178,8 @@ var/list/floor_light_cache = list()
 	name = "changing floor light"
 
 /obj/machinery/floor_light/changing/process(delta_time)
+	if(!on)
+		return
 	. = ..()
 	update_color()
 
@@ -205,4 +207,5 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/changing/prebuilt
 	anchored = TRUE
+	on = FALSE
 

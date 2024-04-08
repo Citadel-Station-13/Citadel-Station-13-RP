@@ -22,8 +22,8 @@
 	health = 200
 	response_harm   = "harmlessly punches"
 	harm_intent_damage = 0
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 40
 	attack_armor_pen = 60 //Being punched by a living, floating statue.
 	attacktext = list("smashed their armoured gauntlet into")
 	friendly = list("pats")
@@ -115,8 +115,8 @@
 	maxHealth = 600
 	health = 600
 	speak_emote = list("rumbles")
-	melee_damage_lower = 50
-	melee_damage_upper = 50
+	legacy_melee_damage_lower = 50
+	legacy_melee_damage_upper = 50
 	attacktext = list("brutally crushed")
 	friendly = list("pokes") //Anything nice the Behemoth would do would still Kill the Human. Leave it at poke.
 	attack_sound = 'sound/weapons/heavysmash.ogg'

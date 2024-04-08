@@ -25,3 +25,6 @@
 
 /mob/observer/dead/canface()
 	return TRUE
+
+/mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
+	return TRUE // ghosts don't block

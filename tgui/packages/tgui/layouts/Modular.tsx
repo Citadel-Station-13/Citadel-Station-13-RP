@@ -10,11 +10,11 @@ import { SectionProps } from "../components/Section";
 import { Window, WindowProps } from "./Window";
 
 export interface ModularProps {
-  direct?: InfernoNode;
-  children?: InfernoNode;
-  window?: WindowProps;
-  section?: SectionProps;
-  scrollable?: BooleanLike;
+  readonly direct?: InfernoNode;
+  readonly children?: InfernoNode;
+  readonly window?: WindowProps;
+  readonly section?: SectionProps;
+  readonly scrollable?: BooleanLike;
 }
 
 /**

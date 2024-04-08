@@ -109,7 +109,7 @@
 		var/obj/item/storage/bag/trash/T = I
 		to_chat(user, "<font color=#4F49AF>You empty the bag.</font>")
 		for(var/obj/item/O in T.contents)
-			T.remove_from_storage(O,src)
+			T.obj_storage.remove(O, src)
 		T.update_icon()
 		update()
 		return
@@ -134,7 +134,7 @@
 				GM.forceMove(src)
 				GM.update_perspective()
 				for (var/mob/C in viewers(src))
-					C.show_message("<font color='red'>[GM.name] has been placed in the [src] by [user].</font>", 3)
+					C.show_message("<font color='red'>[GM.name] has been placed in \the [src] by [user].</font>", 3)
 				qdel(G)
 
 				add_attack_logs(user,GM,"Disposals dunked")
@@ -143,11 +143,11 @@
 	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
-	to_chat(user, "You place \the [I] into the [src].")
+	to_chat(user, "You place \the [I] into \the [src].")
 	for(var/mob/M in viewers(src))
 		if(M == user)
 			continue
-		M.show_message("[user.name] places \the [I] into the [src].", 3)
+		M.show_message("[user.name] places \the [I] into \the [src].", 3)
 
 	update()
 
@@ -178,11 +178,11 @@
 		return
 	if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))	// if drop self, then climbed in
 											// must be awake, not stunned or whatever
-		msg = "[user.name] climbs into the [src]."
-		to_chat(user, "You climb into the [src].")
+		msg = "[user.name] climbs into \the [src]."
+		to_chat(user, "You climb into \the [src].")
 	else if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
-		msg = "[user.name] stuffs [target.name] into the [src]!"
-		to_chat(user, "You stuff [target.name] into the [src]!")
+		msg = "[user.name] stuffs [target.name] into \the [src]!"
+		to_chat(user, "You stuff [target.name] into \the [src]!")
 
 		add_attack_logs(user,target,"Disposals dunked")
 	else
@@ -467,31 +467,50 @@
 		qdel(H)
 
 /obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
 	if(istype(AM, /obj/item) && !istype(AM, /obj/projectile))
 		if(prob(75))
 			AM.forceMove(src)
 			visible_message("\The [AM] lands in \the [src].")
+			return COMPONENT_THROW_HIT_TERMINATE
 		else
 			visible_message("\The [AM] bounces off of \the [src]'s rim!")
+			return ..()
+	return ..()
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/projectile))
-		return 1
-	if (istype(mover,/obj/item) && mover.throwing)
-		var/obj/item/I = mover
-		if(istype(I, /obj/projectile))
-			return
-		if(prob(75))
-			I.forceMove(src)
-			for(var/mob/M in viewers(src))
-				M.show_message("\The [I] lands in \the [src].", 3)
-		else
-			for(var/mob/M in viewers(src))
-				M.show_message("\The [I] bounces off of \the [src]'s rim!", 3)
-		return 0
-	else
-		return ..(mover, target)
+		return TRUE
+	return ..()
+
+/obj/machinery/disposal/wall
+	name = "inset disposal unit"
+	icon_state = "wall"
+
+	density = FALSE
+
+/obj/machinery/disposal/wall/Initialize()
+	. = ..()
+
+	spawn(1 SECOND)	// Fixfix for weird interaction with buildmode or other late-spawning.
+		update()
+
+/obj/machinery/disposal/wall/update()
+	..()
+
+	switch(dir)
+		if(1)
+			pixel_x = 0
+			pixel_y = -32
+		if(2)
+			pixel_x = 0
+			pixel_y = 32
+		if(4)
+			pixel_x = -32
+			pixel_y = 0
+		if(8)
+			pixel_x = 32
+			pixel_y = 0
+
 
 // virtual disposal object
 // travels through pipes in lieu of actual items
@@ -563,6 +582,7 @@
 // movement process, persists while holder is moving through pipes
 /obj/structure/disposalholder/proc/move()
 	var/obj/structure/disposalpipe/last
+	// todo: while this is fucking awful?
 	while(active)
 		sleep(1)		// was 1
 		if(!loc) return // check if we got GC'd
@@ -570,7 +590,7 @@
 		if(hasmob && prob(3))
 			for(var/mob/living/H in src)
 				if(!istype(H,/mob/living/silicon/robot/drone)) //Drones use the mailing code to move through the disposal system,
-					H.take_overall_damage(20, 0, "Blunt Trauma")//horribly maim any living creature jumping down disposals.  c'est la vie
+					H.take_overall_damage(20, 0, weapon_descriptor = "blunt trauma")//horribly maim any living creature jumping down disposals.  c'est la vie
 
 		var/obj/structure/disposalpipe/curr = loc
 		last = curr
@@ -670,23 +690,24 @@
 	plane = TURF_PLANE
 	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
 
+	integrity = 100
+	integrity_max = 100
+
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	alpha = 128 // Set for the benefit of mapping.
 	#endif
 
 	/// Bitmask of pipe directions.
 	var/dpdir = 0
-	/// Health points 0-10
-	var/health = 10
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map
 
-/obj/structure/disposalpipe/New()
-	..()
+/obj/structure/disposalpipe/Initialize(mapload, dir)
+	. = ..()
 	base_icon_state = icon_state
-	return
-
+	if(!isnull(dir))
+		setDir(dir)
 
 // pipe is deleted
 // ensure if holder is present, it is expelled
@@ -819,19 +840,8 @@
 			H.vent_gas(T)	// all gas vent to turf
 			qdel(H)
 
-	return
-
-// call to break the pipe
-// will expel any holder inside at the time
-// then delete the pipe
-// remains : set to leave broken pipe pieces in place
-/obj/structure/disposalpipe/proc/broken(var/remains = 0)
-	if(remains)
-		for(var/D in GLOB.cardinal)
-			if(D & dpdir)
-				var/obj/structure/disposalpipe/broken/P = new(src.loc)
-				P.setDir(D)
-
+/obj/structure/disposalpipe/deconstructed(method)
+	. = ..()
 	src.invisibility = 101	// make invisible (since we won't delete the pipe immediately)
 	var/obj/structure/disposalholder/H = locate() in src
 	if(H)
@@ -851,35 +861,12 @@
 		// otherwise, do normal expel from turf
 		if(H)
 			expel(H, T, 0)
+	return ..()
 
-	spawn(2)	// delete pipe after 2 ticks to ensure expel proc finished
-		qdel(src)
-
-
-// pipe affected by explosion
-/obj/structure/disposalpipe/legacy_ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			broken(0)
-			return
-		if(2.0)
-			health -= rand(5,15)
-			healthcheck()
-			return
-		if(3.0)
-			health -= rand(0,15)
-			healthcheck()
-			return
-
-
-// test health for brokenness
-/obj/structure/disposalpipe/proc/healthcheck()
-	if(health < -2)
-		broken(0)
-	else if(health<1)
-		broken(1)
-	return
+/obj/structure/disposalpipe/drop_products(method, atom/where)
+	. = ..()
+	if(method != ATOM_DECONSTRUCT_DISASSEMBLED)
+		new /obj/structure/disposalpipe/broken(where, dir)
 
 //attack by item
 //weldingtool: unfasten and convert to obj/disposalconstruct
@@ -1023,7 +1010,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 12)
-		T = GetAbove(src)
+		T = get_vertical_step(src, UP)
 		if(!T)
 			H.forceMove(loc)
 			return
@@ -1073,7 +1060,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 11)
-		T = GetBelow(src)
+		T = get_vertical_step(src, DOWN)
 		if(!T)
 			H.forceMove(src.loc)
 			return
@@ -1464,6 +1451,7 @@
 // called when the holder exits the outlet
 /obj/structure/disposaloutlet/proc/expel(obj/structure/disposalholder/H)
 
+	target = get_ranged_target_turf(src, dir, 10)
 	flick("outlet-open", src)
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 50, 0, 0)
 	sleep(20)	//wait until correct animation frame

@@ -16,7 +16,7 @@
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
 /mob/proc/can_wield_item(obj/item/W)
-	if(W.w_class >= ITEMSIZE_LARGE && issmall(src))
+	if(W.w_class >= WEIGHT_CLASS_BULKY && issmall(src))
 		return FALSE //M is too small to wield this
 	return TRUE
 
@@ -302,7 +302,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return // Can't talk in deadchat if you can't see it.
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -318,7 +318,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				var/mob/observer/dead/DM
 				if(istype(subject, /mob/observer/dead))
 					DM = subject
-				var/anonsay = DM?.is_preference_enabled(/datum/client_preference/anonymous_ghost_chat)
+				var/anonsay = DM?.get_preference_toggle(/datum/game_preference_toggle/presence/anonymous_ghost_chat)
 				if(M.client.holder) 							// What admins see
 					lname = "[keyname][(anonsay) ? "*" : (DM ? "" : "^")] ([name])"
 				else
@@ -333,7 +333,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname = "Game Master"
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -363,7 +363,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			C = M.original.client
 
 	if(C)
-		if(!isnull(C.holder?.fakekey) || !C.is_preference_enabled(/datum/client_preference/announce_ghost_joinleave))
+		if(!isnull(C.holder?.fakekey) || !C.get_preference_toggle(/datum/game_preference_toggle/presence/announce_ghost_joinleave))
 			return
 		var/name
 		if(C.mob)
@@ -402,8 +402,8 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		if(source)
 			var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
 			if(A)
-				if(O.client.prefs && O.client.prefs.UI_style)
-					A.icon = ui_style2icon(O.client.prefs.UI_style)
+				if(O.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style))
+					A.icon = ui_style2icon(O.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style))
 				if (header)
 					A.name = header
 				A.desc = message
@@ -536,7 +536,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /// The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
 	BP_HEAD   = 40,
-	BP_CHEST  = 10,
+	BP_TORSO  = 10,
 	BP_GROIN  = 20,
 	BP_L_LEG  = 30,
 	BP_R_LEG  = 30,
@@ -554,7 +554,7 @@ var/list/global/base_miss_chance = list(
  */
 var/list/global/organ_rel_size = list(
 	BP_HEAD   = 25,
-	BP_CHEST  = 70,
+	BP_TORSO  = 70,
 	BP_GROIN  = 30,
 	BP_L_LEG  = 25,
 	BP_R_LEG  = 25,
@@ -592,7 +592,7 @@ var/list/global/organ_rel_size = list(
 	var/held = is_holding(item)
 
 	if(!slot)
-		slot = slot_by_item(item)
+		slot = slot_id_by_item(item)
 
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return

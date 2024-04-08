@@ -20,7 +20,7 @@
 	var/molar_mass = 1
 
 	//* reagents
-	/// reagent id to apply
+	/// reagent id to apply. set to typepath at compile time ; it will be automatically converted to ID if detected in New().
 	var/gas_reagent_id
 	/// reagent amount to add to someone breathing it at minimum moles
 	var/gas_reagent_amount = 0
@@ -57,3 +57,8 @@
 
 	// todo: combustion enthalpies / oxidizer powers
 	// todo: combustion product gases
+
+/datum/gas/New()
+	if(ispath(gas_reagent_id))
+		var/datum/reagent/R = gas_reagent_id
+		gas_reagent_id = initial(R.id)

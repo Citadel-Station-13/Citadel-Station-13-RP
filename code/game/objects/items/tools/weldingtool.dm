@@ -15,10 +15,10 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	//Cost to make in the autolathe
-	materials = list(MAT_STEEL = 70, MAT_GLASS = 30)
+	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 30)
 
 	//R&D tech level
 	origin_tech = list(TECH_ENGINEERING = 1)
@@ -157,25 +157,25 @@
 
 //Returns the amount of fuel in the welder
 /obj/item/weldingtool/proc/get_fuel()
-	return reagents.get_reagent_amount("fuel")
+	return reagents.get_reagent_amount(/datum/reagent/fuel)
 
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
 
-/obj/item/weldingtool/using_as_tool(function, flags, mob/user, atom/target, time, cost, usage)
+/obj/item/weldingtool/using_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage)
 	. = ..()
 	if(!. || function != TOOL_WELDER)
 		return
 	if(!isOn())
-		user.action_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
+		e_args.chat_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
 		return FALSE
 	// floor
 	var/computed = round(cost * time * TOOL_WELDING_FUEL_PER_DS)
 	if(get_fuel() < computed)
-		user.action_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
+		e_args.chat_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
 		return FALSE
 
-/obj/item/weldingtool/used_as_tool(function, flags, mob/user, atom/target, time, cost, usage, success)
+/obj/item/weldingtool/used_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage, success)
 	. = ..()
 	if(!.)
 		return
@@ -252,8 +252,8 @@
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
 			src.damtype = "fire"
-			src.w_class = ITEMSIZE_LARGE
-			src.hitsound = 'sound/items/welder.ogg'
+			src.set_weight_class(WEIGHT_CLASS_BULKY)
+			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
 			update_icon()
 			if(!always_process)
@@ -274,9 +274,9 @@
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
 		src.damtype = "brute"
-		src.w_class = initial(src.w_class)
+		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
-		src.hitsound = initial(src.hitsound)
+		src.attack_sound = initial(src.attack_sound)
 		update_icon()
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
@@ -334,7 +334,7 @@
 	icon_state = "indwelder"
 	max_fuel = 40
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_PHORON = 2)
-	materials = list(MAT_STEEL = 70, MAT_GLASS = 60)
+	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 60)
 
 /obj/item/weldingtool/largetank/cyborg
 	name = "integrated welding tool"
@@ -346,17 +346,17 @@
 	desc = "A much larger welder with a huge tank."
 	icon_state = "indwelder"
 	max_fuel = 80
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 3)
-	materials = list(MAT_STEEL = 70, MAT_GLASS = 120)
+	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 120)
 
 /obj/item/weldingtool/mini
 	name = "emergency welding tool"
 	desc = "A miniature welder used during emergencies."
 	icon_state = "miniwelder"
 	max_fuel = 10
-	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_METAL = 30, MAT_GLASS = 10)
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_METAL = 30, MAT_GLASS = 10)
 	change_icons = 0
 	tool_speed = 2
 	eye_safety_modifier = 1 // Safer on eyes.
@@ -366,7 +366,7 @@
 	desc = "A curious welding tool that uses an anomalous ignition method."
 	icon_state = "ashwelder"
 	max_fuel = 20
-	materials = list(MAT_METAL = 30, MAT_BONE = 10)
+	materials_base = list(MAT_METAL = 30, MAT_BONE = 10)
 	tool_speed = 1.5
 	eye_safety_modifier = 3 // Safe for Scorians who don't have goggles.
 	always_process = TRUE
@@ -382,7 +382,7 @@
 	desc = "A brass plated welder utilizing an antiquated, yet incredibly efficient, fuel system."
 	icon_state = "brasswelder"
 	max_fuel = 40
-	materials = list(MAT_STEEL = 70, "brass" = 60)
+	materials_base = list(MAT_STEEL = 70, "brass" = 60)
 	tool_speed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_welder
@@ -432,9 +432,9 @@
 	desc = "An experimental welder capable of synthesizing its own fuel from waste compounds. It can output a flame hotter than regular welders."
 	icon_state = "exwelder"
 	max_fuel = 40
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3)
-	materials = list(MAT_STEEL = 70, MAT_GLASS = 120)
+	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 120)
 	tool_speed = 0.5
 	change_icons = 0
 	flame_intensity = 3
@@ -447,15 +447,41 @@
 		nextrefueltick = world.time + 10
 		reagents.add_reagent("fuel", 1)
 
+/obj/item/weldingtool/experimental/brass
+	name = "replica clockwork welding tool"
+	desc = "A re-engineered experimental welder. It sports anti-corrosive brass fittings, and a further refined fuel system."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "clockwelder"
+	max_fuel = 50
+	tool_speed = 0.4
+	flame_color = "#990000" // deep red, as the sprite shows
+	change_icons = 0
+
+/obj/item/weldingtool/experimental/clockwork
+	name = "clockwork welding tool"
+	desc = "An antique welding tool, adorned with brass, and a brilliant red gem as the fuel tank. It neither runs out of fuel, nor harms the unprotected eye."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "clockwelder"
+	max_fuel = 100
+	eye_safety_modifier = 2
+	tool_sound = 'sound/machines/clockcult/steam_whoosh.ogg'
+	tool_speed = 0.1
+	flame_color = "#990000" // deep red, as above, so below
+	change_icons = 0
+
+/obj/item/weldingtool/experimental/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("Sometimes, the best masterworks are lessons in rediscovering simplicity. Thousands upon thousands of these passed through the Great Forgeworks, and out into the void. Treasure this find, friend.")
+
 /obj/item/weldingtool/experimental/hybrid
 	name = "strange welding tool"
 	desc = "An experimental welder capable of synthesizing its own fuel from spatial waveforms. It's like welding with a star!"
 	icon_state = "hybwelder"
 	max_fuel = 80
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
-	slowdown = 0.1
+	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	tool_speed = 0.25
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	flame_intensity = 5
 	origin_tech = list(TECH_ENGINEERING = 5, TECH_PHORON = 4, TECH_PRECURSOR = 1)
 	reach = 2
@@ -469,8 +495,8 @@
 	desc = "A bulky, cooler-burning welding tool that draws from a worn welding tank."
 	icon_state = "tubewelder"
 	max_fuel = 10
-	w_class = ITEMSIZE_NO_CONTAINER
-	materials = null
+	w_class = WEIGHT_CLASS_HUGE
+	materials_base = null
 	tool_speed = 1.25
 	change_icons = 0
 	flame_intensity = 1
@@ -529,8 +555,8 @@
 	desc = "A miniature welder attached to a spear, providing more reach. Typically used by Tyrmalin workers."
 	icon_state = "welderspear"
 	max_fuel = 10
-	w_class = ITEMSIZE_NORMAL
-	materials = list(MAT_METAL = 50, MAT_GLASS = 10)
+	w_class = WEIGHT_CLASS_NORMAL
+	materials_base = list(MAT_METAL = 50, MAT_GLASS = 10)
 	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.
 	reach = 2
@@ -554,8 +580,8 @@
 	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
-	acti_sound = 'sound/effects/sparks4.ogg'
-	deac_sound = 'sound/effects/sparks4.ogg'
+	acti_sound = /datum/soundbyte/grouped/sparks
+	deac_sound = /datum/soundbyte/grouped/sparks
 
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null
@@ -570,7 +596,7 @@
 		power_supply = new /obj/item/cell/device(src)
 	update_icon()
 
-/obj/item/weldingtool/electric/get_cell()
+/obj/item/weldingtool/electric/get_cell(inducer)
 	return power_supply
 
 /obj/item/weldingtool/electric/examine(mob/user, dist)
@@ -707,7 +733,7 @@
 	icon_state = "crystal_welder"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	materials = list(MATERIAL_CRYSTAL = 1250)
+	materials_base = list(MATERIAL_CRYSTAL = 1250)
 	cell_type = null
 	charge_cost = null
 	tool_speed = 0.2

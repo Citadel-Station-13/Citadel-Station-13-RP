@@ -8,7 +8,7 @@
 	throw_speed = 1
 	throw_range = 4
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/godfig/attack_self(mob/user)
 	. = ..()
@@ -54,7 +54,7 @@
 
 /obj/item/godfig/verb/rename_fig()
 	set name = "Name Figure"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your icon."
 
 	var/mob/M = usr
@@ -223,7 +223,7 @@
 /*
 /obj/item/godfig/verb/resprite_figure()
 	set name = "Customize Figure"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose an appearance for your icon."
 
 	var/mob/M = usr

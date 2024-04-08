@@ -43,7 +43,8 @@
 	//? Traits / Physiology
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
-	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+	/// physiology modifier to add - path or instance
+	var/datum/physiology_modifier/mob_physiology_modifier
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -197,7 +198,7 @@
 	var/max_additional_languages = 3
 	/// The languages the species can't speak without an assisted organ.
 	/// This list is a guess at things that no one other than the parent species should be able to speak
-	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
 	//? Cultures
 	/// default origin
@@ -312,7 +313,7 @@
 	/// Possible unarmed attacks that the mob will use in combat,
 	var/list/unarmed_types = list(
 		/datum/unarmed_attack,
-		/datum/unarmed_attack/bite
+		/datum/unarmed_attack/bite,
 	)
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null
@@ -354,8 +355,11 @@
 	var/exhale_type = GAS_ID_CARBON_DIOXIDE
 
 	/// Species will try to stabilize at this temperature. (also affects temperature processing)
+	/// Null to disable natural stabilization.
+	//  todo: shoo, needs to be organ/biology based
 	var/body_temperature = 310.15
 	/// Species will gain this much temperature every second
+	//  todo: shoo, needs to be organ/biology based
 	var/passive_temp_gain = 0
 
 	//? Cold Air
@@ -435,6 +439,7 @@
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
+	var/custom_ability_handler
 
 	//? on death drops
 	/// The color of the species flesh.
@@ -527,6 +532,9 @@
 
 	H.maxHealth = total_health
 
+	if(!isnull(mob_physiology_modifier))
+		H.add_physiology_modifier(mob_physiology_modifier)
+
 	add_inherent_verbs(H)
 
 	for(var/name in traits)
@@ -552,6 +560,9 @@
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
+
+	if(!isnull(mob_physiology_modifier))
+		H.remove_physiology_modifier(mob_physiology_modifier)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
@@ -611,7 +622,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else if(synth)
 		new /obj/item/fbp_backup_cell(box)
 
-	box.calibrate_size()
+	box.obj_storage.fit_to_contents(no_shrink = TRUE)
 
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
@@ -769,7 +780,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
-/datum/species/proc/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 // Used to update alien icons for aliens.
@@ -797,7 +808,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	for(var/datum/unarmed_attack/attack in unarmed_attacks)
 		if(!attack.is_usable(H))
 			continue
-		if(attack.shredding)
+		if(attack.damage_mode & DAMAGE_MODE_SHRED)
 			return 1
 
 	return 0
@@ -864,9 +875,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * clones us into a new datum
  */
-/datum/species/proc/clone()
+/datum/species/clone(include_contents)
 	var/datum/species/created = new type
 	created.copy_from(src)
+	return created
 
 /**
  * completely clones us from another species, updating the provided human in the process

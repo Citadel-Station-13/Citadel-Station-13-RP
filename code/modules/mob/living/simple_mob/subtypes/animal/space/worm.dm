@@ -83,8 +83,8 @@
 
 	hovering = TRUE
 
-	melee_damage_lower = 10
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 25
 	attack_sharp = TRUE
 	attack_edge = TRUE
 	attack_armor_pen = 30
@@ -280,7 +280,7 @@
 /mob/living/simple_mob/animal/space/space_worm/proc/AttemptToEat(var/atom/target)
 	if(istype(target,/turf/simulated/wall))
 		var/turf/simulated/wall/W = target
-		if((!W.reinf_material && do_after(src, 5 SECONDS)) || do_after(src, 10 SECONDS)) // 10 seconds for an R-wall, 5 seconds for a normal one.
+		if((!W.material_reinf && do_after(src, 5 SECONDS)) || do_after(src, 10 SECONDS)) // 10 seconds for an R-wall, 5 seconds for a normal one.
 			if(target)
 				W.dismantle_wall()
 				return 1
@@ -289,7 +289,7 @@
 			var/atom/movable/objectOrMob = target
 			if(istype(objectOrMob, /obj/machinery/door))	// Doors and airlocks take time based on their durability and our damageo.
 				var/obj/machinery/door/D = objectOrMob
-				var/total_hits = max(2, round(D.maxhealth / (2 * melee_damage_upper)))
+				var/total_hits = max(2, round(D.integrity_max / (5 * legacy_melee_damage_upper)))
 
 				for(var/I = 1 to total_hits)
 
@@ -297,9 +297,9 @@
 						objectOrMob = null
 						break
 
-					if(do_after(src, 5))
+					if(do_after(src, 5, D))
 						D.visible_message("<span class='danger'>Something crashes against \the [D]!</span>")
-						D.take_damage(2 * melee_damage_upper)
+						D.inflict_atom_damage(5 * legacy_melee_damage_upper)
 					else
 						objectOrMob = null
 						break
@@ -416,7 +416,6 @@
 	name = "meat"
 	desc = "A chunk of pulsating meat."
 	icon_state = "wormmeat"
-	health = 180
 	filling_color = "#551A8B"
 	center_of_mass = list("x"=16, "y"=14)
 
@@ -438,7 +437,7 @@
 		/obj/random/contraband = 3,
 		/obj/random/unidentified_medicine/old_medicine = 7,
 		/obj/item/strangerock = 3,
-		/obj/item/ore/phoron = 7,
+		/obj/item/stack/ore/phoron = 7,
 		/obj/random/handgun = 1,
 		/obj/random/toolbox = 4,
 		/obj/random/drinkbottle = 5

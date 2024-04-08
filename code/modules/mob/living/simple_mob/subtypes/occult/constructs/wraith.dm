@@ -21,8 +21,8 @@
 	icon_living = "floating"
 	maxHealth = 200
 	health = 200
-	melee_damage_lower = 25
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 15
 	attack_sharp = 1
 	attack_edge = 1

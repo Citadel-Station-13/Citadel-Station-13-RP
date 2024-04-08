@@ -77,7 +77,7 @@
 				ntnet_global.intrusion_detection_alarm = TRUE
 			return TRUE
 
-/datum/computer_file/program/access_decrypter/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/access_decrypter/ui_data(mob/user, datum/tgui/ui)
 	if(!ntnet_global)
 		return
 	var/list/data = get_header_data()

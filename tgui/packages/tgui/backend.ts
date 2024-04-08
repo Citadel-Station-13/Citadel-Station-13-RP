@@ -60,7 +60,6 @@ export const backendReducer = (state = initialState, action) => {
       ...payload.static,
       ...payload.data,
     };
-    // Merge module data
     // Merge modules
     const modules = {
       ...state.modules,
@@ -118,11 +117,10 @@ export const backendReducer = (state = initialState, action) => {
     };
     for (let id of Object.keys(payload)) {
       const data = payload[id];
-      const merged = {
-        ...modules[data],
+      modules[id] = {
+        ...modules[id],
         ...data,
       };
-      modules[id] = merged;
     }
     // Return new state
     return {
@@ -188,6 +186,7 @@ export const backendMiddleware = store => {
 
     if (type === 'modules') {
       store.dispatch(backendModuleData(payload));
+      return;
     }
 
     if (type === 'suspend') {
@@ -276,13 +275,20 @@ export const backendMiddleware = store => {
   };
 };
 
-export type actFunctionType = (action: string, payload?: object) => void;
+export type actFunctionType = (action: string, payload?: object, route_id?: string | null) => void;
 
 /**
  * Sends an action to `ui_act` on `src_object` that this tgui window
  * is associated with.
+ *
+ * todo: overhaul module system
+ *
+ * @params
+ * * action - action string
+ * * payload - payload object; this is the list/params byond-side
+ * * route_id - route via ui_route() with given id instead of ui_act()
  */
-export const sendAct: actFunctionType = (action: string, payload: object = {}) => {
+export const sendAct: actFunctionType = (action: string, payload: object = {}, route_id?: string | null) => {
   // Validate that payload is an object
   const isObject = typeof payload === 'object'
     && payload !== null
@@ -291,7 +297,10 @@ export const sendAct: actFunctionType = (action: string, payload: object = {}) =
     logger.error(`Payload for act() must be an object, got this:`, payload);
     return;
   }
-  Byond.sendMessage('act/' + action, payload);
+  if (route_id) {
+    payload['$m_id'] = route_id;
+  }
+  Byond.sendMessage((route_id? 'mod/' : 'act/') + action, payload);
 };
 
 type BackendContext = {
@@ -317,6 +326,7 @@ type BackendContext = {
   },
   modules: Record<string, any>,
   shared: Record<string, any>,
+  computeCache: Record<string, any>,
   suspending: boolean,
   suspended: boolean,
 };
@@ -393,6 +403,31 @@ export const useLocalState = <T>(
     },
   ];
 };
+
+/**
+ * Gets a computation, that should be cached.
+ * Used to do initial pre-processing of data.
+ *
+ * todo: rethink this when we go to react or otherwise rework tgui, this is shitcode-y
+ * todo: this is a bad idea. you know why?
+ * todo: yeah funny thing this persists across window reloads due to store/state
+ * todo: being global. fuck.
+ * todo: we need like a proper hook that doesn't persist.
+ */
+// export const useComputedOnce = <T>(
+//   context: any, key: string, valueClosure: () => T
+// ): T => {
+//   const { store } = context;
+//   const state = selectBackend(store.getState());
+//   if (state.computeCache?.[key]) {
+//     return state.computeCache[key];
+//   }
+//   state.computeCache = {
+//     ...state.computeCache,
+//   };
+//   state.computeCache[key] = valueClosure();
+//   return state.computeCache[key];
+// };
 
 /**
  * Allocates state on Redux store, and **shares** it with other clients
@@ -510,4 +545,12 @@ export const constructModuleAct = (id: string, ref: string): actFunctionType => 
     }
     Byond.sendMessage('mod/' + action, sent);
   };
+};
+
+/**
+ * Extracts module data from context
+ */
+export const getModuleData = <TData>(context, id: string): TData => {
+  let backend = useBackend<TData>(context);
+  return backend.modules[id];
 };

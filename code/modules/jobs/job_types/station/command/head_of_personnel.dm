@@ -32,6 +32,7 @@
 						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
 						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
 	alt_titles = list(
+		"First Officer" = /datum/prototype/struct/alt_title/fo,
 		"Crew Resources Officer" = /datum/prototype/struct/alt_title/cro,
 		"Deputy Director" = /datum/prototype/struct/alt_title/hop/deputy
 	)
@@ -73,6 +74,9 @@
 		ACCESS_SUPPLY_MULEBOT,
 		ACCESS_SUPPLY_QM,
 	)
+
+/datum/prototype/struct/alt_title/fo
+	title = "First Officer"
 
 /datum/prototype/struct/alt_title/cro
 	title = "Crew Resources Officer"

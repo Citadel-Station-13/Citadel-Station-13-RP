@@ -5,8 +5,8 @@
 	initial_icon = "honker"
 	step_in = 4
 	dir_in = 1 //Facing North.
-	health = 250
-	maxhealth = 250			//Don't forget to update the /old variant if  you change this number.
+	integrity = 250
+	integrity_max = 250			//Don't forget to update the /old variant if  you change this number.
 	deflect_chance = 15
 	damage_absorption = list("brute"=0.75,"fire"=1,"bullet"=0.8,"laser"=0.7,"energy"=0.85,"bomb"=1)
 	max_temperature = 25000
@@ -36,12 +36,12 @@
 
 /obj/mecha/combat/honker/cluwne
 	name = "C.L.U.W.N.E."
-	desc = "The C.L.U.W.N.E. mecha is an up-armored cousin of the H.O.N.K. mech. Still in service on the borders of the Clown Planet, this unit is not typically commercially available."
+	desc = "The C.L.U.W.N.E. mecha is an up-armored cousin of the H.O.N.K. mech. Still in service on the borders of Scaena Globus, this unit is not typically commercially available."
 	icon = 'icons/mecha/mecha_vr.dmi'
 	icon_state = "cluwne"
 	initial_icon = "cluwne"
-	health = 400
-	maxhealth = 400
+	integrity = 400
+	integrity_max = 400
 	deflect_chance = 25
 	damage_absorption = list("brute"=0.6,"fire"=0.8,"bullet"=0.6,"laser"=0.5,"energy"=0.65,"bomb"=0.8)
 	max_temperature = 45000

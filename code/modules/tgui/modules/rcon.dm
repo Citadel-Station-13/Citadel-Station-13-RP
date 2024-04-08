@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(tgui_old_rcon_modules)
 	GLOB.tgui_old_rcon_modules -= src
 
 
-/datum/tgui_module_old/rcon/ui_data(mob/user)
+/datum/tgui_module_old/rcon/ui_data(mob/user, datum/tgui/ui)
 	FindDevices() // Update our devices list
 	var/list/data = ..()
 
@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(tgui_old_rcon_modules)
 
 	return data
 
-/datum/tgui_module_old/rcon/ui_act(action, params)
+/datum/tgui_module_old/rcon/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -119,5 +119,5 @@ GLOBAL_LIST_EMPTY(tgui_old_rcon_modules)
 	ntos = TRUE
 
 /datum/tgui_module_old/rcon/robot
-/datum/tgui_module_old/rcon/robot/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/rcon/robot/ui_state()
 	return GLOB.self_state

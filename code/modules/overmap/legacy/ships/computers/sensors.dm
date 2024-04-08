@@ -14,6 +14,23 @@
 	icon_screen = "adv_sensors_screen"
 	light_color = "#05A6A8"
 
+/obj/machinery/computer/ship/sensors/planet
+	name = "Sensor satelite uplink console"
+	var/planet_type = /obj/overmap/entity/visitable/sector/lythios43c
+
+/obj/machinery/computer/ship/sensors/planet/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/ship/sensors/planet/LateInitialize()
+	. = ..()
+	var/area/overmap/map = locate() in world
+	for(var/obj/overmap/entity/visitable/sector/S in map)
+		if(istype(S,planet_type))
+			linked = S
+			src.sensors = linked.sensors//Late init to be sure that the sensors have been set on the planet
+			break
+
 /obj/machinery/computer/ship/sensors/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!(. = ..()))
 		return
@@ -37,7 +54,7 @@
 		ui = new(user, src, "OvermapShipSensors", "[linked.name] Sensors Control") // 420, 530
 		ui.open()
 
-/obj/machinery/computer/ship/sensors/ui_data(mob/user)
+/obj/machinery/computer/ship/sensors/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["viewing"] = viewing_overmap(user)
@@ -138,14 +155,19 @@
 	desc = "Long range gravity scanner with various other sensors, used to detect irregularities in surrounding space. Can only run in vacuum to protect delicate quantum BS elements."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "sensors"
-	anchored = 1
-	var/max_health = 200
+	anchored = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 	var/health = 200
+	var/max_health = 200
+
 	var/critical_heat = 50 // sparks and takes damage when active & above this heat
 	var/heat_reduction = 1.5 // mitigates this much heat per tick
 	var/heat = 0
 	var/range = 1
+
 	idle_power_usage = 5000
+	var/heat_factor = 1
 
 /obj/machinery/shipsensors/attackby(obj/item/W, mob/user)
 	var/damage = max_health - health
@@ -161,7 +183,7 @@
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
 			if(do_after(user, max(5, damage / 5), src) && WT && WT.isOn())
 				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
-				take_damage(-damage)
+				take_damage_legacy(-damage)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
@@ -196,7 +218,7 @@
 		. += "It shows signs of damage!"
 
 /obj/machinery/shipsensors/bullet_act(var/obj/projectile/Proj)
-	take_damage(Proj.get_structure_damage())
+	take_damage_legacy(Proj.get_structure_damage())
 	..()
 
 /obj/machinery/shipsensors/proc/toggle()
@@ -217,9 +239,9 @@
 			s.set_up(3, 1, src)
 			s.start()
 
-			take_damage(rand(10,50))
+			take_damage_legacy(rand(10,50))
 			toggle()
-		heat += idle_power_usage/15000
+		heat += (idle_power_usage/15000) * heat_factor
 
 	if (heat > 0)
 		heat = max(0, heat - heat_reduction)
@@ -239,10 +261,10 @@
 /obj/machinery/shipsensors/emp_act(severity)
 	if(!use_power)
 		return
-	take_damage(20/severity)
+	take_damage_legacy(20/severity)
 	toggle()
 
-/obj/machinery/shipsensors/take_damage(value)
+/obj/machinery/shipsensors/proc/take_damage_legacy(value)
 	health = min(max(health - value, 0),max_health)
 	if(use_power && health == 0)
 		toggle()
@@ -250,3 +272,20 @@
 /obj/machinery/shipsensors/weak
 	heat_reduction = 0.2
 	desc = "Miniturized gravity scanner with various other sensors, used to detect irregularities in surrounding space. Can only run in vacuum to protect delicate quantum BS elements."
+
+/obj/machinery/shipsensors/uplink
+	name = "sensors uplink"
+	desc = "A high power uplink, connecting to a satelite with a high power sensor array and a sophisticated cooling system."
+	var/planet_type = /obj/overmap/entity/visitable/sector/lythios43c
+	heat_factor = 0.1//Much much lower, since we are a cool sensor sat.
+
+/obj/machinery/shipsensors/uplink/in_vacuum()
+	return TRUE
+
+/obj/machinery/shipsensors/uplink/Initialize(mapload)
+	. = ..()
+	var/area/overmap/map = locate() in world
+	for(var/obj/overmap/entity/visitable/sector/S in map)
+		if(istype(S,planet_type))
+			S.sensors = src
+

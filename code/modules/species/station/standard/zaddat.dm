@@ -24,7 +24,7 @@
 		LANGUAGE_ID_ZADDAT,
 		LANGUAGE_ID_UNATHI
 	)
-	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
+	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER, LANGUAGE_PROMETHEAN) //limited vocal range; can talk Unathi and magical Galcom but not much else
 
 
 	health_hud_intensity = 2.5
@@ -120,7 +120,7 @@
 	else
 		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
-/datum/species/zaddat/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/zaddat/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 
 	if(H.inStasisNow())
 		return

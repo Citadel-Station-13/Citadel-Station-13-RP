@@ -64,7 +64,7 @@
 
 	newtonian_move(get_dir(target, src))
 
-	throwing.throw_at(target, the_range, null, (a_intent == INTENT_HELP? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = impulse)
+	throwing.throw_at(target, the_range, null, (a_intent != INTENT_HARM? THROW_AT_IS_NEAT : NONE) | (overhand? THROW_AT_OVERHAND : NONE), src, force = impulse)
 
 	trigger_aiming(TARGET_CAN_CLICK)
 	return TRUE

@@ -3,20 +3,21 @@
 
 import { useBackend } from "../../backend";
 import { LabeledList, Section } from "../../components";
+import { SectionProps } from "../../components/Section";
 import { AtmosFilterList, AtmosGasGroupFlags, AtmosGasIDs, GasContext } from "../common/Atmos";
 import { AtmosPortable } from "../common/AtmosPortable";
 
-interface AtmosPortableScrubberControlProps {
-  atmosContext: GasContext;
-  scrubbingIds: AtmosGasIDs;
-  scrubbingGroups: AtmosGasGroupFlags;
-  toggleId?: (id) => void;
-  toggleGroup?: (group) => void;
+interface AtmosPortableScrubberControlProps extends SectionProps{
+  readonly atmosContext: GasContext;
+  readonly scrubbingIds: AtmosGasIDs;
+  readonly scrubbingGroups: AtmosGasGroupFlags;
+  readonly toggleId?: (id) => void;
+  readonly toggleGroup?: (group) => void;
 }
 
 export const AtmosPortableScrubberControl = (props: AtmosPortableScrubberControlProps, context) => {
   return (
-    <Section title="Scrubbing">
+    <Section title="Scrubbing" {...props}>
       <AtmosFilterList
         gasContext={props.atmosContext}
         selectedGroups={props.scrubbingGroups}
@@ -38,12 +39,17 @@ export const AtmosPortableScrubber = (props, context) => {
   const { data, act } = useBackend<AtmosPortableScubberData>(context);
   return (
     <AtmosPortable
+      minimumWidth={430}
+      minimumHeight={600}
+      name="Portable Air Scrubber"
       additionalListItems={(
         <LabeledList.Item label="Current Flow">
           {data.moleRate} mol/s
         </LabeledList.Item>
       )}>
       <AtmosPortableScrubberControl
+        fill
+        scrollable
         atmosContext={data.atmosContext}
         scrubbingIds={data.scrubbingIds}
         scrubbingGroups={data.scrubbingGroups}

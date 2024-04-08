@@ -21,8 +21,8 @@
 	movement_cooldown = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 12
 
 	minbodytemp = 200
 
@@ -41,8 +41,8 @@
 	movement_cooldown = 0
 
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 12
 
 	minbodytemp = 200
 

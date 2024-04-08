@@ -2,15 +2,15 @@
 
 /datum/category_item/catalogue/technology/reticent
 	name = "Exosuit - Reticent"
-
-	desc = "During the Melancholy Occupation of 2476 - callously referred to by their opposition as the 'Prank War', the \
+	desc = "During the Melancholy Occupation of 2476 - callously referred to by their opposition as the 'Prank War' - the \
 	people of Le Rien realized the rapidly widening gulf between their technological advancements and Columbina's. Aiming to \
 	prevent another such tragedy from happening again, extensive research was conducted on the H.O.N.K. mecha deployed by \
 	the Clowns. Although Silencium bears less technological utility, scientists were able to employ its own unique properties in \
 	the Reticent's design. An agile mecha plated in a sturdy layer of Silencium, the Reticent was able to move silently through \
 	corridors its bulkier opponent could not. Able to close distance with the more range biased H.O.N.K. mecha, Reticent units \
 	deployed to occupied zones quickly cleared out mechanized garrisons. Although formidable, the Reticent suffers from a weak \
-	chassis - a byproduct of its maneuverability, and is easily disabled once its dense mineral armor is shattered."
+	chassis - a byproduct of its maneuverability - and is easily disabled once its dense mineral armor is shattered. Its 11'(3m) \
+	oblong body is designed to move at a forward tilt, assisting the exosuit in rapidly gaining momentum."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/reticent
@@ -63,15 +63,14 @@
 
 /datum/category_item/catalogue/technology/reticence
 	name = "Exosuit - Reticence"
-
 	desc = "After fully repelling the Columbinan occupiers in 2503, Le Rien began to construct powerful defensive \
 	lines along their borders. Decades of fighting had provided researchers with plenty of insight into the faults \
 	and merits of the Reticent design. Although intent on keeping the model in service, the Silent Council decreed \
 	that a new mech platform would need to be developed to bolster their static defensive line. The Reticent was far \
 	too fragile for border defense. Returning to more traditional mecha design doctrine, the Reticence is larger, \
-	heavier, and more armored than its predecessor. Trading in the Reticent's blinding speed for a more powerful \
-	shielding system and significant improvements in Silencium armor placement, the Reticence is still able to close \
-	the gap and deliver close-range punishment to any who dare violate Le Rien's borders."
+	heavier, and more armored than its predecessor. A 10'(3m) tall hulk, the Reticence trades in the Reticent's \
+	blinding speed for a more powerful shielding system and significant improvements in Silencium armor placement. \
+	The Reticence is still able to close the gap and deliver close-range punishment to any who dare violate Le Rien's borders."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/reticent/reticence

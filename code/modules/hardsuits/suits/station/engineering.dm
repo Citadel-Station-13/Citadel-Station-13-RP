@@ -4,8 +4,8 @@
 	desc = "A light hardsuit for repairs and maintenance to the outside of habitats and vessels."
 	icon_state = "eva_rig"
 	armor_type = /datum/armor/hardsuit/eva
-	slowdown = 0
-	offline_slowdown = 1
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75
 	seal_delay = 24 //Should be slightly faster than other hardsuits, giving Engineering faster response time for emergencies.
@@ -18,7 +18,6 @@
 		/obj/item/flashlight,
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
-		/obj/item/storage/backpack,
 		/obj/item/storage/briefcase/inflatable,
 		/obj/item/t_scanner,
 		/obj/item/rcd
@@ -52,13 +51,13 @@
 	camera_networks = list(NETWORK_ENGINEERING)
 
 /obj/item/hardsuit/ce
-	name = "advanced voidsuit control module"
-	suit_type = "advanced voidsuit"
-	desc = "An advanced voidsuit that protects against hazardous, low pressure environments. Shines with a high polish."
+	name = "advanced hardsuit control module"
+	suit_type = "advanced hardsuit"
+	desc = "An advanced hardsuit that protects against hazardous, low pressure environments. Shines with a high polish."
 	icon_state = "ce_rig"
 	armor_type = /datum/armor/hardsuit/ce
-	slowdown = 0
-	offline_slowdown = 0
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	offline_vision_restriction = 0
 	siemens_coefficient= 0.75
 	rigsuit_max_pressure = 20 * ONE_ATMOSPHERE			  // Max pressure the hardsuit protects against when sealed
@@ -77,7 +76,6 @@
 		/obj/item/t_scanner,
 		/obj/item/pickaxe,
 		/obj/item/rcd,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 
@@ -97,7 +95,7 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/magboots/hardsuit/ce
-	slowdown_on = 0
+	encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE_ADVANCED
 
 /obj/item/hardsuit/ce/equipped
 	initial_modules = list(

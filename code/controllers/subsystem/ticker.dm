@@ -120,6 +120,8 @@ SUBSYSTEM_DEF(ticker)
 
 				SSdbcore.SetRoundEnd()
 				SSpersistence.SavePersistence()
+				if(!SSpersistence.world_saved_count && CONFIG_GET(flag/persistence) && !SSpersistence.world_non_canon)
+					SSpersistence.save_the_world()
 
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
@@ -506,7 +508,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (SSemergencyshuttle.returned() || mode.station_was_nuked)
 		mode_finished = (!post_game && mode.check_finished())
 	else
-		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
+		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1))
 		mode_finished = game_finished
 
 	if (mode_finished)

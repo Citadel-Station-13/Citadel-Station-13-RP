@@ -20,7 +20,7 @@
 			/obj/item/storage/box/flashbangs = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security equipment crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 
@@ -49,7 +49,7 @@
 			/obj/item/gun/energy/xray = 2,
 			/obj/item/shield/energy = 2)
 	cost = 100
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Experimental weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -57,7 +57,7 @@
 	name = "Weapons - Laser rifle crate"
 	contains = list(/obj/item/gun/energy/laser = 2)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Energy weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -69,7 +69,7 @@
 			/obj/item/gun/ballistic/shotgun/pump/combat = 2
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/ward
+	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Shotgun crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -77,7 +77,7 @@
 	name = "Weapons - Energy marksman"
 	contains = list(/obj/item/gun/energy/sniperrifle = 2)
 	cost = 100
-	container_type = /obj/structure/closet/crate/secure/heph
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Energy marksman crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -96,7 +96,7 @@
 			/obj/item/storage/box/empslite
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -107,7 +107,7 @@
 			/obj/item/storage/box/empslite
 			)
 	cost = 30
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -115,7 +115,7 @@
 	name = "Weapons - Ballistic SMGs"
 	contains = list(/obj/item/gun/ballistic/automatic/wt550 = 2)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/ward
+	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Ballistic weapon crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -213,7 +213,7 @@
 	name = "Ammunition - Power cell"
 	contains = list(/obj/item/cell/device/weapon = 3)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/einstein
+	container_type = /obj/structure/closet/crate/secure/corporate/einstein
 	container_name = "Energy ammunition crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 
@@ -232,7 +232,7 @@
 			/obj/item/gun/energy/frontier/locked/holdout = 1,
 			)
 	cost = 35
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "frontier phaser crate"
 	access = ACCESS_GENERAL_EXPLORER
 

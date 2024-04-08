@@ -3,13 +3,12 @@
 
 /datum/category_item/catalogue/technology/gygax
 	name = "Exosuit - Gygax"
-	desc = "The Gygax is a relatively modern exosuit, built to be lightweight and agile, while still being fairly durable. \
-	These traits have made them rather popular among well funded private and corporate security forces, who desire \
-	the ability to rapidly respond to conflict.\
-	<br><br>\
-	One special feature of this model is that the actuators that \
-	drive the exosuit can have their safeties disabled in order to achieve a short-term burst of unparalleled speed, \
-	at the expense of damaging the exosuit considerably."
+	desc = "The Gygax is a relatively modern exosuit designed for agility and speed without sacrificing durability. \
+	These traits have made the Gygax fairly popular among well funded private and corporate security forces. The Gygax \
+	features a bespoke actuator assembly that grants the exosuit short-term bursts of unparalleled speed. Consequently, \
+	the strain this assembly puts on the exosuit causes damage the unit's structural integrity. In spite of the drawbacks, \
+	this feature is frequently utilized by those who require the ability to rapidly respond to conflict. 10'(3m) tall and \
+	rotund, the Gygax's cockpit is fully enclosed and protected by the design's diamond-weave armor plating."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax
@@ -43,19 +42,18 @@
 
 /datum/category_item/catalogue/technology/dark_gygax
 	name = "Exosuit - Dark Gygax"
-	desc = "This exosuit is a variant of the regular Gygax. It is generally referred to as the Dark Gygax, \
-	due to being constructed from different materials that give it a darker appearance. Beyond merely looking \
-	cosmetically different, the Dark Gygax also has various upgrades compared to the Gygax. It is much more \
-	resilient, yet retains the agility and speed of the Gygax.\
-	<br><br>\
-	These are relatively rare compared to the other security exosuits, as most security forces are content with \
-	a regular Gygax. Instead, this exosuit is often used by high-end asset protection teams, and mercenaries."
+	desc = "This variant of the standard Gygax is colloquially referred to as the 'Dark Gygax', on account of the exotic \
+	materials used in its construction. The standard Gygax's diamond-weave armor system is augmented with depleted morphium, \
+	lending it a darker and marginally more sinister hue. Simultaneously, this upgrade grants the Dark Gygax considerably more \
+	resilience without sacrificing the standard model's agility or speed. Due to the gross expenditure required to fabricate a \
+	Dark Gygax's armor plating, these platforms are exceedingly rare. Most security forces are content with the protection and \
+	utility of the standard Gygax, making this upgrade appear unnecessary. However, the Dark Gygax is often sought out by \
+	high-tier asset protection teams and paramilitary outfits."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark
 	name = "dark gygax"
-	desc = "A significantly upgraded Gygax security mech, often utilized by corporate asset protection teams and \
-	PMCs."
+	desc = "A significantly upgraded Gygax security mech, often utilized by corporate asset protection teams and PMCs."
 	catalogue_data = list(/datum/category_item/catalogue/technology/dark_gygax)
 	icon_state = "darkgygax"
 	wreckage = /obj/structure/loot_pile/mecha/gygax/dark
@@ -75,8 +73,6 @@
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/medgax
 	name = "medgax"
-	desc = "An unorthodox fusion of the Gygax and Odysseus exosuits, this one is fast, sturdy, and carries a wide array of \
-	potent chemicals and delivery mechanisms. The doctor is in!"
+	desc = "An unorthodox fusion of the Gygax and Odysseus exosuits, this one is fast, sturdy, and carries a wide array of potent chemicals and delivery mechanisms. The doctor is in!"
 	icon_state = "medgax"
 	wreckage = /obj/structure/loot_pile/mecha/gygax/medgax
-

@@ -62,7 +62,7 @@
 		return 0
 
 	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
-	playsound(loc, "sparks", 50, 1, -1)
+	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 	if (shock_damage > 15)
 		src.visible_message(
 			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
@@ -96,7 +96,7 @@
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
-	if(!W.edge || !W.damage_force || W.damtype != BRUTE)
+	if(!((W.damage_mode & DAMAGE_MODE_EDGE) || W.edge) || !W.damage_force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] begins to slit [src]'s throat with \the [W]!</span>")
@@ -109,7 +109,7 @@
 
 	var/damage_mod = 1
 	//presumably, if they are wearing a helmet that stops pressure effects, then it probably covers the throat as well
-	var/obj/item/clothing/head/helmet = item_by_slot(SLOT_ID_HEAD)
+	var/obj/item/clothing/head/helmet = item_by_slot_id(SLOT_ID_HEAD)
 	if(istype(helmet) && (helmet.body_cover_flags & HEAD) && (helmet.min_pressure_protection != null)) // Both min- and max_pressure_protection must be set for it to function at all, so we can just check that one is set.
 		//we don't do an armor_check here because this is not an impact effect like a weapon swung with momentum, that either penetrates or glances off.
 		damage_mod = 1.0 - (helmet.fetch_armor().raw(ARMOR_MELEE))
@@ -117,7 +117,7 @@
 	var/total_damage = 0
 	for(var/i in 1 to 3)
 		var/damage = min(W.damage_force*1.5, 20)*damage_mod
-		apply_damage(damage, W.damtype, "head", 0, sharp=W.sharp, edge=W.edge)
+		apply_damage(damage, W.damtype, "head", 0, sharp=W.sharp||(W.damage_mode & DAMAGE_MODE_EDGE), edge=W.edge||(W.damage_mode & DAMAGE_MODE_EDGE))
 		total_damage += damage
 
 	var/oxyloss = total_damage
@@ -132,8 +132,8 @@
 		else
 			user.visible_message("<span class='danger'>\The [user] cut [src]'s neck with \the [W]!</span>")
 
-		if(W.hitsound)
-			playsound(loc, W.hitsound, 50, 1, -1)
+		if(W.attack_sound)
+			playsound(loc, W.attack_sound, 50, 1, -1)
 
 	G.last_action = world.time
 	flick(G.hud.icon_state, G.hud)
@@ -144,16 +144,16 @@
 
 /mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
-	if(!W.sharp || !W.damage_force || W.damtype != BRUTE)
+	if(!(W.sharp || (W.damage_mode & DAMAGE_MODE_SHARP)) || !W.damage_force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
 
 	user.visible_message("<span class='danger'>\The [user] plunges \the [W] into \the [src]!</span>")
 
 	var/damage = shank_armor_helper(W, G, user)
-	apply_damage(damage, W.damtype, "torso", 0, sharp=W.sharp, edge=W.edge)
+	apply_damage(damage, W.damtype, "torso", 0, sharp=W.sharp||(W.damage_mode & DAMAGE_MODE_EDGE), edge=W.edge||(W.damage_mode & DAMAGE_MODE_EDGE))
 
-	if(W.hitsound)
-		playsound(loc, W.hitsound, 50, 1, -1)
+	if(W.attack_sound)
+		playsound(loc, W.attack_sound, 50, 1, -1)
 
 	add_attack_logs(user,src,"Knifed (shanked)")
 
@@ -162,7 +162,7 @@
 /mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/grab/G, mob/user)
 	var/damage = W.damage_force
 	var/damage_mod = 1
-	if(W.edge)
+	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
 		damage = damage * 1.25 //small damage bonus for having sharp and edge
 
 	var/obj/item/clothing/suit/worn_suit
@@ -171,16 +171,16 @@
 	var/worn_under_armor
 
 	//if(SLOT_ID_SUIT)
-	if(item_by_slot(SLOT_ID_SUIT))
-		worn_suit = item_by_slot(SLOT_ID_SUIT)
-		//worn_suit = item_by_slot(SLOT_ID_SUIT)
+	if(item_by_slot_id(SLOT_ID_SUIT))
+		worn_suit = item_by_slot_id(SLOT_ID_SUIT)
+		//worn_suit = item_by_slot_id(SLOT_ID_SUIT)
 		worn_suit_armor = worn_suit.fetch_armor().raw(ARMOR_MELEE)
 	else
 		worn_suit_armor = 0
 
 	//if(SLOT_ID_UNIFORM)
-	if(item_by_slot(SLOT_ID_UNIFORM))
-		worn_under = item_by_slot(SLOT_ID_UNIFORM)
+	if(item_by_slot_id(SLOT_ID_UNIFORM))
+		worn_under = item_by_slot_id(SLOT_ID_UNIFORM)
 		worn_under_armor = worn_under.fetch_armor().raw(ARMOR_MELEE)
 	else
 		worn_under_armor = 0

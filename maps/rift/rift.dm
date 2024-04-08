@@ -41,7 +41,6 @@
 		/datum/shuttle/autodock/ferry/supply/cargo,
 		/datum/shuttle/autodock/ferry/belter,
 	)
-	legacy_persistence_id = "rift"
 	full_name = "NSB Atlas"
 	use_overmap = TRUE
 	overmap_size = 60
@@ -94,7 +93,7 @@
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
-	company_name  = "NanoTrasen"
+	company_name  = "Nanotrasen"
 	company_short = "NT"
 	starsys_name  = "Lythios-43"
 
@@ -164,8 +163,16 @@
 		/area/engineering/atmos_intake, // Outside,
 		/area/rnd/external) //  Outside,
 
+/datum/map_level/rift
+	abstract_type = /datum/map_level/rift
+	air_outdoors = /datum/atmosphere/planet/lythios43c
+
+/datum/map_level/rift/station
+	abstract_type = /datum/map_level/rift/station
+	persistence_allowed = TRUE
+
 /datum/map_level/rift/station/underground_floor
-	id = "RiftUnderground3"
+	id = "underground-3"
 	name = "Rift - East Canyon"
 	display_id = "atlas-underground-3"
 	display_name = "NSB Atlas Underground -3 (Canyon)"
@@ -179,13 +186,14 @@
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/station/underground_deep
+	link_west = /datum/map_level/rift/base
 
 /datum/map_level/rift/station/underground_floor/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/underground_deep
-	id = "RiftUnderground2"
+	id = "underground-2"
 	name = "Rift - Underground 2"
 	display_id = "atlas-underground-2"
 	display_name = "NSB Atlas Underground -2 (Engineering Deck)"
@@ -201,13 +209,14 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_floor
 	link_above = /datum/map_level/rift/station/underground_shallow
+	link_west = /datum/map_level/rift/deep
 
 /datum/map_level/rift/station/underground_deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/underground_shallow
-	id = "RiftUnderground1"
+	id = "underground-1"
 	name = "Rift - Underground 1"
 	display_id = "atlas-underground-1"
 	display_name = "NSB Atlas Underground -1 (Maintenance Deck)"
@@ -223,13 +232,14 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_deep
 	link_above = /datum/map_level/rift/station/surface_low
+	link_west = /datum/map_level/rift/caves
 
 /datum/map_level/rift/station/underground_shallow/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/surface_low
-	id = "RiftSurface1"
+	id = "surface-1"
 	name = "Rift - Surface 1"
 	display_id = "atlas-surface-1"
 	display_name = "NSB Atlas Surface 1 (Logistics Deck)"
@@ -245,13 +255,14 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_shallow
 	link_above = /datum/map_level/rift/station/surface_mid
+	link_west = /datum/map_level/rift/plains
 
 /datum/map_level/rift/station/surface_low/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/surface_mid
-	id = "RiftSurface2"
+	id = "surface-2"
 	name = "Rift - Surface 2"
 	display_id = "atlas-surface-2"
 	display_name = "NSB Atlas Surface 2 (Operations Deck)"
@@ -273,7 +284,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/surface_high
-	id = "RiftSurface3"
+	id = "surface-3"
 	name = "Rift - Surface 3"
 	display_id = "atlas-surface-3"
 	display_name = "NSB Atlas Surface 3 (Command Deck)"
@@ -294,7 +305,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/base
-	id = "RiftWestUnderground3"
+	id = "west-underground-3"
 	name = "Rift - West Canyon"
 	display_id = "atlas-west-canyon"
 	display_name = "NSB Atlas Western Canyons"
@@ -307,6 +318,7 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/deep
+	link_east = /datum/map_level/rift/station/underground_floor
 
 /datum/map_level/rift/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -323,7 +335,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/deep
-	id = "RiftWestUnderground2"
+	id = "west-underground-2"
 	name = "Rift - West Caves (Deep)"
 	display_id = "atlas-west-deep"
 	display_name = "NSB Atlas Western Caves - Deep"
@@ -338,6 +350,7 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/base
 	link_above = /datum/map_level/rift/caves
+	link_east = /datum/map_level/rift/station/underground_deep
 
 /datum/map_level/rift/deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -354,7 +367,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/caves
-	id = "RiftWestUnderground1"
+	id = "west-underground-1"
 	name = "Rift - West Caves (Shallow)"
 	display_id = "atlas-west-caves"
 	display_name = "NSB Atlas Western Caves - Shallow"
@@ -368,6 +381,7 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/deep
 	link_above = /datum/map_level/rift/plains
+	link_east = /datum/map_level/rift/station/underground_shallow
 
 /datum/map_level/rift/caves/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -384,7 +398,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/plains
-	id = "RiftWestSurface1"
+	id = "west-surface-1"
 	name = "Rift - Western Plains"
 	display_id = "atlas-west-plains"
 	display_name = "NSB Atlas Western Plains"
@@ -396,7 +410,7 @@
 	link_east = /datum/map_level/rift/station/surface_low
 
 /datum/map_level/rift/colony
-	id = "RiftOrbitalRelay"
+	id = "orbital-relay"
 	name = "Rift - Orbital Relay"
 	display_id = "atlas-relay"
 	display_name = "NSB Atlas Orbital Relay"

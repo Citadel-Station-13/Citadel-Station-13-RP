@@ -13,6 +13,8 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"

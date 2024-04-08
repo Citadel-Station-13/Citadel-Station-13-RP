@@ -35,8 +35,8 @@
 	maxHealth = 120
 	health = 120
 
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 10
 
 	poison_chance = 15
 	poison_per_bite = 3
@@ -188,7 +188,7 @@
 	new /obj/effect/temporary_effect/tunneler_hole(get_turf(src))
 
 /mob/living/simple_mob/animal/giant_spider/tunneler/proc/dig_under_floor(turf/T)
-	new /obj/item/ore/glass(T) // This will be rather weird when on station but the alternative is too much work.
+	new /obj/item/stack/ore/glass(T) // This will be rather weird when on station but the alternative is too much work.
 
 /obj/effect/temporary_effect/tunneler_hole
 	name = "hole"

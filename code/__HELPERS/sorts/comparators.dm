@@ -1,6 +1,10 @@
 /**
  * Comparators for use with /datum/sort_instance (or wherever you want)
- * They should return negative, zero, or positive numbers for a < b, a == b, and a > b respectively.
+ *
+ * They should return negative, zero, or positive numbers for a < b, a == b, and a > b respectively, where
+ * * neg : a < b  = "a should be in front of b",
+ * * zero: a == b = "a and b are equivalent"
+ * * pos : a > b  = "a should be behind b"
  */
 
 //! Standard Sort
@@ -179,6 +183,10 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
 
+///Tracks are sorted by genre then by title inside that.
+/proc/cmp_media_track_asc(datum/media_track/A, datum/media_track/B)
+	var/genre_sort = sorttext(B.genre || "Uncategorized", A.genre || "Uncategorized")
+	return genre_sort || sorttext(B.title, A.title)
 
 //! Line Profiling
 

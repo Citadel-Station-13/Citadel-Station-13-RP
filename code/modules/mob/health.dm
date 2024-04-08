@@ -49,6 +49,7 @@
 			dead_mob_list += src
 	if(update_mobility)
 		update_mobility()
+	update_hud_med_status()
 	return TRUE
 
 /**

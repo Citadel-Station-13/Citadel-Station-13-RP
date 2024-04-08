@@ -9,13 +9,15 @@
 	anchored = 0
 	name = "fission core"
 	icon_state = "engine"
+
+	var/health = 200
+	var/max_health = 200
+
 	var/announce = 1
 	var/decay_archived = 0
 	var/exploded = 0
 	var/envefficiency = 0.01
 	var/gasefficiency = 0.5
-	var/health = 200
-	var/max_health = 200
 	var/warning_delay = 20
 	var/meltwarned = 0
 	var/lastwarning = 0
@@ -236,7 +238,7 @@
 			to_chat(user, "<span class='notice'>There's nothing left to remove.</span>")
 			return
 		for(var/obj/item/fuelrod/rod in rods)
-			if(rod.health == 0 || rod.life == 0)
+			if(rod.integrity == 0 || rod.life == 0)
 				to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
 				if(do_after(user, 40))
 					eject_rod(rod)

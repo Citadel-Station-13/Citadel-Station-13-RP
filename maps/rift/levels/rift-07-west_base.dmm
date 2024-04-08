@@ -124,7 +124,6 @@
 	dir = 8
 	},
 /obj/effect/overlay/snow/floor,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "hg" = (
@@ -134,7 +133,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/vault)
 "hl" = (
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "hQ" = (
@@ -259,11 +257,6 @@
 /turf/simulated/wall,
 /area/rift/surfacebase/outside/west_base)
 "mb" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 8;
-	name = "westbase_to_center";
-	portal_id = "westbasestep"
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "my" = (
@@ -308,9 +301,6 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_base)
 "ns" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "nO" = (
@@ -320,14 +310,12 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "nQ" = (
-/obj/random/junk,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
 "ok" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "oo" = (
@@ -358,7 +346,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "qK" = (
@@ -443,7 +430,6 @@
 /area/rift/facility/interior/core)
 "uB" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "uQ" = (
@@ -665,7 +651,6 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
-/obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "Il" = (
@@ -691,10 +676,9 @@
 "Jt" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
 	chargelevel = 0;
-	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -709,7 +693,6 @@
 	dir = 1
 	},
 /obj/effect/overlay/snow/floor,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "Kh" = (
@@ -762,7 +745,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "MP" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "Nf" = (
@@ -781,7 +763,6 @@
 /turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_base)
 "NI" = (
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/vault)
 "NS" = (
@@ -852,7 +833,6 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "QO" = (
-/obj/random/trash,
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 4
 	},
@@ -874,7 +854,6 @@
 /obj/item/bone/arm,
 /obj/item/bone/ribs,
 /obj/item/bone/skull/tajaran,
-/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
 "RE" = (
@@ -892,7 +871,6 @@
 /area/rift/facility/interior/barracks)
 "Sk" = (
 /obj/effect/floor_decal/rust,
-/obj/random/junk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "So" = (
@@ -931,9 +909,6 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/underground3)
 "TM" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "TT" = (

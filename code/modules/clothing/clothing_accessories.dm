@@ -7,6 +7,37 @@
 /obj/item/clothing/proc/is_accessory()
 	return is_accessory
 
+/obj/item/clothing/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	for(var/obj/item/clothing/accessory as anything in accessories)
+		var/list/queried = accessory.context_query(e_args)
+		for(var/key in queried)
+			.["A-[ref(accessory)]-[key]"] = queried[key]
+
+/obj/item/clothing/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	if(key[1] != "A" || key[2] != "-")
+		return FALSE
+	var/list/split = splittext(key, "-")
+	if(length(split) < 3)
+		return FALSE
+	var/accessory_ref = split[2]
+	var/obj/item/clothing/accessory = locate(accessory_ref) in accessories
+	if(!(accessory in accessories))
+		return FALSE
+	return accessory.context_act(e_args, split[3])
+
+/obj/item/clothing/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+	for(var/obj/item/clothing/accessory as anything in accessories)
+		if(accessory.on_attack_hand(e_args))
+			return TRUE
+	return FALSE
+
 /obj/item/clothing/worn_mob()
 	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
 
@@ -14,6 +45,25 @@
 	if(accessory_host)
 		return accessory_host.update_worn_icon()
 	return ..()
+
+/obj/item/clothing/get_encumbrance()
+	. = ..()
+	if(!isnull(accessory_host))
+		. = max(0, . * accessory_host.accessory_encumbrance_multiply - accessory_host.accessory_encumbrance_mitigation)
+
+/obj/item/clothing/proc/set_accessory_encumbrance_mitigation(val, update)
+	accessory_encumbrance_mitigation = val
+	if(update)
+		update_accessory_encumbrance()
+
+/obj/item/clothing/proc/set_accessory_encumbrance_multiply(val, update)
+	accessory_encumbrance_multiply = val
+	if(update)
+		update_accessory_encumbrance()
+
+/obj/item/clothing/proc/update_accessory_encumbrance()
+	for(var/obj/item/I as anything in accessories)
+		I.update_encumbrance()
 
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
@@ -160,18 +210,6 @@
 
 	..()
 
-/obj/item/clothing/attack_hand(mob/user, list/params)
-	//only forward to the attached accessory if the clothing is equipped (not in a storage)
-	if(LAZYLEN(accessories) && src.loc == user)
-		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attack_hand(user)
-		return
-	if (ishuman(user) && src.loc == user)
-		var/mob/living/carbon/human/H = user
-		if(src == H.w_uniform) // Un-equip on single click, but not on uniform.
-			return
-	return ..()
-
 /obj/item/clothing/examine(var/mob/user)
 	. = ..()
 	if(LAZYLEN(accessories))
@@ -210,26 +248,20 @@
 	LAZYADD(accessories,A)
 	A.on_attached(src, user)
 	add_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
-	update_accessory_slowdown()
 	update_worn_icon()
+	update_encumbrance()
 
 /obj/item/clothing/proc/remove_accessory(mob/user, obj/item/clothing/accessory/A)
 	if(!LAZYLEN(accessories) || !(A in accessories))
 		return
-
 	A.on_removed(user)
 	accessories -= A
-	update_accessory_slowdown()
 	update_worn_icon()
-
-/obj/item/clothing/proc/update_accessory_slowdown()
-	slowdown = initial(slowdown)
-	for(var/obj/item/clothing/accessory/A in accessories)
-		slowdown += A.slowdown
+	update_encumbrance()
 
 /obj/item/clothing/proc/removetie_verb()
 	set name = "Remove Accessory"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living))
 		return

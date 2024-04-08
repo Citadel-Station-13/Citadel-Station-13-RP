@@ -13,8 +13,8 @@
 
 	maxHealth = 150
 	var/maxHealth_adult = 200
-	melee_damage_lower = 5
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 25
 	melee_miss_chance = 0
 	gender = NEUTER
 
@@ -144,8 +144,8 @@
 		return
 
 	is_adult = TRUE
-	melee_damage_lower = 20
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 40
 	maxHealth = maxHealth_adult
 	amount_grown = 0
 	update_icon()
@@ -232,8 +232,8 @@
 	cooperative = FALSE
 
 	// If for whatever reason the mob AI decides to try to attack something anyways.
-	melee_damage_upper = 0
-	melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
 
 	update_mood()
 

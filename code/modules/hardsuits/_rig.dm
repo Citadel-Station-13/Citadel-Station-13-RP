@@ -20,7 +20,7 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	action_button_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
@@ -29,8 +29,13 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
 	permeability_coefficient = 0.1
-	unacidable = 1
+	integrity_flags = INTEGRITY_ACIDPROOF
 	preserve_item = 1
+
+	weight = ITEM_WEIGHT_BASELINE
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG
+	var/online_encumbrance
+	var/offline_encumbrance = ITEM_WEIGHT_LEGACY_RIG * 2
 
 	// Activation
 	/// activation state
@@ -38,6 +43,7 @@
 	/// last online, set in process()
 	var/last_online = FALSE
 
+	var/maintenance_while_online = FALSE
 	var/suit_state //The string used for the suit's icon_state.
 
 	var/interface_path = "hardsuit.tmpl"
@@ -92,7 +98,6 @@
 	var/locked_down = 0
 
 	var/seal_delay = SEAL_DELAY
-	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction
 	var/offline_vision_restriction = 1                        // 0 - none, 1 - welder vision, 2 - blind. Maybe move this to helmets.
 	var/airtight = 1 //If set, will adjust ALLOWINTERNALS flag and pressure protections on components. Otherwise it should leave them untouched.
@@ -116,7 +121,38 @@
 
 	var/sprint_slowdown_modifier = 0					      // Sprinter module modifier.
 
-/obj/item/hardsuit/get_cell()
+	//* Storage *//
+	var/list/storage_insertion_whitelist
+	var/list/storage_insertion_blacklist
+	var/list/storage_insertion_allow
+
+	var/storage_max_single_weight_class = WEIGHT_CLASS_NORMAL
+	var/storage_max_combined_weight_class
+	var/storage_max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
+	var/storage_max_items
+
+	var/storage_weight_subtract = 0
+	var/storage_weight_multiply = 1
+
+	var/storage_allow_quick_empty = TRUE
+	var/storage_allow_quick_empty_via_clickdrag = TRUE
+	var/storage_allow_quick_empty_via_attack_self = FALSE
+
+	var/storage_sfx_open = "rustle"
+	var/storage_sfx_insert = "rustle"
+	var/storage_sfx_remove = "rustle"
+
+	var/storage_ui_numerical_mode = FALSE
+
+	/// storage datum path
+	var/storage_datum_path = /datum/object_system/storage
+	/// Cleared after Initialize().
+	/// List of types associated to amounts.
+	var/list/storage_starts_with
+	/// set to prevent us from spawning starts_with
+	var/storage_empty = FALSE
+
+/obj/item/hardsuit/get_cell(inducer)
 	return cell
 
 /obj/item/hardsuit/examine(mob/user, dist)
@@ -138,6 +174,8 @@
 
 /obj/item/hardsuit/Initialize(mapload)
 	. = ..()
+	initialize_storage()
+	spawn_storage_contents()
 
 	suit_state = icon_state
 	item_state = icon_state
@@ -190,10 +228,49 @@
 		if(piece.siemens_coefficient > siemens_coefficient) //So that insulated gloves keep their insulation.
 			piece.siemens_coefficient = siemens_coefficient
 		piece.permeability_coefficient = permeability_coefficient
-		piece.unacidable = unacidable
+		piece.integrity_flags = integrity_flags
 		piece.set_armor(fetch_armor())
 
 	update_icon(1)
+
+/obj/item/hardsuit/proc/spawn_storage_contents()
+	if(length(storage_starts_with) && !storage_empty)
+		// this is way too permissive already
+		var/safety = 256
+		var/atom/where_real_contents = obj_storage.real_contents_loc()
+		for(var/path in storage_starts_with)
+			var/amount = storage_starts_with[path] || 1
+			for(var/i in 1 to amount)
+				if(!--safety)
+					CRASH("tried to spawn too many objects")
+				new path(where_real_contents)
+	storage_starts_with = null
+
+/obj/item/hardsuit/proc/initialize_storage()
+	ASSERT(isnull(obj_storage))
+	init_storage(indirected = TRUE)
+
+	obj_storage.set_insertion_allow(storage_insertion_allow)
+	obj_storage.set_insertion_whitelist(storage_insertion_whitelist)
+	obj_storage.set_insertion_blacklist(storage_insertion_blacklist)
+
+	obj_storage.max_single_weight_class = storage_max_single_weight_class
+	obj_storage.max_combined_weight_class = storage_max_combined_weight_class
+	obj_storage.max_combined_volume = storage_max_combined_volume
+	obj_storage.max_items = storage_max_items
+
+	obj_storage.weight_subtract = storage_weight_subtract
+	obj_storage.weight_multiply = storage_weight_multiply
+
+	obj_storage.allow_quick_empty = storage_allow_quick_empty
+	obj_storage.allow_quick_empty_via_clickdrag = storage_allow_quick_empty_via_clickdrag
+	obj_storage.allow_quick_empty_via_attack_self = storage_allow_quick_empty_via_attack_self
+
+	obj_storage.sfx_open = storage_sfx_open
+	obj_storage.sfx_insert = storage_sfx_insert
+	obj_storage.sfx_remove = storage_sfx_remove
+
+	obj_storage.ui_numerical_mode = storage_ui_numerical_mode
 
 /obj/item/hardsuit/Destroy()
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
@@ -284,7 +361,11 @@
 		toggle_piece("chest", M, ONLY_DEPLOY)
 		toggle_piece("boots", M, ONLY_DEPLOY)
 		if(suit_is_deployed())
-			M.adjustBruteLossByPart(70, BP_TORSO)
+			M.take_targeted_damage(
+				brute = 70,
+				damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE | DAMAGE_MODE_SHRED,
+				body_zone = BP_TORSO,
+			)
 			for(var/harm = 8; harm > 0; harm--)
 				M.adjustBruteLoss(10)
 			playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
@@ -561,13 +642,10 @@
 			last_online = FALSE
 			for(var/obj/item/hardsuit_module/module in installed_modules)
 				module.deactivate()
-			slowdown = offline_slowdown
+			set_encumbrance(offline_encumbrance)
 			if(istype(wearer))
 				if(is_activated())
-					if (offline_slowdown < 3)
-						to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly goes dead.</span>")
-					else
-						to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly you're wearing a leaden mass of metal and plastic composites instead of a powered suit.</span>")
+					to_chat(wearer, "<span class='danger'>Your suit beeps stridently, and suddenly you're wearing a leaden mass of metal and plastic composites instead of a powered suit.</span>")
 				if(offline_vision_restriction == 1)
 					to_chat(wearer, "<span class='danger'>The suit optics flicker and die, leaving you with restricted vision.</span>")
 				else if(offline_vision_restriction == 2)
@@ -580,7 +658,8 @@
 			last_online = TRUE
 		if(istype(wearer) && !wearer.wearing_rig)
 			wearer.wearing_rig = src
-		slowdown = initial(slowdown) + sprint_slowdown_modifier
+		set_encumbrance(isnull(online_encumbrance)? initial(encumbrance) : online_encumbrance)
+		set_slowdown(initial(slowdown) + sprint_slowdown_modifier)
 
 	if(cell && cell.charge > 0 && electrified > 0)
 		electrified--
@@ -892,16 +971,16 @@
 
 	if(sealed)
 		if(H.head)
-			qdel(H.head)
+			H.drop_item_to_ground(H.head, flags = INV_OP_FORCE)
 
 		if(H.gloves)
-			qdel(H.gloves)
+			H.drop_item_to_ground(H.gloves, flags = INV_OP_FORCE)
 
 		if(H.shoes)
-			qdel(H.shoes)
+			H.drop_item_to_ground(H.shoes, flags = INV_OP_FORCE)
 
 		if(H.wear_suit)
-			qdel(H.wear_suit)
+			H.drop_item_to_ground(H.wear_suit, flags = INV_OP_FORCE)
 
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, H, ONLY_DEPLOY)

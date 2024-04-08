@@ -22,8 +22,8 @@
 	health = 150
 	randomized = TRUE
 
-	melee_damage_lower = 2
-	melee_damage_upper = 7
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 7
 	grab_resist = 100
 
 	response_help = "pets the"
@@ -78,8 +78,8 @@
 	maxHealth = 175
 	health = 175
 
-	melee_damage_lower = 8
-	melee_damage_upper = 16
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 16
 
 	min_oxy = 0
 	max_oxy = 0

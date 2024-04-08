@@ -417,3 +417,8 @@
 
 // todo: generic json-based save/load for subsystems, for simple state storage
 // todo: generic K-V store for subsystems, for storing stuff that's rare needed but still persistent.
+/**
+ * Called when SQL is reconnected after being disconnected
+ */
+/datum/controller/subsystem/proc/on_sql_reconnect()
+	return

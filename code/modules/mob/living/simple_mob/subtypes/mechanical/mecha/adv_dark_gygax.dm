@@ -8,7 +8,7 @@
 	name = "Exosuit - Advanced Dark Gygax"
 	desc = "This exosuit is an experimental prototype, descended from the Dark Gygax. It retains the \
 	speed that is characteristic of the other models, yet outclasses all of them in durability, \
-	to the point of having a comparable amount of protection to models that placed a higher emphesis \
+	to the point of having a comparable amount of protection to models that placed a higher emphasis \
 	on armor, like the Durand and even the Marauder. It is also much larger in scale, and significantly \
 	heavier than most other exosuits developed by humans, which often causes shockwaves to be felt \
 	whenever it moves. This has been observed to have a demoralizing effect on hostile forces.\
@@ -173,7 +173,7 @@
 
 			else if(istype(thing, /obj/mecha))
 				var/obj/mecha/M = thing
-				M.take_damage(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
+				M.take_damage_legacy(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
 
 		sleep(1 SECOND)
 

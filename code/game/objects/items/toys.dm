@@ -95,18 +95,18 @@
 	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "syndballoon"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/toy/nanotrasenballoon
 	name = "criminal balloon"
-	desc = "Across the balloon the following is printed: \"Man, I love NanoTrasen soooo much. I use only NT products. You have NO idea.\""
+	desc = "Across the balloon the following is printed: \"Man, I love Nanotrasen soooo much. I use only NT products. You have NO idea.\""
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ntballoon"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 /*
  * Fake telebeacon
@@ -145,7 +145,7 @@
 		icon_r_hand = 'icons/mob/items/righthand_guns.dmi',
 		)
 	slot_flags = SLOT_HOLSTER
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 	var/bullets = 5
 
@@ -238,7 +238,7 @@
 	desc = "It's nerf or nothing! Ages 8 and up."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "foamdart"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 
 /obj/effect/foam_dart_dummy
@@ -254,40 +254,102 @@
  */
 /obj/item/toy/sword
 	name = "toy sword"
-	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
+	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up. It can be recolored via Alt-Click."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "sword0"
+	icon_state = "esword"
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
-	var/active = 0.0
-	w_class = ITEMSIZE_SMALL
+	var/active = 0
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacked", "struck", "hit")
+	color = "#0099FF"
+	var/colorable = TRUE
+	var/rainbow = FALSE
 
 /obj/item/toy/sword/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
-	src.active = !( src.active )
-	if (src.active)
-		to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
-		playsound(user, 'sound/weapons/saberon.ogg', 50, TRUE)
-		src.icon_state = "swordblue"
-		src.w_class = ITEMSIZE_LARGE
+	if (active)
+		deactivate(user)
 	else
-		to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
-		playsound(user, 'sound/weapons/saberoff.ogg', 50, TRUE)
-		src.icon_state = "sword0"
-		src.w_class = ITEMSIZE_SMALL
+		activate(user)
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		H.update_inv_l_hand()
 		H.update_inv_r_hand()
 
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 	return
+
+/obj/item/toy/sword/proc/activate(mob/living/user)
+	if(active)
+		return
+	active = 1
+	if(rainbow)
+		item_state = "[icon_state]_blade_rainbow"
+	else
+		item_state = "[icon_state]_blade"
+	set_weight_class(WEIGHT_CLASS_BULKY)
+	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
+	update_icon()
+	to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
+
+/obj/item/toy/sword/proc/deactivate(mob/living/user)
+	if(!active)
+		return
+	playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
+	to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
+	item_state = "[icon_state]"
+	active = 0
+	set_weight_class(initial(w_class))
+	update_icon()
+
+/obj/item/toy/sword/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/multitool) && colorable && !active)
+		if(!rainbow)
+			rainbow = TRUE
+		else
+			rainbow = FALSE
+		to_chat(user, "<span class='notice'>You manipulate the color controller in [src].</span>")
+		update_icon()
+	return ..()
+
+/obj/item/toy/sword/update_icon()
+	. = ..()
+	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
+	blade_overlay.color = color
+	if(rainbow)
+		blade_overlay = mutable_appearance(icon, "[icon_state]_blade_rainbow")
+		blade_overlay.color = "FFFFFF"
+		color = "FFFFFF"
+	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
+	if(active)
+		add_overlay(blade_overlay)
+	if(istype(usr,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = usr
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
+
+/obj/item/toy/sword/AltClick(mob/living/user)
+	if(!colorable) //checks if is not colorable
+		return
+	if(!in_range(src, user))	//Basic checks to prevent abuse
+		return
+	if(user.incapacitated() || !istype(user))
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+
+	if(alert("Are you sure you want to recolor your blade?", "Confirm Recolor", "Yes", "No") == "Yes")
+		var/energy_color_input = input(usr,"","Choose Energy Color",color) as color|null
+		if(energy_color_input)
+			color = "#[sanitize_hexcolor(energy_color_input)]"
+			deactivate()
+		update_icon()
+	. = ..()
 
 /obj/item/toy/katana
 	name = "replica katana"
@@ -302,7 +364,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damage_force = 5
 	throw_force = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 
 /*
@@ -313,7 +375,7 @@
 	desc = "Wow!"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "snappop"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/toy/snappop/throw_impact(atom/hit_atom)
 	..()
@@ -422,7 +484,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "bosunwhistle"
 	var/cooldown = 0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS | SLOT_HOLSTER
 
 /obj/item/toy/bosunwhistle/attack_self(mob/user)
@@ -903,7 +965,7 @@
 	desc = "A small toy plushie. It's very cute."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "nymphplushie"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/last_message = 0
 	var/pokephrase = "Uww!"
 
@@ -926,7 +988,7 @@
 
 /obj/item/toy/plushie/verb/rename_plushie()
 	set name = "Name Plushie"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Give your plushie a cute name!"
 	var/mob/M = usr
 	if(!M.mind)
@@ -1337,7 +1399,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	attack_verb = list("attacked", "slashed", "stabbed", "poked")
 
 //Flowers fake & real
@@ -1347,7 +1409,7 @@
 	desc = "A lovely bouquet of flowers. Smells nice!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "bouquet"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/toy/bouquet/fake
 	name = "plastic bouquet"
@@ -1358,7 +1420,7 @@
 	desc = "A pretend horse on a stick for any aspiring little cowboy to ride."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "stickhorse"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 //////////////////////////////////////////////////////
 //				Magic 8-Ball / Conch				//
@@ -1395,7 +1457,7 @@
 // DND Character minis. Use the naming convention (type)character for the icon states.
 /obj/item/toy/character
 	icon = 'icons/obj/toy.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	pixel_z = 5
 
 /obj/item/toy/character/alien
@@ -1445,7 +1507,7 @@
 	desc = "A little toy model AI core!"// with real law announcing action!" //Alas, requires a rewrite of how ion laws work.
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "AI"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 /*
 /obj/item/toy/AI/attack_self(mob/user)
@@ -1467,7 +1529,7 @@
 	desc = "An action figure modeled after 'The Owl', defender of justice."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "owlprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/owl/attack_self(mob/user)
@@ -1488,7 +1550,7 @@
 	desc = "An action figure modeled after 'The Griffin', criminal mastermind."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "griffinprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/griffin/attack_self(mob/user)
@@ -1509,7 +1571,7 @@
 	desc = "A detailed miniature figure based on the 'Cyan Cowgirl', fastest gun on the Frontier."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "cowgirlprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/cowgirlprize/attack_self(mob/user)
@@ -1530,7 +1592,7 @@
 	desc = "A detailed miniature figure based on the 'Snake Oil Salesman', villain and cheat, scourge of the Frontier."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "snakeoilprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/snakeoilprize/attack_self(mob/user)
@@ -1560,7 +1622,7 @@
 	desc = "Tiny cute Christmas tree."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "tinyxmastree"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	damage_force = 1
 	throw_force = 1
 
@@ -1574,10 +1636,11 @@
 	slot_flags = SLOT_BACK
 	var/cooldowntime = 20
 	var/static/list/dakimakura_options = list("Callie","Casca","Chaika","Elisabeth","Foxy Grandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BACK
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = INVENTORY_BOX_SPACE
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = STORAGE_VOLUME_BOX
+	var/last_message = 0
 
 /obj/item/storage/daki/attack_self(mob/user)
 	. = ..()
