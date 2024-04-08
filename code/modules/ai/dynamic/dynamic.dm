@@ -40,3 +40,8 @@
 	var/mode = AI_DYNAMIC_MODE_DISABLED
 
 #warn impl all
+
+/**
+ * called to propagate our state machine's actions.
+ */
+/datum/ai_holder/dynamic/proc/iterate()

@@ -9,6 +9,16 @@
 #define AI_DYNAMIC_STATE_DISABLED 0
 /// idle; might be wandering
 #define AI_DYNAMIC_STATE_IDLE 1
+/// engaged in primary ranged combat
+#define AI_DYNAMIC_STATE_RANGED_ENGAGEMENT 2
+/// engaged in primary melee combat
+#define AI_DYNAMIC_STATE_MELEE_ENGAGEMENT 3
+/// engaged in guarding behavior
+#define AI_DYNAMIC_STATE_HOLD_POSITION 4
+/// engaged in COWARDICE
+#define AI_DYNAMIC_STATE_FLEE_AND_RECOVER 5
+/// engaged in patrolling
+#define AI_DYNAMIC_STATE_PATROL_ROUTE 6
 
 //* mode var
 

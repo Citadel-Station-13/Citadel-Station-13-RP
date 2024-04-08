@@ -5,6 +5,7 @@
  * AI targeting information.
  *
  * Can be easily shared between cooperating controllers to
+ * allow for more natural group behaviors.
  */
 /datum/dynamic_ai_targeting
 	/// thing being targeted
