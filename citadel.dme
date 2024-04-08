@@ -2189,6 +2189,7 @@
 #include "code\modules\ai\dynamic\combat.dm"
 #include "code\modules\ai\dynamic\cooperation.dm"
 #include "code\modules\ai\dynamic\dynamic-communication.dm"
+#include "code\modules\ai\dynamic\dynamic-movement.dm"
 #include "code\modules\ai\dynamic\dynamic-patrol.dm"
 #include "code\modules\ai\dynamic\dynamic.dm"
 #include "code\modules\ai\dynamic\dynamic_ai_network.dm"

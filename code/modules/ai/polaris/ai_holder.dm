@@ -1,20 +1,3 @@
-// This is a datum-based artificial intelligence for simple mobs (and possibly others) to use.
-// The neat thing with having this here instead of on the mob is that it is independant of Life(), and that different mobs
-// can use a more or less complex AI by giving it a different datum.
-
-/mob/living
-	var/datum/ai_holder/polaris/ai_holder = null
-	var/ai_holder_type = null // Which ai_holder datum to give to the mob when initialized. If null, nothing happens.
-
-/mob/living/Initialize(mapload)
-	if(ai_holder_type)
-		ai_holder = new ai_holder_type(src)
-	return ..()
-
-/mob/living/Destroy()
-	if(ai_holder)
-		QDEL_NULL(ai_holder)
-	return ..()
 
 /**
  * polaris stock state machine like AI holders
@@ -27,8 +10,6 @@
 	var/busy = FALSE					// If true, the SSticker will skip processing this mob until this is false. Good for if you need the
 										// mob to stay still (e.g. delayed attacwking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
-
-
 
 /datum/ai_holder/polaris/hostile
 	hostile = TRUE
