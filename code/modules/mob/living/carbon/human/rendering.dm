@@ -233,9 +233,15 @@
 			. = GLOB.sprite_accessory_ears[horn_style]
 		if(SPRITE_ACCESSORY_SLOT_EARS)
 			. = GLOB.sprite_accessory_ears[ear_style]
-	if(slot == SPRITE_ACCESSORY_SLOT_TAIL && 1.)
+	if(slot == SPRITE_ACCESSORY_SLOT_TAIL && !.)
 		var/datum/robolimb/limb = isSynthetic()
 		. = limb?.legacy_includes_tail
+		if(.)
+			//! :skull_emoji:
+			//  todo: better defaulting system, this is horrible.
+			r_tail = r_skin
+			g_tail = g_skin
+			b_tail = b_skin
 
 /mob/living/carbon/proc/render_sprite_accessory(slot)
 /mob/living/carbon/human/render_sprite_accessory(slot)
