@@ -12,6 +12,7 @@
 	//* AI handling
 	/// AI agent type
 	var/ai_holder_type
+	#warn uhh how to deal with
 	/// AI movement type
 	var/ai_movement_type = /datum/ai_movement/basic
 

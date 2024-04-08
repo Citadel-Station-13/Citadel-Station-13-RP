@@ -1,23 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/// Enable debugging mode. This enables the AI debug interface, but will generally cause a small bit of overhead/lag.
-#define AI_DEBUGGING
-
-#ifdef AI_DEBUGGING
-	#define AI_DEBUGGING_ENABLED TRUE
-#else
-	#define AI_DEBUGGING_ENABLED FALSE
-#endif
-
 //* Ticking
 
-/// The slowest an AI holder can tick without just being shut off.
-/// This impacts SSai_holders' bucket list length.
-/// At 40 FPS and 20 seconds, we're looking at a length of around 800. Not great, not terrible.
-#define SLOWEST_AI_HOLDER_TICK (20 SECONDS)
+/// AI scheduling bucket limit
+#define AI_SCHEDULING_SOFT_LIMIT (10 SECONDS)
 
-//* /datum/ai_holder ai_cheat_flag
+//* /datum/ai_holder ai_cheat_flags
 /// Ignore vision range. This + xray is very dangerous.
 #define AI_CHEAT_FARSIGHT (1<<0)
 /// Ignore walls opacity. This + farsight is very dangerous.
@@ -38,10 +27,8 @@
 #define AI_CHEAT_UNLIMITED_ITEMS (1<<8)
 /// Can tell details of a target like how damaged/hurt someone is without needing physical signs of it, for those that support it.
 #define AI_CHEAT_OMNISCIENT_INSIGHT (1<<9)
-/// For those that support it, maximize offensive 'health trading' (aka be the average murderhobo)
-#define AI_CHEAT_NO_ROLEPLAYING (1<<10)
-/// entirely ignores baymiss
-#define AI_CHEAT_DEADEYE (1<<11)
+/// entirely ignores baymiss and other inaccuracies
+#define AI_CHEAT_DEADEYE (1<<10)
 
 DEFINE_BITFIELD(ai_cheat_flags, list(
 	BITFIELD(AI_CHEAT_FARSIGHT),
@@ -54,9 +41,21 @@ DEFINE_BITFIELD(ai_cheat_flags, list(
 	BITFIELD(AI_CHEAT_UNLIMITED_HEALING),
 	BITFIELD(AI_CHEAT_UNLIMITED_ITEMS),
 	BITFIELD(AI_CHEAT_OMNISCIENT_INSIGHT),
-	BITFIELD(AI_CHEAT_NO_ROLEPLAYING),
 	BITFIELD(AI_CHEAT_DEADEYE),
 ))
+
+//* /datum/ai_holder ai_personality_flags
+
+/// maximum offensive health trading
+#define AI_PERSONALITY_NO_ROLEPLAYING (1<<0)
+
+// DEFINE_BITFIELD_NEW(ai_personality_flags, list(
+// 	/datum/ai_holder = list(
+// 		"ai_personality_flags",
+// 	),
+// ), list(
+// 	BITFIELD_NEW(AI_PERSONALITY_NO_ROLEPLAYING, "No Self Preservation")
+// ))
 
 //* /datum/ai_holder intelligence var
 /// dumb as a rock
@@ -69,3 +68,5 @@ DEFINE_BITFIELD(ai_cheat_flags, list(
 #define AI_INTELLIGENCE_SAPIENT 4
 /// superhuman
 #define AI_INTELLIGENCE_SUPERHUMAN 5
+
+#warn define enum

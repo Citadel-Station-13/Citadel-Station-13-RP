@@ -2,6 +2,11 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/ai_holder/dynamic
+	/// primary target (this is the one we're chasing if we're chasing or fleeing from if fleeing)
+	var/atom/primary_target
+	/// all targets we're engaged with right now
+	var/list/engaged_targets = list()
+
 	/// targeting sweep delay in combat
 	var/targeting_interval_combat = 2 SECONDS
 	/// targeting sweep delay out of combat

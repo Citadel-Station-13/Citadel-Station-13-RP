@@ -9,3 +9,9 @@
 /datum/ai_pathfinder
 	/// Expected agent type
 	var/agent_type = /atom/movable
+
+/**
+ * performs a path search for an AI holder
+ */
+/datum/ai_pathfinder/proc/search(atom/movable/agent, datum/target)
+	#warn a

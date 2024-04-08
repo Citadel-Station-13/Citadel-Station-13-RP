@@ -5,7 +5,7 @@
 	/// ai movement instance to use normally
 	var/movement_handler_type = /datum/ai_movement
 	/// ai movement instance being used
-	var/datum/movement_handler
+	var/datum/ai_movement/movement_handler
 	/// movement subsystem registered? null, or number for delay.
 	var/movement_ticking
 	/// forced dir to move next

@@ -23,9 +23,13 @@
  * * Intelligence & tuning vars determine how dangerous this is
  * * Most vars are built off of the /mob/living it's built off of automatically.
  * * Cheat flags can be specified - be extremely careful, as these flags tend to make AIs extremely, extremely difficult.
+ *
+ * Limitations:
+ * * As said, this isn't a decision tree system. Complex behaviors should not necessarily use this.
+ * * This AI type can only target /atom's. This might sound silly but it's not suitable for 'abstract' /datum AIs; we might need that someday.
  */
 /datum/ai_holder/dynamic
-	agent_type = /mob/living
+	agent_type = /atom/movable
 
 	/// AI state
 	/// this does not control if we're moving / anything

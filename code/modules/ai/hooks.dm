@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn redo most of these
+
 /**
  * React to non-harmful item usage on us (so not bash/melee)
  */

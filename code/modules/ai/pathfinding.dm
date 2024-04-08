@@ -3,10 +3,11 @@
 
 #warn remove lmfao
 
-/datum/pathfinding
-/datum/pathfinding/proc/search()
-
 /datum/ai_holder
+	/// our default pathfinding type
+	var/ai_pathfinder_type = /datum/ai_pathfinder/generic_jps
+	
+
 	/// pathfinding in node mode - returned nodes are what we use, rather than
 	/// individual turfs
 	var/pathed_via_node

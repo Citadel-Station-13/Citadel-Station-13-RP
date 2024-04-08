@@ -4,7 +4,7 @@
 /**
  * AI movement handlers
  *
- * Used on arbitray /atom/movables
+ * Used on arbitrary /atom/movables
  *
  * It's okay to cast proc 'agent' params to the agent_type.
  */

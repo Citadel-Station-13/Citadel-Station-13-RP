@@ -7,6 +7,9 @@
  * Generic AI holders that can bind to the /movable level
  *
  * Most, however, are probably on /mob.
+ *
+ * Limitations
+ * * Right now, these can only bind to a /movable, not a /datum. There's little need to have /datum level AI. Yet.
  */
 /datum/ai_holder
 	/// movable we are bound to
@@ -15,14 +18,16 @@
 	var/agent_type = /atom/movable
 	/// cheat flags
 	var/ai_cheat_flags = NONE
+	/// personality flags
+	var/ai_personality_flags = NONE
 	/// intelligence
 	var/intelligence = AI_INTELLIGENCE_ADVANCED
+
+/datum/ai_holder/New(datum/)
 
 /datum/ai_holder/Destroy()
 	if(!isnull(agent))
 		unregister_agent(agent)
-		if(agent.ai_holder == src)
-			agent.ai_holder = null
 	stop_ticking()
 	return ..()
 
