@@ -181,11 +181,10 @@
 				M.Bumped(m)
 
 /obj/vehicle/Move(newloc, dir)
+	var/old_loc = src.loc
 	. = ..()
-	//Not sure what this does vs relaymove() >> vehicle_move() chain
-	//This actually moves a driven vehicle trailer
 	if(trailer && .)
-		var/dir_to_move = get_dir(trailer.loc, newloc)
+		var/dir_to_move = get_dir(trailer.loc, old_loc)
 		step(trailer, dir_to_move)
 
 //Take DroppedOn atoms and determine if they are a trailer to be attached, cargo to be loaded, or pass on for passenger procs.
