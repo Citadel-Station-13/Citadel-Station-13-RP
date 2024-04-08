@@ -18715,7 +18715,7 @@
 "bQx" = (
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/oldcentury/general)
 "bQP" = (
 /turf/simulated/wall/prepainted/civilian,
@@ -18901,7 +18901,7 @@
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/oldcentury/general)
 "cnq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -20283,11 +20283,9 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "fdS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/shuttle/oldcentury/general)
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor,
+/area/shuttle/oldcentury/cockpit)
 "fea" = (
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
@@ -20961,7 +20959,7 @@
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/oldcentury/general)
 "gzi" = (
 /obj/effect/paint/silver,
@@ -21695,8 +21693,6 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "ika" = (
-/obj/effect/paint/silver,
-/obj/effect/paint_stripe/black,
 /obj/structure/window/reinforced/polarized/full{
 	id = "Centuries_old_shuttle_cockpit"
 	},
@@ -24564,12 +24560,8 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/turbolift/maint)
 "oCC" = (
-/obj/structure/shuttle/engine/heater,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/shuttle/oldcentury/general)
+/turf/simulated/shuttle/wall/voidcraft/blue,
+/area/shuttle/oldcentury/cockpit)
 "oEP" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
@@ -25036,6 +25028,11 @@
 	pixel_y = 17;
 	pixel_x = 6
 	},
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury/cockpit)
 "pKx" = (
@@ -25167,6 +25164,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"pTC" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/oldcentury/cockpit)
 "pVV" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -26453,11 +26453,6 @@
 /area/crew_quarters/kitchen)
 "tzX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = 22;
-	req_one_access = list(160)
-	},
 /obj/machinery/light/small{
 	color = "#da7c02";
 	brightness_color = "#da7c02";
@@ -26800,7 +26795,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/oldcentury/general)
 "uoG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -26879,7 +26874,7 @@
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/oldcentury/general)
 "uAA" = (
 /obj/structure/closet/firecloset/full,
@@ -26975,7 +26970,7 @@
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/oldcentury/general)
 "uOE" = (
 /obj/structure/cable/pink{
@@ -27977,7 +27972,7 @@
 "wyU" = (
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/oldcentury/cockpit)
 "wzN" = (
 /obj/effect/floor_decal/borderfloor{
@@ -31864,8 +31859,8 @@ nMn
 lNQ
 ygS
 mlj
-oCC
-omt
+lNQ
+nMn
 aus
 aus
 amn
@@ -32040,9 +32035,9 @@ aus
 aus
 aus
 aus
-bly
 eZv
-wyU
+pTC
+fdS
 wyU
 bQx
 bQx
@@ -32058,7 +32053,7 @@ rMf
 fmA
 tYG
 qoC
-oCC
+fxK
 omt
 aus
 aus
@@ -32234,8 +32229,8 @@ aus
 aus
 aus
 bly
-bly
-vrM
+pTC
+oCC
 mwh
 vgY
 ctl
@@ -32252,8 +32247,8 @@ gaQ
 nHY
 jYd
 jxX
-fxK
-omt
+nMn
+tXr
 aus
 aus
 jWp
@@ -33010,8 +33005,8 @@ aus
 aus
 aus
 bly
-bly
-vrM
+pTC
+oCC
 tzX
 pKp
 uyX
@@ -33028,8 +33023,8 @@ gaQ
 qcX
 vQL
 cBe
-iLn
-omt
+nMn
+tXr
 aus
 aus
 jWp
@@ -33204,9 +33199,9 @@ aus
 aus
 aus
 aus
-bly
 uSZ
-wyU
+pTC
+fdS
 wyU
 bQx
 nqA
@@ -33222,7 +33217,7 @@ mpR
 fOO
 lUe
 iZN
-oCC
+iLn
 omt
 aus
 aus
@@ -33416,8 +33411,8 @@ iZn
 ski
 cZT
 hfa
-oCC
-omt
+lNQ
+nMn
 aus
 aus
 amn
@@ -33607,7 +33602,7 @@ aPD
 tXr
 aPD
 aPD
-fdS
+iZn
 cZP
 bqa
 huM

@@ -135,10 +135,10 @@
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
 
-// Centuries old Civilian Shuttle
+// Civilian Century Shuttle
 
 /datum/shuttle/autodock/overmap/oldcentury
-	name = "Centuries old Civilian Shuttle"
+	name = "Civilian Century Shuttle"
 	warmup_time = 15
 	shuttle_area = list(/area/shuttle/oldcentury/cockpit, /area/shuttle/oldcentury/general)
 	current_location = "oldcentury_pad"
@@ -148,21 +148,21 @@
 	move_time = 37
 
 /obj/overmap/entity/visitable/ship/landable/oldcentury
-	name = "Centuries old Civilian Shuttle"
-	desc = "Is it... A replica ? Or... the real deal ? This shuttle, based on the Buran shuttle from earth's old days. No teasing, this shuttle is a replica, but still a old and crapy ship."
+	name = "Civilian Century Shuttle"
+	desc = "Is it... A replica ? Or... the real deal ? This shuttle, based on the shuttles from earth's old days. No teasing, this shuttle is a replica, but still a old and crapy ship."
 	fore_dir = NORTH
 	vessel_mass = 14000
 	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Centuries old Civilian Shuttle"
+	shuttle = "Civilian Century Shuttle"
 	color = "#4cad73" //Greyish green
 
 /area/shuttle/oldcentury
-	name = "Centuries old Civilian Shuttle"
+	name = "Civilian Century Shuttle"
 	icon_state = "shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/oldcentury
-	name = "Centuries old Civilian jump console"
-	shuttle_tag = "Centuries old Civilian Shuttle"
+	name = "Century jump console"
+	shuttle_tag = "Civilian Century Shuttle"
 
 //EMT Shuttle
 /datum/shuttle/autodock/overmap/emt

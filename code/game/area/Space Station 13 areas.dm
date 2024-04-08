@@ -294,16 +294,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/civvie/cockpit
 	name = "\improper Civilian Transport Cockpit"
 
-///Centuries old Civilian Shuttle
+///Civilian Century Shuttle
 /area/shuttle/oldcentury
 	requires_power = 1
 	icon_state = "shuttle2"
 
 /area/shuttle/oldcentury/general
-	name = "\improper Centuries old Civilian Shuttle"
+	name = "\improper Civilian Century Shuttle"
 
 /area/shuttle/oldcentury/cockpit
-	name = "\improper Centuries old Civilian Shuttle Cockpit"
+	name = "\improper Civilian Century Shuttle Cockpit"
 
 // Mining Shuttle
 /area/shuttle/mining_ship
