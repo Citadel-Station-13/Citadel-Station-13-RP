@@ -17,10 +17,17 @@
 	//? Attacks - Basic
 	/// melee style
 	var/datum/unarmed_attack/melee_style
+	/// available melee styles
+	var/list/datum/unarmed_attack/melee_styles
+	#warn this
 
 	//? Darksight
 	/// our innate darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
+
+	//* Equipment *//
+	/// our available equipment; set to typepaths to init on new.
+	var/list/datum/simple_mob_equipment/equipment
 
 	///Tooltip description
 	var/tt_desc = null

@@ -45,3 +45,18 @@
  * called to propagate our state machine's actions.
  */
 /datum/ai_holder/dynamic/proc/iterate()
+	switch(state)
+
+/**
+ * called to set our mode
+ */
+/datum/ai_holder/dynamic/proc/set_mode(new_mode)
+	mode = new_mode
+	#warn impl
+
+/**
+ * called to set our state
+ */
+/datum/ai_holder/dynamic/proc/set_state(new_state)
+	state = new_state
+	#warn impl

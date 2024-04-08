@@ -2,6 +2,12 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/ai_holder/dynamic
+	/// default vision range above player vision; this way dynamic ai can fire from offscreen
+	/// but only just offscreen, rather than from across the map.
+	///
+	/// this is also used to account for widescreen; widescreen givse players an effective
+	/// handcap of '2', so we get set to 3 to be right outside of widescreen range.
+	var/offscreen_handicap = 3
 	/// vision range
 	var/vision_range
 	/// darksight range

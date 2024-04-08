@@ -87,22 +87,3 @@
 			ai_log("dangerous_wander() : Going to confuse-walk to [T] ([T.x],[T.y],[T.z]).", AI_LOG_TRACE)
 			holder.IMove(T, safety = FALSE)
 	ai_log("dangerous_wander() : Exited.", AI_LOG_DEBUG)
-
-/*
-// Wanders randomly in cardinal directions.
-/datum/ai_holder/polaris/proc/handle_wander_movement()
-	ai_log("handle_wander_movement() : Entered.", AI_LOG_DEBUG)
-	if(isturf(holder.loc) && can_act())
-		wander_delay--
-		if(wander_delay <= 0)
-			if(!wander_when_pulled && holder.pulledby)
-				ai_log("handle_wander_movement() : Being pulled and cannot wander. Exiting.", AI_LOG_DEBUG)
-				return
-
-			var/moving_to = 0 // Apparently this is required or it always picks 4, according to the previous developer for simplemob AI.
-			moving_to = pick(GLOB.cardinal)
-			holder.setDir(moving_to)
-			holder.IMove(get_step(holder,moving_to))
-			wander_delay = base_wander_delay
-	ai_log("handle_wander_movement() : Exited.", AI_LOG_DEBUG)
-*/
