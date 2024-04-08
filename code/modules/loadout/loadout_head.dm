@@ -262,6 +262,11 @@
 		var/obj/item/clothing/head/beret/orion/orion = orion_style
 		orions[initial(orion.name)] = orion
 	tweaks += new/datum/loadout_tweak/path(tim_sort(orions, GLOBAL_PROC_REF(cmp_text_asc)))
+
+/datum/loadout_entry/head/onestar
+	name = "One Star Cap"
+	path = /obj/item/clothing/head/onestar
+
 /datum/loadout_entry/head/surgery
 	name = "Surgical Cap Selection"
 	description = "Choose from a number of rings of different Caps."

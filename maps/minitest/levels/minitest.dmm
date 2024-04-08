@@ -2938,6 +2938,15 @@
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/overmapdemo)
+"lg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "sheet-silo-1"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "lm" = (
 /obj/machinery/light,
 /obj/structure/cable{
@@ -3531,6 +3540,12 @@
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/webdemo)
+"LZ" = (
+/obj/machinery/sheet_silo_loader{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Mz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -6047,8 +6062,8 @@ aa
 aa
 aa
 fY
-gk
-gf
+lg
+LZ
 gr
 gf
 gB
