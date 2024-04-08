@@ -12,12 +12,13 @@ var/global/floorIsLava = 0
 		confidential = TRUE)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
-	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
-			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
-				var/msg = rendered
-				to_chat(C, msg)
+	return
+	// var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
+	// for(var/client/C in GLOB.admins)
+	// 	if((R_ADMIN|R_MOD) & C.holder.rights)
+	// 		if(C.get_preference_toggle(/datum/client_preference/mod/show_attack_logs))
+	// 			var/msg = rendered
+	// 			to_chat(C, msg)
 
 /proc/admin_notice(var/message, var/rights)
 	for(var/mob/M in GLOB.mob_list)
@@ -66,7 +67,6 @@ var/global/floorIsLava = 0
 		<b>Mob type:</b> [M.type]<br>
 		<b>Inactivity time:</b> [M.client ? "[M.client.inactivity/600] minutes" : "Logged out"]<br/><br/>
 		<A href='?src=\ref[src];boot2=\ref[M]'>Kick</A> |
-		<A href='?_src_=holder;warn=[M.ckey]'>Warn</A> |
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
 		<A href='?src=\ref[src];oocban=[M.ckey]'>[is_role_banned_ckey(M.ckey, role = BAN_ROLE_OOC)? "<font color='red'>OOC Ban</font>" : "OOC Ban"]</A> |
@@ -1561,7 +1561,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 	if(!isobserver(owner.mob))
 		return
 	var/mob/observer/dead/dead = owner.mob
-	var/stealthghost = owner.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode)
+	var/stealthghost = owner.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost)
 	if(!stealthghost || !fakekey)
 		dead.invisibility = initial(dead.invisibility)
 		dead.alpha = initial(dead.alpha)

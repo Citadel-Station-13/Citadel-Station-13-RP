@@ -79,7 +79,7 @@
 	update_icon()
 
 /obj/machinery/transportpod/verb/move_eject()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject Pod"
 	set src in oview(1)
 
@@ -91,7 +91,7 @@
 	return
 
 /obj/machinery/transportpod/verb/move_inside()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Enter Pod"
 	set src in oview(1)
 

@@ -835,7 +835,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 /obj/item/bluespace_radio/verb/toggle_handset()
 	set name = "Toggle Handset"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/mob/living/carbon/human/user = usr
 	if(!handset)
