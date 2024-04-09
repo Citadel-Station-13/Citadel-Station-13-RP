@@ -8,6 +8,17 @@
  *
  * Most, however, are probably on /mob.
  *
+ * Base API:
+ * * Movement API allows registering on the movement subsystem, as well as efficient, variable-length 're-schedule' delays.
+ * * Ticking API allows registering variable-length ticking loops on the subsystem, with automatic support for staggered ticking.
+ * * Pathfinding API allows using various pathfinding datums to perform pathfinding. Please use it instead of raw calls for timekeeping purposes.
+ * * Standard hooks are used to react to events like attacks.
+ *
+ * Base features:
+ * * base /datum/ai_holder, meant for movable atoms; usually this is however, for mobs and certain objs.
+ * * base /datum/ai_network, meant to stitch multiple AIs together.
+ * todo: docs on targeting/etc.
+ *
  * Limitations
  * * Right now, these can only bind to a /movable, not a /datum. There's little need to have /datum level AI. Yet.
  */

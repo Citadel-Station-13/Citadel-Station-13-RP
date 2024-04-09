@@ -1,7 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
-
-#warn remove lmfao
+//* Copyright (c) 2024 silicons                             *//
 
 /datum/ai_holder
 	/// our default pathfinding type
@@ -12,11 +10,14 @@
 	var/pathed_via_node
 	/// current stored path
 	var/list/pathed_stored
-	/// last world.time of repath
-	var/pathed_last
 
-/datum/ai_holder/proc/reset_pathfinding()
-
-/datum/ai_holder/proc/pathfind_to(atom/destination)
-
-#warn impl all
+/**
+ * @return /datum/ai_pathing results, or **null on failure**
+ */
+/datum/ai_holder/proc/pathfind(
+	pathfinder_type = src.ai_pathfinder_type,
+	atom/source = src.agent,
+	atom/destination,
+)
+	var/datum/ai_pathfinder/pathfinder = SSai_movement.ai_pathfinders[pathfinder_type]
+	return pathfinder.search(src.agent, source, destination)
