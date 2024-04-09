@@ -22,3 +22,5 @@
  */
 /datum/ai_movement/proc/move_in_dir(atom/movable/agent, dir)
 	return step(agent, dir)
+
+#warn uhh

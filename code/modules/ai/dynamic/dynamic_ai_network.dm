@@ -9,4 +9,4 @@
  * The network stores the targeting data.
  */
 /datum/dynamic_ai_network
-    /// targets 
+

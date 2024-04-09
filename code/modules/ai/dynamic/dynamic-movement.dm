@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+/**
+ * We have three main modes of movement:
+ *
+ * * Combat - the combat loop handles movement
+ * * Navigation - the navigation loop handles movement
+ * * Idle - the idle loop handles movement
+ */
 /datum/ai_holder/dynamic
 
 /**

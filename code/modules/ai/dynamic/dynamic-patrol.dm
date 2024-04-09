@@ -18,7 +18,7 @@
  * * failed - did this patrol end due to a node being evicted, or a failure when nodes aren't allowed to be evicted?
  */
 /datum/ai_holder/dynamic/proc/stop_patrol(failed)
-	on_patrl_end(failed)
+	on_patrol_end(failed)
 
 /datum/ai_holder/dynamic/proc/process_patrol(cycles)
 

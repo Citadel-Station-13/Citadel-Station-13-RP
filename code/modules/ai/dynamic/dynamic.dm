@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
- * Default implementation of dynamic state-machine-like mob AI.
+ * Default implementation of dynamic HFSM mob AI.
  *
  * Prioritizes maximum efficiency of high-performance combat routines while
  * still providing support for various 'passive' mobs and their functions.
@@ -36,7 +36,7 @@
 	/// this is our 'mind' state
 	/// e.g. idle, fleeing, engaged in combat, investigating, etc
 	var/state = AI_DYNAMIC_STATE_DISABLED
-	/// mode - similar to state but much more general
+	/// mode - similar to state but much more general, serves as second order of hierarchy.
 	var/mode = AI_DYNAMIC_MODE_DISABLED
 
 #warn impl all
@@ -44,19 +44,42 @@
 /**
  * called to propagate our state machine's actions.
  */
-/datum/ai_holder/dynamic/proc/iterate()
-	switch(state)
+/datum/ai_holder/dynamic/proc/iterate(cycles)
+	if(iterate_special(cycles, mode, state))
+		return
+	switch(mode)
+		if(AI_DYNAMIC_MODE_PASSIVE)
+			switch(state)
+				if(AI_DYNAMIC_STATE_IDLE)
+				if(AI_DYNAMIC_STATE_PATROL)
+				if(AI_DYNAMIC_STATE_NAVIGATION)
+		if(AI_DYNAMIC_MODE_COMBAT)
+			switch(state)
+				if(AI_DYNAMIC_STATE_STRAFE)
+				if(AI_DYNAMIC_STATE_CQC)
+				if(AI_DYNAMIC_STATE_GUARD)
+				if(AI_DYNAMIC_STATE_FLEE)
+		if(AI_DYNAMIC_MODE_DISABLED)
+			// why are we here?
 
-/**
- * called to set our mode
- */
-/datum/ai_holder/dynamic/proc/set_mode(new_mode)
-	mode = new_mode
-	#warn impl
-
+				if(AI_DYNAMIC_STATE_FLEE)
 /**
  * called to set our state
  */
 /datum/ai_holder/dynamic/proc/set_state(new_state)
+	switch(state)
+		if(AI_DYNAMIC_STATE_IDLE, AI_DYNAMIC_STATE_PATROL, AI_DYNAMIC_STATE_NAVIGATION)
+			mode = AI_DYNAMIC_MODE_PASSIVE
+		if(
+			AI_DYNAMIC_STATE_STRAFE,
+			AI_DYNAMIC_STATE_CQC,
+			AI_DYNAMIC_STATE_GUARD,
+			AI_DYNAMIC_STATE_FLEE,
+		)
+			mode = AI_DYNAMIC_MODE_COMBAT
+		if(AI_DYNAMIC_STATE_DISABLED)
+			mode = AI_DYNAMIC_MODE_DISABLED
+		else
+			CRASH("attempted to set state to an invalid state")
 	state = new_state
-	#warn impl
+	#warn update scheduling
