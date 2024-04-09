@@ -7,6 +7,7 @@
  * It's okay to cast 'agent' params in procs to the agent_type.
  */
 /datum/ai_pathfinder
+	abstract_type = /datum/ai_pathfinder
 	/// Expected agent type
 	var/agent_type = /atom/movable
 

@@ -20,8 +20,10 @@
 
 /**
  * process movement
+ *
+ * @return amount of time to next move; 0 to stop moving
  */
-/datum/ai_holder/proc/move()
+/datum/ai_holder/proc/move(times_fired)
 	#warn impl
 
 /**

@@ -26,13 +26,13 @@ SUBSYSTEM_DEF(ai_movement)
 	#warn impl
 
 	/// pathfinder instances by type
-	var/list/ai_pathfinders
+	// var/list/ai_pathfinders
 	/// movement handlers by type
-	var/list/ai_movements
+	// var/list/ai_movements
 
 /datum/controller/subsystem/ai_movement/Initialize()
-	init_ai_pathfinders()
-	init_ai_movements()
+	// init_ai_pathfinders()
+	// init_ai_movements()
 	moving_ais = list()
 	rebuild()
 	#warn a
@@ -41,19 +41,19 @@ SUBSYSTEM_DEF(ai_movement)
 	rebuild()
 	return ..()
 
-/datum/controller/subsystem/ai_movement/proc/init_ai_pathfinders()
-	ai_pathfinders = list()
-	for(var/datum/ai_pathfinder/path as anything in subtypesof(/datum/ai_pathfinder))
-		if(initial(path.abstract_type) == path)
-			continue
-		ai_pathfinders[path] = new path
+// /datum/controller/subsystem/ai_movement/proc/init_ai_pathfinders()
+// 	ai_pathfinders = list()
+// 	for(var/datum/ai_pathfinder/path as anything in subtypesof(/datum/ai_pathfinder))
+// 		if(initial(path.abstract_type) == path)
+// 			continue
+// 		ai_pathfinders[path] = new path
 
-/datum/controller/subsystem/ai_movement/proc/init_ai_movements()
-	ai_movements = list()
-	for(var/datum/ai_movement/path as anything in subtypesof(/datum/ai_movement))
-		if(initial(path.abstract_type) == path)
-			continue
-		ai_movements[path] = new path
+// /datum/controller/subsystem/ai_movement/proc/init_ai_movements()
+// 	ai_movements = list()
+// 	for(var/datum/ai_movement/path as anything in subtypesof(/datum/ai_movement))
+// 		if(initial(path.abstract_type) == path)
+// 			continue
+// 		ai_movements[path] = new path
 
 /**
  * perform error checking
