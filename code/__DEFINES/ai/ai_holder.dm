@@ -4,7 +4,7 @@
 //* Ticking
 
 /// AI scheduling bucket limit
-#define AI_SCHEDULING_SOFT_LIMIT (10 SECONDS)
+#define AI_SCHEDULING_LIMIT (10 SECONDS)
 
 //* /datum/ai_holder ai_cheat_flags
 /// Ignore vision range. This + xray is very dangerous.

@@ -7,7 +7,7 @@
  * Can be easily shared between cooperating controllers to
  * allow for more natural group behaviors.
  */
-/datum/dynamic_ai_targeting
+/datum/ai_targeting
 	/// thing being targeted
 	var/atom/target
 	/// average movement speed vector x in tiles; used for aiming

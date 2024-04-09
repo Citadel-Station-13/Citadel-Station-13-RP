@@ -12,16 +12,21 @@
 
 /// idle; might be wandering
 #define AI_DYNAMIC_STATE_IDLE 10 + 1
+/// * under this state, we are using idle loop for movement
 /// engaged in patrolling
 #define AI_DYNAMIC_STATE_PATROL 10 + 2
+/// * under this state, we are using navigation for movement
 /// navigating to destination
 #define AI_DYNAMIC_STATE_NAVIGATION 10 + 3
+/// * under this state, we are using navigation for movement
 
 /// ranged combat; stay at average effective engagement distance and fight
+/// * under this state, we are using the combat planner for movement
 #define AI_DYNAMIC_STATE_STRAFE 20 + 1
 /// melee combat; stay at maximally effective engagement distance and fight
 ///               melee weapons will be preferred
 ///               ranged weapons, however, may be chosen to be used instead (point blanking)
+/// * under this state, we are using the combat planner for movement
 #define AI_DYNAMIC_STATE_CQC 20 + 2
 /// hold position at **home**
 #define AI_DYNAMIC_STATE_GUARD 20 + 3
@@ -33,6 +38,7 @@
 #define AI_DYNAMIC_STATE_FLEE 20 + 5
 /// move towards somewhere while shooting
 /// * under this state, we are using navigation for movement
+/// * chase behaviors are also used for this, because chases are highly interruptible.
 #define AI_DYNAMIC_STATE_FLANK 20 + 6
 
 //* mode var

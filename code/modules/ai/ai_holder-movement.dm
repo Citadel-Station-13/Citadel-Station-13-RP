@@ -6,10 +6,17 @@
 	var/movement_handler_type = /datum/ai_movement
 	/// ai movement instance being used
 	var/datum/ai_movement/movement_handler
-	/// movement subsystem registered? null, or number for delay.
-	var/movement_ticking
 	/// forced dir to move next
 	var/movement_next = NONE
+
+	/// movement subsystem registered? null, or number for delay.
+	var/movement_ticking
+	/// bucket position
+	var/movement_bucket_position
+	/// last datum in bucket
+	var/datum/ai_holder/movement_bucket_prev
+	/// next datum in bucket
+	var/datum/ai_holder/movement_bucket_next
 
 /**
  * process movement

@@ -10,6 +10,8 @@
 	var/ticking
 	/// cycles ticked; set back to 0 when ticking is stopped.
 	var/ticking_cycles
+	/// bucket position
+	var/ticking_position
 
 /**
  * Starts ticking
@@ -17,10 +19,14 @@
  * Registers us in a doubly linked list while also shoving us into ai_holders subsystem active holders + the
  * correct bucket for our target cycle.
  */
-/datum/ai_holder/proc/start_ticking()
-	if(!isnull(ticking))
-		return
-	#warn impl
+/datum/ai_holder/proc/set_ticking(delay)
+	ASSERT(delay > 0)
+	ASSERT(delay <= AI_SCHEDULING_LIMIT)
+	if(ticking > 0)
+		SSai_holders.bucket_evict(src)
+	ticking_cycles = 0
+	ticking = delay
+	SSai_holders.bucket_insert(src)
 
 /**
  * Stops ticking
@@ -28,9 +34,11 @@
  * Unregister us from the doubly linked list we're in and removes us from the ai_holders subsystem.
  */
 /datum/ai_holder/proc/stop_ticking()
-	if(isnull(ticking))
+	if(!ticking)
 		return
-	#warn impl
+	SSai_holders.bucket_evict(src)
+	ticking = null
+	ticking_cycles = null
 
 /**
  * Called by subsystem to tick this holder.

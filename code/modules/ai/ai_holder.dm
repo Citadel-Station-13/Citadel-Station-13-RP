@@ -23,19 +23,25 @@
 	/// intelligence
 	var/intelligence = AI_INTELLIGENCE_ADVANCED
 
-/datum/ai_holder/New(datum/)
+/datum/ai_holder/New(atom/movable/agent)
+	set_agent(agent)
 
 /datum/ai_holder/Destroy()
-	if(!isnull(agent))
-		unregister_agent(agent)
 	stop_ticking()
+	set_agent(null)
 	return ..()
 
 /**
  * sets our agent to something
  */
 /datum/ai_holder/proc/set_agent(atom/movable/agent, imprint = TRUE)
-	#warn impl
+	if(src.agent)
+		unregister_agent(src.agent)
+	src.agent = agent
+	if(!agent)
+		return
+	if(imprint)
+		#warn impl
 
 /**
  * bind to agent

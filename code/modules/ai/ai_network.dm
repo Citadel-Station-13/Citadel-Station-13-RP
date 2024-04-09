@@ -6,9 +6,9 @@
  *
  * Holders form into networks during cooperative maneuvers.
  *
- * The network stores the targeting data.
+ * The network stores relevant shared data.
  */
-/datum/dynamic_ai_network
+/datum/ai_network
 	/// agents under our control
 	/// ais in this can be disabled; those won't be touched
 	/// but they'll still be 'under our control'
