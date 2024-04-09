@@ -4835,6 +4835,7 @@
 #include "code\modules\vehicles\boat.dm"
 #include "code\modules\vehicles\ridden.dm"
 #include "code\modules\vehicles\sealed.dm"
+#include "code\modules\vehicles\trailer.dm"
 #include "code\modules\vehicles\ridden\bike.dm"
 #include "code\modules\vehicles\ridden\cargo_train.dm"
 #include "code\modules\vehicles\ridden\gokart.dm"

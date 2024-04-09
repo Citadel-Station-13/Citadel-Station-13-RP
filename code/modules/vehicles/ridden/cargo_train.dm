@@ -2,6 +2,7 @@
 	name = "cargo train tug"
 	desc = "A ridable electric car designed for pulling cargo trolleys."
 	icon_state = "cargo_engine"
+	anchored = TRUE
 	key_type = /obj/item/key/cargo_train
 	trailer_type = /obj/vehicle/trailer/cargo
 
@@ -11,12 +12,6 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "train_keys"
 	w_class = WEIGHT_CLASS_TINY
-
-/obj/vehicle/trailer/cargo
-	name = "cargo train trolley"
-	desc = "A trolley designed to be pulled by a cargo train tug."
-	icon_state = "cargo_trailer"
-	trailer_type = /obj/vehicle/trailer/cargo
 
 /*
 ///! Old shit

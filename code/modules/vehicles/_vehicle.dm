@@ -189,13 +189,17 @@
 
 //Take DroppedOn atoms and determine if they are a trailer to be attached, cargo to be loaded, or pass on for passenger procs.
 /obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
-	if(!istype(dropping) || !isliving(user))
+	if(!istype(dropping) || !isliving(user) || !proximity || get_dist(dropping.loc, loc) != 1)
 		return ..()
 	//Trailer hitch check
-	if(istype(dropping, /obj/vehicle/trailer) && proximity && get_dist(dropping.loc, loc) == 1)
+	if(istype(dropping, /obj/vehicle/trailer))
 		if(attach_to(dropping, user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-	//Attach cargo test here
+	//Cargo load check
+	if(1 == 1)
+		if(load(dropping))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+
 	return ..()
 
 //Handles trailer attach and detach attempts. Returns true if it does something else it returns false. Assumes that proximity checks have already been made.
@@ -207,12 +211,14 @@
 	if (dropping == trailer)
 		trailer = null
 		dropping.is_tugged = FALSE
+		dropping.anchored = FALSE
 		to_chat(user, "<span class='warning'>You unhitch the [src]!</span>")
 		return TRUE
 	//If there is not already a trailer, and the trailer isn't getting pulled already. Tug it.
 	if (trailer == null && dropping.is_tugged == FALSE)
 		trailer = dropping
 		dropping.is_tugged = TRUE
+		dropping.anchored = TRUE
 		to_chat(user, "<span class='notice'>You hitch the [src]!</span>")
 		return TRUE
 	//If we are already tugging a trailer, we can't hitch another.
