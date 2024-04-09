@@ -28,14 +28,14 @@
 /datum/ai_holder/dynamic/proc/navigation_succeeded()
 	navigation_active = FALSE
 	reset_pathfinding()
-	on_navigation_end?.Execute(FALSE, FALSE)
+	on_navigation_end?.InvokeAsync(FALSE, FALSE)
 	on_navigation_end = null
 
 /datum/ai_holder/dynamic/proc/cancel_navigation(reset_state = TRUE, failed = FALSE)
 	navigation_active = FALSE
 	if(reset_state)
 		reset_pathfinding()
-	on_navigation_end?.Execute(TRUE, failed)
+	on_navigation_end?.InvokeAsync(TRUE, failed)
 	on_navigation_end = null
 
 /datum/ai_holder/dynamic/proc/resume_navigation()

@@ -14,6 +14,9 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
+	//* AI *//
+	#warn impl
+
 	//? Attacks - Basic
 	/// melee style
 	var/datum/unarmed_attack/melee_style

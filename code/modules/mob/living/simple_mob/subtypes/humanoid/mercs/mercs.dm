@@ -169,7 +169,9 @@
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				var/datum/ai_holder/polaris/ai_holder = ai_holder
+				if(istype(ai_holder))
+					ai_holder.react_to_attack(user)
 			return
 		else
 			..()
@@ -712,7 +714,9 @@
 	if(prob(35))
 		visible_message("<span class='warning'>[src] blocks [Proj] with its sword!</span>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			var/datum/ai_holder/polaris/ai_holder = ai_holder
+			if(istype(ai_holder))
+				ai_holder.react_to_attack(Proj.firer)
 		return
 	else
 		..()

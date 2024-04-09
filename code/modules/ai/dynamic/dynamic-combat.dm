@@ -2,6 +2,9 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/ai_holder/dynamic
+	switch(dir)
+		if(NONE)
+			// stop fucking
 
 /**
  * @params

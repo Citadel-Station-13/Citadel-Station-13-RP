@@ -213,8 +213,10 @@
 			if(prob(15 + (20 * heartless_mod)))
 				feed_on_organ()
 	else
-		if(ai_holder)
-			ai_holder.hostile = initial(ai_holder.hostile)
+		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		if(istype(ai_holder))
+			if(ai_holder)
+				ai_holder.hostile = initial(ai_holder.hostile)
 
 	if(host && host.stat == DEAD && istype(get_turf(host), /turf/simulated/floor/water))
 		leave_host()
@@ -292,9 +294,11 @@
 
 		src.host = M
 		src.forceMove(M)
-		if(ai_holder)
-			ai_holder.hostile = FALSE
-			ai_holder.lose_target()
+		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		if(istype(ai_holder))
+			if(ai_holder)
+				ai_holder.hostile = FALSE
+				ai_holder.lose_target()
 
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M

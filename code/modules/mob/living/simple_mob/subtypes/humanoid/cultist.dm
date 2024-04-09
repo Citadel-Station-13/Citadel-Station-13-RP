@@ -498,7 +498,9 @@
 		if(prob(30))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				var/datum/ai_holder/polaris/ai_holder = ai_holder
+				if(istype(ai_holder))
+					ai_holder.react_to_attack(user)
 			return
 		else
 			..()

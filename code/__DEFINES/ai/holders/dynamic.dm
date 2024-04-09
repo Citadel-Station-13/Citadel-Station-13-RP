@@ -74,6 +74,8 @@
 
 //* Telegraphing *//
 
+/// do not use this as a real telegraph tier; pass this in to never pre-empt; used to check if we're telegraphing
+#define AI_DYNAMIC_TELEGRAPH_CHECK -1
 /// passive telegraphed action, like RP fluff
 #define AI_DYNAMIC_TELEGRAPH_FLUFF 0
 /// baseline combat telegraph for things like healing yourself

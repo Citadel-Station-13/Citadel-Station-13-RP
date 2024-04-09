@@ -27,6 +27,7 @@
  * Limitations:
  * * As said, this isn't a decision tree system. Complex behaviors should not necessarily use this.
  * * This AI type can only target /atom's. This might sound silly but it's not suitable for 'abstract' /datum AIs; we might need that someday.
+ * * This AI is heavily async'd/event driven. If you don't know what you're doing, please be careful with touching it.
  */
 /datum/ai_holder/dynamic
 	agent_type = /atom/movable

@@ -87,7 +87,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	if(stat != CONSCIOUS)
 		return
 
-	if(!ai_holder.target)
+	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	if(istype(ai_holder) && !ai_holder.target)
 			//first, check for potential cables nearby to powersink
 		var/turf/S = loc
 		attached = locate(/obj/structure/cable) in S

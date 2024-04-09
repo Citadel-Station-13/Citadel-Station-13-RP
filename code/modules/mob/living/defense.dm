@@ -122,8 +122,10 @@
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
 			signaler.signal()
 
-	if(ai_holder && P.firer)
-		ai_holder.react_to_attack(P.firer)
+	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	if(istype(ai_holder))
+		if(ai_holder && P.firer)
+			ai_holder.react_to_attack(P.firer)
 
 	//Armor
 	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
@@ -237,8 +239,10 @@
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	if(ai_holder)
-		ai_holder.react_to_attack(user)
+	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	if(istype(ai_holder))
+		if(ai_holder)
+			ai_holder.react_to_attack(user)
 
 	var/soaked = get_armor_soak(hit_zone, "melee")
 	var/blocked = run_armor_check(hit_zone, "melee")
@@ -364,8 +368,10 @@
 
 	adjustBruteLoss(damage)
 	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_mob attacks
-	if(ai_holder)
-		ai_holder.react_to_attack(user)
+	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	if(istype(ai_holder))
+		if(ai_holder)
+			ai_holder.react_to_attack(user)
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
 	spawn(1) update_health()

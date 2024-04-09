@@ -169,7 +169,9 @@
 					continue // Otherwise it can get pretty laggy if there's loads of corpses around.
 				L.inflict_shock_damage(i * 2)
 				if(L && L.has_AI()) // Some mobs delete themselves when dying.
-					L.ai_holder.react_to_attack(src)
+					var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+					if(istype(ai_holder))
+						L.ai_holder.react_to_attack(src)
 
 			else if(istype(thing, /obj/mecha))
 				var/obj/mecha/M = thing

@@ -98,6 +98,8 @@
 	if(L.get_cold_protection() < 1)
 		L.add_modifier(/datum/modifier/chilled, 5 SECONDS, src)
 
-	if(L.has_AI()) // Other AIs should react to hostile auras.
-		L.ai_holder.react_to_attack(src)
+	var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+	if(istype(ai_holder))
+		if(L.has_AI()) // Other AIs should react to hostile auras.
+			L.ai_holder.react_to_attack(src)
 

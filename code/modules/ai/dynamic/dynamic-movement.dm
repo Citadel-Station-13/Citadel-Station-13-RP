@@ -13,6 +13,10 @@
 /**
  * schedule a dodge in a certain direction
  *
+ * if time is 0:
+ * * if we're ready to move right now, we will
+ * * if we're not, we move when we are
+ *
  * usually done when the ai has detected an inbound attack
  */
 /datum/ai_holder/dynamic/proc/schedule_dodge(dir, time)
