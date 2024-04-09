@@ -149,7 +149,8 @@
 		infest_target = pick(bodypart_targets)
 
 	if(host && !stat && !host.stat)
-		if(ai_holder)
+		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		if(istype(ai_holder))
 			ai_holder.hostile = FALSE
 			ai_holder.lose_target()
 		alpha = 5
@@ -320,7 +321,8 @@
 	if(!host)
 		return
 
-	if(ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	if(istype(ai_holder))
 		ai_holder.hostile = initial(ai_holder.hostile)
 		ai_holder.lose_target()
 

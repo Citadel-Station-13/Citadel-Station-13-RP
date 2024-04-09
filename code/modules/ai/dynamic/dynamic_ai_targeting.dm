@@ -18,3 +18,5 @@
 	var/emnity = 0
 	/// arbitrary k-v list for user implementation use
 	var/list/data = list()
+
+#warn impl

@@ -58,11 +58,12 @@
 				if(AI_DYNAMIC_STATE_STRAFE)
 				if(AI_DYNAMIC_STATE_CQC)
 				if(AI_DYNAMIC_STATE_GUARD)
+				if(AI_DYNAMIC_STATE_RETREAT)
 				if(AI_DYNAMIC_STATE_FLEE)
+				if(AI_DYNAMIC_STATE_FLANK)
 		if(AI_DYNAMIC_MODE_DISABLED)
 			// why are we here?
 
-				if(AI_DYNAMIC_STATE_FLEE)
 /**
  * called to set our state
  */

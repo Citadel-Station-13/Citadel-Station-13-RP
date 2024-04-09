@@ -264,8 +264,10 @@
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/proc/chill(mob/living/L)
 	L.inflict_cold_damage(is_adult ? 10 : 5)
-	if(L.get_cold_protection() < 1 && L.has_AI()) // Harmful auras will make the AI react to its bearer.
-		L.ai_holder.react_to_attack(src)
+	var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+	if(istype(ai_holder))
+		if(L.get_cold_protection() < 1 && L.has_AI()) // Harmful auras will make the AI react to its bearer.
+			ai_holder.react_to_attack(src)
 
 
 /mob/living/simple_mob/slime/xenobio/silver

@@ -10,6 +10,8 @@
 	/// * patrol routes
 	/// * combat, except in hold position
 	/// * combat, during hold position, will result in us using this as our combat locality.
+	///
+	/// if we are going home and we fail to pathfind home, we will drop our home destination.
 	var/atom/home
 	/// tiles we can wander around home
 	var/home_wander_distance = 14
@@ -22,6 +24,13 @@
 	var/home_disengagement_escalation = 2.5
 
 /datum/ai_holder/dynamic/proc/go_home()
+	if(!home)
+		return FALSE
+	#warn disengage if in combat
 	if(!set_navigation(home))
 		return FALSE
-	#warn disengage if in combat, otherwise just set destination
+	return TRUE
+
+/datum/ai_holder/dynamic/proc/on_home_pathfind_end(cancelled, failed)
+	if(failed)
+		home = null

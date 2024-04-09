@@ -100,8 +100,10 @@
 	if(!istype(L))
 		return
 	if(istype(L) && L.a_intent != INTENT_HELP)
-		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
-			ai_holder.react_to_attack(L)
+		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		if(istype(ai_holder))
+			if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
+				ai_holder.react_to_attack(L)
 
 /mob/living/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
@@ -296,7 +298,8 @@
 			// we log only if one party is a player
 			if(!!client || !!M.client)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
-			if(ai_holder)
+			var/datum/ai_holder/polaris/ai_holder = ai_holder
+			if(istype(ai_holder))
 				ai_holder.react_to_attack(TT.thrower)
 
 		// Begin BS12 momentum-transfer code.

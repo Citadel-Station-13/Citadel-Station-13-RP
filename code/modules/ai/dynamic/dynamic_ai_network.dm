@@ -9,4 +9,9 @@
  * The network stores the targeting data.
  */
 /datum/dynamic_ai_network
+	/// agents under our control
+	/// ais in this can be disabled; those won't be touched
+	/// but they'll still be 'under our control'
+	var/list/datum/ai_holder/agents = list()
 
+#warn impl

@@ -145,8 +145,10 @@
 	if(O.damage_force)
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] swats \the [O] with its sword tail!</span>")
-			if(user)
-				ai_holder.react_to_attack(user)
+			var/datum/ai_holder/polaris/ai_holder = ai_holder
+			if(istype(ai_holder))
+				if(user)
+					ai_holder.react_to_attack(user)
 			return
 		else
 			..()
@@ -158,8 +160,10 @@
 	if(!Proj)	return
 	if(prob(35))
 		visible_message("<span class='warning'>[src] deflects [Proj] with its sword tail!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		if(istype(ai_holder))
+			if(Proj.firer)
+				ai_holder.react_to_attack(Proj.firer)
 		return
 	else
 		..()

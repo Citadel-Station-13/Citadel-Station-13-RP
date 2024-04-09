@@ -26,7 +26,14 @@
 /// hold position at **home**
 #define AI_DYNAMIC_STATE_GUARD 20 + 3
 /// fleeing towards **home**
-#define AI_DYNAMIC_STATE_FLEE 20 + 4
+/// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_RETREAT 20 + 4
+/// fleeing towards somewhere that isn't home
+/// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_FLEE 20 + 5
+/// move towards somewhere while shooting
+/// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_FLANK 20 + 6
 
 //* mode var
 

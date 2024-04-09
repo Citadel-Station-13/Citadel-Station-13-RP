@@ -41,9 +41,11 @@
 	if(!vore_selected)
 		to_chat(user, "<span class='warning'>[src] isn't planning on eating anything much less digesting it.</span>")
 		return
-	if(ai_holder.retaliate || (ai_holder.hostile && faction != user.faction))
-		to_chat(user, "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>")
-		return
+	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	if(istype(ai_holder))
+		if(ai_holder.retaliate || (ai_holder.hostile && faction != user.faction))
+			to_chat(user, "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>")
+			return
 	if(vore_selected.digest_mode == DM_HOLD)
 		var/confirm = tgui_alert(user, "Enabling digestion on [name] will cause it to digest all stomach contents. Using this to break OOC prefs is against the rules. Digestion will reset after 20 minutes.", "Enabling [name]'s Digestion", list("Enable", "Cancel"))
 		if(confirm == "Enable")
@@ -73,24 +75,8 @@
 
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
 	if (istype(O, /obj/item/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
-		if (ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
-			user.afflict_paralyze(20 * 5) //They get tackled anyway whether they're edible or not.
-			user.visible_message("<span class='danger'>\the [user] swats \the [src] with \the [O] and promptly gets tackled!</span>!")
-			if (will_eat(user))
-				set_AI_busy(TRUE)
-				animal_nom(user)
-				update_icon()
-				set_AI_busy(FALSE)
-			else if (!ai_holder.target) // no using this to clear a retaliate mob's target
-				ai_holder.target = user //just because you're not tasty doesn't mean you get off the hook. A swat for a swat.
-		else
-			user.visible_message("<span class='info'>\the [user] swats \the [src] with \the [O]!</span>!")
-			release_vore_contents()
-			for(var/mob/living/L in living_mobs(0)) //add everyone on the tile to the do-not-eat list for a while
-				if(!(L in prey_excludes)) // Unless they're already on it, just to avoid fuckery.
-					prey_excludes += L
-					spawn(5 MINUTES)
-						if(src && L)
-							prey_excludes -= L
+		release_vore_contents()
+		for(var/mob/living/L in living_mobs(0)) //add everyone on the tile to the do-not-eat list for a while
+			prey_excludes |= L
 	else
 		..()

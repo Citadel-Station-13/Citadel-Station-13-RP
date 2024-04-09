@@ -4,11 +4,39 @@
 /datum/ai_holder/dynamic
 	/// navigation is set. we use pathfinding for navigation.
 	var/navigation_active = FALSE
+	/// attack stuff in the way
+	var/navigation_rage = FALSE
+	/// callback to execute when navigation is finished
+	/// will be called with (cancelled: TRUE | FALSE, failed: TRUE | FALSE)
+	var/datum/callback/on_navigation_end
+	/// grace radius; if we can't *easily* get to the destination and we're
+	/// in this range, count as a success and not a fail
+	/// this is not 'we stop at this range',
+	/// this is 'if we fail at this range we count as success'
+	var/navigation_grace
+	#warn impl?
 
-/datum/ai_holder/dynamic/proc/cancel_navigation(reset_state = TRUE)
+/**
+ * called when our navigation has failed
+ */
+/datum/ai_holder/dynamic/proc/navigation_failed()
+	cancel_navigation(TRUE, TRUE)
+
+/**
+ * called when our navigation has ended
+ */
+/datum/ai_holder/dynamic/proc/navigation_succeeded()
+	navigation_active = FALSE
+	reset_pathfinding()
+	on_navigation_end?.Execute(FALSE, FALSE)
+	on_navigation_end = null
+
+/datum/ai_holder/dynamic/proc/cancel_navigation(reset_state = TRUE, failed = FALSE)
 	navigation_active = FALSE
 	if(reset_state)
 		reset_pathfinding()
+	on_navigation_end?.Execute(TRUE, failed)
+	on_navigation_end = null
 
 /datum/ai_holder/dynamic/proc/resume_navigation()
 	navigation_active = TRUE
@@ -23,8 +51,10 @@
 /**
  * @return TRUE / FALSE on success / failure
  */
-/datum/ai_holder/dynamic/proc/set_navigation(turf/destination)
+/datum/ai_holder/dynamic/proc/set_navigation(turf/destination, grace_radius, datum/callback/on_end)
 	if(!pathfind_to(destination))
 		return FALSE
+	src.navigation_grace = grace_radius
+	src.on_navigation_end = on_end
 	propagate_navigation()
 	return TRUE

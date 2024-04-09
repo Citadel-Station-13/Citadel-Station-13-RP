@@ -511,7 +511,9 @@
 	if(prob(50))
 		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			var/datum/ai_holder/polaris/ai_holder = ai_holder
+			if(istype(ai_holder))
+				ai_holder.react_to_attack(Proj.firer)
 		return
 	else
 		..()
