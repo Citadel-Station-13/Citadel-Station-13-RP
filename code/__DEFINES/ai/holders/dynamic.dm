@@ -9,6 +9,8 @@
 
 /// currently disabled
 #define AI_DYNAMIC_STATE_DISABLED 0 + 1
+/// sleeping due to no players on level; can be woken up by damage
+#define AI_DYNAMIC_STATE_SLEEPING 0 + 2
 
 /// idle; might be wandering
 #define AI_DYNAMIC_STATE_IDLE 10 + 1
@@ -43,7 +45,7 @@
 
 //* mode var
 
-/// disabled: disabled
+/// disabled: disabled, sleeping
 #define AI_DYNAMIC_MODE_DISABLED 0
 /// passive: idle, navigation, patrol
 #define AI_DYNAMIC_MODE_PASSIVE 1

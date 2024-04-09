@@ -70,7 +70,11 @@
  */
 /datum/ai_holder/dynamic/proc/set_state(new_state)
 	switch(state)
-		if(AI_DYNAMIC_STATE_IDLE, AI_DYNAMIC_STATE_PATROL, AI_DYNAMIC_STATE_NAVIGATION)
+		if(
+			AI_DYNAMIC_STATE_IDLE,
+			AI_DYNAMIC_STATE_PATROL,
+			AI_DYNAMIC_STATE_NAVIGATION,
+		)
 			mode = AI_DYNAMIC_MODE_PASSIVE
 		if(
 			AI_DYNAMIC_STATE_STRAFE,
@@ -79,7 +83,10 @@
 			AI_DYNAMIC_STATE_FLEE,
 		)
 			mode = AI_DYNAMIC_MODE_COMBAT
-		if(AI_DYNAMIC_STATE_DISABLED)
+		if(
+			AI_DYNAMIC_STATE_DISABLED,
+			AI_DYNAMIC_STATE_SLEEPING,
+		)
 			mode = AI_DYNAMIC_MODE_DISABLED
 		else
 			CRASH("attempted to set state to an invalid state")
