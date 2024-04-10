@@ -121,7 +121,7 @@ const NumberEntry = (props: {
   return (
     <NumberInput fluid value={props.value}
       minValue={props.schema.minValue || -Infinity} maxValue={props.schema.maxValue || Infinity}
-      step={props.schema.roundTo || undefined} onInput={(e, val) => props.setValue(val)} />
+      step={props.schema.roundTo || undefined} onChange={(e, val) => props.setValue(val)} />
   );
 };
 
