@@ -25,8 +25,6 @@
 	if (!bound_overlay || !isturf(loc))
 		return
 
-	var/turf/T = loc
-
 	if (MOVABLE_IS_BELOW_ZTURF(src))
 		SSzcopy.queued_overlays += bound_overlay
 		bound_overlay.queued += 1
