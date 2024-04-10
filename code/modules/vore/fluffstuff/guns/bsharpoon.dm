@@ -81,7 +81,7 @@
 
 /obj/item/bluespace_harpoon/verb/chande_fire_mode(mob/user as mob)
 	set name = "Change fire mode"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(transforming) return
 	mode = !mode

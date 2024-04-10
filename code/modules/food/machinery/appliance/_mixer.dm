@@ -38,7 +38,7 @@ fundamental differences
 /obj/machinery/appliance/mixer/choose_output()
 	set src in oview(1)
 	set name = "Choose output"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(!can_use_check())
 		return
@@ -98,7 +98,7 @@ fundamental differences
 /obj/machinery/appliance/mixer/toggle_power()
 	set src in view()
 	set name = "Toggle Power"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/datum/cooking_item/CI = cooking_objs[1]
 	if (!CI.container.check_contents())
