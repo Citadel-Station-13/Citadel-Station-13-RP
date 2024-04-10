@@ -10,6 +10,32 @@
  */
 /datum/ai_holder/dynamic
 
+/datum/ai_holder/dynamic/move(times_fired)
+	// todo: optimize.
+	if(move_special(times_fired, mode, state))
+		return
+	switch(mode)
+		if(AI_DYNAMIC_MODE_PASSIVE)
+			if(AI_DYNAMIC_STATE_IDLE)
+				// idle_loop() handles idle behaviors.
+				return 0
+			if(AI_DYNAMIC_STATE_PATROL, AI_DYNAMIC_STATE_NAVIGATION)
+				#warn navigation
+			if(AI_DYNAMIC_STATE_ESCALATION)
+				#warn hold still & threaten?
+		if(AI_DYNAMIC_MODE_COMBAT)
+			switch(state)
+				if(AI_DYNAMIC_STATE_FLANK, AI_DYNAMIC_STATE_RETREAT)
+					#warn navigation
+				else
+					#warn combat loop
+		if(AI_DYNAMIC_MODE_DISABLED)
+			// why are we here?
+			stack_trace("moving while disabled")
+			return 0
+	stack_trace("fell through state machine")
+	return 0
+
 /**
  * schedule a dodge in a certain direction
  *

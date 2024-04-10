@@ -10,6 +10,10 @@
 	var/telegraphing_without_moving
 	/// we should not be acting during this telegraph
 	var/telegraphing_without_acting
+	/// telegraph id
+	var/telegraphing_id
+	/// telegraph id next
+	var/static/telegraphing_id_next = 0
 
 /**
  * attempts to interrupt a telegraph if there is any
@@ -19,7 +23,7 @@
 /datum/ai_holder/dynamic/proc/interrupt_telegraph(level = AI_DYNAMIC_TELEGRAPH_INTERRUPT)
 	if(isnull(telegraphing_until))
 		return TRUE
-	if(telegraphing_level > level)
+	if(telegraphing_level >= level)
 		return FALSE
 	telegraphing_until = null
 	return TRUE
@@ -29,7 +33,7 @@
  *
  * * will interrupt earlier telegraph if level is higher.
  */
-/datum/ai_holder/dynamic/proc/telegraph(delay, level, no_move, no_act)
+/datum/ai_holder/dynamic/proc/start_telegraph(delay, level, no_move, no_act)
 	if(telegraphing_until && telegraphing_level <= level)
 		return FALSE
 	if(!delay && !telegraphing_until)
@@ -39,4 +43,29 @@
 	telegraphing_level = level
 	telegraphing_without_acting = no_act
 	telegraphing_without_moving = no_move
+	// im sorry
+	telegraphing_id = (telegraphing_id_next = ((telegraphing_id_next + 1) % SHORT_REAL_LIMIT))
 	return TRUE
+
+/**
+ * basically an ai's do_after().
+ */
+/datum/ai_holder/dynamic/proc/telegraph(delay, level, no_move, no_act, atom/target, mobility_flags, max_distance = 1)
+	if(!interrupt_telegraph(level))
+		return FALSE
+	var/static/datum/callback/telegraph_do_after_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(dynamic_ai_holder_telegraph_checks))
+	start_telegraph(delay, level, no_move, no_act)
+	return do_after(
+		src,
+		delay,
+		target,
+		(no_move? NONE : DO_AFTER_IGNORE_MOVEMENT) | (no_act? NONE : DO_AFTER_IGNORE_ACTIVE_ITEM),
+		mobility_flags,
+		max_distance,
+		data = telegraphing_id,
+	)
+
+/proc/dynamic_ai_holder_telegraph_checks(list/arglist)
+	// just make sure we weren't interrupted.
+	return arglist[DO_AFTER_ARG_DATA] == telegraphing_id
+

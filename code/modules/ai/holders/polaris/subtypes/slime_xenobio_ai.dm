@@ -102,7 +102,7 @@
 /datum/ai_holder/polaris/simple_mob/xenobio_slime/handle_special_strategical()
 	discipline_decay()
 
-/datum/ai_holder/simple_mob/xenobio_slime/handle_stance_tactical()
+/datum/ai_holder/polaris/simple_mob/xenobio_slime/handle_stance_tactical()
 	if(!istype(holder) || QDELETED(holder))
 		qdel(src)
 		return
@@ -139,7 +139,7 @@
 	my_slime.visible_message(SPAN_DANGER("\The [my_slime] enrages!"))
 
 // Called to relax from being rabid (when blue slime core was used).
-/datum/ai_holder/simple_mob/xenobio_slime/proc/relax()
+/datum/ai_holder/polaris/simple_mob/xenobio_slime/proc/relax()
 	var/mob/living/simple_mob/slime/xenobio/my_slime = holder
 	if(my_slime.harmless)
 		return

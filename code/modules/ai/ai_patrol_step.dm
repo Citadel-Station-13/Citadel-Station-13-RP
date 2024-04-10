@@ -4,7 +4,7 @@
 /**
  * a patrol step
  */
-/datum/dynamic_ai_patrol_step
+/datum/ai_patrol_step
 	/// turf to go to
 	var/turf/target
 

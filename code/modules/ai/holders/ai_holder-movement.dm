@@ -23,5 +23,11 @@
 /**
  * register on movement subsystem to move
  */
-/datum/ai_holder/proc/register_moving(initial_delay)
+/datum/ai_holder/proc/start_moving(initial_delay)
+	#warn impl
+
+/**
+ * stop moving
+ */
+/datum/ai_holder/proc/stop_moving()
 	#warn impl

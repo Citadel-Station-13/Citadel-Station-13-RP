@@ -14,6 +14,8 @@
 	/// this is not 'we stop at this range',
 	/// this is 'if we fail at this range we count as success'
 	var/navigation_grace
+	/// stored pathfinding results for this nav-path
+	var/datum/ai_pathing/navigation_path
 	#warn impl?
 
 /**
@@ -27,14 +29,14 @@
  */
 /datum/ai_holder/dynamic/proc/navigation_succeeded()
 	navigation_active = FALSE
-	reset_pathfinding()
+	navigation_path = null
 	on_navigation_end?.InvokeAsync(FALSE, FALSE)
 	on_navigation_end = null
 
 /datum/ai_holder/dynamic/proc/cancel_navigation(reset_state = TRUE, failed = FALSE)
 	navigation_active = FALSE
 	if(reset_state)
-		reset_pathfinding()
+		navigation_path = null
 	on_navigation_end?.InvokeAsync(TRUE, failed)
 	on_navigation_end = null
 

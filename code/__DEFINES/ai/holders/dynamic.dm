@@ -14,15 +14,15 @@
 
 /// idle; might be wandering
 #define AI_DYNAMIC_STATE_IDLE 10 + 1
-/// * under this state, we are using idle loop for movement
 /// engaged in patrolling
+/// * under this state, we are using idle loop for movement
 #define AI_DYNAMIC_STATE_PATROL 10 + 2
-/// * under this state, we are using navigation for movement
 /// navigating to destination
-#define AI_DYNAMIC_STATE_NAVIGATION 10 + 3
 /// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_NAVIGATION 10 + 3
 /// threatening someone; this is still passive mode
 /// we will never waste time threatening while in combat mode
+/// * under this state, we are using navigation for movement
 #define AI_DYNAMIC_STATE_ESCALATION 10 + 4
 
 /// ranged combat; stay at average effective engagement distance and fight

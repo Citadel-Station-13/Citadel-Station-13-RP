@@ -12,3 +12,11 @@
  */
 /datum/ai_holder/dynamic/proc/iterate_special(cycles, mode, state)
 	return FALSE
+
+/**
+ * called as special during move(), before the main state machine executes
+ *
+ * @return TRUE to interrupt **all** regular actions.
+ */
+/datum/ai_holder/dynamic/proc/move_special(times_fired, mode, state)
+	return FALSE

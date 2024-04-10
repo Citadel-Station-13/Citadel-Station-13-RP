@@ -45,7 +45,8 @@
 /**
  * called to propagate our state machine's actions.
  */
-/datum/ai_holder/dynamic/proc/iterate(cycles)
+/datum/ai_holder/dynamic/tick(cycles)
+	// todo: optimize.
 	if(iterate_special(cycles, mode, state))
 		return
 	switch(mode)
