@@ -143,7 +143,7 @@
 // Presumably the holodeck emag code requires this.
 // Pass TRUE to make safe. Pass FALSE to make unsafe.
 /mob/living/simple_mob/animal/space/carp/holographic/proc/set_safety(safe)
-	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(istype(ai_holder))
 		if(!isnull(get_AI_stance())) // Will return null if lacking an AI holder or a player is controlling it w/o autopilot var.
 			ai_holder.hostile = !safe // Inverted so safe = TRUE means hostility = FALSE.

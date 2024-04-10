@@ -12,6 +12,8 @@
 	var/ticking_cycles
 	/// bucket position
 	var/ticking_position
+	/// allow setting to ssd
+	var/ticking_off_is_ssd = FALSE
 
 /**
  * Starts ticking

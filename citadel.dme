@@ -2208,6 +2208,7 @@
 #include "code\modules\ai\holders\dynamic\dynamic-survival.dm"
 #include "code\modules\ai\holders\dynamic\dynamic-targeting.dm"
 #include "code\modules\ai\holders\dynamic\dynamic-telegraphing.dm"
+#include "code\modules\ai\holders\dynamic\dynamic-ticking.dm"
 #include "code\modules\ai\holders\dynamic\dynamic-vision.dm"
 #include "code\modules\ai\holders\dynamic\dynamic.dm"
 #include "code\modules\ai\holders\dynamic\dynamic_ai_patrol.dm"

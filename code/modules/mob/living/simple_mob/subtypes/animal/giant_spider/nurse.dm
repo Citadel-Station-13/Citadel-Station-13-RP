@@ -140,7 +140,9 @@
 	if(large_cocoon)
 		C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
 
-	ai_holder.target = null
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(ai_holder)
+		ai_holder.target = null
 
 	return TRUE
 

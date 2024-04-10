@@ -100,7 +100,7 @@
 	if(!istype(L))
 		return
 	if(istype(L) && L.a_intent != INTENT_HELP)
-		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(istype(ai_holder))
 			if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 				ai_holder.react_to_attack(L)
@@ -122,7 +122,7 @@
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
 			signaler.signal()
 
-	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(istype(ai_holder))
 		if(ai_holder && P.firer)
 			ai_holder.react_to_attack(P.firer)
@@ -239,7 +239,7 @@
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
-	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(istype(ai_holder))
 		if(ai_holder)
 			ai_holder.react_to_attack(user)
@@ -302,7 +302,7 @@
 			// we log only if one party is a player
 			if(!!client || !!M.client)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
-			var/datum/ai_holder/polaris/ai_holder = ai_holder
+			var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 			if(istype(ai_holder))
 				ai_holder.react_to_attack(TT.thrower)
 
@@ -368,7 +368,7 @@
 
 	adjustBruteLoss(damage)
 	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_mob attacks
-	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(istype(ai_holder))
 		if(ai_holder)
 			ai_holder.react_to_attack(user)

@@ -149,7 +149,7 @@
 		infest_target = pick(bodypart_targets)
 
 	if(host && !stat && !host.stat)
-		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(istype(ai_holder))
 			ai_holder.hostile = FALSE
 			ai_holder.lose_target()
@@ -213,7 +213,7 @@
 			if(prob(15 + (20 * heartless_mod)))
 				feed_on_organ()
 	else
-		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(istype(ai_holder))
 			if(ai_holder)
 				ai_holder.hostile = initial(ai_holder.hostile)
@@ -294,7 +294,7 @@
 
 		src.host = M
 		src.forceMove(M)
-		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(istype(ai_holder))
 			if(ai_holder)
 				ai_holder.hostile = FALSE
@@ -325,7 +325,7 @@
 	if(!host)
 		return
 
-	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(istype(ai_holder))
 		ai_holder.hostile = initial(ai_holder.hostile)
 		ai_holder.lose_target()

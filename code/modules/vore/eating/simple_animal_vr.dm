@@ -41,7 +41,7 @@
 	if(!vore_selected)
 		to_chat(user, "<span class='warning'>[src] isn't planning on eating anything much less digesting it.</span>")
 		return
-	var/datum/ai_holder/polaris/ai_holder = ai_holder
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(istype(ai_holder))
 		if(ai_holder.retaliate || (ai_holder.hostile && faction != user.faction))
 			to_chat(user, "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>")

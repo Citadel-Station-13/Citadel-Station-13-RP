@@ -52,19 +52,31 @@
 		if(AI_DYNAMIC_MODE_PASSIVE)
 			switch(state)
 				if(AI_DYNAMIC_STATE_IDLE)
+					idle_loop()
 				if(AI_DYNAMIC_STATE_PATROL)
+					#warn impl
 				if(AI_DYNAMIC_STATE_NAVIGATION)
+					#warn impl
 				if(AI_DYNAMIC_STATE_ESCALATION)
+					#warn impl
 		if(AI_DYNAMIC_MODE_COMBAT)
 			switch(state)
 				if(AI_DYNAMIC_STATE_STRAFE)
+					#warn impl
 				if(AI_DYNAMIC_STATE_CQC)
+					#warn impl
 				if(AI_DYNAMIC_STATE_GUARD)
+					#warn impl
 				if(AI_DYNAMIC_STATE_RETREAT)
+					#warn impl
 				if(AI_DYNAMIC_STATE_FLEE)
+					#warn impl
 				if(AI_DYNAMIC_STATE_FLANK)
+					#warn impl
 		if(AI_DYNAMIC_MODE_DISABLED)
 			// why are we here?
+			stack_trace("ticking while disabled")
+			stop_ticking() // stop it!!
 
 /**
  * called to set our state
@@ -75,8 +87,10 @@
 			AI_DYNAMIC_STATE_IDLE,
 			AI_DYNAMIC_STATE_PATROL,
 			AI_DYNAMIC_STATE_NAVIGATION,
+			AI_DYNAMIC_STATE_ESCALATION,
 		)
 			mode = AI_DYNAMIC_MODE_PASSIVE
+			set_ticking(tick_delay_passive)
 		if(
 			AI_DYNAMIC_STATE_STRAFE,
 			AI_DYNAMIC_STATE_CQC,
@@ -84,12 +98,28 @@
 			AI_DYNAMIC_STATE_FLEE,
 		)
 			mode = AI_DYNAMIC_MODE_COMBAT
+			set_ticking(tick_delay_combat)
 		if(
 			AI_DYNAMIC_STATE_DISABLED,
 			AI_DYNAMIC_STATE_SLEEPING,
 		)
 			mode = AI_DYNAMIC_MODE_DISABLED
+			stop_ticking()
 		else
 			CRASH("attempted to set state to an invalid state")
 	state = new_state
-	#warn update scheduling
+	switch(state)
+		if(AI_DYNAMIC_STATE_IDLE)
+			idle_setup()
+	if(state == AI_DYNAMIC_STATE_SLEEPING || state == AI_DYNAMIC_STATE_DISABLED)
+		if(!ticking_off_is_ssd)
+			ticking_off_is_ssd = TRUE
+			if(ismob(agent))
+				var/mob/casted = agent
+				casted.update_ssd_overlay()
+	else
+		if(ticking_off_is_ssd)
+			ticking_off_is_ssd = FALSE
+			if(ismob(agent))
+				var/mob/casted = agent
+				casted.update_ssd_overlay()
