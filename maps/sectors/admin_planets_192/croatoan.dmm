@@ -668,7 +668,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/railing,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "cl" = (
@@ -2277,7 +2276,6 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "hB" = (
-/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/croatoan/med_checkpoint_lower)
 "hD" = (
@@ -3369,13 +3367,6 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/sci_cargo_shuttle_pad)
-"lx" = (
-/obj/machinery/light,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/durasteel,
-/area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "lz" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/glasses/sunglasses/sechud{
@@ -3559,12 +3550,6 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/admin_planet/croatoan/sci_lower_checkpoint)
-"mn" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/durasteel,
-/area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "mq" = (
 /obj/structure/window/phoronreinforced,
 /obj/structure/table/carbon,
@@ -3783,10 +3768,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/croatoan/sci_lower_checkpoint)
-"mY" = (
-/obj/structure/railing,
-/turf/simulated/floor/durasteel,
-/area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "na" = (
 /obj/effect/floor_decal/corner/red/border,
 /obj/effect/floor_decal/corner/red/border,
@@ -3832,12 +3813,6 @@
 	emagged = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
-"nk" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/durasteel,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "nm" = (
 /obj/spawner/corpse/scientist,
@@ -7101,7 +7076,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/railing,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
 "yC" = (
@@ -8855,12 +8829,6 @@
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/tiled/steel,
 /area/admin_planet/croatoan/civ_hydro)
-"Fu" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/croatoan/sci_upper_checkpoint)
 "Fv" = (
 /obj/machinery/shower{
 	dir = 4
@@ -8929,12 +8897,6 @@
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/civ_bar_public)
-"FA" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/durasteel,
-/area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "FB" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/photocopier/faxmachine{
@@ -10325,13 +10287,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
-"Ky" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/railing,
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/croatoan/sci_upper_checkpoint)
 "Kz" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -10772,13 +10727,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
-"LZ" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/railing,
-/turf/simulated/floor/durasteel,
 /area/admin_planet/croatoan/high_sec_science_lower_checkpoint)
 "Ma" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -11386,6 +11334,13 @@
 "NS" = (
 /turf/simulated/wall/dungeon,
 /area/admin_planet/croatoan/high_sec_science_virology_lab)
+"NT" = (
+/obj/structure/fake_stairs/east/top{
+	_stair_tag = 12;
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/admin_planet/croatoan/high_sec_science_entrance)
 "NW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -12753,12 +12708,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_entrance_hallway)
-"RY" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/admin_planet/croatoan/sci_upper_checkpoint)
 "RZ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -13436,9 +13385,6 @@
 /obj/machinery/power/terminal,
 /obj/structure/cable{
 	icon_state = "0-4"
-	},
-/obj/structure/railing{
-	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
@@ -14494,15 +14440,6 @@
 "Yq" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/admin_planet/croatoan/sci_canister_storage)
-"Yr" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/admin_planet/croatoan/high_sec_science_entrance)
 "Ys" = (
 /obj/effect/floor_decal/corner/red/border,
 /obj/effect/floor_decal/corner/red/border,
@@ -14616,9 +14553,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
-	},
-/obj/structure/railing{
-	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/high_sec_science_entrance)
@@ -16886,7 +16820,7 @@ lF
 OS
 EC
 Rq
-lx
+hu
 lF
 lF
 lW
@@ -16906,7 +16840,7 @@ lF
 OS
 kb
 Rq
-lx
+hu
 lF
 lF
 lW
@@ -17080,7 +17014,7 @@ lF
 Rq
 CX
 Rq
-nk
+Rq
 lF
 lF
 lW
@@ -17100,7 +17034,7 @@ lF
 Rq
 hJ
 Rq
-nk
+Rq
 lF
 lF
 lW
@@ -17120,7 +17054,7 @@ Ur
 lW
 lF
 lF
-LZ
+OS
 ei
 Rq
 hu
@@ -17272,8 +17206,8 @@ lW
 lF
 lF
 Rq
-mn
-mn
+Rq
+Rq
 Rq
 lF
 lF
@@ -17292,8 +17226,8 @@ lW
 lF
 lF
 Rq
-mn
-mn
+Rq
+Rq
 Rq
 lF
 lF
@@ -17314,7 +17248,7 @@ Ur
 lW
 lF
 lF
-mY
+Rq
 rB
 Rq
 Rq
@@ -17466,8 +17400,8 @@ lW
 lF
 lF
 pp
-FA
-FA
+Rq
+Rq
 Rq
 lF
 lF
@@ -17486,8 +17420,8 @@ lW
 lF
 lF
 Rq
-FA
-FA
+Rq
+Rq
 Rq
 lF
 lF
@@ -17509,8 +17443,8 @@ lW
 lF
 lF
 Rq
-mn
-mn
+Rq
+Rq
 Rq
 lF
 lF
@@ -17659,7 +17593,7 @@ lW
 lW
 lF
 lF
-mY
+Rq
 DP
 Rq
 Rq
@@ -17679,7 +17613,7 @@ Ur
 lW
 lF
 lF
-mY
+Rq
 Pn
 Rq
 Rq
@@ -17703,8 +17637,8 @@ lW
 lF
 lF
 Rq
-FA
-FA
+Rq
+Rq
 Rq
 lF
 lF
@@ -17853,7 +17787,7 @@ lW
 lW
 lF
 lF
-LZ
+OS
 pT
 Rq
 hu
@@ -17873,7 +17807,7 @@ Ur
 lW
 lF
 lF
-LZ
+OS
 sF
 Rq
 hu
@@ -17899,7 +17833,7 @@ lF
 Rq
 Zv
 Rq
-nk
+Rq
 lF
 lF
 lW
@@ -18093,7 +18027,7 @@ lF
 OS
 wo
 Rq
-lx
+hu
 lF
 lF
 lW
@@ -37675,7 +37609,7 @@ rN
 OO
 yB
 SI
-SI
+NT
 YG
 rn
 rN
@@ -37868,8 +37802,8 @@ rN
 rN
 rN
 cl
-Yr
-Yr
+zK
+zK
 cn
 rN
 rN
@@ -48837,10 +48771,10 @@ lW
 lW
 lW
 sV
-Ky
+AB
 St
 St
-Fu
+St
 sV
 lW
 lW
@@ -49031,10 +48965,10 @@ lW
 lW
 lW
 sV
-Ky
+AB
 JV
 Ap
-Fu
+St
 sV
 lW
 lW
@@ -49226,8 +49160,8 @@ lW
 lW
 sV
 Jw
-RY
-RY
+St
+St
 St
 sV
 lW
