@@ -21,6 +21,9 @@
 /// navigating to destination
 #define AI_DYNAMIC_STATE_NAVIGATION 10 + 3
 /// * under this state, we are using navigation for movement
+/// threatening someone; this is still passive mode
+/// we will never waste time threatening while in combat mode
+#define AI_DYNAMIC_STATE_ESCALATION 10 + 4
 
 /// ranged combat; stay at average effective engagement distance and fight
 /// * under this state, we are using the combat planner for movement
@@ -47,7 +50,7 @@
 
 /// disabled: disabled, sleeping
 #define AI_DYNAMIC_MODE_DISABLED 0
-/// passive: idle, navigation, patrol
+/// passive: idle, navigation, patrol, escalation
 #define AI_DYNAMIC_MODE_PASSIVE 1
 /// combat: ranged, melee, hold, flee
 #define AI_DYNAMIC_MODE_COMBAT 2

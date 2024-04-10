@@ -9,19 +9,25 @@
 /**
  * Handles ticking AI holders
  */
-/datum/controller/subsystem/ai_holders
+SUBSYSTEM_DEF(ai_holders)
 	name = "AI Holders"
 
 	/// all ticking ai holders
 	var/static/list/datum/ai_holder/active_holders
 	/// rolling bucket list; these hold the head node of linked ai_holders.
-	var/tmp/list/buckets
+	var/tmp/list/holder_buckets
+	/// rolling bucket list; these hold the head node of linked /datum/ai_callback's
+	var/tmp/list/scheduler_buckets
 	/// world.time of bucket head
 	var/bucket_position
 	/// index of bucket head
 	var/bucket_index
 
+	/// global ai_lexicon instances
+	var/list/ai_lexicons
+
 /datum/controller/subsystem/ai_holders/Initialize()
+	init_ai_lexicons()
 	rebuild()
 	return ..()
 
@@ -36,6 +42,13 @@
 	rebuild()
 	return ..()
 
+/datum/controller/subsystem/ai_holders/proc/init_ai_lexicons()
+	for(var/datum/ai_lexicon/path as anything in subtypesof(/datum/ai_lexicon))
+		if(initial(path.abstract_type) == path)
+			continue
+		var/datum/ai_lexicon/created = new path
+		ai_lexicons[path] = created
+
 /datum/controller/subsystem/ai_holders/proc/bucket_insert(datum/ai_holder/holder)
 	ASSERT(holder.ticking <= AI_SCHEDULING_LIMIT)
 	#warn impl
@@ -46,13 +59,19 @@
 		buckets[holder.ticking_position] = holder.ticking_next
 	holder.ticking_next = holder.ticking_previous = null
 
+/datum/controller/subsystem/ai_holders/proc/schedule_callback(datum/ai_callback/callback)
+	#warn impl
+
 /**
  * perform error checking
  * rebuild all buckets
  */
 /datum/controller/subsystem/ai_holders/proc/rebuild()
 	// todo; recover active_holders as well maybe?
-	buckets = new /list(BUCKET_AMOUNT)
+	holder_buckets = new /list(BUCKET_AMOUNT)
+	// we don't give a crap about recovered scheduled events; shrimply not our issue
+	// if you change ticklag midgame all AIs should be rescheduling anyways.
+	scheduler_buckets = new /list(BUCKET_AMOUNT)
 	for(var/datum/ai_holder/holder as anything in active_holders)
 		if(!istype(holder))
 			active_holders -= holder
