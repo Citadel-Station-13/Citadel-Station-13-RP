@@ -5002,6 +5002,7 @@
 #include "maps\rift\shuttles.dm"
 #include "maps\rift\telecomms.dm"
 #include "maps\rift\titlescreens.dm"
+#include "maps\sectors\admin_planets_192\croatoan.dmm"
 #include "maps\sectors\debrisfield_140\debrisfield_140.dm"
 #include "maps\sectors\debrisfield_192\debrisfield_192.dm"
 #include "maps\sectors\desert_140\desert_140.dm"
