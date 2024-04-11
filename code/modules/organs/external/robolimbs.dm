@@ -632,7 +632,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	desc = "This limb has a slight salvaged handicraft vibe to it. The CE-marking on it is definitely not the standardized one, it looks more like a hand-written sharpie monogram."
 	icon = 'icons/mob/cyberlimbs/_fluff_vr/rahboop.dmi'
 	blood_color = "#5e280d"
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd
 	unavailable_to_build = TRUE
 
 /obj/item/disk/limb/eggnerdltd
@@ -681,6 +681,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	desc = "A slightly more refined limb variant from Eggnerd Prototyping. Its got red plating instead of orange."
 	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'
 	blood_color = "#5e280d"
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd_red
 	includes_tail = 1
 	unavailable_to_build = TRUE
 
@@ -698,8 +699,8 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/DSITajaran/dsi_tajaran.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_tajaran
 	unavailable_to_build = TRUE
-	includes_tail = 1
 	skin_tone = 1
 	suggested_species = SPECIES_TAJ
 	speech_bubble_appearance = "normal"
@@ -715,7 +716,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_lizard
 	skin_tone = 1
 	suggested_species = SPECIES_UNATHI
 	speech_bubble_appearance = "normal"
@@ -731,7 +732,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_naramadi
 	skin_tone = 1
 	suggested_species = SPECIES_SERGAL
 	speech_bubble_appearance = "normal"
@@ -747,7 +748,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_nevrean
 	skin_tone = 1
 	suggested_species = SPECIES_NEVREAN
 	speech_bubble_appearance = "normal"
@@ -763,7 +764,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_vulpkanin
 	skin_tone = 1
 	suggested_species = SPECIES_VULPKANIN
 	speech_bubble_appearance = "normal"
@@ -778,8 +779,8 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/DSIAkula/dsi_akula.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_akula
 	unavailable_to_build = TRUE
-	includes_tail = 1
 	skin_tone = 1
 	suggested_species = SPECIES_AKULA
 	speech_bubble_appearance = "normal"
@@ -795,7 +796,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_spider
 	skin_tone = 1
 	suggested_species = SPECIES_VASILISSAN
 	speech_bubble_appearance = "normal"
