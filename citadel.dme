@@ -4841,6 +4841,7 @@
 #include "code\modules\vehicles\ridden\gokart.dm"
 #include "code\modules\vehicles\ridden\quad.dm"
 #include "code\modules\vehicles\ridden\rock.dm"
+#include "code\modules\vehicles\ridden\skateboard.dm"
 #include "code\modules\vehicles\ridden\three_wheel_carts.dm"
 #include "code\modules\vehicles\ridden\wheelchair.dm"
 #include "code\modules\vehicles\sealed\rover.dm"

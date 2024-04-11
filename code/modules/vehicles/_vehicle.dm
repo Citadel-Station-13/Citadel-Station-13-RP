@@ -196,9 +196,8 @@
 		if(attach_to(dropping, user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	//Cargo load check
-	if(1 == 1)
-		if(load(dropping))
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+	//if(load(dropping))
+	//	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	return ..()
 

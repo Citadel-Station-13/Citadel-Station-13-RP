@@ -124,7 +124,7 @@
 		return
 	new board_item_type(newLoc)
 	qdel(src)
-/*
+
 /obj/item/melee/skateboard/improv
 	name = "improvised skateboard"
 	desc = "A skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
@@ -132,40 +132,40 @@
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
 	damage_force = 10
-	board_item_type = /obj/vehicle_old/skateboard/improv
+	board_item_type = /obj/vehicle/ridden/skateboard/improv
 	throw_force = 7
 
 /obj/item/melee/skateboard/beginner
 	name = "skateboard"
 	desc = "A XTREME SPORTZ brand skateboard for beginners. Ages 8 and up."
 	icon_state = "skateboard"
-	board_item_type = /obj/vehicle_old/skateboard/beginner
+	board_item_type = /obj/vehicle/ridden/skateboard/beginner
 
 /obj/item/melee/skateboard/pro
 	name = "skateboard"
 	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."
 	icon_state = "skateboard2"
-	board_item_type = /obj/vehicle_old/skateboard/pro
+	board_item_type = /obj/vehicle/ridden/skateboard/pro
 
 /obj/item/melee/skateboard/hoverboard
 	name = "hoverboard"
 	desc = "A blast from the past, so retro!"
 	icon_state = "hoverboard_red"
-	board_item_type = /obj/vehicle_old/skateboard/hoverboard
+	board_item_type = /obj/vehicle/ridden/skateboard/hoverboard
 
 /obj/item/melee/skateboard/hoverboard/admin
 	name = "Board of Directors"
 	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
 	icon_state = "hoverboard_nt"
-	board_item_type = /obj/vehicle_old/skateboard/hoverboard/admin
+	board_item_type = /obj/vehicle/ridden/skateboard/hoverboard/admin
 
 /obj/item/melee/skateboard/scooter
 	name = "scooter"
 	desc = "A fun way to get around."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
-	board_item_type = /obj/vehicle_old/skateboard/scooter
-*/
+	board_item_type = /obj/vehicle/ridden/skateboard/scooter
+
 //Clown Halberd
 /obj/item/melee/clownstaff
 	name = "clown halberd"

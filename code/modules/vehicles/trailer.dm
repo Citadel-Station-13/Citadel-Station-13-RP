@@ -93,7 +93,8 @@
 
 	return 1
 */
-
+//OLD PROC CLONE
+/*
 /obj/vehicle/trailer/proc/load(var/atom/movable/C, var/mob/living/user)
 	//This loads objects onto the vehicle so they can still be interacted with.
 	//Define allowed items for loading in specific vehicle definitions.
@@ -177,7 +178,7 @@
 
 
 
-
+*/
 
 //----------------------------------------------------------------------------------------
 
