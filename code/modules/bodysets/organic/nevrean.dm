@@ -5,4 +5,5 @@
 	name = "nevrean tail"
 	icon = 'icons/mob/bodysets/organic/nevrean/sprite_accessories.dmi'
 	icon_state = "tail"
-	do_colouration = FALSE
+	id = "tail-bodyset-nevrean"
+	do_colouration = TRUE

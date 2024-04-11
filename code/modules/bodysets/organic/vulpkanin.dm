@@ -8,4 +8,5 @@
 	variations = list(
 		SPRITE_ACCESSORY_VARIATION_WAGGING = "tail-wag",
 	)
-	do_colouration = FALSE
+	do_colouration = TRUE
+	id = "tail-bodyset-vulpkanin"

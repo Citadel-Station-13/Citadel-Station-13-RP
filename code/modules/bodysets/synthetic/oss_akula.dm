@@ -6,3 +6,4 @@
 	icon = 'icons/mob/bodysets/synthetic/oss_akula/sprite_accessories.dmi'
 	icon_state = "tail"
 	do_colouration = TRUE
+	id = "tail-bodyset-oss_akula"

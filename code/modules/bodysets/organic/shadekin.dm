@@ -5,4 +5,5 @@
 	name = "shadekin tail"
 	icon = 'icons/mob/bodysets/organic/shadekin/sprite_accessories.dmi'
 	icon_state = "tail"
-	do_colouration = FALSE
+	id = "tail-bodyset-shadekin"
+	do_colouration = TRUE

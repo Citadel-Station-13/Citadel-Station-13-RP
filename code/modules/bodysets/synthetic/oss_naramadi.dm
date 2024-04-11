@@ -6,3 +6,4 @@
 	icon = 'icons/mob/bodysets/synthetic/oss_naramadi/sprite_accessories.dmi'
 	icon_state = "tail"
 	do_colouration = TRUE
+	id = "tail-bodyset-oss_naramadi"

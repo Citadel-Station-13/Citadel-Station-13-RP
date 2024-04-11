@@ -5,4 +5,5 @@
 	name = "rapala tail"
 	icon = 'icons/mob/bodysets/organic/rapala/sprite_accessories.dmi'
 	icon_state = "tail"
-	do_colouration = FALSE
+	id = "tail-bodyset-rapala"
+	do_colouration = TRUE

@@ -6,3 +6,4 @@
 	icon = 'icons/mob/bodysets/synthetic/eggnerd/sprite_accessories.dmi'
 	icon_state = "tail"
 	do_colouration = FALSE
+	id = "tail-bodyset-eggnerd"
