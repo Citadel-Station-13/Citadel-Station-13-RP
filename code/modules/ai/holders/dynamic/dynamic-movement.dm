@@ -14,6 +14,8 @@
 	// todo: optimize.
 	if(move_special(times_fired, mode, state))
 		return
+	if(navigation_active)
+		#warn impl
 	switch(mode)
 		if(AI_DYNAMIC_MODE_PASSIVE)
 			if(AI_DYNAMIC_STATE_IDLE)

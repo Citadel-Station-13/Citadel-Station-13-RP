@@ -26,21 +26,21 @@
 	navigation_set = FALSE
 	on_navigation_end?.InvokeAsync(status)
 	on_navigation_end = null
-	#warn impl - movement
+	// todo: should we do pluggable movement loops?
 	return TRUE
 
 /datum/ai_holder/dynamic/proc/pause_navigation()
 	if(!navigation_set)
 		return TRUE
 	navigation_active = FALSE
-	#warn impl - movement
+	// todo: should we do pluggable movement loops?
 	return TRUE
 
 /datum/ai_holder/dynamic/proc/resume_navigation()
 	if(!navigation_set)
 		return FALSE
 	navigation_active = TRUE
-	#warn impl - movement
+	// todo: should we do pluggable movement loops?
 	return TRUE
 
 /**
