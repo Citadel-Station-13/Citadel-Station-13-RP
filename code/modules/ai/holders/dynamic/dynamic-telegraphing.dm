@@ -5,7 +5,7 @@
 	/// we are considered 'telegraphing' until a given world time, if set
 	var/telegraphing_until
 	/// telegraph level; we can be pre-empted by an inbound event of a higher tier
-	var/telegraphing_level
+	var/telegraphing_priority
 	/// we should not be moving during this telegraph
 	var/telegraphing_without_moving
 	/// we should not be acting during this telegraph
@@ -23,7 +23,7 @@
 /datum/ai_holder/dynamic/proc/interrupt_telegraph(level = AI_DYNAMIC_TELEGRAPH_INTERRUPT)
 	if(isnull(telegraphing_until))
 		return TRUE
-	if(telegraphing_level >= level)
+	if(telegraphing_priority >= level)
 		return FALSE
 	telegraphing_until = null
 	return TRUE
@@ -34,13 +34,13 @@
  * * will interrupt earlier telegraph if level is higher.
  */
 /datum/ai_holder/dynamic/proc/start_telegraph(delay, level, no_move, no_act)
-	if(telegraphing_until && telegraphing_level <= level)
+	if(telegraphing_until && telegraphing_priority <= level)
 		return FALSE
 	if(!delay && !telegraphing_until)
 		return TRUE
 	cancel_navigation()
 	telegraphing_until = world.time + delay
-	telegraphing_level = level
+	telegraphing_priority = level
 	telegraphing_without_acting = no_act
 	telegraphing_without_moving = no_move
 	// im sorry
@@ -62,10 +62,12 @@
 		(no_move? NONE : DO_AFTER_IGNORE_MOVEMENT) | (no_act? NONE : DO_AFTER_IGNORE_ACTIVE_ITEM),
 		mobility_flags,
 		max_distance,
-		data = telegraphing_id,
+		data = list(telegraphing_id, src),
 	)
 
 /proc/dynamic_ai_holder_telegraph_checks(list/arglist)
 	// just make sure we weren't interrupted.
-	return arglist[DO_AFTER_ARG_DATA] == telegraphing_id
+	var/list/data = arglist[DO_AFTER_ARG_DATA]
+	var/datum/ai_holder/dynamic/holder = data[2]
+	return data[1] == holder.telegraphing_id
 

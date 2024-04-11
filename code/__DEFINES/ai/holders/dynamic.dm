@@ -46,6 +46,24 @@
 /// * chase behaviors are also used for this, because chases are highly interruptible.
 #define AI_DYNAMIC_STATE_FLANK 20 + 6
 
+//* stance
+
+/// ranged combat; stay at average to max effective engagement distance and fight
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_STRAFE 1
+/// auto combat: stay at maximally effective distance of our combined weapons
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_AUTO 2
+/// melee combat: stay at average to min effective engagement distance and fight
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_CQC 3
+/// moving away from all enemies / targets
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_FLEE 4
+/// flee towards home
+//* movement: navigation
+#define AI_DYNAMIC_STANCE_RETREAT 5
+
 //* mode var
 
 /// disabled: disabled, sleeping
@@ -54,6 +72,23 @@
 #define AI_DYNAMIC_MODE_PASSIVE 1
 /// combat: ranged, melee, hold, flee
 #define AI_DYNAMIC_MODE_COMBAT 2
+
+//* Core - Scheduling *//
+//? These are used as priorities for things like navigation and telegraph so we can interrupt
+//? a lower-tier action.
+
+/// do not use this as a real scheduling tier; pass this in to never pre-empt; used to check if we're scheduling
+#define AI_DYNAMIC_SCHEDULING_CHECK -1
+/// passive scheduled action, like RP fluff
+#define AI_DYNAMIC_SCHEDULING_FLUFF 0
+/// baseline combat scheduling for things like healing yourself
+#define AI_DYNAMIC_SCHEDULING_OPPORTUNISTIC 1
+/// combat scheduling for stuff like performing an aimed shot, throwing a grenade, etc
+#define AI_DYNAMIC_SCHEDULING_OFFENSIVE 2
+/// scheduling for stuff like running away / maximally important
+#define AI_DYNAMIC_SCHEDULING_CRITICAL 3
+/// do not use this as a real scheduling tier; pass this in to pre-empt the current scheduling
+#define AI_DYNAMIC_SCHEDULING_INTERRUPT 4
 
 //* Aiming *//
 
@@ -83,17 +118,13 @@
 /// they're an enemy
 #define AI_DYNAMIC_FACTION_CHECK_ENEMY 4
 
-//* Telegraphing *//
+//* Navigation *//
 
-/// do not use this as a real telegraph tier; pass this in to never pre-empt; used to check if we're telegraphing
-#define AI_DYNAMIC_TELEGRAPH_CHECK -1
-/// passive telegraphed action, like RP fluff
-#define AI_DYNAMIC_TELEGRAPH_FLUFF 0
-/// baseline combat telegraph for things like healing yourself
-#define AI_DYNAMIC_TELEGRAPH_OPPORTUNISTIC 1
-/// combat telegraph for stuff like performing an aimed shot, throwing a grenade, etc
-#define AI_DYNAMIC_TELEGRAPH_OFFENSIVE 2
-/// telegraph for stuff like running away / maximally important
-#define AI_DYNAMIC_TELEGRAPH_CRITICAL 3
-/// do not use this as a real telegraph tier; pass this in to pre-empt the current telegraph
-#define AI_DYNAMIC_TELEGRAPH_INTERRUPT 4
+/// navigation succeeed
+#define AI_DYNAMIC_NAVIGATION_FINISHED_SUCCESSFULLY 0
+/// cancelled specifically
+#define AI_DYNAMIC_NAVIGATION_FINISHED_CANCELLED 1
+/// interrupted by a higher priority navigation request
+#define AI_DYNAMIC_NAVIGATION_FINISHED_INTERRUPTED 2
+/// navigation to target failed / couldn't reach with found path
+#define AI_DYNAMIC_NAVIGATION_FINISHED_NO_PATH 3

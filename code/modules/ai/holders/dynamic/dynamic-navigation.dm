@@ -2,12 +2,16 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /datum/ai_holder/dynamic
-	/// navigation is set. we use pathfinding for navigation.
+	/// navigation ahs been set
+	var/navigation_set = FALSE
+	/// navigation is active. we should move via navigation.
 	var/navigation_active = FALSE
 	/// attack stuff in the way
 	var/navigation_rage = FALSE
+	/// current navigation scheduling priority
+	var/navigation_priority
 	/// callback to execute when navigation is finished
-	/// will be called with (cancelled: TRUE | FALSE, failed: TRUE | FALSE)
+	/// will be called with (status: AI_DYNAMIC_NAVIGATION_FINISHED_*)
 	var/datum/callback/on_navigation_end
 	/// grace radius; if we can't *easily* get to the destination and we're
 	/// in this range, count as a success and not a fail
@@ -16,47 +20,69 @@
 	var/navigation_grace
 	/// stored pathfinding results for this nav-path
 	var/datum/ai_pathing/navigation_path
-	#warn impl?
 
-/**
- * called when our navigation has failed
- */
-/datum/ai_holder/dynamic/proc/navigation_failed()
-	cancel_navigation(TRUE, TRUE)
-
-/**
- * called when our navigation has ended
- */
-/datum/ai_holder/dynamic/proc/navigation_succeeded()
+/datum/ai_holder/dynamic/proc/stop_navigation(status = AI_DYNAMIC_NAVIGATION_FINISHED_CANCELLED)
 	navigation_active = FALSE
-	navigation_path = null
-	on_navigation_end?.InvokeAsync(FALSE, FALSE)
+	navigation_set = FALSE
+	on_navigation_end?.InvokeAsync(status)
 	on_navigation_end = null
+	#warn impl - movement
+	return TRUE
 
-/datum/ai_holder/dynamic/proc/cancel_navigation(reset_state = TRUE, failed = FALSE)
+/datum/ai_holder/dynamic/proc/pause_navigation()
+	if(!navigation_set)
+		return TRUE
 	navigation_active = FALSE
-	if(reset_state)
-		navigation_path = null
-	on_navigation_end?.InvokeAsync(TRUE, failed)
-	on_navigation_end = null
+	#warn impl - movement
+	return TRUE
 
 /datum/ai_holder/dynamic/proc/resume_navigation()
-	navigation_active = TRUE
-	propagate_navigation()
-
-/**
- * instructs our movement system to go to the next pathfinding node
- */
-/datum/ai_holder/dynamic/proc/propagate_navigation()
-	#warn impl
-
-/**
- * @return TRUE / FALSE on success / failure
- */
-/datum/ai_holder/dynamic/proc/set_navigation(turf/destination, grace_radius, datum/callback/on_end)
-	if(!pathfind_to(destination))
+	if(!navigation_set)
 		return FALSE
-	src.navigation_grace = grace_radius
-	src.on_navigation_end = on_end
-	propagate_navigation()
+	navigation_active = TRUE
+	#warn impl - movement
 	return TRUE
+
+/**
+ * starts navigation somewhere
+ *
+ * please use named arguments.
+ *
+ * scheduling_priority is automatically demoted by 1 if it's at INTERRUPT tier.
+ *
+ * @params
+ * * destination - where to go
+ * * grace_radius - within what radius is this considered successful?
+ * * on_end - what to call when we're done for any reason
+ * * scheduling_priority - AI_DYNAMIC_SCHEDULING_*; we interrupt navigation of lower priority.
+ * * interrupt_priority - AI_DYNAMIC_SCHEULING_*; we interrupt navigation of a lower priority. defaults to scheduling_priority.
+ */
+/datum/ai_holder/dynamic/proc/set_navgiation(
+	turf/destination,
+	grace_radius = 1,
+	datum/callback/on_end,
+	scheduling_priority = AI_DYNAMIC_SCHEDULING_INTERRUPT,
+	interrupt_priority = scheduling_priority,
+)
+	if(navigation_set)
+		if(navigation_priority <= interrupt_priority)
+			return FALSE
+
+	var/datum/ai_pathing/found = pathfind(
+		destination = destination,
+		slack = grace_radius,
+	)
+
+	if(isnull(found))
+		return FALSE
+
+	// todo: interrupt before/after found should be a param
+	if(navigation_set)
+		stop_navigation(AI_DYNAMIC_NAVIGATION_FINISHED_INTERRUPTED)
+
+	navigation_set = TRUE
+	navigation_active = TRUE
+	navigation_path = found
+	navigation_grace = grace_radius
+	on_navigation_end = on_end
+	navigation_priority = scheduling_priority == AI_DYNAMIC_SCHEDULING_INTERRUPT? (AI_DYNAMIC_SCHEDULING_INTERRUPT - 1) : scheduling_priority
