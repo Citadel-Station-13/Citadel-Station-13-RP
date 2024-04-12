@@ -20,7 +20,7 @@
 #warn automatic shutoff if no one's on the zlevel
 
 /datum/ai_holder/dynamic/proc/idle_setup()
-	if(!isturf(loc))
+	if(!isturf(agent.loc))
 		idle_wander_home = null // wtf
 	else if(home && get_dist(src, home) <= home_wander_distance)
 		idle_wander_home = home

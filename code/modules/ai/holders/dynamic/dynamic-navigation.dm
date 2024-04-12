@@ -57,7 +57,7 @@
  * * scheduling_priority - AI_DYNAMIC_SCHEDULING_*; we interrupt navigation of lower priority.
  * * interrupt_priority - AI_DYNAMIC_SCHEULING_*; we interrupt navigation of a lower priority. defaults to scheduling_priority.
  */
-/datum/ai_holder/dynamic/proc/set_navgiation(
+/datum/ai_holder/dynamic/proc/set_navigation(
 	turf/destination,
 	grace_radius = 1,
 	datum/callback/on_end,

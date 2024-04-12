@@ -37,13 +37,19 @@
 	var/ai_personality_flags = NONE
 	/// intelligence
 	var/intelligence = AI_INTELLIGENCE_ADVANCED
+	/// disabled
+	/// this is what actually tells the scheduler to drop our scheduled callbacks
+	/// make sure to set this as needed in your implementation.
+	var/disabled = FALSE
 
 /datum/ai_holder/New(atom/movable/agent)
 	set_agent(agent)
 
 /datum/ai_holder/Destroy()
 	stop_ticking()
+	stop_moving()
 	set_agent(null)
+	disabled = TRUE
 	return ..()
 
 /**

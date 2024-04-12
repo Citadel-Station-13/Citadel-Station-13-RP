@@ -74,7 +74,7 @@
 	to_chat(user, "[src] is now using [vore_selected.fancy_vore ? "Fancy" : "Classic"] vore sounds.")
 
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
-	if (istype(O, /obj/item/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
+	if (istype(O, /obj/item/newspaper) && !(ckey) && isturf(user.loc))
 		release_vore_contents()
 		for(var/mob/living/L in living_mobs(0)) //add everyone on the tile to the do-not-eat list for a while
 			prey_excludes |= L

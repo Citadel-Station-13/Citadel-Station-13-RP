@@ -38,7 +38,8 @@ SUBSYSTEM_DEF(pathfinder)
 	var/datum/pathfinding/astar/instance = new(actor, start, goal, target_distance, max_path_length)
 	return run_pathfinding(instance)
 
-/datum/controller/subsystem/pathfinder/proc/default_ai_pathfinding(datum/ai_holder/holder, turf/goal, min_dist = 1, max_path = 128)
+#warn get rid of this
+/datum/controller/subsystem/pathfinder/proc/polaris_ai_pathfinding(datum/ai_holder/polaris/holder, turf/goal, min_dist = 1, max_path = 128)
 	var/datum/pathfinding/astar/instance = new(holder.holder, get_turf(holder.holder), goal, min_dist, max_path * 2)
 	var/obj/item/card/id/potential_id = holder.holder.GetIdCard()
 	if(!isnull(potential_id))

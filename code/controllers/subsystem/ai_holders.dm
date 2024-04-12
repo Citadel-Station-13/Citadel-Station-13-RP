@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /// if we fall behind this much, we reset buckets
-#define BUCKET_CATASTROPHIC_LAG_THRESHOLD (10 SECONDS)
+#define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_LIMIT
 /// this many buckets are kept
 #define BUCKET_AMOUNT (AI_SCHEDULING_LIMIT / world.tick_lag)
 
@@ -55,8 +55,8 @@ SUBSYSTEM_DEF(ai_holders)
 
 /datum/controller/subsystem/ai_holders/proc/bucket_evict(datum/ai_holder/holder)
 	ASSERT(holder.ticking_position)
-	if(buckets[holder.ticking_position] == holder)
-		buckets[holder.ticking_position] = holder.ticking_next
+	if(holder_buckets[holder.ticking_position] == holder)
+		holder_buckets[holder.ticking_position] = holder.ticking_next
 	holder.ticking_next = holder.ticking_previous = null
 
 /datum/controller/subsystem/ai_holders/proc/schedule_callback(datum/ai_callback/callback)

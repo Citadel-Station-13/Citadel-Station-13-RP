@@ -12,6 +12,8 @@
 
 /datum/ai_holder/dynamic/move(times_fired)
 	// todo: optimize.
+	if(telegraphing_without_moving)
+		return
 	if(move_special(times_fired, mode, state))
 		return
 	if(navigation_active)

@@ -25,8 +25,13 @@
 		return TRUE
 	if(telegraphing_priority >= level)
 		return FALSE
+	stop_telegraph()
 	telegraphing_until = null
 	return TRUE
+
+/datum/ai_holder/dynamic/proc/stop_telegraph()
+	// todo: do we REALLY need to do this? is this better than just checking for telegraphing_until before checking the other things?
+	telegraphing_until = telegraphing_priority = telegraphing_without_acting = telegraphing_without_moving = telegraphing_id = null
 
 /**
  * starts a telegraphed action
@@ -38,7 +43,6 @@
 		return FALSE
 	if(!delay && !telegraphing_until)
 		return TRUE
-	cancel_navigation()
 	telegraphing_until = world.time + delay
 	telegraphing_priority = level
 	telegraphing_without_acting = no_act
@@ -55,7 +59,7 @@
 		return FALSE
 	var/static/datum/callback/telegraph_do_after_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(dynamic_ai_holder_telegraph_checks))
 	start_telegraph(delay, level, no_move, no_act)
-	return do_after(
+	. = do_after(
 		src,
 		delay,
 		target,
@@ -64,6 +68,7 @@
 		max_distance,
 		data = list(telegraphing_id, src),
 	)
+	stop_telegraph()
 
 /proc/dynamic_ai_holder_telegraph_checks(list/arglist)
 	// just make sure we weren't interrupted.

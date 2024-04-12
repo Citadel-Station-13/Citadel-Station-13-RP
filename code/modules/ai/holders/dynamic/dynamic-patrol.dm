@@ -3,12 +3,12 @@
 
 /datum/ai_holder/dynamic
 	/// active patrol route, if any
-	var/datum/dynamic_ai_patrol/patrol_route
+	var/datum/ai_patrol/patrol_route
 	/// force road rage to be on/off for the next patrol step
 	/// if non-null, will override patrol route environmental attack settings
 	var/patrol_violently_to_next_step
 
-/datum/ai_holder/dynamic/proc/start_patrol(datum/dynamic_ai_patrol/route)
+/datum/ai_holder/dynamic/proc/start_patrol(datum/ai_patrol/route)
 
 /datum/ai_holder/dynamic/proc/resume_patrol()
 	patrol_violently_to_next_step = FALSE

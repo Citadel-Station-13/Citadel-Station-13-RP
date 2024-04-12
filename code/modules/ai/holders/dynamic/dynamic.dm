@@ -91,6 +91,7 @@
 			AI_DYNAMIC_STATE_ESCALATION,
 		)
 			mode = AI_DYNAMIC_MODE_PASSIVE
+			disabled = FALSE
 			set_ticking(tick_delay_passive)
 		if(
 			AI_DYNAMIC_STATE_STRAFE,
@@ -99,19 +100,25 @@
 			AI_DYNAMIC_STATE_FLEE,
 		)
 			mode = AI_DYNAMIC_MODE_COMBAT
+			disabled = FALSE
 			set_ticking(tick_delay_combat)
 		if(
 			AI_DYNAMIC_STATE_DISABLED,
 			AI_DYNAMIC_STATE_SLEEPING,
 		)
 			mode = AI_DYNAMIC_MODE_DISABLED
+			disabled = TRUE
 			stop_ticking()
+			stop_moving()
 		else
 			CRASH("attempted to set state to an invalid state")
 	state = new_state
 	switch(state)
 		if(AI_DYNAMIC_STATE_IDLE)
 			idle_setup()
+		else
+			// tell us to start moving while the system determines what to do
+			start_moving()
 	if(state == AI_DYNAMIC_STATE_SLEEPING || state == AI_DYNAMIC_STATE_DISABLED)
 		if(!ticking_off_is_ssd)
 			ticking_off_is_ssd = TRUE

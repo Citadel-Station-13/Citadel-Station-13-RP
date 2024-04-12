@@ -3,6 +3,9 @@
 
 /datum/ai_holder
 	/// movement subsystem registered?
+	///
+	/// warning: we can technically be moving while disabled
+	/// make sure you handle this.
 	var/movement_ticking = FALSE
 	/// bucket position
 	var/movement_bucket_position
@@ -26,12 +29,10 @@
  * register on movement subsystem to move
  */
 /datum/ai_holder/proc/start_moving(initial_delay)
-	SSai_movement.register_moving(src)
-	return TRUE
+	return SSai_movement.register_moving(src)
 
 /**
  * stop moving
  */
 /datum/ai_holder/proc/stop_moving()
-	SSai_movement.unregister_moving(src)
-	return TRUE
+	return SSai_movement.unregister_moving(src)
