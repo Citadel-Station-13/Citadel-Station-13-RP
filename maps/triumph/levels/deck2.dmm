@@ -1207,6 +1207,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/reagent_containers/glass/rag/sponge,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "dt" = (
@@ -13103,6 +13104,8 @@
 /obj/item/mop,
 /obj/item/storage/bag/trash,
 /obj/item/lightreplacer,
+/obj/item/reagent_containers/glass/rag/sponge,
+/obj/item/reagent_containers/glass/rag/sponge,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "NW" = (
