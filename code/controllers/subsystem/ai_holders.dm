@@ -11,6 +11,8 @@
  */
 SUBSYSTEM_DEF(ai_holders)
 	name = "AI Holders"
+	subsystem_flags = SS_TICKER
+	priority = FIRE_PRIORITY_AI_HOLDERS
 
 	/// all ticking ai holders
 	var/static/list/datum/ai_holder/active_holders
@@ -25,9 +27,11 @@ SUBSYSTEM_DEF(ai_holders)
 
 	/// global ai_lexicon instances
 	var/list/ai_lexicons
+	/// global ai_personality instances
 
 /datum/controller/subsystem/ai_holders/Initialize()
 	init_ai_lexicons()
+	init_ai_personalities()
 	rebuild()
 	return ..()
 
@@ -49,6 +53,13 @@ SUBSYSTEM_DEF(ai_holders)
 		var/datum/ai_lexicon/created = new path
 		ai_lexicons[path] = created
 
+/datum/controller/subsystem/ai_holders/proc/init_ai_personalities()
+	for(var/datum/ai_personality/path as anything in subtypesof(/datum/ai_personality))
+		if(initial(path.abstract_type) == path)
+			continue
+		var/datum/ai_personality/created = new path
+		ai_personalitys[path] = created
+
 /datum/controller/subsystem/ai_holders/proc/bucket_insert(datum/ai_holder/holder)
 	ASSERT(holder.ticking <= AI_SCHEDULING_LIMIT)
 	#warn impl
@@ -59,14 +70,14 @@ SUBSYSTEM_DEF(ai_holders)
 		holder_buckets[holder.ticking_position] = holder.ticking_next
 	holder.ticking_next = holder.ticking_previous = null
 
-/datum/controller/subsystem/ai_holders/proc/schedule_callback(datum/ai_callback/callback)
-	#warn impl
-
 /**
  * perform error checking
  * rebuild all buckets
  */
 /datum/controller/subsystem/ai_holders/proc/rebuild()
+	bucket_position = world.time
+	bucket_index = 1
+	bucket_fps = world.fps
 	// todo; recover active_holders as well maybe?
 	holder_buckets = new /list(BUCKET_AMOUNT)
 	for(var/datum/ai_holder/holder as anything in active_holders)

@@ -32,13 +32,15 @@
 
 	// Find another AI-controlled mob in the same faction if possible.
 	var/mob/living/first_friend
+	var/datum/ai_holder/polaris/first_friend_holder
 	for(var/mob/living/L in living_mob_list)
-		if(L.faction == holder.faction && L.ai_holder)
+		if(L.faction == holder.faction && istype(L.ai_holder, datum/ai_holder/polaris))
 			first_friend = L
+			first_friend_holder = L.ai_holder
 			break
 
 	if(first_friend) // Joining an already established faction.
-		faction_friends = first_friend.ai_holder.faction_friends
+		faction_friends = first_friend_holder.faction_friends
 		faction_friends |= holder
 	else // We're the 'founder' (first and/or only member) of this faction.
 		faction_friends |= holder
@@ -68,9 +70,10 @@
 				ai_log("request_help() : Asking [L] (Player) for help.", AI_LOG_INFO)
 				to_chat(L, "<span class='critical'>\The [holder] [called_player_message]</span>")
 
-			else if(L.ai_holder) // Dealing with an AI.
+			else if(istype(L.ai_holder, /datum/ai_holder/polaris)) // Dealing with an AI.
+				var/datum/ai_holder/polaris/holder = L.ai_holder
 				ai_log("request_help() : Asking [L] (AI) for help.", AI_LOG_INFO)
-				L.ai_holder.help_requested(holder)
+				holder.help_requested(holder)
 
 	ai_log("request_help() : Exiting.", AI_LOG_DEBUG)
 
@@ -92,7 +95,8 @@
 	if(!holder.IIsAlly(friend)) // Extra sanity.
 		ai_log("help_requested() : Help requested by [friend] but we hate them.", AI_LOG_INFO)
 		return
-	if(friend.ai_holder && friend.ai_holder.target && !can_attack(friend.ai_holder.target))
+	var/datum/ai_holder/polaris/friend_ai_holder = istype(friend.ai_holder, /datum/ai_holder/polaris) && friend.ai_holder
+	if(friend_ai_holder && friend_ai_holder.target && !can_attack(friend_ai_holder.target))
 		ai_log("help_requested() : Help requested by [friend] but we don't want to fight their target.", AI_LOG_INFO)
 		return
 	if(get_dist(holder, friend) <= follow_distance)
@@ -100,10 +104,10 @@
 		return
 	if(get_dist(holder, friend) <= vision_range) // Within our sight.
 		ai_log("help_requested() : Help requested by [friend], and within target sharing range.", AI_LOG_INFO)
-		if(friend.ai_holder) // AI calling for help.
-			if(friend.ai_holder.target && can_attack(friend.ai_holder.target)) // Friend wants us to attack their target.
+		if(friend_ai_holder) // AI calling for help.
+			if(friend_ai_holder.target && can_attack(friend_ai_holder.target)) // Friend wants us to attack their target.
 				last_conflict_time = world.time // So we attack immediately and not threaten.
-				give_target(friend.ai_holder.target) // This will set us to the appropiate stance.
+				give_target(friend_ai_holder.target) // This will set us to the appropiate stance.
 				ai_log("help_requested() : Given target [target] by [friend]. Exiting", AI_LOG_DEBUG)
 				return
 

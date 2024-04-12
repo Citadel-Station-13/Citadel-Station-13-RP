@@ -11,18 +11,16 @@
 /**
  * Like schedule() but using our reaction time
  */
-/datum/ai_holder/dynamic/proc/schedule_reaction(proc_ref, ...)
+/datum/ai_holder/dynamic/proc/schedule_reaction(proc_ref, list/arguments)
 	// "because silicons is satan" - thefinalpotato
 	return schedule(
-		arglist(
-			list(
-				max(
-					0,
-					reaction_time_center + rand(
-						-reaction_time_rand,
-						reaction_time_rand
-					)
-				)
-			) + args
-		)
+		(ai_cheat_flags & AI_CHEAT_MACHINE_REFLEXES)? 0 : max(
+			0,
+			reaction_time_center + rand(
+				-reaction_time_rand,
+				reaction_time_rand
+			)
+		),
+		proc_ref,
+		arguments,
 	)

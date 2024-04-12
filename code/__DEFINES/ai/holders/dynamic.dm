@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 //? Definitions for /datum/ai_holder/dynamic.
 
@@ -46,7 +46,7 @@
 /// * chase behaviors are also used for this, because chases are highly interruptible.
 #define AI_DYNAMIC_STATE_FLANK 20 + 6
 
-//* stance
+//* stance var
 
 /// ranged combat; stay at average to max effective engagement distance and fight
 //* movement: combat loop

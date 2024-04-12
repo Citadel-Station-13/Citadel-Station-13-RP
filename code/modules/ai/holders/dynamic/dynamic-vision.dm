@@ -28,11 +28,15 @@
 	var/turf/T = get_turf(entity)
 	if(!(ai_cheat_flags & AI_CHEAT_NIGHTVISION) && T.get_lumcount() < darksight_lumcount && (their_dist > darksight_range || !check_darksight_fov(entity)))
 		return FALSE
-	return (check_los == TRUE)? check_los(entity) : TRUE
+	if(check_los && !check_los(entity))
+		return FALSE
+	return TRUE
 
 /datum/ai_holder/dynamic/proc/check_darksight_fov(atom/movable/entity)
 	// wip
 	return TRUE
 
 /datum/ai_holder/dynamic/proc/check_los(atom/movable/entity)
+	if(ai_cheat_flags & AI_CHEAT_XRAY)
+		return TRUE
 	#warn impl

@@ -2,6 +2,15 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /datum/ai_holder/dynamic
+	/// how toxic we are towards teammates who 'accidentally' FF
+	/// this is non-linear.
+	/// 0 is 'we usually don't care'
+	/// 1 is 'point blank them now'
+	var/retaliate_friendly_fire_toxicity = 0
+
+/datum/ai_holder/dynamic/imprint_personality(datum/ai_personality/personality)
+	. = ..()
+	retaliate_friendly_fire_toxicity = 0.5 ** (-personality.friendly_aggression / 200)
 
 /datum/ai_holder/dynamic/proc/shot_retaliate(resultant_damage, angle, atom/attacker)
 

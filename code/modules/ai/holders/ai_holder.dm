@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * AI holders
@@ -9,11 +9,14 @@
  * Most, however, are probably on /mob.
  *
  * Base API:
+ * * Interface API is a standard set of procs called on the AI from external systems to impart control or directives.
+ *   An AI subtype can implement them to enable functionality.
+ * * Hooks API is a standard set of procs called on the holder by the movable agent
+ *   to react to events like attacks or hear/say, etc.
  * * Movement API allows registering on the movement subsystem, as well as efficient, variable-length 're-schedule' delays.
  * * Ticking API allows registering variable-length ticking loops on the subsystem, with automatic support for staggered ticking.
  * * Pathfinding API allows using various pathfinding datums to perform pathfinding. Please use it instead of raw calls for timekeeping purposes.
  * * Scheduling API allows for efficiently scheduling short-term callbacks to execute on the holder.
- * * Standard hooks are used to react to events like attacks.
  *
  * Base features:
  * * base /datum/ai_holder, meant for movable atoms; usually this is however, for mobs and certain objs.
@@ -21,6 +24,7 @@
  * * base /datum/ai_network, meant to stitch multiple AIs together.
  * * base /datum/ai_pathing, meant to encapsulate pathfinding results
  * * base /datum/ai_patrol(_step), meant to be a holder-agnostic way of encapsulating a patrol route.
+ * * base /datum/ai_personality, meant to encapsulate personality tuning.
  * todo: docs on targeting/etc.
  *
  * Limitations
@@ -44,6 +48,7 @@
 
 /datum/ai_holder/New(atom/movable/agent)
 	set_agent(agent)
+	randomize_personality()
 
 /datum/ai_holder/Destroy()
 	stop_ticking()
@@ -80,4 +85,10 @@
  * Sets all cached variables from an agent
  */
 /datum/ai_holder/proc/imprint_from_agent(atom/movable/agent)
+	return
+
+/**
+ * Sets variables based on personality
+ */
+/datum/ai_holder/proc/imprint_personality(datum/ai_personality/personality)
 	return

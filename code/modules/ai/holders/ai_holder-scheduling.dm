@@ -15,9 +15,8 @@
  * @params
  * * time - how long to wait; this is server world.time
  * * proc_ref - reference to proc to call on ourselves
- * * ...rest - what to pass in
+ * * arguments - a list of arguments to use with the call
  */
-/datum/ai_holder/proc/schedule(time, proc_ref, ...)
-	var/datum/ai_callback/ai_callback = new(proc_ref, args.Copy(3), src)
+/datum/ai_holder/proc/schedule(time, proc_ref, list/arguments)
+	var/datum/ai_callback/ai_callback = new(proc_ref, arguments, src)
 	SSai_holders.schedule_callback(ai_callback)
-

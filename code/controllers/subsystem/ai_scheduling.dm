@@ -11,6 +11,8 @@
  */
 SUBSYSTEM_DEF(ai_scheduling)
 	name = "AI Holders"
+	subsystem_flags = SS_TICKER
+	priority = FIRE_PRIORITY_AI_SCHEDULING
 
 	/// rolling bucket list; these hold the head node of linked /datum/ai_callback's
 	var/tmp/list/scheduler_buckets
@@ -25,7 +27,6 @@ SUBSYSTEM_DEF(ai_scheduling)
 	var/list/ai_lexicons
 
 /datum/controller/subsystem/ai_scheduling/Initialize()
-	init_ai_lexicons()
 	rebuild()
 	return ..()
 
@@ -41,13 +42,16 @@ SUBSYSTEM_DEF(ai_scheduling)
 	return ..()
 
 /datum/controller/subsystem/ai_scheduling/proc/schedule_callback(datum/ai_callback/callback)
-	#warn impl
+	#warn impl - put atleast one tick in the future.
 
 /**
  * perform error checking
  * rebuild all buckets
  */
 /datum/controller/subsystem/ai_scheduling/proc/rebuild()
+	bucket_position = world.time
+	bucket_index = 1
+	bucket_fps = world.fps
 	// we don't give a crap about recovered scheduled events; shrimply not our issue
 	// if you change ticklag midgame all AIs should be rescheduling anyways.
 	scheduler_buckets = new /list(BUCKET_AMOUNT)

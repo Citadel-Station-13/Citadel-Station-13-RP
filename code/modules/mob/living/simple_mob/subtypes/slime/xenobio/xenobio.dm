@@ -166,7 +166,7 @@
 	if(harmless)
 		return
 	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		AI.relax()
 
 /mob/living/simple_mob/slime/xenobio/proc/pacify()

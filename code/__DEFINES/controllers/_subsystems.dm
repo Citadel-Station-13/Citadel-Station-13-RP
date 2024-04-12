@@ -190,6 +190,16 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_DPC          700
 #define FIRE_PRIORITY_TIMER        700
 
+// ai holders live here now!
+// this is because they work like timer subsystems
+// is this a good idea?
+// no!
+// feel free to yell at me later about how to make this less awful if it starts
+// to cause lag, but, these low priorities should be fine
+#define FIRE_PRIORITY_AI_MOVEMENT     30
+#define FIRE_PRIORITY_AI_SCHEDULING   20
+#define FIRE_PRIORITY_AI_HOLDERS      10
+
 //? Special
 
 /// This is used as the default regardless of bucket. Check above.
