@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(transcore)
 
 	// THINGS
 	var/overdue_time = 15 MINUTES
-	var/static/core_dumped = FALSE			// Core has been dumped!  Also set can_fire = 0 when you set this.
+	var/static/core_dumped = FALSE			// Core has been dumped!  Also set can_fire = FALSE when you set this.
 
 	var/current_step = SSTRANSCORE_IMPLANTS
 
@@ -97,8 +97,7 @@ SUBSYSTEM_DEF(transcore)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/transcore/stat_entry()
-	var/msg = list()
+/datum/controller/subsystem/transcore/stat_entry(msg)
 	if(core_dumped)
 		msg += "CORE DUMPED | "
 	msg += "$:{"
@@ -109,7 +108,7 @@ SUBSYSTEM_DEF(transcore)
 	msg += "IM:[implants.len]|"
 	msg += "BK:[backed_up.len]"
 	msg += "} "
-	return ..() + " [jointext(msg, null)]"
+	return ..()
 
 /datum/controller/subsystem/transcore/proc/m_backup(var/datum/mind/mind, var/obj/item/nif/nif, var/one_time = FALSE)
 	ASSERT(mind)

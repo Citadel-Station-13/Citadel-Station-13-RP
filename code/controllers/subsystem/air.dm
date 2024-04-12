@@ -40,8 +40,7 @@ SUBSYSTEM_DEF(air)
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
 
-/datum/controller/subsystem/air/stat_entry()
-	var/list/msg = list()
+/datum/controller/subsystem/air/stat_entry(msg)
 	msg += "S:[current_step ? part_names[current_step] : ""] "
 	msg += "C:{"
 	msg += "T [round(cost_turfs, 1)] | "
@@ -59,7 +58,7 @@ SUBSYSTEM_DEF(air)
 	msg += "H [active_hotspots.len] | "
 	msg += "Z [zones_to_update.len] "
 	msg += "}"
-	return ..() + " [msg.Join()]"
+	return ..()
 
 /datum/controller/subsystem/air/PreInit(recovering)
 	// resolve scrubber defaults
@@ -282,16 +281,14 @@ SUBSYSTEM_DEF(air)
 			return
 
 // ZAS might displace objects as the map loads if an air tick is processed mid-load.
-/datum/controller/subsystem/air/StartLoadingMap(var/quiet = TRUE)
+/datum/controller/subsystem/air/StartLoadingMap()
 	can_fire = FALSE
 	// Don't let map actually start loading if we are in the middle of firing
 	while(current_step)
 		stoplag()
-	. = ..()
 
-/datum/controller/subsystem/air/StopLoadingMap(var/quiet = TRUE)
+/datum/controller/subsystem/air/StopLoadingMap()
 	can_fire = TRUE
-	. = ..()
 
 // Reboot the air master.  A bit hacky right now, but sometimes necessary still.
 /datum/controller/subsystem/air/proc/RebootZAS()

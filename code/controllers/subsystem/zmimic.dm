@@ -116,7 +116,7 @@ SUBSYSTEM_DEF(zmimic)
 		next_fire = world.time + wait
 		can_fire = TRUE
 
-/datum/controller/subsystem/zmimic/stat_entry()
+/datum/controller/subsystem/zmimic/stat_entry(msg)
 	var/list/entries = list(
 		"",	// newline
 		"ZSt: [build_zstack_display()]",	// This is a human-readable list of the z-stacks known to ZM.
@@ -127,7 +127,8 @@ SUBSYSTEM_DEF(zmimic)
 		"T: { T: [openspace_turfs] O: [openspace_overlays] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
 		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",	// Fixup stats.
 	)
-	return ..() + entries.Join("<br>&emsp;")
+	msg = entries.Join("<br>\t")
+	return ..()
 
 // 1, 2, 3..=7, 8
 /datum/controller/subsystem/zmimic/proc/build_zstack_display()

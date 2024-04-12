@@ -3,15 +3,23 @@
 SUBSYSTEM_DEF(processing)
 	name = "Processing"
 	priority = FIRE_PRIORITY_PROCESS
-	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
+	subsystem_flags = SS_BACKGROUND | SS_POST_FIRE_TIMING | SS_NO_INIT
 	wait = 1 SECONDS
 
 	var/stat_tag = "P" //Used for logging
 	var/list/processing = list()
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/processing/stat_entry()
-	return ..() + " [stat_tag]:[length(processing)]"
+/datum/controller/subsystem/processing/PreInit()
+	. = ..()
+	hibernate_checks = list(
+		NAMEOF(src, processing),
+		NAMEOF(src, currentrun)
+	)
+
+/datum/controller/subsystem/processing/stat_entry(msg)
+	msg += "[stat_tag]:[length(processing)]"
+	return ..()
 
 /datum/controller/subsystem/processing/fire(resumed = FALSE)
 	if (!resumed)

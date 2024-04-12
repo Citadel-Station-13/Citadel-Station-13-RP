@@ -23,10 +23,9 @@ SUBSYSTEM_DEF(nanoui)
 	if(SSnanoui.processing_uis)
 		processing_uis |= SSnanoui.processing_uis
 
-
-/datum/controller/subsystem/nanoui/stat_entry()
-	return ..() + " [processing_uis.len] UIs"
-
+/datum/controller/subsystem/nanoui/stat_entry(msg)
+	msg += "P:[length(processing_uis)] UIs"
+	return ..()
 
 /**
  * Get an open /nanoui ui for the current user, src_object and ui_key and try to update it with data

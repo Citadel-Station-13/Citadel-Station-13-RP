@@ -8,8 +8,9 @@ SUBSYSTEM_DEF(ambient_lighting)
 
 	var/list/queued = list()
 
-/datum/controller/subsystem/ambient_lighting/stat_entry()
-	return ..() + " Queue:[length(queued)]"
+/datum/controller/subsystem/ambient_lighting/stat_entry(msg)
+	msg += "Queue:[length(queued)]"
+	return ..()
 
 /datum/controller/subsystem/ambient_lighting/Initialize(start_timeofday)
 	fire(FALSE, TRUE)

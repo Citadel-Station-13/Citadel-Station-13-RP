@@ -54,8 +54,9 @@ SUBSYSTEM_DEF(events)
 		var/datum/event_container/EC = event_containers[i]
 		EC.process(dt)
 
-/datum/controller/subsystem/events/stat_entry()
-	return ..() + " E:[active_events.len]"
+/datum/controller/subsystem/events/stat_entry(msg)
+	msg += "E:[active_events.len]"
+	return ..()
 
 /datum/controller/subsystem/events/Recover()
 	if(SSevents.active_events)

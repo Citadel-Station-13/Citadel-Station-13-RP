@@ -1,9 +1,10 @@
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
-	wait = LIGHTING_INTERVAL
-	priority = FIRE_PRIORITY_LIGHTING
+	wait = 0
 	init_order = INIT_ORDER_LIGHTING
+	priority = FIRE_PRIORITY_LIGHTING
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
+	subsystem_flags = SS_HIBERNATE
 
 	var/total_lighting_overlays = 0
 	var/total_lighting_sources = 0
@@ -35,16 +36,22 @@ SUBSYSTEM_DEF(lighting)
 	var/force_override = FALSE
 #endif
 
-/datum/controller/subsystem/lighting/stat_entry()
-	var/list/out = list(
-#ifdef USE_INTELLIGENT_LIGHTING_UPDATES
-		"IUR: [total_ss_updates ? round(total_instant_updates/(total_instant_updates+total_ss_updates)*100, 0.1) : "NaN"]% Instant: [force_queued ? "Disabled" : "Allowed"] <br>",
-#endif
-		"&emsp;T: { L: [total_lighting_sources] C: [total_lighting_corners] O:[total_lighting_overlays] A: [total_ambient_turfs] }<br>",
-		"&emsp;P: { L: [light_queue.len - (lq_idex - 1)] C: [corner_queue.len - (cq_idex - 1)] O: [overlay_queue.len - (oq_idex - 1)] }<br>",
-		"&emsp;L: { L: [processed_lights] C: [processed_corners] O: [processed_overlays]}<br>"
+/datum/controller/subsystem/lighting/PreInit()
+	. = ..()
+	hibernate_checks = list(
+		NAMEOF(src, light_queue),
+		NAMEOF(src, corner_queue),
+		NAMEOF(src, overlay_queue)
 	)
-	return ..() + out.Join()
+
+/datum/controller/subsystem/lighting/stat_entry(msg)
+#ifdef USE_INTELLIGENT_LIGHTING_UPDATES
+	msg += "IUR: [total_ss_updates ? round(total_instant_updates/(total_instant_updates+total_ss_updates)*100, 0.1) : "NaN"]% Instant: [force_queued ? "Disabled" : "Allowed"] <br>"
+#endif
+	msg += "\tT: { L: [total_lighting_sources] C: [total_lighting_corners] O:[total_lighting_overlays] A: [total_ambient_turfs] }<br>"
+	msg += "\tP: { L: [light_queue.len - (lq_idex - 1)] C: [corner_queue.len - (cq_idex - 1)] O: [overlay_queue.len - (oq_idex - 1)] }<br>"
+	msg += "\tL: { L: [processed_lights] C: [processed_corners] O: [processed_overlays]}<br>"
+	return ..()
 
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 
