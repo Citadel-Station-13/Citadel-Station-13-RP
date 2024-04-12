@@ -16,12 +16,12 @@ SUBSYSTEM_DEF(ai_holders)
 	var/static/list/datum/ai_holder/active_holders
 	/// rolling bucket list; these hold the head node of linked ai_holders.
 	var/tmp/list/holder_buckets
-	/// rolling bucket list; these hold the head node of linked /datum/ai_callback's
-	var/tmp/list/scheduler_buckets
 	/// world.time of bucket head
 	var/bucket_position
 	/// index of bucket head
 	var/bucket_index
+	/// world.fps buckets were made for
+	var/bucket_fps
 
 	/// global ai_lexicon instances
 	var/list/ai_lexicons
@@ -69,9 +69,6 @@ SUBSYSTEM_DEF(ai_holders)
 /datum/controller/subsystem/ai_holders/proc/rebuild()
 	// todo; recover active_holders as well maybe?
 	holder_buckets = new /list(BUCKET_AMOUNT)
-	// we don't give a crap about recovered scheduled events; shrimply not our issue
-	// if you change ticklag midgame all AIs should be rescheduling anyways.
-	scheduler_buckets = new /list(BUCKET_AMOUNT)
 	for(var/datum/ai_holder/holder as anything in active_holders)
 		if(!istype(holder))
 			active_holders -= holder
@@ -93,40 +90,3 @@ SUBSYSTEM_DEF(ai_holders)
 
 #undef BUCKET_CATASTROPHIC_LAG_THRESHOLD
 #undef BUCKET_AMOUNT
-
-/**
- * ! Hi. This datum has special GC behavior. Thus we only make it for one purpose that I selected
- * ! where it will not cause a memory leak. If you use it for other purposes, you will cause
- * ! problems, and we certainly wouldn't want to have that, right?
- *
- * * Not to mention this datum is specifically secured in a specific way to not be able to be
- *   hijacked by admin proccalls; infact it's more secure than normal /datum/callback.
- * * So, do not fuck with it.
- *
- * List of things allowed to use this:
- * * /datum/ai_holder
- * * /datum/ai_network
- */
-/datum/ai_callback
-	var/proc_ref
-	var/list/arguments
-	var/datum/parent
-	/// next
-	var/datum/ai_callback/next
-
-/datum/ai_callback/New(proc_ref, list/arguments, datum/parent)
-	src.proc_ref = proc_ref
-	src.arguments = arguments
-	src.parent = parent
-
-/datum/ai_callback/Destroy()
-	SHOULD_CALL_PARENT(FALSE)
-	arguments = parent = next = null
-	// if this leaks, L; don't fuck it up!
-	return QDEL_HINT_IWILLGC
-
-/datum/ai_callback/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	return FALSE // no thanks bucko
-
-/datum/ai_callback/CanProcCall(procname)
-	return FALSE // no thanks bucko
