@@ -5,4 +5,18 @@
 
 #warn agony
 
+/datum/simple_mob_equipment/item
+	/// item type
+	var/item_path
 
+/datum/simple_mob_equipment/item/throwable
+
+/datum/simple_mob_equipment/item/throwable/grenade
+
+/datum/simple_mob_equipment/item/melee_weapon
+
+/datum/simple_mob_equipment/item/melee_weapon/simulated
+
+/datum/simple_mob_equipment/item/projectile_weapon
+
+/datum/simple_mob_equipment/item/projectile_weapon/simulated

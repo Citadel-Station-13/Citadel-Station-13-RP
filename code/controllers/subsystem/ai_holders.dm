@@ -28,6 +28,7 @@ SUBSYSTEM_DEF(ai_holders)
 	/// global ai_lexicon instances
 	var/list/ai_lexicons
 	/// global ai_personality instances
+	var/list/ai_personalities
 
 /datum/controller/subsystem/ai_holders/Initialize()
 	init_ai_lexicons()
@@ -58,7 +59,7 @@ SUBSYSTEM_DEF(ai_holders)
 		if(initial(path.abstract_type) == path)
 			continue
 		var/datum/ai_personality/created = new path
-		ai_personalitys[path] = created
+		ai_personalities[path] = created
 
 /datum/controller/subsystem/ai_holders/proc/bucket_insert(datum/ai_holder/holder)
 	ASSERT(holder.ticking <= AI_SCHEDULING_LIMIT)

@@ -41,8 +41,19 @@ SUBSYSTEM_DEF(ai_scheduling)
 	rebuild()
 	return ..()
 
-/datum/controller/subsystem/ai_scheduling/proc/schedule_callback(datum/ai_callback/callback)
-	#warn impl - put atleast one tick in the future.
+/datum/controller/subsystem/ai_scheduling/proc/schedule_callback(datum/ai_callback/callback, delay)
+	// determine bucket without wrapping
+	var/bucket = bucket_index + round(max(1, DS2TICKS(delay)) + DS2TICKS(world.time - bucket_position))
+	// modulo it by total buckets to wrap
+	bucket = (bucket % length(scheduler_buckets))
+	// inject
+	if(isnull(buckets[bucket]))
+		// nothing's there, we're there
+		buckets[bucket] = callback
+	else
+		// put it before
+		callback.next = buckets[bucket]
+		buckets[bucket] = callback
 
 /**
  * perform error checking
@@ -55,8 +66,6 @@ SUBSYSTEM_DEF(ai_scheduling)
 	// we don't give a crap about recovered scheduled events; shrimply not our issue
 	// if you change ticklag midgame all AIs should be rescheduling anyways.
 	scheduler_buckets = new /list(BUCKET_AMOUNT)
-
-#warn impl all
 
 #undef BUCKET_CATASTROPHIC_LAG_THRESHOLD
 #undef BUCKET_AMOUNT

@@ -8,6 +8,7 @@
  */
 /mob/living/simple_mob/humanoid2
 	#warn icon generation
+	#warn use a subsystem for this
 
 	/// set to species typepath to init as that species
 	var/datum/species/species_path

@@ -19,4 +19,4 @@
  */
 /datum/ai_holder/proc/schedule(time, proc_ref, list/arguments)
 	var/datum/ai_callback/ai_callback = new(proc_ref, arguments, src)
-	SSai_holders.schedule_callback(ai_callback)
+	SSai_scheduling.schedule_callback(ai_callback, time)

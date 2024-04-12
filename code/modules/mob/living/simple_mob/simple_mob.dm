@@ -31,6 +31,8 @@
 	//* Equipment *//
 	/// our available equipment; set to typepaths to init on new.
 	var/list/datum/simple_mob_equipment/equipment
+	/// equipment overlays on us right now
+	var/list/equipment_overlays
 
 	///Tooltip description
 	var/tt_desc = null

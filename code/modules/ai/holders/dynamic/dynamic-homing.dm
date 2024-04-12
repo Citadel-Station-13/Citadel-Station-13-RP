@@ -23,14 +23,15 @@
 	/// combat disengagement probability per tick per tick per tile away from disengagement distance
 	var/home_disengagement_escalation = 2.5
 
-/datum/ai_holder/dynamic/proc/go_home()
+/datum/ai_holder/dynamic/proc/go_home(scheduling_priority, stop_combat)
 	if(!home)
 		return FALSE
-	#warn disengage if in combat
-	if(!set_navigation(home))
+	if(!set_navigation(home, on_end = CALLBACK(src, PROC_REF(on_home_pathfind_end)), scheduling_priority = scheduling_priority))
 		return FALSE
+	#warn stop_combat
 	return TRUE
 
-/datum/ai_holder/dynamic/proc/on_home_pathfind_end(cancelled, failed)
-	if(failed)
-		home = null
+/datum/ai_holder/dynamic/proc/on_home_pathfind_end(status)
+	switch(status)
+		if(AI_DYNAMIC_NAVIGATION_FINISHED_NO_PATH)
+			home = null

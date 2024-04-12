@@ -174,13 +174,13 @@ SUBSYSTEM_DEF(ai_movement)
 	// if the randomization happened mid run it might mess with mob movement timing,
 	// as mob movement is not tolerant to 'early' fires.
 	var/balancing = allow_load_balancing? min(rand(load_balancing_low, load_balancing_high), BUCKET_INTERVAL - delay) : delay
-	var/bucket = round(max(1, (delay + balancing) * 0.1 * world.fps)) + bucket_index
+	var/bucket = bucket_index + round(max(1, (delay + balancing) * 0.1 * world.fps) + DS2TICKS(world.time - bucket_time))
 	// modulo it by total buckets
-	bucket = (bucket % BUCKET_AMOUNT)
+	bucket = (bucket % length(buckets))
 	// register in bucket
 	var/datum/ai_holder/existing = buckets[bucket]
+	buckets[bucket] = holder
 	if(isnull(existing))
-		buckets[bucket] = holder
 		holder.movement_bucket_next = holder.movement_bucket_prev = holder
 	else
 		holder.movement_bucket_next = existing
