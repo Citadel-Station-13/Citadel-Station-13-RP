@@ -63,14 +63,12 @@
 		cost = 2,
 		time = 5 SECONDS,
 	)
-	/*
 	. += create_stack_recipe_datum(
 		name = "reinforced skateboard assembly",
 		product = /obj/item/heavy_skateboard_frame,
 		cost = 5,
 		time = 4 SECONDS,
 	)
-	*/
 	. += create_stack_recipe_datum(
 		name = "plasteel floor tile",
 		product = /obj/item/stack/tile/plasteel,

@@ -10,7 +10,7 @@
 
 
 /datum/component/riding_handler/vehicle/bike
-	vehicle_move_delay = 2
+	vehicle_move_delay = 0.5
 	allowed_turf_types = list(
 		/turf/simulated/floor,
 		/turf/unsimulated/floor

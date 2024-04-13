@@ -138,15 +138,10 @@
 		return FALSE
 	COOLDOWN_START(src, cooldown_vehicle_move, movedelay)
 	if(trailer)
-		//Get the direction from the trailer to the tug
 		var/dir_to_move = get_dir(trailer.loc, loc)
-		//Moves the tug to direction and stores true or false
 		var/did_move = step(src, direction)
-		///If the tug did move
 		if(did_move)
-			///Moves the trailer towards dir_to_move
 			step(trailer, dir_to_move)
-		//return if the trailer moved
 		return did_move
 	else
 		after_move(direction)

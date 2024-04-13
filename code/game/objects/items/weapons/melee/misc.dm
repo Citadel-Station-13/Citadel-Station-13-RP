@@ -118,6 +118,7 @@
 	throw_force = 7
 	var/board_item_type = null
 
+// Drop the skateboard to convert it into a vehicle. Converts it into a vehicle defined in board_item_type.
 /obj/item/melee/skateboard/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(!isturf(newLoc))

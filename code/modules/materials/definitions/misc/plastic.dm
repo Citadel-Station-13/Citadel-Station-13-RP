@@ -83,13 +83,11 @@
 		cost = 1,
 		time = 1 SECONDS,
 	)
-	/*
 	. += create_stack_recipe_datum(
 		name = "rubberized wheels",
 		product = /obj/item/skate_wheels,
 		cost = 12,
 	)
-	*/
 	. += create_stack_recipe_datum(
 		name = "plastic raincoat",
 		product = /obj/item/clothing/suit/storage/hooded/rainponcho,
