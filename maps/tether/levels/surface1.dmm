@@ -10305,7 +10305,7 @@
 /obj/machinery/airlock_sensor/phoron/airlock_exterior{
 	pixel_x = 25
 	},
-/obj/machinery/atmospherics/component/unary/outlet_injector{
+/obj/machinery/atmospherics/pipe/vent{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -13362,7 +13362,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/component/unary/env_heat_pump,
+/obj/machinery/atmospherics/component/unary/env_heat_pump{
+	dir = 1
+	},
 /obj/map_helper/airlock/atmos/chamber_temperature_adjuster,
 /turf/simulated/floor/tiled/techmaint,
 /area/storage/surface_eva/external)
@@ -20768,7 +20770,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/atmospherics/component/unary/env_heat_pump,
+/obj/machinery/atmospherics/component/unary/env_heat_pump{
+	dir = 8
+	},
 /obj/map_helper/airlock/atmos/chamber_temperature_adjuster,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/lowernortheva)
@@ -31534,7 +31538,7 @@
 	pixel_y = -24
 	},
 /obj/map_helper/airlock/sensor/ext_sensor,
-/obj/machinery/atmospherics/component/unary/outlet_injector{
+/obj/machinery/atmospherics/pipe/vent{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
