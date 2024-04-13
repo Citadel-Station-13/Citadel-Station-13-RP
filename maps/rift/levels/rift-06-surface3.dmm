@@ -21887,6 +21887,8 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 24
 	},
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
 /turf/simulated/floor,
 /area/shuttle/oldcentury/general)
 "iIQ" = (
@@ -22935,6 +22937,9 @@
 "kMc" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/chair{
+	dir = 4
+	},
 /turf/simulated/floor,
 /area/shuttle/oldcentury/general)
 "kOx" = (
@@ -22969,8 +22974,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/overmap/entity/visitable/ship/landable/oldcentury,
 /obj/effect/shuttle_landmark/rift/deck3/oldcentury,
+/obj/overmap/entity/visitable/ship/landable/oldcentury,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
 "kTT" = (
@@ -26038,13 +26043,15 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "scS" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "oldcentury_docker";
-	req_one_access = list(67)
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/rift/surfacebase/outside/outside3)
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/shuttle/oldcentury/general)
 "sdp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -28008,6 +28015,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
+"wyl" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "oldcentury_docker";
+	req_one_access = list(67)
+	},
+/turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/outside/outside3)
 "wyq" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -32484,7 +32499,7 @@ pTC
 iHi
 oys
 kcm
-gaQ
+scS
 pTC
 pTC
 clr
@@ -32872,7 +32887,7 @@ pTC
 vcB
 gyK
 jin
-gaQ
+scS
 pTC
 uOB
 pTC
@@ -33074,7 +33089,7 @@ mlU
 tXr
 aus
 aus
-scS
+wyl
 abI
 chB
 xBA
