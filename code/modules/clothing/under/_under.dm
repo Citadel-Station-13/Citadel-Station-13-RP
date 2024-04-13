@@ -269,7 +269,7 @@
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	set_sensors(usr)
 
