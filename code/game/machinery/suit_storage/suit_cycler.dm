@@ -434,7 +434,7 @@
 
 /obj/machinery/suit_cycler/verb/leave()
 	set name = "Eject Cycler"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0)

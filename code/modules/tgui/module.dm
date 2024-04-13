@@ -8,8 +8,7 @@
  * without having to deal with copypaste code
  *
  * todo: for now, we just use expected_type and typecast. we want to use pointers in the future.
- *
- * todo: there's no way to push custom data at the moment, which makes modules not too advantageous in certain cases.
+ * todo: maybe hold off on that pointer idea
  *
  * todo: /datum/tgui_module/push_ui_data() should route to host automatically if host registers modules.
  * todo: rework module registration system. /datum procs: register_ui_module(), unregister_ui_module() hooked to model del, for automatic inclusion in ui.

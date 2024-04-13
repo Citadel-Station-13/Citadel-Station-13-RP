@@ -70,7 +70,7 @@
  */
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	reset_perspective(no_optimizations = TRUE, apply = TRUE, forceful = TRUE)
 

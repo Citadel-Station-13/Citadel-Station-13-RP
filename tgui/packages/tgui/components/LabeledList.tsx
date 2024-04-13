@@ -6,7 +6,7 @@
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { InfernoNode } from 'inferno';
-import { Box, unit } from './Box';
+import { Box, BoxStringProp, unit } from './Box';
 import { ComponentProps } from './Component';
 import { Divider } from './Divider';
 
@@ -28,9 +28,9 @@ LabeledList.defaultHooks = pureComponentHooks;
 type LabeledListItemProps = {
   readonly className?: string | BooleanLike;
   readonly label?: string | InfernoNode | BooleanLike;
-  readonly labelColor?: string | BooleanLike;
-  readonly color?: string | BooleanLike;
-  readonly textAlign?: string | BooleanLike;
+  readonly labelColor?: BoxStringProp;
+  readonly color?: BoxStringProp;
+  readonly textAlign?: BoxStringProp;
   readonly buttons?: InfernoNode,
   /** @deprecated */
   readonly content?: any,
@@ -77,7 +77,7 @@ const LabeledListItem = (props: LabeledListItemProps) => {
         colSpan={buttons ? undefined : 2}
         verticalAlign={verticalAlign}>
         {content}
-        {children}
+        {children || null}
       </Box>
       {buttons && (
         <td className="LabeledList__cell LabeledList__buttons">

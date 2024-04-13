@@ -3,6 +3,7 @@
 ## administration, and the in game library.
 
 ## Should SQL be enabled? Uncomment to enable
+## WARNING: A lot of the codebase requires SQL. Not using this is a terrible idea.
 #SQL_ENABLED
 
 ## Server the MySQL database can be found at.

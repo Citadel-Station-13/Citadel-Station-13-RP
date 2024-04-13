@@ -127,7 +127,7 @@
 /obj/item/assembly/mousetrap/verb/hide_under()
 	set src in oview(1)
 	set name = "Hide"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.stat)
 		return

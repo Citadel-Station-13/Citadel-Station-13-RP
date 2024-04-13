@@ -162,7 +162,7 @@
 
 /obj/item/card/id/verb/read()
 	set name = "Read ID Card"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	to_chat(usr, "[icon2html(thing = src, target = usr)] [src.name]: The current assignment on the card is [src.assignment].")

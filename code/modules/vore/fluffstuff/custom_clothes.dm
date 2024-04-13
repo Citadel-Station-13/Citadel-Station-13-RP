@@ -440,7 +440,7 @@
 
 /obj/item/clothing/suit/storage/fluff/jacket/verb/toggle()
 	set name = "Toggle coat buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))

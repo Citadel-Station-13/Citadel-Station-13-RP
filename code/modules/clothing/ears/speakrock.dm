@@ -13,7 +13,7 @@
 // This is a clone of /obj/item/clothing/ears/earmuffs/headphones/verb/togglemusic()'s functionality.
 /obj/item/radio/headset/speak_n_rock/verb/togglemusic()
     set name = "Toggle Headphone Music"
-    set category = "Object"
+    set category = VERB_CATEGORY_OBJECT
     set src in usr
     if(!istype(usr, /mob/living) || usr.stat) return
 
