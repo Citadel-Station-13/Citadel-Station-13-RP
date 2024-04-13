@@ -141,7 +141,7 @@
 	name = "Civilian Century Shuttle"
 	warmup_time = 15
 	shuttle_area = list(/area/shuttle/oldcentury/cockpit, /area/shuttle/oldcentury/general)
-	current_location = "oldcentury_pad"
+	current_location = "rift_oldcentury_pad"
 	docking_controller_tag = "oldcentury_docker"
 	landmark_transition = "nav_transit_oldcentury"
 	fuel_consumption = 8

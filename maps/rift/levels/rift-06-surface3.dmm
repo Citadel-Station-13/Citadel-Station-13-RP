@@ -18627,18 +18627,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "bIJ" = (
-/obj/machinery/door/window/brigdoor/southright{
-	dir = 8;
-	req_access = null
-	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
-/obj/structure/curtain/open/ashlander{
-	dir = 1
-	},
+/obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
 "bIN" = (
@@ -18721,11 +18715,6 @@
 "bPV" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/heads/hop)
-"bQx" = (
-/obj/effect/paint/silver,
-/obj/effect/paint_stripe/black,
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/shuttle/oldcentury/general)
 "bQP" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/bar)
@@ -18905,8 +18894,8 @@
 "clr" = (
 /obj/machinery/airlock_sensor{
 	dir = 4;
-	id_tag = "civvie_docker";
-	pixel_x = 24
+	id_tag = "oldcentury_docker";
+	pixel_x = 12
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/black,
@@ -19988,6 +19977,14 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	frequency = 1380;
+	id_tag = "oldcentury_docker_sensor";
+	master_tag = "civvie_docker";
+	pixel_x = 24;
+	pixel_y = -8
+	},
+/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
 "eHR" = (
@@ -20233,7 +20230,9 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint/silver,
+/turf/simulated/wall/rshull,
 /area/shuttle/oldcentury/general)
 "eZd" = (
 /obj/effect/floor_decal/borderfloor{
@@ -20448,7 +20447,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/silver,
+/turf/simulated/wall/rshull,
 /area/shuttle/oldcentury/general)
 "fxP" = (
 /obj/machinery/power/apc/high/west_mount,
@@ -20965,16 +20965,12 @@
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury/general)
 "gyK" = (
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	frequency = 1380;
-	id_tag = "civvie_docker_exterior_sensor";
-	master_tag = "civvie_docker";
-	pixel_x = 24;
-	pixel_y = -8
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_x = 32
 	},
-/obj/effect/paint/silver,
-/obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/turf/simulated/floor,
 /area/shuttle/oldcentury/general)
 "gzi" = (
 /obj/effect/paint/silver,
@@ -21944,7 +21940,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/shuttle/wall/voidcraft/green,
+/obj/effect/paint/silver,
+/turf/simulated/wall/rshull,
 /area/shuttle/oldcentury/general)
 "iLp" = (
 /obj/machinery/door/blast/shutters{
@@ -22960,7 +22957,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	cycle_to_external_air = 1;
 	frequency = 1380;
-	id_tag = "civvie_docker";
+	id_tag = "oldcentury_docker";
 	pixel_x = -28
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
@@ -24287,7 +24284,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "nMn" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/obj/effect/paint/black,
+/obj/effect/paint/silver,
+/turf/simulated/wall/rshull,
 /area/shuttle/oldcentury/general)
 "nMD" = (
 /obj/structure/closet/secure_closet/pilot,
@@ -26039,12 +26038,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
 "scS" = (
-/obj/item/gps/internal/base{
-	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "CIVVIE";
-	name = "civilian transport beacon"
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "oldcentury_docker";
+	req_one_access = list(67)
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/outside/outside3)
 "sdp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27000,7 +26999,7 @@
 /obj/machinery/access_button{
 	command = "cycle_int";
 	frequency = 1380;
-	master_tag = "civvie_docker";
+	master_tag = "oldcentury_docker";
 	pixel_x = -24;
 	pixel_y = 8
 	},
@@ -32090,7 +32089,7 @@ wyU
 pTC
 pTC
 vKy
-bQx
+pTC
 pTC
 pTC
 pTC
@@ -32490,7 +32489,7 @@ pTC
 pTC
 clr
 pTC
-gyK
+pTC
 aus
 aus
 aus
@@ -32871,7 +32870,7 @@ gaS
 ndR
 pTC
 vcB
-oys
+gyK
 jin
 gaQ
 pTC
@@ -33075,7 +33074,7 @@ mlU
 tXr
 aus
 aus
-jWp
+scS
 abI
 chB
 xBA
@@ -45498,7 +45497,7 @@ acH
 acH
 acH
 acH
-scS
+acH
 acH
 aQK
 aBK
