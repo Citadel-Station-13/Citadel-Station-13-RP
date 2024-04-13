@@ -27,7 +27,7 @@ Need to turn all of these into proper initializers like this:
 
 /obj/effect/shuttle_landmark/rift/deck3/oldcentury
 	name = "NSB Atlas - Secondary Civilian Transport Pad"
-	landmark_tag = "oldcentury_pad"
+	landmark_tag = "rift_oldcentury_pad"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
