@@ -24,6 +24,7 @@
 	/// friendly, player-facing name
 	var/name
 	/// objectives
+	/// these are faction-wide objectives
 	var/list/datum/game_objective/objectives
 	/// minds
 	var/list/datum/mind/minds

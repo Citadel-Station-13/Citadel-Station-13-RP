@@ -12,7 +12,7 @@
 	// todo: ugh
 	return get_overmap_sector(where_they_are) == our_entity
 
-/datum/game_location/entity/overmap_entity/explain(detailed)
+/datum/game_location/entity/overmap_entity/explain(tracking_level)
 	if(isnull(target))
 		return "at an unknown location (uh oh!)"
 	return "on \the [target]"

@@ -14,6 +14,7 @@
 	wrap(what)
 
 /datum/game_entity/basic/proc/wrap(datum/what)
+	ASSERT(istype(what, expected_type))
 	target = what
 	RegisterSignal(what, COMSIG_PARENT_QDELETING, PROC_REF(target_deleted))
 

@@ -41,6 +41,7 @@
 	auto_build(args.Copy())
 
 #warn how to handle 'auto build'..?
+#warn a way to get live updating stuff
 
 /datum/game_objective/proc/auto_build(list/specifiers)
 	#warn impl
@@ -114,7 +115,7 @@
  * builds task
  */
 /datum/game_objective/proc/build_task()
-	return task | "Custom Objective (adminhelp, shit broke)"
+	return task || "Custom Objective (adminhelp, shit broke)"
 
 /**
  * builds explanation

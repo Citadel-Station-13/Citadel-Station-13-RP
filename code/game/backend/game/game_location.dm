@@ -26,7 +26,7 @@
  * @params
  * * detailed - exact trace, as opposed to just a location; this will let them home in.
  */
-/datum/game_location/proc/explain(detailed)
+/datum/game_location/proc/explain(tracking_level)
 	CRASH("abstract proc unimplemented")
 
 /**

@@ -44,6 +44,10 @@
 	/// list of game factions we belong to
 	var/list/datum/game_faction/factions
 
+	//* Objectives
+	/// list of personal game objectives we have
+	var/list/datum/game_objective/objectives
+
 	//* Roles
 	//  todo: add var/datum/role/role_assigned, for what we joined as.
 	/// all /datum/role's associated with us
@@ -91,9 +95,6 @@
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()
 
-	/// Tracks if this mind has been a rev or not.
-	var/has_been_rev = 0
-
 	/// Associated faction.
 	var/datum/faction/faction
 	/// Changeling holder.
@@ -116,9 +117,6 @@
 
 	/// Used for optional self-objectives that antagonists can give themselves, which are displayed at the end of the round.
 	var/ambitions
-
-	/// Used to store what traits the player had picked out in their preferences before joining, in text form.
-	var/list/traits = list()
 
 /datum/mind/New(ckey)
 	src.ckey = ckey

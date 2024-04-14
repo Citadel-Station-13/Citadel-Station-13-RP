@@ -5,9 +5,9 @@
 	if(!isnull(.))
 		return
 	var/atom/movable/potential = entity.resolve()
-	return istype(potential) && (potential in target)
+	return istype(potential) && (target.is_in_nested_contents(potential))
 
-/datum/game_location/entity/movable_entity/explain(detailed)
+/datum/game_location/entity/movable_entity/explain(tracking_level)
 	if(isnull(target))
 		return "at an unknown location (uh oh!)"
 	var/turf/target_turf = get_turf(target)
