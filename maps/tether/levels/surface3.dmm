@@ -15794,7 +15794,7 @@
 	pixel_y = -32
 	},
 /obj/map_helper/airlock/atmos/scrubber,
-/obj/machinery/atmospherics/component/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber/high_power{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -26628,10 +26628,10 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber{
+/obj/map_helper/airlock/atmos/scrubber,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/high_power{
 	dir = 1
 	},
-/obj/map_helper/airlock/atmos/scrubber,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/topairlock)
 "pQk" = (
@@ -38105,10 +38105,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
-	id = "iaar";
-	name = "iaar"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
 "wyP" = (
