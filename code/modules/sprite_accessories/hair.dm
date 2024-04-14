@@ -33,8 +33,12 @@
 	if(has_add_state)
 		// if we have that don't do legacy behavior
 	else if(icon_add_legacy)
+		var/image/adding = image(icon_add_legacy, icon_state = icon_state)
+		adding.blend_mode = BLEND_ADD
+		rendered.overlays += adding
 
 	return rendered
 
 /datum/sprite_accessory/hair/legacy
+	abstract_type = /datum/sprite_accessory/hair/legacy
 	append_s_at_end = TRUE

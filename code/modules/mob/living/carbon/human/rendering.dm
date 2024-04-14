@@ -88,7 +88,6 @@
 	if(!head_organ || head_organ.is_stump())
 		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
 		return
-	var/datum/sprite_accessory/facial_hair/rendering
 	var/rendered = rendering.render(
 		src,
 		list(
@@ -219,6 +218,8 @@
 	render_spriteacc_tail()
 
 /mob/living/carbon/proc/get_sprite_accessory(slot)
+	return
+
 /mob/living/carbon/human/get_sprite_accessory(slot)
 	switch(slot)
 		if(SPRITE_ACCESSORY_SLOT_TAIL)
@@ -244,6 +245,8 @@
 			b_tail = b_skin
 
 /mob/living/carbon/proc/render_sprite_accessory(slot)
+	return
+
 /mob/living/carbon/human/render_sprite_accessory(slot)
 	switch(slot)
 		if(SPRITE_ACCESSORY_SLOT_TAIL)
@@ -260,18 +263,22 @@
 			render_spriteacc_ears()
 
 /mob/living/carbon/proc/set_sprite_accessory_variation(slot, variation)
+	return
+
 /mob/living/carbon/human/set_sprite_accessory_variation(slot, variation)
 	switch(slot)
-		if(SPRITE_ACCESSORY_SLOT_TAIL)
-			set_tail_variation(variation)
 		if(SPRITE_ACCESSORY_SLOT_HAIR)
 		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
-		if(SPRITE_ACCESSORY_SLOT_WINGS)
-			set_wing_variation(variation)
 		if(SPRITE_ACCESSORY_SLOT_HORNS)
 		if(SPRITE_ACCESSORY_SLOT_EARS)
+		if(SPRITE_ACCESSORY_SLOT_WINGS)
+			set_wing_variation(variation)
+		if(SPRITE_ACCESSORY_SLOT_TAIL)
+			set_tail_variation(variation)
 
 /mob/living/carbon/proc/has_sprite_accessory_variation(slot, variation)
+	return
+
 /mob/living/carbon/human/has_sprite_accessory_variation(slot, variation)
 	var/datum/sprite_accessory/resolved = get_sprite_accessory(slot)
 	if(istype(resolved, /datum/sprite_accessory/tail) && variation == SPRITE_ACCESSORY_VARIATION_WAGGING)
@@ -281,20 +288,22 @@
 	return (resolved?.variations?[variation])? TRUE : FALSE
 
 /mob/living/carbon/proc/get_sprite_accessory_variation(slot)
+	return
+
 /mob/living/carbon/human/get_sprite_accessory_variation(slot)
 	var/datum/sprite_accessory/resolved = get_sprite_accessory(slot)
 	if(!length(resolved?.variations))
 		return null
 	var/variation
 	switch(slot)
-		if(SPRITE_ACCESSORY_SLOT_TAIL)
-			variation = legacy_tail_variation
 		if(SPRITE_ACCESSORY_SLOT_HAIR)
 		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
-		if(SPRITE_ACCESSORY_SLOT_WINGS)
-			variation = legacy_wing_variation
 		if(SPRITE_ACCESSORY_SLOT_HORNS)
 		if(SPRITE_ACCESSORY_SLOT_EARS)
+		if(SPRITE_ACCESSORY_SLOT_TAIL)
+			variation = legacy_tail_variation
+		if(SPRITE_ACCESSORY_SLOT_WINGS)
+			variation = legacy_wing_variation
 	return (resolved.variations[variation])? variation : null
 
 //! old code below
@@ -304,7 +313,6 @@
 //You can sort of flick images now with flick_overlay -Aro
 /mob/living/carbon/human/proc/animate_tail_once()
 	var/datum/sprite_accessory/accessory = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
-	var/variation = get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL)
 	var/time = accessory.variation_animation_times?[SPRITE_ACCESSORY_VARIATION_WAGGING] || accessory.variation_animation_time
 	if(!set_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, SPRITE_ACCESSORY_VARIATION_WAGGING))
 		return
@@ -320,6 +328,7 @@
 		SPRITE_ACCESSORY_SLOT_TAIL,
 		get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL) == SPRITE_ACCESSORY_VARIATION_WAGGING? null : SPRITE_ACCESSORY_VARIATION_WAGGING,
 	))
+		return 0
 	return 1
 
 /mob/living/carbon/human/proc/animate_tail_start()

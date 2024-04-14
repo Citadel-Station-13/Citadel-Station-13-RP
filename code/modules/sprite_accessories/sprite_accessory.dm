@@ -205,6 +205,7 @@
 			single.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
 			single.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
 		if(SPRITE_ACCESSORY_ALIGNMENT_IGNORE)
+			pass() // lmao
 
 	return single
 

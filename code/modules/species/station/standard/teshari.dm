@@ -27,9 +27,9 @@
 	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
-	tail = "teshtail"
-	tail_hair = "feathers"
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/teshari,
+	)
 
 	max_additional_languages = 3
 	name_language    = LANGUAGE_ID_TESHARI

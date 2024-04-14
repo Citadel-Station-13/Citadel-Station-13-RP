@@ -2375,6 +2375,7 @@
 #include "code\modules\bodysets\organic\rapala.dm"
 #include "code\modules\bodysets\organic\shadekin.dm"
 #include "code\modules\bodysets\organic\tajaran.dm"
+#include "code\modules\bodysets\organic\teshari.dm"
 #include "code\modules\bodysets\organic\unathi.dm"
 #include "code\modules\bodysets\organic\vasilissan.dm"
 #include "code\modules\bodysets\organic\vulpkanin.dm"

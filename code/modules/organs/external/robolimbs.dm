@@ -682,7 +682,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'
 	blood_color = "#5e280d"
 	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd_red
-	includes_tail = 1
 	unavailable_to_build = TRUE
 
 /obj/item/disk/limb/eggnerdltdred
