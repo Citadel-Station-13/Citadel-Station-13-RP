@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-/datum/sprite_accessory/wing/bodyset/moth
+/datum/sprite_accessory/wings/bodyset/moth
 	name = "moth wings"
 	id = "wings-bodyset-moth"
 	icon = 'icons/mob/bodysets/organic/moth/sprite_accessories_64x32.dmi'
