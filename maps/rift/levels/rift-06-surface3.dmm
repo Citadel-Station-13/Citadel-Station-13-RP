@@ -18632,7 +18632,11 @@
 	},
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
-/obj/structure/curtain/open/black,
+/obj/machinery/door/window/brigdoor/southright{
+	dir = 8;
+	req_access = null
+	},
+/obj/structure/curtain/open/ashlander,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
 "bIN" = (
@@ -21929,6 +21933,9 @@
 	dir = 1
 	},
 /obj/effect/debris/cleanable/dirt,
+/obj/structure/table/bench/wooden{
+	pixel_x = 15
+	},
 /turf/simulated/floor/carpet/patterened/green,
 /area/shuttle/oldcentury/general)
 "iLh" = (
@@ -25344,6 +25351,10 @@
 	icon_state = "4-8"
 	},
 /obj/effect/debris/cleanable/dirt,
+/obj/machinery/light/small{
+	color = "#da7c02";
+	brightness_color = "#da7c02"
+	},
 /turf/simulated/floor/carpet/patterened/green,
 /area/shuttle/oldcentury/general)
 "qmY" = (
@@ -28517,9 +28528,6 @@
 	},
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
-	},
-/obj/structure/table/bench/wooden{
-	pixel_x = -16
 	},
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/patterened/green,
