@@ -97,15 +97,24 @@
 	#warn impl
 
 /**
+ * Shuttle evac or transfer
+ */
+/datum/map_finale/two_phase/shuttle
+	var/should_fire_pods = TRUE
+	#warn impl
+
+/**
  * Evacuate via available shuttles and pods
  */
-/datum/map_finale/two_phase/evacuation
+/datum/map_finale/two_phase/shuttle/evacuation
+	should_fire_pods = TRUE
 	#warn impl
 
 /**
  * Transfer via available shuttles
  */
-/datum/map_finale/two_phase/crew_transfer
+/datum/map_finale/two_phase/shuttle/crew_transfer
+	should_fire_pods = FALSE
 	#warn impl
 
 /**
