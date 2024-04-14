@@ -205,14 +205,14 @@
 
 /mob/living/carbon/human/proc/set_wing_variation(variation)
 	var/datum/sprite_accessory/wing/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
-	if(!rendering.variations?[variation])
+	if(!rendering?.variations?[variation])
 		return
 	legacy_wing_variation = variation
 	render_spriteacc_wings()
 
 /mob/living/carbon/human/proc/set_tail_variation(variation)
 	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
-	if(!rendering.variations?[variation])
+	if(!rendering?.variations?[variation])
 		return
 	legacy_tail_variation = variation
 	render_spriteacc_tail()
@@ -236,13 +236,14 @@
 			. = GLOB.sprite_accessory_ears[ear_style]
 	if(slot == SPRITE_ACCESSORY_SLOT_TAIL && !.)
 		var/datum/robolimb/limb = isSynthetic()
-		. = limb?.legacy_includes_tail
-		if(.)
-			//! :skull_emoji:
-			//  todo: better defaulting system, this is horrible.
-			r_tail = r_skin
-			g_tail = g_skin
-			b_tail = b_skin
+		if(istype(limb))
+			. = limb?.legacy_includes_tail
+			if(.)
+				//! :skull_emoji:
+				//  todo: better defaulting system, this is horrible.
+				r_tail = r_skin
+				g_tail = g_skin
+				b_tail = b_skin
 
 /mob/living/carbon/proc/render_sprite_accessory(slot)
 	return

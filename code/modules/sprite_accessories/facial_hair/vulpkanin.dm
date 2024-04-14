@@ -1,4 +1,4 @@
-/datum/sprite_accessory/facial_hair/vulp_none
+/datum/sprite_accessory/facial_hair/legacy/vulp_none
 	name = "None"
 	id = "fhair_vulp_none"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -7,7 +7,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_blaze
+/datum/sprite_accessory/facial_hair/legacy/vulp_blaze
 	name = "Blaze"
 	id = "fhair_vulp_blaze"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -16,7 +16,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_vulpine
+/datum/sprite_accessory/facial_hair/legacy/vulp_vulpine
 	name = "Vulpine"
 	id = "fhair_vulp_vulpine"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -25,7 +25,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_earfluff
+/datum/sprite_accessory/facial_hair/legacy/vulp_earfluff
 	name = "Earfluff"
 	id = "fhair_vulp_earfluff"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -34,7 +34,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_mask
+/datum/sprite_accessory/facial_hair/legacy/vulp_mask
 	name = "Mask"
 	id = "fhair_vulp_mask"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -43,7 +43,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_patch
+/datum/sprite_accessory/facial_hair/legacy/vulp_patch
 	name = "Patch"
 	id = "fhair_vulp_patch"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -52,7 +52,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_ruff
+/datum/sprite_accessory/facial_hair/legacy/vulp_ruff
 	name = "Ruff"
 	id = "fhair_vulp_ruff"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -61,7 +61,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_kita
+/datum/sprite_accessory/facial_hair/legacy/vulp_kita
 	name = "Kita"
 	id = "fhair_vulp_kita"
 	icon = 'icons/mob/human_face_vr.dmi'
@@ -70,7 +70,7 @@
 	apply_restrictions = TRUE
 	random_generation_gender = null
 
-/datum/sprite_accessory/facial_hair/vulp_swift
+/datum/sprite_accessory/facial_hair/legacy/vulp_swift
 	name = "Swift"
 	id = "fhair_vulp_swift"
 	icon = 'icons/mob/human_face_vr.dmi'
