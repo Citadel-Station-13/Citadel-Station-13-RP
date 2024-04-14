@@ -553,6 +553,16 @@
 	desc = "A white long sweater with a modest string to keep the otherwise immodest front piece from falling off. Compatible with a variety of chest sizes. It seems like it's made of a soft material."
 	icon_state = "virgin_sweater"
 
+/obj/item/clothing/accessory/sweater/milk
+	name = "Mega Milk sweater (f)"
+	desc = "A white shirt with blue sleeves. The words 'Mega Milk' have been written in black around the chest area. The shirt itself is quite well-fitting, accentuating the curves, with additional material to fit the wearer's chest."
+	icon_state = "milk_sweater_f"
+
+/obj/item/clothing/accessory/sweater/milk/male
+	name = "Mega Milk sweater (m)"
+	desc = "A white shirt with blue sleeves. The words 'Mega Milk' have been written in black around the chest area. The shirt itself is quite well-fitting, accentuating the curves."
+	icon_state = "milk_sweater_m"
+
 //***
 // End of sweaters
 //***
