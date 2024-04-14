@@ -371,7 +371,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(!ishuman(wearer))
 		return ..()
 	var/mob/living/carbon/human/casted_human = wearer
-	if((casted_human.wear_suit.inv_hide_flags) & HIDEJUMPSUIT)
+	if((casted_human.wear_suit?.inv_hide_flags) & HIDEJUMPSUIT)
 		return FALSE
 	return ..()
 
@@ -612,7 +612,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(!ishuman(wearer))
 		return ..()
 	var/mob/living/carbon/human/casted_human = wearer
-	if((casted_human.wear_suit.inv_hide_flags | casted_human.w_uniform.inv_hide_flags) & HIDESHOES)
+	if((casted_human.wear_suit?.inv_hide_flags | casted_human.w_uniform?.inv_hide_flags) & HIDESHOES)
 		return FALSE
 	for(var/bodypart in list(BP_L_FOOT, BP_R_FOOT))
 		var/obj/item/organ/external/foot/foot = casted_human.get_organ(bodypart)
@@ -771,7 +771,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot/inventory/mask/should_render(mob/wearer, obj/item/item)
 	if(ishuman(wearer))
 		var/mob/living/carbon/human/casted_human = wearer
-		if(casted_human.head.inv_hide_flags & HIDEMASK)
+		if(casted_human.head?.inv_hide_flags & HIDEMASK)
 			return FALSE
 	return ..()
 

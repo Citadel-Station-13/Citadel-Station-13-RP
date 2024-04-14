@@ -81,24 +81,24 @@
 	if(!slot.should_render(owner, target))
 		remove_slot_render(slot_id)
 		return
-		
+
 	if(isnull(target))
 		remove_slot_render(slot_id)
 		return
 
 	var/bodytype = BODYTYPE_DEFAULT
-	
+
 	if(ishuman(owner))
 		var/mob/living/carbon/human/casted_human = owner
 		bodytype = casted_human.species.get_effective_bodytype(casted_human, target, slot_id)
 
-	var/rendering_results = slot.render(owner, slot, bodytype)
+	var/rendering_results = slot.render(owner, target, bodytype)
 	if(islist(rendering_results)? !length(rendering_results) : isnull(rendering_results))
 		remove_slot_render(slot_id)
 		return
-	
+
 	set_slot_render(slot_id, rendering_results)
-	
+
 /datum/inventory/proc/remove_slot_render(slot_id)
 	if(isnull(rendered_normal_overlays[slot_id]))
 		return
