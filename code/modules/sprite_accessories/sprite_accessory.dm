@@ -194,20 +194,17 @@
 					adding = image(icon, "[with_base_state]-add-behind", layer_behind)
 					layers += adding
 
-	// emit single
-	var/image/single = new /image
-	single.overlays = layers
+	for(var/image/patching as anything in layers)
+		patching.appearance_flags = KEEP_TOGETHER
+		switch(icon_alignment)
+			if(SPRITE_ACCESSORY_ALIGNMENT_IGNORE)
+			if(SPRITE_ACCESSORY_ALIGNMENT_BOTTOM)
+				patching.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
+			if(SPRITE_ACCESSORY_ALIGNMENT_CENTER)
+				patching.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
+				patching.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
 
-	switch(icon_alignment)
-		if(SPRITE_ACCESSORY_ALIGNMENT_BOTTOM)
-			single.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
-		if(SPRITE_ACCESSORY_ALIGNMENT_CENTER)
-			single.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
-			single.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
-		if(SPRITE_ACCESSORY_ALIGNMENT_IGNORE)
-			pass() // lmao
-
-	return single
+	return layers
 
 //* Resolution *//
 

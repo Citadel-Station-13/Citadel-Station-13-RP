@@ -9,10 +9,11 @@
 	do_colouration = TRUE
 
 /datum/sprite_accessory/tail/bodyset/teshari/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
-	var/image/built = ..()
-	var/image/hair = image(icon, "tail-hair")
-	if(ishuman(for_whom))
-		var/mob/living/carbon/human/casted = for_whom
-		hair.color = rgb(casted.r_hair, casted.g_hair, casted.b_hair)
-	built.overlays += hair
-	return built
+	var/list/image/layers = ..()
+	for(var/image/built as anything in layers)
+		var/image/hair = image(icon, "tail-hair")
+		if(ishuman(for_whom))
+			var/mob/living/carbon/human/casted = for_whom
+			hair.color = rgb(casted.r_hair, casted.g_hair, casted.b_hair)
+		built.overlays += hair
+	return layers

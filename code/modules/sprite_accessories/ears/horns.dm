@@ -31,6 +31,8 @@
 	icon_state = "crippledbull"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	do_colouration = TRUE
+	#warn that
+	// legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/horns/ticketrack
 	name = "Ticket Rack Horns"

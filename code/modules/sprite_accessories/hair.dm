@@ -20,24 +20,25 @@
 		icon_state = "[icon_state]_s"
 
 /datum/sprite_accessory/hair/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
-	var/image/rendered = ..()
+	var/list/image/layers = ..()
 
-	if(do_colouration && ishuman(for_whom))
-		var/mob/living/carbon/human/casted_human = for_whom
-		if(casted_human.grad_style)
-			var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
-			gradient.color = rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
-			gradient.blend_mode = BLEND_INSET_OVERLAY
-			rendered.overlays += gradient
+	for(var/image/rendered as anything in layers)
+		if(do_colouration && ishuman(for_whom))
+			var/mob/living/carbon/human/casted_human = for_whom
+			if(casted_human.grad_style)
+				var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
+				gradient.color = rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
+				gradient.blend_mode = BLEND_INSET_OVERLAY
+				rendered.overlays += gradient
 
-	if(has_add_state)
-		// if we have that don't do legacy behavior
-	else if(icon_add_legacy)
-		var/image/adding = image(icon_add_legacy, icon_state = icon_state)
-		adding.blend_mode = BLEND_ADD
-		rendered.overlays += adding
+		if(has_add_state)
+			// if we have that don't do legacy behavior
+		else if(icon_add_legacy)
+			var/image/adding = image(icon_add_legacy, icon_state = icon_state)
+			adding.blend_mode = BLEND_ADD
+			rendered.overlays += adding
 
-	return rendered
+	return layers
 
 /datum/sprite_accessory/hair/legacy
 	abstract_type = /datum/sprite_accessory/hair/legacy

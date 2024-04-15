@@ -178,7 +178,7 @@
 
 
 /mob/living/carbon/human/proc/render_spriteacc_tail()
-	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
+	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_TAIL)
 		return

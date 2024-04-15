@@ -43,8 +43,10 @@
 // Species-unique long tails/taurhalves
 
 /datum/sprite_accessory/tail/legacy_taur/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
-	var/image/rendered = ..()
-	rendered.pixel_x -= 16
+	var/list/image/layers = ..()
+	for(var/image/rendered as anything in layers)
+		rendered.pixel_x -= 16
+	return layers
 
 /datum/sprite_accessory/tail/legacy_taur/shadekin_tail
 	name = "Shadekin Tail"
