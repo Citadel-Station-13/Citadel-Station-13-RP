@@ -21,8 +21,8 @@
 	if(append_s_at_end)
 		icon_state = "[icon_state]_s"
 
-/datum/sprite_accessory/hair/legacy
-	abstract_type = /datum/sprite_accessory/hair/legacy
+/datum/sprite_accessory/facial_hair/legacy
+	abstract_type = /datum/sprite_accessory/facial_hair/legacy
 	append_s_at_end = TRUE
 
 /datum/sprite_accessory/facial_hair/legacy/shaved

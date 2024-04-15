@@ -60,7 +60,7 @@
 		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/legacy/bald
 		h_style_id = initial(H.id)
 	if(!(FS.name in valid_fhair))
-		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/shaved
+		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/legacy/shaved
 		f_style_id = initial(FH.id)
 	// limbs/markings
 	reset_limbs()

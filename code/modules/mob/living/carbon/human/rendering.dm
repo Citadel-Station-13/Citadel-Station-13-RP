@@ -223,17 +223,21 @@
 /mob/living/carbon/human/get_sprite_accessory(slot)
 	switch(slot)
 		if(SPRITE_ACCESSORY_SLOT_TAIL)
-			. = GLOB.sprite_accessory_tails[tail_style]
+			// . = GLOB.sprite_accessory_tails[tail_style]
+			. = tail_style
 		if(SPRITE_ACCESSORY_SLOT_HAIR)
 			. = GLOB.legacy_hair_lookup[h_style]
 		if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
 			. = GLOB.legacy_facial_hair_lookup[f_style]
 		if(SPRITE_ACCESSORY_SLOT_WINGS)
-			. = GLOB.sprite_accessory_wings[wing_style]
+			// . = GLOB.sprite_accessory_wings[wing_style]
+			. = wing_style
 		if(SPRITE_ACCESSORY_SLOT_HORNS)
-			. = GLOB.sprite_accessory_ears[horn_style]
+			// . = GLOB.sprite_accessory_ears[horn_style]
+			. = horn_style
 		if(SPRITE_ACCESSORY_SLOT_EARS)
-			. = GLOB.sprite_accessory_ears[ear_style]
+			// . = GLOB.sprite_accessory_ears[ear_style]
+			. = ear_style
 	if(slot == SPRITE_ACCESSORY_SLOT_TAIL && !.)
 		var/datum/robolimb/limb = isSynthetic()
 		if(istype(limb))

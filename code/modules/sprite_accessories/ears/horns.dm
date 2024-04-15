@@ -30,12 +30,14 @@
 	icon = 'icons/mob/sprite_accessory/horns/horns.dmi'
 	icon_state = "crippledbull"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	do_colouration = TRUE
 
 /datum/sprite_accessory/ears/horns/ticketrack
 	name = "Ticket Rack Horns"
 	id = "horn-ticket-rack"
 	icon = 'icons/mob/sprite_accessory/horns/horns.dmi'
 	icon_state = "ticketrack"
+	do_colouration = TRUE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 /datum/sprite_accessory/ears/horns/hopeful_horns
@@ -44,6 +46,7 @@
 	icon = 'icons/mob/sprite_accessory/horns/horns.dmi'
 	icon_state = "crippledbull"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	do_colouration = TRUE
 
 /datum/sprite_accessory/ears/horns/broad_curls
 	name = "Broad Curls Horns"
@@ -51,6 +54,7 @@
 	icon = 'icons/mob/sprite_accessory/horns/horns.dmi'
 	icon_state = "broadcurls"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	do_colouration = TRUE
 
 /datum/sprite_accessory/ears/horns/painted_points
 	name = "Painted Points Horns"
@@ -61,6 +65,7 @@
 	icon_dimension_y = 48
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
+	do_colouration = TRUE
 
 /datum/sprite_accessory/ears/horns/whos_horns
 	name = "Who's Horns"
@@ -71,6 +76,7 @@
 	icon_dimension_y = 48
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
+	do_colouration = TRUE
 
 /datum/sprite_accessory/ears/horns/highrise
 	name = "High Rise Horns"
@@ -81,3 +87,4 @@
 	icon_dimension_y = 48
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
+	do_colouration = TRUE
