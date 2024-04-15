@@ -24,6 +24,8 @@
 /datum/sprite_accessory/ears/horns
 	abstract_type = /datum/sprite_accessory/ears/horns
 
+// todo: someone sort this shit alphabetically
+
 /datum/sprite_accessory/ears/horns/crippled_bull
 	name = "Crippled Bull Horns"
 	id = "horn-crippled-bull"
@@ -31,8 +33,7 @@
 	icon_state = "crippledbull"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	do_colouration = TRUE
-	#warn that
-	// legacy_use_additive_color_matrix = FALSE
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/horns/ticketrack
 	name = "Ticket Rack Horns"
@@ -41,6 +42,7 @@
 	icon_state = "ticketrack"
 	do_colouration = TRUE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/horns/hopeful_horns
 	name = "Hopeful Horns"
@@ -49,6 +51,7 @@
 	icon_state = "crippledbull"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/horns/broad_curls
 	name = "Broad Curls Horns"
@@ -57,6 +60,7 @@
 	icon_state = "broadcurls"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/horns/painted_points
 	name = "Painted Points Horns"
@@ -68,6 +72,7 @@
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
 	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/horns/whos_horns
 	name = "Who's Horns"
@@ -79,6 +84,7 @@
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
 	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/horns/highrise
 	name = "High Rise Horns"
@@ -90,3 +96,4 @@
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 	icon_alignment = SPRITE_ACCESSORY_ALIGNMENT_BOTTOM
 	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
