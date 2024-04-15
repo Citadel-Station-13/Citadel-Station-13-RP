@@ -45,5 +45,15 @@
 
 //* special things
 
-#define AUTO_FRAME_DATUM(typepath, icon)
-#warn that
+#define AUTO_FRAME_DATUM(TYPEPATH, ICON) \
+/obj/structure/frame2 { \
+	icon = ##ICON; \
+	frame = ##TYPEPATH; \
+} \
+/obj/item/frame2 { \
+	icon = ##ICON; \
+	frame = ##TYPEPATH; \
+} \
+##TYPEPATH { \
+	icon = ##ICON; \
+}
