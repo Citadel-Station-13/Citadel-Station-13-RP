@@ -10,6 +10,9 @@ SUBSYSTEM_DEF(preferences)
 /datum/controller/subsystem/preferences/Initialize()
 	init_preference_entries()
 	init_preference_toggles()
+	for(var/key in preferences_by_key)
+		var/datum/game_preferences/prefs = preferences_by_key[key]
+		prefs.initialize()
 	return ..()
 
 /datum/controller/subsystem/preferences/proc/resolve_preference_entry(datum/game_preference_entry/entrylike)
@@ -64,7 +67,8 @@ SUBSYSTEM_DEF(preferences)
 	if(!istype(preferences_by_key[ckey], /datum/game_preferences))
 		var/datum/game_preferences/initializing = new(key, ckey)
 		preferences_by_key[ckey] = initializing
-		initializing.initialize()
+		if(initialized)
+			initializing.initialize()
 	return preferences_by_key[ckey]
 
 /datum/controller/subsystem/preferences/on_sql_reconnect()

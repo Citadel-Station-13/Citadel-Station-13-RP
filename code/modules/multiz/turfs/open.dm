@@ -16,7 +16,6 @@
 	. = ..()
 	icon_state = ""
 	ASSERT(!isnull(below()))
-	queue()
 
 /turf/simulated/open/Entered(atom/movable/mover)
 	..()
@@ -28,11 +27,6 @@
 	. = ..()
 	if(AM.movement_type & MOVEMENT_GROUND)
 		AM.fall()
-
-/turf/simulated/open/proc/queue()
-	if(smoothing_flags & SMOOTH_QUEUED)
-		return
-	smoothing_flags |= SMOOTH_QUEUED
 
 //! We hijack smoothing flags.
 /turf/simulated/open/smooth_icon()

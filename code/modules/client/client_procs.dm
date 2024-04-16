@@ -202,8 +202,6 @@
 	player.log_connect()
 	//* Resolve preferences
 	preferences = SSpreferences.resolve_game_preferences(key, ckey)
-	preferences.active = src
-	preferences.on_reconnect()
 	//? WARNING: SHITCODE ALERT ?//
 	// We allow a client/New sleep because preferences is currently required for
 	// everything else to work
@@ -212,6 +210,10 @@
 		security_kick("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
 		stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
 		return
+	// we wait until it inits to do this
+	// todo: is there a better way this is kind of awful
+	preferences.active = src
+	preferences.on_reconnect()
 	//? END ?//
 
 	//* Setup user interface

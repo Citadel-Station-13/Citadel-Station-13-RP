@@ -916,6 +916,7 @@
 	cut_overlays()
 
 	if (dogborg)
+		zmm_flags |= ZMM_LOOKAHEAD
 		// Resting dogborgs don't get overlays.
 		if (stat == CONSCIOUS && resting)
 			if(sitting)
@@ -925,6 +926,8 @@
 			else
 				icon_state = "[module_sprites[icontype]]-rest"
 			return
+	else
+		zmm_flags &= ~ZMM_LOOKAHEAD
 
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
