@@ -27,7 +27,13 @@
 			var/mob/living/carbon/human/casted_human = for_whom
 			if(casted_human.grad_style)
 				var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
-				gradient.color = rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
+				gradient.color = list(
+					0, 0, 0, 0,
+					0, 0, 0, 0,
+					0, 0, 0, 0,
+					0, 0, 0, 1,
+					casted_human.r_grad / 255, casted_human.g_grad / 255, casted_human.b_grad / 255, 0,
+				)
 				gradient.blend_mode = BLEND_INSET_OVERLAY
 				rendered.overlays += gradient
 
