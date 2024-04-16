@@ -31,8 +31,15 @@
 	var/list/mob/occupant_actions			//assoc list mob = list(type = action datum assigned to mob)
 	var/obj/vehicle/trailer				//what trailer is hitched to this vehicle
 	var/obj/vehicle/trailer_type		//what trailer is allowed to hitch to this vehicle
-	var/is_tugged = FALSE				//Is this vehicle attached to another
+	var/is_tugged = FALSE				//is this vehicle attached to another
 	var/mouse_pointer //do we have a special mouse
+	var/mechanical = TRUE			//if true the vehicle will not initialize a cell power system
+	var/obj/item/cell/cell_type 	//default cell to spawn inside
+	var/power_consumption = 0		//how much power it costs to move in cell units
+	//*var/obj_cell_slot 				//defined at mapload if mechanical is false. Use to access cell subsystem
+	var/maint_panel_open = FALSE	//is the maintenance panel open?
+
+
 
 /obj/vehicle/Initialize(mapload)
 	. = ..()
@@ -41,9 +48,13 @@
 	autogrant_actions_controller = list()
 	occupant_actions = list()
 	generate_actions()
+	if(!mechanical)
+		var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type) //Enables the generic cell system
 
 /obj/vehicle/examine(mob/user, dist)
 	. = ..()
+	if(!isnull(obj_cell_slot.cell) && dist < 2)
+		. += "<br><span class='notice'>Its display shows: [round(obj_cell_slot.cell.charge)] / [obj_cell_slot.cell.maxcharge].</span>"
 	/*
 	if(resistance_flags & ON_FIRE)
 		. += "<span class='warning'>It's on fire!</span>"
@@ -176,6 +187,7 @@
 				M.Bumped(m)
 
 /obj/vehicle/Move(newloc, dir)
+	if(mechanical && cell.charge < charge_use)
 	var/old_loc = src.loc
 	. = ..()
 	if(trailer && .)
