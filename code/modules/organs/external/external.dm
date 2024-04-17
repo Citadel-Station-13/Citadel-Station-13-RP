@@ -399,7 +399,10 @@
 		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
 			var/overflow_brute = brute - can_inflict_brute
 			// keep allowing it, but, diminishing returns
-			var/damage_anyways_brute = brute * min(1, 1 / ((brute_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
+			var/damage_anyways_brute = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
+				overflow_brute * min(1, 1 / ((max(brute_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
+			)
+			overflow_brute -= damage_anyways_brute
 			if(can_cut)
 				if(sharp && !edge)
 					create_wound( PIERCE, damage_anyways_brute )
@@ -413,11 +416,13 @@
 		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
 			create_wound( BURN, burn )
-		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
+		else
 			var/overflow_burn = burn - can_inflict_burn
-			// keep allowing it, but, diminishing returns
-			var/damage_anyways_burn = burn * min(1, 1 / ((burn_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
-			create_wound( BURN, damage_anyways_burn )
+			var/damage_anyways_burn = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
+				overflow_burn  * min(1, 1 / ((max(burn_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
+			)
+			overflow_burn -= damage_anyways_burn
+			create_wound(BURN, damage_anyways_burn + can_inflict_burn)
 			// rest goes into shock
 			owner.shock_stage += overflow_burn * 0.33
 

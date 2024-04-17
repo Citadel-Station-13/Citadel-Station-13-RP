@@ -58,12 +58,11 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	max_age = 80
 
-
 	gluttonous = 0
 	virus_immune = TRUE
 	slowdown = -0.2
-	brute_mod = 0.5
-	burn_mod  = 2
+	brute_mod = 0.9
+	burn_mod  = 1.1
 	oxy_mod   = 0
 	flash_mod = 0.5 //No centralized, lensed eyes.
 	item_slowdown_mod = 0.66
