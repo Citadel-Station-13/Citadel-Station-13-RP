@@ -18896,14 +18896,24 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "clr" = (
-/obj/machinery/airlock_sensor{
-	dir = 4;
-	id_tag = "oldcentury_docker";
-	pixel_x = 12
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
 	},
-/obj/effect/paint/silver,
-/obj/effect/paint_stripe/black,
-/turf/simulated/wall/rshull,
+/obj/structure/handrail{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/shuttle_landmark/rift/deck3/oldcentury,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	cycle_to_external_air = 1;
+	frequency = 1380;
+	id_tag = "oldcentury_docker";
+	pixel_x = -28
+	},
+/obj/overmap/entity/visitable/ship/landable/oldcentury,
+/turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
 "cnq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -19975,21 +19985,18 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "eHc" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/map_helper/airlock/door/ext_door,
-/obj/structure/fans/tiny,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "oldshuttle_hatch";
+	name = "Shuttle Side Hatch";
+	pixel_x = -24;
+	req_one_access = list(19,43,67)
 	},
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	frequency = 1380;
-	id_tag = "oldcentury_docker_sensor";
-	master_tag = "civvie_docker";
-	pixel_x = 24;
-	pixel_y = -8
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
 	},
-/obj/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/floor/tiled/old_tile/green,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury/general)
 "eHR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -22007,19 +22014,6 @@
 /obj/effect/paint/black,
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury/general)
-"iTW" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "shuttle_hatch";
-	name = "Shuttle Side Hatch";
-	pixel_x = -24
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
-	},
-/obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/tiled/monodark,
-/area/shuttle/oldcentury/general)
 "iXB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
@@ -22966,23 +22960,20 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/checkpoint2)
 "kSr" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	cycle_to_external_air = 1;
-	frequency = 1380;
-	id_tag = "oldcentury_docker";
-	pixel_x = -28
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 8
-	},
-/obj/structure/handrail{
-	dir = 4
-	},
+/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/airlock/door/ext_door,
+/obj/structure/fans/tiny,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/shuttle_landmark/rift/deck3/oldcentury,
-/obj/overmap/entity/visitable/ship/landable/oldcentury,
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	frequency = 1380;
+	id_tag = "oldcentury_docker_sensor";
+	master_tag = "oldcentury_docker";
+	pixel_x = 24;
+	pixel_y = -8
+	},
+/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/oldcentury/general)
 "kTT" = (
@@ -24182,8 +24173,14 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
 "nqA" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/obj/effect/paint/silver,
+/obj/effect/paint_stripe/black,
+/obj/machinery/airlock_sensor{
+	dir = 4;
+	id_tag = "oldcentury_docker";
+	pixel_x = 12
+	},
+/turf/simulated/wall/rshull,
 /area/shuttle/oldcentury/general)
 "nsi" = (
 /obj/structure/railing{
@@ -25062,24 +25059,24 @@
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "pKp" = (
-/obj/machinery/photocopier/faxmachine{
-	department = "Old Century"
-	},
-/obj/structure/table/steel_reinforced,
 /obj/structure/cable/cyan{
-	icon_state = "2-8"
+	icon_state = "1-2"
 	},
-/obj/structure/flora/pottedplant/fern{
-	pixel_y = 17;
-	pixel_x = 6
+/obj/machinery/light/small{
+	color = "#da7c02";
+	brightness_color = "#da7c02";
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/shuttle,
+/obj/structure/table/bench/wooden{
+	pixel_x = -16
 	},
 /obj/machinery/air_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = 22;
-	req_one_access = list(160)
+	pixel_y = 24
 	},
-/turf/simulated/floor/tiled/monodark,
-/area/shuttle/oldcentury/cockpit)
+/obj/effect/floor_decal/borderfloorwhite/shifted,
+/turf/simulated/floor/carpet/patterened/green,
+/area/shuttle/oldcentury/general)
 "pKx" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -25219,24 +25216,13 @@
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/general)
 "pZx" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "oldshuttle_hatch";
+	name = "Shuttle Side Hatch"
 	},
-/obj/machinery/light/small{
-	color = "#da7c02";
-	brightness_color = "#da7c02";
-	dir = 4
-	},
-/obj/structure/bed/chair/bay/shuttle,
-/obj/structure/table/bench/wooden{
-	pixel_x = -16
-	},
-/obj/item/toy/plushie/bear_space,
-/obj/machinery/air_alarm/alarms_hidden{
-	pixel_y = 24
-	},
-/obj/effect/floor_decal/borderfloorwhite/shifted,
-/turf/simulated/floor/carpet/patterened/green,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
 /area/shuttle/oldcentury/general)
 "qcL" = (
 /obj/landmark/spawnpoint/job/pilot,
@@ -25538,10 +25524,6 @@
 /area/crew_quarters/bar)
 "qGN" = (
 /obj/structure/catwalk,
-/obj/machinery/light/small{
-	color = "#da7c02";
-	brightness_color = "#da7c02"
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -27379,7 +27361,21 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "vrM" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/machinery/computer/ship/helm,
+/obj/item/gps/internal/base{
+	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
+	gps_tag = "OLDCENTURY";
+	name = "century old beacon"
+	},
+/obj/item/toy/figure/hop{
+	pixel_y = 18;
+	pixel_x = 7;
+	layer = 6
+	},
+/obj/item/toy/prize/phazon{
+	pixel_y = 27;
+	layer = 6
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/oldcentury/cockpit)
 "vsW" = (
@@ -27594,13 +27590,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "vKy" = (
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "shuttle_hatch";
-	name = "Shuttle Side Hatch"
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/turf/simulated/floor,
 /area/shuttle/oldcentury/general)
 "vLi" = (
 /obj/machinery/button/remote/airlock{
@@ -28030,7 +28021,7 @@
 "wyl" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "oldcentury_docker";
+	id_tag = "rift_oldcentury_dock";
 	req_one_access = list(67)
 	},
 /turf/simulated/wall/r_wall/prepainted,
@@ -28122,22 +28113,23 @@
 /turf/simulated/floor/plating,
 /area/security/prison)
 "wGV" = (
-/obj/machinery/computer/ship/helm,
-/obj/item/gps/internal/base{
-	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "CIVVIE";
-	name = "century old beacon"
+/obj/machinery/photocopier/faxmachine{
+	department = "Old Century Shuttle"
 	},
-/obj/item/toy/figure/hop{
-	pixel_y = 18;
-	pixel_x = 7;
-	layer = 6
+/obj/structure/table/steel_reinforced,
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
 	},
-/obj/item/toy/prize/phazon{
-	pixel_y = 27;
-	layer = 6
+/obj/structure/flora/pottedplant/fern{
+	pixel_y = 17;
+	pixel_x = 6
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 22;
+	req_one_access = list(160)
+	},
+/turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury/cockpit)
 "wIv" = (
 /obj/effect/floor_decal/borderfloor{
@@ -31146,11 +31138,11 @@ aus
 aus
 aus
 aus
+aPD
+aPD
+aPD
 aus
 aus
-aPD
-aPD
-aPD
 aus
 aus
 aus
@@ -31339,13 +31331,13 @@ aus
 aus
 aus
 aus
+aPD
+aPD
+aPD
+aPD
+aPD
 aus
 aus
-aPD
-aPD
-aPD
-aPD
-aPD
 aus
 aus
 aus
@@ -31531,8 +31523,6 @@ aus
 aus
 aus
 aus
-aus
-aus
 aPD
 aPD
 tXr
@@ -31542,6 +31532,8 @@ bRP
 gzi
 iLn
 omt
+aus
+aus
 aus
 aus
 aus
@@ -31724,8 +31716,6 @@ aus
 aus
 aus
 aus
-aus
-aus
 aPD
 aPD
 tXr
@@ -31737,6 +31727,8 @@ cZP
 iSW
 iQv
 mlU
+aus
+aus
 aus
 aus
 amn
@@ -31913,8 +31905,6 @@ aus
 aus
 aus
 aus
-aus
-aus
 aPD
 aPD
 tXr
@@ -31931,6 +31921,8 @@ ygS
 mlj
 lNQ
 mlU
+aus
+aus
 aus
 aus
 amn
@@ -32103,15 +32095,13 @@ aus
 aus
 aus
 aus
-aus
-aus
 eZv
 oCC
 fdS
 wyU
 pTC
 pTC
-vKy
+pZx
 pTC
 pTC
 pTC
@@ -32125,6 +32115,8 @@ tYG
 qoC
 aTb
 omt
+aus
+aus
 aus
 aus
 amn
@@ -32296,8 +32288,6 @@ aus
 aus
 aus
 aus
-aus
-aus
 bly
 oCC
 oCC
@@ -32306,7 +32296,7 @@ vgY
 ctl
 vYk
 qKD
-iTW
+eHc
 gvz
 fxP
 sYo
@@ -32319,6 +32309,8 @@ jYd
 jxX
 mlU
 tXr
+aus
+aus
 aus
 aus
 jWp
@@ -32489,12 +32481,10 @@ aBK
 aus
 aus
 aus
-aus
-aus
 bly
 bly
+fdS
 vrM
-wGV
 doA
 jRQ
 pTC
@@ -32510,9 +32500,11 @@ kcm
 scS
 pTC
 pTC
-clr
+nqA
 pTC
 pTC
+aus
+aus
 aus
 aus
 aus
@@ -32683,11 +32675,9 @@ aBK
 aus
 aus
 aus
-aus
-aus
 btC
 bly
-vrM
+fdS
 cQw
 mdN
 afj
@@ -32704,9 +32694,11 @@ kcm
 gaQ
 uMO
 cCS
-kSr
+clr
 oXk
-eHc
+kSr
+glL
+glL
 glL
 glL
 glL
@@ -32877,11 +32869,9 @@ aBK
 aus
 aus
 aus
-aus
-aus
 bly
 bly
-vrM
+fdS
 sWD
 doA
 bOR
@@ -32901,6 +32891,8 @@ uOB
 pTC
 pTC
 pTC
+aus
+aus
 aus
 aus
 aus
@@ -33072,15 +33064,13 @@ aus
 aus
 aus
 aus
-aus
-aus
 bly
 oCC
 oCC
 tzX
-pKp
+wGV
 uyX
-pZx
+pKp
 xfK
 xKs
 rjP
@@ -33095,6 +33085,8 @@ vQL
 cBe
 mlU
 tXr
+aus
+aus
 aus
 aus
 wyl
@@ -33267,18 +33259,16 @@ aus
 aus
 aus
 aus
-aus
-aus
 uSZ
 oCC
 fdS
 wyU
 pTC
-nqA
+vKy
 pTC
 pTC
 pTC
-nqA
+vKy
 pTC
 yci
 eYG
@@ -33289,6 +33279,8 @@ lUe
 iZN
 rWu
 omt
+aus
+aus
 aus
 aus
 amn
@@ -33465,8 +33457,6 @@ aus
 aus
 aus
 aus
-aus
-aus
 aPD
 bRP
 aPD
@@ -33483,6 +33473,8 @@ cZT
 hfa
 lNQ
 mlU
+aus
+aus
 aus
 aus
 amn
@@ -33664,8 +33656,6 @@ aus
 aus
 aus
 aus
-aus
-aus
 aPD
 aPD
 aPD
@@ -33677,6 +33667,8 @@ cZP
 bqa
 huM
 mlU
+aus
+aus
 aus
 aus
 amn
@@ -33859,8 +33851,6 @@ aus
 aus
 aus
 aus
-aus
-aus
 aPD
 aPD
 aPD
@@ -33870,6 +33860,8 @@ aPD
 gzi
 fxK
 omt
+aus
+aus
 aus
 aus
 aus
@@ -34055,13 +34047,13 @@ aus
 aus
 aus
 aus
-aus
-aus
 aPD
 tXr
 aPD
 tXr
 aPD
+aus
+aus
 aus
 aus
 aus
@@ -34250,11 +34242,11 @@ aus
 aus
 aus
 aus
+aPD
+aPD
+aPD
 aus
 aus
-aPD
-aPD
-aPD
 aus
 aus
 aus

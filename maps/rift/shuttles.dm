@@ -151,7 +151,7 @@
 	name = "Civilian Century Shuttle"
 	desc = "Is it... A replica ? Or... the real deal ? This shuttle, based on the shuttles from earth's old days. No teasing, this shuttle is a replica, but still a old and crapy ship."
 	fore_dir = NORTH
-	vessel_mass = 14000
+	vessel_mass = 12000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Civilian Century Shuttle"
 	color = "#4cad73" //Greyish green
