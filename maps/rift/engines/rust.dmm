@@ -71,16 +71,6 @@
 /obj/machinery/light,
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"dk" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/structure/grille,
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "dt" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -88,8 +78,6 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dY" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
@@ -137,8 +125,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "fK" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
@@ -203,12 +189,13 @@
 "iN" = (
 /obj/fiftyspawner/tritium,
 /obj/structure/table/reinforced,
-/obj/structure/window/reinforced/full{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced/full{
+/obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/fiftyspawner/tritium,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "jk" = (
@@ -254,7 +241,7 @@
 /area/engineering/engine_room)
 "kz" = (
 /obj/machinery/computer/fusion_core_control{
-	id_tag = "engine-m"
+	id_tag = "engine"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/template_noop)
@@ -266,7 +253,8 @@
 /area/engineering/engine_room)
 "kJ" = (
 /obj/machinery/power/fusion_core{
-	id_tag = "engine-m"
+	id_tag = "engine";
+	anchored = 1
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
@@ -355,18 +343,6 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"of" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full{
-	icon_state = "phoronwindow0"
-	},
-/obj/structure/window/phoronreinforced/full{
-	icon_state = "phoronwindow0"
-	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
-/area/engineering/engine_room)
 "oi" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor,
@@ -449,13 +425,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
+/obj/machinery/button/remote/airlock{
 	id = "engine_access_hatch";
-	name = "Engine Airlock Hatch Lock";
+	name = "Door Bolt Control";
 	pixel_x = -5;
-	pixel_y = 30;
-	req_access = list(10)
+	pixel_y = 31;
+	req_access = list(10);
+	specialfunctions = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -482,12 +458,13 @@
 "vq" = (
 /obj/fiftyspawner/deuterium,
 /obj/structure/table/reinforced,
-/obj/structure/window/reinforced/full{
-	dir = 4
-	},
-/obj/structure/window/reinforced/full{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/fiftyspawner/deuterium,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "vx" = (
@@ -652,7 +629,7 @@
 /area/engineering/engine_room)
 "Ci" = (
 /obj/machinery/fusion_fuel_compressor,
-/obj/structure/window/reinforced/full{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -1074,7 +1051,6 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "WF" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular/open{
 	name = "Engine Room Blast Door";
 	id = "engine_room_blast";
@@ -1382,10 +1358,10 @@ ZO
 (12,1,1) = {"
 ZO
 WF
-dk
-dk
-dk
-dk
+WF
+WF
+WF
+WF
 sW
 cn
 Mb
@@ -1419,7 +1395,7 @@ Wh
 Ta
 Ta
 Ta
-of
+Mb
 Vn
 sW
 lc
@@ -1444,7 +1420,7 @@ Wh
 kJ
 Ta
 Ta
-of
+Mb
 rH
 sW
 LL
@@ -1472,10 +1448,10 @@ Ta
 Mb
 ky
 sW
-dk
+WF
 dY
-dk
-dk
+WF
+WF
 fK
 ZO
 "}

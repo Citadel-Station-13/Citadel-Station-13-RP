@@ -263,9 +263,6 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"mZ" = (
-/turf/simulated/mineral/icerock/lythios43c,
-/area/template_noop)
 "ni" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
 	dir = 1;
@@ -383,8 +380,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/template_noop)
 "uA" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
@@ -396,12 +391,15 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "uU" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/structure/grille,
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
+	},
+/obj/machinery/button/remote/airlock{
+	id = "engine_access_hatch";
+	name = "Door Bolt Control";
+	pixel_y = 39;
+	req_access = list(10);
+	specialfunctions = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -493,8 +491,6 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "yP" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
@@ -870,15 +866,6 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"NC" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "Od" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -1056,14 +1043,6 @@
 	pixel_y = -5;
 	req_access = list(10)
 	},
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "engine_access_hatch";
-	name = "Engine Airlock Hatch Lock";
-	pixel_x = -32;
-	pixel_y = 7;
-	req_access = list(10)
-	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -1104,6 +1083,7 @@
 	icon_state = "door_locked";
 	id_tag = "engine_access_hatch";
 	locked = 1;
+	name = "Fusion Core Access";
 	req_access = list(11)
 	},
 /turf/simulated/floor/reinforced/nitrogen{
@@ -1142,8 +1122,8 @@
 (1,1,1) = {"
 fS
 fS
-mZ
-mZ
+fS
+fS
 tC
 tC
 tC
@@ -1156,13 +1136,13 @@ tC
 tC
 tC
 tC
-mZ
-mZ
-mZ
-mZ
-mZ
-mZ
-mZ
+fS
+fS
+fS
+fS
+fS
+fS
+fS
 "}
 (2,1,1) = {"
 fS
@@ -1183,11 +1163,11 @@ ve
 ve
 ve
 xf
-mZ
-mZ
-mZ
-mZ
-mZ
+fS
+fS
+fS
+fS
+fS
 "}
 (3,1,1) = {"
 fS
@@ -1211,8 +1191,8 @@ jQ
 tC
 tC
 tC
-mZ
-mZ
+fS
+fS
 "}
 (4,1,1) = {"
 fS
@@ -1237,7 +1217,7 @@ ve
 ve
 ve
 xf
-mZ
+fS
 "}
 (5,1,1) = {"
 fS
@@ -1262,11 +1242,11 @@ ve
 ve
 xf
 Mw
-mZ
+fS
 "}
 (6,1,1) = {"
 fS
-mZ
+fS
 oc
 xf
 oc
@@ -1287,11 +1267,11 @@ ve
 ve
 jQ
 Mw
-mZ
+fS
 "}
 (7,1,1) = {"
 fS
-mZ
+fS
 Mw
 Mw
 Mw
@@ -1312,11 +1292,11 @@ ve
 ve
 ve
 jQ
-mZ
+fS
 "}
 (8,1,1) = {"
 fS
-mZ
+fS
 Mw
 Mw
 Mw
@@ -1337,11 +1317,11 @@ ve
 ve
 ve
 xf
-mZ
+fS
 "}
 (9,1,1) = {"
 fS
-mZ
+fS
 Mw
 Mw
 Mw
@@ -1362,7 +1342,7 @@ ve
 ve
 xf
 Mw
-mZ
+fS
 "}
 (10,1,1) = {"
 fS
@@ -1372,22 +1352,22 @@ Mw
 Mw
 Mw
 tm
-uU
-uU
 tm
 tm
 tm
 tm
 tm
-uU
-uU
+tm
+tm
+tm
+tm
 tm
 oc
 ve
 ve
 jQ
 Mw
-mZ
+fS
 "}
 (11,1,1) = {"
 fS
@@ -1412,15 +1392,15 @@ oc
 ve
 ve
 jQ
-mZ
+fS
 "}
 (12,1,1) = {"
-KT
-NC
-uU
-uU
-uU
-uU
+fS
+XP
+XP
+XP
+XP
+XP
 tm
 Mr
 Mr
@@ -1437,10 +1417,10 @@ rs
 ve
 ve
 xf
-mZ
+fS
 "}
 (13,1,1) = {"
-KT
+fS
 Ea
 Mr
 Mr
@@ -1462,10 +1442,10 @@ xf
 tC
 tC
 Mw
-mZ
+fS
 "}
 (14,1,1) = {"
-KT
+fS
 jN
 eN
 Vh
@@ -1487,10 +1467,10 @@ uV
 tC
 tC
 Oj
-mZ
+fS
 "}
 (15,1,1) = {"
-KT
+fS
 jN
 eN
 Vh
@@ -1504,18 +1484,18 @@ AG
 AG
 Xx
 tm
-qy
+uU
 Mr
 tm
-uU
+XP
 uA
-uU
-uU
+XP
+XP
 yP
 KT
 "}
 (16,1,1) = {"
-KT
+fS
 jN
 PA
 Mr
@@ -1540,7 +1520,7 @@ Kr
 KT
 "}
 (17,1,1) = {"
-KT
+fS
 Su
 wF
 Mr
@@ -1565,7 +1545,7 @@ Kr
 KT
 "}
 (18,1,1) = {"
-KT
+fS
 lY
 lY
 Mr
@@ -1590,7 +1570,7 @@ Kr
 KT
 "}
 (19,1,1) = {"
-KT
+fS
 zI
 Mr
 Mr
@@ -1615,7 +1595,7 @@ hk
 KT
 "}
 (20,1,1) = {"
-KT
+fS
 Fr
 Mr
 Mr
@@ -1640,7 +1620,7 @@ HF
 KT
 "}
 (21,1,1) = {"
-KT
+fS
 Ih
 Mr
 Mr
@@ -1665,7 +1645,7 @@ Mr
 KT
 "}
 (22,1,1) = {"
-KT
+fS
 Sp
 Mr
 Mr
@@ -1690,7 +1670,7 @@ cN
 KT
 "}
 (23,1,1) = {"
-KT
+fS
 Mr
 Mr
 Mr
@@ -1715,7 +1695,7 @@ wf
 KT
 "}
 (24,1,1) = {"
-KT
+fS
 Mr
 og
 eD
@@ -1740,7 +1720,7 @@ Mr
 KT
 "}
 (25,1,1) = {"
-KT
+fS
 ES
 ah
 Nh
@@ -1765,7 +1745,7 @@ Mr
 KT
 "}
 (26,1,1) = {"
-KT
+fS
 sm
 kD
 id

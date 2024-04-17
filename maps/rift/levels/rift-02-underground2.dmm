@@ -454,6 +454,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "bL" = (
@@ -669,13 +670,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "cO" = (
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/portable_atmospherics/canister/empty,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
-/obj/structure/closet/radiation,
-/obj/item/clothing/glasses/meson,
-/obj/item/clothing/glasses/meson,
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "cR" = (
 /obj/effect/floor_decal/borderfloor,
@@ -1380,8 +1379,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"fD" = (
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "fE" = (
-/obj/machinery/power/smes/buildable/engine,
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
 	icon_state = "radiation";
@@ -1389,6 +1394,7 @@
 	pixel_x = -32
 	},
 /obj/structure/cable/cyan,
+/obj/machinery/power/smes/buildable/engine/rust,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "fG" = (
@@ -2412,7 +2418,10 @@
 /area/engineering/engine_airlock)
 "jC" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/turf/simulated/floor,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "jD" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -3286,13 +3295,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "mg" = (
-/obj/structure/closet/radiation,
-/obj/item/clothing/glasses/meson,
-/obj/item/clothing/glasses/meson,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor,
+/obj/machinery/portable_atmospherics/canister/empty,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "mh" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5183,6 +5187,10 @@
 /obj/structure/cable,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
+"rY" = (
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "rZ" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
@@ -5681,7 +5689,8 @@
 "ui" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "uj" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -7231,7 +7240,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "Aj" = (
 /obj/structure/railing,
@@ -7291,6 +7301,12 @@
 "Aw" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/chapel/chapel_morgue)
+"Ax" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/atmos)
 "Ay" = (
 /obj/random/trash_pile,
 /obj/structure/railing{
@@ -7726,6 +7742,10 @@
 	},
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
@@ -9018,6 +9038,12 @@
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/structure/closet/radiation,
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "HE" = (
@@ -9660,7 +9686,7 @@
 /area/engineering/break_room)
 "Kp" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "Kq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9853,6 +9879,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"KX" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "KY" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/workshop)
@@ -10212,6 +10242,11 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"Mu" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/structure/grille,
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "Mw" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -11029,6 +11064,11 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
+"Pq" = (
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "Pr" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -11107,6 +11147,11 @@
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_airlock)
+"PE" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_gas)
 "PG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11148,7 +11193,7 @@
 /area/engineering/engine_smes)
 "PP" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_gas)
 "PR" = (
 /obj/effect/floor_decal/borderfloor{
@@ -24654,10 +24699,10 @@ aa
 zy
 oL
 hQ
-ks
+Ax
 uj
 uj
-aa
+ML
 gg
 gg
 cG
@@ -24852,11 +24897,11 @@ ks
 uj
 jz
 ar
-ar
-ar
-ar
-ar
-ar
+Mu
+Mu
+Mu
+Mu
+Mu
 ar
 mA
 mA
@@ -25450,11 +25495,11 @@ am
 mA
 mA
 ar
-ar
-ar
-ar
-ar
-ar
+Mu
+Mu
+Mu
+Mu
+Mu
 ar
 ML
 ML
@@ -27976,7 +28021,7 @@ Ah
 ZC
 IT
 jC
-jC
+KX
 jD
 lk
 ML
@@ -28170,7 +28215,7 @@ ui
 Nn
 IT
 jC
-jC
+KX
 jD
 lk
 ML
@@ -28360,7 +28405,7 @@ Xg
 zJ
 jD
 Kp
-Kp
+PE
 IT
 IT
 cO
@@ -28554,11 +28599,11 @@ WJ
 XT
 jD
 PP
-PP
+Pq
 hr
 pR
-IT
-IT
+fD
+rY
 jD
 lk
 ML
