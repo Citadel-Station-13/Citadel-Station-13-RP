@@ -23,6 +23,14 @@
 	var/list/image/layers = ..()
 
 	for(var/image/rendered as anything in layers)
+		// first add the add state
+		if(has_add_state)
+			// if we have that don't do legacy behavior
+		else if(icon_add_legacy)
+			var/image/adding = image(icon_add_legacy, icon_state = icon_state)
+			adding.blend_mode = BLEND_ADD
+			rendered.overlays += adding
+
 		if(do_colouration && ishuman(for_whom))
 			var/mob/living/carbon/human/casted_human = for_whom
 			if(casted_human.grad_style)
@@ -34,15 +42,9 @@
 					0, 0, 0, 1,
 					casted_human.r_grad / 255, casted_human.g_grad / 255, casted_human.b_grad / 255, 0,
 				)
-				gradient.blend_mode = BLEND_INSET_OVERLAY
+				gradient.blend_mode = BLEND_MULTIPLY
 				rendered.overlays += gradient
 
-		if(has_add_state)
-			// if we have that don't do legacy behavior
-		else if(icon_add_legacy)
-			var/image/adding = image(icon_add_legacy, icon_state = icon_state)
-			adding.blend_mode = BLEND_ADD
-			rendered.overlays += adding
 
 	return layers
 

@@ -54,6 +54,7 @@
 	/// used for making stuff not look flat and other effects.
 	/// a state with [icon_state]-add will be added.
 	/// -front, -back, -side will be specified as needed too if this is the case.
+	//  todo: this doesn't work yet.
 	var/has_add_state = FALSE
 
 	//* legacy below
@@ -156,6 +157,7 @@
 				if(has_add_state)
 					var/image/adding
 					adding = image(icon, "[with_base_state]-add", layer_front)
+					adding.blend_mode = BLEND_ADD
 					layers += adding
 			if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
 				var/image/rendering
@@ -190,8 +192,10 @@
 				if(has_add_state)
 					var/image/adding
 					adding = image(icon, "[with_base_state]-add-front", layer_front)
+					adding.blend_mode = BLEND_ADD
 					layers += adding
 					adding = image(icon, "[with_base_state]-add-behind", layer_behind)
+					adding.blend_mode = BLEND_ADD
 					layers += adding
 
 	for(var/image/patching as anything in layers)
@@ -203,6 +207,8 @@
 			if(SPRITE_ACCESSORY_ALIGNMENT_CENTER)
 				patching.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
 				patching.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
+	// #warn deal with adds
+	// todo: lol it doesn'tw ork deal with it i'm not dealing with this crap today, maybe another pr
 
 	return layers
 
