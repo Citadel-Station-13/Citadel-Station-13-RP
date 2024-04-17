@@ -5002,6 +5002,7 @@
 #include "maps\overmap\shuttles\pirateskiff.dm"
 #include "maps\overmap\shuttles\skipjack.dm"
 #include "maps\overmap\shuttles\specialops.dm"
+#include "maps\rift\engines.dm"
 #include "maps\rift\misc.dm"
 #include "maps\rift\rift.dm"
 #include "maps\rift\shuttles.dm"

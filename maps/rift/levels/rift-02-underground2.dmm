@@ -472,8 +472,6 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/chapel)
 "bT" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/paper_bin,
 /obj/machinery/requests_console/preset/engineering{
 	pixel_y = -30
 	},
@@ -786,7 +784,22 @@
 /area/maintenance/research/xenobio)
 "dD" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/fire_alarm/north_mount,
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine control room blast doors.";
+	id = "engine_monitor_blast";
+	name = "Monitoring Room Blast Doors";
+	pixel_y = 6;
+	req_access = list(10);
+	pixel_x = 6
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine charging port.";
+	id = "engine_room_blast";
+	name = "Engine Room Window Blast Doors";
+	pixel_x = -7;
+	pixel_y = 6;
+	req_access = list(10)
+	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1627,30 +1640,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
 "gy" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "sm_monitor_blast";
-	name = "Engine Monitoring Room Blast Doors";
-	pixel_y = -3;
-	req_access = list(10)
-	},
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine charging port.";
-	id = "SupermatterPort";
-	name = "Reactor Blast Doors";
-	pixel_x = -6;
-	pixel_y = 7;
-	req_access = list(10)
-	},
-/obj/machinery/button/remote/emitter{
-	desc = "A remote control-switch for the engine emitter.";
-	id = "EngineEmitter";
-	name = "Engine Emitter";
-	pixel_x = 6;
-	pixel_y = 7;
-	req_access = list(10)
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_monitoring)
 "gC" = (
@@ -1667,6 +1656,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/locker_room)
+"gG" = (
+/obj/map_helper/engine_loader,
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "gH" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -2136,8 +2129,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "iG" = (
-/obj/structure/foamedmetal,
-/turf/simulated/wall/r_wall/prepainted,
+/obj/machinery/power/apc/west_mount,
+/obj/machinery/power/apc/west_mount,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "iJ" = (
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -2378,8 +2372,8 @@
 /area/quartermaster/miningdock)
 "jz" = (
 /obj/structure/foamedmetal,
-/turf/simulated/wall/r_wall/prepainted,
-/area/engineering/engine_room)
+/turf/simulated/floor,
+/area/maintenance/atmos)
 "jA" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3056,7 +3050,7 @@
 /area/hallway/primary/undertwo)
 "lk" = (
 /obj/structure/foamedmetal,
-/turf/simulated/mineral/icerock/lythios43c,
+/turf/simulated/floor,
 /area/rift/surfacebase/underground/under2)
 "ll" = (
 /turf/simulated/floor/tiled/monotile,
@@ -4708,6 +4702,14 @@
 "qa" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine control room blast doors.";
+	id = "engine_monitor_blast";
+	name = "Monitoring Room Blast Doors";
+	pixel_y = -5;
+	req_access = list(10);
+	pixel_x = -1
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "qc" = (
@@ -5796,8 +5798,7 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/secure_storage/critical/vault2)
 "uD" = (
-/obj/structure/foamedmetal,
-/turf/simulated/floor,
+/turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/storage)
 "uG" = (
 /turf/simulated/wall/prepainted,
@@ -6138,12 +6139,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/records)
-"vY" = (
-/obj/structure/foamedmetal,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
-	special_temperature = 233
-	},
-/area/rift/surfacebase/underground/under2)
 "vZ" = (
 /obj/machinery/mineral/input,
 /obj/machinery/conveyor{
@@ -7136,7 +7131,7 @@
 /area/engineering/hallway)
 "zG" = (
 /turf/simulated/floor/tiled/monotile,
-/area/engineering/engine_room)
+/area/engineering/engine_monitoring)
 "zJ" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_airlock)
@@ -7808,6 +7803,17 @@
 "CC" = (
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"CG" = (
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine charging port.";
+	id = "engine_room_blast";
+	name = "Engine Room Window Blast Doors";
+	pixel_x = -7;
+	pixel_y = 6;
+	req_access = list(10)
+	},
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "CH" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/sun,
@@ -8517,7 +8523,7 @@
 "Fv" = (
 /obj/structure/foamedmetal,
 /obj/structure/foamedmetal,
-/turf/simulated/mineral/icerock/lythios43c,
+/turf/simulated/floor,
 /area/rift/surfacebase/underground/under2)
 "Fy" = (
 /obj/structure/closet,
@@ -9994,13 +10000,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "LD" = (
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "sm_monitor_blast";
-	name = "Engineering Engine Monitoring Blast Door"
-	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /obj/effect/paint/sun,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "engine_monitor_blast";
+	name = "Reactor Blast Door"
+	},
 /turf/simulated/floor,
 /area/engineering/engine_monitoring)
 "LE" = (
@@ -10414,11 +10420,6 @@
 /obj/item/storage/single_use/med_pouch/radiation,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
-"Ne" = (
-/obj/structure/foamedmetal,
-/obj/structure/foamedmetal,
-/turf/space/basic,
-/area/rift/surfacebase/underground/under2)
 "Nf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10440,6 +10441,9 @@
 	pixel_y = 30
 	},
 /obj/item/storage/single_use/med_pouch/radiation,
+/obj/machinery/fire_alarm/north_mount{
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "Nk" = (
@@ -11146,10 +11150,6 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
-"PQ" = (
-/obj/structure/foamedmetal,
-/turf/space/basic,
-/area/rift/surfacebase/underground/under2)
 "PR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -11751,6 +11751,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"Su" = (
+/obj/machinery/airlock_sensor{
+	id_tag = "eng_al_c_snsr";
+	pixel_x = -25
+	},
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/underground/under2)
 "Sw" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow,
 /obj/machinery/fire_alarm/north_mount,
@@ -22732,7 +22739,7 @@ aa
 aa
 aa
 aa
-aa
+gG
 aa
 aa
 aa
@@ -24253,7 +24260,7 @@ aa
 aa
 aa
 aa
-aa
+iG
 aa
 aa
 zy
@@ -24843,7 +24850,7 @@ kx
 hQ
 ks
 uj
-PQ
+jz
 ar
 ar
 ar
@@ -25037,7 +25044,7 @@ kx
 hQ
 ks
 uj
-Ne
+jz
 ar
 mA
 mA
@@ -25231,7 +25238,7 @@ ky
 hQ
 kk
 uj
-vY
+jz
 LV
 mA
 mA
@@ -25425,7 +25432,7 @@ wG
 hQ
 ks
 uj
-vY
+jz
 US
 mA
 mA
@@ -25449,8 +25456,8 @@ ar
 ar
 ar
 ar
-aa
-aa
+ML
+ML
 aa
 aa
 aa
@@ -25619,7 +25626,7 @@ Mr
 zt
 ks
 uj
-vY
+jz
 iz
 mA
 mA
@@ -25643,8 +25650,8 @@ mA
 mA
 mA
 ar
-aa
-aa
+lk
+ML
 aa
 aa
 aa
@@ -25811,8 +25818,8 @@ KF
 KF
 KF
 KF
-ar
-ar
+uD
+uD
 jz
 ar
 mA
@@ -25837,7 +25844,7 @@ mA
 mA
 mA
 ar
-ML
+lk
 ML
 aa
 aa
@@ -26007,7 +26014,7 @@ Ox
 BF
 Rt
 KF
-uD
+jz
 ar
 mA
 mA
@@ -26031,7 +26038,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -26201,7 +26208,7 @@ BF
 BF
 Rt
 KF
-uD
+jz
 ar
 mA
 mA
@@ -26225,7 +26232,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -26395,7 +26402,7 @@ BF
 BF
 vP
 KF
-uD
+jz
 ar
 kW
 mA
@@ -26419,7 +26426,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -26589,7 +26596,7 @@ BF
 BF
 Vv
 KF
-uD
+jz
 ar
 mA
 mA
@@ -26613,7 +26620,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -26783,7 +26790,7 @@ BF
 BF
 Cr
 KF
-uD
+jz
 ar
 mA
 mA
@@ -26807,7 +26814,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -26977,7 +26984,7 @@ BF
 BF
 Ho
 KF
-uD
+jz
 ar
 mA
 mA
@@ -27001,7 +27008,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -27171,7 +27178,7 @@ BF
 BF
 wR
 KF
-uD
+jz
 ar
 mA
 mA
@@ -27195,7 +27202,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -27365,7 +27372,7 @@ BF
 vh
 Of
 KF
-uD
+jz
 ar
 mA
 mA
@@ -27389,7 +27396,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -27583,7 +27590,7 @@ mA
 mA
 mA
 ar
-iG
+lk
 ML
 aa
 aa
@@ -27777,7 +27784,7 @@ mj
 jD
 jD
 jD
-iG
+lk
 ML
 aa
 aa
@@ -30687,7 +30694,7 @@ aA
 Fv
 lk
 lk
-lk
+Fv
 ML
 aa
 aa
@@ -32630,7 +32637,7 @@ aa
 aa
 aa
 aa
-aa
+CG
 aa
 aa
 aa
@@ -37286,7 +37293,7 @@ aa
 aa
 aa
 aa
-aa
+Su
 aa
 aa
 aa
