@@ -390,7 +390,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	name = "Engine Room Blast Door";
-	id = ""engine_room_blast";
+	id = "engine_room_blast";
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -400,7 +400,7 @@
 /obj/structure/grille,
 /obj/machinery/door/blast/regular/open{
 	name = "Engine Room Blast Door";
-	id = ""engine_room_blast";
+	id = "engine_room_blast";
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -500,7 +500,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	name = "Engine Room Blast Door";
-	id = ""engine_room_blast";
+	id = "engine_room_blast";
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -874,7 +874,7 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular/open{
 	name = "Engine Room Blast Door";
-	id = ""engine_room_blast";
+	id = "engine_room_blast";
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -1102,7 +1102,7 @@
 "Xx" = (
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
-	id_tag = "engine_access_hatch"s";
+	id_tag = "engine_access_hatch";
 	locked = 1;
 	req_access = list(11)
 	},
@@ -1113,7 +1113,7 @@
 "XP" = (
 /obj/machinery/door/blast/regular/open{
 	name = "Engine Room Blast Door";
-	id = ""engine_room_blast";
+	id = "engine_room_blast";
 	dir = 4
 	},
 /turf/simulated/floor,
