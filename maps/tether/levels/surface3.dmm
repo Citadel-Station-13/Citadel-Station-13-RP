@@ -34005,11 +34005,6 @@
 /obj/item/bone/skull{
 	name = "Yo'rick"
 	},
-/obj/item/paper{
-	desc = "";
-	info = "The Silence Into Laughter program works to place hard working, studied, accomplished, hardworking, homebrewed, diplomaholding, or otherwise clowns and mimes into the workforce! The Head Clowncellor and the Director at Mime have finally worked together to bring this titan of a workers' union! If you have a background in silence or laughter, please apply at our exonet site at: https://forum.vore-station.net/viewforum.php?f=45";
-	name = "Clowns and Mimes Wanted!"
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
