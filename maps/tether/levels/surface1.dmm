@@ -37446,6 +37446,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernortheva)
 "ufQ" = (
