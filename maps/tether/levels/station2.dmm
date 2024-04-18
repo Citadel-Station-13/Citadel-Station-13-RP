@@ -4779,6 +4779,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/railing,
 /turf/simulated/open,
 /area/engineering/foyer_mezzenine)
 "jN" = (
