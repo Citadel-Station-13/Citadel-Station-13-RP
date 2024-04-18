@@ -13,4 +13,10 @@
 	name = "ProcEngine_Rift_Supermatter"
 	desc = "Old Faithful Supermatter"
 	suffix = "sme.dmm"
-	display_name = list("Angry Rock", "The Forbidden Rock Candy", "Death Crystal", "Spicy Crystal")
+	display_name = list("Angry Rock", "The Forbidden Rock Candy", "Death Crystal", "Spicy Crystal", "Hypnotizing Stone")
+
+/datum/map_template/engine/rift/burnchamber
+	name = "ProcEngine_Rift_Burn"
+	desc = "Burn Chamber Engine"
+	suffix = "burn.dmm"
+	display_name = list("Toxins Lab", "Build a Campfire", "100 Solarmoths", "Teshari's Bane", "Casting Fireball!")

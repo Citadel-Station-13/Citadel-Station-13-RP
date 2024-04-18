@@ -1076,6 +1076,10 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"Ym" = (
+/obj/item/book/manual/rust_engine,
+/turf/template_noop,
+/area/template_noop)
 "ZO" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1762,7 +1766,7 @@ ZO
 ZO
 ZO
 ZO
-ZO
+Ym
 kz
 zF
 Cu

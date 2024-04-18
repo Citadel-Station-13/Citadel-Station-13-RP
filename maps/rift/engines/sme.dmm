@@ -336,6 +336,15 @@
 	},
 /turf/template_noop,
 /area/rift/surfacebase/underground/under2)
+"sj" = (
+/obj/machinery/door/blast/regular/open{
+	name = "Engine Room Blast Door";
+	id = "engine_room_blast";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black,
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "sm" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/power/apc/south_mount{
@@ -490,6 +499,17 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"yO" = (
+/obj/machinery/door/blast/regular/open{
+	name = "Engine Room Blast Door";
+	id = "engine_room_blast";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/black{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "yP" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -635,6 +655,10 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"DO" = (
+/obj/item/book/manual/supermatter_engine,
+/turf/template_noop,
+/area/template_noop)
 "Ea" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -697,6 +721,17 @@
 "HF" = (
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Ia" = (
+/obj/machinery/door/blast/regular/open{
+	name = "Engine Room Blast Door";
+	id = "engine_room_blast";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 9
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1396,11 +1431,11 @@ fS
 "}
 (12,1,1) = {"
 fS
-XP
-XP
-XP
-XP
-XP
+yO
+sj
+sj
+sj
+Ia
 tm
 Mr
 Mr
@@ -1801,7 +1836,7 @@ fS
 fS
 fS
 fS
-fS
+DO
 Aj
 nL
 us
