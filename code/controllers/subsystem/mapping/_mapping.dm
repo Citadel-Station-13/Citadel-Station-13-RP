@@ -21,6 +21,10 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	// init obfuscation data - required for maploading
 	init_obfuscation_data()
+
+	// todo: refactor
+	TO_WORLD("Loading with Map: [src.loaded_station]")//This is just for IntTest logs
+
 	// load data
 	// todo: refactor
 	load_map_templates()

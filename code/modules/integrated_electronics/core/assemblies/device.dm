@@ -60,7 +60,7 @@
 
 /obj/item/assembly/electronic_assembly/verb/toggle()
 	set src in usr
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Open/Close Device Assembly"
 	set desc = "Open or close device assembly!"
 

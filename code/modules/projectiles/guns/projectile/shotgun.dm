@@ -81,7 +81,7 @@
 
 /obj/item/gun/ballistic/shotgun/pump/combat/warden/verb/rename_gun()
 	set name = "Name Gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your gun. If you're the Warden."
 
 	var/mob/M = usr
@@ -100,7 +100,7 @@
 
 /obj/item/gun/ballistic/shotgun/pump/combat/warden/verb/reskin_gun()
 	set name = "Resprite gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose a sprite for your gun."
 
 	var/mob/M = usr

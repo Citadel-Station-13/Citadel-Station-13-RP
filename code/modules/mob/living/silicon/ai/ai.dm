@@ -42,7 +42,7 @@ var/list/ai_verbs_default = list(
 	name = "Silicons - Artificial Intelligence"
 	desc = "Stationbound Artificial Intelligences were pioneered by \
 	multiple governments and species across the galaxy, with mixed results. \
-	On the Frontier, NanoTrasen's ability to pour massive amounts of resources \
+	On the Frontier, Nanotrasen's ability to pour massive amounts of resources \
 	into the field of Artificial Intelligence has provided them with some of the \
 	most sophisticated models available today. The application of strict Lawsets \
 	to AI units has kept the advanced systems from spiralling out of control, although \
@@ -735,7 +735,7 @@ var/list/ai_verbs_default = list(
 // Pass lying down or getting up to our pet human, if we're in a hardsuit.
 /mob/living/silicon/ai/lay_down()
 	set name = "Rest"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	resting = 0
 	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()

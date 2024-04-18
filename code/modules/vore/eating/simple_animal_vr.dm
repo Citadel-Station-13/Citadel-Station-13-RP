@@ -8,7 +8,7 @@
 //
 /mob/living/simple_mob/proc/animal_nom(var/mob/living/T in living_mobs(1))
 	set name = "Animal Nom"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Since you can't grab, you get a verb!"
 
 	if (stat != CONSCIOUS)
@@ -32,7 +32,7 @@
 /mob/living/simple_mob/proc/toggle_digestion()
 	set name = "Toggle Animal's Digestion"
 	set desc = "Enables digestion on this mob for 20 minutes."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set src in oview(1)
 
 	var/mob/living/carbon/human/user = usr
@@ -58,7 +58,7 @@
 /mob/living/simple_mob/proc/toggle_fancygurgle()
 	set name = "Toggle Animal's Gurgle sounds"
 	set desc = "Switches between Fancy and Classic sounds on this mob."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set src in oview(1)
 
 	var/mob/living/user = usr //I mean, At least ghosts won't use it.

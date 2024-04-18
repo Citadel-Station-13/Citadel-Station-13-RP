@@ -19,7 +19,12 @@
 /area/vars_to_save()
 	return list("name")
 
-/atom/serialize()
+/datum/proc/serialize_vr()
+	return list("type" = type)
+
+/datum/proc/deserialize_vr(list/data)
+
+/atom/serialize_vr()
 	var/list/data = ..()
 	for(var/thing in vars_to_save())
 		if(vars[thing] != initial(vars[thing]))
@@ -27,12 +32,11 @@
 	return data
 
 
-/atom/deserialize(var/list/data)
+/atom/deserialize_vr(var/list/data)
 	for(var/thing in vars_to_save())
 		if(thing in data)
 			vars[thing] = data[thing]
 	..()
-
 
 /*
 Whoops, forgot to put documentation here.
@@ -48,7 +52,7 @@ some objects, like humans, are dependent that certain extra things are defined
 in their list
 */
 /proc/object_to_json(var/atom/movable/thing)
-	return json_encode(thing.serialize())
+	return json_encode(thing.serialize_vr())
 
 /proc/json_to_object(var/json_data, var/loc)
 	return list_to_object(json_decode(json_data), loc)
@@ -63,5 +67,5 @@ in their list
 		throw EXCEPTION("Path not found: [path]")
 
 	var/atom/movable/thing = new path(loc)
-	thing.deserialize(data)
+	thing.deserialize_vr(data)
 	return thing

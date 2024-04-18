@@ -373,7 +373,7 @@
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"
 	set desc = "Pick fruit off of [src]."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	//do_reagent_implant(usr)

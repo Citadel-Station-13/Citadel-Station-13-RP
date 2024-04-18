@@ -276,7 +276,7 @@
 
 /obj/item/clothing/verb/pick_style_verb()
 	set name = "Set Worn Style"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Wear this piece of clothing in a different style."
 	set src in usr
 

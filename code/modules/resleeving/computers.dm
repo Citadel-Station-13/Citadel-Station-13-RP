@@ -120,7 +120,7 @@
 	return ..()
 
 /obj/machinery/computer/transhuman/resleeving/verb/eject_mirror()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject Mirror"
 	set src in oview(1)
 

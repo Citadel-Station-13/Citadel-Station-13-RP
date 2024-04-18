@@ -266,7 +266,7 @@
 /turf/simulated/wall,
 /area/rnd/outpost/storage)
 "bz" = (
-/obj/structure/simple_door,
+/obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/checkpoint/south)
 "bA" = (
@@ -352,11 +352,6 @@
 /area/rift/facility/interior/surface)
 "bS" = (
 /obj/structure/closet/crate/radiation,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "bW" = (
@@ -1103,7 +1098,7 @@
 "fj" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
-	chargelevel = 0;
+	chargelevel = 0
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -1996,11 +1991,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/exterior/nuketown/interior)
-"iX" = (
-/obj/effect/overlay/snow/floor,
-/obj/random/trash,
-/turf/simulated/floor/lythios43c,
-/area/rift/facility/interior/surface)
 "iY" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
@@ -2038,9 +2028,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"ji" = (
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/west)
 "jm" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/elevator)
@@ -2475,7 +2462,6 @@
 /area/rnd/outpost/storage)
 "lo" = (
 /obj/effect/overlay/snow/floor,
-/obj/random/trash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "lq" = (
@@ -2762,13 +2748,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/construction/solars)
-"mJ" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/obj/structure/railing,
-/turf/simulated/floor/lythios43c,
-/area/rift/surfacebase/outside/west)
 "mL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -2792,9 +2771,6 @@
 "mS" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate/trashcart,
-/obj/random/trash,
-/obj/random/trash,
-/obj/random/trash,
 /obj/item/broken_device/random,
 /obj/item/broken_device/random,
 /obj/item/broken_device/random,
@@ -3581,16 +3557,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
-"qN" = (
-/obj/structure/closet/crate/radiation,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/obj/random/junk,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/exterior/shuttle)
 "qO" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -3764,14 +3730,6 @@
 	},
 /turf/simulated/floor,
 /area/construction/solarscontrol)
-"rB" = (
-/obj/random/trash,
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/exterior/shuttle)
 "rE" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -4259,11 +4217,6 @@
 "tG" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/exterior)
-"tH" = (
-/obj/effect/overlay/snow/floor,
-/obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/facility/interior/surface)
 "tI" = (
 /turf/simulated/open/lythios43c,
 /area/rift/facility/interior/surface)
@@ -4561,7 +4514,7 @@
 "uU" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
-	chargelevel = 0;
+	chargelevel = 0
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/surface)
@@ -4805,7 +4758,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/analysis)
 "vY" = (
-/obj/structure/simple_door/iron,
+/obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
 "vZ" = (
@@ -4953,15 +4906,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"wL" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/west)
 "wP" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -6213,13 +6157,6 @@
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/simulated/floor,
 /area/rnd/outpost/storage)
-"CX" = (
-/obj/effect/overlay/snow/floor/edges,
-/obj/effect/overlay/snow/floor,
-/obj/machinery/light/small,
-/obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/exterior/shuttle)
 "CY" = (
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -6438,7 +6375,7 @@
 "DU" = (
 /obj/machinery/power/apc/alarms_hidden/north_mount{
 	cell_type = null;
-	chargelevel = 0;
+	chargelevel = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
@@ -6526,11 +6463,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
-"EF" = (
-/obj/effect/floor_decal/rust,
-/obj/random/trash,
-/turf/simulated/floor/plating,
-/area/rift/exterior/nuketown/interior)
 "EG" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/lythios43c/indoors,
@@ -6871,10 +6803,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
-"Gr" = (
-/obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/exterior/shuttle)
 "Gs" = (
 /obj/machinery/vending/coffee{
 	dir = 8
@@ -7929,10 +7857,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
-"Lb" = (
-/obj/structure/railing,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west)
 "Lf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7953,11 +7877,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
-"Lv" = (
-/obj/effect/overlay/snow/floor,
-/obj/random/trash,
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/facility/interior/surface)
 "Lx" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -8294,8 +8213,8 @@
 /area/rnd/outpost/anomaly_lab)
 "Na" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(18,47);
-	dir = 4
+	dir = 4;
+	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -8724,16 +8643,6 @@
 /obj/structure/barricade/cutout,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/exterior/nuketown)
-"Pg" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 6
-	},
-/obj/structure/railing,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/west)
 "Pi" = (
 /obj/structure/window/wooden{
 	dir = 1
@@ -10439,10 +10348,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
-"Xw" = (
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/facility/interior/surface)
 "Xy" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -10623,7 +10528,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "Ya" = (
-/obj/random/trash,
 /obj/effect/overlay/snow/floor/edges{
 	dir = 4
 	},
@@ -14721,7 +14625,7 @@ ip
 TF
 ns
 vE
-iX
+dx
 dx
 dx
 bk
@@ -14732,11 +14636,11 @@ Rs
 Yn
 yj
 lF
-rB
+rf
 da
 cn
 mF
-Gr
+vW
 bS
 bS
 cn
@@ -14931,7 +14835,7 @@ LN
 vh
 ul
 vW
-Gr
+vW
 fU
 cn
 as
@@ -15121,12 +15025,12 @@ rw
 yj
 FR
 rf
-CX
+da
 cn
 DU
 vW
 XE
-qN
+bS
 cn
 as
 mY
@@ -15884,11 +15788,11 @@ Rs
 Rs
 Rs
 VU
-iX
+dx
 dx
 dx
 sl
-Lv
+Dg
 sr
 sr
 sr
@@ -18031,7 +17935,7 @@ bk
 dx
 ns
 tT
-Xw
+lo
 ti
 sr
 sr
@@ -18416,9 +18320,9 @@ tI
 tI
 bk
 dx
-Xw
+lo
 kc
-Xw
+lo
 fc
 kc
 sr
@@ -18479,7 +18383,7 @@ zz
 zz
 RU
 zz
-EF
+zz
 zz
 lH
 wu
@@ -18600,7 +18504,7 @@ Rs
 Rs
 Rs
 ns
-tH
+ll
 bk
 bk
 tI
@@ -18609,7 +18513,7 @@ tI
 tI
 yA
 bk
-Xw
+lo
 lo
 gY
 lo
@@ -18862,13 +18766,13 @@ gA
 gA
 wu
 mS
-EF
 zz
 zz
 zz
 zz
 zz
-EF
+zz
+zz
 iV
 wu
 ed
@@ -41381,7 +41285,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -41575,7 +41479,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -41769,7 +41673,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -41963,7 +41867,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -42157,7 +42061,7 @@ sv
 sv
 sv
 bL
-wL
+qZ
 bw
 Hz
 bL
@@ -42351,7 +42255,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -42545,7 +42449,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -42739,7 +42643,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -42933,7 +42837,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -43127,7 +43031,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -43321,7 +43225,7 @@ sv
 sv
 sv
 bL
-wL
+qZ
 bw
 Hz
 bL
@@ -43515,7 +43419,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -44097,7 +44001,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -44291,7 +44195,7 @@ sv
 sv
 sv
 bL
-wL
+qZ
 bw
 Hz
 bL
@@ -44485,7 +44389,7 @@ sv
 sv
 sv
 sv
-wL
+qZ
 bw
 Hz
 sv
@@ -44658,7 +44562,7 @@ we
 we
 we
 we
-Lb
+zL
 Yp
 Yp
 Qf
@@ -44679,9 +44583,9 @@ sv
 sv
 sv
 or
-wL
+qZ
 bw
-Pg
+ES
 or
 sv
 or
@@ -44873,9 +44777,9 @@ dC
 dC
 dC
 wm
-wL
+qZ
 bw
-Pg
+ES
 bL
 dC
 or
@@ -45067,12 +44971,12 @@ we
 we
 we
 or
-wL
+qZ
 bw
-Pg
+ES
 or
 we
-Lb
+zL
 je
 we
 we
@@ -45260,13 +45164,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -45454,13 +45358,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -45648,13 +45552,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -45842,13 +45746,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -46037,12 +45941,12 @@ we
 we
 we
 wm
-wL
+qZ
 bw
-Pg
+ES
 bL
 we
-Lb
+zL
 je
 we
 we
@@ -46230,13 +46134,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -46424,13 +46328,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -46618,13 +46522,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -46812,13 +46716,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -47006,13 +46910,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -47201,12 +47105,12 @@ we
 we
 we
 wm
-wL
+qZ
 bw
-Pg
+ES
 bL
 we
-Lb
+zL
 je
 we
 we
@@ -47394,13 +47298,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -47588,13 +47492,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -47782,13 +47686,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -47976,13 +47880,13 @@ we
 we
 we
 we
-Lb
-wL
+zL
+qZ
 bw
-Pg
+ES
 we
 we
-Lb
+zL
 je
 we
 we
@@ -48172,12 +48076,12 @@ we
 we
 zL
 qZ
-ji
+bw
 ES
 we
 we
 zL
-mJ
+je
 we
 we
 we

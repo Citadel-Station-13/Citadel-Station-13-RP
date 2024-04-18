@@ -2497,6 +2497,7 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
+/obj/random/trash,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gh" = (
@@ -2507,6 +2508,7 @@
 /area/bridge)
 "gi" = (
 /obj/machinery/fire_alarm/north_mount,
+/obj/random/junk,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gj" = (
@@ -2918,6 +2920,15 @@
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/overmapdemo)
+"lg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "sheet-silo-1"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "lm" = (
 /obj/machinery/light,
 /obj/structure/cable{
@@ -3252,6 +3263,13 @@
 /obj/overmap/entity/visitable/ship/landable/overmapdemo,
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"AD" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/random/junk,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "AT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 9
@@ -3328,6 +3346,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
+"CY" = (
+/obj/random/junk,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Dm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
@@ -3493,6 +3515,12 @@
 /obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor,
 /area/shuttle/webdemo)
+"LZ" = (
+/obj/machinery/sheet_silo_loader{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Mz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -3773,6 +3801,10 @@
 /obj/machinery/computer/ship/helm,
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"Yj" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Yn" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -5291,7 +5323,7 @@ sA
 Pg
 aa
 fY
-gf
+Yj
 gf
 gf
 gf
@@ -5495,7 +5527,7 @@ gY
 aa
 aa
 fY
-gf
+Yj
 gf
 gf
 gf
@@ -5597,7 +5629,7 @@ gY
 aa
 aa
 fY
-gh
+AD
 gf
 gq
 gf
@@ -5801,7 +5833,7 @@ sA
 Pg
 aa
 fY
-gf
+CY
 gf
 gr
 gf
@@ -6005,8 +6037,8 @@ aa
 aa
 aa
 fY
-gk
-gf
+lg
+LZ
 gr
 gf
 gB

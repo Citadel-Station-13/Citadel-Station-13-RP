@@ -4,7 +4,7 @@
 /mob/living/carbon/human/proc/tie_hair()
 	set name = "Tie Hair"
 	set desc = "Style your hair."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(incapacitated())
 		to_chat(src, SPAN_WARNING("You can't mess with your hair right now!"))
@@ -176,7 +176,7 @@
 /mob/living/carbon/human/proc/self_diagnostics()
 	set name = "Self-Diagnostics"
 	set desc = "Run an internal self-diagnostic to check for damage."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(stat == DEAD) return
 
@@ -217,7 +217,7 @@
 /mob/living/carbon/human/proc/setmonitor_state()
 	set name = "Set monitor display"
 	set desc = "Set your monitor display"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(stat == DEAD) return
 
@@ -314,7 +314,7 @@
 /mob/living/carbon/human/verb/toggle_eyes_layer()
 	set name = "Switch Eyes/Monitor Layer"
 	set desc = "Toggle rendering of eyes/monitor above markings."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(stat)
 		to_chat(src, SPAN_WARNING("You must be awake and standing to perform this action!"))
@@ -392,7 +392,7 @@
 /mob/living/carbon/human/proc/hide_tail()
 	set name = "Toggle Hide Tail"
 	set desc = "Hide or reveal your tail."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(tail_style && !tail_style.can_be_hidden)
 		return
@@ -403,7 +403,7 @@
 /mob/living/carbon/human/proc/hide_wings()
 	set name = "Toggle Hide Wings"
 	set desc = "Hide or reveal your wings."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(wing_style && !wing_style.can_be_hidden)
 		return
@@ -414,7 +414,7 @@
 /mob/living/carbon/human/proc/hide_horns()
 	set name = "Toggle Hide Horns"
 	set desc = "Hide or reveal your horns."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(horn_style && !horn_style.can_be_hidden)
 		return

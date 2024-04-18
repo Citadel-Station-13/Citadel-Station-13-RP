@@ -13,7 +13,8 @@
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/can_dirty = TRUE	// If false, tile never gets dirty
 	var/can_start_dirty = FALSE	// If false, cannot start dirty roundstart
-	var/dirty_prob = 2	// Chance of being dirty roundstart
+	// todo: don't do this because peresistence
+	var/dirty_prob = 0	// Chance of being dirty roundstart
 	var/dirt = 0
 	var/special_temperature //Used for Lava HE-Pipe interaction
 
@@ -80,14 +81,11 @@
 		tracks = new typepath(src)
 	tracks.AddTracks(bloodDNA,comingdir,goingdir,bloodcolor)
 
-/turf/simulated/proc/update_dirt()
+/turf/simulated/proc/update_dirt(increment = 1)
 	if(can_dirty)
-		dirt = min(dirt+1, 101)
-		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, src)
-		if (dirt > 50)
-			if (!dirtoverlay)
-				dirtoverlay = new/obj/effect/debris/cleanable/dirt(src)
-			dirtoverlay.alpha = min((dirt - 50) * 5, 255)
+		dirt += increment
+		if(dirt >= 100)
+			set_dirt_object((dirt - 50) * 5)
 
 /turf/simulated/Entered(atom/movable/AM, atom/oldLoc)
 	..()
@@ -104,7 +102,8 @@
 
 		if(M.dirties_floor())
 			// Dirt overlays.
-			update_dirt()
+			// todo: currently nerfed
+			update_dirt(0.2)
 
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M

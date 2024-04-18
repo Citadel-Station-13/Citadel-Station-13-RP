@@ -89,6 +89,28 @@
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
 	var/material_multiplier = 1
 
+	//* Persistence *//
+	// todo: we need a version and entity string ID system for update durability!!
+	/// persistence state flags
+	var/obj_persist_status = NONE
+	/// if set, we persist via static object persistence. this is our ID and must be unique for a given map level.
+	/// will override and prevent dynamic persistence.
+	var/obj_persist_static_id
+	/// static namespacing / binding mode
+	var/obj_persist_static_mode = OBJ_PERSIST_STATIC_MODE_MAP
+	/// on static map/level bind mode, this is to determine which level/map we're bound to
+	/// once bound, even if we go to another level, we are treated as this level.
+	/// binding is done during load.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/obj_persist_static_bound_id
+	/// if set, we are currently dynamically persisting. this is our ID and must be unique for a given map level.
+	/// this id will not collide with static id.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/obj_persist_dynamic_id
+	/// dynamic persistence state flags
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/obj_persist_dynamic_status = NONE
+
 	//? Sounds
 	/// volume when breaking out using resist process
 	var/breakout_sound = 'sound/effects/grillehit.ogg'
@@ -582,7 +604,27 @@
 
 /obj/on_contents_item_new(obj/item/item)
 	. = ..()
+	if(!isnull(obj_storage?.indirection))
+		return
 	obj_storage?.on_contents_item_new(item)
+
+/obj/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	. = ..()
+	if(!isnull(obj_storage?.indirection))
+		return
+	obj_storage?.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
+
+/obj/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	. = ..()
+	if(!isnull(obj_storage?.indirection))
+		return
+	obj_storage?.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
+
+/obj/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	. = ..()
+	if(!isnull(obj_storage?.indirection))
+		return
+	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
 
 /**
  * Returns stuff considered to be inside this object's inventory.
@@ -593,18 +635,6 @@
  */
 /obj/proc/return_inventory()
 	return isnull(obj_storage)? list() : obj_storage.contents()
-
-/obj/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	. = ..()
-	obj_storage?.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
-
-/obj/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	. = ..()
-	obj_storage?.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
-
-/obj/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	. = ..()
-	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
 
 //* Examine *//
 
@@ -618,6 +648,8 @@
 		if(isnull(mat)) // 'none' option
 			continue
 		. += "Its [key] is made out of [mat.display_name]"
+	if((obj_persist_dynamic_id || obj_persist_static_id) && !(obj_persist_status & OBJ_PERSIST_STATUS_NO_EXAMINE))
+		. += SPAN_BOLDNOTICE("This entity is a persistent entity; it may be preserved into future rounds.")
 
 /obj/proc/examine_integrity(mob/user)
 	. = list()
@@ -640,14 +672,12 @@
 
 /obj/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
-	// todo: this is fucking awful, proper redirection support when
-	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+	if(isitem(AM) && !isnull(obj_storage) && isnull(obj_storage.indirection))
 		obj_storage.on_item_exited(AM)
 
 /obj/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	// todo: this is fucking awful, proper redirection support when
-	if(isitem(AM) && obj_storage && (!obj_storage.dangerously_redirect_contents_calls || obj_storage.dangerously_redirect_contents_calls == src))
+	if(isitem(AM) && !isnull(obj_storage) && isnull(obj_storage.indirection))
 		obj_storage.on_item_entered(AM)
 
 //* Orientation *//

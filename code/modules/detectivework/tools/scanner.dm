@@ -138,7 +138,7 @@
 
 /obj/item/detective_scanner/verb/examine_data()
 	set name = "Examine Forensic Data"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	display_data(usr)
@@ -188,7 +188,7 @@
 
 /obj/item/detective_scanner/verb/wipe()
 	set name = "Wipe Forensic Data"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if (alert("Are you sure you want to wipe all data from [src]?",,"Yes","No") == "Yes")

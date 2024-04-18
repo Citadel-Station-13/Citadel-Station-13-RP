@@ -275,7 +275,7 @@
 
 /obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	mode = !mode
 	switch (mode)
@@ -286,7 +286,7 @@
 
 /obj/item/healthanalyzer/proc/toggle_adv()
 	set name = "Toggle Advanced Scan"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	showadvscan = !showadvscan
 	switch (showadvscan)

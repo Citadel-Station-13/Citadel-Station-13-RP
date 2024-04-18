@@ -37,7 +37,7 @@
 	name = "WARNING: WILDERNESS"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "wilderness1"
-	desc = "This appears to be a sign warning people that the other side is dangerous. It also says that NanoTrasen cannot guarantee your safety beyond this point."
+	desc = "This appears to be a sign warning people that the other side is dangerous. It also says that Nanotrasen cannot guarantee your safety beyond this point."
 
 /obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 

@@ -129,11 +129,15 @@
 	/// use set_locked() to modify.
 	var/locked = FALSE
 
+	//* Mass Operations
+
+	/// mutex to prevent mass operation spam
+	var/mass_operation_interaction_mutex = FALSE
+
 	//* Redirection
 
 	/// When set, we treat this as the real parent object.
 	/// **Warning**: This is an advanced feature.
-	/// All this does is make us scan a different atom's contents.
 	/// It is your responsibility to understand what that means in context of storage, not ours.
 	///
 	/// The storage backend this was inspired from used to have a real / virtual system,
@@ -143,13 +147,8 @@
 	/// That, however, is too complex and awful, so, we just have a single redirection var now
 	/// if you mess it up, it is not my fault. ~silicons
 	///
-	/// todo: this needs a setter so we can properly use comsigs to hook the redirected-to object's Exited()
-	/// todo: we should also hook the thing's Destroy, etc etc.
 	/// todo: this literally doesn't work due to no Reachability hooks. please implement this properly later via reachability signal hooks.
-	/// otherwise, using this is going to be GC failure hell from vis contents and rendering.
-	//! todo: a potential plan is /atom/movable/storage_indirection_holder,
-	//! which then has back-pointers to storage.
-	var/atom/dangerously_redirect_contents_calls
+	var/atom/movable/storage_indirection/indirection
 
 	//* Radiation
 	/// pass clean radiation calls inside?
@@ -204,13 +203,7 @@
 /datum/object_system/storage/Destroy()
 	hide()
 	QDEL_NULL(action_mode_switch)
-	//! SHITCODE ALERT
-	if(istype(dangerously_redirect_contents_calls, /obj/storage_indirection_holder))
-		var/obj/storage_indirection_holder/casted = dangerously_redirect_contents_calls
-		casted.obj_storage = null
-		qdel(casted)
-	dangerously_redirect_contents_calls = null
-	//! AAAA
+	QDEL_NULL(indirection)
 	return ..()
 
 //* Access *//
@@ -301,12 +294,13 @@
 /datum/object_system/storage/proc/rebuild_caches()
 	cached_combined_volume = 0
 	cached_combined_weight_class = 0
+	var/old_weight = weight_cached
 	weight_cached = 0
 	for(var/obj/item/item in real_contents_loc())
 		cached_combined_volume += item.get_weight_volume()
 		cached_combined_weight_class += item.get_weight_class()
 		weight_cached += item.get_weight()
-	update_containing_weight()
+	update_containing_weight(weight_cached - old_weight)
 
 /**
  * rebuild full state, used when shit explodes, vv use only. this is not totally
@@ -338,21 +332,25 @@
 /datum/object_system/storage/proc/get_containing_weight()
 	return max(0, weight_cached * weight_multiply - weight_subtract)
 
-/datum/object_system/storage/proc/update_containing_weight()
+/datum/object_system/storage/proc/update_containing_weight(change)
 	if(!isitem(parent))
 		return
+	// todo: rewrite the weight system
 	var/obj/item/item = parent
 	item.update_weight()
+	var/current = item.get_weight()
+	item.propagate_weight(current - change, current)
 
 /datum/object_system/storage/proc/set_weight_propagation(value)
 	if(value == weight_propagation)
 		return
 	weight_propagation = value
 	if(!weight_propagation)
+		var/old_weight_cached = weight_cached
 		weight_cached = 0
+		update_containing_weight(-old_weight_cached)
 	else
 		rebuild_caches()
-	update_containing_weight()
 
 //* Hooks *//
 
@@ -361,7 +359,7 @@
 
 /datum/object_system/storage/proc/on_dropped(mob/user)
 	revoke_buttons(user)
-
+b
 /**
  * Called by our object when an item exits us
  */
@@ -381,26 +379,18 @@
 	ui_queue_refresh()
 
 /datum/object_system/storage/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	cached_combined_weight_class += (new_weight_class - old_weight_class)
 	if(isnull(item.weight_volume))
 		on_contents_weight_volume_change(item, global.w_class_to_volume[old_weight_class], global.w_class_to_volume[new_weight_class])
 
 /datum/object_system/storage/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	cached_combined_volume += (new_weight_volume - old_weight_volume)
 
 /datum/object_system/storage/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	weight_cached += (new_weight - old_weight)
-	update_containing_weight()
+	update_containing_weight(new_weight - old_weight)
 
 /datum/object_system/storage/proc/on_contents_item_new(obj/item/item)
-	if(dangerously_redirect_contents_calls && item.loc != dangerously_redirect_contents_calls)
-		return
 	if(item.item_flags & ITEM_IN_STORAGE) // somehow
 		return
 	physically_insert_item(item, no_move = TRUE)
@@ -508,6 +498,16 @@
 		return FALSE
 	return TRUE
 
+/**
+ * inserts something
+ *
+ * @params
+ * * inserting - thing being inserted
+ * * actor - who's inserting it
+ * * suppressed - suppress sounds
+ * * no_update - do not update uis
+ * * no_move - much more than not moving; basically makes an abstract contents operation without otherwise doing normal logic. use with care.
+ */
 /datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
 	physically_insert_item(inserting, no_move)
 
@@ -521,7 +521,7 @@
 /**
  * handle moving an item in
  *
- * we can assume this proc will do potentially literally anything with the item, so..
+ * we can assume this proc will do potentially literally anything with the item, so.
  */
 /datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, from_hook)
 	inserting.item_flags |= ITEM_IN_STORAGE
@@ -534,7 +534,7 @@
 		var/inserting_weight = inserting.get_weight()
 		if(inserting_weight)
 			weight_cached += inserting_weight
-			update_containing_weight()
+			update_containing_weight(inserting_weight)
 	cached_combined_volume += inserting.get_weight_volume()
 	cached_combined_weight_class += inserting.get_weight_class()
 
@@ -569,6 +569,11 @@
 		)
 	return TRUE
 
+/**
+ * try to remove item from self
+ *
+ * @return item removed; not necessarily the item passed in.
+ */
 /datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
 	return remove(removing, to_where, actor, suppressed, no_update)
 
@@ -577,16 +582,18 @@
 
 /**
  * remove item from self
+ *
+ * @return item removed; not necessarily the item passed in.
  */
 /datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update, no_move)
-	physically_remove_item(removing, to_where, no_move)
+	. = physically_remove_item(removing, to_where, no_move)
+	if(isnull(.))
+		return
 
 	if(!no_update)
 		if(update_icon_on_item_change)
 			update_icon()
 		refresh()
-
-	return TRUE
 
 /**
  * handle moving an item out
@@ -607,10 +614,11 @@
 	if(weight_propagation)
 		var/removing_weight = removing.get_weight()
 		if(removing_weight)
-			weight_cached += removing_weight
-			update_containing_weight()
+			weight_cached -= removing_weight
+			update_containing_weight(-removing_weight)
 	cached_combined_volume -= removing.get_weight_volume()
 	cached_combined_weight_class -= removing.get_weight_class()
+	return removing
 
 //* Limits *//
 
@@ -726,14 +734,13 @@
 //* Redirection *//
 
 /datum/object_system/storage/proc/real_contents_loc()
-	return dangerously_redirect_contents_calls || parent
+	return indirection || parent
 
 //* Rendering - Object *//
 
 /datum/object_system/storage/proc/update_icon()
 	parent.update_icon()
 	action_mode_switch?.button_overlay = parent
-	dangerously_redirect_contents_calls?.update_icon()
 
 //* Transfer *//
 
@@ -797,6 +804,10 @@
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/interacted_mass_transfer(datum/event_args/actor/actor, datum/object_system/storage/to_storage, silent, suppressed)
+	if(mass_operation_interaction_mutex)
+		return
+	mass_operation_interaction_mutex = TRUE
+
 	var/list/obj/item/transferring = list()
 	for(var/obj/item/item in real_contents_loc())
 		transferring += item
@@ -807,6 +818,7 @@
 				msg = "There's nothing to transfer out of [parent].",
 				target = src,
 			)
+		mass_operation_interaction_mutex = FALSE
 		return
 	if(!silent)
 		actor.chat_feedback(
@@ -834,18 +846,24 @@
 				target = src,
 			)
 
-	refresh()
+	ui_queue_refresh()
+	mass_operation_interaction_mutex = FALSE
 
 /**
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/interacted_mass_pickup(datum/event_args/actor/actor, atom/from_loc, silent, suppressed)
+	if(mass_operation_interaction_mutex)
+		return
+	mass_operation_interaction_mutex = TRUE
+
 	var/list/transferring
 	switch(mass_gather_mode)
 		if(STORAGE_QUICK_GATHER_COLLECT_ONE)
 			if(!isitem(from_loc))
 				return
 			try_insert(from_loc, actor)
+			mass_operation_interaction_mutex = FALSE
 			return
 		if(STORAGE_QUICK_GATHER_COLLECT_ALL)
 			transferring = list()
@@ -861,6 +879,7 @@
 				transferring += item
 
 	if(!length(transferring))
+		mass_operation_interaction_mutex = FALSE
 		return
 	if(!silent)
 		actor.chat_feedback(
@@ -877,11 +896,16 @@
 		stoplag(1)
 
 	ui_queue_refresh()
+	mass_operation_interaction_mutex = FALSE
 
 /**
  * Actor is mandatory.
  */
 /datum/object_system/storage/proc/interacted_mass_dumping(datum/event_args/actor/actor, atom/to_loc, silent, suppressed)
+	if(mass_operation_interaction_mutex)
+		return
+	mass_operation_interaction_mutex = TRUE
+
 	var/list/obj/item/transferring = mass_dumping_query()
 
 	if(!length(transferring))
@@ -890,6 +914,7 @@
 				msg = "There's nothing to dump out of [parent].",
 				target = src,
 			)
+		mass_operation_interaction_mutex = FALSE
 		return
 	if(!silent)
 		actor.chat_feedback(
@@ -918,6 +943,7 @@
 			)
 
 	ui_queue_refresh()
+	mass_operation_interaction_mutex = FALSE
 
 /**
  * handles mass storage transfers
@@ -943,12 +969,16 @@
 		return FALSE
 	var/atom/indirection_from = real_contents_loc()
 	var/atom/indirection_to = to_storage.real_contents_loc()
-	var/i
+	var/i = length(things)
 	. = TRUE
-	for(i in length(things) to 1 step -1)
+	while(i > 0)
+		// stop if overtaxed
+		if(TICK_CHECK)
+			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != indirection_from)
+			i--
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
@@ -957,17 +987,18 @@
 		// see if receiver can accept it
 		if(!to_storage.can_be_inserted(transferring, actor, TRUE))
 			rejections_out += transferring
+			i--
 			continue
 		// see if we can remove it
 		if(!can_be_removed(transferring, indirection_to, actor, TRUE))
 			rejections_out += transferring
+			i--
 			continue
 		// transfer; the on enter/exit hooks will handle the rest (awful but whatever!)
-		remove(transferring, indirection_to, actor, TRUE, TRUE)
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
-	things.Cut(i, length(things) + 1)
+		if(transferring == remove(transferring, indirection_to, actor, TRUE, TRUE))
+			// but only go down if we got rid of the real item
+			i--
+	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
 /**
@@ -992,6 +1023,9 @@
 	var/i
 	. = TRUE
 	for(i in length(things) to 1 step -1)
+		// stop if overtaxed
+		if(TICK_CHECK)
+			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != from_loc)
@@ -1000,9 +1034,6 @@
 		if(!try_insert(transferring, actor, TRUE, TRUE, TRUE))
 			rejections_out += transferring
 			continue
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
 	things.Cut(i, length(things) + 1)
 	return . && length(things)
 
@@ -1027,25 +1058,33 @@
  */
 /datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out = list(), trigger_on_found = TRUE)
 	var/atom/indirection = real_contents_loc()
-	var/i
+	var/i = length(things)
 	. = TRUE
-	for(i in length(things) to 1 step -1)
+	while(i > 0)
+		// stop if overtaxed
+		if(TICK_CHECK)
+			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != indirection)
+			i--
 			continue
 		// handle on open hooks if needed
 		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
 			. = FALSE
 			break
 		// see if we can remove it
-		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
+		var/obj/item/removed = try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE)
+		if(isnull(removed))
+			// failed
 			rejections_out += transferring
+			i--
 			continue
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
-	things.Cut(i, length(things) + 1)
+		// succeeded
+		if(removed == transferring)
+			// but only go down if we got rid of the real item
+			i--
+	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
 /**
@@ -1380,6 +1419,34 @@
 			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 
 /**
+ * **USE AT YOUR OWN PERIL**
+ */
+/datum/object_system/storage/proc/indirect(atom/where)
+	ASSERT(isnull(indirection))
+	indirection = new(where, src)
+
+/**
+ * remove indirection by obliterating contents
+ */
+/datum/object_system/storage/proc/destructively_remove_indirection()
+	QDEL_NULL(indirection)
+
+/**
+ * remove indirection by moving contents
+ */
+/datum/object_system/storage/proc/relocate_remove_indirection(atom/where_to)
+	ASSERT(!isnull(where_to) && where_to != indirection)
+	for(var/atom/movable/AM as anything in indirection)
+		AM.forceMove(where_to)
+	QDEL_NULL(indirection)
+
+/**
+ * move indirection somewhere else
+ */
+/datum/object_system/storage/proc/move_indirection_to(atom/where_to)
+	indirection.forceMove(where_to)
+
+/**
  * Stack storage
  *
  * Can handle both material and normal stacks.
@@ -1473,56 +1540,9 @@
 		return ..()
 	if(stack.amount <= stack.max_amount)
 		return ..()
-	var/obj/item/stack/staying_inside = stack.split(stack.amount - stack.max_amount, null, TRUE)
-	stack.amount = stack.max_amount
-	// do the normal removal
-	. = ..()
-	// insert into, without triggering normal hooks
-	staying_inside.abstract_move(real_contents_loc())
-	// perform aftereffects and register it
-	physically_insert_item(staying_inside, TRUE)
-
-/datum/object_system/storage/stack/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out, trigger_on_found)
-	// todo: this is just a copypaste and god, that fucking sucks.
-	var/atom/indirection = real_contents_loc()
-	var/i = length(things)
-	. = TRUE
-	while(i > 0)
-		var/obj/item/stack/transferring = things[i]
-		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
-		// make sure they're the right type
-		if(!istype(transferring))
-			continue
-		var/transferring_type = transferring.type
-		//! END
-		// make sure they're still there
-		if(transferring.loc != indirection)
-			continue
-		// handle on open hooks if needed
-		if(trigger_on_found && actor?.performer.active_storage != src && transferring.on_containing_storage_opening(actor, src))
-			. = FALSE
-			break
-		// see if we can remove it
-		if(!try_remove(transferring, to_loc, actor, TRUE, TRUE, TRUE))
-			rejections_out += transferring
-			continue
-		//! UH OH, STACK STORAGE SPECIFIC CODE HERE
-		// if it wasn't fully removed,
-		var/obj/item/stack/remaining = locate(transferring_type) in indirection
-		if(!isnull(remaining))
-			// swap it back
-			// and don't cut it out just yet
-			things[i] = remaining
-		else
-			// cut it out
-			i--
-		//! END
-		// stop if overtaxed
-		if(TICK_CHECK)
-			break
-	if(i < length(things))
-		things.Cut(i + 1, length(things) + 1)
-	return . && length(things)
+	var/obj/item/stack/going_outside = stack.split(stack.max_amount, null, TRUE)
+	removing = going_outside
+	return ..()
 
 /datum/object_system/storage/stack/render_numerical_display(list/obj/item/for_items)
 	var/list/not_stack = list()
@@ -1631,13 +1651,13 @@
 	layer = STORAGE_LAYER_ITEM_INACTIVE
 
 /atom/movable/screen/storage/item/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
-	return item.MouseDrop(arglist(args))
+	return item?.MouseDrop(arglist(args))
 
 /atom/movable/screen/storage/item/Click(location, control, params)
-	return item.Click(arglist(args))
+	return item?.Click(arglist(args))
 
 /atom/movable/screen/storage/item/DblClick(location, control, params)
-	return item.DblClick(arglist(args))
+	return item?.DblClick(arglist(args))
 
 /atom/movable/screen/storage/item/proc/bind(obj/item/item)
 	vis_contents += item
@@ -1705,19 +1725,6 @@
 /obj/proc/object_storage_closed(mob/user)
 	return
 
-//? Lazy indirection helper
-
-/obj/storage_indirection_holder
-	name = "storage indirection holder"
-	desc = "Why do you see this?"
-	atom_flags = ATOM_ABSTRACT
-
-/atom/movable/storage_indirection_holder/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return TRUE
-
-/atom/movable/storage_indirection_holder/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return TRUE
-
 //? Wrapper for init
 
 /**
@@ -1732,9 +1739,41 @@
 		for(var/obj/item/item in contents)
 			obj_storage.on_item_entered(item)
 	else
-		var/obj/indirection = new /obj/storage_indirection_holder(src)
-		obj_storage.dangerously_redirect_contents_calls = indirection
-		// this is shitcode oh my god
-		// AAAAAAAAAAAAAAAAAAA
-		indirection.obj_storage = obj_storage
+		obj_storage.indirect(src)
 	return obj_storage
+
+//? Indirection Holder
+
+/atom/movable/storage_indirection
+	atom_flags = ATOM_ABSTRACT
+
+	/// owner
+	var/datum/object_system/storage/parent
+
+/atom/movable/storage_indirection/Initialize(mapload, datum/object_system/storage/parent)
+	src.parent = parent
+	return ..()
+
+/atom/movable/storage_indirection/Destroy()
+	if(src.parent.indirection == src)
+		src.parent.indirection = null
+	src.parent = null
+	return ..()
+
+/atom/movable/storage_indirection/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return TRUE
+
+/atom/movable/storage_indirection/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return TRUE
+
+/atom/movable/storage_indirection/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	parent.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
+
+/atom/movable/storage_indirection/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	parent.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
+
+/atom/movable/storage_indirection/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	parent.on_contents_weight_change(item, old_weight, new_weight)
+
+/atom/movable/storage_indirection/on_contents_item_new(obj/item/item)
+	parent.on_contents_item_new(item)

@@ -170,23 +170,31 @@
 	. = ..()
 
 /obj/overmap/entity/visitable/ship/landable/tinycarrier
-	scanner_name = "TBD"
-	scanner_desc = "TBD"
+	scanner_name = "SDF Birdcage"
+	scanner_desc = {"\[i\]Registration\[/i\]: SDV Birdcage
+\[i\]Class\[/i\]: Light Escort Carrier
+\[i\]Transponder\[/i\]: Transmitting (MIL), Weak Signal
+\[b\]Notice\[/b\]: Registration Expired"}
 	vessel_mass = 12000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Debris Carrier"
 	fore_dir = WEST
 
+/*
 /obj/overmap/entity/visitable/ship/landable/tinycarrier/Initialize(mapload)
 	. = ..()
 	var/datum/lore/organization/O = SSlegacy_lore.organizations[/datum/lore/organization/other/sysdef]
 	var/newname = "SDV [pick(O.ship_names)]"
-	scanner_name = newname
-	scanner_desc = {"\[i\]Registration\[/i\]: [newname]
+	scanner_name = "SDF Birdcage
+	scanner_desc = {"\[i\]Registration\[/i\]: SDV Birdcage
 \[i\]Class\[/i\]: Light Escort Carrier
 \[i\]Transponder\[/i\]: Transmitting (MIL), Weak Signal
 \[b\]Notice\[/b\]: Registration Expired"}
-	rename_areas(newname)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/overmap/entity/visitable/ship/landable/tinycarrier/LateInitialize()
+	. = ..()
+	rename_areas(scanner_name)
 
 /obj/overmap/entity/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
 	var/datum/shuttle/S = SSshuttle.shuttles[shuttle]
@@ -196,7 +204,7 @@
 			A.apc.name = "[A.name] APC"
 		for(var/obj/machinery/air_alarm/AA in A)
 			AA.name = "[A.name] Air Alarm"
-
+*/
 
 /obj/mecha/combat/fighter/baron/loaded/busted
 /*

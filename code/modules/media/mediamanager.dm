@@ -54,7 +54,7 @@
 
 /client/verb/change_volume()
 	set name = "Set Volume"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Set jukebox volume"
 	set_new_volume(usr)
 
@@ -140,7 +140,7 @@
 /datum/media_manager/proc/send_update()
 	if(!(owner.prefs))
 		return
-	if(!owner.is_preference_enabled(/datum/client_preference/play_jukebox) && url != "")
+	if(!owner.get_preference_toggle(/datum/game_preference_toggle/music/jukebox) && url != "")
 		return // Don't send anything other than a cancel to people with SOUND_STREAMING pref disabled
 	MP_DEBUG("<span class='good'>Sending update to mediapanel ([url], [(world.time - start_time) / 10], [volume * source_volume])...</span>")
 	owner << output(list2params(list(url, (world.time - start_time) / 10, volume * source_volume)), "[WINDOW_ID]:SetMusic")

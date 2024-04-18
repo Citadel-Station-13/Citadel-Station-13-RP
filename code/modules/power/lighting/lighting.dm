@@ -296,6 +296,10 @@ var/global/list/light_type_cache = list()
 	var/brightness_power_ns
 	var/brightness_color_ns
 
+	//Used for shuttles, workaround for broken mounting
+	//TODO: Remove when legacy walls are nuked
+	var/old_wall = FALSE
+
 	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor
 	icon_state = "tube_map"
 	#endif
@@ -502,6 +506,10 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/setDir(ndir)
 	. = ..()
+
+	if(old_wall)
+		return
+
 	base_pixel_y = 0
 	base_pixel_x = 0
 	var/turf/T = get_step(get_turf(src), src.dir)

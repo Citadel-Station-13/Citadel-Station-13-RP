@@ -80,7 +80,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_BOOK_MESSAGE_LEN	24576
 #define MAX_RECORD_LENGTH		24576
 #define MAX_LNAME_LEN			64
-#define MAX_NAME_LEN			52
+#define MAX_NAME_LEN			64
+
 /// 512GQ file
 #define MAX_TEXTFILE_LENGTH		128000
 // Event defines.
@@ -230,7 +231,7 @@ var/list/economy_station_departments = list(
 /// Because everyone misspells it
 #define TSC_HEPH	"Hephaestus"
 #define TSC_MORPH	"Morpheus"
-#define TSC_NT		"NanoTrasen"
+#define TSC_NT		"Nanotrasen"
 #define TSC_VM		"Vey Med"
 #define TSC_WT		"Ward-Takahashi"
 /// Not really needed but consistancy I guess.

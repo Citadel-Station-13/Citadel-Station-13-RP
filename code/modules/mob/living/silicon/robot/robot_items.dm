@@ -288,7 +288,7 @@
 
 		if("Colour")
 			var/newcolour = input("Which colour would you like to use?") as null|anything in list("black","blue","red","green","yellow")
-			if(newcolour) colour = newcolour
+			if(newcolour) pen_color = newcolour
 
 		if("Mode")
 			if (mode == 1)
@@ -405,7 +405,7 @@
 
 /obj/item/borg/combat/shield/verb/set_shield_level()
 	set name = "Set shield level"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in range(0)
 
 	var/N = input("How much damage should the shield absorb?") in list("10","20","30","40","50","60")

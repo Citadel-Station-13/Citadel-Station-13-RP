@@ -81,7 +81,7 @@
 
 /mob/living/simple_mob/animal/passive/cat/verb/become_friends()
 	set name = "Become Friends"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src in view(1)
 
 	var/mob/living/L = usr
