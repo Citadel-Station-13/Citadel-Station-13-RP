@@ -27757,6 +27757,9 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/open,
 /area/engineering/atmos)
 "uFm" = (
@@ -27818,6 +27821,9 @@
 "uGw" = (
 /obj/structure/railing{
 	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
 	},
 /turf/simulated/open,
 /area/rnd/staircase/secondfloor)
