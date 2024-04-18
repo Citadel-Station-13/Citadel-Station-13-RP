@@ -13871,9 +13871,6 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
-/obj/structure/window/reinforced/polarized/full{
-	id = "qm_office"
-	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "Cg" = (
