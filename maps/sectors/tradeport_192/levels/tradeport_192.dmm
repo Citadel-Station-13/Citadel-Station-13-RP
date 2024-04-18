@@ -596,6 +596,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "cm" = (
@@ -799,6 +802,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
@@ -1796,6 +1802,9 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "gs" = (
@@ -1860,8 +1869,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Nebula Gas - Employees Only";
-	req_access = list(160);
-	req_one_access = null
+	req_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -2228,6 +2236,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "ie" = (
@@ -2431,6 +2442,9 @@
 "iK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
@@ -2991,6 +3005,9 @@
 "kD" = (
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
+"kE" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/trade_ship/port_dock)
 "kF" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -3435,8 +3452,7 @@
 "md" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -3796,8 +3812,7 @@
 "ns" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
@@ -3985,9 +4000,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "oj" = (
@@ -4758,6 +4771,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "rj" = (
@@ -5019,6 +5035,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
+"st" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/trade_ship/port_dock)
 "sv" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -5383,12 +5402,11 @@
 /area/tradeport/dock)
 "tP" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/starbord_dock)
 "tR" = (
 /obj/machinery/light{
 	dir = 4
@@ -5922,8 +5940,7 @@
 "vE" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor,
@@ -6314,6 +6331,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
 "wS" = (
@@ -6530,6 +6550,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
+"xI" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Ship Hatch"
+	},
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/port_dock)
 "xK" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/closet/crate/secure/loot,
@@ -6744,6 +6771,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
+"ys" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/shuttle/trade_ship/starbord_dock)
 "yt" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -7103,18 +7133,19 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/ext_door,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/starbord_dock)
 "zJ" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/mineral/floor/vacuum,
@@ -7157,7 +7188,7 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/port_dock)
 "zQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7562,12 +7593,11 @@
 	pixel_y = -5
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/starbord_dock)
 "Bs" = (
 /obj/machinery/vending/loadout/clothing,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -7701,7 +7731,6 @@
 "BU" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/machinery/access_button/airlock_interior{
@@ -7711,7 +7740,7 @@
 	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/port_dock)
 "BV" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -7771,6 +7800,9 @@
 /area/tradeport/commons)
 "Cd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Ce" = (
@@ -7866,6 +7898,9 @@
 "Cp" = (
 /turf/simulated/mineral/vacuum,
 /area/tradeport/pads)
+"Cq" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/trade_ship/starbord_dock)
 "Cr" = (
 /obj/machinery/light{
 	dir = 4
@@ -7884,6 +7919,12 @@
 	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/trade_ship/general)
+"Cv" = (
+/obj/machinery/holosign/bar{
+	id = "tradersign"
+	},
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/trade_ship/starbord_dock)
 "Cw" = (
 /obj/machinery/door/firedoor{
 	dir = 8;
@@ -8183,6 +8224,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
+"DH" = (
+/obj/machinery/holosign/bar{
+	id = "tradersign"
+	},
+/obj/map_helper/tradeshuttle_side_selector,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/trade_ship/port_dock)
 "DI" = (
 /obj/machinery/vending/cigarette{
 	name = "Cigarette machine";
@@ -8499,9 +8547,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "EQ" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "ER" = (
@@ -9065,11 +9111,10 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/port_dock)
 "GR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -9640,8 +9685,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/freezer{
 	name = "Nebula Gas - Freezer";
-	req_access = list(160);
-	req_one_access = null
+	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -9800,9 +9844,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -10054,7 +10096,6 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/machinery/access_button/airlock_exterior{
@@ -10064,7 +10105,7 @@
 	pixel_y = -5
 	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/port_dock)
 "KM" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -10350,15 +10391,8 @@
 /turf/simulated/floor/wood,
 /area/tradeport)
 "LP" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "tradeport_hangar_docker";
-	pixel_x = -25
-	},
-/obj/effect/shuttle_landmark/triumph/trade/hangar,
-/obj/overmap/entity/visitable/ship/landable/trade,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/port_dock)
 "LR" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/cash_register/trader{
@@ -10527,7 +10561,6 @@
 	frequency = 1382;
 	id_tag = "safari_access";
 	name = "John Safari's Adventure Emporium";
-	req_access = null;
 	tag = "safari_door"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11136,9 +11169,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "OE" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -11248,6 +11279,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -11541,13 +11575,15 @@
 /obj/machinery/airlock_sensor{
 	frequency = 8018;
 	id_tag = "trade_space_lock";
-	master_tag = null;
 	pixel_x = 25
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/starbord_dock)
 "PP" = (
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
@@ -11864,6 +11900,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Rg" = (
@@ -12063,12 +12102,14 @@
 "RJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/int_door,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/starbord_dock)
 "RL" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -13975,6 +14016,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "YN" = (
@@ -14068,8 +14112,7 @@
 	internal_pressure_bound_default = 4000;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
@@ -14114,6 +14157,9 @@
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Zg" = (
@@ -14240,19 +14286,8 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/engineering)
 "ZE" = (
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 8018;
-	id_tag = "trade_space_lock";
-	pixel_x = -25;
-	tag_airpump = null;
-	tag_chamber_sensor = null;
-	tag_exterior_door = null;
-	tag_exterior_sensor = null;
-	tag_interior_door = null;
-	tag_interior_sensor = null
-	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/area/shuttle/trade_ship/starbord_dock)
 "ZF" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -40180,9 +40215,9 @@ sP
 sP
 dA
 VO
-nM
-PJ
-Su
+Cv
+ys
+Cq
 bI
 Dg
 xK
@@ -40197,9 +40232,9 @@ ge
 Ow
 uD
 nf
-Su
-PJ
-nM
+st
+kE
+DH
 FS
 dA
 Jk
@@ -40393,7 +40428,7 @@ Oi
 ao
 BU
 LP
-tP
+xI
 qB
 GD
 Th
@@ -40762,9 +40797,9 @@ sP
 sP
 qj
 Jv
-Su
-PJ
-Su
+Cq
+ys
+Cq
 kq
 im
 rw
@@ -40779,9 +40814,9 @@ Ch
 EM
 tH
 LG
-Su
-PJ
-Su
+st
+kE
+st
 NQ
 qj
 SO

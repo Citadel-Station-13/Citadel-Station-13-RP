@@ -3174,6 +3174,7 @@
 #include "code\modules\mapping\map_helpers\component_injector.dm"
 #include "code\modules\mapping\map_helpers\engine_loader.dm"
 #include "code\modules\mapping\map_helpers\paint.dm"
+#include "code\modules\mapping\map_helpers\tradeshuttle_side_selector.dm"
 #include "code\modules\mapping\map_helpers\network_builder\_network_builder.dm"
 #include "code\modules\mapping\map_helpers\network_builder\power_cable.dm"
 #include "code\modules\mapping\spawner\_spawner.dm"

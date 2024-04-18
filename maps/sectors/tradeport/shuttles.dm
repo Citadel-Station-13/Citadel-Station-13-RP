@@ -31,6 +31,12 @@
 /area/shuttle/trade_ship/cockpit
 	name = "\improper Beruang Trade Shuttle Cockpit"
 
+/area/shuttle/trade_ship/starbord_dock
+	name = "\improper Beruang Trade Starbord Dock"
+
+/area/shuttle/trade_ship/port_dock
+	name = "\improper Beruang Trade Port Dock"
+
 // Tradeport Off-Map Visitor shuttle
 /datum/shuttle/autodock/overmap/visitor_ship
 	name = "Beluga Passenger Liner"

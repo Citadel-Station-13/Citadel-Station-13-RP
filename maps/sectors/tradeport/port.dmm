@@ -1,0 +1,117 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/space/basic,
+/area/space)
+"o" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "tradeport_hangar_docker";
+	pixel_x = -25
+	},
+/obj/effect/shuttle_landmark/trade/hangar,
+/obj/overmap/entity/visitable/ship/landable/trade,
+/turf/space/basic,
+/area/shuttle/trade_ship/port_dock)
+"u" = (
+/turf/space/basic,
+/area/shuttle/trade_ship/starbord_dock)
+"A" = (
+/turf/space/basic,
+/area/shuttle/trade_ship/port_dock)
+"N" = (
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 8018;
+	id_tag = "trade_space_lock";
+	pixel_x = -25
+	},
+/turf/space/basic,
+/area/shuttle/trade_ship/starbord_dock)
+
+(1,1,1) = {"
+u
+u
+u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+A
+A
+A
+"}
+(2,1,1) = {"
+u
+N
+u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+A
+o
+A
+"}
+(3,1,1) = {"
+u
+u
+u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+A
+A
+A
+"}
+(4,1,1) = {"
+u
+u
+u
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+A
+A
+A
+"}

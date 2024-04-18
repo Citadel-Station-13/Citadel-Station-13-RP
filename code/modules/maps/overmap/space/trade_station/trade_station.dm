@@ -62,7 +62,7 @@
 
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used
 
-/obj/effect/shuttle_landmark/triumph/trade
+/obj/effect/shuttle_landmark/trade
 	name = "Near Nebula Gas Food Mart"
 	landmark_tag = "nebula_space_SW"
 	base_turf = /turf/space
@@ -70,31 +70,31 @@
 
 // EXCLUSIVE TRADE PORT NAV POINTS
 
-/obj/effect/shuttle_landmark/triumph/trade/mining
+/obj/effect/shuttle_landmark/trade/mining
 	name = "Nebula Gas Landing Pad 2"
 	landmark_tag = "nebula_pad_2"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/excursion
+/obj/effect/shuttle_landmark/trade/excursion
 	name = "Nebula Gas Landing Pad 3"
 	landmark_tag = "nebula_pad_3"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/pirate
+/obj/effect/shuttle_landmark/trade/pirate
 	name = "Nebula Gas Landing Pad 4"
 	landmark_tag = "nebula_pad_4"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/emt
+/obj/effect/shuttle_landmark/trade/emt
 	name = "Nebula Gas Landing Pad 5"
 	landmark_tag = "nebula_pad_5"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
 	base_area = /area/tradeport/pads
 
-/obj/effect/shuttle_landmark/triumph/trade/civvie
+/obj/effect/shuttle_landmark/trade/civvie
 	name = "Nebula Gas Landing Pad 6"
 	landmark_tag = "nebula_pad_6"
 	base_turf = /turf/simulated/shuttle/floor/black/airless
@@ -102,7 +102,7 @@
 
 // EXCLUSIVE TRADE PORT NAV POINT FOR DOCKING INSIDE
 
-/obj/effect/shuttle_landmark/triumph/trade/hangar
+/obj/effect/shuttle_landmark/trade/hangar
 	name = "Beruang Hangar"
 	landmark_tag = "tradeport_hangar"
 	docking_controller = "tradeport_hangar_dock"
