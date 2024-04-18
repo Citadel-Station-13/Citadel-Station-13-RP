@@ -6,13 +6,22 @@
 	dir = SOUTH
 	integrity = 100
 	integrity_max = 100
+	cell_type = /obj/item/cell/high
+	key_type = /obj/item/key/bike
 	mechanical = FALSE				//We DO use power to move
 	riding_handler_type = /datum/component/riding_handler/vehicle/bike/small
-	var/bike_icon = "bike"			//For different power states
-	var/custom_paint = FALSE 		//For handling alpha channels
+	power_move_cost = 10
+	var/bike_icon = "bike"			//Icon core name for state changes
+	var/custom_frame = FALSE 		//For handling custom frames
 	var/paint_color = "#ffffff"   //For paint color
 	var/datum/effect_system/ion_trail_follow/ion
 
+/obj/item/key/bike
+	name = "bike key"
+	desc = "A keyring with a small steel key."
+	icon = 'icons/obj/vehicles.dmi'
+	icon_state = "keys"
+	w_class = WEIGHT_CLASS_TINY
 
 /datum/component/riding_handler/vehicle/bike
 	vehicle_move_delay = 0.5
@@ -42,7 +51,6 @@
 
 /obj/vehicle/ridden/bike/Initialize(mapload)
 	. = ..()
-	cell_type = /obj/item/cell/high	//Start with a high capacity cell
 	ion = new /datum/effect_system/ion_trail_follow()
 	ion.set_up(src)
 	icon_state = "[bike_icon]_off"
@@ -104,6 +112,7 @@
 */
 
 //! This thing is a huge mess and I don't understand icons yet. It feels like pointless duplicated logic.
+/*
 /obj/vehicle/ridden/bike/update_icon()
 	cut_overlays()
 	var/list/overlays_to_add = list()
@@ -181,7 +190,43 @@
 	add_overlay(overlays_to_add)
 
 	..()
+*/
+//-------------------------------------------------------------------------------------------------
+/obj/vehicle/ridden/bike/update_icon()
+	..()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+	if(custom_frame)
+		var/image/Bodypaint = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[bike_icon]_a", layer = src.layer)
+		Bodypaint.color = paint_color
+		overlays_to_add += Bodypaint
 
+		var/image/Overmob = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[bike_icon]_overlay", layer = src.layer + 0.2) //over mobs
+		var/image/Overmob_color = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[bike_icon]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
+		Overmob.plane = FLY_LAYER
+		Overmob_color.plane = FLY_LAYER
+		Overmob_color.color = paint_color
+
+		overlays_to_add += Overmob
+		overlays_to_add += Overmob_color
+		add_overlay(overlays_to_add)
+		return
+
+	var/image/Bodypaint = new(icon = 'icons/obj/bike.dmi', icon_state = "[bike_icon]_a", layer = src.layer)
+	Bodypaint.color = paint_color
+	overlays_to_add += Bodypaint
+
+	var/image/Overmob = new(icon = 'icons/obj/bike.dmi', icon_state = "[bike_icon]_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/Overmob_color = new(icon = 'icons/obj/bike.dmi', icon_state = "[bike_icon]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
+	Overmob.plane = FLY_LAYER
+	Overmob_color.plane = FLY_LAYER
+	Overmob_color.color = paint_color
+
+	overlays_to_add += Overmob
+	overlays_to_add += Overmob_color
+
+	add_overlay(overlays_to_add)
+//------------------------------------------------------------------------------------
 //Make sure to cleanup when done.
 /obj/vehicle/ridden/bike/Destroy()
 	qdel(ion)

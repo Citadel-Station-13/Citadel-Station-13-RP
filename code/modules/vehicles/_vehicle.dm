@@ -35,7 +35,7 @@
 	var/mouse_pointer //do we have a special mouse
 	var/mechanical = TRUE			//if true the vehicle will not initialize a cell power system
 	var/obj/item/cell/cell_type 	//default cell to spawn inside
-	var/power_consumption = 0		//how much power it costs to move in cell units
+	var/power_move_cost = 0		//how much power it costs to move in cell units
 	//*var/obj_cell_slot 				//defined at mapload if mechanical is false. Use to access cell subsystem
 	var/maint_panel_open = FALSE	//is the maintenance panel open?
 
@@ -50,11 +50,18 @@
 	generate_actions()
 	if(!mechanical)
 		var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type) //Enables the generic cell system
+		cell_slot.receive_emp = TRUE
+		cell_slot.receive_inducer = TRUE
+		cell_slot.remove_yank_offhand = TRUE
+		cell_slot.remove_yank_context = TRUE
+		cell_slot.remove_yank_inhand = TRUE
 
 /obj/vehicle/examine(mob/user, dist)
 	. = ..()
 	if(!isnull(obj_cell_slot.cell) && dist < 2)
-		. += "<br><span class='notice'>Its display shows: [round(obj_cell_slot.cell.charge)] / [obj_cell_slot.cell.maxcharge].</span>"
+		. += "<br><span class='notice'>Its charge meter reads: [obj_cell_slot.cell.percent()]%.</span>"
+	if(maint_panel_open)
+		. += "<br><span class='notice'>Its maintenance panel is open.</span>"
 	/*
 	if(resistance_flags & ON_FIRE)
 		. += "<span class='warning'>It's on fire!</span>"
@@ -187,12 +194,35 @@
 				M.Bumped(m)
 
 /obj/vehicle/Move(newloc, dir)
-	if(mechanical && cell.charge < charge_use)
+	if(!ProcessPowerConsumption())
+		return
 	var/old_loc = src.loc
 	. = ..()
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, old_loc)
 		step(trailer, dir_to_move)
+
+/**
+ * Checks if the vehicle has enough power to move and consumes it if it does.
+ * Returns TRUE on success.
+ */
+/obj/vehicle/proc/ProcessPowerConsumption()
+	if(mechanical)
+		return TRUE
+	if(obj_cell_slot.cell.checked_use(power_move_cost))
+		return TRUE
+	return FALSE
+
+/obj/vehicle/attackby(obj/item/I as obj, mob/user as mob)
+	//Flipflop maint panel status if screwed.
+	if(istype(I, /obj/item/tool/screwdriver) && !mechanical)
+		maint_panel_open = !maint_panel_open
+		to_chat(user, "<span class='warning'>You [maint_panel_open ? "open" : "close"] the maintenance panel!</span>")
+		return
+	..()
+
+/obj/vehicle/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return maint_panel_open
 
 //Take DroppedOn atoms and determine if they are a trailer to be attached, cargo to be loaded, or pass on for passenger procs.
 /obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -208,7 +238,10 @@
 
 	return ..()
 
-//Handles trailer attach and detach attempts. Returns true if it does something else it returns false. Assumes that proximity checks have already been made.
+/**
+ * Attempts to attach a trailer to the vehicle. Returns true if it does something else it returns false.
+ * Assumes proximity checks have already been made.
+ */
 /obj/vehicle/proc/attach_to(obj/vehicle/trailer/dropping, mob/user)
 	//If its not our allowed trailer, leave this function NOW.
 	if (dropping.type != trailer_type)
