@@ -8963,6 +8963,9 @@
 	pixel_y = -40
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
 "ePJ" = (
