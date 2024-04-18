@@ -47,8 +47,15 @@
 	var/dangerously_forcing = FALSE
 	/// Are we recovering from a bad dock operation?
 	var/recovering = FALSE
+	/// did we succeed?
+	var/succeeded = FALSE
 
-/datum/event_args/shuttle/proc/finish()
+/datum/event_args/shuttle/Destroy()
+	finish(FALSE)
+	return ..()
+
+/datum/event_args/shuttle/proc/finish(success)
+	succeeded = success
 	#warn make hooks gtfo
 
 /datum/event_args/shuttle/proc/block(datum/shuttle_hook/hook, list/reason_or_reasons, dangerous)

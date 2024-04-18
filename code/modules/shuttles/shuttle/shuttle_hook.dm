@@ -20,28 +20,32 @@
 	/// at the same time.
 	var/datum/event_args/shuttle/blocking
 
-/datum/shuttle_hook/proc/landing(datum/event_args/shuttle/movement/landing)
+/datum/shuttle_hook/Destroy()
+	release()
+	return ..()
+
+/datum/shuttle_hook/proc/landing(datum/event_args/shuttle/movement/landing/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/takeoff(datum/event_args/shuttle/movement/takeoff)
+/datum/shuttle_hook/proc/takeoff(datum/event_args/shuttle/movement/takeoff/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/docking(datum/event_args/shuttle/dock/docking)
+/datum/shuttle_hook/proc/docking(datum/event_args/shuttle/dock/docking/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/undocking(datum/event_args/shuttle/dock/undocking)
+/datum/shuttle_hook/proc/undocking(datum/event_args/shuttle/dock/undocking/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/post_docking(datum/event_args/shuttle/dock/docking)
+/datum/shuttle_hook/proc/post_docking(datum/event_args/shuttle/dock/docking/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/post_unocking(datum/event_args/shuttle/dock/undocking)
+/datum/shuttle_hook/proc/post_unocking(datum/event_args/shuttle/dock/undocking)/packet
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/post_landing(datum/event_args/shuttle/movement/landing)
+/datum/shuttle_hook/proc/post_landing(datum/event_args/shuttle/movement/landing/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/post_takeoff(datum/event_args/shuttle/movement/takeoff)
+/datum/shuttle_hook/proc/post_takeoff(datum/event_args/shuttle/movement/takeoff/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/shuttle_hook/proc/release()
