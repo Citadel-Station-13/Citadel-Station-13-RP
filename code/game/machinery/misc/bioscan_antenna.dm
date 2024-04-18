@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	// todo: scaling levels of how accurate they are
 	// todo: multiz / world-sector functionality; for now one must be there for each zlevel
 
-/obj/machinery/bioscan_antennapreloading_instance(with_id)
+/obj/machinery/bioscan_antenna/preloading_instance(with_id)
 	. = ..()
 	if(network_key_obfuscated)
 		network_key = SSmapping.obfuscated_persistent_id(network_key_obfuscated, "bioscan_network", with_id)

@@ -215,7 +215,7 @@
 	halted = 1
 
 /obj/overmap/entity/visitable/ship/proc/unhalt()
-	if(!SSshuttle.overmap_halted)
+	if(!SSovermaps.overmap_halted)
 		halted = 0
 
 /obj/overmap/entity/visitable/ship/populate_sector_objects()

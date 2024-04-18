@@ -1,6 +1,7 @@
 
 /obj/spawner/tcomms_relay
 	name = "Tcomms relay spawner"
+	// todo: seriously? no icon? come on :/
 	var/obj/machinery/telecomms/relay/preset/telecomms/created
 
 /obj/spawner/tcomms_relay/Spawn()
@@ -21,3 +22,5 @@
 		log_and_message_admins("[src] failed to locate telecoms hub, no autoconnection possible.")
 	else
 		LAZYDISTINCTADD(station_hub.links, created)
+
+// todo: who wrote this? this needs a rewrite

@@ -15,12 +15,42 @@
 	var/requires_constant_ticking = FALSE
 	/// currently active / called
 	var/currently_called = FALSE
+	/// currently finished
+	var/finished = FALSE
 	/// last call time
 	var/last_call_time
 	/// last recall time
 	var/last_recall_time
 
+	//* comms console *//
+	/// accesssible on comms console
+	var/player_facing = FALSE
+	/// call entry
+	var/command_call_entry = "Trigger Finale (..what?)"
+	/// recall entry
+	var/command_recall_entry = "Cancel Finale (..what?)"
+	/// call prompt
+	var/command_call_prompt = "Are you sure you wish to call the finale?"
+	/// recall prompt
+	var/command_recall_entry = "ARe you sure you wish to cancel the finale?"
+
 #warn comms console shit ugh (can call, can recall, messages, etc)
+
+/**
+ * returns js-compatible struct as list
+ *
+ * call: string
+ * recall: string
+ * callConfirm: string
+ * recallConfirm: string
+ */
+/datum/map_finale/proc/command_console_query()
+	return list(
+		"call" = command_call_entry,
+		"recall" = command_recall_entry,
+		"callConfirm" = command_call_prompt,
+		"recallConfirm" = command_recall_entry,
+	)
 
 /**
  * called when being added to the ticker's registered finales
@@ -67,13 +97,34 @@
 	return
 
 /**
- * Call this to end the round.
+ * Called to automatically call finish if time expires
+ * This is a proc to ensure safety / no double calling
  */
-/datum/map_finale/proc/finish()
-	return
+/datum/map_finale/proc/auto_finish()
+	if(finished)
+		return
+	finish()
 
 /**
- * Stat entry to display
+ * Called when we should finish.
+ */
+/datum/map_finale/proc/finish()
+	finished = TRUE
+
+/**
+ * Call this to end the round.
+ */
+/datum/map_finale/proc/trigger_round_end()
+	#warn impl
+
+/**
+ * Estimates seconds left
+ */
+/datum/map_finale/proc/time_left()
+	return INFINITY
+
+/**
+ * Stat entry to display, null for none
  */
 /datum/map_finale/proc/stat_entry()
 	return
@@ -82,12 +133,15 @@
  * Automated one-phase finale
  */
 /datum/map_finale/one_phase
-	#warn impl
 
 /**
  * Just end the round without doing anything
  */
 /datum/map_finale/one_phase/end_the_shift
+
+	#warn impl
+
+/datum/map_finale/one_phase/end_the_shift/callable
 	#warn impl
 
 /**

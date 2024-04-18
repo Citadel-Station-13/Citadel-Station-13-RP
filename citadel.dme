@@ -3155,7 +3155,7 @@
 #include "code\modules\mapping\map_finale.dm"
 #include "code\modules\mapping\map_level.dm"
 #include "code\modules\mapping\map_template.dm"
-#include "code\modules\mapping\merge_conflicts.dm"
+#include "code\modules\mapping\merge_conflict_marker.dm"
 #include "code\modules\mapping\minimaps.dm"
 #include "code\modules\mapping\submap.dm"
 #include "code\modules\mapping\submaps_legacy.dm"

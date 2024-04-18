@@ -414,14 +414,14 @@ var/bomb_set
 
 /obj/item/disk/nuclear/Initialize(mapload)
 	. = ..()
-	nuke_disks |= src
+	// nuke_disks |= src
 
 /obj/item/disk/nuclear/Destroy()
-	if(!nuke_disks.len && blobstart.len > 0)
-		var/obj/D = new /obj/item/disk/nuclear(pick(blobstart))
-		message_admins("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-		log_game("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-	nuke_disks -= src
+	// if(!nuke_disks.len && blobstart.len > 0)
+	// 	var/obj/D = new /obj/item/disk/nuclear(pick(blobstart))
+	// 	message_admins("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
+	// 	log_game("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
+	// nuke_disks -= src
 	return ..()
 
 /obj/item/disk/nuclear/touch_map_edge()
