@@ -1246,6 +1246,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
+"eW" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_eva)
 "eX" = (
 /obj/machinery/fire_alarm/east_mount,
 /obj/structure/cable{
@@ -2293,7 +2297,7 @@
 /obj/structure/sign/securearea{
 	pixel_y = 32
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/underground/under2)
 "jo" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -3126,6 +3130,19 @@
 "lx" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
+/area/rnd/secure_storage/lower)
+"ly" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
 /area/rnd/secure_storage/lower)
 "lz" = (
 /obj/structure/table/steel,
@@ -5622,6 +5639,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/miningdock)
+"tL" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/heads/chief)
 "tN" = (
 /obj/machinery/conveyor{
 	id = "miningops"
@@ -9421,6 +9444,7 @@
 /obj/machinery/power/crypto_miner{
 	anchored = 0
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "Jl" = (
@@ -10249,9 +10273,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "Mu" = (
+/obj/effect/paint_stripe/sun,
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
-/obj/structure/grille,
-/obj/effect/paint_stripe/paleorange,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	name = "Reactor Blast Door";
+	id = "engine_room_blast"
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Mw" = (
@@ -12283,9 +12311,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/main)
 "TY" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/light_switch{
 	pixel_x = -21
 	},
@@ -21218,7 +21243,7 @@ aa
 aa
 xp
 xp
-xp
+sq
 xp
 aa
 aa
@@ -21413,7 +21438,7 @@ aa
 aa
 aa
 aa
-xp
+sq
 xp
 aa
 aa
@@ -21631,7 +21656,7 @@ Tz
 He
 EN
 He
-LR
+ly
 Tz
 He
 tJ
@@ -21802,7 +21827,7 @@ aa
 aa
 aa
 xp
-xp
+sq
 aa
 aa
 aa
@@ -29776,7 +29801,7 @@ Qz
 aA
 he
 ol
-mE
+tL
 me
 Nk
 aA
@@ -31319,7 +31344,7 @@ RP
 YG
 QM
 Mw
-RQ
+eW
 Hp
 Bj
 KH

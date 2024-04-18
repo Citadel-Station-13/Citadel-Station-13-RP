@@ -111,7 +111,7 @@
 /obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "eZ" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power{
@@ -235,6 +235,19 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"ls" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Engine Power";
+	name_tag = "Engine Power"
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "lT" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /turf/simulated/floor,
@@ -242,6 +255,17 @@
 "lY" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"me" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Engine Output";
+	name_tag = "Engine Output"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -277,6 +301,9 @@
 /area/template_noop)
 "nG" = (
 /obj/machinery/atmospherics/pipe/tank{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -337,11 +364,6 @@
 /turf/template_noop,
 /area/rift/surfacebase/underground/under2)
 "sj" = (
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -389,14 +411,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/template_noop)
 "uA" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/visible/black{
+	dir = 1
 	},
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
-	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "uU" = (
@@ -500,24 +518,16 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "yO" = (
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/visible/black{
-	dir = 1
-	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "yP" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/visible/black,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -648,6 +658,16 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"Dc" = (
+/obj/machinery/air_sensor{
+	frequency = 1438;
+	id_tag = "engine_sensor";
+	output = 63
+	},
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
+/area/engineering/engine_room)
 "DK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/structure/cable/yellow{
@@ -663,6 +683,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "El" = (
@@ -724,12 +745,16 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"Ia" = (
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
+"HM" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/black{
+	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Ia" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 9
 	},
@@ -790,6 +815,12 @@
 "KT" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/template_noop)
+"KW" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "LK" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
@@ -895,10 +926,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Engine Power";
-	name_tag = "Engine Power"
-	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Od" = (
@@ -941,6 +968,9 @@
 "PA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 5
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1060,7 +1090,7 @@
 /area/engineering/engine_room)
 "Vh" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger,
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Vi" = (
 /obj/machinery/camera/network/engine{
@@ -1104,6 +1134,9 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Xt" = (
@@ -1118,7 +1151,7 @@
 	icon_state = "door_locked";
 	id_tag = "engine_access_hatch";
 	locked = 1;
-	name = "Fusion Core Access";
+	name = "Supermatter Core Access";
 	req_access = list(11)
 	},
 /turf/simulated/floor/reinforced/nitrogen{
@@ -1126,11 +1159,10 @@
 	},
 /area/engineering/engine_room)
 "XP" = (
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Ys" = (
@@ -1431,7 +1463,7 @@ fS
 "}
 (12,1,1) = {"
 fS
-yO
+jN
 sj
 sj
 sj
@@ -1457,8 +1489,8 @@ fS
 (13,1,1) = {"
 fS
 Ea
-Mr
-Mr
+Am
+Am
 nG
 Mr
 hD
@@ -1481,16 +1513,16 @@ fS
 "}
 (14,1,1) = {"
 fS
-jN
+uA
 eN
 Vh
-JM
+yP
 Mr
 lf
 Zb
 Mr
 JZ
-SQ
+Dc
 QQ
 SQ
 MN
@@ -1506,10 +1538,10 @@ fS
 "}
 (15,1,1) = {"
 fS
-jN
+uA
 eN
 Vh
-JM
+yP
 Mr
 bA
 Zb
@@ -1522,18 +1554,18 @@ tm
 uU
 Mr
 tm
-XP
-uA
-XP
-XP
-yP
+Mr
+wz
+Mr
+Mr
+Kr
 KT
 "}
 (16,1,1) = {"
 fS
-jN
+HM
 PA
-Mr
+KW
 Wp
 LK
 JM
@@ -1685,7 +1717,7 @@ Sp
 Mr
 Mr
 Mr
-XP
+Mr
 Mr
 Mr
 Mr
@@ -1734,7 +1766,7 @@ fS
 Mr
 og
 eD
-eD
+me
 eD
 eD
 eD
@@ -1746,10 +1778,10 @@ eD
 eD
 El
 Mr
-lY
-lY
-lY
-lY
+yO
+yO
+XP
+XP
 Mr
 Mr
 KT
@@ -1759,7 +1791,7 @@ fS
 ES
 ah
 Nh
-mz
+ls
 zw
 Od
 mz

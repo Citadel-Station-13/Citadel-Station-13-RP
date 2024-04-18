@@ -53,7 +53,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "cZ" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
@@ -78,15 +78,14 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dY" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
+/obj/machinery/air_sensor{
+	frequency = 1438;
+	id_tag = "engine_sensor";
+	output = 63
 	},
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
-/turf/simulated/floor,
 /area/engineering/engine_room)
 "ea" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -125,13 +124,15 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "fK" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Engine Power";
+	name_tag = "Engine Power"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -167,6 +168,9 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "iH" = (
@@ -196,7 +200,7 @@
 	dir = 8
 	},
 /obj/fiftyspawner/tritium,
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "jk" = (
 /obj/machinery/camera/network/engine{
@@ -237,7 +241,10 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "kz" = (
 /obj/machinery/computer/fusion_core_control{
@@ -301,6 +308,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "mf" = (
@@ -361,6 +369,19 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"pj" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "pt" = (
@@ -392,6 +413,13 @@
 	dir = 8
 	},
 /turf/simulated/floor,
+/area/engineering/engine_room)
+"rr" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "rs" = (
 /obj/structure/cable/yellow{
@@ -465,7 +493,7 @@
 	dir = 4
 	},
 /obj/fiftyspawner/deuterium,
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "vx" = (
 /obj/structure/cable/cyan{
@@ -473,10 +501,6 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Engine Power";
-	name_tag = "Engine Power"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -488,7 +512,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "vZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -499,6 +523,16 @@
 "wg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 10
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"wh" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -566,6 +600,16 @@
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
+"Al" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Engine Output";
+	name_tag = "Engine Output"
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "Am" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
@@ -588,7 +632,10 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Be" = (
 /obj/structure/cable/cyan{
@@ -602,6 +649,10 @@
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
+/area/engineering/engine_room)
+"Bg" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor,
 /area/engineering/engine_room)
 "BK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -632,7 +683,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Cu" = (
 /obj/machinery/computer/gyrotron_control{
@@ -731,7 +782,10 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "HS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -861,13 +915,15 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "MC" = (
 /obj/machinery/atmospherics/valve/digital{
 	dir = 4;
 	name = "Emergency Cooling Valve 2"
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "ME" = (
@@ -882,6 +938,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/meter,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "MQ" = (
@@ -964,6 +1023,15 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"Re" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
 "Ru" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -1021,6 +1089,8 @@
 	name = "Emergency Cooling Valve 1";
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Vn" = (
@@ -1031,7 +1101,10 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Wh" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -1051,11 +1124,10 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "WF" = (
-/obj/machinery/door/blast/regular/open{
-	name = "Engine Room Blast Door";
-	id = "engine_room_blast";
-	dir = 4
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Yd" = (
@@ -1361,11 +1433,11 @@ ZO
 "}
 (12,1,1) = {"
 ZO
-WF
-WF
-WF
-WF
-WF
+cn
+cn
+cn
+cn
+cn
 sW
 cn
 Mb
@@ -1417,15 +1489,15 @@ cn
 cn
 cn
 cn
-rH
+Re
 Mb
 Ta
 Wh
 kJ
-Ta
+dY
 Ta
 Mb
-rH
+rr
 sW
 LL
 mf
@@ -1452,11 +1524,11 @@ Ta
 Mb
 ky
 sW
-WF
-dY
-WF
-WF
-fK
+cn
+Am
+cn
+cn
+Az
 ZO
 "}
 (16,1,1) = {"
@@ -1519,11 +1591,11 @@ cn
 cn
 rH
 qn
-cn
+Bg
 vS
 MB
 cY
-cn
+dt
 qn
 rH
 cn
@@ -1544,10 +1616,10 @@ cn
 cn
 lv
 nB
-nB
+wh
 MF
 oP
-nB
+pj
 if
 nB
 KL
@@ -1588,7 +1660,7 @@ ZO
 ZO
 Gn
 iN
-cn
+dt
 cn
 cn
 cn
@@ -1613,7 +1685,7 @@ ZO
 ZO
 Pm
 Ci
-cn
+dt
 cn
 cn
 cn
@@ -1638,7 +1710,7 @@ ZO
 ZO
 cn
 vq
-cn
+dt
 cn
 cn
 cn
@@ -1664,7 +1736,7 @@ ZO
 cn
 tR
 rs
-rs
+Al
 rs
 rs
 rs
@@ -1676,8 +1748,8 @@ rs
 rs
 Ru
 cn
-ma
-ma
+WF
+WF
 ma
 ma
 cn
@@ -1689,7 +1761,7 @@ ZO
 QV
 qh
 vx
-WC
+fK
 Dl
 Jb
 WC
