@@ -42,21 +42,3 @@
 			// Found the owning shuttle! Return it if its a valid type
 			return (S.category == shuttle_category) ? S.name : null
 
-// Overmap shuttle console.
-/obj/item/circuitboard/shuttle_console/explore
-	name = T_BOARD("long range shuttle control console")
-	build_path = /obj/machinery/computer/shuttle_control
-	origin_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 4)
-	shuttle_category = /datum/shuttle/autodock/overmap
-
-// Multi-shuttle console
-/obj/item/circuitboard/shuttle_console/multi
-	name = T_BOARD("multi-route shuttle control console")
-	build_path = /obj/machinery/computer/shuttle_control
-	shuttle_category = /datum/shuttle/autodock/multi
-
-// Basic "ferry" shuttle console
-/obj/item/circuitboard/shuttle_console/ferry
-	name = T_BOARD("basic shuttle control console")
-	build_path = /obj/machinery/computer/shuttle_control
-	shuttle_category = /datum/shuttle/autodock/ferry

@@ -20,7 +20,7 @@
 	/// please try to map shuttles in facing north.
 	var/facing_dir = NORTH
 
-	/// unique ID - use CamelCase, must be unique & stable, including across rounds.
+	/// unique ID - use snake_case, must be unique & stable, including across rounds.
 	/// this means hardcoded ones shouldn't be changed willy-nilly.
 	var/id
 

@@ -6,7 +6,7 @@
  */
 /datum/shuttle_controller/overmap
 	tgui_module = "TGUIShuttleOvermap"
-	
+
 	/// our overmap object
 	var/obj/overmap/entity
 	#warn hook, somehow

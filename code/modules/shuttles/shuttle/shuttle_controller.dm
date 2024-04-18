@@ -16,8 +16,8 @@
 	var/list/docking_codes
 
 	//* UI
-	/// tgui module name
-	var/tgui_module
+	/// shuttle ui route
+	var/tgui_route
 
 /datum/shuttle_controller/proc/initialize(datum/shuttle/shuttle)
 	src.shuttle = shuttle
@@ -36,7 +36,7 @@
 	#warn impl
 
 /datum/shuttle_controller/proc/tgui_push(list/data)
-	// todo: this is just a wrapper so we can change it later if need be
+	// this is just a wrapper so we can change it later if need be
 	return push_ui_data(data = data)
 
 //* Docking API - use this API always, do not manually control the shuttle.
@@ -46,6 +46,8 @@
  * * dock - dock to move to
  * * force - hard force, ram everything out of the way on the destination side if needed
  * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
+ *
+ * @return TRUE / FALSE on success / failure
  */
 /datum/shuttle_controller/proc/move_to_dock(obj/shuttle_dock/dock, force = FALSE, immediate = FALSE)
 	#warn impl

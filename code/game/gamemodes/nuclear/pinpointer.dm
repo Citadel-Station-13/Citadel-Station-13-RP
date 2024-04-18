@@ -1,3 +1,5 @@
+// todo: rework a variant of this for our storytelelrs
+
 /obj/item/pinpointer
 	name = "pinpointer"
 	icon = 'icons/obj/device.dmi'
@@ -11,7 +13,6 @@
 	preserve_item = 1
 	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0
-
 
 /obj/item/pinpointer/attack_self(mob/user)
 	. = ..()

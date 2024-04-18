@@ -9,11 +9,8 @@
 	/// will be assigned the shuttle's ref post-init
 	var/datum/shuttle/shuttle
 
-#warn impl all
-
 /area/shuttle/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
 	shuttle = from_shuttle
-	#warn impl
 
 /**
  * autodetecting area
@@ -24,8 +21,13 @@
 	/// [name] [count?] [descriptor?]
 	var/descriptor = "Compartment"
 
-/area/shuttle/auto/proc/auto_name_instance(shuttle_name)
-	name = "[shuttle_name][count && " [count]"][descriptor && " [descriptor]"]"
+/area/shuttle/auto/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	. = ..()
+	auto_name_instance(shuttle.name, shuttle.display_name)
+
+/area/shuttle/auto/proc/auto_name_instance(real_name, display_name)
+	src.name = "[real_name][count && " [count]"][descriptor && " [descriptor]"]"
+	src.display_name = display_name
 
 /area/shuttle/auto/primary
 	count = "Primary"

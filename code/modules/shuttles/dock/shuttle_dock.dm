@@ -3,7 +3,7 @@
 
 /**
  * Shuttle docking points.
- * 
+ *
  * When a shuttle docks, the shuttle aligns its docking port with our shuttle dock with some Magic Bullshit Math.
  */
 /obj/shuttle_dock
@@ -53,10 +53,10 @@
 	///
 	/// this should be an unique area, like /area/space
 	/// otherwise, stuff like grids will be mad at you and explode
-	/// 
+	///
 	/// alternatively, this should be an instance
 	/// if this is set to a path, it'll be created or grabbed (if unique)
-	/// 
+	///
 	/// if zlevel default isn't found, defaults to world.area
 	var/area/base_area
 
@@ -100,7 +100,7 @@
 	/// are we registered?
 	var/registered = FALSE
 	/// do we register by type?
-	/// 
+	///
 	/// if we want to reference this dock by type, we must set this to TRUe.
 	var/register_by_type = FALSE
 	/// registered shuttle hooks
@@ -138,7 +138,7 @@
 /obj/shuttle_dock/LateInitialize()
 	. = ..()
 	if(!detect_bounds())
-		stack_trace("shuttle dock at [COORD(src)] failed bounds init; something is seriously wrong!")
+		stack_trace("shuttle dock at [COORD(src)] failed bounds detect; something is seriously wrong!")
 		to_chat(
 			target = world,
 			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed to find its bounds. Please contact coders if you see this message."),
@@ -185,9 +185,8 @@
 			if(T.loc == base_area)
 				continue
 			turfs -= T
-		var/area/world_base_area = unique_area_of_type(SSmapping.level_base_area(z))
-		world_base_area?.contents += turfs
-		#warn transfer area with some helper
+		var/area/world_base_area = dynamic_area_of_type(SSmapping.level_base_area(z))
+		world_base_area.take_turfs(turfs)
 		qdel(base_area)
 	return ..()
 
@@ -204,8 +203,7 @@
 	var/list/turfs = bounding_north_ordered_turfs()
 	if(create_bounding_box_area)
 		var/area/area_instance = base_area_instance()
-		area_instance.contents += turfs
-		#warn transfer area with some helper
+		area_instance.take_turfs(turfs)
 	return TRUE
 
 /obj/shuttle_dock/proc/detect_bounds()
@@ -345,7 +343,7 @@
  */
 /obj/shuttle_dock/proc/base_area_instance()
 	if(!base_area)
-		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z)) 
+		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
 	return base_area
 
 //* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//
@@ -355,14 +353,12 @@
 
 /obj/shuttle_dock/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
 	return
-	
+
 /obj/shuttle_dock/grid_collect(grid_flags, turf/new_turf, loc_opinion)
 	return
 
 /obj/shuttle_dock/grid_finished(grid_flags, rotation_angle)
 	return
-
-#warn above should be also implemented on anchor, and port, they're moved via shuttle instead of this code.
 
 /**
  * literally just a landing pad

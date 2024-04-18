@@ -81,10 +81,10 @@ SUBSYSTEM_DEF(supply)
 
 // Selling
 /datum/controller/subsystem/supply/proc/sell()
-	// Loop over each area in the supply shuttle
-	for(var/area/subarea in shuttle.shuttle_area)
-		callHook("sell_shuttle", list(subarea));
-		for(var/atom/movable/MA in subarea)
+	var/list/turf/region = GLOB.legacy_cargo_shuttle?.shuttle_turfs_here()
+	for(var/turf/turf as anything in region)
+		callHook("sell_turf", list(turf));
+		for(var/atom/movable/MA in turf)
 			if(MA.anchored)
 				continue
 

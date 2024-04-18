@@ -14,10 +14,10 @@
 	/// scan cooldown
 	var/scan_delay = 10 SECONDS
 
-/obj/machinery/computer/bioscan/Initialize(mapload)
+/obj/machinery/computer/bioscan/preloading_instance(with_id)
 	. = ..()
 	if(network_key_obfuscated)
-		network_key = SSmapping.subtly_obfuscated_id(network_key_obfuscated, "bioscan_network")
+		network_key = SSmapping.obfuscated_persistent_id(network_key_obfuscated, "bioscan_network", with_id)
 
 /obj/machinery/computer/bioscan/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)

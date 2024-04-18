@@ -26,7 +26,7 @@
 /datum/controller/subsystem/mapping/proc/init_obfuscation_data()
 	// use either round ID or realtime
 	// no chance of collisions
-	round_global_descriptor = GLOB.round_id ? "[GLOB.round_id]" : "T[num2text(world.realtime, 16)]"
+	round_global_descriptor = GLOB.round_id ? "[GLOB.round_id]" : "[num2hex(world.realtime)]"
 
 /**
  * Get a short hash for a map specific ID.
@@ -37,14 +37,14 @@
 	if(isnull(round_local_mangling_cache[id]))
 		// generate hash
 		var/increment = 0
-		var/final
+		var/generated
 		do
-			final = "[id][increment++]"
+			generated = "[id][increment++]"
 			// 5 characters
-			final = copytext(md5(final), 1, 6)
-		while(round_local_mangling_reverse_cache[final])
-		round_local_mangling_cache[id] = final
-		round_local_mangling_reverse_cache[final] = id
+			generated = copytext(md5(generated), 1, 6)
+		while(round_local_mangling_reverse_cache[generated])
+		round_local_mangling_cache[id] = generated
+		round_local_mangling_reverse_cache[generated] = id
 	return round_local_mangling_cache[id]
 
 /**
@@ -84,12 +84,13 @@
 	return "[round_global_descriptor]-[hash_for_mangling_id(with_mangling_id)]-[id]"
 
 /**
- * Call this after mangling. This does not mangle by itself.
+ * Generates an obfuscated ID.
  *
  * * This is not globally (cross-round) unique.
- * * This does not generate human-readable IDs
+ * * This does not necessarily generate human-readable IDs
  * * This generates IDs that may be player accessible.
  * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
+ * * This only mangles the ID if called with_mangling_id in preloading_instance. Please be aware of that.
  *
  * @params
  * * id - original id
@@ -105,12 +106,13 @@
 	return md5(id)
 
 /**
- * Call this after mangling. This does not mangle by itself.
+ * Generates an obfuscated ID.
  *
  * * This will be globally (cross-round) unique.
- * * This does not generate human-readable IDs
+ * * This does not necessarily generate human-readable IDs
  * * This generates IDs that may be player accessible.
  * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
+ * * This only mangles the ID if called with_mangling_id in preloading_instance. Please be aware of that.
  *
  * @params
  * * id - original id
@@ -124,37 +126,3 @@
 	// todo: collision checks.
 	#warn redo
 	return "[round_global_descriptor]-[md5(id)]"
-
-/**
- * * This is not globally (cross-round) unique.
- * * This generates human-readable IDs
- * * This generates IDs that may be player accessible.
- * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
- *
- * @params
- * * id - original id
- * * key - provide a custom key to provide separation from other ids, if needed.
- * * with_mangling_id - provide the mangling id if being called in preloading_instance()
- */
-/datum/controller/subsystem/mapping/proc/random_round_local_id(id, key, with_mangling_id)
-	if(!id)
-		return id
-	#warn impl
-
-/**
- * Call this after mangling. This does not mangle by itself.
- *
- * * This will be globally (cross-round) unique.
- * * This generates human-readable IDs
- * * This generates IDs that may be player accessible.
- * * Better results are obtained by calling this in preloading_instance(), but it is not mandatory.
- *
- * @params
- * * id - original id
- * * key - provide a custom key to provide separation from other ids, if needed.
- * * with_mangling_id - provide the mangling id if being called in preloading_instance()
- */
-/datum/controller/subsystem/mapping/proc/random_persistent_id(id, key, with_mangling_id)
-	if(!id)
-		return id
-	#warn impl

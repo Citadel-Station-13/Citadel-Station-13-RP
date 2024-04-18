@@ -4,6 +4,8 @@ GLOBAL_DATUM(legacy_cargo_station_dock, /obj/shuttle_dock)
 GLOBAL_DATUM(legacy_cargo_centcom_dock, /obj/shuttle_dock)
 GLOBAL_DATUM(legacy_emergency_shuttle_station_dock, /obj/shuttle_dock)
 GLOBAL_DATUM(legacy_emergency_shuttle_centcom_dock, /obj/shuttle_dock)
+GLOBAL_DATUM(legacy_cargo_shuttle, /datum/shuttle)
+GLOBAL_DATUM(legacy_emergency_shuttle, /datum/shuttle)
 
 /obj/shuttle_dock/hardcoded_legacy
 	centered_landing_allowed = FALSE

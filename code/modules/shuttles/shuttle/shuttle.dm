@@ -23,6 +23,8 @@
 	var/name = "Unnamed Shuttle"
 	/// are we mid-delete? controls whether we, and our components are immune to deletion.
 	var/being_deleted = FALSE
+	/// our globally persistent-unique identifier string
+	var/id
 
 	//* Composition
 	/// our shuttle controller
@@ -69,6 +71,10 @@
 	//* Hooks
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
+
+	//* Identity
+	/// player-facing name
+	var/display_name
 
 	//* Preview
 	/// lower-left aligned preview overlay; used for shuttle dockers and similar
@@ -176,8 +182,11 @@
 /datum/shuttle/proc/aabb_ordered_turfs_at(turf/anchor, direction)
 	return src.anchor.aabb_ordered_turfs_at(anchor, direction)
 
-/datum/shuttle/proc/shuttle_turfs()
+/datum/shuttle/proc/shuttle_turfs_here()
 	return SSgrids.filter_ordered_turfs_via_area(areas, aabb_ordered_turfs_here())
+
+/datum/shuttle/proc/shuttle_turfs_at(turf/anchor, direction)
+	return SSgrids.filter_ordered_turfs_via_area(areas, aabb_ordered_turfs_at(anchor, direction))
 
 //* Docking - Control *//
 

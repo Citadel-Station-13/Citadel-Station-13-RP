@@ -386,11 +386,11 @@ var/bomb_set
 		off_station = 2
 
 	if(SSticker)
-		if(SSticker.mode && SSticker.mode.name == "Mercenary")
-			var/obj/machinery/computer/shuttle_control/syndicate/syndie_location = locate(/obj/machinery/computer/shuttle_control/syndicate)
-			if(syndie_location)
-				SSticker.mode:syndies_didnt_escape = (syndie_location.z > 1 ? 0 : 1)	//muskets will make me change this, but it will do for now
-			SSticker.mode:nuke_off_station = off_station
+		// if(SSticker.mode && SSticker.mode.name == "Mercenary")
+		// 	var/obj/machinery/computer/shuttle_control/syndicate/syndie_location = locate(/obj/machinery/computer/shuttle_control/syndicate)
+		// 	if(syndie_location)
+		// 		SSticker.mode:syndies_didnt_escape = (syndie_location.z > 1 ? 0 : 1)	//muskets will make me change this, but it will do for now
+		// 	SSticker.mode:nuke_off_station = off_station
 		SSticker.station_explosion_cinematic(off_station,null)
 		if(SSticker.mode)
 			SSticker.mode.explosion_in_progress = 0
@@ -400,15 +400,15 @@ var/bomb_set
 															//kinda shit but I couldn't  get permission to do what I wanted to do.
 
 			if(!SSticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
-				to_chat(world, "<B>Resetting in 30 seconds!</B>")
+				// to_chat(world, "<B>Resetting in 30 seconds!</B>")
 
-				feedback_set_details("end_error","nuke - unhandled ending")
+				// feedback_set_details("end_error","nuke - unhandled ending")
 
-				if(blackbox)
-					blackbox.save_all_data_to_sql()
-				sleep(300)
-				log_game("Rebooting due to nuclear detonation")
-				world.Reboot()
+				// if(blackbox)
+				// 	blackbox.save_all_data_to_sql()
+				// sleep(300)
+				// log_game("Rebooting due to nuclear detonation")
+				// world.Reboot()
 				return
 	return
 

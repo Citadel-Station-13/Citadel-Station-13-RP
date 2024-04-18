@@ -35,7 +35,7 @@
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	//? intrinsics
+	//* intrinsics
 	/// area flags
 	var/area_flags = NONE
 	/// stores the next uid to use
@@ -48,11 +48,16 @@
 	 */
 	var/unique = TRUE
 
-	//? defaults
+	//* defaults
 	/// outdoors by default?
 	var/initial_outdoors = FALSE
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
+
+
+	//* Identity
+	/// player-facing name, overrides name when / if necessary.
+	var/display_name
 
 	//? nightshift
 	/// nightshift level
@@ -713,7 +718,7 @@ var/list/ghostteleportlocs = list()
 
 	return 1
 
-//* Atmospherics
+//* Atmospherics *//
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)
@@ -758,3 +763,19 @@ var/list/ghostteleportlocs = list()
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
 		if(scrubber.id_tag == id)
 			return scrubber
+
+//* Turfs *//
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs(list/turf/turfs)
+	for(var/turf/T in turfs)
+		ChangeArea(T, src)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		ChangeArea(T, give_to)

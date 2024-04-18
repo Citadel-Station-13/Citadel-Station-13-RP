@@ -188,3 +188,15 @@
 	#warn impl
 
 #warn impl all
+
+/obj/shuttle_anchor/grid_move(grid_flags, turf/new_turf)
+	return
+
+/obj/shuttle_anchor/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	return
+
+/obj/shuttle_anchor/grid_collect(grid_flags, turf/new_turf, loc_opinion)
+	return
+
+/obj/shuttle_anchor/grid_finished(grid_flags, rotation_angle)
+	return

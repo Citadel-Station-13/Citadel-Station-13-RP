@@ -263,16 +263,19 @@
  * * deferred_callbacks - generation callbacks to defer. if this isn't provided, we fire them + finalize immediately.
  * * orientation - load orientation override
  * * area_cache - pass in area cache for bundling to dmm_parsed.
+ * * mangling_id - mangle ID passed for preloading_instance
  *
  * @return loaded bounds, or null on fail
  */
-/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache)
+/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache, mangling_id)
+	if(isnull(mangling_id))
+		mangling_id = instance.id
 	UNTIL(!load_mutex)
 	load_mutex = TRUE
 	. = _load_level(arglist(args))
 	load_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache)
+/datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache, mangling_id)
 	PRIVATE_PROC(TRUE)
 
 	instance = _allocate_level(instance, FALSE)
@@ -305,7 +308,16 @@
 		map_initialization_hooked = list()
 	map_initialization_hooking = list()
 
-	var/list/loaded_bounds = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache)
+	var/list/loaded_bounds = parsed.load(
+		real_x,
+		real_y,
+		real_z,
+		no_changeturf = TRUE,
+		place_on_top = FALSE,
+		orientation = real_orientation,
+		area_cache = area_cache,
+		mangling_id = mangling_id,
+	)
 
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)

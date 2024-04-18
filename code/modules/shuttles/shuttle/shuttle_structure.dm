@@ -6,7 +6,7 @@
  */
 /obj/shuttle_structure
 	name = "shuttle superstructure"
-	desc = "The nigh-indestructible allow framework making up the parts of a modern shuttle."
+	desc = "The nigh-indestructible alloy frame of a shuttle."
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	obj_flags = NONE
 	#warn sprite + smoothing
@@ -31,9 +31,8 @@
 	loc = new_turf
 
 /obj/shuttle_structure/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
-	#warn rotate
 	return
-	
+
 /obj/shuttle_structure/grid_collect(grid_flags, turf/new_turf, loc_opinion)
 	return
 

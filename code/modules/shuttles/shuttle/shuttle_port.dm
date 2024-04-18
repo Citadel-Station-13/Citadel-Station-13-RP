@@ -58,6 +58,10 @@
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
 
+/obj/shuttle_port/preloading_instance(with_id)
+	. = ..()
+	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
+
 /obj/shuttle_port/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
 	shuttle = from_shuttle
 	#warn impl
@@ -92,6 +96,18 @@
 		direction,
 	)
 
+/obj/shuttle_port/grid_move(grid_flags, turf/new_turf)
+	return
+
+/obj/shuttle_port/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	return
+
+/obj/shuttle_port/grid_collect(grid_flags, turf/new_turf, loc_opinion)
+	return
+
+/obj/shuttle_port/grid_finished(grid_flags, rotation_angle)
+	return
+
 /obj/shuttle_port/north
 	dir = NORTH
 
@@ -125,7 +141,7 @@
 
 /obj/shuttle_port/two_wide/left_aligned/west
 	dir = WEST
-	
+
 /obj/shuttle_port/two_wide/right_aligned
 
 /obj/shuttle_port/two_wide/right_aligned/north

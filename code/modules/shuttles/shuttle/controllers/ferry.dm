@@ -6,10 +6,11 @@
  *
  * we have two destinations, linked directly via shuttle ids
  *
- * please use web shuttles for multi-dock one-destination.
+ * please use web shuttles for multi-dock on single destination support.
  */
 /datum/shuttle_controller/ferry
 	tgui_module = "TGUIShuttleFerry"
+
 	/// home dock id or typepath
 	var/dock_home_id
 	/// away dock id or typepath

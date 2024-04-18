@@ -397,7 +397,7 @@
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
-	var/direction = old_loc.z == new_loc.z? get_dir(old_loc, new_loc) : noNE
+	var/direction = old_loc.z == new_loc.z? get_dir(old_loc, new_loc) : NONE
 	loc = new_loc
 	Moved(old_loc, direction, TRUE)
 

@@ -1,8 +1,8 @@
 /var/global/running_demand_events = list()
 
-/hook/sell_shuttle/proc/supply_demand_sell_shuttle(var/area/area_shuttle)
+/hook/sell_turf/proc/supply_demand_sell_shuttle(var/turf/T)
 	for(var/datum/event/supply_demand/E in running_demand_events)
-		E.handle_sold_shuttle(area_shuttle)
+		E.handle_sold_shuttle(T)
 	return 1 // All hooks must return one to show success.
 
 //
@@ -96,10 +96,10 @@
 /**
  * Event Handler for responding to the supply shuttle arriving at centcom.
  */
-/datum/event/supply_demand/proc/handle_sold_shuttle(var/area/area_shuttle)
+/datum/event/supply_demand/proc/handle_sold_shuttle(var/turf/T)
 	var/match_found = 0;
 
-	for(var/atom/movable/MA in area_shuttle)
+	for(var/atom/movable/MA in T)
 		// Special case to allow us to count mechs!
 		if(MA.anchored && !istype(MA, /obj/mecha))	continue // Ignore anchored stuff
 
