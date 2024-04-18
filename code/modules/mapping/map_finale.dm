@@ -11,6 +11,8 @@
  * 'recall': cancel
  */
 /datum/map_finale
+	/// ID set for UI identification
+	var/id
 	/// requires constant ticking; can't modify this at runtime
 	var/requires_constant_ticking = FALSE
 	/// currently active / called
@@ -50,6 +52,40 @@
 		"recall" = command_recall_entry,
 		"callConfirm" = command_call_prompt,
 		"recallConfirm" = command_recall_entry,
+	)
+
+/**
+ * called when.. called
+ *
+ * @params
+ * * arguments - key-value list of args specified in UI
+ *
+ * @return list(
+ * 	"success" = TRUE / FALSE,
+ * 	"reason" = string | null,
+ * )
+ */
+/datum/map_finale/proc/command_console_call(list/arguments)
+	return list(
+		"success" = FALSE,
+		"reason" = "Unknown error. Please contact a NTOS specialist (report this to coders).",
+	)
+
+/**
+ * called when.. recalled
+ *
+ * @params
+ * * arguments - key-value list of args specified in UI
+ *
+ * @return list(
+ * 	"success" = TRUE / FALSE,
+ * 	"reason" = string | null,
+ * )
+ */
+/datum/map_finale/proc/command_console_recall(list/arguments)
+	return list(
+		"success" = FALSE,
+		"reason" = "Unknown error. Please contact a NTOS specialist (report this to coders).",
 	)
 
 /**

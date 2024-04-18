@@ -414,9 +414,6 @@
 	user << browse(dat, "window=communications;size=400x500")
 	onclose(user, "communications")
 
-
-
-
 /obj/machinery/computer/communications/proc/interact_ai(var/mob/living/silicon/ai/user as mob)
 	var/dat = ""
 	switch(src.aistate)
@@ -465,10 +462,6 @@
 
 	dat += "<BR>\[ [(src.aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	return dat
-
-/proc/enable_prison_shuttle(var/mob/user)
-	for(var/obj/machinery/computer/prison_shuttle/PS in GLOB.machines)
-		PS.allowedtocall = !(PS.allowedtocall)
 
 /proc/call_shuttle_proc(var/mob/user)
 	if ((!( SSticker ) || !SSemergencyshuttle.location()))
@@ -556,21 +549,11 @@
 /proc/cancel_call_proc(var/mob/user)
 	if (!( SSticker ) || !SSemergencyshuttle.can_recall())
 		return
-	if((SSticker.mode.name == "blob")||(SSticker.mode.name == "Meteor"))
-		return
 
 	if(!SSemergencyshuttle.going_to_centcom()) //check that shuttle isn't already heading to CentCom
 		SSemergencyshuttle.recall()
 		log_game("[key_name(user)] has recalled the shuttle.")
 		message_admins("[key_name_admin(user)] has recalled the shuttle.", 1)
-	return
-
-
-/proc/is_relay_online()
-	for(var/obj/machinery/telecomms/relay/M in world)
-		if(M.machine_stat == 0)
-			return TRUE
-	return FALSE
 
 /obj/machinery/computer/communications/proc/post_status(command, data1, data2)
 
