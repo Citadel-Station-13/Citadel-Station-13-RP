@@ -26468,6 +26468,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/breakroom)
 "twA" = (
@@ -30527,6 +30530,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
 "wFz" = (
@@ -31472,6 +31478,9 @@
 	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
