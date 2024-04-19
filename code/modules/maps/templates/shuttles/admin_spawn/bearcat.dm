@@ -44,7 +44,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/bearcat
 	name = "IRV Bearcat"
-	landmark_tag = "omship_spawn_bearcat"
 	shuttle_type = /datum/shuttle/autodock/overmap/bearcat
 
 /obj/overmap/entity/visitable/ship/landable/bearcat
@@ -63,11 +62,9 @@
 // -- Objs -- //
 /obj/effect/shuttle_landmark/premade/bearcat/dock_w
 	name = "IRV Bearcat - Port Docking Ring"
-	landmark_tag = "bearcat_dock_w"
 
 /obj/effect/shuttle_landmark/premade/bearcat/dock_e
 	name = "IRV Bearcat - Starboard Docking Ring"
-	landmark_tag = "bearcat_dock_e"
 
 /area/ship/scrap
 	name = "\improper Bearcat"

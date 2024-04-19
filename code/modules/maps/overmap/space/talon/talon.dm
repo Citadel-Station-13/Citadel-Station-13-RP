@@ -41,7 +41,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talonboat
 	name = "Talon's boat bay"
-	landmark_tag = "offmap_spawn_talonboat"
 	shuttle_type = /datum/shuttle/autodock/overmap/talonboat
 
 // The talon's boat
@@ -77,7 +76,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat
 	name = "Talon lifeboat dock"
-	landmark_tag = "offmap_spawn_talon_lifeboat"
 	shuttle_type = /datum/shuttle/autodock/overmap/talon_lifeboat
 
 // The talon's boat

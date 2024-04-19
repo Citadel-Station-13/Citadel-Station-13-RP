@@ -22,7 +22,6 @@
 
 /obj/effect/shuttle_landmark/premade/miaphus/piratehideout
 	name = "Pirate Hideout"
-	landmark_tag = "pirate_hideout"
 
 
 //This is a special subtype of the thing that generates ores on a map

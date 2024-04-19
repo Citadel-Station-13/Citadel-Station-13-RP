@@ -22,7 +22,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/generic_shuttle
 	name = "Origin - Private Vessel"
-	landmark_tag = "omship_spawn_generic_shuttle"
 	shuttle_type = /datum/shuttle/autodock/overmap/generic_shuttle
 
 // The 'shuttle'

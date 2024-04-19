@@ -23,7 +23,6 @@
 
 /obj/effect/shuttle_landmark/shuttle_initializer/specops
 	name = "Special Operations Dock"
-	landmark_tag = "specops_hangar"
 	shuttle_type = /datum/shuttle/autodock/overmap/specops
 
 // Spec Ops Areas

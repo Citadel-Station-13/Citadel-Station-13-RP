@@ -22,7 +22,6 @@
 
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate
 	name = "Pirate Skiff Dock"
-	landmark_tag = "pirate_docking_arm"
 	shuttle_type = /datum/shuttle/autodock/overmap/pirate
 
 // Pirate Skiff

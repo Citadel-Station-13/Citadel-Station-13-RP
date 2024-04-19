@@ -10,9 +10,7 @@
 
 
 /obj/effect/shuttle_landmark/shuttle_initializer/map_specifc/virgo2_ferry
-	landmark_tag = "aerostat_east"
 	name = "Virgo 2 Aerostat (E)"
 
 /obj/effect/shuttle_landmark/premade/virgo2_surface
-	landmark_tag = "aerostat_surface"
 	name = "Virgo 2 Surface"

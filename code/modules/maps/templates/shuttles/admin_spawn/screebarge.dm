@@ -21,7 +21,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/screebarge
 	name = "Origin - Battle Barge"
-	landmark_tag = "omship_spawn_battlebarge"
 	shuttle_type = /datum/shuttle/autodock/overmap/screebarge
 
 // The 'shuttle'

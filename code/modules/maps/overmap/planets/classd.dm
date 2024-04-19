@@ -14,19 +14,15 @@
 
 /obj/effect/shuttle_landmark/premade/classd/east
 	name = "Class D - Eastern Zone"
-	landmark_tag = "classd_east"
 
 /obj/effect/shuttle_landmark/premade/classd/west
 	name = "Class D - Western Zone"
-	landmark_tag = "classd_west"
 
 /obj/effect/shuttle_landmark/premade/classd/north
 	name = "Class D - Northern Zone"
-	landmark_tag = "classd_north"
 
 /obj/effect/shuttle_landmark/premade/classd/south
 	name = "Class D - Southern Zone"
-	landmark_tag = "classd_south"
 
 ///Ore Seeding
 

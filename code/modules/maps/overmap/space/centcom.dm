@@ -52,7 +52,6 @@
 // EXCLUSIVE NAV POINT FOR DOCKING INSIDE (ERT SHUTTLE ONLY)
 /obj/effect/shuttle_landmark/specops/hangar
 	name = "NT Special Operations Hangar"
-	landmark_tag = "specops_hangar"
 
 //ERT Cryo
 /obj/machinery/cryopod/robot/door/travel/specops

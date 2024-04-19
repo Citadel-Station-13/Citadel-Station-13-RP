@@ -64,35 +64,28 @@
 
 /obj/effect/shuttle_landmark/triumph/trade
 	name = "Near Nebula Gas Food Mart"
-	landmark_tag = "nebula_space_SW"
 
 // EXCLUSIVE TRADE PORT NAV POINTS
 
 /obj/effect/shuttle_landmark/triumph/trade/mining
 	name = "Nebula Gas Landing Pad 2"
-	landmark_tag = "nebula_pad_2"
 
 /obj/effect/shuttle_landmark/triumph/trade/excursion
 	name = "Nebula Gas Landing Pad 3"
-	landmark_tag = "nebula_pad_3"
 
 /obj/effect/shuttle_landmark/triumph/trade/pirate
 	name = "Nebula Gas Landing Pad 4"
-	landmark_tag = "nebula_pad_4"
 
 /obj/effect/shuttle_landmark/triumph/trade/emt
 	name = "Nebula Gas Landing Pad 5"
-	landmark_tag = "nebula_pad_5"
 
 /obj/effect/shuttle_landmark/triumph/trade/civvie
 	name = "Nebula Gas Landing Pad 6"
-	landmark_tag = "nebula_pad_6"
 
 // EXCLUSIVE TRADE PORT NAV POINT FOR DOCKING INSIDE
 
 /obj/effect/shuttle_landmark/triumph/trade/hangar
 	name = "Beruang Hangar"
-	landmark_tag = "tradeport_hangar"
 
 // Todo
 /*

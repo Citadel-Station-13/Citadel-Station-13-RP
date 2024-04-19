@@ -39,7 +39,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/curashuttle
 	name = "CRV Rescue"
-	landmark_tag = "omship_spawn_curashuttle"
 	shuttle_type = /datum/shuttle/autodock/overmap/curashuttle
 
 // The 'ship'

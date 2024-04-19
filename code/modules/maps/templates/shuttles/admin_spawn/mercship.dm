@@ -80,7 +80,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/mercboat
 	name = "Carrier's Boat Bay"
-	landmark_tag = "omship_spawn_mercboat"
 	shuttle_type = /datum/shuttle/autodock/overmap/mercboat
 
 // The 'shuttle'

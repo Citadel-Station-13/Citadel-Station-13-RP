@@ -22,20 +22,16 @@
 // Shared landmark for docking at the station
 /obj/effect/shuttle_landmark/station_dockpoint1
 	name = "Station Docking Point 1"
-	landmark_tag = "nav_station_docking1"
 
 /obj/effect/shuttle_landmark/station_dockpoint2
 	name = "Station Docking Point 2"
-	landmark_tag = "nav_station_docking2"
 
 // Shared landmark for docking *inside* the station
 /obj/effect/shuttle_landmark/station_inside
 	name = "Internal Hangar"
-	landmark_tag = "nav_station_inside"
 
 /obj/effect/shuttle_landmark/shared_space
 	name = "Somewhere In Space"
-	landmark_tag = "nav_shared_space"
 
 //
 // Ferry Demo Shuttle
@@ -56,12 +52,10 @@
 
 /obj/effect/shuttle_landmark/ferrydemo_space
 	name = "Ferry-Demo Space Hover Point"
-	landmark_tag = "nav_ferrydemo_space"
 	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /obj/effect/shuttle_landmark/transit/ferrydemo_transit
 	name = "Ferry-Demo Transient Point"
-	landmark_tag = "nav_ferrydemo_transit"
 	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 //
@@ -84,16 +78,13 @@
 
 /obj/effect/shuttle_landmark/multidemo_start
 	name = "Multi-Demo Starting Point"
-	landmark_tag = "nav_multidemo_start"
 
 /obj/effect/shuttle_landmark/multidemo_nearby
 	name = "Multi-Demo Nearby"
-	landmark_tag = "nav_multidemo_nearby"
 	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /obj/effect/shuttle_landmark/transit/multidemo_transit
 	name = "Multi-Demo Transient Point"
-	landmark_tag = "nav_multidemo_transit"
 	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 
@@ -152,7 +143,6 @@
 
 /obj/effect/shuttle_landmark/transit/webdemo_transit
 	name = "Web-Demo Transient Point"
-	landmark_tag = "nav_webdemo_transit"
 	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /datum/shuttle_destination/webdemo/nearby_bridge
@@ -167,7 +157,6 @@
 
 /obj/effect/shuttle_landmark/webdemo_faraway
 	name = "\"Deep\" Space"
-	landmark_tag = "nav_webdemo_faraway"
 	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /datum/shuttle_destination/webdemo/faraway

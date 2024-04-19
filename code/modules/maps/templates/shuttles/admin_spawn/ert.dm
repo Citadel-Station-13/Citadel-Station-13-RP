@@ -116,32 +116,25 @@
 
 /obj/effect/shuttle_landmark/premade/ert_ship_port
 	name = "NRV Von Braun - Port Airlock"
-	landmark_tag = "ert_ship_port"
 
 /obj/effect/shuttle_landmark/premade/ert_ship_star
 	name = "NRV Von Braun - Starboard Airlock"
-	landmark_tag = "ert_ship_star"
 
 /obj/effect/shuttle_landmark/premade/ert_ship_near_fore
 	name = "Near NRV Von Braun (Fore)"
-	landmark_tag = "ert_ship_near_fore"
 
 /obj/effect/shuttle_landmark/premade/ert_ship_near_aft
 	name = "Near NRV Von Braun (Aft)"
-	landmark_tag = "ert_ship_near_aft"
 
 /obj/effect/shuttle_landmark/premade/ert_ship_near_port
 	name = "Near NRV Von Braun (Port)"
-	landmark_tag = "ert_ship_near_port"
 
 /obj/effect/shuttle_landmark/premade/ert_ship_near_star
 	name = "Near NRV Von Braun (Starboard)"
-	landmark_tag = "ert_ship_near_star"
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/ert_ship_boat
 	name = "NRV Von Braun's Bay"
-	landmark_tag = "omship_spawn_ert_lander"
 	shuttle_type = /datum/shuttle/autodock/overmap/ert_ship_boat
 
 // The 'shuttle'

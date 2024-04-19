@@ -81,7 +81,6 @@
 
 /obj/effect/shuttle_landmark/ship
 	name = "Open Space"
-	landmark_tag = "ship"
 	shuttle_landmark_flags = SLANDMARK_FLAG_ZERO_G // *Not* AUTOSET, these must be world.turf and world.area for lazy loading to work.
 	var/shuttle_name
 	var/list/visitors // landmark -> visiting shuttle stationed there

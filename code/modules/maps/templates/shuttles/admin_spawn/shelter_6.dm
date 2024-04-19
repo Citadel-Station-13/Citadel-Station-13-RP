@@ -17,7 +17,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/tabiranth
 	name = "Origin - Tabiranth"
-	landmark_tag = "omship_spawn_tabiranth"
 	shuttle_type = /datum/shuttle/autodock/overmap/tabiranth
 
 // The 'shuttle'
