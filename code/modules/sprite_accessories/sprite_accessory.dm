@@ -54,7 +54,6 @@
 	/// used for making stuff not look flat and other effects.
 	/// a state with [icon_state]-add will be added.
 	/// -front, -back, -side will be specified as needed too if this is the case.
-	//  todo: this doesn't work yet.
 	var/has_add_state = FALSE
 
 	//* legacy below
@@ -68,8 +67,6 @@
 	/// use additive color matrix on the main overlay, rather than multiply
 	/// this is slow, please stop using it and do proper greyscales.
 	var/legacy_use_additive_color_matrix = FALSE
-	/// use front/behind, citadel snowflake for now; only usable on wings/tails
-	var/front_behind_system_legacy = FALSE
 
 	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
 	// these two are moved up for now
@@ -104,102 +101,49 @@
 				decoded[1] / 255, decoded[2] / 255, decoded[3] / 255,
 			)
 			colors[i] = computed
+
+	// todo: refactor so we don't need to manually build
+	var/list/icon_states = list(with_base_state)
+	if(extra_overlay)
+		icon_states += extra_overlay
+	if(extra_overlay2)
+		icon_states += extra_overlay2
+
 	var/list/layers = list()
-	if(front_behind_system_legacy)
+	var/index = 0
+	// process base layers
+	for(var/state in icon_states)
+		++index
 		var/image/rendering
-		rendering = image(icon, "[with_base_state]_FRONT", layer_front)
-		if(do_colouration)
-			if(length(colors) >= 1)
-				rendering.color = colors[1]
+		// front
+		rendering = image(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[state]-front" : "[state]", layer_front)
+		if(do_colouration && length(colors) >= index)
+			rendering.color = colors[index]
+		// process add layer if needed
+		if(has_add_state)
+			var/image/adding
+			adding = image(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[with_base_state]-add-front" : "[with_base_state]-add", layer_front)
+			adding.blend_mode = BLEND_ADD
+			rendering.overlays += adding
+		// add
 		layers += rendering
-		rendering = image(icon, "[with_base_state]_BEHIND", layer_behind)
-		if(do_colouration)
-			if(length(colors) >= 1)
-				rendering.color = colors[1]
-		layers += rendering
-		if(extra_overlay)
-			rendering = image(icon, "[extra_overlay]_FRONT", layer_front)
-			if(length(colors) >= 2)
-				rendering.color = colors[2]
+
+		if(icon_sidedness >= SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
+			// behind
+			rendering = image(icon, "[state]-behind", layer_behind)
+			if(do_colouration && length(colors) >= index)
+				rendering.color = colors[index]
+			// process add layer if needed
+			if(has_add_state)
+				var/image/adding
+				adding = image(icon, "[with_base_state]-add-behind", layer_behind)
+				adding.blend_mode = BLEND_ADD
+				rendering.overlays += adding
+			// add
 			layers += rendering
-			rendering = image(icon, "[extra_overlay]_BEHIND", layer_behind)
-			if(length(colors) >= 2)
-				rendering.color = colors[2]
-			layers += rendering
-		if(extra_overlay2)
-			rendering = image(icon, "[extra_overlay2]_FRONT", layer_front)
-			if(length(colors) >= 3)
-				rendering.color = colors[3]
-			layers += rendering
-			rendering = image(icon, "[extra_overlay2]_BEHIND", layer_behind)
-			if(length(colors) >= 3)
-				rendering.color = colors[3]
-			layers += rendering
-	else
-		switch(icon_sidedness)
-			if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
-				var/image/rendering
-				rendering = image(icon, with_base_state, layer_front)
-				if(do_colouration)
-					if(length(colors) >= 1)
-						rendering.color = colors[1]
-				layers += rendering
-				if(extra_overlay)
-					rendering = image(icon, extra_overlay, layer_front)
-					if(length(colors) >= 2)
-						rendering.color = colors[2]
-					layers += rendering
-				if(extra_overlay2)
-					rendering = image(icon, extra_overlay2, layer_front)
-					if(length(colors) >= 3)
-						rendering.color = colors[3]
-					layers += rendering
-				if(has_add_state)
-					var/image/adding
-					adding = image(icon, "[with_base_state]-add", layer_front)
-					adding.blend_mode = BLEND_ADD
-					layers += adding
-			if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
-				var/image/rendering
-				rendering = image(icon, "[with_base_state]-front", layer_front)
-				if(do_colouration)
-					if(length(colors) >= 1)
-						rendering.color = colors[1]
-				layers += rendering
-				rendering = image(icon, "[with_base_state]-behind", layer_behind)
-				if(do_colouration)
-					if(length(colors) >= 1)
-						rendering.color = colors[1]
-				layers += rendering
-				if(extra_overlay)
-					rendering = image(icon, "[extra_overlay]-front", layer_front)
-					if(length(colors) >= 2)
-						rendering.color = colors[2]
-					layers += rendering
-					rendering = image(icon, "[extra_overlay]-behind", layer_behind)
-					if(length(colors) >= 2)
-						rendering.color = colors[2]
-					layers += rendering
-				if(extra_overlay2)
-					rendering = image(icon, "[extra_overlay2]-front", layer_front)
-					if(length(colors) >= 3)
-						rendering.color = colors[3]
-					layers += rendering
-					rendering = image(icon, "[extra_overlay2]-behind", layer_behind)
-					if(length(colors) >= 3)
-						rendering.color = colors[3]
-					layers += rendering
-				if(has_add_state)
-					var/image/adding
-					adding = image(icon, "[with_base_state]-add-front", layer_front)
-					adding.blend_mode = BLEND_ADD
-					layers += adding
-					adding = image(icon, "[with_base_state]-add-behind", layer_behind)
-					adding.blend_mode = BLEND_ADD
-					layers += adding
 
 	for(var/image/patching as anything in layers)
-		patching.appearance_flags = KEEP_TOGETHER
+		// patching.appearance_flags = KEEP_TOGETHER
 		switch(icon_alignment)
 			if(SPRITE_ACCESSORY_ALIGNMENT_IGNORE)
 			if(SPRITE_ACCESSORY_ALIGNMENT_BOTTOM)
@@ -207,8 +151,6 @@
 			if(SPRITE_ACCESSORY_ALIGNMENT_CENTER)
 				patching.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
 				patching.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
-	// #warn deal with adds
-	// todo: lol it doesn'tw ork deal with it i'm not dealing with this crap today, maybe another pr
 
 	return layers
 

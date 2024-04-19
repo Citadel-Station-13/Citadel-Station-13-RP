@@ -33,11 +33,12 @@
 /datum/sprite_accessory/tail/teshari_fluffytail
 	name = "Teshari tail"
 	id = "tail_teshari_fluffy"
-	icon_state = "teshari_fluffytail"
-	extra_overlay = "teshari_fluffytail_mark"
-	do_colouration = 1
+	icon = 'icons/mob/sprite_accessory/tails/teshari.dmi'
+	icon_state = "fluffy"
+	extra_overlay = "fluffy_2"
+	do_colouration = tRUE
 	legacy_use_additive_color_matrix = FALSE
-	front_behind_system_legacy = TRUE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 /datum/sprite_accessory/tail/special/teshtailfeathered
 	name = "Teshari tail alt"

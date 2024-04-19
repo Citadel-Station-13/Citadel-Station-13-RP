@@ -6,6 +6,7 @@
  */
 /mob/living/carbon/proc/rebuild_standing_overlays(dump_all_overlays = TRUE)
 	regenerate_icons()
+	// todo: rebuild inventory
 	reapply_standing_overlays(dump_all_overlays)
 
 /**
@@ -21,6 +22,7 @@
 		cut_overlays()
 	for(var/key in standing_overlays)
 		add_overlay(standing_overlays[key])
+	inventory.reapply_slot_renders()
 
 /**
  * obliterate a keyed overlay or list of keyed overlays from our overlays

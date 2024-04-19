@@ -20,10 +20,12 @@
 	name = "kitty (big), colorable"
 	id = "tail_cat_big"
 	icon_state = "catbig"
-	ani_state = "catbig_wag"
-	do_colouration = 1
+	variations = list(
+		SPRITE_ACCESSORY_VARIATION_WAGGING = "catbig_wag",
+	)
+	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
-	front_behind_system_legacy = TRUE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 /datum/sprite_accessory/tail/kitty
 	name = "kitty, colorable, downwards"

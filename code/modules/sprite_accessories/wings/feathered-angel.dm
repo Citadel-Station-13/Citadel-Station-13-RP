@@ -2,10 +2,10 @@
 	name = "angel wings"
 	id = "angelwings"
 	icon = 'icons/mob/sprite_accessory/wings/feathered-angel.dmi'
-	icon_state = "angelwings"
+	icon_state = "angel"
 	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
-	front_behind_system_legacy = TRUE
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 //64x48 Wings
 /datum/sprite_accessory/wing/seraph

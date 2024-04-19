@@ -1,4 +1,26 @@
+GLOBAL_LIST_EMPTY(hair_gradient_icons)
 
+// todo: should we really be doing this?
+/proc/hair_gradient_icon(id, list/image/layers, gradient, width = WORLD_ICON_SIZE)
+	var/cache_key = "[id]-[width]"
+	if(isnull(GLOB.hair_gradient_icons[cache_key]))
+		var/icon/combined = icon('icons/system/blank_32x32.dmi', "4-dir")
+		// gather all layers
+		for(var/image/layer as anything in layers)
+			combined.Blend(icon(layer.icon, layer.icon_state, frame = 1), ICON_OVERLAY)
+		// 	combined.Blend(icon(layer.icon, layer.icon_state, dir = SOUTH, frame = 1), BLEND_OVERLAY)
+		// 	combined.Blend(icon(layer.icon, layer.icon_state, dir = EAST, frame = 1), BLEND_OVERLAY)
+		// 	combined.Blend(icon(layer.icon, layer.icon_state, dir = WEST, frame = 1), BLEND_OVERLAY)
+		// var/icon/combined = icon(layers[1].icon, layers[1].icon_state)
+		// gather gradient
+		var/icon/cutting = icon('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[gradient])
+		// we can't make it any taller but we can make it wider..
+		cutting.Scale(width, cutting.Height())
+		// and them together
+		cutting.Blend(combined, ICON_AND)
+		// set; gradient should just be a grayscale (or otherwise) part of the hair where the gradient covers now.
+		GLOB.hair_gradient_icons[cache_key] = cutting
+	return GLOB.hair_gradient_icons[cache_key]
 
 /datum/sprite_accessory/hair
 	abstract_type = /datum/sprite_accessory/hair
@@ -31,20 +53,18 @@
 			adding.blend_mode = BLEND_ADD
 			rendered.overlays += adding
 
+		// then deal with gradient if we have to
 		if(do_colouration && ishuman(for_whom))
 			var/mob/living/carbon/human/casted_human = for_whom
 			if(casted_human.grad_style)
-				var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
-				gradient.color = list(
-					0, 0, 0, 0,
-					0, 0, 0, 0,
-					0, 0, 0, 0,
-					0, 0, 0, 1,
-					casted_human.r_grad / 255, casted_human.g_grad / 255, casted_human.b_grad / 255, 0,
+				var/image/gradient_icon = image(hair_gradient_icon(id, layers, casted_human.grad_style, icon_dimension_x))
+				gradient_icon.color = rgb(
+					casted_human.r_grad,
+					casted_human.g_grad,
+					casted_human.b_grad,
 				)
-				gradient.blend_mode = BLEND_MULTIPLY
-				rendered.overlays += gradient
-
+				gradient_icon.blend_mode = BLEND_OVERLAY
+				rendered.overlays += gradient_icon
 
 	return layers
 

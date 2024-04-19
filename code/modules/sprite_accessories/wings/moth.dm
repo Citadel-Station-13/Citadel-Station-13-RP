@@ -28,8 +28,9 @@
 /datum/sprite_accessory/wing/moth_firewatch
 	name = "firewatch moth wings"
 	id = "wing_moth_firewatch"
-	icon_state = "moth_firewatch"
-	front_behind_system_legacy = TRUE
+	icon = 'icons/mob/sprite_accessory/wings/moth.dmi'
+	icon_state = "firewatch"
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
 /datum/sprite_accessory/wing/moth_full
 	name = "moth antenna and wings"

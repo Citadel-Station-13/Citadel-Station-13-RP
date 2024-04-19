@@ -9,11 +9,14 @@ DEFINE_BITFIELD(hair_flags, list(
 // Hair Defines
 
 //* /datum/sprite_accessory/var/icon_sidedness
+//? These must be numbers!
 
 /// no additional states
-#define SPRITE_ACCESSORY_SIDEDNESS_NONE "none"
+#define SPRITE_ACCESSORY_SIDEDNESS_NONE 0
 /// -front state, and -behind state, use different layers
-#define SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND "front-behind"
+#define SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND 1
+
+// todo: DEFINE_ENUM
 
 //* /datum/sprite_accessory/var/icon_alignment
 
@@ -24,6 +27,8 @@ DEFINE_BITFIELD(hair_flags, list(
 /// center it fully
 #define SPRITE_ACCESSORY_ALIGNMENT_CENTER "center"
 
+// todo: DEFINE_ENUM
+
 //* Sprite Accessory Slots
 
 #define SPRITE_ACCESSORY_SLOT_TAIL "tail"
@@ -33,8 +38,12 @@ DEFINE_BITFIELD(hair_flags, list(
 #define SPRITE_ACCESSORY_SLOT_HAIR "hair"
 #define SPRITE_ACCESSORY_SLOT_FACEHAIR "facehair"
 
+// todo: DEFINE_ENUM
+
 //* Sprite Accessory Variations (Standard)
 
 #define SPRITE_ACCESSORY_VARIATION_FLAPPING "Flapping"
 #define SPRITE_ACCESSORY_VARIATION_WAGGING "Wagging"
 #define SPRITE_ACCESSORY_VARIATION_SPREAD "Spread"
+
+// todo: DEFINE_ENUM
