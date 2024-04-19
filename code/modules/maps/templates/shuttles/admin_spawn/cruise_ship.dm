@@ -19,8 +19,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/cruise_ship
 	name = "Origin - Cruise Shuttle"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_aerondight"
 	shuttle_type = /datum/shuttle/autodock/overmap/cruise_ship
 

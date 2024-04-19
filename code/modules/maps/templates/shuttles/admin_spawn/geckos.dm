@@ -104,22 +104,16 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_sh
 	name = "ITV Gecko I"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_gecko_sh"
 	shuttle_type = /datum/shuttle/autodock/overmap/gecko_sh
 
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr
 	name = "ITV Gecko II"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_gecko_cr"
 	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr
 
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr_wreck
 	name = "ITV Gecko III"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_gecko_cr_wreck"
 	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr_wreck
 

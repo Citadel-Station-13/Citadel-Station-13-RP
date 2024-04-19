@@ -53,9 +53,6 @@
 /obj/effect/shuttle_landmark/specops/hangar
 	name = "NT Special Operations Hangar"
 	landmark_tag = "specops_hangar"
-	docking_controller = "specops_hangar_dock"
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid
-	base_area = /area/centcom/specops/dock
 
 //ERT Cryo
 /obj/machinery/cryopod/robot/door/travel/specops

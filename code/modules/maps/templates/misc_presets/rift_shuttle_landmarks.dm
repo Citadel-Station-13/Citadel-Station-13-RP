@@ -4,8 +4,6 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate
 	name = "Pirate Skiff Dock"
 	landmark_tag = "pirate_docking_arm"
-	base_turf = /turf/space
-	base_area = /area/space
 	shuttle_type = /datum/shuttle/autodock/overmap/pirate
 */
 
@@ -14,21 +12,18 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/rift/deck3/excursion
 	name = "NSB Atlas - Exploration Shuttle Pad"
 	landmark_tag = "rift_excursion_pad"
-	docking_controller = "expshuttle_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck3/civvie
 	name = "NSB Atlas - Civilian Transport Pad"
 	landmark_tag = "rift_civvie_pad"
-	docking_controller = "civvie_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck3/emt
 	name = "NSB Atlas - EMT Shuttle Pad"
 	landmark_tag = "rift_emt_pad"
-	docking_controller = "emt_shuttle_dock"
 	base_turf = /turf/simulated/floor/reinforced/lythios43c
 	base_area = /area/rift/surfacebase/outside/outside3
 
@@ -58,15 +53,11 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/rift/deck3/courser
 	name = "NSB Atlas - Courser Hangar"
 	landmark_tag = "rift_courser_hangar"
-	docking_controller = "courser_docker"
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/courser_dock
 
 /obj/effect/shuttle_landmark/rift/deck2/hammerhead
 	name = "NSB Atlas - Hammerhead Hangar"
 	landmark_tag = "rift_hammerhead_hangar"
-	docking_controller = "hammerhead_dock"
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/security/hammerhead_bay
 
 // ON STATION NAV POINTS
@@ -101,7 +92,6 @@ Need to turn all of these into proper initializers like this:
 	name = "NSB Atlas Western Plains"
 	landmark_tag = "rift_plains"
 	base_turf = /turf/simulated/floor/outdoors/snow/lythios43c
-	base_area = /area/rift/surfacebase/outside/west
 
 // TRANSIT NAV POINTS
 

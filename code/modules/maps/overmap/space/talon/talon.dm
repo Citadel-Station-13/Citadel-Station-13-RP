@@ -42,9 +42,7 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/talonboat
 	name = "Talon's boat bay"
 	base_area = /area/talon/deckone/central_hallway
-	base_turf = /turf/simulated/floor/tiled/monotile
 	landmark_tag = "offmap_spawn_talonboat"
-	docking_controller = "talon_boatbay"
 	shuttle_type = /datum/shuttle/autodock/overmap/talonboat
 
 // The talon's boat
@@ -81,9 +79,7 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat
 	name = "Talon lifeboat dock"
 	base_area = /area/talon/maintenance/decktwo_aft
-	base_turf = /turf/simulated/floor/reinforced
 	landmark_tag = "offmap_spawn_talon_lifeboat"
-	docking_controller = "talon_lifeboatbay"
 	shuttle_type = /datum/shuttle/autodock/overmap/talon_lifeboat
 
 // The talon's boat
@@ -494,12 +490,10 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 /datum/map_level/triumph_lateload/talon1
 	name = "Talon Deck One"
 	flags = LEGACY_LEVEL_PLAYER
-	base_turf = /turf/space
 	z = Z_LEVEL_TALON1
 
 /datum/map_level/triumph_lateload/talon2
 	name = "Talon Deck Two"
 	flags = LEGACY_LEVEL_PLAYER
-	base_turf = /turf/simulated/open
 	z = Z_LEVEL_TALON2
 */

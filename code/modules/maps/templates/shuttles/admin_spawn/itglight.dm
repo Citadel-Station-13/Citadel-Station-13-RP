@@ -110,10 +110,7 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/itglightshuttle
 	name = "ITG Dauntless - Shuttle Bay"
-	base_area = /area/itglight/shuttlebay
-	base_turf = /turf/simulated/floor/reinforced
 	landmark_tag = "omship_spawn_itglightshuttle"
-	docking_controller = "itglight_shuttlebay"
 	shuttle_type = /datum/shuttle/autodock/overmap/itglightshuttle
 
 // The 'shuttle'

@@ -16,8 +16,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/hybridshuttle
 	name = "Origin - Hybrid Shuttle"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_hybridshuttle"
 	shuttle_type = /datum/shuttle/autodock/overmap/hybridshuttle
 

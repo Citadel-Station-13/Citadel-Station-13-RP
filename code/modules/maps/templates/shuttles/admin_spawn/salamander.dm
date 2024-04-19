@@ -126,8 +126,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander
 	name = "ITV Salamander"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_salamander"
 	shuttle_type = /datum/shuttle/autodock/overmap/salamander
 
@@ -157,8 +155,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander_wreck
 	name = "ITV Unity"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_salamander_wreck"
 	shuttle_type = /datum/shuttle/autodock/overmap/salamander_wreck
 

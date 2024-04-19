@@ -23,30 +23,19 @@
 /obj/effect/shuttle_landmark/station_dockpoint1
 	name = "Station Docking Point 1"
 	landmark_tag = "nav_station_docking1"
-	docking_controller = "station_dock1"
-	base_turf = /turf/space
-	base_area = /area/space
 
 /obj/effect/shuttle_landmark/station_dockpoint2
 	name = "Station Docking Point 2"
 	landmark_tag = "nav_station_docking2"
-	docking_controller = "station_dock2"
-	base_turf = /turf/space
-	base_area = /area/space
 
 // Shared landmark for docking *inside* the station
 /obj/effect/shuttle_landmark/station_inside
 	name = "Internal Hangar"
 	landmark_tag = "nav_station_inside"
-	docking_controller = "station_hangar"
-	base_turf = /turf/simulated/floor/tiled
-	base_area = /area/bridge
 
 /obj/effect/shuttle_landmark/shared_space
 	name = "Somewhere In Space"
 	landmark_tag = "nav_shared_space"
-	base_turf = /turf/space
-	base_area = /area/space
 
 //
 // Ferry Demo Shuttle
@@ -96,8 +85,6 @@
 /obj/effect/shuttle_landmark/multidemo_start
 	name = "Multi-Demo Starting Point"
 	landmark_tag = "nav_multidemo_start"
-	base_turf = /turf/space
-	base_area = /area/space
 
 /obj/effect/shuttle_landmark/multidemo_nearby
 	name = "Multi-Demo Nearby"

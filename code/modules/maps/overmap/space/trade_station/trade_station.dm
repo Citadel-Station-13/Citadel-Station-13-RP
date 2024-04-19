@@ -65,49 +65,34 @@
 /obj/effect/shuttle_landmark/triumph/trade
 	name = "Near Nebula Gas Food Mart"
 	landmark_tag = "nebula_space_SW"
-	base_turf = /turf/space
-	base_area = /area/space
 
 // EXCLUSIVE TRADE PORT NAV POINTS
 
 /obj/effect/shuttle_landmark/triumph/trade/mining
 	name = "Nebula Gas Landing Pad 2"
 	landmark_tag = "nebula_pad_2"
-	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/excursion
 	name = "Nebula Gas Landing Pad 3"
 	landmark_tag = "nebula_pad_3"
-	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/pirate
 	name = "Nebula Gas Landing Pad 4"
 	landmark_tag = "nebula_pad_4"
-	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/emt
 	name = "Nebula Gas Landing Pad 5"
 	landmark_tag = "nebula_pad_5"
-	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/tradeport/pads
 
 /obj/effect/shuttle_landmark/triumph/trade/civvie
 	name = "Nebula Gas Landing Pad 6"
 	landmark_tag = "nebula_pad_6"
-	base_turf = /turf/simulated/shuttle/floor/black/airless
-	base_area = /area/tradeport/pads
 
 // EXCLUSIVE TRADE PORT NAV POINT FOR DOCKING INSIDE
 
 /obj/effect/shuttle_landmark/triumph/trade/hangar
 	name = "Beruang Hangar"
 	landmark_tag = "tradeport_hangar"
-	docking_controller = "tradeport_hangar_dock"
-	base_turf = /turf/simulated/floor/tiled/techfloor/grid
-	base_area = /area/tradeport/dock
 
 // Todo
 /*

@@ -160,10 +160,7 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/manta_ship_boat
 	name = "Mercenary Cruiser's Bay"
-	base_area = /area/ship/manta/hangar
-	base_turf = /turf/simulated/floor/reinforced
 	landmark_tag = "omship_spawn_manta_lander"
-	docking_controller = "manta_boarding_shuttle_dock"
 	shuttle_type = /datum/shuttle/autodock/overmap/manta_ship_boat
 
 /datum/shuttle/autodock/overmap/manta_ship_boat

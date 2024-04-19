@@ -158,8 +158,6 @@
 
 /obj/effect/shuttle_landmark/shuttle_initializer/tinycarrier
 	name = "Debris Field"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "debris_field_carrier_start"
 	shuttle_type = /datum/shuttle/autodock/overmap/tinycarrier
 

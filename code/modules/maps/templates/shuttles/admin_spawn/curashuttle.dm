@@ -39,8 +39,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/curashuttle
 	name = "CRV Rescue"
-	base_area = /area/space
-	base_turf = /turf/space
 	landmark_tag = "omship_spawn_curashuttle"
 	shuttle_type = /datum/shuttle/autodock/overmap/curashuttle
 

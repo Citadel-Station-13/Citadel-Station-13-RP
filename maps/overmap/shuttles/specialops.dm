@@ -24,9 +24,6 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/specops
 	name = "Special Operations Dock"
 	landmark_tag = "specops_hangar"
-	docking_controller = "specops_hangar_dock"
-	base_turf = /turf/simulated/floor/reinforced
-	base_area = /area/centcom/specops/dock
 	shuttle_type = /datum/shuttle/autodock/overmap/specops
 
 // Spec Ops Areas
