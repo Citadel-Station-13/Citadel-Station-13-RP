@@ -19849,6 +19849,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
 "owe" = (
@@ -28606,9 +28609,9 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "vkz" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/breakroom)
 "vkN" = (
