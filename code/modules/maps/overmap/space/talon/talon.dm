@@ -41,7 +41,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talonboat
 	name = "Talon's boat bay"
-	base_area = /area/talon/deckone/central_hallway
 	landmark_tag = "offmap_spawn_talonboat"
 	shuttle_type = /datum/shuttle/autodock/overmap/talonboat
 
@@ -78,7 +77,6 @@
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat
 	name = "Talon lifeboat dock"
-	base_area = /area/talon/maintenance/decktwo_aft
 	landmark_tag = "offmap_spawn_talon_lifeboat"
 	shuttle_type = /datum/shuttle/autodock/overmap/talon_lifeboat
 

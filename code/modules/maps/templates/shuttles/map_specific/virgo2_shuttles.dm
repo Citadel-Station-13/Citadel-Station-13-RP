@@ -10,13 +10,9 @@
 
 
 /obj/effect/shuttle_landmark/shuttle_initializer/map_specifc/virgo2_ferry
-	base_area = /area/tether_away/aerostat
-	base_turf = /turf/simulated/floor/sky/virgo2_sky
 	landmark_tag = "aerostat_east"
 	name = "Virgo 2 Aerostat (E)"
 
 /obj/effect/shuttle_landmark/premade/virgo2_surface
-	base_area = /area/tether_away/aerostat/surface/explored
-	base_turf = /turf/simulated/floor/tiled/techfloor/virgo2
 	landmark_tag = "aerostat_surface"
 	name = "Virgo 2 Surface"
