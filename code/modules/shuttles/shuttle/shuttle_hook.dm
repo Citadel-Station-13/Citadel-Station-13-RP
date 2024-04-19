@@ -39,7 +39,7 @@
 /datum/shuttle_hook/proc/post_docking(datum/event_args/shuttle/dock/docking/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/post_unocking(datum/event_args/shuttle/dock/undocking)/packet
+/datum/shuttle_hook/proc/post_undocking(datum/event_args/shuttle/dock/undocking/packet)
 	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/shuttle_hook/proc/post_landing(datum/event_args/shuttle/movement/landing/packet)

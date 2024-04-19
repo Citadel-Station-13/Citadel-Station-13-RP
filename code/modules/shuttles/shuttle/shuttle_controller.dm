@@ -16,8 +16,8 @@
 	var/list/docking_codes
 
 	//* UI
-	/// shuttle ui route
-	var/tgui_route
+	/// tgui interface to load
+	var/tgui_module
 
 /datum/shuttle_controller/proc/initialize(datum/shuttle/shuttle)
 	src.shuttle = shuttle

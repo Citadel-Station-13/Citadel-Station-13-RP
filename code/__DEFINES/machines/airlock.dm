@@ -27,6 +27,7 @@
 
 //* /obj/machinery/airlock_controller/mode_state
 
+#warn impl
 
 //* /obj/machinery/airlock_controller/op_state
 

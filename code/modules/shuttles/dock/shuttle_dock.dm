@@ -95,7 +95,6 @@
 	///
 	/// if this doesn't exist, stuff that need to hook it won't work.
 	var/dock_id
-	#warn id scrambling
 	#warn vv hook
 	/// are we registered?
 	var/registered = FALSE
@@ -128,6 +127,10 @@
 	var/datum/event_args/shuttle/movement/currently_moving
 
 	#warn hook
+
+/obj/shuttle_dock/preloading_instance(with_id)
+	. = ..()
+	dock_id = SSmapping.mangled_persistent_id(dock_id, with_id)
 
 /obj/shuttle_dock/Initialize(mapload)
 	. = ..()
@@ -174,7 +177,16 @@
 		qdel(src)
 		return
 	#warn CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
-	#warn load shuttle
+	var/datum/shuttle/loaded
+	if(!(loaded = load_shuttle()))
+		stack_trace("shuttle dock at [COORD(src)] failed to load its roundstart shuttle; something is seriously wrong!")
+		to_chat(
+			target = world,
+			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed to load its starting template. Please contact coders if you see this message."),
+			type = MESSAGE_TYPE_SERVER_FATAL,
+		)
+	else
+		loaded_shuttle(loaded)
 
 /obj/shuttle_dock/Destroy()
 	unregister_dock()
@@ -345,6 +357,21 @@
 	if(!base_area)
 		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
 	return base_area
+
+/**
+ * loads our roundstart shuttle
+ *
+ * @return /datum/shuttle
+ */
+/obj/shuttle_dock/proc/load_shuttle()
+	RETURN_TYPE(/datum/shuttle)
+	#warn impl
+
+/**
+ * called after our initial shuttle is loaded
+ */
+/obj/shuttle_dock/proc/loaded_shuttle(datum/shuttle/loaded)
+	return
 
 //* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//
 

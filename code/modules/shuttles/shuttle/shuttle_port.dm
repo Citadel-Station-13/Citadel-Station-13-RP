@@ -53,8 +53,7 @@
 	///
 	/// if this doesn't exist, stuff that need to hook it won't work.
 	var/port_id
-	#warn id scrambling
-
+	
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
 

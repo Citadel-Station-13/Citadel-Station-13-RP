@@ -126,36 +126,3 @@ right now its not a big priority - Bloop 2022
 	landmark_tag = "triumph_space_starboard_1"
 	base_turf = /turf/space
 	base_area = /area/space
-
-// OFF-STATION NAV POINTS
-
-
-// TRANSIT NAV POINTS
-
-/obj/effect/shuttle_landmark/transit/triumph/excursion
-	name = "In transit"
-	landmark_tag = "nav_transit_exploration"
-
-/obj/effect/shuttle_landmark/transit/triumph/courser
-	name = "In transit"
-	landmark_tag = "nav_transit_courser"
-
-/obj/effect/shuttle_landmark/transit/triumph/pirate
-	name = "In transit"
-	landmark_tag = "nav_transit_pirate"
-
-/obj/effect/shuttle_landmark/transit/triumph/civvie
-	name = "In transit"
-	landmark_tag = "nav_transit_civvie"
-
-/obj/effect/shuttle_landmark/transit/triumph/mining
-	name = "In transit"
-	landmark_tag = "nav_transit_mining"
-
-/obj/effect/shuttle_landmark/transit/triumph/trade
-	name = "In transit"
-	landmark_tag = "nav_transit_trade"
-
-/obj/effect/shuttle_landmark/transit/triumph/emt
-	name = "In transit"
-	landmark_tag = "nav_transit_emt"

@@ -284,14 +284,13 @@ SUBSYSTEM_DEF(grids)
 /area/proc/grid_clean(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary, area/leave_area)
 	// contents -= old_turfs
 	if(ispath(leave_area))
-		leave_area = unique_area_of_type(leave_area)
+		leave_area = dynamic_area_of_type(leave_area)
 	else if(istype(leave_area))
 	else
-		leave_area = unique_area_of_type(world.area)
+		leave_area = dynamic_area_of_type(world.area)
 	if(isnull(leave_area))
 		leave_area = new /area/grid_orphaned
-	leave_area.contents += old_turfs
-	#warn use transfer helper instead
+	leave_area.take_turfs(old_turfs)
 
 /**
  * Called after everything is moved
