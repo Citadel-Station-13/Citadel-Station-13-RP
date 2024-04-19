@@ -24724,7 +24724,9 @@
 /area/maintenance/station/eng_upper)
 "YA" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/sheet_silo,
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "tether_silo"
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "YB" = (
