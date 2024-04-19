@@ -1,20 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-//* /obj/machinery/airlock_controller/door_state
+//* /obj/machinery/airlock_controller/(interior|exterior)_state
 
-/// interior doors locked open, exterior doors locked closed
-#define AIRLOCK_DOORS_LOCKED_INTERIOR 1
-/// exterior doors locked open, interior doors locked closed
-#define AIRLOCK_DOORS_LOCKED_EXTERIOR 2
-/// all doors locked open
-#define AIRLOCK_DOORS_LOCKED_OPEN 3
-/// interior doors unlocked, exterior doors locked closed
-#define AIRLOCK_DOORS_UNLOCKED_INTERIOR 4
-/// exterior doors unlocked, interior doors locked closed
-#define AIRLOCK_DOORS_UNLOCKED_EXTERIOR 5
-/// all doors unlocked
-#define AIRLOCK_DOORS_UNLOCKED 6
+/// locked open
+#define AIRLOCK_STATE_LOCKED_OPEN 1
+/// locked closed
+#define AIRLOCK_STATE_LOCKED_CLOSED 2
+/// unlocked
+#define AIRLOCK_STATE_UNLOCKED 3
 
 //* /obj/machinery/airlock_controller/dock_state
 
@@ -24,8 +18,23 @@
 #define AIRLOCK_DOCK_UNDOCKED 1
 /// we are docked
 #define AIRLOCK_DOCK_DOCKED 2
+/// we are undocking
+#define AIRLOCK_DOCK_UNDOCKING 3
+/// we are docking
+#define AIRLOCK_DOCK_DOCKING 4
+/// we are in an invalid / aborted state
+#define AIRLOCK_DOCK_UNKNOWN 5
+/// we are overridden
+#define AIRLOCK_DOCK_OVERRIDDN 6
 
 //* /obj/machinery/airlock_controller/mode_state
+
+/// security lockdown
+#define AIRLOCK_MODE_LOCKDOWN 0
+/// normal - allow cycling in / out
+#define AIRLOCK_MODE_NORMAL 1
+/// docking - the dock handles operations
+#define AIRLOCK_MODE_DOCK 2
 
 #warn impl
 

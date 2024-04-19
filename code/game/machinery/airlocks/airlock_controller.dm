@@ -36,8 +36,10 @@
 	var/obj/shuttle_dock/dock
 
 	//* State
-	/// door state
-	var/door_state = AIRLOCK_DOORS_UNLOCAIRLOCK_DOCK_NONEKED
+	/// interior door state
+	var/interior_state = AIRLOCK_STATE_UNLOCKED
+	/// exterior door state
+	var/exterior_state = AIRLOCK_STATE_UNLOCKED
 	/// dock state
 	var/dock_state = AIRLOCK_DOCK_NONE
 	/// mode state
@@ -48,9 +50,39 @@
 	var/op_cycle
 	/// next operation cycle
 	var/static/op_cycle_next = 0
+	/// what to call on success
+	var/datum/callback/op_on_success
+	/// what to call on failure or abort
+	var/datum/callback/op_on_failure
 
 
 #warn impl
+
+/obj/machinery/airlock_controller/proc/set_interior_state(state)
+	src.interior_state = state
+	switch(state)
+		if(AIRLOCK_STATE_LOCKED_OPEN)
+			for(var/obj/machinery/door/door as anything in interior)
+				door.airlock_set(TRUE, TRUE)
+		if(AIRLOCK_STATE_LOCKED_CLOSED)
+			for(var/obj/machinery/door/door as anything in interior)
+				door.airlock_set(FALSE, TRUE)
+		if(AIRLOCK_STATE_UNLOCKED)
+			for(var/obj/machinery/door/door as anything in interior)
+				door.airlock_set(null, FALSE)
+
+/obj/machinery/airlock_controller/proc/set_exterior_state(state)
+	src.exterior_state = state
+	switch(state)
+		if(AIRLOCK_STATE_LOCKED_OPEN)
+			for(var/obj/machinery/door/door as anything in exterior)
+				door.airlock_set(TRUE, TRUE)
+		if(AIRLOCK_STATE_LOCKED_CLOSED)
+			for(var/obj/machinery/door/door as anything in exterior)
+				door.airlock_set(FALSE, TRUE)
+		if(AIRLOCK_STATE_UNLOCKED)
+			for(var/obj/machinery/door/door as anything in exterior)
+				door.airlock_set(null, FALSE)
 
 /**
  * Automatically builds its airlock by calculating the necessary geometry.

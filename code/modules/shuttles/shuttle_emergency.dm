@@ -1,12 +1,5 @@
 // Formerly /datum/shuttle/autodock/ferry/emergency
 /datum/shuttle/autodock/ferry/emergency
-	category = /datum/shuttle/autodock/ferry/emergency
-
-/datum/shuttle/autodock/ferry/emergency/New()
-	..()
-	if(SSemergencyshuttle.shuttle)
-		CRASH("An emergency shuttle has already been defined.")
-	SSemergencyshuttle.shuttle = src
 
 /datum/shuttle/autodock/ferry/emergency/arrived()
 	. = ..()

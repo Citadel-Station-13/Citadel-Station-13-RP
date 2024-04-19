@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * Shuttle docking points.
@@ -110,11 +110,15 @@
 	var/datum/shuttle_web_node/web_node
 
 	//* docking (protection)
-	/// only allow a hardcoded shuttle of this type (or these types) to dock
-	/// we don't use ids because shuttles automatically mangle IDs on load.
-	/// this, if set, does not automatically include our starting template!
+	/// only allow a hardcoded shuttle of this id (or these ids) to dock
+	///
+	/// this, if set, does not automatically include our starting template
+	/// unless restrict_to_starting is also set!
 	/// we can have the starting template locked out due to that.
-	var/docking_hard_restrict_types
+	///
+	/// set to typepath / list of typepaths of shuttle templates if you want to automatically resolve these.
+	var/docking_hard_restrict
+	#warn hook
 	/// automatically lock to the type of our starting shuttle template
 	var/docking_hard_restrict_to_starting = FALSE
 	#warn hook
@@ -355,10 +359,11 @@
 	return
 
 /obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
-	if(docking_hard_restrict_types)
-		if(islist(docking_hard_restrict_types) && !(shuttle.type in docking_hard_restrict_types))
+	if(docking_hard_restrict)
+		#warn redo
+		if(islist(docking_hard_restrict) && !(shuttle.type in docking_hard_restrict))
 			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
-		else if(shuttle.type != docking_hard_restrict_types)
+		else if(shuttle.type != docking_hard_restrict)
 			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
 	var/valid = shuttle.has_codes_for(src)
 	if(valid)
@@ -369,7 +374,7 @@
  * get the area instance that should be left behind
  */
 /obj/shuttle_dock/proc/base_area_instance()
-	if(!base_area)
+	if(!istype(base_area))
 		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
 	return base_area
 

@@ -423,31 +423,8 @@
 //* Airlock API *//
 
 /**
- * Called when an airlock requests we open.
- *
- * @params
- * * unlock - automatically unlock?
+ * Called when an airlock requests we set our state to something
  */
-/obj/machinery/door/proc/airlock_open(unlock)
+/obj/machinery/door/proc/airlock_set(open, lock)
 	return FALSE
-
-/**
- * Called when an airlock requests we close.
- *
- * @params
- * * lock - automatically lock after?
- */
-/obj/machinery/door/proc/airlock_close(lock)
-	return FALSE
-
-/**
- * Called when an airlock requests we unlock.
- */
-/obj/machinery/door/proc/airlock_unlock()
-	return FALSE
-
-/**
- * Called when an airlock requests we lock.
- */
-/obj/machinery/door/proc/airlock_lock()
-	return FALSE
+	#warn impl on /airlock

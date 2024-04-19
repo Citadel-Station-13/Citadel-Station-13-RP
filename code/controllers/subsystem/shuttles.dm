@@ -70,12 +70,12 @@ SUBSYSTEM_DEF(shuttle)
 /**
  * @return /datum/shuttle
  */
-/datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/from_template)
-	#warn impl
-	var/datum/shuttle/created
-
+/datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/templatelike, shuttle_type_override)
+	var/datum/shuttle_template/template = fetch_template(templatelike)
+	var/datum/shuttle/created = template.instance(shuttle_type_override)
 	register_shuttle(created)
-	
+	return created
+
 /datum/controller/subsystem/shuttle/proc/register_shuttle(datum/shuttle/shuttle)
 	shuttles += shuttle
 	#warn impl
@@ -117,6 +117,5 @@ SUBSYSTEM_DEF(shuttle)
 /**
  * sets in_transit_reservation and in_transit_dock and in_transit for a shuttle
  */
-/datum/controller/subsystem/shuttle/proc/send_shuttle_to_transit(datum/shuttle/shuttle, force = FALSE, immediate = FALSE)
+/datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(datum/shuttle/shuttle)
 	#warn what the fuck
-	

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * point to point shuttle controller
@@ -7,6 +7,11 @@
  * we have two destinations, linked directly via shuttle ids
  *
  * please use web shuttles for multi-dock on single destination support.
+ *
+ * the standard is 'shuttle shuttle load at home', which means:
+ * * cargo shuttle starts centcom
+ * * emergency shuttle starts centcom
+ * * belter shuttle starts station
  */
 /datum/shuttle_controller/ferry
 	tgui_module = "TGUIShuttleFerry"

@@ -25,6 +25,8 @@
 	var/being_deleted = FALSE
 	/// our globally persistent-unique identifier string
 	var/id
+	/// our unique template id; this is *not* our ID and is *not* unique!
+	var/template_id
 
 	//* Composition
 	/// our shuttle controller
@@ -97,6 +99,7 @@
 	var/legacy_sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/legacy_sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
 	var/legacy_takeoff_knockdown = 1.5 SECONDS
+	var/list/obj/structure/fuel_port/legacy_fuel_ports = list()
 
 #warn impl all
 
@@ -326,9 +329,7 @@
 //* Transit
 
 /**
- * @params
- * * force - hard force, ram everything out of the way on the destination side if needed
- * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
+ * todo: todo
  */
-/datum/shuttle/proc/move_to_transit(force = FALSE, immediate = FALSE)
-	return SSshuttle.send_shuttle_to_transit(src, force, immediate)
+/datum/shuttle/proc/move_to_transit()
+	return SSshuttle.move_shuttle_to_transit(src)

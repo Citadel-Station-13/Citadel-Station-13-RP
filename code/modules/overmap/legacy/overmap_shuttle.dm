@@ -5,7 +5,6 @@
 
 	var/range = 0	//how many overmap tiles can shuttle go, for picking destinations and returning.
 	var/fuel_consumption = 0 //Amount of moles of gas consumed per trip; If zero, then shuttle is magic and does not need fuel
-	var/list/obj/structure/fuel_port/fuel_ports //the fuel ports of the shuttle (but usually just one)
 	var/obj/overmap/entity/visitable/ship/landable/myship //my overmap ship object
 
 	category = /datum/shuttle/autodock/overmap
@@ -17,13 +16,6 @@
 /datum/shuttle/autodock/overmap/Destroy()
 	. = ..()
 	myship = null
-
-/datum/shuttle/autodock/overmap/proc/refresh_fuel_ports_list() //loop through all
-	fuel_ports = list()
-	for(var/area/A in shuttle_area)
-		for(var/obj/structure/fuel_port/fuel_port_in_area in A)
-			fuel_port_in_area.parent_shuttle = src
-			fuel_ports += fuel_port_in_area
 
 /datum/shuttle/autodock/overmap/fuel_check()
 	if(!src.try_consume_fuel()) //insufficient fuel
@@ -125,6 +117,7 @@
 	. = ..()
 	if(base_tank)
 		new base_tank(src)
+	#warn register in area legacy_fuel_ports
 
 /obj/structure/fuel_port/heavy
 	base_tank = /obj/item/tank/phoron/pressurized

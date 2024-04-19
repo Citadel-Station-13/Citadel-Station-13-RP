@@ -44,10 +44,28 @@
 	/// our parsed map
 	var/datum/dmm_parsed/parsed_map
 
+	/// shuttle datum type to make
+	var/shuttle_type = /datum/shuttle
+
 #warn impl all
 
 /datum/shuttle_template/New(map_resource, use_dir)
 	#warn uhh
+
+/**
+ * Do not directly use. Use create_shuttle() on SSshuttles!
+ * This will not automatically register the shuttle with the subsystem.
+ */
+/datum/shuttle_template/proc/instance(shuttle_type = src.shuttle_type)
+	RETURN_TYPE(/datum/shuttle)
+
+	var/datum/shuttle/instance = new shuttle_type
+
+	#warn things
+
+	instance.template_id = id
+
+	return instance
 
 /datum/map_template/shuttle
 	abstract_type = /datum/map_template/shuttle
