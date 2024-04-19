@@ -148,12 +148,12 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 /*
 	Sensors - did you know they function as buttons? You don't also need a button.
 */
-/obj/map_helper/airlock/sensor
+/obj/map_helper/airlock_peripheral/sensor
 	name = "use a subtype! - airlock sensor"
 	my_device_type = /obj/machinery/airlock_sensor
 	var/command
 
-/obj/map_helper/airlock/sensor/setup()
+/obj/map_helper/airlock_peripheral/sensor/setup()
 	var/obj/machinery/airlock_sensor/my_sensor = my_device
 	my_sensor.id_tag = my_controller.id_tag + tag_addon
 	my_sensor.master_tag = my_controller.id_tag
@@ -162,19 +162,19 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	if(command)
 		my_sensor.command = command
 
-/obj/map_helper/airlock/sensor/ext_sensor
+/obj/map_helper/airlock_peripheral/sensor/ext_sensor
 	name = "exterior sensor"
 	icon_state = "sensout"
 	tag_addon = "_exterior_sensor"
 	command = "cycle_ext"
 
-/obj/map_helper/airlock/sensor/chamber_sensor
+/obj/map_helper/airlock_peripheral/sensor/chamber_sensor
 	name = "chamber sensor"
 	icon_state = "sens"
 	tag_addon = "_sensor"
 	command = "cycle"
 
-/obj/map_helper/airlock/sensor/int_sensor
+/obj/map_helper/airlock_peripheral/sensor/int_sensor
 	name = "interior sensor"
 	icon_state = "sensin"
 	tag_addon = "_interior_sensor"

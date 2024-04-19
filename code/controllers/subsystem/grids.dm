@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * The movement manager for turf movements
@@ -376,9 +376,9 @@ SUBSYSTEM_DEF(grids)
 
 /**
  * called when we get overlapped by a grid
- * 
+ *
  * we can be overlapped if non-ABSTRACT.
- * 
+ *
  * @return TRUE to override overlap_handler callback.
  */
 /atom/movable/proc/handle_grid_overlap(grid_flags)

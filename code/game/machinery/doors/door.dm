@@ -420,13 +420,34 @@
 
 	update_nearby_tiles()
 
-/obj/machinery/door/morgue
-	icon = 'icons/obj/doors/doormorgue.dmi'
+//* Airlock API *//
 
-//Flesh Door
-/obj/machinery/door/flesh_door
-	name = "flesh door"
-	desc = "This door pulses and twitches as if it's alive. It is."
+/**
+ * Called when an airlock requests we open.
+ *
+ * @params
+ * * unlock - automatically unlock?
+ */
+/obj/machinery/door/proc/airlock_open(unlock)
+	return FALSE
 
-	icon = 'icons/turf/stomach_vr.dmi'
-	icon_state = "fleshclosed"
+/**
+ * Called when an airlock requests we close.
+ *
+ * @params
+ * * lock - automatically lock after?
+ */
+/obj/machinery/door/proc/airlock_close(lock)
+	return FALSE
+
+/**
+ * Called when an airlock requests we unlock.
+ */
+/obj/machinery/door/proc/airlock_unlock()
+	return FALSE
+
+/**
+ * Called when an airlock requests we lock.
+ */
+/obj/machinery/door/proc/airlock_lock()
+	return FALSE
