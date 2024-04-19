@@ -15400,9 +15400,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
 "jko" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -19598,9 +19595,6 @@
 	req_one_access = list(35,28)
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/botanystorage)
 "lWD" = (
@@ -20681,9 +20675,11 @@
 /area/rnd/robotics)
 "mEK" = (
 /obj/machinery/power/apc/south_mount,
-/obj/structure/cable/green,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/botanystorage)
 "mEP" = (
@@ -22260,16 +22256,12 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "nyb" = (
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint_stripe/bottlegreen,
 /obj/structure/cable/green{
-	icon_state = "2-8"
+	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/botanystorage)
 "nyK" = (
 /obj/structure/flora/pottedplant/stoutbush,
@@ -24826,6 +24818,9 @@
 	},
 /obj/effect/floor_decal/corner/lime/bordercorner2{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/botanystorage)
@@ -35718,6 +35713,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "vhg" = (
@@ -74293,7 +74289,7 @@ xSs
 eFm
 lal
 hxw
-tmg
+prj
 elV
 geu
 ptE
@@ -74488,7 +74484,7 @@ yjJ
 bMg
 yjJ
 lWr
-yjJ
+nyb
 bFS
 aoO
 bFS
@@ -74875,7 +74871,7 @@ xSZ
 gqH
 qYU
 qZj
-nyb
+iNJ
 mEK
 bFS
 bsT
