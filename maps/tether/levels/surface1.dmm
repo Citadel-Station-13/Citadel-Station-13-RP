@@ -15270,10 +15270,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
-"hYQ" = (
-/obj/effect/step_trigger/teleporter/to_mining,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/surfacebase/lowernortheva/external)
 "hYS" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -69283,7 +69279,7 @@ uXC
 ijH
 "}
 (127,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 wMH
@@ -69477,7 +69473,7 @@ ujj
 ujj
 "}
 (128,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 wMH
@@ -69671,7 +69667,7 @@ osh
 qbg
 "}
 (129,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 iDK
@@ -69865,7 +69861,7 @@ osh
 qbg
 "}
 (130,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 iDK
@@ -70059,7 +70055,7 @@ osh
 qbg
 "}
 (131,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 iDK
@@ -70253,7 +70249,7 @@ osh
 qbg
 "}
 (132,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 iDK
@@ -70447,7 +70443,7 @@ osh
 qbg
 "}
 (133,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 iDK
@@ -70641,7 +70637,7 @@ osh
 qbg
 "}
 (134,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 iDK
@@ -70835,7 +70831,7 @@ osh
 qbg
 "}
 (135,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 wMH
@@ -71029,7 +71025,7 @@ osh
 qbg
 "}
 (136,1,1) = {"
-hYQ
+iDK
 iDK
 iDK
 wMH
