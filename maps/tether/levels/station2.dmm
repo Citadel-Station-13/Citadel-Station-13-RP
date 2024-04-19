@@ -2131,7 +2131,8 @@
 "ew" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/vault/bolted{
-	req_access = list(53)
+	req_access = list(53);
+	id_tag = "vault_bolt"
 	},
 /obj/machinery/door/blast/regular{
 	id = "VaultAc";

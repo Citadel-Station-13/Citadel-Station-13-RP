@@ -15090,6 +15090,12 @@
 /obj/item/tank/oxygen,
 /obj/item/tank/oxygen,
 /obj/item/tank/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "Fa" = (
@@ -19456,16 +19462,11 @@
 "Om" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/structure/table/rack/shelf,
 /obj/structure/window/reinforced{
 	dir = 4;
 	pixel_x = 3
 	},
-/obj/item/suit_cooling_unit,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/medical/emt,
-/obj/item/clothing/head/helmet/space/void/medical/emt,
+/obj/machinery/suit_storage_unit/search_and_rescue,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "On" = (
@@ -20721,16 +20722,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "QO" = (
-/obj/structure/table/rack/shelf,
 /obj/structure/window/reinforced{
 	dir = 4;
 	pixel_x = 3
 	},
-/obj/item/suit_cooling_unit,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/medical/emt,
-/obj/item/clothing/head/helmet/space/void/medical/emt,
+/obj/machinery/suit_storage_unit/search_and_rescue,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "QP" = (
@@ -25118,6 +25114,8 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/item/binoculars,
+/obj/item/binoculars,
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "ZI" = (

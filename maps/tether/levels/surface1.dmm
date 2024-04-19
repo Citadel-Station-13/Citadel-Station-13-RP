@@ -2956,11 +2956,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
-"bCl" = (
-/obj/structure/railing,
-/obj/structure/stairs/spawner/east,
-/turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/centralstairwell)
 "bDa" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -14134,13 +14129,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
-"htC" = (
-/obj/structure/railing,
-/obj/machinery/camera/network/medbay{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/centralstairwell)
 "htG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -31400,6 +31388,9 @@
 	dir = 2;
 	name = "package tagger - Void";
 	sort_tag = "Void"
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralstairwell)
@@ -75139,7 +75130,7 @@ iMm
 sQq
 sQq
 fJF
-htC
+fJF
 dlE
 dlE
 pRN
@@ -75333,7 +75324,7 @@ muj
 uIE
 sQq
 nDL
-bCl
+nDL
 dlE
 bOD
 vLe
