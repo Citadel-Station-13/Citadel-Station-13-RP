@@ -69,37 +69,3 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/rift/away/plains
 	name = "NSB Atlas Western Plains"
 	landmark_tag = "rift_plains"
-
-// TRANSIT NAV POINTS
-
-/obj/effect/shuttle_landmark/transit/rift/excursion
-	name = "In transit"
-	landmark_tag = "nav_transit_exploration"
-
-/obj/effect/shuttle_landmark/transit/rift/courser
-	name = "In transit"
-	landmark_tag = "nav_transit_courser"
-
-/obj/effect/shuttle_landmark/transit/rift/hammerhead
-	name = "In transit"
-	landmark_tag = "nav_transit_hammerhead"
-
-/obj/effect/shuttle_landmark/transit/rift/pirate
-	name = "In transit"
-	landmark_tag = "nav_transit_pirate"
-
-/obj/effect/shuttle_landmark/transit/rift/specops
-	name = "In transit"
-	landmark_tag = "nav_transit_specops"
-
-/obj/effect/shuttle_landmark/transit/rift/civvie
-	name = "In transit"
-	landmark_tag = "nav_transit_civvie"
-
-/obj/effect/shuttle_landmark/transit/rift/trade
-	name = "In transit"
-	landmark_tag = "nav_transit_trade"
-
-/obj/effect/shuttle_landmark/transit/rift/emt
-	name = "In transit"
-	landmark_tag = "nav_transit_emt"

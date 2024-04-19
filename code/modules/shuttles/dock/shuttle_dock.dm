@@ -109,6 +109,16 @@
 	/// the shuttle web node we belong to, if any
 	var/datum/shuttle_web_node/web_node
 
+	//* docking (protection)
+	/// only allow a hardcoded shuttle of this type (or these types) to dock
+	/// we don't use ids because shuttles automatically mangle IDs on load.
+	/// this, if set, does not automatically include our starting template!
+	/// we can have the starting template locked out due to that.
+	var/docking_hard_restrict_types
+	/// automatically lock to the type of our starting shuttle template
+	var/docking_hard_restrict_to_starting = FALSE
+	#warn hook
+
 	//* identity
 	/// display name - visible to everyone at all times; if null, we use name.
 	var/display_name
@@ -345,6 +355,11 @@
 	return
 
 /obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
+	if(docking_hard_restrict_types)
+		if(islist(docking_hard_restrict_types) && !(shuttle.type in docking_hard_restrict_types))
+			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
+		else if(shuttle.type != docking_hard_restrict_types)
+			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
 	var/valid = shuttle.has_codes_for(src)
 	if(valid)
 		return SHUTTLE_DOCKING_AUTHORIZATION_VALID
