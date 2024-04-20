@@ -46,6 +46,12 @@
 	/// this initializations hooked - this cycle
 	var/tmp/list/obj/map_helper/map_initialization_hooking
 
+	//* struct system
+	/// Active world_structs
+	var/static/list/datum/world_struct/structs = list()
+	/// World struct lookup by level
+	var/static/list/datum/world_struct/struct_by_z = list()
+
 //* Rebuilds / Caching
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
@@ -65,6 +71,7 @@
 	SYNC(cached_level_north)
 	SYNC(cached_level_south)
 	SYNC(z_stack_lookup)
+	SYNC(struct_by_z)
 	z_stack_dirty = FALSE
 	if(.)
 		z_stack_dirty = TRUE
