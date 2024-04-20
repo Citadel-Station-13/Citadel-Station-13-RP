@@ -46,8 +46,8 @@
 	player_name = "Wisk Talo"
 
 /obj/item/toy/plushie/snowflake/kari
-	name = "fox plushie"
-	desc = "A fox plushie. This one looks like it could beat you up."
+	name = "wolf plushie"
+	desc = "A wolf plushie. This one looks like it could beat you up."
 	icon_state = "kari"
 	pokephrase = "Gecker!"
 	player_name = "Kari"
