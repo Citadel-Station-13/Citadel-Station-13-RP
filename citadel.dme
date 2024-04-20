@@ -4974,6 +4974,7 @@
 #include "fluff\donator\djkouta\donator_cloak.dm"
 #include "fluff\donator\timothytea\donator_bedsheet.dm"
 #include "fluff\donator\unclebourbon\pmc_mask.dm"
+#include "fluff\plushies\plushies.dm"
 #include "interface\interface.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
