@@ -77,12 +77,29 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //--------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------//
 
+/obj/map_helper/access
+	name = "Mapping access helper"
+	icon_state = "access_helper"
+	//var/access_name
+	var/access_value
+
+/obj/map_helper/access/Initialize(mapload)
+	. = ..()
+	var/turf/location = get_turf(src)
+	for(var/obj/O in location)
+		LAZYDISTINCTADD(O.req_one_access, access_value)
+	return 2 //INITIALIZE_HINT_QDEL == 2, but the define happens later than this file is compiled
+
 // When oh when will we escape the tyranny of number enums?
 // todo: eventually we'll want a script for "migrating" access in .dmms. if that's, y'know, even possible
 //       when we do this however it has to be a "do this once and never again" deal
 //       as it's bound to break stuff.
 
 #define STANDARD_ACCESS_DATUM(value, type, desc) \
+/obj/map_helper/access/##type {\
+	name = desc;\
+	access_value = value;\
+}\
 /datum/access/##type { \
 	access_name = desc; \
 	access_value = value; \
