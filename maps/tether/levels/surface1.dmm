@@ -1372,7 +1372,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
+/obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -10266,7 +10266,7 @@
 "fyb" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/black/border,
-/obj/machinery/atmospherics/component/binary/pump/high_power/on,
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "fyE" = (
@@ -11784,9 +11784,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/machinery/atmospherics/component/binary/pump/high_power/on{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "giJ" = (
@@ -24159,7 +24157,7 @@
 "mOp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/orange/border,
-/obj/machinery/atmospherics/component/binary/pump/high_power/on,
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "mOC" = (
@@ -42293,7 +42291,7 @@
 "wLI" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/white/border,
-/obj/machinery/atmospherics/component/binary/pump/high_power/on,
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "wLU" = (
