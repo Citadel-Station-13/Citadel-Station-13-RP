@@ -165,7 +165,9 @@
 		/area/tcommsat/chamber,
 		/area/engineering/engineering_airlock,
 		/area/solar/)
-
+	legacy_assert_shuttle_datums = list(
+		/datum/shuttle/autodock/ferry/emergency/escape/tether,
+	)
 
 /datum/map_level/euthenia/deck/four
 	id = "EutheniaDeck4"
