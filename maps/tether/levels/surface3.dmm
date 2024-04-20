@@ -337,7 +337,7 @@
 "afT" = (
 /obj/structure/flora/pottedplant/unusual,
 /obj/machinery/fire_alarm/east_mount,
-/obj/machinery/camera/network/research{
+/obj/machinery/camera/network/research/xenobio{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -2795,9 +2795,6 @@
 	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
-/obj/machinery/camera/network/research/xenobio{
-	dir = 10
-	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "bww" = (
@@ -3282,6 +3279,9 @@
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_y = -28
+	},
+/obj/machinery/camera/network/research/xenobio{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
@@ -4423,7 +4423,7 @@
 /obj/item/slime_scanner,
 /obj/item/multitool,
 /obj/machinery/camera/network/research/xenobio{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/outpost/xenobiology/outpost_storage)
@@ -5493,14 +5493,22 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "dcU" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
 	},
-/obj/machinery/camera/network/research/xenobio{
-	dir = 9
+/obj/structure/table/standard,
+/obj/item/reagent_containers/food/drinks/teapot,
+/obj/item/reagent_containers/food/drinks/tea{
+	pixel_x = 9;
+	pixel_y = -6
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/outpost/xenobiology/outpost_hallway)
+/obj/item/reagent_containers/food/drinks/tea{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/turf/simulated/open,
+/area/rnd/outpost/xenobiology/outpost_stairs)
 "dda" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -5853,12 +5861,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/southhall)
-"drE" = (
-/obj/machinery/camera/network/research/xenobio{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_main)
 "drY" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -11562,10 +11564,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/camera/network/research{
+/obj/structure/closet/l3closet/scientist,
+/obj/machinery/camera/network/research/xenobio{
 	dir = 1
 	},
-/obj/structure/closet/l3closet/scientist,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "gQS" = (
@@ -14143,16 +14145,8 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "izr" = (
-/obj/structure/window/basic/full,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/basic,
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/structure/window/basic{
-	dir = 8
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_storage)
 "iBt" = (
@@ -16157,6 +16151,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/random/cutout,
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "jIV" = (
@@ -17442,9 +17437,6 @@
 /area/tether/surfacebase/bar_backroom)
 "kCv" = (
 /obj/machinery/holopad,
-/obj/machinery/camera/network/research/xenobio{
-	dir = 9
-	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "kCR" = (
@@ -18007,7 +17999,7 @@
 	icon_state = "pipe-j2"
 	},
 /obj/machinery/camera/network/research/xenobio{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
@@ -18037,19 +18029,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
-"kZr" = (
-/obj/structure/window/basic/full,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/basic,
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/structure/window/basic{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/rnd/outpost/xenobiology/outpost_storage)
 "kZR" = (
 /obj/machinery/computer/secure_data{
 	dir = 4
@@ -20847,19 +20826,11 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "mKu" = (
-/obj/structure/window/basic/full,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/structure/window/basic,
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/structure/window/basic{
-	dir = 4
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "mKy" = (
@@ -27730,9 +27701,6 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/camera/network/research/xenobio{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qyj" = (
@@ -31598,7 +31566,6 @@
 /area/tether/surfacebase/surface_three_hall)
 "sQo" = (
 /obj/structure/lattice,
-/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
 	dir = 1
 	},
@@ -31608,21 +31575,11 @@
 /obj/structure/cable/green{
 	icon_state = "32-1"
 	},
-/obj/structure/window/basic/full,
-/obj/structure/grille,
-/obj/structure/window/basic,
-/obj/structure/window/basic{
-	dir = 8
-	},
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/structure/window/basic{
-	dir = 4
-	},
 /obj/structure/disposalpipe/down{
 	dir = 1
 	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/open,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "sQL" = (
@@ -34068,6 +34025,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/camera/network/research/xenobio,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "umH" = (
@@ -34865,6 +34823,7 @@
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "uKK" = (
@@ -38131,7 +38090,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/research/xenobio{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
@@ -40571,16 +40530,8 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "xWL" = (
-/obj/structure/window/basic/full,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/basic,
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/structure/window/basic{
-	dir = 8
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint_stripe/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "xWN" = (
@@ -58570,7 +58521,7 @@ jSF
 aAR
 aNO
 xDB
-drE
+xDB
 eto
 xDB
 xmi
@@ -58776,7 +58727,7 @@ sQo
 pQk
 wAF
 wAF
-jHZ
+dcU
 qyl
 dOV
 xCK
@@ -58935,7 +58886,7 @@ dRr
 qZR
 ndL
 dRr
-dcU
+dRr
 arO
 dRr
 dRr
@@ -59548,7 +59499,7 @@ ogU
 ftd
 nQQ
 eMX
-kZr
+izr
 for
 oWB
 lgT
