@@ -11923,8 +11923,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/window/southright{
-	dir = 1;
-	req_one_access = list(19,43,67)
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
@@ -23978,10 +23977,7 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "otW" = (
-/obj/structure/sign/directions/engineering{
-	dir = 10;
-	pixel_y = -10
-	},
+/obj/structure/sign/directions/engineering,
 /turf/simulated/wall/prepainted,
 /area/tether/surfacebase/north_stairs_three)
 "oua" = (
@@ -25913,8 +25909,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/door/window/southleft{
-	dir = 1;
-	req_one_access = list(19,43,67)
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
@@ -28331,8 +28326,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/door/window/southright{
-	dir = 1;
-	req_one_access = list(19,43,67)
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
@@ -38577,7 +38571,7 @@
 /area/hydroponics)
 "wRs" = (
 /obj/machinery/door/airlock/glass{
-	req_one_access = list(19,43,67)
+	req_one_access = list(19,67)
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
