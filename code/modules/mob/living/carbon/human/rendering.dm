@@ -6,6 +6,28 @@
 	render_spriteacc_tail(TRUE)
 	render_spriteacc_wings(TRUE)
 	render_spriteacc_horns(TRUE)
+	// for(var/key in standing_overlays)
+	// 	var/list/image/overlay_or_overlays = standing_overlays[key]
+	// 	if(!overlay_or_overlays)
+	// 		continue
+	// 	if(islist(overlay_or_overlays))
+	// 		for(var/i in 1 to length(overlay_or_overlays))
+	// 			var/image/considering = overlay_or_overlays[i]
+	// 			if(!considering)
+	// 				continue
+	// 			if(length(considering.overlays))
+	// 				var/icon/rendered = render_compound_icon_with_client(considering, client)
+	// 				var/image/generated = image(considering)
+	// 				generated.icon = rendered
+	// 				generated.overlays = generated.underlays = generated.vis_contents = null
+	// 				overlay_or_overlays[i] = generated
+	// 	else if(length(overlay_or_overlays:overlays))
+	// 		var/icon/rendered = render_compound_icon_with_client(overlay_or_overlays, client)
+	// 		var/image/generated = image(overlay_or_overlays)
+	// 		generated.icon = rendered
+	// 		generated.overlays = generated.underlays = generated.vis_contents = generated.color = generated.filters = null
+	// 		standing_overlays[key] = generated
+	reapply_standing_overlays()
 
 /mob/living/carbon/human/proc/render_spriteacc_ears(flatten)
 	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))

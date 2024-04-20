@@ -19,6 +19,7 @@
 /datum/sprite_accessory/tail/cat_big
 	name = "kitty (big), colorable"
 	id = "tail_cat_big"
+	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
 	icon_state = "catbig"
 	variations = list(
 		SPRITE_ACCESSORY_VARIATION_WAGGING = "catbig_wag",

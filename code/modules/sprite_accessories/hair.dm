@@ -72,54 +72,13 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 
 	return layers
 
-/datum/sprite_accessory/hair/flatten(list/colors, base_state, mob/for_whom)
-	var/list/layers = ..()
-	if(!ishuman(for_whom))
-		return layers
-	// is human, see if we need to do gradient
-	var/mob/living/carbon/human/casted_human = for_whom
-	var/effective_gradient = casted_human.grad_style
-	if(!effective_gradient || effective_gradient == "None")
-		return layers
-	var/effective_gradient_color = rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
-	var/cache_key = "[id]-[jointext(colors, ":")]-gradlist-[effective_gradient]-[effective_gradient_color]"
-	if(isnull(GLOB.sprite_accessory_icon_cache[cache_key]))
-		// now to deal with gradients
-		// we do a secondary caching
-		// kinda inefficient but at the same time we get to change gradient colors without having to re-blend everything else
-		// good if we ever get a proper IC hair highlight modification system.
-		var/list/image/original_layers = list(image(icon, base_state))
-		if(extra_overlay)
-			original_layers += image(icon, extra_overlay)
-		if(extra_overlay2)
-			original_layers += image(icon, extra_overlay2)
-		// get combined icon
-		var/icon/processed_gradient = hair_gradient_icon(id, original_layers, effective_gradient, icon_dimension_x)
-		var/icon/colored_gradient = icon(processed_gradient)
-		// blend in color
-		colored_gradient.Blend(effective_gradient_color, ICON_MULTIPLY)
-		var/list/new_layers = list()
-		for(var/icon/patching as anything in layers)
-			var/icon/original = patching
-			patching = icon(patching)
-			patching.Blend(colored_gradient, ICON_AND)
-			// todo: this is slow but i can't be assed to further refactor
-			// this is because ICON_AND obliterates the rest of the icon
-			// so we re-blend it onto the original.
-			patching.Blend(original, ICON_UNDERLAY)
-			new_layers += patching
-		GLOB.sprite_accessory_icon_cache[cache_key] = new_layers
-	return GLOB.sprite_accessory_icon_cache[cache_key]
-
-/datum/sprite_accessory/hair/do_special_snowflake_legacy_shit_to(icon/I, sidedness_index)
+/datum/sprite_accessory/hair/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
 	. = ..()
-	// assure that:
-	// 1. we are on legacy mode
-	// 2. we only have one layer
-	if(icon_add_legacy && !has_add_state && icon_sidedness == SPRITE_ACCESSORY_SIDEDNESS_NONE)
-		// operate on the only layer
-		var/icon/adding = icon(icon_add_legacy, icon_state = icon_state)
-		I.Blend(adding, ICON_ADD)
+	if(!ishuman(for_whom))
+		return
+	var/mob/living/carbon/human/casted_human = for_whom
+	. += casted_human.grad_style
+	. += rgb(casted_human.r_grad, casted_human.g_grad, casted_human.b_grad)
 
 /datum/sprite_accessory/hair/legacy
 	abstract_type = /datum/sprite_accessory/hair/legacy

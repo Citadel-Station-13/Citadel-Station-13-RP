@@ -84,10 +84,13 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
  * we need to redo this at some point.
  */
 /datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+	if(flattened)
+		if(!length(GLOB.clients))
+			// lol, lmao
+			return
+		return flattened(arglist(args))
 	if(variations?[with_variation])
 		with_base_state = with_variation
-	if(flattened)
-		return flattened(arglist(args))
 	if(legacy_use_additive_color_matrix && colors)
 		// clone list to not mutate original
 		colors = colors.Copy()
@@ -159,92 +162,72 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 
 	return layers
 
+/**
+ * order **must** be deterministic!
+ */
+/datum/sprite_accessory/proc/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+	. = list(
+		id,
+		with_base_state,
+	)
+	. += jointext(colors, ":")
+
 /datum/sprite_accessory/proc/flattened(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
-	var/list/icons = flatten(colors, with_base_state, for_whom)
-	var/list/layers = list()
-	for(var/i in 1 to length(icons))
-		var/layer
-		switch(i)
-			if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
-				layer = layer_front
-			if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
-				layer = layer_behind
-		layers += image(
-			icons[i],
-			layer = layer,
-		)
-	return layers
-
-/**
- * returns a list of icons: list(front, behind, side)
- * list will only contain up to the icon specified by our sidedness.
- */
-/datum/sprite_accessory/proc/flatten(list/colors, base_state, mob/for_whom)
-	var/list/layers = list()
-	var/cache_key
-	var/color_key = jointext(colors, ":")
-
-	// todo: refactor so we don't need to manually build
-	var/list/icon_states = list(base_state)
-	if(extra_overlay)
-		icon_states += extra_overlay
-	if(extra_overlay2)
-		icon_states += extra_overlay2
-
-	// front
-	cache_key = "[id]-[base_state]-[color_key]"
-
+	var/list/cache_keys = flat_cache_keys(arglist(args))
+	var/cache_key = jointext(cache_keys, "-")
+	// check the main cache key only, icon_sidedness shouldn't check at runtime
 	if(isnull(GLOB.sprite_accessory_icon_cache[cache_key]))
-		var/icon/constructing = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[1]]-front" : "[icon_states[1]]")
-		if(1 <= length(colors))
-			if(legacy_use_additive_color_matrix)
-				constructing.Blend(colors[1], ICON_ADD)
-			else
-				constructing.Blend(colors[1], ICON_MULTIPLY)
-		for(var/index in 2 to length(icon_states))
-			var/icon/blending = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[index]]-front" : "[icon_states[index]]")
-			if(index <= length(colors))
-				if(legacy_use_additive_color_matrix)
-					blending.Blend(colors[index], ICON_ADD)
-				else
-					blending.Blend(colors[index], ICON_MULTIPLY)
-			constructing.Blend(blending, ICON_OVERLAY)
-		do_special_snowflake_legacy_shit_to(constructing, SPRITE_ACCESSORY_SIDEDNESS_NONE)
-		GLOB.sprite_accessory_icon_cache[cache_key] = constructing
-
-	layers += GLOB.sprite_accessory_icon_cache[cache_key]
-
-	// behind
-	if(icon_sidedness >= SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
-		cache_key = "[id]-[base_state]-[color_key]-behind"
-
-		if(isnull(GLOB.sprite_accessory_icon_cache[cache_key]))
-			var/icon/constructing = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[1]]-behind" : "[icon_states[1]]")
-			if(1 <= length(colors))
-				if(legacy_use_additive_color_matrix)
-					constructing.Blend(colors[1], ICON_ADD)
-				else
-					constructing.Blend(colors[1], ICON_MULTIPLY)
-			for(var/index in 2 to length(icon_states))
-				var/icon/blending = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[index]]-behind" : "[icon_states[index]]")
-				if(index <= length(colors))
-					if(legacy_use_additive_color_matrix)
-						blending.Blend(colors[index], ICON_ADD)
-					else
-						blending.Blend(colors[index], ICON_MULTIPLY)
-				constructing.Blend(blending, ICON_OVERLAY)
-			do_special_snowflake_legacy_shit_to(constructing, SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
-			GLOB.sprite_accessory_icon_cache[cache_key] = constructing
-
-		layers += GLOB.sprite_accessory_icon_cache[cache_key]
-
-	return layers
-
-/**
- * -_-
- */
-/datum/sprite_accessory/proc/do_special_snowflake_legacy_shit_to(icon/I, sidedness_index)
-	return
+		// for new coders: args is just a list like any other, and it's *sort of* mutable.
+		// set args.flattened to FALSE
+		flattened = FALSE
+		// pass in args
+		var/list/layers = render(arglist(args))
+		// behavior past this point assumes layers cuont is always the same as sidedness.
+		// as well as the sidedness being the same index as the layer
+		// at time of writing,
+		// 1 = front
+		// 2 = behind
+		// 3 = side (unimplemented)
+		ASSERT(length(layers) == icon_sidedness)
+		// so i yelled 'it's rendering time'
+		var/client/designated_victim = pick(GLOB.clients)
+		if(!designated_victim?.initialized)
+			STACK_TRACE("somehow we got an uninitialized client. ouch!")
+			return layers
+		for(var/i in 1 to length(layers))
+			var/image/casted = layers[i]
+			var/icon/rendered = render_compound_icon_with_client(casted, designated_victim)
+			if(!rendered)
+				STACK_TRACE("something went horribly wrong ):")
+				return layers
+			layers[i] = rendered
+		// cache things
+		GLOB.sprite_accessory_icon_cache[cache_key] = layers[1]
+		switch(icon_sidedness)
+			if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
+				GLOB.sprite_accessory_icon_cache[cache_key] = layers[1]
+			if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
+				GLOB.sprite_accessory_icon_cache[cache_key] = layers[1]
+				GLOB.sprite_accessory_icon_cache["[cache_key]-behind"] = layers[2]
+	switch(icon_sidedness)
+		if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
+			return list(
+				image(
+					GLOB.sprite_accessory_icon_cache[cache_key],
+					layer = layer_front,
+				),
+			)
+		if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
+			return list(
+				image(
+					GLOB.sprite_accessory_icon_cache[cache_key],
+					layer = layer_front,
+				),
+				image(
+					GLOB.sprite_accessory_icon_cache["[cache_key]-behind"],
+					layer = layer_behind,
+				),
+			)
 
 //* Resolution *//
 

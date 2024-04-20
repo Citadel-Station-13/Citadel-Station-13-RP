@@ -11,21 +11,35 @@
 /datum/sprite_accessory/wing/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	var/list/image/layers = ..()
 
+	if(flattened)
+		return layers
+
 	for(var/image/rendered as anything in layers)
-		// then deal with gradient if we have to
 		if(do_colouration && ishuman(for_whom))
 			var/mob/living/carbon/human/casted_human = for_whom
-			if(casted_human.grad_wingstyle)
+			if(casted_human.grad_wingstyle && casted_human.grad_wingstyle != "None")
 				var/image/gradient_icon = image(hair_gradient_icon(id, rendered, casted_human.grad_wingstyle, icon_dimension_x))
 				gradient_icon.color = rgb(
-					casted_human.r_grad,
-					casted_human.g_grad,
-					casted_human.b_grad,
+					casted_human.r_gradwing,
+					casted_human.g_gradwing,
+					casted_human.b_gradwing,
 				)
 				gradient_icon.blend_mode = BLEND_OVERLAY
 				rendered.overlays += gradient_icon
 
 	return layers
+
+/datum/sprite_accessory/wing/flat_cache_keys(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+	. = ..()
+	if(!ishuman(for_whom))
+		return
+	var/mob/living/carbon/human/casted_human = for_whom
+	. += casted_human.grad_wingstyle
+	. += rgb(
+		casted_human.r_gradwing,
+		casted_human.g_gradwing,
+		casted_human.b_gradwing,
+	)
 
 // todo: sort ears by something that makes sense
 // todo: tgui choice menu should be modular
