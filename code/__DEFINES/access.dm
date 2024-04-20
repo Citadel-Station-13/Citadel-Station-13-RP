@@ -80,15 +80,67 @@ GLOBAL_LIST_INIT(access_type_names, list(
 /obj/map_helper/access
 	name = "Mapping access helper"
 	icon_state = "access_helper"
+	var/type_to_change
 	//var/access_name
 	var/access_value
 
 /obj/map_helper/access/Initialize(mapload)
 	. = ..()
-	var/turf/location = get_turf(src)
-	for(var/obj/O in location)
-		LAZYDISTINCTADD(O.req_one_access, access_value)
-	return 2 //INITIALIZE_HINT_QDEL == 2, but the define happens later than this file is compiled
+	var/obj/thing = locate(type_to_change) in src.loc
+	if(istype(thing, type_to_change))
+		LAZYDISTINCTADD(thing.req_one_access, access_value)
+	return 2 //Init Qdel hint, but the define is created later, so we have to hardcode it
+
+/obj/map_helper/access/door
+	type_to_change = /obj/machinery/door
+
+/obj/map_helper/access/air_alarm
+	type_to_change = /obj/machinery/air_alarm
+
+/obj/map_helper/access/apc
+	type_to_change = /obj/machinery/power/apc
+
+/obj/map_helper/access/button
+	type_to_change = /obj/machinery/button
+
+/obj/map_helper/access/secure_closet
+	type_to_change = /obj/structure/closet/secure_closet
+
+/obj/map_helper/access/access_button
+	type_to_change = /obj/machinery/access_button
+
+/obj/map_helper/access/vending
+	type_to_change = /obj/machinery/vending
+
+#define STANDARD_ACCESS_HELPERS(value, type, desc)\
+/obj/map_helper/access/door/##type {\
+	name = desc +" door access";\
+	access_value = value;\
+}\
+/obj/map_helper/access/air_alarm/##type {\
+	name = desc +" air_alarm access";\
+	access_value = value;\
+}\
+/obj/map_helper/access/apc/##type {\
+	name = desc +" apc access";\
+	access_value = value;\
+}\
+/obj/map_helper/access/button/##type {\
+	name = desc +" button access";\
+	access_value = value;\
+}\
+/obj/map_helper/access/secure_closet/##type {\
+	name = desc +" secure_closet access";\
+	access_value = value;\
+}\
+/obj/map_helper/access/access_button/##type {\
+	name = desc +" access_button access";\
+	access_value = value;\
+}\
+/obj/map_helper/access/vending/##type {\
+	name = desc +" vending access";\
+	access_value = value;\
+}
 
 // When oh when will we escape the tyranny of number enums?
 // todo: eventually we'll want a script for "migrating" access in .dmms. if that's, y'know, even possible
@@ -96,10 +148,7 @@ GLOBAL_LIST_INIT(access_type_names, list(
 //       as it's bound to break stuff.
 
 #define STANDARD_ACCESS_DATUM(value, type, desc) \
-/obj/map_helper/access/##type {\
-	name = desc;\
-	access_value = value;\
-}\
+STANDARD_ACCESS_HELPERS(value, type, desc)\
 /datum/access/##type { \
 	access_name = desc; \
 	access_value = value; \
