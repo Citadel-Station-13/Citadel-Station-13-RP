@@ -88,7 +88,8 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 		if(!length(GLOB.clients))
 			// lol, lmao
 			return
-		return flattened(arglist(args))
+		var/list/image/layers_flat = flattened(arglist(args))
+		return align_layers(layers_flat)
 	if(variations?[with_variation])
 		with_base_state = with_variation
 	if(legacy_use_additive_color_matrix && colors)
@@ -150,6 +151,9 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 			// add
 			layers += rendering
 
+	return align_layers(layers)
+
+/datum/sprite_accessory/proc/align_layers(list/image/layers)
 	for(var/image/patching as anything in layers)
 		// patching.appearance_flags = KEEP_TOGETHER
 		switch(icon_alignment)
@@ -159,7 +163,6 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 			if(SPRITE_ACCESSORY_ALIGNMENT_CENTER)
 				patching.pixel_x = round((WORLD_ICON_SIZE - icon_dimension_x) * 0.5)
 				patching.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
-
 	return layers
 
 /**

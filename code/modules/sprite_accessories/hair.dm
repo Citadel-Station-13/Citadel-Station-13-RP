@@ -1,3 +1,25 @@
+GLOBAL_LIST_INIT(hair_gradients, list(
+	"None"				= "none",
+	"Fade (Up)"			= "fadeup",
+	"Fade Low (Up)"		= "fadeup_low",
+	"Fade (Down)"		= "fadedown",
+	"Fade Low (Down)"	= "fadedown_low",
+	"Fade High (Down)"	= "fadedown_high",
+	"Reflected (Center)"= "reflected",
+	"Reflected Inverse (Center)"= "reflected_inverse",
+	"Vertical Split (Back)"= "vsplit_back",
+	"Vertical Split"	= "vsplit",
+	"Vertical Split (Back, Front Effect)"= "vsplit_dual",
+	"Bottom (Flat)"		= "bottomflat",
+	"Shoulders (Flat)"	= "shouldersflat",
+	"Wavy"				= "wavy",
+	"Wavy Sharp Spikes"		= "wavy_spiked",
+	"Wavy Smooth Spikes"		= "wavy_smooth",
+	"Wavy Smoothish Spikes"		= "wavy_smooth2",
+	"Striped"			= "striped",
+	"Striped (Vertical)"= "striped_vertical"
+	))
+
 GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 
 // todo: should we really be doing this?
