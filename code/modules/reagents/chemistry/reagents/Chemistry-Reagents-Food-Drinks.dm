@@ -4408,14 +4408,14 @@
 /datum/reagent/ethanol/narsian
 	name = "Nars'Ian"
 	id = "narsian"
-	description = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+	description = "Nanotrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
 	taste_description = "bloody orange creamsicle with a bite (and a bark!)"
 	color = "#7D1717"
 	strength = 50
 	blood_content = 1
 
 	glass_name = "Nar'Sian"
-	glass_desc = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+	glass_desc = "Nanotrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
 /datum/reagent/ethanol/nightsdelight
 	name = "Night's Delight"
 	id = "nightsdelight"

@@ -83,7 +83,7 @@
 /obj/item/reagent_containers/spray/verb/empty()
 
 	set name = "Empty Tank"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if (alert(usr, "Are you sure you want to empty that?", "Empty Tank:", "Yes", "No") != "Yes")
@@ -245,7 +245,7 @@
 
 /obj/item/reagent_containers/spray/squirt/nt
 	name = "HydroBlaster 4001"
-	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in NanoTrasen corporate colors. This is largely considered a sarcastic gesture."
+	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in Nanotrasen corporate colors. This is largely considered a sarcastic gesture."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun_nt"
 	item_state = "squirtgun_nt"

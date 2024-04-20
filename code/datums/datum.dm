@@ -161,6 +161,17 @@
 	SEND_SIGNAL(source, COMSIG_CD_RESET(index), S_TIMER_COOLDOWN_TIMELEFT(source, index))
 	TIMER_COOLDOWN_END(source, index)
 
+//* Duplication *//
+
+/**
+ * makes a clone of this datum
+ *
+ * @params
+ * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
+ */
+/datum/proc/clone(include_contents)
+	return new type
+
 //* Serialization *//
 
 /**

@@ -4456,7 +4456,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/nt_muffin
 	name = "\improper NtMuffin"
-	desc = "A NanoTrasen sponsered biscuit with egg, cheese, and sausage."
+	desc = "A Nanotrasen sponsered biscuit with egg, cheese, and sausage."
 	icon_state = "nt_muffin"
 	nutriment_desc = list("biscuit" = 3)
 	nutriment_amt = 3
@@ -5855,7 +5855,10 @@ END CITADEL CHANGE */
 	for(var/i=1 to startswith)
 		new /obj/item/reagent_containers/food/snacks/chickenwing(src)
 	update_icon()
-	return
+
+/obj/item/storage/box/wings/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/box/wings/update_icon()
 	var/i = 0

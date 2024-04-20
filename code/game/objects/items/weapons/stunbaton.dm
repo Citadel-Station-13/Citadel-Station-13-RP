@@ -120,7 +120,7 @@
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
-		playsound(loc, "sparks", 75, 1, -1)
+		playsound(loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
 		update_icon()
 	else
 		status = 0
@@ -293,7 +293,7 @@
 
 /obj/item/melee/baton/stunlance
 	name = "stun lance"
-	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	desc = "Designed by Nanotrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
 	icon_state = "stunlance"
 	w_class = WEIGHT_CLASS_NORMAL
 	reach = 2

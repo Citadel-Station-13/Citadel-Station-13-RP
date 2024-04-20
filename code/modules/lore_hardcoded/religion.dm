@@ -8,6 +8,12 @@
 			return
 	return ..()
 
+/datum/lore/character_background/religion/alverrtcheff
+	name = "Alverrtcheff"
+	id = "alverrtcheff"
+	desc = "Alverrtcheff, or The Grand Founder, is the name of both the deity and the religion associated with it. A type of deism, it was founded by the Vulpkanin under the belief that Alverrtcheff created the universe but does not meddle in it."
+	category = "Misc"
+
 /datum/lore/character_background/religion/custom
 	name = "Other"
 	id = "custom"

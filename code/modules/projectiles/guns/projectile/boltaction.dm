@@ -213,7 +213,7 @@
 	scoped_accuracy = 100
 
 /obj/item/gun/ballistic/shotgun/pump/scopedrifle/verb/scope()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Use Scope"
 	set popup_menu = 1
 

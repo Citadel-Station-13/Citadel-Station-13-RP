@@ -1,6 +1,6 @@
 /datum/lore/codex/category/standard_operating_procedures
 	name = "Standard Operating Procedures"
-	data = "This section details the various Standard Operating Procedures (often shortened to 'SOP') one may find onboard a NanoTrasen facility."
+	data = "This section details the various Standard Operating Procedures (often shortened to 'SOP') one may find onboard a Nanotrasen facility."
 	children = list(
 		/datum/lore/codex/page/general_sop,
 //	These are still being discussed
@@ -14,11 +14,11 @@
 
 /datum/lore/codex/page/general_sop
 	name = "General SOP"
-	data = "This applies to everyone onboard a NanoTrasen facility, including guests.  Note that specific departmental operating procedures can override some of \
+	data = "This applies to everyone onboard a Nanotrasen facility, including guests.  Note that specific departmental operating procedures can override some of \
 	the procedures listed here.\
 	<br><br>\
 	<h3>Visitors</h3>\
-	Visitors of all forms are required to follow SOP, Corporate Regulations, and local laws while onboard or around NanoTrasen property.  Visitors who are \
+	Visitors of all forms are required to follow SOP, Corporate Regulations, and local laws while onboard or around Nanotrasen property.  Visitors who are \
 	not registered on the manifest are required to speak with the Head of Personnel or Station Director, if one exists, to register, and obtain an identification \
 	card denoting their status as a visitor.  Visitors registered on the manifest are free to visit any public (non-access restricted) location on the facility, however \
 	they are still subject to the same regulations and rules as an ordinary crew member.\
@@ -41,7 +41,7 @@
 	less risk to other crew members, if possible.\
 	<br>\
 	<h3>EVA Procedure</h3>\
-	Extravehicular activity should only be done by EVA trained and certified crew members, if there is no emergency.  If an emergency is occuring, NanoTrasen \
+	Extravehicular activity should only be done by EVA trained and certified crew members, if there is no emergency.  If an emergency is occuring, Nanotrasen \
 	provides high visibility, easy to seal emergency softsuits inside blue emergency lockers located at key locations inside your facility.  Regardless, \
 	for your own safety, you should only enter or exit the facility from designated external airlocks, which contain an air cycling system.  It is both \
 	wasteful and potentially dangerous to 'force' an external airlock to open before cycling has completed.  Before cycling out into the void, the person going \
@@ -283,7 +283,7 @@
 	a new lawed chassis, if required.  An MMI that desires to inhabit a chassis capable of wireless control over the facility is required to be lawed.  \
 	A Full Body Prosthetic lacks the wireless capabilities, and as such is unlawed.</li>\
 	<li>Newly activated positronic brains are to be placed inside a lawed chassis, if they request mobility.  The individual who activated the positronic brain \
-	is considered the positronic's guardian, but may choose to transfer guardianship to NanoTrasen at any point.  Positronics whom have passed their \
+	is considered the positronic's guardian, but may choose to transfer guardianship to Nanotrasen at any point.  Positronics whom have passed their \
 	Jans-Fhriede test cannot be placed inside a lawed chassis without their consent.</li>\
 	<li>Drone circuitry are always to be placed inside a lawed chassis.</li>\
 	</ul>\
@@ -298,7 +298,7 @@
 */
 /datum/lore/codex/category/alert_levels
 	name = "Alert Levels"
-	data = "NanoTrasen facilities oftentimes use a color-coded alert system in order to inform the crew of ongoing danger or other threats.  Below is a list of \
+	data = "Nanotrasen facilities oftentimes use a color-coded alert system in order to inform the crew of ongoing danger or other threats.  Below is a list of \
 	alert levels, as well as how the facility should shift in response to a change in an alert.  You can check what the current level is by looking at a fire alarm. \
 	Alert levels can be set by Command staff from a specific console located in the bridge.  For Red alert, two Heads of Staff are required to swipe an ID on a device inside \
 	their office in order to trigger it."

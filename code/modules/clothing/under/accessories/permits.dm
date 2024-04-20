@@ -46,7 +46,7 @@
 
 /obj/item/clothing/accessory/permit/drone
 	name = "drone identification card"
-	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within NanoTrasen space, by law."
+	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within Nanotrasen space, by law."
 	icon_state = "permit-drone"
 
 /obj/item/clothing/accessory/permit/gun/paramedic

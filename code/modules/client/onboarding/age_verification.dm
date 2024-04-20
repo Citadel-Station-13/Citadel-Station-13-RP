@@ -41,7 +41,7 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 /datum/age_verify_menu/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AgeVerifyMenu")
+		ui = new(user, src, "UIAgeVerifyMenu")
 		ui.open()
 
 /datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state)
@@ -53,6 +53,7 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 		return
 
 	if(usr.client.is_age_verified())
+		qdel(ui)
 		return TRUE
 
 	var/player_month = text2num(params["month"])

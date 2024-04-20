@@ -41,7 +41,7 @@
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"
-	desc = "An armored vest that protects against some damage. This one has a NanoTrasen corporate badge."
+	desc = "An armored vest that protects against some damage. This one has a Nanotrasen corporate badge."
 	icon_state = "armoralt"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 
@@ -210,7 +210,7 @@
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
-		playsound(user.loc, "sparks", 50, 1)
+		playsound(user.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 
 		user.loc = picked
 		return PROJECTILE_FORCE_MISS
@@ -553,7 +553,7 @@
 
 //All of the armor below is mostly unused
 
-/obj/item/clothing/suit/armor/centcomm
+/obj/item/clothing/suit/armor/centcom
 	name = "CentCom armor"
 	desc = "A suit that protects against some damage."
 	icon_state = "centcom"

@@ -1718,7 +1718,7 @@
 "bfO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/sign/goldenplaque{
-	desc = "This is a dedicated plaque to all those that have given their life for the betterment of NanoTrasen. We give our thanks and salute to those that do not see the next star. The name DEAN FITZGERALD is scratched under the text.";
+	desc = "This is a dedicated plaque to all those that have given their life for the betterment of Nanotrasen. We give our thanks and salute to those that do not see the next star. The name DEAN FITZGERALD is scratched under the text.";
 	name = "Fallen Hero/ine's Memorial";
 	pixel_y = 32
 	},
@@ -8566,7 +8566,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/command{
-	name = "NanoTrasen Official On-Site Office";
+	name = "Nanotrasen Official On-Site Office";
 	req_access = list(19)
 	},
 /obj/machinery/door/firedoor/glass{
@@ -8872,7 +8872,7 @@
 /area/shuttle/excursion/cockpit)
 "geL" = (
 /obj/structure/sign/goldenplaque{
-	desc = "This plaque is thankfully empty, but is dedicated to those that were killed in the line of duty protecting the NSV Triumph, and NanoTrasen as a whole.";
+	desc = "This plaque is thankfully empty, but is dedicated to those that were killed in the line of duty protecting the NSV Triumph, and Nanotrasen as a whole.";
 	name = "Memorial Plaque";
 	pixel_y = 32
 	},
@@ -13513,7 +13513,7 @@
 /obj/item/clothing/accessory/permit/gun,
 /obj/item/paper{
 	desc = "";
-	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your NanoTrasen Employee Representitive for more information.";
+	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your Nanotrasen Employee Representitive for more information.";
 	name = "note from CentCom about permits"
 	},
 /obj/machinery/camera/network/security{

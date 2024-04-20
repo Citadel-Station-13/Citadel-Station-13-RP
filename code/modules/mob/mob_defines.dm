@@ -49,9 +49,9 @@
 	var/atom/movable/buckled
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
-	
+
 	//* HUD
-	
+
 	/// active, opened storage
 	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
 	//  todo: we'll eventually need a system to handle ckey transfers properly.
@@ -96,6 +96,8 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 	/// pixel-shifted by user enough to let people through. this is a direction flag
+	/// although set on /mob level, this is only actually used at /living level because base /mob should not have complex block
+	/// mechanics by default.
 	var/wallflowering = NONE
 
 	//? Abilities

@@ -314,7 +314,7 @@
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src, "sparks", 50, 1)
+			playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
 
 	else if(I.is_wrench())
 		if(sealed)
@@ -420,7 +420,7 @@
 
 /obj/structure/closet/verb/verb_togglelock()
 	set src in oview(1) // One square distance
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Lock"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
@@ -445,7 +445,7 @@
 
 /obj/structure/closet/verb/verb_toggleopen()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Open"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
