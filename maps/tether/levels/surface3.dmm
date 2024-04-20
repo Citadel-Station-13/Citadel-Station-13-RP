@@ -23603,13 +23603,13 @@
 /obj/machinery/camera/network/civilian{
 	dir = 9
 	},
-/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/phoron/airlock_exterior{
 	pixel_x = 25
 	},
 /obj/machinery/atmospherics/pipe/vent{
 	dir = 1
 	},
+/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/topairlock)
 "okA" = (
@@ -37297,10 +37297,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
-"wcS" = (
-/obj/machinery/atmospherics/component/unary/env_heat_pump,
-/turf/simulated/floor/tiled/dark,
-/area/tether/surfacebase/topairlock)
 "wcT" = (
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/carpet,
@@ -67454,7 +67450,7 @@ lFR
 ceB
 hXT
 nkA
-wcS
+tMf
 tMf
 tMf
 fFk
