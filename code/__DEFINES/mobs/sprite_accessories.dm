@@ -9,12 +9,12 @@ DEFINE_BITFIELD(hair_flags, list(
 // Hair Defines
 
 //* /datum/sprite_accessory/var/icon_sidedness
-//? These must be numbers!
+//? These must be numbers! They also must be consequetive from 1 as they are list indices for rendering!
 
 /// no additional states
-#define SPRITE_ACCESSORY_SIDEDNESS_NONE 0
+#define SPRITE_ACCESSORY_SIDEDNESS_NONE 1
 /// -front state, and -behind state, use different layers
-#define SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND 1
+#define SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND 2
 
 // todo: DEFINE_ENUM
 

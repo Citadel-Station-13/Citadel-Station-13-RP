@@ -24,7 +24,7 @@
 	if(clip_mask_icon && clip_mask_state)
 		clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state)
 
-/datum/sprite_accessory/tail/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
+/datum/sprite_accessory/tail/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	// awful? yes. :skull:
 	// please don't ever copy this pattern anywhere else.
 	if(with_variation == SPRITE_ACCESSORY_VARIATION_WAGGING && ani_state)

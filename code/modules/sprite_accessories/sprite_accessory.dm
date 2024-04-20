@@ -1,6 +1,9 @@
 // TODO: actual better way to do these
 // TODO: actual better way to do "can we use this" checks because one whitelist list and a var is fucking horrible to maintain what the fuck
 
+// todo: ouch at this list
+GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
+
 /datum/sprite_accessory
 	abstract_type = /datum/sprite_accessory
 
@@ -80,9 +83,11 @@
  * todo: with_base_state completely tramples extra_overlay, extra_overlay2
  * we need to redo this at some point.
  */
-/datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation)
+/datum/sprite_accessory/proc/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
 	if(variations?[with_variation])
 		with_base_state = with_variation
+	if(flattened)
+		return flattened(arglist(args))
 	if(legacy_use_additive_color_matrix && colors)
 		// clone list to not mutate original
 		colors = colors.Copy()
@@ -153,6 +158,93 @@
 				patching.pixel_y = round((WORLD_ICON_SIZE - icon_dimension_y) * 0.5)
 
 	return layers
+
+/datum/sprite_accessory/proc/flattened(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state = icon_state, with_variation, flattened)
+	var/list/icons = flatten(colors, with_base_state, for_whom)
+	var/list/layers = list()
+	for(var/i in 1 to length(icons))
+		var/layer
+		switch(i)
+			if(SPRITE_ACCESSORY_SIDEDNESS_NONE)
+				layer = layer_front
+			if(SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
+				layer = layer_behind
+		layers += image(
+			icons[i],
+			layer = layer,
+		)
+	return layers
+
+/**
+ * returns a list of icons: list(front, behind, side)
+ * list will only contain up to the icon specified by our sidedness.
+ */
+/datum/sprite_accessory/proc/flatten(list/colors, base_state, mob/for_whom)
+	var/list/layers = list()
+	var/cache_key
+	var/color_key = jointext(colors, ":")
+
+	// todo: refactor so we don't need to manually build
+	var/list/icon_states = list(base_state)
+	if(extra_overlay)
+		icon_states += extra_overlay
+	if(extra_overlay2)
+		icon_states += extra_overlay2
+
+	// front
+	cache_key = "[id]-[base_state]-[color_key]"
+
+	if(isnull(GLOB.sprite_accessory_icon_cache[cache_key]))
+		var/icon/constructing = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[1]]-front" : "[icon_states[1]]")
+		if(1 <= length(colors))
+			if(legacy_use_additive_color_matrix)
+				constructing.Blend(colors[1], ICON_ADD)
+			else
+				constructing.Blend(colors[1], ICON_MULTIPLY)
+		for(var/index in 2 to length(icon_states))
+			var/icon/blending = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[index]]-front" : "[icon_states[index]]")
+			if(index <= length(colors))
+				if(legacy_use_additive_color_matrix)
+					blending.Blend(colors[index], ICON_ADD)
+				else
+					blending.Blend(colors[index], ICON_MULTIPLY)
+			constructing.Blend(blending, ICON_OVERLAY)
+		do_special_snowflake_legacy_shit_to(constructing, SPRITE_ACCESSORY_SIDEDNESS_NONE)
+		GLOB.sprite_accessory_icon_cache[cache_key] = constructing
+
+	layers += GLOB.sprite_accessory_icon_cache[cache_key]
+
+	// behind
+	if(icon_sidedness >= SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
+		cache_key = "[id]-[base_state]-[color_key]-behind"
+
+		if(isnull(GLOB.sprite_accessory_icon_cache[cache_key]))
+			var/icon/constructing = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[1]]-behind" : "[icon_states[1]]")
+			if(1 <= length(colors))
+				if(legacy_use_additive_color_matrix)
+					constructing.Blend(colors[1], ICON_ADD)
+				else
+					constructing.Blend(colors[1], ICON_MULTIPLY)
+			for(var/index in 2 to length(icon_states))
+				var/icon/blending = icon(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[icon_states[index]]-behind" : "[icon_states[index]]")
+				if(index <= length(colors))
+					if(legacy_use_additive_color_matrix)
+						blending.Blend(colors[index], ICON_ADD)
+					else
+						blending.Blend(colors[index], ICON_MULTIPLY)
+				constructing.Blend(blending, ICON_OVERLAY)
+			do_special_snowflake_legacy_shit_to(constructing, SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
+			GLOB.sprite_accessory_icon_cache[cache_key] = constructing
+
+		layers += GLOB.sprite_accessory_icon_cache[cache_key]
+
+	return layers
+
+/**
+ * -_-
+ */
+/datum/sprite_accessory/proc/do_special_snowflake_legacy_shit_to(icon/I, sidedness_index)
+	return
 
 //* Resolution *//
 

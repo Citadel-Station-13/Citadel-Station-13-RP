@@ -2,6 +2,12 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /**
+ * flatten all keyed overlays
+ */
+/mob/living/carbon/proc/flatten_standing_overlays()
+	return
+
+/**
  * rebuild all keyed overlays
  */
 /mob/living/carbon/proc/rebuild_standing_overlays(dump_all_overlays = TRUE)

@@ -8,23 +8,22 @@
 
 	legacy_use_additive_color_matrix = TRUE // Only appliciable if do_coloration = 1
 
-/datum/sprite_accessory/wing/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation)
+/datum/sprite_accessory/wing/render(mob/for_whom, list/colors, layer_front, layer_behind, layer_side, with_base_state, with_variation, flattened)
 	var/list/image/layers = ..()
 
 	for(var/image/rendered as anything in layers)
+		// then deal with gradient if we have to
 		if(do_colouration && ishuman(for_whom))
 			var/mob/living/carbon/human/casted_human = for_whom
 			if(casted_human.grad_wingstyle)
-				var/image/gradient = image('icons/mob/hair_gradients.dmi', GLOB.hair_gradients[casted_human.grad_style])
-				gradient.color = list(
-					0, 0, 0, 0,
-					0, 0, 0, 0,
-					0, 0, 0, 0,
-					0, 0, 0, 1,
-					casted_human.r_gradwing / 255, casted_human.g_gradwing / 255, casted_human.b_gradwing / 255, 0,
+				var/image/gradient_icon = image(hair_gradient_icon(id, rendered, casted_human.grad_wingstyle, icon_dimension_x))
+				gradient_icon.color = rgb(
+					casted_human.r_grad,
+					casted_human.g_grad,
+					casted_human.b_grad,
 				)
-				gradient.blend_mode = BLEND_INSET_OVERLAY
-				rendered.overlays += gradient
+				gradient_icon.blend_mode = BLEND_OVERLAY
+				rendered.overlays += gradient_icon
 
 	return layers
 

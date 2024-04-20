@@ -1,4 +1,13 @@
-/mob/living/carbon/human/proc/render_spriteacc_ears()
+/mob/living/carbon/human/flatten_standing_overlays()
+	. = ..()
+	render_spriteacc_ears(TRUE)
+	render_spriteacc_facehair(TRUE)
+	render_spriteacc_hair(TRUE)
+	render_spriteacc_tail(TRUE)
+	render_spriteacc_wings(TRUE)
+	render_spriteacc_horns(TRUE)
+
+/mob/living/carbon/human/proc/render_spriteacc_ears(flatten)
 	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))
 		remove_standing_overlay(HUMAN_OVERLAY_EARS)
 		return
@@ -21,6 +30,7 @@
 		HUMAN_LAYER_SPRITEACC_EARS_BEHIND,
 		0, // TODO
 		null,
+		flattened = flatten,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -35,7 +45,7 @@
 	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_EARS, rendered)
 
-/mob/living/carbon/human/proc/render_spriteacc_horns()
+/mob/living/carbon/human/proc/render_spriteacc_horns(flatten)
 	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))
 		remove_standing_overlay(HUMAN_OVERLAY_HORNS)
 		return
@@ -62,6 +72,7 @@
 		HUMAN_LAYER_SPRITEACC_HORNS_BEHIND,
 		0, // TODO
 		null,
+		flattened = flatten,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -76,7 +87,7 @@
 	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_HORNS, rendered)
 
-/mob/living/carbon/human/proc/render_spriteacc_facehair()
+/mob/living/carbon/human/proc/render_spriteacc_facehair(flatten)
 	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & BLOCKHAIR)
 		remove_standing_overlay(HUMAN_OVERLAY_FACEHAIR)
 		return
@@ -97,6 +108,7 @@
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND,
 		0, // TODO
 		null,
+		flattened = flatten,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -111,7 +123,7 @@
 	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_FACEHAIR, rendered)
 
-/mob/living/carbon/human/proc/render_spriteacc_hair()
+/mob/living/carbon/human/proc/render_spriteacc_hair(flatten)
 	if((head?.inv_hide_flags | wear_mask?.inv_hide_flags) & (BLOCKHEADHAIR | BLOCKHAIR))
 		remove_standing_overlay(HUMAN_OVERLAY_HAIR)
 		return
@@ -136,6 +148,7 @@
 		HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND,
 		0, // TODO
 		null,
+		flattened = flatten,
 	)
 	// todo: this is awful
 	if(islist(rendered))
@@ -150,7 +163,7 @@
 	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_HAIR, rendered)
 
-/mob/living/carbon/human/proc/render_spriteacc_wings()
+/mob/living/carbon/human/proc/render_spriteacc_wings(flatten)
 	var/datum/sprite_accessory/wing/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_WINGS)
@@ -171,13 +184,14 @@
 		0, // TODO
 		null,
 		legacy_wing_variation,
+		flattened = flatten,
 	)
 
 	. = rendered
 	set_standing_overlay(HUMAN_OVERLAY_WINGS, rendered)
 
 
-/mob/living/carbon/human/proc/render_spriteacc_tail()
+/mob/living/carbon/human/proc/render_spriteacc_tail(flatten)
 	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
 	if(isnull(rendering))
 		remove_standing_overlay(HUMAN_OVERLAY_TAIL)
@@ -198,6 +212,7 @@
 		0, // TODO,
 		null,
 		legacy_tail_variation,
+		flattened = flatten,
 	)
 
 	. = rendered

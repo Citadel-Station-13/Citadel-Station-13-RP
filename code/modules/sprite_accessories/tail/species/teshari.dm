@@ -36,7 +36,7 @@
 	icon = 'icons/mob/sprite_accessory/tails/teshari.dmi'
 	icon_state = "fluffy"
 	extra_overlay = "fluffy_2"
-	do_colouration = tRUE
+	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
 
