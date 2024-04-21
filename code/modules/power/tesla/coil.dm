@@ -12,7 +12,7 @@
 
 	circuit = /obj/item/circuitboard/tesla_coil
 
-	var/power_loss = 2
+	var/power_loss = 1.2
 	var/input_power_multiplier = 1
 	var/zap_cooldown = 100
 	var/last_zap = 0

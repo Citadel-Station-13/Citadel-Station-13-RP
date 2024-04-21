@@ -1,8 +1,8 @@
 
 /datum/atmosphere/planet/virgo3b
 	base = list(
-		/datum/gas/nitrogen = 0.16,
-		/datum/gas/phoron = 0.72,
+		/datum/gas/nitrogen = 0.36,
+		/datum/gas/phoron = 0.52,
 		/datum/gas/carbon_dioxide = 0.12,
 	)
 	pressure_low = 82.4
