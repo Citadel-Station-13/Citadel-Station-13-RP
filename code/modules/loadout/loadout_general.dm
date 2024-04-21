@@ -57,7 +57,7 @@
 /datum/loadout_entry/plushie/New()
 	..()
 	var/list/plushies = list()
-	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - /obj/item/toy/plushie/therapy)
+	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - list(/obj/item/toy/plushie/therapy, /obj/item/toy/plushie/snowflake))
 		var/obj/item/toy/plushie/plushie_type = plushie
 		plushies[initial(plushie_type.name)] = plushie_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(plushies, GLOBAL_PROC_REF(cmp_text_asc)))
