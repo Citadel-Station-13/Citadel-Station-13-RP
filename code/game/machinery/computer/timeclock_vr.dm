@@ -81,8 +81,6 @@
 	var/list/data = ..()
 
 	// Okay, data for showing the user's OWN PTO stuff
-	if(user.client)
-		data["department_hours"] = SANITIZE_LIST(user.client.department_hours)
 	data["user_name"] = "[user]"
 
 	// Data about the card that we put into it.
@@ -101,7 +99,8 @@
 				"departments" = english_list(job.departments),
 				"selection_color" = job.selection_color,
 				"economic_modifier" = job.get_economic_payscale(),
-				"pto_department" = job.pto_type
+				"pto_department" = job.pto_type,
+				"is_off_duty" = job.is_off_duty,
 			)
 		if(config_legacy.time_off)
 			data["allow_change_job"] = TRUE
