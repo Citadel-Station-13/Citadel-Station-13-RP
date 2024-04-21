@@ -5,5 +5,5 @@
 	ckeywhitelist = list("djkouta")
 
 /obj/item/clothing/accessory/kouta_cloak
-	icon = 'donator/djkouta/donator_cloak.dmi'
+	icon = 'fluff/donator/djkouta/donator_cloak.dmi'
 	icon_state = "slimecloak"
