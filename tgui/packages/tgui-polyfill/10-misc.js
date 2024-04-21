@@ -53,6 +53,20 @@
     };
   }
 
+  if(!Array.prototype['at']) {
+    Array.prototype.at = function(index) {
+      if((index >= this.length) || (index < (-this.length))) {
+        return undefined;
+      }
+      if(index >= 0){
+        return this[index];
+      }
+      else {
+        return this[this.length + index];
+      }
+    }
+  }
+
   // Inferno needs Int32Array, and it is not covered by core-js.
   if (!window.Int32Array) {
     window.Int32Array = Array;

@@ -1128,7 +1128,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = "\ref[P]")))
 		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
 		for(var/mob/M in GLOB.player_list)
-			if(M.stat == DEAD && M.client && (M.is_preference_enabled(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
+			if(M.stat == DEAD && M.client && (M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
 				if(istype(M, /mob/new_player))
 					continue
 				if(M.forbid_seeing_deadchat)
@@ -1210,7 +1210,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new_message = 1
 
 /obj/item/pda/verb/verb_reset_pda()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Reset PDA"
 	set src in usr
 
@@ -1225,7 +1225,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 /obj/item/pda/verb/verb_remove_id()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove id"
 	set src in usr
 
@@ -1242,7 +1242,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 
 /obj/item/pda/verb/verb_remove_pen()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove pen"
 	set src in usr
 
@@ -1255,7 +1255,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 /obj/item/pda/verb/verb_remove_cartridge()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove cartridge"
 	set src in usr
 

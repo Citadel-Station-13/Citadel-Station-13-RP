@@ -167,7 +167,7 @@
 /obj/machinery/appliance/proc/choose_output()
 	set src in view()
 	set name = "Choose output"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(!can_use_check(usr))
 		return

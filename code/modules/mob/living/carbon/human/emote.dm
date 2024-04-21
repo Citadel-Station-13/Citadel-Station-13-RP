@@ -1055,7 +1055,7 @@
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
@@ -1066,7 +1066,7 @@
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
@@ -1307,7 +1307,7 @@
 /mob/living/carbon/human/verb/toggle_gender_identity_vr()
 	set name = "Set Gender Identity"
 	set desc = "Sets the pronouns when examined and performing an emote."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	var/new_gender_identity = input("Please select a gender Identity.") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM)
 	if(!new_gender_identity)
 		return 0
@@ -1316,7 +1316,7 @@
 
 /mob/living/carbon/human/verb/switch_tail_layer()
 	set name = "Switch tail layer"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Switch tail layer on top."
 	tail_alt = !tail_alt
 	update_tail_showing()

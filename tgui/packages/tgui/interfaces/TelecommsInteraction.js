@@ -198,6 +198,7 @@ export const TelecommsInteraction = (props, context) => {
                   title="Filtering Frequencies"
                   level={2}>
                   <Button
+                    content="Add"
                     onClick={() => act('freq', {
                       'add': true,
                     })}>
