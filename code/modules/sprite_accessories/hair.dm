@@ -77,6 +77,7 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 		else if(icon_add_legacy)
 			var/image/adding = image(icon_add_legacy, icon_state = icon_state)
 			adding.blend_mode = BLEND_ADD
+			adding.appearance_flags = RESET_COLOR
 			rendered.overlays += adding
 
 		// then deal with gradient if we have to
@@ -90,6 +91,7 @@ GLOBAL_LIST_EMPTY(hair_gradient_icon_cache)
 					casted_human.b_grad,
 				)
 				gradient_icon.blend_mode = BLEND_OVERLAY
+				gradient_icon.appearance_flags = RESET_COLOR
 				rendered.overlays += gradient_icon
 
 	return layers
