@@ -1055,9 +1055,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "As" = (
-/turf/simulated/mineral/floor/virgo3b{
-	color = "#AAAAAA"
-	},
+/turf/simulated/open/virgo3b,
 /area/mine/explored)
 "Ay" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1850,13 +1848,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
-"WM" = (
-/obj/effect/step_trigger/teleporter/to_underdark{
-	dir = 4;
-	pixel_x = -16
-	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-/area/mine/explored)
 "Xe" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -1940,10 +1931,6 @@
 /obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
-"ZF" = (
-/obj/effect/step_trigger/teleporter/from_mining,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/outpost/mining_main/passage)
 "ZO" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -26607,7 +26594,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (128,1,1) = {"
 Se
@@ -26801,7 +26788,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (129,1,1) = {"
 Se
@@ -26995,7 +26982,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (130,1,1) = {"
 Se
@@ -27189,7 +27176,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (131,1,1) = {"
 Se
@@ -27383,7 +27370,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (132,1,1) = {"
 Se
@@ -27577,7 +27564,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (133,1,1) = {"
 Se
@@ -27771,7 +27758,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (134,1,1) = {"
 Se
@@ -27965,7 +27952,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (135,1,1) = {"
 Se
@@ -28159,7 +28146,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (136,1,1) = {"
 Se
@@ -28353,7 +28340,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (137,1,1) = {"
 Se
@@ -37288,8 +37275,8 @@ OH
 OH
 OH
 jz
-WM
-WM
+As
+As
 SD
 OH
 OH
@@ -37482,8 +37469,8 @@ OH
 OH
 OH
 jz
-OH
-OH
+As
+As
 SD
 OH
 OH
