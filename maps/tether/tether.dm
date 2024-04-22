@@ -250,7 +250,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	link_below = /datum/map_level/tether/station/space_low
 	base_turf = /turf/simulated/open
@@ -281,9 +280,6 @@
 	id = "misc"
 	name = "Tether - Misc"
 	absolute_path = "maps/tether/levels/misc.dmm"
-	traits = list(
-		ZTRAIT_LEGACY_BELTER_TRANSIT,
-	)
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_SEALED|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/tether/underdark

@@ -63,6 +63,14 @@ Pipelines + Other Objects -> Pipe network
 		pipe_color = null
 	init_dir()
 
+/obj/machinery/atmospherics/handle_grid_overlap(grid_flags)
+	if(circuit)
+		// we might be a cryotube or something
+		return ..()
+	// we're a regular ass atmos machine, probably
+	qdel(src)
+	return TRUE
+
 // This is used to set up what directions pipes will connect to.  Should be called inside New() and whenever a dir changes.
 /obj/machinery/atmospherics/proc/init_dir()
 	return

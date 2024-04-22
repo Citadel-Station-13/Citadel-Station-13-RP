@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(supply)
 			// Must be in a crate!
 			if(istype(MA,/obj/structure/closet/crate))
 				var/obj/structure/closet/crate/CR = MA
-				callHook("sell_crate", list(CR, subarea))
+				callHook("sell_crate", list(CR))
 
 				points += CR.points_per_crate
 				if(CR.points_per_crate)
@@ -162,18 +162,19 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/proc/get_clear_turfs()
 	var/list/clear_turfs = list()
 
-	for(var/area/subarea in shuttle.shuttle_area)
-		for(var/turf/T in subarea)
-			if(T.density)
+	var/list/potential = GLOB.legacy_cargo_shuttle.shuttle_turfs_here()
+
+	for(var/turf/T in potential)
+		if(T.density)
+			continue
+		var/occupied = 0
+		for(var/atom/A in T.contents)
+			if((A.atom_flags & ATOM_ABSTRACT))
 				continue
-			var/occupied = 0
-			for(var/atom/A in T.contents)
-				if((A.atom_flags & ATOM_ABSTRACT))
-					continue
-				occupied = 1
-				break
-			if(!occupied)
-				clear_turfs += T
+			occupied = 1
+			break
+		if(!occupied)
+			clear_turfs += T
 
 	return clear_turfs
 

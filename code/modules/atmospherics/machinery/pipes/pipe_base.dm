@@ -25,6 +25,11 @@
 		level = 1
 	return ..()
 
+/obj/machinery/atmospherics/pipe/handle_grid_overlap(grid_flags)
+	// aight we're headin' out
+	qdel(src)
+	return TRUE
+
 /obj/machinery/atmospherics/pipe/hides_under_flooring()
 	return level != 2
 

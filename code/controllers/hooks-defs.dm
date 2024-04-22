@@ -68,7 +68,7 @@
 /**
  * Crate sold hook.
  * Called in supplyshuttle.dm when a crate is sold on the shuttle.
- * Parameters: var/obj/structure/closet/crate/sold, var/area/shuttle
+ * Parameters: var/obj/structure/closet/crate/sold
  */
 /hook/sell_crate
 

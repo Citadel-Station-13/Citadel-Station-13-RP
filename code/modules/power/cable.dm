@@ -63,6 +63,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	var/datum/powernet/powernet
 	var/obj/machinery/power/breakerbox/breaker_box
 
+/obj/structure/cable/handle_grid_overlap(grid_flags)
+	qdel(src)
+	return TRUE
+
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
 		return 0

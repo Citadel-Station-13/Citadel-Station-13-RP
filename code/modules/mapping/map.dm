@@ -40,9 +40,6 @@
 	/// don't touch this unless you know what you're doing.
 	var/bundle_area_cache = TRUE
 
-	//! legacy : spawn these shuttle datums on load
-	var/list/legacy_assert_shuttle_datums
-
 /datum/map/New()
 	// immediately resolve dependencies / lateload
 	for(var/i in 1 to length(dependencies))
@@ -160,6 +157,9 @@
 
 	/// possible ending typepaths, if none, we default to /datum/map_finale/end_the_shift
 	var/list/datum/map_finale/finales
+	/// the finale to use for transfer
+	var/finale_transfer
+	#warn set these on our maps
 	/// allow random picking if no map set
 	/// used to exclude indev maps
 	var/allow_random_draw = TRUE

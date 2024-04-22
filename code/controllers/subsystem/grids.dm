@@ -116,15 +116,16 @@ SUBSYSTEM_DEF(grids)
  * * leave_area - the area instance to leave behind. if not set, this defaults to world.area. this can be a typepath if the typepath is an unique area.
  * * emit_motion_flags - use this to extract ordered motion flags
  * * emit_moved_atoms - use this to extract what movables got moved
- * * overlap_handler - callback that's fired for things in the way with (thing, from_turf, to_turf); things: turfs, objs, mobs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
+ * * turf_overlap_handler - callback that's fired for things in the way with (from_turf, to_turf); things: turfs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
+ * * movable_overlap_handler - callback that's fired for things in the way with (thing, from_turf, to_turf); things: objs, mobs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
  */
-/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/callback/overlap_handler)
+/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/callback/turf_overlap_handler, datum/callback/movable_overlap_handler)
 	UNTIL(!translation_mutex)
 	translation_mutex = TRUE
 	. = do_translate(arglist(args))
 	translation_mutex = FALSE
 
-/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags, list/emit_moved_atoms, datum/callback/overlap_handler)
+/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags, list/emit_moved_atoms, datum/callback/turf_overlap_handler, datum/callback/movable_overlap_handler)
 	PRIVATE_PROC(TRUE)
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
@@ -152,6 +153,7 @@ SUBSYSTEM_DEF(grids)
 
 	/// motion flags corrosponding to ordered turfs. this is ordered. null turf --> null.
 	var/list/ordered_motion_flags = emit_motion_flags
+	ordered_motion_flags.len = length(from_turfs)
 	/// list of area instances associated to turfs being moved from
 	var/list/source_turfs_by_area = list()
 	/// list of area instances associated to turfs being moved to
@@ -182,7 +184,7 @@ SUBSYSTEM_DEF(grids)
 			// no abstract check - abstract atoms can impact the collect cycle
 			motion_flags = AM.grid_collect(grid_flags, destination, motion_flags)
 		// add to ordered list
-		ordered_motion_flags += motion_flags
+		ordered_motion_flags[i] = motion_flags
 		// if moving area, add to turfs_by_area
 		if(motion_flags & GRID_MOVE_AREA)
 			if(isnull(source_turfs_by_area[source_area]))
@@ -204,6 +206,15 @@ SUBSYSTEM_DEF(grids)
 		if(!(ordered_motion_flags[i] & GRID_MOVE_TURF))
 			continue
 		var/turf/destination = to_turfs[i]
+		// -- fire overlap handlers --
+		turf_overlap_handler?(source, destination)
+		for(var/atom/movable/AM as anything in destination)
+			if(AM.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+				continue
+			if(AM.handle_grid_overlap(grid_flags))
+				continue
+			movable_overlap_handler?(AM, source, destination)
+		// -- end --
 		source.grid_transfer(grid_flags, destination, baseturf_boundary)
 
 	//* Move movables
@@ -382,82 +393,6 @@ SUBSYSTEM_DEF(grids)
  */
 /atom/movable/proc/handle_grid_overlap(grid_flags)
 	return FALSE
-	#warn hook, and make sure power cables, air pipes, etc, delete on overlap.
-
-#warn parse below
-#warn powenrets on cables
-#warn pipenets on atmos machinery
-
-	// Change the old turfs (Currently done by translate_turf for us)
-	// for(var/turf/source in translation)
-	// 	source.ChangeTurf(base_turf ? base_turf : get_base_turf_by_area(source), 1, 1)
-
-/proc/translate_turf(turf/Origin, turf/Destination, turftoleave = null)
-
-	// You can stay, though.
-	if (istype(Origin, /turf/space))
-		log_debug(SPAN_DEBUGERROR("Tried to translate a space turf: src=[log_info_line(Origin)][ADMIN_JMP(Origin)] dst=[log_info_line(Destination)][ADMIN_JMP(Destination)]"))
-		return FALSE	// TODO - Is this really okay to do nothing?
-
-	var/turf/X	// New Destination Turf
-
-	var/old_dir1 = Origin.dir
-	var/old_icon_state1 = Origin.icon_state
-	var/old_icon1 = Origin.icon
-	var/old_underlays = Origin.underlays.Copy()
-	var/old_decals = Origin.decals ? Origin.decals.Copy() : null
-
-	X = Destination.PlaceOnTop(Origin.type)
-	X.setDir(old_dir1)
-	X.icon_state = old_icon_state1
-	X.icon = old_icon1
-	X.copy_overlays(Origin, TRUE)
-	X.underlays = old_underlays
-	X.decals = old_decals
-
-	/// Move the air from source to dest.
-	var/turf/simulated/ST = Origin
-	if (istype(ST))
-		var/turf/simulated/SX = X
-		if(!SX.air)
-			SX.make_air()
-		SX.air.copy_from(ST.copy_cell_volume())
-
-	var/z_level_change = FALSE
-	if (Origin.z != X.z)
-		z_level_change = TRUE
-
-	// Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
-	for(var/obj/O in Origin)
-		if(O.atom_flags & ATOM_ABSTRACT)
-			continue
-		O.loc = X
-		O.update_light()
-		// The objects still need to know if their z-level changed.
-		if (z_level_change)
-			O.on_changed_z_level(Origin.z, X.z)
-
-	// Move the mobs unless it's an AI eye or other eye type.
-	for(var/mob/M in Origin)
-		if (M.atom_flags & ATOM_ABSTRACT)
-			continue
-		if (isEye(M))
-			// If we need to check for more mobs, I'll add a variable.
-			continue
-		M.loc = X
-
-		// Same goes for mobs.
-		if (z_level_change)
-			M.on_changed_z_level(Origin.z, X.z)
-
-	if (turftoleave)
-		Origin.ChangeTurf(turftoleave)
-	else
-		Origin.ScrapeAway()
-
-	return TRUE
-
-#warn above
 
 //* grid area left behind if a grid move is not given an area to leave
 

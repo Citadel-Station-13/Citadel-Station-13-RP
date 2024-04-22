@@ -211,10 +211,17 @@
 /**
  * handles when an overlap occurs
  *
- * overlap always occurs on any turfs in the way
+ * this is called before movable_overlap_handler.
+ */
+/datum/shuttle/proc/turf_overlap_handler(turf/from_turf, turf/to_turf)
+	return
+
+/**
+ * handles when an overlap occurs
+ *
  * overlap always occurs on any movables that are non abstract and considered a game object
  */
-/datum/shuttle/proc/overlap_handler(atom/entity, turf/from_turf, turf/to_turf)
+/datum/shuttle/proc/movable_overlap_handler(atom/entity, turf/from_turf, turf/to_turf)
 	#warn impl
 
 //* Docking - Backend; Don't mess with these. *//
@@ -259,7 +266,8 @@
 		docked.base_area_instance(),
 		null,
 		null,
-		CALLBACK(src, PROC_REF(overlap_handler)),
+		CALLBACK(src, PROC_REF(turf_overlap_handler)),
+		CALLBACK(src, PROC_REF(movable_overlap_handler)),
 	)
 	#warn throw shit and damage shit but also throw shit after damaging shit
 	// clear caches
