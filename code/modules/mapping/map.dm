@@ -164,6 +164,15 @@
 	/// used to exclude indev maps
 	var/allow_random_draw = TRUE
 
+	//* Shuttles - Legacy *//
+	/// typepath of emergency shuttle template
+	var/datum/shuttle_template/legacy_emergency_shuttle
+	/// typepath of cargo shuttle template
+	var/datum/shuttle_template/legacy_cargo_shuttle
+	/// typepath of belter shuttle template
+	var/datum/shuttle_template/legacy_belter_shuttle
+	#warn translate into instances on init
+
 	//! legacy below
 
 	var/full_name = "Unnamed Map"

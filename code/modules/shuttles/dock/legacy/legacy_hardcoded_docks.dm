@@ -24,7 +24,6 @@ GLOBAL_DATUM(legacy_belter_shuttle, /datum/shuttle/belter)
 #warn some way to autoset bounding box from loaded cargo shuttle
 #warn map loads cargo shuttle?
 #warn same for emergency shuttle
-#warn map should determine shuttles for these!
 #warn make sure to set the ferry controllers properly (home is where it starts)...
 
 /obj/shuttle_dock/hardcoded_legacy/Initialize(mapload)

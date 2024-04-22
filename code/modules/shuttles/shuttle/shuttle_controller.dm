@@ -14,6 +14,8 @@
 	//* Docking
 	/// stored docking codes
 	var/list/docking_codes
+	/// current manual landing dock
+	var/obj/shuttle_dock/manual_dock
 
 	//* UI
 	/// tgui interface to load
@@ -22,6 +24,36 @@
 /datum/shuttle_controller/proc/initialize(datum/shuttle/shuttle)
 	src.shuttle = shuttle
 	return TRUE
+
+//* Docking API - use this API always, do not manually control the shuttle. *//
+
+/**
+ * @params
+ * * dock - dock to move to
+ * * force - hard force, ram everything out of the way on the destination side if needed
+ * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/datum/shuttle_controller/proc/move_to_dock(obj/shuttle_dock/dock, force = FALSE, immediate = FALSE)
+	#warn impl
+
+/datum/shuttle_controller/proc/has_codes_for(obj/shuttle_dock/dock)
+	#warn impl
+
+/**
+ * call to designate a manual landing position
+ *
+ * this is unchecked / has no safety checks.
+ *
+ * @return FALSE on failure
+ */
+/datum/shuttle_controller/proc/set_manual_landing(turf/lowerleft, orientation)
+	if(!isnull(manual_dock))
+		QDEL_NULL(manual_dock)
+	#warn impl
+
+//* Interface *//
 
 /datum/shuttle_controller/proc/tgui_data()
 	return list()
@@ -39,18 +71,5 @@
 	// this is just a wrapper so we can change it later if need be
 	return push_ui_data(data = data)
 
-//* Docking API - use this API always, do not manually control the shuttle.
-
-/**
- * @params
- * * dock - dock to move to
- * * force - hard force, ram everything out of the way on the destination side if needed
- * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
- *
- * @return TRUE / FALSE on success / failure
- */
-/datum/shuttle_controller/proc/move_to_dock(obj/shuttle_dock/dock, force = FALSE, immediate = FALSE)
-	#warn impl
-
-/datum/shuttle_controller/proc/has_codes_for(obj/shuttle_dock/dock)
-	#warn impl
+/datum/shuttle_controller/proc/push_ui_location()
+	return

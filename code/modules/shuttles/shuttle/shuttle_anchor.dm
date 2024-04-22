@@ -185,6 +185,10 @@
 /obj/shuttle_anchor/proc/immediate_yank_to(turf/location, direction)
 	ASSERT(isturf(location))
 	ASSERT(direction in GLOB.cardinal)
+
+	// check clipping
+	if(will_clip_at(location, direction))
+
 	#warn impl
 
 #warn impl all

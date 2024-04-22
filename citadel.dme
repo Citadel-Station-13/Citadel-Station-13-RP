@@ -4527,7 +4527,6 @@
 #include "code\modules\shuttles\shuttle\shuttle_docker.dm"
 #include "code\modules\shuttles\shuttle\shuttle_hook.dm"
 #include "code\modules\shuttles\shuttle\shuttle_port.dm"
-#include "code\modules\shuttles\shuttle\shuttle_structure.dm"
 #include "code\modules\shuttles\shuttle\shuttle_template.dm"
 #include "code\modules\shuttles\shuttle\controllers\ferry.dm"
 #include "code\modules\shuttles\shuttle\controllers\overmap.dm"

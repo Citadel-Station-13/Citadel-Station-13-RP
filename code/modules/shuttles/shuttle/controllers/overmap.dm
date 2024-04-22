@@ -17,5 +17,7 @@
 /datum/shuttle_controller/overmap/tgui_data()
 	. = ..()
 
+/datum/shuttle_controller/overmap/push_ui_location()
+	. = ..()
 
 #warn impl all

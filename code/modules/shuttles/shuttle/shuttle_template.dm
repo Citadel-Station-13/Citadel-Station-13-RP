@@ -24,15 +24,10 @@
 	/// this means hardcoded ones shouldn't be changed willy-nilly.
 	var/id
 
-	/// forbid multi-instancing
-	/// if you have to turn this on you probably fucked up somewhere
-	var/allow_only_one_instance = FALSE
-
 	/// absolute path to file
 	var/absolute_path
 	/// relative path to file from current directory
 	var/relative_path
-	#warn impl with __FILE__
 
 	/// mass in kilotons
 	var/mass = 5
@@ -47,10 +42,21 @@
 	/// shuttle datum type to make
 	var/shuttle_type = /datum/shuttle
 
-#warn impl all
-
 /datum/shuttle_template/New(map_resource, use_dir)
-	#warn uhh
+	if(map_resource)
+		absolute_path = map_resource
+		facing_dir = use_dir || NORTH
+	else
+		if(relative_path && !absolute_path)
+			var/our_file = __FILE__
+			var/our_directory = copytext_char(our_file, 1, findlasttext_char(our_file, "/"))
+			absolute_path = "[our_directory]/[relative_path]"
+
+	if(cache_parsed_map)
+		parsed_map = new(get_file())
+
+/datum/shuttle_template/proc/get_file()
+	return isfile(absolute_path)? absolute_path : file(absolute_path)
 
 /**
  * Do not directly use. Use create_shuttle() on SSshuttles!
@@ -59,10 +65,42 @@
 /datum/shuttle_template/proc/instance(shuttle_type = src.shuttle_type)
 	RETURN_TYPE(/datum/shuttle)
 
+	var/datum/dmm_parsed/parsed_map = src.parsed_map
+	if(isnull(parsed_map))
+		parsed_map = new(get_file())
+		parsed_map
+		if(cache_parsed_map)
+			src.parsed_map = parsed_map
+
 	var/datum/shuttle/instance = new shuttle_type
+	var/width = parsed_map.width
+	var/height = parsed_map.height
 
-	#warn things
+	// make reservation
+	var/datum/turf_reservation/reservation = SSmapping.request_block_reservation(
+		width + 2,
+		height + 2,
+		/datum/turf_reservation,
+	)
 
+	// load into reservation
+	var/list/loaded_bounds = parsed_map.load(
+		reservation.bottom_left_coords[1] + 1,
+		reservation.bottom_left_coords[2] + 1,
+		reservation.bottom_left_coords[3],
+	)
+
+	// let shuttle do black magic first
+	instance.before_bounds_init(reservation, src)
+
+	// init the bounds
+	SSatoms.init_map_bounds(loaded_bounds)
+
+	// let shuttle do post-init things
+	instance.after_bounds_init(reservation, src)
+
+	// set vars on shuttle
+	instance
 	instance.template_id = id
 
 	return instance

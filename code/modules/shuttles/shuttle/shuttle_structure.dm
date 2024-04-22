@@ -1,6 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+// todo; this is meant to be an object representation of a shuttle area
+//       the goal was that players can edit shuttles by modifying this
+//       but for now, we're not going to do this.
+
 /**
  * indestructible superstructure baseturf at bottom of shuttle
  */

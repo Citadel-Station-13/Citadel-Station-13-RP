@@ -192,15 +192,16 @@
 		return
 	#warn CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
 	var/datum/shuttle/loaded
-	if(!(loaded = load_shuttle()))
-		stack_trace("shuttle dock at [COORD(src)] failed to load its roundstart shuttle; something is seriously wrong!")
-		to_chat(
-			target = world,
-			html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed to load its starting template. Please contact coders if you see this message."),
-			type = MESSAGE_TYPE_SERVER_FATAL,
-		)
-	else
-		loaded_shuttle(loaded)
+	if(starting_shuttle_template)
+		if(!(loaded = load_shuttle()))
+			stack_trace("shuttle dock at [COORD(src)] failed to load its roundstart shuttle; something is seriously wrong!")
+			to_chat(
+				target = world,
+				html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed to load its starting template. Please contact coders if you see this message."),
+				type = MESSAGE_TYPE_SERVER_FATAL,
+			)
+		else
+			loaded_shuttle(loaded)
 
 /obj/shuttle_dock/Destroy()
 	unregister_dock()
@@ -383,7 +384,7 @@
  *
  * @return /datum/shuttle
  */
-/obj/shuttle_dock/proc/load_shuttle()
+/obj/shuttle_dock/proc/load_shuttle(datum/shuttle_template/force_template)
 	RETURN_TYPE(/datum/shuttle)
 	#warn impl
 

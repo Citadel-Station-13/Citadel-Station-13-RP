@@ -145,9 +145,11 @@
  * * centered - is T the center, or lower left?
  * * orientation - the orientation to load in. default is SOUTH.
  * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
+ * * do_not_init - do not init bounds; this is probably not something you wanna touch.
+ *
+ * @return loaded bounds if loaded, null if not
  */
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks)
-	. = FALSE
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, do_not_init = FALSE)
 	var/ll_x = T.x
 	var/ll_y = T.y
 	var/ll_z = T.z
@@ -183,14 +185,15 @@
 	else
 		deferred_callbacks += callbacks
 
-	init_bounds(loaded_bounds)
+	if(!do_not_init)
+		init_bounds(loaded_bounds)
 
 	// todo: inefficient as shit
 	if(SSmapping.initialized)
 		repopulate_sorted_areas()
 	// end
 
-	return TRUE
+	return loaded_bounds
 
 /datum/map_template/proc/annihilate_bounds(turf/ll_turf, width, height)
 	SSmapping.subsystem_log("Annihilating bounds in template spawn location: [COORD(ll_turf)] with area [width]x[height]")

@@ -34,7 +34,7 @@
 	/// call prompt
 	var/command_call_prompt = "Are you sure you wish to call the finale?"
 	/// recall prompt
-	var/command_recall_entry = "ARe you sure you wish to cancel the finale?"
+	var/command_recall_entry = "Are you sure you wish to cancel the finale?"
 
 #warn comms console shit ugh (can call, can recall, messages, etc)
 

@@ -133,11 +133,12 @@
 			area_cache[scanning.loc] = initializing
 			initializing.before_bounds_initializing(src, from_reservation, from_template)
 		bottomleft_x = min(bottomleft_x, scanning.x)
-		bottomleft_y = min(bottomleft_y, scanning.y)
+		bottomleft_y = min(bottomleft_y, scanning.y)areas
 		topright_x = max(topright_x, scanning.x)
 		topright_y = max(topright_y, scanning.y)
 		// make superstructure
-		new /obj/shuttle_structure(scanning)
+		// todo: make superstructure a thing again
+		// new /obj/shuttle_structure(scanning)
 		// todo: probably make sure baseturfs are fine
 		var/static/list/cared_about_typecache = typecacheof(list(
 			/obj/shuttle_anchor,
