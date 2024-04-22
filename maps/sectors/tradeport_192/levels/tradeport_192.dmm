@@ -1801,7 +1801,7 @@
 "gs" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "nebula_pump3";
+	id_tag = "nebula_pump3a";
 	name = "Nebula Pump Controller";
 	pixel_x = 25
 	},
@@ -1860,8 +1860,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Nebula Gas - Employees Only";
-	req_access = list(160);
-	req_one_access = null
+	req_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -1945,7 +1944,7 @@
 "gW" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "nebula_pump2";
+	id_tag = "nebula_pump2a";
 	name = "Nebula Pump Controller";
 	pixel_x = -25
 	},
@@ -2043,6 +2042,12 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump4d";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
+	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "hn" = (
@@ -3435,8 +3440,7 @@
 "md" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -3796,8 +3800,7 @@
 "ns" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
@@ -3963,6 +3966,15 @@
 "ob" = (
 /turf/simulated/floor/plating,
 /area/tradeport/commhall)
+"oc" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump6b";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "od" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -3985,9 +3997,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "oj" = (
@@ -4651,6 +4661,22 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
+"qO" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump3d";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
+	},
+/turf/simulated/floor,
+/area/tradeport/pads)
 "qQ" = (
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/old_tile/red,
@@ -5383,7 +5409,6 @@
 /area/tradeport/dock)
 "tP" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -5922,8 +5947,7 @@
 "vE" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
-	name = "Nebula Commercial District";
-	req_access = null
+	name = "Nebula Commercial District"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor,
@@ -6138,6 +6162,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
+"wu" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump5b";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "wx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/red,
@@ -7103,7 +7136,6 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -7114,7 +7146,6 @@
 	dir = 4;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/mineral/floor/vacuum,
@@ -7562,7 +7593,6 @@
 	pixel_y = -5
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/int_door,
@@ -7701,7 +7731,6 @@
 "BU" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/machinery/access_button/airlock_interior{
@@ -7977,6 +8006,15 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
+"CN" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump3b";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "CO" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -8499,9 +8537,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "EQ" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "ER" = (
@@ -9065,7 +9101,6 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9640,8 +9675,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/freezer{
 	name = "Nebula Gas - Freezer";
-	req_access = list(160);
-	req_one_access = null
+	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -9784,7 +9818,7 @@
 "JJ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "nebula_pump5";
+	id_tag = "nebula_pump5a";
 	name = "Nebula Pump Controller";
 	pixel_x = 25
 	},
@@ -9800,9 +9834,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -9926,6 +9958,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
+"Kq" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump3c";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "Ks" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
@@ -10054,7 +10095,6 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/machinery/access_button/airlock_exterior{
@@ -10527,7 +10567,6 @@
 	frequency = 1382;
 	id_tag = "safari_access";
 	name = "John Safari's Adventure Emporium";
-	req_access = null;
 	tag = "safari_door"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10547,7 +10586,7 @@
 "Mz" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "nebula_pump6";
+	id_tag = "nebula_pump6a";
 	name = "Nebula Pump Controller";
 	pixel_x = -25
 	},
@@ -11136,9 +11175,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "OE" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -11541,7 +11578,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 8018;
 	id_tag = "trade_space_lock";
-	master_tag = null;
 	pixel_x = 25
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
@@ -11971,6 +12007,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
+"Ru" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump3d";
+	landmark_tag = "nebula_pad_3d";
+	name = "Nebula Pad 3d"
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "Rv" = (
 /obj/machinery/light{
 	dir = 8
@@ -12063,7 +12109,6 @@
 "RJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
 	name = "Ship Hatch"
 	},
 /obj/map_helper/airlock/door/int_door,
@@ -12251,6 +12296,15 @@
 /obj/structure/sign/graffiti/pisoff,
 /turf/simulated/floor/plating,
 /area/tradeport)
+"St" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump1b";
+	name = "Nebula Pump Controller";
+	pixel_x = 25
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "Su" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/trade_ship/general)
@@ -12404,6 +12458,16 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
+"SX" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tradeport/pads;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "nebula_pump4d";
+	landmark_tag = "nebula_pad_4d";
+	name = "Nebula Pad 4d"
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "SY" = (
 /obj/structure/railing{
 	dir = 1
@@ -12870,7 +12934,7 @@
 "Uz" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "nebula_pump1";
+	id_tag = "nebula_pump1a";
 	name = "Nebula Pump Controller";
 	pixel_x = 25
 	},
@@ -13184,6 +13248,15 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
+"VR" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "nebula_pump2b";
+	name = "Nebula Pump Controller";
+	pixel_x = -25
+	},
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "VS" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -14068,8 +14141,7 @@
 	internal_pressure_bound_default = 4000;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
@@ -14243,13 +14315,7 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 8018;
 	id_tag = "trade_space_lock";
-	pixel_x = -25;
-	tag_airpump = null;
-	tag_chamber_sensor = null;
-	tag_exterior_door = null;
-	tag_exterior_sensor = null;
-	tag_interior_door = null;
-	tag_interior_sensor = null
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -35806,7 +35872,7 @@ kf
 kf
 kf
 kf
-kf
+Ru
 kf
 kf
 kf
@@ -37933,6 +37999,7 @@ kf
 Yn
 kf
 kf
+Fj
 kf
 kf
 kf
@@ -37945,8 +38012,7 @@ kf
 kf
 kf
 kf
-kf
-kf
+pI
 kf
 kf
 IF
@@ -38903,7 +38969,6 @@ kf
 Yn
 kf
 kf
-Fj
 kf
 kf
 kf
@@ -38916,7 +38981,8 @@ kf
 kf
 kf
 kf
-pI
+kf
+kf
 kf
 kf
 gP
@@ -40057,7 +40123,7 @@ dX
 cB
 kZ
 Yn
-kf
+St
 Uz
 ur
 kf
@@ -40067,7 +40133,7 @@ kf
 ia
 kf
 kf
-kf
+CN
 kf
 Ef
 ur
@@ -40081,7 +40147,7 @@ kf
 ur
 Ef
 kf
-kf
+Kq
 kf
 gP
 ia
@@ -40089,7 +40155,7 @@ kf
 kf
 kf
 kf
-kf
+wu
 yD
 np
 ur
@@ -40283,7 +40349,7 @@ Yn
 Yn
 Yn
 Yn
-Yn
+ia
 zr
 Fu
 bO
@@ -40462,7 +40528,7 @@ Rm
 dn
 dn
 Rm
-Rm
+qO
 le
 dn
 dn
@@ -40865,7 +40931,7 @@ Yn
 Yn
 Yn
 Yn
-Yn
+ia
 eJ
 Jg
 bO
@@ -41027,7 +41093,7 @@ ia
 vP
 bY
 ia
-kf
+VR
 gW
 ur
 kf
@@ -41059,7 +41125,7 @@ kf
 kf
 kf
 kf
-kf
+oc
 Em
 qU
 ur
@@ -42201,7 +42267,6 @@ kf
 Yn
 kf
 kf
-Bv
 kf
 kf
 kf
@@ -42214,7 +42279,8 @@ kf
 kf
 kf
 kf
-wC
+kf
+kf
 kf
 kf
 kf
@@ -42977,6 +43043,7 @@ kf
 Yn
 kf
 kf
+Bv
 kf
 kf
 kf
@@ -42989,8 +43056,7 @@ kf
 kf
 kf
 kf
-kf
-kf
+wC
 kf
 kf
 kf
@@ -44730,7 +44796,7 @@ kf
 kf
 kf
 kf
-kf
+SX
 kf
 kf
 kf
