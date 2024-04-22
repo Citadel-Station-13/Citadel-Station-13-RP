@@ -325,7 +325,7 @@
 	occupant.pixel_y += 19
 
 	ADD_TRAIT(occupant, TRAIT_MOB_FORCED_STANDING, CRYO_TUBE_TRAIT)
-	occupant.setDir(SOUTH)
+	occupant.setDir(src.dir)
 	occupant.set_resting(FALSE)
 
 	current_heat_capacity = HEAT_CAPACITY_HUMAN
