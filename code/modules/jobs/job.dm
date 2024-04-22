@@ -23,6 +23,10 @@
 	/// With minimal access off, this gets added
 	var/list/additional_access = list()
 
+	//* Off-Duty
+	/// are we an off duty role?
+	var/is_off_duty = FALSE
+
 	//? Unsorted
 	/// Bitflags for the job.
 	var/flag = NONE
@@ -74,9 +78,6 @@
 	// Requires a ckey to be whitelisted in jobwhitelist.txt
 	var/whitelist_only = 0
 
-	// Every hour playing this role gains this much time off. (Can be negative for off duty jobs!)
-	var/timeoff_factor = 3
-
 	// What type of PTO is that job earning?
 	var/pto_type
 
@@ -118,8 +119,6 @@
 		. |= ROLE_UNAVAILABLE_WHITELIST
 	if(!slots_remaining())
 		. |= ROLE_UNAVAILABLE_SLOTS_FULL
-	if(!player_has_enough_pto(C))
-		. |= ROLE_UNAVAILABLE_PTO
 	if(jobban_isbanned(C.mob, title))
 		. |= ROLE_UNAVAILABLE_BANNED
 	if(!player_old_enough(C))
@@ -151,8 +150,6 @@
 		return ROLE_UNAVAILABLE_WHITELIST
 	else if(latejoin && !slots_remaining(TRUE))
 		return ROLE_UNAVAILABLE_SLOTS_FULL
-	else if(!player_has_enough_pto(C))
-		return ROLE_UNAVAILABLE_PTO
 	else if(jobban_isbanned(C.mob, title))
 		return ROLE_UNAVAILABLE_BANNED
 	else if(!player_old_enough(C))
@@ -430,10 +427,6 @@
 	equip_preview(mannequin)
 	if(mannequin.back)
 		qdel(mannequin.back)
-
-/// Check client-specific availability rules.
-/datum/role/job/proc/player_has_enough_pto(client/C)
-	return timeoff_factor >= 0 || (C && LAZYACCESS(C.department_hours, pto_type) > 0)
 
 /datum/role/job/proc/equip_backpack(mob/living/carbon/human/H)
 	switch(H.backbag)
