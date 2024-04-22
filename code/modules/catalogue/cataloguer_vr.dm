@@ -18,7 +18,7 @@
 
 /obj/item/cataloguer/compact/verb/toggle()
 	set name = "Toggle Cataloguer"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(busy)

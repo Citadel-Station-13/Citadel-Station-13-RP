@@ -94,7 +94,7 @@
 	hotkey_keys = list("CtrlShiftW", "CtrlShiftNorth")
 	name = "pixel_shift_north"
 	full_name = "Pixel Shift North"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_MOVEMENT
 
 /datum/keybinding/mob/shift_north/down(client/user)
@@ -106,7 +106,7 @@
 	hotkey_keys = list("CtrlShiftD", "CtrlShiftEast")
 	name = "pixel_shift_east"
 	full_name = "Pixel Shift East"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_MOVEMENT
 
 /datum/keybinding/mob/shift_east/down(client/user)
@@ -118,7 +118,7 @@
 	hotkey_keys = list("CtrlShiftS", "CtrlShiftSouth")
 	name = "pixel_shift_south"
 	full_name = "Pixel Shift South"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_MOVEMENT
 
 /datum/keybinding/mob/shift_south/down(client/user)
@@ -130,7 +130,7 @@
 	hotkey_keys = list("CtrlShiftA", "CtrlShiftWest")
 	name = "pixel_shift_west"
 	full_name = "Pixel Shift West"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_MOVEMENT
 
 /datum/keybinding/mob/shift_west/down(client/user)

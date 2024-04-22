@@ -7,38 +7,7 @@
  * - prefs - prefs if any; if null, we're probably doing a clientless migration.
  */
 /datum/controller/subsystem/characters/proc/perform_global_migrations(savefile/S, current_version, list/errors, list/options, datum/preferences/prefs)
-	if(current_version < 13)
-		if(prefs)
-			addtimer(CALLBACK(prefs, TYPE_PROC_REF(/datum/preferences, force_reset_keybindings)), 5 SECONDS)
-		else
-			var/list/new_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds
-			WRITE_FILE(S["key_bindings"], new_bindings)
-	if(current_version < 15)
-		var/list/language_prefixes
-		S["language_prefixes"] >> language_prefixes
-		if(!islist(language_prefixes))
-			language_prefixes = list()
-		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
-	if(current_version < 16)
-		if(prefs.client)
-			var/list/pref_datum_entries
-			S["preferences"] >> pref_datum_entries
-			var/was_age_verified = ("AGE_VERIFIED" in pref_datum_entries)
-			if(was_age_verified)
-				var/datum/player_data/data = prefs?.client?.player
-				// alright well, this is evil, but whatever
-				// yes, this is a blocking proc
-				// this can do horrible things but hey, fuck the old age gate system and whoever allowed it to stand.
-				if(!isnull(data) && (SSdbcore.Connect() && data.block_on_available()))
-					if(data.player_flags & PLAYER_FLAG_AGE_VERIFIED)
-					else
-						data.player_flags |= PLAYER_FLAG_AGE_VERIFIED
-						var/datum/tgui/open_verify = SStgui.get_open_ui(prefs.client.mob, GLOB.age_verify_menu)
-						if(!isnull(open_verify))
-							qdel(open_verify)
-						INVOKE_ASYNC(data, TYPE_PROC_REF(/datum/player_data, save))
-				else
-					log_and_message_admins("Failed to automatically authorize age gating for player with savefile [prefs.path]")
+	return
 
 /**
  * @params

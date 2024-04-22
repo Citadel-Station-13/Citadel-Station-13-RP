@@ -69,6 +69,7 @@
 		temperature_archived = air_contents.temperature
 		heat_gas_contents()
 		expel_gas()
+		update_icon()
 
 	if(abs(temperature_archived-air_contents.temperature) > 1)
 		network.update = TRUE
@@ -214,6 +215,7 @@
 /obj/machinery/atmospherics/component/unary/cryo_cell/update_icon()
 	cut_overlay(fluid)
 	fluid.color = null
+	fluid.alpha = max(255 - air_contents.temperature, 50)
 	if(on)
 		if(beaker)
 			fluid.color = beaker.reagents.get_color()
@@ -321,7 +323,7 @@
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr == occupant)//If the user is inside the tube...
 		if(usr.stat == 2)//and he's not dead....
@@ -340,7 +342,7 @@
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/verb/move_inside()
 	set name = "Move Inside"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(isliving(usr))
 		var/mob/living/L = usr

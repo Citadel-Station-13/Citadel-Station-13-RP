@@ -100,7 +100,7 @@ Buildable meters
 	icon_state = initial(fakeA.pipe_state)
 
 /obj/item/pipe/verb/flip()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Flip Pipe"
 	set src in view(1)
 
@@ -122,7 +122,7 @@ Buildable meters
 	icon_state = "[initial(fakeA.pipe_state)][mirrored ? "m" : ""]"
 
 /obj/item/pipe/verb/rotate_clockwise()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Rotate Pipe Clockwise"
 	set src in view(1)
 

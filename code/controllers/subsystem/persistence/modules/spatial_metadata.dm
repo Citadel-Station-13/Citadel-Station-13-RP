@@ -100,7 +100,7 @@
 	src.generation = generation
 	src.hours_since_saved = 0
 	src.rounds_since_saved = 0
-	src.round_id_saved = GLOB.round_id
+	src.round_id_saved = GLOB.round_number
 
 	SSdbcore.RunQuery(
 		"INSERT INTO [format_table_name("persistence_level_metadata")] (saved, saved_round_id, level_id, data, generation) \

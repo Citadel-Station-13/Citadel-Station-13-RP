@@ -602,7 +602,7 @@
 
 /obj/structure/frame/verb/rotate_counterclockwise()
 	set name = "Rotate Frame Counter-Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.incapacitated())
@@ -621,7 +621,7 @@
 
 /obj/structure/frame/verb/rotate_clockwise()
 	set name = "Rotate Frame Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.incapacitated())

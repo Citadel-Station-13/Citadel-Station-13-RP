@@ -1791,7 +1791,7 @@
 	move_inside()
 
 /obj/mecha/verb/enter()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Enter Exosuit"
 	set src in oview(1)
 	move_inside()
@@ -1942,7 +1942,7 @@
 
 /*
 /obj/mecha/verb/force_eject()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Force Eject"
 	set src in view(5)
 	src.go_out()

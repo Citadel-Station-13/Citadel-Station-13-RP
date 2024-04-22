@@ -302,7 +302,7 @@
 
 /obj/machinery/mining/drill/verb/unload_drill()
 	set name = "Unload Drill"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	unload(usr)
@@ -420,7 +420,7 @@
 
 /obj/machinery/mining/brace/verb/rotate_clockwise()
 	set name = "Rotate Brace Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	rotating_clockwise(usr)

@@ -1,4 +1,3 @@
-
 /turf
 	/// The z-turf above us, if present.
 	var/tmp/turf/above
@@ -16,8 +15,10 @@
 	var/tmp/z_queued = 0
 	/// If this Z-turf leads to space, uninterrupted.
 	var/tmp/z_eventually_space = FALSE
+	/// Use this appearance for our appearance instead of `appearance`. If MZ_OVERRIDE is set, *only* this will be visible, no movables will be copied.
+	var/z_appearance
 
-	//debug
+	// debug
 	var/tmp/z_depth
 	var/tmp/z_generation = 0
 
@@ -29,7 +30,7 @@
 	if(mz_flags & MZ_MIMIC_BELOW)
 		z_queued += 1
 		// This adds duplicates for a reason. Do not change this unless you understand how ZM queues work.
-		SSzmimic.queued_turfs += src
+		SSzcopy.queued_turfs += src
 
 /// Enables Z-mimic for a turf that didn't already have it enabled.
 /turf/proc/enable_zmimic(additional_flags = 0)
@@ -54,7 +55,7 @@
 	if (shadower)
 		CRASH("Attempt to enable Z-mimic on already-enabled turf!")
 	shadower = new(src)
-	SSzmimic.openspace_turfs += 1
+	SSzcopy.openspace_turfs += 1
 	var/turf/under = below()
 	if (under)
 		below = under
@@ -67,7 +68,7 @@
 
 /// Cleans up Z-mimic objects for this turf. You shouldn't call this directly 99% of the time.
 /turf/proc/cleanup_zmimic()
-	SSzmimic.openspace_turfs -= 1
+	SSzcopy.openspace_turfs -= 1
 	// Don't remove ourselves from the queue, the subsystem will explode. We'll naturally fall out of the queue.
 	z_queued = 0
 
@@ -87,9 +88,3 @@
 	if (below)
 		below.above = null
 		below = null
-
-/turf/Entered(atom/movable/thing, atom/oldLoc)
-	..()
-	if (thing.bound_overlay || (thing.zmm_flags & ZMM_IGNORE) || thing.invisibility == INVISIBILITY_ABSTRACT || !TURF_IS_MIMICKING(above))
-		return
-	above.update_mimic()

@@ -240,9 +240,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "bd" = (
@@ -889,13 +886,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/telescience_lab)
-"dH" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/quartermaster/miningdock)
 "dI" = (
 /obj/structure/stairs/spawner/east,
 /obj/structure/railing{
@@ -957,9 +947,6 @@
 "dR" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/east_mount,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck4/fore)
 "dS" = (
@@ -1963,17 +1950,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/gateway)
-"hL" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/exploration/explorer_prep)
 "hN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2323,7 +2299,6 @@
 /area/engineering/gravity_gen)
 "iW" = (
 /obj/machinery/door/morgue{
-	dir = 2;
 	name = "Confession Booth"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2407,9 +2382,6 @@
 "jj" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/telescience_lab)
 "jk" = (
@@ -3004,9 +2976,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/cargo,
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "ls" = (
@@ -3464,13 +3434,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward)
-"ni" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_four/starboard)
 "nj" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -3504,14 +3467,6 @@
 	},
 /turf/space/basic,
 /area/space)
-"nr" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/rnd/telescience_lab/foyer)
 "nt" = (
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
@@ -4702,9 +4657,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "rW" = (
@@ -5105,9 +5058,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/forward)
 "tF" = (
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
@@ -5742,15 +5692,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
-"vY" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/exploration/explorer_prep)
 "vZ" = (
 /obj/machinery/door/airlock/science{
 	name = "Pathfinder";
@@ -5841,7 +5782,6 @@
 "wr" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/west_mount,
-/obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
 "ws" = (
@@ -6380,17 +6320,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/explorer_prep)
-"yB" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/rnd/telescience_lab/foyer)
 "yC" = (
 /obj/structure/stairs/spawner/south,
 /obj/structure/railing/grey{
@@ -6522,18 +6451,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
 "za" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/north_mount,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/starboard)
 "zb" = (
@@ -6803,13 +6726,6 @@
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
 /turf/simulated/floor/airless,
 /area/main_map/maintenance/deck_four/starboard)
-"Ag" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_four/forward)
 "Ah" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor,
@@ -7260,9 +7176,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/south_mount,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
 /turf/simulated/floor/wood,
 /area/rnd/telescience_lab/storage)
 "BF" = (
@@ -7825,7 +7738,6 @@
 /area/quartermaster/miningdock)
 "Dy" = (
 /obj/machinery/door/morgue{
-	dir = 2;
 	name = "Confession Booth (Chaplain)";
 	req_access = list(22)
 	},
@@ -8248,10 +8160,8 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/anomaly_lab)
 "Fa" = (
+/obj/machinery/power/apc/west_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
 "Fe" = (
@@ -8680,9 +8590,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "GV" = (
@@ -8895,9 +8803,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
-	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "HO" = (
@@ -8933,9 +8839,6 @@
 "HX" = (
 /obj/machinery/power/apc/north_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/port)
 "HY" = (
@@ -8972,9 +8875,6 @@
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/atmospherics/mains_pipe/split/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/telescience_lab/foyer)
@@ -9095,8 +8995,7 @@
 	internal_pressure_bound_default = 4000;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
+	pump_direction = 0
 	},
 /obj/machinery/camera/network/research{
 	network = list("Xenobiology");
@@ -9289,9 +9188,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/aft/starboard)
 "Jj" = (
@@ -9384,15 +9280,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward/starboard)
-"JB" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green,
-/obj/machinery/power/apc/east_mount,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/miningdock)
 "JD" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/techmaint,
@@ -9871,16 +9758,6 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
-"Lw" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/miningdock)
 "Lx" = (
 /obj/structure/lattice,
 /obj/structure/transit_tube/high_velocity{
@@ -9931,12 +9808,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
-"LH" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_four/forward)
 "LI" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -10752,7 +10623,6 @@
 /area/main_map/maintenance/deck_four/aft/starboard)
 "ON" = (
 /obj/machinery/door/morgue{
-	dir = 2;
 	name = "Private Study";
 	req_access = list(37)
 	},
@@ -10787,14 +10657,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
-"OR" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/exploration/explorer_prep)
 "OT" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/reinforced/overhang,
@@ -10989,9 +10851,6 @@
 /area/rnd/secure_storage/critical)
 "PM" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "PN" = (
@@ -11601,14 +11460,6 @@
 /obj/machinery/atmospherics/mains_pipe/simple/hidden,
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/explorer_prep)
-"RY" = (
-/obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_four/forward)
 "Sa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
@@ -11815,13 +11666,6 @@
 /obj/spawner/window/reinforced/tinted/full,
 /turf/simulated/floor/tiled/dark,
 /area/main_map/maintenance/deck_four/forward)
-"SR" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_four/port)
 "SS" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -12364,13 +12208,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
-"UP" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/main_map/hallway/deck4)
 "US" = (
 /obj/machinery/conveyor{
 	dir = 4
@@ -12822,9 +12659,6 @@
 "WI" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/north_mount,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four/aft/port)
 "WJ" = (
@@ -12985,9 +12819,6 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/atmospherics/mains_pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/telescience_lab/foyer)
 "Xv" = (
@@ -21674,8 +21505,8 @@ Yw
 yR
 Io
 lh
-nr
-yB
+lh
+lh
 Ih
 lh
 Xt
@@ -21685,9 +21516,9 @@ me
 me
 zm
 jj
-vY
-hL
-OR
+RX
+rd
+rd
 TB
 rd
 RX
@@ -22528,7 +22359,7 @@ kz
 KV
 KV
 KV
-UP
+KV
 IT
 AU
 AU
@@ -24795,8 +24626,8 @@ vg
 WW
 CK
 EC
-dH
-dH
+Wd
+Wd
 Wd
 fL
 GM
@@ -27891,7 +27722,7 @@ Rh
 Rh
 Rh
 Rh
-Rh
+Fa
 Rh
 Rh
 Rh
@@ -28084,9 +27915,9 @@ Rh
 Rh
 ji
 ji
-Fa
-JB
-Fa
+ji
+ji
+ji
 ji
 ji
 cZ
@@ -29060,7 +28891,7 @@ SI
 SI
 ZK
 PM
-Lw
+PM
 PM
 ZK
 SI
@@ -29637,7 +29468,7 @@ Ab
 ne
 ne
 ne
-SR
+fs
 fs
 fs
 pJ
@@ -31270,7 +31101,7 @@ wV
 wV
 sx
 za
-ni
+pE
 pE
 pE
 pE
@@ -35322,7 +35153,7 @@ QW
 aD
 aD
 bl
-Ag
+lI
 DZ
 fX
 eO
@@ -35516,7 +35347,7 @@ QW
 aD
 ft
 bl
-Ag
+lI
 nw
 nw
 kL
@@ -36874,7 +36705,7 @@ kN
 wM
 Xi
 nf
-LH
+lI
 uv
 JZ
 uv
@@ -37068,7 +36899,7 @@ SJ
 nw
 wM
 wM
-uv
+lI
 nw
 nw
 nw
@@ -37818,7 +37649,7 @@ nw
 nw
 rz
 HB
-RY
+nK
 nK
 nK
 nK

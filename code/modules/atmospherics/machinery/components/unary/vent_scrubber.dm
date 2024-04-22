@@ -62,6 +62,14 @@
 	var/radio_filter_out
 	var/radio_filter_in
 
+/obj/machinery/atmospherics/component/unary/vent_scrubber/high_power
+	name = "High power air scrubber"
+	power_rating = 15000
+	scrub_volume = 5000
+	expanded_power = 15000
+	expanded_scrub = 5000
+	scrub_boost = 100
+
 /obj/machinery/atmospherics/component/unary/vent_scrubber/Initialize(mapload)
 	. = ..()
 	if(isnull(siphoning))

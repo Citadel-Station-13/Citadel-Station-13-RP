@@ -1356,12 +1356,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
-"cO" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "cP" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -2137,7 +2131,8 @@
 "ew" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/vault/bolted{
-	req_access = list(53)
+	req_access = list(53);
+	id_tag = "vault_bolt"
 	},
 /obj/machinery/door/blast/regular{
 	id = "VaultAc";
@@ -2654,10 +2649,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
-"fu" = (
-/obj/item/paper,
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "fv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -4417,12 +4408,6 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
-"iY" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "iZ" = (
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
@@ -4795,6 +4780,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/railing,
 /turf/simulated/open,
 /area/engineering/foyer_mezzenine)
 "jN" = (
@@ -6493,9 +6479,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
-"nj" = (
-/turf/simulated/floor/plating,
-/area/vacant/vacant_restaurant_upper)
 "nk" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable{
@@ -7413,13 +7396,6 @@
 "pf" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
-"pg" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "ph" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -9938,9 +9914,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
-"uj" = (
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "uk" = (
 /obj/machinery/light{
 	dir = 1
@@ -11538,13 +11511,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
-"xm" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "xn" = (
 /obj/machinery/light/small,
 /obj/structure/table/rack{
@@ -11677,12 +11643,6 @@
 	icon_state = "monotile"
 	},
 /area/tether/station/visitorhallway/lounge)
-"xB" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "xC" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/disposalpipe/segment{
@@ -11811,9 +11771,6 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/belter)
-"xP" = (
-/turf/simulated/floor/plating,
-/area/vacant/vacant_restaurant_upper)
 "xQ" = (
 /obj/machinery/button/windowtint{
 	dir = 1;
@@ -13149,12 +13106,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
-"AJ" = (
-/obj/machinery/air_alarm{
-	pixel_y = 22
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "AK" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 1
@@ -13922,9 +13873,6 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
-/obj/structure/window/reinforced/polarized/full{
-	id = "qm_office"
-	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "Cg" = (
@@ -15745,12 +15693,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
-"FU" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "FV" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -16809,13 +16751,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
-"Ic" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "Id" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -18827,6 +18762,9 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
 	},
+/obj/machinery/sheet_silo_loader{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "Mo" = (
@@ -19965,9 +19903,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/tiled/white,
 /area/tether/station/visitorhallway/laundry)
-"Oz" = (
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "OA" = (
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/quartermaster/belterdock)
@@ -23320,12 +23255,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
-"VF" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "VG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24500,10 +24429,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration)
-"XQ" = (
-/obj/item/reagent_containers/blood,
-/turf/simulated/floor,
-/area/maintenance/station/eng_upper)
 "XR" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -24799,6 +24724,9 @@
 /area/maintenance/station/eng_upper)
 "YA" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "tether_silo"
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "YB" = (
@@ -41749,25 +41677,25 @@ jF
 jF
 uX
 kQ
-cO
-FU
-FU
+LT
+LT
+LT
 mK
-FU
-FU
-FU
-xB
-mK
-mK
-FU
-FU
-FU
+LT
+LT
+LT
 LT
 mK
 mK
-FU
-FU
-FU
+LT
+LT
+LT
+LT
+mK
+mK
+LT
+LT
+LT
 Rq
 sV
 MA
@@ -41778,7 +41706,7 @@ eW
 RA
 mK
 mK
-pg
+mK
 eR
 uX
 Dh
@@ -41942,7 +41870,7 @@ jF
 jF
 II
 uX
-VF
+LM
 pe
 TH
 sj
@@ -42176,7 +42104,7 @@ Dh
 Dh
 ey
 Dh
-nj
+Dh
 Dh
 UH
 Dh
@@ -42328,31 +42256,31 @@ EM
 jF
 jF
 by
-Oz
+BA
 uX
-iY
+LM
 mg
 uX
 tR
 Bd
 Bd
-Oz
+BA
 PH
 ki
 uX
-Oz
+BA
 uX
 uu
 uu
 uu
 uu
 uX
-Oz
-Oz
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
+BA
+BA
 uX
 EM
 uu
@@ -42365,7 +42293,7 @@ uu
 wg
 Dh
 Dh
-xP
+Dh
 ey
 ey
 ey
@@ -42521,20 +42449,20 @@ EM
 EM
 uX
 jF
-Oz
-Oz
+BA
+BA
 uX
-iY
+LM
 Jx
 uX
 fx
 Bd
 Mu
-Oz
+BA
 Bd
 Ep
 uX
-Oz
+BA
 uX
 EM
 uu
@@ -42542,10 +42470,10 @@ uu
 uu
 uX
 jW
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
 vu
 uX
 uu
@@ -42559,12 +42487,12 @@ uu
 wg
 Dh
 Dh
-nj
 Dh
 Dh
 Dh
 Dh
-xP
+Dh
+Dh
 Dh
 Dh
 Dh
@@ -42715,8 +42643,8 @@ EM
 EM
 uX
 jF
-Oz
-Oz
+BA
+BA
 uX
 fQ
 Jx
@@ -42728,7 +42656,7 @@ Zp
 MU
 UF
 uX
-Oz
+BA
 uX
 EM
 EM
@@ -42736,10 +42664,10 @@ EM
 uu
 uX
 Cq
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
 xn
 uX
 uu
@@ -42909,10 +42837,10 @@ EM
 EM
 uX
 jF
-Oz
-Oz
+BA
+BA
 uX
-iY
+LM
 Jx
 uX
 uX
@@ -43103,20 +43031,20 @@ EM
 EM
 uX
 jF
-Oz
-Oz
+BA
+BA
 uX
 fQ
 Jx
 uX
 KI
 NU
-Oz
-Oz
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
+BA
+BA
 uX
 EM
 uu
@@ -43297,14 +43225,14 @@ EM
 EM
 uX
 by
-Oz
-Oz
+BA
+BA
 uX
-iY
+LM
 Jx
 uX
-AJ
-Oz
+LX
+BA
 uX
 uX
 uX
@@ -43492,12 +43420,12 @@ EM
 uX
 by
 by
-Oz
+BA
 uX
-xm
+Kz
 Jx
 SP
-Oz
+BA
 NU
 uX
 EM
@@ -43688,11 +43616,11 @@ jF
 by
 by
 uX
-iY
+LM
 Jx
 uX
-Oz
-Oz
+BA
+BA
 uX
 EM
 EM
@@ -43882,11 +43810,11 @@ jF
 II
 Sx
 uX
-iY
+LM
 Jx
 uX
 eM
-Oz
+BA
 uX
 EM
 uX
@@ -44270,7 +44198,7 @@ Jh
 Rb
 KI
 uX
-Ic
+Kz
 mg
 uX
 EM
@@ -44459,12 +44387,12 @@ EM
 EM
 EM
 uX
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
 uX
-Ic
+Kz
 uh
 uX
 WB
@@ -44654,11 +44582,11 @@ EM
 EM
 uX
 LX
-Oz
-Oz
+BA
+BA
 BQ
 uX
-Ic
+Kz
 uh
 uX
 EM
@@ -44847,12 +44775,12 @@ EM
 EM
 EM
 uX
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
 uX
-iY
+LM
 Ci
 uX
 EM
@@ -45041,12 +44969,12 @@ EM
 EM
 EM
 uX
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
 SP
-iY
+LM
 Ci
 uX
 EM
@@ -45237,7 +45165,7 @@ EM
 uX
 GG
 XC
-Oz
+BA
 iP
 uX
 rR
@@ -45434,7 +45362,7 @@ uX
 uX
 uX
 uX
-Ic
+Kz
 Ci
 uX
 EM
@@ -45628,7 +45556,7 @@ EM
 uu
 EM
 uX
-Ic
+Kz
 Ci
 uX
 EM
@@ -45822,7 +45750,7 @@ uu
 uu
 uu
 uX
-iY
+LM
 Ci
 uX
 EM
@@ -46016,7 +45944,7 @@ uu
 uu
 uu
 uX
-iY
+LM
 Ci
 uX
 EM
@@ -46210,7 +46138,7 @@ EM
 uu
 uu
 uX
-iY
+LM
 XG
 uX
 EM
@@ -46404,7 +46332,7 @@ EM
 EM
 EM
 uX
-iY
+LM
 Mv
 uX
 EM
@@ -46784,7 +46712,7 @@ gd
 gd
 nV
 Fs
-Oz
+BA
 SZ
 Yz
 rb
@@ -46980,8 +46908,8 @@ vR
 NY
 Yz
 QX
-Oz
-Oz
+BA
+BA
 NU
 nr
 Rb
@@ -47172,7 +47100,7 @@ gd
 gd
 uX
 Ma
-Oz
+BA
 NU
 NU
 uX
@@ -47180,7 +47108,7 @@ uX
 uX
 uX
 uX
-Ic
+Kz
 wX
 uX
 uX
@@ -47374,9 +47302,9 @@ uu
 uu
 EM
 uX
-iY
+LM
 Jx
-Oz
+BA
 uX
 EM
 EM
@@ -47560,7 +47488,7 @@ gd
 gd
 nV
 YV
-Oz
+BA
 dh
 Us
 uX
@@ -47568,9 +47496,9 @@ EM
 uu
 uu
 uX
-iY
+LM
 uh
-Oz
+BA
 uX
 uX
 uX
@@ -47762,15 +47690,15 @@ EM
 uu
 EM
 uX
-iY
+LM
 uh
-Oz
+BA
 uX
-uj
+BA
 Bj
-Oz
-uj
-uj
+BA
+BA
+BA
 CO
 uX
 uu
@@ -47956,16 +47884,16 @@ EM
 uu
 EM
 uX
-iY
+LM
 eW
-Oz
+BA
 uX
 BA
-Oz
-fu
-Oz
-fu
-Oz
+BA
+Bj
+BA
+Bj
+BA
 uX
 uu
 uu
@@ -48150,16 +48078,16 @@ EM
 uu
 uu
 uX
-iY
+LM
 eW
-Oz
+BA
 uX
-Oz
+BA
 ad
 At
-Oz
-Oz
-Oz
+BA
+BA
+BA
 uX
 uu
 uu
@@ -48344,16 +48272,16 @@ uu
 uu
 EM
 uX
-iY
+LM
 wX
-Oz
+BA
 uX
 UW
-Oz
-XQ
-Oz
+BA
+CO
+BA
 Bj
-uj
+BA
 uX
 uu
 uu
@@ -48538,9 +48466,9 @@ uX
 uX
 uX
 uX
-iY
+LM
 ch
-Oz
+BA
 uX
 uX
 uX
@@ -48554,11 +48482,11 @@ uX
 uX
 Ze
 vj
-Oz
-Oz
-Oz
-Oz
-Oz
+BA
+BA
+BA
+BA
+BA
 uX
 gH
 Nt
@@ -48727,7 +48655,7 @@ gd
 uX
 uX
 uX
-Oz
+BA
 MT
 bw
 bw
@@ -48736,12 +48664,12 @@ ae
 di
 NB
 uX
-Oz
-Oz
+BA
+BA
 BN
-Oz
-Oz
-Oz
+BA
+BA
+BA
 MT
 bw
 bw
@@ -48948,7 +48876,7 @@ Rg
 Rg
 Rg
 Rg
-Oz
+BA
 ZP
 uX
 Ji

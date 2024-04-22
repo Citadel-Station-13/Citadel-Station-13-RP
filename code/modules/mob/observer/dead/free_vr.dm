@@ -8,7 +8,7 @@ var/global/list/prevent_respawns = list()
 
 /mob/observer/dead/verb/cleanup()
 	set name = "Quit This Round"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Free your job slot, remove yourself from the manifest, and prevent respawning as this character for this round."
 
 	var/confirm = alert("This will free up your job slot, remove you from the manifest, and allow you to respawn as this character. You can rejoin as another \
