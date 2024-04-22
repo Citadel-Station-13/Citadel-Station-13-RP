@@ -235,7 +235,7 @@
 			(air_contents.temperature - occupant.bodytemperature) * 0.5,
 		)
 		occupant.adjust_bodytemperature(cooling_power)
-		occupant.setDir(SOUTH)
+		occupant.setDir(src.dir)
 		if(occupant.bodytemperature < T0C)
 			occupant.afflict_sleeping(20 * max(5, (1/occupant.bodytemperature)*2000))
 			occupant.afflict_unconscious(20 * max(5, (1/occupant.bodytemperature)*3000))
