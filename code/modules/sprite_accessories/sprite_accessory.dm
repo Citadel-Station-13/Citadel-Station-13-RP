@@ -259,6 +259,8 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 					value = GLOB.sprite_accessory_tails[value]
 				if(SPRITE_ACCESSORY_SLOT_WINGS)
 					value = GLOB.sprite_accessory_wings[value]
+		accessories[key] = value
+	return accessories
 
 /// by id
 GLOBAL_LIST_INIT(sprite_accessory_hair, all_hair_styles())
