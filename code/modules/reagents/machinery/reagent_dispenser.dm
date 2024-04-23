@@ -7,6 +7,7 @@
 	density = 1
 	anchored = 0
 	pressure_resistance = 2 * ONE_ATMOSPHERE
+	obj_rotation_flags = OBJ_ROTATION_ENABLED | OBJ_ROTATION_DEFAULTING
 
 	/// what this starts with - wiped on init
 	var/list/starting_reagents
