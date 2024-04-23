@@ -4,8 +4,6 @@
 
 /datum/configuration_legacy
 	var/time_off = FALSE
-	var/pto_job_change = FALSE
-	var/pto_cap = 100 //Hours
 
 /hook/startup/proc/read_vs_config()
 	var/list/Lines = world.file2list("config/legacy/config.txt")
@@ -38,10 +36,6 @@
 				config_legacy.chat_webhook_key = value
 			if ("items_survive_digestion")
 				config_legacy.items_survive_digestion = 1
-			if ("pto_cap")
-				config_legacy.pto_cap = text2num(value)
 			if ("time_off")
 				config_legacy.time_off = TRUE
-			if ("pto_job_change")
-				config_legacy.pto_job_change = TRUE
 	return 1
