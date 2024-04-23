@@ -685,6 +685,9 @@
 		. += "Its [key] is made out of [mat.display_name]"
 	if((obj_persist_dynamic_id || obj_persist_static_id) && !(obj_persist_status & OBJ_PERSIST_STATUS_NO_EXAMINE))
 		. += SPAN_BOLDNOTICE("This entity is a persistent entity; it may be preserved into future rounds.")
+	// todo: context + construction (tool) examines at some point need a better system
+	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
+		. += SPAN_NOTICE("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
 
 /obj/proc/examine_integrity(mob/user)
 	. = list()
