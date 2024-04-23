@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 		var/list/image/layers_flat = flattened(arglist(args))
 		return align_layers(layers_flat)
 	if(variations?[with_variation])
-		with_base_state = with_variation
+		with_base_state = variations[with_variation]
 	if(legacy_use_additive_color_matrix && colors)
 		// clone list to not mutate original
 		colors = colors.Copy()

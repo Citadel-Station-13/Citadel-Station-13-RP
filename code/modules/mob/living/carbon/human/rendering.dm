@@ -221,14 +221,14 @@
 
 /mob/living/carbon/human/proc/set_wing_variation(variation)
 	var/datum/sprite_accessory/wing/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_WINGS)
-	if(!rendering?.variations?[variation])
+	if(!rendering?.variations?[variation] && !isnull(variation))
 		return
 	legacy_wing_variation = variation
 	render_spriteacc_wings()
 
 /mob/living/carbon/human/proc/set_tail_variation(variation)
 	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
-	if(!rendering?.variations?[variation])
+	if(!rendering?.variations?[variation] && !isnull(variation))
 		return
 	legacy_tail_variation = variation
 	render_spriteacc_tail()
@@ -340,7 +340,7 @@
 	addtimer(CALLBACK(src, PROC_REF(animate_tail_reset)), time, TIMER_CLIENT_TIME)
 
 /mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
-	if(!tail_style || !tail_style.ani_state)
+	if(!has_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, SPRITE_ACCESSORY_VARIATION_WAGGING))
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
 		return 0

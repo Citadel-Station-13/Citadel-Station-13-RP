@@ -245,6 +245,8 @@
  *
  * @params
  * * M - the mob we're rendering
+ * * slot_id_or_hand_index - the slot ID or numerical held index we're in
+ * * bodytype - the effective bodytype
  */
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_DEFAULT)
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.

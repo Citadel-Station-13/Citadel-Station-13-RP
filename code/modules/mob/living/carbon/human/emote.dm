@@ -962,10 +962,12 @@
 			src.animate_tail_once()
 
 		if("wag", "sway")
-			src.animate_tail_start()
+			src.toggle_tail_vr()
+			// src.animate_tail_start()
 
 		if("qwag", "fastsway")
-			src.animate_tail_fast()
+			src.toggle_tail_vr()
+			// src.animate_tail_fast()
 
 		if("swag", "stopsway")
 			src.animate_tail_stop()

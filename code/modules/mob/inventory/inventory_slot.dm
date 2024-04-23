@@ -182,8 +182,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 //* Rendering *//
 
 // todo: shouldn't have to specify bodytype
+// todo: yes we should? otherwise we can't tell it to render differently against a mob's default bodytype.
 /datum/inventory_slot/proc/render(mob/wearer, obj/item/item, bodytype)
-	return item.render_mob_appearance(wearer, src, bodytype)
+	return item.render_mob_appearance(wearer, id, bodytype)
 
 /datum/inventory_slot/proc/should_render(mob/wearer, obj/item/item)
 	return TRUE

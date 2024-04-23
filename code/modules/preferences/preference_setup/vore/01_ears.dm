@@ -216,13 +216,18 @@
 		return TRUE
 	var/mob/living/carbon/human/character = M
 	var/datum/sprite_accessory/S = GLOB.sprite_accessory_ears[pref.ear_style_id]
-	character.ear_style = S
+	// todo: this is shitcode
+	if(character.ear_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_EARS])
+		character.ear_style = S
 	S = GLOB.sprite_accessory_tails[pref.tail_style_id]
-	character.tail_style = S
+	if(character.tail_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_TAIL])
+		character.tail_style = S
 	S = GLOB.sprite_accessory_wings[pref.wing_style_id]
-	character.wing_style = S
+	if(character.wing_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_WINGS])
+		character.wing_style = S
 	S = GLOB.sprite_accessory_ears[pref.horn_style_id]
-	character.horn_style = S
+	if(character.horn_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_HORNS])
+		character.horn_style = S
 
 	character.r_ears			= pref.r_ears
 	character.b_ears			= pref.b_ears
