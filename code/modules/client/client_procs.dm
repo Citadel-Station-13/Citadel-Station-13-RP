@@ -280,8 +280,6 @@
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	handle_legacy_connection_whatevers()
-
 	//* Connection Security
 	// start caching it immediately
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
