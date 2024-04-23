@@ -84,6 +84,7 @@
 
 	//* Structure
 	/// if set, we generate a ceiling above the shuttle of this type, on the bottom of the turf stack.
+	//  todo: vv hook this
 	var/ceiling_type = /turf/simulated/shuttle_ceiling
 
 	//* Transit
@@ -133,7 +134,7 @@
 			area_cache[scanning.loc] = initializing
 			initializing.before_bounds_initializing(src, from_reservation, from_template)
 		bottomleft_x = min(bottomleft_x, scanning.x)
-		bottomleft_y = min(bottomleft_y, scanning.y)areas
+		bottomleft_y = min(bottomleft_y, scanning.y)
 		topright_x = max(topright_x, scanning.x)
 		topright_y = max(topright_y, scanning.y)
 		// make superstructure
@@ -239,6 +240,9 @@
  * ports should generally be centered.
  */
 /datum/shuttle/proc/unsafe_aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+	// cache old data
+	var/turf/move_from = get_turf(anchor)
+	ASSERT(isturf(move_from))
 	// todo: more physics directions
 	translating_physics_direction = direction
 	// set up translating process caches
@@ -257,7 +261,7 @@
 	#warn move anchor first
 	#warn move ports
 	// prepped, move.
-	SSgrids.translate(
+	if(!SSgrids.translate(
 		use_before_turfs,
 		use_after_turfs,
 		anchor.dir,
@@ -269,7 +273,26 @@
 		null,
 		CALLBACK(src, PROC_REF(turf_overlap_handler)),
 		CALLBACK(src, PROC_REF(movable_overlap_handler)),
-	)
+	))
+		TO_WORLD(FORMAT_SERVER_FATAL("SSgrids.translate() failed during unsafe_aligned_translation of shuttle [id]. This is an unrecoverable error / undefined behavior state, and it is not recommended to continue usage of this shuttle. Please contact a coder immediately."))
+		CRASH("SSgrids translation failed. Something has gone horribly wrong!")
+	if(ceiling_type)
+		// remove old ceiling from above shuttle
+		if(SSmapping.cached_level_up[move_from.z])
+			var/above_z = SSmapping.cached_level_up[move_fromz.]
+			// has above
+			for(var/turf/above_turf in use_before_turfs)
+				// remove ceiling
+				above_turf.ScrapeFromLogicalBottom(CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
+		// inject destination ceiling turfs above shuttle
+		if(SSmapping.cached_level_up[move_to.z])
+			var/above_z = SSmapping.cached_level_up[move_to.z]
+			// has above
+			for(var/turf/after_turf in use_after_turfs)
+				// inject ceiling
+				var/turf/above_turf = locate(after_turf.x, after_turf.y, above_z)
+				above_turf.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
+
 	#warn throw shit and damage shit but also throw shit after damaging shit
 	// clear caches
 	translating_physics_direction = null

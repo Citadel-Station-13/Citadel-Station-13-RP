@@ -11,13 +11,6 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/overmapdemo,
-		/datum/shuttle/autodock/ferry/ferrydemo,
-		/datum/shuttle/autodock/multi/multidemo,
-		/datum/shuttle/autodock/web_shuttle/webdemo,
-	)
-
 	full_name = "NSS Citadel Testing Facility"
 
 	use_overmap = TRUE

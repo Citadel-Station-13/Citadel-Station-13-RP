@@ -9,6 +9,12 @@
 /datum/shuttle_template
 	abstract_type = /datum/shuttle_template
 
+	//* Basics
+	/// unique ID - use snake_case, must be unique & stable, including across rounds.
+	/// this means hardcoded ones shouldn't be changed willy-nilly.
+	var/id
+
+	//* Identity
 	/// Full name
 	var/name
 	/// Full description
@@ -16,29 +22,36 @@
 	/// lore fluff
 	var/fluff
 
-	/// direction the shuttle is facing, in the map
-	/// please try to map shuttles in facing north.
-	var/facing_dir = NORTH
-
-	/// unique ID - use snake_case, must be unique & stable, including across rounds.
-	/// this means hardcoded ones shouldn't be changed willy-nilly.
-	var/id
-
+	//* File
 	/// absolute path to file
 	var/absolute_path
 	/// relative path to file from current directory
 	var/relative_path
 
+	//* Flight (overmaps / web)
 	/// mass in kilotons
+	//  todo: in-game mass calculations? only really relevant for drone tbh
 	var/mass = 5
 	/// if set to false, this is absolute-ly unable to land on a planet
 	var/allow_atmospheric_landing = TRUE
 
-	/// should we keep parsed map once first loaded?
+	//* Jumps (ferry & moving to/from overmaps)
+	/// engine charging time when starting a move
+	//  todo: should have support for being based on in game machinery (?)
+	var/jump_charging_time = 10 SECONDS
+	/// time spent in transit when performing a move
+	var/jump_move_time = 10 SECONDS
+
+	//* .dmm
+	/// should we keep parsed map once first loaded?w
 	var/cache_parsed_map = FALSE
 	/// our parsed map
 	var/datum/dmm_parsed/parsed_map
+	/// direction the shuttle is facing, in the map
+	/// please try to map shuttles in facing north.
+	var/facing_dir = NORTH
 
+	//* Internals
 	/// shuttle datum type to make
 	var/shuttle_type = /datum/shuttle
 

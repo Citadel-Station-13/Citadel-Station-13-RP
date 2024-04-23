@@ -165,8 +165,6 @@ SUBSYSTEM_DEF(grids)
 	/// calculate rotation angle
 	var/rotation_angle = rotation_angle(from_dir, to_dir)
 
-	#warn call overlap handler as necessary
-
 	//* Collect
 	for(var/i in 1 to length(from_turfs))
 		var/turf/source = from_turfs[i]

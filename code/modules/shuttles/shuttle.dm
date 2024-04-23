@@ -1,79 +1,7 @@
 
-/datum/shuttle/New(_name, var/obj/effect/shuttle_landmark/initial_location)
-	..()
-	if(_name)
-		src.name = _name
-
-	var/list/areas = list()
-	if(!islist(shuttle_area))
-		shuttle_area = list(shuttle_area)
-	for(var/path in shuttle_area)
-		var/area/A = locate(path)
-		if(!istype(A))
-			CRASH("Shuttle \"[name]\" couldn't locate area [path].")
-		areas += A
-		// todo: less shit shuttle system
-		for(var/turf/T in A.contents)
-			// inject ceiling
-			if(ceiling_type)
-				var/turf/above = T.above()
-				if(above && !(above.loc in shuttle_area))
-					above.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
-			// inject floor
-			// but only if we are.. floor
-			if(GLOB.multiz_hole_baseturfs[T.type])
-				// don't bother
-				continue
-			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
-
-	shuttle_area = areas
-
-	if(initial_location)
-		current_location = initial_location
-	else
-		current_location = SSshuttle.get_landmark(current_location)
-	if(!istype(current_location))
-		log_debug(SPAN_DEBUGERROR("UM whoops, no initial? [src]"))
-		CRASH("Shuttle '[name]' could not find its starting location landmark [current_location].")
-
-	if(src.name in SSshuttle.shuttles)
-		CRASH(SPAN_DEBUGERROR("A shuttle with the name '[name]' is already defined."))
-	SSshuttle.shuttles[src.name] = src
-	if(flags & SHUTTLE_FLAGS_SUPPLY)
-		if(SSsupply.shuttle)
-			CRASH(SPAN_DEBUGERROR("A supply shuttle is already defined."))
-		SSsupply.shuttle = src
-
-/datum/shuttle/Destroy()
-	current_location = null
-	SSshuttle.shuttles -= src.name
-	SSshuttle.process_shuttles -= src
-	SSshuttle.shuttle_logs -= src
-	if(SSsupply.shuttle == src)
-		SSsupply.shuttle = null
-	. = ..()
-
 // This creates a graphical warning to where the shuttle is about to land, in approximately five seconds.
 /datum/shuttle/proc/create_warning_effect(var/obj/effect/shuttle_landmark/destination)
 	destination.create_warning_effect(src)
-
-// Return false to abort a jump, before the 'warmup' phase.
-/datum/shuttle/proc/pre_warmup_checks()
-	return TRUE
-
-// Ditto, but for afterwards.
-/datum/shuttle/proc/post_warmup_checks()
-	return TRUE
-
-// If you need an event to occur when the shuttle jumps in short or long jump, override this.
-// Keep in mind that destination is the intended destination, the shuttle may or may not actually reach it.s
-/datum/shuttle/proc/on_shuttle_departure(var/obj/effect/shuttle_landmark/origin, var/obj/effect/shuttle_landmark/destination)
-	return
-
-// Similar to above, but when it finishes moving to the target.  Short jump generally makes this occur immediately after the above proc.
-// Keep in mind we might not actually have gotten to destination.  Check current_location to be sure where we ended up.
-/datum/shuttle/proc/on_shuttle_arrival(var/obj/effect/shuttle_landmark/origin, var/obj/effect/shuttle_landmark/destination)
-	return
 
 /datum/shuttle/proc/short_jump(var/obj/effect/shuttle_landmark/destination)
 	if(moving_status != SHUTTLE_IDLE)
@@ -173,40 +101,6 @@
 * Shuttle Pre Move Handling	* (Observer Pattern Implementation: Shuttle Pre Move)
 *****************/
 
-// Move the shuttle to destination if possible.
-// Returns TRUE if we actually moved, otherwise FALSE.
-/datum/shuttle/proc/attempt_move(var/obj/effect/shuttle_landmark/destination, var/interim = FALSE)
-	if(current_location == destination)
-		log_shuttle("Shuttle [src] attempted to move to [destination] but is already there!")
-		return FALSE
-
-	if(!destination.is_valid(src))
-		log_shuttle("Shuttle [src] aborting attempt_move() because destination=[destination] is not valid")
-		return FALSE
-	if(current_location.cannot_depart(src))
-		log_shuttle("Shuttle [src] aborting attempt_move() because current_location=[current_location] refuses.")
-		return FALSE
-
-	// Observer pattern pre-move
-	var/old_location = current_location
-	GLOB.shuttle_pre_move_event.raise_event(src, old_location, destination)
-	current_location.shuttle_departed(src)
-
-	log_shuttle("[src] moving to [destination]. Areas are [english_list(shuttle_area)]")
-	var/list/translation = list()
-	for(var/area/A in shuttle_area)
-		log_shuttle("Translating [A]")
-		translation += get_turf_translation(get_turf(current_location), get_turf(destination), A.contents)
-
-	// Actually do it! (This never fails)
-	perform_shuttle_move(destination, translation)
-
-	// Observer pattern post-move
-	destination.shuttle_arrived(src)
-	GLOB.shuttle_moved_event.raise_event(src, old_location, destination)
-
-	return TRUE
-
 // Just moves the shuttle from A to B
 // A note to anyone overriding move in a subtype. perform_shuttle_move() must absolutely not, under any circumstances, fail to move the shuttle.
 // If you want to conditionally cancel shuttle launches, that logic must go in short_jump() or long_jump()
@@ -230,13 +124,7 @@
 				else if(isobj(AM))
 					qdel(AM) //it just gets atomized I guess? TODO throw it into space somewhere, prevents people from using shuttles as an atom-smasher
 
-	var/list/powernets = list()
 	for(var/area/A in shuttle_area)
-		// If there was a zlevel above our origin and we own the ceiling, erase our ceiling now we're leaving
-		if(ceiling_type && Z_HAS_ABOVE(current_location.z))
-			for(var/turf/TO in A.contents)
-				var/turf/TA = TO.above()
-				TA.ScrapeFromLogicalBottom(CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
 		if(knockdown)
 			for(var/mob/living/M in A)
 				spawn(0)
@@ -254,21 +142,6 @@
 		// We only need to rebuild powernets for our cables.  No need to check machines because they are on top of cables.
 		for(var/obj/structure/cable/C in A)
 			powernets |= C.powernet
-
-	// Actually do the movement of everything - This replaces origin.move_contents_to(destination)
-	translate_turfs(turf_translation, current_location.base_area, current_location.base_turf)
-	current_location = destination
-
-	// If there's a zlevel above our destination, paint in a ceiling on it so we retain our air
-	if(ceiling_type && Z_HAS_ABOVE(current_location.z))
-		for(var/area/A in shuttle_area)
-			for(var/turf/TD in A.contents)
-				var/turf/TA = TD.above()
-				if(TA.loc in shuttle_area)
-					continue
-				TA.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
-
-
 
 /datum/shuttle/proc/make_sounds(var/sound_type)
 	var/sound_to_play = null

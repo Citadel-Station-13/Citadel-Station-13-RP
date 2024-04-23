@@ -31,16 +31,6 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/ferry/emergency/escape,
-		/datum/shuttle/autodock/overmap/excursion/rift,
-		/datum/shuttle/autodock/overmap/courser,
-		/datum/shuttle/autodock/overmap/hammerhead,
-		/datum/shuttle/autodock/overmap/civvie,
-		/datum/shuttle/autodock/overmap/emt,
-		/datum/shuttle/autodock/ferry/supply/cargo,
-		/datum/shuttle/autodock/ferry/belter,
-	)
 	full_name = "NSB Atlas"
 	use_overmap = TRUE
 	overmap_size = 60
@@ -343,7 +333,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
@@ -416,6 +405,3 @@
 	display_name = "NSB Atlas Orbital Relay"
 	absolute_path = "maps/rift/levels/rift-11-orbital.dmm"
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
-	traits = list(
-		ZTRAIT_LEGACY_BELTER_TRANSIT,
-	)
