@@ -535,29 +535,29 @@
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		if(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL)
 			var/image/rendered = image(src) // todo: sprite
-			.["obj_rotate_cw"] = atom_context_tuple(
+			.["rotate_cw"] = atom_context_tuple(
 				"Rotate Clockwise",
 				rendered,
 				1,
 				MOBILITY_CAN_USE,
-				TRUE,
+				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 			rendered = image(src) // todo: sprite
-			.["obj_rotate_ccw"] = atom_context_tuple(
+			.["rotate_ccw"] = atom_context_tuple(
 				"Rotate Counterclockwise",
 				rendered,
 				1,
 				MOBILITY_CAN_USE,
-				TRUE,
+				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 		else
 			var/image/rendered = image(src) // todo: sprite
-			.["obj_rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = atom_context_tuple(
+			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = atom_context_tuple(
 				"Rotate [obj_rotation_flags & OBJ_ROTATION_CCW? "Counterclockwise" : "Clockwise"]",
 				rendered,
 				1,
 				MOBILITY_CAN_USE,
-				TRUE,
+				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 
 /obj/context_act(datum/event_args/actor/e_args, key)
@@ -829,10 +829,18 @@
 		return FALSE
 	return TRUE
 
-/obj/proc/handle_rotation(datum/event_args/actor/actor, clockwise, silent)
+/obj/proc/handle_rotation(datum/event_args/actor/actor, clockwise, silent, suppressed)
 	if(!allow_rotation(actor, clockwise, silent))
 		return FALSE
 	setDir(turn(dir, clockwise? -90 : 90))
+	if(!suppressed)
+		actor.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[actor.performer] rotates [src]."),
+			audible = SPAN_NOTICE("You hear something being pivoted."),
+			visible_self = SPAN_NOTICE("You spin [src] [clockwise? "clockwise" : "counterclockwise"]."),
+		)
 	return TRUE
 
 //* Tool System *//
