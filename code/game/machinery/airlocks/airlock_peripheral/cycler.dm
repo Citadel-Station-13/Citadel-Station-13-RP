@@ -3,10 +3,15 @@
 
 /obj/machinery/airlock_peripheral/cycler
 	name = "airlock cycler"
-	desc = "A set of machinery used for manipulating the atmosphere inside of an airlock."
+	desc = "A set of machinery used for manipulating the atmosphere inside of an airlock. Doubles as a gas sensor."
 	#warn sprite
 
 	/// conencted pipenet
 	var/datum/airlock_pipenet/network
+
 #warn impl
 
+/**
+ *
+ */
+/obj/machinery/airlock_peripheral/cycler/proc/

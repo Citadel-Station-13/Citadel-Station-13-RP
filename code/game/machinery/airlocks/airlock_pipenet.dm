@@ -11,5 +11,14 @@
 	var/list/obj/machinery/airlock_peripheral/handler/handlers = list()
 	/// cyclers
 	var/list/obj/machinery/airlock_peripheral/cycler/cyclers = list()
+	/// vents
+	var/list/obj/machinery/airlock_peripheral/vent/vents = list()
+
+	/// total power storage in kj
+	var/power_capacity = 0
+	/// total power stored in kj
+	var/power_stored = 0
+
 
 #warn impl
+

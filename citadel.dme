@@ -1259,6 +1259,7 @@
 #include "code\game\machinery\airlocks\airlock_peripheral\handler.dm"
 #include "code\game\machinery\airlocks\airlock_peripheral\panel.dm"
 #include "code\game\machinery\airlocks\airlock_peripheral\sensor.dm"
+#include "code\game\machinery\airlocks\airlock_peripheral\vent.dm"
 #include "code\game\machinery\airlocks\map_helpers\airlock_interior.dm"
 #include "code\game\machinery\airlocks\map_helpers\airlock_linker.dm"
 #include "code\game\machinery\camera\camera.dm"
