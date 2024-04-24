@@ -29,21 +29,6 @@
 				Fail("duplciate name [S.name] on [path] against [names_beard[S.name]:type]")
 			else
 				names_beard[S.name] = S
-		else if(istype(S, /datum/sprite_accessory/wing))
-			if(names_wing[S.name])
-				Fail("duplciate name [S.name] on [path] against [names_wing[S.name]:type]")
-			else
-				names_wing[S.name] = S
-		else if(istype(S, /datum/sprite_accessory/ears))
-			if(names_ear[S.name])
-				Fail("duplciate name [S.name] on [path] against [names_ear[S.name]:type]")
-			else
-				names_ear[S.name] = S
-		else if(istype(S, /datum/sprite_accessory/tail))
-			if(names_tail[S.name])
-				Fail("duplciate name [S.name] on [path] against [names_tail[S.name]:type]")
-			else
-				names_tail[S.name] = S
 		else if(istype(S, /datum/sprite_accessory/marking))
 			if(names_marking[S.name])
 				Fail("duplciate name [S.name] on [path] against [names_marking[S.name]:type]")
