@@ -210,6 +210,13 @@
 		if(temp_wing_style_id.apply_restrictions && (!(species_name in temp_wing_style_id.species_allowed)))
 			pref.wing_style_id = initial(pref.wing_style_id)
 
+/datum/category_item/player_setup_item/vore/ears/proc/should_override(datum/sprite_accessory/setting, datum/sprite_accessory/existing, datum/sprite_accessory/species)
+	if(species && (existing == species))
+		// if they're set by species, only override if we're set
+		return setting != null
+	// otherwise, override always
+	return TRUE
+
 /datum/category_item/player_setup_item/vore/ears/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
 	// todo: this is just a shim
 	if(!ishuman(M))
@@ -217,16 +224,16 @@
 	var/mob/living/carbon/human/character = M
 	var/datum/sprite_accessory/S = GLOB.sprite_accessory_ears[pref.ear_style_id]
 	// todo: this is shitcode
-	if(character.ear_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_EARS])
+	if(should_override(S, character.ear_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_EARS]))
 		character.ear_style = S
 	S = GLOB.sprite_accessory_tails[pref.tail_style_id]
-	if(character.tail_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_TAIL])
+	if(should_override(S, character.tail_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_TAIL]))
 		character.tail_style = S
 	S = GLOB.sprite_accessory_wings[pref.wing_style_id]
-	if(character.wing_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_WINGS])
+	if(should_override(S, character.wing_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_WINGS]))
 		character.wing_style = S
 	S = GLOB.sprite_accessory_ears[pref.horn_style_id]
-	if(character.horn_style != character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_HORNS])
+	if(should_override(S, character.horn_style, character.species?.sprite_accessory_defaults?[SPRITE_ACCESSORY_SLOT_HORNS]))
 		character.horn_style = S
 
 	character.r_ears			= pref.r_ears
