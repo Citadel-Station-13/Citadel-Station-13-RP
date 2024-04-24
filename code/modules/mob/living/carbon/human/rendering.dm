@@ -228,8 +228,11 @@
 
 /mob/living/carbon/human/proc/set_tail_variation(variation)
 	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
-	if(!rendering?.variations?[variation] && !isnull(variation))
-		return
+	// todo: legacy sihtcode lol
+	if(istype(rendering) && rendering.ani_state && variation == SPRITE_ACCESSORY_VARIATION_WAGGING)
+	else
+		if(!rendering?.variations?[variation] && !isnull(variation))
+			return
 	legacy_tail_variation = variation
 	render_spriteacc_tail()
 
