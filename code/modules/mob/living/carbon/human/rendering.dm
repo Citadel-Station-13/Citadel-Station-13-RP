@@ -145,8 +145,8 @@
 		list(
 			rgb(r_hair, g_hair, b_hair),
 		),
-		HUMAN_LAYER_SPRITEACC_FACEHAIR_FRONT,
-		HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND,
+		HUMAN_LAYER_SPRITEACC_HAIR_FRONT,
+		HUMAN_LAYER_SPRITEACC_HAIR_BEHIND,
 		0, // TODO
 		null,
 		flattened = flatten,
