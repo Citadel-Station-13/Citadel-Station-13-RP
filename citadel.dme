@@ -1252,6 +1252,7 @@
 #include "code\game\machinery\wishgranter.dm"
 #include "code\game\machinery\airlocks\airlock_controller.dm"
 #include "code\game\machinery\airlocks\airlock_environment.dm"
+#include "code\game\machinery\airlocks\airlock_helpers.dm"
 #include "code\game\machinery\airlocks\airlock_interconnect.dm"
 #include "code\game\machinery\airlocks\airlock_panel.dm"
 #include "code\game\machinery\airlocks\airlock_peripheral.dm"

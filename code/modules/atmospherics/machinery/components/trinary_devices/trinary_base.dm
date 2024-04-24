@@ -18,9 +18,9 @@
 	var/datum/pipe_network/network3
 
 /obj/machinery/atmospherics/component/trinary/Initialize(mapload)
-	air1 = new(200)
-	air2 = new(200)
-	air3 = new(200)
+	air1 = new(volume)
+	air2 = new(volume)
+	air3 = new(volume)
 
 	return ..()
 

@@ -36,7 +36,7 @@
 	if(istype(M))
 		master = M
 	air = new
-	air.volume = 200
+	air.volume = M.volume
 
 /datum/omni_port/proc/connect()
 	if(node)

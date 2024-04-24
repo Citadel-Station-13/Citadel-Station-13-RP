@@ -3,6 +3,10 @@
 
 /**
  * the simplified pipenet used for airlock handling
+ *
+ * here's the general lifecycle of airlock handling:
+ *
+ * * airlock_handler will draw power from grid, and also handle gas operations on standalone buffers independently
  */
 /datum/airlock_pipenet
 	/// interconnects
@@ -19,6 +23,17 @@
 	/// total power stored in kj
 	var/power_stored = 0
 
+	/// total handler pumping power in kw; used to handle our buffer reshuffling
+	var/pumping_power = 0
+
+	/// temperature of gas buffers
+	var/air_buffer_temperature = TCMB
+	/// gas buffer; gasid to moles
+	var/list/air_buffer = list()
+
+	/// buffer for dumping out of handlers / vents; this should be waste gas.
+	var/datum/gas_mixture/dumping_buffer
+
 //* Reconcile / Operations *//
 
 /// These are on /datum/airlock_pipenet
@@ -29,12 +44,7 @@
 /// I'm okay with people using airlock pipenets for their own purposes, therefore.
 /// You just need to understand what you're doing.
 
-/**
- * reconcile towards a certain gasmixture
- *
- * used in adaptive mode
- */
-/datum/airlock_pipenet/proc/
+
 
 #warn impl
 

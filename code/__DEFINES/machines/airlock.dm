@@ -14,7 +14,20 @@
 
 //* /obj/machinery/airlock_controller/config_(interior|exterior)_toggles
 
-// none yet
+/// cycle gas ratios; implies EXPEL_UNWANTED_GAS
+#define AIRLOCK_CONFIG_MATCH_GAS_RATIOS (1<<0)
+/// expel bad gases
+#define AIRLOCK_CONFIG_EXPEL_UNWANTED_GAS (1<<1)
+/// match pressure; implies REGULATE_PRESSURE
+#define AIRLOCK_CONFIG_MATCH_PRESSURE (1<<2)
+/// prevent pressure mismatches that result in people dying/flying around
+#define AIRLOCK_CONFIG_REGULATE_PRESSURE (1<<3)
+/// match temperature; implies REGULATE_TEMPERATURE
+#define AIRLOCK_CONFIG_MATCH_TEMPERATURE (1<<4)
+/// prevent temperature mismatches that result in people dying/severe area temperature changes
+#define AIRLOCK_CONFIG_REGULATE_TEMPERATURE (1<<5)
+
+#warn DEFINE_BITFIELD
 
 //* /obj/machinery/airlock_controller/(interior|exterior)_state
 

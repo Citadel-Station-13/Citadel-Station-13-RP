@@ -17,3 +17,29 @@
 	var/allow_heat_siphon = TRUE
 
 #warn impl
+
+/obj/machinery/airlock_peripheral/vent/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+
+	#warn impl
+
+/obj/machinery/airlock_peripheral/vent/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/obj/machinery/airlock_peripheral/vent/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["gasVent"] = allow_gas_venting
+	.["gasSiphon"] = allow_gas_siphon
+	.["heatVent"] = allow_heat_venting
+	.["heatSiphon"] = allow_heat_siphon
+
+/obj/machinery/airlock_peripheral/vent/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AirlockVent")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+#warn requires panel open

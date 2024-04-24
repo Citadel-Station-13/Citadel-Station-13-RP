@@ -11,6 +11,8 @@
 	desc = "A self-contained controller for an airlock."
 	#warn sprite
 
+
+
 	//* Access
 	/// we can access the airlock from the controller
 	var/control_panel = TRUE
@@ -21,9 +23,13 @@
 	/// if you set it to a high value, people will go flying.
 	var/config_minimum_tolerable_pressure = 0
 	/// interior toggles
-	var/config_interior_toggles = NONE
+	///
+	/// by default we want to regulate temperature/pressure/gas
+	var/config_interior_toggles = AIRLOCK_CONFIG_EXPEL_UNWANTED_GAS | AIRLOCK_CONFIG_REGULATE_PRESSURE | AIRLOCK_CONFIG_REGULATE_TEMPERATURE
 	/// exterior toggles
-	var/config_exterior_toggles = NONE
+	///
+	/// by default we just want to not have people go flying
+	var/config_exterior_toggles = AIRLOCK_CONFIG_REGULATE_PRESSURE
 
 	//* Environments
 	/// interior environment settings
@@ -78,7 +84,14 @@
 /obj/machinery/airlock_controller/Initialize(mapload)
 	..()
 	#warn stuff
+	// todo: we need proper tick bracket machine support & fastmos
+	STOP_MACHINE_PROCESSING(src)
+	START_PROCESSING(SSfastprocess, src)
 	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/airlock_controller/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	return ..()
 
 /obj/machinery/airlock_controller/LateInitialize()
 	. = ..()
