@@ -3,6 +3,9 @@
 	set category = "Debug"
 	set name = "Fucky Wucky"
 	set desc = "Inform the players that the code monkeys at our headquarters are working very hard to fix this."
+
+	log_and_message_admins("[key_name(src)] made a fucky wucky.")
+
 	for(var/victim as anything in GLOB.player_list)
 		var/datum/asset/fuckywucky = get_asset_datum(/datum/asset/simple/fuckywucky)
 		fuckywucky.send(victim)
