@@ -269,9 +269,10 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(vessel.get_reagent_amount("blood") < amount)
 		return null
 
+	if(amount >= vessel.get_reagent_amount("blood"))
+		amount = vessel.get_reagent_amount("blood") - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
+
 	. = ..()
-	if(amt >= vessel.get_reagent_amount("blood"))
-		amt = vessel.get_reagent_amount("blood") - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
 	vessel.remove_reagent("blood",amount) // Removes blood if human
 
 //Transfers blood from container ot vessels
