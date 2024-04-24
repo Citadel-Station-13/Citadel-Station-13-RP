@@ -98,7 +98,7 @@
 					egg?.fracture()
 					H.adjustBrainLoss(rand(5, 10))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
-				else 
+				else
 					//Minor brain injury from hitting your head
 					H.adjustBrainLoss(rand(1, 2))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
@@ -116,7 +116,7 @@
 					egg?.fracture()
 					H.adjustBrainLoss(rand(5, 10))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
-				else 
+				else
 					H.adjustBrainLoss(rand(1, 2))
 					visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying!</span>")
 				H.update_health()

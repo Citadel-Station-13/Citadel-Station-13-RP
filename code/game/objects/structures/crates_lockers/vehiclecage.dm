@@ -78,7 +78,7 @@
 
 	V.forceMove(src)
 
-	paint_color = V.paint_color
+	//paint_color = V.paint_color
 
 	update_icon()
 
@@ -95,7 +95,7 @@
 						 "<span class='notice'>You finally release \the [src].</span>", \
 						 "<span class='notice'>You hear creaking metal.</span>")
 	qdel(src)
-
+/*
 /obj/structure/vehiclecage/spacebike
 	my_vehicle_type = /obj/vehicle_old/bike/random
 
@@ -104,3 +104,4 @@
 
 /obj/structure/vehiclecage/quadtrailer
 	my_vehicle_type = /obj/vehicle_old/train/trolley/trailer/random
+*/

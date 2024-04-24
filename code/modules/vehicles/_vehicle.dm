@@ -29,8 +29,17 @@
 	var/list/autogrant_actions_passenger	//plain list of typepaths
 	var/list/autogrant_actions_controller	//assoc list "[bitflag]" = list(typepaths)
 	var/list/mob/occupant_actions			//assoc list mob = list(type = action datum assigned to mob)
-	var/obj/vehicle/trailer
+	var/obj/vehicle/trailer				//what trailer is hitched to this vehicle
+	var/obj/vehicle/trailer_type		//what trailer is allowed to hitch to this vehicle
+	var/is_tugged = FALSE				//is this vehicle attached to another
 	var/mouse_pointer //do we have a special mouse
+	var/mechanical = TRUE			//if true the vehicle will not initialize a cell power system
+	var/obj/item/cell/cell_type 	//default cell to spawn inside
+	var/power_move_cost = 0		//how much power it costs to move in cell units
+	//*var/obj_cell_slot 				//defined at mapload if mechanical is false. Use to access cell subsystem
+	var/maint_panel_open = FALSE	//is the maintenance panel open?
+
+
 
 /obj/vehicle/Initialize(mapload)
 	. = ..()
@@ -39,9 +48,20 @@
 	autogrant_actions_controller = list()
 	occupant_actions = list()
 	generate_actions()
+	if(!mechanical)
+		var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type) //Enables the generic cell system
+		cell_slot.receive_emp = TRUE
+		cell_slot.receive_inducer = TRUE
+		cell_slot.remove_yank_offhand = TRUE
+		cell_slot.remove_yank_context = TRUE
+		cell_slot.remove_yank_inhand = TRUE
 
 /obj/vehicle/examine(mob/user, dist)
 	. = ..()
+	if(!isnull(obj_cell_slot.cell) && dist < 2)
+		. += "<br><span class='notice'>Its charge meter reads: [obj_cell_slot.cell.percent()]%.</span>"
+	if(maint_panel_open)
+		. += "<br><span class='notice'>Its maintenance panel is open.</span>"
 	/*
 	if(resistance_flags & ON_FIRE)
 		. += "<span class='warning'>It's on fire!</span>"
@@ -130,6 +150,7 @@
 		return
 	vehicle_move(direction)
 
+
 /obj/vehicle/proc/vehicle_move(direction)
 	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
 		return FALSE
@@ -173,7 +194,80 @@
 				M.Bumped(m)
 
 /obj/vehicle/Move(newloc, dir)
+	if(!ProcessPowerConsumption())
+		return
+	var/old_loc = src.loc
 	. = ..()
 	if(trailer && .)
-		var/dir_to_move = get_dir(trailer.loc, newloc)
+		var/dir_to_move = get_dir(trailer.loc, old_loc)
 		step(trailer, dir_to_move)
+
+/**
+ * Checks if the vehicle has enough power to move and consumes it if it does.
+ * Returns TRUE on success.
+ */
+/obj/vehicle/proc/ProcessPowerConsumption()
+	if(mechanical)
+		return TRUE
+	if(obj_cell_slot.cell.checked_use(power_move_cost))
+		return TRUE
+	return FALSE
+
+/obj/vehicle/attackby(obj/item/I as obj, mob/user as mob)
+	//Flipflop maint panel status if screwed.
+	if(istype(I, /obj/item/tool/screwdriver) && !mechanical)
+		maint_panel_open = !maint_panel_open
+		to_chat(user, "<span class='warning'>You [maint_panel_open ? "open" : "close"] the maintenance panel!</span>")
+		return
+	..()
+
+/obj/vehicle/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return maint_panel_open
+
+//Take DroppedOn atoms and determine if they are a trailer to be attached, cargo to be loaded, or pass on for passenger procs.
+/obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	if(!istype(dropping) || !isliving(user) || !proximity || get_dist(dropping.loc, loc) != 1)
+		return ..()
+	//Trailer hitch check
+	if(istype(dropping, /obj/vehicle/trailer))
+		if(attach_to(dropping, user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	//Cargo load check
+	//if(load(dropping))
+	//	return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	return ..()
+
+/**
+ * Attempts to attach a trailer to the vehicle. Returns true if it does something else it returns false.
+ * Assumes proximity checks have already been made.
+ */
+/obj/vehicle/proc/attach_to(obj/vehicle/trailer/dropping, mob/user)
+	//If its not our allowed trailer, leave this function NOW.
+	if (dropping.type != trailer_type)
+		return FALSE
+	//Is this already THE trailer? Let it go.
+	if (dropping == trailer)
+		trailer = null
+		dropping.is_tugged = FALSE
+		dropping.anchored = FALSE
+		to_chat(user, "<span class='warning'>You unhitch the [src]!</span>")
+		return TRUE
+	//If there is not already a trailer, and the trailer isn't getting pulled already. Tug it.
+	if (trailer == null && dropping.is_tugged == FALSE)
+		trailer = dropping
+		dropping.is_tugged = TRUE
+		dropping.anchored = TRUE
+		to_chat(user, "<span class='notice'>You hitch the [src]!</span>")
+		return TRUE
+	//If we are already tugging a trailer, we can't hitch another.
+	if (trailer != null)
+		to_chat(user, "<span class='warning'>Another trailer is already hitched here!</span>")
+		return TRUE
+	//If the trailer is already hitched to something else, we can't unhitch it.
+	if (dropping.is_tugged != FALSE)
+		to_chat(user, "<span class='warning'>The [src] is already hitched to another vehicle!</span>")
+		return TRUE
+	return FALSE
+
+//Build load() proc here

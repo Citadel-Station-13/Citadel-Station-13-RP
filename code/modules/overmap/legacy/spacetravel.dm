@@ -67,12 +67,12 @@ var/list/cached_space = list()
 
 /obj/singularity/lost_in_space()
 	return FALSE
-
+/*
 /obj/vehicle_old/lost_in_space()
 	if(load && !load.lost_in_space())
 		return FALSE
 	return ..()
-
+*/
 /mob/lost_in_space()
 	return isnull(client)
 

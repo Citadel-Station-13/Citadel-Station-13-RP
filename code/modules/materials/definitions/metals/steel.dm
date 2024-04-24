@@ -233,12 +233,14 @@
 		cost = 2,
 		time = 2 SECONDS,
 	)
+	/*
 	. += create_stack_recipe_datum(
 		name = "scooter frame",
 		product = /obj/item/scooter_frame,
 		cost = 5,
 		time = 2 SECONDS,
 	)
+	*/
 	. += create_stack_recipe_datum(
 		name = "metal coffin",
 		product = /obj/structure/closet/coffin/comfy,

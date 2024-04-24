@@ -455,8 +455,10 @@
 	. = !!buckled
 	if(!.)
 		return
+	/*
 	if(istype(buckled, /obj/vehicle_old))
 		var/obj/vehicle_old/vehicle = buckled
 		vehicle.unload()
 	else
 		buckled.resist_unbuckle_interaction(src)
+*/
