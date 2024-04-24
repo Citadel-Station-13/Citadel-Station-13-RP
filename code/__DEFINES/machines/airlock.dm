@@ -1,6 +1,21 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* /obj/machinery/airlock_controller/(interior|exterior)_environment_mode
+
+/// detect atmos on tile; autodetects and sets to manual after
+#define AIRLOCK_ENVIRONMENT_AUTODETECT "detect"
+/// manually specify environment
+#define AIRLOCK_ENVIRONMENT_MANUAL "manual"
+/// adaptive; continually matches the environment when possible.
+#define AIRLOCK_ENVIRONMENT_ADAPTIVE "adaptive"
+/// ignore the atmos entirely
+#define AIRLOCK_ENVIRONMENT_IGNORE "ignore"
+
+//* /obj/machinery/airlock_controller/config_(interior|exterior)_toggles
+
+// none yet
+
 //* /obj/machinery/airlock_controller/(interior|exterior)_state
 
 /// locked open
@@ -9,6 +24,13 @@
 #define AIRLOCK_STATE_LOCKED_CLOSED 2
 /// unlocked
 #define AIRLOCK_STATE_UNLOCKED 3
+
+//* Airlock Sides
+
+#define AIRLOCK_SIDE_INTERIOR "interior"
+#define AIRLOCK_SIDE_EXTERIOR "exterior"
+
+#warn eval below
 
 //* /obj/machinery/airlock_controller/dock_state
 

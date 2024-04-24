@@ -3,12 +3,17 @@
 
 /obj/machinery/airlock_peripheral/vent
 	name = "airlock vent"
-	desc = "A large exterior vent used in an airlock to dispel unwanted waste gases and use as a heat source/sink."
+	desc = "A large vent used in an airlock to dispel unwanted waste gases and use as a heat source/sink."
 
 	#warn sprite
 
-	/// conencted pipenet
-	var/datum/airlock_pipenet/network
+	/// are we allowed to vent gas?
+	var/allow_gas_venting = TRUE
+	/// are we allowed to siphon gas?
+	var/allow_gas_siphon = TRUE
+	/// are we allowed to vent heat?
+	var/allow_heat_venting = TRUE
+	/// are we allowed to siphon heat?
+	var/allow_heat_siphon = TRUE
 
 #warn impl
-

@@ -3,4 +3,8 @@
 
 /obj/machinery/airlock_peripheral/sensor
 
+/obj/machinery/airlock_peripheral/sensor/sensor_only
+
+/obj/machinery/airlock_peripheral/sensor/button_only
+
 #warn impl

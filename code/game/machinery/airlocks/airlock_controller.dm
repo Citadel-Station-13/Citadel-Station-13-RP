@@ -15,6 +15,26 @@
 	/// we can access the airlock from the controller
 	var/control_panel = TRUE
 
+	//* Configuration
+	/// minimum allowable pressure during cycling
+	/// this overrides requested pressure by the environment!
+	/// if you set it to a high value, people will go flying.
+	var/config_minimum_tolerable_pressure = 0
+	/// interior toggles
+	var/config_interior_toggles = NONE
+	/// exterior toggles
+	var/config_exterior_toggles = NONE
+
+	//* Environments
+	/// interior environment settings
+	var/datum/airlock_environment/interior_environment
+	/// exterior environment settings
+	var/datum/airlock_environment/exterior_environment
+	/// interior environment mode
+	var/interior_environment_mode = AIRLOCK_ENVIRONMENT_AUTODETECT
+	/// exterior environment mode
+	var/exterior_environment_mode = AIRLOCK_ENVIRONMENT_ADAPTIVE
+
 	//* Peripherals
 	/// panels
 	var/list/obj/machinery/airlock_peripheral/panel/panels
@@ -55,6 +75,24 @@
 	/// what to call on failure or abort
 	var/datum/callback/op_on_failure
 
+/obj/machinery/airlock_controller/Initialize(mapload)
+	..()
+	#warn stuff
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/airlock_controller/LateInitialize()
+	. = ..()
+	switch(interior_environment_mode)
+		if(AIRLOCK_ENVIRONMENT_MANUAL)
+		if(AIRLOCK_ENVIRONMENT_ADAPTIVE)
+		if(AIRLOCK_ENVIRONMENT_IGNORE)
+		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
+	switch(exterior_environment_mode)
+		if(AIRLOCK_ENVIRONMENT_MANUAL)
+		if(AIRLOCK_ENVIRONMENT_ADAPTIVE)
+		if(AIRLOCK_ENVIRONMENT_IGNORE)
+		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
+	#warn stuff
 
 #warn impl
 

@@ -19,6 +19,22 @@
 	/// total power stored in kj
 	var/power_stored = 0
 
+//* Reconcile / Operations *//
+
+/// These are on /datum/airlock_pipenet
+/// because it didn't make sense to put it on the controller
+/// the tl;dr is this is technically a generic 'miniature-atmospherics'
+/// pipenet system.
+///
+/// I'm okay with people using airlock pipenets for their own purposes, therefore.
+/// You just need to understand what you're doing.
+
+/**
+ * reconcile towards a certain gasmixture
+ *
+ * used in adaptive mode
+ */
+/datum/airlock_pipenet/proc/
 
 #warn impl
 
