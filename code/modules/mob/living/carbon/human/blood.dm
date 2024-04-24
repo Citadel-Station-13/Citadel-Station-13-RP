@@ -45,6 +45,15 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 			B.color = B.data["blood_colour"]
 			B.name = B.data["blood_name"]
 
+/mob/living/carbon/human/proc/fixblood_if_broken()
+	if(species.species_flags & NO_BLOOD)
+		return
+	if(!should_have_organ(O_HEART))
+		return
+	if(!vessel.has_reagent("blood"))
+		vessel.add_reagent("blood", 0.1)
+		fixblood()
+
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
 	if(inStasisNow())
@@ -211,7 +220,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(!amt)
 		return 0
 
-	if(amt > vessel.get_reagent_amount("blood"))
+	if(amt >= vessel.get_reagent_amount("blood"))
 		amt = vessel.get_reagent_amount("blood") - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
 
 	return vessel.remove_reagent("blood",amt * (src.mob_size/MOB_MEDIUM))
@@ -261,6 +270,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		return null
 
 	. = ..()
+	if(amt >= vessel.get_reagent_amount("blood"))
+		amt = vessel.get_reagent_amount("blood") - 1	// Bit of a safety net; it's impossible to add blood if there's not blood already in the vessel.
 	vessel.remove_reagent("blood",amount) // Removes blood if human
 
 //Transfers blood from container ot vessels
@@ -286,6 +297,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 		reagents.add_reagent("blood", amount, injected.data)
 		reagents.update_total()
 		return
+	
+	fixblood_if_broken()
 
 	var/datum/reagent/blood/our = get_blood(vessel)
 
