@@ -626,6 +626,20 @@
 		remove_standing_overlay(HUMAN_OVERLAY_UNDERWEAR)
 		return
 	var/list/setting = list()
+	// SHITCODE WARNING
+	// MANUAL UNDERWEAR SORT
+	for(var/key in list(
+		"Underwear, bottom",
+		"Socks",
+		"Underwear, top",
+		"Undershirt",
+	))
+		var/existing = all_underwear[key]
+		all_underwear -= key
+		if(existing)
+			all_underwear[key] = existing
+	// END
+
 	for(var/category in all_underwear)
 		if(hide_underwear[category])
 			continue
