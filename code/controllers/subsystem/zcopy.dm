@@ -651,7 +651,7 @@ SUBSYSTEM_DEF(zcopy)
 				if(TURF_PLANE, FLOAT_PLANE)
 				// these plnaes need to be obliterated due to the usage of
 				// special rendering that will be lost if the plane is changed.
-				if(LIGHTLESS_PLANE)
+				if(LIGHTLESS_PLANE, EMISSIVE_PLANE)
 					obliterate = TRUE
 				else
 					plane_needs_fix = TRUE

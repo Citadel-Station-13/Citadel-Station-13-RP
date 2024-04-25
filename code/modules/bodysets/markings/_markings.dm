@@ -1,5 +1,7 @@
 // todo: this shouldn't be a /sprite_accessory.
 
+#warn move all this over
+
 /datum/sprite_accessory/marking
 	abstract_type = /datum/sprite_accessory/marking
 	icon = "icons/mob/sprite_accessories/markings.dmi"
