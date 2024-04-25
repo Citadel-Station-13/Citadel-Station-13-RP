@@ -17,6 +17,6 @@
 	abstract_type = /datum/sprite_accessory/tail/bodyset
 	selectable = FALSE
 
-/datum/sprite_accessory/wings/bodyset
-	abstract_type = /datum/sprite_accessory/wings/bodyset
+/datum/sprite_accessory/wing/bodyset
+	abstract_type = /datum/sprite_accessory/wing/bodyset
 	selectable = FALSE
