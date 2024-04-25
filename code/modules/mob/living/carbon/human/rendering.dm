@@ -228,8 +228,11 @@
 
 /mob/living/carbon/human/proc/set_tail_variation(variation)
 	var/datum/sprite_accessory/tail/rendering = get_sprite_accessory(SPRITE_ACCESSORY_SLOT_TAIL)
-	if(!rendering?.variations?[variation] && !isnull(variation))
-		return
+	// todo: legacy sihtcode lol
+	if(istype(rendering) && rendering.ani_state && variation == SPRITE_ACCESSORY_VARIATION_WAGGING)
+	else
+		if(!rendering?.variations?[variation] && !isnull(variation))
+			return
 	legacy_tail_variation = variation
 	render_spriteacc_tail()
 
@@ -626,6 +629,20 @@
 		remove_standing_overlay(HUMAN_OVERLAY_UNDERWEAR)
 		return
 	var/list/setting = list()
+	// SHITCODE WARNING
+	// MANUAL UNDERWEAR SORT
+	for(var/key in list(
+		"Underwear, bottom",
+		"Socks",
+		"Underwear, top",
+		"Undershirt",
+	))
+		var/existing = all_underwear[key]
+		all_underwear -= key
+		if(existing)
+			all_underwear[key] = existing
+	// END
+
 	for(var/category in all_underwear)
 		if(hide_underwear[category])
 			continue
