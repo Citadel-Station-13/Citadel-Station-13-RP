@@ -2,9 +2,6 @@
 	var/list/ids = list()
 	var/list/names_hair = list()
 	var/list/names_beard = list()
-	var/list/names_tail = list()
-	var/list/names_wing = list()
-	var/list/names_ear = list()
 	var/list/names_marking = list()
 	for(var/path in subtypesof(/datum/sprite_accessory))
 		var/datum/sprite_accessory/S = path
