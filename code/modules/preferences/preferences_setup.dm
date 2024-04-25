@@ -212,9 +212,7 @@
 	var/datum/species/RS = real_species_datum()
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
-		if(biological_gender == MALE && S.gender == FEMALE)
-			continue
-		if(biological_gender == FEMALE && S.gender == MALE)
+		if(!isnull(S.random_generation_gender) && biological_gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(RS.name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue

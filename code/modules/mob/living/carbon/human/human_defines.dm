@@ -48,6 +48,10 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // Custom procs handle that.
 
+	//! LEGACY, TODO TO REMOVE
+	/// current head overlay pixel y offset
+	var/head_spriteacc_offset = 0
+
 //! ## Hair colour and style
 	var/h_style = "Bald"
 	var/r_hair = 0
@@ -113,12 +117,16 @@
 	var/r_tail3 = 30
 	var/g_tail3 = 30
 	var/b_tail3 = 30
+	// pain
+	var/legacy_tail_variation
 
 	var/datum/sprite_accessory/wing/wing_style = null
 	var/grad_wingstyle = "None"
 	var/r_gradwing = 0
 	var/g_gradwing = 0
 	var/b_gradwing = 0
+	// pain
+	var/legacy_wing_variation
 
 	var/r_wing  = 30
 	var/g_wing  = 30
@@ -130,9 +138,6 @@
 	var/g_wing3 = 30
 	var/b_wing3 = 30
 
-	var/wagging  = 0 //UGH.
-	var/flapping = 0
-	var/spread   = 0
 	/// What's my status?
 	var/vantag_pref = VANTAG_NONE
 	// todo: REOMVE THIS FOR SPECIES VAR CHANGES
