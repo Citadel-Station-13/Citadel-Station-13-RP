@@ -5,6 +5,31 @@
  * Descriptor / metadata about a set of carbon/mob body sprites.
  */
 /datum/bodyset
+	abstract_type = /datum/bodyset
+
+	/// id - **must** be unique
+	var/id
+	/// name - should be unique
+	var/name
+	/// icon file
+	var/icon
+	/// icon state base
+	var/icon_state
+	/// bodyparts included
+	var/list/body_parts = list(
+		BP_HEAD,
+		BP_TORSO,
+		BP_GROIN,
+		BP_L_ARM,
+		BP_L_HAND,
+		BP_R_ARM,
+		BP_R_HAND,
+		BP_L_LEG,
+		BP_L_FOOT,
+		BP_R_LEG,
+		BP_R_FOOT,
+	)
+
 
 #warn impl all
 

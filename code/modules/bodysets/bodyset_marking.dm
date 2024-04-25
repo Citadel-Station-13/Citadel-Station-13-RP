@@ -28,10 +28,10 @@
 	/// BP_* defines for which bodyparts render us
 	var/list/body_parts = list()
 
-	/// set to a list of species by typepath or id
+	/// set to a list of bodysets by typepath or id
 	/// typepaths transformed to id on boot
-	/// will make other species unable to pick them
-	var/list/species_restricted
+	/// will make other bodysets unable to pick them
+	var/list/bodyset_restricted
 
 /datum/bodyset_marking/New()
 	#warn species_restricted
