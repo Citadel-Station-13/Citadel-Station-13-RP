@@ -4,13 +4,13 @@
 	icon_state = "newtailmaw"
 	ani_state = "newtailmaw_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/tailmaw
 	name = "tailmaw, colorable"
 	id = "tail_tailmaw2"
 	icon_state = "tailmaw"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	do_colouration = 1
 
 /datum/sprite_accessory/tail/tentacles
@@ -18,7 +18,7 @@
 	id = "tail_tentacles"
 	icon_state = "tentacles"
 	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	ani_state = "tentacles_wag"
 
 /datum/sprite_accessory/tail/spade_color
