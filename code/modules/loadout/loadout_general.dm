@@ -55,14 +55,15 @@
 	path = /obj/item/toy/plushie/
 
 /datum/loadout_entry/plushie/New()
+	message_admins("TEST1")
 	..()
 	var/list/plushies = list()
 	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - list(/obj/item/toy/plushie/therapy, /obj/item/toy/plushie/snowflake))
 		var/obj/item/toy/plushie/plushie_type = plushie
 		var/entry_name = initial(plushie_type.name)
-		var/obj/item/toy/plushie/snowflake = plushie
+		var/obj/item/toy/plushie/snowflake/snowflake = plushie
 		if(istype(snowflake))
-			entry_name = entry_name + " - (" + snowflake + ")"
+			entry_name = "[entry_name] - ([snowflake.player_name])"
 		plushies[entry_name] = plushie_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(plushies, GLOBAL_PROC_REF(cmp_text_asc)))
 
