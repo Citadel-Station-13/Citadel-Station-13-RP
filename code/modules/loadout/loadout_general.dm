@@ -59,7 +59,11 @@
 	var/list/plushies = list()
 	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - list(/obj/item/toy/plushie/therapy, /obj/item/toy/plushie/snowflake))
 		var/obj/item/toy/plushie/plushie_type = plushie
-		plushies[initial(plushie_type.name)] = plushie_type
+		var/entry_name = initial(plushie_type.name)
+		var/obj/item/toy/plushie/snowflake = plushie
+		if(istype(snowflake))
+			entry_name = entry_name + " - (" + snowflake + ")"
+		plushies[entry_name] = plushie_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(plushies, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/flask

@@ -15,14 +15,14 @@
 	desc = "A pirate tajaran plushie! This one has a lot of wires sticking out."
 	icon_state = "evanne"
 	pokephrase = "Mrowl!"
-	player_name = "Evanne Grimalkin"
+	player_name = "Evanne"
 
 /obj/item/toy/plushie/snowflake/kadence
 	name = "human plushie"
 	desc = "A human plushie. This one resembles a scientist."
 	icon_state = "kadence"
 	pokephrase = "Human Noise!"
-	player_name = "Kadence Allen"
+	player_name = "Kadence"
 
 /obj/item/toy/plushie/snowflake/habiki
 	name = "green synth plushie"
@@ -43,7 +43,7 @@
 	desc = "A cute saguar plushie. It looks incredibly squishable."
 	icon_state = "wisk"
 	pokephrase = "Yippee!"
-	player_name = "Wisk Talo"
+	player_name = "Wisk"
 
 /obj/item/toy/plushie/snowflake/kari
 	name = "wolf plushie"
