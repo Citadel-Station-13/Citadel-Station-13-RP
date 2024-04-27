@@ -61,7 +61,7 @@
 		var/obj/item/toy/plushie/plushie_type = plushie
 		var/entry_name = initial(plushie_type.name)
 		var/obj/item/toy/plushie/snowflake/snowflake = plushie
-		if(istype(snowflake))
+		if(ispath(snowflake))
 			entry_name = "[entry_name] - ([initial(snowflake.player_name)])"
 		plushies[entry_name] = plushie_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(plushies, GLOBAL_PROC_REF(cmp_text_asc)))
