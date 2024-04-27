@@ -51,3 +51,17 @@
 	icon_state = "kari"
 	pokephrase = "Gecker!"
 	player_name = "Kari"
+
+/obj/item/toy/plushie/snowflake/trubus
+	name = "blue dragon plushie"
+	desc = "A blue dragon plushie. It radiates an aura of justice."
+	icon_state = "trubus"
+	pokephrase = "Roar!"
+	player_name = "Trubus"
+
+/obj/item/toy/plushie/snowflake/charlotte
+	name = "pathfinder plushie"
+	desc = "A pathfinder plushie. This one has holographic wings on its back! Batteries not included."
+	icon_state = "charlotte"
+	pokephrase = "" // "what noise do humans make" puzzled me for 5 minutes then i gave up
+	player_name = "Charlotte"
