@@ -55,7 +55,6 @@
 	path = /obj/item/toy/plushie/
 
 /datum/loadout_entry/plushie/New()
-	message_admins("TEST1")
 	..()
 	var/list/plushies = list()
 	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - list(/obj/item/toy/plushie/therapy, /obj/item/toy/plushie/snowflake))
