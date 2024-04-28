@@ -1,7 +1,7 @@
 /datum/unit_test/inventory_slot_meta_uniqueness/Run()
 	var/list/found = list()
-	for(var/path in subtypesof(/datum/inventory_slot_meta))
-		var/datum/inventory_slot_meta/meta = path
+	for(var/path in subtypesof(/datum/inventory_slot))
+		var/datum/inventory_slot/meta = path
 		if(initial(meta.abstract_type) == path)
 			continue
 		if(initial(meta.inventory_slot_flags) & INV_SLOT_ALLOW_RANDOM_ID)

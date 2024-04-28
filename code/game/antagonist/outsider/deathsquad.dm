@@ -47,7 +47,7 @@ var/datum/antagonist/deathsquad/deathsquad
 	else
 		player.equip_to_slot_or_del(new /obj/item/plastique(player), SLOT_ID_LEFT_POCKET)
 	player.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/combat(player), SLOT_ID_BELT)
-	player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), /datum/inventory_slot_meta/abstract/hand/right)
+	player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), /datum/inventory_slot/abstract/hand/right)
 	player.equip_to_slot_or_del(new /obj/item/hardsuit/ert/assetprotection(player), SLOT_ID_BACK)
 	player.equip_to_slot_or_del(new /obj/item/melee/energy/sword(player), SLOT_ID_SUIT_STORAGE)
 //	player.implant_loyalty()

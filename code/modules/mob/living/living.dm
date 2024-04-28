@@ -393,7 +393,7 @@ default behaviour is:
 		. += iterating
 		var/list/returned = iterating.return_inventory()
 		. += returned
-		
+
 /mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
 
@@ -419,9 +419,6 @@ default behaviour is:
 	src.update_health()
 
 /mob/living/proc/restore_all_organs()
-	return
-
-/mob/living/proc/UpdateDamageIcon()
 	return
 
 /mob/living/proc/Examine_OOC()
