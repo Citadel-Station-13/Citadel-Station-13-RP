@@ -306,7 +306,7 @@
 */
 /obj/item/electronic_assembly/verb/rename()
 	set name = "Rename Circuit"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your circuit, useful to stay organized."
 	set src in usr
 

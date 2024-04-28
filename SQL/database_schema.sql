@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- players --
+-- Players --
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
@@ -153,6 +153,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   `flags` int(24) NOT NULL DEFAULT 0,
   `firstseen` datetime NOT NULL DEFAULT Now(),
   `lastseen` datetime NOT NULL,
+  `misc` MEDIUMTEXT NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -193,6 +194,25 @@ CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `%_PREFIX_%playtime` FOR EAC
 END
 $$
 DELIMITER ;
+
+
+-- Preferences --
+
+-- Stores game preferences --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (
+  `player` INT(11) NOT NULL,
+  `entries` MEDIUMTEXT NOT NULL,
+  `misc` MEDIUMTEXT NOT NULL,
+  `keybinds` MEDIUMTEXT NOT NULL,
+  `toggles` MEDIUMTEXT NOT NULL,
+  `modified` DATETIME NOT NULL,
+  `version` INT(11) NOT NULL,
+  PRIMARY KEY (`player`),
+  CONSTRAINT `linked_player` FOREIGN KEY (`player`)
+  REFERENCES `%_PREFIX_%player` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Security - Ipintel --
 
@@ -359,13 +379,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%privacy` (
   `ckey` varchar(32) NOT NULL,
   `option` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%vr_player_hours` (
-  `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `hours` double NOT NULL,
-  PRIMARY KEY (`ckey`,`department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%death` (

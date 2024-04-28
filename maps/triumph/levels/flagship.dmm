@@ -1989,7 +1989,9 @@
 	},
 /area/centcom/medical)
 "gf" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/mre{
+	emagged = 1
+	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "gh" = (

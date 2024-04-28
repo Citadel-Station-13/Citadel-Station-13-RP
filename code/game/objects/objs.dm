@@ -111,6 +111,10 @@
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/obj_persist_dynamic_status = NONE
 
+	//* Rotation
+	/// rotation behavior flags
+	var/obj_rotation_flags = NONE
+
 	//? Sounds
 	/// volume when breaking out using resist process
 	var/breakout_sound = 'sound/effects/grillehit.ogg'
@@ -514,7 +518,7 @@
 				to_chat(H, "<span class='danger'>You land heavily!</span>")
 				H.adjustBruteLoss(damage)
 
-			H.UpdateDamageIcon()
+			H.update_damage_overlay()
 			H.update_health()
 	*/
 
@@ -528,6 +532,33 @@
 	if(obj_storage?.allow_open_via_context_click)
 		var/image/rendered = image(src)
 		.["obj_storage"] = atom_context_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
+	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
+		if(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL)
+			var/image/rendered = image(src) // todo: sprite
+			.["rotate_cw"] = atom_context_tuple(
+				"Rotate Clockwise",
+				rendered,
+				1,
+				MOBILITY_CAN_USE,
+				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
+			)
+			rendered = image(src) // todo: sprite
+			.["rotate_ccw"] = atom_context_tuple(
+				"Rotate Counterclockwise",
+				rendered,
+				1,
+				MOBILITY_CAN_USE,
+				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
+			)
+		else
+			var/image/rendered = image(src) // todo: sprite
+			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = atom_context_tuple(
+				"Rotate [obj_rotation_flags & OBJ_ROTATION_CCW? "Counterclockwise" : "Clockwise"]",
+				rendered,
+				1,
+				MOBILITY_CAN_USE,
+				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
+			)
 
 /obj/context_act(datum/event_args/actor/e_args, key)
 	switch(key)
@@ -562,6 +593,10 @@
 			if(!reachability)
 				return TRUE
 			obj_storage?.auto_handle_interacted_open(e_args)
+			return TRUE
+		if("rotate_cw", "rotate_ccw")
+			var/clockwise = key == "rotate_cw"
+			handle_rotation(e_args, clockwise)
 			return TRUE
 	return ..()
 
@@ -650,6 +685,9 @@
 		. += "Its [key] is made out of [mat.display_name]"
 	if((obj_persist_dynamic_id || obj_persist_static_id) && !(obj_persist_status & OBJ_PERSIST_STATUS_NO_EXAMINE))
 		. += SPAN_BOLDNOTICE("This entity is a persistent entity; it may be preserved into future rounds.")
+	// todo: context + construction (tool) examines at some point need a better system
+	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
+		. += SPAN_NOTICE("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
 
 /obj/proc/examine_integrity(mob/user)
 	. = list()
@@ -774,6 +812,39 @@
 	var/shake_dir = pick(-1, 1)
 	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
 	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+
+//* Rotation *//
+
+/obj/proc/allow_rotation(datum/event_args/actor/actor, clockwise, silent)
+	if(!(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK) && anchored)
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("[src] is anchored to the ground!"),
+				target = src,
+			)
+		return FALSE
+	if(!(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL) && (clockwise ^ !(obj_rotation_flags & OBJ_ROTATION_CCW)))
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("[src] doesn't rotate in that direction."),
+				target = src,
+			)
+		return FALSE
+	return TRUE
+
+/obj/proc/handle_rotation(datum/event_args/actor/actor, clockwise, silent, suppressed)
+	if(!allow_rotation(actor, clockwise, silent))
+		return FALSE
+	setDir(turn(dir, clockwise? -90 : 90))
+	if(!suppressed)
+		actor.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[actor.performer] rotates [src]."),
+			audible = SPAN_NOTICE("You hear something being pivoted."),
+			visible_self = SPAN_NOTICE("You spin [src] [clockwise? "clockwise" : "counterclockwise"]."),
+		)
+	return TRUE
 
 //* Tool System *//
 

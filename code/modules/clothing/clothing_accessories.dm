@@ -97,7 +97,7 @@
 		for(var/obj/item/I as anything in accessories)
 			I.dropped(user, flags | INV_OP_IS_ACCESSORY, newLoc)
 
-/obj/item/clothing/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/clothing/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot/slot_meta)
 	. = ..()
 	var/list/accessory_overlays = render_worn_accessories(M, inhands, slot_meta, layer_used, bodytype)
 	if(!isnull(accessory_overlays))
@@ -112,7 +112,7 @@
  * * slot_meta - slot
  * * bodytype - bodytype
  */
-/obj/item/clothing/proc/render_worn_accessories(mob/M, inhands, datum/inventory_slot_meta/slot_meta, layer_used, bodytype)
+/obj/item/clothing/proc/render_worn_accessories(mob/M, inhands, datum/inventory_slot/slot_meta, layer_used, bodytype)
 	RETURN_TYPE(/list)
 	if(!length(accessories))
 		return
@@ -144,16 +144,16 @@
 /**
  * Renders mob appearance for us as an accessory. Returns an image, or list of images.
  */
-/obj/item/clothing/proc/render_accessory_worn(mob/M, inhands, datum/inventory_slot_meta/slot_meta, layer_used, bodytype)
+/obj/item/clothing/proc/render_accessory_worn(mob/M, inhands, datum/inventory_slot/slot_meta, layer_used, bodytype)
 	if(accessory_render_legacy)
 		var/mutable_appearance/old
 		if(istype(src, /obj/item/clothing/accessory))
 			var/obj/item/clothing/accessory/A = src
 			old = A.get_mob_overlay()
 			if(!isnull(old) && old.plane == FLOAT_PLANE)
-				old.layer = layer_used + BODY_LAYER + 0.1
+				old.layer = layer_used + 0.1
 		return old
-	var/list/mutable_appearance/rendered = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/use_one_for_accessory) : slot_meta, bodytype)
+	var/list/mutable_appearance/rendered = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot(/datum/inventory_slot/abstract/use_one_for_accessory) : slot_meta, bodytype)
 
 	// sigh, fixup
 	if(isnull(rendered))
@@ -164,7 +164,7 @@
 	for(var/mutable_appearance/MA in rendered)
 		// fixup layer, but only if it's attached to mob; this is shitcode but the auril players have snipers outside my house, i'll refactor this later.
 		if(MA.plane == FLOAT_PLANE)
-			MA.layer = layer_used + BODY_LAYER + 0.1  // ughhh, need way to override later.
+			MA.layer = layer_used + 0.1  // ughhh, need way to override later.
 		// sigh, legacy shit
 		if(istype(accessory_host, /obj/item/clothing/suit))
 			var/obj/item/clothing/suit/S = accessory_host
@@ -261,7 +261,7 @@
 
 /obj/item/clothing/proc/removetie_verb()
 	set name = "Remove Accessory"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living))
 		return

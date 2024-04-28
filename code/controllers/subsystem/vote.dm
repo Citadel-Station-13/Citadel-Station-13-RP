@@ -223,7 +223,7 @@ SUBSYSTEM_DEF(vote)
 	usr.client.vote()
 
 /client/verb/vote()
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set name = "Vote"
 
 	if(SSvote)

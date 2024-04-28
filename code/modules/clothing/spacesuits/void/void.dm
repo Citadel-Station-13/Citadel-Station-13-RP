@@ -174,7 +174,7 @@
 /obj/item/clothing/suit/space/void/verb/toggle_helmet()
 
 	set name = "Toggle Helmet"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!istype(src.loc,/mob/living)) return
@@ -209,7 +209,7 @@
 
 /obj/item/clothing/suit/space/void/verb/toggle_magboots()
 	set name = "Toggle Magboots"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!istype(src.loc,/mob/living))
@@ -247,7 +247,7 @@
 /obj/item/clothing/suit/space/void/verb/eject_tank()
 
 	set name = "Eject Voidsuit Tank/Cooler"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!istype(src.loc,/mob/living))

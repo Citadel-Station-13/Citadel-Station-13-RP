@@ -65,3 +65,10 @@
 	icon_state = "charlotte"
 	pokephrase = "" // "what noise do humans make" puzzled me for 5 minutes then i gave up
 	player_name = "Charlotte"
+
+/obj/item/toy/plushie/snowflake/leas
+	name = "teshari plushie"
+	desc = "A teshari plushie. It doesn't look happy about being picked up."
+	icon_state = "tesh"
+	pokephrase = "Prbt!"
+	player_name = "Leas"

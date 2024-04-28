@@ -643,7 +643,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/mob/M = usr
 
 	if(CHECK_MOBILITY(M, MOBILITY_CAN_USE))
@@ -660,7 +660,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/cyborg/verb/set_colour()
 	set name = "Change Colour"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in GLOB.possible_cable_coil_colours
 	set_cable_color(selected_type, usr)

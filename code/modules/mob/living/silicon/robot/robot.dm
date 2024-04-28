@@ -916,6 +916,7 @@
 	cut_overlays()
 
 	if (dogborg)
+		zmm_flags |= ZMM_LOOKAHEAD
 		// Resting dogborgs don't get overlays.
 		if (stat == CONSCIOUS && resting)
 			if(sitting)
@@ -925,6 +926,8 @@
 			else
 				icon_state = "[module_sprites[icontype]]-rest"
 			return
+	else
+		zmm_flags &= ~ZMM_LOOKAHEAD
 
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
@@ -1220,7 +1223,7 @@
 
 /mob/living/silicon/robot/mode()
 	set name = "Activate Held Object"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src = usr
 
 	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
@@ -1427,7 +1430,7 @@
 
 /mob/living/silicon/robot/verb/robot_nom(var/mob/living/T in living_mobs(1))
 	set name = "Robot Nom"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Allows you to eat someone."
 
 	if (stat != CONSCIOUS)
@@ -1436,7 +1439,7 @@
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Select your resting pose."
 	sitting = FALSE
 	bellyup = FALSE
@@ -1451,7 +1454,7 @@
 
 /mob/living/silicon/robot/proc/ex_reserve_refill()
 	set name = "Refill Extinguisher"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/datum/matter_synth/water = water_res
 	for(var/obj/item/extinguisher/E in module.modules)
 		if(E.reagents.total_volume < E.max_water)

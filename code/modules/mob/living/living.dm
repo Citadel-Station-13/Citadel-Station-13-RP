@@ -46,7 +46,7 @@
 //mob verbs are faster than object verbs. See mob/verb/examine.
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
 	set name = "Pull"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(AM.Adjacent(src))
 		start_pulling(AM)
@@ -393,7 +393,7 @@ default behaviour is:
 		. += iterating
 		var/list/returned = iterating.return_inventory()
 		. += returned
-		
+
 /mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
 
@@ -421,12 +421,9 @@ default behaviour is:
 /mob/living/proc/restore_all_organs()
 	return
 
-/mob/living/proc/UpdateDamageIcon()
-	return
-
 /mob/living/proc/Examine_OOC()
 	set name = "Examine Meta-Info (OOC)"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set src in view()
 
 	// Making it so SSD people have prefs with fallback to original style.
