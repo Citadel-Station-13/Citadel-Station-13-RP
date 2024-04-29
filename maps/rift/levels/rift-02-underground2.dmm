@@ -2132,11 +2132,6 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
-"iG" = (
-/obj/machinery/power/apc/west_mount,
-/obj/machinery/power/apc/west_mount,
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "iJ" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -4015,7 +4010,7 @@
 /obj/structure/fence/door{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/underground/under2)
 "ob" = (
 /obj/structure/table/steel_reinforced,
@@ -12545,7 +12540,7 @@
 /area/crew_quarters/heads/chief)
 "Va" = (
 /obj/structure/fence,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/underground/under2)
 "Vb" = (
 /obj/structure/table/rack{
@@ -13217,7 +13212,7 @@
 	name = "RADIOACTIVE AREA";
 	pixel_x = 21
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/underground/under2)
 "Xx" = (
 /obj/effect/floor_decal/chapel,
@@ -18907,7 +18902,7 @@ xp
 xp
 xp
 xp
-xp
+sq
 xp
 aa
 aa
@@ -19102,8 +19097,8 @@ aa
 xp
 xp
 xp
-xp
-xp
+sq
+sq
 xp
 aa
 aa
@@ -19293,12 +19288,12 @@ aa
 aa
 aa
 aa
-xp
+sq
 aa
 aa
 xp
 xp
-xp
+sq
 xp
 aa
 aa
@@ -19492,10 +19487,10 @@ aa
 aa
 aa
 aa
-xp
-xp
-xp
-xp
+sq
+sq
+sq
+sq
 aa
 aa
 aa
@@ -19688,8 +19683,8 @@ aa
 aa
 aa
 xp
-xp
-xp
+sq
+sq
 aa
 aa
 aa
@@ -19882,8 +19877,8 @@ aa
 aa
 aa
 aa
-xp
-xp
+sq
+sq
 aa
 aa
 aa
@@ -20076,8 +20071,8 @@ aa
 aa
 aa
 aa
-xp
-xp
+sq
+sq
 aa
 aa
 aa
@@ -20270,8 +20265,8 @@ aa
 aa
 aa
 aa
-xp
-xp
+sq
+sq
 aa
 aa
 aa
@@ -20464,8 +20459,8 @@ aa
 aa
 aa
 aa
-xp
-xp
+sq
+sq
 aa
 aa
 aa
@@ -20658,9 +20653,9 @@ aa
 aa
 aa
 aa
-xp
-xp
-xp
+sq
+sq
+sq
 aa
 aa
 aa
@@ -20853,9 +20848,9 @@ aa
 aa
 aa
 aa
-xp
-xp
-xp
+sq
+sq
+sq
 aa
 aa
 aa
@@ -21047,9 +21042,9 @@ aa
 aa
 aa
 aa
-xp
-xp
-xp
+sq
+sq
+sq
 aa
 aa
 aa
@@ -21241,10 +21236,10 @@ aa
 aa
 aa
 aa
-xp
-xp
 sq
-xp
+sq
+sq
+sq
 aa
 aa
 aa
@@ -21439,7 +21434,7 @@ aa
 aa
 aa
 sq
-xp
+sq
 aa
 aa
 aa
@@ -21632,8 +21627,8 @@ aa
 aa
 aa
 aa
-xp
-xp
+sq
+sq
 aa
 aa
 aa
@@ -21826,7 +21821,7 @@ aa
 aa
 aa
 aa
-xp
+sq
 sq
 aa
 aa
@@ -22021,8 +22016,8 @@ aa
 aa
 aa
 aa
-xp
-xp
+sq
+sq
 aa
 aa
 aa
@@ -22603,9 +22598,9 @@ aa
 aa
 aa
 aa
-xp
 sq
-xp
+sq
+sq
 aa
 aa
 aa
@@ -22798,9 +22793,9 @@ aa
 aa
 aa
 aa
-xp
 sq
-xp
+sq
+sq
 aa
 aa
 sq
@@ -23187,8 +23182,8 @@ aa
 aa
 aa
 aa
-xp
-xp
+sq
+sq
 sq
 sq
 sq
@@ -24342,7 +24337,7 @@ aa
 aa
 aa
 aa
-iG
+aa
 aa
 aa
 zy

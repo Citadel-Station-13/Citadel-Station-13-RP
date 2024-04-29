@@ -195,9 +195,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 8
-	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "hi" = (
@@ -462,6 +459,9 @@
 /obj/machinery/atmospherics/component/unary/heat_exchanger{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "uE" = (
@@ -539,15 +539,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"zi" = (
-/obj/machinery/camera/network/engine{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
-	dir = 8
-	},
-/turf/template_noop,
-/area/rift/surfacebase/underground/under2)
 "zl" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -818,11 +809,10 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Kh" = (
-/obj/machinery/camera/network/engine{
-	dir = 8
+/obj/machinery/atmospherics/component/unary/heat_exchanger,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Kr" = (
@@ -913,6 +903,9 @@
 /area/engineering/engine_room)
 "MZ" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ng" = (
@@ -957,13 +950,13 @@
 	},
 /area/engineering/engine_room)
 "Pz" = (
-/obj/machinery/camera/network/engine{
-	dir = 4
+/obj/machinery/atmospherics/component/unary/heat_exchanger{
+	dir = 1
 	},
-/obj/machinery/light{
-	dir = 8
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "PW" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -1109,21 +1102,11 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"Xa" = (
-/obj/machinery/camera/network/engine{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/template_noop,
-/area/rift/surfacebase/underground/under2)
 "Yg" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/engineering/engine_room)
 "Yi" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
@@ -1393,7 +1376,7 @@ Tl
 Tl
 Tl
 Tl
-Xa
+Tl
 Tl
 Tl
 Tl
@@ -1528,7 +1511,7 @@ oe
 hZ
 oe
 oe
-zi
+hZ
 Zn
 "}
 (15,1,1) = {"
@@ -1573,7 +1556,7 @@ dI
 hi
 Vi
 Bu
-Pz
+ta
 Bu
 pY
 Bu
@@ -1735,8 +1718,8 @@ Zn
 Zn
 ug
 KF
-um
-MZ
+Pz
+Kh
 vn
 bj
 bj
@@ -1818,7 +1801,7 @@ vO
 vO
 vO
 vO
-Kh
+vO
 pM
 vO
 vO
