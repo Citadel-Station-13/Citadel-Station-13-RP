@@ -140,7 +140,7 @@
 /datum/shuttle/autodock/overmap/oldcentury
 	name = "Civilian Century Shuttle"
 	warmup_time = 15
-	shuttle_area = list(/area/shuttle/oldcentury/cockpit, /area/shuttle/oldcentury/general)
+	shuttle_area = /area/shuttle/oldcentury
 	current_location = "rift_oldcentury_pad"
 	docking_controller_tag = "oldcentury_docker"
 	landmark_transition = "nav_transit_oldcentury"
