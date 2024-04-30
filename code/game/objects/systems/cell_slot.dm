@@ -36,9 +36,15 @@
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE
 
+/**
+ * returns TRUE if slot accepts this type of cell
+ */
 /datum/object_system/cell_slot/proc/accepts_cell(obj/item/cell/cell)
 	return legacy_use_device_cells? istype(cell, /obj/item/cell/device) : TRUE
 
+/**
+ * removes cell from the system and drops it at new_loc
+ */
 /datum/object_system/cell_slot/proc/remove_cell(atom/new_loc)
 	if(isnull(cell))
 		return
@@ -48,6 +54,21 @@
 	cell = null
 	parent.object_cell_slot_removed(., src)
 
+/**
+ * removes cell from the system and drops it in users hands
+ */
+/datum/object_system/cell_slot/proc/mob_remove_cell(mob/user)
+	if(isnull(cell))
+		return
+	. = cell
+	user.put_in_hands_or_drop(cell)
+	cell = null
+	parent.object_cell_slot_removed(., src)
+	return TRUE
+
+/**
+ * replaces the existing cell with the inserted cell, dropping the old cell
+ */
 /datum/object_system/cell_slot/proc/insert_cell(obj/item/cell/cell)
 	if(!isnull(cell))
 		. = remove_cell(parent.drop_location())
@@ -56,8 +77,20 @@
 		cell.forceMove(parent)
 	parent.object_cell_slot_inserted(cell, src)
 
+/**
+ * returns TRUE if the cell slot is mutable
+ */
 /datum/object_system/cell_slot/proc/interaction_active(mob/user)
 	return parent.object_cell_slot_mutable(user, src)
+
+/**
+ * returns TRUE if the slot has a cell
+ */
+/datum/object_system/cell_slot/proc/has_cell()
+	if (!isnull(cell))
+		return TRUE
+	else
+		return FALSE
 
 //? Hooks
 
@@ -101,3 +134,83 @@
 	obj_cell_slot.remove_yank_time = 0
 	obj_cell_slot.legacy_use_device_cells = TRUE
 	return obj_cell_slot
+
+//? Wrappers for cell.dm functions
+//+ These exist to sanely perform cell functions through the obj_cell_slot system. These break safely if no cell exists.
+
+/**
+ * cell function wrapper - returns the rating of the cell inside or null
+ */
+/datum/object_system/cell_slot/proc/get_rating()
+	return cell?.get_rating()
+
+/**
+ * cell function wrapper - returns the cell src or null
+ */
+/datum/object_system/cell_slot/proc/get_cell(inducer)
+	return cell?.get_cell(inducer)
+
+/**
+ * cell function passthrough - consumes energy using *universal units*
+ * returns amount used or null
+ */
+/datum/object_system/cell_slot/proc/drain_energy(datum/actor, amount, flags)
+	return cell?.drain_energy(actor, amount, flags)
+
+/**
+ * cell function wrapper - returns % charge of the cell or null
+ */
+/datum/object_system/cell_slot/proc/percent()
+	return cell?.percent()
+
+/**
+ * cell function wrapper - checks if cell is fully charged
+ * returns true or false, or null if no cell
+ */
+/datum/object_system/cell_slot/proc/fully_charged()
+	return cell?.fully_charged()
+
+/**
+ * cell function wrapper - returns true if cell can provide specified amount
+ * returns null if no cell
+ */
+/datum/object_system/cell_slot/proc/check_charge(var/amount)
+	return cell?.check_charge(amount)
+
+/**
+ * cell function wrapper - returns how much charge is missing from the cell or null
+ */
+/datum/object_system/cell_slot/proc/amount_missing()
+	return cell?.amount_missing()
+
+/**
+ * cell function wrapper - attempts to use power from cell, returns the amount actually used or null
+ */
+/datum/object_system/cell_slot/proc/use(var/amount)
+	return cell?.use(amount)
+
+/**
+ * cell function wrapper - checks if the specified amount can be provided. If it can, it removes the amount from the cell and returns TRUE otherwise does nothing and returns FALSE
+ * returns null if no cell
+ */
+/datum/object_system/cell_slot/proc/checked_use(var/amount)
+	return cell?.checked_use(amount)
+
+/**
+ * cell function wrapper - use x cell units, affected by GLOB.cellefficiency, returns the amount actually used or null
+ */
+/datum/object_system/cell_slot/proc/use_scaled(var/amount)
+	return cell?.use_scaled(amount)
+
+/**
+ * cell function wrapper - checked_use() but scaled by GLOB.cellefficiency
+ */
+/datum/object_system/cell_slot/proc/checked_use_scaled(var/amount)
+	return cell?.checked_use_scaled(amount)
+
+/**
+ * cell function wrapper - recharge the cell by x amount returns the amount consumed or null if no cell
+ */
+/datum/object_system/cell_slot/proc/give(var/amount)
+	return cell?.give(amount)
+//? End wrappers for cell.dm functions
