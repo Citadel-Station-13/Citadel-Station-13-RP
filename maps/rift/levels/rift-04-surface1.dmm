@@ -1923,6 +1923,7 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/closet/jcloset,
 /obj/item/soap/nanotrasen,
+/obj/item/reagent_containers/glass/rag/sponge,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "bqw" = (
@@ -2847,6 +2848,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 6
 	},
+/obj/item/reagent_containers/glass/rag/sponge,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "bWD" = (
@@ -21419,8 +21421,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/security{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/prison/upper)
@@ -23921,6 +23922,7 @@
 /obj/structure/closet/jcloset,
 /obj/item/soap/nanotrasen,
 /obj/machinery/light,
+/obj/item/reagent_containers/glass/rag/sponge,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "pbz" = (

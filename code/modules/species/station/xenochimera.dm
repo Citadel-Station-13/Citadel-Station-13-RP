@@ -17,8 +17,6 @@
 	deform       = 'icons/mob/species/xenochimera/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/xenochimera/preview.dmi'
 	husk_icon    = 'icons/mob/species/xenochimera/husk.dmi'
-	tail = "tail" //Scree's tail. Can be disabled in the Species Customization tab by choosing "hide species specific tail sprite"
-	icobase_tail = 1
 
 	max_additional_languages = 5
 

@@ -46,6 +46,12 @@ DATUM_TRAIT(/mob, TRAIT_MOB_UNCONSCIOUS)
 #define TRAIT_MOB_SLEEPING "mob_sleeping"
 DATUM_TRAIT(/mob, TRAIT_MOB_SLEEPING)
 
+//* Stance *//
+
+/// cannot be set to resting, even by death.
+#define TRAIT_MOB_FORCED_STANDING "mob_forced_standing"
+DATUM_TRAIT(/mob, TRAIT_MOB_FORCED_STANDING)
+
 //? misc
 
 /// Tracks whether you're a mime or not.

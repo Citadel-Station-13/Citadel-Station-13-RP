@@ -101,5 +101,5 @@
 /datum/loadout_entry/seasonal/halloween/costumes/accessory
 	name = "Costume Accessories - Cueball Man"
 	path = /obj/item/clothing/accessory/wcoat
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 */

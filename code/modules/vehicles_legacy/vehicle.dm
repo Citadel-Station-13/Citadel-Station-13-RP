@@ -173,10 +173,6 @@
 /obj/vehicle_old/attack_ai(mob/user as mob)
 	return
 
-// For downstream compatibility (in particular Paradise)
-/obj/vehicle_old/proc/handle_rotation()
-	return
-
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------
