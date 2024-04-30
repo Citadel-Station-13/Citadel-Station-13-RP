@@ -7,110 +7,79 @@
 	max_occupants = 0
 
 	var/allowed_cargo
-	var/cargo
+	var/atom/movable/cargo
 	var/cargo_item_visible = TRUE
-	var/cargo_offset_x
-	var/cargo_offset_y
-	var/passenger_allowed = FALSE
+	var/cargo_offset_x = 0
+	var/cargo_offset_y = 8
+//----------------------------------------------------------------------------------------
+/datum/vehicle_dummy_load
+	var/name = "dummy load"
+	var/actual_load
 
-
-/* //This is a huge complicated mess, copying the old procs rn.
-//Attempts to load cargo to the trailer. Assumes proximity checks are already made. Returns TRUE if cargo is loaded, else returns FALSE.
-/obj/vehicle/trailer/proc/load(var/atom/movable/C)
-	//No free rides, No double stacking, No bolted down items, No inventory items.
-	if((ismob(C) && !passenger_allowed) || cargo || C.anchored || !isturf(C.loc))
-		return FALSE
-	//Check if its an allowed_cargo
-	if(istype(C, allowed_cargo))
-		var/datum/vehicle_dummy_load/dummy_cargo = new()
-		cargo = dummy_cargo
-
-		dummy_cargo.actual_load = C
-		C.forceMove(src)
-
-		if(cargo_item_visible)
-			C.pixel_x += cargo_offset_x
-			C.pixel_y += cargo_offset_y
-			C.layer = layer
-
-			add_overlay(C)
-
-			//we can set these back now since we have already cloned the icon into the overlay
-			C.pixel_x = initial(C.pixel_x)
-			C.pixel_y = initial(C.pixel_y)
-			C.layer = initial(C.layer)
-		return TRUE
-	return FALSE
-
-/obj/vehicle/trailer/proc/unload(mob/user, direction)
-	if(istype(load, /datum/vehicle_dummy_cargo))
-		var/datum/vehicle_dummy_cargo/dummy_cargo = cargo
-		load = dummy_cargo.actual_cargo
-		dummy_cargo.actual_cargo = null
-		qdel(dummy_load)
-		cut_overlays()
+/obj/vehicle/trailer/Move(dir)
 	..()
-		if(!load)
-		return
+	if(cargo && !istype(cargo, /datum/vehicle_dummy_load))
+		cargo.forceMove(get_step(src, dir))
+		//Fuck. Why not?
+		//cargo.loc = src.loc
+		cargo.setDir(dir)
 
-	var/turf/dest = null
+//Take DroppedOn atoms and determine if they are cargo to be loaded.
+/obj/vehicle/trailer/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	if(!istype(dropping) || !isliving(user) || !proximity || get_dist(dropping.loc, loc) != 1)
+		return ..()
 
-	//find a turf to unload to
-	if(direction)	//if direction specified, unload in that direction
-		dest = get_step(src, direction)
-	else if(user)	//if a user has unloaded the vehicle, unload at their feet
-		dest = get_turf(user)
+	//Cargo unload check
+	if(dropping == cargo)
+		if(unload(user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	//Cargo load check
+	if(load(dropping, user))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	if(!dest)
-		dest = get_step_to(src, get_step(src, turn(dir, 90))) //try unloading to the side of the vehicle first if neither of the above are present
+	return ..()
 
-	//if these all result in the same turf as the vehicle or nullspace, pick a new turf with open space
-	if(!dest || dest == get_turf(src))
-		var/list/options = new()
-		for(var/test_dir in GLOB.alldirs)
-			var/new_dir = get_step_to(src, get_step(src, test_dir))
-			if(new_dir && load.Adjacent(new_dir))
-				options += new_dir
-		if(options.len)
-			dest = pick(options)
-		else
-			dest = get_turf(src)	//otherwise just dump it on the same turf as the vehicle
+//If we are dropped onto something try to unload()
+/obj/vehicle/trailer/OnMouseDrop(atom/over, mob/user, proximity, params)
+	if (proximity < 2 && isturf(over))
+		if (unload(user, get_dir(over.loc, loc)))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
-	if(!isturf(dest))	//if there still is nowhere to unload, cancel out since the vehicle is probably in nullspace
-		return 0
+//If clicked on, try to unload() cargo
+/obj/vehicle/trailer/attack_hand(mob/user, list/params)
+	. = ..()
+	unload(user)
 
-	if(ismob(load))
-		unbuckle_mob(load, BUCKLE_OP_FORCE)
-
-	load.forceMove(dest)
-	load.setDir(get_dir(loc, dest))
-	load.anchored = 0		//we can only load non-anchored items, so it makes sense to set this to false
-	load.pixel_x = initial(load.pixel_x)
-	load.pixel_y = initial(load.pixel_y)
-	load.layer = initial(load.layer)
-
-	load = null
-
-	return 1
-*/
-//OLD PROC CLONE
-/*
+//-------------------------------------------
+// Loading/unloading procs
+//
+// Set specific item restriction checks in
+// the vehicle load() definition before
+// calling this parent proc.
+//-------------------------------------------
 /obj/vehicle/trailer/proc/load(var/atom/movable/C, var/mob/living/user)
-	//This loads objects onto the vehicle so they can still be interacted with.
-	//Define allowed items for loading in specific vehicle definitions.
-	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
-		return 0
-	if(cargo || C.anchored)
-		return 0
+	// If it is a mob, anchored, not on the ground, or we are loaded already, Do nothing.
+	if(!isturf(C.loc) || cargo || C.anchored || ismob(C))
+		return FALSE
+	// If it is NOT one of these types, Do nothing.
+	if(!(istype(C,/obj/machinery) || istype(C,/obj/structure/closet) || istype(C,/obj/structure/largecrate) || istype(C,/obj/structure/reagent_dispensers) || istype(C,/obj/structure/ore_box)))
+		return FALSE
 
-	// if a create/closet, close before loading
-	var/obj/structure/closet/crate = C
-	if(istype(crate))
+	// If there are any items you don't want to be interactable when loaded, add them to this check.
+	if(istype(C, /obj/machinery))
+		return load_object(C)
+
+	// if a closet, close before loading
+	if(istype(C, /obj/structure/closet))
+		var/obj/structure/closet/crate = C
 		crate.close()
+		crate.update_icon()
 
 	C.forceMove(loc)
 	C.setDir(dir)
-	C.anchored = 1
+	C.anchored = TRUE
+	C.density = FALSE
 
 	cargo = C
 
@@ -118,16 +87,19 @@
 		C.pixel_x += cargo_offset_x
 		C.pixel_y += cargo_offset_y
 		C.layer = layer + 0.1
-
-	//if(ismob(C))
-	//	user_buckle_mob(C, user = user)
-
-	return 1
+	return TRUE
 
 
 /obj/vehicle/trailer/proc/unload(var/mob/user, var/direction)
 	if(!cargo)
 		return
+
+	if(istype(cargo, /datum/vehicle_dummy_load))
+		var/datum/vehicle_dummy_load/dummy_load = cargo
+		cargo = dummy_load.actual_load
+		dummy_load.actual_load = null
+		qdel(dummy_load)
+		cut_overlays()
 
 	var/turf/dest = null
 
@@ -153,33 +125,45 @@
 			dest = get_turf(src)	//otherwise just dump it on the same turf as the vehicle
 
 	if(!isturf(dest))	//if there still is nowhere to unload, cancel out since the vehicle is probably in nullspace
-		return 0
-
-	//if(ismob(load))
-	//	unbuckle_mob(load, BUCKLE_OP_FORCE)
+		return FALSE
 
 	cargo.forceMove(dest)
 	cargo.setDir(get_dir(loc, dest))
-	cargo.anchored = 0		//we can only load non-anchored items, so it makes sense to set this to false
+	cargo.anchored = FALSE
+	cargo.density = initial(cargo.density)
 	cargo.pixel_x = initial(cargo.pixel_x)
 	cargo.pixel_y = initial(cargo.pixel_y)
 	cargo.layer = initial(cargo.layer)
 
 	cargo = null
 
-	return 1
+	return TRUE
+//------------------------------------------------------------------------
+//Load the object "inside" the trolley and add an overlay of it.
+//This prevents the object from being interacted with until it has
+// been unloaded. A dummy object is loaded instead so the loading
+// code knows to handle it correctly.
+/obj/vehicle/trailer/proc/load_object(atom/movable/C)
+	if(!isturf(C.loc) || cargo || C.anchored || ismob(C) || isnull(C))
+		return FALSE
 
+	var/datum/vehicle_dummy_load/dummy_load = new()
+	cargo = dummy_load
+	dummy_load.actual_load = C
+	C.forceMove(src)
 
+	if(cargo_item_visible)
+		C.pixel_x += cargo_offset_x
+		C.pixel_y += cargo_offset_y
+		C.layer = layer
 
+		add_overlay(C)
 
-
-
-
-
-
-
-*/
-
+		//we can set these back now since we have already cloned the icon into the overlay
+		C.pixel_x = initial(C.pixel_x)
+		C.pixel_y = initial(C.pixel_y)
+		C.layer = initial(C.layer)
+	return TRUE
 //----------------------------------------------------------------------------------------
 
 /obj/vehicle/trailer/cargo

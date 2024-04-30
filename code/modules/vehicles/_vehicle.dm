@@ -39,6 +39,12 @@
 	//*var/obj_cell_slot 				//defined at mapload if mechanical is false. Use to access cell subsystem
 	var/maint_panel_open = FALSE	//is the maintenance panel open?
 
+	//Defines what buttons are in the alt-click radial menu.
+	var/static/list/radial_menu = list(
+		"Close" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x"),
+		"Remove Cell" = image(icon = 'icons/obj/power.dmi', icon_state = "cell"),
+		"Remove Key" = image(icon = 'icons/obj/vehicles.dmi', icon_state = "train_keys")
+	)
 
 
 /obj/vehicle/Initialize(mapload)
@@ -58,10 +64,31 @@
 
 /obj/vehicle/examine(mob/user, dist)
 	. = ..()
-	if(!isnull(obj_cell_slot.cell) && dist < 2)
-		. += "<br><span class='notice'>Its charge meter reads: [obj_cell_slot.cell.percent()]%.</span>"
+	//You can't see inside a closed vehicle dummy!
+	if(enclosed && is_occupant(user))
+		if(key_type)
+			if(!inserted_key)
+				. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
+			else
+				. += "<span class='notice'>There is a key in the ignition!.</span>"
+		if(!mechanical)
+			if(obj_cell_slot.has_cell())
+				. += "<br><span class='notice'>Its charge meter reads: [obj_cell_slot.percent()]%.</span>"
+	//Range check to make people interact with the world
+	if(!enclosed && dist < 3)
+		if(key_type)
+			if(!inserted_key)
+				. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
+			else
+				. += "<span class='notice'>There is a key in the ignition!.</span>"
+		if(!mechanical)
+			if(obj_cell_slot.has_cell())
+				. += "<br><span class='notice'>Its charge meter reads: [obj_cell_slot.percent()]%.</span>"
+
+
 	if(maint_panel_open)
-		. += "<br><span class='notice'>Its maintenance panel is open.</span>"
+		. += "<br><span class='notice'>Its maintenance panel is open!</span>"
+	. += "<br><span class='notice'>Alt-click on \the [src] to open the menu!</span>"
 	/*
 	if(resistance_flags & ON_FIRE)
 		. += "<span class='warning'>It's on fire!</span>"
@@ -74,6 +101,58 @@
 		if(0 to 25)
 			. += "<span class='warning'>It's falling apart!</span>"
 	*/
+
+/**Check if the mob is adjacent, living, capable of advanced tool use, and not an AI*/
+/obj/vehicle/proc/can_use_check(mob/user)
+	if (!isliving(user) || isAI(user))
+		return FALSE
+
+	if (!user.IsAdvancedToolUser())
+		to_chat(user, "You lack the dexterity to do that!")
+		return FALSE
+
+	if (user.stat || user.restrained() || user.incapacitated())
+		return FALSE
+
+	if (!Adjacent(user) && !issilicon(user))
+		to_chat(user, "You can't reach [src] from here.")
+		return FALSE
+
+	return TRUE
+
+/**Defines what the radial wheel buttons do.*/
+/obj/vehicle/proc/choose_action()
+	set src in view()
+	set name = "Choose Action"
+	set category = "Object"
+
+	if(!can_use_check(usr))
+		return
+
+	var/choice = show_radial_menu(usr, src, radial_menu, require_near = !issilicon(usr), tooltips = TRUE)
+	if(!choice)
+		return
+	switch(choice)
+		if("Close")
+			return
+		if("Remove Cell")
+			if(mechanical)
+				return
+			if(obj_cell_slot.interaction_active())
+				if(obj_cell_slot.mob_remove_cell(usr))
+					to_chat(usr, "<span class='notice'>You pry out the cell!</span>")
+				else
+					to_chat(usr, "<span class='notice'>There is no cell to remove!</span>")
+			else
+				to_chat(usr, "<span class='notice'>The cell is inaccessible!</span>")
+			return
+		if("Remove Key")
+			remove_key(usr)
+			return
+
+/obj/vehicle/AltClick(mob/user)
+	choose_action()
+	return
 
 /obj/vehicle/proc/is_key(obj/item/I)
 	return I? (key_type_exact? (I.type == key_type) : istype(I, key_type)) : FALSE
@@ -194,7 +273,7 @@
 				M.Bumped(m)
 
 /obj/vehicle/Move(newloc, dir)
-	if(!ProcessPowerConsumption())
+	if(!TryUsePower())
 		return
 	var/old_loc = src.loc
 	. = ..()
@@ -206,12 +285,22 @@
  * Checks if the vehicle has enough power to move and consumes it if it does.
  * Returns TRUE on success.
  */
-/obj/vehicle/proc/ProcessPowerConsumption()
+/obj/vehicle/proc/TryUsePower()
 	if(mechanical)
 		return TRUE
-	if(obj_cell_slot.cell.checked_use(power_move_cost))
+	else if(obj_cell_slot.checked_use(power_move_cost))
 		return TRUE
 	return FALSE
+
+/**Key removal proc to override for different effects*/
+/obj/vehicle/proc/remove_key(mob/user)
+	if(inserted_key && user.Adjacent(src) && !user.incapacitated())
+		if(!is_occupant(user))
+			to_chat(user, "<span class='notice'>You must be riding the [src] to remove [src]'s key!</span>")
+			return
+		to_chat(user, "<span class='notice'>You remove \the [inserted_key] from \the [src].</span>")
+		user.put_in_hands_or_drop(inserted_key)
+		inserted_key = null
 
 /obj/vehicle/attackby(obj/item/I as obj, mob/user as mob)
 	//Flipflop maint panel status if screwed.
@@ -219,12 +308,21 @@
 		maint_panel_open = !maint_panel_open
 		to_chat(user, "<span class='warning'>You [maint_panel_open ? "open" : "close"] the maintenance panel!</span>")
 		return
-	..()
+	if(key_type && !is_key(inserted_key) && is_key(I))
+		if(user.transfer_item_to_loc(I, src))
+			to_chat(user, "<span class='notice'>You insert \the [I] into \the [src].</span>")
+			if(inserted_key)	//just in case there's an invalid key
+				inserted_key.forceMove(drop_location())
+			inserted_key = I
+		else
+			to_chat(user, "<span class='notice'>[I] seems to be stuck to your hand!</span>")
+		return
+	return ..()
 
 /obj/vehicle/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
-	return maint_panel_open
+	return maint_panel_open && ..()
 
-//Take DroppedOn atoms and determine if they are a trailer to be attached, cargo to be loaded, or pass on for passenger procs.
+//Take DroppedOn atoms and determine if they are a trailer to be attached, or pass on for passenger procs.
 /obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(!istype(dropping) || !isliving(user) || !proximity || get_dist(dropping.loc, loc) != 1)
 		return ..()
@@ -232,9 +330,6 @@
 	if(istype(dropping, /obj/vehicle/trailer))
 		if(attach_to(dropping, user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-	//Cargo load check
-	//if(load(dropping))
-	//	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	return ..()
 
@@ -271,3 +366,4 @@
 	return FALSE
 
 //Build load() proc here
+
