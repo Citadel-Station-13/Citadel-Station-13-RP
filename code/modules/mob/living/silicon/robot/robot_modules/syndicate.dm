@@ -34,8 +34,7 @@
 /obj/item/robot_module/robot/syndicate/get_modules()
 	. = ..()
 	. |= list(
-		/obj/item/pinpointer/shuttle/merc,
-		/obj/item/melee/energy/sword
+		/obj/item/melee/energy/sword,
 	)
 
 /obj/item/robot_module/robot/syndicate/handle_special_module_init(mob/living/silicon/robot/R)
