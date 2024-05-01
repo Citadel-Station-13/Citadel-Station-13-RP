@@ -398,7 +398,7 @@
 		return
 	hiding_tail = !hiding_tail
 	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_tail ? "hiding" : "showing"] your tail."))
-	update_tail_showing()
+	render_spriteacc_tail()
 
 /mob/living/carbon/human/proc/hide_wings()
 	set name = "Toggle Hide Wings"
@@ -409,7 +409,7 @@
 		return
 	hiding_wings = !hiding_wings
 	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_wings ? "hiding" : "showing"] your wings."))
-	update_wing_showing()
+	render_spriteacc_wings()
 
 /mob/living/carbon/human/proc/hide_horns()
 	set name = "Toggle Hide Horns"

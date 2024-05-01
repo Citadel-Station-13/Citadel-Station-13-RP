@@ -51,3 +51,10 @@
 	icon_state = "kari"
 	pokephrase = "Gecker!"
 	player_name = "Kari"
+
+/obj/item/toy/plushie/snowflake/leas
+	name = "teshari plushie"
+	desc = "A teshari plushie. It doesn't look happy about being picked up."
+	icon_state = "tesh"
+	pokephrase = "Prbt!"
+	player_name = "Leas"

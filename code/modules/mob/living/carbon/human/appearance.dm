@@ -75,7 +75,7 @@
 
 	grad_wingstyle = wing_gradient
 
-	update_wing_showing()
+	render_spriteacc_wings()
 	return 1
 
 /mob/living/carbon/human/proc/change_facial_hair(var/facial_hair_style)
@@ -212,9 +212,9 @@
 		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 
 		if(check_gender && gender != NEUTER)
-			if(gender == MALE && S.gender == FEMALE)
+			if(gender == MALE && S.random_generation_gender == FEMALE)
 				continue
-			else if(gender == FEMALE && S.gender == MALE)
+			else if(gender == FEMALE && S.random_generation_gender == MALE)
 				continue
 
 		if(S.apply_restrictions && !(use_species in S.species_allowed))
@@ -233,11 +233,8 @@
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 
-		if(gender != NEUTER)
-			if(gender == MALE && S.gender == FEMALE)
-				continue
-			else if(gender == FEMALE && S.gender == MALE)
-				continue
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
+			continue
 
 		if(S.apply_restrictions && !(use_species in S.species_allowed))
 			continue

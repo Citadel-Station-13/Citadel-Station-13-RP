@@ -15,8 +15,10 @@
 	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
 	preview_icon = 'icons/mob/species/tajaran/preview.dmi'
 	husk_icon    = 'icons/mob/species/tajaran/husk.dmi'
-	tail = "tajtail"
-	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/tajaran,
+	)
 
 	max_additional_languages = 3
 	name_language = /datum/language/tajaran

@@ -23,7 +23,11 @@
 	gibbed_anim = "gibbed-m"
 	dusted_anim = "dust-m"
 	death_message = "lets out a faint chimper as it collapses and stops moving..."
-	tail = "chimptail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/monkey/chimp,
+	)
+
 	fire_icon_state = "monkey"
 
 	unarmed_types = list(/datum/unarmed_attack/bite, /datum/unarmed_attack/claws)
@@ -84,7 +88,10 @@
 	intrinsic_languages = LANGUAGE_ID_FARWA
 	flesh_color = "#AFA59E"
 	base_color  = "#333333"
-	tail = "farwatail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/monkey/farwa,
+	)
 
 /datum/species/monkey/skrell
 	name = SPECIES_MONKEY_SKRELL
@@ -100,7 +107,8 @@
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
 	reagent_tag = IS_SKRELL
-	tail = null
+
+	sprite_accessory_defaults = list()
 
 /datum/species/monkey/unathi
 	name = SPECIES_MONKEY_UNATHI
@@ -110,7 +118,10 @@
 	icobase = 'icons/mob/species/monkey/body_stok.dmi'
 	deform  = 'icons/mob/species/monkey/body_stok.dmi'
 
-	tail = "stoktail"
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/monkey/stok,
+	)
+
 	greater_form = SPECIES_UNATHI
 	default_language = LANGUAGE_ID_STOK
 	intrinsic_languages = LANGUAGE_ID_STOK
@@ -125,7 +136,9 @@
 
 	icobase = 'icons/mob/species/monkey/body_sobaka.dmi'
 	deform  = 'icons/mob/species/monkey/body_sobaka.dmi'
-	tail = null //The tail is part of its body due to tail using the "icons/effects/species.dmi" file. It must be null, or they'll have a chimp tail.
+
+	sprite_accessory_defaults = list()
+
 	greater_form = SPECIES_AKULA
 	default_language = LANGUAGE_ID_SKRELL //Closest we have.
 	intrinsic_languages = LANGUAGE_ID_SKRELL
@@ -137,7 +150,9 @@
 
 	icobase = 'icons/mob/species/monkey/body_sergaling.dmi'
 	deform  = 'icons/mob/species/monkey/body_sergaling.dmi'
-	tail = null
+
+	sprite_accessory_defaults = list()
+
 	default_language = LANGUAGE_ID_NARAMADI
 	intrinsic_languages = LANGUAGE_ID_NARAMADI
 
@@ -148,7 +163,9 @@
 	greater_form = SPECIES_NEVREAN
 	icobase = 'icons/mob/species/monkey/body_sparra.dmi'
 	deform  = 'icons/mob/species/monkey/body_sparra.dmi'
-	tail = null
+
+	sprite_accessory_defaults = list()
+
 	default_language = LANGUAGE_ID_BIRDSONG
 	intrinsic_languages = LANGUAGE_ID_BIRDSONG
 
@@ -181,7 +198,8 @@
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 	flesh_color = "#966464"
 	base_color  = "#000000"
-	tail = null
+
+	sprite_accessory_defaults = list()
 
 //INSERT CODE HERE SO MONKEYS CAN BE SPAWNED.
 //Also, M was added to the end of the spawn names to signify that it's a monkey, since some names were conflicting.
