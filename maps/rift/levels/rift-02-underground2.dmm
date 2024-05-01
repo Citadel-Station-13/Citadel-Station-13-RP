@@ -780,12 +780,11 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/maintenance/research/xenobio)
 "dD" = (
-/obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for the engine control room blast doors.";
 	id = "engine_monitor_blast";
 	name = "Monitoring Room Blast Doors";
-	pixel_y = 6;
+	pixel_y = 9;
 	req_access = list(10);
 	pixel_x = 6
 	},
@@ -794,12 +793,10 @@
 	id = "engine_room_blast";
 	name = "Engine Room Window Blast Doors";
 	pixel_x = -7;
-	pixel_y = 6;
+	pixel_y = 9;
 	req_access = list(10)
 	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/structure/table/marble,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "dE" = (
@@ -12857,6 +12854,9 @@
 	},
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)

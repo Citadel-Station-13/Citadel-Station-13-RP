@@ -706,11 +706,20 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "FG" = (
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
+/obj/machinery/button/remote/emitter{
+	desc = "A remote control-switch for the engine emitter.";
 	id = "EngineEmitter";
-	name = "Emitter Switch";
-	pixel_y = -5;
+	name = "Engine Emitter";
+	pixel_y = -3;
+	req_access = list(10);
+	pixel_x = -7
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine charging port.";
+	id = "SupermatterPort";
+	name = "Reactor Blast Doors";
+	pixel_x = 6;
+	pixel_y = -3;
 	req_access = list(10)
 	},
 /turf/template_noop,
