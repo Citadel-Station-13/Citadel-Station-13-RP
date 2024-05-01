@@ -24432,11 +24432,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
-"omt" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 1
-	},
-/turf/simulated/shuttle/plating/airless/carry)
 "ooQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -31518,7 +31513,7 @@ btC
 bRP
 gzi
 iLn
-omt
+fdS
 aus
 aus
 aus
@@ -33846,7 +33841,7 @@ btC
 bly
 gzi
 fxK
-omt
+fdS
 aus
 aus
 aus
