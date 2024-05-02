@@ -4,7 +4,8 @@
 /datum/admin_panel/game_panel
 	name = "Game Panel"
 	panes = list(
-		/datum/admin_pane/shuttles,
+		/datum/admin_pane/game/shuttle,
+		/datum/admin_pane/game/control,
 	)
 
 #warn *SCREAM

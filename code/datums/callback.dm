@@ -79,14 +79,13 @@
  * If the datum being called on is varedited, the call is wrapped via [WrapAdminProcCall][/proc/WrapAdminProcCall]
  */
 /datum/callback/proc/Invoke(...)
-	if(!usr)
+	if(!usr && user)
 		var/datum/weakref/W = user
-		if(W)
-			var/mob/M = W.resolve()
-			if(M)
-				if(length(args))
-					return world.push_usr(arglist(list(M, src) + args))
-				return world.push_usr(M, src)
+		var/mob/M = W.resolve()
+		if(M)
+			if(length(args))
+				return world.push_usr(arglist(list(M, src) + args))
+			return world.push_usr(M, src)
 
 	if(!object)
 		return
@@ -114,14 +113,13 @@
 /datum/callback/proc/InvokeAsync(...)
 	set waitfor = FALSE
 
-	if(!usr)
+	if(!usr && user)
 		var/datum/weakref/W = user
-		if(W)
-			var/mob/M = W.resolve()
-			if(M)
-				if(length(args))
-					return world.push_usr(arglist(list(M, src) + args))
-				return world.push_usr(M, src)
+		var/mob/M = W.resolve()
+		if(M)
+			if(length(args))
+				return world.push_usr(arglist(list(M, src) + args))
+			return world.push_usr(M, src)
 
 	if(!object)
 		return

@@ -205,13 +205,13 @@ SUBSYSTEM_DEF(grids)
 			continue
 		var/turf/destination = to_turfs[i]
 		// -- fire overlap handlers --
-		turf_overlap_handler?.(source, destination)
+		turf_overlap_handler?.InvokeAsync(source, destination)
 		for(var/atom/movable/AM as anything in destination)
 			if(AM.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
 				continue
 			if(AM.handle_grid_overlap(grid_flags))
 				continue
-			movable_overlap_handler?.(AM, source, destination)
+			movable_overlap_handler?.InvokeAsync(AM, source, destination)
 		// -- end --
 		source.grid_transfer(grid_flags, destination, baseturf_boundary)
 
