@@ -2,8 +2,13 @@
 	name = "NT-S V1 Sensor Drone"
 	desc = "Nanotrasen's V1 Prototype Sensor Drone intended for unmanned sector scans in the depths of space. Not habitable."
 	fluff = "The rather blandly named V1 sensor drone. A prototype design, it is an unmanned craft used \
-	for frontier exploration. Definitely not safe for life. As an upside, it is simple enough to be assembled \
-	in practically any hanger" // v1 from ultrakill
-	id = "V1SensorDrone"
+	for frontier exploration. Definitely not safe for life. As an upside, it runs on ion propulsion that \
+	doesn't need to be refuelled for weeks on end." // v1 from ultrakill
+	id = "nt-drone-v1"
 	relative_path = "drone_prototype.dmm"
-	mass = 5
+
+	descriptor = /datum/shuttle_descriptor{
+		mass = 5;
+	}
+
+	#warn finish map

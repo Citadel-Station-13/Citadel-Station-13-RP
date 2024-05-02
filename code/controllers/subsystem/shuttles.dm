@@ -35,9 +35,9 @@ SUBSYSTEM_DEF(shuttle)
 	var/static/list/shuttle_web_node_type_registry = list()
 
 	//* Shuttles
-	/// All shuttles
+	/// All shuttles by id
 	//  todo: non-static, recover()?
-	var/static/list/datum/shuttle/shuttles = list()
+	var/static/list/datum/shuttle/shuttle_id_registry = list()
 	/// Shuttles currently requiring processing
 	//  todo: non-static, recover()?
 	var/static/list/datum/shuttle/active_shuttles = list()
@@ -77,7 +77,9 @@ SUBSYSTEM_DEF(shuttle)
 	return created
 
 /datum/controller/subsystem/shuttle/proc/register_shuttle(datum/shuttle/shuttle)
-	shuttles += shuttle
+	ASSERT(istext(shuttle.id))
+	ASSERT(isnull(shuttle_id_registry[shuttle.id]))
+	shuttle_id_registry[shuttle.id] = shuttle
 	#warn impl
 
 //* Shuttle Templates *//

@@ -46,10 +46,6 @@
 	/// please try to map shuttles in facing north.
 	var/facing_dir = NORTH
 
-	//* Internals
-	/// shuttle datum type to make
-	var/shuttle_type = /datum/shuttle
-
 /datum/shuttle_template/New(map_resource, use_dir)
 	if(map_resource)
 		absolute_path = map_resource
@@ -70,7 +66,7 @@
  * Do not directly use. Use create_shuttle() on SSshuttles!
  * This will not automatically register the shuttle with the subsystem.
  */
-/datum/shuttle_template/proc/instance(shuttle_type = src.shuttle_type)
+/datum/shuttle_template/proc/instance(shuttle_type = /datum/shuttle)
 	RETURN_TYPE(/datum/shuttle)
 
 	var/datum/dmm_parsed/parsed_map = src.parsed_map
