@@ -512,6 +512,18 @@
 	desc = "A 5mm solid phoron caseless stun round."
 	projectile_type = /obj/projectile/energy/electrode // Maybe nerf this considering there's 30 rounds in a mag.
 
+
+/*
+ * 12.7mm Caseless
+ */
+
+/obj/item/ammo_casing/fiftycalcaseless
+	desc = "A 12.7mm caseless round."
+	caliber = "12.7mm caseless"
+	projectile_type = /obj/projectile/bullet/incendiary/caseless
+	materials_base = list(MAT_STEEL = 180)
+	casing_flags = CASING_DELETE
+
 /*
  * Misc
  */

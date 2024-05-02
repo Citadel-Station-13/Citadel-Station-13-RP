@@ -317,6 +317,17 @@
 	icon_state = "caseless-mag-alt"
 	ammo_type = /obj/item/ammo_casing/a5mmcaseless/stun
 
+/////// 12.7mm / 50 caliber caseless /////////
+
+/obj/item/ammo_magazine/fiftycalcaseless
+	name = "Wild Hunt magazine (12.7mm caseless)"
+	ammo_type = /obj/item/ammo_casing/fiftycalcaseless
+	icon_state = "caseless-127"
+	caliber = "12.7mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 20
+	multiple_sprites = 1
+
 ///////// 9mm /////////
 
 /obj/item/ammo_magazine/m9mm
