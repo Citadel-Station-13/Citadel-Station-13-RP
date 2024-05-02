@@ -52,7 +52,7 @@
 	magazine_type = /obj/item/ammo_magazine/fiftycalcaseless
 	recoil = 1 //mein leiben
 	accuracy = -10
-	allowed_magazines = /obj/item/ammo_magazine/fiftycalcaseless
+	allowed_magazines = list(/obj/item/ammo_magazine/fiftycalcaseless)
 	one_handed_penalty = 100 //you simply do not
 
 	firemodes = list(
