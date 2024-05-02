@@ -27,6 +27,9 @@
 	var/id
 	/// our unique template id; this is *not* our ID and is *not* unique!
 	var/template_id
+	/// our descriptor instance; this is what determines how we act
+	/// to our controller, as well as things like overmaps.
+	var/datum/shuttle_descriptor/descriptor
 
 	//* Composition
 	/// our shuttle controller
@@ -104,6 +107,24 @@
 
 #warn impl all
 
+/datum/shuttle/Destroy()
+	QDEL_NULL(descriptor)
+	QDEL_NULL(controller)
+	QDEL_LIST(ports)
+	QDEL_NULL(anchor)
+	#warn areas
+	#warn hooks
+	preview_overlay = null
+	#warn de-dock
+	#warn de-transit
+	#warn de-move
+
+	//! legacy
+	legacy_fuel_ports = null
+	//! end
+
+	return ..()
+
 //* Initialization *//
 
 /**
@@ -175,6 +196,18 @@
 /datum/shuttle/proc/after_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
 	return
 	#warn hook
+
+/**
+ * bind a controller to us
+ */
+/datum/shuttle/proc/bind_controller(datum/shuttle_controller/binding)
+	. = FALSE
+	ASSERT(isnull(binding.shuttle) && isnull(controller))
+	controller = binding
+	if(!controller.initialize(src))
+		controller = null
+		CRASH("controller refused to init")
+	return TRUE
 
 //* Bounding Box *//
 
@@ -279,7 +312,7 @@
 	if(ceiling_type)
 		// remove old ceiling from above shuttle
 		if(SSmapping.cached_level_up[move_from.z])
-			var/above_z = SSmapping.cached_level_up[move_fromz.]
+			var/above_z = SSmapping.cached_level_up[move_from.z]
 			// has above
 			for(var/turf/above_turf in use_before_turfs)
 				// remove ceiling
@@ -357,6 +390,19 @@
 		return preview_overlay
 	preview_overlay = new /mutable_appearance
 	#warn impl
+
+/**
+ * slow proc; get the primary port. if none, we use first port.
+ *
+ * this is only used in roundstart loading.
+ */
+/datum/shuttle/proc/get_primary_port()
+	for(var/obj/shuttle_port/port in ports)
+		if(port.primary_port)
+			return port
+	if(!length(ports))
+		return
+	return ports[1]
 
 //* Transit
 

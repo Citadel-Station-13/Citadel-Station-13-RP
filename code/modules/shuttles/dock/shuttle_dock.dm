@@ -105,6 +105,7 @@
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
 	/// shuttle web node to initialize on, if applicable; this must be a typepath.
+	/// todo: data-defined web nodes, aka allow strings and de/serialization.
 	var/web_node_type
 	/// the shuttle web node we belong to, if any
 	var/datum/shuttle_web_node/web_node
@@ -389,6 +390,12 @@
 	#warn impl
 
 /**
+ * initializes our roundstart shuttle (usually by giving it a controller)
+ */
+/obj/shuttle_dock/proc/init_shuttle(datum/shuttle/shuttle)
+	#warn hook
+
+/**
  * called after our initial shuttle is loaded
  */
 /obj/shuttle_dock/proc/loaded_shuttle(datum/shuttle/loaded)
@@ -415,24 +422,3 @@
 	icon_state = "dock_center"
 	centered_landing_only = TRUE
 	centered_landing_allowed = TRUE
-
-/**
- * ephemeral docks
- *
- * deletes when a shuttle leaves
- */
-/obj/shuttle_dock/ephemeral
-	create_bounding_box_area = FALSE
-
-/obj/shuttle_dock/ephemeral/on_shuttle_departed(datum/shuttle/shuttle)
-	qdel(src)
-
-/**
- * manual dock
- */
-/obj/shuttle_dock/ephemeral/manual
-
-/**
- * transit dock
- */
-/obj/shuttle_dock/ephemeral/transit

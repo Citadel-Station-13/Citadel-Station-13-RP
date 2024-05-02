@@ -20,9 +20,12 @@
 	var/dock_home_id
 	/// away dock id or typepath
 	var/dock_away_id
-	/// travel time
-	var/travel_time = 10 SECONDS
 	#warn hook init for both
+
+/datum/shuttle_controller/ferry/New(home_id, away_id)
+	src.dock_home_id = home_id
+	src.dock_away_id = away_id
+	..()
 
 /datum/shuttle_controller/ferry/proc/is_at_home()
 	return shuttle.docked.dock_id == dock_home_id

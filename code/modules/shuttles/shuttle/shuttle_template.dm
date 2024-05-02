@@ -28,22 +28,17 @@
 	/// relative path to file from current directory
 	var/relative_path
 
-	//* Flight (overmaps / web)
-	/// mass in kilotons
-	//  todo: in-game mass calculations? only really relevant for drone tbh
-	var/mass = 5
-	/// if set to false, this is absolute-ly unable to land on a planet
-	var/allow_atmospheric_landing = TRUE
-
-	//* Jumps (ferry & moving to/from overmaps)
-	/// engine charging time when starting a move
-	//  todo: should have support for being based on in game machinery (?)
-	var/jump_charging_time = 10 SECONDS
-	/// time spent in transit when performing a move
-	var/jump_move_time = 10 SECONDS
+	//* Functionality
+	/// our descriptor, used for cross-interaction with other systems
+	/// this should not be a cached typepath, as opposed to a directly made typepath
+	/// or an instance.
+	///
+	/// typepaths will be initialized.
+	/// instances will be cloned.
+	var/datum/shuttle_descriptor/descriptor = shuttle_descriptor
 
 	//* .dmm
-	/// should we keep parsed map once first loaded?w
+	/// should we keep parsed map once first loaded?
 	var/cache_parsed_map = FALSE
 	/// our parsed map
 	var/datum/dmm_parsed/parsed_map
@@ -103,6 +98,9 @@
 		reservation.bottom_left_coords[3],
 	)
 
+	// set descriptor
+	instance.descriptor = instance_descriptor()
+
 	// let shuttle do black magic first
 	instance.before_bounds_init(reservation, src)
 
@@ -117,6 +115,13 @@
 	instance.template_id = id
 
 	return instance
+
+/datum/shuttle_template/proc/instance_descriptor()
+	if(istype(descriptor))
+		return descriptor.clone()
+	else if(ispath(descriptor, /datum/shuttle_descriptor))
+		return new descriptor
+	CRASH("what? [descriptor] ([REF(descriptor)])")
 
 /datum/map_template/shuttle
 	abstract_type = /datum/map_template/shuttle

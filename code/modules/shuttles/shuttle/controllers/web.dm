@@ -8,8 +8,13 @@
  */
 /datum/shuttle_controller/web
 	tgui_module = "TGUIShuttleWeb"
-	/// our host map; set to typepath to auto-init
+
+	/// our host map
 	var/datum/shuttle_web_map/map
+
+/datum/shuttle_controller/web/New(datum/shuttle_web_map/web)
+	map = web
+	..()
 
 /datum/shuttle_controller/web/initialize(datum/shuttle/shuttle)
 	. = ..()

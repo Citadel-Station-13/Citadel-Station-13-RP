@@ -53,9 +53,15 @@
 	///
 	/// if this doesn't exist, stuff that need to hook it won't work.
 	var/port_id
-	
+
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
+
+	/// is this the primary port?
+	/// if it is, this is what we align with for roundstart loading.
+	var/primary_port = FALSE
+
+	#warn hook
 
 /obj/shuttle_port/preloading_instance(with_id)
 	. = ..()
@@ -107,79 +113,88 @@
 /obj/shuttle_port/grid_finished(grid_flags, rotation_angle)
 	return
 
+#warn make sure the color is good
+
+#define SHUTTLE_PORT_PATH(PATH) \
+/obj/shuttle_port/##PATH/primary { \
+	primary_port = TRUE; \
+	color = "#8888ff"; \
+} \
+/obj/shuttle_port/##PATH
+
 /obj/shuttle_port/north
 	dir = NORTH
 
-/obj/shuttle_port/south
+SHUTTLE_PORT_PATH(south)
 	dir = SOUTH
 
-/obj/shuttle_port/east
+SHUTTLE_PORT_PATH(east)
 	dir = EAST
 
-/obj/shuttle_port/west
+SHUTTLE_PORT_PATH(west)
 	dir = WEST
 
-/obj/shuttle_port/two_wide
+SHUTTLE_PORT_PATH(two_wide)
 	abstract_type = /obj/shuttle_port/two_wide
 	icon = 'icons/modules/shuttles/shuttle_anchor_2x2.dmi'
 	icon_state = "dock"
 	port_width = 2
 
-/obj/shuttle_port/two_wide/left_aligned
+SHUTTLE_PORT_PATH(two_wide/left_aligned)
 
-/obj/shuttle_port/two_wide/left_aligned/north
+SHUTTLE_PORT_PATH(two_wide/left_aligned/north)
 	dir = NORTH
 
-/obj/shuttle_port/two_wide/left_aligned/south
+SHUTTLE_PORT_PATH(two_wide/left_aligned/south)
 	dir = SOUTH
 	port_offset = 1
 
-/obj/shuttle_port/two_wide/left_aligned/east
+SHUTTLE_PORT_PATH(two_wide/left_aligned/east)
 	dir = EAST
 	port_offset = 1
 
-/obj/shuttle_port/two_wide/left_aligned/west
+SHUTTLE_PORT_PATH(two_wide/left_aligned/west)
 	dir = WEST
 
-/obj/shuttle_port/two_wide/right_aligned
+SHUTTLE_PORT_PATH(two_wide/right_aligned)
 
-/obj/shuttle_port/two_wide/right_aligned/north
+SHUTTLE_PORT_PATH(two_wide/right_aligned/north)
 	dir = NORTH
 	port_offset = 1
 	pixel_x = -32
 
-/obj/shuttle_port/two_wide/right_aligned/south
+SHUTTLE_PORT_PATH(two_wide/right_aligned/south)
 	dir = SOUTH
 
-/obj/shuttle_port/two_wide/right_aligned/east
+SHUTTLE_PORT_PATH(two_wide/right_aligned/east)
 	dir = EAST
 
-/obj/shuttle_port/two_wide/right_aligned/west
+SHUTTLE_PORT_PATH(two_wide/right_aligned/west)
 	dir = WEST
 	port_offset = 1
 	pixel_y = -32
 
-/obj/shuttle_port/three_wide
+SHUTTLE_PORT_PATH(three_wide)
 	icon = 'icons/modules/shuttles/shuttle_anchor_3x3.dmi'
 	icon_state = "dock"
 	port_width = 3
 
-/obj/shuttle_port/three_wide/north
+SHUTTLE_PORT_PATH(three_wide/north)
 	dir = NORTH
 	port_offset = 1
 	pixel_x = -32
 
-/obj/shuttle_port/three_wide/south
+SHUTTLE_PORT_PATH(three_wide/south)
 	dir = SOUTH
 	port_offset = 1
 	pixel_x = -32
 
-/obj/shuttle_port/three_wide/east
+SHUTTLE_PORT_PATH(three_wide/east)
 	dir = EAST
 	port_offset = 1
 	pixel_y = -32
 
-/obj/shuttle_port/three_wide/west
+SHUTTLE_PORT_PATH(three_wide/west)
 	dir = WEST
 	port_offset = 1
 	pixel_y = -32

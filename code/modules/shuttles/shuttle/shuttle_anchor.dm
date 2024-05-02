@@ -188,10 +188,17 @@
 
 	// check clipping
 	if(will_clip_at(location, direction))
+		return FALSE
 
 	#warn impl
 
 #warn impl all
+
+/**
+ * checks if we'll clip a zlevel edge or another shtutle at a location
+ */
+/obj/shuttle_anchor/proc/will_clip_at(turf/location, direction)
+	#warn impl
 
 /obj/shuttle_anchor/grid_move(grid_flags, turf/new_turf)
 	return
