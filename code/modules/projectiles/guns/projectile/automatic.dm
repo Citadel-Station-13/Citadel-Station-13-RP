@@ -359,6 +359,24 @@
 		icon_state = "ashot-empty"
 	return
 
+
+// phoron war AA-12 that fires phoron shards, no reloads.
+
+/obj/item/gun/ballistic/automatic/as24/phoron
+	name = "Gorlex 'SHRAPNEL-SPITTER' Phoron Shotgun"
+	desc = "A shotgun from the Phoron Wars. It lacks conventional ammo, instead using compressed matter cartridges similar to those in RCD's. Coils accelerate a ferromagnetic, self-oxidizing cloud of phoron alloys to deadly speed. Lack of traditional cycling means it can fire blindingly fast."
+
+	firemodes = list(
+		list(mode_name="full auto", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1),
+		list(mode_name="fuller auto", burst=1, fire_delay=-3, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+
+/obj/item/gun/ballistic/automatic/as24/phoron/Initialize(mapload)
+	. = ..()
+	var/fluff_date = rand(2501,2553)
+	desc += "\n You see a stamp on the side: GORLEX MARAUDERS, MANUFACTURED IN [fluff_date]."
+
 /obj/item/gun/ballistic/automatic/mini_uzi
 	name = "\improper Uzi"
 	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. Cybersun Industries were the last major manufacturer of these designs, which have changed little since the 20th century. Uses .45 rounds."

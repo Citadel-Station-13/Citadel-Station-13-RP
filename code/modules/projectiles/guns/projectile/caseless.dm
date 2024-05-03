@@ -40,7 +40,7 @@
 		list(mode_name="4-round bursts", 	burst=4, 	fire_delay=null, move_delay=6, 	burst_accuracy=list(0,-5,-10,-15), dispersion=list(0.0, 0.2, 0.4, 0.6)),//Small damage countered by tight spread.
 		)
 
-/obj/item/gun/ballistic/caseless/wild_hunt
+/obj/item/gun/ballistic/caseless/wild_hunt //extremely powerful and rare rifle,
 	name = "Gorlex WILD-HUNT 12.7mm Caseless Rifle"
 	desc = "An ancient rifle of the Phoron Wars. For when you want to kill something with no negotiation. The Wild Hunt is a beast that kicks like a mule and fires experimental caseless phoron rounds. It has, obviously, horrific results, setting targets on fire after giving them a golf-ball sized hole. Now generally disused due to the extreme maintenance cost and impracticality. Nobody makes these, anymore."
 	icon_state = "wild-hunt"
@@ -66,3 +66,8 @@
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-empty"
+
+/obj/item/gun/ballistic/caseless/wild_hunt/Initialize(mapload)
+	. = ..()
+	var/fluff_date = rand(2501,2543)
+	desc += "\n You see a stamp on the side: GORLEX MARAUDERS, MANUFACTURED IN [fluff_date]."
