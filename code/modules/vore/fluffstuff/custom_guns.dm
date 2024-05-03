@@ -55,17 +55,6 @@
 	slot_flags = SLOT_BACK
 	one_handed_penalty = 60 // The weapon itself is heavy
 
-/obj/item/gun/ballistic/automatic/battlerifle/update_icon()
-	. = ..()
-	update_held_icon()
-
-/obj/item/gun/ballistic/automatic/battlerifle/update_icon_state()
-	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m95))
-		icon_state = "battlerifle"
-	else
-		icon_state = (ammo_magazine)? "battlerifle" : "battlerifle_empty"
-
 // For general use
 /obj/item/gun/ballistic/shotgun/pump/JSDF
 	name = "\improper JSDF tactical shotgun"
