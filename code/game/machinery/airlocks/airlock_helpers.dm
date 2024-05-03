@@ -11,21 +11,25 @@
  * * supply - what to inject gas from; it's assumed that this gas is what we want. if not, abort.
  * * waste - what to expel gas into
  * * config_toggles - AIRLOCK_CONFIG_X; specifies what we need to care about
+ * * minimum_tolerable_pressure - do not siphon airlock below this value
  * * power_limit - how much available power there is
  * * time - time passed in deciseconds
  *
  * @return power used
  */
 /proc/airlock_adaptive_reconcile(
-	list/obj/machinery/airlock_peripheral/cycler/cyclers,
-	list/obj/machinery/airlock_peripheral/vent/vents,
+	list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers,
+	list/obj/machinery/airlock_peripheral/gasnet/vent/vents,
 	datum/gas_mixture/target,
 	datum/gas_mixture/supply,
 	datum/gas_mixture/waste,
 	config_toggles,
-	power_limit,
+	minimum_tolerable_pressure,
+	power_limit = INFINITY,
 	time = 1 SECONDS,
 )
+
+
 
 /**
  * reconcile an airlock towards an ideal environment
@@ -37,19 +41,21 @@
  * * supply - what to inject gas from; it's assumed that this gas is what we want. if not, abort.
  * * waste - what to expel gas into
  * * config_toggles - AIRLOCK_CONFIG_X; specifies what we need to care about
+ * * minimum_tolerable_pressure - do not siphon airlock below this value
  * * power_limit - how much available power there is
  * * time - time passed in deciseconds
  *
  * @return power used
  */
 /proc/airlock_fixed_reconcile(
-	list/obj/machinery/airlock_peripheral/cycler/cyclers,
-	list/obj/machinery/airlock_peripheral/vent/vents,
+	list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers,
+	list/obj/machinery/airlock_peripheral/gasnet/vent/vents,
 	datum/airlock_environment/target,
 	datum/gas_mixture/supply,
 	datum/gas_mixture/waste,
 	config_toggles,
-	power_limit,
+	minimum_tolerable_pressure,
+	power_limit = INFINITY,
 	time = 1 SECONDS,
 )
 

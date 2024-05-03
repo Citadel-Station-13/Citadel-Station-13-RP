@@ -1,6 +1,23 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+//* /obj/machinery/airlock_controller/config_cycle_mode
+
+/// 'classic' airlock behavior; siphon all air and replace as needed
+///
+/// the least non-deterministic at not wasting gas, because all gas
+/// is allowed to go through the reclamation cycle.
+#define AIRLOCK_CONFIG_MODE_CLASSIC "classic"
+/// 'dynamic' airlocks; shunts air towards desired state
+///
+/// allows the usage of interior / exterior toggles, and minimum tolerable
+/// pressures, but is a heuristic algorithm
+///
+/// not recommended for use in air-constrained environments.
+#define AIRLOCK_CONFIG_MODE_DYNAMIC "dynamic"
+
+#warn DEFINE_ENUM
+
 //* /obj/machinery/airlock_controller/(interior|exterior)_environment_mode
 
 /// detect atmos on tile; autodetects and sets to manual after
@@ -12,7 +29,9 @@
 /// ignore the atmos entirely
 #define AIRLOCK_ENVIRONMENT_IGNORE "ignore"
 
-//* /obj/machinery/airlock_controller/config_(interior|exterior)_toggles
+#warn DEFINE_ENUM
+
+//* /obj/machinery/airlock_controller/config_dynamic_(interior|exterior)_toggles
 
 /// cycle gas ratios; implies EXPEL_UNWANTED_GAS
 #define AIRLOCK_CONFIG_MATCH_GAS_RATIOS (1<<0)
@@ -38,10 +57,30 @@
 /// unlocked
 #define AIRLOCK_STATE_UNLOCKED 3
 
+#warn DEFINE_ENUM
+
 //* Airlock Sides
 
 #define AIRLOCK_SIDE_INTERIOR "interior"
 #define AIRLOCK_SIDE_EXTERIOR "exterior"
+
+//* /obj/machinery/airlock_controller/(cycle_state|aborted_state)
+
+#define AIRLOCK_CYCLE_INACTIVE "inactive"
+
+// for classic / replace //
+
+/// currently draining existing air
+#define AIRLOCK_CYCLE_CLASSIC_DRAIN "classic-drain"
+/// currently refilling with desired air
+#define AIRLOCK_CYCLE_CLASSIC_REPLACE "classic-fill"
+
+// for dynamic //
+
+/// currently equalizing air
+#define AIRLOCK_CYCLE_DYNAMIC_EQUALIZATION "dynamic"
+
+#warn DEFINE_ENUM
 
 #warn eval below
 
@@ -62,22 +101,3 @@
 /// we are overridden
 #define AIRLOCK_DOCK_OVERRIDDN 6
 
-//* /obj/machinery/airlock_controller/mode_state
-
-/// security lockdown
-#define AIRLOCK_MODE_LOCKDOWN 0
-/// normal - allow cycling in / out
-#define AIRLOCK_MODE_NORMAL 1
-/// docking - the dock handles operations
-#define AIRLOCK_MODE_DOCK 2
-
-#warn impl
-
-//* /obj/machinery/airlock_controller/op_state
-
-/// nothing
-#define AIRLOCK_OP_IDLE 0
-/// cycling to interior
-#define AIRLOCK_OP_CYCLE_IN 1
-/// cycling to exterior
-#define AIRLOCK_OP_CYCLE_OUT 2

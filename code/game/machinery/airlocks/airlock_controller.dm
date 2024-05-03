@@ -11,25 +11,27 @@
 	desc = "A self-contained controller for an airlock."
 	#warn sprite
 
-
-
 	//* Access
 	/// we can access the airlock from the controller
 	var/control_panel = TRUE
 
 	//* Configuration
+	/// mode
+	/// see defines for AIRLOCK_CONFIG_MODE_*.
+	var/config_cycle_mode = AIRLOCK_CONFIG_MODE_FULL_REPLACE
 	/// minimum allowable pressure during cycling
 	/// this overrides requested pressure by the environment!
 	/// if you set it to a high value, people will go flying.
-	var/config_minimum_tolerable_pressure = 0
+	/// * only taken into account in dynamic cycle mode
+	var/config_dynamic_minimum_tolerable_pressure
 	/// interior toggles
-	///
-	/// by default we want to regulate temperature/pressure/gas
-	var/config_interior_toggles = AIRLOCK_CONFIG_EXPEL_UNWANTED_GAS | AIRLOCK_CONFIG_REGULATE_PRESSURE | AIRLOCK_CONFIG_REGULATE_TEMPERATURE
+	/// * by default we want to regulate temperature/pressure/gas
+	/// * only taken into account in dynamic cycle mode
+	var/config_dynamic_interior_toggles = AIRLOCK_CONFIG_EXPEL_UNWANTED_GAS | AIRLOCK_CONFIG_REGULATE_PRESSURE | AIRLOCK_CONFIG_REGULATE_TEMPERATURE
 	/// exterior toggles
-	///
-	/// by default we just want to not have people go flying
-	var/config_exterior_toggles = AIRLOCK_CONFIG_REGULATE_PRESSURE
+	/// * by default we just want to not have people go flying
+	/// * only taken into account in dynamic cycle mode
+	var/config_dynamic_exterior_toggles = AIRLOCK_CONFIG_REGULATE_PRESSURE
 
 	//* Environments
 	/// interior environment settings
@@ -45,9 +47,9 @@
 	/// panels
 	var/list/obj/machinery/airlock_peripheral/panel/panels
 	/// handlers
-	var/list/obj/machinery/airlock_peripheral/handler/handlers
+	var/list/obj/machinery/airlock_peripheral/gasnet/handler/handlers
 	/// cyclers
-	var/list/obj/machinery/airlock_peripheral/cycler/cyclers
+	var/list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers
 	/// sensors
 	var/list/obj/machinery/airlock_peripheral/sensor/sensors
 
@@ -66,12 +68,30 @@
 	var/interior_state = AIRLOCK_STATE_UNLOCKED
 	/// exterior door state
 	var/exterior_state = AIRLOCK_STATE_UNLOCKED
+
+	/// cycle state
+	var/cycle_state = AIRLOCK_CYCLE_INACTIVE
+	/// last state we were cycling towards; this allows for resumes
+	/// null for none
+	var/cycle_side
+	/// pressure on last cycle process
+	var/last_cycle_pressure
+	/// temperature on last cycle process
+	var/last_cycle_temperature
+	/// gas contents on last cycle pressure
+	var/list/last_cycle_gases
+
+	#warn below
 	/// dock state
 	var/dock_state = AIRLOCK_DOCK_NONE
-	/// mode state
-	var/mode_state
-	/// operation state
-	var/op_state
+	/// docking overridden
+	var/dock_override = FALSE
+
+	/// security lockdown mode - all buttons and docking requests are ignored
+	/// panels can still be used to control it.
+	var/security_lockdown = FALSE
+	#warn above
+
 	/// operation cycle; used for things like asyncs to be able to verify behavior.
 	var/op_cycle
 	/// next operation cycle
@@ -135,20 +155,51 @@
 			for(var/obj/machinery/door/door as anything in exterior)
 				door.airlock_set(null, FALSE)
 
+/obj/machinery/airlock_controller/proc/handle_cycle()
+	var/datum/gas_mixture/effective_indoors = probe_indoors_gas()
+	var/datum/gas_mixture/effective_outdoors = probe_outdoors_gas()
+
+	switch(config_cycle_mode)
+		if(AIRLOCK_CONFIG_MODE_CLASSIC)
+			switch(cycle_state)
+				if(AIRLOCK_CYCLE_CLASSIC_DRAIN)
+				if(AIRLOCK_CYCLE_CLASSIC_REPLACE)
+		if(AIRLOCK_CONFIG_MODE_DYNAMIC_EQUALIZATION)
+			switch(cycle_state)
+				if(AIRLOCK_CYCLE_DYNAMIC_EQUALIZATION)
+	if(!.)
+		fail_cycle("unknown failure detected; resetting")
+	else
+		last_cycle_pressure = effective_indoors.return_pressure()
+		last_cycle_temperature = effective_indoors.temperature
+		last_cycle_gases = effective_indoors.gas.Copy()
+
+/**
+ * @params
+ * * why - string reason
+ */
+/obj/machinery/airlock_controller/proc/fail_cycle(why)
+
+/obj/machinery/airlock_controller/proc/finish_cycle(success)
+	last_cycle_pressure = last_cycle_temperature = last_cycle_gases = null
+
+#warn impl all
+
 /**
  * Automatically builds its airlock by calculating the necessary geometry.
  * * Only works with relatively plain, rectangular airlocks.
  * * An /obj/map_helper/airlock_interior must be placed on the interior airlock set.
+ * * Defaults to being indestructible, as there's no in-game way to build new airlocks right now.
  */
 /obj/machinery/airlock_controller/autodetect
 
-#warn impl
+#warn impl - set indestructible on everything
 
 /**
  * Automatically builds its airlock by calculating the necessary geometry.
  * * Only works with relatively plain, rectangular airlocks.
  * * An /obj/map_helper/airlock_interior must be placed on the interior airlock set.
- * * Links to an /obj/shuttle_dock if one is detected.
+ * * Links to an /obj/shuttle_dock if one is detected on sitting next to its border.
  * * Defaults to being indestructible, as there's no in-game way to interact with a dock right now.
  */
 /obj/machinery/airlock_controller/autodetect/docking
