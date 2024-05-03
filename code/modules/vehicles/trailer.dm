@@ -74,7 +74,6 @@
 	if(istype(C, /obj/structure/closet))
 		var/obj/structure/closet/crate = C
 		crate.close()
-		crate.update_icon()
 
 	C.forceMove(loc)
 	C.setDir(dir)
