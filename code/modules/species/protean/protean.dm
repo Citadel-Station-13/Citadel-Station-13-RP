@@ -181,9 +181,9 @@
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/left)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/left)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
@@ -318,7 +318,7 @@
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"
-	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on NanoTrasen property. It must be renewed on a monthly basis."
+	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on Nanotrasen property. It must be renewed on a monthly basis."
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "permit-pan"
 /obj/item/clothing/accessory/permit/nanotech/set_name(var/new_name)
@@ -359,7 +359,7 @@
 			return
 
 	for(var/obj/item/hardsuit/protean/suit in contents)
-		force_equip_to_slot(suit, /datum/inventory_slot_meta/inventory/back)
+		force_equip_to_slot(suit, /datum/inventory_slot/inventory/back)
 		to_chat(src, SPAN_WARNING("You deploy your nanosuit."))
 		suit.toggle_seals(src, TRUE)
 		return

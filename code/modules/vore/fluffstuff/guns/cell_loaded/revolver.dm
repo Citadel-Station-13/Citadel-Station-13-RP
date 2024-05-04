@@ -46,10 +46,10 @@
 /obj/item/storage/secure/briefcase/nsfw_pack
 	name = "\improper NT-102b \'Hydra\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/nsfw_pack/PopulateContents()
+/obj/item/storage/secure/briefcase/nsfw_pack/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	for(var/path in subtypesof(/obj/item/ammo_casing/microbattery/combat))
@@ -58,10 +58,10 @@
 /obj/item/storage/secure/briefcase/nsfw_pack_hos
 	name = "\improper NT-102b \'Hydra\' gun kit"
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/nsfw_pack_hos/PopulateContents()
+/obj/item/storage/secure/briefcase/nsfw_pack_hos/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/cell_loaded/combat(src)
 	new /obj/item/ammo_magazine/cell_mag/combat(src)
 	new /obj/item/ammo_casing/microbattery/combat/lethal(src)

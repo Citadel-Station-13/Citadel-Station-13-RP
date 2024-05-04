@@ -84,7 +84,7 @@
 
 // Verb to remove everything.
 /obj/machinery/processor/verb/eject()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject Processor"
 	set src in oview(1)
 

@@ -35,6 +35,7 @@
 	var/output = "<div align='center'>"
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];game_preferences=1'>Game Preferences</A></p>"
 
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
@@ -75,7 +76,7 @@
 
 	output += "</div>"
 
-	panel = new(src, "Welcome","Welcome", 210, 280, src)
+	panel = new(src, "Welcome","Welcome", 210, 325, src)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
@@ -120,6 +121,14 @@
 		if(!client.reject_on_initialization_block())
 			return
 		client.prefs.ShowChoices(src)
+		return 1
+
+	if(href_list["game_preferences"])
+		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
+			return
+		client.preferences.ui_interact(src)
 		return 1
 
 	if(href_list["ready"])
@@ -349,8 +358,6 @@
 		return
 	var/savefile/F = get_server_news()
 	if(F)
-		client.prefs.lastnews = md5(F["body"])
-		SScharacters.queue_preferences_save(client.prefs)
 
 		var/dat = "<html><body><center>"
 		dat += "<h1>[F["title"]]</h1>"
@@ -362,6 +369,10 @@
 		var/datum/browser/popup = new(src, "Server News", "Server News", 450, 300, src)
 		popup.set_content(dat)
 		popup.open()
+
+		if(client.player.block_on_available())
+			client.player.player_misc["lastnews"] = md5(F["body"])
+			client.player.save()
 
 /mob/new_player/proc/time_till_respawn()
 	if(!ckey)

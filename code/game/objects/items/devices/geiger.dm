@@ -14,7 +14,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "geiger_off"
 	item_state = "multitool"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 100)
 

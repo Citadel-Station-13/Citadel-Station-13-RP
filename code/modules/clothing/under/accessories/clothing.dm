@@ -55,7 +55,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/poncho/equipped(mob/user, slot, flags) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
@@ -96,7 +96,7 @@
 
 /obj/item/clothing/accessory/poncho/roles/security
 	name = "security poncho"
-	desc = "A simple, comfortable cloak without sleeves. This one is black and red, standard NanoTrasen Security colors."
+	desc = "A simple, comfortable cloak without sleeves. This one is black and red, standard Nanotrasen Security colors."
 	icon_state = "secponcho"
 	item_state = "secponcho"
 
@@ -114,7 +114,7 @@
 
 /obj/item/clothing/accessory/poncho/roles/science
 	name = "science poncho"
-	desc = "A simple, comfortable cloak without sleeves. This one is white with purple trim, standard NanoTrasen Science colors."
+	desc = "A simple, comfortable cloak without sleeves. This one is white with purple trim, standard Nanotrasen Science colors."
 	icon_state = "sciponcho"
 	item_state = "sciponcho"
 
@@ -176,7 +176,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|ARMS
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/replika/klbr
@@ -337,7 +337,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/hawaii/red
@@ -364,7 +364,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/wcoat/red
@@ -416,7 +416,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/buttonup/untucked
@@ -434,7 +434,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
@@ -552,6 +552,16 @@
 	name = "Virgin Killer Sweater"
 	desc = "A white long sweater with a modest string to keep the otherwise immodest front piece from falling off. Compatible with a variety of chest sizes. It seems like it's made of a soft material."
 	icon_state = "virgin_sweater"
+
+/obj/item/clothing/accessory/sweater/milk
+	name = "Mega Milk sweater (f)"
+	desc = "A white shirt with blue sleeves. The words 'Mega Milk' have been written in black around the chest area. The shirt itself is quite well-fitting, accentuating the curves, with additional material to fit the wearer's chest."
+	icon_state = "milk_sweater_f"
+
+/obj/item/clothing/accessory/sweater/milk/male
+	name = "Mega Milk sweater (m)"
+	desc = "A white shirt with blue sleeves. The words 'Mega Milk' have been written in black around the chest area. The shirt itself is quite well-fitting, accentuating the curves."
+	icon_state = "milk_sweater_m"
 
 //***
 // End of sweaters

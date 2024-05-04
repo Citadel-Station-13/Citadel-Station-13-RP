@@ -133,11 +133,18 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	icon_state = "pumpdout"
 	tag_addon = "_pump_out_external"
 
+/obj/map_helper/airlock/atmos/chamber_temperature_adjuster
+	name = "chamber temperature adjuster"
+	icon_state = "temp"
+	tag_addon = "_chamber_temperature"
+	my_device_type = /obj/machinery/atmospherics/component/unary/env_heat_pump
+
 /obj/map_helper/airlock/atmos/scrubber
 	name = "chamber scrubber"
 	my_device_type = /obj/machinery/atmospherics/component/unary/vent_scrubber
 	icon_state = "scrubber"
 	tag_addon = "_scrubber"
+
 /*
 	Sensors - did you know they function as buttons? You don't also need a button.
 */

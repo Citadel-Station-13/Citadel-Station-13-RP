@@ -87,3 +87,21 @@
 
 	var/mob/living/silicon/pai/user = owner
 	button_visibility = (user.loc == user.card)
+
+/// Hologram Placement
+/datum/action/pai/place_hologram
+	name = "Place Hologram"
+	desc = "Place a hologram of a scanned object on the floor."
+	button_icon_state = "pai_place_hologram"
+
+/datum/action/pai/place_hologram/on_trigger(mob/living/silicon/pai/user)
+	user.prompt_hologram_placement()
+
+/// Delete All Holograms
+/datum/action/pai/delete_holograms
+	name = "Delete All Holograms"
+	desc = "Delete all placed holograms."
+	button_icon_state = "pai_delete_holograms"
+
+/datum/action/pai/delete_holograms/on_trigger(mob/living/silicon/pai/user)
+	user.delete_all_holograms()

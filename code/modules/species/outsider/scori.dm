@@ -11,7 +11,7 @@
 	known as Ashlanders. Until recently, the Scori were believed to have gone extinct some tens of thousands of years ago \
 	when Surt underwent an as yet unknown cataclysm. Instead, the modern Scori seem to have descended from the cataclysm's \
 	survivors. Dwelling deep underground in caves, or travelling across the planet's surface in nomadic caravans, sightings \
-	of Scori tribesmen were historically treated as hoaxes. NanoTrasen pathfinding teams operating in the wake of the expedition \
+	of Scori tribesmen were historically treated as hoaxes. Nanotrasen pathfinding teams operating in the wake of the expedition \
 	to Kristen's Harmony have since confirmed the presence of a nearby Scori tribe."
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Scori"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)

@@ -238,12 +238,9 @@
 	container_name = "Glacicorn crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack/hydro/cow
+/datum/supply_pack/hydro/furnacegrub
 	name = "Furnace Grub crate"
 	cost = 40
 	container_type = /obj/structure/largecrate/animal/furnacegrub
 	container_name = "Furnace Grub crate"
 	access = ACCESS_GENERAL_BOTANY
-
-
-

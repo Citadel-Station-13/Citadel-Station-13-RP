@@ -9,7 +9,7 @@
 	category = LOADOUT_CATEGORY_XENOWEAR
 
 /datum/loadout_entry/xeno/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/shoes
 	slot = SLOT_ID_SHOES
@@ -41,7 +41,7 @@
 	legacy_species_lock = SPECIES_TAJ
 
 /datum/loadout_entry/xeno/tajaran/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/tajaran/shoes
 	slot = SLOT_ID_SHOES
@@ -66,7 +66,7 @@
 	legacy_species_lock = SPECIES_PROMETHEAN
 
 /datum/loadout_entry/xeno/promethean/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/promethean/shoes
 	slot = SLOT_ID_SHOES
@@ -90,7 +90,7 @@
 /datum/loadout_entry/xeno/teshari
 
 /datum/loadout_entry/xeno/teshari/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/teshari/shoes
 	slot = SLOT_ID_SHOES
@@ -122,7 +122,7 @@
 	legacy_species_lock = SPECIES_PHORONOID
 
 /datum/loadout_entry/xeno/phoronoid/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/phoronoid/shoes
 	slot = SLOT_ID_SHOES
@@ -156,7 +156,7 @@
 	// legacy_species_lock = SPECIES_SKRELL
 
 /datum/loadout_entry/xeno/skrell/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/skrell/shoes
 	slot = SLOT_ID_SHOES
@@ -189,7 +189,7 @@
 	legacy_species_lock = SPECIES_UNATHI
 
 /datum/loadout_entry/xeno/unathi/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/unathi/shoes
 	slot = SLOT_ID_SHOES
@@ -222,7 +222,7 @@
 	legacy_species_lock = SPECIES_VOX
 
 /datum/loadout_entry/xeno/vox/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/vox/shoes
 	slot = SLOT_ID_SHOES

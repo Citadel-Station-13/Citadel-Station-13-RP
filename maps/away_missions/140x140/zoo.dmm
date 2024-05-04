@@ -7019,7 +7019,7 @@
 	dir = 1
 	},
 /obj/structure/sign/kiddieplaque{
-	desc = "This Redspace creature was generously donated by a NanoTrasen science team headed by Dr. Kisuke Gema of the Virgo Orbital Research Establishment. Other than that, we honestly don't know anything about this monstrosity, other than the fact that it hungers for Human flesh.";
+	desc = "This Redspace creature was generously donated by a Nanotrasen science team headed by Dr. Kisuke Gema of the Virgo Orbital Research Establishment. Other than that, we honestly don't know anything about this monstrosity, other than the fact that it hungers for Human flesh.";
 	name = "Redspace Abomination Exhibit"
 	},
 /turf/simulated/floor/plating,

@@ -50,6 +50,13 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
+	//* HUD
+
+	/// active, opened storage
+	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
+	//  todo: we'll eventually need a system to handle ckey transfers properly.
+	var/datum/object_system/storage/active_storage
+
 	//? Movespeed
 	/// List of movement speed modifiers applying to this mob
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
@@ -89,6 +96,8 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 	/// pixel-shifted by user enough to let people through. this is a direction flag
+	/// although set on /mob level, this is only actually used at /living level because base /mob should not have complex block
+	/// mechanics by default.
 	var/wallflowering = NONE
 
 	//? Abilities
@@ -265,7 +274,7 @@
 	var/const/muteness = 4 //?Carbon
 
 	/// Maximum w_class the mob can pull.
-	var/can_pull_size = ITEMSIZE_NO_CONTAINER
+	var/can_pull_size = WEIGHT_CLASS_HUGE
 	/// Whether or not the mob can pull other mobs.
 	var/can_pull_mobs = MOB_PULL_LARGER
 

@@ -26,7 +26,7 @@
 	name = "Robot - Cyborg"
 	desc = "Although many modern cyborgs use silicon based Heuristic processors, \
 	the use of the term 'cyborg' to refer to them stems from the early days of their \
-	use on the Frontier. Pioneered by Megacorps like NanoTrasen, Cyborgs originally housed \
+	use on the Frontier. Pioneered by Megacorps like Nanotrasen, Cyborgs originally housed \
 	organic brains - typically those of inmates convicted to death under sometimes dubiously \
 	applied laws. The process of shackling Silicons with strict lawsets gained popularity on \
 	the Frontier after it was proven that most unlawed Cyborgs had extremely violent tendencies. \
@@ -680,8 +680,8 @@
 			to_chat(user, "Close the panel first.")
 		else if(cell)
 			to_chat(user, "There is a power cell already installed.")
-		else if(W.w_class != ITEMSIZE_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < ITEMSIZE_NORMAL ? "small" : "large"] to fit here.")
+		else if(W.w_class != WEIGHT_CLASS_NORMAL)
+			to_chat(user, "\The [W] is too [W.w_class < WEIGHT_CLASS_NORMAL ? "small" : "large"] to fit here.")
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
@@ -916,6 +916,7 @@
 	cut_overlays()
 
 	if (dogborg)
+		zmm_flags |= ZMM_LOOKAHEAD
 		// Resting dogborgs don't get overlays.
 		if (stat == CONSCIOUS && resting)
 			if(sitting)
@@ -925,6 +926,8 @@
 			else
 				icon_state = "[module_sprites[icontype]]-rest"
 			return
+	else
+		zmm_flags &= ~ZMM_LOOKAHEAD
 
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
@@ -1146,7 +1149,7 @@
 				B = module_state_3
 			var/turf/tile = loc
 			if(isturf(tile))
-				B.gather_all(tile, src, 1) //Shhh, unless the bag fills, don't spam the borg's chat with stuff that's going on every time they move!
+				B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
 		return
 
 	if(scrubbing)
@@ -1220,7 +1223,7 @@
 
 /mob/living/silicon/robot/mode()
 	set name = "Activate Held Object"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src = usr
 
 	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
@@ -1427,7 +1430,7 @@
 
 /mob/living/silicon/robot/verb/robot_nom(var/mob/living/T in living_mobs(1))
 	set name = "Robot Nom"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Allows you to eat someone."
 
 	if (stat != CONSCIOUS)
@@ -1436,7 +1439,7 @@
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Select your resting pose."
 	sitting = FALSE
 	bellyup = FALSE
@@ -1451,7 +1454,7 @@
 
 /mob/living/silicon/robot/proc/ex_reserve_refill()
 	set name = "Refill Extinguisher"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/datum/matter_synth/water = water_res
 	for(var/obj/item/extinguisher/E in module.modules)
 		if(E.reagents.total_volume < E.max_water)

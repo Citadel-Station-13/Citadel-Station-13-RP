@@ -39,7 +39,7 @@
 	add_fingerprint(user, 0, C)
 	add_fingerprint(user, 0, src)
 	if(istype(C))
-		if(C.w_class <= ITEMSIZE_NORMAL)
+		if(C.w_class <= WEIGHT_CLASS_NORMAL)
 			C.forceMove(src)
 			stored = C
 			to_chat(user, "You slide [C] into the compartment and close it.")

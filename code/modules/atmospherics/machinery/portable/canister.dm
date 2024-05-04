@@ -9,7 +9,7 @@
 	integrity = 300
 	integrity_max = 300
 	integrity_failure = 100
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
 

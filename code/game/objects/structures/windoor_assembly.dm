@@ -17,7 +17,7 @@
 	density = FALSE
 	pass_flags_self = ATOM_PASS_GLASS
 	dir = NORTH
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	var/obj/item/airlock_electronics/electronics = null
 	var/created_name = null
@@ -252,7 +252,7 @@
 //Rotates the windoor assembly clockwise
 /obj/structure/windoor_assembly/verb/rotate_clockwise()
 	set name = "Rotate Windoor Assembly Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (src.anchored)
@@ -272,7 +272,7 @@
 //Flips the windoor assembly, determines whather the door opens to the left or the right
 /obj/structure/windoor_assembly/verb/flip()
 	set name = "Flip Windoor Assembly"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(src.facing == "l")

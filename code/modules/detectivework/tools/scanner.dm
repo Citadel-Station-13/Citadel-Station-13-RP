@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic"
 	var/list/stored = list()
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
@@ -23,7 +23,7 @@
 		return
 
 	if(reveal_fingerprints)
-		if((!( istype(target.dna, /datum/dna) ) || target.item_by_slot(SLOT_ID_GLOVES)))
+		if((!( istype(target.dna, /datum/dna) ) || target.item_by_slot_id(SLOT_ID_GLOVES)))
 			to_chat(user, "<span class='notice'>No fingerprints found on [target]</span>")
 			flick("[icon_state]0",src)
 			return
@@ -138,7 +138,7 @@
 
 /obj/item/detective_scanner/verb/examine_data()
 	set name = "Examine Forensic Data"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	display_data(usr)
@@ -188,7 +188,7 @@
 
 /obj/item/detective_scanner/verb/wipe()
 	set name = "Wipe Forensic Data"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if (alert("Are you sure you want to wipe all data from [src]?",,"Yes","No") == "Yes")

@@ -158,7 +158,7 @@
 
 /obj/structure/bed/chair/verb/rotate_clockwise()
 	set name = "Rotate Chair Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(!usr || !isturf(usr.loc))
@@ -603,7 +603,7 @@
 	attack_verb = list("bashed", "battered", "chaired")
 	damage_force = 1
 	throw_force = 3
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
 	attack_sound = 'sound/effects/metal_chair_slam.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'

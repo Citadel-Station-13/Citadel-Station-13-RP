@@ -35,7 +35,7 @@
 /obj/item/clothing/head/helmet/space/verb/toggle_camera()
 	set name = "Toggle Helmet Camera"
 	set desc = "Turn your helmet's camera on or off."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(usr.stat || usr.restrained() || usr.incapacitated())
 		return
@@ -68,7 +68,7 @@
 	desc = "A suit that protects against low pressure environments."
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "space"
-	w_class = ITEMSIZE_HUGE // So you can't fit this in your bag and be prepared at all times.
+	w_class = WEIGHT_CLASS_HUGE // So you can't fit this in your bag and be prepared at all times.
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	atom_flags = PHORONGUARD

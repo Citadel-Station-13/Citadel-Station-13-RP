@@ -14,7 +14,7 @@
 	caliber = "musket"
 
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	one_handed_penalty = 30 //You should really use both hands
 
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
@@ -33,7 +33,7 @@
 	if(!has_powder)
 		to_chat(user, SPAN_WARNING("\The [src] is not loaded with gunpowder!"))
 		return FALSE
-	if(!user?.client?.is_preference_enabled(/datum/client_preference/help_intent_firing) && user.a_intent == INTENT_HELP)
+	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
 		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
 		return FALSE
 	if(safety_state == GUN_SAFETY_ON)
@@ -66,7 +66,7 @@
 	desc = "An ivory container for gunpowder."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "powderhorn"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5)
@@ -117,7 +117,7 @@
 	wielded_item_state = null
 
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	one_handed_penalty = 0
 
 /obj/item/gun/ballistic/musket/pistol/brass

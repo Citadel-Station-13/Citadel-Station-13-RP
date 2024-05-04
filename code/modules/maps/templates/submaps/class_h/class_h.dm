@@ -50,6 +50,7 @@
 	name = "Desert Temple"
 	suffix = "desertruins3H.dmm"
 	cost = 25
+	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/class_h/DesertRuins4H
 	name = "Desert Tomb"
@@ -73,12 +74,13 @@
 	suffix = "highnoonH.dmm"
 	cost = 25
 	fixed_orientation = TRUE
-
+	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/class_h/minesH
 	name = "Spidery Mines"
 	suffix = "minesH.dmm"
 	cost = 25
+	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/class_h/oasisH
 	name = "Desert Oasis"
@@ -103,7 +105,8 @@
 /datum/map_template/submap/level_specific/class_h/AuxiliaryResearchFacility
 	name = "Research Facility"
 	suffix = "AuxiliaryResearchFacility.dmm"
-	cost = 20
+	cost = 25
+	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/class_h/saloon
 	name = "Desert Saloon"
@@ -119,8 +122,50 @@
 	name = "Desert Vault"
 	suffix = "BunkerH.dmm"
 	cost = 20
+	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/class_h/covert_post
 	name = "Clown Listening Post"
 	suffix = "covert_post.dmm"
 	cost = 15
+
+/datum/map_template/submap/level_specific/class_h/oilwell
+	name = "Oil Well"
+	suffix = "oilwellH.dmm"
+	cost = 10
+
+/datum/map_template/submap/level_specific/class_h/oilwell
+	name = "Hunter's Camp"
+	suffix = "huntercamp.dmm"
+	cost = 15
+
+/datum/map_template/submap/level_specific/class_h/wastedump
+	name = "Hazardous Waste Dump"
+	suffix = "wastedump.dmm"
+	cost = 10
+
+/datum/map_template/submap/level_specific/class_h/turretnest
+	name = "Turret Nest"
+	suffix = "turretnest.dmm"
+	cost = 10
+
+/datum/map_template/submap/level_specific/class_h/refinery
+	name = "Fuel Refinery"
+	suffix = "refinery.dmm"
+	cost = 10
+
+/datum/map_template/submap/level_specific/class_h/snipernest
+	name = "Sniper Nest"
+	suffix = "snipernest.dmm"
+	cost = 20
+
+/datum/map_template/submap/level_specific/class_h/miningcamp
+	name = "Mining Camp"
+	suffix = "miningcamp.dmm"
+	cost = 10
+
+/datum/map_template/submap/level_specific/class_h/piratehideout
+	name = "Pirate Hideout"
+	suffix = "piratehideout.dmm"
+	cost = 25
+	allow_duplicates = FALSE

@@ -11,6 +11,8 @@
 	var/tag_interior_sensor
 	var/tag_airlock_mech_sensor
 	var/tag_shuttle_mech_sensor
+	var/tag_scrubber
+	var/tag_temperature_adjuster
 	var/tag_secure = 0
 	var/list/dummy_terminals = list()
 	var/cycle_to_external_air = 0

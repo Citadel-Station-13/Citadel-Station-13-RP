@@ -399,7 +399,10 @@
 		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
 			var/overflow_brute = brute - can_inflict_brute
 			// keep allowing it, but, diminishing returns
-			var/damage_anyways_brute = brute * min(1, 1 / ((brute_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
+			var/damage_anyways_brute = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
+				overflow_brute * min(1, 1 / ((max(brute_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
+			)
+			overflow_brute -= damage_anyways_brute
 			if(can_cut)
 				if(sharp && !edge)
 					create_wound( PIERCE, damage_anyways_brute )
@@ -413,11 +416,13 @@
 		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
 			create_wound( BURN, burn )
-		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
+		else
 			var/overflow_burn = burn - can_inflict_burn
-			// keep allowing it, but, diminishing returns
-			var/damage_anyways_burn = burn * min(1, 1 / ((burn_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
-			create_wound( BURN, damage_anyways_burn )
+			var/damage_anyways_burn = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
+				overflow_burn  * min(1, 1 / ((max(burn_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
+			)
+			overflow_burn -= damage_anyways_burn
+			create_wound(BURN, damage_anyways_burn + can_inflict_burn)
 			// rest goes into shock
 			owner.shock_stage += overflow_burn * 0.33
 
@@ -776,7 +781,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				wounds -= W    //TODO: robot wounds for robot limbs
 				src.update_damages()
 				if (update_icon())
-					owner.UpdateDamageIcon(1)
+					owner.update_damage_overlay(1)
 		return
 
 	for(var/datum/wound/W as anything in wounds)
@@ -820,7 +825,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	// sync the organ's damage with its wounds
 	src.update_damages()
 	if (update_icon())
-		owner.UpdateDamageIcon(1)
+		owner.update_damage_overlay(1)
 
 //Updates brute_damn and burn_damn from wound damages. Updates BLEEDING status.
 /obj/item/organ/external/proc/update_damages()
@@ -956,7 +961,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	spawn(1)
 		if(istype(victim))
 			victim.update_health()
-			victim.UpdateDamageIcon()
+			victim.update_damage_overlay()
 			victim.update_icons_body()
 		else
 			victim.update_icons()
@@ -979,7 +984,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(DROPLIMB_BURN)
 			new /obj/effect/debris/cleanable/ash(droploc)
 			for(var/obj/item/I in src)
-				if(I.w_class > ITEMSIZE_SMALL && !istype(I,/obj/item/organ))
+				if(I.w_class > WEIGHT_CLASS_SMALL && !istype(I,/obj/item/organ))
 					I.forceMove(droploc)
 			qdel(src)
 		if(DROPLIMB_BLUNT)
@@ -1001,7 +1006,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			for(var/obj/item/I in src)
-				if(I.w_class <= ITEMSIZE_SMALL)
+				if(I.w_class <= WEIGHT_CLASS_SMALL)
 					qdel(I)
 					continue
 				I.forceMove(droploc)
@@ -1298,7 +1303,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	for(var/atom/movable/implant in implants)
 		//large items and non-item objs fall to the floor, everything else stays
 		var/obj/item/I = implant
-		if(istype(I) && I.w_class < ITEMSIZE_NORMAL)
+		if(istype(I) && I.w_class < WEIGHT_CLASS_NORMAL)
 			implant.forceMove(victim.drop_location())
 		else
 			implant.forceMove(src)

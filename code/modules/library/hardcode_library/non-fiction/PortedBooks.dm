@@ -91,7 +91,7 @@ Category: Non-Fiction
 					<body>
 					<div class="border">
 					In a fringe system, the Relan system, there is a history of these actions. Because of the poverty of the system, companies neglected to provide properly for stations housing families - systems such as power and gravity failed regularly, and even life support was not nearly as reliable as is required in Sol space. This pushed the natural tension between the people and the faraway rulers to the breaking point far more quickly. The people won, and companies were greatly neutered, losing about 85% of their operations on moons and asteroids within the system. There are now two governments within the system - the Relan System Authority, based on the system's only garden world, Taron, essentially a puppet-state of the companies, and the Free Relan Alliance, the 'spacer' government of the stations, asteroids, and moons that rebelled and won their freedom. Despite the planet being wealthier, and the spacers having far tougher conditions, standards of living are much higher for the spacers.<br><br>
-					It is without a doubt that this will happen in Solar space if nothing changes. Corporations such as NanoTrasen and Grayson must, <i>must</i> give the people of their stations the authority to govern themselves.
+					It is without a doubt that this will happen in Solar space if nothing changes. Corporations such as Nanotrasen and Grayson must, <i>must</i> give the people of their stations the authority to govern themselves.
 					</div>
 					</body>
 					</html>

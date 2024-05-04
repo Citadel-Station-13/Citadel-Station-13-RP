@@ -10,7 +10,7 @@
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
 	damage_force = 6
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
@@ -31,7 +31,6 @@
 	return(BRUTELOSS)
 
 /obj/item/tool/screwdriver/Initialize(mapload)
-	. = ..()
 	if(random_color)
 		switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 			if ("red")
@@ -58,6 +57,8 @@
 
 	if (prob(75))
 		src.pixel_y = rand(0, 16)
+
+	return ..()
 
 /obj/item/tool/screwdriver/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent != INTENT_HARM)
@@ -127,7 +128,7 @@
 	item_state = "screwdriver_black"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
 	weight = ITEM_WEIGHT_HYBRID_TOOLS
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	tool_sound = 'sound/effects/uncloak.ogg'
 	tool_speed = 0.4
 	random_color = FALSE
@@ -154,7 +155,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
 	damage_force = 8
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 8
 	throw_speed = 2
 	throw_range = 3//it's heavier than a screw driver/wrench, so it does more damage, but can't be thrown as far
