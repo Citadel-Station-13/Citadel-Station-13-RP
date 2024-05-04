@@ -524,15 +524,19 @@
 		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin to merge and mold with [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, it begins to feel foreign and dead, emanating from them...</span>")
 	if(do_after(src,15 SECONDS))
 		switch(atmos_biomorph)
-			if("flexible")
+			if("flexible") // Default state
 				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
-				target.species.hazard_low_pressure = 1 //So they aren't ALWAYS immune to low pressure? I think they start as flexible - Wizard
+				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
 				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
 				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("compact")
 				target.species.warning_low_pressure = 50
 				target.species.hazard_low_pressure = 0
+				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("elastic")
+				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
+				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
 				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE + 200
 				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 400
 
