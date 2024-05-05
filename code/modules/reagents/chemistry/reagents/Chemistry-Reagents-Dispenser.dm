@@ -1,4 +1,4 @@
-#define ETHANOL_MET_DIVISOR 10
+#define ETHANOL_MET_DIVISOR 20
 
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
@@ -21,6 +21,8 @@
 	var/adj_temp = 0
 	var/targ_temp = 310
 	var/halluci = 0
+
+	data=0
 
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
@@ -56,29 +58,44 @@
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
 		M.adjustToxLoss(intolerant_dose)
 		return 0
-	var/effect_increment = 6
-	var/added_per_tick=1/ETHANOL_MET_DIVISOR
-	if(effective_dose >= effect_increment) // Early warning
-		if(M.dizziness<100)
-			M.make_dizzy(16) // only has effect at 100 or higher, so best get it up fast
-		M.make_dizzy(3+added_per_tick) // It is decreased at the speed of 3 per tick
-	if(effective_dose >= effect_increment * 2) // Slurring
-		if(M.slurring < 90)
-			M.slurring+=1+added_per_tick
-	if(effective_dose >= effect_increment * 3) // Confusion - walking in random directions
-		M.Confuse(6)
-	if(effective_dose >= effect_increment * 4) // Blurry vision
-		if(M.eye_blurry<30)
-			M.eye_blurry += 1+added_per_tick
-	if(effective_dose >= effect_increment * 5) // Drowsyness - periodically falling asleep
-		if(M.drowsyness < 60)
-			M.drowsyness += 1+added_per_tick
-	if(effective_dose >= effect_increment * 6) // Toxic dose
-		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod*removed)
-	if(effective_dose >= effect_increment * 7) // Pass out
-		M.afflict_unconscious(2.1 SECONDS)
-		M.afflict_sleeping(2.1 SECONDS)
-	return effective_dose
+	var/effect_level=round(effective_dose/6)
+	if(effect_level != data)
+		var/lowering=(data>effect_level)
+		data=effect_level
+		if(lowering)
+			switch(effect_level)
+				if(0)
+					to_chat(M,SPAN_NOTICE("You no longer feel under the influence."))
+				if(1)
+					to_chat(M,SPAN_DANGER("You are no longer slurring your words as much."))
+				if(2)
+					to_chat(M,SPAN_DANGER("You can walk straight again."))
+				if(3)
+					to_chat(M,SPAN_DANGER("You're not seeing double anymore."))
+				if(4)
+					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
+				if(5)
+					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
+		else
+			switch(effect_level)
+				if(1)
+					to_chat(M,SPAN_DANGER("You're starting to feel a little tipsy."))
+				if(2)
+					to_chat(M,SPAN_DANGER("You're starting to slur your words."))
+				if(3)
+					to_chat(M,SPAN_DANGER("You can barely walk straight!"))
+				if(4)
+					to_chat(M,SPAN_DANGER("You're seeing double!."))
+				if(5)
+					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy!"))
+				if(6)
+					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk!"))
+	if(effect_level>=6)
+		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
+		if(volume>36 + REM)
+			volume-=REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
+
+	return
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
