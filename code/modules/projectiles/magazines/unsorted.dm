@@ -319,7 +319,7 @@
 
 /////// 12.7mm / 50 caliber caseless /////////
 
-/obj/item/ammo_magazine/fiftycalcaseless
+/obj/item/ammo_magazine/mfiftycalcaseless
 	name = "Wild Hunt magazine (12.7mm caseless)"
 	ammo_type = /obj/item/ammo_casing/fiftycalcaseless
 	icon_state = "caseless-127"
@@ -327,6 +327,16 @@
 	mag_type = MAGAZINE
 	max_ammo = 20
 	multiple_sprites = 1
+
+/////// phoron shrapnel shotgun //////
+
+/obj/item/ammo_magazine/mphoronshot //spawns with a random amt of ammo inside of it
+	name "compressed phoron matter container"
+	desc = "A compressed matter container meant for the Gorlex SHRAPNEL-SPITTER shotgun. \n They're in good shape for the shape they're in, / \n but God, I wonder how they think they can win, / \n with phoron rolling down their skin."
+	max_ammo = 50 //this will be completely randomd
+
+/obj/item/ammo_magazine/mphoronshot/Initialize(mapload)
+	. = ..()
 
 ///////// 9mm /////////
 

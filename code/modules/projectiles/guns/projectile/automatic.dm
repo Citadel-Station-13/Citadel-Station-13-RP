@@ -360,11 +360,14 @@
 	return
 
 
-// phoron war AA-12 that fires phoron shards, no reloads.
+// phoron war AA-12 that fires phoron shards, no reloads. spawns with random amt of ammo in mag.
 
 /obj/item/gun/ballistic/automatic/as24/phoron
 	name = "Gorlex 'SHRAPNEL-SPITTER' Phoron Shotgun"
 	desc = "A shotgun from the Phoron Wars. It lacks conventional ammo, instead using compressed matter cartridges similar to those in RCD's. Coils accelerate a ferromagnetic, self-oxidizing cloud of phoron alloys to deadly speed. Lack of traditional cycling means it can fire blindingly fast."
+	caliber = "phoronshrap"
+	magazine_type = /obj/item/ammo_magazine/mphoronshot
+	allowed_magazines = list(/obj/item/ammo_magazine/mphoronshot)
 
 	firemodes = list(
 		list(mode_name="full auto", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1),

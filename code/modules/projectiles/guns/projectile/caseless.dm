@@ -40,7 +40,7 @@
 		list(mode_name="4-round bursts", 	burst=4, 	fire_delay=null, move_delay=6, 	burst_accuracy=list(0,-5,-10,-15), dispersion=list(0.0, 0.2, 0.4, 0.6)),//Small damage countered by tight spread.
 		)
 
-/obj/item/gun/ballistic/caseless/wild_hunt //extremely powerful and rare rifle,
+/obj/item/gun/ballistic/caseless/wild_hunt //extremely powerful and rare rifle - meant to spawn with maybe 2 mags extra, or be for asset protection/ert/solo antags/etc
 	name = "Gorlex WILD-HUNT 12.7mm Caseless Rifle"
 	desc = "An ancient rifle of the Phoron Wars. For when you want to kill something with no negotiation. The Wild Hunt is a beast that kicks like a mule and fires experimental caseless phoron rounds. It has, obviously, horrific results, setting targets on fire after giving them a golf-ball sized hole. Now generally disused due to the extreme maintenance cost and impracticality. Nobody makes these, anymore."
 	icon_state = "wild-hunt"
@@ -49,10 +49,10 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/fiftycalcaseless
+	magazine_type = /obj/item/ammo_magazine/mfiftycalcaseless
 	recoil = 1 //mein leiben
 	accuracy = -10
-	allowed_magazines = list(/obj/item/ammo_magazine/fiftycalcaseless)
+	allowed_magazines = list(/obj/item/ammo_magazine/mfiftycalcaseless)
 	one_handed_penalty = 100 //you simply do not
 
 	firemodes = list(
