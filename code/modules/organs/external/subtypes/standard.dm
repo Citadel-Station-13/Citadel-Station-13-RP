@@ -276,7 +276,7 @@
 	if(owner)
 		if(iscarbon(owner))
 			name = "[owner.real_name]'s head"
-			//spawn(1) //This appears to do nothing and causes the checks above it to become stale. If this needs to be added back in consider moving it above if(owner). ~Shadowcat
+			
 				owner.update_hair()
 	get_icon()
 	..()
