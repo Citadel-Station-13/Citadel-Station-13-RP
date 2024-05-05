@@ -1,4 +1,4 @@
-#define ETHANOL_MET_DIVISOR 20
+#define ETHANOL_MET_DIVISOR 10
 
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
