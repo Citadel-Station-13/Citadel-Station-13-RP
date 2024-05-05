@@ -10,7 +10,7 @@
 
 	metabolism = REM/ETHANOL_MET_DIVISOR
 
-	ingest_met = REM * 2
+	ingest_met = REM * 5
 
 	var/nutriment_factor = 0
 	var/hydration_factor = 0
@@ -59,8 +59,8 @@
 	var/effect_increment = 6
 	var/added_per_tick=1/ETHANOL_MET_DIVISOR
 	if(effective_dose >= effect_increment) // Early warning
-		if(M.dizziness<80)
-			M.make_dizzy(17) // only has effect at 100 or higher, so best get it up fast
+		if(M.dizziness<100)
+			M.make_dizzy(16) // only has effect at 100 or higher, so best get it up fast
 		M.make_dizzy(3+added_per_tick) // It is decreased at the speed of 3 per tick
 	if(effective_dose >= effect_increment * 2) // Slurring
 		if(M.slurring < 90)
