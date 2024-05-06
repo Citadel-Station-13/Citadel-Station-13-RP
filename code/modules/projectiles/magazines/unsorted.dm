@@ -334,9 +334,8 @@
 	name = "compressed phoron matter container"
 	desc = "A compressed matter container meant for the Gorlex SHRAPNEL-SPITTER shotgun. \n They're in good shape for the shape they're in, / \n but God, I wonder how they think they can win, / \n with phoron rolling down their skin."
 	max_ammo = 50 //this will be completely randomd
-	casing_flags = CASING_DELETE\
 	caliber = "phoronshrap"
-	ammo_type =
+	ammo_type = /obj/item/ammo_casing/aphoronshot
 
 /obj/item/ammo_magazine/mphoronshot/Initialize(mapload)
 	. = ..()

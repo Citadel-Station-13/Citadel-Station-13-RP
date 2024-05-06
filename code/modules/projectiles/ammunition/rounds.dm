@@ -703,4 +703,4 @@
 	name = "compressed phoron brick"
 	desc = "Phoron stabilized with a platinum alloy and tenously lined with magnesium-oxide strips. Somehow, the act of firing manages to chemically alter the phoron-alloy and ignite the magnesium, with horrific results."
 	casing_flags = CASING_DELETE
-
+	projectile_type = /obj/projectile/scatter/phoronshot

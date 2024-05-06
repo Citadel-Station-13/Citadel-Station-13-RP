@@ -24,7 +24,7 @@
 
 /obj/item/gun/ballistic/caseless/usmc
 	name = "M41A Pulse Rifle"
-	desc = "A relic dating back a very, very long time. The former primary battle rifle of the  United Terran Marine Corps, disused due to cost and lack of need. Still preferred by many. Loads using 10x24mm caseless Magazines"
+	desc = "A relic of the Phoron Wars and a more violent age. The former primary battle rifle of the United Terran Marine Corps. It's now discontinued, like most caseless designs, due to cost and lack of need. Still preferred by many. Loads using 10x24mm caseless Magazines."
 	icon_state = "usmc"
 	item_state = "usmc"
 	w_class = WEIGHT_CLASS_BULKY
