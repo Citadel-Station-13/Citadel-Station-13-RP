@@ -35,6 +35,8 @@
 	magazine_type = /obj/item/ammo_magazine/m10x24mm/small
 	allowed_magazines = list(/obj/item/ammo_magazine/m10x24mm/small, /obj/item/ammo_magazine/m10x24mm/med, /obj/item/ammo_magazine/m10x24mm/large)
 	recoil = 0
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	firemodes = list(
 		list(mode_name="semiauto",      	burst=1, 	fire_delay=0,    move_delay=null,	burst_accuracy=null, dispersion=null),
 		list(mode_name="4-round bursts", 	burst=4, 	fire_delay=null, move_delay=6, 	burst_accuracy=list(0,-5,-10,-15), dispersion=list(0.0, 0.2, 0.4, 0.6)),//Small damage countered by tight spread.
@@ -54,6 +56,8 @@
 	accuracy = -10
 	allowed_magazines = list(/obj/item/ammo_magazine/mfiftycalcaseless)
 	one_handed_penalty = 100 //you simply do not
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto",      	burst=1, 	fire_delay=0,    move_delay=null,	burst_accuracy=null, dispersion=null),
