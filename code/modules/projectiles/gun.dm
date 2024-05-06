@@ -321,10 +321,10 @@
 						explosion(get_turf(src), -1, 0, 2, 3)
 						qdel(src)
 					if(11 to 49)
-						to_chat(user, "<span class='notice'>You fail to disrupt \the electronic warfare suite.</span>")
+						to_chat(user, "<span class='notice'>You fail to disrupt the electronic warfare suite.</span>")
 						return
 					if(50 to 100)
-						to_chat(user, "<span class='notice'>You disrupt \the electronic warfare suite.</span>")
+						to_chat(user, "<span class='notice'>You disrupt the electronic warfare suite.</span>")
 						scrambled = 1
 		else
 			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
@@ -336,7 +336,7 @@
 			if(do_after(user, 60* A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
-						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
+						to_chat(user, "<span class='danger'>You twist the firing pin as you tug, destroying the firing pin.</span>")
 						pin = null
 					if(11 to 74)
 						to_chat(user, "<span class='notice'>You grasp the firing pin, but it slips free!</span>")
