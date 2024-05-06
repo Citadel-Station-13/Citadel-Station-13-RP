@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+// todo: buildable
+
 /**
  * Airlock controllers
  *
@@ -18,7 +20,7 @@
 	//* Configuration
 	/// mode
 	/// see defines for AIRLOCK_CONFIG_MODE_*.
-	var/config_cycle_mode = AIRLOCK_CONFIG_MODE_FULL_REPLACE
+	var/config_cycle_mode = AIRLOCK_CONFIG_MODE_CLASSIC
 	/// minimum allowable pressure during cycling
 	/// this overrides requested pressure by the environment!
 	/// if you set it to a high value, people will go flying.
@@ -35,8 +37,14 @@
 
 	//* Environments
 	/// interior environment settings
+	///
+	/// * Mappers: Set mode to MANUAL and set this to an atmosphere path to force it to something.
+	/// * You cannot have this be a gas string! That support hasn't been coded yet.
 	var/datum/airlock_environment/interior_environment
 	/// exterior environment settings
+	///
+	/// * Mappers: Set mode to MANUAL and set this to an atmosphere path to force it to something.
+	/// * You cannot have this be a gas string! That support hasn't been coded yet.
 	var/datum/airlock_environment/exterior_environment
 	/// interior environment mode
 	var/interior_environment_mode = AIRLOCK_ENVIRONMENT_AUTODETECT
@@ -96,10 +104,8 @@
 	var/op_cycle
 	/// next operation cycle
 	var/static/op_cycle_next = 0
-	/// what to call on success
-	var/datum/callback/op_on_success
-	/// what to call on failure or abort
-	var/datum/callback/op_on_failure
+	/// what to call on finish with (status: AIRLOCK_CYCLE_OP_* define)
+	var/datum/callback/op_on_finish
 
 /obj/machinery/airlock_controller/Initialize(mapload)
 	..()
@@ -117,20 +123,26 @@
 	. = ..()
 	switch(interior_environment_mode)
 		if(AIRLOCK_ENVIRONMENT_MANUAL)
+			interior_environment = new /datum/airlock_environment(interior_environment)
 		if(AIRLOCK_ENVIRONMENT_ADAPTIVE)
+			interior_environment = null
 		if(AIRLOCK_ENVIRONMENT_IGNORE)
+			interior_environment = null
 		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
+			interior_environment = new /datum/airlock_environment(probe_indoors_gas())
 	switch(exterior_environment_mode)
 		if(AIRLOCK_ENVIRONMENT_MANUAL)
+			exterior_environment = new /datum/airlock_environment(exterior_environment)
 		if(AIRLOCK_ENVIRONMENT_ADAPTIVE)
+			exterior_environment = null
 		if(AIRLOCK_ENVIRONMENT_IGNORE)
+			exterior_environment = null
 		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
-	#warn stuff
-
-#warn impl
+			exterior_environment = new /datum/airlock_environment(probe_outdoors_gas())
 
 /obj/machinery/airlock_controller/proc/set_interior_state(state)
 	src.interior_state = state
+
 	switch(state)
 		if(AIRLOCK_STATE_LOCKED_OPEN)
 			for(var/obj/machinery/door/door as anything in interior)

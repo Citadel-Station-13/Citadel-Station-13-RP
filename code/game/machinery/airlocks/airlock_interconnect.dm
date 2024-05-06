@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+// todo: buildable
+
 /obj/item/airlock_interconnect
 	name = "airlock interconnect"
 	desc = "A tightly bundled and pressurized set of air conduits used to connect \

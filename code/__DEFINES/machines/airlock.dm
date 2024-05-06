@@ -82,6 +82,12 @@
 
 #warn DEFINE_ENUM
 
+//* callback inputs for /obj/machinery/airlock_controller/var/datum/callback/on_finish
+
+#define AIRLOCK_CYCLE_OP_FINISHED 1
+#define AIRLOCK_CYCLE_OP_ABORTED 2
+#define AIRLOCK_CYCLE_OP_FAILED 3
+
 #warn eval below
 
 //* /obj/machinery/airlock_controller/dock_state
