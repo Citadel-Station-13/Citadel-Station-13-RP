@@ -1,6 +1,3 @@
-//These datums are used to populate the asset cache, the proc "register()" does this.
-//Place any asset datums you create in asset_list_items.dm
-
 //all of our asset datums, used for referring to these later
 GLOBAL_LIST_EMPTY(asset_datums)
 
@@ -23,9 +20,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 	var/cached_serialized_url_mappings
 	var/cached_serialized_url_mappings_transport_type
-
-	/// Whether or not this asset should be loaded in the "early assets" SS
-	var/early = FALSE
 
 	/**
 	 * Whether or not this asset can be cached across rounds of the same commit under the `CACHE_ASSETS` config.
