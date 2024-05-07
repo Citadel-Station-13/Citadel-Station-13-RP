@@ -27,6 +27,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	 * config can, of course, be disabled.
 	 */
 	var/cross_round_cachable = FALSE
+	#warn validate config
 
 /**
  * Stub that allows us to react to something trying to get us.

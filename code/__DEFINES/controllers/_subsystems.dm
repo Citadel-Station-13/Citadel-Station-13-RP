@@ -93,7 +93,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_VIS             80
 #define INIT_ORDER_SERVER_MAINT    65
 #define INIT_ORDER_INSTRUMENTS     50
-#define INIT_ORDER_EARLY_ASSETS    48
 #define INIT_ORDER_MEDIA_TRACKS    38
 #define INIT_ORDER_CHEMISTRY       35
 #define INIT_ORDER_MATERIALS       34
@@ -112,6 +111,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_AIR            -1
 #define INIT_ORDER_PLANETS        -2
 #define INIT_ORDER_PERSISTENCE    -3
+#warn move this up, use asset loading subsystem.
 #define INIT_ORDER_ASSETS         -4
 #define INIT_ORDER_MISC_LATE      -5
 #define INIT_ORDER_HOLOMAPS       -5

@@ -3,6 +3,7 @@
  *
  * An internal datum containing info on items in the asset cache. Mainly used to cache md5 info for speed.
  */
+VV_PROTECT_READONLY(/datum/asset_cache_item)
 /datum/asset_cache_item
 	var/name
 	var/hash
