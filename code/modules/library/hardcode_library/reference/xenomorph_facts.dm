@@ -1,11 +1,11 @@
-/obj/item/book/xenomorph_castes
+/obj/item/book/lore/xenomorph_castes
 	name = "About the life of a xenomorph Part 1"
 	icon_state ="book13"
 	author = "Dr. xbio. Peter Steffans"
 	title = "About the life of a xenomorph Part 1"
 
 
-/obj/item/book/xenomorph_castes/Initialize(mapload)
+/obj/item/book/lore/xenomorph_castes/Initialize(mapload)
 	. = ..()
 	dat = {"<html>
 				<head>
