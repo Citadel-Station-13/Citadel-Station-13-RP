@@ -1,22 +1,73 @@
-//all of our asset datums, used for referring to these later
-GLOBAL_LIST_EMPTY(asset_datums)
-
-/// Get an assetdatum or make a new one.
-/proc/get_asset_datum(type)
-	var/datum/asset/loaded_asset = GLOB.asset_datums[type] || new type()
-	return loaded_asset.ensure_ready()
-
-/**
- * Get an assetdatum or make a new one.
- *! But does NOT ensure it's filled, if you want that use get_asset_datum()
- */
-/proc/load_asset_datum(type)
-	return GLOB.asset_datums[type] || new type()
-
 /datum/asset
 	abstract_type = /datum/asset
-	/// lazyloaded? this means we lateload when someone fetches us, rather than at init
-	var/lazy = FALSE
+
+	/// if set, we are registering by ID instead of by type
+	/// thus, don't set it in a prototype,
+	/// because 99% of assets are hardcoded and shouldn't do that.
+	///
+	/// ids should be round-unique, but not to prevent collisions.
+	/// our md5'ing system does that.
+	/// what id uniqueness provides is *persistence* collisions.
+	///
+	/// though honestly, i'd question why assets should ever be persisted in that way
+	/// as opposed to a volatile-append-supported asset datum being added to
+	/// as things load in.
+	var/id
+
+	/// if set, we immediately load via SSassets, rather than being pushed
+	/// onto SSasset_loading for loading during pregame
+	var/load_immediately = FALSE
+	/// if set, we don't load at all until something asks for us
+	var/load_deferred = FALSE
+	/// are we fully loaded / generated?
+	var/loaded = FALSE
+
+/**
+ * ensures we are loaded
+ */
+/datum/asset/proc/ensure_ready()
+	switch(loaded)
+		if(ASSET_FULLY_LOADED)
+		if(ASSET_NOT_LOADED)
+			INVOKE_ASYNC(src, PROC_REF(load))
+			UNTIL(loaded != ASSET_IS_LOADING)
+		if(ASSET_IS_LOADING)
+			UNTIL(loaded != ASSET_IS_LOADING)
+	return loaded == ASSET_FULLY_LOADED
+
+/**
+ * loads / generates whatever is in us
+ *
+ * also pushes us to the transport if necessary.
+ */
+/datum/asset/proc/load()
+	loaded = ASSET_IS_LOADING
+	var/results = generate()
+	register(results)
+	loaded = ASSET_FULLY_LOADED
+
+/**
+ * generates whatever needs to be generated
+ *
+ * this must be idempotent and hopefully efficient,
+ * because this is called again if the transport is changed mid-round.
+ *
+ * @return return value is passed to register().
+ */
+/datum/asset/proc/generate()
+	return
+
+/**
+ * registers our content to the asset system's transport
+ *
+ * @params
+ * * generation - output of generate().
+ */
+/datum/asset/proc/register()
+	return
+
+/datum/asset
+	#warn below + all /datum/asset subtypes
 
 	var/cached_serialized_url_mappings
 	var/cached_serialized_url_mappings_transport_type
@@ -29,22 +80,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	var/cross_round_cachable = FALSE
 	#warn validate config
 
-/**
- * Stub that allows us to react to something trying to get us.
- * Not useful here, more handy for sprite sheets.
- */
-/datum/asset/proc/ensure_ready()
-	return src
-
-/// Stub to hook into if your asset is having its generation queued by SSasset_loading
-/datum/asset/proc/queued_generation()
-	CRASH("[type] inserted into SSasset_loading despite not implementing /proc/queued_generation")
-
-
-/datum/asset/New()
-	GLOB.asset_datums[type] = src
-	register()
-
 /datum/asset/proc/get_url_mappings()
 	return list()
 
@@ -55,9 +90,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		cached_serialized_url_mappings_transport_type = SSassets.transport.type
 
 	return cached_serialized_url_mappings
-
-/datum/asset/proc/register()
-	return
 
 /datum/asset/proc/send(client)
 	return

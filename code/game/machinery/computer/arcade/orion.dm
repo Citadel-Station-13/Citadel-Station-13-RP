@@ -151,10 +151,9 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 		ui = new(user, src, "OrionGame", name)
 		ui.open()
 
-/obj/machinery/computer/arcade/orion_trail/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/moods),
-	)
+/obj/machinery/computer/arcade/orion_trail/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset/spritesheet/moods
+	return ..()
 
 /obj/machinery/computer/arcade/orion_trail/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()

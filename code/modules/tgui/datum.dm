@@ -21,14 +21,20 @@
  * Called on an object when a tgui object is being created, allowing you to
  * push various assets to tgui, for examples spritesheets.
  *
- * todo: support typepaths
  * todo: support file paths
  * todo: this should be sent to embedding interfaces
  *
- * return list List of asset datum instances (must be /datum/asset instance, not path)
+ * assets may be:
+ * * a /datum/asset
+ * * typepath of a /datum/asset
+ *
+ * @params
+ * * ui - the UI instance that's being opened
+ * * immediate - what assets to load before the window is opened
+ * * deferred - what assets to load after the window is opened
  */
-/datum/proc/ui_assets(mob/user)
-	return list()
+/datum/proc/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	return
 
 /**
  * public

@@ -2,9 +2,56 @@ SUBSYSTEM_DEF(assets)
 	name = "Assets"
 	init_order = INIT_ORDER_ASSETS
 	subsystem_flags = SS_NO_FIRE
+
+	/// assets by type; this is for hardcoded assets
+	var/static/list/assets_by_type = list()
+	/// assets by id; this is for dynamic assets
+	var/static/list/assets_by_id = list()
+
+/datum/controller/subsystem/assets/Initialize(timeofday)
+	for(var/datum/asset/path as anything in typesof(/datum/asset))
+		if(path == initial(path.abstract_type))
+			continue
+		var/datum/asset/instance = new path
+		assets_by_type[path] = instance
+
+#ifndef DO_NOT_DEFER_ASSETS
+		if(initial(A.load_deferred))
+			continue
+		else if(initial(A.load_immediately))
+			A.load()
+		else
+			SSasset_loading.queue_asset(A)
+#else
+		A.load()
+#endif
+
+/**
+ * fetches an asset datum, **without** ensuring it's ready / loaded
+ */
+/datum/controller/subsystem/assets/proc/resolve_asset(identifier)
+	if(ispath(identifier))
+		return assets_by_type[identifier]
+	else
+		return assets_by_id[identifier]
+
+/**
+ * fetches an asset datum, and ensures it's ready / loaded
+ *
+ * * This proc can block if something needs to generate.
+ */
+/datum/controller/subsystem/assets/proc/load_asset(identifier)
+	var/datum/asset/resolved = resolve_asset(identifier)
+	resolved.ensure_ready()
+	return resolved
+
+#warn below
+
+/datum/controller/subsystem/assets
 	var/list/datum/asset_cache_item/cache = list()
 	var/list/preload = list()
 	var/datum/asset_transport/transport = new()
+
 
 /datum/controller/subsystem/assets/OnConfigLoad()
 	var/newtransporttype = /datum/asset_transport/simple
@@ -21,17 +68,11 @@ SUBSYSTEM_DEF(assets)
 	transport.Load()
 
 /datum/controller/subsystem/assets/Initialize(timeofday)
-	for(var/type in typesof(/datum/asset))
-		var/datum/asset/A = type
-		if(type == initial(A.abstract_type))
-			continue
-		if(initial(A.lazy))
-			continue
-		load_asset_datum(type)
 
 	transport.Initialize(cache)
 
 	return ..()
+
 
 /datum/controller/subsystem/assets/Recover()
 	cache = SSassets.cache
