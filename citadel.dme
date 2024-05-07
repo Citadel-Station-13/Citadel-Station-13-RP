@@ -2241,7 +2241,6 @@
 #include "code\modules\asset_cache\items\jquery.dm"
 #include "code\modules\asset_cache\items\legacy_nanomaps.dm"
 #include "code\modules\asset_cache\items\legacy_nanoui.dm"
-#include "code\modules\asset_cache\items\legacy_vstation.dm"
 #include "code\modules\asset_cache\items\loadout.dm"
 #include "code\modules\asset_cache\items\materials.dm"
 #include "code\modules\asset_cache\items\moods.dm"
