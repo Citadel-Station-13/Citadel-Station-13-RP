@@ -524,13 +524,17 @@
 		switch(atmos_biomorph)
 			if("flexible")
 				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
-				target.species.hazard_low_pressure = -1
+				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
 				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
 				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("compact")
 				target.species.warning_low_pressure = 50
-				target.species.hazard_low_pressure = -1
+				target.species.hazard_low_pressure = 0
+				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("elastic")
+				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
+				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
 				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE + 200
 				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 400
 
