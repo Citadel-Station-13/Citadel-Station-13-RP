@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(assets)
 	var/datum/asset_transport/transport = new()
 
 /datum/controller/subsystem/assets/OnConfigLoad()
-	var/newtransporttype = /datum/asset_transport
+	var/newtransporttype = /datum/asset_transport/simple
 	switch (CONFIG_GET(string/asset_transport))
 		if ("webroot")
 			newtransporttype = /datum/asset_transport/webroot

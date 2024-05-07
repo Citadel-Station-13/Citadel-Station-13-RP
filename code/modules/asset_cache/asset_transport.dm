@@ -1,9 +1,10 @@
-/// When sending mutiple assets, how many before we give the client a quaint little sending resources message
-#define ASSET_CACHE_TELL_CLIENT_AMOUNT 8
-
-/// Base browse_rsc asset transport
+/**
+ * Pluggable transports used for sending assets to clients.
+ */
 /datum/asset_transport
-	var/name = "Simple browse_rsc asset transport"
+	/// name of the transport
+	var/name = "asset-transport: ???"
+	
 	var/static/list/preload
 	/// Don't mutate the filename of assets when sending via browse_rsc.
 	/// This is to make it easier to debug issues with assets, and allow server operators to bypass issues that make it to production.
