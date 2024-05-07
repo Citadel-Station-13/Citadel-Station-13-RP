@@ -16,14 +16,14 @@ SUBSYSTEM_DEF(assets)
 		assets_by_type[path] = instance
 
 #ifndef DO_NOT_DEFER_ASSETS
-		if(initial(A.load_deferred))
+		if(initial(instance.load_deferred))
 			continue
-		else if(initial(A.load_immediately))
-			A.load()
+		else if(initial(instance.load_immediately))
+			instance.load()
 		else
-			SSasset_loading.queue_asset(A)
+			SSasset_loading.queue_asset(instance)
 #else
-		A.load()
+		instance.load()
 #endif
 
 /**
