@@ -97,6 +97,6 @@
 
 	return data
 
-/datum/orbit_menu/ui_assets(mob/user)
-	. = ..() || list()
-	. += get_asset_datum(/datum/asset/simple/orbit)
+/datum/orbit_menu/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset/simple/orbit
+	return ..()

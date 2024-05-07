@@ -204,12 +204,11 @@
 
 	condi_styles = strip_condi_styles_to_icons(get_condi_styles())
 
-/obj/machinery/chem_master/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/simple/pills),
-		get_asset_datum(/datum/asset/spritesheet/simple/bottles),
-		get_asset_datum(/datum/asset/spritesheet/simple/patches),
-	)
+/obj/machinery/chem_master/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset/spritesheet/simple/bottles
+	immediate += /datum/asset/spritesheet/simple/patches
+	immediate += /datum/asset/spritesheet/simple/pills
+	return ..()
 
 /obj/machinery/chem_master/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
