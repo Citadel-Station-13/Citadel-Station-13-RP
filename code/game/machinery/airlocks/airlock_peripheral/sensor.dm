@@ -9,6 +9,7 @@
 
 	#warn sprite
 
+	controller_linking = TRUE
 
 	#warn impl
 
@@ -31,10 +32,16 @@
 
 #warn impl
 
-/obj/machinery/airlock_peripheral/attack_ai(mob/user)
+/**
+ * Returned air must **never** be edited!
+ */
+/obj/machinery/airlock_peripheral/sensor/proc/probe_gas()
+	return return_air_immutable()
+
+/obj/machinery/airlock_peripheral/sensor/attack_ai(mob/user)
 	. = ..()
 
-/obj/machinery/airlock_peripheral/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/machinery/airlock_peripheral/sensor/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only

@@ -1267,7 +1267,6 @@
 #include "code\game\machinery\airlocks\airlock_peripheral\gasnet\cycler.dm"
 #include "code\game\machinery\airlocks\airlock_peripheral\gasnet\handler.dm"
 #include "code\game\machinery\airlocks\airlock_peripheral\gasnet\vent.dm"
-#include "code\game\machinery\airlocks\map_helpers\airlock_interior.dm"
 #include "code\game\machinery\airlocks\map_helpers\airlock_linker.dm"
 #include "code\game\machinery\camera\camera.dm"
 #include "code\game\machinery\camera\camera_assembly.dm"

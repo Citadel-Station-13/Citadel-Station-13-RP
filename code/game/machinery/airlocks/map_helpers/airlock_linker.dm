@@ -13,7 +13,6 @@
 		airlock_id = SSmapping.mangled_round_local_id(airlock_id, with_id)
 
 /obj/map_helper/airlock_linker/Initialize(mapload)
-	#warn do things
+	for(var/obj/machinery/airlock_peripheral/peripheral in loc)
+		peripheral.airlock_id = airlock_id
 	return ..()
-
-#warn impl

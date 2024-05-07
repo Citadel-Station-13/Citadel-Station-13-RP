@@ -8,5 +8,7 @@
 	desc = "A control panel for an airlock, linked to its main controller."
 	#warn sprite
 
+	controller_linking = TRUE
+
 #warn impl
 

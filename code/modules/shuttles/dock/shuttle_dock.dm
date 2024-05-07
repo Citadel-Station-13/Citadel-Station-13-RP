@@ -114,7 +114,7 @@
 	/// only allow a hardcoded shuttle of this id (or these ids) to dock
 	///
 	/// this, if set, does not automatically include our starting template
-	/// unless restrict_to_starting is also set!
+	/// unless docking_hard_restrict_to_starting is also set!
 	/// we can have the starting template locked out due to that.
 	///
 	/// set to typepath / list of typepaths of shuttle templates if you want to automatically resolve these.
@@ -202,7 +202,8 @@
 				type = MESSAGE_TYPE_SERVER_FATAL,
 			)
 		else
-			loaded_shuttle(loaded)
+			init_shuttle(loaded)
+			ready_shuttle(loaded)
 
 /obj/shuttle_dock/Destroy()
 	unregister_dock()
@@ -393,12 +394,12 @@
  * initializes our roundstart shuttle (usually by giving it a controller)
  */
 /obj/shuttle_dock/proc/init_shuttle(datum/shuttle/shuttle)
-	#warn hook
+	return
 
 /**
- * called after our initial shuttle is loaded
+ * called after our initial shuttle is loaded and initialized
  */
-/obj/shuttle_dock/proc/loaded_shuttle(datum/shuttle/loaded)
+/obj/shuttle_dock/proc/ready_shuttle(datum/shuttle/loaded)
 	return
 
 //* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//

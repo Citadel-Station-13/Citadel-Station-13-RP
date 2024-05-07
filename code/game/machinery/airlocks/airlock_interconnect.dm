@@ -18,7 +18,7 @@
 	#warn sprite
 
 	/// our pipenet
-	var/datum/airlock_pipenet/network
+	var/datum/airlock_gasnet/network
 	/// connected machinery
 	var/list/obj/machinery/airlock_peripheral/gasnet/peripherals
 	/// connected interconnects
@@ -34,7 +34,7 @@
 	rebuild_queued = FALSE
 	if(network)
 		return
-	new /datum/airlock_pipenet(src)
+	new /datum/airlock_gasnet(src)
 
 /obj/structure/airlock_interconnect/proc/queue_rebuild()
 	#warn impl

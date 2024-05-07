@@ -21,6 +21,9 @@
 	/// mode
 	/// see defines for AIRLOCK_CONFIG_MODE_*.
 	var/config_cycle_mode = AIRLOCK_CONFIG_MODE_CLASSIC
+	/// gas is precious while this is on; we will not expel with exterior vents when cycling
+	/// out of interior
+	var/config_gas_is_precious = FALSE
 	/// minimum allowable pressure during cycling
 	/// this overrides requested pressure by the environment!
 	/// if you set it to a high value, people will go flying.
@@ -29,11 +32,11 @@
 	/// interior toggles
 	/// * by default we want to regulate temperature/pressure/gas
 	/// * only taken into account in dynamic cycle mode
-	var/config_dynamic_interior_toggles = AIRLOCK_CONFIG_EXPEL_UNWANTED_GAS | AIRLOCK_CONFIG_REGULATE_PRESSURE | AIRLOCK_CONFIG_REGULATE_TEMPERATURE
+	var/config_dynamic_interior_toggles = AIRLOCK_CONFIG_TOGGLE_EXPEL_UNWANTED_GAS | AIRLOCK_CONFIG_TOGGLE_REGULATE_PRESSURE | AIRLOCK_CONFIG_TOGGLE_REGULATE_TEMPERATURE
 	/// exterior toggles
 	/// * by default we just want to not have people go flying
 	/// * only taken into account in dynamic cycle mode
-	var/config_dynamic_exterior_toggles = AIRLOCK_CONFIG_REGULATE_PRESSURE
+	var/config_dynamic_exterior_toggles = AIRLOCK_CONFIG_TOGGLE_REGULATE_PRESSURE
 
 	//* Environments
 	/// interior environment settings
@@ -54,12 +57,14 @@
 	//* Peripherals
 	/// panels
 	var/list/obj/machinery/airlock_peripheral/panel/panels
-	/// handlers
-	var/list/obj/machinery/airlock_peripheral/gasnet/handler/handlers
 	/// cyclers
 	var/list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers
 	/// sensors
 	var/list/obj/machinery/airlock_peripheral/sensor/sensors
+	/// authoritative indoors sensor
+	var/obj/machinery/airlock_peripheral/sensor/interior_sensor
+	/// authoritative outdoors sensor
+	var/obj/machinery/airlock_peripheral/sensor/exterior_sensor
 
 	//* Doors
 	/// interior doors
@@ -104,7 +109,7 @@
 	var/op_cycle
 	/// next operation cycle
 	var/static/op_cycle_next = 0
-	/// what to call on finish with (status: AIRLOCK_CYCLE_OP_* define)
+	/// what to call on finish with (status: AIRLOCK_OP_STATUS_* define, why: short string reason)
 	var/datum/callback/op_on_finish
 
 /obj/machinery/airlock_controller/Initialize(mapload)
@@ -171,6 +176,8 @@
 	var/datum/gas_mixture/effective_indoors = probe_indoors_gas()
 	var/datum/gas_mixture/effective_outdoors = probe_outdoors_gas()
 
+	#warn be sure to handle effective gases being null
+
 	switch(config_cycle_mode)
 		if(AIRLOCK_CONFIG_MODE_CLASSIC)
 			switch(cycle_state)
@@ -186,6 +193,8 @@
 		last_cycle_temperature = effective_indoors.temperature
 		last_cycle_gases = effective_indoors.gas.Copy()
 
+#warn impl all
+
 /**
  * @params
  * * why - string reason
@@ -195,7 +204,11 @@
 /obj/machinery/airlock_controller/proc/finish_cycle(success)
 	last_cycle_pressure = last_cycle_temperature = last_cycle_gases = null
 
-#warn impl all
+/obj/machinery/airlock_controller/proc/probe_indoors_gas()
+	return interior_sensor?.probe_gas()
+
+/obj/machinery/airlock_controller/proc/probe_outdoors_gas()
+	return exterior_sensor?.probe_gas()
 
 /**
  * Automatically builds its airlock by calculating the necessary geometry.

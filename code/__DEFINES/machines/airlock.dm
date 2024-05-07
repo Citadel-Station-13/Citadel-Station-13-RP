@@ -34,17 +34,17 @@
 //* /obj/machinery/airlock_controller/config_dynamic_(interior|exterior)_toggles
 
 /// cycle gas ratios; implies EXPEL_UNWANTED_GAS
-#define AIRLOCK_CONFIG_MATCH_GAS_RATIOS (1<<0)
+#define AIRLOCK_CONFIG_TOGGLE_MATCH_GAS_RATIOS (1<<0)
 /// expel bad gases
-#define AIRLOCK_CONFIG_EXPEL_UNWANTED_GAS (1<<1)
+#define AIRLOCK_CONFIG_TOGGLE_EXPEL_UNWANTED_GAS (1<<1)
 /// match pressure; implies REGULATE_PRESSURE
-#define AIRLOCK_CONFIG_MATCH_PRESSURE (1<<2)
+#define AIRLOCK_CONFIG_TOGGLE_MATCH_PRESSURE (1<<2)
 /// prevent pressure mismatches that result in people dying/flying around
-#define AIRLOCK_CONFIG_REGULATE_PRESSURE (1<<3)
+#define AIRLOCK_CONFIG_TOGGLE_REGULATE_PRESSURE (1<<3)
 /// match temperature; implies REGULATE_TEMPERATURE
-#define AIRLOCK_CONFIG_MATCH_TEMPERATURE (1<<4)
+#define AIRLOCK_CONFIG_TOGGLE_MATCH_TEMPERATURE (1<<4)
 /// prevent temperature mismatches that result in people dying/severe area temperature changes
-#define AIRLOCK_CONFIG_REGULATE_TEMPERATURE (1<<5)
+#define AIRLOCK_CONFIG_TOGGLE_REGULATE_TEMPERATURE (1<<5)
 
 #warn DEFINE_BITFIELD
 
@@ -84,9 +84,24 @@
 
 //* callback inputs for /obj/machinery/airlock_controller/var/datum/callback/on_finish
 
-#define AIRLOCK_CYCLE_OP_FINISHED 1
-#define AIRLOCK_CYCLE_OP_ABORTED 2
-#define AIRLOCK_CYCLE_OP_FAILED 3
+#define AIRLOCK_OP_STATUS_FINISHED 1
+#define AIRLOCK_OP_STATUS_ABORTED 2
+#define AIRLOCK_OP_STATUS_FAILED 3
+
+//* returns from airlock peripherals on cycling operations to communicate if it is working
+
+/// keep cycling
+#define AIRLOCK_CYCLER_OP_CONTINUE 1
+/// finished
+#define AIRLOCK_CYCLER_OP_FINISHED 2
+/// unpowered
+#define AIRLOCK_CYCLER_OP_NO_POWER 3
+/// insufficient air
+#define AIRLOCK_CYCLER_OP_NO_GAS 4
+/// pumping against too much of a gradient
+#define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE 5
+/// fatal error
+#define AIRLOCK_CYCLER_OP_FATAL 6
 
 #warn eval below
 

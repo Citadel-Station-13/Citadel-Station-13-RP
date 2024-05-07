@@ -34,7 +34,7 @@ GLOBAL_DATUM(legacy_belter_shuttle, /datum/shuttle/belter)
 
 /obj/shuttle_dock/hardcoded_legacy/cargo
 
-/obj/shuttle_dock/hardcoded_legacy/cargo/loaded_shuttle(datum/shuttle/loaded)
+/obj/shuttle_dock/hardcoded_legacy/cargo/ready_shuttle(datum/shuttle/loaded)
 	. = ..()
 	GLOB.legacy_cargo_shuttle = loaded
 
@@ -64,7 +64,7 @@ GLOBAL_DATUM(legacy_belter_shuttle, /datum/shuttle/belter)
 
 /obj/shuttle_dock/hardcoded_legacy/emergency
 
-/obj/shuttle_dock/hardcoded_legacy/emergency/loaded_shuttle(datum/shuttle/loaded)
+/obj/shuttle_dock/hardcoded_legacy/emergency/ready_shuttle(datum/shuttle/loaded)
 	. = ..()
 	GLOB.legacy_emergency_shuttle = loaded
 
@@ -94,7 +94,7 @@ GLOBAL_DATUM(legacy_belter_shuttle, /datum/shuttle/belter)
 
 /obj/shuttle_dock/hardcoded_legacy/belter
 
-/obj/shuttle_dock/hardcoded_legacy/belter/loaded_shuttle(datum/shuttle/loaded)
+/obj/shuttle_dock/hardcoded_legacy/belter/ready_shuttle(datum/shuttle/loaded)
 	. = ..()
 	GLOB.legacy_belter_shuttle = loaded
 
