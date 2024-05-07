@@ -57,3 +57,9 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 #define TOOL_LOCKING_STATIC 2
 /// automatically, if we only have one dynamic behavior, use that
 #define TOOL_LOCKING_AUTO 3
+
+//? Tool directions - used as hints.
+
+#define TOOL_DIRECTION_FORWARDS "forwards"
+#define TOOL_DIRECTION_BACKWARDS "backwards"
+#define TOOL_DIRECTION_NEUTRAL "neutral"

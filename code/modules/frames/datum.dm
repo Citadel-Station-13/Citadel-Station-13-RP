@@ -27,19 +27,15 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * * stage - *usually* linear, 1 to n. stepping back from 1 deconstructs the frame. stepping forwards from n finishes the frame.
  * * context - arbitrary data storage list
  *
- * ### how construction/deconstruction step lists (steps_forward, steps_backward) works:
+ * ### how construction/deconstruction stage lists works:
  *
- * * they must be the same length
- * * their length is the number of stages
- * * if the length is 0, we immediately finish() with stage 0 and no context when someone tries to place the item/structure.
- * * when deconstructing, the input item in the given construction step will be refunded.
+ * * set 'key' = list(stage data), where stage data is a key list with keys of FRAME_STAGE_DATA_* defines.
+ * * you'll want to set FRAME_STAGE_DATA_STEPS to a list of list(step data); so a list of lists.
+ * * each step will have FRAME_STEP_DATA_*
+ * * please see examples.
  *
- * ### allowed / understood / recognized steps in list:
- *
- * * /obj/item/stack typepath associated to amount; requires that much of that stack in one go to go to next phase
- * * /datum/material typepath associated to amount; requires that much of that material in one go to go to next phase
- * * /obj/item typepath associated to amount; requires that much of that item inserted to go to next phase
- * * tool function associated to number as time, or a list(time, cost); requires that tool to be used
+ * ### special things about the stage list
+ * * if there are no stages, we immediately finish() with stage null with no context when someone tries to place the item/structure.
  *
  * only tool functions are allowed in steps_backward; items will generally not be checked.
  * this is intentional, though can be changed easily if there ever exists a good reason to.
@@ -66,15 +62,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// default deconstruction cost multiplier
 	var/deconstruct_default_cost = 1
 
-	/// construction steps
+	/// construction stages
 	/// see /datum/frame2 readme (so up above in this file) for how to do this
-	var/list/steps_forward
-	/// deconstruction steps
-	/// see /datum/frame2 readme (so up above in this file) for how to do this
-	/// this list *can* be set to null if we don't want people going backwards.
-	var/list/steps_backward
-	/// cached stage count
-	var/stage_count
+	var/list/stages = list()
 
 	/// is this frame freely un/anchorable?
 	var/freely_anchorable = FALSE
@@ -128,10 +118,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/item_deploy_cost = 1
 
 #warn impl
-
-/datum/frame2/New()
-	// cache that
-	stage_count = stage_count()
 
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
