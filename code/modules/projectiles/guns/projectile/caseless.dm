@@ -75,3 +75,22 @@
 	. = ..()
 	var/fluff_date = rand(2501,2543)
 	desc += "\n You see a stamp on the side: GORLEX MARAUDERS, MANUFACTURED IN [fluff_date]."
+
+// phoron war MG that fires phoron shards, no reloads. spawns with random amt of ammo in mag.
+
+/obj/item/gun/ballistic/caseless/phoron_spitter
+	name = "Gorlex 'SHRAPNEL-SPITTER' Phoron SMG"
+	desc = "An SMG from the Phoron Wars that lacks conventional ammo, instead using compressed matter cartridges. Coils accelerate a ferromagnetic, self-oxidizing cloud of alloy. Lack of traditional cycling means it can fire blindingly fast. Like all caseless weapons, it's fallen by the wayside, and is no longer produced."
+	caliber = "12.7mm caseless"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/mphoronshot
+	allowed_magazines = list(/obj/item/ammo_magazine/mphoronshot)
+	icon_state = "phoron_shredder"
+	item_state = "phoron_shredder"
+
+	firemodes = list(
+		list(mode_name="full auto", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1),
+		list(mode_name="fuller auto", burst=2, fire_delay=-3, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)

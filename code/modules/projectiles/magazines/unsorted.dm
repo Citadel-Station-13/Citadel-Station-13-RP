@@ -328,17 +328,16 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
-/////// phoron shrapnel shotgun //////
+/////// phoron shrapnel smg //////
 
-/obj/item/ammo_magazine/mphoronshot //spawns with a random amt of ammo inside of it
+/obj/item/ammo_magazine/mphoronshot
 	name = "compressed phoron matter container"
-	desc = "A compressed matter container meant for the Gorlex SHRAPNEL-SPITTER shotgun. \n They're in good shape for the shape they're in, / \n but God, I wonder how they think they can win, / \n with phoron rolling down their skin."
-	max_ammo = 50 //this will be completely randomd
-	caliber = "phoronshrap"
-	ammo_type = /obj/item/ammo_casing/aphoronshot
-
-/obj/item/ammo_magazine/mphoronshot/Initialize(mapload)
-	. = ..()
+	desc = "A compressed matter container meant for the Gorlex SHRAPNEL-SPITTER SMG. Contains a phoron alloy that self-oxidzes and ignites on contact with air. \n \nThey're in good shape for the shape they're in, \nbut God, I wonder how they think they can win, \nwith phoron rolling down their skin."
+	max_ammo = 25
+	caliber = "12.7mm caseless"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/fiftycalcaseless //about the same
+	icon_state = "spitterammo"
 
 ///////// 9mm /////////
 

@@ -171,14 +171,3 @@
 	submunitions = list(
 		/obj/projectile/energy/phase/heavy = 4
 		)
-
-/obj/projectile/scatter/phoronshot
-	damage = 10
-	armor_penetration = 20
-	submunition_spread_max = 70
-	submunition_spread_min = 30
-	incendiary = 1
-	flammability = 1
-	submunitions = list(
-		/obj/projectile/scatter/phoronshot = 8
-		)
