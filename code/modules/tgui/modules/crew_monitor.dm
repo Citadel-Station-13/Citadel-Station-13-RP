@@ -3,7 +3,7 @@
 	tgui_id = "CrewMonitor"
 
 /datum/tgui_module_old/crew_monitor/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/simple/nanomaps
+	immediate += /datum/asset_pack/simple/nanomaps
 	return ..()
 
 /datum/tgui_module_old/crew_monitor/ui_act(action, list/params, datum/tgui/ui)

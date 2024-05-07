@@ -88,7 +88,7 @@
 	html = replacetextEx(html, "\[tgui:strictMode]", strict_mode)
 	// Inject assets
 	var/inline_assets_str = ""
-	for(var/datum/asset/asset in assets)
+	for(var/datum/asset_pack/asset in assets)
 		var/mappings = asset.get_url_mappings()
 		for(var/name in mappings)
 			var/url = mappings[name]
@@ -295,8 +295,8 @@
 		return
 	sent_assets |= list(asset)
 	. = asset.send(client)
-	if(istype(asset, /datum/asset/spritesheet))
-		var/datum/asset/spritesheet/spritesheet = asset
+	if(istype(asset, /datum/asset_pack/spritesheet))
+		var/datum/asset_pack/spritesheet/spritesheet = asset
 		send_message("asset/stylesheet", spritesheet.css_filename())
 	send_raw_message(asset.get_serialized_url_mappings())
 

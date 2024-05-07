@@ -479,7 +479,7 @@
 	return round(construction_time * time_coeff, roundto)
 
 /obj/machinery/mecha_part_fabricator/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/spritesheet/materials
+	immediate += /datum/asset_pack/spritesheet/materials
 	return ..()
 
 /obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)

@@ -17,7 +17,7 @@
 	ui_interact(user)
 
 /obj/machinery/pipedispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/spritesheet/pipes
+	immediate += /datum/asset_pack/spritesheet/pipes
 	return ..()
 
 /obj/machinery/pipedispenser/ui_interact(mob/user, datum/tgui/ui)

@@ -58,7 +58,7 @@
 	var/list/datum/nanoui/children = list()
 	var/datum/topic_state/state = null
 
-	var/static/datum/asset/simple/namespaced/nanoui/nano_asset
+	var/static/datum/asset_pack/simple/namespaced/nanoui/nano_asset
 
 /**
  * Create a new nanoui instance.
@@ -76,7 +76,7 @@
  */
 /datum/nanoui/New(mob/nuser, nsrc_object, nui_key, ntemplate_filename, ntitle, nwidth, nheight, atom/nref, datum/nanoui/master_ui, datum/topic_state/state = default_state)
 	if(!istype(nano_asset))
-		nano_asset = get_asset_datum(/datum/asset/simple/namespaced/nanoui)
+		nano_asset = get_asset_datum(/datum/asset_pack/simple/namespaced/nanoui)
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key

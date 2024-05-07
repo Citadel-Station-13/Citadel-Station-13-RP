@@ -105,5 +105,5 @@
 	return .
 
 /obj/item/book/fish_catalog/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/spritesheet/fish
+	immediate += /datum/asset_pack/spritesheet/fish
 	return ..()

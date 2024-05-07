@@ -12,7 +12,7 @@
 	var/body_elements
 	var/head_content = ""
 	var/content = ""
-	var/static/datum/asset/simple/namespaced/common/common_asset = get_asset_datum(/datum/asset/simple/namespaced/common)
+	var/static/datum/asset_pack/simple/namespaced/common/common_asset = get_asset_datum(/datum/asset_pack/simple/namespaced/common)
 
 
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, atom/nref = null)
@@ -38,8 +38,8 @@
 	//title_image = ntitle_image
 
 /datum/browser/proc/add_stylesheet(name, file)
-	if(istype(name, /datum/asset/spritesheet))
-		var/datum/asset/spritesheet/sheet = name
+	if(istype(name, /datum/asset_pack/spritesheet))
+		var/datum/asset_pack/spritesheet/sheet = name
 		stylesheets["spritesheet_[sheet.name].css"] = "data/spritesheets/[sheet.name]"
 	else
 		var/asset_name = "[name].css"

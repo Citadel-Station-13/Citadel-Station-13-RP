@@ -83,7 +83,7 @@
  * In this case, it's a bunch of cute enemy sprites.
  */
 /datum/computer_file/program/game/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/simple/arcade
+	immediate += /datum/asset_pack/simple/arcade
 	return ..()
 
 /**

@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(asset_loading)
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	/// things waiting to be loaded
-	var/list/datum/asset/loading = list()
+	var/list/datum/asset_pack/loading = list()
 
 /datum/controller/subsystem/asset_loading/proc/queue_asset(datum/asset/asset)
 	if(asset.loaded != ASSET_NOT_LOADED)
@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(asset_loading)
 
 /datum/controller/subsystem/asset_loading/fire(resumed)
 	while(length(loading))
-		var/datum/asset/instance = loading[loading.len]
+		var/datum/asset_pack/instance = loading[loading.len]
 		instance.load()
 		if(MC_TICK_CHECK)
 			return

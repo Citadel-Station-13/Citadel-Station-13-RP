@@ -117,21 +117,21 @@
 			// fancy = user.client.prefs.tgui_fancy,
 			fancy = TRUE,
 			assets = list(
-				get_asset_datum(/datum/asset/simple/tgui),
+				get_asset_datum(/datum/asset_pack/simple/tgui),
 			))
 	else
 		window.send_message("ping")
 	var/flush_queue = window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/fontawesome))
+		/datum/asset_pack/simple/namespaced/fontawesome))
 	flush_queue |= window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/tgfont))
+		/datum/asset_pack/simple/namespaced/tgfont))
 	// prep assets
 	var/list/assets_immediate = list()
 	var/list/assets_deferred = list()
 	// fetch wanted assets
 	src_object.ui_asset_injection(src, assets_immediate, assets_deferred)
 	// send all immediate assets
-	for(var/datum/asset/assetlike in assets_immediate)
+	for(var/datum/asset_pack/assetlike in assets_immediate)
 		flush_queue |= window.send_asset(SSassets.load_asset(assetlike))
 	// ensure all assets are loaded before continuing
 	if (flush_queue)
@@ -150,7 +150,7 @@
 	for(var/datum/module as anything in modules_registered)
 		module.on_ui_open(user, src, TRUE)
 	// now send deferred asets
-	for(var/datum/asset/assetlike in assets_deferred)
+	for(var/datum/asset_pack/assetlike in assets_deferred)
 		window.send_asset(SSassets.load_asset(assetlike))
 	return TRUE
 

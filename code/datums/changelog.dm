@@ -15,9 +15,9 @@
 	if(.)
 		return
 	if(action == "get_month")
-		var/datum/asset/changelog_item/changelog_item = changelog_items[params["date"]]
+		var/datum/asset_pack/changelog_item/changelog_item = changelog_items[params["date"]]
 		if (!changelog_item)
-			changelog_item = new /datum/asset/changelog_item(params["date"])
+			changelog_item = new /datum/asset_pack/changelog_item(params["date"])
 			changelog_items[params["date"]] = changelog_item
 		return ui.send_asset(changelog_item)
 

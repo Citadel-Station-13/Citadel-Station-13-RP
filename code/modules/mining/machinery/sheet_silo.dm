@@ -81,7 +81,7 @@
 	sheets_by_material = data["stored"]
 
 /obj/machinery/sheet_silo/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/spritesheet/materials
+	immediate += /datum/asset_pack/spritesheet/materials
 	return ..()
 
 /obj/machinery/sheet_silo/ui_data(mob/user, datum/tgui/ui)

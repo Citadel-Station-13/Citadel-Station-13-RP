@@ -9,10 +9,10 @@ SUBSYSTEM_DEF(assets)
 	var/static/list/assets_by_id = list()
 
 /datum/controller/subsystem/assets/Initialize(timeofday)
-	for(var/datum/asset/path as anything in typesof(/datum/asset))
+	for(var/datum/asset_pack/path as anything in typesof(/datum/asset_pack))
 		if(path == initial(path.abstract_type))
 			continue
-		var/datum/asset/instance = new path
+		var/datum/asset_pack/instance = new path
 		assets_by_type[path] = instance
 
 #ifndef DO_NOT_DEFER_ASSETS
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(assets)
  * * This proc can block if something needs to generate.
  */
 /datum/controller/subsystem/assets/proc/load_asset(identifier)
-	var/datum/asset/resolved = resolve_asset(identifier)
+	var/datum/asset_pack/resolved = resolve_asset(identifier)
 	resolved.ensure_ready()
 	return resolved
 

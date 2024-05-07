@@ -25,8 +25,8 @@
  * todo: this should be sent to embedding interfaces
  *
  * assets may be:
- * * a /datum/asset
- * * typepath of a /datum/asset
+ * * a /datum/asset_pack
+ * * typepath of a /datum/asset_pack
  *
  * @params
  * * ui - the UI instance that's being opened

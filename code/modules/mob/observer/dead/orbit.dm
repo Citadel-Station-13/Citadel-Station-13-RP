@@ -98,5 +98,5 @@
 	return data
 
 /datum/orbit_menu/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/simple/orbit
+	immediate += /datum/asset_pack/simple/orbit
 	return ..()

@@ -93,7 +93,7 @@
 	.["graffitiPickedColor"] = crayon_color
 
 /obj/item/pen/crayon/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/spritesheet/crayons
+	immediate += /datum/asset_pack/spritesheet/crayons
 	return ..()
 
 /obj/item/pen/crayon/ui_act(action, list/params, datum/tgui/ui)

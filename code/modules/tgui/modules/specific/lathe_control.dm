@@ -122,7 +122,7 @@
 			return TRUE
 
 /datum/tgui_module/lathe_control/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/spritesheet/materials
+	immediate += /datum/asset_pack/spritesheet/materials
 	return ..()
 
 /datum/tgui_module/lathe_control/proc/ui_design_data(datum/design/design)

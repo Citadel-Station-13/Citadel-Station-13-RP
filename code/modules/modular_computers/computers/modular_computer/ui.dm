@@ -1,6 +1,6 @@
 // Operates TGUI
 /obj/item/modular_computer/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/simple/headers
+	immediate += /datum/asset_pack/simple/headers
 	return ..()
 
 /obj/item/modular_computer/ui_interact(mob/user, datum/tgui/ui)

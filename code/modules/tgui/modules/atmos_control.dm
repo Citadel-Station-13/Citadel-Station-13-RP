@@ -32,7 +32,7 @@
 			return 1
 
 /datum/tgui_module_old/atmos_control/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	immediate += /datum/asset/simple/nanomaps
+	immediate += /datum/asset_pack/simple/nanomaps
 	return ..()
 
 /datum/tgui_module_old/atmos_control/ui_interact(mob/user, datum/tgui/ui)

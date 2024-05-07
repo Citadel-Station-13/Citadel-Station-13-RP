@@ -9,7 +9,7 @@
 /datum/admins/proc/edit_admin_permissions()
 	if(!check_rights(R_PERMISSIONS))
 		return
-	var/datum/asset/asset_cache_datum = get_asset_datum(/datum/asset/group/permissions)
+	var/datum/asset_pack/asset_cache_datum = get_asset_datum(/datum/asset_pack/group/permissions)
 	asset_cache_datum.send(usr)
 
 	var/output = {"<!DOCTYPE html>
