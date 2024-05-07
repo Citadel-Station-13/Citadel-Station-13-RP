@@ -276,8 +276,7 @@
 	if(owner)
 		if(iscarbon(owner))
 			name = "[owner.real_name]'s head"
-			spawn(1)
-				owner.update_hair()
+			owner.update_hair()
 	get_icon()
 	..()
 
