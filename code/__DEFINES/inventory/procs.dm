@@ -60,7 +60,7 @@
 #define INVENTORY_SLOT_DOES_NOT_EXIST			-1
 
 //! return values for inv view/strip/access/panel procs:
-//? /datum/inventory_slot_meta/proc/check_strip_conceal()
+//? /datum/inventory_slot/proc/check_strip_conceal()
 /// do not show slot
 #define INV_VIEW_OBFUSCATE_HIDE_SLOT			(1<<0)
 /// do not allow operations

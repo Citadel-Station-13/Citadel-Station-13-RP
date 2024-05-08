@@ -109,8 +109,7 @@
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
-		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 35
-		base_attack_cooldown = 10 + max(0, (maxHealth - health) - 100) / 15
+		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 50
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -492,8 +491,8 @@
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
-			/datum/inventory_slot_meta/inventory/ears/left,
-			/datum/inventory_slot_meta/inventory/ears/right,
+			/datum/inventory_slot/inventory/ears/left,
+			/datum/inventory_slot/inventory/ears/right,
 		)))
 			blob.mob_radio.forceMove(reform_spot)
 		blob.mob_radio = null
@@ -663,7 +662,7 @@
 		if("headsets")
 			chosen_list = GLOB.clothing_headsets
 			icon_file = 'icons/mob/clothing/ears.dmi'
-			
+
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
 
 	if(!ispath(chosen_list[picked]))
@@ -673,7 +672,7 @@
 	if(isnull(H.icon_override))
 		H.icon_override = icon_file
 	H.update_worn_icon()	//so our overlays update.
-	
+
 	if (ismob(H.loc))
 		var/mob/M = H.loc
 		M.update_inv_belt() //so our overlays
@@ -717,7 +716,7 @@
 			chosenpart = H.boots
 			chosen_list = GLOB.clothing_shoes
 
-	
+
 	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
 
 	if(!ispath(chosen_list[picked]))
@@ -738,7 +737,7 @@
 
 	var/obj/item/holder/H = loc
 	var/color_in = input("Pick a color. Cancelling sets it to default.","Color", H.color) as null|color
-	
+
 	if(color_in)
 		H.color = color_in
 	else

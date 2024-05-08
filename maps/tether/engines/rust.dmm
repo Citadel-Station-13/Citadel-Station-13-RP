@@ -1257,7 +1257,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/blast/regular{
-	id = "EngineEmitterPortWest";
+	id = "EngineEmitterPortWest2";
 	name = "Engine Gas Storage"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1268,7 +1268,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	id = "EngineEmitterPortWest";
+	id = "EngineEmitterPortWest2";
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/button/remote/blast_door{

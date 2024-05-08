@@ -775,6 +775,9 @@
 				MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE \
 			)
 
+		if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			adjust = min(adjust, 2) // snowflake patch for cryo i fucking hate this aoguhwagoehs8ry0u34ajwioer
+
 		if(is_stabilizing)
 			adjust_bodytemperature(adjust)
 		else if(difference < 0)

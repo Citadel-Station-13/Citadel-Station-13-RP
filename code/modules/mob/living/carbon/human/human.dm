@@ -1115,6 +1115,7 @@
 		return
 
 	var/datum/species/S
+	var/datum/species/old_species = species
 
 	// provided? if so, set
 	// (and hope to god the provider isn't stupid and didn't quantum entangle a datum)
@@ -1147,6 +1148,36 @@
 	hud_used = new /datum/hud(src)
 	reload_rendering()
 	update_vision()
+
+	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
+	for(var/key in species.sprite_accessory_defaults)
+		var/datum/sprite_accessory/accessory = species.sprite_accessory_defaults[key]
+		var/datum/sprite_accessory/existing = get_sprite_accessory(key)
+		if(existing && old_species?.sprite_accessory_defaults?[key] != existing)
+			continue
+		switch(key)
+			if(SPRITE_ACCESSORY_SLOT_EARS)
+				ear_style = accessory
+				r_ears = r_skin
+				g_ears = g_skin
+				b_ears = b_skin
+			if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
+			if(SPRITE_ACCESSORY_SLOT_HAIR)
+			if(SPRITE_ACCESSORY_SLOT_HORNS)
+				horn_style = accessory
+				r_horn = r_skin
+				g_horn = g_skin
+				b_horn = b_skin
+			if(SPRITE_ACCESSORY_SLOT_TAIL)
+				tail_style = accessory
+				r_tail = r_skin
+				g_tail = g_skin
+				b_tail = b_skin
+			if(SPRITE_ACCESSORY_SLOT_WINGS)
+				wing_style = accessory
+				r_wing = r_skin
+				g_wing = g_skin
+				b_wing = b_skin
 
 	// skip the rest
 	if(skip)
@@ -1260,6 +1291,7 @@
 		W.add_fingerprint(src)
 
 /mob/living/carbon/human/emp_act(severity)
+	. = ..()
 	if(isSynthetic())
 		switch(severity)
 			if(1)
@@ -1279,8 +1311,6 @@
 		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
 		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
 		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
-		..()
-
 
 /mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	. = 1

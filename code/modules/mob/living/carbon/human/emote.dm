@@ -444,7 +444,8 @@
 							robotic = 1
 					if(!robotic)
 						message = "coughs up a small amount of blood!"
-						BloodyMouth()
+						//! disabled for shitcode reasons
+						// BloodyMouth()
 						if(get_gender() == FEMALE)
 							if(species.female_cough_sounds)
 								playsound(src, pick(species.female_cough_sounds), 120)
@@ -961,10 +962,12 @@
 			src.animate_tail_once()
 
 		if("wag", "sway")
-			src.animate_tail_start()
+			src.toggle_tail_vr()
+			// src.animate_tail_start()
 
 		if("qwag", "fastsway")
-			src.animate_tail_fast()
+			src.toggle_tail_vr()
+			// src.animate_tail_fast()
 
 		if("swag", "stopsway")
 			src.animate_tail_stop()
@@ -1110,19 +1113,19 @@
 		if ("vwag")
 			if(toggle_tail_vr(message = 1))
 				m_type = 1
-				message = "[wagging ? "starts" : "stops"] wagging their tail."
+				message = "[get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, SPRITE_ACCESSORY_VARIATION_WAGGING) ? "starts" : "stops"] wagging their tail."
 			else
 				return 1
 		if ("vflap")
 			if(toggle_wing_vr(message = 1))
 				m_type = 1
-				message = "[flapping ? "starts" : "stops"] flapping their wings."
+				message = "[get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS, SPRITE_ACCESSORY_VARIATION_FLAPPING) ? "starts" : "stops"] flapping their wings."
 			else
 				return 1
 		if ("vspread")
 			if(toggle_wing_spread(message = 1))
 				m_type = 1
-				message = "[spread ? "extends" : "retracts"] their wings."
+				message = "[get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS, SPRITE_ACCESSORY_VARIATION_SPREAD) ? "extends" : "retracts"] their wings."
 			else
 				return 1
 		if ("mlem")
@@ -1187,7 +1190,7 @@
 		if("mar")
 			message = "lets out a mar."
 			m_type = 2
-			playsound(loc, 'sound/voice/mar.ogg', 50, 1, -1)	
+			playsound(loc, 'sound/voice/mar.ogg', 50, 1, -1)
 		if ("nsay")
 			nsay()
 			return TRUE
@@ -1259,51 +1262,6 @@
 /mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
 	spam_flag = FALSE
 
-/mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
-	if(!tail_style || !tail_style.ani_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
-		return 0
-
-	var/new_wagging = isnull(setting) ? !wagging : setting
-	if(new_wagging != wagging)
-		wagging = new_wagging
-		update_tail_showing()
-	return 1
-
-/mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
-	if(!wing_style || !wing_style.ani_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
-		return 0
-
-	var/new_flapping = isnull(setting) ? !flapping : setting
-	if(new_flapping != flapping)
-		flapping = setting
-		if(flapping)
-			spread = FALSE
-		update_wing_showing()
-	return 1
-
-/mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
-	if(!wing_style)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings!</span>")
-		return 0
-
-	if(!wing_style.spr_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
-		return 0
-
-	var/new_spread = isnull(folded) ? !spread : folded
-	if(new_spread != spread)
-		spread = new_spread
-		if(spread)
-			flapping = FALSE
-		update_wing_showing()
-	return 1
-
 /mob/living/carbon/human/verb/toggle_gender_identity_vr()
 	set name = "Set Gender Identity"
 	set desc = "Sets the pronouns when examined and performing an emote."
@@ -1313,10 +1271,3 @@
 		return 0
 	change_gender_identity(new_gender_identity)
 	return 1
-
-/mob/living/carbon/human/verb/switch_tail_layer()
-	set name = "Switch tail layer"
-	set category = VERB_CATEGORY_IC
-	set desc = "Switch tail layer on top."
-	tail_alt = !tail_alt
-	update_tail_showing()
