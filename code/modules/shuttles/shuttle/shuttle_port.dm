@@ -67,10 +67,6 @@
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 
-/obj/shuttle_port/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
-	shuttle = from_shuttle
-	#warn impl
-
 /obj/shuttle_port/Destroy(force)
 	if(!force && !shuttle.being_deleted)
 		. = QDEL_HINT_LETMELIVE
@@ -78,28 +74,49 @@
 	shuttle = null
 	return ..()
 
-/**
- * @return turfs in square box, unfiltered
- */
-/obj/shuttle_port/proc/aabb_ordered_turfs_here()
-	return shuttle.anchor.aabb_ordered_turfs_at(loc)
+/obj/shuttle_port/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	shuttle = from_shuttle
+
+/obj/shuttle_port/proc/overall_width(direction)
+	return shuttle.anchor.overall_width(direction)
+
+/obj/shuttle_port/proc/overall_height(direction)
+	return shuttle.anchor.overall_height(direction)
 
 /**
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_port/proc/aabb_ordered_turfs_at(turf/anchor, direction)
-	ASSERT(isturf(anchor))
-	ASSERT(isturf(loc))
-	var/dx = shuttle.anchor.x - src.y
-	var/dy = shuttle.anchor.y - src.y
-	return shuttle.anchor.aabb_ordered_turfs_at(
-		locate(
-			anchor.x + dx,
-			anchor.y + dy,
-			anchor.z,
-		),
-		direction,
-	)
+/obj/shuttle_port/proc/aabb_ordered_turfs_here()
+	return aabb_ordered_turfs_at(loc)
+
+/**
+ * @return turfs in square box, unfiltered
+ */
+/obj/shuttle_port/proc/aabb_ordered_turfs_at(turf/anchor, direction = src.dir)
+	// var/dx = shuttle.anchor.x - src.x
+	// var/dy = shuttle.anchor.y - src.y
+	// return shuttle.anchor.aabb_ordered_turfs_at(
+	// 	locate(
+	// 		anchor.x + dx,
+	// 		anchor.y + dy,
+	// 		anchor.z,
+	// 	),
+	// 	direction,
+	// )
+	#warn FUCK; we'll probably need angle2dir for this.
+
+/**
+ * checks if we'll clip a zlevel edge or another shtutle at a location
+ *
+ * the weird return is for optimization reasons.
+ *
+ * @return null if we will clip, list(ordered turfs) if we won't clip
+ */
+/obj/shuttle_port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
+	#warn use above code but just different anchor proc
+
+/obj/shuttle_port/forceMove()
+	CRASH("attempted to forcemove a shuttle anchor")
 
 /obj/shuttle_port/grid_move(grid_flags, turf/new_turf)
 	return

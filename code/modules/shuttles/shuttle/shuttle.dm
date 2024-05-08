@@ -262,9 +262,35 @@
 //* Docking - Backend; Don't mess with these. *//
 
 /**
+ * immediate shuttle move, undocking from any docked ports in the process
+ *
+ * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
+ * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/datum/shuttle/proc/aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+	#warn uhh
+
+	// get ordered turfs
+	if(isnull(use_before_turfs))
+		use_before_turfs = aabb_ordered_turfs_here()
+	if(isnull(use_after_turfs))
+		use_after_turfs = align_with_port? align_with_port.aabb_ordered_turfs_at_and_clip_check(move_to, direction) : anchor.aabb_ordered_turfs_at_and_clip_check(move_to, direction)
+		if(isnull(use_after_turfs))
+			return FALSE
+
+	. = unsafe_aligned_translation(move_to, direction, align_with_port, use_before_turfs, use_after_turfs)
+	if(!.)
+		return
+
+/**
  * immediate shuttle move to a turf
  *
- * all translations must use this.
+ * * all translations must use this.
+ * * warning: absolutely no safety checks are done. none of the aftereffects are handled either. don't use this.
+ * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
+ * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
  *
  * optionally, align a port with that turf instead of aligning our anchor to that turf
  *
@@ -284,13 +310,15 @@
 	translating_garbage_disposal_lookup_cache = new /list(overall_width)
 	translating_needs_to_be_thrown_away = list()
 	translating_needs_to_be_damaged = list()
+
+	// get ordered turfs
 	if(isnull(use_before_turfs))
-		// assume both are empty
-		// get aabb boxes
 		use_before_turfs = aabb_ordered_turfs_here()
+	if(isnull(use_after_turfs))
 		use_after_turfs = align_with_port? align_with_port.aabb_ordered_turfs_at(move_to, direction) : anchor.aabb_ordered_turfs_at(move_to, direction)
-		// filter for less work
-		SSgrids.null_filter_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
+
+	// filter for less work
+	SSgrids.null_filter_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
 	#warn move anchor first
 	#warn move ports
 	// prepped, move.
@@ -410,4 +438,5 @@
  * todo: todo
  */
 /datum/shuttle/proc/move_to_transit()
+	#warn uhh
 	return SSshuttle.move_shuttle_to_transit(src)

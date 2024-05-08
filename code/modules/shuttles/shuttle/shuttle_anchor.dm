@@ -100,14 +100,6 @@
 	/// see main documentation
 	var/offset_y
 
-/obj/shuttle_anchor/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
-	shuttle = from_shuttle
-	#warn impl
-
-/obj/shuttle_anchor/proc/calculate_bounds(bottomleft_x, bottomleft_y, topright_x, topright_y, initial_direction)
-	ASSERT(bottomleft_x && bottomleft_y && topright_x && topright_y && initial_direction)
-	#warn impl
-
 /obj/shuttle_anchor/Destroy(force)
 	if(!force && !shuttle.being_deleted)
 		. = QDEL_HINT_LETMELIVE
@@ -115,11 +107,56 @@
 	shuttle = null
 	return ..()
 
+/obj/shuttle_anchor/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+	shuttle = from_shuttle
+
+/obj/shuttle_anchor/proc/calculate_bounds(bottomleft_x, bottomleft_y, topright_x, topright_y, initial_direction)
+	ASSERT(bottomleft_x && bottomleft_y && topright_x && topright_y && initial_direction)
+	var/r_size_x = topright_x - bottomleft_x + 1
+	var/r_size_y = topright_y - bottomleft_y + 1
+	switch(initial_direction)
+		if(NORTH)
+			size_x = r_size_x
+			size_y = r_size_y
+			offset_x = x - bottomleft_x
+			offset_y = topright_y - y
+		if(SOUTH)
+			size_x = r_size_x
+			size_y = r_size_y
+			offset_x = topright_x - x
+			offset_y = y - bottomleft_y
+		if(EAST)
+			size_x = r_size_y
+			size_y = r_size_x
+			offset_x = topright_y - y
+			offset_y = topright_x - x
+		if(WEST)
+			size_x = r_size_y
+			size_y = r_size_x
+			offset_x = y - bottomleft_y
+			offset_y = x - bottomleft_x
+
 /obj/shuttle_anchor/proc/overall_width(direction)
-	#warn impl
+	switch(direction)
+		if(NORTH)
+			return size_x
+		if(SOUTH)
+			return size_x
+		if(EAST)
+			return size_y
+		if(WEST)
+			return size_y
 
 /obj/shuttle_anchor/proc/overall_height(direction)
-	#warn impl
+	switch(direction)
+		if(NORTH)
+			return size_y
+		if(SOUTH)
+			return size_y
+		if(EAST)
+			return size_x
+		if(WEST)
+			return size_x
 
 /**
  * @return turfs in square box, unfiltered
@@ -132,47 +169,100 @@
  */
 /obj/shuttle_anchor/proc/aabb_ordered_turfs_at(turf/anchor, direction = src.dir)
 	ASSERT(isturf(anchor))
-	var/x = anchor.x
-	var/y = anchor.y
-	switch(dir)
-		if(NORTH)
-			return SSgrids.get_ordered_turfs(
-				x - offset_x,
-				x + size_x - 1 - offset_x,
-				y - size_y + 1,
-				y - offset_y,
-				z,
-				NORTH,
-			)
-		if(SOUTH)
-			return SSgrids.get_ordered_turfs(
-				x - size_x + 1 + offset_x,
-				x + offset_x,
-				y - offset_y,
-				y + size_y - offset_y - 1,
-				z,
-				SOUTH,
-			)
-		if(EAST)
-			return SSgrids.get_ordered_turfs(
-				x - size_y + 1 + offset_y,
-				x + offset_y,
-				y - size_x + 1 + offset_x,
-				y + offset_x,
-				z,
-				EAST,
-			)
-		if(WEST)
-			return SSgrids.get_ordered_turfs(
-				x - offset_y,
-				x + size_y - 1 - offset_y,
-				y - offset_x,
-				y + size_x - 1 - offset_x,
-				z,
-				WEST,
-			)
 
-// 	// todo: more default heuristic spots
+	// take a guess as to what these mean (lowerleft/upperright x/y)
+	var/real_llx
+	var/real_lly
+	var/real_urx
+	var/real_ury
+
+	switch(direction)
+		if(NORTH)
+			real_llx = x - offset_x
+			real_lly = y + offset_y - (size_y - 1)
+			real_urx = x - offset_x + (size_x - 1)
+			real_ury = y + offset_y
+		if(SOUTH)
+			real_llx = x + offset_x - (size_x - 1)
+			real_lly = y - offset_y
+			real_urx = x + offset_x
+			real_ury = y - offset_y + (size_y - 1)
+		if(EAST)
+			real_llx = x + offset_y - (size_y - 1)
+			real_lly = y + offset_x - (size_x - 1)
+			real_urx = x + offset_y
+			real_ury = y + offset_x
+		if(WEST)
+			real_llx = x - offset_y
+			real_lly = y - offset_x
+			real_urx = x - offset_y + (size_y - 1)
+			real_ury = y - offset_x + (size_x - 1)
+
+	return SSgrids.get_ordered_turfs(
+		real_llx,
+		real_urx,
+		real_lly,
+		real_ury,
+		anchor.z,
+		direction,
+	)
+
+/**
+ * checks if we'll clip a zlevel edge or another shtutle at a location
+ *
+ * the weird return is for optimization reasons.
+ *
+ * @return null if we will clip, list(ordered turfs) if we won't clip
+ */
+/obj/shuttle_anchor/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
+	ASSERT(isturf(location))
+
+	// take a guess as to what these mean (lowerleft/upperright x/y)
+	var/real_llx
+	var/real_lly
+	var/real_urx
+	var/real_ury
+
+	switch(direction)
+		if(NORTH)
+			real_llx = x - offset_x
+			real_lly = y + offset_y - (size_y - 1)
+			real_urx = x - offset_x + (size_x - 1)
+			real_ury = y + offset_y
+		if(SOUTH)
+			real_llx = x + offset_x - (size_x - 1)
+			real_lly = y - offset_y
+			real_urx = x + offset_x
+			real_ury = y - offset_y + (size_y - 1)
+		if(EAST)
+			real_llx = x + offset_y - (size_y - 1)
+			real_lly = y + offset_x - (size_x - 1)
+			real_urx = x + offset_y
+			real_ury = y + offset_x
+		if(WEST)
+			real_llx = x - offset_y
+			real_lly = y - offset_x
+			real_urx = x - offset_y + (size_y - 1)
+			real_ury = y - offset_x + (size_x - 1)
+
+	if(real_llx < 1 || real_urx > world.maxx || real_lly < 1 || real_ury > world.maxy)
+		return null
+
+	var/list/turf/ordered_turfs_at = SSgrids.get_ordered_turfs(
+		real_llx,
+		real_urx,
+		real_lly,
+		real_ury,
+		location.z,
+		direction,
+	)
+
+	for(var/turf/T as anything in ordered_turfs_at)
+		// do not allow clipping shuttles; that would be bad.
+		if(istype(T.loc, /area/shuttle))
+			return null
+
+	return ordered_turfs_at
 
 /obj/shuttle_anchor/forceMove()
 	CRASH("attempted to forcemove a shuttle anchor")
@@ -187,18 +277,11 @@
 	ASSERT(direction in GLOB.cardinal)
 
 	// check clipping
-	if(will_clip_at(location, direction))
+	var/list/new_ordered_turfs = aabb_ordered_turfs_at_and_clip_check(location, direction)
+	if(isnull(new_ordered_turfs))
 		return FALSE
 
-	#warn impl
-
-#warn impl all
-
-/**
- * checks if we'll clip a zlevel edge or another shtutle at a location
- */
-/obj/shuttle_anchor/proc/will_clip_at(turf/location, direction)
-	#warn impl
+	return shuttle.aligned_translation(location, direction, use_after_turfs = new_ordered_turfs)
 
 /obj/shuttle_anchor/grid_move(grid_flags, turf/new_turf)
 	return
