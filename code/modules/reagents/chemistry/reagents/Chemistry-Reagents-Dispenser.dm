@@ -85,7 +85,6 @@
 					to_chat(M,SPAN_DANGER("You're starting to slur your words."))
 				if(3)
 					to_chat(M,SPAN_DANGER("You can barely walk straight!"))
-					M.Confuse(60)
 				if(4)
 					to_chat(M,SPAN_DANGER("You're seeing double!."))
 					M.eye_blurry=max(M.eye_blurry,30)
@@ -96,6 +95,8 @@
 	
 	if(effect_level>=2)
 		M.slurring=max(M.slurring,10)
+	if(effect_level>=3)
+		M.Confuse(60)
 	if(effect_level>=5)
 		M.drowsyness=max(M.drowsyness,60)
 	if(effect_level>=6)
