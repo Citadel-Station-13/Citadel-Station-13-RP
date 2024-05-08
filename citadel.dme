@@ -4072,6 +4072,7 @@
 #include "code\modules\overmap\entity\entity.dm"
 #include "code\modules\overmap\entity\physics.dm"
 #include "code\modules\overmap\events\event_handler.dm"
+#include "code\modules\overmap\events\fluff_planets.dm"
 #include "code\modules\overmap\events\generation.dm"
 #include "code\modules\overmap\events\overmap_event.dm"
 #include "code\modules\overmap\legacy\abductor_vr.dm"

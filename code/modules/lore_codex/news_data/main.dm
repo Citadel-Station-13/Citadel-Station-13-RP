@@ -642,11 +642,11 @@
 	anthropoligcal wealth of Surt. Thanks to the quick action of the Nanotrasen the initial hive was dispersed before it could begin gathering victims to spread the xenomorph \
 	menace across the planet. However, some xenos escaped and over the past month Nanotrasen has been fighting a tireless campaign to eliminate them. \
 	<br><br>\
-	On the 29th of July Nanotrasen launched a massive operation that ended in the slaying of the new Queen of the Xenomorphs and the destruction of most of the xenos of the planet. \
-	This time however there was no where the xenos could escape to. Today Nanotrasen annouced that they had successfully cleared the planet of Xenomorphs. A Nanotrasen representative \
-	had this to say: 'It is not simply oue assets we have protected on Surt but, an entire sapient species. Science cannot being to predict the countless primtive civilization that \
-	have been destroyed by the xenomorphs and thankfully the Scori will not joiningg that list. Despite our reputation as a profit first company, we recognize its part of our duty \
-	as sapient life to protect the well being of other sapient life, even if it can be a bit pricey at times.' The Orion Confederation Institute of Anthropology formally thanks \
+	On the 29th of July Nanotrasen launched a massive operation that ended in the slaying of the new Queen of the Xenomorphs and destroying of most of the xenos on the planet. \
+	There was simply nowhere the xenos could escape to. Today Nanotrasen annouced that they had successfully cleared the planet of Xenomorphs. A Nanotrasen representative \
+	had this to say: 'It is not simply our assets we have protected on Surt but an entire sapient species. Science cannot begin to predict the countless primtive civilization that \
+	have been destroyed by the xenomorphs and thankfully the Scori will not joining that list. Despite our reputation as a profit first company, we recognize its part of our duty \
+	as sapient life to protect the well being of other sapient life, even if it can be a bit pricey at times.' The Orion Confederation Institute of Anthropology formally thanked \
 	Nanotrasen for helping perserve the Scorian culture and expressed interest in further exploration fo Surt and its people. Though they, hestitated to use the word uplift they \
 	acknowledge that the Scori's integration with the galaxy is at this point inevitable even if they hoped it would be no time soon. At least the Scori then can rest easy perhaps \
 	never knowing how close they came to extinction yet again."
@@ -672,3 +672,37 @@
 	software engineers for signs of system tampering and to update their system security software at the earliest opporutunity. Despite the damage caused by the cyber attacks, software \
 	engineers are confident that such an attacks will be rarer and rarer in the future as robotics technology improves and positronics become more independent. However, with the \
 	increasing scale of cyber attacks, other experts worry that a worst case scenario mass synthetic subversion simply has yet to occur."
+
+/datum/lore/codex/page/krisitik
+	name = "Murith United Bureaus Signs Phoron Import Agreement with Nanotrasen, Is Further Cooperation for Isolated State to Come? - 10/18/2567"
+	data = "The Murith United Bureaus today annouced it had concluded extensive negotiations with Nanotrasen today to begin importing phoron into their region. The isolated state \
+	and the Krisitik that inhabit it rarely deal with outside powers and the agreement with Nanotrasen represents the largest external trade agreement with a megacorporation since \
+	contact was made with the race. The Bureaus claim the phoron is being used to shore up the fuel reserves of the nation which is threatened by the Moghes Hegemony its nearest neighbor \
+	and follows decades of efforts by the Krisitik to deter a Moghes invasion. The exact details of the agreement is classified however it appears that Nanotrasen is in return for the phoron \
+	recieving exotic isotopes that the Krisitik specialize in. \
+	<br><br>\
+	Despite the size of the agreement, political analysts expect very little to change in the diplomatic stance of the Bureaus, whose dedication to autarky has made integration in the galactic \
+	community slow. Hope remain that the Krisitik will one day soon one their doors to trade with the wider galaxy and turn back on the secrecy that has defined their relations with the wider \
+	galaxy. Krisitik representatives could not be reached for commment regarding the nature of the trade agreement however with the threat of Moghes looming ever larger over the fledgling Bureaus \
+	the days of their isolation may be coming to end. We can only hope that this first step in joining the galactic economy leads to a wider opening of relations between the Bureaus and the wider \
+	galaxy for the betterment of all species."
+
+/datum/lore/codex/page/halloween
+	name = "Explosion of Violence Over Halloween Baffles Authorities Across the Galaxy! - 11/7/2567"
+	data = "Halloween is a holiday known in human tradition to celebrate horror, monsters, and all things terrifying. This Halloween however has seen a spike in violence in many frontier communities \
+	as pirates criminals and psychopaths decided to write their own Halloween legends. With over three dozen planets reporting pirate attacks on Halloween and with dozens more planets reporting \
+	massacres gruesome murders, Halloween 2567 has proven to be a violent holiday indeed. What's worse it seems many of the pirate attacks were abject slaughters bearing similar signs to the \
+	bloody Mescalero attack of September 2564. The Mescalero attacks resulted in thousands of deaths of mostly helpless civilian frontiersmen in a sadistic display of violence. The pirates \
+	responsible the 'Red Moon' pirates, were a cultish gang of sadists who seemingly massacred solely for the pleasure of shedding blood. The Red Moon was allegedly wiped out to a man following \
+	a confrontation with Nanotrasen's Private Navy however the similarity of the attacks both on Mescalero and this Halloween suggests that the Red Moons may be a much larger organization \
+	then they originally seemed. Some now speculate that somewhere in deep space lies a pirate kingdom of the blood thirsty Red Moons from which their murderous hordes embark to spread terror \
+	through the galaxy \
+	<br><br>\
+	Beyond the apparent re-emergence of the Red Moon pirates Halloween also saw a spike in violence across the frontier. Reports have come in of cannibal attacks, serial murders, terrorist bombings \
+	and even spike in hypercarnivore fauna attacks, all occurring on or around Halloween. The spike in violence has baffled many officials, with seemingly no connection between the attacks. \
+	While conspiracy theorists trade their theories on exonet boards, sociologists seek more plausible explanations with some theorizing that the apparent spike in attacks are a result of \
+	the continued growth of the human population and culture across the wider galaxy. A holiday dedicated to horror such as Halloween after all invites the already disturbed to do sinister things and \
+	as the human population expands across the galaxy so too does the population of disturbed individuals willing to commit horrific acts. The apparent spike in violence is therefore completely \
+	ordinary if a tragic. The apparent spike is simply due to an increase in awareness thanks to the spread of subspace communications across the galaxy and media coverage. Hopefully these \
+	sociologists are correct in their assessment as the alternative, that something is driving more and more people to incredible violence, is terrible to think of."
+
