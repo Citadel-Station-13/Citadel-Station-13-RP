@@ -52,12 +52,13 @@
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mfiftycalcaseless
-	recoil = 1 //mein leiben
+	recoil = 1
 	accuracy = -10
 	allowed_magazines = list(/obj/item/ammo_magazine/mfiftycalcaseless)
 	one_handed_penalty = 100 //you simply do not
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto",      	burst=1, 	fire_delay=0,    move_delay=null,	burst_accuracy=null, dispersion=null),
@@ -80,17 +81,22 @@
 
 /obj/item/gun/ballistic/caseless/phoron_spitter
 	name = "Gorlex 'SHRAPNEL-SPITTER' Phoron SMG"
-	desc = "An SMG from the Phoron Wars that lacks conventional ammo, instead using compressed matter cartridges. Coils accelerate a ferromagnetic, self-oxidizing cloud of alloy. Lack of traditional cycling means it can fire blindingly fast. Like all caseless weapons, it's fallen by the wayside, and is no longer produced."
-	caliber = "12.7mm caseless"
+	desc = "A short-barrel SMG from the Phoron Wars that lacks conventional ammo, instead using compressed matter cartridges. Coils accelerate a ferromagnetic, self-oxidizing cloud of alloy. Lack of traditional cycling means it can fire blindingly fast. Like all caseless weapons, it's fallen by the wayside, and is no longer produced."
+	caliber = "phoron shrapnel"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mphoronshot
 	allowed_magazines = list(/obj/item/ammo_magazine/mphoronshot)
 	icon_state = "phoron_shredder"
-	item_state = "phoron_shredder"
+	item_state = "ashot" //close enough
+	recoil = 1.5
+	accuracy = -30
+	one_handed_penalty = 50
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 	firemodes = list(
 		list(mode_name="full auto", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1),
-		list(mode_name="fuller auto", burst=2, fire_delay=-3, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		list(mode_name="fuller auto", burst=2, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)

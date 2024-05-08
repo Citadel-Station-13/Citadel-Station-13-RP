@@ -497,7 +497,7 @@
 	range = 6
 
 /obj/projectile/bullet/incendiary/caseless
-	name = "caseless 12.7mm phoron slug"
+	name = "caseless phoron slug"
 	icon_state = "bullet_alt"
 	damage = 50
 	damage_type = BRUTE
