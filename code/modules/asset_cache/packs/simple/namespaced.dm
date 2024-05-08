@@ -17,7 +17,7 @@
 	var/list/sorted_assets = sortList(assets)
 
 	for (var/asset_name in sorted_assets)
-		var/datum/asset_cache_item/ACI = new(asset_name, sorted_assets[asset_name])
+		var/datum/asset_item/ACI = new(asset_name, sorted_assets[asset_name])
 		if (!ACI?.hash)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue
@@ -26,7 +26,7 @@
 	var/namespace = md5(hashlist.Join())
 
 	for (var/asset_name in parents)
-		var/datum/asset_cache_item/ACI = new(asset_name, parents[asset_name])
+		var/datum/asset_item/ACI = new(asset_name, parents[asset_name])
 		if (!ACI?.hash)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue
@@ -34,7 +34,7 @@
 		sorted_assets[asset_name] = ACI
 
 	for (var/asset_name in sorted_assets)
-		var/datum/asset_cache_item/ACI = sorted_assets[asset_name]
+		var/datum/asset_item/ACI = sorted_assets[asset_name]
 		if (!ACI?.hash)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue

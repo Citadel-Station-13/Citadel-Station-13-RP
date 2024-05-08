@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(asset_loading)
 	/// things waiting to be loaded
 	var/list/datum/asset_pack/loading = list()
 
-/datum/controller/subsystem/asset_loading/proc/queue_asset(datum/asset/asset)
+/datum/controller/subsystem/asset_loading/proc/queue_asset_pack(datum/asset_pack/asset)
 	if(asset.loaded != ASSET_NOT_LOADED)
 		return
 	loading += asset

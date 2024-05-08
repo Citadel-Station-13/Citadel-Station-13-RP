@@ -1,5 +1,5 @@
 /datum/asset_pack/simple/namespaced/nanoui
-	keep_local_name = TRUE
+	legacy = TRUE
 
 /datum/asset_pack/simple/namespaced/nanoui/register()
 	var/list/dirs = list(

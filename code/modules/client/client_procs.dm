@@ -12,6 +12,25 @@
 #define CURRENT_MINUTE	3
 #define MINUTE_COUNT	4
 #define ADMINSWARNED_AT	5
+
+/**
+ * A 'hijack' / intercept proc.
+ * Override this and return TRUE if you handled it.
+ * This allows for clients to not have an overloaded Topic().
+ *
+ * The downside is additional overhead is generated due to the proc call overheads.
+ *
+ * * Logging & topic spam prevention is ran before this proc.
+ *
+ * @params
+ * * raw_href - the raw ?querystring that's sent by the client
+ * * href_list - the decoded, key-value query sent by client
+ * * raw_src - the raw src resolved by BYOND.
+ */
+/client/proc/on_topic_hook(raw_href, list/href_list, raw_src)
+	return FALSE
+
+
 	/*
 	When somebody clicks a link in game, this Topic is called first.
 	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
@@ -31,13 +50,6 @@
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
-
-	// asset_cache
-	var/asset_cache_job
-	if(href_list["asset_cache_confirm_arrival"])
-		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
-		if (!asset_cache_job)
-			return
 
 	// Rate limiting
 	var/mtl = config_legacy.minute_topic_limit		//CONFIG_GET(number/minute_topic_limit)
@@ -72,7 +84,6 @@
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
-
 	// Tgui Topic middleware
 	if(tgui_topic(href_list))
 		if(CONFIG_GET(flag/emergency_tgui_logging))
@@ -84,18 +95,13 @@
 	// Log
 	log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
+	// Run normal hooks.
+	if(on_topic_hook(href, href_list, hsrc))
+		return
+
 	// Route statpanel
 	if(href_list["statpanel"])
 		_statpanel_act(href_list["statpanel"], href_list)
-		return
-
-	//byond bug ID:2256651
-	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
-		src << browse("...", "window=asset_cache_browser")
-		return
-	if (href_list["asset_cache_preload_data"])
-		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 		return
 
 	//Admin PM
@@ -347,8 +353,8 @@
 	// 	if(config_legacy.aggressive_changelog)
 	// 		changelog_async()
 
-	// ensure asset cache is there
-	INVOKE_ASYNC(src, PROC_REF(warn_if_no_asset_cache_browser))
+	// run post-init 'lint'-like checks
+	on_new_hook_stability_checks()
 
 	// todo: fuck you voreprefs
 	prefs_vr = new /datum/vore_preferences(src)
@@ -369,6 +375,17 @@
 	prefs.auto_flush_errors()
 	// update our hub label
 	SSserver_maint.UpdateHubStatus()
+
+/**
+ * Called in the middle of new, after everything critical
+ * is loaded / initialized.
+ *
+ * This proc should all be async; it is where you hook to ensure things are properly
+ * loaded.
+ */
+/client/proc/on_new_hook_stability_checks()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 	//////////////
 	//DISCONNECT//
@@ -556,6 +573,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	spawn (10) //removing this spawn causes all clients to not get verbs.
 
 		//load info on what assets the client has
+		#warn uhh
 		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls

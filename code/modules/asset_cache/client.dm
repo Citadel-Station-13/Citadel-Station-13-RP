@@ -1,3 +1,38 @@
+/client
+	/// asset cache: filename = md5, for things already sent to the client
+	var/list/assets_received = list()
+
+	///List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s
+	// var/list/sent_assets = list()
+	///List of all completed blocking send jobs awaiting acknowledgement by send_asset
+	// var/list/completed_asset_jobs = list()
+	///Last asset send job id.
+	// var/last_asset_job = 0
+	// var/last_completed_asset_job = 0
+
+/client/on_new_hook_stability_checks()
+	// ensure asset cache is there
+	INVOKE_ASYNC(src, PROC_REF(warn_if_no_asset_cache_browser))
+	return ..()
+
+/client/on_topic_hook(raw_href, list/href_list, raw_src)
+	. = ..()
+	if(.)
+		return
+
+	var/asset_cache_job
+	if(href_list["asset_cache_confirm_arrival"])
+		. = TRUE
+		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
+		if (asset_cache_job)
+			//byond bug ID:2256651
+			if (asset_cache_job in completed_asset_jobs)
+				to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+				src << browse("...", "window=asset_cache_browser")
+
+	if (href_list["asset_cache_preload_data"])
+		. = TRUE
+		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 
 /client/proc/warn_if_no_asset_cache_browser()
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.

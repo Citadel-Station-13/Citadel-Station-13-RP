@@ -9,14 +9,13 @@
 /datum/admins/proc/edit_admin_permissions()
 	if(!check_rights(R_PERMISSIONS))
 		return
-	var/datum/asset_pack/asset_cache_datum = get_asset_datum(/datum/asset_pack/group/permissions)
-	asset_cache_datum.send(usr)
+	var/datum/asset_pack/asset_cache_datum = SSassets.send_asset_pack(/datum/asset_pack/group/permissions)
 
 	var/output = {"<!DOCTYPE html>
 <html>
 <head>
 <title>Permissions Panel</title>
-<script type='text/javascript' src='[SSassets.transport.get_asset_url("search.js")]'></script>
+<script type='text/javascript' src='[asset_cache_datum.get_url("search.js")]'></script>
 <link rel='stylesheet' type='text/css' href='panels.css'>
 </head>
 <body onload='selectTextField();updateSearch();'>

@@ -1,3 +1,13 @@
+/**
+ * Effectively, a set of files that can be sent to clients.
+ *
+ * Or more specifically, a way to either package (just use /simple),
+ * or generate a set of files that can be sent to clients that
+ * provide specific information (like /spritesheet does).
+ *
+ * Provides inbuilt early and deferred generation capabilities to spread
+ * expensive generation operations across 'idle' ticks.
+ */
 /datum/asset_pack
 	abstract_type = /datum/asset_pack
 
@@ -22,6 +32,19 @@
 	/// are we fully loaded / generated?
 	var/loaded = FALSE
 
+	/// a record of filename = url when we're loaded and pushed to a transport.
+	var/tmp/list/paths
+
+	/// so funny thing
+	/// we still sometimes directly serve html via browse()
+	/// this kind of html:
+	/// 
+
+	/// do not mutate filenames on the remote side
+	/// used when html pages rely on static bindings / aren't otherwise
+	/// dynamically generated.
+
+
 /**
  * ensures we are loaded
  */
@@ -43,7 +66,8 @@
 /datum/asset_pack/proc/load()
 	loaded = ASSET_IS_LOADING
 	var/results = generate()
-	register(results)
+	var/list/files = register(results)
+	push(files)
 	loaded = ASSET_FULLY_LOADED
 
 /**
@@ -60,14 +84,34 @@
 /**
  * registers our content to the asset system's transport
  *
+ * returns a list of filenames associated to files,
+ * because that's what the asset items / cache is actually dealing with.
+ *
+ * all filenames must be *globally unique*.
+ * while this is technically not a limitation on the new asset system, it is nonetheless enforced
+ * to make debugging less awful.
+ *
  * @params
  * * generation - output of generate().
+ *
+ * @return list("<filename>" = file, ...)
  */
 /datum/asset_pack/proc/register()
-	return
+	return list()
 
+/**
+ * pushes our files to the active asset transport
+ */
+/datum/asset_pack/proc/push()
+	#warn impl
+
+/datum/asset_pack/proc/get_url(filename)
+	. = paths[filename]
+	if(isnull(.))
+		CRASH("failed to get url for [filename] on [type] ([id || "compile-time"]). something is terribly wrong!")
+
+#warn below + all /datum/asset_pack subtypes
 /datum/asset_pack
-	#warn below + all /datum/asset_pack subtypes
 
 	var/cached_serialized_url_mappings
 	var/cached_serialized_url_mappings_transport_type

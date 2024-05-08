@@ -18,7 +18,7 @@
 
 /datum/asset_pack/simple/register()
 	for(var/asset_name in assets)
-		var/datum/asset_cache_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
+		var/datum/asset_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
 		if (!ACI)
 			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
 			continue

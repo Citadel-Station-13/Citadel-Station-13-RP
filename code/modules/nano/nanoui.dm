@@ -58,8 +58,6 @@
 	var/list/datum/nanoui/children = list()
 	var/datum/topic_state/state = null
 
-	var/static/datum/asset_pack/simple/namespaced/nanoui/nano_asset
-
 /**
  * Create a new nanoui instance.
  *
@@ -75,8 +73,6 @@
  * @return /nanoui new nanoui object
  */
 /datum/nanoui/New(mob/nuser, nsrc_object, nui_key, ntemplate_filename, ntitle, nwidth, nheight, atom/nref, datum/nanoui/master_ui, datum/topic_state/state = default_state)
-	if(!istype(nano_asset))
-		nano_asset = get_asset_datum(/datum/asset_pack/simple/namespaced/nanoui)
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
@@ -100,8 +96,8 @@
 		ref = nref
 
 	add_common_assets()
-	if (nuser?.client)
-		nano_asset.send(nuser.client) //ship it
+
+	SSassets.send_asset_pack(/datum/asset_pack/simple/namespaced/nanoui, nuser.client)
 
 /**
  * Use this proc to add assets which are common to (and required by) all nano uis

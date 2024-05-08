@@ -1,14 +1,22 @@
 /**
- * # asset_cache_item
+ * A datum used to store data on an asset in the asset cache.
  *
- * An internal datum containing info on items in the asset cache. Mainly used to cache md5 info for speed.
+ * The asset cache system, at its core, is just a way to get files from the server to the
+ * client in a reproducible and efficient manner.
+ *
+ * Each asset item is an item in the cache.
  */
-VV_PROTECT_READONLY(/datum/asset_cache_item)
-/datum/asset_cache_item
+VV_PROTECT_READONLY(/datum/asset_item)
+/datum/asset_item
+	/// filename
 	var/name
+	/// our hash
 	var/hash
-	var/resource
-	var/ext = ""
+	/// the actual file handle
+	var/file
+	/// our extension, excluding the .
+	var/ext
+
 	/// Should this file also be sent via the legacy browse_rsc system
 	/// when cdn transports are enabled?
 	var/legacy = FALSE
@@ -22,7 +30,7 @@ VV_PROTECT_READONLY(/datum/asset_cache_item)
 	/// TRUE for keeping local asset names when browse_rsc backend is used
 	var/keep_local_name = FALSE
 
-/datum/asset_cache_item/New(name, file)
+/datum/asset_item/New(name, file)
 	if (!isfile(file))
 		file = fcopy_rsc(file)
 
@@ -32,11 +40,6 @@ VV_PROTECT_READONLY(/datum/asset_cache_item)
 	src.name = name
 	var/extstart = findlasttext(name, ".")
 	if (extstart)
-		ext = ".[copytext(name, extstart+1)]"
+		ext = "[copytext(name, extstart+1)]"
 	resource = file
 
-/datum/asset_cache_item/vv_edit_var(var_name, var_value)
-	return FALSE
-
-/datum/asset_cache_item/CanProcCall(procname)
-	return FALSE

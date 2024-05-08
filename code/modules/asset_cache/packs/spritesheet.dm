@@ -174,8 +174,8 @@
 	var/regex/find_background_urls = regex(@"background:url\('%(.+?)%'\)", "g")
 	while (find_background_urls.Find(replaced_css))
 		var/asset_id = find_background_urls.group[1]
-		var/asset_cache_item = SSassets.transport.register_asset(asset_id, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[asset_id]")
-		var/asset_url = SSassets.transport.get_asset_url(asset_cache_item = asset_cache_item)
+		var/asset_item = SSassets.transport.register_asset(asset_id, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[asset_id]")
+		var/asset_url = SSassets.transport.get_asset_url(asset_item = asset_item)
 		replaced_css = replacetext(replaced_css, find_background_urls.match, "background:url('[asset_url]')")
 		LAZYADD(cached_spritesheets_needed, asset_id)
 
