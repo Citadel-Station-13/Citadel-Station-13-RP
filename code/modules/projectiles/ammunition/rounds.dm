@@ -523,17 +523,14 @@
 	caliber = "12.7mm caseless"
 	icon_state = "p-casing"
 	projectile_type = /obj/projectile/bullet/incendiary/caseless
-	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/phoron_shrap
-
 	name = "phoron shrapnel"
 	desc = "Should you really be holding this?"
 	caliber = "phoron shrapnel"
 	icon_state = "phoronshrap"
 	projectile_type = /obj/projectile/bullet/incendiary/caseless
-	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/rocket
