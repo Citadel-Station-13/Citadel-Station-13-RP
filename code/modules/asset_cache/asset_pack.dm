@@ -35,15 +35,21 @@
 	/// a record of filename = url when we're loaded and pushed to a transport.
 	var/tmp/list/paths
 
-	/// so funny thing
-	/// we still sometimes directly serve html via browse()
-	/// this kind of html:
-	/// 
+	/// having this on will force something to be sent via
+	/// browse_rsc(), ensuring it always exists in the cache folder
+	/// that byond browsers are ran out of
+	///
+	/// implies do_not_mangle
+	var/legacy = FALSE
 
 	/// do not mutate filenames on the remote side
 	/// used when html pages rely on static bindings / aren't otherwise
 	/// dynamically generated.
+	var/do_not_mangle = FALSE
 
+	/// allow caching cross-rounds, if the server is under a singular commit
+	/// requires configuration to be enabled too.
+	var/allow_cached_generation = FALSE
 
 /**
  * ensures we are loaded

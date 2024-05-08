@@ -15,7 +15,14 @@ SUBSYSTEM_DEF(assets)
 	/// our active asset transport
 	var/datum/asset_transport/transport
 
+	/// if non-null, this is our effective cache commit
+	var/cache_commit
+	/// are we using cached data this round?
+	var/cache_enabled = FALSE
+
 /datum/controller/subsystem/assets/Initialize(timeofday)
+	detect_cache_worthiness()
+
 	for(var/datum/asset_pack/path as anything in typesof(/datum/asset_pack))
 		if(path == initial(path.abstract_type))
 			continue
@@ -63,14 +70,18 @@ SUBSYSTEM_DEF(assets)
 /**
  * ensures an asset has been sent to a client
  *
- * @return asset pack resolved
+ * @params
+ * * target - a client or a list of clients
+ * * identifier - asset type, id, or instance
+ *
+ * @return TRUE if an asset had to be sent, FALSE if the client (is supposed to) already have it.
  */
-/datum/controller/subsystem/assets/proc/send_asset_pack(identifier, client/target)
+/datum/controller/subsystem/assets/proc/send_asset_pack(client/target, identifier)
+	if(isnull(target))
+		return FALSE
 	var/datum/asset_pack/resolved = load_asset_pack(identifier)
-	. = resolved
+	var/list/targets = islist(target)? target ; list(target)
 
-	if(!target)
-		return
 	#warn impl
 
 #warn below

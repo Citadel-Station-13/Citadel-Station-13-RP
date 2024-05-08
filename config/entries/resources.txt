@@ -5,6 +5,14 @@
 
 EXTERNAL_RSC_URLS http://tgstation13.download/byond/tgstationv2.zip
 
+###########################
+# Asset Generation Config #
+###########################
+
+## If enabled, we will be allowed to cache generated assets across
+## rounds if the server's commit hasn't changed.
+
+# ASSET_CACHING
 
 ########################
 # Browser Asset Config #
@@ -18,13 +26,11 @@ EXTERNAL_RSC_URLS http://tgstation13.download/byond/tgstationv2.zip
 # Valid values: simple, webroot. Simple is the default.
 #ASSET_TRANSPORT webroot
 
-
 # Simple asset transport configurable values.
 
 # Uncomment this to have the server passively send all browser assets to each client in the background. (instead of waiting for them to be needed)
 # This should be uncommented in production and commented in development
 #ASSET_SIMPLE_PRELOAD
-
 
 # Webroot asset transport configurable values.
 

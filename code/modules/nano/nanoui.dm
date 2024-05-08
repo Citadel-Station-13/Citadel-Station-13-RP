@@ -97,7 +97,7 @@
 
 	add_common_assets()
 
-	SSassets.send_asset_pack(/datum/asset_pack/simple/namespaced/nanoui, nuser.client)
+	SSassets.send_asset_pack(nuser.client, /datum/asset_pack/simple/namespaced/nanoui)
 
 /**
  * Use this proc to add assets which are common to (and required by) all nano uis

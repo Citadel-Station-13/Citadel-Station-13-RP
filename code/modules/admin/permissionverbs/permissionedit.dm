@@ -9,7 +9,8 @@
 /datum/admins/proc/edit_admin_permissions()
 	if(!check_rights(R_PERMISSIONS))
 		return
-	var/datum/asset_pack/asset_cache_datum = SSassets.send_asset_pack(/datum/asset_pack/group/permissions)
+	var/datum/asset_pack/asset_cache_datum = SSassets.load_asset_pack(/datum/asset_pack/group/permissions)
+	SSassets.send_asset_pack(usr, asset_cache_datum)
 
 	var/output = {"<!DOCTYPE html>
 <html>

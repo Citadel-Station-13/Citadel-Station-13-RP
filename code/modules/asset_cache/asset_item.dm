@@ -17,9 +17,13 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	/// our extension, excluding the .
 	var/ext
 
-	/// Should this file also be sent via the legacy browse_rsc system
-	/// when cdn transports are enabled?
-	var/legacy = FALSE
+	/// force browse_rsc?
+	var/always_browse_rsc = FALSE
+	/// do not mangle our name
+	var/do_not_mangle = FALSE
+	/// was restored from cache
+	var/restored_from_cache = FALSE
+
 	/// Used by the cdn system to keep legacy css assets with their parent
 	/// css file. (css files resolve urls relative to the css file, so the
 	/// legacy system can't be used if the css file itself could go out over
@@ -27,19 +31,18 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	var/namespace = null
 	/// True if this is the parent css or html file for an asset's namespace
 	var/namespace_parent = FALSE
-	/// TRUE for keeping local asset names when browse_rsc backend is used
-	var/keep_local_name = FALSE
 
 /datum/asset_item/New(name, file)
-	if (!isfile(file))
-		file = fcopy_rsc(file)
-
-	hash = md5asfile(file) //icons sent to the rsc sometimes md5 incorrectly
-	if (!hash)
-		CRASH("invalid asset sent to asset cache")
+	// set name
 	src.name = name
+	// set file; always load them into resource cache if they aren't already
+	// todo: this kind of ruins the point if we're trying to flush state,
+	// todo: but we have to anyways unless TGS stops swapping A/B out from under Live during the round.
+	src.file = isfile(file)? file : fcopy_rsc(file)
+	// get hash; allegedly there's an issue that causes incorrect hashes if we do it directly
+	src.hash = md5asfile(file)
+	// set extension
 	var/extstart = findlasttext(name, ".")
 	if (extstart)
 		ext = "[copytext(name, extstart+1)]"
-	resource = file
-
+	

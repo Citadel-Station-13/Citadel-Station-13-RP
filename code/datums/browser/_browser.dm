@@ -37,6 +37,8 @@
 /datum/browser/proc/set_title_image(ntitle_image)
 	//title_image = ntitle_image
 
+#warn rework asset handling on this thing...
+
 /datum/browser/proc/add_stylesheet(name, file)
 	if(istype(name, /datum/asset_pack/spritesheet))
 		var/datum/asset_pack/spritesheet/sheet = name

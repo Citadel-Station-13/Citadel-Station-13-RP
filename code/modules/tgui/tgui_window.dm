@@ -290,7 +290,7 @@
  *
  * return bool - TRUE if any assets had to be sent to the client
  */
-/datum/tgui_window/proc/send_asset(datum/asset/asset)
+/datum/tgui_window/proc/send_asset(datum/asset_pack/asset)
 	if(!client || !asset)
 		return
 	sent_assets |= list(asset)
