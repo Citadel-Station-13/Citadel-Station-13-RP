@@ -77,6 +77,7 @@
 	var/list/translating_needs_to_be_thrown_away
 	/// queued objs needing to be damaged
 	var/list/translating_needs_to_be_damaged
+	#warn ugh
 
 	//* Hooks
 	/// registered shuttle hooks
@@ -283,6 +284,7 @@
  * overlap always occurs on any movables that are non abstract and considered a game object
  */
 /datum/shuttle/proc/movable_overlap_handler(atom/entity, turf/from_turf, turf/to_turf)
+	// we don't check for non-game/abstract, SSgrids does that.
 	#warn impl
 
 //* Docking - Backend; Don't mess with these. *//
@@ -345,6 +347,8 @@
 
 	// filter for less work
 	SSgrids.null_filter_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
+
+	#warn below
 
 	var/current_x
 	var/current_y
