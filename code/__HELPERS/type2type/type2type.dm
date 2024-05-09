@@ -134,6 +134,8 @@
 
 /**
  * Converts an angle (degrees) into an ss13 direction.
+ *
+ * ss13 directions are north-zero, clockwise angles.
  */
 /proc/angle2dir(degree)
 	degree = (degree + 22.5) % 365 // 22.5 = 45 / 2

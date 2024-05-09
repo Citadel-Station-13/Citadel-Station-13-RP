@@ -136,6 +136,18 @@
 	/// starting shuttle template typepath or id
 	/// only loaded on mapload, not if it's persistence loaded or anything for now
 	var/starting_shuttle_template
+	/// load starting shuttle centered instead of aligned to its primary port
+	///
+	/// if a shuttle cannot fit in our bounding box if aligned,
+	/// it will do this anyways.
+	///
+	/// if a shuttle still cannot fit when centered,
+	/// uhh,
+	/// idk lol i'll just call it 'undefined behavior' when shit explodes
+	///
+	/// note: centered docking counts as 'nonaligned docking',
+	///       meanining shuttle hooks like airlocks won't count it as docked.
+	var/starting_shuttle_always_center = FALSE
 	/// in-progress dock/undock operation
 	var/datum/event_args/shuttle/dock/currently_docking
 	/// in-progress move operation

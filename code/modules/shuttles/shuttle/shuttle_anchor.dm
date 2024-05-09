@@ -165,10 +165,26 @@
 	return aabb_ordered_turfs_at(loc)
 
 /**
+ * @params
+ * * location - a turf, or a tuple of list(x, y, z)
+ *
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_anchor/proc/aabb_ordered_turfs_at(turf/anchor, direction = src.dir)
+/obj/shuttle_anchor/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
 	ASSERT(isturf(anchor))
+
+	var/anchor_x
+	var/anchor_y
+	var/anchor_z
+
+	if(islist(location))
+		anchor_x = location[1]
+		anchor_y = location[2]
+		anchor_z = location[3]
+	else
+		anchor_x = location.x
+		anchor_y = location.y
+		anchor_z = location.z
 
 	// take a guess as to what these mean (lowerleft/upperright x/y)
 	var/real_llx
@@ -178,32 +194,32 @@
 
 	switch(direction)
 		if(NORTH)
-			real_llx = x - offset_x
-			real_lly = y + offset_y - (size_y - 1)
-			real_urx = x - offset_x + (size_x - 1)
-			real_ury = y + offset_y
+			real_llx = anchor_x - offset_x
+			real_lly = anchor_y + offset_y - (size_y - 1)
+			real_urx = anchor_x - offset_x + (size_x - 1)
+			real_ury = anchor_y + offset_y
 		if(SOUTH)
-			real_llx = x + offset_x - (size_x - 1)
-			real_lly = y - offset_y
-			real_urx = x + offset_x
-			real_ury = y - offset_y + (size_y - 1)
+			real_llx = anchor_x + offset_x - (size_x - 1)
+			real_lly = anchor_y - offset_y
+			real_urx = anchor_x + offset_x
+			real_ury = anchor_y - offset_y + (size_y - 1)
 		if(EAST)
-			real_llx = x + offset_y - (size_y - 1)
-			real_lly = y + offset_x - (size_x - 1)
-			real_urx = x + offset_y
-			real_ury = y + offset_x
+			real_llx = anchor_x + offset_y - (size_y - 1)
+			real_lly = anchor_y + offset_x - (size_x - 1)
+			real_urx = anchor_xanchor. + offset_y
+			real_ury = anchor_y + offset_x
 		if(WEST)
-			real_llx = x - offset_y
-			real_lly = y - offset_x
-			real_urx = x - offset_y + (size_y - 1)
-			real_ury = y - offset_x + (size_x - 1)
+			real_llx = anchor_x - offset_y
+			real_lly = anchor_y - offset_x
+			real_urx = anchor_x - offset_y + (size_y - 1)
+			real_ury = anchor_y - offset_x + (size_x - 1)
 
 	return SSgrids.get_ordered_turfs(
 		real_llx,
 		real_urx,
 		real_lly,
 		real_ury,
-		anchor.z,
+		anchor_z,
 		direction,
 	)
 
@@ -212,10 +228,26 @@
  *
  * the weird return is for optimization reasons.
  *
+ * @params
+ * * location - a turf, or a tuple of list(x, y, z)
+ *
  * @return null if we will clip, list(ordered turfs) if we won't clip
  */
 /obj/shuttle_anchor/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
 	ASSERT(isturf(location))
+
+	var/anchor_x
+	var/anchor_y
+	var/anchor_z
+
+	if(islist(location))
+		anchor_x = location[1]
+		anchor_y = location[2]
+		anchor_z = location[3]
+	else
+		anchor_x = location.x
+		anchor_y = location.y
+		anchor_z = location.z
 
 	// take a guess as to what these mean (lowerleft/upperright x/y)
 	var/real_llx
@@ -225,25 +257,25 @@
 
 	switch(direction)
 		if(NORTH)
-			real_llx = x - offset_x
-			real_lly = y + offset_y - (size_y - 1)
-			real_urx = x - offset_x + (size_x - 1)
-			real_ury = y + offset_y
+			real_llx = anchor_x - offset_x
+			real_lly = anchor_y + offset_y - (size_y - 1)
+			real_urx = anchor_x - offset_x + (size_x - 1)
+			real_ury = anchor_y + offset_y
 		if(SOUTH)
-			real_llx = x + offset_x - (size_x - 1)
-			real_lly = y - offset_y
-			real_urx = x + offset_x
-			real_ury = y - offset_y + (size_y - 1)
-		if(EAST)
-			real_llx = x + offset_y - (size_y - 1)
-			real_lly = y + offset_x - (size_x - 1)
-			real_urx = x + offset_y
-			real_ury = y + offset_x
+			real_llx = anchor_x + offset_x - (size_x - 1)
+			real_lly = anchor_y - offset_y
+			real_urx = anchor_x + offset_x
+			real_ury = anchor_y - offset_y + (size_y - 1)
+		if(EAST) 
+			real_llx = anchor_x + offset_y - (size_y - 1)
+			real_lly = anchor_y + offset_x - (size_x - 1)
+			real_urx = anchor_x + offset_y
+			real_ury = anchor_y + offset_x
 		if(WEST)
-			real_llx = x - offset_y
-			real_lly = y - offset_x
-			real_urx = x - offset_y + (size_y - 1)
-			real_ury = y - offset_x + (size_x - 1)
+			real_llx = anchor_x - offset_y
+			real_lly = anchor_y - offset_x
+			real_urx = anchor_x - offset_y + (size_y - 1)
+			real_ury = anchor_y - offset_x + (size_x - 1)
 
 	if(real_llx < 1 || real_urx > world.maxx || real_lly < 1 || real_ury > world.maxy)
 		return null
@@ -253,7 +285,7 @@
 		real_urx,
 		real_lly,
 		real_ury,
-		location.z,
+		anchor_z,
 		direction,
 	)
 

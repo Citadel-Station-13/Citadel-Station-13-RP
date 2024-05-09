@@ -26,6 +26,7 @@
 /datum/controller/subsystem/mapping/proc/init_obfuscation_data()
 	// use either round ID or realtime
 	// no chance of collisions
+	#warn make this more readable like padded hex or something
 	round_global_descriptor = GLOB.round_id ? "[GLOB.round_id]" : "[num2hex(world.realtime)]"
 
 /**

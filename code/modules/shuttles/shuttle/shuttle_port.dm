@@ -61,8 +61,6 @@
 	/// if it is, this is what we align with for roundstart loading.
 	var/primary_port = FALSE
 
-	#warn hook
-
 /obj/shuttle_port/preloading_instance(with_id)
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
@@ -87,33 +85,119 @@
  * @return turfs in square box, unfiltered
  */
 /obj/shuttle_port/proc/aabb_ordered_turfs_here()
-	return aabb_ordered_turfs_at(loc)
+	return shuttle.anchor.aabb_ordered_turfs_here()
 
 /**
+ * todo: support tuple list(x,y,z) location params
+ *
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_port/proc/aabb_ordered_turfs_at(turf/anchor, direction = src.dir)
-	// var/dx = shuttle.anchor.x - src.x
-	// var/dy = shuttle.anchor.y - src.y
-	// return shuttle.anchor.aabb_ordered_turfs_at(
-	// 	locate(
-	// 		anchor.x + dx,
-	// 		anchor.y + dy,
-	// 		anchor.z,
-	// 	),
-	// 	direction,
-	// )
-	#warn FUCK; we'll probably need angle2dir for this.
+/obj/shuttle_port/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+	// get our offsets
+	var/dx_from_anchor = shuttle.anchor.x - src.x
+	var/dy_from_anchor = shuttle.anchor.y - src.y
+
+	// dir2angle is north-zero clockwise.
+	// turn_amount will therefore be how much we need to turn clockwise to
+	// get there.
+	//
+	// note that since we know this will be a whole number,
+	// we use the native % instead of our fractional-supporting MODULUS() macro.
+	var/turn_amount = (dir2angle(shuttle.anchor.dir) - dir2angle(direction)) % 360
+
+	// converted x/y is where the anchor will be
+	// after being rotated in its current location, in respect to ourselves
+	var/converted_x
+	var/converted_y
+
+	switch(turn_amount)
+		if(0)
+			converted_x = src.x - dx_from_anchor
+			converted_y = src.y - dy_from_anchor
+		if(90)
+			converted_x = src.x - dy_from_anchor
+			converted_y = src.y + dx_from_anchor
+		if(180)
+			converted_x = src.x + dx_from_anchor
+			converted_y = src.y + dy_from_anchor
+		if(270)
+			converted_x = src.x + dy_from_anchor
+			converted_y = src.y - dx_from_anchor
+		else
+			CRASH("what?")
+
+	// now that we have where the anchor will be when rotated in respect
+	// to ourselves, we can offset it to get where we wish to go.
+
+	var/dx_from_new = location.x - src.x
+	var/dy_from_new = location.y - src.y
+
+	return shuttle.anchor.aabb_ordered_turfs_at(
+		list(
+			converted_x + dx_from_new,
+			converted_y + dy_from_new,
+			location.z,
+		),
+		direction,
+	)
 
 /**
  * checks if we'll clip a zlevel edge or another shtutle at a location
  *
  * the weird return is for optimization reasons.
  *
+ * todo: support tuple list(x,y,z) location params
+ *
  * @return null if we will clip, list(ordered turfs) if we won't clip
  */
 /obj/shuttle_port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
-	#warn use above code but just different anchor proc
+	// get our offsets
+	var/dx_from_anchor = shuttle.anchor.x - src.x
+	var/dy_from_anchor = shuttle.anchor.y - src.y
+
+	// dir2angle is north-zero clockwise.
+	// turn_amount will therefore be how much we need to turn clockwise to
+	// get there.
+	//
+	// note that since we know this will be a whole number,
+	// we use the native % instead of our fractional-supporting MODULUS() macro.
+	var/turn_amount = (dir2angle(shuttle.anchor.dir) - dir2angle(direction)) % 360
+
+	// converted x/y is where the anchor will be
+	// after being rotated in its current location, in respect to ourselves
+	var/converted_x
+	var/converted_y
+
+	switch(turn_amount)
+		if(0)
+			converted_x = src.x - dx_from_anchor
+			converted_y = src.y - dy_from_anchor
+		if(90)
+			converted_x = src.x - dy_from_anchor
+			converted_y = src.y + dx_from_anchor
+		if(180)
+			converted_x = src.x + dx_from_anchor
+			converted_y = src.y + dy_from_anchor
+		if(270)
+			converted_x = src.x + dy_from_anchor
+			converted_y = src.y - dx_from_anchor
+		else
+			CRASH("what?")
+
+	// now that we have where the anchor will be when rotated in respect
+	// to ourselves, we can offset it to get where we wish to go.
+
+	var/dx_from_new = location.x - src.x
+	var/dy_from_new = location.y - src.y
+
+	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(
+		list(
+			converted_x + dx_from_new,
+			converted_y + dy_from_new,
+			location.z,
+		),
+		direction,
+	)
 
 /obj/shuttle_port/forceMove()
 	CRASH("attempted to forcemove a shuttle anchor")
@@ -130,12 +214,10 @@
 /obj/shuttle_port/grid_finished(grid_flags, rotation_angle)
 	return
 
-#warn make sure the color is good
-
 #define SHUTTLE_PORT_PATH(PATH) \
 /obj/shuttle_port/##PATH/primary { \
 	primary_port = TRUE; \
-	color = "#8888ff"; \
+	color = "#88ff88"; \
 } \
 /obj/shuttle_port/##PATH
 

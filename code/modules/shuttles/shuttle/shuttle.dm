@@ -38,6 +38,11 @@
 	var/obj/shuttle_anchor/anchor
 	/// our physical shuttle port objects
 	var/list/obj/shuttle_port/ports
+	/// port lookup by id
+	var/list/obj/shuttle_port/port_lookup
+	/// our primary port, if any.
+	/// roundstart docking will use this port.
+	var/obj/shuttle_port/port_primary
 	/// the areas in our shuttle, associated to a truthy value
 	var/list/area/shuttle/areas
 
@@ -111,6 +116,8 @@
 	QDEL_NULL(descriptor)
 	QDEL_NULL(controller)
 	QDEL_LIST(ports)
+	port_lookup = null
+	port_primary = null
 	QDEL_NULL(anchor)
 	#warn areas
 	#warn hooks
@@ -174,7 +181,21 @@
 					stack_trace("duplicate anchor during init scan")
 				anchor = AM
 			else if(istype(AM, /obj/shuttle_port))
-				ports += AM
+				var/obj/shuttle_port/port = AM
+				ports += port
+				if(port.primary_port)
+					if(!port_primary)
+						port_primary = port
+					else
+						stack_trace("duplicate primary port during init scan")
+						port.primary_port = FALSE
+				if(port.port_id)
+					if(port_lookup[port.port_id])
+						stack_trace("id collision on port id [port.port_id] (mangled)")
+						port.port_id = null
+					else
+						port_lookup[port.port_id] = port
+
 	// collect areas
 	for(var/area/scanning in area_cache)
 		areas[scanning] = TRUE

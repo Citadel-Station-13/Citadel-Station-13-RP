@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(grids)
  * looking towards the front of the shuttle's direction from the back.
  *
  * e.g. when NORTH, it's left to right, one line at a time from front to back.
+ *
+ * * If we are out of bounds of a level, we will end up emitting a list with nulls where there are no turfs!
  */
 /datum/controller/subsystem/grids/proc/get_ordered_turfs(x1, x2, y1, y2, z, dir)
 	ASSERT(x2 >= x1)
