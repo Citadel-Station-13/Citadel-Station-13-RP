@@ -206,7 +206,7 @@
 		if(EAST)
 			real_llx = anchor_x + offset_y - (size_y - 1)
 			real_lly = anchor_y + offset_x - (size_x - 1)
-			real_urx = anchor_xanchor. + offset_y
+			real_urx = anchor_x + offset_y
 			real_ury = anchor_y + offset_x
 		if(WEST)
 			real_llx = anchor_x - offset_y
@@ -266,7 +266,7 @@
 			real_lly = anchor_y - offset_y
 			real_urx = anchor_x + offset_x
 			real_ury = anchor_y - offset_y + (size_y - 1)
-		if(EAST) 
+		if(EAST)
 			real_llx = anchor_x + offset_y - (size_y - 1)
 			real_lly = anchor_y + offset_x - (size_x - 1)
 			real_urx = anchor_x + offset_y

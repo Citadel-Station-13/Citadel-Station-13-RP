@@ -33,9 +33,11 @@
 	/// this should not be a cached typepath, as opposed to a directly made typepath
 	/// or an instance.
 	///
+	/// * because we intentionally don't cache typepaths, anonymous typepaths are allowed **and encouraged**.
+	///
 	/// typepaths will be initialized.
 	/// instances will be cloned.
-	var/datum/shuttle_descriptor/descriptor = shuttle_descriptor
+	var/datum/shuttle_descriptor/descriptor = /datum/shuttle_descriptor
 
 	//* .dmm
 	/// should we keep parsed map once first loaded?
