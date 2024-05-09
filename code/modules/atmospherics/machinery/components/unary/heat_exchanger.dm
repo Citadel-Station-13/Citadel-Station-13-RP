@@ -4,7 +4,7 @@
 	icon = 'icons/obj/atmospherics/heat_exchanger.dmi'
 	icon_state = "intact"
 	pipe_state = "heunary"
-	density = FALSE
+	density = TRUE
 
 	var/obj/machinery/atmospherics/component/unary/heat_exchanger/partner = null
 	var/update_cycle

@@ -2,7 +2,7 @@
 /obj/item/organ/external/chest/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 100
+	max_damage = 200
 	min_broken_damage = 1000
 	vital = TRUE
 	emp_mod = 7

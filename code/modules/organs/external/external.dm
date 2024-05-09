@@ -186,13 +186,13 @@
 	var/burn_damage = 0
 	switch(severity)
 		if (1)
-			burn_damage += rand(10, 16)
+			burn_damage += rand(10, 14)
 		if (2)
-			burn_damage += rand(8, 12)
+			burn_damage += rand(7, 8.5)
 		if(3)
 			burn_damage += rand(4, 8)
 		if(4)
-			burn_damage += rand(2, 6)
+			burn_damage += rand(2, 5)
 
 	if(burn_damage)
 		inflict_bodypart_damage(
@@ -357,6 +357,9 @@
 	// todo: this is awful
 	var/sharp = damage_mode & DAMAGE_MODE_SHARP
 	var/edge = damage_mode & DAMAGE_MODE_EDGE
+	// cache owner incase we get detached
+	// todo: this is awful
+	var/mob/living/carbon/owner = src.owner
 
 	// todo: lol this is shit
 	// legacy: organ damage on high damage
