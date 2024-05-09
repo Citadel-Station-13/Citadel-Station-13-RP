@@ -1,18 +1,31 @@
 //* /turf_flags var on /turf
 /// This is used in literally one place, turf.dm, to block ethwereal jaunt.
+//  todo: kill this with fire
 #define NO_JAUNT						(1<<0)
 /// Unused reservation turf
-#define UNUSED_RESERVATION_TURF			(1<<2)
+#define TURF_UNUSED_RESERVATION			(1<<2)
 /// queued for planet turf addition
+//  todo: planet rework
 #define TURF_PLANET_QUEUED				(1<<3)
 /// registered to a planet
+//  todo: planet rework
 #define TURF_PLANET_REGISTERED			(1<<4)
 /// queued for ZAS rebuild
 #define TURF_ZONE_REBUILD_QUEUED		(1<<5)
 /// no making dirt overlays or similar overlays on this
+//  todo: rework...?
 #define TURF_SEMANTICALLY_BOTTOMLESS	(1<<6)
 /// considered a volatile-changing area by persistence, which means things like trash and debris won't stay here
+//  todo: rework...?
 #define TURF_FLAG_ERODING				(1<<7)
+/// considered part of a level border;
+/// this should only be set by either
+///
+/// * being a /turf/level_border
+/// * a /datum/component/transition_border
+///
+/// this will fully block shuttles from landing among other things
+#define TURF_FLAG_LEVEL_BORDER          (1<<8)
 
 ///CITMAIN TURF FLAGS - Completely unused
 /*
@@ -28,7 +41,7 @@
 
 DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(NO_JAUNT),
-	BITFIELD(UNUSED_RESERVATION_TURF),
+	BITFIELD(TURF_UNUSED_RESERVATION),
 	BITFIELD(TURF_PLANET_QUEUED),
 	BITFIELD(TURF_PLANET_REGISTERED),
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),

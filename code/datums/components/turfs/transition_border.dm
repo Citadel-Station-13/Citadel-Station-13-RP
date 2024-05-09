@@ -38,12 +38,21 @@
 	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/transit)
 	rebuild()
 
+	var/turf/turf = parent
+	// set level border to true
+	turf.turf_flags |= TURF_FLAG_LEVEL_BORDER
+
 /datum/component/transition_border/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_ENTERED)
 	QDEL_NULL(holder1)
 	QDEL_NULL(holder2)
 	QDEL_NULL(holder3)
-	return ..()
+
+	. = ..()
+
+	var/turf/turf = parent
+	// set level boder back to default
+	turf.turf_flags = (turf.turf_flags & (~TURF_FLAG_LEVEL_BORDER)) | (initial(turf.turf_flags) & (TURF_FLAG_LEVEL_BORDER))
 
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
 	if(AM.atom_flags & ATOM_ABSTRACT)
@@ -257,6 +266,7 @@ CREATE_STANDARD_TURFS(/turf/level_border)
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	// so the fullbright overlay doesn't cause issues on the other side
 	lighting_disable_fullbright = TRUE
+	turf_flags = TURF_FLAG_LEVEL_BORDER
 
 // todo: refactor
 /turf/level_border/Initialize(mapload)

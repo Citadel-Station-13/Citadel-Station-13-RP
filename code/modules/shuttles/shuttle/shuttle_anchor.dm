@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * the physical shuttle object
@@ -171,7 +171,7 @@
  * @return turfs in square box, unfiltered
  */
 /obj/shuttle_anchor/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
-	ASSERT(isturf(anchor))
+	ASSERT(isturf(location))
 
 	var/anchor_x
 	var/anchor_y
@@ -277,7 +277,7 @@
 			real_urx = anchor_x - offset_y + (size_y - 1)
 			real_ury = anchor_y - offset_x + (size_x - 1)
 
-	if(real_llx < 1 || real_urx > world.maxx || real_lly < 1 || real_ury > world.maxy)
+	if(real_llx <= 1 || real_urx >= world.maxx || real_lly <= 1 || real_ury >= world.maxy)
 		return null
 
 	var/list/turf/ordered_turfs_at = SSgrids.get_ordered_turfs(
@@ -289,9 +289,24 @@
 		direction,
 	)
 
-	for(var/turf/T as anything in ordered_turfs_at)
+	// why one wide border?
+	// because level borders are special snowflakes
+	// being right next to them means the other side will send people onto your tile.
+	var/list/one_wide_border = border_of_turf_block(
+		real_llx,
+		real_lly,
+		real_urx,
+		real_ury,
+		anchor_z,
+		1,
+	)
+
+	for(var/turf/T as anything in ordered_turfs_at + one_wide_border)
 		// do not allow clipping shuttles; that would be bad.
 		if(istype(T.loc, /area/shuttle))
+			return null
+		// do not allow zlevel borders; annihilating them would be bad
+		if(T.turf_flags & TURF_FLAG_LEVEL_BORDER)
 			return null
 
 	return ordered_turfs_at

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * Shuttle custom docking handler
@@ -22,6 +22,7 @@
 
 	/// the mob using us
 	var/mob/user
+	#warn actor-performer crap
 	/// used perspective
 	var/datum/perspective/used_perspective
 

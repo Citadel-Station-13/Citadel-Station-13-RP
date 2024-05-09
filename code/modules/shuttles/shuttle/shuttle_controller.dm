@@ -11,11 +11,28 @@
 	/// our host shuttle
 	var/datum/shuttle/shuttle
 
+	//* Blocking
+	/// registration list for 'hostile environment' system, aka 'shuttle cannot launch right now'
+	///
+	/// * keys are datums
+	/// * values are reasons
+	/// * unlike shuttle hooks, these are always hard blockers that cannot be overridden.
+	/// * therefore it's safe to use this for backend purposes like when a zone is regenerating for beltmining.
+	///
+	/// todo: some kind of /datum/tgui_descriptive_text or something idfk for better error messages
+	var/list/blocked_from_moving
+	#warn hook
+
 	//* Docking
 	/// stored docking codes
 	var/list/docking_codes
 	/// current manual landing dock
 	var/obj/shuttle_dock/manual_dock
+	/// /datum/shuttle_docker instances by user
+	/// user is real user of a tgui interface / the client viewing it,
+	/// *not* the actor-performer tuple.
+	/// that's encoded on the shuttle_docker.
+	var/list/datum/shuttle_docker/docker_by_user
 
 	//* UI
 	/// tgui interface to load
@@ -24,6 +41,14 @@
 /datum/shuttle_controller/proc/initialize(datum/shuttle/shuttle)
 	src.shuttle = shuttle
 	return TRUE
+
+//* Blocking API *//
+
+/datum/shuttle_controller/proc/register_movement_block(datum/source, reason)
+	LAZYSET(blocked_from_moving, source, reason)
+
+/datum/shuttle_controller/proc/unregister_movement_block(datum/source)
+	LAZYREMOVE(blocked_from_moving, source)
 
 //* Docking API - use this API always, do not manually control the shuttle. *//
 

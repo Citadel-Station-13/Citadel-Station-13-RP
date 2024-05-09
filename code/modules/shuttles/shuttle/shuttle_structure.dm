@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 // todo; this is meant to be an object representation of a shuttle area
 //       the goal was that players can edit shuttles by modifying this
