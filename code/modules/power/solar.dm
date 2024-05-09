@@ -107,8 +107,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 		our_planet = SSplanets.z_to_planet[z]
 
 	if(our_planet && istype(our_planet))
-		solar_brightness = our_planet.sun_apparent_brightness
-		var/time_num = text2num(our_planet.current_time.show_time("hh"))
+		solar_brightness = our_planet.sun_apparent_brightness * 1.3
+		var/time_num = text2num(our_planet.current_time.show_time("hh")) + text2num(our_planet.current_time.show_time("mm")) / 60
 		var/hours_in_day = our_planet.current_time.seconds_in_day / (1 HOURS)
 		var/sunangle_by_time = (time_num / hours_in_day) * 360 // day as progress from 0 to 1 * 360
 		p_angle = abs(adir - sunangle_by_time)
@@ -118,11 +118,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		//find the smaller angle between the direction the panel is facing and the direction of the SSsun.sun (the sign is not important here)
 		p_angle = min(abs(adir - SSsun.sun.angle), 360 - abs(adir - SSsun.sun.angle))
 
-	if(p_angle > 90)// if facing more than 90deg from SSsun.sun, zero output
-		sunfrac = 0
-		return
-
-	sunfrac = cos(p_angle) * solar_brightness
+	sunfrac = max(cos(p_angle), 0) * solar_brightness
 
 /obj/machinery/power/solar/process(delta_time)//TODO: remove/add this from machines to save on processing as needed ~Carn PRIORITY
 	if(machine_stat & BROKEN)
@@ -435,6 +431,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 			targetdir = (targetdir + trackrate/abs(trackrate) + 360) % 360 	//... do it
 			nexttime += 36000/abs(trackrate) //reset the counter for the next 1�
 
+	update()
+
 	updateDialog()
 
 /obj/machinery/power/solar_control/Topic(href, href_list)
@@ -483,11 +481,13 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/angle = 0
 	var/datum/planet/our_planet = null
 	var/turf/T = get_turf(src)
-	if(T.outdoors && (T.z <= SSplanets.z_to_planet.len))
+	if(T.z <= SSplanets.z_to_planet.len)
 		our_planet = SSplanets.z_to_planet[z]
 
 	if(our_planet && istype(our_planet))
-		angle = (text2num(our_planet.current_time.show_time("hh")) / (our_planet.current_time.seconds_in_day / 1 HOURS)) * 360 // day as progress from 0 to 1 * 360
+		var/time_num = text2num(our_planet.current_time.show_time("hh")) + (text2num(our_planet.current_time.show_time("mm"))/60)
+		var/day_hours = our_planet.current_time.seconds_in_day / (1 HOURS)
+		angle = round((time_num / day_hours) * 360) // day as progress from 0 to 1 * 360
 	else
 		angle = SSsun.sun.angle
 
