@@ -388,7 +388,7 @@
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
 
 	if(overflowed)
-		log_debug("Maploaders was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
+		log_debug("Maploader was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
 
 	return loaded_bounds
 
@@ -534,7 +534,7 @@
 	//finally instance all remainings objects/mobs
 	for(index in 1 to first_turf_index-1)
 		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)
-		
+
 	//Restore initialization to the previous value
 	SSatoms.map_loader_stop()
 

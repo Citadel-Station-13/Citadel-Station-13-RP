@@ -270,7 +270,12 @@
  * this is called before movable_overlap_handler.
  */
 /datum/shuttle/proc/turf_overlap_handler(turf/from_turf, turf/to_turf)
-	return
+	if(!to_turf.density)
+		return
+	// walls: obliteration.
+	if(istype(to_turf, /turf/simulated/wall))
+		var/turf/simulated/wall/wall = to_turf
+		wall.atom_destruction(ATOM_DECONSTRUCT_DESTROYED)
 
 /**
  * handles when an overlap occurs
@@ -340,7 +345,31 @@
 
 	// filter for less work
 	SSgrids.null_filter_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
-	#warn move anchor first
+
+	var/current_x
+	var/current_y
+
+	if(!isnull(align_with_port))
+		current_x = align_with_port.x
+		current_y = align_with_port.y
+	else
+		current_x = anchor.x
+		current_y = anchor.y
+
+	// prep to move anchors / ports
+	var/dx_from_destination = move_to.x - current_x
+	var/dy_from_destination = move_to.y - current_y
+	// anchor is easiest, moving it is just a flat translation
+	anchor.abstract_move(
+		locate(
+			anchor.x + dx_from_destination,
+			anchor.y + dy_from_destination,
+			move_to.z,
+		),
+	)
+	// ports are a bitch, we have to take into account rotation
+	#warn above doesn't actually work, because we need to take into account rotations for everything.
+
 	#warn move ports
 	// prepped, move.
 	if(!SSgrids.translate(
@@ -375,7 +404,6 @@
 				var/turf/above_turf = locate(after_turf.x, after_turf.y, above_z)
 				above_turf.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
-	#warn throw shit and damage shit but also throw shit after damaging shit
 	// clear caches
 	translating_physics_direction = null
 	translating_pepsi_man_lookup_cache = null

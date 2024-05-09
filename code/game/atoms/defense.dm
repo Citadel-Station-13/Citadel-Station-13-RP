@@ -369,9 +369,12 @@
  *
  * @params
  * * method - how we were deconstructed
+ * * silent - do not play sounds / make text
  */
-/atom/proc/deconstruct(method = ATOM_DECONSTRUCT_DISASSEMBLED)
+/atom/proc/deconstruct(method = ATOM_DECONSTRUCT_DISASSEMBLED, silent)
 	SHOULD_NOT_OVERRIDE(TRUE)
+
+	// todo: exactly where should sounds/text go?
 
 	// send signal
 	// todo: signal

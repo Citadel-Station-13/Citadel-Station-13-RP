@@ -171,7 +171,7 @@
 	var/datum/shuttle_template/legacy_cargo_shuttle
 	/// typepath of belter shuttle template
 	var/datum/shuttle_template/legacy_belter_shuttle
-	#warn translate into instances on init
+	#warn set these on our maps, translate into instances on init
 
 	//! legacy below
 

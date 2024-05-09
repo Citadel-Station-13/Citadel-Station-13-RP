@@ -169,8 +169,20 @@
 		annihilate_bounds(real_turf, width, height)
 
 	var/datum/dmm_parsed/parsed = parsed()
-	#warn mangling hash
-	var/list/loaded_bounds = parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
+
+	// the mangling ID only has to be a mangling ID, not a round global ID.
+	var/static/next_mangling_id = 0
+	var/mangling_hash = "template-[world.time]-[++next_mangling_id]"
+	if(next_mangling_id >= 1024)
+		next_mangling_id = 0
+
+	var/list/loaded_bounds = parsed.load(
+		ll_x,
+		ll_y,
+		ll_z,
+		orientation = orientation,
+		mangling_id = mangling_hash,
+	)
 
 	if(isnull(loaded_bounds))
 		CRASH("failed to load")
