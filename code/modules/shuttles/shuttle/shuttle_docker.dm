@@ -54,6 +54,8 @@
 /datum/shuttle_docker/proc/release_user()
 	#warn impl
 
+	#warn /datum/remote_control..?
+
 /datum/shuttle_docker/proc/set_position(turf/position)
 	#warn impl
 

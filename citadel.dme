@@ -986,6 +986,7 @@
 #include "code\game\atoms\movement.dm"
 #include "code\game\atoms\say.dm"
 #include "code\game\atoms\vv.dm"
+#include "code\game\atoms\movable\defense.dm"
 #include "code\game\atoms\movable\movable.dm"
 #include "code\game\atoms\movable\movement.dm"
 #include "code\game\atoms\movable\pulling.dm"

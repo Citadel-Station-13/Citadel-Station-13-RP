@@ -10,7 +10,8 @@
 
 /// codes valid
 #define SHUTTLE_DOCKING_AUTHORIZATION_VALID 0
-/// codes invalid, can't do a proper airlock docking / other stuff
+/// codes invalid, can't do a proper airlock docking / other stuff	var/list/translating_right_lookup
+
 #define SHUTTLE_DOCKING_AUTHORIZATION_INVALID 1
 /// completely disallow docking
 #define SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED 2
@@ -23,3 +24,13 @@
 #define SHUTTLE_DOCKING_BOUNDING_HARD_FAULT 1
 /// soft fault - we can trample it, but the shuttle requests that we shouldn't
 #define SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT 2
+
+//* docking overlap handlers
+
+/// threshold from edge where we're considered able to be run into the side
+#define SHUTTLE_OVERLAP_SIDE_THRESHOLD 2
+/// threshold from front where we're rammed to the front anyways
+#define SHUTTLE_OVERLAP_FRONT_THRESHOLD 2
+
+/// overlap tile cache marker for 'no viable tile found in bounds'
+#define SHUTTLE_OVERLAP_NO_FREE_SPACE "no-free-space"

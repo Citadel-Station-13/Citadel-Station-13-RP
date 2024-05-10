@@ -59,24 +59,31 @@
 	//* Movement - Ephemeral / In-Move
 	/// current direction of motion, used to calculate things like visuals and roadkill
 	var/translating_physics_direction
-	/// [x or y] cache (perpendicular to considered movement direction)
-	/// of 'first non shuttle turf'
-	/// used to cache calculations when ramming things out of our way
-	/// if lookup fails, associate to FALSE, not null
-	/// this is an indexed list, with 1 to n for n width shuttle from left to right
-	/// with the relative perpsective of its physics direction.
-	var/list/translating_pepsi_man_lookup_cache
-	/// [x or y] backup cache (perpendicular to considered movement direction)
-	/// of 'closest clear non shuttle turf'
-	/// used when we can't find a proper lookup because it's blocked and need somewhere
-	/// to kick people to anyways
-	/// this is an indexed list, with 1 to n for n width shuttle from left to right
-	/// with the relative perpsective of its physics direction.
-	var/list/translating_garbage_disposal_lookup_cache
-	/// queued throws
-	var/list/translating_needs_to_be_thrown_away
-	/// queued objs needing to be damaged
-	var/list/translating_needs_to_be_damaged
+	/// corrosponds, index-wise, to the left-to-right strip of clear turfs in front of the shuttle in the direction of motion
+	var/list/translating_forwards_lookup
+	/// corrosponds, index-wise, to the forwards-to-backwards strip of clear turfs left of the direction of motion
+	var/list/translating_left_lookup
+	/// corrosponds, index-wise, to the forwards-to-backwards strip of clear turfs right of the direction of motion
+	var/list/translating_right_lookup
+	/// used to calculate forward lookup index by adding to the:
+	///
+	/// * x-value of turf if north/south
+	/// * y-value of turf if east/west
+	///
+	/// this value is to be applied to things in the **destination**
+	/// bounding box!!
+	var/translating_forward_offset
+	/// used to calculate side lookup index by adding to the:
+	///
+	/// * y-value of turf if north/south
+	/// * x-value if turf is east/west
+	///
+	/// this value is to be applied to things in the **destination**
+	/// bounding box!!
+	var/translating_side_offset
+	/// current width of front
+	var/translating_forward_width
+
 	#warn ugh
 
 	//* Hooks
@@ -283,16 +290,170 @@
  *
  * overlap always occurs on any movables that are non abstract and considered a game object
  */
-/datum/shuttle/proc/movable_overlap_handler(atom/entity, turf/from_turf, turf/to_turf)
+/datum/shuttle/proc/movable_overlap_handler(atom/movable/entity, turf/from_turf, turf/to_turf)
 	// we don't check for non-game/abstract, SSgrids does that.
-	#warn impl
+
+	// get index in frontal pass
+	var/forward_lookup_index
+	// get index in side pass
+	var/side_lookup_index
+	switch(translating_physics_direction)
+		if(NORTH, SOUTH)
+			forward_lookup_index = entity.x + translating_forward_offset
+			side_lookup_index = entity.y + translating_side_offset
+		if(EAST, WEST)
+			forward_lookup_index = entity.y + translating_forward_offset
+			side_lookup_index = entity.x + translating_side_offset
+
+	// see if we should be kicked towards side
+	var/use_side_heuristic = (forward_lookup_index > SHUTTLE_OVERLAP_FRONT_THRESHOLD) \
+		&& ((side_lookup_index <= SHUTTLE_OVERLAP_SIDE_THRESHOLD) || (side_lookup_index > (translating_forward_width - SHUTTLE_OVERLAP_SIDE_THRESHOLD)))
+
+	// get the cached target
+	var/turf/overall_target = use_side_heuristic? (
+			(side_lookup_index > (translating_forward_width / 2))? \
+				translating_right_lookup[side_lookup_index] : \
+				translating_left_lookup[side_lookup_index] \
+		) : \
+		(translating_forwards_lookup[forward_lookup_index])
+	var/should_annihilate
+
+	if(isnull(overall_target))
+		// if no target, generate one
+		var/turf/potential_target
+		var/turf/potential_left
+		var/turf/potential_right
+		if(use_side_heuristic)
+			#warn impl
+		else
+			potential_target = movable_overlap_calculate_front_turf(entity, translating_physics_direction, side_lookup_index)
+			if(potential_target.density)
+				// dense, try left and right
+				potential_left = get_step(potential_target, turn(translating_physics_direction, 90))
+				if(!potential_left.density)
+					overall_target = potential_left
+				else
+					potential_right = get_step(potential_target, turn(translating_physics_direction, -90))
+					if(!potential_right.density)
+						overall_target = potential_right
+			else
+				// use it
+				overall_target = potential_target
+			#warn this stuff should proabbly be ap roc..
+			// cache; if we found none, we just tell stuff to get annihilated on hit
+			translating_forwards_lookup[forward_lookup_index] = overall_target || SHUTTLE_OVERLAP_NO_FREE_SPACE
+		#warn impl
+	else if(overall_target == SHUTTLE_OVERLAP_NO_FREE_SPACE)
+		// if we accepted there's no space,
+		// obliterate it if possible
+		should_annihilate = TRUE
+		overall_target = movable_overlap_calculate_front_turf(entity, translating_physics_direction, side_lookup_index)
+
+	// tell it to do stuff
+	entity.shuttle_crushed(src, overall_target, should_annihilate)
+
+/datum/shuttle/proc/movable_overlap_calculate_front_turf(atom/movable/entity, direction, side_index)
+	// we abuse side_lookup_index to shift us forwards to the first tile that isn't the shuttle.
+	// the shuttle system **should** prevent us from ever clipping through the zlevel borders
+	// thanks to the bounding clip checks before movement.
+	switch(direction)
+		if(NORTH)
+			return locate(
+				entity.x,
+				entity.y + side_index,
+				entity.z,
+			)
+		if(SOUTH)
+			return locate(
+				entity.x,
+				entity.y - side_index,
+				entity.z,
+			)
+		if(EAST)
+			return locate(
+				entity.x + side_index,
+				entity.y,
+				entity.z,
+			)
+		if(WEST)
+			return locate(
+				entity.x - side_index,
+				entity.y,
+				entity.z,
+			)
+
+/datum/shuttle/proc/movable_overlap_calculate_left_turf(atom/movable/entity, direction, front_index, width)
+	// ditto
+	switch(direction)
+		if(NORTH)
+			return locate(
+				entity.x - front_index,
+				entity.y,
+				entity.z,
+			)
+		if(SOUTH)
+			return locate(
+				entity.x + front_index,
+				entity.y,
+				entity.z,
+			)
+		if(EAST)
+			return locate(
+				entity.x,
+				entity.y + front_index,
+				entity.z,
+			)
+		if(WEST)
+			return locate(
+				entity.x,
+				entity.y - front_index,
+				entity.z,
+			)
+
+/datum/shuttle/proc/movable_overlap_calculate_right_turf(atom/movable/entity, direction, front_index, width)
+	// ditto
+	switch(direction)
+		if(NORTH)
+			return locate(
+				entity.x - front_index + (width + 1),
+				entity.y,
+				entity.z,
+			)
+		if(SOUTH)
+			return locate(
+				entity.x + front_index - (width + 1),
+				entity.y,
+				entity.z,
+			)
+		if(EAST)
+			return locate(
+				entity.x,
+				entity.y + front_index - (width + 1),
+				entity.z,
+			)
+		if(WEST)
+			return locate(
+				entity.x,
+				entity.y - front_index + (width + 1),
+				entity.z,
+			)
 
 //* Docking - Backend; Don't mess with these. *//
 
 /**
  * immediate shuttle move, undocking from any docked ports in the process
  *
- * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
+ * * both use_before_turfs and use_a
+	/// [x or y] cache (perpendicular to considered movement direction)
+	/// of 'first non shuttle turf'
+…	/// with the relative perpsective of its physics direction.
+	var/list/translating_garbage_disposal_lookup_cache
+	/// queued throws
+	var/list/translating_needs_to_be_thrown_away
+	/// queued objs needing to be damaged
+	var/list/translating_needs_to_be_damaged
+	#warn ugh
+fter_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
  *
  * @return TRUE / FALSE on success / failure
@@ -330,14 +491,17 @@
 	// cache old data
 	var/turf/move_from = get_turf(anchor)
 	ASSERT(isturf(move_from))
-	// todo: more physics directions
+
+	// setup translation physics
 	translating_physics_direction = direction
-	// set up translating process caches
-	var/overall_width = anchor.overall_width(direction)
-	translating_pepsi_man_lookup_cache = new /list(overall_width)
-	translating_garbage_disposal_lookup_cache = new /list(overall_width)
-	translating_needs_to_be_thrown_away = list()
-	translating_needs_to_be_damaged = list()
+	var/parallel_length = anchor.overall_height(direction)
+	var/perpendicular_length = anchor.overall_width(direction)
+	translating_forwards_lookup = new /list(perpendicular_length)
+	translating_left_lookup = new /list(parallel_length)
+	translating_right_lookup = new /list(parallel_length)
+	translating_forward_width = perpendicular_length
+
+	#warn translating_forward_offset, translating_side_offset
 
 	// get ordered turfs
 	if(isnull(use_before_turfs))
@@ -408,12 +572,15 @@
 				var/turf/above_turf = locate(after_turf.x, after_turf.y, above_z)
 				above_turf.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
-	// clear caches
-	translating_physics_direction = null
-	translating_pepsi_man_lookup_cache = null
-	translating_garbage_disposal_lookup_cache = null
-	translating_needs_to_be_thrown_away = null
-	translating_needs_to_be_damaged = null
+	// teardown translation physics
+	translating_physics_direction \
+		= translating_forwards_lookup \
+		= translating_left_lookup \
+		= translating_right_lookup \
+		= translating_forward_offset \
+		= translating_side_offset \
+		= translating_forward_width \
+		= null
 
 //* Docking - Bounding Checks *//
 

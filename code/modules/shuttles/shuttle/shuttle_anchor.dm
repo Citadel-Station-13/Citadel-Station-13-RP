@@ -136,6 +136,10 @@
 			offset_x = y - bottomleft_y
 			offset_y = x - bottomleft_x
 
+/**
+ * get the width of the shuttle, aka
+ * the perpendicular axis to the direction of parking/travel
+ */
 /obj/shuttle_anchor/proc/overall_width(direction)
 	switch(direction)
 		if(NORTH)
@@ -147,6 +151,10 @@
 		if(WEST)
 			return size_y
 
+/**
+ * get the height of the shuttle, aka
+ * the parallel axis to the direction of parking/travel
+ */
 /obj/shuttle_anchor/proc/overall_height(direction)
 	switch(direction)
 		if(NORTH)
