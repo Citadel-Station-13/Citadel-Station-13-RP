@@ -2273,6 +2273,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"fD" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "fE" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
 /obj/machinery/meter,
@@ -3085,9 +3092,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "io" = (
 /obj/random/maintenance/clean,
@@ -3873,6 +3878,12 @@
 	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
+"kX" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "kZ" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
@@ -3976,9 +3987,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "lr" = (
 /obj/effect/floor_decal/borderfloor,
@@ -4160,14 +4169,17 @@
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/rift/station/fighter_bay/transport_tunnel)
 "lU" = (
-/obj/structure/railing{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 6
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "lV" = (
-/obj/structure/ladder,
-/turf/simulated/floor/lythios43c,
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "lW" = (
 /obj/machinery/light/small{
@@ -4456,6 +4468,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
+"mM" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 5
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "mN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -4676,9 +4694,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "nE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
@@ -4756,9 +4772,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "nV" = (
 /turf/simulated/floor/reinforced/nitrogen,
@@ -6853,9 +6867,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "vj" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -10942,6 +10954,12 @@
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/concrete/tile/indoors,
 /area/security/prison/lower)
+"IB" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "IC" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -11502,9 +11520,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Kq" = (
 /obj/effect/floor_decal/borderfloor,
@@ -12746,8 +12762,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "Ob" = (
-/obj/structure/railing{
-	dir = 8
+/obj/structure/fence/door{
+	dir = 4
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -14542,9 +14558,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "UE" = (
 /obj/random/maintenance/clean,
@@ -14673,6 +14687,10 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
+"UW" = (
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "UX" = (
 /obj/structure/symbol/sa,
 /turf/simulated/wall/prepainted,
@@ -15227,9 +15245,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/open/lythios43c{
-	special_temperature = 233
-	},
+/turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "WD" = (
 /obj/item/flashlight{
@@ -23394,7 +23410,7 @@ sV
 WR
 WR
 WR
-WR
+rV
 WR
 WR
 WR
@@ -23587,8 +23603,8 @@ es
 tm
 WR
 WR
-WR
-WR
+rV
+rV
 WR
 WR
 es
@@ -23781,8 +23797,8 @@ es
 tm
 WR
 Zl
-WR
-WR
+rV
+rV
 WR
 WR
 uA
@@ -23975,7 +23991,7 @@ sV
 sV
 WR
 WR
-WR
+rV
 WR
 WR
 WR
@@ -24170,7 +24186,7 @@ WR
 WR
 WR
 WR
-WR
+rV
 WR
 WR
 uA
@@ -24363,7 +24379,7 @@ sa
 aa
 WR
 WR
-WR
+rV
 WR
 WR
 WR
@@ -24751,10 +24767,10 @@ po
 WR
 WR
 WR
+rV
+rV
 WR
-WR
-WR
-WR
+rV
 WR
 WR
 WR
@@ -24946,7 +24962,7 @@ WR
 WR
 WR
 WR
-WR
+rV
 uB
 WR
 ER
@@ -25141,14 +25157,14 @@ WR
 WR
 WR
 hq
+rV
 WR
 WR
 WR
 WR
-WR
-oU
-oU
-oU
+Va
+Va
+Va
 WR
 es
 es
@@ -25333,16 +25349,16 @@ po
 WR
 WR
 WR
+rV
+WR
+rV
+rV
 WR
 WR
 WR
-WR
-WR
-WR
-WR
-oU
-lV
-oU
+Va
+Va
+Va
 WR
 Va
 Va
@@ -25529,15 +25545,15 @@ WR
 WR
 WR
 WR
+rV
+rV
 WR
 WR
-WR
-WR
-WR
-oU
-Mb
-Mb
-Mb
+hq
+Va
+Va
+Va
+Va
 Va
 Va
 Va
@@ -25724,18 +25740,18 @@ WR
 WR
 WR
 WR
-WR
-WR
+rV
+rV
 WR
 WR
 Va
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
-Mb
+WR
+WR
+Va
+Va
+Va
+Va
+Va
 WR
 WR
 WR
@@ -25920,19 +25936,19 @@ WR
 WR
 WR
 WR
+rV
 WR
 WR
 Va
 Va
-Ob
-lU
-lU
-lU
-Ob
+Va
+Va
+Va
+Va
 Va
 WR
 WR
-WR
+hq
 WR
 WR
 WR
@@ -26113,14 +26129,14 @@ WR
 WR
 WR
 WR
+rV
+WR
 WR
 WR
 WR
 WR
 Va
-Va
-Va
-Va
+hq
 Va
 Va
 Va
@@ -26308,15 +26324,15 @@ WR
 aa
 WR
 WR
+rV
+rV
+rV
+hq
+Va
 WR
-WR
-WR
-td
-td
 Va
 Va
 Va
-td
 Yr
 WR
 WR
@@ -26504,14 +26520,14 @@ aa
 aa
 WR
 WR
-WR
-td
-td
-td
+rV
+rV
+rV
 Va
 Va
-td
-td
+Va
+Va
+Va
 WR
 Va
 WR
@@ -26700,12 +26716,12 @@ aa
 WR
 WR
 WR
-td
-td
+Va
+rV
 Va
 Va
 Va
-td
+Va
 WR
 WR
 Va
@@ -26895,8 +26911,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+Va
+Va
 Va
 Va
 WR
@@ -27089,9 +27105,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+Va
+hq
+Va
 aa
 WR
 WR
@@ -27283,9 +27299,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+UW
+Ob
+UW
 aa
 aa
 aa
@@ -27477,9 +27493,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+Va
+WR
+Va
 aa
 aa
 aa
@@ -27665,16 +27681,16 @@ pv
 sZ
 aa
 WC
-in
+mM
 nD
 in
-nD
+lU
 vi
-aa
-aa
-aa
-aa
-aa
+Va
+Va
+WR
+hq
+Va
 WC
 in
 nD
@@ -27864,17 +27880,17 @@ lq
 lq
 lq
 lq
-aa
-aa
-aa
-aa
-aa
+Zl
+WR
+Va
+Va
+Zl
+lV
 lq
+lV
+lV
 lq
-lq
-lq
-lq
-lq
+lV
 aa
 aa
 aa
@@ -28054,7 +28070,7 @@ sZ
 aa
 UB
 nS
-Kp
+IB
 nS
 Kp
 UB
@@ -28063,8 +28079,8 @@ aa
 aa
 aa
 aa
-UB
-nS
+fD
+kX
 Kp
 nS
 Kp
