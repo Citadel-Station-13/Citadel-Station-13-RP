@@ -59,7 +59,7 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, 'icons/objects/frames/fire_alarm.dmi'
 				)
 			),
 			FRAME_STAGE_DATA_DESC = "has the circuit secured.",
-		)
+		),
 		"wired" = list(
 			FRAME_STAGE_DATA_STEPS = list(
 				list(
