@@ -338,6 +338,7 @@
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/phoron_shrap
 	icon_state = "spitterammo"
+	multiple_sprites = 1
 
 ///////// 9mm /////////
 

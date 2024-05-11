@@ -95,8 +95,8 @@
 				prob(1);/obj/item/gun/ballistic/shotgun/pump/rifle/taj,
 				prob(1);/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
 				prob(1);/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895,
-				prob(1),/obj/item/gun/ballistic/caseless/phoron_spitter,
-				prob(1),/obj/item/gun/ballistic/caseless/wild_hunt,
+				prob(1);/obj/item/gun/ballistic/caseless/phoron_spitter,
+				prob(1);/obj/item/gun/ballistic/caseless/wild_hunt,
 				prob(2);/obj/item/gun/ballistic/silenced)
 
 /obj/random/projectile/sec
