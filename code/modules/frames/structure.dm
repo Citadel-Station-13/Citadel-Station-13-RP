@@ -5,7 +5,8 @@
 /obj/structure/frame2
 	name = "construction frame"
 	desc = "if you see this, yell at coders"
-	#warn default sprite
+	icon = 'icons/modules/frames/base.dmi'
+	icon_state = "structure"
 
 	/// frame datum; set to typepath to default to that on init
 	var/datum/frame2/frame
@@ -13,6 +14,7 @@
 	/// current stage
 	var/stage
 	/// current context
+	// todo: context system proper?
 	var/list/context
 
 #warn impl

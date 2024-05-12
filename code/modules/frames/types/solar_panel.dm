@@ -37,10 +37,12 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, 'icons/objects/frames/solar_panel.dm
 			range = MESSAGE_RANGE_CONSTRUCTION,
 			visible = SPAN_NOTICE("[click.performer] inserts [item] into [frame].")
 		)
+		// todo: context system proper?
 		frame.set_context("tracker", TRUE)
 		return TRUE
 
 /datum/frame2/solar_panel/instance_product(obj/structure/frame2/frame)
+	// todo: context system proper?
 	if(frame.get_context("tracker"))
 		return new /obj/machinery/power/tracker(frame.loc)
 	else
@@ -48,6 +50,7 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, 'icons/objects/frames/solar_panel.dm
 
 /datum/frame2/solar_panel/instruction_special(obj/structure/frame2/frame, datum/event_args/actor/clickchain/click)
 	. = ..()
+	// todo: context system proper?
 	if(!frame.get_context("tracker"))
 		. += SPAN_NOTICE("Add <b>tracker electronics</b> to make this a solar tracker assembly.")
 	else

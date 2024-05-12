@@ -144,24 +144,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	#warn impl
 
 /**
- * @return TRUE / FALSE success / fail
- */
-/datum/frame2/proc/move_frame_forwards(obj/structure/frame2/frame, from_stage)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(frame.stage != from_stage)
-		return FALSE
-	return move_frame_to(frame, from_stage, from_stage + 1 > stage_count? FRAME_STAGE_FINISH : from_stage + 1)
-
-/**
- * @return TRUE / FALSE success / fail
- */
-/datum/frame2/proc/move_frame_backwards(obj/structure/frame2/frame, from_stage)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(frame.stage != from_stage)
-		return FALSE
-	return move_frame_to(frame, from_stage, from_stage - 1 > 0? from_stage - 1 : FRAME_STAGE_DECONSTRUCT)
-
-/**
  * If trying to deconstruct or finish the frame, you *must* do:
  * * FRAME_STAGE_DECONSTRUCT
  * * FRAME_STAGE_FINISH
@@ -171,15 +153,16 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/proc/move_frame_to(obj/structure/frame2/frame, from_stage, to_stage)
 	if(frame.stage != from_stage)
 		return FALSE
-	if(to_stage < 1 || to_stage > stage_count())
+	if(isnull(stages[to_stage]))
 		// check your fucking inputs
-		CRASH("attempted to swap stage past bounds; this is not just a race condition, this means someone fucked up!")
+		CRASH("attempted to go to invalid stage!")
 	if(from_stage == to_stage)
 		// check your fucking inputs
 		CRASH("attempted to move from the same state to the same state. why?")
 	#warn impl
 
 	on_frame_step(frame, from_stage, to_stage)
+
 
 /**
  * Called when we transition stage.
@@ -190,21 +173,13 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	return
 
 /datum/frame2/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list)
-	examine_list += instruction_forwards(frame, actor)
-	examine_list += instruction_backwards(frame, actor)
+	examine_list += instruction_steps(frame, actor)
 	examine_list += instruction_special(frame, actor)
-	#warn impl
 
 /**
- * @return string
+ * @return string or list of strings
  */
-/datum/frame2/proc/instruction_forwards(obj/structure/frame2/frame, datum/event_args/actor/actor)
-	#warn impl default
-
-/**
- * @return string
- */
-/datum/frame2/proc/instruction_backwards(obj/structure/frame2/frame, datum/event_args/actor/actor)
+/datum/frame2/proc/instruction_steps(obj/structure/frame2/frame, datum/event_args/actor/actor)
 	#warn impl default
 
 /**
@@ -286,6 +261,3 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	return TRUE
 
 #warn guh
-
-/datum/frame2/proc/stage_count()
-	return length(steps_forward)

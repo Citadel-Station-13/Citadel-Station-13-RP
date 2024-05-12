@@ -4,6 +4,7 @@
 /obj/item/frame2
 	name = "entity frame"
 	desc = "Why do you see this? Contact a coder."
+	icon = 'icons/modules/frames/base.dmi'
 	icon_state = "item"
 
 	/// frame datum - set to typepath for initialization
