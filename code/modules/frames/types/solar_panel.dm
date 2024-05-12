@@ -1,4 +1,4 @@
-AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/modules/frames/solar_panel.dmi')
+AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/modules/power/solar/panel.dmi')
 /datum/frame2/solar_panel
 	name = "solar assembly"
 	material_buildable = FALSE
@@ -11,7 +11,7 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/modules/frames/s
 				request_amount = 1;
 				direction = TOOL_DIRECTION_FORWARDS;
 				stage = FRAME_STAGE_FINISH;
-			),
+			);
 		},
 	)
 
