@@ -1,4 +1,4 @@
-AUTO_FRAME_DATUM(/datum/frame2/apc, area_power_controller, 'icons/objects/frames/apc.dmi')
+AUTO_FRAME_DATUM(/datum/frame2/apc, area_power_controller, 'icons/modules/frames/apc.dmi')
 /datum/frame2/apc
 	name = "APC frame"
 	material_cost = 2
