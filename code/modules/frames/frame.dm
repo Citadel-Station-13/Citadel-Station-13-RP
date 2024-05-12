@@ -29,9 +29,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  *
  * ### how construction/deconstruction stage lists works:
  *
- * * set 'key' = list(stage data), where stage data is a key list with keys of FRAME_STAGE_DATA_* defines.
- * * you'll want to set FRAME_STAGE_DATA_STEPS to a list of list(step data); so a list of lists.
- * * each step will have FRAME_STEP_DATA_*
+ * * set 'key' = /datum/frame_stage typepath
+ * * you'll probably want anonymous types.
  * * please see examples.
  *
  * ### special things about the stage list
@@ -117,7 +116,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// deployment tool cost multiplier
 	var/item_deploy_cost = 1
 
-#warn impl
+/datum/frame2/New()
+	for(var/i in 1 to length(steps))
+		var/key = steps[i]
+		var/value = steps[i]
+		if(istype(key, /datum/frame_stage))
+			continue
+		else if(istext(key))
+			steps[key] = new value
 
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
@@ -197,6 +203,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return string or list of strings
  */
 /datum/frame2/proc/instruction_steps(obj/structure/frame2/frame, datum/event_args/actor/actor)
+	var/list/stage_data = stages[frame.stage]
+	if(isnull(stage_data))
+		return
+	var/list/steps = stage_data[FRAME_STAGE_DATA_STEPS]
+	if(!length(steps))
+		return
+	for(var/list/step as anything in steps)
+
 	#warn impl default
 
 /**

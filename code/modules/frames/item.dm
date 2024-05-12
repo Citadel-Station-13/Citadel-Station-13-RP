@@ -24,10 +24,17 @@
 		src.frame = fetch_frame_datum(src.frame)
 	sync_frame(src.frame)
 
+/obj/item/frame2/Destroy()
+	for(var/client/C as anything in viewing)
+		hide_frame_image(C)
+	return ..()
+
 /obj/item/frame2/proc/sync_frame(datum/frame2/frame)
 	name = "[frame.name]"
 	icon = frame.icon
 	icon_state = "item"
+	w_class = frame.item_weight_class
+	weight_volume = frame.item_weight_volume
 
 /obj/item/frame2/examine(mob/user, dist)
 	. = ..()
@@ -63,6 +70,9 @@
 	C.images -= get_hover_image()
 	UnregisterSignal(C, COMSIG_PARENT_QDELETING)
 
+	if(!length(viewing))
+		hover_image = null
+
 /obj/item/frame2/proc/on_client_delete(datum/source)
 	hide_frame_image(source)
 
@@ -75,7 +85,29 @@
 		hover_image.filters = list(
 			filter(type = "outline", size = 1, color = "#aaffaa77"),
 		)
+	update_hover_image()
 	return hover_image
+
+/obj/item/frame2/proc/update_hover_image()
+	if(isnull(hover_image))
+		return
+	hover_image.pixel_x = 0
+	hover_image.pixel_y = 0
+	switch(dir)
+		if(NORTH)
+			hover_image.pixel_y = 12
+		if(SOUTH)
+			hover_image.pixel_y = -12
+		if(EAST)
+			hover_image.pixel_x = 12
+		if(WEST)
+			hover_image.pixel_x = -12
+
+/obj/item/frame2/setDir(ndir)
+	. = ..()
+	if(!.)
+		return
+	update_hover_image()
 
 /obj/item/frame2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()

@@ -23,6 +23,31 @@
 #define TOOL_GLASS_CUT		"glasskit"
 #define TOOL_BONESET		"bonesetter"
 
+GLOBAL_REAL_VAR(all_tool_functions) = list(
+	// engineering
+	TOOL_CROWBAR,
+	TOOL_MULTITOOL,
+	TOOL_SCREWDRIVER,
+	TOOL_WIRECUTTER,
+	TOOL_WRENCH,
+	TOOL_WELDER,
+	TOOL_ANALYZER,
+	// mining
+	TOOL_MINING,
+	TOOL_SHOVEL,
+	// surgery
+	TOOL_RETRACTOR,
+	TOOL_HEMOSTAT,
+	TOOL_CAUTERY,
+	TOOL_DRILL,
+	TOOL_SCALPEL,
+	TOOL_SAW,
+	// glassworking
+	TOOL_BLOW,
+	TOOL_GLASS_CUT,
+	TOOL_BONESET,
+)
+
 /// Yes, this is a real global. No, you shouldn't touch this for no reason.
 /// Add tools to this when they get states in the default icon file for:
 /// - neutral (no append)

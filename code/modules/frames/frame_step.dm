@@ -1,0 +1,57 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+/**
+ * a transition from one stage to another
+ */
+/datum/frame_step
+	/// step name for tool radials & more
+	var/name
+	/// stage key this moves us to
+	/// * [STAGE_DECONSTRUCT] to deconstruct
+	/// * [STAGE_FINISH] to finish
+	var/stage
+	/// direction: [TOOL_DIRECTION_FORWARDS] or [TOOL_DIRECTION_BACKWARDS] or [TOOL_DIRECTION_NEUTRAL]
+	/// * this is used as a hint for tool graphics
+	/// * this is used as a hint for other visual / textual feedback
+	var/direction = TOOL_DIRECTION_NEUTRAL
+
+	/// FRAME_REQUEST_TYPE_* define
+	var/request_type
+	/// ergo: stack type, item type, tool function, etc. what this is depends on [step_type]
+	/// limited autodetection is allowed.
+	var/request
+	/// * tools: time needed
+	/// * stacks: amount
+	/// * items: amount; if 0, we just apply the item to it
+	/// * rest: unused.
+	var/request_amount
+	/// * tools: this is cost
+	/// * rest: unused
+	var/request_cost
+
+	/// what to drop when undertaking this step
+	/// can either be:
+	/// * /obj/item/stack typepath
+	/// * /datum/material typepath
+	/// * /obj/item typepath
+	var/drop
+	/// amount to drop
+	var/drop_amount = 1
+
+/datum/frame_step/New()
+	if(isnull(request_type))
+		// autodetect
+		var/detected
+		if(ispath(request, /datum/material))
+			request_type = FRAME_REQUEST_TYPE_MATERIAL
+		else if(ispath(request, /obj/item/stack))
+			request_type = FRAME_REQUEST_TYPE_STACK
+		else if(ispath(request, /obj/item))
+			request_type = FRAME_REQUEST_TYPE_ITEM
+		else if(istext(request))
+			if(request in global.all_tool_functions)
+				request_type = FRAME_REQUEST_TYPE_TOOL
+				detected = TRUE
+		else if(!detected)
+			CRASH("failed to autodetect request")

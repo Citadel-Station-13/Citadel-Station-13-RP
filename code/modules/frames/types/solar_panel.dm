@@ -4,17 +4,15 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/modules/frames/s
 	material_buildable = FALSE
 	has_density = TRUE
 	stages = list(
-		"frame" = list(
-			FRAME_STAGE_DATA_STEPS = list(
-				list(
-					FRAME_STEP_DATA_TYPE = FRAME_STEP_TYPE_MATERIAL,
-					FRAME_STEP_DATA_REQUEST = /datum/material/glass,
-					FRAME_STEP_DATA_NAME = "finish panel",
-					FRAME_STEP_DATA_STAGE = FRAME_STAGE_FINISH,
-					FRAME_STEP_DATA_DIRECTION = TOOL_DIRECTION_FORWARDS,
-				),
+		"frame" = /datum/frame_stage{
+			steps = list(
+				name = "finish panel";
+				request = /datum/material/glass;
+				request_amount = 1;
+				direction = TOOL_DIRECTION_FORWARDS;
+				stage = FRAME_STAGE_FINISH;
 			),
-		),
+		},
 	)
 
 	has_structure_stage_states = FALSE
