@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return finished product
  */
-/datum/frame2/proc/finish_frame(obj/structure/frame2/frame, destroy_structure = TRUE)
+/datum/frame2/proc/finish_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, destroy_structure = TRUE)
 	ASSERT(isturf(frame.loc))
 	. = instance_product(frame)
 	if(destroy_structure)
@@ -144,13 +144,21 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	#warn impl
 
 /**
+ * always use this proc, it's guarded against race conditions.
+ *
  * If trying to deconstruct or finish the frame, you *must* do:
  * * FRAME_STAGE_DECONSTRUCT
  * * FRAME_STAGE_FINISH
  *
+ * @params
+ * * frame - the frame being operated on
+ * * from_stage - move from this stage; if current stage key doesn't match expected, we abort as it might be a race condition.
+ * * to_stage - move to this stage
+ * * actor - actor data
+ *
  * @return TRUE / FALSE success / fail
  */
-/datum/frame2/proc/move_frame_to(obj/structure/frame2/frame, from_stage, to_stage)
+/datum/frame2/proc/move_frame_to(obj/structure/frame2/frame, from_stage, to_stage, datum/event_args/actor/actor)
 	if(frame.stage != from_stage)
 		return FALSE
 	if(isnull(stages[to_stage]))
@@ -159,9 +167,18 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	if(from_stage == to_stage)
 		// check your fucking inputs
 		CRASH("attempted to move from the same state to the same state. why?")
-	#warn impl
+
+	frame.stage = to_stage
 
 	on_frame_step(frame, from_stage, to_stage)
+
+	frame.update_icon()
+
+	switch(to_stage)
+		if(FRAME_STAGE_DECONSTRUCT)
+			deconstruct_frame(frame, actor)
+		if(FRAME_STAGE_FINISH)
+			finish_frame(frame, actor)
 
 
 /**
@@ -261,3 +278,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	return TRUE
 
 #warn guh
+
+/**
+ * gets a list of managed overlays to apply to a frame
+ */
+/datum/frame2/proc/get_overlays(obj/structure/frame/frame)
+	return list()

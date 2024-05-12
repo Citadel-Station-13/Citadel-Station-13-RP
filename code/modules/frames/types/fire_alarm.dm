@@ -18,7 +18,7 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, 'icons/objects/frames/fire_alarm.dmi'
 					FRAME_STEP_DATA_NAME = "detach frame",
 					FRAME_STEP_DATA_STAGE = FRAME_STAGE_DECONSTRUCT,
 					FRAME_STEP_DATA_DIRECTION = TOOL_DIRECTION_BACKWARDS,
-				)
+				),
 			),
 			FRAME_STAGE_DATA_DESC = "is currently an empty shell.",
 		),
@@ -56,7 +56,7 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, 'icons/objects/frames/fire_alarm.dmi'
 					FRAME_STEP_DATA_NAME = "unsecure circuit",
 					FRAME_STEP_DATA_STAGE = "circuit",
 					FRAME_STEP_DATA_DIRECTION = TOOL_DIRECTION_BACKWARDS,
-				)
+				),
 			),
 			FRAME_STAGE_DATA_DESC = "has the circuit secured.",
 		),

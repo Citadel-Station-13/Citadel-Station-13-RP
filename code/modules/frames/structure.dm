@@ -8,23 +8,22 @@
 	icon = 'icons/modules/frames/base.dmi'
 	icon_state = "structure"
 
+	obj_rotation_flags = OBJ_ROTATION_ENABLED
+
 	/// frame datum; set to typepath to default to that on init
 	var/datum/frame2/frame
 
 	/// current stage
 	var/stage
 	/// current context
-	// todo: context system proper?
+	// todo: frame context system proper?
 	var/list/context
-
-#warn impl
 
 /obj/structure/frame2/Initialize(mapload, datum/frame2/set_frame_to)
 	if(!isnull(set_frame_to))
 		frame = set_frame_to
 	frame = fetch_frame_datum(frame)
 	frame.apply_to_frame(src)
-	#warn /obj rotation system
 	return ..()
 
 /obj/structure/frame2/proc/set_context(key, value)
@@ -34,8 +33,12 @@
 	return context?[key]
 
 /obj/structure/frame2/update_icon_state()
+	icon_state = "structure[frame.has_structure_stage_states? "-[stage]" : ""]"
+	return ..()
+
+/obj/structure/frame2/update_overlays()
 	. = ..()
-	#warn impl
+	. += frame.get_overlays(src)
 
 /obj/structure/frame2/examine(mob/user, dist)
 	. = ..()
@@ -45,8 +48,21 @@
 	return merge_double_lazy_assoc_list(frame.on_tool_query(src, I, e_args), ..())
 
 /obj/structure/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
+	if(frame.on_tool(src, I, e_args, function, flags, hint))
+		// todo: did something might be sent even if we .. didn't do anything successfully.
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/obj/structure/frame2/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
+	if(.)
+		return
+	if(frame.on_interact(src, e_args))
+		return TRUE
 
-
-
-#warn tool system integration
+/obj/structure/frame2/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(frame.on_item(src, I, new /datum/event_args/actor/clickchain(user)))
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
