@@ -1,4 +1,4 @@
-AUTO_FRAME_DATUM(/datum/frame2/solar_panel, 'icons/objects/frames/solar_panel.dmi')
+AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/objects/frames/solar_panel.dmi')
 /datum/frame2/solar_panel
 	name = "solar assembly"
 	material_buildable = FALSE

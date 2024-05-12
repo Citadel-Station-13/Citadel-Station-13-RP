@@ -250,6 +250,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2/proc/deployment_checks(obj/item/frame2/frame, turf/location, dir, datum/event_args/actor/actor, silent)
 	if(!wall_frame)
+		pass()
 		#warn not wall frame; check non-blocking
 	#warn wall frame..
 

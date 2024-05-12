@@ -77,12 +77,12 @@
 
 //* special things
 
-#define AUTO_FRAME_DATUM(TYPEPATH, ICON) \
-/obj/structure/frame2 { \
+#define AUTO_FRAME_DATUM(TYPEPATH, EXTENSION, ICON) \
+/obj/structure/frame2/##EXTENSION { \
 	icon = ##ICON; \
 	frame = ##TYPEPATH; \
 } \
-/obj/item/frame2 { \
+/obj/item/frame2/##EXTENSION { \
 	icon = ##ICON; \
 	frame = ##TYPEPATH; \
 } \

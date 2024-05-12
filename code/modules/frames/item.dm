@@ -7,14 +7,14 @@
 	icon = 'icons/modules/frames/base.dmi'
 	icon_state = "item"
 
+	obj_rotation_flags = OBJ_ROTATION_ENABLED | OBJ_ROTATION_DEFAULTING
+
 	/// frame datum - set to typepath for initialization
 	var/datum/frame2/frame
 	/// our cached image for hover
 	var/image/hover_image
 	/// viewing clients
 	var/list/client/viewing
-
-#warn impl
 
 /obj/item/frame2/Initialize(mapload, datum/frame2/frame)
 	. = ..()
@@ -23,7 +23,6 @@
 	else if(ispath(src.frame))
 		src.frame = fetch_frame_datum(src.frame)
 	sync_frame(src.frame)
-	#warn rotation support
 
 /obj/item/frame2/proc/sync_frame(datum/frame2/frame)
 	name = "[frame.name]"
@@ -46,10 +45,37 @@
 	..()
 	if(!usr?.client)
 		return
+	show_frame_image(usr.client)
 
 /obj/item/frame2/MouseExited(location, control, params)
+	..()
 	if(!usr?.client)
 		return
+	hide_frame_image(usr.client)
+
+/obj/item/frame2/proc/show_frame_image(client/C)
+	LAZYDISTINCTADD(viewing, C)
+	C.images += get_hover_image()
+	RegisterSignal(C, COMSIG_PARENT_QDELETING, PROC_REF(on_client_delete))
+
+/obj/item/frame2/proc/hide_frame_image(client/C)
+	LAZYREMOVE(viewing, C)
+	C.images -= get_hover_image()
+	UnregisterSignal(C, COMSIG_PARENT_QDELETING)
+
+/obj/item/frame2/proc/on_client_delete(datum/source)
+	hide_frame_image(source)
+
+/obj/item/frame2/proc/get_hover_image()
+	if(isnull(hover_image))
+		// todo: big/multi-tile frame support
+		hover_image = image('icons/modules/frames/base.dmi', "arrow")
+		hover_image.loc = src
+		hover_image.transform = transformed
+		hover_image.filters = list(
+			filter(type = "outline", size = 1, color = "#aaffaa77"),
+		)
+	return hover_image
 
 /obj/item/frame2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
@@ -57,7 +83,11 @@
 /obj/item/frame2/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
 
-#warn arrow image
+/obj/item/frame2/proc/attempt_deploy(datum/event_args/actor/e_args, use_dir = src.dir)
+	#warn impl
+
+/obj/item/frame2/proc/deploy(datum/event_args/actor/e_args, use_dir = src.dir)
+	#warn impl
 
 /obj/item/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(function == frame.item_recycle_tool)
@@ -103,6 +133,7 @@
 			otherwise_self = SPAN_WARNING("You deploy [src]."),
 		)
 		log_construction(e_args, src, "deployed")
+		#warn uhh no?
 		new /obj/item/stack/material/steel(drop_location(), frame.material_cost)
 		qdel(src)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
