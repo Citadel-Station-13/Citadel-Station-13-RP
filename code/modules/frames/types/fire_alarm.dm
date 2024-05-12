@@ -20,7 +20,7 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, 'icons/objects/frames/fire_alarm.dmi'
 					FRAME_STEP_DATA_DIRECTION = TOOL_DIRECTION_BACKWARDS,
 				)
 			),
-			FRAME_STAGE_DATA_DESC = "is an empty shell.",
+			FRAME_STAGE_DATA_DESC = "is currently an empty shell.",
 		),
 		"circuit" = list(
 			FRAME_STAGE_DATA_STEPS = list(

@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/icon
 	/// do we append -stage to structure?
 	/// structure preview state will always be "structure"
-	var/has_structure_stage_states = TRUE
+	var/has_structure_stage_states = FALSE
 	/// do we append -stage to items?
 	/// item preview state will always be "item"
 	//  todo: currently unused given lack of support for storing state
@@ -133,6 +133,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		qdel(frame)
 
 /**
+ * todo: /instance_from_frame()? we certainly can't have this be on /Initialize level at /obj, which sucks.. oh well.
+ *
  * @return finished product
  */
 /datum/frame2/proc/instance_product(obj/structure/frame2/frame)

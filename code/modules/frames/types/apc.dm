@@ -3,8 +3,7 @@ AUTO_FRAME_DATUM(/datum/frame2/apc, 'icons/objects/frames/apc.dmi')
 	name = "APC frame"
 	material_cost = 2
 	// we immediately form the entity on place; no stages
-	steps_forward = list()
-	steps_backward = list()
+	stages = list()
 	wall_frame = TRUE
 	#warn wallframe offsets
 
