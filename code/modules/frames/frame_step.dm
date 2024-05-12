@@ -55,3 +55,22 @@
 				detected = TRUE
 		else if(!detected)
 			CRASH("failed to autodetect request")
+
+/datum/frame_step/proc/examine(obj/structure/frame2/frame, datum/event_args/actor/actor)
+	switch(request_type)
+		if(FRAME_REQUEST_TYPE_INTERACT)
+		if(FRAME_REQUEST_TYPE_ITEM)
+		if(FRAME_REQUEST_TYPE_MATERIAL)
+		if(FRAME_REQUEST_TYPE_PROC)
+		if(FRAME_REQUEST_TYPE_STACK)
+		if(FRAME_REQUEST_TYPE_TOOL)
+	#warn impl
+
+/datum/frame_step/proc/tool_image()
+	switch(direction)
+		if(TOOL_DIRECTION_BACKWARDS)
+			return dyntool_image_backward(request)
+		if(TOOL_DIRECTION_FORWARDS)
+			return dyntool_image_forward(request)
+		if(TOOL_DIRECTION_NEUTRAL)
+			return dyntool_image_neutral(request)

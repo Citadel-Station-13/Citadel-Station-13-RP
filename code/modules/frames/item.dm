@@ -81,7 +81,6 @@
 		// todo: big/multi-tile frame support
 		hover_image = image('icons/modules/frames/base.dmi', "arrow")
 		hover_image.loc = src
-		hover_image.transform = transformed
 		hover_image.filters = list(
 			filter(type = "outline", size = 1, color = "#aaffaa77"),
 		)

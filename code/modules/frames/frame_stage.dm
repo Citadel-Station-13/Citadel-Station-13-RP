@@ -30,6 +30,6 @@
 		name = key
 	for(var/i in 1 to length(steps))
 		var/datum/frame_step/step_casted = steps[i]
-		if(istype(step_cast))
+		if(istype(step_casted))
 			continue
 		steps[i] = new step_casted

@@ -117,13 +117,13 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/item_deploy_cost = 1
 
 /datum/frame2/New()
-	for(var/i in 1 to length(steps))
-		var/key = steps[i]
-		var/value = steps[i]
+	for(var/i in 1 to length(stages))
+		var/key = stages[i]
+		var/value = stages[i]
 		if(istype(key, /datum/frame_stage))
 			continue
 		else if(istext(key))
-			steps[key] = new value
+			stages[key] = new value
 
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
@@ -203,15 +203,15 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return string or list of strings
  */
 /datum/frame2/proc/instruction_steps(obj/structure/frame2/frame, datum/event_args/actor/actor)
-	var/list/stage_data = stages[frame.stage]
-	if(isnull(stage_data))
-		return
-	var/list/steps = stage_data[FRAME_STAGE_DATA_STEPS]
+	var/datum/frame_stage/stage = stages[frame.stage]
+	if(isnull(stage))
+		return list()
+	var/list/datum/frame_step/steps = stage.steps
 	if(!length(steps))
-		return
-	for(var/list/step as anything in steps)
-
-	#warn impl default
+		return list()
+	. = list()
+	for(var/datum/frame_step/step as anything in steps)
+		. += step.examine(frame, actor)
 
 /**
  * @return list(string, ...)
@@ -235,7 +235,13 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return list
  */
 /datum/frame2/proc/on_tool_query(obj/structure/frame2/frame, obj/item/tool, datum/event_args/actor/clickchain/click)
-	#warn impl
+	. = list()
+	for(var/datum/frame_step/step as anything in stages[frame.stage]?.steps)
+		if(step.request_type != FRAME_REQUEST_TYPE_TOOL)
+			continue
+		if(isnull(.[step.request]))
+			.[step.request] = list()
+		.[step.request][step.name || "yell at coders"] = step.tool_image()
 
 /**
  * @return TRUE if handled
