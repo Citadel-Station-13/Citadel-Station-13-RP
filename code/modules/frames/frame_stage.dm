@@ -16,8 +16,10 @@
 	/// name prepend; if existing, will be prepended with a space
 	var/name_prepend
 	/// name append; if existing, will be appended with a space
+	/// * the (xyz) format e.g. "(wired)" is recommended, resulting in a render of "frame (wired)"
 	var/name_append
 	/// name override; if existing, will override base name (prepend/append are still used)
+	/// * the bare format e.g. "wired" is recommended, resulting in a render of "wired frame"
 	var/name_override
 	/// "the [name] [descriptor]" on examine
 	var/descriptor

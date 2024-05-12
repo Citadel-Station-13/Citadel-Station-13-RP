@@ -72,7 +72,7 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, fire_alarm, 'icons/machinery/fire_ala
 				},
 			);
 			descriptor = "has its wiring installed.";
-			name_override = "fire alarm frame (wired)";
+			name_append = "(wired)";
 		},
 	)
 

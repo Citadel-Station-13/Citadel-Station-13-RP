@@ -40,6 +40,11 @@
 	. = ..()
 	. += frame.get_overlays(src)
 
+/obj/structure/frame2/update_name()
+	var/datum/frame_stage/stage = frame.stages[stage]
+	name = "[stage.name_prepend && "[stage.name_prepend] "][stage.name_override || frame.name][stage.name_append && " [stage.name_append]"]"
+	return ..()
+
 /obj/structure/frame2/examine(mob/user, dist)
 	. = ..()
 	frame.on_examine(src, new /datum/event_args/actor(user), .)

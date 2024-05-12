@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2
 	/// frame name
-	var/name
+	var/name = "construction frame"
 	/// sheet metal cost
 	var/material_cost = 1
 	//  todo: non-steel support
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 	on_frame_step(frame, from_stage, to_stage)
 
-	frame.update_icon()
+	frame.update_appearance()
 
 	switch(to_stage)
 		if(FRAME_STAGE_DECONSTRUCT)
