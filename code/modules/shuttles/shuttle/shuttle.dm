@@ -682,18 +682,27 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	))
 		TO_WORLD(FORMAT_SERVER_FATAL("SSgrids.translate() failed during unsafe_aligned_translation of shuttle [id]. This is an unrecoverable error / undefined behavior state, and it is not recommended to continue usage of this shuttle. Please contact a coder immediately."))
 		CRASH("SSgrids translation failed. Something has gone horribly wrong!")
+
+	// handle ceilings if necessary
 	if(ceiling_type)
 		// remove old ceiling from above shuttle
 		if(SSmapping.cached_level_up[move_from.z])
 			var/above_z = SSmapping.cached_level_up[move_from.z]
 			// has above
-			for(var/turf/above_turf in use_before_turfs)
+			// (this is null filtered on purpose)
+			// also, this *should* include non-moved turfs too (aka turfs that got too broken / the baseturf marker removed),
+			// because use_before_turfs and use_after_turfs are area filtered, not turf filtered.
+			for(var/turf/before_turf in use_before_turfs)
+				var/turf/above_turf = locate(before_turf.x, before_turf.y, above_z)
 				// remove ceiling
 				above_turf.ScrapeFromLogicalBottom(CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
 		// inject destination ceiling turfs above shuttle
 		if(SSmapping.cached_level_up[move_to.z])
 			var/above_z = SSmapping.cached_level_up[move_to.z]
 			// has above
+			// (this is null filtered on purpose)
+			// also, this *should* include non-moved turfs too (aka turfs that got too broken / the baseturf marker removed),
+			// because use_before_turfs and use_after_turfs are area filtered, not turf filtered.
 			for(var/turf/after_turf in use_after_turfs)
 				// inject ceiling
 				var/turf/above_turf = locate(after_turf.x, after_turf.y, above_z)
