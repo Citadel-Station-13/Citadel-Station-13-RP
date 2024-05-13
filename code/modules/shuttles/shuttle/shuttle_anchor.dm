@@ -221,7 +221,7 @@
 		if(NORTH)
 			return list(
 				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
-				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_z), // tr absolute outside
 				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
 				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
 			)
@@ -229,12 +229,12 @@
 			return list(
 				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
 				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
-				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_z), // tr absolute outside
 				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
 			)
 		if(EAST)
 			return list(
-				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_z), // tr absolute outside
 				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
 				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
 				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
@@ -244,7 +244,7 @@
 				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
 				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
 				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
-				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_z), // tr absolute outside
 			)
 
 /**
@@ -331,7 +331,7 @@
 		real_urx,
 		real_lly,
 		real_ury,
-		anchor_z,
+		islist(location)? location[3] : location.z,
 		direction,
 	)
 
