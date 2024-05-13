@@ -202,27 +202,57 @@
  * why? because that is the topleft, topright, bottomleft, and bottomright in
  * respect to the EAST direction!
  *
+ * todo: coords list(x,y,z) version
+ *
  * @params
  * * turf/location - turf or list(x,y,z)
  * * direction - direction we'll be in / at
  */
-/obj/shuttle_anchor/proc/tl_tr_bl_br_outside_turfs_at(turf/location, direction)
+/obj/shuttle_anchor/proc/relative_tl_tr_bl_br_outside_turfs_at(turf/location, direction)
+	var/anchor_z
+
+	if(islist(location))
+		anchor_z = location[3]
+	else
+		anchor_z = location.z
+
+	var/list/bounds = absolute_llx_lly_urx_ury_coords_at(location, direction)
+	switch(direction)
+		if(NORTH)
+			return list(
+				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
+				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
+			)
+		if(SOUTH)
+			return list(
+				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
+				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
+			)
+		if(EAST)
+			return list(
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
+				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
+				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
+			)
+		if(WEST)
+			return list(
+				locate(bounds[1] - 1, bounds[2] - 1, anchor_z), // bl absolute outside
+				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
+				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
+				locate(bounds[3] + 1, bounds[4] + 1, anchor_Z), // tr absolute outside
+			)
 
 /**
- * @return turfs in square box, unfiltered
- */
-/obj/shuttle_anchor/proc/aabb_ordered_turfs_here()
-	return aabb_ordered_turfs_at(loc)
-
-/**
- * @params
- * * location - a turf, or a tuple of list(x, y, z)
+ * get real (non-directional) bounding box lowerleft/upperright x/y's
  *
- * @return turfs in square box, unfiltered
+ * @return list(llx, lly, urx, ury)
  */
-/obj/shuttle_anchor/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
-	ASSERT(isturf(location))
-
+/obj/shuttle_anchor/proc/absolute_llx_lly_urx_ury_coords_at(turf/location, direction)
 	var/anchor_x
 	var/anchor_y
 	var/anchor_z
@@ -263,6 +293,38 @@
 			real_lly = anchor_y - offset_x
 			real_urx = anchor_x - offset_y + (size_y - 1)
 			real_ury = anchor_y - offset_x + (size_x - 1)
+
+	return list(
+		real_llx,
+		real_lly,
+		real_urx,
+		real_ury,
+	)
+
+/**
+ * @return turfs in square box, unfiltered
+ */
+/obj/shuttle_anchor/proc/aabb_ordered_turfs_here()
+	return aabb_ordered_turfs_at(loc)
+
+/**
+ * @params
+ * * location - a turf, or a tuple of list(x, y, z)
+ *
+ * @return turfs in square box, unfiltered
+ */
+/obj/shuttle_anchor/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+	var/real_llx
+	var/real_lly
+	var/real_urx
+	var/real_ury
+
+	var/list/bounds = absolute_llx_lly_urx_ury_coords_at(location, direction)
+
+	real_llx = bounds[1]
+	real_lly = bounds[2]
+	real_urx = bounds[3]
+	real_ury = bounds[4]
 
 	return SSgrids.get_ordered_turfs(
 		real_llx,

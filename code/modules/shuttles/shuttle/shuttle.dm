@@ -633,28 +633,37 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	translating_forward_width = perpendicular_length
 	translating_side_length = parallel_length
 
-	// todo: maybe this should be a proc on anchor()?
-	// todo: this seems really silly to have in the main loop...
-	
+	var/list/llx_lly_urx_ury = \
+		anchor.absolute_llx_lly_urx_ury_coords_at(
+			new_anchor_location,
+			new_anchor_location[4],
+		)
+
 	switch(direction)
 		if(NORTH)
 			// forward offset is the negated x right outside the left of shuttle,
 			// so adding x to it gets your forward index when abs()'d
-
-			// side offset is the negated y on turf right outside of the shuttle,
+			translating_forward_offset = -(llx_lly_urx_ury[1] - 1)
+			// side offset is the negated y on turf right outside the front of the shuttle,
 			// so adding y to it gets your side index when abs()'d
+			translating_side_offset = -(llx_lly_urx_ury[4] + 1)
 		if(SOUTH)
 			// forward offset is the negated x right outside the right of shuttle,
 			// so adding x to it gets your forward index when abs()'d
-
-			// side offset is the negated y on turf right underneath the shuttle,
+			translating_forward_offset = -(llx_lly_urx_ury[3] + 1)
+			// side offset is the negated y on turf right outside the back of the shuttle,
 			// so adding y to it gets your side index when abs()'d
+			translating_side_offset = -(llx_lly_urx_ury[2] - 1)
 		if(EAST)
 			// not going to bother commenting this, this is just rotation math
 			// and my brain hurts oh my days
+			translating_forward_offset = -(llx_lly_urx_ury[4] + 1)
+			translating_side_offset = -(llx_lly_urx_ury[3] + 1)
 		if(WEST)
 			// not going to bother commenting this, this is just rotation math
 			// and my brain hurts oh my days
+			translating_forward_offset = -(llx_lly_urx_ury[2] - 1)
+			translating_side_offset = -(llx_lly_urx_ury[1] - 1)
 
 	// everything's prepped, move.
 	if(!SSgrids.translate(
