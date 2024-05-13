@@ -191,6 +191,24 @@
 	)
 
 /**
+ * gets the topleft, topright, bottomleft, and bottomright turfs
+ * **right outside the shuttle bounding box**
+ * with respect to the given direction
+ *
+ * if EAST, as an example, this will be
+ * list(topright, bottomright, topleft, bottomleft)
+ * in respect to the **map**.
+ *
+ * why? because that is the topleft, topright, bottomleft, and bottomright in
+ * respect to the EAST direction!
+ *
+ * @params
+ * * turf/location - turf or list(x,y,z)
+ * * direction - direction we'll be in / at
+ */
+/obj/shuttle_anchor/proc/tl_tr_bl_br_outside_turfs_at(turf/location, direction)
+
+/**
  * @return turfs in square box, unfiltered
  */
 /obj/shuttle_anchor/proc/aabb_ordered_turfs_here()

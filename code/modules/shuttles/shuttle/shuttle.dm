@@ -86,8 +86,6 @@
 	/// current length of side
 	var/translating_side_length
 
-	#warn ugh
-
 	//* Hooks
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
@@ -320,6 +318,8 @@
 		if(EAST, WEST)
 			forward_lookup_index = entity.y + translating_forward_offset
 			side_lookup_index = entity.x + translating_side_offset
+	forward_lookup_index = abs(forward_lookup_index)
+	side_lookup_index = abs(side_lookup_index)
 
 	// see if we should be kicked towards side
 	var/use_side_heuristic = (forward_lookup_index > SHUTTLE_OVERLAP_FRONT_THRESHOLD) \
@@ -573,18 +573,6 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	var/turf/move_from = get_turf(anchor)
 	ASSERT(isturf(move_from))
 
-	// setup translation physics
-	translating_physics_direction = direction
-	var/parallel_length = anchor.overall_height(direction)
-	var/perpendicular_length = anchor.overall_width(direction)
-	translating_forwards_lookup = new /list(perpendicular_length)
-	translating_left_lookup = new /list(parallel_length)
-	translating_right_lookup = new /list(parallel_length)
-	translating_forward_width = perpendicular_length
-	translating_side_length = parallel_length
-
-	#warn translating_forward_offset, translating_side_offset
-
 	// get ordered turfs
 	if(isnull(use_before_turfs))
 		use_before_turfs = aabb_ordered_turfs_here()
@@ -634,6 +622,39 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		port.abstract_move(locate(motion_tuple[1], motion_tuple[2], motion_tuple[3]))
 		port.setDir(motion_tuple[4])
 		port.port_moving = FALSE
+
+	// setup translation physics
+	translating_physics_direction = direction
+	var/parallel_length = anchor.overall_height(direction)
+	var/perpendicular_length = anchor.overall_width(direction)
+	translating_forwards_lookup = new /list(perpendicular_length)
+	translating_left_lookup = new /list(parallel_length)
+	translating_right_lookup = new /list(parallel_length)
+	translating_forward_width = perpendicular_length
+	translating_side_length = parallel_length
+
+	// todo: maybe this should be a proc on anchor()?
+	// todo: this seems really silly to have in the main loop...
+	
+	switch(direction)
+		if(NORTH)
+			// forward offset is the negated x right outside the left of shuttle,
+			// so adding x to it gets your forward index when abs()'d
+
+			// side offset is the negated y on turf right outside of the shuttle,
+			// so adding y to it gets your side index when abs()'d
+		if(SOUTH)
+			// forward offset is the negated x right outside the right of shuttle,
+			// so adding x to it gets your forward index when abs()'d
+
+			// side offset is the negated y on turf right underneath the shuttle,
+			// so adding y to it gets your side index when abs()'d
+		if(EAST)
+			// not going to bother commenting this, this is just rotation math
+			// and my brain hurts oh my days
+		if(WEST)
+			// not going to bother commenting this, this is just rotation math
+			// and my brain hurts oh my days
 
 	// everything's prepped, move.
 	if(!SSgrids.translate(
