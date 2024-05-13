@@ -559,6 +559,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
  *
  * * all translations must use this.
  * * warning: absolutely no safety checks are done. none of the aftereffects are handled either. don't use this.
+ * * this means if you fuck up, things just flat out get annihilated or scrambled. the round might even crash, and you might get angry Discord messages.
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
  *
@@ -711,53 +712,106 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 
 //* Docking - Bounding Checks *//
 
-#warn rework bounding checks they don't have direction :/
-
 /**
  * check bounding boxes
  *
- * @params
- * * dock - dock to dock to
- * * port - port to align with dock; if null, we do a centered docking
- * * hard_checks_only - only check hard faults, allow trampling anything else.
- * * use_ordered_turfs - check these ordered turfs; you usually use this when about to translate.
+ * basically, wrapper for check_bounding
  *
- * @return SHUTTLE_DOCKING_BOUNDING_X result define
+ * @params
+ * * dock -  dock to dock to
+ * * with_port - port to align with dock; if null, we do a centered docking
+ * * hard_checks_only - only check for hard faults. this is usually set to TRUE for dock landings, because docks are consdiered protected!
+ * * use_ordered_turfs - pass in ordered turfs to use instead of the normal bounds check
  */
-/datum/shuttle/proc/check_bounding(obj/shuttle_dock/dock, obj/shuttle_port/with_port, hard_checks_only, list/use_ordered_turfs)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	var/list/ordered_turfs
-	#warn check for overlap with zlevel borders - the last 3 turfs should be reserved
-	#warn impl ordered turfs
-	if(!check_bounding_overlap(dock, with_port, ordered_turfs))
+/datum/shuttle/proc/check_docking_bounds(obj/shuttle_dock/dock, obj/shuttle_port/with_port, hard_checks_only, list/turf/use_ordered_turfs)
+	if(isnull(hard_checks_only))
+		hard_checks_only = dock.trample_bounding_box
+	#warn impl
+
+/**
+ * direct bounding box check
+ *
+ * @params
+ * * turf/location - location anchor will be at
+ * * direction - direction anchor will be at
+ * * hard_checks_only - only check for hard faults
+ * * use_ordered_turfs - pass in ordered turfs to use instead of the normal bounds check
+ * * docking_at - dock we're going to. used to exclude it from dock boundary checks.
+ */
+/datum/shuttle/proc/check_bounding(turf/location, direction, hard_checks_only, list/turf/use_ordered_turfs, obj/shuttle_dock/docking_at)
+	if(isnull(use_ordered_turfs))
+		use_ordered_turfs = anchor.aabb_ordered_turfs_at_and_clip_check(location, direction)
+	if(isnull(use_ordered_turfs))
 		return SHUTTLE_DOCKING_BOUNDING_HARD_FAULT
 	if(hard_checks_only)
 		return SHUTTLE_DOCKING_BOUNDING_CLEAR
-	if(!check_bounding_trample(dock, with_port, ordered_turfs))
+	#warn dock bounds check
+	if(!check_bounding_trample_turfs_binary(use_ordered_turfs))
 		return SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT
 	return SHUTTLE_DOCKING_BOUNDING_CLEAR
 
 /**
- * hard bounding check - do not override this.
- *
- * @return FALSE if overlapping
+ * @return FALSE if we will trample something
  */
-/datum/shuttle/proc/check_bounding_overlap(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	for(var/turf/T in ordered_turfs)
-		if(istype(T.loc, /area/shuttle))
-			return FALSE
-		if(T.turf_flags & TURF_FLAG_LEVEL_BORDER)
+/datum/shuttle/proc/check_bounding_trample_turfs_binary(list/ordered_turfs)
+	for(var/turf/T as anything in ordered_turfs)
+		if(!check_bounding_trample_turf(T))
 			return FALSE
 	return TRUE
+
+/**
+ * @params
+ * * ordered_turfs - turfs to check
+ * * bad_turfs_out - turfs that get trampled are put in here
+ *
+ * @return FALSE if we will trample something
+ */
+/datum/shuttle/proc/check_bounding_trample_turfs_extract(list/ordered_turfs, list/bad_turfs_out = list())
+	. = TRUE
+	for(var/turf/T as anything in ordered_turfs)
+		if(isnull(T))
+			continue
+		if(!check_bounding_trample_turf(T))
+			. = FALSE
+			bad_turfs_out += T
+
+/**
+ * @params
+ * * ordered_turfs - turfs to check
+ * * bad_turfs_out - turfs that get trampled are put in here, rest of entries are null. same ordering as ordered_turfs
+ *
+ * @return FALSE if we will trample something
+ */
+/datum/shuttle/proc/check_bounding_trample_turfs_ordered_extract(list/ordered_turfs, list/bad_turfs_out = list())
+	. = TRUE
+	bad_turfs_out.len = length(ordered_turfs)
+	for(var/i in 1 to length(ordered_turfs))
+		var/turf/T = ordered_turfs[i]
+		if(isnull(T))
+			continue
+		if(!check_bounding_trample_turf(T))
+			. = FALSE
+			bad_turfs_out[i] = T
 
 /**
  * soft bounding check - override this for your own checks.
  *
  * @return FALSE if trampling sometihng we don't want to trample
  */
-/datum/shuttle/proc/check_bounding_trample(obj/shuttle_dock/dock, obj/shuttle_port/with_port, list/ordered_turfs)
-	#warn impl
+/datum/shuttle/proc/check_bounding_trample_turf(turf/T)
+	// 1. are we space?
+	if(istype(T, /turf/space))
+		// we're fine
+		return TRUE
+	// 2. is the turf dense?
+	if(T.density)
+		// don't run it over
+		return FALSE
+	// 3. is the turf outdoors?
+	if(!T.outdoors)
+		// no landing indoors unless it's a dock
+		return FALSE
+	return TRUE
 
 //* Previews *//
 
@@ -821,7 +875,19 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		return
 	return ports[1]
 
-//* Transit
+//* SFX / VFX *//
+
+/**
+ * get people in range of general SFX / VFX associated to their
+ * ranges outside the shuttle
+ *
+ * * this only grabs players
+ * * `1` is directly outside the shuttle / adjacent to a turf but not on top.
+ */
+/datum/shuttle/proc/sfx_player_sweep(maximum_range = 21)
+	#warn impl
+
+//* Transit *//
 
 /**
  * todo: todo

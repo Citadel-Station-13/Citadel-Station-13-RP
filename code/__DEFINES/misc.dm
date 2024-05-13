@@ -49,23 +49,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 /// Used to trigger removal from a processing list.
 #define PROCESS_KILL	26
 
-//	Shuttles.
-
-// These define the time taken for the shuttle to get to the space station, and the time before it leaves again.
-/// 5 minutes = 300 seconds - after this time, the shuttle departs centcom and cannot be recalled.
-#define SHUTTLE_PREPTIME 300
-/// 3 minutes = 180 seconds - the duration for which the shuttle will wait at the station after arriving.
-#define SHUTTLE_LEAVETIME 180
-/// 5 minutes = 300 seconds - how long it takes for the shuttle to get to the station.
-#define SHUTTLE_TRANSIT_DURATION 300
-/// 2 minutes = 120 seconds - for some reason it takes less time to come back, go figure.
-#define SHUTTLE_TRANSIT_DURATION_RETURN	120
-
-// Sound defines for shuttles.
-#define HYPERSPACE_WARMUP	0
-#define HYPERSPACE_PROGRESS	1
-#define HYPERSPACE_END		2
-
 // Bluespace shelter deploy checks
 #define SHELTER_DEPLOY_ALLOWED			"allowed"
 #define SHELTER_DEPLOY_BAD_TURFS		"bad turfs"

@@ -170,6 +170,29 @@
 			return size_x
 
 /**
+ * get our centered coords if landing on a dock's bounding box
+ * in centered mode.
+ *
+ * this is by centering the entire shuttle, not just the anchor!
+ *
+ * @params
+ * * dock - the dock in question
+ * * direction - the direction we should dock
+ *
+ * @return list(x, y, z)
+ */
+/obj/shuttle_anchor/proc/coords_for_centered_docking(obj/shuttle_dock/dock, direction = src.dir)
+	#warn impl
+
+/**
+ * heuristically find cardinals directions we can fit in on a dock
+ *
+ * @return list(dirs...)
+ */
+/obj/shuttle_anchor/proc/centered_docking_dirs_we_fit(obj/shuttle_dock/dock)
+	#warn impl
+
+/**
  * get rotated coordinates and direction when moved with another location on the shuttle
  *
  * @params
