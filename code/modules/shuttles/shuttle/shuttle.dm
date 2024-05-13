@@ -98,7 +98,15 @@
 
 	//* Preview
 	/// lower-left aligned preview overlay; used for shuttle dockers and similar
+	/// the generated preview will be **north** facing
+	/// turn it via transform matrices only!
 	var/mutable_appearance/preview_overlay
+	/// generated preview height (Y axis) in tiles
+	var/preview_height
+	/// generated preview width (X axis) in tiles
+	var/preview_width
+	/// last time preview was regenerated
+	var/preview_generated_at
 
 	//* Structure
 	/// if set, we generate a ceiling above the shuttle of this type, on the bottom of the turf stack.
@@ -132,6 +140,8 @@
 	#warn areas
 	#warn hooks
 	preview_overlay = null
+	preview_width = null
+	preview_height = null
 	#warn de-dock
 	#warn de-transit
 	#warn de-move
@@ -378,7 +388,7 @@
 	var/turf/right = center
 
 	var/left_dir = turn(direction, 90)
-	var/right_dir = turn(durection, -90)
+	var/right_dir = turn(direction, -90)
 
 	for(var/i in 1 to SHUTTLE_OVERLAP_FRONT_DEFLECTION)
 		// left
@@ -571,7 +581,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	translating_left_lookup = new /list(parallel_length)
 	translating_right_lookup = new /list(parallel_length)
 	translating_forward_width = perpendicular_length
-	translating_side_length = paralle_length
+	translating_side_length = parallel_length
 
 	#warn translating_forward_offset, translating_side_offset
 
@@ -582,7 +592,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		use_after_turfs = align_with_port? align_with_port.aabb_ordered_turfs_at(move_to, direction) : anchor.aabb_ordered_turfs_at(move_to, direction)
 
 	// filter for less work
-	SSgrids.null_filter_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
+	SSgrids.null_filter_translation_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
 
 	#warn below
 
@@ -713,8 +723,46 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 /datum/shuttle/proc/get_preview(regenerate)
 	if(!isnull(preview_overlay) && !regenerate)
 		return preview_overlay
+
+	preview_generated_at = world.time
+
 	preview_overlay = new /mutable_appearance
-	#warn impl
+	preview_overlay.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	preview_overlay.icon = 'icons/system/blank_32x32.dmi'
+	preview_overlay.icon_state = ""
+
+	preview_width = anchor.overall_width(NORTH)
+	preview_height = anchor.overall_height(NORTH)
+
+	// get topleft to bottomright (left to right, then go downwards) list of turfs
+	var/list/turf/turfs = SSgrids.null_filter_ordered_turfs_in_place_via_area(
+		anchor.aabb_ordered_turfs_here(),
+		areas,
+	)
+
+	// go through and add overlays as necessary
+	var/mutable_appearance/stamp = new /mutable_appearance
+	var/current_y = preview_height
+	var/current_x = 1
+	for(var/i in 1 to length(turfs))
+		var/turf/turf = turfs[i]
+
+		if(!isnull(turf))
+			// clone turf appearance
+			stamp.appearance = turf
+			// generate pixel values
+			stamp.pixel_x = (current_x - 1) * WORLD_ICON_SIZE
+			stamp.pixel_y = (current_y - 1) * WORLD_ICON_SIZE
+			// imprint the stamp
+			preview_overlay.overlaps += stamp
+
+		// we move our stamp position regardless of if there's a turf
+		++current_x
+		if(current_x > preview_width)
+			--current_y
+			current_x = 1
+
+	return preview_overlay
 
 /**
  * slow proc; get the primary port. if none, we use first port.
