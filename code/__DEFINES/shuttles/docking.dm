@@ -31,7 +31,15 @@
 #define SHUTTLE_OVERLAP_SIDE_THRESHOLD 2
 /// threshold from front where we're rammed to the front anyways
 #define SHUTTLE_OVERLAP_FRONT_THRESHOLD 2
-/// 
+/// threshold from side where we're able to be rammed to the side instead of annihilated
+/// if front has no room
+#define SHUTTLE_OVERLAP_SIDE_FORGIVENESS 2
+/// how far to look when performing front lookups
+#define SHUTTLE_OVERLAP_FRONT_DEFLECTION 1
+/// how far forwards to look when performing side lookups
+#define SHUTTLE_OVERLAP_SIDE_FORWARDS_DEFLECTION INFINITY
+/// how far backwards to look when performing side lookups
+#define SHUTTLE_OVERLAP_SIDE_BACKWARDS_DEFLECTION 1
 
 /// overlap tile cache marker for 'no viable tile found in bounds'
 #define SHUTTLE_OVERLAP_NO_FREE_SPACE "no-free-space"

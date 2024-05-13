@@ -83,6 +83,8 @@
 	var/translating_side_offset
 	/// current width of front
 	var/translating_forward_width
+	/// current length of side
+	var/translating_side_length
 
 	#warn ugh
 
@@ -292,8 +294,14 @@
 	// we don't check for non-game/abstract, SSgrids does that.
 
 	// get index in frontal pass
+	// this is effectively our position left to right
+	// 1 = leftmost turf of shuttle
+	// matching [translating_forward_width] = rightmost turf of shuttle
 	var/forward_lookup_index
 	// get index in side pass
+	// this is effectively our position front to back
+	// 1 = frontmost turf of shuttle
+	// matching [translating_side_length] = rearmost turf of shuttle
 	var/side_lookup_index
 	switch(translating_physics_direction)
 		if(NORTH, SOUTH)
@@ -328,43 +336,26 @@
 			) || movable_overlap_front_heuristic(
 				current_turf,
 				translating_physics_direction,
+				side_lookup_index,
 				forward_lookup_index,
 			) || SHUTTLE_OVERLAP_NO_FREE_SPACE
 		else
+			var/side_forgiveness = (forward_lookup_index <= SHUTTLE_OVERLAP_SIDE_FORGIVENESS \
+				|| forward_lookup_index > (translating_forward_width - SHUTTLE_OVERLAP_SIDE_FORGIVENESS))
 			overall_target = movable_overlap_front_heuristic(
 				current_turf,
 				translating_physics_direction,
+				side_lookup_index,
 				forward_lookup_index,
-			) || ((forward_lookup_index < SHUTTLE_OVERLAP_FRONT_THRESHOLD) && movable_overlap_side_heuristic(
+			) || (side_forgiveness && movable_overlap_side_heuristic(
 				current_turf,
 				translating_physics_direction,
 				side_lookup_index,
 				forward_lookup_index,
 			)) || SHUTTLE_OVERLAP_NO_FREE_SPACE
 
-		var/turf/potential_target
-		var/turf/potential_left
-		var/turf/potential_right
-		if(use_side_heuristic)
-			#warn impl
-		else
-			potential_target = movable_overlap_calculate_front_turf(entity, translating_physics_direction, side_lookup_index)
-			if(potential_target.density)
-				// dense, try left and right
-				potential_left = get_step(potential_target, turn(translating_physics_direction, 90))
-				if(!potential_left.density)
-					overall_target = potential_left
-				else
-					potential_right = get_step(potential_target, turn(translating_physics_direction, -90))
-					if(!potential_right.density)
-						overall_target = potential_right
-			else
-				// use it
-				overall_target = potential_target
-			#warn this stuff should proabbly be ap roc..
 			// cache; if we found none, we just tell stuff to get annihilated on hit
 			translating_forwards_lookup[forward_lookup_index] = overall_target || SHUTTLE_OVERLAP_NO_FREE_SPACE
-		#warn impl
 
 	if(overall_target == SHUTTLE_OVERLAP_NO_FREE_SPACE)
 		// if we accepted there's no space,
@@ -375,10 +366,62 @@
 	// tell it to do stuff
 	entity.shuttle_crushed(src, overall_target, should_annihilate)
 
+// todo: get rid of all translating_ instance vars
 /datum/shuttle/proc/movable_overlap_front_heuristic(turf/from_turf, direction, side_index, forward_index)
+	var/forward_width = translating_forward_width
 
-/datum/shuttle/proc/movable_overlap_side_heuristic(turf/from_turf, direction, forward_index)
+	var/turf/center = movable_overlap_calculate_front_turf(from_turf, direction, side_index)
+	if(!center.density)
+		return center
 
+	var/turf/left = center
+	var/turf/right = center
+
+	var/left_dir = turn(direction, 90)
+	var/right_dir = turn(durection, -90)
+
+	for(var/i in 1 to SHUTTLE_OVERLAP_FRONT_DEFLECTION)
+		// left
+		if((forward_index - i) >= 1)
+			left = get_step(left, left_dir)
+		// right
+		if((forward_index + i) <= (forward_width))
+			right = get_step(right, right_dir)
+
+		if(!left.density)
+			if(!right.density)
+				return pick(left, right)
+			return left
+		else if(!right.density)
+			return right
+
+// todo: get rid of all translating_ instance vars
+/datum/shuttle/proc/movable_overlap_side_heuristic(turf/from_turf, direction, side_index, forward_index)
+	var/midpoint = (translating_forward_width + 1) / 2
+	var/go_left = (forward_index == midpoint)? prob(50) : (forward_index < midpoint)
+
+	var/turf/center = go_left? \
+		movable_overlap_calculate_left_turf(from_turf, direction, forward_index, translating_forward_width) : \
+		movable_overlap_calculate_right_turf(from_turf, direction, forward_index, translating_forward_width)
+
+	if(!center.density)
+		return center
+
+	// always slam them forwards if possible
+	var/forwards_dir = direction
+	var/turf/forwards = center
+	for(var/i in 1 to min(SHUTTLE_OVERLAP_SIDE_FORWARDS_DEFLECTION, side_index))
+		forwards = get_step(forwards, forwards_dir)
+		if(!forwards.density)
+			return forwards
+
+	// then slam backwards if needed
+	var/backwards_dir = turn(direction, 180)
+	var/turf/backwards = center
+	for(var/i in 1 to min(SHUTTLE_OVERLAP_SIDE_BACKWARDS_DEFLECTION, translating_side_length - side_index + 1))
+		backwards = get_step(backwards, backwards_dir)
+		if(!backwards.density)
+			return backwards
 
 /datum/shuttle/proc/movable_overlap_calculate_front_turf(atom/movable/entity, direction, side_index)
 	// we abuse side_lookup_index to shift us forwards to the first tile that isn't the shuttle.
@@ -528,6 +571,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	translating_left_lookup = new /list(parallel_length)
 	translating_right_lookup = new /list(parallel_length)
 	translating_forward_width = perpendicular_length
+	translating_side_length = paralle_length
 
 	#warn translating_forward_offset, translating_side_offset
 
@@ -608,6 +652,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		= translating_forward_offset \
 		= translating_side_offset \
 		= translating_forward_width \
+		= translating_side_length \
 		= null
 
 //* Docking - Bounding Checks *//
