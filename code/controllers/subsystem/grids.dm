@@ -118,16 +118,16 @@ SUBSYSTEM_DEF(grids)
  * * leave_area - the area instance to leave behind. if not set, this defaults to world.area. this can be a typepath if the typepath is an unique area.
  * * emit_motion_flags - use this to extract ordered motion flags
  * * emit_moved_atoms - use this to extract what movables got moved
- * * turf_overlap_handler - callback that's fired for things in the way with (from_turf, to_turf); things: turfs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
- * * movable_overlap_handler - callback that's fired for things in the way with (thing, from_turf, to_turf); things: objs, mobs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
+ * * turf_overlap_handler - bound proc that's fired for things in the way with (from_turf, to_turf); things: turfs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
+ * * movable_overlap_handler - bound proc that's fired for things in the way with (thing, from_turf, to_turf); things: objs, mobs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
  */
-/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/callback/turf_overlap_handler, datum/callback/movable_overlap_handler)
+/datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/bound_proc/turf_overlap_handler, datum/bound_proc/movable_overlap_handler)
 	UNTIL(!translation_mutex)
 	translation_mutex = TRUE
 	. = do_translate(arglist(args))
 	translation_mutex = FALSE
 
-/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags, list/emit_moved_atoms, datum/callback/turf_overlap_handler, datum/callback/movable_overlap_handler)
+/datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags, list/emit_moved_atoms, datum/bound_proc/turf_overlap_handler, datum/bound_proc/movable_overlap_handler)
 	PRIVATE_PROC(TRUE)
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
@@ -207,13 +207,13 @@ SUBSYSTEM_DEF(grids)
 			continue
 		var/turf/destination = to_turfs[i]
 		// -- fire overlap handlers --
-		turf_overlap_handler?.InvokeAsync(source, destination)
+		turf_overlap_handler?.invoke_async(source, destination)
 		for(var/atom/movable/AM as anything in destination)
 			if(AM.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
 				continue
 			if(AM.handle_grid_overlap(grid_flags))
 				continue
-			movable_overlap_handler?.InvokeAsync(AM, source, destination)
+			movable_overlap_handler?.invoke_async(AM, source, destination)
 		// -- end --
 		source.grid_transfer(grid_flags, destination, baseturf_boundary)
 

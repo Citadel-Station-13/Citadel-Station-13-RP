@@ -109,7 +109,6 @@
 	instance.after_bounds_init(reservation, src)
 
 	// set vars on shuttle
-	instance
 	instance.template_id = id
 
 	return instance

@@ -1,6 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+// just a bunch of de/serialization helpers to reduce copypaste
+// these are meant to add durability to known-migrated systems,
+// as errors in expected vs actual value in those systems can
+// generally be treated as a mistake somewhere on the part
+// of whoever is updating them.
+
 //* Number *//
 
 #define OPTIONALLY_DESERIALIZE_NUMBER(FROM, INTO) \

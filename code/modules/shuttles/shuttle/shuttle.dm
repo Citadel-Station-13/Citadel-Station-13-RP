@@ -174,7 +174,7 @@
 		topright_x = max(topright_x, scanning.x)
 		topright_y = max(topright_y, scanning.y)
 		// make superstructure
-		// todo: make superstructure a thing again
+		// todo: make superstructure a thing *maybe?*
 		// new /obj/shuttle_structure(scanning)
 		// todo: probably make sure baseturfs are fine
 		var/static/list/cared_about_typecache = typecacheof(list(
@@ -212,10 +212,9 @@
 		var/turf/center = from_reservation.get_approximately_center_turf()
 		anchor = new(center)
 	anchor.calculate_bounds(bottomleft_x, bottomleft_y, topright_x, topright_y, from_template.facing_dir)
+	anchor.before_bounds_initializing(src, from_reservation, from_template)
 	for(var/obj/shuttle_port/port in ports)
 		port.before_bounds_initializing(src, from_reservation, from_template)
-	anchor.before_bounds_initializing(src, from_reservation, from_template)
-	#warn hook
 
 /**
  * Called after the bounds have initialized their atoms/areas
@@ -224,7 +223,6 @@
  */
 /datum/shuttle/proc/after_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
 	return
-	#warn hook
 
 /**
  * bind a controller to us
@@ -320,6 +318,30 @@
 
 	if(isnull(overall_target))
 		// if no target, generate one
+		var/turf/current_turf = get_turf(entity)
+		if(use_side_heuristic)
+			overall_target = movable_overlap_side_heuristic(
+				current_turf,
+				translating_physics_direction,
+				side_lookup_index,
+				forward_lookup_index,
+			) || movable_overlap_front_heuristic(
+				current_turf,
+				translating_physics_direction,
+				forward_lookup_index,
+			) || SHUTTLE_OVERLAP_NO_FREE_SPACE
+		else
+			overall_target = movable_overlap_front_heuristic(
+				current_turf,
+				translating_physics_direction,
+				forward_lookup_index,
+			) || ((forward_lookup_index < SHUTTLE_OVERLAP_FRONT_THRESHOLD) && movable_overlap_side_heuristic(
+				current_turf,
+				translating_physics_direction,
+				side_lookup_index,
+				forward_lookup_index,
+			)) || SHUTTLE_OVERLAP_NO_FREE_SPACE
+
 		var/turf/potential_target
 		var/turf/potential_left
 		var/turf/potential_right
@@ -343,7 +365,8 @@
 			// cache; if we found none, we just tell stuff to get annihilated on hit
 			translating_forwards_lookup[forward_lookup_index] = overall_target || SHUTTLE_OVERLAP_NO_FREE_SPACE
 		#warn impl
-	else if(overall_target == SHUTTLE_OVERLAP_NO_FREE_SPACE)
+
+	if(overall_target == SHUTTLE_OVERLAP_NO_FREE_SPACE)
 		// if we accepted there's no space,
 		// obliterate it if possible
 		should_annihilate = TRUE
@@ -351,6 +374,11 @@
 
 	// tell it to do stuff
 	entity.shuttle_crushed(src, overall_target, should_annihilate)
+
+/datum/shuttle/proc/movable_overlap_front_heuristic(turf/from_turf, direction, side_index, forward_index)
+
+/datum/shuttle/proc/movable_overlap_side_heuristic(turf/from_turf, direction, forward_index)
+
 
 /datum/shuttle/proc/movable_overlap_calculate_front_turf(atom/movable/entity, direction, side_index)
 	// we abuse side_lookup_index to shift us forwards to the first tile that isn't the shuttle.
@@ -550,8 +578,8 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		docked.base_area_instance(),
 		null,
 		null,
-		CALLBACK(src, PROC_REF(turf_overlap_handler)),
-		CALLBACK(src, PROC_REF(movable_overlap_handler)),
+		BOUND_PROC(src, PROC_REF(turf_overlap_handler)),
+		BOUND_PROC(src, PROC_REF(movable_overlap_handler)),
 	))
 		TO_WORLD(FORMAT_SERVER_FATAL("SSgrids.translate() failed during unsafe_aligned_translation of shuttle [id]. This is an unrecoverable error / undefined behavior state, and it is not recommended to continue usage of this shuttle. Please contact a coder immediately."))
 		CRASH("SSgrids translation failed. Something has gone horribly wrong!")
@@ -583,6 +611,8 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		= null
 
 //* Docking - Bounding Checks *//
+
+#warn rework bounding checks they don't have direction :/
 
 /**
  * check bounding boxes
@@ -617,6 +647,8 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	SHOULD_NOT_OVERRIDE(TRUE)
 	for(var/turf/T in ordered_turfs)
 		if(istype(T.loc, /area/shuttle))
+			return FALSE
+		if(T.turf_flags & TURF_FLAG_LEVEL_BORDER)
 			return FALSE
 	return TRUE
 

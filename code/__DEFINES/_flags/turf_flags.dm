@@ -3,7 +3,7 @@
 //  todo: kill this with fire
 #define NO_JAUNT						(1<<0)
 /// Unused reservation turf
-#define TURF_UNUSED_RESERVATION			(1<<2)
+#define TURF_FLAG_UNUSE_RESERVATION			(1<<2)
 /// queued for planet turf addition
 //  todo: planet rework
 #define TURF_PLANET_QUEUED				(1<<3)
@@ -41,7 +41,7 @@
 
 DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(NO_JAUNT),
-	BITFIELD(TURF_UNUSED_RESERVATION),
+	BITFIELD(TURF_FLAG_UNUSE_RESERVATION),
 	BITFIELD(TURF_PLANET_QUEUED),
 	BITFIELD(TURF_PLANET_REGISTERED),
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),

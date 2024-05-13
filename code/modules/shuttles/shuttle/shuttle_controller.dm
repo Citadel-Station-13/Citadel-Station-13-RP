@@ -77,6 +77,19 @@
 	if(!isnull(manual_dock))
 		QDEL_NULL(manual_dock)
 	#warn impl
+	#warn interrupt in-progress moves
+
+//* Docking - Manual Landmarks *//
+
+/**
+ * returns a list of name-to-turf of valid jump points on a given zlevel
+ */
+/datum/shuttle_controller/proc/manual_landing_beacons(zlevel)
+
+/**
+ * returns a list of valid name-to-zlevel-index for manual landing
+ */
+/datum/shuttle_controller/proc/manual_landing_levels()
 
 //* Interface *//
 

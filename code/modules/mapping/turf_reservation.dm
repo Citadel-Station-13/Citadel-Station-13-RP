@@ -88,7 +88,7 @@
 				for(var/inner_x in outer_x to outer_x + how_many_wide - 1)
 					for(var/inner_y in outer_y to outer_y + how_many_high - 1)
 						var/turf/checking = locate(1 + RESERVED_TURF_RESOLUTION * (inner_x - 1), 1 + RESERVED_TURF_RESOLUTION * (inner_y - 1), level_index)
-						if(!(checking.turf_flags & TURF_UNUSED_RESERVATION))
+						if(!(checking.turf_flags & TURF_FLAG_UNUSE_RESERVATION))
 							passing = FALSE
 							break
 					if(!passing)
@@ -111,7 +111,7 @@
 		SSmapping.reservation_blocking_op = FALSE
 		return FALSE
 	for(var/turf/T as anything in final)
-		T.turf_flags &= ~TURF_UNUSED_RESERVATION
+		T.turf_flags &= ~TURF_FLAG_UNUSE_RESERVATION
 		if(!isnull(border_type) && (T.type != border_type) && (T.x == BL.x || T.x == TR.x || T.y == BL.y || T.y == TR.y))
 			T.ChangeTurf(border_type, border_type)
 		else if(T.type != turf_type)

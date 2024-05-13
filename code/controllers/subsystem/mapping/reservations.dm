@@ -68,7 +68,7 @@
 /datum/controller/subsystem/mapping/proc/reserve_turfs(list/turf/turfs)
 	for(var/turf/T as anything in turfs)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE)
-		T.turf_flags |= UNUSED_RESERVATION_TURF
+		T.turf_flags |= TURF_FLAG_UNUSE_RESERVATION
 		CHECK_TICK
 	// todo: area.assimilate_turfs?
 	unallocated_reserve_area.contents.Add(turfs)
