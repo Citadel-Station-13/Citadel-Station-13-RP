@@ -93,7 +93,6 @@
  * @return list(x, y, z, dir)
  */
 /obj/shuttle_port/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
-	#warn we're more complicated because we are, in-fact, a multi-tile object!
 	return calculate_entity_motion_with_respect_to_moving_point(
 		list(src.x, src.y, src.z),
 		src.dir,
@@ -104,133 +103,76 @@
 	)
 
 /**
- * get coordinate tuple when rotated around the shuttle's anchor
- *
- * @params
- * * angle - clockwise rotation angle in degrees
- *
- * @return list(x, y, z)
- */
-/obj/shuttle_port/proc/rotated_coordinates_around_anchor(angle)
-	#warn impl
-
-/**
  * @return turfs in square box, unfiltered
  */
 /obj/shuttle_port/proc/aabb_ordered_turfs_here()
 	return shuttle.anchor.aabb_ordered_turfs_here()
 
 /**
- * todo: support tuple list(x,y,z) location params
+ * @params
+ * * location - turf or list(x,y,z)
+ * * direction - which way we should be facing when we're done
  *
- * @return turfs in square box, unfiltered
+ * @return turfs in square box, unfiltered. turfs that don't exist will be nulls.
  */
 /obj/shuttle_port/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
-	// get our offsets
-	var/dx_from_anchor = shuttle.anchor.x - src.x
-	var/dy_from_anchor = shuttle.anchor.y - src.y
+	// unpack
+	var/new_x
+	var/new_y
+	var/new_z
 
-	// dir2angle is north-zero clockwise.
-	// turn_amount will therefore be how much we need to turn clockwise to
-	// get there.
-	//
-	// note that since we know this will be a whole number,
-	// we use the native % instead of our fractional-supporting MODULUS() macro.
-	var/turn_amount = (dir2angle(shuttle.anchor.dir) - dir2angle(direction)) % 360
+	if(islist(location))
+		new_x = location[1]
+		new_y = location[2]
+		new_z = location[3]
+	else
+		new_x = location.x
+		new_y = location.y
+		new_z = location.z
 
-	// converted x/y is where the anchor will be
-	// after being rotated in its current location, in respect to ourselves
-	var/converted_x
-	var/converted_y
-
-	switch(turn_amount)
-		if(0)
-			converted_x = src.x - dx_from_anchor
-			converted_y = src.y - dy_from_anchor
-		if(90)
-			converted_x = src.x - dy_from_anchor
-			converted_y = src.y + dx_from_anchor
-		if(180)
-			converted_x = src.x + dx_from_anchor
-			converted_y = src.y + dy_from_anchor
-		if(270)
-			converted_x = src.x + dy_from_anchor
-			converted_y = src.y - dx_from_anchor
-		else
-			CRASH("what?")
-
-	// now that we have where the anchor will be when rotated in respect
-	// to ourselves, we can offset it to get where we wish to go.
-
-	var/dx_from_new = location.x - src.x
-	var/dy_from_new = location.y - src.y
-
-	return shuttle.anchor.aabb_ordered_turfs_at(
-		list(
-			converted_x + dx_from_new,
-			converted_y + dy_from_new,
-			location.z,
-		),
+	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+		list(src.x, src.y, src.z),
+		list(new_x, new_y, new_z),
+		src.dir,
 		direction,
 	)
 
+	return shuttle.anchor.aabb_ordered_turfs_at(anchor_motion, anchor_motion[4])
+
 /**
- * checks if we'll clip a zlevel edge or another shtutle at a location
+ * checks if we'll clip a zlevel edge or another shuttle at a location
  *
- * the weird return is for optimization reasons.
+ * * this is a hard clip check, if this returns null you CANNOT MOVE.
  *
- * todo: support tuple list(x,y,z) location params
+ * @params
+ * * location - turf or list(x,y,z)
+ * * direction - which way we should be facing when we're done
  *
  * @return null if we will clip, list(ordered turfs) if we won't clip
  */
 /obj/shuttle_port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
-	// get our offsets
-	var/dx_from_anchor = shuttle.anchor.x - src.x
-	var/dy_from_anchor = shuttle.anchor.y - src.y
+	// unpack
+	var/new_x
+	var/new_y
+	var/new_z
 
-	// dir2angle is north-zero clockwise.
-	// turn_amount will therefore be how much we need to turn clockwise to
-	// get there.
-	//
-	// note that since we know this will be a whole number,
-	// we use the native % instead of our fractional-supporting MODULUS() macro.
-	var/turn_amount = (dir2angle(shuttle.anchor.dir) - dir2angle(direction)) % 360
+	if(islist(location))
+		new_x = location[1]
+		new_y = location[2]
+		new_z = location[3]
+	else
+		new_x = location.x
+		new_y = location.y
+		new_z = location.z
 
-	// converted x/y is where the anchor will be
-	// after being rotated in its current location, in respect to ourselves
-	var/converted_x
-	var/converted_y
-
-	switch(turn_amount)
-		if(0)
-			converted_x = src.x - dx_from_anchor
-			converted_y = src.y - dy_from_anchor
-		if(90)
-			converted_x = src.x - dy_from_anchor
-			converted_y = src.y + dx_from_anchor
-		if(180)
-			converted_x = src.x + dx_from_anchor
-			converted_y = src.y + dy_from_anchor
-		if(270)
-			converted_x = src.x + dy_from_anchor
-			converted_y = src.y - dx_from_anchor
-		else
-			CRASH("what?")
-
-	// now that we have where the anchor will be when rotated in respect
-	// to ourselves, we can offset it to get where we wish to go.
-
-	var/dx_from_new = location.x - src.x
-	var/dy_from_new = location.y - src.y
-
-	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(
-		list(
-			converted_x + dx_from_new,
-			converted_y + dy_from_new,
-			location.z,
-		),
+	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+		list(src.x, src.y, src.z),
+		list(new_x, new_y, new_z),
+		src.dir,
 		direction,
 	)
+
+	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
 
 /obj/shuttle_port/forceMove()
 	CRASH("attempted to forcemove a shuttle anchor")
