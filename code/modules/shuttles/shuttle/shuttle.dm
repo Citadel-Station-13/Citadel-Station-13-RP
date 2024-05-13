@@ -594,33 +594,37 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	// filter out non-moving turfs, but keep list orderings
 	SSgrids.null_filter_translation_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
 
-	#warn below
+	// list(x,y,z,dir)
+	var/list/old_anchor_location = list(anchor.x, anchor.y, anchor.z, anchor.dir)
+	// list(x,y,z,dir)
+	var/list/new_anchor_location
+	// port = list(x,y,z,dir)
+	var/list/new_port_locations = list()
 
-	var/current_x
-	var/current_y
-
-	if(!isnull(align_with_port))
-		current_x = align_with_port.x
-		current_y = align_with_port.y
+	// calculate motions of ports and anchors
+	if(align_with_port)
 	else
-		current_x = anchor.x
-		current_y = anchor.y
+		new_anchor_location = list(move_to.x, move_to.y, move_to.z, direction)
+		for(var/obj/shuttle_port/port as anything in ports)
+			new_port_locations[port] = port.calculate_motion_with_respect_to(
+				old_anchor_location,
+				new_anchor_location,
+				old_anchor_location[4],
+				new_anchor_location[4],
+			)
 
-	// prep to move anchors / ports
-	var/dx_from_destination = move_to.x - current_x
-	var/dy_from_destination = move_to.y - current_y
-	// anchor is easiest, moving it is just a flat translation
-	anchor.abstract_move(
-		locate(
-			anchor.x + dx_from_destination,
-			anchor.y + dy_from_destination,
-			move_to.z,
-		),
-	)
-	// ports are a bitch, we have to take into account rotation
-	#warn above doesn't actually work, because we need to take into account rotations for everything.
+	// move ports and anchors
+	anchor.abstract_move(locate(new_anchor_location[1], new_anchor_location[2], new_anchor_location[3]))
+	anchor.anchor_moving = TRUE
+	anchor.setDir(new_anchor_location[4])
+	anchor.anchor_moving = FALSE
+	for(var/obj/shuttle_port/port as anything in new_port_locations)
+		var/list/motion_tuple = new_port_locations[port]
+		port.port_moving = TRUE
+		port.abstract_move(locate(motion_tuple[1], motion_tuple[2], motion_tuple[3]))
+		port.setDir(motion_tuple[4])
+		port.port_moving = FALSE
 
-	#warn move ports
 	// prepped, move.
 	if(!SSgrids.translate(
 		use_before_turfs,

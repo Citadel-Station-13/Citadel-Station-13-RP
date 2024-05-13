@@ -61,6 +61,9 @@
 	/// if it is, this is what we align with for roundstart loading.
 	var/primary_port = FALSE
 
+	/// are we moving right now?
+	var/port_moving = FALSE
+
 /obj/shuttle_port/preloading_instance(with_id)
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
@@ -175,7 +178,17 @@
 	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
 
 /obj/shuttle_port/forceMove()
-	CRASH("attempted to forcemove a shuttle anchor")
+	CRASH("attempted to forceMove a shuttle port")
+
+/obj/shuttle_port/setDir(ndir)
+	if(!port_moving)
+		CRASH("attempted to setDir a shuttle port")
+	return ..()
+
+/obj/shuttle_port/abstract_move(atom/new_loc)
+	if(!port_moving)
+		CRASH("attempted to abstract_move a shuttle port")
+	return ..()
 
 /obj/shuttle_port/grid_move(grid_flags, turf/new_turf)
 	return

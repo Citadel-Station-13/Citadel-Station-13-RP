@@ -100,6 +100,9 @@
 	/// see main documentation
 	var/offset_y
 
+	/// are we moving right now?
+	var/anchor_moving = FALSE
+
 /obj/shuttle_anchor/Destroy(force)
 	if(!force && !shuttle.being_deleted)
 		. = QDEL_HINT_LETMELIVE
@@ -342,6 +345,16 @@
 
 /obj/shuttle_anchor/forceMove()
 	CRASH("attempted to forcemove a shuttle anchor")
+
+/obj/shuttle_anchor/setDir(ndir)
+	if(!anchor_moving)
+		CRASH("attempted to setDir an anchor")
+	return ..()
+
+/obj/shuttle_anchor/abstract_move(atom/new_loc)
+	if(!anchor_moving)
+		CRASH("attempted to abstract_move a shuttle anchor")
+	return ..()
 
 /**
  * usually only callable by admins
