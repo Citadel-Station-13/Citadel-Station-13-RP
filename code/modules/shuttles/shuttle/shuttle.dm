@@ -594,6 +594,8 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	// filter out non-moving turfs, but keep list orderings
 	SSgrids.null_filter_translation_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
 
+	// calculate motions of ports and anchors
+
 	// list(x,y,z,dir)
 	var/list/old_anchor_location = list(anchor.x, anchor.y, anchor.z, anchor.dir)
 	// list(x,y,z,dir)
@@ -601,17 +603,25 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	// port = list(x,y,z,dir)
 	var/list/new_port_locations = list()
 
-	// calculate motions of ports and anchors
+	// we first resolve new anchor location
 	if(align_with_port)
+		new_anchor_location = anchor.calculate_motion_with_respect_to(
+			list(align_with_port.x, align_with_port.y, align_with_port.z),
+			list(move_to.x, move_to.y, move_to.z),
+			align_with_port.dir,
+			direction,
+		)
 	else
 		new_anchor_location = list(move_to.x, move_to.y, move_to.z, direction)
-		for(var/obj/shuttle_port/port as anything in ports)
-			new_port_locations[port] = port.calculate_motion_with_respect_to(
-				old_anchor_location,
-				new_anchor_location,
-				old_anchor_location[4],
-				new_anchor_location[4],
-			)
+
+	// we then resolve new port locations via new anchor location
+	for(var/obj/shuttle_port/port as anything in ports)
+		new_port_locations[port] = port.calculate_motion_with_respect_to(
+			old_anchor_location,
+			new_anchor_location,
+			old_anchor_location[4],
+			new_anchor_location[4],
+		)
 
 	// move ports and anchors
 	anchor.abstract_move(locate(new_anchor_location[1], new_anchor_location[2], new_anchor_location[3]))
@@ -625,7 +635,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		port.setDir(motion_tuple[4])
 		port.port_moving = FALSE
 
-	// prepped, move.
+	// everything's prepped, move.
 	if(!SSgrids.translate(
 		use_before_turfs,
 		use_after_turfs,
