@@ -591,7 +591,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 	if(isnull(use_after_turfs))
 		use_after_turfs = align_with_port? align_with_port.aabb_ordered_turfs_at(move_to, direction) : anchor.aabb_ordered_turfs_at(move_to, direction)
 
-	// filter for less work
+	// filter out non-moving turfs, but keep list orderings
 	SSgrids.null_filter_translation_ordered_turfs_in_place_via_area(areas, use_before_turfs, use_after_turfs)
 
 	#warn below
@@ -754,7 +754,7 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 			stamp.pixel_x = (current_x - 1) * WORLD_ICON_SIZE
 			stamp.pixel_y = (current_y - 1) * WORLD_ICON_SIZE
 			// imprint the stamp
-			preview_overlay.overlaps += stamp
+			preview_overlay.overlays += stamp
 
 		// we move our stamp position regardless of if there's a turf
 		++current_x

@@ -82,6 +82,39 @@
 	return shuttle.anchor.overall_height(direction)
 
 /**
+ * get rotated coordinates and direction when moved with another location on the shuttle
+ *
+ * @params
+ * * old_coords - list(x,y,z)
+ * * new_coords - list(x,y,z)
+ * * old_dir - old direction
+ * * new_dir - new direction
+ *
+ * @return list(x, y, z, dir)
+ */
+/obj/shuttle_port/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
+	#warn we're more complicated because we are, in-fact, a multi-tile object!
+	return calculate_entity_motion_with_respect_to_moving_point(
+		list(src.x, src.y, src.z),
+		src.dir,
+		old_coords,
+		new_coords,
+		old_dir,
+		new_dir,
+	)
+
+/**
+ * get coordinate tuple when rotated around the shuttle's anchor
+ *
+ * @params
+ * * angle - clockwise rotation angle in degrees
+ *
+ * @return list(x, y, z)
+ */
+/obj/shuttle_port/proc/rotated_coordinates_around_anchor(angle)
+	#warn impl
+
+/**
  * @return turfs in square box, unfiltered
  */
 /obj/shuttle_port/proc/aabb_ordered_turfs_here()

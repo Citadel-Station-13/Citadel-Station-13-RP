@@ -167,6 +167,27 @@
 			return size_x
 
 /**
+ * get rotated coordinates and direction when moved with another location on the shuttle
+ *
+ * @params
+ * * old_coords - list(x,y,z)
+ * * new_coords - list(x,y,z)
+ * * old_dir - old direction
+ * * new_dir - new direction
+ *
+ * @return list(x, y, z, dir)
+ */
+/obj/shuttle_anchor/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
+	return calculate_entity_motion_with_respect_to_moving_point(
+		list(src.x, src.y, src.z),
+		src.dir,
+		old_coords,
+		new_coords,
+		old_dir,
+		new_dir,
+	)
+
+/**
  * @return turfs in square box, unfiltered
  */
 /obj/shuttle_anchor/proc/aabb_ordered_turfs_here()

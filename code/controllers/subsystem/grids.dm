@@ -159,9 +159,8 @@ SUBSYSTEM_DEF(grids)
 	// * Proc grid_finished() on all registered movables
 	// Caveats / Pointers:
 	// * rotation_angle is in turn() angles.
-	// * Collect is tick checked. IF you have a movable that affects things, it best be anchored or hard to move.
-	// * Area / turf transfer is tick checked.
-	// * Movable movement, and grid_after() calls aren't tick checked, as players can observe this.
+	// * none of these are tick checked right now. do not sleep,
+	// * do not do anything expensive, async your calls or kick them elsewhere if they're expensive!
 
 	. = FALSE
 
@@ -295,18 +294,21 @@ SUBSYSTEM_DEF(grids)
  * @return motion flags
  */
 /area/proc/grid_collect(grid_flags, turf/old_turf, turf/new_turf, baseturf_boundary)
+	SHOULD_NOT_SLEEP(TRUE)
 	return GRID_MOVE_AREA
 
 /**
  * Called when copying area to new turfs
  */
 /area/proc/grid_transfer(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary)
-	contents += new_turfs
+	SHOULD_NOT_SLEEP(TRUE)
+	take_turfs(new_turfs)
 
 /**
  * Called when cleaning up after transfer
  */
 /area/proc/grid_clean(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary, area/leave_area)
+	SHOULD_NOT_SLEEP(TRUE)
 	// contents -= old_turfs
 	if(ispath(leave_area))
 		leave_area = dynamic_area_of_type(leave_area)
@@ -321,6 +323,7 @@ SUBSYSTEM_DEF(grids)
  * Called after everything is moved
  */
 /area/proc/grid_after(grid_flags, list/turf/old_turfs, list/turf/new_turfs, baseturf_boundary)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 //* Turfs
@@ -331,6 +334,7 @@ SUBSYSTEM_DEF(grids)
  * @return motion flags
  */
 /turf/proc/grid_collect(grid_flags, turf/new_turf, baseturf_boundary, area_opinion)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(isnull(baseturf_boundary))
 		return area_opinion | GRID_MOVE_TURF | GRID_MOVE_MOVABLES
 	if(baseturf_boundary in baseturfs)
@@ -342,6 +346,7 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /turf/proc/grid_transfer(grid_flags, turf/new_turf, baseturf_boundary)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(isnull(baseturf_boundary))
 		new_turf.CopyOnTop(src, null, null, copy_flags = COPYTURF_COPY_AIR)
 	else
@@ -352,6 +357,7 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /turf/proc/grid_clean(grid_flags, baseturf_boundary)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(isnull(baseturf_boundary))
 		// tear to the bottom
 		ChangeTurf(baseturf_bottom(), /turf/baseturf_bottom)
@@ -364,6 +370,7 @@ SUBSYSTEM_DEF(grids)
  * Called after everything settles
  */
 /turf/proc/grid_after(grid_flags, rotation_angle)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(rotation_angle != 0)
 		setDir(turn(dir, rotation_angle))
 
@@ -375,6 +382,7 @@ SUBSYSTEM_DEF(grids)
  * @return motion flags
  */
 /atom/movable/proc/grid_collect(grid_flags, turf/new_turf, loc_opinion)
+	SHOULD_NOT_SLEEP(TRUE)
 	return loc_opinion
 
 /**
@@ -382,6 +390,7 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /atom/movable/proc/grid_move(grid_flags, turf/new_turf)
+	SHOULD_NOT_SLEEP(TRUE)
 	abstract_move(new_turf)
 
 /**
@@ -389,6 +398,7 @@ SUBSYSTEM_DEF(grids)
  * Only called if moved
  */
 /atom/movable/proc/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(rotation_angle != 0)
 		setDir(turn(dir, rotation_angle))
 
@@ -396,6 +406,7 @@ SUBSYSTEM_DEF(grids)
  * Called if we got added to late_call_hooks in grid_after.
  */
 /atom/movable/proc/grid_finished(grid_flags, rotation_angle)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /**
@@ -406,6 +417,7 @@ SUBSYSTEM_DEF(grids)
  * @return TRUE to override overlap_handler callback.
  */
 /atom/movable/proc/handle_grid_overlap(grid_flags)
+	SHOULD_NOT_SLEEP(TRUE)
 	return FALSE
 
 //* grid area left behind if a grid move is not given an area to leave
