@@ -891,10 +891,17 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
  * ranges outside the shuttle
  *
  * * this only grabs players
- * * `1` is directly outside the shuttle / adjacent to a turf but not on top.
+ * * this uses the range from anchor
  */
-/datum/shuttle/proc/sfx_player_sweep(maximum_range = 21)
-	#warn impl
+/datum/shuttle/proc/sfx_players_in_range(maximum_range = 21)
+	var/our_z = anchor.z
+	. = list()
+	for(var/mob/player as anything in GLOB.players_by_zlevel[our_z])
+		var/dist = get_dist(player, anchor)
+		if(dist <= maximum_range)
+			.[player] = dist
+
+
 
 //* Transit *//
 
