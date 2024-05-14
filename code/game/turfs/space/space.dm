@@ -163,6 +163,10 @@
 	if(!QDELETED(AM) && (AM.loc == src))
 		AM.touch_map_edge()
 
+/turf/space/grid_collect(grid_flags, turf/new_turf, baseturf_boundary, area_opinion)
+	// never move stuff
+	return area_opinion
+
 
 //// Special variants used in various maps ////
 
