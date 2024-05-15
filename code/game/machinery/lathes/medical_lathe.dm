@@ -24,8 +24,9 @@
 
 /obj/machinery/lathe/medical/stocked/Initialize(mapload)
 	. = ..()
-	stored_materials[MAT_STEEL] = 5 * SHEET_MATERIAL_AMOUNT
-	stored_materials[MAT_GLASS] = 5 * SHEET_MATERIAL_AMOUNT
-	stored_materials[MAT_PLASTIC] = 1 * SHEET_MATERIAL_AMOUNT
-	stored_materials[MAT_WOOD] = 1 * SHEET_MATERIAL_AMOUNT
+	LAZYINITLIST(stored_materials.stored)
+	stored_materials.stored[MAT_STEEL] = 5 * SHEET_MATERIAL_AMOUNT
+	stored_materials.stored[MAT_GLASS] = 5 * SHEET_MATERIAL_AMOUNT
+	stored_materials.stored[MAT_PLASTIC] = 1 * SHEET_MATERIAL_AMOUNT
+	stored_materials.stored[MAT_WOOD] = 1 * SHEET_MATERIAL_AMOUNT
 
