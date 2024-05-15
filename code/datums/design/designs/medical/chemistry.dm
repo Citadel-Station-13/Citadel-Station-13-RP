@@ -31,18 +31,8 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/glass/hypovial/large
 
-/datum/design/medical/chemistry/syringe
-	id = "ChemistrySyringe"
+/datum/design/consumable/medical/pillbottle
+	id = "ChemistryPillbottle"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/reagent_containers/syringe
-
-/datum/design/medical/chemistry/autoinjector
-	id = "ChemistryAutoinjector"
-	lathe_type = LATHE_TYPE_AUTOLATHE
-	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/reagent_containers/hypospray/autoinjector/empty
-	materials_base = list(
-		MAT_STEEL = 250,
-		MAT_GLASS = 250,
-	)
+	build_path = /obj/item/storage/pill_bottle

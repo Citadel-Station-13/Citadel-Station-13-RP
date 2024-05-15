@@ -172,6 +172,7 @@
 	sfx_open = null
 	max_combined_volume = WEIGHT_VOLUME_TINY * 14
 	max_single_weight_class = WEIGHT_CLASS_TINY
+	materials_base = list(MAT_PLASTIC = 80)
 
 	var/label_text = ""
 	var/labeled = 0
