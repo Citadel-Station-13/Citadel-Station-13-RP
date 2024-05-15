@@ -31,7 +31,7 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/glass/hypovial/large
 
-/datum/design/consumable/medical/pillbottle
+/datum/design/medical/pillbottle
 	id = "ChemistryPillbottle"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
