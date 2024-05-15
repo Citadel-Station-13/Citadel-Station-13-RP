@@ -146,6 +146,8 @@
 		MAT_STEEL = 250,
 		MAT_GLASS = 250,
 	)
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+
 
 /obj/item/reagent_containers/hypospray/autoinjector/on_reagent_change()
 	..()
