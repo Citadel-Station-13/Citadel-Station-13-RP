@@ -173,7 +173,7 @@
 	max_combined_volume = WEIGHT_VOLUME_TINY * 14
 	max_single_weight_class = WEIGHT_CLASS_TINY
 	materials_base = list(MAT_PLASTIC = 80)
-	item_flags = item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 
 	var/label_text = ""
 	var/labeled = 0

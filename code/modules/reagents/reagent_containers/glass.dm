@@ -157,7 +157,7 @@
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 	/// rped rating
 	var/rped_rating = 0
-	item_flags = item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 
 
 /obj/item/reagent_containers/glass/beaker/Initialize(mapload)
