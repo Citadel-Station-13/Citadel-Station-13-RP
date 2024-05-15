@@ -22,3 +22,10 @@
 /datum/design_holder/lathe/medi_mini_lathe/available_ids()
 	return SSresearch.medical_mini_design_ids | ..()
 
+/obj/machinery/lathe/medical/stocked/Initialize(mapload)
+	. = ..()
+	stored_materials[MAT_STEEL] = 5 * SHEET_MATERIAL_AMOUNT
+	stored_materials[MAT_GLASS] = 5 * SHEET_MATERIAL_AMOUNT
+	stored_materials[MAT_PLASTIC] = 1 * SHEET_MATERIAL_AMOUNT
+	stored_materials[MAT_WOOD] = 1 * SHEET_MATERIAL_AMOUNT
+
