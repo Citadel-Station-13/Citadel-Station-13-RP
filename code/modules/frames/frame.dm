@@ -263,7 +263,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 /**
  * ran only on deployment, not completion
- * includes obstruction_cycles
  *
  * regarding direction
  * * is in direction of machine that will be built if non-wall
@@ -300,8 +299,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2/proc/valid_location(obj/entity, turf/location, dir, datum/event_args/actor/actor, silent)
 	return TRUE
-
-#warn guh
 
 /**
  * gets a list of managed overlays to apply to a frame

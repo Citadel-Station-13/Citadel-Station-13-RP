@@ -144,8 +144,9 @@
 		if(!silent)
 			e_args?.chat_feedback(SPAN_WARNING("[src] must be on the floor to be deployed!"), src)
 		return FALSE
-
-	#warn impl
+	if(!frame.deployment_checks(src, use_loc, use_dir, e_args))
+		return FALSE
+	return TRUE
 
 /obj/item/frame2/proc/attempt_deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc, silent)
 	if(!can_deploy(e_args, use_dir, use_loc, silent))
@@ -154,7 +155,7 @@
 
 /obj/item/frame2/proc/deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc)
 	if(!isturf(use_loc))
-		return FALSE
+		CRASH("non turf?")
 
 	#warn impl
 
