@@ -108,17 +108,73 @@
 		return
 	update_hover_image()
 
-/obj/item/frame2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	. = ..()
-
 /obj/item/frame2/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
+	if(.)
+		return
+	if(frame.item_deploy_requires_tool)
+		e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
+		return TRUE
+	if(!can_deploy(e_args, e_args.performer.dir, e_args.performer.loc))
+		return TRUE
+	if(frame.item_deploy_time)
+		e_args.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_WARNING("[e_args.performer] starts to deploy [src]."),
+			audible = SPAN_WARNING("You hear something being assembled."),
+			otherwise_self = SPAN_WARNING("You start to deploy [src]."),
+		)
+		log_construction(e_args, src, "started deploying")
+	if(!do_after(e_args.performer, frame.item_deploy_time, src, mobility_flags = MOBILITY_CAN_USE))
+		return TRUE
+	if(!attempt_deploy(e_args, use_dir = e_args.performer.dir, use_loc = e_args.performer.loc))
+		return TRUE
+	e_args.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[e_args.performer] deploys [src]."),
+		audible = SPAN_WARNING("You hear something finish being assembled."),
+		otherwise_self = SPAN_WARNING("You deploy [src]."),
+	)
+	return TRUE
 
-/obj/item/frame2/proc/attempt_deploy(datum/event_args/actor/e_args, use_dir = src.dir)
+/obj/item/frame2/proc/can_deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc, silent)
+	if(!isturf(use_loc))
+		if(!silent)
+			e_args?.chat_feedback(SPAN_WARNING("[src] must be on the floor to be deployed!"), src)
+		return FALSE
+
 	#warn impl
 
-/obj/item/frame2/proc/deploy(datum/event_args/actor/e_args, use_dir = src.dir)
+/obj/item/frame2/proc/attempt_deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc, silent)
+	if(!can_deploy(e_args, use_dir, use_loc, silent))
+		return FALSE
+	return deploy(e_args, use_dir, use_loc)
+
+/obj/item/frame2/proc/deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc)
+	if(!isturf(use_loc))
+		return FALSE
+
 	#warn impl
+
+	log_construction(e_args, src, "deployed")
+
+/obj/item/frame2/context_query(datum/event_args/actor/e_args)
+	. = ..()
+	.["deploy-frame"] = atom_context_tuple("deploy", image(src), 1, MOBILITY_CAN_USE)
+
+/obj/item/frame2/context_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("deploy-frame")
+			if(!e_args.performer.Reachability(src))
+				e_args.chat_feedback(SPAN_WARNING("You can't reach [src] right now!"), src)
+				return TRUE
+			attempt_deploy(e_args)
+			return TRUE
 
 /obj/item/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(function == frame.item_recycle_tool)
@@ -156,6 +212,8 @@
 			log_construction(e_args, src, "started deploying")
 		if(!use_tool(function, I, e_args, flags, frame.item_deploy_time, frame.item_deploy_cost))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!attempt_deploy(e_args))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
@@ -163,10 +221,6 @@
 			audible = SPAN_WARNING("You hear something finish being assembled."),
 			otherwise_self = SPAN_WARNING("You deploy [src]."),
 		)
-		log_construction(e_args, src, "deployed")
-		#warn uhh no?
-		new /obj/item/stack/material/steel(drop_location(), frame.material_cost)
-		qdel(src)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 

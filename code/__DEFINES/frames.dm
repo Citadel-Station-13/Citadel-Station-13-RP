@@ -50,3 +50,18 @@
 ##TYPEPATH { \
 	icon = ##ICON; \
 }
+
+//* text template fragments
+
+/// "firstname lastname"
+#define FRAME_TEXT_TOKEN_PERFORMER "!performer"
+/// "the fire alarm frame"
+#define FRAME_TEXT_TOKEN_FRAME "!frame"
+/// "the fire alarm electronics" or "the welding torch"
+#define FRAME_TEXT_TOKEN_TOOL "!tool"
+/// pronoun for 'their'
+#define FRAME_TEXT_TOKEN_THEIR "!their"
+/// pronoun for 'them'
+#define FRAME_TEXT_TOKEN_THEM "!them"
+/// pronoun for 'they're' (he's, she's, etc)
+#define FRAME_TEXT_TOKEN_THEYRE "!theyre"

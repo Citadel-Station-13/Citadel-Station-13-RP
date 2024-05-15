@@ -36,9 +36,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * ### special things about the stage list
  * * if there are no stages, we immediately finish() with stage null with no context when someone tries to place the item/structure.
  *
- * only tool functions are allowed in steps_backward; items will generally not be checked.
- * this is intentional, though can be changed easily if there ever exists a good reason to.
- *
+ * todo: no support for multiple 'interact' stages yet
+ * todo: /datum/frame_context so it can hold entities / data inside (e.g. can drop stuff if needed)
+ * todo: similarly, we need a way to store items inserted as part of a step, maybe as a part of context? so it can be dropped later.
  */
 /datum/frame2
 	/// frame name
@@ -195,14 +195,16 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/proc/on_frame_step(obj/structure/frame2/frame, from_stage, to_stage)
 	return
 
-/datum/frame2/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list)
-	examine_list += instruction_steps(frame, actor)
-	examine_list += instruction_special(frame, actor)
+/datum/frame2/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list, distance)
+	var/datum/frame_stage/stage = stages[frame.stage]
+	examine_list += stage.on_examine(frame, actor, examine_list, distance)
+	examine_list += instruction_steps(frame, actor, distance)
+	examine_list += instruction_special(frame, actor, distance)
 
 /**
  * @return string or list of strings
  */
-/datum/frame2/proc/instruction_steps(obj/structure/frame2/frame, datum/event_args/actor/actor)
+/datum/frame2/proc/instruction_steps(obj/structure/frame2/frame, datum/event_args/actor/actor, distance)
 	var/datum/frame_stage/stage = stages[frame.stage]
 	if(isnull(stage))
 		return list()
@@ -216,7 +218,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return list(string, ...)
  */
-/datum/frame2/proc/instruction_special(obj/structure/frame2/frame, datum/event_args/actor/actor)
+/datum/frame2/proc/instruction_special(obj/structure/frame2/frame, datum/event_args/actor/actor, distance)
 	return list()
 
 /**
@@ -236,7 +238,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2/proc/on_tool_query(obj/structure/frame2/frame, obj/item/tool, datum/event_args/actor/clickchain/click)
 	. = list()
-	for(var/datum/frame_step/step as anything in stages[frame.stage]?.steps)
+	var/datum/frame_stage/stage = stages[frame.stage]
+	for(var/datum/frame_step/step as anything in stage.steps)
 		if(step.request_type != FRAME_REQUEST_TYPE_TOOL)
 			continue
 		if(isnull(.[step.request]))
@@ -305,3 +308,26 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2/proc/get_overlays(obj/structure/frame/frame)
 	return list()
+
+/**
+ * template action text
+ */
+/datum/frame2/proc/template_action_string(list/tokens, mob/performer, obj/structure/frame2/frame, obj/item/tool)
+	// i wish this was typescript so i could just return tokens.map((t) => ...) :confounded:
+	// pov i'm losing my mcfucking mind
+	. = tokens.Copy()
+	for(var/i in 1 to length(.))
+		switch(.[i])
+			if(FRAME_TEXT_TOKEN_PERFORMER)
+				.[i] = "[performer]"
+			if(FRAME_TEXT_TOKEN_FRAME)
+				.[i] = "[frame]"
+			if(FRAME_TEXT_TOKEN_TOOL)
+				.[i] = "[tool]"
+			if(FRAME_TEXT_TOKEN_THEIR)
+				.[i] = "[performer.p_their()]"
+			if(FRAME_TEXT_TOKEN_THEM)
+				.[i] = "[performer.p_them()]"
+			if(FRAME_TEXT_TOKEN_THEYRE)
+				.[i] = "[performer.p_theyre()]"
+	return jointext(., "")

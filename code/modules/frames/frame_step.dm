@@ -7,6 +7,9 @@
 /datum/frame_step
 	/// step name for tool radials & more
 	var/name
+	/// "[x] with [frame] to [action descriptor]"
+	/// defaults to rendering the name.
+	var/action_descriptor
 	/// stage key this moves us to
 	/// * [STAGE_DECONSTRUCT] to deconstruct
 	/// * [STAGE_FINISH] to finish
@@ -57,14 +60,35 @@
 			CRASH("failed to autodetect request")
 
 /datum/frame_step/proc/examine(obj/structure/frame2/frame, datum/event_args/actor/actor)
+	var/rendered_action = action_descriptor || SPAN_BOLD(name)
 	switch(request_type)
 		if(FRAME_REQUEST_TYPE_INTERACT)
+			. = "<b>Interact</b> with [frame] using an empty hand to [rendered_action]."
 		if(FRAME_REQUEST_TYPE_ITEM)
+			var/rendered_item
+			var/obj/item/casted = request
+			rendered_item = initial(casted.name)
+			// todo: support amounts
+			. = "Use an <b>[rendered_item]</b> on [frame] to [rendered_action]."
 		if(FRAME_REQUEST_TYPE_MATERIAL)
+			var/rendered_material
+			var/rendered_stack_name
+			var/datum/material/resolved = SSmaterials.resolve_material(request)
+			rendered_material = resolved.display_name
+			rendered_stack_name = resolved.sheet_plural_name
+			. = "Apply [request_amount || 0] [rendered_stack_name] of <b>[rendered_material]</b> to [rendered_action]."
 		if(FRAME_REQUEST_TYPE_PROC)
 		if(FRAME_REQUEST_TYPE_STACK)
+			var/rendered_stack
+			var/rendered_stack_name
+			var/obj/item/stack/casted = request
+			rendered_stack = initial(casted.name)
+			rendered_stack_name = initial(casted.plural_noun) || "sheets"
+			. = "Use [request_amount || 0] [rendered_stack_name] of <b>[rendered_stack]</b> to [rendered_action]."
 		if(FRAME_REQUEST_TYPE_TOOL)
-	#warn impl
+			var/rendered_tool = request
+			. = "Use a <b>[rendered_tool]</b> to [rendered_action]."
+	return SPAN_NOTICE(.)
 
 /datum/frame_step/proc/tool_image()
 	switch(direction)
@@ -74,3 +98,18 @@
 			return dyntool_image_forward(request)
 		if(TOOL_DIRECTION_NEUTRAL)
 			return dyntool_image_neutral(request)
+
+/datum/frame_step/proc/feedback_begin(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool, time_needed)
+	// don't bother if it's that fast
+	if(time_needed <= 0.5 SECONDS)
+		return
+	if(begin_desc)
+		actor.visible_feedback(
+			target = frame,
+			visible = SPAN_NOTICE(begin_desc),
+
+		)
+	#warn impl
+
+/datum/frame_step/proc/feedback_finish(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool,, time_taken)
+	#warn impl

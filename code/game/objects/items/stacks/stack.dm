@@ -6,7 +6,12 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	icon = 'icons/obj/stacks.dmi'
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+
+	/// "you remove a [singular_name] from [src]"
 	var/singular_name
+	/// "[plural_noun] of [src]"
+	var/plural_noun
+
 	var/amount = 1
 	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
 	var/max_amount = 50

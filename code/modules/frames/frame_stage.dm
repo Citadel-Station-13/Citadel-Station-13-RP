@@ -23,7 +23,6 @@
 	var/name_override
 	/// "the [name] [descriptor]" on examine
 	var/descriptor
-	#warn hook above 4 + name
 
 /datum/frame_stage/New(set_key)
 	if(!isnull(set_key))
@@ -35,3 +34,7 @@
 		if(istype(step_casted))
 			continue
 		steps[i] = new step_casted
+
+/datum/frame_stage/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list, distance)
+	if(descriptor)
+		examine_list += SPAN_NOTICE("[frame] [descriptor]")
