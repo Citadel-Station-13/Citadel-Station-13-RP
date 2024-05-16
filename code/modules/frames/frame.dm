@@ -310,6 +310,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * template action text
  */
 /datum/frame2/proc/template_action_string(list/tokens, mob/performer, obj/structure/frame2/frame, obj/item/tool)
+	if(isnull(tokens))
+		return // null = null
 	// i wish this was typescript so i could just return tokens.map((t) => ...) :confounded:
 	// pov i'm losing my mcfucking mind
 	. = tokens.Copy()

@@ -42,6 +42,42 @@
 	/// amount to drop
 	var/drop_amount = 1
 
+	/// use custom text?
+	var/use_custom_feedback = FALSE
+	/// list of tokens to concat into a string to display when beginning the step.
+	/// will not be shown if the step is fast enough.
+	/// null for default.
+	///
+	/// FRAME_TEXT_TOKEN_* defines are allowed, and will be automatically replaced during execution to the relevant text.
+	var/list/visible_text_begin
+	/// list of tokens to concat into a string to display when beginning the step.
+	/// will not be shown if the step is fast enough.
+	/// null for default.
+	///
+	/// FRAME_TEXT_TOKEN_* defines are allowed, and will be automatically replaced during execution to the relevant text.
+	var/list/audible_text_begin
+	/// list of tokens to concat into a string to display when beginning the step.
+	/// will not be shown if the step is fast enough.
+	/// null for default.
+	///
+	/// FRAME_TEXT_TOKEN_* defines are allowed, and will be automatically replaced during execution to the relevant text.
+	var/list/self_text_begin
+	/// list of tokens to concat into a string to display when finishing the step.
+	/// null for default.
+	///
+	/// FRAME_TEXT_TOKEN_* defines are allowed, and will be automatically replaced during execution to the relevant text.
+	var/list/visible_text_end
+	/// list of tokens to concat into a string to display when finishing the step.
+	/// null for default.
+	///
+	/// FRAME_TEXT_TOKEN_* defines are allowed, and will be automatically replaced during execution to the relevant text.
+	var/list/audible_text_end
+	/// list of tokens to concat into a string to display when finishing the step.
+	/// null for default.
+	///
+	/// FRAME_TEXT_TOKEN_* defines are allowed, and will be automatically replaced during execution to the relevant text.
+	var/list/self_text_end
+
 /datum/frame_step/New()
 	if(isnull(request_type))
 		// autodetect
@@ -103,13 +139,27 @@
 	// don't bother if it's that fast
 	if(time_needed <= 0.5 SECONDS)
 		return
-	if(begin_desc)
+	if(use_custom_feedback)
+		// custom
 		actor.visible_feedback(
 			target = frame,
-			visible = SPAN_NOTICE(begin_desc),
-
+			visible = frame_datum.template_action_string(visible_text_begin, actor.performer, frame, tool),
+			audible = frame_datum.template_action_string(audible_text_begin, actor.performer, frame, tool),
+			otherwise_self = frame_datum.template_action_string(self_text_begin, actor.performer, frame, tool),
 		)
-	#warn impl
+	else
+		// default
+		#warn impl
 
 /datum/frame_step/proc/feedback_finish(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool,, time_taken)
-	#warn impl
+	if(use_custom_feedback)
+		// custom
+		actor.visible_feedback(
+			target = frame,
+			visible = frame_datum.template_action_string(visible_text_end, actor.performer, frame, tool),
+			audible = frame_datum.template_action_string(audible_text_end, actor.performer, frame, tool),
+			otherwise_self = frame_datum.template_action_string(self_text_end, actor.performer, frame, tool),
+		)
+	else
+		// default
+		#warn impl
