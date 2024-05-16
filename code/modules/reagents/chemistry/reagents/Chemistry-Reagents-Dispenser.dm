@@ -58,7 +58,8 @@
 			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
 		M.adjustToxLoss(intolerant_dose)
 		return 0
-	var/effect_level=round(effective_dose/6)
+	#define DOSE_LEVEL 6
+	var/effect_level=round(effective_dose/DOSE_LEVEL)
 	if(effect_level != data)
 		var/lowering=(data>effect_level)
 		data=effect_level
@@ -95,15 +96,21 @@
 	
 	if(effect_level>=2)
 		M.slurring=max(M.slurring,10)
-	if(effect_level>=3)
+		volume-=metabolism
+	if(effect_level>=3 && prob(effect_level-2))
 		M.Confuse(60)
-	if(effect_level>=5)
+		volume-=metabolism*2
+	if(effect_level>=5 && prob(effect_level-4))
 		M.drowsyness=max(M.drowsyness,60)
-	if(effect_level>=6)
+		volume-=metabolism*3
+	if(effect_level>=6 && prob(effect_level-5))
+		M.vomit(0,0)
+		volume-=DOSE_LEVEL
+	if(effect_level>=7)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
-		if(volume>36 + REM)
+		if(volume>DOSE_LEVEL*7)
 			volume-=REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
-
+	#undef DOSE_LEVEL
 	return
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
