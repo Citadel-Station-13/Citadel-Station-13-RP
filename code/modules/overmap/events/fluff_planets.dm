@@ -27,7 +27,7 @@
 
 /obj/overmap/entity/fluff/Initialize(mapload)
 	. = ..()
-	src.setDir(pick(GLOB.alldirs))
+	src.setDir(pick(list(GLOB.alldirs)))
 	if(known)
 		plane = ABOVE_LIGHTING_PLANE
 		for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)

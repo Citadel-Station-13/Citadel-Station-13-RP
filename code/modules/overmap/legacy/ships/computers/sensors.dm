@@ -6,6 +6,7 @@
 	circuit = /obj/item/circuitboard/sensors
 	extra_view = 4
 	var/obj/machinery/shipsensors/sensors
+	var/stored_points
 
 // fancy sprite
 /obj/machinery/computer/ship/sensors/adv
@@ -66,6 +67,7 @@
 	data["critical_heat"] = 0
 	data["status"] = "MISSING"
 	data["contacts"] = list()
+	data["points"] = 0
 
 	if(sensors)
 		data["on"] = sensors.use_power
@@ -93,6 +95,7 @@
 				bearing += 360
 			contacts.Add(list(list("name"=O.name, "ref"="\ref[O]", "bearing"=bearing)))
 		data["contacts"] = contacts
+		data["points"] = stored_points
 
 	return data
 
