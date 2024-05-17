@@ -53,10 +53,11 @@
 	var/effective_dose = volume * strength_mod * ABV * min(1,dose*(ETHANOL_MET_DIVISOR/10)) // give it 50 ticks to ramp up
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		var/intolerant_dose = strength_mod*removed*ABV*10
-		if(prob((intolerant_dose)))
-			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(intolerant_dose)
+		if(proof > 0)
+			var/intolerant_dose = strength_mod*removed*ABV*10
+			if(prob((intolerant_dose)))
+				M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+			M.adjustToxLoss(intolerant_dose)
 		return 0
 	#define DOSE_LEVEL 6
 	var/effect_level=round(effective_dose/DOSE_LEVEL)
