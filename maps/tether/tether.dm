@@ -167,6 +167,8 @@
 	link_north = /datum/map_level/tether/mine
 	link_south = /datum/map_level/tether/plains
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+	link_north = /datum/map_level/tether/mine
+	link_south = /datum/map_level/tether/plains
 	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 

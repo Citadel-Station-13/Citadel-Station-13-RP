@@ -210,6 +210,7 @@
 		"tag" = tag,
 		"sigtype" = "command",
 		"power" = "[power]",
+		"expand" = "[1]",
 	)
 	post_signal(signal)
 

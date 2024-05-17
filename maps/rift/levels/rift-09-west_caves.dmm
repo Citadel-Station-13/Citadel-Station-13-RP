@@ -410,6 +410,12 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/item/paper{
+	info = "Hi, Abby. Thank you for reaching out. The general, simplified outline for the geothermal generator is as such; using the items on hand (two scanner arrays, four cable coils), you are able to craft an Advanced Geothermal Scanning Array. After putting it into the machine, simply use the provided multitool to put it in motion! You'll then be able to activate the SMES and restore powerflow. If you're having trouble finding the aforementioned supplies, make sure to look around!";
+	name = "geothermal instructions";
+	pixel_x = 6;
+	pixel_y = -7
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/geothermal)
 "eQ" = (
@@ -3721,9 +3727,7 @@
 /obj/item/tool/screwdriver,
 /obj/item/stack/cable_coil,
 /obj/item/stock_parts/scanning_module,
-/obj/item/stock_parts/scanning_module{
-	name = "Craft me!"
-	},
+/obj/item/stock_parts/scanning_module,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/geothermal)
 "Sc" = (
@@ -30560,7 +30564,7 @@ cU
 Cc
 pt
 pt
-pt
+Cc
 Cc
 EI
 EI
@@ -30754,7 +30758,7 @@ cU
 Cc
 pt
 pt
-pt
+Cc
 Cc
 Cc
 Cc
