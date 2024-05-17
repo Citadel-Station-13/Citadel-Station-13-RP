@@ -76,6 +76,8 @@
 				if(4)
 					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
 				if(5)
+					to_chat(M,SPAN_DANGER("You no longer feel like you're going to"))
+				if(6)
 					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
 		else
 			switch(effect_level)
@@ -92,6 +94,8 @@
 				if(5)
 					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy!"))
 				if(6)
+					to_chat(M,SPAN_USERDANGER("You feel like you might puke..."))
+				if(7)
 					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk!"))
 	
 	if(effect_level>=2)
