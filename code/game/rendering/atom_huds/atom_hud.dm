@@ -1,7 +1,31 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
+
+/proc/initialize_atom_huds()
+	. = list()
+	for(var/datum/atom_hud/hud_type as anything in subtypesof(/datum/atom_hud))
+		if(initial(hud_type.abstract_type) == hud_type)
+			continue
+		var/datum/atom_hud/hud = new hud_type
+		.[hud_type] = hud
+		if(hud.id)
+			.[hud.id] = hud
+
+/**
+ * instantiate a custom hud
+ */
+/proc/initialize_atom_hud(path, list/hud_providers, id)
+	ASSERT(!GLOB.atom_huds[id])
+	var/datum/atom_hud/hud = new path
+	hud.providers = hud_providers
+	hud.id = id
+	GLOB.atom_huds[id] = hud
+
 /datum/atom_hud
+	/// id; if exists, we register with id too
+	var/id
 	/// list of typepaths of providers
 	var/list/providers = list()
 
