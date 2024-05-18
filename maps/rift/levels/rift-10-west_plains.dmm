@@ -423,6 +423,9 @@
 	},
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/surface)
+"cj" = (
+/turf/simulated/wall/wood/hardwood,
+/area/rift/surfacebase/outside/west)
 "ck" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -707,6 +710,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"dk" = (
+/obj/structure/girder,
+/turf/simulated/floor/wood/lythios43c,
+/area/rift/surfacebase/outside/west)
 "dl" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
@@ -1032,6 +1039,12 @@
 	},
 /turf/simulated/open,
 /area/rnd/outpost)
+"eO" = (
+/obj/structure/flora/ausbushes/brflowers{
+	pixel_y = 14
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "eT" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -2756,6 +2769,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/construction/solars)
+"mK" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "mL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -3134,6 +3152,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"oE" = (
+/obj/structure/metal_edge,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/west)
 "oG" = (
 /obj/structure/bonfire/permanent,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3515,6 +3537,13 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
+"qu" = (
+/obj/machinery/light/flamp/noshade{
+	layer = 4;
+	pixel_y = 17
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/west)
 "qv" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/machinery/light/small,
@@ -3737,6 +3766,10 @@
 	},
 /turf/simulated/floor,
 /area/construction/solarscontrol)
+"ry" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "rE" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -4803,6 +4836,13 @@
 "wu" = (
 /turf/simulated/wall,
 /area/rift/exterior/nuketown/interior)
+"ww" = (
+/obj/structure/flora/ausbushes/sparsegrass{
+	pixel_x = 19;
+	pixel_y = 13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "wy" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 6
@@ -5942,6 +5982,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"BT" = (
+/obj/structure/railing,
+/obj/structure/flora/tree/pine,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "BV" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
@@ -7407,6 +7452,10 @@
 "Jv" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/rift/facility/interior/elevator)
+"Jw" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Jx" = (
 /turf/simulated/wall,
 /area/rnd/outpost/testing_lab)
@@ -8159,6 +8208,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
+"MW" = (
+/obj/structure/metal_edge,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "MX" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8808,6 +8861,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
+"PV" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Qe" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -9754,10 +9811,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "Ui" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/turf/simulated/mineral/icerock/lythios43c,
+/obj/structure/girder/displaced,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Uj" = (
 /obj/structure/closet/firecloset,
@@ -9980,6 +10035,20 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"Vn" = (
+/turf/simulated/floor/wood/lythios43c,
+/area/rift/surfacebase/outside/west)
+"Vo" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Vw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -10188,6 +10257,13 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/outpost/mining_main/outpost)
+"WL" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "WO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled/white,
@@ -10741,6 +10817,10 @@
 "Zu" = (
 /turf/simulated/wall/r_wall,
 /area/rift/exterior/nuketown/bunker)
+"Zx" = (
+/obj/structure/table,
+/turf/simulated/floor/wood/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ZA" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -16543,7 +16623,7 @@ sr
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -16658,7 +16738,7 @@ PP
 PP
 PP
 PP
-Ui
+PP
 PP
 PP
 PP
@@ -17190,7 +17270,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -17358,6 +17438,7 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -17379,6 +17460,7 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -17386,9 +17468,7 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -17558,7 +17638,7 @@ sv
 hi
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -17775,7 +17855,7 @@ dQ
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -17960,7 +18040,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -18132,11 +18212,11 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -19099,7 +19179,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 Pi
 ds
@@ -19255,7 +19335,7 @@ Rs
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -19288,7 +19368,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -19339,7 +19419,7 @@ dA
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 PP
@@ -19485,7 +19565,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -19728,7 +19808,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 PP
 PP
@@ -19868,7 +19948,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -20046,7 +20126,7 @@ fz
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -20069,7 +20149,7 @@ cL
 sv
 sv
 sv
-sv
+gd
 sv
 rj
 ed
@@ -20115,7 +20195,7 @@ dA
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -20452,7 +20532,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -20698,7 +20778,7 @@ ed
 rj
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -20836,7 +20916,7 @@ PP
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -21086,7 +21166,7 @@ ed
 rj
 sv
 sv
-sv
+gd
 sv
 sv
 PP
@@ -21394,7 +21474,7 @@ Rs
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -21422,7 +21502,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -21473,7 +21553,7 @@ rj
 ed
 rj
 sv
-sv
+gd
 sv
 sv
 PP
@@ -21610,7 +21690,7 @@ sv
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -21863,7 +21943,7 @@ rj
 sv
 sv
 sv
-sv
+gd
 PP
 PP
 PP
@@ -22199,7 +22279,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -22245,11 +22325,11 @@ Xf
 Xf
 sv
 sv
+gd
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 PP
 PP
@@ -22385,7 +22465,7 @@ PP
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -22634,7 +22714,7 @@ DW
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -22735,7 +22815,7 @@ Rs
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -22962,7 +23042,7 @@ lK
 PP
 PP
 sv
-sv
+tF
 sv
 sv
 sv
@@ -23159,7 +23239,7 @@ sv
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -23215,7 +23295,7 @@ ed
 DW
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -23328,7 +23408,7 @@ Rs
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -23355,6 +23435,7 @@ sv
 sv
 sv
 sv
+tF
 sv
 sv
 sv
@@ -23363,8 +23444,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -23542,7 +23622,7 @@ lK
 lK
 ka
 sv
-sv
+tF
 sv
 sv
 sv
@@ -23605,7 +23685,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 PP
@@ -23747,7 +23827,7 @@ sv
 sv
 sv
 sv
-sv
+tF
 sv
 sv
 sv
@@ -23938,7 +24018,7 @@ sv
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -24080,7 +24160,7 @@ lK
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -24128,6 +24208,7 @@ sv
 sv
 sv
 sv
+tF
 sv
 sv
 sv
@@ -24139,8 +24220,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -24321,7 +24401,7 @@ sv
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -24381,7 +24461,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 PP
 PP
@@ -24512,7 +24592,7 @@ Rs
 Rs
 Vb
 sv
-sv
+tF
 sv
 sv
 sv
@@ -24572,7 +24652,7 @@ ed
 ed
 DW
 sv
-sv
+gd
 sv
 sv
 sv
@@ -24681,7 +24761,7 @@ Rs
 Rs
 ot
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -24709,7 +24789,7 @@ sv
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 cL
@@ -24908,7 +24988,7 @@ sv
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -25445,7 +25525,7 @@ Rs
 Rs
 Rs
 Rs
-Rs
+ts
 Rs
 Rs
 Rs
@@ -25530,7 +25610,7 @@ sv
 sv
 sv
 sv
-sv
+ww
 sv
 sv
 sv
@@ -25724,7 +25804,7 @@ sv
 sv
 sv
 sv
-sv
+gR
 sv
 sv
 sv
@@ -25912,7 +25992,7 @@ dQ
 dQ
 dQ
 sv
-sv
+ww
 sv
 sv
 sv
@@ -26119,7 +26199,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -26271,7 +26351,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -26494,7 +26574,7 @@ dQ
 dQ
 dQ
 sv
-sv
+PV
 sv
 sv
 sv
@@ -27864,7 +27944,7 @@ dQ
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -28207,7 +28287,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -28244,7 +28324,7 @@ sv
 sv
 hi
 sv
-sv
+tF
 sv
 dQ
 dQ
@@ -28277,7 +28357,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 dQ
 dQ
@@ -28685,7 +28765,7 @@ sv
 sv
 sv
 sv
-sv
+cL
 sv
 sv
 sv
@@ -28822,12 +28902,12 @@ DI
 DI
 Mc
 sv
+ww
 sv
 sv
 sv
 sv
-sv
-sv
+ww
 dQ
 dQ
 dQ
@@ -28858,7 +28938,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 dQ
@@ -29021,7 +29101,7 @@ sv
 hi
 sv
 sv
-sv
+PV
 dQ
 dQ
 dQ
@@ -29070,7 +29150,7 @@ iF
 sv
 iF
 sv
-cL
+sv
 sv
 sv
 sv
@@ -29244,7 +29324,7 @@ sv
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -29415,7 +29495,7 @@ dQ
 dQ
 sv
 sv
-sv
+lL
 sv
 sv
 sv
@@ -29449,7 +29529,7 @@ sv
 tF
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -30379,7 +30459,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 dQ
 dQ
 dQ
@@ -30616,7 +30696,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -31889,7 +31969,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -32088,7 +32168,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -32274,11 +32354,11 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -32318,7 +32398,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 dQ
 dQ
@@ -32464,6 +32544,7 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -32476,8 +32557,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -32662,11 +32742,11 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -32849,7 +32929,7 @@ PP
 PP
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -32928,7 +33008,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -33047,19 +33127,19 @@ sv
 sv
 sv
 sv
+eO
 sv
 sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
 sv
 sv
-sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -33239,7 +33319,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -33435,6 +33515,7 @@ sv
 sv
 sv
 sv
+ry
 sv
 sv
 sv
@@ -33446,8 +33527,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -33623,6 +33703,7 @@ PP
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -33631,13 +33712,12 @@ sv
 sv
 sv
 sv
+dQ
 sv
 sv
 sv
 sv
-sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -33823,6 +33903,9 @@ sv
 sv
 sv
 sv
+dQ
+dQ
+dQ
 sv
 sv
 sv
@@ -33830,10 +33913,7 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -34030,7 +34110,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -34069,7 +34149,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 dQ
 dQ
 dQ
@@ -34204,20 +34284,20 @@ sv
 sv
 sv
 sv
+dQ
+sv
+sv
+sv
+dQ
+sv
+ww
 sv
 sv
 sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -34383,6 +34463,7 @@ PP
 dP
 sv
 sv
+dQ
 sv
 sv
 sv
@@ -34391,8 +34472,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -34416,6 +34496,7 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -34423,8 +34504,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -34481,7 +34561,7 @@ PP
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -34578,6 +34658,10 @@ dP
 sv
 sv
 sv
+dQ
+sv
+sv
+dQ
 sv
 sv
 sv
@@ -34585,14 +34669,10 @@ sv
 sv
 sv
 sv
+dQ
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -34982,6 +35062,7 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -35006,8 +35087,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 Fn
@@ -35187,7 +35267,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -35239,7 +35319,7 @@ dQ
 dQ
 sv
 sv
-sv
+gd
 sv
 PP
 PP
@@ -35372,6 +35452,7 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -35389,8 +35470,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -35538,17 +35618,17 @@ sv
 sv
 sv
 sv
+Ui
+cj
+dk
+cj
+cj
+cj
 sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -35735,8 +35815,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+Vn
+Vn
 sv
 sv
 sv
@@ -35927,11 +36007,11 @@ sv
 sv
 sv
 sv
+Ui
 sv
+Vn
 sv
-sv
-sv
-sv
+Vn
 sv
 sv
 sv
@@ -36121,10 +36201,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+cj
+Zx
+Vn
+Vn
 sv
 sv
 sv
@@ -36166,8 +36246,8 @@ ia
 lb
 lb
 hS
-hS
-sv
+Vo
+MW
 sv
 sv
 sv
@@ -36315,10 +36395,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+cj
+Jw
+Vn
+Vn
 sv
 sv
 sv
@@ -36360,8 +36440,8 @@ wU
 wU
 wU
 wU
-wU
-sv
+mK
+MW
 sv
 sv
 sv
@@ -36509,7 +36589,7 @@ sv
 sv
 sv
 hi
-sv
+cj
 sv
 sv
 sv
@@ -36555,8 +36635,8 @@ wU
 wU
 wU
 wU
-wU
-wU
+WL
+WL
 ce
 Do
 sv
@@ -36790,7 +36870,7 @@ dQ
 dQ
 dQ
 sv
-sv
+gd
 sv
 PP
 PP
@@ -36961,7 +37041,7 @@ dQ
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -37738,7 +37818,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -37872,8 +37952,8 @@ sv
 sv
 sv
 sv
-cL
 sv
+cL
 sv
 sv
 sv
@@ -38341,7 +38421,7 @@ dQ
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -39115,7 +39195,7 @@ dQ
 dQ
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -39698,7 +39778,7 @@ dQ
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -41247,7 +41327,7 @@ sv
 qZ
 bw
 Hz
-sv
+gd
 sv
 Mv
 je
@@ -41448,6 +41528,7 @@ je
 sv
 sv
 sv
+gd
 sv
 sv
 sv
@@ -41455,8 +41536,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 dQ
@@ -41620,7 +41700,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -41629,7 +41709,7 @@ sv
 gd
 sv
 sv
-sv
+PV
 sv
 sv
 qZ
@@ -41831,7 +41911,7 @@ bw
 Hz
 sv
 sv
-Mv
+BT
 je
 sv
 sv
@@ -42036,7 +42116,7 @@ cL
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -42240,7 +42320,7 @@ dQ
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -42400,7 +42480,7 @@ sv
 sv
 sv
 sv
-sv
+PV
 sv
 sv
 sv
@@ -42418,7 +42498,7 @@ je
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -42599,14 +42679,14 @@ sv
 sv
 gd
 sv
-sv
+PV
 sv
 sv
 qZ
 bw
 Hz
 sv
-sv
+gd
 Mv
 je
 sv
@@ -42786,7 +42866,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -42816,13 +42896,13 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 sv
@@ -42986,7 +43066,7 @@ sv
 sv
 sv
 sv
-sv
+PV
 sv
 sv
 sv
@@ -43003,7 +43083,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -43176,7 +43256,7 @@ sv
 sv
 sv
 sv
-sv
+PV
 sv
 sv
 sv
@@ -44151,7 +44231,7 @@ sv
 sv
 sv
 sv
-sv
+nV
 sv
 bL
 qZ
@@ -44739,7 +44819,7 @@ wm
 qZ
 bw
 ES
-bL
+qu
 dC
 or
 mC
@@ -45127,7 +45207,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -45321,7 +45401,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -45515,7 +45595,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -45709,7 +45789,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -45903,7 +45983,7 @@ wm
 qZ
 bw
 ES
-bL
+qu
 we
 zL
 je
@@ -46097,7 +46177,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -46291,7 +46371,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -46485,7 +46565,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -46679,7 +46759,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -46873,7 +46953,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -47067,7 +47147,7 @@ wm
 qZ
 bw
 ES
-bL
+qu
 we
 zL
 je
@@ -47261,7 +47341,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -47455,7 +47535,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -47649,7 +47729,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -47843,7 +47923,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je
@@ -48037,7 +48117,7 @@ zL
 qZ
 bw
 ES
-we
+oE
 we
 zL
 je

@@ -27798,6 +27798,10 @@
 "rsj" = (
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
+"rsn" = (
+/obj/structure/metal_edge,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "rsD" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Medical Airlock";
@@ -33065,6 +33069,13 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
+"ulX" = (
+/obj/machinery/light/flamp/noshade{
+	layer = 4;
+	pixel_y = 17
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "umf" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -39736,7 +39747,7 @@ wCM
 pqd
 ubp
 iFU
-nNX
+rsn
 nNX
 wCM
 nog
@@ -39930,7 +39941,7 @@ wCM
 pqd
 ubp
 vwm
-nNX
+rsn
 nNX
 wCM
 nog
@@ -40124,7 +40135,7 @@ wCM
 pqd
 ubp
 vwm
-nNX
+rsn
 nNX
 wCM
 nog
@@ -40318,7 +40329,7 @@ okO
 pqd
 ubp
 vwm
-vFs
+ulX
 nNX
 wCM
 nog
@@ -40512,7 +40523,7 @@ wCM
 pqd
 ubp
 vwm
-nNX
+rsn
 nNX
 wCM
 nog
@@ -40706,7 +40717,7 @@ wCM
 pqd
 ubp
 vwm
-nNX
+rsn
 nNX
 wCM
 nog
@@ -40900,7 +40911,7 @@ wCM
 pqd
 ubp
 vwm
-nNX
+rsn
 nNX
 wCM
 nog
@@ -41288,7 +41299,7 @@ okO
 pqd
 ubp
 vwm
-vFs
+ulX
 nNX
 wCM
 nog
@@ -45951,7 +45962,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lxF
 iFN
 jZZ
 nNX
