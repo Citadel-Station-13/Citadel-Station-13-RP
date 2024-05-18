@@ -177,7 +177,7 @@
 			attempt_deploy(e_args)
 			return TRUE
 
-/obj/item/frmae2/drop_products(method, atom/where)
+/obj/item/frame2/drop_products(method, atom/where)
 	. = ..()
 	frame.drop_deconstructed_products(method, where, null, list())
 
