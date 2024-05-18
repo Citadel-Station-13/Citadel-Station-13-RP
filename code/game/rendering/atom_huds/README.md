@@ -1,5 +1,7 @@
 # atom hud system
 
+atom HUDs are ultimately a way to attach /image's to specific /atom's, and manage showing/hiding them from consumers.
+
 atom HUDs consist of 2 parts
 
 ## /datum/atom_hud_provider

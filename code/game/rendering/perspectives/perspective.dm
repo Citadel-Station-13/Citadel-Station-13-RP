@@ -69,6 +69,13 @@
 	/// see_invisible
 	var/see_invisible = SEE_INVISIBLE_LIVING
 
+	//* HUDs *//
+	/// active atom HUDs
+	var/list/datum/atom_hud/atom_huds
+	/// active atom HUD providers
+	var/list/datum/atom_hud_provider/atom_hud_providers
+	#warn impl
+
 	//? planes
 	/// planes
 	var/datum/plane_holder/mob_perspective/planes

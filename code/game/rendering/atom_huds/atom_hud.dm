@@ -1,3 +1,43 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
+/datum/atom_hud
+	/// list of typepaths of providers
+	var/list/providers = list()
+
+/datum/atom_hud/data/human/medical
+	providers = list(
+		/datum/atom_hud_provider/medical_biology,
+		/datum/atom_hud_provider/medical_health,
+	)
+
+/datum/atom_hud/data/human/job_id
+	providers = list(
+		/datum/atom_hud_provider/security_job,
+	)
+
+/datum/atom_hud/data/human/security
+
+/datum/atom_hud/data/human/security/basic
+	providers = list(
+		/datum/atom_hud_provider/security_job,
+		/datum/atom_hud_provider/security_status,
+	)
+
+/datum/atom_hud/data/human/security/advanced
+	providers = list(
+		/datum/atom_hud_provider/security_job,
+		/datum/atom_hud_provider/security_status,
+		/datum/atom_hud_provider/security_implant,
+	)
+
+/datum/atom_hud/antag
+	providers = list(
+		/datum/atom_hud_provider/special_role,
+	)
+
+#warn below
+
 /* HUD DATUMS */
 
 GLOBAL_LIST_EMPTY(all_huds)
@@ -21,6 +61,8 @@ GLOBAL_LIST_INIT(huds, list(
 // TODO: atom huds using hud supplier id lists, more id usage in general for dynamic gen
 
 /datum/atom_hud
+	/// list of typepaths
+
 	var/list/atom/hudatoms = list() //list of all atoms which display this hud
 	var/list/hudusers = list() //list with all mobs who can see the hud
 	var/list/hud_icons = list() //these will be the indexes for the atom's hud_list

@@ -87,10 +87,8 @@
 	var/integrity_flags = NONE
 
 	//? HUDs
-	/// This atom's HUD (med/sec, etc) images. Associative list.
-	var/list/image/hud_list = null
-	/// HUD images that this atom can provide.
-	var/list/hud_possible
+	/// atom hud typepath to image
+	var/list/image/atom_huds
 
 	//? Icon Smoothing
 	/// Icon-smoothing behavior.
@@ -336,10 +334,8 @@
  * * clears the light object
  */
 /atom/Destroy(force)
-	if(alternate_appearances)
-		for(var/current_alternate_appearance in alternate_appearances)
-			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
-			selected_alternate_appearance.remove_from_hud(src)
+	for(var/hud_provider in atom_huds)
+		remove_atom_hud_provider(src, hud_provider)
 
 	if(reagents)
 		QDEL_NULL(reagents)
