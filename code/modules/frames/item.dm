@@ -177,6 +177,10 @@
 			attempt_deploy(e_args)
 			return TRUE
 
+/obj/item/frmae2/drop_products(method, atom/where)
+	. = ..()
+	frame.drop_deconstructed_products(method, where, null, list())
+
 /obj/item/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(function == frame.item_recycle_tool)
 		if(frame.item_recycle_time)
@@ -198,7 +202,7 @@
 			otherwise_self = SPAN_WARNING("You recycle [src] back into raw material."),
 		)
 		log_construction(e_args, src, "recycled")
-		new /obj/item/stack/material/steel(drop_location(), frame.material_cost)
+		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 		qdel(src)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	if(function == frame.item_deploy_tool)

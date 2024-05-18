@@ -127,13 +127,6 @@
 	// todo: frame rework
 	. += create_stack_recipe_datum(
 		category = "frames",
-		name = "apc frame",
-		product = /obj/item/frame/apc,
-		cost = 2,
-	)
-	// todo: frame rework
-	. += create_stack_recipe_datum(
-		category = "frames",
 		name = "mirror frame",
 		product = /obj/item/frame/mirror,
 		cost = 2,

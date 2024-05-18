@@ -65,6 +65,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// see /datum/frame2 readme (so up above in this file) for how to do this
 	var/list/stages = list()
 
+	// todo: implement anchor shit.T
+
 	/// is this frame freely un/anchorable?
 	var/freely_anchorable = FALSE
 	/// do we need to be anchored to finish? we will not allow progression past last stage if so.
@@ -76,6 +78,17 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 	/// are we a dense frame object? if it's a wall mount, the answer should probably be no.
 	var/has_density = FALSE
+
+	/// check for all dense objects on turf if we're dense
+	var/check_turf_content_density_dynamic = TRUE
+	/// still check for any density
+	var/check_turf_content_density_always = TRUE
+	/// check for another frame of this type on turf
+	var/check_turf_frame_duplicate = TRUE
+	/// check for another frame of this class on turf
+	/// * wallframes in same direction
+	/// * other non-wall-frames
+	var/check_turf_frame_collision = TRUE
 
 	/// is this frame a wall-frame?
 	var/wall_frame = FALSE
@@ -150,6 +163,17 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	#warn impl
 
 /**
+ * @params
+ * * method - ATOM_DECONSTRUCT_* define
+ * * where - atom to drop stuff at
+ * * stage_key - stage id
+ * * context - context list
+ */
+/datum/frame2/proc/drop_deconstructed_products(method, atom/where, stage_key, list/context)
+	// todo: drop all other stored things from steps!!
+	new /obj/item/stack/material/steel(where, material_cost)
+
+/**
  * always use this proc, it's guarded against race conditions.
  *
  * If trying to deconstruct or finish the frame, you *must* do:
@@ -185,7 +209,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 			deconstruct_frame(frame, actor)
 		if(FRAME_STAGE_FINISH)
 			finish_frame(frame, actor)
-
 
 /**
  * Called when we transition stage.
@@ -224,14 +247,33 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_item(obj/structure/frame2/frame, obj/item/item, datum/event_args/actor/clickchain/click)
-	#warn impl
+/datum/frame2/proc/on_item(obj/structure/frame2/frame, obj/item/item, datum/event_args/actor/actor)
+	// todo: support for multiple possible steps
+	var/datum/frame_step/step_to_take
+	var/datum/frame_stage/current_stage = stages[frame.stage]
+	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
+		if(potential_step.request_type != FRAME_REQUEST_TYPE_ITEM)
+			continue
+		if(potential_step.request != item.type)
+			continue
+		step_to_take = potential_step
+	return standard_progress_step(frame, actor, item, step_to_take)
 
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_tool(obj/structure/frame2/frame, obj/item/tool, datum/event_args/actor/clickchain/click, function, flags, hint)
-	#warn impl
+/datum/frame2/proc/on_tool(obj/structure/frame2/frame, obj/item/tool, datum/event_args/actor/actor, function, flags, hint)
+	var/datum/frame_step/step_to_take
+	var/datum/frame_stage/current_stage = stages[frame.stage]
+	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
+		if(potential_step.request_type != FRAME_REQUEST_TYPE_TOOL)
+			continue
+		if(potential_step.request != function)
+			continue
+		if(hint && (potential_step.name != hint))
+			continue
+		step_to_take = potential_step
+	return standard_progress_step(frame, actor, tool, step_to_take)
 
 /**
  * @return list
@@ -249,7 +291,22 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /**
  * @return TRUE if handled
  */
-/datum/frame2/proc/on_interact(obj/structure/frame2/frame, datum/event_args/actor/clickchain/click)
+/datum/frame2/proc/on_interact(obj/structure/frame2/frame, datum/event_args/actor/actor)
+	// todo: support for multiple possible steps
+	var/datum/frame_step/step_to_take
+	var/datum/frame_stage/current_stage = stages[frame.stage]
+	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
+		if(potential_step.request_type != FRAME_REQUEST_TYPE_INTERACT)
+			continue
+		step_to_take = potential_step
+	return standard_progress_step(frame, actor, null, step_to_take)
+
+/**
+ * handles the do after, logging, and whatnot
+ *
+ * @return TRUE / FALSE
+ */
+/datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step)
 	#warn impl
 
 /**
@@ -263,6 +320,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 /**
  * ran only on deployment, not completion
+ * * also ran when anchoring a frame down
  *
  * regarding direction
  * * is in direction of machine that will be built if non-wall
@@ -271,10 +329,21 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return TRUE / FALSE
  */
 /datum/frame2/proc/deployment_checks(obj/item/frame2/frame, turf/location, dir, datum/event_args/actor/actor, silent)
-	if(!wall_frame)
-		pass()
-		#warn not wall frame; check non-blocking
-	#warn wall frame..
+	if((check_turf_content_density_dynamic && has_density) || check_turf_content_density_always)
+		for(var/obj/thing in location)
+			if(thing.density)
+				return FALSE
+	if(check_turf_frame_collision || check_turf_frame_duplicate)
+		for(var/obj/structure/frame2/other_frame in location)
+			if(other_frame.frame == src && check_turf_frame_duplicate)
+				return FALSE
+			if(!other_frame.frame.wall_frame)
+				if(!wall_frame)
+					return FALSE
+			else
+				if(other_frame.dir == frame.dir)
+					return FALSE
+	return TRUE
 
 /**
  * ran on deployment as well as completion

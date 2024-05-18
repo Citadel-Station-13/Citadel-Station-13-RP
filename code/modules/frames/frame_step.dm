@@ -165,13 +165,26 @@
 		)
 	else
 		// default
-		standard_feedback_handling(actor, frame_datum, frame, tool, time_needed, FALSE)
+		standard_feedback_handling(actor, frame_datum, frame, tool, time_taken, FALSE)
 
 /datum/frame_step/proc/standard_feedback_handling(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool, time, beginning)
 	switch(request_type)
 		if(FRAME_REQUEST_TYPE_INTERACT)
+			if(beginning)
 		if(FRAME_REQUEST_TYPE_ITEM)
+			if(beginning)
 		if(FRAME_REQUEST_TYPE_MATERIAL, FRAME_REQUEST_TYPE_STACK)
+			var/amount = request_amount
+			var/stack_name
+			var/material_name
+			if(request_type == FRAME_REQUEST_TYPE_MATERIAL)
+				var/datum/material/resolved_material = SSmaterials.resolve_material(request)
+			else
+				var/obj/item/stack/casted_stack = request
+				#warn impl thees with frame shit
+			if(beginning)
 		if(FRAME_REQUEST_TYPE_TOOL)
+			var/
 			switch(request)
+				if()
 

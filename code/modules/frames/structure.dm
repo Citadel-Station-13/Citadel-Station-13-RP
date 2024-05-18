@@ -41,9 +41,13 @@
 	. += frame.get_overlays(src)
 
 /obj/structure/frame2/update_name()
-	var/datum/frame_stage/stage = frame.stages[stage]
-	name = "[stage.name_prepend && "[stage.name_prepend] "][stage.name_override || frame.name][stage.name_append && " [stage.name_append]"]"
+	var/datum/frame_stage/frame_stage = frame.stages[stage]
+	name = "[frmae_tsage.name_prepend && "[frmae_tsage.name_prepend] "][frmae_tsage.name_override || frame.name][frmae_tsage.name_append && " [frmae_tsage.name_append]"]"
 	return ..()
+
+/obj/structure/frame2/drop_products(method, atom/where)
+	. = ..()
+	frame.drop_deconstructed_products(method, where, stage, context)
 
 /obj/structure/frame2/examine(mob/user, dist)
 	. = ..()
