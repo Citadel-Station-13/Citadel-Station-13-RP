@@ -42,7 +42,7 @@
 
 /obj/structure/frame2/update_name()
 	var/datum/frame_stage/frame_stage = frame.stages[stage]
-	name = "[frmae_tsage.name_prepend && "[frmae_tsage.name_prepend] "][frmae_tsage.name_override || frame.name][frmae_tsage.name_append && " [frmae_tsage.name_append]"]"
+	name = "[frame_stage.name_prepend && "[frame_stage.name_prepend] "][frame_stage.name_override || frame.name][frame_stage.name_append && " [frame_stage.name_append]"]"
 	return ..()
 
 /obj/structure/frame2/drop_products(method, atom/where)
