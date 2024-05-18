@@ -1561,18 +1561,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "hi" = (
-/obj/structure/window/wooden{
-	dir = 1
-	},
-/obj/structure/window/wooden{
-	dir = 4
-	},
-/obj/structure/window/wooden,
-/obj/structure/window/wooden{
-	dir = 5
-	},
+/obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
+/area/rift/surfacebase/outside/west)
 "hj" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
@@ -1672,7 +1663,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
 "hD" = (
-/obj/structure/simple_door,
+/obj/structure/simple_door/wood,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/exterior/nuketown/bunker)
 "hF" = (
@@ -3093,18 +3084,9 @@
 /area/rift/facility/exterior)
 "ov" = (
 /obj/structure/window/wooden{
-	dir = 8
-	},
-/obj/structure/window/wooden{
-	dir = 4
-	},
-/obj/structure/window/wooden{
 	dir = 1
 	},
-/obj/structure/window/wooden{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/wall/wood,
 /area/rift/exterior/nuketown)
 "ox" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -4032,20 +4014,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "sW" = (
-/obj/structure/window/wooden{
-	dir = 1
-	},
-/obj/structure/window/wooden{
-	dir = 4
-	},
-/obj/structure/window/wooden{
-	dir = 8
-	},
-/obj/structure/window/wooden{
-	dir = 5
-	},
+/obj/structure/flora/tree/pine,
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
+/area/rift/surfacebase/outside/west)
 "sX" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -4148,19 +4119,6 @@
 /obj/machinery/atmospherics/valve,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
-"ts" = (
-/obj/structure/window/wooden{
-	dir = 1
-	},
-/obj/structure/window/wooden,
-/obj/structure/window/wooden{
-	dir = 8
-	},
-/obj/structure/window/wooden{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
 "tt" = (
 /obj/machinery/portable_atmospherics/canister/empty/carbon_dioxide,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
@@ -4204,16 +4162,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
-"tF" = (
-/obj/structure/window/wooden{
-	dir = 1
-	},
-/obj/structure/window/wooden,
-/obj/structure/window/wooden{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
 "tG" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/exterior)
@@ -4371,14 +4319,7 @@
 /obj/structure/window/wooden{
 	dir = 4
 	},
-/obj/structure/window/wooden{
-	dir = 1
-	},
-/obj/structure/window/wooden,
-/obj/structure/window/wooden{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/wall/wood,
 /area/rift/exterior/nuketown)
 "uz" = (
 /obj/structure/window/reinforced{
@@ -6256,18 +6197,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
-"Dy" = (
-/obj/structure/window/wooden{
-	dir = 4
-	},
-/obj/structure/window/wooden{
-	dir = 8
-	},
-/obj/structure/window/wooden{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
 "DB" = (
 /obj/structure/railing{
 	dir = 4
@@ -8442,19 +8371,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
-"Of" = (
-/obj/structure/window/wooden{
-	dir = 8
-	},
-/obj/structure/window/wooden{
-	dir = 4
-	},
-/obj/structure/window/wooden,
-/obj/structure/window/wooden{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
 "Og" = (
 /obj/structure/girder,
 /obj/effect/overlay/snow/floor,
@@ -10132,19 +10048,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
-"Wp" = (
-/obj/structure/window/wooden{
-	dir = 4
-	},
-/obj/structure/window/wooden,
-/obj/structure/window/wooden{
-	dir = 8
-	},
-/obj/structure/window/wooden{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
 "Wt" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1452;
@@ -18951,7 +18854,7 @@ sv
 hB
 zA
 zA
-tF
+Xf
 ed
 ed
 ed
@@ -19145,7 +19048,7 @@ sv
 Pi
 ds
 ds
-hi
+Xf
 ed
 ed
 ed
@@ -20539,9 +20442,9 @@ ed
 ed
 ed
 ed
-sW
-Dy
-Wp
+Xf
+Xf
+Xf
 rj
 sv
 sv
@@ -20695,7 +20598,7 @@ sv
 sv
 sv
 ov
-Of
+Xf
 ed
 ed
 ed
@@ -22055,7 +21958,7 @@ gA
 iB
 gA
 gA
-ts
+Xf
 ed
 ed
 ed
@@ -26151,7 +26054,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -26722,7 +26625,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 dQ
 dQ
@@ -26937,7 +26840,7 @@ sv
 sv
 sv
 sv
-sv
+sW
 sv
 sv
 sv
@@ -27549,7 +27452,7 @@ dQ
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -29447,7 +29350,7 @@ Mc
 sv
 sv
 sv
-sv
+sW
 sv
 sv
 sv
@@ -30072,7 +29975,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -30448,7 +30351,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -31001,7 +30904,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 dQ
 dQ
@@ -32224,7 +32127,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -32400,7 +32303,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -33013,7 +32916,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -33524,7 +33427,7 @@ sv
 sv
 sv
 sv
-sv
+sW
 sv
 sv
 sv
@@ -38756,7 +38659,7 @@ sv
 sv
 sv
 sv
-sv
+sW
 sv
 sv
 sv
@@ -39162,7 +39065,7 @@ sv
 sv
 sv
 sv
-sv
+sW
 sv
 sv
 sv
