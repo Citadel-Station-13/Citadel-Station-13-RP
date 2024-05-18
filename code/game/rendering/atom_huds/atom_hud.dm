@@ -64,13 +64,6 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 
 /* HUD DATUMS */
 
-GLOBAL_LIST_EMPTY(all_huds)
-w
-
-/proc/get_atom_hud(id)
-	RETURN_TYPE(/datum/atom_hud)
-	return GLOB.huds[id]
-
 // TODO: atom_huds on mob with hud sources
 // TODO: /datum/hud_supplier for image metadata/hud list metadata
 // TODO: atom huds using hud supplier id lists, more id usage in general for dynamic gen
@@ -114,12 +107,6 @@ w
 		remove_from_single_hud(M, A)
 	hudatoms -= A
 	return TRUE
-
-/datum/atom_hud/proc/remove_from_single_hud(mob/M, atom/A) //unsafe, no sanity apart from client
-	if(!M || !M.client || !A)
-		return
-	for(var/i in hud_icons)
-		M.client.images -= A.hud_list[i]
 
 /datum/atom_hud/proc/add_hud_to(mob/M)
 	if(!M)

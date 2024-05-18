@@ -143,12 +143,6 @@ GLOBAL_LIST_EMPTY(observer_list)
 		T = locate(1,1,1)
 	forceMove(T)
 
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
-
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 	real_name = name
