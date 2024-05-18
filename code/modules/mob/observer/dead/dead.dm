@@ -306,9 +306,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	medHUD = !medHUD
 	if(medHUD)
-		get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+		get_atom_hud(/datum/atom_hud/data/human/medical).add_hud_to(src)
 	else
-		get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
+		get_atom_hud(/datum/atom_hud/data/human/medical).remove_hud_from(src)
 	to_chat(src,"<font color=#4F49AF><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/verb/toggle_antagHUD()

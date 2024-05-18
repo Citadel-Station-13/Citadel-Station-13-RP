@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	else if(foundVirus)
 		holder.icon_state = "ill1"
 	else if(L.has_brain_worms())
-		var/mob/living/simple_mob/animal/borer/B = has_brain_worms()
+		var/mob/living/simple_mob/animal/borer/B = L.has_brain_worms()
 		holder.icon_state = B.controlling? "brainworm" : "healthy"
 	else
 		holder.icon_state = "healthy"
@@ -194,9 +194,9 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	icon = 'icons/screen/atom_hud/health.dmi'
 
 /datum/atom_hud_provider/medical_health/update(atom/A, image/plate)
-	if(!ismob(A))
+	if(!isliving(A))
 		return
-	var/mob/M = A
+	var/mob/living/M = A
 	var/image/I = plate
 	if(M.stat == DEAD)
 		I.icon_state = "-100"
