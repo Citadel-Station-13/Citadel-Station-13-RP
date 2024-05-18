@@ -193,6 +193,21 @@
 	else
 		icon_state = "legalbook-5"
 
+/obj/structure/bookcase/lore
+	name = "reviewed Books bookcase"
+
+/obj/structure/bookcase/lore/New()
+	..()
+	var/list/obj/item/book/lore/types = typesof(/obj/item/book/lore)
+	LAZYREMOVE(types, /obj/item/book/lore)
+	for(var/i = 5; i>= 0; i--)
+		var/t_picked = pick(types)
+		new t_picked(src)
+		LAZYREMOVE(types, t_picked)
+		if(length(types) <= 0)
+			break
+	update_icon()
+
 /*
  * Barcode Scanner
  */

@@ -9070,6 +9070,7 @@
 	name = "bookcase (Reference)"
 	},
 /obj/item/book/bundle/custom_library/reference,
+/obj/item/book/bundle/custom_library/reference,
 /turf/simulated/floor/wood,
 /area/library)
 "gbq" = (
@@ -26243,6 +26244,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
+"quA" = (
+/obj/structure/bookcase/lore,
+/turf/simulated/floor/wood,
+/area/library)
 "quL" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
@@ -61892,7 +61897,7 @@ vIk
 tjR
 rnI
 tjR
-gbp
+quA
 duD
 mdW
 mrc
