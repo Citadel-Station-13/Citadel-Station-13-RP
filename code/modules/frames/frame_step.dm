@@ -33,11 +33,14 @@
 	/// * rest: unused
 	var/request_cost
 
+	// todo: request_store: null for default, context key to store under context
+
 	/// what to drop when undertaking this step
 	/// can either be:
 	/// * /obj/item/stack typepath
 	/// * /datum/material typepath
 	/// * /obj/item typepath
+	/// todo: text for 'drop context key'
 	var/drop
 	/// amount to drop
 	var/drop_amount = 1
@@ -149,9 +152,9 @@
 		)
 	else
 		// default
-		#warn impl
+		standard_feedback_handling(actor, frame_datum, frame, tool, time_needed, TRUE)
 
-/datum/frame_step/proc/feedback_finish(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool,, time_taken)
+/datum/frame_step/proc/feedback_finish(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool, time_taken)
 	if(use_custom_feedback)
 		// custom
 		actor.visible_feedback(
@@ -162,4 +165,13 @@
 		)
 	else
 		// default
-		#warn impl
+		standard_feedback_handling(actor, frame_datum, frame, tool, time_needed, FALSE)
+
+/datum/frame_step/proc/standard_feedback_handling(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool, time, beginning)
+	switch(request_type)
+		if(FRAME_REQUEST_TYPE_INTERACT)
+		if(FRAME_REQUEST_TYPE_ITEM)
+		if(FRAME_REQUEST_TYPE_MATERIAL, FRAME_REQUEST_TYPE_STACK)
+		if(FRAME_REQUEST_TYPE_TOOL)
+			switch(request)
+
