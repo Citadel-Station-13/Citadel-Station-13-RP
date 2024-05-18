@@ -18597,13 +18597,6 @@
 /obj/structure/sign/warning/falling,
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/outside/outside3)
-"bHh" = (
-/obj/structure/flora/grass/both{
-	pixel_x = 10;
-	pixel_y = 10
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "bHN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -18644,6 +18637,17 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"bJk" = (
+/obj/structure/flora/tree/pine,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
+"bKm" = (
+/obj/structure/flora/grass/both{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "bLD" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/carpet/patterened/green,
@@ -19002,10 +19006,6 @@
 "cvI" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration/courser_dock)
-"cxB" = (
-/obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "cxI" = (
 /obj/structure/table/steel,
 /obj/item/storage/daki{
@@ -19135,6 +19135,10 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
+"cLb" = (
+/obj/structure/flora/ausbushes/pointybush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "cOE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19303,23 +19307,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
-"diy" = (
-/obj/structure/flora/ausbushes/brflowers{
-	pixel_x = -21;
-	pixel_y = 6
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "diY" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
-"djK" = (
-/obj/structure/flora/grass/both,
-/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "dnb" = (
 /turf/simulated/wall/r_wall/prepainted/science,
@@ -19529,10 +19522,6 @@
 /obj/item/flame/candle,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"dNi" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "dOT" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/plain,
@@ -20345,6 +20334,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/docking_hallway)
+"fgd" = (
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "fgP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -20828,6 +20821,13 @@
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
+"gbA" = (
+/obj/structure/flora/ausbushes/ywflowers{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "gcc" = (
 /obj/machinery/camera/network/civilian{
 	dir = 4
@@ -21050,6 +21050,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"gFD" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "gGW" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/ai_cyborg_station)
@@ -21123,10 +21127,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
-"gUJ" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "gYr" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -22047,13 +22047,6 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
-"iZl" = (
-/obj/structure/flora/ausbushes/ppflowers{
-	pixel_x = 12;
-	pixel_y = 6
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "iZn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -22153,6 +22146,10 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
+"jhj" = (
+/obj/structure/flora/rock/ice,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "jil" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
@@ -22247,6 +22244,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
+"jrR" = (
+/obj/structure/flora/grass/both{
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "jsa" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -22642,6 +22646,10 @@
 "jTJ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
+"jUD" = (
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "jVd" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -22761,12 +22769,8 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
-"kdp" = (
-/obj/structure/flora/grass/green,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
-"kdt" = (
-/obj/structure/flora/bush,
+"khK" = (
+/obj/structure/flora/rock/ice/alternative_2,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "kih" = (
@@ -23107,13 +23111,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
-"lkf" = (
-/obj/structure/flora/ausbushes/ppflowers{
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "lmh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -23223,16 +23220,6 @@
 /obj/landmark/spawnpoint/job/pilot,
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
-"luU" = (
-/obj/structure/flora/grass/brown{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/structure/flora/grass/green{
-	pixel_x = -13
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "lxt" = (
 /obj/effect/paint/black,
 /obj/effect/paint_stripe/violet,
@@ -23272,10 +23259,6 @@
 	},
 /turf/simulated/open,
 /area/exploration)
-"lIr" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "lJb" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -23355,6 +23338,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"lLr" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "lMp" = (
 /turf/simulated/wall/prepainted/science,
 /area/maintenance/research/xenobio)
@@ -23459,6 +23450,13 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
+"lVJ" = (
+/obj/structure/flora/ausbushes/lavendergrass{
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "lWu" = (
 /obj/machinery/disposal,
 /obj/effect/floor_decal/borderfloor{
@@ -23712,6 +23710,10 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
+"msd" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "msZ" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
@@ -23950,13 +23952,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
-"mMF" = (
-/obj/structure/flora/ausbushes/ywflowers{
-	pixel_x = -13;
-	pixel_y = 2
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "mNl" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -23999,10 +23994,6 @@
 /obj/effect/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
-"mTi" = (
-/obj/structure/flora/tree/pine,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "mTQ" = (
 /obj/structure/railing{
 	dir = 4
@@ -24010,6 +24001,10 @@
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/rnd/telescience_lab/chamber)
+"mUB" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "mUS" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -24017,6 +24012,17 @@
 	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
+"mUU" = (
+/obj/structure/flora/ausbushes/ywflowers{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/structure/flora/ausbushes/brflowers{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "mVj" = (
 /obj/machinery/light{
 	dir = 4
@@ -24061,6 +24067,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"nbh" = (
+/obj/structure/flora/bush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "nbB" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable/green{
@@ -24502,6 +24512,17 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
+"ogS" = (
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
+"oiE" = (
+/obj/structure/flora/rock/ice/alternative_1{
+	layer = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "okY" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
@@ -24895,6 +24916,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"pat" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "pem" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -24932,14 +24957,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
-"piO" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/bush{
-	pixel_x = -12;
-	pixel_y = 14
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "pjG" = (
 /obj/machinery/light{
 	dir = 4
@@ -25289,10 +25306,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury)
-"qbl" = (
-/obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "qcL" = (
 /obj/landmark/spawnpoint/job/pilot,
 /obj/item/stool/padded,
@@ -25347,6 +25360,10 @@
 "qgc" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
+"qgy" = (
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "qgY" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/chemical_dispenser/catering/bar_coffee{
@@ -25357,6 +25374,10 @@
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"qhn" = (
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "qjW" = (
 /obj/structure/table/wooden_reinforced,
 /obj/effect/floor_decal/spline/plain{
@@ -25828,12 +25849,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
-"rmU" = (
-/obj/structure/flora/grass/brown{
-	pixel_y = 10
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "rnV" = (
 /obj/machinery/door/airlock/glass/command{
 	dir = 1;
@@ -26202,6 +26217,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
+"smV" = (
+/obj/structure/flora/ausbushes/ppflowers{
+	pixel_x = 12;
+	pixel_y = 6
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "sny" = (
 /obj/structure/railing,
 /obj/structure/foodcart,
@@ -26212,6 +26234,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"soe" = (
+/obj/structure/flora/tree/pine{
+	pixel_x = -19
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "stD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -26272,6 +26300,10 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
+"sDl" = (
+/obj/structure/flora/ausbushes/leafybush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "sEW" = (
 /obj/machinery/light/spot{
 	dir = 4;
@@ -26281,6 +26313,10 @@
 /obj/effect/paint_stripe/violet,
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
+"sGC" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "sHK" = (
 /obj/structure/sign/department/conference_room,
 /turf/simulated/wall/prepainted/command,
@@ -26417,10 +26453,6 @@
 /obj/structure/symbol/sa,
 /turf/simulated/wall/prepainted/exploration,
 /area/exploration)
-"tbC" = (
-/obj/structure/flora/grass/brown,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "tbF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/effect/paint/violet,
@@ -26473,15 +26505,8 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/excursion_dock)
-"tkr" = (
-/obj/structure/flora/ausbushes/ywflowers{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/structure/flora/ausbushes/brflowers{
-	pixel_x = 3;
-	pixel_y = -6
-	},
+"tlg" = (
+/obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "tlr" = (
@@ -26575,6 +26600,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"tyg" = (
+/obj/structure/flora/ausbushes/ppflowers{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "tyY" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/air_alarm{
@@ -26816,10 +26848,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
-"tTQ" = (
-/obj/structure/flora/grass/both{
-	pixel_x = -5;
-	pixel_y = -4
+"tVf" = (
+/obj/structure/flora/ausbushes/brflowers{
+	pixel_x = -21;
+	pixel_y = 6
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
@@ -26905,6 +26937,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"ujO" = (
+/obj/structure/flora/grass/brown{
+	pixel_y = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uka" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -26976,6 +27014,16 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
+"uuE" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
+"uvz" = (
+/obj/structure/flora/bush{
+	pixel_y = 7
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uxa" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -27065,6 +27113,16 @@
 	},
 /turf/simulated/open,
 /area/maintenance/station/exploration)
+"uHP" = (
+/obj/structure/flora/grass/brown{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/structure/flora/grass/green{
+	pixel_x = -13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uID" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/sleeper/survival_pod,
@@ -27083,11 +27141,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
-"uJP" = (
-/obj/structure/railing,
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "uMf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -27099,10 +27152,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
-"uMw" = (
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "uMO" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/int_door,
@@ -27440,6 +27489,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
+"vmQ" = (
+/obj/structure/flora/grass/both{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "vmV" = (
 /obj/machinery/light{
 	dir = 4
@@ -27703,6 +27759,10 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury)
+"vLd" = (
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "vLi" = (
 /obj/machinery/button/remote/airlock{
 	id = "bathroomlock18";
@@ -27827,13 +27887,6 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"vVo" = (
-/obj/structure/flora/ausbushes/ywflowers{
-	pixel_x = -2;
-	pixel_y = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "vVw" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -28295,12 +28348,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
-"wSP" = (
-/obj/structure/flora/grass/green{
-	pixel_x = -13
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "wTS" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/commandblue,
@@ -28313,10 +28360,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"wYK" = (
-/obj/structure/flora/grass/green,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "wZh" = (
 /obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/palebottlegreen,
@@ -28381,6 +28424,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
+"xbv" = (
+/obj/structure/flora/tree/pine,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
+"xfm" = (
+/obj/structure/flora/grass/green{
+	pixel_x = -13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "xfK" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -28434,6 +28487,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/pilot_prep)
+"xiS" = (
+/obj/structure/flora/ausbushes/ywflowers{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "xmB" = (
 /obj/structure/cable/pink{
 	icon_state = "1-8"
@@ -28568,12 +28628,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
-"xBo" = (
-/obj/structure/flora/bush{
-	pixel_y = 7
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "xBA" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -28708,13 +28762,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
-"xPH" = (
-/obj/structure/flora/grass/both{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "xUe" = (
 /obj/structure/foamedmetal,
 /obj/structure/grille,
@@ -31957,7 +32004,7 @@ aCA
 aCA
 acH
 acH
-tkr
+mUU
 acH
 aCA
 aCA
@@ -36264,7 +36311,7 @@ aHj
 aHj
 aHj
 aHj
-uMw
+fgd
 aHj
 acH
 acH
@@ -36459,7 +36506,7 @@ aCA
 aCA
 aCA
 aHj
-uMw
+fgd
 acH
 acH
 acH
@@ -37044,7 +37091,7 @@ acH
 acH
 acH
 acH
-cxB
+cLb
 acH
 acH
 aOi
@@ -37572,7 +37619,7 @@ aOi
 aOi
 aOi
 aOi
-iZl
+smV
 aAd
 acH
 acH
@@ -38798,7 +38845,7 @@ acH
 aOi
 aOi
 aOi
-vVo
+xiS
 acH
 acH
 acH
@@ -39101,8 +39148,8 @@ aOi
 aOi
 aOi
 aOi
-lkf
-djK
+tyg
+qhn
 acH
 acH
 acH
@@ -39126,7 +39173,7 @@ aJO
 aTq
 aTq
 acH
-piO
+lLr
 aAd
 aAd
 acH
@@ -39193,7 +39240,7 @@ acH
 acH
 acH
 acH
-gUJ
+pat
 acH
 acH
 acH
@@ -39297,7 +39344,7 @@ acH
 acH
 acH
 acH
-xPH
+bKm
 acH
 acH
 acH
@@ -39385,9 +39432,9 @@ acH
 acH
 acH
 acH
-bHh
+vmQ
 acH
-mTi
+xbv
 acH
 acH
 afq
@@ -39679,7 +39726,7 @@ acH
 acH
 acH
 acH
-wSP
+xfm
 acH
 acH
 acH
@@ -39767,7 +39814,7 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -39870,14 +39917,14 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
-wSP
+xfm
 acH
 acH
-luU
+uHP
 rdX
 rdX
 rdX
@@ -39949,13 +39996,13 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -40064,11 +40111,11 @@ acH
 acH
 acH
 acH
-wSP
+xfm
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 fuM
@@ -40156,7 +40203,7 @@ acH
 acH
 acH
 acH
-djK
+qhn
 acH
 acH
 acH
@@ -40179,7 +40226,7 @@ axS
 acH
 acH
 acH
-acH
+xbv
 acH
 acH
 aQK
@@ -40262,7 +40309,7 @@ acH
 acH
 acH
 acH
-wSP
+xfm
 acH
 acH
 fuM
@@ -40320,8 +40367,8 @@ aAd
 acH
 acH
 acH
-djK
-cxB
+qhn
+cLb
 acH
 acH
 acH
@@ -40413,12 +40460,12 @@ aej
 acH
 acH
 acH
-mTi
+xbv
+acH
+sGC
 acH
 acH
-acH
-acH
-mTi
+xbv
 acH
 acH
 acH
@@ -40493,7 +40540,7 @@ aJu
 aJu
 fua
 fua
-rmU
+ujO
 acH
 acH
 aAd
@@ -40505,7 +40552,7 @@ acH
 acH
 acH
 acH
-lIr
+sGC
 acH
 acH
 acH
@@ -40568,7 +40615,7 @@ acH
 acH
 acH
 acH
-acH
+xbv
 acH
 aQK
 aBK
@@ -40610,13 +40657,13 @@ acH
 acH
 acH
 acH
+mUB
 acH
 acH
+mUB
 acH
 acH
-acH
-acH
-mTi
+xbv
 acH
 aAd
 aAd
@@ -40688,7 +40735,7 @@ aAU
 ayu
 fua
 acH
-tbC
+vLd
 acH
 acH
 acH
@@ -40696,11 +40743,11 @@ aAd
 acH
 acH
 acH
-cxB
+cLb
 acH
 acH
 acH
-diy
+tVf
 acH
 acH
 acH
@@ -40713,12 +40760,12 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
 acH
-acH
+cLb
 acH
 acH
 acH
@@ -40803,7 +40850,7 @@ acH
 acH
 acH
 acH
-acH
+sGC
 acH
 acH
 acH
@@ -40883,7 +40930,7 @@ afw
 fua
 acH
 acH
-gUJ
+pat
 acH
 acH
 aAd
@@ -40892,7 +40939,7 @@ aAd
 acH
 aAd
 aAd
-kdp
+qgy
 aAd
 aAd
 aAd
@@ -40953,7 +41000,7 @@ aXj
 (63,1,1) = {"
 axS
 acH
-acH
+xbv
 acH
 acH
 acH
@@ -40993,17 +41040,17 @@ dWj
 fRp
 aej
 acH
+mUB
+mUB
 acH
 acH
 acH
 acH
 acH
 acH
+xbv
 acH
-acH
-mTi
-acH
-acH
+mUB
 acH
 acH
 aAd
@@ -41085,26 +41132,26 @@ acH
 aAd
 aAd
 aAd
-gUJ
+pat
 acH
-tbC
+vLd
 aAd
-tTQ
+jrR
 acH
 acH
 acH
 acH
 acH
 acH
-aAd
-aAd
 aAd
 aAd
 aAd
+aAd
+aAd
 acH
 acH
 acH
-djK
+qhn
 acH
 acH
 aAd
@@ -41152,7 +41199,7 @@ acH
 acH
 acH
 acH
-aQK
+bJk
 aBK
 aus
 aus
@@ -41192,7 +41239,7 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -41273,14 +41320,14 @@ acH
 aQK
 aQK
 aQK
-dNi
+msd
 aQK
 aQK
 aQK
 aQK
 aQK
 aQK
-wYK
+jUD
 aQK
 aQK
 aQK
@@ -41308,7 +41355,7 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -41537,7 +41584,7 @@ axS
 acH
 acH
 acH
-acH
+xbv
 acH
 acH
 aQK
@@ -41575,6 +41622,7 @@ fRp
 fRp
 aej
 acH
+mUB
 acH
 acH
 acH
@@ -41584,8 +41632,7 @@ acH
 acH
 acH
 acH
-acH
-mTi
+xbv
 acH
 acH
 aAd
@@ -41680,7 +41727,7 @@ aus
 amj
 aej
 acH
-djK
+qhn
 acH
 aAd
 aAd
@@ -41883,12 +41930,12 @@ aAd
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -42466,7 +42513,7 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -42508,7 +42555,7 @@ acH
 acH
 acH
 acH
-acH
+xbv
 acH
 aQK
 aBK
@@ -42629,7 +42676,7 @@ wce
 aMM
 acH
 acH
-lIr
+sGC
 adx
 aus
 eor
@@ -42729,8 +42776,8 @@ aus
 amn
 aAF
 acH
-acH
-acH
+pat
+mUB
 aAd
 aAd
 aAd
@@ -43212,7 +43259,7 @@ aYE
 auU
 cnu
 cnu
-uJP
+ogS
 aus
 avE
 uQv
@@ -43283,7 +43330,7 @@ axS
 acH
 acH
 acH
-acH
+xbv
 acH
 acH
 aQK
@@ -43315,9 +43362,9 @@ acH
 acH
 acH
 acH
+pat
 acH
-acH
-acH
+qgy
 acH
 acH
 acH
@@ -43505,7 +43552,7 @@ chf
 aej
 acH
 acH
-acH
+pat
 acH
 acH
 acH
@@ -43867,6 +43914,7 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
@@ -43876,19 +43924,14 @@ acH
 acH
 acH
 acH
+xbv
+acH
+acH
+qgy
 acH
 acH
 acH
-acH
-kdp
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+xbv
 acH
 acH
 acH
@@ -43898,8 +43941,12 @@ acH
 acH
 acH
 acH
+qgy
 acH
 acH
+acH
+acH
+xbv
 acH
 acH
 acH
@@ -44075,6 +44122,17 @@ acH
 acH
 acH
 acH
+xbv
+acH
+acH
+acH
+acH
+acH
+acH
+xbv
+acH
+acH
+xbv
 acH
 acH
 acH
@@ -44082,20 +44140,9 @@ acH
 acH
 acH
 acH
-mTi
 acH
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+xbv
 acH
 aQK
 aBK
@@ -44273,7 +44320,7 @@ acH
 acH
 acH
 acH
-acH
+xbv
 acH
 acH
 acH
@@ -44457,7 +44504,11 @@ acH
 acH
 acH
 acH
-mTi
+xbv
+acH
+acH
+acH
+xbv
 acH
 acH
 acH
@@ -44472,11 +44523,7 @@ acH
 acH
 acH
 acH
-acH
-acH
-acH
-acH
-acH
+xbv
 acH
 acH
 acH
@@ -44645,7 +44692,7 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -44658,7 +44705,7 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -44673,11 +44720,11 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
-acH
+xbv
 acH
 aQK
 aBK
@@ -44857,10 +44904,10 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
-acH
-mTi
+xbv
 acH
 acH
 acH
@@ -45032,32 +45079,32 @@ acH
 acH
 acH
 acH
+xbv
+acH
+acH
+acH
+xbv
+acH
+qgy
+acH
+acH
+acH
+acH
+xbv
+acH
+acH
+acH
+pat
 acH
 acH
 acH
 acH
 acH
 acH
-kdp
 acH
 acH
 acH
-acH
-acH
-acH
-acH
-acH
-gUJ
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+xbv
 acH
 acH
 acH
@@ -45252,7 +45299,7 @@ acH
 acH
 acH
 acH
-acH
+uuE
 acH
 acH
 acH
@@ -45418,6 +45465,14 @@ acH
 acH
 acH
 acH
+xbv
+acH
+acH
+acH
+acH
+acH
+acH
+xbv
 acH
 acH
 acH
@@ -45426,32 +45481,24 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
+qgy
 acH
 acH
 acH
+sDl
 acH
 acH
-acH
-mTi
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+qgy
 acH
 acH
 acH
@@ -45809,7 +45856,7 @@ acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
 acH
@@ -45826,21 +45873,21 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
 acH
+uuE
 acH
 acH
 acH
 acH
+uuE
 acH
 acH
 acH
-acH
-acH
-acH
-acH
+uuE
 acH
 acH
 aQK
@@ -46002,7 +46049,7 @@ acH
 acH
 acH
 acH
-acH
+xbv
 acH
 acH
 acH
@@ -46015,7 +46062,7 @@ acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
@@ -46211,22 +46258,22 @@ acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
 acH
 acH
-mTi
+xbv
 acH
 acH
 acH
-qbl
+sDl
 acH
 acH
 acH
@@ -46387,6 +46434,7 @@ axS
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
@@ -46400,15 +46448,14 @@ acH
 acH
 acH
 acH
-acH
-gUJ
-acH
+pat
 acH
 acH
 acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
@@ -46587,14 +46634,10 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
-acH
-kdp
-acH
-acH
-acH
-acH
+qgy
 acH
 acH
 acH
@@ -46627,12 +46670,16 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
+uuE
 acH
 acH
-xBo
+xbv
+acH
+uvz
 aAd
 aAd
 adx
@@ -46787,45 +46834,45 @@ acH
 acH
 acH
 acH
-kdp
+qgy
+acH
+acH
+acH
+acH
+acH
+xbv
+acH
+acH
+acH
+acH
+acH
+qgy
+acH
+acH
+acH
+gFD
+acH
+qgy
 acH
 acH
 acH
 acH
 acH
 acH
+qgy
+acH
+qgy
 acH
 acH
+vLd
 acH
+xfm
 acH
+soe
 acH
-kdp
+qgy
 acH
-acH
-acH
-acH
-acH
-kdp
-acH
-acH
-acH
-acH
-acH
-acH
-kdp
-acH
-kdp
-acH
-acH
-tbC
-acH
-wSP
-acH
-acH
-acH
-kdp
-acH
-acH
+mUB
 acH
 aAd
 aAd
@@ -46988,7 +47035,7 @@ acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
 acH
@@ -46999,26 +47046,26 @@ acH
 acH
 acH
 acH
+jhj
 acH
 acH
 acH
-acH
-qbl
-acH
-acH
-acH
-acH
-acH
+sDl
 acH
 acH
 acH
 acH
 acH
 acH
-kdp
+uuE
 acH
 acH
+xbv
 acH
+qgy
+acH
+acH
+uuE
 acH
 aAd
 aAd
@@ -47166,22 +47213,16 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
 acH
+xbv
 acH
-mTi
+qgy
 acH
-kdp
-acH
-gUJ
-acH
-acH
-acH
-acH
-acH
-acH
+pat
 acH
 acH
 acH
@@ -47189,6 +47230,12 @@ acH
 acH
 acH
 acH
+acH
+acH
+acH
+acH
+acH
+cLb
 acH
 acH
 acH
@@ -47202,18 +47249,18 @@ acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
-kdp
+qgy
 acH
-kdp
+qgy
 acH
-mMF
-acH
-acH
+gbA
 acH
 acH
+acH
+soe
 aAd
 aAd
 aAd
@@ -47394,18 +47441,18 @@ acH
 acH
 acH
 acH
+khK
 acH
 acH
 acH
 acH
+xfm
 acH
-wSP
+xfm
 acH
-wSP
+khK
 acH
-acH
-acH
-djK
+qhn
 acH
 acH
 aAd
@@ -47562,12 +47609,12 @@ acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
 acH
 acH
-acH
+xbv
 acH
 acH
 acH
@@ -47584,7 +47631,7 @@ acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
 acH
@@ -47594,14 +47641,14 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
 acH
 acH
-acH
-acH
-acH
+mUB
+jhj
 aAd
 aAd
 acH
@@ -47754,7 +47801,7 @@ acH
 acH
 acH
 acH
-kdp
+qgy
 acH
 acH
 acH
@@ -47775,7 +47822,7 @@ acH
 acH
 acH
 acH
-acH
+lVJ
 acH
 acH
 acH
@@ -47956,6 +48003,7 @@ acH
 acH
 acH
 acH
+ajp
 acH
 acH
 acH
@@ -47968,8 +48016,7 @@ acH
 acH
 acH
 acH
-acH
-kdp
+qgy
 acH
 acH
 acH
@@ -47992,7 +48039,7 @@ aAd
 aAd
 aAd
 aAd
-acH
+xbv
 adx
 aus
 aus
@@ -48150,14 +48197,14 @@ acH
 acH
 afq
 afq
+ajp
+ajp
+ajp
 acH
 acH
 acH
 acH
-acH
-acH
-acH
-mTi
+xbv
 acH
 acH
 acH
@@ -48183,7 +48230,7 @@ aAd
 acH
 acH
 acH
-acH
+tlg
 acH
 acH
 acH
@@ -48347,15 +48394,15 @@ afq
 afq
 afq
 afq
+ajp
+ajp
+ajp
 acH
 acH
 acH
 acH
 acH
-acH
-acH
-acH
-kdp
+qgy
 acH
 acH
 acH
@@ -48369,17 +48416,17 @@ aVw
 aej
 acH
 acH
+xbv
 acH
 acH
 acH
 acH
 acH
-acH
-djK
-acH
+qhn
 acH
 acH
-kdt
+acH
+nbh
 acH
 acH
 aiL
@@ -48543,7 +48590,7 @@ afq
 afq
 afq
 afq
-acH
+ajp
 acH
 acH
 acH
@@ -48562,16 +48609,16 @@ aVw
 aVw
 aej
 acH
+oiE
+acH
+vLd
+acH
+vLd
 acH
 acH
-tbC
-acH
-tbC
 acH
 acH
-acH
-acH
-acH
+xbv
 acH
 acH
 acH
@@ -48760,10 +48807,10 @@ acH
 acH
 acH
 acH
-wSP
+xfm
 acH
 acH
-tbC
+vLd
 acH
 acH
 acH
@@ -48956,11 +49003,11 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
-acH
-tbC
+vLd
 acH
 acH
 acH
