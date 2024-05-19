@@ -3899,7 +3899,7 @@
 	description = "A classic mix of whiskey and sugar... simple and direct."
 	taste_description = "smokey, divine whiskey"
 	color = "#774410" // rgb(119, 68, 16)
-	proof = (WHISKEY+BITTERS)/2
+	proof = (WHISKEY+BITTERS)/3
 
 	glass_name = "Old Fashioned"
 	glass_desc = "A classic mix of whiskey and sugar... simple and direct."
