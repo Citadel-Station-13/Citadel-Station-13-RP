@@ -130,26 +130,6 @@
 /mob/GenerateTag()
 	tag = "mob_[++next_mob_id]"
 
-/**
- * Prepare the huds for this atom
- *
- * Goes through hud_possible list and adds the images to the hud_list variable (if not already
- * cached)
- */
-/atom/proc/prepare_huds()
-	hud_list = list()
-	for(var/hud in hud_possible)
-		var/hint = hud_possible[hud]
-		switch(hint)
-			if(HUD_LIST_LIST)
-				hud_list[hud] = list()
-			else
-				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
-				I.plane = FLOAT_PLANE
-				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
-				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM|KEEP_APART
-				hud_list[hud] = I
-
 /mob/proc/remove_screen_obj_references()
 	hands = null
 	pullin = null

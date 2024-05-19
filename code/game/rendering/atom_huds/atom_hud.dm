@@ -29,6 +29,14 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 	/// list of typepaths of providers
 	var/list/providers = list()
 
+	/// DO NOT CHANGE THIS VALUE IN RUNTIME!
+	/// If set, we will automatically grant ourselves to mob's self-perspectives
+	/// if necessary.
+	var/auto_registration
+	#warn hook
+
+//* Implementations - split off into their other files later. *//
+
 /datum/atom_hud/data/human/medical
 	providers = list(
 		/datum/atom_hud_provider/medical_biology,

@@ -11,7 +11,7 @@
 /// Called after a successful area creation by a mob: (area/created_area, area/old_area, mob/creator)
 ////#define COMSIG_AREA_CREATED "!mob_created_area"
 /// Sent when a new z-level is created: (name, traits, z_type)
-#define COMSIG_GLOB_NEW_Z "!new_z"
+// #define COMSIG_GLOB_NEW_Z "!new_z"
 /// Sent after world.maxx and/or world.maxy are expanded: (has_exapnded_world_maxx, has_expanded_world_maxy)
 ////#define COMSIG_GLOB_EXPANDED_WORLD_BOUNDS "!expanded_world_bounds"
 /// Called after a successful var edit somewhere in the world: (list/args)

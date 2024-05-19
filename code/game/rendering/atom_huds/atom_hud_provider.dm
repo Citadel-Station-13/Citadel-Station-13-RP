@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 /datum/atom_hud_provider/proc/add_or_update(atom/A)
 	var/image/hud_image = A.atom_huds[type]
 	if(isnull(hud_image))
-		A.atom_huds[type] = hud_image = image(loc = A)
+		A.atom_huds[type] = hud_image = create_image(A)
 		images += hud_image
 		for(var/datum/perspective/perspective as anything in using_perspectives)
 			perspective.add_image(hud_image)
@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	var/image/hud_image = A.atom_huds[type]
 	// todo: should we queue the add operations instead of duping them..?
 	if(isnull(hud_image))
-		A.atom_huds[type] = hud_image = image(icon, A, "")
+		A.atom_huds[type] = hud_image = create_image(A)
 		images += hud_image
 		for(var/datum/perspective/perspective as anything in using_perspectives)
 			perspective.add_image(hud_image)
@@ -118,8 +118,27 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 				remove(A)
 	queued_for_update = list()
 
+/datum/atom_hud_provider/proc/create_image(atom/target)
+	var/image/creating = image(icon, target, "")
+	creating.layer = FLOAT_LAYER + 100 + layer_bias
+	creating.plane = FLOAT_PLANE
+	creating.appearance_flags = RESET_COLOR | RESET_TRANSFORM | KEEP_APART
+	return creating
+
+/**
+ * sets up image with override = TRUE
+ */
+/datum/atom_hud_provider/overriding
+
+/datum/atom_hud_provider/overriding/create_image(atom/target)
+	var/image/creating = ..()
+	creating.override = TRUE
+	return creating
+
 #undef ATOM_HUD_QUEUED_FOR_UPDATE
 #undef ATOM_HUD_QUEUED_FOR_REMOVE
+
+//* Implementations - split off into their other files later. *//
 
 /datum/atom_hud_provider/security_status
 	icon = 'icons/screen/atom_hud/security.dmi'
@@ -238,3 +257,12 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 			holder.icon_state = hud_icon_reference[M.mind.special_role]
 		else
 			holder.icon_state = "syndicate"
+
+/datum/atom_hud_provider/overriding/world_bender_animals
+	icon = 'icons/mob/animal.dmi'
+
+/datum/atom_hud_provider/overriding/world_bender_animals/create_image(atom/target)
+	var/image/creating = ..()
+	var/animal = pick("cow","chicken_brown", "chicken_black", "chicken_white", "chick", "mouse_brown", "mouse_gray", "mouse_white", "lizard", "cat2", "goose", "penguin")
+	creating.icon_state = animal
+	return creating
