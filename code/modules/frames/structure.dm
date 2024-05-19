@@ -19,10 +19,14 @@
 	// todo: frame context system proper?
 	var/list/context
 
-/obj/structure/frame2/Initialize(mapload, datum/frame2/set_frame_to)
-	if(!isnull(set_frame_to))
-		frame = set_frame_to
-	frame = fetch_frame_datum(frame)
+#warn handle freely_anchorable
+
+/obj/structure/frame2/Initialize(mapload, dir, datum/frame2/set_frame_to, stage_id, list/context)
+	var/datum/frame2/applying_frame = fetch_frame_datum(set_frame_to || frame)
+	src.context = context || list()
+	src.stage_id = stage_id || frame.stage_starting || stack_trace("no stage...")
+	setDir(dir)
+	frame = applying_frame
 	frame.apply_to_frame(src)
 	return ..()
 

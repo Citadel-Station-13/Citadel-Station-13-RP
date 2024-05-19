@@ -13,7 +13,7 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, fire_alarm, 'icons/machinery/fire_ala
 				},
 				/datum/frame_step{
 					request = TOOL_WRENCH;
-					request_amount = 1 SECONDS;
+					time = 1 SECONDS;
 					name = "detach frame";
 					stage = FRAME_STAGE_DECONSTRUCT;
 					direction = TOOL_DIRECTION_BACKWARDS;

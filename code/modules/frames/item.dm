@@ -156,9 +156,7 @@
 /obj/item/frame2/proc/deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc)
 	if(!isturf(use_loc))
 		CRASH("non turf?")
-
-	#warn impl
-
+	frame.deploy_frame(src, e_args, use_loc, use_dir)
 	log_construction(e_args, src, "deployed")
 
 /obj/item/frame2/context_query(datum/event_args/actor/e_args)

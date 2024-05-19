@@ -3,6 +3,7 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/modules/power/so
 	name = "solar assembly"
 	material_buildable = FALSE
 	has_density = TRUE
+	freely_anchorable = TRUE
 	stages = list(
 		"frame" = /datum/frame_stage{
 			steps = list(

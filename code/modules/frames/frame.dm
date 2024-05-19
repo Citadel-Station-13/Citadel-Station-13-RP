@@ -64,6 +64,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// construction stages
 	/// see /datum/frame2 readme (so up above in this file) for how to do this
 	var/list/stages = list()
+	/// stage that a new construct starts at
+	/// defaults to stages[1]
+	var/stage_starting
 
 	// todo: implement anchor shit.T
 
@@ -137,6 +140,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 			continue
 		else if(istext(key))
 			stages[key] = new value
+	if(isnull(stage_starting) && length(stages))
+		stage_starting = stages[1]
 
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
@@ -159,7 +164,28 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/proc/instance_product(obj/structure/frame2/frame)
 	CRASH("abstract proc called.")
 
-/datum/frame2/proc/deconstruct_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, put_in_hand_if_possible = TRUE)
+/**
+ * makes frame structure from item
+ *
+ * @return /obj/structure/frame, **if** we have stages. If not, we just finish it immediately.
+ */
+/datum/frame2/proc/deploy_frame(obj/item/frame2/frame_item, datum/event_args/actor/actor, atom/location, dir)
+	var/obj/structure/frame2/creating_frame = new(location, dir, src)
+
+	if(!length(stages))
+		// just directly finish it
+		finish_frame(creating_frame, actor)
+		return // return nothing
+	return creating_frame
+
+/**
+ * @params
+ * * frame - the frame
+ * * actor - the person doing it, if any
+ * * put_in_hand_if_possible - put in user's hand instead of put it on the floor if possible
+ * * override_slice_to_parts - if non null, TRUE = deconstruct(), FALSE = collapse to item
+ */
+/datum/frame2/proc/deconstruct_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, put_in_hand_if_possible = TRUE, override_slice_to_parts)
 	#warn impl
 
 /**
@@ -257,7 +283,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		if(potential_step.request != item.type)
 			continue
 		step_to_take = potential_step
-	return standard_progress_step(frame, actor, item, step_to_take)
+	var/time_needed = step_to_take.time
+	return standard_progress_step(frame, actor, item, step_to_take, time_needed)
 
 /**
  * @return TRUE if handled
@@ -273,7 +300,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		if(hint && (potential_step.name != hint))
 			continue
 		step_to_take = potential_step
-	return standard_progress_step(frame, actor, tool, step_to_take)
+	var/time_needed = step_to_take.time * tool.tool_speed(function, actor, frame, flags)
+	return standard_progress_step(frame, actor, tool, step_to_take, time_needed)
 
 /**
  * @return list
@@ -299,14 +327,15 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		if(potential_step.request_type != FRAME_REQUEST_TYPE_INTERACT)
 			continue
 		step_to_take = potential_step
-	return standard_progress_step(frame, actor, null, step_to_take)
+	var/time_needed = step_to_take.time
+	return standard_progress_step(frame, actor, null, step_to_take, time_needed)
 
 /**
  * handles the do after, logging, and whatnot
  *
  * @return TRUE / FALSE
  */
-/datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step)
+/datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step, time_needed)
 	#warn impl
 
 /**

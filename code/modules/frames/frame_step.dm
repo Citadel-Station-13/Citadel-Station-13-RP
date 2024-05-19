@@ -24,7 +24,6 @@
 	/// ergo: stack type, item type, tool function, etc. what this is depends on [step_type]
 	/// limited autodetection is allowed.
 	var/request
-	/// * tools: time needed
 	/// * stacks: amount
 	/// * items: amount; if 0, we just apply the item to it
 	/// * rest: unused.
@@ -32,6 +31,10 @@
 	/// * tools: this is cost
 	/// * rest: unused
 	var/request_cost
+
+	/// time needed to do this
+	/// note that for tool steps, this might impact the total cost!
+	var/time = 0 SECONDS
 
 	// todo: request_store: null for default, context key to store under context
 
