@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/New()
 	for(var/i in 1 to length(stages))
 		var/key = stages[i]
-		var/value = stages[i]
+		var/value = stages[key]
 		if(istype(key, /datum/frame_stage))
 			continue
 		else if(istext(key))
