@@ -58,7 +58,7 @@ export const JoinMenu = (props, context) => {
     <Window width={500} height={800}>
       <Window.Content overflow="auto">
         <Section title={"Welcome, " + data.charname}>
-          Round Duration: {data.duration}<br />
+          Round Duration: {data.duration}
           Security Level: {data.security_level}
           {!!data.evacuated && (
             <NoticeBox
@@ -135,7 +135,7 @@ const JoinFaction = (props: JoinFactionProps, context) => {
   });
 
   return (
-    <Collapsible color="transparent" title={`${props.faction} Roles`}>
+    <Section title={`${props.faction} Roles`}>
       {
         ordered.map((depName) => {
           const jobs: JoinableJob[] = props.departments[depName];
@@ -168,7 +168,7 @@ const JoinFaction = (props: JoinFactionProps, context) => {
           );
         })
       }
-    </Collapsible>
+    </Section>
   );
 };
 
