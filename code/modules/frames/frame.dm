@@ -169,8 +169,11 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  *
  * @return /obj/structure/frame, **if** we have stages. If not, we just finish it immediately.
  */
-/datum/frame2/proc/deploy_frame(obj/item/frame2/frame_item, datum/event_args/actor/actor, atom/location, dir)
+/datum/frame2/proc/deploy_frame(obj/item/frame2/frame_item, datum/event_args/actor/actor, atom/location, dir, destroy_item = TRUE)
 	var/obj/structure/frame2/creating_frame = new(location, dir, src)
+
+	if(destroy_item)
+		qdel(frame_item)
 
 	if(!length(stages))
 		// just directly finish it
@@ -184,9 +187,21 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * * actor - the person doing it, if any
  * * put_in_hand_if_possible - put in user's hand instead of put it on the floor if possible
  * * override_slice_to_parts - if non null, TRUE = deconstruct(), FALSE = collapse to item
+ *
+ * @return frame item dropped, if any.
  */
 /datum/frame2/proc/deconstruct_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, put_in_hand_if_possible = TRUE, override_slice_to_parts)
-	#warn impl
+	var/breaking_to_parts = isnull(override_slice_to_parts)? !deconstruct_into_item : override_slice_to_parts
+	if(breaking_to_parts)
+		frame.deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+	else
+		var/obj/item/frame2/collapsed
+		if(actor?.performer && put_in_hand_if_possible)
+			collapsed = new(actor.performer, src)
+			actor.performer.put_in_hand_or_drop(collapsed)
+		else
+			collapsed = new(frame.drop_location, src)
+		return collapsed
 
 /**
  * @params
@@ -229,6 +244,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	on_frame_step(frame, from_stage, to_stage)
 
 	frame.update_appearance()
+
+	log_construction(actor, frame, "mov [from_stage] -> [to_stage]")
 
 	switch(to_stage)
 		if(FRAME_STAGE_DECONSTRUCT)

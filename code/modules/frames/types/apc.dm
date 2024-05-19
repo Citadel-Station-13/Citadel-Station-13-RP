@@ -5,7 +5,8 @@ AUTO_FRAME_DATUM(/datum/frame2/apc, apc, 'icons/modules/power/apc.dmi')
 	// we immediately form the entity on place; no stages
 	stages = list()
 	wall_frame = TRUE
-	#warn wallframe offsets
+	wall_pixel_x = 8
+	wall_pixel_y = 8
 
 /datum/frame2/apc/instance_product(obj/structure/frame/frame)
 	return new /obj/machinery/power/apc(frame.loc, frame.dir, TRUE)
