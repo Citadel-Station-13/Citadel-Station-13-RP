@@ -98,7 +98,10 @@
 					to_chat(M,SPAN_USERDANGER("You feel like you might puke..."))
 				if(7)
 					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk!"))
-	
+	var/hydration_removal=min(10,M.hydration/50)
+	if(hydration_removal>=1)
+		M.adjust_hydration(-hydration_removal)
+		volume-=metabolism*hydration_removal
 	if(effect_level>=2)
 		M.slurring=max(M.slurring,10)
 		volume-=metabolism
