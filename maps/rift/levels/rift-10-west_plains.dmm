@@ -89,6 +89,12 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"aJ" = (
+/obj/structure/flora/rock/ice{
+	pixel_y = 12
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "aL" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -354,6 +360,13 @@
 /obj/structure/closet/crate/radiation,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"bV" = (
+/obj/structure/flora/grass/both{
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "bW" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -2282,6 +2295,10 @@
 	},
 /turf/simulated/floor,
 /area/construction/solarscontrol)
+"kq" = (
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/surfacebase/outside/west)
 "kr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -3593,6 +3610,10 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
+"qN" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/exterior/nuketown)
 "qO" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -5298,6 +5319,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"yo" = (
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/exterior/nuketown)
 "yp" = (
 /obj/machinery/door/firedoor/border_only{
 	req_one_access = list(18,47)
@@ -5735,6 +5760,13 @@
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"At" = (
+/obj/structure/flora/ausbushes/sparsegrass{
+	pixel_x = 22;
+	pixel_y = 13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Az" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -7196,6 +7228,14 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"Ic" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/sparsegrass{
+	pixel_x = 19;
+	pixel_y = 13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "If" = (
 /obj/structure/railing{
 	dir = 4
@@ -8111,6 +8151,14 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/anomaly_lab)
+"MA" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/sparsegrass{
+	pixel_x = 22;
+	pixel_y = 13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "MB" = (
 /obj/machinery/door/airlock/science{
 	name = "Toxins Storage"
@@ -8865,6 +8913,10 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"Qb" = (
+/obj/structure/flora/rock/ice/alternative_2,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Qe" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -9230,6 +9282,13 @@
 /obj/item/reagent_containers/dropper,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"RM" = (
+/obj/structure/flora/grass/both{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "RO" = (
 /obj/structure/table/standard,
 /obj/item/clothing/gloves/yellow,
@@ -10274,6 +10333,10 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"WQ" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "WS" = (
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -10753,6 +10816,13 @@
 	},
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
+"Ze" = (
+/obj/structure/flora/grass/brown{
+	pixel_x = 11;
+	pixel_y = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/exterior/nuketown)
 "Zg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -10817,6 +10887,10 @@
 "Zu" = (
 /turf/simulated/wall/r_wall,
 /area/rift/exterior/nuketown/bunker)
+"Zv" = (
+/obj/structure/flora/rock/ice/alternative_1,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Zx" = (
 /obj/structure/table,
 /turf/simulated/floor/wood/lythios43c,
@@ -19193,7 +19267,7 @@ ed
 ed
 ed
 ed
-ed
+qN
 ed
 sS
 ed
@@ -19395,7 +19469,7 @@ ed
 sS
 sS
 ed
-ed
+Ze
 ed
 ed
 ed
@@ -20755,7 +20829,7 @@ sS
 kE
 kE
 ed
-ed
+yo
 OH
 OH
 OH
@@ -22664,14 +22738,14 @@ sv
 sv
 sv
 sv
+Dy
 sv
 sv
 sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 DW
@@ -22856,7 +22930,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -23624,6 +23698,7 @@ ka
 sv
 tF
 sv
+Dy
 sv
 sv
 sv
@@ -23640,8 +23715,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 DW
@@ -23821,7 +23895,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -23831,7 +23905,7 @@ tF
 sv
 sv
 sv
-sv
+Dy
 sv
 sv
 sv
@@ -25194,7 +25268,7 @@ sv
 sv
 sv
 sv
-sv
+Wp
 sv
 OI
 rg
@@ -25389,7 +25463,7 @@ sv
 sv
 sv
 sv
-sv
+Wp
 sv
 sv
 sv
@@ -25580,7 +25654,7 @@ sv
 sv
 sv
 sv
-sv
+Of
 sv
 sv
 sv
@@ -27410,7 +27484,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -27685,6 +27759,7 @@ PP
 sv
 sv
 sv
+Dy
 sv
 sv
 sv
@@ -27733,8 +27808,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+ww
 sv
 sv
 sv
@@ -28531,7 +28605,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 sv
@@ -29520,7 +29594,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 dQ
@@ -29541,7 +29615,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -30260,7 +30334,7 @@ DI
 DI
 Mc
 sv
-sv
+RM
 sv
 sv
 sv
@@ -30491,7 +30565,7 @@ Dy
 sv
 sv
 sv
-sv
+lL
 sv
 dQ
 dQ
@@ -31035,7 +31109,7 @@ cO
 cO
 cO
 aN
-sv
+bV
 sv
 sv
 sv
@@ -32027,7 +32101,7 @@ PP
 PP
 PP
 sD
-sD
+kq
 sv
 sv
 sv
@@ -32040,7 +32114,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 sv
@@ -32434,7 +32508,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 sv
@@ -32783,7 +32857,7 @@ cO
 aN
 sv
 sv
-sv
+RM
 sv
 sv
 sv
@@ -33740,12 +33814,12 @@ sv
 rH
 kd
 sv
+bV
 sv
 sv
 sv
 sv
-sv
-sv
+RM
 sv
 sv
 sv
@@ -34080,7 +34154,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -34132,7 +34206,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -35295,7 +35369,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 PP
@@ -35683,7 +35757,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 PP
@@ -35813,7 +35887,7 @@ sv
 sv
 sv
 sv
-sv
+WQ
 sv
 Vn
 Vn
@@ -35875,7 +35949,7 @@ vC
 gQ
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -37431,7 +37505,7 @@ sv
 sv
 sv
 sv
-sv
+gR
 sv
 sv
 sv
@@ -38009,6 +38083,7 @@ mW
 wU
 dQ
 sv
+lL
 sv
 sv
 sv
@@ -38020,8 +38095,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+lL
 sv
 mW
 sv
@@ -38423,7 +38497,7 @@ sv
 sv
 gd
 sv
-sv
+hi
 sv
 sv
 cL
@@ -38730,7 +38804,7 @@ sv
 sv
 sv
 sv
-sv
+Zv
 sv
 sv
 sv
@@ -38810,7 +38884,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 hi
@@ -39164,7 +39238,7 @@ Do
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -39188,7 +39262,7 @@ sv
 sv
 sv
 mW
-sv
+lL
 sv
 dQ
 dQ
@@ -39572,7 +39646,7 @@ sv
 iF
 sv
 sv
-sv
+At
 sv
 sv
 mW
@@ -39581,11 +39655,11 @@ sv
 dQ
 dQ
 dQ
+lL
 sv
 sv
 sv
-sv
-sv
+lL
 sv
 sv
 hi
@@ -39941,29 +40015,29 @@ sv
 sv
 sv
 sv
+gd
+sv
+sv
+sv
+mW
+dQ
+dQ
+sv
+sv
+sv
+sv
+PV
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 sv
 sv
 mW
-dQ
-dQ
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-mW
 sv
 sv
 dQ
@@ -39974,11 +40048,11 @@ sv
 sv
 sv
 sv
+ww
 sv
 sv
 sv
-sv
-sv
+PV
 sv
 sv
 sv
@@ -41143,7 +41217,7 @@ sv
 sv
 sv
 sv
-sv
+ww
 sv
 sv
 sv
@@ -41312,7 +41386,7 @@ sv
 sv
 sv
 sv
-sv
+PV
 sv
 sv
 sv
@@ -41497,12 +41571,12 @@ sv
 sv
 sv
 sv
+gd
 sv
 sv
 sv
 sv
-sv
-sv
+lL
 sv
 sv
 sv
@@ -41531,7 +41605,7 @@ sv
 gd
 sv
 sv
-sv
+ww
 sv
 sv
 sv
@@ -41702,7 +41776,7 @@ sv
 sv
 gd
 sv
-sv
+lL
 sv
 sv
 sv
@@ -41833,7 +41907,7 @@ PP
 PP
 sv
 sv
-sv
+Zv
 sv
 sv
 sv
@@ -41886,7 +41960,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 sv
@@ -41915,7 +41989,7 @@ BT
 je
 sv
 sv
-sv
+ww
 sv
 sv
 sv
@@ -42282,6 +42356,7 @@ sv
 sv
 sv
 sv
+lL
 sv
 sv
 sv
@@ -42290,8 +42365,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 sv
 qZ
@@ -42488,7 +42562,7 @@ sv
 sv
 sv
 sv
-qZ
+sv
 bw
 Hz
 sv
@@ -42611,7 +42685,7 @@ PP
 PP
 PP
 PP
-sv
+aJ
 sv
 sv
 sv
@@ -42697,7 +42771,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 sv
@@ -42804,11 +42878,11 @@ PP
 PP
 PP
 PP
+Qb
 sv
 sv
 sv
-sv
-sv
+Zv
 sv
 sv
 sv
@@ -43063,7 +43137,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 PV
@@ -43255,14 +43329,14 @@ Iu
 sv
 sv
 sv
-sv
-PV
-sv
-sv
+MA
+Ic
 sv
 sv
 sv
+hi
 sv
+gR
 bL
 qZ
 bw
@@ -43279,8 +43353,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+PP
+PP
 sv
 sv
 sv
@@ -43456,7 +43530,7 @@ bL
 sv
 sv
 sv
-sv
+hi
 sv
 qZ
 bw
@@ -43474,7 +43548,7 @@ sv
 sv
 sv
 sv
-sv
+PP
 sv
 sv
 sv
@@ -43644,16 +43718,16 @@ TL
 TL
 TL
 TL
+sv
+sv
 TL
 TL
 TL
 TL
 TL
-TL
-TL
-TL
-bw
-bw
+sv
+sv
+sv
 Hz
 sv
 sv
@@ -43838,17 +43912,17 @@ xC
 xC
 xC
 xC
+sv
 xC
 xC
 xC
 xC
 xC
 xC
-xC
-xC
-bw
-bw
-Hz
+sv
+sv
+MA
+sv
 sv
 sv
 sv
@@ -44036,15 +44110,15 @@ sv
 sv
 bL
 sv
-sv
+hi
 sv
 sv
 sv
 qZ
-bw
-Hz
 sv
 sv
+sv
+gd
 Mv
 PJ
 sv

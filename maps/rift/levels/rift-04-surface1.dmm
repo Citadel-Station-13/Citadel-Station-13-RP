@@ -4984,6 +4984,13 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
+"dns" = (
+/obj/machinery/light/flamp/noshade{
+	layer = 4;
+	pixel_y = 17
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "dnB" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -5195,6 +5202,10 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/medbay_emt_bay)
+"dsJ" = (
+/obj/structure/metal_edge,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "dtc" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 1
@@ -27798,10 +27809,6 @@
 "rsj" = (
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
-"rsn" = (
-/obj/structure/metal_edge,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "rsD" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Medical Airlock";
@@ -33069,13 +33076,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
-"ulX" = (
-/obj/machinery/light/flamp/noshade{
-	layer = 4;
-	pixel_y = 17
-	},
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "umf" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -39747,7 +39747,7 @@ wCM
 pqd
 ubp
 iFU
-rsn
+dsJ
 nNX
 wCM
 nog
@@ -39941,7 +39941,7 @@ wCM
 pqd
 ubp
 vwm
-rsn
+dsJ
 nNX
 wCM
 nog
@@ -40135,7 +40135,7 @@ wCM
 pqd
 ubp
 vwm
-rsn
+dsJ
 nNX
 wCM
 nog
@@ -40329,7 +40329,7 @@ okO
 pqd
 ubp
 vwm
-ulX
+dns
 nNX
 wCM
 nog
@@ -40523,7 +40523,7 @@ wCM
 pqd
 ubp
 vwm
-rsn
+dsJ
 nNX
 wCM
 nog
@@ -40717,7 +40717,7 @@ wCM
 pqd
 ubp
 vwm
-rsn
+dsJ
 nNX
 wCM
 nog
@@ -40911,7 +40911,7 @@ wCM
 pqd
 ubp
 vwm
-rsn
+dsJ
 nNX
 wCM
 nog
@@ -41299,7 +41299,7 @@ okO
 pqd
 ubp
 vwm
-ulX
+dns
 nNX
 wCM
 nog
@@ -44206,7 +44206,7 @@ nNX
 nNX
 rNK
 iFN
-pqd
+iFN
 ubp
 lNb
 iFN
@@ -45943,7 +45943,7 @@ iFN
 iFN
 lxF
 iFN
-iFN
+gGe
 iFN
 iFN
 iFN
@@ -46146,7 +46146,7 @@ iFN
 iFN
 iFN
 iFN
-pqd
+enm
 ubp
 lNb
 iFN
@@ -46339,10 +46339,10 @@ rUu
 iFN
 gGe
 iFN
+lxF
 iFN
-pqd
-ubp
-lNb
+mbg
+iFN
 iFN
 iFN
 iFN
@@ -46523,7 +46523,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+xnE
 iFN
 iFN
 iFN
@@ -46534,9 +46534,9 @@ iFN
 iFN
 iFN
 iFN
-pqd
-ubp
-lNb
+iFN
+lgY
+iFN
 iFN
 iFN
 lxF
@@ -46729,7 +46729,7 @@ mbg
 iFN
 iFN
 pqd
-ubp
+iFN
 lNb
 iFN
 iFN
@@ -47702,7 +47702,7 @@ ubp
 ubp
 lNb
 iFN
-iFN
+lxF
 iFN
 iFN
 lxF
@@ -47890,7 +47890,7 @@ vFs
 iFN
 iFN
 iFN
-iFN
+lxF
 iFN
 pqd
 ubp
@@ -48084,7 +48084,7 @@ iFN
 iFN
 efb
 iFN
-jDP
+iFN
 vFs
 pqd
 ubp

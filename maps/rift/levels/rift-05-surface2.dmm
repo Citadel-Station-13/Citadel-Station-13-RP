@@ -32152,6 +32152,12 @@
 /obj/structure/closet/wardrobe/science_white,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/lockers)
+"uvW" = (
+/obj/structure/flora/grass/green{
+	pixel_x = -13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "uwn" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -48170,7 +48176,7 @@ bBF
 uIZ
 tVG
 oLJ
-oLJ
+uVX
 oLJ
 oLJ
 pBj
@@ -48364,7 +48370,7 @@ tex
 oLJ
 oLJ
 oLJ
-oLJ
+uvW
 oLJ
 pBj
 pBj
@@ -48388,7 +48394,7 @@ xec
 oLJ
 oLJ
 oLJ
-oLJ
+uVX
 oLJ
 oLJ
 oLJ
@@ -48587,7 +48593,7 @@ oLJ
 pBj
 oLJ
 oLJ
-oLJ
+uVX
 oLJ
 cnh
 ufF
@@ -49181,7 +49187,7 @@ oLJ
 oLJ
 oLJ
 oLJ
-oLJ
+uVX
 oLJ
 oLJ
 oLJ
