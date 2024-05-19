@@ -7,9 +7,14 @@
 /datum/frame_step
 	/// step name for tool radials & more
 	var/name
-	/// "[x] with [frame] to [action descriptor]"
-	/// defaults to rendering the name.
-	var/action_descriptor
+	/// "you start [x -> 'unscrewing the panel on'][src] ..."
+	/// add a space after!
+	/// please don't put pronouns in this, it doesn't get interpolated properly.
+	var/action_text_leading
+	/// "you start ... [src][x -> ', removing the screws in the process.']"
+	/// don't forget punctuation at the end.
+	/// please don't put pronouns in this, it doesn't get interpolated properly.
+	var/action_text_trailing
 	/// stage key this moves us to
 	/// * [STAGE_DECONSTRUCT] to deconstruct
 	/// * [STAGE_FINISH] to finish
@@ -174,20 +179,77 @@
 	switch(request_type)
 		if(FRAME_REQUEST_TYPE_INTERACT)
 			if(beginning)
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] starts [action_text_leading || "tinkering with "][frame][action_text_trailing || "."]",
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You start [action_text_leading || "tinkering with "][frame][action_text_trailing || "."]",
+				)
+			else
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] finishes [action_text_leading || "tinkering with "][frame][action_text_trailing || "."]",
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You finish [action_text_leading || "tinkering with "][frame][action_text_trailing || "."]",
+				)
 		if(FRAME_REQUEST_TYPE_ITEM)
 			if(beginning)
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] starts [action_text_leading || "tinkering with "][frame][action_text_trailing || " using [tool]."]",
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You start [action_text_leading || "tinkering with "][frame][action_text_trailing || " using [tool]."]",
+				)
+			else
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] finishes [action_text_leading || "tinkering with "][frame][action_text_trailing || " using [tool]."]",
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You finish [action_text_leading || "tinkering with "][frame][action_text_trailing || " using [tool]."]",
+				)
 		if(FRAME_REQUEST_TYPE_MATERIAL, FRAME_REQUEST_TYPE_STACK)
 			var/amount = request_amount
-			var/stack_name
-			var/material_name
+			var/name_to_use
 			if(request_type == FRAME_REQUEST_TYPE_MATERIAL)
 				var/datum/material/resolved_material = SSmaterials.resolve_material(request)
+				name_to_use = "[resolved_material.name || resolved_material.display_name] [resolved_material.sheet_plural_name]"
 			else
 				var/obj/item/stack/casted_stack = request
-				#warn impl thees with frame shit
+				name_to_use = casted_stack.name
 			if(beginning)
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] starts [action_text_leading || "inserting some [name_to_use] into "][frame][action_text_trailing || "."],
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You start [action_text_leading || "inserting some [name_to_use] into "][frame][action_text_trailing || "."]",
+				)
+			else
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] finishes [action_text_leading || "inserting some [name_to_use] into "][frame][action_text_trailing || "."],
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You finish [action_text_leading || "inserting some [name_to_use] into "][frame][action_text_trailing || "."]",
+				)
 		if(FRAME_REQUEST_TYPE_TOOL)
-			var/
-			switch(request)
-				if()
-
+			if(beginning)
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] starts [action_text_leading || "tinkering with "][frame][action_text_trailing || " with [tool]."],
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You start [action_text_leading || "tinkering with "][frame][action_text_trailing || " with [tool]."]",
+				)
+			else
+				actor.visible_feedback(
+					target = frmae,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = "[actor.performer] finishes [action_text_leading || "tinkering with "][frame][action_text_trailing || " with [tool]."],
+					audible = "You hear something being tinkered with.",
+					otherwise_self = "You finish [action_text_leading || "tinkering with "][frame][action_text_trailing || " with [tool]."]",
+				)

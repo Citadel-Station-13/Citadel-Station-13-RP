@@ -59,8 +59,6 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 	TOOL_SCREWDRIVER = "screwdriver",
 )
 
-/// forward
-
 //? Tool usage flags
 
 /// repairing

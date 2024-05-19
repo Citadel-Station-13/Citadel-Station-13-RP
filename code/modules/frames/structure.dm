@@ -19,8 +19,6 @@
 	// todo: frame context system proper?
 	var/list/context
 
-#warn handle freely_anchorable
-
 /obj/structure/frame2/Initialize(mapload, dir, datum/frame2/set_frame_to, stage_id, list/context)
 	var/datum/frame2/applying_frame = fetch_frame_datum(set_frame_to || frame)
 	src.context = context || list()
@@ -58,9 +56,27 @@
 	frame.on_examine(src, new /datum/event_args/actor(user), ., dist)
 
 /obj/structure/frame2/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
-	return merge_double_lazy_assoc_list(frame.on_tool_query(src, I, e_args), ..())
+	// please don't hurt me lohikar
+	. = list()
+	if(frame.freely_anchorable && frame.anchor_tool)
+		.[frame.anchor_tool] = list(
+			"[anchored? "unanchor" : "anchor"]" = anchored? dyntool_image_backward(frame.anchor_tool) : dyntool_image_forward(frame.anchor_tool),
+		)
+	. = merge_double_lazy_assoc_list(frame.on_tool_query(src, I, e_args), .)
+	. = merge_double_lazy_assoc_list(., ..())
+
+/obj/structure/frame2/proc/still_anchored(anchorvalue)
+	return anchored == anchorvalue
 
 /obj/structure/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
+	if(frame.freely_anchorable && frame.anchor_tool == function)
+		if(frame.anchor_time)
+			log_construction(e_args, src, "started [anchored? "unanchoring" : "anchoring"]")
+			if(!use_tool(function, I, e_args, flags, frame.anchor_time))
+				return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		set_anchored(!anchored)
+		log_construction(e_args, src, "[anchored? "anchored" : "unanchored"]")
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	if(frame.on_tool(src, I, e_args, function, flags, hint))
 		// todo: did something might be sent even if we .. didn't do anything successfully.
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

@@ -200,7 +200,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 			collapsed = new(actor.performer, src)
 			actor.performer.put_in_hand_or_drop(collapsed)
 		else
-			collapsed = new(frame.drop_location, src)
+			collapsed = new(frame.drop_location(), src)
 		return collapsed
 
 /**
@@ -353,7 +353,30 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return TRUE / FALSE
  */
 /datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step, time_needed)
-	#warn impl
+	var/stage_we_were_in = frame.stage
+	frame_step.feedback_begin(
+		actor,
+		src,
+		frame,
+		using_item,
+		time_needed,
+	)
+	if(time_needed && !do_after(
+			actor.performer,
+			time_needed,
+			frame,
+			mobility_flags = MOBILITY_CAN_USE,
+			max_distance = using_item?.reach || 1,
+		))
+		return
+	frame_step.feedback_finish(
+		actor,
+		src,
+		frame,
+		using_item,
+		time_needed,
+	)
+	move_frame_to(frame, stage_we_were_in, frame_step.stage, actor)
 
 /**
  * @return finished product if finished
