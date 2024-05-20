@@ -592,6 +592,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"auZ" = (
+/obj/structure/flora/ausbushes/fullgrass{
+	pixel_x = -8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "avr" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -1572,6 +1578,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
+"bhH" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/ausbushes/fullgrass{
+	pixel_x = -8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "bhT" = (
 /obj/structure/railing,
 /obj/machinery/power/apc/west_mount,
@@ -2961,6 +2974,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"caB" = (
+/obj/structure/flora/ausbushes/palebush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "caD" = (
 /obj/machinery/holopad,
 /obj/structure/cable/green{
@@ -12553,6 +12570,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison/upper)
+"ibB" = (
+/obj/structure/flora/ausbushes/lavendergrass{
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "ibI" = (
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower,
@@ -18644,6 +18668,17 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
+"lUp" = (
+/obj/structure/flora/ausbushes/lavendergrass{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/structure/flora/ausbushes/lavendergrass{
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "lUw" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Medbay Substation";
@@ -20057,6 +20092,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/library)
+"mOI" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "mOS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -26844,6 +26883,13 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
+"qMo" = (
+/obj/structure/flora/grass/both{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "qMA" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -34199,6 +34245,12 @@
 /obj/structure/closet/crate/engineering,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
+"uOW" = (
+/obj/structure/flora/grass/green{
+	pixel_x = -13
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "uPa" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -37971,6 +38023,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"xhQ" = (
+/obj/structure/flora/ausbushes/leafybush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "xhZ" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -41975,7 +42031,7 @@ iFN
 vUA
 vUA
 vUA
-iFN
+xhQ
 iFN
 iFN
 iFN
@@ -42081,9 +42137,9 @@ jZZ
 nog
 iFN
 iFN
+qhZ
 iFN
-iFN
-iFN
+enm
 iFN
 rHP
 iFN
@@ -42171,7 +42227,7 @@ vUA
 vUA
 iFN
 iFN
-iFN
+lxP
 iFN
 gGe
 iFN
@@ -42270,10 +42326,10 @@ pqd
 ubp
 lNb
 iFN
-iFN
+auZ
 jZZ
 nog
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -42478,7 +42534,7 @@ mjO
 mjO
 qDG
 iFN
-iFN
+gGe
 iFN
 oFG
 iFN
@@ -42658,17 +42714,17 @@ pqd
 ubp
 lNb
 iFN
+qhZ
+iFN
+iFN
+oFG
 iFN
 iFN
 iFN
 oFG
-iFN
-iFN
-iFN
-oFG
 oFG
 iFN
-iFN
+enm
 iFN
 tcZ
 iFN
@@ -43630,7 +43686,7 @@ lNb
 vFs
 rHP
 iFN
-iFN
+qhZ
 hgE
 hgE
 hgE
@@ -43725,7 +43781,7 @@ rvl
 rvl
 rvl
 iFN
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -43823,8 +43879,8 @@ ubp
 lNb
 iFN
 iFN
-iFN
-iFN
+ibB
+lUp
 hgE
 hgE
 hgE
@@ -43914,7 +43970,7 @@ iFN
 iFN
 gGe
 rvl
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -43925,7 +43981,7 @@ iFN
 xJx
 iFN
 iFN
-iFN
+jVw
 iFN
 iFN
 iFN
@@ -44018,12 +44074,12 @@ lNb
 iFN
 gGe
 iFN
-jDP
+omD
 iFN
 iFN
 iFN
 iFN
-iFN
+ebZ
 jZZ
 nNX
 nNX
@@ -44110,7 +44166,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -44123,10 +44179,10 @@ iFN
 iFN
 iFN
 iFN
+auZ
 iFN
 iFN
-iFN
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -44215,7 +44271,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+gGe
 iFN
 iFN
 jZZ
@@ -44301,7 +44357,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+caB
 iFN
 iFN
 iFN
@@ -44325,7 +44381,7 @@ iFN
 iFN
 pAx
 iFN
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -44556,7 +44612,7 @@ hgE
 hgE
 iFN
 iFN
-iFN
+jVw
 iFN
 iFN
 iFN
@@ -44755,7 +44811,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+mOI
 iFN
 oFG
 oFG
@@ -44771,7 +44827,7 @@ gGe
 iFN
 hgE
 iFN
-iFN
+omD
 iFN
 iFN
 oFG
@@ -44794,7 +44850,7 @@ lNb
 vFs
 iFN
 iFN
-iFN
+gGe
 iFN
 iFN
 iFN
@@ -44886,7 +44942,7 @@ iFN
 iFN
 gGe
 iFN
-iFN
+lxP
 iFN
 iFN
 iFN
@@ -44948,7 +45004,7 @@ iFN
 iFN
 mbg
 iFN
-iFN
+lxP
 iFN
 iFN
 oFG
@@ -45085,7 +45141,7 @@ iFN
 iFN
 gGe
 iFN
-iFN
+jVw
 iFN
 iFN
 iFN
@@ -45133,7 +45189,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+rvl
 iFN
 iFN
 iFN
@@ -45188,7 +45244,7 @@ lxP
 iFN
 iFN
 iFN
-iFN
+uOW
 jZZ
 nNX
 nNX
@@ -45327,8 +45383,8 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
+rvl
+rvl
 iFN
 iFN
 iFN
@@ -45356,8 +45412,8 @@ iFN
 iFN
 iFN
 iFN
-efY
 iFN
+auZ
 iFN
 iFN
 iFN
@@ -45522,8 +45578,8 @@ iFN
 iFN
 iFN
 iFN
-iFN
-iFN
+rvl
+rvl
 iFN
 iFN
 iFN
@@ -45554,13 +45610,13 @@ iFN
 iFN
 iFN
 iFN
+lxF
 iFN
 iFN
 iFN
 iFN
 iFN
-iFN
-jDP
+mbg
 iFN
 iFN
 iFN
@@ -45575,7 +45631,7 @@ iFN
 iFN
 lxF
 iFN
-iFN
+uMA
 jZZ
 nNX
 nNX
@@ -45756,7 +45812,7 @@ iFN
 lxF
 iFN
 iFN
-iFN
+gGe
 iFN
 pqd
 ubp
@@ -45891,7 +45947,7 @@ vUA
 vUA
 vUA
 iFN
-iFN
+jVw
 iFN
 iFN
 oFG
@@ -45917,7 +45973,7 @@ vUA
 iFN
 iFN
 iFN
-iFN
+enm
 iFN
 iFN
 gGe
@@ -46067,7 +46123,7 @@ iFN
 iFN
 gGe
 iFN
-iFN
+lxP
 iFN
 iFN
 vUA
@@ -46113,7 +46169,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+mOI
 iFN
 oFG
 oFG
@@ -46284,12 +46340,12 @@ gGe
 iFN
 iFN
 iFN
+qMo
 iFN
-iFN
+hgE
 hgE
 hgE
 hgE
-hgE
 iFN
 iFN
 iFN
@@ -46298,14 +46354,14 @@ hgE
 iFN
 iFN
 iFN
+qMo
 iFN
 iFN
 iFN
 iFN
 iFN
 iFN
-iFN
-iFN
+lxF
 iFN
 iFN
 iFN
@@ -46349,7 +46405,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+uMA
 iFN
 iFN
 jZZ
@@ -46469,7 +46525,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lxF
 iFN
 iFN
 iFN
@@ -46663,7 +46719,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lxP
 iFN
 iFN
 iFN
@@ -46718,7 +46774,7 @@ iFN
 enm
 iFN
 iFN
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -46909,11 +46965,11 @@ iFN
 oFG
 oFG
 iFN
-iFN
+jVw
 iFN
 gGe
 iFN
-rHP
+bhH
 xnE
 iFN
 iFN
@@ -47302,7 +47358,7 @@ vFs
 iFN
 iFN
 iFN
-iFN
+auZ
 iFN
 vFs
 iFN
@@ -48077,14 +48133,14 @@ lNb
 iFN
 iFN
 iFN
-iFN
+omD
 pqd
 lNb
 iFN
-iFN
+auZ
 efb
 iFN
-iFN
+auZ
 vFs
 pqd
 ubp
@@ -48271,7 +48327,7 @@ lNb
 iFN
 iFN
 iFN
-efY
+iFN
 pqd
 lNb
 iFN
@@ -48288,7 +48344,7 @@ gGe
 iFN
 iFN
 iFN
-iFN
+uMA
 iFN
 iFN
 jZZ
@@ -48470,7 +48526,7 @@ pqd
 lNb
 iFN
 iFN
-iFN
+qMo
 iFN
 xnE
 iFN
@@ -48479,7 +48535,7 @@ ubp
 lNb
 iFN
 iFN
-iFN
+uMA
 iFN
 ydQ
 qqW
@@ -49406,7 +49462,7 @@ iFN
 hgE
 hgE
 hgE
-rvl
+iFN
 iFN
 iFN
 iFN
