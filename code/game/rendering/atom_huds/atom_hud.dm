@@ -18,15 +18,13 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
  */
 /proc/initialize_atom_hud(path, list/hud_providers, id)
 	ASSERT(!GLOB.atom_huds[id])
-	var/datum/atom_hud/hud = new path
-	hud.providers = hud_providers
-	hud.id = id
+	var/datum/atom_hud/hud = new path(id, hud_providers)
 	GLOB.atom_huds[id] = hud
 
 /datum/atom_hud
 	/// id; if exists, we register with id too
 	var/id
-	/// list of typepaths of providers
+	/// list of typepaths or ids of providers
 	var/list/providers = list()
 
 	/// DO NOT CHANGE THIS VALUE IN RUNTIME!
@@ -34,6 +32,15 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 	/// if necessary.
 	var/auto_registration
 	#warn hook
+
+/datum/atom_hud/New(id, list/hud_providers)
+	if(!isnull(id))
+		src.id = id
+	if(!isnull(hud_providers))
+		src.providers = hud_providers
+
+/datum/atom_hud/proc/resolve_providers()
+	#warn impl
 
 //* Implementations - split off into their other files later. *//
 

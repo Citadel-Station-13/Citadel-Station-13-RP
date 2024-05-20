@@ -415,10 +415,12 @@
 	active_mousedown_item = null
 	SSping.currentrun -= src
 
-	//* cleanup mob-side stuff
+	//* cleanup rendering
 	// clear perspective
 	if(using_perspective)
 		set_perspective(null)
+	// clear HUDs
+	clear_atom_huds()
 
 	//* cleanup UI
 	// cleanup statbrowser

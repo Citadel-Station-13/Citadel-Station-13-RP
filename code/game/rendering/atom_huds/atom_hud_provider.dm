@@ -9,9 +9,10 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 		if(initial(provider_type.abstract_type) == provider_type)
 			continue
 		var/datum/atom_hud_provider/provider = new provider_type
-		.[provider_type] = provider
-		if(provider.id)
-			.[provider.id] = provider
+		if(.[provider.id])
+			stack_trace("dupe id [provider.id] between [.[provider.id]:type] and [protivder_type]")
+			continue
+		.[provider.id] = provider
 
 /**
  * instantiate a custom hud provider
@@ -51,6 +52,8 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	var/list/image/images = list()
 	/// perspectives with this provider enabled
 	var/list/datum/perspective/using_perspectives = list()
+	/// clients with this provider enabled
+	var/list/client/using_clients = list()
 
 	/// queued to update
 	var/list/atom/queued_for_update = list()
@@ -58,6 +61,8 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	var/update_queued = FALSE
 
 /datum/atom_hud_provider/New()
+	if(isnull(id))
+		id = type
 	ASSERT(layer_bias <= 100 && layer_bias >= 0)
 
 /datum/atom_hud_provider/proc/add_perspective(datum/perspective/perspective)
@@ -68,12 +73,22 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	using_perspectives -= perspective
 	perspective.remove_image(images)
 
+/datum/atom_hud_provider/proc/add_client(client/user)
+	using_clients += user
+	user.images += images
+
+/datum/atom_hud_provider/proc/remove_client(client/user)
+	using_clients -= user
+	user.images -= images
+
 /datum/atom_hud_provider/proc/remove(atom/A)
 	var/image/hud_image = A.atom_huds[type]
 	images -= hud_image
 	atoms -= A
 	for(var/datum/perspective/perspective as anything in using_perspectives)
 		perspective.remove_image(hud_image)
+	for(var/client/user as anything in using_clients)
+		user.images -= hud_image
 
 /datum/atom_hud_provider/proc/add_or_update(atom/A)
 	var/image/hud_image = A.atom_huds[type]
@@ -82,6 +97,8 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 		images += hud_image
 		for(var/datum/perspective/perspective as anything in using_perspectives)
 			perspective.add_image(hud_image)
+		for(var/client/user as anything in using_clients)
+			user.images += hud_image
 	update(A, hud_image)
 
 /datum/atom_hud_provider/proc/update(atom/A, image/plate)
