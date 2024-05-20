@@ -92,6 +92,11 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 		/datum/atom_hud_provider/special_role,
 	)
 
+/datum/atom_hud/world_bender
+	providers = list(
+		/datum/atom_hud_provider/overriding/world_bender_animals,
+	)
+
 #warn below
 
 /* HUD DATUMS */
