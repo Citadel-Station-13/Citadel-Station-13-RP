@@ -24,6 +24,9 @@
 	var/body_subtype
 	/// Does this thing belong to anyone?
 	var/faction
+	/// Does this thing leave something behind when you blow it up?
+	var/debris
+
 
 /obj/overmap/entity/fluff/Initialize(mapload)
 	. = ..()
@@ -49,11 +52,18 @@
 		desc = initial(desc)
 	return ..()
 
+/obj/overmap/entity/fluff/Destroy()
+	. = ..()
+	new debris(src.loc)
+	qdel(src)
+	return ..()
+
 /obj/overmap/entity/fluff/comet //Big ball of ice
 	name = "Comet"
 	desc = "A ball of ice spinning through space."
 	color = "#5bbbd3"
 	icon_state = "comet"
+	debris = /obj/overmap/tiled/hazard/dust
 
 /obj/overmap/entity/fluff/comet/Initialize(mapload)
 	. = ..()
@@ -70,6 +80,7 @@
 	desc = "A minor planet with negligible gravity."
 	color = "#eaa17c"
 	icon_state = "asteroid"
+	debris = /obj/overmap/tiled/hazard/meteor
 
 
 /obj/overmap/entity/fluff/asteroid/Initialize(mapload) //A Minor Planet AKA an Asteroid
@@ -79,7 +90,7 @@
 	scanned_icon = "asteroid"
 	scanner_desc = {"<b><i>Designation</i></b>: [scanned_name]<br>
 <b><i>Class</i></b>: [body_subtype]-type Asteroid. <br>
-<b><i>Diameter</i></b>: [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)]].[rand(0,9)]km. <br>
+<b><i>Diameter</i></b>: [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)].[rand(0,9)]km. <br>
 <b><i>Notice</i></b>: Automatic maneuvering is currently enforced to prevent a risk of collision.<br>"}
 
 /obj/overmap/entity/fluff/probe //Unmanned probes, scanning transmitting and generally clogging up space.
@@ -98,7 +109,7 @@
 /obj/overmap/entity/fluff/probe/allied/Initialize(mapload)
 	. = ..()
 	body_subtype=  pick("Communication","Observation","Navigation","Astrological")
-	faction=  pick("Nanotrasen","Vey-Med","Navigation","Astrological")
+	faction=  pick("Nanotrasen","Vey-Med","Hephaestus")
 	name = "[faction] Satellite: [(LEGACY_MAP_DATUM).starsys_name]-[rand(1,100)]"
 	scanned_icon = "probe"
 	scanner_desc = {"<b><i>Registration</i></b>: [scanned_name]<br>
@@ -118,7 +129,7 @@
 	faction=  pick("SDF","Occulum News","Donk Co.","Ward-Takashi GMB")
 	scanned_name = "[faction] Satellite: [(LEGACY_MAP_DATUM).starsys_name]-[rand(1,100)]"
 	scanned_icon = "probe"
-	scanner_desc = {"<b><i>Registration</i></b>: [scanned_name]<br>
+	scanner_desc = {"<b><i>Registration</i></b>: [name]<br>
 <b><i>Class</i></b>: Artificial [body_subtype] Satellite. <br>
 <b><i>Notice</i></b>: Damage to [faction] property may result in legal action.<br>"}
 
