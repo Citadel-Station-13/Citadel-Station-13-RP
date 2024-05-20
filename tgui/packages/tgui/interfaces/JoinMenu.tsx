@@ -58,17 +58,27 @@ export const JoinMenu = (props, context) => {
     <Window width={500} height={800}>
       <Window.Content overflow="auto">
         <Section title={"Welcome, " + data.charname}>
-          Round Duration: {data.duration}
-          Security Level: {data.security_level}
-          {!!data.evacuated && (
-            <NoticeBox
-              info={data.evacuated === 2}
-              warning={data.evacuated === 1 || data.evacuated === 3}>
-              {(data.evacuated === 2)? "A crew transfer is in progress."
-                : ((data.evacuated === 3)? "The installation has been evacuated."
-                  : "An evacuation is in progress.")}
-            </NoticeBox>
-          )}
+          <Stack vertical>
+            <Stack.Item>
+              Round Duration: {data.duration}
+            </Stack.Item>
+            <Stack.Item>
+              Security Level: {data.security_level}
+            </Stack.Item>
+          </Stack>
+          <Stack.Item>
+            {!!data.evacuated && (
+              <NoticeBox
+                info={data.evacuated === 2}
+                warning={data.evacuated === 1 || data.evacuated === 3}>
+                {(data.evacuated === 2)? "A crew transfer is in progress."
+                  : ((data.evacuated === 3)? "The installation has been evacuated."
+                    : "An evacuation is in progress.")}
+              </NoticeBox>
+            )}
+          </Stack.Item>
+
+
         </Section>
         <Section fill>
           <Stack vertical>
