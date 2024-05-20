@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 	/// DO NOT CHANGE THIS VALUE IN RUNTIME!
 	/// If set, we will automatically grant ourselves to mob's self-perspectives
 	/// if necessary.
-	var/auto_registration
+	var/auto_registration = FALSE
 	#warn hook
 
 /datum/atom_hud/New(id, list/hud_providers)
@@ -38,9 +38,26 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 		src.id = id
 	if(!isnull(hud_providers))
 		src.providers = hud_providers
+	if(auto_registration)
+		RegisterGlobalSignal(COMSIG_GLOBAL_MOB_NEW, PROC_REF(on_global_mob_new))
 
 /datum/atom_hud/proc/resolve_providers()
-	#warn impl
+	. = list()
+	for(var/id in providers)
+		. += GLOB.atom_hud_providers[id]
+
+/datum/atom_hud/proc/on_global_mob_new(mob/source)
+	if(!should_auto_register_on(source))
+		return
+	source.ensure_self_perspective()
+	source.self_perspective.add_atom_hud(src)
+
+/**
+ * if [auto_registration] is set, this is called to determine if we should
+ * be on a mob's self_perspective.
+ */
+/datum/atom_hud/proc/should_auto_register_on(mob/target)
+	return FALSE
 
 //* Implementations - split off into their other files later. *//
 
@@ -115,14 +132,6 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 			for(var/atom/A in hudatoms)
 				remove_from_single_hud(M, A)
 
-/datum/atom_hud/proc/remove_from_hud(atom/A)
-	if(!A)
-		return FALSE
-	for(var/mob/M in hudusers)
-		remove_from_single_hud(M, A)
-	hudatoms -= A
-	return TRUE
-
 /datum/atom_hud/proc/add_hud_to(mob/M)
 	if(!M)
 		return
@@ -154,20 +163,3 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 		if(!queued_to_see[M])
 			add_to_single_hud(M, A)
 	return TRUE
-
-/datum/atom_hud/proc/add_to_single_hud(mob/M, atom/A) //unsafe, no sanity apart from client
-	if(!M || !M.client || !A)
-		return
-	for(var/i in hud_icons)
-		if(A.hud_list[i])
-			M.client.images |= A.hud_list[i]
-
-//MOB PROCS
-/mob/proc/reload_huds()
-	for(var/datum/atom_hud/hud in GLOB.all_huds)
-		if(hud && hud.hudusers[src])
-			for(var/atom/A in hud.hudatoms)
-				hud.add_to_single_hud(src, A)
-
-/mob/new_player/reload_huds()
-	return

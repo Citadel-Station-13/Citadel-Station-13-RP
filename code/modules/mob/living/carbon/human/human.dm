@@ -65,16 +65,6 @@
 	QDEL_LIST_NULL(vore_organs)
 	return ..()
 
-/mob/living/carbon/human/prepare_data_huds()
-	//Update med hud images...
-	. = ..()
-	//...sec hud images...
-	update_hud_sec_implants()
-	update_hud_sec_job()
-	update_hud_sec_status()
-	//...and display them.
-	add_to_all_human_data_huds()
-
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))

@@ -73,8 +73,6 @@
 
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
 
-	reload_huds()
-
 	// reset perspective to using
 	reset_perspective(no_optimizations = TRUE)
 	// load rendering onto client's screen

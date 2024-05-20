@@ -7,14 +7,6 @@
 
 /* DATA HUD DATUMS */
 
-/atom/proc/add_to_all_human_data_huds()
-	for(var/datum/atom_hud/data/human/hud in GLOB.huds)
-		hud.add_to_hud(src)
-
-/atom/proc/remove_from_all_data_huds()
-	for(var/datum/atom_hud/data/hud in GLOB.huds)
-		hud.remove_from_hud(src)
-
 /mob/proc/update_hud_med_health()
 	update_atom_hud_provider(src, /datum/atom_hud_provider/medical_health)
 

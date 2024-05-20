@@ -23,8 +23,8 @@
 	// physiology
 	init_physiology()
 	// atom HUDs
-	set_key_focus(src)
 	prepare_huds()
+	set_key_focus(src)
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
 			continue
@@ -32,6 +32,8 @@
 		AA.onNewMob(src)
 	// todo: remove hooks
 	hook_vr("mob_new",list(src))
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
 	// abilities
 	init_abilities()
 	// inventory
@@ -81,6 +83,8 @@
 		else
 			// mind is not ours, null it out
 			mind = null
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
 	// this kicks out client
