@@ -130,6 +130,21 @@
 /mob/GenerateTag()
 	tag = "mob_[++next_mob_id]"
 
+/**
+ * Prepare the huds for this atom
+ *
+ * Goes through hud_possible list and adds the images to the hud_list variable (if not already
+ * cached)
+ *
+ * todo: this should be atom level but uhh lmao lol
+ */
+/mob/proc/prepare_huds()
+	if(!atom_huds_to_initialize)
+		return
+	for(var/hud in atom_huds_to_initialize)
+		update_atom_hud_provider(src, hud)
+	atom_huds_to_initialize = null
+
 /mob/proc/remove_screen_obj_references()
 	hands = null
 	pullin = null

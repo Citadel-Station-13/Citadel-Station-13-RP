@@ -66,7 +66,7 @@
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/human/job_id), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/job_id), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
@@ -144,7 +144,7 @@
 
 /obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/human/job_id, /datum/atom_hud/data/human/medical), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/job_id, /datum/atom_hud/data/human/medical), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
 	if(tgarscreen)

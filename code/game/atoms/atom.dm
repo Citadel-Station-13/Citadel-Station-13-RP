@@ -86,7 +86,7 @@
 	/// flags for resistances
 	var/integrity_flags = NONE
 
-	//? HUDs
+	//* HUDs (Atom)
 	/// atom hud typepath to image
 	var/list/image/atom_huds
 
