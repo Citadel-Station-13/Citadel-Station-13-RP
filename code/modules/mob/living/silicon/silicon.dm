@@ -267,6 +267,7 @@
 	var/sensor_type = input("Please select sensor type.", "Sensor Integration", null) as null|anything in list("Security","Medical","Disable")
 	if(isnull(sensor_type))
 		return
+
 	switch(hudmode)
 		if("Security")
 			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(src)

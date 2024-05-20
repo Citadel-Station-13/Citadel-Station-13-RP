@@ -9,15 +9,15 @@
 	if(.)
 		// i'd refactor nifsofts but i have a personal goddamn vendetta against nifs
 		for(var/i in data_huds)
-			var/datum/atom_hud/H = GLOB.huds[i]
-			H.add_hud_to(nif.human)
+			var/datum/atom_hud/hud = GLOB.atom_huds[i]
+			nif.human.self_perspective.add_atom_hud(hud)
 
 /datum/nifsoft/hud/deactivate(force)
 	. = ..()
 	if(.)
 		for(var/i in data_huds)
-			var/datum/atom_hud/H = GLOB.huds[i]
-			H.remove_hud_from(nif.human)
+			var/datum/atom_hud/hud = GLOB.atom_huds[i]
+			nif.human.self_perspective.remove_atom_hud(hud)
 
 /datum/nifsoft/hud/ar_civ
 	name = "AR Overlay (Civ)"

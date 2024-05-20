@@ -420,7 +420,7 @@
 	if(using_perspective)
 		set_perspective(null)
 	// clear HUDs
-	clear_atom_huds()
+	clear_atom_hud_providers()
 
 	//* cleanup UI
 	// cleanup statbrowser

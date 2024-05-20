@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 			continue
 		var/datum/atom_hud_provider/provider = new provider_type
 		if(.[provider.id])
-			stack_trace("dupe id [provider.id] between [.[provider.id]:type] and [protivder_type]")
+			stack_trace("dupe id [provider.id] between [.[provider.id]:type] and [provider_type]")
 			continue
 		.[provider.id] = provider
 

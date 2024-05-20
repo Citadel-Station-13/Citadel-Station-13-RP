@@ -1956,7 +1956,6 @@
 #include "code\game\rendering\atom_huds\atom_hud.dm"
 #include "code\game\rendering\atom_huds\atom_hud_provider.dm"
 #include "code\game\rendering\atom_huds\legacy.dm"
-#include "code\game\rendering\atom_huds\other_huds.dm"
 #include "code\game\rendering\clickcatcher\clickcatcher.dm"
 #include "code\game\rendering\fullscreen\fullscreen.dm"
 #include "code\game\rendering\legacy\ability_screen_objects.dm"

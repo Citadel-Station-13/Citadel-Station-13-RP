@@ -173,13 +173,11 @@
 	if((. = ..()))
 		if((. = ..()))
 			var/mob/living/carbon/human/H = nif.human
-			var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-			if(A && H)
-				A.add_hud_to(H)
+			var/datum/atom_hud/hud = GLOB.huds[/datum/atom_hud/world_bender/animals]
+			H.self_perspective.add_atom_hud(hud)
 
 /datum/nifsoft/worldbend/deactivate(var/force = FALSE)
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
-		var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-		if(A && H)
-			A.remove_hud_from(H)
+		var/datum/atom_hud/hud = GLOB.huds[/datum/atom_hud/world_bender/animals]
+		H.self_perspective.remove_atom_hud(hud)

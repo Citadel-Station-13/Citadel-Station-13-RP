@@ -212,7 +212,7 @@
  * RegisterSignal on SSdcs to listen to global signals.
  */
 /datum/proc/RegisterGlobalSignal(signal_type, proctype, override = FALSE)
-	RegisterSignal(SSdcs, signal_Type, proctype, override)
+	RegisterSignal(SSdcs, signal_type, proctype, override)
 
 /**
  * RegisterSignal on SSdcs to listen to global signals.
