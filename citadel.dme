@@ -3091,7 +3091,6 @@
 #include "code\modules\library\lib_machines.dm"
 #include "code\modules\library\lib_readme.dm"
 #include "code\modules\library\hardcode_library\_library.dm"
-#include "code\modules\library\hardcode_library\reference\xenomorph_facts.dm"
 #include "code\modules\lighting\__lighting_docs.dm"
 #include "code\modules\lighting\_lighting_defs.dm"
 #include "code\modules\lighting\emissive_blocker.dm"

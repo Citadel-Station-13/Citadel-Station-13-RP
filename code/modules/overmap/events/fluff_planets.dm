@@ -24,6 +24,8 @@
 	var/body_subtype
 	/// Does this thing belong to anyone?
 	var/faction
+	///How do you blow it up?
+	var/weaknesses
 	/// Does this thing leave something behind when you blow it up?
 	var/debris
 
@@ -54,6 +56,7 @@
 
 /obj/overmap/entity/fluff/Destroy()
 	. = ..()
+	addtimer(50)
 	new debris(src.loc)
 	qdel(src)
 	return ..()
@@ -64,6 +67,7 @@
 	color = "#5bbbd3"
 	icon_state = "comet"
 	debris = /obj/overmap/tiled/hazard/dust
+	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
 /obj/overmap/entity/fluff/comet/Initialize(mapload)
 	. = ..()
@@ -81,7 +85,7 @@
 	color = "#eaa17c"
 	icon_state = "asteroid"
 	debris = /obj/overmap/tiled/hazard/meteor
-
+	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE
 
 /obj/overmap/entity/fluff/asteroid/Initialize(mapload) //A Minor Planet AKA an Asteroid
 	. = ..()
@@ -97,6 +101,7 @@
 	name = "Unmanned Probe"
 	desc = "An small unmanned probe used for automated scanning or to help transmit data."
 	icon_state = "probe"
+	weaknesses = OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE | OVERMAP_WEAKNESS_EMP
 
 /obj/overmap/entity/fluff/probe/allied //Probes owned by NT, Vey-Med, Heph other allied groups.
 	name = "Allied Probe"

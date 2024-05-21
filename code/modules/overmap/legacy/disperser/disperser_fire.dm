@@ -61,7 +61,8 @@
 
 	for(var/obj/overmap/tiled/hazard/O in get_step(linked, overmapdir))
 		candidates += O
-
+	for(var/obj/overmap/entity/fluff/O in get_step(linked, overmapdir))
+		candidates += O
 	//Way to waste a charge
 	if(!length(candidates))
 		return TRUE
