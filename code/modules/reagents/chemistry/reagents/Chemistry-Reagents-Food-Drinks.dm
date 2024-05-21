@@ -1998,7 +1998,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#619494"
 	adj_temp = -5
-	hydration_factor = 9
+	hydration = 9
 
 	glass_name = "Ice"
 	glass_desc = "Generally, you're supposed to put something else in there too..."
