@@ -19136,7 +19136,9 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
 "cLb" = (
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/ausbushes/pointybush{
+	pixel_y = 12
+	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "cOE" = (
@@ -26519,10 +26521,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/excursion_dock)
-"tlg" = (
-/obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "tlr" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -40317,7 +40315,7 @@ acH
 acH
 lVJ
 acH
-acH
+qhn
 acH
 acH
 acH
@@ -40512,7 +40510,7 @@ acH
 acH
 acH
 acH
-acH
+qhn
 acH
 acH
 acH
@@ -40771,7 +40769,7 @@ aAd
 aAd
 acH
 acH
-acH
+qhn
 acH
 acH
 xbv
@@ -42519,7 +42517,7 @@ amn
 aej
 acH
 acH
-acH
+xbv
 aAd
 acH
 aAd
@@ -45750,7 +45748,7 @@ aUu
 aUu
 aWz
 aej
-acH
+jrR
 pOJ
 abu
 dvT
@@ -45943,7 +45941,7 @@ ayc
 aUu
 ary
 aej
-acH
+qhn
 acH
 pOJ
 yfM
@@ -48244,7 +48242,7 @@ aAd
 acH
 acH
 acH
-tlg
+acH
 acH
 acH
 acH
@@ -48656,7 +48654,7 @@ aQK
 acH
 acH
 acH
-acH
+jrR
 acH
 fam
 bSx
@@ -48838,6 +48836,7 @@ acH
 acH
 acH
 acH
+qhn
 acH
 acH
 acH
@@ -48847,8 +48846,7 @@ acH
 acH
 acH
 acH
-acH
-acH
+vmQ
 acH
 acH
 acH
@@ -49218,6 +49216,7 @@ acH
 acH
 acH
 acH
+xbv
 acH
 acH
 acH
@@ -49227,8 +49226,7 @@ acH
 acH
 acH
 acH
-acH
-acH
+qhn
 acH
 acH
 acH
@@ -49417,7 +49415,7 @@ acH
 acH
 acH
 acH
-acH
+xbv
 acH
 acH
 acH
@@ -49608,7 +49606,7 @@ acH
 acH
 acH
 acH
-acH
+qhn
 acH
 acH
 acH

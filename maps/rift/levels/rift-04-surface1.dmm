@@ -29932,6 +29932,10 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
+"suv" = (
+/obj/structure/flora/ausbushes/grassybush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "suV" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -42751,7 +42755,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+auZ
 iFN
 iFN
 iFN
@@ -42915,7 +42919,7 @@ oFG
 oFG
 iFN
 oFG
-iFN
+mOI
 iFN
 oFG
 oFG
@@ -43332,7 +43336,7 @@ vUA
 vUA
 iFd
 iFN
-iFN
+mOI
 iFN
 iFN
 iFN
@@ -43776,7 +43780,7 @@ iFN
 iFN
 iFN
 rvl
-iFN
+suv
 rvl
 rvl
 rvl
@@ -45577,7 +45581,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+suv
 rvl
 rvl
 iFN

@@ -1839,6 +1839,13 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/monotile,
 /area/rift/exterior/nuketown/interior)
+"ih" = (
+/obj/structure/flora/ausbushes/lavendergrass{
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ik" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/table,
@@ -5170,6 +5177,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
+"xA" = (
+/obj/structure/flora/ausbushes/fullgrass{
+	pixel_x = -8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "xB" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor,
@@ -5731,6 +5744,12 @@
 /obj/structure/fence/door/locked,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
+"Al" = (
+/obj/structure/flora/ausbushes/pointybush{
+	pixel_y = 12
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Ao" = (
 /obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
@@ -14379,7 +14398,7 @@ Rs
 Rs
 Rs
 Rs
-Rs
+sW
 Rs
 Rs
 Rs
@@ -16705,7 +16724,7 @@ Rs
 ho
 Rs
 Rs
-Rs
+sW
 Rs
 Rs
 Rs
@@ -21134,7 +21153,7 @@ Rs
 Rs
 Rs
 Rs
-Rs
+sW
 Rs
 Rs
 Rs
@@ -26460,7 +26479,7 @@ sv
 hi
 sv
 sv
-sv
+ih
 sv
 sv
 sv
@@ -27045,7 +27064,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -28598,7 +28617,7 @@ dQ
 dQ
 dQ
 sv
-sv
+hi
 sv
 sv
 sv
@@ -28828,7 +28847,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 iF
 iF
@@ -28989,7 +29008,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -30144,7 +30163,7 @@ sv
 hi
 sv
 sv
-sv
+gd
 sv
 dQ
 dQ
@@ -30570,7 +30589,7 @@ sv
 dQ
 dQ
 sv
-sv
+gd
 sv
 sv
 sv
@@ -30959,7 +30978,7 @@ dQ
 dQ
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -31695,7 +31714,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 dQ
@@ -33623,7 +33642,7 @@ sv
 sv
 sv
 sv
-sv
+tF
 sv
 sv
 sv
@@ -34590,7 +34609,7 @@ Fn
 IZ
 gQ
 sv
-sv
+tF
 sv
 sv
 sv
@@ -34838,7 +34857,7 @@ aW
 aW
 aW
 sv
-sv
+hi
 sv
 sv
 PP
@@ -35021,7 +35040,7 @@ PP
 PP
 PP
 sv
-sv
+gd
 sv
 sv
 sv
@@ -35410,7 +35429,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -35605,7 +35624,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 Fb
 Fb
@@ -35796,7 +35815,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -35988,11 +36007,11 @@ PP
 PP
 sv
 sv
+gd
 sv
 sv
 sv
-sv
-sv
+gd
 sv
 Fb
 Cf
@@ -36077,7 +36096,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -36168,7 +36187,7 @@ dQ
 dQ
 dQ
 sv
-sv
+Al
 sv
 PP
 PP
@@ -36379,7 +36398,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 Fb
@@ -36550,7 +36569,7 @@ Tq
 rd
 rd
 Tq
-sv
+xA
 sv
 dQ
 dQ
@@ -36568,14 +36587,14 @@ PP
 PP
 PP
 sv
+hi
 sv
 sv
 sv
 sv
 sv
 sv
-sv
-sv
+hi
 eV
 fk
 WH
@@ -36765,8 +36784,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+gd
+hi
 sv
 sv
 sv
@@ -36939,7 +36958,7 @@ NI
 NI
 Mr
 sv
-sv
+tF
 dQ
 dQ
 dQ
@@ -37149,7 +37168,7 @@ PP
 PP
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -37257,7 +37276,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -37346,7 +37365,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -37543,7 +37562,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 Fb
 bp
@@ -37732,7 +37751,7 @@ sv
 sv
 sv
 sv
-sv
+hi
 sv
 sv
 sv
@@ -37825,7 +37844,7 @@ sv
 sv
 sv
 sv
-sv
+Zv
 sv
 sv
 sv
@@ -38124,7 +38143,7 @@ sv
 hi
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -38793,13 +38812,13 @@ PP
 sv
 sv
 sv
+hi
 sv
 sv
 sv
 sv
 sv
-sv
-sv
+lL
 sv
 sv
 sv
@@ -39378,7 +39397,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -40356,7 +40375,7 @@ sv
 sv
 sv
 sv
-sv
+gd
 sv
 sv
 sv
@@ -40542,7 +40561,7 @@ sv
 sv
 sv
 sv
-sv
+lL
 sv
 sv
 sv
@@ -45091,7 +45110,7 @@ or
 we
 zL
 je
-we
+oE
 we
 we
 sv
@@ -45285,7 +45304,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -45479,7 +45498,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -45673,7 +45692,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -45867,7 +45886,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -46061,7 +46080,7 @@ qu
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -46255,7 +46274,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -46449,7 +46468,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -46643,7 +46662,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -46837,7 +46856,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -47031,7 +47050,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -47225,7 +47244,7 @@ qu
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -47419,7 +47438,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -47613,7 +47632,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -47807,7 +47826,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -48001,7 +48020,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
@@ -48195,7 +48214,7 @@ oE
 we
 zL
 je
-we
+oE
 we
 we
 we
