@@ -21,6 +21,12 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 	var/datum/atom_hud/hud = new path(id, hud_providers)
 	GLOB.atom_huds[id] = hud
 
+/proc/fetch_atom_hud(datum/atom_hud/hudlike)
+	RETURN_TYPE(/datum/atom_hud)
+	if(istype(hudlike))
+		return hudlike
+	return GLOB.atom_huds[hudlike]
+
 /datum/atom_hud
 	/// id; if exists, we register with id too
 	var/id
@@ -31,7 +37,6 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 	/// If set, we will automatically grant ourselves to mob's self-perspectives
 	/// if necessary.
 	var/auto_registration = FALSE
-	#warn hook
 
 /datum/atom_hud/New(id, list/hud_providers)
 	if(!isnull(id))
@@ -96,75 +101,3 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 	providers = list(
 		/datum/atom_hud_provider/overriding/world_bender_animals,
 	)
-
-#warn below
-
-/* HUD DATUMS */
-
-// TODO: atom_huds on mob with hud sources
-// TODO: /datum/hud_supplier for image metadata/hud list metadata
-// TODO: atom huds using hud supplier id lists, more id usage in general for dynamic gen
-
-/datum/atom_hud
-	/// list of typepaths
-
-	var/list/atom/hudatoms = list() //list of all atoms which display this hud
-	var/list/hudusers = list() //list with all mobs who can see the hud
-	var/list/hud_icons = list() //these will be the indexes for the atom's hud_list
-
-	var/list/next_time_allowed = list() //mobs associated with the next time this hud can be added to them
-	var/list/queued_to_see = list() //mobs that have triggered the cooldown and are queued to see the hud, but do not yet
-
-/datum/atom_hud/New()
-	GLOB.all_huds += src
-
-/datum/atom_hud/Destroy()
-	for(var/v in hudusers)
-		remove_hud_from(v)
-	for(var/v in hudatoms)
-		remove_from_hud(v)
-	GLOB.all_huds -= src
-	return ..()
-
-/datum/atom_hud/proc/remove_hud_from(mob/M)
-	if(!M || !hudusers[M])
-		return
-	if (!--hudusers[M])
-		hudusers -= M
-		if(queued_to_see[M])
-			queued_to_see -= M
-		else
-			for(var/atom/A in hudatoms)
-				remove_from_single_hud(M, A)
-
-/datum/atom_hud/proc/add_hud_to(mob/M)
-	if(!M)
-		return
-	if(!hudusers[M])
-		hudusers[M] = 1
-		if(next_time_allowed[M] > world.time)
-			if(!queued_to_see[M])
-				addtimer(CALLBACK(src, PROC_REF(show_hud_images_after_cooldown), M), next_time_allowed[M] - world.time)
-				queued_to_see[M] = TRUE
-		else
-			next_time_allowed[M] = world.time + ADD_HUD_TO_COOLDOWN
-			for(var/atom/A in hudatoms)
-				add_to_single_hud(M, A)
-	else
-		hudusers[M]++
-
-/datum/atom_hud/proc/show_hud_images_after_cooldown(M)
-	if(queued_to_see[M])
-		queued_to_see -= M
-		next_time_allowed[M] = world.time + ADD_HUD_TO_COOLDOWN
-		for(var/atom/A in hudatoms)
-			add_to_single_hud(M, A)
-
-/datum/atom_hud/proc/add_to_hud(atom/A)
-	if(!A)
-		return FALSE
-	hudatoms |= A
-	for(var/mob/M in hudusers)
-		if(!queued_to_see[M])
-			add_to_single_hud(M, A)
-	return TRUE

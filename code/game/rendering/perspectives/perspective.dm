@@ -377,7 +377,16 @@
 
 //* Atom HUDs *//
 
+/**
+ * accepts:
+ * * path
+ * * string id
+ * * instance
+ *
+ * currently will runtime if it's not a valid hud!
+ */
 /datum/perspective/proc/add_atom_hud(datum/atom_hud/hud)
+	hud = fetch_atom_hud(hud)
 	if(isnull(atom_hud_providers))
 		atom_hud_providers = list()
 	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
@@ -389,7 +398,16 @@
 			atom_hud_providers[provider] = list(hud.id)
 			provider.add_perspective(src)
 
+/**
+ * accepts:
+ * * path
+ * * string id
+ * * instance
+ *
+ * currently will runtime if it's not a valid hud!
+ */
 /datum/perspective/proc/remove_atom_hud(datum/atom_hud/hud)
+	hud = fetch_atom_hud(hud)
 	if(!length(atom_hud_providers))
 		return
 	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
@@ -399,6 +417,14 @@
 			atom_hud_providers -= provider
 			provider.remove_perspective(src)
 
+/**
+ * clears all atom hud providers
+ *
+ * * seriously don't use this unless you know what you're doing
+ * * "why are huds broken" --> 9 / 10 times it's because someone used this when they shouldn't
+ * * remember that /datum/perspective does NOT state track HUD registration for you; you have to ensure things are added/removed as necessary
+ * * hint: if it's not on /silicon/robot, /simple_mob, or /dead/observer (or you don't know what those words are), you shouldn't be using this!
+ */
 /datum/perspective/proc/clear_atom_hud_providers()
 	for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
 		provider.remove_perspective(src)

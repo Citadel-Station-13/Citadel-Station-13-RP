@@ -131,7 +131,7 @@
  *
  * This is simply "mob_"+ a global incrementing counter that goes up for every mob
  */
-/mob/GenerateTag()
+/mob/generate_tag()
 	tag = "mob_[++next_mob_id]"
 
 /**

@@ -1952,7 +1952,6 @@
 #include "code\game\rendering\client.dm"
 #include "code\game\rendering\mob.dm"
 #include "code\game\rendering\screen.dm"
-#include "code\game\rendering\atom_huds\alternate_appearance.dm"
 #include "code\game\rendering\atom_huds\atom_hud.dm"
 #include "code\game\rendering\atom_huds\atom_hud_provider.dm"
 #include "code\game\rendering\atom_huds\legacy.dm"

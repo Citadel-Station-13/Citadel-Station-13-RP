@@ -237,7 +237,7 @@
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
-		GenerateTag()
+		generate_tag()
 
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -847,7 +847,23 @@
 /atom/proc/get_nametag_desc(mob/user)
 	return "" //Desc itself is often too long to use
 
-/atom/proc/GenerateTag()
+/**
+ * generates our locate() tag
+ *
+ * why would we use tags?
+ * i'm glad you asked!
+ *
+ * some atoms / datums have special needs of 'too critical to allow shared text refs to wreak havoc'
+ * yes, usually, people need to be gc-aware and not allow text ref reuse to break things
+ * unfortunately this is still going to be an issue for legacy code
+ *
+ * so we don't allow things like /mobs to ever share the same reference used for REF(),
+ * because the chances of a collision is just too high
+ *
+ * not only that, this is currently the way things like mobs can generate things like their render source/target UIDs
+ * in the future we'll need to change that to a better UID system for each system, but, for now, this is why.
+ */
+/atom/proc/generate_tag()
 	return
 
 /**
