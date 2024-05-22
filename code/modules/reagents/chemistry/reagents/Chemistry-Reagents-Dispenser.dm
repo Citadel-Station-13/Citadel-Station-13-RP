@@ -77,7 +77,7 @@
 				if(4)
 					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
 				if(5)
-					to_chat(M,SPAN_DANGER("You no longer feel like you're going to"))
+					to_chat(M,SPAN_DANGER("You no longer feel like you're going to puke."))
 				if(6)
 					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
 		else
