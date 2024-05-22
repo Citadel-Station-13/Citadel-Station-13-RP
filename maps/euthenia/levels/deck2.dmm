@@ -456,6 +456,13 @@
 /obj/structure/catwalk,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/forward/port)
+"aoF" = (
+/obj/machinery/power/apc/super/critical/west_mount,
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "aoH" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/patient_wing)
@@ -503,6 +510,15 @@
 	name = "Server Base"
 	},
 /area/server)
+"aqo" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "aqx" = (
 /turf/simulated/open,
 /area/engineering/hallway)
@@ -8450,6 +8466,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/flight_deck)
+"glD" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/super/critical/east_mount,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "glF" = (
 /obj/machinery/camera/network/research{
 	dir = 8
@@ -11266,6 +11289,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/engineering/deck2/power_line)
+"iEN" = (
+/obj/map_helper/network_builder/power_cable/yellow/auto,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_gas)
 "iFb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -19994,6 +20021,12 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos/storage)
+"pal" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "pam" = (
 /obj/structure/railing{
 	dir = 8
@@ -21415,6 +21448,7 @@
 	},
 /obj/machinery/door/airlock/hatch,
 /obj/item/barrier_tape_segment/engineering,
+/obj/map_helper/network_builder/power_cable/cyan,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_gas)
 "qiF" = (
@@ -22641,6 +22675,12 @@
 /obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"rhS" = (
+/obj/structure/cable/cyan{
+	icon_state = "32-8"
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "rhW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
@@ -26203,6 +26243,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/patient_wing)
+"tUj" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "tUp" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -26761,6 +26807,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay2)
+"uuI" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_gas)
 "uuJ" = (
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/starboard)
@@ -28363,6 +28418,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
+"vGf" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "vGh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -30443,6 +30504,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
+"wWz" = (
+/obj/map_helper/network_builder/power_cable/cyan,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_gas)
 "wWB" = (
 /obj/structure/railing{
 	dir = 8
@@ -31065,6 +31130,12 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/engineering/deck2/power_line)
+"xtY" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "xul" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -38483,8 +38554,8 @@ noL
 noL
 noL
 noL
-noL
-noL
+glD
+pal
 jIa
 noL
 noL
@@ -38871,9 +38942,9 @@ nAg
 nAg
 nAg
 nAg
-nAg
-qLW
-qLW
+aoF
+wWz
+iEN
 qLW
 nAg
 nAg
@@ -39061,13 +39132,13 @@ enT
 xbl
 hNA
 omU
-nAg
-nAg
-nAg
-nAg
-nAg
-qLW
-qLW
+xtY
+vGf
+vGf
+vGf
+aqo
+uuI
+iEN
 qLW
 nAg
 nAg
@@ -39255,13 +39326,13 @@ omJ
 omJ
 iuP
 nAg
+tUj
 nAg
 nAg
 nAg
 nAg
-nAg
-qLW
-qLW
+wWz
+iEN
 qLW
 nAg
 nAg
@@ -39449,13 +39520,13 @@ xmY
 pmC
 hNA
 omU
+tUj
 nAg
 nAg
 nAg
 nAg
-nAg
-qLW
-qLW
+wWz
+iEN
 qLW
 nAg
 nAg
@@ -39643,13 +39714,13 @@ pCT
 pCT
 iDb
 mTs
+rhS
 hAc
 hAc
 hAc
 hAc
-hAc
-qLW
-qLW
+wWz
+iEN
 qLW
 hAc
 hAc
@@ -39842,8 +39913,8 @@ hAc
 hAc
 hAc
 hAc
-qLW
-qLW
+wWz
+iEN
 qLW
 hAc
 hAc
@@ -40036,8 +40107,8 @@ hAc
 hAc
 hAc
 hAc
-qLW
-qLW
+wWz
+iEN
 qLW
 hAc
 hAc
@@ -40230,8 +40301,8 @@ hAc
 hAc
 hAc
 hAc
-qLW
-qLW
+wWz
+iEN
 qLW
 hAc
 hAc
@@ -40424,14 +40495,14 @@ qLW
 qLW
 qLW
 qLW
-qLW
-qLW
-qLW
-qLW
-qLW
-qLW
-qLW
-qLW
+wWz
+iEN
+iEN
+iEN
+iEN
+iEN
+iEN
+iEN
 vKx
 hBq
 iVk
@@ -40618,14 +40689,14 @@ qLW
 qLW
 qLW
 qLW
-qLW
-qLW
-qLW
-qLW
-qLW
-qLW
-qLW
-qLW
+wWz
+wWz
+wWz
+wWz
+wWz
+wWz
+wWz
+wWz
 wJT
 bYT
 lfF
