@@ -26,6 +26,8 @@
 	//* Docking
 	/// stored docking codes
 	var/list/docking_codes
+	/// dock UIDs we always have codes for
+	var/list/docking_always_has_code_to_ids
 	/// current manual landing dock
 	var/obj/shuttle_dock/manual_dock
 	/// /datum/shuttle_docker instances by user
@@ -64,7 +66,11 @@
 	#warn impl
 
 /datum/shuttle_controller/proc/has_codes_for(obj/shuttle_dock/dock)
-	#warn impl
+	if(dock.docking_code in docking_codes)
+		return TRUE
+	if(dock.dock_id in docking_always_has_code_to_ids)
+		return TRUE
+	return FALSE
 
 /**
  * call to designate a manual landing position

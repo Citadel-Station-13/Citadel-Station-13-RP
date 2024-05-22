@@ -177,6 +177,10 @@
 
 	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
 
+
+
+//* Regular Movement *//
+
 /obj/shuttle_port/forceMove()
 	CRASH("attempted to forceMove a shuttle port")
 
@@ -189,6 +193,8 @@
 	if(!port_moving)
 		CRASH("attempted to abstract_move a shuttle port")
 	return ..()
+
+//* Grid Ops *//
 
 /obj/shuttle_port/grid_move(grid_flags, turf/new_turf)
 	return

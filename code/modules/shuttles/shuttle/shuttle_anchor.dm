@@ -178,10 +178,23 @@
  * @params
  * * dock - the dock in question
  * * direction - the direction we should dock
+ * * dock_bbox - llx, lly, urx, ury, cx, cy tuple, if you already have this information
  *
  * @return list(x, y, z)
  */
-/obj/shuttle_anchor/proc/coords_for_centered_docking(obj/shuttle_dock/dock, direction = src.dir)
+/obj/shuttle_anchor/proc/coords_for_centered_docking(obj/shuttle_dock/dock, direction = src.dir, list/dock_bbox)
+	if(isnull(dock_bbox))
+		dock_bbox = dock.absolute_bounding_box_coords()
+
+	switch(direction)
+		if(NORTH)
+			return list(
+				1,
+				2,
+				dock.z,
+			)
+
+
 	#warn impl
 
 /**
@@ -190,6 +203,12 @@
  * @return list(dirs...)
  */
 /obj/shuttle_anchor/proc/centered_docking_dirs_we_fit(obj/shuttle_dock/dock)
+	#warn impl
+
+/**
+ * will we fit in a dock in a centered docking?
+ */
+/obj/shuttle_anchor/proc/will_fit_centered_docking(obj/shuttle_dock/dock, direction = src.dir)
 	#warn impl
 
 /**
@@ -268,6 +287,63 @@
 				locate(bounds[1] - 1, bounds[4] + 1, anchor_z), // tl absolute outside
 				locate(bounds[3] + 1, bounds[2] - 1, anchor_z), // br absolute outside
 				locate(bounds[3] + 1, bounds[4] + 1, anchor_z), // tr absolute outside
+			)
+
+/**
+ * gets the topleft, topright, bottomleft, and bottomright turfs
+ * **right inside the shuttle bounding box**
+ * with respect to the given direction
+ *
+ * if EAST, as an example, this will be
+ * list(topright, bottomright, topleft, bottomleft)
+ * in respect to the **map**.
+ *
+ * why? because that is the topleft, topright, bottomleft, and bottomright in
+ * respect to the EAST direction!
+ *
+ * todo: coords list(x,y,z) version
+ *
+ * @params
+ * * turf/location - turf or list(x,y,z)
+ * * direction - direction we'll be in / at
+ */
+/obj/shuttle_anchor/proc/relative_tl_tr_bl_br_inside_turfs_at(turf/location, direction)
+	var/anchor_z
+
+	if(islist(location))
+		anchor_z = location[3]
+	else
+		anchor_z = location.z
+
+	var/list/bounds = absolute_llx_lly_urx_ury_coords_at(location, direction)
+	switch(direction)
+		if(NORTH)
+			return list(
+				locate(bounds[1], bounds[4], anchor_z), // tl absolute inside
+				locate(bounds[3], bounds[4], anchor_z), // tr absolute inside
+				locate(bounds[1], bounds[2], anchor_z), // bl absolute inside
+				locate(bounds[3], bounds[2], anchor_z), // br absolute inside
+			)
+		if(SOUTH)
+			return list(
+				locate(bounds[3], bounds[2], anchor_z), // br absolute inside
+				locate(bounds[1], bounds[2], anchor_z), // bl absolute inside
+				locate(bounds[3], bounds[4], anchor_z), // tr absolute inside
+				locate(bounds[1], bounds[4], anchor_z), // tl absolute inside
+			)
+		if(EAST)
+			return list(
+				locate(bounds[3], bounds[4], anchor_z), // tr absolute inside
+				locate(bounds[3], bounds[2], anchor_z), // br absolute inside
+				locate(bounds[1], bounds[4], anchor_z), // tl absolute inside
+				locate(bounds[1], bounds[2], anchor_z), // bl absolute inside
+			)
+		if(WEST)
+			return list(
+				locate(bounds[1], bounds[2], anchor_z), // bl absolute inside
+				locate(bounds[1], bounds[4], anchor_z), // tl absolute inside
+				locate(bounds[3], bounds[2], anchor_z), // br absolute inside
+				locate(bounds[3], bounds[4], anchor_z), // tr absolute inside
 			)
 
 /**

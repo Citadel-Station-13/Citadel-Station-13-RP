@@ -4563,6 +4563,7 @@
 #include "code\modules\shuttles\dock\shuttle_dock_corner.dm"
 #include "code\modules\shuttles\dock\subtypes\ephemeral.dm"
 #include "code\modules\shuttles\dock\subtypes\ferry_start.dm"
+#include "code\modules\shuttles\dock\subtypes\landing_pad.dm"
 #include "code\modules\shuttles\dock\subtypes\overmap_start.dm"
 #include "code\modules\shuttles\dock\subtypes\web_start.dm"
 #include "code\modules\shuttles\legacy\escape_pods.dm"

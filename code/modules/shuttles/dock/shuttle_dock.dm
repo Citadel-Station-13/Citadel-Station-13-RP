@@ -237,6 +237,86 @@
 /obj/shuttle_dock/proc/unregister_dock()
 	return SSshuttle.unregister_dock(src)
 
+/obj/shuttle_dock/Move(...)
+	return FALSE
+
+/obj/shuttle_dock/doMove(atom/destination)
+	if(create_bounding_box_area)
+		CRASH("we cannot move a shuttle dock if it creates its own area.")
+	unregister_dock()
+	. = ..()
+	if(!check_bounds())
+		stack_trace("shuttle dock got moved somewhere where its bounds fail checks.")
+		return
+	register_dock()
+
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_landed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
+	return
+
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_docked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
+	return
+
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_departed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
+	return
+
+/**
+ * called after all hooks finish
+ */
+/obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
+	return
+
+/obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
+	if(docking_hard_restrict)
+		#warn redo
+		if(islist(docking_hard_restrict) && !(shuttle.type in docking_hard_restrict))
+			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
+		else if(shuttle.type != docking_hard_restrict)
+			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
+	var/valid = shuttle.has_codes_for(src)
+	if(valid)
+		return SHUTTLE_DOCKING_AUTHORIZATION_VALID
+	return docking_code_required? SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORIZATION_INVALID
+
+/**
+ * get the area instance that should be left behind
+ */
+/obj/shuttle_dock/proc/base_area_instance()
+	if(!istype(base_area))
+		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
+	return base_area
+
+/**
+ * loads our roundstart shuttle
+ *
+ * @return /datum/shuttle
+ */
+/obj/shuttle_dock/proc/load_shuttle(datum/shuttle_template/force_template)
+	RETURN_TYPE(/datum/shuttle)
+	#warn impl
+
+/**
+ * initializes our roundstart shuttle (usually by giving it a controller)
+ */
+/obj/shuttle_dock/proc/init_shuttle(datum/shuttle/shuttle)
+	return
+
+/**
+ * called after our initial shuttle is loaded and initialized
+ */
+/obj/shuttle_dock/proc/ready_shuttle(datum/shuttle/loaded)
+	return
+
+//* bounding box *//
+
 /obj/shuttle_dock/proc/check_bounds()
 	#warn ensure not out of bounds/nullspace.
 
@@ -336,83 +416,68 @@
 				NORTH,
 			)
 
-/obj/shuttle_dock/Move(...)
-	return FALSE
-
-/obj/shuttle_dock/doMove(atom/destination)
-	if(create_bounding_box_area)
-		CRASH("we cannot move a shuttle dock if it creates its own area.")
-	unregister_dock()
-	. = ..()
-	if(!check_bounds())
-		stack_trace("shuttle dock got moved somewhere where its bounds fail checks.")
-		return
-	register_dock()
-
 /**
- * called after all hooks finish
- */
-/obj/shuttle_dock/proc/on_shuttle_landed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
-	return
-
-/**
- * called after all hooks finish
- */
-/obj/shuttle_dock/proc/on_shuttle_docked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
-	return
-
-/**
- * called after all hooks finish
- */
-/obj/shuttle_dock/proc/on_shuttle_departed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
-	return
-
-/**
- * called after all hooks finish
- */
-/obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
-	return
-
-/obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
-	if(docking_hard_restrict)
-		#warn redo
-		if(islist(docking_hard_restrict) && !(shuttle.type in docking_hard_restrict))
-			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
-		else if(shuttle.type != docking_hard_restrict)
-			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
-	var/valid = shuttle.has_codes_for(src)
-	if(valid)
-		return SHUTTLE_DOCKING_AUTHORIZATION_VALID
-	return docking_code_required? SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORIZATION_INVALID
-
-/**
- * get the area instance that should be left behind
- */
-/obj/shuttle_dock/proc/base_area_instance()
-	if(!istype(base_area))
-		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
-	return base_area
-
-/**
- * loads our roundstart shuttle
+ * get real (non-directional) bounding box lowerleft/upperright x/y's
  *
- * @return /datum/shuttle
+ * @return list(llx, lly, urx, ury)
  */
-/obj/shuttle_dock/proc/load_shuttle(datum/shuttle_template/force_template)
-	RETURN_TYPE(/datum/shuttle)
-	#warn impl
+/obj/shuttle_dock/proc/absolute_llx_lly_urx_ury_coords()
+	var/turf/location = get_turf(src)
+
+	var/anchor_x
+	var/anchor_y
+	var/anchor_z
+
+	anchor_x = location.x
+	anchor_y = location.y
+	anchor_z = location.z
+
+	// take a guess as to what these mean (lowerleft/upperright x/y)
+	var/real_llx
+	var/real_lly
+	var/real_urx
+	var/real_ury
+
+	switch(direction)
+		if(NORTH)
+			real_llx = anchor_x - offset_x
+			real_lly = anchor_y + offset_y - (size_y - 1)
+			real_urx = anchor_x - offset_x + (size_x - 1)
+			real_ury = anchor_y + offset_y
+		if(SOUTH)
+			real_llx = anchor_x + offset_x - (size_x - 1)
+			real_lly = anchor_y - offset_y
+			real_urx = anchor_x + offset_x
+			real_ury = anchor_y - offset_y + (size_y - 1)
+		if(EAST)
+			real_llx = anchor_x + offset_y - (size_y - 1)
+			real_lly = anchor_y + offset_x - (size_x - 1)
+			real_urx = anchor_x + offset_y
+			real_ury = anchor_y + offset_x
+		if(WEST)
+			real_llx = anchor_x - offset_y
+			real_lly = anchor_y - offset_x
+			real_urx = anchor_x - offset_y + (size_y - 1)
+			real_ury = anchor_y - offset_x + (size_x - 1)
+
+	return list(
+		real_llx,
+		real_lly,
+		real_urx,
+		real_ury,
+	)
 
 /**
- * initializes our roundstart shuttle (usually by giving it a controller)
+ * if center is split on a turf, we go with the lower number.
+ *
+ * @return list(llx, lly, urx, ury, cx, cy) where c is 'center'
  */
-/obj/shuttle_dock/proc/init_shuttle(datum/shuttle/shuttle)
-	return
+/obj/shuttle_dock/proc/absolute_bounding_box_coords()
+	var/list/augmenting = absolute_llx_lly_urx_ury_coords()
+	augmenting += round(augmenting[1] + (augmenting[3] - augmenting[1]) / 2) // 5
+	augmenting += round(augmenting[2] + (augmenting[4] - augmenting[2]) / 2) // 6
+	return augmenting
 
-/**
- * called after our initial shuttle is loaded and initialized
- */
-/obj/shuttle_dock/proc/ready_shuttle(datum/shuttle/loaded)
-	return
 
 //* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//
 
@@ -427,11 +492,3 @@
 
 /obj/shuttle_dock/grid_finished(grid_flags, rotation_angle)
 	return
-
-/**
- * literally just a landing pad
- */
-/obj/shuttle_dock/landing_pad
-	icon_state = "dock_center"
-	centered_landing_only = TRUE
-	centered_landing_allowed = TRUE
