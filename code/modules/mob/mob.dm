@@ -25,11 +25,6 @@
 	// atom HUDs
 	prepare_huds()
 	set_key_focus(src)
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
 	// todo: remove hooks
 	hook_vr("mob_new",list(src))
 	// signal

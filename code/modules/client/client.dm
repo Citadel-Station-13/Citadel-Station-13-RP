@@ -59,7 +59,6 @@
 	//* HUDs *//
 	/// active atom HUD providers associated to a list of ids or paths of atom huds that's providing it.
 	var/list/datum/atom_hud_provider/atom_hud_providers
-	#warn impl
 
 	//? Rendering
 	/// Click catcher
