@@ -29,7 +29,7 @@
 /mob/proc/update_hud_antag()
 	update_atom_hud_provider(src, /datum/atom_hud_provider/special_role)
 
-/proc/RoundHealth(health, icon = GLOB.hud_icon_files[LIFE_HUD])
+/proc/RoundHealth(health, icon = 'icons/screen/atom_hud/health.dmi')
 	var/list/icon_states = icon_states(icon)
 	for(var/icon_state in icon_states)
 		if(health >= text2num(icon_state))

@@ -27,7 +27,7 @@
 	a_drain = 0.01
 	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_CIVILIAN)
-	data_huds = list(/datum/atom_hud/human/job_id)
+	data_huds = list(/datum/atom_hud/data/human/job_id)
 	incompatible_with = list(NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
 
 /datum/nifsoft/hud/ar_med
@@ -61,7 +61,7 @@
 	cost = 150
 	access = ACCESS_ENGINEERING_MAIN
 	a_drain = 0.01
-	data_huds = list(/datum/atom_hud/human/job_id)
+	data_huds = list(/datum/atom_hud/data/human/job_id)
 	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_ENGINE)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
@@ -73,7 +73,7 @@
 	cost = 50
 	access = ACCESS_SCIENCE_MAIN
 	a_drain = 0.01
-	data_huds = list(/datum/atom_hud/human/job_id)
+	data_huds = list(/datum/atom_hud/data/human/job_id)
 	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_SCIENCE)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_OMNI_AR)

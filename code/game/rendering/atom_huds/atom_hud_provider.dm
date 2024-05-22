@@ -189,7 +189,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 					break
 
 /datum/atom_hud_provider/security_job
-	icon = 'icons/screen/atom_hud/hud.dmi'
+	icon = 'icons/screen/atom_hud/job.dmi'
 
 /datum/atom_hud_provider/security_job/update(atom/A, image/plate)
 	if(!ishuman(A))
