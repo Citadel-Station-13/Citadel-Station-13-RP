@@ -1431,11 +1431,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "aTO" = (
-/obj/structure/lattice,
 /obj/structure/sign/deck2{
 	pixel_y = 32
 	},
-/turf/simulated/open,
+/turf/simulated/wall/r_wall/prepainted/security,
 /area/security/brig)
 "aTP" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -1455,6 +1454,12 @@
 "aUc" = (
 /turf/simulated/open,
 /area/hydroponics/garden)
+"aUk" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "aUo" = (
 /obj/machinery/shower{
 	pixel_y = 16
@@ -2267,6 +2272,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2)
+"bxI" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "32-8"
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "bxO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2596,6 +2610,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_two/forward)
+"bLh" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "bLr" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3916,13 +3939,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"cPJ" = (
-/obj/structure/lattice,
-/obj/machinery/camera/network/security{
-	dir = 8
-	},
-/turf/simulated/open,
-/area/security/brig)
 "cQi" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -4611,6 +4627,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
+"dpf" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "dpw" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -4692,6 +4714,7 @@
 	dir = 8
 	},
 /obj/structure/lattice,
+/obj/machinery/camera/network/security,
 /turf/simulated/open,
 /area/security/brig)
 "dty" = (
@@ -8224,6 +8247,13 @@
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos)
+"fZj" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "fZK" = (
 /obj/structure/closet/crate,
 /obj/item/circuitboard/smes,
@@ -8848,6 +8878,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/medical)
+"gzz" = (
+/obj/structure/railing,
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "gzB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 8
@@ -10366,6 +10400,12 @@
 /obj/structure/closet/l3closet/janitor,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/hallway/deck2/stairs)
+"hVl" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "hVr" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
@@ -11356,6 +11396,12 @@
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/reinforced,
 /area/main_map/maintenance/panic_bunker)
+"iId" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "iIR" = (
 /obj/structure/sign/warning/radioactive,
 /turf/simulated/wall/r_wall,
@@ -13376,12 +13422,27 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/main_map/Hangar_bay/deck2/b)
+"kgB" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "kgM" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two)
+"khv" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "kiL" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -16153,6 +16214,12 @@
 /obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/storage)
+"moq" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "mow" = (
 /obj/effect/floor_decal/corner/paleblue/bordercee{
 	dir = 8
@@ -17415,6 +17482,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
+"nlk" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/engine_gas)
 "nlD" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -20454,11 +20527,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/cargo)
-"psS" = (
-/obj/structure/lattice,
-/obj/machinery/camera/network/security,
-/turf/simulated/open,
-/area/security/brig)
 "ptq" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
@@ -22429,6 +22497,12 @@
 "qUz" = (
 /turf/simulated/wall/r_wall,
 /area/main_map/hallway/deck2/starboard_fore)
+"qVt" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_gas)
 "qVu" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -22458,6 +22532,15 @@
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/space)
+"qWq" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_gas)
 "qWZ" = (
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2/port_fore)
@@ -22678,6 +22761,9 @@
 "rhS" = (
 /obj/structure/cable/cyan{
 	icon_state = "32-8"
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/simulated/open,
 /area/engineering/engine_gas)
@@ -23244,6 +23330,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/ai)
+"rDo" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "rDv" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
@@ -27863,6 +27959,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_two/starboard)
+"viw" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "vjg" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	anchored = 1
@@ -29151,6 +29254,13 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/gas_storage)
+"wgr" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/engineering/engine_gas)
 "whq" = (
 /obj/structure/catwalk,
 /obj/machinery/door/firedoor{
@@ -37817,7 +37927,7 @@ hfU
 hfU
 hfU
 hfU
-xGo
+hfU
 bvd
 fPT
 fPT
@@ -39138,13 +39248,13 @@ vGf
 vGf
 aqo
 uuI
-iEN
-qLW
-nAg
-nAg
-nAg
-nAg
-nAg
+qWq
+qVt
+dpf
+dpf
+dpf
+dpf
+nlk
 omU
 aTO
 gyB
@@ -39338,9 +39448,9 @@ nAg
 nAg
 nAg
 nAg
-nAg
+iId
 omU
-psS
+rff
 dth
 rnJ
 uKe
@@ -39532,10 +39642,10 @@ nAg
 nAg
 nAg
 nAg
-nAg
+iId
 omU
+rff
 tJA
-cPJ
 tJA
 rff
 nbN
@@ -39715,18 +39825,18 @@ pCT
 iDb
 mTs
 rhS
-hAc
-hAc
-hAc
-hAc
+kgB
+kgB
+kgB
+fZj
 wWz
 iEN
 qLW
+rDo
 hAc
 hAc
-hAc
-hAc
-hAc
+bLh
+bxI
 mTs
 rff
 rff
@@ -39912,11 +40022,11 @@ hAc
 hAc
 hAc
 hAc
-hAc
+gzz
 wWz
 iEN
 qLW
-hAc
+aUk
 hAc
 hAc
 hAc
@@ -40106,11 +40216,11 @@ hAc
 hAc
 hAc
 hAc
-hAc
+gzz
 wWz
 iEN
 qLW
-hAc
+aUk
 hAc
 hAc
 hAc
@@ -40296,19 +40406,19 @@ jQI
 jQI
 iKN
 omU
-hAc
-hAc
-hAc
-hAc
-hAc
+hVl
+hVl
+hVl
+hVl
+viw
 wWz
 iEN
 qLW
-hAc
-hAc
-hAc
-hAc
-hAc
+khv
+hVl
+hVl
+hVl
+hVl
 omU
 cbf
 kJt
@@ -40878,19 +40988,19 @@ oXm
 paQ
 pHd
 omU
-hAc
-hAc
-hAc
-hAc
-hAc
+moq
+kgB
+kgB
+kgB
+wgr
 qLW
 qLW
 qLW
-hAc
-hAc
-hAc
-hAc
-hAc
+bLh
+kgB
+kgB
+kgB
+moq
 kJt
 xST
 hzI
@@ -41072,19 +41182,19 @@ nrV
 hwP
 cvs
 hwP
+nAg
 hAc
 hAc
 hAc
-hAc
-hAc
+gzz
 qLW
 qLW
 qLW
+aUk
 hAc
 hAc
 hAc
-hAc
-hAc
+nAg
 kJt
 xST
 lfF
@@ -41266,19 +41376,19 @@ hwP
 qUy
 kFX
 hwP
-hAc
-hAc
-hAc
-hAc
-hAc
+nAg
+nAg
+nAg
+nAg
+nAg
 qLW
 qLW
 qLW
-hAc
-hAc
-hAc
-hAc
-hAc
+nAg
+nAg
+nAg
+nAg
+nAg
 kJt
 tef
 djS
