@@ -65,7 +65,8 @@
  */
 /datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
 	log_tgui(user,
-		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
+		// "new [interface] fancy [user?.client?.prefs.tgui_fancy]",
+		"new [interface] fancy 1",
 		src_object = src_object)
 	src.user = user
 	src.src_object = src_object
@@ -112,7 +113,9 @@
 	if(!window.is_ready())
 		window.initialize(
 			strict_mode = TRUE,
-			fancy = user.client.prefs.tgui_fancy,
+			// todo: do we need that lmao
+			// fancy = user.client.prefs.tgui_fancy,
+			fancy = TRUE,
 			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
 			))
@@ -275,8 +278,10 @@
 		"refreshing" = refreshing,
 		"window" = list(
 			"key" = window_key,
-			"fancy" = user.client.prefs.tgui_fancy,
-			"locked" = user.client.prefs.tgui_lock,
+			// "fancy" = user.client.prefs.tgui_fancy,
+			// "locked" = user.client.prefs.tgui_lock,
+			"fancy" = TRUE,
+			"locked" = TRUE,
 		),
 		"client" = list(
 			"ckey" = user.client.ckey,
@@ -461,6 +466,8 @@
 
 /**
  * Registers a datum as a module into this UI.
+ *
+ * todo: why is 'interface' a param again..?
  *
  * @params
  * * module - the module in question

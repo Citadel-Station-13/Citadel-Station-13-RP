@@ -389,7 +389,7 @@
 /obj/item/proc/is_being_worn()
 	if(!worn_slot)
 		return FALSE
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(worn_slot)
 	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
 
 /**

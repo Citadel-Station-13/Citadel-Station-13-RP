@@ -2,7 +2,7 @@
 /client/verb/wiki(query as text)
 	set name = "wiki"
 	set desc = "Type what you want to know about.  This will open the wiki on your web browser."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	if(config_legacy.wikiurl)
 		if(query)
 			if(config_legacy.wikisearchurl)
@@ -96,19 +96,20 @@
 
 /client/verb/changelog()
 	set name = "Changelog"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	if(!GLOB.changelog_tgui)
 		GLOB.changelog_tgui = new /datum/changelog()
 
 	GLOB.changelog_tgui.ui_interact(usr)
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		prefs.save_preferences()
+
+	if(player.immediately_available() && player.player_misc["changelog_hash"] != GLOB.changelog_hash)
+		player.player_misc["changelog_hash"] = GLOB.changelog_hash
+		player.save()
 		winset(src, "infowindow.changelog", "font-style=;")
 
 /client/verb/hotkeys_help()
 	set name = "hotkeys-help"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	var/admin = {"<font color='purple'>
 Admin:
@@ -227,13 +228,3 @@ Any-Mode: (hotkey doesn't need to be on)
 		to_chat(src, other)
 	if(holder)
 		to_chat(src, admin)
-
-/client/verb/skin_toggle_hotkeys()
-	set name = "Toggle Hotkeys"
-	set category = "Preferences"
-	set desc = "Toggle input control scheme"
-	set hidden = TRUE
-
-	prefs.hotkeys = !prefs.hotkeys
-	set_macros()
-

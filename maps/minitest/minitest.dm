@@ -30,7 +30,7 @@
 	dock_type		= "surface"
 	boss_name		= "Central Command-Testing"
 	boss_short		= "CentCom-Testing"
-	company_name	= "NanoTrasen-Testing"
+	company_name	= "Nanotrasen-Testing"
 	company_short	= "NT-Testing"
 	starsys_name	= "Virgo-Erigone-Testing"
 

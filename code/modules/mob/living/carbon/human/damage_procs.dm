@@ -292,7 +292,7 @@
 	if(!parts.len)	return
 	var/obj/item/organ/external/picked = pick(parts)
 	if(picked.heal_damage(brute,burn))
-		UpdateDamageIcon()
+		update_damage_overlay()
 	update_health()
 
 
@@ -320,7 +320,7 @@
 		parts -= picked
 	update_health()
 	if(update)
-		UpdateDamageIcon()
+		update_damage_overlay()
 
 
 ////////////////////////////////////////////

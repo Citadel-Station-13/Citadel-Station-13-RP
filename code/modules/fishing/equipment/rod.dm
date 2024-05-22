@@ -270,7 +270,7 @@
 			bait_state = real_bait.rod_overlay_icon_state
 		. += bait_state
 
-/obj/item/fishing_rod/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/fishing_rod/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	var/slot_key = slot_meta.render_key
 	var/line_color = line?.line_color || default_line_color
 	var/mutable_appearance/reel_overlay = mutable_appearance(icon_used, "reel_[slot_key]")

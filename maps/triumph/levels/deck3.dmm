@@ -25066,6 +25066,9 @@
 /obj/item/tank/oxygen{
 	pixel_y = -4
 	},
+/obj/item/hardsuit/medical{
+	pixel_y = -4
+	},
 /obj/structure/table/rack,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)

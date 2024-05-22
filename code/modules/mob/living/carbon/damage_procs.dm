@@ -45,7 +45,7 @@
 
 	if(!defer_updates && .)
 		update_health()
-		UpdateDamageIcon()
+		update_damage_overlay()
 
 /mob/living/carbon/take_overall_damage(brute, burn, damage_mode, weapon_descriptor, defer_updates)
 	if(status_flags & STATUS_GODMODE)
@@ -61,4 +61,4 @@
 
 	if(!defer_updates && .)
 		update_health()
-		UpdateDamageIcon()
+		update_damage_overlay()

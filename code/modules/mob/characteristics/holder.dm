@@ -131,9 +131,9 @@
 				add_talent(id)
 	return TRUE
 
-/datum/characteristics_holder/clone()
+/datum/characteristics_holder/clone(include_contents)
 	RETURN_TYPE(/datum/characteristics_holder)
-	var/datum/characteristics_holder/cloning = new
+	var/datum/characteristics_holder/cloning = ..()
 	cloning.skills = skills.Copy()
 	cloning.stats = stats.Copy()
 	cloning.talents = talents.Copy()

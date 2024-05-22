@@ -555,7 +555,7 @@
 
 /obj/machinery/cryopod/verb/eject()
 	set name = "Eject Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr.stat != 0)
 		return
@@ -581,7 +581,7 @@
 
 /obj/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0 || !check_occupant_allowed(usr))

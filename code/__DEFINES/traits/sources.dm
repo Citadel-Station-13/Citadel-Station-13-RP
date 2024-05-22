@@ -19,6 +19,11 @@
 /// From a RIGsuit's controller
 #define RIG_TRAIT "rig"
 
+//* Machinery *//
+
+/// cryotube
+#define CRYO_TUBE_TRAIT "cryotube"
+
 //? Mob Sources
 
 /// From species

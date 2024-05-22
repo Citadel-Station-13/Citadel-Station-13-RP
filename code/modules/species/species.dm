@@ -4,6 +4,8 @@
  * They are **not** singletons, however, they are globally cached as a static set
  * for use in preferences to determine default properties/whatever
  *
+ * todo: make them singletons
+ *
  * ? Someday we'll rework this. Someday. I believe.
  *
  * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
@@ -40,11 +42,18 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
-	//? Traits / Physiology
+	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
 	/// physiology modifier to add - path or instance
 	var/datum/physiology_modifier/mob_physiology_modifier
+
+	//* Sprite Accessories *//
+	/// default sprite accessories for each slot; will render onto mobs if they don't have one specifically set.
+	/// set to id/typepath to have it resolved during init.
+	var/list/sprite_accessory_defaults = list()
+
+	// todo: old code below
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -114,20 +123,6 @@
 	/// The basic skin colours this species uses.
 	var/list/base_skin_colours
 
-	//? Tail
-	/// Name of tail state in species effects icon file.
-	var/tail
-	/// If set, the icon to obtain tail animation states from.
-	var/tail_animation
-	var/tail_hair
-	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
-	var/icobase_tail = 0
-
-	//? Wing
-	var/wing_hair
-	var/wing
-	var/wing_animation
-	var/icobase_wing
 
 	//? Organs
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
@@ -510,6 +505,8 @@
 			built += new path
 		abilities = built
 
+	sprite_accessory_defaults = resolve_sprite_accessory_key_list_inplace(sprite_accessory_defaults)
+
 /**
  * called when we apply to a mob
  *
@@ -625,9 +622,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	box.obj_storage.fit_to_contents(no_shrink = TRUE)
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
 
 /**
  * called to ensure organs are consistent with our species's
@@ -872,9 +869,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 	return FALSE
 
-// todo: serialize, deserialize, and fix this shit lmao
-/datum/species/clone()
-	var/datum/species/created = ..()
+/datum/species/clone(include_contents)
+	var/datum/species/created = new type
 	created.copy_from(src)
 	return created
 
@@ -898,9 +894,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	base_species = to_copy.name
 	icobase = to_copy.icobase
 	deform = to_copy.deform
-	tail = to_copy.tail
-	tail_animation = to_copy.tail_animation
-	icobase_tail = to_copy.icobase_tail
+	sprite_accessory_defaults = to_copy.sprite_accessory_defaults.Copy()
 	color_mult = to_copy.color_mult
 	primitive_form = to_copy.primitive_form
 	species_appearance_flags = to_copy.species_appearance_flags

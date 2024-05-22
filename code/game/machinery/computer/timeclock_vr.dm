@@ -81,8 +81,6 @@
 	var/list/data = ..()
 
 	// Okay, data for showing the user's OWN PTO stuff
-	if(user.client)
-		data["department_hours"] = SANITIZE_LIST(user.client.department_hours)
 	data["user_name"] = "[user]"
 
 	// Data about the card that we put into it.
@@ -101,12 +99,12 @@
 				"departments" = english_list(job.departments),
 				"selection_color" = job.selection_color,
 				"economic_modifier" = job.get_economic_payscale(),
-				"timeoff_factor" = job.timeoff_factor,
-				"pto_department" = job.pto_type
+				"pto_department" = job.pto_type,
+				"is_off_duty" = job.is_off_duty,
 			)
-		if(config_legacy.time_off && config_legacy.pto_job_change)
+		if(config_legacy.time_off)
 			data["allow_change_job"] = TRUE
-			if(job && job.timeoff_factor < 0) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
+			if(job?.is_off_duty) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
 				data["job_choices"] = getOpenOnDutyJobs(user, job.pto_type)
 
 	return data
@@ -175,7 +173,7 @@
 		   && job.player_old_enough(user.client) \
 		   && job.pto_type == department \
 		   && !job.disallow_jobhop \
-		   && job.timeoff_factor > 0 \
+		   && !job.is_off_duty \
 		   && (job.check_mob_availability_one(user) == ROLE_AVAILABLE)
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
@@ -209,7 +207,7 @@
 	var/new_dept = foundjob.pto_type || PTO_CIVILIAN
 	var/datum/role/job/ptojob = null
 	for(var/datum/role/job/job in SSjob.occupations)
-		if(job.pto_type == new_dept && job.timeoff_factor < 0)
+		if(job.pto_type == new_dept && job.is_off_duty)
 			ptojob = job
 			break
 	if(ptojob)

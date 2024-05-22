@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 
 
 /obj/machinery/power/generator/verb/rotate_clockwise()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Rotate Generator Clockwise"
 	set src in view(1)
 
@@ -304,7 +304,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	src.setDir(turn(src.dir, 270))
 
 /obj/machinery/power/generator/verb/rotate_counterclockwise()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Rotate Generator Counterclockwise"
 	set src in view(1)
 

@@ -15,3 +15,4 @@ $include entries/resources.txt
 $include entries/security.txt
 $include entries/skills.txt
 $include entries/urls.txt
+$include entries/vote.txt

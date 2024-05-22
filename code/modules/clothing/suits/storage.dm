@@ -123,7 +123,7 @@
 
 /obj/item/clothing/suit/storage/hooded/toggle/verb/toggle()
 	set name = "Toggle Coat Buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
@@ -149,7 +149,7 @@
 
 /obj/item/clothing/suit/storage/vest/verb/toggle()
 	set name ="Adjust Badge"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0

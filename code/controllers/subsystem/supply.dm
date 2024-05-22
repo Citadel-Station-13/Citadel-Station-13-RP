@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/fire(resumed)
 	points += max(0, ((world.time - last_fire) / 10) * points_per_second)
 
-// To stop things being sent to CentCom which should not be sent to centcomm. Recursively checks for these types.
+// To stop things being sent to CentCom which should not be sent to centcom. Recursively checks for these types.
 /datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
 	if(isliving(A))
 		return 1

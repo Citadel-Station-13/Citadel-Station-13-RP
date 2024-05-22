@@ -25,8 +25,9 @@ var/global/file_uid = 0
 	holder = null
 	return ..()
 
-/datum/computer_file/clone()
-	var/datum/computer_file/temp = new type
+// Returns independent copy of this file.
+/datum/computer_file/clone(include_contents)
+	var/datum/computer_file/temp = ..()
 	temp.unsendable = unsendable
 	temp.undeletable = undeletable
 	temp.size = size

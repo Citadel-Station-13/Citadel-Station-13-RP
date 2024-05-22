@@ -1,4 +1,3 @@
-import { toFixed } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
 import { Box, Button, Flex, LabeledList, Section, NoticeBox } from "../components";
@@ -9,7 +8,6 @@ export const TimeClock = (props, context) => {
   const { act, data } = useBackend(context);
 
   const {
-    department_hours,
     user_name,
     card,
     assignment,
@@ -27,24 +25,6 @@ export const TimeClock = (props, context) => {
             PTO acquired is account-wide and shared across all characters.
             Info listed below is not IC information.
           </NoticeBox>
-          <Section level={2} title={"Time Off Balance for " + user_name}>
-            <LabeledList>
-              {Object.keys(department_hours).map(key => (
-                <LabeledList.Item
-                  key={key}
-                  label={key}
-                  color={
-                    department_hours[key] > 6
-                      ? "good"
-                      : department_hours[key] > 1
-                        ? "average"
-                        : "bad"
-                  }>
-                  {toFixed(department_hours[key], 1)} {department_hours[key] === 1 ? "hour" : "hours"}
-                </LabeledList.Item>
-              ))}
-            </LabeledList>
-          </Section>
         </Section>
         <Section title="Employee Info">
           <LabeledList>
@@ -103,8 +83,8 @@ export const TimeClock = (props, context) => {
         </Section>
         {!!(allow_change_job && job_datum && job_datum.timeoff_factor !== 0 && assignment !== "Dismissed") && (
           <Section title="Employment Actions">
-            {job_datum.timeoff_factor > 0 && (
-              department_hours[job_datum.pto_department] > 0 && (
+            {!job_datum.is_off_duty && (
+              true && (
                 <Button
                   fluid
                   icon="exclamation-triangle"

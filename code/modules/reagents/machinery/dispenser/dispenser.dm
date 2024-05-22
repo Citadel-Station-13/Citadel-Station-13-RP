@@ -20,6 +20,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	anchored = TRUE
+	obj_rotation_flags = OBJ_ROTATION_ENABLED | OBJ_ROTATION_DEFAULTING
 	default_unanchor = 3 SECONDS
 	default_deconstruct = 0 SECONDS
 	default_panel = 0 SECONDS

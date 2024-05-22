@@ -8,8 +8,10 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	preview_icon = 'icons/mob/species/shadekin/preview.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-	tail = "tail"
-	icobase_tail = TRUE
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+	)
 
 	//TODO: Something that's not wiki copypaste
 	blurb = {"
