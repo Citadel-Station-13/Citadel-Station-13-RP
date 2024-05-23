@@ -170,6 +170,7 @@
 	playsound(src, open_sound, 15, 1, -3)
 	if(initial(density))
 		density = !density
+	update_icon()
 	return 1
 
 /obj/structure/closet/proc/close()
@@ -195,6 +196,7 @@
 	playsound(src, close_sound, 15, 1, -3)
 	if(initial(density))
 		density = !density
+	update_icon()
 	return 1
 
 //Cham Projector Exception
@@ -250,7 +252,6 @@
 	if(!(opened ? close() : open()))
 		to_chat(user, "<span class='notice'>It won't budge!</span>")
 		return
-	update_icon()
 
 // this should probably use dump_contents()
 /obj/structure/closet/legacy_ex_act(severity)
