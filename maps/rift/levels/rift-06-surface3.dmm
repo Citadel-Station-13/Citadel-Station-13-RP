@@ -26709,7 +26709,7 @@
 /area/hallway/secondary/docking_hallway2)
 "tFN" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/shuttle/emt/cockpit)
 "tFR" = (
 /obj/structure/railing,
@@ -47456,7 +47456,7 @@ aAd
 aId
 aus
 amD
-ayS
+amD
 urI
 urI
 urI
@@ -47649,7 +47649,7 @@ aAd
 aAd
 aNk
 aus
-ayS
+amD
 ayS
 ayn
 ojh
@@ -48231,7 +48231,7 @@ aAd
 aAd
 mfi
 aus
-ayS
+amD
 ayS
 ktg
 gdX
@@ -48426,8 +48426,8 @@ acH
 aNk
 aus
 amD
-ayS
-ayS
+amD
+amD
 urI
 urI
 amD
