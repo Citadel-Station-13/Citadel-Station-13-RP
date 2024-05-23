@@ -20042,7 +20042,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/space/basic,
+/turf/simulated/floor,
 /area/shuttle/emt/general)
 "fSv" = (
 /obj/effect/floor_decal/borderfloor{
@@ -20106,10 +20106,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
-"fUj" = (
-/obj/structure/flora/grass/both,
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/emt/cockpit)
 "fUV" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1380;
@@ -46887,7 +46883,7 @@ aus
 amD
 jmh
 iJa
-amD
+ayS
 amD
 amD
 amD
@@ -47466,10 +47462,10 @@ urI
 urI
 amD
 amD
-amD
+ayS
 qGp
 wvm
-amD
+ayS
 amD
 avZ
 bMl
@@ -49018,7 +49014,7 @@ aus
 aus
 aus
 aaM
-fUj
+aaM
 aaM
 aaM
 aaM
