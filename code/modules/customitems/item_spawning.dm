@@ -232,7 +232,7 @@
 	if(M.equip_to_appropriate_slot(newitem, INV_OP_SILENT))
 		return newitem
 
-	if(M.equip_to_slot_if_possible(newitem, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_SILENT))
+	if(M.equip_to_slot_if_possible(newitem, /datum/inventory_slot/abstract/put_in_storage, INV_OP_SILENT))
 		return newitem
 
 	newitem.forceMove(M.drop_location())

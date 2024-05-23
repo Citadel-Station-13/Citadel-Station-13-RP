@@ -114,7 +114,7 @@
 //NT SpecOps Laser Pistol
 /obj/item/gun/energy/gun/combat
 	name = "NT-ES-2 energy pistol"
-	desc = "A purpose-built energy weapon designed to function as a sidearm for NanoTrasen special operations. This weapon is ideal for hazardous environments where both lethal and non-lethal responses may be required."
+	desc = "A purpose-built energy weapon designed to function as a sidearm for Nanotrasen special operations. This weapon is ideal for hazardous environments where both lethal and non-lethal responses may be required."
 	icon_state = "clpistolstun100"
 	fire_delay = 8
 

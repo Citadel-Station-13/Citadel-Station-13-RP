@@ -146,7 +146,7 @@ export const Telecomms = (props, context) => {
                 ))}
               </Table>
             </Section>
-            <Section title="Filtered Frequencies">
+            <Section title="Filtered Frequencies" buttons={<Button onClick={() => act('freq')} />}>
               <Table>
                 {frequencies.map(entry => (
                   <Table.Row key={frequencies.i} className="candystripe">

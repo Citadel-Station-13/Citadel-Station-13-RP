@@ -113,7 +113,7 @@
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if((MUTATION_CLUMSY in usr.mutations) && prob(50))
@@ -299,7 +299,7 @@
 		t = replacetext(t, "\[logo\]", "<img src = ntlogo.png>")
 		t = replacetext(t, "\[sglogo\]", "<img src = sglogo.png>")
 
-		t = "<font face=\"[deffont]\" color=[P ? P.colour : "black"]>[t]</font>"
+		t = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		t = replacetext(t, "\[*\]", "")
 		t = replacetext(t, "\[hr\]", "")
@@ -314,7 +314,7 @@
 		t = replacetext(t, "\[logo\]", "")
 		t = replacetext(t, "\[sglogo\]", "")
 
-		t = "<font face=\"[crayonfont]\" color=[P ? P.colour : "black"]><b>[t]</b></font>"
+		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[t]</b></font>"
 
 
 //	t = replacetext(t, "#", "") // Junk converted to nothing!
@@ -487,7 +487,7 @@
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/stamp/captain) || istype(P, /obj/item/stamp/centcomm))
+		if(istype(P, /obj/item/stamp/captain) || istype(P, /obj/item/stamp/centcom))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else

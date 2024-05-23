@@ -50,6 +50,7 @@
 	icon_state = icon_opened
 	src.opened = 1
 	shake_climbers()
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/close()
@@ -74,6 +75,7 @@
 
 	icon_state = icon_closed
 	src.opened = 0
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
@@ -189,7 +191,7 @@
 
 /obj/structure/closet/crate/secure/verb_togglelock()
 	set src in oview(1) // One square distance
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Lock"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
@@ -229,7 +231,7 @@
 		spawn(6)
 			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 			compile_overlays()
-		playsound(src.loc, "sparks", 60, 1)
+		playsound(src.loc, /datum/soundbyte/grouped/sparks, 60, 1)
 		locked = 0
 		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
@@ -250,7 +252,7 @@
 			spawn(6)
 				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 				compile_overlays()
-			playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
 			locked = 0
 			update_icon()
 	if(!opened && prob(20/severity))
@@ -323,7 +325,7 @@
 
 /obj/structure/closet/crate/contraband
 	name = "Poster crate"
-	desc = "A random assortment of posters manufactured by providers NOT listed under NanoTrasen's whitelist."
+	desc = "A random assortment of posters manufactured by providers NOT listed under Nanotrasen's whitelist."
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
@@ -649,17 +651,17 @@
 	//closet_appearance = /singleton/closet_appearance/crate/branded/morpheus
 
 /obj/structure/closet/crate/corporate/nanotrasen
-	desc = "A crate emblazoned with the standard NanoTrasen livery."
+	desc = "A crate emblazoned with the standard Nanotrasen livery."
 	icon_state = "nt"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen
 
 /obj/structure/closet/crate/corporate/nanothreads
-	desc = "A crate emblazoned with the NanoThreads Garments livery, a subsidary of the NanoTrasen Corporation."
+	desc = "A crate emblazoned with the NanoThreads Garments livery, a subsidary of the Nanotrasen Corporation."
 	icon_state = "nt"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen
 
 /obj/structure/closet/crate/corporate/nanomed
-	desc = "A crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+	desc = "A crate emblazoned with the NanoMed Medical livery, a subsidary of the Nanotrasen Corporation."
 	icon_state = "ntmed"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen
 
@@ -792,12 +794,12 @@
 	//closet_appearance = /singleton/closet_appearance/crate/branded/morpheus/secure
 
 /obj/structure/closet/crate/secure/corporate/nanotrasen
-	desc = "A secure crate emblazoned with the standard NanoTrasen livery."
+	desc = "A secure crate emblazoned with the standard Nanotrasen livery."
 	icon_state = "ntsecure"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen/secure
 
 /obj/structure/closet/crate/secure/corporate/nanomed
-	desc = "A secure crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+	desc = "A secure crate emblazoned with the NanoMed Medical livery, a subsidary of the Nanotrasen Corporation."
 	icon_state = "ntmedsecure"
 	//closet_appearance = /singleton/closet_appearance/crate/branded/nanotrasen/secure
 

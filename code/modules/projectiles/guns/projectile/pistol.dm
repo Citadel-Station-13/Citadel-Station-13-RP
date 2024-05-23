@@ -29,7 +29,7 @@
 
 /obj/item/gun/ballistic/colt/detective/verb/rename_gun()
 	set name = "Name Gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your gun. If you're Security."
 
 	var/mob/M = usr
@@ -48,7 +48,7 @@
 
 /obj/item/gun/ballistic/colt/detective/verb/reskin_gun()
 	set name = "Resprite gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose a sprite for your gun."
 
 	var/mob/M = usr
@@ -83,7 +83,7 @@
 
 /obj/item/gun/ballistic/sec
 	name = ".45 pistol"
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
@@ -97,7 +97,7 @@
 	magazine_type = /obj/item/ammo_magazine/m45/flash
 
 /obj/item/gun/ballistic/sec/wood
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
 	name = "custom .45 pistol"
 	icon_state = "secgundark"
 

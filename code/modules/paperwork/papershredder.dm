@@ -80,7 +80,7 @@
 
 /obj/machinery/papershredder/verb/empty_contents()
 	set name = "Empty bin"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in range(1)
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))

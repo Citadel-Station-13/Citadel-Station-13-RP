@@ -2,7 +2,6 @@
 /obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
-	icon = 'icons/obj/objects.dmi'
 	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1
@@ -75,10 +74,6 @@
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
-	// ok this was a bad idea
-	// todo: refactor holders entirely, we shouldn't be cloning mob state???
-	// icon = M.icon	// legacy
-	icon_state = M.icon_state	// legacy
 	add_overlay(MA)
 	name = M.name
 	desc = M.desc
@@ -254,7 +249,7 @@
 			holder_slot_icons[cache_entry] = holder_mob_icon_cache[cache_key]
 	return ..()
 
-/obj/item/holder/human/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+/obj/item/holder/human/resolve_worn_assets(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype)
 	var/list/generated = list()
 	generated.len = WORN_DATA_LIST_SIZE
 	generated[WORN_DATA_ICON] = holder_slot_icons[slot_meta.id]

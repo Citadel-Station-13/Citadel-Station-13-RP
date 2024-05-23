@@ -510,8 +510,8 @@
 
 /obj/structure/sign/nanotrasen
 	icon = 'icons/obj/decals.dmi'
-	name = "\improper NanoTrasen"
-	desc = "An old metal sign which reads 'NanoTrasen'."
+	name = "\improper Nanotrasen"
+	desc = "An old metal sign which reads 'Nanotrasen'."
 	icon_state = "NT"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 

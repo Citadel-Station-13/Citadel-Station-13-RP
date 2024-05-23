@@ -96,6 +96,10 @@
 	/// menu group statuses
 	var/list/menu_group_status = list()
 
+	//? Preferences
+	/// client preferences
+	var/datum/game_preferences/preferences
+
 	//? Statpanel
 	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
 	var/statpanel_tab
@@ -183,8 +187,6 @@
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////
-	///Track hours of leave accured for each department.
-	var/list/department_hours = list()
 
 	preload_rsc = PRELOAD_RSC
 

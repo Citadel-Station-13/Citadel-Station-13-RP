@@ -19,7 +19,7 @@
 	update()
 
 /obj/item/implanter/verb/remove_implant(var/mob/user)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove Implant"
 	set src in usr
 

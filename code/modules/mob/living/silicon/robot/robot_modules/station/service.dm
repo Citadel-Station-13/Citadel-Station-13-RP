@@ -2,7 +2,7 @@
 	name = "janitorial robot module"
 	channels = list("Service" = 1)
 	sprites = list(
-		"M-USE NanoTrasen" = "robotJani",
+		"M-USE Nanotrasen" = "robotJani",
 		"Arachne" = "crawler",
 		"Cabeiri" = "eyebot-janitor",
 		"Haruka" = "marinaJN",
@@ -76,7 +76,7 @@
 
 /obj/item/robot_module/robot/clerical/butler
 	sprites = list(
-		"M-USE NanoTrasen" = "robotServ",
+		"M-USE Nanotrasen" = "robotServ",
 		"Cabeiri" = "eyebot-standard",
 		"Haruka" = "marinaSV",
 		"Michiru" = "maidbot",
@@ -146,7 +146,7 @@
 /obj/item/robot_module/robot/clerical/general
 	name = "clerical robot module"
 	sprites = list(
-		"M-USE NanoTrasen" = "robotCler",
+		"M-USE Nanotrasen" = "robotCler",
 		"Cabeiri" = "eyebot-standard",
 		"Haruka" = "marinaSV",
 		"Usagi" = "tallgreen",

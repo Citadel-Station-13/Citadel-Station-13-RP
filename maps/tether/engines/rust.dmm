@@ -1154,7 +1154,6 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dh" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -1194,14 +1193,12 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dm" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dn" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -1230,7 +1227,6 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dq" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
@@ -1261,7 +1257,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/blast/regular{
-	id = "EngineEmitterPortWest";
+	id = "EngineEmitterPortWest2";
 	name = "Engine Gas Storage"
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1272,7 +1268,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	id = "EngineEmitterPortWest";
+	id = "EngineEmitterPortWest2";
 	name = "Engine Gas Storage"
 	},
 /obj/machinery/button/remote/blast_door{

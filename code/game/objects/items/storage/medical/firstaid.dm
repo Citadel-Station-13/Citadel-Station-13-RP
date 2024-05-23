@@ -172,6 +172,8 @@
 	sfx_open = null
 	max_combined_volume = WEIGHT_VOLUME_TINY * 14
 	max_single_weight_class = WEIGHT_CLASS_TINY
+	materials_base = list(MAT_PLASTIC = 80)
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 
 	var/label_text = ""
 	var/labeled = 0
@@ -218,7 +220,7 @@
 
 /obj/item/storage/pill_bottle/proc/choose_color()
 	set name = "Recolor bottle"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose a color for the pill bottle."
 
 	var/mob/M = usr

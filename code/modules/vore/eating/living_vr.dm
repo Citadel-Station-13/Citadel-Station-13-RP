@@ -23,7 +23,6 @@
 	var/absorbing_prey = 0 				// Determines if the person is using the succubus drain or not. See station_special_abilities_vr.
 	var/drain_finalized = 0				// Determines if the succubus drain will be KO'd/absorbed. Can be toggled on at any time.
 	var/fuzzy = 1						// Preference toggle for sharp/fuzzy icon.
-	var/tail_alt = 0					// Tail layer toggle.
 	var/permit_healbelly = TRUE
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = TRUE			// Mobs are pred by default.
@@ -228,7 +227,7 @@
 	var/list/serialized = list()
 	for(var/belly in src.vore_organs)
 		var/obj/belly/B = belly
-		serialized += list(B.serialize()) //Can't add a list as an object to another list in Byond. Thanks.
+		serialized += list(B.serialize_vr()) //Can't add a list as an object to another list in Byond. Thanks.
 
 	P.belly_prefs = serialized
 
@@ -314,7 +313,7 @@
 //
 /mob/living/proc/lick(var/mob/living/tasted in living_mobs(1))
 	set name = "Lick"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Lick someone nearby!"
 	set popup_menu = FALSE // Stop licking by accident!
 
@@ -353,7 +352,7 @@
 // This is just the above proc but switched about.
 /mob/living/proc/smell(mob/living/smelled in living_mobs(1))
 	set name = "Smell"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Smell someone nearby!"
 	set popup_menu = FALSE
 
@@ -743,7 +742,7 @@
 
 /mob/living/proc/switch_scaling()
 	set name = "Switch scaling mode"
-	set category = "Preferences"
+	set category = "OOC"
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
 

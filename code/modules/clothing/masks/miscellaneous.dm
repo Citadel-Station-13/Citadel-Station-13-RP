@@ -36,6 +36,7 @@
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/mask/surgical
+	materials_base = list(MAT_PLASTIC = 100, MAT_WOOD = 20)
 	var/hanging = 0
 
 /obj/item/clothing/mask/surgical/proc/adjust_mask(mob_user)
@@ -56,7 +57,7 @@
 		update_worn_icon()
 
 /obj/item/clothing/mask/surgical/verb/toggle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust mask"
 	set src in usr
 

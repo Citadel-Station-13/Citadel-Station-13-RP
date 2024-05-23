@@ -4,6 +4,12 @@
 		return null
 	..()
 
+/mob/living/carbon/emp_act(severity)
+	. = ..()
+	// tODO: REFACTOR THIS DUMB SHIT
+	for(var/obj/item/organ/organ in organs | internal_organs)
+		organ.emp_act(severity)
+
 /mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)
 		return 0
@@ -62,7 +68,7 @@
 		return 0
 
 	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
-	playsound(loc, "sparks", 50, 1, -1)
+	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 	if (shock_damage > 15)
 		src.visible_message(
 			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \

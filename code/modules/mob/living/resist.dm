@@ -1,6 +1,6 @@
 /mob/living/verb/resist()
 	set name = "Resist"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(!incapacitated(INCAPACITATION_KNOCKOUT) && canClick())
 		setClickCooldown(20)

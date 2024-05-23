@@ -56,7 +56,7 @@
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(loc, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(loc, "sparks", 50, 1)
+			playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1)
 	else
 		to_chat(user, "<span class='warning'>Access Denied</span>")
 	return
@@ -73,7 +73,7 @@
 
 /obj/structure/closet/secure_closet/personal/verb/reset()
 	set src in oview(1) // One square distance
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Reset Lock"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain

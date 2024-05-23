@@ -302,7 +302,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return // Can't talk in deadchat if you can't see it.
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -318,7 +318,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				var/mob/observer/dead/DM
 				if(istype(subject, /mob/observer/dead))
 					DM = subject
-				var/anonsay = DM?.is_preference_enabled(/datum/client_preference/anonymous_ghost_chat)
+				var/anonsay = DM?.get_preference_toggle(/datum/game_preference_toggle/presence/anonymous_ghost_chat)
 				if(M.client.holder) 							// What admins see
 					lname = "[keyname][(anonsay) ? "*" : (DM ? "" : "^")] ([name])"
 				else
@@ -333,7 +333,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname = "Game Master"
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -363,7 +363,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			C = M.original.client
 
 	if(C)
-		if(!isnull(C.holder?.fakekey) || !C.is_preference_enabled(/datum/client_preference/announce_ghost_joinleave))
+		if(!isnull(C.holder?.fakekey) || !C.get_preference_toggle(/datum/game_preference_toggle/presence/announce_ghost_joinleave))
 			return
 		var/name
 		if(C.mob)
@@ -402,8 +402,8 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		if(source)
 			var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
 			if(A)
-				if(O.client.prefs && O.client.prefs.UI_style)
-					A.icon = ui_style2icon(O.client.prefs.UI_style)
+				if(O.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style))
+					A.icon = ui_style2icon(O.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style))
 				if (header)
 					A.name = header
 				A.desc = message
@@ -603,7 +603,7 @@ var/list/global/organ_rel_size = list(
 		return
 
 	// They may have hidden the icons in the bottom left with the hide button.
-	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot_meta(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
+	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
 		item.screen_loc = null
 		return
 

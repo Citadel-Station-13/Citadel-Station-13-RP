@@ -406,6 +406,30 @@
 	name = "neck gaiter (gray)"
 	icon_state = "gaiter_gray"
 
+/obj/item/clothing/accessory/gaiter/green
+	name = "neck gaiter (green)"
+	icon_state = "gaiter_green"
+
+/obj/item/clothing/accessory/gaiter/blue
+	name = "neck gaiter (blue)"
+	icon_state = "gaiter_blue"
+
+/obj/item/clothing/accessory/gaiter/purple
+	name = "neck gaiter (purple)"
+	icon_state = "gaiter_purple"
+
+/obj/item/clothing/accessory/gaiter/orange
+	name = "neck gaiter (orange)"
+	icon_state = "gaiter_orange"
+
+/obj/item/clothing/accessory/gaiter/charcoal
+	name = "neck gaiter (charcoal)"
+	icon_state = "gaiter_charcoal"
+
+/obj/item/clothing/accessory/gaiter/snow
+	name = "neck gaiter (white)"
+	icon_state = "gaiter_snow"
+
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"
 	desc = "A tasteful half-cape, suitible for European nobles and retro anime protagonists."
@@ -567,7 +591,7 @@
 
 /obj/item/clothing/accessory/collar/bell/verb/jinglebell()
 	set name = "Jingle Bell"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -872,5 +896,5 @@
 //misc
 /obj/item/clothing/accessory/civ_exos_mob
 	name = "medical exoframe"
-	desc = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance."
+	desc = "A cheap medical exoframe mass-produced by Nanotrasen and provided to employees who cannot function in gravity without assistance."
 	icon_state = "civ_exos_mob"

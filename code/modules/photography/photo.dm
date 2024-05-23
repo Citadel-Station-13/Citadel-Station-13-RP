@@ -123,7 +123,7 @@
 // todo: refactor
 /obj/item/photo/verb/rename()
 	set name = "Rename photo"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the photo?", "Photo Labelling", null) as text, MAX_NAME_LEN)

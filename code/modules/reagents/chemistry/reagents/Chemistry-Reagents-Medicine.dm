@@ -552,7 +552,7 @@
 				H.losebreath = 10
 				H.adjustOxyLoss(5)
 		if(prob(2))
-			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
+			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at the back of your head...</span>")
 			H.hallucination += 20 //It messes with your mind for some reason.
 			H.eye_blurry += 20 //Groggy vision for a small bit.
 		if(prob(3))
@@ -1421,11 +1421,11 @@
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
-			else
+			if(prob(1))
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
 				M.hallucination += 200
+			else
+				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
 
 /datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Adranol"

@@ -138,8 +138,9 @@
 		while(amount)
 			if(!--safety)
 				CRASH("safety hit")
-			var/obj/item/stack/creating = new result_type(where, min(amount, max_amount))
-			amount -= creating.amount
+			var/making_amount = min(amount, max_amount)
+			var/obj/item/stack/creating = new result_type(where, making_amount)
+			amount -= making_amount
 			created += creating
 	else
 		for(var/i in 1 to min(amount, 50))
