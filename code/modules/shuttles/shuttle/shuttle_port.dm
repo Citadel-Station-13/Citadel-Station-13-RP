@@ -51,7 +51,8 @@
 	/// port id - must be unique per shuttle instance
 	/// the maploader will handle ID scrambling
 	///
-	/// if this doesn't exist, stuff that need to hook it won't work.
+	/// * if this doesn't exist, stuff that need to hook it won't work.
+	/// * if this isn't set, we'll assign it a random one on init
 	var/port_id
 
 	/// registered shuttle hooks
@@ -177,7 +178,42 @@
 
 	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
 
+/**
+ * can we form an airtight seal at a given dock?
+ *
+ * @return SHUTTLE_DOCKING_SEAL_*
+ */
+/obj/shuttle_port/proc/check_dock_seal(obj/shuttle_dock/dock)
+	// facing north, pos 1 = where the dock obj actually is
+	var/our_left = 1 - port_offset
+	var/their_left = 1 - dock.dock_offset
+	var/our_right = port_width - port_offset
+	var/their_right = dock.dock_width - dock.dock_offset
+	var/our_tolerance = port_margin
+	var/their_tolerance = dock.dock_margin
+	var/left_distance = abs(our_left - their_left)
+	var/right_distance = abs(our_right - their_right)
 
+	var/has_mismatch = FALSE
+
+	if(our_left != their_left)
+		if(our_left < their_left)
+			if(our_tolerance < left_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		if(our_left > their_left)
+			if(their_tolerance < left_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		has_mismatch = TRUE
+	if(our_right != their_right)
+		if(our_right > their_right)
+			if(their_tolerance < right_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		if(our_right < their_right)
+			if(our_tolerance < right_distance)
+				return SHUTTLE_DOCKING_SEAL_FAULT
+		has_mismatch = TRUE
+
+	return has_mismatch? SHUTTLE_DOCKING_SEAL_INCONVENIENT : SHUTTLE_DOCKING_SEAL_NOMINAL
 
 //* Regular Movement *//
 
@@ -207,6 +243,8 @@
 
 /obj/shuttle_port/grid_finished(grid_flags, rotation_angle)
 	return
+
+#warn make sure the sprites are aligned so that it looks good from map editor (denotes center position & aims outwards)
 
 #define SHUTTLE_PORT_PATH(PATH) \
 /obj/shuttle_port/##PATH/primary { \

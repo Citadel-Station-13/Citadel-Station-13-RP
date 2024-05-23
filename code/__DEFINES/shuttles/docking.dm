@@ -25,6 +25,29 @@
 /// soft fault - we can trample it, but the shuttle requests that we shouldn't
 #define SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT 2
 
+//* docking seal check
+
+/// no airtight seal
+#define SHUTTLE_DOCKING_SEAL_FAULT 0
+/// 'messy' seal (walls obstructing, etc)
+#define SHUTTLE_DOCKING_SEAL_INCONVENIENT 1
+/// perfect seal
+#define SHUTTLE_DOCKING_SEAL_NOMINAL 2
+
+//* flags for bounds checks
+
+/// manual landing is involved at all
+#define SHUTTLE_BOUNDS_CHECKING_FOR_MANUAL_LANDING (1<<0)
+/// currently previewing manual landing
+#define SHUTTLE_BOUNDS_CHECKING_FOR_MANUAL_LANDING_PREVIEW (1<<1)
+/// currently performing an aligned / bound-box docking where trample bounding box is true
+#define SHTUTLE_BOUNDS_CHECKING_FOR_PRIVILEGED_DOCKING (1<<2)
+/// currently moving as part of roundstart
+#define SHUTTLE_BOUNDS_CHECKING_FOR_ROUNDSTART (1<<3)
+/// admin movement
+#define SHUTTLE_BOUNDS_CHECKING_FOR_ADMIN (1<<4)
+#warn hook these
+
 //* docking overlap handlers
 
 /// threshold from edge where we're considered able to be run into the side

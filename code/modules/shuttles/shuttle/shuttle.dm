@@ -225,12 +225,16 @@
 					else
 						stack_trace("duplicate primary port during init scan")
 						port.primary_port = FALSE
-				if(port.port_id)
-					if(port_lookup[port.port_id])
-						stack_trace("id collision on port id [port.port_id] (mangled)")
-						port.port_id = null
-					else
-						port_lookup[port.port_id] = port
+				if(!port.port_id)
+					var/hex
+					do
+						hex = num2hex(rand(1, 65535), 4)
+					while(port_lookup[hex])
+				if(port_lookup[port.port_id])
+					stack_trace("id collision on port id [port.port_id] (mangled)")
+					port.port_id = null
+				else
+					port_lookup[port.port_id] = port
 
 	// collect areas
 	for(var/area/scanning in area_cache)
@@ -790,7 +794,7 @@
 		return SHUTTLE_DOCKING_BOUNDING_CLEAR
 	for(var/obj/shuttle_dock/enemy_dock in SSshuttle.docks_by_level[location.z])
 		if(enemy_dock == docking_at)
-			contineu
+			continue
 		if(!enemy_dock.should_protect_bounding_box())
 			continue
 		if(!anchor.intersects_dock(enemy_dock))
@@ -974,3 +978,25 @@
 /datum/shuttle/proc/move_to_transit()
 	#warn uhh
 	return SSshuttle.move_shuttle_to_transit(src)
+
+//* UI Helpers *//
+
+/**
+ * exports information about which ways we can dock with a dock
+ */
+/datum/shuttle/proc/ui_docking_alignment_query(obj/shuttle_dock/dock)
+	var/list/matching_ports = list()
+	for(var/id in port_lookup)
+		var/obj/shuttle_port/port = port_lookup[id]
+		var/port_results = port.check_dock_seal(dock)
+		if(port_results == SHUTTLE_DOCKING_SEAL_FAULT)
+			continue
+		matching_ports[port.port_id] = port.name
+	/**
+	 * centerDirs: NORTH | SOUTH | EAST | WEST as 1, 2, 4, 8
+	 * ports: Record<id: string, name: string>
+	 */
+	return list(
+		"centerDirs" = centered_docking_dir_bits_we_fit,
+		"ports" = matching_ports,
+	)

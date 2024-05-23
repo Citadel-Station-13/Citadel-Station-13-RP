@@ -180,7 +180,7 @@
  * * direction - the direction we should dock
  * * dock_bbox - llx, lly, urx, ury, cx, cy tuple, if you already have this information
  *
- * @return list(x, y, z)
+ * @return list(x, y, z, dir)
  */
 /obj/shuttle_anchor/proc/coords_for_centered_docking(obj/shuttle_dock/dock, direction = src.dir, list/dock_bbox)
 	if(isnull(dock_bbox))
@@ -202,24 +202,28 @@
 				dock_bbox[1] + width_centering + offset_x,
 				dock_bbox[2] + height_centering + (size_y - 1) - offset_y,
 				dock.z,
+				direction,
 			)
 		if(SOUTH)
 			return list(
 				dock_bbox[1] + width_centering + (size_x - 1) - offset_x,
 				dock_bbox[2] + height_centering + offset_y,
 				dock.z,
+				direction,
 			)
 		if(EAST)
 			return list(
 				dock_bbox[1] + width_centering + (size_y - 1) - offset_y,
 				dock_bbox[2] + height_centering + (size_x - 1) - offset_x,
 				dock.z,
+				direction,
 			)
 		if(WEST)
 			return list(
 				dock_bbox[1] + offset_y,
 				dock_bbox[2] + offset_x,
 				dock.z,
+				direction,
 			)
 
 /**
@@ -263,6 +267,24 @@
 		. += dir
 
 /**
+ * heuristically find cardinals directions we can fit in on a dock
+ *
+ * @params
+ * * dock - the dock
+ * * dock_bbox - the dock's absoluate_bounding_box_coords() if we already have it cached
+ *
+ * @return dirs as bits
+ */
+/obj/shuttle_anchor/proc/centered_docking_dir_bits_we_fit(obj/shuttle_dock/dock, list/dock_bbox)
+	. = NONE
+	if(isnull(dock_bbox))
+		dock_bbox = dock.absolute_bounding_box_coords()
+	for(var/dir in GLOB.cardinal)
+		if(!will_fit_centered_docking(dock, dir, dock_bbox))
+			continue
+		. |= dir
+
+/**
  * will we fit in a dock in a centered docking?
  *
  * @params
@@ -283,9 +305,23 @@
  * * align_with_port - if we're aligning with a port instead of performing a centered docking
  * * centered - are we doing a centered docking? if not, we're just matching the dock's coordinates
  * * direction - the direction we need to be at when we arrive
+ *
+ * @return list(x, y, z, dir)
  */
 /obj/shuttle_anchor/proc/calculate_resultant_motion_from_docking(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered, direction)
-	#warn impl
+	if(align_with_port)
+		return calculate_motion_with_respect_to(
+			list(align_with_port.x, align_with_port.y, align_with_port.z),
+			list(dock.x, dock.y, dock.z),
+			align_with_port.dir,
+			dock.dir,
+		)
+	if(centered)
+		// align us, centered, with it
+		return coords_for_centered_docking(dock, direction || src.dir)
+	else
+		// align us with it
+		return list(dock.x, dock.y, dock.z, direction || dock.dir)
 
 /**
  * get rotated coordinates and direction when moved with another location on the shuttle
@@ -324,7 +360,7 @@
 	return ( \
 		(absolute_bbox[1] > dock_absolute_bbox[3]) || (absolute_bbox[3] < dock_absolute_bbox[1]) \
 		|| \
-		(absoulte_bbox[2] > dock_absolute_bbox[4]) || (absolute_bbox[4] < dock_absolute_bbox[2]) \
+		(absolute_bbox[2] > dock_absolute_bbox[4]) || (absolute_bbox[4] < dock_absolute_bbox[2]) \
 	)
 
 /**

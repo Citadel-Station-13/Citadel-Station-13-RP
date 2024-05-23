@@ -58,6 +58,7 @@
 	var/transit_timer_id
 	/// timerid for making warning bubbles
 	var/transit_visual_timer_id
+	#warn transit_failure_callback
 	/// transit visuals
 	var/list/obj/effect/temporary_effect/shuttle_landing/transit_warning_visuals
 
