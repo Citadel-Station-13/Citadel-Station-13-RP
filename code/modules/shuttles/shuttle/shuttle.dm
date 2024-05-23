@@ -997,6 +997,6 @@
 	 * ports: Record<id: string, name: string>
 	 */
 	return list(
-		"centerDirs" = centered_docking_dir_bits_we_fit,
+		"centerDirs" = anchor.centered_docking_dir_bits_we_fit(),
 		"ports" = matching_ports,
 	)

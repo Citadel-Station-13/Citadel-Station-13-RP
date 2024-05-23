@@ -150,16 +150,22 @@
 	abstract_type = /datum/map/station
 	category = "Stations"
 
+	//* World Parameters *//
+
 	/// force world to be bigger width
 	var/world_width
 	/// force world to be bigger height
 	var/world_height
 
+	//* Map Finales *//
+
+	// todo: finish this; it's a system to allow more ways to end round than emergency shuttle.
 	/// possible ending typepaths, if none, we default to /datum/map_finale/end_the_shift
-	var/list/datum/map_finale/finales
+	// var/list/datum/map_finale/finales
 	/// the finale to use for transfer
-	var/finale_transfer
-	#warn set these on our maps
+	// var/finale_transfer
+	// #warn set these on our maps
+
 	/// allow random picking if no map set
 	/// used to exclude indev maps
 	var/allow_random_draw = TRUE

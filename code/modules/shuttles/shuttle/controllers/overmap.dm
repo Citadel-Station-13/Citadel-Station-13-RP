@@ -11,11 +11,16 @@
 	var/obj/overmap/entity/entity
 	#warn hook, somehow
 
-/datum/shuttle_controller/overmap/tgui_static_data()
+/datum/shuttle_controller/overmap/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/datum/shuttle_controller/overmap/tgui_data()
+
+/datum/shuttle_controller/overmap/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+
+/datum/shuttle_controller/overmap/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
 
 /datum/shuttle_controller/overmap/push_ui_location()
 	. = ..()

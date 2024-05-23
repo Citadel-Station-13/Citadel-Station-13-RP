@@ -11,6 +11,11 @@
 	/// our host shuttle
 	var/datum/shuttle/shuttle
 
+	//* Control
+	/// does the UI even allow control?
+	/// for things like emergency shuttles, this would be FALSE
+	var/controllable = FALSE
+
 	//* Blocking
 	/// registration list for 'hostile environment' system, aka 'shuttle cannot launch right now'
 	///
@@ -170,7 +175,7 @@
 /datum/shuttle_controller/proc/make_transit_warning_visuals()
 	var/list/motion = shuttle.anchor.calculate_resultant_motion_from_docking(
 		transit_target_dock,
-		align_with_dock = transit_target_port,
+		align_with_port = transit_target_port,
 		centered = transit_target_centered_mode,
 		direction = transit_target_centered_direction,
 	)
@@ -234,14 +239,14 @@
 
 //* Interface *//
 
-/datum/shuttle_controller/proc/tgui_data()
-	return list()
+/datum/shuttle_controller/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
 
-/datum/shuttle_controller/proc/tgui_static_data()
-	return list(
-		"$src" = REF(src),
-		"$tgui" = tgui_module,
-	)
+/datum/shuttle_controller/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["$src"] = REF(src),
+	.["$tgui"] = tgui_module
+	.["controllable"] = controllable
 
 /datum/shuttle_controller/proc/tgui_act(action, list/params, authorization)
 	#warn impl

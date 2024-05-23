@@ -43,10 +43,14 @@
 /datum/shuttle_controller/ferry/proc/is_at_known_location()
 	return is_at_home() || is_at_away()
 
-/datum/shuttle_controller/ferry/tgui_static_data()
+/datum/shuttle_controller/ferry/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/datum/shuttle_controller/ferry/tgui_data()
+/datum/shuttle_controller/ferry/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+
+/datum/shuttle_controller/ferry/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+
 
 #warn impl all

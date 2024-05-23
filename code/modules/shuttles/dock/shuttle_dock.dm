@@ -228,7 +228,8 @@
 			ready_shuttle(loaded)
 
 /obj/shuttle_dock/Destroy()
-	inbound?.abort_transit()
+	inbound?.controller?.abort_transit()
+	inbound = null
 	unregister_dock()
 	// cleanup our area
 	if(create_bounding_box_area && base_area?.unique)
