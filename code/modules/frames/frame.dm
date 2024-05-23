@@ -145,6 +145,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
+	frame.icon = icon
 	frame.update_icon()
 	if(wall_frame)
 		if(islist(wall_pixel_y))
@@ -185,8 +186,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		qdel(frame_item)
 
 	if(!length(stages))
-		// just directly finish it
-		finish_frame(creating_frame, actor)
 		return // return nothing
 	return creating_frame
 

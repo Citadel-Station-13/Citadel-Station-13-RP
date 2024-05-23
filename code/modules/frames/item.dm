@@ -7,6 +7,7 @@
 	icon = 'icons/modules/frames/base.dmi'
 	icon_state = "item"
 
+	item_flags = ITEM_CAREFUL_BLUDGEON
 	obj_rotation_flags = OBJ_ROTATION_ENABLED | OBJ_ROTATION_DEFAULTING
 
 	/// frame datum - set to typepath for initialization
@@ -138,6 +139,41 @@
 		otherwise_self = SPAN_WARNING("You deploy [src]."),
 	)
 	return TRUE
+
+/obj/item/frame2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!frame.wall_frame)
+		return ..()
+	var/use_dir = get_dir(user, target)
+	var/datum/event_args/actor/e_args = new(user)
+	if(IS_DIAGONAL(use_dir))
+		e_args.chat_feedback(SPAN_WARNING("You must be standing cardinally to [target] to attempt a deployment there!"), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(frame.item_deploy_requires_tool)
+		e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!can_deploy(e_args, use_dir, e_args.performer.loc))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(frame.item_deploy_time)
+		e_args.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_WARNING("[e_args.performer] starts to deploy [src]."),
+			audible = SPAN_WARNING("You hear something being assembled."),
+			otherwise_self = SPAN_WARNING("You start to deploy [src]."),
+		)
+		log_construction(e_args, src, "started deploying")
+	if(!do_after(e_args.performer, frame.item_deploy_time, src, mobility_flags = MOBILITY_CAN_USE))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!attempt_deploy(e_args, use_dir, use_loc = e_args.performer.loc))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	e_args.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[e_args.performer] deploys [src]."),
+		audible = SPAN_WARNING("You hear something finish being assembled."),
+		otherwise_self = SPAN_WARNING("You deploy [src]."),
+	)
+	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/frame2/proc/can_deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc, silent)
 	if(!isturf(use_loc))
