@@ -67,6 +67,9 @@
 /obj/overmap/entity/visitable/ship/landable/populate_sector_objects()
 	..()
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
+	if(!shuttle_datum)
+		log_error("[src] trying to populate sector objects without shuttle_datum")
+		return
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
 		var/datum/shuttle/autodock/overmap/oms = shuttle_datum
 		oms.myship = src
