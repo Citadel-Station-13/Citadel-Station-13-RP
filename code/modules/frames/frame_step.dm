@@ -162,7 +162,7 @@
 		if(FRAME_REQUEST_TYPE_PROC)
 			return FALSE // override this proc
 		if(FRAME_REQUEST_TYPE_TOOL)
-			return using_tool.tool_check(request, actor, frame, TOOL_OP_SILENT)
+			return using_tool?.tool_check(request, actor, frame, TOOL_OP_SILENT)
 		if(FRAME_REQUEST_TYPE_MATERIAL)
 			var/obj/item/stack/material/material_stack = using_tool
 			return istype(material_stack) && (ispath(request, /datum/material)? material_stack.material.type == request : material_stack.material.id == request)

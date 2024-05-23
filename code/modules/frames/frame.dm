@@ -147,16 +147,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	frame.density = has_density
 	frame.update_icon()
 	if(wall_frame)
-		if(wall_pixel_x)
-			if(islist(wall_pixel_y))
-				frame.set_base_pixel_x(wall_pixel_x["[frame.dir]"])
-			else
-				frame.set_base_pixel_x(frame.dir & NORTH? wall_pixel_x : (frame.dir & SOUTH? -wall_pixel_x : 0))
-		if(wall_pixel_y)
-			if(islist(wall_pixel_y))
-				frame.set_base_pixel_y(wall_pixel_y["[frame.dir]"])
-			else
-				frame.set_base_pixel_y(frame.dir & NORTH? wall_pixel_y : (frame.dir & SOUTH? -wall_pixel_y : 0))
+		if(islist(wall_pixel_y))
+			frame.set_base_pixel_x(wall_pixel_x["[frame.dir]"] || 0)
+		else
+			frame.set_base_pixel_x(frame.dir & EAST? wall_pixel_x : (frame.dir & WEST? -wall_pixel_x : 0))
+		if(islist(wall_pixel_y))
+			frame.set_base_pixel_y(wall_pixel_y["[frame.dir]"] || 0)
+		else
+			frame.set_base_pixel_y(frame.dir & NORTH? wall_pixel_y : (frame.dir & SOUTH? -wall_pixel_y : 0))
 
 /**
  * @return finished product
@@ -358,6 +356,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 			continue
 		step_to_take = potential_step
 		break
+	if(isnull(step_to_take))
+		return FALSE
 	var/time_needed = step_to_take.time
 	return standard_progress_step(frame, actor, null, step_to_take, time_needed)
 
