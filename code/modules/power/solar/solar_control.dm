@@ -17,13 +17,13 @@
 	var/nexttime = 0		// time for a panel to rotate of 1� in manual tracking
 	var/obj/machinery/power/tracker/connected_tracker = null
 	var/list/connected_panels = list()
-	var/auto_start = SOLAR_AUTO_START_NO
+	var/auto_start = FALSE
 
 // Used for mapping in solar arrays which automatically start itself.
 // Generally intended for far away and remote locations, where player intervention is rare.
 // In the interest of backwards compatability, this isn't named auto_start, as doing so might break downstream maps.
 /obj/machinery/power/solar_control/autostart
-	auto_start = SOLAR_AUTO_START_YES
+	auto_start = TRUE
 
 // Similar to above but controlled by the configuration file.
 // Intended to be used for the main solar arrays, so individual servers can choose to have them start automatically or require manual intervention.
@@ -44,11 +44,11 @@
 
 /obj/machinery/power/solar_control/proc/auto_start(forced = FALSE)
 	// Automatically sets the solars, if allowed.
-	if(forced || auto_start == SOLAR_AUTO_START_YES || (auto_start == SOLAR_AUTO_START_CONFIG && config_legacy.autostart_solars) )
+	if(forced || auto_start == TRUE || (auto_start == SOLAR_AUTO_START_CONFIG && config_legacy.autostart_solars) )
 		track = 2 // Auto tracking mode.
 		search_for_connected()
 		if(connected_tracker)
-			connected_tracker.set_angle(SSsun.sun.angle)
+			set_tracker_angle()
 		set_panels(cdir)
 
 // This would use LateInitialize(), however the powernet does not appear to exist during that time.
@@ -98,7 +98,7 @@
 				cdir = targetdir //...the current direction is the targetted one (and rotates panels to it)
 		if(2) // auto-tracking
 			if(connected_tracker)
-				connected_tracker.set_angle(SSsun.sun.angle)
+				set_tracker_angle()
 
 	set_panels(cdir)
 	updateDialog()
@@ -121,9 +121,8 @@
 		interact(user)
 
 /obj/machinery/power/solar_control/interact(mob/user)
-
 	var/t = "<B><span class='highlight'>Generated power</span></B> : [round(lastgen)] W<BR>"
-	t += "<B><span class='highlight'>Star Orientation</span></B>: [SSsun.sun.angle]&deg ([angle2text(SSsun.sun.angle)])<BR>"
+	t += "<B><span class='highlight'>Star Orientation</span></B>: [cdir]&deg ([angle2text(cdir)])<BR>"
 	t += "<B><span class='highlight'>Array Orientation</span></B>: [rate_control(src,"cdir","[cdir]&deg",1,15)] ([angle2text(cdir)])<BR>"
 	t += "<B><span class='highlight'>Tracking:</span></B><div class='statusDisplay'>"
 	switch(track)
@@ -197,6 +196,8 @@
 			targetdir = (targetdir + trackrate/abs(trackrate) + 360) % 360 	//... do it
 			nexttime += 36000/abs(trackrate) //reset the counter for the next 1�
 
+	update()
+
 	updateDialog()
 
 /obj/machinery/power/solar_control/Topic(href, href_list)
@@ -225,7 +226,7 @@
 		track = text2num(href_list["track"])
 		if(track == 2)
 			if(connected_tracker)
-				connected_tracker.set_angle(SSsun.sun.angle)
+				set_tracker_angle()
 				set_panels(cdir)
 		else if (track == 1) //begin manual tracking
 			src.targetdir = src.cdir
@@ -235,18 +236,34 @@
 	if(href_list["search_connected"])
 		src.search_for_connected()
 		if(connected_tracker && track == 2)
-			connected_tracker.set_angle(SSsun.sun.angle)
+			set_tracker_angle()
 		src.set_panels(cdir)
 
 	interact(usr)
 	return 1
+
+/obj/machinery/power/solar_control/proc/set_tracker_angle()
+	var/angle = 0
+	var/datum/planet/our_planet = null
+	var/turf/T = get_turf(src)
+	if(T.z <= SSplanets.z_to_planet.len)
+		our_planet = SSplanets.z_to_planet[z]
+
+	if(our_planet && istype(our_planet))
+		var/time_num = text2num(our_planet.current_time.show_time("hh")) + (text2num(our_planet.current_time.show_time("mm"))/60)
+		var/day_hours = our_planet.current_time.seconds_in_day / (1 HOURS)
+		angle = round((time_num / day_hours) * 360) // day as progress from 0 to 1 * 360
+	else
+		angle = SSsun.sun.angle
+
+	connected_tracker.set_angle(angle)
 
 //rotates the panel to the passed angle
 /obj/machinery/power/solar_control/proc/set_panels(var/cdir)
 
 	for(var/obj/machinery/power/solar/S in connected_panels)
 		S.adir = cdir //instantly rotates the panel
-		S.occlusion()//and
+		S.update_solar_exposure()//and
 		S.update_icon() //update it
 
 	update_icon()
@@ -275,3 +292,9 @@
 			if (prob(25))
 				broken()
 	return
+
+/proc/rate_control(var/S, var/V, var/C, var/Min=1, var/Max=5, var/Limit=null) //How not to name vars
+	var/href = "<A href='?src=\ref[S];rate control=1;[V]"
+	var/rate = "[href]=-[Max]'>-</A>[href]=-[Min]'>-</A> [(C?C : 0)] [href]=[Min]'>+</A>[href]=[Max]'>+</A>"
+	if(Limit) return "[href]=-[Limit]'>-</A>"+rate+"[href]=[Limit]'>+</A>"
+	return rate
