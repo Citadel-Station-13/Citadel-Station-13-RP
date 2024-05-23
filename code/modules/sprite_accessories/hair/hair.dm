@@ -119,28 +119,12 @@ they are. This code is a mess.
 	icon_add_legacy = null
 	hair_flags = HAIR_TIEABLE
 
-/datum/sprite_accessory/hair/dawn
-	name = "Dawn"
-	id = "hair-dawn"
-	icon = 'icons/mob/sprite_accessory/hair/hair.dmi'
-	icon_state = "dawn"
-	icon_add_legacy = null
-	hair_flags = HAIR_TIEABLE
-
 // the short version of this hair is in legacy.dm
 /datum/sprite_accessory/hair/fluffy_long
 	name = "Fluffy Long"
 	id = "hair-fluffy-long"
 	icon = 'icons/mob/sprite_accessory/hair/hair.dmi'
 	icon_state = "hair_fluffy_long"
-	icon_add_legacy = null
-	hair_flags = HAIR_TIEABLE
-
-/datum/sprite_accessory/hair/khmuro
-	name = "Khmuro"
-	id = "hair-khmuro"
-	icon = 'icons/mob/sprite_accessory/hair/hair.dmi'
-	icon_state = "khmuro"
 	icon_add_legacy = null
 	hair_flags = HAIR_TIEABLE
 
