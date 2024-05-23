@@ -23,6 +23,7 @@
 		"Courser Scouting Vessel" = list("rift_courser_hangar"),
 		"Hammerhead Patrol Barge" = list("rift_hammerhead_hangar"),
 		"Civilian Transport" = list("rift_civvie_pad"),
+		"Civilian Century Shuttle" = list("rift_oldcentury_pad"),
 		"Dart EMT Shuttle" = list("rift_emt_pad"),
 		"Beruang Trade Ship" = list("rift_trade_dock"),
 		"NDV Quicksilver" = list("rift_specops_dock"),
