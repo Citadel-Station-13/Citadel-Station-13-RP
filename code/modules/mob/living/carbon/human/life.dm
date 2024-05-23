@@ -677,6 +677,7 @@
  * * dt - seconds to simulate
  */
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment, dt)
+	// todo: rework all of this. again. on characters v2.
 
 	// legacy: species special processes
 	//Stuff like the xenomorph's plasma regen happens here.
@@ -758,18 +759,24 @@
 
 		var/nominal = species.body_temperature || T20C
 		var/to_nominal = nominal - bodytemperature
-		var/is_stabilizing = (to_nominal > 0? 1 : -1) == (difference > 0? 1 : -1)
+		var/is_stabilizing = ((to_nominal > 0? 1 : -1) == (difference > 0? 1 : -1)) && \
+			((abs(nominal - environment_temperature) < MOB_BODYTEMP_EQUALIZATION_FAVORABLE_LEEWAY) || \
+				(abs(nominal - bodytemperature) > MOB_BODYTEMP_EQUALIZATION_FAVORABLE_FORCED_THRESHOLD) \
+			)
 
 		var/adjust = is_stabilizing? \
-			max( \
+			min(max( \
 				difference * MOB_BODYTEMP_EQUALIZATION_FAVORABLE_RATIO * density_multiplier, \
 				min(difference, MOB_BODYTEMP_EQUALIZATION_MIN_FAVORABLE) \
-			) : \
+			), difference) : \
 			clamp( \
 				difference * MOB_BODYTEMP_EQUALIZATION_UNFAVORABLE_RATIO * density_multiplier, \
 				min(difference, MOB_BODYTEMP_EQUALIZATION_MIN_UNFAVORABLE), \
 				MOB_BODYTEMP_EQUALIZATION_MAX_UNFAVORABLE \
 			)
+
+		if(istype(loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			adjust = min(adjust, 2) // snowflake patch for cryo i fucking hate this aoguhwagoehs8ry0u34ajwioer
 
 		if(is_stabilizing)
 			adjust_bodytemperature(adjust)
@@ -1087,7 +1094,7 @@
 	if(noisy == TRUE && nutrition < 250 && prob(10))
 		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
 		var/growlmultiplier = 100 - (nutrition / 250 * 100)
-		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/client_preference/digestion_noises)
+		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/game_preference_toggle/vore_sounds/digestion_noises)
 
 	// TODO: stomach and bloodstream organ.
 	if(!isSynthetic())
@@ -1851,7 +1858,7 @@
 	if(!H || (H.robotic >= ORGAN_ROBOT))
 		return
 
-	if(pulse >= PULSE_2FAST || shock_stage >= 10 || (istype(get_turf(src), /turf/space) && is_preference_enabled(/datum/client_preference/play_ambiance)))
+	if(pulse >= PULSE_2FAST || shock_stage >= 10 || (istype(get_turf(src), /turf/space) && get_preference_toggle(/datum/game_preference_toggle/ambience/area_ambience)))
 		//PULSE_THREADY - maximum value for pulse, currently it 5.
 		//High pulse value corresponds to a fast rate of heartbeat.
 		//Divided by 2, otherwise it is too slow.

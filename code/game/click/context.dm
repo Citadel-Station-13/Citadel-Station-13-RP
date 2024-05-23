@@ -43,6 +43,17 @@
 	var/list/menu_options = context_query(e_args)
 	if(!length(menu_options))
 		return FALSE
+	// check for defaulting
+	if(length(menu_options) == 1)
+		var/key = menu_options[1]
+		var/list/first_option = menu_options[key]
+		// todo: this is shitcode but we don't want assoclists for performance, just yet.
+		// make sure it's defaultable
+		if(length(first_option) >= 5 && first_option[5])
+			// it is, log and execute
+			log_click_context(e_args, src, "menu execute [key] (default)")
+			context_act(e_args, key)
+			return
 	// open
 	log_click_context(e_args, src, "menu open")
 	. = TRUE
@@ -73,6 +84,8 @@
 	GLOB.radial_menus[id] = menu
 	LAZYSET(context_menus, receiving, menu)
 
+	receiving.context_menu = menu
+
 	menu.radius = 32
 	menu.host = src
 	menu.anchor = src
@@ -81,15 +94,18 @@
 	menu.show_to(receiving.mob)
 	menu.wait(receiving.mob, src, TRUE)
 
+	receiving.context_menu = null
+
 	var/chosen_name = menu.selected_choice
 
-	qdel(menu)
 	GLOB.radial_menus -= id
+	qdel(menu)
 
 	if(isnull(chosen_name))
 		return
 
 	var/key = inverse_lookup[chosen_name]
+	log_click_context(e_args, src, "menu execute [key]")
 	context_act(e_args, key)
 
 /atom/proc/context_close()

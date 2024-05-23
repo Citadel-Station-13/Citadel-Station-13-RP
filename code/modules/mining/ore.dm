@@ -3,7 +3,7 @@
 	icon = 'icons/obj/stacks_ore.dmi'
 	icon_state = "ore"
 	no_variants = FALSE
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE // uh let's like, not? it'd be funny but fields usually have like 400 pieces of ore in just a few tiles.
 	//^ not as horrible now that it's stacked but I'm keeping this. <3
 	singular_name = "ore"

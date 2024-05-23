@@ -12,6 +12,10 @@
 	var/static/list/datum/map_level/ordered_levels = list()
 	/// k-v id to level datum lookup
 	var/static/list/datum/map_level/keyed_levels = list()
+	/// typepath to level datum lookup
+	/// we do that because we automatically generate level ids
+	/// so we can't use initial(id)
+	var/static/list/datum/map_level/typed_levels = list()
 
 	//* level fluff lookups
 	/// literally just a random hexadecimal store to prevent collision
@@ -202,6 +206,8 @@
 	ordered_levels[z_index] = level_or_path
 	if(level_or_path.id)
 		keyed_levels[level_or_path.id] = level_or_path
+	if(level_or_path.hardcoded)
+		typed_levels[level_or_path.type] = level_or_path
 	level_or_path.z_index = z_index
 	level_or_path.loaded = TRUE
 	. = level_or_path
@@ -383,6 +389,7 @@
  * generates random hex fluff level id
  */
 /datum/controller/subsystem/mapping/proc/generate_fluff_level_id()
+	// todo: needs to be persistence-stable..?
 	var/discriminator = GLOB.round_id? "[num2hex(text2num(GLOB.round_id), 6)]-" : ""
 	var/safety = 500
 	do

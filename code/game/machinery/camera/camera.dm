@@ -239,7 +239,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, loc)
 	spark_system.start()
-	playsound(loc, "sparks", 50, 1)
+	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1)
 
 /obj/machinery/camera/proc/set_status(var/newstatus)
 	if (status != newstatus)

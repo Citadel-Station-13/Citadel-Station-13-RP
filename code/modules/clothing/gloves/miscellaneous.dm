@@ -65,6 +65,7 @@
 	fingerprint_chance = 25
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
+	materials_base = list(MAT_PLASTIC = 100)
 //	var/balloonPath = /obj/item/latexballon
 
 //TODO: Make inflating gloves a thing

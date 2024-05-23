@@ -4,7 +4,7 @@
 	name = "slime agent"
 	desc = "A flask containing strange, mysterious substances excreted by a slime."
 	icon = 'icons/obj/medical/chemical.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_BIO = 4)
 
 /obj/item/slimepotion/attackby(obj/item/O, mob/user)

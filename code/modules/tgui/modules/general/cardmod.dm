@@ -409,7 +409,6 @@
 	expected_type = /datum/computer_file/program/card_mod
 	var/datum/computer_file/program/program
 
-
 /datum/tgui_module/card_mod/standard/id_computer/ntos/New(datum/host)
 	. = ..()
 	program = host

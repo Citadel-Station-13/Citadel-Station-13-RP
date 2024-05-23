@@ -5,7 +5,7 @@
 	anchored = TRUE
 	density = TRUE
 	plane = TURF_PLANE
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	integrity = 200
 	integrity_max = 200
 	depth_level = 24

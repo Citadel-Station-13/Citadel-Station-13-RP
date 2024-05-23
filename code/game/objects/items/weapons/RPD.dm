@@ -22,7 +22,7 @@
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	///Sparks system used when changing device in the UI

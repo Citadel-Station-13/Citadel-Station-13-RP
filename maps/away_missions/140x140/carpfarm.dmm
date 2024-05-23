@@ -504,7 +504,7 @@
 	icon_state = "intact"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1375;
 	master_tag = "carp_airlock";
 	name = "interior access button";
@@ -675,7 +675,7 @@
 /area/awaymission/carpfarm/base)
 "ce" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1375;
 	master_tag = "carp_airlock";
 	name = "exterior access button";

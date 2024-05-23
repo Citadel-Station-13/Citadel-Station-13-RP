@@ -3,7 +3,7 @@
 	name = "life crystal"
 	desc = "A small crystal with four little dots in it. It feels slightly warm to the touch. \
 	Read manual before use! Can be worn, held, or attached to uniform. NOTE: Device contains antimatter."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_items_vr.dmi'
@@ -145,10 +145,10 @@
 	icon_state = "khlifebox"
 	desc = "This case can only hold the VM-LC91-1 and a manual."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	storage_slots = 2
-	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
-	max_storage_space = ITEMSIZE_COST_SMALL * 2
-	w_class = ITEMSIZE_SMALL
+	max_items = 2
+	insertion_whitelist = list(/obj/item/clothing/accessory/collar/vmcrystal)
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 2
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/storage/box/vmcrystal/Initialize(mapload)
 	. = ..()

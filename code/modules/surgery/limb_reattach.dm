@@ -60,7 +60,7 @@
 	E.replaced(target)
 	target.update_icons_body(FALSE)
 	target.update_health()
-	target.UpdateDamageIcon()
+	target.update_damage_overlay()
 
 /datum/surgery_step/limb/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool
@@ -100,7 +100,7 @@
 	E.status &= ~ORGAN_CUT_AWAY
 	target.update_icons_body()
 	target.update_health()
-	target.UpdateDamageIcon()
+	target.update_damage_overlay()
 
 /datum/surgery_step/limb/connect/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool
@@ -150,7 +150,7 @@
 
 	target.update_icons_body(FALSE)
 	target.update_health()
-	target.UpdateDamageIcon()
+	target.update_damage_overlay()
 
 	qdel(tool)
 

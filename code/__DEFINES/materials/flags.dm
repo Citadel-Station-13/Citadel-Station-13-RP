@@ -7,10 +7,14 @@
 #define MATERIAL_FLAG_VULNERABLE_MOB_ARMOR (1<<0)
 /// utterly immune to melting, thermite or otherwise
 #define MATERIAL_FLAG_UNMELTABLE (1<<1)
+/// too dangerous to persist
+/// this is a somewhat awful flag so we'll keep it until we need to get rid of it
+#define MATERIAL_FLAG_CONSIDERED_OVERPOWERED (1<<2)
 
 DEFINE_BITFIELD(material_flags, list(
 	BITFIELD(MATERIAL_FLAG_VULNERABLE_MOB_ARMOR),
 	BITFIELD(MATERIAL_FLAG_UNMELTABLE),
+	BITFIELD(MATERIAL_FLAG_CONSIDERED_OVERPOWERED),
 ))
 
 //* /datum/material material_constraints

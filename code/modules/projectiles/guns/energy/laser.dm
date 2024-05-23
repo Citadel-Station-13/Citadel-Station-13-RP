@@ -7,7 +7,7 @@
 	wielded_item_state = "laser-wielded"
 	fire_delay = 8
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000)
@@ -48,7 +48,7 @@
 	item_state = "retro"
 	desc = "An older model of the basic lasergun. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
 	fire_delay = 10 //old technology
 
@@ -115,7 +115,7 @@
 	desc = "A rare weapon, handcrafted by a now defunct specialty manufacturer on Luna for a small fortune. It's certainly aged well."
 	damage_force = 5
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
 	origin_tech = null
 	fire_delay = 10		//Old pistol
@@ -133,7 +133,7 @@
 	projectile_type = /obj/projectile/beam/heavylaser/cannon
 	battery_lock = 1
 	fire_delay = 20
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	one_handed_penalty = 90 // The thing's heavy and huge.
 	accuracy = 75
@@ -174,14 +174,14 @@
 	fire_delay = 35
 	damage_force = 10
 	heavy = TRUE
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	accuracy = 25 //shooting at the hip
 	scoped_accuracy = 80
 //	requires_two_hands = 1
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 
 /obj/item/gun/energy/sniperrifle/verb/scope()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Use Scope"
 	set popup_menu = 1
 	set src in usr
@@ -211,13 +211,13 @@
 	fire_delay = 20
 	damage_force = 8
 	heavy = TRUE
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	accuracy = 70
 	scoped_accuracy = 95
 	var/scope_multiplier = 1.5
 
 /obj/item/gun/energy/monorifle/verb/sights()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Aim Down Sights"
 	set popup_menu = 1
 	set src in usr
@@ -280,7 +280,7 @@
 	desc = "A automatic laser weapon resembling a Tommy-Gun. Designed by Cybersun Industries to be a man portable supressive fire laser weapon."
 	icon_state = "tommylas"
 	item_state = "tommylas"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
@@ -299,7 +299,7 @@
 	desc = "A homemade (and somehow safe) laser gun designed around shooting single powerful laser beam draining the cell entirely. Better not miss and better have spare cells."
 	icon_state = "ziplas"
 	item_state = "ziplas"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT|SLOT_BACK
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/projectile/beam/heavylaser //But it hurts a lot
@@ -323,12 +323,12 @@
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat
 	name = "NT-LR-4 laser rifle"
-	desc = "A sturdy laser rifle fine tuned for NanoTrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
+	desc = "A sturdy laser rifle fine tuned for Nanotrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
 	icon_state = "clrifle"
 	item_state = "clrifle"
 	fire_delay = 6
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000, "plastic" = 1000)

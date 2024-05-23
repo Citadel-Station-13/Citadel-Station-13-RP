@@ -40,7 +40,7 @@
 	SIGNAL_HANDLER
 	update_worn_icon()
 
-/obj/item/clothing/accessory/halo_projector/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used, align_y)
+/obj/item/clothing/accessory/halo_projector/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used, align_y)
 	. = ..()
 	if(inhands)
 		return
@@ -54,7 +54,7 @@
 	MA.pixel_y -= align_y
 	MA.transform = tform
 
-/obj/item/clothing/accessory/halo_projector/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/clothing/accessory/halo_projector/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot/slot_meta)
 	. = ..()
 	if(inhands)
 		return

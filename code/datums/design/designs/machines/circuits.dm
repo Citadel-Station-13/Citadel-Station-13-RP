@@ -8,6 +8,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/airalarm
 
+/datum/design/machine_circuit/airlock
+	id = "CircuitAirlock"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/airlock_electronics
+
 /datum/design/machine_circuit/firealarm
 	id = "CircuitFireAlarm"
 	lathe_type = LATHE_TYPE_AUTOLATHE

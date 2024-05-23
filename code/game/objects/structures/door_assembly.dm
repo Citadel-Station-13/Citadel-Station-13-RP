@@ -4,7 +4,7 @@
 	icon_state = "door_as_0"
 	anchored = 0
 	density = 1
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	var/state = 0
 	base_icon_state = ""
 	var/base_name = "airlock"

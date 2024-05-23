@@ -3,7 +3,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "dnalockchip"
 	desc = "A state of the art technological chip that can be installed in a firearm. It allows the user to store their DNA and lock the gun's use from unwanted users."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_COMBAT = 4, TECH_DATA = 4, TECH_BIO = 4)
 
 	var/list/stored_dna = list()	//list of the dna stored in the gun, used to allow users to use it or not
@@ -33,7 +33,7 @@
 
 /obj/item/gun/verb/give_dna()
 	set name = "Give DNA"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	get_dna(usr)
 
@@ -58,7 +58,7 @@
 
 /obj/item/gun/verb/remove_dna()
 	set name = "Remove DNA"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	clear_dna(usr)
 
@@ -76,7 +76,7 @@
 
 /obj/item/gun/verb/allow_dna()
 	set name = "Toggle DNA Samples Allowance"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	toggledna(usr)
 
