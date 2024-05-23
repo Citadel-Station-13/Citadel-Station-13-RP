@@ -91,6 +91,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 		user.images -= hud_image
 
 /datum/atom_hud_provider/proc/add_or_update(atom/A)
+	LAZYINITLIST(A.atom_huds)
 	var/image/hud_image = A.atom_huds[type]
 	if(isnull(hud_image))
 		A.atom_huds[type] = hud_image = create_image(A)
@@ -112,6 +113,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 /datum/atom_hud_provider/proc/queue_add_or_update(atom/A)
 	if(!update_queued)
 		queue_update()
+	LAZYINITLIST(A.atom_huds)
 	var/image/hud_image = A.atom_huds[type]
 	// todo: should we queue the add operations instead of duping them..?
 	if(isnull(hud_image))
@@ -133,6 +135,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 				update(A, A.atom_huds[type])
 			if(ATOM_HUD_QUEUED_FOR_REMOVE)
 				remove(A)
+	update_queued = FALSE
 	queued_for_update = list()
 
 /datum/atom_hud_provider/proc/create_image(atom/target)
@@ -146,6 +149,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
  * sets up image with override = TRUE
  */
 /datum/atom_hud_provider/overriding
+	abstract_type = /datum/atom_hud_provider/overriding
 
 /datum/atom_hud_provider/overriding/create_image(atom/target)
 	var/image/creating = ..()

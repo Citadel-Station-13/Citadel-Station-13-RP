@@ -10,7 +10,8 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 			continue
 		var/datum/atom_hud/hud = new hud_type
 		.[hud_type] = hud
-		if(hud.id)
+		if(hud.id != hud_type)
+			ASSERT(!.[hud.id])
 			.[hud.id] = hud
 
 /**
@@ -41,6 +42,9 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 /datum/atom_hud/New(id, list/hud_providers)
 	if(!isnull(id))
 		src.id = id
+		ASSERT(src.id)
+	else if(isnull(src.id))
+		src.id = type
 	if(!isnull(hud_providers))
 		src.providers = hud_providers
 	if(auto_registration)
