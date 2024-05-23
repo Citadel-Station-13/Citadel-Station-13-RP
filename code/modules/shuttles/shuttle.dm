@@ -142,21 +142,3 @@
 		// We only need to rebuild powernets for our cables.  No need to check machines because they are on top of cables.
 		for(var/obj/structure/cable/C in A)
 			powernets |= C.powernet
-
-/datum/shuttle/proc/make_sounds(var/sound_type)
-	var/sound_to_play = null
-	switch(sound_type)
-		if(HYPERSPACE_WARMUP)
-			sound_to_play = 'sound/effects/shuttles/hyperspace_begin.ogg'
-		if(HYPERSPACE_PROGRESS)
-			sound_to_play = 'sound/effects/shuttles/hyperspace_progress.ogg'
-		if(HYPERSPACE_END)
-			sound_to_play = 'sound/effects/shuttles/hyperspace_end.ogg'
-	for(var/area/A in shuttle_area)
-		for(var/obj/machinery/door/E in A)	// Dumb, I know, but playing it on the engines doesn't do it justice
-			playsound(E, sound_to_play, 50, FALSE)
-
-/datum/shuttle/proc/get_location_name()
-	if(moving_status == SHUTTLE_INTRANSIT)
-		return "In transit"
-	return current_location.name

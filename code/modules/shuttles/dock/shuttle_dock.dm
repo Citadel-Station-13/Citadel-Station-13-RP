@@ -133,6 +133,9 @@
 	//* shuttle
 	/// the docked shuttle
 	var/datum/shuttle/docked
+	/// the shuttle that's currently inbound while in transit
+	/// if set, **we are a protected dock, and no other shuttle should arrive during this time!**
+	var/datum/shuttle/inbound
 	/// starting shuttle template typepath or id
 	/// only loaded on mapload, not if it's persistence loaded or anything for now
 	var/starting_shuttle_template
@@ -218,6 +221,7 @@
 			ready_shuttle(loaded)
 
 /obj/shuttle_dock/Destroy()
+	inbound?.abort_transit()
 	unregister_dock()
 	// cleanup our area
 	if(create_bounding_box_area && base_area?.unique)

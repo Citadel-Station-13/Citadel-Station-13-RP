@@ -20,11 +20,18 @@
 	var/dock_home_id
 	/// away dock id or typepath
 	var/dock_away_id
-	#warn hook init for both
 
 /datum/shuttle_controller/ferry/New(home_id, away_id)
 	src.dock_home_id = home_id
 	src.dock_away_id = away_id
+	if(ispath(src.dock_home_id))
+		var/obj/shuttle_dock/casted = src.dock_home_id
+		src.dock_home_id = initial(casted.dock_id)
+		stack_trace(!isnull(src.dock_home_id))
+	if(ispath(src.dock_away_id))
+		var/obj/shuttle_dock/casted = src.dock_away_id
+		src.dock_away_id = initial(casted.dock_id)
+		stack_trace(!isnull(src.dock_away_id))
 	..()
 
 /datum/shuttle_controller/ferry/proc/is_at_home()

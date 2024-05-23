@@ -31,7 +31,7 @@
 	unlook(user)
 
 /datum/tgui_module_old/ship/proc/sync_linked()
-	var/obj/overmap/entity/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
+	var/obj/overmap/entity/visitable/ship/sector = get_overmap_entity(get_z(ui_host()))
 	if(!sector)
 		return
 	return attempt_hook_up_recursive(sector)

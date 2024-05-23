@@ -112,6 +112,11 @@
 	var/ceiling_type = /turf/simulated/shuttle_ceiling
 
 	//* Transit
+
+	//? This is in shuttle, not controller, because
+	//? we cannot afford a memory leak in transit and therefore
+	//? shuttle-side will ensure things are cleaned up as needed.
+
 	/// Shuttle is in transit
 	var/in_transit = FALSE
 	/// Current transit reservation
@@ -128,7 +133,10 @@
 
 #warn impl all
 
-/datum/shuttle/Destroy()
+/datum/shuttle/Destroy(force)
+	if(!force)
+		stack_trace("something tried to delete a shuttle")
+		return QDEL_HINT_LETMELIVE
 	QDEL_NULL(descriptor)
 	QDEL_NULL(controller)
 	QDEL_LIST(ports)
@@ -141,6 +149,10 @@
 	preview_width = null
 	preview_height = null
 	#warn de-dock
+	// as a result of how our areas work, deleting a shuttle
+	// in normal space leaves the turfs behind on the base areas,
+	// but deleting it in transit will just wipe out the entire
+	// shuttle as the transit turf reservation is destroyed.
 	#warn de-transit
 	#warn de-move
 
@@ -524,17 +536,25 @@
 /**
  * immediate shuttle move, undocking from any docked ports in the process
  *
- * * both use_before_turfs and use_a
-	/// [x or y] cache (perpendicular to considered movement direction)
-	/// of 'first non shuttle turf'
-…	/// with the relative perpsective of its physics direction.
-	var/list/translating_garbage_disposal_lookup_cache
-	/// queued throws
-	var/list/translating_needs_to_be_thrown_away
-	/// queued objs needing to be damaged
-	var/list/translating_needs_to_be_damaged
-	#warn ugh
-fter_turfs must be axis-aligned bounding-box turfs, in order.
+ * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
+ * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
+ *
+ * @params
+ * * dock - the dock to use
+ * * align_with_port - if provided, we align to this port instead of use centered docking
+ * * centered_direction - centered docking direction
+ * * use_before_turfs - ...
+ * * use_after_turfs - ...
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/datum/shuttle/proc/dock_immediate(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered_direction, list/use_before_turfs, list/use_after_turfs)
+	#warn impl
+
+/**
+ * immediate shuttle move, undocking from any docked ports in the process
+ *
+ * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
  *
  * @return TRUE / FALSE on success / failure
@@ -822,6 +842,17 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		return FALSE
 	return TRUE
 
+//* Location *//
+
+/**
+ * Gets our overmap entity, if any
+ */
+/datum/shuttle/proc/get_overmap_entity()
+	if(!istype(controller, /datum/shuttle_controller/overmap))
+		return
+	var/datum/shuttle_controller/overmap/overmap_controller = controller
+	return overmap_controller.entity
+
 //* Previews *//
 
 /**
@@ -901,7 +932,15 @@ fter_turfs must be axis-aligned bounding-box turfs, in order.
 		if(dist <= maximum_range)
 			.[player] = dist
 
-
+/datum/shuttle/proc/make_sounds(sound, maximum_range, volume = 65)
+	var/list/mob/hearing = sfx_players_in_range(maximum_range)
+	var/sound/resolving = get_sfx(sound)
+	for(var/mob/heard as anything in hearing)
+		heard.playsound_local(
+			soundin = resolved,
+			vol = volume,
+			falloff = FALSE,
+		)
 
 //* Transit *//
 

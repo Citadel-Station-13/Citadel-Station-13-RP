@@ -101,7 +101,7 @@
 	on_landing(from, into)
 
 /obj/overmap/entity/visitable/ship/landable/proc/on_landing(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
-	var/obj/overmap/entity/visitable/target = get_overmap_sector(get_z(into))
+	var/obj/overmap/entity/visitable/target = get_overmap_entity(get_z(into))
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(into.landmark_tag == shuttle_datum.motherdock) // If our motherdock is a landable ship, it won't be found properly here so we need to find it manually.
 		for(var/obj/overmap/entity/visitable/ship/landable/landable in SSovermaps.ships)

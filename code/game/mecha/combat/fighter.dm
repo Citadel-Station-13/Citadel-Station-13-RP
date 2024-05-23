@@ -67,7 +67,7 @@
 	if(!(LEGACY_MAP_DATUM).use_overmap || !occupant || !can_ztravel())
 		return ..()
 
-	var/obj/overmap/entity/visitable/our_ship = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/our_ship = get_overmap_entity(z)
 
 	//We're not on the overmap
 	if(!our_ship)

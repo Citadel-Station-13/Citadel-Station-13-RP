@@ -36,9 +36,33 @@
 	/// that's encoded on the shuttle_docker.
 	var/list/datum/shuttle_docker/docker_by_user
 
+	//* Transit
+	/// world.time we should arrive at destination
+	var/transit_arrival_time
+	/// dock we're going towards
+	/// this dock will have us set as inbound, which should
+	/// protect it from everything else
+	///
+	/// if the dock is occupied by the time we get there,
+	/// that is **undefined behavior.**
+	var/obj/shuttle_dock/transit_target_dock
+	/// are we doing a centered landing on said dock?
+	var/transit_target_centered_mode
+	/// which direction should we land, for centered?
+	var/transit_target_centered_direction
+	/// if not centered, are we aligning with a specific port?
+	var/obj/shuttle_port/transit_target_port
+	/// timerid for movement
+	/// todo: cpu used shouldn't be counted against SStimers.
+	var/transit_timer_id
+
 	//* UI
 	/// tgui interface to load
 	var/tgui_module
+
+/datum/shuttle_controller/Destroy()
+	abort_transit()
+	return ..()
 
 /datum/shuttle_controller/proc/initialize(datum/shuttle/shuttle)
 	src.shuttle = shuttle
@@ -91,11 +115,98 @@
  * returns a list of name-to-turf of valid jump points on a given zlevel
  */
 /datum/shuttle_controller/proc/manual_landing_beacons(zlevel)
+	#warn impl
 
 /**
  * returns a list of valid name-to-zlevel-index for manual landing
  */
 /datum/shuttle_controller/proc/manual_landing_levels()
+	#warn impl
+
+//* Docking - Transit *//
+
+/**
+ * start transiting towards a specific dock
+ *
+ * we will be immediately jumped into transit space on this call!
+ *
+ * @params
+ * * dock - dock to go to.
+ * * align_with_port - the port to align with; if null, we are centered
+ * * direction - the direction to use for centered landing.
+ *
+ * @return TRUE / FALSE on success / failure
+ */
+/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, direction)
+	if(isnull(direction))
+		direction = shuttle.anchor.dir
+	// abort existing transit
+	if(is_in_transit())
+		abort_transit()
+	// obtain exclusive lock on dock
+	if(dock.inbound)
+		return FALSE
+	dock.inbound = src
+	// jump into transit
+	shuttle.move_to_transit()
+	// set variables
+	transit_target_dock = dock
+	transit_target_centered_mode = isnull(align_with_port)
+	transit_target_centered_direction = direction
+	transit_target_port = align_with_port
+	// register timer
+	transit_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_transit)), TIMER_STOPPABLE)
+	return TRUE
+
+/datum/shuttle_controller/proc/finish_transit()
+	ASSERT(transit_target_dock)
+
+	if(transit_target_centered_mode)
+		. = shuttle.dock_immediate(
+			transit_target_dock,
+			centered_direction = transit_target_centered_direction,
+		)
+	else
+		. = shuttle.dock_immediate(
+			transit_target_dock,
+			align_with_port = transit_target_port,
+			centered_direction = transit_target_centered_direction,
+		)
+
+	cleanup_transit()
+
+/**
+ * stops transiting towards the current dock
+ *
+ * **we will be orphaned in transit space upon this call.**
+ */
+/datum/shuttle_controller/proc/abort_transit()
+	cleanup_transit()
+
+/datum/shuttle_controller/proc/cleanup_transit()
+	transit_target_dock = null
+	transit_target_centered_mode = null
+	transit_target_centered_direction = null
+	transit_target_port = null
+	if(transit_timer_id)
+		deltimer(transit_timer_id)
+
+/**
+ * checks if we're in transit towards a dock
+ * not if the shuttle is in transit space, but if **we**, the controller, have a transit queued.
+ */
+/datum/shuttle_controller/proc/is_in_transit()
+	return !isnull(transit_timer_id)
+
+/**
+ * gets world.time time left in transit
+ *
+ * negative values can be returned if we're overdue, somehow!
+ */
+/datum/shuttle_controller/proc/transit_time_left()
+	if(isnull(transit_timer_id))
+		return
+	return transit_arrival_time - world.time
 
 //* Interface *//
 

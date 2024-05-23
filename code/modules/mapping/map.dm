@@ -362,7 +362,7 @@
 /datum/map/station/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
 	// Overmap behavior
 	if(use_overmap)
-		var/obj/overmap/entity/visitable/O = get_overmap_sector(srcz)
+		var/obj/overmap/entity/visitable/O = get_overmap_entity(srcz)
 		if(!istype(O))
 			return list(srcz)
 
