@@ -1,8 +1,8 @@
 AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, fire_alarm, 'icons/machinery/fire_alarm.dmi')
 /datum/frame2/fire_alarm
 	name = "fire alarm frame"
-	wall_pixel_y = 8
-	wall_pixel_x = 8
+	wall_pixel_y = 16
+	wall_pixel_x = 16
 	wall_frame = TRUE
 	material_cost = 2
 	stages = list(
