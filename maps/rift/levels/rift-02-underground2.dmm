@@ -4710,7 +4710,7 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/monotile,
-/area/rift)
+/area/engineering/engine_monitoring)
 "qc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -7836,6 +7836,10 @@
 "CC" = (
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"CG" = (
+/obj/machinery/lathe/autolathe,
+/turf/simulated/floor/tiled,
+/area/engineering/workshop)
 "CH" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/sun,
@@ -29765,7 +29769,7 @@ cX
 KY
 ES
 FZ
-FZ
+CG
 oD
 gs
 Mb
