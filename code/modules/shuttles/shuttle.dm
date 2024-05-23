@@ -1,8 +1,3 @@
-
-// This creates a graphical warning to where the shuttle is about to land, in approximately five seconds.
-/datum/shuttle/proc/create_warning_effect(var/obj/effect/shuttle_landmark/destination)
-	destination.create_warning_effect(src)
-
 /datum/shuttle/proc/short_jump(var/obj/effect/shuttle_landmark/destination)
 	if(moving_status != SHUTTLE_IDLE)
 		return
@@ -95,50 +90,3 @@
 		moving_status = SHUTTLE_IDLE
 		on_shuttle_arrival(start_location, destination)
 		make_sounds(HYPERSPACE_END)
-
-/*****************
-* Shuttle Moved Handling	* (Observer Pattern Implementation: Shuttle Moved)
-* Shuttle Pre Move Handling	* (Observer Pattern Implementation: Shuttle Pre Move)
-*****************/
-
-// Just moves the shuttle from A to B
-// A note to anyone overriding move in a subtype. perform_shuttle_move() must absolutely not, under any circumstances, fail to move the shuttle.
-// If you want to conditionally cancel shuttle launches, that logic must go in short_jump() or long_jump()
-/datum/shuttle/proc/perform_shuttle_move(var/obj/effect/shuttle_landmark/destination, var/list/turf_translation)
-
-	// TODO - Old code used to throw stuff out of the way instead of squashing.  Should we?
-
-	// Move, gib, or delete everything in our way!
-	for(var/turf/src_turf in turf_translation)
-		var/turf/dst_turf = turf_translation[src_turf]
-		if(src_turf.is_solid_structure())	// In case someone put a hole in the shuttle and you were lucky enough to be under it
-			for(var/atom/movable/AM in dst_turf)
-				//if(AM.movable_flags & MOVABLE_FLAG_DEL_SHUTTLE)
-				//	qdel(AM)
-				//	continue
-				if((AM.atom_flags & ATOM_ABSTRACT))
-					continue
-				if(isliving(AM))
-					var/mob/living/bug = AM
-					bug.gib()
-				else if(isobj(AM))
-					qdel(AM) //it just gets atomized I guess? TODO throw it into space somewhere, prevents people from using shuttles as an atom-smasher
-
-	for(var/area/A in shuttle_area)
-		if(knockdown)
-			for(var/mob/living/M in A)
-				spawn(0)
-					if(M.buckled)
-						to_chat(M, "<font color='red'>Sudden acceleration presses you into \the [M.buckled]!</font>")
-						shake_camera(M, 3, 1)
-					else
-						to_chat(M, "<font color='red'>The floor lurches beneath you!</font>")
-						shake_camera(M, 10, 1)
-						// TODO - tossing?
-						if(istype(M, /mob/living/carbon))
-							M.afflict_paralyze(20 * 3)
-							if(move_direction)
-								throw_a_mob(M,move_direction)
-		// We only need to rebuild powernets for our cables.  No need to check machines because they are on top of cables.
-		for(var/obj/structure/cable/C in A)
-			powernets |= C.powernet

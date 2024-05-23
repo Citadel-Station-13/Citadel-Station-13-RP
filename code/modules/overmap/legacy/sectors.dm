@@ -55,9 +55,6 @@
 
 	testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
 
-	LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
-	SSshuttle.process_init_queues()
-
 	if(known)
 		plane = ABOVE_LIGHTING_PLANE
 		for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
@@ -130,41 +127,6 @@
 		return map_z
 	else
 		return list()
-
-//Helper for init.
-/obj/overmap/entity/visitable/proc/check_ownership(obj/object)
-	var/area/A = get_area(object)
-	if(A in SSshuttle.shuttle_areas)
-		return 0
-	if(is_type_in_list(A, unowned_areas))
-		return 0
-	if(get_z(object) in map_z)
-		return 1
-
-//If shuttle_name is false, will add to generic waypoints; otherwise will add to restricted. Does not do checks.
-/obj/overmap/entity/visitable/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
-	landmark.sector_set(src, shuttle_name)
-	if(shuttle_name)
-		LAZYADD(restricted_waypoints[shuttle_name], landmark)
-	else
-		generic_waypoints += landmark
-
-/obj/overmap/entity/visitable/proc/remove_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
-	if(shuttle_name)
-		var/list/shuttles = restricted_waypoints[shuttle_name]
-		LAZYREMOVE(shuttles, landmark)
-	else
-		generic_waypoints -= landmark
-
-/obj/overmap/entity/visitable/proc/get_waypoints(var/shuttle_name)
-	. = list()
-	for(var/obj/overmap/entity/visitable/contained in src)
-		. += contained.get_waypoints(shuttle_name)
-	for(var/thing in generic_waypoints)
-		.[thing] = name
-	if(shuttle_name in restricted_waypoints)
-		for(var/thing in restricted_waypoints[shuttle_name])
-			.[thing] = name
 
 /obj/overmap/entity/visitable/proc/cleanup()
 	return FALSE

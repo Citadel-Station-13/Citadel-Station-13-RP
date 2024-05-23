@@ -442,7 +442,7 @@
 	var/real_urx
 	var/real_ury
 
-	switch(direction)
+	switch(dir)
 		if(NORTH)
 			real_llx = anchor_x - offset_x
 			real_lly = anchor_y + offset_y - (size_y - 1)

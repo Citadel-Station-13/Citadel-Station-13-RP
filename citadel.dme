@@ -4571,6 +4571,7 @@
 #include "code\modules\shuttles\dock\subtypes\landing_pad.dm"
 #include "code\modules\shuttles\dock\subtypes\overmap_start.dm"
 #include "code\modules\shuttles\dock\subtypes\web_start.dm"
+#include "code\modules\shuttles\effects\shuttle_landing.dm"
 #include "code\modules\shuttles\legacy\legacy.dm"
 #include "code\modules\shuttles\legacy\legacy_belter_controller.dm"
 #include "code\modules\shuttles\legacy\legacy_emergency_controller.dm"

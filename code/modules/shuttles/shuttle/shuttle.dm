@@ -128,7 +128,13 @@
 	// todo: this should be a default, and engine/takeoff type (?) can override
 	var/legacy_sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/legacy_sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
-	var/legacy_takeoff_knockdown = 1.5 SECONDS
+	var/legacy_takeoff_unsecured_knockdown = 2 SECONDS
+	var/legacy_takeoff_unsecured_paralyze = 0.75 SECONDS
+	var/legacy_takeoff_shake_secured = 3
+	var/legacy_takeoff_shake_unsecured = 10
+	var/legacy_takeoff_throw_force = THROW_FORCE_DEFAULT
+	var/legacy_takeoff_throw_distance = 3
+	#warn hook these
 	var/list/obj/structure/fuel_port/legacy_fuel_ports = list()
 
 #warn impl all
@@ -534,7 +540,7 @@
 //* Docking - Backend; Don't mess with these. *//
 
 /**
- * immediate shuttle move, undocking from any docked ports in the process
+ * immediate shuttle move, undocking from any docked ports in the process and docking with the destination port
  *
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
@@ -542,13 +548,18 @@
  * @params
  * * dock - the dock to use
  * * align_with_port - if provided, we align to this port instead of use centered docking
+ * * centered - use centered? if not, we move directly onto the dock
  * * centered_direction - centered docking direction
  * * use_before_turfs - ...
  * * use_after_turfs - ...
  *
  * @return TRUE / FALSE on success / failure
  */
-/datum/shuttle/proc/dock_immediate(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered_direction, list/use_before_turfs, list/use_after_turfs)
+/datum/shuttle/proc/dock(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered_direction, list/use_before_turfs, list/use_after_turfs)
+	if(dock.inbound && dock.inbound != src)
+		return FALSE
+	if(dock.docked)
+		return FALSE
 	#warn impl
 
 /**
@@ -556,6 +567,7 @@
  *
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
+ * * DO NOT USE THIS FOR DOCKING. It only handles undocking, not docking!
  *
  * @return TRUE / FALSE on success / failure
  */

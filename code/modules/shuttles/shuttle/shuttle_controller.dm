@@ -47,6 +47,7 @@
 	/// that is **undefined behavior.**
 	var/obj/shuttle_dock/transit_target_dock
 	/// are we doing a centered landing on said dock?
+	/// if not, and there's no aligning port, we align our anchor's coordinates on the dock's coordinates.
 	var/transit_target_centered_mode
 	/// which direction should we land, for centered?
 	var/transit_target_centered_direction
@@ -55,6 +56,10 @@
 	/// timerid for movement
 	/// todo: cpu used shouldn't be counted against SStimers.
 	var/transit_timer_id
+	/// timerid for making warning bubbles
+	var/transit_visual_timer_id
+	/// transit visuals
+	var/list/obj/effect/temporary_effect/shuttle_landing/transit_warning_visuals
 
 	//* UI
 	/// tgui interface to load
@@ -132,12 +137,14 @@
  *
  * @params
  * * dock - dock to go to.
- * * align_with_port - the port to align with; if null, we are centered
+ * * time - time to spend in transit.
+ * * align_with_port - the port to align with; overrides 'centered'
+ * * centered - should we be centered on the dock's bounding box? if not, we move our anchor onto the dock directly.
  * * direction - the direction to use for centered landing.
  *
  * @return TRUE / FALSE on success / failure
  */
-/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, direction)
+/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, time, obj/shuttle_port/align_with_port, centered, direction)
 	if(isnull(direction))
 		direction = shuttle.anchor.dir
 	// abort existing transit
@@ -151,27 +158,36 @@
 	shuttle.move_to_transit()
 	// set variables
 	transit_target_dock = dock
-	transit_target_centered_mode = isnull(align_with_port)
+	transit_target_centered_mode = centered
 	transit_target_centered_direction = direction
 	transit_target_port = align_with_port
-	// register timer
-	transit_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_transit)), TIMER_STOPPABLE)
+	// register timers
+	transit_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_transit)), time, TIMER_STOPPABLE)
+	transit_visual_timer_id = addtimer(CALLBACK(src, PROC_REF(make_transit_warning_visuals)), max(0, time - 4.9 SECONDS), TIMER_STOPPABLE)
 	return TRUE
+
+/datum/shuttle_controller/proc/make_transit_warning_visuals()
+	var/list/motion = shuttle.anchor.calculate_resultant_motion_from_docking(
+		transit_target_dock,
+		align_with_dock = transit_target_port,
+		centered = transit_target_centered_mode,
+		direction = transit_target_centered_direction,
+	)
+	// todo: can we like, make something that isn't an /obj? maybe a turf overlay? maybe vis contents?
+	transit_warning_visuals = list()
+	for(var/turf/turf as anything in shuttle.anchor.aabb_ordered_turfs_at(motion, motion[4]))
+		var/obj/effect/temporary_effect/shuttle_landing/landing_effect = new(turf)
+		transit_warning_visuals += landing_effect
 
 /datum/shuttle_controller/proc/finish_transit()
 	ASSERT(transit_target_dock)
 
-	if(transit_target_centered_mode)
-		. = shuttle.dock_immediate(
-			transit_target_dock,
-			centered_direction = transit_target_centered_direction,
-		)
-	else
-		. = shuttle.dock_immediate(
-			transit_target_dock,
-			align_with_port = transit_target_port,
-			centered_direction = transit_target_centered_direction,
-		)
+	. = shuttle.dock(
+		transit_target_dock,
+		align_with_port = transit_target_port,
+		centered = transit_target_centered_mode,
+		centered_direction = transit_target_centered_direction,
+	)
 
 	cleanup_transit()
 
@@ -190,6 +206,13 @@
 	transit_target_port = null
 	if(transit_timer_id)
 		deltimer(transit_timer_id)
+	if(transit_visual_timer_id)
+		deltimer(transit_visual_timer_id)
+	for(var/obj/effect/temporary_effect/shuttle_landing/visual as anything in transit_warning_visuals)
+		if(QDLETED(visual))
+			continue
+		qdel(visual)
+	transit_warning_visuals = null
 
 /**
  * checks if we're in transit towards a dock

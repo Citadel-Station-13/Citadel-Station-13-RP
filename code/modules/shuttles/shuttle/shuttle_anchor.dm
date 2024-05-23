@@ -212,6 +212,19 @@
 	#warn impl
 
 /**
+ * get position and direction when performing a landing at a specific location with a specific set of
+ * parameters
+ *
+ * @params
+ * * dock - the dock we'd dock at
+ * * align_with_port - if we're aligning with a port instead of performing a centered docking
+ * * centered - are we doing a centered docking? if not, we're just matching the dock's coordinates
+ * * direction - the direction we need to be at when we arrive
+ */
+/obj/shuttle_anchor/proc/calculate_resultant_motion_from_docking(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered)
+	#warn impl
+
+/**
  * get rotated coordinates and direction when moved with another location on the shuttle
  *
  * @params

@@ -38,16 +38,6 @@
 	. = ..()
 	animate(src, alpha = 0, time = time_to_die - 1)
 
-/obj/effect/temporary_effect/shuttle_landing
-	name = "shuttle landing"
-	desc = "You better move if you don't want to go splat!"
-	icon_state = "shuttle_warning_still"
-	time_to_die = 4.9 SECONDS
-
-/obj/effect/temporary_effect/shuttle_landing/Initialize(mapload)
-	flick("shuttle_warning", src) // flick() forces the animation to always begin at the start.
-	. = ..()
-
 // The manifestation of Zeus's might. Or just a really unlucky day.
 // This is purely a visual effect, this isn't the part of the code that hurts things.
 /obj/effect/temporary_effect/lightning_strike
