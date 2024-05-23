@@ -186,30 +186,93 @@
 	if(isnull(dock_bbox))
 		dock_bbox = dock.absolute_bounding_box_coords()
 
+	// our width/height are absolute width/heights.
+	var/their_width = dock_bbox[3] - dock_bbox[1] + 1
+	var/their_height = dock_bbox[4] - dock_bbox[2] + 1
+	var/our_width = direction & (EAST|WEST)? size_y : size_x
+	var/our_height = direction & (EAST|WEST)? size_x : size_y
+	var/width_difference = their_width - our_width
+	var/height_difference = their_height - our_height
+	var/width_centering = round(width_difference / 2)
+	var/height_centering = round(height_difference / 2)
+
 	switch(direction)
 		if(NORTH)
 			return list(
-				1,
-				2,
+				dock_bbox[1] + width_centering + offset_x,
+				dock_bbox[2] + height_centering + (size_y - 1) - offset_y,
+				dock.z,
+			)
+		if(SOUTH)
+			return list(
+				dock_bbox[1] + width_centering + (size_x - 1) - offset_x,
+				dock_bbox[2] + height_centering + offset_y,
+				dock.z,
+			)
+		if(EAST)
+			return list(
+				dock_bbox[1] + width_centering + (size_y - 1) - offset_y,
+				dock_bbox[2] + height_centering + (size_x - 1) - offset_x,
+				dock.z,
+			)
+		if(WEST)
+			return list(
+				dock_bbox[1] + offset_y,
+				dock_bbox[2] + offset_x,
 				dock.z,
 			)
 
+/**
+ * checks if we can fit in a docking port's bounding box at a specific location
+ *
+ * @params
+ * * dock - the dock
+ * * location - a turf, or a tuple of coordinates
+ * * direction - the direction we should be in when in it
+ * * dock_bbox - the dock's absoluate_bounding_box_coords() if we already have it cached
+ */
+/obj/shuttle_anchor/proc/will_fit_docking(obj/shuttle_dock/dock, turf/location, direction, list/dock_bbox)
+	if(isnull(dock_bbox))
+		dock_bbox = dock.absolute_bounding_box_coords()
 
-	#warn impl
+	var/list/absolute_bbox_at = absolute_llx_lly_urx_ury_coords_at(location, direction)
+
+	return ( \
+		absolute_bbox_at[1] >= dock_bbox[1] && \
+		absolute_bbox_at[2] >= dock_bbox[2] && \
+		absolute_bbox_at[3] <= dock_bbox[3] && \
+		absolute_bbox_at[4] <= dock_bbox[4] && \
+	)
 
 /**
  * heuristically find cardinals directions we can fit in on a dock
  *
+ * @params
+ * * dock - the dock
+ * * dock_bbox - the dock's absoluate_bounding_box_coords() if we already have it cached
+ *
  * @return list(dirs...)
  */
-/obj/shuttle_anchor/proc/centered_docking_dirs_we_fit(obj/shuttle_dock/dock)
-	#warn impl
+/obj/shuttle_anchor/proc/centered_docking_dirs_we_fit(obj/shuttle_dock/dock, list/dock_bbox)
+	. = list()
+	if(isnull(dock_bbox))
+		dock_bbox = dock.absolute_bounding_box_coords()
+	for(var/dir in GLOB.cardinal)
+		if(!will_fit_centered_docking(dock, direction, dock_bbox))
+			continue
+		. += dir
 
 /**
  * will we fit in a dock in a centered docking?
+ *
+ * @params
+ * * dock - the dock
+ * * direction - the direction to dock in
+ * * dock_bbox - the dock's absoluate_bounding_box_coords() if we already have it cached
  */
-/obj/shuttle_anchor/proc/will_fit_centered_docking(obj/shuttle_dock/dock, direction = src.dir)
-	#warn impl
+/obj/shuttle_anchor/proc/will_fit_centered_docking(obj/shuttle_dock/dock, direction = src.dir, list/dock_bbox)
+	var/list/coords = coords_for_centered_docking(dock, dir, dock_bbox)
+	return will_fit_docking(dock, coords, direction, dock_bbox)
 
 /**
  * get position and direction when performing a landing at a specific location with a specific set of
@@ -221,7 +284,7 @@
  * * centered - are we doing a centered docking? if not, we're just matching the dock's coordinates
  * * direction - the direction we need to be at when we arrive
  */
-/obj/shuttle_anchor/proc/calculate_resultant_motion_from_docking(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered)
+/obj/shuttle_anchor/proc/calculate_resultant_motion_from_docking(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered, direction)
 	#warn impl
 
 /**
@@ -243,6 +306,25 @@
 		new_coords,
 		old_dir,
 		new_dir,
+	)
+
+/**
+ * checks if we intersect a dock at a given coordinate and direction
+ *
+ * @params
+ * * dock - the dock
+ * * location - a turf, or a set of coordinates; not necessary if absolute_bbox is given
+ * * direction - the direction; not necessary if absolute_bbox is given
+ * * absolute_bbox - llx, lly, urx, ury, if we already have it cached
+ */
+/obj/shuttle_anchor/proc/intersects_dock(obj/shuttle_dock/dock, turf/location, direction, list/absolute_bbox)
+	if(isnull(absolute_bbox))
+		absolute_bbox = absolute_llx_lly_urx_ury_coords_at(location, direction)
+	var/list/dock_absolute_bbox = dock.absolute_llx_lly_urx_ury_coords()
+	return ( \
+		(absolute_bbox[1] > dock_absolute_bbox[3]) || (absolute_bbox[3] < dock_absolute_bbox[1]) \
+		|| \
+		(absoulte_bbox[2] > dock_absolute_bbox[4]) || (absolute_bbox[4] < dock_absolute_bbox[2]) \
 	)
 
 /**

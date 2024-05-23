@@ -223,7 +223,7 @@
 	for(var/obj/machinery/computer/ship/S in GLOB.machines)
 		S.attempt_hook_up(src)
 	for(var/datum/ship_engine/E in ship_engines)
-		if(check_ownership(E.holder))
+		if(get_overmap_entity(E.holder) == src)
 			engines |= E
 
 /obj/overmap/entity/visitable/ship/proc/get_landed_info()

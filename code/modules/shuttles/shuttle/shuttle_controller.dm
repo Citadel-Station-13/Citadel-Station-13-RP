@@ -209,7 +209,7 @@
 	if(transit_visual_timer_id)
 		deltimer(transit_visual_timer_id)
 	for(var/obj/effect/temporary_effect/shuttle_landing/visual as anything in transit_warning_visuals)
-		if(QDLETED(visual))
+		if(QDELETED(visual))
 			continue
 		qdel(visual)
 	transit_warning_visuals = null

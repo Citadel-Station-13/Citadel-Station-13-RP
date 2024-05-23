@@ -16,7 +16,7 @@
 /obj/machinery/computer/ship/proc/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!istype(sector))
 		return
-	if(sector.check_ownership(src))
+	if(sector == get_overmap_entity(src))
 		linked = sector
 		return TRUE
 

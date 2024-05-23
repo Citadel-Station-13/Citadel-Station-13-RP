@@ -547,15 +547,15 @@
  *
  * @params
  * * dock - the dock to use
- * * align_with_port - if provided, we align to this port instead of use centered docking
+ * * align_with_port - if provided, we align to this port; overrides 'centered' and 'direction'
  * * centered - use centered? if not, we move directly onto the dock
- * * centered_direction - centered docking direction
+ * * direction - docking direction for centered and direct-alignment
  * * use_before_turfs - ...
  * * use_after_turfs - ...
  *
  * @return TRUE / FALSE on success / failure
  */
-/datum/shuttle/proc/dock(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered_direction, list/use_before_turfs, list/use_after_turfs)
+/datum/shuttle/proc/dock(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered, direction, list/use_before_turfs, list/use_after_turfs)
 	if(dock.inbound && dock.inbound != src)
 		return FALSE
 	if(dock.docked)
@@ -946,7 +946,7 @@
 
 /datum/shuttle/proc/make_sounds(sound, maximum_range, volume = 65)
 	var/list/mob/hearing = sfx_players_in_range(maximum_range)
-	var/sound/resolving = get_sfx(sound)
+	var/sound/resolved = get_sfx(sound)
 	for(var/mob/heard as anything in hearing)
 		heard.playsound_local(
 			soundin = resolved,
