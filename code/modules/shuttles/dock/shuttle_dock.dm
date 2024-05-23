@@ -167,10 +167,21 @@
 	. = ..()
 	dock_id = SSmapping.mangled_persistent_id(dock_id, with_id)
 
-/obj/shuttle_dock/Initialize(mapload, with_id)
+/**
+ * @params
+ * * mapload - passed in by SSatoms
+ * * with_id - the id to set this to / override this to
+ * * sx_sy_ox_oy - size x, size y, offset x, offset y; used to force our bounds to something.
+ */
+/obj/shuttle_dock/Initialize(mapload, with_id, list/sx_sy_ox_oy)
 	. = ..()
 	if(!isnull(with_id))
 		src.dock_id = with_id
+	if(!isnull(sx_sy_ox_oy))
+		size_x = sx_sy_ox_oy[1]
+		size_y = sx_sy_ox_oy[2]
+		offset_x = sx_sy_ox_oy[3]
+		offset_y = sx_sy_ox_oy[4]
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 	return INITIALIZE_HINT_LATELOAD
@@ -348,8 +359,8 @@
 	#warn ensure not out of bounds/nullspace.
 
 /obj/shuttle_dock/proc/init_bounds()
-	var/list/turfs = bounding_north_ordered_turfs()
 	if(create_bounding_box_area)
+		var/list/turfs = bounding_north_ordered_turfs()
 		var/area/area_instance = base_area_instance()
 		area_instance.take_turfs(turfs)
 	return TRUE
