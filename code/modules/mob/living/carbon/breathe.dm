@@ -74,7 +74,7 @@
 		//handle mask filtering
 		if(istype(wear_mask, /obj/item/clothing/mask))
 			var/obj/item/clothing/mask/M = wear_mask
-			var/datum/gas_mixture/gas_filtered = M.filter_air(breath)
+			var/datum/gas_mixture/gas_filtered = M.process_air(breath)
 			loc.assume_air(gas_filtered)
 		return breath
 	return null
