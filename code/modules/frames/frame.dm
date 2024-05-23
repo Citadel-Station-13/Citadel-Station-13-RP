@@ -306,9 +306,10 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/datum/frame_step/step_to_take
 	var/datum/frame_stage/current_stage = stages[frame.stage]
 	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
-		if(potential_step.valid_interaction(actor, item, src, frame))
-			step_to_take = potential_step
-			break
+		if(!potential_step.valid_interaction(actor, item, src, frame))
+			continue
+		step_to_take = potential_step
+		break
 	if(!step_to_take)
 		return FALSE
 	var/time_needed = step_to_take.time
@@ -352,9 +353,10 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/datum/frame_step/step_to_take
 	var/datum/frame_stage/current_stage = stages[frame.stage]
 	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
-		if(potential_step.request_type != FRAME_REQUEST_TYPE_INTERACT)
+		if(!potential_step.valid_interaction(actor, item, src, frame))
 			continue
 		step_to_take = potential_step
+		break
 	var/time_needed = step_to_take.time
 	return standard_progress_step(frame, actor, null, step_to_take, time_needed)
 
