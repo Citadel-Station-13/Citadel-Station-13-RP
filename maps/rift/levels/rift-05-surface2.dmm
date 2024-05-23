@@ -1393,7 +1393,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -2180,7 +2179,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -2245,7 +2243,6 @@
 /area/rnd/research)
 "bmS" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full{
-	id = null;
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
@@ -2880,7 +2877,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -4527,6 +4523,10 @@
 	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 4;
+	pixel_y = -11
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
@@ -8264,7 +8264,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -8296,7 +8295,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -9106,7 +9104,6 @@
 /area/security/hallway)
 "fSS" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full{
-	id = null;
 	spawn_grille = 0
 	},
 /obj/effect/paint/babyblue,
@@ -12569,7 +12566,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -12642,7 +12638,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -13152,8 +13147,7 @@
 "iqw" = (
 /obj/effect/floor_decal/corner_techfloor_grid/full,
 /obj/machinery/computer/security{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
@@ -15093,8 +15087,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/security{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -17714,7 +17707,6 @@
 	},
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 1;
-	icon_state = "rightsecure";
 	name = "Cockpit Access";
 	req_access = list(2);
 	req_one_access = list(2)
@@ -17883,7 +17875,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -18963,8 +18954,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 9;
-	icon_state = "warning"
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
@@ -19161,8 +19151,7 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "hammerhead_dock";
-	pixel_x = 26;
-	req_one_access = null
+	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hammerhead_bay)
@@ -19775,7 +19764,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -23743,8 +23731,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 6;
-	icon_state = "warning"
+	dir = 6
 	},
 /obj/effect/floor_decal/sign/dock/two,
 /turf/simulated/floor/tiled/techmaint,
@@ -24162,8 +24149,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 5;
-	icon_state = "warning"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
@@ -28693,16 +28679,15 @@
 "rVf" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/adv{
-	pixel_x = 4;
-	pixel_y = 4
+	pixel_y = 15
 	},
-/obj/item/storage/firstaid/adv,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
+/obj/machinery/lathe/medical/stocked,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "rVC" = (
@@ -28934,8 +28919,7 @@
 	pixel_x = -24
 	},
 /obj/machinery/computer/shuttle_control/explore/hammerhead{
-	dir = 4;
-	icon_state = "computer"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
@@ -32009,7 +31993,6 @@
 "uoE" = (
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 8;
-	icon_state = "rightsecure";
 	name = "Flight Operations Access";
 	req_access = list(2);
 	req_one_access = list(2)
@@ -34084,7 +34067,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -34159,7 +34141,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -34299,7 +34280,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/general)
@@ -35184,7 +35164,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
@@ -36921,7 +36900,6 @@
 /turf/simulated/floor/maglev{
 	desc = "Magnetic propulsion fighter launch rails. Caution! Electrified!";
 	dir = 8;
-	icon_state = "maglevup";
 	name = "launch rail"
 	},
 /area/shuttle/hammerhead/cockpit)
