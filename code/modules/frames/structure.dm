@@ -20,12 +20,15 @@
 	var/list/context
 
 /obj/structure/frame2/Initialize(mapload, dir, datum/frame2/set_frame_to, stage_id, list/context)
-	var/datum/frame2/applying_frame = fetch_frame_datum(set_frame_to || frame)
+	var/datum/frame2/applying_frame = fetch_frame_datum(set_frame_to || src.frame)
 	src.context = context || list()
-	src.stage = stage_id || frame.stage_starting || stack_trace("no stage...")
+	src.stage = stage_id || applying_frame.stage_starting || stack_trace("no stage...")
 	setDir(dir)
-	frame = applying_frame
-	frame.apply_to_frame(src)
+	src.frame = applying_frame
+	src.frame.apply_to_frame(src)
+	if(!length(applying_frame.stages))
+		applying_frame.finish_frame(src)
+		return INITIALIZE_HINT_QDEL
 	return ..()
 
 /obj/structure/frame2/proc/set_context(key, value)

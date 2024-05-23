@@ -146,6 +146,17 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
 	frame.update_icon()
+	if(wall_frame)
+		if(wall_pixel_x)
+			if(islist(wall_pixel_y))
+				frame.set_base_pixel_x(wall_pixel_x["[frame.dir]"])
+			else
+				frame.set_base_pixel_x(frame.dir & NORTH? wall_pixel_x : (frame.dir & SOUTH? -wall_pixel_x : 0))
+		if(wall_pixel_y)
+			if(islist(wall_pixel_y))
+				frame.set_base_pixel_y(wall_pixel_y["[frame.dir]"])
+			else
+				frame.set_base_pixel_y(frame.dir & NORTH? wall_pixel_y : (frame.dir & SOUTH? -wall_pixel_y : 0))
 
 /**
  * @return finished product
@@ -295,13 +306,22 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/datum/frame_step/step_to_take
 	var/datum/frame_stage/current_stage = stages[frame.stage]
 	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
-		if(potential_step.request_type != FRAME_REQUEST_TYPE_ITEM)
-			continue
-		if(potential_step.request != item.type)
-			continue
-		step_to_take = potential_step
+		switch(potential_step.request_type)
+			if(FRAME_REQUEST_TYPE_ITEM)
+				if(potential_step.request == item.type)
+					step_to_take = potential_step
+			if(FRAME_REQUEST_TYPE_STACK)
+				if(potential_step.request == item.type)
+					step_to_take = potential_step
+			if(FRAME_REQUEST_TYPE_MATERIAL)
+				var/obj/item/stack/stack = item
+				if(istype(stack) && potential_step.request == stack.material_type)
+					step_to_take = potential_step
+	if(!step_to_take)
+		return FALSE
 	var/time_needed = step_to_take.time
-	return standard_progress_step(frame, actor, item, step_to_take, time_needed)
+	. = TRUE
+	standard_progress_step(frame, actor, item, step_to_take, time_needed)
 
 /**
  * @return TRUE if handled
@@ -348,11 +368,12 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	return standard_progress_step(frame, actor, null, step_to_take, time_needed)
 
 /**
- * handles the do after, logging, and whatnot
+ * handles the do after, item manipualtion, logging, and whatnot
  *
  * @return TRUE / FALSE
  */
 /datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step, time_needed)
+	// todo: can we datumize these behaviors?
 	var/stage_we_were_in = frame.stage
 	frame_step.feedback_begin(
 		actor,
@@ -361,6 +382,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		using_item,
 		time_needed,
 	)
+	#warn well actually need to deal with 1. item / stack / material consumption and 2. tool usage
 	if(time_needed && !do_after(
 			actor.performer,
 			time_needed,

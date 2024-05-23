@@ -214,7 +214,6 @@
 					otherwise_self = "You finish [action_text_leading || "tinkering with "][frame][action_text_trailing || " using [tool]."]",
 				)
 		if(FRAME_REQUEST_TYPE_MATERIAL, FRAME_REQUEST_TYPE_STACK)
-			var/amount = request_amount
 			var/name_to_use
 			if(request_type == FRAME_REQUEST_TYPE_MATERIAL)
 				var/datum/material/resolved_material = SSmaterials.resolve_material(request)
