@@ -323,13 +323,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/datum/frame_step/step_to_take
 	var/datum/frame_stage/current_stage = stages[frame.stage]
 	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
-		if(!potential_step.valid_interaction(actor, item, src, frame))
+		if(!potential_step.valid_interaction(actor, tool, src, frame))
 			continue
 		if(hint && (potential_step.name != hint))
 			continue
 		step_to_take = potential_step
 		break
-	var/time_needed = step_to_take.time * tool.tool_speed(function, actor, frame, flags)
+	// tool speed is handled by use_tool
+	var/time_needed = step_to_take.time
 	return standard_progress_step(frame, actor, tool, step_to_take, time_needed)
 
 /**
@@ -353,7 +354,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/datum/frame_step/step_to_take
 	var/datum/frame_stage/current_stage = stages[frame.stage]
 	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
-		if(!potential_step.valid_interaction(actor, item, src, frame))
+		if(!potential_step.valid_interaction(actor, null, src, frame))
 			continue
 		step_to_take = potential_step
 		break
@@ -366,8 +367,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return TRUE / FALSE
  */
 /datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step, time_needed)
-	// todo: can we datumize these behaviors?
 	var/stage_we_were_in = frame.stage
+	if(!frame_step.check_consumption(actor, using_item, src, frame))
+		return FALSE
 	frame_step.feedback_begin(
 		actor,
 		src,
@@ -375,15 +377,12 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		using_item,
 		time_needed,
 	)
-	#warn well actually need to deal with 1. item / stack / material consumption and 2. tool usage
-	if(time_needed && !do_after(
-			actor.performer,
-			time_needed,
-			frame,
-			mobility_flags = MOBILITY_CAN_USE,
-			max_distance = using_item?.reach || 1,
-		))
-		return
+	if(!frame_step.perform_usage(actor, using_item, src, frame, time_needed))
+		return FALSE
+	if(!frame_step.handle_consumption(actor, using_item, src, frame))
+		return FALSE
+	if(!frame_step.perform_usage(actor, using_item, src, frame, time_needed))
+		return FALSE
 	frame_step.feedback_finish(
 		actor,
 		src,
@@ -392,6 +391,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		time_needed,
 	)
 	move_frame_to(frame, stage_we_were_in, frame_step.stage, actor)
+	return TRUE
 
 /**
  * @return finished product if finished

@@ -168,6 +168,70 @@
 			return istype(material_stack) && (ispath(request, /datum/material)? material_stack.material.type == request : material_stack.material.id == request)
 	return FALSE
 
+/**
+ * This proc may assume the item is already type filtered to be the valid item / type / stack / whatever.
+ * If it isn't, do not istype(); allow the runtime to happen so we can yell at those responsible.
+ */
+/datum/frame_step/proc/check_consumption(datum/event_args/actor/actor, obj/item/using_tool, datum/frame2/frame_datum, obj/structure/frame2/frame)
+	switch(request_type)
+		if(FRAME_REQUEST_TYPE_STACK)
+			var/obj/item/stack/stack = using_tool
+			if(stack.amount < request_amount)
+				return FALSE
+			return TRUE
+		if(FRAME_REQUEST_TYPE_MATERIAL)
+			var/obj/item/stack/material/material_stack = using_tool
+			if(material_stack.amount < request_amount)
+				return FALSE
+			return TRUE
+	return TRUE
+
+/**
+ * we take in time_needed, as computed by /datum/frame2.
+ *
+ * todo: should we be taking in time needed? this seems like the right option for now.
+ */
+/datum/frame_step/proc/perform_usage(datum/event_args/actor/actor, obj/item/using_tool, datum/frame2/frame_datum, obj/structure/frame2/frame, time_needed)
+	switch(request_type)
+		if(FRAME_REQUEST_TYPE_TOOL)
+			return frame.use_tool(
+				request,
+				using_tool,
+				actor,
+				delay = time_needed,
+				cost = request_cost,
+			)
+		else
+			return do_after(
+				actor.performer,
+				time_needed,
+				frame,
+				mobility_flags = MOBILITY_CAN_USE,
+				max_distance = using_tool?.reach || 1,
+			)
+
+/datum/frame_step/proc/handle_consumption(datum/event_args/actor/actor, obj/item/using_tool, datum/frame2/frame_datum, obj/structure/frame2/frame)
+	switch(request_type)
+		if(FRAME_REQUEST_TYPE_ITEM)
+			if(!actor.performer.attempt_void_item_for_installation(using_tool))
+				actor.chat_feedback(
+					SPAN_WARNING("[using_tool] is stuck to your hand!"),
+					target = frame,
+				)
+				return FALSE
+			qdel(using_tool)
+			return TRUE
+		if(FRAME_REQUEST_TYPE_TOOL)
+			// we do the usage in perform_usainge
+			return TRUE
+		if(FRAME_REQUEST_TYPE_STACK)
+			var/obj/item/stack/stack = using_tool
+			return stack.use(request_amount)
+		if(FRAME_REQUEST_TYPE_MATERIAL)
+			var/obj/item/stack/material/material_stack = using_tool
+			return material_stack.use(request_amount)
+	return TRUE
+
 /datum/frame_step/proc/feedback_begin(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool, time_needed)
 	// don't bother if it's that fast
 	if(time_needed <= 0.5 SECONDS)
