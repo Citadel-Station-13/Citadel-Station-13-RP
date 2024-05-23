@@ -26,7 +26,6 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar/Initialize(mapload)
 	. = ..()
-	Make(S)
 	connect_to_network()
 
 /obj/machinery/power/solar/Destroy()

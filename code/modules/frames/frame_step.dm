@@ -148,6 +148,26 @@
 		if(TOOL_DIRECTION_NEUTRAL)
 			return dyntool_image_neutral(request)
 
+/**
+ * checks if a given person, using a given tool, can undertake this step.
+ */
+/datum/frame_step/proc/valid_interaction(datum/event_args/actor/actor, obj/item/using_tool, datum/frame2/frame_datum, obj/structure/frame2/frame)
+	switch(request_type)
+		if(FRAME_REQUEST_TYPE_INTERACT)
+			return TRUE
+		if(FRAME_REQUEST_TYPE_ITEM)
+			return using_tool?.type == request
+		if(FRAME_REQUEST_TYPE_STACK)
+			return using_tool?.type == request
+		if(FRAME_REQUEST_TYPE_PROC)
+			return FALSE // override this proc
+		if(FRAME_REQUEST_TYPE_TOOL)
+			return using_tool.tool_check(request, actor, frame, TOOL_OP_SILENT)
+		if(FRAME_REQUEST_TYPE_MATERIAL)
+			var/obj/item/stack/material/material_stack = using_tool
+			return istype(material_stack) && (ispath(request, /datum/material)? material_stack.material.type == request : material_stack.material.id == request)
+	return FALSE
+
 /datum/frame_step/proc/feedback_begin(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool, time_needed)
 	// don't bother if it's that fast
 	if(time_needed <= 0.5 SECONDS)

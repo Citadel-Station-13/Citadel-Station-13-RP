@@ -306,17 +306,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/datum/frame_step/step_to_take
 	var/datum/frame_stage/current_stage = stages[frame.stage]
 	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
-		switch(potential_step.request_type)
-			if(FRAME_REQUEST_TYPE_ITEM)
-				if(potential_step.request == item.type)
-					step_to_take = potential_step
-			if(FRAME_REQUEST_TYPE_STACK)
-				if(potential_step.request == item.type)
-					step_to_take = potential_step
-			if(FRAME_REQUEST_TYPE_MATERIAL)
-				var/obj/item/stack/stack = item
-				if(istype(stack) && potential_step.request == stack.material_type)
-					step_to_take = potential_step
+		if(potential_step.valid_interaction(actor, item, src, frame))
+			step_to_take = potential_step
+			break
 	if(!step_to_take)
 		return FALSE
 	var/time_needed = step_to_take.time
@@ -330,13 +322,12 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/datum/frame_step/step_to_take
 	var/datum/frame_stage/current_stage = stages[frame.stage]
 	for(var/datum/frame_step/potential_step as anything in current_stage.steps)
-		if(potential_step.request_type != FRAME_REQUEST_TYPE_TOOL)
-			continue
-		if(potential_step.request != function)
+		if(!potential_step.valid_interaction(actor, item, src, frame))
 			continue
 		if(hint && (potential_step.name != hint))
 			continue
 		step_to_take = potential_step
+		break
 	var/time_needed = step_to_take.time * tool.tool_speed(function, actor, frame, flags)
 	return standard_progress_step(frame, actor, tool, step_to_take, time_needed)
 
