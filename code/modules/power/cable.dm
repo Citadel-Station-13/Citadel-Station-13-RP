@@ -68,6 +68,16 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	qdel(src)
 	return TRUE
 
+/obj/structure/cable/grid_move(grid_flags, turf/new_turf)
+	powernet.remove_cable(src)
+	return ..()
+
+/obj/structure/cable/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	. = ..()
+	if(isnull(powernet))
+		powernet = new
+		propagate_network(src, powernet)
+
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
 		return 0

@@ -63,7 +63,7 @@
 	else if(GLOB.legacy_belter_shuttle?.in_transit)
 		data["shuttle_location"] = "In-transit"
 		data["shuttle_at_station"] = 0
-	else if(shuttle_controller?.is_at_away*())
+	else if(shuttle_controller?.is_at_away())
 		data["shuttle_location"] = "Belt"
 		data["shuttle_at_station"] = 0
 	else
@@ -115,18 +115,18 @@
 	sleep(60)
 
 	// Break the shuttle temporarily.
-	shuttle_control.shuttle_tag = null
+	GLOB.legacy_belter_shuttle_controller.register_movement_block(
+		SSshuttle,
+		"zone-rebuild",
+	)
 
 	// Build and get a new zone.
 	var/datum/rogue/zonemaster/ZM_target = rm_controller.prepare_new_zone()
 
-	// Update shuttle destination.
-	var/datum/shuttle/autodock/ferry/S = SSshuttle.shuttles["Belter"]
-	S.landmark_offsite = ZM_target.myshuttle_landmark
-	S.next_location = S.get_location_waypoint(!S.location)
-
 	// Re-enable shuttle.
-	shuttle_control.shuttle_tag = "Belter"
+	GLOB.legacy_belter_shuttle_controller.unregister_movement_block(
+		SSshuttle,
+	)
 
 	// Update rm_previous
 	rm_controller.previous_zone = rm_controller.current_zone

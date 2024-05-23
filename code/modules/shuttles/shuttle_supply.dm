@@ -71,7 +71,7 @@
 
 // Returns 1 if the shuttle is idle and we can still mess with the cargo shopping list
 /datum/shuttle/autodock/ferry/supply/proc/idle()
-	return (moving_status == SHUTTLE_IDLE)
+	return (moving_status == SHUTTLE_IDLE)landmark
 
 // Returns the ETA in minutes
 /datum/shuttle/autodock/ferry/supply/proc/eta_minutes()

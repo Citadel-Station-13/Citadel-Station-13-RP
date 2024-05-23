@@ -3,6 +3,13 @@
 // Multiz shuttles currently not supported. Non-autodock shuttles currently not supported.
 
 /obj/overmap/entity/visitable/ship/landable
+	/// our shuttle
+	var/datum/shuttle/shuttle
+	/// our shuttle level, if any
+	var/datum/map_level/shuttle/level
+	/// 
+
+/obj/overmap/entity/visitable/ship/landable
 	var/shuttle                                         // Name of associated shuttle. Must be autodock.
 	var/obj/effect/shuttle_landmark/ship/landmark       // Record our open space landmark for easy reference.
 	var/status = SHIP_STATUS_LANDED

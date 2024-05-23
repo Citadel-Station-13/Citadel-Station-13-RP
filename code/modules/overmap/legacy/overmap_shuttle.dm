@@ -1,3 +1,5 @@
+// todo: readd fuel ports and usage on overmaps update.
+/*
 #define waypoint_sector(waypoint) get_overmap_entity(get_z(waypoint))
 
 /datum/shuttle/autodock/overmap
@@ -99,6 +101,8 @@
 			fuel_to_consume -= fuel_available
 			FT.remove_air_by_flag(GAS_FLAG_FUEL, fuel_available)
 
+*/
+
 /obj/structure/fuel_port
 	name = "fuel port"
 	desc = "The fuel input port of the shuttle. Holds one fuel tank. Use a crowbar to open and close it."
@@ -117,7 +121,9 @@
 	. = ..()
 	if(base_tank)
 		new base_tank(src)
-	#warn register in area legacy_fuel_ports
+	var/area/shuttle/shuttle_area = get_area(src)
+	if(istype(shuttle_area))
+		shuttle_area.shuttle.legacy_fuel_ports += src
 
 /obj/structure/fuel_port/heavy
 	base_tank = /obj/item/tank/phoron/pressurized

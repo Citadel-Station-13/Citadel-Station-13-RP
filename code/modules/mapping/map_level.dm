@@ -148,7 +148,8 @@
 	src.parent_map = parent_map
 
 	if(!isnull(parent_map))
-		id = "[parent_map.id]-[id]"
+		if(id)
+			id = "[parent_map.id]-[id]"
 
 	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
 	UNPACK_LINK(link_north)
@@ -310,6 +311,15 @@
 		if(DOWN)
 			return RESOLVE(link_below)
 		#undef RESOLVE
+
+/**
+ * make us selflooping
+ *
+ * * do not use this unless you know what you're doing
+ * * does not update transitions!link_
+ */
+/datum/map_level/proc/dangerously_make_selflooping()
+	link_north = link_south = link_east = link_west = src
 
 /**
  * called right after we physically load in, before init
@@ -585,7 +595,11 @@
 	return FALSE
 
 /**
- * transit levels for shuttles
+ * freeflight levels used by overmaps for shuttle interdictions
  */
-/datum/map_level/transit
-	transition = Z_TRANSITION_DISABLED
+/datum/map_level/shuttle
+	transition = Z_TRANSITION_FORCED
+
+/datum/map_level/shuttle/New(datum/map/parent_map)
+	..()
+	dangerously_make_selflooping()

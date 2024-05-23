@@ -13,6 +13,7 @@
 /// Atom is not considered a game world object.
 /// This means semantic "wipe game world state" things like turf.empty(), saving, loading, etc, should ignore it,
 /// but the atom is not abstract.
+/// This atom will also **not** be ignored by shuttles, unlike [ATOM_ABSTRACT].
 #define ATOM_NONWORLD       (1<<5)
 /// uses integrity, and is broken
 #define ATOM_BROKEN			(1<<6)

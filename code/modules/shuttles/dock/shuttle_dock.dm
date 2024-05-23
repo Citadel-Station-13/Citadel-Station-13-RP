@@ -11,6 +11,7 @@
 	desc = "A docking port for a shuttle."
 	icon = 'icons/modules/shuttles/shuttle_anchor.dmi'
 	icon_state = "dock"
+	atom_flags = ATOM_NONWORLD
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_SHUTTLE_MARKERS
 
@@ -92,8 +93,9 @@
 	//* docking (registration)
 	/// dock id - must be unique per map instance
 	/// the maploader will handle ID scrambling to ensure it is unique globally, across rounds.
-	///
-	/// if this doesn't exist, stuff that need to hook it won't work.
+	/// * if this doesn't exist, stuff that need to hook it won't work.
+	/// * you can have id-less docks, they'll just not be able to be the target of a ferry and certain other things
+	/// * you won't be able to bind an airlock to it either
 	var/dock_id
 	#warn vv hook
 	/// are we registered?
@@ -142,6 +144,7 @@
 	/// load starting shuttle centered instead of aligned to its primary port
 	///
 	/// if a shuttle cannot fit in our bounding box if aligned,
+	/// and cannot trample things,
 	/// it will do this anyways.
 	///
 	/// if a shuttle still cannot fit when centered,
@@ -151,6 +154,8 @@
 	/// note: centered docking counts as 'nonaligned docking',
 	///       meanining shuttle hooks like airlocks won't count it as docked.
 	var/starting_shuttle_always_center = FALSE
+	/// ignore bounding box and trample things when loading starting shuttle
+	var/starting_shuttle_allow_trample = TRUE
 	/// in-progress dock/undock operation
 	var/datum/event_args/shuttle/dock/currently_docking
 	/// in-progress move operation
@@ -162,8 +167,10 @@
 	. = ..()
 	dock_id = SSmapping.mangled_persistent_id(dock_id, with_id)
 
-/obj/shuttle_dock/Initialize(mapload)
+/obj/shuttle_dock/Initialize(mapload, with_id)
 	. = ..()
+	if(!isnull(with_id))
+		src.dock_id = with_id
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 	return INITIALIZE_HINT_LATELOAD

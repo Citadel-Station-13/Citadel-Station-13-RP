@@ -241,7 +241,7 @@
 		absolute_bbox_at[1] >= dock_bbox[1] && \
 		absolute_bbox_at[2] >= dock_bbox[2] && \
 		absolute_bbox_at[3] <= dock_bbox[3] && \
-		absolute_bbox_at[4] <= dock_bbox[4] && \
+		absolute_bbox_at[4] <= dock_bbox[4] \
 	)
 
 /**
@@ -258,7 +258,7 @@
 	if(isnull(dock_bbox))
 		dock_bbox = dock.absolute_bounding_box_coords()
 	for(var/dir in GLOB.cardinal)
-		if(!will_fit_centered_docking(dock, direction, dock_bbox))
+		if(!will_fit_centered_docking(dock, dir, dock_bbox))
 			continue
 		. += dir
 

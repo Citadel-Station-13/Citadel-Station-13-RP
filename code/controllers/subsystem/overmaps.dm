@@ -6,6 +6,12 @@ SUBSYSTEM_DEF(overmaps)
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 	subsystem_flags = SS_KEEP_TIMING
 
+	
+
+//* LEGACY STUFF BELOW THIS LINE
+//* So, everything
+//* Yes, I'm staging this early for overmaps rewrite
+
 	/// Whether ships can move on the overmap; used for adminbus.
 	var/static/overmap_halted = FALSE
 	/// List of all ships.
@@ -17,6 +23,9 @@ SUBSYSTEM_DEF(overmaps)
 	 * @Zandario
 	 *
 	 *? it's 2023 owned liked and subscribed lmao
+	 *? @silicons
+	 *
+	 *? it's 2024 now please send help i'm losing it
 	 *? @silicons
 	 */
 
