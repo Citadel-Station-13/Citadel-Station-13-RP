@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /**
- * Dock anchor; put this on docks.
+ * shuttle-side docking port; put this on airlocks
  */
 /obj/shuttle_port
 	/// port name - used in interfaces

@@ -290,6 +290,8 @@
 		return SHUTTLE_DOCKING_AUTHORIZATION_VALID
 	return docking_code_required? SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED : SHUTTLE_DOCKING_AUTHORIZATION_INVALID
 
+//* docking - backend *//
+
 /**
  * get the area instance that should be left behind
  */
@@ -297,6 +299,19 @@
 	if(!istype(base_area))
 		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
 	return base_area
+
+//* docking - bounding box *//
+
+/**
+ * should we protect our bounding box *right now*?
+ */
+/obj/shuttle_dock/proc/should_protect_bounding_box()
+	// if a shuttle is inbound, to prevent more expensive orchestration,
+	// we just fully protect our bounding box.
+	// todo: someday we should have a visual for seeing that a shuttle is inbound in docker mode?
+	return protect_bounding_box || inbound
+
+//* init *//
 
 /**
  * loads our roundstart shuttle

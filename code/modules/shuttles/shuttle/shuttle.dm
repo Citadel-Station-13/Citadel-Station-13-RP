@@ -769,6 +769,8 @@
 		hard_checks_only = dock.trample_bounding_box
 	#warn impl
 
+#warn we're going to need a way to allow crashing into things liek trees..
+
 /**
  * direct bounding box check
  *
@@ -786,12 +788,22 @@
 		return SHUTTLE_DOCKING_BOUNDING_HARD_FAULT
 	if(hard_checks_only)
 		return SHUTTLE_DOCKING_BOUNDING_CLEAR
-	#warn dock bounds check
+	for(var/obj/shuttle_dock/enemy_dock in SSshuttle.docks_by_level[location.z])
+		if(enemy_dock == docking_at)
+			contineu
+		if(!enemy_dock.should_protect_bounding_box())
+			continue
+		if(!anchor.intersects_dock(enemy_dock))
+			continue
+		// we do intersect
+		return SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT
 	if(!check_bounding_trample_turfs_binary(use_ordered_turfs))
 		return SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT
 	return SHUTTLE_DOCKING_BOUNDING_CLEAR
 
 /**
+ * called binary because we return TRUE / FALse only
+ *
  * @return FALSE if we will trample something
  */
 /datum/shuttle/proc/check_bounding_trample_turfs_binary(list/ordered_turfs)
