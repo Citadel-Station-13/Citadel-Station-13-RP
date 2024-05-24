@@ -240,7 +240,7 @@
  */
 /datum/frame_step/proc/on_finish(datum/frame2/frame_datum, obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item)
 	if(drop)
-		var/atom/drop_where = frame.drop_lcoation()
+		var/atom/drop_where = frame.drop_location()
 		if(ispath(drop, /obj/item/stack))
 			var/safety = 50
 			var/left = drop_amount
@@ -255,7 +255,8 @@
 			var/left = drop_amount
 			var/datum/material/resolved_material = SSmaterials.resolve_material(drop)
 			do
-				var/dropping = min(left, initial(casted_stack.max_amount))
+				var/dropping = min(left, 50)
+				// todo: /datum/material based max stacks.
 				resolved_material.place_sheet(drop_where, dropping)
 				left -= dropping
 			while(--safety > 0 && left > 0)
