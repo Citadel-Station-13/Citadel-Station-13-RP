@@ -12,10 +12,10 @@
 
 /obj/random/fluff_body/item_to_spawn()
 	return pick(prob(30);/obj/overmap/entity/fluff/comet,
-				prob(30);/obj/overmap/entity/fluff/asteroid,
-				prob(20);/obj/overmap/entity/fluff/probe/allied,
-				prob(14);/obj/overmap/entity/fluff/probe/neutral,
-				prob(5);/obj/overmap/entity/fluff/probe/hostile)
+			prob(30);/obj/overmap/entity/fluff/asteroid,
+			prob(20);/obj/overmap/entity/fluff/probe/allied,
+			prob(14);/obj/overmap/entity/fluff/probe/neutral,
+			prob(5);/obj/overmap/entity/fluff/probe/hostile)
 
 
 /obj/overmap/entity/fluff //This will all get replaced
