@@ -8439,7 +8439,6 @@
 "fBn" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "fCu" = (
@@ -18998,7 +18997,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 6
 	},
-/obj/structure/table/reinforced,
+/obj/machinery/vending/mre,
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "mgI" = (
