@@ -74,8 +74,7 @@
 	env_temp = env.temperature
 
 	//Now we are at the point where we need to actively pump
-	efficiency = get_thermal_efficiency(target_temp, air1, air2)
-	var/power_draw = pump_heat(target_temp, air1, air2, power_rating)
+	var/power_draw = pump_heat(target_temp, air_contents, env, power_rating)
 
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
