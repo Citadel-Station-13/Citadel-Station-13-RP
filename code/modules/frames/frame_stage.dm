@@ -23,6 +23,12 @@
 	var/name_override
 	/// "the [name] [descriptor]" on examine
 	var/descriptor
+	/// default require anchor for steps; if null, default to frame
+	/// * this is for steps going from us, not steps going to us!
+	var/requires_anchored
+	/// allow unanchor while in this stage
+	/// if null, defaults to frame not being requires_anchored **or** us being the first stage.
+	var/allow_unanchor
 
 /datum/frame_stage/New(set_key)
 	if(!isnull(set_key))
@@ -33,7 +39,10 @@
 		var/datum/frame_step/step_casted = steps[i]
 		if(istype(step_casted))
 			continue
-		steps[i] = new step_casted
+		var/datum/frame_step/creating = new step_casted
+		if(isnull(creating.requires_anchored))
+			creating.requires_anchored = src.requires_anchored
+		steps[i] = creating
 
 /datum/frame_stage/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list, distance)
 	if(descriptor)

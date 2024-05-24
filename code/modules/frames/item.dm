@@ -116,7 +116,12 @@
 	if(frame.item_deploy_requires_tool)
 		e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
 		return TRUE
-	if(!can_deploy(e_args, e_args.performer.dir, e_args.performer.loc))
+	var/use_dir = e_args.performer.dir
+	//! shitcode for wallmounts
+	if(frame.wall_frame)
+		use_dir = turn(use_dir, 180)
+	//! end
+	if(!can_deploy(e_args, use_dir, e_args.performer.loc))
 		return TRUE
 	if(frame.item_deploy_time)
 		e_args.visible_feedback(
@@ -129,7 +134,7 @@
 		log_construction(e_args, src, "started deploying")
 	if(!do_after(e_args.performer, frame.item_deploy_time, src, mobility_flags = MOBILITY_CAN_USE))
 		return TRUE
-	if(!attempt_deploy(e_args, use_dir = e_args.performer.dir, use_loc = e_args.performer.loc))
+	if(!attempt_deploy(e_args, use_dir = use_dir, use_loc = e_args.performer.loc))
 		return TRUE
 	e_args.visible_feedback(
 		target = src,
@@ -143,11 +148,17 @@
 /obj/item/frame2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!frame.wall_frame)
 		return ..()
+	if(!user.Adjacent(target))
+		return ..()
 	var/use_dir = get_dir(user, target)
 	var/datum/event_args/actor/e_args = new(user)
 	if(IS_DIAGONAL(use_dir))
 		e_args.chat_feedback(SPAN_WARNING("You must be standing cardinally to [target] to attempt a deployment there!"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
+	//! shitcode for wallmounts
+	if(frame.wall_frame)
+		use_dir = turn(use_dir, 180)
+	//! end
 	if(frame.item_deploy_requires_tool)
 		e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -208,7 +219,28 @@
 			if(!e_args.performer.Reachability(src))
 				e_args.chat_feedback(SPAN_WARNING("You can't reach [src] right now!"), src)
 				return TRUE
-			attempt_deploy(e_args)
+			var/use_dir = src.dir
+			//! shitcode for wallmounts
+			if(frame.wall_frame)
+				use_dir = turn(use_dir, 180)
+			//! end
+			if(frame.item_deploy_requires_tool)
+				e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!can_deploy(e_args, use_dir, loc))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(frame.item_deploy_time)
+				e_args.visible_feedback(
+					target = src,
+					range = MESSAGE_RANGE_CONSTRUCTION,
+					visible = SPAN_WARNING("[e_args.performer] starts to deploy [src]."),
+					audible = SPAN_WARNING("You hear something being assembled."),
+					otherwise_self = SPAN_WARNING("You start to deploy [src]."),
+				)
+				log_construction(e_args, src, "started deploying")
+			if(!do_after(e_args.performer, frame.item_deploy_time, src, mobility_flags = MOBILITY_CAN_USE))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			attempt_deploy(e_args, use_dir = use_dir)
 			return TRUE
 
 /obj/item/frame2/drop_products(method, atom/where)

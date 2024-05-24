@@ -36,6 +36,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * ### special things about the stage list
  * * if there are no stages, we immediately finish() with stage null with no context when someone tries to place the item/structure.
  *
+ * ### special things in general
+ * * wall frames should face away from the wall. most wall machinery face **away** from the wall.
+ *
  * todo: no support for multiple 'interact' stages yet
  * todo: /datum/frame_context so it can hold entities / data inside (e.g. can drop stuff if needed)
  * todo: similarly, we need a way to store items inserted as part of a step, maybe as a part of context? so it can be dropped later.
@@ -68,12 +71,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	/// defaults to stages[1]
 	var/stage_starting
 
-	// todo: implement anchor shit.T
+	// todo: implement anchor shit.
 
 	/// is this frame freely un/anchorable?
 	var/freely_anchorable = FALSE
 	/// do we need to be anchored to finish? we will not allow progression past last stage if so.
 	var/requires_anchored_to_finish = TRUE
+	/// requires anchored to do anything
+	var/requires_anchored = TRUE
 	/// anchoring time
 	var/anchor_time = 2 SECONDS
 	/// anchoring tool
@@ -95,12 +100,24 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 
 	/// is this frame a wall-frame?
 	var/wall_frame = FALSE
+	/// does the wall frame.. require a wall? please put yes.
+	var/wall_frame_requires_wall = TRUE
 	/// default pixel x offset for wall-frames; positive if right, negative if left
 	/// can set to list of "[NORTH]" = number, as well.
 	var/wall_pixel_x = 16
 	/// default pixel y offset for wall-frames; positive if up, negative if down
 	/// can set to list of "[NORTH]" = number, as well.
 	var/wall_pixel_y = 16
+
+	/// are we climbable if we're dense?
+	var/climb_allowed = TRUE
+	/// climb delay
+	var/climb_delay = 2 SECONDS
+
+	/// our structure's depth, if not a wall mount
+	var/depth_level = 16
+	/// does our structure project depth?
+	var/depth_projected = TRUE
 
 	/// our icon
 	var/icon
@@ -146,7 +163,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
 	frame.density = has_density
 	frame.icon = icon
-	frame.update_icon()
+	frame.update_appearance()
+
 	if(wall_frame)
 		if(islist(wall_pixel_y))
 			frame.set_base_pixel_x(wall_pixel_x["[frame.dir]"] || 0)
@@ -156,6 +174,15 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 			frame.set_base_pixel_y(wall_pixel_y["[frame.dir]"] || 0)
 		else
 			frame.set_base_pixel_y(frame.dir & NORTH? wall_pixel_y : (frame.dir & SOUTH? -wall_pixel_y : 0))
+		frame.climb_allowed = FALSE
+		frame.climb_delay = 0
+		frame.depth_level = 0
+		frame.depth_projected = FALSE
+	else
+		frame.climb_allowed = climb_allowed
+		frame.climb_delay = climb_delay
+		frame.depth_level = depth_level
+		frame.depth_projected = depth_projected
 
 /**
  * @return finished product
@@ -361,12 +388,18 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	return standard_progress_step(frame, actor, null, step_to_take, time_needed)
 
 /**
- * handles the do after, item manipualtion, logging, and whatnot
+ * handles the do after, item manipulation, logging, and whatnot
  *
  * @return TRUE / FALSE
  */
 /datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step, time_needed)
 	var/stage_we_were_in = frame.stage
+	if(frame_step.stage == FRAME_STAGE_FINISH && !frame.anchored && requires_anchored_to_finish)
+		actor.chat_feedback(SPAN_WARNING("[frame] needs to be anchored to be finished."), frame)
+		return FALSE
+	if((isnull(frame_step.requires_anchored)? requires_anchored : frame_step.requires_anchored) && !frame.anchored)
+		actor.chat_feedback(SPAN_WARNING("[frame] needs to be anchored in order for you to [frame_step.action_descriptor || "<[frame_step.name]>"]."), frame)
+		return FALSE
 	if(!frame_step.check_consumption(actor, using_item, src, frame))
 		return FALSE
 	frame_step.feedback_begin(
@@ -379,8 +412,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	if(!frame_step.perform_usage(actor, using_item, src, frame, time_needed))
 		return FALSE
 	if(!frame_step.handle_consumption(actor, using_item, src, frame))
-		return FALSE
-	if(!frame_step.perform_usage(actor, using_item, src, frame, time_needed))
 		return FALSE
 	frame_step.feedback_finish(
 		actor,
@@ -412,6 +443,14 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  * @return TRUE / FALSE
  */
 /datum/frame2/proc/deployment_checks(obj/item/frame2/frame, turf/location, dir, datum/event_args/actor/actor, silent)
+	if(wall_frame && wall_frame_requires_wall)
+		var/turf/checking = get_step(location, turn(dir, 180))
+		if(!checking.get_wallmount_anchor())
+			actor.chat_feedback(
+				SPAN_WARNING("[checking] isn't a valid anchor for this wall mount!"),
+				target = frame,
+			)
+			return FALSE
 	if((check_turf_content_density_dynamic && has_density) || check_turf_content_density_always)
 		for(var/obj/thing in location)
 			if(thing.density)

@@ -43,6 +43,9 @@
 	/// note that for tool steps, this might impact the total cost!
 	var/time = 0 SECONDS
 
+	/// requires anchored; if null, defaults to stage.
+	var/requires_anchored
+
 	// todo: request_store: null for default, context key to store under context
 
 	/// what to drop when undertaking this step

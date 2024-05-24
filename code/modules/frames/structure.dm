@@ -8,6 +8,7 @@
 	icon = 'icons/modules/frames/base.dmi'
 	icon_state = "structure"
 
+	climb_knockable = TRUE
 	obj_rotation_flags = OBJ_ROTATION_ENABLED
 
 	/// frame datum; set to typepath to default to that on init
@@ -73,12 +74,34 @@
 
 /obj/structure/frame2/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
 	if(frame.freely_anchorable && frame.anchor_tool == function)
+		var/datum/frame_stage/current_stage = frame.stages[stage]
+		// if anchored, and either: current stage allow_unanchor is set to FALSE (not null) OR it's to null
+		// and the frame is requiring anchored and the frame's not on its starting stage, do not allow unanchoring.
+		if(anchored && (isnull(current_stage.allow_unanchor)? (frame.requires_anchored? frame.stage_starting != stage : FALSE) : !current_stage.allow_unanchor))
+			e_args.chat_feedback(
+				SPAN_WARNING("[src] cannot be unanchored while in this stage!"),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(frame.anchor_time)
+			e_args.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_CONSTRUCTION,
+				visible = SPAN_NOTICE("[e_args.performer] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+				otherwise_self = SPAN_NOTICE("You begin to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+			)
 			log_construction(e_args, src, "started [anchored? "unanchoring" : "anchoring"]")
 			if(!use_tool(function, I, e_args, flags, frame.anchor_time))
 				return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		set_anchored(!anchored)
 		log_construction(e_args, src, "[anchored? "anchored" : "unanchored"]")
+		e_args.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] the floor."),
+			audible = SPAN_WARNING("You hear a set of bolts being [anchored? "fastened" : "undone"]."),
+			otherwise_self = SPAN_NOTICE("You [anchored? "bolt" : "unbolt"] [src] [anchored? "to" : "from"] the floor."),
+		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	if(frame.on_tool(src, I, e_args, function, flags, hint))
 		// todo: did something might be sent even if we .. didn't do anything successfully.
