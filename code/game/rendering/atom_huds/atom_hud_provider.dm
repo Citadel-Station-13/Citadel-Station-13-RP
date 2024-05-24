@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	if(H.wear_id)
 		var/obj/item/card/id/I = H.wear_id.GetID()
 		if(I)
-			holder.icon_state = "[ckey(I.GetJobName())]"
+			holder.icon_state = "[ckey(I.GetJobName())]" // ckey() serves as a formating help, not actually related to the ckey of the mob
 		else
 			holder.icon_state = "unknown"
 	else
