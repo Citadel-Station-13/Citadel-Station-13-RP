@@ -503,7 +503,7 @@
 /obj/item/ammo_casing/a5mmcaseless
 	desc = "A 5mm solid phoron caseless round."
 	caliber = "5mm caseless"
-	icon_state = "casing" // Placeholder. Should probably be purple.
+	icon_state = "p-casing"
 	projectile_type = /obj/projectile/bullet/pistol // Close enough to be comparable.
 	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE
@@ -512,9 +512,26 @@
 	desc = "A 5mm solid phoron caseless stun round."
 	projectile_type = /obj/projectile/energy/electrode // Maybe nerf this considering there's 30 rounds in a mag.
 
+
 /*
  * Misc
  */
+
+/obj/item/ammo_casing/fiftycalcaseless
+	name = "caseless phoron round"
+	desc = "A 12.7mm caseless round."
+	caliber = "12.7mm caseless"
+	icon_state = "p-casing"
+	projectile_type = /obj/projectile/bullet/incendiary/caseless
+	casing_flags = CASING_DELETE
+
+/obj/item/ammo_casing/phoron_shrap
+	name = "phoron shrapnel"
+	desc = "Should you really be holding this?"
+	caliber = "phoron shrapnel"
+	icon_state = "phoronshrap"
+	projectile_type = /obj/projectile/bullet/incendiary/caseless
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/rocket
 	name = "rocket shell"

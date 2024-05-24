@@ -50,6 +50,7 @@
 	icon_state = icon_opened
 	src.opened = 1
 	shake_climbers()
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/close()
@@ -74,6 +75,7 @@
 
 	icon_state = icon_closed
 	src.opened = 0
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)

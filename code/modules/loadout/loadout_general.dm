@@ -1,6 +1,7 @@
 /datum/loadout_entry/cane
 	name = "Cane"
 	path = /obj/item/cane
+	slot = SLOT_ID_HANDS
 
 /datum/loadout_entry/cane/white
 	name = "Cane - White"
