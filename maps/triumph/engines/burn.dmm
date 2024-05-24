@@ -1,10 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "as" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "ay" = (
@@ -281,14 +278,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "jD" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -353,10 +349,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "nN" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
@@ -392,7 +385,6 @@
 	dir = 4;
 	frequency = 1435;
 	id = "exhaust_out";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/airless/ceiling,
@@ -422,7 +414,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "pF" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -552,8 +544,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -657,7 +648,6 @@
 	dir = 1;
 	frequency = 1437;
 	id = "engine_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -731,7 +721,6 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1086,7 +1075,6 @@
 	dir = 1;
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1099,7 +1087,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Qm" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/window/reinforced{
@@ -1172,7 +1160,6 @@
 	dir = 1;
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1246,7 +1233,6 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	frequency = 1438;
 	id = "hotloop_in";
-	unacidable = 1;
 	volume_rate = 100
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1273,7 +1259,7 @@
 /area/engineering/engine_room)
 "UK" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green{

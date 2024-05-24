@@ -24,8 +24,9 @@
 		client.global_planes.apply(client)
 		client.update_clickcatcher()
 		client.using_perspective?.reload(client, TRUE)
-		INVOKE_ASYNC(client, /client/proc/init_viewport_blocking)
+		INVOKE_ASYNC(client, TYPE_PROC_REF(/client, init_viewport_blocking))
 	reload_fullscreen()
+	hud_used?.reorganize_alerts()
 
 /**
  * reloads rendering after screen viewport size change

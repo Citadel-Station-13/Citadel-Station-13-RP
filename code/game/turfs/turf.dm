@@ -8,15 +8,7 @@
 	luminosity = 1
 	level = 1
 
-	//? Flags
-	/// turf flags
-	var/turf_flags = NONE
-	/// multiz flags
-	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
-
-	var/holy = 0
-
-	//? atmospherics
+	//* Atmospherics
 	/**
 	 * the gas we start out as
 	 * can be:
@@ -25,33 +17,11 @@
 	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
 
-	//? outdoors
-	/**
-	 * are we considered outdoors for things like weather effects?
-	 * todo: single var doing this is inefficient & bad, flags maybe?
-	 * todo: we aren't going to touch this for a while tbh
-	 *
-	 * possible values:
-	 * TRUE - as it implies
-	 * FALSE - as it implies
-	 * null - use area default
-	 */
-	var/outdoors = FALSE
+	//* Automata
+	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
+	var/list/acting_automata
 
-	//? Radiation
-	/// cached rad insulation of contents
-	var/rad_insulation_contents = 1
-
-	// Properties for airtight tiles (/wall)
-	var/thermal_conductivity = 0.05
-	var/heat_capacity = 1
-
-	// Properties for both
-	/// Initial turf temperature.
-	var/temperature = T20C
-	/// Does this turf contain air/let air through?
-	var/blocks_air = FALSE
-
+	//* Baseturfs / Turf Changing
 	/**
 	 * Baseturfs
 	 *
@@ -71,13 +41,52 @@
 	var/list/baseturfs = /turf/baseturf_bottom
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
-	// End
 
+	//* Flags
+	/// turf flags
+	var/turf_flags = NONE
+	/// multiz flags
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
+
+	//* Movement / Pathfinding
+	/// How much the turf slows down movement, if any.
+	var/slowdown = 0
+	/// Pathfinding cost
+	var/path_weight = 1
+	/// danger flags to avoid
+	var/turf_path_danger = NONE
+	/// pathfinding id - used to avoid needing a big closed list to iterate through every cycle of jps
+	var/tmp/pathfinding_cycle
+
+	//* Outdoors
 	/**
-	 * Automata
+	 * are we considered outdoors for things like weather effects?
+	 * todo: single var doing this is inefficient & bad, flags maybe?
+	 * todo: we aren't going to touch this for a while tbh
+	 *
+	 * possible values:
+	 * TRUE - as it implies
+	 * FALSE - as it implies
+	 * null - use area default
 	 */
-	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
-	var/list/acting_automata
+	var/outdoors = FALSE
+
+	//* Radiation
+	/// cached rad insulation of contents
+	var/rad_insulation_contents = 1
+
+	// Properties for airtight tiles (/wall)
+	var/thermal_conductivity = 0.05
+	var/heat_capacity = 1
+
+	// Properties for both
+	/// Initial turf temperature.
+	var/temperature = T20C
+	/// Does this turf contain air/let air through?
+	var/blocks_air = FALSE
+
+
+	var/holy = 0
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
@@ -88,11 +97,6 @@
 	var/blessed = FALSE
 
 	var/list/decals
-
-	/// How much the turf slows down movement, if any.
-	var/slowdown = 0
-	/// Pathfinding cost; null defaults to slowdown
-	var/pathweight
 
 	var/list/footstep_sounds = null
 
@@ -153,12 +157,15 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
+	// todo: uh oh.
+	// TODO: what would tg do (but maybe not that much component signal abuse?)
+	// this is to trigger entered effects
+	// bad news is this is not necessarily currently idempotent
+	// we probably have to deal with this at.. some point.
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
 	var/area/A = loc
-	if(!TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
-		add_overlay(/obj/effect/fullbright)
 
 	if (light_power && light_range)
 		update_light()
@@ -277,11 +284,10 @@
 		step(user.pulling, get_dir(user.pulling.loc, src))
 	return 1
 
-/turf/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/storage))
-		var/obj/item/storage/S = W
-		if(S.use_to_pickup && S.collection_mode)
-			S.gather_all(src, user)
+/turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 // Hits a mob on the tile.
@@ -376,7 +382,7 @@
 /turf/proc/Distance(turf/t)
 	if(get_dist(src,t) == 1)
 		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
-		cost *= ((isnull(pathweight)? slowdown : pathweight) + (isnull(t.pathweight)? t.slowdown : t.pathweight))/2
+		cost *= ((isnull(path_weight)? slowdown : path_weight) + (isnull(t.path_weight)? t.slowdown : t.path_weight))/2
 		return cost
 	else
 		return get_dist(src,t)
@@ -426,6 +432,9 @@
 
 /turf/AllowDrop()
 	return TRUE
+
+/turf/drop_location()
+	return src
 
 // Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
 /turf/proc/is_safe_to_enter(mob/living/L)
@@ -550,12 +559,10 @@
 	// open but turf wants to be outside, invert to OUTSIDE_NO).
 
 	// Do we have a roof over our head? Should we care?
-	if(HasAbove(z))
-		var/turf/top_of_stack = src
-		while(HasAbove(top_of_stack.z))
-			top_of_stack = GetAbove(top_of_stack)
-			if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
-				return !.
+	var/turf/top_of_stack = src
+	while((top_of_stack = top_of_stack.above()))
+		if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
+			return !.
 
 /turf/proc/set_outside(new_outside, skip_weather_update = FALSE)
 	if(is_outside != new_outside)
@@ -566,7 +573,7 @@
 		return TRUE
 	return FALSE
 
-//? Atom Color - we don't use the expensive system.
+//* Atom Color - we don't use the expensive system. *//
 
 /turf/get_atom_colour()
 	return color
@@ -585,7 +592,7 @@
 		return
 	color = other.color
 
-//? Depth
+//* Depth *//
 
 /**
  * gets overall depth level for stuff standing on us
@@ -597,7 +604,39 @@
 			continue
 		. = max(., O.depth_level)
 
-//? Radiation
+//* Multiz *//
+
+/turf/proc/update_multiz()
+	return
+
+//* Orientation *//
+
+/**
+ * Are we a valid anchor or orientation source for a wall-mounted object?
+ *
+ * If so, return the anchor object.
+ */
+/turf/proc/get_wallmount_anchor()
+	RETURN_TYPE(/atom)
+	// are we valid
+	if(GLOB.wallframe_typecache[type])
+		return src
+	// are our contents valid
+	for(var/obj/O in contents)
+		if(GLOB.wallframe_typecache[O.type])
+			return O
+
+//* Sector API *//
+
+/**
+ * called by planet / weather to update temperature during weather changes
+ *
+ * todo: this is bad lol this either needs more specifications/documentation or a redesign
+ */
+/turf/proc/sector_set_temperature(temperature)
+	return
+
+//* Radiation *//
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1

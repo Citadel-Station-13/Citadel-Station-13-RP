@@ -404,7 +404,7 @@
 		if(istype(thing, /obj/structure/blob)) // blobs are uncomfortable things
 			fear_amount += 3
 
-		if(istype(thing, /obj/effect/alien/resin)) // Resin's a bit slimy according to its own description.
+		if(istype(thing, /obj/structure/alien/resin)) // Resin's a bit slimy according to its own description.
 			fear_amount += 1
 
 		if(istype(thing, /obj/item/weed_extract))

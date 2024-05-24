@@ -3,7 +3,7 @@
 	desc = "It looks extremely delicate."
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "sliver1"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	sharp = 1
 	var/datum/geosample/geological_data
 
@@ -21,7 +21,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "sampler0"
 	item_state = "screwdriver_brown"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	var/sampled_turf = ""
 	var/num_stored_bags = 10
@@ -48,8 +48,8 @@
 /obj/item/core_sampler/proc/sample_item(var/item_to_sample, var/mob/user)
 	var/datum/geosample/geo_data
 
-	if(istype(item_to_sample, /obj/item/ore))
-		var/obj/item/ore/O = item_to_sample
+	if(istype(item_to_sample, /obj/item/stack/ore))
+		var/obj/item/stack/ore/O = item_to_sample
 		geo_data = O.geologic_data
 
 	if(geo_data)
@@ -75,7 +75,7 @@
 			var/image/I = image("icon"=R, "layer"=FLOAT_LAYER)
 			filled_bag.add_overlay(I)
 			filled_bag.add_overlay("evidence")
-			filled_bag.w_class = ITEMSIZE_TINY
+			filled_bag.set_weight_class(WEIGHT_CLASS_TINY)
 
 			to_chat(user, "<span class='notice'>You take a core sample of the [item_to_sample].</span>")
 	else

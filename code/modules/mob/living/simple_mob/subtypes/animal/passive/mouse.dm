@@ -23,7 +23,7 @@
 
 	mob_size = MOB_MINISCULE
 	pass_flags = ATOM_PASS_TABLE
-	can_pull_size = ITEMSIZE_TINY
+	can_pull_size = WEIGHT_CLASS_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0

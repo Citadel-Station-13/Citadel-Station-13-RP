@@ -14,7 +14,7 @@
 /obj/machinery/computer/drone_control/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/drone_control/ui_status(mob/user)
+/obj/machinery/computer/drone_control/ui_status(mob/user, datum/ui_state/state)
 	if(!allowed(user))
 		return UI_CLOSE
 	return ..()
@@ -31,7 +31,7 @@
 		ui = new(user, src, "DroneConsole", name)
 		ui.open()
 
-/obj/machinery/computer/drone_control/ui_data(mob/user)
+/obj/machinery/computer/drone_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/drones = list()
@@ -59,7 +59,7 @@
 
 	return data
 
-/obj/machinery/computer/drone_control/ui_act(action, params)
+/obj/machinery/computer/drone_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

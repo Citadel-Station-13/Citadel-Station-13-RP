@@ -38,7 +38,7 @@
 /obj/machinery/smartfridge/chemistry/chemvator/down/Initialize(mapload)
 // /obj/machinery/smartfridge/chemistry/chemvator/down/Initialize(mapload) // Triumph variant had initialize at mapload. Dont know why, leaving this here for reference -Bloop
 	. = ..()
-	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
+	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator) in get_vertical_step(src, UP)
 	if(istype(above))
 		above.attached = src
 		attached = above
@@ -147,7 +147,7 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/alarm
+/obj/machinery/air_alarm
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/button
 	layer = ABOVE_WINDOW_LAYER
@@ -202,7 +202,7 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/alarm
+/obj/machinery/air_alarm
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/button
 	layer = ABOVE_WINDOW_LAYER

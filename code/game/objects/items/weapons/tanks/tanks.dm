@@ -18,17 +18,19 @@ var/list/global/tank_gauge_cache = list()
 	var/gauge_cap = 6
 
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 
+	weight = ITEM_WEIGHT_GAS_TANK
+
 	var/datum/gas_mixture/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
 	integrity = 20
-	max_integrity = 20
+	integrity_max = 20
 	var/valve_welded = 0
 	var/obj/item/tankassemblyproxy/proxyassembly
 
@@ -115,8 +117,8 @@ var/list/global/tank_gauge_cache = list()
 	if (istype(loc, /obj/item/assembly))
 		icon = loc
 
-	if ((istype(W, /obj/item/analyzer)) && get_dist(user, src) <= 1)
-		var/obj/item/analyzer/A = W
+	if ((istype(W, /obj/item/atmos_analyzer)) && get_dist(user, src) <= 1)
+		var/obj/item/atmos_analyzer/A = W
 		A.analyze_gases(src, user)
 	else if (istype(W,/obj/item/latexballon))
 		var/obj/item/latexballon/LB = W
@@ -199,8 +201,8 @@ var/list/global/tank_gauge_cache = list()
 					message_admins("[key_name_admin(user)] attempted to weld a [src]. [air_contents.temperature-T0C]")
 					if(WT.welding)
 						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
-						max_integrity -= rand(2,6)
-						integrity = min(integrity,max_integrity)
+						integrity_max -= rand(2,6)
+						integrity = min(integrity,integrity_max)
 						air_contents.adjust_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
@@ -222,7 +224,7 @@ var/list/global/tank_gauge_cache = list()
 	if (src.proxyassembly.assembly)
 		src.proxyassembly.assembly.attack_self(user)
 
-/obj/item/weapon/tank/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/weapon/tank/ui_state()
 	return GLOB.deep_inventory_state
 
 /obj/item/tank/ui_interact(mob/user, datum/tgui/ui)
@@ -231,7 +233,7 @@ var/list/global/tank_gauge_cache = list()
 		ui = new(user, src, "Tank", name)
 		ui.open()
 
-/obj/item/tank/ui_static_data(mob/user)
+/obj/item/tank/ui_static_data(mob/user, datum/tgui/ui)
 	. = list (
 		"defaultReleasePressure" = round(TANK_DEFAULT_RELEASE_PRESSURE),
 		"minReleasePressure" = round(TANK_MIN_RELEASE_PRESSURE),
@@ -240,7 +242,7 @@ var/list/global/tank_gauge_cache = list()
 		"fragmentPressure" = round(TANK_FRAGMENT_PRESSURE)
 	)
 
-/obj/item/tank/ui_data(mob/user)
+/obj/item/tank/ui_data(mob/user, datum/tgui/ui)
 	. = list(
 		"tankPressure" = round(air_contents.return_pressure()),
 		"releasePressure" = round(distribute_pressure)
@@ -264,7 +266,7 @@ var/list/global/tank_gauge_cache = list()
 
 	return .
 
-/obj/item/tank/ui_act(action, params)
+/obj/item/tank/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -360,6 +362,16 @@ var/list/global/tank_gauge_cache = list()
 		update_gauge()
 	check_status()
 
+/**
+ * Encodes data for AtmosTank in tgui/interfaces/common/Atmos.tsx
+ */
+/obj/item/tank/proc/tgui_tank_data()
+	return list(
+		"name" = name,
+		"pressure" = air_contents?.return_pressure(),
+		"volume" = air_contents.volume,
+		"pressureLimit" = TANK_IDEAL_PRESSURE,
+	)
 
 /obj/item/tank/proc/add_bomb_overlay()
 	cut_overlays()
@@ -372,7 +384,6 @@ var/list/global/tank_gauge_cache = list()
 			test.Shift(WEST,3)
 			overlays_to_add += test
 	add_overlay(overlays_to_add)
-
 
 /obj/item/tank/proc/update_gauge()
 	var/gauge_pressure = 0
@@ -393,7 +404,6 @@ var/list/global/tank_gauge_cache = list()
 		tank_gauge_cache[indicator] = image(icon, indicator)
 	add_overlay(tank_gauge_cache[indicator])
 
-
 /obj/item/tank/proc/check_status()
 	//Handle exploding, leaking, and rupturing of the tank
 
@@ -401,8 +411,6 @@ var/list/global/tank_gauge_cache = list()
 		return 0
 
 	var/pressure = air_contents.return_pressure()
-
-
 	if(pressure > TANK_FRAGMENT_PRESSURE)
 		if(integrity <= 7)
 			if(!istype(src.loc,/obj/item/transfer_valve))
@@ -444,14 +452,10 @@ var/list/global/tank_gauge_cache = list()
 				var/obj/item/transfer_valve/TTV = loc
 				TTV.remove_tank(src)
 				qdel(TTV)
-
-
 			if(src)
 				qdel(src)
-
 		else
 			integrity -=7
-
 
 	else if(pressure > TANK_RUPTURE_PRESSURE)
 		#ifdef FIREDBG
@@ -480,8 +484,6 @@ var/list/global/tank_gauge_cache = list()
 			if(istype(loc, /obj/item/transfer_valve))
 				var/obj/item/transfer_valve/TTV = loc
 				TTV.remove_tank(src)
-
-
 			qdel(src)
 
 		else
@@ -490,7 +492,6 @@ var/list/global/tank_gauge_cache = list()
 				src.leaking = 1
 			else
 				integrity-= 5
-
 
 	else if(pressure > TANK_LEAK_PRESSURE || air_contents.temperature - T0C > failure_temp)
 
@@ -520,26 +521,12 @@ var/list/global/tank_gauge_cache = list()
 		else
 			integrity-= 1
 	else
-		if(integrity < max_integrity)
+		if(integrity < integrity_max)
 			integrity++
 			if(leaking)
 				integrity++
-			if(integrity == max_integrity)
+			if(integrity == integrity_max)
 				leaking = 0
-
-/////////////////////////////////
-///Prewelded tanks
-/////////////////////////////////
-
-/obj/item/tank/phoron/welded
-	valve_welded = 1
-/obj/item/tank/oxygen/welded
-	valve_welded = 1
-
-
-/////////////////////////////////
-///Onetankbombs (added as actual items)
-/////////////////////////////////
 
 /obj/item/tank/proc/onetankbomb(fill = 1)
 	var/phoron_amt = 4 + rand(4)
@@ -553,8 +540,8 @@ var/list/global/tank_gauge_cache = list()
 		oxygen_amt = 4.5
 
 
-	air_contents.gas[/datum/gas/phoron] = phoron_amt
-	air_contents.gas[/datum/gas/oxygen] = oxygen_amt
+	air_contents.gas[GAS_ID_PHORON] = phoron_amt
+	air_contents.gas[GAS_ID_OXYGEN] = oxygen_amt
 	air_contents.update_values()
 	valve_welded = 1
 	air_contents.temperature = PHORON_MINIMUM_BURN_TEMPERATURE-1
@@ -569,31 +556,35 @@ var/list/global/tank_gauge_cache = list()
 
 	add_overlay("bomb_assembly")
 
+/obj/item/tank/oxygen/welded
+	valve_welded = TRUE
+
+/obj/item/tank/phoron/welded
+	valve_welded = TRUE
 
 /obj/item/tank/phoron/onetankbomb/Initialize(mapload)
 	. = ..()
-	src.onetankbomb()
+	onetankbomb()
 
 /obj/item/tank/oxygen/onetankbomb/Initialize(mapload)
 	. = ..()
-	src.onetankbomb()
-
+	onetankbomb()
 
 /obj/item/tank/phoron/onetankbomb/full/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(2)
+	onetankbomb(2)
 
 /obj/item/tank/oxygen/onetankbomb/full/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(2)
+	onetankbomb(2)
 
 /obj/item/tank/phoron/onetankbomb/small/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(0)
+	onetankbomb(0)
 
 /obj/item/tank/oxygen/onetankbomb/small/Initialize(mapload)
 	. = ..()
-	src.onetankbomb(0)
+	onetankbomb(0)
 
 /////////////////////////////////
 ///Pulled from rewritten bomb.dm

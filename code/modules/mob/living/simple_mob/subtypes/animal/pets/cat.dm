@@ -81,7 +81,7 @@
 
 /mob/living/simple_mob/animal/passive/cat/verb/become_friends()
 	set name = "Become Friends"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src in view(1)
 
 	var/mob/living/L = usr
@@ -158,7 +158,7 @@
 /// Tactical kittens!
 /obj/item/holder/cat/kitten
 	icon_state = "kitten"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/say_list/cat
 	speak = list("Meow!","Esp!","Purr!","HSSSSS")

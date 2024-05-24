@@ -3,7 +3,7 @@
 	desc = "A portable(ish) machine made to print tiny modular circuitry out of metal."
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "circuit_printer"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/cur_metal = 0
 	var/max_metal = 250
 	/// One sheet equals this much metal.
@@ -37,6 +37,7 @@
 /obj/item/integrated_circuit_printer/debug
 	name = "fractal integrated circuit printer"
 	desc = "A portable(ish) machine that makes modular circuitry seemingly out of thin air."
+	cur_metal = 250
 	debug = TRUE
 	upgraded = TRUE
 	can_clone = TRUE
@@ -176,7 +177,7 @@
 		return
 	ui_interact(user)
 
-/obj/item/integrated_circuit_printer/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/integrated_circuit_printer/ui_state()
 	return GLOB.physical_state
 
 /obj/item/integrated_circuit_printer/ui_interact(mob/user, datum/tgui/ui)
@@ -189,7 +190,7 @@
 		ui = new(user, src, "ICPrinter", name) // 500, 600
 		ui.open()
 
-/obj/item/integrated_circuit_printer/ui_static_data(mob/user)
+/obj/item/integrated_circuit_printer/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/categories = list()
@@ -233,7 +234,7 @@
 
 	return data
 
-/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_circuit_printer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["metal"] = cur_metal
@@ -340,7 +341,7 @@
 				to_chat(usr, SPAN_NOTICE("You begin printing a custom assembly.  This will take approximately [DisplayTimeText(cloning_time)].  You can still print \
 				off normal parts during this time."))
 				playsound(src, 'sound/items/poster_being_created.ogg', 50, TRUE)
-				addtimer(CALLBACK(src, .proc/print_program, usr), cloning_time)
+				addtimer(CALLBACK(src, PROC_REF(print_program), usr), cloning_time)
 				return TRUE
 
 		if("cancel")
@@ -360,7 +361,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "upgrade_disk"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 4)
 
 /obj/item/disk/integrated_circuit/upgrade/advanced

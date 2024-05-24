@@ -1,3 +1,6 @@
+/datum/physiology_modifier/intrinsic/species/diona
+	carry_strength_add = CARRY_STRENGTH_ADD_DIONA
+	carry_strength_factor = CARRY_FACTOR_MOD_DIONA
 
 /datum/species/diona
 	uid = SPECIES_ID_DIONA
@@ -5,6 +8,7 @@
 	name = SPECIES_DIONA
 	name_plural = "Dionaea"
 	//primitive_form = "Nymph"
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/diona
 
 	icobase      = 'icons/mob/species/diona/body.dmi'
 	deform       = 'icons/mob/species/diona/deformed_body.dmi'
@@ -114,9 +118,9 @@
 
 /datum/species/diona/equip_survival_gear(mob/living/carbon/human/H)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot_meta/abstract/hand/right)
+		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), /datum/inventory_slot/abstract/hand/right)
 	else
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/diona/handle_death(mob/living/carbon/human/H)
 
@@ -150,7 +154,7 @@
 		SPAN_HEAR("You hear a wet slithering noise!"),
 	)
 
-/datum/species/diona/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/diona/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.inStasisNow())
 		return
 

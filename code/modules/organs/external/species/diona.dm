@@ -13,10 +13,6 @@
 		var/mob/living/carbon/alien/diona/D = new(target)
 		var/datum/ghosttrap/plant/P = get_ghost_trap("living plant")
 		P.request_player(D, "A diona nymph has split off from its gestalt. ")
-		spawn(60)
-			if(D)
-				if(!D.ckey || !D.client)
-					D.death()
 
 /obj/item/organ/external/diona
 	name = "tendril"
@@ -31,7 +27,7 @@
 	icon_name = "torso"
 	max_damage = 200
 	min_broken_damage = 50
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	body_part_flags = UPPER_TORSO
 	vital = TRUE
 	cannot_amputate = TRUE
@@ -43,7 +39,7 @@
 	icon_name = "groin"
 	max_damage = 100
 	min_broken_damage = 50
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	body_part_flags = LOWER_TORSO
 	parent_organ = BP_TORSO
 
@@ -53,7 +49,7 @@
 	icon_name = "l_arm"
 	max_damage = 30
 	min_broken_damage = 20
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	body_part_flags = ARM_LEFT
 	parent_organ = BP_TORSO
 	can_grasp = TRUE
@@ -70,7 +66,7 @@
 	icon_name = "l_leg"
 	max_damage = 30
 	min_broken_damage = 20
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	body_part_flags = LEG_LEFT
 	icon_position = LEFT
 	parent_organ = BP_GROIN
@@ -89,7 +85,7 @@
 	icon_name = "l_foot"
 	max_damage = 25
 	min_broken_damage = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_part_flags = FOOT_LEFT
 	icon_position = LEFT
 	parent_organ = BP_R_LEG
@@ -111,7 +107,7 @@
 	icon_name = "l_hand"
 	max_damage = 25
 	min_broken_damage = 15
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_part_flags = HAND_LEFT
 	parent_organ = BP_L_ARM
 	can_grasp = TRUE

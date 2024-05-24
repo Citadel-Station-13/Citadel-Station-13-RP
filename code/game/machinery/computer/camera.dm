@@ -64,6 +64,7 @@
 	network = list(NETWORK_THUNDER)
 	density = 0
 	circuit = null
+	depth_projected = FALSE
 
 /obj/machinery/computer/security/telescreen/entertainment
 	name = "entertainment monitor"

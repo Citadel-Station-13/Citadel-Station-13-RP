@@ -327,6 +327,8 @@ toggle, closed by default.
 - `title: string` - Text to display on the button for collapsing
 - `color: string` - Color of the button; see [Button](#button)
 - `buttons: any` - Buttons or other content to render inline with the button
+- `more: boolean` - Makes this collapsible render its button on the right, with fixed size.
+    This effectively makes it a Box with a button to display its children.
 
 ### `ColorBox`
 

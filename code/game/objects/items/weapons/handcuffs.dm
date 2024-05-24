@@ -6,11 +6,11 @@
 	icon_state = "handcuff"
 	slot_flags = SLOT_BELT
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1)
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	var/elastic
@@ -105,6 +105,34 @@
 		user.drop_all_held_items()
 		user.stop_pulling()
 
+/* grimdark code that's disabled for code quality reasons - readd later if we care
+var/last_chew = 0
+/mob/living/carbon/human/RestrainedClickOn(var/atom/A)
+	if (A != src) return ..()
+	if (last_chew + 26 > world.time) return
+
+	var/mob/living/carbon/human/H = A
+	if (!H.handcuffed) return
+	if (H.a_intent != INTENT_HARM) return
+	if (H.zone_sel.selecting != O_MOUTH) return
+	if (H.wear_mask) return
+	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
+
+	var/obj/item/organ/external/O = H.organs_by_name[(H.hand ? BP_L_HAND : BP_R_HAND)]
+	if (!O) return
+
+	var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
+
+	var/s = "<span class='warning'>[H.name] chews on [T.his] [O.name]!</span>"
+	H.visible_message(s, "<span class='warning'>You chew on your [O.name]!</span>")
+	add_attack_logs(H,H,"chewed own [O.name]")
+
+	if(O.take_damage(3,0,1,1,"teeth marks"))
+		H:update_damage_overlay()
+
+	last_chew = world.time
+*/
+
 /obj/item/handcuffs/fuzzy
 	name = "fuzzy cuffs"
 	icon_state = "fuzzycuff"
@@ -194,7 +222,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "legcuff"
 	throw_force = 0
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 	cuff_type = "legcuffs"

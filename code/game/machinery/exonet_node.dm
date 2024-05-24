@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(exonet_nodes)
+
 /obj/machinery/exonet_node
 	name = "exonet node"
 	desc = null // Gets written in New()
@@ -21,11 +23,19 @@
 // Proc: Initialize()
 // Parameters: None
 // Description: Adds components to the machine for deconstruction. Also refreshes the descrition.
+/obj/machinery/exonet_node/Initialize(mapload)
+	. = ..()
+	GLOB.exonet_nodes += src
+
 /obj/machinery/exonet_node/map/Initialize(mapload, newdir)
 	. = ..()
 	desc = "This machine is one of many, many nodes inside [(LEGACY_MAP_DATUM).starsys_name]'s section of the Exonet, connecting the \
 	[(LEGACY_MAP_DATUM).station_short] to the rest of the system, at least electronically."
 	update_desc()
+
+/obj/machinery/exonet_node/Destroy()
+	. = ..()
+	GLOB.exonet_nodes -= src
 
 // Proc: update_icon()
 // Parameters: None
@@ -108,7 +118,7 @@
 // Proc: ui_data()
 // Parameters: 1 (user - the person using the interface)
 // Description: Allows the user to turn the machine on or off, or open or close certain 'ports' for things like external PDA messages, newscasters, etc.
-/obj/machinery/exonet_node/ui_data(mob/user)
+/obj/machinery/exonet_node/ui_data(mob/user, datum/tgui/ui)
 	// this is the data which will be sent to the ui
 	var/list/data = list()
 
@@ -123,7 +133,7 @@
 // Proc: ui_act()
 // Parameters: 2 (standard ui_act arguments)
 // Description: Responds to button presses on the TGUI interface.
-/obj/machinery/exonet_node/ui_act(action, params)
+/obj/machinery/exonet_node/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -164,7 +174,7 @@
 // Parameters: None
 // Description: Helper proc to get a reference to an Exonet node.
 /proc/get_exonet_node(atom/host)
-	for(var/obj/machinery/exonet_node/E in GLOB.machines)
+	for(var/obj/machinery/exonet_node/E in GLOB.exonet_nodes)
 		if(E.on && (!host || can_telecomm(host, E)))
 			return E
 

@@ -54,7 +54,7 @@
 		return
 	return ui_interact(user)
 
-/obj/item/anodevice/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/anodevice/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/anodevice/ui_interact(mob/user, datum/tgui/ui)
@@ -63,7 +63,7 @@
 		ui = new(user, src, "XenoarchHandheldPowerUtilizer", name)
 		ui.open()
 
-/obj/item/anodevice/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/anodevice/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["inserted_battery"] = inserted_battery

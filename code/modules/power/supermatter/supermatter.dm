@@ -53,8 +53,9 @@
 	anchored = 0
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
+	integrity_enabled = FALSE
 
-	var/gasefficency = 0.25
+	var/gasefficiency = 0.25
 
 	base_icon_state = "darkmatter"
 
@@ -306,7 +307,7 @@
 
 	if(!istype(L, /turf/space))
 		env = L.return_air()
-		removed = env.remove(gasefficency * env.total_moles)	//Remove gas from surrounding area
+		removed = env.remove(gasefficiency * env.total_moles)	//Remove gas from surrounding area
 
 	if(!env || !removed || !removed.total_moles)
 		damage += max((power - 15*POWER_FACTOR)/10, 0)
@@ -318,7 +319,7 @@
 		damage = max( damage + min( ( (removed.temperature - CRITICAL_TEMPERATURE) / 150 ), damage_inc_limit ) , 0 )
 		//Ok, 100% oxygen atmosphere = best reaction
 		//Maxes out at 100% oxygen pressure
-		oxygen = max(min((removed.gas[/datum/gas/oxygen] - (removed.gas[/datum/gas/nitrogen] * NITROGEN_SLOWING_FACTOR)) / removed.total_moles, 1), 0)
+		oxygen = max(min((removed.gas[GAS_ID_OXYGEN] - (removed.gas[GAS_ID_NITROGEN] * NITROGEN_SLOWING_FACTOR)) / removed.total_moles, 1), 0)
 
 		//calculate power gain for oxygen reaction
 		var/temp_factor
@@ -342,8 +343,8 @@
 
 		//Release reaction gasses
 		var/heat_capacity = removed.heat_capacity()
-		removed.adjust_multi(/datum/gas/phoron, max(device_energy / PHORON_RELEASE_MODIFIER, 0), \
-		                     /datum/gas/oxygen, max((device_energy + removed.temperature - T0C) / OXYGEN_RELEASE_MODIFIER, 0))
+		removed.adjust_multi(GAS_ID_PHORON, max(device_energy / PHORON_RELEASE_MODIFIER, 0), \
+		                     GAS_ID_OXYGEN, max((device_energy + removed.temperature - T0C) / OXYGEN_RELEASE_MODIFIER, 0))
 
 		var/thermal_power = THERMAL_RELEASE_MODIFIER * device_energy
 		if (debug)
@@ -415,7 +416,7 @@
 		ui.open()
 
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/ui_data(mob/user)
+/obj/machinery/power/supermatter/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["integrity_percentage"] = round(get_integrity())
@@ -460,6 +461,13 @@
 */
 
 /obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)
+	// todo: rework the fucking supermatter so we don't need this
+	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
+	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
+	// so we add a sanity check here
+	if(QDELETED(W))
+		return
+
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
 		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
@@ -483,6 +491,12 @@
 	Consume(AM)
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
+	// todo: rework the fucking supermatter so we don't need this
+	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
+	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
+	// so we add a sanity check here
+	if(QDELETED(user))
+		return
 	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
 	if(istype(user))
 		user.dust()
@@ -556,7 +570,7 @@
 	emergency_point = 400
 	explosion_point = 600
 
-	gasefficency = 0.125
+	gasefficiency = 0.125
 
 	pull_radius = 5
 	pull_time = 45

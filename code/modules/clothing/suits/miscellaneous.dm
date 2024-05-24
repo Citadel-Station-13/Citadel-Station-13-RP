@@ -96,7 +96,7 @@
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "syndicate"
 	desc = "A plastic replica of the syndicate space suit, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/toy)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
@@ -286,6 +286,8 @@
 	var/resist_time = 4 MINUTES
 
 /obj/item/clothing/suit/straight_jacket/can_unequip(mob/M, slot, mob/user, flags)
+	if(flags & INV_OP_FORCE)
+		return TRUE
 	if(flags & INV_OP_DISALLOW_DELAY)
 		return FALSE
 	. = ..()
@@ -295,14 +297,16 @@
 		return TRUE
 	if(M != user)
 		return TRUE
+	if(flags & INV_OP_IGNORE_DELAY)
+		return TRUE
 	. = FALSE
-	INVOKE_ASYNC(user, /mob/living/carbon/human/proc/escape_straight_jacket)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, escape_straight_jacket))
 
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
 		user.drop_all_held_items()
-		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
+		user.drop_item_to_ground(user.item_by_slot_id(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
@@ -332,6 +336,14 @@
 	name = "kamishimo"
 	desc = "Traditional Japanese menswear."
 	icon_state = "kamishimo"
+
+/obj/item/clothing/suit/storage/aureate
+	name = "aureate kimono"
+	desc = "An embellished spin on an ancient, traditional garb. It comes with various insignias."
+	icon = 'icons/clothing/suit/coats/aureate_kimono.dmi'
+	icon_state = "aureate_kimono"
+	body_cover_flags = UPPER_TORSO|ARM_RIGHT|LOWER_TORSO
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/furcoat
 	name = "furcoat"
@@ -518,7 +530,7 @@
 	icon_state = "leathercoat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/browncoat
@@ -714,7 +726,7 @@
 	icon_state = "pufferjacket"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chainmail", SLOT_ID_LEFT_HAND = "chainmail")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	inv_hide_flags = HIDEHOLSTER
 
@@ -724,7 +736,7 @@
 	icon_state = "puffervest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chainmail", SLOT_ID_LEFT_HAND = "chainmail")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/suit/storage/miljacket
 	name = "military jacket"
@@ -790,7 +802,7 @@
 	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	cold_protection = UPPER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|ARMS
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
 
@@ -801,7 +813,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	cold_protection = UPPER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|ARMS
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
 
@@ -902,7 +914,7 @@
 	icon_state = "grey_hoodie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_grey", SLOT_ID_LEFT_HAND = "suit_grey")
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/hoodie/black
@@ -961,7 +973,7 @@
 
 /obj/item/clothing/suit/storage/toggle/hoodie/nt
 	name = "NT hoodie"
-	desc = "A warm, blue sweatshirt.  It proudly bears the silver NanoTrasen insignia lettering on the back.  The edges are trimmed with silver."
+	desc = "A warm, blue sweatshirt.  It proudly bears the silver Nanotrasen insignia lettering on the back.  The edges are trimmed with silver."
 	icon_state = "nt_hoodie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_blue", SLOT_ID_LEFT_HAND = "suit_blue")
 
@@ -1099,7 +1111,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/roll_sleeves()
 	set name = "Roll Sleeves"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living))
 		return
@@ -1118,7 +1130,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/tuck()
 	set name = "Toggle Shirt Tucking"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)||usr.stat)
 		return
@@ -1133,7 +1145,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/button()
 	set name = "Toggle Shirt Buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)||usr.stat)
 		return
@@ -1191,7 +1203,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	allowed = list (/obj/item/gun/ballistic/sec/flash, /obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 
@@ -1291,7 +1303,7 @@
 /*
 /obj/item/clothing/suit/storage/toggle/operations_coat/verb/toggle()
 	set name = "Toggle coat buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!usr.canmove || usr.stat || usr.restrained())
@@ -1375,7 +1387,7 @@
 	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. This appears less sturdy than the authentic article."
 	icon_state = "samurai_colorable"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 
@@ -1466,7 +1478,7 @@
 
 /obj/item/clothing/suit/storage/toggle/varsity/worn
 	name = "well-worn varsity jacket"
-	desc = "A worn varsity jacket. The NanoTrasen corporate logo on the back is outdated, suggesting the age of this coat."
+	desc = "A worn varsity jacket. The Nanotrasen corporate logo on the back is outdated, suggesting the age of this coat."
 	icon_state = "varsity_worn"
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 
@@ -1477,7 +1489,7 @@
 
 /obj/item/clothing/suit/storage/pullover/nt
 	name = "pullover hoodie (NT)"
-	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today! This one is dyed in NT colors and has the trademark NanoTrasen logo!"
+	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today! This one is dyed in NT colors and has the trademark Nanotrasen logo!"
 	icon_state = "hoodie_pullover_NT"
 
 /obj/item/clothing/suit/storage/umbral
@@ -1490,34 +1502,47 @@
 	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
 	icon_state = "mekkyaku"
 
-/obj/item/clothing/suit/cropped_hoodie
+/obj/item/clothing/suit/storage/cropped_hoodie
 	name = "cropped hoodie"
 	desc = "This style of hoodie is sometimes worn by those who cannot fit, or choose not to hide their delectable bellies under the full, soft confines of a hoodie. The hood is cosmetic, and non-functional."
 	icon = 'icons/clothing/suit//misc/cropped.dmi'
 	icon_state = "cropped_hoodie"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
-/obj/item/clothing/suit/cropped_hoodie/croppier
+/obj/item/clothing/suit/storage/cropped_hoodie/croppier
 	name = "high cropped hoodie"
 	desc = "This style of hoodie is worn by those that wish to display ample amounts of midriff, or never threw out their childhood apparel. The hood is cosmetic, and non-functional."
 	icon_state = "croppier_hoodie"
 
-/obj/item/clothing/suit/cropped_hoodie/croppierer
+/obj/item/clothing/suit/storage/cropped_hoodie/croppierer
 	name = "very high cropped hoodie"
 	desc = "This style of hoodie is worn by those that wish to display ample amounts of underboob, and love the breeze. Comes with a free 'functionally_nude' sticker. The hood is cosmetic, and non-functional."
 	icon_state = "highcrop_hoodie"
 
-/obj/item/clothing/suit/cropped_hoodie/croppiest
+/obj/item/clothing/suit/storage/cropped_hoodie/croppiest
 	name = "super cropped hoodie"
 	desc = "This style of hoodie is worn by those that have little respect for the concept of a hoodie. Often seen in Skrellian nightclubs and your daughter's wardrdobe. The hood is cosmetic, and non-functional."
 	icon_state = "cropped_hoodie_super"
+
+/obj/item/clothing/suit/cropped_sweater
+	name = "cropped sweater"
+	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing."
+	icon = 'icons/clothing/suit//misc/cropped.dmi'
+	icon_state = "sweater_cropped_m"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/cropped_sweater/female
+	name = "cropped sweater female"
+	desc = "A comfy, warm sweater that has been slashed at the midriff, making it hardly warm or comfy, but quite rousing. Comes with extra chest space."
+	icon_state = "sweater_cropped_f"
+
 
 /obj/item/clothing/suit/storage/utility_fur_coat
 	name = "Utility Fur Coat"
 	desc = "A form fitting utilitarion coat with straps around the shoulders and holding a sash around the waist. The collar is lined with fur to help stay warm."
 	icon_state = "fur_utility"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
@@ -1555,7 +1580,7 @@
 	icon_state = "runner_jacket"
 	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
@@ -1567,13 +1592,13 @@
 		open = 0
 		icon_state = "[icon_state]_closed"
 		inv_hide_flags = HIDETIE|HIDEHOLSTER
-		cold_protection = HEAD|UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+		cold_protection_cover = HEAD|UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 		to_chat(usr, "You close the coat and activate the coils.")
 	else if(open == 0)
 		open = 1
 		icon_state = initial(icon_state)
 		inv_hide_flags = HIDEHOLSTER
-		cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+		cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 		to_chat(usr, "You open the coat and deactivate the coils.")
 	else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
 		to_chat(usr, "You attempt to zip-up the zipper on your [src], before promptly realising how silly you are.")

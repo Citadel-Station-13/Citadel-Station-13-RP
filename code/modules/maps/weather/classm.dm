@@ -1,14 +1,12 @@
 /datum/atmosphere/planet/classm
-	base_gases = list(
-	/datum/gas/oxygen = 0.22,
-	/datum/gas/nitrogen = 0.78
+	base = list(
+		/datum/gas/oxygen = 0.22,
+		/datum/gas/nitrogen = 0.78,
 	)
-	base_target_pressure = 110.1
-	minimum_pressure = 110.1
-	maximum_pressure = 110.1
-	minimum_temp = 293.3
-	maximum_temp = 307.3
-
+	pressure_low = 110.1
+	pressure_high = 110.1
+	temperature_low = 293.3
+	temperature_high = 307.3
 
 /datum/time/classm
 	seconds_in_day = 10 HOURS

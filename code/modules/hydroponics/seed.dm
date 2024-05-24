@@ -417,12 +417,12 @@
 
 	if(prob(5))
 		consume_gasses = list()
-		var/gas = pick(/datum/gas/oxygen,/datum/gas/nitrogen,/datum/gas/phoron,/datum/gas/carbon_dioxide)
+		var/gas = pick(GAS_ID_OXYGEN,GAS_ID_NITROGEN,GAS_ID_PHORON,GAS_ID_CARBON_DIOXIDE)
 		consume_gasses[gas] = rand(3,9)
 
 	if(prob(5))
 		exude_gasses = list()
-		var/gas = pick(/datum/gas/oxygen,/datum/gas/nitrogen,/datum/gas/phoron,/datum/gas/carbon_dioxide)
+		var/gas = pick(GAS_ID_OXYGEN,GAS_ID_NITROGEN,GAS_ID_PHORON,GAS_ID_CARBON_DIOXIDE)
 		exude_gasses[gas] = rand(3,9)
 
 	chems = list()

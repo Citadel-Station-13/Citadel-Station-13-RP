@@ -192,7 +192,7 @@
 
 /datum/poster/nanotrasen/nt_6
 	icon_state = "ntposter06"
-	name = "NanoTrasen"
+	name = "Nanotrasen"
 	desc = "This poster showcases an NT emblem. There is writing in the ring around the inner points, probably some sort of slogan no one bothers to memorize."
 
 /* Replace this eventually?

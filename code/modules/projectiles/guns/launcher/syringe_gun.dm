@@ -4,11 +4,11 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "syringe-cartridge"
 	var/icon_flight = "syringe-cartridge-flight" //so it doesn't look so weird when shot
-	materials = list(MAT_STEEL = 125, MAT_GLASS = 375)
+	materials_base = list(MAT_STEEL = 125, MAT_GLASS = 375)
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throw_force = 3
 	damage_force = 3
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/item/syringe_cartridge/update_icon()
@@ -69,8 +69,8 @@
 	desc = "A spring loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
 	icon_state = "syringegun"
 	item_state = "syringegun"
-	w_class = ITEMSIZE_NORMAL
-	materials = list(MAT_STEEL = 2000)
+	w_class = WEIGHT_CLASS_NORMAL
+	materials_base = list(MAT_STEEL = 2000)
 	damage_force = 7
 	slot_flags = SLOT_BELT
 

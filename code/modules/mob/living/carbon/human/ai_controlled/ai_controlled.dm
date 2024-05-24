@@ -81,10 +81,10 @@
 		equip_to_slot_or_del(new to_wear_back(src), SLOT_ID_BACK)
 
 	if(to_wear_l_hand)
-		equip_to_slot_or_del(new to_wear_l_hand(src), /datum/inventory_slot_meta/abstract/hand/left)
+		equip_to_slot_or_del(new to_wear_l_hand(src), /datum/inventory_slot/abstract/hand/left)
 
 	if(to_wear_r_hand)
-		equip_to_slot_or_del(new to_wear_r_hand(src), /datum/inventory_slot_meta/abstract/hand/right)
+		equip_to_slot_or_del(new to_wear_r_hand(src), /datum/inventory_slot/abstract/hand/right)
 
 	if(to_wear_id_type)
 		var/obj/item/card/id/W = new to_wear_id_type(src)

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * # Map System
  *
@@ -64,7 +67,7 @@
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
 	var/datum/map/station/next_map
-	var/datum/map/station/default = keyed_maps[keyed_maps[1]]
+	var/datum/map/station/default = get_default_map()
 	if(isnull(default))
 		stack_trace("no default map; world init is likely going to explode.")
 #ifdef FORCE_MAP
@@ -83,7 +86,7 @@
 	var/raw = file2text(reading)
 	subsystem_log("read raw next map [raw]")
 	var/list/json = safe_json_decode(raw)
-	var/path = json["type"]
+	var/path = text2path(json["type"])
 	var/id = json["id"]
 	var/modified = json["modified"]
 	var/list/data = json["data"]
@@ -129,7 +132,7 @@
 	for(var/obj/map_helper/D in map_initialization_hooked)
 		if(QDELETED(D))
 			continue
-		D.map_initializations(loaded_bounds)
+		D.map_initializations(arglist(map_initialization_hooked[D]))
 	map_initialization_hooked = null
 	// invoke generation
 	for(var/datum/callback/cb as anything in generation_callbacks)
@@ -144,7 +147,12 @@
 	// invoke global finalize
 	for(var/datum/map/map as anything in actually_loaded)
 		map.on_loaded_finalize()
-	// todo: rebuild?
+	// rebuild multiz
+	// this is just for visuals
+	var/list/indices_to_rebuild = list()
+	for(var/datum/map_level/level as anything in loaded_levels)
+		indices_to_rebuild += level.z_index
+	rebuild_level_multiz(indices_to_rebuild, TRUE, TRUE)
 
 /datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/bounds_collect)
 	PRIVATE_PROC(TRUE)
@@ -168,6 +176,11 @@
 	this_batch += instance
 
 	instance.on_loaded_immediate()
+
+	// rebuild multiz
+	// this is for the lookups, which must be done immediately, as generation/hooks might require it.
+	rebuild_verticality()
+	rebuild_transitions()
 
 	// todo: legacy
 	for(var/path in instance.legacy_assert_shuttle_datums)
@@ -224,6 +237,18 @@
 	// load
 	load_map(instance)
 	return TRUE
+
+/datum/controller/subsystem/mapping/proc/get_default_map()
+	var/list/datum/map/station/potential = list()
+	for(var/id in keyed_maps)
+		var/datum/map/station/checking = keyed_maps[id]
+		if(!istype(checking))
+			// not a station map
+			continue
+		if(!checking.allow_random_draw)
+			continue
+		potential += checking
+	return SAFEPICK(potential)
 
 // todo: admin subsystems panel
 // admin tooling for map swapping below

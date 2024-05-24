@@ -606,6 +606,7 @@ const ResearchConsoleConstructor = (props, context) => {
           {queue.length && queue.map(item => {
             if (item.index === 1) {
               return (
+              // eslint-disable-next-line react/jsx-key
                 <LabeledList.Item label={item.name} labelColor="bad">
                   {!busy ? (
                     <Box>

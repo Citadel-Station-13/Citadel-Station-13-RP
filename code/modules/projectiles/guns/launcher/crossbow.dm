@@ -9,7 +9,7 @@
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 	throw_force = 8
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 0
 
@@ -22,7 +22,7 @@
 	sharp = 1
 	edge = 0
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "metal-rod"
 	item_state = "bolt"
@@ -271,7 +271,7 @@
 			else
 				to_chat(user, "<span class='notice'>You need at least five segments of cable coil to complete this task.</span>")
 			return
-	else if(istype(W,/obj/item/stack/material) && W.get_material_name() == "plastic")
+	else if(W.is_material_stack_of(/datum/material/plastic))
 		if(buildstate == 3)
 			var/obj/item/stack/material/P = W
 			if(P.use(3))

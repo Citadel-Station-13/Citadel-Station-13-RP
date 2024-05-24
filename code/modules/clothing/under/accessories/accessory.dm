@@ -6,7 +6,7 @@
 	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
 	appearance_flags = RESET_COLOR	// Stops accessory_host's color from being multiplied onto the accessory
 	slot_flags = SLOT_TIE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	accessory_render_legacy = TRUE
 	accessory_render_specific = FALSE
 	var/slot = ACCESSORY_SLOT_DECOR
@@ -20,6 +20,7 @@
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/ties.dmi')
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	material_factoring = 0
 
 /obj/item/clothing/accessory/Destroy()
 	accessory_host?.accessories -= src
@@ -405,80 +406,29 @@
 	name = "neck gaiter (gray)"
 	icon_state = "gaiter_gray"
 
-//bracelets
+/obj/item/clothing/accessory/gaiter/green
+	name = "neck gaiter (green)"
+	icon_state = "gaiter_green"
 
-/obj/item/clothing/accessory/bracelet
-	name = "bracelet"
-	desc = "A simple silver bracelet with a clasp."
-	icon = 'icons/obj/clothing/ties.dmi'
-	icon_state = "bracelet"
-	w_class = ITEMSIZE_TINY
-	slot_flags = SLOT_TIE
-	slot = ACCESSORY_SLOT_DECOR
+/obj/item/clothing/accessory/gaiter/blue
+	name = "neck gaiter (blue)"
+	icon_state = "gaiter_blue"
 
-/obj/item/clothing/accessory/bracelet/friendship
-	name = "friendship bracelet"
-	desc = "A beautiful friendship bracelet in all the colors of the rainbow."
-	icon_state = "friendbracelet"
+/obj/item/clothing/accessory/gaiter/purple
+	name = "neck gaiter (purple)"
+	icon_state = "gaiter_purple"
 
-/obj/item/clothing/accessory/bracelet/friendship/verb/dedicate_bracelet()
-	set name = "Dedicate Bracelet"
-	set category = "Object"
-	set desc = "Dedicate your friendship bracelet to a special someone."
-	var/mob/M = usr
-	if(!M.mind)
-		return 0
+/obj/item/clothing/accessory/gaiter/orange
+	name = "neck gaiter (orange)"
+	icon_state = "gaiter_orange"
 
-	var/input = sanitizeSafe(input("Who do you want to dedicate the bracelet to?", ,""), MAX_NAME_LEN)
+/obj/item/clothing/accessory/gaiter/charcoal
+	name = "neck gaiter (charcoal)"
+	icon_state = "gaiter_charcoal"
 
-	if(src && input && !M.stat && in_range(M,src))
-		desc = "A beautiful friendship bracelet in all the colors of the rainbow. It's dedicated to [input]."
-		to_chat(M, "You dedicate the bracelet to [input], remembering the times you've had together.")
-		return 1
-
-/obj/item/clothing/accessory/bracelet/material
-	icon_state = "materialbracelet"
-
-/obj/item/clothing/accessory/bracelet/material/Initialize(mapload, new_material)
-	. = ..(mapload)
-	if(!new_material)
-		new_material = MAT_STEEL
-	material = get_material_by_name(new_material)
-	if(!istype(material))
-		return INITIALIZE_HINT_QDEL
-	name = "[material.display_name] bracelet"
-	desc = "A bracelet made from [material.display_name]."
-	color = material.icon_colour
-
-/obj/item/clothing/accessory/bracelet/material/get_material()
-	return material
-
-/obj/item/clothing/accessory/bracelet/material/wood/Initialize(mapload, material_key)
-	return ..(mapload, "wood")
-
-/obj/item/clothing/accessory/bracelet/material/plastic/Initialize(mapload, material_key)
-	return ..(mapload, "plastic")
-
-/obj/item/clothing/accessory/bracelet/material/iron/Initialize(mapload, material_key)
-	return ..(mapload, "iron")
-
-/obj/item/clothing/accessory/bracelet/material/steel/Initialize(mapload, material_key)
-	return ..(mapload, "steel")
-
-/obj/item/clothing/accessory/bracelet/material/silver/Initialize(mapload, material_key)
-	return ..(mapload, "silver")
-
-/obj/item/clothing/accessory/bracelet/material/gold/Initialize(mapload, material_key)
-	return ..(mapload, "gold")
-
-/obj/item/clothing/accessory/bracelet/material/platinum/Initialize(mapload, material_key)
-	return ..(mapload, "platinum")
-
-/obj/item/clothing/accessory/bracelet/material/phoron/Initialize(mapload, material_key)
-	return ..(mapload, "phoron")
-
-/obj/item/clothing/accessory/bracelet/material/glass/Initialize(mapload, material_key)
-	return ..(mapload, "glass")
+/obj/item/clothing/accessory/gaiter/snow
+	name = "neck gaiter (white)"
+	icon_state = "gaiter_snow"
 
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"
@@ -641,7 +591,7 @@
 
 /obj/item/clothing/accessory/collar/bell/verb/jinglebell()
 	set name = "Jingle Bell"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -649,7 +599,7 @@
 	if(!jingled)
 		usr.audible_message("[usr] jingles the [src]'s bell.")
 		jingled = 1
-		addtimer(CALLBACK(src, .proc/jingledreset), 50)
+		addtimer(CALLBACK(src, PROC_REF(jingledreset)), 50)
 	return
 
 /obj/item/clothing/accessory/collar/bell/proc/jingledreset()
@@ -790,7 +740,7 @@
 	icon_state = "collar_holo"
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
-	materials = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 
 /obj/item/clothing/accessory/collar/silvercolor
 	name = "Dyeable Silver tag collar"
@@ -934,9 +884,17 @@
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
 
+// Gestalt uniform
+
+/obj/item/clothing/accessory/sleekpatch
+	name = "sleek uniform patch"
+	desc = "A somewhat old-fashioned embroidered patch of Nanotrasen's logo."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "sleekpatch"
 
 //misc
 /obj/item/clothing/accessory/civ_exos_mob
 	name = "medical exoframe"
-	desc = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance."
+	desc = "A cheap medical exoframe mass-produced by Nanotrasen and provided to employees who cannot function in gravity without assistance."
 	icon_state = "civ_exos_mob"

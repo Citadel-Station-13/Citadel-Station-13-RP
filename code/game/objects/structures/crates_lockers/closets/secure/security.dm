@@ -171,6 +171,8 @@
 		/obj/item/storage/belt/security,
 		/obj/item/radio/headset/heads/hos,
 		/obj/item/radio/headset/heads/hos/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/shield/riot/tele,
 		/obj/item/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
@@ -185,7 +187,8 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/storage/box/flashbangs,
 		/obj/item/barrier_tape_roll/police,
-		/obj/item/megaphone)
+		/obj/item/megaphone,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
@@ -197,6 +200,8 @@
 		/obj/item/disk/nifsoft/blueshield,
 		/obj/item/radio/headset/heads/blueshield,
 		/obj/item/radio/headset/heads/blueshield/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/medhud,
 		/obj/item/clothing/head/beret/sec/corporate/blueshield,
 		/obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield,
@@ -246,6 +251,8 @@
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/clothing/accessory/badge/holo/warden,
@@ -264,7 +271,8 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/gas/half,
-		/obj/item/gun/ballistic/shotgun/pump/combat/warden)
+		/obj/item/gun/ballistic/shotgun/pump/combat/warden,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/warden/Initialize(mapload)
 	if(prob(50))
@@ -281,9 +289,12 @@
 	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
+		/obj/item/modular_computer/tablet/preset/custom_loadout/standard/security,
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/storage/belt/security,
 		/obj/item/flash,
 		/obj/item/reagent_containers/spray/pepper,
@@ -293,16 +304,20 @@
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/hailer,
 		/obj/item/flashlight/glowstick,
+		/obj/item/clothing/suit/armor/vest/alt,
 		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/head/helmet,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
 		/obj/item/gun/energy/secutor,
 		/obj/item/cell/device/weapon,
 		/obj/item/gps/security,
+		/obj/item/holowarrant,
 		/obj/item/clothing/under/bodysuit/bodysuitsec,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/security/Initialize(mapload)
 	if(prob(50))
@@ -352,6 +367,7 @@
 		/obj/item/storage/box/evidence,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/suit/storage/vest/,
 		/obj/item/clothing/suit/storage/vest/detective,
 		/obj/item/barrier_tape_roll/police,
@@ -361,6 +377,8 @@
 		/obj/item/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/storage/briefcase/crimekit,
 		/obj/item/tape_recorder,
+		/obj/item/camera,
+		/obj/item/camera_film = 2,
 		/obj/item/storage/bag/detective,
 		/obj/item/cassette_tape/random = 3)
 
@@ -416,7 +434,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 //Custom NT Security Lockers, Only found at central command
 /obj/structure/closet/secure_closet/nanotrasen_security
-	name = "NanoTrasen security officer's locker"
+	name = "Nanotrasen security officer's locker"
 	icon = 'icons/obj/closet.dmi'
 	closet_appearance = /singleton/closet_appearance/secure_closet/sol
 	req_access = list(ACCESS_SECURITY_BRIG)
@@ -429,6 +447,8 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/storage/belt/security,
 		/obj/item/flash,
 		/obj/item/reagent_containers/spray/pepper,
@@ -459,7 +479,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_commander
-	name = "NanoTrasen commander's locker"
+	name = "Nanotrasen commander's locker"
 	icon = 'icons/obj/closet.dmi'
 	closet_appearance = /singleton/closet_appearance/secure_closet/sol/two/dark
 	req_access = list(ACCESS_SECURITY_BRIG)
@@ -475,6 +495,8 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 		/obj/item/cartridge/hos,
 		/obj/item/radio/headset/heads/hos,
 		/obj/item/radio/headset/heads/hos/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/shield/riot,
@@ -508,7 +530,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_warden
-	name = "NanoTrasen warden's locker"
+	name = "Nanotrasen warden's locker"
 	icon = 'icons/obj/closet.dmi'
 	closet_appearance = /singleton/closet_appearance/secure_closet/sol/two
 	req_access = list(ACCESS_SECURITY_BRIG)
@@ -522,6 +544,8 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/clothing/accessory/badge/holo/warden,

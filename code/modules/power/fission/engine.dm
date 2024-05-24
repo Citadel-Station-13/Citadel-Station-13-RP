@@ -9,13 +9,15 @@
 	anchored = 0
 	name = "fission core"
 	icon_state = "engine"
+
+	var/health = 200
+	var/max_health = 200
+
 	var/announce = 1
 	var/decay_archived = 0
 	var/exploded = 0
 	var/envefficiency = 0.01
 	var/gasefficiency = 0.5
-	var/health = 200
-	var/max_health = 200
 	var/warning_delay = 20
 	var/meltwarned = 0
 	var/lastwarning = 0
@@ -236,7 +238,7 @@
 			to_chat(user, "<span class='notice'>There's nothing left to remove.</span>")
 			return
 		for(var/obj/item/fuelrod/rod in rods)
-			if(rod.health == 0 || rod.life == 0)
+			if(rod.integrity == 0 || rod.life == 0)
 				to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
 				if(do_after(user, 40))
 					eject_rod(rod)
@@ -544,14 +546,14 @@ I'm commenting this out until I have time to make this less stupid.
 				my_mob.maxbodytemp = env.temperature * 1.2
 
 				var/list/gaslist = env.gas
-				my_mob.min_oxy = gaslist[/datum/gas/oxygen] * 0.8
-				my_mob.min_tox = gaslist[/datum/gas/phoron] * 0.8
-				my_mob.min_n2 = gaslist[/datum/gas/nitrogen] * 0.8
-				my_mob.min_co2 = gaslist[/datum/gas/carbon_dioxide] * 0.8
-				my_mob.max_oxy = gaslist[/datum/gas/oxygen] * 1.2
-				my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
-				my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
-				my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
+				my_mob.min_oxy = gaslist[GAS_ID_OXYGEN] * 0.8
+				my_mob.min_tox = gaslist[GAS_ID_PHORON] * 0.8
+				my_mob.min_n2 = gaslist[GAS_ID_NITROGEN] * 0.8
+				my_mob.min_co2 = gaslist[GAS_ID_CARBON_DIOXIDE] * 0.8
+				my_mob.max_oxy = gaslist[GAS_ID_OXYGEN] * 1.2
+				my_mob.max_tox = gaslist[GAS_ID_PHORON] * 1.2
+				my_mob.max_n2 = gaslist[GAS_ID_NITROGEN] * 1.2
+				my_mob.max_co2 = gaslist[GAS_ID_CARBON_DIOXIDE] * 1.2
 		return
 	else
 		STOP_PROCESSING(SSobj, src)

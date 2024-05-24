@@ -34,8 +34,8 @@
 	movement_cooldown = 2
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15		//Tac Knife damage
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15		//Tac Knife damage
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 
@@ -80,8 +80,8 @@
 	response_harm = "hits"
 
 
-	melee_damage_lower = 25		//Macehte damage
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 25		//Macehte damage
+	legacy_melee_damage_upper = 25
 
 	attacktext = list("slashed", "chopped", "gouged", "ripped", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -115,8 +115,8 @@
 	icon_living = "piratemelee-las"
 	icon_dead = "piratemelee_dead"
 
-	melee_damage_lower = 30		//E-Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//E-Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 
 	attack_sound = 'sound/weapons/blade1.ogg'
@@ -202,8 +202,8 @@
 	response_harm = "hits"
 
 
-	melee_damage_lower = 25		//Macehte damage
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 25		//Macehte damage
+	legacy_melee_damage_upper = 25
 
 	attacktext = list("slashed", "chopped", "gouged", "ripped", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -281,7 +281,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
 
 	corpse = /obj/spawner/corpse/pirate/ranged_blunderbuss
 
@@ -344,8 +344,8 @@
 	icon_living = "mate"
 	icon_dead = "piratemelee_dead"
 
-	melee_damage_lower = 30		//E-Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//E-Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 
 	attack_sound = 'sound/weapons/blade1.ogg'
@@ -371,8 +371,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 
 	projectiletype = /obj/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/weaponsounds_lasermid.ogg'
@@ -413,13 +413,15 @@
 	reload_max = 4
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	base_attack_cooldown = 5
+
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
@@ -441,8 +443,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/rifle/a762
@@ -643,8 +645,8 @@
 	icon_living = "mate"
 	icon_dead = "piratemelee_dead"
 
-	melee_damage_lower = 30		//E-Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//E-Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 
 	attack_sound = 'sound/weapons/blade1.ogg'
@@ -669,8 +671,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 
 	projectiletype = /obj/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/weaponsounds_lasermid.ogg'
@@ -707,8 +709,8 @@
 	reload_max = 4
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
@@ -733,8 +735,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/rifle/a762

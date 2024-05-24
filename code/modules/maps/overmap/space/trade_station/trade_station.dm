@@ -9,17 +9,22 @@
 	color = "#8F6E4C"
 
 	initial_generic_waypoints = list(
-		"nebula_pad_1",
-		"nebula_pad_2",
-		"nebula_space_SW",
+		"nebula_pad_1a",
+		"nebula_pad_1b",
+		"nebula_pad_2a",
+		"nebula_pad_2b",
 		"nebula_pad_3a",
 		"nebula_pad_3b",
 		"nebula_pad_3c",
+		"nebula_pad_3d",
 		"nebula_pad_4a",
 		"nebula_pad_4b",
 		"nebula_pad_4c",
-		"nebula_pad_5",
-		"nebula_pad_6",
+		"nebula_pad_4d",
+		"nebula_pad_5a",
+		"nebula_pad_5b",
+		"nebula_pad_6a",
+		"nebula_pad_6b",
 		"nebula_space_SE",
 		"nebula_space_S",
 		"nebula_space_SW"
@@ -59,9 +64,6 @@
 /obj/machinery/cryopod/robot/trade
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
-
-/obj/landmark/map_data/trade
-    height = 1
 
 // Their shuttle
 

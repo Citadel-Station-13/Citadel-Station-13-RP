@@ -2,7 +2,7 @@
 	name = "Belter"
 	location = FERRY_LOCATION_STATION
 	warmup_time = 5
-	move_time = 30
+	move_time = 15
 	shuttle_area = /area/shuttle/belter
 	landmark_station = "belter_station"
 	landmark_offsite = "belter_zone1"

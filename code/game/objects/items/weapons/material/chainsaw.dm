@@ -6,9 +6,9 @@
 	item_state = "chainsaw0"
 	var/on = 0
 	var/max_fuel = 100
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	var/active_force = 55
 	var/inactive_force = 10
@@ -75,16 +75,6 @@
 	if(target && on)
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)
-		if(istype(target,/obj/structure/window))
-			var/obj/structure/window/W = target
-			W.shatter()
-		else if(istype(target,/obj/structure/grille))
-			new /obj/structure/grille/broken(target.loc)
-			new /obj/item/stack/rods(target.loc)
-			qdel(target)
-		else if(istype(target,/obj/effect/plant))
-			var/obj/effect/plant/P = target
-			qdel(P) //Plant isn't surviving that. At all
 	if (istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,target) <= 1)
 		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
 		if(do_after(usr, 15))
@@ -134,11 +124,11 @@
 	slot_flags = SLOT_BELT
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-	hitsound = 'sound/weapons/chainsaw_attack.ogg'
+	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30
 
 /obj/item/chainsaw/chainsword/turnOn(mob/user as mob)

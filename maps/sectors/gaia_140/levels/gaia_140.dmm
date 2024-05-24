@@ -227,8 +227,8 @@
 /obj/item/material/minihoe,
 /obj/item/shovel/spade,
 /obj/item/shovel/spade,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
@@ -374,7 +374,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside)
 "iO" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -628,7 +628,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "gaia_1";
-	layer = 3.3;
 	name = "Gaia Dock Controller";
 	pixel_y = 30
 	},
@@ -730,7 +729,7 @@
 /turf/simulated/floor/outdoors/dirt/classm,
 /area/class_m/outside)
 "qX" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/class_m/inside)
 "qY" = (
@@ -741,7 +740,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "gaia_2";
-	layer = 3.3;
 	name = "Gaia Dock Controller";
 	pixel_y = 30
 	},
@@ -855,7 +853,7 @@
 /turf/simulated/floor/outdoors/dirt/classm,
 /area/class_m/outside)
 "sL" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "sW" = (
@@ -1007,7 +1005,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside)
 "vX" = (
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal,
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "vY" = (
@@ -1265,8 +1263,9 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "By" = (
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal{
+	amount = 2
+	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "BE" = (
@@ -1290,10 +1289,9 @@
 /turf/simulated/floor/outdoors/beach/sand/classm,
 /area/class_m/outside)
 "Ca" = (
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal{
+	amount = 4
+	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "Ce" = (
@@ -1468,8 +1466,8 @@
 /obj/item/material/minihoe,
 /obj/item/shovel/spade,
 /obj/item/shovel/spade,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
@@ -1914,9 +1912,9 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/class_m/outside)
 "QI" = (
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal{
+	amount = 3
+	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "QL" = (
@@ -2164,7 +2162,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "Wj" = (
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal,
 /turf/simulated/floor/outdoors/dirt/classm,
 /area/class_m/outside)
 "Wk" = (

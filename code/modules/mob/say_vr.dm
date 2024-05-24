@@ -4,7 +4,7 @@
 
 /mob/verb/me_verb_subtle(message as message) //This would normally go in say.dm
 	set name = "Subtle"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Emote to nearby people (and your pred/prey)"
 
 	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
@@ -48,7 +48,7 @@
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
 			if(istype(vismob, /mob/observer))
-				if(M.client && !M.client.is_preference_enabled(/datum/client_preference/subtle_see))
+				if(M.client && !M.client.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_subtle))
 					continue
 			spawn(0)
 				M.show_message(message, SAYCODE_TYPE_ALWAYS)
@@ -58,7 +58,7 @@
 			spawn(0)
 				O.see_emote(src, message, 2)
 
-		var/list/other_viewers = get_hearers_in_view(source = src)
+		var/list/other_viewers = get_hearers_in_view(3, source = src)
 		for(var/mob/M in other_viewers - vis_mobs)
 			M.show_message(SPAN_SMALL("<i>[src] does something [pick("subtly", "discreetly", "hidden", "obscured")].</i>"), SAYCODE_TYPE_VISIBLE)
 
@@ -70,7 +70,7 @@
 
 /mob/verb/subtler_anti_ghost(message as message) //This would normally go in say.dm
 	set name = "Subtler Anti Ghost"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Emote to nearby people (and your pred/prey), but ghosts can't see it."
 
 	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
@@ -109,14 +109,18 @@
 			var/mob/M = vismob
 			if(istype(vismob, /mob/observer))
 				continue
+			if(M.stat == DEAD)
+				continue // get mobs and objs in view fast is shitty; say refactor will deal with that
 			M.show_message(message, SAYCODE_TYPE_ALWAYS)
 
 		for(var/visobj in vis_objs)
 			var/obj/O = visobj
 			O.see_emote(src, message, 2)
 
-		var/list/other_viewers = get_hearers_in_view(source = src)
-		for(var/mob/M in (other_viewers - vis_mobs) | GLOB.observer_list)
+		var/list/other_viewers = get_hearers_in_view(3, source = src)
+		for(var/mob/M in (other_viewers - vis_mobs))
+			if(istype(M, /mob/observer))
+				continue
 			M.show_message(SPAN_SMALL("<i>[src] does something [pick("subtly", "discreetly", "hidden", "obscured")].</i>"), SAYCODE_TYPE_VISIBLE)
 
 /////// END

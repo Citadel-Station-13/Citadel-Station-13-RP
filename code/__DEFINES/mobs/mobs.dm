@@ -1,4 +1,8 @@
+
+// todo: if i haven't bad touched something in here, i probably need to & will ~silicons
+
 // Bitflags defining which status effects could be or are inflicted on a mob.
+// todo: this is all terrible tbh
 #define STATUS_CAN_STUN      (1<<0) //! Can Stun()
 #define STATUS_CAN_KNOCKDOWN (1<<1) //! Can Knockdown()
 #define STATUS_CAN_ROOT      (1<<2) //! Can Root()
@@ -8,6 +12,7 @@
 
 #define STATUS_LEAPING       (1<<20) //! Is leaping (??? legacy)
 #define STATUS_HIDING        (1<<21) //! Is hiding  (??? legacy)
+// todo: this should be a trait with a mob_flags flag to go with it for quick access
 #define STATUS_GODMODE       (1<<22) //! Godmode    (??? legacy)
 #define STATUS_FAKEDEATH     (1<<23) //! In fakedeath - SLATED FOR REMOVAL, THIS SHOULD BE TRAIT
 
@@ -231,11 +236,6 @@
 #define SLIME_COMMAND_FACTION	2
 /// When befriended with a slime friendship agent.
 #define SLIME_COMMAND_FRIEND	3
-// Threshold for mobs being able to damage things like airlocks or reinforced glass windows.
-// If the damage is below this, nothing will happen besides a message saying that the attack was ineffective.
-// Generally, this was not a define but was commonly set to 10, however 10 may be too low now since simple_mobs now attack twice as fast,
-// at half damage compared to the old mob system, meaning mobs who could hurt structures may not be able to now, so now it is 5.
-#define STRUCTURE_MIN_DAMAGE_THRESHOLD 5
 
 // Clothing flags, organized in roughly top-bottom
 #define EXAMINE_SKIPHELMET			0x0001

@@ -31,6 +31,8 @@
 
 	var/hide_from_reports = FALSE
 
+	var/sensors
+
 	var/has_distress_beacon
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 
@@ -89,10 +91,11 @@
 		map_z = GetConnectedZlevels(z)
 	if(LAZYLEN(extra_z_levels))
 		for(var/thing in extra_z_levels)
+			var/datum/map_level/level
 			if(ispath(thing))
-				var/datum/map_level/level_path = thing
-				thing = initial(level_path.id)
-			var/datum/map_level/level = SSmapping.keyed_levels[thing]
+				level = SSmapping.typed_levels[thing]
+			else if(istext(thing))
+				level = SSmapping.keyed_levels[thing]
 			if(isnull(level))
 				STACK_TRACE("failed to find level [thing] during init")
 				continue
@@ -211,7 +214,7 @@
 	I.appearance_flags = KEEP_APART|RESET_TRANSFORM|RESET_COLOR
 	add_overlay(I)
 
-	addtimer(CALLBACK(src, .proc/distress_update), 5 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(distress_update)), 5 MINUTES)
 	return TRUE
 
 /obj/overmap/entity/visitable/proc/get_distress_info()

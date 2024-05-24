@@ -5,7 +5,7 @@
 	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
 	gauge_icon = null
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
@@ -35,13 +35,13 @@
 
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	stabilization_on = !( stabilization_on )
 	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
 /obj/item/tank/jetpack/verb/toggle()
 	set name = "Toggle Jetpack"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	on = !on
 	if(on)
@@ -67,7 +67,7 @@
 
 	var/datum/gas_mixture/G = air_contents.remove(num)
 
-	var/allgases = G.gas[/datum/gas/carbon_dioxide] + G.gas[/datum/gas/nitrogen] + G.gas[/datum/gas/oxygen] + G.gas[/datum/gas/phoron]
+	var/allgases = G.gas[GAS_ID_CARBON_DIOXIDE] + G.gas[GAS_ID_NITROGEN] + G.gas[GAS_ID_OXYGEN] + G.gas[GAS_ID_PHORON]
 	if(allgases >= 0.005)
 		return 1
 
@@ -85,7 +85,7 @@
 
 /obj/item/tank/jetpack/void/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(GAS_ID_OXYGEN, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/oxygen
 	name = "jetpack (oxygen)"
@@ -95,7 +95,7 @@
 
 /obj/item/tank/jetpack/oxygen/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(GAS_ID_OXYGEN, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/carbondioxide
 	name = "jetpack (carbon dioxide)"
@@ -106,7 +106,7 @@
 
 /obj/item/tank/jetpack/carbondioxide/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/gas/carbon_dioxide, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(GAS_ID_CARBON_DIOXIDE, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/hardsuit
 	name = "jetpack"
@@ -129,7 +129,7 @@
 
 	var/datum/gas_mixture/G = pressure_vessel.air_contents.remove(num)
 
-	var/allgases = G.gas[/datum/gas/carbon_dioxide] + G.gas[/datum/gas/nitrogen] + G.gas[/datum/gas/oxygen] + G.gas[/datum/gas/phoron]
+	var/allgases = G.gas[GAS_ID_CARBON_DIOXIDE] + G.gas[GAS_ID_NITROGEN] + G.gas[GAS_ID_OXYGEN] + G.gas[GAS_ID_PHORON]
 	if(allgases >= 0.005)
 		return 1
 	qdel(G)

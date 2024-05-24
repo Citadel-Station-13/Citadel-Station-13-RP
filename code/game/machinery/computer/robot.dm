@@ -121,7 +121,7 @@
 		ui = new(user, src, "RoboticsControlConsole",  name)
 		ui.open()
 
-/obj/machinery/computer/robotics/ui_data(mob/user)
+/obj/machinery/computer/robotics/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["auth"] = is_authenticated(user)
 	data["can_hack"] = can_hack_any(user)
@@ -150,7 +150,7 @@
 	data["show_detonate_all"] = (data["auth"] && length(data["cyborgs"]) > 0 && ishuman(user))
 	return data
 
-/obj/machinery/computer/robotics/ui_act(action, params)
+/obj/machinery/computer/robotics/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	. = FALSE

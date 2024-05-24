@@ -11,7 +11,7 @@
 	icon_state = "pai"
 	item_state = "electronic"
 
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_DATA = 2)
 	show_messages = 0
@@ -20,7 +20,7 @@
 	var/mob/living/silicon/infomorph/infomorph
 	var/current_emotion = 1
 
-	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
+	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 
 /obj/item/sleevecard/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))

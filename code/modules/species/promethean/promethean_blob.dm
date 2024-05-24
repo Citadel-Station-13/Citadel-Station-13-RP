@@ -6,14 +6,14 @@
 	color = null // Uses a special icon_state.
 	slime_color = "rainbow"
 	unity = TRUE
-	water_resist = 100 // Lets not kill the prommies
+	water_resist = 1 // Lets not kill the prommies
 	cores = 0
 	movement_cooldown = 3
 	//species_appearance_flags = RADIATION_GLOWS
 	shock_resist = 0 // Lets not be immune to zaps.
 	friendly = list("nuzzles", "glomps", "snuggles", "cuddles", "squishes") // lets be cute :3
-	melee_damage_upper = 0
-	melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
 	player_msg = "You're a little squisher! Your cuteness level has increased tenfold."
 	heat_damage_per_tick = 20 // Hot and cold are bad, but cold is AS bad for prommies as it is for slimes.
 	cold_damage_per_tick = 20
@@ -21,7 +21,7 @@
 	//glow_intensity = 0
 
 	var/mob/living/carbon/human/humanform
-	var/list/obj/item/previously_held
+	var/list/datum/weakref/previously_held
 
 	var/human_brute = 0
 	var/human_burn = 0
@@ -334,46 +334,35 @@
 		blob = stored_blob
 		blob.forceMove(creation_spot)
 
-	//Drop all our things
-	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear) //And whatever else we decide for balancing.
-	var/list/prev_held = list()
-	for(var/obj/item/I as anything in get_held_items())
-		if(I.w_class >= WEIGHT_CLASS_SMALL)
-			continue
-		things_to_not_drop += I
-		prev_held += I
-	var/obj/item/clothing/head/new_hat
+	if(isnull(blob.mob_radio) && istype(l_ear, /obj/item/radio))
+		blob.mob_radio = l_ear
+		if(!transfer_item_to_loc(l_ear, blob, INV_OP_FORCE))
+			blob.mob_radio = null
+	if(isnull(blob.mob_radio) && istype(r_ear, /obj/item/radio))
+		blob.mob_radio = r_ear
+		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE))
+			blob.mob_radio = null
+
 	var/has_hat = FALSE
-	things_to_drop -= things_to_not_drop //Crunch the lists
-	things_to_drop -= organs //Mah armbs
-	things_to_drop -= internal_organs //Mah sqeedily spooch
+	var/obj/item/clothing/head/new_hat
 
-	for(var/obj/item/clothing/head/H in things_to_drop)
-		if(H)
-			new_hat = H
-			has_hat = TRUE
-			temporarily_remove_from_inventory(H, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-			things_to_drop -= H
-			break
-
-	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_item_to_ground(I)
-
-	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
-		var/obj/item/clothing/uniform = w_uniform
-		if(LAZYLEN(uniform.accessories))
-			for(var/obj/item/clothing/accessory/A in uniform.accessories)
-				if(is_type_in_list(A, disallowed_promethean_accessories))
-					uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
+	for(var/obj/item/clothing/head/H in get_equipped_items())
+		new_hat = H
+		has_hat = TRUE
+		temporarily_remove_from_inventory(H, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+		break
 
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-	blob.previously_held = prev_held
+	var/list/datum/weakref/prev_held = new /list(length(held_items))
+	for(var/i in 1 to length(held_items))
+		var/obj/item/held = held_items[i]
+		if(isnull(held))
+			continue
+		prev_held[i] = WEAKREF(held)
 
 	//Put our owner in it (don't transfer var/mind)
-	blob.afflict_paralyze(20 * 2)
 	blob.transforming = TRUE
 	blob.ckey = ckey
 	blob.ooc_notes = ooc_notes
@@ -390,14 +379,14 @@
 		blob.handle_light()
 	if(has_hat)
 		blob.hat = new_hat
-		new_hat.forceMove(src)
+		new_hat.forceMove(blob)
 
 	blob.update_icon()
 	remove_verb(blob, /mob/living/proc/ventcrawl) // Absolutely not.
 	//remove_verb(blob, /mob/living/simple_mob/proc/set_name) // We already have a name.
 	temporary_form = blob
 	//Mail them to nullspace
-	moveToNullspace()
+	forceMove(blob)
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> squishes into their true form!")
@@ -441,7 +430,6 @@
 	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
-	afflict_paralyze(20 * 2)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
 	ckey = blob.ckey
@@ -474,8 +462,22 @@
 		B.owner = src
 
 	//vore_organs.Cut()
-	for(var/obj/item/I as anything in blob.previously_held)
-		put_in_hands_or_drop(I)
+
+	for(var/i in 1 to length(blob.previously_held))
+		var/datum/weakref/ref = blob.previously_held[i]
+		var/obj/item/resolved = ref?.resolve()
+		if(isnull(resolved))
+			continue
+		put_in_hand_or_drop(resolved, i)
+
+	if(!isnull(blob.mob_radio))
+		if(!equip_to_slots_if_possible(blob.mob_radio, list(
+			/datum/inventory_slot/inventory/ears/left,
+			/datum/inventory_slot/inventory/ears/right,
+		)))
+			blob.mob_radio.forceMove(reform_spot)
+		blob.mob_radio = null
+
 
 	Life(1, SSmobs.times_fired)
 
@@ -488,17 +490,39 @@
 	//Return ourselves in case someone wants it
 	return src
 
+/mob/living/simple_mob/slime/promethean/strip_menu_act(mob/user, action)
+	return humanform.strip_menu_act(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/strip_menu_options(mob/user)
+	return humanform.strip_menu_options(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/strip_interaction_prechecks(mob/user, autoclose, allow_loc)
+	allow_loc = TRUE
+	return humanform.strip_interaction_prechecks(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/open_strip_menu(mob/user)
+	return humanform.open_strip_menu(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/close_strip_menu(mob/user)
+	return humanform.close_strip_menu(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/request_strip_menu(mob/user)
+	return humanform.request_strip_menu(arglist(args))
+
+/mob/living/simple_mob/slime/promethean/render_strip_menu(mob/user)
+	return humanform.render_strip_menu(arglist(args))
+
 /mob/living/simple_mob/slime/promethean/examine(mob/user, dist)
 	. = ..()
 	if(hat)
 		. += "They are wearing \a [hat]."
 
 /mob/living/simple_mob/slime/promethean/say_understands(var/mob/other, var/datum/language/speaking = null)
-	if(speaking?.name == LANGUAGE_SOL_COMMON)	//Promethean and sign are both nonverbal, so won't work with the same trick as below, so let's check for them /Citadel change, since LANGUAGE_PROMETHEAN does not exist here, changing it to the race's defaul, Sol
+	if(speaking?.id == LANGUAGE_ID_PROMETHEAN) //Promethean and sign are both nonverbal, so won't work with the same trick as below, so let's check for them
 		return TRUE
-	else if(speaking?.name == LANGUAGE_SIGN)
+	else if(speaking?.id == LANGUAGE_ID_SIGN)
 		for(var/datum/language/L in humanform.languages)
-			if(L.name == LANGUAGE_SIGN)
+			if(L.id == LANGUAGE_ID_SIGN)
 				return TRUE
 	else if(humanform.say_understands(other, speaking))		//So they're speaking something other than promethean or sign, let's just ask our original mob if it understands
 		return TRUE

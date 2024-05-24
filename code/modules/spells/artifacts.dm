@@ -10,7 +10,7 @@
 	throw_force = 10
 	damtype = BURN
 	damage_force = 10
-	hitsound = 'sound/items/welder2.ogg'
+	attack_sound = 'sound/items/welder2.ogg'
 
 /obj/item/scrying/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
@@ -40,7 +40,7 @@
 	damage_force = 15
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	var/charges = 1
 	var/spawn_type = /obj/singularity/wizard
 	var/spawn_amt = 1
@@ -149,7 +149,7 @@
 		insaneinthemembrane.sanity = 0
 		for(var/lore in typesof(/datum/brain_trauma/severe))
 			C.gain_trauma(lore)
-		addtimer(CALLBACK(src, /obj/singularity/wizard.proc/deranged, C), 100)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/singularity/wizard, deranged), C), 100)
 
 /obj/singularity/wizard/proc/deranged(mob/living/carbon/C)
 	if(!C || C.stat == DEAD)

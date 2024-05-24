@@ -5,7 +5,7 @@
 	icon_state ="spellbook"
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/uses = 5
 	var/temp = null
 	var/max_uses = 5

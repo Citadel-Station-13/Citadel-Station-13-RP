@@ -1,4 +1,12 @@
 /**
+ * Linter check, do not call.
+ */
+/proc/lint__check_mob_login_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/mob/M
+	M.Login()
+
+/**
  * Run when a client is put in this mob or reconnets to byond and their client was on this mob
  *
  * Things it does:
@@ -27,16 +35,14 @@
 	update_Login_details()
 	world.update_status()
 
+	// get rid of old context menus
+	QDEL_NULL(client.context_menu)
+
 	client.images = list() //remove the images such as AIs being unable to see runes
 	client.screen = list() //remove hud items just in case
 	if(hud_used)
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
-
-	if(client.prefs && client.prefs.client_fps)
-		client.fps = client.prefs.client_fps
-	else
-		client.fps = 0 // Results in using the server FPS
 
 	next_move = 1
 	disconnect_time = null // Clear the disconnect time

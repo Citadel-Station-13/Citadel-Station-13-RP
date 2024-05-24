@@ -6,8 +6,17 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 		var/datum/gender/G = new path
 		.[G.key] = G
 
+GLOBAL_LIST_INIT(gender_select_list, gender_selection())
+
+/proc/gender_selection()
+	. = list()
+	for(var/path in typesof(/datum/gender))
+		var/datum/gender/G = new path
+		.[G.pronoun_preview] = G.key
+
 /datum/gender
 	var/key		= "plural"
+	var/pronoun_preview = "they/them"
 
 	var/He		= "They"
 	var/he		= "they"
@@ -24,6 +33,7 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 
 /datum/gender/male
 	key		= "male"
+	pronoun_preview = "He/him"
 
 	He		= "He"
 	he		= "he"
@@ -40,6 +50,7 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 
 /datum/gender/female
 	key		= "female"
+	pronoun_preview = "She/her"
 
 	He		= "She"
 	he		= "she"
@@ -56,6 +67,7 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 
 /datum/gender/neuter
 	key		= "neuter"
+	pronoun_preview = "It/its"
 
 	He		= "It"
 	he		= "it"
@@ -72,6 +84,7 @@ GLOBAL_LIST_INIT(gender_datums, gender_datums())
 
 /datum/gender/herm
 	key		= "herm"
+	pronoun_preview = "Shi/hir"
 
 	He		= "Shi"
 	he		= "shi"

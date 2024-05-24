@@ -1,15 +1,13 @@
 /datum/atmosphere/planet/classg
-	base_gases = list(
-	/datum/gas/oxygen = 10,
-	/datum/gas/nitrogen = 10,
-	/datum/gas/phoron = 80
+	base = list(
+		/datum/gas/oxygen = 10,
+		/datum/gas/nitrogen = 10,
+		/datum/gas/phoron = 80,
 	)
-	base_target_pressure = 110.1
-	minimum_pressure = 110.1
-	maximum_pressure = 110.1
-	minimum_temp = 293.3
-	maximum_temp = 307.3
-
+	pressure_low = 110.1
+	pressure_high = 110.1
+	temperature_low = 293.3
+	temperature_high = 307.3
 
 /datum/time/classg
 	seconds_in_day = 3 HOURS

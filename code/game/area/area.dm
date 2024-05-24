@@ -30,9 +30,22 @@
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
+	//? nightshift
+	/// nightshift level
+	/// in general, nightshift must be at or above this level for it to proc on areas.
+	var/nightshift_level = NIGHTSHIFT_LEVEL_UNSET
+
 	//? tracking lists for machinery
 	/// holopads - lazyinit'd
 	var/list/obj/machinery/holopad/holopads
+	/// vents
+	var/list/obj/machinery/atmospherics/component/unary/vent_pump/vent_pumps
+	/// next vent id
+	var/vent_pump_next = 1
+	/// scrubbers
+	var/list/obj/machinery/atmospherics/component/unary/vent_scrubber/vent_scrubbers
+	/// next scrubber id
+	var/vent_scrubber_next = 1
 
 	//? unsorted
 	var/fire = null
@@ -206,7 +219,7 @@
 				A.power_light = FALSE
 				A.power_equip = FALSE
 				A.power_environ = FALSE
-			INVOKE_ASYNC(A, .proc/power_change)
+			INVOKE_ASYNC(A, PROC_REF(power_change))
 */
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -261,14 +274,14 @@
 	if (danger_level == 0)
 		atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
-		var/obj/machinery/alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
+		var/obj/machinery/air_alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
 		if(istype(atmosalarm))
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
 		else
 			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
-	for (var/obj/machinery/alarm/AA as anything in GLOB.air_alarms)
+	for (var/obj/machinery/air_alarm/AA as anything in GLOB.air_alarms)
 		if(AA.loc?.loc != src)
 			continue
 		if (!(AA.machine_stat & (NOPOWER|BROKEN)) && !AA.shorted && AA.report_danger_level)
@@ -280,7 +293,7 @@
 		if (danger_level < 1 || danger_level >= 2)
 			firedoors_update()
 
-		for (var/obj/machinery/alarm/AA in src)
+		for (var/obj/machinery/air_alarm/AA in src)
 			AA.update_icon()
 
 		return 1
@@ -316,6 +329,8 @@
 				else if(!E.density)
 					spawn(0)
 						E.close()
+		for(var/obj/machinery/floor_inflatables/i in all_doors)
+			i.trigger()
 
 /// Open all firedoors in the area
 /area/proc/firedoors_open()
@@ -549,7 +564,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/play_ambience(var/mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!L?.is_preference_enabled(/datum/client_preference/play_ambiance))
+	if(!L?.get_preference_toggle(/datum/game_preference_toggle/ambience/area_ambience))
 		return
 
 	// If we previously were in an area with force-played ambiance, stop it.
@@ -652,7 +667,7 @@ var/list/teleportlocs = list()
 		if(station)
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = tim_sort(teleportlocs, /proc/cmp_text_asc, TRUE)
+	teleportlocs = tim_sort(teleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
 
@@ -669,6 +684,52 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
+	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
+
+//* Atmospherics
+
+/area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
+	LAZYADD(vent_scrubbers, instance)
+	instance.name = "\improper [name] Vent Scrubber #[vent_scrubber_next++]"
+
+/area/proc/unregister_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
+	LAZYREMOVE(vent_scrubbers, instance)
+	instance.name = "\improper Vent Scrubber"
+
+/area/proc/register_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
+	LAZYADD(vent_pumps, instance)
+	instance.name = "\improper [name] Vent Pump #[vent_pump_next++]"
+
+/area/proc/unregister_vent(obj/machinery/atmospherics/component/unary/vent_pump/instance)
+	LAZYREMOVE(vent_pumps, instance)
+	instance.name = "\improper Vent Pump"
+
+// todo: this should unregister first, probably, incase anyone makes registration non-repeatable
+
+/area/proc/reregister_atmos_machinery()
+	reregister_atmos_vents()
+	reregister_atmos_scrubbers()
+
+/area/proc/reregister_atmos_vents()
+	vent_pump_next = 0
+	var/list/old = vent_pumps.Copy()
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/instance in old)
+		register_vent(instance)
+
+/area/proc/reregister_atmos_scrubbers()
+	vent_scrubber_next = 0
+	var/list/old = vent_scrubbers.Copy()
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/instance in old)
+		register_scrubber(instance)
+
+/area/proc/vent_pump_by_id(id)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in vent_pumps)
+		if(pump.id_tag == id)
+			return pump
+
+/area/proc/vent_scrubber_by_id(id)
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
+		if(scrubber.id_tag == id)
+			return scrubber

@@ -9,20 +9,23 @@
 		/datum/map_level/tether/station/space_low,
 		/datum/map_level/tether/station/space_high,
 		/datum/map_level/tether/mine,
-		/datum/map_level/tether/solars,
 		/datum/map_level/tether/misc,
 		/datum/map_level/tether/underdark,
 		/datum/map_level/tether/plains,
 	)
-	width = 140
-	height = 140
+	width = 192
+	height = 192
 	lateload = list(
-		/datum/map/sector/roguemining_140,
-		/datum/map/sector/desert_140,
-		/datum/map/sector/virgo2_140,
-		/datum/map/sector/virgo4_140,
-		/datum/map/sector/tradeport_140,
-		/datum/map/sector/wasteland_140,
+		/datum/map/sector/debrisfield_192,
+		/datum/map/sector/piratebase_192,
+		/datum/map/sector/mining_192,
+		/datum/map/sector/gaia_192,
+		/datum/map/sector/frozen_192,
+		/datum/map/sector/wasteland_192,
+		/datum/map/sector/tradeport_192,
+		/datum/map/sector/lavaland_192,
+		/datum/map/sector/miaphus_192,
+		/datum/map/sector/roguemining_192/one,
 	)
 
 	//* LEGACY BELOW *//
@@ -52,7 +55,7 @@
 	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
-	company_name  = "NanoTrasen"
+	company_name  = "Nanotrasen"
 	company_short = "NT"
 	starsys_name  = "Virgo-Erigone"
 
@@ -128,7 +131,9 @@
 
 // For making the 6-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in tether z levels.
-#define TETHER_MAP_SIZE 140
+// todo: i disabled holomaps because 6 192x192 levels doesn't exactly fit into a 480x408 slate
+// maybe we can rework holomaps someday ~silicons
+#define TETHER_MAP_SIZE 192
 /// 40px central gutter between columns
 #define TETHER_HOLOMAP_CENTER_GUTTER 40
 /// 80
@@ -141,11 +146,12 @@
 
 /datum/map_level/tether/station
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
-	holomap_legend_x = 220
-	holomap_legend_y = 160
+	persistence_allowed = TRUE
+	// holomap_legend_x = 220
+	// holomap_legend_y = 160
 
 /datum/map_level/tether/station/surface_low
-	id = "TetherSurface1"
+	id = "surface-1"
 	name = "Tether - Surface 1"
 	display_id = "adephagia-surface-1"
 	display_name = "NSB Adephagia Surface 1 (Lobby & External)"
@@ -154,17 +160,18 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_mid
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	link_north = /datum/map_level/tether/mine
+	link_south = /datum/map_level/tether/plains
+	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
 /datum/map_level/tether/station/surface_mid
-	id = "TetherSurface2"
+	id = "surface-2"
 	name = "Tether - Surface 2"
 	display_id = "adephagia-surface-2"
 	display_name = "NSB Adephagia Surface 2 (Research & Life Suppot)"
@@ -173,18 +180,17 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_high
 	link_below = /datum/map_level/tether/station/surface_low
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
+	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_level/tether/station/surface_high
-	id = "TetherSurface3"
+	id = "surface-3"
 	name = "Tether - Surface 3"
 	display_id = "adephagia-surface-3"
 	display_name = "NSB Adephagia Surface 3 (Services & Command)"
@@ -193,18 +199,17 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/transit
 	link_below = /datum/map_level/tether/station/surface_mid
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
+	// holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
 /datum/map_level/tether/transit
-	id = "TetherMidpoint"
+	id = "midpoint"
 	name = "Tether - Midpoint"
 	display_id = "adephagia-tether"
 	display_name = "NSB Adephagia Tether Midpoint"
@@ -221,7 +226,7 @@
 	base_turf = /turf/simulated/open
 
 /datum/map_level/tether/station/space_low
-	id = "TetherSpace1"
+	id = "space-1"
 	name = "Tether - Space 1"
 	display_id = "adephagia-station-1"
 	display_name = "NSB Adephagia Station 1 (Engineering Deck)"
@@ -229,16 +234,15 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	link_above = /datum/map_level/tether/station/space_high
 	link_below = /datum/map_level/tether/transit
 	base_turf = /turf/space
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
+	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
 /datum/map_level/tether/station/space_high
-	id = "TetherSpace2"
+	id = "space-2"
 	name = "Tether - Space 2"
 	display_id = "adephagia-station-2"
 	display_name = "NSB Adephagia Station 2 (Logistics Deck)"
@@ -247,15 +251,14 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
-		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	link_below = /datum/map_level/tether/station/space_low
 	base_turf = /turf/simulated/open
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
+	// holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
+	// holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_level/tether/mine
-	id = "TetherMiningOutpost"
+	id = "mining-outpost"
 	name = "Tether - Mining Outpost"
 	display_id = "adephagia-mining"
 	display_name = "NSB Adephagia Mining Outpost"
@@ -266,32 +269,16 @@
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+	link_below = /datum/map_level/tether/underdark
+	link_south = /datum/map_level/tether/station/surface_low
 
 /datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
-/datum/map_level/tether/solars
-	id = "TetherScienceOutpost"
-	name = "Tether - Science Outpost"
-	display_id = "adephagia-solars"
-	display_name = "NSB Adephagia Solars & Research Outpost"
-	absolute_path = "maps/tether/levels/solars.dmm"
-	traits = list(
-		ZTRAIT_STATION,
-		ZTRAIT_GRAVITY,
-	)
-	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-
-/datum/map_level/tether/solars/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
-
 /datum/map_level/tether/misc
-	id = "TetherMisc"
+	id = "misc"
 	name = "Tether - Misc"
 	absolute_path = "maps/tether/levels/misc.dmm"
 	traits = list(
@@ -300,7 +287,7 @@
 	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_SEALED|LEGACY_LEVEL_CONTACT
 
 /datum/map_level/tether/underdark
-	id = "TetherUnderdark"
+	id = "underdark"
 	name = "Tether - Underdark"
 	display_id = "adephagia-underdark"
 	display_name = "NSB Adephagia Underdark"
@@ -311,6 +298,7 @@
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/mineral/floor/virgo3b
+	link_above = /datum/map_level/tether/mine
 
 /datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
@@ -328,7 +316,7 @@
 	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/tether/plains
-	id = "TetherSouthPlains"
+	id = "south-plains"
 	name = "Tether - South Plains"
 	display_id = "adephagia-south-plains"
 	display_name = "NSB Adephagia Southern Plains"
@@ -338,6 +326,7 @@
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/mineral/floor/virgo3b
+	link_north = /datum/map_level/tether/station/surface_low
 
 /datum/map_level/tether/plains/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()

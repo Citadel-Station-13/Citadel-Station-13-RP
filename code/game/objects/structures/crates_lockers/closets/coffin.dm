@@ -2,21 +2,19 @@
 	name = "coffin"
 	desc = "It's a burial receptacle for the dearly departed."
 	icon_state = "coffin"
-	icon_closed = "coffin"
-	icon_opened = "coffin_open"
+	icon_closed = ""
+	icon_opened = "open"
 	seal_tool = /obj/item/tool/screwdriver
 	breakout_sound = 'sound/weapons/tablehit1.ogg'
+	icon = 'icons/obj/closets/coffin_wood.dmi'
+	use_old_icon_update = TRUE
 
 /obj/structure/closet/coffin/comfy
 	name = "extra comfortable coffin"
 	desc = "It's a burial receptacle for the dearly departed. This one has been modified with new upholstery to make it more comfortable to lay in."
 	icon = 'icons/obj/closets/coffin.dmi'
-
-/obj/structure/closet/coffin/update_icon()
-	if(!opened)
-		icon_state = icon_closed
-	else
-		icon_state = icon_opened
+	icon_closed = "coffin"
+	icon_opened = "coffin_open"
 
 /* Graves */
 /obj/structure/closet/grave
@@ -24,21 +22,16 @@
 	desc = "Dirt."
 	icon = 'icons/obj/closets/grave.dmi'
 	closet_appearance = null
-	icon_state = "grave"
-	icon_closed = "grave"
-	icon_opened = "grave_open"
+	icon_state = "open"
+	icon_closed = "closed"
+	icon_opened = "open"
 	seal_tool = null
 	breakout_sound = 'sound/weapons/thudswoosh.ogg'
 	anchored = 1
 	max_closets = 1
 	opened = 1
 	color = "#c2b29f"
-
-/obj/structure/closet/grave/update_icon()
-	if(opened)
-		icon_state = "open"
-	else
-		icon_state = "closed"
+	use_old_icon_update = TRUE
 
 /obj/structure/closet/grave/attack_hand(mob/user, datum/event_args/clickchain/e_args)
 	if(opened)
@@ -105,15 +98,6 @@
 			return 0
 		if(istype(W,/obj/item/tk_grab))
 			return 0
-		if(istype(W, /obj/item/storage/laundry_basket) && W.contents.len)
-			var/obj/item/storage/laundry_basket/LB = W
-			var/turf/T = get_turf(src)
-			for(var/obj/item/I in LB.contents)
-				LB.remove_from_storage(I, T)
-			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You hear rustling of clothes.</span>")
-			return
 		if(isrobot(user))
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
@@ -166,14 +150,14 @@
 	return PROJECTILE_CONTINUE	// It's a hole in the ground, doesn't usually stop or even care about bullets
 
 /obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)
-	var/gasid = /datum/gas/carbon_dioxide
+	var/gasid = GAS_ID_CARBON_DIOXIDE
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.species && H.species.exhale_type)
 			gasid = H.species.exhale_type
 	var/datum/gas_mixture/grave_breath = new()
 	var/datum/gas_mixture/above_air = return_air()
-	grave_breath.adjust_gas(gasid, BREATH_MOLES)
+	grave_breath.adjust_gas(gasid, (above_air.return_pressure() * above_air.volume) / (R_IDEAL_GAS_EQUATION * above_air.temperature)) // They have no oxygen, but non-zero moles and temp
 	grave_breath.temperature = (above_air.temperature) - 30	//Underground
 	return grave_breath
 

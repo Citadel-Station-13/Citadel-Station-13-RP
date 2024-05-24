@@ -137,7 +137,7 @@
 
 /obj/structure/fireaxecabinet/verb/toggle_openness() //nice name, huh? HUH?! -Erro //YEAH -Agouri
 	set name = "Open/Close"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if (isrobot(usr) || locked || smashed)
 		if(locked)
@@ -151,7 +151,7 @@
 
 /obj/structure/fireaxecabinet/verb/remove_fire_axe()
 	set name = "Remove Fire Axe"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if (isrobot(usr))
 		return

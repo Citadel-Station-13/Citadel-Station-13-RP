@@ -109,12 +109,10 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "ar" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	alarms_hidden = 1;
-	dir = 8;
 	name = "west bump-derelict";
-	operating = 0;
-	pixel_x = -24
+	operating = 0
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -644,7 +642,7 @@
 "bL" = (
 /obj/structure/table/glass,
 /obj/item/duct_tape_roll,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bM" = (
@@ -1165,8 +1163,7 @@
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)

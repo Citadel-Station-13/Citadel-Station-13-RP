@@ -311,7 +311,7 @@ GLOBAL_VAR(lock_client_view_y)
 		_request_viewport_update()
 	if(!viewport_queued)
 		viewport_queued = TRUE
-		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
+		addtimer(CALLBACK(src, PROC_REF(_request_viewport_update)), 0)
 
 /**
  * call this when things change to queue an update
@@ -326,7 +326,7 @@ GLOBAL_VAR(lock_client_view_y)
 		return
 	if(!viewport_queued)
 		viewport_queued = TRUE
-		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
+		addtimer(CALLBACK(src, PROC_REF(_request_viewport_update)), 0)
 	UNTIL(!viewport_queued)
 
 // todo : locks are probably bad when working with request fit
@@ -410,7 +410,7 @@ GLOBAL_VAR(lock_client_view_y)
  */
 /client/verb/user_fit_viewport()
 	set name = "Fit Viewport"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Fit the width of the map window to match the viewport"
 
 	request_viewport_fit()

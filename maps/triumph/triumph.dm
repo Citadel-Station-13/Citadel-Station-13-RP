@@ -10,8 +10,8 @@
 		/datum/map_level/triumph/transit,
 		/datum/map_level/triumph/flagship,
 	)
-	width = 140
-	height = 140
+	width = 192
+	height = 192
 	world_width = 192
 	world_height = 192
 	lateload = list(
@@ -53,7 +53,7 @@
 	dock_type		= "space"
 	boss_name		= "Central Command"
 	boss_short		= "CentCom"
-	company_name	= "NanoTrasen"
+	company_name	= "Nanotrasen"
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 
@@ -99,9 +99,9 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Bay","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
-	spawnpoint_died = /datum/spawnpoint/shuttle
-	spawnpoint_left = /datum/spawnpoint/shuttle
+	allowed_spawns = list(LATEJOIN_METHOD_ARRIVALS_SHUTTLE,LATEJOIN_METHOD_GATEWAY,LATEJOIN_METHOD_CRYOGENIC_STORAGE,LATEJOIN_METHOD_ROBOT_STORAGE,"Beruang Trading Corp Cryo")
+	spawnpoint_died = /datum/spawnpoint/arrivals
+	spawnpoint_left = /datum/spawnpoint/arrivals
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
 	meteor_strike_areas = null
@@ -129,6 +129,7 @@
 
 /datum/map_level/triumph/ship
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
+	persistence_allowed = TRUE
 
 /datum/map_level/triumph/ship/deck_one
 	id = "TriumphDeck1"

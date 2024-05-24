@@ -35,14 +35,13 @@
 		/obj/item/tool/wrench,
 		/obj/item/multitool,
 		/obj/item/radio,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/storage/briefcase/inflatable,
 		/obj/item/melee/baton,
 		/obj/item/gun,
 		/obj/item/storage/firstaid,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/roller,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 

@@ -15,6 +15,7 @@
 		/obj/item/tape_recorder,
 		/obj/item/clothing/suit/space/void/mining,
 		/obj/item/clothing/head/helmet/space/void/mining,
+		/obj/random/ore_bag,
 	)
 
 /datum/prototype/struct/loot_pack/gear/space_miner/advanced
@@ -22,4 +23,5 @@
 		/obj/item/pickaxe/diamonddrill,
 		/obj/item/tape_recorder,
 		/obj/item/hardsuit/industrial/equipped,
+		/obj/item/storage/bag/ore/bluespace,
 	)

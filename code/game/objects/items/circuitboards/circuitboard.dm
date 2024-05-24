@@ -9,14 +9,14 @@
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"
-	materials = list(
+	materials_base = list(
 		MAT_STEEL = 1000,
 		MAT_GLASS = 250,
 	)
 	origin_tech = list(TECH_DATA = 2)
 	density = FALSE
 	anchored = FALSE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5.0
 	throw_force = 5.0
 	throw_speed = 3

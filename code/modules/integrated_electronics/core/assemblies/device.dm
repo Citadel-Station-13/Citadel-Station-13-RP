@@ -60,7 +60,7 @@
 
 /obj/item/assembly/electronic_assembly/verb/toggle()
 	set src in usr
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Open/Close Device Assembly"
 	set desc = "Open or close device assembly!"
 
@@ -72,7 +72,7 @@
 	icon_state = "setup_device"
 	desc = "It's a tiny electronic device with specific use for attaching to other devices."
 	var/obj/item/assembly/electronic_assembly/holder
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	max_components = IC_COMPONENTS_BASE * 3/4
 	max_complexity = IC_COMPLEXITY_BASE * 3/4
 

@@ -52,6 +52,10 @@
 	/// panic bunker is still resolving
 	var/panic_bunker_pending = FALSE
 
+	//? Context Menus
+	/// open context menu
+	var/datum/radial_menu/context_menu/context_menu
+
 	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
@@ -91,6 +95,10 @@
 	var/list/menu_buttons_checked = list()
 	/// menu group statuses
 	var/list/menu_group_status = list()
+
+	//? Preferences
+	/// client preferences
+	var/datum/game_preferences/preferences
 
 	//? Statpanel
 	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
@@ -179,8 +187,6 @@
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////
-	///Track hours of leave accured for each department.
-	var/list/department_hours = list()
 
 	preload_rsc = PRELOAD_RSC
 

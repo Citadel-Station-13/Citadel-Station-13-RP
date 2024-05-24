@@ -38,6 +38,7 @@
 		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
 	else
 		SSmapping.map_initialization_hooked += src
+		SSmapping.map_initialization_hooking += src
 
 /**
  * called if we're on SSmapping's map_initializations_hooked list.
@@ -47,6 +48,10 @@
  *
  * @params
  * * bounds - (optional) bounds list of loaded level. can be null if we were invoked without a level load.
+ * * lx - (optional) real x of loaded level
+ * * ly - (optional) real y of loaded level
+ * * lz - (optional) real z of loaded level
+ * * ldir - (optional) real dir of loaded level
  */
-/obj/map_helper/proc/map_initializations(list/bounds)
+/obj/map_helper/proc/map_initializations(list/bounds, lx, ly, lz, ldir)
 	return

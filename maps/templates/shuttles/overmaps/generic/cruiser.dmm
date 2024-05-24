@@ -7,7 +7,6 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
@@ -27,7 +26,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_8";
 	name = "exterior access button";
@@ -135,11 +134,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "ap" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aq" = (
@@ -152,7 +147,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/mothership/breakroom)
 "as" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -169,7 +164,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -235,7 +229,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -353,7 +346,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aR" = (
@@ -485,16 +478,12 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "bn" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "bo" = (
@@ -590,7 +579,7 @@
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = -3
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -606,11 +595,7 @@
 	},
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "bB" = (
@@ -632,7 +617,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-hydroponics";
 	name = "Shuttle Blast Doors";
@@ -751,7 +735,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-kitchen";
 	name = "Shuttle Blast Doors";
@@ -783,7 +766,7 @@
 /area/mothership/hydroponics)
 "bU" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -820,7 +803,7 @@
 /area/mothership/hydroponics)
 "bY" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -863,7 +846,7 @@
 "ce" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -876,7 +859,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "cf" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -907,8 +890,7 @@
 /area/mothership/hydroponics)
 "ci" = (
 /obj/machinery/light,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -922,7 +904,7 @@
 /area/mothership/kitchen)
 "ck" = (
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "cl" = (
@@ -978,7 +960,7 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/rack/shelf/steel,
@@ -1023,7 +1005,7 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1066,11 +1048,7 @@
 /obj/item/radio/off,
 /obj/item/radio/off,
 /obj/item/radio/off,
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "cH" = (
@@ -1082,7 +1060,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_7";
 	name = "exterior access button";
@@ -1137,7 +1115,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_7";
 	name = "interior access button";
@@ -1238,7 +1216,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_2";
 	name = "interior access button";
@@ -1302,8 +1280,7 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/structure/table/rack/shelf/steel,
@@ -1354,7 +1331,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "de" = (
@@ -1375,11 +1352,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -1499,11 +1472,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -1532,7 +1501,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/bathroom1)
 "du" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -1549,7 +1518,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/bathroom1)
 "dw" = (
@@ -1597,7 +1566,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "dD" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -1619,11 +1588,11 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/bathroom2)
 "dH" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -1657,7 +1626,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-med-surgery";
@@ -1734,7 +1702,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/light{
@@ -1764,7 +1732,7 @@
 "eb" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/storage/box/survival/space,
@@ -1778,7 +1746,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "ee" = (
@@ -1799,11 +1767,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eg" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
@@ -1819,7 +1783,7 @@
 "ei" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/storage/box/survival/space,
@@ -1897,10 +1861,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "eq" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -1910,8 +1871,7 @@
 "er" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/button/remote/airlock{
@@ -1928,7 +1888,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -1950,7 +1910,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/wood,
 /area/mothership/dorm1)
 "eu" = (
@@ -2063,7 +2023,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/wood,
 /area/mothership/dorm2)
 "eE" = (
@@ -2071,7 +2031,7 @@
 	dir = 1
 	},
 /obj/machinery/light/small,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -2085,10 +2045,7 @@
 "eF" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm2-door";
 	name = "Dorm 2 Lock";
@@ -2109,7 +2066,7 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2136,10 +2093,7 @@
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -2160,7 +2114,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -2198,7 +2152,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -2222,7 +2176,7 @@
 /area/mothership/surgery)
 "eW" = (
 /obj/structure/medical_stand,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2428,7 +2382,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "fx" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22;
 	target_temperature = 274.15
 	},
@@ -2455,11 +2409,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "fA" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+/obj/machinery/power/apc/north_mount{
+	alarms_hidden = 1
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -2480,7 +2431,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -2490,8 +2441,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "fC" = (
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2684,7 +2634,7 @@
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2720,8 +2670,7 @@
 "gc" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/gloves,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/white,
@@ -2732,7 +2681,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "ge" = (
@@ -2745,7 +2694,7 @@
 /obj/item/tool/screwdriver,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2769,7 +2718,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
 "gh" = (
@@ -2796,8 +2745,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "gk" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/structure/cable,
@@ -2824,7 +2772,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-sec-equip";
 	name = "Shuttle Blast Doors";
@@ -2951,19 +2898,12 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
 "gL" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+/obj/machinery/power/apc/north_mount{
+	alarms_hidden = 1
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
@@ -3043,7 +2983,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-med-treatment";
 	name = "Shuttle Blast Doors";
@@ -3091,7 +3030,7 @@
 /area/mothership/treatment)
 "ha" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(5)
 	},
 /obj/machinery/door/firedoor/glass,
@@ -3175,7 +3114,7 @@
 /area/mothership/hallway)
 "hg" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(1)
 	},
 /obj/structure/cable/cyan{
@@ -3216,7 +3155,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/pathfinder,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
 "hj" = (
@@ -3370,8 +3309,7 @@
 "hH" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/button/remote/airlock{
@@ -3389,7 +3327,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/light/small{
@@ -3407,7 +3345,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/wood,
 /area/mothership/dorm3)
 "hK" = (
@@ -3467,7 +3405,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/wood,
 /area/mothership/dorm4)
 "hO" = (
@@ -3475,7 +3413,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/light/small{
@@ -3486,10 +3424,7 @@
 "hP" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm4-door";
 	name = "Dorm 4 Lock";
@@ -3607,7 +3542,7 @@
 "ig" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -3619,7 +3554,7 @@
 "ih" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -3670,10 +3605,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "ip" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iq" = (
@@ -3685,7 +3617,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
 "is" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -3784,7 +3716,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iE" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -3831,7 +3763,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/morgue)
 "iL" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/steel_reinforced,
@@ -3926,7 +3858,7 @@
 	dir = 4
 	},
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iS" = (
@@ -3974,7 +3906,7 @@
 /area/mothership/resleeving)
 "iZ" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -4014,7 +3946,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/morgue)
 "jg" = (
@@ -4049,7 +3981,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -4227,7 +4159,7 @@
 /obj/structure/cable/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/sechallway)
 "jC" = (
@@ -4280,7 +4212,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "jM" = (
@@ -4290,7 +4222,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/morgue)
 "jN" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/steel_reinforced,
@@ -4371,10 +4303,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/sechallway)
@@ -4383,11 +4312,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "jT" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "jU" = (
@@ -4399,7 +4324,7 @@
 /area/mothership/warden)
 "jV" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -4552,7 +4477,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-sec-warden";
 	name = "Shuttle Blast Doors";
@@ -4681,7 +4605,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/white,
@@ -4734,7 +4658,7 @@
 "kF" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/storage/box/survival/space,
@@ -4750,7 +4674,7 @@
 "kI" = (
 /obj/structure/closet/wardrobe/ert,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/item/storage/box/survival/space,
@@ -4778,7 +4702,7 @@
 /obj/item/book/manual/security_space_law,
 /obj/structure/closet/secure_closet/nanotrasen_warden,
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "kM" = (
@@ -4814,7 +4738,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-med-equip";
 	name = "Shuttle Blast Doors";
@@ -4862,8 +4785,7 @@
 "kU" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /obj/machinery/button/remote/airlock{
@@ -4883,7 +4805,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -4900,7 +4822,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/wood,
 /area/mothership/dorm5)
 "kX" = (
@@ -4960,7 +4882,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/wood,
 /area/mothership/dorm6)
 "lb" = (
@@ -4970,7 +4892,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -4980,10 +4902,7 @@
 "lc" = (
 /obj/item/bedsheet/captaindouble,
 /obj/structure/bed/double/padded,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/button/remote/airlock{
 	id = "ship-dorm6-door";
 	name = "Dorm 6 Lock";
@@ -5052,7 +4971,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "lo" = (
@@ -5177,7 +5096,6 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	id = "ship-armory";
 	name = "Armory"
 	},
@@ -5336,7 +5254,7 @@
 /area/mothership/medical)
 "lP" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 2
+	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
@@ -5383,7 +5301,6 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	id = "ship-armory";
 	name = "Armory"
 	},
@@ -5574,7 +5491,7 @@
 /area/mothership/rnd)
 "mp" = (
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mq" = (
@@ -5592,22 +5509,22 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/bridge)
 "mu" = (
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
@@ -5753,16 +5670,16 @@
 	},
 /obj/item/gun/ballistic/automatic/lmg,
 /obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mL" = (
@@ -5841,7 +5758,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "mV" = (
@@ -5869,7 +5786,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
 "mZ" = (
@@ -6335,7 +6252,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/robotanalyzer,
 /obj/machinery/light,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6357,8 +6274,7 @@
 /area/mothership/rnd)
 "nS" = (
 /obj/structure/closet/wardrobe/robotics_black,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -6439,8 +6355,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6455,11 +6370,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "ob" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6528,8 +6443,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
 "oi" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/structure/bed/chair/bay/shuttle{
@@ -6538,7 +6452,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
 "oj" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6627,7 +6541,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "ox" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -6664,7 +6578,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	icon_state = "pdoor0";
 	id = "ship-holodeck";
 	name = "Shuttle Blast Doors";
@@ -6801,8 +6714,7 @@
 /area/mothership/robotics)
 "oO" = (
 /obj/machinery/mech_recharger,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/bluegrid,
@@ -6813,7 +6725,7 @@
 /area/mothership/robotics)
 "oQ" = (
 /obj/machinery/mech_recharger,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -6826,7 +6738,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/robotics)
 "oS" = (
@@ -6887,7 +6799,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -6935,15 +6847,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/holodeck)
 "pd" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/closet/secure_closet/personal,
@@ -6968,7 +6879,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_6";
 	name = "exterior access button";
@@ -7021,16 +6932,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/telecomms1)
 "pu" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_6";
 	name = "interior access button";
@@ -7061,7 +6968,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms1)
 "pz" = (
@@ -7220,7 +7127,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
 "pO" = (
@@ -7229,7 +7136,7 @@
 /area/mothership/telecomms2)
 "pP" = (
 /obj/machinery/account_database{
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms2)
@@ -7238,16 +7145,12 @@
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms2)
 "pR" = (
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_3";
 	name = "interior access button";
@@ -7308,7 +7211,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_3";
 	name = "exterior access button";
@@ -7319,7 +7222,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/telecomms2)
 "pW" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -7463,7 +7366,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
 "qr" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -7590,10 +7493,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -7608,12 +7508,12 @@
 	dir = 8
 	},
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/cryotube)
 "qZ" = (
 /obj/machinery/cryopod,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -7623,8 +7523,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -7648,7 +7547,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -7664,7 +7563,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rf" = (
@@ -7902,26 +7801,23 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rP" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
-	filter_type = 0;
-	filtered_out = list("phoron")
+	filtering = "phoron"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
-	filter_type = 3;
-	filtered_out = list("carbon_dioxide")
+	filtering = "co2"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rR" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
+/obj/machinery/atmospherics/component/trinary/filter{
 	dir = 4;
-	filter_type = 4;
-	filtered_out = list("sleeping_agent")
+	filtering = "n2o"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -8105,7 +8001,6 @@
 /area/mothership/engineering)
 "sq" = (
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	dir = 4;
 	id = "ship-dronehangar1";
 	name = "Drone Hangar"
@@ -8399,7 +8294,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_5";
 	name = "exterior access button";
@@ -8456,10 +8351,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "tl" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "ts" = (
@@ -8469,8 +8361,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "tA" = (
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -8599,11 +8490,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "xS" = (
@@ -8613,7 +8500,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
@@ -8661,7 +8548,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -8700,7 +8587,7 @@
 "zE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_4";
 	name = "interior access button";
@@ -8714,7 +8601,7 @@
 "Am" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_5";
 	name = "interior access button";
@@ -8926,7 +8813,7 @@
 "Gi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_8";
 	name = "interior access button";
@@ -8985,7 +8872,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "JJ" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
@@ -9042,7 +8929,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -9095,7 +8982,7 @@
 "PC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ws_dock_1";
 	name = "interior access button";
@@ -9117,7 +9004,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_4";
 	name = "exterior access button";
@@ -9149,11 +9036,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "QI" = (
@@ -9194,8 +9077,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9235,7 +9117,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -9274,7 +9156,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_1";
 	name = "exterior access button";
@@ -9308,8 +9190,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9378,7 +9259,6 @@
 /area/mothership/hallway)
 "WE" = (
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	dir = 4;
 	id = "ship-dronehangar2";
 	name = "Drone Hangar"
@@ -9395,7 +9275,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	destroy_hits = 1000;
 	dir = 4;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
@@ -9471,11 +9350,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "ZS" = (
@@ -9487,7 +9362,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ws_dock_2";
 	name = "exterior access button";

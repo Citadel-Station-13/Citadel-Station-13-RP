@@ -18,21 +18,7 @@
 			return
 	else if(istype(W, /obj/item/clothing))
 		var/obj/item/clothing/C = W
-		var/new_base_uploaded_path
-		if(C.slot_flags & SLOT_HEAD)
-			new_base_uploaded_path = /obj/item/clothing/head
-		if(C.slot_flags & SLOT_ICLOTHING)
-			new_base_uploaded_path = /obj/item/clothing/under
-		if(C.slot_flags & SLOT_EYES)
-			new_base_uploaded_path = /obj/item/clothing/glasses
-		if(C.slot_flags & SLOT_GLOVES)
-			new_base_uploaded_path = /obj/item/clothing/gloves
-		if(C.slot_flags & SLOT_MASK)
-			new_base_uploaded_path = /obj/item/clothing/mask
-		if(C.slot_flags & SLOT_FEET)
-			new_base_uploaded_path = /obj/item/clothing/shoes
-		if(C.slot_flags & SLOT_OCLOTHING)
-			new_base_uploaded_path = /obj/item/clothing/suit
+		var/new_base_uploaded_path = get_base_clothing_path(C.type)
 
 		if(new_base_uploaded_path != null)
 			base_uploaded_path = new_base_uploaded_path
@@ -49,6 +35,32 @@
 		return
 	else
 		. = ..()
+
+/mob/living/silicon/pai/attack_hand(mob/user, list/params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+
+	add_fingerprint(user)
+
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		switch(H.a_intent)
+			if(INTENT_HELP)
+				visible_message("<span class='notice'>[H] pets [src].</span>")
+				return
+			if(INTENT_HARM)
+				H.do_attack_animation(src)
+				attack_generic(H, rand(15,20), "slashed")
+				return
+			if(INTENT_DISARM)
+				H.do_attack_animation(src)
+				playsound(src.loc, 'sound/effects/clang1.ogg', 10, 1)
+				visible_message("<span class='warning'>[H] taps [src].</span>")
+				return
+		if(H.species.can_shred(H))
+			attack_generic(H, rand(15,20), "slashed")
+			return
 
 /mob/living/silicon/pai/emp_act(severity)
 	// Silence for 2 minutes

@@ -1,4 +1,5 @@
 /**********************Mineral deposits**************************/
+CREATE_STANDARD_TURFS(/turf/unsimulated/mineral)
 /turf/unsimulated/mineral
 	name = "impassable rock"
 	icon = 'icons/turf/walls.dmi'
@@ -37,6 +38,7 @@
 	var/last_act = 0
 	var/overlay_detail
 
+	var/arch_icon = 'icons/turf/walls.dmi'
 	var/datum/geosample/geologic_data
 	var/excavation_level = 0
 	var/list/finds
@@ -256,9 +258,9 @@
 			. += appearance
 		*/
 		if(archaeo_overlay)
-			. += mutable_appearance(icon, archaeo_overlay)
+			. += mutable_appearance(arch_icon, archaeo_overlay)
 		if(excav_overlay)
-			. += mutable_appearance(icon, excav_overlay)
+			. += mutable_appearance(arch_icon, excav_overlay)
 
 	//We are a sand floor
 	else
@@ -283,9 +285,10 @@
 		spawn(1) // Otherwise most of the ore is lost to the explosion, which makes this rather moot.
 			for(var/ore in resources)
 				var/amount_to_give = rand(CEILING(resources[ore]/2, 1), resources[ore])  // Should result in at least one piece of ore.
-				for(var/i=1, i <= amount_to_give, i++)
-					var/oretype = GLOB.ore_types[ore]
-					new oretype(src)
+				if(GLOB.ore_types[ore])
+					for(var/i=1, i <= amount_to_give, i++)
+						var/oretype = GLOB.ore_types[ore]
+						new oretype(src)
 				resources[ore] = 0
 
 /turf/simulated/mineral/bullet_act(var/obj/projectile/Proj) // only emitters for now
@@ -404,20 +407,6 @@
 			// to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			GetDrilled()
 
-		else if(istype(W,/obj/item/storage/bag/ore))
-			var/obj/item/storage/bag/ore/S = W
-			if(S.collection_mode)
-				for(var/obj/item/ore/O in contents)
-					O.attackby(W,user)
-					return
-
-		else if(istype(W,/obj/item/storage/bag/fossils))
-			var/obj/item/storage/bag/fossils/S = W
-			if(S.collection_mode)
-				for(var/obj/item/fossil/F in contents)
-					F.attackby(W,user)
-					return
-
 		else if(istype(W, /obj/item/stack/rods))
 			var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 			if(L)
@@ -519,7 +508,7 @@
 					next_rock += P.excavation_amount
 					while(next_rock > 50)
 						next_rock -= 50
-						new /obj/item/ore(src)
+						new /obj/item/stack/ore(src)
 				return
 			else
 				return
@@ -572,13 +561,13 @@
 					next_rock += T.excavation_amount
 					while(next_rock > 50)
 						next_rock -= 50
-						var/obj/item/ore/O = new(src)
+						var/obj/item/stack/ore/O = new(src)
 						O.geologic_data = geologic_data
 				return
 			else
 				return
 
-	return attack_hand(user)
+	return ..()
 
 /turf/simulated/mineral/proc/wreckfinds(var/destroy = FALSE)
 	if(!destroy && prob(90)) //nondestructive methods have a chance of letting you step away to not trash things
@@ -632,11 +621,11 @@
 	for(var/obj/effect/mineral/M in contents)
 		qdel(M)
 
-/turf/simulated/mineral/proc/DropMineral()
+/turf/simulated/mineral/proc/DropMineral(var/amount)
 	if(!mineral)
 		return
 	clear_ore_effects()
-	var/obj/item/ore/O = new mineral.ore (src)
+	var/obj/item/stack/ore/O = new mineral.ore(src,amount)
 	return O
 
 /turf/simulated/mineral/proc/excavate_turf()
@@ -664,16 +653,13 @@
 	if(!density)
 		if(!sand_dug)
 			sand_dug = 1
-			for(var/i=0;i<5;i++)
-				new/obj/item/ore/glass(src)
+			new/obj/item/stack/ore/glass(src,5)
 			QUEUE_SMOOTH(src)
 		return
 
 	if (mineral && mineral.result_amount)
-
 		//if the turf has already been excavated, some of it's ore has been removed
-		for (var/i = 1 to mineral.result_amount - mined_ore)
-			DropMineral()
+		DropMineral(mineral.result_amount - mined_ore)
 
 	//destroyed artifacts have weird, unpleasant effects
 	//make sure to destroy them before changing the turf though

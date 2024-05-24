@@ -47,7 +47,7 @@
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				// Fix bones
 				var/obj/item/organ/external/affected = E
-				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
+				if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
 
 				// fix IB

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_stake"
 	density = 1
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	var/obj/item/target/pinned_target // the current pinned target
 
 /obj/structure/target_stake/Moved()

@@ -65,14 +65,13 @@
 		new /datum/data/mining_equipment("Super Resonator",				/obj/item/resonator/upgraded,										2500),
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,										2500),
 		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,							3100),
-		new /datum/data/mining_equipment("KA White Tracer Rounds",		/obj/item/borg/upgrade/modkit/tracer,								125),
-		new /datum/data/mining_equipment("KA Adjustable Tracer Rounds",	/obj/item/borg/upgrade/modkit/tracer/adjustable,					175),
-		new /datum/data/mining_equipment("KA Super Chassis",			/obj/item/borg/upgrade/modkit/chassis_mod,							250),
-		new /datum/data/mining_equipment("KA Hyper Chassis",			/obj/item/borg/upgrade/modkit/chassis_mod/orange,					300),
-		new /datum/data/mining_equipment("KA Range Increase",			/obj/item/borg/upgrade/modkit/range,								1000),
-		new /datum/data/mining_equipment("KA Damage Increase",			/obj/item/borg/upgrade/modkit/damage,								1000),
-		new /datum/data/mining_equipment("KA Cooldown Decrease",		/obj/item/borg/upgrade/modkit/cooldown,							1200),
-		new /datum/data/mining_equipment("KA AoE Damage",				/obj/item/borg/upgrade/modkit/aoe/mobs,								2000),
+		new /datum/data/mining_equipment("KA White Tracer Rounds",		/obj/item/ka_modkit/tracer,								125),
+		new /datum/data/mining_equipment("KA Adjustable Tracer Rounds",	/obj/item/ka_modkit/tracer/adjustable,					175),
+		new /datum/data/mining_equipment("KA Super Chassis",			/obj/item/ka_modkit/chassis_mod,							250),
+		new /datum/data/mining_equipment("KA Hyper Chassis",			/obj/item/ka_modkit/chassis_mod/orange,					300),
+		new /datum/data/mining_equipment("KA Range Increase",			/obj/item/ka_modkit/range,								1000),
+		new /datum/data/mining_equipment("KA Damage Increase",			/obj/item/ka_modkit/damage,								1000),
+		new /datum/data/mining_equipment("KA Cooldown Decrease",		/obj/item/ka_modkit/cooldown,							1200),
 		new /datum/data/mining_equipment("KA Holster",				/obj/item/clothing/accessory/holster/waist/kinetic_accelerator,			350),
 		new /datum/data/mining_equipment("Fine Excavation Kit - Chisels",/obj/item/storage/excavation,								500),
 		new /datum/data/mining_equipment("Fine Excavation Kit - Measuring Tape",/obj/item/measuring_tape,							125),
@@ -214,10 +213,10 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	..()
 
-/obj/machinery/mineral/equipment_vendor/dismantle()
-	if(inserted_id)
-		inserted_id.forceMove(loc) //Prevents deconstructing the ORM from deleting whatever ID was inside it.
+/obj/machinery/mineral/equipment_vendor/drop_products(method, atom/where)
 	. = ..()
+	inserted_id?.forceMove(where)
+	inserted_id = null
 
 /obj/machinery/mineral/equipment_vendor/proc/RedeemVoucher(obj/item/mining_voucher/voucher, mob/redeemer)
 	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in list("Kinetic Accelerator", "Resonator", "Mining Drone", "Advanced Scanner", "Crusher")

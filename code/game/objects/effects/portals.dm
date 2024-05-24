@@ -5,12 +5,12 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	desc = "Looks unstable. Best to test it with the clown."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "portal"
-	density = 1
-	unacidable = 1//Can't destroy energy portals.
+	density = TRUE
+	anchored = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	var/failchance = 5
 	var/obj/item/target = null
 	var/creator = null
-	anchored = 1.0
 
 /obj/effect/portal/Bumped(mob/M as mob|obj)
 	if(istype(M,/mob) && !(istype(M,/mob/living)))

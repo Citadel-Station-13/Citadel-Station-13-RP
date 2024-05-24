@@ -9,7 +9,7 @@
 // Forcibly shut down the device. To be used when something bugs out and the UI is nonfunctional.
 /obj/item/modular_computer/verb/emergency_shutdown()
 	set name = "Forced Shutdown"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
@@ -33,7 +33,7 @@
 // Eject ID card from computer, if it has ID slot with card inside.
 /obj/item/modular_computer/verb/eject_id()
 	set name = "Eject ID"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
@@ -49,7 +49,7 @@
 // Eject ID card from computer, if it has ID slot with card inside.
 /obj/item/modular_computer/verb/eject_usb()
 	set name = "Eject Portable Storage"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))

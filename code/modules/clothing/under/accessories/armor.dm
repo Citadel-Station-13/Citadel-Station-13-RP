@@ -8,7 +8,7 @@
 	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/accessory/armor/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(ishuman(user))
@@ -37,10 +37,10 @@
 	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	gender = PLURAL
 	slot = ACCESSORY_SLOT_ARMOR_S
-	slots = 2
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 2
 
 /obj/item/clothing/accessory/storage/pouches/blue
 	desc = "A collection of blue pouches that can be attached to a plate carrier. Carries up to two items."
@@ -62,8 +62,9 @@
 	name = "large storage pouches"
 	desc = "A collection of black pouches that can be attached to a plate carrier. Carries up to four items."
 	icon_state = "lpouches"
-	slots = 4
-	slowdown = 0.25
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	weight = ITEM_WEIGHT_STORAGE_POUCH_LARGE
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_POUCH_LARGE
 
 /obj/item/clothing/accessory/storage/pouches/large/blue
 	desc = "A collection of blue pouches that can be attached to a plate carrier. Carries up to four items."
@@ -92,21 +93,14 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "shotholder"
 	slot = ACCESSORY_SLOT_ARMOR_S
-	slots = 4
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	insertion_whitelist = list(
+		/obj/item/ammo_casing/a12g,
+	)
 
-/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon(updates)
-	. = ..()
-	var/amt = length(hold.contents)
-	icon_state = "shotholder-[amt]"
-
-/obj/item/clothing/accessory/storage/shotgun_shell_holder/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/ammo_casing/a12g))
-		. = hold.attackby(W, user)
-		update_icon()
-		accessory_host?.update_icon()
-		return
-	else
-		to_chat(user, SPAN_WARNING("The [src] can only hold 12-gauge shells!"))
+/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon_state()
+	icon_state = "shotholder-[length(contents)]"
+	return ..()
 
 ////////////////
 //Armor plates
@@ -162,14 +156,16 @@
 	name = "ballistic armor plate"
 	desc = "A hefty silicon carbide armor plate with a layer of heavy tungsten, followed by a second coating of a polyurethane elastomeric to mitigate spalling from lower calibers as they're deflected. It's design is state of of the art when it comes to ballistics, and as a concequence the material is rather heavy, and is not as capable of dispersing laser fire as other armor varients. Fits within a plate carrier."
 	icon_state = "armor_ballistic"
-	slowdown = 0.65
+	weight = ITEM_WEIGHT_ARMOR_SPECIALIZED
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_SPECIALIZED
 	armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/armorplate/riot
 	name = "riot armor plate"
 	desc = "A synthetic mesh armor insert made of densely woven aromatic polyamide fibers, coated in malleable ballistic gelatin, and finally tight-jacketed with woven steel-polyethylene filaments. This provides excellent protection against low-velocity trauma, but most modern projectiles could tear through it with ease. Fits within a plate carrier."
 	icon_state = "armor_riot"
-	slowdown = 0.65
+	weight = ITEM_WEIGHT_ARMOR_SPECIALIZED
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_SPECIALIZED
 	armor_type = /datum/armor/station/riot
 	siemens_coefficient = 0.5
 
@@ -177,7 +173,8 @@
 	name = "ablative armor plate"
 	desc = "A highly reflective cobalt-chromium-tungsten alloy forms the seemingly jagged surface of the armor plate, which is adorned in perfectly cut and fitted glass prisms that form a smooth low-poly surface. When the ablative armor plate is working as designed, the glass prisms reflect laser fire inwards towards the innermost vertex for subsequent 'ablation', and sometimes reflection. There is a warning label on the back that warns you. It reads: Attempting to use this ablative armor plate to deflect ballistics and/or non-standard energy beams could result in 'rapid deconstruction' of the armor plate and its user. Fits within a plate carrier."
 	icon_state = "armor_ablative"
-	slowdown = 0.65
+	weight = ITEM_WEIGHT_ARMOR_SPECIALIZED
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_SPECIALIZED
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.2
 
@@ -331,7 +328,7 @@
 //	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIt = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 //Nanotrasen
 /obj/item/clothing/accessory/armor/tag/nts
@@ -341,7 +338,7 @@
 
 /obj/item/clothing/accessory/armor/tag/ntbs
 	name = "\improper BLUESHIELD tag"
-	desc = "An armor tag with the words BLUESHIELD printed in red lettering."
+	desc = "An armor tag with the words BLUESHIELD printed in blue lettering."
 	icon_state = "ntbstag"
 
 /obj/item/clothing/accessory/armor/tag/ntc
@@ -453,8 +450,8 @@
 	icon_state = "helmcover_tan"
 
 /obj/item/clothing/accessory/armor/helmcover/nt
-	name = "\improper NanoTrasen helmet cover"
-	desc = "A fabric cover for armored helmets. This one has NanoTrasen's colors."
+	name = "\improper Nanotrasen helmet cover"
+	desc = "A fabric cover for armored helmets. This one has Nanotrasen's colors."
 	icon_state = "helmcover_nt"
 
 /obj/item/clothing/accessory/armor/helmcover/pcrc
@@ -519,17 +516,28 @@
 	camera_networks = list(NETWORK_CIV_HELMETS)
 
 /obj/item/clothing/accessory/armor/helmetcamera/security
-	name = "\improper Security helmet camera"
+	name = "security helmet camera"
 	desc = "A small camera that attaches to helmets. This one has its feed restricted to Security."
 	icon_state = "helmcam_sec"
 	camera_networks = list(NETWORK_SEC_HELMETS)
 
+/obj/item/clothing/accessory/armor/helmetcamera/security/body
+	name = "security body camera"
+	desc = "A small camera that attaches to most uniforms. This one has its feed restricted to Security."
+	icon_state = "helmcam_body_sec"
+	slot = ACCESSORY_SLOT_DECOR
+
 /obj/item/clothing/accessory/armor/helmetcamera/exploration
-	name = "\improper Exploration helmet camera"
+	name = "exploration helmet camera"
 	desc = "A small camera that attaches to helmets. This one has its feed restricted to Exploration."
 	icon_state = "helmcam_explo"
 	camera_networks = list(NETWORK_EXPLO_HELMETS)
 
+/obj/item/clothing/accessory/armor/helmetcamera/exploration/body
+	name = "exploration body camera"
+	desc = "A small camera that attaches to most uniforms. This one has its feed restricted to Exploration."
+	slot = ACCESSORY_SLOT_DECOR
+	icon_state = "helmcam_body_explo"
 
 //Lightweight Limb Plating - These are incompatible with plate carriers.
 

@@ -10,8 +10,8 @@
 	desc = "A small electronic device that should never exist."
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = ""
-	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 100)
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_STEEL = 100)
 	throw_force = 2
 	throw_speed = 3
 	throw_range = 10
@@ -107,13 +107,10 @@
 	ui_interact(user)
 	return TRUE
 
-/obj/item/device/assembly/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/assembly/ui_state()
 	return GLOB.deep_inventory_state
 
-/obj/item/device/assembly/ui_interact(mob/user, datum/tgui/ui)
-	return // tgui goes here
-
-/obj/item/device/assembly/ui_host()
+/obj/item/assembly/ui_host()
 	if(istype(loc, /obj/item/assembly_holder))
 		return loc.ui_host()
 	return ..()

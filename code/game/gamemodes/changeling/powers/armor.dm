@@ -64,11 +64,8 @@
 	action_button_name = "Toggle Grippers"
 	clothing_flags = NONE
 	item_flags = ITEM_DROPDEL
-
-/obj/item/clothing/shoes/magboots/changeling/set_slowdown()
-	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
-	if (magpulse)
-		slowdown += 1		//It's already tied to a slowdown suit, 6 slowdown is huge.
+	encumbrance = ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS
+	encumbrance_on = ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS_PULSE
 
 /obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
@@ -97,7 +94,7 @@
 	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
-	slowdown = 3
+	weight = ITEM_WEIGHT_CHANGELING_ARMOR
 
 /obj/item/clothing/suit/space/changeling/armored/Initialize(mapload)
 	. = ..()
@@ -134,7 +131,7 @@
 	icon_state = "lingboots"
 	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
-	cold_protection = FEET
+	cold_protection_cover = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = FEET
+	heat_protection_cover = FEET
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROTECTION_TEMPERATURE

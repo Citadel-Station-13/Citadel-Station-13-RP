@@ -75,25 +75,6 @@
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
-/datum/world_topic/auto_bunker_passthrough
-	keyword = "auto_bunker_override"
-	require_comms_key = TRUE
-
-/datum/world_topic/auto_bunker_passthrough/Run(list/input)
-	if(!CONFIG_GET(flag/allow_cross_server_bunker_override))
-		return "Function Disabled"
-	var/ckeytobypass = input["ckey"]
-	var/is_new_ckey = !(ckey(ckeytobypass) in GLOB.bunker_passthrough)
-	var/sender = input["source"] || "UNKNOWN"
-	GLOB.bunker_passthrough |= ckey(ckeytobypass)
-	GLOB.bunker_passthrough[ckey(ckeytobypass)] = world.realtime
-	SSpersistence.SavePanicBunker() //we can do this every time, it's okay
-	if(!is_new_ckey)
-		log_admin("AUTO BUNKER: [ckeytobypass] given access (incoming comms from [sender]).")
-		message_admins("AUTO BUNKER: [ckeytobypass] given access (incoming comms from [sender]).")
-		send2irc("Panic Bunker", "AUTO BUNKER: [ckeytobypass] given access (incoming comms from [sender]).")
-	return "Success"
-
 /datum/world_topic/jsonstatus
 	keyword = "jsonstatus"
 
@@ -172,7 +153,12 @@
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_OFFDUTY))
 			offduty[name] = rank
 
-	// Synthetics don't have actual records, so we will pull them from here.
+	// Synthetics don't have actual records, so we will pull them from here
+
+	// add pAIs	to the returned manifest, we do this first to just avoid a ghost overwriting a robot or AI name in the list
+	for(var/mob/living/silicon/pai/pai in GLOB.mob_list)
+		silicons[pai.name] = "pAI"
+
 	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 		silicons[ai.name] = "Artificial Intelligence"
 
@@ -180,6 +166,7 @@
 		// No combat/syndicate cyborgs, no drones, and no AI shells.
 		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
 			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
+
 	. = list()
 	if(command.len)
 		.["Command"] = command

@@ -350,7 +350,7 @@
 	video_source = comm.camera
 	comm.visible_message("<span class='danger'>[icon2html(src, world)] New video connection from [comm].</span>")
 	update_active_camera_screen()
-	RegisterSignal(video_source, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
+	RegisterSignal(video_source, COMSIG_MOVABLE_MOVED, PROC_REF(update_active_camera_screen))
 	update_icon()
 
 // Proc: end_video()

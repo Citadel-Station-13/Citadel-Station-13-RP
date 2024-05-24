@@ -18,9 +18,9 @@
 	item_state = "black"
 	permeability_coefficient = 0.05
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/swat
@@ -30,9 +30,9 @@
 	item_state = "swat"
 	siemens_coefficient = 0.50
 	permeability_coefficient = 0.05
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/combat //Combined effect of SWAT gloves and insulated gloves
@@ -42,9 +42,9 @@
 	item_state = "swat"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 	armor_type = /datum/armor/gloves/combat
 
@@ -65,6 +65,7 @@
 	fingerprint_chance = 25
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
+	materials_base = list(MAT_PLASTIC = 100)
 //	var/balloonPath = /obj/item/latexballon
 
 //TODO: Make inflating gloves a thing
@@ -122,18 +123,17 @@
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/knuckledusters
 	name = "knuckle dusters"
 	desc = "A pair of brass knuckles. Generally used to enhance the user's punches."
 	icon_state = "knuckledusters"
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 	attack_verb = list("punched", "beaten", "struck")
-	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 1
 	fingerprint_chance = 100
 	overgloves = 1
@@ -204,6 +204,14 @@
 	desc = "These gloves were originally integrated into the bounty hunter skinsuit. Later iterations were made removable for practicality."
 	icon_state = "bountyskin"
 
+//More Warhammer Fun
+/obj/item/clothing/gloves/baroque
+	name = "baroque military gauntlets"
+	desc = "The silver banding around the wrists of these gloves is inscribed with the names of countless martyrs."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sistergloves"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /* Full port pending. Some of these are nuts.
 
 /obj/item/clothing/gloves/fingerless/pugilist
@@ -211,7 +219,7 @@
 	desc = "A series of armwraps. Makes you pretty keen to start punching people."
 	icon_state = "armwraps"
 	body_cover_flags = ARMS
-	cold_protection = ARMS
+	cold_protection_cover = ARMS
 	strip_delay = 300 //you can't just yank them off
 	obj_flags = UNIQUE_RENAME
 	/// did you ever get around to wearing these or no
@@ -389,7 +397,7 @@
 /obj/item/clothing/gloves/fingerless/ablative/equipped(mob/user, slot, flags)
 	. = ..()
 	if(worn_slot == SLOT_GLOVES)
-		RegisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START, .proc/get_component_parry_data)
+		RegisterSignal(user, COMSIG_LIVING_ACTIVE_PARRY_START, PROC_REF(get_component_parry_data))
 		wornonce = TRUE
 
 /obj/item/clothing/gloves/fingerless/ablative/dropped(mob/user, flags, atom/newLoc)
@@ -440,7 +448,7 @@
 	item_state = "mauler_gauntlets"
 	transfer_prints = FALSE
 	body_cover_flags = ARMS|HANDS
-	cold_protection = ARMS|HANDS
+	cold_protection_cover = ARMS|HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 10, "energy" = 10, "bomb" = 55, "bio" = 15, "rad" = 15, "fire" = 80, "acid" = 50)
@@ -483,7 +491,7 @@
 	icon_state = "tackle"
 	item_state = "tackle"
 	transfer_prints = TRUE
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	resistance_flags = NONE
 	//custom_premium_price = PRICE_EXPENSIVE
@@ -542,9 +550,9 @@
 	tackle_range = 5
 	skill_mod = 3
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 	strip_mod = 1.2 // because apparently black gloves had this
@@ -627,8 +635,8 @@
 	desc = "For when you're expecting to get slapped on the wrist. Offers modest protection to your arms."
 	icon_state = "bracers"
 	body_cover_flags = ARMS
-	cold_protection = HANDS
-	heat_protection = HANDS
+	cold_protection_cover = HANDS
+	heat_protection_cover = HANDS
 	armor_type = /datum/armor/general/bone
 
 /obj/item/clothing/gloves/hasie
@@ -641,5 +649,26 @@
 	name = "Utility Fur Gloves"
 	desc = "Warm fur gloves to match the Utility Fur coat."
 	icon_state = "furug"
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
+
+/obj/item/clothing/gloves/darkcleric
+	name = "dark cleric bracers"
+	desc = "Treated leather bracers worn by clerics in the service of higher powers."
+	icon = 'icons/clothing/gloves/darkcleric.dmi'
+	icon_state = "darkcleric"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/gloves/armsocks
+	name = "Fingerless Sleeves"
+	desc = "A pair of fingerless, full arm sleeves. Perfect for fashion, not so much winter."
+	icon = 'icons/clothing/gloves/fingerless.dmi'
+	icon_state = "armsleeves_color"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/gloves/ante_gloves
+	name = "Antediluvian Gloves"
+	desc = "Silky, soft black material emphasised by metalic outlines and claws, all with a gold-colored sheen. Fashionably niche."
+	icon = 'icons/clothing/gloves/ante_gloves.dmi'
+	icon_state = "ante_gloves"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

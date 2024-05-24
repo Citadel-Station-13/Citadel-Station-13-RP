@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 
 /datum/controller/subsystem/characters
 	//! Species
@@ -46,7 +49,7 @@
 			stack_trace("ignoring custom character species path [path] - collides on uid [S.uid]")
 			continue
 		character_species_lookup[S.uid] = S
-	tim_sort(character_species_lookup, /proc/cmp_auto_compare, TRUE)
+	tim_sort(character_species_lookup, GLOBAL_PROC_REF(cmp_auto_compare), TRUE)
 	rebuild_character_species_ui_cache()
 
 /datum/controller/subsystem/characters/proc/rebuild_character_species_ui_cache()

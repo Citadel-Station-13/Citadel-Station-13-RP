@@ -235,7 +235,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	tim_sort(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(SSgarbage.items, cmp=GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
@@ -281,7 +281,7 @@
 	render_stats(SSoverlays.stats, src)
 
 // Render stats list for round-end statistics.
-/proc/render_stats(list/stats, user, sort = /proc/cmp_generic_stat_item_time)
+/proc/render_stats(list/stats, user, sort = GLOBAL_PROC_REF(cmp_generic_stat_item_time))
 	tim_sort(stats, sort, TRUE)
 
 	var/list/lines = list()
@@ -377,7 +377,7 @@
 		if(A && !(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
 
-	for(var/obj/machinery/alarm/alarm in GLOB.machines)
+	for(var/obj/machinery/air_alarm/alarm in GLOB.machines)
 		var/area/A = get_area(alarm)
 		if(A && !(A.type in areas_with_air_alarm))
 			areas_with_air_alarm.Add(A.type)
@@ -512,7 +512,7 @@
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 				/// supercooled so we don't just maxcap the engine lol
-				Phoron.air_contents.adjust_gas_temp(/datum/gas/phoron, 350, 25)
+				Phoron.air_contents.adjust_gas_temp(GAS_ID_PHORON, 350, 25)
 				Phoron.forceMove(Rad)
 				Rad.P = Phoron
 
@@ -550,7 +550,7 @@
 
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
-				Phoron.air_contents.gas[/datum/gas/phoron] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.gas[GAS_ID_PHORON] = 29.1154	//This is a full tank if you filled it from a canister
 				Rad.P = Phoron
 
 				Phoron.loc = Rad
@@ -563,7 +563,7 @@
 				var/obj/machinery/atmospherics/component/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
-					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.
+					Pump.air2.gas[GAS_ID_NITROGEN] = 3750	//The contents of 2 canisters.
 					Pump.air2.temperature = 50
 					Pump.air2.update_values()
 				Pump.update_use_power(USE_POWER_IDLE)
@@ -591,7 +591,7 @@
 	if(!found_the_pump && response == "Setup Completely")
 		to_chat(src, "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>")
 		var/turf/simulated/T = SM.loc
-		T.zone.air.gas[/datum/gas/nitrogen] += 450
+		T.zone.air.gas[GAS_ID_NITROGEN] += 450
 		T.zone.air.temperature = 50
 		T.zone.air.update_values()
 

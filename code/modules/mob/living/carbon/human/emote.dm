@@ -444,7 +444,8 @@
 							robotic = 1
 					if(!robotic)
 						message = "coughs up a small amount of blood!"
-						BloodyMouth()
+						//! disabled for shitcode reasons
+						// BloodyMouth()
 						if(get_gender() == FEMALE)
 							if(species.female_cough_sounds)
 								playsound(src, pick(species.female_cough_sounds), 120)
@@ -584,11 +585,11 @@
 							var/list/laughsounds = list('sound/voice/laughs/masclaugh1.ogg', 'sound/voice/laughs/masclaugh2.ogg')
 							playsound(loc, pick(laughsounds), 50, 1, -1)
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 						else
 							playsound(loc, 'sound/voice/laughs/femlaugh.ogg', 50, 1, -1)
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 					m_type = 2
 				else
 					message = "makes a noise."
@@ -905,13 +906,13 @@
 						if(!spam_flag)
 							playsound(loc, "[pick(species.female_scream_sound)]", 80, 1)
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 
 					else
 						if(!spam_flag)
 							playsound(loc, "[pick(species.male_scream_sound)]", 80, 1) //default to male screams if no gender is present.
 							spam_flag = TRUE
-							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+							addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 				else
 					message = "makes a very loud noise."
 					m_type = 2
@@ -958,10 +959,12 @@
 			src.animate_tail_once()
 
 		if("wag", "sway")
-			src.animate_tail_start()
+			src.toggle_tail_vr()
+			// src.animate_tail_start()
 
 		if("qwag", "fastsway")
-			src.animate_tail_fast()
+			src.toggle_tail_vr()
+			// src.animate_tail_fast()
 
 		if("swag", "stopsway")
 			src.animate_tail_stop()
@@ -1052,16 +1055,18 @@
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
 
+	visible_emote("adjusts [T.his] posture.")
+
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
@@ -1105,20 +1110,19 @@
 		if ("vwag")
 			if(toggle_tail_vr(message = 1))
 				m_type = 1
-				message = "[wagging ? "starts" : "stops"] wagging their tail."
+				message = "[get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_TAIL, SPRITE_ACCESSORY_VARIATION_WAGGING) ? "starts" : "stops"] wagging their tail."
 			else
 				return 1
 		if ("vflap")
 			if(toggle_wing_vr(message = 1))
 				m_type = 1
-				message = "[flapping ? "starts" : "stops"] flapping their wings."
+				message = "[get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS, SPRITE_ACCESSORY_VARIATION_FLAPPING) ? "starts" : "stops"] flapping their wings."
 			else
 				return 1
 		if ("vspread")
 			if(toggle_wing_spread(message = 1))
 				m_type = 1
-				message = "[spread ? "extends" : "retracts"] their wings."
-				src.wing_spread_start()
+				message = "[get_sprite_accessory_variation(SPRITE_ACCESSORY_SLOT_WINGS, SPRITE_ACCESSORY_VARIATION_SPREAD) ? "extends" : "retracts"] their wings."
 			else
 				return 1
 		if ("mlem")
@@ -1140,7 +1144,7 @@
 				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
 				playsound(loc, pick(catlaugh), 50, 1, -1)
 				spam_flag = TRUE
-				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 			var/list/laughs = list("laughs deviously.", "lets out a catty laugh.", "nya ha ha's.")
 			message = "[pick(laughs)]"
 			m_type = 2
@@ -1180,6 +1184,10 @@
 			message = "lets out a squeak."
 			m_type = 2
 			playsound(loc, 'sound/effects/mouse_squeak.ogg', 50, 1, -1)
+		if("mar")
+			message = "lets out a mar."
+			m_type = 2
+			playsound(loc, 'sound/voice/mar.ogg', 50, 1, -1)
 		if ("nsay")
 			nsay()
 			return TRUE
@@ -1214,7 +1222,7 @@
 					src.SpinAnimation(7,1)
 					message = "does a flip!"
 					spam_flag = TRUE
-					addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+					addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 				else
 					if(prob(30)) // Little known fact: HRP is /tg/ + 10
 						src.afflict_paralyze(20 * 2)
@@ -1227,7 +1235,7 @@
 						src.SpinAnimation(7,1)
 						message = "lands another flip. Smooth!"
 						spam_flag = TRUE
-						addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+						addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 
 // New emotes below this line
 		if ("purr")
@@ -1240,7 +1248,7 @@
 				message = "[pick(msg)]"
 				playsound(loc, 'sound/spooky/boneclak.ogg', 50, 1, 1)
 				spam_flag = TRUE
-				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 			m_type = 2
 	if (message)
 		custom_emote(m_type,message)
@@ -1251,60 +1259,12 @@
 /mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
 	spam_flag = FALSE
 
-/mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
-	if(!tail_style || !tail_style.ani_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have a tail that supports this.</span>")
-		return 0
-
-	var/new_wagging = isnull(setting) ? !wagging : setting
-	if(new_wagging != wagging)
-		wagging = new_wagging
-		update_tail_showing()
-	return 1
-
-/mob/living/carbon/human/proc/toggle_wing_vr(var/setting,var/message = 0)
-	if(!wing_style || !wing_style.ani_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
-		return 0
-
-	var/new_flapping = isnull(setting) ? !flapping : setting
-	if(new_flapping != flapping)
-		flapping = setting
-		update_wing_showing()
-	return 1
-
-/mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
-	if(!wing_style)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings!</span>")
-		return 0
-
-	if(!wing_style.spr_state)
-		if(message)
-			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
-		return 0
-
-	var/new_spread = isnull(folded) ? !spread : folded
-	if(new_spread != spread)
-		spread = new_spread
-		update_wing_showing()
-	return 1
-
 /mob/living/carbon/human/verb/toggle_gender_identity_vr()
 	set name = "Set Gender Identity"
 	set desc = "Sets the pronouns when examined and performing an emote."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	var/new_gender_identity = input("Please select a gender Identity.") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL, HERM)
 	if(!new_gender_identity)
 		return 0
 	change_gender_identity(new_gender_identity)
 	return 1
-
-/mob/living/carbon/human/verb/switch_tail_layer()
-	set name = "Switch tail layer"
-	set category = "IC"
-	set desc = "Switch tail layer on top."
-	tail_alt = !tail_alt
-	update_tail_showing()

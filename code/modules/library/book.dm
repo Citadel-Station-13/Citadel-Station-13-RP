@@ -6,7 +6,7 @@
 	throw_range = 5
 	atom_flags = NOCONDUCT
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
-	w_class = ITEMSIZE_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
+	w_class = WEIGHT_CLASS_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
 	attack_verb = list("bashed", "whacked", "educated")
 	var/dat			 // Actual page content
 	var/due_date = 0 // Game time in 1/10th seconds
@@ -45,7 +45,7 @@
 /obj/item/book/attackby(obj/item/W, mob/user)
 	if(carved)
 		if(!store)
-			if(W.w_class < ITEMSIZE_LARGE)
+			if(W.w_class < WEIGHT_CLASS_BULKY)
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				store = W

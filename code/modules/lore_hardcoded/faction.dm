@@ -35,9 +35,9 @@
 /datum/lore/character_background/faction/nanotrasen
 	name = "Nanotrasen"
 	id = "nanotrasen"
-	desc = "Formally established in 2274, NanoTrasen is one of the foremost research and development companies in the galaxy. \
+	desc = "Formally established in 2274, Nanotrasen is one of the foremost research and development companies in the galaxy. \
 	Originally focused on logistics and consumer product manufacturing, their swift move into the field of Phoron has lead to \
-	them becoming the foremost experts on the substance and its uses. In the modern day, NanoTrasen prides \
+	them becoming the foremost experts on the substance and its uses. In the modern day, Nanotrasen prides \
 	itself on being an early adopter to as many new technologies as possible, often offering the newest \
 	products to their employees. In an effort to combat complaints about being 'guinea pigs', Nanotrasen \
 	also offers one of the most comprehensive medical plans in Frontier space, up to and including cloning, \
@@ -45,9 +45,9 @@
 	<br><br>\
 	NT's most well known products are its phoron based creations; especially those used in Cryotherapy. \
 	It also boasts an prosthetic line, which is provided to its employees as needed, and is used as an incentive \
-	for newly tested posibrains to remain with the company. NanoTrasen's corporate headquarters is based out of \
+	for newly tested posibrains to remain with the company. Nanotrasen's corporate headquarters is based out of \
 	the NTS Creon in the privateyl owned Thebes system."
-	contractor_info = "You are an employee working for NanoTrasen. You are not a contractor, <i>you belong here.</i>"
+	contractor_info = "You are an employee working for Nanotrasen. You are not a contractor, <i>you belong here.</i>"
 	job_whitelist = null
 	job_blacklist = list(JOB_ID_TRADER)
 
@@ -150,10 +150,10 @@
 	id = "hephaestus"
 	desc = "Hephaestus Industries is the largest supplier of arms, ammunition, and small millitary vehicles on the Frontier. \
 	Hephaestus products have a reputation for reliability, and the corporation itself has a notable trade and research pact \
-	with NanoTrasen. They otherwise enforce pacts and trade arrangements with the help of a fairly large asset-protection contingent which \
+	with Nanotrasen. They otherwise enforce pacts and trade arrangements with the help of a fairly large asset-protection contingent which \
 	prevents any contracting polities from using their own materiel against them. The Orion Confederation itself is one of Hephaestus' largest \
 	non-corporate bulk contractors."
-	contractor_info = "NanoTrasen and Hephaestus have a long and beneficial working relationship. Your employers would not like it if you strained that relationship in any way, and therefore, neither would you."
+	contractor_info = "Nanotrasen and Hephaestus have a long and beneficial working relationship. Your employers would not like it if you strained that relationship in any way, and therefore, neither would you."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -195,10 +195,10 @@
 	of their medical equipment - from surgical tools and industrial medical devices to the Oddyseus trauma response mecha \
 	and everything in between. Their equipment tends to be top-of-the-line, most obviously shown by their incredibly \
 	human-like FBP designs. Vey's rise to stardom came from their introduction of cosmetic resleeving, although in \
-	recent years they've been forced to diversify as their patents expired and NanoTrasen-made medications became \
-	essential to modern sleeving techniques. Vey-Medical possesses a number of trade agreements and research pacts with NanoTrasen, \
+	recent years they've been forced to diversify as their patents expired and Nanotrasen-made medications became \
+	essential to modern sleeving techniques. Vey-Medical possesses a number of trade agreements and research pacts with Nanotrasen, \
 	resulting in what is functionally considered an alliance."
-	contractor_info = "Working with NanoTrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
+	contractor_info = "Working with Nanotrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
 	job_whitelist = list(
 		JOB_ID_FIELD_MEDIC,
 		JOB_ID_HEAD_NURSE,
@@ -222,7 +222,7 @@
 	led to their tertiary interest in the development and sale of high-grade AI systems. Ward-Takahashi's economies \
 	of scale frequently steal market share from Nanotrasen's high-price products, leading to a bitter rivalry in the \
 	consumer electronics market."
-	contractor_info = "Being allowed to work on a NanoTrasen facility is atypical. In fact, being employed here at all has made you suspicious. You're probably being watched. But Headquarters would love to hear about anything strange that you find."
+	contractor_info = "Being allowed to work on a Nanotrasen facility is atypical. In fact, being employed here at all has made you suspicious. You're probably being watched. But Headquarters would love to hear about anything strange that you find."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -244,7 +244,7 @@
 	on phoron research cut into their R&D capabilities and Vey-Med's superior medical equipment effectively decimated their own equipment \
 	interests. The three-way rivalry between these companies for dominance in the medical field is well-known and a matter of \
 	constant economic speculation."
-	contractor_info = "You dislike working under NanoTrasen. Zeng Hu saw fit to assign you to this post as part of a work exchange program. Although you were not explicitly told, you are presumably here to keep an eye on NanoTrasen's medical research."
+	contractor_info = "You dislike working under Nanotrasen. Zeng Hu saw fit to assign you to this post as part of a work exchange program. Although you were not explicitly told, you are presumably here to keep an eye on Nanotrasen's medical research."
 	job_whitelist = list(
 		JOB_ID_HEAD_NURSE,
 		JOB_ID_MEDICAL_DOCTOR,

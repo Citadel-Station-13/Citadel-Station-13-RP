@@ -7,7 +7,7 @@
 	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1
 	throw_range = 1
-	w_class = ITEMSIZE_LARGE//So you can't hide it in your pocket or some such.
+	w_class = WEIGHT_CLASS_BULKY//So you can't hide it in your pocket or some such.
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
 	var/mob/living/creator
 	var/mopping = 0
@@ -43,7 +43,7 @@
 				T.clean_deploy(src)
 			to_chat(user, "<span class='notice'>You have finished mopping!</span>")
 
-/obj/effect/attackby(obj/item/I, mob/user)
+/obj/effect/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/mop_deploy) || istype(I, /obj/item/soap))
 		return
 	..()

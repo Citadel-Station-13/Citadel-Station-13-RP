@@ -64,13 +64,13 @@
 
 	owner = H
 	if(owner)
-		GLOB.moved_event.register(owner, src, .proc/update_active_camera_screen)
+		GLOB.moved_event.register(owner, src, PROC_REF(update_active_camera_screen))
 	check_whitelist = check_species_whitelist
 	whitelist = species_whitelist
 	blacklist = species_blacklist
 
 /datum/tgui_module_old/appearance_changer/Destroy()
-	GLOB.moved_event.unregister(owner, src, .proc/update_active_camera_screen)
+	GLOB.moved_event.unregister(owner, src, PROC_REF(update_active_camera_screen))
 	last_camera_turf = null
 	qdel(cam_screen)
 	QDEL_LIST(cam_plane_masters)
@@ -299,7 +299,7 @@
 	if(custom_state)
 		ui.set_state(custom_state)
 
-/datum/tgui_module_old/appearance_changer/ui_static_data(mob/user)
+/datum/tgui_module_old/appearance_changer/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	generate_data(usr)
@@ -327,7 +327,7 @@
 
 	return data
 
-/datum/tgui_module_old/appearance_changer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/appearance_changer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	generate_data(user)
@@ -390,7 +390,7 @@
 		data["facial_hair_color"] = rgb(target.r_facial, target.g_facial, target.b_facial)
 	return data
 
-/datum/tgui_module_old/appearance_changer/ui_static_data(mob/user)
+/datum/tgui_module_old/appearance_changer/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["mapRef"] = map_name
 	return data

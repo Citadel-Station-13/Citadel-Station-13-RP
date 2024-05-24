@@ -16,9 +16,11 @@
 
 	if(prob(2))
 		var/type = junk()
-		new type(T)
+		var/obj/junk = new type(T)
+		junk.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
 	if(prob(2))
-		new /obj/effect/debris/cleanable/blood/oil(T)
+		var/obj/effect/debris/cleanable/blood/oil/oil = new(T)
+		oil.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
 	if(prob(25))	// Keep in mind that only "corners" get any sort of web
 		attempt_web(T, cardinal_turfs)
 
@@ -55,7 +57,8 @@ var/global/list/random_junk
 		var/turf/neighbour = get_step(T, dir)
 		if(neighbour && neighbour.density)
 			if(dir == WEST)
-				new /obj/effect/debris/cleanable/cobweb(T)
+				var/obj/effect/debris/cleanable/cobweb/w1 = new(T)
+				w1.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
 			if(dir == EAST)
-				new /obj/effect/debris/cleanable/cobweb2(T)
-			return
+				var/obj/effect/debris/cleanable/cobweb2/w2 = new(T)
+				w2.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU

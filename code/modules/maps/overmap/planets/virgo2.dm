@@ -1,16 +1,14 @@
 // V2 doesnt actually have its own weather so this is gonna be here for now
 /datum/atmosphere/planet/virgo2
-	base_gases = list(
-	/datum/gas/nitrogen = 0.10,
-	/datum/gas/oxygen = 0.03,
-	/datum/gas/carbon_dioxide = 0.87
+	base = list(
+		/datum/gas/nitrogen = 0.10,
+		/datum/gas/oxygen = 0.03,
+		/datum/gas/carbon_dioxide = 0.87,
 	)
-	base_target_pressure = 312.1
-	minimum_pressure = 312.1
-	maximum_pressure = 312.1
-	minimum_temp = 612
-	maximum_temp = 612
-
+	pressure_low = 312.1
+	pressure_high = 312.1
+	temperature_low = 612
+	temperature_high = 612
 
 /obj/overmap/entity/visitable/sector/virgo2
 	name = "Virgo 2"
@@ -57,7 +55,7 @@
 	prob_fall = 50
 	//guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/basic = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage = 3,
 		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion = 1,
 		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser = 3,
 		/mob/living/simple_mob/vore/aggressive/corrupthound = 1

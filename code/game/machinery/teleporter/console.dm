@@ -95,7 +95,7 @@
 		ui = new(user, src, "TeleporterConsole", name) // 500, 800
 		ui.open()
 
-/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["disabled"] = is_disabled()
@@ -190,7 +190,7 @@
 	playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 
 /obj/machinery/computer/teleporter/verb/set_id(t as text)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Set teleporter ID"
 	set src in oview(1)
 	set desc = "ID Tag:"

@@ -107,7 +107,7 @@
 	// One cane mitigates a broken leg+foot, or a missing foot.
 	// Two canes are needed for a lost leg. If you are missing both legs, canes aren't gonna help you.
 	for(var/obj/item/cane/cane as anything in get_held_items_of_type(/obj/item/cane))
-		stance_damage -= 2
+		stance_damage -= 4
 
 	// standing is poor
 	if(stance_damage >= 4 || (stance_damage >= 2 && prob(5)))

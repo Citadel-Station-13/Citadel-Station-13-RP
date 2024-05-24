@@ -108,7 +108,7 @@
 	triggered = 1
 	for (var/turf/simulated/floor/target in range(1,src))
 		if(!target.blocks_air)
-			target.assume_gas(/datum/gas/chlorine, 30)
+			target.assume_gas(GAS_ID_CHLORINE, 30)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(src)
@@ -120,7 +120,7 @@
 	triggered = 1
 	for (var/turf/simulated/floor/target in range(1,src))
 		if(!target.blocks_air)
-			target.assume_gas(/datum/gas/nitrous_oxide, 30)
+			target.assume_gas(GAS_ID_NITROUS_OXIDE, 30)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(src)
@@ -132,7 +132,7 @@
 	triggered = 1
 	for (var/turf/simulated/floor/target in range(1,src))
 		if(!target.blocks_air)
-			target.assume_gas(/datum/gas/phoron, 30)
+			target.assume_gas(GAS_ID_PHORON, 30)
 			target.hotspot_expose(1000, CELL_VOLUME)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)

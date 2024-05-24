@@ -21,7 +21,7 @@
 	path = /obj/item/hardsuit_module/device/plasmacutter
 
 /datum/uplink_item/item/hardsuit_modules/ewar_voice
-	name = "Electrowarfare Suite and Voice Synthesiser"
+	name = "Electrowarfare Suite and Voice Synthesizer"
 	item_cost = 30
 	path = /obj/item/storage/box/syndie_kit/ewar_voice
 

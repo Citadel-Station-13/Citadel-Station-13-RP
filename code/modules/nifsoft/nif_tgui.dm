@@ -31,7 +31,7 @@
 
 /datum/component/nif_menu/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, .proc/create_mob_button)
+	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(create_mob_button))
 	var/mob/owner = parent
 	if(owner.client)
 		create_mob_button(parent)
@@ -53,7 +53,7 @@
 	var/datum/hud/HUD = user.hud_used
 	if(!screen_icon)
 		screen_icon = new()
-		RegisterSignal(screen_icon, COMSIG_CLICK, .proc/nif_menu_click)
+		RegisterSignal(screen_icon, COMSIG_CLICK, PROC_REF(nif_menu_click))
 	screen_icon.icon = HUD.ui_style
 	screen_icon.color = HUD.ui_color
 	screen_icon.alpha = HUD.ui_alpha
@@ -65,7 +65,7 @@
 /datum/component/nif_menu/proc/nif_menu_click(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.nif)
-		INVOKE_ASYNC(H.nif, .proc/ui_interact, user)
+		INVOKE_ASYNC(H.nif, PROC_REF(ui_interact), user)
 
 /**
  * Screen atom for NIF menu access
@@ -86,7 +86,7 @@
  */
 /mob/living/carbon/human/proc/nif_menu()
 	set name = "NIF Menu"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Open the NIF user interface."
 
 	var/obj/item/nif/N = nif
@@ -96,7 +96,7 @@
 /**
  * The NIF State ensures that only our authorized implanted user can touch us.
  */
-/obj/item/nif/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/nif/ui_state()
 	return GLOB.ui_nif_main_state
 
 /**
@@ -112,7 +112,7 @@
  * ui_data gives the UI any relevant data it needs.
  * In our case, that's basically everything from our statpanel.
  */
-/obj/item/nif/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/nif/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["theme"] = save_data["ui_theme"]

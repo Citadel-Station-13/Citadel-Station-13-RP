@@ -46,8 +46,8 @@
 	flash_mod     = 2
 	chemOD_mod    = 1 // turns out this is just damage
 
-	breath_type = /datum/gas/phoron
-	poison_type = /datum/gas/oxygen
+	breath_type = GAS_ID_PHORON
+	poison_type = GAS_ID_OXYGEN
 	siemens_coefficient = 1
 
 	speech_bubble_appearance = "phoron"
@@ -79,18 +79,14 @@
 
 	body_temperature = T20C
 
-/datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H)
-	var/turf/T = H.loc
-	if(!T)
-		return
-	var/datum/gas_mixture/environment = T.copy_cell_volume()
+/datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(!environment)
 		return
 
 	/// In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 	var/enviroment_bad = FALSE
 
-	if(environment.gas[/datum/gas/oxygen] > 0.5)
+	if(environment.gas[GAS_ID_OXYGEN] > 0.5)
 		// Now any airtight spessuit works for them. Which means exploration voidsuits work. :O
 		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
 			return

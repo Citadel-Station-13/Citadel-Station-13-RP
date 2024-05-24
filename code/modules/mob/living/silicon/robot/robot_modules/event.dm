@@ -67,7 +67,7 @@
 		// For growing flowers
 		/obj/item/material/minihoe,
 		/obj/item/material/knife/machete/hatchet,
-		/obj/item/analyzer/plant_analyzer,
+		/obj/item/plant_analyzer,
 		/obj/item/storage/bag/plants,
 		/obj/item/robot_harvester,
 

@@ -19,9 +19,6 @@
 	announce_channel = "Talon"
 	on_store_name = "ITV Talon Robotic Storage"
 
-/obj/landmark/map_data/talon
-    height = 2
-
 ///////////////////////////
 //// The Talon
 /obj/overmap/entity/visitable/ship/talon
@@ -172,15 +169,18 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	output_level = output_level_max
 	input_attempt = TRUE
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/talon, 28)
 /obj/machinery/power/apc/talon
 	req_access = list()
 	req_one_access = list(ACCESS_FACTION_TALON)
 	alarms_hidden = 1
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/talon/hyper, 28)
 /obj/machinery/power/apc/talon/hyper
 	cell_type = /obj/item/cell/hyper
 
-/obj/machinery/alarm/talon
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
+/obj/machinery/air_alarm/talon
 	req_access = list()
 	req_one_access = list(ACCESS_FACTION_TALON)
 	alarms_hidden = 1

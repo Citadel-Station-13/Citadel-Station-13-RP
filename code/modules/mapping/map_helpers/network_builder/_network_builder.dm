@@ -10,6 +10,8 @@
 	var/adminspawned = FALSE
 	/// our base type
 	var/base_type
+	/// constraint
+	var/network_constraint
 
 /obj/map_helper/network_builder/Initialize(mapload)
 	. = ..()
@@ -20,9 +22,9 @@
 		adminspawned = TRUE
 		rebuild()
 		return INITIALIZE_HINT_NORMAL
-	var/conflict = length(duplicates())
-	if(conflict)
-		stack_trace("WARNING: [type] network building helper found check_duplicates() conflicts [english_list(conflict)] in its location.!")
+	var/conflict = duplicates()
+	if(length(conflict))
+		stack_trace("WARNING: [type] network building helper found check_duplicates() conflicts [english_list(conflict)] ([length(conflict)]) in its location.([src.x];[src.y];[src.z])!")
 		return INITIALIZE_HINT_QDEL
 	network_directions = scan()
 	return INITIALIZE_HINT_LATELOAD

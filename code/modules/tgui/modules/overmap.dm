@@ -17,7 +17,7 @@
 				unlook(M)
 	. = ..()
 
-/datum/tgui_module_old/ship/ui_status(mob/user)
+/datum/tgui_module_old/ship/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_overmap(user))
@@ -25,7 +25,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module_old/ship/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/ship/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	user.unset_machine()
 	unlook(user)
@@ -57,7 +57,7 @@
 	user.reset_perspective(linked)
 	var/list/view_size = decode_view_size(world.view)
 	user.client?.set_temporary_view(view_size[1] + extra_view, view_size[2] + extra_view)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unlook))
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module_old/ship/proc/unlook(var/mob/user)
@@ -102,7 +102,7 @@
 
 	. = ..()
 
-/datum/tgui_module_old/ship/nav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/ship/nav/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
@@ -124,7 +124,7 @@
 
 	return data
 
-/datum/tgui_module_old/ship/nav/ui_act(action, params)
+/datum/tgui_module_old/ship/nav/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -153,7 +153,7 @@
 	// SENSORS
 	var/obj/machinery/shipsensors/sensors
 
-/datum/tgui_module_old/ship/fullmonty/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/ship/fullmonty/ui_state()
 	return GLOB.admin_state
 
 /datum/tgui_module_old/ship/fullmonty/New(host, obj/overmap/entity/visitable/ship/new_linked)
@@ -178,7 +178,7 @@
 			break
 
 // Beware ye eyes. This holds all of the data from helm, engine, and sensor control all at once.
-/datum/tgui_module_old/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/ship/fullmonty/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	// HELM
@@ -294,7 +294,7 @@
 	return data
 
 // Beware ye eyes. This holds all of the ACTIONS from helm, engine, and sensor control all at once.
-/datum/tgui_module_old/ship/fullmonty/ui_act(action, params)
+/datum/tgui_module_old/ship/fullmonty/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

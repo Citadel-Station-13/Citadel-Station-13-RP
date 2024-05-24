@@ -46,6 +46,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/custom/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
@@ -72,7 +75,7 @@
 
 //Called during handle_environment in Life() ticks.
 // Return: Not used.
-/datum/species/custom/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/custom/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return ..()
 
 //Called when spawning to equip them with special things.
@@ -81,11 +84,11 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), SLOT_ID_MASK)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK)
-		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H), /datum/inventory_slot_meta/abstract/hand/right)
+		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H), /datum/inventory_slot/abstract/hand/right)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/hand/right)
-		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H.back), /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot/abstract/hand/right)
+		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H.back), /datum/inventory_slot/abstract/put_in_backpack)
 		H.internal = H.r_hand
 	H.internal = locate(/obj/item/tank) in H.contents
 	if(istype(H.internal,/obj/item/tank) && H.internals)

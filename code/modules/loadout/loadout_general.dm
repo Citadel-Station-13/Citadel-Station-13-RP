@@ -1,6 +1,7 @@
 /datum/loadout_entry/cane
 	name = "Cane"
 	path = /obj/item/cane
+	slot = SLOT_ID_HANDS
 
 /datum/loadout_entry/cane/white
 	name = "Cane - White"
@@ -57,10 +58,14 @@
 /datum/loadout_entry/plushie/New()
 	..()
 	var/list/plushies = list()
-	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - /obj/item/toy/plushie/therapy)
+	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - list(/obj/item/toy/plushie/therapy, /obj/item/toy/plushie/snowflake))
 		var/obj/item/toy/plushie/plushie_type = plushie
-		plushies[initial(plushie_type.name)] = plushie_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(plushies, /proc/cmp_text_asc))
+		var/entry_name = initial(plushie_type.name)
+		var/obj/item/toy/plushie/snowflake/snowflake = plushie
+		if(ispath(snowflake, /obj/item/toy/plushie/snowflake))
+			entry_name = "[entry_name] - ([initial(snowflake.player_name)])"
+		plushies[entry_name] = plushie_type
+	tweaks += new/datum/loadout_tweak/path(tim_sort(plushies, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/flask
 	name = "Flask"
@@ -91,7 +96,7 @@
 		var/obj/item/storage/toolbox/lunchbox/lunchbox = lunchbox_type
 		if(!initial(lunchbox.filled))
 			lunchboxes[initial(lunchbox.name)] = lunchbox_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(lunchboxes, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(lunchboxes, GLOBAL_PROC_REF(cmp_text_asc)))
 	tweaks += new/datum/loadout_tweak/contents(lunchables_lunches(), lunchables_snacks(), lunchables_drinks())
 
 /datum/loadout_entry/towel
@@ -118,7 +123,7 @@
 	for(var/tball in typesof(/obj/item/toy/tennis) - typesof(/obj/item/toy/tennis/rainbow))
 		var/obj/item/toy/tennis/ball_type = tball
 		tennis_balls[initial(ball_type.name)] = ball_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(tennis_balls, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(tennis_balls, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/loadout_entry/swimsuitcaps
 	name = "Swimsuit Capsule Selection"
@@ -130,4 +135,9 @@
 	for(var/swimsuit in typesof(/obj/item/storage/box/fluff/swimsuit))
 		var/obj/item/storage/box/fluff/swimsuit/swimsuit_type = swimsuit
 		swimsuits[initial(swimsuit_type.name)] = swimsuit_type
-	tweaks += new/datum/loadout_tweak/path(tim_sort(swimsuits, /proc/cmp_text_asc))
+	tweaks += new/datum/loadout_tweak/path(tim_sort(swimsuits, GLOBAL_PROC_REF(cmp_text_asc)))
+
+/datum/loadout_entry/customizable_permit
+	name = "Customizable Permit"
+	description = "A customizable permit you can use for... just about anything! Be sure to customize the name and description. It is meant to represent generic driver's or pilot's licenses, and similar fluff items. It includes an irremovable disclaimer and may be freely confiscated or revoked at the discretion of Security and/or Command if you attempt to abuse it!"
+	path = /obj/item/card_fluff

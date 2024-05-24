@@ -21,12 +21,12 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	communications across different stations, planets, or even star systems."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "communicator_home"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	show_messages = 1
 
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MAGNET = 2, TECH_BLUESPACE = 2, TECH_DATA = 2)
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	var/video_range = 3
 	var/obj/machinery/camera/communicator/video_source	// Their camera
@@ -82,7 +82,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Initialize(mapload)
 	. = ..()
 	all_communicators += src
-	tim_sort(all_communicators, /proc/cmp_name_asc)
+	tim_sort(all_communicators, GLOBAL_PROC_REF(cmp_name_asc))
 	node = get_exonet_node(src)
 	START_PROCESSING(SSobj, src)
 	camera = new(src)
@@ -92,7 +92,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	setup_tgui_camera()
 
 	//This is a pretty terrible way of doing this.
-	addtimer(CALLBACK(src, .proc/register_to_holder), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(register_to_holder)), 5 SECONDS)
 
 // Proc: register_to_holder()
 // Parameters: None
@@ -351,7 +351,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	communications across different stations, planets, or even star systems. You can wear this one on your wrist!"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "commwatch"
-	item_flags = CLOTHING_ALLOW_SINGLE_LIMB
+	item_flags = CLOTHING_ALLOW_SINGLE_LIMB | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_GLOVES
 
 /obj/item/communicator/watch/update_icon_state()

@@ -174,16 +174,14 @@
 "aC" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/hyper;
-	dir = 4;
 	environ = 1;
 	equipment = 1;
 	lighting = 1;
 	locked = 0;
 	name = "Sif Free Radio APC";
-	operating = 0;
-	pixel_x = 24
+	operating = 0
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/tiled/techfloor,
@@ -214,7 +212,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "aH" = (
-/obj/item/reagent_containers/food/snacks/unajerky,
+/obj/item/reagent_containers/food/snacks/boxed/unajerky,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -242,7 +240,7 @@
 /obj/item/material/knife/machete/hatchet,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/material/minihoe,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/random_multi/single_item/sfr_headset,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)

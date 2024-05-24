@@ -88,16 +88,16 @@
 		L.adjust_fire_stacks(amount / fire_mult)
 
 /datum/reagent/toxin/hydrophoron/affect_touch(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(0, removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
+	M.take_random_targeted_damage(brute = 0, brute = removed * 0.1) //being splashed directly with hydrophoron causes minor chemical burns
 	if(prob(10 * fire_mult))
 		M.pl_effects()
 
 /datum/reagent/toxin/hydrophoron/touch_turf(turf/simulated/T)
 	if(!istype(T))
 		return
-	T.assume_gas(/datum/gas/phoron, CEILING(volume/2, 1), T20C)
+	T.assume_gas(GAS_ID_PHORON, CEILING(volume/2, 1), T20C)
 	for(var/turf/simulated/floor/target_tile in range(0,T))
-		target_tile.assume_gas(/datum/gas/phoron, volume/2, 400+T0C)
+		target_tile.assume_gas(GAS_ID_PHORON, volume/2, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(700, 400)
 	remove_self(volume)
 
@@ -137,7 +137,7 @@
 	M.adjust_fire_stacks(removed / 5)
 	if(alien == IS_VOX || alien == IS_XENOHYBRID)
 		return
-	M.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
+	M.take_random_targeted_damage(brute = 0, brute = removed * 0.1) //being splashed directly with phoron causes minor chemical burns
 	if(prob(50))
 		M.pl_effects()
 
@@ -154,7 +154,7 @@
 /datum/reagent/toxin/phoron/touch_turf(turf/simulated/T, amount)
 	if(!istype(T))
 		return
-	T.assume_gas(/datum/gas/volatile_fuel, amount, T20C)
+	T.assume_gas(GAS_ID_VOLATILE_FUEL, amount, T20C)
 	remove_self(amount)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
@@ -233,7 +233,7 @@
 		M.emote(pick("twitch", "blink_r", "shiver"))
 	if(prob(15))
 		M.visible_message("[M] shudders violently.", "You shudder uncontrollably, it hurts.")
-		M.take_organ_damage(6 * removed, 0)
+		M.take_random_targeted_damage(brute = 6 * removed, brute = 0)
 	M.add_chemical_effect(CE_SPEEDBOOST, 1)
 
 /datum/reagent/toxin/potassium_chloride
@@ -388,10 +388,9 @@
 /datum/reagent/toxin/plantbgone/touch_obj(obj/O, volume)
 	if(istype(O, /obj/effect/plant))
 		qdel(O)
-	else if(istype(O, /obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.health -= rand(15, 35)
-		alien_weeds.healthcheck()
+	else if(istype(O, /obj/structure/alien/weeds/))
+		var/obj/structure/alien/weeds/alien_weeds = O
+		alien_weeds.damage_integrity(15, 35)
 
 /datum/reagent/toxin/plantbgone/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE)
@@ -474,6 +473,17 @@
 	power = 2
 	meltdose = 30
 
+//Solid Chlorine is alkaline, but gaseous Chlorine is acidic.
+/datum/reagent/acid/chlorine_gas
+	name = "Chlorine gas"
+	id = "chlorinegas"
+	description = "A pungent yellow-green acidic gas."
+	taste_description = "bleach"
+	reagent_state = REAGENT_GAS
+	color = "#c5f72d"
+	power = 5
+	meltdose = 10
+
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"
 	id = "thermite_v"
@@ -538,11 +548,11 @@
 			M.afflict_stun(20 * 6)
 		return
 	if(alien == IS_SKRELL)
-		M.take_organ_damage(2.4 * removed, 0)
+		M.take_random_targeted_damage(brute = 2.4 * removed, brute = 0)
 		if(M.losebreath < 10)
 			M.AdjustLosebreath(1)
 	else
-		M.take_organ_damage(3 * removed, 0)
+		M.take_random_targeted_damage(brute = 3 * removed, brute = 0)
 		if(M.losebreath < 15)
 			M.AdjustLosebreath(1)
 
@@ -1144,4 +1154,4 @@
 	affects_robots = TRUE
 
 /datum/reagent/grubshock/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(0, removed * power * 0.2)
+	M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2)

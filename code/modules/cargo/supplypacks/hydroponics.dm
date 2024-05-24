@@ -56,7 +56,7 @@
 			/obj/item/reagent_containers/glass/bottle/ammonia = 2,
 			/obj/item/material/knife/machete/hatchet,
 			/obj/item/material/minihoe,
-			/obj/item/analyzer/plant_analyzer,
+			/obj/item/plant_analyzer,
 			/obj/item/clothing/gloves/botanic_leather,
 			/obj/item/clothing/suit/storage/apron,
 			/obj/item/material/minihoe,
@@ -238,12 +238,9 @@
 	container_name = "Glacicorn crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack/hydro/cow
+/datum/supply_pack/hydro/furnacegrub
 	name = "Furnace Grub crate"
 	cost = 40
 	container_type = /obj/structure/largecrate/animal/furnacegrub
 	container_name = "Furnace Grub crate"
 	access = ACCESS_GENERAL_BOTANY
-
-
-

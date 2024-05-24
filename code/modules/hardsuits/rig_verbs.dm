@@ -137,7 +137,7 @@
 		to_chat(usr, "<span class='warning'>The hardsuit is not being worn.</span>")
 		return
 
-	if(!check_suit_access(usr))
+	if(!is_activated() && !check_suit_access(usr))
 		return
 
 	toggle_seals(wearer)
@@ -174,7 +174,7 @@
 
 /obj/item/hardsuit/verb/alter_voice()
 
-	set name = "Configure Voice Synthesiser"
+	set name = "Configure Voice Synthesizer"
 	set desc = "Toggles or configures your voice synthesizer."
 	set category = "Hardsuit"
 	set src = usr.contents
@@ -191,7 +191,7 @@
 		return
 
 	if(!speech)
-		to_chat(usr, "<span class='warning'>The hardsuit does not have a speech synthesiser.</span>")
+		to_chat(usr, "<span class='warning'>The hardsuit does not have a speech synthesizer.</span>")
 		return
 
 	speech.engage()

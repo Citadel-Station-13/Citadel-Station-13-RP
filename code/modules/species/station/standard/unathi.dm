@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/unathi
+	carry_strength_add = CARRY_STRENGTH_ADD_UNATHI
+	carry_strength_factor = CARRY_FACTOR_MOD_UNATHI
+
 /datum/species/unathi
 	uid = SPECIES_ID_UNATHI
 	id = SPECIES_ID_UNATHI
@@ -7,13 +11,17 @@
 	primitive_form = SPECIES_MONKEY_UNATHI
 	default_bodytype = BODYTYPE_UNATHI
 
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/unathi
+
 	// icon_template = 'icons/mob/species/template_tall.dmi' //TODO: Tall Unathi :D
 	icobase       = 'icons/mob/species/unathi/body_greyscale.dmi'
 	deform        = 'icons/mob/species/unathi/deformed_body_greyscale.dmi'
 	husk_icon     = 'icons/mob/species/unathi/husk.dmi'
 	preview_icon  = 'icons/mob/species/unathi/preview.dmi'
-	tail = "sogtail"
-	tail_animation = 'icons/mob/species/unathi/tail_greyscale.dmi'
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,
+	)
 
 	blurb = {"
 	A heavily reptillian species, Unathi hail from the Uuosa-Eso system, which roughly translates to 'burning mother'.
@@ -131,6 +139,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/unathi/equip_survival_gear(mob/living/carbon/human/H)

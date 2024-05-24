@@ -358,6 +358,11 @@
 	var/datum/nifsoft/soulcatcher/soulcatcher
 	var/identifying_gender
 
+/mob/living/carbon/brain/caught_soul/Login()
+	..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
+	identifying_gender = client.prefs.identifying_gender
+	reset_perspective((nif?.human) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -493,7 +498,7 @@
 
 /mob/living/carbon/brain/caught_soul/resist()
 	set name = "Resist"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	to_chat(src,SPAN_WARNING("There's no way out! You're stuck in VR."))
 
@@ -522,7 +527,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, PROC_REF(human_moved))
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
@@ -598,7 +603,7 @@
 /mob/living/carbon/human/proc/nsay(message as text)
 	set name = "NSay"
 	set desc = "Speak into your NIF's Soulcatcher."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	src.nsay_act(message)
 
@@ -628,7 +633,7 @@
 /mob/living/carbon/human/proc/nme(message as message|null)
 	set name = "NMe"
 	set desc = "Emote into your NIF's Soulcatcher."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	src.nme_act(message)
 

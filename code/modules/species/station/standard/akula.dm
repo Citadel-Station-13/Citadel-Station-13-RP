@@ -10,8 +10,10 @@
 	preview_icon = 'icons/mob/species/akula/preview.dmi'
 	husk_icon    = 'icons/mob/species/akula/husk.dmi'
 	default_bodytype = BODYTYPE_AKULA
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/akula,
+	)
 
 	blurb = {"
 	The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark.
@@ -31,7 +33,7 @@
 	max_additional_languages = 3
 	name_language   = LANGUAGE_ID_SKRELL
 	intrinsic_languages = LANGUAGE_ID_SKRELL
-	assisted_langs  = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	assisted_langs  = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
 	// darksight  = 8
 	// slowdown   = -0.5
@@ -60,6 +62,9 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 
 /datum/species/akula/can_breathe_water()

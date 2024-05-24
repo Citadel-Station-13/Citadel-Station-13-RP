@@ -4,7 +4,7 @@
 #define COMSIG_ATOM_THROW_IMPACTED				"throw_impacted"
 /// from base of /atom/movable/proc/throw_impact: (AM, thrownthing)
 #define COMSIG_MOVABLE_THROW_IMPACT				"throw_impact"
-// This set of returns can sbe for both of the above!
+// This set of returns can be for both of the above!
 	/// cancel further actions in this hit
 	#define COMPONENT_THROW_HIT_NEVERMIND				(1<<0)
 	/// pierce through.

@@ -2,7 +2,8 @@
 /obj/machinery/door/airlock/multi_tile
 	airlock_type = "Wide"
 	width = 2
-	appearance_flags = 0
+	autoset_dir = FALSE
+	SET_APPEARANCE_FLAGS(TILE_BOUND)
 	var/obj/structure/filler_object/filler1
 	var/obj/structure/filler_object/filler2
 	open_sound_powered = 'sound/machines/door/WideOpen.ogg'
@@ -11,13 +12,16 @@
 	fill_file = 'icons/obj/doors/double/fill_steel.dmi'
 	color_file = 'icons/obj/doors/double/color.dmi'
 	color_fill_file = 'icons/obj/doors/double/fill_color.dmi'
-	glass_file = 'icons/obj/doors/double/fill_glass.dmi'
 	bolts_file = 'icons/obj/doors/double/lights_bolts.dmi'
-	deny_file = 'icons/obj/doors/double/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/double/lights_green.dmi'
+	panel_file = 'icons/obj/doors/double/panel.dmi'
 	emag_file = 'icons/obj/doors/double/emag.dmi'
 	stripe_file = 'icons/obj/doors/double/stripe.dmi'
 	stripe_fill_file = 'icons/obj/doors/double/fill_stripe.dmi'
+
+/obj/machinery/door/airlock/multi_tile/preloading_dir(datum/map_preloader/preloader)
+	. = ..()
+	SetBounds()
 
 /obj/machinery/door/airlock/multi_tile/Initialize(mapload)
 	. = ..()
@@ -37,34 +41,16 @@
 	. = ..()
 	SetBounds()
 
-/obj/machinery/door/airlock/multi_tile/open()
-	. = ..()
-
-	if(filler1)
-		filler1.set_opacity(opacity)
-		if(filler2)
-			filler2.set_opacity(opacity)
-
-	return .
-
-/obj/machinery/door/airlock/multi_tile/close()
-	. = ..()
-
-	if(filler1)
-		filler1.set_opacity(opacity)
-		if(filler2)
-			filler2.set_opacity(opacity)
-
-	return .
-
 /obj/machinery/door/airlock/multi_tile/proc/SetBounds()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
+			dir = WEST
 		else
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
+			dir = SOUTH
 
 /obj/machinery/door/airlock/multi_tile/proc/create_fillers()
 	var/filler2_loc
@@ -88,7 +74,11 @@
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
 	window_color = GLASS_COLOR
+	fill_file = 'icons/obj/doors/double/fill_glass.dmi'
 
+/obj/machinery/door/airlock/multi_tile/set_opacity(var/new_opacity)
+	filler1.set_opacity(new_opacity)
+	filler2.set_opacity(new_opacity)
 
 /obj/machinery/door/airlock/multi_tile/metal
 	name = "Airlock"

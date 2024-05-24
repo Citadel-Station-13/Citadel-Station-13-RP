@@ -1,23 +1,22 @@
 
 /datum/atmosphere/planet/virgo3b
-	base_gases = list(
-	/datum/gas/nitrogen = 0.16,
-	/datum/gas/phoron = 0.72,
-	/datum/gas/carbon_dioxide = 0.12
+	base = list(
+		/datum/gas/nitrogen = 0.36,
+		/datum/gas/phoron = 0.52,
+		/datum/gas/carbon_dioxide = 0.12,
 	)
-	base_target_pressure = 82.4
-	minimum_pressure = 82.4
-	maximum_pressure = 82.4
-	minimum_temp = 234
-	maximum_temp = 234
+	pressure_low = 82.4
+	pressure_high = 82.4
+	temperature_low = 234
+	temperature_high = 234
 
 /obj/overmap/entity/visitable/sector/virgo3b
 	name = "Virgo 3B"
 	desc = "Full of phoron, and home to the NSB Adephagia, where you can dock and refuel your craft."
 	scanner_desc = @{"[i]Registration[/i]: NSB Adephagia
 [i]Class[/i]: Installation
-[i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF
-[b]Notice[/b]: NanoTrasen Base, authorized personnel only"}
+[i]Transponder[/i]: Transmitting (CIV), Nanotrasen IFF
+[b]Notice[/b]: Nanotrasen Base, authorized personnel only"}
 	base = 1
 	icon_state = "globe"
 	color = "#d35b5b"

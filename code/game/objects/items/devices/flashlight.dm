@@ -3,9 +3,9 @@
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	action_button_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
 
@@ -52,17 +52,17 @@
 		if(cell.use(power_usage) != power_usage) //We weren't able to use our full power_usage amount!
 			visible_message(SPAN_WARNING("\The [src] flickers before going dull."))
 			set_light(FALSE)
-			playsound(src.loc, 'sound/effects/sparks3.ogg', 10, 1, -3) //Small cue that your light went dull in your pocket.
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 10, 1, -3) //Small cue that your light went dull in your pocket.
 			on = FALSE
 			update_appearance()
 			return PROCESS_KILL
 
-/obj/item/flashlight/get_cell()
+/obj/item/flashlight/get_cell(inducer)
 	return cell
 
 /obj/item/flashlight/verb/toggle()
 	set name = "Toggle Flashlight Brightness"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	set_brightness(usr)
 
@@ -119,7 +119,7 @@
 /obj/item/flashlight/AltClick(mob/user)
 	attack_self(user)
 
-/obj/item/flashlight/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/flashlight/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(power_use)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
@@ -192,7 +192,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/item/flashlight/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/flashlight/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_appearance()
@@ -234,7 +234,7 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	slot_flags = SLOT_EARS
 	brightness_on = 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	power_use = 0
 	flashlight_range = 2
 	light_wedge = LIGHT_OMNI
@@ -265,10 +265,10 @@
 	icon_state = "maglight"
 	damage_force = 10
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
-	materials = list(MAT_STEEL = 200, MAT_GLASS = 50)
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
+	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 50)
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW
 
@@ -279,7 +279,7 @@
 	item_state = null
 	brightness_on = 2
 	flashlight_range = 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	power_use = 0
 
 // the desk lamps are a bit special
@@ -289,7 +289,7 @@
 	icon_state = "lamp"
 	damage_force = 10
 	brightness_on = 5
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	power_use = 0
 	on = 1
 	light_wedge = LIGHT_OMNI
@@ -306,7 +306,7 @@
 
 /obj/item/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(!usr.stat)
@@ -319,7 +319,7 @@
 	desc = "A red standard-issue flare. There are instructions on the side reading 'pull cord, make light'."
 	icon_state = "flare"
 	item_state = "flare"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	brightness_on = 8 // Pretty bright.
 	flashlight_power = 0.8
@@ -357,7 +357,7 @@
 	src.damtype = initial(src.damtype)
 	update_appearance()
 
-/obj/item/flashlight/flare/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/flashlight/flare/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	// Usual checks
 	if(!fuel)
@@ -387,7 +387,7 @@
 /obj/item/flashlight/glowstick
 	name = "green glowstick"
 	desc = "A green military-grade glowstick."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	brightness_on = 4
 	icon_state = "glowstick"
 	item_state = "glowstick"
@@ -414,7 +414,7 @@
 	on = FALSE
 	update_appearance()
 
-/obj/item/flashlight/glowstick/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/flashlight/glowstick/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("The glowstick has already been turned on."))
@@ -454,27 +454,3 @@
 	icon_state = "glowstick_yellow"
 	item_state = "glowstick_yellow"
 	light_color = LIGHT_COLOR_YELLOW
-
-/obj/item/flashlight/slime
-	gender = PLURAL
-	name = "glowing slime extract"
-	desc = "A slimy ball that appears to be glowing from bioluminesence."
-	icon = 'icons/obj/lighting.dmi'
-	icon_state = "floor1" //not a slime extract sprite but... something close enough!
-	item_state = "slime"
-	light_color = LIGHT_COLOR_YELLOW
-	light_wedge = LIGHT_OMNI
-	w_class = ITEMSIZE_TINY
-	brightness_on = 6
-	on = TRUE //Bio-luminesence has one setting, on.
-	power_use = 0
-
-/obj/item/flashlight/slime/Initialize(mapload)
-	. = ..()
-	set_light(brightness_on, flashlight_power, light_color)
-
-/obj/item/flashlight/slime/update_appearance(updates = ~UPDATE_ICON_STATE)
-	return ..()
-
-/obj/item/flashlight/slime/attack_self(mob/user, datum/event_args/clickchain/e_args)
-	return //Bio-luminescence does not toggle.

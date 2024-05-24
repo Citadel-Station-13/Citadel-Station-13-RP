@@ -8,7 +8,7 @@
 	throw_speed = 1
 	throw_range = 4
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/godfig/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
@@ -29,7 +29,7 @@
 
 	holy_icons = sortList(holy_icons)
 
-	var/choice = show_radial_menu(L, src , holy_icons, custom_check = CALLBACK(src, .proc/check_menu, L), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(L, src , holy_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
 	if(!choice || !check_menu(L))
 		return
 
@@ -54,7 +54,7 @@
 
 /obj/item/godfig/verb/rename_fig()
 	set name = "Name Figure"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your icon."
 
 	var/mob/M = usr
@@ -223,7 +223,7 @@
 /*
 /obj/item/godfig/verb/resprite_figure()
 	set name = "Customize Figure"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose an appearance for your icon."
 
 	var/mob/M = usr

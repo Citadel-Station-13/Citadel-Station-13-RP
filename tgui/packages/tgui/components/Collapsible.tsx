@@ -7,14 +7,19 @@
 import { BooleanLike } from 'common/react';
 import { Component, InfernoNode } from 'inferno';
 import { Box, BoxProps } from './Box';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
+import { ComponentProps } from './Component';
 
-interface CollapsibleProps extends BoxProps {
-  buttons?: InfernoNode;
-  color?: string;
-  title?: string | InfernoNode;
-  open?: BooleanLike;
-  captureKeys?: BooleanLike;
+interface CollapsibleProps extends ComponentProps{
+  readonly buttons?: InfernoNode;
+  readonly color?: string;
+  readonly title?: string | InfernoNode;
+  readonly open?: BooleanLike;
+  readonly captureKeys?: BooleanLike;
+  readonly more?: InfernoNode;
+  readonly boxProps?: BoxProps;
+  readonly headerProps?: ButtonProps;
+  readonly contentFunction?: () => InfernoNode;
 }
 
 interface CollapsibleState {
@@ -24,7 +29,7 @@ interface CollapsibleState {
 export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
   state: CollapsibleState = {
     open: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -44,18 +49,22 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
       buttons,
       ...rest
     } = props;
-    return (
-      <Box>
-        <div className="Collapsible">
-          <div className="Collapsible__head">
+    return props.more? (
+      <Box {...props.boxProps}>
+        <div className="Collapsible__alt">
+          <div className="Collapsible__alt-more">
+            {props.more}
+          </div>
+          <div className="Collapsible__alt-head">
             <div className="Collapsible__toggle">
               <Button
-                fluid
                 captureKeys={props.captureKeys === undefined? false : props.captureKeys}
                 color={color}
+                selected={!!props.more && open}
                 icon={open ? 'chevron-down' : 'chevron-right'}
                 onClick={() => this.setState({ open: !open })}
-                {...rest}>
+                height="100%"
+                {...props.headerProps}>
                 {title}
               </Button>
             </div>
@@ -68,7 +77,35 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
         </div>
         {open && (
           <div className="Collapsible__content">
-            {children}
+            {!!props.contentFunction && props.contentFunction()}{children}
+          </div>
+        )}
+      </Box>
+    ): (
+      <Box {...props.boxProps}>
+        <div className="Collapsible">
+          <div className="Collapsible__head">
+            <div className="Collapsible__toggle">
+              <Button
+                fluid
+                captureKeys={props.captureKeys === undefined? false : props.captureKeys}
+                color={color}
+                icon={open ? 'chevron-down' : 'chevron-right'}
+                onClick={() => this.setState({ open: !open })}
+                {...props.headerProps}>
+                {title}
+              </Button>
+            </div>
+            {buttons && (
+              <div className="Collapsible__buttons">
+                {buttons}
+              </div>
+            )}
+          </div>
+        </div>
+        {open && (
+          <div className="Collapsible__content">
+            {!!props.contentFunction && props.contentFunction()}{children}
           </div>
         )}
       </Box>

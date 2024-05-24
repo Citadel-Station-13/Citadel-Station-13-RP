@@ -86,18 +86,18 @@
 	var/obj/item/mecha_parts/component/AC = RD.chassis.internal_components[MECH_ARMOR]
 	var/obj/item/mecha_parts/component/HC = RD.chassis.internal_components[MECH_HULL]
 
-	var/damaged_armor = AC.integrity < AC.max_integrity
+	var/damaged_armor = AC.integrity < AC.integrity_max
 
-	var/damaged_hull = HC.integrity < HC.max_integrity
+	var/damaged_hull = HC.integrity < HC.integrity_max
 
-	if(health_boost<0 || RD.chassis.health < initial(RD.chassis.health) || damaged_armor || damaged_hull)
-		RD.chassis.health += min(health_boost, initial(RD.chassis.health)-RD.chassis.health)
+	if(health_boost<0 || RD.chassis.integrity < initial(RD.chassis.integrity) || damaged_armor || damaged_hull)
+		RD.chassis.integrity += min(health_boost, initial(RD.chassis.integrity)-RD.chassis.integrity)
 
 		if(AC)
-			AC.adjust_integrity(round(health_boost * 0.5, 0.5))
+			AC.adjust_integrity_mecha(round(health_boost * 0.5, 0.5))
 
 		if(HC)
-			HC.adjust_integrity(round(health_boost * 0.5, 0.5))
+			HC.adjust_integrity_mecha(round(health_boost * 0.5, 0.5))
 
 		repaired = 1
 	if(repaired)

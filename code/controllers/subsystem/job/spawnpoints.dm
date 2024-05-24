@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /datum/controller/subsystem/job
 	/// All spawnpoints
 	var/static/list/spawnpoints = list()
@@ -33,7 +36,7 @@
 	for(var/obj/landmark/spawnpoint/overflow/S in GLOB.landmarks_list)
 		if(!S.faction)
 			continue
-		LAZYDISTINCTADD(latejoin_spawnpoints[S.faction], S)
+		LAZYDISTINCTADD(overflow_spawnpoints[S.faction], S)
 	for(var/obj/landmark/spawnpoint/custom/S in GLOB.landmarks_list)
 		if(!S.key)
 			continue

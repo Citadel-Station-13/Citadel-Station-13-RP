@@ -18,7 +18,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "pirate_docker";
-	layer = 3.3;
 	name = "Belting Dock Controller";
 	pixel_y = 30;
 	req_one_access = null
@@ -100,7 +99,7 @@
 /area/piratebase/halls)
 "fC" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/floor/reinforced,
 /area/piratebase/halls)
@@ -368,10 +367,6 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/deck)
-"rM" = (
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/reinforced,
-/area/piratebase/halls)
 "rQ" = (
 /obj/structure/railing{
 	dir = 4
@@ -900,11 +895,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/deck)
 "Pr" = (
@@ -6677,10 +6668,10 @@ Tv
 Tv
 Tv
 ol
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 ol
 Tv
 Tv
@@ -6953,7 +6944,7 @@ hT
 hT
 hT
 JA
-rM
+ie
 Em
 hT
 JF
@@ -6983,14 +6974,14 @@ hT
 hT
 hT
 JA
-rM
+ie
 hT
 hT
 LB
 LB
 tv
 LB
-rM
+ie
 hT
 LB
 LB
@@ -7096,11 +7087,11 @@ hT
 hT
 ye
 yq
-rM
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
+ie
 yq
 yq
 hT
@@ -7125,7 +7116,7 @@ hT
 Xd
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7139,8 +7130,8 @@ hT
 hT
 hT
 hT
-rM
-rM
+ie
+ie
 hT
 hT
 hT
@@ -7252,7 +7243,7 @@ hT
 hT
 DX
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7267,7 +7258,7 @@ Xd
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7394,7 +7385,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 tN
 hT
@@ -7409,14 +7400,14 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7424,7 +7415,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7551,14 +7542,14 @@ hi
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7807,7 +7798,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7850,7 +7841,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 ye
 yq
@@ -7949,7 +7940,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -7987,9 +7978,9 @@ tN
 hT
 hT
 hT
-rM
+ie
 Dl
-rM
+ie
 tN
 hT
 kf
@@ -8091,7 +8082,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -8110,19 +8101,19 @@ hT
 ye
 yq
 yq
-rM
-rM
+ie
+ie
 hT
 hT
 yq
 hT
 hT
 hT
-rM
+ie
 JW
 JW
-rM
-rM
+ie
+ie
 yq
 ol
 ol
@@ -8233,7 +8224,7 @@ hT
 vW
 hT
 Em
-rM
+ie
 hT
 hT
 mE
@@ -8375,7 +8366,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -8517,7 +8508,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -8659,7 +8650,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -8801,7 +8792,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -8943,8 +8934,8 @@ hT
 hT
 hT
 hT
-rM
-rM
+ie
+ie
 yq
 hT
 hT
@@ -8952,10 +8943,10 @@ hT
 hT
 hT
 hT
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 hT
 hT
 hT
@@ -9094,7 +9085,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -9219,10 +9210,10 @@ ol
 hT
 yq
 uv
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 EB
 yq
 hT
@@ -9236,7 +9227,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -9378,7 +9369,7 @@ hT
 Em
 hT
 hT
-rM
+ie
 hT
 hT
 yq
@@ -9388,8 +9379,8 @@ hT
 hT
 yq
 yq
-rM
-rM
+ie
+ie
 hT
 hT
 yq
@@ -9520,7 +9511,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 ye
 yq
@@ -9662,7 +9653,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 yq
@@ -9804,7 +9795,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -9946,7 +9937,7 @@ mE
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -10088,10 +10079,10 @@ hi
 hT
 hT
 hT
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 hT
 hT
 yq
@@ -10240,16 +10231,16 @@ yq
 ye
 yq
 yq
-rM
-rM
+ie
+ie
 hT
 ye
 yq
 hT
 hT
-rM
-rM
-rM
+ie
+ie
+ie
 Dl
 hT
 hT
@@ -10392,7 +10383,7 @@ hT
 Dl
 hT
 hT
-rM
+ie
 hT
 ye
 yq
@@ -10534,7 +10525,7 @@ hT
 JW
 hT
 vL
-rM
+ie
 hT
 hT
 Rx
@@ -10676,7 +10667,7 @@ hT
 JW
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -10815,10 +10806,10 @@ hT
 yq
 hT
 hT
-rM
+ie
 vL
 hT
-rM
+ie
 hT
 hT
 yq
@@ -10957,10 +10948,10 @@ hT
 yq
 hT
 hT
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 hT
 ye
 yq
@@ -11220,18 +11211,18 @@ hT
 hT
 ye
 yq
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 hT
 hT
 yq
 hT
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 yq
 yq
 hT
@@ -11535,7 +11526,7 @@ yq
 hi
 hT
 hT
-rM
+ie
 Rp
 GX
 na
@@ -11819,7 +11810,7 @@ yq
 hT
 hT
 hT
-rM
+ie
 Rp
 na
 na
@@ -11950,7 +11941,7 @@ hT
 JW
 hT
 vL
-rM
+ie
 ye
 yq
 Cq
@@ -12231,7 +12222,7 @@ yq
 Iz
 hT
 hT
-rM
+ie
 hT
 hT
 ie
@@ -12376,7 +12367,7 @@ hT
 ie
 hT
 hT
-rM
+ie
 hT
 yq
 hT
@@ -12387,7 +12378,7 @@ yq
 hT
 hT
 hT
-rM
+ie
 Rp
 GX
 GX
@@ -12499,16 +12490,16 @@ hT
 hT
 yq
 Lj
-rM
-rM
-rM
+ie
+ie
+ie
 hT
 yq
 hT
 hT
-rM
-rM
-rM
+ie
+ie
+ie
 ap
 yq
 yq
@@ -12529,7 +12520,7 @@ yq
 hT
 hT
 hT
-rM
+ie
 Rp
 GX
 GX
@@ -12643,7 +12634,7 @@ yq
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -12657,21 +12648,21 @@ yq
 ng
 hT
 hT
-rM
+ie
 vL
 hT
-rM
+ie
 hT
 yq
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 yq
-rM
+ie
 hT
 hT
-rM
+ie
 Rp
 GX
 GX
@@ -12785,7 +12776,7 @@ yq
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -12810,7 +12801,7 @@ hT
 hT
 hT
 yq
-rM
+ie
 hT
 hT
 hT
@@ -12927,7 +12918,7 @@ Rx
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -13069,7 +13060,7 @@ hT
 hT
 tN
 hT
-rM
+ie
 hT
 hT
 hT
@@ -13236,7 +13227,7 @@ hT
 hT
 hT
 yq
-rM
+ie
 hT
 hT
 ye
@@ -13520,7 +13511,7 @@ hT
 hT
 hT
 yq
-rM
+ie
 hT
 DX
 LB
@@ -13662,7 +13653,7 @@ hT
 hT
 hT
 yq
-rM
+ie
 vL
 hT
 LB
@@ -13804,7 +13795,7 @@ hT
 hT
 hT
 yq
-rM
+ie
 hT
 hT
 LB
@@ -14095,7 +14086,7 @@ hT
 yq
 hT
 JA
-rM
+ie
 hT
 hT
 LB
@@ -14231,7 +14222,7 @@ hT
 hT
 yq
 kf
-rM
+ie
 hT
 ye
 yq
@@ -14379,11 +14370,11 @@ hT
 yq
 hT
 vL
-rM
+ie
 hT
 hT
 hT
-rM
+ie
 hT
 eq
 yq
@@ -14521,7 +14512,7 @@ hT
 yq
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -14667,7 +14658,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -14793,10 +14784,10 @@ yq
 yq
 yq
 yq
-rM
-rM
-rM
-rM
+ie
+ie
+ie
+ie
 yq
 kf
 hT
@@ -14810,7 +14801,7 @@ vL
 hT
 hT
 kf
-rM
+ie
 hT
 hT
 hT
@@ -14940,15 +14931,15 @@ hT
 hT
 hT
 yq
-rM
+ie
 hT
 hT
 hT
 yq
-rM
-rM
+ie
+ie
 kf
-rM
+ie
 hT
 hT
 DX
@@ -15093,8 +15084,8 @@ hT
 hT
 hT
 hT
-rM
-rM
+ie
+ie
 hT
 eq
 eq
@@ -15224,7 +15215,7 @@ hT
 hT
 hT
 yq
-rM
+ie
 hT
 hT
 hT
@@ -15235,7 +15226,7 @@ hT
 tN
 hT
 hT
-rM
+ie
 hT
 tN
 hT
@@ -16053,15 +16044,15 @@ Tv
 Tv
 ol
 Xd
-rM
-rM
+ie
+ie
 Lj
-rM
-rM
+ie
+ie
 Dl
-rM
-rM
-rM
+ie
+ie
+ie
 hT
 hT
 yq
@@ -16070,7 +16061,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -16212,7 +16203,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -16354,7 +16345,7 @@ vL
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -16496,7 +16487,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 tN
 hT
 hT
@@ -16785,7 +16776,7 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -16918,7 +16909,7 @@ hT
 Rx
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -17064,12 +17055,12 @@ hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
 hT
-rM
+ie
 hT
 hT
 hT
@@ -17189,13 +17180,13 @@ Tv
 Tv
 ol
 Dl
-rM
+ie
 Az
 JW
 JW
-rM
-rM
-rM
+ie
+ie
+ie
 hT
 hT
 hT
@@ -17211,7 +17202,7 @@ hT
 tN
 hT
 hT
-rM
+ie
 hT
 tN
 hT

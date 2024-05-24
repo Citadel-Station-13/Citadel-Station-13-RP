@@ -15,7 +15,7 @@ LINEN BINS
 	throw_force = 1
 	throw_speed = 1
 	throw_range = 2
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
@@ -32,7 +32,7 @@ LINEN BINS
 	add_fingerprint(user)
 
 /obj/item/bedsheet/attackby(obj/item/I, mob/user)
-	if(is_sharp(I))
+	if(is_sharp(I) || I.tool_check(TOOL_WIRECUTTER))
 		user.visible_message("<span class='notice'>\The [user] begins cutting up [src] with [I].</span>", "<span class='notice'>You begin cutting up [src] with [I].</span>")
 		if(do_after(user, 50))
 			to_chat(user, "<span class='notice'>You cut [src] into pieces!</span>")
@@ -210,7 +210,7 @@ LINEN BINS
 		sheets.Add(I)
 		amount++
 		to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
-	else if(amount && !hidden && I.w_class < ITEMSIZE_LARGE)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
+	else if(amount && !hidden && I.w_class < WEIGHT_CLASS_BULKY)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		hidden = I

@@ -44,8 +44,8 @@ interface JoinMenuData {
 }
 
 interface JoinFactionProps {
-  faction: string;
-  departments: {
+  readonly faction: string;
+  readonly departments: {
     [key: string]: JoinableJob[]
   }
 }
@@ -58,17 +58,27 @@ export const JoinMenu = (props, context) => {
     <Window width={500} height={800}>
       <Window.Content overflow="auto">
         <Section title={"Welcome, " + data.charname}>
-          Round Duration: {data.duration}<br />
-          Security Level: {data.security_level}
-          {!!data.evacuated && (
-            <NoticeBox
-              info={data.evacuated === 2}
-              warning={data.evacuated === 1 || data.evacuated === 3}>
-              {(data.evacuated === 2)? "A crew transfer is in progress."
-                : ((data.evacuated === 3)? "The installation has been evacuated."
-                  : "An evacuation is in progress.")}
-            </NoticeBox>
-          )}
+          <Stack vertical>
+            <Stack.Item>
+              Round Duration: {data.duration}
+            </Stack.Item>
+            <Stack.Item>
+              Security Level: {data.security_level}
+            </Stack.Item>
+          </Stack>
+          <Stack.Item>
+            {!!data.evacuated && (
+              <NoticeBox
+                info={data.evacuated === 2}
+                warning={data.evacuated === 1 || data.evacuated === 3}>
+                {(data.evacuated === 2)? "A crew transfer is in progress."
+                  : ((data.evacuated === 3)? "The installation has been evacuated."
+                    : "An evacuation is in progress.")}
+              </NoticeBox>
+            )}
+          </Stack.Item>
+
+
         </Section>
         <Section fill>
           <Stack vertical>
@@ -94,7 +104,9 @@ export const JoinMenu = (props, context) => {
                             color="transparent"
                             onClick={() => act('join', { id: role.id, type: "ghostrole" })} />
                         </>
-                      } style={{ "padding-left": "5%" }}>
+                      } headerProps={{
+                        style: { "padding-left": "5%" },
+                      }}>
                         <Box>
                           {role.desc}
                         </Box>
@@ -133,16 +145,19 @@ const JoinFaction = (props: JoinFactionProps, context) => {
   });
 
   return (
-    <Collapsible color="transparent" title={`${props.faction} Roles`}>
+    <Section title={`${props.faction} Roles`}>
       {
         ordered.map((depName) => {
           const jobs: JoinableJob[] = props.departments[depName];
           return (
-            <Collapsible color="transparent" key={depName} title={depName} style={{ "margin-left": "2.5%" }}>
+            <Collapsible color="transparent" key={depName} title={depName}
+              headerProps={{
+                style: { "margin-left": "2.5%" },
+              }}>
               {
                 jobs.map((job) => {
                   return (
-                    <Collapsible color="transparent" style={{ "margin-left": "7.5%" }}
+                    <Collapsible color="transparent" headerProps={{ style: { "margin-left": "7.5%" } }}
                       key={job.id} title={job.name} buttons={
                         <>{(job.slots === -1)? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
                           <Button.Confirm
@@ -163,7 +178,7 @@ const JoinFaction = (props: JoinFactionProps, context) => {
           );
         })
       }
-    </Collapsible>
+    </Section>
   );
 };
 

@@ -90,8 +90,8 @@
 		/obj/item/paper_bin,
 		/obj/item/hand_labeler)
 
-/obj/machinery/alarm/isolation
+/obj/machinery/air_alarm/isolation
 	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 
-/obj/machinery/alarm/monitor/isolation
+/obj/machinery/air_alarm/monitor/isolation
 	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)

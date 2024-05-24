@@ -45,15 +45,13 @@
 	test_canister = null
 	..()
 
-/obj/machinery/bomb_tester/dismantle()
-	if(tank1)
-		tank1.forceMove(get_turf(src))
-		tank1 = null
-	if(tank2)
-		tank2.forceMove(get_turf(src))
-		tank2 = null
-	simulation_finish(1)
-	return ..()
+/obj/machinery/bomb_tester/drop_products(method, atom/where)
+	. = ..()
+	tank1?.forceMove(where)
+	tank1 = null
+	tank2?.forceMove(where)
+	tank2 = null
+	simulation_finish(TRUE)
 
 /obj/machinery/bomb_tester/process(delta_time)
 	..()
@@ -119,7 +117,7 @@
 		ui = new(user, src, "BombTester", name)
 		ui.open()
 
-/obj/machinery/bomb_tester/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/bomb_tester/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["simulating"] = simulating
@@ -370,7 +368,7 @@
 	if(G.total_moles)
 		results += "<br>Temperature: [round(G.temperature-T0C)]&deg;C"
 		for(var/mix in G.gas)
-			results += "<br>[GLOB.meta_gas_names[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
+			results += "<br>[global.gas_data.names[mix]]: [round((G.gas[mix] / G.total_moles) * 100)]%"
 
 	return results
 

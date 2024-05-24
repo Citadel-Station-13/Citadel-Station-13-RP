@@ -5,16 +5,22 @@
 	desc = "A folded bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/medical/bodybag.dmi'
 	icon_state = "bodybag_folded"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/bodybag/attack_self(mob/user, datum/event_args/clickchain/e_args)
+	var/bag_type = /obj/structure/closet/body_bag
+
+/obj/item/bodybag/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
-	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
-	R.add_fingerprint(user)
+	add_fingerprint(user)
+	create_bag(user.drop_location())
 	qdel(src)
 
+/obj/item/bodybag/proc/create_bag(atom/where)
+	var/obj/structure/closet/body_bag/bag = new bag_type(where)
+	transfer_fingerprints_to(bag)
+	return bag
 
 /obj/item/storage/box/bodybags
 	name = "body bags"
@@ -31,7 +37,6 @@
 	new /obj/item/bodybag(src)
 	new /obj/item/bodybag(src)
 
-
 /obj/structure/closet/body_bag
 	name = "body bag"
 	desc = "A plastic bag designed for the storage and transportation of cadavers."
@@ -41,10 +46,12 @@
 	close_sound = 'sound/items/zip.ogg'
 	icon_opened = "bodybag_open"
 	icon_closed = "bodybag_closed"
+	icon_state = "bodybag_closed"
 	var/item_path = /obj/item/bodybag
 	density = 0
 	storage_capacity = (MOB_MEDIUM * 2) - 1
 	var/contains_body = 0
+	use_old_icon_update = TRUE
 
 /obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/pen))
@@ -120,33 +127,32 @@
 /obj/item/bodybag/cryobag
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	especially useful if short on time or in a hostile environment."
 	icon = 'icons/obj/medical/cryobag.dmi'
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_BIO = 4)
+	bag_type = /obj/structure/closet/body_bag/cryobag
+
 	var/obj/item/reagent_containers/syringe/syringe
 
-/obj/item/bodybag/cryobag/attack_self(mob/user, datum/event_args/clickchain/e_args)
-	. = ..()
-	if(.)
+/obj/item/bodybag/cryobag/create_bag(atom/where)
+	var/obj/structure/closet/body_bag/cryobag/bag = ..()
+	if(!istype(bag))
 		return
-	var/obj/structure/closet/body_bag/cryobag/R = new /obj/structure/closet/body_bag/cryobag(user.loc)
-	R.add_fingerprint(user)
-	if(syringe)
-		R.syringe = syringe
+	if(!isnull(syringe))
+		bag.syringe = syringe
 		syringe = null
-	qdel(src)
+	return bag
 
 /obj/structure/closet/body_bag/cryobag
 	name = "stasis bag"
 	desc = "A non-reusable plastic bag designed to slow down bodily functions such as circulation and breathing, \
-	especially useful if short on time or in a hostile enviroment."
+	especially useful if short on time or in a hostile environment."
 	icon = 'icons/obj/medical/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
 	store_misc = 0
 	store_items = 0
-	var/used = 0
 	var/obj/item/tank/tank = null
 	var/tank_type = /obj/item/tank/stasis/oxygen
 	var/stasis_level = 3 //Every 'this' life ticks are applied to the mob (when life_ticks%stasis_level == 1)
@@ -161,24 +167,6 @@
 	QDEL_NULL(tank)
 	return ..()
 
-/obj/structure/closet/body_bag/cryobag/attack_hand(mob/user, datum/event_args/clickchain/e_args)
-	if(used)
-		var/confirm = tgui_alert(user, "Are you sure you want to open \the [src]? \The [src] will expire upon opening it.", "Confirm Opening", list("No", "Yes"))
-		if(confirm == "Yes")
-			..() // Will call `toggle()` and open the bag.
-	else
-		..()
-
-/obj/structure/closet/body_bag/cryobag/open()
-	. = ..()
-	if(used)
-		var/obj/item/O = new/obj/item(src.loc)
-		O.name = "used [name]"
-		O.icon = src.icon
-		O.icon_state = "bodybag_used"
-		O.desc = "Pretty useless now..."
-		qdel(src)
-
 /obj/structure/closet/body_bag/cryobag/OnMouseDropLegacy(over_object, src_location, over_location)
 	. = ..()
 	if(. && syringe)
@@ -190,7 +178,6 @@
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		H.Stasis(stasis_level)
-		src.used = 1
 		inject_occupant(H)
 
 	if(istype(AM, /obj/item/organ))
@@ -236,7 +223,7 @@
 		if(istype(W,/obj/item/healthanalyzer))
 			var/obj/item/healthanalyzer/analyzer = W
 			for(var/mob/living/L in contents)
-				analyzer.melee_attack_chain(L,user)
+				analyzer.melee_interaction_chain(L,user)
 
 		else if(istype(W,/obj/item/reagent_containers/syringe))
 			if(syringe)
@@ -254,12 +241,9 @@
 
 		else if(W.is_screwdriver())
 			if(syringe)
-				if(used)
-					to_chat(user,"<span class='warning'>The injector cannot be removed now that the stasis bag has been used!</span>")
-				else
-					syringe.forceMove(src.loc)
-					to_chat(user,"<span class='info'>You pry \the [syringe] out of \the [src].</span>")
-					syringe = null
+				syringe.forceMove(src.loc)
+				to_chat(user,"<span class='info'>You pry \the [syringe] out of \the [src].</span>")
+				syringe = null
 
 		else
 			..()

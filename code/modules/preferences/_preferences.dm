@@ -2,6 +2,32 @@
 
 GLOBAL_LIST_EMPTY(preferences_datums)
 
+/**
+ * Fetches a prefs datum by ckey
+ *
+ * @params
+ * * ckey - their canonical key
+ * * only_if_exists - only load / create if it already exists
+ *
+ * @return the preferences datum if found, or null
+ *
+ * todo: /datum/character
+ */
+/datum/controller/subsystem/characters/proc/fetch_preferences_datum(ckey, only_if_exists = FALSE)
+	RETURN_TYPE(/datum/preferences)
+	ckey = ckey(ckey)
+	if(!isnull(GLOB.preferences_datums[ckey]))
+		return GLOB.preferences_datums[ckey]
+	var/datum/preferences/creating = new
+	creating.client_ckey = ckey
+	if(only_if_exists && !creating.load_path())
+		qdel(creating)
+		return
+	GLOB.preferences_datums[ckey] = creating
+	if(initialized)
+		creating.Initialize()
+	return creating
+
 /datum/preferences
 	//! Intrinsics
 	/// did we load yet?
@@ -19,7 +45,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 // todo: kick this out of prefs
 //! ## Non-Preference Stuff
-	var/warns = 0
 	var/muted = 0
 	var/last_ip
 	var/last_id
@@ -44,22 +69,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/skin
 
 //! ## Game Preferences
-	var/tgui_fancy = TRUE
-	var/tgui_lock = TRUE
-	/// Saved changlog filesize to detect if there was a change.
-	var/lastchangelog = ""
-	/// Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color.
-	var/ooccolor = "#010000"
 	/// Special role selection.
 	var/be_special = 0
 	/// Event role prefs flag.
 	var/be_event_role = NONE
-	var/UI_style = UI_STYLE_DEFAULT
-	var/UI_style_color = "#ffffff"
-	var/UI_style_alpha = 255
-	/// Style for popup tooltips.
-	var/tooltipstyle = "Midnight"
-	var/client_fps = 40
 
 //! ## Character Preferences
 	/// Our character's name
@@ -185,6 +198,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //! ## OOC Metadata
 	var/metadata = ""
 	var/headshot_url = ""
+	var/full_ref_url = ""
+	var/full_ref_toggle = FALSE
 	var/list/ignored_players = list()
 
 	var/client/client = null
@@ -199,9 +214,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 
-	/// Hash of last seen lobby news content.
-	var/lastnews
-
 //! ## Character Directory Stuff
 	/// Should we show in Character Directory.
 	var/show_in_directory = 1
@@ -215,24 +227,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Set character's suit sensor level.
 	var/sensorpref = 5
 
-	/// Should we automatically fit the viewport?
-	var/auto_fit_viewport = TRUE
-
-	/// Should we be in the widescreen mode set by the config?
-	var/widescreenpref = TRUE	// Exists now...
-
 /datum/preferences/New(client/C)
 	if(istype(C))
 		client = C
 		client_ckey = C.ckey
-	if(SScharacters.initialized)
+	if(client_ckey && SScharacters.initialized)
 		Initialize()
 
 /datum/preferences/proc/Initialize()
 	// todo: refactor
 	player_setup = new(src)
-	tim_sort(preference_by_key, /proc/cmp_preference_load_order, TRUE)
-	tim_sort(preference_by_type, /proc/cmp_preference_load_order, TRUE)
+	tim_sort(preference_by_key, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
+	tim_sort(preference_by_type, GLOBAL_PROC_REF(cmp_preference_load_order), TRUE)
 	// set defaults before load
 	reset_everything_to_default()
 
@@ -240,20 +246,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	real_name = random_name(identifying_gender, real_species_name())
 	b_type = RANDOM_BLOOD_TYPE
 
-	if(client)
-		if(!IsGuestKey(client.key))
-			if(load_path(client.ckey))
-				if(load_preferences())
-					if(load_character())
-						load_skin()
-						sanitize_everything()
-						player_setup.sanitize_setup()
-						client.update_movement_keys()
-						initialized = TRUE
-						return
+	if(load_path(client_ckey))
+		if(load_preferences())
+			if(load_character())
+				load_skin()
+				sanitize_everything()
+				player_setup.sanitize_setup()
+				initialized = TRUE
+				return
 
-	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
-	client?.update_movement_keys(src)
 	LAZYINITLIST(character)
 	LAZYINITLIST(options)
 	LAZYINITLIST(skin)
@@ -425,35 +426,3 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
-
-//Vore noises.
-/client/verb/toggle_eating_noises()
-	set name = "Eating Noises"
-	set category = "Vore"
-	set desc = "Toggles Vore Eating noises."
-
-	var/pref_path = /datum/client_preference/eating_noises
-
-	toggle_preference(pref_path)
-
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear eating related vore noises.")
-
-	SScharacters.queue_preferences_save(prefs)
-
-	feedback_add_details("admin_verb","TEatNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
-/client/verb/toggle_digestion_noises()
-	set name = "Digestion Noises"
-	set category = "Vore"
-	set desc = "Toggles Vore Digestion noises."
-
-	var/pref_path = /datum/client_preference/digestion_noises
-
-	toggle_preference(pref_path)
-
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear digestion related vore noises.")
-
-	SScharacters.queue_preferences_save(prefs)
-
-	feedback_add_details("admin_verb","TDigestNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

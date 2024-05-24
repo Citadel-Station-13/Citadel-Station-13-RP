@@ -97,7 +97,8 @@
 	if(!user.attempt_insert_item_for_installation(cuffs, src))
 		return
 	chained = cuffs
-	slowdown = 15
+	// todo: refactor
+	set_encumbrance(ITEM_ENCUMBRANCE_SHOES_CUFFED)
 	icon_state = "orange1"
 
 /obj/item/clothing/shoes/orange/proc/remove_cuffs(mob/user as mob)
@@ -107,7 +108,8 @@
 	user.put_in_hands_or_drop(chained)
 	chained.add_fingerprint(user)
 
-	slowdown = initial(slowdown)
+	// todo: refactor
+	set_encumbrance(initial(encumbrance))
 	icon_state = "orange"
 	chained = null
 

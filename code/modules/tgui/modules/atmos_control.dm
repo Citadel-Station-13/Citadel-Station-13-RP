@@ -12,20 +12,20 @@
 	access.req_one_access = req_one_access
 
 	if(monitored_alarm_ids)
-		for(var/obj/machinery/alarm/alarm in GLOB.machines)
+		for(var/obj/machinery/air_alarm/alarm in GLOB.machines)
 			if(alarm.alarm_id && (alarm.alarm_id in monitored_alarm_ids))
 				monitored_alarms += alarm
 		// machines may not yet be ordered at this point
 		monitored_alarms = dd_sortedObjectList(monitored_alarms)
 
-/datum/tgui_module_old/atmos_control/ui_act(action, params, datum/tgui/ui)
+/datum/tgui_module_old/atmos_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
 	switch(action)
 		if("alarm")
 			if(ui_ref)
-				var/obj/machinery/alarm/alarm = locate(params["alarm"]) in (monitored_alarms.len ? monitored_alarms : GLOB.machines)
+				var/obj/machinery/air_alarm/alarm = locate(params["alarm"]) in (monitored_alarms.len ? monitored_alarms : GLOB.machines)
 				if(alarm)
 					var/datum/ui_state/TS = generate_state(alarm)
 					alarm.ui_interact(usr, parent_ui = ui_ref, state = TS)
@@ -45,7 +45,7 @@
 		ui.open()
 	ui_ref = ui
 
-/datum/tgui_module_old/atmos_control/ui_static_data(mob/user)
+/datum/tgui_module_old/atmos_control/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	var/z = get_z(user)
@@ -53,7 +53,7 @@
 
 	// TODO: Move these to a cache, similar to cameras
 	var/alarms[0]
-	for(var/obj/machinery/alarm/alarm in (monitored_alarms.len ? monitored_alarms : GLOB.machines))
+	for(var/obj/machinery/air_alarm/alarm in (monitored_alarms.len ? monitored_alarms : GLOB.machines))
 		if(!monitored_alarms.len && alarm.alarms_hidden)
 			continue
 		if(!(alarm.z in map_levels))
@@ -67,7 +67,7 @@
 			"z" = alarm.z)
 	.["alarms"] = alarms
 
-/datum/tgui_module_old/atmos_control/ui_data(mob/user)
+/datum/tgui_module_old/atmos_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/z = get_z(user)
@@ -76,7 +76,7 @@
 
 	return data
 
-/datum/tgui_module_old/atmos_control/ui_close()
+/datum/tgui_module_old/atmos_control/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	ui_ref = null
 
@@ -88,7 +88,7 @@
 
 /datum/ui_state/air_alarm_remote
 	var/datum/tgui_module_old/atmos_control/atmos_control = null
-	var/obj/machinery/alarm/air_alarm = null
+	var/obj/machinery/air_alarm/air_alarm = null
 
 /datum/ui_state/air_alarm_remote/can_use_topic(src_object, mob/user)
 	if(!atmos_control.ui_ref)
@@ -110,5 +110,5 @@
 	ntos = TRUE
 
 /datum/tgui_module_old/atmos_control/robot
-/datum/tgui_module_old/atmos_control/robot/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/atmos_control/robot/ui_state()
 	return GLOB.self_state

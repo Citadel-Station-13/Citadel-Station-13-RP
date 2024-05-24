@@ -73,10 +73,10 @@
 /mob/living/proc/handle_random_events()
 	return
 
-/mob/living/proc/handle_environment(var/datum/gas_mixture/environment)
-	return
-
-/mob/living/proc/handle_stomach()
+/**
+ * Handle exposure to the environment, whether atmospherics or otherwise.
+ */
+/mob/living/proc/handle_environment(datum/gas_mixture/environment)
 	return
 
 /mob/living/proc/update_pulling()

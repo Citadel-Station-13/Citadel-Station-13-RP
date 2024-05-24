@@ -119,7 +119,7 @@
 	M.g_tail = O.g_tail
 	M.b_tail = O.b_tail
 	M.tail_style = O.tail_style
-	M.update_tail_showing()
+	M.render_spriteacc_tail()
 	if(message)
 		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
 		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
@@ -137,7 +137,7 @@
 		return
 
 	M.tail_style = O.tail_style
-	M.update_tail_showing()
+	M.render_spriteacc_tail()
 	if(message)
 		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
 		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
@@ -162,7 +162,7 @@
 	M.g_wing = O.g_wing
 	M.b_wing = O.b_wing
 	M.wing_style = O.wing_style
-	M.update_wing_showing()
+	M.render_spriteacc_wings()
 	if(message)
 		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
 		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
@@ -180,7 +180,7 @@
 		return
 
 	M.wing_style = O.wing_style
-	M.update_wing_showing()
+	M.render_spriteacc_wings()
 	if(message)
 		to_chat(M, "<span class='notice'>Your body tingles all over...</span>")
 		to_chat(O, "<span class='notice'>You tingle as you make noticeable changes to your captive's body.</span>")
@@ -232,7 +232,7 @@
 	M.custom_species = O.custom_species
 
 	M.update_icons_body()
-	M.update_tail_showing()
+	M.render_spriteacc_tail()
 
 	if(backup_implants.len)
 		var/obj/item/organ/external/torso = M.get_organ(BP_TORSO)

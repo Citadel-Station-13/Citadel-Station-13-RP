@@ -450,7 +450,7 @@
 
 
 /obj/machinery/cash_register/verb/open_cash_box()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Open Cash Box"
 	set desc = "Open/closes the register's cash box."
 	set src in view(1)
@@ -505,7 +505,7 @@
 /obj/machinery/cash_register/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		src.visible_message("<span class='danger'>The [src]'s cash box springs open as [user] swipes the card through the scanner!</span>")
-		playsound(src, "sparks", 50, 1)
+		playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
 		req_access = list()
 		emagged = 1
 		locked = 0

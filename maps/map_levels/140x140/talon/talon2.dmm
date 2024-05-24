@@ -9,13 +9,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2;
-	req_one_access = list(301)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Mess Hall"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/kitchen)
@@ -67,8 +66,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/carpet,
@@ -505,8 +503,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/paper/talon_shields,
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
@@ -685,8 +682,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
@@ -831,6 +827,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/bar)
 "ki" = (
@@ -868,7 +867,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/med_room)
 "ku" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 23
 	},
@@ -979,7 +978,7 @@
 /area/talon/decktwo/vault)
 "lv" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -999,7 +998,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/bar)
 "lP" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -1054,8 +1053,7 @@
 "mw" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /obj/landmark/spawnpoint/job/talon_guard,
@@ -1147,7 +1145,7 @@
 /turf/simulated/wall,
 /area/talon/maintenance/decktwo_starboard)
 "nD" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 1;
 	pixel_y = -22
 	},
@@ -1182,7 +1180,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "nU" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1296,7 +1294,7 @@
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 23
 	},
@@ -1318,10 +1316,7 @@
 "pp" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/landmark/spawnpoint/job/talon_engineer,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
@@ -1360,8 +1355,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "pC" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /turf/simulated/floor/wood,
@@ -1409,8 +1403,7 @@
 /turf/simulated/wall,
 /area/talon/decktwo/med_room)
 "pW" = (
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /obj/structure/cable/green{
@@ -1420,7 +1413,6 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
 "qd" = (
-/obj/landmark/map_data/talon,
 /turf/space,
 /area/space)
 "qr" = (
@@ -1454,8 +1446,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/carpet,
@@ -1536,8 +1527,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "rS" = (
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /obj/structure/cable/green{
@@ -1654,7 +1644,7 @@
 	pixel_y = 32;
 	starts_with = list(/obj/item/clothing/suit/fire/firefighter = 2, /obj/item/clothing/mask/gas = 2, /obj/item/flashlight = 2, /obj/item/tank/oxygen/red = 2, /obj/item/extinguisher = 2, /obj/item/clothing/head/hardhat/red = 2)
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -1717,8 +1707,7 @@
 /obj/item/flashlight/glowstick,
 /obj/item/storage/box/metalfoam,
 /obj/item/survivalcapsule/luxury,
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1757,7 +1746,7 @@
 /obj/item/stolenpackageplus,
 /obj/item/stolenpackageplus,
 /obj/item/stolenpackageplus,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/machinery/light{
@@ -1826,7 +1815,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "vK" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -1844,16 +1833,13 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "vP" = (
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /obj/machinery/light_switch{
 	dir = 1;
 	on = 0;
@@ -1878,6 +1864,9 @@
 "wE" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/kitchen)
@@ -2132,7 +2121,7 @@
 /area/talon/maintenance/decktwo_solars)
 "zt" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2192,8 +2181,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/med_room)
 "zT" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /turf/simulated/floor/wood,
@@ -2309,8 +2297,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -2406,7 +2393,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)
 "Cu" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2461,7 +2448,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/eng_room)
 "Dk" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2501,9 +2488,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_starboard)
 "DF" = (
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -2598,8 +2583,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "Eb" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /obj/machinery/light,
@@ -2645,13 +2629,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2;
-	req_one_access = list(301)
-	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2;
+	dir = 4;
 	name = "Bar"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/bar)
@@ -2746,7 +2729,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "FN" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2816,8 +2799,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/carpet,
@@ -2825,16 +2807,14 @@
 "Gy" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /obj/landmark/spawnpoint/job/talon_pilot,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "GA" = (
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -2917,7 +2897,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/med_room)
 "Ik" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -2934,7 +2914,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "Ir" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/structure/catwalk,
@@ -3001,10 +2981,7 @@
 "Ja" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/landmark/spawnpoint/job/talon_doctor,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
@@ -3130,7 +3107,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/decktwo/pilot_room)
 "Kh" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -3255,8 +3232,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "LU" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -3318,7 +3294,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -3501,7 +3477,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "NO" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -3746,7 +3722,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	pixel_y = 22
 	},
 /obj/structure/catwalk,
@@ -3796,7 +3772,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "RN" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -3891,8 +3867,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "Tm" = (
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24
 	},
 /obj/structure/cable/green{
@@ -3973,7 +3948,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "TY" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -4285,14 +4260,14 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "XA" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 8;
 	pixel_x = 23
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "XD" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/air_alarm/talon{
 	dir = 4;
 	pixel_x = -23
 	},
@@ -4474,8 +4449,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_port)
 "ZE" = (
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24
 	},
 /obj/structure/cable/green{

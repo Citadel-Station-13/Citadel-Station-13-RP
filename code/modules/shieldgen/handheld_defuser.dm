@@ -5,7 +5,7 @@
 	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "hdiffuser_off"
 	origin_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_ILLEGAL = 2)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/cell/device/cell = /obj/item/cell/device
 	var/enabled = 0
 
@@ -21,7 +21,7 @@
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/shield_diffuser/get_cell()
+/obj/item/shield_diffuser/get_cell(inducer)
 	return cell
 
 /obj/item/shield_diffuser/process(delta_time)

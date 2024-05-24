@@ -7,7 +7,7 @@
 	name = "electronic clothing parts"
 	icon_state = "setup_small_simple"
 	desc = "It's a collection of wires and parts, designed to fit inside of specialized electronic clothing."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	max_components = IC_COMPONENTS_BASE
 	max_complexity = IC_COMPLEXITY_BASE
 	var/obj/item/clothing/clothing = null
@@ -25,7 +25,7 @@
 	icon_state = "setup_device"
 	max_components = IC_COMPONENTS_BASE / 2
 	max_complexity = IC_COMPLEXITY_BASE / 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 // Ditto.
 /obj/item/electronic_assembly/clothing/large
@@ -34,7 +34,7 @@
 	icon_state = "setup_medium_clam"
 	max_components = IC_COMPONENTS_BASE * 2
 	max_complexity = IC_COMPLEXITY_BASE * 2
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 
 // This is defined higher up, in /clothing to avoid lots of copypasta.

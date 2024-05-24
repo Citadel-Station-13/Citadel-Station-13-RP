@@ -126,18 +126,23 @@
 
 	if(stat == 2)
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 	if((MUTATION_XRAY in src.mutations) || (sight_mode & BORGXRAY))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
 	if(sight_mode & BORGMESON)
 		AddSightSelf(SEE_TURFS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
 	if(sight_mode & BORGMATERIAL)
 		AddSightSelf(SEE_OBJS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
 	if(sight_mode & BORGTHERM)
 		AddSightSelf(SEE_MOBS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
 
 	if(fullbright)

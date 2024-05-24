@@ -29,7 +29,7 @@
 	/obj/structure/closet/acloset,
 	/mob/living/simple_mob/mechanical/viscerator,
 	/mob/living/simple_mob/mechanical/hivebot,
-	/obj/item/analyzer,
+	/obj/item/atmos_analyzer,
 	/obj/item/camera,
 	/obj/item/flash,
 	/obj/item/flashlight,
@@ -147,7 +147,7 @@
 		ui = new(user, src, "XenoarchReplicator", name)
 		ui.open()
 
-/obj/machinery/replicator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/replicator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["tgui_construction"] = tgui_construction
 	return data

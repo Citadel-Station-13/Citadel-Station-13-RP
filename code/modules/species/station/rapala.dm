@@ -8,8 +8,10 @@
 	deform       = 'icons/mob/species/rapala/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/rapala/preview.dmi'
 	husk_icon    = 'icons/mob/species/rapala/husk.dmi'
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/rapala,
+	)
 
 	max_additional_languages = 3
 	name_language = null
@@ -51,6 +53,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 	abilities = list(
 		/datum/ability/species/toggle_flight

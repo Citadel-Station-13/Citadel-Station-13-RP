@@ -10,16 +10,16 @@ import { addScrollableNode, removeScrollableNode } from '../events';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 export interface SectionProps extends BoxProps {
-  className?: string;
-  title?: InfernoNode;
-  buttons?: InfernoNode;
-  fill?: boolean;
-  fitted?: boolean;
-  scrollable?: boolean;
+  readonly className?: string;
+  readonly title?: InfernoNode;
+  readonly buttons?: InfernoNode;
+  readonly fill?: boolean;
+  readonly fitted?: boolean;
+  readonly scrollable?: boolean;
   /** @deprecated This property no longer works, please remove it. */
-  level?: boolean;
+  readonly level?: boolean;
   /** @deprecated Please use `scrollable` property */
-  overflowY?: any;
+  readonly overflowY?: any;
 }
 
 export class Section extends Component<SectionProps> {

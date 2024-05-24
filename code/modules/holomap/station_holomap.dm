@@ -120,9 +120,9 @@
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
-			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, .proc/checkPosition)
-			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, .proc/stopWatching)
+			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, PROC_REF(checkPosition))
+			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, PROC_REF(stopWatching))
 			update_use_power(USE_POWER_ACTIVE)
 
 			if(bogus)

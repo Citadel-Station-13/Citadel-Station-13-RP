@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(parallax)
 		while(length(currentrun))
 			var/client/processing_client = currentrun[currentrun.len]
 			currentrun.len--
+			// implicitly checks initialized
 			if (QDELETED(processing_client) || !processing_client.eye)
 				if (MC_TICK_CHECK)
 					return
@@ -28,6 +29,7 @@ SUBSYSTEM_DEF(parallax)
 		while(length(currentrun))
 			var/client/processing_client = currentrun[currentrun.len]
 			currentrun.len--
+			// implicitly checks initialized
 			if (QDELETED(processing_client) || !processing_client.eye)
 				if (MC_TICK_CHECK)
 					return
@@ -106,6 +108,8 @@ SUBSYSTEM_DEF(parallax)
  */
 /datum/controller/subsystem/parallax/proc/update_clients_on_z(z)
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
 		if(C.mob.z == z)
 			C.parallax_holder?.Update(TRUE)
 
@@ -114,6 +118,8 @@ SUBSYSTEM_DEF(parallax)
  */
 /datum/controller/subsystem/parallax/proc/reset_clients_on_z(z)
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
 		if(C.mob.z == z)
 			C.parallax_holder?.reset()
 
@@ -122,6 +128,8 @@ SUBSYSTEM_DEF(parallax)
  */
 /datum/controller/subsystem/parallax/proc/update_z_vis_contents(z)
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
 		if(C.mob.z == z)
 			C.parallax_holder?.SyncVisContents()
 
@@ -130,6 +138,8 @@ SUBSYSTEM_DEF(parallax)
  */
 /datum/controller/subsystem/parallax/proc/update_z_motion(z)
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
 		if(C.mob.z == z)
 			C.parallax_holder?.UpdateMotion()
 
@@ -139,4 +149,4 @@ SUBSYSTEM_DEF(parallax)
  * z
  */
 /datum/controller/subsystem/parallax/proc/queue_z_vis_update(z)
-	addtimer(CALLBACK(src, .proc/update_z_vis_contents, z), flags = TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(update_z_vis_contents), z), flags = TIMER_UNIQUE)

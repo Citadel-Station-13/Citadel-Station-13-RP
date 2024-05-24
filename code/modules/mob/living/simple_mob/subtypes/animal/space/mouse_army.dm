@@ -46,7 +46,7 @@
 
 	mob_size = MOB_MINISCULE
 	pass_flags = ATOM_PASS_TABLE
-//	can_pull_size = ITEMSIZE_TINY
+//	can_pull_size = WEIGHT_CLASS_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0
@@ -60,8 +60,8 @@
 	maxbodytemp = 5000	//Above 50 Degrees Celcius
 
 	//Mob melee settings
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 15
 	attacktext = list("attacked", "chomped", "gnawed on")
 	friendly = list("baps", "nuzzles")
 	attack_armor_type = "melee"
@@ -191,8 +191,8 @@
 	health = 30
 
 	//Mob melee settings
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attack_sharp = 0
 	attack_edge = 0
 
@@ -207,8 +207,8 @@
 				"bio" = 100,
 				"rad" = 100)
 
-	projectiletype = /obj/projectile/bullet/incendiary/flamethrower
-	base_attack_cooldown = 10
+	projectiletype = /obj/projectile/bullet/incendiary/flamethrower/weak
+	base_attack_cooldown = 40
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
 
@@ -233,10 +233,10 @@
 		return
 	var/datum/gas_mixture/GM = new
 	if(prob(10))
-		T.assume_gas(/datum/gas/phoron, 100, 1500+T0C)
+		T.assume_gas(GAS_ID_PHORON, 100, 1500+T0C)
 		T.visible_message("<span class='critical'>\The [src]'s tank vents a cloud of heated gas!</span>")
 	else
-		T.assume_gas(/datum/gas/phoron, 5, istype(T) ? T.air.temperature : T20C)
+		T.assume_gas(GAS_ID_PHORON, 5, istype(T) ? T.air.temperature : T20C)
 		visible_message("<span class='critical'>\The [src]'s tank ruptures!</span>")
 	T.assume_air(GM)
 	return
@@ -263,8 +263,8 @@
 	health = 30
 
 	//Mob melee settings
-	melee_damage_lower = 1
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 5
 	attack_sharp = 0
 	attack_edge = 0
 
@@ -329,8 +329,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/stealth)
 
 	//Mob melee settings
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 20
 	attack_sharp = 1
 	attack_edge = 1
 

@@ -87,7 +87,7 @@
 		return 0
 	ui_interact(user)
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user, datum/tgui_module/module)
+/obj/machinery/suit_storage_unit/ui_state()
 	return GLOB.notcontained_state
 
 /obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
@@ -96,7 +96,7 @@
 		ui = new(user, src, "SuitStorageUnit", name)
 		ui.open()
 
-/obj/machinery/suit_storage_unit/ui_data()
+/obj/machinery/suit_storage_unit/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["broken"] = isbroken
@@ -130,7 +130,7 @@
 		data["occupied"] = FALSE
 	return data
 
-/obj/machinery/suit_storage_unit/ui_act(action, params) //I fucking HATE this proc
+/obj/machinery/suit_storage_unit/ui_act(action, list/params, datum/tgui/ui)
 	if(..() || isUV || isbroken)
 		return TRUE
 
@@ -184,7 +184,7 @@
 				protected = 1
 
 	if(!protected)
-		playsound(src.loc, "sparks", 75, 1, -1)
+		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
 		to_chat(user, "<font color='red'>You try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
 		return*/
 	else  //welp, the guy is protected, we can continue
@@ -210,7 +210,7 @@
 				protected = 1
 
 	if(!protected)
-		playsound(src.loc, "sparks", 75, 1, -1)
+		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
 		to_chat(user, "<font color='red'>You try to touch the controls but you get zapped. There must be a short circuit somewhere.</font>")
 		return*/
 	else
@@ -320,10 +320,10 @@
 					occupant.emote("scream")
 				if(issuperUV)
 					var/burndamage = rand(28,35)
-					occupant.take_organ_damage(0,burndamage)
+					occupant.take_random_targeted_damage(brute = 0, brute = burndamage)
 				else
 					var/burndamage = rand(6,10)
-					occupant.take_organ_damage(0,burndamage)
+					occupant.take_random_targeted_damage(brute = 0, brute = burndamage)
 		if(i==3) //End of the cycle
 			if(!issuperUV)
 				if(helmet_stored)
@@ -369,10 +369,10 @@
 		spawn(50)
 			if(occupant)
 				if(issuperUV)
-					occupant.take_organ_damage(0,40)
+					occupant.take_random_targeted_damage(brute = 0, burn = 40)
 					to_chat(user, "Test. You gave him 40 damage")
 				else
-					occupant.take_organ_damage(0,8)
+					occupant.take_random_targeted_damage(brute = 0, burn = 8)
 					to_chat(user, "Test. You gave him 8 damage")
 	return*/
 
@@ -409,7 +409,7 @@
 
 /obj/machinery/suit_storage_unit/verb/get_out()
 	set name = "Eject Suit Storage Unit"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0)
@@ -423,7 +423,7 @@
 
 /obj/machinery/suit_storage_unit/verb/move_inside()
 	set name = "Hide in Suit Storage Unit"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0)

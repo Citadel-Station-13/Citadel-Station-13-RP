@@ -21,8 +21,8 @@
 	response_harm = "hits the"
 
 	harm_intent_damage = 2
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
@@ -51,7 +51,7 @@
 	var/obj/item/organ/internal/nano/refactory/refactory
 	var/datum/modifier/healing
 
-	var/list/obj/item/previously_held
+	var/datum/list/obj/item/previously_held
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -64,16 +64,17 @@
 //Constructor allows passing the human to sync damages
 /mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
-	mob_radio = new(src)
 	access_card = new(src)
 	if(H)
 		humanform = H
 		refactory = locate() in humanform.internal_organs
 		add_verb(src, /mob/living/proc/hide)
-		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_apperance)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_color)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/chameleon_apperance_rig)
 		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
@@ -87,6 +88,10 @@
 	if(healing)
 		healing.expire()
 	return ..()
+
+/mob/living/simple_mob/protean_blob/init_melee_style()
+	. = ..()
+	melee_style.damage_structural_add = 30
 
 /mob/living/simple_mob/protean_blob/init_vore()
 	return //Don't make a random belly, don't waste your time
@@ -103,8 +108,7 @@
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
-		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 35
-		base_attack_cooldown = 10 + max(0, (maxHealth - health) - 100) / 15
+		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 50
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -142,16 +146,10 @@
 	return FALSE //ok so tasers hurt protean blobs what the fuck
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
-	if(humanform)
-		humanform.adjustBruteLossByPart(amount, BP_TORSO)
-	else
-		..()
+	return humanform? humanform.take_targeted_damage(brute = amount, body_zone = BP_TORSO) : ..()
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
-	if(humanform)
-		humanform.adjustFireLossByPart(amount, BP_TORSO)
-	else
-		..()
+	return humanform? humanform.take_targeted_damage(burn = amount, body_zone = BP_TORSO) : ..()
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
@@ -258,7 +256,7 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/mob/living/simple_mob/protean_blob/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return
@@ -289,6 +287,9 @@
 /mob/living/carbon/human/proc/nano_intoblob()
 	if(loc == /obj/item/hardsuit/protean)
 		return
+	if(transforming)
+		return
+	transforming = TRUE
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
 
@@ -305,57 +306,24 @@
 	//Create our new blob
 	var/mob/living/simple_mob/protean_blob/blob = new(creation_spot,src)
 
-	//Drop all our things
-	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear,gloves,glasses,shoes) //And whatever else we decide for balancing.
-	var/list/prev_held = list()
-	for(var/obj/item/I as anything in get_held_items())
-		if(I.w_class >= WEIGHT_CLASS_SMALL)
-			continue
-		things_to_not_drop += I
-		prev_held += I
-	things_to_drop -= things_to_not_drop //Crunch the lists
-	things_to_drop -= organs //Mah armbs
-	things_to_drop -= internal_organs //Mah sqeedily spooch
-
-	for(var/obj/item/hardsuit/protean/O in things_to_drop)
-		things_to_drop -= O
-
-	for(var/obj/item/I in things_to_drop) //rip hoarders
-		drop_item_to_ground(I)
-
-	if(wearing_rig)
-		for(var/obj/item/I in list(wearing_rig.helmet, wearing_rig.chest, wearing_rig.gloves, wearing_rig.boots))
-			transfer_item_to_loc(I, wearing_rig, INV_OP_FORCE)
-
-	for(var/obj/item/radio/headset/HS in things_to_not_drop)
-		if(HS.keyslot1)
-			blob.mob_radio.keyslot1 = new HS.keyslot1.type(blob.mob_radio)
-		if(HS.keyslot2)
-			blob.mob_radio.keyslot2 = new HS.keyslot2.type(blob.mob_radio)
-		if(HS.adhoc_fallback)
-			blob.mob_radio.adhoc_fallback = TRUE
-		blob.mob_radio.recalculateChannels()
-
-	for(var/obj/item/pda/P in things_to_not_drop)
-		if(P.id)
-			var/obj/item/card/id/PID = P.id
-			blob.access_card.access += PID.access
-
-	for(var/obj/item/card/id/I in things_to_not_drop)
-		blob.access_card.access += I.access
-
-	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
-		var/obj/item/clothing/uniform = w_uniform
-		if(LAZYLEN(uniform.accessories))
-			for(var/obj/item/clothing/accessory/A in uniform.accessories)
-				if(istype(A, /obj/item/clothing/accessory/holster) || istype(A, /obj/item/clothing/accessory/storage)) //only drop webbings/holsters so you don't drop your PAN or vanity/fluff accessories(the life notifier necklace, etc).
-					uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
+	if(isnull(blob.mob_radio) && istype(l_ear, /obj/item/radio))
+		blob.mob_radio = l_ear
+		if(!transfer_item_to_loc(l_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+			blob.mob_radio = null
+	if(isnull(blob.mob_radio) && istype(r_ear, /obj/item/radio))
+		blob.mob_radio = r_ear
+		if(!transfer_item_to_loc(r_ear, blob, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT))
+			blob.mob_radio = null
 
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-	blob.previously_held = prev_held
+	var/list/datum/weakref/prev_held = new /list(length(held_items))
+	for(var/i in 1 to length(held_items))
+		var/obj/item/held = held_items[i]
+		if(isnull(held))
+			continue
+		prev_held[i] = WEAKREF(held)
 	//languages!!
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)
@@ -364,7 +332,7 @@
 	temporary_form = blob
 
 	//Mail them to nullspace
-	moveToNullspace()
+	forceMove(blob)
 
 	if(blob.client && panel_selected)
 		blob.client.statpanel = SPECIES_PROTEAN
@@ -396,6 +364,8 @@
 		blob.can_be_drop_prey = P.can_be_drop_prey
 		blob.can_be_drop_pred = P.can_be_drop_pred
 
+	transforming = FALSE
+
 	//Return our blob in case someone wants it
 	return blob
 
@@ -406,13 +376,27 @@
 		if(istype(I, /obj/item/holder))
 			I.forceMove(root.drop_location())
 
-/mob/living/simple_mob/protean_blob/proc/useradio()
-	set name = "Utilize Radio"
-	set desc = "Allows a protean blob to interact with its internal radio."
-	set category = "Abilities"
+/mob/living/simple_mob/protean_blob/strip_menu_act(mob/user, action)
+	return humanform.strip_menu_act(arglist(args))
 
-	if(mob_radio)
-		mob_radio.nano_ui_interact(src, state = interactive_state)
+/mob/living/simple_mob/protean_blob/strip_menu_options(mob/user)
+	return humanform.strip_menu_options(arglist(args))
+
+/mob/living/simple_mob/protean_blob/strip_interaction_prechecks(mob/user, autoclose, allow_loc)
+	allow_loc = TRUE
+	return humanform.strip_interaction_prechecks(arglist(args))
+
+/mob/living/simple_mob/protean_blob/open_strip_menu(mob/user)
+	return humanform.open_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/close_strip_menu(mob/user)
+	return humanform.close_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/request_strip_menu(mob/user)
+	return humanform.request_strip_menu(arglist(args))
+
+/mob/living/simple_mob/protean_blob/render_strip_menu(mob/user)
+	return humanform.render_strip_menu(arglist(args))
 
 /mob/living/simple_mob/protean_blob/proc/rig_transform()
 	set name = "Modify Form - Hardsuit"
@@ -450,8 +434,11 @@
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
-	if(blob.loc == /obj/item/hardsuit/protean)
+	if(istype(blob.loc, /obj/item/hardsuit/protean))
 		return
+	if(transforming)
+		return
+	transforming = TRUE
 
 	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
@@ -496,8 +483,20 @@
 		B.forceMove(src)
 		B.owner = src
 
-	for(var/obj/item/I as anything in blob.previously_held)
-		put_in_hands_or_drop(I)
+	for(var/i in 1 to length(blob.previously_held))
+		var/datum/weakref/ref = blob.previously_held[i]
+		var/obj/item/resolved = ref?.resolve()
+		if(isnull(resolved))
+			continue
+		put_in_hand_or_drop(resolved, i)
+
+	if(!isnull(blob.mob_radio))
+		if(!equip_to_slots_if_possible(blob.mob_radio, list(
+			/datum/inventory_slot/inventory/ears/left,
+			/datum/inventory_slot/inventory/ears/right,
+		)))
+			blob.mob_radio.forceMove(reform_spot)
+		blob.mob_radio = null
 
 	Life(1, SSmobs.times_fired)
 
@@ -505,6 +504,7 @@
 	qdel(blob)
 
 	//Return ourselves in case someone wants it
+	transforming = FALSE
 	return src
 
 /mob/living/simple_mob/protean_blob/say_understands()
@@ -526,6 +526,11 @@
 		if("Plain")
 			icon_living = "puddle0"
 			update_icon()
+
+	if(istype(loc, /obj/item/holder))
+		var/obj/item/holder/H = loc
+		H.sync()
+
 
 /mob/living/simple_mob/protean_blob/proc/leap_attack()
 	set name = "Pounce"
@@ -557,7 +562,7 @@
 		return
 
 	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
-	if(do_after(src, 7.5 SECONDS, target)) //7.5 seconds.
+	if(do_after(src, 1 SECOND, target)) //1 second
 		if(buckled || pinned.len)
 			return
 
@@ -566,7 +571,10 @@
 		src.forceMove(H)
 
 		switch(src.zone_sel.selecting)
-			if(BP_GROIN)
+			if(BP_L_LEG)
+				targeted_area = SLOT_ID_UNIFORM //fetish_code.rtf
+				target_displayname = "body"
+			if(BP_R_LEG)
 				targeted_area = SLOT_ID_UNIFORM //fetish_code.rtf
 				target_displayname = "body"
 			if(BP_TORSO)
@@ -578,6 +586,24 @@
 			if(O_MOUTH)
 				targeted_area = SLOT_ID_MASK
 				target_displayname = "face"
+			if(BP_R_HAND)
+				targeted_area = SLOT_ID_GLOVES
+				target_displayname = "body"
+			if(BP_L_HAND)
+				targeted_area = SLOT_ID_GLOVES
+				target_displayname = "body"
+			if(BP_GROIN)
+				targeted_area = SLOT_ID_BACK
+				target_displayname = "back"
+			if(BP_L_FOOT)
+				targeted_area = SLOT_ID_SHOES
+				target_displayname = "feet"
+			if(BP_R_FOOT)
+				targeted_area = SLOT_ID_SHOES
+				target_displayname = "feet"
+			if(O_EYES)
+				targeted_area = SLOT_ID_GLASSES
+				target_displayname = "eyes"
 
 		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT))
 			visible_message("<span class='danger'>[src] leaps at [target]'s [target_displayname]!</span>")
@@ -585,6 +611,140 @@
 			visible_message("<span class='notice'>[src] leaps at [target]'s [target_displayname] and bounces off harmlessly!</span>")
 		H.sync(src)
 		return
+
+/mob/living/simple_mob/protean_blob/proc/chameleon_apperance()
+	set name = "Chameleon Change"
+	set desc = "Allows a protean blob to change or reset its apperance when worn."
+	set category = "Abilities"
+
+	if(!istype(loc, /obj/item/holder))
+		to_chat(src, "<span class='notice'>You can't do that while not being held or worn.</span>")
+		return
+
+	var/obj/item/holder/H = loc
+	var/chosen_list
+	var/icon_file
+	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("under", "suit", "hat", "gloves", "shoes", "back", "mask", "glasses", "belt", "ears", "headsets", "reset"))
+		if("reset")
+			H.color = initial(H.color)
+			H.icon_override = null
+			H.sync(src)
+			return
+		if("under")
+			chosen_list = GLOB.clothing_under
+			icon_file = 'icons/mob/clothing/uniform.dmi'
+		if("suit")
+			chosen_list = GLOB.clothing_suit
+			icon_file = 'icons/mob/clothing/suits.dmi'
+		if("hat")
+			chosen_list = GLOB.clothing_head
+			icon_file = 'icons/mob/clothing/head.dmi'
+		if("gloves")
+			chosen_list = GLOB.clothing_gloves
+			icon_file = 'icons/mob/clothing/hands.dmi'
+		if("shoes")
+			chosen_list = GLOB.clothing_shoes
+			icon_file = 'icons/mob/clothing/feet.dmi'
+		if("back")
+			chosen_list = GLOB.clothing_backpack
+			icon_file = 'icons/mob/clothing/back.dmi'
+		if("mask")
+			chosen_list = GLOB.clothing_mask
+			icon_file = 'icons/mob/clothing/mask.dmi'
+		if("glasses")
+			chosen_list = GLOB.clothing_glasses
+			icon_file = 'icons/mob/clothing/eyes.dmi'
+		if("belt")
+			chosen_list = GLOB.clothing_belt
+			icon_file = 'icons/mob/clothing/belt.dmi'
+		if("ears")
+			chosen_list = GLOB.clothing_ears
+			icon_file = 'icons/mob/clothing/ears.dmi'
+		if("headsets")
+			chosen_list = GLOB.clothing_headsets
+			icon_file = 'icons/mob/clothing/ears.dmi'
+
+	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
+
+	if(!ispath(chosen_list[picked]))
+		return
+
+	H.disguise(chosen_list[picked])
+	if(isnull(H.icon_override))
+		H.icon_override = icon_file
+	H.update_worn_icon()	//so our overlays update.
+
+	if (ismob(H.loc))
+		var/mob/M = H.loc
+		M.update_inv_belt() //so our overlays
+		M.update_inv_back()
+
+
+/mob/living/simple_mob/protean_blob/proc/chameleon_apperance_rig()
+	set name = "Chameleon Hardsuit Change"
+	set desc = "Allows a protean blob to change or reset its apperance when worn."
+	set category = "Abilities"
+
+	if(!istype(loc, /obj/item/hardsuit/protean))
+		to_chat(src, "<span class='notice'>You can't do that while not being held or worn as a hardsuit.</span>")
+		return
+
+	var/obj/item/hardsuit/protean/H = loc
+	var/chosen_list
+	var/obj/item/clothing/chosenpart
+
+	switch(input(src,"What type of clothing would you like to mimic or reset appearance?","Mimic Clothes") as null|anything in list("suit", "helmet", "gloves", "boots", "reset"))
+		if("reset")
+			H.boots.disguise(H.boots.type) //disguising it as itself just sets its vars back to initial which is what we want
+			H.chest.disguise(H.chest.type)
+			H.helmet.disguise(H.helmet.type)
+			H.gloves.disguise(H.gloves.type)
+			H.boots.update_worn_icon()
+			H.chest.update_worn_icon()
+			H.helmet.update_worn_icon()
+			H.gloves.update_worn_icon()
+			return
+		if("suit")
+			chosenpart = H.chest
+			chosen_list = GLOB.clothing_suit
+		if("helmet")
+			chosenpart = H.helmet
+			chosen_list = GLOB.clothing_head
+		if("gloves")
+			chosenpart = H.gloves
+			chosen_list = GLOB.clothing_gloves
+		if("boots")
+			chosenpart = H.boots
+			chosen_list = GLOB.clothing_shoes
+
+
+	var/picked = input(src,"What clothing would you like to mimic?","Mimic Clothes") as null|anything in chosen_list
+
+	if(!ispath(chosen_list[picked]))
+		return
+
+	chosenpart.disguise(chosen_list[picked])
+	chosenpart.update_worn_icon()
+
+
+/mob/living/simple_mob/protean_blob/proc/chameleon_color()
+	set name = "Chameleon Color"
+	set desc = "Allows a protean blob to change or reset its color when worn."
+	set category = "Abilities"
+
+	if(!istype(loc, /obj/item/holder))
+		to_chat(src, "<span class='notice'>You can't do that while not being held or worn.</span>")
+		return
+
+	var/obj/item/holder/H = loc
+	var/color_in = input("Pick a color. Cancelling sets it to default.","Color", H.color) as null|color
+
+	if(color_in)
+		H.color = color_in
+	else
+		H.color = initial(H.color)
+	H.update_worn_icon()	//so our overlays update.
+
 
 /mob/living/simple_mob/protean_blob/make_perspective()
 	. = ..()

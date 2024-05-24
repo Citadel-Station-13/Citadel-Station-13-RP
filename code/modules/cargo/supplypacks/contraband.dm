@@ -66,7 +66,7 @@
 /obj/item/storage/box/cargo_null_entry_kit/ops
 	name = "operator's kit"
 
-/obj/item/storage/box/cargo_null_entry_kit/ops/PopulateContents()
+/obj/item/storage/box/cargo_null_entry_kit/ops/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/shotgun/pump/combat(src)
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
 	new /obj/item/clothing/glasses/night(src)
@@ -77,7 +77,7 @@
 /obj/item/storage/box/cargo_null_entry_kit/doctor
 	name = "doctor's kit"
 
-/obj/item/storage/box/cargo_null_entry_kit/doctor/PopulateContents()
+/obj/item/storage/box/cargo_null_entry_kit/doctor/legacy_spawn_contents()
 	new /obj/item/storage/firstaid/combat(src)
 	new /obj/item/gun/ballistic/dartgun(src)
 	new /obj/item/reagent_containers/hypospray(src)
@@ -88,7 +88,7 @@
 /obj/item/storage/box/cargo_null_entry_kit/sapper
 	name = "sapper's kit"
 
-/obj/item/storage/box/cargo_null_entry_kit/sapper/PopulateContents()
+/obj/item/storage/box/cargo_null_entry_kit/sapper/legacy_spawn_contents()
 	new /obj/item/melee/energy/sword/ionic_rapier(src)
 	new /obj/item/storage/box/syndie_kit/space(src)
 	new /obj/item/storage/box/syndie_kit/demolitions(src)
@@ -99,7 +99,7 @@
 /obj/item/storage/box/cargo_null_entry_kit/spy
 	name = "spy's kit"
 
-/obj/item/storage/box/cargo_null_entry_kit/spy/PopulateContents()
+/obj/item/storage/box/cargo_null_entry_kit/spy/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/silenced(src)
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/encryptionkey/syndicate(src)
@@ -110,7 +110,7 @@
 /obj/item/storage/box/cargo_null_entry_kit/pro
 	name = "professional's kit"
 
-/obj/item/storage/box/cargo_null_entry_kit/pro/PopulateContents()
+/obj/item/storage/box/cargo_null_entry_kit/pro/legacy_spawn_contents()
 	new /obj/item/gun/ballistic/silenced(src)
 	new /obj/item/gun/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
@@ -139,13 +139,6 @@
 	container_name = "shadier crate"
 	contraband = 1
 	group = "Supplies"
-
-/datum/supply_pack/supply/wolfgirl
-	name = "Wolfgirl Crate"
-	cost = 200 //I mean, it's a whole wolfgirl
-	container_type = /obj/structure/largecrate/animal/wolfgirl
-	container_name = "Wolfgirl crate"
-	contraband = 1
 
 /datum/supply_pack/supply/medieval
 	name = "Knight set crate"
@@ -202,3 +195,31 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "teutonic armor crate"
 	contraband = 1
+
+/datum/supply_pack/robotics/salvage
+	name = "Redirected Mech Salvage"
+	contains = list(/obj/item/mechasalvage = 6)
+	cost = 400 //High End Mech Parts, Direct To You, at an extreme markup!
+	container_type = /obj/structure/closet/crate
+	container_name = "oil-stained crate"
+	contraband = 1
+
+/datum/supply_pack/randomised/material/rareores
+	name = "Smuggled Ores and Materials"
+	num_contained = 20
+	contains = list(
+		/obj/item/stack/material/bananium,
+		/obj/item/stack/material/diamond,
+		/obj/item/stack/material/durasteel,
+		/obj/item/stack/material/morphium,
+		/obj/item/stack/material/platinum,
+		/obj/item/stack/material/verdantium,
+		/obj/item/stack/material/mhydrogen,
+		/obj/item/stack/material/silencium,
+		/obj/item/stack/material/valhollide
+		)
+	cost = 350
+	container_type = /obj/structure/closet/crate
+	container_name = "dented mining crate"
+	contraband = 1
+	group = "Materials"

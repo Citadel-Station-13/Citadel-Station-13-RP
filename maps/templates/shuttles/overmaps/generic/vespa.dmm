@@ -8,7 +8,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -16,7 +16,7 @@
 "ac" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -83,11 +83,10 @@
 /turf/simulated/floor,
 /area/ship/expe/engines)
 "ap" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/atmospherics)
 "aq" = (
@@ -243,7 +242,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
 "aP" = (
@@ -371,9 +370,8 @@
 /turf/simulated/floor,
 /area/ship/expe/maintenancerim)
 "bl" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor,
 /area/ship/expe/maintenancerim)
@@ -381,7 +379,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/ship/expe/maintenancerim)
 "bn" = (
@@ -535,7 +533,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/firealarm,
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
 "bE" = (
@@ -627,13 +625,12 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/northairlock)
 "bO" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/northairlock)
@@ -767,12 +764,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/northairlock)
 "co" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 8
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor,
 /area/ship/expe/maintenance2)
@@ -783,7 +779,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/ship/expe/maintenance2)
 "cq" = (
@@ -842,9 +838,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "cy" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -873,19 +868,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/maintenancerim)
 "cC" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
 /obj/item/soap/nanotrasen,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "cD" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
@@ -894,19 +888,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "cF" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "cG" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
@@ -915,18 +908,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "cI" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "cJ" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
@@ -935,18 +927,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "cL" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "cM" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
@@ -955,19 +946,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "cO" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "cP" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
@@ -976,19 +966,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "cR" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
 /obj/item/soap/nanotrasen,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "cS" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
@@ -997,18 +986,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "cU" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "cV" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
@@ -1017,18 +1005,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "cX" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "cY" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
@@ -1037,19 +1024,18 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "da" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin9)
 "db" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin9)
@@ -1113,16 +1099,15 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/ship/expe/maintenance1)
 "dk" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor,
 /area/ship/expe/maintenance1)
@@ -1505,7 +1490,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/corridor1)
 "em" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1524,7 +1509,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin1)
 "ep" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1542,7 +1527,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin2)
 "es" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1561,7 +1546,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin3)
 "ev" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1579,7 +1564,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin4)
 "ey" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1598,7 +1583,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin5)
 "eB" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1616,7 +1601,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin6)
 "eE" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1635,7 +1620,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin7)
 "eH" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1653,7 +1638,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/cabin8)
 "eK" = (
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1787,7 +1772,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "fg" = (
@@ -2002,12 +1987,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fB" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/techfloor{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
@@ -2018,7 +2002,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fD" = (
@@ -2057,12 +2041,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
 "fH" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/techfloor{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor6)
@@ -2079,12 +2062,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "fK" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
@@ -2095,7 +2077,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/bridge)
 "fM" = (
@@ -2462,7 +2444,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2746,10 +2728,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
 "gU" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/effect/floor_decal/techfloor,
@@ -2761,7 +2740,7 @@
 /area/ship/expe/corridor3)
 "gW" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2945,7 +2924,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "ht" = (
@@ -3118,14 +3097,14 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringstorage)
 "hN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -3222,7 +3201,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -3252,7 +3231,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineering)
 "hU" = (
@@ -3316,7 +3295,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3439,7 +3418,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "ie" = (
@@ -3746,7 +3725,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "iH" = (
@@ -3761,10 +3740,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "iI" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/rack/shelf,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -3773,18 +3748,20 @@
 	dir = 5
 	},
 /obj/item/clothing/suit/storage/vest,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "iJ" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/secmain)
@@ -3798,7 +3775,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/secmain)
 "iL" = (
@@ -3852,9 +3829,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/medicalchem)
 "iP" = (
-/obj/machinery/firealarm{
-	pixel_y = 28
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -3878,15 +3853,14 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "iR" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
@@ -3900,7 +3874,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "iT" = (
@@ -4039,10 +4013,6 @@
 /area/ship/expe/medicaleq)
 "jg" = (
 /obj/structure/table/reinforced,
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -4052,6 +4022,9 @@
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/toxin,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "jh" = (
@@ -4669,7 +4642,6 @@
 	dir = 9
 	},
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
@@ -4762,19 +4734,18 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "kJ" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
@@ -5236,10 +5207,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "lL" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -5247,6 +5214,9 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/engineering_electrical,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "lM" = (
@@ -5259,7 +5229,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 5
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "lN" = (
@@ -5636,12 +5606,12 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -25
-	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
@@ -5785,8 +5755,8 @@
 "mL" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
-/obj/machinery/firealarm{
-	pixel_y = -27
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
@@ -5798,8 +5768,8 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	pixel_x = -28
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
+	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
@@ -5934,7 +5904,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "mY" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -25
 	},
@@ -6197,7 +6167,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6239,7 +6209,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/firealarm,
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/sechall)
 "nG" = (
@@ -6355,15 +6325,14 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "nS" = (
-/obj/machinery/firealarm{
-	pixel_x = -31;
-	pixel_y = -1
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
+	},
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
+	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
@@ -6408,11 +6377,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "nY" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/power/terminal{
 	dir = 8
 	},
@@ -6725,7 +6690,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor6)
 "oB" = (
@@ -6914,7 +6879,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
 "oY" = (
@@ -6930,10 +6895,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
 "oZ" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -6945,6 +6906,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
@@ -6992,7 +6956,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "pf" = (
@@ -7023,14 +6987,14 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalmain)
 "pi" = (
-/obj/machinery/firealarm{
-	pixel_x = -28
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
+	},
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
+	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
@@ -7326,19 +7290,18 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "pQ" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -7372,14 +7335,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangar)
 "pU" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
@@ -7388,6 +7347,9 @@
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
@@ -7401,7 +7363,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
 "pW" = (
@@ -7435,7 +7397,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/firealarm,
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
 "pZ" = (
@@ -7448,7 +7410,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/sechall)
 "qa" = (
@@ -7458,7 +7420,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 6
 	},
-/obj/machinery/firealarm,
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
 "qb" = (
@@ -7718,11 +7680,7 @@
 /area/ship/expe/smstorage)
 "qD" = (
 /obj/machinery/power/emitter,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 32
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/machinery/power/terminal{
 	dir = 1
 	},
@@ -7770,19 +7728,18 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "qK" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
 /obj/machinery/photocopier/faxmachine,
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/captqua)
 "qL" = (
@@ -8153,7 +8110,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor,
 /area/ship/expe/corridor4)
 "rJ" = (
@@ -8218,7 +8175,7 @@
 /turf/simulated/floor,
 /area/ship/expe/sm)
 "rQ" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
+/obj/machinery/atmospherics/component/trinary/filter/mirrored{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -8483,7 +8440,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
 "sv" = (
@@ -8499,10 +8456,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
 "sw" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
@@ -8514,6 +8467,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
@@ -8537,9 +8493,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "sz" = (
-/obj/machinery/firealarm{
-	pixel_y = 31
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -8576,16 +8530,15 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "sC" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
@@ -8613,7 +8566,7 @@
 	dir = 9
 	},
 /obj/item/storage/box/freezer,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "sF" = (
@@ -8654,10 +8607,6 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "sH" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -8669,6 +8618,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
@@ -8698,10 +8650,6 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "sK" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -8710,6 +8658,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-8"
+	},
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
@@ -8726,10 +8677,6 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "sM" = (
-/obj/machinery/firealarm{
-	pixel_x = -1;
-	pixel_y = 30
-	},
 /obj/structure/bed,
 /obj/structure/curtain/medical,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -8738,6 +8685,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "sN" = (
@@ -8921,7 +8869,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/seccells)
 "tz" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -25
 	},
@@ -8992,9 +8940,6 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "tI" = (
-/obj/machinery/firealarm{
-	pixel_x = -31
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -9003,6 +8948,9 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/surgery,
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalsur)
 "tJ" = (
@@ -9038,7 +8986,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical1)
 "tN" = (
@@ -9126,7 +9074,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm{
+/obj/machinery/air_alarm{
 	frequency = 1441;
 	pixel_y = 22
 	},
@@ -9148,7 +9096,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor5)
 "tY" = (
@@ -9493,10 +9441,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medical)
 "uP" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
 /obj/structure/bed/chair{
@@ -9516,7 +9461,6 @@
 	dir = 6
 	},
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
@@ -9664,7 +9608,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm{
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9847,9 +9791,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/corridor2)
 "vJ" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9999,7 +9941,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wf" = (
@@ -10040,9 +9982,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
@@ -10301,13 +10242,16 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wS" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/machinery/firealarm{
-	pixel_y = -26
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "wT" = (
@@ -10490,13 +10434,13 @@
 /area/ship/expe/maintenancerim)
 "xH" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/southairlock)
 "xI" = (
-/obj/machinery/alarm{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -25
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/southairlock)
@@ -10540,13 +10484,12 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/ship/expe/engines)
 "xZ" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
+/obj/machinery/air_alarm/alarms_hidden{
+	pixel_y = 26
 	},
 /turf/simulated/floor,
 /area/ship/expe/engines)
@@ -16801,7 +16744,7 @@ ss
 tx
 uF
 vC
-wd
+wS
 wP
 aS
 bi
@@ -17228,7 +17171,7 @@ ty
 oS
 vC
 yM
-wS
+wT
 aS
 bi
 bi

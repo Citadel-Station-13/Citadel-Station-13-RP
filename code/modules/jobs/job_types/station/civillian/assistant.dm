@@ -7,9 +7,8 @@
 	department_flag = CIVILIAN
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "nobody! You don't work here"
+	supervisors = "Nobody! You don't work here."
 	selection_color = "#515151"
-	timeoff_factor = 0
 
 	outfit_type = /datum/outfit/job/station/assistant
 	alt_titles = list(

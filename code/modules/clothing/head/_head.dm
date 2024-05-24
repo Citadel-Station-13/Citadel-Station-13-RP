@@ -8,7 +8,7 @@
 		)
 	body_cover_flags = HEAD
 	slot_flags = SLOT_HEAD
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	blood_sprite_state = "helmetblood"
 
 	var/light_overlay = "helmet_light"

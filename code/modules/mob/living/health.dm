@@ -5,7 +5,10 @@
 		health = 100
 		set_stat(CONSCIOUS)
 	else
+		var/old_health = health
 		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
+		if(old_health != health)
+			update_hud_med_health()
 
 /mob/living/update_stat(forced, update_mobility)
 	if(stat == DEAD)
@@ -96,7 +99,7 @@
  * set body temperature
  */
 /mob/living/proc/set_bodytemperature(amt)
-	bodytemperature = amt
+	bodytemperature = max(TCMB, amt)
 /**
  * adjust body temperature
  */

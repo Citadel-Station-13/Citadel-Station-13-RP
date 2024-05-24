@@ -4,8 +4,8 @@
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	w_class = ITEMSIZE_NORMAL
-	materials = list(MAT_STEEL = 1000)
+	w_class = WEIGHT_CLASS_NORMAL
+	materials_base = list(MAT_STEEL = 1000)
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
@@ -43,6 +43,13 @@
 			ammo_magazine = new magazine_type(src)
 			allowed_magazines += /obj/item/ammo_magazine/smart
 	update_icon()
+
+/obj/item/gun/ballistic/update_icon_state()
+	. = ..()
+	var/silenced_state = silenced ? silenced_icon : initial(icon_state)
+	var/magazine_state = ammo_magazine ? "" : "-empty"
+	if(magazine_type)
+		icon_state = "[silenced_state][magazine_state]"
 
 /obj/item/gun/ballistic/consume_next_projectile()
 	//get the next casing
@@ -236,7 +243,29 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/clickchain/e_args)
+	if(suppressible)
+		if(istype(A, /obj/item/silencer))
+			if(!user.is_holding(src))	//if we're not in his hands
+				to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!user.attempt_insert_item_for_installation(A, src))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			to_chat(user, "<span class='notice'>You screw [A] onto [src].</span>")
+			silenced = TRUE
+			set_weight_class(WEIGHT_CLASS_NORMAL)
+			update_icon()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(A, /obj/item/tool/wrench))
+			if(silenced)
+				var/obj/item/silencer/S = new (get_turf(user))
+				to_chat(user, "<span class='notice'>You unscrew [S]] from [src].</span>")
+				user.put_in_hands(S)
+				silenced = FALSE
+				set_weight_class(WEIGHT_CLASS_SMALL)
+				update_icon()
+
+/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)
@@ -249,7 +278,7 @@
 		unload_ammo(user)
 	update_icon()
 
-/obj/item/gun/ballistic/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
@@ -290,7 +319,7 @@
 //in case the weapon has firemodes and can't unload using attack_hand()
 /obj/item/gun/ballistic/verb/unload_gun()
 	set name = "Unload Ammo"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(usr.stat || usr.restrained()) return

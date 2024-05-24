@@ -90,10 +90,10 @@
 
 /datum/unit_test/active_edges/Run()
 
-	var/active_edges = air_master.active_edges.len
+	var/active_edges = SSair.active_edges.len
 	var/list/edge_log = list()
 	if(active_edges)
-		for(var/datum/zas_edge/E in air_master.active_edges)
+		for(var/datum/zas_edge/E in SSair.active_edges)
 			edge_log += "Active Edge [E] ([E.type])"
 			for(var/turf/T in E.connecting_turfs)
 				edge_log += "+--- Connecting Turf [T] @ [T.x], [T.y], [T.z]"

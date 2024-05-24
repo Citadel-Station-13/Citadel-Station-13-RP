@@ -430,7 +430,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode))
+		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -456,7 +456,7 @@
 /// Orders mobs by type then by name.
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
+	var/list/sortmob = sortList(GLOB.mob_list, cmp= GLOBAL_PROC_REF(cmp_name_asc))
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/observer/blob/M in sortmob)
@@ -1020,6 +1020,10 @@
 		return TRUE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_SHARP)
+			return TRUE
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
@@ -1028,6 +1032,10 @@
 		return FALSE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_EDGE)
+			return TRUE
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
@@ -1080,7 +1088,7 @@
  * TODO - Fix this ancient list of wall items. Preferably make it dynamically populated. ~Leshana
 */
 var/list/WALLITEMS = list(
-	/obj/machinery/power/apc, /obj/machinery/alarm, /obj/item/radio/intercom, /obj/structure/frame,
+	/obj/machinery/power/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
 	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button/remote,

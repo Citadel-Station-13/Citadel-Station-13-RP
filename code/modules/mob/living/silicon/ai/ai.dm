@@ -42,7 +42,7 @@ var/list/ai_verbs_default = list(
 	name = "Silicons - Artificial Intelligence"
 	desc = "Stationbound Artificial Intelligences were pioneered by \
 	multiple governments and species across the galaxy, with mixed results. \
-	On the Frontier, NanoTrasen's ability to pour massive amounts of resources \
+	On the Frontier, Nanotrasen's ability to pour massive amounts of resources \
 	into the field of Artificial Intelligence has provided them with some of the \
 	most sophisticated models available today. The application of strict Lawsets \
 	to AI units has kept the advanced systems from spiralling out of control, although \
@@ -503,6 +503,10 @@ var/list/ai_verbs_default = list(
 			ai_actual_track(target)
 		else
 			to_chat(src, "<font color='red'>System error. Cannot locate [html_decode(href_list["trackname"])].</font>")
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 
 /mob/living/silicon/ai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	. = ..()
@@ -540,7 +544,7 @@ var/list/ai_verbs_default = list(
 		for(var/i in tempnetwork)
 			cameralist[i] = i
 
-	cameralist = tim_sort(cameralist, /proc/cmp_text_asc, TRUE)
+	cameralist = tim_sort(cameralist, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 	return cameralist
 
 /mob/living/silicon/ai/proc/ai_network_change(var/network in get_camera_network_list())
@@ -731,7 +735,7 @@ var/list/ai_verbs_default = list(
 // Pass lying down or getting up to our pet human, if we're in a hardsuit.
 /mob/living/silicon/ai/lay_down()
 	set name = "Rest"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	resting = 0
 	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()

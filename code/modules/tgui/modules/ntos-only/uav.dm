@@ -8,7 +8,7 @@
 	var/list/viewers //Who's viewing a UAV through us
 	var/adhoc_range = 30 //How far we can operate on a UAV without NTnet
 
-/datum/tgui_module_old/uav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/uav/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	if(current_uav)
@@ -95,7 +95,7 @@
 
 	signal_strength = 0
 	current_uav = U
-	RegisterSignal(U, COMSIG_MOVABLE_Z_CHANGED, .proc/current_uav_changed_z)
+	RegisterSignal(U, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(current_uav_changed_z))
 
 	if(LAZYLEN(viewers))
 		for(var/datum/weakref/W in viewers)
@@ -180,7 +180,7 @@
 				unlook(M)
 	. = ..()
 
-/datum/tgui_module_old/uav/ui_status(mob/user)
+/datum/tgui_module_old/uav/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_uav(user))
@@ -188,7 +188,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module_old/uav/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/uav/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	unlook(user)
 

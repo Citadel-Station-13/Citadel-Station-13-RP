@@ -49,8 +49,8 @@
 /obj/machinery/atmospherics/component/trinary/mixer/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -72,7 +72,7 @@
 			network3.update = 1
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 	return 1
@@ -83,7 +83,7 @@
 		ui = new(user, src, "AtmosMixer", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/trinary/mixer/ui_data(mob/user)
+/obj/machinery/atmospherics/component/trinary/mixer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["on"] = use_power
 	data["set_pressure"] = round(set_flow_rate)
@@ -100,7 +100,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/trinary/mixer/ui_act(action, params)
+/obj/machinery/atmospherics/component/trinary/mixer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -5,9 +5,9 @@
 	desc = "The jaws of the law."
 	damage_force = 10
 	throw_force = 0
-	hitsound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/dogborg/jaws/small
 	name = "puppy jaws"
@@ -16,9 +16,9 @@
 	desc = "The jaws of a small dog."
 	damage_force = 5
 	throw_force = 0
-	hitsound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/emagged = 0
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user, datum/event_args/clickchain/e_args)
@@ -35,9 +35,8 @@
 			desc = "The jaws of the law."
 			damage_force = 10
 			throw_force = 0
-			hitsound = 'sound/weapons/bite.ogg'
+			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
-			w_class = ITEMSIZE_NORMAL
 		else
 			name = "puppy jaws"
 			icon = 'icons/mob/dogborg_vr.dmi'
@@ -45,9 +44,8 @@
 			desc = "The jaws of a small dog."
 			damage_force = 5
 			throw_force = 0
-			hitsound = 'sound/weapons/bite.ogg'
+			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
-			w_class = ITEMSIZE_NORMAL
 		update_icon()
 
 //Boop //Newer and better, can sniff reagents, tanks, and boop people!
@@ -57,10 +55,10 @@
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/dogborg/boop_module/attack_self(mob/user, datum/event_args/clickchain/e_args)
 	. = ..()
@@ -84,7 +82,7 @@
 		to_chat(user, "<span class='warning'>Pressure: [round(pressure,0.1)] kPa</span>")
 	if(total_moles)
 		for(var/g in environment.gas)
-			to_chat(user, "<span class='notice'>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
+			to_chat(user, "<span class='notice'>[global.gas_data.names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
 /obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -127,10 +125,10 @@
 	desc = "Fetch the thing!"
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "dbag"
-	w_class = ITEMSIZE_HUGE
-	max_w_class = ITEMSIZE_SMALL
-	max_combined_w_class = ITEMSIZE_SMALL
-	storage_slots = 1
+	w_class = WEIGHT_CLASS_HUGE
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_w_class = WEIGHT_CLASS_SMALL
+	max_items = 1
 	collection_mode = 0
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
@@ -180,8 +178,8 @@
 	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
-	hitsound = 'sound/effects/attackblob.ogg'
-	item_flags = ITEM_NOBLUDGEON
+	attack_sound = 'sound/effects/attackblob.ogg'
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
@@ -241,7 +239,10 @@
 				to_chat(user, "<span class='notice'>You finish off [target].</span>")
 				qdel(target)
 				var/mob/living/silicon/robot/R = user
-				R.cell.charge += 250
+				if(istype(target,/obj/item/trash/rkibble))
+					R.cell.charge += 1000
+				else
+					R.cell.charge += 250
 				water.use_charge(5)
 			return
 		if(istype(target,/obj/item/cell))
@@ -300,7 +301,7 @@
 	desc = "Toggles floor scrubbing."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "scrub0"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/enabled = FALSE
 
 /obj/item/pupscrubber/attack_self(mob/user, datum/event_args/clickchain/e_args)
@@ -337,9 +338,9 @@
 	sharp = 1
 	edge = 1
 	throw_force = 0 //This shouldn't be thrown in the first place.
-	hitsound = 'sound/weapons/blade1.ogg'
+	attack_sound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/lightreplacer/dogborg
 	name = "light replacer"
@@ -379,7 +380,7 @@
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
 	damage_force = 0
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 
 /obj/item/dogborg/pounce/attack_self(mob/user, datum/event_args/clickchain/e_args)
@@ -456,7 +457,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate"
 	item_state = "healthanalyzer"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/implant/mirror/imp = null
 
 /obj/item/dogborg/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

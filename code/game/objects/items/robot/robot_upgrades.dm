@@ -162,7 +162,7 @@
 
 /obj/item/borg/upgrade/advhealth
 	name = "advanced health analyzer module"
-	desc = "A carbon dioxide jetpack suitable for low-gravity operations."
+	desc = "An upgrade to improve a station-bound synthetic's health analyzer."
 	icon_state = "cyborg_upgrade3"
 	item_state = "cyborg_upgrade"
 	require_module = TRUE
@@ -183,6 +183,39 @@
 		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
 		to_chat(usr, "There's no mounting point for the module!")
 		return FALSE
+
+
+/obj/item/borg/upgrade/bluespaceorebag
+	name = "bluespace mining satchel module"
+	desc = "Improves the ore satchels of mining units to hold a lot more ores."
+	icon_state = "cyborg_upgrade3"
+	item_state = "cyborg_upgrade"
+	module_flags = BORG_MODULE_MINER
+	require_module = TRUE
+
+/obj/item/borg/upgrade/bluespaceorebag/action(var/mob/living/silicon/robot/R)
+	if(..())
+		return FALSE
+
+	var/obj/item/storage/bag/ore/O = locate() in R.module
+	if(!O)
+		O = locate() in R.module.contents
+	if(!O)
+		O = locate() in R.module.modules
+	if(!O) //there should be one though...
+		R.module.modules += new/obj/item/storage/bag/ore/bluespace(R.module)
+		return TRUE
+	if(O)
+		if(istype(O,/obj/item/storage/bag/ore/bluespace))
+			to_chat(R, "Upgrade mounting error! Upgrade already present.")
+			to_chat(usr, SPAN_WARNING("[R] already has this upgrade!"))
+			return FALSE
+		else
+			R.uneq_all()
+			O.deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED) //drops all ores previous satchel was carrying using this method
+			R.module.modules += new/obj/item/storage/bag/ore/bluespace(R.module)
+			return TRUE
+
 
 /obj/item/borg/upgrade/syndicate
 	name = "scrambled equipment module"
@@ -218,7 +251,7 @@
 //Robot resizing module, moved from robot/upgrades_vr - Papalus
 /obj/item/borg/upgrade/sizeshift
 	name = "robot size alteration module"
-	desc = "Using technology similar to one used in sizeguns, allows cyborgs to adjust their own size as neccesary."
+	desc = "Using technology similar to one used in size guns, allows cyborgs to adjust their own size as necessary."
 	icon_state = "cyborg_upgrade2"
 	item_state = "cyborg_upgrade"
 	require_module = 1

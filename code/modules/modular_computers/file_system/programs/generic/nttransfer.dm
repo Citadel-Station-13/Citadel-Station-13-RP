@@ -75,7 +75,7 @@ var/global/nttransfer_uid = 0
 	remote = null
 	download_completion = 0
 
-/datum/computer_file/program/nttransfer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/computer_file/program/nttransfer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["error"] = error

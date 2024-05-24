@@ -10,11 +10,17 @@
 	var/mob/actor
 	/// the original atom target of the action
 	var/atom/target
-	/// original click params as list - can be null
-	var/list/click_params
-	/// attack intent
-	var/attack_intent
+	/// a_intent
+	var/intent
+	/// click params
+	var/list/params
 	/// hand index, if any
 	var/hand_index
 	/// with item, if any
 	var/obj/item/using
+
+/datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, intent, list/params)
+	..()
+	src.target = target
+	src.intent = isnull(intent)? performer.a_intent : intent
+	src.params = isnull(params)? list() : params

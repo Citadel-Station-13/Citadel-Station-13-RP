@@ -40,10 +40,16 @@
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
-	var/datum/role/job/J = SSjob.get_job(rank)
-	if(J)
-		access = J.get_access()
-		job_access_type = J
+	var/datum/role/job/getting_from
+	if(ispath(job_access_type))
+		job_access_type = SSjob.job_by_type(job_access_type)
+	if(istype(job_access_type))
+		getting_from = job_access_type
+	else
+		getting_from = SSjob.get_job(rank)
+	if(!isnull(getting_from))
+		access = getting_from.get_access()
+		job_access_type = getting_from
 
 /obj/item/card/id/examine(mob/user, dist)
 	var/list/result = dat()
@@ -156,7 +162,7 @@
 
 /obj/item/card/id/verb/read()
 	set name = "Read ID Card"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	to_chat(usr, "[icon2html(thing = src, target = usr)] [src.name]: The current assignment on the card is [src.assignment].")
@@ -208,21 +214,21 @@
 	preserve_item = 1
 
 /obj/item/card/id/gold/captain
-	name = "\improper Facility Director's ID"
-	assignment = "Facility Director"
-	rank = "Facility Director"
+	name = "\improper Captain's ID"
+	assignment = "Captain"
+	rank = "Captain"
 	job_access_type = /datum/role/job/station/captain
 
 /obj/item/card/id/gold/captain/spare
-	name = "\improper Facility Director's spare ID"
+	name = "\improper Captain's Spare ID"
 	desc = "The spare ID of the High Lord himself."
-	registered_name = "Facility Director"
+	registered_name = "Captain"
 	icon_state = "gold-id-alternate"
 	job_access_type = /datum/role/job/station/captain
 
 /obj/item/card/id/synthetic
 	name = "\improper Synthetic ID"
-	desc = "Access module for NanoTrasen Synthetics"
+	desc = "Access module for Nanotrasen Synthetics"
 	icon_state = "id-robot"
 	item_state = "idgreen"
 	assignment = "Synthetic"
@@ -354,7 +360,7 @@
 
 /obj/item/card/id/prisoner
 	name = "Prisoner ID card"
-	desc = "A card repressenting incareration. Do not lose."
+	desc = "A card representing someone's incarceration. Do not lose."
 	icon_state = "civilian-id"
 	assignment = "Prisoner"
 	primary_color = rgb(243, 97, 0)
@@ -363,9 +369,10 @@
 	var/points = 0
 
 	var/served = 0 //Time served in seconds
-	var/sentence = 0 //Sentance in minutes
+	var/sentence = 0 //Sentence in minutes
 	var/crime = "\[redacted\]"
 
+	job_access_type = null
 	access = list(ACCESS_SECURITY_GENPOP_ENTER)
 
 /obj/item/card/id/prisoner/New()
@@ -380,7 +387,7 @@
 		update_name(registered_name, assignment)
 		playsound(loc, 'sound/machines/ping.ogg', 50, 1)
 		if(isliving(loc))
-			to_chat(loc, "<span class='boldnotice'>\the [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+			to_chat(loc, "<span class='boldnotice'>\The [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
 		STOP_PROCESSING(SSprocessing, src)
 	else
 		served += 1
@@ -391,13 +398,13 @@
 	var/minutesServed = round(served / 60)
 	var/secondsServed = served - (minutesServed * 60)
 	if(sentence <= 0)
-		to_chat(usr, "<span class='notice'>You are serving a permanent sentence for [crime].</span>")
+		. += "\n<span class='notice'>You are serving a permanent sentence for [crime].</span>"
 	else if(served >= (sentence * 60))
-		to_chat(usr, "<span class='notice'>You have served your sentence for [crime].</span>")
+		. += "\n<span class='notice'>You have served your sentence for [crime].</span>"
 	else
-		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentance for [crime].</span>")
+		. += "\n<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentence for [crime].</span>"
 	if(goal > 0)
-		to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
+		. += "\n<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>"
 
 
 
@@ -577,9 +584,9 @@
 	name = "identity chit"
 	desc = "A mass-market access chit used in many non-Corporate environments as a form of identification."
 	icon_state = "chit"
-	primary_color = rgb(142,94,0)
-	secondary_color = rgb(191,159,95)
-	access = list(160, 13)
+	//primary_color = rgb(142,94,0)
+	//secondary_color = rgb(191,159,95)
+	job_access_type = /datum/role/job/trader
 	var/random_color = TRUE
 
 /obj/item/card/id/external/merchant/Initialize(mapload)
@@ -607,6 +614,7 @@
 	icon_state = "pirate"
 	primary_color = rgb(17, 1, 1)
 	secondary_color = rgb(149, 152, 153)
+	job_access_type = null
 	access = list(168)
 
 /obj/item/card/id/medical/sar

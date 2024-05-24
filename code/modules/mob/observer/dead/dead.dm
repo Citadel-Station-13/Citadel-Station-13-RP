@@ -112,14 +112,15 @@ GLOBAL_LIST_EMPTY(observer_list)
 			var/mob/living/carbon/human/H = body
 			icon = H.icon
 			icon_state = H.icon_state
-			if(H.overlays_standing)
-				for(var/i in 1 to length(H.overlays_standing))
-					if(!H.overlays_standing[i])
-						continue
-					add_overlay(H.overlays_standing[i])
+			// todo: fixup (get rid of other planes)
+			for(var/key in H.standing_overlays)
+				add_overlay(H.standing_overlays[key])
+			for(var/slot_id in H.inventory.rendered_normal_overlays)
+				add_overlay(H.inventory.rendered_normal_overlays[slot_id])
 		else
 			icon = body.icon
 			icon_state = body.icon_state
+			// todo: fixup (get rid of other planes)
 			add_overlay(body.overlays)
 
 		gender = body.gender
@@ -198,6 +199,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
 	if(key)
+		SSplaytime.queue_playtimes(client)
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(H.vr_holder && !can_reenter_corpse)
@@ -224,7 +226,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
 /mob/living/verb/ghost()
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
@@ -446,19 +448,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/datum/gas_mixture/environment = usr.loc.return_air()
 
-	var/pressure = environment.return_pressure()
-	var/total_moles = environment.total_moles
-
 	to_chat(src, "<font color=#4F49AF><B>Results:</B></font>")
-	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		to_chat(src, "<font color=#4F49AF>Pressure: [round(pressure,0.1)] kPa</font>")
-	else
-		to_chat(src, "<font color='red'>Pressure: [round(pressure,0.1)] kPa</font>")
-	if(total_moles)
-		for(var/g in environment.gas)
-			to_chat(src, "<font color=#4F49AF>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]% ([round(environment.gas[g], 0.01)] moles)</font>")
-		to_chat(src, "<font color=#4F49AF>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</font>")
-		to_chat(src, "<font color=#4F49AF>Heat Capacity: [round(environment.heat_capacity(),0.1)]</font>")
+	to_chat(src, jointext(environment.chat_analyzer_scan(NONE, TRUE, TRUE), "<br>"))
 
 /mob/observer/dead/verb/become_mouse()
 	set name = "Become mouse"
@@ -668,18 +659,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	// Give the ghost a cult icon which should be visible only to itself
 	toggle_icon("cult")
 
-/mob/observer/dead/verb/toggle_anonsay()
-	set category = "Ghost"
-	set name = "Toggle Anonymous Chat"
-	set desc = "Toggles showing your key in dead chat."
-
-	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
-	SScharacters.queue_preferences_save(client.prefs)
-	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
-		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
-	else
-		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")
-
 /mob/observer/dead/canface()
 	return 1
 
@@ -727,7 +706,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/proc/ghost_whisper()
 	set name = "Spectral Whisper"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(is_manifest)  //Only able to whisper if it's hit with a tome.
 		var/list/options = list()
@@ -792,10 +771,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				count++
-				PP.icon = 'icons/obj/pda_vr.dmi'
-				PP.add_overlay("pai-ghostalert")
-				spawn(54)
-					PP.cut_overlays()
 		to_chat(usr,"<span class='notice'>Flashing the displays of [count] unoccupied PAIs.</span>")
 	else
 		to_chat(usr,"<span class='warning'>You have 'Be pAI' disabled in your character prefs, so we can't help you.</span>")

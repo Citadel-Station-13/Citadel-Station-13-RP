@@ -7,7 +7,7 @@
 	icon_override = 'icons/vore/custom_guns_vr.dmi'
 	item_state = "laser" //placeholder
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 4)
 	slot_flags = null
 	fire_sound = 'sound/weapons/Gunshot_light.ogg'
@@ -16,7 +16,7 @@
 	recoil = 2
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	hitsound = null
+	attack_sound = null
 	caliber = "s762"
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)

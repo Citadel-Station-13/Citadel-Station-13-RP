@@ -9,14 +9,14 @@
 	item_state = "electropack"
 	frequency = 1449
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
-	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
+	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2500)
 
 	var/code = 2
 
-/obj/item/radio/electropack/attack_hand(mob/user, datum/event_args/clickchain/e_args)
-	if(src == user.item_by_slot(SLOT_ID_BACK))
+/obj/item/radio/electropack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	if(src == user.item_by_slot_id(SLOT_ID_BACK))
 		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
 		return
 	..()

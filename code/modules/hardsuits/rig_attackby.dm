@@ -61,7 +61,7 @@
 
 		// Check if this is a hardsuit upgrade or a modification.
 		else if(istype(W,/obj/item/hardsuit_module))
-			if(istype(src.loc,/mob/living/carbon/human))
+			if(istype(src.loc,/mob/living/carbon/human) && !maintenance_while_online)
 				var/mob/living/carbon/human/H = src.loc
 				if(H.back == src || H.belt == src)
 					to_chat(user, "<span class='danger'>You can't install a hardsuit module while the suit is being worn.</span>")

@@ -1,3 +1,5 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
 /**
  * we must always have atleast one level on the server

@@ -1,11 +1,7 @@
-// Persistent panic bunker passthrough
-/datum/controller/subsystem/persistence/LoadPersistence()
-	LoadPanicBunker()
-	return ..()
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
-/datum/controller/subsystem/persistence/SavePersistence()
-	SavePanicBunker()
-	return ..()
+// Persistent panic bunker passthrough
 
 /datum/controller/subsystem/persistence/proc/SavePanicBunker()
 	var/json_file = file(PERSISTENCE_FILE_BUNKER_PASSTHROUGH)

@@ -37,7 +37,7 @@ var/list/floating_chat_colors = list()
 	var/image/gibberish = speaking ? generate_floating_text(src, speaking.scramble(message), style, fontsize, duration, show_to) : understood
 
 	for(var/client/C in show_to)
-		if(!C.mob.is_deaf() && C.is_preference_enabled(/datum/client_preference/overhead_chat))
+		if(!C.mob.is_deaf() && C.get_preference_toggle(/datum/game_preference_toggle/game/overhead_chat))
 			if(C.mob.say_understands(null, speaking))
 				C.images += understood
 			else
@@ -62,8 +62,8 @@ var/list/floating_chat_colors = list()
 		animate(old, 2, pixel_y = old.pixel_y + 8)
 	LAZYADD(holder.stored_chat_text, I)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_floating_text, holder, I), duration + 16)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_image_from_clients, I, show_to), duration + 18)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_floating_text), holder, I), duration + 16)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_clients), I, show_to), duration + 18)
 
 	return I
 

@@ -8,9 +8,10 @@
 	slot_flags = SLOT_ICLOTHING
 	armor_type = /datum/armor/none
 	equip_sound = 'sound/items/jumpsuit_equip.ogg'
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	show_messages = 1
 	blood_sprite_state = "uniformblood"
+	attack_hand_auto_unequip = FALSE
 
 	//! Suit Sensors
 	/// do we have suit sensors?
@@ -66,14 +67,6 @@
 	var/icon/rolled_down_icon = 'icons/mob/clothing/uniform_rolled_down.dmi'
 	var/icon/rolled_down_sleeves_icon = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
 
-// todo kick to item flag for auto-unequip-without-clickdrag
-/obj/item/clothing/under/attack_hand(mob/user, datum/event_args/clickchain/e_args)
-	if(LAZYLEN(accessories))
-		..()
-	if ((ishuman(usr) || issmall(usr)) && src.loc == user)
-		return
-	..()
-
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
 	CONSTRUCT_BODYTYPES(worn_rolldown_bodytypes)
@@ -82,11 +75,12 @@
 	// todo: remove this lol
 	if(isnull(snowflake_worn_state))
 		snowflake_worn_state = item_state_slots?[SLOT_ID_UNIFORM] || item_state || icon_state
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		addtimer(CALLBACK(src, PROC_REF(init_sensors), H), 0)
+	addtimer(CALLBACK(src, PROC_REF(init_sensors)), 0)
 
-/obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
+/obj/item/clothing/under/proc/init_sensors()
+	var/mob/living/carbon/human/H = loc
+	if(!istype(H))
+		return
 	if(has_sensors == UNIFORM_HAS_LOCKED_SENSORS)
 		return
 	if(istype(H))
@@ -157,7 +151,7 @@
 //! Rendering
 // todo : NUKE THIS SHIT FROM ORBIT ~silicons
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
-/obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+/obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype)
 	if(snowflake_worn_state && (slot_meta.id == SLOT_ID_UNIFORM))
 		return snowflake_worn_state + "_s"
 	return ..()
@@ -218,11 +212,11 @@
 		update_worn_icon()
 
 /obj/item/clothing/under/proc/autodetect_rolldown(bodytype)
-	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	var/datum/inventory_slot/inventory/uniform/wow_this_sucks = resolve_inventory_slot(SLOT_ID_UNIFORM)
 	return wow_this_sucks.check_rolldown_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
 /obj/item/clothing/under/proc/autodetect_rollsleeve(bodytype)
-	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	var/datum/inventory_slot/inventory/uniform/wow_this_sucks = resolve_inventory_slot(SLOT_ID_UNIFORM)
 	return wow_this_sucks.check_rollsleeve_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
 //! Examine
@@ -275,7 +269,7 @@
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	set_sensors(usr)
 

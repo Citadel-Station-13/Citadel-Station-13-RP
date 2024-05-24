@@ -131,7 +131,7 @@ GLOBAL_LIST(topic_status_cache)
 	#endif
 
 	if(config_legacy.ToRban)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -313,7 +313,7 @@ GLOBAL_LIST(topic_status_cache)
 /world/Del()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		call(debug_server, "auxtools_shutdown")()
+		call_ext(debug_server, "auxtools_shutdown")()
 	. = ..()
 
 /hook/startup/proc/loadMode()

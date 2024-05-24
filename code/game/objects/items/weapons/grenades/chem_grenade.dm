@@ -3,10 +3,9 @@
 	icon_state = "chemg"
 	item_state = "grenade"
 	desc = "A hand made chemical grenade."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 2.0
 	det_time = 50
-	unacidable = 1
 
 	var/stage = 0
 	var/state = 0
@@ -25,7 +24,7 @@
 	QDEL_LIST_NULL(beakers)
 	return ..()
 
-/obj/item/grenade/chem_grenade/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/grenade/chem_grenade/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
