@@ -5,6 +5,14 @@
  * Bodymarkings 2.0
  *
  * Now with 100% more FREE LAG!
+ *
+ * Why is this not just /sprite_accessory?
+ *
+ * Because we're a lot more simple than sprite accessories.
+ * We directly blend into limbs; we don't have our own layers or anything.
+ * We also inherently don't need things like sidedness for that matter.
+ *
+ * Basically
  */
 /datum/bodyset_marking
 	abstract_type = /datum/bodyset_marking
@@ -34,7 +42,18 @@
 	var/list/bodyset_restricted
 
 /datum/bodyset_marking/New()
-	#warn species_restricted
+	#warn bodyset_restricted
+
+/**
+ * returns the normal and emissive overlays to blend onto a limb
+ *
+ * @params
+ * * for_bodypart - the bodypart we're rendering for
+ * * with_descriptor - our marking descriptor that specifies colors and other things
+ *
+ * @return list(list(normal overlays), null | list(emissive_overlays))
+ */
+/datum/bodyset_marking/proc/render(obj/item/organ/external/for_bodypart, datum/bodyset_marking_descriptor/using_descriptor)
 
 /datum/bodyset_marking/legacy
 	// PLEASE STOP USING THIS.
