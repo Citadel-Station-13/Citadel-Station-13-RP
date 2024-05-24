@@ -47,7 +47,7 @@
 		else
 			to_chat(user, "[C] is to large for [src]")
 
-/obj/machinery/floor_inflatables/attack_hand(mob/user, list/params)
+/obj/machinery/floor_inflatables/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	var/confirm = input(user, "Do you want to trigger [src]'s deployment?","Trigger Floormount") as null|anything in list("Yes","No")
 	if(confirm && confirm == "Yes")

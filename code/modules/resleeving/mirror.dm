@@ -181,7 +181,7 @@
 		imp = null
 		update_icon()
 
-/obj/item/mirrortool/attack_hand(mob/user as mob)
+/obj/item/mirrortool/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		user.put_in_hands_or_drop(imp)
 		imp = null

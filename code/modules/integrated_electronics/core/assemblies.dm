@@ -607,7 +607,7 @@
 		return
 	..()
 
-/obj/item/electronic_assembly/attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+/obj/item/electronic_assembly/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(anchored)
 		attack_self(user)
 		return

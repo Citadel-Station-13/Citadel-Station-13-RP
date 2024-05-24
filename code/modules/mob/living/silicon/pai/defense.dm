@@ -36,7 +36,7 @@
 	else
 		. = ..()
 
-/mob/living/silicon/pai/attack_hand(mob/user, list/params)
+/mob/living/silicon/pai/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return

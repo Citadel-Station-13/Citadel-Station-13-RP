@@ -34,7 +34,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/structure/prop/nest/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args) // Used to tell the player that this isn't useful for anything.
+/obj/structure/prop/nest/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	if(user && prob(disturbance_spawn_chance))
 		spawn_creature(get_turf(src))

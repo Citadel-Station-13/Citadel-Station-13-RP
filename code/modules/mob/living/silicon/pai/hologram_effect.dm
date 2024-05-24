@@ -10,7 +10,7 @@
 /obj/effect/pai_hologram/attackby(obj/item/W, mob/user)
 	hologram_destroy(user)
 
-/obj/effect/pai_hologram/attack_hand(mob/user, list/params)
+/obj/effect/pai_hologram/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	hologram_destroy(user)
 
 /obj/effect/pai_hologram/proc/hologram_destroy(mob/user)
