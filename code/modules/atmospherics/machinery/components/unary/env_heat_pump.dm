@@ -74,31 +74,13 @@
 	env_temp = env.temperature
 
 	//Now we are at the point where we need to actively pump
-	var/efficiency = get_thermal_efficiency(air_contents, env) * efficiency_multiplier
-	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
+	efficiency = get_thermal_efficiency(target_temp, air1, air2)
+	var/power_draw = pump_heat(target_temp, air1, air2, power_rating)
 
-	var/actual_performance_factor = performance_factor*efficiency
-
-	var/max_energy_transfer = actual_performance_factor*power_rating
-
-	if(abs(env.temperature - target_temp) < 0.001) // don't want wild swings and too much power use
-		use_power = USE_POWER_IDLE //We cant operate so we might as well turn off
-		return
-	//only adds the energy actually removed from air one to air two(- infront of air_contents because energy was removed)
-	var/energy_transfered = -air_contents.adjust_thermal_energy(-clamp(env.get_thermal_energy_change(target_temp),-max_energy_transfer,max_energy_transfer))
-	energy_transfered=abs(env.adjust_thermal_energy(energy_transfered))
-	var/power_draw = abs(energy_transfered/actual_performance_factor)
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 		network?.update = 1
-
-/obj/machinery/atmospherics/component/unary/env_heat_pump/proc/get_thermal_efficiency(var/datum/gas_mixture/air1, var/datum/gas_mixture/air2)
-	if((target_temp < air2.temperature))
-		return clamp((air2.temperature / air1.temperature), 0, 1)
-	else if((target_temp > air2.temperature))
-		return clamp((air1.temperature / air2.temperature), 0, 1)
-
 
 /obj/machinery/atmospherics/component/unary/env_heat_pump/receive_signal(datum/signal/signal, receive_method, receive_param)
 	if(machine_stat & (NOPOWER|BROKEN))
