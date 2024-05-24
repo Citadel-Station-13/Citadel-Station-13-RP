@@ -93,7 +93,7 @@
 	volume = loaded_vial.volume
 	reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 
-/obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(loaded_vial)
 			reagents.trans_to_holder(loaded_vial.reagents,volume)
@@ -398,7 +398,7 @@
 
 	icon_state = "[initial(icon_state)]_used"
 
-/obj/item/reagent_containers/hypospray/glukoz/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/reagent_containers/hypospray/glukoz/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

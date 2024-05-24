@@ -56,7 +56,7 @@
 	if(primary)
 		primary.attack_ghost(ghost)
 
-/obj/machinery/hyperpad/centre/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/hyperpad/centre/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -77,7 +77,7 @@
 	src.add_fingerprint(user)
 	startteleport(user)
 
-/obj/machinery/hyperpad/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/hyperpad/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(primary)
 		primary.attack_hand(user)

@@ -45,7 +45,7 @@
 	update_icon()
 
 
-/obj/structure/extinguisher_cabinet/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/structure/extinguisher_cabinet/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(isrobot(user))
 		return
 	if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_GENERAL))

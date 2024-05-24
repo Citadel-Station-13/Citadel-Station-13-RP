@@ -97,7 +97,7 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (pulling_along)
 		MouseDrop(usr)
 	return ..()
@@ -195,7 +195,7 @@
 	/// What we unfold to
 	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 
-/obj/item/wheelchair/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/wheelchair/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

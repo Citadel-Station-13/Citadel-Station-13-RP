@@ -23,7 +23,7 @@
 	origin_tech = list(TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 400)
 
-/obj/item/locator/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/locator/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -133,7 +133,7 @@ Frequency:
 	materials_base = list(MAT_STEEL = 10000)
 	preserve_item = 1
 
-/obj/item/hand_tele/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/hand_tele/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -39,7 +39,7 @@
 	item_state = "cyborg_upgrade"
 	var/heldname = "default name"
 
-/obj/item/borg/upgrade/rename/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/borg/upgrade/rename/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

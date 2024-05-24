@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			radio_controller.remove_object(src, radiochannels[ch_name])
 	return ..()
 
-/obj/item/radio/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/radio/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -813,7 +813,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 /obj/item/bluespace_radio/ui_action_click()
 	toggle_handset()
 
-/obj/item/bluespace_radio/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/bluespace_radio/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(loc == user)
 		toggle_handset()
 	else

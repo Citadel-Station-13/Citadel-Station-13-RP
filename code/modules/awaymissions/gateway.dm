@@ -107,7 +107,7 @@
 	update_icon()
 
 
-/obj/machinery/gateway/centerstation/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/gateway/centerstation/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!ready)
 		detect()
 		return
@@ -217,7 +217,7 @@
 	update_icon()
 
 
-/obj/machinery/gateway/centeraway/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/gateway/centeraway/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!ready)
 		detect()
 		return

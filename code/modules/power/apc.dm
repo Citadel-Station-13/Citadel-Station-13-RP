@@ -787,7 +787,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		wires.cut_all()
 		update_icon()
 
-/obj/machinery/power/apc/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/power/apc/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 //	if (!can_use(user)) This already gets called in interact() and in topic()
 //		return
 	if(!user)

@@ -67,7 +67,7 @@
 	else
 		..()
 
-/obj/machinery/shield_capacitor/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/shield_capacitor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(machine_stat & (BROKEN))
 		return
 	interact(user)

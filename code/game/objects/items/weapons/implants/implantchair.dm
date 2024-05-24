@@ -24,7 +24,7 @@
 	..()
 	add_implants()
 
-/obj/machinery/implantchair/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/implantchair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 	var/health_text = ""
 	if(src.occupant)

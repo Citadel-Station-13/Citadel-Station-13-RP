@@ -106,7 +106,7 @@
 //	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 //	return ..()
 
-/obj/item/pipe_dispenser/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/pipe_dispenser/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

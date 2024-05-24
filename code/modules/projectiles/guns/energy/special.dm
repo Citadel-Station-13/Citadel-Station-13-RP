@@ -336,7 +336,7 @@
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
-/obj/item/gun/energy/service/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/energy/service/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

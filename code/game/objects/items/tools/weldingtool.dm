@@ -149,7 +149,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/weldingtool/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -643,7 +643,7 @@
 		update_icon()
 		return 0
 
-/obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()

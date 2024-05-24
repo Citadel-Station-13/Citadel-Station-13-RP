@@ -262,7 +262,7 @@
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
-/obj/item/roller/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/roller/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -301,7 +301,7 @@
 	. = ..()
 	held = new /obj/item/roller(src)
 
-/obj/item/roller_holder/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/roller_holder/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -50,7 +50,7 @@ var/list/marker_beacon_colors = list(
 /obj/item/stack/marker_beacon/update_icon()
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]"
 
-/obj/item/stack/marker_beacon/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/stack/marker_beacon/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -106,7 +106,7 @@ var/list/marker_beacon_colors = list(
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
 	set_light(light_range, light_power, marker_beacon_colors[picked_color])
 
-/obj/structure/marker_beacon/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/structure/marker_beacon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	to_chat(user, "<span class='notice'>You start picking [src] up...</span>")
 	if(do_after(user, remove_speed, target = src))
 		var/obj/item/stack/marker_beacon/M = new(loc)

@@ -41,7 +41,7 @@
 		return
 	update_icon()
 
-/obj/item/gun/ballistic/bow/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/bow/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -54,7 +54,7 @@
 	else
 		return
 
-/obj/item/gun/ballistic/bow/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/bow/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else

@@ -129,7 +129,7 @@
 				return
 	return ..()
 
-/obj/item/duct_tape_roll/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/duct_tape_roll/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -180,7 +180,7 @@
 	name = W.name + " (taped)"
 	copy_overlays(W)
 
-/obj/item/duct_tape_piece/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/duct_tape_piece/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -202,7 +202,7 @@
 		qdel(I)
 		to_chat(user, "<span-class='notice'>You place \the [I] back into \the [src].</span>")
 
-/obj/item/duct_tape_piece/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/duct_tape_piece/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	anchored = FALSE
 	return ..() // Pick it up now that it's unanchored.
 

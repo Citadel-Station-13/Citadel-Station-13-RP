@@ -1,18 +1,3 @@
-/*
-	Screen objects
-	Todo: improve/re-implement
-
-	Screen objects are only used for the hud and should not appear anywhere "in-game".
-	They are used with the client/screen list and the screen_loc var.
-	For more information, see the byond documentation on the screen_loc and screen vars.
-*/
-/atom/movable/screen
-	icon = 'icons/mob/screen1.dmi'
-	layer = HUD_LAYER_BASE
-	plane = HUD_PLANE
-	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
-	var/datum/hud/hud = null // A reference to the owner HUD, if any.
-
 /atom/movable/screen/Destroy()
 	master = null
 	return ..()
@@ -24,17 +9,6 @@
 	screen_loc = "CENTER-7,CENTER-7"
 	maptext_height = 480
 	maptext_width = 480
-
-/atom/movable/screen/close
-	name = "close"
-
-/atom/movable/screen/close/Click()
-	if(master)
-		if(istype(master, /obj/item/storage))
-			var/obj/item/storage/S = master
-			S.close(usr)
-	return 1
-
 
 /atom/movable/screen/item_action
 	var/obj/item/owner
@@ -66,28 +40,11 @@
 	G.s_click(src)
 	return 1
 
-/atom/movable/screen/grab/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/atom/movable/screen/grab/attack_hand(mob/user, list/params)
 	return
 
 /atom/movable/screen/grab/attackby()
 	return
-
-
-/atom/movable/screen/storage
-	name = "storage"
-
-/atom/movable/screen/storage/Click()
-	if(!usr.canClick())
-		return 1
-	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
-		return 1
-	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
-	if(master)
-		var/obj/item/I = usr.get_active_held_item()
-		if(I)
-			usr.ClickOn(master)
-	return 1
 
 /atom/movable/screen/zone_sel
 	name = "damage zone"
@@ -280,6 +237,11 @@
 								// suit storage
 								locnames += "on your suit"
 								tanks += H.s_store
+								// right/left hands
+								locnames += "in your right hand"
+								tanks += H.r_hand
+								locnames += "in your left hand"
+								tanks += H.l_hand
 								// pockets
 								locnames += "in your left pocket"
 								tanks += H.l_store
@@ -292,6 +254,11 @@
 								locnames += "on your back"
 								tanks += H.back
 							else
+								// right/left hands
+								locnames += "in your right hand"
+								tanks += C.r_hand
+								locnames += "in your left hand"
+								tanks += C.l_hand
 								// back
 								locnames += "on your back"
 								tanks += C.back

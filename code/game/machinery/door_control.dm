@@ -34,7 +34,7 @@
 		playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, TRUE)
 		return 1
 
-/obj/machinery/button/remote/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/button/remote/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 

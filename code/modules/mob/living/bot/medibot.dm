@@ -221,7 +221,7 @@
 	busy = FALSE
 	update_appearance()
 
-/mob/living/bot/medibot/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/mob/living/bot/medibot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -24,7 +24,7 @@
 			return
 		to_chat(user, "<span class='notice'>You pick up the [src].</span>")
 
-/obj/item/paper_bin/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/paper_bin/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!user.standard_hand_usability_check(src, e_args.hand_index, HAND_MANIPULATION_GENERAL))
 		return
 
@@ -97,7 +97,7 @@
 	icon_state = "paper_bundle"
 	papers = /obj/item/paper/natural
 
-/obj/item/paper_bin/bundlenatural/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/paper_bin/bundlenatural/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(amount < 1)
 		qdel(src)
 	return ..()

@@ -8,7 +8,7 @@
 	var/activated = FALSE
 	var/mob/linked_user
 
-/obj/item/text_to_speech/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/text_to_speech/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

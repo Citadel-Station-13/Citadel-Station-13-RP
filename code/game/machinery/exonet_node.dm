@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(exonet_nodes)
 // Proc: attack_hand()
 // Parameters: 1 (user - the person clicking on the machine)
 // Description: Opens the TGUI interface with ui_interact()
-/obj/machinery/exonet_node/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/exonet_node/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 // Proc: ui_interact()

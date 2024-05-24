@@ -182,7 +182,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/fire_alarm/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/fire_alarm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.stat || machine_stat & (NOPOWER | BROKEN))
 		return
 
@@ -301,7 +301,7 @@ Just a object used in constructing fire alarms
 	idle_power_usage = 2
 	active_power_usage = 6
 
-/obj/machinery/partyalarm/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/partyalarm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		return
 

@@ -163,7 +163,7 @@
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/door/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	return src.attackby(user, user)

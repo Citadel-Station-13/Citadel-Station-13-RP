@@ -53,7 +53,7 @@
 		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
 
 
-/obj/item/grenade/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/grenade/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -111,7 +111,7 @@
 	..()
 	return
 
-/obj/item/grenade/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/grenade/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	walk(src, null, null)
 	..()
 	return

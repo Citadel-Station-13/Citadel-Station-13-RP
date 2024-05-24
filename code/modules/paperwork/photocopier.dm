@@ -27,7 +27,7 @@
 /obj/machinery/photocopier/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/photocopier/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/photocopier/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 
 	nano_ui_interact(user)

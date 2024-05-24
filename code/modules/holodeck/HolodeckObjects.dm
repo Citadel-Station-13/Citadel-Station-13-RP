@@ -250,7 +250,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/holo/esword/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/holo/esword/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -365,7 +365,7 @@
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
-/obj/machinery/readybutton/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/readybutton/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")

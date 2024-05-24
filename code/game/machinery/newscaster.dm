@@ -250,7 +250,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 /obj/machinery/newscaster/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/newscaster/attack_hand(mob/user, datum/event_args/clickchain/e_args) //########### THE MAIN BEEF IS HERE! And in the proc below this...############
+/obj/machinery/newscaster/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args) //########### THE MAIN BEEF IS HERE! And in the proc below this...############
 	if(!ispowered || isbroken)
 		return
 
@@ -811,7 +811,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-/obj/item/newspaper/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/newspaper/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

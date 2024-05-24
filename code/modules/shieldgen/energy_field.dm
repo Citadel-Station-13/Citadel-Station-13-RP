@@ -62,7 +62,7 @@
 	adjust_strength(damage / 20)
 	return damage
 
-/obj/effect/energy_field/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/effect/energy_field/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
 	..()
 

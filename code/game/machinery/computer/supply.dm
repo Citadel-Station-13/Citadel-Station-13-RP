@@ -35,7 +35,7 @@
 /obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/supplycomp/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/supplycomp/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return
 	if(!allowed(user))

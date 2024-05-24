@@ -784,7 +784,7 @@
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

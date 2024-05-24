@@ -19,7 +19,7 @@
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 	var/is_reinforced = 0
 
-/obj/item/stack/material/glass/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/stack/material/glass/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

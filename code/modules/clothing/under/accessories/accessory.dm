@@ -133,7 +133,7 @@
 	..()
 
 //default attack_hand behaviour
-/obj/item/clothing/accessory/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/accessory/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(accessory_host)
 		return	//we aren't an object on the ground so don't call parent
 	..()
@@ -386,7 +386,7 @@
 	slot = ACCESSORY_SLOT_DECOR
 	action_button_name = "Adjust Gaiter"
 
-/obj/item/clothing/accessory/gaiter/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/accessory/gaiter/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -497,7 +497,7 @@
 	overlay_state = "choker_cst_overlay"
 	var/customized = 0
 
-/obj/item/clothing/accessory/choker/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/accessory/choker/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -767,7 +767,7 @@
 /obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/clothing/accessory/collar/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/accessory/collar/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

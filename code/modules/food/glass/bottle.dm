@@ -26,7 +26,7 @@
 	..()
 	update_icon()
 
-/obj/item/reagent_containers/glass/bottle/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/reagent_containers/glass/bottle/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	update_icon()
 

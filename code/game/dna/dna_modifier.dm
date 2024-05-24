@@ -300,7 +300,7 @@
 	src.add_hiddenprint(user)
 	nano_ui_interact(user)
 
-/obj/machinery/computer/scan_consolenew/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/computer/scan_consolenew/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!..())
 		nano_ui_interact(user)
 

@@ -347,7 +347,7 @@
 	attack_self(user)
 
 
-/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

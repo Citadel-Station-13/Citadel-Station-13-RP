@@ -13,7 +13,7 @@
 	var/label_x
 	var/tag_x
 
-/obj/structure/bigDelivery/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/structure/bigDelivery/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	unwrap()
 
 /obj/structure/bigDelivery/proc/unwrap()
@@ -129,7 +129,7 @@
 	var/nameset = 0
 	var/tag_x
 
-/obj/item/smallDelivery/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/smallDelivery/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -346,7 +346,7 @@
 
 	return data
 
-/obj/item/destTagger/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/destTagger/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

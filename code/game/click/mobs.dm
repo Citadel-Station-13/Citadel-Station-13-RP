@@ -127,7 +127,7 @@
  * construct default event args for what we're doing to a target
  */
 /mob/proc/default_clickchain_event_args(atom/target, unarmed = FALSE)
-	var/datum/event_args/clickchain/constructed = new
+	var/datum/event_args/actor/clickchain/constructed = new
 	constructed.initiator = src
 	constructed.actor = src
 	constructed.target = target

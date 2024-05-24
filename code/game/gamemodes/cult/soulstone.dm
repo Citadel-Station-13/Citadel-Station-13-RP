@@ -36,7 +36,7 @@
 
 ///////////////////Options for using captured souls///////////////////////////////////////
 
-/obj/item/soulstone/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/soulstone/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

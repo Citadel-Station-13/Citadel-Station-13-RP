@@ -67,7 +67,7 @@
 			return
 	..()
 
-/obj/item/deck/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/deck/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/carbon/human/H = user
 	if(istype(src.loc, /obj/item/storage) || src == H.r_store || src == H.l_store || src.loc == user) // so objects can be removed from storage containers or pockets. also added a catch-all, so if it's in the mob you'll pick it up.
 		..()
@@ -212,7 +212,7 @@
 
 	..()
 
-/obj/item/deck/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/deck/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -275,7 +275,7 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
-/obj/item/pack/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/pack/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -337,7 +337,7 @@
 	if(!cards.len)
 		qdel(src)
 
-/obj/item/hand/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/hand/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

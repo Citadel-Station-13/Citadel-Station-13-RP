@@ -135,7 +135,7 @@
 	. = ..()
 	activate()
 
-/obj/effect/catwalk_plated/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/effect/catwalk_plated/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	attack_generic()
 
 /obj/effect/catwalk_plated/attack_ghost()

@@ -22,7 +22,7 @@
 /obj/item/clothing/shoes/magboots/proc/update_magboot_encumbrance()
 	set_encumbrance(initial(encumbrance) + (magpulse? encumbrance_on : 0))
 
-/obj/item/clothing/shoes/magboots/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/shoes/magboots/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -79,7 +79,7 @@
 
 	action_button_name = "Toggle the magclaws"
 
-/obj/item/clothing/shoes/magboots/vox/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/shoes/magboots/vox/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(src.magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0

@@ -120,7 +120,7 @@
 		..()
 	update_icon()
 
-/obj/machinery/washing_machine/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/washing_machine/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	switch(state)
 		if(1)
 			state = 2

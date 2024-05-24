@@ -61,7 +61,7 @@
 	else
 		to_chat(user, "There is nothing to remove in \the [src].")
 
-/obj/item/gun/launcher/pneumatic/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/launcher/pneumatic/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_hopper(user)
 	else
@@ -77,7 +77,7 @@
 	else if(istype(W) && item_storage.obj_storage.can_be_inserted(W))
 		item_storage.obj_storage.try_insert(W, new /datum/event_args/actor(user))
 
-/obj/item/gun/launcher/pneumatic/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/launcher/pneumatic/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -76,7 +76,7 @@
 	src.go_out()
 	return
 
-/obj/machinery/gibber/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/gibber/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(operating)

@@ -92,7 +92,7 @@
 	return 0
 
 // Clicking with an empty hand
-/mob/living/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/mob/living/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

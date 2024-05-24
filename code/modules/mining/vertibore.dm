@@ -71,7 +71,7 @@
 		return
 	. = ..()
 
-/obj/item/vertibore/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/vertibore/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

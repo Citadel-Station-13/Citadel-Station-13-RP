@@ -111,7 +111,7 @@
 	else
 		icon_state = "doorbell-standby"
 
-/obj/machinery/button/doorbell/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/button/doorbell/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(..())
 		return

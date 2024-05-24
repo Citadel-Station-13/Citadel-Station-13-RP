@@ -203,7 +203,7 @@
 	else
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
-/obj/structure/closet/crate/secure/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/structure/closet/crate/secure/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(user)
 	if(locked)
 		src.togglelock(user)

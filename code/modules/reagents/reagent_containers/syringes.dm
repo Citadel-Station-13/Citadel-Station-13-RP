@@ -37,7 +37,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/reagent_containers/syringe/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
@@ -47,7 +47,7 @@
 			return
 	update_icon()
 
-/obj/item/reagent_containers/syringe/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/reagent_containers/syringe/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	..()
 	update_icon()
 

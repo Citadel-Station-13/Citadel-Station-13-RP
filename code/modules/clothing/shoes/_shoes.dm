@@ -66,7 +66,7 @@
 
 	update_icon()
 
-/obj/item/clothing/shoes/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/shoes/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(can_hold_knife == 1 && holding && src.loc == user)
 		draw_knife()
 		return
@@ -104,7 +104,7 @@
 	else
 		return ..()
 
-/obj/item/clothing/shoes/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/clothing/shoes/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return //gtfo my shoe

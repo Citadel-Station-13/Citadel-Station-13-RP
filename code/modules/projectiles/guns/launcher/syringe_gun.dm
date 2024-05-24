@@ -27,7 +27,7 @@
 		name = "syringe dart"
 		update_icon()
 
-/obj/item/syringe_cartridge/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/syringe_cartridge/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -95,7 +95,7 @@
 	darts -= next
 	next = null
 
-/obj/item/gun/launcher/syringe/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/launcher/syringe/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -108,7 +108,7 @@
 		next = darts[1]
 	add_fingerprint(user)
 
-/obj/item/gun/launcher/syringe/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/launcher/syringe/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(!darts.len)
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")

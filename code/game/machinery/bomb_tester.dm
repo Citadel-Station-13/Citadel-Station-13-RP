@@ -107,7 +107,7 @@
 			return
 	..()
 
-/obj/machinery/bomb_tester/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/bomb_tester/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	add_fingerprint(user)
 	ui_interact(user)
 

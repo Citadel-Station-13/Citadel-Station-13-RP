@@ -830,7 +830,7 @@
 	module = null
 	updatename("Default")
 
-/mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/mob/living/silicon/robot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return

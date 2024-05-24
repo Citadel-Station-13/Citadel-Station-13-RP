@@ -164,7 +164,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/automatic/z8/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && use_launcher)
 		launcher.unload(user)
 	else
@@ -247,13 +247,13 @@
 	update_icon()
 	update_worn_icon()
 
-/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/automatic/lmg/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(cover_open)
 		toggle_cover(user) //close the cover
 	else
 		return ..() //once closed, behave like normal
 
-/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/gun/ballistic/automatic/lmg/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!cover_open && user.get_inactive_held_item() == src)
 		toggle_cover(user) //open the cover
 	else

@@ -49,7 +49,7 @@
 	item_state = "table_parts"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackage/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/stolenpackage/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -177,7 +177,7 @@
 	item_state = "table_parts"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackageplus/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/stolenpackageplus/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

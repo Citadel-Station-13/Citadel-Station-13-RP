@@ -48,7 +48,7 @@
 	update_icon()
 	pulse(0)
 
-/obj/item/assembly/mousetrap/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/assembly/mousetrap/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!armed)
 		to_chat(user, "<span class='notice'>You arm [src].</span>")
 	else
@@ -68,7 +68,7 @@
 	playsound(user.loc, 'sound/weapons/handcuffs.ogg', 30, 1, -3)
 
 
-/obj/item/assembly/mousetrap/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/assembly/mousetrap/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/mob/living/L = user
 	if(!istype(L))
 		return

@@ -162,7 +162,7 @@
 	animate(src, alpha = initial(alpha), time = 1 SECOND)
 
 // Just for fun
-/obj/effect/shield/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/effect/shield/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	flash_adjacent_segments(3)
 
 /obj/effect/shield/proc/take_damage_legacy(var/damage, var/damtype, var/hitby)

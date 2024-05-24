@@ -48,7 +48,7 @@
 	else
 		return ..()
 
-/obj/item/anodevice/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/anodevice/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

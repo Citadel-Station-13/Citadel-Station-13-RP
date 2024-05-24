@@ -28,7 +28,7 @@
 	A.attack_hand(src)
 
 /// Return TRUE to cancel other attack hand effects that respect it.
-/atom/proc/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/atom/proc/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(isnull(e_args))
 		e_args = user.default_clickchain_event_args(src, TRUE)
 	if(on_attack_hand(e_args))

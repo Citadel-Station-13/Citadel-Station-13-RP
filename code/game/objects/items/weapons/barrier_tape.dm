@@ -133,11 +133,11 @@ var/list/tape_roll_applications = list()
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/barrier_tape_roll/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/barrier_tape_roll/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -334,7 +334,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/attackby(obj/item/W as obj, mob/user as mob)
 	breaktape(user)
 
-/obj/item/barrier_tape_segment/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/barrier_tape_segment/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (user.a_intent == INTENT_HELP && src.allowed(user))
 		user.show_viewers("<span class='notice'>\The [user] lifts \the [src], allowing passage.</span>")
 		for(var/obj/item/barrier_tape_segment/T in gettapeline())

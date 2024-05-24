@@ -60,7 +60,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/clonepod/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
@@ -525,7 +525,7 @@
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
-/obj/item/disk/data/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/disk/data/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

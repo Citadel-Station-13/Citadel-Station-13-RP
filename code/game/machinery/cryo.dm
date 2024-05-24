@@ -82,7 +82,7 @@
 	if(occupant == user && !user.stat)
 		go_out()
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/machinery/atmospherics/component/unary/cryo_cell/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	nano_ui_interact(user)
 
  /**

@@ -151,7 +151,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/radio/intercom/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)

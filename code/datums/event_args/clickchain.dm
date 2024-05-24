@@ -3,7 +3,7 @@
  *
  * clickchain is attack_x with item procs, attack hand, unarmed/ranged, etc.
  */
-/datum/event_args/clickchain
+/datum/event_args/actor/clickchain
 	/// the mob that initiated the action - you usually don't care about this unless you're logging
 	var/mob/initiator
 	/// the mob that is doing the action

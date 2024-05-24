@@ -255,7 +255,7 @@
 /turf/proc/is_solid_structure()
 	return TRUE
 
-/turf/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/turf/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	//QOL feature, clicking on turf can toggle doors, unless pulling something
 	if(!user.pulling)

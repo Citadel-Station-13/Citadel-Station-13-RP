@@ -395,7 +395,7 @@
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 
-/obj/structure/flora/sif/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/structure/flora/sif/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
@@ -516,7 +516,7 @@
 	var/gift_type = /obj/item/b_gift
 	var/list/ckeys_that_took = list()
 
-/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, datum/event_args/clickchain/e_args)
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

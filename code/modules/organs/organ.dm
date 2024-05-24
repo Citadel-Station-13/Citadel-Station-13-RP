@@ -656,7 +656,7 @@
 	user.put_in_active_hand(O)
 	qdel(src)
 
-/obj/item/organ/attack_self(mob/user, datum/event_args/clickchain/e_args)
+/obj/item/organ/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
