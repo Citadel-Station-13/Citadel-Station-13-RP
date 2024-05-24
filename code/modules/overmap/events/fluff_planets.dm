@@ -54,10 +54,13 @@
 		desc = initial(desc)
 	return ..()
 
+/obj/overmap/entity/fluff/proc/spread_debris()
+	if(debris != null)
+		new debris(src.loc)
+
 /obj/overmap/entity/fluff/Destroy()
 	. = ..()
-	addtimer(50)
-	new debris(src.loc)
+	addtimer(CALLBACK(src, PROC_REF(spread_debris)), 51)
 	qdel(src)
 	return ..()
 
