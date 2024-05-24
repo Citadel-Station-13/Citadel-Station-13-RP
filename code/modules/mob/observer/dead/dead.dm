@@ -300,9 +300,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	medHUD = !medHUD
 	if(medHUD)
-		self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical)
+		self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_OBSERVER)
 	else
-		self_perspective.remove_atom_hud(/datum/atom_hud/data/human/medical)
+		self_perspective.remove_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_OBSERVER)
 	to_chat(src,"<font color=#4F49AF><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/verb/toggle_antagHUD()
@@ -326,9 +326,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	antagHUD = !antagHUD
 	if(antagHUD)
-		self_perspective.add_atom_hud(/datum/atom_hud/antag)
+		self_perspective.add_atom_hud(/datum/atom_hud/antag, ATOM_HUD_SOURCE_OBSERVER)
 	else
-		self_perspective.remove_atom_hud(/datum/atom_hud/antag)
+		self_perspective.remove_atom_hud(/datum/atom_hud/antag, ATOM_HUD_SOURCE_OBSERVER)
 	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)

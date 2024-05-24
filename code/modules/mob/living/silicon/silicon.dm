@@ -268,13 +268,13 @@
 	if(isnull(sensor_type))
 		return
 
-	self_perspective.clear_atom_hud_providers()
+	self_perspective.remove_atom_hud(source = ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 	switch(sensor_type)
 		if ("Security")
-			self_perspective.add_atom_hud(/datum/atom_hud/data/human/security/advanced)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/security/advanced, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Security records overlay enabled.</span>")
 		if ("Medical")
-			self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Life signs monitor overlay enabled.</span>")
 		if ("Disable")
 			to_chat(src,"Sensor augmentations disabled.")

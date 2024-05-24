@@ -173,9 +173,9 @@
 	if((. = ..()))
 		if((. = ..()))
 			var/mob/living/carbon/human/H = nif.human
-			H.self_perspective.add_atom_hud(/datum/atom_hud/world_bender)
+			H.self_perspective.add_atom_hud(/datum/atom_hud/world_bender, ATOM_HUD_SOURCE_NIF)
 
 /datum/nifsoft/worldbend/deactivate(var/force = FALSE)
 	if((. = ..()))
 		var/mob/living/carbon/human/H = nif.human
-		H.self_perspective.remove_atom_hud(/datum/atom_hud/world_bender)
+		H.self_perspective.remove_atom_hud(/datum/atom_hud/world_bender, ATOM_HUD_SOURCE_NIF)

@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(atom_huds, initialize_atom_huds())
 	if(!should_auto_register_on(source))
 		return
 	source.ensure_self_perspective()
-	source.self_perspective.add_atom_hud(src)
+	source.self_perspective.add_atom_hud(src, ATOM_HUD_SOURCE_AUTOGRANT)
 
 /**
  * if [auto_registration] is set, this is called to determine if we should
