@@ -431,6 +431,8 @@
 			atom_hud_providers -= provider
 			provider.remove_perspective(src)
 
+// todo: add_atom_hud_provider, remove_atom_hud_provider
+
 /**
  * clears all atom hud providers
  *
