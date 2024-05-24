@@ -2045,9 +2045,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/surgeryprep)
-"bPc" = (
-/turf/simulated/floor/plating,
-/area/maintenance/fpmaint2)
 "bPE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2717,8 +2714,7 @@
 "csx" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2985,7 +2981,6 @@
 	dir = 1;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced,
@@ -4642,9 +4637,6 @@
 /obj/item/clothing/under/rank/medical/scrubs,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak/surgery)
-"dYb" = (
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "dYB" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -6073,10 +6065,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
-"ffL" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "fhj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -6467,7 +6455,6 @@
 /obj/machinery/power/emitter{
 	anchored = 1;
 	dir = 1;
-	id = null;
 	pixel_y = 8;
 	state = 2
 	},
@@ -10627,10 +10614,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
-"iNs" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "iNI" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/disposalpipe/segment{
@@ -10813,7 +10796,6 @@
 	dir = 8;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced,
@@ -15124,9 +15106,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
-"mIO" = (
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "mKe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/wall/voidcraft/blue,
@@ -15237,9 +15216,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
-"mPq" = (
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/fore)
 "mQm" = (
 /obj/machinery/light{
 	dir = 8
@@ -16114,13 +16090,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/rnd/test_area)
-"nBw" = (
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "nCp" = (
 /obj/machinery/door/window/brigdoor/southright{
 	req_access = list(55);
@@ -18270,9 +18239,7 @@
 "pky" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	id_tag = "MedbayFoyer";
-	name = "General Wing";
-	req_access = null;
-	req_one_access = null
+	name = "General Wing"
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -18502,8 +18469,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /obj/machinery/access_button{
 	dir = 1;
@@ -18571,7 +18537,6 @@
 /obj/machinery/power/emitter{
 	anchored = 1;
 	dir = 1;
-	id = null;
 	pixel_y = 8;
 	state = 2
 	},
@@ -19447,6 +19412,9 @@
 /obj/item/bodybag/cryobag,
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/stack/nanopaste{
+	amount = 30
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "qak" = (
@@ -20356,13 +20324,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
-"qOi" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/fpmaint2)
 "qOj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20680,7 +20641,6 @@
 	dir = 1;
 	frequency = 1445;
 	id = "burn_in";
-	req_access = null;
 	volume_rate = 700
 	},
 /turf/simulated/floor/wood,
@@ -21778,8 +21738,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
@@ -22872,10 +22831,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
-"sVE" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/fore)
 "sVF" = (
 /obj/machinery/light{
 	dir = 4
@@ -24947,10 +24902,8 @@
 /area/maintenance/substation/medical_science)
 "uFV" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/stack/nanopaste{
-	amount = 30
-	},
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/lathe/medical/stocked,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "uGR" = (
@@ -26278,8 +26231,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Chem & Offices";
-	req_access = list(5);
-	req_one_access = null
+	req_access = list(5)
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -26829,8 +26781,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -26876,8 +26827,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -27107,9 +27057,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
-"wxx" = (
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "wxE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -28594,13 +28541,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
-"xJM" = (
-/obj/structure/catwalk,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/fore)
 "xJN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -28881,9 +28821,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
-"xVR" = (
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "xXp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -28894,9 +28831,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
-"xXR" = (
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "xYe" = (
 /obj/structure/bed/chair/wheelchair,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -28917,8 +28851,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = 1380;
-	id_tag = null
+	frequency = 1380
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
@@ -37195,7 +37128,7 @@ xZt
 bQa
 axl
 cXl
-xXR
+cpA
 cpA
 axl
 xOh
@@ -37206,10 +37139,10 @@ aDe
 kxT
 qPj
 mWG
-nBw
+djF
 mWG
 mWG
-xVR
+mWG
 eXE
 jMj
 bBu
@@ -37387,11 +37320,11 @@ suI
 bTp
 bTp
 cpA
-xXR
-xXR
-xXR
-xXR
-xXR
+cpA
+cpA
+cpA
+cpA
+cpA
 eaK
 suI
 mDp
@@ -37401,9 +37334,9 @@ kxT
 pps
 vmM
 mWG
-wxx
 mWG
-dYb
+mWG
+mWG
 eXE
 jMj
 eVl
@@ -37579,10 +37512,10 @@ suI
 suI
 bmt
 bTp
-ffL
-xXR
-xXR
-xXR
+bTp
+cpA
+cpA
+cpA
 cpA
 fSv
 tAg
@@ -37596,7 +37529,7 @@ tAg
 tAg
 fcw
 mWG
-mIO
+mWG
 mWG
 eXE
 jMj
@@ -37789,9 +37722,9 @@ jzz
 cew
 tAg
 xFt
-xVR
+mWG
 vmM
-dYb
+mWG
 mGW
 jMj
 jMj
@@ -37991,7 +37924,7 @@ piP
 trY
 trY
 trY
-mIO
+mWG
 djF
 kpp
 kxT
@@ -38156,12 +38089,12 @@ vnY
 vnY
 suI
 bTp
-ffL
+bTp
 bTp
 bTp
 wWi
 bTp
-ffL
+bTp
 bTp
 oSx
 bTp
@@ -38180,7 +38113,7 @@ kpp
 jMj
 jMj
 jMj
-iNs
+jMj
 jMj
 jMj
 uCv
@@ -38350,17 +38283,17 @@ tKG
 tKG
 suI
 bTp
-xXR
+cpA
 tji
 fij
-xXR
+cpA
 qOV
 oXx
-xXR
+cpA
 vLK
 fcA
 bTp
-xXR
+cpA
 tAg
 mRv
 lwt
@@ -38931,8 +38864,8 @@ bTp
 tys
 bTp
 bTp
-ffL
-xXR
+bTp
+cpA
 cNb
 meR
 nAu
@@ -39124,7 +39057,7 @@ rOo
 tji
 sXB
 oSV
-xXR
+cpA
 bTp
 jgN
 ejI
@@ -39355,7 +39288,7 @@ nel
 utr
 mWG
 jMj
-mIO
+mWG
 toD
 xcx
 kxG
@@ -39547,7 +39480,7 @@ dbh
 yde
 dAV
 utr
-mIO
+mWG
 jMj
 mWG
 uYk
@@ -39743,7 +39676,7 @@ jgb
 utr
 mWG
 jMj
-mIO
+mWG
 toD
 mIe
 kxG
@@ -40484,7 +40417,7 @@ soU
 eWW
 xIf
 bTp
-xXR
+cpA
 uEl
 jPQ
 cbF
@@ -40678,7 +40611,7 @@ pdP
 eWW
 xIf
 fNX
-xXR
+cpA
 uEl
 pGO
 xkX
@@ -40699,7 +40632,7 @@ ieR
 ofg
 duZ
 iPU
-sVE
+fVB
 rsU
 kfN
 afR
@@ -41065,8 +40998,8 @@ qhW
 jam
 sZy
 xIf
-ffL
-xXR
+bTp
+cpA
 uEl
 uEl
 tbn
@@ -41280,7 +41213,7 @@ tYf
 meR
 fmZ
 duZ
-sVE
+fVB
 wwu
 pNX
 sUJ
@@ -41450,7 +41383,7 @@ lui
 cIp
 qpQ
 pgB
-xXR
+cpA
 gyl
 xIf
 oZk
@@ -41474,7 +41407,7 @@ rkN
 meR
 oDD
 duZ
-sVE
+fVB
 mKr
 pNX
 pNX
@@ -41644,7 +41577,7 @@ lui
 cIp
 qpQ
 tua
-xXR
+cpA
 cpA
 ipX
 bTp
@@ -41669,14 +41602,14 @@ meR
 toX
 duZ
 kzb
-sVE
+fVB
 duZ
 dht
 jZr
 chM
 duZ
 uHQ
-mPq
+nXk
 tWY
 nyz
 twF
@@ -41842,7 +41775,7 @@ nZB
 eec
 xIf
 bTp
-xXR
+cpA
 uJh
 ogl
 geD
@@ -41863,10 +41796,10 @@ rIr
 qIz
 qIz
 qIz
-sVE
+fVB
 duZ
 dht
-mPq
+nXk
 nXk
 duZ
 duZ
@@ -42032,7 +41965,7 @@ lui
 cIp
 qpQ
 aZk
-xXR
+cpA
 fMM
 xIf
 bTp
@@ -42057,16 +41990,16 @@ nAQ
 hBs
 cny
 xGm
-sVE
+fVB
 duZ
 rbF
 nXk
-mPq
+nXk
 geo
-mPq
+nXk
 crH
-sVE
-sVE
+fVB
+fVB
 wlz
 aFA
 hLb
@@ -42251,16 +42184,16 @@ iEr
 hBs
 cny
 xGm
-sVE
+fVB
 crH
-mPq
-mPq
-mPq
-mPq
+nXk
+nXk
+nXk
+nXk
 gwo
 duZ
 mKr
-sVE
+fVB
 wlz
 iWo
 ufn
@@ -42445,7 +42378,7 @@ sBd
 qIz
 qIz
 qIz
-sVE
+fVB
 duZ
 rbF
 rbF
@@ -42453,8 +42386,8 @@ dht
 nXk
 eUu
 duZ
-mPq
-sVE
+nXk
+fVB
 uvd
 uvd
 uvd
@@ -42639,7 +42572,7 @@ ieJ
 eBe
 qIz
 mKr
-sVE
+fVB
 duZ
 duZ
 duZ
@@ -42648,7 +42581,7 @@ duZ
 duZ
 duZ
 mKr
-sVE
+fVB
 uvd
 dic
 tGx
@@ -42833,16 +42766,16 @@ eaq
 aHX
 qIz
 mKr
-sVE
+fVB
 rRb
-sVE
-sVE
-sVE
-sVE
-sVE
-sVE
-xJM
-sVE
+fVB
+fVB
+fVB
+fVB
+fVB
+fVB
+rRb
+fVB
 uvd
 dFm
 pBq
@@ -43394,11 +43327,11 @@ bKl
 ocU
 fcW
 xuX
-xXR
+cpA
 dFC
-xXR
+cpA
 iKj
-xXR
+cpA
 dFC
 knh
 mxb
@@ -43590,7 +43523,7 @@ xIf
 rFp
 bTp
 bTp
-ffL
+bTp
 bTp
 bTp
 bTp
@@ -52535,7 +52468,7 @@ oZA
 nnJ
 tYH
 pkD
-bPc
+pkD
 rbc
 itd
 iKx
@@ -52731,7 +52664,7 @@ wMp
 cDA
 rMs
 iyp
-qOi
+fzF
 fzF
 mZv
 mNh
