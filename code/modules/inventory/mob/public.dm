@@ -110,7 +110,7 @@
 		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
 
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
 		. = FALSE
@@ -119,21 +119,21 @@
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
-			if(/datum/inventory_slot_meta/abstract/hand/left)
+			if(/datum/inventory_slot/abstract/hand/left)
 				return (flags & INV_OP_FORCE) || !get_left_held_item()
-			if(/datum/inventory_slot_meta/abstract/hand/right)
+			if(/datum/inventory_slot/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
-			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
+			if(/datum/inventory_slot/abstract/put_in_backpack)
 				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
 				if(!istype(S))
 					return FALSE
 				return S.can_be_inserted(I, TRUE)
-			if(/datum/inventory_slot_meta/abstract/put_in_belt)
+			if(/datum/inventory_slot/abstract/put_in_belt)
 				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
 				if(!istype(S))
 					return FALSE
 				return S.can_be_inserted(I, TRUE)
-			if(/datum/inventory_slot_meta/abstract/put_in_hands)
+			if(/datum/inventory_slot/abstract/put_in_hands)
 				return (flags & INV_OP_FORCE) || !hands_full()
 		return TRUE
 

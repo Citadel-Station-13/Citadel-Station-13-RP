@@ -17,28 +17,28 @@
  * @return true/false based on if it worked
  */
 /mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, flags)
-	if(!ispath(slot, /datum/inventory_slot_meta/abstract))
+	if(!ispath(slot, /datum/inventory_slot/abstract))
 		slot = resolve_inventory_slot_meta(slot)?.type
-		if(!ispath(slot, /datum/inventory_slot_meta/abstract))
+		if(!ispath(slot, /datum/inventory_slot/abstract))
 			stack_trace("invalid slot: [slot]")
-		else if(slot != /datum/inventory_slot_meta/abstract/put_in_hands)
+		else if(slot != /datum/inventory_slot/abstract/put_in_hands)
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
-		if(/datum/inventory_slot_meta/abstract/hand/left)
+		if(/datum/inventory_slot/abstract/hand/left)
 			return put_in_left_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/hand/right)
+		if(/datum/inventory_slot/abstract/hand/right)
 			return put_in_right_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/put_in_belt)
+		if(/datum/inventory_slot/abstract/put_in_belt)
 			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
 			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
-		if(/datum/inventory_slot_meta/abstract/put_in_backpack)
+		if(/datum/inventory_slot/abstract/put_in_backpack)
 			var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
 			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
-		if(/datum/inventory_slot_meta/abstract/put_in_hands)
+		if(/datum/inventory_slot/abstract/put_in_hands)
 			return put_in_hands(I, flags)
-		if(/datum/inventory_slot_meta/abstract/put_in_storage, /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
-			if(slot == /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
+		if(/datum/inventory_slot/abstract/put_in_storage, /datum/inventory_slot/abstract/put_in_storage_try_active)
+			if(slot == /datum/inventory_slot/abstract/put_in_storage_try_active)
 				if(s_active && Adjacent(s_active) && s_active.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
 					return TRUE
 			for(var/obj/item/storage/S in get_equipped_items_in_slots(list(
@@ -52,7 +52,7 @@
 				if(S.try_insert(I, src, INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
 					return TRUE
 			return FALSE
-		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
+		if(/datum/inventory_slot/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items())
 				if(C.attempt_attach_accessory(I))
 					return TRUE
@@ -158,7 +158,7 @@
 		return FALSE
 
 	// resolve slot
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot_meta(slot)
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
@@ -209,7 +209,7 @@
  * handles adding an item or updating an item to our hud
  */
 /mob/proc/_handle_inventory_hud_update(obj/item/I, slot)
-	var/datum/inventory_slot_meta/meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/meta = resolve_inventory_slot_meta(slot)
 	I.screen_loc = meta.hud_position
 	if(client)
 		client.screen |= I

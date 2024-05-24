@@ -27,13 +27,13 @@
 /**
  * called when an item is added to inventory
  */
-/datum/inventory/proc/item_entered(obj/item/item, datum/inventory_slot_meta/slot_or_index)
+/datum/inventory/proc/item_entered(obj/item/item, datum/inventory_slot/slot_or_index)
 	hud?.add_item(item, slot_or_index)
 
 /**
  * called when an item is removed from inventory
  */
-/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot_meta/slot_or_index)
+/datum/inventory/proc/item_exited(obj/item/item, datum/inventory_slot/slot_or_index)
 	hud?.remove_item(item, slot_or_index)
 
 #warn hook above 2

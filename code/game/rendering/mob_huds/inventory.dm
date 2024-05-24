@@ -13,9 +13,9 @@
 	/// use hand on self object
 	var/atom/movable/screen/inventory/use_self_hand/use_self_hand
 
-/datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot_meta/slot_or_index)
+/datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
 
-/datum/mob_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot_meta/slot_or_index)
+/datum/mob_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot_or_index)
 
 #warn impl all
 

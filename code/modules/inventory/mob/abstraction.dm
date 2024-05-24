@@ -106,7 +106,7 @@
  *
  * return TRUE if conflicting, otherwise FALSE
  */
-/mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot_meta/slot, mob/user)
+/mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot/slot, mob/user)
 	. = FALSE
 	slot = resolve_inventory_slot_meta(slot)
 	return slot._equip_check(I, src, user)
