@@ -4,6 +4,20 @@
 
 //To-Do find some way to take images and turn them into picture backgrounds for these bodies.
 
+/obj/random/fluff_body //A random overmap fluff POI
+	name = "Random Overmap Body"
+	desc = "This a random overmap body."
+	icon = 'icons/modules/overmap/entity.dmi'
+	icon_state = "unknown"
+
+/obj/random/fluff_body/item_to_spawn()
+	return pick(prob(30);/obj/overmap/entity/fluff/comet,
+				prob(30);/obj/overmap/entity/fluff/asteroid,
+				prob(20);/obj/overmap/entity/fluff/probe/allied,
+				prob(14);/obj/overmap/entity/fluff/probe/neutral,
+				prob(5);/obj/overmap/entity/fluff/probe/hostile)
+
+
 /obj/overmap/entity/fluff //This will all get replaced
 	name = "Debug World"
 	desc = "You shouldn't be seeing this planet contact, contact an admin."
@@ -27,8 +41,6 @@
 	///How do you blow it up?
 	var/weaknesses
 	/// Does this thing leave something behind when you blow it up?
-	var/debris
-
 
 /obj/overmap/entity/fluff/Initialize(mapload)
 	. = ..()
@@ -54,22 +66,11 @@
 		desc = initial(desc)
 	return ..()
 
-/obj/overmap/entity/fluff/proc/spread_debris()
-	if(debris != null)
-		new debris(src.loc)
-
-/obj/overmap/entity/fluff/Destroy()
-	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(spread_debris)), 51)
-	qdel(src)
-	return ..()
-
 /obj/overmap/entity/fluff/comet //Big ball of ice
 	name = "Comet"
 	desc = "A ball of ice spinning through space."
 	color = "#5bbbd3"
 	icon_state = "comet"
-	debris = /obj/overmap/tiled/hazard/dust
 	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE | OVERMAP_WEAKNESS_FIRE
 
 /obj/overmap/entity/fluff/comet/Initialize(mapload)
@@ -87,7 +88,6 @@
 	desc = "A minor planet with negligible gravity."
 	color = "#eaa17c"
 	icon_state = "asteroid"
-	debris = /obj/overmap/tiled/hazard/meteor
 	weaknesses = OVERMAP_WEAKNESS_MINING | OVERMAP_WEAKNESS_EXPLOSIVE
 
 /obj/overmap/entity/fluff/asteroid/Initialize(mapload) //A Minor Planet AKA an Asteroid
@@ -120,7 +120,7 @@
 	faction=  pick("Nanotrasen","Vey-Med","Hephaestus")
 	name = "[faction] Satellite: [(LEGACY_MAP_DATUM).starsys_name]-[rand(1,100)]"
 	scanned_icon = "probe"
-	scanner_desc = {"<b><i>Registration</i></b>: [scanned_name]<br>
+	scanner_desc = {"<b><i>Registration</i></b>: [name]<br>
 <b><i>Class</i></b>: Artificial [body_subtype] Satellite. <br>
 <b><i>Notice</i></b>: Damage to [faction] property may result in legal action.<br>"}
 
