@@ -27,6 +27,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 /obj/machinery/power/solar/Initialize(mapload)
 	. = ..()
 	connect_to_network()
+	update_icon()
 
 /obj/machinery/power/solar/Destroy()
 	unset_control() //remove from control computer

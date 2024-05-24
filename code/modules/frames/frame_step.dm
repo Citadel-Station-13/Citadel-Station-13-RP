@@ -235,6 +235,34 @@
 			return material_stack.use(request_amount)
 	return TRUE
 
+/**
+ * called before frame is moved to new stage
+ */
+/datum/frame_step/proc/on_finish(datum/frame2/frame_datum, obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item)
+	if(drop)
+		var/atom/drop_where = frame.drop_lcoation()
+		if(ispath(drop, /obj/item/stack))
+			var/safety = 50
+			var/left = drop_amount
+			var/obj/item/stack/casted_stack = drop
+			do
+				var/dropping = min(left, initial(casted_stack.max_amount))
+				new drop(drop_where, dropping)
+				left -= dropping
+			while(--safety > 0 && left > 0)
+		else if(ispath(drop, /datum/material))
+			var/safety = 50
+			var/left = drop_amount
+			var/datum/material/resolved_material = SSmaterials.resolve_material(drop)
+			do
+				var/dropping = min(left, initial(casted_stack.max_amount))
+				resolved_material.place_sheet(drop_where, dropping)
+				left -= dropping
+			while(--safety > 0 && left > 0)
+		else if(ispath(drop, /obj/item))
+			for(var/i in 1 to min(50, drop_amount))
+				new drop(drop_where)
+
 /datum/frame_step/proc/feedback_begin(datum/event_args/actor/actor, datum/frame2/frame_datum, obj/structure/frame2/frame, obj/item/tool, time_needed)
 	// don't bother if it's that fast
 	if(time_needed <= 0.5 SECONDS)

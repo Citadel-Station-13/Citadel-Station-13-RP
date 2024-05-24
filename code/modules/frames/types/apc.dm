@@ -5,8 +5,8 @@ AUTO_FRAME_DATUM(/datum/frame2/apc, apc, 'icons/machinery/power/apc.dmi')
 	// we immediately form the entity on place; no stages
 	stages = list()
 	wall_frame = TRUE
-	wall_pixel_x = 16
-	wall_pixel_y = 16
+	wall_pixel_x = 24
+	wall_pixel_y = 24
 
 /datum/frame2/apc/instance_product(obj/structure/frame/frame)
 	return new /obj/machinery/power/apc(frame.loc, frame.dir, TRUE)

@@ -43,12 +43,21 @@
 	icon = ##ICON; \
 	frame = ##TYPEPATH; \
 } \
+/obj/structure/frame2/##EXTENSION/unanchored { \
+	anchored = FALSE; \
+} \
 /obj/item/frame2/##EXTENSION { \
 	icon = ##ICON; \
 	frame = ##TYPEPATH; \
 } \
 ##TYPEPATH { \
 	icon = ##ICON; \
+}
+
+#define AUTO_FRAME_DATUM_UNANCHORABLE(TYPEPATH, EXTENSION, ICON) \
+AUTO_FRAME_DATUM(TYPEPATH, EXTENSION, ICON); \
+/obj/structure/frame2/##EXTENSION/unanchored { \
+	anchored = FALSE; \
 }
 
 //* text template fragments

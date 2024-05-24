@@ -79,6 +79,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	var/requires_anchored_to_finish = TRUE
 	/// requires anchored to do anything
 	var/requires_anchored = TRUE
+	/// starts anchored; null = [requires_anchored]
+	var/starts_anchored
 	/// anchoring time
 	var/anchor_time = 2 SECONDS
 	/// anchoring tool
@@ -161,19 +163,20 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		stage_starting = stages[1]
 
 /datum/frame2/proc/apply_to_frame(obj/structure/frame2/frame)
-	frame.density = has_density
+	frame.set_density(has_density)
 	frame.icon = icon
 	frame.update_appearance()
 
 	if(wall_frame)
+		// wall frames face away from walls :/
 		if(islist(wall_pixel_y))
 			frame.set_base_pixel_x(wall_pixel_x["[frame.dir]"] || 0)
 		else
-			frame.set_base_pixel_x(frame.dir & EAST? wall_pixel_x : (frame.dir & WEST? -wall_pixel_x : 0))
+			frame.set_base_pixel_x(frame.dir & EAST? -wall_pixel_x : (frame.dir & WEST? wall_pixel_x : 0))
 		if(islist(wall_pixel_y))
 			frame.set_base_pixel_y(wall_pixel_y["[frame.dir]"] || 0)
 		else
-			frame.set_base_pixel_y(frame.dir & NORTH? wall_pixel_y : (frame.dir & SOUTH? -wall_pixel_y : 0))
+			frame.set_base_pixel_y(frame.dir & NORTH? -wall_pixel_y : (frame.dir & SOUTH? wall_pixel_y : 0))
 		frame.climb_allowed = FALSE
 		frame.climb_delay = 0
 		frame.depth_level = 0
@@ -208,6 +211,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
  */
 /datum/frame2/proc/deploy_frame(obj/item/frame2/frame_item, datum/event_args/actor/actor, atom/location, dir, destroy_item = TRUE)
 	var/obj/structure/frame2/creating_frame = new(location, dir, src)
+	creating_frame.set_anchored(isnull(starts_anchored)? requires_anchored : starts_anchored)
 
 	if(destroy_item)
 		qdel(frame_item)
@@ -267,18 +271,25 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/proc/move_frame_to(obj/structure/frame2/frame, from_stage, to_stage, datum/event_args/actor/actor)
 	if(frame.stage != from_stage)
 		return FALSE
-	if(isnull(stages[to_stage]))
-		// check your fucking inputs
-		CRASH("attempted to go to invalid stage!")
-	if(from_stage == to_stage)
-		// check your fucking inputs
-		CRASH("attempted to move from the same state to the same state. why?")
+
+	var/not_obliterating = FALSE
+	switch(to_stage)
+		if(FRAME_STAGE_DECONSTRUCT)
+		if(FRAME_STAGE_FINISH)
+		else
+			if(isnull(stages[to_stage]))
+				// check your fucking inputs
+				CRASH("attempted to go to invalid stage!")
+			if(from_stage == to_stage)
+				// check your fucking inputs
+				CRASH("attempted to move from the same state to the same state. why?")
+			not_obliterating = TRUE
 
 	frame.stage = to_stage
-
 	on_frame_step(frame, from_stage, to_stage)
 
-	frame.update_appearance()
+	if(not_obliterating)
+		frame.update_appearance()
 
 	log_construction(actor, frame, "mov [from_stage] -> [to_stage]")
 
@@ -353,6 +364,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 			continue
 		step_to_take = potential_step
 		break
+	if(isnull(step_to_take))
+		return FALSE
 	// tool speed is handled by use_tool
 	var/time_needed = step_to_take.time
 	return standard_progress_step(frame, actor, tool, step_to_take, time_needed)
@@ -398,7 +411,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		actor.chat_feedback(SPAN_WARNING("[frame] needs to be anchored to be finished."), frame)
 		return FALSE
 	if((isnull(frame_step.requires_anchored)? requires_anchored : frame_step.requires_anchored) && !frame.anchored)
-		actor.chat_feedback(SPAN_WARNING("[frame] needs to be anchored in order for you to [frame_step.action_descriptor || "<[frame_step.name]>"]."), frame)
+		var/rendered = frame_step.action_descriptor || "<[frame_step.name]>"
+		actor.chat_feedback(SPAN_WARNING("[frame] needs to be anchored in order for you to [rendered]."), frame)
 		return FALSE
 	if(!frame_step.check_consumption(actor, using_item, src, frame))
 		return FALSE
@@ -411,6 +425,8 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	)
 	if(!frame_step.perform_usage(actor, using_item, src, frame, time_needed))
 		return FALSE
+	if(frame.stage != stage_we_were_in)
+		return FALSE
 	if(!frame_step.handle_consumption(actor, using_item, src, frame))
 		return FALSE
 	frame_step.feedback_finish(
@@ -420,6 +436,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		using_item,
 		time_needed,
 	)
+	frame_step.on_finish(src, frame, actor, using_item)
 	move_frame_to(frame, stage_we_were_in, frame_step.stage, actor)
 	return TRUE
 

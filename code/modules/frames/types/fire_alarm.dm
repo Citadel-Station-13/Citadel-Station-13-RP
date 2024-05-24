@@ -1,8 +1,8 @@
 AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, fire_alarm, 'icons/machinery/fire_alarm.dmi')
 /datum/frame2/fire_alarm
 	name = "fire alarm frame"
-	wall_pixel_y = 16
-	wall_pixel_x = 16
+	wall_pixel_y = 24
+	wall_pixel_x = 24
 	wall_frame = TRUE
 	material_cost = 2
 	stages = list(
@@ -46,14 +46,15 @@ AUTO_FRAME_DATUM(/datum/frame2/fire_alarm, fire_alarm, 'icons/machinery/fire_ala
 			steps = list(
 				/datum/frame_step{
 					request = /obj/item/stack/cable_coil;
+					name = "unsecure circuit";
 					request_amount = 1;
 					stage = "wired";
 					direction = TOOL_DIRECTION_FORWARDS;
 				},
 				/datum/frame_step{
 					request = TOOL_SCREWDRIVER;
-					name = "secure panel";
-					stage = FRAME_STAGE_FINISH;
+					name = "unsecure circuit";
+					stage = "circuit";
 					direction = TOOL_DIRECTION_FORWARDS;
 				},
 			);
