@@ -37,7 +37,7 @@
 
 		// Do some reagent processing.
 		if(owner.chem_effects[CE_ALCOHOL_TOXIC])
-			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (dt * 5), prob(1)) // Chance to warn them
+			take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.1 * (dt * 5), prob(99)) // Chance to warn them
 			if(filter_effect < 2)	//Liver is badly damaged, you're drinking yourself to death
 				owner.adjustToxLoss(owner.chem_effects[CE_ALCOHOL_TOXIC] * 0.2 * (dt * 5))
 			if(filter_effect < 3)
