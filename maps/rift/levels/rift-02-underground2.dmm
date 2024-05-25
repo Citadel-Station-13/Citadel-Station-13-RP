@@ -10496,10 +10496,6 @@
 /obj/machinery/requests_console/preset/ce{
 	pixel_y = -30
 	},
-/obj/machinery/mass_driver{
-	dir = 8;
-	id = "enginecore"
-	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Nm" = (
