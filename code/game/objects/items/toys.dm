@@ -268,7 +268,7 @@
 	var/colorable = TRUE
 	var/rainbow = FALSE
 
-/obj/item/toy/sword/attack_self(mob/user)
+/obj/item/toy/sword/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -277,13 +277,8 @@
 	else
 		activate(user)
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	add_fingerprint(user)
-	return
 
 /obj/item/toy/sword/proc/activate(mob/living/user)
 	if(active)
@@ -487,7 +482,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS | SLOT_HOLSTER
 
-/obj/item/toy/bosunwhistle/attack_self(mob/user)
+/obj/item/toy/bosunwhistle/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -505,7 +500,7 @@
 	var/cooldown = 0
 
 //all credit to skasi for toy mech fun ideas
-/obj/item/toy/prize/attack_self(mob/user)
+/obj/item/toy/prize/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -514,7 +509,7 @@
 		playsound(user, 'sound/mecha/mechstep.ogg', 20, 1)
 		cooldown = world.time
 
-/obj/item/toy/prize/attack_hand(mob/user, list/params)
+/obj/item/toy/prize/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(loc == user)
 		if(cooldown < world.time - 8)
 			to_chat(user, "<span class='notice'>You play with [src].</span>")
@@ -592,7 +587,7 @@
 	. = ..()
 	desc = "A \"Space Life\" brand [name]"
 
-/obj/item/toy/figure/attack_self(mob/user)
+/obj/item/toy/figure/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -857,7 +852,7 @@
 	playsound(src, bitesound, 20, 1)	// Play bite sound in local area
 
 // Attack self
-/obj/item/toy/plushie/carp/attack_self(mob/user)
+/obj/item/toy/plushie/carp/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -922,7 +917,7 @@
 	density = 1
 	var/phrase = "I don't want to exist anymore!"
 
-/obj/structure/plushie/attack_hand(mob/user, list/params)
+/obj/structure/plushie/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
@@ -969,7 +964,7 @@
 	var/last_message = 0
 	var/pokephrase = "Uww!"
 
-/obj/item/toy/plushie/attack_self(mob/user)
+/obj/item/toy/plushie/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1435,7 +1430,7 @@
 	var/cooldown = 0
 	var/list/possible_answers = list("Definitely.", "All signs point to yes.", "Most likely.", "Yes.", "Ask again later.", "Better not tell you now.", "Future unclear.", "Maybe.", "Doubtful.", "No.", "Don't count on it.", "Never.")
 
-/obj/item/toy/eight_ball/attack_self(mob/user)
+/obj/item/toy/eight_ball/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1510,7 +1505,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 /*
-/obj/item/toy/AI/attack_self(mob/user)
+/obj/item/toy/AI/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1532,7 +1527,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/owl/attack_self(mob/user)
+/obj/item/toy/owl/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1553,7 +1548,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/griffin/attack_self(mob/user)
+/obj/item/toy/griffin/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1574,7 +1569,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/cowgirlprize/attack_self(mob/user)
+/obj/item/toy/cowgirlprize/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1595,7 +1590,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/snakeoilprize/attack_self(mob/user)
+/obj/item/toy/snakeoilprize/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1642,7 +1637,7 @@
 	max_combined_volume = STORAGE_VOLUME_BOX
 	var/last_message = 0
 
-/obj/item/storage/daki/attack_self(mob/user)
+/obj/item/storage/daki/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

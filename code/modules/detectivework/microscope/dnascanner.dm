@@ -142,7 +142,7 @@
 /obj/machinery/dnaforensics/attack_ai(mob/user)
 	ui_interact(user)
 
-/obj/machinery/dnaforensics/attack_hand(mob/user, list/params)
+/obj/machinery/dnaforensics/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	ui_interact(user)
 
 /obj/machinery/dnaforensics/update_icon()

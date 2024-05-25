@@ -130,7 +130,7 @@
 				human_blood_fear_amount += 1
 
 			// List of slots.  Some slots like pockets are omitted due to not being visible, if H isn't the holder.
-			var/list/clothing_slots = list(H.back, H.wear_mask, H.l_hand, H.r_hand, H.wear_id, H.glasses, H.gloves, H.head, H.shoes, H.belt, H.wear_suit, H.w_uniform, H.s_store, H.l_ear, H.r_ear)
+			var/list/clothing_slots = list(H.back, H.wear_mask, H.wear_id, H.glasses, H.gloves, H.head, H.shoes, H.belt, H.wear_suit, H.w_uniform, H.s_store, H.l_ear, H.r_ear) + H.get_held_items()
 			if(H == holder)
 				clothing_slots += list(H.l_store, H.r_store)
 
@@ -527,15 +527,13 @@
 
 		if(istype(thing, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = thing
-			if(H.l_hand && istype(H.l_hand, /obj/item/reagent_containers/syringe) || H.r_hand && istype(H.r_hand, /obj/item/reagent_containers/syringe))
+			if(H.get_held_item_of_type(/obj/item/reagent_containers/syringe))
 				fear_amount += 10
 
 			if(H.l_ear && istype(H.l_ear, /obj/item/reagent_containers/syringe) || H.r_ear && istype(H.r_ear, /obj/item/reagent_containers/syringe))
-				fear_amount +=10
-
+				fear_amount += 10
 
 	return fear_amount
-
 
 // Note for the below 'phobias' are of the xeno-phobic variety, and are less centered on pure fear as above, and more on a mix of distrust, fear, and disdainfulness.
 // As such, they are mechanically different than the fear-based phobias, in that instead of a buildup of fearful messages, it does intermittent messages specific to what holder sees.

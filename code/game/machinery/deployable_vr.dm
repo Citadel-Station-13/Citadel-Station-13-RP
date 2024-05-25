@@ -63,7 +63,7 @@
 	. = ..()
 	untopple()
 
-/obj/structure/barricade/cutout/attack_hand(mob/user, list/params)
+/obj/structure/barricade/cutout/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((. = ..()))
 		return
 

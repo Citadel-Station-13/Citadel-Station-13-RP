@@ -98,7 +98,7 @@
 
 /obj/item/gun/ballistic/automatic/pdw/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/pdw/update_icon_state()
 	. = ..()
@@ -161,7 +161,7 @@
 			chambered = AC
 		update_icon()
 
-/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user, list/params)
+/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump = 1)
 	else
@@ -241,7 +241,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/ballistic/automatic/stg/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/stg/update_icon_state()
 	. = ..()
@@ -282,7 +282,7 @@ END OF CITADEL CHANGES */
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "ufarc" : "ufarc-empty"
 	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands) update_worn_icon()
 
 
 
@@ -300,7 +300,7 @@ END OF CITADEL CHANGES */
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "g44" : "g44-empty"
 	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands) update_worn_icon()
 
 //-----------------------G44 Energy Variant--------------------
 /obj/item/gun/energy/gun/burst/g44e
@@ -756,7 +756,7 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/frontier/update_icon()
 	if(recharging)
 		icon_state = "[initial(icon_state)]_pump"
-		update_held_icon()
+		update_worn_icon()
 		return
 	..()
 
@@ -789,7 +789,7 @@ END OF CITADEL CHANGES */
 	. = ..()
 	if(recharging)
 		icon_state = "[modifystate]_pump"
-		update_held_icon()
+		update_worn_icon()
 
 //Expeditionary Holdout Phaser Pistol
 /obj/item/gun/energy/frontier/locked/holdout

@@ -457,7 +457,7 @@
 /obj/proc/do_climb_target(mob/living/climber)
 	return get_turf(src)
 
-/obj/attack_hand(mob/user, list/params)
+/obj/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	. = ..()

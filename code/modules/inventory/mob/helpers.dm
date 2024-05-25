@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-//* these call other procs in external.dm *//
+//* these have the primary function of calling other procs in public.dm *//
 
 /**
  * dels something or says "x is stuck to your hand"

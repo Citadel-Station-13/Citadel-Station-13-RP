@@ -132,7 +132,7 @@ var/global/list/image/splatter_cache=list()
 	add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
 	amount = 0
 
-/obj/effect/debris/cleanable/blood/attack_hand(mob/user, list/params)
+/obj/effect/debris/cleanable/blood/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

@@ -38,7 +38,7 @@
 /obj/machinery/computer/diseasesplicer/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/diseasesplicer/attack_hand(mob/user, list/params)
+/obj/machinery/computer/diseasesplicer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(..())
 		return TRUE
 	ui_interact(user)

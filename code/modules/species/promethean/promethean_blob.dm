@@ -21,10 +21,7 @@
 	//glow_intensity = 0
 
 	var/mob/living/carbon/human/humanform
-	var/datum/modifier/healing
-
-	var/datum/weakref/prev_left_hand
-	var/datum/weakref/prev_right_hand
+	var/list/datum/weakref/previously_held
 
 	var/human_brute = 0
 	var/human_burn = 0
@@ -358,11 +355,12 @@
 	//Size update
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
-
-	if(l_hand)
-		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand)
-		blob.prev_right_hand = WEAKREF(r_hand)
+	var/list/datum/weakref/prev_held = new /list(length(held_items))
+	for(var/i in 1 to length(held_items))
+		var/obj/item/held = held_items[i]
+		if(isnull(held))
+			continue
+		prev_held[i] = WEAKREF(held)
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.transforming = TRUE
@@ -465,10 +463,12 @@
 
 	//vore_organs.Cut()
 
-	if(blob.prev_left_hand)
-		put_in_left_hand(blob.prev_left_hand.resolve()) //The restore for when reforming.
-	if(blob.prev_right_hand)
-		put_in_right_hand(blob.prev_right_hand.resolve())
+	for(var/i in 1 to length(blob.previously_held))
+		var/datum/weakref/ref = blob.previously_held[i]
+		var/obj/item/resolved = ref?.resolve()
+		if(isnull(resolved))
+			continue
+		put_in_hand_or_drop(resolved, i)
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(

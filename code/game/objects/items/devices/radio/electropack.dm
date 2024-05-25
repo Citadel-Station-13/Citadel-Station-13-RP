@@ -15,7 +15,7 @@
 
 	var/code = 2
 
-/obj/item/radio/electropack/attack_hand(mob/user, list/params)
+/obj/item/radio/electropack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(src == user.item_by_slot_id(SLOT_ID_BACK))
 		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
 		return

@@ -200,7 +200,7 @@
 			weapon_descriptor = "electromagnetic overload",
 		)
 
-/obj/item/organ/external/attack_self(mob/user)
+/obj/item/organ/external/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1017,13 +1017,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			qdel(src)
 
-	if(victim.l_hand)
-		if(istype(victim.l_hand,/obj/item/material/twohanded)) //if they're holding a two-handed weapon, drop it now they've lost a hand
-			victim.l_hand.update_held_icon()
-	if(victim.r_hand)
-		if(istype(victim.r_hand,/obj/item/material/twohanded))
-			victim.r_hand.update_held_icon()
-
 /****************************************************
 			   HELPERS
 ****************************************************/
@@ -1503,6 +1496,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/I in L.implants)
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
+
+//* Hand Integration *//
+
+#warn impl
 
 //* Environmentals *//
 

@@ -168,7 +168,7 @@
 		update_icon() // In case item_state is set somewhere else.
 	..()
 
-/obj/item/gun/update_held_icon()
+/obj/item/gun/update_worn_icon()
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))
@@ -784,7 +784,7 @@
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user)
+/obj/item/gun/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

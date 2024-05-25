@@ -1,27 +1,7 @@
-/obj/item
-	/// currently equipped slot id
-	var/worn_slot
-	/**
-	 * current item we fitted over
-	 * ! DANGER: While this is more or less bug-free for "won't lose the item when you unequip/won't get stuck", we
-	 * ! do not promise anything for functionality - this is a SNOWFLAKE SYSTEM.
-	 */
-	var/obj/item/worn_over
-	/**
-	 * current item we're fitted in.
-	 */
-	var/obj/item/worn_inside
-	/// suppress auto inventory hooks in forceMove
-	var/worn_hook_suppressed = FALSE
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/item/Destroy()
-	if(worn_slot && !worn_hook_suppressed)
-		var/mob/M = worn_mob()
-		if(!ismob(M))
-			stack_trace("invalid current equipped slot [worn_slot] on an item not on a mob.")
-			return ..()
-		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING)
-	return ..()
+//* Hooks *//
 
 /**
  * called when an item is equipped to inventory or picked up
@@ -45,7 +25,6 @@
 			user.client?.screen |= src
 	if((slot != SLOT_ID_HANDS) && equip_sound)
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
-	user.update_inv_hands()
 
 	// register carry
 	if(isliving(user))
@@ -174,54 +153,79 @@
 			continue
 		user.register_shieldcall(shieldcall)
 
+//* Access *//
+
 /**
- * update our worn icon if we can
+ * get the mob we're equipped on
  */
-/obj/item/proc/update_worn_icon()
+/obj/item/proc/worn_mob()
+	RETURN_TYPE(/mob)
+	return worn_inside?.worn_mob() || (worn_slot? loc : null)
+
+/**
+ * checks if we're in inventory. if so, returns mob we're in
+ * **hands count**
+ */
+/obj/item/proc/is_in_inventory(include_hands)
+	return (worn_slot && ((worn_slot != SLOT_ID_HANDS) || include_hands)) && worn_mob()
+
+/**
+ * checks if we're held in hand
+ *
+ * if so, returns mob we're in
+ */
+/obj/item/proc/is_held()
+	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null
+
+/**
+ * checks if we're worn. if so, return mob we're in
+ *
+ * note: this is not the same as is_in_inventory, we check if it's a clothing/worn slot in this case!
+ */
+/obj/item/proc/is_being_worn()
 	if(!worn_slot)
-		return	// acceptable
-	var/mob/M = worn_mob()
-	ASSERT(M)	// not acceptable
-	switch(worn_slot)
-		if(SLOT_ID_BACK)
-			M.update_inv_back()
-		if(SLOT_ID_BELT)
-			M.update_inv_belt()
-		if(SLOT_ID_GLASSES)
-			M.update_inv_glasses()
-		if(SLOT_ID_GLOVES)
-			M.update_inv_gloves()
-		if(SLOT_ID_HANDCUFFED)
-			M.update_inv_handcuffed()
-		if(SLOT_ID_HANDS)
-			M.update_inv_hands()
-		if(SLOT_ID_HEAD)
-			M.update_inv_head()
-		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
-			M.update_inv_ears()
-		if(SLOT_ID_MASK)
-			M.update_inv_wear_mask()
-		if(SLOT_ID_SHOES)
-			M.update_inv_shoes()
-		if(SLOT_ID_SUIT)
-			M.update_inv_wear_suit()
-		if(SLOT_ID_SUIT_STORAGE)
-			M.update_inv_s_store()
-		if(SLOT_ID_UNIFORM)
-			M.update_inv_w_uniform()
-		if(SLOT_ID_WORN_ID)
-			M.update_inv_wear_id()
+		return FALSE
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot_meta(worn_slot)
+	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
+
+//* Stripping *//
 
 /**
- * returns either an item or a list
- * get_equipped_items() uses this so accessories are included
+ * get strip menu options by  href key associated to name.
  */
-/obj/item/proc/_inv_return_attached()
-	if(worn_over)
-		return list(src) + worn_over._inv_return_attached()
-	else
-		return src
+/obj/item/proc/strip_menu_options(mob/user)
+	RETURN_TYPE(/list)
+	return list()
 
+/**
+ * strip menu act
+ *
+ * adjacency is pre-checked.
+ * return TRUE to refresh
+ */
+/obj/item/proc/strip_menu_act(mob/user, action)
+	return FALSE
+
+/**
+ * standard do after for interacting from strip menu
+ */
+/obj/item/proc/strip_menu_standard_do_after(mob/user, delay)
+	. = FALSE
+	var/slot = worn_slot
+	if(!slot)
+		CRASH("no worn slot")
+	var/mob/M = worn_mob()
+	if(!M)
+		CRASH("no worn mob")
+	if(!M.strip_interaction_prechecks(user))
+		return
+	if(!do_after(user, delay, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
+		return
+	if(slot != worn_slot || M != worn_mob())
+		return
+	return TRUE
+
+//* Checks *//
 // todo: item should get final say for "soft" aka not-literal-var-overwrite conflicts.
 
 /**
@@ -291,7 +295,7 @@
 	return TRUE
 
 /**
- * automatically uneqiup if we're missing beltlink
+ * automatically unequip if we're missing beltlink
  */
 /obj/item/proc/reconsider_beltlink()
 	var/mob/M = loc
@@ -302,6 +306,16 @@
 	if(!equip_check_beltlink(M, worn_slot, null, INV_OP_SILENT))
 		M.drop_item_to_ground(src, INV_OP_SILENT)
 		return
+
+//* Speed / Carry Weight *//
+
+/**
+ * get the slowdown we incur when we're worn
+ */
+/obj/item/proc/get_equipment_speed_mod()
+	return slowdown
+
+//* ADVANCED: Wear-Over System *//
 
 /**
  * checks if we can fit over something
@@ -327,103 +341,18 @@
  */
 /obj/item/proc/equip_on_worn_over_remove(mob/M, slot, mob/user, obj/item/I, flags)
 
+//* ADVANCED: Compound Objects *//
+
 /**
- * get the mob we're equipped on
+ * returns either an item or a list
+ * get_equipped_items() uses this so accessories are included
+ * anything this returns is considered to be in the same slot.
  */
-/obj/item/proc/worn_mob()
-	RETURN_TYPE(/mob)
-	return worn_inside?.worn_mob() || (worn_slot? loc : null)
-
-// doMove hook to ensure proper functionality when inv procs aren't called
-/obj/item/doMove(atom/destination)
-	if(worn_slot && !worn_hook_suppressed)
-		// inventory handling
-		if(destination == worn_inside)
-			return ..()
-		var/mob/M = worn_mob()
-		if(!ismob(M))
-			worn_slot = null
-			worn_hook_suppressed = FALSE
-			stack_trace("item forcemove inv hook called without a mob as loc??")
-		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
-	return ..()
-
-// todo: this is fucking awful
-/obj/item/Move(atom/newloc, direct, glide_size_override)
-	if(!worn_slot)
-		return ..()
-	var/mob/M = worn_mob()
-	if(istype(M))
-		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+/obj/item/proc/inv_slot_attached()
+	if(worn_over)
+		return list(src) + worn_over.inv_slot_attached()
 	else
-		stack_trace("item Move inv hook called without a mob as loc??")
-		worn_slot = null
-	. = ..()
-	if(!. || (loc == M))
-		// kick them out
-		forceMove(M.drop_location())
-
-/**
- * checks if we're in inventory. if so, returns mob we're in
- *
- * **hands count**
- */
-/obj/item/proc/is_in_inventory(include_hands)
-	return (worn_slot && ((worn_slot != SLOT_ID_HANDS) || include_hands)) && worn_mob()
-
-/**
- * checks if we're held in hand
- *
- * if so, returns mob we're in
- */
-/obj/item/proc/is_held()
-	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null
-
-/**
- * checks if we're worn. if so, return mob we're in
- *
- * note: this is not the same as is_in_inventory, we check if it's a clothing/worn slot in this case!
- */
-/obj/item/proc/is_being_worn()
-	if(!worn_slot)
-		return FALSE
-	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(worn_slot)
-	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
-
-/**
- * get strip menu options by  href key associated to name.
- */
-/obj/item/proc/strip_menu_options(mob/user)
-	RETURN_TYPE(/list)
-	return list()
-
-/**
- * strip menu act
- *
- * adjacency is pre-checked.
- * return TRUE to refresh
- */
-/obj/item/proc/strip_menu_act(mob/user, action)
-	return FALSE
-
-/**
- * standard do after for interacting from strip menu
- */
-/obj/item/proc/strip_menu_standard_do_after(mob/user, delay)
-	. = FALSE
-	var/slot = worn_slot
-	if(!slot)
-		CRASH("no worn slot")
-	var/mob/M = worn_mob()
-	if(!M)
-		CRASH("no worn mob")
-	if(!M.strip_interaction_prechecks(user))
-		return
-	if(!do_after(user, delay, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
-		return
-	if(slot != worn_slot || M != worn_mob())
-		return
-	return TRUE
+		return src
 
 //* Shieldcall registration
 

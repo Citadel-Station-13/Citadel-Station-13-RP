@@ -122,3 +122,17 @@
 
 /mob/proc/melee_attack_finalize(atom/target, datum/event_args/actor/clickchain/clickchain, datum/unarmed_attack/style, clickchain_flags, target_zone, mult)
 	return NONE
+
+/**
+ * construct default event args for what we're doing to a target
+ */
+/mob/proc/default_clickchain_event_args(atom/target, unarmed = FALSE)
+	var/datum/event_args/actor/clickchain/constructed = new
+	constructed.initiator = src
+	constructed.actor = src
+	constructed.target = target
+	constructed.click_params = list()
+	constructed.attack_intent = a_intent
+	constructed.hand_index = active_hand
+	if(!unarmed)
+		constructed.using = get_active_held_item()

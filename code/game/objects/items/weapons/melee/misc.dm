@@ -48,7 +48,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/melee/umbrella/attack_self(mob/user)
+/obj/item/melee/umbrella/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -60,10 +60,7 @@
 	addblends = icon_state + "_a"
 	item_state = icon_state
 	update_icon()
-	if(ishuman(src.loc))
-		var/mob/living/carbon/human/H = src.loc
-		H.update_inv_l_hand(0)
-		H.update_inv_r_hand()
+	update_worn_icon()
 
 // Randomizes color
 /obj/item/melee/umbrella/random/Initialize(mapload)
@@ -270,7 +267,7 @@
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
-/obj/item/melee/ashlander/elder/attack_self(mob/user)
+/obj/item/melee/ashlander/elder/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -292,10 +289,7 @@
 	else
 		set_light(0)
 
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/melee/ashlander/elder/proc/activate(mob/living/user)
 	to_chat(user, "<span class='notice'>You ignite the [src]'s sacred flame.</span>")
@@ -354,7 +348,7 @@
 		return 1
 	return 0
 
-/obj/item/melee/twohanded/attack_self(mob/user)
+/obj/item/melee/twohanded/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -490,7 +484,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/melee/thermalcutter/attack_self(mob/user)
+/obj/item/melee/thermalcutter/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -536,10 +530,7 @@
 	else
 		set_light(0)
 
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/melee/thermalcutter/proc/activate(var/mob/M)
 	var/turf/T = get_turf(src)

@@ -57,7 +57,7 @@ THAT STUPID GAME KIT
 /obj/item/game_kit/attack_ai(mob/user as mob, unused, flag)
 	return src.attack_hand(user, unused, flag)
 
-/obj/item/game_kit/attack_hand(mob/user as mob, unused, flag)
+/obj/item/game_kit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
 	if (flag)
 		return ..()

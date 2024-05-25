@@ -307,21 +307,15 @@
 
 	T.afflict_paralyze(20 * 3)
 
-	var/use_hand = "left"
-	if(l_hand)
-		if(r_hand)
-			to_chat(src, "<span class='danger'>You need to have one hand free to grab someone.</span>")
-			return
-		else
-			use_hand = "right"
+	if(hands_full())
+		to_chat(src, "<span class='danger'>You need to have one hand free to grab someone.</span>")
+		return
 
 	src.visible_message("<span class='warning'><b>\The [src]</b> seizes [T] aggressively!</span>")
 
-	var/obj/item/grab/G = new(src,T)
-	if(use_hand == "left")
-		l_hand = G
-	else
-		r_hand = G
+	var/obj/item/grab/G = new(src, T)
+	if(!put_in_hands_or_del(G))
+		return
 
 	G.state = GRAB_PASSIVE
 	G.icon_state = "grabbed1"

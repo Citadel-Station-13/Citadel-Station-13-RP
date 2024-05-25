@@ -302,8 +302,7 @@
 	else
 		return attack_hand(user)
 
-// todo: refactor
-/obj/machinery/attack_hand(mob/user, list/params)
+/obj/machinery/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(IsAdminGhost(user))

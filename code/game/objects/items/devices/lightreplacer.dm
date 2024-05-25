@@ -135,7 +135,7 @@
 			return
 
 
-/obj/item/lightreplacer/attack_self(mob/user)
+/obj/item/lightreplacer/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return

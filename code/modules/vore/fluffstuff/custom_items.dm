@@ -139,7 +139,7 @@
 	assignment = "Centcom Officer"
 
 
-/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user)
+/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -211,7 +211,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "Flag_Nanotrasen_mob"
 
-/obj/item/flag/attack_self(mob/user)
+/obj/item/flag/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -332,7 +332,7 @@
 	assignment = "CC Medical"
 	var/configured = 0
 
-/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user)
+/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -446,7 +446,7 @@
     var/last_use = 0
     var/cooldown = 30
 
-/obj/item/cane/wand/attack_self(mob/user)
+/obj/item/cane/wand/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -570,7 +570,7 @@
 	icon_state = "dragor_dot"
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/fluff/dragor_dot/attack_self(mob/user)
+/obj/item/fluff/dragor_dot/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -601,7 +601,7 @@
 	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
 	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
 
-/obj/item/card/id/fluff/amaya/attack_self(mob/user)
+/obj/item/card/id/fluff/amaya/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -722,7 +722,7 @@
 
 	..()
 
-/obj/item/perfect_tele/attack_hand(mob/user, list/params)
+/obj/item/perfect_tele/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
@@ -731,7 +731,7 @@
 	else
 		return ..()
 
-/obj/item/perfect_tele/attack_self(mob/user)
+/obj/item/perfect_tele/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -984,7 +984,7 @@
 	tele_hand = null
 	return ..()
 
-/obj/item/perfect_tele_beacon/attack_hand(mob/user, list/params)
+/obj/item/perfect_tele_beacon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((user.ckey != creator) && !(user.ckey in warned_users))
 		warned_users |= user.ckey
 		var/choice = alert(user,"This device is a translocator beacon. Having it on your person may mean that anyone \
@@ -996,7 +996,7 @@
 
 	..()
 
-/obj/item/perfect_tele_beacon/attack_self(mob/user)
+/obj/item/perfect_tele_beacon/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1090,7 +1090,7 @@
 		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1280,7 +1280,7 @@
 	update_icon()
 	return
 
-/obj/item/melee/baton/fluff/stunstaff/update_held_icon()
+/obj/item/melee/baton/fluff/stunstaff/update_worn_icon()
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
@@ -1314,9 +1314,9 @@
 	if(wielded)
 		wielded = 0
 		spawn(0)
-			update_held_icon()
+			update_worn_icon()
 
-/obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
+/obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1330,7 +1330,7 @@
 	else
 		status = 0
 		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
-	update_held_icon()
+	update_worn_icon()
 	add_fingerprint(user)
 
 /obj/item/storage/backpack/fluff/stunstaff
@@ -1388,7 +1388,7 @@
 	edge = initial(edge)
 	set_weight_class(initial(w_class))
 
-/obj/item/melee/fluffstuff/attack_self(mob/user)
+/obj/item/melee/fluffstuff/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1401,14 +1401,8 @@
 		deactivate(user)
 	else
 		activate(user)
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	add_fingerprint(user)
-	return
 
 /obj/item/melee/fluffstuff/suicide_act(mob/user)
 	var/tempgender = "[user.gender == MALE ? "he's" : user.gender == FEMALE ? "she's" : "they are"]"
@@ -1554,8 +1548,4 @@
 	else
 		icon_state = "jazzcamcorder"
 		item_state = "jazzcamcorder"
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		H.update_inv_r_hand()
-		H.update_inv_l_hand()
-		H.update_inv_belt()
+	update_worn_icon()

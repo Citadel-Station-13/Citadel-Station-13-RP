@@ -84,7 +84,7 @@
 		flip_mobs()
 	return ..()
 
-/obj/item/bikehorn/golden/attack_self(mob/user)
+/obj/item/bikehorn/golden/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -138,7 +138,7 @@
 	temp_blade.set_active(TRUE)
 	concealed_blade = temp_blade
 
-/obj/item/cane/concealed/attack_self(mob/user)
+/obj/item/cane/concealed/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -208,7 +208,7 @@
 	damage_force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -237,14 +237,9 @@
 		damage_force = 3
 		attack_verb = list("hit", "poked", "prodded")
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 	add_fingerprint(user)
-	return TRUE
 
 /obj/item/cane/crutch
 	name ="crutch"

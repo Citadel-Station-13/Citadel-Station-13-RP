@@ -336,7 +336,7 @@
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
 
-/obj/item/gun/energy/service/attack_self(mob/user)
+/obj/item/gun/energy/service/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -490,7 +490,7 @@
 	. = ..()
 	if(overheating)
 		icon_state = "prifle_overheat"
-		update_held_icon()
+		update_worn_icon()
 	else
 		return
 
@@ -527,7 +527,7 @@
 	. = ..()
 	if(overheating)
 		icon_state = "ppistol_overheat"
-		update_held_icon()
+		update_worn_icon()
 	else
 		return
 

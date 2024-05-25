@@ -1,6 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+//* Abstraction *//
+
 /mob/living/carbon/_slot_by_item(obj/item/I)
 	if(handcuffed == I)
 		return SLOT_ID_HANDCUFFED
@@ -38,15 +40,53 @@
 	. = ..()
 	if(include_restraints)
 		if(handcuffed)
-			. += handcuffed._inv_return_attached()
+			. += handcuffed.inv_slot_attached()
 		if(legcuffed)
-			. += legcuffed._inv_return_attached()
+			. += legcuffed.inv_slot_attached()
 
 /mob/living/carbon/_get_inventory_slot_ids()
 	return ..() + list(
 		SLOT_ID_HANDCUFFED,
 		SLOT_ID_LEGCUFFED,
 	)
+
+//* Hands *//
+
+/mob/living/carbon/get_active_hand_organ_key()
+	return get_hand_organ_key(active_hand)
+
+/mob/living/carbon/get_active_hand_organ()
+	RETURN_TYPE(/obj/item/organ/external)
+	return get_organ(get_hand_organ_key(active_hand))
+
+/mob/living/carbon/get_hand_organ_key(index)
+	#warn impl
+
+/mob/living/carbon/get_hand_organ(index)
+	return get_organ(get_hand_organ_key(index))
+
+/mob/living/carbon/is_hand_functional(index, fine_manipulation)
+	var/obj/item/organ/external/part = get_hand_organ(index)
+	#warn impl
+
+/mob/living/carbon/get_hand_index_of_organ(obj/item/organ/external/organ)
+	#warn impl
+
+/mob/living/carbon/get_active_arm_organ_key()
+	return get_arm_organ_key(active_hand)
+
+/mob/living/carbon/get_active_arm_organ()
+	RETURN_TYPE(/obj/item/organ/external)
+	return get_organ(get_arm_organ_key(active_hand))
+
+/mob/living/carbon/get_arm_organ_key(index)
+	#warn impl
+
+/mob/living/carbon/get_arm_organ(index)
+	return get_organ(get_arm_organ_key(index))
+
+/mob/living/carbon/get_hand_fail_message(index)
+	#warn impl
 
 //* carry weight
 

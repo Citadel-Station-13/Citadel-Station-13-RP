@@ -70,7 +70,7 @@
 	..()
 
 
-/obj/item/storage/secure/attack_self(mob/user)
+/obj/item/storage/secure/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -198,5 +198,5 @@
 		/obj/item/pen
 	)
 
-/obj/item/storage/secure/safe/attack_hand(mob/user, list/params)
+/obj/item/storage/secure/safe/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	return attack_self(user)

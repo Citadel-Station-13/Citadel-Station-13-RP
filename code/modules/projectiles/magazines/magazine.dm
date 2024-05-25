@@ -94,7 +94,7 @@
 	update_icon()
 
 // This dumps all the bullets right on the floor
-/obj/item/ammo_magazine/attack_self(mob/user)
+/obj/item/ammo_magazine/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -118,7 +118,7 @@
 		return
 
 // This puts one bullet from the magazine into your hand
-/obj/item/ammo_magazine/attack_hand(mob/user, list/params)
+/obj/item/ammo_magazine/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(can_remove_ammo)	// For Smart Magazines
 		if(user.get_inactive_held_item() == src)
 			if(stored_ammo.len)

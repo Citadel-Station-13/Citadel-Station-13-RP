@@ -132,11 +132,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			icon_state = "[initial(icon_state)]_burnt"
 			item_state = "[initial(item_state)]_burnt"
-	if(ismob(loc))
-		var/mob/living/M = loc
-		M.update_inv_wear_mask(0)
-		M.update_inv_l_hand(0)
-		M.update_inv_r_hand(1)
+	update_worn_icon()
 	..()
 
 /obj/item/clothing/mask/smokable/examine(mob/user, dist)
@@ -204,9 +200,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			lit = 0
 			icon_state = initial(icon_state)
 			item_state = initial(item_state)
-			M.update_inv_wear_mask(0)
-			M.update_inv_l_hand(0)
-			M.update_inv_r_hand(1)
+			update_worn_icon()
 			smoketime = 0
 			reagents.clear_reagents()
 			name = "empty [initial(name)]"
@@ -311,7 +305,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 
-/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user)
+/obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] drops and treads on the lit [src], putting it out instantly.</span>")
@@ -413,10 +407,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-
-	user.update_inv_wear_mask(0)
-	user.update_inv_l_hand(0)
-	user.update_inv_r_hand(1)
+	update_worn_icon()
 
 /obj/item/cigbutt/imp
 	name = "cigarette butt"
@@ -444,7 +435,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	name = "empty [initial(name)]"
 
-/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user)
+/obj/item/clothing/mask/smokable/pipe/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] empties the lit [src] on the floor!.</span>")
@@ -487,9 +478,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/assembly/igniter))
 		light("<span class='notice'>[user] fiddles with [W], and manages to light their [name] with the power of science.</span>")
 
-	user.update_inv_wear_mask(0)
-	user.update_inv_l_hand(0)
-	user.update_inv_r_hand(1)
+	update_worn_icon()
 
 /obj/item/clothing/mask/smokable/pipe/cobpipe
 	name = "corn cob pipe"
@@ -601,7 +590,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = icon_state
 	base_state = icon_state
 
-/obj/item/flame/lighter/attack_self(mob/user)
+/obj/item/flame/lighter/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)

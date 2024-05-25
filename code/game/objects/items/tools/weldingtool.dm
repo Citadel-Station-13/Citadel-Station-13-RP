@@ -149,7 +149,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/weldingtool/attack_self(mob/user)
+/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -230,11 +230,7 @@
 	else
 		set_light(0)
 
-//	icon_state = welding ? "[icon_state]1" : "[initial(icon_state)]"
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
@@ -647,7 +643,7 @@
 		update_icon()
 		return 0
 
-/obj/item/weldingtool/electric/attack_hand(mob/user, list/params)
+/obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()
@@ -745,10 +741,7 @@
 /obj/item/weldingtool/electric/crystal/update_icon()
 	icon_state = welding ? "crystal_welder_on" : "crystal_welder"
 	item_state = welding ? "crystal_tool_lit"  : "crystal_tool"
-	var/mob/M = loc
-	if(istype(M))
-		M.update_inv_l_hand()
-		M.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
 	if(user.species.name == SPECIES_ADHERENT)

@@ -75,7 +75,7 @@
 		if(!bcell)
 			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
-/obj/item/melee/energy/attack_self(mob/user)
+/obj/item/melee/energy/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -95,11 +95,7 @@
 	else
 		activate(user)
 
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
-
+	update_worn_icon()
 	add_fingerprint(user)
 	return
 
@@ -160,10 +156,7 @@
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(active)
 		add_overlay(blade_overlay)
-	if(istype(usr,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		H.update_inv_l_hand()
-		H.update_inv_r_hand()
+	update_worn_icon()
 
 /obj/item/melee/energy/AltClick(mob/living/user)
 	if(!colorable) //checks if is not colorable
@@ -492,7 +485,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/energy/blade/attack_self(mob/user)
+/obj/item/melee/energy/blade/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 	if(.)
 		return
@@ -617,7 +610,10 @@
 /obj/item/melee/energy/hfmachete/update_icon()
 	icon_state = "[base_state][active]"
 
-/obj/item/melee/energy/hfmachete/attack_self(mob/user)
+/obj/item/melee/energy/hfmachete/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
 	toggleActive(user)
 	add_fingerprint(user)
 

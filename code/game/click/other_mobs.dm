@@ -28,9 +28,9 @@
 	A.attack_hand(src)
 
 /// Return TRUE to cancel other attack hand effects that respect it.
-// todo: /datum/event_args/actor/clickchain
-/atom/proc/attack_hand(mob/user, list/params)
-	var/datum/event_args/actor/clickchain/e_args = new(user, target = src, intent = user.a_intent, params = params)
+/atom/proc/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	if(isnull(e_args))
+		e_args = user.default_clickchain_event_args(src, TRUE)
 	if(on_attack_hand(e_args))
 		return TRUE
 	if(user.a_intent == INTENT_HARM)

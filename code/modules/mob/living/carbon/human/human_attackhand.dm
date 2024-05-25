@@ -25,7 +25,7 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/user, list/params)
+/mob/living/carbon/human/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	var/datum/gender/TT = GLOB.gender_datums[user.get_visible_gender()]
 	var/mob/living/carbon/human/H = user
 	if(istype(H))
@@ -327,14 +327,8 @@
 
 //Used to attack a joint through grabbing
 /mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)
-	var/has_grab = 0
-	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
-		if(G.affecting == src && G.state == GRAB_NECK)
-			has_grab = 1
-			break
-
-	if(!has_grab)
-		return FALSE
+	if(user.check_grab(src) < GRAB_NECK)
+		return
 
 	if(!def_zone) def_zone = user.zone_sel.selecting
 	var/target_zone = check_zone(def_zone)
@@ -359,20 +353,11 @@
 		success = TRUE
 		stop_pulling()
 
-	if(istype(l_hand, /obj/item/grab))
-		var/obj/item/grab/lgrab = l_hand
-		if(lgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
+	for(var/obj/item/grab/grab as anything in get_held_items_of_type(/obj/item/grab))
+		if(grab.affecting)
+			visible_message("<span class='danger'>[user] has broken [src]'s grip on [grab.affecting]!</span>")
 			success = TRUE
-		spawn(1)
-			qdel(lgrab)
-	if(istype(r_hand, /obj/item/grab))
-		var/obj/item/grab/rgrab = r_hand
-		if(rgrab.affecting)
-			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
-			success = TRUE
-		spawn(1)
-			qdel(rgrab)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), grab)
 	return success
 
 /*
