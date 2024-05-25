@@ -144,15 +144,14 @@
 	return
 
 /obj/machinery/computer/roguezones/proc/failsafe_shuttle_recall()
-	if(!shuttle_control)
-		return	// Shuttle computer has been destroyed
-	if (!SSmapping.level_trait(shuttle_control.z, ZTRAIT_LEGACY_BELTER_ACTIVE))
+	// if(!shuttle_control)
+		// return	// Shuttle computer has been destroyed
+	if(!GLOB.legacy_belter_shuttle_controller.is_at_away())
 		return	// Usable only when shuttle is away
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return	// Not usable if shuttle is in occupied zone
 	// Okay do it
-	var/datum/shuttle/autodock/ferry/S = SSshuttle.shuttles["Belter"]
-	S.launch(usr)
+	#warn launch it
 
 /obj/item/circuitboard/roguezones
 	name = T_BOARD("asteroid belt scanning computer")

@@ -134,7 +134,8 @@ SUBSYSTEM_DEF(vote)
 					restart = 1
 			if(VOTE_CREW_TRANSFER)
 				if(. == "Initiate Crew Transfer")
-					SStransfer.auto_call_transfer()
+					init_shift_change(null, 1)
+					// SStransfer.auto_call_transfer()
 
 	if(restart)
 		to_chat(world, "World restarting due to vote...")

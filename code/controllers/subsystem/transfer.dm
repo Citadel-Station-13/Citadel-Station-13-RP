@@ -25,16 +25,16 @@ SUBSYSTEM_DEF(transfer)
 		SSvote.autotransfer()
 		timerbuffer = timerbuffer + config_legacy.vote_autotransfer_interval
 
-/datum/controller/subsystem/transfer/proc/auto_call_transfer()
-	var/result = call_transfer()
-	switch(result)
-		if(SS_TRANSFER_INITIATE_SUCCESSFUL)
-		if(SS_TRANSFER_INITIATE_OVERRIDE)
-		if(SS_TRANSFER_INITIATE_COLLIDED)
-		if(SS_TRANSFER_INITIATE_FATAL)
-			to_chat(world, FORMAT_SERVER_FATAL("Unable to call autotransfer due to an unknown error. The round will be terminated in 30 minutes if not interrupted by server staff."))
-			#warn instantiate & call 'end the round'.
+// todo: map finale system
 
-/datum/controller/subsystem/transfer/proc/call_transfer(datum/map_finale/with_finale)
+// /datum/controller/subsystem/transfer/proc/auto_call_transfer()
+// 	var/result = call_transfer()
+// 	switch(result)
+// 		if(SS_TRANSFER_INITIATE_SUCCESSFUL)
+// 		if(SS_TRANSFER_INITIATE_OVERRIDE)
+// 		if(SS_TRANSFER_INITIATE_COLLIDED)
+// 		if(SS_TRANSFER_INITIATE_FATAL)
+// 			to_chat(world, FORMAT_SERVER_FATAL("Unable to call autotransfer due to an unknown error. The round will be terminated in 30 minutes if not interrupted by server staff."))
+// 			#warn instantiate & call 'end the round'.
 
-#warn impl all
+// /datum/controller/subsystem/transfer/proc/call_transfer(datum/map_finale/with_finale)
