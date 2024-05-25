@@ -4497,6 +4497,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "dlw" = (
@@ -8831,6 +8832,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/space)
 "gxE" = (
@@ -8996,6 +8998,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "gGr" = (
@@ -9875,6 +9878,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "hwP" = (
@@ -10292,6 +10296,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/main_map/hallway/deck2)
+"hOc" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait{
+	name = "Maintenance Access"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "hOw" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
@@ -10351,6 +10362,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "hRe" = (
@@ -10731,6 +10743,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
+"ihQ" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "ihT" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -11003,6 +11022,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "ish" = (
@@ -11801,6 +11821,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/quartermaster/warehouse)
 "iZR" = (
@@ -11859,6 +11880,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/port)
 "jcJ" = (
@@ -13261,6 +13283,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward)
+"kcb" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/main_map/hallway/deck2)
 "kcD" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -13481,6 +13507,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "kjN" = (
@@ -16182,6 +16209,13 @@
 "mnn" = (
 /turf/simulated/wall,
 /area/maintenance/tool_storage)
+"mnr" = (
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "mnS" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -18683,6 +18717,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/quartermaster/warehouse)
 "odi" = (
@@ -19224,6 +19259,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "oyG" = (
@@ -19686,6 +19722,7 @@
 /area/medical/medbay2)
 "oNM" = (
 /obj/structure/railing,
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/hallway/deck2)
 "oOf" = (
@@ -20487,6 +20524,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "pqW" = (
@@ -21494,6 +21532,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_two)
+"qgU" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "qhm" = (
 /obj/structure/ladder,
 /turf/simulated/floor/plating,
@@ -21821,6 +21862,10 @@
 "qxa" = (
 /turf/simulated/open,
 /area/ai/foyer)
+"qxp" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "qxB" = (
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/spline/plain{
@@ -23059,6 +23104,12 @@
 "rui" = (
 /turf/simulated/floor/wood,
 /area/medical/patient_wing)
+"ruM" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "ruP" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -23127,6 +23178,9 @@
 "rxM" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "MEDICAL"
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
@@ -23564,6 +23618,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/port)
 "rOd" = (
@@ -23845,6 +23900,7 @@
 /area/crew_quarters/pool/changing_room)
 "rZB" = (
 /obj/structure/railing,
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "sae" = (
@@ -24088,8 +24144,7 @@
 "smm" = (
 /obj/structure/railing,
 /obj/machinery/light/small{
-	dir = 1;
-	pixel_x = -2
+	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379
@@ -25688,6 +25743,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/hallway/deck2)
 "tuY" = (
@@ -25753,6 +25809,7 @@
 /obj/machinery/camera/network/cargo{
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/quartermaster/warehouse)
 "txB" = (
@@ -26620,7 +26677,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "ujw" = (
 /obj/effect/floor_decal/borderfloor{
@@ -26935,6 +26993,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/space)
 "uvV" = (
@@ -26962,8 +27021,7 @@
 "uwS" = (
 /obj/structure/railing,
 /obj/machinery/light/small{
-	dir = 1;
-	pixel_x = -2
+	dir = 1
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -27468,6 +27526,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/hallway/deck2)
 "uOu" = (
@@ -30455,6 +30514,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/bridge/hop_office)
+"wRz" = (
+/obj/structure/closet/firecloset,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "wRF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -30732,10 +30798,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/medical)
-"xce" = (
-/obj/machinery/door/airlock/maintenance/rnd,
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_two/aft/starboard)
 "xcp" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -31404,6 +31466,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "xAn" = (
@@ -31470,6 +31533,12 @@
 "xCl" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_two/aft/starboard)
+"xCw" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_two/aft/starboard)
@@ -31808,6 +31877,12 @@
 	},
 /turf/simulated/open,
 /area/quartermaster/hallway)
+"xRQ" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_two/aft/starboard)
 "xRU" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -38130,8 +38205,8 @@ htd
 nby
 kbE
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -38324,8 +38399,8 @@ htd
 tHq
 tHq
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -38518,8 +38593,8 @@ ugP
 oSI
 oSI
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -38712,8 +38787,8 @@ htd
 nby
 kbE
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -38906,8 +38981,8 @@ htd
 tHq
 tHq
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -39085,8 +39160,8 @@ nbh
 nbh
 nbh
 rff
-shT
-shT
+wkd
+xSD
 bvd
 bvd
 bNB
@@ -39100,8 +39175,8 @@ ugP
 oSI
 oSI
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -39279,8 +39354,8 @@ nbh
 nbh
 nbh
 rff
-shT
-shT
+hyW
+stV
 cCP
 wxB
 wxB
@@ -39294,8 +39369,8 @@ htd
 nby
 kbE
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 sBk
 vKm
@@ -39473,8 +39548,8 @@ nbh
 nbh
 nbh
 rff
-shT
-shT
+hyW
+stV
 smF
 mQJ
 wxB
@@ -39488,8 +39563,8 @@ htd
 tHq
 tHq
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -39667,8 +39742,8 @@ nbh
 nbh
 nbh
 rff
-shT
-shT
+hyW
+stV
 bvd
 vng
 wxB
@@ -39682,8 +39757,8 @@ lgF
 pTm
 pTm
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -39861,8 +39936,8 @@ sYV
 jkA
 jkA
 jkA
-shT
-shT
+hyW
+stV
 bvd
 bvd
 rog
@@ -39876,8 +39951,8 @@ fPT
 fPT
 fPT
 sGD
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -40055,9 +40130,9 @@ lGM
 jkA
 rLB
 jkA
-hwK
-shT
-shT
+mnr
+ruM
+xSD
 bvd
 sNL
 wRd
@@ -40070,8 +40145,8 @@ fPT
 fPT
 qyN
 bvd
-shT
-shT
+qxp
+qxp
 hfU
 vKm
 vKm
@@ -40249,9 +40324,9 @@ iDq
 jkA
 lue
 jkA
-ovL
-shT
-shT
+wRz
+qgU
+stV
 bvd
 pDC
 mAe
@@ -40264,8 +40339,8 @@ qyN
 qyN
 qyN
 bvd
-shT
-shT
+qxp
+qxp
 tIM
 vKm
 vKm
@@ -40443,9 +40518,9 @@ lue
 rpI
 sJz
 tHF
-shT
-shT
-shT
+xCl
+xCw
+xRQ
 bvd
 bvd
 bZe
@@ -40458,8 +40533,8 @@ bvd
 bvd
 bvd
 bvd
-shT
-shT
+qxp
+qxp
 tIM
 vKm
 vKm
@@ -40639,21 +40714,21 @@ jkA
 jkA
 pXJ
 jlk
-shT
-shT
-shT
+qxp
+qxp
+qxp
 kjL
-shT
-rnV
-shT
-shT
-shT
-shT
-shT
-shT
-shT
-shT
-shT
+qxp
+hOc
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
 tIM
 vKm
 vKm
@@ -40834,20 +40909,20 @@ aJt
 wHw
 xAg
 hQA
-oON
-oON
+ihQ
+ihQ
 pqj
-shT
-xce
-shT
-shT
-shT
-shT
-shT
-shT
-shT
-shT
-shT
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
+qxp
 tIM
 vKm
 vKm
@@ -47601,7 +47676,7 @@ oNM
 lbI
 lbI
 tuc
-vQk
+kcb
 mnn
 aEw
 vFV
@@ -47795,7 +47870,7 @@ oNM
 lbI
 lbI
 tuc
-vQk
+kcb
 mnn
 pFe
 tQt
@@ -47989,7 +48064,7 @@ oNM
 lbI
 lbI
 tuc
-vQk
+kcb
 mnn
 uXn
 pFe

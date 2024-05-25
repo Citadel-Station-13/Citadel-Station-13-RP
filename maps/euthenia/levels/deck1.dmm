@@ -5537,6 +5537,14 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/bridge/hallway)
+"gcO" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_one)
 "gcX" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -5940,6 +5948,13 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/security_lockerroom)
+"gsJ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_one)
 "gtn" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/traumainjectors,
@@ -8154,6 +8169,7 @@
 	dir = 1
 	},
 /obj/structure/railing,
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_one)
 "iZB" = (
@@ -14128,6 +14144,7 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 8
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/main_map/maintenance/deck_one)
 "qkD" = (
@@ -16165,6 +16182,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
+"sZR" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_one)
 "sZY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -20225,6 +20249,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
+"xjO" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_one)
 "xkQ" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
@@ -36296,14 +36327,14 @@ dhS
 dhS
 xCO
 bSb
-rfm
-rFf
-rFf
+gsJ
+sZR
+sZR
 qkx
-rFf
-rFf
-rFf
-rFf
+sZR
+sZR
+sZR
+sZR
 heZ
 qci
 dzd
@@ -36490,7 +36521,7 @@ ckq
 dhS
 sks
 xCV
-rtf
+gcO
 pzf
 pzf
 pzf
@@ -36684,14 +36715,14 @@ axU
 dhS
 wMn
 xCV
-rtf
+gcO
 pzf
 kQJ
 xHN
 xHN
 xHN
 xHN
-xHN
+xjO
 heZ
 jwH
 jwH
@@ -36878,7 +36909,7 @@ ckq
 dhS
 sks
 xCV
-rtf
+gcO
 pzf
 rfm
 fOY
@@ -37072,7 +37103,7 @@ hDc
 hDc
 sks
 xCV
-rtf
+gcO
 pzf
 rfm
 fOY
@@ -37266,7 +37297,7 @@ uig
 hDc
 sks
 xCV
-rtf
+gcO
 pzf
 rfm
 fOY
