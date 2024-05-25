@@ -157,7 +157,7 @@
 		direction = shuttle.anchor.dir
 	// abort existing transit
 	if(is_in_transit())
-		abort_transit()
+		abort_transit(TRUE)
 	// obtain exclusive lock on dock
 	if(dock.inbound)
 		return FALSE
@@ -220,6 +220,7 @@
 		for(var/datum/callback/callback in transit_finish_callbacks)
 			callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_SUCCESS)
 
+	on_transit_success(transit_target_dock)
 	cleanup_transit()
 
 /**
@@ -227,11 +228,12 @@
  *
  * **we will be orphaned in transit space upon this call.**
  */
-/datum/shuttle_controller/proc/abort_transit()
+/datum/shuttle_controller/proc/abort_transit(redirected)
 	if(!is_in_transit())
 		return FALSE
 	for(var/datum/callback/callback in transit_finish_callbacks)
 		callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_ABORTED)
+	on_transit_abort(transit_target_dock, redirected)
 	cleanup_transit()
 	return TRUE
 
@@ -267,6 +269,25 @@
 	if(isnull(transit_timer_id))
 		return
 	return transit_arrival_time - world.time
+
+/**
+ * called on transit fail / abort
+ *
+ * @params
+ * * dock - the dock we were going to
+ * * redirected - this is from us getting another transit_towards_dock while transiting
+ */
+/datum/shuttle_controller/proc/on_transit_abort(obj/shuttle_dock/dock, redirected)
+	return
+
+/**
+ * called on transit success
+ *
+ * @params
+ * * dock - the dock we were going to
+ */
+/datum/shuttle_controller/proc/on_transit_success(obj/shuttle_dock/dock)
+	return
 
 //* Interface *//
 

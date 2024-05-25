@@ -52,5 +52,23 @@
 /datum/shuttle_controller/ferry/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 
-
 #warn impl all
+
+/datum/shuttle_controller/ferry/on_transit_success(obj/shuttle_dock/dock)
+	. = ..()
+	if(dock.dock_id == dock_home_id)
+		on_transit_to_home()
+	else if(dock.dock_id == dock_away_id)
+		on_transit_to_away()
+
+/**
+ * only called if we're doing a default, non-manual docking with home dock!
+ */
+/datum/shuttle_controller/ferry/proc/on_transit_to_home()
+	return
+
+/**
+ * only called if we're doing a default, non-manual docking with away dock!
+ */
+/datum/shuttle_controller/ferry/proc/on_transit_to_away()
+	return
