@@ -67,6 +67,8 @@
 	var/list/datum/callback/transit_finish_callbacks
 	/// transit visuals
 	var/list/obj/effect/temporary_effect/shuttle_landing/transit_warning_visuals
+	/// default transit time
+	var/transit_time_default = 10 SECONDS
 
 	//* UI
 	/// tgui interface to load
@@ -138,6 +140,12 @@
 //* Docking - Transit *//
 
 /**
+ * default transit time for a dock
+ */
+/datum/shuttle_controller/proc/default_transit_time_for_dock(obj/shuttle_dock/dock)
+	return transit_time_default
+
+/**
  * start transiting towards a specific dock
  *
  * we will be immediately jumped into transit space on this call!
@@ -152,11 +160,13 @@
  *
  * @return TRUE / FALSE on success / failure
  */
-/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, time, obj/shuttle_port/align_with_port, centered, direction, list/datum/callback/on_transit_callbacks)
+/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, time = default_transit_time_for_dock(dock), obj/shuttle_port/align_with_port, centered, direction, list/datum/callback/on_transit_callbacks)
 	if(isnull(direction))
 		direction = shuttle.anchor.dir
 	// abort existing transit
+	var/redirected = FALSE
 	if(is_in_transit())
+		redirected = TRUE
 		abort_transit(TRUE)
 	// obtain exclusive lock on dock
 	if(dock.inbound)
@@ -180,6 +190,7 @@
 	// register timers
 	transit_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_transit)), time, TIMER_STOPPABLE)
 	transit_visual_timer_id = addtimer(CALLBACK(src, PROC_REF(make_transit_warning_visuals)), max(0, time - 4.9 SECONDS), TIMER_STOPPABLE)
+	on_transit_begin(transit_target_dock, redirected)
 	return TRUE
 
 /**
@@ -269,6 +280,16 @@
 	if(isnull(transit_timer_id))
 		return
 	return transit_arrival_time - world.time
+
+/**
+ * called on transit begint
+ *
+ * @params
+ * * dock - the dock we were going to
+ * * redirected - this is from us getting another transit_towards_dock while transiting
+ */
+/datum/shuttle_controller/proc/on_transit_begin(obj/shuttle_dock/dock, redirected)
+	return
 
 /**
  * called on transit fail / abort
