@@ -329,7 +329,7 @@
 	if(istype(resolved, /datum/sprite_accessory/tail) && variation == SPRITE_ACCESSORY_VARIATION_WAGGING)
 		var/datum/sprite_accessory/tail/tail = resolved
 		if(tail.ani_state)
-			return TRUE
+			return SPRITE_ACCESSORY_VARIATION_WAGGING
 	return (resolved.variations[variation])? variation : null
 
 //! old code below
