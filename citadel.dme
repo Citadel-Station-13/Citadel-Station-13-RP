@@ -304,6 +304,7 @@
 #include "code\__DEFINES\research\xenoarcheaology.dm"
 #include "code\__DEFINES\rigs\rig.dm"
 #include "code\__DEFINES\shuttles\control.dm"
+#include "code\__DEFINES\shuttles\controller.dm"
 #include "code\__DEFINES\shuttles\docking.dm"
 #include "code\__DEFINES\sound\alias.dm"
 #include "code\__DEFINES\sound\ambience.dm"

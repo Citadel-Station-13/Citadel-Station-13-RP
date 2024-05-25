@@ -63,7 +63,8 @@
 	var/transit_timer_id
 	/// timerid for making warning bubbles
 	var/transit_visual_timer_id
-	#warn transit_failure_callback
+	/// callbacks for when transit is done: called with (controller: src, target: transit_target_dock, status: SHUTTLE_TRANSIT_STATUS_*)
+	var/list/datum/callback/transit_finish_callbacks
 	/// transit visuals
 	var/list/obj/effect/temporary_effect/shuttle_landing/transit_warning_visuals
 
@@ -147,10 +148,11 @@
  * * align_with_port - the port to align with; overrides 'centered'
  * * centered - should we be centered on the dock's bounding box? if not, we move our anchor onto the dock directly.
  * * direction - the direction to use for centered landing.
+ * * on_transit_callbacks - a callback or list of callbacks to register; if this proc fails they will NOT be called!
  *
  * @return TRUE / FALSE on success / failure
  */
-/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, time, obj/shuttle_port/align_with_port, centered, direction)
+/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, time, obj/shuttle_port/align_with_port, centered, direction, list/datum/callback/on_transit_callbacks)
 	if(isnull(direction))
 		direction = shuttle.anchor.dir
 	// abort existing transit
@@ -167,9 +169,26 @@
 	transit_target_centered_mode = centered
 	transit_target_centered_direction = direction
 	transit_target_port = align_with_port
+
+	if(islist(on_transit_callbacks))
+	else if(!isnull(on_transit_callbacks))
+		on_transit_callbacks = list(on_transit_callbacks)
+	else
+		on_transit_callbacks = list()
+	transit_finish_callbacks = on_transit_callbacks.Copy()
+
 	// register timers
 	transit_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_transit)), time, TIMER_STOPPABLE)
 	transit_visual_timer_id = addtimer(CALLBACK(src, PROC_REF(make_transit_warning_visuals)), max(0, time - 4.9 SECONDS), TIMER_STOPPABLE)
+	return TRUE
+
+/**
+ * @return FALSE if we're not in transit
+ */
+/datum/shuttle_controller/proc/register_transit_callback(datum/callback/cb)
+	if(!is_in_transit())
+		return FALSE
+	transit_finish_callbacks += cb
 	return TRUE
 
 /datum/shuttle_controller/proc/make_transit_warning_visuals()
@@ -194,6 +213,12 @@
 		centered = transit_target_centered_mode,
 		centered_direction = transit_target_centered_direction,
 	)
+	if(!.)
+		for(var/datum/callback/callback in transit_finish_callbacks)
+			callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_BLOCKED)
+	else
+		for(var/datum/callback/callback in transit_finish_callbacks)
+			callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_SUCCESS)
 
 	cleanup_transit()
 
@@ -203,13 +228,19 @@
  * **we will be orphaned in transit space upon this call.**
  */
 /datum/shuttle_controller/proc/abort_transit()
+	if(!is_in_transit())
+		return FALSE
+	for(var/datum/callback/callback in transit_finish_callbacks)
+		callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_ABORTED)
 	cleanup_transit()
+	return TRUE
 
 /datum/shuttle_controller/proc/cleanup_transit()
 	transit_target_dock = null
 	transit_target_centered_mode = null
 	transit_target_centered_direction = null
 	transit_target_port = null
+	transit_finish_callbacks = null
 	if(transit_timer_id)
 		deltimer(transit_timer_id)
 	if(transit_visual_timer_id)
