@@ -33,7 +33,6 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
                   used in the abstraction of limb sprite from limb definition.
     - /sprite_accessories - unconverted sprite accessories
     - /sprite_accessory - modern sprite accessory system
-
   - /modules - used for specific departments / content packs / logical bundles
     - /{modulename} - the examples before are just that, examples. some modules will require different styles of icon organization.
       - /items - items
@@ -56,3 +55,5 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /rendering - low level rendering things like clickcatcher
   - /structures - used for sprites for general, non-module structures. use subdirectories if more than one .dmi is needed, or for closely related structures.
   - /system - used for internal fuctions, like get_flat_icon and similar.
+  - /turf - not just /turf, but /turf, and /area, and any other 'tiled map visuals' used to render the world (or render the map in an editor)
+    - /area - area visuals. these can either be debug, map visuals, or 'real' effects overlaid by /area
