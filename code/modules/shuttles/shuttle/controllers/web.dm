@@ -21,11 +21,13 @@
 	if(ispath(map) || istext(map))
 		map = SSshuttle.fetch_or_load_shuttle_web_map_type(map)
 
-/datum/shuttle_controller/web/tgui_data()
+/datum/shuttle_controller/web/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/datum/shuttle_controller/web/tgui_static_data()
+
+/datum/shuttle_controller/web/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+
 
 
 #warn impl all

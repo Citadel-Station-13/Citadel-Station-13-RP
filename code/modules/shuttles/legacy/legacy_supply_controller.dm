@@ -21,8 +21,6 @@ GLOBAL_DATUM(legacy_cargo_shuttle_controller, /datum/shuttle_controller/ferry/ca
 	. = ..()
 	SSsupply.sell()
 
-#warn impl
-
 /proc/legacy_supply_forbidden_atoms_check(datum/shuttle/shuttle)
 	var/datum/shuttle_controller/ferry/controller = shuttle.controller
 	// allow it if they're not on station; remember station is away.

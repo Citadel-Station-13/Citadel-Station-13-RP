@@ -61,7 +61,7 @@
 
 #warn impl all
 
-/datum/shuttle_controller/feryy/default_transit_time_for_dock(obj/shuttle_dock/dock)
+/datum/shuttle_controller/ferry/default_transit_time_for_dock(obj/shuttle_dock/dock)
 	if(dock.dock_id == dock_home_id)
 		if(!isnull(transit_time_home))
 			return transit_time_home
@@ -73,9 +73,9 @@
 /datum/shuttle_controller/ferry/on_transit_success(obj/shuttle_dock/dock)
 	. = ..()
 	if(dock.dock_id == dock_home_id)
-		on_transit_to_home()
+		on_successful_transit_to_home()
 	else if(dock.dock_id == dock_away_id)
-		on_transit_to_away()
+		on_successful_transit_to_away()
 
 /**
  * only called if we're doing a default, non-manual docking with home dock!
