@@ -92,6 +92,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 
 /datum/atom_hud_provider/proc/add_or_update(atom/A)
 	LAZYINITLIST(A.atom_huds)
+	atoms += A
 	var/image/hud_image = A.atom_huds[type]
 	if(isnull(hud_image))
 		A.atom_huds[type] = hud_image = create_image(A)

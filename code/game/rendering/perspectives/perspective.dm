@@ -290,7 +290,6 @@
 	if(!change)
 		images = list()
 	images |= I
-	change = images.len - change
 	if(images.len != change)
 		for(var/client/C as anything in clients)
 			// |=, not +=, because we don't check dupes.

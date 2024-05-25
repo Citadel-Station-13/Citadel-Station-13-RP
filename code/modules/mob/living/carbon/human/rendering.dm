@@ -316,6 +316,10 @@
 
 /mob/living/carbon/human/get_sprite_accessory_variation(slot)
 	var/datum/sprite_accessory/resolved = get_sprite_accessory(slot)
+	if(istype(resolved, /datum/sprite_accessory/tail) && variation == SPRITE_ACCESSORY_VARIATION_WAGGING)
+		var/datum/sprite_accessory/tail/tail = resolved
+		if(tail.ani_state)
+			return TRUE
 	if(!length(resolved?.variations))
 		return null
 	var/variation
