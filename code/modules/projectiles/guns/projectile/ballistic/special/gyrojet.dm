@@ -35,7 +35,7 @@
 	. = ..()
 	icon_state = "bolt_pistolblack-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
 
-/obj/item/gun/projectile/ballistic/automatic/bolter
+/obj/item/gun/projectile/ballistic/bolter
 	name = "\improper Ballistae bolt rifle"
 	desc = "A boxy rifle clearly designed for larger hands. Uses .75 gyrojet rounds."
 	description_fluff = "The HI-GP mk 8 'Ballistae' is a bulky weapon designed to fire an obscenely robust .75 caliber gyrojet round with an explosive payload. The original design was sourced from Old Earth speculative documentation, and developed to test its efficacy. Although the weapon itself is undeniably powerful, its logistical demands, the recoil of the three-stage ammunition system, and its hefty size make it untenable on the modern battlefield."
@@ -56,11 +56,11 @@
 		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/bolter/update_icon_state()
+/obj/item/gun/projectile/ballistic/bolter/update_icon_state()
 	. = ..()
 	icon_state = "bolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
 
-/obj/item/gun/projectile/ballistic/automatic/bolter/storm
+/obj/item/gun/projectile/ballistic/bolter/storm
 	name = "\improper Onager heavy bolt rifle"
 	desc = "A hulking automatic weapon more fit for a crew serve position than personal use. Uses .75 gyrojet rounds."
 	description_fluff = "The HI-GP mk 2 'Onager' may perhaps be considered the one successful prototype to come out of Hephaestus' reclamatory efforts. Thanks to its large size many of the issues with ease of maintenance were successfully mitigated. However, the expense of replacing parts and the cost of the weapon's exotic ammunition still resulted in the inititative being considered a failure."
@@ -76,6 +76,6 @@
 		list(mode_name="automatic", burst=2, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
-/obj/item/gun/projectile/ballistic/automatic/bolter/storm/update_icon_state()
+/obj/item/gun/projectile/ballistic/bolter/storm/update_icon_state()
 	. = ..()
 	icon_state = "stormbolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "empty"]"

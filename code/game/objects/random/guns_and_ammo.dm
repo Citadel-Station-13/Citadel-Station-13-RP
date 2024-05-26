@@ -51,15 +51,15 @@
 	icon_state = "revolver"
 
 /obj/random/projectile/item_to_spawn()
-	return pick(prob(3);/obj/item/gun/projectile/ballistic/automatic/wt550,
-				prob(3);/obj/item/gun/projectile/ballistic/automatic/wt274,
-				prob(1);/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
-				prob(1);/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
-				prob(1);/obj/item/gun/projectile/ballistic/automatic/tommygun,
-				prob(2);/obj/item/gun/projectile/ballistic/automatic/c20r,
-				prob(2);/obj/item/gun/projectile/ballistic/automatic/sts35,
-				prob(2);/obj/item/gun/projectile/ballistic/automatic/z8,
-				prob(1);/obj/item/gun/projectile/ballistic/automatic/fal,
+	return pick(prob(3);/obj/item/gun/projectile/ballistic/wt550,
+				prob(3);/obj/item/gun/projectile/ballistic/wt274,
+				prob(1);/obj/item/gun/projectile/ballistic/mini_uzi,
+				prob(1);/obj/item/gun/projectile/ballistic/mini_uzi/taj,
+				prob(1);/obj/item/gun/projectile/ballistic/tommygun,
+				prob(2);/obj/item/gun/projectile/ballistic/c20r,
+				prob(2);/obj/item/gun/projectile/ballistic/sts35,
+				prob(2);/obj/item/gun/projectile/ballistic/z8,
+				prob(1);/obj/item/gun/projectile/ballistic/fal,
 				prob(1);/obj/item/gun/projectile/ballistic/colt,
 				prob(1);/obj/item/gun/projectile/ballistic/colt/taj,
 				prob(1);/obj/item/gun/projectile/ballistic/deagle,
@@ -191,36 +191,36 @@
 /obj/random/multiple/gun/projectile/smg/item_to_spawn()
 	return pick(
 			prob(6);list(
-				/obj/item/gun/projectile/ballistic/automatic/wt550,
+				/obj/item/gun/projectile/ballistic/wt550,
 				/obj/item/ammo_magazine/m9mmt,
 				/obj/item/ammo_magazine/m9mmt
 			),
 			prob(6);list(
-				/obj/item/gun/projectile/ballistic/automatic/wt274,
+				/obj/item/gun/projectile/ballistic/wt274,
 				/obj/item/ammo_magazine/m45uzi/wt274,
 				/obj/item/ammo_magazine/m45uzi/wt274
 			),
 			prob(2);list(
-				/obj/item/gun/projectile/ballistic/automatic/mini_uzi,
+				/obj/item/gun/projectile/ballistic/mini_uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi
 			),
 			prob(2);list(
-				/obj/item/gun/projectile/ballistic/automatic/tommygun,
+				/obj/item/gun/projectile/ballistic/tommygun,
 				/obj/item/ammo_magazine/m45tommy,
 				/obj/item/ammo_magazine/m45tommy
 			),
 			prob(4);list(
-				/obj/item/gun/projectile/ballistic/automatic/c20r,
+				/obj/item/gun/projectile/ballistic/c20r,
 				/obj/item/ammo_magazine/m10mm,
 				/obj/item/ammo_magazine/m10mm
 			),
 			prob(2);list(
-				/obj/item/gun/projectile/ballistic/automatic/p90,
+				/obj/item/gun/projectile/ballistic/p90,
 				/obj/item/ammo_magazine/m57x28mmp90
 			),
 			prob(2);list(
-				/obj/item/gun/projectile/ballistic/automatic/mini_uzi/taj,
+				/obj/item/gun/projectile/ballistic/mini_uzi/taj,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi
 			),
@@ -241,12 +241,12 @@
 /obj/random/multiple/gun/projectile/rifle/item_to_spawn()
 	return pick(
 			prob(4);list(
-				/obj/item/gun/projectile/ballistic/automatic/sts35,
+				/obj/item/gun/projectile/ballistic/sts35,
 				/obj/item/ammo_magazine/m556,
 				/obj/item/ammo_magazine/m556
 			),
 			prob(4);list(
-				/obj/item/gun/projectile/ballistic/automatic/z8,
+				/obj/item/gun/projectile/ballistic/z8,
 				/obj/item/ammo_magazine/m762,
 				/obj/item/ammo_magazine/m762
 			),
@@ -261,7 +261,7 @@
 				/obj/item/ammo_magazine/clip/c762
 			),
 			prob(2);list(
-				/obj/item/gun/projectile/ballistic/automatic/bullpup,
+				/obj/item/gun/projectile/ballistic/bullpup,
 				/obj/item/ammo_magazine/m762,
 				/obj/item/ammo_magazine/m762
 			),

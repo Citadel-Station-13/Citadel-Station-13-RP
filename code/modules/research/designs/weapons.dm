@@ -71,14 +71,14 @@
 	desc = "An advanced 9mm SMG with a reflective laser optic."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
-	build_path = /obj/item/gun/projectile/ballistic/automatic/advanced_smg
+	build_path = /obj/item/gun/projectile/ballistic/advanced_smg
 
 /datum/design/science/weapon/ballistic/p90
 	id = "p90"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
-	build_path = /obj/item/gun/projectile/ballistic/automatic/p90
+	build_path = /obj/item/gun/projectile/ballistic/p90
 
 /datum/design/science/weapon/ballistic/ammo
 	abstract_type = /datum/design/science/weapon/ballistic/ammo
