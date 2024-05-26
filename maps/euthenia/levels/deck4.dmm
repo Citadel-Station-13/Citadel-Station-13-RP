@@ -11007,7 +11007,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/critical)
 "Ql" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/airless,
 /area/main_map/maintenance/deck_four/starboard)
 "Qm" = (
