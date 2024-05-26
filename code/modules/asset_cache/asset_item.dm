@@ -24,13 +24,8 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	/// was restored from cache
 	var/restored_from_cache = FALSE
 
-	/// Used by the cdn system to keep legacy css assets with their parent
-	/// css file. (css files resolve urls relative to the css file, so the
-	/// legacy system can't be used if the css file itself could go out over
-	/// the cdn)
-	var/namespace = null
-	/// True if this is the parent css or html file for an asset's namespace
-	var/namespace_parent = FALSE
+	/// if set, we are shoved in a namespace of this id
+	var/namespace_id
 
 /datum/asset_item/New(name, file)
 	// set name
@@ -45,4 +40,4 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	var/extstart = findlasttext(name, ".")
 	if (extstart)
 		ext = "[copytext(name, extstart+1)]"
-	
+

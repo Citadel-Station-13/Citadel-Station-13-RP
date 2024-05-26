@@ -51,7 +51,7 @@
 	/// this means everything in this pack can access each other by a direct, relative link
 	/// and doesn't need to 'find' where the others are through some convoluted process
 	///
-	/// * this does incur a cost as everything being sent now has to be md5'd.
+	/// * this does incur a cost as everything being sent now has to be md5'd with each other.
 	var/do_not_separate = FALSE
 
 	/// allow caching cross-rounds, if the server is under a singular commit
