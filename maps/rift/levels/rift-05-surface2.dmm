@@ -307,11 +307,12 @@
 "aoh" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Research Lobby";
-	req_one_access = list(29,47)
+	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "aok" = (
@@ -2288,7 +2289,7 @@
 "bno" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "RnD Lab";
-	req_one_access = list(7)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -2305,6 +2306,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/science/fabrication,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "bns" = (
@@ -4032,11 +4034,12 @@
 "cxg" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Research Lobby";
-	req_one_access = list(29,47)
+	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "cxu" = (
@@ -14713,11 +14716,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "jsz" = (
-/obj/machinery/door/airlock/maintenance/rnd,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "jsK" = (

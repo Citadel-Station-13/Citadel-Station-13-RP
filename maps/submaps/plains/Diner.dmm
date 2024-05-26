@@ -346,7 +346,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "bf" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/lino,
 /area/submap/Diner)
 "bg" = (
