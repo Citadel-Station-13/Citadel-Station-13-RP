@@ -3,7 +3,7 @@
 	desc = "To stop that awful noise."
 	icon_state = "muzzle"
 	body_cover_flags = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.90
 	voicechange = 1
 
@@ -13,7 +13,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "tape_cross"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/clothing/mask/muzzle/Initialize(mapload)
 	. = ..()
@@ -22,7 +22,7 @@
 
 // Clumsy folks can't take the mask off themselves.
 /obj/item/clothing/mask/muzzle/attack_hand(mob/user, list/params)
-	if(user.item_by_slot(SLOT_ID_MASK) == src && !user.IsAdvancedToolUser())
+	if(user.item_by_slot_id(SLOT_ID_MASK) == src && !user.IsAdvancedToolUser())
 		return 0
 	..()
 /obj/item/clothing/mask/surgical
@@ -30,12 +30,13 @@
 	desc = "A sterile mask designed to help prevent the spread of diseases."
 	icon_state = "sterile"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sterile", SLOT_ID_LEFT_HAND = "sterile")
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/mask/surgical
+	materials_base = list(MAT_PLASTIC = 100, MAT_WOOD = 20)
 	var/hanging = 0
 
 /obj/item/clothing/mask/surgical/proc/adjust_mask(mob_user)
@@ -56,7 +57,7 @@
 		update_worn_icon()
 
 /obj/item/clothing/mask/surgical/verb/toggle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust mask"
 	set src in usr
 
@@ -67,7 +68,7 @@
 	desc = "Warning: moustache is fake."
 	icon_state = "fake-moustache"
 	inv_hide_flags = HIDEFACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_cover_flags = 0
 
 /obj/item/clothing/mask/snorkel
@@ -85,7 +86,7 @@
 	icon_state = "blueneckscarf"
 	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/redscarf
@@ -94,7 +95,7 @@
 	icon_state = "redwhite_scarf"
 	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/greenscarf
@@ -103,7 +104,7 @@
 	icon_state = "green_scarf"
 	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/ninjascarf
@@ -112,7 +113,7 @@
 	icon_state = "ninja_scarf"
 	body_cover_flags = FACE
 	clothing_flags = FLEXIBLEMATERIAL
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.90
 	siemens_coefficient = 0
 
@@ -121,28 +122,28 @@
 	name = "nock mask (blue, scarab)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_scarab"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/nock_demon
 	name = "nock mask (purple, demon)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_demon"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/nock_life
 	name = "nock mask (green, life)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_life"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/nock_ornate
 	name = "nock mask (red, ornate)"
 	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
 	icon_state = "nock_ornate"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	body_cover_flags = HEAD|FACE
 
 /obj/item/clothing/mask/horsehead/Initialize(mapload)
@@ -191,7 +192,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 	clothing_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_cover_flags = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 
@@ -203,7 +204,7 @@
 /obj/item/clothing/mask/bandana
 	name = "black bandana"
 	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	inv_hide_flags = HIDEFACE
 	slot_flags = SLOT_MASK|SLOT_HEAD
 	body_cover_flags = FACE

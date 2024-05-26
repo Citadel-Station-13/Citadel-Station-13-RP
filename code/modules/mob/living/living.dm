@@ -46,7 +46,7 @@
 //mob verbs are faster than object verbs. See mob/verb/examine.
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
 	set name = "Pull"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(AM.Adjacent(src))
 		start_pulling(AM)
@@ -381,55 +381,18 @@ default behaviour is:
 		adjustToxLoss(amount)
 
 /mob/proc/get_contents()
-
-
-//Recursive function to find everything a mob is holding.
-/mob/living/get_contents(var/obj/item/storage/Storage = null)
-	var/list/L = list()
-
-	if(Storage) //If it called itself
-		L += Storage.return_inv()
-
-		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
-		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
-		//	L += get_contents(S)
-
-		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/storage))
-				L += get_contents(G.gift)
-
-		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
-
-	else
-
-		L += src.contents
-		for(var/obj/item/storage/S in src.contents)	//Check for storage items
-			L += get_contents(S)
-
-		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/storage))
-				L += get_contents(G.gift)
-
-		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
-
-/mob/living/proc/check_contents_for(A)
-	var/list/L = src.get_contents()
-
-	for(var/obj/B in L)
-		if(B.type == A)
-			return 1
-	return 0
-
+	. = list()
+	var/list/obj/processing = get_equipped_items(TRUE, TRUE)
+	var/i = 1
+	var/safety = 100000
+	while(i <= length(processing))
+		// safety check becuase unlike [contents], byond doens't isn't correctness here.
+		if(!--safety)
+			CRASH("RED ALERT RED ALERT SOMEONE FUCKED UP")
+		var/obj/iterating = processing[i++]
+		. += iterating
+		var/list/returned = iterating.return_inventory()
+		. += returned
 
 /mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
@@ -458,12 +421,9 @@ default behaviour is:
 /mob/living/proc/restore_all_organs()
 	return
 
-/mob/living/proc/UpdateDamageIcon()
-	return
-
 /mob/living/proc/Examine_OOC()
 	set name = "Examine Meta-Info (OOC)"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set src in view()
 
 	// Making it so SSD people have prefs with fallback to original style.

@@ -142,7 +142,7 @@
 	desc = "An used voucher that could be used to be redeemed for something at the cargo console"
 	icon = 'icons/obj/vouchers.dmi'
 	icon_state = "engineering_voucher_used"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/datum/supply_pack/redeemable_for = null
 
 /obj/item/engineering_voucher/proc/redeem(var/mob/user)
@@ -231,5 +231,5 @@
 	desc = "???"
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "circuit"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_PRECURSOR = 1)

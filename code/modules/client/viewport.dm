@@ -410,7 +410,7 @@ GLOBAL_VAR(lock_client_view_y)
  */
 /client/verb/user_fit_viewport()
 	set name = "Fit Viewport"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Fit the width of the map window to match the viewport"
 
 	request_viewport_fit()

@@ -8,7 +8,7 @@
 	from rim to rim. The first to notice this font of power were those who \
 	were already the faithful devotees of esoteric religions. The rise of Blood \
 	Cultists in service to the Geometer quickly became an intergalactic incident. \
-	Although NanoTrasen and other entities have risen to combat these foes, a \
+	Although Nanotrasen and other entities have risen to combat these foes, a \
 	vast array of Hermetic Orders now command frightening power."
 	value = CATALOGUER_REWARD_TRIVIAL
 	unlocked_by_any = list(/datum/category_item/catalogue/fauna/cultist)

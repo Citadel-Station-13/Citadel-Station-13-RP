@@ -5,7 +5,7 @@
 	item_state = "arifle"
 	wielded_item_state = "arifle-wielded"
 	item_state = null
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	caliber = "5.56mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)

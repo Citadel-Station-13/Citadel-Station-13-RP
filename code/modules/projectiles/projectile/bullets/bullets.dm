@@ -496,6 +496,17 @@
 	damage = 15
 	range = 6
 
+/obj/projectile/bullet/incendiary/caseless
+	name = "caseless phoron slug"
+	icon_state = "bullet_alt"
+	damage = 50
+	damage_type = BRUTE
+	incendiary = 1
+	flammability = 4
+	armor_penetration = 35
+
+
+
 /* Practice rounds and blanks */
 
 /obj/projectile/bullet/practice

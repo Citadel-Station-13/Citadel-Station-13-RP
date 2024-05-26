@@ -5,7 +5,7 @@
 	item_state = "pistol"
 	caliber = "5.7x28mm"
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m57x28mm/fiveseven
 	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/fiveseven)

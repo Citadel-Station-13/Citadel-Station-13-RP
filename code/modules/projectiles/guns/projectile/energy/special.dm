@@ -8,7 +8,7 @@
 	item_icons = null
 	icon_state = "staff"
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	charge_cost = 480
 	projectile_type = /obj/projectile/change
 	origin_tech = null
@@ -81,7 +81,7 @@
 /obj/item/gun/projectile/energy/maghowitzer
 	name = "portable MHD howitzer"
 	desc = "A massive weapon designed to destroy fortifications with a stream of molten tungsten."
-	description_fluff = "A weapon designed by joint cooperation of NanoTrasen, Hephaestus, and SCG scientists. Everything else is red tape and black highlighters."
+	description_fluff = "A weapon designed by joint cooperation of Nanotrasen, Hephaestus, and SCG scientists. Everything else is red tape and black highlighters."
 	description_info = "This weapon requires a wind-up period before being able to fire. Clicking on a target will create a beam between you and its turf, starting the timer. Upon completion, it will fire at the designated location."
 	icon_state = "mhdhowitzer"
 	item_state = "mhdhowitzer"
@@ -216,7 +216,7 @@
 	cell_initial = /obj/item/cell/device/weapon
 	battery_lock = 1
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	one_handed_penalty = 60

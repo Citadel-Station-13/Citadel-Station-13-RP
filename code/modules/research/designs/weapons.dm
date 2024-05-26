@@ -71,14 +71,14 @@
 	desc = "An advanced 9mm SMG with a reflective laser optic."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 8000, MAT_SILVER = 2000, MAT_DIAMOND = 1000)
-	build_path = /obj/item/gun/ballistic/automatic/advanced_smg
+	build_path = /obj/item/gun/projectile/ballistic/automatic/advanced_smg
 
 /datum/design/science/weapon/ballistic/p90
 	id = "p90"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 5000, MAT_PLASTIC = 5000, MAT_URANIUM = 1000)
-	build_path = /obj/item/gun/ballistic/automatic/p90
+	build_path = /obj/item/gun/projectile/ballistic/automatic/p90
 
 /datum/design/science/weapon/ballistic/ammo
 	abstract_type = /datum/design/science/weapon/ballistic/ammo
@@ -280,7 +280,7 @@
 	id = "dartgun_r"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_BIO = 4, TECH_MAGNET = 3, TECH_ILLEGAL = 1)
 	materials_base = list(MAT_STEEL = 5000, MAT_GOLD = 5000, MAT_SILVER = 2500, MAT_GLASS = 750)
-	build_path = /obj/item/gun/ballistic/dartgun/research
+	build_path = /obj/item/gun/projectile/ballistic/dartgun/research
 
 /datum/design/science/weapon/chemsprayer
 	desc = "An advanced chem spraying device."
@@ -412,7 +412,7 @@
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
-	build_path = /obj/item/gun/ballistic/cell_loaded/combat/prototype
+	build_path = /obj/item/gun/projectile/ballistic/cell_loaded/combat/prototype
 
 /datum/design/science/weapon/cell_based/prototype_nsfw_mag
 	design_name = "combat cell magazine"

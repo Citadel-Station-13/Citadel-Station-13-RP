@@ -3,7 +3,7 @@
 	desc = "Some sort of primitive projectile weapon. Used to fire arrows."
 	icon_state = "bow"
 	item_state = "bow"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 5
 	load_method = SINGLE_CASING
 	caliber = "arrow"

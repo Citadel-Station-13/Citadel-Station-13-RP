@@ -90,7 +90,7 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-// Used at centcomm for the elevator
+// Used at centcom for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/arrivals
 

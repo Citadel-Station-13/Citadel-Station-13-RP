@@ -21,7 +21,7 @@
 #warn pulse/rifle
 /obj/item/gun/projectile/energy/pulse_rifle
 	name = "\improper pulse rifle"
-	desc = "The absolute pinnacle of NanoTrasen's beam weaponry, the NT-PR2 pulse rifle uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
+	desc = "The absolute pinnacle of Nanotrasen's beam weaponry, the NT-PR2 pulse rifle uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
 	icon = 'icons/modules/projectiles/guns/energy/pulse.dmi'
 	icon_state = "rifle"
 	worn_state = "rifle"

@@ -2,7 +2,7 @@
 
 /obj/item/gun/projectile/ballistic/advanced_smg/foam
 	name = "toy submachine gun"
-	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from NanoTrasen."
+	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from Nanotrasen."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
 	caliber = "foamdart"
@@ -84,7 +84,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_pistol"
 	item_state = null
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	caliber = "foamdart"
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
@@ -102,7 +102,7 @@
 /obj/item/gun/projectile/ballistic/pistol/foam/magnum
 	name = "toy automag"
 	icon_state = "toy_pistol_orange"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/foam
 	name = "toy shotgun"

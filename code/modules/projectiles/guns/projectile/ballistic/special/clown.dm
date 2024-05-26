@@ -5,7 +5,7 @@
 	icon_state = "clownrifle"
 	item_state = "clownrifle"
 	wielded_item_state = "clownrifle_wielded"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	caliber = "organic"
@@ -38,7 +38,7 @@
 	item_state = "revolver"
 	caliber = "organic"
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)

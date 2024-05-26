@@ -1,5 +1,16 @@
 // For general use
 
+/obj/item/gun/projectile/ballistic/automatic/battlerifle/update_icon()
+	. = ..()
+	update_held_icon()
+
+/obj/item/gun/projectile/ballistic/automatic/battlerifle/update_icon_state()
+	. = ..()
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m95))
+		icon_state = "battlerifle"
+	else
+		icon_state = (ammo_magazine)? "battlerifle" : "battlerifle_empty"
+
 // For general use
 
 // For general use
@@ -12,7 +23,7 @@
 	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/obj/gun/energy.dmi', SLOT_ID_LEFT_HAND = 'icons/obj/gun/energy.dmi') // WORK YOU FUCKING CUNT PIECE OF SHIT BASTARD STUPID BITCH ITEM ICON AAAAHHHH
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ge_pistol_r", SLOT_ID_LEFT_HAND = "ge_pistol_l")
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000)
@@ -47,7 +58,7 @@
 	desc = "The FS PDW E \"Martin\" is small holdout e-gun. Don't miss!"
 	icon_state = "PDW"
 	item_state = "gun"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	projectile_type = /obj/projectile/beam/stun
 	charge_cost = 1200
 	charge_meter = 0
@@ -265,7 +276,7 @@
 	fire_sound = 'sound/weapons/laser_holdout_1.wav'
 	phase_power = 100
 
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	charge_cost = 600
 	modifystate = "holdoutkill"
 	firemodes = list(

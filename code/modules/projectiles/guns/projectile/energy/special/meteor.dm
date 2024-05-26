@@ -8,7 +8,7 @@
 	icon_state = "riotgun"
 	item_state = "c20r"
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	regex_this_firemodes = list(/datum/firemode/energy/meteor)
 	cell_initial = /obj/item/cell/potato

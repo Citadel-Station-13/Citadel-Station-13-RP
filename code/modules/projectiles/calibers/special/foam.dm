@@ -64,7 +64,7 @@
 	desc = "A heavy plastic box designed to hold belts of foam darts! Wow!"
 	icon_state = "toy_lmg"
 	materials_base = list(MAT_PLASTIC = 10000)
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ammo_max = 50
 
 /obj/item/ammo_magazine/mfoam/lmg/empty

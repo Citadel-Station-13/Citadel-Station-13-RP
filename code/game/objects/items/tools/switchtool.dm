@@ -12,7 +12,7 @@
 	desc = "A multi-deployable, multi-instrument, finely crafted multi-purpose tool. The envy of engineers everywhere."
 	siemens_coefficient = 1
 	damage_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_switchtool.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_switchtool.dmi')
@@ -134,7 +134,7 @@
 		W.setWelding(FALSE)
 	deployed = null
 	cut_overlays()
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	update_icon()
 	tool_locked = FALSE
 

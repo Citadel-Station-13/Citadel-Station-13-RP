@@ -8,7 +8,7 @@
 	icon_state = "beartrap0"
 	desc = "A mechanically activated leg trap. Low-tech, but reliable. Looks like it could really hurt if you set it off."
 	throw_force = 0
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	materials_base = list(MAT_STEEL = 18750)
 	buckle_restrained_resist_time = 15 SECONDS

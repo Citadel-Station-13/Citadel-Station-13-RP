@@ -322,7 +322,7 @@
 /mob/living/bot/floorbot/explode()
 	turn_off()
 	visible_message("<span class='danger'>\The [src] blows apart!</span>")
-	playsound(src.loc, "sparks", 50, 1)
+	playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/storage/toolbox/mechanical/N = new /obj/item/storage/toolbox/mechanical(Tsec)
@@ -381,9 +381,6 @@
 		to_chat(user, SPAN_NOTICE("They wont fit in as there is already stuff inside."))
 		return
 
-	if(user.s_active)
-		user.s_active.close(user)
-
 	if(T.use(10))
 		var/obj/item/bot_assembly/floorbot/B = new
 		if(istype(src, /obj/item/storage/toolbox/mechanical/))
@@ -417,7 +414,7 @@
 	throw_force = 10
 	throw_speed = 2
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	created_name = "Floorbot"
 	var/toolbox = /obj/item/storage/toolbox
 

@@ -6,10 +6,10 @@
 	name = "laser rifle implant"
 	desc = "A large implant that fits into a subject's arm. It deploys a laser-emitting array by some painful means."
 	icon_state = "augment_laser"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	organ_tag = O_AUG_L_FOREARM
 	parent_organ = BP_L_ARM
-	target_slot = /datum/inventory_slot_meta/abstract/hand/left
+	target_slot = /datum/inventory_slot/abstract/hand/left
 	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED)
 	integrated_object_type = /obj/item/gun/projectile/energy/laser/mounted/augment
 
@@ -20,11 +20,11 @@
 			if(O_AUG_L_FOREARM)
 				organ_tag = O_AUG_R_FOREARM
 				parent_organ = BP_R_ARM
-				target_slot = /datum/inventory_slot_meta/abstract/hand/left
+				target_slot = /datum/inventory_slot/abstract/hand/left
 			if(O_AUG_R_FOREARM)
 				organ_tag = O_AUG_L_FOREARM
 				parent_organ = BP_L_ARM
-				target_slot = /datum/inventory_slot_meta/abstract/hand/right
+				target_slot = /datum/inventory_slot/abstract/hand/right
 		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the lower [parent_organ] mount.</span>")
 		return
 
@@ -40,7 +40,7 @@
 	name = "crossbow implant"
 	desc = "A small implant that fits into a subject's arm. It deploys a dart launching mechanism through the flesh through unknown means."
 	icon_state = "augment_dart"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	integrated_object_type = /obj/item/gun/projectile/energy/crossbow
 
 // Wrist-or-hand-mounted implant
@@ -49,7 +49,7 @@
 	name = "resonant analyzer implant"
 	desc = "An augment that fits neatly into the hand, useful for determining the usefulness of an object for research."
 	icon_state = "augment_box"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	integrated_object_type = /obj/item/portable_scanner
 
 /obj/item/organ/internal/augment/armmounted/hand/attackby(obj/item/I as obj, mob/user as mob)
@@ -58,11 +58,11 @@
 			if(O_AUG_L_HAND)
 				organ_tag = O_AUG_R_HAND
 				parent_organ = BP_R_HAND
-				target_slot = /datum/inventory_slot_meta/abstract/hand/left
+				target_slot = /datum/inventory_slot/abstract/hand/left
 			if(O_AUG_R_HAND)
 				organ_tag = O_AUG_L_HAND
 				parent_organ = BP_L_HAND
-				target_slot = /datum/inventory_slot_meta/abstract/hand/right
+				target_slot = /datum/inventory_slot/abstract/hand/right
 		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the upper [parent_organ] mount.</span>")
 		return
 
@@ -81,7 +81,7 @@
 	desc = "A large implant that fits into a subject's arm. It looks kind of like a skeleton."
 	icon_state = "augment_armframe"
 	organ_tag = O_AUG_R_UPPERARM
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	integrated_object_type = null
 
 /obj/item/organ/internal/augment/armmounted/shoulder/attackby(obj/item/I as obj, mob/user as mob)
@@ -90,11 +90,11 @@
 			if(O_AUG_L_UPPERARM)
 				organ_tag = O_AUG_R_UPPERARM
 				parent_organ = BP_R_ARM
-				target_slot = /datum/inventory_slot_meta/abstract/hand/left
+				target_slot = /datum/inventory_slot/abstract/hand/left
 			if(O_AUG_R_UPPERARM)
 				organ_tag = O_AUG_L_UPPERARM
 				parent_organ = BP_L_ARM
-				target_slot = /datum/inventory_slot_meta/abstract/hand/right
+				target_slot = /datum/inventory_slot/abstract/hand/right
 		to_chat(user, "<span class='notice'>You swap \the [src]'s servos to install neatly into \the upper [parent_organ] mount.</span>")
 		return
 
@@ -129,7 +129,7 @@
 
 	organ_tag = O_AUG_R_UPPERARM
 
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 	integrated_object_type = null
 

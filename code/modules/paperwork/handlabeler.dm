@@ -5,11 +5,14 @@
 	var/label = null
 	var/labels_left = 30
 	var/mode = 0	//off or on.
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/hand_labeler/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+
+/obj/item/hand_labeler/allow_auto_storage_insert(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return ..() && !mode
 
 /obj/item/hand_labeler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))

@@ -23,7 +23,7 @@
 
 /obj/item/gun/projectile/ballistic/revolver/lemat/verb/swap_firingmode()
 	set name = "Swap Firing Mode"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to swap from one method of firing to another."
 
 	var/mob/living/carbon/human/M = usr
@@ -66,7 +66,7 @@
 /obj/item/gun/projectile/ballistic/revolver/lemat/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	chamber_offset = 0
 	visible_message("<span class='warning'>\The [usr] spins the cylinder of \the [src]!</span>", \

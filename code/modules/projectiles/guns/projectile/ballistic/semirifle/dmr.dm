@@ -5,7 +5,7 @@
 	icon_state = "z8-1"
 	base_icon_state = "z8"
 	render_mob_wielded = TRUE
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	regex_this_caliber = /datum/caliber/a7_62mm
 	slot_flags = SLOT_BACK

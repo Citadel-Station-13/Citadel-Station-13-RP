@@ -156,7 +156,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_magazine_drum.dmi'
 	icon_state = "tommy-drum"
 	rendering_system = GUN_RENDERING_DISABLED
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ammo_preload = /obj/item/ammo_casing/a45
 	materials_base = list(MAT_STEEL = 500)
 	ammo_max = 50

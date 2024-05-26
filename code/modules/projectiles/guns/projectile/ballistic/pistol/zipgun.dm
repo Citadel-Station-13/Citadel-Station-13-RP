@@ -35,7 +35,7 @@
 	caliber = initial(ammo.caliber)
 	return ..()
 
-/obj/item/gun/ballistic/pirate/consume_next_projectile(mob/user as mob)
+/obj/item/gun/projectile/ballistic/pirate/consume_next_projectile(mob/user as mob)
 	. = ..()
 	if(.)
 		if(unstable)
@@ -53,13 +53,13 @@
 			handle_click_empty()
 			return
 
-/obj/item/gun/ballistic/pirate/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
+/obj/item/gun/projectile/ballistic/pirate/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
 	. = ..()
 	if(destroyed)
 		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
 		handle_click_empty()
 
-/obj/item/gun/ballistic/pirate/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/pirate/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return

@@ -3,7 +3,7 @@
 	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
 	icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
 	icon_state = "fal"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	regex_this_caliber = /datum/caliber/a7_62mm
 	slot_flags = SLOT_BACK

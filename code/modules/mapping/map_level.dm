@@ -3,13 +3,22 @@
  */
 /datum/map_level
 	/// id - must be globally unique across all possible maps
+	/// if we are New()'d with a map, this is namespaced with that map automatically! you do not need
+	/// to namespace map levels yourself.
+	/// please use 'dashes-as-spacing' to format ids.
 	var/id
+	/// is this a hardcoded level? generally should be 'yes';
+	/// if it is, it's registered in the by-typepath lookup
+	var/hardcoded = FALSE
+
 	/// friendly debug / code name of level
 	var/name
 	/// player visible id for technical displays - randomized if unset
 	var/display_id
 	/// player visible name for non-technical displays - randomized if unset
 	var/display_name
+	/// host /datum/map, if any
+	var/datum/map/parent_map
 	/// traits
 	var/list/traits
 	/// attributes associated key-values
@@ -58,13 +67,65 @@
 	/// load orientation - overridden if loaded as part of a /datum/map
 	var/orientation = SOUTH
 
-	//* Loading
+	//* Loading *//
 	/// are we loaded in
 	var/tmp/loaded = FALSE
 	/// our zlevel once loaded
 	var/tmp/z_index
 
-	//* Tracking
+	//* Persistence *//
+	/// loaded persistence metadata, if any
+	var/datum/map_level_persistence/persistence
+	/// allow persistence?
+	var/persistence_allowed = FALSE
+	/// override level id for persistence so two levels are considered the same
+	/// two levels should **never** be loaded at the same time with the same persistence ID!
+	var/persistence_id
+
+	//* Persistence - Debris *//
+	/// drop n largest zones
+	///
+	/// 0 to disable
+	var/persistent_debris_drop_n_largest = OBJ_PERSIST_DEFAULT_TUNING_DEBRIS_DROP_N_LARGEST
+	/// drop n smallest non-single zones
+	///
+	/// 0 to disable
+	var/persistent_debris_drop_n_smallest = OBJ_PERSIST_DEFAULT_TUNING_DEBRIS_DROP_N_SMALLEST
+	/// drop n single object zones
+	///
+	/// 0 to disable
+	var/persistent_debris_drop_n_single = OBJ_PERSIST_DEFAULT_TUNING_DEBRIS_DROP_N_SINGLE
+	/// % chance per round to drop 'important' persistent debris like graffiti
+	/// we drop them as a zone when we drop.
+	///
+	/// 0 to disable
+	var/persistent_debris_important_drop_chance = OBJ_PERSIST_DEFAULT_TUNING_DEBRIS_IMPORTANT_DROP_CHANCE
+	/// critical mass of important debris count needed in a zone before they're treated
+	/// as regular debris: mostly for grief prevention
+	///
+	/// 0 to disable; will override defaults
+	var/persistent_debris_important_demotion_zone_threshold = OBJ_PERSIST_DEFAULT_TUNING_DEBRIS_IMPORTANT_DEMOTION_ZONE_THRESHOLD
+	/// critical mass of important debris total needed before they're treated
+	/// as regular debris; mostly for grief prevention
+	///
+	/// 0 to disable; will override defaults
+	var/persistent_debris_important_demotion_level_threshold = OBJ_PERSIST_DEFAULT_TUNING_DEBRIS_IMPORTANT_DEMOTION_LEVEL_THRESHOLD
+
+	//* Persistence - Trash *//
+	/// drop n largest meshes of trash
+	var/persistent_trash_drop_n_largest = OBJ_PERSIST_DEFAULT_TUNING_TRASH_DROP_N_LARGEST
+	/// drop n smallest meshes of trash
+	var/persistent_trash_drop_n_smallest = OBJ_PERSIST_DEFAULT_TUNING_TRASH_DROP_N_SMALLEST
+	/// drop n least dense single items of trash
+	var/persistent_trash_drop_n_most_isolated = OBJ_PERSIST_DEFAULT_TUNING_TRASH_DROP_N_MOST_ISOLATED
+	/// drop n most dense single items of trash
+	var/persistent_trash_drop_n_least_isolated = OBJ_PERSIST_DEFAULT_TUNING_TRASH_DROP_N_LEAST_ISOLATED
+	/// mesh heuristic in tiles
+	var/persistent_trash_mesh_heuristic = OBJ_PERSIST_DEFAULT_TUNING_TRASH_MESH_HEURISTIC
+	/// additional mesh heuristic per 1000 objects
+	var/persistent_trash_mesh_heuristic_escalate_per_thousand = OBJ_PERSIST_DEFAULT_TUNING_TRASH_MESH_HEURISTIC_ESCALATE_PER_THOUSAND
+
+	//* Tracking *//
 	var/turfs_rebuild_count = 0
 	var/transitions_rebuild_count = 0
 
@@ -80,7 +141,12 @@
 	var/holomap_legend_x = 96	// x position of the holomap legend for this z
 	var/holomap_legend_y = 96	// y position of the holomap legend for this z
 
-/datum/map_level/New()
+/datum/map_level/New(datum/map/parent_map)
+	src.parent_map = parent_map
+
+	if(!isnull(parent_map))
+		id = "[parent_map.id]-[id]"
+
 	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
 	UNPACK_LINK(link_north)
 	UNPACK_LINK(link_south)
@@ -95,6 +161,7 @@
 	if(loaded)
 		. = QDEL_HINT_LETMELIVE
 		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED LEVEL.")
+	parent_map = null
 	return ..()
 
 /datum/map_level/serialize()
@@ -226,7 +293,7 @@
 		// if both sides are not null, we require agreement between the two
 		return (l1 == l2)? l1 : null
 	switch(dir)
-		#define RESOLVE(X) istype(X, /datum/map_level)? X : SSmapping.keyed_levels[X]
+		#define RESOLVE(X) istype(X, /datum/map_level)? X : (istext(X)? SSmapping.keyed_levels[X] : SSmapping.typed_levels[X])
 		if(NORTH)
 			return RESOLVE(link_north)
 		if(SOUTH)

@@ -7,7 +7,7 @@
 	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1
 	throw_range = 1
-	w_class = ITEMSIZE_LARGE//So you can't hide it in your pocket or some such.
+	w_class = WEIGHT_CLASS_BULKY//So you can't hide it in your pocket or some such.
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
 	var/mob/living/creator
 	var/mopping = 0

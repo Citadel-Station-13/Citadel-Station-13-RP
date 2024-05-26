@@ -1,7 +1,7 @@
 // The Gun //
 /obj/item/gun/projectile/ballistic/cell_loaded/medical
 	name = "cell-loaded medigun"
-	desc = "The NanoTrasen-VayMed Adaptive Medical Laser, or the NT-V 'AML', is a powerful cell-based ranged healing device designed by NanoTrasen with a partnership with Vey-Med. It uses an internal nanite fabricator, powered and controlled by discrete cells, to deliver a variety of effects at range. Up to six combinations of healing beams can be configured at once, depending on cartridge used. Ammo not included."
+	desc = "The Nanotrasen-VayMed Adaptive Medical Laser, or the NT-V 'AML', is a powerful cell-based ranged healing device designed by Nanotrasen with a partnership with Vey-Med. It uses an internal nanite fabricator, powered and controlled by discrete cells, to deliver a variety of effects at range. Up to six combinations of healing beams can be configured at once, depending on cartridge used. Ammo not included."
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
 
 	icon_state = "ml3m"
@@ -14,7 +14,7 @@
 
 /obj/item/gun/projectile/ballistic/cell_loaded/medical/cmo
 	name = "advanced cell-loaded medigun"
-	desc = "This is a variation on the AML 'Medigun', a powerful cell-based ranged healing device based on the same model made by NanoTrasen and Vey-Med \
+	desc = "This is a variation on the AML 'Medigun', a powerful cell-based ranged healing device based on the same model made by Nanotrasen and Vey-Med \
 	It has an extended sight for increased accuracy, and much more comfortable grip. Ammo not included."
 
 	icon_state = "ml3m_cmo"
@@ -43,10 +43,10 @@
 /obj/item/storage/secure/briefcase/ml3m_pack_med
 	name = "\improper AML \'Medigun\' kit"
 	desc = "A storage case for a multi-purpose healing gun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/ml3m_pack_med/PopulateContents()
+/obj/item/storage/secure/briefcase/ml3m_pack_med/legacy_spawn_contents()
 	new /obj/item/gun/projectile/ballistic/cell_loaded/medical(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)
@@ -56,10 +56,10 @@
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo
 	name = "\improper Advanced AML \'Medigun\' kit"
 	desc = "A storage case for a multi-purpose healing gun. Variety hour!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/secure/briefcase/ml3m_pack_cmo/PopulateContents()
+/obj/item/storage/secure/briefcase/ml3m_pack_cmo/legacy_spawn_contents()
 	new /obj/item/gun/projectile/ballistic/cell_loaded/medical/cmo(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)

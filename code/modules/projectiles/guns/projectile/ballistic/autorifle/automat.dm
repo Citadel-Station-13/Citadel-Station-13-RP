@@ -11,7 +11,7 @@
 	base_icon_state = "automat"
 	render_flick_firing = "automat-fire"
 	damage_force = 10
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	worn_icon = 'icons/modules/projectiles/guns/ballistic/autorifle.dmi'
 	worn_state = "automat"

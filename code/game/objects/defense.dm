@@ -37,6 +37,11 @@
 	. = ..()
 	inflict_atom_damage(100, flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)
 
+/obj/drop_products(method, atom/where)
+	. = ..()
+	if(obj_storage?.drop_on_deconstruction_methods & method)
+		obj_storage.drop_everything_at(where)
+
 /obj/hitsound_melee(obj/item/I)
 	if(!isnull(material_primary))
 		var/datum/material/primary = get_primary_material()

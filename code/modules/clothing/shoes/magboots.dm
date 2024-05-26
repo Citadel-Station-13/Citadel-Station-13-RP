@@ -123,7 +123,7 @@
 
 /obj/item/clothing/shoes/magboots/syndicate
 	name = "blood red magboots"
-	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing NanoTrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
+	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing Nanotrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
 	icon_state = "syndiemag0"
 	icon_base = "syndiemag"
 	encumbrance_on = 0

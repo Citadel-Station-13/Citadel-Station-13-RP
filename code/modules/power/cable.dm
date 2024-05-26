@@ -544,7 +544,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	color = COLOR_RED
 	desc = "A coil of power cable."
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
@@ -627,9 +627,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/proc/update_wclass()
 	if(amount == 1)
-		w_class = ITEMSIZE_TINY
+		set_weight_class(WEIGHT_CLASS_TINY)
 	else
-		w_class = ITEMSIZE_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 
 /obj/item/stack/cable_coil/examine(mob/user, dist)
 	. = ..()
@@ -643,7 +643,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/mob/M = usr
 
 	if(CHECK_MOBILITY(M, MOBILITY_CAN_USE))
@@ -660,7 +660,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/cyborg/verb/set_colour()
 	set name = "Change Colour"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in GLOB.possible_cable_coil_colours
 	set_cable_color(selected_type, usr)
@@ -975,7 +975,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	max_amount = MAXCOIL
 	color = COLOR_SILVER
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)

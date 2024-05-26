@@ -139,9 +139,9 @@
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
 			new_item.icon_state = "box"
 			var/obj/item/storage/box/new_box = new_item
-			new_box.max_w_class = pick(1,2,2,3,3,3,4,4)
-			var/storage_amount = 2**(new_box.max_w_class-1)
-			new_box.max_storage_space = rand(storage_amount, storage_amount * 10)
+			new_box.max_single_weight_class = pick(1,2,2,3,3,3,4,4)
+			var/storage_amount = 2**(new_box.max_single_weight_class-1)
+			new_box.max_combined_volume = rand(storage_amount, storage_amount * 10)
 			if(prob(30))
 				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 				apply_image_decorations = 1

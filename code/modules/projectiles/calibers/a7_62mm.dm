@@ -169,7 +169,7 @@
 	name = "antique ammo drum (7.62mm)"
 	materials_base = list(MAT_STEEL = 1000)
 	ammo_preload = /obj/item/ammo_casing/a762
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ammo_max = 50
 
 	icon = 'icons/modules/projectiles/magazines/old_magazine_drum.dmi'

@@ -568,7 +568,7 @@
 //The Covert/Overt Spec Ops Carrier - This is technically armor, but due to how it works I'm putting it here.
 /obj/item/clothing/suit/storage/hooded/covertcarrier
 	name = "advanced plate carrier"
-	desc = "The NT-COV/OV-4 plate carrier is an experimental system first utilized by covert field operatives employed by NanoTrasen. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
+	desc = "The NT-COV/OV-4 plate carrier is an experimental system first utilized by covert field operatives employed by Nanotrasen. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"

@@ -13,12 +13,12 @@
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden/verb/rename_gun()
 	set name = "Name Gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your gun. If you're the Warden."
 
 	var/mob/M = usr
@@ -37,7 +37,7 @@
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden/verb/reskin_gun()
 	set name = "Resprite gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose a sprite for your gun."
 
 	var/mob/M = usr

@@ -12,7 +12,7 @@
 	cell_initial = /obj/item/cell
 	accept_cell_initial = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
@@ -32,7 +32,7 @@
 	icon_state = "junker_pistol"
 	item_state = "revolver"
 	load_method = SINGLE_CASING
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	recoil = 3
 	handle_casings = CYCLE_CASINGS
@@ -77,20 +77,20 @@
 			handle_click_empty()
 			return
 
-/obj/item/gun/ballistic/rocket/tyrmalin/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin/Fire(atom/target, mob/living/user, clickparams, pointblank, reflex)
 	. = ..()
 	if(destroyed)
 		to_chat(user, "<span class='notice'>\The [src] is completely inoperable!</span>")
 		handle_click_empty()
 
-/obj/item/gun/ballistic/rocket/tyrmalin/attack_hand(mob/user, list/params)
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src && destroyed)
 		to_chat(user, "<span class='danger'>\The [src]'s chamber is too warped to extract the casing!</span>")
 		return
 	else
 		return ..()
 
-/obj/item/gun/ballistic/rocket/tyrmalin/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin/attackby(var/obj/item/A as obj, mob/user as mob)
 	. = ..()
 	if(A.is_material_stack_of(/datum/material/plasteel))
 		var/obj/item/stack/material/M = A
@@ -144,19 +144,19 @@
 					build_step++
 					to_chat(user, "<span class='notice'>You close the hatch and complete the advanced rokkit launcher.</span>")
 					var/turf/T = get_turf(src)
-					new /obj/item/gun/ballistic/rocket/tyrmalin_advanced(T)
+					new /obj/item/gun/projectile/ballistic/rocket/tyrmalin_advanced(T)
 					qdel(src)
 
 /obj/item/tyrmalin_rocket_assembly/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	.=..()
 	update_icon()
 
-/obj/item/gun/ballistic/rocket/tyrmalin_advanced
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin_advanced
 	name = "advanced rokkit launcher"
 	desc = "A compact missile launcher fielded by Tyrmalin mech hunters. It looks more sturdy and refined than the prior iteration."
 	icon_state = "rokkitlauncher_adv"
 
-/obj/item/gun/ballistic/rocket/tyrmalin_advanced/update_icon_state()
+/obj/item/gun/projectile/ballistic/rocket/tyrmalin_advanced/update_icon_state()
 	. = ..()
 	if(loaded.len)
 		icon_state = "[initial(icon_state)]-loaded"

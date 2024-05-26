@@ -6,7 +6,7 @@
 	worn_icon = 'icons/modules/projectiles/guns/generic.dmi'
 	worn_state = "rifle2"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	regex_this_caliber = /datum/caliber/a7_62mm
 	slot_flags = SLOT_BACK

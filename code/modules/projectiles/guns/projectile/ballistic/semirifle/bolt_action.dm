@@ -31,7 +31,7 @@
 
 // Stole hacky terrible code from doublebarrel shotgun. -Spades
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
 			afterattack(user, user)
@@ -40,7 +40,7 @@
 			return
 		if(do_after(user, 30))
 			icon_state = "sawnrifle"
-			w_class = ITEMSIZE_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			recoil = 2 // Owch
 			accuracy = -15 // You know damn well why.
 			item_state = "gun"
@@ -70,7 +70,7 @@
 	ammo_type = /obj/item/ammo_casing/a357/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
 			afterattack(user, user)
@@ -80,7 +80,7 @@
 		if(do_after(user, 30))
 			item_state = "mareleg"
 			icon_state = "mareleg"
-			w_class = ITEMSIZE_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			caliber = ".357"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a357
@@ -113,7 +113,7 @@
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != ITEMSIZE_NORMAL)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
 			afterattack(user, user)
@@ -123,7 +123,7 @@
 		if(do_after(user, 30))
 			item_state = "mareleg"
 			icon_state = "mareleg"
-			w_class = ITEMSIZE_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			caliber = ".44"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a44
@@ -185,13 +185,13 @@
 	load_method = SINGLE_CASING|SPEEDLOADER
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	pin = /obj/item/firing_pin/explorer
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
 	accuracy = 50 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 
 /obj/item/gun/projectile/ballistic/shotgun/pump/scopedrifle/verb/scope()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Use Scope"
 	set popup_menu = 1
 

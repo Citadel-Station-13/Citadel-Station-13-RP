@@ -3,7 +3,7 @@
 	desc = "The FS 9x19mm \"Sol\" is a compact and reliable submachine gun. Uses 9mm rounds."
 	icon_state = "SMG-IS"
 	item_state = "wt550"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BELT
 	caliber = "9mm"
 	magazine_type = /obj/item/ammo_magazine/m9mm

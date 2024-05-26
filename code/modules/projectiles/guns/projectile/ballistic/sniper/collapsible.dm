@@ -1,7 +1,7 @@
 /obj/item/gun/projectile/ballistic/heavysniper/collapsible
 
 /obj/item/gun/projectile/ballistic/heavysniper/collapsible/verb/take_down()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Disassemble Rifle"
 
 	var/mob/living/carbon/human/user = usr
@@ -32,7 +32,7 @@
 	name = "AM rifle part"
 	desc = "A part of an antimateriel rifle."
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	icon = 'icons/obj/gun/ballistic.dmi'
 
@@ -147,7 +147,7 @@
 	switch(part_count)
 		if(1)
 			name = initial(name)
-			w_class = ITEMSIZE_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			icon_state = initial(icon_state)
 		if(2)
 			if(barrel && trigger_group)
@@ -159,7 +159,7 @@
 			else if(stock && barrel)
 				name = "AM rifle stock-barrel assembly"
 				icon_state = "heavysniper-barstock"
-			w_class = ITEMSIZE_LARGE
+			set_weight_class(WEIGHT_CLASS_BULKY)
 
 		if(3)
 			var/obj/item/gun/projectile/ballistic/heavysniper/collapsible/gun = new (get_turf(src), 0)

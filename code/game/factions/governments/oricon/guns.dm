@@ -7,7 +7,7 @@
 	worn_state = "battlerifle"
 	inhand_state = "battlerifle"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 
 	recoil = GUN_RECOIL_HEAVY

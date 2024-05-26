@@ -164,7 +164,7 @@
 			if(!G.reagents || !G.reagents.total_volume)
 				continue
 			failed = 0
-			bag.remove_from_storage(G, src)
+			bag.obj_storage.remove(G, src)
 			holdingitems += G
 			if(holdingitems && holdingitems.len >= limit)
 				break

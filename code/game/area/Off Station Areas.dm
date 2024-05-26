@@ -41,6 +41,7 @@
 /area/triumph/surfacebase/tram
 	name = "\improper Tram Station"
 	icon_state = "dk_yellow"
+	area_flags = AREA_FLAG_ERODING
 /area/triumph/surfacebase/atrium_one
 	name = "\improper Atrium First Floor"
 	icon_state = "dk_yellow"
@@ -965,7 +966,7 @@
 	requires_power = 0
 
 /area/awaymission/spacebattle/cruiser
-	name = "\improper NanoTrasen Cruiser"
+	name = "\improper Nanotrasen Cruiser"
 
 /area/awaymission/spacebattle/syndicate1
 	name = "\improper Syndicate Assault Ship 1"

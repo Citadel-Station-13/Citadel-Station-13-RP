@@ -34,16 +34,19 @@
 	var/bubble_icon = "normal"
 
 	//? Armor
-	/// armor datm - this armor mitigates damage
-	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
-	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
+	/// armor datum - holds armor values
+	/// this is lazy initialized, only init'd when armor is fetched
+	/// [armor_type] specifies the typepath to fetch if this is null during a fetch
 	var/datum/armor/armor
 	/// armor datum type
+	/// this is the type to init if armor is unset when armor is fetched
+	/// * anonymous typepaths are not allowed here
 	var/armor_type = /datum/armor/none
 
 	//? Context
 	/// open context menus by mob
-	var/list/context_menus
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/context_menus
 
 	//? Economy
 	// todo: move all this to obj level, you aren't going to sell a fucking turf.
@@ -141,16 +144,24 @@
 	//? Materials
 	/// combined material trait flags
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/material_trait_flags = NONE
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_trait_flags = NONE
 	/// material traits on us, associated to metadata
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/list/datum/material_trait/material_traits
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/material_trait/material_traits
 	/// material trait metadata when [material_traits] is a single trait. null otherwise.
-	var/material_traits_data
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_traits_data
 	/// 'stacks' of ticking
 	/// this synchronizes the system so removing one ticking material trait doesn't fully de-tick the entity
 	//! DO NOT FUCK WITH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
-	var/material_ticking_counter = 0
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_ticking_counter = 0
 	/// material trait relative strength
 	/// applies to all traits globally as opposed to just one material parts,
 	/// because this is at /atom level.
@@ -168,13 +179,16 @@
 	/// sorted priority list of datums for handling shieldcalls with
 	/// we use this instead of signals so we can enforce priorities
 	/// this is horrifying.
-	var/list/datum/shieldcall/shieldcalls
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/shieldcall/shieldcalls
 
 	//? Overlays
 	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
-	var/list/managed_vis_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_vis_overlays
 	/// overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
-	var/list/managed_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_overlays
 
 	//? Layers
 	/// Base layer - defaults to layer.
@@ -941,6 +955,14 @@
 /atom/proc/update_atom_colour()
 	CRASH("base proc hit")
 
+//* Deletions *//
+
+// /**
+//  * Called when something in our contents is being Destroy()'d, before they get moved.
+//  */
+// /atom/proc/handle_contents_del(atom/movable/deleting)
+// 	return
+
 //? Filters
 
 /atom/proc/add_filter(name, priority, list/params, update = TRUE)
@@ -1006,6 +1028,23 @@
 	filter_data = null
 	filters = null
 
+//* Inventory *//
+
+/atom/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	return
+
+/atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	return
+
+/atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	return
+
+/**
+ * called when an /obj/item Initialize()s in us.
+ */
+/atom/proc/on_contents_item_new(obj/item/item)
+	return
+
 //? Layers
 
 /// Sets our plane
@@ -1043,7 +1082,21 @@
 	plane = initial(plane)
 	set_base_layer(initial(layer))
 
+//* Persistence *//
+
+/**
+ * Triggered by SSpersistence to decay persisted atoms on load.
+ *
+ * @params
+ * * rounds_since_saved - rounds since we were saved
+ * * hours_since_saved - hours since we were saved
+ */
+/atom/proc/decay_persisted(rounds_since_saved, hours_since_saved)
+	return
+
 //? Pixel Offsets
+
+// todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
@@ -1051,6 +1104,11 @@
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/atom/proc/set_pixel_offsets(x, y)
+	pixel_x = x + get_managed_pixel_x()
+	pixel_y = y + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()

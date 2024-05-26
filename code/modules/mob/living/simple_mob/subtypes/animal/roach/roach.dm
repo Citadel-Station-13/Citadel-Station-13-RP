@@ -66,7 +66,7 @@
 
 	mob_size = MOB_SMALL
 	pass_flags = ATOM_PASS_TABLE
-//	can_pull_size = ITEMSIZE_TINY
+//	can_pull_size = WEIGHT_CLASS_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0
@@ -355,7 +355,7 @@
 //Nanomachines? Huh. That's not very Patriotic.
 /datum/category_item/catalogue/fauna/roach/uberfallen
 	name = "Infested Roach"
-	desc = "WARNING: Infested roaches are currently flagged as a Class Red threat by NanoTrasen.\
+	desc = "WARNING: Infested roaches are currently flagged as a Class Red threat by Nanotrasen.\
 	This dangerous organism appeared shortly after the unidentified incident on local NT asset 'Surt',\
 	bearing many of the hallmarks of other hostile organisms encountered in the Rift. Roaches originally,\
 	Infested are now skittering nanite factories. Reports indicate they are able to expel hostile nanites\

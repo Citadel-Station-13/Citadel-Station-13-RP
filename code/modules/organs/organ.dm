@@ -86,7 +86,7 @@
 
 	if(isliving(loc))
 		owner = loc
-		w_class = max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
+		set_weight_class(max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1)) //smaller mobs have smaller organs.
 		if(internal)
 			LAZYDISTINCTADD(owner.internal_organs, src)
 			LAZYSET(owner.internal_organs_by_name, organ_tag, src)

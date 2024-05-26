@@ -31,6 +31,12 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /helpers - mapping helpers like autopipe/autocable/baseturf replacers   go here
     - /landmarks - landmark icons
     - /spawners - things like window spawners
+  - /mob - mob sprites
+    - /bodysets - limbs and their corrosponding sprite accessories & markings & miscellaneous.
+                  used in the abstraction of limb sprite from limb definition.
+    - /sprite_accessories - unconverted sprite accessories
+    - /sprite_accessory - modern sprite accessory system
+
   - /modules - used for specific departments / content packs / logical bundles
     - /{modulename} - the examples before are just that, examples. some modules will require different styles of icon organization.
       - /items - items

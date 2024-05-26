@@ -6,7 +6,7 @@
 	magazine_type = /obj/item/ammo_magazine/m380
 	allowed_magazines = list(/obj/item/ammo_magazine/m380)
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 

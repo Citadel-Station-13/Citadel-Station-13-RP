@@ -8,6 +8,6 @@
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a10g/silver
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	safety_state = GUN_SAFETY_OFF
 	damage_force = 15

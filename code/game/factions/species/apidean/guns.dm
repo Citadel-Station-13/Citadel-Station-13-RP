@@ -13,7 +13,7 @@
 	item_state = "florayield"
 	caliber = "apidean"
 	load_method = MAGAZINE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)
 	magazine_type = /obj/item/ammo_magazine/biovial
 	allowed_magazines = list(/obj/item/ammo_magazine/biovial)
@@ -28,7 +28,7 @@
 	desc = "A biotechnological marvel, this living rifle can grow its ammo when provided with liquified wax. It fires poisonous bolts of barbed chitin."
 	icon_state = "apigun"
 	item_state = "speargun"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	caliber = "apidean"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)

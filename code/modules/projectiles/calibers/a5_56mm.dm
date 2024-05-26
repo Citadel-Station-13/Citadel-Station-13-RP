@@ -152,7 +152,7 @@
 	ammo_caliber = /datum/caliber/a5_56mm
 	materials_base = list(MAT_STEEL = 1000)
 	ammo_preload = /obj/item/ammo_casing/a556
-	w_class = ITEMSIZE_NORMAL // This should NOT fit in your pocket!!
+	w_class = WEIGHT_CLASS_NORMAL // This should NOT fit in your pocket!!
 	ammo_max = 50
 
 /obj/item/ammo_magazine/m556saw/ap
