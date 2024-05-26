@@ -354,6 +354,7 @@
 #include "code\__HELPERS\stoplag.dm"
 #include "code\__HELPERS\storage.dm"
 #include "code\__HELPERS\text.dm"
+#include "code\__HELPERS\thermal.dm"
 #include "code\__HELPERS\time.dm"
 #include "code\__HELPERS\turfs.dm"
 #include "code\__HELPERS\type_processing.dm"
