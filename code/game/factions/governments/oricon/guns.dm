@@ -25,5 +25,5 @@
 	icon_override = 'icons/obj/gun/ballistic.dmi'
 	item_state = "haloshotgun_i"
 	item_icons = null
-	ammo_type = /obj/item/ammo_casing/a12g
-	max_shells = 12
+	caliber = /datum/caliber/a12g
+	internal_ammo_capacity = 12
