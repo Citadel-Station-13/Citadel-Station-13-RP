@@ -94,7 +94,7 @@
 	/// set this in prototype to a path or an instance via 'render_system = new /datum/gun_renderer/...(...)'
 	/// if null, we will not perform default rendering/updating of item states.
 	var/datum/gun_renderer/render_system
-	/// if set, flick()s this state while firing.
+	/// if set, flick()s this state on this gun while firing.
 	var/render_flick_firing
 
 	/// perform onmob state rendering?

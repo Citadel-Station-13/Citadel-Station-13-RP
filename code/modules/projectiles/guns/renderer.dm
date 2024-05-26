@@ -93,16 +93,16 @@
  *
  * if use_firemode is set, the firemode append will be appended before our default appends.
  *
- * gun's icon state is changed to "[gun.base_icon_state]-[n]"
+ * gun's icon state is changed to "[gun.base_icon_state][use_firemode && "[firemode]-"]-[n]"
  * empty state append is -0
  */
 /datum/gun_renderer/states
-	var/use_empty
+	var/count
 
-/datum/gun_renderer/states/New(count, use_zero_state, use_firemode)
+/datum/gun_renderer/states/New(count, use_firemode)
 	..(use_firemode = use_firemode)
-	if(!isnull(use_zero_state))
-		src.use_empty = use_zero_state
+	if(!isnull(count))
+		src.count = count
 
 /datum/gun_renderer/states/render(obj/item/gun/gun)
 
