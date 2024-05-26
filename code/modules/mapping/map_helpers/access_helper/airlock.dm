@@ -15,7 +15,7 @@
 	return locate(/obj/machinery/door/airlock) in loc
 
 /obj/map_helper/access_helper/airlock/station
-	icon_state = "general"
+	icon_state = "station"
 
 /obj/map_helper/access_helper/airlock/station/maintenance
 	req_access = list(
