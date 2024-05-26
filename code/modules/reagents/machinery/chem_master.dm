@@ -178,7 +178,7 @@
 
 /obj/machinery/chem_master/proc/load_styles()
 	/// Calculate the span tags and ids fo all the available pill icons.
-	var/datum/asset_pack/spritesheet/simple/pill_assets = SSassets.load_asset_datum(/datum/asset_pack/spritesheet/simple/pills)
+	var/datum/asset_pack/spritesheet/simple/pill_assets = SSassets.load_asset_pack(/datum/asset_pack/spritesheet/simple/pills)
 	pill_styles = list()
 	for (var/x in 1 to PILL_STYLE_COUNT)
 		var/list/pill_style_list = list()
@@ -186,7 +186,7 @@
 		pill_style_list["className"] = pill_assets.icon_class_name("pill[x]")
 		pill_styles += list(pill_style_list)
 
-	var/datum/asset_pack/spritesheet/simple/bottle_assets = SSassets.load_asset_datum(/datum/asset_pack/spritesheet/simple/bottles)
+	var/datum/asset_pack/spritesheet/simple/bottle_assets = SSassets.load_asset_pack(/datum/asset_pack/spritesheet/simple/bottles)
 	bottle_styles = list()
 	for (var/x in 1 to BOTTLE_STYLE_COUNT)
 		var/list/bottle_style_list = list()
@@ -194,7 +194,7 @@
 		bottle_style_list["className"] = bottle_assets.icon_class_name("bottle[x]")
 		bottle_styles += list(bottle_style_list)
 
-	var/datum/asset_pack/spritesheet/simple/patches_assets = SSassets.load_asset_datum(/datum/asset_pack/spritesheet/simple/patches)
+	var/datum/asset_pack/spritesheet/simple/patches_assets = SSassets.load_asset_pack(/datum/asset_pack/spritesheet/simple/patches)
 	patch_styles = list()
 	for (var/raw_patch_style in PATCH_STYLE_LIST)
 		//adding className for use in UI
@@ -759,7 +759,7 @@
 			if (style_reagent in styles)
 				styles[style_reagent] += carton_in_hand
 
-		var/datum/asset_pack/spritesheet/simple/assets = SSassets.load_asset_datum(/datum/asset_pack/spritesheet/simple/condiments)
+		var/datum/asset_pack/spritesheet/simple/assets = SSassets.load_asset_pack(/datum/asset_pack/spritesheet/simple/condiments)
 		for (var/reagent in styles)
 			styles[reagent]["className"] = assets.icon_class_name(reagent)
 	return styles

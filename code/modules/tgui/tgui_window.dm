@@ -16,7 +16,7 @@
 	var/subscriber_delegate
 	var/fatally_errored = FALSE
 	var/message_queue
-	var/sent_assets = list()
+	var/list/sent_assets = list()
 	// Vars passed to initialize proc (and saved for later)
 	var/initial_strict_mode
 	var/initial_fancy
@@ -291,9 +291,10 @@
  * return bool - TRUE if any assets had to be sent to the client
  */
 /datum/tgui_window/proc/send_asset(datum/asset_pack/asset)
+	asset = SSassets.load_asset_pack(asset)
 	if(!client || !asset)
 		return
-	sent_assets |= list(asset)
+	sent_assets |= asset
 	. = asset.send(client)
 	if(istype(asset, /datum/asset_pack/spritesheet))
 		var/datum/asset_pack/spritesheet/spritesheet = asset

@@ -1,7 +1,7 @@
 /datum/asset_pack/spritesheet/loadout
 	name = "loadout"
 
-/datum/asset_pack/spritesheet/loadout/create_spritesheets()
+/datum/asset_pack/spritesheet/loadout/generate()
 	for(var/name in gear_datums)
 		var/datum/loadout_entry/entry = gear_datums[name]
 		var/item_id = entry.legacy_get_id()
@@ -13,4 +13,4 @@
 		var/obj/item/item_casted = item_path
 		var/item_icon = initial(item_casted.icon)
 		var/item_icon_state = initial(item_casted.icon_state)
-		Insert(item_id, item_icon, item_icon_state)
+		insert(item_id, item_icon, item_icon_state)

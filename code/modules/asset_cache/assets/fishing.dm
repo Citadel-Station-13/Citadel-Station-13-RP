@@ -1,6 +1,6 @@
 /datum/asset_pack/spritesheet/fish
 	name = "fish"
-/datum/asset_pack/spritesheet/fish/create_spritesheets()
+/datum/asset_pack/spritesheet/fish/generate()
 	for (var/path in subtypesof(/obj/item/fish))
 		var/obj/item/fish/fish_type = path
 		var/fish_icon = initial(fish_type.icon)
@@ -8,7 +8,7 @@
 		var/id = sanitize_css_class_name("[fish_icon][fish_icon_state]")
 		if(sprites[id]) //no dupes
 			continue
-		Insert(id, fish_icon, fish_icon_state)
+		insert(id, fish_icon, fish_icon_state)
 
 
 /datum/asset_pack/simple/fishing_minigame

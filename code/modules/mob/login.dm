@@ -71,9 +71,6 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 
-	if(!client.tooltips)
-		client.tooltips = new(client)
-
 	var/turf/T = get_turf(src)
 	if(isturf(T))
 		update_client_z(T.z)

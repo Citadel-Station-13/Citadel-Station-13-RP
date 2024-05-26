@@ -42,8 +42,3 @@
 
 	assets = sorted_assets
 	..()
-
-/// Get a html string that will load a html asset.
-/// Needed because byond doesn't allow you to browse() to a url.
-/datum/asset_pack/simple/namespaced/proc/get_htmlloader(filename)
-	return url2htmlloader(SSassets.transport.get_asset_url(filename, assets[filename]))

@@ -39,13 +39,20 @@
 	/// browse_rsc(), ensuring it always exists in the cache folder
 	/// that byond browsers are ran out of
 	///
-	/// implies do_not_mangle
+	/// * implies do_not_mangle
+	/// * implies do_not_separate
 	var/legacy = FALSE
 
 	/// do not mutate filenames on the remote side
 	/// used when html pages rely on static bindings / aren't otherwise
 	/// dynamically generated.
 	var/do_not_mangle = FALSE
+	/// do not allow files to be split up between different folders on the remote side
+	/// this means everything in this pack can access each other by a direct, relative link
+	/// and doesn't need to 'find' where the others are through some convoluted process
+	///
+	/// * this does incur a cost as everything being sent now has to be md5'd.
+	var/do_not_separate = FALSE
 
 	/// allow caching cross-rounds, if the server is under a singular commit
 	/// requires configuration to be enabled too.
@@ -94,15 +101,18 @@
  * because that's what the asset items / cache is actually dealing with.
  *
  * all filenames must be *globally unique*.
- * while this is technically not a limitation on the new asset system, it is nonetheless enforced
- * to make debugging less awful.
+ * while this is technically able to be circumvented on the modern asset loading system
+ * used by tgui windows, it is nonetheless still kept and enforced
+ * to make debugging / development less awful.
+ *
+ * any temporary files should go into ""
  *
  * @params
  * * generation - output of generate().
  *
  * @return list("<filename>" = file, ...)
  */
-/datum/asset_pack/proc/register()
+/datum/asset_pack/proc/register(generation)
 	return list()
 
 /**

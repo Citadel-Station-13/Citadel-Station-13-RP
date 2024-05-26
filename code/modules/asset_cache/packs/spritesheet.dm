@@ -4,11 +4,11 @@
  * and uses CSS to select icons out of that file - saves on transferring some
  * 1400-odd individual PNG files
  *
- * To use, use classes of "[name][size_key]" and the state name used in Insert().
- * If you used InsertAll(), don't forget the prefix.
+ * To use, use classes of "[name][size_key]" and the state name used in insert().
+ * If you used insert_all(), don't forget the prefix.
  *
  * Example: <div class='sheetmaterials32x32 glass-3'>
- * In tgui, usually would be clsasName={classes(['sheetmaterials32x32', 'glass-3'])}
+ * In tgui, usually would be className={classes(['sheetmaterials32x32', 'glass-3'])}
  */
 #define SPR_SIZE 1
 #define SPR_IDX  2
@@ -19,115 +19,43 @@
 
 /datum/asset_pack/spritesheet
 	abstract_type = /datum/asset_pack/spritesheet
+	do_not_separate = TRUE
+	/// the spritesheet's name
 	var/name
+
 	/**
-	 * List of arguments to pass into queuedInsert.
+	 * List of arguments to pass into do_insert.
 	 * Exists so we can queue icon insertion, mostly for stuff like preferences.
 	 */
 	var/list/to_generate = list()
+
 	/// "32x32" -> list(10, icon/normal, icon/stripped)
 	var/list/sizes = list()
 	/// "foo_bar" -> list("32x32", 5)
 	var/list/sprites = list()
-	var/list/cached_spritesheets_needed
-	var/generating_cache = FALSE
-	var/fully_generated = FALSE
-	/**
-	 * If this asset should be fully loaded on new
-	 * Defaults to false so we can process this stuff nicely
-	 */
-	var/load_immediately = FALSE
 
-/datum/asset_pack/spritesheet/should_refresh()
-	if (..())
-		return TRUE
+/datum/asset_pack/spritesheet/register(generation)
+	return construct()
 
-	/// Static so that the result is the same, even when the files are created, for this run.
-	var/static/should_refresh = null
+/datum/asset_pack/spritesheet/proc/construct()
+	. = list()
 
-	if (isnull(should_refresh))
-		// `fexists` seems to always fail on static-time
-		should_refresh = !fexists("[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[name].css")
-
-	return should_refresh
-
-/datum/asset_pack/spritesheet/register()
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-	if (!name)
-		CRASH("spritesheet [type] cannot register without a name")
-
-	if (!should_refresh() && read_from_cache())
-		return
-
-	/// If it's cached, may as well load it now, while the loading is cheap
-	if(CONFIG_GET(flag/cache_assets) && cross_round_cachable)
-		load_immediately = TRUE
-
-	create_spritesheets()
-	if(load_immediately)
-		realize_spritesheets(yield = FALSE)
-	else
-		SSasset_loading.generate_queue += src
-
-/datum/asset_pack/spritesheet/proc/realize_spritesheets(yield)
-	if(fully_generated)
-		return
 	while(length(to_generate))
 		var/list/stored_args = to_generate[to_generate.len]
 		to_generate.len--
-		queuedInsert(arglist(stored_args))
-		if(yield && TICK_CHECK)
-			return
+		do_insert(arglist(stored_args))
+		CHECK_TICK
 
 	ensure_stripped()
 	for(var/size_id in sizes)
 		var/size = sizes[size_id]
-		SSassets.transport.register_asset("[name]_[size_id].png", size[SPRSZ_STRIPPED])
-	var/res_name = "spritesheet_[name].css"
-	var/fname = "data/spritesheets/[res_name]"
+		.["[name]_[size_id].png"] = size[SPRSZ_STRIPPED]
+
+	var/fname = "tmp/assets/spritesheets/[name].css"
 	fdel(fname)
 	text2file(generate_css(), fname)
-	SSassets.transport.register_asset(res_name, fcopy_rsc(fname))
-	fdel(fname)
-
-	if (CONFIG_GET(flag/cache_assets) && cross_round_cachable)
-		write_to_cache()
-
-	fully_generated = TRUE
-	// If we were ever in there, remove ourselves
-	SSasset_loading.generate_queue -= src
-
-/datum/asset_pack/spritesheet/queued_generation()
-	realize_spritesheets(yield = TRUE)
-
-/datum/asset_pack/spritesheet/ensure_ready()
-	if(!fully_generated)
-		realize_spritesheets(yield = FALSE)
-	return ..()
-
-/datum/asset_pack/spritesheet/send(client/client)
-	if (!name)
-		return
-
-	if (!should_refresh())
-		return send_from_cache(client)
-
-	var/all = list("spritesheet_[name].css")
-	for(var/size_id in sizes)
-		all += "[name]_[size_id].png"
-	. = SSassets.transport.send_assets(client, all)
-
-/datum/asset_pack/spritesheet/get_url_mappings()
-	if (!name)
-		return
-
-	if (!should_refresh())
-		return get_cached_url_mappings()
-
-	. = list("spritesheet_[name].css" = SSassets.transport.get_asset_url("spritesheet_[name].css"))
-	for(var/size_id in sizes)
-		.["[name]_[size_id].png"] = SSassets.transport.get_asset_url("[name]_[size_id].png")
+	var/res_name = "spritesheet_[name].css"
+	.[res_name] = fname
 
 /datum/asset_pack/spritesheet/proc/ensure_stripped(sizes_to_strip = sizes)
 	for(var/size_id in sizes_to_strip)
@@ -136,13 +64,13 @@
 			continue
 
 		// save flattened version
-		var/fname = "data/spritesheets/[name]_[size_id].png"
+		var/fname = "tmp/assets/spritesheets/[name]_[size_id].png"
+		fdel(fname)
 		fcopy(size[SPRSZ_ICON], fname)
 		var/error = rustg_dmi_strip_metadata(fname)
 		if(length(error))
 			stack_trace("Failed to strip [name]_[size_id].png: [error]")
 		size[SPRSZ_STRIPPED] = icon(fname)
-		fdel(fname)
 
 /datum/asset_pack/spritesheet/proc/generate_css()
 	var/list/out = list()
@@ -168,73 +96,9 @@
 
 	return out.Join("\n")
 
-/datum/asset_pack/spritesheet/proc/read_from_cache()
-	var/replaced_css = file2text("[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[name].css")
-
-	var/regex/find_background_urls = regex(@"background:url\('%(.+?)%'\)", "g")
-	while (find_background_urls.Find(replaced_css))
-		var/asset_id = find_background_urls.group[1]
-		var/asset_item = SSassets.transport.register_asset(asset_id, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[asset_id]")
-		var/asset_url = SSassets.transport.get_asset_url(asset_item = asset_item)
-		replaced_css = replacetext(replaced_css, find_background_urls.match, "background:url('[asset_url]')")
-		LAZYADD(cached_spritesheets_needed, asset_id)
-
-	var/replaced_css_filename = "data/spritesheets/spritesheet_[name].css"
-	rustg_file_write(replaced_css, replaced_css_filename)
-	SSassets.transport.register_asset("spritesheet_[name].css", replaced_css_filename)
-
-	fdel(replaced_css_filename)
-
-	return TRUE
-
-/datum/asset_pack/spritesheet/proc/send_from_cache(client/client)
-	if (isnull(cached_spritesheets_needed))
-		stack_trace("cached_spritesheets_needed was null when sending assets from [type] from cache")
-		cached_spritesheets_needed = list()
-
-	return SSassets.transport.send_assets(client, cached_spritesheets_needed + "spritesheet_[name].css")
-
 /// Returns the URL to put in the background:url of the CSS asset
-/datum/asset_pack/spritesheet/proc/get_background_url(asset)
-	if (generating_cache)
-		return "%[asset]%"
-	else
-		return SSassets.transport.get_asset_url(asset)
-
-/datum/asset_pack/spritesheet/proc/write_to_cache()
-	for (var/size_id in sizes)
-		fcopy(SSassets.cache["[name]_[size_id].png"].resource, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[name]_[size_id].png")
-
-	generating_cache = TRUE
-	var/mock_css = generate_css()
-	generating_cache = FALSE
-
-	rustg_file_write(mock_css, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[name].css")
-
-/datum/asset_pack/spritesheet/proc/get_cached_url_mappings()
-	var/list/mappings = list()
-	mappings["spritesheet_[name].css"] = SSassets.transport.get_asset_url("spritesheet_[name].css")
-
-	for (var/asset_name in cached_spritesheets_needed)
-		mappings[asset_name] = SSassets.transport.get_asset_url(asset_name)
-
-	return mappings
-
-/**
- *! Override this in order to start the creation of the spritesheet.
- *! This is where all your Insert, InsertAll, etc calls should be inside.
- */
-/datum/asset_pack/spritesheet/proc/create_spritesheets()
-	SHOULD_CALL_PARENT(FALSE)
-	CRASH("create_spritesheets() not implemented for [type]!")
-/**
- * neither prefixes nor states may have spaces!
- */
-/datum/asset_pack/spritesheet/proc/Insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
-	if(load_immediately)
-		queuedInsert(sprite_name, I, icon_state, dir, frame, moving)
-	else
-		to_generate += list(args.Copy())
+/datum/asset_pack/spritesheet/proc/get_background_url(image_name)
+	return image_name
 
 /**
  * LEMON NOTE
@@ -244,12 +108,12 @@
  *
  * neither prefixes nor states may have spaces!
  */
-/datum/asset_pack/spritesheet/proc/queuedInsert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
+/datum/asset_pack/spritesheet/proc/do_insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
 	I = icon(I, icon_state=icon_state, dir=dir, frame=frame, moving=moving)
 	if (!I || !length(icon_states(I))) // That direction or state doesn't exist!
 		return
 	// Any sprite modifications we want to do (aka, coloring a greyscaled asset)
-	I = ModifyInserted(I)
+	I = modify_inserted(I)
 	var/size_id = "[I.Width()]x[I.Height()]"
 	var/size = sizes[size_id]
 
@@ -269,18 +133,15 @@
 		sprites[sprite_name] = list(size_id, 0)
 
 /**
- * A simple proc handing the Icon for you to modify before it gets turned into an asset.
- *
- * Arguments:
- * * I: icon being turned into an asset
+ * neither prefixes nor states may have spaces!
  */
-/datum/asset_pack/spritesheet/proc/ModifyInserted(icon/pre_asset)
-	return pre_asset
+/datum/asset_pack/spritesheet/proc/insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
+	to_generate += list(args.Copy())
 
 /**
  * neither prefixes nor states may have spaces!
  */
-/datum/asset_pack/spritesheet/proc/InsertAll(prefix, icon/I, list/directions)
+/datum/asset_pack/spritesheet/proc/insert_all(prefix, icon/I, list/directions)
 	if (length(prefix))
 		prefix = "[prefix]-"
 
@@ -290,14 +151,20 @@
 	for (var/icon_state_name in icon_states(I))
 		for (var/direction in directions)
 			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]-" : ""
-			Insert("[prefix][prefix2][icon_state_name]", I, icon_state=icon_state_name, dir=direction)
+			insert("[prefix][prefix2][icon_state_name]", I, icon_state=icon_state_name, dir=direction)
 
-/datum/asset_pack/spritesheet/proc/css_tag()
-	return {"<link rel="stylesheet" href="[css_filename()]" />"}
+/**
+ * A simple proc handing the Icon for you to modify before it gets turned into an asset.
+ *
+ * Arguments:
+ * * I: icon being turned into an asset
+ */
+/datum/asset_pack/spritesheet/proc/modify_inserted(icon/pre_asset)
+	return pre_asset
 
-/datum/asset_pack/spritesheet/proc/css_filename()
-	return SSassets.transport.get_asset_url("spritesheet_[name].css")
-
+/**
+ * todo: deprecated; logic should be tgui-side.
+ */
 /datum/asset_pack/spritesheet/proc/icon_tag(sprite_name)
 	var/sprite = sprites[sprite_name]
 	if (!sprite)
@@ -305,25 +172,15 @@
 	var/size_id = sprite[SPR_SIZE]
 	return {"<span class='[name][size_id] [sprite_name]'></span>"}
 
+/**
+ * todo: deprecated; logic should be tgui-side.
+ */
 /datum/asset_pack/spritesheet/proc/icon_class_name(sprite_name)
 	var/sprite = sprites[sprite_name]
 	if (!sprite)
 		return null
 	var/size_id = sprite[SPR_SIZE]
 	return {"[name][size_id] [sprite_name]"}
-
-/**
- * Returns the size class (ex design32x32) for a given sprite's icon
- *
- * Arguments:
- * * sprite_name - The sprite to get the size of
- */
-/datum/asset_pack/spritesheet/proc/icon_size_id(sprite_name)
-	var/sprite = sprites[sprite_name]
-	if (!sprite)
-		return null
-	var/size_id = sprite[SPR_SIZE]
-	return "[name][size_id]"
 
 #undef SPR_SIZE
 #undef SPR_IDX

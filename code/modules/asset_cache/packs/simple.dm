@@ -4,27 +4,16 @@
 	abstract_type = /datum/asset_pack/simple
 	/**
 	 * List of assets for this datum in the form of:
-	 * * asset_filename = asset_file.
-	 * At runtime the asset_file will be converted into a asset_cache datum.
+	 * * filename = file
+	 * At runtime the asset file will be converted into a asset_item datum.
 	 */
 	var/assets = list()
 
 /datum/asset_pack/simple/register()
-	for(var/asset_name in assets)
-		var/datum/asset_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
-		if (!ACI)
-			log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")
-			continue
-		if (legacy)
-			ACI.legacy = legacy
-		if (keep_local_name)
-			ACI.keep_local_name = keep_local_name
-		assets[asset_name] = ACI
-
-/datum/asset_pack/simple/send(client)
-	. = SSassets.transport.send_assets(client, assets)
-
-/datum/asset_pack/simple/get_url_mappings()
 	. = list()
-	for (var/asset_name in assets)
-		.[asset_name] = SSassets.transport.get_asset_url(asset_name, assets[asset_name])
+	for(var/key in assets)
+		var/value = assets[key]
+		if(isfile(value))
+			.[key] = value
+		else
+			.[key] = file(value)

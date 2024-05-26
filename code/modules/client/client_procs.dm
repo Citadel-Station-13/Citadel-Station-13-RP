@@ -230,6 +230,8 @@
 	tgui_panel = new(src, "browseroutput")
 	// Instantiate cutscene system
 	addtimer(CALLBACK(src, PROC_REF(init_cutscene_system)), 0)
+	// instantiate tooltips
+	tooltips = new(src)
 
 	//* Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
@@ -562,6 +564,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
+	// force them to download rsc's from configured paths if needed
 #if (PRELOAD_RSC == 0)
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
@@ -579,14 +582,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		if (CONFIG_GET(flag/asset_simple_preload))
 			addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
-/*	// We don't have vox_sounds atm
-		#if (PRELOAD_RSC == 0)
-		for (var/name in GLOB.vox_sounds)
-			var/file = GLOB.vox_sounds[name]
-			Export("##action=load_rsc", file)
-			stoplag()
-		#endif
-*/
+
 //Hook, override it to run code when dir changes
 //Like for /atoms, but clients are their own snowflake FUCK
 /client/proc/setDir(newdir)

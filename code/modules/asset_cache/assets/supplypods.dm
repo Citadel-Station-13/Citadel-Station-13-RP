@@ -1,7 +1,7 @@
 /datum/asset_pack/spritesheet/supplypods
 	name = "supplypods"
 
-/datum/asset_pack/spritesheet/supplypods/create_spritesheets()
+/datum/asset_pack/spritesheet/supplypods/generate()
 	for (var/style in 1 to length(GLOB.podstyles))
 		if (style == STYLE_SEETHROUGH)
 			Insert("pod_asset[style]", icon('icons/obj/supplypods.dmi' , "seethrough-icon"))
