@@ -71,6 +71,7 @@
 	if(isnull(default))
 		stack_trace("no default map; world init is likely going to explode.")
 #ifdef FORCE_MAP
+	#warn FORCE_MAP is enabled! Don't forget to disable this before pushing.
 	if(keyed_maps[FORCE_MAP])
 		next_map = keyed_maps[FORCE_MAP]
 		subsystem_log("loaded forced map [FORCE_MAP]")
