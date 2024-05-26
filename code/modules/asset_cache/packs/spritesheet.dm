@@ -37,6 +37,9 @@
 /datum/asset_pack/spritesheet/register(generation)
 	return construct()
 
+/datum/asset_pack/spritesheet/proc/get_css_url()
+	return get_url("spritesheet_[name].css")
+
 /datum/asset_pack/spritesheet/proc/construct()
 	. = list()
 

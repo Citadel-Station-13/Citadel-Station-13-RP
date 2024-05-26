@@ -17,9 +17,8 @@
 /datum/asset_transport/proc/initialize()
 
 /**
- * registers a set of asset items with us
+ * loads a set of asset packs
  */
-/datum/asset_transport/proc/register_asset_items(list/datum/asset_item/items)
 
 /// Called when the transport is loaded by the config controller, not called on the default transport unless it gets loaded by a config change.
 /datum/asset_transport/proc/Load()
@@ -81,6 +80,11 @@
 		return url_encode(asset_item.name)
 	return url_encode("asset.[asset_item.hash].[asset_item.ext]")
 
+/datum/asset_transport/proc/send_pack(client/client, datum/asset_pack/pack)
+	#warn impl
+
+/datum/asset_transport/proc/send_item(client/client, datum/asset_item/item)
+	#warn impl
 
 /// Sends a list of browser assets to a client
 /// client - a client or mob

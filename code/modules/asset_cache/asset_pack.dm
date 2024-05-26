@@ -33,7 +33,7 @@
 	var/loaded = FALSE
 
 	/// a record of filename = url when we're loaded and pushed to a transport.
-	var/tmp/list/paths
+	var/tmp/list/loaded_urls
 
 	/// having this on will force something to be sent via
 	/// browse_rsc(), ensuring it always exists in the cache folder
@@ -122,7 +122,7 @@
 	#warn impl
 
 /datum/asset_pack/proc/get_url(filename)
-	. = paths[filename]
+	. = loaded_urls[filename]
 	if(isnull(.))
 		CRASH("failed to get url for [filename] on [type] ([id || "compile-time"]). something is terribly wrong!")
 

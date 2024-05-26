@@ -13,6 +13,8 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	/// our hash
 	var/hash
 	/// the actual file handle
+	///
+	/// * this should always be something in data/, as this needs to be available during the whole round!
 	var/file
 	/// our extension, excluding the .
 	var/ext
@@ -26,6 +28,10 @@ VV_PROTECT_READONLY(/datum/asset_item)
 
 	/// if set, we are shoved in a namespace of this id
 	var/namespace_id
+
+	/// url to resolve this from a client browser
+	/// set by the asset transport that loads us
+	var/loaded_url
 
 /datum/asset_item/New(name, file)
 	// set name

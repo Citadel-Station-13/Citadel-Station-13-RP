@@ -16,7 +16,10 @@
 	var/subscriber_delegate
 	var/fatally_errored = FALSE
 	var/message_queue
-	var/list/sent_assets = list()
+	/**
+	 * sent asset packs
+	 */
+	var/list/datum/asset_pack/sent_assets = list()
 	// Vars passed to initialize proc (and saved for later)
 	var/initial_strict_mode
 	var/initial_fancy
@@ -298,7 +301,7 @@
 	. = asset.send(client)
 	if(istype(asset, /datum/asset_pack/spritesheet))
 		var/datum/asset_pack/spritesheet/spritesheet = asset
-		send_message("asset/stylesheet", spritesheet.css_filename())
+		send_message("asset/stylesheet", spritesheet.get_css_url())
 	send_raw_message(asset.get_serialized_url_mappings())
 
 /**

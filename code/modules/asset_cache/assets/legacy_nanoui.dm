@@ -1,7 +1,8 @@
 /datum/asset_pack/simple/namespaced/nanoui
 	legacy = TRUE
+	do_not_separate = TRUE
 
-/datum/asset_pack/simple/namespaced/nanoui/register()
+/datum/asset_pack/simple/namespaced/nanoui/generate()
 	var/list/dirs = list(
 		"nano/css/",
 		"nano/images/",
@@ -22,4 +23,4 @@
 	for(var/path in directory_walk_exts(dirs, exts, 0))
 		var/fname = filepath_extract_name(path)
 		assets[fname] = file(path)
-	..()
+	return ..()

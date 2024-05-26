@@ -3,11 +3,11 @@ SUBSYSTEM_DEF(assets)
 	init_order = INIT_ORDER_ASSETS
 	subsystem_flags = SS_NO_FIRE
 
-	/// assets by type; this is for hardcoded assets
+	/// asset packs by type; this is for hardcoded assets
 	///
 	/// an asset is either registered by type, or id, never both.
 	var/static/list/assets_by_type = list()
-	/// assets by id; this is for dynamic assets
+	/// asset packs by id; this is for dynamic assets
 	///
 	/// an asset is either registered by type, or id, never both.
 	var/static/list/assets_by_id = list()
@@ -15,13 +15,15 @@ SUBSYSTEM_DEF(assets)
 	/// our active asset transport
 	var/datum/asset_transport/transport
 
+	// todo: cache system.
+
 	/// if non-null, this is our effective cache commit
-	var/cache_commit
+	// var/cache_commit
 	/// are we using cached data this round?
-	var/cache_enabled = FALSE
+	// var/cache_enabled = FALSE
 
 /datum/controller/subsystem/assets/Initialize(timeofday)
-	detect_cache_worthiness()
+	// detect_cache_worthiness()
 
 	for(var/datum/asset_pack/path as anything in typesof(/datum/asset_pack))
 		if(path == initial(path.abstract_type))
@@ -80,7 +82,10 @@ SUBSYSTEM_DEF(assets)
 	if(isnull(target))
 		return FALSE
 	var/datum/asset_pack/resolved = load_asset_pack(identifier)
-	var/list/targets = islist(target)? target ; list(target)
+	var/list/targets = islist(target)? target : list(target)
+
+	for(var/client/target as anything in targets)
+		transport.send_pack(target, resolved)
 
 	#warn impl
 
