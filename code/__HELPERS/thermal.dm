@@ -47,6 +47,10 @@
 		return (temperature_1 * heat_capacity_1 + temperature_2 * heat_capacity_2) / heat_capacity_1 + heat_capacity_2
 	CRASH("Called share_thermal_energy with invalid heat_capacity_1 and heat_capacity_2")
 
+/proc/share_thermal_energy_gas(temperature, heat_capacity, datum/gas_mixture/gas)
+	var/temp_2 = gas.temperature
+	var/heat_cap_2 = gas.heat_capacity()
+	return share_thermal_energy(temperature, heat_capacity, temp_2, heat_cap_2)
 /**
  * Calculates shared new temperature of the two objects, assuming one second for energy to transfer
  * takes conductivity into account, stepsize is 1 second
@@ -56,10 +60,15 @@
  * * heat_capacity_1 - thermal energy capacity of thermal storage 1
  * * temperature_2 - temperature of thermal storage 2
  * * heat_capacity_2 - thermal energy capacity of thermal storage 2
+ * * thermal_conductivity - the conductivity to be used for the transfer
  *
  * @return the new temperature of thermal object 1
  */
 /proc/share_thermal_energy_conductivity(temperature_1, heat_capacity_1, temperature_2, heat_capacity_2, thermal_conductivity)
 	return (temperature_1 + thermal_conductivity * (temperature_1 - temperature_2) / heat_capacity_1)
+
+#define SHARE_THERMALS(t1, c1, t2, c2) share_thermal_energy(t1,c1,t2,c2)
+#define ADD_THERMALS(t, c, e) add_thermal_energy(t, c, e)
+#define GET_THERMALS(t, c, tt) get_thermal_energy_needed(t, c, tt)
 
 
