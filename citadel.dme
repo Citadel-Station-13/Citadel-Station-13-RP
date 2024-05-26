@@ -4447,7 +4447,6 @@
 #include "code\modules\projectiles\guns\projectile\magic\staff.dm"
 #include "code\modules\projectiles\guns\projectile\magic\wand.dm"
 #include "code\modules\projectiles\magazines\magazine.dm"
-#include "code\modules\projectiles\magazines\unsorted.dm"
 #include "code\modules\projectiles\projectile\projectile.dm"
 #include "code\modules\projectiles\projectile\visuals.dm"
 #include "code\modules\projectiles\projectile\beam\beams.dm"
