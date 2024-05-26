@@ -97,7 +97,7 @@
 
 	add_common_assets()
 
-	SSassets.send_asset_pack(nuser.client, /datum/asset_pack/simple/namespaced/nanoui)
+	SSassets.send_asset_pack(nuser.client, /datum/asset_pack/simple/nanoui)
 
 /**
  * Use this proc to add assets which are common to (and required by) all nano uis
@@ -416,6 +416,7 @@
 	if(status == UI_CLOSE)
 		return
 
+	SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/nanoui)
 	user << browse(get_html(), "window=[window_id];[window_size][window_options]")
 	winset(user, "mapwindow.map", "focus=true") // return keyboard focus to map
 	on_close_winset()

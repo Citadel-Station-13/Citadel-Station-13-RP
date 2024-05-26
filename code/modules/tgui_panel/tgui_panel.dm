@@ -48,8 +48,8 @@
 		strict_mode = TRUE,
 		assets = list(/datum/asset_pack/simple/tgui_panel),
 	)
-	window.send_asset(/datum/asset_pack/simple/namespaced/fontawesome)
-	window.send_asset(/datum/asset_pack/simple/namespaced/tgfont)
+	window.send_asset(/datum/asset_pack/simple/fontawesome)
+	window.send_asset(/datum/asset_pack/simple/tgfont)
 	window.send_asset(/datum/asset_pack/spritesheet/chat)
 	// Other setup
 	request_telemetry()

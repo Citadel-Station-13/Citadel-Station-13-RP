@@ -2252,7 +2252,6 @@
 #include "code\modules\asset_cache\assets\tgui.dm"
 #include "code\modules\asset_cache\assets\vv.dm"
 #include "code\modules\asset_cache\assets\artwork\crayons.dm"
-#include "code\modules\asset_cache\assets\characters\loadout.dm"
 #include "code\modules\asset_cache\assets\chemistry\bottles.dm"
 #include "code\modules\asset_cache\assets\chemistry\patches.dm"
 #include "code\modules\asset_cache\assets\chemistry\pills.dm"

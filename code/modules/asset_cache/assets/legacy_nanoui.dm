@@ -1,8 +1,8 @@
-/datum/asset_pack/simple/namespaced/nanoui
+/datum/asset_pack/simple/nanoui
 	legacy = TRUE
 	do_not_separate = TRUE
 
-/datum/asset_pack/simple/namespaced/nanoui/generate()
+/datum/asset_pack/simple/nanoui/generate()
 	var/list/dirs = list(
 		"nano/css/",
 		"nano/images/",

@@ -10,7 +10,7 @@
 	if(!check_rights(R_PERMISSIONS))
 		return
 	SSassets.send_asset_pack(usr, /datum/asset_pack/simple/permissions)
-	SSassets.send_asset_pack(usr, /datum/asset_pack/simple/namespaced/common)
+	SSassets.send_asset_pack(usr, /datum/asset_pack/simple/common)
 
 	var/output = {"<!DOCTYPE html>
 <html>
