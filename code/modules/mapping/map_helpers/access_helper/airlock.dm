@@ -531,4 +531,26 @@
 /obj/map_helper/access_helper/airlock/offmap
 	icon_state = "offmap"
 
+// For antagonists and off-station personnel; traders, pirates, etc.
+/obj/map_helper/access_helper/airlock/disconnected
+	icon_state = "disconnected"
 
+/obj/map_helper/access_helper/airlock/disconnected/trader
+	req_access = list(
+		ACCESS_FACTION_TRADER,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/pirate
+	req_access = list(
+		ACCESS_FACTION_PIRATE,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/syndicate
+	req_access = list(
+		ACCESS_FACTION_SYNDICATE,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/talon
+	req_access = list(
+		ACCESS_FACTION_TALON,
+	)

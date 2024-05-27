@@ -2200,9 +2200,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Testing Room";
-	req_access = list(47)
+	name = "Testing Room"
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/testingroom)
 "bzV" = (
@@ -4422,11 +4422,6 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "cYs" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Testing Room";
-	req_access = list(47)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -4437,6 +4432,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/research{
+	id_tag = "researchdoor";
+	name = "Testing Room"
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
 "cYM" = (
@@ -5114,9 +5114,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/science/toxins,
 /obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
-	req_access = list(8)
+	name = "Toxins Storage"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -8132,13 +8132,11 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "fqb" = (
+/obj/structure/fans/tiny,
+/obj/map_helper/airlock/door/simple,
 /obj/machinery/door/airlock/glass_external{
 	name = "Cargo Airlock";
-	req_one_access = list(31)
-	},
-/obj/machinery/door/blast/regular/open{
-	id = "main_ext_blast";
-	name = "Surface External Blast Door"
+	req_one_access = null
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -8148,8 +8146,11 @@
 	name = "Cargo shuttle access shutter";
 	opacity = 0
 	},
-/obj/structure/fans/tiny,
-/obj/map_helper/airlock/door/simple,
+/obj/machinery/door/blast/regular/open{
+	id = "main_ext_blast";
+	name = "Surface External Blast Door"
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/cargodock)
 "frd" = (
@@ -9136,7 +9137,9 @@
 /turf/simulated/floor/wood,
 /area/library)
 "gbq" = (
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = null
+	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -9145,6 +9148,7 @@
 	name = "Surface Checkpoint Shutter";
 	opacity = 0
 	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
 "gbL" = (
@@ -9561,7 +9565,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "gsT" = (
-/obj/machinery/door/airlock/maintenance/rnd,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -9572,6 +9575,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/rnd/hallway)
 "gtq" = (
@@ -11191,15 +11198,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "hkz" = (
+/obj/map_helper/airlock/door/simple,
 /obj/machinery/door/airlock/glass_external{
 	name = "Cargo Airlock";
-	req_one_access = list(31)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
 	},
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/cargodock)
 "hkM" = (
@@ -11774,7 +11782,9 @@
 /area/security/prison)
 "hGg" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = null
+	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -11783,6 +11793,7 @@
 	name = "Surface Checkpoint Shutter";
 	opacity = 0
 	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
 "hGn" = (
@@ -13551,7 +13562,10 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "iFZ" = (
-/obj/machinery/door/airlock/maintenance/rnd,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/rnd/xenoarch_storage)
 "iGc" = (
@@ -13561,12 +13575,15 @@
 /turf/simulated/floor/wood,
 /area/maintenance/research/lower)
 "iGp" = (
-/obj/machinery/door/airlock/maintenance/cargo,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "iGr" = (
@@ -16047,8 +16064,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "kkQ" = (
-/obj/machinery/door/airlock/maintenance/rnd,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "klc" = (
@@ -20790,16 +20810,16 @@
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main)
 "niP" = (
-/obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
-	req_access = list(8)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/research{
+	name = "Toxins Storage"
+	},
+/obj/map_helper/access_helper/airlock/station/science/toxins,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "niT" = (
@@ -22135,10 +22155,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "nWC" = (
-/obj/machinery/door/airlock/maintenance/cargo,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "nXc" = (
@@ -23061,8 +23084,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
 "oyI" = (
-/obj/machinery/door/airlock/maintenance/rnd,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "oyK" = (
@@ -25105,10 +25131,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "pFY" = (
-/obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
-	req_access = list(8)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -25116,6 +25138,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 8
 	},
+/obj/machinery/door/airlock/research{
+	name = "Toxins Storage"
+	},
+/obj/map_helper/access_helper/airlock/station/science/toxins,
 /turf/simulated/floor/plating,
 /area/rnd/tankstorage)
 "pGv" = (
@@ -26746,14 +26772,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qEU" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	name = "Cargo Garage";
-	req_one_access = list(31)
-	},
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/metal{
+	name = "Cargo Garage"
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
 "qFN" = (
@@ -29634,16 +29660,7 @@
 /turf/simulated/floor/plating,
 /area/lawoffice)
 "smW" = (
-/obj/machinery/door/airlock/glass/security,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	id = "sfc_check_shutter_alt";
-	name = "Surface Checkpoint Shutter";
-	opacity = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -29653,6 +29670,18 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass/security{
+	req_one_access = null
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "sfc_check_shutter_alt";
+	name = "Surface Checkpoint Shutter";
+	opacity = 0
+	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
 "snj" = (
@@ -33403,13 +33432,15 @@
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva)
 "uqR" = (
-/obj/machinery/door/airlock/glass/medical{
-	name = "Science First Aid";
-	req_one_access = list(5,47)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/glass/medical{
+	name = "Science First Aid";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "urm" = (
@@ -33886,10 +33917,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/door/airlock/command{
-	name = "Server Room";
-	req_access = list(30)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -33900,6 +33927,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/command{
+	name = "Server Room";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "uBl" = (
@@ -34976,13 +35009,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "vls" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Cargo Substation";
-	req_one_access = list(11,24,50)
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/engineering{
+	name = "Cargo Substation";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "vly" = (
@@ -35966,9 +36000,6 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "vWP" = (
-/obj/machinery/door/airlock/glass/research{
-	name = "Chemical Research"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -35982,6 +36013,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass/research{
+	name = "Chemical Research";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
 "vWS" = (
@@ -38554,10 +38590,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
 "xvW" = (
-/obj/machinery/door/airlock/glass/research{
-	name = "Xenoarch Storage";
-	req_access = list(65)
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -38565,6 +38597,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/glass/research{
+	name = "Xenoarch Storage";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenoarch_storage)
 "xvX" = (
@@ -39627,7 +39665,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "yfX" = (
-/obj/machinery/door/airlock/maintenance/cargo,
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/plating,
 /area/quartermaster/garage)
 "ygq" = (
