@@ -15,17 +15,19 @@
 	return locate(/obj/machinery/door/airlock) in loc
 
 /obj/map_helper/access_helper/airlock/station
-	icon_state = "general"
+	icon_state = "station"
 
 /obj/map_helper/access_helper/airlock/station/maintenance
 	req_access = list(
 		ACCESS_ENGINEERING_MAINT,
 	)
+	icon_state = "engineering"
 
 /obj/map_helper/access_helper/airlock/station/external_airlock
 	req_access = list(
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
+	icon_state = "engineering"
 
 /**
  * for pilots
@@ -43,6 +45,7 @@
 	req_access = list(
 		ACCESS_ENGINEERING_TECHSTORAGE,
 	)
+	icon_state = "engineering"
 
 /**
  * for general EVA / stationkeeping storage
@@ -52,6 +55,7 @@
 		ACCESS_COMMAND_EVA,
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
+	icon_state = "command"
 
 /**
  * 'general station access' for use later in some maps
@@ -60,6 +64,7 @@
  */
 /obj/map_helper/access_helper/airlock/station/public
 	req_access = list()
+	icon_state = "station"
 
 /obj/map_helper/access_helper/airlock/station/security
 	icon_state = "security"
