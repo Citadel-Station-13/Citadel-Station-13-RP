@@ -34,6 +34,11 @@
 	/// valid variations; variations are "[bp_tag]-[variation]"
 	var/list/variations
 
+	/// our preview icon; defaults to [icon]
+	var/preview_icon
+	/// our preview icon state; defaults to null, for automatic generation of preview.
+	var/preview_icon_state
+
 	/// mask icon; defaults to [icon]
 	///
 	/// * states in here should just be "[icon_state && "[icon_state]-"][bp_tag]"
