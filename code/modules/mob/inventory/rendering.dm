@@ -263,13 +263,13 @@
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// todo: eh reevaluate later
 	// determine if in hands
-	var/inhands = isnum(slot_id_or_hand_index)? slot_id_or_hand_index : null
+	var/inhands = isnum(slot_or_hand)? slot_or_hand : null
 	var/datum/inventory_slot/slot_meta
 	// resolve slot
 	if(inhands)
-		slot_meta = resolve_inventory_slot((slot_id_or_hand_index % 2)? /datum/inventory_slot/abstract/hand/left : /datum/inventory_slot/abstract/hand/right)
+		slot_meta = resolve_inventory_slot((slot_or_hand % 2)? /datum/inventory_slot/abstract/hand/left : /datum/inventory_slot/abstract/hand/right)
 	else
-		slot_meta = resolve_inventory_slot(slot_id_or_hand_index)
+		slot_meta = resolve_inventory_slot(slot_or_hand)
 
 	var/list/resolved = resolve_worn_assets(M, slot_meta, inhands, bodytype)
 
