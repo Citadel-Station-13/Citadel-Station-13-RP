@@ -53,6 +53,12 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 
 	return list(R + x,R,R, G,G + x,G, B,B,B + x)
 
+/// global read-only greyscale color matrix
+/// i will replace your eyelids with chilli peppers if you dare use this in a non read-only context.
+/// infact, to be safe, **do not use this other than to directly assign an /atom's color variable.**
+/// seriously, fucking don't. an admin WILL fuck up and VV it if you give a reference to a normal variable!
+GLOBAL_LIST_INIT(color_matrix_greyscale, color_matrix_greyscale())
+
 /**
  * Greyscale matrix.
  */

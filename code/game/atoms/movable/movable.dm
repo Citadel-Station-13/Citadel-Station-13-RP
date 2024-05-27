@@ -147,9 +147,12 @@
 	var/blocks_emissive = FALSE
 	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
 	/// * this variable is not visible and should not be edited in the map editor.
+	//  todo: replace with emissive_renderer, this shouldn't be needed as a separate thing
 	var/tmp/atom/movable/emissive_blocker/em_block
 	/// Internal holder for emissives. Definitely don't directly use, this is absolutely an insane Citadel Moment(tm).
 	/// * this variable is not visible and should not be edited in the map editor.
+	/// * if this is used, you don't need / shouldn't use em_block, because you should just put black non-transparent overlays on this!
+	//  todo: rename to emissive_renderer
 	var/tmp/atom/movable/emissive_render/em_render
 
 	//? Icon Scale
@@ -184,6 +187,7 @@
 			gen_emissive_blocker.appearance_flags |= appearance_flags
 			add_overlay(gen_emissive_blocker)
 		if(EMISSIVE_BLOCK_UNIQUE)
+			// todo: no more em_block, use em_render.
 			add_emissive_blocker()
 
 /atom/movable/Destroy(force)
@@ -516,7 +520,7 @@
 //? Emissives
 /atom/movable/proc/update_emissive_layers()
 	em_block?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
-	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
+	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer + 1)
 
 /atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
 	if(em_block)

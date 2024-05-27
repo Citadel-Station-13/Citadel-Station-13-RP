@@ -42,6 +42,11 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
+	//* Appearance *//
+	/// bodyset to use
+	var/datum/bodyset/bodyset = /datum/bodyset
+	#warn hook in new
+
 	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits

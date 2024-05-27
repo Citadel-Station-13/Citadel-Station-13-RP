@@ -58,7 +58,6 @@
 	/// Chance of missing.
 	var/base_miss_chance = 20
 
-
 //! ## APPEARANCE VARS
 	/// Snowflake warning, reee. Used for slime limbs.
 	var/nonsolid

@@ -188,6 +188,17 @@
 	//? for equipment slots: prioritized over icon, icon_state, icon dimensions
 	/// state to use; icon_state is used if this isn't set
 	var/worn_state
+	/// override worn emissive state
+	/// this obeys the same stuff as worn_state otherwise
+	/// emissive state should be:
+	/// * white pixel = lit
+	/// * black pixel = unlit
+	/// * transparency = how much to allow previous layers to shine through
+	///
+	/// if this doesn't exist,
+	/// the entire icon is an emissive blocker
+	var/worn_emissive_state
+	#warn emissives :D besure to coerce it with a grayscale matrix..
 	/// worn icon used instead of base icon
 	var/icon/worn_icon
 	/// dimensions of our worn icon file if different from icon
@@ -245,10 +256,10 @@
  *
  * @params
  * * M - the mob we're rendering
- * * slot_id_or_hand_index - the slot ID or numerical held index we're in
+ * * slot_or_hand - the slot ID or numerical held index we're in
  * * bodytype - the effective bodytype
  */
-/obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_DEFAULT)
+/obj/item/proc/render_mob_appearance(mob/M, slot_or_hand, bodytype = BODYTYPE_DEFAULT)
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// todo: eh reevaluate later
 	// determine if in hands
@@ -262,7 +273,31 @@
 
 	var/list/resolved = resolve_worn_assets(M, slot_meta, inhands, bodytype)
 
+	#warn route 1: list(list(normal), list(emissives))
+
 	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y], resolved[WORN_DATA_ALIGN_Y])
+
+/**
+ * wrapper for [render_mob_appearance()]
+ *
+ * do not use this in place of it if you need both types of overlays!
+ *
+ * @return normal, non-emissive overlays
+ */
+/obj/item/proc/render_mob_overlays(mob/M, slot_or_hand, bodytype = BODYTYPE_DEFAULT)
+	var/list/i_love_typescript = render_mob_appearance()
+	return i_love_typescript[1] // grab non emissives
+
+/**
+ * wrapper for [render_mob_appearance()]
+ *
+ * do not use this in place of it if you need both types of overlays!
+ *
+ * @return special, emissive overlays
+ */
+/obj/item/proc/render_mob_emissive_overlays(mob/M, slot_or_hand, bodytype = BODYTYPE_DEFAULT)
+	var/list/i_love_typescript = render_mob_appearance()
+	return i_love_typescript[2] // grab non emissives
 
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y, align_y)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.

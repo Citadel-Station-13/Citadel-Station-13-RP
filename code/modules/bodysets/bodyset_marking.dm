@@ -28,6 +28,8 @@
 	var/icon
 	/// icon state to render from
 	var/icon_state
+	/// emissive state to use instead of emissive-ing the entire icon state
+	var/emissive_state
 	/// colorable? we use single-color matrix
 	var/colorable = TRUE
 	/// ... unless we use add coloration because people are stupid and keep using add for wahtever reason
@@ -51,9 +53,9 @@
  * * for_bodypart - the bodypart we're rendering for
  * * with_descriptor - our marking descriptor that specifies colors and other things
  *
- * @return list(list(normal overlays), null | list(emissive_overlays))
+ * @return list(normal overlay | null, emissive_overlay | null)
  */
-/datum/bodyset_marking/proc/render(obj/item/organ/external/for_bodypart, datum/bodyset_marking_descriptor/using_descriptor)
+/datum/bodyset_marking/proc/render(bodypart_tag, datum/bodyset_marking_descriptor/using_descriptor, obj/item/organ/external/for_bodypart)
 
 /datum/bodyset_marking/legacy
 	// PLEASE STOP USING THIS.
