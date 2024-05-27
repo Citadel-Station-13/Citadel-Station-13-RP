@@ -32,11 +32,7 @@
 //	cyborg_noun = null
 
 	icon_template   = 'icons/mob/species/adherent/template.dmi'
-	icobase         = 'icons/mob/species/adherent/body.dmi'
-	deform          = 'icons/mob/species/adherent/body.dmi'
 	preview_icon    = 'icons/mob/species/adherent/preview.dmi'
-	damage_overlays = 'icons/mob/species/adherent/damage_overlay.dmi'
-	damage_mask     = 'icons/mob/species/adherent/damage_mask.dmi'
 	blood_mask      = 'icons/mob/species/adherent/blood_mask.dmi'
 
 	siemens_coefficient  = 0

@@ -92,10 +92,6 @@
 	var/species_statpanel = FALSE
 
 	//? Icons
-	/// Normal icon set.
-	var/icobase      = 'icons/mob/species/human/body.dmi'
-	/// Mutated icon set.
-	var/deform       = 'icons/mob/species/human/deformed_body.dmi'
 	/// Preview icon used in species selection.
 	var/preview_icon = 'icons/mob/species/human/preview.dmi'
 	/// Species-specific husk sprite if applicable.
@@ -118,8 +114,6 @@
 	var/color_mult = 0
 	/// force non greyscale icons to greyscale before multiplying? WARNING :CITADEL JANK, REPLACE ASAP
 	var/color_force_greyscale = FALSE
-	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
-	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
 	var/blood_mask      = 'icons/mob/species/human/blood_mask.dmi'
 	/// The icon_state used inside OnFire.dmi for when on fire.
 	var/fire_icon_state = "humanoid"
