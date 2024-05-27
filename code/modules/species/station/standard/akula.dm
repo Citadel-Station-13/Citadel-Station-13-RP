@@ -5,10 +5,9 @@
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	primitive_form = SPECIES_MONKEY_AKULA
 
-	icobase      = 'icons/mob/species/akula/body.dmi'
-	deform       = 'icons/mob/species/akula/deformed_body.dmi'
+	bodyset = /datum/bodyset/organic/akula
+
 	preview_icon = 'icons/mob/species/akula/preview.dmi'
-	husk_icon    = 'icons/mob/species/akula/husk.dmi'
 	default_bodytype = BODYTYPE_AKULA
 
 	sprite_accessory_defaults = list(
