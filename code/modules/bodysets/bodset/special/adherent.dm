@@ -4,6 +4,10 @@
 /datum/bodyset/special/adherent
 	abstract_type = /datum/bodyset/special/adherent
 
+	base_id = "adherent"
+
+	body_parts = BP_ALL_STANDARD
+
 	greyscale = FALSE
 
 	mask_icon = 'icons/mobs/bodysets/special/adherent/mask.dmi'

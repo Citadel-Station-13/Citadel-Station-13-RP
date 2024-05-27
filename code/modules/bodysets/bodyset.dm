@@ -1,6 +1,21 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+/// id = datum lookup for /datum/bodyset
+/// initialized by SSearly_init
+GLOBAL_LIST_EMPTY(bodyset_lookup)
+
+/proc/init_bodyset_lookup()
+	GLOB.bodyset_lookup = . = list()
+	for(var/datum/bodyset/path as anything in subtypesof(/datum/bodyset))
+		if(initial(path.abstract_type) == path)
+			contineu
+		var/datum/bodyset/instance = new path
+		if(.[instance.id])
+			stack_trace("collision between [path] and [.[instance.id]:type]")
+			continue
+		.[instance.id] = instance
+
 /**
  * Descriptor / metadata about a set of carbon/mob body sprites.
  */
@@ -11,6 +26,9 @@
 	var/id
 	/// name - should be unique
 	var/name
+	/// base id; if set, we use that for checking for markings and whatnot.
+	/// used so you can choose between a set of similar-enough bodysets that it's still considered the same
+	var/base_id
 	/// icon file
 	///
 	/// * should have a list of "[icon_state && "[icon_state]-"][bp_tag]" states
@@ -31,13 +49,17 @@
 		BP_R_LEG,
 		BP_R_FOOT,
 	)
+	/// which bodyparts are gendered
+	var/list/gendered_parts = list()
 	/// are we meant to be a greyscale set? if set to TRUE, we'll be colored as such
 	///
 	/// * Please greyscale your bodysets where-ever possible.
 	/// * DO NOT RELY ON DEFAULTING THIS VALUE. You must set it explicitly, or the behavior is undefined.
 	var/greyscale
-	/// valid variations; variations are "[bp_tag]-[variation]"
+	/// valid variations; list("string_id" = /datum/bodyset_variation{use anonymous types!})
 	var/list/variations
+	/// valid overlays; list("string_id" = /datum/bodyset_overlay{use anonymous types!})
+	var/list/overlays
 
 	/// our preview icon; defaults to [icon]
 	var/preview_icon
@@ -64,6 +86,10 @@
 	var/damage_overlay_brute_stages
 	/// max burn stages
 	var/damage_overlay_burn_stages
+
+/datum/bodyset/New()
+	if(isnull(src.base_id))
+		src.base_id = src.id
 
 /datum/bodyset/proc/render(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart)
 

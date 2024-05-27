@@ -94,8 +94,6 @@
 	//? Icons
 	/// Preview icon used in species selection.
 	var/preview_icon = 'icons/mob/species/human/preview.dmi'
-	/// Species-specific husk sprite if applicable.
-	var/husk_icon    = 'icons/mob/species/default_husk.dmi'
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon_template = 'icons/mob/species/template.dmi'
 	/// Makes the icon wider/thinner.

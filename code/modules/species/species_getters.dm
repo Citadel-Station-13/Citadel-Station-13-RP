@@ -70,9 +70,6 @@
 /datum/species/proc/get_effective_bodyset(mob/living/carbon/human/H)
 	#warn IM GOING TO FUCKING THROW SOMETHING
 
-/datum/species/proc/get_husk_icon(mob/living/carbon/human/H)
-	return husk_icon
-
 // used for limb caching
 // todo: rework limbs and get rid of this, numerical static keys are dumb as fuck,
 // limbs should use their own types!

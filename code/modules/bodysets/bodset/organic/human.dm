@@ -3,3 +3,11 @@
 
 /datum/bodyset/organic/human
 	id = "human"
+
+/**
+ * this is such a widely used one it's just a hardcoded type
+ */
+/datum/bodyset_overlay/husk/human
+	id = BODYSET_OVERLAY_HUSKED
+
+#warn impl

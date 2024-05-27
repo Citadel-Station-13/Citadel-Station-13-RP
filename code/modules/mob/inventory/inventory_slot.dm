@@ -1,12 +1,12 @@
 /// global slot meta cache - all ids must be string!
 /// initialized by SSearly_init
-GLOBAL_LIST_EMPTY(inventory_slot_meta)
+GLOBAL_LIST_EMPTY(inventory_slot_lookup)
 /// global slot meta cache by type - only works for hardcoded
 GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
-/proc/init_inventory_slot_meta()
+/proc/init_inventory_slot_lookup()
 	. = list()
-	GLOB.inventory_slot_meta = .
+	GLOB.inventory_slot_lookup = .
 	GLOB.inventory_slot_type_cache = list()
 	for(var/path in subtypesof(/datum/inventory_slot))
 		var/datum/inventory_slot/M = path
@@ -19,15 +19,15 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		.[M.id || M.type] = M
 		if(!(M.inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
 			GLOB.inventory_slot_type_cache[M.type] = M
-	tim_sort(., GLOBAL_PROC_REF(cmp_inventory_slot_meta_dsc), TRUE)
-	tim_sort(GLOB.inventory_slot_type_cache, GLOBAL_PROC_REF(cmp_inventory_slot_meta_dsc), TRUE)
+	tim_sort(., GLOBAL_PROC_REF(cmp_inventory_slot_lookup_dsc), TRUE)
+	tim_sort(GLOB.inventory_slot_type_cache, GLOBAL_PROC_REF(cmp_inventory_slot_lookup_dsc), TRUE)
 
 /proc/all_inventory_slot_ids()
 	. = list()
-	for(var/id in GLOB.inventory_slot_meta)
+	for(var/id in GLOB.inventory_slot_lookup)
 		. += id
 
-/proc/cmp_inventory_slot_meta_dsc(datum/inventory_slot/a, datum/inventory_slot/b)
+/proc/cmp_inventory_slot_lookup_dsc(datum/inventory_slot/a, datum/inventory_slot/b)
 	return b.sort_order - a.sort_order
 
 /**
@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		return id
 	else if(ispath(id))
 		return inventory_slot_type_lookup(id)
-	return GLOB.inventory_slot_meta[id]
+	return GLOB.inventory_slot_lookup[id]
 
 /**
  * returns inventory slot render key for an id
@@ -56,11 +56,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	. = GLOB.inventory_slot_type_cache[type]
 	if(.)
 		return
-	for(var/id in GLOB.inventory_slot_meta)
-		var/datum/inventory_slot/slot = GLOB.inventory_slot_meta[id]
+	for(var/id in GLOB.inventory_slot_lookup)
+		var/datum/inventory_slot/slot = GLOB.inventory_slot_lookup[id]
 		if(slot.type != type)
 			continue
-		GLOB.inventory_slot_meta[type] = . = slot
+		GLOB.inventory_slot_lookup[type] = . = slot
 		break
 	if(!.)
 		CRASH("Failed to do type lookup for [type].")
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * stores all the required information for an inventory slot
  *
  * **Typepaths for these are used directly in most circumstances of slot IDs**
- * **Use get_inventory_slot_meta(id) to automatically translate anything to the static datum.**
+ * **Use get_inventory_slot_lookup(id) to automatically translate anything to the static datum.**
  *
  * ABSTRACT SLOTS:
  * Abstract slots attempts to do something special, based on mob.

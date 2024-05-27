@@ -59,13 +59,6 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[character]"])
 	return S.get_default_sprite_accessory(arglist(args))
 
-/datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
-	if(H)
-		var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-		if(S)
-			return S.get_husk_icon(H)
-	 return ..()
-
 /datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()
 	wrapped_species_by_ref["\ref[H]"] = default_form
