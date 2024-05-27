@@ -35181,8 +35181,9 @@
 /obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "EVA Operations";
-	req_one_access = list(1,38)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
 /turf/simulated/floor/tiled/steel,
 /area/security/evastorage)
 "wpd" = (
