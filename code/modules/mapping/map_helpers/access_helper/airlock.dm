@@ -29,6 +29,16 @@
 	)
 	icon_state = "engineering"
 
+/obj/map_helper/access_helper/airlock/station/hangar
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_GENERAL_PILOT,
+	)
+	icon_state = "station"
+
 /**
  * for pilots
  */
@@ -46,6 +56,13 @@
 		ACCESS_ENGINEERING_TECHSTORAGE,
 	)
 	icon_state = "engineering"
+
+/obj/map_helper/access_helper/airlock/station/technical_storage/secure
+	req_access = list(
+		ACCESS_ENGINEERING_TECHSTORAGE,
+		ACCESS_COMMAND_BRIDGE,
+	)
+	icon_state = "command"
 
 /**
  * for general EVA / stationkeeping storage
