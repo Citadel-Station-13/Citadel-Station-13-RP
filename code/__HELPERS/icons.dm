@@ -803,12 +803,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		obj_flags &= ~FROZEN
 */
 
-/// Generate a filename for this asset
-/// The same asset will always lead to the same asset name
-/// (Generated names do not include file extention.)
-/proc/generate_asset_name(file)
-	return "asset.[md5(fcopy_rsc(file))]"
-
 /**
  * Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
  * exporting it as text, and then parsing the base64 from that.
@@ -850,14 +844,10 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
-			var/name = SANITIZE_FILENAME("[generate_asset_name(thing)].png")
-			if (!SSassets.cache[name])
-				SSassets.transport.register_asset(name, thing)
-			for (var/thing2 in targets)
-				SSassets.transport.send_assets(thing2, name)
+			var/datum/asset_item/dynamic/item = SSassets.register_and_send_dynamic_item_by_hash(targets, thing)
 			if(sourceonly)
-				return SSassets.transport.get_asset_url(name)
-			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
+				return item.get_url()
+			return "<img class='[extra_classes] icon icon-misc' src='[item.get_url()]'>"
 		var/atom/A = thing
 
 		I = A.icon

@@ -43,3 +43,16 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	if (extstart)
 		ext = "[copytext(name, extstart+1)]"
 
+/**
+ * dynamic asset items
+ *
+ * aka "i overengineered asset_pack, what if you just want to send one file?"
+ *
+ * well this is how.
+ */
+/datum/asset_item/dynamic
+	/// loaded url provided by transport; we are accessible from this by every client.
+	var/loaded_url
+
+/datum/asset_item/dynamic/proc/get_url()
+	return loaded_url

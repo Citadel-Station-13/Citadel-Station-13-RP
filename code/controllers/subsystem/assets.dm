@@ -6,13 +6,16 @@ SUBSYSTEM_DEF(assets)
 	/// asset packs by type; this is for hardcoded assets
 	///
 	/// an asset is either registered by type, or id, never both.
-	var/static/list/assets_by_type = list()
+	var/static/list/asset_packs_by_type = list()
 	/// asset packs by id; this is for dynamic assets
 	///
 	/// an asset is either registered by type, or id, never both.
-	var/static/list/assets_by_id = list()
+	var/static/list/asset_packs_by_id = list()
 	/// all asset packs
 	var/static/list/datum/asset_pack/asset_packs = list()
+
+	/// all dynamic or standalone asset items by md5
+	var/static/list/datum/asset_item/dynamic/dynamic_asset_items_by_md5 = list()
 
 	/// our active asset transport
 	var/datum/asset_transport/transport
@@ -56,11 +59,11 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/proc/register_asset_pack(datum/asset_pack/pack, by_type)
 	var/registered = FALSE
 	if(by_type)
-		ASSERT(!assets_by_type[pack.type])
-		assets_by_type[pack.type] = pack
+		ASSERT(!asset_packs_by_type[pack.type])
+		asset_packs_by_type[pack.type] = pack
 		registered = TRUE
 	if(pack.id)
-		assets_by_id[pack.id] = pack
+		asset_packs_by_id[pack.id] = pack
 		registered = TRUE
 	if(!registered)
 		CRASH("couldn't register by type or id")
@@ -74,9 +77,9 @@ SUBSYSTEM_DEF(assets)
 	if(istype(identifier, /datum/asset_pack))
 		return identifier
 	if(ispath(identifier))
-		return assets_by_type[identifier]
+		return asset_packs_by_type[identifier]
 	else
-		return assets_by_id[identifier]
+		return asset_packs_by_id[identifier]
 
 /**
  * fetches an asset datum, and ensures it's ready / loaded
@@ -109,6 +112,33 @@ SUBSYSTEM_DEF(assets)
 		transport.send_pack(target, resolved)
 
 	#warn impl
+
+/**
+ * @return /datum/asset_item/dynamic
+ */
+/datum/controller/subsystem/assets/proc/register_dynamic_item_by_hash(file)
+	RETURN_TYPE(/datum/asset_item/dynamic)
+
+/// Generate a filename for this asset
+/// The same asset will always lead to the same asset name
+/// (Generated names do not include file extention.)
+/proc/generate_asset_name(file)
+	return "asset.[md5(fcopy_rsc(file))]"
+
+/datum/controller/subsystem/assets/proc/send_dynamic_item_by_hash(list/client/targets, hash)
+
+/datum/controller/subsystem/assets/proc/send_dynamic_item(list/client/targets, datum/asset_item/dynamic/item)
+	if(!islist(targets))
+		targets = list(targets)
+
+/**
+ * @return /datum/asset_item/dynamic
+ */
+/datum/controller/subsystem/assets/proc/register_and_send_dynamic_item_by_hash(list/client/targets, file)
+	RETURN_TYPE(/datum/asset_item/dynamic)
+	send_dynamic_item(targets, register_dynamic_item_by_hash(file))
+
+#warn impl all
 
 #warn below
 
