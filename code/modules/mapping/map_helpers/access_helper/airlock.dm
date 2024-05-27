@@ -37,7 +37,14 @@
 		ACCESS_GENERAL_EXPLORER,
 		ACCESS_GENERAL_PILOT,
 	)
-	icon_state = "station"
+
+/obj/map_helper/access_helper/airlock/station/mining_operations
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_COMMAND_IAA,
+	)
 
 /**
  * for pilots
@@ -94,6 +101,20 @@
 		ACCESS_SECURITY_FORENSICS,
 	)
 
+/obj/map_helper/access_helper/airlock/station/security/processing
+	req_one_access = list(
+		ACCESS_SECURITY_BRIG,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SECURITY_FORENSICS,
+		ACCESS_COMMAND_IAA
+	)
+
+/obj/map_helper/access_helper/airlock/station/security/general
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_COMMAND_IAA,
+	)
+
 /obj/map_helper/access_helper/airlock/station/security/equipment
 	req_access = list(
 		ACCESS_SECURITY_EQUIPMENT,
@@ -139,6 +160,11 @@
 		ACCESS_ENGINEERING_MAIN,
 		ACCESS_ENGINEERING_ATMOS,
 		ACCESS_ENGINEERING_ENGINE,
+	)
+
+/obj/map_helper/access_helper/airlock/station/engineering/equipment
+	req_access = list(
+		ACCESS_ENGINEERING_MAIN,
 	)
 
 /**
@@ -333,6 +359,12 @@
 /obj/map_helper/access_helper/airlock/station/science/toxins
 	req_access = list(
 		ACCESS_SCIENCE_TOXINS,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/secure_storage
+	req_one_access = list (
+		ACCESS_COMMAND_CAPTAIN,
+		ACCESS_SCIENCE_RD,
 	)
 
 /**

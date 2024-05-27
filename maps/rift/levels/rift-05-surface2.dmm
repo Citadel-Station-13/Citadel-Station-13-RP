@@ -4023,7 +4023,7 @@
 	name = "Break Room";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "cwV" = (
@@ -10119,8 +10119,7 @@
 	req_access = list();
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/processing,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
 "gvL" = (
@@ -13889,8 +13888,7 @@
 	req_access = list();
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "iRD" = (
@@ -14010,8 +14008,7 @@
 	name = "Security";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "iVL" = (
@@ -14704,8 +14701,7 @@
 	req_access = list();
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/processing,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
 "jsd" = (
@@ -24844,7 +24840,7 @@
 	name = "Interrogation";
 	req_one_access = list()
 	},
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/processing,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
 "pwA" = (
@@ -27060,8 +27056,7 @@
 	name = "Security";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "qUt" = (
@@ -27299,7 +27294,7 @@
 	name = "Evidence Storage";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
 "rbR" = (
@@ -28705,8 +28700,7 @@
 	name = "Processing";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/processing,
 /turf/simulated/floor/tiled/monodark,
 /area/security/security_processing)
 "rUn" = (
@@ -29847,6 +29841,7 @@
 /area/maintenance/lower/medsec_maintenance)
 "sMg" = (
 /obj/machinery/door/airlock/maintenance/sec,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/plating,
 /area/security/breakroom)
 "sMm" = (
@@ -30902,8 +30897,7 @@
 	name = "Processing";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/processing,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "tAT" = (
@@ -32008,8 +32002,7 @@
 	name = "Processing";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/processing,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
 "unt" = (
@@ -32410,8 +32403,7 @@
 	name = "Security";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
-/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "uEv" = (
