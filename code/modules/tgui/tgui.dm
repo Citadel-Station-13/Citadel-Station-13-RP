@@ -117,8 +117,9 @@
 			// fancy = user.client.prefs.tgui_fancy,
 			fancy = TRUE,
 			assets = list(
-				get_asset_datum(/datum/asset_pack/simple/tgui),
-			))
+				/datum/asset_pack/simple/tgui,
+			),
+		)
 	else
 		window.send_message("ping")
 	var/flush_queue = FALSE
@@ -134,7 +135,7 @@
 		flush_queue |= window.send_asset(assetlike)
 	// ensure all assets are loaded before continuing
 	if (flush_queue)
-		user.client.browse_queue_flush()
+		user.client.asset_cache_flush_browse_queue()
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE,

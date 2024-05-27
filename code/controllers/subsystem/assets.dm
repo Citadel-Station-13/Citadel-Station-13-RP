@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(assets)
 	///
 	/// an asset is either registered by type, or id, never both.
 	var/static/list/assets_by_id = list()
+	/// all asset packs
+	var/static/list/datum/asset_pack/asset_packs = list()
 
 	/// our active asset transport
 	var/datum/asset_transport/transport
@@ -29,7 +31,7 @@ SUBSYSTEM_DEF(assets)
 		if(path == initial(path.abstract_type))
 			continue
 		var/datum/asset_pack/instance = new path
-		assets_by_type[path] = instance
+		register_asset_pack(instance, TRUE)
 
 		#warn transport swap will wreak havoc.
 
@@ -43,6 +45,25 @@ SUBSYSTEM_DEF(assets)
 #else
 		instance.load()
 #endif
+
+/**
+ * register an asset pack to make it able to be resolved or loaded
+ *
+ * @params
+ * * pack - the pack
+ * * by_type - do not use this, only used for subsystem.
+ */
+/datum/controller/subsystem/assets/proc/register_asset_pack(datum/asset_pack/pack, by_type)
+	var/registered = FALSE
+	if(by_type)
+		ASSERT(!assets_by_type[pack.type])
+		assets_by_type[pack.type] = pack
+		registered = TRUE
+	if(pack.id)
+		assets_by_id[pack.id] = pack
+		registered = TRUE
+	if(!registered)
+		CRASH("couldn't register by type or id")
 
 /**
  * fetches an asset datum, **without** ensuring it's ready / loaded

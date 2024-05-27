@@ -9,6 +9,11 @@
 	 */
 	var/assets = list()
 
+/datum/asset_pack/simple/New(id, list/assets)
+	..(id)
+	if(!isnull(assets))
+		src.assets = assets.Copy()
+
 /datum/asset_pack/simple/register()
 	. = list()
 	for(var/key in assets)

@@ -58,6 +58,10 @@
 	/// requires configuration to be enabled too.
 	var/allow_cached_generation = FALSE
 
+/datum/asset_pack/New(id)
+	if(!isnull(id))
+		src.id = id
+
 /**
  * ensures we are loaded
  */
@@ -114,12 +118,6 @@
  */
 /datum/asset_pack/proc/register(generation)
 	return list()
-
-/**
- * pushes our files to the active asset transport
- */
-/datum/asset_pack/proc/push()
-	#warn impl
 
 /datum/asset_pack/proc/get_url(filename)
 	. = loaded_urls[filename]

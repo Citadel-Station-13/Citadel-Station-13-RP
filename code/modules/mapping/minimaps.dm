@@ -73,14 +73,19 @@
 	overlay_icon = new(map_icon)
 	overlay_icon.Scale(16, 16)
 	//we're done baking, now we ship it.
-	if (!SSassets.cache["minimap-[id].png"])
-		SSassets.transport.register_asset("minimap-[id].png", map_icon)
-	if (!SSassets.cache["minimap-[id]-meta.png"])
-		SSassets.transport.register_asset("minimap-[id]-meta.png", meta_icon)
+	var/datum/asset_pack/simple/packed = new /datum/asset_pack/simple(
+		"minimap-[id]",
+		list(
+			"minimap-[id].png" = map_icon,
+			"minimap-[id]-meta.png" = meta_icon,
+		),
+	)
+	SSassets.register_asset_pack(packed)
 
 /datum/minimap/proc/send(mob/user)
 	if(!id)
 		CRASH("ERROR: send called, but the minimap id is null/missing. ID: [id]")
+	SSassets.send_asset_pack(user, "minimap-[id]")
 	SSassets.transport.send_assets(user, list("minimap-[id].png" = map_icon, "minimap-[id]-meta.png" = meta_icon))
 
 /datum/minimap_group
