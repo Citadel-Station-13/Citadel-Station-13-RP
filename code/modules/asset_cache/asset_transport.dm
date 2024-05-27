@@ -5,11 +5,13 @@
 	/// name of the transport
 	var/name = "asset-transport: ???"
 
-	var/static/list/preload
 	/// Don't mutate the filename of assets when sending via browse_rsc.
 	/// This is to make it easier to debug issues with assets, and allow server operators to bypass issues that make it to production.
 	/// If turning this on fixes asset issues, something isn't using get_asset_url and the asset isn't marked legacy, fix one of those.
 	var/dont_mutate_filenames = FALSE
+
+	/// asset packs we're going to preload via native (browse_rsc) transport
+	var/list/datum/asset_pack/packs_to_natively_preload = list()
 
 /**
  * called when we're loaded into SSassets
@@ -19,21 +21,48 @@
 /**
  * loads a set of asset packs
  */
+/datum/asset_transport/proc/load_asset_packs(list/datum/asset_pack/packs)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(isnull(packs))
+		return
+	if(!islist(packs))
+		packs = list(packs)
+	for(var/datum/asset_pack/pack as anything in packs)
+		load_asset_pack(pack)
 
-/// Called when the transport is loaded by the config controller, not called on the default transport unless it gets loaded by a config change.
-/datum/asset_transport/proc/Load()
-	if (CONFIG_GET(flag/asset_simple_preload))
-		for(var/client/C in GLOB.clients)
-			addtimer(CALLBACK(src, PROC_REF(send_assets_slow), C, preload), 1 SECONDS)
+/**
+ * loads a transport
+ */
+/datum/asset_transport/proc/load_asset_pack(datum/asset_pack/pack)
+	SHOULD_NOT_OVERRIDE(TRUE)
 
-/// Initialize - Called when SSassets initializes.
+/**
+ * this transport's behavior for loading an asset pack
+ */
+/datum/asset_transport/proc/load_asset_pack_custom(datum/asset_pack/pack)
+
+/**
+ * loads an asset pack with browse_rsc
+ */
+/datum/asset_transport/proc/load_asset_pack_native(datum/asset_pack/pack)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(should_preload_native_packs(pack))
+		packs_to_natively_preload += pack
+		#warn queue for loading on all existing clients
+
+/datum/asset_transport/proc/should_preload_native_pack(datum/asset_pack/pack)
+	if(!pack.do_not_preload)
+		return FALSE
+	return CONFIG_GET(flag/asset_simple_preload)
+
+#warn sigh
+
 /datum/asset_transport/proc/Initialize(list/assets)
 	preload = assets.Copy()
 	if (!CONFIG_GET(flag/asset_simple_preload))
 		return
 	for(var/client/C in GLOB.clients)
 		addtimer(CALLBACK(src, PROC_REF(send_assets_slow), C, preload), 1 SECONDS)
-
 
 /// Register a browser asset with the asset cache system
 /// asset_name - the identifier of the asset
@@ -80,11 +109,32 @@
 		return url_encode(asset_item.name)
 	return url_encode("asset.[asset_item.hash].[asset_item.ext]")
 
-/datum/asset_transport/proc/send_pack(client/client, datum/asset_pack/pack)
+/**
+ * this is a blocking proc
+ */
+/datum/asset_transport/proc/send_pack(client/target, datum/asset_pack/pack)
 	#warn impl
 
-/datum/asset_transport/proc/send_item(client/client, datum/asset_item/item)
+/**
+ * this is a blocking proc
+ */
+/datum/asset_transport/proc/send_items(client/target, list/datum/asset_item/items)
+	if(!islist(items))
+		items = list(items)
 	#warn impl
+
+/**
+ * this is a blocking proc
+ */
+/datum/asset_transport/proc/send_items_native(client/target, list/datum/asset_item/items)
+	if(!islist(items))
+		items = list(items)
+
+/**
+ * automatically preload all native asset packs to a client, one by one.
+ */
+/datum/asset_transport/proc/perform_native_preload(client/victim)
+	victim.asset_cache_native_preload(packs_to_natively_preload)
 
 /// Sends a list of browser assets to a client
 /// client - a client or mob
@@ -149,19 +199,6 @@
 		addtimer(CALLBACK(client, TYPE_PROC_REF(/client, asset_cache_update_json)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 		return TRUE
 	return FALSE
-
-
-/// Precache files without clogging up the browse() queue, used for passively sending files on connection start.
-/datum/asset_transport/proc/send_assets_slow(client/client, list/files, filerate = 6)
-	var/startingfilerate = filerate
-	for (var/file in files)
-		if (!client)
-			break
-		if (send_assets(client, file))
-			if (!(--filerate))
-				filerate = startingfilerate
-				client.browse_queue_flush()
-			stoplag(0) //queuing calls like this too quickly can cause issues in some client versions
 
 /// Check the config is valid to load this transport
 /// Returns TRUE or FALSE

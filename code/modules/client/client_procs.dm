@@ -575,15 +575,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 #endif
 
-	spawn (10) //removing this spawn causes all clients to not get verbs.
-
-		//load info on what assets the client has
-		#warn uhh
-		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
-
-		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		if (CONFIG_GET(flag/asset_simple_preload))
-			addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
+	INVOKE_ASYNC(SSassets, TYPE_PROC_REF(/datum/controller/subsystem/assets, preload_client_assets), src)
 
 //Hook, override it to run code when dir changes
 //Like for /atoms, but clients are their own snowflake FUCK

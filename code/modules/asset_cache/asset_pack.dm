@@ -32,6 +32,9 @@
 	/// are we fully loaded / generated?
 	var/loaded = FALSE
 
+	/// a record of filename = asset_item datums
+	/// these are transport-agnostic.
+	var/tmp/list/datum/asset_item/loaded_items
 	/// a record of filename = url when we're loaded and pushed to a transport.
 	var/tmp/list/loaded_urls
 
@@ -53,6 +56,8 @@
 	///
 	/// * this does incur a cost as everything being sent now has to be md5'd with each other.
 	var/do_not_separate = FALSE
+	/// do not preload if determined to be loading via browse_rsc().
+	var/do_not_preload = FALSE
 
 	/// allow caching cross-rounds, if the server is under a singular commit
 	/// requires configuration to be enabled too.

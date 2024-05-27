@@ -29,10 +29,6 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	/// if set, we are shoved in a namespace of this id
 	var/namespace_id
 
-	/// url to resolve this from a client browser
-	/// set by the asset transport that loads us
-	var/loaded_url
-
 /datum/asset_item/New(name, file)
 	// set name
 	src.name = name

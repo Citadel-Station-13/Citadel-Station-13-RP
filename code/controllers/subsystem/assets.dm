@@ -133,3 +133,6 @@ SUBSYSTEM_DEF(assets)
 
 	return ..()
 
+
+/datum/controller/subsystem/assets/proc/preload_client_assets(client/target)
+	transport.perform_native_preload(target)
