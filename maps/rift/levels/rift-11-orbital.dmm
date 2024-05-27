@@ -203,9 +203,10 @@
 "aS" = (
 /obj/machinery/door/airlock/medical{
 	name = "Chemistry and Resleeving";
-	req_access = list(45)
+	req_one_access = null
 	},
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "aT" = (
@@ -730,8 +731,10 @@
 	icon_state = "door_locked";
 	id_tag = "supply_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "cy" = (
@@ -2243,12 +2246,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
-"he" = (
-/obj/machinery/door/airlock/security{
-	name = "Security"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/centcom/simulated/security)
 "hf" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/living)
@@ -2666,8 +2663,10 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "iH" = (
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /obj/machinery/door/airlock/command{
-	name = "Cockpit"
+	name = "Cockpit";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
@@ -3206,11 +3205,13 @@
 /turf/simulated/floor/carpet/blue,
 /area/centcom/simulated/security)
 "kf" = (
-/obj/machinery/door/airlock/security{
-	name = "Security"
+/obj/machinery/door/airlock/centcom{
+	name = "Teleporter";
+	req_one_access = null
 	},
-/turf/simulated/floor/tiled/dark,
-/area/centcom/simulated/security)
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
+/turf/unsimulated/floor/dark,
+/area/centcom/specops)
 "kg" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/steel,
@@ -3723,8 +3724,10 @@
 "lw" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "lx" = (
@@ -4258,14 +4261,18 @@
 /area/shuttle/escape)
 "mY" = (
 /obj/machinery/door/airlock/security{
-	name = "Shuttle Security"
+	name = "Shuttle Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "mZ" = (
 /obj/machinery/door/airlock/medical{
-	name = "Shuttle Medical"
+	name = "Shuttle Medical";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "na" = (
@@ -5385,10 +5392,9 @@
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "qm" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	req_access = list(5)
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qn" = (
@@ -5396,11 +5402,12 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/medical)
 "qo" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical{
 	name = "Operating Theatre";
-	req_access = list(45)
+	req_one_access = null
 	},
-/obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qp" = (
@@ -6074,6 +6081,7 @@
 	name = "Morgue";
 	req_access = list(45)
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/techfloor,
 /area/centcom/simulated/medical)
 "sr" = (
@@ -6092,8 +6100,9 @@
 "st" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Living Quarters";
-	req_access = list(105)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "su" = (
@@ -6223,8 +6232,9 @@
 "tn" = (
 /obj/machinery/door/airlock/centcom{
 	name = "General Access";
-	req_access = list(101)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
 "tt" = (
@@ -6421,13 +6431,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
-"xg" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Teleporter";
-	req_access = list(103)
-	},
-/turf/unsimulated/floor/dark,
-/area/centcom/specops)
 "xh" = (
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
@@ -6521,13 +6524,6 @@
 "xE" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/structure/window/reinforced,
-/turf/unsimulated/floor/steel,
-/area/centcom/main_hall)
-"xF" = (
-/obj/machinery/door/airlock/centcom{
-	name = "General Access";
-	req_access = list(101)
-	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xG" = (
@@ -6757,8 +6753,10 @@
 /area/centcom/command)
 "yA" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Nanotrasen Offices"
+	name = "Nanotrasen Offices";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yB" = (
@@ -7257,9 +7255,9 @@
 "Ah" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "Nanotrasen Offices";
-	req_one_access = list(101)
+	name = "Nanotrasen Offices"
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Ai" = (
@@ -7600,8 +7598,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bp" = (
-/obj/machinery/door/airlock/glass_external,
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bq" = (
@@ -7725,8 +7726,9 @@
 "Ct" = (
 /obj/machinery/door/airlock/centcom{
 	name = "SpecOps Hangar";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops/dock)
 "Cu" = (
@@ -8084,8 +8086,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Cockpit";
-	req_one_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "Gz" = (
@@ -8249,11 +8252,13 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
-	name = "Ship Hatch"
+	name = "Ship Hatch";
+	req_one_access = null
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "IO" = (
@@ -8847,8 +8852,9 @@
 "OH" = (
 /obj/machinery/door/airlock/centcom{
 	name = "SpecOps Hangar";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "OI" = (
@@ -8931,8 +8937,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Engine Bay";
-	req_one_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "PL" = (
@@ -9061,8 +9068,9 @@
 "Ru" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Commander";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "Rw" = (
@@ -9215,13 +9223,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
-"SQ" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Power Management";
-	req_one_access = list(103)
-	},
-/turf/simulated/floor/plating,
-/area/centcom/specops)
 "SV" = (
 /turf/simulated/floor/carpet/blue,
 /area/centcom/control)
@@ -9297,13 +9298,15 @@
 	dir = 4
 	},
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	name = "Ship Hatch"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "TN" = (
@@ -9589,8 +9592,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Power Management";
-	req_one_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "Xs" = (
@@ -9873,9 +9877,10 @@
 /area/shuttle/specops/general)
 "Zs" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Special Operations";
-	req_access = list(103)
+	name = "SpecOps Hangar";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -13715,7 +13720,7 @@ fC
 wW
 wW
 wW
-xF
+xj
 xN
 wW
 yp
@@ -14102,7 +14107,7 @@ FQ
 fC
 xj
 xj
-xF
+xj
 xj
 xZ
 yf
@@ -16599,7 +16604,7 @@ gI
 ft
 hp
 fR
-he
+fR
 fR
 fR
 kA
@@ -17180,7 +17185,7 @@ gl
 gL
 ft
 ft
-he
+fR
 ft
 ft
 ft
@@ -18150,7 +18155,7 @@ go
 gO
 ft
 ft
-he
+fR
 ft
 ft
 ft
@@ -18730,12 +18735,12 @@ ft
 fS
 fR
 fR
-he
 fR
 fR
 fR
 fR
-kf
+fR
+go
 go
 kV
 ft
@@ -19739,7 +19744,7 @@ zk
 zk
 zC
 yC
-yA
+yC
 yC
 zO
 AI
@@ -21672,7 +21677,7 @@ ss
 Cw
 Cw
 Cw
-SQ
+XN
 XN
 Wq
 ss
@@ -23608,7 +23613,7 @@ Bv
 ss
 ZB
 Cw
-xg
+kf
 Cw
 Cw
 Cw
@@ -23802,7 +23807,7 @@ Bv
 ss
 Lc
 Cw
-xg
+kf
 Cw
 Cw
 Cw

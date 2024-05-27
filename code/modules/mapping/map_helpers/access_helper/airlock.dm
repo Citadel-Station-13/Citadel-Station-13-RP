@@ -74,6 +74,7 @@
 		ACCESS_SECURITY_BRIG,
 		ACCESS_SECURITY_EQUIPMENT,
 		ACCESS_SECURITY_MAIN,
+		ACCESS_SECURITY_FORENSICS,
 	)
 
 /obj/map_helper/access_helper/airlock/station/security/equipment
@@ -99,6 +100,18 @@
 /obj/map_helper/access_helper/airlock/station/security/brig
 	req_one_access = list(
 		ACCESS_SECURITY_BRIG,
+	)
+
+/obj/map_helper/access_helper/airlock/station/security/external_airlock
+	req_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/security/maintenance
+	req_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_ENGINEERING_MAINT,
 	)
 
 /obj/map_helper/access_helper/airlock/station/engineering
@@ -173,6 +186,11 @@
 		ACCESS_MEDICAL_EQUIPMENT,
 	)
 
+/obj/map_helper/access_helper/airlock/station/medical/morgue
+	req_access = list(
+		ACCESS_MEDICAL_MORGUE,
+	)
+
 /obj/map_helper/access_helper/airlock/station/service
 	icon_state = "service"
 
@@ -232,6 +250,18 @@
 		ACCESS_SUPPLY_MAIN,
 	)
 
+/obj/map_helper/access_helper/airlock/station/supply/external_airlock
+	req_access = list(
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/supply/maintenance
+	req_access = list(
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
 /**
  * for all of onstation mining
  */
@@ -259,6 +289,18 @@
 /obj/map_helper/access_helper/airlock/station/science/fabrication
 	req_access = list(
 		ACCESS_SCIENCE_FABRICATION,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/external_airlock
+	req_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/maintenance
+	req_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_ENGINEERING_MAINT,
 	)
 
 /**
@@ -323,9 +365,33 @@
 /obj/map_helper/access_helper/airlock/station/exploration
 	icon_state = "science"
 
+/obj/map_helper/access_helper/airlock/station/exploration/department
+	req_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_COMMAND_BRIDGE,
+	)
+
 /obj/map_helper/access_helper/airlock/station/exploration/explorer
 	req_access = list(
 		ACCESS_GENERAL_EXPLORER,
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/external_airlock
+	req_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/pilot
+	req_access = list(
+		ACCESS_GENERAL_PILOT
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/maintenance
+	req_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_ENGINEERING_MAINT,
 	)
 
 /**
@@ -376,7 +442,15 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/centcom
+	req_access = list(
+		ACCESS_CENTCOM_GENERAL,
+	)
 	icon_state = "centcom"
+
+/obj/map_helper/access_helper/airlock/station/centcom/ert
+	req_access = list(
+		ACCESS_CENTCOM_ERT
+	)
 
 /**
  * special offices are under this
