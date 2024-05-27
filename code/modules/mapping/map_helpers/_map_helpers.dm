@@ -1,6 +1,14 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+/**
+ * an entity placed on a map as a marker to do something
+ *
+ * unlike normal atoms, these will:
+ *
+ * * never persist past init
+ * * have the opportunity to hook map initializations, which are ran before Initialize().
+ */
 /obj/map_helper
 	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	icon_state = ""
@@ -57,3 +65,5 @@
  */
 /obj/map_helper/proc/map_initializations(list/bounds, lx, ly, lz, ldir)
 	return
+
+#warn map helpers need to be able to hook to template initializations.
