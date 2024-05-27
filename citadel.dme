@@ -2375,6 +2375,7 @@
 #include "code\modules\bodysets\bodset\organic\_organic.dm"
 #include "code\modules\bodysets\bodset\organic\akula.dm"
 #include "code\modules\bodysets\bodset\organic\apidean.dm"
+#include "code\modules\bodysets\bodset\organic\diona.dm"
 #include "code\modules\bodysets\bodset\organic\human.dm"
 #include "code\modules\bodysets\bodset\organic\krisitik.dm"
 #include "code\modules\bodysets\bodset\organic\monkey.dm"

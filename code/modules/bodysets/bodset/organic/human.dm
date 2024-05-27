@@ -4,6 +4,10 @@
 /datum/bodyset/organic/human
 	id = "human"
 
+	overlays = list(
+		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk/human,
+	)
+
 /**
  * this is such a widely used one it's just a hardcoded type
  */

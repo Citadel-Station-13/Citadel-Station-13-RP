@@ -13,3 +13,5 @@
 
 /datum/bodyset_variation/New(id)
 	src.id = id
+	if(isnull(name))
+		name = src.id
