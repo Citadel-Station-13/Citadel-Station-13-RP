@@ -1,4 +1,17 @@
 /**
+ * automatically splitting stack spawns
+ *
+ * supports /datum/material as well
+ *
+ * @return **amount of objects created** (not total stack/sheet amount made!)
+ */
+/proc/spawn_stacks_at(atom/location, stack_path, amount)
+	var/safety = 50
+	if(ispath(stack_path, /datum/material))
+		var/datum/material/resolved = SSmaterials.resolve_material(path)
+	#warn impl
+
+/**
  * Items that can stack, tracking the number of which is in it
  */
 /obj/item/stack
