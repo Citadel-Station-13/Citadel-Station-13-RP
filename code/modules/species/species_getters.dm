@@ -67,6 +67,9 @@
 /datum/species/proc/get_blood_mask(mob/living/carbon/human/H)
 	return blood_mask
 
+/datum/species/proc/get_effective_bodyset(mob/living/carbon/human/H)
+	#warn IM GOING TO FUCKING THROW SOMETHING
+
 /datum/species/proc/get_husk_icon(mob/living/carbon/human/H)
 	return husk_icon
 
