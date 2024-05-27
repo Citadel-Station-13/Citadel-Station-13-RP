@@ -2259,7 +2259,7 @@
 #include "code\modules\asset_cache\packs\simple.dm"
 #include "code\modules\asset_cache\packs\spritesheet.dm"
 #include "code\modules\asset_cache\packs\spritesheet\simple.dm"
-#include "code\modules\asset_cache\transports\simple.dm"
+#include "code\modules\asset_cache\transports\browse_rsc.dm"
 #include "code\modules\asset_cache\transports\webroot.dm"
 #include "code\modules\atmospherics\atmosphere\atmosphere.dm"
 #include "code\modules\atmospherics\atmosphere\planet.dm"

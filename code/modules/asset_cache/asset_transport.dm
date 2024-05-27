@@ -21,8 +21,6 @@
  */
 /datum/asset_transport/proc/initialize()
 
-/datum/asset_transport
-
 /datum/asset_transport/proc/load_asset_items(list/datum/asset_item/items)
 	#warn impl
 
@@ -175,3 +173,29 @@
 /// Returns TRUE or FALSE
 /datum/asset_transport/proc/validate_config(log = TRUE)
 	return TRUE
+
+#warn above
+
+//* Abstraction - Subtypes must override these
+
+/**
+ * @return URL
+ */
+/datum/asset_transport/proc/send_anonymous_file(list/client/targets, file, ext)
+	CRASH("abstract proc unimplemented")
+
+//* Native - common behavior used to allow browse_rsc() usage, either as a fallback or as an alternative loader
+
+/datum/asset_transport/proc/send_anonymous_file_native(list/client/targets, file, ext)
+	// we don't even need a hash, just the url
+	// only stuff like webroot cares about hash, for CDN caching purposes
+	var/static/notch = 0
+	// you're not going to send more than a million files a tick, are you now?
+	if(notch >= (1024 * 1024))
+		notch = 0
+	var/mangled_name = "[rand(1, 1000)]-[world.time]-[++notch]"
+	if(ext)
+		mangled_name = "[mangled_name].[ext]"
+	for(var/client/target as anything in targets)
+		target << browse_rsc(file, mangled_name)
+	return mangled_name

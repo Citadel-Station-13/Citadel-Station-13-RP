@@ -2,15 +2,14 @@
 /datum/asset_transport/webroot
 	name = "CDN Webroot asset transport"
 
+/datum/asset_transport/webroot/send_anonymous_file(list/client/targets, file, ext)
+	#warn impl
+
+#warn below
+
 /datum/asset_transport/webroot/Load()
 	if (validate_config(log = FALSE))
 		load_existing_assets()
-
-/// Processes thru any assets that were registered before we were loaded as a transport.
-/datum/asset_transport/webroot/proc/load_existing_assets()
-	for (var/asset_name in SSassets.cache)
-		var/datum/asset_item/ACI = SSassets.cache[asset_name]
-		save_asset_to_webroot(ACI)
 
 /// Register a browser asset with the asset cache system
 /// We also save it to the CDN webroot at this step instead of waiting for send_assets()

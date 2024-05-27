@@ -72,8 +72,8 @@ SUBSYSTEM_DEF(assets)
 		registered = TRUE
 	if(!registered)
 		CRASH("couldn't register by type or id")
-	if(should_preload_native_packs(pack))
-		packs_to_natively_preload += pack
+	if(should_preload_native_pack(pack))
+		asset_packs_to_natively_preload += pack
 
 /datum/controller/subsystem/assets/proc/should_preload_native_pack(datum/asset_pack/pack)
 	if(!pack.do_not_preload)
@@ -131,16 +131,42 @@ SUBSYSTEM_DEF(assets)
  * loads a file that we declare to not be necessary to keep around / store information on after
  * the necessary clients have loaded it.
  *
- * blocking proc
+ * * blocking proc
+ * * warning - this can clog a client's browse queue. use send_anonymous_files() to send multiple in a short period of time!
  *
  * @params
  * * targets - client or list of clients to send it to
  * * file - the file in question
+ * * ext - enforce an extension for the file. do not include the '.'
  *
  * @return url to load it with; this will usually be heavily mangled.
  */
-/datum/controller/subsystem/assets/proc/send_anonymous_file(client/targets, file)
-	RETURN_TYPE(/datum/asset_item/dynamic)
+/datum/controller/subsystem/assets/proc/send_anonymous_file(list/client/targets, file, ext)
+	return transport.send_anonymous_file(targets, file, ext)
+
+/**
+ * loads a set of files that we declare to not be necessary to keep around / store information on after
+ * the necessary clients have loaded it.
+ *
+ * * blocking proc
+ * * you should probably not use this if you can; it's a little janky.
+ *
+ * @params
+ * * targets - client or list of clients to send it to
+ * * files - the files in question, associated to their extensions
+ * * ext - enforce an extension for the file. do not include the '.'
+ *
+ * @return list(urls) in same order as files.
+ */
+/datum/controller/subsystem/assets/proc/send_anonymous_files(list/client/targets, list/files)
+	// todo: optimize this proc
+	. = new /list(length(files))
+	for(var/i in 1 to length(files))
+		var/file = files[i]
+		.[i] = send_anonymous_file(targets, file, files[file])
+		stoplag(0)
+
+#warn below?
 
 /**
  * @params
@@ -208,6 +234,7 @@ SUBSYSTEM_DEF(assets)
 
 	return ..()
 
+#warn above
 
 /datum/controller/subsystem/assets/proc/preload_client_assets(client/target)
-	transport.perform_native_preload(target, packs_to_natively_preload)
+	transport.perform_native_preload(target, asset_packs_to_natively_preload)
