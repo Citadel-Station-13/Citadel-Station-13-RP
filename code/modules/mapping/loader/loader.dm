@@ -264,16 +264,17 @@
  * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
  * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
+ * * context - value to push to global.maploader_context, used by atoms during preloading_instance() to perform various things like mangling their linkage IDs
  *
  * @return bounds list of load, or null if failed.
  */
-/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache)
+/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache, datum/maploader_context/context)
 
 	var/static/loading = FALSE
 	UNTIL(!loading)
 	loading = TRUE
 	Master.StartLoadingMap()
-	global.preloader.loading_orientation = orientation
+	global.preloader_mangling_id = mangling_id
 	. = _load_impl(arglist(args))
 	global.preloader.loading_orientation = null
 	Master.StopLoadingMap()
@@ -281,7 +282,7 @@
 
 // todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
 //       as opposed to rotating to somewhere else
-/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list())
+/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list(), mangling_id)
 	var/list/model_cache = build_cache(no_changeturf)
 	var/space_key = model_cache[SPACE_KEY]
 
@@ -386,7 +387,7 @@
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
 
 	if(overflowed)
-		log_debug("Maploaders was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
+		log_debug("Maploader was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
 
 	return loaded_bounds
 
@@ -478,6 +479,9 @@
 	//Instanciation
 	////////////////
 
+	//turn off base new Initialization until the whole thing is loaded
+	SSatoms.map_loader_begin()
+
 	//The next part of the code assumes there's ALWAYS an /area AND a /turf on a given tile
 	//first instance the /area and remove it from the members list
 	index = members.len
@@ -508,13 +512,10 @@
 		instance.contents.Add(crds)
 
 	//then instance the /turf and, if multiple tiles are presents, simulates the DMM underlays piling effect
-
 	var/first_turf_index = 1
 	while(!ispath(members[first_turf_index], /turf)) //find first /turf object in members
 		first_turf_index++
 
-	//turn off base new Initialization until the whole thing is loaded
-	SSatoms.map_loader_begin()
 	//instanciate the first /turf
 	var/turf/T
 	if(members[first_turf_index] != /turf/template_noop)
@@ -532,6 +533,7 @@
 	//finally instance all remainings objects/mobs
 	for(index in 1 to first_turf_index-1)
 		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)
+
 	//Restore initialization to the previous value
 	SSatoms.map_loader_stop()
 

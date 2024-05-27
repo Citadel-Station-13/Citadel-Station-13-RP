@@ -1,6 +1,9 @@
 // global datum that will preload variables on atoms instanciation
 GLOBAL_REAL_VAR(use_preloader) = FALSE
 GLOBAL_REAL(preloader, /datum/map_preloader) = new
+GLOBAL_REAL(maploader_context, /datum/maploader_context)
+
+#warn inject maploader_context somewhere
 
 /// Preloader datum
 /datum/map_preloader

@@ -247,6 +247,20 @@
 			return
 
 /**
+ * Called by the maploader if a maploader_context is set
+ */
+/atom/proc/preloading_instance(datum/maploader_context/context)
+	return
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/map_preloader/preloader)
+	return TRUE
+
+/**
  * The primary method that objects are setup in SS13 with
  *
  * we don't use New as we have better control over when this is called and we can choose
