@@ -88,6 +88,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/starboard)
+"adC" = (
+/obj/machinery/fire_alarm/south_mount{
+	pixel_y = -25
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/port)
 "adF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -641,6 +648,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
 "avx" = (
@@ -3617,6 +3625,16 @@
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
+"czT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "cAp" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/tiled/monotile,
@@ -3937,6 +3955,7 @@
 /obj/structure/sign/deck2{
 	pixel_y = 32
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "cQi" = (
@@ -4626,6 +4645,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "dpf" = (
@@ -4866,6 +4886,10 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/tcomms)
+"dzI" = (
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
 "dAc" = (
@@ -5148,6 +5172,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
 "dKd" = (
@@ -5276,6 +5301,12 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/space)
+"dOG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
 "dOX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -5336,6 +5367,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "dQo" = (
@@ -5627,10 +5659,6 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/quartermaster/hallway)
-"eap" = (
-/obj/structure/closet/firecloset,
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "eaQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -8424,6 +8452,14 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"gij" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/retro/on,
+/obj/landmark{
+	name = "morphspawn"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/port)
 "giU" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 8
@@ -8478,6 +8514,7 @@
 /area/main_map/hallway/deck2)
 "gla" = (
 /obj/structure/ladder/up,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft)
 "gli" = (
@@ -8684,6 +8721,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "gsw" = (
@@ -10104,6 +10142,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "hEr" = (
@@ -12380,6 +12419,7 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "jwS" = (
@@ -12852,6 +12892,7 @@
 "jOi" = (
 /obj/structure/bed/double/weaversilk_nest,
 /obj/effect/debris/cleanable/cobweb2,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "jOy" = (
@@ -13647,6 +13688,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "kpk" = (
@@ -13755,6 +13797,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
 "ksy" = (
@@ -14598,6 +14641,19 @@
 /obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_two/aft/starboard)
+"kZt" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/port)
 "kZY" = (
 /obj/machinery/atmospherics/component/binary/circulator{
 	anchored = 1
@@ -14705,6 +14761,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "lfF" = (
@@ -15038,6 +15095,13 @@
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"lsn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "lsr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16553,6 +16617,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "mwX" = (
@@ -17313,6 +17378,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/tcomms)
 "ndX" = (
@@ -19432,6 +19498,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/west_mount,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "oFd" = (
@@ -19610,6 +19677,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "oLz" = (
@@ -21499,6 +21567,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "qgQ" = (
@@ -22926,6 +22995,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
 "rnc" = (
@@ -25204,6 +25274,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
+"tar" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering/upper)
 "tbl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -25551,6 +25625,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/civilian)
+"tmR" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/retro/on,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/port)
 "tnf" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -26142,6 +26221,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
+"tJH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/forward/port)
 "tJO" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
@@ -30053,6 +30139,11 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/observation)
+"wCc" = (
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/starboard)
 "wCD" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/qm)
@@ -30458,6 +30549,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/atmospheric_substation/medical)
+"wQi" = (
+/obj/structure/closet/firecloset,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_two/starboard)
 "wQo" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -31332,6 +31428,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "xvb" = (
@@ -31357,6 +31454,7 @@
 /area/security/brig)
 "xvV" = (
 /obj/effect/spider/stickyweb,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "xwn" = (
@@ -31863,6 +31961,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
 "xRz" = (
@@ -41638,8 +41737,8 @@ auf
 txH
 rHv
 nrV
-gKU
-npE
+tar
+lsn
 gKU
 hwP
 dIR
@@ -41832,14 +41931,14 @@ auf
 txH
 rHv
 nrV
-gKU
-npE
-gKU
+tar
+lsn
+tar
 hwP
 jqO
 dzA
 ndO
-kFX
+dzI
 hwP
 wjy
 wjy
@@ -42027,13 +42126,13 @@ mkv
 lXM
 nrV
 gKU
-npE
+lsn
 gKU
 hwP
 lSi
 daw
 ksv
-kFX
+dzI
 hwP
 wjy
 wjy
@@ -42221,7 +42320,7 @@ txH
 gTt
 nrV
 gKU
-npE
+lsn
 gKU
 bPe
 eUN
@@ -42802,9 +42901,9 @@ lkO
 qAa
 ixz
 nrV
-gKU
+tar
 xdH
-gKU
+tar
 hEk
 eUN
 woB
@@ -46300,7 +46399,7 @@ wyn
 wyn
 hWR
 pvy
-jAi
+jQG
 tnr
 aNZ
 aNZ
@@ -46494,10 +46593,10 @@ wyn
 wyn
 iUO
 pvy
+jQG
 jAi
 jAi
-jAi
-jAi
+jQG
 gla
 gvU
 idZ
@@ -46738,11 +46837,11 @@ eqK
 eYO
 eYO
 eCL
-uuJ
+kWj
 ofM
 uuJ
-uuJ
-uuJ
+kWj
+kWj
 uuJ
 uuJ
 jRq
@@ -47126,7 +47225,7 @@ eqK
 eqK
 eqK
 eCL
-wtk
+wQi
 ofM
 jRq
 aTr
@@ -47320,7 +47419,7 @@ ydV
 ydV
 ydV
 eCL
-jYD
+wCc
 ofM
 jRq
 jRq
@@ -47829,7 +47928,7 @@ nKv
 tjx
 bbR
 sVL
-tjx
+evJ
 fhc
 vzj
 sWu
@@ -47902,7 +48001,7 @@ xrk
 xrk
 cZg
 eCL
-uuJ
+kWj
 bEC
 jRq
 jRq
@@ -48022,8 +48121,8 @@ okc
 nKv
 bbR
 bbR
-eap
-tjx
+dNP
+evJ
 qgM
 vzj
 fsW
@@ -48217,8 +48316,8 @@ nKv
 tjx
 bbR
 tqy
-tjx
-fhc
+evJ
+czT
 vzj
 vzj
 mLq
@@ -48804,8 +48903,8 @@ jZi
 ecb
 tIc
 tIw
-hvV
-hvV
+dOG
+dOG
 aVx
 mYo
 mYo
@@ -49194,7 +49293,7 @@ uws
 hIi
 tjx
 gGr
-tjx
+evJ
 lWh
 vdV
 vdV
@@ -49388,7 +49487,7 @@ gPQ
 scC
 xLF
 koJ
-tjx
+evJ
 cfF
 vdV
 vdV
@@ -53855,8 +53954,8 @@ hfN
 sZU
 sZU
 svt
-sZU
-sZU
+nUF
+nUF
 eiy
 ruP
 ruP
@@ -54047,7 +54146,7 @@ qLK
 dOB
 jGV
 sZU
-sZU
+nUF
 sZU
 sZU
 fRg
@@ -54242,8 +54341,8 @@ dOB
 gMX
 nYU
 nYU
-sZU
-sZU
+nUF
+nUF
 fRg
 qbF
 maL
@@ -54437,7 +54536,7 @@ llF
 nYU
 nYU
 sZU
-sZU
+nUF
 fRg
 mgF
 fST
@@ -55210,7 +55309,7 @@ mRB
 qLK
 dOB
 gsq
-noG
+tJH
 uaw
 rBj
 ixX
@@ -55403,7 +55502,7 @@ mRB
 mRB
 qLK
 dOB
-vKw
+tmR
 fOw
 rdq
 rBj
@@ -55990,8 +56089,8 @@ dOB
 dOB
 dOB
 sZU
-sZU
-fDM
+nUF
+kZt
 ulZ
 jSS
 jSS
@@ -56572,7 +56671,7 @@ vKm
 vKm
 dOB
 sZU
-wvi
+gij
 mwQ
 jGV
 jSS
@@ -56963,7 +57062,7 @@ mWs
 lfC
 dQn
 xQx
-ulZ
+adC
 non
 oWw
 rDv
@@ -57156,7 +57255,7 @@ dOB
 dNL
 sZU
 sZU
-sZU
+nUF
 sZU
 nkE
 nkE
@@ -58123,7 +58222,7 @@ hts
 uDM
 vKm
 dOB
-sZU
+nUF
 svA
 gaG
 tqh
@@ -58317,7 +58416,7 @@ hts
 uDM
 vKm
 dOB
-sZU
+nUF
 svA
 gaG
 dOB
