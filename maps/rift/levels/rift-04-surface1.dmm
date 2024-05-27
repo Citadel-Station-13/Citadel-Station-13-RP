@@ -479,10 +479,6 @@
 /turf/simulated/floor/wood,
 /area/library)
 "aqK" = (
-/obj/machinery/door/airlock/glass/mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -490,6 +486,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass/mining{
+	name = "Cargo Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "ara" = (
@@ -842,14 +843,15 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "aEB" = (
-/obj/machinery/door/airlock/maintenance/medical{
-	name = "Medical Maintenance Access";
-	req_access = list(5)
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/medical{
+	name = "Medical Maintenance Access";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "aEC" = (
@@ -3231,8 +3233,9 @@
 "chz" = (
 /obj/machinery/door/airlock/maintenance/medical{
 	name = "Psychiatric Storage";
-	req_access = list(5)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/medical/psych)
 "chK" = (
@@ -3657,17 +3660,18 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "cxQ" = (
-/obj/machinery/door/airlock/glass/security{
-	id_tag = "detdoor";
-	name = "Forensics Lab";
-	req_access = list(4)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/glass/security{
+	id_tag = "detdoor";
+	name = "Forensics Lab";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/forensics,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "cxT" = (
@@ -3991,13 +3995,16 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = null
+	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "cIn" = (
@@ -4536,10 +4543,6 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "dbv" = (
-/obj/machinery/door/airlock{
-	name = "Custodial Closet";
-	req_access = list(26)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -4553,6 +4556,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock{
+	name = "Custodial Closet"
+	},
+/obj/map_helper/access_helper/airlock/station/service/janitor,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "dbE" = (
@@ -4628,13 +4635,15 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass/medical{
-	name = "Paramedic Storage"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass/medical{
+	name = "Paramedic Storage";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "ddT" = (
@@ -4846,14 +4855,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
 "dky" = (
-/obj/machinery/door/airlock{
-	name = "Internal Affairs";
-	req_access = list(38)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Internal Affairs"
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
 /turf/simulated/floor/tiled/steel,
 /area/lawoffice)
 "dkB" = (
@@ -5101,13 +5110,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "dpZ" = (
-/obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
-	req_access = list(8)
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/research{
+	name = "Toxins Storage";
+	req_access = list(8)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -7452,13 +7461,16 @@
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "eNr" = (
-/obj/machinery/door/airlock/maintenance/sec,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/forensics,
 /turf/simulated/floor/plating,
 /area/security/detectives_office)
 "eNx" = (
@@ -7555,10 +7567,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "eTN" = (
-/obj/machinery/door/airlock/maintenance/medical{
-	name = "Medical Maintenance Access";
-	req_access = list(5)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -7566,6 +7574,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/maintenance/medical{
+	name = "Medical Maintenance Access";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
 "eUk" = (
@@ -7630,14 +7643,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
-"eWC" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Surface Services Substation";
-	req_one_access = list(11,24,50)
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor,
-/area/maintenance/starboard)
 "eWI" = (
 /obj/structure/bed/psych,
 /turf/simulated/floor/carpet/blue,
@@ -7777,9 +7782,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/library)
 "fdt" = (
-/obj/machinery/door/airlock/glass/medical{
-	name = "Psychiatric Wing"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -7790,6 +7792,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass/medical{
+	name = "Psychiatric Wing";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "fdY" = (
@@ -8027,12 +8034,12 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/chemistry_lab)
 "foY" = (
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/mining{
 	name = "Mining Operations";
-	req_access = list(31);
 	req_one_access = list()
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "fpd" = (
@@ -8887,7 +8894,10 @@
 /area/medical/patient_a)
 "fRT" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/plating,
 /area/security/prison/upper)
 "fSj" = (
@@ -9272,8 +9282,10 @@
 /area/maintenance/maint_bar)
 "ghF" = (
 /obj/machinery/door/airlock/glass/medical{
-	name = "Paramedic Storage"
+	name = "Paramedic Storage";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/medbay_emt_bay)
 "ghW" = (
@@ -10515,16 +10527,15 @@
 "gWs" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Medbay Breakroom";
-	req_access = list(5);
-	req_one_access = list(5)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4;
+	name = "Medbay Breakroom"
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "gWw" = (
@@ -11565,11 +11576,6 @@
 /turf/simulated/floor/water/indoors,
 /area/rift/station/public_garden)
 "hAl" = (
-/obj/machinery/door/airlock/mining{
-	name = "Quartermaster";
-	req_access = list(41);
-	req_one_access = null
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11579,6 +11585,11 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/mining{
+	name = "Quartermaster";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/quartermaster,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/qm)
 "hBk" = (
@@ -13579,17 +13590,17 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/library)
 "iHI" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	id_tag = "PsycheFoyer";
-	name = "Psychiatric Processing";
-	req_access = list();
-	req_one_access = list(5)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/multi_tile/glass{
+	id_tag = "PsycheFoyer";
+	name = "Psychiatric Processing";
+	req_access = list()
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "iHL" = (
@@ -13788,11 +13799,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
 "iNl" = (
-/obj/machinery/door/airlock/command{
-	id_tag = "cmodoor";
-	name = "Chief Medical Officer";
-	req_access = list(40)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -13806,6 +13812,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/command{
+	id_tag = "cmodoor";
+	name = "Chief Medical Officer";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "iNE" = (
@@ -13909,14 +13921,14 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/maintenance/medical{
-	name = "Virology Maintenance Tunnel";
-	req_access = list(39);
-	req_one_access = null
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance/medical{
+	name = "Virology Maintenance Tunnel";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/simulated/floor/plating,
 /area/medical/virologytransitwest)
 "iSw" = (
@@ -14590,23 +14602,27 @@
 /area/rnd/xenoarch_storage)
 "jnz" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/cargo,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/plating,
 /area/quartermaster/hallway)
 "jnU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/medical{
-	name = "Virology";
-	req_one_access = list(39)
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/medical{
+	name = "Virology";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "jof" = (
@@ -14749,10 +14765,6 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "jxb" = (
-/obj/machinery/door/airlock/glass/mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14761,6 +14773,11 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/glass/mining{
+	name = "Cargo Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "jxt" = (
@@ -14985,10 +15002,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "jEy" = (
-/obj/machinery/door/airlock/maintenance/rnd,
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/service/botany,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora)
 "jEE" = (
@@ -16823,8 +16844,12 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /obj/machinery/door/airlock/glass/medical{
-	name = "Patient Psychiatric Ward A"
+	name = "Patient Psychiatric Ward A";
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -16834,9 +16859,7 @@
 	name = "Ward A";
 	opacity = 0
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_1)
 "kKk" = (
@@ -17657,13 +17680,6 @@
 /turf/simulated/floor/wood,
 /area/maintenance/research/lower)
 "lkx" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	id_tag = "PsycheFoyer";
-	name = "Psychiatric Wing";
-	req_access = list();
-	req_one_access = list(5)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -17674,6 +17690,13 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4;
+	id_tag = "PsycheFoyer";
+	name = "Psychiatric Wing";
+	req_access = list()
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "lkP" = (
@@ -19546,11 +19569,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "muR" = (
-/obj/machinery/door/airlock/glass/security{
-	name = "Prison Overwatch";
-	req_access = list();
-	req_one_access = list(2,4)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -19563,6 +19581,12 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass/security{
+	name = "Prison Overwatch";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "muW" = (
@@ -20273,10 +20297,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "mSJ" = (
-/obj/machinery/door/airlock{
-	name = "Internal Affairs";
-	req_access = list(38)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -20287,6 +20307,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock{
+	name = "Internal Affairs"
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
 /turf/simulated/floor/tiled/steel,
 /area/lawoffice)
 "mTl" = (
@@ -22134,9 +22158,6 @@
 "nXP" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
-/obj/machinery/door/airlock/glass/medical{
-	name = "Paramedic Storage"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -22144,6 +22165,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass/medical{
+	name = "Paramedic Storage";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "nXV" = (
@@ -23367,8 +23393,9 @@
 "oIL" = (
 /obj/machinery/door/airlock/maintenance/medical{
 	name = "Medical Maintenance Access";
-	req_access = list(5)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "oIR" = (
@@ -23906,6 +23933,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /obj/machinery/door/airlock/medical{
 	autoclose = 0;
 	frequency = 1379;
@@ -23913,12 +23944,9 @@
 	id_tag = "virology_airlock_interior";
 	locked = 1;
 	name = "Virology Interior Airlock";
-	req_access = list(39)
+	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "oYs" = (
@@ -24813,14 +24841,16 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "pwU" = (
-/obj/machinery/door/airlock/glass/medical{
-	name = "Psychiatric Recreation Access"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/glass/medical{
+	name = "Psychiatric Recreation Access";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "pwW" = (
@@ -25191,11 +25221,13 @@
 "pJd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
-	name = "Visitation"
+	name = "Visitation";
+	req_one_access = null
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "pJn" = (
@@ -26117,7 +26149,10 @@
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
 "qmG" = (
-/obj/machinery/door/airlock/lift,
+/obj/machinery/door/airlock/lift{
+	req_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/surface)
 "qnr" = (
@@ -27307,10 +27342,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
 "qXo" = (
-/obj/machinery/door/airlock/glass/mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -27321,6 +27352,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass/mining{
+	name = "Cargo Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "qXs" = (
@@ -27510,15 +27546,16 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "rdT" = (
-/obj/machinery/door/airlock/mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
+/obj/machinery/door/airlock/mining{
+	name = "Cargo Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "rdW" = (
@@ -27767,10 +27804,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "roa" = (
-/obj/machinery/door/airlock/glass/security{
-	name = "Genpop"
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass/security{
+	name = "Genpop";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "roQ" = (
@@ -29463,7 +29502,7 @@
 	id_tag = "detdoor";
 	id_tint = "det_office";
 	name = "Detective's Office";
-	req_access = list(4)
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -29480,6 +29519,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/security/forensics,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "skw" = (
@@ -29588,10 +29628,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "smQ" = (
-/obj/machinery/door/airlock/maintenance/int{
-	req_one_access = list(38)
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/int,
+/obj/map_helper/access_helper/airlock/station/head_office/internal_affairs,
 /turf/simulated/floor/plating,
 /area/lawoffice)
 "smW" = (
@@ -30281,15 +30320,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass/research{
-	name = "Xenoflora Research";
-	req_one_access = list(30,35,47,77)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/service/botany,
+/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/machinery/door/airlock/glass/research{
+	name = "Xenoflora Research";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
@@ -30974,8 +31015,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass/medical{
-	name = "Patient Psychiatric Isolation Cell"
+	name = "Patient Psychiatric Isolation Cell";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "tcx" = (
@@ -31362,8 +31405,11 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "tmT" = (
-/obj/machinery/door/airlock/maintenance/cargo,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "tna" = (
@@ -33409,8 +33455,12 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /obj/machinery/door/airlock/glass/medical{
-	name = "Patient Psychiatric Ward B"
+	name = "Patient Psychiatric Ward B";
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -33420,9 +33470,7 @@
 	name = "Ward A";
 	opacity = 0
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
 "urz" = (
@@ -34130,9 +34178,9 @@
 /area/hallway/primary/surfaceone)
 "uKu" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Custodial Maintenance";
-	req_access = list(26)
+	name = "Custodial Maintenance"
 	},
+/obj/map_helper/access_helper/airlock/station/service/janitor,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "uKI" = (
@@ -34456,8 +34504,10 @@
 /area/quartermaster/foyer)
 "uXr" = (
 /obj/machinery/door/airlock/maintenance/engi{
-	name = "Elevator Shaft Access"
+	name = "Elevator Shaft Access";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "uXB" = (
@@ -34545,15 +34595,15 @@
 /turf/simulated/wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "uZR" = (
-/obj/machinery/door/airlock/silver{
-	name = "Entertainment Backroom";
-	req_one_access = list(72,20,57)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/silver{
+	name = "Entertainment Backroom"
+	},
+/obj/map_helper/access_helper/airlock/station/service/entertainer,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "van" = (
@@ -34593,6 +34643,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /obj/machinery/door/airlock/medical{
 	autoclose = 0;
 	frequency = 1379;
@@ -34600,11 +34653,9 @@
 	id_tag = "virology_airlock_exterior";
 	locked = 1;
 	name = "Virology Exterior Airlock";
-	req_access = list(39)
+	req_one_access = null
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "vbg" = (
@@ -35363,15 +35414,16 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
 "vDU" = (
-/obj/machinery/door/airlock/glass/mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
+/obj/machinery/door/airlock/glass/mining{
+	name = "Cargo Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "vEh" = (
@@ -35476,14 +35528,16 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "vJJ" = (
-/obj/machinery/door/airlock/glass/research{
-	name = "Xenoflora Research";
-	req_one_access = list(30,35,47,77)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/glass/research{
+	name = "Xenoflora Research";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/service/botany,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "vKv" = (
@@ -36276,10 +36330,13 @@
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
 "wiU" = (
-/obj/machinery/door/airlock/maintenance/sec,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/plating,
 /area/security/prison)
 "wjj" = (
@@ -36968,8 +37025,9 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "cmodoor";
 	name = "CMO's Quarters";
-	req_access = list(40)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "wBu" = (
@@ -37370,8 +37428,10 @@
 /area/rnd/tankstorage)
 "wMZ" = (
 /obj/machinery/door/airlock/maintenance/engi{
-	name = "Elevator Shaft Access"
+	name = "Elevator Shaft Access";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/surface)
 "wOB" = (
@@ -38296,9 +38356,6 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "xqe" = (
-/obj/machinery/door/airlock/maintenance/engi{
-	name = "Pump Station Access"
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
 	},
@@ -38308,6 +38365,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Pump Station Access";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "xqn" = (
@@ -38353,10 +38415,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "xsn" = (
-/obj/machinery/door/airlock/mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -38365,6 +38423,11 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/mining{
+	name = "Cargo Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "xsw" = (
@@ -38428,8 +38491,10 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/engineering{
 	name = "Surface Services Substation";
-	req_one_access = list(11,24,50)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/supply/department,
+/obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor,
 /area/maintenance/starboard)
 "xve" = (
@@ -38984,11 +39049,6 @@
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "xMn" = (
-/obj/machinery/door/airlock/medical{
-	id_tag = "mentaldoor";
-	name = "Mental Health";
-	req_access = list(64)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -39002,6 +39062,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/medical{
+	id_tag = "mentaldoor";
+	name = "Mental Health";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/psychiatry,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "xMJ" = (
@@ -39394,9 +39460,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/outpost/xenobiology/outpost_storage)
 "xWW" = (
+/obj/map_helper/access_helper/airlock/station/service/entertainer,
 /obj/machinery/door/airlock{
-	name = "Entertainment Backroom";
-	req_access = list(72,20,57)
+	name = "Entertainment Backroom"
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment/backstage)
@@ -39622,8 +39688,10 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/security{
-	name = "Visitation"
+	name = "Visitation";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "yja" = (
@@ -60569,7 +60637,7 @@ iNE
 hdi
 iNE
 agE
-eWC
+xuj
 kbe
 xuj
 agE

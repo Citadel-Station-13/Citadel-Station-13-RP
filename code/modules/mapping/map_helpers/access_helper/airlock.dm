@@ -98,13 +98,13 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/security/external_airlock
-	req_access = list(
+	req_one_access = list(
 		ACCESS_SECURITY_MAIN,
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
 
 /obj/map_helper/access_helper/airlock/station/security/maintenance
-	req_access = list(
+	req_one_access = list(
 		ACCESS_SECURITY_MAIN,
 		ACCESS_ENGINEERING_MAINT,
 	)
@@ -232,6 +232,16 @@
 		ACCESS_GENERAL_TOMFOOLERY,
 	)
 
+/obj/map_helper/access_helper/airlock/station/service/clown
+	req_access = list(
+		ACCESS_GENERAL_CLOWN,
+	)
+
+/obj/map_helper/access_helper/airlock/station/service/mime
+	req_access = list(
+		ACCESS_GENERAL_MIME,
+	)
+
 /obj/map_helper/access_helper/airlock/station/supply
 	icon_state = "supply"
 
@@ -246,13 +256,13 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/supply/external_airlock
-	req_access = list(
+	req_one_access = list(
 		ACCESS_SUPPLY_MAIN,
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
 
 /obj/map_helper/access_helper/airlock/station/supply/maintenance
-	req_access = list(
+	req_one_access = list(
 		ACCESS_SUPPLY_MAIN,
 		ACCESS_ENGINEERING_MAINT,
 	)
@@ -287,15 +297,20 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/science/external_airlock
-	req_access = list(
+	req_one_access = list(
 		ACCESS_SCIENCE_MAIN,
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
 
 /obj/map_helper/access_helper/airlock/station/science/maintenance
-	req_access = list(
+	req_one_access = list(
 		ACCESS_SCIENCE_MAIN,
 		ACCESS_ENGINEERING_MAINT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/toxins
+	req_access = list(
+		ACCESS_SCIENCE_TOXINS,
 	)
 
 /**
@@ -361,7 +376,7 @@
 	icon_state = "science"
 
 /obj/map_helper/access_helper/airlock/station/exploration/department
-	req_access = list(
+	req_one_access = list(
 		ACCESS_GENERAL_EXPLORER,
 		ACCESS_GENERAL_PILOT,
 		ACCESS_COMMAND_BRIDGE,
@@ -373,7 +388,7 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration/external_airlock
-	req_access = list(
+	req_one_access = list(
 		ACCESS_GENERAL_EXPLORER,
 		ACCESS_ENGINEERING_AIRLOCK,
 	)
@@ -384,7 +399,7 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration/maintenance
-	req_access = list(
+	req_one_access = list(
 		ACCESS_GENERAL_EXPLORER,
 		ACCESS_ENGINEERING_MAINT,
 	)
@@ -443,8 +458,9 @@
 	icon_state = "centcom"
 
 /obj/map_helper/access_helper/airlock/station/centcom/ert
-	req_access = list(
-		ACCESS_CENTCOM_ERT
+	req_one_access = list(
+		ACCESS_CENTCOM_ERT,
+		ACCESS_CENTCOM_GENERAL,
 	)
 
 /**
