@@ -9,51 +9,22 @@
 	/// This is to make it easier to debug issues with assets, and allow server operators to bypass issues that make it to production.
 	/// If turning this on fixes asset issues, something isn't using get_asset_url and the asset isn't marked legacy, fix one of those.
 	var/dont_mutate_filenames = FALSE
+	#warn change how this works to be a filename debugging system
 
-	/// asset packs we're going to preload via native (browse_rsc) transport
-	var/list/datum/asset_pack/packs_to_natively_preload = list()
+	/// non-ephemeral items registered; *mangled filename* = instance
+	/// the reason we still use filename assoc list is so filename uniqueness is still enforced
+	/// incase we ever need to go back to native (browse_rsc).
+	var/list/loaded_items = list()
 
 /**
  * called when we're loaded into SSassets
  */
 /datum/asset_transport/proc/initialize()
 
-/**
- * loads a set of asset packs
- */
-/datum/asset_transport/proc/load_asset_packs(list/datum/asset_pack/packs)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(isnull(packs))
-		return
-	if(!islist(packs))
-		packs = list(packs)
-	for(var/datum/asset_pack/pack as anything in packs)
-		load_asset_pack(pack)
+/datum/asset_transport
 
-/**
- * loads a transport
- */
-/datum/asset_transport/proc/load_asset_pack(datum/asset_pack/pack)
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-/**
- * this transport's behavior for loading an asset pack
- */
-/datum/asset_transport/proc/load_asset_pack_custom(datum/asset_pack/pack)
-
-/**
- * loads an asset pack with browse_rsc
- */
-/datum/asset_transport/proc/load_asset_pack_native(datum/asset_pack/pack)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(should_preload_native_packs(pack))
-		packs_to_natively_preload += pack
-		#warn queue for loading on all existing clients
-
-/datum/asset_transport/proc/should_preload_native_pack(datum/asset_pack/pack)
-	if(!pack.do_not_preload)
-		return FALSE
-	return CONFIG_GET(flag/asset_simple_preload)
+/datum/asset_transport/proc/load_asset_items(list/datum/asset_item/items)
+	#warn impl
 
 #warn sigh
 
@@ -133,8 +104,8 @@
 /**
  * automatically preload all native asset packs to a client, one by one.
  */
-/datum/asset_transport/proc/perform_native_preload(client/victim)
-	victim.asset_cache_native_preload(packs_to_natively_preload)
+/datum/asset_transport/proc/perform_native_preload(client/victim, list/datum/asset_pack/native_packs)
+	victim.asset_cache_native_preload(native_packs)
 
 /// Sends a list of browser assets to a client
 /// client - a client or mob

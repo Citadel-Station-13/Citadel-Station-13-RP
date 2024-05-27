@@ -26,7 +26,7 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	/// was restored from cache
 	var/restored_from_cache = FALSE
 
-	/// if set, we are shoved in a namespace of this id
+	/// if set, we are shoved in a namespace of this id if not browse_rsc()'d
 	var/namespace_id
 
 /datum/asset_item/New(name, file)

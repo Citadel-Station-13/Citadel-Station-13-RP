@@ -844,10 +844,10 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
-			var/datum/asset_item/dynamic/item = SSassets.register_and_send_dynamic_item_by_hash(targets, thing)
+			var/url = SSassets.send_anonymous_file(targets, I)
 			if(sourceonly)
-				return item.get_url()
-			return "<img class='[extra_classes] icon icon-misc' src='[item.get_url()]'>"
+				return url
+			return "<img class='[extra_classes] icon icon-misc' src='[url]'>"
 		var/atom/A = thing
 
 		I = A.icon
@@ -875,14 +875,10 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	I = icon(I, icon_state, dir, frame, moving)
 
-	key = "[generate_asset_name(I)].png"
-	if(!SSassets.cache[key])
-		SSassets.transport.register_asset(key, I)
-	for (var/thing2 in targets)
-		SSassets.transport.send_assets(thing2, key)
+	var/url = SSassets.send_anonymous_file(targets, I)
 	if(sourceonly)
-		return SSassets.transport.get_asset_url(key)
-	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
+		return url
+	return "<img class='[extra_classes] icon icon-[icon_state]' src='[url]'>"
 
 /proc/icon2base64html(thing)
 	if (!thing)

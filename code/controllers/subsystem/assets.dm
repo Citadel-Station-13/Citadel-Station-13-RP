@@ -13,9 +13,14 @@ SUBSYSTEM_DEF(assets)
 	var/static/list/asset_packs_by_id = list()
 	/// all asset packs
 	var/static/list/datum/asset_pack/asset_packs = list()
+	/// asset packs we're going to preload via native (browse_rsc) transport
+	var/list/datum/asset_pack/asset_packs_to_natively_preload = list()
 
-	/// all dynamic or standalone asset items by md5
+
+	/// all dynamic or standalone asset items that were registered with md5
 	var/static/list/datum/asset_item/dynamic/dynamic_asset_items_by_md5 = list()
+	/// all dynamic or standalone asset items that were registered with name (which is also their uid)
+	var/static/list/datum/asset_item/dynamic/dynamic_asset_items_by_name = list()
 
 	/// our active asset transport
 	var/datum/asset_transport/transport
@@ -67,6 +72,13 @@ SUBSYSTEM_DEF(assets)
 		registered = TRUE
 	if(!registered)
 		CRASH("couldn't register by type or id")
+	if(should_preload_native_packs(pack))
+		packs_to_natively_preload += pack
+
+/datum/controller/subsystem/assets/proc/should_preload_native_pack(datum/asset_pack/pack)
+	if(!pack.do_not_preload)
+		return FALSE
+	return CONFIG_GET(flag/asset_simple_preload)
 
 /**
  * fetches an asset datum, **without** ensuring it's ready / loaded
@@ -113,10 +125,47 @@ SUBSYSTEM_DEF(assets)
 
 	#warn impl
 
+#warn redo hash; they should be for 'throwaway' ones.
+
 /**
+ * loads a file that we declare to not be necessary to keep around / store information on after
+ * the necessary clients have loaded it.
+ *
+ * blocking proc
+ *
+ * @params
+ * * targets - client or list of clients to send it to
+ * * file - the file in question
+ *
+ * @return url to load it with; this will usually be heavily mangled.
+ */
+/datum/controller/subsystem/assets/proc/send_anonymous_file(client/targets, file)
+	RETURN_TYPE(/datum/asset_item/dynamic)
+
+/**
+ * @params
+ * * targets - a client, or a list of clients
+ * * files - a file, or a list of names associated to files
+ * * name - the name for the file. if files is a list, this is ignored
+ * * do_not_mangle - do not mangle / unique-ify the name of the file.
+ *
  * @return /datum/asset_item/dynamic
  */
-/datum/controller/subsystem/assets/proc/register_dynamic_item_by_hash(file)
+/datum/controller/subsystem/assets/proc/register_and_send_dynamic_item_by_name(list/client/targets, list/files, name, do_not_mangle)
+	RETURN_TYPE(/datum/asset_item/dynamic)
+	#warn handle list files
+	send_dynamic_item(targets, register_dynamic_item_by_name(file, name))
+
+/**
+ * @params
+ * * targets - a client, or a list of clients
+ * * files - a file, or a list of names associated to files
+ * * name - the name for the file. if files is a list, this is ignored
+ * * do_not_mangle - do not mangle / unique-ify the name of the file.
+ *
+ * @return /datum/asset_item/dynamic
+ */
+/datum/controller/subsystem/assets/proc/register_dynamic_item_by_name(list/file, name, do_not_mangle)
 	RETURN_TYPE(/datum/asset_item/dynamic)
 
 /// Generate a filename for this asset
@@ -125,18 +174,14 @@ SUBSYSTEM_DEF(assets)
 /proc/generate_asset_name(file)
 	return "asset.[md5(fcopy_rsc(file))]"
 
-/datum/controller/subsystem/assets/proc/send_dynamic_item_by_hash(list/client/targets, hash)
+/datum/controller/subsystem/assets/proc/send_dynamic_item_by_name(list/client/targets, name)
 
 /datum/controller/subsystem/assets/proc/send_dynamic_item(list/client/targets, datum/asset_item/dynamic/item)
 	if(!islist(targets))
 		targets = list(targets)
 
-/**
- * @return /datum/asset_item/dynamic
- */
-/datum/controller/subsystem/assets/proc/register_and_send_dynamic_item_by_hash(list/client/targets, file)
-	RETURN_TYPE(/datum/asset_item/dynamic)
-	send_dynamic_item(targets, register_dynamic_item_by_hash(file))
+/datum/controller/subsystem/assets/proc/get_dynamic_item_url_by_name(name)
+	#warn impl
 
 #warn impl all
 
@@ -165,4 +210,4 @@ SUBSYSTEM_DEF(assets)
 
 
 /datum/controller/subsystem/assets/proc/preload_client_assets(client/target)
-	transport.perform_native_preload(target)
+	transport.perform_native_preload(target, packs_to_natively_preload)
