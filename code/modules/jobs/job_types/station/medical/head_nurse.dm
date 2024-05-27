@@ -25,7 +25,7 @@
 	)
 	outfit_type = /datum/outfit/job/station/medical_doctor/senior_physician
 	desc = "A Senior Physician is an experienced medical professional who fulfills a similar role to other doctors but usually occupies spare time with with training of other, newer doctors \
-			and giving advice in tricky medical situtations. You are not in command of the Medical departement, but should assist the CMO in accordance with Standard Operating Procedures."
+			and giving advice in tricky medical situations. You are not in command of the Medical department, but should assist the CMO in accordance with Standard Operating Procedures."
 
 	minimal_player_age = 14
 	minimum_character_age = 25

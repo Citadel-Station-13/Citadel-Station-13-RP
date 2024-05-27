@@ -40,13 +40,14 @@
 	item_state = "gun"
 	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	materials = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
 	damage_force = 5
+	damage_tier = MELEE_TIER_MEDIUM
 	preserve_item = 1
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
@@ -388,7 +389,7 @@
 			handle_click_safety(user)
 			return
 
-	if(!user?.client?.is_preference_enabled(/datum/client_preference/help_intent_firing) && user.a_intent == INTENT_HELP)
+	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
 		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
 		return
 
@@ -834,7 +835,7 @@
 
 /obj/item/gun/verb/toggle_safety_verb()
 	set src in usr
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Gun Safety"
 
 	if(usr == loc)

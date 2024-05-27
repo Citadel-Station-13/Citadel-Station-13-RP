@@ -8,16 +8,16 @@
 	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
-	materials = list(MAT_GLASS = 150)
+	materials_base = list(MAT_GLASS = 150, MAT_STEEL = 250)
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	volume = 15
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	sharp = 1
-	unacidable = 1 //glass
+	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -257,13 +257,14 @@
 			return
 
 		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
-
-		if(affecting.take_damage(3))
-			H.UpdateDamageIcon()
-
+		affecting.inflict_bodypart_damage(
+			brute = 3,
+			damage_mode = DAMAGE_MODE_SHARP,
+			weapon_descriptor = "a needle",
+		)
 	else
 		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
-		target.take_organ_damage(3)// 7 is the same as crowbar punch
+		target.take_random_targeted_damage(brute = 3)// 7 is the same as crowbar punch
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()

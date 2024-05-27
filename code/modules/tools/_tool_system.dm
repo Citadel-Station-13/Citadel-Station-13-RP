@@ -52,7 +52,6 @@
  * * reachability_check - a callback used for reachability checks. if none, defaults to mob.Reachability when in clickcode, can always reach otherwise.
  */
 /atom/proc/tool_interaction(obj/item/I, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	return _tool_interaction_entrypoint(I, e_args, clickchain_flags, function, hint, reachability_check)
 
 /atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)

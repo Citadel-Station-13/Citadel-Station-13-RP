@@ -8,11 +8,10 @@
 	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 10
 	amount_per_transfer_from_this = 10
-	unacidable = 1 //plastic
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
@@ -84,7 +83,7 @@
 /obj/item/reagent_containers/spray/verb/empty()
 
 	set name = "Empty Tank"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if (alert(usr, "Are you sure you want to empty that?", "Empty Tank:", "Yes", "No") != "Yes")
@@ -166,7 +165,7 @@
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
 	throw_force = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	possible_transfer_amounts = null
 	volume = 600
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
@@ -222,7 +221,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun"
 	item_state = "squirtgun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	volume = 100
 	var/pumped = TRUE
 
@@ -246,9 +245,9 @@
 
 /obj/item/reagent_containers/spray/squirt/nt
 	name = "HydroBlaster 4001"
-	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in NanoTrasen corporate colors. This is largely considered a sarcastic gesture."
+	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in Nanotrasen corporate colors. This is largely considered a sarcastic gesture."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun_nt"
 	item_state = "squirtgun_nt"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	volume = 101

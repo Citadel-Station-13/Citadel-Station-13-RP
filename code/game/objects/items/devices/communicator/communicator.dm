@@ -21,12 +21,12 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	communications across different stations, planets, or even star systems."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "communicator_home"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	show_messages = 1
 
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MAGNET = 2, TECH_BLUESPACE = 2, TECH_DATA = 2)
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	var/video_range = 3
 	var/obj/machinery/camera/communicator/video_source	// Their camera

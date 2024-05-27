@@ -34,7 +34,7 @@
 		ui = new(user, src, "AreaScrubberControl", name)
 		ui.open()
 
-/obj/machinery/computer/area_atmos/ui_data(mob/user)
+/obj/machinery/computer/area_atmos/ui_data(mob/user, datum/tgui/ui)
 	var/list/working = list()
 	for(var/id in connectedscrubbers)
 		var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber = connectedscrubbers[id]
@@ -53,7 +53,7 @@
 
 	return list("scrubbers" = working)
 
-/obj/machinery/computer/area_atmos/ui_act(action, params)
+/obj/machinery/computer/area_atmos/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -787,16 +787,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	// I will both remove their SVN access and permanently ban them from my servers.
 	return
 
-/client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.mob_list)
-	set category = "Special Verbs"
-	set name = "Check Contents"
-	set popup_menu = FALSE
-
-	var/list/L = M.get_contents()
-	for(var/t in L)
-		to_chat(usr, "[t]")
-	feedback_add_details("admin_verb","CC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /* This proc is DEFERRED. Does not do anything.
 /client/proc/cmd_admin_remove_phoron()
 	set category = "Debug"
@@ -1052,7 +1042,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(M, "<B>You hear a crackling in your headset...</B> <i>[msg]</i>")
 
 	log_admin("CentcomPM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	msg = "<span class='adminnotice'><b> CentcomMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
+	msg = "<span class='adminnotice'><b> Centcom Message: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","ICS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

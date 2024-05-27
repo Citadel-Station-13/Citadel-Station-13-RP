@@ -28,21 +28,21 @@ export type AtmosVentPressureTarget = number | 'default';
 
 interface AtmosVentPumpControlProps extends SectionProps {
   // act() for toggling vent; if this isn't provided, the button is disabled.
-  powerToggle?: (enabled?: boolean) => void;
+  readonly powerToggle?: (enabled?: boolean) => void;
   // act() for toggling pumping out; if this isn't provided, the button is disabled.
-  dirToggle?: (siphon?: boolean) => void;
+  readonly dirToggle?: (siphon?: boolean) => void;
   // set internal pressure check
-  internalSet?: (target: AtmosVentPressureTarget) => void;
+  readonly internalSet?: (target: AtmosVentPressureTarget) => void;
   // set external pressure check
-  externalSet?: (target: AtmosVentPressureTarget) => void;
+  readonly externalSet?: (target: AtmosVentPressureTarget) => void;
   // act() for toggling internal checks
-  internalToggle?: (enabled?: boolean) => void;
+  readonly internalToggle?: (enabled?: boolean) => void;
   // act() for toggling external checks
-  externalToggle?: (enabled?: boolean) => void;
+  readonly externalToggle?: (enabled?: boolean) => void;
   // vent data
-  state: AtmosVentPumpState;
+  readonly state: AtmosVentPumpState;
   // standalone window? will make button a list item instead of section item.
-  standalone?: boolean;
+  readonly standalone?: boolean;
 }
 
 /**

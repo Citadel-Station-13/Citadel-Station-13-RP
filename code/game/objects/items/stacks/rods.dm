@@ -3,14 +3,14 @@
 	desc = "Some rods. Can be used for building, or something."
 	singular_name = "metal rod"
 	icon_state = "rods"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 9.0
 	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
-	materials = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2)
+	materials_base = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 2)
 	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
 
@@ -62,7 +62,6 @@
 	name = "metal rod synthesizer"
 	desc = "A device that makes metal rods."
 	gender = NEUTER
-	materials = null
 	uses_charge = 1
 	charge_costs = list(500)
 	stacktype = /obj/item/stack/rods

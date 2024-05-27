@@ -102,7 +102,7 @@
 		ui = new(user, src, tgui_id, name)
 		ui.open()
 
-/datum/tgui_module_old/camera/ui_data()
+/datum/tgui_module_old/camera/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["activeCamera"] = null
 	if(active_camera)
@@ -112,7 +112,7 @@
 		)
 	return data
 
-/datum/tgui_module_old/camera/ui_static_data(mob/user)
+/datum/tgui_module_old/camera/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["mapRef"] = map_name
 	var/list/cameras = get_available_cameras(user)
@@ -127,7 +127,7 @@
 		data["allNetworks"] |= C.network
 	return data
 
-/datum/tgui_module_old/camera/ui_act(action, params)
+/datum/tgui_module_old/camera/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -260,7 +260,7 @@
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
 
-/datum/tgui_module_old/camera/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/camera/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	var/user_ref = REF(user)
 	var/is_living = isliving(user)

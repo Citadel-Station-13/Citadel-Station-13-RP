@@ -7,8 +7,6 @@ var/global/list/hud_icon_reference       = list()
 
 var/global/list/global_mutations  = list() // List of hidden mutation things.
 
-var/global/datum/universal_state/universe = new
-
 // Noises made when hit while typing.
 var/list/hit_appends	= list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
 // var/station_name		= "Northern Star"
@@ -17,7 +15,7 @@ var/list/hit_appends	= list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
 // var/const/dock_name		= "Vir Interstellar Spaceport"
 // var/const/boss_name		= "Central Command"
 // var/const/boss_short	= "CentCom"
-// var/const/company_name	= "NanoTrasen"
+// var/const/company_name	= "Nanotrasen"
 // var/const/company_short	= "NT"
 // var/const/star_name		= "Vir"
 // var/const/starsys_name	= "Vir"

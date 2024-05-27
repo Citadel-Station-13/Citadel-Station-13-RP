@@ -409,7 +409,6 @@
 	expected_type = /datum/computer_file/program/card_mod
 	var/datum/computer_file/program/program
 
-
 /datum/tgui_module/card_mod/standard/id_computer/ntos/New(datum/host)
 	. = ..()
 	program = host
@@ -432,7 +431,7 @@
  */
 /datum/tgui_module/card_mod/admin
 
-/datum/tgui_module/card_mod/admin/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module/card_mod/admin/ui_state()
 	return GLOB.admin_state
 
 

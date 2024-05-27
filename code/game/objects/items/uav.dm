@@ -208,14 +208,14 @@
 	switch(state)
 		if(UAV_OFF) //Packing
 			state = UAV_PACKED
-			w_class = ITEMSIZE_LARGE
+			set_weight_class(WEIGHT_CLASS_BULKY)
 			slowdown = 1
 			density = FALSE
 			update_icon()
 			return TRUE
 		if(UAV_PACKED) //Unpacking
 			state = UAV_OFF
-			w_class = ITEMSIZE_HUGE
+			set_weight_class(WEIGHT_CLASS_HUGE)
 			slowdown = 3
 			density = TRUE
 			update_icon()
@@ -323,7 +323,7 @@
 		var/rendered = "<i><span class='game say'>UAV received, <span class='message'>[msg]</span></span></i>"
 		master.show_message(rendered, type)
 
-/obj/item/uav/take_damage(var/damage)
+/obj/item/uav/take_damage_legacy(var/damage)
 	health -= damage
 	CheckHealth()
 	return

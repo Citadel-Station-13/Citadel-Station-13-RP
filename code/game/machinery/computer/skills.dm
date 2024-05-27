@@ -80,7 +80,7 @@
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
-/obj/machinery/computer/skills/ui_data(mob/user)
+/obj/machinery/computer/skills/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["temp"] = temp
@@ -134,7 +134,7 @@
 	data["modal"] = ui_modal_data(src)
 	return data
 
-/obj/machinery/computer/skills/ui_act(action, params)
+/obj/machinery/computer/skills/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -43,7 +43,7 @@
 	desc = "The Rover key used to start it."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "securikey"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/vehicle_old/train/rover/trolley
 	name = "Train trolley"

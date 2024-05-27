@@ -14,7 +14,7 @@
 
 /obj/item/clothing/under/event_reward/foxmiko/verb/partkimono() //Verb for parting kimono - kinky. User reporting, flips state, and updates icon
     set name = "Adjust Kimono"
-    set category = "Object"
+    set category = VERB_CATEGORY_OBJECT
     set src in usr
     if(!istype(usr, /mob/living)) //Standard checks for clothing verbs
         return
@@ -35,7 +35,7 @@
 
 /obj/item/clothing/under/event_reward/foxmiko/verb/liftskirt() //Verb for parting skirt - lewd. User reporting, flips state, and updates icon
     set name = "Adjust Skirt"
-    set category = "Object"
+    set category = VERB_CATEGORY_OBJECT
     set src in usr
     if(!istype(usr, /mob/living)) //Standard checks for clothing verbs
         return
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/under/event_reward/foxmiko/verb/hidetie() //Verb for concealing assessory icons on mob spirt - this is a hack of the original code to remove accessories
 	set name = "Hide Accessory"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return //Standard checks for clothing verbs
 	if(usr.stat) return

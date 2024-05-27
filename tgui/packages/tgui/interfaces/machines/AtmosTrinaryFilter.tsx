@@ -8,9 +8,9 @@ import { AtmosGasGroups, AtmosGasID, AtmosGasGroupFlags, GasContext, AtmosFilter
 import { AtmosComponent, AtmosComponentData } from "../common/AtmosMachine";
 
 interface AtmosTrinaryFilterControlProps extends SectionProps {
-  atmosContext: GasContext;
-  filtering: null | AtmosGasGroups | AtmosGasID;
-  setFiltering?: (target: AtmosGasGroups|AtmosGasID) => void;
+  readonly atmosContext: GasContext;
+  readonly filtering: null | AtmosGasGroups | AtmosGasID;
+  readonly setFiltering?: (target: AtmosGasGroups|AtmosGasID) => void;
 }
 
 export const AtmosTrinaryFilterControl = (props: AtmosTrinaryFilterControlProps, context) => {

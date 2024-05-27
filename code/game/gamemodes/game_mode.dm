@@ -539,7 +539,7 @@ var/global/list/additional_antag_types = list()
 
 /mob/verb/check_round_info()
 	set name = "Check Round Info"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	if(!SSticker || !SSticker.mode)
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")

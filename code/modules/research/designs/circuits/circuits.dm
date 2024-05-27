@@ -5,7 +5,7 @@ CIRCUITS BELOW
 /datum/design/circuit
 	lathe_type = LATHE_TYPE_CIRCUIT
 	req_tech = list(TECH_DATA = 2)
-	materials = list(MAT_GLASS = 2000)
+	materials_base = list(MAT_GLASS = 2000)
 	reagents = list("sacid" = 20)
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 

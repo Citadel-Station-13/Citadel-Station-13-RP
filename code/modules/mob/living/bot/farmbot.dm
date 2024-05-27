@@ -42,7 +42,7 @@
 		ui = new(user, src, "Farmbot", name)
 		ui.open()
 
-/mob/living/bot/farmbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/farmbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -331,7 +331,7 @@
 	var/build_step = 0
 	var/created_name = "Farmbot"
 	var/obj/tank
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 
 /obj/item/farmbot_arm_assembly/Initialize(mapload, theTank)

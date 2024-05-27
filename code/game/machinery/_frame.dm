@@ -1,6 +1,8 @@
 /var/global/list/construction_frame_wall
 /var/global/list/construction_frame_floor
 
+
+
 // TODO: MAKE FRAMES NOT AWFUL
 // WHY IN THE NAME OF THE SEVEN HELLS ARE THEY NOT STATIC DATUMS AT THIS POINT?!
 // WHY ARE VARIABLES HARD TYPECHECKED?
@@ -384,10 +386,7 @@
 					circuit.after_construct(new_machine)
 
 					for(var/obj/O in components)
-						if(circuit.contain_parts)
-							O.loc = new_machine
-						else
-							O.loc = null
+						O.loc = new_machine
 						new_machine.component_parts += O
 
 					circuit.loc = null
@@ -543,7 +542,7 @@
 				state = FRAME_FASTENED
 				new /obj/item/stack/cable_coil(loc, 5)
 
-	else if(istype(P, /obj/item/stack/material) && P.get_material_name() == "glass")
+	else if(P.is_material_stack_of(/datum/material/glass))
 		if(state == FRAME_WIRED)
 			if(frame_type.frame_class == FRAME_CLASS_COMPUTER)
 				var/obj/item/stack/G = P
@@ -603,7 +602,7 @@
 
 /obj/structure/frame/verb/rotate_counterclockwise()
 	set name = "Rotate Frame Counter-Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.incapacitated())
@@ -622,7 +621,7 @@
 
 /obj/structure/frame/verb/rotate_clockwise()
 	set name = "Rotate Frame Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.incapacitated())

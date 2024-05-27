@@ -142,8 +142,8 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 		)
 	item_state = "syringe_kit"
-	w_class = ITEMSIZE_NORMAL
-	materials = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
+	w_class = WEIGHT_CLASS_NORMAL
+	materials_base = list(MAT_STEEL = 4000, MAT_GLASS = 1000)
 
 /obj/item/cell_charger_kit/attack_self(mob/user)
 	. = ..()

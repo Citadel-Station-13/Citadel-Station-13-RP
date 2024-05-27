@@ -11,20 +11,20 @@ import { DraggableControl } from './DraggableControl';
 import { NumberInput } from './NumberInput';
 
 interface SliderProps extends BoxProps {
-  animated?: BooleanLike;
-  color?: string;
-  value: number;
-  unit?: string;
-  minValue: number;
-  maxValue: number;
-  fillValue?: number;
-  ranges?: Record<string, [number, number]>;
-  step?: number;
-  stepPixelSize?: number;
-  format?: (n: number) => number;
-  suppressFlicker?: number;
-  onChange?: Function;
-  onDrag?: Function;
+  readonly animated?: BooleanLike;
+  readonly color?: string;
+  readonly value: number;
+  readonly unit?: string;
+  readonly minValue: number;
+  readonly maxValue: number;
+  readonly fillValue?: number;
+  readonly ranges?: Record<string, [number, number]>;
+  readonly step?: number;
+  readonly stepPixelSize?: number;
+  readonly format?: (n: number) => number;
+  readonly suppressFlicker?: number;
+  readonly onChange?: Function;
+  readonly onDrag?: Function;
 }
 
 export const Slider = (props: SliderProps) => {

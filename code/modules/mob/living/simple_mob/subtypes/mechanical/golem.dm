@@ -28,8 +28,8 @@
 	harm_intent_damage = 3
 	friendly = "hugs"
 
-	melee_damage_lower = 30 // It has a built in esword.
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30 // It has a built in esword.
+	legacy_melee_damage_upper = 30
 	attack_sound = 'sound/weapons/blade1.ogg'
 	attacktext = list("slashed")
 	melee_attack_delay = 0.5 SECONDS // Even has custom attack animations.

@@ -5,7 +5,7 @@
 	icon_state = "modern_chair"
 	color = null
 	base_icon = "modern_chair"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/structure/bed/chair/modern_chair/Initialize(mapload)
 	. = ..()
@@ -20,7 +20,7 @@
 	icon_state = "bar"
 	base_icon = "bar"
 	color = null
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/structure/bed/chair/backed_grey
 	name = "grey chair"
@@ -29,7 +29,7 @@
 	icon_state = "onestar_chair_grey"
 	color = null
 	base_icon = "onestar_chair_grey"
-	applies_material_colour = 0
+	material_color = 0
 
 /obj/structure/bed/chair/backed_red
 	name = "red chair"
@@ -38,7 +38,7 @@
 	icon_state = "onestar_chair_red"
 	color = null
 	base_icon = "onestar_chair_red"
-	applies_material_colour = 0
+	material_color = 0
 
 // Baystation12 chairs with their larger update_icons proc
 /obj/structure/bed/chair/bay/update_icon()
@@ -59,7 +59,7 @@
 	var/cache_key = "[base_icon]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
-		if(applies_material_colour)
+		if(material_color)
 			I.color = material.icon_colour
 		stool_cache[cache_key] = I
 	add_overlay(stool_cache[cache_key])
@@ -79,7 +79,7 @@
 		var/image/I = image(icon, "[base_icon]_over")
 		I.plane = MOB_PLANE
 		I.layer = ABOVE_MOB_LAYER
-		if(applies_material_colour)
+		if(material_color)
 			I.color = material.icon_colour
 		stool_cache[cache_key] = I
 	add_overlay(stool_cache[cache_key])
@@ -103,7 +103,7 @@
 			var/image/I = image(icon, "[base_icon]_armrest")
 			I.plane = MOB_PLANE
 			I.layer = ABOVE_MOB_LAYER
-			if(applies_material_colour)
+			if(material_color)
 				I.color = material.icon_colour
 			stool_cache[cache_key] = I
 		add_overlay(stool_cache[cache_key])
@@ -234,7 +234,7 @@
 		var/image/I = image(icon, "[base_icon]_special")
 		I.plane = MOB_PLANE
 		I.layer = ABOVE_MOB_LAYER
-		if(applies_material_colour)
+		if(material_color)
 			I.color = material.icon_colour
 		add_overlay(I)
 

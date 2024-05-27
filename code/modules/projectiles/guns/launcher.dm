@@ -2,7 +2,7 @@
 	name = "launcher"
 	desc = "A device that launches things."
 	icon = 'icons/obj/gun/launcher.dmi'
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = SLOT_BACK
 
 	var/release_force = 0

@@ -86,7 +86,7 @@
  */
 /mob/living/carbon/human/proc/nif_menu()
 	set name = "NIF Menu"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Open the NIF user interface."
 
 	var/obj/item/nif/N = nif
@@ -96,7 +96,7 @@
 /**
  * The NIF State ensures that only our authorized implanted user can touch us.
  */
-/obj/item/nif/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/nif/ui_state()
 	return GLOB.ui_nif_main_state
 
 /**
@@ -112,7 +112,7 @@
  * ui_data gives the UI any relevant data it needs.
  * In our case, that's basically everything from our statpanel.
  */
-/obj/item/nif/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/nif/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["theme"] = save_data["ui_theme"]

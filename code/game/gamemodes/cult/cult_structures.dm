@@ -46,8 +46,9 @@
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
 	attackpylon(user, W.damage_force)
 
-/obj/structure/cult/pylon/take_damage(var/damage)
+/obj/structure/cult/pylon/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
 	pylonhit(damage)
+	return damage
 
 /obj/structure/cult/pylon/bullet_act(var/obj/projectile/Proj)
 	pylonhit(Proj.get_structure_damage())
@@ -127,9 +128,9 @@
 	desc = "You're pretty sure that abyss is staring back."
 	icon = 'icons/obj/cult.dmi'
 	icon_state = "hole"
-	density = 1
-	unacidable = 1
-	anchored = 1.0
+	density = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
+	anchored = TRUE
 	var/spawnable = null
 
 /obj/effect/gateway/active

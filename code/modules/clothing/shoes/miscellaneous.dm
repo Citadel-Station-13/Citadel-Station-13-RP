@@ -90,9 +90,9 @@
 	siemens_coefficient = 0.7
 	origin_tech = list(TECH_ARCANE = 2)
 
-	cold_protection = FEET
+	cold_protection_cover = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = FEET
+	heat_protection_cover = FEET
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROTECTION_TEMPERATURE
 	species_restricted = null
 
@@ -118,7 +118,7 @@
 	icon_state = "slippers_worn"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "slippers", SLOT_ID_LEFT_HAND = "slippers")
 	damage_force = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/shoes/laceup
 	name = "black oxford  shoes"
@@ -141,6 +141,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_SHOES_FINS
 	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_SHOES_FINS
 	species_restricted = null
+	water_speed = -3
 
 /obj/item/clothing/shoes/flipflop
 	name = "flip flops"
@@ -174,7 +175,7 @@
 	icon_state = "clothwrap"
 	item_state = "clothwrap"
 	damage_force = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	species_restricted = null
 	drop_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'

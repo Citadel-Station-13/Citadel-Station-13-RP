@@ -83,11 +83,11 @@
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
 	icon_state = "black"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/under/acj
@@ -99,7 +99,7 @@
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	armor_type = /datum/armor/invulnerable
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 
@@ -394,6 +394,13 @@
 	name = "sexy maid costume"
 	desc = "You must be a bit risque teasing all of them in a maid uniform!"
 	icon_state = "sexymaid"
+
+/obj/item/clothing/under/dress/maid/neko
+	name = "neko maid uniform"
+	desc = "A tailored maid uniform that takes many cues from Old Earth Bavarian commonwear. It seems airy and breathable."
+	icon = 'icons/clothing/uniform/misc/neko.dmi'
+	icon_state = "neko"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/dress/dress_fire
 	name = "flame dress"
@@ -1873,7 +1880,7 @@
 	var/original_size
 
 /obj/item/clothing/under/bluespace/verb/toggle_fibers()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust fibers"
 	set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
 	set src in usr
@@ -1890,7 +1897,7 @@
 
 /obj/item/clothing/under/bluespace/verb/resize()
 	set name = "Adjust Size"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	bluespace_size(usr)
 
@@ -1993,7 +2000,7 @@
 /*
 /obj/item/clothing/under/antediluvian/verb/switchsprite()
     set name = "Reconfigure Suit"
-    set category = "Object"
+    set category = VERB_CATEGORY_OBJECT
     set src in usr
     if(!istype(usr, /mob/living))
         return
@@ -2376,3 +2383,120 @@
 	icon = 'icons/clothing/uniform/misc/tourist.dmi'
 	icon_state = "tourist"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/under/replika/arar
+	name = "repair-worker replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the engineering variety. Comes with multiple interfacing ports, arm protectors, and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "arar"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/lstr
+	name = "land-survey replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the exploration variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "lstr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/fklr
+	name = "command replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the command variety. Comes with interfacing ports, an air of formality, and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "fklr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/eulr
+	name = "general-purpose replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of multipurpose variety. Comes with default interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "eulr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/klbr
+	name = "controller replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the controller variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "klbr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/stcr
+	name = "security-technician replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the security variety. Comes with multiple interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "stcr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/adlr
+	name = "administration replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the administrative variety. Comes with several interfacing ports and a conspicuous lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "adlr"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/replika/lstr_alt
+	name = "combat-engineer replikant bodysuit"
+	desc = "A skin-tight bodysuit designed for 2nd generation biosynthetics of the exploration variety. Comes with extra interfacing ports, white armpads, and a familiar lack of leg coverage."
+	description_fluff = "These purpose-made interfacing bodysuits are designed and produced by the Singheim Bureau of Biosynthetic Development for their long-running second generation of Biosynthetics, commonly known by the term Replikant. Although anyone could wear these, their overall cut and metallic ports along the spine make it rather uncomfortable to most."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "lstr_alt"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/gestalt/sleek_skirt
+	name = "sleek crew skirt"
+	desc = "A tight-fitting black uniform with a narrow skirt and striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt_skirt"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/gestalt/sleek
+	name = "sleek crew uniform"
+	desc = "A tight-fitting black uniform with striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/gestalt/sleek_fem
+	name = "sleek female crew uniform"
+	desc = "A tight-fitting black uniform with striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt_fem"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+
+/obj/item/clothing/under/gestalt/sleeveless
+	name = "sleeveless sleek crew uniform"
+	desc = "A tight-fitting, sleeveless single-piece black uniform with striking crimson trim."
+	icon = 'icons/clothing/uniform/misc/replika.dmi'
+	icon_state = "gestalt_sleeveless"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL

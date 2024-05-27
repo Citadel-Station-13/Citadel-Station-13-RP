@@ -129,6 +129,15 @@
 	// close context menus
 	context_close()
 
+	// storage stuff
+	obj_storage?.on_dropped(user)
+
+	// get rid of shieldcalls
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		if(!shieldcall.shields_in_inventory)
+			continue
+		user.unregister_shieldcall(shieldcall)
+
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
@@ -145,6 +154,8 @@
 	item_flags |= ITEM_IN_INVENTORY
 	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
 	user.handle_actions()
+	// todo: should this be here
+	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
@@ -153,6 +164,15 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(weight_registered)
+
+	// storage stuff
+	obj_storage?.on_pickup(user)
+
+	// get rid of shieldcalls
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		if(!shieldcall.shields_in_inventory)
+			continue
+		user.register_shieldcall(shieldcall)
 
 /**
  * update our worn icon if we can
@@ -249,22 +269,22 @@
 
 	switch(slot)
 		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_WORN_ID)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_BELT)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_SUIT_STORAGE)
-			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot(SLOT_ID_SUIT))
+			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot_id(SLOT_ID_SUIT))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a suit before you can attach [src]."))
 				return FALSE
@@ -280,7 +300,7 @@
 	if(!worn_slot)
 		return
 	if(!equip_check_beltlink(M, worn_slot, null, INV_OP_SILENT))
-		M.drop_item_to_ground(src)
+		M.drop_item_to_ground(src, INV_OP_SILENT)
 		return
 
 /**
@@ -367,7 +387,7 @@
 /obj/item/proc/is_being_worn()
 	if(!worn_slot)
 		return FALSE
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(worn_slot)
 	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
 
 /**
@@ -404,3 +424,15 @@
 	if(slot != worn_slot || M != worn_mob())
 		return
 	return TRUE
+
+//* Shieldcall registration
+
+/obj/item/register_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		worn_mob()?.register_shieldcall(delegate)
+
+/obj/item/unregister_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		worn_mob()?.unregister_shieldcall(delegate)

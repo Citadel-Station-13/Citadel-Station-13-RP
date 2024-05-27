@@ -17,7 +17,7 @@
 			/obj/item/tank/oxygen = 2,
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/aether
+	container_type = /obj/structure/closet/crate/secure/corporate/aether
 	container_name = "Atmospheric voidsuit crate"
 	access = ACCESS_ENGINEERING_ATMOS
 
@@ -31,7 +31,7 @@
 			/obj/item/tank/oxygen = 2,
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/aether
+	container_type = /obj/structure/closet/crate/secure/corporate/aether
 	container_name = "Heavy Duty Atmospheric voidsuit crate"
 	access = ACCESS_ENGINEERING_ATMOS
 
@@ -45,7 +45,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Engineering voidsuit crate"
 	access = ACCESS_ENGINEERING_ENGINE
 
@@ -59,7 +59,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Engineering Construction voidsuit crate"
 	access = ACCESS_ENGINEERING_ENGINE
 
@@ -73,7 +73,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 45
-	container_type = /obj/structure/closet/crate/secure/aether
+	container_type = /obj/structure/closet/crate/secure/corporate/aether
 	container_name = "Engineering Hazmat voidsuit crate"
 	access = ACCESS_ENGINEERING_ENGINE
 
@@ -87,7 +87,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/aether
+	container_type = /obj/structure/closet/crate/secure/corporate/aether
 	container_name = "Reinforced Engineering voidsuit crate"
 	access = ACCESS_ENGINEERING_ENGINE
 
@@ -115,7 +115,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Medical EMT voidsuit crate"
 	access = ACCESS_MEDICAL_EQUIPMENT
 
@@ -129,7 +129,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 45
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Medical Biohazard voidsuit crate"
 	access = ACCESS_MEDICAL_EQUIPMENT
 
@@ -143,7 +143,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate/secure/veymed
+	container_type = /obj/structure/closet/crate/secure/corporate/veymed
 	container_name = "Vey-Med Medical voidsuit crate"
 	access = ACCESS_MEDICAL_EQUIPMENT
 
@@ -157,7 +157,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/veymed
+	container_type = /obj/structure/closet/crate/secure/corporate/veymed
 	container_name = "Vey-Med Medical voidsuit crate"
 	access = ACCESS_MEDICAL_EQUIPMENT
 
@@ -171,7 +171,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security voidsuit crate"
 
 /datum/supply_pack/voidsuits/security/crowd
@@ -184,7 +184,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security Crowd Control voidsuit crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -198,7 +198,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security EVA Riot voidsuit crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -211,7 +211,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/grayson
+	container_type = /obj/structure/closet/crate/secure/corporate/grayson
 	container_name = "Mining voidsuit crate"
 	access = ACCESS_SUPPLY_MINE
 
@@ -224,7 +224,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/grayson
+	container_type = /obj/structure/closet/crate/secure/corporate/grayson
 	container_name = "Frontier Mining voidsuit crate"
 	access = ACCESS_SUPPLY_MINE
 
@@ -321,7 +321,7 @@
 			/obj/item/tank/oxygen = 3
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Exploration voidsuit crate"
 	access = ACCESS_GENERAL_EXPLORER
 
@@ -335,7 +335,7 @@
 			/obj/item/tank/oxygen = 1
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Pilot voidsuit crate"
 	access = ACCESS_GENERAL_PILOT
 
@@ -350,7 +350,7 @@
 			/obj/item/tank/oxygen = 1
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security cryosuit crate"
 	access = ACCESS_SECURITY_ARMORY
 
@@ -364,7 +364,7 @@
 			/obj/item/tank/oxygen = 1
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Engineering cryosuit crate"
 	access = ACCESS_ENGINEERING_MAIN
 
@@ -378,7 +378,7 @@
 			/obj/item/tank/oxygen = 1
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Atmospherics cryosuit crate"
 	access = ACCESS_ENGINEERING_ATMOS
 
@@ -392,7 +392,7 @@
 			/obj/item/tank/oxygen = 1
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Mining cryosuit crate"
 	access = ACCESS_SUPPLY_MINE
 
@@ -408,7 +408,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/heph
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Icarus Combat Suit crate"
 
 /datum/supply_pack/voidsuits/odst_med
@@ -421,7 +421,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate/secure/heph
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Hephaestheus Icarus Medic crate"
 	access = ACCESS_MEDICAL_EQUIPMENT
 
@@ -435,7 +435,7 @@
 			/obj/item/tank/oxygen = 2
 			)
 	cost = 40
-	container_type = /obj/structure/closet/crate/secure/heph
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Hephaestheus Icarus Engineer crate"
 	access = ACCESS_ENGINEERING_ENGINE
 
@@ -449,6 +449,6 @@
 			/obj/item/tank/oxygen = 3
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/heph
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Hephaestheus Icarus Frontier crate"
 	access = ACCESS_GENERAL_EXPLORER

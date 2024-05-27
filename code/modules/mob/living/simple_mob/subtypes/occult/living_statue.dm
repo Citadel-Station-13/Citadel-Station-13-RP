@@ -20,8 +20,8 @@
 
 	harm_intent_damage = 10
 
-	melee_damage_lower = 10
-	melee_damage_upper = 18
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 18
 	attacktext = list("clawed", "mauls")
 	friendly = list("pats", "hugs")
 	attack_sound = 'sound/hallucinations/growl1.ogg'

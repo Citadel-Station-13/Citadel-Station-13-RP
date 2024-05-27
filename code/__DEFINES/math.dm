@@ -27,11 +27,14 @@
 
 #define SIGN(x) ( (x)!=0 ? (x) / abs(x) : 0 )
 
-#define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
-
+/// ceil()
 #define ROUND_UP(x) ( -round(-(x)))
+/// floor()
+#define ROUND_DOWN(x) (round(x))
 
-// round() acts like floor(x, 1) by default but can't handle other values
+// x to the nearest higher multiple of y
+#define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
+// x to the nearest lower multiple of y
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
 // Similar to clamp but the bottom rolls around to the top and vice versa. min is inclusive, max is exclusive
@@ -48,6 +51,15 @@
 
 // Cosecant
 #define CSC(x) (1 / sin(x))
+
+// ArcTan2. Returns the degree between two points in an x and y system.
+/proc/arctantwo(x1,y1,x2,y2)
+  var/dx = x2-x1
+  var/dy = y2-y1
+  if(!dy) return (dx>=0) ? 90 : 270
+  . = arctan(dx/dy)
+  if(dy<0) return .+180
+  if(dx<0) return .+360
 
 // Greatest Common Divisor - Euclid's algorithm
 /proc/GCD(a, b)
@@ -210,6 +222,7 @@
 
 // )
 
+/// random but float
 #define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
 
 #define SQUARE(x) (x*x)

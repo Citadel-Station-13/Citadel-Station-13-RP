@@ -54,7 +54,7 @@
 #define FISHING_MINIGAME_RULE_WEIGHTED_BAIT "weighted"
 #define FISHING_MINIGAME_RULE_LIMIT_LOSS "limit_loss"
 
-#define isfish(fish_type) (ispath(fish_type, /obj/item/fish) || ispath(fish_type, /mob/living/simple_mob/animal/passive/fish))
+#define isfish(fish_type) (ispath(fish_type, /obj/item/fish))
 
 /// The default additive value for fishing hook catch weight modifiers.
 #define FISHING_DEFAULT_HOOK_BONUS_ADDITIVE 0

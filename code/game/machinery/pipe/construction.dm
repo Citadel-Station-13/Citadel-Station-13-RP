@@ -13,7 +13,7 @@ Buildable meters
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "simple"
 	item_state = "buildpipe"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_TINY
 	level = 2
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/dispenser_class // Tells the dispenser what orientations we support, so RPD can show previews.
@@ -100,7 +100,7 @@ Buildable meters
 	icon_state = initial(fakeA.pipe_state)
 
 /obj/item/pipe/verb/flip()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Flip Pipe"
 	set src in view(1)
 
@@ -122,7 +122,7 @@ Buildable meters
 	icon_state = "[initial(fakeA.pipe_state)][mirrored ? "m" : ""]"
 
 /obj/item/pipe/verb/rotate_clockwise()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Rotate Pipe Clockwise"
 	set src in view(1)
 
@@ -258,7 +258,7 @@ Buildable meters
 	icon = 'icons/obj/pipe-item.dmi'
 	icon_state = "meter"
 	item_state = "buildpipe"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/piping_layer = PIPING_LAYER_DEFAULT
 
 /obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)

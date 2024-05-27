@@ -154,7 +154,7 @@
 		var/damping_multiplier = min(1, active_combustables / (total_moles/group_multiplier))
 
 		//weight the damping mult so that it only really brings down the firelevel when the ratio is closer to 0
-		damping_multiplier = 2*damping_multiplier - (damping_multiplier*damping_multiplier)
+		damping_multiplier = 2 * damping_multiplier - (damping_multiplier * damping_multiplier)
 
 		//calculates how close the mixture of the reactants is to the optimum
 		//fires burn better when there is more oxidizer -- too much fuel will choke the fire out a bit, reducing firelevel.

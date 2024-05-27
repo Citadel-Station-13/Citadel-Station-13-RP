@@ -3,7 +3,7 @@
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "pscrubber:0"
 	density = TRUE
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_TOGGLE_POWER | ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SEE_FLOW
 	power_maximum = 7500
@@ -55,17 +55,17 @@
 
 //! LEGACY ABOVE
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["atmosContext"] = global.gas_data.tgui_gas_context()
 	.["scrubbingIds"] = scrubbing_ids
 	.["scrubbingGroups"] = scrubbing_groups
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["moleRate"] = transfer_current
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, params)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -96,7 +96,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
 	..()
 
-	if(on && cell?.charge)
+	if(on && (cell?.charge || !use_cell))
 		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
 		var/old_mols = scrubbing.total_moles
 		// todo: compensate for delta_time, right now this is not stable and will go faster/slower based on SSair tick rate.

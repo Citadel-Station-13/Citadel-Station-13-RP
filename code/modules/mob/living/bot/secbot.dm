@@ -6,7 +6,7 @@
 #define SECBOT_THREAT_ATTACK 8
 /datum/category_item/catalogue/technology/bot/secbot
 	name = "Bot - Securitron"
-	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \
+	desc = "The Securitron is a proprietary support bot designed by Nanotrasen. \
 	Utilizing the standard Security department helmet, this wheeled automaton moves \
 	over floors at high speed to intercept flagged personnel. It is capable of pacifying \
 	suspects with its stun baton, and may assist in the arrest process by cuffing disabled \
@@ -42,6 +42,7 @@
 	var/can_next_insult = 0			// Uses world.time
 	var/stun_strength = 60			// For humans.
 	var/xeno_harm_strength = 15 	// How hard to hit simple_mobs.
+	var/xeno_stun_strength = 3		// How hard to slimebatoned()'d naughty slimes. Normal securitrons aren't all that good at it but can do it.
 	var/baton_glow = "#FF6A00"
 
 	var/used_weapon	= /obj/item/melee/baton	//Weapon used by the bot
@@ -68,10 +69,10 @@
 /datum/category_item/catalogue/technology/bot/secbot/beepsky
 	name = "Bot - Officer Beepsky"
 	desc = "Officer Beepsky was designed to be the mascot for \
-	NanoTrasen's unveiling of the Securitron line. A favorite among \
-	NanoTrasen workers due to its iconic profile and tendency to break out into \
+	Nanotrasen's unveiling of the Securitron line. A favorite among \
+	Nanotrasen workers due to its iconic profile and tendency to break out into \
 	wild bouts of profanity, the Beepsky pattern chassis is often replicated \
-	on individual NanoTrasen facilities as a form of morale booster. \
+	on individual Nanotrasen facilities as a form of morale booster. \
 	The model's increased durability ensures Officer Beepsky stands wheels and visors \
 	above its inferior peers."
 	value = CATALOGUER_REWARD_TRIVIAL
@@ -86,7 +87,7 @@
 
 /datum/category_item/catalogue/technology/bot/secbot/slime
 	name = "Bot - Slime Securitron"
-	desc = "A rare NanoTrasen variant of their Securitron designs, \
+	desc = "A rare Nanotrasen variant of their Securitron designs, \
 	Slime Securitrons utilize the same technology and programming as \
 	the standard model, but with equipment and parameters designed to \
 	pacify Slimes. Prometheans often view these bots with suspicion."
@@ -104,7 +105,7 @@
 	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS)
 	botcard_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
 	used_weapon = /obj/item/melee/baton/slime
-	var/xeno_stun_strength = 5 // How hard to slimebatoned()'d naughty slimes. 5 works out to 2 discipline and 5 weaken.
+	xeno_stun_strength = 5 // 5 works out to 2 discipline and 5 weaken.
 
 /datum/category_item/catalogue/technology/bot/secbot/slime/slimesky
 	name = "Bot - Doctor Slimesky"
@@ -137,7 +138,7 @@
 		ui = new(user, src, "Secbot", name)
 		ui.open()
 
-/mob/living/bot/secbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/secbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -360,7 +361,7 @@
 		var/mob/living/carbon/human/H = M
 		var/cuff = TRUE
 
-		if(!H.lying || H.handcuffed || arrest_type)
+		if(CHECK_MOBILITY(H, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE) || H.handcuffed || arrest_type)
 			cuff = FALSE
 		if(!cuff)
 			H.stun_effect_act(0, stun_strength, null)
@@ -390,6 +391,13 @@
 			busy = FALSE
 	else if(istype(M, /mob/living))
 		var/mob/living/L = M
+		if(istype(L, /mob/living/simple_mob/slime/xenobio))
+			var/mob/living/simple_mob/slime/xenobio/S = L
+			var/datum/ai_holder/simple_mob/xenobio_slime/sai = S.ai_holder
+			if(!S.is_justified_to_discipline() && !sai?.rabid) //will kill angry slimes.
+				attacked = FALSE //quit abusing the damn slimes. I don't care if they're hurting you.
+				return
+			S.slimebatoned(src, xeno_stun_strength)
 		L.adjustBruteLoss(xeno_harm_strength)
 		do_attack_animation(M)
 		playsound(loc, "swing_hit", 50, 1, -1)
@@ -400,13 +408,6 @@
 			update_icons()
 		visible_message("<span class='warning'>\The [M] was beaten by \the [src] with a stun baton!</span>")
 		insult(L)
-
-/mob/living/bot/secbot/slime/UnarmedAttack(var/mob/living/L, var/proximity)
-	..()
-
-	if(istype(L, /mob/living/simple_mob/slime/xenobio))
-		var/mob/living/simple_mob/slime/xenobio/S = L
-		S.slimebatoned(src, xeno_stun_strength)
 
 /mob/living/bot/secbot/explode()
 	visible_message("<span class='warning'>[src] blows apart!</span>")
@@ -435,7 +436,7 @@
 	return "unidentified lifeform"
 
 /mob/living/bot/secbot/proc/check_threat(var/mob/living/M)
-	if(!M || !istype(M) || M.stat == DEAD || src == M)
+	if(!M || !istype(M) || M.stat == DEAD || src == M || (isslime(M) && M.incapacitated()))
 		threat = 0
 
 	else if(emagged && !M.incapacitated()) //check incapacitated so emagged secbots don't keep attacking the same target forever

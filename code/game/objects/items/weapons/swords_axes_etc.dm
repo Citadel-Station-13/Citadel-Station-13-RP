@@ -28,7 +28,7 @@
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
 		else
-			L.take_organ_damage(2*damage_force)
+			L.take_random_targeted_damage(brute = 2*damage_force)
 		return
 	return ..()
 
@@ -48,7 +48,7 @@
 	icon_state = "telebaton"
 	item_state = "telebaton"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 3
 	var/on = 0
 	var/off_force = 3
@@ -68,7 +68,7 @@
 		"You hear an ominous click.")
 		src.icon_state = "[icon_state]_1"
 		src.item_state = "[item_state]_1"
-		w_class = ITEMSIZE_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		damage_force = on_force //quite robust
 		attack_verb = list("struck", "beat")
 	else
@@ -78,7 +78,7 @@
 		"You hear a click.")
 		src.icon_state = initial(icon_state)
 		src.item_state = initial(item_state)
-		w_class = ITEMSIZE_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		damage_force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
 	if(istype(user,/mob/living/carbon/human))
@@ -106,7 +106,7 @@
 				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
 			else if(isliving(user))
 				var/mob/living/L = user
-				L.take_organ_damage(2*damage_force)
+				L.take_random_targeted_damage(brute = 2*damage_force)
 			return
 		var/old_damtype = damtype
 		var/old_attack_verb = attack_verb
@@ -167,7 +167,7 @@
 	embed_chance = 100 // these should probably come in a bandolier or have some sort of fabricator, tbf
 	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
-	materials = list(MAT_STEEL = 2500)
+	materials_base = list(MAT_STEEL = 2500)
 	sharp = TRUE
 	edge = TRUE
 	icon_state = "embed_spike"
@@ -187,11 +187,11 @@
 	icon_state = "cn_stool_c"
 	damage_force = 10
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/on =  0
 	slot_flags = null
 	damage_force = 0
-	hitsound = "sound/items/bikehorn.ogg"
+	attack_sound = "sound/items/bikehorn.ogg"
 
 /obj/item/melee/stool/faiza/attack_self(mob/user)
 	. = ..()
@@ -201,12 +201,12 @@
 	if(on == 0)
 		user.visible_message("<span class='notice'>In a quick motion, [user] extends their collapsible stool.</span>")
 		icon_state = "cn_stool"
-		w_class = ITEMSIZE_HUGE
+		set_weight_class(WEIGHT_CLASS_HUGE)
 		on = 1
 	else
 		user.visible_message("<span class='notice'>\ [user] collapses their stool.</span>")
 		icon_state = "cn_stool_c"
-		w_class = ITEMSIZE_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 		on = 0
 
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
@@ -220,7 +220,7 @@
 	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 	var/reinforced = FALSE
 	var/burnt = FALSE
 	var/burned_in
@@ -305,9 +305,10 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wakibokken_blade_h"
 	damage_force = 15
+	damage_tier = MELEE_TIER_MEDIUM
 	slot_flags = SLOT_BACK
 	sharp = 1
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
@@ -349,7 +350,7 @@
 	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 
 /obj/item/melee/kanabo/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/pen))

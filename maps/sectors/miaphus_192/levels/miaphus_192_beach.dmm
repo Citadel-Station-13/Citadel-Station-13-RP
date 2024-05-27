@@ -73,10 +73,8 @@
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/water)
 "an" = (
-/turf/simulated/mineral/floor/cave{
-	name = "dirt"
-	},
-/area/tether_away/beach/jungle)
+/turf/level_border,
+/area/tether_away/beach/mineshaft)
 "ao" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -97,9 +95,9 @@
 /area/tether_away/beach/resort)
 "as" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -111,8 +109,8 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/item/flashlight/pen,
 /obj/item/paper{
-	name = "Doctor's Note";
-	info = "The cold packs have run out, and after I rationed them so carefully. HQ says it will be another month before we can get new ones. Until then the best thing we can do for the heatstroke casulties is to drag them down to the saltwater and dunk them hope it cools them enough to stop them from dying. What sort of operation do the Hadiis think they are running. Miners need to be in good health to be productive and they can't be in good health if they are constantly at risk for or recovering from heatstroke. There has to be another way to source coldpacks otherwise I fear I may start losing people."
+	info = "The cold packs have run out, and after I rationed them so carefully. HQ says it will be another month before we can get new ones. Until then the best thing we can do for the heatstroke casulties is to drag them down to the saltwater and dunk them hope it cools them enough to stop them from dying. What sort of operation do the Hadiis think they are running. Miners need to be in good health to be productive and they can't be in good health if they are constantly at risk for or recovering from heatstroke. There has to be another way to source coldpacks otherwise I fear I may start losing people.";
+	name = "Doctor's Note"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
@@ -158,9 +156,9 @@
 /area/tether_away/beach/resort/canteen)
 "aE" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -359,9 +357,6 @@
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
-"bi" = (
-/turf/unsimulated/wall/planetary/normal,
-/area/tether_away/beach/water)
 "bj" = (
 /turf/simulated/floor/water,
 /area/tether_away/beach/jungle)
@@ -394,13 +389,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
 "bo" = (
-/obj/effect/map_effect/portal/master/side_a{
-	name = "V4_Cave_Entrance";
-	portal_id = "V4_cave_step"
-	},
-/turf/simulated/mineral/floor/cave{
-	name = "dirt"
-	},
+/turf/level_border,
 /area/tether_away/beach/jungle)
 "bp" = (
 /turf/simulated/floor/outdoors/beach/sand,
@@ -409,7 +398,6 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/jungle)
 "br" = (
-/obj/effect/map_effect/portal/line/side_a,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -484,10 +472,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/simulated/floor/wood/broken,
 /area/tether_away/beach/desalinator)
-"bR" = (
-/obj/effect/map_effect/portal/line/side_a,
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/jungle)
 "bS" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -534,6 +518,15 @@
 /obj/random/meat,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station)
+"cp" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "cs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/box/wormcan,
@@ -605,6 +598,11 @@
 	},
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/aa)
+"di" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "dm" = (
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
@@ -713,7 +711,9 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/bunker/kitchen)
 "es" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining/drill{
+	drill_id = 112
+	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -767,13 +767,13 @@
 /area/tether_away/beach/station/tram)
 "eH" = (
 /obj/machinery/atmospherics/pipe/tank{
-	dir = 1;
 	desc = "A large vessel for containing brine, a by product of water desalination. It hasn't been used in a while.";
+	dir = 1;
 	name = "Brine Tank"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -803,12 +803,12 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/bunk)
 "eX" = (
-/obj/effect/map_effect/portal/line/side_a,
-/turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/jungle)
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "eZ" = (
-/obj/structure/stairs/middle{
-	dir = 2
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/desalinator)
@@ -829,8 +829,8 @@
 	dir = 4
 	},
 /obj/item/paper/crumpled{
-	name = "discarded note";
-	info = "Remember my offer, any water you can sneak out is good but I don't think the desalinator plant will care if a high capacity container or two goes missing. You may think this is risky but the Hadiis are going to work us to death out here. You know that I know that, the Hadiis know that to. Water stores mean we may be able to last longer, hell if we had a constantly supply we'd e self suffcient. We could last a long time without them even here. Just think about it, I know you believe in the revolution even if the Hadiis don't."
+	info = "Remember my offer, any water you can sneak out is good but I don't think the desalinator plant will care if a high capacity container or two goes missing. You may think this is risky but the Hadiis are going to work us to death out here. You know that I know that, the Hadiis know that to. Water stores mean we may be able to last longer, hell if we had a constantly supply we'd e self suffcient. We could last a long time without them even here. Just think about it, I know you believe in the revolution even if the Hadiis don't.";
+	name = "discarded note"
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/desalinator)
@@ -841,9 +841,9 @@
 /area/tether_away/beach/station)
 "fm" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 10
+	dir = 10;
+	name = "water pipe"
 	},
 /obj/machinery/vending/hydronutrients{
 	req_one_access = list(30,35,47,77)
@@ -933,6 +933,13 @@
 /obj/structure/simple_door/sandstone,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
+"gf" = (
+/obj/spawner/window/full,
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/tether_away/beach/resort/greenhouse)
 "gq" = (
 /turf/simulated/floor/wood,
 /area/tether_away/beach/desalinator)
@@ -956,8 +963,8 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/canteen)
 "gC" = (
-/obj/structure/stairs/middle{
-	dir = 4
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/desalinator)
@@ -1208,7 +1215,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/bunk)
 "ik" = (
@@ -1269,7 +1276,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/engi)
 "iF" = (
@@ -1293,9 +1300,9 @@
 /area/tether_away/beach/bunker/mess)
 "iO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/item/reagent_containers/glass/bucket,
@@ -1372,11 +1379,20 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station/tram)
+"jw" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/obj/machinery/floodlight,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "jx" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/mineyard)
 "jD" = (
@@ -1398,8 +1414,8 @@
 	},
 /area/tether_away/beach/mineshaft)
 "jJ" = (
-/obj/structure/stairs/middle{
-	dir = 4
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desalinator)
@@ -1461,6 +1477,14 @@
 /obj/random/multiple/underdark/miningdrills,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station)
+"kj" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar,
+/obj/random/multiple/underdark/ores,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "kk" = (
 /obj/structure/closet/crate,
 /obj/item/melee/umbrella/random,
@@ -1517,6 +1541,12 @@
 /obj/random/mre,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/bunk)
+"kE" = (
+/obj/effect/floor_decal/tracks/intersection{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "kK" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
@@ -1565,16 +1595,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 8;
+/obj/machinery/air_alarm/alarms_hidden/west_mount{
 	pixel_x = -27
 	},
 /turf/simulated/floor/wood/broken,
 /area/tether_away/beach/resort/dorm2)
 "la" = (
-/obj/structure/stairs/middle{
-	dir = 1
-	},
+/obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
@@ -1596,8 +1623,7 @@
 	pixel_y = 20;
 	wall_mounted = 1
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 8;
+/obj/machinery/air_alarm/alarms_hidden/west_mount{
 	pixel_x = -27
 	},
 /obj/structure/cable/cyan{
@@ -1917,9 +1943,9 @@
 	},
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -2017,12 +2043,14 @@
 	},
 /area/tether_away/beach/mineyard)
 "px" = (
-/obj/effect/map_effect/portal/master/side_a{
-	name = "V4_Desert_Entrance";
-	portal_id = "V4_desert_step"
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
 	},
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/jungle)
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "py" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2124,6 +2152,15 @@
 	name = "dirt"
 	},
 /area/tether_away/beach/jungle)
+"qp" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/structure/barricade,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "qq" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -2184,9 +2221,9 @@
 /area/tether_away/beach/station/terminal)
 "qZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 6
+	dir = 6;
+	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/desalinator)
@@ -2236,12 +2273,12 @@
 "ry" = (
 /obj/machinery/atmospherics/pipe/tank/oxygen{
 	desc = "A large tank designed to aid in the desalination of water. It hasn't been used in a while.";
-	name = "Desalination Tank";
-	dir = 1
+	dir = 1;
+	name = "Desalination Tank"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -2286,8 +2323,8 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm1)
 "rM" = (
-/obj/structure/stairs/middle{
-	dir = 2
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
@@ -2557,7 +2594,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /mob/living/simple_mob/animal/roach/jaeger,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker)
@@ -2709,9 +2746,9 @@
 /area/tether_away/beach/bunker/engi)
 "vg" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 1
+	dir = 1;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -2863,9 +2900,9 @@
 /area/tether_away/beach/bunker/engi)
 "wv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
@@ -2896,9 +2933,9 @@
 /area/tether_away/beach/bunker/mess)
 "wI" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /obj/machinery/seed_storage/garden,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -2960,8 +2997,8 @@
 /area/tether_away/beach/resort/fishing)
 "xe" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/desalinator)
@@ -3091,9 +3128,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
@@ -3116,9 +3153,9 @@
 "yI" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 10
+	dir = 10;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -3173,8 +3210,8 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -3197,7 +3234,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/powershed)
 "zV" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/mineshaft)
 "zZ" = (
 /obj/structure/cable/cyan{
@@ -3259,11 +3296,20 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
+"Av" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "Aw" = (
 /obj/item/stool/padded,
 /turf/simulated/mineral/floor/cave{
@@ -3397,7 +3443,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/canteen)
 "Cg" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/water)
 "Ch" = (
 /obj/structure/table/reinforced,
@@ -3406,13 +3452,13 @@
 "Cj" = (
 /obj/machinery/atmospherics/pipe/tank/oxygen{
 	desc = "A large tank designed to aid in the desalination of water. It hasn't been used in a while.";
-	name = "Desalination Tank";
-	dir = 1
+	dir = 1;
+	name = "Desalination Tank"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -3462,8 +3508,8 @@
 /area/tether_away/beach/coast)
 "CG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -3471,9 +3517,9 @@
 /obj/machinery/light/small,
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -3504,8 +3550,8 @@
 /area/tether_away/beach/station)
 "CS" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -3627,6 +3673,11 @@
 /obj/structure/toilet,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort)
+"DZ" = (
+/obj/structure/barricade,
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "Ed" = (
 /turf/simulated/floor/water/contaminated{
 	outdoors = 0
@@ -3662,7 +3713,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/aa)
 "Eq" = (
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -3671,8 +3722,7 @@
 	},
 /area/tether_away/beach/resort/bunk)
 "Ew" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/closet/cabinet{
@@ -3701,9 +3751,9 @@
 /obj/item/material/knife,
 /obj/item/material/knife,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -3716,8 +3766,8 @@
 "EG" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/item/paper{
-	name = "taped note";
-	info = "You owe me big for this... I almost got caught down at the desalination plant over this shit"
+	info = "You owe me big for this... I almost got caught down at the desalination plant over this shit";
+	name = "taped note"
 	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
@@ -3737,9 +3787,9 @@
 /area/tether_away/beach/bunker/bunk)
 "EM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 8
+	dir = 8;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -3769,6 +3819,24 @@
 /obj/machinery/vending/fishing,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/fishing)
+"Fh" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/structure/table/rack/steel,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/turf/simulated/mineral/floor/cave{
+	name = "dirt"
+	},
+/area/tether_away/beach/mineshaft)
 "Fm" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3892,14 +3960,14 @@
 /area/tether_away/beach/bunker/restroom)
 "GE" = (
 /obj/machinery/atmospherics/pipe/tank{
-	dir = 1;
 	desc = "A large vessel for containing brine, a by product of water desalination. It hasn't been used in a while.";
+	dir = 1;
 	name = "Brine Tank"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 5
+	dir = 5;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -3961,7 +4029,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
 "Ho" = (
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -4016,7 +4084,7 @@
 /area/tether_away/beach/mineyard)
 "HH" = (
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/asteroid_steel{
 	outdoors = 1
 	},
@@ -4034,9 +4102,9 @@
 /area/tether_away/beach/aa)
 "HN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 10
+	dir = 10;
+	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/desalinator)
@@ -4082,8 +4150,7 @@
 	pixel_y = 20;
 	wall_mounted = 1
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/cable/cyan{
@@ -4163,7 +4230,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
@@ -4279,9 +4346,9 @@
 /obj/item/material/knife/machete/hatchet,
 /obj/item/material/knife/machete/hatchet,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 6
+	dir = 6;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -4301,9 +4368,9 @@
 "Kq" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -4349,6 +4416,10 @@
 	name = "dirt"
 	},
 /area/tether_away/beach/mineshaft)
+"KX" = (
+/obj/structure/sign/signnew/danger,
+/turf/simulated/wall/wood,
+/area/tether_away/beach/mineshaft)
 "Le" = (
 /obj/structure/fence,
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -4363,7 +4434,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/station)
 "Lj" = (
-/turf/unsimulated/mineral,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/coast)
 "Lo" = (
 /obj/structure/sign/warning/high_voltage,
@@ -4522,9 +4593,6 @@
 /obj/item/storage/box/glasses/rocks,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)
-"MA" = (
-/turf/unsimulated/mineral,
-/area/tether_away/beach/jungle)
 "ME" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -4552,17 +4620,17 @@
 /area/tether_away/beach/station)
 "MN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/desalinator)
 "MX" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 6
+	dir = 6;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -4570,7 +4638,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /obj/structure/table/standard,
 /obj/item/storage/box/donkpockets{
 	pixel_x = 2;
@@ -4739,7 +4807,7 @@
 	},
 /area/tether_away/beach/station/tram)
 "OE" = (
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -4757,8 +4825,8 @@
 /area/tether_away/beach/resort)
 "OL" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -4913,8 +4981,8 @@
 /obj/random/firstaid,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/paper/crumpled{
-	name = "Dirty Note";
-	info = "Damnit S'irtan can you do anything right. All you had to was protect the stash and make sure so animals got to it. Not at least before we could move it. You not only failed that but spent so much time drinking the spiders are nesting right on our shit. This has set us back months. May Messa take the Revisionists I am done. If they want to get eaten trying to snatch from the giant spiders they are welcome too. I am not becoming an arachnid's meal."
+	info = "Damnit S'irtan can you do anything right. All you had to was protect the stash and make sure so animals got to it. Not at least before we could move it. You not only failed that but spent so much time drinking the spiders are nesting right on our shit. This has set us back months. May Messa take the Revisionists I am done. If they want to get eaten trying to snatch from the giant spiders they are welcome too. I am not becoming an arachnid's meal.";
+	name = "Dirty Note"
 	},
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
@@ -5093,8 +5161,7 @@
 	pixel_y = 20;
 	wall_mounted = 1
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/cable/cyan{
@@ -5137,7 +5204,7 @@
 /area/tether_away/beach/desalinator)
 "Se" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/bunker/restroom)
 "Sl" = (
@@ -5248,11 +5315,11 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker)
 "Td" = (
-/obj/random/mob/spider/nurse,
-/turf/simulated/mineral/floor/cave{
-	name = "dirt"
+/obj/effect/floor_decal/tracks{
+	dir = 4
 	},
-/area/tether_away/beach/jungle)
+/turf/simulated/floor/wood,
+/area/tether_away/beach/mineshaft)
 "Tg" = (
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -5270,8 +5337,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/bunker/restroom)
 "Tp" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/air_alarm/alarms_hidden/east_mount{
 	pixel_x = 22
 	},
 /obj/structure/cable,
@@ -5302,7 +5368,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tether_away/beach/resort/lockermed)
 "TK" = (
-/turf/unsimulated/wall/planetary/desert/standard_temp,
+/turf/unsimulated/mineral/outdoors,
 /area/tether_away/beach/jungle)
 "TM" = (
 /obj/item/material/kitchen/rollingpin,
@@ -5374,9 +5440,9 @@
 "UC" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 5
+	dir = 5;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -5496,7 +5562,7 @@
 /area/tether_away/beach/jungle)
 "VU" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/janitor)
 "Wc" = (
@@ -5595,9 +5661,9 @@
 /area/tether_away/beach/resort/lockermed)
 "WX" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 8
+	dir = 8;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -5640,9 +5706,9 @@
 "XB" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 9
+	dir = 9;
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/greenhouse)
@@ -5658,7 +5724,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker/mess)
@@ -5722,9 +5788,9 @@
 /area/tether_away/beach/bunker)
 "YD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 4
+	dir = 4;
+	name = "water pipe"
 	},
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -5869,13 +5935,12 @@
 "ZQ" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	name = "water pipe";
-	desc = "Its bone dry."
+	desc = "Its bone dry.";
+	name = "water pipe"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	name = "water pipe";
 	desc = "Its bone dry.";
-	dir = 2
+	name = "water pipe"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/desalinator)
@@ -5884,6 +5949,12 @@
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},
+/area/tether_away/beach/mineshaft)
+"ZW" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/turf/simulated/wall/wood,
 /area/tether_away/beach/mineshaft)
 "ZX" = (
 /obj/structure/cable/cyan{
@@ -6025,71 +6096,71 @@ Cg
 Cg
 Cg
 Cg
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
 "}
 (2,1,1) = {"
 zV
@@ -6283,7 +6354,7 @@ am
 am
 am
 HW
-bi
+Cg
 "}
 (3,1,1) = {"
 zV
@@ -6477,7 +6548,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (4,1,1) = {"
 zV
@@ -6671,7 +6742,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (5,1,1) = {"
 zV
@@ -6865,7 +6936,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (6,1,1) = {"
 zV
@@ -7059,7 +7130,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (7,1,1) = {"
 zV
@@ -7253,7 +7324,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (8,1,1) = {"
 zV
@@ -7447,7 +7518,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (9,1,1) = {"
 zV
@@ -7641,7 +7712,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (10,1,1) = {"
 zV
@@ -7653,9 +7724,9 @@ ZC
 ZC
 ZC
 ZC
-ZC
-ZC
-ZC
+Wd
+kj
+Wd
 ZC
 ZC
 ZC
@@ -7835,7 +7906,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (11,1,1) = {"
 zV
@@ -7847,9 +7918,9 @@ ZC
 ZC
 ZC
 ZC
-ZC
-ZC
-ZC
+aL
+aG
+aL
 ZC
 ZC
 ZC
@@ -8029,22 +8100,22 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (12,1,1) = {"
-zV
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+an
+aL
+Wd
+cp
+aL
+aL
+Av
+Wd
+aL
+aL
+aG
+aL
+jw
 ZC
 ZC
 ZC
@@ -8223,33 +8294,33 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (13,1,1) = {"
-zV
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+an
+aL
+aL
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+aG
+PV
+PV
+qp
+KX
+fQ
+PV
+PV
+xy
+xy
+Wd
+au
+xy
+xy
 ZC
 ZC
 ZC
@@ -8417,33 +8488,33 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (14,1,1) = {"
-zV
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+an
+eX
+eX
+eX
+eX
+eX
+eX
+eX
+eX
+eX
+kE
+eX
+eX
+DZ
+di
+di
+di
+eX
+eX
+eX
+di
+au
+au
+xy
 wg
 xy
 xy
@@ -8611,32 +8682,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (15,1,1) = {"
-zV
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+an
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+PV
+Td
+aL
+xy
+qp
+KX
+au
+xy
+wg
+xy
+xy
+Wd
+au
+xy
 xy
 xy
 xy
@@ -8805,23 +8876,22 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (16,1,1) = {"
-zV
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
-ZC
+an
+PV
+Wd
+PV
+PV
+cp
+PV
+Wd
+aL
+aL
+Td
+aL
+aL
 ZC
 ZC
 ZC
@@ -8831,6 +8901,7 @@ ZC
 ZC
 ZC
 xy
+ZC
 lt
 xy
 xy
@@ -8999,7 +9070,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (17,1,1) = {"
 zV
@@ -9011,6 +9082,9 @@ ZC
 ZC
 ZC
 ZC
+px
+Td
+aL
 ZC
 ZC
 ZC
@@ -9019,10 +9093,7 @@ ZC
 ZC
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+xy
 xy
 xy
 xy
@@ -9193,7 +9264,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (18,1,1) = {"
 zV
@@ -9205,9 +9276,9 @@ ZC
 ZC
 ZC
 ZC
-ZC
-ZC
-ZC
+Wd
+Td
+Wd
 ZC
 ZC
 ZC
@@ -9387,7 +9458,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (19,1,1) = {"
 zV
@@ -9399,12 +9470,12 @@ ZC
 ZC
 ZC
 ZC
+aL
+Td
+Av
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+zV
 ZC
 ZC
 ZC
@@ -9581,7 +9652,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (20,1,1) = {"
 zV
@@ -9593,12 +9664,12 @@ ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+zV
 ZC
 ZC
 ZC
@@ -9775,7 +9846,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (21,1,1) = {"
 zV
@@ -9787,12 +9858,12 @@ ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+zV
 ZC
 ZC
 ZC
@@ -9969,7 +10040,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (22,1,1) = {"
 zV
@@ -9981,12 +10052,12 @@ ZC
 ZC
 ZC
 ZC
+ZW
+Td
+ZW
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+zV
 ZC
 ZC
 ZC
@@ -10163,7 +10234,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (23,1,1) = {"
 zV
@@ -10175,12 +10246,12 @@ ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+zV
 ZC
 ZC
 wg
@@ -10357,7 +10428,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (24,1,1) = {"
 zV
@@ -10369,12 +10440,12 @@ ZC
 ZC
 ZC
 ZC
+aL
+Td
+aL
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+zV
 ZC
 ZC
 xy
@@ -10384,18 +10455,18 @@ ZC
 ZC
 ZC
 bq
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
 ZC
 ZC
 ZC
@@ -10551,7 +10622,7 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (25,1,1) = {"
 zV
@@ -10563,12 +10634,12 @@ ZC
 ZC
 ZC
 ZC
+px
+Td
+aL
 ZC
 ZC
-ZC
-ZC
-ZC
-ZC
+zV
 ZC
 xy
 jT
@@ -10589,14 +10660,14 @@ bq
 bq
 bq
 bq
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
 ZC
 ZC
 ZC
@@ -10745,27 +10816,29 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (26,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+aL
 Td
-an
+Av
+ZC
+ZC
+zV
+ZC
+QV
+xy
+ZC
+ZC
 bq
 bq
 bq
@@ -10788,10 +10861,8 @@ bq
 bq
 bq
 bq
-bq
-bq
-MA
-MA
+TK
+TK
 zV
 zV
 zV
@@ -10939,28 +11010,28 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (27,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-an
-an
-an
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+Wd
+Td
+Wd
+ZC
+ZC
+zV
+ZC
+xy
+xy
+xy
 bq
 bq
 bq
@@ -11133,27 +11204,27 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (28,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-an
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+aL
+Td
+aL
+ZC
+ZC
+zV
+ZC
+ZC
+br
 AF
 bq
 bq
@@ -11327,30 +11398,30 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (29,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+aL
+Td
+aL
+ZC
+ZC
+zV
+ZC
+ZC
 Mg
 AF
 AF
-an
+br
 oS
 bp
 bp
@@ -11521,30 +11592,30 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (30,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+PV
+Td
+cp
+ZC
+ZC
+TK
 bq
 bq
 bq
 bq
 AF
-an
+br
 JQ
 bp
 bp
@@ -11715,31 +11786,31 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (31,1,1) = {"
-MA
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+Wd
+Td
+Wd
+ZC
+bq
+TK
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-an
-an
-an
+br
+br
+br
 bp
 bp
 bp
@@ -11909,22 +11980,22 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (32,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+Fh
+Td
+aL
+ZC
 bq
 bq
 bq
@@ -12103,22 +12174,22 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (33,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+zV
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+ZC
+PV
+Td
+aL
+ZC
 bq
 bq
 bq
@@ -12297,10 +12368,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (34,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -12309,12 +12380,12 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+bp
+ce
+ce
+ce
 bq
 bq
 bq
@@ -12491,10 +12562,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (35,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -12502,13 +12573,13 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+bp
+ce
+ce
+ce
+ce
 bq
 bq
 bq
@@ -12685,10 +12756,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (36,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -12696,13 +12767,13 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+bp
+bp
+ce
+ce
 bq
 bq
 bq
@@ -12879,10 +12950,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (37,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -12890,14 +12961,14 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+bp
+ce
+ce
+ce
 bq
 bp
 bp
@@ -13073,25 +13144,25 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (38,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+bp
+ce
+ce
+ce
+ce
 bp
 bp
 bp
@@ -13267,26 +13338,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (39,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+ce
 bp
+ce
+ce
+ce
+ce
 bp
 bp
 bp
@@ -13461,26 +13532,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (40,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+ce
+ce
+ce
 bp
 bp
+ce
+ce
 bp
 bp
 bp
@@ -13655,26 +13726,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (41,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+ce
+ce
 bp
-bp
-bp
-bp
+ce
+ce
+ce
+ce
 bp
 bp
 bp
@@ -13849,24 +13920,24 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (42,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+ce
+ce
+ce
 bp
-bp
-bp
+ce
 bp
 bp
 bp
@@ -14043,23 +14114,23 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (43,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 bp
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+ce
 bp
-bp
-bp
+ce
+ce
 bp
 bp
 bp
@@ -14237,19 +14308,19 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (44,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 bp
 ce
-bq
-bq
-bq
+ce
+ce
+ce
 bp
 bp
 bp
@@ -14431,10 +14502,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (45,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -14450,7 +14521,7 @@ bp
 bp
 bp
 bp
-aa
+bp
 aa
 ce
 ce
@@ -14625,10 +14696,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (46,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -14640,11 +14711,11 @@ ce
 ce
 ce
 aa
+bp
+bp
 aa
 aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -14819,10 +14890,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (47,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -14837,7 +14908,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -14865,7 +14936,7 @@ bp
 bp
 bp
 bq
-an
+br
 xy
 xy
 xy
@@ -15013,10 +15084,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (48,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -15029,7 +15100,7 @@ ce
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -15207,10 +15278,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (49,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -15224,7 +15295,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -15401,10 +15472,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (50,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -15418,7 +15489,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -15595,10 +15666,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (51,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -15613,7 +15684,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -15789,10 +15860,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (52,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -15806,8 +15877,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -15983,10 +16054,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (53,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -15999,9 +16070,9 @@ aa
 aa
 aa
 aa
+bp
 aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -16177,10 +16248,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (54,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -16371,10 +16442,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (55,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -16389,7 +16460,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -16565,10 +16636,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (56,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -16581,10 +16652,10 @@ aa
 aa
 aa
 aa
+bp
 aa
 aa
-aa
-aa
+bp
 aa
 aa
 ab
@@ -16759,10 +16830,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (57,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -16953,10 +17024,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (58,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -16966,13 +17037,13 @@ ce
 aa
 aa
 aa
-ce
+aa
 aa
 ab
 aa
+bp
 aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -17147,15 +17218,16 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (59,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 ce
 ce
+ce
 aa
 aa
 aa
@@ -17163,8 +17235,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -17341,10 +17412,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (60,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -17357,7 +17428,7 @@ aa
 ab
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -17535,10 +17606,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (61,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -17551,9 +17622,9 @@ aa
 aa
 aa
 aa
-ce
 aa
 aa
+bp
 aa
 aa
 aa
@@ -17729,10 +17800,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (62,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -17740,14 +17811,14 @@ bq
 ce
 aa
 aa
-ce
-ce
 aa
 aa
 aa
 aa
 aa
+bp
 aa
+bp
 aa
 aa
 aa
@@ -17923,10 +17994,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (63,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -17935,7 +18006,7 @@ ce
 aa
 aa
 aa
-ce
+aa
 aa
 aa
 bh
@@ -18117,10 +18188,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (64,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -18134,8 +18205,8 @@ aa
 aa
 ab
 aa
+bp
 aa
-ce
 aa
 aa
 aa
@@ -18311,16 +18382,13 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (65,1,1) = {"
-MA
-MA
+TK
 bq
 bq
-ce
-aa
-ce
+bq
 ce
 ce
 aa
@@ -18329,6 +18397,9 @@ aa
 aa
 aa
 aa
+aa
+aa
+bp
 aa
 aa
 aa
@@ -18505,18 +18576,12 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (66,1,1) = {"
 TK
-px
-ce
-ce
-aa
-ce
-ce
-ce
-ce
+bq
+bq
 ce
 ce
 aa
@@ -18526,6 +18591,12 @@ aa
 aa
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+bp
 aa
 aa
 aa
@@ -18699,21 +18770,21 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (67,1,1) = {"
 TK
-bR
-ce
-ce
+bq
+bq
 ce
 aa
-ce
-ce
-ce
-ce
-ce
-ce
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18893,26 +18964,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (68,1,1) = {"
 TK
-bR
+bq
+bq
 ce
-ce
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bp
 bp
-ce
-ce
-aa
-aa
-aa
-ce
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -19087,27 +19158,27 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (69,1,1) = {"
 TK
-bR
+bq
+bq
+ce
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bp
-ce
-ce
-bp
-bp
-aa
-ce
-ce
-aa
-aa
-aa
-aa
-ce
-aa
-aa
-aa
 aa
 aa
 bp
@@ -19281,28 +19352,28 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (70,1,1) = {"
 TK
-bR
-bp
-bp
-ce
-ce
-aa
-aa
-aa
+bq
+bq
 ce
 aa
 aa
 aa
 aa
 aa
-ce
+aa
+aa
+aa
+aa
 aa
 aa
 bp
+aa
+aa
+aa
 bp
 aa
 aa
@@ -19475,19 +19546,19 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (71,1,1) = {"
 TK
-eX
+bq
+bq
 ce
 ce
-ce
-ce
-ce
-bp
 aa
-bp
+aa
+aa
+aa
+aa
 aa
 aa
 ab
@@ -19495,13 +19566,13 @@ aa
 aa
 aa
 aa
+bp
+aa
+bp
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -19669,17 +19740,14 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (72,1,1) = {"
 TK
-bR
+bq
+bq
 ce
 ce
-ce
-ce
-ce
-aa
 aa
 aa
 aa
@@ -19693,7 +19761,10 @@ bp
 aa
 aa
 aa
+bp
 aa
+aa
+bp
 aa
 aa
 aa
@@ -19863,32 +19934,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (73,1,1) = {"
-MA
-MA
+TK
 bq
 bq
+bq
 ce
 ce
-ce
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
 bp
 bp
 aa
-aa
-aa
-aa
 bp
 aa
 aa
 aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -20057,10 +20128,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (74,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -20071,18 +20142,18 @@ aa
 aa
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+aa
 bp
 bp
 bp
 aa
 bp
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -20251,17 +20322,16 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (75,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 ce
 aa
-ce
 aa
 aa
 aa
@@ -20271,13 +20341,14 @@ aa
 aa
 aa
 aa
+bp
+aa
+bp
 aa
 aa
+bp
 aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -20445,10 +20516,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (76,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -20462,12 +20533,12 @@ aa
 aa
 aa
 aa
+aa
+aa
+aa
+aa
+aa
 bp
-bp
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -20639,14 +20710,15 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (77,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
+ce
 ce
 aa
 aa
@@ -20654,10 +20726,9 @@ aa
 aa
 aa
 aa
-ce
 aa
 aa
-bp
+aa
 aa
 aa
 aa
@@ -20833,19 +20904,19 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (78,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 ce
-aa
-aa
-aa
 ce
+aa
+aa
+aa
 aa
 aa
 aa
@@ -21027,16 +21098,16 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (79,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 ce
-aa
+ce
 ce
 aa
 aa
@@ -21221,17 +21292,17 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (80,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
 ce
-aa
-aa
+ce
+ce
 aa
 aa
 aa
@@ -21415,18 +21486,18 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (81,1,1) = {"
-MA
+TK
+bq
 bq
 bq
 bq
 bq
 ce
 ce
-aa
-aa
+ce
 aa
 aa
 aa
@@ -21609,10 +21680,11 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (82,1,1) = {"
-MA
+TK
+bq
 bq
 bq
 bq
@@ -21620,7 +21692,6 @@ bq
 ce
 ce
 ce
-aa
 aa
 aa
 aa
@@ -21803,14 +21874,15 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (83,1,1) = {"
-MA
+TK
 bq
 bq
 bq
 bq
+bq
 ce
 ce
 ce
@@ -21820,7 +21892,6 @@ aa
 aa
 aa
 aa
-ce
 aa
 aa
 aa
@@ -21997,10 +22068,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (84,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -22008,13 +22079,13 @@ bq
 bq
 bq
 ce
-ce
-aa
-aa
 ce
 ce
 aa
-ce
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -22191,10 +22262,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (85,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -22203,10 +22274,10 @@ bq
 bq
 bq
 ce
-aa
-aa
-aa
 ce
+ce
+aa
+aa
 aa
 aa
 aa
@@ -22385,10 +22456,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (86,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -22398,8 +22469,8 @@ bq
 bq
 ce
 ce
-aa
-aa
+ce
+ce
 aa
 aa
 aa
@@ -22579,10 +22650,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (87,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -22593,8 +22664,8 @@ bq
 bq
 ce
 ce
-aa
-aa
+ce
+ce
 aa
 aa
 aa
@@ -22773,10 +22844,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (88,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -22788,8 +22859,8 @@ bq
 bq
 ce
 ce
-aa
-aa
+ce
+ce
 aa
 aa
 aa
@@ -22967,10 +23038,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (89,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -23161,10 +23232,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (90,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -23355,10 +23426,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (91,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -23463,7 +23534,7 @@ RD
 as
 RD
 Kq
-xi
+gf
 zw
 zw
 Nv
@@ -23549,10 +23620,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (92,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -23743,10 +23814,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (93,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -23937,10 +24008,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (94,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -24131,10 +24202,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (95,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -24325,10 +24396,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (96,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -24519,10 +24590,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (97,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -24531,9 +24602,10 @@ bq
 bq
 bq
 bq
+br
 bq
 bq
-bq
+br
 bq
 bq
 bq
@@ -24543,8 +24615,7 @@ ce
 ce
 ce
 ce
-aa
-aa
+ce
 aa
 aa
 aa
@@ -24713,10 +24784,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (98,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -24725,10 +24796,10 @@ bq
 bq
 bq
 bq
+br
 bq
-bq
-bq
-bq
+br
+br
 bq
 bq
 bq
@@ -24737,8 +24808,8 @@ bq
 bq
 ce
 ce
-aa
-aa
+ce
+ce
 aa
 aa
 aa
@@ -24907,10 +24978,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (99,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -24918,11 +24989,11 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
+br
+br
+br
+br
+br
 bq
 bq
 bq
@@ -25101,10 +25172,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (100,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -25112,21 +25183,21 @@ bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
+br
+br
+br
+br
+br
 bq
 bq
 bq
 bq
 bq
 ce
+ax
 ce
-ce
-tj
-Jn
+ax
+ax
 ce
 aa
 aa
@@ -25295,29 +25366,29 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (101,1,1) = {"
-MA
+TK
 bq
 bq
+br
 bq
 bq
+br
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+br
+br
+br
+br
+ce
 bq
 bq
 bq
 bq
 ce
 ce
-ce
+ax
 ce
 ce
 ce
@@ -25489,30 +25560,30 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (102,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+TK
+TK
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+ce
+ce
+rm
 ce
 ce
 ce
-bp
+ce
+ce
+ce
 ce
 ce
 ce
@@ -25683,32 +25754,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (103,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+bo
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
 ce
 ce
 ce
-ce
-ce
+ax
+ax
+ax
+ax
+ax
 ce
 ce
 ce
@@ -25877,32 +25948,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (104,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+bo
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
 ce
 ce
+ax
 ce
-bp
 ce
+ax
+ax
+ce
+ax
 ce
 ce
 ce
@@ -26071,32 +26142,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (105,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+bo
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+ce
+ce
+rm
 ce
 ce
 ce
-bp
-bp
+ce
+ax
+ce
+ce
+ce
 ce
 ce
 ce
@@ -26265,32 +26336,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (106,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+bo
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+ce
+ce
 bq
 ce
 ce
 ce
-bp
+ce
+ce
+ce
+ce
+ce
 bp
 ce
 ce
@@ -26459,32 +26530,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (107,1,1) = {"
-MA
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+bo
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+ce
 bq
 bq
 ce
 ce
-bp
-bp
+ce
+ce
+ce
+ce
+ce
 bp
 ce
 ce
@@ -26653,28 +26724,28 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (108,1,1) = {"
-MA
+bo
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
 ce
 ce
 ce
@@ -26847,28 +26918,28 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (109,1,1) = {"
-MA
+TK
+TK
+br
+br
+br
+br
+br
+br
+br
+br
+br
 bq
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
 ce
 ce
 ce
@@ -27041,27 +27112,27 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (110,1,1) = {"
-MA
+TK
+bq
+br
+br
+br
+br
+br
+br
+br
+br
+br
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
 ce
 ce
 ce
@@ -27235,29 +27306,29 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (111,1,1) = {"
-MA
+TK
+bq
+bq
+br
+br
+br
 bq
 bq
 bq
 bq
+br
 bq
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+ce
+ce
+ce
+ce
+ce
 ce
 ce
 ce
@@ -27429,20 +27500,14 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (112,1,1) = {"
-MA
+TK
 bq
 bq
 bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
+br
 bq
 bq
 bq
@@ -27453,7 +27518,13 @@ bq
 bq
 bq
 ce
+ce
+ce
+ce
 bp
+ce
+ce
+ce
 ce
 ce
 ce
@@ -27623,13 +27694,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (113,1,1) = {"
-MA
-bq
-bq
-bq
+TK
 bq
 bq
 bq
@@ -27649,6 +27717,9 @@ ce
 ce
 bp
 bp
+bp
+ce
+ce
 bp
 bp
 ce
@@ -27817,14 +27888,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (114,1,1) = {"
-MA
-bq
-bq
-bq
-bq
+TK
 bq
 bq
 bq
@@ -27841,8 +27908,12 @@ bq
 bq
 bq
 ce
+ce
 bp
 bp
+bp
+bp
+ce
 bp
 ce
 ce
@@ -28011,10 +28082,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (115,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -28205,10 +28276,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (116,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -28399,10 +28470,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (117,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -28593,10 +28664,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (118,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -28787,10 +28858,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (119,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -28981,10 +29052,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (120,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -28993,15 +29064,15 @@ bq
 bq
 bq
 bq
-an
-bq
-bq
-an
 bq
 bq
 bq
 bq
 bq
+bq
+bq
+bq
+ce
 ce
 ce
 ce
@@ -29175,10 +29246,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (121,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -29187,16 +29258,16 @@ bq
 bq
 bq
 bq
-an
-bq
-an
-an
 bq
 bq
 bq
 bq
 bq
 bq
+bq
+bq
+ce
+ce
 ce
 ce
 ce
@@ -29369,10 +29440,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (122,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -29380,16 +29451,16 @@ bq
 bq
 bq
 bq
-an
-an
-an
-an
-an
 bq
 bq
 bq
 bq
 bq
+bq
+bq
+bq
+bq
+ce
 ce
 ce
 ce
@@ -29563,10 +29634,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (123,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -29574,21 +29645,21 @@ bq
 bq
 bq
 bq
-an
-an
-an
-an
-an
+bq
+bq
+bq
+bq
 bq
 bq
 bq
 bq
 bq
 ce
-ax
 ce
-ax
-ax
+ce
+ce
+ce
+ce
 ce
 ce
 aa
@@ -29757,29 +29828,29 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (124,1,1) = {"
-MA
+TK
 bq
 bq
-an
 bq
 bq
-an
 bq
-an
-an
-an
-an
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
-bq
-bq
-bq
-bq
 ce
 ce
-ax
 ce
 ce
 ce
@@ -29951,26 +30022,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (125,1,1) = {"
-MA
-MA
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-ce
-ce
-rm
-ce
-ce
+TK
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
@@ -30145,32 +30216,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (126,1,1) = {"
-MA
-bo
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+TK
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
-ax
-ax
-ax
-ax
-ax
+ce
+ce
+ce
 ce
 aa
 aa
@@ -30339,32 +30410,32 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (127,1,1) = {"
-MA
-br
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+TK
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
-ax
 ce
 ce
-ax
-ax
 ce
-ax
+ce
 ce
 aa
 aa
@@ -30533,29 +30604,29 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (128,1,1) = {"
-MA
-br
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+TK
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
-rm
 ce
-ce
-ce
-ce
-ax
 ce
 ce
 ce
@@ -30727,26 +30798,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (129,1,1) = {"
-MA
-br
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-ce
-ce
+TK
 bq
-ce
-ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
@@ -30921,26 +30992,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (130,1,1) = {"
-MA
-br
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-ce
+TK
 bq
 bq
-ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
@@ -31115,26 +31186,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (131,1,1) = {"
-MA
-br
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+TK
 bq
 bq
 bq
-ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
@@ -31309,27 +31380,27 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (132,1,1) = {"
-MA
-MA
-an
-an
-an
-an
-an
-an
-an
-an
-an
+TK
 bq
 bq
 bq
 bq
 bq
-ce
-ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
@@ -31503,26 +31574,26 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (133,1,1) = {"
-MA
-bq
-an
-an
-an
-an
-an
-an
-an
-an
-an
+TK
 bq
 bq
 bq
 bq
-ce
-ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
@@ -31697,25 +31768,25 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (134,1,1) = {"
-MA
-bq
-bq
-an
-an
-an
+TK
 bq
 bq
 bq
 bq
-an
 bq
 bq
 bq
 bq
-ce
+bq
+bq
+bq
+bq
+bq
+bq
+bq
 ce
 ce
 ce
@@ -31891,14 +31962,16 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (135,1,1) = {"
-MA
+TK
 bq
 bq
 bq
-an
+bq
+bq
+bq
 bq
 bq
 bq
@@ -31911,8 +31984,6 @@ bq
 ce
 ce
 ce
-ce
-bp
 ce
 ce
 ce
@@ -32085,10 +32156,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (136,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -32106,9 +32177,9 @@ bq
 bq
 ce
 ce
-bp
-bp
-bp
+ce
+ce
+ce
 ce
 ce
 ce
@@ -32279,10 +32350,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (137,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -32300,10 +32371,10 @@ bq
 bq
 ce
 ce
-bp
-bp
-bp
-bp
+ce
+ce
+ce
+ce
 ce
 ce
 ce
@@ -32473,10 +32544,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (138,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -32667,10 +32738,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (139,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -32861,10 +32932,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (140,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -33055,10 +33126,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (141,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -33249,10 +33320,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (142,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -33443,10 +33514,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (143,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -33637,10 +33708,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (144,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -33831,10 +33902,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (145,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -34025,10 +34096,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (146,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -34219,10 +34290,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (147,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -34413,10 +34484,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (148,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -34607,10 +34678,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (149,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -34801,10 +34872,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (150,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -34995,10 +35066,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (151,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -35189,10 +35260,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (152,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -35383,10 +35454,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (153,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -35577,10 +35648,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (154,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -35771,10 +35842,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (155,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -35965,10 +36036,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (156,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -36159,10 +36230,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (157,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -36353,10 +36424,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (158,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -36547,10 +36618,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (159,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -36741,10 +36812,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (160,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -36935,10 +37006,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (161,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -37129,10 +37200,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (162,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -37323,10 +37394,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (163,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -37517,10 +37588,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (164,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -37711,10 +37782,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (165,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -37905,10 +37976,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (166,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -38099,10 +38170,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (167,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -38293,10 +38364,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (168,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -38487,10 +38558,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (169,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -38681,10 +38752,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (170,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -38875,10 +38946,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (171,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -39069,10 +39140,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (172,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -39132,7 +39203,7 @@ bq
 bq
 bq
 bq
-an
+br
 bq
 bq
 bq
@@ -39263,10 +39334,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (173,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -39326,8 +39397,8 @@ bq
 bq
 bq
 bq
-an
-an
+br
+br
 qm
 bq
 bq
@@ -39457,10 +39528,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (174,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -39521,8 +39592,8 @@ bq
 bq
 bq
 bq
-an
-an
+br
+br
 bq
 bq
 bq
@@ -39651,10 +39722,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (175,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -39715,9 +39786,9 @@ bq
 bq
 bq
 bq
-an
-an
-an
+br
+br
+br
 bq
 bq
 bq
@@ -39845,10 +39916,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (176,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -39908,12 +39979,12 @@ bq
 bq
 bq
 bq
-an
-an
-an
-an
-an
-an
+br
+br
+br
+br
+br
+br
 qm
 bq
 bq
@@ -40039,10 +40110,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (177,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -40100,16 +40171,16 @@ bq
 bq
 bq
 qm
-an
-an
-an
-an
-an
-an
-an
-an
-an
-an
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
 bq
 bq
 bq
@@ -40233,10 +40304,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (178,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -40293,18 +40364,18 @@ bq
 bq
 bq
 bq
-an
-an
-an
+br
+br
+br
 bq
 bq
 bq
 bq
 bq
 bq
-an
-an
-an
+br
+br
+br
 bq
 bq
 bq
@@ -40427,10 +40498,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (179,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -40486,8 +40557,8 @@ bq
 bq
 bq
 bq
-an
-an
+br
+br
 qm
 bq
 bq
@@ -40497,8 +40568,8 @@ bq
 bq
 bq
 bq
-an
-an
+br
+br
 bq
 bq
 bq
@@ -40621,10 +40692,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (180,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -40692,8 +40763,8 @@ bq
 bq
 bq
 bq
-an
-an
+br
+br
 od
 if
 mQ
@@ -40815,10 +40886,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (181,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -41009,10 +41080,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (182,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -41203,10 +41274,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (183,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -41397,10 +41468,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (184,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -41468,8 +41539,8 @@ bq
 bq
 bq
 bq
-an
-an
+br
+br
 if
 od
 od
@@ -41591,10 +41662,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (185,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -41653,16 +41724,16 @@ bq
 bq
 bq
 bq
-an
-an
+br
+br
 bq
 bq
 bq
 bq
 bq
 bq
-an
-an
+br
+br
 bq
 bq
 bq
@@ -41785,10 +41856,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (186,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -41847,16 +41918,16 @@ bq
 bq
 bq
 bq
-an
-an
-an
-an
+br
+br
+br
+br
 bq
 bq
 bq
-an
-an
-an
+br
+br
+br
 bq
 bq
 bq
@@ -41979,10 +42050,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (187,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -42042,14 +42113,14 @@ bq
 bq
 bq
 qm
-an
-an
-an
-an
-an
-an
-an
-an
+br
+br
+br
+br
+br
+br
+br
+br
 bq
 bq
 bq
@@ -42173,10 +42244,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (188,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -42241,9 +42312,9 @@ bq
 bq
 bq
 qm
-an
-an
-an
+br
+br
+br
 bq
 bq
 bq
@@ -42367,10 +42438,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (189,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -42437,7 +42508,7 @@ bq
 bq
 bq
 bq
-an
+br
 qm
 bq
 bq
@@ -42561,10 +42632,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (190,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -42755,10 +42826,10 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (191,1,1) = {"
-MA
+TK
 bq
 bq
 bq
@@ -42949,119 +43020,119 @@ am
 am
 am
 am
-bi
+Cg
 "}
 (192,1,1) = {"
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
-MA
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
+TK
 Lj
 Lj
 Lj
@@ -43080,68 +43151,68 @@ Cg
 Cg
 Cg
 Cg
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
-bi
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
 "}

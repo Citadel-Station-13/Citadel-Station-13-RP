@@ -33,7 +33,7 @@
 				tally += (halloss / 45) //halloss shouldn't slow you down if you can't even feel it
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
-	if (hungry >= 70)
+	if (m_intent == MOVE_INTENT_RUN && hungry >= 70)//You can walk while hungry, but you cant run so fast while hungry
 		tally += hungry/50
 
 	if(reagents.has_reagent("numbenzyme"))
@@ -115,7 +115,7 @@
 				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.snow_movement, 15)
 			if(shoes)
 				var/obj/item/clothing/shoes/feet = shoes
-				if(feet.water_speed)
+				if(feet.snow_speed)
 					turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + feet.snow_speed, 15)
 			. += turf_move_cost
 

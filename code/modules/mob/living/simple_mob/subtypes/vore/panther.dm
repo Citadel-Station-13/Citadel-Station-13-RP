@@ -23,8 +23,8 @@
 	randomized = TRUE
 	movement_cooldown = 4
 
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 15
 	attack_sharp = TRUE
 
 	base_pixel_x = -16

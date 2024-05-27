@@ -157,12 +157,15 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
+	// todo: uh oh.
+	// TODO: what would tg do (but maybe not that much component signal abuse?)
+	// this is to trigger entered effects
+	// bad news is this is not necessarily currently idempotent
+	// we probably have to deal with this at.. some point.
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
 	var/area/A = loc
-	if(!TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
-		add_overlay(/obj/effect/fullbright)
 
 	if (light_power && light_range)
 		update_light()
@@ -281,11 +284,10 @@
 		step(user.pulling, get_dir(user.pulling.loc, src))
 	return 1
 
-/turf/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/storage))
-		var/obj/item/storage/S = W
-		if(S.use_to_pickup && S.collection_mode)
-			S.gather_all(src, user)
+/turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 // Hits a mob on the tile.
@@ -431,6 +433,9 @@
 /turf/AllowDrop()
 	return TRUE
 
+/turf/drop_location()
+	return src
+
 // Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
 /turf/proc/is_safe_to_enter(mob/living/L)
 	if(LAZYLEN(dangerous_objects))
@@ -554,12 +559,10 @@
 	// open but turf wants to be outside, invert to OUTSIDE_NO).
 
 	// Do we have a roof over our head? Should we care?
-	if(HasAbove(z))
-		var/turf/top_of_stack = src
-		while(HasAbove(top_of_stack.z))
-			top_of_stack = GetAbove(top_of_stack)
-			if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
-				return !.
+	var/turf/top_of_stack = src
+	while((top_of_stack = top_of_stack.above()))
+		if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
+			return !.
 
 /turf/proc/set_outside(new_outside, skip_weather_update = FALSE)
 	if(is_outside != new_outside)
@@ -570,7 +573,7 @@
 		return TRUE
 	return FALSE
 
-//? Atom Color - we don't use the expensive system.
+//* Atom Color - we don't use the expensive system. *//
 
 /turf/get_atom_colour()
 	return color
@@ -589,7 +592,7 @@
 		return
 	color = other.color
 
-//? Depth
+//* Depth *//
 
 /**
  * gets overall depth level for stuff standing on us
@@ -601,7 +604,39 @@
 			continue
 		. = max(., O.depth_level)
 
-//? Radiation
+//* Multiz *//
+
+/turf/proc/update_multiz()
+	return
+
+//* Orientation *//
+
+/**
+ * Are we a valid anchor or orientation source for a wall-mounted object?
+ *
+ * If so, return the anchor object.
+ */
+/turf/proc/get_wallmount_anchor()
+	RETURN_TYPE(/atom)
+	// are we valid
+	if(GLOB.wallframe_typecache[type])
+		return src
+	// are our contents valid
+	for(var/obj/O in contents)
+		if(GLOB.wallframe_typecache[O.type])
+			return O
+
+//* Sector API *//
+
+/**
+ * called by planet / weather to update temperature during weather changes
+ *
+ * todo: this is bad lol this either needs more specifications/documentation or a redesign
+ */
+/turf/proc/sector_set_temperature(temperature)
+	return
+
+//* Radiation *//
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1

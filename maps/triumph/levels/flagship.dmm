@@ -1,6 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ae" = (
@@ -60,7 +62,7 @@
 "ar" = (
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -504,8 +506,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -629,7 +630,7 @@
 "cb" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Offices";
+	name = "Nanotrasen Offices";
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor/steel,
@@ -948,8 +949,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -1989,7 +1989,9 @@
 	},
 /area/centcom/medical)
 "gf" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/mre{
+	emagged = 1
+	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "gh" = (
@@ -2679,7 +2681,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC2";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor/steel,
@@ -3534,7 +3535,7 @@
 	},
 /area/centcom/medical)
 "ly" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lz" = (
@@ -4187,7 +4188,6 @@
 /area/centcom/restaurant)
 "nm" = (
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_y = 30
 	},
@@ -4304,7 +4304,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC4";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
@@ -4361,7 +4360,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchenC";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /turf/unsimulated/floor/steel,
@@ -5236,7 +5234,7 @@
 /turf/unsimulated/wall,
 /area/centcom/restaurant)
 "qQ" = (
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -5969,8 +5967,7 @@
 	dir = 10
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -6460,7 +6457,7 @@
 /area/centcom/bathroom)
 "uC" = (
 /obj/machinery/account_database{
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -6795,6 +6792,12 @@
 	name = "plating"
 	},
 /area/centcom/terminal)
+"vO" = (
+/obj/machinery/door/firedoor/glass,
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
+/area/centcom/medical)
 "vP" = (
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/centcom/security)
@@ -7175,7 +7178,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "wQ" = (
@@ -7279,7 +7282,7 @@
 	},
 /area/centcom/security)
 "xe" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -7629,8 +7632,7 @@
 	pixel_y = 28
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -7738,8 +7740,7 @@
 	dir = 10
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/unsimulated/floor/steel,
@@ -7899,6 +7900,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/control)
+"zm" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/security)
 "zt" = (
 /obj/machinery/button/remote/blast_door{
 	id = "HEAVY";
@@ -8586,8 +8593,7 @@
 "By" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/computer/skills,
 /obj/effect/floor_decal/borderfloorblack{
@@ -8849,8 +8855,7 @@
 	req_one_access = list(101)
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -8863,7 +8868,7 @@
 /area/centcom/control)
 "CB" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
@@ -9377,6 +9382,8 @@
 	},
 /area/centcom/command)
 "Et" = (
+/obj/spawner/window/low_wall/full/firelocks,
+/obj/spawner/window/low_wall/full/firelocks,
 /turf/unsimulated/floor{
 	name = "plating"
 	},
@@ -9417,15 +9424,13 @@
 "EA" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "EC" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -10185,8 +10190,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -10374,7 +10378,8 @@
 "HS" = (
 /obj/machinery/door/window/brigdoor{
 	req_access = list(63);
-	req_one_access = list(1)
+	req_one_access = list(1);
+	dir = 4
 	},
 /obj/machinery/button/remote/airlock{
 	id = "front";
@@ -10486,8 +10491,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -11326,7 +11330,6 @@
 /area/centcom/living)
 "KF" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -11728,6 +11731,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -12616,7 +12622,7 @@
 "OD" = (
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security{
-	desc = "This locker is filled silly stickers and some other serious NanoTrasen ones. It is lazily labeled 'The big cat'."
+	desc = "This locker is filled silly stickers and some other serious Nanotrasen ones. It is lazily labeled 'The big cat'."
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -13339,7 +13345,8 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
 	req_access = list(63);
-	req_one_access = list(1)
+	req_one_access = list(1);
+	dir = 4
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -13375,7 +13382,7 @@
 /area/centcom/security)
 "QW" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Offices";
+	name = "Nanotrasen Offices";
 	req_one_access = list(101)
 	},
 /obj/machinery/door/firedoor,
@@ -13551,8 +13558,7 @@
 "Rw" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -13638,7 +13644,7 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "RN" = (
@@ -13722,6 +13728,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"RY" = (
+/obj/structure/memorial/small/right,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/main_hall)
 "Sa" = (
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel,
@@ -14956,7 +14968,8 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -15581,7 +15594,7 @@
 /area/centcom/security)
 "Yy" = (
 /obj/machinery/door/airlock/centcom{
-	name = "NanoTrasen Offices"
+	name = "Nanotrasen Offices"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -15679,8 +15692,7 @@
 "YF" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/recharger{
 	pixel_y = 4
@@ -15746,7 +15758,7 @@
 /area/centcom/evac)
 "YL" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
 "YM" = (
@@ -15913,7 +15925,7 @@
 	},
 /area/centcom/specops)
 "Zh" = (
-/obj/structure/memorial,
+/obj/structure/memorial/small/left,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -38925,7 +38937,7 @@ dw
 gQ
 Ft
 dw
-dw
+vO
 dw
 dw
 dw
@@ -39333,7 +39345,7 @@ dq
 wE
 wE
 wE
-jm
+RY
 jm
 wE
 ox
@@ -46703,7 +46715,7 @@ WK
 WK
 WK
 WK
-Et
+zm
 Et
 WK
 wp

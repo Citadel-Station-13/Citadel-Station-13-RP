@@ -50,6 +50,16 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
+	//* HUD (Atom)
+	/// HUDs to initialize, typepaths
+	var/list/atom_huds_to_initialize
+
+	//* HUD
+	/// active, opened storage
+	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
+	//  todo: we'll eventually need a system to handle ckey transfers properly.
+	var/datum/object_system/storage/active_storage
+
 	//? Movespeed
 	/// List of movement speed modifiers applying to this mob
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
@@ -66,6 +76,8 @@
 	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
+	/// Tracks if we have gravity from environment right now.
+	var/in_gravity
 
 	//? Physiology
 	/// overall physiology - see physiology.dm
@@ -87,6 +99,8 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 	/// pixel-shifted by user enough to let people through. this is a direction flag
+	/// although set on /mob level, this is only actually used at /living level because base /mob should not have complex block
+	/// mechanics by default.
 	var/wallflowering = NONE
 
 	//? Abilities
@@ -234,6 +248,7 @@
 
 	var/timeofdeath = 0 //?Living
 
+	// todo: go to carbon, simple mobs don't need environmental stabilization
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
 
@@ -262,7 +277,7 @@
 	var/const/muteness = 4 //?Carbon
 
 	/// Maximum w_class the mob can pull.
-	var/can_pull_size = ITEMSIZE_NO_CONTAINER
+	var/can_pull_size = WEIGHT_CLASS_HUGE
 	/// Whether or not the mob can pull other mobs.
 	var/can_pull_mobs = MOB_PULL_LARGER
 

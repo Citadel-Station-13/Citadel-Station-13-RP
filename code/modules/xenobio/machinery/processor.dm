@@ -10,6 +10,8 @@
 	panel_icon_state = "processor-panel"
 	density = TRUE
 	anchored = TRUE
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	/// Autointaking
 	var/auto_mode = FALSE
 	var/processing = FALSE // So I heard you like processing.
@@ -82,7 +84,7 @@
 
 // Verb to remove everything.
 /obj/machinery/processor/verb/eject()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject Processor"
 	set src in oview(1)
 

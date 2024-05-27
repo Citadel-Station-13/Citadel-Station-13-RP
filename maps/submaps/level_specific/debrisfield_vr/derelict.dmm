@@ -8,8 +8,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -37,8 +36,7 @@
 "ae" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -84,11 +82,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 2;
-	name = "south bump";
-	pixel_y = -24
+/obj/machinery/power/apc/south_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/debrisfield_vr/derelict/bridge)
@@ -671,11 +666,8 @@
 /area/submap/debrisfield_vr/derelict/interior)
 "cs" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 2;
-	name = "south bump";
-	pixel_y = -24
+/obj/machinery/power/apc/south_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
@@ -734,8 +726,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "cF" = (
-/obj/effect/alien/egg,
-/obj/effect/alien/weeds,
+/obj/structure/alien/egg,
+/obj/structure/alien/weeds,
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "cG" = (
@@ -826,11 +818,8 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/ai_access_port)
@@ -853,11 +842,8 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/plating,
 /area/submap/debrisfield_vr/derelict/ai_access_starboard)
@@ -909,12 +895,8 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_x = 0;
-	pixel_y = 24
+/obj/machinery/power/apc/north_mount{
+	alarms_hidden = 1
 	},
 /turf/simulated/floor/greengrid,
 /area/submap/debrisfield_vr/derelict/ai_chamber)

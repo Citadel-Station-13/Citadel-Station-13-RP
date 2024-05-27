@@ -262,6 +262,11 @@
 		var/obj/item/clothing/head/beret/orion/orion = orion_style
 		orions[initial(orion.name)] = orion
 	tweaks += new/datum/loadout_tweak/path(tim_sort(orions, GLOBAL_PROC_REF(cmp_text_asc)))
+
+/datum/loadout_entry/head/onestar
+	name = "One Star Cap"
+	path = /obj/item/clothing/head/onestar
+
 /datum/loadout_entry/head/surgery
 	name = "Surgical Cap Selection"
 	description = "Choose from a number of rings of different Caps."
@@ -296,6 +301,10 @@
 /datum/loadout_entry/head/headbando
 	name = "Basic Headband (Colorable)"
 	path = /obj/item/clothing/head/fluff/headbando
+
+/datum/loadout_entry/head/eulrhat
+	name = "Sleek side cap"
+	path = /obj/item/clothing/head/eulrhat
 
 // happy valentine's day
 /datum/loadout_entry/head/woodcirclet
@@ -336,6 +345,11 @@
 /datum/loadout_entry/head/bard
 	name = "Audacious Wide Brimmed Hat"
 	path = /obj/item/clothing/head/bard
+
+/datum/loadout_entry/head/aureate_hood
+	name = "Aureate Hood"
+	path = /obj/item/clothing/head/hood/aureate
+
 
 //Tajaran head wears
 

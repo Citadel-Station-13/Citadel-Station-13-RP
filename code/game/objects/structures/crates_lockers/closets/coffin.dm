@@ -98,15 +98,6 @@
 			return 0
 		if(istype(W,/obj/item/tk_grab))
 			return 0
-		if(istype(W, /obj/item/storage/laundry_basket) && W.contents.len)
-			var/obj/item/storage/laundry_basket/LB = W
-			var/turf/T = get_turf(src)
-			for(var/obj/item/I in LB.contents)
-				LB.remove_from_storage(I, T)
-			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You hear rustling of clothes.</span>")
-			return
 		if(isrobot(user))
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
@@ -166,7 +157,7 @@
 			gasid = H.species.exhale_type
 	var/datum/gas_mixture/grave_breath = new()
 	var/datum/gas_mixture/above_air = return_air()
-	grave_breath.adjust_gas(gasid, BREATH_MOLES)
+	grave_breath.adjust_gas(gasid, (above_air.return_pressure() * above_air.volume) / (R_IDEAL_GAS_EQUATION * above_air.temperature)) // They have no oxygen, but non-zero moles and temp
 	grave_breath.temperature = (above_air.temperature) - 30	//Underground
 	return grave_breath
 

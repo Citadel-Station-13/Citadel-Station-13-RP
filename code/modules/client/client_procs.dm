@@ -74,7 +74,7 @@
 
 
 	// Tgui Topic middleware
-	if(tgui_Topic(href_list))
+	if(tgui_topic(href_list))
 		if(CONFIG_GET(flag/emergency_tgui_logging))
 			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
@@ -149,10 +149,17 @@
 	return 1
 
 
-
 	///////////
 	//CONNECT//
 	///////////
+
+/**
+ * Linter check, do not call.
+ */
+/proc/lint__check_client_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/client/C
+	C.New()
 
 /client/New(TopicData)
 	//* pre-connect-ish
@@ -165,9 +172,12 @@
 		return null
 	// kick out guests
 	if(!config_legacy.guests_allowed && is_guest() && !is_localhost())
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
-		del(src)
-		return
+		security_kick(
+			message = "This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.",
+			tell_user = TRUE,
+			immediate = TRUE,
+		)
+		return null
 	// pre-connect greeting
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 	// register in globals
@@ -186,20 +196,34 @@
 
 	//* Resolve storage datums
 	// resolve persistent data
-	persistent = resolve_client_data(ckey)
+	persistent = resolve_client_data(ckey, key)
 	//* Resolve database data
-	player = new(key)
+	player = resolve_player_data(ckey, key)
 	player.log_connect()
-	// todo: move preferences up here but above persistent
+	//* Resolve preferences
+	preferences = SSpreferences.resolve_game_preferences(key, ckey)
+	//? WARNING: SHITCODE ALERT ?//
+	// We allow a client/New sleep because preferences is currently required for
+	// everything else to work
+	// todo: maybe don't do this?
+	if(!UNLINT(preferences.block_on_initialized(5 SECONDS)))
+		security_kick("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
+		stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
+		return
+	// we wait until it inits to do this
+	// todo: is there a better way this is kind of awful
+	preferences.active = src
+	preferences.on_reconnect()
+	//? END ?//
 
 	//* Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate statpanel
-	statpanel_boot()
+	addtimer(CALLBACK(src, PROC_REF(statpanel_boot)), 0)
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 	// Instantiate cutscene system
-	init_cutscene_system()
+	addtimer(CALLBACK(src, PROC_REF(init_cutscene_system)), 0)
 
 	//* Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
@@ -256,16 +280,11 @@
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	handle_legacy_connection_whatevers()
-
 	//* Connection Security
 	// start caching it immediately
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
 	// run onboarding gauntlet
-	if(!onboarding())
-		if(!queued_security_kick)
-			security_kick("Unknown error during client init. Contact staff on Discord.", TRUE)
-		return FALSE
+	INVOKE_ASYNC(src, PROC_REF(onboarding))
 
 	//* Initialize Input
 	if(SSinput.initialized)
@@ -276,7 +295,7 @@
 	// initialize statbrowser
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
-	tgui_panel.initialize()
+	INVOKE_ASYNC(tgui_panel, TYPE_PROC_REF(/datum/tgui_panel, initialize))
 	// initialize cutscene browser
 	// (we don't, the JS does it for us.)
 
@@ -321,16 +340,18 @@
 	pre_init_viewport()
 	mob.reload_rendering()
 
-	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
-		if(config_legacy.aggressive_changelog)
-			changelog()
+	// todo: this is dead because changelog is dead but we should fix it tbvqh
+	// if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+	// 	to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+	// 	winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
+	// 	if(config_legacy.aggressive_changelog)
+	// 		changelog_async()
 
-	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
-		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
+	// ensure asset cache is there
+	INVOKE_ASYNC(src, PROC_REF(warn_if_no_asset_cache_browser))
 
-	hook_vr("client_new",list(src))
+	// todo: fuck you voreprefs
+	prefs_vr = new /datum/vore_preferences(src)
 
 	if(config_legacy.paranoia_logging)
 		if(isnum(player.player_age) && player.player_age == -1)
@@ -353,6 +374,14 @@
 	//DISCONNECT//
 	//////////////
 
+/**
+ * Linter check, do not call.
+ */
+/proc/lint__check_client_del_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/client/C
+	C.Del()
+
 /client/Del()
 	if(!gc_destroyed)
 		Destroy() //Clean up signals and timers.
@@ -367,9 +396,11 @@
 	// log
 	log_access("Logout: [key_name(src)]")
 	// unreference storage datums
-	prefs = null
 	persistent = null
 	player = null
+	if(preferences)
+		preferences.active = null
+		preferences = null
 
 	//* unsorted
 	GLOB.ahelp_tickets.ClientLogout(src)
@@ -384,10 +415,12 @@
 	active_mousedown_item = null
 	SSping.currentrun -= src
 
-	//* cleanup mob-side stuff
+	//* cleanup rendering
 	// clear perspective
 	if(using_perspective)
 		set_perspective(null)
+	// clear HUDs
+	clear_atom_hud_providers()
 
 	//* cleanup UI
 	// cleanup statbrowser
@@ -496,7 +529,7 @@
 	if(ab) //Citadel edit, things with stuff.
 		return
 
-	if (prefs.hotkeys)
+	if (preferences.is_hotkeys_mode())
 		// If hotkey mode is enabled, then clicking the map will automatically
 		// unfocus the text bar. This removes the red color from the text bar
 		// so that the visual focus indicator matches reality.

@@ -50,10 +50,10 @@
 	var/chance = damage
 	if(istype(A, /turf/simulated/wall))
 		var/turf/simulated/wall/W = A
-		chance = round(damage/W.material.integrity*180)
+		chance = round(damage/W.material_outer.density*1.8)
 	else if(istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
-		chance = round(damage/D.maxhealth*180)
+		chance = round(damage/D.integrity_max*180)
 		if(D.glass) chance *= 2
 	else if(istype(A, /obj/structure/girder))
 		chance = 100
@@ -495,6 +495,17 @@
 /obj/projectile/bullet/incendiary/flamethrower/large
 	damage = 15
 	range = 6
+
+/obj/projectile/bullet/incendiary/caseless
+	name = "caseless phoron slug"
+	icon_state = "bullet_alt"
+	damage = 50
+	damage_type = BRUTE
+	incendiary = 1
+	flammability = 4
+	armor_penetration = 35
+
+
 
 /* Practice rounds and blanks */
 

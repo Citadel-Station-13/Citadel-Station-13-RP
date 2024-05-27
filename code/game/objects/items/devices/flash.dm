@@ -5,7 +5,7 @@
 	icon_state = "flash"
 	item_state = "flashtool"
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)

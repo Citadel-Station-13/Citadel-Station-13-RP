@@ -30,6 +30,11 @@
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
+	//? nightshift
+	/// nightshift level
+	/// in general, nightshift must be at or above this level for it to proc on areas.
+	var/nightshift_level = NIGHTSHIFT_LEVEL_UNSET
+
 	//? tracking lists for machinery
 	/// holopads - lazyinit'd
 	var/list/obj/machinery/holopad/holopads
@@ -324,6 +329,8 @@
 				else if(!E.density)
 					spawn(0)
 						E.close()
+		for(var/obj/machinery/floor_inflatables/i in all_doors)
+			i.trigger()
 
 /// Open all firedoors in the area
 /area/proc/firedoors_open()
@@ -557,7 +564,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/play_ambience(var/mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!L?.is_preference_enabled(/datum/client_preference/play_ambiance))
+	if(!L?.get_preference_toggle(/datum/game_preference_toggle/ambience/area_ambience))
 		return
 
 	// If we previously were in an area with force-played ambiance, stop it.

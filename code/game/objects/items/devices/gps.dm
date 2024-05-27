@@ -22,10 +22,10 @@
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network."
 	icon = 'icons/obj/gps.dmi'
 	icon_state = "gps-gen"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
@@ -211,7 +211,7 @@
 		hud_bound?.add_screen(hud_arrow)
 	hud_arrow.set_disabled(FALSE)
 	update_tracking()
-	START_PROCESSING(SSprocessing, src)
+	START_PROCESSING(SSfastprocess, src)
 	return TRUE
 
 /**
@@ -224,7 +224,7 @@
 	tracking = null
 	// just kick it out
 	hud_arrow?.set_disabled(TRUE)
-	STOP_PROCESSING(SSprocessing, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	return TRUE
 
 /obj/item/gps/process(delta_time)
@@ -238,7 +238,7 @@
 		return
 	var/angle
 	var/valid = TRUE
-	var/curr_l_id = SSmapping.fluff_level_id(get_z(src))
+	var/curr_l_id = SSmapping.level_id(get_z(src))
 	var/turf/T = get_turf(src)
 	if(!T)
 		hud_arrow?.set_disabled(TRUE)
@@ -253,7 +253,7 @@
 		var/datum/component/gps_signal/sig = tracking
 		var/atom/A = sig.parent
 		var/turf/AT = get_turf(A)
-		if(SSmapping.fluff_level_id(get_z(A)) != curr_l_id)
+		if(SSmapping.level_id(get_z(A)) != curr_l_id)
 			valid = FALSE
 		else
 			angle = arctan(AT.x - T.x, AT.y - T.y)
@@ -344,11 +344,11 @@
 /obj/item/gps/proc/push_waypoint_data()
 	push_ui_data(data = list("waypoints" = ui_waypoint_data()))
 
-/obj/item/gps/ui_static_data(mob/user)
+/obj/item/gps/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["waypoints"] = ui_waypoint_data()
 
-/obj/item/gps/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/gps/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	.["on"] = !!on
@@ -412,7 +412,7 @@
 			if(!tag_as)
 				return FALSE
 			var/turf/T = get_turf(src)
-			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_id(T.z))
+			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.fluff_level_id(T.z))
 			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
@@ -576,7 +576,7 @@
 
 /obj/item/gps/internal/base
 	gps_tag = "NT_BASE"
-	desc = "A homing signal from NanoTrasen's outpost."
+	desc = "A homing signal from Nanotrasen's outpost."
 
 /obj/item/gps/internal/poi
 	gps_tag = "Unidentified Signal"
@@ -601,7 +601,7 @@
 	throw_force = 10
 	sharp = 1
 	edge = 1
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 4)
 	attack_verb = list("sliced", "chopped", "stabbed", "pierced")
 	tool_speed = 2 // Use a real axe if you want to chop logs.

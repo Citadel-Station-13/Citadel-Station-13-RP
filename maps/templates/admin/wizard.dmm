@@ -88,7 +88,6 @@
 "am" = (
 /obj/structure/bed/chair/wood/wings,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 0;
 	pixel_y = 30
 	},
@@ -144,7 +143,7 @@
 	pixel_x = 0;
 	pixel_y = 32
 	},
-/obj/item/ore/slag{
+/obj/item/stack/ore/slag{
 	desc = "Well at least Arthur doesn't have to share now...";
 	name = "pet rock"
 	},
@@ -154,7 +153,6 @@
 /area/wizard_station)
 "at" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 0;
 	pixel_y = 30
 	},
@@ -749,7 +747,6 @@
 /obj/item/suit_cooling_unit,
 /obj/structure/table/steel_reinforced,
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 0;
 	pixel_y = 30
 	},
@@ -760,7 +757,6 @@
 /area/wizard_station)
 "bN" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 0;
 	pixel_y = 30
 	},

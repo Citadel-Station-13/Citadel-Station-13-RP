@@ -2,20 +2,23 @@
 	id = MAT_BANANIUM
 	name = "bananium"
 	stack_type = /obj/item/stack/material/bananium
-	integrity = 200
 	icon_colour = "#fff127"
 	explosion_resistance = 25
-	hardness = 5 //pretty sure something rubbery isn't that sharp
-	weight = 30 // potent blunt weapons.
 	opacity = 0.8
-	protectiveness = 50 // boing.
-	reflectivity = 0.2 // boing.
 	negation = 5 // boing.
-	conductive = 0 // described as rubbery and a good insulator
-	conductivity = 0
 	stack_origin_tech = list(TECH_MATERIAL = 5, TECH_ILLEGAL = 3)
-	radiation_resistance = 20 //not as good as lead but still pretty good
 	tgui_icon_key = "bananium"
+
+	relative_integrity = 2
+	density = 8 * 3
+	relative_conductivity = 0.3
+	relative_permeability = 0
+	relative_reactivity = 0.5
+	hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_MODERATE
+	absorption = MATERIAL_RESISTANCE_HIGH
+	nullification = MATERIAL_RESISTANCE_LOW
 
 /datum/material/bananium/generate_recipes()
 	. = ..()
@@ -27,17 +30,22 @@
 	id = MAT_SILENCIUM
 	name = "silencium"
 	stack_type = /obj/item/stack/material/silencium
-	integrity = 400
 	melting_point = 12000 //described as a good heatsink
 	icon_colour = "#d3d3d3"
 	explosion_resistance = 10 //described as brittle but probably not like glass
-	hardness = 100 //sharp as durasteel
-	weight = 20
-	protectiveness = 55 // described as dense and sturdy
-	conductivity = 30 //heatsink
 	stack_origin_tech = list(TECH_MATERIAL = 7, TECH_ILLEGAL = 1)
-	radiation_resistance = 15
 	tgui_icon_key = "silencium"
+
+	relative_integrity = 2
+	density = 8 * 3
+	relative_conductivity = 0.3
+	relative_permeability = 0
+	relative_reactivity = 0.5
+	hardness = MATERIAL_RESISTANCE_HIGH
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_MODERATE
+	absorption = MATERIAL_RESISTANCE_HIGH
+	nullification = MATERIAL_RESISTANCE_LOW
 
 /datum/material/silencium/generate_recipes()
 	. = ..()

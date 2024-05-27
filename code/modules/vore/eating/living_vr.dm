@@ -23,7 +23,6 @@
 	var/absorbing_prey = 0 				// Determines if the person is using the succubus drain or not. See station_special_abilities_vr.
 	var/drain_finalized = 0				// Determines if the succubus drain will be KO'd/absorbed. Can be toggled on at any time.
 	var/fuzzy = 1						// Preference toggle for sharp/fuzzy icon.
-	var/tail_alt = 0					// Tail layer toggle.
 	var/permit_healbelly = TRUE
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = TRUE			// Mobs are pred by default.
@@ -228,7 +227,7 @@
 	var/list/serialized = list()
 	for(var/belly in src.vore_organs)
 		var/obj/belly/B = belly
-		serialized += list(B.serialize()) //Can't add a list as an object to another list in Byond. Thanks.
+		serialized += list(B.serialize_vr()) //Can't add a list as an object to another list in Byond. Thanks.
 
 	P.belly_prefs = serialized
 
@@ -314,7 +313,7 @@
 //
 /mob/living/proc/lick(var/mob/living/tasted in living_mobs(1))
 	set name = "Lick"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Lick someone nearby!"
 	set popup_menu = FALSE // Stop licking by accident!
 
@@ -353,7 +352,7 @@
 // This is just the above proc but switched about.
 /mob/living/proc/smell(mob/living/smelled in living_mobs(1))
 	set name = "Smell"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Smell someone nearby!"
 	set popup_menu = FALSE
 
@@ -669,14 +668,6 @@
 				else
 					to_chat(src, "<span class='warning'>You probably shouldn't eat this.</span>")
 					return
-		if(istype(I,/obj/item/material))
-			var/obj/item/material/M = I
-			if(M.material.id == "supermatter") //while it would be funny, it'd also be suicidal and we probably shouldn't allow it.
-				to_chat(src, "<span class='warning'>Your self preservation instincts kick in right as you had seriously considered eating something this dangerous.</span>")
-				return
-			if(M.material.radioactivity) //hope that uranium tastes good, you batshit insane monster.
-				src.afflict_radiation(M.material.radioactivity * 5,0) //they straight up put it inside them - armor can't save this maniac.
-
 
 		if(!attempt_insert_item_for_installation(I, vore_selected))
 			return
@@ -729,10 +720,6 @@
 		else if(istype(I,/obj/item/material/kitchen/utensil))
 			var/obj/item/material/kitchen/utensil/U = I
 			var/S = "You can taste the flavor of "
-			if(U.material.id == "plastic")
-				S += "delicious, delicious plastic and "
-			else
-				S += "an awful waste of " + U.material.name + " and "
 
 			if(istype(U,/obj/item/material/kitchen/utensil/fork))
 				S += "stabbing pains."
@@ -755,7 +742,7 @@
 
 /mob/living/proc/switch_scaling()
 	set name = "Switch scaling mode"
-	set category = "Preferences"
+	set category = "OOC"
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
 

@@ -14,23 +14,25 @@
 	var/list/obj/machinery/mining/brace/supports = list()
 	var/supported = 0
 	var/active = 0
+	var/orecount = 0 //current amount of ores it's holding
 	var/list/resource_field = list()
 	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
-	var/gps_tag = "DRILL0"
+	var/drill_id = 0
+	var/datum/component/gps_signal/gps_component
 	var/list/ore_types = list(
-		MAT_HEMATITE = /obj/item/ore/iron,
-		MAT_URANIUM = /obj/item/ore/uranium,
-		MAT_GOLD = /obj/item/ore/gold,
-		MAT_SILVER = /obj/item/ore/silver,
-		MAT_COPPER = /obj/item/ore/copper,
-		MAT_DIAMOND = /obj/item/ore/diamond,
-		MAT_PHORON = /obj/item/ore/phoron,
-		MAT_OSMIUM = /obj/item/ore/osmium,
-		"hydrogen" = /obj/item/ore/hydrogen,
-		"silicates" = /obj/item/ore/glass,
-		MAT_CARBON = /obj/item/ore/coal,
-		MAT_MARBLE = /obj/item/ore/marble,
-		MAT_LEAD = /obj/item/ore/lead,
+		MAT_HEMATITE = /obj/item/stack/ore/iron,
+		MAT_URANIUM = /obj/item/stack/ore/uranium,
+		MAT_GOLD = /obj/item/stack/ore/gold,
+		MAT_SILVER = /obj/item/stack/ore/silver,
+		MAT_COPPER = /obj/item/stack/ore/copper,
+		MAT_DIAMOND = /obj/item/stack/ore/diamond,
+		MAT_PHORON = /obj/item/stack/ore/phoron,
+		MAT_OSMIUM = /obj/item/stack/ore/osmium,
+		"hydrogen" = /obj/item/stack/ore/hydrogen,
+		"silicates" = /obj/item/stack/ore/glass,
+		MAT_CARBON = /obj/item/stack/ore/coal,
+		MAT_MARBLE = /obj/item/stack/ore/marble,
+		MAT_LEAD = /obj/item/stack/ore/lead,
 		)
 
 	//Upgrades
@@ -44,7 +46,8 @@
 	var/need_player_check = 0
 
 /obj/machinery/mining/drill/Initialize(mapload)
-	AddComponent(/datum/component/gps_signal, gps_tag)
+	gps_component = AddComponent(/datum/component/gps_signal, "DRILL#[drill_id]")
+	change_id(drill_id) //yes, this means mappers can assign it their own ID number on roundstart
 	. = ..()
 	component_parts = list(
 		new /obj/item/stock_parts/matter_bin(src),
@@ -53,6 +56,13 @@
 		new /obj/item/cell/high(src)
 	)
 	RefreshParts()
+
+/obj/machinery/mining/drill/examine()
+	. += ..()
+	. += SPAN_NOTICE("It looks like the storage cache can fit about [capacity - orecount] more ores before it reaches capacity.")
+	. += SPAN_NOTICE("The charge meter for the cell in the drill reads about [round(cell.percent())]%.")
+	. += SPAN_INFO("Alt-click to empty the drill's cache, if you have an ore satchel on you or an ore box nearby.")
+	. += SPAN_INFO("Use a multitool to change the drill's ID.")
 
 /obj/machinery/mining/drill/get_cell(inducer)
 	return cell
@@ -104,15 +114,19 @@
 
 		for(var/metal in GLOB.ore_types)
 
-			if(contents.len >= capacity)
+			orecount = 0
+			for(var/obj/item/stack/ore/s in contents)
+				orecount += s.amount
+
+			if(orecount >= capacity)
 				system_error("Insufficient storage space.")
 				active = 0
 				need_player_check = 1
 				update_icon()
 				return
 
-			if(contents.len + total_harvest >= capacity)
-				total_harvest = capacity - contents.len
+			if(orecount + total_harvest >= capacity)
+				total_harvest = capacity - orecount
 
 			if(total_harvest <= 0)
 				break
@@ -152,8 +166,8 @@
 		if(istype(O, /obj/item/multitool))
 			var/newtag = text2num(sanitizeSafe(input(user, "Enter new ID number or leave empty to cancel.", "Assign ID number") as text, 4))
 			if(newtag)
-				name = "[initial(name)] #[newtag]"
-				to_chat(user, "<span class='notice'>You changed the drill ID to: [newtag]</span>")
+				change_id(newtag)
+				to_chat(user, "<span class='notice'>You changed the drill ID to: [drill_id]</span>")
 			return
 		if(default_deconstruction_screwdriver(user, O))
 			return
@@ -286,21 +300,40 @@
 		return 1
 	return 0
 
-/obj/machinery/mining/drill/verb/unload()
+/obj/machinery/mining/drill/verb/unload_drill()
 	set name = "Unload Drill"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
-	if(usr.stat) return
+	unload(usr)
+
+/obj/machinery/mining/drill/AltClick(user)
+	. = ..()
+	unload(user)
+
+/obj/machinery/mining/drill/proc/unload(mob/user)
+	if(user.stat || !user.Adjacent(src)) return
 
 	var/obj/structure/ore_box/B = locate() in orange(1)
+	var/obj/item/storage/bag/ore/S = locate() in user.contents
 	if(B)
-		for(var/obj/item/ore/O in contents)
+		for(var/obj/item/stack/ore/O in contents)
 			B.take(O)
-		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
+		to_chat(user, "<span class='notice'>You unload the drill's storage cache into [B].</span>")
+	else if(S)
+		var/tookall = TRUE
+		for(var/obj/item/stack/ore/O in contents)
+			if(!S.obj_storage.try_insert(O))
+				tookall = FALSE
+				break
+		to_chat(user, "<span class='notice'>You unload [tookall ? "all" : "some"] of the drill's storage cache into [S].</span>")
 	else
-		to_chat(usr, "<span class='notice'>You must move an ore box up to the drill before you can unload it.</span>")
+		to_chat(user, "<span class='notice'>You must move an ore box up to the drill or have an ore satchel before you can unload it.</span>")
 
+/obj/machinery/mining/drill/proc/change_id(newid = 0)
+	drill_id = newid
+	name = "[initial(name)] #[drill_id]"
+	gps_component.set_gps_tag("DRILL#[drill_id]")
 
 /obj/machinery/mining/brace
 	name = "mining drill brace"
@@ -314,6 +347,7 @@
 	. = ..()
 	if(brace_tier >= 3)
 		. += SPAN_NOTICE("The internals of the brace look resilient enough to support a drill by itself.")
+	. += SPAN_INFO("Alt-click to rotate the brace.")
 
 /obj/machinery/mining/brace/Initialize()
 	. = ..()
@@ -386,14 +420,22 @@
 
 /obj/machinery/mining/brace/verb/rotate_clockwise()
 	set name = "Rotate Brace Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
-	if(usr.stat) return
+	rotating_clockwise(usr)
+
+/obj/machinery/mining/brace/AltClick(user) //TODO: just make select objects rotatable with altclick for fucks sake
+	. = ..()
+	rotating_clockwise(user)
+
+/obj/machinery/mining/brace/proc/rotating_clockwise(mob/user)
+	if(user.stat || !user.Adjacent(src)) return
 
 	if (src.anchored)
-		to_chat(usr, "It is anchored in place!")
+		to_chat(user, SPAN_WARNING("[src] is anchored in place!"))
 		return 0
 
+	to_chat(user, SPAN_NOTICE("You rotate [src] clockwise."))
 	src.setDir(turn(src.dir, 270))
 	return 1

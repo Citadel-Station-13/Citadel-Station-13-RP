@@ -1,4 +1,12 @@
 /**
+ * Linter check, do not call.
+ */
+/proc/lint__check_mob_login_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/mob/M
+	M.Login()
+
+/**
  * Run when a client is put in this mob or reconnets to byond and their client was on this mob
  *
  * Things it does:
@@ -36,11 +44,6 @@
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
 
-	if(client.prefs && client.prefs.client_fps)
-		client.fps = client.prefs.client_fps
-	else
-		client.fps = 0 // Results in using the server FPS
-
 	next_move = 1
 	disconnect_time = null // Clear the disconnect time
 
@@ -61,13 +64,6 @@
 
 	update_client_color()
 
-	//Reload alternate appearances
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
-
 	if(!client.tooltips)
 		client.tooltips = new(client)
 
@@ -76,8 +72,6 @@
 		update_client_z(T.z)
 
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
-
-	reload_huds()
 
 	// reset perspective to using
 	reset_perspective(no_optimizations = TRUE)

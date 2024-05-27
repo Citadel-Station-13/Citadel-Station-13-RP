@@ -6,7 +6,7 @@
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { InfernoNode } from 'inferno';
-import { Box, unit } from './Box';
+import { Box, BoxStringProp, unit } from './Box';
 import { ComponentProps } from './Component';
 import { Divider } from './Divider';
 
@@ -26,16 +26,16 @@ export const LabeledList = (props: LabeledListProps) => {
 LabeledList.defaultHooks = pureComponentHooks;
 
 type LabeledListItemProps = {
-  className?: string | BooleanLike;
-  label?: string | InfernoNode | BooleanLike;
-  labelColor?: string | BooleanLike;
-  color?: string | BooleanLike;
-  textAlign?: string | BooleanLike;
-  buttons?: InfernoNode,
+  readonly className?: string | BooleanLike;
+  readonly label?: string | InfernoNode | BooleanLike;
+  readonly labelColor?: BoxStringProp;
+  readonly color?: BoxStringProp;
+  readonly textAlign?: BoxStringProp;
+  readonly buttons?: InfernoNode,
   /** @deprecated */
-  content?: any,
-  children?: InfernoNode;
-  verticalAlign?: string;
+  readonly content?: any,
+  readonly children?: InfernoNode;
+  readonly verticalAlign?: string;
 };
 
 const LabeledListItem = (props: LabeledListItemProps) => {
@@ -77,7 +77,7 @@ const LabeledListItem = (props: LabeledListItemProps) => {
         colSpan={buttons ? undefined : 2}
         verticalAlign={verticalAlign}>
         {content}
-        {children}
+        {children || null}
       </Box>
       {buttons && (
         <td className="LabeledList__cell LabeledList__buttons">
@@ -91,7 +91,7 @@ const LabeledListItem = (props: LabeledListItemProps) => {
 LabeledListItem.defaultHooks = pureComponentHooks;
 
 type LabeledListDividerProps = {
-  size?: number;
+  readonly size?: number;
 };
 
 const LabeledListDivider = (props: LabeledListDividerProps) => {

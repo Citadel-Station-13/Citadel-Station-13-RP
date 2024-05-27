@@ -18,6 +18,8 @@
 	climb_allowed = FALSE
 	depth_projected = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/mode = null
 
 	//Used for logging people entering cryosleep and important items they are carrying.
@@ -224,6 +226,8 @@
 	density = TRUE
 	anchored = TRUE
 	dir = WEST
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	base_icon_state = "cryopod_0"
 	var/occupied_icon_state = "cryopod_1"
@@ -414,8 +418,6 @@
 				W.forceMove(src)
 				if(W.contents.len)
 					for(var/obj/item/O in W.contents)
-						if(istype(O,/obj/item/storage/internal))
-							continue
 						O.forceMove(src)
 		if(ishuman(to_despawn))
 			var/mob/living/carbon/human/H = to_despawn
@@ -431,8 +433,6 @@
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
 			for(var/obj/item/O in W.contents)
-				if(istype(O,/obj/item/storage/internal)) //Stop eating pockets, you fuck!
-					continue
 				O.forceMove(src)
 
 	//Delete all items not on the preservation list.
@@ -441,6 +441,10 @@
 	items -= announce // or the autosay radio.
 
 	for(var/obj/item/W in items)
+		// todo: fucking rework cryo
+		if(istype(W, /obj/item/holder))
+			W.forceMove(drop_location())
+			return
 
 		var/preserve = FALSE
 
@@ -551,7 +555,7 @@
 
 /obj/machinery/cryopod/verb/eject()
 	set name = "Eject Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr.stat != 0)
 		return
@@ -577,7 +581,7 @@
 
 /obj/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0 || !check_occupant_allowed(usr))

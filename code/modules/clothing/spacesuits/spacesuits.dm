@@ -12,7 +12,7 @@
 	armor_type = /datum/armor/general/space
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_cover_flags = HEAD|FACE|EYES
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 2 * ONE_ATMOSPHERE
@@ -35,7 +35,7 @@
 /obj/item/clothing/head/helmet/space/verb/toggle_camera()
 	set name = "Toggle Helmet Camera"
 	set desc = "Turn your helmet's camera on or off."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(usr.stat || usr.restrained() || usr.incapacitated())
 		return
@@ -68,7 +68,7 @@
 	desc = "A suit that protects against low pressure environments."
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "space"
-	w_class = ITEMSIZE_HUGE // So you can't fit this in your bag and be prepared at all times.
+	w_class = WEIGHT_CLASS_HUGE // So you can't fit this in your bag and be prepared at all times.
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	atom_flags = PHORONGUARD
@@ -77,7 +77,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	armor_type = /datum/armor/general/space
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 2 * ONE_ATMOSPHERE

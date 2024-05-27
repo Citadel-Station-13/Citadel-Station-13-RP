@@ -37,7 +37,7 @@
 
 /obj/machinery/door/get_description_interaction(mob/user)
 	var/list/results = list()
-	if(!repairing && (health < maxhealth) && !(machine_stat & BROKEN))
+	if(!repairing && is_integrity_damaged() && !(machine_stat & BROKEN))
 		results += "[desc_panel_image("metal sheet")]to start repairing damage (May require different material type)."
 	if(repairing && density)
 		results += "[desc_panel_image("welder", user)]to finish repairs."
@@ -58,7 +58,7 @@
 	else
 		results += "[desc_panel_image("welder", user)]to weld, preventing it from opening."
 
-	if(p_open)
+	if(panel_open)
 		results += "[desc_panel_image("screwdriver", user)]to close the wire panel."
 		results += "[desc_panel_image("wirecutters", user)]to cut an internal wire while hacking."
 		results += "[desc_panel_image("multitool", user)]to pulse an internal wire while hacking."

@@ -10,8 +10,8 @@ Also includes Life and New
 	real_name = "Xeno"
 	faction = "xeno"	//Needs to be set.
 	desc = "Something's broken, yell at someone."
-	melee_damage_lower = 0
-	melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
 	attacktext = list("hit")
 	attack_sound = null
 	friendly = "touches"
