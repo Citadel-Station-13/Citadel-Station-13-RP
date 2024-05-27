@@ -4,6 +4,8 @@
 /datum/bodyset/special/adherent
 	abstract_type = /datum/bodyset/special/adherent
 
+	greyscale = FALSE
+
 	mask_icon = 'icons/mobs/bodysets/special/adherent/mask.dmi'
 	mask_icon_state = ""
 

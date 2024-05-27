@@ -31,6 +31,11 @@
 		BP_R_LEG,
 		BP_R_FOOT,
 	)
+	/// are we meant to be a greyscale set? if set to TRUE, we'll be colored as such
+	///
+	/// * Please greyscale your bodysets where-ever possible.
+	/// * DO NOT RELY ON DEFAULTING THIS VALUE. You must set it explicitly, or the behavior is undefined.
+	var/greyscale
 	/// valid variations; variations are "[bp_tag]-[variation]"
 	var/list/variations
 
