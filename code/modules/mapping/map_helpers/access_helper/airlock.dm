@@ -363,7 +363,7 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration
-	icon_state = "science"
+	icon_state = "exploration"
 
 /obj/map_helper/access_helper/airlock/station/exploration/department
 	req_access = list(
