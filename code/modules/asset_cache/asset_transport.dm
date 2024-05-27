@@ -1,5 +1,7 @@
 /**
  * Pluggable transports used for sending assets to clients.
+ *
+ * todo: if sending too many resources, we need a way to tell the client they're loading. maybe a loading bar graphic?
  */
 /datum/asset_transport
 	/// name of the transport
