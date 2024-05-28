@@ -112,11 +112,11 @@
 		M.Confuse(60)
 		volume-=metabolism*2
 	if(effect_level>=5 && prob(effect_level-4))
-		M.drowsyness=max(M.drowsyness,60)
-		volume-=metabolism*3
-	if(effect_level>=6 && prob(effect_level-5))
 		M.vomit(0,0)
-		volume-=DOSE_LEVEL
+		volume-=DOSE_LEVEL/4
+	if(effect_level>=6 && prob(effect_level-5))
+		M.drowsyness=max(M.drowsyness,60)
+		volume-=metabolism*4
 	if(effect_level>=7)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
 		if(volume>DOSE_LEVEL*7)
