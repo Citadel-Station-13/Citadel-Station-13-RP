@@ -7,7 +7,6 @@
 
 	bodyset = /datum/bodyset/organic/krisitik
 
-	preview_icon = 'icons/mob/species/krisitik/preview.dmi'
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/krisitik,

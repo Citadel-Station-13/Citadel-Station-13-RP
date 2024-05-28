@@ -11,7 +11,6 @@
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/diona
 
 	bodyset = /datum/bodyset/organic/diona
-	preview_icon = 'icons/mob/species/diona/preview.dmi'
 
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA

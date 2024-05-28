@@ -1,12 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-/datum/bodyset/organic/nevrean
-	name = "Nevrean"
-	id = "nevrean"
+/datum/bodyset/organic/phoronoid
+	name = "Phoronoid"
+	id = "phoronoid"
 	group_id = "human"
 
-	icon = 'icons/mob/bodysets/organic/nevrean/body.dmi'
+	icon = 'icons/mob/bodysets/organic/phoronoid/body.dmi'
 	mask_icon = 'icons/mob/bodysets/organic/human/mask.dmi'
 
 	damage_overlay_brute_stages = 3
@@ -21,13 +21,13 @@
 		BP_TORSO,
 	)
 
+	variations = list(
+		BODYSET_VARIATION_DEFORMED = /datum/bodyset_variation{
+			name = "Deformed";
+			icon = 'icons/mob/bodysets/organic/phoronoid/body-deformed.dmi';
+		}
+	)
+
 	overlays = list(
 		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk/human,
 	)
-
-/datum/sprite_accessory/tail/bodyset/nevrean
-	name = "nevrean tail"
-	icon = 'icons/mob/bodysets/organic/nevrean/sprite_accessories.dmi'
-	icon_state = "tail"
-	id = "tail-bodyset-nevrean"
-	do_colouration = TRUE

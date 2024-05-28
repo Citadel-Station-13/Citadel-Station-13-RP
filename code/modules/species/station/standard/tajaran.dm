@@ -13,7 +13,6 @@
 
 	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
-	preview_icon = 'icons/mob/species/tajaran/preview.dmi'
 	husk_icon    = 'icons/mob/species/tajaran/husk.dmi'
 
 	sprite_accessory_defaults = list(

@@ -7,7 +7,6 @@
 
 	bodyset = /datum/bodyset/organic/akula
 
-	preview_icon = 'icons/mob/species/akula/preview.dmi'
 	default_bodytype = BODYTYPE_AKULA
 
 	sprite_accessory_defaults = list(

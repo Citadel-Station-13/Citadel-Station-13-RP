@@ -8,7 +8,6 @@
 
 	icobase      = 'icons/mob/species/vulpkanin/body.dmi'
 	deform       = 'icons/mob/species/vulpkanin/body.dmi' // They don't have a proper one for some reason...
-	preview_icon = 'icons/mob/species/vulpkanin/preview.dmi'
 	husk_icon    = 'icons/mob/species/vulpkanin/husk.dmi'
 
 	sprite_accessory_defaults = list(

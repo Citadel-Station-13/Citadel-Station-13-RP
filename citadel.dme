@@ -2398,6 +2398,7 @@
 #include "code\modules\bodysets\bodyset\special\_special.dm"
 #include "code\modules\bodysets\bodyset\special\adherent.dm"
 #include "code\modules\bodysets\bodyset\special\golem.dm"
+#include "code\modules\bodysets\bodyset\special\phoronoid.dm"
 #include "code\modules\bodysets\bodyset\synthetic\_synthetic.dm"
 #include "code\modules\bodysets\bodyset\synthetic\eggnerd.dm"
 #include "code\modules\bodysets\bodyset\synthetic\eggnerd_red.dm"

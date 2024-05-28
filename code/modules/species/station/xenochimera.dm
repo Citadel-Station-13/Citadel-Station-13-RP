@@ -15,7 +15,6 @@
 
 	icobase      = 'icons/mob/species/xenochimera/body.dmi'
 	deform       = 'icons/mob/species/xenochimera/deformed_body.dmi'
-	preview_icon = 'icons/mob/species/xenochimera/preview.dmi'
 	husk_icon    = 'icons/mob/species/xenochimera/husk.dmi'
 
 	max_additional_languages = 5

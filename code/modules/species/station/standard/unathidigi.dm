@@ -7,7 +7,6 @@
 	icobase       = 'icons/mob/species/unathidigi/body.dmi'
 	deform        = 'icons/mob/species/unathidigi/deformed_body.dmi'
 	husk_icon     = 'icons/mob/species/unathidigi/husk.dmi'
-	preview_icon  = 'icons/mob/species/unathidigi/preview.dmi'
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,

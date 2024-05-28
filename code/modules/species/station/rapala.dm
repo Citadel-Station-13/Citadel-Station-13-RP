@@ -6,7 +6,6 @@
 
 	bodyset = /datum/bodyset/organic/rapala
 
-	preview_icon = 'icons/mob/species/rapala/preview.dmi'
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/rapala,
