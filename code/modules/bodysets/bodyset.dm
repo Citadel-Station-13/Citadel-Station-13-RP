@@ -4,12 +4,11 @@
 /// id = datum lookup for /datum/bodyset
 /// initialized by SSearly_init
 GLOBAL_LIST_EMPTY(bodyset_lookup)
-
 /proc/init_bodyset_lookup()
 	GLOB.bodyset_lookup = . = list()
 	for(var/datum/bodyset/path as anything in subtypesof(/datum/bodyset))
 		if(initial(path.abstract_type) == path)
-			contineu
+			continue
 		var/datum/bodyset/instance = new path
 		if(.[instance.id])
 			stack_trace("collision between [path] and [.[instance.id]:type]")
@@ -18,6 +17,8 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 
 /**
  * Descriptor / metadata about a set of carbon/mob body sprites.
+ *
+ * * This, for the most part, does not mechanically enforce anything. It doesn't determine organs or anything like that.
  */
 /datum/bodyset
 	abstract_type = /datum/bodyset
@@ -34,7 +35,7 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	/// * should have a list of "[icon_state && "[icon_state]-"][bp_tag]" states
 	var/icon
 	/// icon state prepend
-	var/icon_state
+	var/state_prepend
 	/// bodyparts included
 	var/list/body_parts = list(
 		BP_HEAD,
@@ -51,12 +52,53 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	)
 	/// which bodyparts are gendered
 	var/list/gendered_parts = list()
+	/// specific layers for bodyparts having multiple states / overlays.
+	/// used for stuff like legs having front-behind
+	/// the state (e.g. "front") will be appended after everything else
+	/// as an example: "unathi-l_leg-digi-m-front" (append, part, variation, gender, front)
+	///
+	/// format:
+	/// list(
+	/// 	BP_L_LEG = list(
+	/// 		"front" = HUMAN_BODYLAYER_FRONT,
+	/// 		"behind" = HUMAN_BODYLAYER_BEHIND,
+	/// 	),
+	/// 	BP_R_LEG = list(
+	/// 		"front" = HUMAN_BODYLAYER_FRONT,
+	/// 		"behind" = HUMAN_BODYLAYER_BEHIND,
+	/// 	),
+	/// )
+	var/list/layered_parts = list()
+	/// overridden by [layered_parts]
+	/// automatically slice these bodyparts
+	/// use "ALL" for 'rest of dirs',
+	/// use TEXT_[DIR] macros otherwise.
+	///
+	/// by default, we autoslice legs and feet.
+	///
+	/// format:
+	/// list(
+	/// 	BP_L_LEG = list(TEXT_EAST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
+	/// 	BP_R_LEG = list(TEXT_WEST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
+	/// )
+	var/list/autoslice_parts = list(
+		BP_L_LEG = list(TEXT_EAST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
+		BP_R_LEG = list(TEXT_WEST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
+		BP_L_FOOT = list(TEXT_EAST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
+		BP_R_FOOT = list(TEXT_WEST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
+	)
+	/// autosliced icons by "[zone][-variation][-gender]"
+	/// autosliced icons will not have [state_prepend], or state_append on variations, or even the variation whatsoever
+	/// they'll just be "[zone][-gender]"
+	var/list/autoslice_cache = list()
 	/// are we meant to be a greyscale set? if set to TRUE, we'll be colored as such
 	///
 	/// * Please greyscale your bodysets where-ever possible.
 	/// * DO NOT RELY ON DEFAULTING THIS VALUE. You must set it explicitly, or the behavior is undefined.
 	var/greyscale
 	/// valid variations; list("string_id" = /datum/bodyset_variation{use anonymous types!})
+	///
+	/// * variations inherit autoslice behaviors.
 	var/list/variations
 	/// valid overlays; list("string_id" = /datum/bodyset_overlay{use anonymous types!})
 	var/list/overlays
@@ -91,8 +133,23 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	if(isnull(src.base_id))
 		src.base_id = src.id
 
+/**
+ * please handle the returned lists properly
+ *
+ * @return list(list(normal overlays), list(emissive overlays))
+ */
 /datum/bodyset/proc/render(bodypart_tag, list/datum/bodyset_marking_descriptor/marking_descriptors, obj/item/organ/external/for_bodypart)
+	var/list/normal = list()
+	var/list/emissive = list()
 
+	. = list(normal, emissive)
+
+	if(!(bodypart_tag in body_parts))
+		return
+
+	var/gendered = bodypart_tag in gendered_parts
+
+	#warn autoslicing
 
 #warn impl all
 
