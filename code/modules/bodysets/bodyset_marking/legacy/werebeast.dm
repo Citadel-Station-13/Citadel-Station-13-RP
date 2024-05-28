@@ -3,7 +3,7 @@
 	icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
 	color_uses_blend_add = FALSE
 	bodyset_group_restricted = list(
-		"werebeast"0,
+		"werebeast",
 	)
 
 /datum/bodyset_marking/legacy/werebeast/werewolf_nose
