@@ -32,9 +32,11 @@
 	/// are we fully loaded / generated?
 	var/loaded = FALSE
 
+	/// /datum/asset_item list
+	var/tmp/list/datum/asset_item/packed_items
 	/// a record of filename = asset_item datums
 	/// these are transport-agnostic.
-	var/tmp/list/datum/asset_item/packed_items
+	var/tmp/list/item_lookup
 	/// a record of filename = url when we're loaded and pushed to a transport.
 	/// if is null, we are not pushed to the transport
 	var/tmp/list/loaded_urls
@@ -93,7 +95,8 @@
 	var/results = generate()
 	var/list/files = register(results)
 	var/list/datum/asset_item/items = pack(files)
-	src.packed_items = items
+	src.item_lookup = items
+	src.packed_items = list_values(items)
 	loaded = ASSET_FULLY_LOADED
 
 /**

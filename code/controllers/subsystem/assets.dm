@@ -121,7 +121,7 @@ SUBSYSTEM_DEF(assets)
 	var/list/targets = islist(target)? target : list(target)
 
 	for(var/client/target as anything in targets)
-		transport.send_pack(target, resolved)
+		transport.send_asset_pack(target, resolved)
 
 /**
  * loads a file that we declare to not be necessary to keep around / store information on after
@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(assets)
 		. = FALSE
 		CRASH("collision on [name]; automatically-updating dynamic items are not yet supported.")
 	var/datum/asset_item/dynamic/created = new(name, file, do_not_mangle = do_not_mangle)
-	#warn impl
+	return created
 
 /datum/controller/subsystem/assets/proc/send_dynamic_item_by_name(list/client/clients, list/names)
 	if(!islist(clients))

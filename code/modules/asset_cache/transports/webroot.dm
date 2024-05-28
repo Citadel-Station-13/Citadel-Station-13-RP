@@ -19,10 +19,13 @@
 		return FALSE
 	return TRUE
 
+/datum/asset_transport/webroot/send_items(client/target, list/datum/asset_item/items)
+	return TRUE
+
 /datum/asset_transport/webroot/send_anonymous_file(list/client/targets, file, ext)
 	return save_anonymous_file_to_webroot(file, ext)
 
-/datum/asset_transport/browse_rsc/load_item(datum/asset_item/item)
+/datum/asset_transport/webroot/load_item(datum/asset_item/item)
 	return save_asset_item_to_webroot(item)
 
 /datum/asset_transport/webroot/proc/save_asset_item_to_webroot(datum/asset_item/item)
@@ -31,7 +34,7 @@
 /datum/asset_transport/webroot/proc/save_anonymous_file_to_webroot(file, ext)
 	var/md5_of_file = md5asfile(file)
 	var/filename = "[md5_of_file].[ext]"
-	return save_to_webroot(file, filename, null, hash)
+	return save_to_webroot(file, filename, null, md5_of_file)
 
 /datum/asset_transport/webroot/proc/save_to_webroot(file, filename, namespace, hash)
 	var/path
@@ -42,7 +45,7 @@
 	var/save_path = "[webroot]/[path]"
 	if(!fexists(save_path) && !fexists("[save_path].gz")) // sometimes web servers auto-compress text files
 		fcopy(file, "[save_path]")
-	return "[cdn]/[path]"
+	return "[url]/[path]"
 
 /datum/asset_transport/webroot/proc/get_webroot_path(hash, filename)
 	return "[copytext(hash, 1, 3)]/[filename]"

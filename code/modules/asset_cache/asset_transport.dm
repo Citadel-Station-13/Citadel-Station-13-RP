@@ -26,8 +26,8 @@
 
 /datum/asset_transport/proc/load_asset_items_from_pack(datum/asset_pack/pack)
 	var/list/filename_to_url = list()
-	for(var/filename in pack.packed_items)
-		var/datum/asset_item/item = pack.packed_items[filename]
+	for(var/filename in pack.item_lookup)
+		var/datum/asset_item/item = pack.item_lookup[filename]
 		filename_to_url[filename] = load_asset_item(item)
 	return filename_to_url
 
@@ -41,36 +41,39 @@
 		return item.mangled_name
 	return load_item(item)
 
-#warn below
+/**
+ * this is a blocking proc
+ */
+/datum/asset_transport/proc/send_asset_pack(client/target, datum/asset_pack/pack)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(pack.always_browse_rsc)
+		return send_asset_item_native(target, pack.packed_items)
+	return send_asset_items(target, pack.packed_items)
 
 /**
  * this is a blocking proc
  */
-/datum/asset_transport/proc/send_pack(client/target, datum/asset_pack/pack)
-	#warn impl
-
-/**
- * this is a blocking proc
- */
-/datum/asset_transport/proc/send_items(client/target, list/datum/asset_item/items)
+/datum/asset_transport/proc/send_asset_items(client/target, list/datum/asset_item/items)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!islist(items))
 		items = list(items)
-	#warn impl
+	var/list/datum/asset_item/native_sends = list()
+	for(var/datum/asset_item/item as anything in items)
+		if(!item.always_browse_rsc)
+			continue
+		items -= item
+		native_sends += item
+	if(length(native_sends))
+		send_asset_item_native(target, native_sends)
+	return send_items(items)
 
-/**
- * this is a blocking proc
- */
-/datum/asset_transport/proc/send_items_native(client/target, list/datum/asset_item/items)
-	if(!islist(items))
-		items = list(items)
+//* not sure where to put or what to do with these yet
 
 /**
  * automatically preload all native asset packs to a client, one by one.
  */
 /datum/asset_transport/proc/perform_native_preload(client/victim, list/datum/asset_pack/native_packs)
 	victim.asset_cache_native_preload(native_packs)
-
-#warn above
 
 //* Abstraction - Subtypes must override these
 
@@ -86,6 +89,9 @@
 	CRASH("abstract proc unimplemented")
 
 /datum/asset_transport/proc/load_item(datum/asset_item/item)
+	CRASH("abstract proc unimplemented")
+
+/datum/asset_transport/proc/send_items(client/target, list/datum/asset_item/items)
 	CRASH("abstract proc unimplemented")
 
 //* Native - common behavior used to allow browse_rsc() usage, either as a fallback or as an alternative loader

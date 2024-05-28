@@ -71,9 +71,10 @@ VV_PROTECT_READONLY(/datum/asset_item)
 
 /datum/asset_item/dynamic/proc/send(list/client/clients)
 	ensure_loaded()
-	#warn impl
+	return SSassets.transport.send_asset_item(clients, src)
 
 /datum/asset_item/dynamic/proc/ensure_loaded()
 	if(!isnull(loaded_url))
 		return loaded_url
-	#warn impl
+	loaded_url = SSassets.transport.load_asset_item(src)
+	return loaded_url

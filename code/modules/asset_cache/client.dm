@@ -77,10 +77,10 @@
 	var/datum/asset_transport/cached_transport = SSassets.transport
 	var/packs_before_flush = flush_on_how_many_packs
 	for(var/datum/asset_pack/pack as anything in packs)
-		for(var/datum/asset_item/item as anything in pack.packed_items)
+		for(var/datum/asset_item/item as anything in pack.item_lookup)
 			if(SSassets.transport != cached_transport)
 				return
-			cached_transport.send_items_native(src, pack.packed_items)
+			cached_transport.send_items_native(src, pack.item_lookup)
 			stoplag(0) // do not lock up browse queue
 		if(!(--packs_before_flush))
 			packs_before_flush = flush_on_how_many_packs
