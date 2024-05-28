@@ -1,6 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+/datum/bodyset/organic/teshari
+	group_id = "teshari"
+	id = "teshari"
+
 /datum/sprite_accessory/tail/bodyset/teshari
 	name = "teshari tail"
 	icon = 'icons/mob/bodysets/organic/teshari/sprite_accessories.dmi'

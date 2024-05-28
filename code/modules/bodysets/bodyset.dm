@@ -30,6 +30,10 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	/// base id; if set, we use that for checking for markings and whatnot.
 	/// used so you can choose between a set of similar-enough bodysets that it's still considered the same
 	var/base_id
+	/// overall group id; this is for 'actually different body shapes'
+	/// e.g. human vs unathi isn't a big change; human to teshari is.
+	/// defaults to "human"
+	var/group_id = "human"
 	/// icon file
 	///
 	/// * should have a list of "[icon_state && "[icon_state]-"][bp_tag]" states
@@ -111,7 +115,9 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	/// mask icon; defaults to [icon]
 	///
 	/// * states in here should just be "[icon_state && "[icon_state]-"][bp_tag]"
+	/// * states should just be full white pixels where the limbs are filled in
 	/// * used for [damage_overlay_use_masking]
+	/// * in addition to the bodyzones, there should be a "mouth" state.
 	var/mask_icon
 	/// mask icon state prepend; defaults to "mask"
 	///

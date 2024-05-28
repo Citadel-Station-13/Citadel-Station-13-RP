@@ -1,8 +1,8 @@
-/datum/sprite_accessory/marking/sergal
-	abstract_type = /datum/sprite_accessory/marking/sergal
+/datum/bodyset_marking/sergal
+	abstract_type = /datum/bodyset_marking/sergal
 	icon = "icons/mob/sprite_accessories/markings/sergal.dmi"
 
-/datum/sprite_accessory/marking/sergal/sergal_full
+/datum/bodyset_marking/sergal/sergal_full
 	name = "Sergal Markings"
 	id = "marking_sergal_full_m"
 	icon_state = "sergal_full"
@@ -11,7 +11,7 @@
 	species_allowed = list(SPECIES_SERGAL)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/sergal/sergal_full_female
+/datum/bodyset_marking/sergal/sergal_full_female
 	name = "Sergal Markings (Female)"
 	id = "marking_sergal_full_f"
 	icon_state = "sergal_full_female"
@@ -20,7 +20,7 @@
 	species_allowed = list(SPECIES_SERGAL)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/sergal/sergaleyes
+/datum/bodyset_marking/sergal/sergaleyes
 	name = "Sergal Eyes"
 	id = "marking_sergal_eyes"
 	icon_state = "eyes_sergal"

@@ -80,8 +80,10 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/company = "Unbranded"
 	/// Seen when examining a limb.
 	var/desc = "A generic unbranded robotic prosthesis."
-	/// Icon base to draw from.
-	var/icon = 'icons/mob/cyberlimbs/robotic.dmi'
+	/// bodyset to use
+	var/datum/bodyset/bodyset
+	#warn hook in init
+
 	/// Where it draws the monitor icon from.
 	var/monitor_icon = "icons/mob/monitor_icons.dmi"
 	/// If set, not available at character creator.

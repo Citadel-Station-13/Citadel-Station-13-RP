@@ -27,6 +27,8 @@
 	/// icon to render from
 	var/icon
 	/// icon state to render from
+	///
+	/// * this is a prepend. the real state will be, say, "[icon_state]-head" for head.
 	var/icon_state
 	/// emissive state to use instead of emissive-ing the entire icon state
 	var/emissive_state
@@ -42,6 +44,8 @@
 	/// typepaths transformed to id on boot
 	/// will make other bodysets unable to pick them
 	var/list/bodyset_restricted
+	/// restrict to a specific group id
+	var/bodyset_group_restricted = "human"
 
 /datum/bodyset_marking/New()
 	#warn bodyset_restricted

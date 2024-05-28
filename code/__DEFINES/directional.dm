@@ -8,13 +8,13 @@
 #define ALL_CARDINALS (NORTH|SOUTH|EAST|WEST)
 
 /// North direction as a string "[1]"
-#define TEXT_NORTH "[NORTH]"
+#define TEXT_NORTH "1"
 /// South direction as a string "[2]"
-#define TEXT_SOUTH "[SOUTH]"
+#define TEXT_SOUTH "2"
 /// East direction as a string "[4]"
-#define TEXT_EAST "[EAST]"
+#define TEXT_EAST "4"
 /// West direction as a string "[8]"
-#define TEXT_WEST "[WEST]"
+#define TEXT_WEST "8"
 
 ///Returns true if the dir is diagonal, false otherwise
 #define ISDIAGONALDIR(d) (d&(d-1))

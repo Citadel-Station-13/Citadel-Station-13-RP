@@ -1,8 +1,8 @@
-/datum/sprite_accessory/marking/taj
-	abstract_type = /datum/sprite_accessory/marking/taj
+/datum/bodyset_marking/taj
+	abstract_type = /datum/bodyset_marking/taj
 	icon = "icons/mob/sprite_accessories/markings/taj.dmi"
 
-/datum/sprite_accessory/marking/taj/taj_paw_socks
+/datum/bodyset_marking/taj/taj_paw_socks
 	name = "Socks Coloration (Taj)"
 	id = "marking_tajaran_pawsocks"
 	icon_state = "taj_pawsocks"
@@ -10,35 +10,35 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/paw_socks
+/datum/bodyset_marking/taj/paw_socks
 	name = "Socks Coloration (Generic)"
 	id = "marking_pawsocks"
 	icon_state = "pawsocks"
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
 	species_allowed = list(SPECIES_TAJ, SPECIES_UNATHI)
 
-/datum/sprite_accessory/marking/taj/paw_socks_belly
+/datum/bodyset_marking/taj/paw_socks_belly
 	name = "Socks,Belly Coloration (Generic)"
 	id = "marking_pawsocks_belly"
 	icon_state = "pawsocksbelly"
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO)
 	species_allowed = list(SPECIES_TAJ, SPECIES_UNATHI)
 
-/datum/sprite_accessory/marking/taj/belly_hands_feet
+/datum/bodyset_marking/taj/belly_hands_feet
 	name = "Hands,Feet,Belly Color (Minor)"
 	id = "marking_tajaran_bhf_min"
 	icon_state = "bellyhandsfeetsmall"
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO)
 	species_allowed = list(SPECIES_TAJ, SPECIES_UNATHI)
 
-/datum/sprite_accessory/marking/taj/hands_feet_belly_full
+/datum/bodyset_marking/taj/hands_feet_belly_full
 	name = "Hands,Feet,Belly Color (Major)"
 	id = "marking_tajaran_bhf_maj"
 	icon_state = "bellyhandsfeet"
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO)
 	species_allowed = list(SPECIES_TAJ, SPECIES_UNATHI)
 
-/datum/sprite_accessory/marking/taj/hands_feet_belly_full_female
+/datum/bodyset_marking/taj/hands_feet_belly_full_female
 	name = "Hands,Feet,Belly Color (Major, Female)"
 	id = "marking_tajaran_bhf_majf"
 	icon_state = "bellyhandsfeet_female"
@@ -46,7 +46,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/patches
+/datum/bodyset_marking/taj/patches
 	name = "Color Patches"
 	id = "marking_tajaran_patches"
 	icon_state = "patches"
@@ -54,7 +54,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/patchesface
+/datum/bodyset_marking/taj/patchesface
 	name = "Color Patches (Face)"
 	id = "marking_tajaran_patches_face"
 	icon_state = "patchesface"
@@ -62,7 +62,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/tiger_stripes
+/datum/bodyset_marking/taj/tiger_stripes
 	name = "Tiger Stripes"
 	id = "marking_tajaran_tiger"
 	icon_state = "tiger"
@@ -70,7 +70,7 @@
 	species_allowed = list(SPECIES_TAJ) //There's a tattoo for non-cats
 
 //Taj specific stuff
-/datum/sprite_accessory/marking/taj/taj_belly
+/datum/bodyset_marking/taj/taj_belly
 	name = "Belly Fur (Taj)"
 	id = "marking_tajaran_belly"
 	icon_state = "taj_belly"
@@ -78,7 +78,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_bellyfull
+/datum/bodyset_marking/taj/taj_bellyfull
 	name = "Belly Fur Wide (Taj)"
 	id = "marking_tajaran_belly_wide"
 	icon_state = "taj_bellyfull"
@@ -86,7 +86,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_earsout
+/datum/bodyset_marking/taj/taj_earsout
 	name = "Outer Ear (Taj)"
 	id = "marking_tajaran_ears_out"
 	icon_state = "taj_earsout"
@@ -94,7 +94,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_earsin
+/datum/bodyset_marking/taj/taj_earsin
 	name = "Inner Ear (Taj)"
 	id = "marking_tajaran_ears_in"
 	icon_state = "taj_earsin"
@@ -102,7 +102,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_nose
+/datum/bodyset_marking/taj/taj_nose
 	name = "Nose Color (Taj)"
 	id = "marking_tajaran_nose"
 	icon_state = "taj_nose"
@@ -110,7 +110,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_crest
+/datum/bodyset_marking/taj/taj_crest
 	name = "Chest Fur Crest (Taj)"
 	id = "marking_tajaran_crest"
 	icon_state = "taj_crest"
@@ -118,7 +118,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_muzzle
+/datum/bodyset_marking/taj/taj_muzzle
 	name = "Muzzle Color (Taj)"
 	id = "marking_tajaran_muzzle"
 	icon_state = "taj_muzzle"
@@ -126,7 +126,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_face
+/datum/bodyset_marking/taj/taj_face
 	name = "Cheeks Color (Taj)"
 	id = "marking_tajaran_cheeks"
 	icon_state = "taj_face"
@@ -134,7 +134,7 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_all
+/datum/bodyset_marking/taj/taj_all
 	name = "All Taj Head (Taj)"
 	id = "marking_tajaran_head_all"
 	icon_state = "taj_all"
@@ -142,14 +142,14 @@
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/taj/taj_nose_alt
+/datum/bodyset_marking/taj/taj_nose_alt
 	name = "Nose Color, alt. (Taj)"
 	id = "marking_tajaran_nose_alt"
 	icon_state = "taj_nosealt"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/taj/tigerface
+/datum/bodyset_marking/taj/tigerface
 	name = "Tiger Stripes (Head, Major)"
 	id = "marking_tajaran_head_tiger"
 	icon_state = "tigerface"

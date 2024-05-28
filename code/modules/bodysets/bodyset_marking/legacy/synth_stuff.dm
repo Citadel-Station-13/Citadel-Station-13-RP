@@ -1,113 +1,113 @@
-/datum/sprite_accessory/marking/synth
-	abstract_type = /datum/sprite_accessory/marking/synth
+/datum/bodyset_marking/synth
+	abstract_type = /datum/bodyset_marking/synth
 	icon = "icons/mob/sprite_accessories/markings/synth_stuff.dmi"
 
-/datum/sprite_accessory/marking/synth/spirit_lights
+/datum/bodyset_marking/synth/spirit_lights
 	name = "Ward - Spirit FBP Lights"
 	id = "marking_synth_spirit"
 	icon_state = "lights"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/spirit_lights_body
+/datum/bodyset_marking/synth/spirit_lights_body
 	name = "Ward - Spirit FBP Lights (body)"
 	id = "marking_synth_spirit_body"
 	icon_state = "lights"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO)
 
-/datum/sprite_accessory/marking/synth/spirit_lights_torso
+/datum/bodyset_marking/synth/spirit_lights_torso
 	name = "Ward - Spirit FBP Lights (torso)"
 	id = "marking_synth_spirit_torso"
 	icon_state = "lights"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_TORSO)
 
-/datum/sprite_accessory/marking/synth/spirit_lights_head
+/datum/bodyset_marking/synth/spirit_lights_head
 	name = "Ward - Spirit FBP Lights (head)"
 	id = "marking_synth_spirit_head"
 	icon_state = "lights"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/spirit_panels
+/datum/bodyset_marking/synth/spirit_panels
 	name = "Ward - Spirit FBP Panels"
 	id = "marking_synth_spirit_panel"
 	icon_state = "panels"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/spirit_panels_body
+/datum/bodyset_marking/synth/spirit_panels_body
 	name = "Ward - Spirit FBP Panels (body)"
 	id = "marking_synth_spirit_panel_body"
 	icon_state = "panels"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO)
 
-/datum/sprite_accessory/marking/synth/spirit_panels_torso
+/datum/bodyset_marking/synth/spirit_panels_torso
 	name = "Ward - Spirit FBP Panels (torso)"
 	id = "marking_synth_spirit_panel_torso"
 	icon_state = "panels"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_GROIN,BP_TORSO)
 
-/datum/sprite_accessory/marking/synth/spirit_panels_feet
+/datum/bodyset_marking/synth/spirit_panels_feet
 	name = "Ward - Spirit FBP Panels (feet)"
 	id = "marking_synth_spirit_panel_feet"
 	icon_state = "panels"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_FOOT,BP_R_FOOT)
 
-/datum/sprite_accessory/marking/synth/spirit_panels_head
+/datum/bodyset_marking/synth/spirit_panels_head
 	name = "Ward - Spirit FBP Panels (head)"
 	id = "marking_synth_spirit_panel_head"
 	icon_state = "panels"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/c_beast_body
+/datum/bodyset_marking/synth/c_beast_body
 	name = "Cyber Body"
 	id = "marking_synth_cyber_body"
 	icon_state = "c_beast_body"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_TORSO,BP_GROIN)
 
-/datum/sprite_accessory/marking/synth/c_beast_plating
+/datum/bodyset_marking/synth/c_beast_plating
 	name = "Cyber Plating (Use with Cyber Body)"
 	id = "marking_synth_cyber_plating"
 	icon_state = "c_beast_plating"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
 
-/datum/sprite_accessory/marking/synth/c_beast_band
+/datum/bodyset_marking/synth/c_beast_band
 	name = "Cyber Band (Use with Cybertech head)"
 	id = "marking_synth_cyber_band"
 	icon_state = "c_beast_band"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/c_beast_cheek_a
+/datum/bodyset_marking/synth/c_beast_cheek_a
 	name = "Cyber Beast Cheeks A (Use A, B and C)"
 	id = "marking_synth_cyber_cheek1"
 	icon_state = "c_beast_a"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/c_beast_cheek_b
+/datum/bodyset_marking/synth/c_beast_cheek_b
 	name = "Cyber Beast Cheeks B (Use A, B and C)"
 	id = "marking_synth_cyber_cheek2"
 	icon_state = "c_beast_b"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/c_beast_cheek_c
+/datum/bodyset_marking/synth/c_beast_cheek_c
 	name = "Cyber Beast Cheeks c (Use A, B and C)"
 	id = "marking_synth_cyber_cheek3"
 	icon_state = "c_beast_c"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/eboop_panels
+/datum/bodyset_marking/synth/eboop_panels
 	name = "Eggnerd FBP panels"
 	id = "marking_synth_eggnerd_panel"
 	icon_state = "eboop"
@@ -115,56 +115,56 @@
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
 
 // synth antennae
-/datum/sprite_accessory/marking/synth/antennae
+/datum/bodyset_marking/synth/antennae
 	name = "Synthlizard Antennae"
 	id = "marking_synth_antennae"
 	icon_state = "normal_antenna"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/antennae/curled
+/datum/bodyset_marking/synth/antennae/curled
 	name = "Synthlizard Curled Antennae"
 	id = "marking_synth_curled_antennae"
 	icon_state = "curled_antenna"
 
-/datum/sprite_accessory/marking/synth/antennae/thick
+/datum/bodyset_marking/synth/antennae/thick
 	name = "Synthlizard Thick Antennae"
 	id = "marking_synth_thick_antennae"
 	icon_state = "thick_antenna"
 
-/datum/sprite_accessory/marking/synth/antennae/short
+/datum/bodyset_marking/synth/antennae/short
 	name = "Synthlizard Short Antennae"
 	id = "marking_synth_short_antennae"
 	icon_state = "short_antenna"
 
-/datum/sprite_accessory/marking/synth/antennae/sharp
+/datum/bodyset_marking/synth/antennae/sharp
 	name = "Synthlizard Sharp Antennae"
 	id = "marking_synth_sharp_antennae"
 	icon_state = "sharp_antenna"
 
-/datum/sprite_accessory/marking/synth/antennae/horn
+/datum/bodyset_marking/synth/antennae/horn
 	name = "Synthlizard Horn Antennae"
 	id = "marking_synth_horn_antennae"
 	icon_state = "horns_antenna"
 
-/datum/sprite_accessory/marking/synth/snout
+/datum/bodyset_marking/synth/snout
 	name = "Synthlizard Snout 1"
 	id = "marking_synth_snout_1"
 	icon_state = "synthliz_snout1"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/synth/snout/alt
+/datum/bodyset_marking/synth/snout/alt
 	name = "Synthlizard Snout 2"
 	id = "marking_synth_snout_2"
 	icon_state = "synthliz_snout2"
 
-/datum/sprite_accessory/marking/synth/snout/alt2
+/datum/bodyset_marking/synth/snout/alt2
 	name = "Synthlizard Snout 3"
 	id = "marking_synth_snout_3"
 	icon_state = "synthliz_snout3"
 
-/datum/sprite_accessory/marking/synth/synthliz_eyes
+/datum/bodyset_marking/synth/synthliz_eyes
 	name = "Synthlizard Eyes"
 	id = "marking_synthliz_eyes"
 	icon_state = "synthliz_eyes"
@@ -173,42 +173,42 @@
 
 // Replika
 
-/datum/sprite_accessory/marking/synth/replika_r_thigh
+/datum/bodyset_marking/synth/replika_r_thigh
 	name = "Replikant Stripe - Right Thigh"
 	id = "marking_replika_r_thigh"
 	icon_state = "replika"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_R_LEG)
 
-/datum/sprite_accessory/marking/synth/replika_r_knee
+/datum/bodyset_marking/synth/replika_r_knee
 	name = "Replikant Stripe - Right Knee"
 	id = "marking_replika_r_knee"
 	icon_state = "replika"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_R_FOOT)
 
-/datum/sprite_accessory/marking/synth/replika_l_thigh
+/datum/bodyset_marking/synth/replika_l_thigh
 	name = "Replikant Stripe - Left Thigh"
 	id = "marking_replika_l_thigh"
 	icon_state = "replika"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_LEG)
 
-/datum/sprite_accessory/marking/synth/replika_l_knee
+/datum/bodyset_marking/synth/replika_l_knee
 	name = "Replikant Stripe - Left Knee"
 	id = "marking_replika_l_knee"
 	icon_state = "replika"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_FOOT)
 
-/datum/sprite_accessory/marking/synth/replika_panels_body
+/datum/bodyset_marking/synth/replika_panels_body
 	name = "Replikant Paneling - SynthFlesh (body)"
 	id = "marking_replika_panel_body"
 	icon_state = "replika"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_TORSO)
 
-/datum/sprite_accessory/marking/synth/replika_panels_groin
+/datum/bodyset_marking/synth/replika_panels_groin
 	name = "Replikant Paneling - SynthFlesh (groin)"
 	id = "marking_replika_panel_groin"
 	icon_state = "replika"

@@ -1,29 +1,29 @@
-/datum/sprite_accessory/marking/werebeast
-	abstract_type = /datum/sprite_accessory/marking/werebeast
+/datum/bodyset_marking/werebeast
+	abstract_type = /datum/bodyset_marking/werebeast
 	icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
 	legacy_use_additive_color_matrix = FALSE
 	species_allowed = list(SPECIES_WEREBEAST)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/werebeast/werewolf_nose
+/datum/bodyset_marking/werebeast/werewolf_nose
 	name = "Werewolf nose"
 	id = "marking_werebeast_nose"
 	icon_state = "werewolf_nose"
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/werebeast/werewolf_face
+/datum/bodyset_marking/werebeast/werewolf_face
 	name = "Werewolf face"
 	id = "marking_werebeast_face"
 	icon_state = "werewolf"
 	body_parts = list(BP_HEAD)
 
-/datum/sprite_accessory/marking/werebeast/werewolf_belly
+/datum/bodyset_marking/werebeast/werewolf_belly
 	name = "Werewolf belly"
 	id = "marking_werebeast_belly"
 	icon_state = "werewolf"
 	body_parts = list(BP_GROIN,BP_TORSO)
 
-/datum/sprite_accessory/marking/werebeast/werewolf_socks
+/datum/bodyset_marking/werebeast/werewolf_socks
 	name = "Werewolf socks"
 	id = "marking_werebeast_socks"
 	icon_state = "werewolf"

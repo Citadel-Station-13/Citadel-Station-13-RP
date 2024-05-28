@@ -10,8 +10,8 @@
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
 	override_worn_legacy_bodytype = SPECIES_HUMAN
-	icobase = 'icons/mob/species/human/body_greyscale.dmi'
-	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
+
+	bodyset = /datum/bodyset/organic/human
 
 	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
 	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
