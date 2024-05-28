@@ -14,9 +14,6 @@
 	"}
 	catalogue_data = list(/datum/category_item/catalogue/fauna/auril)
 
-	icobase = 'icons/mob/species/human/body_greyscale.dmi'
-	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
-
 	//intrinsic_languages = LANGUAGE_ID_DAEDAL_AURIL -- Handled by culture / backgrounds
 	max_additional_languages = 3
 

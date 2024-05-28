@@ -2395,6 +2395,7 @@
 #include "code\modules\bodysets\bodset\organic\zorren_highlander.dm"
 #include "code\modules\bodysets\bodset\special\_special.dm"
 #include "code\modules\bodysets\bodset\special\adherent.dm"
+#include "code\modules\bodysets\bodset\special\golem.dm"
 #include "code\modules\bodysets\bodset\synthetic\_synthetic.dm"
 #include "code\modules\bodysets\bodset\synthetic\eggnerd.dm"
 #include "code\modules\bodysets\bodset\synthetic\eggnerd_red.dm"

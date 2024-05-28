@@ -4,10 +4,7 @@
 	name = SPECIES_GOLEM
 	name_plural = "golems"
 
-	icobase      = 'icons/mob/species/golem/body.dmi'
-	deform       = 'icons/mob/species/golem/body.dmi'
-	preview_icon = 'icons/mob/species/golem/preview.dmi'
-	husk_icon    = 'icons/mob/species/golem/husk.dmi'
+	bodyset = /datum/bodyset/special/golem
 
 	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
 
