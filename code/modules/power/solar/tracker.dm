@@ -8,17 +8,17 @@
 	desc = "A solar directional tracker."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "tracker"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	use_power = USE_POWER_OFF
 
 	var/id = 0
 	var/sun_angle = 0		// sun angle as set by sun datum
 	var/obj/machinery/power/solar_control/control = null
 
-/obj/machinery/power/tracker/Initialize(mapload, obj/item/solar_assembly/S)
+/obj/machinery/power/tracker/Initialize(mapload)
 	. = ..()
-	Make(S)
+	update_icon()
 	connect_to_network()
 
 /obj/machinery/power/tracker/Destroy()
@@ -38,15 +38,6 @@
 		control.connected_tracker = null
 	control = null
 
-/obj/machinery/power/tracker/proc/Make(var/obj/item/solar_assembly/S)
-	if(!S)
-		S = new /obj/item/solar_assembly(src)
-		S.glass_type = /obj/item/stack/material/glass
-		S.tracker = 1
-		S.anchored = 1
-	S.loc = src
-	update_icon()
-
 //updates the tracker icon and the facing angle for the control computer
 /obj/machinery/power/tracker/proc/set_angle(var/angle)
 	sun_angle = angle
@@ -57,21 +48,20 @@
 	if(powernet && (powernet == control.powernet)) //update if we're still in the same powernet
 		control.cdir = angle
 
-/obj/machinery/power/tracker/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/power/tracker/drop_products(method, atom/where)
+	. = ..()
+	drop_product(method, new /obj/structure/frame2/solar_panel/tracker/anchored, where)
 
-	if(W.is_crowbar())
+/obj/machinery/power/tracker/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	// todo: tool system
+	if(I.is_crowbar())
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] begins to take the glass off the solar tracker.</span>")
 		if(do_after(user, 50))
-			var/obj/item/solar_assembly/S = locate() in src
-			if(S)
-				S.loc = src.loc
-				S.give_glass()
-			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-			user.visible_message("<span class='notice'>[user] takes the glass off the tracker.</span>")
-			qdel(src)
-		return
-	..()
+			deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 // Tracker Electronic
 

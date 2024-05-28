@@ -4709,14 +4709,6 @@
 "qa" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "engine_monitor_blast";
-	name = "Monitoring Room Blast Doors";
-	pixel_y = -5;
-	req_access = list(10);
-	pixel_x = -1
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_monitoring)
 "qc" = (
@@ -7845,16 +7837,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "CG" = (
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine charging port.";
-	id = "engine_room_blast";
-	name = "Engine Room Window Blast Doors";
-	pixel_x = -7;
-	pixel_y = 6;
-	req_access = list(10)
-	},
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
+/obj/machinery/lathe/autolathe,
+/turf/simulated/floor/tiled,
+/area/engineering/workshop)
 "CH" = (
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/effect/paint/sun,
@@ -10510,10 +10495,6 @@
 "Nk" = (
 /obj/machinery/requests_console/preset/ce{
 	pixel_y = -30
-	},
-/obj/machinery/mass_driver{
-	dir = 8;
-	id = "enginecore"
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
@@ -29784,7 +29765,7 @@ cX
 KY
 ES
 FZ
-FZ
+CG
 oD
 gs
 Mb
@@ -32714,7 +32695,7 @@ aa
 aa
 aa
 aa
-CG
+aa
 aa
 aa
 aa
