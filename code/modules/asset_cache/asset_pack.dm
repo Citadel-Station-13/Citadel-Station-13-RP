@@ -30,7 +30,7 @@
 	/// if set, we don't load at all until something asks for us
 	var/load_deferred = FALSE
 	/// are we fully loaded / generated?
-	var/loaded = FALSE
+	var/loaded = ASSET_NOT_LOADED
 
 	/// /datum/asset_item list
 	var/tmp/list/datum/asset_item/packed_items
