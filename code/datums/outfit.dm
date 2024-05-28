@@ -7,6 +7,19 @@
 		. += new path
 	tim_sort(., GLOBAL_PROC_REF(cmp_name_asc))
 
+// todo: reworkies..
+// todo: /datum/character_shapeshift for specifically mob appearances, body sprites, etc
+// todo: /datum/character_physicality for organs, biology, and general composition
+// todo: /datum/character_template for physicality, shapeshift, and outfit tuple
+// todo: rename this to /datum/character_outfit because realistically they'll only be used for carbon mobs and up anyways.
+
+/**
+ * A datum used to hold data on the **equipment** of a mob.
+ *
+ * These can be used to quickly 'template' out characters with equipment.
+ *
+ * * All /obj/item's that go in inventory are explicitly allowed.
+ */
 /datum/outfit
 	/// Abstract type - set to self type for abstract outfits.
 	abstract_type = /datum/outfit

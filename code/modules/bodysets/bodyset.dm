@@ -34,12 +34,17 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	/// e.g. human vs unathi isn't a big change; human to teshari is.
 	/// defaults to "human"
 	var/group_id = "human"
+
 	/// icon file
 	///
 	/// * should have a list of "[icon_state && "[icon_state]-"][bp_tag]" states
 	var/icon
 	/// icon state prepend
 	var/state_prepend
+
+	// todo: alignment specifications
+	// todo: BODYTYPE_ specifications
+
 	/// bodyparts included
 	var/list/body_parts = list(
 		BP_HEAD,
@@ -91,15 +96,18 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 		BP_L_FOOT = list(TEXT_EAST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
 		BP_R_FOOT = list(TEXT_WEST = HUMAN_BODYLAYER_BEHIND, "ALL" = HUMAN_BODYLAYER_FRONT),
 	)
+
 	/// autosliced icons by "[zone][-variation][-gender]"
 	/// autosliced icons will not have [state_prepend], or state_append on variations, or even the variation whatsoever
 	/// they'll just be "[zone][-gender]"
 	var/list/autoslice_cache = list()
+
 	/// are we meant to be a greyscale set? if set to TRUE, we'll be colored as such
 	///
 	/// * Please greyscale your bodysets where-ever possible.
 	/// * DO NOT RELY ON DEFAULTING THIS VALUE. You must set it explicitly, or the behavior is undefined.
 	var/greyscale
+
 	/// valid variations; list("string_id" = /datum/bodyset_variation{use anonymous types!})
 	///
 	/// * variations inherit autoslice behaviors.
@@ -111,6 +119,7 @@ GLOBAL_LIST_EMPTY(bodyset_lookup)
 	var/preview_icon
 	/// our preview icon state; defaults to null, for automatic generation of preview.
 	var/preview_icon_state
+	// todo: preview generation
 
 	/// mask icon; defaults to [icon]
 	///
