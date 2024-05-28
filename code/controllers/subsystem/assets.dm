@@ -120,8 +120,8 @@ SUBSYSTEM_DEF(assets)
 
 	var/list/targets = islist(target)? target : list(target)
 
-	for(var/client/target as anything in targets)
-		transport.send_asset_pack(target, resolved)
+	for(var/client/C as anything in targets)
+		transport.send_asset_pack(C, resolved)
 
 /**
  * loads a file that we declare to not be necessary to keep around / store information on after
@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(assets)
 		if ("webroot")
 			newtransporttype = /datum/asset_transport/webroot
 
-	if (newtransporttype == transport.type)
+	if (newtransporttype == transport?.type)
 		return
 
 	var/datum/asset_transport/newtransport = new newtransporttype

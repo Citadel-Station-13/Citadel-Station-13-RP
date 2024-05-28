@@ -21,7 +21,6 @@
 	if(.)
 		return
 
-	var/asset_cache_job
 	if(href_list["asset_cache_confirm_arrival"])
 		if(asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"]))
 			return TRUE
@@ -30,10 +29,12 @@
 				// it's a valid job, it might be byond bug ID:2256651
 				to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
 				src << browse("...", "window=asset_cache_browser")
+				return TRUE
 			else
 				// what the fuck are they doing?
 				security_kick("A fatal issue occurred during asset send, or your client kept spamming receive confirmations \
 				after acknowledgement. Please reconnect after clearing your cache.", TRUE, TRUE)
+				return TRUE
 
 /**
  * Process asset cache client topic calls for `"asset_cache_confirm_arrival=[INT]"`
@@ -77,11 +78,10 @@
 	var/datum/asset_transport/cached_transport = SSassets.transport
 	var/packs_before_flush = flush_on_how_many_packs
 	for(var/datum/asset_pack/pack as anything in packs)
-		for(var/datum/asset_item/item as anything in pack.item_lookup)
-			if(SSassets.transport != cached_transport)
-				return
-			cached_transport.send_items_native(src, pack.item_lookup)
-			stoplag(0) // do not lock up browse queue
+		if(SSassets.transport != cached_transport)
+			return
+		cached_transport.send_asset_item_native(src, pack.packed_items)
+		stoplag(0) // do not lock up browse queue
 		if(!(--packs_before_flush))
 			packs_before_flush = flush_on_how_many_packs
 			if(!asset_cache_flush_browse_queue(5 SECONDS))

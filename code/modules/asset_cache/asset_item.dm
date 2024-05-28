@@ -53,7 +53,7 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	mangled_name = do_not_mangle? name : mangle_name()
 
 /datum/asset_item/proc/mangle_name()
-	"asset.[hash].[ext]"
+	return "asset.[hash].[ext]"
 
 /**
  * dynamic asset items

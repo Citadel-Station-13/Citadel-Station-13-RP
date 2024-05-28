@@ -2,7 +2,8 @@
 	name = "moods"
 	var/iconinserted = 1
 
-/datum/asset_pack/spritesheet/moods/create_spritesheets()
+/datum/asset_pack/spritesheet/moods/generate()
+	. = ..()
 	for(var/i in 1 to 9)
 		var/target_to_insert = "mood"+"[iconinserted]"
 		insert(target_to_insert, 'icons/screen/screen_gen.dmi', target_to_insert)
