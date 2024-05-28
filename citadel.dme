@@ -2385,6 +2385,7 @@
 #include "code\modules\bodysets\bodyset\organic\nevrean.dm"
 #include "code\modules\bodysets\bodyset\organic\rapala.dm"
 #include "code\modules\bodysets\bodyset\organic\shadekin.dm"
+#include "code\modules\bodysets\bodyset\organic\skrell.dm"
 #include "code\modules\bodysets\bodyset\organic\tajaran.dm"
 #include "code\modules\bodysets\bodyset\organic\teshari.dm"
 #include "code\modules\bodysets\bodyset\organic\unathi.dm"

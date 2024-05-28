@@ -2,8 +2,48 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /datum/bodyset/organic/teshari
-	group_id = "teshari"
+	name = "Teshari"
 	id = "teshari"
+	group_id = "human"
+
+	icon = 'icons/mob/bodysets/organic/teshari/body.dmi'
+	mask_icon = 'icons/mob/bodysets/organic/teshari/mask.dmi'
+
+	damage_overlay_brute_stages = 3
+	damage_overlay_burn_stages = 3
+	damage_overlay_icon = 'icons/mob/bodysets/organic/teshari/damage.dmi'
+	damage_overlay_use_masking = TRUE
+
+	body_parts = BP_ALL_STANDARD
+	gendered_parts = list(
+		BP_HEAD,
+		BP_GROIN,
+		BP_TORSO,
+	)
+
+	variations = list(
+		BODYSET_VARIATION_DEFORMED = /datum/bodyset_variation{
+			name = "Deformed";
+			icon = 'icons/mob/bodysets/organic/teshari/body-deformed.dmi';
+		}
+	)
+
+	#warn is this still correct? icon('husk.dmi', "husk") is how it's meant to be done.
+	overlays = list(
+		BODYSET_OVERLAY_HUSKED = /datum/bodyset_overlay/husk{
+			icon = 'icons/mob/bodysets/organic/teshari/husk.dmi';
+			icon_state = "husk";
+		},
+	)
+
+	var/list/feather_parts = list(
+		BP_L_HAND,
+		BP_R_HAND,
+		BP_L_FOOT,
+		BP_R_FOOT,
+	)
+
+#warn snowflake rendering of feathers :/
 
 /datum/sprite_accessory/tail/bodyset/teshari
 	name = "teshari tail"
