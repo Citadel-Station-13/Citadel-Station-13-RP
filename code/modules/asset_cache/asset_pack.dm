@@ -105,6 +105,7 @@
 /datum/asset_pack/proc/ensure_ready()
 	if(is_pushed_to_transport())
 		return TRUE
+	ensure_loaded()
 	var/datum/asset_transport/active_transport = SSassets.transport
 	if(isnull(active_transport))
 		return FALSE
