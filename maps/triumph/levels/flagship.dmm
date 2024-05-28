@@ -13604,7 +13604,8 @@
 /area/centcom/security)
 "Rx" = (
 /obj/machinery/light{
-	old_wall = 1
+	old_wall = 1;
+	use_power = 0
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
