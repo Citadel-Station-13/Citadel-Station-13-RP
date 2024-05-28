@@ -22566,7 +22566,7 @@
 /area/shuttle/excursion/general)
 "Uh" = (
 /obj/effect/floor_decal/rust,
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_restaurant_upper)
 "Ui" = (

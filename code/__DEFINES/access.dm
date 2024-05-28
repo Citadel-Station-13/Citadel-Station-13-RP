@@ -162,6 +162,7 @@ STANDARD_ACCESS_DATUM(ACCESS_COMMAND_UPLOAD, station/command/upload, "AI Upload"
 #define ACCESS_COMMAND_TELEPORTER 17
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_TELEPORTER, station/command/teleporter, "Teleporter")
 
+// todo: rename / repath to general high-security storage for command
 #define ACCESS_COMMAND_EVA 18
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_EVA, station/command/eva, "EVA")
 

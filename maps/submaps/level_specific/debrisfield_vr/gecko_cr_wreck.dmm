@@ -1899,7 +1899,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/tiled/techfloor{
 	initial_gas_mix = "TEMP=2.7"
 	},

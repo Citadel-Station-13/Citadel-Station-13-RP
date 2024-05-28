@@ -161,6 +161,7 @@
 
 	var/interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_SET_MACHINE
 
+// todo: from_frame? arg for frame to pass in context..
 /obj/machinery/Initialize(mapload, newdir)
 	if(newdir)
 		setDir(newdir)
