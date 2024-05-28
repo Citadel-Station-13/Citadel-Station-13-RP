@@ -7,12 +7,6 @@
 	/// name of the transport
 	var/name = "asset-transport: ???"
 
-	/// Don't mutate the filename of assets when sending via browse_rsc.
-	/// This is to make it easier to debug issues with assets, and allow server operators to bypass issues that make it to production.
-	/// If turning this on fixes asset issues, something isn't using get_asset_url and the asset isn't marked legacy, fix one of those.
-	var/dont_mutate_filenames = FALSE
-	#warn change how this works to be a filename debugging system
-
 	/// non-ephemeral items registered; *mangled filename* = instance
 	/// the reason we still use filename assoc list is so filename uniqueness is still enforced
 	/// incase we ever need to go back to native (browse_rsc).
@@ -37,16 +31,23 @@
 /datum/asset_transport/proc/load_asset_item(datum/asset_item/item)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(item.always_browse_rsc)
-		load_item_native(item)
-		return item.mangled_name
-	return load_item(item)
+		. = load_item_native(item)
+	else
+		. = load_item(item)
+	if(!.)
+		CRASH("failed to load an item")
+	if(loaded_items[.])
+		var/datum/asset_item/existing = loaded_items[.]
+		if(existing.hash != item.hash)
+			CRASH("collision between [existing] and [item] on [.]")
+	loaded_items[.] = item
 
 /**
  * this is a blocking proc
  */
 /datum/asset_transport/proc/send_asset_pack(client/target, datum/asset_pack/pack)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(pack.always_browse_rsc)
+	if(pack.absolute)
 		return send_asset_item_native(target, pack.packed_items)
 	return send_asset_items(target, pack.packed_items)
 
@@ -88,6 +89,11 @@
 /datum/asset_transport/proc/send_anonymous_file(list/client/targets, file, ext)
 	CRASH("abstract proc unimplemented")
 
+/**
+ * this proc must be idempotent.
+ *
+ * @return URL to use.
+ */
 /datum/asset_transport/proc/load_item(datum/asset_item/item)
 	CRASH("abstract proc unimplemented")
 
@@ -111,7 +117,7 @@
 		target << browse_rsc(file, mangled_name)
 	return mangled_name
 
-/datum/asset_transport/proc/send_asset_item_native(list/client/targets, datum/asset_item/items)
+/datum/asset_transport/proc/send_asset_item_native(list/client/targets, list/datum/asset_item/items)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!islist(targets))
 		targets = list(targets)
@@ -122,7 +128,7 @@
 			target = target:client
 		var/list/datum/asset_item/to_send = list()
 		for(var/datum/asset_item/item as anything in items)
-			var/existing = taget.asset_native_received[item.mangled_name]
+			var/existing = target.asset_native_received[item.mangled_name]
 			if(existing)
 				if(existing != item.hash)
 					stack_trace("colliding hash when sending a native item to a client [target] <- [item] on mangled name [item.mangled_name].")
@@ -132,6 +138,11 @@
 			target.asset_native_received[sending.mangled_name] = sending.hash
 			target << browse_rsc(sending.file, sending.mangled_name)
 
+/**
+ * this proc must be idempotent.
+ *
+ * @return URL to use.
+ */
 /datum/asset_transport/proc/load_item_native(datum/asset_item/item)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return
+	return item.mangled_name

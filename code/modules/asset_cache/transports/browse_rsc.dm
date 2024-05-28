@@ -14,4 +14,4 @@
 	return load_item_native(item)
 
 /datum/asset_transport/browse_rsc/send_items(client/target, list/datum/asset_item/items)
-	return send_items_native(target, items)
+	return send_asset_item_native(target, items)

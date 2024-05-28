@@ -179,15 +179,18 @@
 	if(isnull(.))
 		CRASH("failed to get url for [filename] on [type] ([id || "compile-time"]). something is terribly wrong!")
 
-#warn below + all /datum/asset_pack subtypes
+//* below is tg stuff *//
+
+// todo: i honestly don't yet know what this does / why we use custom loaders
+//       but when i do i'll probably touch up on it ~silicons
+
 /datum/asset_pack
 
 	var/cached_serialized_url_mappings
 	var/cached_serialized_url_mappings_transport_type
 
-
 /datum/asset_pack/proc/get_url_mappings()
-	return list()
+	return loaded_urls
 
 /// Returns a cached tgui message of URL mappings
 /datum/asset_pack/proc/get_serialized_url_mappings()
