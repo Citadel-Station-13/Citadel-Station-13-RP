@@ -3505,8 +3505,7 @@
 	name = "Xenobiology First Aid";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/map_helper/access_helper/airlock/station/science/department,
+/obj/map_helper/access_helper/airlock/station/science/infirmary,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "csb" = (

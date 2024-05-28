@@ -567,10 +567,11 @@
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "abO" = (
-/obj/machinery/door/airlock/maintenance/command{
-	req_one_access = list(20)
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/command{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/captain,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "abP" = (
@@ -2547,10 +2548,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "aia" = (
-/obj/machinery/door/airlock/command{
-	name = "Head of Personnel's Living Quarters";
-	req_access = list(57)
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
@@ -2558,6 +2555,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/airlock/command{
+	name = "Head of Personnel's Living Quarters";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/head_of_personnel,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "aib" = (
@@ -11642,10 +11644,6 @@
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "aGT" = (
-/obj/machinery/door/airlock/command{
-	name = "Facility Director's Quarters";
-	req_access = list(20)
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -11653,6 +11651,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/airlock/command{
+	name = "Facility Director's Quarters";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/captain,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/captain)
 "aGW" = (
@@ -12494,7 +12497,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "aJh" = (
-/obj/machinery/door/airlock/maintenance/command,
+/obj/machinery/door/airlock/maintenance/command{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aJi" = (
@@ -22032,8 +22038,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/map_helper/access_helper/airlock/station/medical,
-/obj/map_helper/access_helper/airlock/station/exploration/department,
+/obj/map_helper/access_helper/airlock/station/exploration/infirmary,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/medic_prep)
 "iKl" = (
@@ -22139,11 +22144,6 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/oldcentury)
 "iZv" = (
-/obj/machinery/door/airlock/command{
-	id_tag = "captaindoor";
-	name = "Facility Director";
-	req_access = list(20)
-	},
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
@@ -22159,6 +22159,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/command{
+	id_tag = "captaindoor";
+	name = "Facility Director";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/captain,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/captain)
 "iZN" = (
@@ -26143,7 +26149,6 @@
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/head_office/head_of_personnel,
-/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "rMY" = (

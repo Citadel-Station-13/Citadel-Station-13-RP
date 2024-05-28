@@ -315,6 +315,12 @@
 		ACCESS_ENGINEERING_MAINT,
 	)
 
+/obj/map_helper/access_helper/airlock/station/supply/infirmary
+	req_one_access = list (
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_MEDICAL_MAIN,
+	)
+
 /**
  * for all of onstation mining
  */
@@ -365,6 +371,12 @@
 	req_one_access = list (
 		ACCESS_COMMAND_CAPTAIN,
 		ACCESS_SCIENCE_RD,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/infirmary
+	req_one_access = list (
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_MEDICAL_MAIN,
 	)
 
 /**
@@ -456,6 +468,14 @@
 	req_one_access = list(
 		ACCESS_GENERAL_EXPLORER,
 		ACCESS_ENGINEERING_MAINT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/infirmary
+	req_one_access = list (
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_MEDICAL_MAIN,
 	)
 
 /**
