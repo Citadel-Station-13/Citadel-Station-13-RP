@@ -18,7 +18,7 @@
 	/// forbid 'spread mode'; use this for stuff like job lockers.
 	var/no_spread_injection = FALSE
 
-/obj/map_helper/gear_marker/preloading_instance(datum/maploader_context/context)
+/obj/map_helper/gear_marker/preloading_instance(datum/dmm_context/context)
 
 #warn impl all
 

@@ -1,16 +1,24 @@
-// global datum that will preload variables on atoms instanciation
-GLOBAL_REAL_VAR(use_preloader) = FALSE
-GLOBAL_REAL(preloader, /datum/map_preloader) = new
-GLOBAL_REAL(maploader_context, /datum/maploader_context)
-
-#warn inject maploader_context somewhere
+/// global datum that will preload variables on atoms instanciation
+/// this is global for security and speed
+GLOBAL_REAL(dmm_preloader, /datum/dmm_preloader) = new
+/// this is global for security and speed; if active, atoms will invoke the preloader on New()
+GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
 
 /// Preloader datum
-/datum/map_preloader
+/datum/dmm_preloader
 	parent_type = /datum
-	//* Vars set for load cycle
+
+	//* -- /parsed_map load cycle -- *//
+
+	/// the current active orientation.
+	///
+	/// * the natural orientation is SOUTH.
+	/// * specifying a non-SOUTH orientation rotates the map clockwise to match that orientation.
 	var/loading_orientation
-	//* Vars set per atom
+	/// the active maploader context
+	var/datum/dmm_context/loading_contextKw
+
+	//* --      set per atom      -- *//
 	var/list/attributes
 	var/target_path
 	var/turn_angle
@@ -20,8 +28,8 @@ GLOBAL_REAL(maploader_context, /datum/maploader_context)
 
 /world/proc/preloader_setup(list/the_attributes, path, turn_angle, swap_x, swap_y, swap_xy)
 	if(length(the_attributes) || turn_angle)
-		global.use_preloader = TRUE
-		var/datum/map_preloader/preloader_local = global.preloader
+		global.dmm_preloader_active = TRUE
+		var/datum/dmm_preloader/preloader_local = global.dmm_preloader
 		preloader_local.attributes = the_attributes
 		preloader_local.target_path = path
 		preloader_local.turn_angle = turn_angle
@@ -30,8 +38,8 @@ GLOBAL_REAL(maploader_context, /datum/maploader_context)
 		preloader_local.swap_xy = swap_xy
 
 /world/proc/preloader_load(atom/what)
-	global.use_preloader = FALSE
-	var/datum/map_preloader/preloader_local = global.preloader
+	global.dmm_preloader_active = FALSE
+	var/datum/dmm_preloader/preloader_local = global.dmm_preloader
 	for(var/attribute in preloader_local.attributes)
 		var/value = preloader_local.attributes[attribute]
 		if(islist(value))
@@ -89,6 +97,8 @@ GLOBAL_REAL(maploader_context, /datum/maploader_context)
 			py = opx
 		what.pixel_x = px
 		what.pixel_y = py
+
+	#warn preloading_instance
 
 /area/template_noop
 	name = "Area Passthrough"

@@ -233,7 +233,7 @@
  */
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
-	if(global.use_preloader && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	if(global.dmm_preloader_active && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
@@ -247,9 +247,9 @@
 			return
 
 /**
- * Called by the maploader if a maploader_context is set
+ * Called by the maploader if a dmm_context is set
  */
-/atom/proc/preloading_instance(datum/maploader_context/context)
+/atom/proc/preloading_instance(datum/dmm_context/context)
 	return
 
 /**
@@ -257,7 +257,7 @@
  *
  * return FALSE to override maploader automatic rotation
  */
-/atom/proc/preloading_dir(datum/map_preloader/preloader)
+/atom/proc/preloading_dir(datum/dmm_preloader/preloader)
 	return TRUE
 
 /**

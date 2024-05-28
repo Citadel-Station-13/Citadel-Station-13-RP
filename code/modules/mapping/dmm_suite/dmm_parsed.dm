@@ -263,20 +263,23 @@
  * * z_upper - crop dmm load to this z.
  * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
+ * * orientation - orientation to load. the 'natural' orientation is SOUTH. Any other orientation rotates it with respect from SOUTH to it.
  * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
- * * context - value to push to global.maploader_context, used by atoms during preloading_instance() to perform various things like mangling their linkage IDs
+ * * context - value to push to preloader's maploader context, used by atoms during preloading_instance() to perform various things like mangling their linkage IDs
  *
  * @return bounds list of load, or null if failed.
  */
-/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache, datum/maploader_context/context)
+/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache, datum/dmm_context/context)
 
 	var/static/loading = FALSE
 	UNTIL(!loading)
 	loading = TRUE
 	Master.StartLoadingMap()
-	global.preloader_mangling_id = mangling_id
+	global.preloader.loading_context = context
+	global.preloader.loading_orientation = orientation
 	. = _load_impl(arglist(args))
 	global.preloader.loading_orientation = null
+	global.preloader.loading_context = null
 	Master.StopLoadingMap()
 	loading = FALSE
 
