@@ -75,9 +75,9 @@
 				if(3)
 					to_chat(M,SPAN_DANGER("You're not seeing double anymore."))
 				if(4)
-					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
-				if(5)
 					to_chat(M,SPAN_DANGER("You no longer feel like you're going to puke."))
+				if(5)
+					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
 				if(6)
 					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
 		else
@@ -96,27 +96,25 @@
 					to_chat(M,SPAN_DANGER("You're seeing double!.[hydration_str]"))
 					M.eye_blurry=max(M.eye_blurry,30)
 				if(5)
-					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy![hydration_str]"))
-				if(6)
 					to_chat(M,SPAN_USERDANGER("You feel like you might puke...[hydration_str]"))
+				if(6)
+					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy![hydration_str]"))
 				if(7)
 					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk![hydration_str]"))
-	var/hydration_removal=min(1,M.hydration/500)
-	if(hydration_removal>=0.1)
+	var/hydration_removal=clamp((M.hydration-150)/300,0,1)*effect_level
+	if(hydration_removal>0)
 		M.adjust_hydration(-hydration_removal)
-		volume-=metabolism*hydration_removal*5
+		volume-=removed*hydration_removal*3
 	if(effect_level>=2)
 		M.slurring=max(M.slurring,10)
-		volume-=metabolism
 	if(effect_level>=3 && prob(effect_level-2))
 		M.Confuse(60)
-		volume-=metabolism*2
-	if(effect_level>=5 && prob(effect_level-4))
-		M.vomit(0,0)
-		volume-=DOSE_LEVEL/4
+	if(effect_level>=5 && prob(effect_level-4) && !M.lastpuke)
+		M.vomit(1,0)
+		if(M.nutrition>=100)
+			volume-=DOSE_LEVEL/4
 	if(effect_level>=6 && prob(effect_level-5))
 		M.drowsyness=max(M.drowsyness,60)
-		volume-=metabolism*4
 	if(effect_level>=7)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
 		if(volume>DOSE_LEVEL*7)
