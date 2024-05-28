@@ -6,7 +6,7 @@
 	name = "Sergal Markings"
 	id = "marking_sergal_full_m"
 	icon_state = "sergal_full"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
 	species_allowed = list(SPECIES_SERGAL)
 	apply_restrictions = TRUE
@@ -15,7 +15,7 @@
 	name = "Sergal Markings (Female)"
 	id = "marking_sergal_full_f"
 	icon_state = "sergal_full_female"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
 	species_allowed = list(SPECIES_SERGAL)
 	apply_restrictions = TRUE

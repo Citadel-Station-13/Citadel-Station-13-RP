@@ -2378,6 +2378,7 @@
 #include "code\modules\bodysets\bodyset\organic\apidean.dm"
 #include "code\modules\bodysets\bodyset\organic\diona.dm"
 #include "code\modules\bodysets\bodyset\organic\human.dm"
+#include "code\modules\bodysets\bodyset\organic\insect.dm"
 #include "code\modules\bodysets\bodyset\organic\krisitik.dm"
 #include "code\modules\bodysets\bodyset\organic\moth.dm"
 #include "code\modules\bodysets\bodyset\organic\naramadi.dm"

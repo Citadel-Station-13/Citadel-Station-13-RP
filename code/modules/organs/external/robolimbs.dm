@@ -407,7 +407,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/moth
 	company = "Psyche - Moth"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/cyberlimbs/psyche/moth.dmi'
+	bodyset = /datum/bodyset/organic/moth
 	blood_color = "#808000"
 	lifelike = 1
 	skin_tone = TRUE
@@ -417,7 +417,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 /datum/robolimb/insect
 	company = "Psyche - Insect"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/cyberlimbs/psyche/insect.dmi'
+	bodyset = /datum/bodyset/organic/insect
 	blood_color = "#808000"
 	lifelike = 1
 	skin_tone = TRUE

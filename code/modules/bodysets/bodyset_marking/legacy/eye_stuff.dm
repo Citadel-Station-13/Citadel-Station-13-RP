@@ -18,28 +18,28 @@
 	name = "Eyebrows"
 	id = "marking_eye_brow"
 	icon_state = "brows"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/eye_stuff/tridot
 	name = "Tri-Dot"
 	id = "marking_eye_tridot"
 	icon_state = "tridot"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/eye_stuff/tridotflipped
 	name = "Tri-Dot Flipped"
 	id = "marking_eye_tridotflipped"
 	icon_state = "tridotflipped"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/eye_stuff/zmask
 	name = "Eye mask"
 	id = "marking_eye_mask"
 	icon_state = "zmask"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/eye_stuff/motheyes

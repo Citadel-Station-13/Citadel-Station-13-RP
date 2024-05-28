@@ -10,8 +10,7 @@
 	//primitive_form = "Nymph"
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/diona
 
-	icobase      = 'icons/mob/species/diona/body.dmi'
-	deform       = 'icons/mob/species/diona/deformed_body.dmi'
+	bodyset = /datum/bodyset/organic/diona
 	preview_icon = 'icons/mob/species/diona/preview.dmi'
 
 	max_additional_languages = 2

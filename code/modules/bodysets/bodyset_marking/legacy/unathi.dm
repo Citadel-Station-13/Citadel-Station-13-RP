@@ -34,61 +34,61 @@
 	name = "Cobra Hood"
 	id = "marking_unathi_hood"
 	icon_state = "unathihood"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathihood_inner
 	name = "Cobra Hood (Inner)"
 	id = "marking_unathi_hood_inner"
 	icon_state = "unathihood_inner"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathidoublehorns
 	name = "Double Unathi Horns"
 	id = "marking_unathi_horns_double"
 	icon_state = "unathidoublehorns"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathihorns
 	name = "Unathi Horns"
 	id = "marking_unathi_horns"
 	icon_state = "unathihorns"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathiramhorns
 	name = "Unathi Ram Horns"
 	id = "marking_unathi_horns_ram"
 	icon_state = "unathiramhorns"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathishortspines
 	name = "Unathi Short Spines"
 	id = "marking_unathi_spines_short"
 	icon_state = "unathishortspines"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathilongspines
 	name = "Unathi Long Spines"
 	id = "marking_unathi_spines_lnog"
 	icon_state = "unathilongspines"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathishortfrills
 	name = "Unathi Short Frills"
 	id = "marking_unathi_frills_short"
 	icon_state = "unathishortfrills"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/bodyset_marking/unathi/unathilongfrills
 	name = "Unathi Long Frills"
 	id = "marking_unathi_frills_long"
 	icon_state = "unathilongfrills"
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)

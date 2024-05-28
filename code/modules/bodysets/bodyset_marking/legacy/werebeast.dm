@@ -1,7 +1,7 @@
 /datum/bodyset_marking/werebeast
 	abstract_type = /datum/bodyset_marking/werebeast
 	icon = 'icons/mob/clothing/species/werebeast/werebeast_markings.dmi'
-	legacy_use_additive_color_matrix = FALSE
+	color_uses_blend_add = FALSE
 	species_allowed = list(SPECIES_WEREBEAST)
 	apply_restrictions = TRUE
 
