@@ -48,6 +48,3 @@
 			icon = 'icons/mob/bodysets/special/golem/body-clockwork.dmi';
 		},
 	)
-
-	w
-
