@@ -29,9 +29,17 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	/// if set, we are shoved in a namespace of this id if not browse_rsc()'d
 	var/namespace_id
 
-/datum/asset_item/New(name, file)
+	/// actual filename to use
+	var/mangled_name
+
+/datum/asset_item/New(name, file, do_not_mangle, always_browse_rsc, restored_from_cache)
 	// set name
 	src.name = name
+	ASSERT(length(src.name))
+	// set options
+	src.do_not_mangle = do_not_mangle
+	src.always_browse_rsc = always_browse_rsc
+	src.restored_from_cache = restored_from_cache
 	// set file; always load them into resource cache if they aren't already
 	// todo: this kind of ruins the point if we're trying to flush state,
 	// todo: but we have to anyways unless TGS stops swapping A/B out from under Live during the round.
@@ -42,6 +50,10 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	var/extstart = findlasttext(name, ".")
 	if (extstart)
 		ext = "[copytext(name, extstart+1)]"
+	mangled_name = do_not_mangle? name : mangle_name()
+
+/datum/asset_item/proc/mangle_name()
+	"asset.[hash].[ext]"
 
 /**
  * dynamic asset items
@@ -55,4 +67,13 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	var/loaded_url
 
 /datum/asset_item/dynamic/proc/get_url()
-	return loaded_url
+	return ensure_loaded()
+
+/datum/asset_item/dynamic/proc/send(list/client/clients)
+	ensure_loaded()
+	#warn impl
+
+/datum/asset_item/dynamic/proc/ensure_loaded()
+	if(!isnull(loaded_url))
+		return loaded_url
+	#warn impl

@@ -100,7 +100,8 @@
 				inline_assets_str += "Byond.loadCss('[url]', true);\n"
 			else if(copytext(name, -3) == ".js")
 				inline_assets_str += "Byond.loadJs('[url]', true);\n"
-		asset.send(client)
+		SSassets.send_asset_pack(client, asset)
+	client.asset_cache_flush_browse_queue() // flush their assets
 	if(length(inline_assets_str))
 		inline_assets_str = "<script>\n" + inline_assets_str + "</script>\n"
 	html = replacetextEx(html, "<!-- tgui:assets -->\n", inline_assets_str)
@@ -298,7 +299,7 @@
 	if(!client || !asset)
 		return
 	sent_assets |= asset
-	. = asset.send(client)
+	. = SSassets.send_asset_pack(client, asset)
 	if(istype(asset, /datum/asset_pack/spritesheet))
 		var/datum/asset_pack/spritesheet/spritesheet = asset
 		send_message("asset/stylesheet", spritesheet.get_css_url())

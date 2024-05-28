@@ -86,7 +86,6 @@
 	if(!id)
 		CRASH("ERROR: send called, but the minimap id is null/missing. ID: [id]")
 	SSassets.send_asset_pack(user, "minimap-[id]")
-	SSassets.transport.send_assets(user, list("minimap-[id].png" = map_icon, "minimap-[id]-meta.png" = meta_icon))
 
 /datum/minimap_group
 	var/list/minimaps = list()
@@ -110,14 +109,15 @@
 
 	for(var/i in 1 to length(minimaps))// OLD: for(var/i in 1 to length(minimaps))
 		var/datum/minimap/M = minimaps[i]
+		var/datum/asset_pack/pack = SSassets.load_asset_pack("minimap-[M.id]")
 		var/map_name = "minimap-[M.id].png"
 		var/meta_name = "minimap-[M.id]-meta.png"
 		M.send(user)
 		info += {"
 			<div class="block">
 				<div> <!-- The div is in here to fit it both in the block div -->
-					<img id='map-[i]' src='[SSassets.transport.get_asset_url(map_name)]' />
-					<img id='map-[i]-meta' src='[SSassets.transport.get_asset_url(meta_name)]' style='display: none' />
+					<img id='map-[i]' src='[pack.get_url(map_name)]' />
+					<img id='map-[i]-meta' src='[pack.get_url(meta_name)]' style='display: none' />
 				</div>
 				<div class="statusDisplay" id='label-[i]'></div>
 			</div>

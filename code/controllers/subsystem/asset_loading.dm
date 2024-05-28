@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(asset_loading)
 /datum/controller/subsystem/asset_loading/fire(resumed)
 	while(length(loading))
 		var/datum/asset_pack/instance = loading[loading.len]
-		instance.load()
+		loading.len--
+		instance.ensure_ready(TRUE)
 		if(MC_TICK_CHECK)
 			return
-		loading.len--

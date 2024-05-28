@@ -34,8 +34,9 @@
 
 	/// a record of filename = asset_item datums
 	/// these are transport-agnostic.
-	var/tmp/list/datum/asset_item/loaded_items
+	var/tmp/list/datum/asset_item/packed_items
 	/// a record of filename = url when we're loaded and pushed to a transport.
+	/// if is null, we are not pushed to the transport
 	var/tmp/list/loaded_urls
 
 	/// having this on will force something to be sent via
@@ -44,7 +45,7 @@
 	///
 	/// * implies do_not_mangle
 	/// * implies do_not_separate
-	var/legacy = FALSE
+	var/absolute = FALSE
 
 	/// do not mutate filenames on the remote side
 	/// used when html pages rely on static bindings / aren't otherwise
@@ -70,7 +71,7 @@
 /**
  * ensures we are loaded
  */
-/datum/asset_pack/proc/ensure_ready()
+/datum/asset_pack/proc/ensure_loaded(push_to_transport)
 	switch(loaded)
 		if(ASSET_FULLY_LOADED)
 		if(ASSET_NOT_LOADED)
@@ -78,7 +79,9 @@
 			UNTIL(loaded != ASSET_IS_LOADING)
 		if(ASSET_IS_LOADING)
 			UNTIL(loaded != ASSET_IS_LOADING)
-	return loaded == ASSET_FULLY_LOADED
+	. = loaded == ASSET_FULLY_LOADED
+	if(. && push_to_transport)
+		ensure_ready()
 
 /**
  * loads / generates whatever is in us
@@ -89,8 +92,26 @@
 	loaded = ASSET_IS_LOADING
 	var/results = generate()
 	var/list/files = register(results)
-	push(files)
+	var/list/datum/asset_item/items = pack(files)
+	src.packed_items = items
 	loaded = ASSET_FULLY_LOADED
+
+/**
+ * ensures we are pushed to a transport
+ */
+/datum/asset_pack/proc/ensure_ready()
+	if(is_pushed_to_transport())
+		return TRUE
+	var/datum/asset_transport/active_transport = SSassets.transport
+	if(isnull(active_transport))
+		return FALSE
+	loaded_urls = active_transport.load_asset_items_from_pack(src)
+
+/**
+ * checks if we're pushed to a transport
+ */
+/datum/asset_pack/proc/is_pushed_to_transport()
+	return !isnull(loaded_urls)
 
 /**
  * generates whatever needs to be generated
@@ -102,6 +123,32 @@
  */
 /datum/asset_pack/proc/generate()
 	return
+
+/**
+ * packs a list of filename = file's into /datum/asset_item's
+ *
+ * @return filename = /datum/asset_item
+ */
+/datum/asset_pack/proc/pack(list/files)
+	. = list()
+	for(var/filename in files)
+		var/file = files[filename]
+		var/datum/asset_item/item = new(filename, file, do_not_mangle, absolute, FALSE)
+		.[filename] = item
+	if(do_not_separate && !absolute) // if absolute, it's pointless to generate namespace as we'll be in the same folder anyways.
+		// generate their namespace and assign
+		var/namespace = generate_namespace(.)
+		for(var/datum/asset_item/item as anything in .)
+			item.namespace_id = namespace
+
+/**
+ * things must be packed!
+ */
+/datum/asset_pack/proc/generate_namespace(list/datum/asset_item/items)
+	var/list/joining = list()
+	for(var/datum/asset_item/item as anything in items)
+		joining += item.hash
+	return md5(jointext(joining, "-"))
 
 /**
  * registers our content to the asset system's transport
@@ -135,13 +182,6 @@
 	var/cached_serialized_url_mappings
 	var/cached_serialized_url_mappings_transport_type
 
-	/**
-	 * Whether or not this asset can be cached across rounds of the same commit under the `CACHE_ASSETS` config.
-	 * This is not a *guarantee* the asset will be cached. Not all asset subtypes respect this field, and the
-	 * config can, of course, be disabled.
-	 */
-	var/cross_round_cachable = FALSE
-	#warn validate config
 
 /datum/asset_pack/proc/get_url_mappings()
 	return list()
@@ -153,10 +193,3 @@
 		cached_serialized_url_mappings_transport_type = SSassets.transport.type
 
 	return cached_serialized_url_mappings
-
-/datum/asset_pack/proc/send(client)
-	return
-
-/// Returns whether or not the asset should attempt to read from cache
-/datum/asset_pack/proc/should_refresh()
-	return !cross_round_cachable || !CONFIG_GET(flag/cache_assets)

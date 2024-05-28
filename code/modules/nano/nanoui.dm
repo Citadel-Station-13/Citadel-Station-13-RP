@@ -343,17 +343,19 @@
 
 	var/head_content = ""
 
+	var/datum/asset_pack/nanoui_pack = SSassets.load_asset_pack(/datum/asset_pack/simple/nanoui)
+
 	for(var/filename in scripts)
-		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(filename)]'></script>"
+		head_content += "<script type='text/javascript' src='[nanoui_pack.get_url(filename)]'></script>"
 
 	for(var/filename in stylesheets)
-		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(filename)]'>"
+		head_content += "<link rel='stylesheet' type='text/css' href='[nanoui_pack.get_url(filename)]'>"
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)
 		// transform urls
 		for(var/key in templates)
-			templates[key] = SSassets.transport.get_asset_url(templates[key])
+			templates[key] = nanoui_pack.get_url(templates[key])
 		template_data_json = json_encode(templates)
 
 	var/list/send_data = get_send_data(initial_data)

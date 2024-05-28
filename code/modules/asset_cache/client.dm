@@ -1,7 +1,6 @@
 /client
 	/// asset cache: filename = md5, for things already sent to the client
 	/// this is only for browse_rsc()'d assets.
-	#warn reconsider this
 	var/list/asset_native_received = list()
 	/// used for browse_queue_fluhs()
 	var/list/asset_flush_jobs = list()
@@ -73,17 +72,15 @@
  * this is on client for gc optimizations as src will be set to ourselves
  *
  * * do not use unless you know what you're doing
- * * this assumes that filenames are not mangled. if they are, this won't work.
- * * this obviously requires the asset_pack point at the un-mangled filename as the url.
  */
 /client/proc/asset_cache_native_preload(list/datum/asset_pack/packs, flush_on_how_many_packs = 3)
 	var/datum/asset_transport/cached_transport = SSassets.transport
 	var/packs_before_flush = flush_on_how_many_packs
 	for(var/datum/asset_pack/pack as anything in packs)
-		for(var/datum/asset_item/item as anything in pack.loaded_items)
+		for(var/datum/asset_item/item as anything in pack.packed_items)
 			if(SSassets.transport != cached_transport)
 				return
-			cached_transport.send_items_native(src, pack.loaded_items)
+			cached_transport.send_items_native(src, pack.packed_items)
 			stoplag(0) // do not lock up browse queue
 		if(!(--packs_before_flush))
 			packs_before_flush = flush_on_how_many_packs

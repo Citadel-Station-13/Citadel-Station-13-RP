@@ -16,9 +16,6 @@ SUBSYSTEM_DEF(assets)
 	/// asset packs we're going to preload via native (browse_rsc) transport
 	var/list/datum/asset_pack/asset_packs_to_natively_preload = list()
 
-
-	/// all dynamic or standalone asset items that were registered with md5
-	var/static/list/datum/asset_item/dynamic/dynamic_asset_items_by_md5 = list()
 	/// all dynamic or standalone asset items that were registered with name (which is also their uid)
 	var/static/list/datum/asset_item/dynamic/dynamic_asset_items_by_name = list()
 
@@ -41,8 +38,6 @@ SUBSYSTEM_DEF(assets)
 		var/datum/asset_pack/instance = new path
 		register_asset_pack(instance, TRUE)
 
-		#warn transport swap will wreak havoc.
-
 #ifndef DO_NOT_DEFER_ASSETS
 		if(initial(instance.load_deferred))
 			continue
@@ -53,6 +48,8 @@ SUBSYSTEM_DEF(assets)
 #else
 		instance.load()
 #endif
+
+	return ..()
 
 /**
  * register an asset pack to make it able to be resolved or loaded
@@ -102,7 +99,7 @@ SUBSYSTEM_DEF(assets)
  */
 /datum/controller/subsystem/assets/proc/load_asset_pack(identifier)
 	var/datum/asset_pack/resolved = resolve_asset_pack(identifier)
-	resolved.ensure_ready()
+	resolved.ensure_loaded()
 	return resolved
 
 /**
@@ -117,15 +114,14 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/proc/send_asset_pack(client/target, identifier)
 	if(isnull(target))
 		return FALSE
+
 	var/datum/asset_pack/resolved = load_asset_pack(identifier)
+	resolved.ensure_ready()
+
 	var/list/targets = islist(target)? target : list(target)
 
 	for(var/client/target as anything in targets)
 		transport.send_pack(target, resolved)
-
-	#warn impl
-
-#warn redo hash; they should be for 'throwaway' ones.
 
 /**
  * loads a file that we declare to not be necessary to keep around / store information on after
@@ -137,11 +133,12 @@ SUBSYSTEM_DEF(assets)
  * @params
  * * targets - client or list of clients to send it to
  * * file - the file in question
- * * ext - enforce an extension for the file. do not include the '.'
+ * * ext - mandatory extension for the file. do not include the '.'
  *
  * @return url to load it with; this will usually be heavily mangled.
  */
 /datum/controller/subsystem/assets/proc/send_anonymous_file(list/client/targets, file, ext)
+	ASSERT(ext)
 	return transport.send_anonymous_file(targets, file, ext)
 
 /**
@@ -154,7 +151,6 @@ SUBSYSTEM_DEF(assets)
  * @params
  * * targets - client or list of clients to send it to
  * * files - the files in question, associated to their extensions
- * * ext - enforce an extension for the file. do not include the '.'
  *
  * @return list(urls) in same order as files.
  */
@@ -166,53 +162,31 @@ SUBSYSTEM_DEF(assets)
 		.[i] = send_anonymous_file(targets, file, files[file])
 		stoplag(0)
 
-#warn below?
-
 /**
  * @params
- * * targets - a client, or a list of clients
- * * files - a file, or a list of names associated to files
+ * * file - a file
  * * name - the name for the file. if files is a list, this is ignored
  * * do_not_mangle - do not mangle / unique-ify the name of the file.
  *
  * @return /datum/asset_item/dynamic
  */
-/datum/controller/subsystem/assets/proc/register_and_send_dynamic_item_by_name(list/client/targets, list/files, name, do_not_mangle)
+/datum/controller/subsystem/assets/proc/register_dynamic_item_by_name(file, name, do_not_mangle)
 	RETURN_TYPE(/datum/asset_item/dynamic)
-	#warn handle list files
-	send_dynamic_item(targets, register_dynamic_item_by_name(file, name))
-
-/**
- * @params
- * * targets - a client, or a list of clients
- * * files - a file, or a list of names associated to files
- * * name - the name for the file. if files is a list, this is ignored
- * * do_not_mangle - do not mangle / unique-ify the name of the file.
- *
- * @return /datum/asset_item/dynamic
- */
-/datum/controller/subsystem/assets/proc/register_dynamic_item_by_name(list/file, name, do_not_mangle)
-	RETURN_TYPE(/datum/asset_item/dynamic)
-
-/// Generate a filename for this asset
-/// The same asset will always lead to the same asset name
-/// (Generated names do not include file extention.)
-/proc/generate_asset_name(file)
-	return "asset.[md5(fcopy_rsc(file))]"
-
-/datum/controller/subsystem/assets/proc/send_dynamic_item_by_name(list/client/targets, name)
-
-/datum/controller/subsystem/assets/proc/send_dynamic_item(list/client/targets, datum/asset_item/dynamic/item)
-	if(!islist(targets))
-		targets = list(targets)
-
-/datum/controller/subsystem/assets/proc/get_dynamic_item_url_by_name(name)
+	if(dynamic_asset_items_by_name[name])
+		. = FALSE
+		CRASH("collision on [name]; automatically-updating dynamic items are not yet supported.")
+	var/datum/asset_item/dynamic/created = new(name, file, do_not_mangle = do_not_mangle)
 	#warn impl
 
-#warn impl all
+/datum/controller/subsystem/assets/proc/send_dynamic_item_by_name(list/client/clients, list/names)
+	if(!islist(clients))
+		clients = list(clients)
+	for(var/name in names)
+		var/datum/asset_item/dynamic/item = dynamic_asset_items_by_name[name]
+		item?.send(clients)
 
-#warn below
-
+/datum/controller/subsystem/assets/proc/get_dynamic_item_url_by_name(name)
+	return dynamic_asset_items_by_name[name]?.get_url()
 
 /datum/controller/subsystem/assets/OnConfigLoad()
 	var/newtransporttype = /datum/asset_transport/browse_rsc
@@ -223,18 +197,26 @@ SUBSYSTEM_DEF(assets)
 	if (newtransporttype == transport.type)
 		return
 
-	var/datum/asset_transport/newtransport = new newtransporttype ()
+	var/datum/asset_transport/newtransport = new newtransporttype
 	if (newtransport.validate_config())
 		transport = newtransport
-	transport.Load()
+	set_transport_to(newtransport)
 
-/datum/controller/subsystem/assets/Initialize(timeofday)
+/datum/controller/subsystem/assets/proc/set_transport_to(datum/asset_transport/new_transport)
+	QDEL_NULL(transport)
+	transport = new_transport
 
-	transport.Initialize(cache)
+	// unload all asset packs
+	for(var/datum/asset_pack/pack in asset_packs)
+		pack.loaded_urls = null
+	// unload all dynamic items
+	for(var/name in dynamic_asset_items_by_name)
+		var/datum/asset_item/dynamic/item = dynamic_asset_items_by_name[name]
+		if(!istype(item))
+			continue
+		item.loaded_url = null
 
-	return ..()
-
-#warn above
+	transport.initialize()
 
 /datum/controller/subsystem/assets/proc/preload_client_assets(client/target)
 	transport.perform_native_preload(target, asset_packs_to_natively_preload)

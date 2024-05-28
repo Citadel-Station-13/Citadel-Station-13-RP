@@ -1,5 +1,5 @@
 /datum/asset_pack/simple/nanoui
-	legacy = TRUE
+	absolute = TRUE
 	do_not_separate = TRUE
 
 /datum/asset_pack/simple/nanoui/generate()
