@@ -40,7 +40,6 @@
 /datum/bodyset/organic/unathi/digitigrade
 	name = "Unathi (Digitigrade)"
 	id = "unathi-digitigrade"
-	group_id = "human"
 
 	icon = 'icons/mob/bodysets/organic/unathi/body-digitigrade.dmi'
 	mask_icon = 'icons/mob/bodysets/organic/human/mask.dmi'

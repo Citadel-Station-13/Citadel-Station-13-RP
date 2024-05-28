@@ -1,108 +1,108 @@
-/datum/bodyset_marking/eye_stuff
-	abstract_type = /datum/bodyset_marking/eye_stuff
+/datum/bodyset_marking/legacy/eye_stuff
+	abstract_type = /datum/bodyset_marking/legacy/eye_stuff
 	icon = 'icons/mob/sprite_accessories/markings/eye_stuff.dmi'
 
-/datum/bodyset_marking/eye_stuff/monoeye
+/datum/bodyset_marking/legacy/eye_stuff/monoeye
 	name = "Monoeye"
 	id = "marking_eye_mono"
 	icon_state = "monoeye"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/spidereyes
+/datum/bodyset_marking/legacy/eye_stuff/spidereyes
 	name = "Spider Eyes"
 	id = "marking_eye_spider"
 	icon_state = "spidereyes"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/brows
+/datum/bodyset_marking/legacy/eye_stuff/brows
 	name = "Eyebrows"
 	id = "marking_eye_brow"
 	icon_state = "brows"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/tridot
+/datum/bodyset_marking/legacy/eye_stuff/tridot
 	name = "Tri-Dot"
 	id = "marking_eye_tridot"
 	icon_state = "tridot"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/tridotflipped
+/datum/bodyset_marking/legacy/eye_stuff/tridotflipped
 	name = "Tri-Dot Flipped"
 	id = "marking_eye_tridotflipped"
 	icon_state = "tridotflipped"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/zmask
+/datum/bodyset_marking/legacy/eye_stuff/zmask
 	name = "Eye mask"
 	id = "marking_eye_mask"
 	icon_state = "zmask"
 	color_uses_blend_add = FALSE
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/motheyes
+/datum/bodyset_marking/legacy/eye_stuff/motheyes
 	name = "Moth Eyes"
 	id = "marking_eye_moth"
 	icon_state = "motheyes"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/animeeyesinner
+/datum/bodyset_marking/legacy/eye_stuff/animeeyesinner
 	name = "Anime Eyes Inner"
 	id = "marking_eye_anime_inner"
 	icon_state = "animeeyesinner"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/animeeyesouter
+/datum/bodyset_marking/legacy/eye_stuff/animeeyesouter
 	name = "Anime Eyes Outer"
 	id = "marking_eye_anime_outer"
 	icon_state = "animeeyesouter"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/heterochromia
+/datum/bodyset_marking/legacy/eye_stuff/heterochromia
 	name = "Heterochromia"
 	id = "marking_eye_color_left"
 	icon_state = "heterochromia"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/heterochromia_r
+/datum/bodyset_marking/legacy/eye_stuff/heterochromia_r
 	name = "Heterochromia (right eye)"
 	id = "marking_eye_color_right"
 	icon_state = "heterochromia_r"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/thirdeye
+/datum/bodyset_marking/legacy/eye_stuff/thirdeye
 	name = "Third Eye"
 	id = "marking_eye_third"
 	icon_state = "thirdeye"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/closedeye
+/datum/bodyset_marking/legacy/eye_stuff/closedeye
 	name = "Closed Eyes"
 	id = "marking_eye_closed"
 	icon_state = "closedeyes"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/eyesshut
+/datum/bodyset_marking/legacy/eye_stuff/eyesshut
 	name = "Shut Eyes"
 	id = "marking_eye_shut"
 	icon_state = "eyesshut"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/eyeeffectlower
+/datum/bodyset_marking/legacy/eye_stuff/eyeeffectlower
 	name = "Eye Effect - Lower"
 	id = "marking_eye_effect_lower"
 	icon_state = "eyeeffectlower"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/eyeeffectupper
+/datum/bodyset_marking/legacy/eye_stuff/eyeeffectupper
 	name = "Eye Effect - Upper"
 	id = "marking_eye_effect_upper"
 	icon_state = "eyeeffectupper"
 	body_parts = list(BP_HEAD)
 
-/datum/bodyset_marking/eye_stuff/eyeshadowlower
+/datum/bodyset_marking/legacy/eye_stuff/eyeshadowlower
 	name = "Eye Effect - Bags (or Shadow)"
 	id = "marking_eye_shadow_lower"
 	icon_state = "eyeshadowlower"
