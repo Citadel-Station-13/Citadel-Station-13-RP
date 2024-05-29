@@ -1,3 +1,4 @@
+VV_PROTECT_READONLY(/datum/asset_item)
 /**
  * A datum used to store data on an asset in the asset cache.
  *
@@ -6,7 +7,6 @@
  *
  * Each asset item is an item in the cache.
  */
-VV_PROTECT_READONLY(/datum/asset_item)
 /datum/asset_item
 	/// filename
 	var/name
