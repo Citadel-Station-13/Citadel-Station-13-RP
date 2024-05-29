@@ -21,10 +21,10 @@
 	/// this gets rid of the automatic qdel self behavior so you have to do it yourself.
 	var/late = FALSE
 
-/obj/map_helper/New()
+/obj/map_helper/preloading_instance(datum/dmm_context/context)
+	. = ..()
 	if(early)
-		hook_map_initializations()
-	return ..()
+		hook_map_initializations(context)
 
 /obj/map_helper/Initialize(mapload)
 	. = ..()
@@ -40,15 +40,14 @@
  * if no maploading can be hooked, we init immediately
  * if Initialize() is in SSatoms, this crashes for safety as that should not happen.
  */
-/obj/map_helper/proc/hook_map_initializations()
+/obj/map_helper/proc/hook_map_initializations(datum/dmm_context/context)
 	if(isnull(SSmapping.map_initialization_hooked))
 		// postpone to after init
 		if(SSatoms.initialized == INITIALIZATION_INSSATOMS)
 			CRASH("undefined behavior: initialization is currently in SSatoms but we tried to hook map init.")
 		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
 	else
-		SSmapping.map_initialization_hooked += src
-		SSmapping.map_initialization_hooking += src
+		context.map_initialization_hooked += src
 
 /**
  * called if we're on SSmapping's map_initializations_hooked list.
@@ -57,13 +56,10 @@
  * called before level on_loaded_finalize
  *
  * @params
- * * bounds - (optional) bounds list of loaded level. can be null if we were invoked without a level load.
- * * lx - (optional) real x of loaded level
- * * ly - (optional) real y of loaded level
- * * lz - (optional) real z of loaded level
- * * ldir - (optional) real dir of loaded level
+ * * context - the dmm_context of our load
  */
-/obj/map_helper/proc/map_initializations(list/bounds, lx, ly, lz, ldir)
+#warn update calls and callers for new signature
+/obj/map_helper/proc/map_initializations(datum/dmm_context/context)
 	return
 
 #warn map helpers need to be able to hook to template initializations.
