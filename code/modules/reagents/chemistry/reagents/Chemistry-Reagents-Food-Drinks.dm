@@ -4790,6 +4790,29 @@
 	glass_name = "Deathbell"
 	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
 
+/proc/monster_tamer(mob/living/carbon/M, alien, removed, alt_nutriment_factor)
+	if(!M.species.is_vampire) //it's still food!
+		switch(alien)
+			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
+			if(IS_SKRELL)
+				M.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
+			if(IS_TESHARI)
+				M.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
+			if(IS_UNATHI)
+				M.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
+				//Takes into account the 0.5 factor for all nutriment which is applied on top of the 2.25 factor for protein.
+			//Chimera don't need their own case here since their factors for nutriment and protein cancel out.
+			else
+				M.nutrition += (alt_nutriment_factor * removed)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.feral > 0 && H.nutrition > 100 && H.traumatic_shock < min(60, H.nutrition/10) && H.jitteriness < 100) // same check as feral triggers to stop them immediately re-feralling
+			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
+			if (H.feral <=0) //check if they're unferalled
+				H.feral = 0
+				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
+				log_and_message_admins("is no longer feral.", H)
+
 /datum/reagent/ethanol/monstertamer
 	name = "Monster Tamer"
 	id = "monstertamer"
@@ -4807,27 +4830,7 @@
 /datum/reagent/ethanol/monstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
 
-	if(!M.species.is_vampire) //it's still food!
-		switch(alien)
-			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
-			if(IS_SKRELL)
-				M.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
-			if(IS_TESHARI)
-				M.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
-			if(IS_UNATHI)
-				M.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
-				//Takes into account the 0.5 factor for all nutriment which is applied on top of the 2.25 factor for protein.
-			//Chimera don't need their own case here since their factors for nutriment and protein cancel out.
-			else
-				M.nutrition += (alt_nutriment_factor * removed)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.feral > 0 && H.nutrition > 100 && H.traumatic_shock < min(60, H.nutrition/10) && H.jitteriness < 100) // same check as feral triggers to stop them immediately re-feralling
-			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
-			if (H.feral <=0) //check if they're unferalled
-				H.feral = 0
-				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
-				log_and_message_admins("is no longer feral.", H)
+	monster_tamer(M,alien, removed, alt_nutriment_factor)	
 
 /datum/reagent/ethanol/monstertamer/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
@@ -4841,7 +4844,7 @@
 	name = "Dry Monster Tamer"
 	id = "drymonstertamer"
 	description = "A questionably-delicious blend of a carnivore's favorite food and, it turns out, certain oligosaccharides common to certain plants."
-	taste_description = "the gross yet satisfying combination of chewing on a raw steak while gulping a bunch of root beer."
+	taste_description = "the gross yet satisfying combination of chewing on a raw steak while gulping a bunch of root beer"
 	color = "#d3785d"
 	metabolism = REM * 2.5 // not actually right for the mix, but required to make it mechanically equivalent for feralness purposes
 	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
@@ -4853,27 +4856,7 @@
 /datum/reagent/drink/drymonstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
 
-	if(!M.species.is_vampire) //it's still food!
-		switch(alien)
-			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
-			if(IS_SKRELL)
-				M.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
-			if(IS_TESHARI)
-				M.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
-			if(IS_UNATHI)
-				M.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
-				//Takes into account the 0.5 factor for all nutriment which is applied on top of the 2.25 factor for protein.
-			//Chimera don't need their own case here since their factors for nutriment and protein cancel out.
-			else
-				M.nutrition += (alt_nutriment_factor * removed)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.feral > 0 && H.nutrition > 100 && H.traumatic_shock < min(60, H.nutrition/10) && H.jitteriness < 100) // same check as feral triggers to stop them immediately re-feralling
-			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
-			if (H.feral <=0) //check if they're unferalled
-				H.feral = 0
-				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
-				log_and_message_admins("is no longer feral.", H)
+	monster_tamer(M,alien, removed, alt_nutriment_factor)
 
 /datum/reagent/drink/drymonstertamer/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
