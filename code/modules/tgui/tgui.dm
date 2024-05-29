@@ -131,7 +131,7 @@
 	// fetch wanted assets
 	src_object.ui_asset_injection(src, assets_immediate, assets_deferred)
 	// send all immediate assets
-	for(var/datum/asset_pack/assetlike in assets_immediate)
+	for(var/datum/asset_pack/assetlike as anything in assets_immediate)
 		flush_queue |= window.send_asset(assetlike)
 	// ensure all assets are loaded before continuing
 	if (flush_queue)
@@ -150,7 +150,7 @@
 	for(var/datum/module as anything in modules_registered)
 		module.on_ui_open(user, src, TRUE)
 	// now send deferred asets
-	for(var/datum/asset_pack/assetlike in assets_deferred)
+	for(var/datum/asset_pack/assetlike as anything in assets_deferred)
 		window.send_asset(assetlike)
 	return TRUE
 
