@@ -109,7 +109,7 @@
 
 	for(var/i in 1 to length(minimaps))// OLD: for(var/i in 1 to length(minimaps))
 		var/datum/minimap/M = minimaps[i]
-		var/datum/asset_pack/pack = SSassets.load_asset_pack("minimap-[M.id]")
+		var/datum/asset_pack/pack = SSassets.ready_asset_pack("minimap-[M.id]")
 		var/map_name = "minimap-[M.id].png"
 		var/meta_name = "minimap-[M.id]-meta.png"
 		M.send(user)

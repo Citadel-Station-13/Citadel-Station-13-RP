@@ -46,7 +46,7 @@ Notes:
 	addtimer(CALLBACK(src, PROC_REF(init)), 0)
 
 /datum/tooltip/proc/init()
-	var/datum/asset_pack/stuff = SSassets.load_asset_pack(/datum/asset_pack/simple/jquery)
+	var/datum/asset_pack/stuff = SSassets.ready_asset_pack(/datum/asset_pack/simple/jquery)
 	SSassets.send_asset_pack(owner, stuff)
 	owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
 

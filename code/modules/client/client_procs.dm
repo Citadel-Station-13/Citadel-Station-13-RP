@@ -225,11 +225,13 @@
 	//* Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate statpanel
-	addtimer(CALLBACK(src, PROC_REF(statpanel_boot)), 0)
+	spawn(1)
+		statpanel_boot()
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 	// Instantiate cutscene system
-	addtimer(CALLBACK(src, PROC_REF(init_cutscene_system)), 0)
+	spawn(1)
+		init_cutscene_system()
 	// instantiate tooltips
 	tooltips = new(src)
 
@@ -448,6 +450,8 @@
 	cleanup_cutscene_system()
 	// cleanup tgui panel
 	QDEL_NULL(tgui_panel)
+	// cleanup tooltips
+	QDEL_NULL(tooltips)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW

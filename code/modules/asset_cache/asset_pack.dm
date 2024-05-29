@@ -142,7 +142,8 @@
 	if(do_not_separate && !absolute) // if absolute, it's pointless to generate namespace as we'll be in the same folder anyways.
 		// generate their namespace and assign
 		var/namespace = generate_namespace(.)
-		for(var/datum/asset_item/item as anything in .)
+		for(var/fname in .)
+			var/datum/asset_item/item = .[fname]
 			item.namespace_id = namespace
 
 /**
@@ -150,7 +151,8 @@
  */
 /datum/asset_pack/proc/generate_namespace(list/datum/asset_item/items)
 	var/list/joining = list()
-	for(var/datum/asset_item/item as anything in items)
+	for(var/fname in items)
+		var/datum/asset_item/item = items[fname]
 		joining += item.hash
 	return md5(jointext(joining, "-"))
 

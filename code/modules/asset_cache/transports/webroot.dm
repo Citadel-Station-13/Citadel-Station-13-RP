@@ -49,3 +49,6 @@
 
 /datum/asset_transport/webroot/proc/get_webroot_path(hash, filename)
 	return "[copytext(hash, 1, 3)]/[filename]"
+
+/datum/asset_transport/webroot/perform_native_preload(client/victim, list/datum/asset_pack/native_packs)
+	return // preloading? what's that? sounds like something done by sane people who don't use IIS!

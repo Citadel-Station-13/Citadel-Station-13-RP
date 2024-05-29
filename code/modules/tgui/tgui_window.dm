@@ -91,7 +91,8 @@
 	html = replacetextEx(html, "\[tgui:strictMode]", strict_mode)
 	// Inject assets
 	var/inline_assets_str = ""
-	for(var/datum/asset_pack/asset in assets)
+	for(var/datum/asset_pack/asset as anything in assets)
+		asset = SSassets.ready_asset_pack(asset)
 		var/mappings = asset.get_url_mappings()
 		for(var/name in mappings)
 			var/url = mappings[name]
@@ -101,7 +102,13 @@
 			else if(copytext(name, -3) == ".js")
 				inline_assets_str += "Byond.loadJs('[url]', true);\n"
 		SSassets.send_asset_pack(client, asset)
+		// incase they logged out
+		if(!client)
+			return
 	client.asset_cache_flush_browse_queue() // flush their assets
+	// incase they logged out
+	if(!client)
+		return
 	if(length(inline_assets_str))
 		inline_assets_str = "<script>\n" + inline_assets_str + "</script>\n"
 	html = replacetextEx(html, "<!-- tgui:assets -->\n", inline_assets_str)
@@ -118,6 +125,9 @@
 		html = replacetextEx(html, "<!-- tgui:inline-css -->", inline_css)
 	// Open the window
 	client << browse(html, "window=[id];[options]")
+	// incase they logged out
+	if(!client)
+		return
 	// Detect whether the control is a browser
 	is_browser = winexists(client, id) == "BROWSER"
 	// Instruct the client to signal UI when the window is closed.
@@ -295,7 +305,7 @@
  * return bool - TRUE if any assets had to be sent to the client
  */
 /datum/tgui_window/proc/send_asset(datum/asset_pack/asset)
-	asset = SSassets.load_asset_pack(asset)
+	asset = SSassets.ready_asset_pack(asset)
 	if(!client || !asset)
 		return
 	sent_assets |= asset

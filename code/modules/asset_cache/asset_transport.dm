@@ -66,7 +66,7 @@
 		native_sends += item
 	if(length(native_sends))
 		send_asset_item_native(target, native_sends)
-	return send_items(items)
+	return send_items(target, items)
 
 //* not sure where to put or what to do with these yet
 
@@ -123,7 +123,7 @@
 		targets = list(targets)
 	if(!islist(items))
 		items = list(items)
-	for(var/client/target in targets)
+	for(var/client/target as anything in targets)
 		if(ismob(target))
 			target = target:client
 		var/list/datum/asset_item/to_send = list()

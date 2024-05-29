@@ -1,5 +1,6 @@
 /datum/asset_pack/simple/nanoui
 	absolute = TRUE
+	do_not_mangle = TRUE
 	do_not_separate = TRUE
 
 /datum/asset_pack/simple/nanoui/generate()

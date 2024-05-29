@@ -20,6 +20,12 @@
 /datum/asset_pack/spritesheet
 	abstract_type = /datum/asset_pack/spritesheet
 	do_not_separate = TRUE
+	/// so unfortunately we can't mangle it due to the fact that
+	/// * the .css needs to know where the image is
+	/// * we don't know what to name the image until the entire pack is encoded
+	/// * so the easiest way is to set do_not_mangle to TRUE for now, and deal with it later
+	/// todo: completely unnecessarily overengineer some more and fix this in 2025 ~silicons
+	do_not_mangle = TRUE
 	/// the spritesheet's name
 	var/name
 

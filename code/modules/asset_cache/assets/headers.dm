@@ -29,3 +29,4 @@
 		"borg_mon.gif" = 'icons/program_icons/borg_mon.gif',
 		"robotact.gif" = 'icons/program_icons/robotact.gif'
 	)
+	absolute = TRUE

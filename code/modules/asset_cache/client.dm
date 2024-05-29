@@ -80,6 +80,8 @@
 	for(var/datum/asset_pack/pack as anything in packs)
 		if(SSassets.transport != cached_transport)
 			return
+		if(!pack.is_pushed_to_transport())
+			continue
 		cached_transport.send_asset_item_native(src, pack.packed_items)
 		stoplag(0) // do not lock up browse queue
 		if(!(--packs_before_flush))

@@ -27,7 +27,7 @@
 	if (nref)
 		ref = nref
 
-	common_asset = SSassets.load_asset_pack(/datum/asset_pack/simple/common)
+	common_asset = SSassets.ready_asset_pack(/datum/asset_pack/simple/common)
 
 /datum/browser/proc/add_head_content(nhead_content)
 	head_content = nhead_content

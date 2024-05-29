@@ -842,7 +842,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
-			var/url = SSassets.send_anonymous_file(targets, I)
+			var/url = SSassets.send_anonymous_file(targets, I, "png")
 			if(sourceonly)
 				return url
 			return "<img class='[extra_classes] icon icon-misc' src='[url]'>"
@@ -873,7 +873,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	I = icon(I, icon_state, dir, frame, moving)
 
-	var/url = SSassets.send_anonymous_file(targets, I)
+	var/url = SSassets.send_anonymous_file(targets, I, "png")
 	if(sourceonly)
 		return url
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[url]'>"

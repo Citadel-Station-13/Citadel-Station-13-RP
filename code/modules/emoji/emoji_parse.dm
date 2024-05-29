@@ -16,7 +16,7 @@
 			if(search)
 				emoji = lowertext(copytext(text, pos + length(text[pos]), search))
 				var/isthisapath = (emoji[1] == "/") && text2path(emoji)
-				var/datum/asset_pack/spritesheet/sheet = SSassets.load_asset_pack(/datum/asset_pack/spritesheet/chat)
+				var/datum/asset_pack/spritesheet/sheet = SSassets.ready_asset_pack(/datum/asset_pack/spritesheet/chat)
 				var/tag = sheet.icon_tag("emoji-[emoji]")
 				if(tag)
 					parsed += SPAN_TOOLTIP(":[emoji]:", "<i style='width:16px !important;height:16px !important;'>[tag]</i>") //evil way of enforcing 16x16

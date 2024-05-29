@@ -8,3 +8,4 @@
 		"font-awesome.css" = 'html/font-awesome/css/all.min.css',
 	)
 	do_not_separate = TRUE
+	do_not_mangle = TRUE

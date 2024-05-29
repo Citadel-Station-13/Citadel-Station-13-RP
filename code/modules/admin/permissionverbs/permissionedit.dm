@@ -10,7 +10,7 @@
 	if(!check_rights(R_PERMISSIONS))
 		return
 
-	var/datum/asset_pack/asset_cache_datum = SSassets.load_asset_pack(/datum/asset_pack/simple/permissions)
+	var/datum/asset_pack/asset_cache_datum = SSassets.ready_asset_pack(/datum/asset_pack/simple/permissions)
 	SSassets.send_asset_pack(usr, asset_cache_datum)
 
 	SSassets.send_asset_pack(usr, /datum/asset_pack/simple/common)

@@ -65,17 +65,23 @@ SUBSYSTEM_DEF(assets)
 		asset_packs_by_type[pack.type] = pack
 		registered = TRUE
 	if(pack.id)
+		ASSERT(!asset_packs_by_id[pack.id])
 		asset_packs_by_id[pack.id] = pack
 		registered = TRUE
 	if(!registered)
 		CRASH("couldn't register by type or id")
+	asset_packs += pack
 	if(should_preload_native_pack(pack))
 		asset_packs_to_natively_preload += pack
 
 /datum/controller/subsystem/assets/proc/should_preload_native_pack(datum/asset_pack/pack)
-	if(!pack.do_not_preload)
+	if(pack.do_not_preload)
 		return FALSE
 	return CONFIG_GET(flag/asset_simple_preload)
+
+/datum/controller/subsystem/assets/proc/immediately_ready_all_packs()
+	for(var/datum/asset_pack/pack as anything in asset_packs)
+		pack.ensure_ready()
 
 /**
  * fetches an asset datum, **without** ensuring it's ready / loaded
@@ -97,9 +103,9 @@ SUBSYSTEM_DEF(assets)
  *
  * @return asset pack resolved
  */
-/datum/controller/subsystem/assets/proc/load_asset_pack(identifier)
+/datum/controller/subsystem/assets/proc/ready_asset_pack(identifier)
 	var/datum/asset_pack/resolved = resolve_asset_pack(identifier)
-	resolved.ensure_loaded()
+	resolved.ensure_ready()
 	return resolved
 
 /**
@@ -115,8 +121,7 @@ SUBSYSTEM_DEF(assets)
 	if(isnull(target))
 		return FALSE
 
-	var/datum/asset_pack/resolved = load_asset_pack(identifier)
-	resolved.ensure_ready()
+	var/datum/asset_pack/resolved = ready_asset_pack(identifier)
 
 	var/list/targets = islist(target)? target : list(target)
 
@@ -198,8 +203,11 @@ SUBSYSTEM_DEF(assets)
 		return
 
 	var/datum/asset_transport/newtransport = new newtransporttype
-	if (newtransport.validate_config())
-		transport = newtransport
+	if (!newtransport.validate_config())
+		stack_trace("failed to validate config; going back to browse_rsc")
+		qdel(newtransport)
+		newtransport = new /datum/asset_transport/browse_rsc
+
 	set_transport_to(newtransport)
 
 /datum/controller/subsystem/assets/proc/set_transport_to(datum/asset_transport/new_transport)

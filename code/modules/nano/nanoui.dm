@@ -343,7 +343,7 @@
 
 	var/head_content = ""
 
-	var/datum/asset_pack/nanoui_pack = SSassets.load_asset_pack(/datum/asset_pack/simple/nanoui)
+	var/datum/asset_pack/nanoui_pack = SSassets.ready_asset_pack(/datum/asset_pack/simple/nanoui)
 
 	for(var/filename in scripts)
 		head_content += "<script type='text/javascript' src='[nanoui_pack.get_url(filename)]'></script>"
