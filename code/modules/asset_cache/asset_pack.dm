@@ -76,6 +76,7 @@
 /datum/asset_pack/proc/ensure_loaded(push_to_transport)
 	switch(loaded)
 		if(ASSET_FULLY_LOADED)
+			// do nothing, we're good
 		if(ASSET_NOT_LOADED)
 			INVOKE_ASYNC(src, PROC_REF(load))
 			UNTIL(loaded != ASSET_IS_LOADING)
