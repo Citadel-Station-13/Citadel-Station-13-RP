@@ -1519,6 +1519,7 @@
 #include "code\game\objects\effects\decals\remains.dm"
 #include "code\game\objects\effects\decals\warning_stripes.dm"
 #include "code\game\objects\effects\decals\posters\bs12.dm"
+#include "code\game\objects\effects\decals\posters\citadel.dm"
 #include "code\game\objects\effects\decals\posters\polarisposters.dm"
 #include "code\game\objects\effects\map_effects\beam_point.dm"
 #include "code\game\objects\effects\map_effects\effect_emitter.dm"
