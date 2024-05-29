@@ -268,7 +268,7 @@
 		else
 			if(!user.attempt_insert_item_for_installation(O, src))
 				return
-			beaker = FALSE
+			beaker = O //why the fuck was it "false" before?
 			SStgui.update_uis(src)
 	else if(processing)
 		to_chat(user, SPAN_NOTICE("\The [src] is currently processing."))
@@ -280,7 +280,8 @@
 			to_chat(user, SPAN_NOTICE("\The [src] is already full! Activate it."))
 		else
 			for(var/obj/item/reagent_containers/food/snacks/grown/G in O.contents)
-				G.loc = src
+				O.obj_storage.remove(G)
+				G.forceMove(src)
 				i++
 				if(i >= 10)
 					to_chat(user, SPAN_NOTICE("You fill \the [src] to its capacity."))
