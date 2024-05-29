@@ -331,6 +331,7 @@
 		for(var/obj/map_helper/D as anything in map_initialization_hooking)
 			map_initialization_hooked[D] = list(loaded_bounds, real_x, real_y, real_z, real_orientation)
 		map_initialization_hooking = null
+	#warn ughh
 
 	. = loaded_bounds
 

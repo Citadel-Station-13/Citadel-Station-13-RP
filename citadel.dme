@@ -3197,7 +3197,6 @@
 #include "code\modules\mapping\map.dm"
 #include "code\modules\mapping\map_level.dm"
 #include "code\modules\mapping\map_template.dm"
-#include "code\modules\mapping\maploader.dm"
 #include "code\modules\mapping\minimaps.dm"
 #include "code\modules\mapping\shuttle.dm"
 #include "code\modules\mapping\submap.dm"
