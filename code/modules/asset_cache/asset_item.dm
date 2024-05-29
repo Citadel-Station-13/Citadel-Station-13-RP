@@ -23,8 +23,9 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	var/always_browse_rsc = FALSE
 	/// do not mangle our name
 	var/do_not_mangle = FALSE
-	/// was restored from cache
-	var/restored_from_cache = FALSE
+	/// the asset pack loaded the file from cache instead of generate()ing it again.
+	/// todo: caching; we might want to replace this var with the git commit or something, anything to track when it was cached.
+	// var/restored_from_cache = FALSE
 
 	/// if set, we are shoved in a namespace of this id if not browse_rsc()'d
 	var/namespace_id
@@ -39,7 +40,8 @@ VV_PROTECT_READONLY(/datum/asset_item)
 	// set options
 	src.do_not_mangle = do_not_mangle
 	src.always_browse_rsc = always_browse_rsc
-	src.restored_from_cache = restored_from_cache
+	// todo: caching
+	// src.restored_from_cache = restored_from_cache
 	// set file; always load them into resource cache if they aren't already
 	// todo: this kind of ruins the point if we're trying to flush state,
 	// todo: but we have to anyways unless TGS stops swapping A/B out from under Live during the round.
