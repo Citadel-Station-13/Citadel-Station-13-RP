@@ -354,13 +354,13 @@
 					m_type = 1
 
 		if("ara")
-			message = "aras"
+			message = "aras."
 			var/use_sound
 			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
 			playsound(src.loc, use_sound, 50, 0)
 
 		if("uwu")
-			message = "lets out a devious noise"
+			message = "lets out a devious noise."
 			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
 
 		if ("drool")
@@ -1038,10 +1038,10 @@
 				return
 
 		if ("help")
-			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
-					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
+			to_chat(src, "nyaha, ara, awoo, baa, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
+					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, pale, peep, point-atom, prbt, \
 					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
+					twitch_v, uwu, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
 					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
 
 		else
@@ -1164,7 +1164,7 @@
 			playsound(src.loc, 'sound/misc/prbt.ogg', 50, 1, -1)
 			m_type = 2
 		if ("mrrp")
-			message = "mrrps"
+			message = "mrrps."
 			m_type = 2
 			playsound(src.loc, "sound/voice/mrrp.ogg", 50, 1, -1)
 		if ("weh")
@@ -1175,6 +1175,10 @@
 			message = "lets out a merp."
 			m_type = 2
 			playsound(loc, 'sound/voice/merp.ogg', 50, 1, -1)
+		if ("baa")
+			message = "baas!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/baa.ogg','sound/voice/baa2.ogg')), 50, 1, -1)
 		if ("bark")
 			message = "lets out a bark."
 			m_type = 2
