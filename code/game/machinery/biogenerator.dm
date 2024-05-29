@@ -126,6 +126,7 @@
 
 	beaker = inserted_beaker
 	update_appearance()
+	SStgui.update_uis(src)
 
 /*
  * Eject the current stored beaker either into the user's hands or onto the ground.
@@ -263,13 +264,7 @@
 	if(default_unfasten_wrench(user, O, 40))
 		return
 	if(istype(O, /obj/item/reagent_containers/glass))
-		if(beaker)
-			to_chat(user, SPAN_NOTICE("\The [src] is already loaded."))
-		else
-			if(!user.attempt_insert_item_for_installation(O, src))
-				return
-			beaker = O //why the fuck was it "false" before?
-			SStgui.update_uis(src)
+		insert_beaker(user, O)
 	else if(processing)
 		to_chat(user, SPAN_NOTICE("\The [src] is currently processing."))
 	else if(istype(O, /obj/item/storage/bag))
