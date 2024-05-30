@@ -26,7 +26,7 @@
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.language_flags & LANGUAGE_NONVERBAL))
-		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
+		if (!speaker || src.has_status_effect(/datum/status_effect/sight/blindness) || !(speaker in view(src)))
 			message = stars(message)
 
 
@@ -167,7 +167,7 @@
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.language_flags & LANGUAGE_NONVERBAL))
-		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
+		if (!speaker || src.has_status_effect(/datum/status_effect/sight/blindness) || !(speaker in view(src)))
 			message = stars(message)
 
 	if(!(language && (language.language_flags & LANGUAGE_INNATE))) // skip understanding checks for LANGUAGE_INNATE languages

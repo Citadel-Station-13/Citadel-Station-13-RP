@@ -253,12 +253,3 @@
 
 /mob/proc/AdjustConfused(amount)
 	confused = max(confused + amount, 0)
-
-/mob/proc/Blind(amount)
-	eye_blind = max(eye_blind, amount, 0)
-
-/mob/proc/SetBlinded(amount)
-	eye_blind = max(amount, 0)
-
-/mob/proc/AdjustBlinded(amount)
-	eye_blind = max(eye_blind + amount, 0)

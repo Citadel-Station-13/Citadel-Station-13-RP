@@ -631,8 +631,7 @@
 	H.adjustOxyLoss(-healing_amount)
 	H.adjustCloneLoss(-healing_amount)
 	H.adjustBrainLoss(-healing_amount)
-	H.blinded = FALSE
-	H.SetBlinded(FALSE)
+	H.remove_status_effect(/datum/status_effect/sight/blindness)
 	H.eye_blurry = FALSE
 	H.ear_deaf = FALSE
 	H.ear_damage = FALSE

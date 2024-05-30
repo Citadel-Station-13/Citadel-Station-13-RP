@@ -266,7 +266,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
-		if(C.sdisabilities & SDISABILITY_NERVOUS || C.blinded)
+		if(C.has_status_effect(/datum/status_effect/sight/blindness))
 			return 1
 	return 0
 

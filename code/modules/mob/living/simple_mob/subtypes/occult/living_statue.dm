@@ -157,7 +157,7 @@
 
 /spell/aoe_turf/blindness/cast(list/targets, mob/user = usr)
 	for(var/mob/living/victim as anything in targets)
-		victim.Blind(4)
+		victim.apply_status_effect(/datum/status_effect/sight/blindness, 4 SECONDS)
 
 /// Veil of Darkness Spell
 /spell/aoe_turf/veil_of_darkness

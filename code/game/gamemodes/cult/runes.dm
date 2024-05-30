@@ -278,7 +278,7 @@ var/list/sacrificed = list()
 				if(I.damage > 0)
 					I.damage = max(I.damage - 5, 0)		//Heals 5 damage per organ per use
 				if(I.damage <= 5 && I.organ_tag == O_EYES)
-					H.sdisabilities &= ~SDISABILITY_NERVOUS
+					REMOVE_TRAIT(H, TRAIT_BLIND, "broken eyes")
 			// check their limbs
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E
@@ -944,11 +944,9 @@ var/list/sacrificed = list()
 			if(N)
 				continue
 			C.eye_blurry += 50
-			C.Blind(20)
+			C.apply_status_effect(/datum/status_effect/sight/blindness, 20 SECONDS)
 			if(prob(5))
 				C.disabilities |= DISABILITY_NEARSIGHTED
-				if(prob(10))
-					C.sdisabilities |= SDISABILITY_NERVOUS
 			C.show_message("<span class='warning'>Suddenly you see a red flash that blinds you.</span>", 3)
 			affected += C
 		if(affected.len)
@@ -967,7 +965,7 @@ var/list/sacrificed = list()
 			if(N)
 				continue
 			C.eye_blurry += 30
-			C.Blind(10)
+			C.apply_status_effect(/datum/status_effect/sight/blindness, 10 SECONDS)
 			//talismans is weaker.
 			affected += C
 			C.show_message("<span class='warning'>You feel a sharp pain in your eyes, and the world disappears into darkness..</span>", 3)

@@ -76,15 +76,13 @@
 	..()
 	if(is_broken() && !oldbroken && owner && !owner.stat)
 		to_chat(owner, "<span class='danger'>You go blind!</span>")
+		ADD_TRAIT(owner, TRAIT_BLIND, "broken_eyes")
 
 /obj/item/organ/internal/eyes/tick_life(dt)
 	. = ..()
 
 	if(is_bruised())
 		owner.eye_blurry = 4
-
-	if(is_broken())
-		owner.Blind(4)
 
 /obj/item/organ/internal/eyes/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer

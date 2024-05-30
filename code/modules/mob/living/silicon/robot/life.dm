@@ -74,14 +74,7 @@
 
 	AdjustConfused(-1)
 
-	blinded = !!IS_DEAD(src)
-
-
 	if (src.stuttering) src.stuttering--
-
-	if (src.eye_blind || HAS_TRAIT(src, TRAIT_BLIND))
-		src.AdjustBlinded(-1)
-		src.blinded = 1
 
 	if (src.ear_deaf > 0) src.ear_deaf--
 	if (src.ear_damage < 25)
@@ -90,8 +83,6 @@
 
 	src.density = !( src.lying )
 
-	if (src.sdisabilities & SDISABILITY_NERVOUS)
-		src.blinded = 1
 	if (src.sdisabilities & SDISABILITY_DEAF)
 		src.ear_deaf = 1
 
@@ -114,9 +105,9 @@
 			radio.on = 1
 
 	if(is_component_functioning("camera"))
-		src.blinded = 0
+		ADD_TRAIT(src, TRAIT_BLIND, "broken Camera on Synth")
 	else
-		src.blinded = 1
+		REMOVE_TRAIT(src, TRAIT_BLIND, "broken Camera on Synth")
 
 	return 1
 
@@ -215,10 +206,7 @@
 //	if (src.fire) src.fire.icon_state = "fire[src.fire_alert ? 1 : 0]"
 
 	if(stat != 2)
-		if(blinded)
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
-		else
-			clear_fullscreen("blind")
+		//Blindness is handled by the modifier, it also sets the fullscreen overlay
 		if(disabilities & DISABILITY_NEARSIGHTED)
 			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
 		else
