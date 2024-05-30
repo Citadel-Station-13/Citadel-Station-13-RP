@@ -208,7 +208,7 @@
 		var/obj/item/organ/vis = internal_organs_by_name[species.vision_organ]
 		if(!vis)
 			add_blindness_source( "Vision organ not present")
-		else
+		else if(HAS_TRAIT_FROM(src, TRAIT_BLIND, "Vision organ not present"))
 			remove_blindness_source("Vision organ not present")
 
 	if(stat != CONSCIOUS) //Let's not worry about tourettes if you're not conscious.
