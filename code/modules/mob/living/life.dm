@@ -132,12 +132,6 @@
 		else
 			remove_blindness_source("sdisablity nervous")
 
-	if(HAS_TRAIT(src, TRAIT_BLIND))
-		src.overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
-	else
-		src.clear_fullscreen("blind")
-
-
 	//Ears
 	if(sdisabilities & SDISABILITY_DEAF)		//disabled-deaf, doesn't get better on its own
 		setEarDamage(-1, max(ear_deaf, 1))
