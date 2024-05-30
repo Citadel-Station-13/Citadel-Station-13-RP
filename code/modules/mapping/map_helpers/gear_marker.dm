@@ -1,0 +1,142 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
+/**
+ * denotes somewhere to place starting gear, barotrauma style
+ *
+ * this is not a landmark because gear is spawned during map initialization, not during atom/Initialize().
+ *
+ * this system is not suitable for main maps / high precision placement, it's for offmaps and templates and generally
+ * places where it's assumed everyone can access / shares gear with everyone else, and default gear spread is only a suggestion.
+ */
+/obj/map_helper/gear_marker
+
+/obj/map_helper/gear_marker/preloading_instance(datum/dmm_context/context)
+
+#warn impl all
+
+/**
+ * @params
+ * * typepaths - list of (path = amount).
+ */
+/obj/map_helper/gear_marker/proc/inject(list/typepaths)
+	ASSERT(isturf(loc))
+
+	// todo: support for stuff like vendors?
+
+	// anything below this: we are physically spawning objects
+
+	// dump in closet
+	var/obj/structure/closet/closet = locate() in loc
+	if(!isnull(closet))
+		inject_to_loc(closet, typepaths)
+		return TRUE
+
+	// dump on floor
+	inject_to_loc(loc, typepaths)
+	return TRUE
+
+/obj/map_helper/gear_marker/proc/inject_to_loc(atom/where, list/typepaths)
+	var/safety = 50 // i don't konw why you'd need to spawn more than 50 items in a single spot
+	for(var/path in typepaths)
+		var/amount = typepaths[path]
+		for(var/i in 1 to amount)
+			if(safety <= 0)
+				CRASH("ran out of safety")
+			if(ispath(path, /obj/item/stack))
+				safety -= spawn_stacks_at(where, path, amount)
+			else if(ispath(path, /datum/material))
+				safety -= spawn_stacks_at(where, path, amount)
+			else
+				safety -= 1
+				new path(where)
+
+/**
+ * denotes a spot where gear can be spread to
+ *
+ * standard gear tags:
+ *
+ * * mecha - a mech
+ * * crate - a crate
+ * * weapon - weapons
+ *
+ * * gun - specifically ranged weapons
+ * * melee - specifically melee weapons
+ * * antiarmor - specifically experimental or powerful weapons
+ *
+ * * stack - for /obj/item/stack storage
+ *
+ * * item - something that can fit into a storage container
+ * * dense - something that takes the whole tile and *might* block the whole tile
+ *
+ * standard gear tags - special:
+ *
+ * * dangerous - something that can cause severe harm to the crew
+ * * volatile - something that will cause severe harm to the crew or is going to actively be harmful to be around
+ * * anomaly - pretty much implies volatile; anomalies always go in here.
+ *
+ * standard use tags:
+ *
+ * * equipment - immediately used gear for the crew
+ * * storage - backup gear, materials, and resources for the crew
+ * * cargo - something being transported by the crew
+ * * product - something to be sold by the crew
+ *
+ * you usually want to just set list("equipment", "storage", "cargo") and call it a day,
+ * as realistically most lazier ships don't need the distinction. it is, however, there if it is.
+ *
+ * standard use tags - roles:
+ *
+ * we go off of barotrauma; offmaps generally won't have more than these 4 roles, if they do, they should be
+ * doing something special anyways
+ *
+ * * security - used for the combat role
+ * * medical - used for the healing role
+ * * engineer - used for the construction role
+ * * captain - used for the command role
+ */
+/obj/map_helper/gear_marker/distributed
+	/// list of tags, most to least specific
+	/// specifies the type of object
+	///
+	/// examples:
+	/// list("mecha", "dense")
+	/// list("crate", "dense")
+	/// list("crate", "dense")
+	var/list/gear_tags = list()
+	/// allow other gear types to overflow in
+	var/gear_can_be_overflow = TRUE
+
+	/// allow fulltile / dense at all?
+	var/allow_dense = TRUE
+
+	/// list of tags, most to least specific
+	/// specifies what the object is for
+	///
+	/// examples:
+	/// list("equipment", "storage")
+	/// list("storage")
+	/// list("cargo")
+	/// list("product")
+	var/list/use_tags = list()
+	/// allow other uses to overflow in
+	var/use_can_be_overflow = FALSE
+
+/**
+ * denotes a spot where identical sets of gear should be injected at each for a given role or use case
+ *
+ * standard tags:
+ *
+ * we go off of barotrauma; offmaps generally won't have more than these 4 roles, if they do, they should be
+ * doing something special anyways
+ *
+ * * security - used for the combat role
+ * * medical - used for the healing role
+ * * engineer - used for the construction role
+ * * captain - used for the command role
+ */
+/obj/map_helper/gear_marker/stamped
+	/// our role tag
+	var/role_tag
+
+#warn uhh

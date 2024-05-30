@@ -109,6 +109,9 @@
 
 //* Raw Damage *//
 
+// todo: refactor below as well because damage_tier needs to be taken into account for certain limb processing maybe
+//       or maybe not? combat update's gonna be funny :skull_crossbones:
+
 /**
  * @params
  * * brute - brute damage to take
