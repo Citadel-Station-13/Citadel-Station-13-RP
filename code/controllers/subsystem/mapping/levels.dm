@@ -196,6 +196,20 @@
 	ASSERT(!level_or_path.loaded)
 	if(level_or_path.id && !isnull(keyed_levels[level_or_path.id]))
 		CRASH("fatal id collision on [level_or_path.id]")
+
+	// register level in lookup lists
+	if(!level_or_path.id)
+		// levels must have an ID
+		do
+			level_or_path.id = "gen-[copytext(md5(rand(1, 1024 ** 2)), 1, 5)]"
+		while(keyed_levels[level_or_path.id])
+	ASSERT(!keyed_levels[level_or_path.id])
+	keyed_levels[level_or_path.id] = level_or_path
+	if(level_or_path.hardcoded)
+		ASSERT(!typed_levels[level_or_path.type])
+		typed_levels[level_or_path.type] = level_or_path
+
+	// allocate the zlevel for the level
 	var/z_index = allocate_z_index()
 	ASSERT(z_index)
 	var/datum/map_level/existing = ordered_levels[z_index]
@@ -203,12 +217,11 @@
 		if(existing.loaded)
 			ASSERT(istype(existing, /datum/map_level/unallocated))
 			existing.loaded = FALSE
-	ordered_levels[z_index] = level_or_path
-	if(level_or_path.id)
-		keyed_levels[level_or_path.id] = level_or_path
-	if(level_or_path.hardcoded)
-		typed_levels[level_or_path.type] = level_or_path
+			existing.z_index = null
+
+	// assign zlevel; this is now a loaded level
 	level_or_path.z_index = z_index
+	ordered_levels[z_index] = level_or_path
 	level_or_path.loaded = TRUE
 	. = level_or_path
 
@@ -275,10 +288,12 @@
 /datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache)
 	PRIVATE_PROC(TRUE)
 
+	// allocate a level for the map
 	instance = _allocate_level(instance, FALSE)
 	ASSERT(!isnull(instance))
-	// parse map
+	ASSERT(instance.id)
 
+	// parse map
 	var/map_path = instance.resolve_map_path()
 	if(isfile(map_path))
 	else if(!fexists(map_path))
@@ -305,7 +320,10 @@
 		map_initialization_hooked = list()
 	map_initialization_hooking = list()
 
-	var/list/loaded_bounds = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache)
+	var/datum/dmm_context/context = create_dmm_context("level-[instance.id]")
+	context = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache, context = context)
+	var/list/loaded_bounds = context.loaded_bounds
+	#warn hook initializations/middleware
 
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
@@ -391,6 +409,7 @@
  */
 /datum/controller/subsystem/mapping/proc/generate_fluff_level_id()
 	// todo: needs to be persistence-stable..?
+	// todo: this looks ugly, fix it!!!
 	var/discriminator = GLOB.round_id? "[num2hex(text2num(GLOB.round_id), 6)]-" : ""
 	var/safety = 500
 	do

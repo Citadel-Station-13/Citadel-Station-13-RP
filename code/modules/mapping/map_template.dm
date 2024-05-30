@@ -145,8 +145,9 @@
  * * centered - is T the center, or lower left?
  * * orientation - the orientation to load in. default is SOUTH.
  * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
+ * * mangling id - the mangling ID to use. if null, we generate one.
  */
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks)
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, mangling_id)
 	. = FALSE
 	var/ll_x = T.x
 	var/ll_y = T.y
@@ -167,10 +168,15 @@
 		annihilate_bounds(real_turf, width, height)
 
 	var/datum/dmm_parsed/parsed = parsed()
-	var/list/loaded_bounds = parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
 
-	if(isnull(loaded_bounds))
+	var/datum/dmm_context/context = create_dmm_context(mangling_id || generate_mangling_id())
+	context = parsed.load(ll_x, ll_y, ll_z, orientation = orientation, context = context)
+	#warn hook initializations/middleware
+
+	if(!context.loaded())
 		CRASH("failed to load")
+
+	var/list/loaded_bounds = context.loaded_bounds
 
 	++loaded
 
@@ -190,6 +196,15 @@
 	// end
 
 	return TRUE
+
+/**
+ * generate a random mangling ID for us to use
+ */
+/datum/map_template/proc/generate_mangling_id()
+	var/static/notch = 0
+	if(notch >= SHORT_REAL_LIMIT)
+		notch = 0
+	return "template-[++notch]"
 
 /datum/map_template/proc/annihilate_bounds(turf/ll_turf, width, height)
 	SSmapping.subsystem_log("Annihilating bounds in template spawn location: [COORD(ll_turf)] with area [width]x[height]")

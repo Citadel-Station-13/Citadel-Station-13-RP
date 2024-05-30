@@ -35,8 +35,7 @@
  */
 /proc/load_map(map, ll_x, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation, list/area_cache)
 	var/datum/dmm_parsed/parsed = new(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
-	. = parsed
-	parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation, area_cache = area_cache)
+	return parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation, area_cache = area_cache)
 
 /**
  * parses a dmm map
@@ -270,16 +269,26 @@
  * @return bounds list of load, or null if failed.
  */
 /datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache, datum/dmm_context/context)
+	// we always have context, even if we don't
+	if(isnull(context))
+		context = create_dmm_context()
+	. = context
 
 	var/static/loading = FALSE
 	UNTIL(!loading)
 	loading = TRUE
 	Master.StartLoadingMap()
-	global.preloader.loading_context = context
-	global.preloader.loading_orientation = orientation
-	. = _load_impl(arglist(args))
-	global.preloader.loading_orientation = null
-	global.preloader.loading_context = null
+
+	context.loaded_orientation = orientation
+	context.loaded_dmm = src
+
+	global.dmm_preloader.loading_context = context
+	var/list/loaded_bounds = _load_impl(arglist(args))
+	global.dmm_preloader.loading_orientation = null
+
+	context.loaded_bounds = loaded_bounds
+	context.success = !isnull(loaded_bounds)
+
 	Master.StopLoadingMap()
 	loading = FALSE
 

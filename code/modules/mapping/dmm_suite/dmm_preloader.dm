@@ -16,7 +16,7 @@ GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
 	/// * specifying a non-SOUTH orientation rotates the map clockwise to match that orientation.
 	var/loading_orientation
 	/// the active maploader context
-	var/datum/dmm_context/loading_contextKw
+	var/datum/dmm_context/loading_context
 
 	//* --      set per atom      -- *//
 	var/list/attributes
@@ -98,7 +98,7 @@ GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
 		what.pixel_x = px
 		what.pixel_y = py
 
-	#warn preloading_instance
+	what.preloading_instance(loading_context)
 
 /area/template_noop
 	name = "Area Passthrough"
