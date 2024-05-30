@@ -233,7 +233,7 @@
  */
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
-	if(global.dmm_preloader_active && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	if(global.dmm_preloader_active && (src.type == global.dmm_preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)

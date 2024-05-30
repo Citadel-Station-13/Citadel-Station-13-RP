@@ -153,7 +153,7 @@
  * * with_mangling_id - provide the mangling id if being called in preloading_instance()
  * * with_visible_key - provide and we'll include it at the start so players know what a key is for
  */
-/datum/controller/subsystem/mapping/proc/obfuscated_persistent_id(id, with_mangling_id)
+/datum/controller/subsystem/mapping/proc/obfuscated_persistent_id(id, with_mangling_id, with_visible_key)
 	if(!id)
 		return id
 	var/cache_key

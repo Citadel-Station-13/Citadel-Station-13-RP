@@ -10,17 +10,37 @@
  * places where it's assumed everyone can access / shares gear with everyone else, and default gear spread is only a suggestion.
  */
 /obj/map_helper/gear_marker
+	/// if ignited, we put the results here
+	/// this way it can be accessed later
+	var/atom/injection_target
 
 /obj/map_helper/gear_marker/preloading_instance(datum/dmm_context/context)
 
 #warn impl all
 
+/obj/map_helper/gear_marker/proc/ensure_ready()
+	if(!isnull(injection_target))
+		return
+	injection_target = ignite()
+
 /**
+ * called when we're about to perform injection
+ * note: this is **not** a pure, idempotent function!
+ *
+ * @return injection loc
+ */
+/obj/map_helper/gear_marker/proc/ignite()
+	PROTECTED_PROC(TRUE) // don't call this manually, call ensure_ready()
+	CRASH("abstract proc called") // implement on subtypes yourself
+
+/**
+ * make sure to ensure_ready() first
+ *
  * @params
  * * typepaths - list of (path = amount).
  */
 /obj/map_helper/gear_marker/proc/inject(list/typepaths)
-	ASSERT(isturf(loc))
+	ASSERT(!isnull(injection_target))
 
 	// todo: support for stuff like vendors?
 
@@ -34,6 +54,7 @@
 
 	// dump on floor
 	inject_to_loc(loc, typepaths)
+	#warn reconcile with ignite()
 	return TRUE
 
 /obj/map_helper/gear_marker/proc/inject_to_loc(atom/where, list/typepaths)
@@ -96,6 +117,7 @@
  * * captain - used for the command role
  */
 /obj/map_helper/gear_marker/distributed
+	#warn sprite
 	/// list of tags, most to least specific
 	/// specifies the type of object
 	///
@@ -135,8 +157,22 @@
  * * engineer - used for the construction role
  * * captain - used for the command role
  */
-/obj/map_helper/gear_marker/stamped
+/obj/map_helper/gear_marker/role
 	/// our role tag
 	var/role_tag
 
 #warn uhh
+
+/**
+ * generates a locker (crate or closet) of a certain type
+ */
+/obj/map_helper/gear_marker/role/make_locker
+	#warn sprite
+
+	/// locker type
+	var/locker_type = /obj/structure/closet
+	/// locker appearance datum to set, if any
+	var/locker_appearance
+
+/obj/map_helper/gear_marker/role/make_locker/ignite()
+	return new locker_type(loc, locker_appearance)
