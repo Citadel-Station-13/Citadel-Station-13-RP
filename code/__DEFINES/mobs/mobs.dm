@@ -186,7 +186,6 @@
 
 /// Modifiers with this flag will be copied to mobs who get cloned.
 #define MODIFIER_GENETIC	1
-#define MODIFIER_SIGHT		2
 
 #define MOB_PULL_NONE 0
 #define MOB_PULL_SMALLER 1
