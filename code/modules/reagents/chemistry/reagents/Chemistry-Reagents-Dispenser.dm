@@ -101,7 +101,7 @@
 					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy![hydration_str]"))
 				if(7)
 					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk![hydration_str]"))
-	var/hydration_removal=clamp((M.hydration-150)/300,0,1)*effect_level
+	var/hydration_removal=(clamp((M.hydration-150)/300,0,1)*effect_level) + max(0,(M.hydration-450)/300)
 	if(hydration_removal>0)
 		M.adjust_hydration(-hydration_removal)
 		volume-=removed*hydration_removal*3
