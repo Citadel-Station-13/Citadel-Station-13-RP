@@ -32,3 +32,6 @@
 		"emoji" = 'icons/pda_icons/pda_emoji.png',
 		"droneblacklist" = 'icons/pda_icons/pda_droneblacklist.png',
 	)
+	do_not_separate = TRUE
+	absolute = TRUE
+	do_not_mangle = TRUE
