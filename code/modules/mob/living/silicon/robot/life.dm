@@ -105,9 +105,9 @@
 			radio.on = 1
 
 	if(is_component_functioning("camera"))
-		ADD_TRAIT(src, TRAIT_BLIND, "broken Camera on Synth")
+		add_blindness_source( "broken Camera on Synth")
 	else
-		REMOVE_TRAIT(src, TRAIT_BLIND, "broken Camera on Synth")
+		remove_blindness_source("broken Camera on Synth")
 
 	return 1
 

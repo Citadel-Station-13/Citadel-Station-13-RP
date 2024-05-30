@@ -6,9 +6,9 @@
 
 /datum/status_effect/sight/blindness/on_apply()
 	. = ..()
-	owner.overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
+	owner.add_blindness_source("Status effect: Blindness")
 
 /datum/status_effect/sight/blindness/on_remove()
 	. = ..()
-	owner.clear_fullscreen("blind")
+	owner.remove_blindness_source("Status effect: Blindness")
 

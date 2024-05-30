@@ -53,7 +53,7 @@
 
 	//Permanent blindness due to stupidly setup vision organs
 	if(!species.vision_organ)
-		ADD_TRAIT(src, TRAIT_BLIND, "This Species cant see")
+		add_blindness_source( "This Species cant see")
 
 //! WARNING SHITCODE REMOVE LATER
 /mob/living/carbon/human/LateInitialize()

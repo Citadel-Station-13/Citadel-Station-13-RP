@@ -31,7 +31,7 @@
 						if(O.damage > 0) // Fix internal damage
 							O.damage = max(O.damage - (heal_power / 5), 0)
 						if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
-							REMOVE_TRAIT(H, TRAIT_BLIND, "broken eyes")
+							H.remove_blindness_source("broken eyes")
 
 					for(var/obj/item/organ/external/O in H.organs) // Fix limbs
 						if(!O.robotic < ORGAN_ROBOT) // No robot parts for this.

@@ -50,7 +50,7 @@
 
 		// Eyes and blindness.
 		if(!has_eyes() && !HAS_TRAIT_FROM(src, TRAIT_BLIND, "No eyes"))
-			ADD_TRAIT(src, TRAIT_BLIND, "No eyes")
+			add_blindness_source( "No eyes")
 			eye_blurry = 1
 		else if(eye_blurry)
 			eye_blurry = max(eye_blurry-1, 0)
