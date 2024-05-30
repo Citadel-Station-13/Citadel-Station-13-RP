@@ -1161,7 +1161,7 @@
 			setHalLoss(species.total_health - 1)
 
 		if(!IS_CONSCIOUS(src))
-			apply_status_effect(/datum/status_effect/sight/blindness, , 5 SECOND)
+			apply_status_effect(/datum/status_effect/sight/blindness, 5 SECOND)
 			animate_tail_reset()
 			adjustHalLoss(-3)
 
@@ -1195,8 +1195,7 @@
 
 		if(species.vision_organ)
 			var/obj/item/organ/vision = internal_organs_by_name[species.vision_organ]
-			//blurry sight
-			if(vision.is_bruised())   // Vision organs impaired? Permablurry.
+			if(vision && vision.is_bruised())   // Vision organs impaired? Permablurry.
 				eye_blurry = 1
 		if(eye_blurry)	           // Blurry eyes heal slowly
 			eye_blurry = max(eye_blurry-1, 0)

@@ -132,6 +132,10 @@
 		else
 			REMOVE_TRAIT(src, TRAIT_BLIND, "sdisablity nervous")
 
+	if(HAS_TRAIT(src, TRAIT_BLIND))
+		src.overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
+	else
+		src.clear_fullscreen("blind")
 
 
 	//Ears
