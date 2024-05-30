@@ -50,8 +50,11 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
-	//* HUD
+	//* HUD (Atom)
+	/// HUDs to initialize, typepaths
+	var/list/atom_huds_to_initialize
 
+	//* HUD
 	/// active, opened storage
 	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
 	//  todo: we'll eventually need a system to handle ckey transfers properly.
@@ -244,7 +247,7 @@
 	var/timeofdeath = 0 //?Living
 
 	// todo: go to carbon, simple mobs don't need environmental stabilization
-	var/bodytemperature = 310.055 //98.7 F
+	var/bodytemperature = 310.055 //98.7 F or 36,905 C
 	var/drowsyness = 0 //?Carbon
 
 	var/nutrition = 400 //?Carbon

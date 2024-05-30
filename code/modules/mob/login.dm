@@ -64,13 +64,6 @@
 
 	update_client_color()
 
-	//Reload alternate appearances
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
-
 	if(!client.tooltips)
 		client.tooltips = new(client)
 
@@ -79,8 +72,6 @@
 		update_client_z(T.z)
 
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
-
-	reload_huds()
 
 	// reset perspective to using
 	reset_perspective(no_optimizations = TRUE)

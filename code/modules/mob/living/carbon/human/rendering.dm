@@ -316,8 +316,6 @@
 
 /mob/living/carbon/human/get_sprite_accessory_variation(slot)
 	var/datum/sprite_accessory/resolved = get_sprite_accessory(slot)
-	if(!length(resolved?.variations))
-		return null
 	var/variation
 	switch(slot)
 		if(SPRITE_ACCESSORY_SLOT_HAIR)
@@ -328,7 +326,11 @@
 			variation = legacy_tail_variation
 		if(SPRITE_ACCESSORY_SLOT_WINGS)
 			variation = legacy_wing_variation
-	return (resolved.variations[variation])? variation : null
+	if(istype(resolved, /datum/sprite_accessory/tail) && variation == SPRITE_ACCESSORY_VARIATION_WAGGING)
+		var/datum/sprite_accessory/tail/tail = resolved
+		if(tail.ani_state)
+			return SPRITE_ACCESSORY_VARIATION_WAGGING
+	return (resolved.variations?[variation])? variation : null
 
 //! old code below
 

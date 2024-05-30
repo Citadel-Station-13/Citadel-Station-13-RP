@@ -922,7 +922,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(!isnull(obj_storage) && obj_storage.allow_quick_empty && obj_storage.allow_quick_empty_via_attack_self)
 		var/turf/turf = get_turf(e_args.performer)
 		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return TRUE
 	return FALSE
 
 /**

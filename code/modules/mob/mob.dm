@@ -23,15 +23,12 @@
 	// physiology
 	init_physiology()
 	// atom HUDs
-	set_key_focus(src)
 	prepare_huds()
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
+	set_key_focus(src)
 	// todo: remove hooks
 	hook_vr("mob_new",list(src))
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
 	// abilities
 	init_abilities()
 	// inventory
@@ -81,6 +78,8 @@
 		else
 			// mind is not ours, null it out
 			mind = null
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
 	// this kicks out client
@@ -127,7 +126,7 @@
  *
  * This is simply "mob_"+ a global incrementing counter that goes up for every mob
  */
-/mob/GenerateTag()
+/mob/generate_tag()
 	tag = "mob_[++next_mob_id]"
 
 /**
@@ -135,20 +134,15 @@
  *
  * Goes through hud_possible list and adds the images to the hud_list variable (if not already
  * cached)
+ *
+ * todo: this should be atom level but uhh lmao lol
  */
-/atom/proc/prepare_huds()
-	hud_list = list()
-	for(var/hud in hud_possible)
-		var/hint = hud_possible[hud]
-		switch(hint)
-			if(HUD_LIST_LIST)
-				hud_list[hud] = list()
-			else
-				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
-				I.plane = FLOAT_PLANE
-				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
-				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM|KEEP_APART
-				hud_list[hud] = I
+/mob/proc/prepare_huds()
+	if(!atom_huds_to_initialize)
+		return
+	for(var/hud in atom_huds_to_initialize)
+		update_atom_hud_provider(src, hud)
+	atom_huds_to_initialize = null
 
 /mob/proc/remove_screen_obj_references()
 	hands = null
