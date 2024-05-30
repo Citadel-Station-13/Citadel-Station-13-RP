@@ -10,6 +10,7 @@
  * places where it's assumed everyone can access / shares gear with everyone else, and default gear spread is only a suggestion.
  */
 /obj/map_helper/gear_marker
+	icon = 'icons/mapping/helpers/gear_marker.dmi'
 	/// if ignited, we put the results here
 	/// this way it can be accessed later
 	var/atom/injection_target
@@ -56,6 +57,12 @@
 	inject_to_loc(loc, typepaths)
 	#warn reconcile with ignite()
 	return TRUE
+
+/**
+ * find an available spot in loc
+ */
+/obj/map_helper/gear_marker/proc/find_available_spot_in_loc()
+	#warn impl
 
 /obj/map_helper/gear_marker/proc/inject_to_loc(atom/where, list/typepaths)
 	var/safety = 50 // i don't konw why you'd need to spawn more than 50 items in a single spot
@@ -117,7 +124,7 @@
  * * captain - used for the command role
  */
 /obj/map_helper/gear_marker/distributed
-	#warn sprite
+	icon_state = "spot"
 	/// list of tags, most to least specific
 	/// specifies the type of object
 	///
@@ -144,6 +151,12 @@
 	/// allow other uses to overflow in
 	var/use_can_be_overflow = FALSE
 
+	//* stateful *//
+
+	/// were we already used to spawn a dense object?
+	/// if so, we probably shouldn't spawn another
+	var/has_spawned_dense = FALSE
+
 /**
  * denotes a spot where identical sets of gear should be injected at each for a given role or use case
  *
@@ -167,7 +180,7 @@
  * generates a locker (crate or closet) of a certain type
  */
 /obj/map_helper/gear_marker/role/make_locker
-	#warn sprite
+	icon_state = "locker"
 
 	/// locker type
 	var/locker_type = /obj/structure/closet
