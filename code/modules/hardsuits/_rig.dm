@@ -955,6 +955,7 @@
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return
 			else
+				use_obj.copy_atom_colour(src)
 				to_chat(H, "<span class='notice'>Your [use_obj.name] [use_obj.gender == PLURAL ? "deploy" : "deploys"] swiftly.</span>")
 
 	if(piece == "helmet" && helmet)
