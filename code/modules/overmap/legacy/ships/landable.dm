@@ -5,6 +5,8 @@
 /obj/overmap/entity/visitable/ship/landable
 	/// our shuttle
 	var/datum/shuttle/shuttle
+	/// our shuttle controller
+	var/datum/shuttle_controller/overmap/shuttle_controller
 	/// our shuttle level, if any
 	var/datum/map_level/shuttle/flight_level
 	///

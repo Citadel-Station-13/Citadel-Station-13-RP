@@ -5,6 +5,10 @@ GLOBAL_DATUM(legacy_emergency_shuttle_controller, /datum/shuttle_controller/ferr
 
 /datum/shuttle_controller/ferry/emergency/on_transit_begin(obj/shuttle_dock/dock, redirected)
 	. = ..()
+
+	if(!round_end_armed)
+		return
+
 	SSemergencyshuttle.launch_time = world.time
 
 /datum/shuttle_controller/ferry/emergency/on_begin_transit_to_home()
@@ -14,13 +18,13 @@ GLOBAL_DATUM(legacy_emergency_shuttle_controller, /datum/shuttle_controller/ferr
 		return
 
 	spawn(0)
-			SSemergencyshuttle.departed = 1
-			var/estimated_time = round(SSemergencyshuttle.estimate_arrival_time()/60,1)
+		SSemergencyshuttle.departed = 1
+		var/estimated_time = round(SSemergencyshuttle.estimate_arrival_time()/60,1)
 
-			if (SSemergencyshuttle.evac)
-				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
-			else
-				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+		if (SSemergencyshuttle.evac)
+			priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+		else
+			priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 
 // /datum/shuttle_controller/ferry/emergency/on_successful_transit_to_away()
 // 	. = ..()

@@ -99,18 +99,40 @@
 	/// the dock in question, if any
 	var/obj/shuttle_dock/dock
 
+/**
+ * * only fired on aligned docks/undocks
+ */
 /datum/event_args/shuttle/dock/docking
 	blockable = TRUE
 
+/**
+ * * only fired on aligned docks/undocks
+ */
 /datum/event_args/shuttle/dock/undocking
 	blockable = TRUE
 
+/**
+ * * only fired on aligned docks/undocks
+ */
 /datum/event_args/shuttle/dock/docked
 
+/**
+ * * only fired on aligned docks/undocks
+ */
 /datum/event_args/shuttle/dock/undocked
 
+/datum/event_args/shuttle/dock/departing
+	blockable = TRUE
+
+/datum/event_args/shuttle/dock/departed
+
+/datum/event_args/shuttle/dock/arriving
+	blockable = TRUE
+
+/datum/event_args/shuttle/dock/arrived
+
 /**
- * holds data on shuttle takeoff2A
+ * holds data on shuttle grid moves
  *
  * ## State Mitigation
  *
@@ -119,7 +141,8 @@
  *
  * You should never block a recovery operation.
  */
-/datum/event_args/shuttle/movement
+#warn udpate above
+/datum/event_args/shuttle/translation
 	/// shuttle port being used, if any
 	var/obj/shuttle_port/from_shuttle_port
 	/// the dock in question, if any
@@ -129,7 +152,13 @@
 	/// the dock in question, if any
 	var/obj/shuttle_dock/to_dock
 
-/datum/event_args/shuttle/movement/moving
+/datum/event_args/shuttle/translation/translating
 	blockable = TRUE
 
-/datum/event_args/shuttle/movement/moved
+/datum/event_args/shuttle/translation/translated
+
+/**
+ * uhh
+ */
+#warn udpate above
+/datum/event_args/shuttle/
