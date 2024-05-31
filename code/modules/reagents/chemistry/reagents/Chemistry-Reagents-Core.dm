@@ -56,7 +56,7 @@
 			nutritionvalue = 30
 		if(IS_UNATHI) //canivorous lizord...
 			nutritionvalue = 45
-		if(IS_ALRAUNE) //lorewise, alraune are meant to be sucking blood anyways.
+		if(IS_ALRAUNE) //lorewise, alraune are meant to be able to enjoy blood anyways.
 			nutritionvalue = 60
 		if(IS_CHIMERA) //obligate carnivores.
 			nutritionvalue = 80
