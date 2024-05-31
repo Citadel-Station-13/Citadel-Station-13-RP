@@ -56,6 +56,8 @@
 			nutritionvalue = 30
 		if(IS_UNATHI) //canivorous lizord...
 			nutritionvalue = 45
+		if(IS_ALRAUNE) //lorewise, alraune are meant to be sucking blood anyways.
+			nutritionvalue = 60
 		if(IS_CHIMERA) //obligate carnivores.
 			nutritionvalue = 80
 		if(IS_SKRELL) //arguing that blood is "meat" and is still toxic for the vegan skrell at least
