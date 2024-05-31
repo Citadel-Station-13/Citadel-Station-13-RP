@@ -31,6 +31,8 @@
 	total_health = 100 //standard
 	metabolic_rate = 0.75 // slow metabolism
 
+	vision_organ = O_EYES
+
 	brute_mod     = 1    //nothing special
 	burn_mod      = 1.5  //plants don't like fire
 	radiation_mod = 0.7  //cit change: plants seem to be pretty resilient. shouldn't come up much.
