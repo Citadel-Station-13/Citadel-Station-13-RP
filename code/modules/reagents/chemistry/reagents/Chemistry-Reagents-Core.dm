@@ -43,29 +43,40 @@
 	var/effective_dose = dose
 	if(issmall(M)) effective_dose *= 2
 
-	// Treat it like nutriment for the jello, but not equivalent.
-	if(alien == IS_SLIME)
-		/// Unless it's Promethean goo, then refill this one's goo.
-		if(data["species"] == M.species.name)
-			M.inject_blood(src, volume * volume_mod)
-			remove_self(volume)
-			return
-
-		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// More 'effective' blood means more usable material.
-		M.nutrition += 20 * removed * volume_mod
-		M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
-		M.adjustToxLoss(removed / 2) // Still has some water in the form of plasma.
-		return
-
+	var/nutritionvalue = 10 //for reference, normal nutrition has a value of about 30.
 	var/is_vampire = M.species.is_vampire
+	switch(alien)
+		if(IS_SLIME)
+			nutritionvalue = 20
+			if(data["species"] == M.species.name) //just 'inject' the blood if it happens to be promethean "blood".
+				M.inject_blood(src, volume * volume_mod)
+				remove_self(volume)
+				return
+		if(IS_TESHARI) //birb.
+			nutritionvalue = 30
+		if(IS_UNATHI) //canivorous lizord...
+			nutritionvalue = 45
+		if(IS_CHIMERA) //obligate carnivores.
+			nutritionvalue = 80
+		if(IS_SKRELL) //arguing that blood is "meat" and is still toxic for the vegan skrell at least
+			if(effective_dose > 5)
+				if(!is_vampire) //a vetalan skrell sounds funny as hell
+					M.adjustToxLoss(removed)
+			if(effective_dose > 15)
+				if(!is_vampire)
+					M.adjustToxLoss(removed)
+
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
-	if(effective_dose > 5)
-		if(!is_vampire)
-			M.adjustToxLoss(removed)
-	if(effective_dose > 15)
-		if(!is_vampire)
-			M.adjustToxLoss(removed)
+		M.heal_organ_damage(0.5 * removed * volume_mod, 0) //heals vampires more.
+		M.adjust_hydration(7 * removed) //hydrates vetalan better.
+	else
+		M.heal_organ_damage(0.2 * removed * volume_mod, 0)	// Heal brute slightly like normal nutrition. More 'effective' blood means more usable material.
+		M.adjust_nutrition(nutritionvalue * removed * volume_mod)
+		M.adjust_hydration(2 * removed) //contains some water.
+
+	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed) //same rating as eating nutriment
+
 	if(data && data["virus2"])
 		var/list/vlist = data["virus2"]
 		if(vlist.len)
