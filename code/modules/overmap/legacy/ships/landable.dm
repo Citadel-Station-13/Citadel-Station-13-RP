@@ -6,8 +6,8 @@
 	/// our shuttle
 	var/datum/shuttle/shuttle
 	/// our shuttle level, if any
-	var/datum/map_level/shuttle/level
-	/// 
+	var/datum/map_level/shuttle/flight_level
+	///
 
 /obj/overmap/entity/visitable/ship/landable
 	var/shuttle                                         // Name of associated shuttle. Must be autodock.

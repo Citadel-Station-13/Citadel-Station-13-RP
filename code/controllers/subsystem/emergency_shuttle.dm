@@ -30,24 +30,22 @@ SUBSYSTEM_DEF(emergencyshuttle)
 		if (world.time >= launch_time)	//time to launch the shuttle
 			stop_launch_countdown()
 
-			if (!shuttle.location)	//leaving from the station
-				//launch the pods!
-				for (var/EP in escape_pods)
-					var/datum/shuttle/autodock/ferry/escape_pod/pod
-					if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
-						pod = escape_pods[EP]
-					else
-						continue
-					if (!pod.arming_controller || pod.arming_controller.armed)
-						pod.launch(src)
+			if(evac)
+				if(GLOB.legacy_emergency_shuttle_controller.is_at_away())
+					//leaving from the station
+					//launch the pods!
+					launch_escape_pods()
 
 			if (autopilot)
-				GLOB.legacy_emergency_shuttle_controller.transit_towards_away(5 MINUTES)
+				if(GLOB.legacy_emergency_shuttle_controller.is_at_home())
+					GLOB.legacy_emergency_shuttle_controller.transit_towards_away(5 MINUTES)
+				else
+					GLOB.legacy_emergency_shuttle_controller.transit_towards_home(5 MINUTES)
 
 //called when the shuttle has arrived.
 
 /datum/controller/subsystem/emergencyshuttle/proc/shuttle_arrived()
-	if (!shuttle.location)	//at station
+	if(GLOB.legacy_emergency_shuttle_controller.is_at_away()) //at station
 		if (autopilot)
 			set_launch_countdown(3 MINUTES)	//get ready to return
 			var/estimated_time = round(estimate_launch_time()/60,1)
@@ -79,14 +77,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 		//arm the escape pods
 		if (evac)
-			for (var/EP in escape_pods)
-				var/datum/shuttle/autodock/ferry/escape_pod/pod
-				if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
-					pod = escape_pods[EP]
-				else
-					continue
-				if (pod.arming_controller)
-					pod.arming_controller.arm()
+			arm_escape_pods()
 
 //begins the launch countdown and sets the amount of time left until launch
 /datum/controller/subsystem/emergencyshuttle/proc/set_launch_countdown(time)
@@ -198,22 +189,20 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 //returns 1 if the shuttle is docked at the station and waiting to leave
 /datum/controller/subsystem/emergencyshuttle/proc/waiting_to_leave()
-	if (shuttle.location)
+	if(GLOB.legacy_emergency_shuttle_controller.is_at_home())
 		return 0	//not at station
-	return (wait_for_launch || shuttle.moving_status != SHUTTLE_INTRANSIT)
+	return (wait_for_launch || !GLOB.legacy_emergency_shuttle_controller.is_in_transit())
 
 //so we don't have emergencyshuttleshuttle.location everywhere
 /datum/controller/subsystem/emergencyshuttle/proc/location()
-	if (!shuttle)
-		return 1 	//if we dont have a shuttle datum, just act like it's at centcom
-	return shuttle.location
+	return GLOB.legacy_emergency_shuttle_controller.is_at_home()
 
 //returns the time left until the shuttle arrives at it's destination, in seconds
 /datum/controller/subsystem/emergencyshuttle/proc/estimate_arrival_time()
 	var/eta
-	if (shuttle.has_arrive_time())
+	if(GLOB.legacy_emergency_shuttle_controller.is_in_transit())
 		//we are in transition and can get an accurate ETA
-		eta = shuttle.arrive_time
+		eta = GLOB.legacy_emergency_shuttle_controller.transit_arrival_time
 	else
 		//otherwise we need to estimate the arrival time using the scheduled launch time
 		eta = launch_time + shuttle.move_time*10 + shuttle.warmup_time*10
@@ -250,7 +239,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 /datum/controller/subsystem/emergencyshuttle/proc/get_status_panel_eta()
 	if (online())
-		if (shuttle.has_arrive_time())
+		if(GLOB.legacy_emergency_shuttle_controller.is_in_transit())
 			var/timeleft = estimate_arrival_time()
 			return "ETA-[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 

@@ -63,7 +63,7 @@
 		if(shuttle.has_arrive_time())
 			shuttle_status["location"] = "In transit"
 			shuttle_status["mode"] = SUP_SHUTTLE_TRANSIT
-			shuttle_status["time"] = shuttle.eta_minutes()
+			shuttle_status["time"] = shuttle.legacy_eta_in_minutes()
 
 		else
 			shuttle_status["time"] = 0

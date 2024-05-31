@@ -28,14 +28,13 @@
  * * Landing fired on the dock the shuttle just attempted to leave (should always succeed)
  * * Post-landing fired on the dock the shuttle just attempted to leave (non-blocking)
  */
+#warn update above
 /datum/event_args/shuttle
 	/// shuttle ref
 	var/datum/shuttle/shuttle
-	/// shuttle port being used, if any
-	var/obj/shuttle_port/shuttle_port
-	/// the dock in question, if any
-	var/obj/shuttle_dock/dock
 
+	/// this is a blockable event
+	var/blockable = FALSE
 	/// things we're still waiting on, associated to list of UI data for why
 	var/list/datum/shuttle_hook/waiting_on_hooks
 	/// is there a hook that's considered dangerous to force?
@@ -49,22 +48,29 @@
 	var/recovering = FALSE
 	/// did we succeed?
 	var/succeeded = FALSE
+	/// are we done?
+	var/finished = FALSE
 
 /datum/event_args/shuttle/Destroy()
-	finish(FALSE)
+	if(!finished)
+		finish(FALSE)
 	return ..()
 
 /datum/event_args/shuttle/proc/finish(success)
 	succeeded = success
+	finished = TRUE
 	#warn make hooks gtfo
 
 /datum/event_args/shuttle/proc/block(datum/shuttle_hook/hook, list/reason_or_reasons, dangerous)
+	if(!blockable)
+		return FALSE
 	ASSERT(isnull(hook.blocking))
 	hook.blocking = src
 	waiting_on_hooks[hook] = islist(reason_or_reasons)? reason_or_reasons : list(reason_or_reasons)
 
 	if(dangerous)
 		forcing_could_be_dangerous = TRUE
+	return TRUE
 
 /datum/event_args/shuttle/proc/release(datum/shuttle_hook/hook)
 	waiting_on_hooks -= hook
@@ -88,13 +94,23 @@
  * You should never block a recovery operation.
  */
 /datum/event_args/shuttle/dock
+	/// shuttle port being used, if any
+	var/obj/shuttle_port/shuttle_port
+	/// the dock in question, if any
+	var/obj/shuttle_dock/dock
 
 /datum/event_args/shuttle/dock/docking
+	blockable = TRUE
 
 /datum/event_args/shuttle/dock/undocking
+	blockable = TRUE
+
+/datum/event_args/shuttle/dock/docked
+
+/datum/event_args/shuttle/dock/undocked
 
 /**
- * holds data on shuttle takeoff
+ * holds data on shuttle takeoff2A
  *
  * ## State Mitigation
  *
@@ -104,7 +120,16 @@
  * You should never block a recovery operation.
  */
 /datum/event_args/shuttle/movement
+	/// shuttle port being used, if any
+	var/obj/shuttle_port/from_shuttle_port
+	/// the dock in question, if any
+	var/obj/shuttle_dock/from_dock
+	/// shuttle port being used, if any
+	var/obj/shuttle_port/to_shuttle_port
+	/// the dock in question, if any
+	var/obj/shuttle_dock/to_dock
 
-/datum/event_args/shuttle/movement/takeoff
+/datum/event_args/shuttle/movement/moving
+	blockable = TRUE
 
-/datum/event_args/shuttle/movement/landing
+/datum/event_args/shuttle/movement/moved

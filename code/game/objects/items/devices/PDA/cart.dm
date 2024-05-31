@@ -427,11 +427,11 @@ var/list/civilian_cartridges = list(
 
 	if(mode==47)
 		var/supplyData[0]
-		var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
+		var/datum/shuttle_controller/ferry/cargo/shuttle = GLOB.legacy_cargo_shuttle_controller
 		if (shuttle)
-			supplyData["shuttle_moving"] = shuttle.has_arrive_time()
-			supplyData["shuttle_eta"] = shuttle.eta_minutes()
-			supplyData["shuttle_loc"] = shuttle.at_station() ? "Station" : "Dock"
+			supplyData["shuttle_moving"] = shuttle.is_in_transit()
+			supplyData["shuttle_eta"] = shuttle.legacy_eta_in_minutes()
+			supplyData["shuttle_loc"] = shuttle.is_at_away() ? "Station" : "Dock"
 		var/supplyOrderCount = 0
 		var/supplyOrderData[0]
 		for(var/S in SSsupply.shoppinglist)

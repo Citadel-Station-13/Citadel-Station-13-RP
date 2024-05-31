@@ -49,10 +49,6 @@
 	//* Docking
 	/// where we are docked, if any
 	var/obj/shuttle_dock/docked
-	/// in-progress dock/undock operation
-	var/datum/event_args/shuttle/dock/currently_docking
-	/// in-progress move operation
-	var/datum/event_args/shuttle/movement/currently_moving
 	/// the port we're using
 	var/obj/shuttle_port/docked_via_port
 

@@ -149,6 +149,7 @@
  * start transiting towards a specific dock
  *
  * we will be immediately jumped into transit space on this call!
+ * we will process immediate undocking events but we will not be able to be blocked.
  *
  * @params
  * * dock - dock to go to.
