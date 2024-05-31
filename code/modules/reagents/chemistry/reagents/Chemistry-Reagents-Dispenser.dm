@@ -82,7 +82,7 @@
 					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
 		else
 			var/hydration_str=""
-			if(M.hydration<150)
+			if(M.hydration<250)
 				hydration_str=" You're feeling a little dehydrated, too."
 			switch(effect_level)
 				if(1)
