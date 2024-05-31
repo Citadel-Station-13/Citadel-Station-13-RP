@@ -54,7 +54,7 @@
 				return
 		if(IS_TESHARI) //birb.
 			nutritionvalue = 30
-		if(IS_UNATHI) //canivorous lizord...
+		if(IS_UNATHI) //carnivorous lizord...
 			nutritionvalue = 45
 		if(IS_ALRAUNE) //lorewise, alraune are meant to be able to enjoy blood anyways.
 			nutritionvalue = 60
