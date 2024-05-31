@@ -84,7 +84,7 @@ SUBSYSTEM_DEF(supply)
 	var/list/turf/region = GLOB.legacy_cargo_shuttle?.shuttle_turfs_here()
 	for(var/turf/turf as anything in region)
 		callHook("sell_turf", list(turf));
-		for(var/atom/movable/MA in turf)
+		for(var/obj/MA in turf)
 			if(MA.anchored)
 				continue
 

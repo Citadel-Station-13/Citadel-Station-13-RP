@@ -59,6 +59,16 @@ SUBSYSTEM_DEF(shuttle)
 
 //* Docks - Registration *//
 
+/datum/controller/subsystem/shuttle/proc/resolve_dock(obj/shuttle_dock/dock_like)
+	if(istext(dock_like))
+		return dock_id_registry[dock_like]
+	else if(ispath(dock_like))
+		return dock_type_registry[dock_like]
+	else if(istype(dock_like))
+		return dock_like
+	else
+		CRASH("what?")
+
 /datum/controller/subsystem/shuttle/proc/register_dock(obj/shuttle_dock/dock)
 	#warn impl
 

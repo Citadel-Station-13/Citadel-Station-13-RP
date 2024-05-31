@@ -26,8 +26,6 @@ var/global/list/additional_antag_types = list()
 	/// Mostly used for Malf.  This check is performed in job_controller so it doesn't spawn a regular AI.
 	var/list/disabled_jobs = list()
 
-	/// Shuttle transit time is multiplied by this.
-	var/shuttle_delay = 1
 	/// Will the shuttle automatically be recalled?
 	var/auto_recall_shuttle = 0
 

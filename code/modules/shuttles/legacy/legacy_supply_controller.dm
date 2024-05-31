@@ -30,3 +30,5 @@ GLOBAL_DATUM(legacy_cargo_shuttle_controller, /datum/shuttle_controller/ferry/ca
 		if(SSsupply.forbidden_atoms_check(area))
 			return TRUE
 	return FALSE
+
+#warn impl

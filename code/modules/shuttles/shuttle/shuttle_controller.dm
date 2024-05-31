@@ -55,7 +55,7 @@
 	/// if not, and there's no aligning port, we align our anchor's coordinates on the dock's coordinates.
 	var/transit_target_centered_mode
 	/// which direction should we land, for centered?
-	var/transit_target_centered_direction
+	var/transit_target_direction
 	/// if not centered, are we aligning with a specific port?
 	var/obj/shuttle_port/transit_target_port
 	/// timerid for movement
@@ -177,7 +177,7 @@
 	// set variables
 	transit_target_dock = dock
 	transit_target_centered_mode = centered
-	transit_target_centered_direction = direction
+	transit_target_direction = direction
 	transit_target_port = align_with_port
 
 	if(islist(on_transit_callbacks))
@@ -207,7 +207,7 @@
 		transit_target_dock,
 		align_with_port = transit_target_port,
 		centered = transit_target_centered_mode,
-		direction = transit_target_centered_direction,
+		direction = transit_target_direction,
 	)
 	// todo: can we like, make something that isn't an /obj? maybe a turf overlay? maybe vis contents?
 	transit_warning_visuals = list()
@@ -222,7 +222,7 @@
 		transit_target_dock,
 		align_with_port = transit_target_port,
 		centered = transit_target_centered_mode,
-		centered_direction = transit_target_centered_direction,
+		direction = transit_target_direction,
 	)
 	if(!.)
 		for(var/datum/callback/callback in transit_finish_callbacks)
@@ -251,7 +251,7 @@
 /datum/shuttle_controller/proc/cleanup_transit()
 	transit_target_dock = null
 	transit_target_centered_mode = null
-	transit_target_centered_direction = null
+	transit_target_direction = null
 	transit_target_port = null
 	transit_finish_callbacks = null
 	if(transit_timer_id)
@@ -272,7 +272,7 @@
 	return !isnull(transit_timer_id)
 
 /**
- * gets world.time time left in transit
+ * gets world.time time (so, deciseconds) left in transit
  *
  * negative values can be returned if we're overdue, somehow!
  */
@@ -317,7 +317,7 @@
 
 /datum/shuttle_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["$src"] = REF(src),
+	.["$src"] = REF(src)
 	.["$tgui"] = tgui_module
 	.["controllable"] = controllable
 
