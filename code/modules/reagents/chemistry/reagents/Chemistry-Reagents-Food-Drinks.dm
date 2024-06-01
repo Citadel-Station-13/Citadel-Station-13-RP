@@ -1998,6 +1998,7 @@
 	reagent_state = REAGENT_SOLID
 	color = "#619494"
 	adj_temp = -5
+	hydration = 9
 
 	glass_name = "Ice"
 	glass_desc = "Generally, you're supposed to put something else in there too..."
@@ -3527,7 +3528,7 @@
 	description = "This barely qualifies as a drink, and could give jet fuel a run for its money. Also known to cause feelings of euphoria and numbness."
 	taste_description = "spiced numbness"
 	color = "#242424"
-	proof = 400 // unathi have unlocked secrets unknown to others
+	proof = 300 // unathi have unlocked secrets unknown to others
 
 	glass_name = "Redeemer's Brew"
 	glass_desc = "This barely qualifies as a drink, and may cause euphoria and numbness. Imbiber beware!"
@@ -3899,7 +3900,7 @@
 	description = "A classic mix of whiskey and sugar... simple and direct."
 	taste_description = "smokey, divine whiskey"
 	color = "#774410" // rgb(119, 68, 16)
-	proof = (WHISKEY+BITTERS)/2
+	proof = (WHISKEY+BITTERS)/3
 
 	glass_name = "Old Fashioned"
 	glass_desc = "A classic mix of whiskey and sugar... simple and direct."
@@ -4301,7 +4302,7 @@
 	id = "greenstuff"
 	description = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 	taste_description = "black licorice and thick malt"
-	proof = 400 // again: how do they do it?
+	proof = 300 // again: how do they do it?
 
 	glass_name = "Green Stuff"
 	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
@@ -4871,7 +4872,7 @@
 	id = "galacticpanic"
 	description = "The absolute worst thing you could ever put in your body."
 	taste_description = "an entire galaxy collasping in on itself."
-	proof = 400
+	proof = 300
 	druggy = 50
 	halluci = 30
 	var/adj_dizzy = 10
