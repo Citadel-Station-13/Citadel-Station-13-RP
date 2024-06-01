@@ -363,8 +363,9 @@
 		if(!all_arfgs)
 			return
 		for(var/obj/machinery/atmospheric_field_generator/E in all_arfgs)
-			E.disable_field()
-			E.wasactive = FALSE
+			if(!E.alwaysactive)
+				E.disable_field()
+				E.wasactive = FALSE
 
 
 /area/proc/fire_alert()

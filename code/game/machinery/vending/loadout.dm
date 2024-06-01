@@ -226,6 +226,7 @@
 		/obj/item/clothing/mask/bandana/green = 5,
 		/obj/item/clothing/mask/bandana/red = 5,
 		/obj/item/clothing/mask/surgical = 5,
+		/obj/item/clothing/mask/warmer = 5,
 	)
 	premium = list(/obj/item/bedsheet/rainbow = 1)
 	contraband = list(/obj/item/clothing/mask/gas/clown_hat = 1)

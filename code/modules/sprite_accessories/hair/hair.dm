@@ -167,3 +167,11 @@ they are. This code is a mess.
 	icon_state = "upward"
 	icon_add_legacy = null
 	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/highlander
+	name = "Highlander"
+	id = "hair-highlander"
+	icon = 'icons/mob/sprite_accessory/hair/hair.dmi'
+	icon_state = "highlander"
+	icon_add_legacy = null
+	hair_flags = HAIR_TIEABLE

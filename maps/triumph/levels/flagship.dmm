@@ -585,7 +585,8 @@
 /obj/machinery/vending/cigarette,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -2638,6 +2639,14 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"in" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0;
+	old_wall = 1
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "ip" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -4701,6 +4710,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"pa" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "pb" = (
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -9709,7 +9724,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -9909,6 +9925,10 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Gg" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Gh" = (
 /obj/machinery/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
@@ -10854,6 +10874,12 @@
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"Jg" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Ji" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
@@ -12169,7 +12195,8 @@
 /obj/machinery/vending/medical,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -12607,11 +12634,16 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Ox" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Oz" = (
 /obj/machinery/vending/fitness,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -13571,7 +13603,10 @@
 	},
 /area/centcom/security)
 "Rx" = (
-/obj/machinery/light,
+/obj/machinery/light{
+	old_wall = 1;
+	use_power = 0
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Ry" = (
@@ -14359,7 +14394,8 @@
 "Ui" = (
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
@@ -15218,7 +15254,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -29442,7 +29479,7 @@ jQ
 wG
 Pn
 yz
-Pn
+in
 wG
 jQ
 jQ
@@ -29825,15 +29862,15 @@ AF
 AF
 AF
 jQ
-CG
+Gg
 yz
 Ui
+pa
 yz
-yz
-yz
+pa
 Ui
 yz
-CG
+Jg
 jQ
 AF
 AF
@@ -30989,7 +31026,7 @@ AF
 AF
 AF
 jQ
-CG
+Gg
 yz
 Pn
 yz
@@ -30997,7 +31034,7 @@ yz
 yz
 yz
 Pn
-CG
+Jg
 jQ
 AF
 AF
@@ -31381,8 +31418,8 @@ Ne
 AA
 OZ
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 ze
 lM
@@ -31765,7 +31802,7 @@ AF
 AF
 AF
 jQ
-Sp
+Ox
 Sp
 dx
 mE
@@ -31963,8 +32000,8 @@ mA
 Sp
 dx
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 nb
 lM
@@ -32351,8 +32388,8 @@ Sp
 Sp
 Sp
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 lM
 lM

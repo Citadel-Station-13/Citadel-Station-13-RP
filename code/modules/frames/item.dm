@@ -21,7 +21,7 @@
 	. = ..()
 	if(!isnull(frame))
 		src.frame = frame
-	else if(ispath(src.frame))
+	if(ispath(src.frame))
 		src.frame = fetch_frame_datum(src.frame)
 	sync_frame(src.frame)
 
