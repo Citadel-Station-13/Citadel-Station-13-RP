@@ -290,8 +290,7 @@
 	if(suiciding)
 		. += SPAN_WARNING("[T.He] appears to have commited suicide...  There is no hope of recovery.")
 
-
-//! I hate this. Though it's better than what it was before. -Zandario
+	//* I hate this. Though it's better than what it was before. -Zandario
 	var/message = FALSE
 	var/weight_examine = round(weight)
 	if(show_pudge()) //Some clothing or equipment can hide this.
@@ -323,7 +322,7 @@
 			else
 				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
 		. += message
-//! End of the bs
+	//* End of the bs
 
 	if(attempt_vr(src,"examine_bellies",args))
 		. += attempt_vr(src,"examine_bellies",args)
