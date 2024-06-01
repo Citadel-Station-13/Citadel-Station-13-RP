@@ -1,9 +1,6 @@
 /***
  * Heat pumps, binary devices that pump heat between both ends
  */
-#define EFFICIENCY_MULT 1
-#define EFFICIENCY_LIMIT_MULT 1
-
 /obj/machinery/atmospherics/component/binary/heat_pump
 	name = "heat pump"
 	desc = "A heat pump, used to transfer heat between two pipe systems."
@@ -139,24 +136,9 @@
 	if((air1.temperature < 1) ||  (air2.temperature < 1))
 		return
 
-	//Now we are at the point where we need to actively pump
-	efficiency = get_thermal_efficiency()
-	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
+	efficiency = get_thermal_efficiency(target_temp, air1, air2)
+	var/power_draw = pump_heat(target_temp, air1, air2, power_rating)
 
-	var/actual_performance_factor = performance_factor*efficiency
-
-	var/max_energy_transfer = actual_performance_factor*power_rating
-
-	var/datum/gas_mixture/sample_air = air2
-	if(length(network2.line_members)==1)
-		sample_air=network2.line_members[1].air
-
-	if(abs(sample_air.temperature - target_temp) < 0.001) // don't want wild swings and too much power use
-		return
-	//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
-	var/energy_transfered = -air1.adjust_thermal_energy(-clamp(sample_air.get_thermal_energy_change(target_temp),-max_energy_transfer,max_energy_transfer))
-	energy_transfered=abs(air2.adjust_thermal_energy(energy_transfered))
-	var/power_draw = abs(energy_transfered/actual_performance_factor)
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
 		use_power(power_draw)
@@ -164,12 +146,6 @@
 			network1.update = 1
 		if(network2)
 			network2.update = 1
-
-/obj/machinery/atmospherics/component/binary/heat_pump/proc/get_thermal_efficiency()
-	if((target_temp < air2.temperature))
-		return clamp((air2.temperature / air1.temperature) * EFFICIENCY_MULT, 0, 1 * EFFICIENCY_LIMIT_MULT)
-	else if((target_temp > air2.temperature))
-		return clamp((air1.temperature / air2.temperature) * EFFICIENCY_MULT, 0, 1 * EFFICIENCY_LIMIT_MULT)
 
 /obj/machinery/atmospherics/component/binary/heat_pump/proc/handle_passive_flow()
 	var/air_heat_capacity = air1.heat_capacity()
@@ -229,7 +205,3 @@
 				. = TRUE
 			if(.)
 				target_temp = max(newValue,lowest_temp)
-
-
-#undef EFFICIENCY_MULT
-#undef EFFICIENCY_LIMIT_MULT

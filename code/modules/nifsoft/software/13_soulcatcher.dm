@@ -544,8 +544,6 @@
 		dummy.compile_overlays()
 		dummy.alpha = 192
 
-		// remove hudlist
-		dummy.cut_overlay(dummy.hud_list)
 		// appearance clone immediately
 		appearance = dummy.appearance
 		plane = AUGMENTED_PLANE

@@ -44,8 +44,6 @@
 		dna.real_name = real_name
 		sync_organ_dna()
 
-	init_world_bender_hud()
-
 	if(mapload)
 		return INITIALIZE_HINT_LATELOAD
 
@@ -65,18 +63,7 @@
 		qdel(organ)
 	QDEL_NULL(nif)
 	QDEL_LIST_NULL(vore_organs)
-	cleanup_world_bender_hud()
 	return ..()
-
-/mob/living/carbon/human/prepare_data_huds()
-	//Update med hud images...
-	. = ..()
-	//...sec hud images...
-	update_hud_sec_implants()
-	update_hud_sec_job()
-	update_hud_sec_status()
-	//...and display them.
-	add_to_all_human_data_huds()
 
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
@@ -1615,21 +1602,6 @@
 
 	msg += get_display_species()
 	return msg
-
-//Crazy alternate human stuff
-/mob/living/carbon/human/proc/init_world_bender_hud()
-	var/animal = pick("cow","chicken_brown", "chicken_black", "chicken_white", "chick", "mouse_brown", "mouse_gray", "mouse_white", "lizard", "cat2", "goose", "penguin")
-	var/image/img = image('icons/mob/animal.dmi', src, animal)
-	// hud refactor when
-	img.override = TRUE
-	LAZYINITLIST(hud_list)
-	hud_list[WORLD_BENDER_ANIMAL_HUD] = img
-	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-	A.add_to_hud(src)
-
-/mob/living/carbon/human/proc/cleanup_world_bender_hud()
-	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-	A.remove_from_hud(src)
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)

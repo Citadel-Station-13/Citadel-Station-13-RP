@@ -209,6 +209,19 @@
 		RegisterSignal(target, signal_type, proctype, override)
 
 /**
+ * RegisterSignal on SSdcs to listen to global signals.
+ */
+/datum/proc/RegisterGlobalSignal(signal_type, proctype, override = FALSE)
+	RegisterSignal(SSdcs, signal_type, proctype, override)
+
+/**
+ * RegisterSignal on SSdcs to listen to global signals.
+ */
+/datum/proc/RegisterGlobalSignals(list/signal_types, proctype, override = FALSE)
+	for (var/signal_type in signal_types)
+		RegisterGlobalSignal(SSdcs, signal_type, proctype, override)
+
+/**
  * Stop listening to a given signal from target
  *
  * Breaks the relationship between target and source datum, removing the callback when the signal fires
@@ -253,6 +266,12 @@
 	signal_procs[target] -= sig_type_or_types
 	if(!signal_procs[target].len)
 		signal_procs -= target
+
+/**
+ * RegisterSignal on SSdcs to listen to global signals.
+ */
+/datum/proc/UnregisterGlobalSignal(sig_type_or_types)
+	UnregisterSignal(SSdcs, sig_type_or_types)
 
 /**
  * Called on a component when a component of the same type was added to the same parent

@@ -240,7 +240,7 @@
 	},
 /area/awaymission/labs/cave)
 "bb" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor{
 	icon_state = "white"
 	},

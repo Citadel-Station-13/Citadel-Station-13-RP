@@ -4,6 +4,7 @@
 //! New action logging file. Global helpers for things like attack, construction, say, etc, will go in here. !//
 
 // todo: flesh this file out
+// todo: redo everything again lmao we need structured logging
 
 /**
  * Logs a construction action / step
@@ -26,7 +27,8 @@
  * todo: log initiator
  */
 /proc/log_construction(datum/event_args/actor/e_args, atom/target, message)
-	log_game("CONSTRUCTION: [key_name(e_args.performer)] [COORD(e_args.performer)] -> [target] [COORD(target)] ([ref(target)]): [message]")
+	// todo: better handling
+	log_game("CONSTRUCTION: [key_name(e_args?.performer)] [COORD(e_args?.performer)] -> [target] [COORD(target)]: [message]")
 
 /**
  * log click - context menu

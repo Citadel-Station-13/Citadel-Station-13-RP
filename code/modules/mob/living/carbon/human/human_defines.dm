@@ -33,15 +33,14 @@
 	/// Throws byond:tm: errors if placed in human/emote, but not here.
 	var/spam_flag = FALSE
 
-	hud_possible = list(
-		LIFE_HUD,
-		BIOLOGY_HUD,
-		ID_HUD,
-		WANTED_HUD,
-		IMPLOYAL_HUD,
-		IMPTRACK_HUD,
-		IMPCHEM_HUD,
-		ANTAG_HUD,
+	atom_huds_to_initialize = list(
+		/datum/atom_hud_provider/medical_biology,
+		/datum/atom_hud_provider/medical_health,
+		/datum/atom_hud_provider/security_implant,
+		/datum/atom_hud_provider/security_job,
+		/datum/atom_hud_provider/security_status,
+		/datum/atom_hud_provider/special_role,
+		/datum/atom_hud_provider/overriding/world_bender_animals,
 	)
 
 	//! Buckling - For riding.dm
