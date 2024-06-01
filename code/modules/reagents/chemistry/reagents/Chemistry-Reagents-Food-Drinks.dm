@@ -4790,23 +4790,7 @@
 	glass_name = "Deathbell"
 	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
 
-/datum/reagent/ethanol/monstertamer
-	name = "Monster Tamer"
-	id = "monstertamer"
-	description = "A questionably-delicious blend of a carnivore's favorite food and a potent neural depressant."
-	taste_description = "the gross yet satisfying combination of chewing on a raw steak while downing a shot of whiskey"
-	proof = WHISKEY/2
-	color = "#d3785d"
-	metabolism = REM * 2.5 // about right for mixing nutriment and ethanol.
-	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
-	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
-
-	glass_name = "Monster Tamer"
-	glass_desc = "This looks like a vaguely-alcoholic slurry of meat. Gross."
-
-/datum/reagent/ethanol/monstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-
+/proc/monster_tamer(mob/living/carbon/M, alien, removed, alt_nutriment_factor)
 	if(!M.species.is_vampire) //it's still food!
 		switch(alien)
 			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
@@ -4829,7 +4813,52 @@
 				to_chat(H, "<span class='info'>Your mind starts to clear, soothed into a state of clarity as your senses return.</span>")
 				log_and_message_admins("is no longer feral.", H)
 
+/datum/reagent/ethanol/monstertamer
+	name = "Monster Tamer"
+	id = "monstertamer"
+	description = "A questionably-delicious blend of a carnivore's favorite food and a potent neural depressant."
+	taste_description = "the gross yet satisfying combination of chewing on a raw steak while downing a shot of whiskey"
+	proof = WHISKEY/2
+	color = "#d3785d"
+	metabolism = REM * 2.5 // about right for mixing nutriment and ethanol.
+	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
+	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
+
+	glass_name = "Monster Tamer"
+	glass_desc = "This looks like an alcoholic slurry of meat. Gross."
+
+/datum/reagent/ethanol/monstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
+
+	monster_tamer(M,alien, removed, alt_nutriment_factor)	
+
 /datum/reagent/ethanol/monstertamer/affect_blood(mob/living/carbon/M, alien, removed)
+	..()
+	if(alien == IS_SKRELL)
+		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
+	if(!M.species.is_vampire)
+		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
+			M.nutrition += (alt_nutriment_factor * removed)
+
+/datum/reagent/drink/drymonstertamer
+	name = "Dry Monster Tamer"
+	id = "drymonstertamer"
+	description = "A questionably-delicious blend of a carnivore's favorite food and, it turns out, certain oligosaccharides common to certain plants."
+	taste_description = "the gross yet satisfying combination of chewing on a raw steak while gulping a bunch of root beer"
+	color = "#d3785d"
+	metabolism = REM * 2.5 // not actually right for the mix, but required to make it mechanically equivalent for feralness purposes
+	var/alt_nutriment_factor = 5 //half as much as protein since it's half protein.
+	//using a new variable instead of nutriment_factor so we can call ..() without that adding nutrition for us without taking factors for protein into account
+
+	glass_name = "Dry Monster Tamer"
+	glass_desc = "This looks like a fizzy slurry of meat. Gross."
+
+/datum/reagent/drink/drymonstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
+
+	monster_tamer(M,alien, removed, alt_nutriment_factor)
+
+/datum/reagent/drink/drymonstertamer/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
 	if(alien == IS_SKRELL)
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
