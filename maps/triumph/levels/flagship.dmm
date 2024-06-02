@@ -62,7 +62,7 @@
 "ar" = (
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -585,7 +585,8 @@
 /obj/machinery/vending/cigarette,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -630,7 +631,7 @@
 "cb" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Offices";
+	name = "Nanotrasen Offices";
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor/steel,
@@ -1989,7 +1990,9 @@
 	},
 /area/centcom/medical)
 "gf" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/mre{
+	emagged = 1
+	},
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "gh" = (
@@ -2636,6 +2639,14 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"in" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0;
+	old_wall = 1
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "ip" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -3533,7 +3544,7 @@
 	},
 /area/centcom/medical)
 "ly" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "lz" = (
@@ -4699,6 +4710,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"pa" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "pb" = (
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -5232,7 +5249,7 @@
 /turf/unsimulated/wall,
 /area/centcom/restaurant)
 "qQ" = (
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -6455,7 +6472,7 @@
 /area/centcom/bathroom)
 "uC" = (
 /obj/machinery/account_database{
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -7280,7 +7297,7 @@
 	},
 /area/centcom/security)
 "xe" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -9707,7 +9724,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -9907,6 +9925,10 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Gg" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Gh" = (
 /obj/machinery/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
@@ -10852,6 +10874,12 @@
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"Jg" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Ji" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
@@ -12167,7 +12195,8 @@
 /obj/machinery/vending/medical,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -12605,11 +12634,16 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Ox" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Oz" = (
 /obj/machinery/vending/fitness,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -12620,7 +12654,7 @@
 "OD" = (
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security{
-	desc = "This locker is filled silly stickers and some other serious NanoTrasen ones. It is lazily labeled 'The big cat'."
+	desc = "This locker is filled silly stickers and some other serious Nanotrasen ones. It is lazily labeled 'The big cat'."
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -13380,7 +13414,7 @@
 /area/centcom/security)
 "QW" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Offices";
+	name = "Nanotrasen Offices";
 	req_one_access = list(101)
 	},
 /obj/machinery/door/firedoor,
@@ -13569,7 +13603,10 @@
 	},
 /area/centcom/security)
 "Rx" = (
-/obj/machinery/light,
+/obj/machinery/light{
+	old_wall = 1;
+	use_power = 0
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Ry" = (
@@ -14357,7 +14394,8 @@
 "Ui" = (
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
@@ -15216,7 +15254,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -15592,7 +15631,7 @@
 /area/centcom/security)
 "Yy" = (
 /obj/machinery/door/airlock/centcom{
-	name = "NanoTrasen Offices"
+	name = "Nanotrasen Offices"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -29440,7 +29479,7 @@ jQ
 wG
 Pn
 yz
-Pn
+in
 wG
 jQ
 jQ
@@ -29823,15 +29862,15 @@ AF
 AF
 AF
 jQ
-CG
+Gg
 yz
 Ui
+pa
 yz
-yz
-yz
+pa
 Ui
 yz
-CG
+Jg
 jQ
 AF
 AF
@@ -30987,7 +31026,7 @@ AF
 AF
 AF
 jQ
-CG
+Gg
 yz
 Pn
 yz
@@ -30995,7 +31034,7 @@ yz
 yz
 yz
 Pn
-CG
+Jg
 jQ
 AF
 AF
@@ -31379,8 +31418,8 @@ Ne
 AA
 OZ
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 ze
 lM
@@ -31763,7 +31802,7 @@ AF
 AF
 AF
 jQ
-Sp
+Ox
 Sp
 dx
 mE
@@ -31961,8 +32000,8 @@ mA
 Sp
 dx
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 nb
 lM
@@ -32349,8 +32388,8 @@ Sp
 Sp
 Sp
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 lM
 lM

@@ -167,7 +167,7 @@
 /obj/machinery/appliance/proc/choose_output()
 	set src in view()
 	set name = "Choose output"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(!can_use_check(usr))
 		return
@@ -644,7 +644,7 @@
 	victim.calculate_composition()
 
 	var/obj/item/reagent_containers/food/snacks/variable/mob/result = new /obj/item/reagent_containers/food/snacks/variable/mob(CI.container)
-	result.w_class = victim.mob_size
+	result.set_weight_class(victim.mob_size)
 	result.reagents.add_reagent(victim.composition_reagent, victim.composition_reagent_quantity)
 
 	if (victim.reagents)

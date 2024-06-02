@@ -1,4 +1,4 @@
-
+#define ETHANOL_MET_DIVISOR 20
 
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
@@ -8,18 +8,21 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#404030"
 
-	ingested_metabolism_multiplier = 2
+	ingested_metabolism_multiplier = 5
+
+	metabolism = REM/ETHANOL_MET_DIVISOR
 
 	var/nutriment_factor = 0
 	var/hydration_factor = 0
-	// todo: this is awful why is strength lower when higher?
-	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
+	var/proof = 200
 	var/toxicity = 1
 
 	var/druggy = 0
 	var/adj_temp = 0
 	var/targ_temp = 310
 	var/halluci = 0
+
+	data=0
 
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
@@ -30,12 +33,11 @@
 	if(istype(L))
 		L.adjust_fire_stacks(volume / 15)
 
-/datum/reagent/ethanol/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
-	. = ..()
+#define ABV (proof/200)
 
-	if(issmall(entity)) removed *= 2
-	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
+/datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed) //This used to do just toxin. That's boring. Let's make this FUN.
+	var/strength_mod = 1 //Alcohol is 3x stronger when injected into the veins.
+	if(alien == IS_SKRELL)
 		strength_mod *= 5
 	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		strength_mod *= 1.25
@@ -50,82 +52,83 @@
 			to_chat(entity, "<span class='danger'>You feel your leaves start to wilt.</span>")
 		strength_mod *=5 //cit change - alcohol ain't good for plants
 
-	var/effective_dose = metabolism.highest_so_far * strength_mod * (1 + entity.reagents_bloodstream.get_reagent_amount(src)/60) //drinking a LOT will make you go down faster
-	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL, 1)
-	if(HAS_TRAIT(entity, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/10))
-			entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, 1)
-		entity.adjustToxLoss(effective_dose/10)
+	var/effective_dose = volume * strength_mod * ABV * min(1,dose*(ETHANOL_MET_DIVISOR/10)) // give it 50 ticks to ramp up
+	M.add_chemical_effect(CE_ALCOHOL, 1)
+	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
+		if(proof > 0)
+			var/intolerant_dose = strength_mod*removed*ABV*10
+			if(prob((intolerant_dose)))
+				M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+			M.adjustToxLoss(intolerant_dose)
 		return 0
-	if(effective_dose >= strength) // Early warning
-		entity.make_dizzy(18) // It is decreased at the speed of 3 per tick
-	if(effective_dose >= strength * 2) // Slurring
-		entity.slurring = max(entity.slurring, 90)
-	if(effective_dose >= strength * 3) // Confusion - walking in random directions
-		entity.Confuse(60)
-	if(effective_dose >= strength * 4) // Blurry vision
-		entity.eye_blurry = max(entity.eye_blurry, 30)
-	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
-		entity.drowsyness = max(entity.drowsyness, 60)
-	if(effective_dose >= strength * 6) // Toxic dose
-		entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, toxicity*3)
-	if(effective_dose >= strength * 7) // Pass out
-		entity.afflict_unconscious(20 * 60)
-		entity.afflict_sleeping(20 * 90)
+	#define DOSE_LEVEL 6
+	var/effect_level=round(effective_dose/DOSE_LEVEL)
+	if(effect_level != data)
+		var/lowering=(data>effect_level)
+		data=effect_level
+		if(lowering)
+			switch(effect_level)
+				if(0)
+					to_chat(M,SPAN_NOTICE("You no longer feel under the influence."))
+				if(1)
+					to_chat(M,SPAN_DANGER("You are no longer slurring your words as much."))
+				if(2)
+					to_chat(M,SPAN_DANGER("You can walk straight again."))
+				if(3)
+					to_chat(M,SPAN_DANGER("You're not seeing double anymore."))
+				if(4)
+					to_chat(M,SPAN_DANGER("You no longer feel like you're going to puke."))
+				if(5)
+					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
+				if(6)
+					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
+		else
+			var/hydration_str=""
+			if(M.hydration<250)
+				hydration_str=" You're feeling a little dehydrated, too."
+			switch(effect_level)
+				if(1)
+					to_chat(M,SPAN_DANGER("You're starting to feel a little tipsy.[hydration_str]"))
+					M.dizziness=max(M.dizziness,150)
+				if(2)
+					to_chat(M,SPAN_DANGER("You're starting to slur your words.[hydration_str]"))
+				if(3)
+					to_chat(M,SPAN_DANGER("You can barely walk straight![hydration_str]"))
+				if(4)
+					to_chat(M,SPAN_DANGER("You're seeing double!.[hydration_str]"))
+					M.eye_blurry=max(M.eye_blurry,30)
+				if(5)
+					to_chat(M,SPAN_USERDANGER("You feel like you might puke...[hydration_str]"))
+				if(6)
+					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy![hydration_str]"))
+				if(7)
+					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk![hydration_str]"))
+	var/hydration_removal=(clamp((M.hydration-150)/300,0,1)*effect_level) + max(0,(M.hydration-450)/300)
+	if(hydration_removal>0)
+		M.adjust_hydration(-hydration_removal)
+		volume-=removed*hydration_removal*3
+	if(effect_level>=2)
+		M.slurring=max(M.slurring,10)
+	if(effect_level>=3 && prob(effect_level-2))
+		M.Confuse(60)
+	if(effect_level>=5 && prob(effect_level-4) && !M.lastpuke)
+		M.vomit(1,0)
+		if(M.nutrition>=100)
+			volume-=DOSE_LEVEL/4
+	if(effect_level>=6 && prob(effect_level-5))
+		M.drowsyness=max(M.drowsyness,60)
+	if(effect_level>=7)
+		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
+		if(volume>DOSE_LEVEL*7)
+			volume-=REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
+	#undef DOSE_LEVEL
+	return
 
-	if(druggy != 0)
-		entity.druggy = max(entity.druggy, druggy*3)
-
-	if(adj_temp > 0 && entity.bodytemperature < targ_temp) // 310 is the normal bodytemp. 310.055
-		entity.bodytemperature = min(targ_temp, entity.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(adj_temp < 0 && entity.bodytemperature > targ_temp)
-		entity.bodytemperature = min(targ_temp, entity.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-
-	if(halluci)
-		entity.hallucination = max(entity.hallucination, halluci*3)
-	return effective_dose
-
-/datum/reagent/ethanol/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
-	. = ..()
-
-	entity.adjust_nutrition(nutriment_factor * removed)
-	entity.adjust_hydration(hydration_factor * removed)
-	var/strength_mod = 1
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
-		strength_mod *= 5
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
-		strength_mod *= 1.25
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
-		strength_mod *= 0.75
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
-		strength_mod = 0
-	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
-		strength_mod *= 2
-	handle_vampire(entity, removed)
-
-	var/effective_dose = strength_mod * entity.reagents_bloodstream.get_reagent_amount(src) // this was being recalculated a bunch before--why?
-	if(HAS_TRAIT(entity, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/10))
-			entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, 1)
-		entity.adjustToxLoss(effective_dose/10)
-		return 0
-	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL, 1)
-	if(effective_dose >= strength) // Early warning
-		entity.make_dizzy(6) // It is decreased at the speed of 3 per tick
-	if(effective_dose >= strength * 2) // Slurring
-		entity.slurring = max(entity.slurring, 30)
-	if(effective_dose >= strength * 3) // Confusion - walking in random directions
-		entity.Confuse(20)
-	if(effective_dose >= strength * 4) // Blurry vision
-		entity.eye_blurry = max(entity.eye_blurry, 10)
-	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
-		entity.drowsyness = max(entity.drowsyness, 20)
-	if(effective_dose >= strength * 6) // Toxic dose
-		entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL_TOXIC, toxicity)
-	if(effective_dose >= strength * 7) // Pass out
-		entity.afflict_unconscious(20 * 20)
-		entity.afflict_sleeping(20 * 30)
-
+/datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(issmall(M)) removed *= 2
+	M.adjust_nutrition(nutriment_factor * removed)
+	M.adjust_hydration(hydration_factor * removed)
+	M.bloodstr.add_reagent("ethanol", removed * ABV)
 	if(druggy != 0)
 		entity.druggy = max(entity.druggy, druggy)
 

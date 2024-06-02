@@ -14,7 +14,7 @@
 	can_be_unanchored = TRUE
 	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
 	plane = OBJ_PLANE
@@ -242,7 +242,7 @@
 	else if (istype(object, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = object
 		if (C.use(1))
-			playsound(src.loc, 'sound/effects/sparks1.ogg', 75, TRUE)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
 			user.visible_message(
 				message = SPAN_NOTICE("\The [user] begins to wire \the [src] for electrochromic tinting."),
 				self_message = SPAN_NOTICE("You begin to wire \the [src] for electrochromic tinting."),
@@ -453,7 +453,7 @@
 
 /obj/structure/window/verb/rotate_counterclockwise()
 	set name = "Rotate Counterclockwise" // Temporary fix until someone more intelligent figures out how to add proper rotation verbs to the panels
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (usr.incapacitated())
@@ -471,7 +471,7 @@
 
 /obj/structure/window/verb/rotate_clockwise()
 	set name = "Rotate Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (usr.incapacitated())

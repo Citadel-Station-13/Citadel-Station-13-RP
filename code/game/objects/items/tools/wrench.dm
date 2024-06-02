@@ -11,7 +11,7 @@
 	tool_behaviour = TOOL_WRENCH
 	damage_force = 6
 	throw_force = 7
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -93,7 +93,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 8
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_PHORON = 2)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked", "warped", "blasted")
@@ -137,7 +137,7 @@
 	materials_base = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	damage_force = 8
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 8
 	attack_verb = list("drilled", "screwed", "jabbed")
 	tool_speed = 0.25

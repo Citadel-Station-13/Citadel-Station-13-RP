@@ -518,7 +518,7 @@
 /area/shuttle/pirate/deck)
 "eC" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	pixel_x = 26;
 	pixel_y = -6;
@@ -1946,7 +1946,7 @@
 /area/piratebase/sickbay)
 "ru" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	dir = 8;
 	pixel_x = 8;
 	pixel_y = -26;
@@ -2186,7 +2186,7 @@
 /area/piratebase/power)
 "tG" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	dir = 1;
 	frequency = 1380;
 	pixel_x = -26;
@@ -2958,7 +2958,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	dir = 4;
 	pixel_x = 8;
 	pixel_y = -26;
@@ -4783,7 +4783,7 @@
 "QM" = (
 /obj/machinery/door/airlock/external,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	dir = 8;
 	pixel_x = -8;
 	pixel_y = -26;
@@ -5205,7 +5205,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	dir = 1;
 	pixel_x = -26;
 	req_access = list(168)
@@ -5584,7 +5584,7 @@
 /area/piratebase/mining)
 "XV" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	pixel_x = 26;
 	req_access = list(168)
 	},
@@ -5679,7 +5679,7 @@
 	req_access = list(168)
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	dir = 4;
 	pixel_x = -5;
 	pixel_y = -26;
@@ -19983,11 +19983,11 @@ Tg
 Tg
 Tg
 Tg
+Tg
+Tg
+Tg
+Tg
 FU
-Tg
-Tg
-Tg
-Tg
 Tg
 Tg
 Tg
@@ -35115,16 +35115,16 @@ Tg
 Tg
 Tg
 Tg
+Tg
+Tg
+Tg
+Tg
+Tg
+Tg
+Tg
+Tg
+Tg
 FU
-Tg
-Tg
-Tg
-Tg
-Tg
-Tg
-Tg
-Tg
-Tg
 Tg
 Tg
 Tg

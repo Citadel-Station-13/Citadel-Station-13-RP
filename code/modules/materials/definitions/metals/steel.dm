@@ -100,6 +100,18 @@
 		cost = 5,
 		time = 2 SECONDS,
 	)
+	for(var/datum/frame2/frame_datum as anything in GLOB.frame_datum_lookup)
+		if(!frame_datum.material_buildable)
+			continue
+		. += create_stack_recipe_datum(
+			category = "frames",
+			cost = frame_datum.material_cost,
+			name = frame_datum.name,
+			recipe_type = /datum/stack_recipe/frame,
+			recipe_args = list(
+				frame_datum.type,
+			),
+		)
 	. += new /datum/stack_recipe/railing
 	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa middle", product = /obj/structure/bed/chair/sofa, exclusitivity = /obj/structure/bed)
 	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa left", product = /obj/structure/bed/chair/sofa/left, exclusitivity = /obj/structure/bed)
@@ -110,13 +122,6 @@
 		category = "frames",
 		name = "light switch frame",
 		product = /obj/item/frame/lightswitch,
-		cost = 2,
-	)
-	// todo: frame rework
-	. += create_stack_recipe_datum(
-		category = "frames",
-		name = "apc frame",
-		product = /obj/item/frame/apc,
 		cost = 2,
 	)
 	// todo: frame rework

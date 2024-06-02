@@ -44,11 +44,6 @@
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
 
-	if(client.prefs && client.prefs.client_fps)
-		client.fps = client.prefs.client_fps
-	else
-		client.fps = 0 // Results in using the server FPS
-
 	next_move = 1
 	disconnect_time = null // Clear the disconnect time
 
@@ -69,23 +64,11 @@
 
 	update_client_color()
 
-	//Reload alternate appearances
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
-
-	if(!client.tooltips)
-		client.tooltips = new(client)
-
 	var/turf/T = get_turf(src)
 	if(isturf(T))
 		update_client_z(T.z)
 
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
-
-	reload_huds()
 
 	// reset perspective to using
 	reset_perspective(no_optimizations = TRUE)

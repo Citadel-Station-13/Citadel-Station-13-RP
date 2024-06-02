@@ -1345,14 +1345,7 @@
 	name = "Gimlet"
 	id = "gimlet"
 	result = "gimlet"
-	required_reagents = list("gin" = 1, "limejuice" = 1, "sodawater" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/drinks/firepunch
-	name = "Fire Punch"
-	id = "firepunch"
-	result = "firepunch"
-	required_reagents = list("sugar" = 2, "rum" = 1)
+	required_reagents = list("gin" = 1, "limejuice" = 1, "sugar" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/newsheriff
@@ -1466,6 +1459,13 @@
 	id = "monstertamer"
 	result = "monstertamer"
 	required_reagents = list("whiskey" = 1, "protein" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/drymonstertamer
+	name = "Dry Monster Tamer"
+	id = "drymonstertamer"
+	result = "drymonstertamer"
+	required_reagents = list("sassafras" = 1, "protein" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/phobos

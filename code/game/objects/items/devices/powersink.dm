@@ -5,7 +5,7 @@
 	desc = "A nulling power sink which drains energy from electrical systems."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "powersink0"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 2

@@ -66,7 +66,7 @@
 									H.reagents_bloodstream.add_reagent("cryptobiolin", force)
 						else
 							return
-					if(update)	H.UpdateDamageIcon()
+					if(update)	H.update_damage_overlay()
 				H.update_health()
 
 			else

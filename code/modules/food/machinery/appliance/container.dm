@@ -47,7 +47,7 @@
 /obj/item/reagent_containers/cooking_container/verb/empty()
 	set src in view(1)
 	set name = "Empty Container"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Removes items from the container, excluding reagents."
 
 	do_empty(usr)

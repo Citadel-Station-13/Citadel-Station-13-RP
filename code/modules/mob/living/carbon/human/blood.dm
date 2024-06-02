@@ -44,6 +44,15 @@
 		"species_id" = species.id,
 	)
 
+/mob/living/carbon/human/proc/fixblood_if_broken()
+	if(species.species_flags & NO_BLOOD)
+		return
+	if(!should_have_organ(O_HEART))
+		return
+	if(!vessel.has_reagent("blood"))
+		vessel.add_reagent("blood", 0.1)
+		fixblood()
+
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
 	if(inStasisNow())
@@ -264,6 +273,8 @@
 		reagents.add_reagent("blood", amount, data = blood_data)
 		reagents.update_total()
 		return
+
+	fixblood_if_broken()
 
 	var/list/our_data = vessel.reagent_datas["blood"]
 	if(!our_data || !blood_data)

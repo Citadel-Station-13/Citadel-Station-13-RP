@@ -32,14 +32,14 @@
 	/// Number of wounds we have - some wounds like bruises will collate into one datum representing all of them.
 	var/wound_tally
 
-//! ## STRINGS
+	//* ## STRINGS
 	/// Fracture description if any.
 	var/broken_description
 	/// Modifier used for generating the on-mob damage overlay for this limb.
 	var/damage_state = "00"
 
 
-//! ## DAMAGE VARS
+	//* ## DAMAGE VARS
 	/// Multiplier for incoming brute damage.
 	var/brute_mod = 1
 	/// As above for burn.
@@ -64,7 +64,7 @@
 	var/base_miss_chance = 20
 
 
-//! ## APPEARANCE VARS
+	//* ## APPEARANCE VARS
 	/// Snowflake warning, reee. Used for slime limbs.
 	var/nonsolid
 	/// Also for slimes. Used for transparent limbs.
@@ -97,7 +97,7 @@
 	/// Markings (body_markings) to apply to the icon
 	var/list/markings = list()
 
-//! ## STRUCTURAL VARS
+	//* ## STRUCTURAL VARS
 	/// Master-limb.
 	var/obj/item/organ/external/parent
 	/// Sub-limbs.
@@ -110,7 +110,7 @@
 	var/organ_rel_size = 25
 	var/atom/movable/splinted
 
-//! ## JOINT/STATE VARS
+	//* ## JOINT/STATE VARS
 	/// It would be more appropriate if these two were named "affects_grasp" and "affects_stand" at this point
 	var/can_grasp
 	/// Modifies stance tally/ability to stand.
@@ -133,7 +133,7 @@
 	var/encased
 
 
-//! ## SURGERY VARS
+	//* ## SURGERY VARS
 	var/open   = FALSE
 	var/stage  = FALSE
 	var/cavity = FALSE
@@ -191,13 +191,13 @@
 	var/burn_damage = 0
 	switch(severity)
 		if (1)
-			burn_damage += rand(10, 16)
+			burn_damage += rand(10, 14)
 		if (2)
-			burn_damage += rand(8, 12)
+			burn_damage += rand(7, 8.5)
 		if(3)
 			burn_damage += rand(4, 8)
 		if(4)
-			burn_damage += rand(2, 6)
+			burn_damage += rand(2, 5)
 
 	if(burn_damage)
 		inflict_bodypart_damage(
@@ -362,6 +362,9 @@
 	// todo: this is awful
 	var/sharp = damage_mode & DAMAGE_MODE_SHARP
 	var/edge = damage_mode & DAMAGE_MODE_EDGE
+	// cache owner incase we get detached
+	// todo: this is awful
+	var/mob/living/carbon/owner = src.owner
 
 	// todo: lol this is shit
 	// legacy: organ damage on high damage
@@ -384,7 +387,7 @@
 	if(weapon_descriptor)
 		add_autopsy_data(weapon_descriptor, brute + burn)
 
-	//! LEGACY BELOW
+		//* LEGACY BELOW
 
 	var/can_cut = (sharp) && (robotic < ORGAN_ROBOT)
 
@@ -404,7 +407,10 @@
 		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
 			var/overflow_brute = brute - can_inflict_brute
 			// keep allowing it, but, diminishing returns
-			var/damage_anyways_brute = brute * min(1, 1 / ((brute_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
+			var/damage_anyways_brute = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
+				overflow_brute * min(1, 1 / ((max(brute_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
+			)
+			overflow_brute -= damage_anyways_brute
 			if(can_cut)
 				if(sharp && !edge)
 					create_wound( PIERCE, damage_anyways_brute )
@@ -418,11 +424,13 @@
 		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
 			create_wound( BURN, burn )
-		else if(!(damage_mode & DAMAGE_MODE_NO_OVERFLOW))
+		else
 			var/overflow_burn = burn - can_inflict_burn
-			// keep allowing it, but, diminishing returns
-			var/damage_anyways_burn = burn * min(1, 1 / ((burn_dam + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage)))
-			create_wound( BURN, damage_anyways_burn )
+			var/damage_anyways_burn = !(damage_mode & DAMAGE_MODE_NO_OVERFLOW) && ( \
+				overflow_burn  * min(1, 1 / ((max(burn_dam, max_damage) + damage_softcap_intensifier) / (damage_softcap_intensifier + max_damage))) \
+			)
+			overflow_burn -= damage_anyways_burn
+			create_wound(BURN, damage_anyways_burn + can_inflict_burn)
 			// rest goes into shock
 			owner.shock_stage += overflow_burn * 0.33
 
@@ -443,8 +451,8 @@
 		//   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
 
 		//Check edge eligibility
-		//! edge eligibility disabled; organs should optimally not reqiure the item reference and should instead
-		//! get descriptors (damage, damage mode, etc) of the inbound attack.
+			//* edge eligibility disabled; organs should optimally not reqiure the item reference and should instead
+			//* get descriptors (damage, damage mode, etc) of the inbound attack.
 		var/edge_eligible = edge
 		// var/edge_eligible = 0
 		// if(edge)
@@ -467,7 +475,7 @@
 			droplimb(0, DROPLIMB_BLUNT)
 		else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF && prob(brute*0.33))
 			droplimb(0, DROPLIMB_EDGE)
-		//! damage spreading disabled; the attacking weapon should handle this if necessary.
+			//* damage spreading disabled; the attacking weapon should handle this if necessary.
 		// else if(spread_dam && owner && parent && (brute_overflow || burn_overflow) && (brute_overflow >= 5 || burn_overflow >= 5) && !permutation) //No infinite damage loops.
 		// 	var/brute_third = brute_overflow * 0.33
 		// 	var/burn_third = burn_overflow * 0.33
@@ -480,7 +488,7 @@
 		// 					C.take_damage(brute_on_children, burn_on_children, 0, 0, null, forbidden_limbs, 1) //Splits the damage to each individual 'child', incase multiple exist.
 		// 	parent.take_damage(brute_third, burn_third, 0, 0, null, forbidden_limbs, 1)
 
-	//! LEGACY ABOVE
+		//* LEGACY ABOVE
 
 	if(!defer_host_updates)
 		owner?.update_health()
@@ -781,7 +789,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				wounds -= W    //TODO: robot wounds for robot limbs
 				src.update_damages()
 				if (update_icon())
-					owner.UpdateDamageIcon(1)
+					owner.update_damage_overlay(1)
 		return
 
 	for(var/datum/wound/W as anything in wounds)
@@ -825,7 +833,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	// sync the organ's damage with its wounds
 	src.update_damages()
 	if (update_icon())
-		owner.UpdateDamageIcon(1)
+		owner.update_damage_overlay(1)
 
 //Updates brute_damn and burn_damn from wound damages. Updates BLEEDING status.
 /obj/item/organ/external/proc/update_damages()
@@ -961,7 +969,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	spawn(1)
 		if(istype(victim))
 			victim.update_health()
-			victim.UpdateDamageIcon()
+			victim.update_damage_overlay()
 			victim.update_icons_body()
 		else
 			victim.update_icons()
@@ -984,7 +992,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(DROPLIMB_BURN)
 			new /obj/effect/debris/cleanable/ash(droploc)
 			for(var/obj/item/I in src)
-				if(I.w_class > ITEMSIZE_SMALL && !istype(I,/obj/item/organ))
+				if(I.w_class > WEIGHT_CLASS_SMALL && !istype(I,/obj/item/organ))
 					I.forceMove(droploc)
 			qdel(src)
 		if(DROPLIMB_BLUNT)
@@ -1006,7 +1014,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			for(var/obj/item/I in src)
-				if(I.w_class <= ITEMSIZE_SMALL)
+				if(I.w_class <= WEIGHT_CLASS_SMALL)
 					qdel(I)
 					continue
 				I.forceMove(droploc)
@@ -1163,7 +1171,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	return 0
 
 /obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0, force)
-	//! SHITCODE ALERT: REFACTOR ORGANS ASAP; FORCE IS JUST SO PREFS WORK.
+		//* SHITCODE ALERT: REFACTOR ORGANS ASAP; FORCE IS JUST SO PREFS WORK.
 	if(robotic >= ORGAN_ROBOT && !force)
 		return
 
@@ -1217,7 +1225,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.refresh_modular_limb_verbs()
 	return 1
 
-//! ## VIRGO HOOK, TODO: Integrate this.
+	//* ## VIRGO HOOK, TODO: Integrate this.
 //Sideways override for nanoform limbs (ugh)
 /obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE, force)
 	var/original_robotic = robotic
@@ -1303,7 +1311,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	for(var/atom/movable/implant in implants)
 		//large items and non-item objs fall to the floor, everything else stays
 		var/obj/item/I = implant
-		if(istype(I) && I.w_class < ITEMSIZE_NORMAL)
+		if(istype(I) && I.w_class < WEIGHT_CLASS_NORMAL)
 			implant.forceMove(victim.drop_location())
 		else
 			implant.forceMove(src)

@@ -418,6 +418,11 @@
 /turf/simulated/shuttle/wall/voidcraft/red
 	stripe_color = "#FF0000"
 
+/turf/simulated/shuttle/wall/voidcraft/red/hard_corner
+	name = "hardcorner wall"
+	icon_state = "void-hc"
+	hard_corner = 1
+
 /turf/simulated/shuttle/wall/voidcraft/blue
 	stripe_color = "#0000FF"
 

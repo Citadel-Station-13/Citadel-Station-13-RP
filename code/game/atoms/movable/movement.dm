@@ -311,6 +311,31 @@
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 
+// Hooks for foreign code.
+/atom/movable/Move(...)
+	var/old_loc = loc
+	. = ..()
+	if (!.)
+		return
+
+	if (light_source_solo)
+		light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		var/thing
+		for (thing in light_source_multi)
+			L = thing
+			L.source_atom.update_light()
+
+	// Z-Mimic.
+	if (bound_overlay)
+		// The overlay will handle cleaning itself up on non-openspace turfs.
+		bound_overlay.forceMove(get_step(src, UP))
+		if (bound_overlay && bound_overlay.dir != dir)
+			bound_overlay.setDir(dir)
+	else if (isturf(loc) && (!old_loc || !TURF_IS_MIMICKING(old_loc)) && MOVABLE_SHALL_MIMIC(src))
+		SSzcopy.discover_movable(src)
+
 //! WARNING WARNING THIS IS SHITCODE
 /atom/movable/proc/handle_buckled_mob_movement(newloc, direct, glide_size_override, forcemoving)
 	for(var/mob/M as anything in buckled_mobs)

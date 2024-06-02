@@ -19,3 +19,5 @@
 	// todo: organs
 	for(var/obj/item/organ/external/ext in organs)
 		ext.reagents_dermal.clear()
+	// redo graphics
+	rebuild_standing_overlays()

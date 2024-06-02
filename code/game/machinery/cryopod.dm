@@ -418,8 +418,6 @@
 				W.forceMove(src)
 				if(W.contents.len)
 					for(var/obj/item/O in W.contents)
-						if(istype(O,/obj/item/storage/internal))
-							continue
 						O.forceMove(src)
 		if(ishuman(to_despawn))
 			var/mob/living/carbon/human/H = to_despawn
@@ -435,8 +433,6 @@
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
 			for(var/obj/item/O in W.contents)
-				if(istype(O,/obj/item/storage/internal)) //Stop eating pockets, you fuck!
-					continue
 				O.forceMove(src)
 
 	//Delete all items not on the preservation list.
@@ -559,7 +555,7 @@
 
 /obj/machinery/cryopod/verb/eject()
 	set name = "Eject Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr.stat != 0)
 		return
@@ -585,7 +581,7 @@
 
 /obj/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0 || !check_occupant_allowed(usr))

@@ -4,7 +4,7 @@
 	icon_state = "taperecorder_empty"
 	item_state = "analyzer"
 	icon = 'icons/obj/device.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	materials_base = list(MAT_STEEL = 60, MAT_GLASS = 30)
 
@@ -67,7 +67,7 @@
 
 /obj/item/tape_recorder/verb/eject()
 	set name = "Eject Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -138,7 +138,7 @@
 
 /obj/item/tape_recorder/verb/record()
 	set name = "Start Recording"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -193,7 +193,7 @@
 
 /obj/item/tape_recorder/verb/stop()
 	set name = "Stop"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -211,7 +211,7 @@
 
 /obj/item/tape_recorder/verb/wipe_tape()
 	set name = "Wipe Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -234,7 +234,7 @@
 
 /obj/item/tape_recorder/verb/playback_memory()
 	set name = "Playback Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -306,7 +306,7 @@
 
 /obj/item/tape_recorder/verb/print_transcript()
 	set name = "Print Transcript"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -369,7 +369,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "tape_white"
 	item_state = "analyzer"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	materials_base = list(MAT_STEEL=20, "glass"=5)
 	damage_force = 1
 	throw_force = 0

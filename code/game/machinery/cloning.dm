@@ -305,7 +305,7 @@
 
 /obj/machinery/clonepod/verb/eject()
 	set name = "Eject Cloner"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0)
@@ -365,7 +365,7 @@
 // Empties all of the beakers from the cloning pod, used to refill it
 /obj/machinery/clonepod/verb/empty_beakers()
 	set name = "Eject Beakers"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0)
@@ -471,7 +471,7 @@
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/datum/dna2/record/buf = null
 	var/read_only = 0 //Well,it's still a floppy disk
 
@@ -532,7 +532,7 @@
 	name = "Diskette Box"
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/disks/PopulateContents()
+/obj/item/storage/box/disks/legacy_spawn_contents()
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)

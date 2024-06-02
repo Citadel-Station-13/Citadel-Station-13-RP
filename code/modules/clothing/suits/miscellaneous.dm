@@ -96,7 +96,7 @@
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "syndicate"
 	desc = "A plastic replica of the syndicate space suit, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/toy)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
@@ -306,7 +306,7 @@
 	. = ..()
 	if(slot == SLOT_ID_SUIT)
 		user.drop_all_held_items()
-		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
+		user.drop_item_to_ground(user.item_by_slot_id(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
@@ -973,7 +973,7 @@
 
 /obj/item/clothing/suit/storage/toggle/hoodie/nt
 	name = "NT hoodie"
-	desc = "A warm, blue sweatshirt.  It proudly bears the silver NanoTrasen insignia lettering on the back.  The edges are trimmed with silver."
+	desc = "A warm, blue sweatshirt.  It proudly bears the silver Nanotrasen insignia lettering on the back.  The edges are trimmed with silver."
 	icon_state = "nt_hoodie"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_blue", SLOT_ID_LEFT_HAND = "suit_blue")
 
@@ -1111,7 +1111,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/roll_sleeves()
 	set name = "Roll Sleeves"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living))
 		return
@@ -1130,7 +1130,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/tuck()
 	set name = "Toggle Shirt Tucking"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)||usr.stat)
 		return
@@ -1145,7 +1145,7 @@
 
 /obj/item/clothing/suit/storage/flannel/verb/button()
 	set name = "Toggle Shirt Buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)||usr.stat)
 		return
@@ -1303,7 +1303,7 @@
 /*
 /obj/item/clothing/suit/storage/toggle/operations_coat/verb/toggle()
 	set name = "Toggle coat buttons"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!usr.canmove || usr.stat || usr.restrained())
@@ -1387,7 +1387,7 @@
 	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. This appears less sturdy than the authentic article."
 	icon_state = "samurai_colorable"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 
@@ -1478,7 +1478,7 @@
 
 /obj/item/clothing/suit/storage/toggle/varsity/worn
 	name = "well-worn varsity jacket"
-	desc = "A worn varsity jacket. The NanoTrasen corporate logo on the back is outdated, suggesting the age of this coat."
+	desc = "A worn varsity jacket. The Nanotrasen corporate logo on the back is outdated, suggesting the age of this coat."
 	icon_state = "varsity_worn"
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 
@@ -1489,7 +1489,7 @@
 
 /obj/item/clothing/suit/storage/pullover/nt
 	name = "pullover hoodie (NT)"
-	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today! This one is dyed in NT colors and has the trademark NanoTrasen logo!"
+	desc = "A plain-colored hoodie with no zipper to speak of. The exonet debate on whether it's hotter to watch one get pulled off or zipped open still rages on. You could prove one of the sides right today! This one is dyed in NT colors and has the trademark Nanotrasen logo!"
 	icon_state = "hoodie_pullover_NT"
 
 /obj/item/clothing/suit/storage/umbral

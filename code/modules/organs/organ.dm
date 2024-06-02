@@ -5,14 +5,14 @@
 	drop_sound = 'sound/items/drop/flesh.ogg'
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
-//! ## STRINGS VARS
+	//* ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"
 	/// The organ holding this object.
 	var/parent_organ = BP_TORSO
 
 
-//! STATUS VARS
+	//* STATUS VARS
 	/// Various status flags
 	var/status = 0
 	/**
@@ -29,7 +29,7 @@
 	var/stapled_nerves = FALSE
 
 
-//! ##REFERENCE VARS
+	//* ##REFERENCE VARS
 	/// Current mob owning the organ.
 	var/mob/living/carbon/human/owner
 	/// Transplant match data.
@@ -45,7 +45,7 @@
 	var/s_base
 
 
-//! ## DAMAGE VARS
+	//* ## DAMAGE VARS
 	/// Damage before considered bruised
 	var/min_bruised_damage = 10
 	/// Damage before becoming broken
@@ -62,12 +62,12 @@
 	/// decay rate
 	var/decay_rate = ORGAN_DECAY_PER_SECOND_DEFAULT
 
-//! ## LANGUAGE VARS - For organs that assist with certain languages.
+	//* ## LANGUAGE VARS - For organs that assist with certain languages.
 	var/list/will_assist_languages = list()
 	var/list/datum/language/assists_languages = list()
 
 
-//! ## VERB VARS
+	//* ## VERB VARS
 	/// Verbs added by the organ when present in the body.
 	var/list/organ_verbs
 	/// Is the parent supposed to be organic, robotic, assisted?
@@ -86,7 +86,7 @@
 
 	if(isliving(loc))
 		owner = loc
-		w_class = max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
+		set_weight_class(max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1)) //smaller mobs have smaller organs.
 		if(internal)
 			LAZYDISTINCTADD(owner.internal_organs, src)
 			LAZYSET(owner.internal_organs_by_name, organ_tag, src)

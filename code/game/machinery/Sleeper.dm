@@ -290,7 +290,7 @@
 
 /obj/machinery/sleeper/verb/move_eject()
 	set name = "Eject occupant"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr == occupant)
 		switch(usr.stat)

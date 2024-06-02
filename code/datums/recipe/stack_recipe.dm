@@ -8,10 +8,10 @@
  *
  * why? because this is easier to regex later if it turns out silicons code design(tm) was terrible
  */
-/proc/create_stack_recipe_datum(name, product, cost, amount = 1, sanity_checks = TRUE, time = 0, recipe_type = /datum/stack_recipe, category, exclusitivity)
+/proc/create_stack_recipe_datum(name, product, cost, amount = 1, sanity_checks = TRUE, time = 0, recipe_type = /datum/stack_recipe, category, exclusitivity, list/recipe_args)
 	// check this isn't being misused
 	ASSERT(!ispath(recipe_type, /datum/stack_recipe/material))
-	var/datum/stack_recipe/creating = new recipe_type
+	var/datum/stack_recipe/creating = isnull(recipe_args)? (new recipe_type) : (new recipe_type(arglist(recipe_args)))
 	creating.name = name
 	creating.category = category
 	creating.result_type = product
@@ -138,8 +138,9 @@
 		while(amount)
 			if(!--safety)
 				CRASH("safety hit")
-			var/obj/item/stack/creating = new result_type(where, min(amount, max_amount))
-			amount -= creating.amount
+			var/making_amount = min(amount, max_amount)
+			var/obj/item/stack/creating = new result_type(where, making_amount)
+			amount -= making_amount
 			created += creating
 	else
 		for(var/i in 1 to min(amount, 50))

@@ -11,7 +11,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/northblock)
 "ad" = (
-/obj/machinery/power/solar/fake,
+/obj/machinery/power/solar,
 /turf/simulated/floor/airless{
 	icon_state = "solarpanel"
 	},
@@ -29,7 +29,7 @@
 	},
 /area/awaymission/northblock)
 "ai" = (
-/obj/machinery/power/solar/fake,
+/obj/machinery/power/solar,
 /turf/space,
 /area/awaymission/northblock)
 "aj" = (

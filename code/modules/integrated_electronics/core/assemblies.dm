@@ -4,7 +4,7 @@
 	name = "electronic assembly"
 	obj_flags = OBJ_RANGE_TARGETABLE | OBJ_MELEE_TARGETABLE
 	desc = "It's a case, for building small electronics with."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
@@ -55,7 +55,7 @@
 	/// Cost set to default during init if unset.
 	var/cost = 0
 
-/obj/item/electronic_assembly/GenerateTag()
+/obj/item/electronic_assembly/generate_tag()
 	tag = "assembly_[next_assembly_id++]"
 
 /obj/item/electronic_assembly/examine(mob/user, dist)
@@ -306,7 +306,7 @@
 */
 /obj/item/electronic_assembly/verb/rename()
 	set name = "Rename Circuit"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your circuit, useful to stay organized."
 	set src in usr
 

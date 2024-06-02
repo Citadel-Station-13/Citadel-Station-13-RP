@@ -1,6 +1,6 @@
 
 /datum/loadout_entry/accessory
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 	category = LOADOUT_CATEGORY_ACCESSORIES
 	abstract_type = /datum/loadout_entry/accessory
 	path = /obj/item/clothing/accessory
@@ -232,12 +232,12 @@
 /datum/loadout_entry/accessory/buttonup
 	name = "Button Up Shirt"
 	path = /obj/item/clothing/accessory/buttonup
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/accessory/buttonup/untucked
 	name = "Button Up Shirt - Untucked"
 	path = /obj/item/clothing/accessory/buttonup/untucked
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/accessory/antediluvian
 	name = "Antediluvian Loincloth"
@@ -318,7 +318,7 @@
 
 /datum/loadout_entry/accessory/civ_exos_mob
 	name = "medical exoframe"
-	description = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance. (This is cosmetic, and does not actually do anything.)"
+	description = "A cheap medical exoframe mass-produced by Nanotrasen and provided to employees who cannot function in gravity without assistance. (This is cosmetic, and does not actually do anything.)"
 	path = /obj/item/clothing/accessory/civ_exos_mob
 
 /datum/loadout_entry/accessory/ante_armband

@@ -12,7 +12,7 @@ Atmosphere: Breathable with standard human required environment
 Weather: Sunny, with chance of showers and thunderstorms. 25C
 Lifesign: Multiple Fauna. No history of hostile life recorded
 Ownership: Planet is owned by the Happy Days and Sunshine Corporation.
-Allignment: Neutral to NanoTrasen. No Discount for services expected."}
+Allignment: Neutral to Nanotrasen. No Discount for services expected."}
 	in_space = 0
 	icon_state = "globe"
 	color = "#33BB33"

@@ -1,4 +1,6 @@
-//Landmarks and other helpers which speed up the mapping process and reduce the number of unique instances/subtypes of items/turf/ect
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
 /obj/map_helper
 	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	icon_state = ""

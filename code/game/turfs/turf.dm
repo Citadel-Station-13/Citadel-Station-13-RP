@@ -157,6 +157,11 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
+	// todo: uh oh.
+	// TODO: what would tg do (but maybe not that much component signal abuse?)
+	// this is to trigger entered effects
+	// bad news is this is not necessarily currently idempotent
+	// we probably have to deal with this at.. some point.
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
@@ -279,11 +284,14 @@
 		step(user.pulling, get_dir(user.pulling.loc, src))
 	return 1
 
+/turf/attack_ai(mob/user as mob) //this feels like a bad idea ultimately but this is the cheapest way to let cyborgs nudge things they're pulling around
+	. = ..()
+	attack_hand(user, list("siliconattack" = TRUE))
+
 /turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/storage))
-		var/obj/item/storage/S = I
-		if(S.use_to_pickup && S.collection_mode)
-			S.gather_all(src, user)
+	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 // Hits a mob on the tile.
@@ -569,7 +577,7 @@
 		return TRUE
 	return FALSE
 
-//? Atom Color - we don't use the expensive system.
+//* Atom Color - we don't use the expensive system. *//
 
 /turf/get_atom_colour()
 	return color

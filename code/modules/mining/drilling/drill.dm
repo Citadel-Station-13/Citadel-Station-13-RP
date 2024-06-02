@@ -302,7 +302,7 @@
 
 /obj/machinery/mining/drill/verb/unload_drill()
 	set name = "Unload Drill"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	unload(usr)
@@ -323,7 +323,7 @@
 	else if(S)
 		var/tookall = TRUE
 		for(var/obj/item/stack/ore/O in contents)
-			if(!S.take(O))
+			if(!S.obj_storage.try_insert(O))
 				tookall = FALSE
 				break
 		to_chat(user, "<span class='notice'>You unload [tookall ? "all" : "some"] of the drill's storage cache into [S].</span>")
@@ -420,7 +420,7 @@
 
 /obj/machinery/mining/brace/verb/rotate_clockwise()
 	set name = "Rotate Brace Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	rotating_clockwise(usr)

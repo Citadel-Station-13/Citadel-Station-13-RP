@@ -5,7 +5,7 @@
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	inv_hide_flags = HIDEEARS|HIDEEYES|HIDEFACE
 	body_cover_flags = FACE|EYES
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas_alt", SLOT_ID_LEFT_HAND = "gas_alt")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
@@ -14,7 +14,7 @@
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE)
 
-/obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
+/obj/item/clothing/mask/gas/process_air(datum/gas_mixture/air)
 	var/datum/gas_mixture/gas_filtered = new
 
 	for(var/g in filtered_gases)
@@ -45,7 +45,7 @@
 	icon_state = "halfgas"
 	siemens_coefficient = 0.7
 	body_cover_flags = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/hanging = FALSE
 	inv_hide_flags = HIDEFACE
 	action_button_name = "Adjust Face Mask"
@@ -74,7 +74,7 @@
 		update_worn_icon()
 
 /obj/item/clothing/mask/gas/half/verb/toggle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust mask"
 	set src in usr
 	adjust_mask(usr)
@@ -368,7 +368,7 @@
 /obj/item/clothing/mask/gas/orchid/verb/toggle_design()
 
 	set name = "Change Design"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	change_mask(usr)

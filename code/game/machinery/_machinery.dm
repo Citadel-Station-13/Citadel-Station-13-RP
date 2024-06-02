@@ -100,7 +100,7 @@
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
@@ -161,6 +161,7 @@
 
 	var/interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_SET_MACHINE
 
+// todo: from_frame? arg for frame to pass in context..
 /obj/machinery/Initialize(mapload, newdir)
 	if(newdir)
 		setDir(newdir)
@@ -437,13 +438,14 @@
 					continue
 				if(istype(B, P) && istype(A, P))
 					if(their_rating > our_rating)
-						R.remove_from_storage(B, src)
-						R.handle_item_insertion(A, null, TRUE)
+						R.obj_storage.remove(B, src)
+						R.obj_storage.insert(A, suppressed = TRUE, no_update = TRUE)
 						component_parts -= A
 						component_parts += B
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
+		R.obj_storage.ui_queue_refresh()
 		update_appearance()
 		RefreshParts()
 	return 1

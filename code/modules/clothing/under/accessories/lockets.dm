@@ -4,7 +4,7 @@
 	icon_state = "locket"
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_MASK | SLOT_TIE
 	slot = ACCESSORY_SLOT_DECOR
 	var/base_icon

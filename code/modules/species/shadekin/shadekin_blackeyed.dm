@@ -9,7 +9,10 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	preview_icon = 'icons/mob/species/shadekin/preview_blackeyed.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-	tail = "tail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+	)
 
 	//TODO: Something more fitting for black-eyes
 	//TODO: CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why they're around wherever we are.

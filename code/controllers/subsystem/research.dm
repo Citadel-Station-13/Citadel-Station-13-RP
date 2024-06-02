@@ -14,6 +14,10 @@ SUBSYSTEM_DEF(research)
 	/// cached autolathe desgin ids
 	var/list/autolathe_design_ids
 
+	//? designs - caches
+	/// cached medical mini autolathe desgin ids
+	var/list/medical_mini_design_ids
+
 /datum/controller/subsystem/research/Initialize()
 	build_designs()
 	return ..()
@@ -26,6 +30,7 @@ SUBSYSTEM_DEF(research)
 /datum/controller/subsystem/research/proc/build_designs()
 	design_lookup = list()
 	autolathe_design_ids = list()
+	medical_mini_design_ids = list()
 	for(var/datum/design/path as anything in subtypesof(/datum/design))
 		if(initial(path.abstract_type) == path)
 			continue
@@ -49,7 +54,10 @@ SUBSYSTEM_DEF(research)
 	. = TRUE
 	design_lookup[registering.id] = registering
 	if((registering.lathe_type & LATHE_TYPE_AUTOLATHE) && (registering.design_unlock & DESIGN_UNLOCK_INTRINSIC))
-		autolathe_design_ids += registering.id
+		LAZYDISTINCTADD(autolathe_design_ids, registering.id)
+		if(istype(registering, /datum/design/medical))
+			LAZYDISTINCTADD(medical_mini_design_ids, registering.id)
+
 
 /**
  * gets a design datum

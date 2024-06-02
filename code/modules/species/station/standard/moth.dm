@@ -21,7 +21,11 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	icobase = 'icons/mob/species/moth/body.dmi'
 	deform  = 'icons/mob/species/moth/body.dmi'
 
-	wing = "moth_plain"
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_EARS = /datum/sprite_accessory/ears/bodyset/moth,
+		SPRITE_ACCESSORY_SLOT_WINGS = /datum/sprite_accessory/wing/bodyset/moth,
+	)
+
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
 	vision_innate = /datum/vision/baseline/species_tier_2

@@ -1,8 +1,7 @@
 // Operates TGUI
-/obj/item/modular_computer/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/simple/headers)
-	)
+/obj/item/modular_computer/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/headers
+	return ..()
 
 /obj/item/modular_computer/ui_interact(mob/user, datum/tgui/ui)
 	if(!screen_on || !enabled)

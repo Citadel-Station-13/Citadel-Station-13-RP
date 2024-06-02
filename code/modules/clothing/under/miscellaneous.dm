@@ -83,7 +83,7 @@
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
 	icon_state = "black"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -1880,7 +1880,7 @@
 	var/original_size
 
 /obj/item/clothing/under/bluespace/verb/toggle_fibers()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust fibers"
 	set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
 	set src in usr
@@ -1897,7 +1897,7 @@
 
 /obj/item/clothing/under/bluespace/verb/resize()
 	set name = "Adjust Size"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	bluespace_size(usr)
 
@@ -2000,7 +2000,7 @@
 /*
 /obj/item/clothing/under/antediluvian/verb/switchsprite()
     set name = "Reconfigure Suit"
-    set category = "Object"
+    set category = VERB_CATEGORY_OBJECT
     set src in usr
     if(!istype(usr, /mob/living))
         return

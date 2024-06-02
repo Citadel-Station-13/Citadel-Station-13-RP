@@ -22,7 +22,7 @@
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	///Sparks system used when changing device in the UI
@@ -112,10 +112,9 @@
 		return
 	ui_interact(user)
 
-/obj/item/pipe_dispenser/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/pipes),
-	)
+/obj/item/pipe_dispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/pipes
+	return ..()
 
 /obj/item/pipe_dispenser/ui_state()
 	return GLOB.inventory_state

@@ -1,7 +1,7 @@
 // todo: this is awful and need to all be refactored
 // Putting these at /clothing/ level saves a lot of code duplication in armor/helmets/gauntlets/etc
 /obj/item/clothing
-	material_parts = MATERIAL_DEFAULT_NONE
+	material_parts = MATERIAL_DEFAULT_DISABLED
 	material_costs = 4000
 	material_primary = MATERIAL_PART_DEFAULT
 
@@ -11,7 +11,7 @@
 	var/material_significance = MATERIAL_SIGNIFICANCE_BASELINE
 	/// material quantity significance
 	/// this is multiplier to material amount to determine stuff like weight.
-	var/material_factoring = 0.0005
+	var/material_factoring = 0.00025
 
 /obj/item/clothing/Initialize(mapload, material_armor)
 	if(!isnull(material_armor))

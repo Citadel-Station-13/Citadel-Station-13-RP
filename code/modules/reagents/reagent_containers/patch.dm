@@ -12,7 +12,7 @@
 	item_state = "pill"
 
 	possible_transfer_amounts = null
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	volume = 60
 

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/closets/bases/closet.dmi'
 	icon_state = "base"
 	density = 1
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	armor_type = /datum/armor/object/medium
 
@@ -55,7 +55,7 @@
 	. = ..()
 	if(mapload && !opened)
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
-	PopulateContents()
+	legacy_spawn_contents()
 	/*
 	if(secure)
 		lockerelectronics = new(src)
@@ -101,7 +101,7 @@
 /**
  * The proc that fills the closet with its initial contents.
  */
-/obj/structure/closet/proc/PopulateContents()
+/obj/structure/closet/proc/legacy_spawn_contents()
 	return
 
 /obj/structure/closet/examine(mob/user, dist)
@@ -170,6 +170,7 @@
 	playsound(src, open_sound, 15, 1, -3)
 	if(initial(density))
 		density = !density
+	update_icon()
 	return 1
 
 /obj/structure/closet/proc/close()
@@ -195,6 +196,7 @@
 	playsound(src, close_sound, 15, 1, -3)
 	if(initial(density))
 		density = !density
+	update_icon()
 	return 1
 
 //Cham Projector Exception
@@ -250,7 +252,6 @@
 	if(!(opened ? close() : open()))
 		to_chat(user, "<span class='notice'>It won't budge!</span>")
 		return
-	update_icon()
 
 // this should probably use dump_contents()
 /obj/structure/closet/legacy_ex_act(severity)
@@ -302,15 +303,6 @@
 				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 3, "You hear welding.", 2)
 			qdel(src)
 			return
-		if(istype(I, /obj/item/storage/laundry_basket) && I.contents.len)
-			var/obj/item/storage/laundry_basket/LB = I
-			var/turf/T = get_turf(src)
-			for(var/obj/item/I2 in LB.contents)
-				LB.remove_from_storage(I2, T)
-			user.visible_message("<span class='notice'>[user] empties \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You empty \the [LB] into \the [src].</span>", \
-								 "<span class='notice'>You hear rustling of clothes.</span>")
-			return
 		if(isrobot(user))
 			return
 		if(I.loc != user) // This should stop mounted modules ending up outside the module.
@@ -323,7 +315,7 @@
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src, "sparks", 50, 1)
+			playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
 
 	else if(I.is_wrench())
 		if(sealed)
@@ -429,7 +421,7 @@
 
 /obj/structure/closet/verb/verb_togglelock()
 	set src in oview(1) // One square distance
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Lock"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
@@ -454,7 +446,7 @@
 
 /obj/structure/closet/verb/verb_toggleopen()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Open"
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/technomancer.dmi'
 	icon_state = "technomancer_core"
 	item_state = "technomancer_core"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = SLOT_BACK
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	origin_tech = list(
@@ -341,7 +341,7 @@
 
 /obj/item/technomancer_core/verb/toggle_lock()
 	set name = "Toggle Core Lock"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Toggles the locking mechanism on your manipulation core."
 
 	var/had = HAS_TRAIT_FROM(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)

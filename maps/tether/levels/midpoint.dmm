@@ -15,11 +15,32 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"ak" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/machinery/air_alarm{
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "aP" = (
 /obj/effect/blocker,
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/simulated/sky/virgo3b,
 /area/tether/transit)
+"aS" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "bq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -27,6 +48,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"bS" = (
+/turf/simulated/open,
+/area/tether/elevator)
 "bU" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -58,6 +82,49 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
+"dz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/corner/green/bordercorner,
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"eB" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"gm" = (
+/turf/simulated/open,
+/area/tether/elevator/two)
+"gH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "gQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -72,14 +139,73 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
-"ir" = (
-/turf/simulated/sky/virgo3b,
-/area/tether/transit)
+"in" = (
+/obj/machinery/air_alarm{
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"iR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "jC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/simulated/floor/wood,
+/area/tether/midpoint)
+"ku" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monodark,
 /area/tether/midpoint)
 "kY" = (
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -87,18 +213,14 @@
 "lq" = (
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"mr" = (
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
+/obj/effect/blocker,
+/turf/simulated/sky/virgo3b,
+/area/tether/transit)
 "mP" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/tether/midpoint)
-"ns" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/tether/midpoint)
-"nz" = (
-/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "nM" = (
 /obj/structure/table/gamblingtable,
@@ -136,6 +258,12 @@
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"oZ" = (
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
+/obj/effect/blocker,
+/turf/simulated/sky/virgo3b,
+/area/tether/transit)
 "pc" = (
 /obj/structure/table/gamblingtable,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -144,10 +272,26 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "qm" = (
-/turf/simulated/shuttle/wall/voidcraft/green{
-	hard_corner = 1
-	},
+/turf/simulated/wall/r_wall/prepainted,
 /area/tether/elevator)
+"qp" = (
+/turf/simulated/floor/tiled/monodark,
+/area/tether/midpoint)
+"rh" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/tether/midpoint)
 "sg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -193,11 +337,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
-"vf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable{
-	icon_state = "1-2"
+"tk" = (
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
+/turf/simulated/sky/virgo3b,
+/area/tether/transit)
+"uz" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
@@ -228,37 +378,42 @@
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/simulated/sky/virgo3b,
 /area/tether/transit)
-"yj" = (
-/obj/machinery/holoposter{
-	pixel_y = -30
+"yx" = (
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "yF" = (
-/obj/machinery/air_alarm{
-	pixel_y = 26
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/cable{
-	icon_state = "2-8"
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "zk" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/computer/timeclock/premade/east,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/monodark,
 /area/tether/midpoint)
 "zm" = (
 /obj/machinery/light/small{
@@ -292,6 +447,18 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
 /area/maintenance/tether_midpoint)
+"AL" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "AM" = (
 /obj/structure/table/woodentable,
 /obj/machinery/camera/network/civilian{
@@ -313,6 +480,28 @@
 /obj/structure/disposalpipe/up,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
+"Ch" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"CE" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator/two)
 "CI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -340,8 +529,10 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "DG" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monodark,
 /area/tether/midpoint)
 "Ea" = (
 /obj/structure/table/woodentable,
@@ -377,19 +568,49 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
-"Hx" = (
+"Hl" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"Hu" = (
+/obj/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"Hx" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/bordercorner{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Id" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass{
-	dir = 1
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
@@ -400,15 +621,34 @@
 /obj/machinery/disposal,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"Ix" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "IR" = (
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
-"Ji" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+"Jc" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/monodark,
+/area/tether/midpoint)
+"Ji" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/monodark,
 /area/tether/midpoint)
 "Jt" = (
 /obj/machinery/light{
@@ -425,6 +665,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"Kf" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "Kk" = (
 /obj/structure/table/gamblingtable,
 /obj/item/reagent_containers/food/drinks/shaker,
@@ -436,6 +685,23 @@
 /obj/random/plushie,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
+"LU" = (
+/obj/machinery/holoposter{
+	pixel_y = -30
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/effect/floor_decal/corner/green/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "NI" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/catering/bar_soft{
@@ -456,28 +722,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
-"Ov" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/tether/midpoint)
 "PV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
@@ -499,9 +752,97 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "Rd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/bordercorner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"Rk" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/green/border,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"So" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"Sy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"SE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"SY" = (
 /obj/machinery/fire_alarm/north_mount,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
@@ -514,15 +855,41 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"UI" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "Vk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"VH" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/green/border,
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "VM" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood,
+/area/tether/midpoint)
+"Wh" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Wz" = (
 /obj/structure/table/woodentable,
@@ -530,6 +897,28 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
+/area/tether/midpoint)
+"Xf" = (
+/turf/simulated/wall/prepainted,
+/area/tether/transit)
+"XL" = (
+/obj/structure/aquarium/prefilled,
+/turf/simulated/floor/tiled/monodark,
+/area/tether/midpoint)
+"XM" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/tether/elevator/two)
+"XU" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "XZ" = (
 /obj/structure/cable{
@@ -540,6 +929,29 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
 /area/maintenance/tether_midpoint)
+"Ya" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border,
+/obj/effect/floor_decal/corner/green/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "Yc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -557,11 +969,45 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
+"YH" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"YS" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/computer/timeclock/premade/east,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
+"YT" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/green/border,
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "YW" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
+/area/tether/midpoint)
+"Zf" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Zy" = (
 /obj/structure/disposalpipe/segment,
@@ -585,6 +1031,17 @@
 /area/tether/midpoint)
 "ZM" = (
 /turf/simulated/wall/prepainted,
+/area/tether/midpoint)
+"ZQ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/corner/green/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/green/bordercorner,
+/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 
 (1,1,1) = {"
@@ -23155,10 +23612,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 il
 hi
@@ -23349,10 +23806,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 vA
 hi
@@ -23543,10 +24000,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 vA
 hi
@@ -23737,10 +24194,10 @@ yi
 hi
 sg
 qm
-kY
-kY
-kY
-kY
+bS
+bS
+bS
+bS
 qm
 LL
 hi
@@ -24121,18 +24578,18 @@ yi
 yi
 yi
 yi
-yi
+Xf
 ZM
 yF
-Ov
-vf
-vf
-vf
+PV
+Id
+Id
+Id
 Id
 PV
-yj
+Kf
 ZM
-yi
+Xf
 yi
 yi
 yi
@@ -24315,18 +24772,18 @@ yi
 yi
 yi
 yi
-ZM
-ZM
+mP
+UI
 Rd
 Ji
-ns
-nz
-nz
+zk
+zk
+zk
 zk
 DG
 Hx
-ZM
-ZM
+Kf
+mP
 yi
 yi
 yi
@@ -24510,16 +24967,16 @@ yi
 yi
 yi
 mP
-CN
-Og
-bY
-ZM
-Ke
-PZ
-ZM
-Vk
-bU
-Jt
+uz
+rh
+Jc
+XL
+XL
+XL
+XL
+ku
+qp
+YT
 mP
 yi
 yi
@@ -24704,16 +25161,16 @@ yi
 yi
 yi
 mP
-YW
-Og
-sR
-ZM
-ZM
-ZM
-ZM
-ZA
-lq
-YW
+uz
+rh
+qp
+qp
+qp
+qp
+qp
+qp
+qp
+YT
 mP
 yi
 yi
@@ -24897,18 +25354,18 @@ yi
 yi
 yi
 yi
-mP
-Ea
-Og
-bY
-AV
-sQ
-sQ
-ad
-Vk
-lq
-AM
-mP
+ZM
+ak
+dz
+Wh
+Wh
+Wh
+Wh
+AL
+Wh
+YH
+YT
+ZM
 yi
 yi
 yi
@@ -25092,16 +25549,16 @@ yi
 yi
 yi
 mP
-As
-Og
-bY
-IR
-IR
-IR
-IR
-Vk
-lq
-As
+uz
+Hu
+XM
+XM
+CE
+CE
+XM
+XM
+yx
+YT
 mP
 yi
 yi
@@ -25286,16 +25743,16 @@ yi
 yi
 yi
 mP
-ZL
-Og
-jC
-aj
-lq
-lq
-sM
-oe
-lq
-ZL
+uz
+Sy
+XM
+gm
+gm
+gm
+gm
+XM
+uz
+YT
 mP
 yi
 yi
@@ -25480,16 +25937,16 @@ yi
 yi
 yi
 mP
-YW
-Og
-IR
-He
-IR
-IR
-NS
-IR
-lq
-YW
+uz
+Sy
+XM
+gm
+gm
+gm
+gm
+XM
+uz
+YT
 mP
 yi
 yi
@@ -25673,18 +26130,18 @@ yi
 yi
 yi
 yi
-mP
-sQ
-Og
-QN
-pc
-Kk
-QN
-nM
-QN
-lq
-sQ
-mP
+ZM
+eB
+Sy
+XM
+gm
+gm
+gm
+gm
+XM
+uz
+VH
+ZM
 yi
 yi
 yi
@@ -25868,16 +26325,16 @@ yi
 yi
 yi
 mP
-As
-bq
-vu
-gQ
-lq
-lq
-lq
-QG
-lq
-As
+Zf
+Ya
+XM
+gm
+gm
+gm
+gm
+XM
+ZQ
+aS
 mP
 yi
 yi
@@ -26061,18 +26518,18 @@ yi
 yi
 yi
 yi
-mP
-mP
-mP
 ZM
-TY
-lq
-lq
-VM
 ZM
-mP
-mP
-mP
+iR
+XM
+XM
+XM
+XM
+XM
+XM
+Rk
+ZM
+ZM
 yi
 yi
 yi
@@ -26255,18 +26712,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-mP
-Io
-Wz
-NI
-oo
-mP
-yi
-yi
-yi
+ZM
+ZM
+in
+Ch
+gH
+gH
+gH
+gH
+SE
+LU
+ZM
+ZM
 yi
 yi
 yi
@@ -26449,18 +26906,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-mP
-mP
-mP
-mP
-mP
-mP
-yi
-yi
-yi
+ZM
+ZM
+SY
+Ix
+XU
+Wh
+Wh
+YS
+Hl
+So
+ZM
+ZM
 yi
 yi
 yi
@@ -26643,18 +27100,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-ir
-ir
-ir
-ir
-ir
-ir
-yi
-yi
-yi
+mP
+CN
+Og
+bY
+ZM
+Ke
+PZ
+ZM
+Vk
+bU
+Jt
+mP
 yi
 yi
 yi
@@ -26837,18 +27294,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mP
+YW
+Og
+sR
+ZM
+ZM
+ZM
+ZM
+ZA
+lq
+YW
+mP
 yi
 yi
 yi
@@ -27031,18 +27488,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mP
+Ea
+Og
+bY
+AV
+sQ
+sQ
+ad
+Vk
+lq
+AM
+mP
 yi
 yi
 yi
@@ -27225,18 +27682,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mP
+As
+Og
+bY
+IR
+IR
+IR
+IR
+Vk
+lq
+As
+mP
 yi
 yi
 yi
@@ -27419,18 +27876,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mP
+ZL
+Og
+jC
+aj
+lq
+lq
+sM
+oe
+lq
+ZL
+mP
 yi
 yi
 yi
@@ -27613,18 +28070,18 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mP
+YW
+Og
+IR
+He
+IR
+IR
+NS
+IR
+lq
+YW
+mP
 yi
 yi
 yi
@@ -27797,34 +28254,34 @@ yi
 yi
 yi
 aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+mP
+sQ
+Og
+QN
+pc
+Kk
+QN
+nM
+QN
+lq
+sQ
+mP
+yi
+yi
+yi
+yi
+yi
+yi
 aP
 yi
 yi
@@ -27990,6 +28447,7 @@ yi
 yi
 yi
 yi
+mr
 yi
 yi
 yi
@@ -28000,26 +28458,25 @@ yi
 yi
 yi
 yi
+mP
+As
+bq
+vu
+gQ
+lq
+lq
+lq
+QG
+lq
+As
+mP
 yi
 yi
 yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -28184,6 +28641,7 @@ yi
 yi
 yi
 yi
+mr
 yi
 yi
 yi
@@ -28194,26 +28652,25 @@ yi
 yi
 yi
 yi
+mP
+mP
+mP
+ZM
+TY
+lq
+lq
+VM
+ZM
+mP
+mP
+mP
 yi
 yi
 yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -28378,6 +28835,7 @@ yi
 yi
 yi
 yi
+mr
 yi
 yi
 yi
@@ -28391,6 +28849,12 @@ yi
 yi
 yi
 yi
+mP
+Io
+Wz
+NI
+oo
+mP
 yi
 yi
 yi
@@ -28400,14 +28864,7 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -28572,6 +29029,7 @@ yi
 yi
 yi
 yi
+mr
 yi
 yi
 yi
@@ -28585,6 +29043,12 @@ yi
 yi
 yi
 yi
+mP
+mP
+mP
+mP
+mP
+mP
 yi
 yi
 yi
@@ -28594,14 +29058,7 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -28766,6 +29223,17 @@ yi
 yi
 yi
 yi
+mr
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+tk
 yi
 yi
 yi
@@ -28784,18 +29252,7 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -28960,6 +29417,17 @@ yi
 yi
 yi
 yi
+mr
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+tk
 yi
 yi
 yi
@@ -28978,18 +29446,7 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -29154,6 +29611,17 @@ yi
 yi
 yi
 yi
+mr
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+tk
 yi
 yi
 yi
@@ -29172,18 +29640,7 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -29348,6 +29805,17 @@ yi
 yi
 yi
 yi
+mr
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+tk
 yi
 yi
 yi
@@ -29366,18 +29834,7 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
 yi
 yi
 yi
@@ -29542,36 +29999,36 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+oZ
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
+mr
 yi
 yi
 yi
@@ -29746,19 +30203,19 @@ yi
 yi
 yi
 yi
+tk
+tk
+tk
+tk
 yi
 yi
 yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+tk
+tk
+tk
 yi
 yi
 yi
@@ -29940,19 +30397,19 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
 yi
 yi
 yi
@@ -30718,23 +31175,23 @@ yi
 yi
 yi
 yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-yi
-xd
-xd
-xd
-xd
-yi
-yi
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
 yi
 yi
 yi
@@ -30923,10 +31380,10 @@ yi
 yi
 yi
 yi
-xd
-xd
-xd
-xd
+yi
+yi
+yi
+yi
 yi
 yi
 yi
@@ -31100,7 +31557,19 @@ xd
 xd
 xd
 xd
-xd
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+yi
+tk
 yi
 yi
 yi
@@ -31108,19 +31577,7 @@ yi
 yi
 yi
 yi
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
+yi
 yi
 yi
 yi
@@ -31294,29 +31751,29 @@ xd
 xd
 xd
 xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
 yi
 yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
 yi
 yi
 yi
@@ -31488,29 +31945,29 @@ xd
 xd
 xd
 xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
 yi
-yi
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
 yi
 yi
 yi
@@ -31682,27 +32139,27 @@ xd
 xd
 xd
 xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
 yi
 yi
 yi
@@ -31876,30 +32333,30 @@ xd
 xd
 xd
 xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+yi
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+tk
+yi
 xd
 xd
 xd
@@ -32070,30 +32527,30 @@ xd
 xd
 xd
 xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
-xd
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
+yi
 xd
 xd
 xd

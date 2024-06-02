@@ -1,6 +1,6 @@
 /proc/possess(obj/O as obj in world)
 	set name = "Possess Obj"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(!O.loc)
 		return // erm erm erm maybe not?
@@ -31,7 +31,7 @@
 
 /proc/release(obj/O as obj in world)
 	set name = "Release Obj"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	//usr.loc = get_turf(usr)
 
 	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually relassing an object

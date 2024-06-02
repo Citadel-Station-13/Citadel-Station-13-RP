@@ -142,6 +142,12 @@
 	filled_reagents = list("inaprovaline" = 5)
 	preserve_item = 0
 	hyposound = 'sound/effects/hypospray.ogg'
+	materials_base = list(
+		MAT_STEEL = 250,
+		MAT_GLASS = 250,
+	)
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+
 
 /obj/item/reagent_containers/hypospray/autoinjector/on_reagent_change()
 	..()
@@ -187,6 +193,7 @@
 	icon_state = "autoinjector"
 	amount_per_transfer_from_this = 15
 	volume = 15
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 500,)
 	origin_tech = list(TECH_BIO = 4)
 	filled_reagents = list("inaprovaline" = 15)
 

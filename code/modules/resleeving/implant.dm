@@ -45,7 +45,7 @@
 	item_state = "syringe_0"
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
 	var/list/obj/item/implant/backup/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
@@ -134,7 +134,7 @@
 	icon_state = "implant"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 
-/obj/item/storage/box/backup_kit/PopulateContents()
+/obj/item/storage/box/backup_kit/legacy_spawn_contents()
 	for(var/i = 1 to 7)
 		new /obj/item/implantcase/backup(src)
 	new /obj/item/implanter(src)

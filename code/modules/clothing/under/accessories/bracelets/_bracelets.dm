@@ -3,7 +3,7 @@
 	desc = "A simple silver bracelet with a clasp."
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bracelet"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_TIE
 	slot = ACCESSORY_SLOT_DECOR
 
@@ -14,7 +14,7 @@
 
 /obj/item/clothing/accessory/bracelet/friendship/verb/dedicate_bracelet()
 	set name = "Dedicate Bracelet"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Dedicate your friendship bracelet to a special someone."
 	var/mob/M = usr
 	if(!M.mind)

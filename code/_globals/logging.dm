@@ -21,6 +21,9 @@ GLOBAL_PROTECT(world_href_log)
 /// Current round ID. If unset, logs will use the old timestamp-directory format.
 GLOBAL_VAR(round_id)
 GLOBAL_PROTECT(round_id)
+/// Sequential numerical round ID. Can be null if unset. Requires database.
+GLOBAL_VAR(round_number)
+GLOBAL_PROTECT(round_number)
 /// Config loading error/config validation errors
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
