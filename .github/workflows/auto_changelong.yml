@@ -21,14 +21,3 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-    - name: Commit and push changes
-      run: |
-        git add html/changelogs
-        if git diff-index --quiet HEAD; then
-          echo "No changes to commit"
-        else
-          git commit -m "Update changelogs automatically"
-          git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
