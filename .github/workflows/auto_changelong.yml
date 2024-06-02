@@ -3,7 +3,7 @@ name: Auto Changelog
 on:
   pull_request_target:
     types:
-      - edited
+      - [opened, edited]
 
 permissions:
   contents: write
