@@ -1,9 +1,5 @@
 import { parseChangelog } from "./changelogParser.js";
 
-export function doConsole() {
-	console.log("Just testing.");
-}
-
 const safeYml = (string) =>
 	string.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
 
