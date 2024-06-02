@@ -16,8 +16,6 @@
 	/// this way it can be accessed later
 	var/atom/injection_target
 
-#warn impl all
-
 /obj/map_helper/gear_marker/proc/ensure_ready()
 	if(!isnull(injection_target))
 		return
@@ -42,26 +40,33 @@
 /obj/map_helper/gear_marker/proc/inject(list/typepaths)
 	ASSERT(!isnull(injection_target))
 
-	// todo: support for stuff like vendors?
-
-	// anything below this: we are physically spawning objects
-
-	// dump in closet
-	var/obj/structure/closet/closet = locate() in loc
-	if(!isnull(closet))
-		inject_to_loc(closet, typepaths)
-		return TRUE
-
-	// dump on floor
-	inject_to_loc(loc, typepaths)
-	#warn reconcile with ignite()
+	inject_to_loc(injection_target, typepaths)
 	return TRUE
 
 /**
  * find an available spot in loc
  */
 /obj/map_helper/gear_marker/proc/find_available_spot_in_loc()
-	#warn impl
+	// closet
+	var/obj/structure/closet/found = locate() in loc
+	if(found)
+		return found
+
+	// on tile
+	return loc
+
+/obj/map_helper/gear_marker/proc/find_put_inside_closet_loc()
+	var/obj/structure/closet/found = locate() in loc
+	return found
+
+/obj/map_helper/gear_marker/proc/find_put_on_top_of_table_loc()
+	var/obj/structure/table/table = locate() in loc
+	if(istype(table, /obj/structure/table/bench))
+		return null
+	return table.loc
+
+/obj/map_helper/gear_marker/proc/find_put_on_floor_loc()
+	return loc
 
 /obj/map_helper/gear_marker/proc/inject_to_loc(atom/where, list/typepaths)
 	var/safety = 50 // i don't konw why you'd need to spawn more than 50 items in a single spot
@@ -71,12 +76,32 @@
 			if(safety <= 0)
 				CRASH("ran out of safety")
 			if(ispath(path, /obj/item/stack))
-				safety -= spawn_stacks_at(where, path, amount)
+				safety -= max(spawn_stacks_at(where, path, amount), 1)
 			else if(ispath(path, /datum/material))
-				safety -= spawn_stacks_at(where, path, amount)
+				safety -= max(spawn_stacks_at(where, path, amount), 1)
 			else
 				safety -= 1
 				new path(where)
+
+GLOBAL_REAL_LIST(distributed_gear_marker_gear_weights) = list(
+	//* STANDARD TAGS *//
+	"dense" = 2, // do not stack dense shit where it shouldn't be
+	"item" = 2, // ditto
+	"stack" = 2, // ditto
+	"mech" = 3, // mechs stay in the mech bay
+	"crate" = 3, // crates stay in the crate racks
+)
+
+GLOBAL_REAL_LIST(distributed_gear_marker_usage_weights) = list(
+	//* STANDARD TAGS *//
+	"anomaly" = 5, // do not put anomalies in the main cargo hold
+	"volatile" = 5, // do not put explosives in the main cargo hold
+	"dangerous" = 3, // do not put dangerous shit where it doesn't belong
+	"equipment" = 2, // separate concerns
+	"storage" = 2, // separate concerns
+	"cargo" = 2, // separate concerns
+	"product" = 2, // separate concerns
+)
 
 /**
  * denotes a spot where gear can be spread to
@@ -85,8 +110,8 @@
  *
  * * mecha - a mech
  * * crate - a crate
- * * weapon - weapons
  *
+ * * weapon - weapons
  * * gun - specifically ranged weapons
  * * melee - specifically melee weapons
  * * antiarmor - specifically experimental or powerful weapons
@@ -123,7 +148,7 @@
  * * captain - used for the command role
  */
 /obj/map_helper/gear_marker/distributed
-	icon_state = "spot"
+	abstract_type = /obj/map_helper/gear_marker/distributed
 	/// list of tags, most to least specific
 	/// specifies the type of object
 	///
@@ -146,7 +171,7 @@
 	/// list("storage")
 	/// list("cargo")
 	/// list("product")
-	var/list/use_tags = list()
+	var/list/usage_tags = list()
 	/// allow other uses to overflow in
 	var/use_can_be_overflow = FALSE
 
@@ -156,9 +181,19 @@
 	/// if so, we probably shouldn't spawn another
 	var/has_spawned_dense = FALSE
 
+
 /obj/map_helper/gear_marker/distributed/preloading_instance(datum/dmm_context/context)
 	context.distributed_gear_markers += src
+	// make everything assoc
+	make_associative_inplace(gear_tags)
+	make_associative_inplace(usage_tags)
 	return ..()
+
+/obj/map_helper/gear_marker/distributed/drop_on_floor
+	icon_state = "spot"
+
+/obj/map_helper/gear_marker/distributed/drop_on_floor/ignite()
+	return find_put_on_floor_loc()
 
 /**
  * denotes a spot where identical sets of gear should be injected at each for a given role or use case
@@ -174,13 +209,12 @@
  * * captain - used for the command role
  */
 /obj/map_helper/gear_marker/role
+	abstract_type = /obj/map_helper/gear_marker/role
 	/// our role tag
 	/// if null, allow any
 	var/role_tag
 	/// allow overflow
 	var/role_allow_overflow = TRUE
-
-#warn uhh
 
 /obj/map_helper/gear_marker/role/preloading_instance(datum/dmm_context/context)
 	LAZYINITLIST(context.stamped_gear_markers_by_role[role_tag])

@@ -81,14 +81,22 @@
 		CRASH("initializations already were fired")
 	map_initializations_fired = TRUE
 	for(var/obj/map_helper/helper in map_initialization_hooked)
+		// so SSatoms doesn't init the atoms we make
+		// todo: better solution, this is high overhead
+		Master.StartLoadingMap()
 		helper.map_initializations(src)
+		Master.StopLoadingMap()
 
 /datum/dmm_context/proc/fire_map_injections()
 	if(map_injections_fired)
 		CRASH("injections already were fired")
 	map_injections_fired = TRUE
 	for(var/datum/map_injection/injection in injections)
+		// so SSatoms doesn't init the atoms we make
+		// todo: better solution, this is high overhead
+		Master.StartLoadingMap()
 		injection.injection(src)
+		Master.StopLoadingMap()
 
 /datum/dmm_context/proc/register_injection(datum/map_injection/injection)
 	injections |= injection

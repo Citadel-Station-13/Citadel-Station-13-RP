@@ -162,11 +162,11 @@
 
 	for(var/datum/map_level/level as anything in instance.levels)
 		var/datum/dmm_context/loaded_context = _load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
-		if(isnull(bounds))
+		if(isnull(loaded_context))
 			STACK_TRACE("unable to load level [level] ([level.id])")
 			message_admins(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
 			continue
-		context_collect[++context_collect.len] = bounds
+		context_collect[++context_collect.len] = loaded_context
 		loaded_levels += level
 
 	loaded_maps += instance
