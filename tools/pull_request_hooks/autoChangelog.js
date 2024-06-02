@@ -37,6 +37,8 @@ export async function processAutoChangelog({ github, context }) {
 		context.payload.pull_request.user.login
 	);
 
+	console.error(github):
+
 	github.rest.repos.createOrUpdateFileContents({
 		owner: context.repo.owner,
 		repo: context.repo.repo,
