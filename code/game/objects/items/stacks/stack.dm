@@ -6,10 +6,25 @@
  * @return **amount of objects created** (not total stack/sheet amount made!)
  */
 /proc/spawn_stacks_at(atom/location, stack_path, amount)
+	. = 0
 	var/safety = 50
 	if(ispath(stack_path, /datum/material))
-		var/datum/material/resolved = SSmaterials.resolve_material(path)
-	#warn impl
+		var/datum/material/resolved = SSmaterials.resolve_material(stack_path)
+		// todo: ugh
+		resolved.place_sheet(location, amount)
+		return 1
+	else if(istype(stack_path, /obj/item/stack))
+		stack_path = stack_path:type
+	var/obj/item/stack/casted_path = stack_path
+	var/max_amount = initial(casted_path.max_amount)
+	while(amount > 0)
+		var/creating = min(amount, max_amount)
+		new stack_path(location, creating)
+		.++
+		amount -= creating
+		--safety
+		if(!safety)
+			CRASH("ran out of safety")
 
 /**
  * Items that can stack, tracking the number of which is in it

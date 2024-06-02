@@ -8,4 +8,10 @@
 	icon = 'icons/mapping/helpers/role_marker.dmi'
 	icon_state = "grey-x"
 
-#warn uhh
+	/// role tag
+	var/role_tag
+
+/obj/map_helper/role_marker/preloading_instance(datum/dmm_context/context)
+	LAZYINITLIST(context.role_markers_by_tag[role_tag])
+	context.role_markers_by_tag[role_tag] += src
+	return ..()

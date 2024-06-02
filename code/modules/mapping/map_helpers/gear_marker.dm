@@ -11,11 +11,10 @@
  */
 /obj/map_helper/gear_marker
 	icon = 'icons/mapping/helpers/gear_marker.dmi'
+	early = TRUE
 	/// if ignited, we put the results here
 	/// this way it can be accessed later
 	var/atom/injection_target
-
-/obj/map_helper/gear_marker/preloading_instance(datum/dmm_context/context)
 
 #warn impl all
 
@@ -157,6 +156,10 @@
 	/// if so, we probably shouldn't spawn another
 	var/has_spawned_dense = FALSE
 
+/obj/map_helper/gear_marker/distributed/preloading_instance(datum/dmm_context/context)
+	context.distributed_gear_markers += src
+	return ..()
+
 /**
  * denotes a spot where identical sets of gear should be injected at each for a given role or use case
  *
@@ -172,9 +175,17 @@
  */
 /obj/map_helper/gear_marker/role
 	/// our role tag
+	/// if null, allow any
 	var/role_tag
+	/// allow overflow
+	var/role_allow_overflow = TRUE
 
 #warn uhh
+
+/obj/map_helper/gear_marker/role/preloading_instance(datum/dmm_context/context)
+	LAZYINITLIST(context.stamped_gear_markers_by_role[role_tag])
+	context.stamped_gear_markers_by_role[role_tag] += src
+	return ..()
 
 /**
  * generates a locker (crate or closet) of a certain type

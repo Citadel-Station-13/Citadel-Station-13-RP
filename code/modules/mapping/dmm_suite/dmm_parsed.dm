@@ -518,7 +518,7 @@
 				// warranty void if a map has varedited areas; you should know better, linter already checks against it.
 				world.preloader_setup(members_attributes[index], atype, turn_angle, invert_x, invert_y, swap_xy)
 				instance = new atype(null)
-				if(global.use_preloader)
+				if(global.dmm_preloader_active)
 					world.preloader_load(instance)
 			areaCache[atype] = instance
 		instance.contents.Add(crds)
@@ -555,8 +555,6 @@
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /datum/dmm_parsed/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
-	if(ispath(path, /obj/structure/cable))
-		pass()
 	world.preloader_setup(attributes, path, turn_angle, invert_x, invert_y, swap_xy)
 
 	if(ispath(path, /turf))
@@ -569,7 +567,7 @@
 	else
 		. = create_atom(path, crds)//first preloader pass
 
-	if(global.use_preloader)//second preloader pass, for those atoms that don't ..() in New()
+	if(global.dmm_preloader_active) //second preloader pass, for those atoms that don't ..() in New()
 		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize

@@ -220,6 +220,10 @@
 	/// Default sound played on a burn type impact. This is usually null for default.
 	var/hit_sound_burn
 
+/proc/lint__check_atom_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/atom/target
+	target.New()
 
 /**
  * Called when an atom is created in byond (built in engine proc)

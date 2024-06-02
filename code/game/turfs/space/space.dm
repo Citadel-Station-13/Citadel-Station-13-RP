@@ -23,6 +23,7 @@
 	atom_flags = ATOM_INITIALIZED
 
 /turf/space/basic/New()	//Do not convert to Initialize
+	SHOULD_CALL_PARENT(FALSE)
 	//This is used to optimize the map loader
 	return
 

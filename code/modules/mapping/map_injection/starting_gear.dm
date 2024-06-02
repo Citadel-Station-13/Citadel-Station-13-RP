@@ -29,6 +29,9 @@
 /datum/map_injection/starting_gear/New(list/datum/map_starting_gear/packs)
 	packs = collate_map_starting_gear_packs(packs)
 
+/datum/map_injection/starting_gear/injection(datum/dmm_context/context)
+	return ..()
+
 #warn impl all
 
 /**
@@ -55,4 +58,10 @@
 	/// * /datum/material = amount
 	/// * /obj/item/stack = amount
 	var/list/gear = list()
+	/// copies to spawn
+	///
+	/// * multiple sets of role starting gear with the same tag but different slot amounts is undefined behavior
+	/// * null = fill the role tag
+	/// * more than supported = overflow to other slots if possible
+	var/slots
 

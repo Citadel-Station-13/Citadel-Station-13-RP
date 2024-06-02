@@ -12,4 +12,5 @@
  */
 /datum/map_injection
 
-#warn impl all
+/datum/map_injection/proc/injection(datum/dmm_context/context)
+	return

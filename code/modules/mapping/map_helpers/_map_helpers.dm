@@ -61,5 +61,3 @@
 #warn update calls and callers for new signature
 /obj/map_helper/proc/map_initializations(datum/dmm_context/context)
 	return
-
-#warn map helpers need to be able to hook to template initializations.

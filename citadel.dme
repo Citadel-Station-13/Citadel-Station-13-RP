@@ -3207,6 +3207,7 @@
 #include "code\modules\mapping\dmm_suite\dmm_parsed.dm"
 #include "code\modules\mapping\dmm_suite\dmm_preloader.dm"
 #include "code\modules\mapping\dmm_suite\dmm_report.dm"
+#include "code\modules\mapping\dmm_suite\utility_types.dm"
 #include "code\modules\mapping\dmm_suite\wrappers.dm"
 #include "code\modules\mapping\map_helpers\_map_helpers.dm"
 #include "code\modules\mapping\map_helpers\baseturf.dm"
