@@ -39,9 +39,7 @@ export async function processAutoChangelog({ github, context }) {
 		context.payload.pull_request.user.login
 	);
 
-	console.error(github);
-
-	const octokit = github_action.getOctokit(core.getInput('secrets.GITHUB_TOKEN'));
+	const octokit = github_action.getOctokit(process.env.GITHUB_TOKEN);
 
 	await octokit.rest.repos.createOrUpdateFileContents({
 		owner: context.repo.owner,
