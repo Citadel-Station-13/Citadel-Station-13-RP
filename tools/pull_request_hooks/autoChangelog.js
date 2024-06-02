@@ -21,6 +21,7 @@ export function changelogToYml(changelog, login) {
 }
 
 export async function processAutoChangelog({ github, context }) {
+	console.info("Starting processAutoChangelog.")
 	const changelog = parseChangelog(context.payload.pull_request.body);
 	if (!changelog || changelog.changes.length === 0) {
 		console.log("no changelog found");
