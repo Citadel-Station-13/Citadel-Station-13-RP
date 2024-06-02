@@ -23,19 +23,14 @@ export function changelogToYml(changelog, login) {
 export async function processAutoChangelog({ github, context }) {
 	console.log("Starting processAutoChangelog");
 
-	console.info(context.payload.pull_request);
-
 	const changelog = parseChangelog(context.payload.pull_request.body);
 	if (!changelog || changelog.changes.length === 0) {
 		console.log("no changelog found");
 		return;
 	}
 
-	console.log("Created the following changelog:")
-	console.log(changelog);
-	console.log("\nfrom:");
-	console.log(context.payload.pull_request.body);
-
+	console.log("created changelog with length:");
+	console.log(changelog.changes.length);
 
 	const yml = changelogToYml(
 		changelog,
