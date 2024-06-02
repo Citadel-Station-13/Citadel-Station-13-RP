@@ -479,7 +479,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 					var/mob/living/L = object
 					// Reset processes.
 					if(pa.Find("ctrl"))
-						if(!isnull(L.get_AI_stance())) // Null means there's no AI datum or it has one but is player controlled w/o autopilot on.
+						if(!isnull(L.get_polaris_AI_stance())) // Null means there's no AI datum or it has one but is player controlled w/o autopilot on.
 							var/datum/ai_holder/polaris/AI = L.ai_holder
 							AI.forget_everything()
 							to_chat(user, SPAN_NOTICE("\The [L]'s AI has forgotten its target/movement destination/leader."))
@@ -489,7 +489,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 
 					// Toggle hostility
 					if(pa.Find("alt"))
-						if(!isnull(L.get_AI_stance()))
+						if(!isnull(L.get_polaris_AI_stance()))
 							var/datum/ai_holder/polaris/AI = L.ai_holder
 							AI.hostile = !AI.hostile
 							to_chat(user, SPAN_NOTICE("\The [L] is now [AI.hostile ? "hostile" : "passive"]."))
@@ -498,7 +498,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 						return
 
 					// Select/Deselect
-					if(!isnull(L.get_AI_stance()))
+					if(!isnull(L.get_polaris_AI_stance()))
 						if(L in holder.selected_mobs)
 							holder.deselect_AI_mob(user.client, L)
 							to_chat(user, SPAN_NOTICE("Deselected \the [L]."))

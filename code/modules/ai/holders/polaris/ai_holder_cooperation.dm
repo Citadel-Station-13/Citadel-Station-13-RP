@@ -39,7 +39,7 @@
 
 	if(first_friend && first_friend.has_polaris_AI()) // Joining an already established faction.
 		var/datum/ai_holder/polaris/their_holder = first_friend.ai_holder
-		faction_friends = first_friend.their_holder.faction_friends
+		faction_friends = their_holder.faction_friends
 		faction_friends |= holder
 	else // We're the 'founder' (first and/or only member) of this faction.
 		faction_friends |= holder

@@ -57,14 +57,12 @@
 /**
  * sets our agent to something
  */
-/datum/ai_holder/proc/set_agent(atom/movable/agent, imprint = TRUE)
+/datum/ai_holder/proc/set_agent(atom/movable/agent)
 	if(src.agent)
 		unregister_agent(src.agent)
 	src.agent = agent
 	if(!agent)
 		return
-	if(imprint)
-		#warn impl
 
 /**
  * bind to agent

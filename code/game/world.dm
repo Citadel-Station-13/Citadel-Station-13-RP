@@ -455,12 +455,13 @@ GLOBAL_LIST(topic_status_cache)
 
 /// Set FPS
 /world/proc/set_fps(fps)
-	#warn enforce roundable numbers
 	set_ticklag(10 / fps)
+	return world.fps
 
 /// Set ticklag
 /world/proc/set_ticklag(ticklag)
-	#warn enforce roundable numbers
+	// 0.1 is 100 fps.
+	ticklag = max(0.1, round(ticklag, 0.1))
 	var/old = tick_lag
 	tick_lag = ticklag
 	for(var/datum/controller/subsystem/subsystem in Master.subsystems)

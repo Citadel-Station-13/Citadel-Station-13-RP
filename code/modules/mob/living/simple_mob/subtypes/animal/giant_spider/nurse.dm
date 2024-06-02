@@ -140,13 +140,14 @@
 	if(large_cocoon)
 		C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
 
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	ai_holder.target = null
 
 	return TRUE
 
 /mob/living/simple_mob/animal/giant_spider/nurse/handle_special()
 	set waitfor = FALSE
-	if(get_AI_stance() == STANCE_IDLE && !is_AI_busy() && isturf(loc))
+	if(get_polaris_AI_stance() == STANCE_IDLE && !is_AI_busy() && isturf(loc))
 		if(fed)
 			lay_eggs(loc)
 		else

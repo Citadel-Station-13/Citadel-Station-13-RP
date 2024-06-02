@@ -265,7 +265,7 @@
 // Helper proc to check for the AI's stance.
 // Returns null if there's no AI holder, or the mob has a player and autopilot is not on.
 // Otherwise returns the stance.
-/mob/living/proc/get_AI_stance()
+/mob/living/proc/get_polaris_AI_stance()
 	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(!istype(ai_holder))
 		return null
@@ -277,7 +277,7 @@
 /mob/living/proc/has_polaris_AI()
 	if(!istype(ai_holder, /datum/ai_holder/polaris))
 		return FALSE
-	return get_AI_stance() ? TRUE : FALSE
+	return get_polaris_AI_stance() ? TRUE : FALSE
 
 // 'Taunts' the AI into attacking the taunter.
 /mob/living/proc/taunt(atom/movable/taunter, force_target_switch = FALSE)
