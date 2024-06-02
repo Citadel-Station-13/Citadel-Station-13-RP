@@ -11,8 +11,6 @@
 										// mob to stay still (e.g. delayed attacwking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
 
-
-
 /datum/ai_holder/polaris/hostile
 	hostile = TRUE
 

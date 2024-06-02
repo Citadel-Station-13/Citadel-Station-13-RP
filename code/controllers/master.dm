@@ -275,7 +275,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// Set world options.
 
-	world.fps = config_legacy.fps
+	world.set_fps(config_legacy.fps)
 
 	var/initialized_tod = REALTIMEOFDAY
 	if(sleep_offline_after_initializations)

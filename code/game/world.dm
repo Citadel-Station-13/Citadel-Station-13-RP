@@ -451,6 +451,23 @@ GLOBAL_LIST(topic_status_cache)
 	. = ++maxz
 	max_z_changed(. - 1, .)
 
+//* Ticklag / FPS *//
+
+/// Set FPS
+/world/proc/set_fps(fps)
+	#warn enforce roundable numbers
+	set_ticklag(10 / fps)
+
+/// Set ticklag
+/world/proc/set_ticklag(ticklag)
+	#warn enforce roundable numbers
+	var/old = tick_lag
+	tick_lag = ticklag
+	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
+		subsystem.on_ticklag_changed(old, ticklag)
+
+//* Log Shunter *//
+
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE
 /**
  * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
@@ -493,6 +510,7 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 //! END
 
+//* Byond-Tracy *//
 
 /world/proc/init_byond_tracy()
 	var/library

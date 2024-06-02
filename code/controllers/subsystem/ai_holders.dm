@@ -25,11 +25,6 @@ SUBSYSTEM_DEF(ai_holders)
 	/// world.fps buckets were made for
 	var/bucket_fps
 
-	/// global ai_lexicon instances
-	var/list/ai_lexicons
-	/// global ai_personality instances
-	var/list/ai_personalities
-
 /datum/controller/subsystem/ai_holders/Initialize()
 	init_ai_lexicons()
 	init_ai_personalities()
@@ -46,20 +41,6 @@ SUBSYSTEM_DEF(ai_holders)
 /datum/controller/subsystem/ai_holders/Recover()
 	rebuild()
 	return ..()
-
-/datum/controller/subsystem/ai_holders/proc/init_ai_lexicons()
-	for(var/datum/ai_lexicon/path as anything in subtypesof(/datum/ai_lexicon))
-		if(initial(path.abstract_type) == path)
-			continue
-		var/datum/ai_lexicon/created = new path
-		ai_lexicons[path] = created
-
-/datum/controller/subsystem/ai_holders/proc/init_ai_personalities()
-	for(var/datum/ai_personality/path as anything in subtypesof(/datum/ai_personality))
-		if(initial(path.abstract_type) == path)
-			continue
-		var/datum/ai_personality/created = new path
-		ai_personalities[path] = created
 
 /datum/controller/subsystem/ai_holders/proc/bucket_insert(datum/ai_holder/holder)
 	ASSERT(holder.ticking <= AI_SCHEDULING_LIMIT)
