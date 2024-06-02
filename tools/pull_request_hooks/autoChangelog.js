@@ -41,10 +41,10 @@ export async function processAutoChangelog({ github, context }) {
 
 	const octokit = github_action.getOctokit(process.env.GITHUB_TOKEN);
 
-	console.error(context.repo);
+	console.error(context);
 
 	await octokit.rest.repos.createOrUpdateFileContents({
-		owner: context.repo.owner,
+		owner: context.payload.repo.owner,
 		repo: context.repo.repo,
 		branch: context.payload.pull_request.head.ref,
 		path: `html/changelogs/AutoChangeLog-pr-${context.payload.pull_request.number}.yml`,
