@@ -162,6 +162,23 @@
 	/// used to exclude indev maps
 	var/allow_random_draw = TRUE
 
+	//* Game World *//
+	/// world_location's this is considered
+	/// set to id, or typepath to parse into id in New()
+	///
+	/// * if null, the storyteller system will be inactive.
+	/// * if null, many game systems might be inoperational, including things like supply factions.
+	var/list/world_location_ids = list(
+		/datum/world_location/frontier::id,
+	)
+	/// world faction this is primarily under the control of
+	/// set to id, or typepath to parse into id in New()
+	/// this is considered the primary, player-facing faction of the round, with other factions being 'off'-maps.
+	///
+	/// * if null, the storyteller system will be inactive.
+	/// * seriously you don't want this to be null.
+	var/world_faction_id = /datum/world_faction/nanotrasen::id
+
 	//! legacy below
 
 	var/full_name = "Unnamed Map"
