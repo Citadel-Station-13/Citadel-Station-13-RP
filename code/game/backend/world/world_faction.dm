@@ -7,10 +7,16 @@
 /datum/world_faction
 	abstract_type = /datum/world_faction
 
+	//* identity / basics *//
+
 	/// name
-	var/name
+	var/name = "Unknown Faction"
 	/// id - must be unique
 	var/id
+	/// short description blurb
+	var/desc = "A faction of some kind. Someone forgot to describe it."
+
+	//* composition *//
 
 	/// storyteller faction path to init, if any
 	// var/datum/storyteller_faction/storyteller_faction
@@ -18,10 +24,16 @@
 	/// supply faction path to init, if any
 	// var/datum/supply_faction/supply_faction
 
+	//* world simulation *//
+
 	/// location ids we're in
 	var/list/location_ids = list(
 		/datum/world_location/frontier::id,
 	)
+
+	//* lore *//
+
+	// at some point we'll want a way to encapsulate lore generation for these..
 
 /**
  * called if we're on the active map so we create all our datums

@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(game_world)
 	initialize_map()
 	return ..()
 
-/datum/controller/subsystem/game_world/proc/initialize_location()
+/datum/controller/subsystem/game_world/proc/initialize_locations()
 	location_lookup = list()
 	for(var/datum/world_location/path as anything in subtypesof(/datum/world_location))
 		if(path == initial(path.abstract_type))
@@ -71,11 +71,11 @@ SUBSYSTEM_DEF(game_world)
 		if(!location)
 			stack_trace("couldn't find location")
 			continue
-		active_locations[id] = location
+		active_location_lookup[id] = location
 
 	active_faction_lookup = list()
 	for(var/id in faction_lookup)
 		var/datum/world_faction/faction = faction_lookup[id]
 		if(!length(faction.location_ids & active_location_lookup))
 			continue
-		active_faction_lookup[id] = facion
+		active_faction_lookup[id] = faction

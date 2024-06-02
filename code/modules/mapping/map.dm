@@ -177,7 +177,7 @@
 	///
 	/// * if null, the storyteller system will be inactive.
 	/// * seriously you don't want this to be null.
-	var/world_faction_id = /datum/world_faction/nanotrasen::id
+	var/world_faction_id = /datum/world_faction/corporation/nanotrasen::id
 
 	//! legacy below
 
