@@ -10,6 +10,8 @@
 	/// * if this is null, one will be assigned.
 	/// * this is used to generate mangling ID.
 	var/id
+	/// explicit mangling id
+	var/mangling_id
 	/// is this a hardcoded level? generally should be 'yes';
 	/// if it is, it's registered in the by-typepath lookup
 	var/hardcoded = FALSE

@@ -314,7 +314,7 @@
 	if(isnull(context))
 		context = create_dmm_context()
 	if(isnull(context.mangling_id))
-		context.mangling_id = "level-[instance.id]"
+		context.mangling_id = "level-[instance.mangling_id || instance.id]"
 	context = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache, context = context)
 
 	ASSERT(context.success)
