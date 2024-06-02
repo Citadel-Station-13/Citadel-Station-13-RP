@@ -569,7 +569,7 @@
 			prob(10);list(
 				/obj/item/module/power_control,
 				/obj/item/stack/cable_coil,
-				/obj/item/frame/apc,
+				/obj/item/frame2/apc,
 				/obj/item/cell/high,
 				/obj/structure/closet/crate/corporate/focalpoint //FOCAL APC
 			),

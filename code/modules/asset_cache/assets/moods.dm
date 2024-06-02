@@ -1,14 +1,15 @@
-/datum/asset/spritesheet/moods
+/datum/asset_pack/spritesheet/moods
 	name = "moods"
 	var/iconinserted = 1
 
-/datum/asset/spritesheet/moods/create_spritesheets()
+/datum/asset_pack/spritesheet/moods/generate()
+	. = ..()
 	for(var/i in 1 to 9)
 		var/target_to_insert = "mood"+"[iconinserted]"
-		Insert(target_to_insert, 'icons/screen/screen_gen.dmi', target_to_insert)
+		insert(target_to_insert, 'icons/screen/screen_gen.dmi', target_to_insert)
 		iconinserted++
 
-/datum/asset/spritesheet/moods/ModifyInserted(icon/pre_asset)
+/datum/asset_pack/spritesheet/moods/modify_inserted(icon/pre_asset)
 	var/blended_color
 	switch(iconinserted)
 		if(1)

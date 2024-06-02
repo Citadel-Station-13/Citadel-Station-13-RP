@@ -75,7 +75,7 @@
 	var/integrated_light_power = 4.5
 	var/datum/wires/robot/wires
 
-//! ## Icon stuff
+	//* Icon stuff
 	/// Persistent icontype tracking allows for cleaner icon updates
 	var/icontype
 	/// Used to store the associations between sprite names and sprite index.
@@ -85,7 +85,7 @@
 	/// Remaining attempts to select icon before a selection is forced.
 	var/icon_selection_tries = 0
 
-//! ## Hud stuff
+	//* Hud stuff
 
 	var/atom/movable/screen/cells = null
 	var/atom/movable/screen/inv1 = null

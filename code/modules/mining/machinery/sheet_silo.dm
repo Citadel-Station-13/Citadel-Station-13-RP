@@ -80,9 +80,9 @@
 	. = ..()
 	sheets_by_material = data["stored"]
 
-/obj/machinery/sheet_silo/ui_assets(mob/user)
-	. = ..()
-	. += get_asset_datum(/datum/asset/spritesheet/materials)
+/obj/machinery/sheet_silo/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/materials
+	return ..()
 
 /obj/machinery/sheet_silo/ui_data(mob/user, datum/tgui/ui)
 	. = ..()

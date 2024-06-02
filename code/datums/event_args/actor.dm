@@ -14,6 +14,11 @@
 	src.performer = performer
 	src.initiator = isnull(initiator)? performer : initiator
 
+/datum/event_args/actor/clone(include_contents)
+	return new /datum/event_args/actor(performer, initiator)
+
+// todo: reowrk these awful ass feedback/message procs wtf
+
 /datum/event_args/actor/proc/chat_feedback(msg, atom/target)
 	performer.action_feedback(msg, target)
 	if(performer != initiator)
