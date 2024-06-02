@@ -46,12 +46,11 @@
 	// Perform a clean initialization
 	window.initialize(
 		strict_mode = TRUE,
-		assets = list(
-			get_asset_datum(/datum/asset/simple/tgui_panel),
-		))
-	window.send_asset(get_asset_datum(/datum/asset/simple/namespaced/fontawesome))
-	window.send_asset(get_asset_datum(/datum/asset/simple/namespaced/tgfont))
-	window.send_asset(get_asset_datum(/datum/asset/spritesheet/chat))
+		assets = list(/datum/asset_pack/simple/tgui_panel),
+	)
+	window.send_asset(/datum/asset_pack/simple/fontawesome)
+	window.send_asset(/datum/asset_pack/simple/tgfont)
+	window.send_asset(/datum/asset_pack/spritesheet/chat)
 	// Other setup
 	request_telemetry()
 	addtimer(CALLBACK(src, PROC_REF(on_initialize_timed_out)), 5 SECONDS)

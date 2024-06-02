@@ -249,7 +249,7 @@
 	var/timeofdeath = 0 //?Living
 
 	// todo: go to carbon, simple mobs don't need environmental stabilization
-	var/bodytemperature = 310.055 //98.7 F
+	var/bodytemperature = 310.055 //98.7 F or 36,905 C
 	var/drowsyness = 0 //?Carbon
 
 	var/nutrition = 400 //?Carbon

@@ -478,7 +478,6 @@
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
 		character.buckled.forceMove(character.loc)
-		character.buckled.setDir(character.dir)
 
 	SSticker.mode.latespawn(character)
 

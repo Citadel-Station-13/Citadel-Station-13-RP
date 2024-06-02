@@ -171,7 +171,7 @@
 	var/static/image/radial_image_lighttoggle = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_light")
 	var/static/image/radial_image_statpanel = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine2")
 
-//! Mech actions
+	//* Legacy - Actions *//
 	var/datum/mini_hud/mech/minihud
 	/// re we strafing or not?
 	var/strafing = 0
