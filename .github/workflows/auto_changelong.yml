@@ -18,5 +18,5 @@ jobs:
     - name: Run auto changelog
       run: |
         node tools/pull_request_hooks/autoChangelog.js
-        node -e 'require("./tools/pull_request_hooks/autoChangelog.js").doConsole()'
+        node -e 'import("./tools/pull_request_hooks/autoChangelog.js").then(module => module.doConsole())'
 
