@@ -4,8 +4,6 @@ on:
   pull_request_target:
     types: [opened, edited]
 
-permissions:
-  contents: write
 jobs:
   auto_changelog:
     runs-on: ubuntu-latest
