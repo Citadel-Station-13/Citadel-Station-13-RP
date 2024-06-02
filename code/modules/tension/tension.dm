@@ -20,7 +20,7 @@
 
 	// First lets consider their attack ability.
 	var/will_point_blank = FALSE
-	if(has_AI())
+	if(has_polaris_AI())
 		will_point_blank = ai_holder.pointblank
 
 	var/potential_damage = 0
@@ -60,7 +60,7 @@
 /mob/living/simple_mob/get_threat(var/mob/living/threatened)
 	. = ..()
 
-	if(has_AI())
+	if(has_polaris_AI())
 		if(!ai_holder.hostile)
 			return 0 // Can't hurt anyone.
 
@@ -103,7 +103,7 @@
 /mob/living/carbon/get_threat(var/mob/living/threatened)
 	. = ..()
 
-	if(has_AI())
+	if(has_polaris_AI())
 		if(!ai_holder.hostile)
 			return 0
 
@@ -141,7 +141,7 @@
 
 	// First lets consider their attack ability.
 	var/will_point_blank = FALSE
-	if(has_AI())
+	if(has_polaris_AI())
 		will_point_blank = ai_holder.pointblank
 
 	. = ..()

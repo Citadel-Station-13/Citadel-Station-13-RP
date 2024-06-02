@@ -497,7 +497,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return SAFE_PERP
 
 	// Otherwise Runtime gets killed.
-	if(has_AI() && ai_holder.hostile && faction != "neutral")
+	if(has_polaris_AI() && ai_holder.hostile && faction != "neutral")
 		threatcount += 4
 	return threatcount
 
@@ -521,8 +521,8 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	if(victim)
 		threatcount += 4
 */
-	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		if(AI.rabid)
 			threatcount = 10
 

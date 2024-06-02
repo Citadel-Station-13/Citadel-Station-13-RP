@@ -79,7 +79,7 @@
 
 /obj/item/deadringer/proc/deathprevent()
 	for(var/mob/living/simple_mob/D in oviewers(7, src))
-		if(!D.has_AI())
+		if(!D.has_polaris_AI())
 			continue
 		D.ai_holder.lose_target()
 

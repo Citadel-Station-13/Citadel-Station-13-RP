@@ -28,10 +28,10 @@
 	if(!(L.mob_class & allowed_mob_classes))
 		return FALSE
 
-	if(!L.has_AI())
+	if(!L.has_polaris_AI())
 		return FALSE
 
-	var/datum/ai_holder/AI = L.ai_holder
+	var/datum/ai_holder/polaris/AI = L.ai_holder
 	AI.hostile = FALSE // The Technomancer chooses the target, not the AI.
 	AI.retaliate = TRUE
 	AI.wander = FALSE
@@ -48,8 +48,8 @@
 	if(!(L in controlled_mobs))
 		return FALSE
 
-	if(L.has_AI())
-		var/datum/ai_holder/AI = L.ai_holder
+	if(L.has_polaris_AI())
+		var/datum/ai_holder/polaris/AI = L.ai_holder
 		AI.hostile = initial(AI.hostile)
 		AI.retaliate = initial(AI.retaliate)
 		AI.wander = initial(AI.wander)
@@ -64,14 +64,14 @@
 
 /obj/item/spell/control/proc/move_all(turf/T)
 	for(var/mob/living/L in controlled_mobs)
-		if(!L.has_AI() || L.stat)
+		if(!L.has_polaris_AI() || L.stat)
 			deselect(L)
 			continue
 		L.ai_holder.give_destination(T, 0, TRUE)
 
 /obj/item/spell/control/proc/attack_all(mob/target)
 	for(var/mob/living/L in controlled_mobs)
-		if(!L.has_AI() || L.stat)
+		if(!L.has_polaris_AI() || L.stat)
 			deselect(L)
 			continue
 		L.ai_holder.give_target(target)
@@ -109,7 +109,7 @@
 				if(L.client)
 					to_chat(user, "<span class='danger'>\The [L] seems to resist you!</span>")
 					return 0
-				if(!L.has_AI())
+				if(!L.has_polaris_AI())
 					to_chat(user, SPAN_WARNING( "\The [L] seems too dim for this to work on them."))
 					return FALSE
 				if(pay_energy(500))

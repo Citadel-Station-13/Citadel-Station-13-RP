@@ -393,7 +393,7 @@
 		var/mob/living/L = M
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/S = L
-			var/datum/ai_holder/simple_mob/xenobio_slime/sai = S.ai_holder
+			var/datum/ai_holder/polaris/simple_mob/xenobio_slime/sai = S.ai_holder
 			if(!S.is_justified_to_discipline() && !sai?.rabid) //will kill angry slimes.
 				attacked = FALSE //quit abusing the damn slimes. I don't care if they're hurting you.
 				return

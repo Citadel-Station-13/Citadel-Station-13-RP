@@ -3,6 +3,9 @@
 	AddComponent(/datum/component/radiation_listener)
 	AddElement(/datum/element/z_radiation_listener)
 
+	if(ai_holder_type && !ai_holder)
+		ai_holder = new(ai_holder_type)
+
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
 /mob/living/Destroy()

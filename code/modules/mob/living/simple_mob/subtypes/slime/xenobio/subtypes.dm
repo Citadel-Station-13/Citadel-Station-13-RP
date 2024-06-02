@@ -264,7 +264,7 @@
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/proc/chill(mob/living/L)
 	L.inflict_cold_damage(is_adult ? 10 : 5)
-	if(L.get_cold_protection() < 1 && L.has_AI()) // Harmful auras will make the AI react to its bearer.
+	if(L.get_cold_protection() < 1 && L.has_polaris_AI()) // Harmful auras will make the AI react to its bearer.
 		L.ai_holder.react_to_attack(src)
 
 
@@ -676,7 +676,7 @@
 	shiny = TRUE
 	glow_toggle = TRUE
 	coretype = /obj/item/slime_extract/sapphire
-	ai_holder_type = /datum/ai_holder/simple_mob/xenobio_slime/sapphire
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/xenobio_slime/sapphire
 
 	description_info = "This slime uses more robust tactics when fighting and won't hold back, so it is dangerous to be alone \
 	with one if hostile, and especially dangerous if they outnumber you."
@@ -733,7 +733,7 @@
 		/mob/living/simple_mob/slime/xenobio/light_pink
 	)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/xenobio_slime/light_pink
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/xenobio_slime/light_pink
 
 // Special
 /mob/living/simple_mob/slime/xenobio/rainbow
@@ -768,7 +768,7 @@
 	rainbow_core_candidate = FALSE
 	// Doing pacify() in initialize() won't actually pacify the AI due to the ai_holder not existing due to parent initialize() not being called yet.
 	// Instead lets just give them an ai_holder that does that for us.
-	ai_holder_type = /datum/ai_holder/simple_mob/xenobio_slime/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/xenobio_slime/passive
 
 /mob/living/simple_mob/slime/xenobio/rainbow/kendrick/Initialize(mapload)
 	pacify() // So the physical mob also gets made harmless.
