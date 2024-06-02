@@ -18,5 +18,5 @@ jobs:
     - name: Run auto changelog
       run: |
         node tools/pull_request_hooks/autoChangelog.js
-        node -e 'import("./tools/pull_request_hooks/autoChangelog.js").then(module => module..processAutoChangelog({ github: github, context: context }))'
+        node -e 'import("./tools/pull_request_hooks/autoChangelog.js").then(module => module.processAutoChangelog({ github: github, context: context }))'
 
