@@ -204,12 +204,12 @@
 /mob/living/carbon/human/handle_disabilities()
 	..()
 
-	if(!HAS_TRAIT_FROM(src, TRAIT_BLIND, "This Species cant see"))
+	if(!HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_SPECIES))
 		var/obj/item/organ/vis = internal_organs_by_name[species.vision_organ]
 		if(!vis)
-			add_blindness_source( "Vision organ not present")
-		else if(HAS_TRAIT_FROM(src, TRAIT_BLIND, "Vision organ not present"))
-			remove_blindness_source("Vision organ not present")
+			add_blindness_source( TRAIT_BLINDNESS_VIS_ORGAN_MISSING)
+		else if(HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_VIS_ORGAN_MISSING))
+			remove_blindness_source(TRAIT_BLINDNESS_VIS_ORGAN_MISSING)
 
 	if(stat != CONSCIOUS) //Let's not worry about tourettes if you're not conscious.
 		return

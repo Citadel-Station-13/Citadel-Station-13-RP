@@ -315,7 +315,7 @@
 
 			if (E.damage >= E.min_broken_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.remove_blindness_source( "broken_eyes")
+				user.remove_blindness_source( TRAIT_BLINDNESS_EYE_DMG)
 			else if (E.damage >= E.min_bruised_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
 				user.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)

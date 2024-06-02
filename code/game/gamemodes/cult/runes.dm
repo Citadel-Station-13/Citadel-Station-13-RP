@@ -278,7 +278,7 @@ var/list/sacrificed = list()
 				if(I.damage > 0)
 					I.damage = max(I.damage - 5, 0)		//Heals 5 damage per organ per use
 				if(I.damage <= 5 && I.organ_tag == O_EYES)
-					H.remove_blindness_source( "broken eyes")
+					H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 			// check their limbs
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E

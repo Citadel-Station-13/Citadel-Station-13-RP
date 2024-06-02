@@ -6,9 +6,9 @@
 
 /datum/status_effect/sight/blindness/on_apply()
 	. = ..()
-	owner.add_blindness_source("Status effect: Blindness")
+	owner.add_blindness_source(TRAIT_BLINDNESS_STATUS_EFF)
 
 /datum/status_effect/sight/blindness/on_remove()
 	. = ..()
-	owner.remove_blindness_source("Status effect: Blindness")
+	owner.remove_blindness_source(TRAIT_BLINDNESS_STATUS_EFF)
 

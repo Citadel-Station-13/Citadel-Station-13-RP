@@ -124,10 +124,10 @@
 /mob/living/proc/handle_disabilities()
 	//Eyes
 	if(sdisabilities & SDISABILITY_NERVOUS)	//blindness from disability or unconsciousness doesn't get better on its own
-		add_blindness_source("sdisablity nervous")
+		add_blindness_source(TRAIT_BLINDNESS_DISABILITY)
 	else
-		if(HAS_TRAIT_FROM(src, TRAIT_BLIND, "sdisablity nervous"))
-			remove_blindness_source("sdisablity nervous")
+		if(HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_DISABILITY))
+			remove_blindness_source(TRAIT_BLINDNESS_DISABILITY)
 
 	if(eye_blurry)//blurry eyes heal slowly
 		eye_blurry = max(eye_blurry-1, 0)

@@ -49,8 +49,8 @@
 			adjustHalLoss(-3)
 
 		// Eyes and blindness.
-		if(!has_eyes() && !HAS_TRAIT_FROM(src, TRAIT_BLIND, "No eyes"))
-			add_blindness_source( "No eyes")
+		if(!has_eyes() && !HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_NO_EYES))
+			add_blindness_source(TRAIT_BLINDNESS_NO_EYES)
 			eye_blurry = 1
 		else if(eye_blurry)
 			eye_blurry = max(eye_blurry-1, 0)

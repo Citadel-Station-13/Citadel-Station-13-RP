@@ -76,7 +76,7 @@
 	..()
 	if(is_broken() && !oldbroken && owner && !owner.stat)
 		to_chat(owner, "<span class='danger'>You go blind!</span>")
-		owner.add_blindness_source("broken_eyes")
+		owner.add_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 /obj/item/organ/internal/eyes/tick_life(dt)
 	. = ..()

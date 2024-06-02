@@ -597,7 +597,7 @@
 				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
 				dat += "</tr>"
 			dat += "</table>"
-			if(HAS_TRAIT(occupant, TRAIT_BLIND) || occupant.has_status_effect(/datum/status_effect/sight/blindness))
+			if(HAS_TRAIT(occupant, TRAIT_BLIND))
 				dat += "<font color='red'>Severe impairment of the eyes or visual nerves detected.</font><BR>"
 			if(occupant.disabilities & DISABILITY_NEARSIGHTED)
 				dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
