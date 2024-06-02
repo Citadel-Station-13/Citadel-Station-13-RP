@@ -134,6 +134,9 @@
 				set_AI_busy(FALSE)
 
 /mob/living/simple_mob/animal/sif/leech/handle_special()
+	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
+		return
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(prob(5))
 		randomized_reagent = pick(produceable_chemicals)
 

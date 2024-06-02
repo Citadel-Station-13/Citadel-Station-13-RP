@@ -498,7 +498,9 @@
 		if(prob(30))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				if(istype(src.ai_holder, /datum/ai_holder/polaris))
+					var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+					ai_holder.react_to_attack(user)
 			return
 		else
 			..()
@@ -511,7 +513,9 @@
 	if(prob(50))
 		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			if(istype(src.ai_holder, /datum/ai_holder/polaris))
+				var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+				ai_holder.react_to_attack(Proj.firer)
 		return
 	else
 		..()

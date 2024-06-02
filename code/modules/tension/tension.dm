@@ -21,6 +21,7 @@
 	// First lets consider their attack ability.
 	var/will_point_blank = FALSE
 	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		will_point_blank = ai_holder.pointblank
 
 	var/potential_damage = 0
@@ -61,6 +62,7 @@
 	. = ..()
 
 	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(!ai_holder.hostile)
 			return 0 // Can't hurt anyone.
 
@@ -104,6 +106,7 @@
 	. = ..()
 
 	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(!ai_holder.hostile)
 			return 0
 
@@ -142,6 +145,7 @@
 	// First lets consider their attack ability.
 	var/will_point_blank = FALSE
 	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		will_point_blank = ai_holder.pointblank
 
 	. = ..()

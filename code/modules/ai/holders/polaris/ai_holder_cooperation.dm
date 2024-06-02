@@ -77,6 +77,9 @@
 // What allies receive when someone else is calling for help.
 /datum/ai_holder/polaris/proc/help_requested(mob/living/friend)
 	ai_log("help_requested() : Entering.", AI_LOG_DEBUG)
+	if(!friend.has_polaris_AI())
+		return
+	var/datum/ai_holder/polaris/friend_ai_holder = friend.ai_holder
 	if(stance == STANCE_SLEEP)
 		ai_log("help_requested() : Help requested by [friend] but we are asleep.", AI_LOG_INFO)
 		return
@@ -92,7 +95,7 @@
 	if(!holder.IIsAlly(friend)) // Extra sanity.
 		ai_log("help_requested() : Help requested by [friend] but we hate them.", AI_LOG_INFO)
 		return
-	if(friend.ai_holder && friend.ai_holder.target && !can_attack(friend.ai_holder.target))
+	if(friend_ai_holder && friend_ai_holder.target && !can_attack(friend_ai_holder.target))
 		ai_log("help_requested() : Help requested by [friend] but we don't want to fight their target.", AI_LOG_INFO)
 		return
 	if(get_dist(holder, friend) <= follow_distance)
@@ -100,10 +103,10 @@
 		return
 	if(get_dist(holder, friend) <= vision_range) // Within our sight.
 		ai_log("help_requested() : Help requested by [friend], and within target sharing range.", AI_LOG_INFO)
-		if(friend.ai_holder) // AI calling for help.
-			if(friend.ai_holder.target && can_attack(friend.ai_holder.target)) // Friend wants us to attack their target.
+		if(friend_ai_holder) // AI calling for help.
+			if(friend_ai_holder.target && can_attack(friend_ai_holder.target)) // Friend wants us to attack their target.
 				last_conflict_time = world.time // So we attack immediately and not threaten.
-				give_target(friend.ai_holder.target) // This will set us to the appropiate stance.
+				give_target(friend_ai_holder.target) // This will set us to the appropiate stance.
 				ai_log("help_requested() : Given target [target] by [friend]. Exiting", AI_LOG_DEBUG)
 				return
 
