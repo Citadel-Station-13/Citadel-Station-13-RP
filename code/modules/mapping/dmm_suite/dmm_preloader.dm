@@ -26,16 +26,22 @@ GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
 	var/swap_y
 	var/swap_xy
 
+// todo: OPTIMIZE THE SHIT OUT OF ALL OF THIS
+// because citrp is so quirky and funny we now call this for every fucking atom
+// this is not good
+// this means that we really need to optimize this to not just be attributes.
+// maybe we can get all the swap stuff compounded down? who knows lol
+// fucked.
+
 /world/proc/preloader_setup(list/the_attributes, path, turn_angle, swap_x, swap_y, swap_xy)
-	if(length(the_attributes) || turn_angle)
-		global.dmm_preloader_active = TRUE
-		var/datum/dmm_preloader/preloader_local = global.dmm_preloader
-		preloader_local.attributes = the_attributes
-		preloader_local.target_path = path
-		preloader_local.turn_angle = turn_angle
-		preloader_local.swap_x = swap_x
-		preloader_local.swap_y = swap_y
-		preloader_local.swap_xy = swap_xy
+	global.dmm_preloader_active = TRUE
+	var/datum/dmm_preloader/preloader_local = global.dmm_preloader
+	preloader_local.attributes = the_attributes
+	preloader_local.target_path = path
+	preloader_local.turn_angle = turn_angle
+	preloader_local.swap_x = swap_x
+	preloader_local.swap_y = swap_y
+	preloader_local.swap_xy = swap_xy
 
 /world/proc/preloader_load(atom/what)
 	global.dmm_preloader_active = FALSE

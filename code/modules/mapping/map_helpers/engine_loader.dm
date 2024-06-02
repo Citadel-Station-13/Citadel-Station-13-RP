@@ -6,12 +6,6 @@
 	// override for map, otherwise defaults to loaded station as we have no way of detecting what's being loaded right now
 	var/for_map
 
-/obj/map_helper/engine_loader/New()
-	return ..()
-
-/obj/map_helper/engine_loader/Initialize(mapload)
-	return ..()
-
 /obj/map_helper/engine_loader/map_initializations(datum/dmm_context/context)
 	. = ..()
 	var/list/bounds = context.loaded_bounds
