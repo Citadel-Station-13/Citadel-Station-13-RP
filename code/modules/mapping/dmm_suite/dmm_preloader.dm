@@ -2,7 +2,12 @@
 /// this is global for security and speed
 GLOBAL_REAL(dmm_preloader, /datum/dmm_preloader) = new
 /// this is global for security and speed; if active, atoms will invoke the preloader on New()
+///
+/// * any atom is allowed to arbitrarily set this to FALSE, but not TRUE, on New()
+/// * this is so things like /turf/space/basic that intentionally don't invoke the preloader will still turn it off like atoms should after they preload
 GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
+/// target typepath
+GLOBAL_REAL_VAR(dmm_preloader_target)
 
 /// Preloader datum
 /datum/dmm_preloader
@@ -20,7 +25,6 @@ GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
 
 	//* --      set per atom      -- *//
 	var/list/attributes
-	var/target_path
 	var/turn_angle
 	var/swap_x
 	var/swap_y
@@ -35,13 +39,14 @@ GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
 
 /world/proc/preloader_setup(list/the_attributes, path, turn_angle, swap_x, swap_y, swap_xy)
 	global.dmm_preloader_active = TRUE
+	global.dmm_preloader_target = path
 	var/datum/dmm_preloader/preloader_local = global.dmm_preloader
 	preloader_local.attributes = the_attributes
-	preloader_local.target_path = path
-	preloader_local.turn_angle = turn_angle
-	preloader_local.swap_x = swap_x
-	preloader_local.swap_y = swap_y
-	preloader_local.swap_xy = swap_xy
+	if(turn_angle != 0)
+		preloader_local.turn_angle = turn_angle
+		preloader_local.swap_x = swap_x
+		preloader_local.swap_y = swap_y
+		preloader_local.swap_xy = swap_xy
 
 /world/proc/preloader_load(atom/what)
 	global.dmm_preloader_active = FALSE

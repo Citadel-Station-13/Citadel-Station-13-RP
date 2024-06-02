@@ -568,6 +568,7 @@
 		. = create_atom(path, crds)//first preloader pass
 
 	if(global.dmm_preloader_active) //second preloader pass, for those atoms that don't ..() in New()
+		stack_trace("required a second preloader pass")
 		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize

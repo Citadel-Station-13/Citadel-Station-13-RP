@@ -76,6 +76,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	//       we refactor ZAS
 	//       then we can skip all this bullshit and have proper space zmimic
 	//       as long as zm overhead isn't too high.
+	//* THIS CANNOT CALL ANY PROCS UP UNTIL 'new path'! *//
 	switch(path)
 		if(null)
 			return
@@ -364,6 +365,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
  * every if(!density) is a if(!istype(src, /turf/closed)) in this version.
  */
 /turf/proc/PlaceOnTop(list/new_baseturfs, turf/fake_turf_type, flags)
+	//* THIS CANNOT CALL ANY 'new'-CALLING PROCS UNTIL CHANGETURF CALLS! *//
 	var/area/turf_area = loc
 	if(new_baseturfs && !length(new_baseturfs))
 		new_baseturfs = list(new_baseturfs)

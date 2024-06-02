@@ -236,8 +236,9 @@
  * We also generate a tag here if the DF_USE_TAG flag is set on the atom
  */
 /atom/New(loc, ...)
-	//atom creation method that preloads variables at creation
-	if(global.dmm_preloader_active && (src.type == global.dmm_preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	// atom creation method that preloads variables at creation
+	// todo: we shouldn't need a type check here.
+	if(global.dmm_preloader_active && global.dmm_preloader_target == type)
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
