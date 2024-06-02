@@ -19,3 +19,6 @@
 	src.target = target
 	src.intent = isnull(intent)? performer.a_intent : intent
 	src.params = isnull(params)? list() : params
+
+/datum/event_args/actor/clickchain/clone()
+	return new /datum/event_args/actor/clickchain(performer, initiator, target, intent, params)
