@@ -134,8 +134,8 @@
 			if(with_visible_key)
 				generation = "[with_visible_key]-[generation]"
 		while(round_local_obfuscation_reverse_cache[generation] || round_local_mangling_reverse_cache[generation])
-		round_local_obfuscation_cache[generation] = cache_key
-		round_local_obfuscation_reverse_cache[cache_key] = generation
+		round_local_obfuscation_cache[cache_key] = generation
+		round_local_obfuscation_reverse_cache[generation] = cache_key
 	return round_local_obfuscation_cache[cache_key]
 
 /**
@@ -174,6 +174,6 @@
 			// unsecure, yes, but without a SQL unique lookup we need a verifiable way of ensuring no collision property.
 			generation = "[generation]-[round_global_descriptor]"
 		while(round_local_obfuscation_reverse_cache[generation] || round_local_mangling_reverse_cache[generation])
-		round_local_obfuscation_cache[generation] = cache_key
-		round_local_obfuscation_reverse_cache[cache_key] = generation
+		round_local_obfuscation_cache[cache_key] = generation
+		round_local_obfuscation_reverse_cache[generation] = cache_key
 	return round_local_obfuscation_cache[cache_key]
