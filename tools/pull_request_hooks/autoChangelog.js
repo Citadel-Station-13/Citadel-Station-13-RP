@@ -26,6 +26,12 @@ export async function processAutoChangelog({ github, context }) {
 		console.log("no changelog found");
 		return;
 	}
+	else {
+		console.log("Created the following changelog:")
+		console.log(changelog);
+		console.log("\nfrom:");
+		console.log(context.payload.pull_request.body);
+	}
 
 	const yml = changelogToYml(
 		changelog,
