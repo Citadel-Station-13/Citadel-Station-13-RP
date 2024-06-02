@@ -25,6 +25,14 @@ export function changelogToYml(changelog, login) {
 export async function processAutoChangelog({ github, context }) {
 	console.log("Starting processAutoChangelog");
 
+	// Check and set repo information if missing
+	if (!context.repo) {
+        context.repo = {
+            owner: context.payload.repository.owner.login,
+            repo: context.payload.repository.name,
+        };
+    }
+
 	const changelog = parseChangelog(context.payload.pull_request.body);
 	if (!changelog || changelog.changes.length === 0) {
 		console.log("no changelog found");
@@ -44,7 +52,7 @@ export async function processAutoChangelog({ github, context }) {
 	console.error(context);
 
 	await octokit.rest.repos.createOrUpdateFileContents({
-		owner: context.payload.repo.owner,
+		owner: context.repo.owner,
 		repo: context.repo.repo,
 		branch: context.payload.pull_request.head.ref,
 		path: `html/changelogs/AutoChangeLog-pr-${context.payload.pull_request.number}.yml`,
