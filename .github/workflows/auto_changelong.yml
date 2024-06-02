@@ -17,7 +17,7 @@ jobs:
 
     - name: Run auto changelog
       run: |
-        node -e 'process.env.GITHUB_CONTEXT = JSON.stringify(process.env.GITHUB_CONTEXT); require("./tools/pull_request_hooks/autoChangelog.js").then(module => module.processAutoChangelog(JSON.parse(process.env.GITHUB_CONTEXT)))'
+        node -e 'process.env.GITHUB_CONTEXT = JSON.stringify(process.env.GITHUB_CONTEXT); import("./tools/pull_request_hooks/autoChangelog.js").then(module => module.processAutoChangelog(JSON.parse(process.env.GITHUB_CONTEXT)))'
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
 
