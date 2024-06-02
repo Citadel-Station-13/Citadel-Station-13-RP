@@ -17,7 +17,7 @@ jobs:
 
     - name: Run auto changelog
       run: |
-        node -e 'process.env.GITHUB_CONTEXT = JSON.stringify(process.env.GITHUB_CONTEXT); process.env.GITHUB_EVENT = JSON.stringify(process.env.GITHUB_EVENT); import("./tools/pull_request_hooks/autoChangelog.js").then(module => module.processAutoChangelog(JSON.parse(process.env.GITHUB_CONTEXT), JSON.parse(process.env. GITHUB_EVENT)))'
+        node -e 'process.env.GITHUB_CONTEXT = JSON.stringify(process.env.GITHUB_CONTEXT); process.env.GITHUB_EVENT = JSON.stringify(process.env.GITHUB_EVENT); import("./tools/pull_request_hooks/autoChangelog.js").then(module => module.processAutoChangelog({ github: JSON.parse(process.env.GITHUB_CONTEXT), context: JSON.parse(process.env. GITHUB_EVENT) }))'
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
         GITHUB_EVENT: $({ toJson(github.event)})
