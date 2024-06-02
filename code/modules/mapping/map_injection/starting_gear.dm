@@ -134,7 +134,7 @@
 
 	// inject
 
-	for(var/list/obj/map_helper/gear_marker/distributed/using_marker in use_markers)
+	for(var/obj/map_helper/gear_marker/distributed/using_marker in use_markers)
 		using_marker.inject(divided_paths)
 	use_markers[1].inject(fill_paths)
 
