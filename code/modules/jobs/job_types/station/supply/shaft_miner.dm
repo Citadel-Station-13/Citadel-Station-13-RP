@@ -27,7 +27,9 @@
 	alt_titles = list(
 		"Drill Technician" = /datum/prototype/struct/alt_title/miner/drill_tech,
 		"Belt Miner" = /datum/prototype/struct/alt_title/miner/belt,
-		"Salvage Technician" = /datum/prototype/struct/alt_title/salvage
+		"Salvage Technician" = /datum/prototype/struct/alt_title/salvage,
+		"Apprentice Miner" = /datum/prototype/struct/alt_title/miner/apprenticemine,
+		"Apprentice Salvager" = /datum/prototype/struct/alt_title/miner/apprenticesalv
 		)
 
 /datum/prototype/struct/alt_title/miner
@@ -39,6 +41,14 @@
 
 /datum/prototype/struct/alt_title/miner/belt
 	title = "Belt Miner"
+
+/datum/prototype/struct/alt_title/miner/apprenticemine
+	title = "Apprentice Miner"
+	title_blurb = "An Apprentice Miner is still learning about the typical grind of a miner, and should seek the guidance of other miners and salvagers for direction."
+
+/datum/prototype/struct/alt_title/miner/apprenticesalv
+	title = "Apprentice Salvager"
+	title_blurb = "An Apprentice Salvager is still learning about the typical grind of a salvager, and should seek the guidance of other miners and salvagers for direction."
 
 /datum/prototype/struct/alt_title/salvage
 	title = "Salvage Technician"

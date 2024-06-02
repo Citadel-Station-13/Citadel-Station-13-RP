@@ -101,7 +101,7 @@
  * set body temperature
  */
 /mob/living/proc/set_bodytemperature(amt)
-	bodytemperature = amt
+	bodytemperature = max(TCMB, amt)
 /**
  * adjust body temperature
  */

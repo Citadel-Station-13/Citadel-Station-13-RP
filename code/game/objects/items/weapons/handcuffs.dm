@@ -128,7 +128,7 @@ var/last_chew = 0
 	add_attack_logs(H,H,"chewed own [O.name]")
 
 	if(O.take_damage(3,0,1,1,"teeth marks"))
-		H:UpdateDamageIcon()
+		H:update_damage_overlay()
 
 	last_chew = world.time
 */

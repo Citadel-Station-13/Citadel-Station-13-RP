@@ -2131,7 +2131,8 @@
 "ew" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/vault/bolted{
-	req_access = list(53)
+	req_access = list(53);
+	id_tag = "vault_bolt"
 	},
 /obj/machinery/door/blast/regular{
 	id = "VaultAc";
@@ -4779,6 +4780,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/railing,
 /turf/simulated/open,
 /area/engineering/foyer_mezzenine)
 "jN" = (
@@ -13871,9 +13873,6 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
-/obj/structure/window/reinforced/polarized/full{
-	id = "qm_office"
-	},
 /turf/simulated/floor/wood,
 /area/quartermaster/qm)
 "Cg" = (
@@ -22567,7 +22566,7 @@
 /area/shuttle/excursion/general)
 "Uh" = (
 /obj/effect/floor_decal/rust,
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_restaurant_upper)
 "Ui" = (
@@ -24725,7 +24724,9 @@
 /area/maintenance/station/eng_upper)
 "YA" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/sheet_silo,
+/obj/machinery/sheet_silo{
+	obj_persist_static_id = "tether_silo"
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "YB" = (

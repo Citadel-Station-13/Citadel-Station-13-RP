@@ -55,7 +55,7 @@
 	/// Cost set to default during init if unset.
 	var/cost = 0
 
-/obj/item/electronic_assembly/GenerateTag()
+/obj/item/electronic_assembly/generate_tag()
 	tag = "assembly_[next_assembly_id++]"
 
 /obj/item/electronic_assembly/examine(mob/user, dist)

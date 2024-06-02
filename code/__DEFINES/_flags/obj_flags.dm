@@ -20,7 +20,9 @@
 /// Materials have been initialized
 #define OBJ_MATERIAL_INITIALIZED    (1<<9)
 /// no sculpting
-#define OBJ_NO_SCULPTING		(1<<10)
+#define OBJ_NO_SCULPTING			(1<<10)
+/// wall-mounted; facing *towards* the wall we're mounted on (e.g. be NORTH if we're shifted north)
+#define OBJ_WALL_MOUNTED			(1<<11)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_EMAGGED),
@@ -34,4 +36,26 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_MATERIAL_PARTS_MODIFIED),
 	BITFIELD(OBJ_MATERIAL_INITIALIZED),
 	BITFIELD(OBJ_NO_SCULPTING),
+	BITFIELD_NAMED("Wall Mounted", OBJ_WALL_MOUNTED),
+))
+
+//* /obj/var/obj_rotation_flags
+
+/// obj rotation enabled; we'll go to context menu
+#define OBJ_ROTATION_ENABLED (1<<0)
+/// allow defaulting on context menu
+#define OBJ_ROTATION_DEFAULTING (1<<1)
+/// do not perform standard anchor check
+#define OBJ_ROTATION_NO_ANCHOR_CHECK (1<<2)
+/// rotate CCW
+#define OBJ_ROTATION_CCW (1<<3)
+/// give optiosn to rotate both directions
+#define OBJ_ROTATION_BIDIRECTIONAL (1<<4)
+
+DEFINE_BITFIELD(obj_rotation_flags, list(
+	BITFIELD_NAMED("Enabled", OBJ_ROTATION_ENABLED),
+	BITFIELD_NAMED("Defaulting", OBJ_ROTATION_DEFAULTING),
+	BITFIELD_NAMED("Allow Anchored", OBJ_ROTATION_NO_ANCHOR_CHECK),
+	BITFIELD_NAMED("Counterclockwise", OBJ_ROTATION_CCW),
+	BITFIELD_NAMED("Show Both Directions", OBJ_ROTATION_BIDIRECTIONAL),
 ))

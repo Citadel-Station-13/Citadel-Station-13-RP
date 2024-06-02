@@ -171,6 +171,8 @@
 		/obj/item/clothing/accessory/sweater/flowersweater = 5,
 		/obj/item/clothing/accessory/sweater/redneck = 5,
 		/obj/item/clothing/accessory/sweater/virgin = 5,
+		/obj/item/clothing/accessory/sweater/milk = 5,
+		/obj/item/clothing/accessory/sweater/milk/male = 5,
 		/obj/item/clothing/accessory/tie = 5,
 		/obj/item/clothing/accessory/tie/horrible = 5,
 		/obj/item/clothing/accessory/tie/white = 5,
@@ -224,6 +226,7 @@
 		/obj/item/clothing/mask/bandana/green = 5,
 		/obj/item/clothing/mask/bandana/red = 5,
 		/obj/item/clothing/mask/surgical = 5,
+		/obj/item/clothing/mask/warmer = 5,
 	)
 	premium = list(/obj/item/bedsheet/rainbow = 1)
 	contraband = list(/obj/item/clothing/mask/gas/clown_hat = 1)

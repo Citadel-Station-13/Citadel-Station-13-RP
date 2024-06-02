@@ -1,8 +1,8 @@
 /// Sends information needed for uplinks
-/datum/asset/json/uplink
+/datum/asset_pack/json/uplink
 	name = "uplink"
 
-/datum/asset/json/uplink/generate()
+/datum/asset_pack/json/uplink/generate()
 	var/list/data = list()
 	var/list/categories = list()
 	var/list/items = list()
