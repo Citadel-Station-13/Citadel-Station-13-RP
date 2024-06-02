@@ -126,22 +126,18 @@
 	var/list/datum/map_level/loaded_levels = list()
 	var/list/datum/map/actually_loaded = list()
 	var/list/datum/callback/generation_callbacks = list()
-	var/list/loaded_bounds = list()
-	map_initialization_hooked = list()
-	_load_map_impl(instance, loaded_levels, generation_callbacks, actually_loaded, loaded_bounds)
+	var/list/datum/dmm_orientation/loaded_contexts = list()
+	_load_map_impl(instance, loaded_levels, generation_callbacks, actually_loaded, loaded_contexts)
 	// invoke hooks
-	for(var/obj/map_helper/D in map_initialization_hooked)
-		if(QDELETED(D))
-			continue
-		D.map_initializations(arglist(map_initialization_hooked[D]))
-	map_initialization_hooked = null
+	for(var/datum/dmm_context/context in loaded_contexts)
+		context.fire_map_initializations()
 	// invoke generation
 	for(var/datum/callback/cb as anything in generation_callbacks)
 		cb.Invoke()
 	// invoke init
 	if(initialized)
-		for(var/list/bounds in loaded_bounds)
-			SSatoms.init_map_bounds(bounds)
+		for(var/datum/dmm_context/context in loaded_contexts)
+			SSatoms.init_map_bounds(context.loaded_bounds)
 	// invoke finalize
 	for(var/datum/map_level/level as anything in loaded_levels)
 		level.on_loaded_finalize(level.z_index)
@@ -155,7 +151,7 @@
 		indices_to_rebuild += level.z_index
 	rebuild_level_multiz(indices_to_rebuild, TRUE, TRUE)
 
-/datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/bounds_collect)
+/datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch, list/context_collect)
 	PRIVATE_PROC(TRUE)
 	// ensure any lazy data is loaded and ready to be read
 	instance.prime()
@@ -165,12 +161,12 @@
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
 	for(var/datum/map_level/level as anything in instance.levels)
-		var/list/bounds = _load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
+		var/datum/dmm_context/loaded_context = _load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
 		if(isnull(bounds))
 			STACK_TRACE("unable to load level [level] ([level.id])")
 			message_admins(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
 			continue
-		bounds_collect[++bounds_collect.len] = bounds
+		context_collect[++context_collect.len] = bounds
 		loaded_levels += level
 
 	loaded_maps += instance
@@ -211,7 +207,7 @@
 		if(map.loaded)
 			init_debug("skipping recursing map [map.id] - already loaded")
 			continue
-		_load_map_impl(map, loaded_levels, generation_callbacks, this_batch, bounds_collect)
+		_load_map_impl(map, loaded_levels, generation_callbacks, this_batch, context_collect)
 
 /datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance)
 	if(isnull(instance))

@@ -54,7 +54,9 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 /datum/unit_test/New()
 	if (isnull(reservation))
-		reservation = SSmapping.load_level(new /datum/map_level/unit_tests)
+		var/datum/map_level/unit_tests/reserved = new
+		SSmapping.load_level(reserved)
+		reservation = reserved
 
 	allocated = new
 	run_loc_floor_bottom_left = get_turf(locate(/obj/landmark/unit_test_bottom_left) in GLOB.landmarks_list)

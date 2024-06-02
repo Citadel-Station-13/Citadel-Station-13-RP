@@ -21,17 +21,27 @@
 	/// this gets rid of the automatic qdel self behavior so you have to do it yourself.
 	var/late = FALSE
 
+	/// preloading instance fired
+	var/was_in_mapload = FALSE
+
 /obj/map_helper/preloading_instance(datum/dmm_context/context)
 	. = ..()
+	was_in_mapload = TRUE
 	if(early)
 		hook_map_initializations(context)
 
 /obj/map_helper/Initialize(mapload)
+	var/let_me_live = FALSE
+	if(!was_in_mapload)
+		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
+		let_me_live = TRUE
 	. = ..()
 	if(late)
 		return INITIALIZE_HINT_LATELOAD // fire LateInitialize()
 	else if(early)
 		return INITIALIZE_HINT_NORMAL // let the callback fire without being qdel'd
+	if(let_me_live)
+		return INITIALIZE_HINT_NORMAL
 	return INITIALIZE_HINT_QDEL
 
 /**
@@ -41,13 +51,7 @@
  * if Initialize() is in SSatoms, this crashes for safety as that should not happen.
  */
 /obj/map_helper/proc/hook_map_initializations(datum/dmm_context/context)
-	if(isnull(SSmapping.map_initialization_hooked))
-		// postpone to after init
-		if(SSatoms.initialized == INITIALIZATION_INSSATOMS)
-			CRASH("undefined behavior: initialization is currently in SSatoms but we tried to hook map init.")
-		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
-	else
-		context.map_initialization_hooked += src
+	context.map_initialization_hooked += src
 
 /**
  * called if we're on SSmapping's map_initializations_hooked list.
@@ -58,6 +62,5 @@
  * @params
  * * context - the dmm_context of our load
  */
-#warn update calls and callers for new signature
 /obj/map_helper/proc/map_initializations(datum/dmm_context/context)
 	return
