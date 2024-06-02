@@ -26,7 +26,6 @@ jobs:
         const github = import("@actions/github")
         const { context } = github;
         const event = JSON.parse(process.env.GITHUB_EVENT);
-        const octokit = github.getOctokit(core.getInput)
         import("./tools/pull_request_hooks/autoChangelog.js")
           .then(module => module.processAutoChangelog({ github: github, context: {...context, payload: event} }))
         '
