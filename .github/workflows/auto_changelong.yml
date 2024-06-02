@@ -1,11 +1,10 @@
 # Creates an entry in html/changelogs automatically, to eventually be compiled by compile_changelogs
 name: Auto Changelog
 on:
-  pull_request_target:
+  pull_request:
     types:
-      - closed
-    branches:
-      - master
+      - edited
+
 permissions:
   contents: write
 jobs:
@@ -15,10 +14,23 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
     - name: Run auto changelog
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const { processAutoChangelog } = await import('${{ github.workspace }}/tools/pull_request_hooks/autoChangelog.js')
-          await processAutoChangelog({ github, context })
-        github-token: ${{ secrets.SILICONS_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+      run: |
+        node tools/pull_request_hooks/autoChangelog.js
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Commit and push changes
+      run: |
+        git add html/changelogs
+        if git diff-index --quiet HEAD; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update changelogs automatically"
+          git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
