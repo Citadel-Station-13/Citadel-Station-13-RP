@@ -1,4 +1,6 @@
 import { parseChangelog } from "./changelogParser.js";
+import * as core from '@actions/core';
+import * as github from '@actions/github';
 
 const safeYml = (string) =>
 	string.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
@@ -39,7 +41,9 @@ export async function processAutoChangelog({ github, context }) {
 
 	console.error(github);
 
-	github.rest.repos.createOrUpdateFileContents({
+	const octokit = github.getOctokit(core.getInput('GITHUB_TOKEN'));
+
+	await octokit.rest.repos.createOrUpdateFileContents({
 		owner: context.repo.owner,
 		repo: context.repo.repo,
 		branch: context.payload.pull_request.head.ref,

@@ -19,10 +19,14 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
         GITHUB_EVENT: ${{ toJson(github.event)}}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
       run: |
         node -e '
-        const github = JSON.parse(process.env.GITHUB_CONTEXT);
+        const core = import("@actions/core")
+        const github = import("@actions/github")
+        const { context } = github;
         const event = JSON.parse(process.env.GITHUB_EVENT);
+        const octokit = github.getOctokit(core.getInput)
         import("./tools/pull_request_hooks/autoChangelog.js")
-          .then(module => module.processAutoChangelog({ github: github, context: {payload: event} }))
+          .then(module => module.processAutoChangelog({ github: github, context: {...context, payload: event} }))
         '
