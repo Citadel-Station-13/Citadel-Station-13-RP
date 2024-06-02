@@ -1483,6 +1483,23 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
+"rh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance/rnd{
+	name = "Science Outpost Maintenance";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "ri" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "D-NW"
@@ -34683,7 +34700,7 @@ ej
 Iq
 Iq
 oO
-Bd
+rh
 oO
 oO
 be

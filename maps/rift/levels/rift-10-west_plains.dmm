@@ -5366,6 +5366,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/science{
+	name = "Research Outpost";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "yq" = (
@@ -9891,6 +9896,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Ue" = (
+/obj/machinery/door/airlock/maintenance/rnd{
+	name = "Science Outpost Atmospherics";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor,
 /area/rnd/outpost/breakroom)
 "Ug" = (

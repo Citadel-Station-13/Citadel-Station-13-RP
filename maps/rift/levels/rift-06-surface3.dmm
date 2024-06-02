@@ -23863,6 +23863,9 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass/exploration{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "nCn" = (
@@ -28013,6 +28016,11 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/hatch{
+	name = "Engine Compartment";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/exploration/department,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "vZI" = (

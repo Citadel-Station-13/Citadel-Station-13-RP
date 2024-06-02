@@ -4202,6 +4202,14 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
+"mQ" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/security)
 "mR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -8666,6 +8674,14 @@
 /obj/item/gun/energy/sniperrifle,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Mr" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/simulated/floor/tiled/dark,
+/area/centcom/simulated/security)
 "Mu" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -16604,7 +16620,7 @@ gI
 ft
 hp
 fR
-fR
+mQ
 fR
 fR
 kA
@@ -17185,7 +17201,7 @@ gl
 gL
 ft
 ft
-fR
+mQ
 ft
 ft
 ft
@@ -18155,7 +18171,7 @@ go
 gO
 ft
 ft
-fR
+mQ
 ft
 ft
 ft
@@ -18735,12 +18751,12 @@ ft
 fS
 fR
 fR
+mQ
 fR
 fR
 fR
 fR
-fR
-go
+Mr
 go
 kV
 ft
@@ -19744,7 +19760,7 @@ zk
 zk
 zC
 yC
-yC
+yA
 yC
 zO
 AI
