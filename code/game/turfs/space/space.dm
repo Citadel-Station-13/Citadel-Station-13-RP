@@ -27,8 +27,7 @@
 	// This is used to optimize the map loader
 	SHOULD_CALL_PARENT(FALSE)
 	// turn preloader off so it doesn't hit something else
-	// todo: don't need this because type check is still in atom/New()
-	// global.dmm_preloader_active = FALSE
+	global.dmm_preloader_active = FALSE
 
 /turf/space/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
