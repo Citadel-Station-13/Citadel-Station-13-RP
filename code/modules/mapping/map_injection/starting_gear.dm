@@ -24,12 +24,12 @@
 	// collate role packs
 	if(length(role_packs_by_tag))
 		for(var/role in role_packs_by_tag)
-			var/list/datum/map_starting_gear/role/packs = role_packs_by_tag[role]
+			var/list/datum/map_starting_gear/role/role_packs = role_packs_by_tag[role]
 			// make one for the role
 			var/datum/map_starting_gear/role/collated = new
 			collated.role_tag = role
 			// gather all packs of that role
-			for(var/datum/map_starting_gear/role/gather in packs)
+			for(var/datum/map_starting_gear/role/gather in role_packs)
 				// slots: undefined behavior right now is get the highest max() of all slots
 				if(!isnull(gather.slots))
 					collated.slots = max(collated.slots, gather.slots)
@@ -87,7 +87,7 @@
 	var/list/obj/map_helper/gear_marker/use_markers = list()
 	var/current_matching_weight = 0
 
-	for(var/obj/map_helper/gear_marker/distributed/potential_marker in context)
+	for(var/obj/map_helper/gear_marker/distributed/potential_marker in context.distributed_gear_markers)
 		var/match_weight = 0
 		var/gear_match = FALSE
 		var/usage_match = FALSE
