@@ -30,7 +30,7 @@
 	var/obj/item/fishing_rod/used_rod
 	/// Lure visual
 	var/obj/effect/fishing_lure/lure
-	/// Background image from /datum/asset/simple/fishing_minigame
+	/// Background image from /datum/asset_pack/simple/fishing_minigame
 	var/background = "default"
 
 	/// Max distance we can move from the spot
@@ -171,8 +171,9 @@
 	.["special_effects"] = special_effects
 	.["background_image"] = background
 
-/datum/fishing_challenge/ui_assets(mob/user)
-	return list(get_asset_datum(/datum/asset/simple/fishing_minigame)) //preset screens
+/datum/fishing_challenge/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/fishing_minigame
+	return ..()
 
 /datum/fishing_challenge/ui_status(mob/user, datum/ui_state/state)
 	return min(

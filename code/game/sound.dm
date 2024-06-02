@@ -249,7 +249,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 				soundin = pick('sound/weapons/hf_machete/hfmachete_throw_hit01.ogg', 'sound/weapons/hf_machete/hfmachete_throw_hit02.ogg', 'sound/weapons/hf_machete/hfmachete_throw_hit03.ogg')
 
 
-//! ## VORE SOUNDS
+			// VORE SOUNDS
 			if ("hunger_sounds") soundin = pick('sound/vore/growl1.ogg','sound/vore/growl2.ogg','sound/vore/growl3.ogg','sound/vore/growl4.ogg','sound/vore/growl5.ogg')
 
 			if("classic_digestion_sounds") soundin = pick(
