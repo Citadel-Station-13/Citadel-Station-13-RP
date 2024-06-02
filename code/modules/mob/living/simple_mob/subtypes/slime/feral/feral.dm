@@ -99,5 +99,5 @@
 		L.add_modifier(/datum/modifier/chilled, 5 SECONDS, src)
 
 	if(L.has_polaris_AI()) // Other AIs should react to hostile auras.
-		L.ai_holder.react_to_attack(src)
+		L.ai_holder.react_to_attack_polaris(src)
 

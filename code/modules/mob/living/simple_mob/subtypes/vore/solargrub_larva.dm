@@ -153,7 +153,9 @@ var/global/list/grub_machine_overlays = list()
 		for(var/mob/L in GLOB.player_list)
 			L.client?.images -= machine_effect
 		QDEL_NULL(machine_effect)
-	ai_holder.target = null
+	if(istype(src.ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+		ai_holder.target = null
 	powermachine.draining = 1
 	spawn(30)
 		set_AI_busy(FALSE)

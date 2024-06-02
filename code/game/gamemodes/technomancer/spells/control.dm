@@ -67,14 +67,16 @@
 		if(!L.has_polaris_AI() || L.stat)
 			deselect(L)
 			continue
-		L.ai_holder.give_destination(T, 0, TRUE)
+		var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+		ai_holder.give_destination(T, 0, TRUE)
 
 /obj/item/spell/control/proc/attack_all(mob/target)
 	for(var/mob/living/L in controlled_mobs)
 		if(!L.has_polaris_AI() || L.stat)
 			deselect(L)
 			continue
-		L.ai_holder.give_target(target)
+		var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+		ai_holder.give_target(target)
 
 /obj/item/spell/control/Initialize(mapload)
 	control_overlay = image('icons/obj/spells.dmi',"controlled")

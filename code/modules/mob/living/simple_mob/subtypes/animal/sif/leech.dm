@@ -294,7 +294,8 @@
 
 		src.host = M
 		src.forceMove(M)
-		if(ai_holder)
+		if(istype(src.ai_holder, /datum/ai_holder/polaris))
+			var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 			ai_holder.hostile = FALSE
 			ai_holder.lose_target()
 
@@ -323,7 +324,8 @@
 	if(!host)
 		return
 
-	if(ai_holder)
+	if(istype(src.ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder.hostile = initial(ai_holder.hostile)
 		ai_holder.lose_target()
 

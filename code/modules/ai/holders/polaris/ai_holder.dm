@@ -252,11 +252,13 @@
 
 // Helper proc to turn AI 'busy' mode on or off without having to check if there is an AI, to simplify writing code.
 /mob/living/proc/set_AI_busy(value)
-	if(ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(istype(ai_holder))
 		ai_holder.busy = value
 
 /mob/living/proc/is_AI_busy()
-	if(!ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(!istype(ai_holder))
 		return FALSE
 	return ai_holder.busy
 
@@ -264,7 +266,8 @@
 // Returns null if there's no AI holder, or the mob has a player and autopilot is not on.
 // Otherwise returns the stance.
 /mob/living/proc/get_AI_stance()
-	if(!ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(!istype(ai_holder))
 		return null
 	if(client && !ai_holder.autopilot)
 		return null
@@ -272,9 +275,12 @@
 
 // Similar to above but only returns 1 or 0.
 /mob/living/proc/has_polaris_AI()
+	if(!istype(ai_hlder, /datum/ai_holder/polaris))
+		return FALSE
 	return get_AI_stance() ? TRUE : FALSE
 
 // 'Taunts' the AI into attacking the taunter.
 /mob/living/proc/taunt(atom/movable/taunter, force_target_switch = FALSE)
-	if(ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(istype(ai_holder))
 		ai_holder.receive_taunt(taunter, force_target_switch)

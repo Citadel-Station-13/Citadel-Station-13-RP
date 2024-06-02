@@ -26,8 +26,6 @@ SUBSYSTEM_DEF(ai_holders)
 	var/bucket_fps
 
 /datum/controller/subsystem/ai_holders/Initialize()
-	init_ai_lexicons()
-	init_ai_personalities()
 	rebuild()
 	return ..()
 

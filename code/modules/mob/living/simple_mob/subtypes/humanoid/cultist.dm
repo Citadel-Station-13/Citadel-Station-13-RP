@@ -500,7 +500,7 @@
 			if(user)
 				if(istype(src.ai_holder, /datum/ai_holder/polaris))
 					var/datum/ai_holder/polaris/ai_holder = src.ai_holder
-					ai_holder.react_to_attack(user)
+					ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -515,7 +515,7 @@
 		if(Proj.firer)
 			if(istype(src.ai_holder, /datum/ai_holder/polaris))
 				var/datum/ai_holder/polaris/ai_holder = src.ai_holder
-				ai_holder.react_to_attack(Proj.firer)
+				ai_holder.react_to_attack_polaris(Proj.firer)
 		return
 	else
 		..()

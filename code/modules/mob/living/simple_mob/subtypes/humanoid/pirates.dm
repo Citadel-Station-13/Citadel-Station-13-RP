@@ -156,7 +156,7 @@
 		if(prob(15))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -169,7 +169,7 @@
 	if(prob(25))
 		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			ai_holder.react_to_attack_polaris(Proj.firer)
 		return
 	else
 		..()

@@ -169,7 +169,7 @@
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -182,7 +182,7 @@
 	if(prob(35))
 		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			ai_holder.react_to_attack_polaris(Proj.firer)
 		return
 	else
 		..()
@@ -546,7 +546,7 @@
 		if(prob(50))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -558,7 +558,7 @@
 	if(prob(50))
 		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			ai_holder.react_to_attack_polaris(Proj.firer)
 		return
 	else
 		..()
@@ -691,7 +691,7 @@
 		if(prob(20))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its sword!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -704,7 +704,7 @@
 	if(prob(35))
 		visible_message("<span class='warning'>[src] blocks [Proj] with its sword!</span>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			ai_holder.react_to_attack_polaris(Proj.firer)
 		return
 	else
 		..()

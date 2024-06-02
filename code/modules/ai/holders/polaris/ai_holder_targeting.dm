@@ -224,32 +224,35 @@
 	ai_log("lose_target_position() : Last position is being reset.", AI_LOG_INFO)
 	target_last_seen_turf = null
 
+/datum/ai_holder/proc/react_to_attack_polaris(atom/movable/attacker)
+	return
+
 // Responds to a hostile action against its mob.
-/datum/ai_holder/polaris/proc/react_to_attack(atom/movable/attacker)
+/datum/ai_holder/polaris/react_to_attack_polaris(atom/movable/attacker)
 	if(holder.stat) // We're dead.
-		ai_log("react_to_attack() : Was attacked by [attacker], but we are dead/unconscious.", AI_LOG_TRACE)
+		ai_log("react_to_attack_polaris() : Was attacked by [attacker], but we are dead/unconscious.", AI_LOG_TRACE)
 		return FALSE
 	if(!hostile && !retaliate) // Not allowed to defend ourselves.
-		ai_log("react_to_attack() : Was attacked by [attacker], but we are not allowed to attack back.", AI_LOG_TRACE)
+		ai_log("react_to_attack_polaris() : Was attacked by [attacker], but we are not allowed to attack back.", AI_LOG_TRACE)
 		return FALSE
 	if(holder.IIsAlly(attacker)) // I'll overlook it THIS time...
-		ai_log("react_to_attack() : Was attacked by [attacker], but they were an ally.", AI_LOG_TRACE)
+		ai_log("react_to_attack_polaris() : Was attacked by [attacker], but they were an ally.", AI_LOG_TRACE)
 		return FALSE
 	if(target) // Already fighting someone. Switching every time we get hit would impact our combat performance.
 		if(!retaliate)	// If we don't get to fight back, we don't fight back...
-			ai_log("react_to_attack() : Was attacked by [attacker], but we already have a target.", AI_LOG_TRACE)
+			ai_log("react_to_attack_polaris() : Was attacked by [attacker], but we already have a target.", AI_LOG_TRACE)
 			on_attacked(attacker) // So we attack immediately and not threaten.
 			return FALSE
 		else if(attacker in attackers && world.time > last_target_time + 3 SECONDS)	// Otherwise, let 'er rip
-			ai_log("react_to_attack() : Was attacked by [attacker]. Can retaliate, waited 3 seconds.", AI_LOG_INFO)
+			ai_log("react_to_attack_polaris() : Was attacked by [attacker]. Can retaliate, waited 3 seconds.", AI_LOG_INFO)
 			on_attacked(attacker) // So we attack immediately and not threaten.
 			return give_target(attacker) // Also handles setting the appropiate stance.
 
 	if(stance == STANCE_SLEEP) // If we're asleep, try waking up if someone's wailing on us.
-		ai_log("react_to_attack() : AI is asleep. Waking up.", AI_LOG_TRACE)
+		ai_log("react_to_attack_polaris() : AI is asleep. Waking up.", AI_LOG_TRACE)
 		go_wake()
 
-	ai_log("react_to_attack() : Was attacked by [attacker].", AI_LOG_INFO)
+	ai_log("react_to_attack_polaris() : Was attacked by [attacker].", AI_LOG_INFO)
 	on_attacked(attacker) // So we attack immediately and not threaten.
 	return give_target(attacker) // Also handles setting the appropiate stance.
 
