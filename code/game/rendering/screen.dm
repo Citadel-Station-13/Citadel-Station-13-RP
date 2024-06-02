@@ -285,7 +285,7 @@
 								if(!istype(tanks[index], /obj/item/tank))
 									continue
 								C.internal = tanks[index]
-								to_chat(C, "<span class='notice'>You are now running on internals from [tanks[index]] on your [locnames[index]]</span>")
+								to_chat(C, "<span class='notice'>You are now running on internals from [tanks[index]] [locnames[index]]</span>")
 								if(C.internals)
 									C.internals.icon_state = "internal1"
 								return
