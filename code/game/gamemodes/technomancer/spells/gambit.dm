@@ -77,7 +77,8 @@
 		// Spiders, carp... bears.
 		if(istype(L, /mob/living/simple_mob))
 			var/mob/living/simple_mob/SM = L
-			if(!is_ally(SM) && SM.has_polaris_AI() && SM.ai_holder.hostile)
+			var/datum/ai_holder/polaris/their_holder = SM.ai_holder
+			if(!is_ally(SM) && SM.has_polaris_AI() && their_holder.hostile)
 				hostile_mobs++
 				if(SM.summoned || SM.supernatural) // Our creations might be trying to kill us.
 					potential_spells |= /obj/item/spell/abjuration

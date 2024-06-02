@@ -37,8 +37,9 @@
 			first_friend = L
 			break
 
-	if(first_friend) // Joining an already established faction.
-		faction_friends = first_friend.ai_holder.faction_friends
+	if(first_friend && first_friend.has_polaris_AI()) // Joining an already established faction.
+		var/datum/ai_holder/polaris/their_holder = first_friend.ai_holder
+		faction_friends = first_friend.their_holder.faction_friends
 		faction_friends |= holder
 	else // We're the 'founder' (first and/or only member) of this faction.
 		faction_friends |= holder
@@ -70,7 +71,9 @@
 
 			else if(L.ai_holder) // Dealing with an AI.
 				ai_log("request_help() : Asking [L] (AI) for help.", AI_LOG_INFO)
-				L.ai_holder.help_requested(holder)
+				if(istype(L.ai_holder, /datum/ai_holder/polaris))
+					var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+					ai_holder.help_requested(holder)
 
 	ai_log("request_help() : Exiting.", AI_LOG_DEBUG)
 

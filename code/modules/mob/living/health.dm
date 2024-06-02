@@ -34,7 +34,9 @@
 	//! WARNING: LEGACY CODE
 	tod = null
 	timeofdeath = 0
-	ai_holder?.go_wake()
+	if(istype(ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		ai_holder?.go_wake()
 	failed_last_breath = 0
 	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING
 	//! END

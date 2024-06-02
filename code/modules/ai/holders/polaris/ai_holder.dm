@@ -275,7 +275,7 @@
 
 // Similar to above but only returns 1 or 0.
 /mob/living/proc/has_polaris_AI()
-	if(!istype(ai_hlder, /datum/ai_holder/polaris))
+	if(!istype(ai_holder, /datum/ai_holder/polaris))
 		return FALSE
 	return get_AI_stance() ? TRUE : FALSE
 
