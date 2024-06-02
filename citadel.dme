@@ -923,7 +923,6 @@
 #include "code\game\radio.dm"
 #include "code\game\response_team.dm"
 #include "code\game\shuttle_engines.dm"
-#include "code\game\skincmd.dm"
 #include "code\game\sound.dm"
 #include "code\game\statistics.dm"
 #include "code\game\world.dm"
