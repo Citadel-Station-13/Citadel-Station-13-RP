@@ -2,7 +2,9 @@
 name: Auto Changelog
 on:
   pull_request_target:
-    types: [opened, edited]
+    types: [opened, edited, synchronize]
+  pull_request:
+    types: [opened, edited, synchronize]
 
 jobs:
   auto_changelog:
