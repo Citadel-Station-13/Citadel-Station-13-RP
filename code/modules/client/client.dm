@@ -56,6 +56,10 @@
 	/// open context menu
 	var/datum/radial_menu/context_menu/context_menu
 
+	//* HUDs *//
+	/// active atom HUD providers associated to a list of ids or paths of atom huds that's providing it.
+	var/list/datum/atom_hud_provider/atom_hud_providers
+
 	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
@@ -187,8 +191,6 @@
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////
-	///Track hours of leave accured for each department.
-	var/list/department_hours = list()
 
 	preload_rsc = PRELOAD_RSC
 
@@ -201,14 +203,6 @@
 	var/list/topiclimiter
 	///Used for limiting the rate of clicks sends by the client to avoid abuse
 	var/list/clicklimiter
-
-	///List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s
-	var/list/sent_assets = list()
-	///List of all completed blocking send jobs awaiting acknowledgement by send_asset
-	var/list/completed_asset_jobs = list()
-	///Last asset send job id.
-	var/last_asset_job = 0
-	var/last_completed_asset_job = 0
 
  	///world.time they connected
 	var/connection_time
@@ -233,6 +227,9 @@
 			return TRUE
 	return ..()
 
+
+//* Is-rank helpers *//
+
 /**
  * are we a guest account?
  */
@@ -250,3 +247,49 @@
  */
 /client/proc/is_staff()
 	return !isnull(holder)
+
+//* Atom HUDs *//
+
+/client/proc/add_atom_hud(datum/atom_hud/hud, source)
+	ASSERT(istext(source))
+	if(isnull(atom_hud_providers))
+		atom_hud_providers = list()
+	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
+	for(var/datum/atom_hud_provider/provider as anything in providers)
+		var/already_there = atom_hud_providers[provider]
+		if(already_there)
+			atom_hud_providers[provider] |= source
+		else
+			atom_hud_providers[provider] = list(source)
+			provider.add_client(src)
+
+/client/proc/remove_atom_hud(datum/atom_hud/hud, source)
+	ASSERT(istext(source))
+	if(!length(atom_hud_providers))
+		return
+	if(!hud)
+		// remove all of source
+		for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
+			if(!(source in atom_hud_providers[provider]))
+				continue
+			atom_hud_providers[provider] -= source
+			if(!length(atom_hud_providers[provider]))
+				atom_hud_providers -= provider
+				provider.remove_client(src)
+		return
+	hud = fetch_atom_hud(hud)
+	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
+	for(var/datum/atom_hud_provider/provider as anything in providers)
+		if(!length(atom_hud_providers[provider]))
+			continue
+		atom_hud_providers[provider] -= source
+		if(!length(atom_hud_providers[provider]))
+			atom_hud_providers -= provider
+			provider.remove_client(src)
+
+// todo: add_atom_hud_provider, remove_atom_hud_provider
+
+/client/proc/clear_atom_hud_providers()
+	for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
+		provider.remove_client(src)
+	atom_hud_providers = null

@@ -181,9 +181,9 @@
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/left)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/left)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
@@ -307,8 +307,7 @@
 	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
 	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
-	holder.radiation = max(RAD_MOB_CURE_PROTEAN_REGEN)
-
+	holder.cure_radiation(RAD_MOB_CURE_PROTEAN_REGEN)
 
 /proc/protean_requires_healing(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -359,7 +358,7 @@
 			return
 
 	for(var/obj/item/hardsuit/protean/suit in contents)
-		force_equip_to_slot(suit, /datum/inventory_slot_meta/inventory/back)
+		force_equip_to_slot(suit, /datum/inventory_slot/inventory/back)
 		to_chat(src, SPAN_WARNING("You deploy your nanosuit."))
 		suit.toggle_seals(src, TRUE)
 		return

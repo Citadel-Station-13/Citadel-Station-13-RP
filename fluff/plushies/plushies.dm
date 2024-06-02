@@ -15,14 +15,14 @@
 	desc = "A pirate tajaran plushie! This one has a lot of wires sticking out."
 	icon_state = "evanne"
 	pokephrase = "Mrowl!"
-	player_name = "Evanne Grimalkin"
+	player_name = "Evanne"
 
 /obj/item/toy/plushie/snowflake/kadence
 	name = "human plushie"
 	desc = "A human plushie. This one resembles a scientist."
 	icon_state = "kadence"
 	pokephrase = "Human Noise!"
-	player_name = "Kadence Allen"
+	player_name = "Kadence"
 
 /obj/item/toy/plushie/snowflake/habiki
 	name = "green synth plushie"
@@ -43,7 +43,7 @@
 	desc = "A cute saguar plushie. It looks incredibly squishable."
 	icon_state = "wisk"
 	pokephrase = "Yippee!"
-	player_name = "Wisk Talo"
+	player_name = "Wisk"
 
 /obj/item/toy/plushie/snowflake/kari
 	name = "wolf plushie"
@@ -51,3 +51,24 @@
 	icon_state = "kari"
 	pokephrase = "Gecker!"
 	player_name = "Kari"
+
+/obj/item/toy/plushie/snowflake/trubus
+	name = "blue dragon plushie"
+	desc = "A blue dragon plushie. It radiates an aura of justice."
+	icon_state = "trubus"
+	pokephrase = "Roar!"
+	player_name = "Trubus"
+
+/obj/item/toy/plushie/snowflake/charlotte
+	name = "pathfinder plushie"
+	desc = "A pathfinder plushie. This one has holographic wings on its back! Batteries not included."
+	icon_state = "charlotte"
+	pokephrase = "" // "what noise do humans make" puzzled me for 5 minutes then i gave up
+	player_name = "Charlotte"
+
+/obj/item/toy/plushie/snowflake/leas
+	name = "teshari plushie"
+	desc = "A teshari plushie. It doesn't look happy about being picked up."
+	icon_state = "tesh"
+	pokephrase = "Prbt!"
+	player_name = "Leas"

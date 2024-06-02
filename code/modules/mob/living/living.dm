@@ -5,13 +5,6 @@
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
-/mob/living/prepare_huds()
-	..()
-	prepare_data_huds()
-
-/mob/living/proc/prepare_data_huds()
-	update_hud_med_all()
-
 /mob/living/Destroy()
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
@@ -393,7 +386,7 @@ default behaviour is:
 		. += iterating
 		var/list/returned = iterating.return_inventory()
 		. += returned
-		
+
 /mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
 
@@ -419,9 +412,6 @@ default behaviour is:
 	src.update_health()
 
 /mob/living/proc/restore_all_organs()
-	return
-
-/mob/living/proc/UpdateDamageIcon()
 	return
 
 /mob/living/proc/Examine_OOC()

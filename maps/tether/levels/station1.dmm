@@ -19511,7 +19511,7 @@
 /area/tether/exploration/crew)
 "Os" = (
 /obj/item/cell/potato,
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "Ot" = (
@@ -24655,7 +24655,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "YM" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor,
 /area/constructionsite)
 "YN" = (

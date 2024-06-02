@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	var/himself	= "themselves"
 	var/s		= ""
 	var/hes		= "they're"
+	var/Hes = "They're"
 
 /datum/gender/male
 	key		= "male"
@@ -47,6 +48,7 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	himself	= "himself"
 	s		= "s"
 	hes		= "he's"
+	Hes = "He's"
 
 /datum/gender/female
 	key		= "female"
@@ -64,6 +66,7 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	himself	= "herself"
 	s		= "s"
 	hes		= "she's"
+	Hes = "She's"
 
 /datum/gender/neuter
 	key		= "neuter"
@@ -81,6 +84,7 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	himself	= "itself"
 	s		= "s"
 	hes		= "it's"
+	Hes = "It's"
 
 /datum/gender/herm
 	key		= "herm"
@@ -98,6 +102,7 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 	himself	= "hirself"
 	s		= "s"
 	hes		= "shi's"
+	Hes = "Shi's"
 
 /mob/proc/p_they()
 	var/datum/gender/G = GLOB.gender_datums[gender]
@@ -122,3 +127,11 @@ GLOBAL_LIST_INIT(gender_select_list, gender_selection())
 /mob/proc/p_Their()
 	var/datum/gender/G = GLOB.gender_datums[gender]
 	return G.His
+
+/mob/proc/p_theyre()
+	var/datum/gender/G = GLOB.gender_datums[gender]
+	return G.hes
+
+/mob/proc/p_Theyre()
+	var/datum/gender/G = GLOB.gender_datums[gender]
+	return G.Hes

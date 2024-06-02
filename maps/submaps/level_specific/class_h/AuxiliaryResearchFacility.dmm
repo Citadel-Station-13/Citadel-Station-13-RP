@@ -966,7 +966,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "wc" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "wg" = (

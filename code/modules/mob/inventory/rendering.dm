@@ -245,24 +245,26 @@
  *
  * @params
  * * M - the mob we're rendering
+ * * slot_id_or_hand_index - the slot ID or numerical held index we're in
+ * * bodytype - the effective bodytype
  */
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_DEFAULT)
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// todo: eh reevaluate later
 	// determine if in hands
 	var/inhands = isnum(slot_id_or_hand_index)? slot_id_or_hand_index : null
-	var/datum/inventory_slot_meta/slot_meta
+	var/datum/inventory_slot/slot_meta
 	// resolve slot
 	if(inhands)
-		slot_meta = resolve_inventory_slot_meta((slot_id_or_hand_index % 2)? /datum/inventory_slot_meta/abstract/hand/left : /datum/inventory_slot_meta/abstract/hand/right)
+		slot_meta = resolve_inventory_slot((slot_id_or_hand_index % 2)? /datum/inventory_slot/abstract/hand/left : /datum/inventory_slot/abstract/hand/right)
 	else
-		slot_meta = resolve_inventory_slot_meta(slot_id_or_hand_index)
+		slot_meta = resolve_inventory_slot(slot_id_or_hand_index)
 
 	var/list/resolved = resolve_worn_assets(M, slot_meta, inhands, bodytype)
 
 	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y], resolved[WORN_DATA_ALIGN_Y])
 
-/obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y, align_y)
+/obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y, align_y)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	PRIVATE_PROC(TRUE) // if you think you need to call this, rethink.
 	var/list/additional = render_additional(M, icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, slot_meta)
@@ -273,7 +275,7 @@
 	// worn_state_guard makes us not render if we'd render the same as in-inventory icon.
 	if(no_render)		// don't bother
 		return additional
-	MA = mutable_appearance(icon_used, state_used, BODY_LAYER + layer_used, FLOAT_PLANE)
+	MA = mutable_appearance(icon_used, state_used, layer_used, FLOAT_PLANE)
 	// temporary - until coloration
 	MA.color = color
 	MA = center_appearance(MA, dim_x, dim_y)
@@ -288,7 +290,7 @@
  *
  * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used, align_y)
+/obj/item/proc/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used, align_y)
 	return MA
 
 /**
@@ -296,13 +298,13 @@
  *
  * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/proc/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	return MA
 
 /**
  * override to apply overlays to our current mutable appearance; called first
  */
-/obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	if(addblends)
 		var/mutable_appearance/adding = mutable_appearance(icon = MA.icon, icon_state = addblends)
 		adding.blend_mode = BLEND_ADD
@@ -312,7 +314,7 @@
 /**
  * override to include additional appearances while rendering
  */
-/obj/item/proc/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot/slot_meta)
 	RETURN_TYPE(/list)
 	return list()
 
@@ -325,9 +327,9 @@
  * - inhands - if we're going to inhands
  * - bodytype - bodytype in question
  */
-/obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+/obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype)
 	if(istext(slot_meta))
-		slot_meta = resolve_inventory_slot_meta(slot_meta)
+		slot_meta = resolve_inventory_slot(slot_meta)
 	var/list/data = new /list(WORN_DATA_LIST_SIZE)
 
 	//? state ; item_state_slots --> (worn_state | inhand_state) --> item_state --> icon_state
@@ -422,20 +424,20 @@
 
 /obj/item/proc/debug_worn_assets(slot_or_id, mob/M = worn_mob(), bodytype)
 	var/mob/living/carbon/human/H = ishuman(M)? M : null
-	var/datum/inventory_slot_meta/slot_meta
+	var/datum/inventory_slot/slot_meta
 	if(isnull(slot_or_id))
 		slot_or_id = worn_slot
 	if(isnum(slot_or_id))
-		slot_meta = resolve_inventory_slot_meta((slot_or_id % 2)? /datum/inventory_slot_meta/abstract/hand/left : /datum/inventory_slot_meta/abstract/hand/right)
+		slot_meta = resolve_inventory_slot((slot_or_id % 2)? /datum/inventory_slot/abstract/hand/left : /datum/inventory_slot/abstract/hand/right)
 	else
-		slot_meta = resolve_inventory_slot_meta(slot_or_id)
+		slot_meta = resolve_inventory_slot(slot_or_id)
 	if(isnull(bodytype) && H)
 		bodytype = H.species.get_effective_bodytype(H, src, slot_meta)
 	. = resolve_worn_assets(M, slot_meta, isnum(slot_or_id), bodytype)
 	.[WORN_DATA_ICON] = "[.[WORN_DATA_ICON]]"
 
 // todo: remove, aka get rid of fucking uniform _s state
-/obj/item/proc/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+/obj/item/proc/resolve_legacy_state(mob/M, datum/inventory_slot/slot_meta, inhands, bodytype)
 	return (item_state_slots?[slot_meta.id]) || (inhands? inhand_state : worn_state) || item_state || icon_state
 
 /obj/item/proc/resolve_worn_state(inhands, slot_key, bodytype)
