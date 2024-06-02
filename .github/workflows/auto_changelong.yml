@@ -15,6 +15,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Print GitHub event
+      run: |
+        echo "${{ toJson(github.event) }}"
+
+
     - name: Run auto changelog
       run: |
         node -e 'process.env.GITHUB_CONTEXT = JSON.stringify(process.env.GITHUB_CONTEXT); process.env.GITHUB_EVENT = JSON.stringify(process.env.GITHUB_EVENT); import("./tools/pull_request_hooks/autoChangelog.js").then(module => module.processAutoChangelog({ github: JSON.parse(process.env.GITHUB_CONTEXT), context: JSON.parse(process.env. GITHUB_EVENT) }))'
