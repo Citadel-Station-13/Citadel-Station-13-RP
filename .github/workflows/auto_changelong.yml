@@ -16,8 +16,3 @@ jobs:
     - name: Run auto changelog
       run: |
         node tools/pull_request_hooks/autoChangelog.js
-
-    - name: Configure Git
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
