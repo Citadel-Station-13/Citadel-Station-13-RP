@@ -2,7 +2,7 @@
  * Magnetic weapons that use arbitrary ammo.
  *
  * Looking for bullet casing/magazine-using magweapons?
- * You're looking for /projectile/ballistic/magnetic, not /projectile/magnetic!
+ * You're looking for /projectile/ballistic/magnetic, not /projectile/magfed!
  */
 /obj/item/gun/projectile/magfed
 	name = "improvised coilgun"

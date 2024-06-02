@@ -97,10 +97,13 @@
  * empty state append is -0
  */
 /datum/gun_renderer/states
+	var/use_empty
 	var/count
 
-/datum/gun_renderer/states/New(count, use_firemode)
+/datum/gun_renderer/states/New(count, use_zero_state, use_firemode)
 	..(use_firemode = use_firemode)
+	if(!isnull(use_zero_state))
+		src.use_empty = use_zero_state
 	if(!isnull(count))
 		src.count = count
 
