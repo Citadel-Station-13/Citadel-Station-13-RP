@@ -78,7 +78,7 @@
 /datum/supply_pack/eng/solar
 	name = "Solar Pack crate"
 	contains  = list(
-			/obj/item/solar_assembly = 21,
+			/obj/item/frame2/solar_panel = 21,
 			/obj/item/circuitboard/solar_control,
 			/obj/item/tracker_electronics,
 			/obj/item/paper/solar

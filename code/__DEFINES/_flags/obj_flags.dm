@@ -20,7 +20,9 @@
 /// Materials have been initialized
 #define OBJ_MATERIAL_INITIALIZED    (1<<9)
 /// no sculpting
-#define OBJ_NO_SCULPTING		(1<<10)
+#define OBJ_NO_SCULPTING			(1<<10)
+/// wall-mounted; facing *towards* the wall we're mounted on (e.g. be NORTH if we're shifted north)
+#define OBJ_WALL_MOUNTED			(1<<11)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_EMAGGED),
@@ -34,6 +36,7 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_MATERIAL_PARTS_MODIFIED),
 	BITFIELD(OBJ_MATERIAL_INITIALIZED),
 	BITFIELD(OBJ_NO_SCULPTING),
+	BITFIELD_NAMED("Wall Mounted", OBJ_WALL_MOUNTED),
 ))
 
 //* /obj/var/obj_rotation_flags
