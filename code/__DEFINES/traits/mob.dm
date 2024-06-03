@@ -85,4 +85,5 @@ DATUM_TRAIT(/mob, TRAIT_DEAF)
 #define TRAIT_BLINDNESS_EYE_DMG			"severe Eye damage"
 #define TRAIT_BLINDNESS_DISABILITY		"sdisability nervous"
 #define TRAIT_BLINDNESS_STATUS_EFF		"Status Effect: Blindness"
+#define TRAIT_BLINDNESS_NEGATIV			"Negative custom trait"
 
