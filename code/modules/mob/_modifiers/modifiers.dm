@@ -40,8 +40,8 @@
 	/// If set, the client will have wires replaced by the given replacement list. For colorblindness.
 	var/wire_colors_replace = null
 
-//! Now for all the different effects.
-//! Percentage modifiers are expressed as a multipler. (e.g. +25% damage should be written as 1.25)
+	//* Now for all the different effects.
+	//* Percentage modifiers are expressed as a multipler. (e.g. +25% damage should be written as 1.25)
 
 	/// Adjusts max health by a flat (e.g. +20) amount.  Note this is added to base health.
 	var/max_health_flat

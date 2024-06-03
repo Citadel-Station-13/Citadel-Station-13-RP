@@ -18,7 +18,7 @@
  * After the datum is created, it can be assigned to an obj or mob using their particles var. The particles will appear on the map wherever that obj or mob appears.
  */
 /particles
-//! ## Particle vars that affect the entire set (generators are not allowed for these)
+	//* Particle vars that affect the entire set (generators are not allowed for these) *//
 
 	/**
 	 * Width size of the particle image in pixels.
@@ -74,7 +74,7 @@
 	 */
 	transform = null
 
-//! ## Vars that apply when a particle spawns
+	//* Vars that apply when a particle spawns *//
 
 	/**
 	 * Maximum life of the particle, in ticks.
@@ -94,8 +94,8 @@
 	 */
 	fadein = 0
 
-//? The icon and icon_state values are special in that they can't be assigned a generator, but they
-//? can be assigned a constant icon or string, respectively, or a list of possible values to choose from.
+	//? The icon and icon_state values are special in that they can't be assigned a generator, but they
+	//? can be assigned a constant icon or string, respectively, or a list of possible values to choose from.
 
 	/**
 	 * Icon to use, if any; no icon means this particle will be a dot.
@@ -165,7 +165,7 @@
 	 */
 	friction = null
 
-//! ## Vars that are evalulated every tick.
+	//* Vars that are evalulated every tick. *//
 
 	/**
 	 * Added acceleration every tick; e.g. a circle or sphere generator can be applied to produce snow or ember effects.
