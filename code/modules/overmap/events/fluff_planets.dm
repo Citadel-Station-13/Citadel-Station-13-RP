@@ -78,10 +78,10 @@
 	body_subtype=  pick("P","C","X","D","I")											//You have found a comet
 	scanned_name = "Comet: [(LEGACY_MAP_DATUM).starsys_name]-[body_subtype]/[rand(1,5000)]"
 	scanned_icon = "comet"
-	scanner_desc = {"<b><i>Designation</i></b>: [scanned_name]<br>
-<b><i>Class</i></b>: [body_subtype]-type Comet. <br>
-<b><i>Dimensions</i></b>: [rand(1, 60)].[rand(0,9)]km x [rand(1, 30)].[rand(0,9)]km x [rand(1, 30)].[rand(0,9)]km. <br>
-<b><i>Notice</i></b>: Automatic maneuvering is currently enforced to prevent a risk of collision.<br>"}
+	scanner_desc = {"Designation: [scanned_name]<br>
+Class: [body_subtype]-type Comet. <br>
+Dimensions: [rand(1, 60)].[rand(0,9)]km x [rand(1, 30)].[rand(0,9)]km x [rand(1, 30)].[rand(0,9)]km. <br>
+Notice: Automatic maneuvering is currently enforced to prevent a risk of collision.<br>"}
 
 /obj/overmap/entity/fluff/asteroid //Big ball of rock/metal
 	name = "Asteroid"
@@ -95,10 +95,10 @@
 	body_subtype=  pick("C","M","S")
 	scanned_name = "Minor Planet: ([rand(100,10000)]) [(LEGACY_MAP_DATUM).starsys_name]" ///There is over 10k Asteroids of over 10km in Diameter in the Solar System
 	scanned_icon = "asteroid"
-	scanner_desc = {"<b><i>Designation</i></b>: [scanned_name]<br>
-<b><i>Class</i></b>: [body_subtype]-type Asteroid. <br>
-<b><i>Diameter</i></b>: [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)].[rand(0,9)]km. <br>
-<b><i>Notice</i></b>: Automatic maneuvering is currently enforced to prevent a risk of collision.<br>"}
+	scanner_desc = {"Designation: [scanned_name]<br>
+Class<: [body_subtype]-type Asteroid. <br>
+Diameter: [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)].[rand(0,9)]km x [rand(10, 100)].[rand(0,9)]km. <br>
+Notice: Automatic maneuvering is currently enforced to prevent a risk of collision.<br>"}
 
 /obj/overmap/entity/fluff/probe //Unmanned probes, scanning transmitting and generally clogging up space.
 	name = "Unmanned Probe"
@@ -120,9 +120,9 @@
 	faction=  pick("Nanotrasen","Vey-Med","Hephaestus")
 	name = "[faction] Satellite: [(LEGACY_MAP_DATUM).starsys_name]-[rand(1,100)]"
 	scanned_icon = "probe"
-	scanner_desc = {"<b><i>Registration</i></b>: [name]<br>
-<b><i>Class</i></b>: Artificial [body_subtype] Satellite. <br>
-<b><i>Notice</i></b>: Damage to [faction] property may result in legal action.<br>"}
+	scanner_desc = {"Registration: [name]<br>
+Class: Artificial [body_subtype] Satellite. <br>
+Notice: Damage to [faction] property may result in legal action.<br>"}
 
 /obj/overmap/entity/fluff/probe/neutral //Probes owned by neutral corps and locals governments
 	name = "Neutral Probe"
@@ -137,9 +137,9 @@
 	faction=  pick("SDF","Occulum News","Donk Co.","Ward-Takashi GMB")
 	scanned_name = "[faction] Satellite: [(LEGACY_MAP_DATUM).starsys_name]-[rand(1,100)]"
 	scanned_icon = "probe"
-	scanner_desc = {"<b><i>Registration</i></b>: [name]<br>
-<b><i>Class</i></b>: Artificial [body_subtype] Satellite. <br>
-<b><i>Notice</i></b>: Damage to [faction] property may result in legal action.<br>"}
+	scanner_desc = {"Registration: [name]<br>
+Class: Artificial [body_subtype] Satellite. <br>
+Notice: Damage to [faction] property may result in legal action.<br>"}
 
 /obj/overmap/entity/fluff/probe/hostile //Probes owned by hostile actors.
 	name = "Unknown Probe"
@@ -153,6 +153,6 @@
 	faction=  pick("Pirate","Mercenary", "Vox", "Hivebot")
 	scanned_name = "Unregistered Satellite-[rand(1,100)]"
 	scanned_icon = "probe"
-	scanner_desc = {"<b><i>Registration</i></b>: Unknown. Potential [faction] Transmission Detected. <br>
-<b><i>Class</i></b>: Unknown. Potential [body_subtype] Satellite.<br>
-<b><i>Notice</i></b>: Destruction of Satellite Reccomended.<br>"}
+	scanner_desc = {"Registration: Unknown. Potential [faction] Transmission Detected. <br>
+Class: Unknown. Potential [body_subtype] Satellite.<br>
+Notice: Destruction of Satellite Reccomended.<br>"}
