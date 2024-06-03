@@ -11,7 +11,7 @@
  */
 SUBSYSTEM_DEF(ai_scheduling)
 	name = "AI Holders"
-	subsystem_flags = SS_TICKER
+	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_SCHEDULING
 
 	/// rolling bucket list; these hold the head node of linked /datum/ai_callback's
