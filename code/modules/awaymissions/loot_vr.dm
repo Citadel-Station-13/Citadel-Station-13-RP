@@ -14,6 +14,7 @@
 
 /obj/landmark/loot_spawn/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
+	atom_flags |= ATOM_INITIALIZED
 	switch(pick( \
 	low_probability * 1000;"nothing", \
 	200 - low_probability * 175;"treasure", \
