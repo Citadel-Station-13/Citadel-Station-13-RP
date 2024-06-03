@@ -12,3 +12,8 @@
 /// the AI scheduler does not explicitly clean up references; it just drops things
 /// if they're no longer valid during the bucket scan.
 #define AI_SCHEDULING_LIMIT (10 SECONDS)
+
+/// AI scheduling bucket limit
+///
+/// 5 seconds of tolerance is allowed before AI callbacks are dropped.
+#define AI_SCHEDULING_BUCKET_LIMIT (15 SECONDS)

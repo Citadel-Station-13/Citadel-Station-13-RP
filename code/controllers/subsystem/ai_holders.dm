@@ -4,7 +4,7 @@
 /// if we fall behind this much, we reset buckets
 #define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_LIMIT
 /// this many buckets are kept
-#define BUCKET_AMOUNT (AI_SCHEDULING_LIMIT / world.tick_lag)
+#define BUCKET_AMOUNT (AI_SCHEDULING_BUCKET_LIMIT / world.tick_lag)
 
 /**
  * Handles ticking AI holders
@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(ai_holders)
 	/// all ticking ai holders
 	var/static/list/datum/ai_holder/active_holders
 	/// rolling bucket list; these hold the head node of linked ai_holders.
-	var/tmp/list/holder_buckets
+	var/tmp/list/buckets
 	/// world.time of bucket head
 	var/bucket_position
 	/// index of bucket head
@@ -42,12 +42,24 @@ SUBSYSTEM_DEF(ai_holders)
 
 /datum/controller/subsystem/ai_holders/proc/bucket_insert(datum/ai_holder/holder)
 	ASSERT(holder.ticking <= AI_SCHEDULING_LIMIT)
-	#warn impl
+
+	var/new_index = bucket_position + rand(1, 1 SECONDS)
+	new_index = new_index % length(buckets)
+	var/datum/ai_holder/existing = buckets[new_index]
+	if(existing)
+		existing.ticking_next.ticking_previous = holder
+		holder.ticking_next = existing.ticking_next
+		holder.ticking_previous = existing
+		existing.ticking_next = holder
+	else
+		buckets[new_index] = holder
+		holder.ticking_next = holder.ticking_previous = holder
+	holder.ticking_position = new_index
 
 /datum/controller/subsystem/ai_holders/proc/bucket_evict(datum/ai_holder/holder)
 	ASSERT(holder.ticking_position)
-	if(holder_buckets[holder.ticking_position] == holder)
-		holder_buckets[holder.ticking_position] = holder.ticking_next
+	if(buckets[holder.ticking_position] == holder)
+		buckets[holder.ticking_position] = holder.ticking_next
 	holder.ticking_next = holder.ticking_previous = null
 
 /**
@@ -59,7 +71,8 @@ SUBSYSTEM_DEF(ai_holders)
 	bucket_index = 1
 	bucket_fps = world.fps
 	// todo; recover active_holders as well maybe?
-	holder_buckets = new /list(BUCKET_AMOUNT)
+	buckets = new /list(BUCKET_AMOUNT)
+	var/bucket_amount = length(buckets)
 	for(var/datum/ai_holder/holder as anything in active_holders)
 		if(!istype(holder))
 			active_holders -= holder
@@ -72,12 +85,18 @@ SUBSYSTEM_DEF(ai_holders)
 			holder.ticking_next = null
 			holder.ticking_previous = null
 			continue
-		#warn impl; stagger it out.
+		var/new_index = bucket_position + rand(1, 1 SECONDS)
+		new_index = new_index % bucket_amount
+		var/datum/ai_holder/existing = buckets[new_index]
+		if(existing)
+			existing.ticking_next.ticking_previous = holder
+			holder.ticking_next = existing.ticking_next
+			holder.ticking_previous = existing
+			existing.ticking_next = holder
+		else
+			buckets[new_index] = holder
+			holder.ticking_next = holder.ticking_previous = holder
 		holder.ticking_position = new_index
-	#warn impl
-
-
-#warn impl all
 
 #undef BUCKET_CATASTROPHIC_LAG_THRESHOLD
 #undef BUCKET_AMOUNT

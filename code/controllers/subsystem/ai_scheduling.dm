@@ -4,7 +4,7 @@
 /// if we fall behind this much, we reset buckets
 #define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_LIMIT
 /// this many buckets are kept
-#define BUCKET_AMOUNT (AI_SCHEDULING_LIMIT / world.tick_lag)
+#define BUCKET_AMOUNT (AI_SCHEDULING_BUCKET_LIMIT / world.tick_lag)
 
 /**
  * Handles ticking AI holders
@@ -15,16 +15,13 @@ SUBSYSTEM_DEF(ai_scheduling)
 	priority = FIRE_PRIORITY_AI_SCHEDULING
 
 	/// rolling bucket list; these hold the head node of linked /datum/ai_callback's
-	var/tmp/list/scheduler_buckets
+	var/tmp/list/buckets
 	/// world.time of bucket head
 	var/bucket_position
 	/// index of bucket head
 	var/bucket_index
 	/// world.fps buckets were made for
 	var/bucket_fps
-
-	/// global ai_lexicon instances
-	var/list/ai_lexicons
 
 /datum/controller/subsystem/ai_scheduling/Initialize()
 	rebuild()
@@ -35,6 +32,12 @@ SUBSYSTEM_DEF(ai_scheduling)
 	return ..()
 
 /datum/controller/subsystem/ai_scheduling/fire(resumed)
+	if(bucket_fps != world.fps)
+		subsystem_log("rebuilding buckets - world.fps [world.fps] != [bucket_fps]")
+		rebuild()
+		return
+	var/buckets_needing_processed = round(DS2TICKS(world.time - bucket_position))
+	var/position = buckets[bucket_index]
 	#warn impl
 
 /datum/controller/subsystem/ai_scheduling/Recover()
@@ -43,9 +46,9 @@ SUBSYSTEM_DEF(ai_scheduling)
 
 /datum/controller/subsystem/ai_scheduling/proc/schedule_callback(datum/ai_callback/callback, delay)
 	// determine bucket without wrapping
-	var/bucket = bucket_index + round(max(1, DS2TICKS(delay)) + DS2TICKS(world.time - bucket_position))
+	var/bucket = bucket_index + round(max(0, DS2TICKS(delay)) + DS2TICKS(world.time - bucket_position))
 	// modulo it by total buckets to wrap
-	bucket = (bucket % length(scheduler_buckets))
+	bucket = (bucket % length(buckets))
 	// inject
 	if(isnull(buckets[bucket]))
 		// nothing's there, we're there
@@ -65,7 +68,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 	bucket_fps = world.fps
 	// we don't give a crap about recovered scheduled events; shrimply not our issue
 	// if you change ticklag midgame all AIs should be rescheduling anyways.
-	scheduler_buckets = new /list(BUCKET_AMOUNT)
+	buckets = new /list(BUCKET_AMOUNT)
 
 #undef BUCKET_CATASTROPHIC_LAG_THRESHOLD
 #undef BUCKET_AMOUNT
