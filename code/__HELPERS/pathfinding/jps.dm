@@ -1,6 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn TEST JPS CHANGES
 /// visualization; obviously slow as hell
 /// JPS visualization is currently not nearly as perfect as A*'s.
 /// notably is sometimes marks stuff closed that isn't because of the weird backtracking stuff I put in.
@@ -31,7 +32,6 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 		I.pixel_x = forwards? -16 : 16
 	return I
 
-#define JPS_VISUAL_DELAY 10 SECONDS
 #define JPS_VISUAL_COLOR_CLOSED "#ff3333"
 #define JPS_VISUAL_COLOR_OUT_OF_BOUNDS "#555555"
 #define JPS_VISUAL_COLOR_OPEN "#7777ff"
@@ -125,6 +125,14 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	// our cycle. used to determine if a turf was pathed on by us. in theory, this isn't entirely collision resistant,
 	// but i don't really care :>
 	var/cycle = ++SSpathfinder.pathfinding_cycle
+
+	// experimental: slack
+	// tracks the current best node so we can return it if it's within slack distance.
+	var/datum/jps_node/best_node_so_far
+	// cost of best node so far
+	var/best_cost_so_far
+	// end
+
 	//* variables - run
 	// open priority queue
 	var/datum/priority_queue/open = new /datum/priority_queue(/proc/cmp_jps_node)
@@ -409,6 +417,13 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	while(length(open.array))
 		node_top = open.dequeue()
 		node_top_pos = node_top.pos
+
+		// experimental: slack
+		if(node_top.heuristic < best_cost_so_far)
+			best_node_so_far = node_top
+			best_cost_so_far = node_top.heuristic
+		// end
+
 		#ifdef JPS_DEBUGGING
 		node_top.pos.color = JPS_VISUAL_COLOR_CURRENT
 		sleep(GLOB.jps_visualization_delay)
@@ -517,19 +532,23 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 				// perform iteration
 				JPS_CARDINAL_SCAN(cscan_current, node_top_dir)
 
-	//* clean up debugging
+	// experimental: slack
+	if(!isnull(slack) && best_node_so_far.heuristic <= slack)
+		#ifdef JPS_DBUGGING
+		return jps_unwind_path(best_node_so_far, turfs_got_colored)
+		#else
+		return jps_unwind_path(best_node_so_far)
+		#endif
+	// end
 	#ifdef JPS_DEBUGGING
-	jps_wipe_colors_after(turfs_got_colored, GLOB.jps_visualization_persist)
+	else
+		jps_wipe_colors_after(turfs_got_colored, GLOB.jps_visualization_persist)
 	#endif
-
-	//* clean up defines
-	#undef JPS_START_DIR
-	#undef JPS_COMPLETION_CHECK
-	#undef JPS_CARDINAL_DURING_DIAGONAL
-	#undef JPS_CARDINAL_SCAN
 
 /**
  * The proc used to grab the nodes back in order from start to finish after the algorithm runs.
+ *
+ * todo: JPS_DEBUGGING cleanup shouldn't happen in here, it should happen in or after main proc.
  */
 #ifdef JPS_DEBUGGING
 /datum/pathfinding/jps/proc/jps_unwind_path(datum/jps_node/top, list/turfs_got_colored)
@@ -593,11 +612,21 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 
 	. += nodes[index]
 
+#undef JPS_HEURISTIC_CALL
+#undef JPS_ADJACENCY_CALL
+
+#undef JPS_START_DIR
+#undef JPS_COMPLETION_CHECK
+#undef JPS_CARDINAL_DURING_DIAGONAL
+#undef JPS_CARDINAL_SCAN
+
 #ifdef JPS_DEBUGGING
 	#undef JPS_DEBUGGING
 
 	#undef JPS_VISUAL_COLOR_CLOSED
+	#undef JPS_VISUAL_COLOR_OUT_OF_BOUNDS
 	#undef JPS_VISUAL_COLOR_OPEN
 	#undef JPS_VISUAL_COLOR_CURRENT
 	#undef JPS_VISUAL_COLOR_FOUND
+	#undef JPS_VISUAL_COLOR_INTERMEDIATE
 #endif
