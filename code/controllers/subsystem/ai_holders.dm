@@ -11,7 +11,7 @@
  */
 SUBSYSTEM_DEF(ai_holders)
 	name = "AI Holders"
-	subsystem_flags = SS_TICKER
+	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_HOLDERS
 
 	/// all ticking ai holders

@@ -183,6 +183,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_INSTRUMENTS      90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
+#define FIRE_PRIORITY_AI_MOVEMENT      150
+#define FIRE_PRIORITY_AI_SCHEDULING    150
+#define FIRE_PRIORITY_AI_HOLDERS       150
 #define FIRE_PRIORITY_NANO             150
 #define FIRE_PRIORITY_AI               200
 #define FIRE_PRIORITY_TGUI             200
@@ -203,16 +206,6 @@ DEFINE_BITFIELD(runlevels, list(
 // DEFAULT PRIORITY IS HERE
 #define FIRE_PRIORITY_DPC          700
 #define FIRE_PRIORITY_TIMER        700
-
-// ai holders live here now!
-// this is because they work like timer subsystems
-// is this a good idea?
-// no!
-// feel free to yell at me later about how to make this less awful if it starts
-// to cause lag, but, these low priorities should be fine
-#define FIRE_PRIORITY_AI_MOVEMENT     30
-#define FIRE_PRIORITY_AI_SCHEDULING   20
-#define FIRE_PRIORITY_AI_HOLDERS      10
 
 //? Special
 

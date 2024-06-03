@@ -2206,6 +2206,7 @@
 #include "code\modules\ai\holders\polaris\subtypes\slime_xenobio_ai.dm"
 #include "code\modules\ai\holders\polaris\subtypes\slime_xenobio_ai_vr.dm"
 #include "code\modules\ai\pathfinding\ai_pathfinder.dm"
+#include "code\modules\ai\pathfinding\astar.dm"
 #include "code\modules\ai\pathfinding\jps.dm"
 #include "code\modules\alarm\alarm.dm"
 #include "code\modules\alarm\alarm_handler.dm"

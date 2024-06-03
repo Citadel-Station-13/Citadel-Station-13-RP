@@ -15,7 +15,7 @@
  */
 SUBSYSTEM_DEF(ai_movement)
 	name = "AI Movement"
-	subsystem_flags = SS_TICKER
+	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_MOVEMENT
 
 	/// ais that are moving using a movement handler right now

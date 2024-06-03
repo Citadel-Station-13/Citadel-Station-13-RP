@@ -1,6 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+#warn TEST ASTAR CHANGES
 /// visualization; obviously slow as hell
 // #define ASTAR_DEBUGGING
 
@@ -164,6 +165,14 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 	var/considering_cost
 	var/datum/astar_node/considering_node
 	var/list/node_by_turf = list()
+
+	// experimental: slack
+	// tracks the current best node so we can return it if it's within slack distance.
+	var/datum/astar_node/best_node_so_far
+	// cost of best node so far
+	var/best_cost_so_far
+	// end
+
 	// make queue
 	var/datum/priority_queue/open = new /datum/priority_queue(/proc/cmp_astar_node)
 	// add initial node
@@ -180,6 +189,13 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 		// get best node
 		var/datum/astar_node/top = open.dequeue()
 		current = top.pos
+
+		// experimental: slack
+		if(top.cost < best_cost_so_far)
+			best_node_so_far = top
+			best_cost_so_far = top.cost
+		// end
+
 		#ifdef ASTAR_DEBUGGING
 		top.pos.color = ASTAR_VISUAL_COLOR_CURRENT
 		turfs_got_colored[top.pos] = TRUE
@@ -190,24 +206,11 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 
 		// get distance and check completion
 		if(get_dist(current, goal) <= target_distance && (target_distance != 1 || !require_adjacency_when_going_adjacent || current.TurfAdjacency(goal)))
-			// found; build path end to start of nodes
-			var/list/path_built = list()
-			while(top)
-				path_built += top.pos
-				#ifdef ASTAR_DEBUGGING
-				top.pos.color = ASTAR_VISUAL_COLOR_FOUND
-				turfs_got_colored[top] = TRUE
-				#endif
-				top = top.prev
-			// reverse
-			var/head = 1
-			var/tail = length(path_built)
-			while(head < tail)
-				path_built.Swap(head++, tail--)
 			#ifdef ASTAR_DEBUGGING
-			astar_wipe_colors_after(turfs_got_colored, GLOB.astar_visualization_persist)
+			return astar_unwind_path(top, turfs_got_colored)
+			#else
+			return astar_unwind_path(top)
 			#endif
-			return path_built
 
 		// too deep, abort
 		if(top.depth + get_dist(current, goal) > max_depth)
@@ -237,9 +240,47 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 			#endif
 			CRASH("A* hit node limit - something went horribly wrong! args: [json_encode(args)]; vars: [json_encode(vars)]")
 
+	// experimental: slack
+	if(!isnull(slack) && best_node_so_far.cost <= slack)
+		#ifdef ASTAR_DEBUGGING
+		return astar_unwind_path(best_node_so_far, turfs_got_colored)
+		#else
+		return astar_unwind_path(best_node_so_far)
+		#endif
+	// end
+	#ifdef ASTAR_DEBUGGING
+	else
+		astar_wipe_colors_after(turfs_got_colored, GLOB.astar_visualization_persist)
+	#endif
+
+/**
+ * The proc used to grab the nodes back in order from start to finish after the algorithm runs.
+ *
+ * todo: ASTAR_DEBUGGING cleanup shouldn't happen in here, it should happen in or after main proc.
+ */
+#ifdef ASTAR_DEBUGGING
+/datum/pathfinding/astar/proc/astar_unwind_path(datum/astar_node/top, list/turfs_got_colored)
+#else
+/datum/pathfinding/astar/proc/astar_unwind_path(datum/astar_node/top)
+#endif
+	// found; build path end to start of nodes
+	var/list/path_built = list()
+	while(top)
+		path_built += top.pos
+		#ifdef ASTAR_DEBUGGING
+		top.pos.color = ASTAR_VISUAL_COLOR_FOUND
+		turfs_got_colored[top] = TRUE
+		#endif
+		top = top.prev
+	// reverse
+	var/head = 1
+	var/tail = length(path_built)
+	while(head < tail)
+		path_built.Swap(head++, tail--)
 	#ifdef ASTAR_DEBUGGING
 	astar_wipe_colors_after(turfs_got_colored, GLOB.astar_visualization_persist)
 	#endif
+	return path_built
 
 #undef ASTAR_HELL_DEFINE
 #undef ASTAR_HEURISTIC_CALL
@@ -252,7 +293,10 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 	#undef ASTAR_DEBUGGING
 
 	#undef ASTAR_VISUAL_COLOR_CLOSED
+	#undef ASTAR_VISUAL_COLOR_OUT_OF_BOUNDS
 	#undef ASTAR_VISUAL_COLOR_OPEN
 	#undef ASTAR_VISUAL_COLOR_CURRENT
 	#undef ASTAR_VISUAL_COLOR_FOUND
+
+	#undef ASTAR_TRACE_COLOR_REDIRECTED
 #endif
