@@ -280,6 +280,10 @@
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
+	if(. && istype(., /mob))
+		var/mob/M = .
+		M.blindness_handle_reconnect()
+
 	//* Connection Security
 	// start caching it immediately
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)

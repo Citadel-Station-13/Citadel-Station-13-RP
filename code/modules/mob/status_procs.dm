@@ -262,3 +262,8 @@
   REMOVE_TRAIT(src, TRAIT_BLIND, source)
   if(!HAS_TRAIT(src, TRAIT_BLIND))
     clear_fullscreen("blind")
+
+/mob/proc/blindness_handle_reconnect()
+	if(HAS_TRAIT(src, TRAIT_BLIND))
+		clear_fullscreen("blind")
+		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
