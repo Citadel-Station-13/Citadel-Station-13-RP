@@ -642,6 +642,9 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	CRASH("Bad op: area/drop_location() called")
 
 // A hook so areas can modify the incoming args
+/**
+ * * THIS CANNOT CALL ANY 'new' BECAUSE WE ARE POTENTIALLY BEING PRELOADED!
+ */
 /area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	return flags
 
