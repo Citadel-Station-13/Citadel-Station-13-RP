@@ -11,18 +11,18 @@
 	// todo: temporary, as this is unbuildable
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
-//! ## Icons
+	//* Icons *//
 	/// Icon_state when vending.
 	var/icon_vend
 	/// Icon_state when denying access.
 	var/icon_deny
 
-//! ## Power
+	//* Power *//
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
-//! ## Vending-related
+	//* Vending *//
 	/// No sales pitches if off!
 	var/active = TRUE
 	/// Are we ready to vend?? Is it time??

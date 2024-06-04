@@ -6,7 +6,12 @@
 	/// if we are New()'d with a map, this is namespaced with that map automatically! you do not need
 	/// to namespace map levels yourself.
 	/// please use 'dashes-as-spacing' to format ids.
+	///
+	/// * if this is null, one will be assigned.
+	/// * this is used to generate mangling ID.
 	var/id
+	/// explicit mangling id
+	var/mangling_id
 	/// is this a hardcoded level? generally should be 'yes';
 	/// if it is, it's registered in the by-typepath lookup
 	var/hardcoded = FALSE

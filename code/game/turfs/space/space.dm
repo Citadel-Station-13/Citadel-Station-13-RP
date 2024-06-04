@@ -22,9 +22,12 @@
 /turf/space/basic
 	atom_flags = ATOM_INITIALIZED
 
-/turf/space/basic/New()	//Do not convert to Initialize
-	//This is used to optimize the map loader
-	return
+/turf/space/basic/New()
+	// Do not convert to Initialize
+	// This is used to optimize the map loader
+	SHOULD_CALL_PARENT(FALSE)
+	// turn preloader off so it doesn't hit something else
+	global.dmm_preloader_active = FALSE
 
 /turf/space/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)

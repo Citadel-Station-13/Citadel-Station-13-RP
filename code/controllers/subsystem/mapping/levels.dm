@@ -39,13 +39,6 @@
 	/// does z stack lookup need a rebuild?
 	var/z_stack_dirty = TRUE
 
-	//* initializations
-	/// stuff that puts themselves in this get map_initializations() hook called on them
-	/// at end of level or map load cycle before general atom init.
-	var/tmp/list/obj/map_helper/map_initialization_hooked
-	/// this initializations hooked - this cycle
-	var/tmp/list/obj/map_helper/map_initialization_hooking
-
 //* Rebuilds / Caching
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
@@ -196,6 +189,20 @@
 	ASSERT(!level_or_path.loaded)
 	if(level_or_path.id && !isnull(keyed_levels[level_or_path.id]))
 		CRASH("fatal id collision on [level_or_path.id]")
+
+	// register level in lookup lists
+	if(!level_or_path.id)
+		// levels must have an ID
+		do
+			level_or_path.id = "gen-[copytext(md5(rand(1, 1024 ** 2)), 1, 5)]"
+		while(keyed_levels[level_or_path.id])
+	ASSERT(!keyed_levels[level_or_path.id])
+	keyed_levels[level_or_path.id] = level_or_path
+	if(level_or_path.hardcoded)
+		ASSERT(!typed_levels[level_or_path.type])
+		typed_levels[level_or_path.type] = level_or_path
+
+	// allocate the zlevel for the level
 	var/z_index = allocate_z_index()
 	ASSERT(z_index)
 	var/datum/map_level/existing = ordered_levels[z_index]
@@ -203,12 +210,11 @@
 		if(existing.loaded)
 			ASSERT(istype(existing, /datum/map_level/unallocated))
 			existing.loaded = FALSE
-	ordered_levels[z_index] = level_or_path
-	if(level_or_path.id)
-		keyed_levels[level_or_path.id] = level_or_path
-	if(level_or_path.hardcoded)
-		typed_levels[level_or_path.type] = level_or_path
+			existing.z_index = null
+
+	// assign zlevel; this is now a loaded level
 	level_or_path.z_index = z_index
+	ordered_levels[z_index] = level_or_path
 	level_or_path.loaded = TRUE
 	. = level_or_path
 
@@ -261,27 +267,29 @@
  * * center - center the level if it's mismatched sizes? we will never load a level that's too big.
  * * crop - crop the level if it's too big instead of panic
  * * deferred_callbacks - generation callbacks to defer. if this isn't provided, we fire them + finalize immediately.
+ * * context - dmm_context to use
+ * * defer_context - defer executing initialization/generations.
  * * orientation - load orientation override
  * * area_cache - pass in area cache for bundling to dmm_parsed.
  * * mangling_id - mangle ID passed for preloading_instance
  *
- * @return loaded bounds, or null on fail
+ * @return loaded context, or null on failw
  */
-/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache, mangling_id)
-	if(isnull(mangling_id))
-		mangling_id = instance.id
+/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
 	UNTIL(!load_mutex)
 	load_mutex = TRUE
 	. = _load_level(arglist(args))
 	load_mutex = FALSE
 
-/datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache, mangling_id)
+/datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, datum/dmm_context/context, defer_context, orientation, list/area_cache)
 	PRIVATE_PROC(TRUE)
 
+	// allocate a level for the map
 	instance = _allocate_level(instance, FALSE)
 	ASSERT(!isnull(instance))
-	// parse map
+	ASSERT(instance.id)
 
+	// parse map
 	var/map_path = instance.resolve_map_path()
 	if(isfile(map_path))
 	else if(!fexists(map_path))
@@ -304,33 +312,23 @@
 	if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
 		CRASH("tried to load a map that would overrun ):")
 
-	if(isnull(deferred_callbacks))
-		map_initialization_hooked = list()
-	map_initialization_hooking = list()
+	if(isnull(context))
+		context = create_dmm_context()
+	if(isnull(context.mangling_id))
+		context.mangling_id = "level-[instance.mangling_id || instance.id]"
+	context = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = real_orientation, area_cache = area_cache, context = context)
 
-	var/list/loaded_bounds = parsed.load(
-		real_x,
-		real_y,
-		real_z,
-		no_changeturf = TRUE,
-		place_on_top = FALSE,
-		orientation = real_orientation,
-		area_cache = area_cache,
-		mangling_id = mangling_id,
-	)
+	ASSERT(context.success)
 
+	var/list/loaded_bounds = context.loaded_bounds
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
 
+	if(!defer_context)
+		context.fire_map_initializations()
+
 	// if not group loaded, fire off hooks
 	if(isnull(deferred_callbacks))
-		for(var/obj/map_helper/D in map_initialization_hooked)
-			if(QDELETED(D))
-				continue
-			D.map_initializations(loaded_bounds, real_x, real_y, real_z, real_orientation)
-		map_initialization_hooked = null
-		map_initialization_hooking = null
-
 		for(var/datum/callback/cb as anything in generation_callbacks)
 			cb.Invoke()
 
@@ -340,11 +338,8 @@
 		instance.on_loaded_finalize(instance.z_index)
 	else
 		deferred_callbacks += generation_callbacks
-		for(var/obj/map_helper/D as anything in map_initialization_hooking)
-			map_initialization_hooked[D] = list(loaded_bounds, real_x, real_y, real_z, real_orientation)
-		map_initialization_hooking = null
 
-	. = loaded_bounds
+	. = context
 
 	if(rebuild)
 		rebuild_verticality()
@@ -402,6 +397,7 @@
  */
 /datum/controller/subsystem/mapping/proc/generate_fluff_level_id()
 	// todo: needs to be persistence-stable..?
+	// todo: this looks ugly, fix it!!!
 	var/discriminator = GLOB.round_id? "[num2hex(text2num(GLOB.round_id), 6)]-" : ""
 	var/safety = 500
 	do

@@ -145,11 +145,13 @@
  * * centered - is T the center, or lower left?
  * * orientation - the orientation to load in. default is SOUTH.
  * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
+ * * context - dmm_context to use
+ * * defer_context - defer context initializations/injections
  * * do_not_init - do not init bounds; this is probably not something you wanna touch.
  *
- * @return loaded bounds if loaded, null if not
+ * @return null if failed, or /datum/dmm_context context
  */
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, do_not_init = FALSE)
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, datum/dmm_context/context, defer_context, do_not_init)
 	var/ll_x = T.x
 	var/ll_y = T.y
 	var/ll_z = T.z
@@ -168,34 +170,34 @@
 	if(annihilate)
 		annihilate_bounds(real_turf, width, height)
 
+	// ensure the dmm is parsed
 	var/datum/dmm_parsed/parsed = parsed()
 
-	// the mangling ID only has to be a mangling ID, not a round global ID.
-	var/static/next_mangling_id = 0
-	var/mangling_hash = "template-[world.time]-[++next_mangling_id]"
-	if(next_mangling_id >= 1024)
-		next_mangling_id = 0
+	// create context
+	if(isnull(context))
+		context = create_dmm_context()
+	if(isnull(context.mangling_id))
+		context.mangling_id = generate_mangling_id()
 
-	var/list/loaded_bounds = parsed.load(
-		ll_x,
-		ll_y,
-		ll_z,
-		orientation = orientation,
-		mangling_id = mangling_hash,
-	)
+	context = parsed.load(ll_x, ll_y, ll_z, orientation = orientation, context = context)
 
-	if(isnull(loaded_bounds))
+	if(!context.loaded())
 		CRASH("failed to load")
+
+	var/list/loaded_bounds = context.loaded_bounds
 
 	++loaded
 
 	var/list/datum/callback/callbacks = list()
-	on_normal_load(loaded_bounds, callbacks)
+	on_normal_load(context, callbacks)
 	if(isnull(deferred_callbacks))
 		for(var/datum/callback/cb as anything in callbacks)
 			cb.Invoke()
 	else
 		deferred_callbacks += callbacks
+
+	if(!defer_context)
+		context.execute_postload()
 
 	if(!do_not_init)
 		init_bounds(loaded_bounds)
@@ -205,7 +207,16 @@
 		repopulate_sorted_areas()
 	// end
 
-	return loaded_bounds
+	return context
+
+/**
+ * generate a random mangling ID for us to use
+ */
+/datum/map_template/proc/generate_mangling_id()
+	var/static/notch = 0
+	if(notch >= SHORT_REAL_LIMIT)
+		notch = 0
+	return "template-[++notch]"
 
 /datum/map_template/proc/annihilate_bounds(turf/ll_turf, width, height)
 	SSmapping.subsystem_log("Annihilating bounds in template spawn location: [COORD(ll_turf)] with area [width]x[height]")
@@ -255,10 +266,10 @@
  * called when normally loaded
  *
  * @params
- * * bounds - map bounds of load. use defines like MAP_MINX/MAP_MINY/etc to access.
+ * * context - load context
  * * late_generation - callbacks to fire after ruin seeding. if this is being spawned standalone, it fires immediately.
  */
-/datum/map_template/proc/on_normal_load(list/bounds, list/datum/callback/late_generation)
+/datum/map_template/proc/on_normal_load(datum/dmm_context/context, list/datum/callback/late_generation)
 	return
 
 /**

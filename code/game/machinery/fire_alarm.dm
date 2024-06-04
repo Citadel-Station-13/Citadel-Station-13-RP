@@ -30,7 +30,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 /obj/machinery/fire_alarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/fire_alarm/preloading_dir(datum/map_preloader/preloader)
+/obj/machinery/fire_alarm/preloading_dir(datum/dmm_preloader/preloader)
 	dir = turn(dir, -preloader.turn_angle)
 	return FALSE
 

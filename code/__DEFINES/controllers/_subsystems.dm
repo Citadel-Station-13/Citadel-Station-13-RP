@@ -77,12 +77,28 @@ DEFINE_BITFIELD(runlevels, list(
 
 // todo: tg init brackets
 
+// core security system, used by client/New()
 #define INIT_ORDER_FAIL2TOPIC      200
+// core security system, used by client/New()
 #define INIT_ORDER_IPINTEL         197
+
+// core timing system, used by almost everything
 #define INIT_ORDER_TIMER           195
+// just about every feature on the server requires the database backend
+// for storage and durability of permeance.
 #define INIT_ORDER_DBCORE          190
+// repository is just struct storage. its things depend on database,
+// but should depend on nothing else.
+//
+// for the rare occasion when a prototype requires asset registration,
+// it should be able to recognize if SSassets is ready,
+// and only queue an udpate if its asset is already loaded.
+#define INIT_ORDER_REPOSITORY      187
+// early init initializes what is basically expensive global variables. it needs to go before assets.
 #define INIT_ORDER_EARLY_INIT      185
-#define INIT_ORDER_REPOSITORY      180
+// assets is loaded early because things hook into this to register *their* assets
+#define INIT_ORDER_ASSETS          180
+
 #define INIT_ORDER_STATPANELS      170
 #define INIT_ORDER_PREFERENCES     165
 #define INIT_ORDER_INPUT           160
@@ -93,7 +109,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_VIS             80
 #define INIT_ORDER_SERVER_MAINT    65
 #define INIT_ORDER_INSTRUMENTS     50
-#define INIT_ORDER_EARLY_ASSETS    48
 #define INIT_ORDER_MEDIA_TRACKS    38
 #define INIT_ORDER_CHEMISTRY       35
 #define INIT_ORDER_MATERIALS       34
@@ -112,7 +127,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_AIR            -1
 #define INIT_ORDER_PLANETS        -2
 #define INIT_ORDER_PERSISTENCE    -3
-#define INIT_ORDER_ASSETS         -4
 #define INIT_ORDER_MISC_LATE      -5
 #define INIT_ORDER_HOLOMAPS       -5
 #define INIT_ORDER_NIGHTSHIFT     -5

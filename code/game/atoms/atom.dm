@@ -222,6 +222,11 @@
 
 //* Initialization / Destruction *//
 
+/proc/lint__check_atom_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/atom/target
+	target.New()
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *
@@ -233,8 +238,9 @@
  * We also generate a tag here if the DF_USE_TAG flag is set on the atom
  */
 /atom/New(loc, ...)
-	//atom creation method that preloads variables at creation
-	if(global.use_preloader && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	// atom creation method that preloads variables at creation
+	// todo: we shouldn't need a type check here.
+	if(global.dmm_preloader_active && global.dmm_preloader_target == type)
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
@@ -248,11 +254,9 @@
 			return
 
 /**
- * Pre-initialize mangling of string IDs.
- *
- * Called by the maploader.
+ * Called by the maploader if a dmm_context is set
  */
-/atom/proc/preloading_instance(with_id)
+/atom/proc/preloading_instance(datum/dmm_context/context)
 	return
 
 /**
@@ -260,7 +264,7 @@
  *
  * return FALSE to override maploader automatic rotation
  */
-/atom/proc/preloading_dir(datum/map_preloader/preloader)
+/atom/proc/preloading_dir(datum/dmm_preloader/preloader)
 	return TRUE
 
 /**

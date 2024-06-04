@@ -416,6 +416,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		return FALSE
 	if(!frame_step.check_consumption(actor, using_item, src, frame))
 		return FALSE
+	if(frame_step.stage == FRAME_STAGE_FINISH)
+		if(!completion_checks(frame, frame.loc, frame.dir, actor))
+			return FALSE
 	frame_step.feedback_begin(
 		actor,
 		src,
@@ -429,6 +432,9 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		return FALSE
 	if(!frame_step.handle_consumption(actor, using_item, src, frame))
 		return FALSE
+	if(frame_step.stage == FRAME_STAGE_FINISH)
+		if(!completion_checks(frame, frame.loc, frame.dir, actor))
+			return FALSE
 	frame_step.feedback_finish(
 		actor,
 		src,
@@ -439,15 +445,6 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 	frame_step.on_finish(src, frame, actor, using_item)
 	move_frame_to(frame, stage_we_were_in, frame_step.stage, actor)
 	return TRUE
-
-/**
- * @return finished product if finished
- */
-/datum/frame2/proc/try_finish_frame(obj/structure/frame2/frame, datum/event_args/actor/actor, destroy_structure = TRUE)
-	ASSERT(isturf(frame.loc))
-	if(!completion_checks(frame, frame.loc, frame.dir, actor))
-		return
-	return finish_frame(frame, destroy_structure)
 
 /**
  * ran only on deployment, not completion
@@ -482,7 +479,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 			else
 				if(other_frame.dir == frame.dir)
 					return FALSE
-	return TRUE
+	return valid_location(frame, location, dir, actor, silent)
 
 /**
  * ran on deployment as well as completion
