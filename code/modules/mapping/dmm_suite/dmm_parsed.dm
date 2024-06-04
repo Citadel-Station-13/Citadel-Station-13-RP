@@ -35,8 +35,7 @@
  */
 /proc/load_map(map, ll_x, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation, list/area_cache)
 	var/datum/dmm_parsed/parsed = new(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
-	. = parsed
-	parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation, area_cache = area_cache)
+	return parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation, area_cache = area_cache)
 
 /**
  * parses a dmm map
@@ -263,25 +262,39 @@
  * * z_upper - crop dmm load to this z.
  * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
+ * * orientation - orientation to load. the 'natural' orientation is SOUTH. Any other orientation rotates it with respect from SOUTH to it.
  * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
+ * * context - value to push to preloader's maploader context, used by atoms during preloading_instance() to perform various things like mangling their linkage IDs
  *
  * @return bounds list of load, or null if failed.
  */
-/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache)
+/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache, datum/dmm_context/context)
+	// we always have context, even if we don't
+	if(isnull(context))
+		context = create_dmm_context()
+	. = context
 
 	var/static/loading = FALSE
 	UNTIL(!loading)
 	loading = TRUE
 	Master.StartLoadingMap()
-	global.preloader.loading_orientation = orientation
-	. = _load_impl(arglist(args))
-	global.preloader.loading_orientation = null
+
+	context.loaded_orientation = orientation
+	context.loaded_dmm = src
+
+	global.dmm_preloader.loading_context = context
+	var/list/loaded_bounds = _load_impl(arglist(args))
+	global.dmm_preloader.loading_orientation = null
+
+	context.loaded_bounds = loaded_bounds
+	context.success = !isnull(loaded_bounds)
+
 	Master.StopLoadingMap()
 	loading = FALSE
 
 // todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
 //       as opposed to rotating to somewhere else
-/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list())
+/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list(), mangling_id)
 	var/list/model_cache = build_cache(no_changeturf)
 	var/space_key = model_cache[SPACE_KEY]
 
@@ -386,7 +399,7 @@
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
 
 	if(overflowed)
-		log_debug("Maploaders was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
+		log_debug("Maploader was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
 
 	return loaded_bounds
 
@@ -478,6 +491,9 @@
 	//Instanciation
 	////////////////
 
+	//turn off base new Initialization until the whole thing is loaded
+	SSatoms.map_loader_begin()
+
 	//The next part of the code assumes there's ALWAYS an /area AND a /turf on a given tile
 	//first instance the /area and remove it from the members list
 	index = members.len
@@ -502,19 +518,16 @@
 				// warranty void if a map has varedited areas; you should know better, linter already checks against it.
 				world.preloader_setup(members_attributes[index], atype, turn_angle, invert_x, invert_y, swap_xy)
 				instance = new atype(null)
-				if(global.use_preloader)
+				if(global.dmm_preloader_active)
 					world.preloader_load(instance)
 			areaCache[atype] = instance
 		instance.contents.Add(crds)
 
 	//then instance the /turf and, if multiple tiles are presents, simulates the DMM underlays piling effect
-
 	var/first_turf_index = 1
 	while(!ispath(members[first_turf_index], /turf)) //find first /turf object in members
 		first_turf_index++
 
-	//turn off base new Initialization until the whole thing is loaded
-	SSatoms.map_loader_begin()
 	//instanciate the first /turf
 	var/turf/T
 	if(members[first_turf_index] != /turf/template_noop)
@@ -532,6 +545,7 @@
 	//finally instance all remainings objects/mobs
 	for(index in 1 to first_turf_index-1)
 		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)
+
 	//Restore initialization to the previous value
 	SSatoms.map_loader_stop()
 
@@ -541,8 +555,6 @@
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /datum/dmm_parsed/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
-	if(ispath(path, /obj/structure/cable))
-		pass()
 	world.preloader_setup(attributes, path, turn_angle, invert_x, invert_y, swap_xy)
 
 	if(ispath(path, /turf))
@@ -555,7 +567,8 @@
 	else
 		. = create_atom(path, crds)//first preloader pass
 
-	if(global.use_preloader)//second preloader pass, for those atoms that don't ..() in New()
+	if(global.dmm_preloader_active) //second preloader pass, for those atoms that don't ..() in New()
+		stack_trace("required a second preloader pass")
 		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize

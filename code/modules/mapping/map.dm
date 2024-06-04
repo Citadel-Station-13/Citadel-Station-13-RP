@@ -8,6 +8,11 @@
 	abstract_type = /datum/map
 	/// id - must be unique
 	var/id
+	/// mangling id override
+	var/mangling_id
+	/// force mangling ids of levels to be the same
+	/// you usually want this to be on!
+	var/levels_match_mangling_id = TRUE
 	/// override map id for persistence so two maps are considered the same
 	/// two maps should **never** be loaded at the same time with the same persistence ID!
 	var/persistence_id
@@ -127,6 +132,8 @@
 			var/datum/map_level/level_instance = new level_path
 			level_instance.hardcoded = TRUE
 			levels[i] = level_instance
+			if(levels_match_mangling_id)
+				level_instance.mangling_id = mangling_id || id
 
 /**
  * anything to do immediately on load
