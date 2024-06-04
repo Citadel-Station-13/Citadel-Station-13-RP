@@ -30,9 +30,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// Are we initialized?
 	var/initialized = FALSE
 
-	/// Are we loading in a new map?
-	var/map_loading = FALSE
-
 	/// world.time of last fire, for tracking lag outside of the mc.
 	var/last_run
 
@@ -732,23 +729,18 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 
 /datum/controller/master/StartLoadingMap()
-	// Disallow more than one map to load at once, multithreading it will just cause race conditions.
-	while(map_loading)
-		stoplag()
-
+	// todo: this is kind of awful because this procs every subsystem unnecessarily
+	//       you might say this is microoptimizations but this is called a seriously high number of times during a load.
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StartLoadingMap()
 
-	map_loading = TRUE
-
-
 /datum/controller/master/StopLoadingMap(bounds)
-	map_loading = FALSE
+	// todo: this is kind of awful because this procs every subsystem unnecessarily
+	//       you might say this is microoptimizations but this is called a seriously high number of times during a load.
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
-
 
 /*
 /datum/controller/master/proc/UpdateTickRate()

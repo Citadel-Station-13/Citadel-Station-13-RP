@@ -1,34 +1,56 @@
-// global datum that will preload variables on atoms instanciation
-GLOBAL_REAL_VAR(use_preloader) = FALSE
-GLOBAL_REAL(preloader, /datum/map_preloader) = new
+/// global datum that will preload variables on atoms instanciation
+/// this is global for security and speed
+GLOBAL_REAL(dmm_preloader, /datum/dmm_preloader) = new
+/// this is global for security and speed; if active, atoms will invoke the preloader on New()
+///
+/// * any atom is allowed to arbitrarily set this to FALSE, but not TRUE, on New()
+/// * this is so things like /turf/space/basic that intentionally don't invoke the preloader will still turn it off like atoms should after they preload
+GLOBAL_REAL_VAR(dmm_preloader_active) = FALSE
+/// target typepath
+GLOBAL_REAL_VAR(dmm_preloader_target)
 
 /// Preloader datum
-/datum/map_preloader
+/datum/dmm_preloader
 	parent_type = /datum
-	//* Vars set for load cycle
+
+	//* -- /parsed_map load cycle -- *//
+
+	/// the current active orientation.
+	///
+	/// * the natural orientation is SOUTH.
+	/// * specifying a non-SOUTH orientation rotates the map clockwise to match that orientation.
 	var/loading_orientation
-	//* Vars set per atom
+	/// the active maploader context
+	var/datum/dmm_context/loading_context
+
+	//* --      set per atom      -- *//
 	var/list/attributes
-	var/target_path
 	var/turn_angle
 	var/swap_x
 	var/swap_y
 	var/swap_xy
 
+// todo: OPTIMIZE THE SHIT OUT OF ALL OF THIS
+// because citrp is so quirky and funny we now call this for every fucking atom
+// this is not good
+// this means that we really need to optimize this to not just be attributes.
+// maybe we can get all the swap stuff compounded down? who knows lol
+// fucked.
+
 /world/proc/preloader_setup(list/the_attributes, path, turn_angle, swap_x, swap_y, swap_xy)
-	if(length(the_attributes) || turn_angle)
-		global.use_preloader = TRUE
-		var/datum/map_preloader/preloader_local = global.preloader
-		preloader_local.attributes = the_attributes
-		preloader_local.target_path = path
+	global.dmm_preloader_active = TRUE
+	global.dmm_preloader_target = path
+	var/datum/dmm_preloader/preloader_local = global.dmm_preloader
+	preloader_local.attributes = the_attributes
+	if(turn_angle != 0)
 		preloader_local.turn_angle = turn_angle
 		preloader_local.swap_x = swap_x
 		preloader_local.swap_y = swap_y
 		preloader_local.swap_xy = swap_xy
 
 /world/proc/preloader_load(atom/what)
-	global.use_preloader = FALSE
-	var/datum/map_preloader/preloader_local = global.preloader
+	global.dmm_preloader_active = FALSE
+	var/datum/dmm_preloader/preloader_local = global.dmm_preloader
 	for(var/attribute in preloader_local.attributes)
 		var/value = preloader_local.attributes[attribute]
 		if(islist(value))
@@ -87,24 +109,5 @@ GLOBAL_REAL(preloader, /datum/map_preloader) = new
 		what.pixel_x = px
 		what.pixel_y = py
 
-/area/template_noop
-	name = "Area Passthrough"
-	icon = 'icons/mapping/helpers/maploader_objects.dmi'
-	icon_state = "area_noop"
+	what.preloading_instance(preloader_local.loading_context)
 
-/turf/template_noop
-	name = "Turf Passthrough"
-	icon = 'icons/mapping/helpers/maploader_objects.dmi'
-	icon_state = "turf_noop"
-
-/*		No sane way to implement.
-/atom/template_block
-	name = "Block Maploader Annihilation"
-	icon = 'icons/mapping/helpers/maploader_objects.dmi'
-	icon_state = "no_annihilate"
-
-/turf/template_block
-	name = "Block Maploader Annihilation"
-	icon = 'icons/mapping/helpers/maploader_objects.dmi'
-	icon_state = "no_annihilate"
-*/
