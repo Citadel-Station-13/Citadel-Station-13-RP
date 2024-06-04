@@ -12,22 +12,27 @@
 	if(message)
 		me_verb_subtle(message)
 
+/mob/proc/subtler_wrapper()
+	var/message = input("","subtler (text)") as message|null
+	if(message)
+		subtler_anti_ghost(message)
+
 /mob/verb/whisper(message as text)
 	set name = "Whisper"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	usr.say(message,whispering=1)
 
 /mob/verb/say_verb(message as text)
 	set name = "Say"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	set_typing_indicator(FALSE)
 	usr.say(message)
 
 /mob/verb/me_verb(message as message)
 	set name = "Me"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(muffled)
 		return me_verb_subtle(message)
@@ -48,7 +53,7 @@
 			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
-	if(!is_preference_enabled(/datum/client_preference/show_dsay))
+	if(!get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
 		return
 
@@ -57,6 +62,11 @@
 		return
 
 	message = emoji_parse(say_emphasis(message))
+
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='deadsay'><b>DEAD:</b> [src]([ghost_follow_link(src, src)]) [pick("complains","moans","whines","laments","blubbers")], [message]</span>")
+		log_shadowban("[key_name(src)] DSAY: [message]")
+		return
 
 	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"<span class='linkify'>[message]</span>\"</span>", src)
 

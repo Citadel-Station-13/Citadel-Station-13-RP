@@ -14,6 +14,7 @@
 	icon_state = "mimic"
 	icon_opened = "open"
 	icon_closed = "mimic"
+	closet_appearance = /singleton/closet_appearance/crate
 	var/mimic_chance = 30
 	var/mimic_active = TRUE
 
@@ -34,26 +35,13 @@
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
-			new_mimic.icon = icon
+			new_mimic.icon = 'icons/mob/mimic.dmi'
 			new_mimic.icon_state = "mimicopen"
 			new_mimic.icon_living = "mimicopen"
 		else
 			return ..()
 	else
 		return ..()
-
-/obj/structure/closet/crate/mimic/legacy_ex_act(severity) //Stores Mimic Contents for later
-	for(var/obj/O in src.contents)
-		qdel(O)
-	qdel(src)
-	return
-
-/obj/structure/closet/crate/mimic/damage(var/damage)
-	if(contents.len)
-		visible_message("<font color='red'><b>The [src] makes out a crunchy noise as its contents are destroyed!</b></font>")
-		for(var/obj/O in src.contents)
-			qdel(O)
-	..()
 
 /obj/structure/closet/crate/mimic/safe
 	mimic_chance = 0
@@ -85,8 +73,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 7
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 7
+	legacy_melee_damage_upper = 15
 	attacktext = list("attacked")
 	attack_sound = 'sound/weapons/bite.ogg'
 
@@ -148,6 +136,7 @@
 	anchored = 1 //You will not be able to push back the airlock mimic
 	density = 1
 	opacity = 1
+	closet_appearance = null
 
 /obj/structure/closet/crate/mimic/airlock/open()
 	if(src.opened)
@@ -175,19 +164,6 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/airlock/legacy_ex_act(severity) //Stores Mimic Contents for later
-	for(var/obj/O in src.contents)
-		qdel(O)
-	qdel(src)
-	return
-
-/obj/structure/closet/crate/mimic/airlock/damage(var/damage)
-	if(contents.len)
-		visible_message("<font color='red'><b>The [src] let's out an enraged screach!</b></font>")
-		for(var/obj/O in src.contents)
-			qdel(O)
-	..()
-
 /obj/structure/closet/crate/mimic/airlock/safe
 	mimic_chance = 0
 
@@ -210,8 +186,8 @@
 	health = 250
 	movement_cooldown = 10
 
-	melee_damage_lower = 15
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50 //Its jaw is an airlock. Its got enough bite strength.
 
 	armor_legacy_mob = list(
@@ -237,9 +213,7 @@
 	name = "old closet"
 	desc = "It's a basic storage unit. It seems awfully rickety."
 	icon_state = "cmimic"
-	icon = 'icons/mob/animal.dmi'
-	icon_opened = "copen"
-	icon_closed = "cmimic"
+	closet_appearance = /singleton/closet_appearance
 	mimic_chance = 30
 	mimic_active = TRUE
 
@@ -258,26 +232,13 @@
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
-			new_mimic.icon = icon
+			new_mimic.icon = 'icons/mob/animal.dmi'
 			new_mimic.icon_state = "cmimicopen"
 			new_mimic.icon_living = "cmimicopen"
 		else
 			return ..()
 	else
 		return ..()
-
-/obj/structure/closet/crate/mimic/closet/legacy_ex_act(severity) //Stores Mimic Contents for later
-	for(var/obj/O in src.contents)
-		qdel(O)
-	qdel(src)
-	return
-
-/obj/structure/closet/crate/mimic/closet/damage(var/damage)
-	if(contents.len)
-		visible_message("<font color='red'><b>The [src] makes out a crunchy noise as its contents are destroyed!</b></font>")
-		for(var/obj/O in src.contents)
-			qdel(O)
-	..()
 
 /obj/structure/closet/crate/mimic/closet/safe
 	mimic_chance = 0
@@ -303,8 +264,8 @@
 	health = 150
 	movement_cooldown = 7
 
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 	attack_armor_pen =  25 // NOM NOM
 
 	armor_legacy_mob = list(
@@ -404,8 +365,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	base_attack_cooldown = 5
 
 /mob/living/simple_mob/vore/aggressive/mimic/floor/death()
@@ -448,8 +409,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 10
 
 /obj/effect/floormimic/plating
@@ -489,7 +450,7 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 10
 	attack_armor_pen = 50

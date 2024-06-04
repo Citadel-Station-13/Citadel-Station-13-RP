@@ -63,11 +63,11 @@
 	var/highlight_special_characters = 1
 
 	for(var/client/C in GLOB.clients)
-		if(C.player_age == "Requires database")
+		if(C.player.player_age == "Requires database")
 			missing_ages = 1
 			continue
-		if(C.player_age < age)
-			msg += "[key_name(C, 1, 1, highlight_special_characters)]: account is [C.player_age] days old<br>"
+		if(C.player.player_age < age)
+			msg += "[key_name(C, 1, 1, highlight_special_characters)]: account is [C.player.player_age] days old<br>"
 
 	if(missing_ages)
 		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present.")
@@ -597,7 +597,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!input)
 		return
 	if(!customname)
-		customname = "[GLOB.using_map.company_name] Update"
+		customname = "[(LEGACY_MAP_DATUM).company_name] Update"
 
 	//New message handling
 	post_comm_message(customname, replacetext(input, "\n", "<br/>"))
@@ -606,7 +606,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if("Yes")
 			command_announcement.Announce(input, customname, new_sound = 'sound/AI/commandreport.ogg', msg_sanitized = 1);
 		if("No")
-			to_chat(world, "<font color='red'>New [GLOB.using_map.company_name] Update available at all communication consoles.</font>")
+			to_chat(world, "<font color='red'>New [(LEGACY_MAP_DATUM).company_name] Update available at all communication consoles.</font>")
 			SEND_SOUND(world, sound('sound/AI/commandreport.ogg'))
 
 	log_admin("[key_name(src)] has created a command report: [input]")
@@ -787,16 +787,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	// I will both remove their SVN access and permanently ban them from my servers.
 	return
 
-/client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.mob_list)
-	set category = "Special Verbs"
-	set name = "Check Contents"
-	set popup_menu = FALSE
-
-	var/list/L = M.get_contents()
-	for(var/t in L)
-		to_chat(usr, "[t]")
-	feedback_add_details("admin_verb","CC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /* This proc is DEFERRED. Does not do anything.
 /client/proc/cmd_admin_remove_phoron()
 	set category = "Debug"
@@ -970,7 +960,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.", 1)
 	feedback_add_details("admin_verb","TRE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/despawn_player(var/mob/M in living_mob_list)
+/client/proc/despawn_player()
 	set name = "Cryo Player"
 	set category = "Admin"
 	set desc = "Removes a player from the round as if they'd cryo'd."
@@ -978,6 +968,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(!check_rights(R_ADMIN))
 		return
+
+	var/mob/M = tgui_input_list(src.mob, "Which player would you like to cryo?", "Pick to cryo", living_mob_list)
+
 
 	if(!M)
 		return
@@ -1004,7 +997,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	feedback_add_details("admin_verb","ACRYO") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	if(ishuman(M))
-		var/obj/machinery/cryopod/CP = human_cryopods[input(usr,"Select a cryopod to use","Cryopod Choice") as null|anything in human_cryopods]
+		var/obj/machinery/cryopod/CP = human_cryopods[tgui_input_list(usr,"Select a cryopod to use","Cryopod Choice",human_cryopods)]
 		if(!CP)
 			return
 		M.ghostize()
@@ -1019,7 +1012,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			ai.clear_client()
 			return
 		else
-			var/obj/machinery/cryopod/robot/CP = robot_cryopods[input(usr,"Select a cryopod to use","Cryopod Choice") as null|anything in robot_cryopods]
+			var/obj/machinery/cryopod/robot/CP = robot_cryopods[tgui_input_list(usr,"Select a cryopod to use","Cryopod Choice",robot_cryopods)]
 			if(!CP)
 				return
 			M.ghostize()
@@ -1049,7 +1042,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(M, "<B>You hear a crackling in your headset...</B> <i>[msg]</i>")
 
 	log_admin("CentcomPM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	msg = "<span class='adminnotice'><b> CentcomMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
+	msg = "<span class='adminnotice'><b> Centcom Message: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","ICS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

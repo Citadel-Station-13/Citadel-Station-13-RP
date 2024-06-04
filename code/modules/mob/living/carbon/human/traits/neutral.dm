@@ -90,7 +90,7 @@
 	custom_only = FALSE
 	var_changes = list(
 		"is_vampire" = TRUE,
-		"darksight" = 7,
+		vision_innate = /datum/vision/baseline/species_tier_2, // As per Silicons' suggestion
 		"flash_mod" = 2,
 		"flash_burn" = 5,
 		"burn_mod" = 1.25,
@@ -263,7 +263,7 @@
 	cost = 0
 	custom_only = FALSE
 	var_changes = list(
-		"breath_type" = /datum/gas/nitrogen
+		"breath_type" = GAS_ID_NITROGEN
 	)
 
 /datum/trait/neutral/cyberpsycho

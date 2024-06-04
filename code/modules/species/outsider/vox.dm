@@ -52,8 +52,8 @@
 
 	gluttonous = 0
 
-	breath_type = /datum/gas/phoron
-	poison_type = /datum/gas/oxygen
+	breath_type = GAS_ID_PHORON
+	poison_type = GAS_ID_OXYGEN
 	siemens_coefficient = 0.2
 
 	species_flags = NO_SCAN | CONTAMINATION_IMMUNE
@@ -109,6 +109,9 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		)
 
 /datum/species/vox/get_random_name(gender)
@@ -123,7 +126,7 @@
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		H.internal = H.r_hand
 	H.internal = locate(/obj/item/tank) in H.contents
 	if(istype(H.internal,/obj/item/tank) && H.internals)

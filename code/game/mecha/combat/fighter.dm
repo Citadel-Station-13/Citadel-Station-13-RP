@@ -17,8 +17,8 @@
 
 	step_in = 2 //Fast
 
-	health = 400
-	maxhealth = 400
+	integrity = 400
+	integrity_max = 400
 
 	infra_luminosity = 6
 
@@ -64,10 +64,10 @@
 //We don't get lost quite as easy.
 /obj/mecha/combat/fighter/touch_map_edge()
 	//No overmap enabled or no driver to choose
-	if(!GLOB.using_map.use_overmap || !occupant || !can_ztravel())
+	if(!(LEGACY_MAP_DATUM).use_overmap || !occupant || !can_ztravel())
 		return ..()
 
-	var/obj/effect/overmap/visitable/our_ship = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/our_ship = get_overmap_sector(z)
 
 	//We're not on the overmap
 	if(!our_ship)
@@ -106,7 +106,7 @@
 		new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
 	var/list/choices = list()
-	for(var/obj/effect/overmap/visitable/V in range(1, our_ship))
+	for(var/obj/overmap/entity/visitable/V in range(1, our_ship))
 		choices[V.name] = V
 
 	var/choice = input("Choose an overmap destination:", "Destination", null) as null|anything in choices
@@ -116,7 +116,7 @@
 		setDir(backwards)
 		return
 	else
-		var/obj/effect/overmap/visitable/V = choices[choice]
+		var/obj/overmap/entity/visitable/V = choices[choice]
 		if(occupant != this_occupant || this_x != x || this_y != y || this_z != z || get_dist(V,our_ship) > 1) //Sanity after user input
 			to_chat(occupant, "<span class='warning'>You or they appear to have moved!</span>")
 			return
@@ -181,7 +181,7 @@
 		stop_hover()
 	else if(moved && gravity && !ground_capable)
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
-		take_damage(NOGRAV_FIGHTER_DAMAGE, "brute")
+		take_damage_legacy(NOGRAV_FIGHTER_DAMAGE, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 /obj/mecha/combat/fighter/get_step_delay()
@@ -241,7 +241,7 @@
 	if(istype(obstacle, /obj) || istype(obstacle, /turf))
 		TIMER_COOLDOWN_START(src, "fighter_collision", 5 SECONDS)
 		occupant_message("<B><FONT COLOR=red SIZE=+1>Collision Alert!</B></FONT>")
-		take_damage(20, "brute")
+		take_damage_legacy(20, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 ////////////// Gunpod //////////////
@@ -337,6 +337,9 @@
 	icon_state = "baron"
 	initial_icon = "baron"
 
+	integrity = 600
+	integrity_max = 600
+
 	catalogue_data = list(/datum/category_item/catalogue/technology/baron)
 	wreckage = /obj/effect/decal/mecha_wreckage/baron
 
@@ -387,8 +390,8 @@
 
 	step_in = 3 //slightly slower than a baron (this shit doesnt actually work atm, likely due to the whole equipment weight nonsense)
 
-	health = 800
-	maxhealth = 800 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
+	integrity = 1200
+	integrity_max = 1200 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
 
 	max_hull_equip = 1
 	max_weapon_equip = 4
@@ -516,8 +519,8 @@
 
 	ground_capable = FALSE
 
-	health = 500
-	maxhealth = 500
+	integrity = 500
+	integrity_max = 500
 
 /obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
@@ -604,8 +607,8 @@
 	icon_state = "cludge"
 	initial_icon = "cludge"
 
-	health = 100
-	maxhealth = 100
+	integrity = 100
+	integrity_max = 100
 
 	max_hull_equip = 0
 	max_weapon_equip = 0

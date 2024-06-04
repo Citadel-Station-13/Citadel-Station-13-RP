@@ -7,8 +7,8 @@ MRE Stuff
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 1, meat pizza."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "mre"
-	max_storage_space = ITEMSIZE_COST_SMALL * 7
-	max_w_class = ITEMSIZE_SMALL
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 7
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag,
 	/obj/item/storage/single_use/mrebag/side,
@@ -22,6 +22,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu2
+	name = "MRE - Menu 2"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 2, margherita."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu2,
@@ -36,6 +37,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu3
+	name = "MRE - Menu 3"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 3, vegetable pizza."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu3,
@@ -50,6 +52,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu4
+	name = "MRE - Menu 4"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 4, hamburger."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu4,
@@ -64,6 +67,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu5
+	name = "MRE - Menu 5"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 5, taco."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu5,
@@ -78,6 +82,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu6
+	name = "MRE - Menu 6"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 6, meatbread."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu6,
@@ -92,6 +97,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu7
+	name = "MRE - Menu 7"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 7, salad."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu7,
@@ -106,6 +112,7 @@ MRE Stuff
 	)
 
 /obj/item/storage/single_use/mre/menu8
+	name = "MRE - Menu 8"
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 8, hot chili."
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu8,
@@ -142,7 +149,7 @@ MRE Stuff
 	starts_with = list(
 	/obj/item/storage/single_use/mrebag/menu10,
 	/obj/item/storage/single_use/mrebag/menu10,
-	/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+	/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 	/obj/item/reagent_containers/food/condiment/small/packet/protein,
 	/obj/random/mre/sauce/sugarfree,
 	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
@@ -154,12 +161,12 @@ MRE Stuff
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 11, nutriment paste. Only for emergencies."
 	icon_state = "crayonmre"
 	starts_with = list(
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidfood,
-	/obj/item/reagent_containers/food/snacks/liquidprotein,
-	/obj/item/reagent_containers/food/snacks/liquidprotein,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid,
+	/obj/item/reagent_containers/food/snacks/liquid/protein,
+	/obj/item/reagent_containers/food/snacks/liquid/protein,
 	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	)
 
@@ -180,10 +187,10 @@ MRE Stuff
 	desc = "This one is menu 13, vitamin paste & dessert. Only for emergencies."
 	icon_state = "crayonmre"
 	starts_with = list(
-	/obj/item/reagent_containers/food/snacks/liquidvitamin,
-	/obj/item/reagent_containers/food/snacks/liquidvitamin,
-	/obj/item/reagent_containers/food/snacks/liquidvitamin,
-	/obj/item/reagent_containers/food/snacks/liquidprotein,
+	/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+	/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+	/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+	/obj/item/reagent_containers/food/snacks/liquid/protein,
 	/obj/random/mre/drink,
 	/obj/item/storage/single_use/mrebag/dessert,
 	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
@@ -210,9 +217,9 @@ MRE Stuff
 	desc = "A vacuum-sealed bag containing the MRE's main course. Self-heats when opened."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "pouch_medium"
-	storage_slots = 1
-	w_class = ITEMSIZE_SMALL
-	max_w_class = ITEMSIZE_SMALL
+	max_items = 1
+	w_class = WEIGHT_CLASS_SMALL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	starts_with = list(/obj/item/reagent_containers/food/snacks/slice/meatpizza/filled)
 
 
@@ -260,6 +267,5 @@ MRE Stuff
 
 /obj/item/storage/single_use/mrebag/dessert/menu9
 	starts_with = list(/obj/item/reagent_containers/food/snacks/plumphelmetbiscuit)
-
 /obj/item/storage/single_use/mrebag/dessert/menu11
 	starts_with = list(/obj/item/pen/crayon/rainbow)

@@ -4,7 +4,7 @@
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null	// To remove the radio's state
-	matter = list(MAT_STEEL = 75)
+	materials_base = list(MAT_STEEL = 75)
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
@@ -66,9 +66,11 @@
 		var/mob/living/carbon/human/H = src.loc
 		if(H.l_ear == src || H.r_ear == src)
 			return ..(freq, level)
+	else if(ismob(loc))
+		return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/radio/headset/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate
@@ -323,7 +325,7 @@
 	name = "emergency response team radio headset"
 	desc = "The headset of the boss's boss."
 	icon_state = "com_headset"
-	centComm = 1
+	centcom = 1
 //	freerange = 1
 	ks2type = /obj/item/encryptionkey/ert
 
@@ -376,7 +378,7 @@
 			if(keyslot1)
 				var/turf/T = get_turf(user)
 				if(T)
-					keyslot1.loc = T
+					keyslot1.forceMove(T)
 					keyslot1 = null
 
 
@@ -384,7 +386,7 @@
 			if(keyslot2)
 				var/turf/T = get_turf(user)
 				if(T)
-					keyslot2.loc = T
+					keyslot2.forceMove(T)
 					keyslot2 = null
 
 			recalculateChannels()
@@ -469,7 +471,7 @@
 	desc = "The headset of the boss's boss."
 	icon_state = "cent_headset"
 	item_state = "headset"
-	centComm = 1
+	centcom = 1
 	ks2type = /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset/centcom/alt
@@ -481,7 +483,7 @@
 	name = "\improper NT radio headset"
 	desc = "The headset of a Nanotrasen corporate employee."
 	icon_state = "nt_headset"
-	centComm = 1
+	centcom = 1
 	ks2type = /obj/item/encryptionkey/ert
 
 /obj/item/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.

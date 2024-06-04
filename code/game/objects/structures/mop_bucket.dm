@@ -4,8 +4,9 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mopbucket"
 	density = 1
-	climbable = 1
-	w_class = ITEMSIZE_NORMAL
+	climb_allowed = TRUE
+	depth_level = 8
+	w_class = WEIGHT_CLASS_NORMAL
 	pressure_resistance = 5
 	atom_flags = OPENCONTAINER
 	var/amount_per_transfer_from_this = 5	//shit I dunno, adding this so syringes stop runtime erroring. --NeoFite

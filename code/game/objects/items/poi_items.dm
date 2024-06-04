@@ -26,7 +26,6 @@
 	icon_state = "poireactor"
 	icon_opened = "poireactor_open"
 	icon_closed = "poireactor"
-	climbable = 0
 
 	starts_with = list(
 		/obj/item/fuel_assembly/deuterium = 6)

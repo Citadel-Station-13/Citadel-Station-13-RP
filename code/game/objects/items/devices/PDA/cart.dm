@@ -50,7 +50,7 @@ var/list/civilian_cartridges = list(
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "cart"
 	item_state = "electronic"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/component.ogg'
 	pickup_sound = 'sound/items/pickup/component.ogg'
 
@@ -531,10 +531,6 @@ var/list/civilian_cartridges = list(
 		values["janitor"] = JaniData
 
 	return values
-
-
-
-
 
 /obj/item/cartridge/Topic(href, href_list)
 	..()

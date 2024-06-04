@@ -4,14 +4,14 @@
 
 /datum/event/meteor_strike/setup()
 	startWhen = rand(8,15)
-	if(LAZYLEN(GLOB.using_map.meteor_strike_areas))
-		strike_target = pick(get_area_turfs(pick(GLOB.using_map.meteor_strike_areas)))
+	if(LAZYLEN((LEGACY_MAP_DATUM).meteor_strike_areas))
+		strike_target = pick(get_area_turfs(pick((LEGACY_MAP_DATUM).meteor_strike_areas)))
 
 	if(!strike_target)
 		kill()
 
 /datum/event/meteor_strike/announce()
-	command_announcement.Announce("A meteoroid has been detected entering the atmosphere on a trajectory that will terminate near the surface facilty. Brace for impact.", "NanoTrasen Orbital Monitoring", new_sound = 'sound/effects/meteor_strike.ogg')
+	command_announcement.Announce("A meteoroid has been detected entering the atmosphere on a trajectory that will terminate near the surface facilty. Brace for impact.", "Nanotrasen Orbital Monitoring", new_sound = 'sound/effects/meteor_strike.ogg')
 
 /datum/event/meteor_strike/start()
 	new /obj/effect/meteor_falling(strike_target)
@@ -26,12 +26,12 @@
 /obj/effect/meteor_falling/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
-	INVOKE_ASYNC(src, .proc/meteor_fall)
+	INVOKE_ASYNC(src, PROC_REF(meteor_fall))
 
 /obj/effect/meteor_falling/proc/meteor_fall()
 	var/turf/current = get_turf(src)
 	if(istype(current, /turf/simulated/open) || istype(current, /turf/space))
-		var/turf/below = GetBelow(src)
+		var/turf/below = current.below()
 		if(below.density)
 			meteor_impact()
 			return
@@ -77,8 +77,9 @@
 	desc = "A big hunk of star-stuff."
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "large"
-	density = 1
-	climbable = 1
+	density = TRUE
+	climb_allowed = TRUE
+	depth_level = 16
 
 /obj/structure/meteorite/Initialize(mapload)
 	. = ..()
@@ -86,13 +87,13 @@
 	switch(rand(1,100))
 		if(1 to 30)
 			for(var/i=1 to rand(12,36))
-				new /obj/item/ore/iron(src)
+				new /obj/item/stack/ore/iron(src)
 		if(31 to 90)
 			for(var/i=1 to rand(8,24))
-				new /obj/item/ore/silver(src)
-				new /obj/item/ore/gold(src)
-				new /obj/item/ore/osmium(src)
-				new /obj/item/ore/diamond(src)
+				new /obj/item/stack/ore/silver(src)
+				new /obj/item/stack/ore/gold(src)
+				new /obj/item/stack/ore/osmium(src)
+				new /obj/item/stack/ore/diamond(src)
 		if(91 to 100)
 			new /obj/machinery/artifact(src)
 

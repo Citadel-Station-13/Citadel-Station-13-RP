@@ -3,7 +3,7 @@
 	desc = "A small disk used for carrying data on plant genetics."
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "disk"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	var/list/genes = list()
 	var/genesource = "unknown"
@@ -30,7 +30,7 @@
 	name = "flora disk box"
 	desc = "A box of flora data disks, apparently."
 
-/obj/item/storage/box/botanydisk/PopulateContents()
+/obj/item/storage/box/botanydisk/legacy_spawn_contents()
 	for(var/i = 0;i<7;i++)
 		new /obj/item/disk/botany(src)
 
@@ -143,7 +143,7 @@
 		ui = new(user, src, "BotanyIsolator", name)
 		ui.open()
 
-/obj/machinery/botany/extractor/ui_data(mob/user)
+/obj/machinery/botany/extractor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/geneMasks = SSplants.gene_masked_list
@@ -271,7 +271,7 @@
 		ui = new(user, src, "BotanyEditor", name)
 		ui.open()
 
-/obj/machinery/botany/editor/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/editor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["activity"] = active

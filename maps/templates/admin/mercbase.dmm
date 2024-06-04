@@ -81,16 +81,16 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
@@ -167,7 +167,6 @@
 /area/antag/antag_base)
 "ar" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
@@ -1218,7 +1217,6 @@
 /area/antag/antag_base)
 "bV" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/flooring/circuit.dmi';
 	icon_state = "bcircuit"
 	},
 /area/antag/antag_base)
@@ -2620,7 +2618,7 @@
 	opacity = 0
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1331;
 	master_tag = "merc_shuttle";
 	name = "exterior access button";
@@ -2893,7 +2891,7 @@
 	req_access = list(150)
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1331;
 	master_tag = "merc_shuttle";
 	name = "interior access button";
@@ -3592,7 +3590,7 @@
 /area/shuttle/mercenary)
 "gm" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 1;
+	dir = 4;
 	req_one_access = list(150)
 	},
 /turf/simulated/shuttle/floor{
@@ -3601,7 +3599,7 @@
 /area/shuttle/mercenary)
 "gn" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_dred"
@@ -4096,7 +4094,7 @@
 /area/shuttle/mercenary)
 "hh" = (
 /obj/machinery/access_button/airlock_exterior{
-	command = "cycle_interior";
+	command = "cycle_int";
 	master_tag = "merc_south_airlock";
 	pixel_x = -25
 	},

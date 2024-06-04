@@ -47,8 +47,8 @@
 #define GEAR_EVA 15
 
 
-//---- The following corporations are friendly with NanoTrasen and loosely enable trade and travel:
-//Corporation NanoTrasen - Generalised / high tech research and phoron exploitation.
+//---- The following corporations are friendly with Nanotrasen and loosely enable trade and travel:
+//Corporation Nanotrasen - Generalised / high tech research and phoron exploitation.
 //Corporation Vessel Contracting - Ship and station construction, materials research.
 //Corporation Osiris Atmospherics - Atmospherics machinery construction and chemical research.
 //Corporation Second Red Cross Society - 26th century Red Cross reborn as a dominating economic force in biomedical science (research and materials).
@@ -78,7 +78,7 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 	if(GLOB.economy_init)
 		return 2
 
-	//news_network.CreateFeedChannel("The [GLOB.using_map.starsys_name] Times", "[GLOB.using_map.starsys_name] Times ExoNode - [GLOB.using_map.station_short]", 1, 1)
+	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
 	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
 	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
 

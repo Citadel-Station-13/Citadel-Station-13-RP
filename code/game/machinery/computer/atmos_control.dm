@@ -26,6 +26,9 @@
 	icon_keyboard = "pcu_key"
 	density = FALSE
 	light_color = "#00cc00"
+	depth_level = 0
+	depth_projected = FALSE
+	climb_allowed = FALSE
 
 /obj/machinery/computer/atmoscontrol/attack_ai(mob/user)
 	ui_interact(user)

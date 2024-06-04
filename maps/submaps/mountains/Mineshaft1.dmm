@@ -38,7 +38,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet,
 /obj/machinery/light{
-	 icon_state = "tube1";
+	icon_state = "tube1";
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -53,30 +53,30 @@
 /turf/simulated/floor/tiled,
 /area/submap/cave/AMine1)
 "n" = (
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/AMine1)
 "o" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/AMine1)
 "p" = (
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/AMine1)
 "q" = (
@@ -96,7 +96,7 @@
 /area/submap/cave/AMine1)
 "t" = (
 /obj/machinery/light{
-	 icon_state = "tube1";
+	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -120,9 +120,8 @@
 /turf/simulated/floor,
 /area/submap/cave/AMine1)
 "y" = (
-/obj/machinery/power/apc{
-	operating = 0;
-	pixel_x = 31
+/obj/machinery/power/apc/south_mount{
+	operating = 0
 	},
 /turf/simulated/floor,
 /area/submap/cave/AMine1)
@@ -180,7 +179,7 @@
 /area/submap/cave/AMine1)
 "L" = (
 /obj/machinery/light{
-	 icon_state = "tube1";
+	icon_state = "tube1";
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -216,7 +215,7 @@
 /area/submap/cave/AMine1)
 "R" = (
 /obj/machinery/light{
-	 icon_state = "tube1";
+	icon_state = "tube1";
 	dir = 1
 	},
 /turf/simulated/floor,

@@ -27,8 +27,8 @@
 	maxHealth = 250
 	health = 250
 	taser_kill = FALSE
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 20
 	see_in_dark = 8
 
 	response_help = "touches"
@@ -49,13 +49,15 @@
 	var/atom/movable/form = null
 	var/morph_time = 0
 	var/our_size_multiplier = 1
-	var/static/list/blacklist_typecache = typecacheof(list(
-	/atom/movable/screen,
-	/obj/singularity,
-	/mob/living/simple_mob/vore/hostile/morph,
-	/obj/effect))
+	var/list/blacklist_typecache
 
 /mob/living/simple_mob/vore/hostile/morph/Initialize(mapload)
+	blacklist_typecache = cached_typecacheof(list(
+		/atom/movable/screen,
+		/obj/singularity,
+		/mob/living/simple_mob/vore/hostile/morph,
+		/obj/effect,
+	))
 	add_verb(src, /mob/living/proc/ventcrawl)
 	return ..()
 
@@ -109,8 +111,8 @@
 	density = target.density
 
 	//Morphed is weaker
-	melee_damage_lower = melee_damage_disguised
-	melee_damage_upper = melee_damage_disguised
+	legacy_melee_damage_lower = melee_damage_disguised
+	legacy_melee_damage_upper = melee_damage_disguised
 	movement_cooldown = 5
 
 	morph_time = world.time + MORPH_COOLDOWN
@@ -139,8 +141,8 @@
 	density = initial(density)
 
 	//Baseline stats
-	melee_damage_lower = initial(melee_damage_lower)
-	melee_damage_upper = initial(melee_damage_upper)
+	legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
+	legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 	movement_cooldown = initial(movement_cooldown)
 
 	morph_time = world.time + MORPH_COOLDOWN

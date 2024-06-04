@@ -327,7 +327,7 @@
 			env.merge(removed)
 	var/turf/T = get_turf(src)
 	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
-	T.assume_gas(/datum/gas/volatile_fuel, 5, T20C)
+	T.assume_gas(GAS_ID_VOLATILE_FUEL, 5, T20C)
 	T.hotspot_expose(700,400)
 	var/datum/effect_system/spark_spread/s = new
 	s.set_up(5, 0, T)

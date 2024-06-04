@@ -7,7 +7,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "aF" = (
@@ -49,7 +49,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -78,7 +78,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -142,7 +142,7 @@
 /obj/item/tank/oxygen/yellow,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "dS" = (
@@ -180,10 +180,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /obj/structure/cable{
@@ -543,7 +540,7 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr_wreck,
-/obj/effect/overmap/visitable/ship/landable/gecko_cr_wreck,
+/obj/overmap/entity/visitable/ship/landable/gecko_cr_wreck,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "lr" = (
@@ -576,7 +573,7 @@
 "lw" = (
 /obj/machinery/suit_cycler/vintage/rugged,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "lB" = (
@@ -593,8 +590,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "lV" = (
-/obj/machinery/firealarm{
-	dir = 4;
+/obj/machinery/fire_alarm/east_mount{
 	pixel_x = -27
 	},
 /obj/structure/closet/crate{
@@ -607,7 +603,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "lY" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/airless,
@@ -680,7 +676,7 @@
 	pixel_y = -29
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "om" = (
@@ -699,7 +695,7 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "oI" = (
@@ -715,7 +711,7 @@
 	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "oL" = (
@@ -723,8 +719,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /obj/machinery/light/flicker,
@@ -732,9 +727,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "pf" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -851,7 +844,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "rj" = (
@@ -886,9 +879,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_engineering_wreck)
@@ -939,10 +930,7 @@
 /area/shuttle/gecko_cr_engineering_wreck)
 "sV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/cable{
@@ -1025,7 +1013,7 @@
 	},
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1053,9 +1041,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/railing/grey{
 	dir = 4
@@ -1107,7 +1093,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "wG" = (
@@ -1168,7 +1154,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "xU" = (
@@ -1205,9 +1191,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "yR" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "yX" = (
@@ -1347,7 +1331,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "BN" = (
 /obj/machinery/light/small,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1562,7 +1546,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "FE" = (
@@ -1789,7 +1773,7 @@
 /area/shuttle/gecko_cr_cockpit_wreck)
 "JV" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1837,7 +1821,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "KA" = (
@@ -1915,9 +1899,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Mf" = (
@@ -2032,7 +2016,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "NR" = (
@@ -2229,7 +2213,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "PJ" = (
@@ -2259,7 +2243,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "Qu" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2269,7 +2253,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "QC" = (
@@ -2361,7 +2345,7 @@
 	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_wreck)
 "RG" = (
@@ -2416,9 +2400,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/shuttle/gecko_cr_engineering_wreck)
@@ -2446,10 +2428,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/gecko_cr_wreck)
 "Tw" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 27
-	},
+/obj/machinery/fire_alarm/west_mount,
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,
@@ -2507,7 +2486,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "UY" = (
@@ -2518,7 +2497,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -2612,15 +2591,14 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -26
 	},
 /obj/structure/handrail{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Wr" = (
@@ -2711,7 +2689,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Xs" = (
@@ -2720,7 +2698,7 @@
 	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "XJ" = (
@@ -2737,7 +2715,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -2756,7 +2734,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Yj" = (
@@ -2770,7 +2748,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "Yx" = (
@@ -2823,7 +2801,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/button/remote/blast_door{

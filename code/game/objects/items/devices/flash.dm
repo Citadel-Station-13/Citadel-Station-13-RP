@@ -5,7 +5,7 @@
 	icon_state = "flash"
 	item_state = "flashtool"
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
@@ -72,7 +72,7 @@
 		icon_state = "[base_icon]"
 	return
 
-/obj/item/flash/get_cell()
+/obj/item/flash/get_cell(inducer)
 	return power_supply
 
 /obj/item/flash/proc/get_external_power_supply()

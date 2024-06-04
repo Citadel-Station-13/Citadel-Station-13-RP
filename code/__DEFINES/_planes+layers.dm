@@ -173,6 +173,7 @@
 #define OBJ_PLANE -35
 #define OBJ_PLANE_RENDER_TARGET "OBJ_PLANE"
 
+#define WALL_LAYER         (TURF_LAYER+0.3) //! For walls.
 #define DEBRIS_LAYER       (TURF_LAYER+0.4) /// Cleanable debris.
 #define STAIRS_LAYER       (TURF_LAYER+0.5) /// Layer for stairs.
 #define DOOR_OPEN_LAYER    (TURF_LAYER+0.7) /// Under all objects if opened. 2.7 due to tables being at 2.6.
@@ -184,6 +185,8 @@
 
 #define ABOVE_JUNK_LAYER   (OBJ_LAYER+0.1) /// Things that want to be slightly above common objects.
 #define DOOR_CLOSED_LAYER  (OBJ_LAYER+0.1) /// Doors when closed.
+#define LOW_WALL_LAYER     (OBJ_LAYER+0.11)
+#define GRILLE_LAYER       (OBJ_LAYER+0.12)
 #define WINDOW_LAYER       (OBJ_LAYER+0.2) /// Windows.
 #define ON_WINDOW_LAYER    (OBJ_LAYER+0.3) /// Ontop of a window.
 #define ABOVE_WINDOW_LAYER (OBJ_LAYER+0.4) /// Above full tile windows so wall items are clickable.
@@ -320,12 +323,6 @@
 #define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
- *! -- Sonar Plane
- *? Used for renders for effects like sonar / sensory things
- */
-#define SONAR_PLANE 25
-
-/**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
@@ -345,10 +342,16 @@
 #define VERTICALITY_PLANE 40
 
 /**
+ *! -- Camera Mask Plane
+ */
+#define CAMERA_MASK_PLANE 70
+#define CAMERA_MASK_LAYER_MAIN 1
+
+/**
  *! -- Fullscreen Plane
  *? Fullscreen overlays.
  */
-#define FULLSCREEN_PLANE 90
+#define FULLSCREEN_PLANE 75
 
 #define FULLSCREEN_LAYER_OBFUSCATION 19.9
 #define FULLSCREEN_LAYER_MAIN 20.1
@@ -358,10 +361,11 @@
 #define FULLSCREEN_LAYER_CURSE 20.5
 
 /**
- *! -- Camera Mask Plane
+ *! -- Sonar Plane
+ *? Used for renders for effects like sonar / sensory things
+ *  todo: this needs to be under fullscreen plane but above blind.
  */
-#define CAMERA_MASK_PLANE 91
-#define CAMERA_MASK_LAYER_MAIN 1
+#define SONAR_PLANE 80
 
 /**
  *! -- Player HUD Plane
@@ -370,12 +374,20 @@
  *
  * todo: some layers are unused?
  */
-#define HUD_PLANE 95
+#define HUD_PLANE 90
 
 #define HUD_LAYER_UNDER 1 /// Under the HUD items.
 #define HUD_LAYER_BASE  2 /// The HUD items themselves.
 #define HUD_LAYER_ITEM  3 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
 #define HUD_LAYER_ABOVE 4 /// Things that reside above items (highlights).
+
+/**
+ *! -- Storage Plane
+ */
+#define STORAGE_PLANE 95
+#define STORAGE_LAYER_CONTAINER 1
+#define STORAGE_LAYER_ITEM_INACTIVE 2
+#define STORAGE_LAYER_ITEM_ACTIVE 3
 
 /**
  *! -- Player HUD Items Plane

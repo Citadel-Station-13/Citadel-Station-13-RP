@@ -131,7 +131,7 @@ var/list/datum/ai_icon/ai_icons
 	dead_icon = "ai-mono-crash"
 
 /datum/ai_icon/nanotrasen
-	name = "NanoTrasen"
+	name = "Nanotrasen"
 	alive_icon = "ai-nanotrasen"
 	alive_light = "#000029"
 

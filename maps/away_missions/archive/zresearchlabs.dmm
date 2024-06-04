@@ -58,7 +58,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "ap" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "aq" = (
@@ -98,7 +98,7 @@
 /area/awaymission/labs/cave)
 "ax" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "ay" = (
@@ -198,7 +198,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "aN" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/labs/cave)
 "aP" = (
@@ -222,7 +222,7 @@
 	},
 /area/awaymission/labs/cave)
 "aY" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -240,7 +240,7 @@
 	},
 /area/awaymission/labs/cave)
 "bb" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -290,7 +290,7 @@
 	pixel_x = -1;
 	pixel_y = 7
 	},
-/obj/item/circuitboard/autolathe,
+/obj/item/circuitboard/machine/lathe/autolathe,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -303,7 +303,7 @@
 	},
 /area/awaymission/labs/cave)
 "bm" = (
-/obj/structure/door_assembly/door_assembly_research,
+/obj/structure/door_assembly/research,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -344,8 +344,7 @@
 "bx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -461,7 +460,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -508,7 +507,7 @@
 	frequency = 1379;
 	id_tag = "medsci_pump"
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -582,7 +581,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)
 "cn" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -623,7 +622,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "cv" = (
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass/research,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -760,7 +759,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/desert)
 "cN" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "cO" = (
@@ -932,7 +931,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "dn" = (
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass/research,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -995,7 +994,7 @@
 /area/awaymission/labs/researchdivision)
 "dt" = (
 /obj/machinery/atmospherics/component/unary/vent_pump,
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -1074,10 +1073,8 @@
 	},
 /area/awaymission/labs/researchdivision)
 "dH" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -1147,7 +1144,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -1225,7 +1222,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump,
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor,
@@ -1286,8 +1283,7 @@
 "eo" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
@@ -1324,7 +1320,7 @@
 	},
 /area/awaymission/labs/militarydivision)
 "et" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1345,7 +1341,7 @@
 	},
 /area/awaymission/labs/gateway)
 "ew" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor,
@@ -1540,8 +1536,7 @@
 "eX" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
@@ -1569,7 +1564,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fd" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -1611,7 +1606,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "fj" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical"
 	},
 /turf/simulated/floor{
@@ -1680,10 +1675,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
 "ft" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -1751,14 +1744,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fD" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/closet/crate/secure/weapon,
 /obj/structure/cable{
@@ -1907,14 +1898,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "fW" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -1952,7 +1941,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
 "gb" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Storage"
 	},
 /obj/structure/cable{
@@ -2017,14 +2006,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "gj" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -2051,7 +2038,7 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/labs/militarydivision)
 "gm" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Armory Door"
 	},
 /obj/effect/debris/cleanable/blood,
@@ -2071,7 +2058,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
 "gp" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Observation"
 	},
 /obj/structure/cable{
@@ -2080,7 +2067,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/gateway)
 "gq" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Experimental Weapons Range"
 	},
 /turf/simulated/floor{
@@ -2471,7 +2458,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "hv" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Development Labs"
 	},
 /turf/simulated/floor{
@@ -2533,7 +2520,7 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/labs/militarydivision)
 "hD" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Briefing Room"
 	},
 /turf/simulated/floor,
@@ -2693,7 +2680,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/solars)
 "hX" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor{
 	icon_state = "wood"
@@ -2782,16 +2769,15 @@
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "il" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Cargo and Storage"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "im" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -2920,7 +2906,6 @@
 	},
 /area/awaymission/labs/researchdivision)
 "iD" = (
-/obj/machinery/robotic_fabricator,
 /turf/simulated/floor{
 	temperature = 393.15
 	},
@@ -2955,8 +2940,7 @@
 "iI" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
@@ -3065,8 +3049,7 @@
 "ja" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3159,14 +3142,12 @@
 	},
 /area/awaymission/labs/militarydivision)
 "jm" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -3384,7 +3365,7 @@
 /turf/space,
 /area/awaymission/labs/researchdivision)
 "jW" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Thermal Suit Storage"
 	},
 /turf/simulated/floor,
@@ -3475,7 +3456,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/labs/solars)
 "kk" = (
-/obj/machinery/door/airlock/glass_research,
+/obj/machinery/door/airlock/glass/research,
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
 "kl" = (
@@ -3504,16 +3485,16 @@
 /area/awaymission/labs/solars)
 "kp" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -3534,8 +3515,7 @@
 "ks" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -3666,14 +3646,12 @@
 	},
 /area/awaymission/desert)
 "kK" = (
-/obj/machinery/power/apc{
-	dir = 8;
+/obj/machinery/power/apc/west_mount{
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -4054,7 +4032,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4106,10 +4083,8 @@
 	c_tag = "Aft Port Solar Control";
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable,
 /obj/machinery/power/terminal{
@@ -4377,7 +4352,7 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mu" = (
@@ -4391,7 +4366,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4412,7 +4386,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -4437,7 +4410,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mC" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light{
 	dir = 1
@@ -4476,11 +4449,9 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "mI" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = 5000;
-	dir = 1;
-	name = "Virology APC";
-	pixel_y = 24
+	name = "Virology APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -4584,16 +4555,16 @@
 /area/awaymission/labs/civilian)
 "mW" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -4650,8 +4621,7 @@
 "ni" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
@@ -4770,11 +4740,12 @@
 /obj/structure/closet/crate/secure/bin{
 	name = "Valuable Ores"
 	},
-/obj/item/ore/diamond,
-/obj/item/ore/diamond,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
-/obj/item/ore/uranium,
+/obj/item/stack/ore/diamond{
+	amount = 2
+	},
+/obj/item/stack/ore/uranium{
+	amount = 3
+	},
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "nA" = (
@@ -4790,16 +4761,16 @@
 /area/awaymission/labs/cave)
 "nC" = (
 /obj/item/clothing/suit/space/void/security{
-	cold_protection = 1;
+	cold_protection_cover = 1;
 	desc = "A suit specially designed for Sogun anatomy, as well as operation in high-temperature environments. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	icon_state = "rig-soghun";
 	item_state = "rig-soghun";
 	name = "Soghun Hardsuit"
 	},
 /obj/item/clothing/head/helmet/space/void/security{
 	desc = "A special helmet designed for the Soghun anatomy, as well as work in a hazardous, high-temperature environment. Has sunray shielding.";
-	heat_protection = 3000;
+	heat_protection_cover = 3000;
 	name = "Soghun Suit Helmet"
 	},
 /obj/item/clothing/mask/breath,
@@ -4820,7 +4791,7 @@
 	pressure_checks = 2;
 	pump_direction = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "nG" = (
@@ -4969,10 +4940,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cave)
 "oc" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5107,7 +5076,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "ot" = (
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Cargo Bay"
 	},
 /turf/simulated/floor,
@@ -5221,7 +5190,7 @@
 	},
 /area/awaymission/labs/command)
 "oL" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "oM" = (
@@ -5231,7 +5200,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "oN" = (
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Excavation"
 	},
 /obj/structure/cable{
@@ -5264,10 +5233,9 @@
 	},
 /area/awaymission/labs/civilian)
 "oS" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5277,15 +5245,13 @@
 	},
 /area/awaymission/labs/civilian)
 "oT" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = 5000;
-	dir = 8;
 	environ = 0;
 	equipment = 0;
 	lighting = 0;
 	locked = 0;
-	name = "Worn-out APC";
-	pixel_x = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -5309,7 +5275,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "oW" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	name = "Bridge"
 	},
 /obj/structure/cable{
@@ -5351,7 +5317,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "pb" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	name = "Bridge"
 	},
 /turf/simulated/floor,
@@ -5386,7 +5352,7 @@
 	external_pressure_bound = 140;
 	pressure_checks = 0
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
 "ph" = (
@@ -5429,10 +5395,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "po" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5454,7 +5418,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -5669,7 +5632,7 @@
 	},
 /area/awaymission/labs/command)
 "qc" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /turf/simulated/floor/outdoors/dirt,
@@ -5733,10 +5696,8 @@
 	},
 /area/awaymission/labs/command)
 "qm" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5870,10 +5831,8 @@
 	},
 /area/awaymission/labs/command)
 "qJ" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -5998,7 +5957,7 @@
 	},
 /area/awaymission/labs/command)
 "ra" = (
-/obj/effect/alien/weeds{
+/obj/structure/alien/weeds{
 	icon_state = "flesh2"
 	},
 /obj/effect/debris/cleanable/blood/gibs/up,
@@ -6047,16 +6006,15 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1
 	},
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor{
 	icon_state = "bar"
 	},
 /area/awaymission/labs/civilian)
 "rk" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -6095,8 +6053,7 @@
 "ro" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6329,7 +6286,7 @@
 /obj/structure/table/standard,
 /obj/item/paper{
 	icon_state = "paper_words";
-	info = "<center><u>Memo to all Personnel</u></center><br><br>Greetings,<br><br>I have recently heard of rumors amongst our workers that we 'kidnap' some in their sleep and drag them off to the high-security laboratories. This has caused enough stir in our ranks that I personally am writing to you to denounce these naysayings. We at NanoTrasen would never do such things to harm our personnel, especially ones who put their lives on the line in dangerous caverns and extreme temperatures to excavate century-old artifacts. Rest assured, the laboratories in the high-security section are for nothing but the studying of the artifacts that you bring back to us.<br><br>Now that that is out of the way, allow me to personally give my congratulations to our Head of Excavation, S'rrsa Unoyo, who is celebrating her twenty-seventh birthday today. Celebrations will be held in the mess hall after work hours, and all staff are invited.<br><br>As always, please have a productive shift, and do not listen to the fearmongering of certain individuals. You are safe here, with us, at NanoTrasen.<br><br>-Overseer McDonald";
+	info = "<center><u>Memo to all Personnel</u></center><br><br>Greetings,<br><br>I have recently heard of rumors amongst our workers that we 'kidnap' some in their sleep and drag them off to the high-security laboratories. This has caused enough stir in our ranks that I personally am writing to you to denounce these naysayings. We at Nanotrasen would never do such things to harm our personnel, especially ones who put their lives on the line in dangerous caverns and extreme temperatures to excavate century-old artifacts. Rest assured, the laboratories in the high-security section are for nothing but the studying of the artifacts that you bring back to us.<br><br>Now that that is out of the way, allow me to personally give my congratulations to our Head of Excavation, S'rrsa Unoyo, who is celebrating her twenty-seventh birthday today. Celebrations will be held in the mess hall after work hours, and all staff are invited.<br><br>As always, please have a productive shift, and do not listen to the fearmongering of certain individuals. You are safe here, with us, at Nanotrasen.<br><br>-Overseer McDonald";
 	name = "Personnel Memo"
 	},
 /turf/simulated/floor,
@@ -6403,10 +6360,8 @@
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
 "sq" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "Worn-out APC";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	name = "Worn-out APC"
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -6431,7 +6386,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 5;
-	health = 1e+007;
 	layer = 3.4
 	},
 /turf/simulated/floor,
@@ -6451,8 +6405,7 @@
 "sy" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/security)
@@ -6541,13 +6494,13 @@
 	},
 /area/awaymission/labs/medical)
 "sO" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "sP" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security"
 	},
 /turf/simulated/floor,
@@ -6557,7 +6510,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/security)
 "sS" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical"
 	},
 /turf/simulated/floor{
@@ -6565,7 +6518,7 @@
 	},
 /area/awaymission/labs/medical)
 "sT" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical"
 	},
 /turf/simulated/floor{
@@ -6618,7 +6571,7 @@
 	},
 /area/awaymission/labs/medical)
 "tc" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical"
 	},
 /obj/structure/cable{
@@ -6638,7 +6591,7 @@
 	},
 /area/awaymission/labs/medical)
 "te" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical"
 	},
 /obj/structure/cable{
@@ -6728,8 +6681,7 @@
 "tr" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 5;
-	health = 1e+007
+	dir = 5
 	},
 /turf/space,
 /area/awaymission/labs/medical)
@@ -6968,7 +6920,7 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/labs/security)
 "ub" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office"
 	},
 /turf/simulated/floor,
@@ -6983,7 +6935,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/security)
 "ue" = (
-/obj/machinery/door/airlock/glass_security,
+/obj/machinery/door/airlock/glass/security,
 /turf/simulated/floor,
 /area/awaymission/labs/security)
 "uf" = (
@@ -6993,11 +6945,9 @@
 	},
 /area/awaymission/labs/security)
 "ug" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/north_mount{
 	cell_type = 5000;
-	dir = 1;
-	name = "Virology APC";
-	pixel_y = 24
+	name = "Virology APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor{
@@ -7077,10 +7027,9 @@
 "ur" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/south_mount{
 	dir = 0;
-	name = "Worn-out APC";
-	pixel_y = -24
+	name = "Worn-out APC"
 	},
 /obj/structure/cable,
 /turf/simulated/floor{
@@ -7191,7 +7140,7 @@
 	},
 /area/awaymission/labs/security)
 "uJ" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Armory"
 	},
 /turf/simulated/floor,

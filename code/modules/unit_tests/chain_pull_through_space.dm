@@ -11,7 +11,7 @@
 	..()
 
 	//reserve a tile that is always empty for our z destination
-	reserved = SSmapping.RequestBlockReservation(5,5)
+	reserved = SSmapping.request_block_reservation(5,5)
 
 	// Create a space tile that goes to another z-level
 	claimed_tile = run_loc_floor_bottom_left.type

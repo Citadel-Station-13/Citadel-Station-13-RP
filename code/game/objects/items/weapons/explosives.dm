@@ -5,8 +5,8 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
-	item_flags = ITEM_NOBLUDGEON
-	w_class = ITEMSIZE_SMALL
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ILLEGAL = 2)
 	var/datum/wires/explosive/c4/wires = null
 	var/timer = 10
@@ -51,7 +51,7 @@
 /obj/item/plastique/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/accessory/storage/) || istype(target, /obj/item/clothing/under))
+	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/accessory/storage/) || istype(target, /obj/item/clothing/under) || istype(target, /obj/item/clothing/suit/storage))
 		return
 	to_chat(user, "Planting explosives...")
 	user.do_attack_animation(target)

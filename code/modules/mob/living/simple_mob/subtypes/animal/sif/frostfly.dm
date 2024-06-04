@@ -50,8 +50,8 @@
 
 	movement_cooldown = 0.5
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	base_attack_cooldown = 1.5 SECONDS
 	attacktext = list("nipped", "bit", "pinched")
 
@@ -91,7 +91,7 @@
 	say_escalate = list("Rszt!")
 
 	threaten_sound = 'sound/effects/refill.ogg'
-	stand_down_sound = 'sound/effects/sparks5.ogg'
+	stand_down_sound = /datum/soundbyte/grouped/sparks
 
 /mob/living/simple_mob/animal/sif/frostfly/handle_special()
 	..()

@@ -3,9 +3,9 @@
 	return
 
 /turf/proc/is_above_space()
-	var/turf/T = GetBelow(src)
+	var/turf/T = below()
 	while (T && (T.mz_flags & MZ_MIMIC_BELOW))
-		T = GetBelow(T)
+		T = T.below()
 	return isspaceturf(T)
 
 /turf/update_appearance(updates)

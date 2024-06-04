@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/gateway/snowfield
+/obj/overmap/entity/visitable/sector/gateway/snowfield
 	initial_generic_waypoints = list("tether_excursion_snowfield")
 	in_space = 0
 	scanner_name = "Snowy Field"
@@ -72,8 +72,8 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "desperately attacks"
 
-	melee_damage_lower = 20
-	melee_damage_upper = 50 // srsly u gon get rekt
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 50 // srsly u gon get rekt
 
 	minbodytemp = 0
 

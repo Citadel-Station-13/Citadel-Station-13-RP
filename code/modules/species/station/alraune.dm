@@ -1,8 +1,13 @@
+/datum/physiology_modifier/intrinsic/species/alraune
+	carry_strength_add = CARRY_STRENGTH_ADD_ALRAUNE
+	carry_strength_factor = CARRY_FACTOR_MOD_ALRAUNE
+
 /datum/species/alraune
 	uid = SPECIES_ID_ALRAUNE
 	id = SPECIES_ID_ALRAUNE
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/alraune
 
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
@@ -12,7 +17,7 @@
 	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.
 
 	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they
-	are selfish or unable to empathise with others.
+	are selfish or unable to empathize with others.
 
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset.
 	"}
@@ -21,6 +26,8 @@
 	intrinsic_languages = LANGUAGE_ID_VERNAL
 
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
+	snow_movement  = -1 // Alraune can still wear shoes. Combined with winter boots, negates light snow slowdown but still slowed on ice.
+	water_movement = -1 // Combined with swimming fins, negates shallow water slowdown.
 	total_health = 100 //standard
 	metabolic_rate = 0.75 // slow metabolism
 
@@ -35,9 +42,9 @@
 	selects_bodytype = TRUE
 
 	body_temperature = T20C
-	breath_type = /datum/gas/carbon_dioxide
-	poison_type = /datum/gas/phoron
-	exhale_type = /datum/gas/oxygen
+	breath_type = GAS_ID_CARBON_DIOXIDE
+	poison_type = GAS_ID_PHORON
+	exhale_type = GAS_ID_OXYGEN
 
 	// Heat and cold resistances are 20 degrees broader on the level 1 range, level 2 is default, level 3 is much weaker, halfway between L2 and normal L3.
 	// Essentially, they can tolerate a broader range of comfortable temperatures, but suffer more at extremes.
@@ -78,6 +85,9 @@
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/alraune_fruit_select,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	) //Give them the voremodes related to wrapping people in vines and sapping their fluids
 
 	color_mult  = 1
@@ -114,7 +124,7 @@
 	return TRUE //eh, why not? Aquatic plants are a thing.
 
 
-/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.inStasisNow()) // if they're in stasis, they won't need this stuff.
 		return
 
@@ -254,8 +264,8 @@
 		H.phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
-	if(breath.gas[/datum/gas/nitrous_oxide])
-		var/SA_pp = (breath.gas[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
+	if(breath.gas[GAS_ID_NITROUS_OXIDE])
+		var/SA_pp = (breath.gas[GAS_ID_NITROUS_OXIDE] / breath.total_moles) * breath_pressure
 
 		// Enough to make us paralysed for a bit
 		if(SA_pp > SA_para_min)
@@ -271,7 +281,7 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) H.emote(pick("giggle", "laugh"))
-		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
+		breath.adjust_gas(GAS_ID_NITROUS_OXIDE, -breath.gas[GAS_ID_NITROUS_OXIDE]/6, update = 0) //update after
 
 	// Were we able to breathe?
 	if (failed_inhale || failed_exhale)
@@ -322,7 +332,7 @@
 		else
 			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
 
-		var/relative_density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
+		var/relative_density = 8 * breath.total_moles / (CELL_MOLES * BREATH_PERCENTAGE)
 		temp_adj *= relative_density
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
@@ -363,7 +373,7 @@
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"
 	set desc = "Pick fruit off of [src]."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	//do_reagent_implant(usr)

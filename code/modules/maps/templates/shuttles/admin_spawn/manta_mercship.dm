@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/generic/manta_ship
 	name = "OM Ship - Mercenary Cruiser Manta Class (New Z)"
 	desc = "Mercenary Manta Cruiser."
-	mappath = "maps/templates/admin/kk_mercship.dmm"
+	map_path = "maps/templates/admin/kk_mercship.dmm"
 
 // The ship's area(s)
 /area/ship/manta
@@ -120,7 +120,7 @@
 //	fuel_consumption = 3
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/manta_ship
+/obj/overmap/entity/visitable/ship/manta_ship
 	name = "SAARE Typhon Four-Niner"
 	desc = "Spacefaring vessel. Broadcasting Private Military Contractor IFF."
 	scanner_desc = @{"[i]Registration[/i]: SAARE Mercenary Cruiser Typhon Four-Niner
@@ -132,9 +132,6 @@
 	vessel_size = SHIP_SIZE_LARGE
 	initial_generic_waypoints = list("manta_ship_near_fore", "manta_ship_near_aft", "manta_ship_near_port", "manta_ship_near_star", "manta_ship_port", "manta_ship_star", "manta_ship_base_dock", "omship_spawn_manta_lander")
 //	initial_restricted_waypoints = list("Mercenary Cruiser's Bay" = list("omship_spawn_manta_lander"))
-
-/obj/landmark/map_data/manta_ship
-	height = 1
 
 /obj/effect/shuttle_landmark/premade/manta_ship_port
 	name = "SAARE Cruiser - Port Airlock"
@@ -188,7 +185,7 @@
 	fuel_consumption = 0 //this thing is too big already, let's just handwave everything
 	defer_initialisation = TRUE
 
-/obj/effect/overmap/visitable/ship/landable/manta_ship_boat
+/obj/overmap/entity/visitable/ship/landable/manta_ship_boat
 	scanner_name = "SAARE Landing Craft"
 	desc = "Spacefaring vessel. Broadcasting Private Military Contractor IFF."
 	scanner_desc = @{"[i]Registration[/i]: SAARE Mercenary Cruiser Typhon Four-Niner's Lander

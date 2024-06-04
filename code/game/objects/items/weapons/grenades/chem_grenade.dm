@@ -3,10 +3,9 @@
 	icon_state = "chemg"
 	item_state = "grenade"
 	desc = "A hand made chemical grenade."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 2.0
 	det_time = 50
-	unacidable = 1
 
 	var/stage = 0
 	var/state = 0
@@ -26,9 +25,6 @@
 	return ..()
 
 /obj/item/grenade/chem_grenade/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(!stage || stage==1)
 		if(detonator)
 //				detonator.loc=src.loc

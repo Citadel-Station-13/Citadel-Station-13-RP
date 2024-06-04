@@ -23,11 +23,13 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	icon = 'icons/obj/machines/gravity_generator.dmi'
 	anchored = TRUE
 	density = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	use_power = USE_POWER_OFF
 	var/sprite_number = 0
 
 	pixel_y = 16
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/gravity_generator/legacy_ex_act(severity, target)
 	if(severity == 1) // Very sturdy.
@@ -249,7 +251,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		ui = new(user, src, "GravityGenerator", name)
 		ui.open()
 
-/obj/machinery/gravity_generator/main/ui_data(mob/user)
+/obj/machinery/gravity_generator/main/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["breaker"] = breaker
@@ -260,7 +262,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 	return data
 
-/obj/machinery/gravity_generator/main/ui_act(action, params)
+/obj/machinery/gravity_generator/main/ui_act(action, list/params, datum/tgui/ui)
 	if((..()))
 		return TRUE
 
@@ -409,8 +411,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	var/my_z = get_z(src)
 
 	//Actually doing it special this time instead of letting using_map decide
-	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/S = get_overmap_sector(my_z)
+	if((LEGACY_MAP_DATUM).use_overmap)
+		var/obj/overmap/entity/visitable/S = get_overmap_sector(my_z)
 		if(S)
 			levels = S.get_space_zlevels() //Just the spacey ones
 		else

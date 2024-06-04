@@ -5,7 +5,7 @@ var/list/blob_nodes = list()
 	base_name = "node"
 	icon_state = "blank_blob"
 	desc = "A large, pulsating yellow mass."
-	max_integrity = 50
+	integrity_max = 50
 	health_regen = 3
 	point_return = 50
 

@@ -9,8 +9,16 @@
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
 	pto_type = PTO_SCIENCE
-	additional_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_FABRICATION) //As a job that handles so many corpses, it makes sense for them to have morgue access.
-	minimal_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_MEDICAL_MORGUE, ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_FABRICATION) //As a job that handles so many corpses, it makes sense for them to have morgue access.
+	additional_access = list(
+		ACCESS_SCIENCE_FABRICATION,
+		ACCESS_SCIENCE_TOXINS,
+		ACCESS_MEDICAL_MORGUE,
+	)
+	minimal_access = list(
+		ACCESS_ENGINEERING_TECHSTORAGE,
+		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
+	)
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/roboticist
@@ -19,16 +27,21 @@
 	alt_titles = list(
 		"Biomechanical Engineer" = /datum/prototype/struct/alt_title/biomech,
 		"Mechatronic Engineer" = /datum/prototype/struct/alt_title/mech_tech,
-		"Prosthetists" = /datum/prototype/struct/alt_title/prosthetists,
-		"Artificer-Specialist" = /datum/prototype/struct/alt_title/artificer_specialist
+		"Artificer-Biotechnicist" = /datum/prototype/struct/alt_title/artificer_biotechnicist,
+		"Junior Roboticist" = /datum/prototype/struct/alt_title/junior_roboticist,
 		)
 
-/datum/prototype/struct/alt_title/artificer_specialist
-	title = "Artificer-Specialist"
+/datum/prototype/struct/alt_title/artificer_biotechnicist
+	title = "Artificer-Biotechnicist"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
+
+/datum/prototype/struct/alt_title/junior_roboticist
+	title = "Junior Roboticist"
+	title_blurb = "A Junior Roboticist is someone still learning the field of robotics and  \
+					should seek guidance from other roboticists and the research seniors and lead."
 
 /datum/prototype/struct/alt_title/biomech
 	title = "Biomechanical Engineer"
@@ -39,11 +52,6 @@
 	title = "Mechatronic Engineer"
 	title_blurb = "A Mechatronic Engineer focuses on the construction and maintenance of Exosuits, and should be well versed in their use. \
 					They may also be called upon to work on synthetics and prosthetics, if needed."
-
-/datum/prototype/struct/alt_title/prosthetists
-	title = "Prosthetists"
-	title_blurb = "Prosthetists design and fabricate medical supportive devices and measure and fit patients for them. These devices \
-					include artificial limbs (arms, hands, legs, and feet), braces, and other medical or surgical devices."
 
 /datum/outfit/job/station/roboticist
 	name = OUTFIT_JOB_NAME("Roboticist")

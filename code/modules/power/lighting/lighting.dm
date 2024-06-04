@@ -229,8 +229,8 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light
 	name = "light fixture"
 	icon = 'icons/obj/lighting_vr.dmi'
-	base_icon_state = "tube"
-	icon_state = "tube1"
+	base_icon_state = "tube_empty"
+	icon_state = "tube_empty"
 	desc = "A lighting fixture."
 	anchored = 1
 	plane = MOB_PLANE
@@ -296,6 +296,14 @@ var/global/list/light_type_cache = list()
 	var/brightness_power_ns
 	var/brightness_color_ns
 
+	//Used for shuttles, workaround for broken mounting
+	//TODO: Remove when legacy walls are nuked
+	var/old_wall = FALSE
+
+	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor
+	icon_state = "tube_map"
+	#endif
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
 
@@ -311,6 +319,23 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/small
 	shows_alerts = FALSE
+
+/obj/machinery/light/small/update_icon()
+	switch(status) // set icon_states
+		if(LIGHT_OK)
+			if(shows_alerts && current_alert && on)
+				icon_state = "[base_icon_state]-alert-[current_alert]"
+			else
+				icon_state = "[base_icon_state][on]"
+		if(LIGHT_EMPTY)
+			icon_state = "[base_icon_state]-empty"
+			on = 0
+		if(LIGHT_BURNED)
+			icon_state = "[base_icon_state]-burned"
+			on = 0
+		if(LIGHT_BROKEN)
+			icon_state = "[base_icon_state]-broken"
+			on = 0
 
 /obj/machinery/light/small/flicker
 	auto_flicker = TRUE
@@ -331,6 +356,24 @@ var/global/list/light_type_cache = list()
 	construct_type = /obj/machinery/light_construct/fairy
 	shows_alerts = FALSE
 
+/obj/machinery/light/fairy/update_icon()
+	switch(status) // set icon_states
+		if(LIGHT_OK)
+			if(shows_alerts && current_alert && on)
+				icon_state = "[base_icon_state]-alert-[current_alert]"
+			else
+				icon_state = "[base_icon_state][on]"
+		if(LIGHT_EMPTY)
+			icon_state = "[base_icon_state]-empty"
+			on = 0
+		if(LIGHT_BURNED)
+			icon_state = "[base_icon_state]-burned"
+			on = 0
+		if(LIGHT_BROKEN)
+			icon_state = "[base_icon_state]-broken"
+			on = 0
+
+
 /obj/machinery/light/flamp
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flamp1"
@@ -342,6 +385,23 @@ var/global/list/light_type_cache = list()
 	construct_type = /obj/machinery/light_construct/flamp
 	shows_alerts = FALSE
 	var/lamp_shade = 1
+
+/obj/machinery/light/flamp/update_icon()
+	switch(status) // set icon_states
+		if(LIGHT_OK)
+			if(shows_alerts && current_alert && on)
+				icon_state = "[base_icon_state]-alert-[current_alert]"
+			else
+				icon_state = "[base_icon_state][on]"
+		if(LIGHT_EMPTY)
+			icon_state = "[base_icon_state]-empty"
+			on = 0
+		if(LIGHT_BURNED)
+			icon_state = "[base_icon_state]-burned"
+			on = 0
+		if(LIGHT_BROKEN)
+			icon_state = "[base_icon_state]-broken"
+			on = 0
 
 /obj/machinery/light/flamp/Initialize(mapload, obj/machinery/light_construct/construct)
 	. = ..()
@@ -367,6 +427,8 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/tube/large
 	shows_alerts = FALSE
 
+/obj/machinery/light/spot/no_nightshift
+	nightshift_allowed = FALSE
 /obj/machinery/light/spot/flicker
 	auto_flicker = TRUE
 
@@ -405,6 +467,7 @@ var/global/list/light_type_cache = list()
 
 	on = powered()
 	update(0)
+	setDir(dir)
 
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
@@ -415,23 +478,50 @@ var/global/list/light_type_cache = list()
 	return ..()
 
 /obj/machinery/light/update_icon()
+	cut_overlays()
 
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			if(shows_alerts && current_alert && on)
-				icon_state = "[base_icon_state]-alert-[current_alert]"
+				var/addcolor
+				switch(current_alert)
+					if("atmos")
+						addcolor = COLOR_BLUE
+					if("fire")
+						addcolor = COLOR_ORANGE
+				var/image/I = image(icon, "tube1")
+				I.color = addcolor
+				add_overlay(I)
+
 			else
-				icon_state = "[base_icon_state][on]"
+				add_overlay("tube1")
 		if(LIGHT_EMPTY)
-			icon_state = "[base_icon_state]-empty"
 			on = 0
 		if(LIGHT_BURNED)
-			icon_state = "[base_icon_state]-burned"
+			add_overlay("tube_burned")
 			on = 0
 		if(LIGHT_BROKEN)
-			icon_state = "[base_icon_state]-broken"
+			add_overlay("tube_broken")
 			on = 0
-	return
+
+/obj/machinery/light/setDir(ndir)
+	. = ..()
+
+	if(old_wall)
+		return
+
+	base_pixel_y = 0
+	base_pixel_x = 0
+	var/turf/T = get_step(get_turf(src), src.dir)
+	if(istype(T) && T.density)
+		switch(dir)
+			if(NORTH)
+				base_pixel_y = 21
+			if(EAST)
+				base_pixel_x = 10
+			if(WEST)
+				base_pixel_x = -10
+	reset_pixel_offsets()
 
 /obj/machinery/light/flamp/update_icon()
 	if(lamp_shade)
@@ -484,9 +574,9 @@ var/global/list/light_type_cache = list()
 		needsound = FALSE // Don't play sound again until we've been turned off
 
 	if(on)
-		var/correct_range = nightshift_enabled ? brightness_range_ns : brightness_range
-		var/correct_power = nightshift_enabled ? brightness_power_ns : brightness_power
-		var/correct_color = nightshift_enabled ? brightness_color_ns : brightness_color
+		var/correct_range = nightshift_enabled ? (brightness_range_ns || brightness_range) : brightness_range
+		var/correct_power = nightshift_enabled ? (brightness_power_ns || brightness_power) : brightness_power
+		var/correct_color = nightshift_enabled ? (brightness_color_ns || brightness_color) : brightness_color
 		if(light_range != correct_range || light_power != correct_power || light_color != correct_color)
 			if(!auto_flicker)
 				switchcount++
@@ -537,17 +627,12 @@ var/global/list/light_type_cache = list()
 	broken()
 	return 1
 
-/obj/machinery/light/take_damage(var/damage)
-	if(!damage)
-		return
+/obj/machinery/light/atom_break()
+	. = ..()
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		return
 	if(!(status == LIGHT_OK||status == LIGHT_BURNED))
 		return
-	broken()
-	return 1
-
-/obj/machinery/light/blob_act()
 	broken()
 
 // attempt to set the light's on/off status
@@ -556,7 +641,7 @@ var/global/list/light_type_cache = list()
 	on = (s && status == LIGHT_OK)
 	update()
 
-/obj/machinery/light/get_cell()
+/obj/machinery/light/get_cell(inducer)
 	return cell
 
 // examine verb
@@ -938,4 +1023,4 @@ var/global/list/light_type_cache = list()
 	desc = "A lamp shade for a lamp."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lampshade"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY

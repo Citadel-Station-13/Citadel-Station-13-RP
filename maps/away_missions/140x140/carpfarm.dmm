@@ -126,11 +126,8 @@
 "az" = (
 /obj/item/storage/toolbox/electrical,
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
+/obj/machinery/power/apc/west_mount{
+	alarms_hidden = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -507,13 +504,13 @@
 	icon_state = "intact"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1375;
 	master_tag = "carp_airlock";
 	name = "interior access button";
 	pixel_x = 26;
 	pixel_y = -26;
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
@@ -562,7 +559,7 @@
 	id_tag = "carp_inner";
 	locked = 1;
 	name = "External Access";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/plating,
@@ -663,7 +660,7 @@
 	id_tag = "carp_outer";
 	locked = 1;
 	name = "External Access";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/carpfarm/base)
@@ -678,13 +675,13 @@
 /area/awaymission/carpfarm/base)
 "ce" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1375;
 	master_tag = "carp_airlock";
 	name = "exterior access button";
 	pixel_x = 26;
 	pixel_y = 26;
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/carpfarm/base)
@@ -757,7 +754,7 @@
 /turf/space,
 /area/space)
 "Fi" = (
-/obj/effect/overmap/visitable/sector/gateway/carpfarm,
+/obj/overmap/entity/visitable/sector/gateway/carpfarm,
 /turf/space,
 /area/space)
 "Zb" = (

@@ -4,7 +4,7 @@
 	networks = list(NETWORK_ENGINEERING)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	sprites = list(
-		"M-USE NanoTrasen" = "robotEngi",
+		"M-USE Nanotrasen" = "robotEngi",
 		"Cabeiri" = "eyebot-engineering",
 		"Haruka" = "marinaENG",
 		"Usagi" = "tallyellow",
@@ -88,7 +88,7 @@
 		/obj/item/tool/wirecutters/cyborg,
 		/obj/item/multitool,
 		/obj/item/t_scanner,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/gripper,
 		/obj/item/gripper/circuit,
@@ -162,7 +162,7 @@
 		/obj/item/multitool,
 		/obj/item/t_scanner,
 		/obj/item/rcd/electric/mounted/borg,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/inflatable_dispenser/robot,
 		/obj/item/pickaxe/plasmacutter,

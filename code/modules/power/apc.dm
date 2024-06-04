@@ -50,189 +50,41 @@ GLOBAL_LIST_EMPTY(apcs)
 #define NIGHTSHIFT_ALWAYS 3
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-
-/obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
-
-/obj/machinery/power/apc/direction_bump/east
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/direction_bump/west
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/direction_bump/north
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/direction_bump/south
-	name = "south bump"
-	pixel_y = -28
-
 //Critical//
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
-/obj/machinery/power/apc/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// High capacity cell APCs
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 22)
 /obj/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
-/obj/machinery/power/apc/high/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/high/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/high/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/high/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// Super capacity cell APCS
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 22)
 /obj/machinery/power/apc/super
 	cell_type = /obj/item/cell/super
 
-/obj/machinery/power/apc/super/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 /// Critical APCs with super cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 22)
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
-/obj/machinery/power/apc/super/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hyper cells. How lewd
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 22)
 /obj/machinery/power/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
-/obj/machinery/power/apc/hyper/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/hyper/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/hyper/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/hyper/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 22)
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/power/apc/alarms_hidden/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hidden alarms and no power cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden/no_cell, 22)
 /obj/machinery/power/apc/alarms_hidden/no_cell
 	cell_type = null
 	chargelevel = 0
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 
 /**
  * APCs
@@ -255,16 +107,18 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * ~silicons
  */
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/power_vr.dmi'
+	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	use_power = USE_POWER_OFF
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
+	armor_type = /datum/armor/object/medium
 	var/area/area
 	var/areastring = null
 	var/obj/item/cell/cell
@@ -322,6 +176,10 @@ GLOBAL_LIST_EMPTY(apcs)
 	/// tracks how behind we arre in charging TODO: literally rewrite apcs entirely to use a proper accumulator-cell system with an internal buffer, ffs
 	var/lazy_draw_accumulator = 0
 
+	//Used for shuttles, workaround for broken mounting
+	//TODO: Remove when legacy walls are nuked
+	var/old_wall = FALSE
+
 /obj/machinery/power/apc/updateDialog()
 	if (machine_stat & (BROKEN|MAINT))
 		return
@@ -364,8 +222,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	if (building)
 		setDir(ndir)
 
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
 	if(!building)
 		autobuild()
 	else
@@ -376,6 +232,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		name = "[area.name] APC"
 		machine_stat |= MAINT
 		src.update_icon()
+	setDir(dir)
 
 /obj/machinery/power/apc/Destroy()
 	GLOB.apcs -= src
@@ -399,19 +256,35 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return ..()
 
-/obj/machinery/power/apc/get_cell()
+/obj/machinery/power/apc/get_cell(inducer)
 	return cell
 
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/power/apc/setDir(new_dir)
-	..()
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
+	. = ..()
+
+	if(old_wall)
+		return
+
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(src, turn(dir, 180))
+	if(T.get_wallmount_anchor())
+		switch(dir)
+			if(SOUTH)
+				base_pixel_y = 22
+			if(NORTH)
+				base_pixel_y = -22
+			if(EAST)
+				base_pixel_x = -22
+			if(WEST)
+				base_pixel_x = 22
+	reset_pixel_offsets()
+
 	if(terminal)
 		terminal.disconnect_from_network()
-		terminal.setDir(src.dir) // Terminal has same dir as master
+		terminal.setDir(turn(src.dir, 180)) // Terminal has same dir as master
 		terminal.connect_to_network() // Refresh the network the terminal is connected to.
-	return
 
 /obj/machinery/power/apc/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, round(duration))
@@ -420,7 +293,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	// create a terminal object at the same position as original turf loc
 	// wires will attach to this
 	terminal = new/obj/machinery/power/terminal(src.loc)
-	terminal.setDir(dir)
+	terminal.setDir(turn(dir, 180))
 	terminal.master = src
 
 /obj/machinery/power/apc/proc/autobuild()
@@ -448,7 +321,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/machinery/power/apc/examine(mob/user, dist)
 	. = ..()
@@ -489,9 +362,9 @@ GLOBAL_LIST_EMPTY(apcs)
 
 		status_overlays_lock.len = 2
 		status_overlays_charging.len = 3
-		status_overlays_equipment.len = 4
-		status_overlays_lighting.len = 4
-		status_overlays_environ.len = 4
+		status_overlays_equipment.len = 5
+		status_overlays_lighting.len = 5
+		status_overlays_environ.len = 5
 
 		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
 		status_overlays_lock[2] = image(icon, "apcox-1")
@@ -500,24 +373,19 @@ GLOBAL_LIST_EMPTY(apcs)
 		status_overlays_charging[2] = image(icon, "apco3-1")
 		status_overlays_charging[3] = image(icon, "apco3-2")
 
-		status_overlays_equipment[1] = image(icon, "apco0-0")
-		status_overlays_equipment[2] = image(icon, "apco0-1")
-		status_overlays_equipment[3] = image(icon, "apco0-2")
-		status_overlays_equipment[4] = image(icon, "apco0-3")
-
-		status_overlays_lighting[1] = image(icon, "apco1-0")
-		status_overlays_lighting[2] = image(icon, "apco1-1")
-		status_overlays_lighting[3] = image(icon, "apco1-2")
-		status_overlays_lighting[4] = image(icon, "apco1-3")
-
-		status_overlays_environ[1] = image(icon, "apco2-0")
-		status_overlays_environ[2] = image(icon, "apco2-1")
-		status_overlays_environ[3] = image(icon, "apco2-2")
-		status_overlays_environ[4] = image(icon, "apco2-3")
+		var/list/channel_overlays = list(status_overlays_equipment, status_overlays_lighting, status_overlays_environ)
+		var/channel = 0
+		for(var/list/channel_leds in channel_overlays)
+			channel_leds[POWERCHAN_OFF + 1] = overlay_image(icon,"apco[channel]",COLOR_RED)
+			channel_leds[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_ORANGE)
+			channel_leds[POWERCHAN_ON + 1] = overlay_image(icon,"apco[channel]",COLOR_LIME)
+			channel_leds[POWERCHAN_ON_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_BLUE)
+			channel++
 
 	var/update = check_updates() 		//returns 0 if no need to update icons.
 						// 1 if we need to update the icon_state
 						// 2 if we need to update the overlays
+
 	if(!update)
 		return
 
@@ -525,7 +393,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(update_state & UPDATE_ALLGOOD)
 			icon_state = "apc0"
 		else if(update_state & (UPDATE_OPENED1|UPDATE_OPENED2))
-			var/basestate = "apc[ cell ? "2" : "1" ]"
+			var/basestate = "apc[ get_cell(FALSE) ? "2" : "1" ]"
 			if(update_state & UPDATE_OPENED1)
 				if(update_state & (UPDATE_MAINT|UPDATE_BROKE))
 					icon_state = "apcmaint" //disabled APC cannot hold cell
@@ -535,43 +403,39 @@ GLOBAL_LIST_EMPTY(apcs)
 				icon_state = "[basestate]-nocover"
 		else if(update_state & UPDATE_BROKE)
 			icon_state = "apc-b"
-		else if(update_state & UPDATE_WIREEXP)
-			icon_state = "apcewires"
 		else if(update_state & UPDATE_BLUESCREEN)
 			icon_state = "apcemag"
+		else if(update_state & UPDATE_WIREEXP)
+			icon_state = "apcewires"
 
 	if(!(update_state & UPDATE_ALLGOOD))
-		if(overlays.len)
-			cut_overlays()
-			return
+		cut_overlays()
 
 	if(update & 2)
-		if(overlays.len)
-			cut_overlays()
+		cut_overlays()
 		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			var/list/overlays_to_add = list()
-			overlays_to_add += status_overlays_lock[locked+1]
-			overlays_to_add += status_overlays_charging[charging+1]
+			add_overlay(status_overlays_lock[locked+1])
+			add_overlay(status_overlays_charging[charging+1])
 			if(operating)
-				overlays_to_add += status_overlays_equipment[equipment+1]
-				overlays_to_add += status_overlays_lighting[lighting+1]
-				overlays_to_add += status_overlays_environ[environ+1]
-
-			add_overlay(overlays_to_add)
+				add_overlay(status_overlays_equipment[equipment+1])
+				add_overlay(status_overlays_lighting[lighting+1])
+				add_overlay(status_overlays_environ[environ+1])
 
 	if(update & 3)
-		if(update_state & UPDATE_BLUESCREEN)
-			set_light(l_range = 2, l_power = 0.25, l_color = "#0000FF")
+		if((update_state & (UPDATE_OPENED1|UPDATE_OPENED2|UPDATE_BROKE)))
+			set_light(0)
+		else if(update_state & UPDATE_BLUESCREEN)
+			set_light(l_range = 2, l_power = 0.5, l_color = "#00ecff")
 		else if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			var/color
 			switch(charging)
 				if(0)
-					color = "#F86060"
+					color = "#f86060"
 				if(1)
-					color = "#A8B0F8"
+					color = "#a8b0f8"
 				if(2)
-					color = "#82FF4C"
-			set_light(l_range = 2, l_power = 0.25, l_color = color)
+					color = "#82ff4c"
+			set_light(l_range = 2, l_power = 0.5, l_color = color)
 		else
 			set_light(0)
 
@@ -658,6 +522,8 @@ GLOBAL_LIST_EMPTY(apcs)
 //attack with an item - open/close cover, insert cell, or (un)lock interface
 
 /obj/machinery/power/apc/attackby(obj/item/W, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 	if (istype(user, /mob/living/silicon) && get_dist(src,user)>1)
 		return src.attack_hand(user)
@@ -700,7 +566,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
 			return
-		if(W.w_class != ITEMSIZE_NORMAL)
+		if(W.w_class != WEIGHT_CLASS_NORMAL)
 			to_chat(user,"\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
 			return
 		if(!user.attempt_insert_item_for_installation(W, src))
@@ -832,7 +698,7 @@ GLOBAL_LIST_EMPTY(apcs)
 					"<span class='notice'>You disassembled the broken APC frame.</span>",\
 					"You hear welding.")
 			else
-				new /obj/item/frame/apc(loc)
+				new /obj/item/frame2/apc(loc)
 				user.visible_message(\
 					"<span class='warning'>[src] has been cut from the wall by [user.name] with the [WT.name].</span>",\
 					"<span class='notice'>You cut the APC frame from the wall.</span>",\
@@ -840,7 +706,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			qdel(src)
 			return
 	else if (opened && ((machine_stat & BROKEN) || hacker || emagged))
-		if (istype(W, /obj/item/frame/apc) && (machine_stat & BROKEN))
+		if (istype(W, /obj/item/frame2/apc) && (machine_stat & BROKEN))
 			if(cell)
 				to_chat(user, "<span class='warning'>You need to remove the power cell first.</span>")
 				return
@@ -870,7 +736,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if ((machine_stat & BROKEN) \
 				&& !opened \
 				&& W.damage_force >= 5 \
-				&& W.w_class >= ITEMSIZE_SMALL )
+				&& W.w_class >= WEIGHT_CLASS_SMALL )
 			user.visible_message("<span class='danger'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
 				"<span class='danger'>You hit the [src.name] with your [W.name]!</span>", \
 				"You hear a bang!")
@@ -885,8 +751,6 @@ GLOBAL_LIST_EMPTY(apcs)
 				return src.attack_hand(user)
 			if (!opened && wiresexposed && (istype(W, /obj/item/multitool) || W.is_wirecutter() || istype(W, /obj/item/assembly/signaler)))
 				return src.attack_hand(user)
-			//Placeholder until someone can do take_damage() for APCs or something.
-			to_chat(user,"<span class='notice'>The [src.name] looks too sturdy to bash open with \the [W.name].</span>")
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 
@@ -991,7 +855,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		ui = new(user, src, "APC", name) // 510, 460
 		ui.open()
 
-/obj/machinery/power/apc/ui_data(mob/user)
+/obj/machinery/power/apc/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"locked" = locked,
 		"normallyLocked" = locked,
@@ -1047,7 +911,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return data
 
-/obj/machinery/power/apc/ui_act(action, params)
+/obj/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui)
 	if(..() || !can_use(usr, TRUE))
 		return TRUE
 
@@ -1112,7 +976,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			for(var/obj/machinery/light/L in area)
 				if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
 					L.no_emergency = emergency_lights
-					INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
+					INVOKE_ASYNC(L, TYPE_PROC_REF(/obj/machinery/light, update), FALSE)
 				CHECK_TICK
 		if("overload")
 			if(locked_exception) // Reusing for simplicity!

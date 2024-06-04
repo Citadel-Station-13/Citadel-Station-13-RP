@@ -11,10 +11,9 @@
 	var/localopened = 0 //Setting this to keep it from behaviouring like a normal closet and obstructing movement in the map. -Agouri
 	opened = 1
 	var/hitstaken = 0
-	var/locked = 1
 	var/smashed = 0
 
-/obj/structure/closet/fireaxecabinet/PopulateContents()
+/obj/structure/closet/fireaxecabinet/legacy_spawn_contents()
 	. = ..()
 	fireaxe = new /obj/item/material/twohanded/fireaxe(src)
 
@@ -162,7 +161,7 @@
 
 /obj/structure/closet/fireaxecabinet/verb/toggle_openness() //nice name, huh? HUH?! -Erro //YEAH -Agouri
 	set name = "Open/Close"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (isrobot(usr) || src.locked || src.smashed)
@@ -177,7 +176,7 @@
 
 /obj/structure/closet/fireaxecabinet/verb/remove_fire_axe()
 	set name = "Remove Fire Axe"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (isrobot(usr))

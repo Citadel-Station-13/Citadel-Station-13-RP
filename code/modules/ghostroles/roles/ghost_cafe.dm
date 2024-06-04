@@ -155,7 +155,7 @@
 	name = "ghost cafe costuming kit"
 	desc = "Look just the way you did in life - or better!"
 
-/obj/item/storage/box/syndie_kit/chameleon/ghostcafe/PopulateContents() // Doesn't contain a PDA, for isolation reasons.
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe/legacy_spawn_contents() // Doesn't contain a PDA, for isolation reasons.
 	new /obj/item/clothing/under/chameleon(src)
 	new /obj/item/clothing/suit/chameleon(src)
 	new /obj/item/clothing/gloves/chameleon(src)

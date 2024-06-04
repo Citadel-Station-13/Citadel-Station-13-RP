@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/fire(resumed)
 	points += max(0, ((world.time - last_fire) / 10) * points_per_second)
 
-// To stop things being sent to CentCom which should not be sent to centcomm. Recursively checks for these types.
+// To stop things being sent to CentCom which should not be sent to centcom. Recursively checks for these types.
 /datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
 	if(isliving(A))
 		return 1
@@ -121,10 +121,10 @@ SUBSYSTEM_DEF(supply)
 						continue
 
 					// Sell phoron and platinum
-					if(istype(A, /obj/item/stack))
-						var/obj/item/stack/P = A
-						if(material_points_conversion[P.get_material_name()])
-							EC.contents[EC.contents.len]["value"] = P.get_amount() * material_points_conversion[P.get_material_name()]
+					if(istype(A, /obj/item/stack/material))
+						var/obj/item/stack/material/P = A
+						if(material_points_conversion[P.material.name])
+							EC.contents[EC.contents.len]["value"] = P.get_amount() * material_points_conversion[P.material.name]
 						EC.contents[EC.contents.len]["quantity"] = P.get_amount()
 						EC.value += EC.contents[EC.contents.len]["value"]
 
@@ -221,6 +221,9 @@ SUBSYSTEM_DEF(supply)
 
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
 /datum/controller/subsystem/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
+	// do not double purchase!!
+	if(O.status != SUP_ORDER_REQUESTED)
+		return FALSE
 	// Not enough points to purchase the crate
 	if(SSsupply.points <= O.object.cost)
 		return FALSE

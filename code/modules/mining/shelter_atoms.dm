@@ -12,7 +12,7 @@
 	desc = "An emergency shelter programmed into construction nanomachines. It has a license for use printed on the bottom."
 	icon_state = "houseball"
 	icon = 'icons/obj/device_alt.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
 	var/used = FALSE
@@ -49,7 +49,7 @@
 
 		var/turf/deploy_location = get_turf(src)
 		var/status = template.check_deploy(deploy_location)
-		var/turf/above_location = GetAbove(deploy_location)
+		var/turf/above_location = deploy_location.above()
 		if(above_location && status == SHELTER_DEPLOY_ALLOWED)
 			status = template.check_deploy(above_location)
 
@@ -158,20 +158,22 @@
 	icon_state = "table"
 	can_reinforce = FALSE
 	can_plate = FALSE
+	material_base = /datum/material/steel
+
+/obj/structure/table/survival_pod/update_icon()
+	. = ..()
+	if(!isnull(material_base))
+		icon_state = "table" //this table doesn't care about your material nonsense. just ignore the overlays.
 
 /obj/structure/table/survival_pod/update_icon_state()
-	. = ..()
-	icon_state = "table"
+	if(!isnull(material_base))
+		icon_state = "table"
+	return ..()
 
 /obj/structure/table/survival_pod/Initialize(mapload)
-	material = get_material_by_name(MAT_STEEL)
 	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
 	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
-
-/obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
-	return
 
 //Sleeper
 /obj/machinery/sleeper/survival_pod
@@ -180,13 +182,10 @@
 	icon_state = "sleeper"
 	stasis_level = 100 //Just one setting
 
-
-/obj/machinery/sleeper/survival_pod/update_overlays()
-	. = ..()
-	cut_overlays()
+/obj/machinery/sleeper/survival_pod/update_icon()
+	overlays.Cut()
 	if(occupant)
-		. += "sleeper_cover"
-
+		add_overlay("sleeper_cover")
 
 //Computer
 /obj/item/gps/computer
@@ -227,13 +226,12 @@
 	desc = "A heated storage unit."
 	icon_state = "donkvendor"
 	icon = 'icons/obj/survival_pod_vend.dmi'
-	icon_on = "donkvendor"
-	icon_off = "donkvendor"
 	light_range = 5
 	light_power = 1.2
 	light_color = "#DDFFD3"
 	pixel_y = -4
 	max_n_of_items = 100
+	icon_base = "donkvendor"
 
 /obj/machinery/smartfridge/survival_pod/Initialize(mapload)
 	. = ..()
@@ -243,6 +241,17 @@
 
 /obj/machinery/smartfridge/survival_pod/accept_check(obj/item/O)
 	return isitem(O)
+
+/obj/machinery/smartfridge/survival_pod/update_icon() //survival pod smartfridges don't have the content nonsense, so this is mainly bandaid fix.
+	overlays.Cut()
+	if(inoperable())
+		icon_state = "[icon_base]-off"
+	else
+		icon_state = icon_base
+
+	if(panel_open)
+		icon_state = "[icon_base]_open"
+
 
 /obj/machinery/smartfridge/survival_pod/empty
 	name = "dusty survival pod storage"
@@ -260,7 +269,7 @@
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 
-/obj/structure/fans/drop_products(method)
+/obj/structure/fans/drop_products(method, atom/where)
 	. = ..()
 	new buildstacktype(drop_location(), buildstackamount)
 

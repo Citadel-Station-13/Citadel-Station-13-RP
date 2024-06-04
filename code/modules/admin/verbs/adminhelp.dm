@@ -252,8 +252,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	//send this msg to all admins
 
 	for(var/client/X in GLOB.admins)
-		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
+		// if(X.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
+			// SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
+		SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X)
 		to_chat(X, chat_msg)
 
@@ -339,8 +340,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		return
 
 	if(initiator)
-		if(initiator.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-			SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
+		// if(initiator.get_preference_toggle(/datum/client_preference/holder/play_adminhelp_ping))
+			// SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
+		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
 		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b></font>")
@@ -507,7 +509,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 
 	//remove out adminhelp verb temporarily to prevent spamming of admins.
 	remove_verb(src, /client/verb/adminhelp)
-	adminhelptimerid = addtimer(CALLBACK(src, .proc/giveadminhelpverb), 2 MINUTES, flags = TIMER_STOPPABLE)
+	adminhelptimerid = addtimer(CALLBACK(src, PROC_REF(giveadminhelpverb)), 2 MINUTES, flags = TIMER_STOPPABLE)
+
+	if(persistent.ligma)
+		to_chat(usr, "<span class='adminnotice'>PM to-<b>Admins</b>: [msg]</span>")
+		log_shadowban("[key_name(src)] AHELP: [msg]")
+		return
 
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(current_ticket)

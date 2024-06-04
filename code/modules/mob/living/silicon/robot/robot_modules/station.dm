@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	name = "robot module"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_module"
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	item_state = "std_mod"
 	var/hide_on_manifest = 0
 	var/channels = list()
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.set_module_sprites(sprites)
 
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
-	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
+	INVOKE_ASYNC(R, TYPE_PROC_REF(/mob/living/silicon/robot, choose_icon), R.module_sprites.len + 1, R.module_sprites)
 
 	// Setup synths, modules, and modules with custom init code.
 	synths_by_kind = get_synths(R)
@@ -221,6 +221,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/proc/is_dog()
 	return FALSE
 
+/obj/item/robot_module/proc/is_cat()
+	return FALSE
+
 /obj/item/robot_module/robot/get_modules()
 	. = ..()
 	// Common items that all modules have.
@@ -292,6 +295,12 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	ASSERT(istype(R))
 	// This is the only non-canid dogborg type right now.
 	return R.icontype != "F3-LINE"
+
+/obj/item/robot_module/robot/quad/is_cat()
+	var/mob/living/silicon/robot/R = loc
+	ASSERT(istype(R))
+	// This is the only non-canid dogborg type right now.
+	return R.icontype == "F3-LINE"
 
 // Custom sprite stuff. There's a dedicated system for this, not sure why this is done separately.
 

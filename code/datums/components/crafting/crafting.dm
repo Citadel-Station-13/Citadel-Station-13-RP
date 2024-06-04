@@ -1,6 +1,6 @@
 /datum/component/personal_crafting/Initialize()
 	if(ismob(parent))
-		RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, .proc/create_mob_button)
+		RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(create_mob_button))
 
 /datum/component/personal_crafting/proc/create_mob_button(mob/user, client/CL)
 	// SIGNAL_HANDLER
@@ -12,9 +12,11 @@
 	C.alpha = H.ui_alpha
 	LAZYADD(H.other_important, C)
 	CL.screen += C
-	RegisterSignal(C, COMSIG_CLICK, .proc/component_ui_interact)
+	RegisterSignal(C, COMSIG_CLICK, PROC_REF(component_ui_interact))
 
 /datum/component/personal_crafting
+	registered_type = /datum/component/personal_crafting
+
 	var/busy
 	var/viewing_category = 1 //typical powergamer starting on the Weapons tab
 	var/viewing_subcategory = 1
@@ -118,10 +120,10 @@
 	if(!isturf(a.loc))
 		return
 
-	for(var/atom/movable/AM in range(radius_range, a))
-		if(AM.atom_flags & HOLOGRAM)
+	for(var/obj/O in range(radius_range, a))
+		if(O.obj_flags & OBJ_HOLOGRAM)
 			continue
-		. += AM
+		. += O
 
 /datum/component/personal_crafting/proc/get_surroundings(atom/a)
 	. = list()
@@ -129,7 +131,7 @@
 	.["other"] = list()
 	.["instances"] = list()
 	for(var/obj/item/I in get_environment(a))
-		if(I.atom_flags & HOLOGRAM)
+		if(I.obj_flags & OBJ_HOLOGRAM)
 			continue
 		if(.["instances"][I.type])
 			.["instances"][I.type] += I
@@ -324,9 +326,9 @@
 	// SIGNAL_HANDLER
 
 	if(user == parent)
-		INVOKE_ASYNC(src, .proc/ui_interact, user)
+		INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
-/datum/component/personal_crafting/ui_state(mob/user, datum/tgui_module/module)
+/datum/component/personal_crafting/ui_state()
 	return GLOB.not_incapacitated_turf_state
 
 //For the UI related things we're going to assume the user is a mob rather than typesetting it to an atom as the UI isn't generated if the parent is an atom
@@ -342,7 +344,7 @@
 		ui = new(user, src, "PersonalCrafting")
 		ui.open()
 
-/datum/component/personal_crafting/ui_data(mob/user)
+/datum/component/personal_crafting/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["busy"] = busy
 	data["category"] = cur_category
@@ -366,7 +368,7 @@
 	data["craftability"] = craftability
 	return data
 
-/datum/component/personal_crafting/ui_static_data(mob/user)
+/datum/component/personal_crafting/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/crafting_recipes = list()
@@ -393,7 +395,7 @@
 	data["crafting_recipes"] = crafting_recipes
 	return data
 
-/datum/component/personal_crafting/ui_act(action, params)
+/datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 	switch(action)

@@ -5,12 +5,12 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	desc = "Looks unstable. Best to test it with the clown."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "portal"
-	density = 1
-	unacidable = 1//Can't destroy energy portals.
+	density = TRUE
+	anchored = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	var/failchance = 5
 	var/obj/item/target = null
 	var/creator = null
-	anchored = 1.0
 
 /obj/effect/portal/Bumped(mob/M as mob|obj)
 	if(istype(M,/mob) && !(istype(M,/mob/living)))
@@ -46,7 +46,7 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	if (istype(M, /atom/movable))
 		if(prob(failchance))
 			src.icon_state = "portal1"
-			do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), pick(GLOB.using_map.get_map_levels(z))), 0)
+			do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), pick((LEGACY_MAP_DATUM).get_map_levels(z))), 0)
 		else
 			do_teleport(M, target, 1) ///You will appear adjacent to the beacon
 

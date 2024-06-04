@@ -58,7 +58,6 @@
 	dir = 8
 	},
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
@@ -80,7 +79,7 @@
 /obj/structure/closet/crate/hydroponics{
 	desc = "All you need to destroy that pesky planet.";
 	name = "exotic seeds crate";
-	starts_with = list(/obj/item/seeds/random = 6, /obj/item/seeds/replicapod = 2, /obj/item/seeds/ambrosiavulgarisseed = 2, /obj/item/seeds/kudzuseed, /obj/item/seeds/libertymycelium, /obj/item/seeds/reishimycelium)
+	starts_with = list(/obj/item/seeds/random=6,/obj/item/seeds/replicapod=2,/obj/item/seeds/ambrosiavulgarisseed=2,/obj/item/seeds/kudzuseed,/obj/item/seeds/libertymycelium,/obj/item/seeds/reishimycelium)
 	},
 /turf/simulated/floor/water,
 /area/submap/Epod4)
@@ -89,7 +88,7 @@
 /turf/simulated/shuttle/wall,
 /area/submap/Epod4)
 "p" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/floor/water,

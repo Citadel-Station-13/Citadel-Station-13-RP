@@ -14,9 +14,9 @@
 	throw_force = 7
 	pry = 1
 	item_state = "crowbar"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	tool_sound = 'sound/items/crowbar.ogg'
 	drop_sound = 'sound/items/drop/crowbar.ogg'
@@ -41,6 +41,18 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar_brass"
 	tool_speed = 0.75
+
+/obj/item/tool/crowbar/clockwork
+	name = "clockwork crowbar"
+	desc = "An engraved piece of compressed brass, capable of prying things up and open with un-natural ease."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "crowbar_clock"
+	tool_sound = 'sound/magic/clockwork/fellowship_armory.ogg'
+	tool_speed = 0.1
+
+/obj/item/tool/crowbar/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_BRASS("The handle feels almost frozen when moving to pry, cementing the hand grippping it to the handle, making leverage easier.")
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
 	name = "Precursor Alpha Object - Hard Light Pry Tool"
@@ -93,7 +105,7 @@
 	desc = "A set of jaws of life, compressed through the magic of science. It's fitted with a prying head."
 	icon_state = "jaws_pry"
 	item_state = "jawsoflife"
-	matter = list(MAT_METAL=150, MAT_SILVER=50)
+	materials_base = list(MAT_METAL=150, MAT_SILVER=50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	tool_sound = 'sound/items/jaws_pry.ogg'
 	damage_force = 15
@@ -137,9 +149,9 @@
 	throw_force = 5
 	pry = 1
 	item_state = "crowbar"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 30)
+	materials_base = list(MAT_STEEL = 30)
 	attack_verb = list("whapped", "smacked", "swatted", "thwacked", "hit")
 	tool_sound = 'sound/items/crowbar.ogg'
 	tool_speed = 1
@@ -161,7 +173,7 @@
 	icon_state = "crystal_crowbar"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials_base = list(MATERIAL_CRYSTAL = 1250)
 	tool_speed = 0.2
 
 /obj/item/tool/crowbar/crystal/Initialize()

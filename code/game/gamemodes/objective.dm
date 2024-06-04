@@ -132,7 +132,7 @@ var/global/list/all_objectives = list()
 	..()
 	if(target && target.current)
 		var/datum/gender/T = GLOB.gender_datums[target.current.get_visible_gender()]
-		explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
+		explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [(LEGACY_MAP_DATUM).company_name]'s goals. Demote [T.him] to assistant."
 	else
 		explanation_text = "Free Objective"
 	return target
@@ -141,7 +141,7 @@ var/global/list/all_objectives = list()
 	..(role, role_type)
 	if(target && target.current)
 		var/datum/gender/T = GLOB.gender_datums[target.current.get_visible_gender()]
-		explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
+		explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [(LEGACY_MAP_DATUM).company_name]'s goals. Demote [T.him] to assistant."
 	else
 		explanation_text = "Free Objective"
 	return target
@@ -510,7 +510,7 @@ var/global/list/all_objectives = list()
 
 			for(var/obj/item/I in all_items) //Check for phoron tanks
 				if(istype(I, steal_target))
-					found_amount += (target_name=="28 moles of phoron (full tank)" ? (I:air_contents:gas[/datum/gas/phoron]) : (I:amount))
+					found_amount += (target_name=="28 moles of phoron (full tank)" ? (I:air_contents:gas[GAS_ID_PHORON]) : (I:amount))
 			return found_amount>=target_amount
 
 		if("50 coins (in bag)")

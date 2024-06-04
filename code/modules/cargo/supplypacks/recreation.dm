@@ -65,8 +65,7 @@
 	container_type = /obj/structure/closet/crate
 	contains = list(
 			/obj/item/pipe_painter = 2,
-			/obj/item/floor_painter = 2,
-			/obj/item/closet_painter = 2
+			/obj/item/floor_painter = 2
 			)
 
 /datum/supply_pack/recreation/cheapbait
@@ -119,7 +118,7 @@
 			/obj/item/clothing/suit/straight_jacket,
 			/obj/item/handcuffs/legcuffs/fuzzy,
 			/obj/item/melee/fluff/holochain/mass,
-			/obj/item/material/twohanded/fluff/riding_crop,
+			/obj/item/fluff/riding_crop,
 			/obj/item/clothing/under/fluff/latexmaid
 			)
 	container_type = /obj/structure/closet/crate
@@ -146,7 +145,7 @@
 			/obj/random/action_figure/supplypack
 			)
 	cost = 200
-	container_type = /obj/structure/closet/crate/allico
+	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Action figures crate"
 
 /datum/supply_pack/recreation/characters
@@ -165,7 +164,7 @@
 			/obj/random/plushie
 			)
 	cost = 60
-	container_type = /obj/structure/closet/crate/allico
+	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Plushies crate"
 
 /datum/supply_pack/recreation/collars

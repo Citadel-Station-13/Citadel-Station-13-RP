@@ -12,10 +12,7 @@
 	//circuit = /obj/item/circuitboard/engineering_equip
 	prize_list = list(
 		//Mining vendor steals
-		new /datum/data/mining_equipment("Whiskey",						    /obj/item/reagent_containers/food/drinks/bottle/whiskey,		3),
-		new /datum/data/mining_equipment("Absinthe",					    /obj/item/reagent_containers/food/drinks/bottle/absinthe,	    3),
-		new /datum/data/mining_equipment("Special Blend Whiskey",		    /obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,	5),
-		new /datum/data/mining_equipment("Random Booze",			        /obj/random/alcohol,		                                    3),
+		new /datum/data/mining_equipment("Vodka",						    /obj/item/reagent_containers/food/drinks/bottle/vodka,			3),
 		new /datum/data/mining_equipment("Cigar",						    /obj/item/clothing/mask/smokable/cigarette/cigar/havana,        5),
 		new /datum/data/mining_equipment("Soap",						    /obj/item/soap/nanotrasen,									    2),
 		new /datum/data/mining_equipment("Laser Pointer",				    /obj/item/laser_pointer,										9),
@@ -29,19 +26,16 @@
 		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",	    /obj/item/hardsuit_module/device/plasmacutter,						10),
 		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	    /obj/item/hardsuit_module/maneuvering_jets,							12),
 		new /datum/data/mining_equipment("Hardsuit - Intelligence Storage",	/obj/item/hardsuit_module/ai_container,								25),
-		new /datum/data/mining_equipment("Injector (L) - Glucose",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,	50),
 		new /datum/data/mining_equipment("Injector (L) - Panacea",          /obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	50),
-		new /datum/data/mining_equipment("Injector (L) - Trauma",           /obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute,	50),
-		new /datum/data/mining_equipment("Nanopaste Tube",				    /obj/item/stack/nanopaste,										10),
 		//Mining vendor steals - Ends
         //Power tools like the CE gets, if kev comes crying: https://cdn.discordapp.com/attachments/296237931587305472/956517623519141908/unknown.png
-		new /datum/data/mining_equipment("Advanced Voidsuit",							/obj/item/hardsuit/ce,									150),
+		new /datum/data/mining_equipment("Advanced Hardsuit",							/obj/item/hardsuit/ce,									150),
         new /datum/data/mining_equipment("Power Tool - Hand Drill",                     /obj/item/tool/screwdriver/power,                   80),
         new /datum/data/mining_equipment("Power Tool - Jaws of life",                   /obj/item/tool/crowbar/power,                       80),
         new /datum/data/mining_equipment("Power Tool - Experimental Welder",            /obj/item/weldingtool/experimental,                 80),
         new /datum/data/mining_equipment("Power Tool - Upgraded T-Ray Scanner",         /obj/item/t_scanner/upgraded,                       80),
         new /datum/data/mining_equipment("Power Tool - Advanced T-Ray Scanner",         /obj/item/t_scanner/advanced,                       80),
-        new /datum/data/mining_equipment("Power Tool - Long Range Atmosphere scanner",  /obj/item/analyzer/longrange,                       80),
+        new /datum/data/mining_equipment("Power Tool - Long Range Atmosphere scanner",  /obj/item/atmos_analyzer/longrange,                       80),
 		//new /datum/data/mining_equipment("Power Tool - Holofan Projector", 				/obj/item/holosign_creator/combifan,				80),
         new /datum/data/mining_equipment("Superior Welding Goggles",                    /obj/item/clothing/glasses/welding/superior,        50),
 
@@ -61,6 +55,7 @@
 		new /datum/data/mining_equipment("Special Parts - Gyrotrons Voucher", 		/obj/item/engineering_voucher/gyrotrons, 20),
 		new /datum/data/mining_equipment("Special Parts - Fuel compressor Voucher",	/obj/item/engineering_voucher/fuel_compressor, 10),
 		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 		/obj/item/engineering_voucher/collectors, 10),
+		new /datum/data/mining_equipment("Special Parts - Laser Reflector Voucher", /obj/item/engineering_voucher/reflector, 30),
 		//voucher: Solar crate, Vimur canister
 		new /datum/data/mining_equipment("???", /obj/item/engineering_mystical_tech, 1000)
     )
@@ -139,7 +134,7 @@
 
 /obj/item/tank/vimur/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/vimur, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	src.air_contents.adjust_gas(GAS_ID_VIMUR, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 	return .
 
 /obj/item/engineering_voucher
@@ -147,7 +142,7 @@
 	desc = "An used voucher that could be used to be redeemed for something at the cargo console"
 	icon = 'icons/obj/vouchers.dmi'
 	icon_state = "engineering_voucher_used"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/datum/supply_pack/redeemable_for = null
 
 /obj/item/engineering_voucher/proc/redeem(var/mob/user)
@@ -225,10 +220,16 @@
 	icon_state = "engineering_voucher"
 	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_compressor
 
+/obj/item/engineering_voucher/reflector
+	name = "Laser reflector voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for a single laser reflector."
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_compressor
+
 /obj/item/engineering_mystical_tech
 	name = "XYE"
 	desc = "???"
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "circuit"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_PRECURSOR = 1)

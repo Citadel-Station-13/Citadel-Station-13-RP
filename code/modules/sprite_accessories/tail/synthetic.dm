@@ -3,14 +3,14 @@
 	id = "tail_synth_wardtakashi"
 	icon_state = "wardtakahashi_vulp"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/wartacosushi_tail_dc
 	name = "Ward-Takahashi Tail, dual-color"
 	id = "tail_synth_wardtakashi2"
 	icon_state = "wardtakahashi_vulp_dc"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "wardtakahashi_vulp_dc_mark"
 
 /datum/sprite_accessory/tail/zenghu_taj
@@ -23,7 +23,7 @@
 	id = "tail_synth_egn"
 	icon_state = "eboop"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "eboop_mark"
 
 /datum/sprite_accessory/tail/Plugtail
@@ -31,7 +31,7 @@
 	id = "tail_synth_plug"
 	icon_state = "Plugtail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "PlugtailMarking"
 	extra_overlay2 = "PlugtailMarking2"
 
@@ -40,7 +40,7 @@
 	id = "tail_synth_dragon"
 	icon_state = "robo_dragon"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "robodragon_b"
 
 /datum/sprite_accessory/tail/Segmentedlights
@@ -48,7 +48,7 @@
 	id = "tail_synth_segmented"
 	icon_state = "Segmentedtail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "Segmentedlights"
 	ani_state = "Segmentedtail_w"
 	extra_overlay_w = "Segmentedlights_w"
@@ -58,7 +58,7 @@
 	id = "tail_synth_lizard"
 	icon_state = "synthtail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/synthtail_vwag
 	name = "Synthetic lizard tail (vwag)"
@@ -66,4 +66,4 @@
 	icon_state = "synthtail"
 	ani_state = "synthtail_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

@@ -84,7 +84,7 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
-			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
+			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in (LEGACY_MAP_DATUM).station_levels))
 				vents += temp_vent
 	if(vents.len <= 0)
 		log_admin("No valid vents to spawn infestation.")
@@ -93,7 +93,7 @@
 	log_this()
 	spawn(0)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/V in vents)
-			new /obj/effect/alien/weeds/node(V.loc)
+			new /obj/structure/alien/weeds/node(V.loc)
 		for(var/xeno_type in list(MOTHER, EMPRESS, QUEEN, PRAE, SENTINEL, DRONE, HUNTER))
 			while(spawn_types[xeno_type] > 0)
 				var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
@@ -181,7 +181,7 @@
 		var/turf/T = get_turf(C)
 		if(!T)
 			continue
-		if(!(T.z in GLOB.using_map.station_levels))
+		if(!(T.z in (LEGACY_MAP_DATUM).station_levels))
 			continue
 		i++
 	log_admin("Xenoinfestation found [i] players on station")

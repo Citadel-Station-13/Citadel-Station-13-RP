@@ -1,14 +1,17 @@
 /obj/item
 	name = "item"
 	icon = 'icons/obj/items.dmi'
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	// todo: better way, for now, block all rad contamination to interior
 	rad_flags = RAD_BLOCK_CONTENTS
+	obj_flags = OBJ_IGNORE_MOB_DEPTH | OBJ_RANGE_TARGETABLE
+	depth_level = 0
+	climb_allowed = FALSE
 
 	//? Flags
 	/// Item flags.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
-	var/item_flags = NONE
+	var/item_flags = ITEM_ENCUMBERS_WHILE_HELD
 	/// Miscellaneous flags pertaining to equippable objects.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/clothing_flags = NONE
@@ -19,6 +22,12 @@
 	/// flags for the bodyparts this item covers when worn.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/body_cover_flags = NONE
+	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/heat_protection_cover = NONE
+	/// Flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	var/cold_protection_cover = NONE
 	/// This is used to determine on which slots an item can fit, for inventory slots that use flags to determine this.
 	/// These flags are listed in [code/__DEFINES/inventory/slots.dm].
 	var/slot_flags = NONE
@@ -33,29 +42,55 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
+	//* Environmentals *//
+	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
+	var/max_heat_protection_temperature
+	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags.
+	var/min_cold_protection_temperature
+
+	/// Set this variable if the item protects its wearer against high pressures below an upper bound. Keep at null to disable protection.
+	var/max_pressure_protection
+	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
+	var/min_pressure_protection
+
+	//? Carry Weight
+	/// encumberance.
+	/// calculated as max() of all encumbrance
+	/// result is calculated into slowdown value
+	/// and then max()'d with carry weight for the final slowdown used.
+	var/encumbrance = ITEM_ENCUMBRANCE_BASELINE
+	/// registered encumbrance - null if not in inventory
+	var/encumbrance_registered
+	/// carry weight in kgs. this might be generalized later so KEEP IT REALISTIC.
+	var/weight = ITEM_WEIGHT_BASELINE
+	/// registered carry weight - null if not in inventory.
+	var/weight_registered
+	/// flat encumbrance - while worn, you are treated as at **least** this encumbered
+	/// e.g. if someone is wearing a flat 50 encumbrance item, but their regular encumbrance tally is only 45, they still have 50 total.
+	var/flat_encumbrance = 0
+	/// Hard slowdown. Applied before carry weight.
+	/// This affects multiplicative movespeed.
+	var/slowdown = 0
+
 	//? Combat
 	/// Amount of damage we do on melee.
 	var/damage_force = 0
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_DEFAULT
+	var/damage_tier = MELEE_TIER_MEDIUM
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	// todo: port over damtype
 
+	//* Storage *//
+	/// storage cost for volumetric storage
+	/// null to default to weight class
+	var/weight_volume
+
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
-	var/r_speed = 1.0
-	var/health = null
-	var/burn_point = null
-	var/burning = null
-	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
-	var/hitsound = HITSOUND_UNSET
-	var/storage_cost = null
-	/// If it's an item we don't want to log attack_logs with, set this to TRUE
-	var/no_attack_log = FALSE
 	pass_flags = ATOM_PASS_TABLE
 	pressure_resistance = 5
 	var/obj/item/master = null
@@ -66,20 +101,6 @@
 	 * Either a list() with equal chances or a single verb.
 	 */
 	var/list/attack_verb = "attacked"
-
-	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	var/heat_protection = 0
-	/// Flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	var/cold_protection = 0
-	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
-	var/max_heat_protection_temperature
-	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags.
-	var/min_cold_protection_temperature
-
-	/// Set this variable if the item protects its wearer against high pressures below an upper bound. Keep at null to disable protection.
-	var/max_pressure_protection
-	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
-	var/min_pressure_protection
 
 	//? todo: more advanced handling, multi actions, etc
 	var/datum/action/item_action/action = null
@@ -96,15 +117,17 @@
 	var/permeability_coefficient = 1
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
-	/// How much clothing is slowing you down. Negative values speeds you up
-	var/slowdown = 0
 	/// Suit storage stuff.
+	// todo: kill with fire
 	var/list/allowed = null
+	// todo: kill with fire
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
 	var/obj/item/uplink/hidden/hidden_uplink = null
 	/// Name used for message when binoculars/scope is used
+	// todo: kill with fire
 	var/zoomdevicename = null
 	/// TRUE if item is actively being used to zoom. For scoped guns and binoculars.
+	// todo: kill with fire
 	var/zoom = FALSE
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
@@ -116,7 +139,9 @@
 	/// Icon overlay for ADD highlights when applicable.
 	var/addblends
 
-	//! Sounds!
+	//? Sounds
+	/// sound used when used in melee attacks. null for default for our damage tpye.
+	var/attack_sound
 	/// Used when thrown into a mob.
 	var/mob_throw_hit_sound
 	/// Sound used when equipping the item into a valid slot from hands or ground
@@ -138,21 +163,15 @@
 
 /obj/item/Initialize(mapload)
 	. = ..()
+	loc?.on_contents_item_new(src)
 	if(islist(origin_tech))
 		origin_tech = typelist(NAMEOF(src, origin_tech), origin_tech)
-	if(istype(loc, /obj/item/storage))
-		item_flags |= ITEM_IN_STORAGE
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)
 			embed_chance = max(5, round(damage_force/w_class))
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
-	if(hitsound == HITSOUND_UNSET)
-		if(damtype == "fire")
-			hitsound = 'sound/items/welder.ogg'
-		if(damtype == "brute")
-			hitsound = "swing_hit"
 
 /// Check if target is reasonable for us to operate on.
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -220,7 +239,7 @@
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(!istype(src.loc, /turf) || usr.stat || usr.restrained() )
@@ -229,13 +248,47 @@
 	var/turf/T = src.loc
 
 	src.loc = null
-
 	src.loc = T
 
 /// See inventory_sizes.dm for the defines.
 /obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
+	switch(get_encumbrance())
+		if(-INFINITY to 0.1)
+			. += "It looks effortless to carry around and wear."
+		if(0.1 to 0.75)
+			. += "It looks very easy to carry around and wear."
+		if(0.75 to 2)
+			. += "It looks decently able to be carried around and worn."
+		if(2 to 5)
+			. += "It looks somewhat unwieldly."
+		if(5 to 10)
+			. += "It looks quite unwieldly."
+		if(10 to 20)
+			. += "It looks very unwieldly. It would take a good effort to run around with it."
+		if(20 to 40)
+			. += "It looks extremely unwieldly. You probably will have a hard time running with it."
+		if(40 to INFINITY)
+			. += "It's so unwieldly that it's a surprise you can hold it at all. You really won't be doing much running with it."
+	switch(get_weight())
+		if(-INFINITY to 0.1)
+			// todo: put this in when we actually get weight
+			// . += "It looks like it weighs practically nothing."
+		if(0.1 to 0.75)
+			. += "It looks like it weighs very little."
+		if(0.75 to 2)
+			. += "It looks like it's decently lightweight."
+		if(2 to 5)
+			. += "It looks like it weighs a bit."
+		if(5 to 10)
+			. += "It looks like it weighs a good amount."
+		if(10 to 20)
+			. += "It looks like it is heavy. It would take a good effort to run around with it."
+		if(20 to 40)
+			. += "It looks like it weighs a lot. You probably will have a hard time running with it."
+		if(40 to INFINITY)
+			. += "It looks like it weighs a ton. You really won't be doing much running with it."
 
 	// if(resistance_flags & INDESTRUCTIBLE)
 	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
@@ -255,25 +308,26 @@
 
 /proc/weightclass2text(w_class)
 	switch(w_class)
-		if(WEIGHT_CLASS_TINY, ITEMSIZE_TINY)
+		if(WEIGHT_CLASS_TINY, WEIGHT_CLASS_TINY)
 			. = "tiny"
-		if(WEIGHT_CLASS_SMALL, ITEMSIZE_SMALL)
+		if(WEIGHT_CLASS_SMALL, WEIGHT_CLASS_SMALL)
 			. = "small"
-		if(WEIGHT_CLASS_NORMAL, ITEMSIZE_NORMAL)
+		if(WEIGHT_CLASS_NORMAL, WEIGHT_CLASS_NORMAL)
 			. = "normal-sized"
-		if(WEIGHT_CLASS_BULKY, ITEMSIZE_LARGE)
+		if(WEIGHT_CLASS_BULKY, WEIGHT_CLASS_BULKY)
 			. = "bulky"
-		if(WEIGHT_CLASS_HUGE, ITEMSIZE_HUGE)
+		if(WEIGHT_CLASS_HUGE, WEIGHT_CLASS_HUGE)
 			. = "huge"
 		if(WEIGHT_CLASS_GIGANTIC)
 			. = "gigantic"
 		else
 			. = ""
 
-/obj/item/attack_hand(mob/user, list/params)
-	attempt_pickup(user)
+/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
+	return TRUE
 
 /obj/item/proc/attempt_pickup(mob/user)
+	. = TRUE
 	if (!user)
 		return
 
@@ -298,19 +352,49 @@
 			return
 
 	var/old_loc = src.loc
+	var/obj/item/actually_picked_up = src
+	var/has_to_drop_to_ground_on_fail = FALSE
 
-	throwing?.terminate()
-	if(user.put_in_active_hand(src))
-		if(isturf(old_loc))
-			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-			ghost.assumeform(src)
-			ghost.animate_towards(user)
+	if(isturf(old_loc))
+		// if picking up from floor
+		throwing?.terminate()
+	else if(item_flags & ITEM_IN_STORAGE)
+		// trying to take out of backpack
+		var/datum/object_system/storage/resolved
+		if(istype(loc, /atom/movable/storage_indirection))
+			var/atom/movable/storage_indirection/holder = loc
+			resolved = holder.parent
+		else if(isobj(loc))
+			var/obj/obj_loc = loc
+			resolved = obj_loc.obj_storage
+		if(isnull(resolved))
+			item_flags &= ~ITEM_IN_STORAGE
+			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
+		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
+		// they're in user, but not equipped now. this is so it doesn't touch the ground first.
+		has_to_drop_to_ground_on_fail = TRUE
+
+	if(isnull(actually_picked_up))
+		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
+		return
+	if(!user.put_in_hands(actually_picked_up))
+		if(has_to_drop_to_ground_on_fail)
+			actually_picked_up.forceMove(user.drop_location())
+		return
+	// success
+	if(isturf(old_loc))
+		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
+		ghost.assumeform(actually_picked_up)
+		ghost.animate_towards(user)
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 	if(anchored)	// Don't.
-		return ..()
+		return
 	if(user.restrained())
-		return ..()	// don't.
+		return	// don't.
 		// todo: restraint levels, e.g. handcuffs vs straightjacket
 	if(!user.is_in_inventory(src))
 		// not being held
@@ -340,7 +424,6 @@
 				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
 			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		return ..()
 	else
 		// being held, check for attempt unequip
 		if(istype(over, /atom/movable/screen/inventory/hand))
@@ -354,7 +437,6 @@
 		else if(istype(over, /turf))
 			user.drop_item_to_ground(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		return ..()
 
 // funny!
 /mob/proc/CanSlideItem(obj/item/I, turf/over)
@@ -374,18 +456,6 @@
 		var/mob/living/silicon/robot/R = user
 		R.activate_module(src)
 		R.hud_used.update_robot_modules_display()
-
-/obj/item/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/storage))
-		var/obj/item/storage/S = W
-		if(S.use_to_pickup)
-			if(S.collection_mode) //Mode is set to collect all items
-				if(isturf(src.loc))
-					S.gather_all(src.loc, user)
-
-			else if(S.can_be_inserted(src))
-				S.handle_item_insertion(src, user)
-	return
 
 /obj/item/proc/talk_into(mob/M as mob, text)
 	return
@@ -416,40 +486,27 @@
 		if (throw_force > 0)
 			if (mob_throw_hit_sound)
 				playsound(A, mob_throw_hit_sound, volume, TRUE, -1)
-			else if(hitsound)
-				playsound(A, hitsound, volume, TRUE, -1)
+			else if(attack_sound)
+				playsound(A, attack_sound, volume, TRUE, -1)
 			else
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
 			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
 	else
-		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
+		playsound(src, drop_sound, 30)
 
-/obj/item/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+/obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return
 	var/matrix/M = matrix(transform)
 	M.Turn(rand(-170, 170))
 	transform = M
-	pixel_x = rand(-8, 8)
-	pixel_y = rand(-8, 8)
-
-// called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
-/obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
-	SEND_SIGNAL(src, COMSIG_STORAGE_EXITED, S)
-
-// called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
-/obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
-	SEND_SIGNAL(src, COMSIG_STORAGE_ENTERED, S)
-
-// called when "found" in pockets and storage items. Returns 1 if the search should end.
-/obj/item/proc/on_found(mob/finder as mob)
-	return
+	set_pixel_offsets(rand(-8, 8), rand(-8, 8))
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Pick up"
 
 	if(!(usr)) //BS12 EDIT
@@ -567,10 +624,11 @@
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")
 		var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
-		if(affecting.take_damage(7))
-			M:UpdateDamageIcon()
+		affecting.inflict_bodypart_damage(
+			brute = 7,
+		)
 	else
-		M.take_organ_damage(7)
+		M.take_random_targeted_damage(brute = 7)
 	M.eye_blurry += rand(3,4)
 	return
 
@@ -634,7 +692,7 @@ GLOBAL_LIST_EMPTY(blood_overlay_cache)
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/obj/item/I = get_active_held_item()
 	if(I && !(I.atom_flags & ATOM_ABSTRACT))
@@ -668,7 +726,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else if(!zoom && user.get_active_held_item() != src && wornslot == FALSE)
 		to_chat(user, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
 		cannotzoom = 1
-	else if(!zoom && user.item_by_slot(wornslot) != src && wornslot != FALSE)
+	else if(!zoom && user.item_by_slot_id(wornslot) != src && wornslot != FALSE)
 		to_chat(user, "You need to wear the [devicename] to look through it properly")
 		cannotzoom = 1
 	//We checked above if they are a human and returned already if they weren't.
@@ -721,8 +779,9 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 /// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
 /// Gets the rating of the item, used in stuff like machine construction.
+/// return null for don't use as part
 /obj/item/proc/get_rating()
-	return FALSE
+	return null
 
 /// These procs are for RPEDs and part ratings, but used for RPED sorting of parts.
 /obj/item/proc/rped_rating()
@@ -737,47 +796,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // 	. = ..()
 // 	update_action_buttons()
 
-/**
- * grabs an attack verb to use
- *
- * @params
- * * target - thing being attacked
- * * user - person attacking
- *
- * @return attack verb
- */
-/obj/item/proc/get_attack_verb(atom/target, mob/user)
-	return length(attack_verb)? pick(attack_verb) : attack_verb
-
-//? Interaction
-
-/**
- * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
- *
- * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
- *
- * @params
- * * user - The person using us in hand
- *
- * @return TRUE to signal to overrides to stop the chain and do nothing.
- */
-/obj/item/proc/attack_self(mob/user)
-	// SHOULD_CALL_PARENT(TRUE)
-	// attack_self isn't really part of the item attack chain.
-	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
-	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
-		interact(user)
-	on_attack_self(user)
-
-/**
- * Called after we attack self
- * Used to allow for attack_self to be interrupted by signals in nearly all cases.
- * You should usually override this instead of attack_self.
- */
-/obj/item/proc/on_attack_self(mob/user)
-	return
-
-//? Mob Armor
+//* Armor *//
 
 /**
  * called to be checked for mob armor
@@ -797,3 +816,326 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
 	damage = fetch_armor().resultant_damage(damage, tier, flag)
 	return args.Copy()
+
+//* Attack *//
+
+/**
+ * grabs an attack verb to use
+ *
+ * @params
+ * * target - thing being attacked
+ * * user - person attacking
+ *
+ * @return attack verb
+ */
+/obj/item/proc/get_attack_verb(atom/target, mob/user)
+	return length(attack_verb)? pick(attack_verb) : attack_verb
+
+/**
+ * can be sharp; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_sharp(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_SHARP)
+
+/**
+ * can be edged; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_edge(strict)
+	return sharp || (damage_mode & DAMAGE_MODE_EDGE)
+
+/**
+ * can be piercing; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_pierce(strict)
+	return (damage_mode & DAMAGE_MODE_PIERCE)
+
+/**
+ * can be shredding; even if not being used as such
+ *
+ * @params
+ * * strict - require us to be toggled to sharp mode if there's multiple modes of attacking.
+ */
+/obj/item/proc/is_shred(strict)
+	return (damage_mode & DAMAGE_MODE_SHRED)
+
+//* Interaction *//
+
+/obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
+	if(isturf(loc) && I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
+		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
+		if(!user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		user.visible_action_feedback(
+			target = src,
+			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
+			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
+			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
+		)
+		obj_cell_slot.insert_cell(I)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/**
+ * Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @params
+ * * user - The person using us in hand
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/attack_self(mob/user)
+	// SHOULD_CALL_PARENT(TRUE)
+	// attack_self isn't really part of the item attack chain.
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	if(on_attack_self(new /datum/event_args/actor(user)))
+		return TRUE
+	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
+		interact(user)
+
+/**
+ * Called after we attack self
+ * Used to allow for attack_self to be interrupted by signals in nearly all cases.
+ * You should usually override this instead of attack_self.
+ *
+ * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
+		e_args.visible_feedback(
+			target = src,
+			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
+			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+		)
+		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
+		return TRUE
+	if(!isnull(obj_storage) && obj_storage.allow_quick_empty && obj_storage.allow_quick_empty_via_attack_self)
+		var/turf/turf = get_turf(e_args.performer)
+		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
+		return TRUE
+	return FALSE
+
+/**
+ * Hitsound override when successfully melee attacking someone for melee_hit()
+ *
+ * We get final say by returning a sound here.
+ */
+/obj/item/proc/attacksound_override(atom/target, attack_type)
+	return
+
+//* Carry Weight *//
+
+/obj/item/proc/get_weight()
+	return weight + obj_storage?.get_containing_weight()
+
+/obj/item/proc/get_encumbrance()
+	return encumbrance
+
+/obj/item/proc/get_flat_encumbrance()
+	return flat_encumbrance
+
+/obj/item/proc/update_weight()
+	if(isnull(weight_registered))
+		return null
+	. = get_weight()
+	if(. == weight_registered)
+		return 0
+	. -= weight_registered
+	weight_registered += .
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.adjust_current_carry_weight(.)
+
+/obj/item/proc/update_encumbrance()
+	if(isnull(encumbrance_registered))
+		return null
+	. = get_encumbrance()
+	if(. == encumbrance_registered)
+		return 0
+	. -= encumbrance_registered
+	encumbrance_registered += .
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.adjust_current_carry_encumbrance(.)
+
+/obj/item/proc/update_flat_encumbrance()
+	var/mob/living/wearer = worn_mob()
+	if(istype(wearer))
+		wearer.recalculate_carry()
+
+/obj/item/proc/set_weight(amount)
+	if(amount == weight)
+		return
+	var/old = weight
+	weight = amount
+	update_weight()
+	propagate_weight(old, weight)
+
+/obj/item/proc/set_encumbrance(amount)
+	if(amount == encumbrance)
+		return
+	encumbrance = amount
+	update_encumbrance()
+
+/obj/item/proc/set_flat_encumbrance(amount)
+	if(amount == flat_encumbrance)
+		return
+	flat_encumbrance = amount
+	update_flat_encumbrance()
+
+/obj/item/proc/set_slowdown(amount)
+	if(amount == slowdown)
+		return
+	slowdown = amount
+	worn_mob()?.update_item_slowdown()
+
+/obj/item/proc/propagate_weight(old_weight, new_weight)
+	loc?.on_contents_weight_change(src, old_weight, new_weight)
+
+//* Interactions *//
+
+/obj/item/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	if(.)
+		return
+
+	if(e_args.performer.is_in_inventory(src))
+		if(e_args.performer.is_holding(src))
+			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_interacted_open(e_args))
+				return TRUE
+		else
+			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
+				return TRUE
+	if(!e_args.performer.is_holding(src))
+		if(should_attempt_pickup(e_args) && attempt_pickup(e_args.performer))
+			return TRUE
+
+//* Inventory *//
+
+/**
+ * Called when someone clisk us on a storage, before the storage handler's
+ * 'put item in' runs. Return FALSE to deny.
+ */
+/obj/item/proc/allow_auto_storage_insert(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return TRUE
+
+/obj/item/proc/on_exit_storage(datum/object_system/storage/storage)
+	SEND_SIGNAL(src, COMSIG_STORAGE_EXITED, storage)
+
+/obj/item/proc/on_enter_storage(datum/object_system/storage/storage)
+	SEND_SIGNAL(src, COMSIG_STORAGE_ENTERED, storage)
+
+//* Materials *//
+
+/obj/item/material_trait_brittle_shatter()
+	var/datum/material/material = get_primary_material()
+	var/turf/T = get_turf(src)
+	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
+	if(istype(loc, /mob/living))
+		var/mob/living/M = loc
+		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+			var/obj/item/material/shard/S = material.place_shard(T)
+			M.embed(S)
+
+	playsound(src, "shatter", 70, 1)
+	qdel(src)
+
+//* Mouse *//
+
+/obj/item/MouseEntered(location, control, params)
+	..()
+	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_ENTERED, usr)
+
+/obj/item/MouseExited(location, control, params)
+	..()
+	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_EXITED, usr)
+
+//* Storage *//
+
+/obj/item/proc/get_weight_class()
+	return w_class
+
+/obj/item/proc/get_weight_volume()
+	return isnull(weight_volume)? global.w_class_to_volume[w_class || WEIGHT_CLASS_GIGANTIC] : weight_volume
+
+/obj/item/proc/set_weight_class(weight_class)
+	var/old = w_class
+	w_class = weight_class
+	loc?.on_contents_weight_class_change(src, old, weight_class)
+
+/obj/item/proc/set_weight_volume(volume)
+	var/old = weight_volume
+	weight_volume = volume
+	loc?.on_contents_weight_volume_change(src, old, volume)
+
+/**
+ * called when someone is opening a storage with us in it
+ *
+ * @return TRUE to stop the storage from opening
+ */
+/obj/item/proc/on_containing_storage_opening(datum/event_args/actor/actor, datum/object_system/storage/storage)
+	return FALSE
+
+//* VV *//
+
+/obj/item/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	switch(var_name)
+		if(NAMEOF(src, item_flags))
+			var/requires_update = (item_flags & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD)) != (var_value & (ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD))
+			. = ..()
+			if(. && requires_update)
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.recalculate_carry()
+					L.update_carry()
+		if(NAMEOF(src, weight), NAMEOF(src, encumbrance), NAMEOF(src, flat_encumbrance))
+			// todo: introspection system update - this should be 'handled', as opposed to hooked.
+			. = ..()
+			if(. )
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.update_carry_slowdown()
+		if(NAMEOF(src, slowdown))
+			. = ..()
+			if(. )
+				var/mob/living/L = worn_mob()
+				// check, as worn_mob() returns /mob, not /living
+				if(istype(L))
+					L.update_item_slowdown()
+		if(NAMEOF(src, w_class))
+			if(!isnum(var_value) && !raw_edit)
+				return FALSE
+			if((var_value < WEIGHT_CLASS_MIN) || (var_value > WEIGHT_CLASS_MAX))
+				return FALSE
+			set_weight_class(var_value)
+			return TRUE
+		if(NAMEOF(src, weight_volume))
+			if(!isnum(var_value) && !raw_edit)
+				return FALSE
+			if(var_value < 0)
+				return FALSE
+			set_weight_volume(var_value)
+			return TRUE
+		else
+			return ..()

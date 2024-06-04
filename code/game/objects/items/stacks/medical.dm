@@ -4,7 +4,7 @@
 	icon = 'icons/obj/stacks.dmi'
 	amount = 10
 	max_amount = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 20
 	var/heal_brute = 0
@@ -56,7 +56,7 @@
 			to_chat(user, "<span class='warning'>You apply the [src], but it seems to have no effect...</span>")
 			use(1)
 			return FALSE
-		H.UpdateDamageIcon()
+		H.update_damage_overlay()
 	else
 		C.heal_organ_damage((src.heal_brute/2), (src.heal_burn/2))
 		user.visible_message( \
@@ -397,7 +397,7 @@
 				user.visible_message("<span class='danger'>\The [user] fumbles [src].</span>", "<span class='danger'>You fumble [src].</span>", "<span class='danger'>You hear something being wrapped.</span>")
 				return
 			if(ishuman(user))
-				var/obj/item/stack/medical/splint/S = split(1)
+				var/obj/item/stack/medical/splint/S = split(1, user)
 				if(S)
 					if(affecting.apply_splint(S))
 						S.forceMove(affecting)

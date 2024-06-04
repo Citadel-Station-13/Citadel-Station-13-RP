@@ -17,8 +17,8 @@ const getGridSpotKey = (spot: [number, number]): GridSpotKey => {
 };
 
 const CornerText = (props: {
-  align: "left" | "right";
-  children: string;
+  readonly align: "left" | "right";
+  readonly children: string;
 }): JSX.Element => {
   const { align, children } = props;
 

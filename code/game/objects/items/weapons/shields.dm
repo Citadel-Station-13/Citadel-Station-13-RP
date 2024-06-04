@@ -66,9 +66,9 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
+	materials_base = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
@@ -134,7 +134,7 @@
 /obj/item/shield/riot/flash/handle_shield(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	. = ..()
 	if (. && damage && !embedded_flash.broken)
-		embedded_flash.melee_attack_chain()
+		embedded_flash.melee_interaction_chain()
 		update_icon()
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
@@ -191,9 +191,9 @@
 	item_state = "metal"
 	icon_state = "metal"
 	damage_force = 16
-	slowdown = 2
+	encumbrance = ITEM_ENCUMBRANCE_SHIELD_TOWER
 	throw_force = 15 //Massive piece of metal
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/shield/riot/tower/swat
 	name = "swat shield"
@@ -206,7 +206,7 @@
 	icon_state = "holoshield"
 	slowdown = 1
 	shield_flags = SHIELD_FLAGS_DEFAULT
-	max_integrity = 100
+	integrity_max = 100
 	obj_integrity = 100
 	can_shatter = FALSE
 	clothing_flags = ITEM_CAN_BLOCK
@@ -215,30 +215,30 @@
 	var/recharge_delay = 15 SECONDS
 
 /// Entirely overriden take_damage. This shouldn't exist outside of an implant (other than maybe christmas).
-/obj/item/shield/riot/implant/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
+/obj/item/shield/riot/implant/take_damage_legacy(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
 	obj_integrity -= damage_amount
 	if(obj_integrity < 0)
 		obj_integrity = 0
 	if(obj_integrity == 0)
 		if(ismob(loc))
 			var/mob/living/L = loc
-			playsound(src, "sparks", 100, TRUE)
+			playsound(src, /datum/soundbyte/grouped/sparks, 100, TRUE)
 			L.visible_message("<span class='boldwarning'>[src] overloads from the damage sustained!</span>")
 			L.dropItemToGround(src)			//implant component catch hook will grab it.
 
 /obj/item/shield/riot/implant/Moved()
 	. = ..()
 	if(istype(loc, /obj/item/organ/cyberimp/arm/shield))
-		recharge_timerid = addtimer(CALLBACK(src, .proc/recharge), recharge_delay, flags = TIMER_STOPPABLE)
+		recharge_timerid = addtimer(CALLBACK(src, PROC_REF(recharge)), recharge_delay, flags = TIMER_STOPPABLE)
 	else		//extending
 		if(recharge_timerid)
 			deltimer(recharge_timerid)
 			recharge_timerid = null
 
 /obj/item/shield/riot/implant/proc/recharge()
-	if(obj_integrity == max_integrity)
+	if(obj_integrity == integrity_max)
 		return
-	obj_integrity = max_integrity
+	obj_integrity = integrity_max
 	if(ismob(loc.loc))		//cyberimplant.user
 		to_chat(loc, "<span class='notice'>[src] has recharged its reinforcement matrix and is ready for use!</span>")
 */
@@ -260,7 +260,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "roman_shield"
 	slot_flags = SLOT_BACK
-	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials_base = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -272,7 +272,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "buckler"
 	slot_flags = SLOT_BACK | SLOT_BELT
-	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
+	materials_base = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
@@ -294,7 +294,7 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/lrange = 1.5
 	var/lpower = 1.5
 	var/lcolor = "#006AFF"
@@ -331,12 +331,12 @@
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
 		var/mob/living/carbon/human/H = ishuman(user)? user : null
-		H?.take_organ_damage(5)
+		H?.take_random_targeted_damage(brute = 5)
 	active = !active
 	if (active)
 		damage_force = 10
 		update_icon()
-		w_class = ITEMSIZE_LARGE
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		slot_flags = null
 		playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] is now active.</span>")
@@ -344,7 +344,7 @@
 	else
 		damage_force = 3
 		update_icon()
-		w_class = ITEMSIZE_TINY
+		set_weight_class(WEIGHT_CLASS_TINY)
 		slot_flags = SLOT_EARS
 		playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
@@ -396,7 +396,7 @@
 	throw_force = 3
 	throw_speed = 3
 	throw_range = 4
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/active = 0
 /*
 /obj/item/shield/energy/IsShield()
@@ -417,14 +417,14 @@
 		damage_force = 8
 		throw_force = 5
 		throw_speed = 2
-		w_class = ITEMSIZE_LARGE
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		slot_flags = SLOT_BACK
 		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
 		damage_force = 3
 		throw_force = 3
 		throw_speed = 3
-		w_class = ITEMSIZE_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		slot_flags = null
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 
@@ -485,7 +485,7 @@
 	throw_force = 0
 	throw_speed = 2
 	throw_range = 6
-	matter = list(MAT_PLASTIC = 7500, "foam" = 1000)
+	materials_base = list(MAT_PLASTIC = 7500, "foam" = 1000)
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',

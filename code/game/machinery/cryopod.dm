@@ -15,7 +15,11 @@
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
+	climb_allowed = FALSE
+	depth_projected = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/mode = null
 
 	//Used for logging people entering cryosleep and important items they are carrying.
@@ -222,6 +226,8 @@
 	density = TRUE
 	anchored = TRUE
 	dir = WEST
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	base_icon_state = "cryopod_0"
 	var/occupied_icon_state = "cryopod_1"
@@ -412,8 +418,6 @@
 				W.forceMove(src)
 				if(W.contents.len)
 					for(var/obj/item/O in W.contents)
-						if(istype(O,/obj/item/storage/internal))
-							continue
 						O.forceMove(src)
 		if(ishuman(to_despawn))
 			var/mob/living/carbon/human/H = to_despawn
@@ -429,8 +433,6 @@
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
 			for(var/obj/item/O in W.contents)
-				if(istype(O,/obj/item/storage/internal)) //Stop eating pockets, you fuck!
-					continue
 				O.forceMove(src)
 
 	//Delete all items not on the preservation list.
@@ -439,6 +441,10 @@
 	items -= announce // or the autosay radio.
 
 	for(var/obj/item/W in items)
+		// todo: fucking rework cryo
+		if(istype(W, /obj/item/holder))
+			W.forceMove(drop_location())
+			return
 
 		var/preserve = FALSE
 
@@ -514,7 +520,7 @@
 	if(!silent)
 		//Make an announcement and log the person entering storage.
 		control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
-		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
 		//visible_message(SPAN_NOTICE("\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage."), 3)
 		visible_message(SPAN_NOTICE("\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2]."), 3)
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"
@@ -549,7 +555,7 @@
 
 /obj/machinery/cryopod/verb/eject()
 	set name = "Eject Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr.stat != 0)
 		return
@@ -575,7 +581,7 @@
 
 /obj/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0 || !check_occupant_allowed(usr))

@@ -45,8 +45,8 @@
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 
-	melee_damage_lower = 7 // About 14 DPS.
-	melee_damage_upper = 7
+	legacy_melee_damage_lower = 7 // About 14 DPS.
+	legacy_melee_damage_upper = 7
 	base_attack_cooldown = 10 // One attack a second.
 	attack_sharp = TRUE
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -57,7 +57,7 @@
 	bone_amount = 3
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
-
+/* //Commenting out for now
 	var/knockdown_chance = 15
 
 /mob/living/simple_mob/animal/space/carp/apply_melee_effects(var/atom/A)
@@ -66,7 +66,7 @@
 		if(prob(knockdown_chance))
 			L.afflict_paralyze(20 * 3)
 			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
-
+*/
 // Subtypes.
 
 // Won't wander away.
@@ -109,8 +109,8 @@
 	health = 230
 	movement_cooldown = 10
 
-	melee_damage_lower = 15 // About 20 DPS.
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 15 // About 20 DPS.
+	legacy_melee_damage_upper = 25
 
 	pixel_y = -16
 	base_pixel_y = -16

@@ -2,5 +2,5 @@
 	filename = "alarmmonitorsec"
 	filedesc = "Alarm Monitoring (Security)"
 	extended_desc = "This program provides visual interface for the security alarm system."
-	nanomodule_path = /datum/nano_module/alarm_monitor/security
-	required_access = ACCESS_SECURITY_EQUIPMENT
+	tguimodule_path = /datum/tgui_module_old/alarm_monitor/security/ntos
+	required_access = ACCESS_SECURITY_MAIN

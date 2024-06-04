@@ -1,6 +1,20 @@
+// todo: most of the things in here should probably be re-thought category wise;
+// verticality for one is more graphics/visuals
+// but isn't a preference because it's something you need to actively see at some times but not others..
+
+/client/verb/toggle_verticality_visibility()
+	set name = "Toggle Verticality Plane"
+	set desc = "Toggle if you see ceiling overlays and similar."
+	set category = VERB_CATEGORY_OOC
+
+	var/atom/movable/screen/plane_master/plane = global_planes.by_plane_type(/atom/movable/screen/plane_master/verticality)
+	plane.alpha = plane.alpha == 255? 0 : 255
+	to_chat(src, SPAN_NOTICE("You now [plane.alpha == 255? "see" : "no longer see"] verticality overlays."))
+
+
 /client/verb/motd()
 	set name = "MOTD"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc ="Check the Message of the Day"
 
 	var/motd = config.motd
@@ -45,13 +59,18 @@
 
 /client/verb/ooc(msg as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
+
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
 
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
 
-	if(!is_preference_enabled(/datum/client_preference/show_ooc))
+	if(!get_preference_toggle(/datum/game_preference_toggle/chat/ooc))
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
@@ -98,11 +117,16 @@
 			return
 
 
-	if(!is_preference_enabled(/datum/client_preference/show_ooc))
+	if(!get_preference_toggle(/datum/game_preference_toggle/chat/ooc))
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
 	log_ooc(raw_msg, src)
+
+	if(persistent.ligma)
+		to_chat(src, "<span class='ooc'><span class='everyone'><span class='message'>OOC: <EM>[src.key]: </EM><span class='linkify'>[msg]</span></span></span></span>")
+		log_shadowban("[key_name(src)] OOC: [msg]")
+		return
 
 	var/ooc_style = "everyone"
 	if(holder && !holder.fakekey)
@@ -116,8 +140,13 @@
 		if(holder.rights & R_ADMIN)
 			ooc_style = "admin"
 
+	var/effective_color = holder && preferences.get_entry(/datum/game_preference_entry/simple_color/admin_ooc_color)
+
 	for(var/client/target in GLOB.clients)
-		if(target.is_preference_enabled(/datum/client_preference/show_ooc))
+		if(!target.initialized)
+			continue
+
+		if(target.get_preference_toggle(/datum/game_preference_toggle/chat/ooc))
 			if(target.is_key_ignored(key)) // If we're ignored by this person, then do nothing.
 				continue
 			var/display_name = src.key
@@ -127,8 +156,8 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && CONFIG_GET(flag/allow_admin_ooccolor)) // keeping this for the badmins
-				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
+			if(effective_color) // keeping this for the badmins
+				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[effective_color]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
 				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></span>")
 
@@ -140,7 +169,12 @@
 /client/verb/looc(msg as text)
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
+
+	if(!reject_on_initialization_block())
+		return
+	if(!reject_age_unverified())
+		return
 
 	if(!mob)
 		return
@@ -157,7 +191,7 @@
 	if(!msg)
 		return
 
-	if(!is_preference_enabled(/datum/client_preference/show_looc))
+	if(!get_preference_toggle(/datum/game_preference_toggle/chat/looc))
 		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
 		return
 
@@ -176,8 +210,6 @@
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
-
-	log_looc(msg,src)
 
 	if(msg)
 		handle_spam_prevention(MUTE_OOC)
@@ -205,7 +237,7 @@
 
 	// Everyone in normal viewing range of the LOOC
 	for(var/mob/viewer in m_viewers)
-		if(viewer.client && viewer.client.is_preference_enabled(/datum/client_preference/show_looc))
+		if(viewer.client && viewer.client.get_preference_toggle(/datum/game_preference_toggle/chat/looc))
 			receivers |= viewer.client
 		else if(istype(viewer,/mob/observer/eye)) // For AI eyes and the like
 			var/mob/observer/eye/E = viewer
@@ -214,10 +246,17 @@
 
 	// Admins with RLOOC displayed who weren't already in
 	for(var/client/admin in GLOB.admins)
-		if(!(admin in receivers) && admin.is_preference_enabled(/datum/client_preference/holder/show_rlooc))
+		if(!(admin in receivers) && admin.get_preference_toggle(/datum/game_preference_toggle/admin/global_looc))
 			r_receivers |= admin
 
 	msg = emoji_parse(msg)
+
+	if(persistent.ligma)
+		to_chat(src, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
+		log_shadowban("[key_name(src)] LOOC: [msg]")
+		return
+
+	log_looc(msg,src)
 
 	// Send a message
 	for(var/client/target in receivers)

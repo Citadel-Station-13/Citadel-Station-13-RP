@@ -35,12 +35,12 @@
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
-		I.melee_attack_chain(occupant, user)
+		I.melee_interaction_chain(occupant, user)
 	return
 
 /obj/machinery/vr_sleeper/alien/eject()
 	set src in view(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return

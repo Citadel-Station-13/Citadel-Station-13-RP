@@ -20,7 +20,7 @@
 /obj/structure/bed/chair/bay/chair/padded/red/bignest{
 	name = "large dog bed"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -181,7 +181,7 @@
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "as" = (
-/obj/effect/overmap/visitable/ship/itglight,
+/obj/overmap/entity/visitable/ship/itglight,
 /turf/space,
 /area/space)
 "av" = (
@@ -465,7 +465,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew4)
 "cv" = (
@@ -512,7 +512,7 @@
 	dir = 8
 	},
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/wood,
 /area/itglight/captain)
 "cU" = (
@@ -690,7 +690,7 @@
 /area/itglight/crew1)
 "ed" = (
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/carpet,
 /area/itglight/readyroom)
 "ei" = (
@@ -708,7 +708,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Bridge";
 	req_one_access = list(777)
 	},
@@ -1077,7 +1077,7 @@
 "gX" = (
 /obj/structure/bed/chair/sofa/brown/left,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1085,7 +1085,7 @@
 /area/itglight/captain)
 "hc" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "port exterior access button";
@@ -1093,7 +1093,7 @@
 	pixel_y = 65
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "starboard exterior access button";
@@ -1149,7 +1149,7 @@
 /obj/structure/bed/chair/bay/chair/padded/brown{
 	dir = 8
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1508,7 +1508,7 @@
 /area/itglight/starboardhighsec)
 "jE" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -1610,7 +1610,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "kH" = (
@@ -1669,7 +1669,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/itglight/showers)
 "kY" = (
@@ -1694,7 +1694,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/afthall)
 "li" = (
@@ -1716,7 +1716,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Bridge";
 	req_one_access = list(777)
 	},
@@ -1810,8 +1810,8 @@
 /obj/structure/closet,
 /obj/item/robot_parts/l_arm,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
 /obj/item/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
 	},
@@ -1907,7 +1907,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "mL" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -1927,7 +1927,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/porthighsec)
 "na" = (
@@ -2249,7 +2249,7 @@
 /obj/fiftyspawner/phoron,
 /obj/fiftyspawner/phoron,
 /obj/structure/closet/crate,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "pm" = (
@@ -2314,7 +2314,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "pU" = (
@@ -2520,7 +2520,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -2637,7 +2637,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/itglightshuttle)
 "sQ" = (
@@ -3133,7 +3133,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "wS" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -3250,9 +3250,9 @@
 	name = "captain's coat"
 	},
 /obj/item/clothing/suit/storage/vest/oricon,
-/obj/item/reagent_containers/food/snacks/candy/proteinbar,
-/obj/item/reagent_containers/food/snacks/candy/proteinbar,
-/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
+/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 /obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/holster/hip,
 /turf/simulated/floor/carpet/sblucarpet,
@@ -3270,7 +3270,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/itglight/portdocking)
 "xM" = (
@@ -3361,7 +3361,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_port";
 	name = "interior access button";
@@ -3470,7 +3470,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor,
 /area/itglight/starboarddocking)
 "yZ" = (
@@ -3561,7 +3561,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "zM" = (
@@ -3590,7 +3590,7 @@
 /turf/simulated/floor/airless,
 /area/itglight/portengi)
 "Aa" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -3645,7 +3645,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3694,7 +3694,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/forehall)
 "AK" = (
@@ -3752,7 +3752,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "Bj" = (
@@ -3784,7 +3784,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3855,7 +3855,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew1)
 "BW" = (
@@ -3901,7 +3901,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -3919,7 +3919,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "exterior access button";
@@ -4039,7 +4039,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_dock_1";
 	name = "interior access button";
@@ -4142,7 +4142,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "dauntlessportcargobolts";
 	name = "Port Cargo Access";
 	req_one_access = list(777)
@@ -4194,7 +4194,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "dauntlessstarboardcargobolts";
 	name = "Starboard Cargo Access";
 	req_one_access = list(777)
@@ -4208,7 +4208,7 @@
 /turf/simulated/floor/airless,
 /area/itglight/shuttlebay)
 "Eg" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
 	},
@@ -4244,7 +4244,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-4"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -4273,7 +4273,7 @@
 	id_tag = "itglight_dock_2_inner"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "interior access button";
@@ -4351,7 +4351,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_dock_2";
 	name = "exterior access button";
@@ -4419,7 +4419,7 @@
 "Fc" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor,
@@ -4580,7 +4580,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "itglight_starboard";
 	name = "interior access button";
@@ -4999,7 +4999,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/shuttlebay)
 "IN" = (
@@ -5031,7 +5031,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "Jg" = (
@@ -5046,7 +5046,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_starboard";
 	name = "exterior access button";
@@ -5164,7 +5164,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew3)
 "JT" = (
@@ -5211,7 +5211,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "Kj" = (
@@ -5269,7 +5269,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor,
 /area/itglight/portengi)
 "KG" = (
@@ -5432,7 +5432,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "Mh" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/carpet,
@@ -5443,7 +5443,7 @@
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew2)
 "Ml" = (
@@ -5490,7 +5490,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
@@ -5750,7 +5750,7 @@
 /area/itglight/lockers)
 "NY" = (
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "Oc" = (
@@ -5760,7 +5760,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/dark,
 /area/itglight/passengersleeping)
 "Oe" = (
@@ -5931,7 +5931,7 @@
 /turf/simulated/floor,
 /area/itglight/kitchen)
 "OX" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor,
@@ -6015,7 +6015,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/white/techfloor_grid,
@@ -6035,7 +6035,7 @@
 /obj/item/bedsheet/brown,
 /obj/structure/curtain/black,
 /obj/structure/bed/padded,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -6065,7 +6065,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "Qi" = (
@@ -6501,7 +6501,7 @@
 	dir = 1
 	},
 /obj/item/radio,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
@@ -6572,7 +6572,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -6752,7 +6752,7 @@
 /obj/random/soap,
 /obj/random/soap,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -6931,7 +6931,7 @@
 /obj/structure/table/wooden_reinforced,
 /obj/random/plushie,
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "WN" = (
@@ -6958,7 +6958,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "itglight_port";
 	name = "exterior access button";
@@ -7018,7 +7018,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/itglight/restrooms)
 "Xn" = (
@@ -7400,7 +7400,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/portengi)
 "Zm" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/cafe,
@@ -7482,7 +7482,7 @@
 /turf/simulated/wall/shull,
 /area/itglight/portcargo)
 "ZO" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/structure/closet/crate/bin{
@@ -7519,7 +7519,7 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,

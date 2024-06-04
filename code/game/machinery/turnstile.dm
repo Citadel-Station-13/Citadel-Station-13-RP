@@ -86,4 +86,10 @@
 	else
 		return TRUE
 
+/obj/machinery/turnstile/entry
+	name = "\improper Entrance"
+	req_one_access = list(111)
 
+/obj/machinery/turnstile/exit
+	name = "\improper Exit"
+	req_one_access = list(112)

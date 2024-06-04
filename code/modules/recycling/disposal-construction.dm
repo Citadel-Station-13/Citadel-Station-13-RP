@@ -10,7 +10,7 @@
 	anchored = 0
 	density = 0
 	pressure_resistance = 5*ONE_ATMOSPHERE
-	matter = list(MAT_STEEL = 1850)
+	materials_base = list(MAT_STEEL = 1850)
 	level = 2
 	var/sortType = ""
 	var/ptype = 0
@@ -129,7 +129,7 @@
 
 // flip and rotate verbs
 /obj/structure/disposalconstruct/verb/rotate()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Rotate Pipe"
 	set src in view(1)
 
@@ -144,7 +144,7 @@
 	update()
 
 /obj/structure/disposalconstruct/verb/flip()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Flip Pipe"
 	set src in view(1)
 	if(usr.stat)

@@ -14,7 +14,7 @@
 	name = "tile"
 	singular_name = "tile"
 	desc = "A non-descript floor tile"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	max_amount = 60
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
@@ -41,28 +41,24 @@
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
 
-/obj/item/stack/tile/grass/Initialize(mapload, new_amount, merge)
-	. = ..()
-	recipes = grass_recipes
-	update_icon()
-
-var/global/list/datum/stack_recipe/grass_recipes = list( \
-	new/datum/stack_recipe("bush", /obj/structure/flora/ausbushes, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("reeds", /obj/structure/flora/ausbushes/reedbush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("leafy bush", /obj/structure/flora/ausbushes/leafybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse bush", /obj/structure/flora/ausbushes/palebush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("stalks", /obj/structure/flora/ausbushes/stalkybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("ferns", /obj/structure/flora/ausbushes/fernybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sapling", /obj/structure/flora/ausbushes/sunnybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("leafy sapling", /obj/structure/flora/ausbushes/genericbush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("needled sapling", /obj/structure/flora/ausbushes/pointybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse flowers", /obj/structure/flora/ausbushes/lavendergrass, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("yellow flowers", /obj/structure/flora/ausbushes/ywflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("colorful flowers", /obj/structure/flora/ausbushes/brflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("purple flowers", /obj/structure/flora/ausbushes/ppflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("lush grass", /obj/structure/flora/ausbushes/grassybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("grass", /obj/structure/flora/ausbushes/fullgrass, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse grass", /obj/structure/flora/ausbushes/sparsegrass, 1, one_per_turf = 0, on_floor = 1))
+/obj/item/stack/tile/grass/generate_explicit_recipes()
+	. = list()
+	. += create_stack_recipe_datum(name = "bush", product = /obj/structure/flora/ausbushes, cost = 1)
+	. += create_stack_recipe_datum(name = "reeds", product = /obj/structure/flora/ausbushes/reedbush, cost = 1)
+	. += create_stack_recipe_datum(name = "leafy bush", product = /obj/structure/flora/ausbushes/leafybush, cost = 1)
+	. += create_stack_recipe_datum(name = "sparse bush", product = /obj/structure/flora/ausbushes/palebush, cost = 1)
+	. += create_stack_recipe_datum(name = "stalks", product = /obj/structure/flora/ausbushes/stalkybush, cost = 1)
+	. += create_stack_recipe_datum(name = "ferns", product = /obj/structure/flora/ausbushes/fernybush, cost = 1)
+	. += create_stack_recipe_datum(name = "sapling", product = /obj/structure/flora/ausbushes/sunnybush, cost = 1)
+	. += create_stack_recipe_datum(name = "leafy sapling", product = /obj/structure/flora/ausbushes/genericbush, cost = 1)
+	. += create_stack_recipe_datum(name = "needled sapling", product = /obj/structure/flora/ausbushes/pointybush, cost = 1)
+	. += create_stack_recipe_datum(name = "sparse flowers", product = /obj/structure/flora/ausbushes/lavendergrass, cost = 1)
+	. += create_stack_recipe_datum(name = "yellow flowers", product = /obj/structure/flora/ausbushes/ywflowers, cost = 1)
+	. += create_stack_recipe_datum(name = "colorful flowers", product = /obj/structure/flora/ausbushes/brflowers, cost = 1)
+	. += create_stack_recipe_datum(name = "purple flowers", product = /obj/structure/flora/ausbushes/ppflowers, cost = 1)
+	. += create_stack_recipe_datum(name = "lush grass", product = /obj/structure/flora/ausbushes/grassybush, cost = 1)
+	. += create_stack_recipe_datum(name = "grass", product = /obj/structure/flora/ausbushes/fullgrass, cost = 1)
+	. += create_stack_recipe_datum(name = "sparse grass", product = /obj/structure/flora/ausbushes/sparsegrass, cost = 1)
 
 /*
  * Wood
@@ -122,49 +118,113 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "black carpet"
 	desc = "A piece of black carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-bcarpet"
+
 /obj/item/stack/tile/carpet/blucarpet
 	name = "blue carpet"
 	singular_name = "blue carpet"
 	desc = "A piece of blue carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-blucarpet"
+
 /obj/item/stack/tile/carpet/turcarpet
 	name = "tur carpet"
 	singular_name = "tur carpet"
 	desc = "A piece of turquoise carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-turcarpet"
+
 /obj/item/stack/tile/carpet/sblucarpet
 	name = "silver-blue carpet"
 	singular_name = "silver-blue carpet"
 	desc = "A piece of silver-blue carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-sblucarpet"
+
 /obj/item/stack/tile/carpet/gaycarpet
 	name = "funny carpet"
 	singular_name = "funny carpet"
 	desc = "A piece of funny carpet. Perfect for clowning around on."
 	icon_state = "tile-gaycarpet"
+
 /obj/item/stack/tile/carpet/purcarpet
 	name = "purple carpet"
 	singular_name = "purple carpet"
 	desc = "A piece of purple carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-purcarpet"
+
 /obj/item/stack/tile/carpet/oracarpet
 	name = "orange carpet"
 	singular_name = "orange carpet"
 	desc = "A piece of orange carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-oracarpet"
+
 /obj/item/stack/tile/carpet/arcadecarpet
 	name = "arcadey carpet"
 	singular_name = "arcadey carpet"
 	desc = "A piece of arcadey carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet-arcade"
 
+/obj/item/stack/tile/carpet/patterned
+	no_variants = TRUE
+
+/obj/item/stack/tile/carpet/patterned/brown
+	name = "brown patterned carpet"
+	singular_name = "brown patterned carpet"
+	desc = "A piece of brown carpet with a fetching light brown pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetbrown"
+
+/obj/item/stack/tile/carpet/patterned/green
+	name = "green patterned carpet"
+	singular_name = "green patterned carpet"
+	desc = "A piece of green carpet with a fetching light green pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetgreen"
+
+/obj/item/stack/tile/carpet/patterned/red
+	name = "red patterned carpet"
+	singular_name = "red patterned carpet"
+	desc = "A piece of red carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetred"
+
+/obj/item/stack/tile/carpet/patterned/blue
+	name = "blue patterned carpet"
+	singular_name = "blue patterned carpet"
+	desc = "A piece of brown carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetblue"
+
+/obj/item/stack/tile/carpet/patterned/blue/alt
+	name = "blue patterned carpet"
+	singular_name = "blue patterned carpet"
+	desc = "A piece of blue carpet with a fetching white pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetblue2"
+
+/obj/item/stack/tile/carpet/patterned/blue/alt2
+	name = "blue patterned carpet"
+	singular_name = "blue patterned carpet"
+	desc = "A piece of blue carpet with a fetching seafoam green pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetblue3"
+
+/obj/item/stack/tile/carpet/patterned/magenta
+	name = "magenta patterned carpet"
+	singular_name = "magenta patterned carpet"
+	desc = "A piece of magenta carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetmagenta"
+
+/obj/item/stack/tile/carpet/patterned/purple
+	name = "purple patterned carpet"
+	singular_name = "purple patterned carpet"
+	desc = "A piece of purple carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetpurple"
+
+/obj/item/stack/tile/carpet/patterned/orange
+	name = "orange patterned carpet"
+	singular_name = "orange patterned carpet"
+	desc = "A piece of orange carpet with a fetching gold pattern. It is the same size as a normal floor tile!"
+	icon_state = "tile-carpetorange"
+
 /obj/item/stack/tile/floor
 	name = "floor tile"
 	singular_name = "floor tile"
 	desc = "A metal tile fit for covering a section of floor."
 	icon_state = "tile"
+	materials_base = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
 	damage_force = 6.0
-	matter = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
 	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
@@ -193,21 +253,21 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/steel
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/white
 	name = "white floor tile"
 	singular_name = "white floor tile"
 	icon_state = "tile_white"
-	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/yellow
@@ -221,21 +281,21 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "dark floor tile"
 	singular_name = "dark floor tile"
 	icon_state = "tile_steel"
-	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/freezer
 	name = "freezer floor tile"
 	singular_name = "freezer floor tile"
 	icon_state = "tile_freezer"
-	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/cyborg
 	name = "floor tile synthesizer"
 	desc = "A device that makes floor tiles."
 	gender = NEUTER
-	matter = null
+	materials_base = null
 	uses_charge = 1
 	charge_costs = list(250)
 	stacktype = /obj/item/stack/tile/floor
@@ -246,7 +306,7 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "sandstone tile"
 	desc = "Hardened sand compacted into a brick akin to stone in toughness."
 	icon_state = "tile-sandstone"
-	matter = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
+	materials_base = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/linoleum

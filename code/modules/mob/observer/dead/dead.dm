@@ -1,3 +1,6 @@
+/// all player ghosts
+GLOBAL_LIST_EMPTY(observer_list)
+
 /mob/observer/dead
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
@@ -93,6 +96,7 @@
 	var/datum/orbit_menu/orbit_menu
 
 /mob/observer/dead/Initialize(mapload)
+	GLOB.observer_list += src
 	var/mob/body = loc
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
@@ -108,14 +112,15 @@
 			var/mob/living/carbon/human/H = body
 			icon = H.icon
 			icon_state = H.icon_state
-			if(H.overlays_standing)
-				for(var/i in 1 to length(H.overlays_standing))
-					if(!H.overlays_standing[i])
-						continue
-					add_overlay(H.overlays_standing[i])
+			// todo: fixup (get rid of other planes)
+			for(var/key in H.standing_overlays)
+				add_overlay(H.standing_overlays[key])
+			for(var/slot_id in H.inventory.rendered_normal_overlays)
+				add_overlay(H.inventory.rendered_normal_overlays[slot_id])
 		else
 			icon = body.icon
 			icon_state = body.icon_state
+			// todo: fixup (get rid of other planes)
 			add_overlay(body.overlays)
 
 		gender = body.gender
@@ -134,17 +139,17 @@
 
 	if(!T)
 		T = SSjob.get_latejoin_spawnpoint()
+	if(!T)
+		T = locate(1,1,1)
 	forceMove(T)
-
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 	real_name = name
+	return ..()
+
+/mob/observer/dead/Destroy()
+	GLOB.observer_list -= src
 	return ..()
 
 /mob/observer/dead/Topic(href, href_list)
@@ -188,6 +193,7 @@
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
 	if(key)
+		SSplaytime.queue_playtimes(client)
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(H.vr_holder && !can_reenter_corpse)
@@ -214,7 +220,7 @@
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
 /mob/living/verb/ghost()
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
@@ -294,9 +300,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	medHUD = !medHUD
 	if(medHUD)
-		get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+		self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_OBSERVER)
 	else
-		get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
+		self_perspective.remove_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_OBSERVER)
 	to_chat(src,"<font color=#4F49AF><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/verb/toggle_antagHUD()
@@ -319,11 +325,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		has_enabled_antagHUD = TRUE
 
 	antagHUD = !antagHUD
-	var/datum/atom_hud/H = GLOB.huds[ANTAG_HUD]
 	if(antagHUD)
-		H.add_hud_to(src)
+		self_perspective.add_atom_hud(/datum/atom_hud/antag, ATOM_HUD_SOURCE_OBSERVER)
 	else
-		H.remove_hud_from(src)
+		self_perspective.remove_atom_hud(/datum/atom_hud/antag, ATOM_HUD_SOURCE_OBSERVER)
 	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
@@ -436,23 +441,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/datum/gas_mixture/environment = usr.loc.return_air()
 
-	var/pressure = environment.return_pressure()
-	var/total_moles = environment.total_moles
-
 	to_chat(src, "<font color=#4F49AF><B>Results:</B></font>")
-	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		to_chat(src, "<font color=#4F49AF>Pressure: [round(pressure,0.1)] kPa</font>")
-	else
-		to_chat(src, "<font color='red'>Pressure: [round(pressure,0.1)] kPa</font>")
-	if(total_moles)
-		for(var/g in environment.gas)
-			to_chat(src, "<font color=#4F49AF>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]% ([round(environment.gas[g], 0.01)] moles)</font>")
-		to_chat(src, "<font color=#4F49AF>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</font>")
-		to_chat(src, "<font color=#4F49AF>Heat Capacity: [round(environment.heat_capacity(),0.1)]</font>")
+	to_chat(src, jointext(environment.chat_analyzer_scan(NONE, TRUE, TRUE), "<br>"))
 
 /mob/observer/dead/verb/become_mouse()
 	set name = "Become mouse"
 	set category = "Ghost"
+
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
+		log_shadowban("[key_name(src)] mouse join blocked")
+		return
 
 	if(config_legacy.disable_player_mice)
 		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
@@ -462,7 +461,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/turf/T = get_turf(src)
-	if(!T || (T.z in GLOB.using_map.admin_levels))
+	if(!T || (T.z in (LEGACY_MAP_DATUM).admin_levels))
 		to_chat(src, "<span class='warning'>You may not spawn as a mouse on this Z-level.</span>")
 		return
 
@@ -653,18 +652,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	// Give the ghost a cult icon which should be visible only to itself
 	toggle_icon("cult")
 
-/mob/observer/dead/verb/toggle_anonsay()
-	set category = "Ghost"
-	set name = "Toggle Anonymous Chat"
-	set desc = "Toggles showing your key in dead chat."
-
-	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
-	SScharacters.queue_preferences_save(client.prefs)
-	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
-		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
-	else
-		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")
-
 /mob/observer/dead/canface()
 	return 1
 
@@ -712,7 +699,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/proc/ghost_whisper()
 	set name = "Spectral Whisper"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(is_manifest)  //Only able to whisper if it's hit with a tome.
 		var/list/options = list()
@@ -777,10 +764,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				count++
-				PP.icon = 'icons/obj/pda_vr.dmi'
-				PP.add_overlay("pai-ghostalert")
-				spawn(54)
-					PP.cut_overlays()
 		to_chat(usr,"<span class='notice'>Flashing the displays of [count] unoccupied PAIs.</span>")
 	else
 		to_chat(usr,"<span class='warning'>You have 'Be pAI' disabled in your character prefs, so we can't help you.</span>")
@@ -850,6 +833,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	//Fine fine, we can ask.
 	var/obj/item/nif/nif = H.nif
 	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
+
+	if(client.persistent.ligma)
+		sleep(rand(40,120))
+		to_chat(src, SPAN_WARNING("[H] denied your request."))
+		log_shadowban("[key_name(src)] SC join blocked.")
+		return
 
 	var/req_time = world.time
 	nif.notify("Transient mindstate detected, analyzing...")

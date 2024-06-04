@@ -15,7 +15,6 @@
 	if(program_state != PROGRAM_STATE_ACTIVE) // Background programs won't trigger alarms.
 		return
 
-
 	// The program is active and connected to one of the station's networks. Has a very small chance to trigger IDS alarm every tick.
 	if(prob(0.1))
 		if(ntnet_global.intrusion_detection_enabled)

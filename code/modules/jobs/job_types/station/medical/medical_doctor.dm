@@ -10,8 +10,18 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/doctor
-	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS, ACCESS_COMMAND_EVA)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA)
+	additional_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_MEDICAL_CHEMISTRY,
+		ACCESS_SCIENCE_GENETICS,
+	)
+	minimal_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_MEDICAL_SURGERY,
+		ACCESS_MEDICAL_VIROLOGY,
+	)
 	outfit_type = /datum/outfit/job/station/medical_doctor
 	desc = "A Medical Doctor is a Jack-of-All-Trades Medical title, covering a variety of skill levels and minor specializations. They are likely \
 						familiar with basic first aid, and a number of accompanying medications, and can generally save, if not cure, a majority of the \
@@ -23,7 +33,6 @@
 		"Virologist" = /datum/prototype/struct/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/struct/alt_title/doctor/resident,
 		"Medical Intern" = /datum/prototype/struct/alt_title/doctor/intern,
-		"Orderly" = /datum/prototype/struct/alt_title/orderly,
 		"Biotechnician" = /datum/prototype/struct/alt_title/biotechnician
 		)
 
@@ -39,15 +48,9 @@
 
 /datum/prototype/struct/alt_title/surgeon
 	title = "Surgeon"
-	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
+	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachment. They are expected \
 					to know the ins and outs of anesthesia and surgery."
 	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon
-
-/datum/prototype/struct/alt_title/orderly
-	title = "Orderly"
-	title_blurb = "An Orderly acts as Medbay's general helping hand, assisting any doctor that might need some form of help, as well as handling manual \
-					and dirty labor around the department."
-	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
 
 /datum/prototype/struct/alt_title/emergency_physician
 	title = "Emergency Physician"
@@ -58,7 +61,7 @@
 
 /datum/prototype/struct/alt_title/nurse
 	title = "Nurse"
-	title_blurb = "A Nurse acts as a general purpose Doctor's Aide, providing basic care to non-critical patients, and stabilizing critical patients during \
+	title_blurb = "A Nurse acts as a general purpose aide to the doctors, providing basic care to non-critical patients, and stabilizing critical patients during \
 					busy periods. They frequently watch the suit sensors console, to help manage the time of other Doctors. In rare occasions, a Nurse can be \
 					called upon to revive deceased crew members."
 	title_outfit = /datum/outfit/job/station/medical_doctor/nurse
@@ -71,9 +74,11 @@
 
 /datum/prototype/struct/alt_title/doctor/resident
 	title = "Medical Resident"
+	title_blurb = "A Medical Resident is someone who has a medical degree but is still in their residency, training under the supervision of more experienced doctors."
 
 /datum/prototype/struct/alt_title/doctor/intern
 	title = "Medical Intern"
+	title_blurb = "A Medical Intern is someone just learning the ropes of the medical field, learning from and answering to other medbay staff."
 
 /datum/outfit/job/station/medical_doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")

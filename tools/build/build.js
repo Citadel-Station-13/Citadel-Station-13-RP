@@ -43,12 +43,10 @@ export const WarningParameter = new Juke.Parameter({
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
+    // include all maps
+    // exclude WIP maps
     const folders = [
-      // Everything but primary station map files.
-      ...Juke.glob('maps/away_missions/**/*.dmm'),
-      // ...Juke.glob('maps/map_levels/**/*.dmm'),
-      // ...Juke.glob('maps/submaps/**/*.dmm'),
-      ...Juke.glob('maps/templates/**/*.dmm'),
+      ...Juke.glob('maps/**/*.dmm'),
     ];
     const content = folders
       .map((file) => file.replace('maps/', ''))
@@ -64,7 +62,7 @@ export const DmTarget = new Juke.Target({
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
   inputs: [
-    'maps/map_files/generic/**',
+    'maps/**/*.dm',
     'code/**',
     'html/**',
     'icons/**',
@@ -111,36 +109,6 @@ export const DmTestTarget = new Juke.Target({
     }
   },
 });
-
-export const AutowikiTarget = new Juke.Target({
-  parameters: [DefineParameter],
-  dependsOn: ({ get }) => [
-    get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
-  ],
-  outputs: [
-    'data/autowiki_edits.txt',
-  ],
-  executes: async ({ get }) => {
-    fs.copyFileSync(`${DME_NAME}.dme`, `${DME_NAME}.test.dme`);
-    await DreamMaker(`${DME_NAME}.test.dme`, {
-      defines: ['CBT', 'AUTOWIKI', ...get(DefineParameter)],
-      warningsAsErrors: get(WarningParameter).includes('error'),
-    });
-    Juke.rm('data/autowiki_edits.txt');
-    Juke.rm('data/autowiki_files', { recursive: true });
-    Juke.rm('data/logs/ci', { recursive: true });
-    await DreamDaemon(
-      `${DME_NAME}.test.dmb`,
-      '-close', '-trusted', '-verbose',
-      '-params', 'log-directory=ci',
-    );
-    Juke.rm('*.test.*');
-    if (!fs.existsSync('data/autowiki_edits.txt')) {
-      Juke.logger.error('Autowiki did not generate an output, exiting');
-      throw new Juke.ExitCode(1);
-    }
-  },
-})
 
 export const YarnTarget = new Juke.Target({
   parameters: [CiParameter],

@@ -80,8 +80,11 @@
 	SStgui.update_uis(src)
 	update_icon()
 
-/obj/item/fishing_rod/on_attack_self(mob/user)
-	reel(user)
+/obj/item/fishing_rod/on_attack_self(datum/event_args/actor/e_args)
+	. = ..()
+	if(.)
+		return
+	reel(e_args.performer)
 
 /obj/item/fishing_rod/proc/reel(mob/user, atom/target)
 	// signal first for fishing minigame
@@ -267,7 +270,7 @@
 			bait_state = real_bait.rod_overlay_icon_state
 		. += bait_state
 
-/obj/item/fishing_rod/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/fishing_rod/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	var/slot_key = slot_meta.render_key
 	var/line_color = line?.line_color || default_line_color
 	var/mutable_appearance/reel_overlay = mutable_appearance(icon_used, "reel_[slot_key]")
@@ -307,7 +310,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/fishing_rod/ui_data(mob/user)
+/obj/item/fishing_rod/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/data = list()
 
@@ -340,7 +343,7 @@
 				return FALSE
 	return TRUE
 
-/obj/item/fishing_rod/ui_act(action, list/params)
+/obj/item/fishing_rod/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return .

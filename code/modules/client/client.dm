@@ -44,6 +44,22 @@
 	/// Database data
 	var/datum/player_data/player
 
+	//? Connection
+	/// queued client security kick
+	var/queued_security_kick
+	/// currently age gate blocked
+	var/age_verification_open = FALSE
+	/// panic bunker is still resolving
+	var/panic_bunker_pending = FALSE
+
+	//? Context Menus
+	/// open context menu
+	var/datum/radial_menu/context_menu/context_menu
+
+	//* HUDs *//
+	/// active atom HUD providers associated to a list of ids or paths of atom huds that's providing it.
+	var/list/datum/atom_hud_provider/atom_hud_providers
+
 	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
@@ -83,6 +99,10 @@
 	var/list/menu_buttons_checked = list()
 	/// menu group statuses
 	var/list/menu_group_status = list()
+
+	//? Preferences
+	/// client preferences
+	var/datum/game_preferences/preferences
 
 	//? Statpanel
 	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
@@ -171,18 +191,6 @@
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////
-	///So admins know why it isn't working - Used to determine how old the account is - in days.
-	var/player_age = "(Requires database)"
-	///So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
-	var/related_accounts_ip = "(Requires database)"
-	///So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
-	var/related_accounts_cid = "(Requires database)"
- 	///Date that this account was first seen in the server
-	var/account_join_date = "(Requires database)"
-	///Age of byond account in days
-	var/account_age = "(Requires database)"
-	///Track hours of leave accured for each department.
-	var/list/department_hours = list()
 
 	preload_rsc = PRELOAD_RSC
 
@@ -196,14 +204,6 @@
 	///Used for limiting the rate of clicks sends by the client to avoid abuse
 	var/list/clicklimiter
 
-	///List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s
-	var/list/sent_assets = list()
-	///List of all completed blocking send jobs awaiting acknowledgement by send_asset
-	var/list/completed_asset_jobs = list()
-	///Last asset send job id.
-	var/last_asset_job = 0
-	var/last_completed_asset_job = 0
-
  	///world.time they connected
 	var/connection_time
  	///world.realtime they connected
@@ -213,3 +213,83 @@
 
 	/// If this client has been fully initialized or not
 	var/fully_created = FALSE
+
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, holder))
+			return FALSE
+		if (NAMEOF(src, ckey))
+			return FALSE
+		if (NAMEOF(src, key))
+			return FALSE
+		if(NAMEOF(src, view))
+			change_view(var_value, TRUE)
+			return TRUE
+	return ..()
+
+
+//* Is-rank helpers *//
+
+/**
+ * are we a guest account?
+ */
+/client/proc/is_guest()
+	return IsGuestKey(key)
+
+/**
+ * are we localhost?
+ */
+/client/proc/is_localhost()
+	return isnull(address) || (address in list("127.0.0.1", "::1"))
+
+/**
+ * are we any sort of staff rank?
+ */
+/client/proc/is_staff()
+	return !isnull(holder)
+
+//* Atom HUDs *//
+
+/client/proc/add_atom_hud(datum/atom_hud/hud, source)
+	ASSERT(istext(source))
+	if(isnull(atom_hud_providers))
+		atom_hud_providers = list()
+	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
+	for(var/datum/atom_hud_provider/provider as anything in providers)
+		var/already_there = atom_hud_providers[provider]
+		if(already_there)
+			atom_hud_providers[provider] |= source
+		else
+			atom_hud_providers[provider] = list(source)
+			provider.add_client(src)
+
+/client/proc/remove_atom_hud(datum/atom_hud/hud, source)
+	ASSERT(istext(source))
+	if(!length(atom_hud_providers))
+		return
+	if(!hud)
+		// remove all of source
+		for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
+			if(!(source in atom_hud_providers[provider]))
+				continue
+			atom_hud_providers[provider] -= source
+			if(!length(atom_hud_providers[provider]))
+				atom_hud_providers -= provider
+				provider.remove_client(src)
+		return
+	hud = fetch_atom_hud(hud)
+	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
+	for(var/datum/atom_hud_provider/provider as anything in providers)
+		if(!length(atom_hud_providers[provider]))
+			continue
+		atom_hud_providers[provider] -= source
+		if(!length(atom_hud_providers[provider]))
+			atom_hud_providers -= provider
+			provider.remove_client(src)
+
+// todo: add_atom_hud_provider, remove_atom_hud_provider
+
+/client/proc/clear_atom_hud_providers()
+	for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
+		provider.remove_client(src)
+	atom_hud_providers = null

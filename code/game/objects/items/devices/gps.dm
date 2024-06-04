@@ -22,10 +22,10 @@
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network."
 	icon = 'icons/obj/gps.dmi'
 	icon_state = "gps-gen"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
-	matter = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
@@ -151,7 +151,7 @@
 		deltimer(emp_timerid)
 	else
 		visible_message(SPAN_WARNING("[src] overloads!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
-	emp_timerid = addtimer(CALLBACK(src, /obj/item/gps/proc/reset_emped), 5 MINUTES / severity, TIMER_STOPPABLE)
+	emp_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/gps, reset_emped)), 5 MINUTES / severity, TIMER_STOPPABLE)
 
 /obj/item/gps/proc/reset_emped()
 	if(!emped)
@@ -205,13 +205,13 @@
 	if(tracking)
 		stop_tracking()
 	tracking = target
-	RegisterSignal(tracking, COMSIG_PARENT_QDELETING, /obj/item/gps/proc/stop_tracking)
+	RegisterSignal(tracking, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/obj/item/gps, stop_tracking))
 	if(!hud_arrow)
 		hud_arrow = new /atom/movable/screen/waypoint_tracker/gps
 		hud_bound?.add_screen(hud_arrow)
 	hud_arrow.set_disabled(FALSE)
 	update_tracking()
-	START_PROCESSING(SSprocessing, src)
+	START_PROCESSING(SSfastprocess, src)
 	return TRUE
 
 /**
@@ -224,7 +224,7 @@
 	tracking = null
 	// just kick it out
 	hud_arrow?.set_disabled(TRUE)
-	STOP_PROCESSING(SSprocessing, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	return TRUE
 
 /obj/item/gps/process(delta_time)
@@ -344,11 +344,11 @@
 /obj/item/gps/proc/push_waypoint_data()
 	push_ui_data(data = list("waypoints" = ui_waypoint_data()))
 
-/obj/item/gps/ui_static_data(mob/user)
+/obj/item/gps/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["waypoints"] = ui_waypoint_data()
 
-/obj/item/gps/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/gps/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	.["on"] = !!on
@@ -363,16 +363,16 @@
 	if(!on)
 		return
 	var/turf/curr = get_turf(src)
-	var/list/detecting_levels = GLOB.using_map.get_map_levels(curr.z, long_range)
+	var/list/detecting_levels = (LEGACY_MAP_DATUM).get_map_levels(curr.z, long_range)
 	.["x"] = curr.x
 	.["y"] = curr.y
-	.["level"] = SSmapping.level_id(curr.z)
+	.["level"] = SSmapping.fluff_level_id(curr.z)
 	var/list/others = list()
 	.["signals"] = others
 	var/datum/component/gps_signal/our_sig = GetComponent(/datum/component/gps_signal)
 	for(var/other_z in detecting_levels)
 		var/list/gpses = GLOB.gps_transmitters[other_z]
-		var/l_id = SSmapping.level_id(other_z)
+		var/l_id = SSmapping.fluff_level_id(other_z)
 		for(var/datum/component/gps_signal/sig as anything in gpses)
 			if(sig == our_sig)
 				continue
@@ -412,7 +412,7 @@
 			if(!tag_as)
 				return FALSE
 			var/turf/T = get_turf(src)
-			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_id(T.z))
+			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.fluff_level_id(T.z))
 			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
@@ -576,7 +576,7 @@
 
 /obj/item/gps/internal/base
 	gps_tag = "NT_BASE"
-	desc = "A homing signal from NanoTrasen's outpost."
+	desc = "A homing signal from Nanotrasen's outpost."
 
 /obj/item/gps/internal/poi
 	gps_tag = "Unidentified Signal"
@@ -590,3 +590,24 @@
 	long_range = TRUE
 	hide_signal = TRUE
 	can_hide_signal = TRUE
+
+/obj/item/gps/dataknife
+	name = "data knife"
+	desc = "This sleek combat knife's blade is inlaid with complex circuitry, capable of hacking electronics. A GPS device built into the pommel ensures the user can always maintain their orientation. Formerly produced under contract by Ward Takahashi in 2512 - allegedly for SysDef counter-piracy units - this deadly blade boasts an electronics warfare package that remains viable to this day."
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "dataknife"
+	item_state = "knife"
+	damage_force = 15
+	throw_force = 10
+	sharp = 1
+	edge = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	origin_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 4)
+	attack_verb = list("sliced", "chopped", "stabbed", "pierced")
+	tool_speed = 2 // Use a real axe if you want to chop logs.
+	gps_tag = "UNKN"
+	hide_signal = TRUE
+	update_name_tag = FALSE
+
+/obj/item/gps/dataknife/is_multitool()
+	return TRUE

@@ -290,8 +290,7 @@
 	if(suiciding)
 		. += SPAN_WARNING("[T.He] appears to have commited suicide...  There is no hope of recovery.")
 
-
-//! I hate this. Though it's better than what it was before. -Zandario
+	//* I hate this. Though it's better than what it was before. -Zandario
 	var/message = FALSE
 	var/weight_examine = round(weight)
 	if(show_pudge()) //Some clothing or equipment can hide this.
@@ -323,7 +322,7 @@
 			else
 				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
 		. += message
-//! End of the bs
+	//* End of the bs
 
 	if(attempt_vr(src,"examine_bellies",args))
 		. += attempt_vr(src,"examine_bellies",args)
@@ -480,11 +479,6 @@
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
 
-	if(ooc_notes)
-		. += SPAN_BOLDNOTICE("OOC Notes: <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>")
-
-	. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
-
 	. += applying_pressure
 
 	var/show_descs = show_descriptors_to(user)
@@ -503,7 +497,7 @@
 		effect.on_examine(.)
 
 	// send signal last so everything else prioritizes above
-	. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];character_profile=1'>\[View Character Profile\]</a>")
+	. += SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.

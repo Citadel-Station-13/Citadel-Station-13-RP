@@ -9,7 +9,7 @@
 	density = FALSE // People can move pass these shields.
 	opacity = FALSE
 	anchored = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	layer = MOB_LAYER + 0.1
 	mouse_opacity = FALSE
 	var/obj/item/shield_projector/projector = null // The thing creating the shield.
@@ -112,7 +112,7 @@
 	START_PROCESSING(SSobj, src)
 	if(always_on)
 		create_shields()
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/moved_event)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(moved_event))
 	return ..()
 
 /obj/item/shield_projector/Destroy()
@@ -123,7 +123,7 @@
 
 /obj/item/shield_projector/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/moved_event)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(moved_event))
 
 /obj/item/shield_projector/dropped(mob/user, flags, atom/newLoc)
 	. = ..()

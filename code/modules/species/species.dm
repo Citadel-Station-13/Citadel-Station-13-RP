@@ -4,6 +4,8 @@
  * They are **not** singletons, however, they are globally cached as a static set
  * for use in preferences to determine default properties/whatever
  *
+ * todo: make them singletons
+ *
  * ? Someday we'll rework this. Someday. I believe.
  *
  * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
@@ -40,10 +42,18 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
-	//? Traits / Physiology
+	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
-	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+	/// physiology modifier to add - path or instance
+	var/datum/physiology_modifier/mob_physiology_modifier
+
+	//* Sprite Accessories *//
+	/// default sprite accessories for each slot; will render onto mobs if they don't have one specifically set.
+	/// set to id/typepath to have it resolved during init.
+	var/list/sprite_accessory_defaults = list()
+
+	// todo: old code below
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -113,20 +123,6 @@
 	/// The basic skin colours this species uses.
 	var/list/base_skin_colours
 
-	//? Tail
-	/// Name of tail state in species effects icon file.
-	var/tail
-	/// If set, the icon to obtain tail animation states from.
-	var/tail_animation
-	var/tail_hair
-	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
-	var/icobase_tail = 0
-
-	//? Wing
-	var/wing_hair
-	var/wing
-	var/wing_animation
-	var/icobase_wing
 
 	//? Organs
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
@@ -197,7 +193,7 @@
 	var/max_additional_languages = 3
 	/// The languages the species can't speak without an assisted organ.
 	/// This list is a guess at things that no one other than the parent species should be able to speak
-	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_PROMETHEAN)
 
 	//? Cultures
 	/// default origin
@@ -312,7 +308,7 @@
 	/// Possible unarmed attacks that the mob will use in combat,
 	var/list/unarmed_types = list(
 		/datum/unarmed_attack,
-		/datum/unarmed_attack/bite
+		/datum/unarmed_attack/bite,
 	)
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null
@@ -347,15 +343,18 @@
 
 	//? Breath
 	/// Non-oxygen gas breathed, if any.
-	var/breath_type = /datum/gas/oxygen
+	var/breath_type = GAS_ID_OXYGEN
 	/// Poisonous air.
-	var/poison_type = /datum/gas/phoron
+	var/poison_type = GAS_ID_PHORON
 	/// Exhaled gas type.
-	var/exhale_type = /datum/gas/carbon_dioxide
+	var/exhale_type = GAS_ID_CARBON_DIOXIDE
 
 	/// Species will try to stabilize at this temperature. (also affects temperature processing)
+	/// Null to disable natural stabilization.
+	//  todo: shoo, needs to be organ/biology based
 	var/body_temperature = 310.15
 	/// Species will gain this much temperature every second
+	//  todo: shoo, needs to be organ/biology based
 	var/passive_temp_gain = 0
 
 	//? Cold Air
@@ -435,6 +434,7 @@
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
+	var/custom_ability_handler
 
 	//? on death drops
 	/// The color of the species flesh.
@@ -505,6 +505,8 @@
 			built += new path
 		abilities = built
 
+	sprite_accessory_defaults = resolve_sprite_accessory_key_list_inplace(sprite_accessory_defaults)
+
 /**
  * called when we apply to a mob
  *
@@ -526,6 +528,9 @@
 		H.gender = genders[1]
 
 	H.maxHealth = total_health
+
+	if(!isnull(mob_physiology_modifier))
+		H.add_physiology_modifier(mob_physiology_modifier)
 
 	add_inherent_verbs(H)
 
@@ -553,6 +558,9 @@
 	remove_inherent_verbs(H)
 	H.holder_type = null
 
+	if(!isnull(mob_physiology_modifier))
+		H.remove_physiology_modifier(mob_physiology_modifier)
+
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
@@ -567,10 +575,10 @@
 	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
-	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
-	/datum/gas/nitrogen = /obj/item/tank/emergency/nitrogen,
-	/datum/gas/phoron = /obj/item/tank/emergency/phoron,
-	/datum/gas/carbon_dioxide = /obj/item/tank/emergency/carbon_dioxide
+	GAS_ID_OXYGEN = /obj/item/tank/emergency/oxygen,
+	GAS_ID_NITROGEN = /obj/item/tank/emergency/nitrogen,
+	GAS_ID_PHORON = /obj/item/tank/emergency/phoron,
+	GAS_ID_CARBON_DIOXIDE = /obj/item/tank/emergency/carbon_dioxide
 ))
 
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
@@ -611,20 +619,32 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else if(synth)
 		new /obj/item/fbp_backup_cell(box)
 
-	box.calibrate_size()
+	box.obj_storage.fit_to_contents(no_shrink = TRUE)
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
 
 /**
  * called to ensure organs are consistent with our species's
  * this is a destructive operation and will erase old organs!
  */
-/datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
-
+/datum/species/proc/create_organs(var/mob/living/carbon/human/H, var/delete_nif = FALSE) //Handles creation of mob organs.
 	H.mob_size = mob_size
+
+	// if we have a NIF, unimplant it before it gets wiped
+	var/obj/item/nif/our_nif = H.nif
+	if(H.nif)
+		H.nif.unimplant(H)
+
+	// store the markings for each limb we have so we can apply them to our new limbs
+	var/list/temporary_marking_store = list()
+	for(var/limb_type in has_limbs)
+		var/obj/item/organ/external/existing_limb = H.organs_by_name[limb_type]
+		if(existing_limb && istype(existing_limb))
+			temporary_marking_store[limb_type] = existing_limb.markings
+
 	for(var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
@@ -648,6 +668,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			organ_data = has_limbs[O.parent_organ]
 			organ_data["has_children"] = organ_data["has_children"]+1
 
+		// check if we had an old limb of the same type that had markings
+		var/obj/item/organ/external/limb = O
+		var/markings_for_limb = temporary_marking_store[limb_type]
+		if(istype(O) && markings_for_limb)
+			limb.markings = markings_for_limb
+
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
 		var/obj/item/organ/O = new organ_type(H,1)
@@ -656,14 +682,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
-	if(H.nif)
-		var/type = H.nif.type
-		var/durability = H.nif.durability
-		var/list/nifsofts = H.nif.nifsofts
-		var/list/nif_savedata = H.nif.save_data.Copy()
-
-		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
-		nif.nifsofts = nifsofts
+	// if we had a NIF, decide if we want to delete it, or put it back
+	if(our_nif)
+		if(delete_nif)
+			QDEL_NULL(our_nif)
+		else
+			our_nif.quick_implant(H)
 
 	if(base_color)
 		H.r_skin = hex2num(copytext(base_color,2,4))
@@ -753,7 +777,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
-/datum/species/proc/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 // Used to update alien icons for aliens.
@@ -781,7 +805,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	for(var/datum/unarmed_attack/attack in unarmed_attacks)
 		if(!attack.is_usable(H))
 			continue
-		if(attack.shredding)
+		if(attack.damage_mode & DAMAGE_MODE_SHRED)
 			return 1
 
 	return 0
@@ -848,9 +872,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * clones us into a new datum
  */
-/datum/species/proc/clone()
+/datum/species/clone(include_contents)
 	var/datum/species/created = new type
 	created.copy_from(src)
+	return created
 
 /**
  * completely clones us from another species, updating the provided human in the process
@@ -872,9 +897,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	base_species = to_copy.name
 	icobase = to_copy.icobase
 	deform = to_copy.deform
-	tail = to_copy.tail
-	tail_animation = to_copy.tail_animation
-	icobase_tail = to_copy.icobase_tail
+	sprite_accessory_defaults = to_copy.sprite_accessory_defaults.Copy()
 	color_mult = to_copy.color_mult
 	primitive_form = to_copy.primitive_form
 	species_appearance_flags = to_copy.species_appearance_flags

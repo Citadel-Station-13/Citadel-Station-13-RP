@@ -47,7 +47,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/stolenpackage/attack_self(mob/user)
 	. = ..()
@@ -86,13 +86,6 @@
 		/obj/item/pda/clown,
 		/obj/item/pda/mime,
 		/obj/item/pda/syndicate,
-		/obj/item/mecha_parts/chassis/phazon,
-		/obj/item/mecha_parts/part/phazon_head,
-		/obj/item/mecha_parts/part/phazon_left_arm,
-		/obj/item/mecha_parts/part/phazon_left_leg,
-		/obj/item/mecha_parts/part/phazon_right_arm,
-		/obj/item/mecha_parts/part/phazon_right_leg,
-		/obj/item/mecha_parts/part/phazon_torso,
 		// /obj/item/bodysnatcher,
 		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/accessory/permit/gun,
@@ -115,6 +108,11 @@
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/flashbang/clusterbang,
 		/obj/item/grenade/spawnergrenade/spesscarp,
+		/obj/item/melee/energy/sword/ionic_rapier,
+		/obj/item/clothing/shoes/syndigaloshes,
+		/obj/item/storage/backpack/dufflebag/syndie,
+		/obj/item/binoculars,
+		/obj/item/storage/firstaid/combat,
 		/obj/item/melee/energy/sword,
 		/obj/item/melee/telebaton,
 		/obj/item/pen/reagent/paralysis,
@@ -126,7 +124,7 @@
 		/obj/item/reagent_containers/glass/beaker/neurotoxin,
 		/obj/item/hardsuit/combat,
 		/obj/item/shield/energy,
-		/obj/item/stamp/centcomm,
+		/obj/item/stamp/centcom,
 		/obj/item/stamp/oricon,
 		/obj/item/storage/fancy/cigar/havana,
 		/obj/item/storage/fancy/cigar/cohiba,
@@ -147,27 +145,27 @@
 /obj/item/storage/fancy/cigar/havana
 	name = "\improper Havana cigar case"
 	desc = "Save these for the fancy-pantses at the next CentCom black tie reception. You can't blow the smoke from such majestic stogies in just anyone's face."
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 7)
 
 /obj/item/storage/fancy/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar case"
 	desc = "If Havana cigars were meant for the black tie reception, then these are meant to be family heirlooms instead of being smoked. These are the pinnacle of smoking luxury, make no mistake."
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 7)
 
 /obj/item/storage/fancy/cigar/taj
 	name = "\improper S'rendarr's Hand case"
 	desc = "A luxury medicinal cigar exported from Adhomai. The trifecta flag on the case showing a symbol of unity amongst producers of S'rendarr's from all Tajaran nations."
 	icon_state = "cigarcase-taj"
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj = 7)
 
 /obj/item/storage/fancy/cigar/taj/premium
 	name = "\improper S'rendarr's Own case"
 	desc = "Truly luxurious medicinal cigars bearing the proof marks of the Confederate Commonwealth, the \"united\" galactic lobbying body of all three Tajaran states, marking these cigars as the best Adhomai has to offer."
 	icon_state = "cigarcase-tajalt"
-	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium)
+	insertion_whitelist = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium = 7)
 
 
@@ -177,7 +175,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycrate5"
 	item_state = "table_parts"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/stolenpackageplus/attack_self(mob/user)
 	. = ..()
@@ -193,13 +191,12 @@
 					/obj/item/clothing/suit/armor/laserproof,
 					/obj/item/chameleon,
 					/obj/item/pda/syndicate,
-					/obj/item/mecha_parts/chassis/phazon,
-					/obj/item/mecha_parts/part/phazon_head,
-					/obj/item/mecha_parts/part/phazon_left_arm,
-					/obj/item/mecha_parts/part/phazon_left_leg,
-					/obj/item/mecha_parts/part/phazon_right_arm,
-					/obj/item/mecha_parts/part/phazon_right_leg,
-					/obj/item/mecha_parts/part/phazon_torso,
+					/obj/item/storage/toolbox/syndicate/powertools,
+					/obj/item/storage/box/syndie_kit/space,
+					/obj/item/clothing/shoes/syndigaloshes,
+					/obj/item/clothing/suit/space/void/merc,
+					/obj/item/clothing/head/helmet/space/void/merc,
+					/obj/item/clothing/shoes/magboots/syndicate,
 					// /obj/item/bodysnatcher,
 					/obj/item/bluespace_harpoon,
 					/obj/item/clothing/accessory/permit/gun,
@@ -225,7 +222,7 @@
 					/obj/item/reagent_containers/glass/beaker/neurotoxin,
 					/obj/item/hardsuit/combat,
 					/obj/item/shield/energy,
-					/obj/item/stamp/centcomm,
+					/obj/item/stamp/centcom,
 					/obj/item/stamp/oricon,
 					/obj/item/storage/fancy/cigar/havana,
 					/obj/item/storage/fancy/cigar/cohiba,
@@ -233,6 +230,59 @@
 					/obj/item/storage/fancy/cigar/taj/premium,
 					/obj/item/storage/belt/spike_bandolier,
 					/obj/random/weapon/guarenteed)
+	new loot(usr.drop_location())
+	to_chat(user, "You unwrap the package.")
+	qdel(src)
+
+/obj/item/mechasalvage
+	name = "mystery mech salvage"
+	desc = "An oil and rust stained 'box'."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "deliverycrate5"
+	item_state = "table_parts"
+	w_class = WEIGHT_CLASS_HUGE
+
+/obj/item/mechasalvage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	var/loot = pick(/obj/item/mecha_parts/chassis/phazon,
+		/obj/item/mecha_parts/part/phazon_head,
+		/obj/item/mecha_parts/part/phazon_left_arm,
+		/obj/item/mecha_parts/part/phazon_left_leg,
+		/obj/item/mecha_parts/part/phazon_right_arm,
+		/obj/item/mecha_parts/part/phazon_right_leg,
+		/obj/item/mecha_parts/part/phazon_torso,
+		/obj/item/mecha_parts/part/honker_torso,
+		/obj/item/mecha_parts/part/honker_head,
+		/obj/item/mecha_parts/part/honker_left_arm,
+		/obj/item/mecha_parts/part/honker_left_leg,
+		/obj/item/mecha_parts/part/honker_right_arm,
+		/obj/item/mecha_parts/part/honker_right_leg,
+		/obj/item/mecha_parts/part/honker_armour,
+		/obj/item/mecha_parts/chassis/honker,
+		/obj/item/mecha_parts/part/reticent_torso,
+		/obj/item/mecha_parts/part/reticent_head,
+		/obj/item/mecha_parts/part/reticent_left_arm,
+		/obj/item/mecha_parts/part/reticent_left_leg,
+		/obj/item/mecha_parts/part/reticent_right_arm,
+		/obj/item/mecha_parts/part/reticent_right_leg,
+		/obj/item/mecha_parts/chassis/reticent,
+		/obj/item/mecha_parts/part/reticent_armour,
+		/obj/item/mecha_parts/part/durand_torso,
+		/obj/item/mecha_parts/part/durand_head,
+		/obj/item/mecha_parts/part/durand_left_arm,
+		/obj/item/mecha_parts/part/durand_left_leg,
+		/obj/item/mecha_parts/part/durand_right_arm,
+		/obj/item/mecha_parts/part/durand_right_leg,
+		/obj/item/mecha_parts/chassis/durand,
+		/obj/item/mecha_parts/part/gygax_torso,
+		/obj/item/mecha_parts/part/gygax_head,
+		/obj/item/mecha_parts/part/gygax_left_arm,
+		/obj/item/mecha_parts/part/gygax_left_leg,
+		/obj/item/mecha_parts/part/gygax_right_arm,
+		/obj/item/mecha_parts/part/gygax_right_leg,
+		/obj/item/mecha_parts/chassis/serenity)
 	new loot(usr.drop_location())
 	to_chat(user, "You unwrap the package.")
 	qdel(src)

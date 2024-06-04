@@ -6,7 +6,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/random_cliff)
 "c" = (
-/obj/item/ore,
+/obj/item/stack/ore,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/random_cliff)
 "d" = (

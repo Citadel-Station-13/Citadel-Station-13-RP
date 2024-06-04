@@ -6,7 +6,7 @@
 	// This is because the logic for being unconscious from damage is, for some reason, in UI. //
 	handle_regular_UI_updates()
 
-/mob/living/carbon/human/rejuvenate(fix_missing, reset_to_slot)
+/mob/living/carbon/human/rejuvenate(fix_missing, reset_to_slot, var/delete_nif = FALSE)
 	. = ..()
 	if(!.)
 		return
@@ -16,7 +16,7 @@
 
 	// todo: this obviously doesn't respect reset_to_slot.
 	if(fix_missing || reset_to_slot)
-		species.create_organs(src)
+		species.create_organs(src, delete_nif)
 		restore_all_organs()
 		client?.prefs?.copy_to(src)
 		if(dna)

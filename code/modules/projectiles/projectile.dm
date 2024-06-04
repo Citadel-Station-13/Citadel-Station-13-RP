@@ -8,9 +8,10 @@
 	icon_state = "bullet"
 	density = FALSE
 	anchored = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	pass_flags = ATOM_PASS_TABLE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	depth_level = INFINITY // nothing should be passing over us from depth
 
 	////TG PROJECTILE SYTSEM
 	//Projectile stuff
@@ -27,7 +28,7 @@
 	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 	var/ignore_source_check = FALSE
 
-	var/speed = 0.8			//Amount of deciseconds it takes for projectile to travel
+	var/speed = 0.55			//Amount of deciseconds it takes for projectile to travel
 	var/Angle = 0
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
@@ -154,7 +155,6 @@
 
 	var/temporary_unstoppable_movement = FALSE
 	var/no_attack_log = FALSE
-	var/hitsound
 
 /obj/projectile/proc/Range()
 	range--
@@ -540,6 +540,8 @@
 	if(target.density)		//This thing blocks projectiles, hit it regardless of layer/mob stuns/etc.
 		return TRUE
 	if(!isliving(target))
+		if(direct_target)
+			return TRUE
 		if(target.layer < PROJECTILE_HIT_THRESHOLD_LAYER)
 			return FALSE
 	else
@@ -800,3 +802,18 @@
  */
 /obj/projectile/proc/get_final_damage(atom/target)
 	return run_damage_vulnerability(target)
+
+//? Targeting
+
+/**
+ * Checks if something is a valid target when directly clicked.
+ */
+/obj/projectile/proc/is_valid_target(atom/target)
+	if(isobj(target))
+		var/obj/O = target
+		return O.obj_flags & OBJ_RANGE_TARGETABLE
+	else if(isliving(target))
+		return TRUE
+	else if(isturf(target))
+		return target.density
+	return FALSE

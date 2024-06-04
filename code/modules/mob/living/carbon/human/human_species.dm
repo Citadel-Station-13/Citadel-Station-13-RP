@@ -81,3 +81,12 @@
 
 /mob/living/carbon/human/adherent
 	species = /datum/species/adherent
+
+/mob/living/carbon/human/krisitik
+	species = /datum/species/krisitik
+
+/mob/living/carbon/human/skeleton
+	species = /datum/species/skeleton
+
+/mob/living/carbon/human/shadow
+	species = /datum/species/shadow

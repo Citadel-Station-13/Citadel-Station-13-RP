@@ -1,10 +1,8 @@
 /obj/structure/closet/secure_closet/guncabinet
 	name = "gun cabinet"
 	icon = 'icons/obj/guncabinet.dmi'
+	closet_appearance = null
 	icon_state = "base"
-	icon_off ="base"
-	icon_broken ="base"
-	icon_locked ="base"
 	icon_closed ="base"
 	icon_opened = "base"
 	req_one_access = list(ACCESS_SECURITY_ARMORY)
@@ -97,7 +95,7 @@
 	name = "expedition weaponry cabinet"
 	req_one_access = list(ACCESS_GENERAL_EXPLORER,ACCESS_SECURITY_ARMORY)
 
-/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
+/obj/structure/closet/secure_closet/guncabinet/excursion/legacy_spawn_contents()
 	for(var/i in 1 to 4)
 		new /obj/item/gun/energy/frontier/locked(src)
 	for(var/i in 1 to 4)

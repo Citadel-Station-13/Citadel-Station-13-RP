@@ -29,8 +29,8 @@
 	maxHealth = 175
 	health = 175
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 3
 	movement_sound = 'sound/effects/houndstep.ogg'
@@ -72,8 +72,8 @@
 	maxHealth = 75
 	health = 75
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attacktext = "splatters on"
 	attack_sound = 'sound/effects/slime_squish.ogg'
 
@@ -108,8 +108,8 @@
 	maxHealth = 250
 	health = 250
  // Four attacks per second.
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 	attack_armor_pen = 50
 	base_attack_cooldown = 2.5
 	attack_sharp = 1
@@ -361,8 +361,8 @@
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 2
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 2
  // Four attacks per second.
 	base_attack_cooldown = 2.5
 	attack_sharp = 1
@@ -410,8 +410,8 @@
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
 	response_harm = "harmlessly punches"
 	harm_intent_damage = 0
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 15
 	attack_armor_pen = 20
 	mob_class = MOB_CLASS_ABERRATION
 	mob_size = MOB_HUGE
@@ -590,8 +590,8 @@
 	health = 1500
 	armor_legacy_mob = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
 	movement_cooldown = 4
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 25
 	attack_armor_pen = 25
 	base_attack_cooldown = 7
 

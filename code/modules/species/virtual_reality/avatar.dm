@@ -44,7 +44,7 @@
 /datum/species/shapeshifter/promethean/avatar/handle_death(var/mob/living/carbon/human/H)
 	return
 
-/datum/species/shapeshifter/promethean/avatar/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/promethean/avatar/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 /* NO. YOU CAN HAVE THIS BACK WHEN THIS DOESNT SWAP SPECIES TO CHANGE OPACITY
@@ -115,4 +115,4 @@
 
 	if(istype(vr_holder.loc, /obj/machinery/vr_sleeper))
 		var/obj/machinery/vr_sleeper/V = vr_holder.loc
-		INVOKE_ASYNC(V, /obj/machinery/vr_sleeper/proc/go_out, TRUE)
+		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/machinery/vr_sleeper, go_out), TRUE)

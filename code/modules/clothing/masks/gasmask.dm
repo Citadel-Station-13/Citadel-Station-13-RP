@@ -5,16 +5,16 @@
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	inv_hide_flags = HIDEEARS|HIDEEYES|HIDEFACE
 	body_cover_flags = FACE|EYES
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas_alt", SLOT_ID_LEFT_HAND = "gas_alt")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/mask/gas
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/list/filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide)
+	var/list/filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE)
 
-/obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
+/obj/item/clothing/mask/gas/process_air(datum/gas_mixture/air)
 	var/datum/gas_mixture/gas_filtered = new
 
 	for(var/g in filtered_gases)
@@ -45,7 +45,7 @@
 	icon_state = "halfgas"
 	siemens_coefficient = 0.7
 	body_cover_flags = FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/hanging = FALSE
 	inv_hide_flags = HIDEFACE
 	action_button_name = "Adjust Face Mask"
@@ -74,7 +74,7 @@
 		update_worn_icon()
 
 /obj/item/clothing/mask/gas/half/verb/toggle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust mask"
 	set src in usr
 	adjust_mask(usr)
@@ -107,7 +107,7 @@
 	atom_flags = PHORONGUARD
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
 	species_restricted = list(SPECIES_VOX)
-	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)
+	filtered_gases = list(GAS_ID_OXYGEN, GAS_ID_NITROUS_OXIDE)
 	var/mask_open = FALSE	// Controls if the Vox can eat through this mask
 	action_button_name = "Toggle Feeding Port"
 
@@ -127,7 +127,6 @@
 	if(.)
 		return
 	feeding_port(user)
-	..()
 
 /obj/item/clothing/mask/gas/zaddat
 	name = "Zaddat Veil"
@@ -136,16 +135,21 @@
 	item_state = "vax_mask"
 	//body_cover_flags = 0
 	species_restricted = list(SPECIES_ZADDAT)
+	filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE, GAS_ID_NITROGEN)
 	inv_hide_flags = HIDEEARS //semi-transparent
-	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/nitrogen)
 
 /obj/item/clothing/mask/gas/opaque
 	name = "Opaque Mask"
+	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply. Despite being stripped of all advanced technolgy, it still seems airtight."
+	icon_state = "opaque_mask"
+	inv_hide_flags = null
+
+/obj/item/clothing/mask/gas/opaque_nitrogen
+	name = "Opaque Mask - Oxygen Filter"
 	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply, often used by various alien races to filter out oxygen."
 	icon_state = "opaque_mask"
 	inv_hide_flags = null
-	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/oxygen)
-
+	filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE, GAS_ID_OXYGEN)
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"
@@ -364,7 +368,7 @@
 /obj/item/clothing/mask/gas/orchid/verb/toggle_design()
 
 	set name = "Change Design"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	change_mask(usr)

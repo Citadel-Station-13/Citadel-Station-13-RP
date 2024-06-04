@@ -3,24 +3,18 @@
 
 //## Core settings
 //! Fastboot flags - useful for debugging
-/// Disable automatic roundstart icon smoothing.
-// #define FASTBOOT_DISABLE_SMOOTHING (1<<0)
 /// Disable loading late maps.
-// #define FASTBOOT_DISABLE_LATELOAD (1<<1)
+// #define FASTBOOT_DISABLE_LATELOAD
+/// Disable automatic roundstart icon smoothing.
+// #define FASTBOOT_DISABLE_SMOOTHING
 /// Disable atmospherics zone build.
-// #define FASTBOOT_DISABLE_ZONES (1<<2)
-
-
-/// Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
-// #define DATUMVAR_DEBUGGING_MODE
-
+// #define FASTBOOT_DISABLE_ZONES
 
 /// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error.
 #ifdef DEBUG
 	#define USE_CUSTOM_ERROR_HANDLER
 	#define DEBUG_SHUTTLES
 #endif
-
 
 /**
  * By using the testing("message") proc you can create debug-feedback for people with this uncommented,
@@ -29,8 +23,6 @@
 // #define TESTING
 #ifdef TESTING
 	#warn compiling in TESTING mode. testing() debug messages will be visible.
-
-	#define DATUMVAR_DEBUGGING_MODE
 
 	/// Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while.
 	// #define REFERENCE_TRACKING
@@ -44,10 +36,10 @@
 
 		/// Run a lookup on things hard deleting by default.
 		// #define GC_FAILURE_HARD_LOOKUP
-		#ifdef GC_FAILURE_HARD_LOOKUP
-			/// Don't stop when searching, go till you're totally done.
-			#define FIND_REF_NO_CHECK_TICK
-		#endif //ifdef GC_FAILURE_HARD_LOOKUP
+
+		/// Don't stop when searching, go till you're totally done.
+		#define FIND_REF_NO_CHECK_TICK
+
 	#endif
 
 
@@ -78,13 +70,6 @@
  * We do not ship byond-tracy. Build it yourself here: https://github.com/mafemergency/byond-tracy/
  */
 // #define USE_BYOND_TRACY
-
-
-/**
- * If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
- */
-//#define DO_NOT_DEFER_ASSETS
-
 
 /**
  * If this is uncommented, Autowiki will generate edits and shut down the server.
@@ -126,12 +111,6 @@
 	 */
 	#define PRELOAD_RSC	2
 #endif
-
-
-#ifdef LOWMEMORYMODE
-	#define FORCE_MAP "_mapload/rift.json" //TODO: A PROPER runtime or ministation map. @Zandario
-#endif
-
 
 // ## CBT BUILD DEFINES
 
@@ -199,7 +178,12 @@
 	#define ZAS_BREAKPOINT_HOOKS
 #endif
 
+// ## Assets
 
+/**
+ * If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
+ */
+//#define DO_NOT_DEFER_ASSETS
 
 // ## Overlays
 /**

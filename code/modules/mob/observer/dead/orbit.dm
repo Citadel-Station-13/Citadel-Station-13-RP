@@ -6,7 +6,7 @@
 		qdel(src)
 	owner = new_owner
 
-/datum/orbit_menu/ui_state(mob/user)
+/datum/orbit_menu/ui_state()
 	return GLOB.observer_state
 
 /datum/orbit_menu/ui_interact(mob/user, datum/tgui/ui)
@@ -15,7 +15,7 @@
 		ui = new(user, src, "Orbit")
 		ui.open()
 
-/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -23,6 +23,8 @@
 		if("orbit")
 			var/ref = params["ref"]
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
+			if (poi == null)
+				poi = locate(ref) in SSshuttle.ships
 			if (poi == null)
 				. = TRUE
 				return
@@ -33,7 +35,7 @@
 			update_static_data()
 			. = TRUE
 
-/datum/orbit_menu/ui_data(mob/user)
+/datum/orbit_menu/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/players = list()
@@ -50,11 +52,17 @@
 		serialized["ref"] = REF(name)
 
 		var/mob/M = name
+
+		if(M == user)
+			continue//Should only really happen with observers, but just to be sure
+
 		if(!istype(M))
 			misc += list(serialized)
 			continue
 
 		if(isobserver(M))
+			if(M.invisibility >= INVISIBILITY_MAXIMUM)
+				continue
 			ghosts += list(serialized)
 		else if(issimple(M))
 			simplemobs += list(serialized)
@@ -64,6 +72,21 @@
 				npcs += list(serialized)
 			else
 				players += list(serialized)
+		else if(isrobot(M))
+			players += list(serialized)
+		else if(isAI(M))
+			players += list(serialized)
+		else if(istype(M, /mob/living/silicon/pai))
+			players += list(serialized)
+
+	for(var/obj/overmap/entity/visitable/ship/shuttle in SSshuttle.ships)
+		if(istype(shuttle))
+			var/list/serialized = list()
+			serialized["name"] = shuttle.name
+
+			serialized["ref"] = REF(shuttle)
+			items_of_interest += list(serialized)
+
 
 	data["players"] = players
 	data["simplemobs"] = simplemobs
@@ -74,6 +97,6 @@
 
 	return data
 
-/datum/orbit_menu/ui_assets(mob/user)
-	. = ..() || list()
-	. += get_asset_datum(/datum/asset/simple/orbit)
+/datum/orbit_menu/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/orbit
+	return ..()

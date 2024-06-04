@@ -1,4 +1,7 @@
 //! Language IDs
+//! Do not change these for lore / trivial reasons. These are internal UIDs and are NOT to be
+//! changed without a savefile update.
+
 //? Core
 /// everyone-general
 #define LANGUAGE_ID_COMMON "common"
@@ -20,8 +23,6 @@
 #define LANGUAGE_ID_ADHERENT "adherent"
 /// akula
 #define LANGUAGE_ID_AKULA "akula"
-/// altevians
-#define LANGUAGE_ID_ALTEVIAN "altevian"
 /// ????????
 #define LANGUAGE_ID_BIRDSONG "birdsong"
 /// aurils
@@ -42,6 +43,8 @@
 #define LANGUAGE_ID_NARAMADI "naramadi"
 /// phoronoids
 #define LANGUAGE_ID_PHORONOID "phoronoid"
+/// krisitik
+#define LANGUAGE_ID_SQUEAKISH "squeakish"
 /// shadekin
 #define LANGUAGE_ID_SHADEKIN_HIVEMIND "shadekin_global"
 /// skrell
@@ -70,6 +73,8 @@
 #define LANGUAGE_ID_VULPKANIN "vulpkanin"
 /// zaddat
 #define LANGUAGE_ID_ZADDAT "zaddat"
+/// promethean
+#define LANGUAGE_ID_PROMETHEAN "promethean"
 /// scori
 #define LANGUAGE_ID_SCORI "scori"
 /// keisani

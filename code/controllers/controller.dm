@@ -24,12 +24,23 @@
 	return
 
 
-/// When we enter dmm_suite.load_map
+/**
+ * called before we start loading a parsed map
+ *
+ * this can delay the loading process. this is **NOT** the denotation of starting a *semantic*
+ * map loading process - loading a single planet can call this dozens of times, as each
+ * submap is itself considered a mapload!
+ */
 /datum/controller/proc/StartLoadingMap()
 	return
 
-
-/// When we exit dmm_suite.load_map
+/**
+ * called after we stop loading a parsed map
+ *
+ * this can delay the loading process. this is **NOT** the denotation of stopping a *semantic*
+ * map loading process - loading a single planet can call this dozens of times, as each
+ * submap is itself considered a mapload!
+ */
 /datum/controller/proc/StopLoadingMap()
 	return
 

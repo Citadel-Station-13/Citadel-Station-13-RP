@@ -10,15 +10,15 @@
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
 	damage_force = 6
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	tool_sound = 'sound/items/screwdriver.ogg'
 	drop_sound = 'sound/items/drop/screwdriver.ogg'
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
-	matter = list(MAT_STEEL = 75)
+	materials_base = list(MAT_STEEL = 75)
 	attack_verb = list("stabbed")
 	sharp  = 1
 	tool_speed = 1
@@ -31,7 +31,6 @@
 	return(BRUTELOSS)
 
 /obj/item/tool/screwdriver/Initialize(mapload)
-	. = ..()
 	if(random_color)
 		switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 			if ("red")
@@ -59,6 +58,8 @@
 	if (prob(75))
 		src.pixel_y = rand(0, 16)
 
+	return ..()
+
 /obj/item/tool/screwdriver/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent != INTENT_HARM)
 		return ..()
@@ -81,6 +82,19 @@
 	icon_state = "screwdriver_brass"
 	tool_speed = 0.75
 	random_color = FALSE
+
+/obj/item/tool/screwdriver/clockwork
+	name = "clockwork screwdriver"
+	desc = "An all-brass screwdriver with what looks to be an uncut driver. Despite that, it seems to fit any channel it is put in."
+	icon = 'icons/obj/clockwork.dmi'
+	icon_state = "screwdriver_clock"
+	tool_sound = 'sound/machines/clockcult/integration_cog_install.ogg'
+	tool_speed = 0.1
+	random_color = FALSE
+
+/obj/item/tool/screwdriver/clockwork/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NEZBERE("When focused intensely upon, the screwdriver's head seems to shift between multiple states all at once, common and uncommon drivers for various screw channels. Additionally, when inserted into a screw channel, it exhibits intense magnetism.")
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_screwdriver
 	name = "Precursor Alpha Object - Hard Light Torgue Tool"
@@ -113,14 +127,12 @@
 	icon_state = "hybscrewdriver"
 	item_state = "screwdriver_black"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
-	slowdown = 0.1
-	w_class = ITEMSIZE_NORMAL
+	weight = ITEM_WEIGHT_HYBRID_TOOLS
+	w_class = WEIGHT_CLASS_NORMAL
 	tool_sound = 'sound/effects/uncloak.ogg'
 	tool_speed = 0.4
 	random_color = FALSE
 	reach = 2
-
-
 
 /obj/item/tool/screwdriver/cyborg
 	name = "powered screwdriver"
@@ -139,16 +151,16 @@
 	desc = "A simple powered hand drill. It's fitted with a screw bit."
 	icon_state = "drill_screw"
 	item_state = "drill"
-	matter = list(MAT_STEEL = 150, MAT_SILVER = 50)
+	materials_base = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
 	damage_force = 8
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 8
 	throw_speed = 2
 	throw_range = 3//it's heavier than a screw driver/wrench, so it does more damage, but can't be thrown as far
 	attack_verb = list("drilled", "screwed", "jabbed", "whacked")
-	hitsound = 'sound/items/drill_hit.ogg'
+	attack_sound = 'sound/items/drill_hit.ogg'
 	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.25
 	random_color = FALSE
@@ -184,7 +196,7 @@
 	icon_state = "crystal_screwdriver"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials_base = list(MATERIAL_CRYSTAL = 1250)
 	tool_speed = 0.2
 
 /obj/item/tool/screwdriver/crystal/Initialize()

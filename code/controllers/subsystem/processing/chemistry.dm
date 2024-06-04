@@ -17,8 +17,8 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 
 // honestly hate that we have to do this but some things INITIALIZE_IMMEDIATE so uh fuck me I guess!
 /datum/controller/subsystem/processing/chemistry/PreInit(recovering)
-	initialize_chemical_reactions()
 	initialize_chemical_reagents()
+	initialize_chemical_reactions()
 	return ..()
 
 /**
@@ -37,7 +37,7 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 	for(var/path in paths)
 		var/datum/chemical_reaction/D = new path
 		chemical_reactions += D
-	tim_sort(chemical_reactions, /proc/cmp_chemical_reaction_priority)
+	tim_sort(chemical_reactions, GLOBAL_PROC_REF(cmp_chemical_reaction_priority))
 	for(var/datum/chemical_reaction/D as anything in chemical_reactions)
 		if(!length(D.required_reagents))
 			continue
@@ -62,5 +62,5 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
  *
  * do not edit the returned instance, it is global!
  */
-/datum/controller/subsystem/processing/chemistry/proc/get_reagent(datum/reagent/id_or_path)
+/datum/controller/subsystem/processing/chemistry/proc/fetch_reagent(datum/reagent/id_or_path)
 	return reagent_lookup[ispath(id_or_path)? initial(id_or_path.id) : id_or_path]

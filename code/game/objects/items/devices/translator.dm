@@ -4,7 +4,7 @@
 	desc = "This handy device appears to translate the languages it hears into onscreen text for a user."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "translator"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	/// our translation context; set to path to start as path
 	var/datum/translation_context/context = /datum/translation_context/simple/universal_translator
@@ -25,7 +25,7 @@
 		set_context(context)
 
 /obj/item/universal_translator/Destroy()
-	if(context)
+	if(context && !ispath(context))
 		QDEL_NULL(context)
 	return ..()
 
@@ -38,7 +38,7 @@
 	context = context_or_path
 	if(istype(context, /datum/translation_context/variable/learning))
 		var/datum/translation_context/variable/learning/CTX = context
-		CTX.on_train = CALLBACK(src, .proc/on_learn)
+		CTX.on_train = CALLBACK(src, PROC_REF(on_learn))
 
 /obj/item/universal_translator/proc/on_learn(datum/translation_context/context, datum/language/L, old_efficiency)
 	if(old_efficiency)
@@ -158,7 +158,7 @@
 	name = "translator earpiece"
 	desc = "This handy device appears to translate the languages it hears into another language for a user."
 	icon_state = "earpiece"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	visual = 0
 	audio = 1

@@ -108,7 +108,7 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/overmap/visitable/ship/landable/tinycarrier,
+/obj/overmap/entity/visitable/ship/landable/tinycarrier,
 /turf/simulated/floor/tiled/monotile,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "an" = (
@@ -212,7 +212,7 @@
 	},
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "ay" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 24;
 	req_one_access = list()
@@ -290,11 +290,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aG" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -374,8 +370,6 @@
 /obj/structure/prop{
 	desc = "A man-sized pod for entering suspended animation. This one is room temperature.";
 	dir = 8;
-	icon = 'icons/obj/Cryogenic2.dmi';
-	icon_state = "cryopod_0";
 	name = "cryogenic freezer"
 	},
 /obj/effect/floor_decal/corner/brown/full{
@@ -507,11 +501,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "aZ" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light_switch{
@@ -660,7 +650,7 @@
 /obj/effect/floor_decal/corner/brown{
 	dir = 10
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -848,7 +838,7 @@
 "bB" = (
 /obj/structure/table/rack/steel,
 /obj/item/storage/toolbox/mechanical{
-	starts_with = list(/obj/item/tool/screwdriver,/obj/item/tool/wrench,/obj/item/tool/crowbar,/obj/item/analyzer,/obj/item/tool/wirecutters)
+	starts_with = list(/obj/item/tool/screwdriver,/obj/item/tool/wrench,/obj/item/tool/crowbar,/obj/item/atmos_analyzer,/obj/item/tool/wirecutters)
 	},
 /obj/item/t_scanner,
 /obj/effect/floor_decal/corner/orange{
@@ -915,11 +905,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bI" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
@@ -957,11 +943,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bM" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
@@ -986,7 +968,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bO" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 24;
 	req_one_access = list()
@@ -1014,8 +996,6 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/empty/phoron{
-	destroyed = 1;
-	health = 0;
 	icon_state = "orangeps-1"
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
@@ -1024,8 +1004,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bS" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
@@ -1046,10 +1025,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bV" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/alarms_hidden/west_mount,
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bW" = (
@@ -1090,7 +1066,6 @@
 /obj/structure/loot_pile/surface/drone{
 	density = 1;
 	dir = 8;
-	icon = 'icons/mob/animal_vr64x64.dmi';
 	icon_state = "drone";
 	pixel_x = -16;
 	pixel_y = -16
@@ -1129,7 +1104,7 @@
 /obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 4
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -1155,8 +1130,6 @@
 /obj/structure/prop{
 	desc = "A man-sized pod for entering suspended animation. This one is room temperature.";
 	dir = 8;
-	icon = 'icons/obj/Cryogenic2.dmi';
-	icon_state = "cryopod_0";
 	name = "cryogenic freezer"
 	},
 /obj/effect/floor_decal/corner/brown/full{

@@ -14,8 +14,87 @@
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   `major` TINYINT(3) unsigned NOT NULL,
   `minor` TINYINT(3) unsigned NOT NULL,
-  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- persistence --
+
+-- SSpersistence modules/bulk_entity
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_bulk_entity` (
+  `id` INT(24) NOT NULL AUTO_INCREMENT,
+  `generation` INT(11) NOT NULL,
+  `persistence_key` VARCHAR(64) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT,
+  `round_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX(`level_id`, `generation`, `persistence_key`),
+  INDEX(`level_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_level_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`, `level_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_map_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `map_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`, `map_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_static_global_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY(`generation`, `object_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/level_objects
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_dynamic_objects` (
+  `generation` INT(11) NOT NULL,
+  `object_id` INT(24) NOT NULL AUTO_INCREMENT,
+  `level_id` VARCHAR(64) NOT NULL,
+  `prototype_id` VARCHAR(256) NOT NULL,
+  `status` INT(24) NOT NULL DEFAULT 0,
+  `data` MEDIUMTEXT NOT NULL,
+  `x` INT(8) NOT NULL,
+  `y` INT(8) NoT NULL,
+  PRIMARY KEY(`object_id`, `generation`),
+  INDEX(`object_id`),
+  INDEX(`level_id`, `generation`),
+  INDEX(`prototype_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/spatial_metadata
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_level_metadata` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `saved` DATETIME NOT NULL,
+  `saved_round_id` INT(11) NOT NULL,
+  `level_id` VARCHAR(64) NOT NULL,
+  `data` MEDIUMTEXT NOT NULL,
+  `generation` INT(11) NOT NULL,
+  PRIMARY KEY(`level_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- SSpersistence modules/string_kv
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persistence_string_kv` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `modified` DATETIME NOT NULL,
+  `key` VARCHAR(64) NOT NULL,
+  `value` MEDIUMTEXT NULL,
+  `group` VARCHAR(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- photography --
@@ -49,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- players --
+-- Players --
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
@@ -74,9 +153,79 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   `flags` int(24) NOT NULL DEFAULT 0,
   `firstseen` datetime NOT NULL DEFAULT Now(),
   `lastseen` datetime NOT NULL,
+  `misc` MEDIUMTEXT NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Playtime / JEXP --
+
+--      Role Time Table - Master     --
+-- Stores total role time.           --
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime` (
+  `player` INT(11) NOT NULL,
+  `roleid` VARCHAR(64) NOT NULL,
+  `minutes` INT UNSIGNED NOT NULL,
+  PRIMARY KEY(`player`, `roleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--      Role Time - Logging       --
+-- Stores changes in role time    --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime_log` (
+  `player` INT(11),
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `roleid` VARCHAR(64) NOT NULL,
+  `delta` INT(11) NOT NULL,
+  `datetime` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  PRIMARY KEY (`id`),
+  KEY `player` (`player`),
+  KEY `roleid` (`roleid`),
+  KEY `datetime` (`datetime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DELIMITER $$
+CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
+END
+$$
+CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
+END
+$$
+CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
+END
+$$
+DELIMITER ;
+
+
+-- Preferences --
+
+-- Stores game preferences --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%game_preferences` (
+  `player` INT(11) NOT NULL,
+  `entries` MEDIUMTEXT NOT NULL,
+  `misc` MEDIUMTEXT NOT NULL,
+  `keybinds` MEDIUMTEXT NOT NULL,
+  `toggles` MEDIUMTEXT NOT NULL,
+  `modified` DATETIME NOT NULL,
+  `version` INT(11) NOT NULL,
+  PRIMARY KEY (`player`),
+  CONSTRAINT `linked_player` FOREIGN KEY (`player`)
+  REFERENCES `%_PREFIX_%player` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Security - Ipintel --
+
+--        Ipintel Cache Table       --
+-- Stores cache entries for IPIntel --
+-- IP is in INET_ATON.              --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%ipintel` (
+  `ip` INT(10) unsigned NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `intel` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ip`),
+  KEY `idx_ipintel` (`ip`, `intel`, `date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Table structure for table `round`
@@ -98,22 +247,11 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%round` (
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
-  `serverip` varchar(16) NOT NULL,
+  `serverip` varchar(45) NOT NULL,
   `ckey` varchar(32) NOT NULL,
-  `ip` varchar(16) NOT NULL,
+  `ip` varchar(45) NOT NULL,
   `computerid` varchar(32) NOT NULL,
   PRIMARY KEY(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Persistence - Object Storage: Strings --
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
-  `created` DATETIME NOT NULL DEFAULT Now(),
-  `modified` DATETIME NOT NULL,
-  `key` VARCHAR(64) NOT NULL,
-  `value` MEDIUMTEXT NULL,
-  `group` VARCHAR(64) NOT NULL,
-  `revision` INT(11) NOT NULL,
-  PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- /datum/character - Character Table --
@@ -241,13 +379,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%privacy` (
   `ckey` varchar(32) NOT NULL,
   `option` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE IF NOT EXISTS `%_PREFIX_%vr_player_hours` (
-  `ckey` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `department` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `hours` double NOT NULL,
-  PRIMARY KEY (`ckey`,`department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%death` (

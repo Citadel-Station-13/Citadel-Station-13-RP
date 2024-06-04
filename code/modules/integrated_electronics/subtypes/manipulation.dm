@@ -8,7 +8,7 @@
 	extended_desc = "The circuit accepts a 'dir' number as a direction to move towards.<br>\
 	Pulsing the 'step towards dir' activator pin will cause the machine to move one step in that direction, assuming it is not \
 	being held, or anchored in some way.  It should be noted that the ability to move is dependant on the type of assembly that this circuit inhabits; only drone assemblies can move."
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	complexity = 10
 	cooldown_per_use = 1
 	ext_cooldown = 4
@@ -509,7 +509,7 @@
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
-	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes, 100000, FALSE, /obj/item/stack, CALLBACK(src, .proc/is_insertion_ready), CALLBACK(src, .proc/AfterMaterialInsert))
+	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes, 100000, FALSE, /obj/item/stack, CALLBACK(src, PROC_REF(is_insertion_ready)), CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	materials.precise_insertion = TRUE
 	.=..()
 
@@ -598,6 +598,7 @@
 	var/max_items = 10
 
 /obj/item/integrated_circuit/manipulation/inserter/do_work(ord)
+	// todo: this doesn't even fucking work
 	if(ord == 1)
 		//There shouldn't be any target required to eject all contents
 		var/obj/item/target_obj = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
@@ -625,7 +626,7 @@
 			if(0)
 				if(A && isstorage(A) && Adjacent(A))
 					var/obj/item/storage/S = A
-					S.remove_from_storage(target_obj,drop_location())
+					S.obj_storage.try_remove(target_obj, drop_location())
 					activate_pin(2)
 					return TRUE
 				return
@@ -677,7 +678,7 @@
 		targx = target.loc.x
 		targy = target.loc.y
 		playsound(src, 'sound/items/drill_use.ogg',50,1)
-		addtimer(CALLBACK(src, .proc/drill), drill_delay)
+		addtimer(CALLBACK(src, PROC_REF(drill)), drill_delay)
 
 
 /obj/item/integrated_circuit/mining/mining_drill/proc/drill()
@@ -771,7 +772,7 @@
 
 	switch(ord)
 		if(1)
-			assembly.desc = get_pin_data(IC_INPUT, 1)
+			assembly.desc = sanitizeSafe(get_pin_data(IC_INPUT, 1), 2048)
 
 		else
 			set_pin_data(IC_OUTPUT, 1, assembly.desc)
@@ -814,7 +815,7 @@
 	The 'fire' activator will cause the mechanism to attempt to fire the weapon at the coordinates, if possible.  Note that the \
 	normal limitations to firearms, such as ammunition requirements and firing delays, still hold true if fired by the mechanism."
 	complexity = 20
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	size = 3
 	can_be_asked_input = TRUE
 	inputs = list(
@@ -988,7 +989,7 @@
 /// These procs do not relocate the grenade, that's the callers responsibility
 /obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/grenade/G)
 	attached_grenade = G
-	RegisterSignal(attached_grenade, COMSIG_PARENT_QDELETING, .proc/detach_grenade)
+	RegisterSignal(attached_grenade, COMSIG_PARENT_QDELETING, PROC_REF(detach_grenade))
 	size += G.w_class
 	desc += " \An [attached_grenade] is attached to it!"
 

@@ -77,7 +77,7 @@
 /obj/item/shield_projector/rectangle/mecha/Initialize(mapload)
 	. = ..()
 	my_mech = loc
-	RegisterSignal(my_mech, COMSIG_MOVABLE_MOVED, /obj/item/shield_projector/proc/update_shield_positions)
+	RegisterSignal(my_mech, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/obj/item/shield_projector, update_shield_positions))
 	update_shift(my_mech)
 
 /obj/item/shield_projector/rectangle/mecha/proc/update_shift(atom/movable/mech)
@@ -103,5 +103,7 @@
 	my_mech.use_power(OMNI_SHIELD_DRAIN)
 	if(!active && shield_health < shield_regen_amount)
 		my_mech.use_power(OMNI_SHIELD_DRAIN * 4)
+
+BLOCK_BYOND_BUG_2072419
 
 #undef OMNI_SHIELD_DRAIN

@@ -7,6 +7,9 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
+	depth_level = 8
+	depth_projected = TRUE
+	climb_allowed = TRUE
 	//blocks_emissive = FALSE
 	var/processing = FALSE
 
@@ -30,38 +33,9 @@
 	return TRUE
 
 /obj/machinery/computer/emp_act(severity)
-	if(prob(20/severity)) set_broken()
-	..()
-
-
-/obj/machinery/computer/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(25))
-				qdel(src)
-				return
-			if (prob(50))
-				for(var/x in verbs)
-					remove_obj_verb(src, x)
-				set_broken()
-		if(3.0)
-			if (prob(25))
-				for(var/x in verbs)
-					remove_obj_verb(src, x)
-				set_broken()
-		else
-	return
-
-/obj/machinery/computer/bullet_act(var/obj/projectile/Proj)
-	if(prob(Proj.get_structure_damage()))
+	if(prob(20/severity))
 		set_broken()
 	..()
-
-/obj/machinery/computer/blob_act()
-	legacy_ex_act(2)
 
 /obj/machinery/computer/update_icon()
 	cut_overlays()
@@ -106,6 +80,16 @@
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
+
+/obj/machinery/computer/drop_products(method, atom/where)
+	. = ..()
+	// todo: legacy-ish shitcode
+	if(machine_stat & BROKEN)
+		new /obj/item/material/shard(where)
+
+/obj/machinery/computer/atom_break()
+	. = ..()
+	set_broken()
 
 /obj/machinery/computer/proc/set_broken()
 	machine_stat |= BROKEN

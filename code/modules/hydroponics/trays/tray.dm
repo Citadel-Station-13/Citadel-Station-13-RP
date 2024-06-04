@@ -380,7 +380,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label()
 
 	set name = "Remove Label"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(usr.incapacitated())
@@ -396,7 +396,7 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/verb/setlight()
 	set name = "Set Light"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if(usr.incapacitated())
@@ -528,9 +528,8 @@
 
 		var/obj/item/storage/bag/plants/S = O
 		for (var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
-			if(!S.can_be_inserted(G))
-				return
-			S.handle_item_insertion(G, user, 1)
+			S.obj_storage.try_insert(G, new /datum/event_args/actor(user), TRUE, TRUE, TRUE)
+		S.obj_storage.ui_queue_refresh()
 
 	else if ( istype(O, /obj/item/plantspray) )
 		var/obj/item/plantspray/spray = O
@@ -642,7 +641,7 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb()
 	set name = "Toggle Tray Lid"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 	if(usr.incapacitated())
 		return

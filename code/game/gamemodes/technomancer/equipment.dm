@@ -53,7 +53,7 @@
 
 /datum/technomancer/equipment/recycling
 	name = "Recycling Core"
-	desc = "This core is optimized for energy efficency, being able to sometimes recover energy that would have been lost with other \
+	desc = "This core is optimized for energy efficiency, being able to sometimes recover energy that would have been lost with other \
 	cores.  Each time energy is spent, there is a 30% chance of recovering half of what was spent.<br>\
 	<font color='green'>Capacity: 12k</font><br>\
 	<font color='red'>Recharge: 40/s</font><br>\
@@ -91,7 +91,7 @@
 /datum/technomancer/equipment/overcharged
 	name = "Overcharged Core"
 	desc = "A core that was created in order to get the most power out of functions.  It does this by shoving the most power into \
-	those functions, so it is the opposite of energy efficent, however the enhancement of functions is second to none for other \
+	those functions, so it is the opposite of energy efficient, however the enhancement of functions is second to none for other \
 	cores.<br>\
 	<font color='red'>Capacity: 15k (effectively 7.5k)</font><br>\
 	<font color='red'>Recharge: 40/s</font><br>\
@@ -111,7 +111,7 @@
 	name = "hypo belt"
 	desc = "A medical belt designed to carry autoinjectors and other medical equipment."
 
-/obj/item/storage/belt/medical/technomancer/PopulateContents()
+/obj/item/storage/belt/medical/technomancer/legacy_spawn_contents()
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/burn(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/toxin(src)
@@ -133,9 +133,9 @@
 	name = "Belt of Holding"
 	desc = "Can hold more than you'd expect."
 	icon_state = "ems"
-	max_w_class = ITEMSIZE_NORMAL // Can hold normal sized items.
-	storage_slots = 14	// Twice the capacity of a typical belt.
-	max_storage_space = ITEMSIZE_COST_NORMAL * 14
+	max_single_weight_class = WEIGHT_CLASS_NORMAL // Can hold normal sized items.
+	max_items = 14	// Twice the capacity of a typical belt.
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14
 
 /datum/technomancer/equipment/thermals
 	name = "Thermoncle"

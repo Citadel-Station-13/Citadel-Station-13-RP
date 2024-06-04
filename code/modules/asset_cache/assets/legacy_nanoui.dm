@@ -1,12 +1,13 @@
-/datum/asset/simple/namespaced/nanoui
-	keep_local_name = TRUE
+/datum/asset_pack/simple/nanoui
+	absolute = TRUE
+	do_not_mangle = TRUE
+	do_not_separate = TRUE
 
-/datum/asset/simple/namespaced/nanoui/register()
+/datum/asset_pack/simple/nanoui/generate()
 	var/list/dirs = list(
 		"nano/css/",
 		"nano/images/",
 		"nano/images/status_icons/",
-		"nano/images/modular_computers/",
 		"nano/templates/",
 		"nano/js/",
 		"nano/js/libraries/",
@@ -23,4 +24,4 @@
 	for(var/path in directory_walk_exts(dirs, exts, 0))
 		var/fname = filepath_extract_name(path)
 		assets[fname] = file(path)
-	..()
+	return ..()

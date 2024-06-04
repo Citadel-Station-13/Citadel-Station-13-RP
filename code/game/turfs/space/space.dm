@@ -27,11 +27,11 @@
 	return
 
 /turf/space/Initialize(mapload)
-
 	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 
-	icon_state = SPACE_ICON_STATE(x, y, z)
+	// we have parallax and don't need this anymore
+	// icon_state = SPACE_ICON_STATE(x, y, z)
 
 	// We might be an edge
 	if(y == world.maxy || forced_dirs & NORTH)
@@ -44,27 +44,34 @@
 	else if(x == world.maxx || forced_dirs & EAST)
 		edge |= EAST
 
-	if(!HasBelow(z))
-		return INITIALIZE_HINT_NORMAL
-
-	var/turf/below = GetBelow(src)
-	if(isspaceturf(below))
-		return INITIALIZE_HINT_NORMAL
-
-	var/area/A = below.loc
-	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
-		return INITIALIZE_HINT_NORMAL
-
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
 
-	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
+	// todo: audit all this again
+	// tl;dr given we load maps at runtime now, the maploader will do changeturfing, which means
+	// we don't need to manually check all this in initialize
+	return INITIALIZE_HINT_NORMAL
+
+	// var/turf/below = below()
+	// if(isnull(below))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// if(isspaceturf(below))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// var/area/A = below.loc
+	// if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// return INITIALIZE_HINT_NORMAL
+	// todo: wtf happened there..?
+	// return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
 /turf/space/Destroy()
 	// Cleanup cached z_eventually_space values above us.
 	if (above)
 		var/turf/T = src
-		while ((T = GetAbove(T)))
+		while ((T = T.above()))
 			T.z_eventually_space = FALSE
 	return ..()
 
@@ -126,7 +133,7 @@
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
 
 	if(istype(C, /obj/item/stack/tile/roofing))
-		var/turf/T = GetAbove(src)
+		var/turf/T = above()
 		var/obj/item/stack/tile/roofing/R = C
 
 		// Patch holes in the ceiling
@@ -156,7 +163,7 @@
 	. = ..()
 
 	if(edge)
-		addtimer(CALLBACK(src, .proc/on_atom_edge_touch, A), 0)
+		addtimer(CALLBACK(src, PROC_REF(on_atom_edge_touch), A), 0)
 
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))

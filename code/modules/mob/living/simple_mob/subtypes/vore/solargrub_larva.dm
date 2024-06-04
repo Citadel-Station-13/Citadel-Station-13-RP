@@ -13,8 +13,8 @@ var/global/list/grub_machine_overlays = list()
 	maxHealth = 5
 	movement_cooldown = 3
 
-	melee_damage_lower = 1	// This is a tiny worm. It will nibble and thats about it.
-	melee_damage_upper = 1
+	legacy_melee_damage_lower = 1	// This is a tiny worm. It will nibble and thats about it.
+	legacy_melee_damage_upper = 1
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
@@ -28,7 +28,7 @@ var/global/list/grub_machine_overlays = list()
 
 	mob_size = MOB_MINISCULE
 	pass_flags = ATOM_PASS_TABLE
-	can_pull_size = ITEMSIZE_TINY
+	can_pull_size = WEIGHT_CLASS_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	density = 0
 
@@ -95,7 +95,7 @@ var/global/list/grub_machine_overlays = list()
 
 	if(istype(loc, /obj/machinery))
 		// to anyone who sees me on git blame, i'm not responsible for this shit code ~silicons
-		if(machine_effect && (air_master.current_cycle % 30))
+		if(machine_effect && (SSair.current_cycle % 30))
 			for(var/mob/M in GLOB.player_list)
 				SEND_IMAGE(M, machine_effect)
 		if(prob(10))
@@ -215,10 +215,9 @@ var/global/list/grub_machine_overlays = list()
 	var/list/ignored_targets = list()
 
 /datum/ai_holder/simple_mob/solargrub_larva/list_targets()
-	var/static/potential_targets = typecacheof(list(/obj/machinery))
 	var/list/actual_targets = list()
 
-	for(var/AT in typecache_filter_list(range(vision_range, holder), potential_targets))
+	for(var/AT in typecache_filter_list(range(vision_range, holder), GLOB.typecache_machine))
 		var/obj/machinery/M = AT
 		if(istype(M, /obj/machinery/atmospherics/component/unary/vent_pump))
 			var/obj/machinery/atmospherics/component/unary/vent_pump/V = M

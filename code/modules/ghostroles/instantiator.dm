@@ -24,6 +24,23 @@
 /datum/ghostrole_instantiator/proc/AfterSpawn(mob/created, mob/living/carbon/human/H, list/params)
 	SHOULD_CALL_PARENT(TRUE)
 
+/**
+ * For mobs already present in the world that players can take control of.
+ */
+/datum/ghostrole_instantiator/existing
+	var/existing_mob
+
+/datum/ghostrole_instantiator/existing/Create(client/C, atom/location, list/params)
+	var/mob/M = GetMob(C, location, params)
+	if(!istype(M, /mob/living))
+		CRASH("Invalid atom or does not exist: [M]")
+	for(var/trait in mob_traits)
+		ADD_TRAIT(M, trait, GHOSTROLE_TRAIT)
+	return M
+
+/datum/ghostrole_instantiator/existing/proc/GetMob(client/C, atom/location, list/params)
+	return params["mob"] || existing_mob
+
 /datum/ghostrole_instantiator/simple
 	var/mob_type
 
@@ -95,7 +112,7 @@
 /datum/ghostrole_instantiator/human/random/AfterSpawn(mob/created, list/params)
 	. = ..()
 	if(can_change_appearance) //I think it's either this or the line above.
-		INVOKE_ASYNC(src, /datum/ghostrole_instantiator/human/random/proc/PickAppearance, created, params)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/ghostrole_instantiator/human/random, PickAppearance), created, params)
 
 /datum/ghostrole_instantiator/human/random/proc/PickAppearance(mob/living/carbon/human/H)
 	var/new_name = input(H, "Your mind feels foggy, and you recall your name might be [H.real_name]. Would you like to change your name?")
@@ -161,7 +178,6 @@
 	//var/species_restricted = null
 
 /datum/ghostrole_instantiator/human/player_static/Create(client/C, atom/location, list/params)
-	var/mob/living/carbon/human/H = ..()
 	var/list/errors = list()
 	// todo: respect warnings; we ignore them right now so we don't block joins.
 	if(!C.prefs.spawn_checks(PREF_COPY_TO_FOR_GHOSTROLE | PREF_COPY_TO_NO_CHECK_SPECIES, errors))
@@ -172,6 +188,7 @@
 		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return
 
+	var/mob/living/carbon/human/H = ..()
 	LoadSavefile(C, H)
 	return H
 

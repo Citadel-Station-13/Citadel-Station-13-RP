@@ -58,12 +58,12 @@
 	taser_kill = FALSE
 	movement_cooldown = 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"
@@ -179,12 +179,12 @@
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
 	movement_cooldown = 4
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"
@@ -210,7 +210,7 @@
 	if(istype(O, /obj/item/tool/wirecutters) && rideable)
 		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
 		rideable = 0
-		DelComponent(/datum/component/riding_handler/shank)
+		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/shank)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/shank(T)
 	if(istype(O, /obj/item/pen/charcoal) && rideable)

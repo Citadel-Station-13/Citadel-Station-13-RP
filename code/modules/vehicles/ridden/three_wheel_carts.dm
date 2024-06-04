@@ -4,7 +4,7 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "changeme"
 	integrity = 200
-	max_integrity = 200
+	integrity_max = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/cart
 
 
@@ -47,7 +47,7 @@
 	desc = "The Security Cart Key used to start it."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "securikey"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 
 /obj/vehicle/ridden/cart/medical
@@ -61,4 +61,4 @@
 	desc = "The Medical Cart Key used to start it."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "medikey"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY

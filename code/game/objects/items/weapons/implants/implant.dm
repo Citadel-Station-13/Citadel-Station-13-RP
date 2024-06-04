@@ -6,7 +6,7 @@
 	name = "implant"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "implant"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/implanted = null
 	var/mob/imp_in = null
 	var/obj/item/organ/external/part
@@ -55,7 +55,10 @@
 /obj/item/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
 	to_chat(imp_in, "<span class='warning'>You feel something melting inside [part ? "your [part.name]" : "you"]!</span>")
 	if (part)
-		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
+		part.inflict_bodypart_damage(
+			burn = 15,
+			weapon_descriptor = "component meltdown",
+		)
 	else
 		var/mob/living/M = imp_in
 		M.apply_damage(15,BURN)
@@ -67,7 +70,6 @@
 /obj/item/implant/proc/implant_loadout(var/mob/living/carbon/human/H)
 	if(H)
 		if(handle_implant(H, initialize_loc))
-			invisibility = initial(invisibility)
 			post_implant(H)
 
 /obj/item/implant/Destroy()
@@ -417,7 +419,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/loyalty/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] Employee Management Implant<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] Employee Management Implant<BR>
 <b>Life:</b> Ten years.<BR>
 <b>Important Notes:</b> Personnel injected with this device tend to be much more loyal to the company.<BR>
 <HR>
@@ -434,13 +436,13 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	var/mob/living/carbon/human/H = M
 	var/datum/antagonist/antag_data = get_antag_data(H.mind.special_role)
 	if(antag_data && (antag_data.flags & ANTAG_IMPLANT_IMMUNE))
-		H.visible_message("[H] seems to resist the implant!", "You feel the corporate tendrils of [GLOB.using_map.company_name] try to invade your mind!")
+		H.visible_message("[H] seems to resist the implant!", "You feel the corporate tendrils of [(LEGACY_MAP_DATUM).company_name] try to invade your mind!")
 		. = FALSE
 
 /obj/item/implant/loyalty/post_implant(mob/M)
 	var/mob/living/carbon/human/H = M
 	clear_antag_roles(H.mind, 1)
-	to_chat(H, "<span class='notice'>You feel a surge of loyalty towards [GLOB.using_map.company_name].</span>")
+	to_chat(H, "<span class='notice'>You feel a surge of loyalty towards [(LEGACY_MAP_DATUM).company_name].</span>")
 
 //////////////////////////////
 //	Adrenaline Implant
@@ -491,7 +493,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/death_alarm/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
 <b>Life:</b> Activates upon death.<BR>
 <b>Important Notes:</b> Alerts crew to crewmember death.<BR>
 <HR>
@@ -515,32 +517,17 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	var/area/t = get_area(M)
 	switch (cause)
 		if("death")
-			var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
 			if(istype(t, /area/syndicate_station) || istype(t, /area/syndicate_mothership) || istype(t, /area/shuttle/syndicate_elite) )
 				//give the syndies a bit of stealth
-				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm")
-//				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Security")
-//				a.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm", "Medical")
+				GLOB.global_announcer.autosay("[mobname] has died in Space!", "[mobname]'s Death Alarm")
 			else
-				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
-//				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Security")
-//				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Medical")
-			qdel(a)
-			STOP_PROCESSING(SSobj, src)
+				GLOB.global_announcer.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
 		if ("emp")
-			var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
 			var/name = prob(50) ? t.name : pick(teleportlocs)
-			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
-//			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm", "Security")
-//			a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm", "Medical")
-			qdel(a)
+			GLOB.global_announcer.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
 		else
-			var/obj/item/radio/headset/a = new /obj/item/radio/headset/heads/captain(null)
-			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
-//			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Security")
-//			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Medical")
-			qdel(a)
-			STOP_PROCESSING(SSobj, src)
+			GLOB.global_announcer.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/implant/death_alarm/emp_act(severity)			//for some reason alarms stop going off in case they are emp'd, even without this
 	if (malfunction)		//so I'm just going to add a meltdown chance here
@@ -576,7 +563,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/compressed/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> [GLOB.using_map.company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
+<b>Name:</b> [(LEGACY_MAP_DATUM).company_name] \"Profit Margin\" Class Employee Lifesign Sensor<BR>
 <b>Life:</b> Activates upon death.<BR>
 <b>Important Notes:</b> Alerts crew to crewmember death.<BR>
 <HR>

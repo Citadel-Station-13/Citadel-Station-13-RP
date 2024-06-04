@@ -13,7 +13,7 @@
 
 /obj/item/clothing/glasses/hud/health/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/medical), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "Prescription Health Scanner HUD"
@@ -31,7 +31,7 @@
 
 /obj/item/clothing/glasses/hud/security/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/security/advanced), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "Prescription Security HUD"
@@ -66,7 +66,7 @@
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(DATA_HUD_ID_JOB), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/job_id), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
@@ -144,7 +144,7 @@
 
 /obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/job_id, /datum/atom_hud/data/human/medical), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
 	if(tgarscreen)
@@ -163,7 +163,7 @@
 
 /obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/security/advanced), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
 	if(arscreen)
@@ -219,7 +219,7 @@
 
 /obj/item/clothing/glasses/omnihud/eng/meson/verb/toggleprojector()
 	set name = "Toggle projector"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -262,7 +262,7 @@
 
 /obj/item/clothing/glasses/omnihud/all/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(/datum/atom_hud/data/human/security/advanced, /datum/atom_hud/data/human/medical), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/eyepatch
     name = "Security Hudpatch"
@@ -275,7 +275,7 @@
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
 	set name = "Switch Eyepatch"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -306,7 +306,7 @@
 
 /obj/item/clothing/glasses/hud/engi/eyepatch/verb/toggleprojector()
 	set name = "Toggle projector"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return

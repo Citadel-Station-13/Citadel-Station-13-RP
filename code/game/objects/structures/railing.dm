@@ -5,14 +5,18 @@
 	icon = 'icons/obj/railing.dmi'
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK | ATOM_PASS_BUCKLED
-	climbable = TRUE
+	climb_allowed = TRUE
+	depth_level = 24
 	layer = WINDOW_LAYER
 	anchored = TRUE
 	atom_flags = ATOM_BORDER
 	icon_state = "railing0"
+
+	integrity = 150
+	integrity_max = 150
+	hit_sound_brute = 'sound/effects/grillehit.ogg'
+
 	var/broken = FALSE
-	var/health = 70
-	var/maxhealth = 70
 	var/check = 0
 
 /obj/structure/railing/grey
@@ -25,8 +29,6 @@
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
 		anchored = 0
-	if(climbable)
-		add_obj_verb(src, /obj/structure/proc/climb_on)
 	if(src.anchored)
 		update_icon(0)
 
@@ -46,26 +48,11 @@
 		return TRUE
 	if(!(get_dir(src, newLoc) & dir))
 		return TRUE
+	if(isliving(mover))
+		var/mob/living/L = mover
+		if((L.depth_current >= depth_level) && !(obj_flags & OBJ_IGNORE_MOB_DEPTH))
+			return TRUE
 	return !density
-
-/obj/structure/railing/examine(mob/user, dist)
-	. = ..()
-	if(health < maxhealth)
-		switch(health / maxhealth)
-			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
-			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
-			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few scrapes and dents.</span>"
-
-/obj/structure/railing/take_damage(amount)
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		new /obj/item/stack/rods(get_turf(src))
-		qdel(src)
 
 /obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
 	check = 0
@@ -137,7 +124,7 @@
 
 /obj/structure/railing/verb/rotate_counterclockwise()
 	set name = "Rotate Railing Counter-Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.incapacitated())
@@ -156,7 +143,7 @@
 
 /obj/structure/railing/verb/rotate_clockwise()
 	set name = "Rotate Railing Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.incapacitated())
@@ -175,7 +162,7 @@
 
 /obj/structure/railing/verb/flip() // This will help push railing to remote places, such as open space turfs
 	set name = "Flip Railing"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.incapacitated())
@@ -198,6 +185,16 @@
 	update_icon()
 	return
 
+/obj/structure/railing/welder_act(obj/item/I, mob/user, flags, hint)
+	if(integrity >= integrity_max)
+		user.action_feedback(SPAN_WARNING("[src] is at full health."), src)
+		return FALSE
+	if(!use_welder(I, user, flags, 2 SECONDS, 1, TOOL_USAGE_REPAIR | TOOL_USAGE_BUILDING_FRAMEWORK))
+		return FALSE
+	user.visible_action_feedback(SPAN_NOTICE("[user] repairs some damage to [src]."), src, MESSAGE_RANGE_CONSTRUCTION)
+	heal_integrity(integrity_max * 0.2)
+	return TRUE
+
 /obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(W.is_wrench() && !anchored)
@@ -207,16 +204,6 @@
 			new /obj/item/stack/material/steel(get_turf(usr), 2)
 			qdel(src)
 			return
-
-	// Repair
-	if(health < maxhealth && istype(W, /obj/item/weldingtool))
-		var/obj/item/weldingtool/F = W
-		if(F.welding)
-			playsound(src.loc, F.tool_sound, 50, 1)
-			if(do_after(user, 20, src))
-				user.visible_message("<span class='notice'>\The [user] repairs some damage to \the [src].</span>", "<span class='notice'>You repair some damage to \the [src].</span>")
-				health = min(health+(maxhealth/5), maxhealth) // 20% repair per application
-				return
 
 	// Install
 	if(W.is_screwdriver())
@@ -239,9 +226,10 @@
 				return
 			if (G.state < 2)
 				if(user.a_intent == INTENT_HARM)
-					if (prob(15))	M.afflict_paralyze(20 * 5)
+					if (prob(15))
+						M.afflict_paralyze(20 * 5)
 					M.apply_damage(8,def_zone = "head")
-					take_damage(8)
+					damage_integrity(8)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
 					playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
 				else
@@ -256,67 +244,19 @@
 				visible_message("<span class='danger'>[G.assailant] throws [G.affecting] over \the [src]!</span>")
 			qdel(W)
 			return
-
-	else
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		take_damage(W.damage_force)
-		user.setClickCooldown(user.get_attack_speed(W))
-
 	return ..()
 
 /obj/structure/railing/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
-			return
 		if(2.0)
 			qdel(src)
-			return
 		if(3.0)
 			qdel(src)
-			return
-		else
-	return
-
-// Duplicated from structures.dm, but its a bit different.
-/obj/structure/railing/do_climb(var/mob/living/user)
-	if(!can_climb(user))
-		return
-
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
-	climbers |= user
-
-	if(!do_after(user,(issmall(user) ? 20 : 34)))
-		climbers -= user
-		return
-
-	if(!can_climb(user, post_climb_check=1))
-		climbers -= user
-		return
-
-	if(get_turf(user) == get_turf(src))
-		usr.locationTransitForceMove(get_step(src, src.dir), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
-	else
-		usr.locationTransitForceMove(get_turf(src), allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
-
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
-	if(!anchored)	take_damage(maxhealth) // Fatboy
-	climbers -= user
-
-/obj/structure/railing/can_climb(var/mob/living/user, post_climb_check=0)
-	if(!..())
-		return 0
-
-	// Normal can_climb() handles climbing from adjacent turf onto our turf.  But railings also allow climbing
-	// from our turf onto an adjacent! If that is the case we need to do checks for that too...
-	if(get_turf(user) == get_turf(src))
-		var/obj/occupied = neighbor_turf_impassable()
-		if(occupied)
-			to_chat(user, "<span class='danger'>You can't climb there, there's \a [occupied] in the way.</span>")
-			return 0
-	return 1
 
 // TODO - This here might require some investigation
+// todo: no, this here needs to be thrown out, we have depth system now
 /obj/structure/proc/neighbor_turf_impassable()
 	var/turf/T = get_step(src, src.dir)
 	if(!T || !istype(T))
@@ -326,6 +266,10 @@
 	for(var/obj/O in T.contents)
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
-			if(S.climbable) continue
+			if(S.climb_allowed)
+				continue
 		if(O && O.density && !(O.atom_flags & ATOM_BORDER && !(turn(O.dir, 180) & dir)))
 			return O
+
+/obj/structure/railing/do_climb_target(mob/living/climber)
+	return climber.loc == get_turf(src)? get_step(src, dir) : ..()

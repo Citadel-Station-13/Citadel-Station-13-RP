@@ -39,7 +39,7 @@ var/global/list/active_radio_jammers = list()
 	QDEL_NULL(power_source)
 	return ..()
 
-/obj/item/radio_jammer/get_cell()
+/obj/item/radio_jammer/get_cell(inducer)
 	return power_source
 
 /obj/item/radio_jammer/proc/turn_off(mob/user)

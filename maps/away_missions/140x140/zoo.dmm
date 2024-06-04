@@ -1018,7 +1018,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "de" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(160)
 	},
@@ -1808,7 +1808,7 @@
 /area/awaymission/zoo/tradeship)
 "fq" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
@@ -1905,9 +1905,8 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "fI" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1937,7 +1936,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "fO" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(160)
 	},
@@ -2192,7 +2191,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "gx" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "gy" = (
@@ -2352,22 +2351,18 @@
 "hb" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2418,16 +2413,13 @@
 "hh" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2436,11 +2428,9 @@
 "hi" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2449,16 +2439,13 @@
 "hj" = (
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -2481,17 +2468,14 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2585,12 +2569,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -2629,17 +2611,14 @@
 "hI" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3273,12 +3252,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3287,16 +3264,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3311,16 +3285,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3329,12 +3300,10 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3349,11 +3318,9 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3362,11 +3329,9 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3375,16 +3340,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3393,16 +3355,13 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /turf/simulated/floor/plating,
@@ -3440,8 +3399,7 @@
 /area/awaymission/zoo)
 "jq" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3467,8 +3425,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
@@ -3744,8 +3701,7 @@
 /area/awaymission/zoo)
 "ki" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
@@ -3753,8 +3709,7 @@
 /area/awaymission/zoo)
 "kj" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
@@ -4145,7 +4100,6 @@
 	},
 /obj/structure/showcase{
 	desc = "It looks almost lifelike.";
-	icon = 'icons/obj/statue.dmi';
 	icon_state = "monkey";
 	name = "Statue"
 	},
@@ -4373,8 +4327,7 @@
 /area/awaymission/zoo)
 "mk" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/holofloor/beach/sand{
@@ -4383,8 +4336,7 @@
 /area/awaymission/zoo)
 "ml" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/holofloor/beach/sand{
@@ -4422,17 +4374,14 @@
 "mr" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4444,12 +4393,10 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4471,12 +4418,10 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4519,17 +4464,14 @@
 "my" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4538,11 +4480,9 @@
 "mz" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4551,12 +4491,10 @@
 "mA" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4568,8 +4506,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4577,8 +4514,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4589,8 +4525,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4600,8 +4535,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4630,12 +4564,10 @@
 "mL" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4644,11 +4576,9 @@
 "mM" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4657,16 +4587,13 @@
 "mN" = (
 /obj/structure/window/phoronreinforced{
 	dir = 4;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4679,8 +4606,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4691,8 +4617,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -4731,16 +4656,13 @@
 "mW" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 1;
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/window/phoronreinforced{
-	maxhealth = 10000;
 	name = "robust borosilicate window"
 	},
 /obj/structure/grille,
@@ -4832,14 +4754,12 @@
 /area/awaymission/zoo)
 "nm" = (
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "nn" = (
 /obj/structure/flora/ausbushes,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -4863,7 +4783,6 @@
 /obj/structure/bed/chair,
 /obj/structure/showcase{
 	desc = "It looks almost lifelike.";
-	icon = 'icons/obj/statue.dmi';
 	icon_state = "Human_male";
 	name = "Statue"
 	},
@@ -4939,7 +4858,6 @@
 /area/awaymission/zoo)
 "nD" = (
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/turf/flooring/misc.dmi';
 	icon_state = "hive";
 	name = "giant honeycomb"
 	},
@@ -4947,14 +4865,12 @@
 "nE" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "nF" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5152,7 +5068,6 @@
 "oe" = (
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5161,7 +5076,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5234,21 +5148,18 @@
 "oq" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "or" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "os" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5304,7 +5215,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/turf/flooring/misc.dmi';
 	icon_state = "hive";
 	name = "giant honeycomb"
 	},
@@ -5312,14 +5222,12 @@
 "oC" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "oD" = (
 /obj/structure/flora/ausbushes/palebush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5588,7 +5496,6 @@
 "pp" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5650,7 +5557,6 @@
 "pz" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5995,8 +5901,7 @@
 "qx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -6013,12 +5918,10 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -6192,7 +6095,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -6351,55 +6253,46 @@
 /area/awaymission/zoo)
 "rx" = (
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "ry" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "rz" = (
 /turf/simulated/floor/holofloor/reinforced{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "lava";
 	name = "hololava"
 	},
 /area/awaymission/zoo)
 "rA" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "rB" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6410,53 +6303,44 @@
 "rD" = (
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "rE" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "rF" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "rG" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6467,13 +6351,11 @@
 /area/awaymission/zoo)
 "rI" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6484,22 +6366,18 @@
 /area/awaymission/zoo)
 "rK" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6509,37 +6387,31 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "rM" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "rN" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/asteroid,
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6575,7 +6447,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6646,12 +6517,10 @@
 /area/awaymission/zoo)
 "sa" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
@@ -6659,19 +6528,16 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "sb" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6748,24 +6614,20 @@
 /area/awaymission/zoo)
 "sn" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "so" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
@@ -6773,7 +6635,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6871,29 +6732,24 @@
 /area/awaymission/zoo)
 "sy" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
 /area/awaymission/zoo)
 "sz" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
@@ -6902,7 +6758,6 @@
 	name = "invisible alien hunter"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -6960,7 +6815,6 @@
 /area/awaymission/zoo)
 "sF" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
@@ -6968,7 +6822,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -7014,7 +6867,6 @@
 	name = "invisible alien hunter"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -7038,22 +6890,18 @@
 /area/awaymission/zoo)
 "sQ" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -7088,22 +6936,18 @@
 /area/awaymission/zoo)
 "sW" = (
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
 /obj/effect/floor_decal/spline{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -7128,7 +6972,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -7176,7 +7019,7 @@
 	dir = 1
 	},
 /obj/structure/sign/kiddieplaque{
-	desc = "This Redspace creature was generously donated by a NanoTrasen science team headed by Dr. Kisuke Gema of the Virgo Orbital Research Establishment. Other than that, we honestly don't know anything about this monstrosity, other than the fact that it hungers for Human flesh.";
+	desc = "This Redspace creature was generously donated by a Nanotrasen science team headed by Dr. Kisuke Gema of the Virgo Orbital Research Establishment. Other than that, we honestly don't know anything about this monstrosity, other than the fact that it hungers for Human flesh.";
 	name = "Redspace Abomination Exhibit"
 	},
 /turf/simulated/floor/plating,
@@ -7184,20 +7027,17 @@
 "tf" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tg" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "th" = (
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
@@ -7206,14 +7046,12 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tj" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil/invisible,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
@@ -7238,14 +7076,12 @@
 "to" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tp" = (
 /obj/structure/flora/ausbushes/fernybush,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
@@ -7272,21 +7108,18 @@
 "tu" = (
 /obj/structure/flora/ausbushes/sunnybush,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tv" = (
 /obj/structure/flora/ausbushes/palebush,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tw" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
@@ -7296,7 +7129,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
@@ -7326,7 +7158,6 @@
 "tC" = (
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
@@ -7341,7 +7172,6 @@
 "tF" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/holofloor/wood{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
@@ -7480,7 +7310,6 @@
 "tU" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -7505,7 +7334,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/desert{
-	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
 	name = "scorched sand"
 	},
@@ -7875,21 +7703,18 @@
 "uS" = (
 /obj/structure/flora/ausbushes/fernybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "uT" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "uU" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -7950,14 +7775,12 @@
 "vb" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "vc" = (
 /obj/structure/flora/ausbushes/sunnybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -7980,7 +7803,6 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -8361,7 +8183,7 @@
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wf" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wg" = (
@@ -8386,12 +8208,10 @@
 "wj" = (
 /obj/machinery/door/window/brigdoor/southleft,
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/rack,
 /obj/random/weapon,
@@ -8402,8 +8222,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/table/rack,
 /obj/machinery/door/window/brigdoor/southright,
@@ -8421,8 +8240,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/table/rack,
 /obj/random/weapon,
@@ -8444,7 +8262,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wq" = (
-/obj/machinery/door/airlock/glass_medical,
+/obj/machinery/door/airlock/glass/medical,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "wr" = (
@@ -8617,14 +8435,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wW" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wX" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,
 /obj/item/paper/zoo,
@@ -8673,12 +8491,9 @@
 /area/awaymission/zoo)
 "xf" = (
 /obj/machinery/door/window/brigdoor/northleft,
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/rack,
 /obj/random/ammo_all,
@@ -8689,21 +8504,16 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table/rack,
 /obj/random/ammo_all,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "xh" = (
 /obj/machinery/door/window/brigdoor/northleft,
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	health = 1e+006
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/table/rack,
 /obj/random/weapon,
@@ -8714,9 +8524,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/table/rack,
 /obj/random/weapon,
 /turf/simulated/floor/tiled/dark,
@@ -8737,7 +8545,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/solar/fake,
+/obj/machinery/power/solar,
 /turf/simulated/floor/airless{
 	icon_state = "solarpanel"
 	},
@@ -8822,7 +8630,7 @@
 /area/awaymission/zoo/solars)
 "xt" = (
 /obj/structure/cable,
-/obj/machinery/power/solar/fake,
+/obj/machinery/power/solar,
 /turf/simulated/floor/airless{
 	icon_state = "solarpanel"
 	},

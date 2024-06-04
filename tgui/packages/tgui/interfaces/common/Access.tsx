@@ -21,18 +21,22 @@ export enum AccessListSet {
 }
 
 export interface AccessListProps {
-  access: Array<Access>, // all available accesses
-  uid: string, // must be unique in a window, to avoid localstate collisions.
-  fill?: boolean,
+  readonly access: Array<Access>, // all available accesses
+  // override: what accesses to show. must be subset of access.
+  readonly accessShown?: AccessId[],
+  // must be unique in a window, to avoid localstate collisions.
+  // eslint-disable-next-line react/no-unused-prop-types
+  readonly uid: string,
+  readonly fill?: boolean,
 }
 
 interface AccessListSelectProps extends AccessListProps {
   select?(id: AccessId): void,
-  selected: AccessId,
+  readonly selected: AccessId,
 }
 
 interface AccessListModProps extends AccessListProps {
-  selected: Array<AccessId>,
+  readonly selected: Array<AccessId>,
   set?(id: AccessId): void,
   grant?(category?: string): void,
   deny?(category?: string): void,
@@ -41,8 +45,8 @@ interface AccessListModProps extends AccessListProps {
 interface AccessListAuthProps extends AccessListProps {
   set?(id: AccessId, mode: AccessListSet): void,
   wipe?(category?: string): void,
-  req_access?: Array<AccessId>,
-  req_one_access?: Array<AccessId>,
+  readonly req_access?: Array<AccessId>,
+  readonly req_one_access?: Array<AccessId>,
 }
 
 export type AccessId = number;
@@ -74,7 +78,10 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<string | undefined>(context, `${props.uid}_selectedCategory`, undefined);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
-  props.access.forEach((a) => {
+  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+    (a) => props.accessShown?.includes(a.value)
+  );
+  effectiveAccess.forEach((a) => {
     if (!categories.includes(a.category)) {
       categories.push(a.category);
     }
@@ -83,7 +90,7 @@ export const AccessListMod = (props: AccessListModProps, context) => {
   categories.sort();
   const checkCategory = (cat: string) => {
     let needed: number[] = [];
-    props.access.forEach((a) => {
+    effectiveAccess.forEach((a) => {
       if (a.category === cat) {
         needed.push(a.value);
       }
@@ -158,7 +165,7 @@ export const AccessListMod = (props: AccessListModProps, context) => {
                   </>
                 }>
                 {
-                  props.access.filter((_a) => _a.category === selectedCategory).sort(
+                  effectiveAccess.filter((_a) => _a.category === selectedCategory).sort(
                     (a, b) => (a.name.localeCompare(b.name))
                   ).map((a) => (
                     <Button.Checkbox
@@ -182,7 +189,10 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
   let categories: string[] = [];
   let lookup = new Map<number, Access>();
-  props.access.forEach((a) => {
+  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+    (a) => props.accessShown?.includes(a.value)
+  );
+  effectiveAccess.forEach((a) => {
     if (!categories.includes(a.category)) {
       categories.push(a.category);
     }
@@ -253,7 +263,7 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
                 }>
                 <LabeledList>
                   {
-                    props.access.filter((_a) => _a.category === selectedCategory).sort(
+                    effectiveAccess.filter((_a) => _a.category === selectedCategory).sort(
                       (a, b) => (a.name.localeCompare(b.name))
                     ).map((a) => {
                       return (
@@ -289,7 +299,10 @@ export const AccessListAuth = (props: AccessListAuthProps, context) => {
 export const AccessListSelect = (props: AccessListSelectProps, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<string | null>(context, 'selectedCategory', null);
   let categories: string[] = [];
-  props.access.forEach((a) => {
+  let effectiveAccess = props.accessShown === undefined? props.access : props.access.filter(
+    (a) => props.accessShown?.includes(a.value)
+  );
+  effectiveAccess.forEach((a) => {
     if (!categories.includes(a.category)) {
       categories.push(a.category);
     }
@@ -306,7 +319,7 @@ export const AccessListSelect = (props: AccessListSelectProps, context) => {
             {
               categories.map((cat) => {
                 const { icon, color } = diffMap[
-                  props.selected && (props.access.find((a) => a.value === props.selected))?1 : 0];
+                  props.selected && (effectiveAccess.find((a) => a.value === props.selected))?1 : 0];
                 return (
                   <Tabs.Tab
                     key={cat}
@@ -323,7 +336,7 @@ export const AccessListSelect = (props: AccessListSelectProps, context) => {
           </Tabs>
         </Flex.Item>
         <Flex.Item grow={1}>
-          {props.access.filter((_a) => _a.category === selectedCategory).sort(
+          {effectiveAccess.filter((_a) => _a.category === selectedCategory).sort(
             (a, b) => (a.name.localeCompare(b.name))
           ).map((a) => {
             return (

@@ -1,11 +1,11 @@
 // -- Datums -- //
 
 
-/obj/effect/overmap/visitable/sector/debrisfield
+/obj/overmap/entity/visitable/sector/debrisfield
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
-	icon_state = "dust2"
+	icon_state = "debrisfield"
 	color = "#BBBBBB"
 	known = FALSE
 	in_space = 1
@@ -14,12 +14,12 @@
 ////Holy shit spagetti pain. TODO fix this debrifield/debrifield_vr bullshit - Bloop///
 
 
-/obj/effect/overmap/visitable/sector/debrisfield_vr
+/obj/overmap/entity/visitable/sector/debrisfield_vr
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Transponder[/i]: Various faint signals
 [b]Notice[/b]: Warning! Significant field of space debris detected. May be salvagable."}
-	icon_state = "dust1"
+	icon_state = "debrisfield"
 	known = FALSE
 	color = "#ee3333" //Redish, so it stands out against the other debris-like icons
 	initial_generic_waypoints = list("debrisfield_se", "debrisfield_nw")
@@ -164,47 +164,51 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/tinycarrier
 
 /obj/effect/shuttle_landmark/shuttle_initializer/tinycarrier/Initialize(mapload)
-	var/obj/effect/overmap/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
+	var/obj/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
 	LAZYINITLIST(O.initial_restricted_waypoints)
 	O.initial_restricted_waypoints["Debris Carrier"] = list(landmark_tag)
 	. = ..()
 
-/obj/effect/overmap/visitable/ship/landable/tinycarrier
-	scanner_name = "TBD"
-	scanner_desc = "TBD"
+/obj/overmap/entity/visitable/ship/landable/tinycarrier
+	scanner_name = "SDF Birdcage"
+	scanner_desc = {"\[i\]Registration\[/i\]: SDV Birdcage
+\[i\]Class\[/i\]: Light Escort Carrier
+\[i\]Transponder\[/i\]: Transmitting (MIL), Weak Signal
+\[b\]Notice\[/b\]: Registration Expired"}
 	vessel_mass = 12000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Debris Carrier"
 	fore_dir = WEST
 
-/obj/effect/overmap/visitable/ship/landable/tinycarrier/Initialize(mapload)
+/*
+/obj/overmap/entity/visitable/ship/landable/tinycarrier/Initialize(mapload)
 	. = ..()
-	var/datum/lore/organization/O = GLOB.loremaster.organizations[/datum/lore/organization/other/sysdef]
+	var/datum/lore/organization/O = SSlegacy_lore.organizations[/datum/lore/organization/other/sysdef]
 	var/newname = "SDV [pick(O.ship_names)]"
-	scanner_name = newname
-	scanner_desc = {"\[i\]Registration\[/i\]: [newname]
+	scanner_name = "SDF Birdcage
+	scanner_desc = {"\[i\]Registration\[/i\]: SDV Birdcage
 \[i\]Class\[/i\]: Light Escort Carrier
 \[i\]Transponder\[/i\]: Transmitting (MIL), Weak Signal
 \[b\]Notice\[/b\]: Registration Expired"}
-	rename_areas(newname)
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/overmap/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
+/obj/overmap/entity/visitable/ship/landable/tinycarrier/LateInitialize()
+	. = ..()
+	rename_areas(scanner_name)
+
+/obj/overmap/entity/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
 	var/datum/shuttle/S = SSshuttle.shuttles[shuttle]
 	for(var/area/A in S.shuttle_area)
 		A.name = "[newname] [initial(A.name)]"
 		if(A.apc)
 			A.apc.name = "[A.name] APC"
-		A.air_vent_names = list()
-		A.air_scrub_names = list()
-		A.air_vent_info = list()
-		A.air_scrub_info = list()
-		for(var/obj/machinery/alarm/AA in A)
+		for(var/obj/machinery/air_alarm/AA in A)
 			AA.name = "[A.name] Air Alarm"
+*/
 
 /obj/machinery/computer/shuttle_control/explore/tinycarrier
 	shuttle_tag = "Debris Carrier"
 	req_one_access = list()
-
 
 /obj/mecha/combat/fighter/baron/loaded/busted
 /*
@@ -224,7 +228,7 @@
 		var/obj/item/mecha_parts/component/comp = internal_components[slot]
 		if(!istype(comp))
 			continue
-		comp.adjust_integrity(-(round(rand(comp.max_integrity - 10, 0))))
+		comp.adjust_integrity_mecha(-(round(rand(comp.integrity_max - 10, 0))))
 
 	setInternalDamage(MECHA_INT_SHORT_CIRCUIT)
 */

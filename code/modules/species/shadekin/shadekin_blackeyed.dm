@@ -9,7 +9,10 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	preview_icon = 'icons/mob/species/shadekin/preview_blackeyed.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-	tail = "tail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+	)
 
 	//TODO: Something more fitting for black-eyes
 	//TODO: CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why they're around wherever we are.
@@ -139,7 +142,7 @@
 /datum/species/crew_shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
-/datum/species/crew_shadekin/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/crew_shadekin/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	handle_shade(H)
 
 /datum/species/crew_shadekin/add_inherent_verbs(mob/living/carbon/human/H)

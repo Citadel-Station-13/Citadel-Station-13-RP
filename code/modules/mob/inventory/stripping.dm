@@ -33,7 +33,7 @@
 	var/last_order
 	for(var/id in slot_ids)
 		// todo: optimize
-		var/datum/inventory_slot_meta/meta = resolve_inventory_slot_meta(id)
+		var/datum/inventory_slot/meta = resolve_inventory_slot(id)
 		var/remove_only = meta.inventory_slot_flags & INV_SLOT_STRIP_ONLY_REMOVES
 		var/obj/item/I = _item_by_slot(id)
 		if(remove_only && !I)
@@ -97,11 +97,11 @@
 	if(!strip_interaction_prechecks(user))
 		return FALSE
 
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot_id)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot_id)
 	if(!slot_meta)
 		return FALSE
 
-	var/obj/item/ours = item_by_slot(slot_id)
+	var/obj/item/ours = item_by_slot_id(slot_id)
 	var/obj/item/theirs = user.get_active_held_item()
 	if(!ours && !theirs)
 		to_chat(user, SPAN_WARNING("They're not wearing anything in that slot!"))
@@ -158,9 +158,9 @@
 
 	var/view_flags = NONE
 
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot_id_or_index)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot_id_or_index)
 	if(!isnum(slot_id_or_index))
-		slot_meta = resolve_inventory_slot_meta(slot_id_or_index)
+		slot_meta = resolve_inventory_slot(slot_id_or_index)
 		view_flags = slot_meta.strip_obfuscation_check(ours, src, user)
 		if(view_flags & (INV_VIEW_OBFUSCATE_HIDE_SLOT))
 			return FALSE	// how are you seeing this
@@ -168,7 +168,7 @@
 	var/hide_item = view_flags & (INV_VIEW_OBFUSCATE_HIDE_ITEM_NAME | INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE)
 
 	if(removing)
-		if(!can_unequip(ours))
+		if(!can_unequip(ours, user = user))
 			to_chat(user, SPAN_WARNING("[ours] is stuck!"))
 			return FALSE
 		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
@@ -220,7 +220,7 @@
 			if(get_held_index(ours) != slot_id_or_index)
 				return FALSE
 		else
-			if(slot_by_item(ours) != slot_id_or_index)
+			if(slot_id_by_item(ours) != slot_id_or_index)
 				return FALSE
 	else
 		if(!user.is_holding(theirs))
@@ -252,7 +252,7 @@
 				return
 			var/slot = I.worn_slot
 			if(slot != SLOT_ID_HANDS)
-				var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+				var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 				var/view_flags = slot_meta.strip_obfuscation_check(I, src, user)
 				if(view_flags & (INV_VIEW_OBFUSCATE_DISALLOW_INTERACT | INV_VIEW_OBFUSCATE_HIDE_ITEM_EXISTENCE | INV_VIEW_OBFUSCATE_HIDE_SLOT))
 					return	// how tf are you gonna interact with it huh
@@ -266,7 +266,7 @@
 	if(.)
 		open_strip_menu(user)
 
-/mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE)
+/mob/proc/strip_interaction_prechecks(mob/user, autoclose = TRUE, allow_loc = FALSE)
 	if(!isliving(user))
 		// no ghost fuckery
 		return FALSE
@@ -277,7 +277,7 @@
 	if(user.restrained())
 		to_chat(user, SPAN_WARNING("You are restrained!"))
 		return FALSE
-	if(!user.Adjacent(src))
+	if(!user.Adjacent(src) && (!allow_loc || !user.Adjacent(loc)))
 		to_chat(user, SPAN_WARNING("You are too far away!"))
 		close_strip_menu(user)
 		return FALSE

@@ -16,6 +16,8 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/timeclock
 	clicksound = null
+	climb_allowed = FALSE
+	depth_projected = FALSE
 	var/channel = "Common" //Radio channel to announce on
 
 	var/obj/item/card/id/card // Inserted Id card
@@ -75,12 +77,10 @@
 		ui = new(user, src, "TimeClock", name)
 		ui.open()
 
-/obj/machinery/computer/timeclock/ui_data(mob/user)
+/obj/machinery/computer/timeclock/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	// Okay, data for showing the user's OWN PTO stuff
-	if(user.client)
-		data["department_hours"] = SANITIZE_LIST(user.client.department_hours)
 	data["user_name"] = "[user]"
 
 	// Data about the card that we put into it.
@@ -99,12 +99,12 @@
 				"departments" = english_list(job.departments),
 				"selection_color" = job.selection_color,
 				"economic_modifier" = job.get_economic_payscale(),
-				"timeoff_factor" = job.timeoff_factor,
-				"pto_department" = job.pto_type
+				"pto_department" = job.pto_type,
+				"is_off_duty" = job.is_off_duty,
 			)
-		if(config_legacy.time_off && config_legacy.pto_job_change)
+		if(config_legacy.time_off)
 			data["allow_change_job"] = TRUE
-			if(job && job.timeoff_factor < 0) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
+			if(job?.is_off_duty) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
 				data["job_choices"] = getOpenOnDutyJobs(user, job.pto_type)
 
 	return data
@@ -134,6 +134,9 @@
 					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 		if("switch-to-offduty")
@@ -142,6 +145,9 @@
 					makeOffDuty()
 					usr.put_in_hands_or_drop(card)
 					card = null
+					flick(icon, "timeclock_approved")
+				else
+					flick(icon, "timeclock_denied")
 			update_icon()
 			return TRUE
 
@@ -167,7 +173,7 @@
 		   && job.player_old_enough(user.client) \
 		   && job.pto_type == department \
 		   && !job.disallow_jobhop \
-		   && job.timeoff_factor > 0 \
+		   && !job.is_off_duty \
 		   && (job.check_mob_availability_one(user) == ROLE_AVAILABLE)
 
 /obj/machinery/computer/timeclock/proc/makeOnDuty(var/newrank, var/newassignment)
@@ -191,7 +197,7 @@
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = card.rank
 		H.mind.role_alt_title = card.assignment
-		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
@@ -201,7 +207,7 @@
 	var/new_dept = foundjob.pto_type || PTO_CIVILIAN
 	var/datum/role/job/ptojob = null
 	for(var/datum/role/job/job in SSjob.occupations)
-		if(job.pto_type == new_dept && job.timeoff_factor < 0)
+		if(job.pto_type == new_dept && job.is_off_duty)
 			ptojob = job
 			break
 	if(ptojob)
@@ -217,7 +223,7 @@
 		H.mind.assigned_role = ptojob.title
 		H.mind.role_alt_title = ptojob.title
 		foundjob.current_positions--
-		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()
@@ -232,16 +238,20 @@
 /obj/machinery/computer/timeclock/proc/checkFace()
 	if(!card)
 		to_chat(usr, "<span class='notice'>No ID is inserted.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	var/mob/living/carbon/human/H = usr
 	if(!(istype(H)))
 		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else if(H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
 		to_chat(usr, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
+		flick(icon, "timeclock_denied")
 		return FALSE
 	else
 		return TRUE

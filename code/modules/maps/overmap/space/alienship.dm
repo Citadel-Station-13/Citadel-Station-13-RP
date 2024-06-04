@@ -1,6 +1,6 @@
 // -- Datums -- //
 
-/obj/effect/overmap/visitable/sector/alienship
+/obj/overmap/entity/visitable/sector/alienship
 	name = "Unknown Vessel"
 	desc = "An unknown vessel detected by sensors."
 	start_x = 12
@@ -59,8 +59,8 @@
 	lethal = TRUE
 	ailock = TRUE
 	check_all = TRUE
-	health = 250
-	maxhealth = 250
+	integrity = 250
+	integrity_max = 250
 
 /obj/away_mission_init/alienship/door_n2s
 	icon_state = "n2s"

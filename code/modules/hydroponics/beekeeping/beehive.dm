@@ -98,7 +98,7 @@
 			B.fill()
 		update_icon()
 		return
-	else if(istype(I, /obj/item/analyzer/plant_analyzer))
+	else if(istype(I, /obj/item/plant_analyzer))
 		to_chat(user, "<span class='notice'>Scan result of \the [src]...</span>")
 		to_chat(user, "Beehive is [bee_count ? "[round(bee_count)]% full" : "empty"].[bee_count > 90 ? " Colony is ready to split." : ""]")
 		if(frames)
@@ -202,14 +202,14 @@
 	desc = "A device used to calm down bees before harvesting honey."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "battererburnt"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/honey_frame
 	name = "beehive frame"
 	desc = "A frame for the beehive that the bees will fill with honeycombs."
 	icon = 'icons/obj/beekeeping.dmi'
 	icon_state = "honeyframe"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	var/honey = 0
 

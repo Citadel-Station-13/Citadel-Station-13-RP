@@ -46,6 +46,8 @@
 // hilariously snowflake proc to force a firemode switch because i can't be assed to do it properly holy shit fuck you
 /obj/item/gun/energy/modular/proc/generatefiremodes()
 	do_generatefiremodes()
+	if(!length(firemodes))
+		return
 	var/datum/firemode/new_mode = firemodes[1]
 	new_mode.apply_to(src)
 

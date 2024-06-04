@@ -4,10 +4,10 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "uv_off"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	action_button_name = "Toggle UV light"
-	matter = list(MAT_STEEL = 150)
+	materials_base = list(MAT_STEEL = 150)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
 	var/list/scanned = list()

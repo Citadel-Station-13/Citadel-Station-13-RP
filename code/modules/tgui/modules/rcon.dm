@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(tgui_old_rcon_modules)
+
 /datum/tgui_module_old/rcon
 	name = "Power RCON"
 	tgui_id = "RCON"
@@ -5,7 +7,16 @@
 	var/list/known_SMESs = null
 	var/list/known_breakers = null
 
-/datum/tgui_module_old/rcon/ui_data(mob/user)
+/datum/tgui_module_old/rcon/New(host)
+	. = ..()
+	GLOB.tgui_old_rcon_modules += src
+
+/datum/tgui_module_old/rcon/Destroy(force, ...)
+	. = ..()
+	GLOB.tgui_old_rcon_modules -= src
+
+
+/datum/tgui_module_old/rcon/ui_data(mob/user, datum/tgui/ui)
 	FindDevices() // Update our devices list
 	var/list/data = ..()
 
@@ -29,7 +40,7 @@
 
 	return data
 
-/datum/tgui_module_old/rcon/ui_act(action, params)
+/datum/tgui_module_old/rcon/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -89,7 +100,7 @@
 	known_SMESs = new /list()
 
 	var/z = get_z(ui_host())
-	var/list/map_levels = GLOB.using_map.get_map_levels(z)
+	var/list/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z)
 
 	for(var/obj/machinery/power/smes/buildable/SMES in GLOB.smeses)
 		if(!(SMES.z in map_levels))
@@ -108,5 +119,5 @@
 	ntos = TRUE
 
 /datum/tgui_module_old/rcon/robot
-/datum/tgui_module_old/rcon/robot/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/rcon/robot/ui_state()
 	return GLOB.self_state

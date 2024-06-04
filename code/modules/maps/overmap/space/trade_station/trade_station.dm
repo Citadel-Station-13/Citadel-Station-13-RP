@@ -1,5 +1,5 @@
 //Overmap Controller
-/obj/effect/overmap/visitable/sector/trade_post
+/obj/overmap/entity/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
 	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
@@ -9,17 +9,22 @@
 	color = "#8F6E4C"
 
 	initial_generic_waypoints = list(
-		"nebula_pad_1",
-		"nebula_pad_2",
-		"nebula_space_SW",
+		"nebula_pad_1a",
+		"nebula_pad_1b",
+		"nebula_pad_2a",
+		"nebula_pad_2b",
 		"nebula_pad_3a",
 		"nebula_pad_3b",
 		"nebula_pad_3c",
+		"nebula_pad_3d",
 		"nebula_pad_4a",
 		"nebula_pad_4b",
 		"nebula_pad_4c",
-		"nebula_pad_5",
-		"nebula_pad_6",
+		"nebula_pad_4d",
+		"nebula_pad_5a",
+		"nebula_pad_5b",
+		"nebula_pad_6a",
+		"nebula_pad_6b",
 		"nebula_space_SE",
 		"nebula_space_S",
 		"nebula_space_SW"
@@ -60,42 +65,7 @@
 	announce_channel = "Trade"
 	on_store_name = "Beruang Trading Corp Storage"
 
-/obj/landmark/map_data/trade
-    height = 1
-
 // Their shuttle
-
-/datum/shuttle/autodock/overmap/trade
-	name = "Beruang Trade Ship"
-	warmup_time = 0
-	shuttle_area = list(/area/shuttle/trade_ship/cockpit, /area/shuttle/trade_ship/general)
-	current_location = "tradeport_hangar"
-	docking_controller_tag = "tradeport_hangar_docker"
-	//landmark_transition = "nav_transit_trade"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/effect/overmap/visitable/ship/landable/trade
-	name = "Beruang Trade Ship"
-	desc = "You know our motto: 'We deliver!'"
-	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Beruang Trade Ship"
-
-/obj/machinery/computer/shuttle_control/explore/trade
-	name = "short jump console"
-	shuttle_tag = "Beruang Trade Ship"
-
-
-/area/shuttle/trade_ship
-	name = "Beruang Trade Ship"
-	icon_state = "shuttle"
-
-/area/shuttle/trade_ship/general
-	name = "\improper Beruang Trade Ship"
-
-/area/shuttle/trade_ship/cockpit
-	name = "\improper Beruang Trade Ship Cockpit"
 
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used
 

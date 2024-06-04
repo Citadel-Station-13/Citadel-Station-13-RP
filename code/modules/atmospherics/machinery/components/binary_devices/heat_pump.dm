@@ -1,9 +1,6 @@
 /***
  * Heat pumps, binary devices that pump heat between both ends
  */
-#define EFFICENCY_MULT 1
-#define EFFICENCY_LIMIT_MULT 1
-
 /obj/machinery/atmospherics/component/binary/heat_pump
 	name = "heat pump"
 	desc = "A heat pump, used to transfer heat between two pipe systems."
@@ -32,7 +29,6 @@
 	var/lowest_temp = TCMB
 	var/max_temp = 99999999//Need to bottle it somewhere, the sun's core has 15 million kelvin
 
-	var/on = 0
 	var/efficiency = 0
 
 /obj/machinery/atmospherics/component/binary/heat_pump/CtrlClick(mob/user)
@@ -140,28 +136,16 @@
 	if((air1.temperature < 1) ||  (air2.temperature < 1))
 		return
 
-	//Now we are at the point where we need to actively pump
-	efficiency = get_thermal_efficency()
-	var/energy_transfered = 0
-	CACHE_VSC_PROP(atmos_vsc, /atmos/heatpump/performance_factor, performance_factor)
+	efficiency = get_thermal_efficiency(target_temp, air1, air2)
+	var/power_draw = pump_heat(target_temp, air1, air2, power_rating)
 
-	energy_transfered = clamp(air2.get_thermal_energy_change(target_temp),performance_factor*power_rating,-performance_factor*power_rating)
-
-	var/power_draw = abs(energy_transfered/performance_factor)
-	air2.adjust_thermal_energy(-air1.adjust_thermal_energy(-energy_transfered*efficiency))//only adds the energy actually removed from air one to air two(- infront of air1 because energy was removed)
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 		if(network1)
 			network1.update = 1
 		if(network2)
 			network2.update = 1
-
-/obj/machinery/atmospherics/component/binary/heat_pump/proc/get_thermal_efficency()
-	if((target_temp < air2.temperature))
-		return clamp((air2.temperature / air1.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
-	else if((target_temp > air2.temperature))
-		return clamp((air1.temperature / air2.temperature) * EFFICENCY_MULT, 0, 1 * EFFICENCY_LIMIT_MULT)
 
 /obj/machinery/atmospherics/component/binary/heat_pump/proc/handle_passive_flow()
 	var/air_heat_capacity = air1.heat_capacity()
@@ -188,7 +172,7 @@
 		ui = new(user, src, "heat_pump", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["target_temp"] = target_temp
 	data["current_temp"] = air2.temperature
@@ -196,15 +180,15 @@
 	data["on"] = on
 	data["lowest_temp"] = lowest_temp
 	data["highest_temp"] = max_temp
-	data["efficency"] = efficiency
+	data["efficiency"] = efficiency
 
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_state(mob/user, datum/tgui_module/module)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_state()
 	return GLOB.physical_state
 
-/obj/machinery/atmospherics/component/binary/heat_pump/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/heat_pump/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -221,7 +205,3 @@
 				. = TRUE
 			if(.)
 				target_temp = max(newValue,lowest_temp)
-
-
-#undef EFFICENCY_MULT
-#undef EFFICENCY_LIMIT_MULT

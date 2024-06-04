@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
 	item_flags = ITEM_NOBLUDGEON
@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "You can't send PDA messages because you are dead!")
 		return
 	var/list/plist = available_pdas()
-	tim_sort(plist, cmp = /proc/cmp_text_asc)
+	tim_sort(plist, cmp = GLOBAL_PROC_REF(cmp_text_asc))
 	if (plist)
 		var/c = input(usr, "Please select a PDA") as null|anything in plist
 		if (!c) // if the user hasn't selected a PDA file we can't send a message
@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/Initialize(mapload)
 	. = ..()
 	GLOB.PDAs += src
-	tim_sort(GLOB.PDAs, cmp = /proc/cmp_name_asc)
+	tim_sort(GLOB.PDAs, cmp = GLOBAL_PROC_REF(cmp_name_asc))
 	if(default_cartridge)
 		cartridge = new default_cartridge(src)
 	new /obj/item/pen(src)
@@ -970,7 +970,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						if("2")		// Eject pAI device
 							var/turf/T = get_turf_or_move(src.loc)
 							if(T)
-								pai.loc = T
+								pai.forceMove(T)
 								pai = null
 
 		else
@@ -1084,7 +1084,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				M.put_in_hands(O)
 				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 				return
-		O.loc = get_turf(src)
+		O.forceMove(get_turf(src))
 	else
 		to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
 
@@ -1128,7 +1128,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = "\ref[P]")))
 		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
 		for(var/mob/M in GLOB.player_list)
-			if(M.stat == DEAD && M.client && (M.is_preference_enabled(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
+			if(M.stat == DEAD && M.client && (M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
 				if(istype(M, /mob/new_player))
 					continue
 				if(M.forbid_seeing_deadchat)
@@ -1210,7 +1210,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new_message = 1
 
 /obj/item/pda/verb/verb_reset_pda()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Reset PDA"
 	set src in usr
 
@@ -1225,7 +1225,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 /obj/item/pda/verb/verb_remove_id()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove id"
 	set src in usr
 
@@ -1242,7 +1242,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 
 /obj/item/pda/verb/verb_remove_pen()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove pen"
 	set src in usr
 
@@ -1255,7 +1255,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 /obj/item/pda/verb/verb_remove_cartridge()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove cartridge"
 	set src in usr
 
@@ -1572,10 +1572,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/pressure = environment.return_pressure()
 		var/total_moles = environment.total_moles
 		if (total_moles)
-			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
-			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
-			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
-			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/o2_level = environment.gas[GAS_ID_OXYGEN]/total_moles
+			var/n2_level = environment.gas[GAS_ID_NITROGEN]/total_moles
+			var/co2_level = environment.gas[GAS_ID_CARBON_DIOXIDE]/total_moles
+			var/phoron_level = environment.gas[GAS_ID_PHORON]/total_moles
 			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 
 			// entry is what the element is describing

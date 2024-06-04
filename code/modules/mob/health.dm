@@ -49,6 +49,7 @@
 			dead_mob_list += src
 	if(update_mobility)
 		update_mobility()
+	update_hud_med_status()
 	return TRUE
 
 /**
@@ -62,6 +63,8 @@
 	// full heal if requested
 	if(full_heal)
 		rejuvenate(TRUE)
+	// flush playtimes
+	SSplaytime.queue_playtimes(client)
 	// set to conscious
 	set_stat(CONSCIOUS)
 	// immediately update to kick down if needed

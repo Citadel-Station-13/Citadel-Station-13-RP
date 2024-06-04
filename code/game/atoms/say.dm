@@ -9,7 +9,7 @@
 	var/no_runechat = FALSE
 	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
 		var/processed = message
-		if(L && !(L.name in M.languages))
+		if(L && !(L in M.languages))
 			processed = L.scramble(message)
 			no_runechat = TRUE
 		M.show_message("<span class='game say'><span class='name'>[src]</span> [L?.speech_verb || atom_say_verb], \"[processed]\"</span>", 2, null, 1)
@@ -32,7 +32,7 @@
 		if(M.client)
 			speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message, speaking, italics, speech_bubble_hearers, 30)
 
 /proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
 	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)

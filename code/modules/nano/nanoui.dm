@@ -35,7 +35,7 @@
 	/// The layout key for this ui (this is used on the frontend, leave it as "default" unless you know what you're doing)
 	var/layout_key = "default"
 	/// Optional layout key for additional ui header content to include
-	var/layout_header_key = "default_header"
+	// var/layout_header_key = "default_header"
 	/// This sets whether to re-render the ui layout with each update (default 0, turning on will break the map ui if it's in use)
 	var/auto_update_layout = FALSE
 	/// This sets whether to re-render the ui content with each update (default 1)
@@ -45,7 +45,7 @@
 	/// Show the map ui, this is used by the default layout
 	var/show_map = FALSE
 	/// The map z level to display
-	var/map_z_level = 1
+	var/map_level = 1
 	/// Initial data, containing the full data structure, must be sent to the ui (the data structure cannot be extended later on)
 	var/list/initial_data[0]
 	/// Set to TRUE to update the ui automatically every master_controller tick
@@ -57,8 +57,6 @@
 	var/datum/nanoui/master_ui
 	var/list/datum/nanoui/children = list()
 	var/datum/topic_state/state = null
-
-	var/static/datum/asset/simple/namespaced/nanoui/nano_asset
 
 /**
  * Create a new nanoui instance.
@@ -75,8 +73,6 @@
  * @return /nanoui new nanoui object
  */
 /datum/nanoui/New(mob/nuser, nsrc_object, nui_key, ntemplate_filename, ntitle, nwidth, nheight, atom/nref, datum/nanoui/master_ui, datum/topic_state/state = default_state)
-	if(!istype(nano_asset))
-		nano_asset = get_asset_datum(/datum/asset/simple/namespaced/nanoui)
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
@@ -100,8 +96,8 @@
 		ref = nref
 
 	add_common_assets()
-	if (nuser?.client)
-		nano_asset.send(nuser.client) //ship it
+
+	SSassets.send_asset_pack(nuser.client, /datum/asset_pack/simple/nanoui)
 
 /**
  * Use this proc to add assets which are common to (and required by) all nano uis
@@ -192,7 +188,7 @@
 			"autoUpdateLayout" = auto_update_layout,
 			"autoUpdateContent" = auto_update_content,
 			"showMap" = show_map,
-			"mapZLevel" = map_z_level,
+			"mapZLevel" = map_level,
 			"user" = list("name" = user.name)
 		)
 	return config_data
@@ -320,8 +316,8 @@
  *
  * @return nothing
  */
-/datum/nanoui/proc/set_map_z_level(nz)
-	map_z_level = nz
+/datum/nanoui/proc/set_map_level(nz)
+	map_level = nz
 
 /**
  * Set whether or not to use the "old" on close logic (mainly unset_machine())
@@ -342,27 +338,28 @@
 	// before the UI opens, add the layout files based on the layout key
 	add_stylesheet("layout_[layout_key].css")
 	add_template("layout", "layout_[layout_key].tmpl")
-	if (layout_header_key)
-		add_template("layoutHeader", "layout_[layout_header_key].tmpl")
+	// if (layout_header_key)
+	// 	add_template("layoutHeader", "layout_[layout_header_key].tmpl")
 
 	var/head_content = ""
 
+	var/datum/asset_pack/nanoui_pack = SSassets.ready_asset_pack(/datum/asset_pack/simple/nanoui)
+
 	for(var/filename in scripts)
-		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(filename)]'></script>"
+		head_content += "<script type='text/javascript' src='[nanoui_pack.get_url(filename)]'></script>"
 
 	for(var/filename in stylesheets)
-		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(filename)]'>"
+		head_content += "<link rel='stylesheet' type='text/css' href='[nanoui_pack.get_url(filename)]'>"
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)
 		// transform urls
 		for(var/key in templates)
-			templates[key] = SSassets.transport.get_asset_url(templates[key])
-		template_data_json = strip_improper(json_encode(templates))
+			templates[key] = nanoui_pack.get_url(templates[key])
+		template_data_json = json_encode(templates)
 
 	var/list/send_data = get_send_data(initial_data)
 	var/initial_data_json = replacetext(replacetext(json_encode(send_data), "&#34;", "&amp;#34;"), "'", "&#39;")
-	initial_data_json = strip_improper(initial_data_json);
 
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
 
@@ -421,6 +418,7 @@
 	if(status == UI_CLOSE)
 		return
 
+	SSassets.send_asset_pack(user.client, /datum/asset_pack/simple/nanoui)
 	user << browse(get_html(), "window=[window_id];[window_size][window_options]")
 	winset(user, "mapwindow.map", "focus=true") // return keyboard focus to map
 	on_close_winset()
@@ -446,7 +444,7 @@
  */
 /datum/nanoui/proc/close()
 	is_auto_updating = 0
-	SSnanoui.ui_closed(src)
+	SSnanoui.on_ui_closed(src)
 	user << browse(null, "window=[window_id]")
 	for(var/datum/nanoui/child in children)
 		child.close()
@@ -480,7 +478,7 @@
 	var/list/send_data = get_send_data(data)
 
 	//user << list2json_usecache(send_data) // used for debugging //NANO DEBUG HOOK
-	user << output(list2params(list(strip_improper(json_encode(send_data)))),"[window_id].browser:receiveUpdateData")
+	user << output(list2params(list(json_encode(send_data))),"[window_id].browser:receiveUpdateData")
 
 /**
  * This Topic() proc is called whenever a user clicks on a link within a Nano UI
@@ -501,7 +499,7 @@
 		map_update = 1
 
 	if(href_list["mapZLevel"])
-		set_map_z_level(text2num(href_list["mapZLevel"]))
+		set_map_level(text2num(href_list["mapZLevel"]))
 		map_update = 1
 
 	if ((src_object && src_object.Topic(href, href_list, state)) || map_update)

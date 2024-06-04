@@ -1,6 +1,7 @@
 //Do not question I am not fixing ALL THE ICONS it works just leave it!
 
 /obj/item/clothing/accessory/tajaran
+	abstract_type = /obj/item/clothing/accessory/tajaran
 	icon = 'icons/mob/clothing/species/tajaran/ties.dmi'
 	icon_override = 'icons/obj/clothing/species/tajaran/ties.dmi'
 
@@ -95,7 +96,7 @@
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/tponcho/tajarancloak/fancy

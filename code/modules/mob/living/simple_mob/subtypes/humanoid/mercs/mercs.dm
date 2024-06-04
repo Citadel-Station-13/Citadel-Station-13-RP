@@ -64,8 +64,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15		//Tac Knife damage
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15		//Tac Knife damage
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -136,6 +136,13 @@
 /datum/ai_holder/simple_mob/merc/ranged/surpressor
 	conserve_ammo = FALSE //For Surpressive Fire Mercs like the Heavy and Tommy-Las
 
+/datum/ai_holder/simple_mob/merc/ranged/shotgun
+	max_range = 4 //Stop attempting to buckshot people from maximum vision range.
+
+/datum/ai_holder/simple_mob/merc/ranged/sweeper //Fully ultilize that auto-shotgun
+	max_range = 4
+	conserve_ammo = FALSE
+
 ////////////////////////////////
 //			Melee
 ////////////////////////////////
@@ -147,8 +154,8 @@
 	icon_state = "syndicatemelee"
 	icon_living = "syndicatemelee"
 
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 	attack_sharp = 1
 	attack_edge = 1
@@ -311,7 +318,20 @@
 	reload_max = 4
 	reload_time = 1.5 SECONDS	// It's a shotgun, it takes a moment
 
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+
 	special_attack_charges = 5
+
+// Sniper, also miniboss style
+/mob/living/simple_mob/humanoid/merc/ranged/garand/sniper
+	name = "mercenary sniper"
+	desc = "A tough looking individual armed with a sniper rifle. Seems like he's got a good job, mate."
+	icon_state = "syndicateranged_sniper"
+	icon_living = "syndicateranged_sniper"
+
+	loot_list = list(/obj/item/gun/ballistic/garand/sniper = 100, /obj/item/clothing/head/cowboy_hat = 100)
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/sniper
 
 ////////////////////////////////
 //		Space Mercs
@@ -400,6 +420,8 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100)
 
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+
 //Auto-Shotgun Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/shotgun/auto
 	name = "mercenary sweeper"
@@ -415,7 +437,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/automatic/as24 = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/surpressor
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/sweeper
 
 //Machine Gun Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/heavy
@@ -427,7 +449,7 @@
 	base_attack_cooldown = 2.5 // Four Attacks a Second. MOAR DAKKA
 	reload_max = 50
 
-	projectiletype = /obj/projectile/bullet/rifle/a545
+	projectiletype = /obj/projectile/bullet/rifle/a556
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
 	loot_list = list(/obj/item/gun/ballistic/automatic/lmg = 100)
@@ -600,8 +622,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 20		//Vox Hunting rifle blade damage
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 20		//Vox Hunting rifle blade damage
+	legacy_melee_damage_upper = 20
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -654,8 +676,8 @@
 	icon_dead = "voxboarder_m_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/boarder)
 
-	melee_damage_lower = 30		//Energy sword damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//Energy sword damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 
@@ -702,7 +724,7 @@
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
 	corpse = /obj/spawner/corpse/vox/boarder_r
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/combat = 100,
 					/obj/item/ammo_magazine/m12gdrum = 30,

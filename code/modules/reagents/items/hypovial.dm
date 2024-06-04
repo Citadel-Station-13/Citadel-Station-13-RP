@@ -4,11 +4,16 @@
 	desc = "A standard issue vial used for hyposprays."
 	icon = 'icons/modules/reagents/items/hypospray.dmi'
 	icon_state = "vial"
+	materials_base = list(
+		MAT_STEEL = 250,
+		MAT_GLASS = 1000,
+	)
 	w_class = WEIGHT_CLASS_TINY // 14 fits in a box, not 7
 	volume = 60
 	start_rename = TRUE
 	/// how many [state][#] overlays we have for reagents remaining
 	var/overlay_count = 3
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 
 /obj/item/reagent_containers/glass/hypovial/update_icon(updates)
 	cut_overlays()
@@ -24,6 +29,10 @@
 	name = "large hypospray vial"
 	desc = "A larger variant of the common hypospray vial. Only compatible with advanced units."
 	icon_state = "vial-l"
+	materials_base = list(
+		MAT_STEEL = 500,
+		MAT_GLASS = 2000,
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	volume = 120
 	overlay_count = 4

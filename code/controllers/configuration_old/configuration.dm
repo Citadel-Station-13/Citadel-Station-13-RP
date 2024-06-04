@@ -92,7 +92,6 @@
 	var/cult_ghostwriter_req_cultists = 10 //...so long as this many cultists are active.
 
 	var/character_slots = 10				// The number of available character slots
-	var/loadout_slots = 3					// The number of loadout slots per character
 
 	var/max_maint_drones = 5				//This many drones can spawn,
 	var/allow_drone_spawn = 1				//assuming the admin allow them to.
@@ -107,17 +106,7 @@
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
 	var/debugparanoid = 0
-	var/panic_bunker = 0
-	var/panic_bunker_message = "Sorry, this server is not accepting connections from never seen before players."
 	var/paranoia_logging = 0
-
-	var/ip_reputation = FALSE		//Should we query IPs to get scores? Generates HTTP traffic to an API service.
-	var/ipr_email					//Left null because you MUST specify one otherwise you're making the internet worse.
-	var/ipr_block_bad_ips = FALSE	//Should we block anyone who meets the minimum score below? Otherwise we just log it (If paranoia logging is on, visibly in chat).
-	var/ipr_bad_score = 1			//The API returns a value between 0 and 1 (inclusive), with 1 being 'definitely VPN/Tor/Proxy'. Values equal/above this var are considered bad.
-	var/ipr_allow_existing = FALSE 	//Should we allow known players to use VPNs/Proxies? If the player is already banned then obviously they still can't connect.
-	var/ipr_minimum_age = 5
-	var/ipqualityscore_apikey //API key for ipqualityscore.com
 
 	var/serverurl
 	var/server
@@ -136,17 +125,8 @@
 	var/health_threshold_crit = 0
 	var/health_threshold_dead = -100
 
-	var/organ_health_multiplier = 1
-	var/organ_regeneration_multiplier = 1
 	var/default_brain_health = 400
 	var/allow_headgibs = FALSE
-
-	//Paincrit knocks someone down once they hit 60 shock_stage, so by default make it so that close to 100 additional damage needs to be dealt,
-	//so that it's similar to HALLOSS. Lowered it a bit since hitting paincrit takes much longer to wear off than a halloss stun.
-	var/organ_damage_spillover_multiplier = 0.5
-
-	var/bones_can_break = 0
-	var/limbs_can_break = 0
 
 	var/revival_pod_plants = 1
 	var/revival_cloning = 1
@@ -175,8 +155,6 @@
 
 	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in
 	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config_legacy.txt
-	var/use_age_restriction_for_jobs = 0 //Do jobs use account age restrictions? --requires database
-	var/use_age_restriction_for_antags = 0 //Do antags use account age restrictions? --requires database
 
 	var/simultaneous_pm_warning_timeout = 100
 
@@ -247,12 +225,6 @@
 
 	var/list/gamemode_cache = list()
 
-	var/lock_client_view_x
-	var/lock_client_view_y
-	var/max_client_view_x
-	var/max_client_view_y
-
-
 /datum/configuration_legacy/New()
 	var/list/L = subtypesof(/datum/game_mode)
 	for (var/T in L)
@@ -310,12 +282,6 @@
 
 				if ("hub_visibility")					//CITADEL CHANGE - ADDS HUB CONFIG
 					config_legacy.hub_visibility = 1
-
-				if ("use_age_restriction_for_jobs")
-					config_legacy.use_age_restriction_for_jobs = 1
-
-				if ("use_age_restriction_for_antags")
-					config_legacy.use_age_restriction_for_antags = 1
 
 				if ("jobs_have_minimal_access")
 					config_legacy.jobs_have_minimal_access = 1
@@ -692,9 +658,6 @@
 				if("character_slots")
 					config_legacy.character_slots = text2num(value)
 
-				if("loadout_slots")
-					config_legacy.loadout_slots = text2num(value)
-
 				if("allow_drone_spawn")
 					config_legacy.allow_drone_spawn = text2num(value)
 
@@ -708,16 +671,16 @@
 					config_legacy.use_overmap = 1
 /*
 				if("station_levels")
-					GLOB.using_map.station_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).station_levels = text2numlist(value, ";")
 
 				if("admin_levels")
-					GLOB.using_map.admin_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).admin_levels = text2numlist(value, ";")
 
 				if("contact_levels")
-					GLOB.using_map.contact_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).contact_levels = text2numlist(value, ";")
 
 				if("player_levels")
-					GLOB.using_map.player_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).player_levels = text2numlist(value, ";")
 */
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))
@@ -771,32 +734,8 @@
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
 
-				if ("panic_bunker")
-					config_legacy.panic_bunker = 1
-
-				if ("panic_bunker_message")
-					config_legacy.panic_bunker_message = value
-
 				if ("paranoia_logging")
 					config_legacy.paranoia_logging = 1
-
-				if("ip_reputation")
-					config_legacy.ip_reputation = 1
-
-				if("ipr_email")
-					config_legacy.ipr_email = value
-
-				if("ipr_block_bad_ips")
-					config_legacy.ipr_block_bad_ips = 1
-
-				if("ipr_bad_score")
-					config_legacy.ipr_bad_score = text2num(value)
-
-				if("ipr_allow_existing")
-					config_legacy.ipr_allow_existing = 1
-
-				if("ipr_minimum_age")
-					config_legacy.ipr_minimum_age = text2num(value)
 
 				if("minute_click_limit")
 					config_legacy.minute_click_limit = text2num(value)
@@ -840,20 +779,10 @@
 					config_legacy.revival_cloning = value
 				if("revival_brain_life")
 					config_legacy.revival_brain_life = value
-				if("organ_health_multiplier")
-					config_legacy.organ_health_multiplier = value / 100
-				if("organ_regeneration_multiplier")
-					config_legacy.organ_regeneration_multiplier = value / 100
-				if("organ_damage_spillover_multiplier")
-					config_legacy.organ_damage_spillover_multiplier = value / 100
 				if("default_brain_health")
 					config_legacy.default_brain_health = text2num(value)
 					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
 						config_legacy.default_brain_health = initial(config_legacy.default_brain_health)
-				if("bones_can_break")
-					config_legacy.bones_can_break = value
-				if("limbs_can_break")
-					config_legacy.limbs_can_break = value
 				if("allow_headgibs")
 					config_legacy.allow_headgibs = TRUE
 

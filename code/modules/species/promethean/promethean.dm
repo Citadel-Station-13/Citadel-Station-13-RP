@@ -21,6 +21,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	catalogue_data = list(/datum/category_item/catalogue/fauna/promethean)
 
 	max_additional_languages = 4
+	intrinsic_languages = LANGUAGE_ID_PROMETHEAN
 	assisted_langs   = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX) // Prometheans are weird, let's just assume they can use basically any language.
 
 	show_ssd = "totally quiescent"
@@ -57,15 +58,12 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	max_age = 80
 
-
 	gluttonous = 0
 	virus_immune = TRUE
-	slowdown = -0.2
-	brute_mod = 0.5
-	burn_mod  = 2
+	brute_mod = 0.9
+	burn_mod  = 1.1
 	oxy_mod   = 0
 	flash_mod = 0.5 //No centralized, lensed eyes.
-	item_slowdown_mod = 0.66
 
 	cloning_modifier = /datum/modifier/cloning_sickness/promethean
 
@@ -73,7 +71,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	cold_level_2 = 220
 	cold_level_3 = 130
 
-	heat_level_1 = 320
+	heat_level_1 = 340
 	heat_level_2 = 370
 	heat_level_3 = 600
 
@@ -117,7 +115,8 @@ var/datum/species/shapeshifter/promethean/prometheans
 	inherent_verbs = list(
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/set_size,
-		/mob/living/carbon/human/proc/promethean_select_opaqueness,
+		/mob/living/carbon/human/proc/promethean_toggle_body_transparency,
+		/mob/living/carbon/human/proc/promethean_set_hair_transparency,
 		/mob/living/carbon/human/proc/prommie_blobform,
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/shapeshifter_select_colour,
@@ -166,15 +165,16 @@ var/datum/species/shapeshifter/promethean/prometheans
 	))	//Only pick the empty types
 
 	var/obj/item/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
-	new /obj/item/reagent_containers/food/snacks/candy/proteinbar(L)
+	new /obj/item/reagent_containers/food/snacks/wrapped/proteinbar(L)
+	new /obj/item/tool/prybar/red(L)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/hand/right)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/hand/right)
 	else
-		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/shapeshifter/promethean/hug(mob/living/carbon/human/H, mob/living/target)
 
-	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand")
+	if(H.zone_sel.selecting == "head" || H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand" || H.zone_sel.selecting == "mouth")
 		return ..()
 	var/t_him = "them"
 	if(ishuman(target))

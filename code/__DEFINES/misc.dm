@@ -47,10 +47,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 /// Used to trigger removal from a processing list.
 #define PROCESS_KILL	26
-/// Used in chargen for accessory loadout limit.
-#define MAX_GEAR_COST					20
-/// Used in chargen for accessory loadout limit on holidays.
-#define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
 //	Shuttles.
 
@@ -98,7 +94,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_BOOK_MESSAGE_LEN	24576
 #define MAX_RECORD_LENGTH		24576
 #define MAX_LNAME_LEN			64
-#define MAX_NAME_LEN			52
+#define MAX_NAME_LEN			64
+
 /// 512GQ file
 #define MAX_TEXTFILE_LENGTH		128000
 // Event defines.
@@ -130,65 +127,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define WALL_CAN_OPEN	1
 #define WALL_OPENING	2
-
-
-// Material Defines
-#define MAT_BANANIUM		"bananium"
-#define MAT_CARBON			"carbon"
-#define MAT_CHITIN			"chitin"
-#define MAT_COPPER			"copper"
-#define MAT_DIAMOND			"diamond"
-#define MAT_DURASTEEL		"durasteel"
-#define MAT_DURASTEELHULL	"durasteel hull"
-#define MAT_GLASS			"glass"
-#define MAT_GOLD			"gold"
-#define MAT_GRAPHITE		"graphite"
-#define MAT_HARDLOG			"hardwood log"
-#define MAT_HARDWOOD		"hardwood"
-#define MAT_HEMATITE		"hematite"
-#define MAT_IRON			"iron"
-#define MAT_LEAD			"lead"
-#define MAT_LEATHER			"leather"
-#define MAT_LOG				"log"
-#define MAT_MARBLE			"marble"
-#define MAT_METALHYDROGEN	"mhydrogen"
-#define MAT_MORPHIUM		"morphium"
-#define MAT_MORPHIUMHULL	"morphium hull"
-#define MAT_OSMIUM			"osmium"
-#define MAT_PHORON			"phoron"
-#define MAT_PLASTEEL		"plasteel"
-#define MAT_PLASTEELHULL	"plasteel hull"
-#define MAT_PLASTIC			"plastic"
-#define MAT_PLATINUM		"platinum"
-#define MAT_SIFLOG			"alien log"
-#define MAT_SIFWOOD			"alien wood"
-#define MAT_SILENCIUM		"silencium"
-#define MAT_SILVER			"silver"
-#define MAT_SNOW			"snow"
-#define MAT_STEEL			"steel"
-#define MAT_STEELHULL		"steel hull"
-#define MAT_SUPERMATTER		"supermatter"
-#define MAT_TITANIUM		"titanium"
-#define MAT_TITANIUMHULL	"titanium hull"
-#define MAT_URANIUM			"uranium"
-#define MAT_VALHOLLIDE		"valhollide"
-#define MAT_VAUDIUM			"vaudium"
-#define MAT_VERDANTIUM		"verdantium"
-#define MAT_WOOD			"wood"
-
-
-#define SHARD_SHARD			"shard"
-#define SHARD_SHRAPNEL		"shrapnel"
-#define SHARD_STONE_PIECE	"piece"
-#define SHARD_SPLINTER		"splinters"
-#define SHARD_NONE			""
-
-#define MATERIAL_UNMELTABLE	0x1
-#define MATERIAL_BRITTLE	0x2
-#define MATERIAL_PADDING	0x4
-
-/// Amount table damage is multiplied by if it is made of a brittle material (e.g. glass)
-#define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4
 
 #define BOMBCAP_DVSTN_RADIUS	(max_explosion_range/4)
 #define BOMBCAP_HEAVY_RADIUS	(max_explosion_range/2)
@@ -230,6 +168,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_NTNET_LOGS	500
 #define MIN_NTNET_LOGS	10
 
+#define NTOS_EMAIL_NONEWMESSAGES	0
+#define NTOS_EMAIL_NOTIFALREADY		1
+#define NTOS_EMAIL_NEWMESSAGE		2
+
 
 // Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
 /// If the projectile should continue flying after calling bullet_act()
@@ -257,6 +199,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Job groups
+// todo: nuke this from fucking orbit during job refactor
 #define DEPARTMENT_CARGO			"cargo"
 #define DEPARTMENT_CIVILIAN			"civilian"
 #define DEPARTMENT_COMMAND			"command"
@@ -285,7 +228,6 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_SECURITY
 )
 
-
 // Off-duty time
 #define PTO_CARGO			"Cargo"
 #define PTO_CIVILIAN		"Civilian"
@@ -303,7 +245,7 @@ var/list/economy_station_departments = list(
 /// Because everyone misspells it
 #define TSC_HEPH	"Hephaestus"
 #define TSC_MORPH	"Morpheus"
-#define TSC_NT		"NanoTrasen"
+#define TSC_NT		"Nanotrasen"
 #define TSC_VM		"Vey Med"
 #define TSC_WT		"Ward-Takahashi"
 /// Not really needed but consistancy I guess.
@@ -317,14 +259,6 @@ var/list/economy_station_departments = list(
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
-
-// Maploader bounds indices
-#define MAP_MINX	1
-#define MAP_MINY	2
-#define MAP_MINZ	3
-#define MAP_MAXX	4
-#define MAP_MAXY	5
-#define MAP_MAXZ	6
 
 // /atom/proc/use_check flags
 #define USE_ALLOW_NONLIVING			1
@@ -426,11 +360,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 /// Embed chance unset for embed_chance var on /obj/item.
 #define EMBED_CHANCE_UNSET	-1337
-
-
-/// No hitsound define
-#define HITSOUND_UNSET	"UNSET"
-
 
 /// Herm Gender
 /// Snowflake Global that throws a fit

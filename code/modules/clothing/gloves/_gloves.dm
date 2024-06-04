@@ -6,11 +6,10 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 		)
 	gender = PLURAL //Carn: for grammarically correct text-parsing
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/clothing/gloves.dmi'
 	siemens_coefficient = 0.9
 	blood_sprite_state = "bloodyhands"
-	material_weight_factor = 0
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	var/fingerprint_chance = 0	//How likely the glove is to let fingerprints through
@@ -25,6 +24,7 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
+	material_factoring = 0
 
 /obj/item/clothing/gloves/get_fibers()
 	return "material from a pair of [name]."

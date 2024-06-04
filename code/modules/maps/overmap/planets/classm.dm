@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/gaia_planet
+/obj/overmap/entity/visitable/sector/gaia_planet
 	name = "Gaia Planet"
 	desc = "A planet with peaceful life, and ample flora."
 	scanner_desc = @{"[i]Incoming Message[/i]: Hello travler! Looking to enjoy the shine of the star on land?
@@ -12,7 +12,7 @@ Atmosphere: Breathable with standard human required environment
 Weather: Sunny, with chance of showers and thunderstorms. 25C
 Lifesign: Multiple Fauna. No history of hostile life recorded
 Ownership: Planet is owned by the Happy Days and Sunshine Corporation.
-Allignment: Neutral to NanoTrasen. No Discount for services expected."}
+Allignment: Neutral to Nanotrasen. No Discount for services expected."}
 	in_space = 0
 	icon_state = "globe"
 	color = "#33BB33"

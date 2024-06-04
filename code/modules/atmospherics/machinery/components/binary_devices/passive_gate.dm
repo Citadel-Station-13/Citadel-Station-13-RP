@@ -54,7 +54,7 @@
 /obj/machinery/atmospherics/component/binary/passive_gate/process(delta_time)
 	..()
 
-	last_flow_rate = 0
+	last_flow_rate_legacy = 0
 
 	if(!unlocked)
 		return 0
@@ -94,7 +94,7 @@
 		if(network2)
 			network2.update = 1
 
-	if (last_flow_rate)
+	if (last_flow_rate_legacy)
 		flowing = 1
 
 	update_icon()
@@ -186,7 +186,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/component/binary/passive_gate/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data = list(
@@ -197,12 +197,12 @@
 		"output_pressure" = round(air2.return_pressure()*100),
 		"regulate_mode" = regulate_mode,
 		"set_flow_rate" = round(set_flow_rate*10),
-		"last_flow_rate" = round(last_flow_rate*10),
+		"last_flow_rate" = round(last_flow_rate_legacy*10),
 	)
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/passive_gate/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

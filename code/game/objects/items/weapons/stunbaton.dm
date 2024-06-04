@@ -12,7 +12,7 @@
 	edge = 0
 	throw_force = 7
 	atom_flags = NOCONDUCT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
 	origin_tech = list(TECH_COMBAT = 2)
@@ -30,7 +30,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/melee/baton/get_cell()
+/obj/item/melee/baton/get_cell(inducer)
 	return bcell
 
 /obj/item/melee/baton/suicide_act(mob/user)
@@ -120,7 +120,7 @@
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
-		playsound(loc, "sparks", 75, 1, -1)
+		playsound(loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
 		update_icon()
 	else
 		status = 0
@@ -220,9 +220,9 @@
 		else
 			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
 
-	if(istype(W, /obj/item/ore/bluespace_crystal))
+	if(istype(W, /obj/item/bluespace_crystal))
 		if(!bcell)
-			var/obj/item/ore/bluespace_crystal/BSC = W
+			var/obj/item/bluespace_crystal/BSC = W
 			var/obj/item/melee/baton/cattleprod/teleprod/S = new /obj/item/melee/baton/cattleprod/teleprod
 			qdel(src)
 			qdel(BSC)
@@ -264,13 +264,13 @@
 // Rare version of a baton that causes lesser lifeforms to really hate the user and attack them.
 /obj/item/melee/baton/shocker
 	name = "shocker"
-	desc = "A device that appears to arc electricity into a target to incapacitate or otherwise hurt them, similar to a stun baton.  It looks inefficent."
+	desc = "A device that appears to arc electricity into a target to incapacitate or otherwise hurt them, similar to a stun baton.  It looks inefficient."
 	description_info = "Hitting a lesser lifeform with this while it is on will compel them to attack you above other nearby targets.  Otherwise \
 	it works like a regular stun baton, just less effectively."
 	icon_state = "shocker"
 	damage_force = 10
 	throw_force = 5
-	agonyforce = 25 // Less efficent than a regular baton.
+	agonyforce = 25 // Less efficient than a regular baton.
 	attack_verb = list("poked")
 
 /obj/item/melee/baton/shocker/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -293,9 +293,9 @@
 
 /obj/item/melee/baton/stunlance
 	name = "stun lance"
-	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	desc = "Designed by Nanotrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
 	icon_state = "stunlance"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	reach = 2
 
 /obj/item/melee/baton/stunlance/Initialize(mapload)
@@ -307,7 +307,7 @@
 	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."
 	icon_state = "mini_baton"
 	item_state = "mini_baton"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	stunforce = 5
 	throw_force = 2

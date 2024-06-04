@@ -39,7 +39,7 @@
 		return
 
 	for(var/datum/alarm_handler/AH in SSalarms.all_handlers)
-		AH.register_alarm(src, /mob/living/silicon/proc/receive_alarm)
+		AH.register_alarm(src, TYPE_PROC_REF(/mob/living/silicon, receive_alarm))
 		queued_alarms[AH] = list()	// Makes sure alarms remain listed in consistent order
 
 /********************

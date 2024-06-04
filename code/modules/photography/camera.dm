@@ -7,10 +7,10 @@
 	worn_state = "camera"
 	worn_render_flags = NONE
 	desc = "A polaroid camera. 10 photos left."
-	item_flags = ITEM_NOBLUDGEON
-	w_class = ITEMSIZE_SMALL
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
-	matter = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/on = 1
@@ -21,7 +21,7 @@
 
 /obj/item/camera/verb/change_size()
 	set name = "Set Photo Focus"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/nsize = input("Photo Size","Pick a size of resulting photo.") as null|anything in list(1,3,5,7)
 	if(nsize)
 		size = nsize

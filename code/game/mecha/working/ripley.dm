@@ -1,13 +1,13 @@
 /obj/mecha/working/ripley
-	desc = "Autonomous Power Loader Unit. The workhorse of the exosuit world."
+	desc = "Armored Power Loader Unit. The workhorse of the exosuit world."
 	name = "APLU \"Ripley\""
 	icon_state = "ripley"
 	initial_icon = "ripley"
 	step_in = 5
 	step_energy_drain = 5
 	max_temperature = 20000
-	health = 200
-	maxhealth = 200		//Don't forget to update the /old variant if  you change this number.
+	integrity = 200
+	integrity_max = 200		//Don't forget to update the /old variant if  you change this number.
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley
 	cargo_capacity = 10
 	var/obj/item/mining_scanner/orescanner
@@ -29,10 +29,7 @@
 
 /obj/mecha/working/ripley/Destroy()
 	for(var/atom/movable/A in src.cargo)
-		A.loc = loc
-		var/turf/T = loc
-		if(istype(T))
-			T.Entered(A)
+		A.forceMove(loc)
 		step_rand(A)
 	cargo.Cut()
 	..()
@@ -43,7 +40,7 @@
 	icon_state = "firefighter"
 	initial_icon = "firefighter"
 	max_temperature = 65000
-	health = 250
+	integrity = 250
 	lights_power = 8
 	damage_absorption = list("fire"=0.5,"bullet"=0.8,"bomb"=0.5)
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley/firefighter
@@ -101,8 +98,8 @@
 	icon_state = "ripley-old"
 	initial_icon = "ripley-old"
 	max_temperature = 5000
-	health = 150
-	maxhealth = 150
+	integrity = 150
+	integrity_max = 150
 	internal_damage_threshold = 50
 	step_energy_drain = 3
 
@@ -133,8 +130,8 @@
 
 /obj/mecha/working/ripley/mining/old/Initialize(mapload)
 	. = ..()
-	health = 25
-	maxhealth = 190	//Just slightly worse.
+	integrity = 25
+	integrity_max = 190	//Just slightly worse.
 	cell.charge = rand(0, cell.charge)
 
 /// Moved here from underdark_things.dm (cleaning up files)

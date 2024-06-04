@@ -92,8 +92,8 @@
 /datum/lore/codex/page/southern_cross/add_content()
 	name = "Southern Cross (Artificial Satellite)"
 	keywords += list("Southern Cross", "NLS Southern Cross")
-	data = "The Southern Cross is a telecommunications and supply hub for [quick_link("NanoTrasen")], named after it's companion satellite, the \
-	[quick_link("Northern Star")].  It acts as a logistics hub for the smaller installations NanoTrasen has in Sif orbit and on the surface."
+	data = "The Southern Cross is a telecommunications and supply hub for [quick_link("Nanotrasen")], named after it's companion satellite, the \
+	[quick_link("Northern Star")].  It acts as a logistics hub for the smaller installations Nanotrasen has in Sif orbit and on the surface."
 
 /datum/lore/codex/page/magni/add_content()
 	name = "Magni (Terrestrial Planet)"
@@ -107,13 +107,13 @@
 	to be the remnants of a much larger moon that was ripped apart by Kara, long ago. Curerntly, a large number of these \
 	asteroids are being used by many different businesses, and some governmental infrastructure has been built. The most prominent \
 	asteroid installation is the [quick_link("Northern Star", "NCS Northern Star")], a general purpose colony owned and operated by \
-	[quick_link("NanoTrasen")]. The mid-atmospheric temperature of the gas giant averages to around 150 kelvin (-108°C)."
+	[quick_link("Nanotrasen")]. The mid-atmospheric temperature of the gas giant averages to around 150 kelvin (-108°C)."
 
 /datum/lore/codex/page/northern_star/add_content()
 	name = "Northern Star (Artificial Satellite)"
 	keywords += list("Northern Star", "NCS Northern Star")
 	data = "One of the most prominent installations in the [quick_link("Kara")] subsystem, the Northern Star is owned \
-	and operated by [quick_link("NanoTrasen")].  It was originally built to service the various mining operations \
+	and operated by [quick_link("Nanotrasen")].  It was originally built to service the various mining operations \
 	occurring within Kara's ring, however it has grown into what it is today due to what was discovered inside \
 	the interior of the rock.  Both phoron and alien artifacts were found inside, catapulting the asteroid outpost \
 	into the main attraction inside the subsystem.\

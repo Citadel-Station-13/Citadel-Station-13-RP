@@ -10,8 +10,8 @@
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
-	matter = list(MAT_STEEL = 3000)
+	w_class = WEIGHT_CLASS_NORMAL
+	materials_base = list(MAT_STEEL = 3000)
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10
 
@@ -38,7 +38,7 @@
 	if((MUTATION_CLUMSY in L.mutations) && prob(50))              //What if he's a clown?
 		to_chat(victim, "<span class='warning'>You accidentally slam yourself with the [src]!</span>")
 		L.afflict_paralyze(20 * 1)
-		L.take_organ_damage(2)
+		L.take_random_targeted_damage(brute = 2)
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
 			return
@@ -60,9 +60,9 @@
 
 		if(prob(15))
 			victim.afflict_paralyze(20 * 3)
-			victim.take_organ_damage(3)
+			victim.take_random_targeted_damage(brute = 3)
 		else
-			victim.take_organ_damage(5)
+			victim.take_random_targeted_damage(brute = 5)
 		if(prob(50))
 			playsound(victim, 'sound/items/trayhit1.ogg', 50, 1)
 			for(var/mob/O in viewers(victim, null))
@@ -77,7 +77,7 @@
 
 	var/protected = 0
 	for(var/slot in list(SLOT_ID_HEAD, SLOT_ID_MASK, SLOT_ID_GLASSES))
-		var/obj/item/protection = victim.item_by_slot(slot)
+		var/obj/item/protection = victim.item_by_slot_id(slot)
 		if(istype(protection) && (protection.body_cover_flags & FACE))
 			protected = 1
 			break
@@ -106,10 +106,10 @@
 				O.show_message(SPAN_DANGER("[L] slams [victim] with the tray!"), SAYCODE_TYPE_VISIBLE)
 		if(prob(10))
 			victim.afflict_stun(20 * rand(1,3))
-			victim.take_organ_damage(3)
+			victim.take_random_targeted_damage(brute = 3)
 			return
 		else
-			victim.take_organ_damage(5)
+			victim.take_random_targeted_damage(brute = 5)
 			return
 
 	else //No eye or head protection, tough luck!
@@ -130,10 +130,10 @@
 				O.show_message(SPAN_DANGER("[L] slams [victim] in the face with the tray!"), SAYCODE_TYPE_VISIBLE)
 		if(prob(30))
 			victim.afflict_stun(20 * rand(2,4))
-			victim.take_organ_damage(4)
+			victim.take_random_targeted_damage(brute = 4)
 			return
 		else
-			victim.take_organ_damage(8)
+			victim.take_random_targeted_damage(brute = 8)
 			if(prob(30))
 				victim.afflict_paralyze(20 * 2)
 				return
@@ -162,9 +162,9 @@
 	var/val = 0 // value to return
 
 	for(var/obj/item/I in carrying)
-		if(I.w_class == ITEMSIZE_TINY)
+		if(I.w_class == WEIGHT_CLASS_TINY)
 			val ++
-		else if(I.w_class == ITEMSIZE_SMALL)
+		else if(I.w_class == WEIGHT_CLASS_SMALL)
 			val += 3
 		else
 			val += 5
@@ -180,9 +180,9 @@
 	for(var/obj/item/I in loc)
 		if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/projectile) )
 			var/add = 0
-			if(I.w_class == ITEMSIZE_TINY)
+			if(I.w_class == WEIGHT_CLASS_TINY)
 				add = 1
-			else if(I.w_class == ITEMSIZE_SMALL)
+			else if(I.w_class == WEIGHT_CLASS_SMALL)
 				add = 3
 			else
 				add = 5
@@ -196,7 +196,7 @@
 			Img.layer = layer + I.layer*0.01
 			if(istype(I, /obj/item/material))
 				var/obj/item/material/O = I
-				if(O.applies_material_colour)
+				if(O.material_color)
 					Img.color = O.color
 			add_overlay(Img)
 

@@ -213,7 +213,7 @@ var/bomb_set
 	onclose(user, "nukebomb_hack")
 
 /obj/machinery/nuclearbomb/verb/make_deployable()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Make Deployable"
 	set src in oview(1)
 
@@ -379,7 +379,7 @@ var/bomb_set
 
 	var/off_station = 0
 	var/turf/bomb_location = get_turf(src)
-	if(bomb_location && (bomb_location.z in GLOB.using_map.station_levels))
+	if(bomb_location && (bomb_location.z in (LEGACY_MAP_DATUM).station_levels))
 		if((bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)))
 			off_station = 1
 	else

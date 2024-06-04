@@ -4,9 +4,7 @@ import { Window } from '../layouts';
 
 export const PortableGenerator = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    stack_percent,
-  } = data;
+  const stack_percent = data.fuel_stored / data.fuel_capacity;
   const stackPercentState = (
     stack_percent > 50 && 'good'
     || stack_percent > 15 && 'average'
@@ -30,9 +28,9 @@ export const PortableGenerator = (props, context) => {
                 {data.active ? 'On' : 'Off'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label={data.sheet_name + ' sheets'}>
-              <Box inline color={stackPercentState}>{data.sheets}</Box>
-              {data.sheets >= 1 && (
+            <LabeledList.Item label={data.sheet_name}>
+              <Box inline color={stackPercentState}>{Math.round(data.fuel_stored / 2000)}</Box>
+              {data.fuel_stored >= 2000 && (
                 <Button
                   ml={1}
                   icon="eject"
@@ -44,7 +42,7 @@ export const PortableGenerator = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Current sheet level">
               <ProgressBar
-                value={data.stack_percent / 100}
+                value={stack_percent}
                 ranges={{
                   good: [0.1, Infinity],
                   average: [0.01, 0.1],
@@ -52,21 +50,27 @@ export const PortableGenerator = (props, context) => {
                 }} />
             </LabeledList.Item>
             <LabeledList.Item label="Heat level">
-              {data.current_heat < 100 ? (
-                <Box inline color="good">Nominal</Box>
-              ) : (
-                data.current_heat < 200 ? (
-                  <Box inline color="average">Caution</Box>
+              {
+                data.temperature_current < data.temperature_max / 2 ? (
+                  <Box inline color="good">Nominal</Box>
                 ) : (
-                  <Box inline color="bad">DANGER</Box>
+                  (data.temperature_current < data.temperature_max) && !data.temperature_overheat ? (
+                    <Box inline color="average">
+                      Caution
+                    </Box>
+                  ) : (
+                    <Box inline color="bad">DANGER</Box>
+                  )
                 )
-              )}
+              }
             </LabeledList.Item>
           </LabeledList>
         </Section>
         <Section title="Output">
           <LabeledList>
-            <LabeledList.Item label="Current output">
+            <LabeledList.Item label="Current output" color={
+              data.unsafe_output? "bad" : undefined
+            }>
               {data.power_output}
             </LabeledList.Item>
             <LabeledList.Item label="Adjust output">

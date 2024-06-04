@@ -10,11 +10,11 @@
 /area/submap/Thiefc)
 "d" = (
 /obj/structure/ore_box,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -35,14 +35,14 @@
 	},
 /area/submap/Thiefc)
 "g" = (
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},

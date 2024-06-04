@@ -2,8 +2,9 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 /obj/machinery/bioscan_antenna
 	name = "Bioscan Antenna"
 	desc = "A fragile antenna used to locate nearby biosignatures."
-	allow_deconstruct = TRUE
-	allow_unanchor = TRUE
+	default_deconstruct = 0 SECONDS
+	default_unanchor = 5 SECONDS
+	default_panel = 0 SECONDS
 	icon = 'icons/machinery/bioscan.dmi'
 	base_icon_state = "antenna"
 	icon_state = "antenna"
@@ -33,58 +34,26 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	change_network(null)
 	return ..()
 
-/obj/machinery/bioscan_antenna/crowbar_act(obj/item/I, mob/user, flags, hint)
-	if(!allow_deconstruct || !panel_open)
-		return ..()
-	if(default_deconstruction_crowbar(user, I))
-		user.visible_message(SPAN_NOTICE("[user] dismantles [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
-		return TRUE
-	return ..()
-
-/obj/machinery/bioscan_antenna/screwdriver_act(obj/item/I, mob/user, flags, hint)
-	if(!allow_deconstruct)
-		return ..()
-	if(default_deconstruction_screwdriver(user, I))
-		user.visible_message(SPAN_NOTICE("[user] [panel_open? "opens" : "closes"] the panel on [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
-		return TRUE
-	return ..()
-
-/obj/machinery/bioscan_antenna/wrench_act(obj/item/I, mob/user, flags, hint)
-	if(!allow_unanchor)
-		return ..()
-	if(default_unfasten_wrench(user, I, 4 SECONDS))
-		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
-		return TRUE
-	return ..()
-
-/obj/machinery/bioscan_antenna/multitool_act(obj/item/I, mob/user, flags, hint)
+/obj/machinery/bioscan_antenna/multitool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!network_mutable)
 		return ..()
 	. = TRUE
-	var/new_network = default_input_text(user, "What do you want to set the network key to?", "Modify Network", network_key)
-	if(!user.Reachability(src) || isnull(new_network))
+	var/new_network = default_input_text(e_args.initiator, "What do you want to set the network key to?", "Modify Network", network_key)
+	if(!e_args.performer.Reachability(src) || isnull(new_network))
 		return
-	user.visible_message(SPAN_NOTICE("[user] reprograms the network on [src]."), range = MESSAGE_RANGE_CONFIGURATION)
+	e_args.visible_feedback(
+		target = src,
+		visible = SPAN_NOTICE("[e_args.performer] reprograms the network on [src]."),
+		range = MESSAGE_RANGE_CONFIGURATION,
+		otherwise_self = SPAN_NOTICE("You reprogram the network on [src]."),
+	)
 	change_network(new_network)
 
-/obj/machinery/bioscan_antenna/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/machinery/bioscan_antenna/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list()
 	if(network_mutable)
 		.[TOOL_MULTITOOL] = "change network"
-	if(allow_unanchor)
-		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
-	if(allow_deconstruct)
-		.[TOOL_SCREWDRIVER] = panel_open? "close panel" : "open panel"
-		if(panel_open)
-			.[TOOL_CROWBAR] = "deconstruct"
-
-/obj/machinery/bioscan_antenna/dynamic_tool_image(function, hint)
-	switch(function)
-		if(TOOL_WRENCH)
-			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
-		if(TOOL_SCREWDRIVER)
-			return panel_open? dyntool_image_forward(TOOL_SCREWDRIVER) : dyntool_image_backward(TOOL_SCREWDRIVER)
-	return ..()
+	return merge_double_lazy_assoc_list(., ..())
 
 /obj/machinery/bioscan_antenna/attack_hand(mob/user, list/params)
 	// todo: better xenomorphs
@@ -118,5 +87,5 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 
 /obj/machinery/bioscan_antenna/permanent
 	desc = "A less fragile antenna used to locate nearby biosignatures. This one cannot be anchored or moved, only reprogrammed."
-	allow_deconstruct = FALSE
-	allow_unanchor = FALSE
+	default_deconstruct = null
+	default_unanchor = null

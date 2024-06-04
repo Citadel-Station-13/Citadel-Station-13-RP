@@ -1,11 +1,6 @@
 /obj/structure/closet/secure_closet/scientist
 	name = "scientist's locker"
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_broken = "secureresbroken"
-	icon_off = "secureresoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/scientst
 	req_access = list(ACCESS_SCIENCE_TOXINS)
 
 	starts_with = list(
@@ -26,15 +21,33 @@
 		starts_with += /obj/item/storage/backpack/toxins
 	return ..()
 
+/obj/structure/closet/secure_closet/robotics
+	name = "roboticist's locker"
+	closet_appearance = /singleton/closet_appearance/secure_closet/scientst
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
+
+	starts_with = list(
+		/obj/item/clothing/glasses/welding,
+		/obj/item/clothing/glasses/welding,
+		/obj/item/clothing/glasses/omnihud/rnd,
+		/obj/item/clothing/glasses/omnihud/rnd,
+		/obj/item/storage/belt/utility/full,
+		/obj/item/storage/belt/utility/full,
+		/obj/item/clothing/mask/bandana/red,
+		/obj/item/clothing/mask/bandana/skull,
+		/obj/item/clothing/gloves/fingerless,
+		/obj/item/clothing/gloves/fingerless,
+		/obj/item/radio/headset/headset_sci,
+		/obj/item/radio/headset/headset_sci,
+		/obj/item/clothing/under/rank/roboticist,
+		/obj/item/clothing/under/rank/roboticist,
+		/obj/item/storage/toolbox/mechanical,
+		/obj/item/storage/toolbox/electrical,
+		/obj/item/gps/science)
 
 /obj/structure/closet/secure_closet/RD
 	name = "research director's locker"
-	icon_state = "rdsecure1"
-	icon_closed = "rdsecure"
-	icon_locked = "rdsecure1"
-	icon_opened = "rdsecureopen"
-	icon_broken = "rdsecurebroken"
-	icon_off = "rdsecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/rd
 	req_access = list(ACCESS_SCIENCE_RD)
 
 	starts_with = list(

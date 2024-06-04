@@ -1,5 +1,6 @@
 ///249840 J/K, for a 72 kg person.
-#define HEAT_CAPACITY_HUMAN 100
+// #define HEAT_CAPACITY_HUMAN 100
+#define HEAT_CAPACITY_HUMAN 5
 /obj/machinery/atmospherics/component/unary/cryo_cell
 	name = "cryo cell"
 	icon = 'icons/obj/medical/cryogenics.dmi' // map only
@@ -9,7 +10,6 @@
 	layer = UNDER_JUNK_LAYER
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_ALLOW_SILICON
 
-	var/on = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 200
@@ -25,8 +25,6 @@
 	var/image/fluid
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
-	. = ..()
-
 	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
@@ -43,6 +41,10 @@
 	fluid.layer = MOB_LAYER+0.1 //Below glass, above mob
 
 	add_overlay(tank)
+
+	. = ..()
+
+	// todo: duped, components update icon on init right?
 	update_icon()
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/Destroy()
@@ -68,6 +70,7 @@
 		temperature_archived = air_contents.temperature
 		heat_gas_contents()
 		expel_gas()
+		update_icon()
 
 	if(abs(temperature_archived-air_contents.temperature) > 1)
 		network.update = TRUE
@@ -205,8 +208,6 @@
 		qdel(grab)
 		put_mob(M)
 
-	return
-
 /obj/machinery/atmospherics/component/unary/cryo_cell/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into cryo without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
@@ -215,6 +216,7 @@
 /obj/machinery/atmospherics/component/unary/cryo_cell/update_icon()
 	cut_overlay(fluid)
 	fluid.color = null
+	fluid.alpha = max(255 - air_contents.temperature, 50)
 	if(on)
 		if(beaker)
 			fluid.color = beaker.reagents.get_color()
@@ -226,15 +228,20 @@
 	if(occupant)
 		if(occupant.stat >= DEAD)
 			return
-		occupant.bodytemperature += 2*(air_contents.temperature - occupant.bodytemperature)*current_heat_capacity/(current_heat_capacity + air_contents.heat_capacity())
-		occupant.bodytemperature = max(occupant.bodytemperature, air_contents.temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
-		occupant.set_stat(UNCONSCIOUS)
-		occupant.dir = SOUTH
+		// todo :kill bodyetmperature and rewrite it from scratch this is not real holy shit
+		var/cooling_power = clamp(
+			-(4 + ((occupant.nominal_bodytemperature() - occupant.bodytemperature) / BODYTEMP_AUTORECOVERY_DIVISOR)),
+			(air_contents.temperature - occupant.bodytemperature),
+			(air_contents.temperature - occupant.bodytemperature) * 0.5,
+		)
+		occupant.adjust_bodytemperature(cooling_power)
+		occupant.setDir(src.dir)
 		if(occupant.bodytemperature < T0C)
 			occupant.afflict_sleeping(20 * max(5, (1/occupant.bodytemperature)*2000))
 			occupant.afflict_unconscious(20 * max(5, (1/occupant.bodytemperature)*3000))
-			if(air_contents.gas[/datum/gas/oxygen] > 2)
-				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
+			if(air_contents.gas[GAS_ID_OXYGEN] > 2)
+				if(occupant.getOxyLoss())
+					occupant.adjustOxyLoss(-1)
 			else
 				occupant.adjustOxyLoss(-1)
 			//severe damage should heal waaay slower without proper chemicals
@@ -276,12 +283,15 @@
 	vis_contents -= occupant
 	occupant.pixel_x = occupant.base_pixel_x
 	occupant.pixel_y = occupant.base_pixel_y
-	occupant.forceMove(get_step(loc, SOUTH))	//this doesn't account for walls or anything, but i don't forsee that being a problem.
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70) //Patch by Aranclanos to stop people from taking burn damage after being ejected
-		occupant.bodytemperature = 261									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.
+		occupant.set_bodytemperature(261)									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.
 	occupant.forceMove(loc)
 	occupant.update_perspective()
 	occupant = null
+
+	REMOVE_TRAIT(occupant, TRAIT_MOB_FORCED_STANDING, CRYO_TUBE_TRAIT)
+	occupant.update_mobility() // make them rest again if needed
+
 	current_heat_capacity = initial(current_heat_capacity)
 	update_use_power(USE_POWER_IDLE)
 	return
@@ -313,6 +323,11 @@
 	occupant.update_perspective()
 	vis_contents |= occupant
 	occupant.pixel_y += 19
+
+	ADD_TRAIT(occupant, TRAIT_MOB_FORCED_STANDING, CRYO_TUBE_TRAIT)
+	occupant.setDir(src.dir)
+	occupant.set_resting(FALSE)
+
 	current_heat_capacity = HEAT_CAPACITY_HUMAN
 	update_use_power(USE_POWER_ACTIVE)
 //	M.metabslow = 1
@@ -322,7 +337,7 @@
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr == occupant)//If the user is inside the tube...
 		if(usr.stat == 2)//and he's not dead....
@@ -341,7 +356,7 @@
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/verb/move_inside()
 	set name = "Move Inside"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(isliving(usr))
 		var/mob/living/L = usr

@@ -23,9 +23,9 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 /datum/tgui_module_old/ui_host()
 	return host ? host.ui_host() : src
 
-/datum/tgui_module_old/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	if(host)
-		host.ui_close(user)
+		host.on_ui_close(user, ui, TRUE)
 
 /datum/tgui_module_old/proc/check_eye(mob/user)
 	return -1
@@ -55,14 +55,14 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 
 	return 0
 
-/datum/tgui_module_old/ui_static_data()
+/datum/tgui_module_old/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	var/obj/item/modular_computer/host = ui_host()
 	if(istype(host))
 		. += host.get_header_data()
 
-/datum/tgui_module_old/ui_act(action, params)
+/datum/tgui_module_old/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -5,6 +5,7 @@
  * as much as possible to the components/elements system
  */
 /atom
+	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
 	//? Core
@@ -33,14 +34,23 @@
 	var/bubble_icon = "normal"
 
 	//? Armor
-	/// armor datm - this armor mitigates damage
-	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
-	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
+	/// armor datum - holds armor values
+	/// this is lazy initialized, only init'd when armor is fetched
+	/// [armor_type] specifies the typepath to fetch if this is null during a fetch
 	var/datum/armor/armor
 	/// armor datum type
+	/// this is the type to init if armor is unset when armor is fetched
+	/// * anonymous typepaths are not allowed here
 	var/armor_type = /datum/armor/none
 
+	//? Context
+	/// open context menus by mob
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/context_menus
+
 	//? Economy
+	// todo: move all this to obj level, you aren't going to sell a fucking turf.
+	//       the procs can however stay.
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
 	var/worth_intrinsic = 0
 	/// static worth of contents - only read if getting a static worth from typepath.
@@ -63,24 +73,22 @@
 	 */
 	var/worth_dynamic = FALSE
 
-	//? Health
-	// todo: every usage of these vars need to be parsed because shitcode still exists that
-	// todo: was just monkey patched over by making it not compile error for redefining this..
+	//? Integrity
 	/// max health
-	var/max_integrity
+	var/integrity_max
 	/// health
 	var/integrity
 	/// what integrity we call break at.
-	var/failure_integrity = 0
-	/// do we use the atom damage system?
-	var/use_integrity = FALSE
-	// todo: use integrity & procs on turf and obj level
+	var/integrity_failure = 0
+	/// do we use the atom damage system? having this off implicitly implies non-targetability for this entity,
+	/// completely overriding any object flags at /obj levels for targeting.
+	var/integrity_enabled = FALSE
+	/// flags for resistances
+	var/integrity_flags = NONE
 
-	//? HUDs
-	/// This atom's HUD (med/sec, etc) images. Associative list.
-	var/list/image/hud_list = null
-	/// HUD images that this atom can provide.
-	var/list/hud_possible
+	//* HUDs (Atom)
+	/// atom hud typepath to image
+	var/list/image/atom_huds
 
 	//? Icon Smoothing
 	/// Icon-smoothing behavior.
@@ -131,19 +139,54 @@
 	/// Shows up under a UV light.
 	var/fluorescent
 
+	//? Materials
+	/// combined material trait flags
+	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_trait_flags = NONE
+	/// material traits on us, associated to metadata
+	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/material_trait/material_traits
+	/// material trait metadata when [material_traits] is a single trait. null otherwise.
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_traits_data
+	/// 'stacks' of ticking
+	/// this synchronizes the system so removing one ticking material trait doesn't fully de-tick the entity
+	//! DO NOT FUCK WITH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_ticking_counter = 0
+	/// material trait relative strength
+	/// applies to all traits globally as opposed to just one material parts,
+	/// because this is at /atom level.
+	var/material_traits_multiplier = 1
+
 	//? Radiation
 	/// radiation flags
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation - does *not* affect rad_act!
 	var/rad_insulation = RAD_INSULATION_NONE
 	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
-	var/rad_stickiness
+	var/rad_stickiness = 1
+
+	//? Shieldcalls
+	/// sorted priority list of datums for handling shieldcalls with
+	/// we use this instead of signals so we can enforce priorities
+	/// this is horrifying.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/shieldcall/shieldcalls
 
 	//? Overlays
 	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
-	var/list/managed_vis_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_vis_overlays
 	/// overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
-	var/list/managed_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_overlays
 
 	//? Layers
 	/// Base layer - defaults to layer.
@@ -171,6 +214,13 @@
 	/// The orbiter comopnent if we're being orbited.
 	var/datum/component/orbiter/orbiters
 
+	//? Sounds
+	/// Default sound played on impact when damaged by a weapon / projectile / whatnot. This is usually null for default.
+	var/hit_sound_brute
+	/// Default sound played on a burn type impact. This is usually null for default.
+	var/hit_sound_burn
+
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *
@@ -183,11 +233,11 @@
  */
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
-	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	if(global.use_preloader && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
-		GenerateTag()
+		generate_tag()
 
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -284,10 +334,8 @@
  * * clears the light object
  */
 /atom/Destroy(force)
-	if(alternate_appearances)
-		for(var/current_alternate_appearance in alternate_appearances)
-			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
-			selected_alternate_appearance.remove_from_hud(src)
+	for(var/hud_provider in atom_huds)
+		remove_atom_hud_provider(src, hud_provider)
 
 	if(reagents)
 		QDEL_NULL(reagents)
@@ -321,19 +369,6 @@
 
 ///Is this atom within 1 tile of another atom
 /atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
-	return
-
-/atom/proc/emp_act(var/severity)
-	// todo: SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
-
-
-/atom/proc/bullet_act(obj/projectile/P, def_zone)
-	P.on_hit(src, 0, def_zone)
-	. = 0
-
-// Called when a blob expands onto the tile the atom occupies.
-/atom/proc/blob_act()
 	return
 
 ///Return true if we're inside the passed in atom
@@ -426,6 +461,8 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[desc]"
+	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
 /*
 	if(custom_materials)
 		var/list/materials_list = list()
@@ -437,14 +474,21 @@
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
 			if(length(reagents.reagent_list))
+				var/has_alcohol = FALSE
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+						if(!has_alcohol && istype(current_reagent,/datum/reagent/ethanol))
+							has_alcohol = TRUE
 						. += "&bull; [round(current_reagent.volume, 0.01)] units of [current_reagent.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+						if(!has_alcohol && istype(current_reagent,/datum/reagent/ethanol))
+							has_alcohol = TRUE
 						total_volume += current_reagent.volume
 					. += "[total_volume] units of various reagents"
+				if(has_alcohol)
+					. += "It smells of alcohol."
 			else
 				. += "Nothing."
 		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
@@ -452,6 +496,8 @@
 				. += SPAN_NOTICE("It has [reagents.total_volume] unit\s left.")
 			else
 				. += SPAN_DANGER("It's empty.")
+
+	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
@@ -493,43 +539,10 @@
 	invisibility = new_invisibility
 	return TRUE
 
-/**
- * React to being hit by an explosion
- *
- * Should be called through the [EX_ACT] wrapper macro.
- * The wrapper takes care of the [COMSIG_ATOM_EX_ACT] signal.
- * as well as calling [/atom/proc/contents_explosion].
- */
-/atom/proc/legacy_ex_act(severity, target)
-	set waitfor = FALSE
-
-/**
- * todo: implement on most atoms/generic damage system
- * todo: replace legacy_ex_act entirely with this
- *
- * React to being hit by an explosive shockwave
- *
- * ? Tip for overrides: . = ..() when you want signal to be sent, mdify power before if you need to; to ignore parent
- * ? block power, just `return power` in your proc after . = ..().
- *
- * @params
- * - power - power our turf was hit with
- * - direction - DIR_BIT bits; can bwe null if it wasn't a wave explosion!!
- * - explosion - explosion automata datum; can be null
- *
- * @return power after falloff (e.g. hit with 30 power, return 20 to apply 10 falloff)
- */
-/atom/proc/ex_act(power, dir, datum/automata/wave/explosion/E)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
-	return power
-
 // todo: this really needs to be refactored
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	return -1
 
-/atom/proc/fire_act()
-	return
 
 // Returns an assoc list of RCD information.
 // Example would be: list(RCD_VALUE_MODE = RCD_DECONSTRUCT, RCD_VALUE_DELAY = 50, RCD_VALUE_COST = RCD_SHEETS_PER_MATTER_UNIT * 4)
@@ -750,11 +763,13 @@
 // todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
 	var/list/see
+	//! LEGACY
 	if(isbelly(loc))
 		var/obj/belly/B = loc
 		see = B.effective_emote_hearers()
 	else
 		see = get_hearers_in_view(range, src)
+	//! end
 	for(var/atom/movable/AM as anything in see)
 		if(ismob(AM))
 			var/mob/M = AM
@@ -796,8 +811,8 @@
 			msg = lang.scramble(msg)
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
-	if(!no_runechat)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
+	if(!no_runechat && ismovable(src))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -832,7 +847,23 @@
 /atom/proc/get_nametag_desc(mob/user)
 	return "" //Desc itself is often too long to use
 
-/atom/proc/GenerateTag()
+/**
+ * generates our locate() tag
+ *
+ * why would we use tags?
+ * i'm glad you asked!
+ *
+ * some atoms / datums have special needs of 'too critical to allow shared text refs to wreak havoc'
+ * yes, usually, people need to be gc-aware and not allow text ref reuse to break things
+ * unfortunately this is still going to be an issue for legacy code
+ *
+ * so we don't allow things like /mobs to ever share the same reference used for REF(),
+ * because the chances of a collision is just too high
+ *
+ * not only that, this is currently the way things like mobs can generate things like their render source/target UIDs
+ * in the future we'll need to change that to a better UID system for each system, but, for now, this is why.
+ */
+/atom/proc/generate_tag()
 	return
 
 /**
@@ -870,7 +901,7 @@
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
 
 
-/atom/proc/get_cell()
+/atom/proc/get_cell(inducer)
 	return
 
 //? Radiation
@@ -936,6 +967,14 @@
 /atom/proc/update_atom_colour()
 	CRASH("base proc hit")
 
+//* Deletions *//
+
+// /**
+//  * Called when something in our contents is being Destroy()'d, before they get moved.
+//  */
+// /atom/proc/handle_contents_del(atom/movable/deleting)
+// 	return
+
 //? Filters
 
 /atom/proc/add_filter(name, priority, list/params, update = TRUE)
@@ -948,7 +987,7 @@
 
 /atom/proc/update_filters()
 	filters = null
-	filter_data = tim_sort(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = tim_sort(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()
@@ -1001,6 +1040,23 @@
 	filter_data = null
 	filters = null
 
+//* Inventory *//
+
+/atom/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	return
+
+/atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	return
+
+/atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	return
+
+/**
+ * called when an /obj/item Initialize()s in us.
+ */
+/atom/proc/on_contents_item_new(obj/item/item)
+	return
+
 //? Layers
 
 /// Sets our plane
@@ -1038,7 +1094,21 @@
 	plane = initial(plane)
 	set_base_layer(initial(layer))
 
+//* Persistence *//
+
+/**
+ * Triggered by SSpersistence to decay persisted atoms on load.
+ *
+ * @params
+ * * rounds_since_saved - rounds since we were saved
+ * * hours_since_saved - hours since we were saved
+ */
+/atom/proc/decay_persisted(rounds_since_saved, hours_since_saved)
+	return
+
 //? Pixel Offsets
+
+// todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
@@ -1046,6 +1116,11 @@
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/atom/proc/set_pixel_offsets(x, y)
+	pixel_x = x + get_managed_pixel_x()
+	pixel_y = y + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()
@@ -1078,21 +1153,21 @@
 	return base_pixel_y
 
 /**
- * get the pixel_x needed to adjust an atom on our turf **to the position of our visual center**
+ * get the pixel_x needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
+/atom/proc/get_centering_pixel_x_offset(dir)
 	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
- * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
+ * get the pixel_y needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
  *
  * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
-/atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
+/atom/proc/get_centering_pixel_y_offset(dir)
 	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.

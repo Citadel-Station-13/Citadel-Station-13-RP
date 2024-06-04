@@ -43,3 +43,11 @@ SUBSYSTEM_DEF(ao)
 	if (idex > 1)
 		curr.Cut(1, idex)
 		idex = 1
+
+/datum/controller/subsystem/ao/StartLoadingMap()
+	can_fire = FALSE
+	return ..()
+
+/datum/controller/subsystem/ao/StopLoadingMap()
+	can_fire = TRUE
+	return ..()

@@ -4,7 +4,7 @@
 	name = "Admin Shuttle Controller"
 	tgui_id = "AdminShuttleController"
 
-/datum/tgui_module_old/admin_shuttle_controller/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/admin_shuttle_controller/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/shuttles = list()
@@ -20,7 +20,7 @@
 
 	var/list/overmap_ships = list()
 	for(var/ship in SSshuttles.ships)
-		var/obj/effect/overmap/visitable/ship/S = ship
+		var/obj/overmap/entity/visitable/ship/S = ship
 		overmap_ships.Add(list(list(
 			"name" = S.scanner_name || S.name,
 			"ref" = REF(S),
@@ -29,7 +29,7 @@
 
 	return data
 
-/datum/tgui_module_old/admin_shuttle_controller/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/admin_shuttle_controller/ui_state()
 	return GLOB.tgui_admin_state
 
 /datum/tgui_module_old/admin_shuttle_controller/ui_act(action, list/params, datum/tgui/ui)
@@ -45,8 +45,8 @@
 					C.admin_ghost()
 				spawn(2)
 					C.jumptoturf(get_turf(S.current_location))
-			else if(istype(S, /obj/effect/overmap/visitable))
-				var/obj/effect/overmap/visitable/V = S
+			else if(istype(S, /obj/overmap/entity/visitable))
+				var/obj/overmap/entity/visitable/V = S
 				var/client/C = usr.client
 				if(!isobserver(usr))
 					C.admin_ghost()
@@ -94,7 +94,7 @@
 			to_chat(usr, "<span class='notice'>Launching shuttle [S].</span>")
 			return TRUE
 		if("overmap_control")
-			var/obj/effect/overmap/visitable/ship/V = locate(params["ref"])
+			var/obj/overmap/entity/visitable/ship/V = locate(params["ref"])
 			if(istype(V))
 				var/datum/tgui_module_old/ship/fullmonty/F = new(src, V)
 				F.ui_interact(usr, null, ui)

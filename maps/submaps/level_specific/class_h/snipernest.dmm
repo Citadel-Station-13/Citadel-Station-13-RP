@@ -1,0 +1,322 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/snipernest)
+"i" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/template_noop)
+"l" = (
+/obj/structure/sandbag,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/snipernest)
+"m" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/snipernest)
+"s" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/snipernest)
+"u" = (
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/snipernest)
+"v" = (
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/snipernest)
+"D" = (
+/obj/structure/bed/padded,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/snipernest)
+"F" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/snipernest)
+"G" = (
+/turf/simulated/wall/dungeon,
+/area/tether_away/beach/desert/poi/snipernest)
+"J" = (
+/mob/living/simple_mob/humanoid/merc/ranged/garand/sniper,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/snipernest)
+"N" = (
+/obj/random/trash,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/snipernest)
+"P" = (
+/obj/structure/bed/padded,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/snipernest)
+"W" = (
+/turf/simulated/mineral/ignore_mapgen/classh,
+/area/tether_away/beach/desert/poi/snipernest)
+"Y" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/machinery/light/small,
+/obj/random/firstaid,
+/obj/random/firstaid,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/snipernest)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+i
+i
+i
+i
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+W
+W
+l
+l
+l
+l
+W
+W
+i
+i
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+W
+W
+W
+N
+v
+J
+v
+W
+W
+W
+i
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+W
+W
+W
+v
+v
+N
+v
+W
+W
+W
+W
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+W
+W
+G
+G
+F
+G
+G
+W
+W
+W
+b
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+l
+v
+G
+P
+s
+Y
+G
+v
+v
+l
+b
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+l
+J
+F
+u
+u
+u
+F
+v
+J
+l
+b
+i
+a
+"}
+(9,1,1) = {"
+a
+a
+l
+v
+G
+D
+u
+m
+G
+v
+N
+l
+b
+i
+a
+"}
+(10,1,1) = {"
+a
+a
+l
+N
+G
+G
+F
+G
+G
+W
+W
+W
+b
+i
+a
+"}
+(11,1,1) = {"
+a
+a
+W
+W
+W
+v
+v
+v
+W
+W
+W
+W
+W
+i
+a
+"}
+(12,1,1) = {"
+a
+a
+i
+W
+W
+v
+J
+N
+v
+W
+W
+W
+i
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+i
+W
+W
+l
+l
+l
+l
+W
+b
+b
+i
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+i
+i
+i
+i
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

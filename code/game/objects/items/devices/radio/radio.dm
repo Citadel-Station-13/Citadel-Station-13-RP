@@ -51,11 +51,11 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	///Holder to see if it's a syndicate encrypted radio
 	var/syndie = FALSE
 	///Holder to see if it's a CentCom encrypted radio
-	var/centComm = FALSE
+	var/centcom = FALSE
 	slot_flags = SLOT_BELT
 	throw_speed = 2
 	throw_range = 9
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	show_messages = 1
 
 	//Bluespace radios talk directly to telecomms equipment
@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	var/bs_tx_preload_id
 	var/bs_rx_preload_id
 
-	matter = list(MAT_GLASS = 25,MAT_STEEL = 75)
+	materials_base = list(MAT_GLASS = 25,MAT_STEEL = 75)
 	var/const/FREQ_LISTENING = 1
 	var/list/internal_channels
 
@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		ui = new(user, src, "Radio", name)
 		ui.open()
 
-/obj/item/radio/ui_data(mob/user)
+/obj/item/radio/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 
 	data["rawfreq"] = frequency
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return data
 
-/obj/item/radio/ui_act(action, params)
+/obj/item/radio/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -315,6 +315,9 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		return
 
 	var/mob/living/silicon/ai/announcer/A = GLOB.virtual_announcer_ai
+	// WHY THE FUCK IS THIS A GLOBAL OBJECT
+	if(isnull(A))
+		return
 	A.SetName(from)
 	Broadcast_Message(connection, A,
 						0, "*garbled automated announcement*", src,
@@ -546,7 +549,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	//Nothing handled any sort of remote radio-ing and returned before now, just squawk on this zlevel.
 	return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 		src, message, displayname, jobname, real_name, M.voice_name,
-		filter_type, signal.data["compression"], GLOB.using_map.get_map_levels(pos_z), connection.frequency, verb, speaking)
+		filter_type, signal.data["compression"], (LEGACY_MAP_DATUM).get_map_levels(pos_z), connection.frequency, verb, speaking)
 
 /obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
 	if (broadcasting)
@@ -585,7 +588,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
 	if(freq in CENT_FREQS)
-		if(!(src.centComm))//Checks to see if it's allowed on that frequency, based on the encryption keys
+		if(!(src.centcom))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
 	if (!on)
 		return -1
@@ -608,7 +611,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 	var/range = receive_range(freq, level)
 	if(range > -1)
-		return get_mobs_or_objects_in_view(canhear_range, src)
+		return get_hearers_in_view(canhear_range, src)
 
 
 /obj/item/radio/examine(mob/user, dist)
@@ -685,7 +688,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 			if(keyslot)
 				var/turf/T = get_turf(user)
 				if(T)
-					keyslot.loc = T
+					keyslot.forceMove(T)
 					keyslot = null
 
 			recalculateChannels()
@@ -794,7 +797,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	damage_force = 5
 	throw_force = 6
 	preserve_item = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	action_button_name = "Remove/Replace Handset"
 
 	var/obj/item/radio/bluespace_handset/linked/handset = /obj/item/radio/bluespace_handset/linked
@@ -832,7 +835,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 /obj/item/bluespace_radio/verb/toggle_handset()
 	set name = "Toggle Handset"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/mob/living/carbon/human/user = usr
 	if(!handset)
@@ -856,9 +859,9 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	if(!istype(M))
 		return 0 //not equipped
 
-	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_BACK) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot_id(SLOT_ID_BACK) == src)
 		return 1
-	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_SUIT_STORAGE) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot_id(SLOT_ID_SUIT_STORAGE) == src)
 		return 1
 
 	return 0
@@ -882,7 +885,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	bluespace_radio = TRUE
 	icon_state = "signaller"
 	slot_flags = null
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/radio/bluespace_handset/linked
 	var/obj/item/bluespace_radio/base_unit
@@ -917,4 +920,4 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 */
 /obj/item/bluespace_radio/commerce
 	name = "commercial subspace radio"
-	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or NanoTrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."
+	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or Nanotrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."

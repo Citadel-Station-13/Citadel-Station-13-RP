@@ -50,18 +50,18 @@
 	var/operation_effects_timerid
 
 	/// cost to rebuild a protean's swarm
-	var/static/list/protean_cost_nanoswarm = list(
+	var/list/protean_cost_nanoswarm = list(
 		MAT_STEEL = 20000,
 	)
 	/// cost to rebuild protean's orchestrator
-	var/static/list/protean_cost_orchestrator = list(
+	var/list/protean_cost_orchestrator = list(
 		MAT_VERDANTIUM = 4000,
 		MAT_GOLD = 8000,
 		MAT_SILVER = 8000,
 		MAT_METALHYDROGEN = 12000,
 	)
 	/// cost to rebuild protean's refactory
-	var/static/list/protean_cost_refactory = list(
+	var/list/protean_cost_refactory = list(
 		MAT_DIAMOND = 6000,
 		MAT_MORPHIUM = 12000,
 		MAT_STEEL = 5000,
@@ -70,6 +70,9 @@
 
 /obj/machinery/nanite_chamber/Initialize(mapload)
 	. = ..()
+	protean_cost_nanoswarm = typelist(NAMEOF(src, protean_cost_nanoswarm), protean_cost_nanoswarm)
+	protean_cost_orchestrator = typelist(NAMEOF(src, protean_cost_orchestrator), protean_cost_orchestrator)
+	protean_cost_refactory = typelist(NAMEOF(src, protean_cost_refactory), protean_cost_refactory)
 	detect_connection()
 
 /obj/machinery/nanite_chamber/Destroy()
@@ -154,7 +157,7 @@
 	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in occupant.internal_organs
 	if(isnull(protean_refactory))
 		return
-	protean_refactory.materials[MAT_STEEL] = protean_refactory.max_storage
+	protean_refactory.stored_materials[MAT_STEEL] = protean_refactory.max_storage
 	occupant.innate_feedback(SPAN_NOTICE("Your refactory chimes as your nanite reserves are refilled by the chamber."))
 
 /obj/machinery/nanite_chamber/proc/try_rebuild_protean(mob/user)

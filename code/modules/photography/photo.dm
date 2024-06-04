@@ -7,6 +7,8 @@
 /proc/create_photo(atom/where, from_what)
 	var/obj/item/photo/instance = new(where)
 	. = instance
+	if(isfile(from_what))
+		from_what = icon(from_what, dir = SOUTH, frame = 1)
 	if(istype(from_what, /icon))
 		var/datum/photograph/photograph = new
 		var/datum/picture/picture = SSphotography.create_picture(from_what)
@@ -33,7 +35,7 @@
 	worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT
 	inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
 	inhand_state = "paper"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
@@ -121,7 +123,7 @@
 // todo: refactor
 /obj/item/photo/verb/rename()
 	set name = "Rename photo"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the photo?", "Photo Labelling", null) as text, MAX_NAME_LEN)

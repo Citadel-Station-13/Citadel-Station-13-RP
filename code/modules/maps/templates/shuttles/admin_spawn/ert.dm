@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/generic/ert_ship
 	name = "OM Ship - ERT Ship (New Z)"
 	desc = "NT Emergency Response Ship."
-	mappath = "maps/templates/admin/ert.dmm"
+	map_path = "maps/templates/admin/ert.dmm"
 
 	// The ship's area(s)
 /area/ship/ert
@@ -100,7 +100,7 @@
 //	fuel_consumption = 3
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/ert_ship
+/obj/overmap/entity/visitable/ship/ert_ship
 	name = "NRV Von Braun"
 	desc = "Spacefaring vessel. Broadcasting Corporate Emergency Responder IFF."
 	scanner_desc = @{"[i]Registration[/i]: Nanotrasen RRV Von Braun
@@ -113,9 +113,6 @@
 	fore_dir = EAST
 	initial_generic_waypoints = list("ert_ship_near_fore", "ert_ship_near_aft", "ert_ship_near_port", "ert_ship_near_star", "ert_ship_port", "ert_ship_star", "ert_ship_base_dock", "omship_spawn_ert_lander")
 //	initial_restricted_waypoints = list("NRV Von Braun's Bay" = list("omship_spawn_ert_lander"))
-
-/obj/landmark/map_data/ert_ship
-	height = 1
 
 /obj/effect/shuttle_landmark/premade/ert_ship_port
 	name = "NRV Von Braun - Port Airlock"

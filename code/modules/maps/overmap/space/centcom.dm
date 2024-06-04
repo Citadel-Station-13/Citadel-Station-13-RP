@@ -1,8 +1,8 @@
-//Overmap Controller
-/obj/effect/overmap/visitable/sector/centcom
+//Atlas Overmap Controller
+/obj/overmap/entity/visitable/sector/centcom
 	name = "NTS Demeter"
-	desc = "The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."
-	scanner_desc = @{"[i]Information[/i]: The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."}
+	desc = "The only Nanotrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."
+	scanner_desc = @{"[i]Information[/i]: The only Nanotrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."}
 	in_space = 1
 	known = TRUE
 	icon_state = "fueldepot"
@@ -22,28 +22,39 @@
 	start_x = null
 	start_y = null
 
-/obj/effect/overmap/visitable/sector/centcom/Initialize()
+/obj/overmap/entity/visitable/sector/centcom/Initialize()
 	. = ..()
 	Orbit()
 
-/obj/effect/overmap/visitable/sector/centcom/proc/Orbit()
+/obj/overmap/entity/visitable/sector/centcom/proc/Orbit()
 	if(!randxloc)
 		start_x = pick(13, 14, 16, 17)
 	if(!randyloc)
 		start_y = pick(8, 9, 11, 12)
 */
 
-/obj/landmark/map_data/centcom
-    height = 1
+/obj/overmap/entity/visitable/sector/centcom_triumph
+	name = "NDV Marksman"
+	desc = "The NDV Marksman is a Nanotrasen supercarrier that serves as the flagship for the eponymous Marksman Fleet."
+	scanner_desc = @{"[i]Information[/i]: The NDV Marksman is a Nanotrasen supercarrier that serves as the flagship for the eponymous Marksman Fleet."}
+	in_space = 1
+	known = TRUE
+	icon = 'icons/modules/overmap/tiled.dmi'
+	icon_state = "fleet"
+	color = "#007396"
+
+	initial_restricted_waypoints = list(
+		"NDV Quicksilver" = list("specops_hangar")
+		)
 
 // ERT Shuttle can be found at '/maps/overmap/shuttles/specialops.dm'
 
 // EXCLUSIVE NAV POINT FOR DOCKING INSIDE (ERT SHUTTLE ONLY)
 /obj/effect/shuttle_landmark/specops/hangar
-	name = "NTS Demeter Hangar"
+	name = "NT Special Operations Hangar"
 	landmark_tag = "specops_hangar"
 	docking_controller = "specops_hangar_dock"
-	base_turf = /turf/simulated/floor/reinforced
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/centcom/specops/dock
 
 //ERT Cryo

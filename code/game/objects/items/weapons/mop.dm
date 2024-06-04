@@ -11,9 +11,9 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
-	matter = list(MAT_PLASTIC = 3)
+	materials_base = list(MAT_PLASTIC = 3)
 	var/mopping = 0
 	var/mopcount = 0
 	var/mopspeed = 23
@@ -106,7 +106,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 		//Get out of the way, ankles!
 		for (var/mob/living/L in T)
-			melee_attack_chain(L, user)
+			melee_interaction_chain(L, user)
 
 		if (!is_blocked_turf(T))
 			T.clean(src, user, 1)

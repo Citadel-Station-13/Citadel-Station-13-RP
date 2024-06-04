@@ -1,0 +1,6 @@
+//! reagent list indices
+#define GAS_REAGENT_LIST_ID 1
+#define GAS_REAGENT_LIST_AMOUNT 2
+#define GAS_REAGENT_LIST_THRESHOLD 3
+#define GAS_REAGENT_LIST_FACTOR 4
+#define GAS_REAGENT_LIST_MAX 5

@@ -7,7 +7,6 @@
 /area/centcom/specops)
 "ac" = (
 /turf/unsimulated/wall{
-	icon = 'icons/obj/doors/Doorext.dmi';
 	icon_state = "door_locked";
 	name = "Sealed Door"
 	},
@@ -93,7 +92,7 @@
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "ert1_control";
 	pixel_x = 24;
@@ -214,7 +213,7 @@
 /obj/structure/closet/wardrobe/ert,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
@@ -225,7 +224,7 @@
 	dir = 1
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
@@ -305,7 +304,7 @@
 "aL" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "ert1_control";
 	pixel_x = -22;
@@ -538,7 +537,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/specops/centcom)
 "be" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(103)
 	},
@@ -612,12 +611,12 @@
 /obj/structure/table/rack/steel,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bo" = (
@@ -721,12 +720,12 @@
 /obj/structure/table/rack/steel,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bz" = (
@@ -1520,7 +1519,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/specops/centcom)
 "dj" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(103)
 	},
@@ -1706,9 +1705,8 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dB" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1752,7 +1750,7 @@
 /area/shuttle/specops/centcom)
 "dF" = (
 /obj/structure/table/woodentable,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/storage/box/cdeathalarm_kit,
 /obj/item/storage/box/trackimp,
 /turf/simulated/floor/carpet,
@@ -1826,7 +1824,7 @@
 /area/shuttle/specops/centcom)
 "dL" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1381;
 	master_tag = "ert2_control";
 	pixel_x = -22;
@@ -1915,7 +1913,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dS" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dT" = (
@@ -2009,7 +2007,7 @@
 /area/shuttle/specops/centcom)
 "ed" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1381;
 	master_tag = "ert2_control";
 	pixel_x = 24;
@@ -2083,7 +2081,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "zV" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	req_one_access = list(103)
 	},
 /turf/simulated/shuttle/floor/black,

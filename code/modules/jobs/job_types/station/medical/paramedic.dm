@@ -10,14 +10,25 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/paramedic
-	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_MEDICAL_PSYCH)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK)
+	additional_access = list(
+		ACCESS_MEDICAL_SURGERY,
+		ACCESS_MEDICAL_CHEMISTRY,
+		ACCESS_MEDICAL_VIROLOGY,
+		ACCESS_MEDICAL_PSYCH,
+	)
+	minimal_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_COMMAND_EVA,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
 	outfit_type = /datum/outfit/job/station/paramedic
-	desc = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
+	desc = "A Paramedic is primarily concerned with the stabilization and recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/struct/alt_title/emt,
-		"Medical Responder" = /datum/prototype/struct/alt_title/medical_responder,
 		"Biotechnical Responder" = /datum/prototype/struct/alt_title/biotech_responder
 		)
 
@@ -31,13 +42,7 @@
 
 /datum/prototype/struct/alt_title/emt
 	title = "Emergency Medical Technician"
-	title_blurb = "An Emergency Medical Technician is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
-					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
-	title_outfit = /datum/outfit/job/station/paramedic/emt
-
-/datum/prototype/struct/alt_title/medical_responder
-	title = "Medical Responder"
-	title_blurb = "A Medical Responder is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
+	title_blurb = "An Emergency Medical Technician is primarily concerned with the stabilization and recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
 	title_outfit = /datum/outfit/job/station/paramedic/emt
 

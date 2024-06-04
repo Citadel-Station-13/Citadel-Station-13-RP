@@ -8,7 +8,7 @@
 	. = ..()
 	refresh_sensors()
 
-/datum/tgui_module_old/power_monitor/ui_data(mob/user)
+/datum/tgui_module_old/power_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/list/sensors = list()
@@ -16,7 +16,7 @@
 	var/obj/machinery/power/sensor/focus = null
 
 	var/z = get_z(user)
-	var/list/map_levels = GLOB.using_map.get_map_levels(z)
+	var/list/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z)
 
 	// Build list of data from sensor readings.
 	for(var/obj/machinery/power/sensor/S in grid_sensors)
@@ -37,7 +37,7 @@
 
 	return data
 
-/datum/tgui_module_old/power_monitor/ui_act(action, params)
+/datum/tgui_module_old/power_monitor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -68,7 +68,7 @@
 	if(!T) // Safety check
 		return
 	if(T)
-		levels += GLOB.using_map.get_map_levels(T.z, FALSE)
+		levels += (LEGACY_MAP_DATUM).get_map_levels(T.z, FALSE)
 	for(var/obj/machinery/power/sensor/S in GLOB.machines)
 		if(T && (S.loc.z == T.z) || (S.loc.z in levels) || (S.long_range)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 			if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!
@@ -81,5 +81,5 @@
 
 // Subtype for self_state
 /datum/tgui_module_old/power_monitor/robot
-/datum/tgui_module_old/power_monitor/robot/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/power_monitor/robot/ui_state()
 	return GLOB.self_state

@@ -44,10 +44,10 @@
 	. = ..()
 	recalibrate()
 	for(var/i = 1; i <= starting_crystals; i++)
-		crystals += new /obj/item/ore/bluespace_crystal/artificial(src) // starting crystals
+		crystals += new /obj/item/bluespace_crystal/artificial(src) // starting crystals
 
 /obj/machinery/computer/telescience/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/ore/bluespace_crystal))
+	if(istype(W, /obj/item/bluespace_crystal))
 		if(crystals.len >= max_crystals)
 			to_chat(user, SPAN_WARNING("There are not enough crystal slots."))
 			return
@@ -105,7 +105,7 @@
 			data["tempMsg"] = "Telepad undergoing physical maintenance operations."
 
 		data["sectorOptions"] = list()
-		for(var/z in GLOB.using_map.player_levels)
+		for(var/z in (LEGACY_MAP_DATUM).player_levels)
 			data["sectorOptions"] += z
 
 		if(last_tele_data)
@@ -289,7 +289,7 @@
 		telefail()
 		temp_msg = "ERROR!<BR>No distance selected!"
 		return
-	if(!(z_co in GLOB.using_map.player_levels))
+	if(!(z_co in (LEGACY_MAP_DATUM).player_levels))
 		telefail()
 		temp_msg = "ERROR! Sector is outside known time and space!"
 		return
@@ -330,7 +330,7 @@
 
 	if(href_list["setz"])
 		var/new_z = text2num(href_list["setz"])
-		if(new_z in GLOB.using_map.player_levels)
+		if(new_z in (LEGACY_MAP_DATUM).player_levels)
 			z_co = new_z
 
 	if(href_list["ejectGPS"])

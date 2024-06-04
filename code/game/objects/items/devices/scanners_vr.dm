@@ -9,10 +9,10 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 
 	var/datum/mind/stored_mind

@@ -30,7 +30,8 @@
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	species_restricted = list(SPECIES_TAJ)
 	armor_type = /datum/armor/general/medieval
-	slowdown = 0.5
+	weight = ITEM_WEIGHT_TAJARAN_SWORDSMAN_ARMOR
+	encumbrance = ITEM_ENCUMBRANCE_TAJARAN_SWORDSMAN_ARMOR
 	siemens_coefficient = 0.35
 
 //Coats no hoods
@@ -43,7 +44,7 @@
 	blood_overlay_type = "coat"
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
+	allowed = list(/obj/item/atmos_analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
 	armor_type = /datum/armor/suit/labcoat
 
 /obj/item/clothing/suit/storage/toggle/tajaran/coat/wool
@@ -197,7 +198,7 @@
 	icon_state = "winter_cloak"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = TN60C
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/winter
 
 /obj/item/clothing/suit/storage/hooded/tajaran/cloak/royalist
@@ -259,7 +260,7 @@
 	item_state = "winter_cloakhood"
 	body_cover_flags = HEAD
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = TN60C
 
 /obj/item/clothing/head/hood/tajaran/cloak/royalist
