@@ -143,7 +143,7 @@
 	var/list/data = list("antibodies" = B.data["antibodies"])
 	var/amt= sample.reagents.get_reagent_amount("blood")
 	sample.reagents.remove_reagent("blood", amt)
-	sample.reagents.add_reagent("antibodies", amt, data)
+	sample.reagents.add_reagent("antibodies", amt, data = data)
 
 	SStgui.update_uis(src)
 	update_icon()

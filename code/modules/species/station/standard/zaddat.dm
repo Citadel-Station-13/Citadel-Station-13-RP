@@ -61,7 +61,6 @@
 	base_color  = "#e2e4a6"
 	blood_color = "#FFCC00" //a gross sort of orange color
 
-	reagent_tag = IS_ZADDAT
 
 	heat_discomfort_strings = list(
 		"Your joints itch.",

@@ -8,9 +8,9 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#404030"
 
-	metabolism = REM/ETHANOL_MET_DIVISOR
+	ingested_metabolism_multiplier = 5
 
-	ingest_met = REM * 5
+	metabolism = REM/ETHANOL_MET_DIVISOR
 
 	var/nutriment_factor = 0
 	var/hydration_factor = 0
@@ -27,9 +27,11 @@
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
 
-/datum/reagent/ethanol/touch_mob(mob/living/L, amount)
+/datum/reagent/ethanol/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
+	. = ..()
+	var/mob/living/L = target
 	if(istype(L))
-		L.adjust_fire_stacks(amount / 15)
+		L.adjust_fire_stacks(volume / 15)
 
 #define ABV (proof/200)
 
@@ -37,17 +39,17 @@
 	var/strength_mod = 1 //Alcohol is 3x stronger when injected into the veins.
 	if(alien == IS_SKRELL)
 		strength_mod *= 5
-	if(alien == IS_TAJARA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_TAJARAN)])
 		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		strength_mod *= 0.75
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		strength_mod = 0
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		strength_mod *= 2
-	if(alien == IS_ALRAUNE)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)])
 		if(prob(5))
-			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
+			to_chat(entity, "<span class='danger'>You feel your leaves start to wilt.</span>")
 		strength_mod *=5 //cit change - alcohol ain't good for plants
 
 	var/effective_dose = volume * strength_mod * ABV * min(1,dose*(ETHANOL_MET_DIVISOR/10)) // give it 50 ticks to ramp up
@@ -128,18 +130,21 @@
 	M.adjust_hydration(hydration_factor * removed)
 	M.bloodstr.add_reagent("ethanol", removed * ABV)
 	if(druggy != 0)
-		M.druggy = max(M.druggy, druggy)
+		entity.druggy = max(entity.druggy, druggy)
 
-	if(adj_temp > 0 && M.bodytemperature < targ_temp) // 310 is the normal bodytemp. 310.055
-		M.bodytemperature = min(targ_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(adj_temp < 0 && M.bodytemperature > targ_temp)
-		M.bodytemperature = min(targ_temp, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(adj_temp > 0 && entity.bodytemperature < targ_temp) // 310 is the normal bodytemp. 310.055
+		entity.bodytemperature = min(targ_temp, entity.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(adj_temp < 0 && entity.bodytemperature > targ_temp)
+		entity.bodytemperature = min(targ_temp, entity.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 
 	if(halluci)
-		M.hallucination = max(M.hallucination, halluci)
-	return
+		entity.hallucination = max(entity.hallucination, halluci)
+	return effective_dose
 
-/datum/reagent/ethanol/touch_obj(obj/O)
+/datum/reagent/ethanol/contact_expose_obj(obj/target, volume, list/data, vapor)
+	. = ..()
+
+	var/obj/O = target
 	if(istype(O, /obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
@@ -154,9 +159,6 @@
 		var/obj/item/book/affectedbook = O
 		affectedbook.dat = null
 		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
-	return
-
-#undef ABV
 
 /datum/reagent/acid
 	name = "Sulphuric acid"
@@ -165,76 +167,83 @@
 	taste_description = "acid"
 	reagent_state = REAGENT_LIQUID
 	color = "#DB5008"
-	metabolism = REM * 2
-	touch_met = 50 // It's acid!
+	bloodstream_metabolism_multiplier = 2
+	dermal_distribution_multiplier = 0
 	var/power = 5
 	var/meltdose = 10 // How much is needed to melt
 
-/datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
-	if(issmall(M)) removed *= 2
-	M.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
+/datum/reagent/acid/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+	entity.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
 
-/datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
+/datum/reagent/acid/touch_expose_mob(mob/target, volume, temperature, list/data, organ_tag)
+	. = ..()
+
+	var/mob/living/carbon/M = target
+	if(!istype(M))
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
 			if(H.head.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
-				remove_self(volume)
-				return
-			else if(removed > meltdose)
+				return volume
+			else if(volume > meltdose)
 				to_chat(H, "<span class='danger'>Your [H.head] melts away!</span>")
 				qdel(H.head)
 				H.update_inv_head(1)
 				H.update_hair(1)
-				removed -= meltdose
-		if(removed <= 0)
+				. += meltdose
+		if(volume <= 0)
 			return
 
 		if(H.wear_mask)
 			if(H.wear_mask.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
-				remove_self(volume)
-				return
-			else if(removed > meltdose)
+				return volume
+			else if(volume > meltdose)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] melts away!</span>")
 				qdel(H.wear_mask)
 				H.update_inv_wear_mask(1)
 				H.update_hair(1)
-				removed -= meltdose
-		if(removed <= 0)
+				. += meltdose
+		if(volume <= 0)
 			return
 
 		if(H.glasses)
 			if(H.glasses.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>")
-				removed /= 2
-			else if(removed > meltdose)
+				. += volume / 2
+				volume /= 2
+			else if(volume > meltdose)
 				to_chat(H, "<span class='danger'>Your [H.glasses] melt away!</span>")
 				qdel(H.glasses)
 				H.update_inv_glasses(1)
-				removed -= meltdose / 2
-		if(removed <= 0)
+				. += meltdose / 2
+		if(volume <= 0)
 			return
 
 	if(volume < meltdose) // Not enough to melt anything
-		M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
+		M.take_random_targeted_damage(brute = 0, brute = volume * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
 		return
-	if(!M.unacidable && removed > 0)
+	if(!M.unacidable && volume > 0)
 		if(istype(M, /mob/living/carbon/human) && volume >= meltdose)
 			var/mob/living/carbon/human/H = M
 			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
 			if(affecting)
 				affecting.inflict_bodypart_damage(
-					burn = removed * power * 0.1,
+					burn = volume * power * 0.1,
 				)
-				if(prob(100 * removed / meltdose)) // Applies disfigurement
+				if(prob(100 * volume / meltdose)) // Applies disfigurement
 					if (affecting.organ_can_feel_pain())
 						H.emote("scream")
 		else
-			M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
+			M.take_random_targeted_damage(brute = 0, brute = volume * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
-/datum/reagent/acid/touch_obj(obj/O)
+/datum/reagent/acid/contact_expose_obj(obj/target, volume, list/data, vapor)
+	. = ..()
+
+	var/obj/O = target
 	if(O.integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		return
 	// todo: newacid
@@ -244,8 +253,7 @@
 		for(var/mob/M in viewers(5, O))
 			to_chat(M, "<span class='warning'>\The [O] melts.</span>")
 		qdel(O)
-		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
-
+		return . + meltdose
 
 /datum/reagent/sugar
 	name = "Sugar"
@@ -260,38 +268,29 @@
 	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	glass_icon = DRINK_ICON_NOISY
 
-/datum/reagent/sugar/affect_blood(mob/living/carbon/M, alien, removed)
-	M.nutrition += removed * 3
+/datum/reagent/sugar/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-	var/effective_dose = dose
-	if(issmall(M))
-		effective_dose *= 2
+	entity.nutrition += removed * 3
 
-	if(alien == IS_UNATHI)
+	var/effective_dose = metabolism.highest_so_far
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
-				M.emote("yawn")
+				entity.emote("yawn")
 		else if(effective_dose < 5)
-			M.eye_blurry = max(M.eye_blurry, 10)
+			entity.eye_blurry = max(entity.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.afflict_paralyze(20 * 2)
-			M.drowsyness = max(M.drowsyness, 20)
+				entity.afflict_paralyze(20 * 2)
+			entity.drowsyness = max(entity.drowsyness, 20)
 		else
-			M.afflict_sleeping(20 * 20)
-			M.drowsyness = max(M.drowsyness, 60)
+			entity.afflict_sleeping(20 * 20)
+			entity.drowsyness = max(entity.drowsyness, 60)
 
-	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change - too much sugar isn't good for plants
 		if(effective_dose < 2)
 			if(prob(5))
-				to_chat(M, "<span class='danger'>You feel an imbalance of energy.</span>")
-			M.make_jittery(4)
-
-/datum/reagent/sulfur
-	name = "Sulfur"
-	id = "sulfur"
-	description = "A chemical element with a pungent smell."
-	taste_description = "old eggs"
-	reagent_state = REAGENT_SOLID
-	color = "#BF8C00"
-
+				to_chat(entity, "<span class='danger'>You feel an imbalance of energy.</span>")
+			entity.make_jittery(4)

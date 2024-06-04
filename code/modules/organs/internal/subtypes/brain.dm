@@ -162,7 +162,6 @@
 	decays = FALSE
 	parent_organ = BP_TORSO
 	clone_source = TRUE
-	atom_flags = OPENCONTAINER
 	var/list/owner_flavor_text = list()
 
 	var/owner_species
@@ -173,7 +172,7 @@
 
 /obj/item/organ/internal/brain/slime/Initialize(mapload)
 	. = ..()
-	create_reagents(50)
+	create_reagents(50, REAGENT_HOLDER_CONSIDERED_OPEN)
 	set_owner_vars()
 	addtimer(CALLBACK(src, PROC_REF(sync_color)), 10 SECONDS)
 
@@ -283,8 +282,8 @@
 	result_amount = 1
 	required_container = /obj/item/organ/internal/brain/slime
 
-/datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagents/holder)
-	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
+/datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagent_holder/holder, created_volume, instant)
+	var/obj/item/organ/internal/brain/slime/brain = holder.attached
 	if(brain.reviveBody())
 		brain.visible_message(SPAN_NOTICE("[brain] bubbles, surrounding itself with a rapidly expanding mass of slime!"))
 	else

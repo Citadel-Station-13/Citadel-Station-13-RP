@@ -29,7 +29,7 @@
 	var/coolant_usage_rate = 0		//measured in u/microsec
 	var/fresh_coolant = 0
 	var/coolant_purity = 0
-	var/datum/reagents/coolant_reagents
+	var/datum/reagent_holder/coolant_reagents
 	var/used_coolant = 0
 	var/list/coolant_reagents_purity = list()
 	//

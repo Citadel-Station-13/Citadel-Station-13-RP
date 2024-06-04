@@ -21,6 +21,7 @@
 				H.adjustBrainLoss(-25 * weakness)
 				H.cure_radiation(RAD_MOB_CURE_ANOMALY_BURST * weakness)
 				H.bodytemperature = initial(H.bodytemperature)
+				H.assert_blood(TRUE)
 				spawn(1)
 					H.fixblood()
 			//

@@ -44,7 +44,7 @@
 // Calculates the max range smoke can travel, then gets all turfs in that view range.
 // Culls the selected turfs to a (roughly) circle shape, then calls smokeFlow() to make
 // sure the smoke can actually path to the turfs. This culls any turfs it can't reach.
-/datum/effect_system/smoke_spread/chem/set_up(var/datum/reagents/carry = null, n = 10, c = 0, loca, direct)
+/datum/effect_system/smoke_spread/chem/set_up(var/datum/reagent_holder/carry = null, n = 10, c = 0, loca, direct)
 	range = n * 0.3
 	cardinals = c
 	carry.trans_to_obj(chemholder, carry.total_volume, copy = 1)
@@ -79,8 +79,8 @@
 	var/whereLink = "<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(show_log)
-		if(carry.my_atom.fingerprintslast)
-			var/mob/M = get_mob_by_key(carry.my_atom.fingerprintslast)
+		if(carry.attached.fingerprintslast)
+			var/mob/M = get_mob_by_key(carry.attached.fingerprintslast)
 			var/more = ""
 			if(M)
 				more = "(<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</a>)"
@@ -99,7 +99,7 @@
 	if(!location)
 		return
 
-	if(chemholder.reagents.reagent_list.len) //reagent application - only run if there are extra reagents in the smoke
+	if(!chemholder.reagents.is_empty()) //reagent application - only run if there are extra reagents in the smoke
 		for(var/turf/T in wallList)
 			chemholder.reagents.touch_turf(T)
 		for(var/turf/T in targetTurfs)

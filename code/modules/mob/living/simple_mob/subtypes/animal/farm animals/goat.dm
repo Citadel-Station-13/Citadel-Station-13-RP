@@ -39,12 +39,11 @@
 	hide_amount = 3
 	exotic_amount = 2
 
-	var/datum/reagents/udder = null
+	var/datum/reagent_holder/udder = null
 
 /mob/living/simple_mob/animal/goat/Initialize(mapload)
 	. = ..()
-	udder = new(50)
-	udder.my_atom = src
+	udder = new(50, src)
 
 /mob/living/simple_mob/animal/goat/BiologicalLife(seconds, times_fired)
 	if((. = ..()))

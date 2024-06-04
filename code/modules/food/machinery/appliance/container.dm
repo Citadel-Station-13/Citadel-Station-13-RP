@@ -7,7 +7,7 @@
 	var/shortname
 	var/max_space = 20//Maximum sum of w-classes of foods in this container at once
 	var/max_reagents = 80//Maximum units of reagents
-	atom_flags = OPENCONTAINER | NOREACT
+	atom_flags = OPENCONTAINER
 	var/list/insertable = list(
 		/obj/item/reagent_containers/food/snacks,
 		/obj/item/holder,
@@ -93,7 +93,7 @@
 		qdel(a)
 
 	if (reagents)
-		reagents.clear_reagents()
+		reagents.clear()
 
 /obj/item/reagent_containers/cooking_container/proc/label(var/number, var/CT = null)
 	//This returns something like "Fryer basket 1 - empty"
@@ -128,7 +128,7 @@
 
 //Takes a reagent holder as input and distributes its contents among the items in the container
 //Distribution is weighted based on the volume already present in each item
-/obj/item/reagent_containers/cooking_container/proc/soak_reagent(var/datum/reagents/holder)
+/obj/item/reagent_containers/cooking_container/proc/soak_reagent(var/datum/reagent_holder/holder)
 	var/total = 0
 	var/list/weights = list()
 	for (var/obj/item/I in contents)

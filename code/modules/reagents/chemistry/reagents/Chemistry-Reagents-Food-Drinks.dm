@@ -6,8 +6,8 @@
 	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
 	taste_mult = 4
 	reagent_state = REAGENT_SOLID
-	metabolism = REM * 4
-	ingest_met = REM * 4
+	bloodstream_metabolism_multiplier = 4
+	ingested_metabolism_multiplier = 4
 	var/nutriment_factor = 30 // Per unit
 	var/hydration_factor = 0 //Per unit
 	var/injectable = 0
@@ -15,7 +15,7 @@
 
 // todo: review data procs
 
-/datum/reagent/nutriment/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+/datum/reagent/nutriment/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 
 	if(!islist(new_data) || !length(new_data))
 		return
@@ -38,28 +38,21 @@
 			if(data[taste]/totalFlavor < 0.1)
 				data -= taste
 
-/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
-		M.adjustToxLoss(0.1 * removed)
-		return
-	affect_ingest(M, alien, removed)
+/datum/reagent/nutriment/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(!injectable && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && !entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_XENOCHIMERA)])
+		entity.adjustToxLoss(0.1 * removed)
+		return
+	affect_ingest(entity, alien, removed)
+
+/datum/reagent/nutriment/affect_ingest(mob/living/carbon/entity, alien, removed)
 	var/hyd_removed
-	switch(alien)
-		if(IS_DIONA)
-			return
-		if(IS_UNATHI)
-			removed *= 0.5
-		if(IS_CHIMERA)
-			removed *= 0.25
-			if(issmall(M))
-				removed *= 2 // Small bodymass, more effect from lower volume.
-	M.heal_organ_damage(0.5 * removed, 0)
-	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
-		M.nutrition += nutriment_factor * removed // For hunger and fatness
-	M.adjust_hydration(hydration_factor * hyd_removed)
-	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
+	entity.heal_organ_damage(0.5 * removed, 0)
+	if(!entity.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
+		entity.nutrition += nutriment_factor * removed // For hunger and fatness
+	entity.adjust_hydration(hydration_factor * hyd_removed)
+	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
 	name = "Glucose"
@@ -75,22 +68,24 @@
 	taste_description = "some sort of meat"
 	color = "#440000"
 
-/datum/reagent/nutriment/protein/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/protein/affect_ingest(mob/living/carbon/entity, alien, removed)
 	switch(alien)
 		if(IS_SKRELL)
-			M.adjustToxLoss(0.5 * removed)
+			entity.adjustToxLoss(0.5 * removed)
 		if(IS_TESHARI)
-			..(M, alien, removed*1.2) // Teshari get a bit more nutrition from meat.
+			..(entity, alien, removed*1.2) // Teshari get a bit more nutrition from meat.
 		if(IS_UNATHI)
-			..(M, alien, removed*2.25) //Unathi get most of their nutrition from meat.
+			..(entity, alien, removed*2.25) //Unathi get most of their nutrition from meat.
 		if(IS_CHIMERA)
-			..(M, alien, removed*4) //Xenochimera are obligate carnivores.
+			..(entity, alien, removed*4) //Xenochimera are obligate carnivores.
 		else
 			..()
 
-/datum/reagent/nutriment/protein/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/protein/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
 	if(alien && alien == IS_SKRELL)
-		M.adjustToxLoss(2 * removed)
+		entity.adjustToxLoss(2 * removed)
 		return
 	..()
 
@@ -114,26 +109,26 @@
 	nutriment_factor = 10
 	color = "#FFFF00"
 
-/datum/reagent/nutriment/honey/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/honey/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
 
 	var/effective_dose = dose
-	if(issmall(M))
+	if(issmall(entity))
 		effective_dose *= 2
 
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
-				M.emote("yawn")
+				entity.emote("yawn")
 		else if(effective_dose < 5)
-			M.eye_blurry = max(M.eye_blurry, 10)
+			entity.eye_blurry = max(entity.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.afflict_paralyze(20 * 2)
-			M.drowsyness = max(M.drowsyness, 20)
+				entity.afflict_paralyze(20 * 2)
+			entity.drowsyness = max(entity.drowsyness, 20)
 		else
-			M.afflict_sleeping(20 * 20)
-			M.drowsyness = max(M.drowsyness, 60)
+			entity.afflict_sleeping(20 * 20)
+			entity.drowsyness = max(entity.drowsyness, 60)
 
 /datum/reagent/nutriment/mayo
 	name = "mayonnaise"
@@ -320,12 +315,12 @@
 	glass_name = "durian paste"
 	glass_desc = "Durian paste. It smells horrific."
 
-/datum/reagent/nutriment/durian/touch_mob(mob/M, amount)
-	if(iscarbon(M) && !M.isSynthetic())
+/datum/reagent/nutriment/durian/touch_mob(mob/entity, amount)
+	if(iscarbon(entity) && !entity.isSynthetic())
 		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
-		to_chat(M,"<span class='alien'>[message]</span>")
+		to_chat(entity,"<span class='alien'>[message]</span>")
 		if(prob(clamp(amount, 5, 90)))
-			var/mob/living/L = M
+			var/mob/living/L = entity
 			L.vomit()
 	return ..()
 
@@ -386,13 +381,15 @@
 	taste_description = "mothballs"
 	reagent_state = REAGENT_LIQUID
 	color = "#BBEDA4"
-	overdose = REAGENTS_OVERDOSE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
-/datum/reagent/lipozine/affect_blood(mob/living/carbon/M, alien, removed)
-	M.nutrition = max(M.nutrition - 10 * removed, 0)
-	M.overeatduration = 0
-	if(M.nutrition < 0)
-		M.nutrition = 0
+/datum/reagent/lipozine/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
+	entity.nutrition = max(entity.nutrition - 10 * removed, 0)
+	entity.overeatduration = 0
+	if(entity.nutrition < 0)
+		entity.nutrition = 0
 
 /* Non-food stuff like condiments */
 
@@ -403,18 +400,19 @@
 	taste_description = "salt"
 	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
-	overdose = REAGENTS_OVERDOSE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 	ingest_met = REM
 
-/datum/reagent/sodiumchloride/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_SLIME)
-		M.adjustFireLoss(removed)
+/datum/reagent/sodiumchloride/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-/datum/reagent/sodiumchloride/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+		entity.adjustFireLoss(removed)
+
+/datum/reagent/sodiumchloride/affect_ingest(mob/living/carbon/entity, alien, removed)
 	var/pass_mod = rand(3,5)
 	var/passthrough = (removed - (removed/pass_mod)) //Some may be nullified during consumption, between one third and one fifth.
-	affect_blood(M, alien, passthrough)
+	affect_blood(entity, alien, passthrough)
 
 /datum/reagent/blackpepper
 	name = "Black Pepper"
@@ -433,7 +431,7 @@
 	taste_mult = 0.7
 	reagent_state = REAGENT_LIQUID
 	color = "#365E30"
-	overdose = REAGENTS_OVERDOSE
+	bloodstream_overdose_threshold = REAGENTS_OVERDOSE_MEDICINE
 
 /datum/reagent/frostoil
 	name = "Frost Oil"
@@ -445,12 +443,14 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/frostoil/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+/datum/reagent/frostoil/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
+	entity.bodytemperature = max(entity.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
-		M.emote("shiver")
+		entity.emote("shiver")
 	holder.remove_reagent("capsaicin", 5)
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
@@ -459,7 +459,7 @@
 	description = "Lowers the body's internal temperature."
 	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
-	metabolism = REM * 0.5
+	bloodstream_metabolism_multiplier = 0.5
 
 /datum/reagent/capsaicin
 	name = "Capsaicin Oil"
@@ -471,32 +471,34 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/capsaicin/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
-		return
-	M.adjustToxLoss(0.5 * removed)
+/datum/reagent/capsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-/datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_NARAMADI)
+	entity.adjustToxLoss(0.5 * removed)
+
+/datum/reagent/capsaicin/affect_ingest(mob/living/carbon/entity, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		return
-	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
-		M.bodytemperature += rand(10, 25)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: it wouldn't affect plants that much.
+		entity.bodytemperature += rand(10, 25)
+		return
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(!H.can_feel_pain())
 			return
 
 	if(dose < 5 && (dose == metabolism || prob(5)))
-		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
+		to_chat(entity, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
-		M.apply_effect(2, AGONY, 0)
+		entity.apply_effect(2, AGONY, 0)
 		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+			entity.visible_message("<span class='warning'>[entity] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/hexaisin
@@ -509,21 +511,21 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/hexaisin/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_UNATHI)
+/datum/reagent/hexaisin/affect_ingest(mob/living/carbon/entity, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		return
-	if(alien == IS_NARAMADI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(!H.can_feel_pain())
 			return
 	if(dose == metabolism)
-		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+		to_chat(entity, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
-		M.apply_effect(3, AGONY, 0)
+		entity.apply_effect(3, AGONY, 0)
 		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+			entity.visible_message("<span class='warning'>[entity] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/condensedcapsaicin
@@ -537,12 +539,14 @@
 	ingest_met = REM
 	color = "#B31008"
 
-/datum/reagent/condensedcapsaicin/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
-		return
-	M.adjustToxLoss(0.5 * removed)
+/datum/reagent/condensedcapsaicin/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-/datum/reagent/condensedcapsaicin/affect_touch(mob/living/carbon/M, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+	entity.adjustToxLoss(0.5 * removed)
+
+/datum/reagent/condensedcapsaicin/affect_touch(mob/living/carbon/entity, alien, removed)
 	var/eyes_covered = 0
 	var/mouth_covered = 0
 
@@ -558,14 +562,14 @@
 
 	var/effective_strength = 5
 
-	if(alien == IS_SKRELL)	//Larger eyes means bigger targets.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])	//Larger eyes means bigger targets.
 		effective_strength = 8
 
-	if(alien == IS_ALRAUNE) //cit change: plants find the base form tasty, still mildly inconvenient to be affected by this.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: plants find the base form tasty, still mildly inconvenient to be affected by this.
 		effective_strength = 4
 
-	if(istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
+	if(istype(entity, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = entity
 		if(!H.can_feel_pain())
 			return
 		if(!H.internal_organs_by_name[O_EYES])
@@ -590,7 +594,7 @@
 				eyes_covered = 1
 				if(!safe_thing)
 					safe_thing = H.glasses
-		if(alien == IS_SLIME)
+		if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			for(var/obj/item/clothing/C in H.get_equipped_items())
 				if(C.body_cover_flags & HEAD)
 					head_covered = 1
@@ -609,75 +613,75 @@
 				if(head_covered && chest_covered && groin_covered && legs_covered && arms_covered && hands_covered && feet_covered)
 					break
 	if(eyes_covered && mouth_covered)
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from the pepperspray!</span>")
-		if(alien != IS_SLIME)
+		to_chat(entity, "<span class='warning'>Your [safe_thing] protects you from the pepperspray!</span>")
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
 	else if(eyes_covered)
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperspray!</span>")
-		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
-		M.Blind(effective_strength)
-		M.afflict_stun(20 * 5)
-		M.afflict_paralyze(20 * 5)
-		if(alien != IS_SLIME)
+		to_chat(entity, "<span class='warning'>Your [safe_thing] protects you from most of the pepperspray!</span>")
+		entity.eye_blurry = max(entity.eye_blurry, effective_strength * 3)
+		entity.Blind(effective_strength)
+		entity.afflict_stun(20 * 5)
+		entity.afflict_paralyze(20 * 5)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
 	else if(mouth_covered) // Mouth cover is better than eye cover
-		to_chat(M, "<span class='warning'>Your [safe_thing] protects your face from the pepperspray!</span>")
-		M.eye_blurry = max(M.eye_blurry, effective_strength)
-		if(alien != IS_SLIME)
+		to_chat(entity, "<span class='warning'>Your [safe_thing] protects your face from the pepperspray!</span>")
+		entity.eye_blurry = max(entity.eye_blurry, effective_strength)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
 	else// Oh dear :D
-		to_chat(M, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
-		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
-		M.Blind(effective_strength * 2)
-		M.afflict_stun(20 * 5)
-		M.afflict_paralyze(20 * 5)
-		if(alien != IS_SLIME)
+		to_chat(entity, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
+		entity.eye_blurry = max(entity.eye_blurry, effective_strength * 5)
+		entity.Blind(effective_strength * 2)
+		entity.afflict_stun(20 * 5)
+		entity.afflict_paralyze(20 * 5)
+		if(!entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 			return
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		if(!head_covered)
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your head burns!</span>")
-			M.apply_effect(5 * effective_strength, AGONY, 0)
+				to_chat(entity, "<span class='warning'>The exposed flesh on your head burns!</span>")
+			entity.apply_effect(5 * effective_strength, AGONY, 0)
 		if(!chest_covered)
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your chest burns!</span>")
-			M.apply_effect(5 * effective_strength, AGONY, 0)
+				to_chat(entity, "<span class='warning'>The exposed flesh on your chest burns!</span>")
+			entity.apply_effect(5 * effective_strength, AGONY, 0)
 		if(!groin_covered && prob(75))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your groin burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
+				to_chat(entity, "<span class='warning'>The exposed flesh on your groin burns!</span>")
+			entity.apply_effect(3 * effective_strength, AGONY, 0)
 		if(!arms_covered && prob(45))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your arms burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
+				to_chat(entity, "<span class='warning'>The exposed flesh on your arms burns!</span>")
+			entity.apply_effect(3 * effective_strength, AGONY, 0)
 		if(!legs_covered && prob(45))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your legs burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
+				to_chat(entity, "<span class='warning'>The exposed flesh on your legs burns!</span>")
+			entity.apply_effect(3 * effective_strength, AGONY, 0)
 		if(!hands_covered && prob(20))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your hands burns!</span>")
-			M.apply_effect(effective_strength / 2, AGONY, 0)
+				to_chat(entity, "<span class='warning'>The exposed flesh on your hands burns!</span>")
+			entity.apply_effect(effective_strength / 2, AGONY, 0)
 		if(!feet_covered && prob(20))
 			if(prob(33))
-				to_chat(M, "<span class='warning'>The exposed flesh on your feet burns!</span>")
-			M.apply_effect(effective_strength / 2, AGONY, 0)
+				to_chat(entity, "<span class='warning'>The exposed flesh on your feet burns!</span>")
+			entity.apply_effect(effective_strength / 2, AGONY, 0)
 
-/datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_NARAMADI) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
+/datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/entity, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)]) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
 		return
-	if(alien == IS_UNATHI) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)]) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
 		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(!H.can_feel_pain())
 			return
 	if(dose == metabolism)
-		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+		to_chat(entity, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
-		M.apply_effect(4, AGONY, 0)
+		entity.apply_effect(4, AGONY, 0)
 		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+			entity.visible_message("<span class='warning'>[entity] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
 
 /* Drinks */
@@ -697,29 +701,29 @@
 	var/adj_temp = 0
 	var/water_based = TRUE
 
-/datum/reagent/drink/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
 	var/strength_mod = 1
-	if(alien == IS_SLIME && water_based)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)] && water_based)
 		strength_mod = 3
-	M.adjustToxLoss(removed * strength_mod) // Probably not a good idea; not very deadly though
+	entity.adjustToxLoss(removed * strength_mod) // Probably not a good idea; not very deadly though
 	return
 
-/datum/reagent/drink/affect_ingest(mob/living/carbon/M, alien, removed)
-	M.adjust_nutrition(nutrition * removed)
-	M.adjust_hydration(hydration * removed)
-	M.dizziness = max(0, M.dizziness + adj_dizzy)
-	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
-	M.adjust_sleeping(20 * adj_sleepy)
+/datum/reagent/drink/affect_ingest(mob/living/carbon/entity, alien, removed)
+	entity.adjust_nutrition(nutrition * removed)
+	entity.adjust_hydration(hydration * removed)
+	entity.dizziness = max(0, entity.dizziness + adj_dizzy)
+	entity.drowsyness = max(0, entity.drowsyness + adj_drowsy)
+	entity.adjust_sleeping(20 * adj_sleepy)
 
-	if(adj_temp > 0 && M.bodytemperature < 310) // 310 is the normal bodytemp. 310.055
-		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(adj_temp < 0 && M.bodytemperature > 310)
-		M.bodytemperature = min(310, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	var/is_vampire = M.species.is_vampire
-	if(is_vampire)
-		handle_vampire(M, alien, removed, is_vampire)
+	if(adj_temp > 0 && entity.bodytemperature < 310) // 310 is the normal bodytemp. 310.055
+		entity.bodytemperature = min(310, entity.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(adj_temp < 0 && entity.bodytemperature > 310)
+		entity.bodytemperature = min(310, entity.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+	handle_vampire(entity, removed)
 
-/datum/reagent/drink/overdose(mob/living/carbon/M, alien) //Add special interactions here in the future if desired.
+/datum/reagent/drink/overdose(mob/living/carbon/entity, alien) //Add special interactions here in the future if desired.
 	..()
 
 // Juices
@@ -764,9 +768,9 @@
 	glass_name = "Carrot Juice"
 	glass_desc = "It is just like a carrot but without crunching."
 
-/datum/reagent/drink/juice/carrot/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/carrot/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	M.reagents.add_reagent("imidazoline", removed * 0.2)
+	entity.reagents.add_reagent("imidazoline", removed * 0.2)
 
 /datum/reagent/drink/juice
 	name = "Grape Juice"
@@ -780,26 +784,26 @@
 	glass_name = "Grape Juice"
 	glass_desc = "It's grrrrrape!"
 
-/datum/reagent/drink/juice/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
 
 	var/effective_dose = dose/2
-	if(issmall(M))
+	if(issmall(entity))
 		effective_dose *= 2
 
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
-				M.emote("yawn")
+				entity.emote("yawn")
 		else if(effective_dose < 5)
-			M.eye_blurry = max(M.eye_blurry, 10)
+			entity.eye_blurry = max(entity.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.afflict_paralyze(20 * 2)
-			M.drowsyness = max(M.drowsyness, 20)
+				entity.afflict_paralyze(20 * 2)
+			entity.drowsyness = max(entity.drowsyness, 20)
 		else
-			M.afflict_sleeping(20 * 20)
-			M.drowsyness = max(M.drowsyness, 60)
+			entity.afflict_sleeping(20 * 20)
+			entity.drowsyness = max(entity.drowsyness, 60)
 
 /datum/reagent/drink/juice/lemon
 	name = "Lemon Juice"
@@ -834,11 +838,11 @@
 	glass_name = "Lime Juice"
 	glass_desc = "A glass of sweet-sour lime juice"
 
-/datum/reagent/drink/juice/lime/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/lime/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.adjustToxLoss(-0.5 * removed)
+	entity.adjustToxLoss(-0.5 * removed)
 
 /datum/reagent/drink/juice/orange
 	name = "Orange juice"
@@ -850,11 +854,11 @@
 	glass_name = "orange juice"
 	glass_desc = "Vitamins! Yay!"
 
-/datum/reagent/drink/juice/orange/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/orange/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.adjustOxyLoss(-2 * removed)
+	entity.adjustOxyLoss(-2 * removed)
 
 /datum/reagent/toxin/poisonberryjuice // It has more in common with toxins than drinks... but it's a juice
 	name = "Poison Berry Juice"
@@ -889,11 +893,11 @@
 	glass_name = "Tomato Juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
-/datum/reagent/drink/juice/tomato/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/juice/tomato/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.heal_organ_damage(0, 0.5 * removed)
+	entity.heal_organ_damage(0, 0.5 * removed)
 
 /datum/reagent/drink/juice/watermelon
 	name = "Watermelon Juice"
@@ -947,25 +951,25 @@
 	glass_name = "Chocolate Milk"
 	glass_desc = "Deliciously fattening!"
 
-/datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		M.nutrition += removed * 5
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: choccy is full of natural easily digestible plant fats
+		entity.nutrition += removed * 5
 
-/datum/reagent/drink/milk/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/milk/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		M.nutrition += removed * 3
-	M.heal_organ_damage(0.5 * removed, 0)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: milk good for plant.
+		entity.nutrition += removed * 3
+	entity.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
 		if(prob(5))
-			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			to_chat(entity, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
-			var/mob/living/L = M
+			var/mob/living/L = entity
 			L.vomit()
 	return
 
@@ -1032,11 +1036,11 @@
 	cup_name = "Cup of Tea"
 	cup_desc = "Tasty black tea, it has antioxidants, it's good for you!"
 
-/datum/reagent/drink/tea/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/tea/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.adjustToxLoss(-0.5 * removed)
+	entity.adjustToxLoss(-0.5 * removed)
 
 /datum/reagent/drink/tea/icetea
 	name = "Iced Tea"
@@ -1054,21 +1058,22 @@
 	cup_name = "Cup of Iced Tea"
 	cup_desc = "No relation to a certain rap artist/ actor."
 
-/datum/reagent/drink/tea/icetea/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/tea/icetea/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_SLIME)
-		if(M.bodytemperature > T0C)
-			M.bodytemperature -= 0.5
-		if(M.bodytemperature < T0C)
-			M.bodytemperature += 0.5
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+		if(entity.bodytemperature > T0C)
+			entity.bodytemperature -= 0.5
+		if(entity.bodytemperature < T0C)
+			entity.bodytemperature += 0.5
 
-/datum/reagent/drink/tea/icetea/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_SLIME)
-		if(M.bodytemperature > T0C)
-			M.bodytemperature -= 0.5
-		if(M.bodytemperature < T0C)
-			M.bodytemperature += 0.5
+/datum/reagent/drink/tea/icetea/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+		if(entity.bodytemperature > T0C)
+			entity.bodytemperature -= 0.5
+		if(entity.bodytemperature < T0C)
+			entity.bodytemperature += 0.5
 
 /datum/reagent/drink/tea/minttea
 	name = "Mint Tea"
@@ -1154,13 +1159,13 @@
 	cup_name = "Cup of Milk Tea"
 	cup_desc = "Sweet iced tea cut with milk."
 
-/datum/reagent/drink/tea/icetea/milktea/affect_ingest(mob/living/carbon/M, alien, removed)	//Milk tea and its variants inherit the properties of both iced tea and milk.
+/datum/reagent/drink/tea/icetea/milktea/affect_ingest(mob/living/carbon/entity, alien, removed)	//Milk tea and its variants inherit the properties of both iced tea and milk.
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		M.nutrition += removed * 3
-	M.heal_organ_damage(0.5 * removed, 0)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: milk good for plant.
+		entity.nutrition += removed * 3
+	entity.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
 
 /datum/reagent/drink/tea/icetea/milktea/honeybubbletea
@@ -1245,7 +1250,7 @@
 	taste_description = "tropical, somewhat buttery water"
 	color = "#fafafa70"
 	nutrition=1
-	
+
 	glass_name = "Coconut Water"
 	glass_desc = "A fresh clear liquid found within coconuts."
 
@@ -1260,7 +1265,7 @@
 	adj_drowsy = -3
 	adj_sleepy = -2
 	adj_temp = 25
-	overdose = 45
+	bloodstream_overdose_threshold = 45
 
 	cup_icon_state = "cup_coffee"
 	cup_name = "Cup of Coffee"
@@ -1270,20 +1275,22 @@
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
 
 
-/datum/reagent/drink/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+/datum/reagent/drink/coffee/affect_ingest(mob/living/carbon/entity, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	..()
 	if(adj_temp > 0)
 		holder.remove_reagent("frostoil", 10 * removed)
 
-/datum/reagent/drink/coffee/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
 	..()
 
-/datum/reagent/drink/coffee/overdose(mob/living/carbon/M, alien)
-	if(alien == IS_DIONA)
+/datum/reagent/drink/coffee/overdose(mob/living/carbon/entity, alien)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.make_jittery(5)
+	entity.make_jittery(5)
 
 /datum/reagent/drink/coffee/icecoffee
 	name = "Iced Coffee"
@@ -1296,21 +1303,22 @@
 	glass_desc = "A drink to perk you up and refresh you!"
 	glass_special = list(DRINK_ICE)
 
-/datum/reagent/drink/coffee/icecoffee/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/icecoffee/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_SLIME)
-		if(M.bodytemperature > T0C)
-			M.bodytemperature -= 0.5
-		if(M.bodytemperature < T0C)
-			M.bodytemperature += 0.5
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+		if(entity.bodytemperature > T0C)
+			entity.bodytemperature -= 0.5
+		if(entity.bodytemperature < T0C)
+			entity.bodytemperature += 0.5
 
-/datum/reagent/drink/coffee/icecoffee/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_SLIME)
-		if(M.bodytemperature > T0C)
-			M.bodytemperature -= 0.5
-		if(M.bodytemperature < T0C)
-			M.bodytemperature += 0.5
+/datum/reagent/drink/coffee/icecoffee/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+		if(entity.bodytemperature > T0C)
+			entity.bodytemperature -= 0.5
+		if(entity.bodytemperature < T0C)
+			entity.bodytemperature += 0.5
 
 /datum/reagent/drink/coffee/soy_latte
 	name = "Soy Latte"
@@ -1329,9 +1337,9 @@
 	cup_name = "Cup of Soy Latte"
 	cup_desc = "A nice and refreshing beverage while you are reading."
 
-/datum/reagent/drink/coffee/soy_latte/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/soy_latte/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	M.heal_organ_damage(0.5 * removed, 0)
+	entity.heal_organ_damage(0.5 * removed, 0)
 
 /datum/reagent/drink/coffee/cafe_latte
 	name = "Cafe Latte"
@@ -1349,9 +1357,9 @@
 	cup_name = "Cup of Cafe Latte"
 	cup_desc = "A nice and refreshing beverage while you are reading."
 
-/datum/reagent/drink/coffee/cafe_latte/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/coffee/cafe_latte/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	M.heal_organ_damage(0.5 * removed, 0)
+	entity.heal_organ_damage(0.5 * removed, 0)
 
 /datum/reagent/drink/hot_coco
 	name = "Hot Chocolate"
@@ -1370,10 +1378,10 @@
 	cup_name = "Cup of Hot Chocolate"
 	cup_desc = "Made with love! And cocoa beans."
 
-/datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		M.nutrition += removed * 5
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: choccy is full of natural easily digestible plant fats
+		entity.nutrition += removed * 5
 
 /datum/reagent/drink/soda/sodawater
 	name = "Soda Water"
@@ -1533,32 +1541,32 @@
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
 
-/datum/reagent/drink/milkshake/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/milkshake/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
 
 	var/effective_dose = dose/2
-	if(issmall(M))
+	if(issmall(entity))
 		effective_dose *= 2
 
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		if(effective_dose < 2)
 			if(effective_dose == metabolism * 2 || prob(5))
-				M.emote("yawn")
+				entity.emote("yawn")
 		else if(effective_dose < 5)
-			M.eye_blurry = max(M.eye_blurry, 10)
+			entity.eye_blurry = max(entity.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.afflict_paralyze(20 * 2)
-			M.drowsyness = max(M.drowsyness, 20)
+				entity.afflict_paralyze(20 * 2)
+			entity.drowsyness = max(entity.drowsyness, 20)
 		else
-			M.afflict_sleeping(20 * 20)
-			M.drowsyness = max(M.drowsyness, 60)
+			entity.afflict_sleeping(20 * 20)
+			entity.drowsyness = max(entity.drowsyness, 60)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			to_chat(entity, SPAN_WARNING("You feel nauseous!"))
 			return
 		if(prob(20))
-			var/mob/living/L = M
+			var/mob/living/L = entity
 			L.vomit()
 	return
 
@@ -1575,9 +1583,9 @@
 	glass_name = "Chocolate Milkshake"
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
-/datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
-		M.nutrition += removed * 5
+/datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/entity, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_ALRAUNE)]) //cit change: it wouldn't affect plants that much.
+		entity.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
 	name = "Berry Milkshake"
@@ -1606,8 +1614,8 @@
 	glass_name = "Coffee Milkshake"
 	glass_desc = "An energizing coffee milkshake, perfect for hot days at work.."
 
-/datum/reagent/drink/milkshake/coffeeshake/overdose(mob/living/carbon/M, alien)
-	M.make_jittery(5)
+/datum/reagent/drink/milkshake/coffeeshake/overdose(mob/living/carbon/entity, alien)
+	entity.make_jittery(5)
 
 /datum/reagent/drink/milkshake/peanutshake
 	name = "Peanut Milkshake"
@@ -1632,9 +1640,9 @@
 	glass_name = "Rewriter"
 	glass_desc = "The secret of the sanctuary of the Libarian..."
 
-/datum/reagent/drink/rewriter/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/rewriter/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	M.make_jittery(5)
+	entity.make_jittery(5)
 
 /datum/reagent/drink/soda/nuka_cola
 	name = "Nuka Cola"
@@ -1650,13 +1658,13 @@
 	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/soda/nuka_cola/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/soda/nuka_cola/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	M.add_chemical_effect(CE_SPEEDBOOST, 1)
-	M.make_jittery(20)
-	M.druggy = max(M.druggy, 30)
-	M.dizziness += 5
-	M.drowsyness = 0
+	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_SPEEDBOOST, 1)
+	entity.make_jittery(20)
+	entity.druggy = max(entity.druggy, 30)
+	entity.dizziness += 5
+	entity.drowsyness = 0
 
 /datum/reagent/drink/grenadine
 	name = "Grenadine Syrup"
@@ -1923,17 +1931,17 @@
 	glass_name = "The Doctor's Delight"
 	glass_desc = "A healthy mixture of juices, guaranteed to keep you healthy until the next toolboxing takes place."
 
-/datum/reagent/drink/doctor_delight/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/doctor_delight/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.adjustOxyLoss(-4 * removed)
-	M.heal_organ_damage(2 * removed, 2 * removed)
-	M.adjustToxLoss(-2 * removed)
-	if(M.dizziness)
-		M.dizziness = max(0, M.dizziness - 15)
-	if(M.confused)
-		M.Confuse(-5)
+	entity.adjustOxyLoss(-4 * removed)
+	entity.heal_organ_damage(2 * removed, 2 * removed)
+	entity.adjustToxLoss(-2 * removed)
+	if(entity.dizziness)
+		entity.dizziness = max(0, entity.dizziness - 15)
+	if(entity.confused)
+		entity.Confuse(-5)
 
 /datum/reagent/drink/dry_ramen
 	name = "Dry Ramen"
@@ -1973,11 +1981,11 @@
 	glass_name = "Hell Ramen"
 	glass_desc = "A glass of extremely spicy noodles. Wait, why did you put this into a glass?"
 
-/datum/reagent/drink/hell_ramen/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/hell_ramen/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
+	entity.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 
 /datum/reagent/drink/sweetsundaeramen
 	name = "Dessert Ramen"
@@ -2004,21 +2012,22 @@
 	glass_desc = "Generally, you're supposed to put something else in there too..."
 	glass_icon = DRINK_ICON_NOISY
 
-/datum/reagent/drink/ice/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_SLIME)
-		if(M.bodytemperature > T0C)
-			M.bodytemperature -= rand(1,3)
-		if(M.bodytemperature < T0C)
-			M.bodytemperature += rand(1,3)
+/datum/reagent/drink/ice/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-/datum/reagent/drink/ice/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+		if(entity.bodytemperature > T0C)
+			entity.bodytemperature -= rand(1,3)
+		if(entity.bodytemperature < T0C)
+			entity.bodytemperature += rand(1,3)
+
+/datum/reagent/drink/ice/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_SLIME)
-		if(M.bodytemperature > T0C)
-			M.bodytemperature -= rand(1,3)
-		if(M.bodytemperature < T0C)
-			M.bodytemperature += rand(1,3)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
+		if(entity.bodytemperature > T0C)
+			entity.bodytemperature -= rand(1,3)
+		if(entity.bodytemperature < T0C)
+			entity.bodytemperature += rand(1,3)
 
 /datum/reagent/drink/nothing
 	name = "Nothing"
@@ -2125,17 +2134,18 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/nuclearwaste/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
-		return
-	M.bloodstr.add_reagent("radium", 0.3)
+/datum/reagent/drink/nuclearwaste/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-/datum/reagent/drink/nuclearwaste/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.ingested.add_reagent("radium", 0.25)
+	entity.bloodstr.add_reagent("radium", 0.3)
+
+/datum/reagent/drink/nuclearwaste/affect_ingest(mob/living/carbon/entity, alien, removed)
+	..()
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+	entity.reagents_ingested.add_reagent("radium", 0.25)
 
 /datum/reagent/drink/sodaoil //Mixed with normal drinks to make a 'potable' version for Prometheans if mixed 1-1. Dilution is key.
 	name = "Soda Oil"
@@ -2151,23 +2161,24 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/sodaoil/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
-	if(M.bloodstr) // If, for some reason, they are injected, dilute them as well.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
-			if(istype(R, /datum/reagent/drink))
-				var/datum/reagent/drink/D = R
-				if(D.water_based)
-					M.adjustToxLoss(removed * -3)
+/datum/reagent/drink/sodaoil/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
+	. = ..()
 
-/datum/reagent/drink/sodaoil/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(M.ingested) // Find how many drinks are causing tox, and negate them.
-		for(var/datum/reagent/R in M.ingested.reagent_list)
+	if(entity.bloodstr) // If, for some reason, they are injected, dilute them as well.
+		for(var/datum/reagent/R in entity.reagents_ingested.reagent_list)
 			if(istype(R, /datum/reagent/drink))
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
-					M.adjustToxLoss(removed * -2)
+					entity.adjustToxLoss(removed * -3)
+
+/datum/reagent/drink/sodaoil/affect_ingest(mob/living/carbon/entity, alien, removed)
+	..()
+	if(entity.reagents_ingested) // Find how many drinks are causing tox, and negate them.
+		for(var/datum/reagent/R in entity.reagents_ingested.reagent_list)
+			if(istype(R, /datum/reagent/drink))
+				var/datum/reagent/drink/D = R
+				if(D.water_based)
+					entity.adjustToxLoss(removed * -2)
 
 /datum/reagent/drink/mojito
 	name = "Mojito"
@@ -2374,10 +2385,10 @@
 	glass_name = "Beer"
 	glass_desc = "A freezing pint of beer"
 
-/datum/reagent/ethanol/beer/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/beer/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
 	if(.)
-		M.jitteriness = max(M.jitteriness - 3, 0)
+		entity.jitteriness = max(entity.jitteriness - 3, 0)
 
 #define CURACAO 60
 
@@ -2419,10 +2430,10 @@
 	glass_name = "Rum"
 	glass_desc = "Now you want to Pray for a pirate suit, don't you?"
 
-/datum/reagent/ethanol/deadrum/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/deadrum/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
 	if(.)
-		M.dizziness += 5
+		entity.dizziness += 5
 
 #define GIN 100
 
@@ -2454,22 +2465,22 @@
 // i hate you, whoever made this, go make reagent traits you utter AAAAA
 /datum/reagent/ethanol/coffee
 	id = "coffee_alcohol"
-	overdose = 45
+	bloodstream_overdose_threshold = 45
 
-/datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+/datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/entity, alien, removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 	. = ..() // the rest is coffee stuff, ugh, go make reagent traits etc
-	M.dizziness = max(0, M.dizziness - 5)
-	M.drowsyness = max(0, M.drowsyness - 3)
-	M.adjust_sleeping(20 * -2)
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
+	entity.dizziness = max(0, entity.dizziness - 5)
+	entity.drowsyness = max(0, entity.drowsyness - 3)
+	entity.adjust_sleeping(20 * -2)
+	if(entity.bodytemperature > 310)
+		entity.bodytemperature = max(310, entity.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
-/datum/reagent/ethanol/coffee/overdose(mob/living/carbon/M, alien)
-	if(alien == IS_DIONA)
+/datum/reagent/ethanol/coffee/overdose(mob/living/carbon/entity, alien)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.make_jittery(5)
+	entity.make_jittery(5)
 
 #define KAHLUA 40
 
@@ -2550,14 +2561,14 @@
 	glass_name = "Thirteen Loko"
 	glass_desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass."
 
-/datum/reagent/ethanol/thirteenloko/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/thirteenloko/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.drowsyness = max(0, M.drowsyness - 7)
-	if (M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	M.make_jittery(5)
+	entity.drowsyness = max(0, entity.drowsyness - 7)
+	if (entity.bodytemperature > 310)
+		entity.bodytemperature = max(310, entity.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
+	entity.make_jittery(5)
 
 #define VERMOUTH 35
 
@@ -2586,9 +2597,9 @@
 	glass_name = "Vodka"
 	glass_desc = "The glass contain wodka. Xynta."
 
-/datum/reagent/ethanol/vodka/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/vodka/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
-	M.cure_radiation(RAD_MOB_CURE_STRENGTH_VODKA(removed))
+	entity.cure_radiation(RAD_MOB_CURE_STRENGTH_VODKA(removed))
 
 #define WHISKEY 80
 
@@ -2983,9 +2994,9 @@
 	glass_name = "Beepsky Smash"
 	glass_desc = "Heavy, hot and strong. Just like the Iron fist of the LAW."
 
-/datum/reagent/ethanol/beepsky_smash/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/beepsky_smash/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
-	M.afflict_stun(20 * 2)
+	entity.afflict_stun(20 * 2)
 
 /datum/reagent/ethanol/bilk
 	name = "Bilk"
@@ -3293,9 +3304,9 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list("neuroright")
 
-/datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
-	M.afflict_paralyze(20 * 3)
+	entity.afflict_paralyze(20 * 3)
 
 /datum/reagent/ethanol/patron
 	name = "Patron"
@@ -3320,12 +3331,12 @@
 	glass_name = "???"
 	glass_desc = "A black ichor with an oily purple sheer on top. Are you sure you should drink this?"
 
-/datum/reagent/ethanol/pwine/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/pwine/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
 	if(. > 30)
-		M.adjustToxLoss(2 * removed)
-	if(. > 60 && ishuman(M) && prob(5))
-		var/mob/living/carbon/human/H = M
+		entity.adjustToxLoss(2 * removed)
+	if(. > 60 && ishuman(entity) && prob(5))
+		var/mob/living/carbon/human/H = entity
 		var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_HEART]
 		if (L && istype(L))
 			if(. < 120)
@@ -3533,32 +3544,32 @@
 	glass_name = "Redeemer's Brew"
 	glass_desc = "This barely qualifies as a drink, and may cause euphoria and numbness. Imbiber beware!"
 
-/datum/reagent/ethanol/unathiliquor/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/unathiliquor/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_UNATHI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_UNATHI)])
 		return
-	if(alien == IS_NARAMADI)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		return
 	var/drug_strength = 10
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		drug_strength = drug_strength * 0.8
 
-	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
-		step(M, pick(GLOB.cardinal))
+	entity.druggy = max(entity.druggy, drug_strength)
+	if(prob(10) && isturf(entity.loc) && !istype(entity.loc, /turf/space) && CHECK_MOBILITY(entity, MOBILITY_CAN_MOVE))
+		step(entity, pick(GLOB.cardinal))
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(!H.can_feel_pain())
 			return
 	if(dose == metabolism)
-		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+		to_chat(entity, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
-		M.apply_effect(4, AGONY, 0)
+		entity.apply_effect(4, AGONY, 0)
 		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+			entity.visible_message("<span class='warning'>[entity] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/ethanol/sakebomb
@@ -3740,11 +3751,11 @@
 	glass_name = "Soemmer Fire"
 	glass_desc = "A painfully hot mixed drink, for when you absolutely need to hurt right now."
 
-/datum/reagent/ethanol/soemmerfire/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/soemmerfire/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
+	entity.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 
 /datum/reagent/ethanol/morningafter
 	name = "Morning After"
@@ -3790,15 +3801,15 @@
 	glass_name = "Vox's Delight"
 	glass_desc = "Not recommended if you enjoy having organs."
 
-/datum/reagent/ethanol/voxdelight/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/voxdelight/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	if(alien == IS_VOX)
-		M.adjustToxLoss(-0.5 * removed)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_VOX)])
+		entity.adjustToxLoss(-0.5 * removed)
 		return
 	else
-		M.adjustToxLoss(3 * removed)
+		entity.adjustToxLoss(3 * removed)
 
 /datum/reagent/ethanol/screamingviking
 	name = "Screaming Viking"
@@ -3855,11 +3866,11 @@
 	glass_name = "Named Bullet"
 	glass_desc = "A thick slime jelly shot. You can feel your death approaching."
 
-/datum/reagent/ethanol/slimeshot/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/slimeshot/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.reagents.add_reagent("slimejelly", 0.25)
+	entity.reagents.add_reagent("slimejelly", 0.25)
 
 /datum/reagent/ethanol/cloverclub
 	name = "Clover Club"
@@ -3999,21 +4010,21 @@
 	glass_desc = "The glass is barely able to contain the wodka. Xynta."
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/ethanol/godka/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/godka/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
-	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed * .))
-	if(. && ishuman(M))
-		var/mob/living/carbon/human/H = M
+	entity.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed * .))
+	if(. && ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(H.species.has_organ[O_LIVER])
 			var/obj/item/organ/L = H.internal_organs_by_name[O_LIVER]
 			if(!L)
 				return
 			var/adjust_liver = rand(-3, 2)
 			if(prob(L.damage))
-				to_chat(M, "<span class='cult'>You feel woozy...</span>")
+				to_chat(entity, "<span class='cult'>You feel woozy...</span>")
 			L.damage = max(L.damage + (adjust_liver * removed), 0)
 	var/adjust_tox = rand(-4, 2)
-	M.adjustToxLoss(adjust_tox * removed)
+	entity.adjustToxLoss(adjust_tox * removed)
 
 #define HOLYWINE 100
 
@@ -4343,17 +4354,17 @@
 	glass_desc = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
 
 //This functions the same as Doctor's Delight, except it gets you drunk too.
-/datum/reagent/ethanol/royaljelly/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/royaljelly/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.adjustOxyLoss(-4 * removed)
-	M.heal_organ_damage(2 * removed, 2 * removed)
-	M.adjustToxLoss(-2 * removed)
-	if(M.dizziness)
-		M.dizziness = max(0, M.dizziness - 15)
-	if(M.confused)
-		M.Confuse(-5)
+	entity.adjustOxyLoss(-4 * removed)
+	entity.heal_organ_damage(2 * removed, 2 * removed)
+	entity.adjustToxLoss(-2 * removed)
+	if(entity.dizziness)
+		entity.dizziness = max(0, entity.dizziness - 15)
+	if(entity.confused)
+		entity.Confuse(-5)
 
 /datum/reagent/ethanol/coquito
 	name = "Coquito"
@@ -4553,18 +4564,18 @@
 	var/coated_adj = "coated"
 	var/cooked_name = "coating"
 
-/datum/reagent/nutriment/coating/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/coating/affect_ingest(mob/living/carbon/entity, alien, removed)
 
 	//We'll assume that the batter isnt going to be regurgitated and eaten by someone else. Only show this once
 	if (data["cooked"] != 1)
 		if (!messaged)
-			to_chat(M, "Ugh, this raw [name] tastes disgusting.")
+			to_chat(entity, "Ugh, this raw [name] tastes disgusting.")
 			nutriment_factor *= 0.5
 			messaged = 1
 
 		//Raw coatings will sometimes cause vomiting
 		if (prob(1))
-			M.vomit()
+			entity.vomit()
 	..()
 
 /datum/reagent/nutriment/coating/initialize_data(newdata) // Called when the reagent is created.
@@ -4585,7 +4596,7 @@
 
 //Handles setting the temperature when oils are mixed
 // todo: review data procs
-/datum/reagent/nutriment/coating/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
+/datum/reagent/nutriment/coating/mix_data(datum/reagent_holder/holder, list/current_data, current_amount, list/new_data, new_amount)
 	LAZYINITLIST(data)
 	data["cooked"] = new_data["cooked"]
 
@@ -4609,9 +4620,9 @@
 	icon_cooked = "batter_cooked"
 	coated_adj = "beer-battered"
 
-/datum/reagent/nutriment/coating/beerbatter/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/nutriment/coating/beerbatter/affect_ingest(mob/living/carbon/entity, alien, removed)
 	..()
-	M.add_chemical_effect(CE_ALCOHOL, 0.02) //Very slightly alcoholic
+	entity.add_reagent_cycle_effect(CHEMICAL_EFFECT_ALCOHOL, 0.02) //Very slightly alcoholic
 
 //=========================
 //Fats
@@ -4633,62 +4644,16 @@
 	description = "Oils are liquid fats."
 	reagent_state = REAGENT_LIQUID
 	color = "#c79705"
-	touch_met = 1.5
-	var/lastburnmessage = 0
 
-/datum/reagent/nutriment/triglyceride/oil/touch_turf(turf/simulated/T)
+/datum/reagent/nutriment/triglyceride/oil/contact_expose_turf(turf/target, volume, temperature, list/data, vapor)
+	. = ..()
+
+	var/turf/simulated/T = target
 	if(!istype(T))
 		return
 
 	if(volume >= 3)
 		T.wet_floor(2)
-
-// todo: review data procs
-/datum/reagent/nutriment/triglyceride/oil/initialize_data(newdata) // Called when the reagent is created.
-	..()
-	if (!data)
-		data = list("temperature" = T20C)
-
-//Handles setting the temperature when oils are mixed
-/datum/reagent/nutriment/triglyceride/oil/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
-	LAZYINITLIST(data)
-	if (current_amount <= 0 || !data["temperature"] || !volume)
-		//If we get here, then this reagent has just been created, just copy the temperature exactly
-		data["temperature"] = new_data["temperature"]
-	else
-		//Our temperature is set to the mean of the two mixtures, taking volume into account
-		var/total = (data["temperature"] * current_amount) + (new_data["temperature"] * new_amount)
-		data["temperature"] = total / volume
-	return ..()
-
-//Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
-/datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(mob/living/carbon/M)
-	var/threshold = 360//Human heatdamage threshold
-	var/datum/species/S = M.species
-	if (S && istype(S))
-		threshold = S.heat_level_1
-
-	//If temperature is too low to burn, return a factor of 0. no damage
-	if (data["temperature"] < threshold)
-		return 0
-
-	//Step = degrees above heat level 1 for 1.0 multiplier
-	var/step = 60
-	if (S && istype(S))
-		step = (S.heat_level_2 - S.heat_level_1)*1.5
-
-	. = data["temperature"] - threshold
-	. /= step
-	. = min(., 2.5)//Cap multiplier at 2.5
-
-/datum/reagent/nutriment/triglyceride/oil/affect_touch(mob/living/carbon/M, alien, removed)
-	var/dfactor = heatdamage(M)
-	if (dfactor)
-		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)
-		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
-		if (lastburnmessage+100 < world.time	)
-			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))
-			lastburnmessage = world.time
 
 /datum/reagent/nutriment/triglyceride/oil/corn
 	name = "Corn Oil"
@@ -4739,15 +4704,14 @@
 	color = "#EDB91F"
 	taste_description = "cheese"
 
-/datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
-	if(alien == IS_NARAMADI)
+/datum/reagent/nutriment/protein/cheese/on_metabolize_ingested(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed, obj/item/organ/internal/container)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_NARAMADI)])
 		if(prob(5))
-			to_chat(M, SPAN_WARNING("You feel nauseous!"))
-			return
+			to_chat(entity, SPAN_WARNING("You feel nauseous!"))
 		if(prob(20))
-			var/mob/living/L = M
-			L.vomit()
-	return
+			entity.vomit()
 
 //SYNNONO MEME FOODS EXPANSION - Credit to Synnono
 
@@ -4796,17 +4760,17 @@
 		switch(alien)
 			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
 			if(IS_SKRELL)
-				M.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
+				entity.adjustToxLoss(0.25 * removed)  //Equivalent to half as much protein, since it's half protein.
 			if(IS_TESHARI)
-				M.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
+				entity.nutrition += (alt_nutriment_factor * 1.2 * removed) //Give them the same nutrition they would get from protein.
 			if(IS_UNATHI)
-				M.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
+				entity.nutrition += (alt_nutriment_factor * 1.125 * removed) //Give them the same nutrition they would get from protein.
 				//Takes into account the 0.5 factor for all nutriment which is applied on top of the 2.25 factor for protein.
 			//Chimera don't need their own case here since their factors for nutriment and protein cancel out.
 			else
-				M.nutrition += (alt_nutriment_factor * removed)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+				entity.nutrition += (alt_nutriment_factor * removed)
+	if(ishuman(entity))
+		var/mob/living/carbon/human/H = entity
 		if(H.feral > 0 && H.nutrition > 100 && H.traumatic_shock < min(60, H.nutrition/10) && H.jitteriness < 100) // same check as feral triggers to stop them immediately re-feralling
 			H.feral -= removed * 3 // should calm them down quick, provided they're actually in a state to STAY calm.
 			if (H.feral <=0) //check if they're unferalled
@@ -4831,7 +4795,7 @@
 /datum/reagent/ethanol/monstertamer/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
 
-	monster_tamer(M,alien, removed, alt_nutriment_factor)	
+	monster_tamer(M,alien, removed, alt_nutriment_factor)
 
 /datum/reagent/ethanol/monstertamer/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
@@ -4881,9 +4845,8 @@
 	glass_name = "Galactic Panic Attack"
 	glass_desc = "Looking into this is like staring at the stars."
 
-/datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/entity, alien, removed)
 	. = ..()
-
 	M.afflict_stun(20 * 2)
 
 /datum/reagent/ethanol/lotus
@@ -4962,42 +4925,44 @@
 	glass_name = "Dumb Shroom Juice"
 	glass_desc = "Touch fuzzy, get dizzy."
 
-/datum/reagent/drink/shroomjuice/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/drink/shroomjuice/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
 
-	if(alien == IS_DIONA)
+	. = ..()
+
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
 
 	var/threshold = 1
-	if(alien == IS_SKRELL)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_SKRELL)])
 		threshold = 1.2
 
-	if(alien == IS_SLIME)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_PROMETHEAN)])
 		threshold = 0.8
 
-	M.druggy = max(M.druggy, 30)
+	entity.druggy = max(entity.druggy, 30)
 
 	var/effective_dose = dose
-	if(issmall(M)) effective_dose *= 2
+	if(issmall(entity)) effective_dose *= 2
 	if(effective_dose < 1 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_dizzy(5)
+		entity.apply_effect(3, STUTTER)
+		entity.make_dizzy(5)
 		if(prob(5))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 	else if(effective_dose < 2 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(5)
-		M.make_dizzy(5)
-		M.druggy = max(M.druggy, 35)
+		entity.apply_effect(3, STUTTER)
+		entity.make_jittery(5)
+		entity.make_dizzy(5)
+		entity.druggy = max(entity.druggy, 35)
 		if(prob(10))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 	else
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(10)
-		M.make_dizzy(10)
-		M.druggy = max(M.druggy, 40)
+		entity.apply_effect(3, STUTTER)
+		entity.make_jittery(10)
+		entity.make_dizzy(10)
+		entity.druggy = max(entity.druggy, 40)
 		if(prob(15))
-			M.emote(pick("twitch", "giggle"))
+			entity.emote(pick("twitch", "giggle"))
 
 
 /datum/reagent/ethanol/honeyshot
@@ -5130,17 +5095,19 @@
 	glass_name = "A Desire to Die"
 	glass_desc = "Deathbell and nuclear waste. The bane of your liver."
 
-/datum/reagent/ethanol/desiretodie/affect_blood(mob/living/carbon/M, alien, removed)
+/datum/reagent/ethanol/desiretodie/on_metabolize_bloodstream(mob/living/carbon/entity, datum/reagent_metabolism/metabolism, list/data, removed)
 	. = ..()
-	if(alien == IS_DIONA)
-		return
-	M.bloodstr.add_reagent("radium", 0.3)
 
-/datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/M, alien, removed)
 	. = ..()
-	if(alien == IS_DIONA)
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
 		return
-	M.ingested.add_reagent("radium", 0.25)
+	entity.bloodstr.add_reagent("radium", 0.3)
+
+/datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/entity, alien, removed)
+	. = ..()
+	if(entity.reagent_biologies[REAGENT_BIOLOGY_SPECIES(SPECIES_ID_DIONA)])
+		return
+	entity.reagents_ingested.add_reagent("radium", 0.25)
 
 /datum/reagent/drink/raspberrybeesknees
 	name = "Raspberry Bee's Knees"

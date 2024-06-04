@@ -24,7 +24,7 @@
 
 	machine_stat = POWEROFF//Starts turned off
 
-	var/datum/reagents/oil
+	var/datum/reagent_holder/oil
 	var/optimal_oil = 9000//90 litres of cooking oil
 
 
@@ -47,25 +47,16 @@
 /obj/machinery/appliance/cooker/fryer/heat_up()
 	if (..())
 		//Set temperature of oil reagent
-		var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-		if (OL && istype(OL))
-			OL.data["temperature"] = temperature
+		oil.set_temperature(temperature)
 
 /obj/machinery/appliance/cooker/fryer/equalize_temperature()
 	if (..())
-		//Set temperature of oil reagent
-		var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-		if (OL && istype(OL))
-			OL.data["temperature"] = temperature
-
+		oil.set_temperature(temperature)
 
 /obj/machinery/appliance/cooker/fryer/update_cooking_power()
 	..()//In addition to parent temperature calculation
 	//Fryer efficiency also drops when oil levels arent optimal
-	var/oil_level = 0
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	if (OL && istype(OL))
-		oil_level = OL.volume
+	var/oil_level = oil.total_volume
 
 	var/oil_efficiency = 0
 	if (oil_level)
@@ -90,7 +81,7 @@
 //This causes a slow drop in oil levels, encouraging refill after extended use
 /obj/machinery/appliance/cooker/fryer/do_cooking_tick(var/datum/cooking_item/CI)
 	if(..() && (CI.oil < CI.max_oil) && prob(20))
-		var/datum/reagents/buffer = new /datum/reagents(2)
+		var/datum/reagent_holder/buffer = new /datum/reagent_holder(2)
 		oil.trans_to_holder(buffer, min(0.5, CI.max_oil - CI.oil))
 		CI.oil += buffer.total_volume
 		CI.container.soak_reagent(buffer)
@@ -123,7 +114,7 @@
 
 		if (total_our_oil < total_oil)
 			//If we have less than the combined total, then top up from our reservoir
-			var/datum/reagents/buffer = new /datum/reagents(INFINITY)
+			var/datum/reagent_holder/buffer = new /datum/reagent_holder(INFINITY)
 			oil.trans_to_holder(buffer, total_oil - total_our_oil)
 			CI.container.soak_reagent(buffer)
 		else if (total_our_oil > total_oil)
@@ -159,9 +150,6 @@
 
 	var/damage = rand(7,13)
 	//Though this damage seems reduced, some hot oil is transferred to the victim and will burn them for a while after
-
-	var/datum/reagent/nutriment/triglyceride/oil/OL = oil.get_master_reagent()
-	damage *= OL.heatdamage(victim)
 
 	var/obj/item/organ/external/E
 	var/nopain
@@ -206,6 +194,7 @@
 		msg_admin_attack("[key_name_admin(user)] [cook_type] \the [victim] ([victim.ckey]) in \a [src]. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 	//Coat the victim in some oil
+	#warn what the shit this isn't proper splashing
 	oil.trans_to(victim, 40)
 
 /obj/machinery/appliance/cooker/fryer/attackby(var/obj/item/I, var/mob/user)
@@ -220,14 +209,7 @@
 	//Possibly in future allow pouring non-oil reagents in, in  order to sabotage it and poison food.
 	//That would really require coding some sort of filter or better replacement mechanism first
 	//So for now, restrict to oil only
-			var/amount = 0
-			for (var/datum/reagent/R in I.reagents.reagent_list)
-				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
-					var/delta = oil.available_volume()
-					delta = min(delta, R.volume)
-					oil.add_reagent(R.id, delta)
-					I.reagents.remove_reagent(R.id, delta)
-					amount += delta
+			var/amount = I.reagents.transfer_to_holder(oil, list(/datum/reagent/nutriment/triglyceride/oil), oil.available_volume())
 			if (amount > 0)
 				user.visible_message("[user] pours some oil into \the [src].", SPAN_NOTICE("You pour [amount]u of oil into \the [src]."), "<span class='notice'>You hear something viscous being poured into a metal container.</span>")
 				return 1

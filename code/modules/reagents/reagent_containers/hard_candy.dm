@@ -116,9 +116,9 @@
 			playsound(target.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
 			if(reagents.total_volume)
 				if(reagents.total_volume > bitesize)
-					reagents.trans_to_mob(target, bitesize, CHEM_INGEST)
+					reagents.trans_to_mob(target, bitesize, REAGENT_APPLY_INGEST)
 				else
-					reagents.trans_to_mob(target, reagents.total_volume, CHEM_INGEST)
+					reagents.trans_to_mob(target, reagents.total_volume, REAGENT_APPLY_INGEST)
 				bitecount++
 				On_Consume(target, user)
 
@@ -149,9 +149,9 @@
 /obj/item/reagent_containers/hard_candy/proc/succ()
 	if(reagents.total_volume)
 		if(reagents.total_volume > succsize)
-			reagents.trans_to_mob(owner, succsize, CHEM_INGEST)
+			reagents.trans_to_mob(owner, succsize, REAGENT_APPLY_INGEST)
 		else
-			reagents.trans_to_mob(owner, reagents.total_volume, CHEM_INGEST)
+			reagents.trans_to_mob(owner, reagents.total_volume, REAGENT_APPLY_INGEST)
 		succcount++
 		On_Consume(owner, owner)
 

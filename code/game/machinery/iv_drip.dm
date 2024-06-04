@@ -91,7 +91,7 @@
 		return
 
 	. += attached_victim ? "beakeractive" : "beakeridle"
-	var/datum/reagents/target_reagents = get_reagent_holder()
+	var/datum/reagent_holder/target_reagents = get_reagent_holder()
 	if(!target_reagents)
 		return
 
@@ -113,7 +113,7 @@
 		if(91 to INFINITY)
 			filling_overlay.icon_state = "reagent100"
 
-	filling_overlay.color = mix_color_from_reagents(target_reagents.reagent_list)
+	filling_overlay.color = target_reagents.get_color()
 	. += filling_overlay
 
 /obj/machinery/iv_drip/OnMouseDropLegacy(mob/living/target)
@@ -191,7 +191,7 @@
 		detach_iv()
 		return PROCESS_KILL
 
-	var/datum/reagents/target_reagents = get_reagent_holder()
+	var/datum/reagent_holder/target_reagents = get_reagent_holder()
 	if(target_reagents)
 		// Give blood
 		if(injection_mode == IV_INJECTING)
@@ -200,7 +200,7 @@
 				if(istype(reagent_container, /obj/item/reagent_containers/blood))
 					// speed up transfer on blood packs
 					real_transfer_amount *= 2
-				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_INJECT)
+				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = REAGENT_APPLY_INJECT)
 				update_appearance()
 
 		// Take blood
@@ -218,7 +218,9 @@
 				visible_message(SPAN_HEAR("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
 			var/atom/movable/target = reagent_container
-			attached_victim.inject_blood(target, amount)
+			if(ishuman(attached_victim))
+				var/mob/living/carbon/human/victim = attached_victim
+				victim.transfer_blood_to_holder(target_reagents, amount = amount)
 			update_appearance()
 
 /// Called when an IV is attached.
@@ -233,7 +235,7 @@
 		SPAN_WARNING("[usr] attaches [src] to [target]."),
 		SPAN_NOTICE("You attach [src] to [target]."),
 	)
-	// var/datum/reagents/container = get_reagent_holder()
+	// var/datum/reagent_holder/container = get_reagent_holder()
 	// log_combat(usr, target, "attached_victim", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
 	attached_victim = target
@@ -303,7 +305,7 @@
 	. += "[src] is [injection_mode ? "injecting" : "taking blood"]."
 
 	if(reagent_container)
-		if(reagent_container.reagents && reagent_container.reagents.reagent_list.len)
+		if(length(reagent_container.reagents?.reagent_volumes))
 			. += SPAN_NOTICE("Attached is \a [reagent_container] with [reagent_container.reagents.total_volume] units of liquid.")
 		else
 			. += SPAN_NOTICE("Attached is an empty [reagent_container.name].")

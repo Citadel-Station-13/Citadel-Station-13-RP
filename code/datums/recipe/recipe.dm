@@ -27,7 +27,7 @@
  *
  *
  *  Functions you do not need to call directly but could:
- *  /datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+ *  /datum/recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
  *  /datum/recipe/proc/check_items(var/obj/container as obj)
  *
  * */
@@ -76,7 +76,7 @@
 	//This is a bitfield, more than one type can be used
 	//Grill is presently unused and not listed
 
-/datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+/datum/recipe/proc/check_reagents(var/datum/reagent_holder/avail_reagents)
 	if (!reagents || !reagents.len)
 		return 1
 
@@ -92,7 +92,7 @@
 		else
 			return -1
 
-	if ((reagents?(reagents.len):(0)) < avail_reagents.reagent_list.len)
+	if(length(reagents) < length(avail_reagents))
 		return 0
 	return .
 
@@ -156,11 +156,11 @@
 		return 1 //-1 value doesnt care
 
 	var/obj/item/reagent_containers/food/snacks/S = O
-	if (!S.coating)
+	if (!S.coating_id)
 		if (!coating)
 			return 1
 		return 0
-	else if (S.coating.type == coating)
+	else if (SSchemistry.fetch_reagent(S.coating_id)?.type == coating)
 		return 1
 
 	return 0
@@ -178,7 +178,7 @@
 		for (var/obj/O in (container.contents-result_obj))
 			O.reagents.trans_to_obj(result_obj, O.reagents.total_volume)
 			qdel(O)
-	container.reagents.clear_reagents()
+	container.reagents.clear()
 	return result_obj
 
 // food-related
@@ -268,26 +268,22 @@
 		if (RECIPE_REAGENT_MAX)
 			//We want the highest of each.
 			//Iterate through everything in buffer. If the target has less than the buffer, then top it up
-			for (var/datum/reagent/R in temp.reagents.reagent_list)
-				var/rvol = tempholder.reagents.get_reagent_amount(R.id)
-				if (rvol < R.volume)
-					//Transfer the difference
-					temp.reagents.trans_id_to(tempholder, R.id, R.volume-rvol)
+			for(var/id in temp.reagents.reagent_volumes)
+				var/volume = temp.reagents.reagent_volumes[id]
+				var/current_volume = tempholder.reagents.reagent_volumes[id]
+				if(current_volume < volume)
+					temp.reagents.transfer_to_holder(tempholder.reagents, list(id), volume - current_volume)
 
 		if (RECIPE_REAGENT_MIN)
 			//Min is slightly more complex. We want the result to have the lowest from each side
 			//But zero will not count. Where a side has zero its ignored and the side with a nonzero value is used
-			for (var/datum/reagent/R in temp.reagents.reagent_list)
-				var/rvol = tempholder.reagents.get_reagent_amount(R.id)
-				if (rvol == 0) //If the target has zero of this reagent
-					temp.reagents.trans_id_to(tempholder, R.id, R.volume)
-					//Then transfer all of ours
-
-				else if (rvol > R.volume)
-					//if the target has more than ours
-					//Remove the difference
-					tempholder.reagents.remove_reagent(R.id, rvol-R.volume)
-
+			for(var/id in temp.reagents.reagent_volumes)
+				var/current_volume = tempholder.reagents.reagent_volumes[id]
+				var/volume = temp.reagents.reagent_volumes[id]
+				if(current_volume == 0)
+					temp.reagents.transfer_to_holder(tempholder.reagents, list(id))
+				else if(current_volume > volume)
+					tempholder.reagents.remove_reagent(id, current_volume - volume)
 
 	if (results.len > 1)
 		//If we're here, then holder is a buffer containing the total reagents for all the results.

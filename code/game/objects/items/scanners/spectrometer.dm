@@ -1,3 +1,5 @@
+// todo: rework
+
 /obj/item/mass_spectrometer
 	name = "mass spectrometer"
 	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
@@ -18,7 +20,7 @@
 
 /obj/item/mass_spectrometer/Initialize(mapload)
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(5)
+	var/datum/reagent_holder/R = new/datum/reagent_holder(5)
 	reagents = R
 	R.my_atom = src
 
@@ -41,7 +43,7 @@
 		var/list/blood_traces = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.id != "blood")
-				reagents.clear_reagents()
+				reagents.clear()
 				to_chat(user, "<span class='warning'>The sample was contaminated! Please insert another sample</span>")
 				return
 			else
@@ -54,7 +56,7 @@
 			else
 				dat += "[R] "
 		to_chat(user, "[dat]")
-		reagents.clear_reagents()
+		reagents.clear()
 	return
 
 /obj/item/mass_spectrometer/adv

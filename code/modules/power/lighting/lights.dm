@@ -245,7 +245,7 @@
 
 			rigged = 1
 
-		S.reagents.clear_reagents()
+		S.reagents.clear()
 	else
 		..()
 	return

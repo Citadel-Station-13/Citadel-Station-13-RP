@@ -52,12 +52,11 @@
 //Reagent Rings
 
 /obj/item/clothing/gloves/ring/reagent
-	atom_flags = OPENCONTAINER
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 
 /obj/item/clothing/gloves/ring/reagent/Initialize(mapload)
 	. = ..()
-	create_reagents(15)
+	create_reagents(15, REAGENT_HOLDER_CONSIDERED_OPEN)
 
 /obj/item/clothing/gloves/ring/reagent/equipped(var/mob/living/carbon/human/H)
 	..()
@@ -65,9 +64,9 @@
 
 		if(reagents.total_volume)
 			to_chat(H, "<span class='danger'>You feel a prick as you slip on \the [src].</span>")
-			if(H.reagents)
+			if(H.reagents_bloodstream)
 				var/contained = reagents.get_reagents()
-				var/trans = reagents.trans_to_mob(H, 15, CHEM_INJECT)
+				var/trans = reagents.trans_to_mob(H, 15, REAGENT_APPLY_INJECT)
 				add_attack_logs(usr, H, "Injected with [name] containing [contained] transferred [trans] units")
 	return
 

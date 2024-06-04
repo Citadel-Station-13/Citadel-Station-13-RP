@@ -390,9 +390,7 @@
 	data["beakerVolume"] = 0
 	if(connected.beaker)
 		data["beakerLabel"] = connected.beaker.label_text ? connected.beaker.label_text : null
-		if (connected.beaker.reagents && connected.beaker.reagents.reagent_list.len)
-			for(var/datum/reagent/R in connected.beaker.reagents.reagent_list)
-				data["beakerVolume"] += R.volume
+		data["beakerVolume"] = connected.beaker?.reagents?.total_volume
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -567,7 +565,7 @@
 			inject_amount = 0
 		if (inject_amount > 50)
 			inject_amount = 50
-		connected.beaker.reagents.trans_to_mob(connected.occupant, inject_amount, CHEM_INJECT)
+		connected.beaker.reagents.trans_to_mob(connected.occupant, inject_amount, REAGENT_APPLY_INJECT)
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
 	////////////////////////////////////////////////////////

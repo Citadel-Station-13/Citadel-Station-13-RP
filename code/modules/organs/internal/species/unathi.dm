@@ -17,14 +17,14 @@
 	..()
 	if(!owner) return
 
-	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.reagent_list
+	var/datum/reagent/coffee = owner.reagents.has_reagent(/datum/reagent/drink/coffee)
 	if(coffee)
 		if(is_bruised())
 			owner.adjustToxLoss(0.1 * (delta_time * 5))
 		else if(is_broken())
 			owner.adjustToxLoss(0.3 * (delta_time * 5))
 
-	var/datum/reagent/sugar = locate(/datum/reagent/sugar) in owner.reagents.reagent_list
+	var/datum/reagent/sugar = owner.reagents.has_reagent(/datum/reagent/sugar)
 	if(sugar)
 		if(is_bruised())
 			owner.adjustToxLoss(0.1 * (delta_time * 5))

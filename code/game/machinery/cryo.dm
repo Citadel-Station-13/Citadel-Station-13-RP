@@ -139,9 +139,7 @@
 	data["beakerVolume"] = 0
 	if(beaker)
 		data["beakerLabel"] = beaker.label_text ? beaker.label_text : null
-		if(beaker.reagents && beaker.reagents.reagent_list.len)
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				data["beakerVolume"] += R.volume
+		data["beakerVolume"] = beaker.reagents?.total_volume
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -255,7 +253,7 @@
 		var/has_clonexa = occupant.reagents.get_reagent_amount("clonexadone") >= 1
 		var/has_cryo_medicine = has_cryo || has_clonexa
 		if(beaker && !has_cryo_medicine)
-			beaker.reagents.trans_to_mob(occupant, 1, CHEM_INJECT, 10)
+			beaker.reagents.trans_to_mob(occupant, 1, REAGENT_APPLY_INJECT, 10)
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/proc/heat_gas_contents()
 	if(air_contents.total_moles < 1)

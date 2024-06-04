@@ -20,11 +20,10 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize(mapload)
 	. = ..()
-	atom_flags |= NOREACT
 	syringes = new
 	known_reagents = list("inaprovaline"="Inaprovaline","anti_toxin"="Dylovene")
 	processed_reagents = new
-	create_reagents(max_volume)
+	create_reagents(max_volume, REAGENT_HOLDER_NO_REACT)
 	synth = new (list(src),0)
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/detach()
@@ -33,7 +32,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/critfail()
 	..()
-	atom_flags &= ~NOREACT
+	// atom_flags &= ~NOREACT
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/get_equip_info()
@@ -83,7 +82,7 @@
 				if(M)
 					S.icon_state = initial(S.icon_state)
 					S.icon = initial(S.icon)
-					S.reagents.trans_to_mob(M, S.reagents.total_volume, CHEM_INJECT)
+					S.reagents.trans_to_mob(M, S.reagents.total_volume, REAGENT_APPLY_INJECT)
 					M.take_random_targeted_damage(brute = 2)
 					S.visible_message("<span class=\"attack\"> [M] was hit by the syringe!</span>")
 					break
@@ -133,10 +132,10 @@
 	if(top_filter.get("purge_reagent"))
 		var/reagent = top_filter.get("purge_reagent")
 		if(reagent)
-			reagents.del_reagent(reagent)
+			reagents.remove_reagent(reagent)
 		return
 	if(top_filter.get("purge_all"))
-		reagents.clear_reagents()
+		reagents.clear()
 		return
 	return
 
@@ -192,9 +191,10 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/proc/get_current_reagents()
 	var/output
-	for(var/datum/reagent/R in reagents.reagent_list)
-		if(R.volume > 0)
-			output += "[R]: [round(R.volume,0.001)] - <a href=\"?src=\ref[src];purge_reagent=[R.id]\">Purge Reagent</a><br />"
+	for(var/datum/reagent/R in reagents.lazy_expensive_dangerous_reagent_list())
+		var/volume = reagents.reagent_volumes[R.id]
+		if(volume > 0)
+			output += "[R]: [round(volume,0.001)] - <a href=\"?src=\ref[src];purge_reagent=[R.id]\">Purge Reagent</a><br />"
 	if(output)
 		output += "Total: [round(reagents.total_volume,0.001)]/[reagents.maximum_volume] - <a href=\"?src=\ref[src];purge_all=1\">Purge All</a>"
 	return output || "None"
@@ -229,7 +229,7 @@
 		occupant_message("<span class=\"alert\">No reagent info gained from [A].</span>")
 		return 0
 	occupant_message("Analyzing reagents...")
-	for(var/datum/reagent/R in A.reagents.reagent_list)
+	for(var/datum/reagent/R in A.reagents.lazy_expensive_dangerous_reagent_list())
 		if(R.id in known_reagents)
 			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
 		else if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))

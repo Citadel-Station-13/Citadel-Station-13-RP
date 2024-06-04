@@ -32,7 +32,6 @@
 	species_flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
 	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
-	reagent_tag = IS_XENOS
 
 	blood_color = "#05EE05"
 	flesh_color = "#282846"

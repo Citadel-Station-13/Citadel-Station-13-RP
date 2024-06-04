@@ -90,9 +90,6 @@
 		return
 	if (user.stat)
 		return
-	if(!istype(target) && !ismob(target))
-		return
-
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 
@@ -103,8 +100,8 @@
 		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
 		if(!isnull(target.reagents))
 			var/dat = ""
-			if(target.reagents.reagent_list.len > 0)
-				for (var/datum/reagent/R in target.reagents.reagent_list)
+			if(length(target.reagents.reagent_volumes) > 0)
+				for (var/datum/reagent/R in target.reagents.lazy_expensive_dangerous_reagent_list())
 					dat += "\n \t <span class='notice'>[R]</span>"
 			if(dat)
 				to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
@@ -115,24 +112,6 @@
 				analyze_gases(target, user)
 			else
 				to_chat(user, "<span class='notice'>No significant chemical agents smelled in [target].</span>")
-	return
-
-
-//Delivery
-/*
-/obj/item/storage/bag/borgdelivery
-	name = "fetching storage"
-	desc = "Fetch the thing!"
-	icon = 'icons/mob/dogborg_vr.dmi'
-	icon_state = "dbag"
-	w_class = WEIGHT_CLASS_HUGE
-	max_single_weight_class = WEIGHT_CLASS_SMALL
-	max_combined_w_class = WEIGHT_CLASS_SMALL
-	max_items = 1
-	collection_mode = 0
-	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear)
-*/
 
 /obj/item/shockpaddles/robot/hound
 	name = "paws of life"

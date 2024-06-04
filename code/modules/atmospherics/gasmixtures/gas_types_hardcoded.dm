@@ -112,7 +112,7 @@
 	//taste_mult = 2
 	//lore_text = "A caustic substance commonly used in fertilizer or household cleaners."
 	//color = "#404030"
-	//metabolism = REM * 0.5
+	//bloodstream_metabolism_multiplier = 0.5
 	//overdose = 5
 
 /datum/gas/xenon

@@ -186,7 +186,7 @@
 	update_appearance()
 	if(do_mob(src, victim, 30))
 		if(t == 1)
-			reagent_glass.reagents.trans_to_mob(victim, injection_amount, CHEM_INJECT)
+			reagent_glass.reagents.trans_to_mob(victim, injection_amount, REAGENT_APPLY_INJECT)
 		else
 			victim.reagents.add_reagent(t, injection_amount)
 		visible_message(SPAN_WARNING("[src] injects [victim] with the syringe!"))
@@ -527,7 +527,7 @@
 
 	// If they're injured, we're using a beaker, and they don't have on of the chems in the beaker.
 	if(reagent_glass && use_beaker && ((victim.getBruteLoss() >= heal_threshold) || (victim.getToxLoss() >= heal_threshold) || (victim.getToxLoss() >= heal_threshold) || (victim.getOxyLoss() >= (heal_threshold + 15))))
-		for(var/datum/reagent/R in reagent_glass.reagents.reagent_list)
+		for(var/datum/reagent/R in reagent_glass.reagents.lazy_expensive_dangerous_reagent_list())
 			if(!victim.reagents.has_reagent(R))
 				return 1
 			continue

@@ -9,7 +9,6 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	density = 1
 	climb_allowed = TRUE
 	depth_level = 20
-	atom_flags = OPENCONTAINER
 	// todo: temporary, as this is unbuildable
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	//copypaste sorry
@@ -22,7 +21,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/janitorialcart/Initialize(mapload, ...)
 	. = ..()
-	create_reagents(300)
+	create_reagents(300, REAGENT_HOLDER_CONSIDERED_OPEN)
 
 /obj/structure/janitorialcart/examine(mob/user, dist)
 	. = ..()
@@ -176,7 +175,6 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	icon_state = "pussywagon"
 	anchored = 1
 	density = 1
-	atom_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null
@@ -184,7 +182,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/bed/chair/janicart/Initialize(mapload)
 	. = ..()
-	create_reagents(300)
+	create_reagents(300, REAGENT_HOLDER_CONSIDERED_OPEN)
 	update_layer()
 
 /obj/structure/bed/chair/janicart/examine(mob/user, dist)
