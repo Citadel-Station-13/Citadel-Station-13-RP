@@ -5,6 +5,8 @@
  * An individual post, that can contain text, a photo, and a set of comments.
  */
 /datum/news_post
+	/// database UID int **as string**
+	var/id
 	/// flags
 	var/news_post_flags = NONE
 

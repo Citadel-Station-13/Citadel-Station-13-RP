@@ -3055,7 +3055,6 @@
 #include "code\modules\journalism\network\news_cursor.dm"
 #include "code\modules\journalism\network\news_network.dm"
 #include "code\modules\journalism\network\news_post.dm"
-#include "code\modules\journalism\network\news_storage.dm"
 #include "code\modules\journalism\network\news_uplink.dm"
 #include "code\modules\keybindings\bindings_atom.dm"
 #include "code\modules\keybindings\bindings_client.dm"

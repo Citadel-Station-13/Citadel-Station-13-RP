@@ -27,14 +27,28 @@ DEFINE_BITFIELD(news_comment_flags, list(
 
 /// write + comment on your own posts/channels, and non-locked others' posts/channels.
 #define JOURNALISM_USERMODE_WRITE (1<<0)
+/// make new channels
+#define JOURNALISM_USERMODE_CREATE (1<<1)
+
+/// write in other people's channels, even if unlocked
+#define JOURNALISM_USERMODE_CONTRIBUTE (1<<2)
+/// comment on other people's posts
+#define JOURNALISM_USERMODE_COMMENTATE (1<<3)
 /// bypass locking on posts/channels
-#define JOURNALISM_USERMODE_BYPASS (1<<1)
+#define JOURNALISM_USERMODE_ARBITRATE (1<<4)
+
 /// hit stuff with D-notices, and see stuff hit with D-notices
-#define JOURNALISM_USERMODE_CENSOR (1<<2)
+///
+/// * This is persistent.
+#define JOURNALISM_USERMODE_CENSOR (1<<5)
 /// delete stuff completely
-#define JOURNALISM_USERMODE_DELETE (1<<3)
+///
+/// * This is persistent.
+#define JOURNALISM_USERMODE_DELETE (1<<6)
 /// see deleted content
-#define JOURNALISM_USERMODE_AUDIT (1<<4)
+///
+/// * This is persistent.
+#define JOURNALISM_USERMODE_AUDIT (1<<7)
 
 //*                      news_cursor interface: global permissions flags                                    *//
 //* this is for permissions to control an uplink datum, which is a context of access to the actual networks *//
@@ -54,16 +68,8 @@ DEFINE_BITFIELD(news_comment_flags, list(
 /// max channels per person, per network
 #define JOURNALISM_CHANNEL_INDIVIDUAL_LIMIT (10)
 /// cooldown before making channels
-#define JOURNALISM_CHANNEL_INDIVIDUAL_COOLDOWN (30 MINUTES)
+#define JOURNALISM_CHANNEL_INDIVIDUAL_COOLDOWN (10 MINUTES)
 /// cooldown before making posts
 #define JOURNALISM_POST_INDIVIDUAL_COOLDOWN (0.5 MINUTES)
 /// cooldown before making comments
 #define JOURNALISM_COMMENT_INDIVIDUAL_COOLDOWN (10 SECONDS)
-
-//* network ids - THESE MUST NOT CHANGE, THEY ARE DATABASE STORED.
-
-#define JOURNALISM_NETWORK_ID_NT_GENERAL 1
-#define JOURNALISM_NETWORK_ID_NT_PRIVILEGED 2
-#define JOURNALISM_NETWORK_ID_NT_OFFICIAL 3
-#define JOURNALISM_NETWORK_ID_OCULUM_WRITERS 4
-#define JOURNALISM_NETWORK_ID_OCULUM_PRIVILEGED 5

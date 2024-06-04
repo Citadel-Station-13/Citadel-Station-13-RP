@@ -35,7 +35,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%journalism_networks` (
   -- only for non-internal networks --
   `creator_player` INT(11) NULL,
   `created_date` DATETIME NOT NULL DEFAULT Now(),
-  `updated_date` DATETIME NOT NULL DEFAULT Now(),
   PRIMARY KEY (`id`),
   INDEX(`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
