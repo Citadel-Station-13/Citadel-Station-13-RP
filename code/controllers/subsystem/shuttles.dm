@@ -80,9 +80,9 @@ SUBSYSTEM_DEF(shuttle)
 /**
  * @return /datum/shuttle
  */
-/datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/templatelike, shuttle_type_override)
+/datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/templatelike, shuttle_type_override, list/datum/map_injection/map_injections)
 	var/datum/shuttle_template/template = fetch_template(templatelike)
-	var/datum/shuttle/created = template.instance(shuttle_type_override)
+	var/datum/shuttle/created = template.instance(shuttle_type_override, map_injections)
 	register_shuttle(created)
 	return created
 

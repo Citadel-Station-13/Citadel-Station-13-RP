@@ -68,7 +68,7 @@
  * Do not directly use. Use create_shuttle() on SSshuttles!
  * This will not automatically register the shuttle with the subsystem.
  */
-/datum/shuttle_template/proc/instance(shuttle_type = /datum/shuttle)
+/datum/shuttle_template/proc/instance(shuttle_type = /datum/shuttle, list/datum/map_injection/map_injections)
 	RETURN_TYPE(/datum/shuttle)
 
 	var/datum/dmm_parsed/parsed_map = src.parsed_map
@@ -90,6 +90,9 @@
 	)
 
 	// load into reservation
+	#warn this is context. also, fix the load stuff too.
+	#warn inject middleware int ocontext
+	#warn generate mangling id
 	var/list/loaded_bounds = parsed_map.load(
 		reservation.bottom_left_coords[1] + 1,
 		reservation.bottom_left_coords[2] + 1,
