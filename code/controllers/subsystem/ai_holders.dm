@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(ai_holders)
 	var/now_index_raw = bucket_head_index + round(DS2TICKS(elapsed))
 	// go through buckets
 	for(buckets_processed in 0 to buckets_needing_processed)
-		var/bucket_offset = (head_index + buckets_processed) % bucket_amount
+		var/bucket_offset = ((head_index + buckets_processed) % bucket_amount) + 1
 		var/datum/ai_holder/being_processed
 		while((being_processed = buckets[bucket_offset]))
 			being_processed.tick(++being_processed.ticking_cycles)
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(ai_holders)
 				being_processed.ticking_previous.ticking_next = being_processed.ticking_next
 			// insert; we now set its ticking_(next|previous)
 			// note that we don't do catchup
-			var/inject_offset = (now_index_raw + round(DS2TICKS(being_processed.ticking))) % bucket_amount
+			var/inject_offset = ((now_index_raw + round(DS2TICKS(being_processed.ticking))) % bucket_amount) + 1
 			if(buckets[inject_offset])
 				var/datum/ai_holder/being_injected = buckets[inject_offset]
 				being_processed.ticking_next = being_injected
@@ -96,14 +96,14 @@ SUBSYSTEM_DEF(ai_holders)
 			// otherwise we'd go forwards 1 and drop this bucket
 			break
 
-	bucket_head_index = (bucket_head_index + buckets_processed) % length(buckets)
+	bucket_head_index = ((bucket_head_index + buckets_processed) % length(buckets)) + 1
 	bucket_head_time = bucket_head_time + TICKS2DS(buckets_processed)
 
 /datum/controller/subsystem/ai_holders/proc/bucket_insert(datum/ai_holder/holder)
 	ASSERT(holder.ticking <= AI_SCHEDULING_LIMIT)
 
 	var/new_index = round(bucket_head_index + ((world.time - bucket_head_time) * 0.1 * world.fps) + rand(0, holder.ticking * 0.1 * world.fps))
-	new_index = new_index % length(buckets)
+	new_index = (new_index % length(buckets)) + 1
 	var/datum/ai_holder/existing = buckets[new_index]
 	if(existing)
 		existing.ticking_next.ticking_previous = holder
@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(ai_holders)
 			holder.ticking_previous = null
 			continue
 		var/new_index = bucket_head_index + rand(0, round(holder.ticking * 0.1 * world.fps))
-		new_index = new_index % bucket_amount
+		new_index = (new_index % bucket_amount) + 1
 		var/datum/ai_holder/existing = buckets[new_index]
 		if(existing)
 			existing.ticking_next.ticking_previous = holder

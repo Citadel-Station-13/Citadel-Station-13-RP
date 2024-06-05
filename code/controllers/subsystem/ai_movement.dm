@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(ai_movement)
 	var/now_index_raw = bucket_head_index + round(DS2TICKS(elapsed))
 	// go through buckets
 	for(buckets_processed in 0 to buckets_needing_processed)
-		var/bucket_offset = (head_index + buckets_processed) % bucket_amount
+		var/bucket_offset = ((head_index + buckets_processed) % bucket_amount) + 1
 		var/datum/ai_holder/being_processed
 		while((being_processed = buckets[bucket_offset]))
 			var/reschedule_delay = being_processed.move(++being_processed.movement_cycle)
@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(ai_movement)
 			if(reschedule_delay)
 				// insert; we now set its ticking_(next|previous)
 				// note that we don't do catchup
-				var/inject_offset = (now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount
+				var/inject_offset = ((now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount) + 1
 				if(buckets[inject_offset])
 					var/datum/ai_holder/being_injected = buckets[inject_offset]
 					being_processed.ticking_next = being_injected
@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(ai_movement)
 			// otherwise we'd go forwards 1 and drop this bucket
 			break
 
-	bucket_head_index = (bucket_head_index + buckets_processed) % length(buckets)
+	bucket_head_index = ((bucket_head_index + buckets_processed) % length(buckets)) + 1
 	bucket_head_time = bucket_head_time + TICKS2DS(buckets_processed)
 
 /**
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(ai_movement)
  */
 /datum/controller/subsystem/ai_movement/proc/rebuild()
 	bucket_head_time = world.time
-	bucket_head_index = 1
+	bucket_head_index = 0
 	bucket_fps = world.fps
 	// because early-calling ais isn't harmful, let's just distribute them over a bit of time
 	shuffle_inplace(moving_ais)
@@ -177,10 +177,9 @@ SUBSYSTEM_DEF(ai_movement)
 	// if the randomization happened mid run it might mess with mob movement timing,
 	// as mob movement is not tolerant to 'early' fires.
 	var/balanced = allow_load_balancing? delay + rand(load_balancing_low, load_balancing_high) : delay
-	var/raw_head_index = bucket_head_index + DS2TICKS(world.time - bucket_head_time)
-	var/bucket = raw_head_index + round(max(0, DS2TICKS(balanced)))
+	var/bucket = round(bucket_head_index + max(0, DS2TICKS(balanced + (world.time - bucket_head_time))))
 	// modulo it by total buckets
-	bucket = (bucket % length(buckets))
+	bucket = (bucket % length(buckets)) + 1
 	// register in bucket
 	var/datum/ai_holder/existing = buckets[bucket]
 	buckets[bucket] = holder

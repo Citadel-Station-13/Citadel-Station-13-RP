@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 	var/head_index = bucket_head_index
 	// go through buckets
 	for(buckets_processed in 0 to buckets_needing_processed)
-		var/bucket_offset = (head_index + buckets_processed) % bucket_amount
+		var/bucket_offset = ((head_index + buckets_processed) % bucket_amount) + 1
 		var/datum/ai_callback/being_processed
 		while((being_processed = buckets[bucket_offset]))
 			being_processed.invoke()
@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 			// otherwise we'd go forwards 1 and drop this bucket
 			break
 
-	bucket_head_index = (bucket_head_index + buckets_processed) % length(buckets)
+	bucket_head_index = ((bucket_head_index + buckets_processed) % length(buckets)) + 1
 	bucket_head_time = bucket_head_time + TICKS2DS(buckets_processed)
 
 /datum/controller/subsystem/ai_scheduling/Recover()
@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 	// determine bucket without wrapping
 	var/raw_head_index = bucket_head_index + round(DS2TICKS(world.time - bucket_head_time))
 	// modulo it by total buckets to wrap
-	var/bucket = raw_head_index % length(buckets)
+	var/bucket = (raw_head_index % length(buckets)) + 1
 	// inject
 	var/datum/ai_callback/existing = buckets[bucket]
 	if(existing)
@@ -94,7 +94,7 @@ SUBSYSTEM_DEF(ai_scheduling)
  */
 /datum/controller/subsystem/ai_scheduling/proc/rebuild()
 	bucket_head_time = world.time
-	bucket_head_index = 1
+	bucket_head_index = 0
 	bucket_fps = world.fps
 	// we don't give a crap about recovered scheduled events; shrimply not our issue
 	// if you change ticklag midgame all AIs should be rescheduling anyways.
