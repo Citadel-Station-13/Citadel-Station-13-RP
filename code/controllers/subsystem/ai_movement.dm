@@ -2,11 +2,11 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /// if we fall behind this much, we reset buckets
-#define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_LIMIT
+#define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_TOLERANCE
+/// this many buckets are kept
+#define BUCKET_AMOUNT ((AI_SCHEDULING_TOLERANCE + AI_SCHEDULING_LIMIT) * 0.1 * world.fps)
 /// this much time is allowed to be in buckets (scheduling limit)
 #define BUCKET_INTERVAL AI_SCHEDULING_LIMIT
-/// this many buckets are kept
-#define BUCKET_AMOUNT round(BUCKET_INTERVAL * 0.1 * world.fps)
 /// distribute ais over this many seconds during resets.
 #define BUCKET_RESET_DISTRIBUTION (3 SECONDS)
 
@@ -17,28 +17,33 @@ SUBSYSTEM_DEF(ai_movement)
 	name = "AI Movement"
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_MOVEMENT
+	wait = 0
 
 	/// ais that are moving using a movement handler right now
 	var/list/datum/ai_holder/moving_ais
-	/// tick buckets
-	var/list/datum/ai_holder/buckets
-	/// the tickrate our buckets were designed for
-	var/bucket_fps
-	/// current bucket position
-	var/bucket_index
-	/// last world.time we ticked
+	/// rolling bucket list; these hold the head node of linked ai_holders.
 	///
-	/// or more practically,
-	/// the world.time of bucket_index
-	var/bucket_time
+	/// the head bucket is the last one we processed
+	/// after subsystem ticks, if it isn't interrupted, the head bucket
+	/// should be empty.
+	///
+	/// placing stuff onto head bucket = run immediately
+	/// placing stuff onto next bucket = run the tick after head
+	var/tmp/list/buckets
+	/// world.time of bucket head
+	var/bucket_head_time
+	/// index of bucket head
+	var/bucket_head_index
+	/// world.fps buckets were made for
+	var/bucket_fps
 
 	/// pathfinder instances by type
 	var/list/ai_pathfinders
 
 /datum/controller/subsystem/ai_movement/Initialize()
-	init_ai_pathfinders()
 	moving_ais = list()
 	rebuild()
+	init_ai_pathfinders()
 	return ..()
 
 /datum/controller/subsystem/ai_movement/on_ticklag_changed(old_ticklag, new_ticklag)
@@ -52,84 +57,77 @@ SUBSYSTEM_DEF(ai_movement)
 			continue
 		ai_pathfinders[path] = new path
 
-// todo: need some eyes on this to make sure it's working fine and with
-//       the least amount of overhead possible.
 /datum/controller/subsystem/ai_movement/fire()
-	// get local references for speed
-	var/list/buckets = src.buckets
-	// if we're too far behind, reset; we don't have a second queue unlike timers
-	if((world.time - bucket_time) > BUCKET_CATASTROPHIC_LAG_THRESHOLD)
+	if(bucket_fps != world.fps)
+		subsystem_log("rebuilding buckets - world.fps [world.fps] != [bucket_fps]")
 		rebuild()
-		stack_trace("ai_movement subsystem rebuilt buckets due to running too far behind.")
 		return
-	// setup loop
-	var/processed_buckets
-	var/processing_index = bucket_index
-	var/unwrapped_index_of_now = bucket_index + round(DS2TICKS(world.time - bucket_time))
+	var/elapsed = world.time - bucket_head_time
+	if((elapsed) > BUCKET_CATASTROPHIC_LAG_THRESHOLD)
+		subsystem_log("rebuilding buckets - lagged too far behind")
+		rebuild()
+		return
+	var/buckets_needing_processed = round(elapsed * 0.1 * world.fps)
+	var/buckets_processed
 	var/bucket_amount = length(buckets)
-	var/processed_buckets = 0
-	for(var/iter in 1 to round(DS2TICKS(world.time - bucket_time)))
-		var/datum/ai_holder/head = buckets[processing_index]
-		while(head)
+	var/head_index = bucket_head_index
+	var/now_index_raw = bucket_head_index + round(DS2TICKS(elapsed))
+	// cache for speed
+	var/list/buckets = src.buckets
+	// go through buckets
+	for(buckets_processed in 0 to buckets_needing_processed)
+		var/bucket_offset = (head_index + buckets_processed) % bucket_amount
+		var/datum/ai_holder/being_processed
+		while((being_processed = buckets[bucket_offset]))
+			var/reschedule_delay = being_processed.move(++being_processed.movement_cycle)
+			// eject; we don't change being_processed.ticking_(next|previous)
+			if(being_processed.ticking_next == being_processed)
+				buckets[bucket_offset] = null
+			else
+				buckets[bucket_offset] = being_processed.ticking_next
+				being_processed.ticking_next.ticking_previous = being_processed.ticking_previous
+				being_processed.ticking_previous.ticking_next = being_processed.ticking_next
+
+			if(reschedule_delay)
+				// insert; we now set its ticking_(next|previous)
+				// note that we don't do catchup
+				var/inject_offset = (now_index_raw + round(DS2TICKS(reschedule_delay))) % bucket_amount
+				if(buckets[inject_offset])
+					var/datum/ai_holder/being_injected = buckets[inject_offset]
+					being_processed.ticking_next = being_injected
+					being_processed.ticking_previous = being_injected.ticking_previous
+					being_processed.ticking_previous.ticking_next = being_processed
+					being_processed.ticking_next.ticking_previous = being_processed
+				else
+					buckets[inject_offset] = being_processed
+					being_processed.ticking_next = being_processed.ticking_previous = being_processed
+				being_processed.movement_bucket_position = inject_offset
+			else
+				// we were already evicted so mark as such
+				being_processed.movement_bucket_position = null
+				unregister_moving(being_processed)
 			if(MC_TICK_CHECK)
 				break
-			// eject from bucket
-			if(head.movement_bucket_next == head)
-				// ourselves = we're the only one
-				buckets[processing_index] = null
-			else
-				// there's another
-				buckets[processing_index] = head.movement_bucket_next
-				// stitch those two together
-				head.movement_bucket_next.movement_bucket_prev = head.movement_bucket_prev
-				head.movement_bucket_prev.movement_bucket_next = head.movement_bucket_next
-			var/reschedule_delay = head.move(++head.movement_cycle)
-			if(reschedule_delay)
-				// re-schedule to the necessary bucket
-				var/next_bucket = (DS2TICKS(reschedule_delay) + unwrapped_index_of_now) % bucket_amount
-				// insert
-				if(isnull(buckets[next_bucket]))
-					// we're the only one
-					head.movement_bucket_next = head.movement_bucket_prev = head
-				else
-					// there's another
-					var/datum/ai_holder/existing = buckets[next_bucket]
-					buckets[next_bucket] = head
-					head.movement_bucket_next = existing
-					head.movement_bucket_prev = existing.movement_bucket_prev
-					head.movement_bucket_next.movement_bucket_prev = head
-					head.movement_bucket_prev.movement_bucket_next = head
-				head.movement_bucket_position = next_bucket
-			else
-				// eject entirely
-				head.movement_ticking = FALSE
-				head.movement_bucket_next = head.movement_bucket_prev = head.movement_bucket_position = null
-				head.movement_cycle = 0
-
-		// if we successfully moved past..
-		if(state != SS_PAUSING)
-			processing_index += 1
-			if(processing_index > bucket_amount)
-				processing_index = 1
-			processed_buckets += 1
-		else
+		if(state != SS_RUNNING)
+			// got tick check'd; break so we stay on this bucket for now
+			// otherwise we'd go forwards 1 and drop this bucket
 			break
 
-	bucket_time += TICKS2DS(processed_buckets)
-	bucket_index = processing_index
+	bucket_head_index = (bucket_head_index + buckets_processed) % length(buckets)
+	bucket_head_time = bucket_head_time + TICKS2DS(buckets_processed)
 
 /**
  * perform error checking
  * rebuild all buckets
  */
 /datum/controller/subsystem/ai_movement/proc/rebuild()
+	bucket_head_time = world.time
+	bucket_head_index = 1
 	bucket_fps = world.fps
-	bucket_index = 1
-	bucket_time = world.time
 	// because early-calling ais isn't harmful, let's just distribute them over a bit of time
 	shuffle_inplace(moving_ais)
 	// if there's more ais than distribution threshold
-	if(length(moving_ais) > round((BUCKET_RESET_DISTRIBUTION / 10) * world.fps - 1))
+	if(length(moving_ais) > round(DS2TICKS(BUCKET_RESET_DISTRIBUTION)))
 		buckets = new /list(BUCKET_AMOUNT)
 		var/position = 1
 		for(var/datum/ai_holder/holder as anything in moving_ais)
@@ -147,6 +145,7 @@ SUBSYSTEM_DEF(ai_movement)
 			else
 				buckets[position] = holder
 				holder.movement_bucket_next = holder.movement_bucket_prev = holder
+			holder.movement_bucket_position = position
 			++position
 			if(position > length(buckets))
 				position = 1
@@ -154,6 +153,10 @@ SUBSYSTEM_DEF(ai_movement)
 	else
 		buckets = moving_ais.Copy()
 		buckets.len = BUCKET_AMOUNT
+		for(var/i in 1 to length(moving_ais))
+			var/datum/ai_holder/holder = buckets[i]
+			holder.movement_bucket_next = holder.movement_bucket_prev = null
+			holder.movement_bucket_position = i
 
 /**
  * start moving a holder
@@ -173,8 +176,9 @@ SUBSYSTEM_DEF(ai_movement)
 	// the important thing is this can only happen at the start,
 	// if the randomization happened mid run it might mess with mob movement timing,
 	// as mob movement is not tolerant to 'early' fires.
-	var/balancing = allow_load_balancing? min(rand(load_balancing_low, load_balancing_high), BUCKET_INTERVAL - delay) : delay
-	var/bucket = bucket_index + round(max(1, (delay + balancing) * 0.1 * world.fps) + DS2TICKS(world.time - bucket_time))
+	var/balanced = allow_load_balancing? delay + rand(load_balancing_low, load_balancing_high) : delay
+	var/raw_head_index = bucket_head_index + DS2TICKS(world.time - bucket_head_time)
+	var/bucket = raw_head_index + round(max(0, DS2TICKS(balanced)))
 	// modulo it by total buckets
 	bucket = (bucket % length(buckets))
 	// register in bucket
@@ -188,22 +192,25 @@ SUBSYSTEM_DEF(ai_movement)
 		existing.movement_bucket_prev = holder
 		holder.movement_bucket_prev.movement_bucket_next = holder
 	holder.movement_bucket_position = bucket
+	holder.movement_ticking = TRUE
+	holder.movement_cycle = 0
 	return TRUE
 
 /datum/controller/subsystem/ai_movement/proc/unregister_moving(datum/ai_holder/holder)
 	if(!holder.movement_ticking)
 		return FALSE
 	var/datum/ai_holder/next
-	if(holder.movement_bucket_next != holder)
-		// if we're not linking to ourselves, eject us from the linked list
-		next = holder.movement_bucket_next
-		next.movement_bucket_prev = holder.movement_bucket_prev
-		holder.movement_bucket_prev.movement_bucket_next = next
-		if(buckets[holder.movement_bucket_position] == holder)
+	if(holder.movement_bucket_position)
+		if(holder.movement_bucket_next != holder)
+			// if we're not linking to ourselves, eject us from the linked list
+			next = holder.movement_bucket_next
+			next.movement_bucket_prev = holder.movement_bucket_prev
+			holder.movement_bucket_prev.movement_bucket_next = next
+			if(buckets[holder.movement_bucket_position] == holder)
+				buckets[holder.movement_bucket_position] = next
+		else
+			// if we are linking to ourselves, we must be the head
 			buckets[holder.movement_bucket_position] = next
-	else
-		// if we are linking to ourselves, we must be the head
-		buckets[holder.movement_bucket_position] = next
 	holder.movement_bucket_prev = holder.movement_bucket_next = holder.movement_bucket_position = null
 	holder.movement_ticking = FALSE
 	holder.movement_cycle = 0

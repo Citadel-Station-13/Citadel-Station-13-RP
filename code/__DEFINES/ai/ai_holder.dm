@@ -16,4 +16,4 @@
 /// AI scheduling bucket limit
 ///
 /// 5 seconds of tolerance is allowed before AI callbacks are dropped.
-#define AI_SCHEDULING_BUCKET_LIMIT (15 SECONDS)
+#define AI_SCHEDULING_TOLERANCE (5 SECONDS)

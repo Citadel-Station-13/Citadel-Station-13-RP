@@ -6,7 +6,7 @@
 	var/datum/ai_holder/ticking_next
 	/// what holder is running before us
 	var/datum/ai_holder/ticking_previous
-	/// ticking registered; null or number for delay
+	/// ticking registered; null or number for delay in deciseconds
 	var/ticking
 	/// cycles ticked; set back to 0 when ticking is stopped.
 	var/ticking_cycles

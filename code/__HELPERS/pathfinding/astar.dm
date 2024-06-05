@@ -1,9 +1,8 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#warn TEST ASTAR CHANGES
 /// visualization; obviously slow as hell
-// #define ASTAR_DEBUGGING
+#define ASTAR_DEBUGGING
 
 #ifdef ASTAR_DEBUGGING
 

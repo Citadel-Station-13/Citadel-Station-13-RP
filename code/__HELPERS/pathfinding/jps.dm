@@ -1,11 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-#warn TEST JPS CHANGES
 /// visualization; obviously slow as hell
 /// JPS visualization is currently not nearly as perfect as A*'s.
 /// notably is sometimes marks stuff closed that isn't because of the weird backtracking stuff I put in.
-// #define JPS_DEBUGGING
+#define JPS_DEBUGGING
 
 #ifdef JPS_DEBUGGING
 

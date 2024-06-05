@@ -2,9 +2,11 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /// if we fall behind this much, we reset buckets
-#define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_LIMIT
+#define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_TOLERANCE
 /// this many buckets are kept
-#define BUCKET_AMOUNT (AI_SCHEDULING_BUCKET_LIMIT / world.tick_lag)
+#define BUCKET_AMOUNT ((AI_SCHEDULING_TOLERANCE + AI_SCHEDULING_LIMIT) / world.tick_lag)
+
+#warn transfer over
 
 /**
  * Handles ticking AI holders
@@ -13,6 +15,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 	name = "AI Holders"
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_SCHEDULING
+	wait = 0
 
 	/// rolling bucket list; these hold the head node of linked /datum/ai_callback's
 	var/tmp/list/buckets
