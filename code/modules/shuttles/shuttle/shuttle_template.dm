@@ -68,7 +68,7 @@
  * Do not directly use. Use create_shuttle() on SSshuttles!
  * This will not automatically register the shuttle with the subsystem.
  */
-/datum/shuttle_template/proc/instance(shuttle_type = /datum/shuttle, list/datum/map_injection/map_injections)
+/datum/shuttle_template/proc/instance(list/datum/map_injection/map_injections)
 	RETURN_TYPE(/datum/shuttle)
 
 	var/datum/dmm_parsed/parsed_map = src.parsed_map

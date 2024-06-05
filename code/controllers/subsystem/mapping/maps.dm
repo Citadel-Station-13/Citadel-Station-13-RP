@@ -181,8 +181,10 @@
 	loaded_maps += instance
 	this_batch += instance
 
+	// todo: should this be here? it makes sense but uh, really?
 	instance.on_loaded_immediate()
 
+	// todo: should this be here? and not in load_map_impl after everything's done?
 	// rebuild multiz
 	// this is for the lookups, which must be done immediately, as generation/hooks might require it.
 	rebuild_verticality()

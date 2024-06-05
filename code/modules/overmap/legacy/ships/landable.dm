@@ -23,6 +23,12 @@
 	#warn impl
 
 /**
+ * checks if we've landed
+ */
+/obj/overmap/entity/visitable/ship/landable/proc/is_landed()
+	#warn impl
+
+/**
  * called when our shuttle is attempting to move to freeflight
  */
 /obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_to_freeflight()
@@ -140,21 +146,20 @@
 		forceMove(get_turf(loc))
 		unhalt()
 
-/obj/overmap/entity/visitable/ship/landable/get_landed_info()
-	switch(status)
-		if(SHIP_STATUS_LANDED)
-			var/obj/overmap/entity/visitable/location = loc
-			if(istype(loc, /obj/overmap/entity/visitable/sector))
-				return "Landed on \the [location.name]. Use secondary thrust to get clear before activating primary engines."
-			if(istype(loc, /obj/overmap/entity/visitable/ship))
-				return "Docked with \the [location.name]. Use secondary thrust to get clear before activating primary engines."
-			return "Docked with an unknown object."
-		if(SHIP_STATUS_TRANSIT)
-			return "Maneuvering under secondary thrust."
-		if(SHIP_STATUS_OVERMAP)
-			return "In open space."
-
 #warn above
+
+/obj/overmap/entity/visitable/ship/landable/get_landed_info()
+	if(shuttle_controller.is_in_transit())
+		return "Maneuvering under secondary thrust."
+	if(is_in_freeflight())
+		return "In open space."
+	if(is_landed())
+		var/obj/overmap/entity/visitable/location = loc
+		if(istype(loc, /obj/overmap/entity/visitable/sector))
+			return "Landed on \the [location.name]. Use secondary thrust to get clear before activating primary engines."
+		if(istype(loc, /obj/overmap/entity/visitable/ship))
+			return "Docked with \the [location.name]. Use secondary thrust to get clear before activating primary engines."
+		return "Docked with an unknown object."
 
 /obj/overmap/entity/visitable/ship/landable/can_burn()
 	return is_in_freeflight() && ..()

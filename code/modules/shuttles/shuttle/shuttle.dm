@@ -112,6 +112,12 @@
 	//? This is in shuttle, not controller, because
 	//? we cannot afford a memory leak in transit and therefore
 	//? shuttle-side will ensure things are cleaned up as needed.
+	//?
+	//? Note that our 'transit' is physically managing transit
+	//? and the dock / reservation.
+	//?
+	//? Shuttle controller 'transit' is the actual act of moving from
+	//? one place to another.
 
 	/// Shuttle is in transit
 	var/in_transit = FALSE

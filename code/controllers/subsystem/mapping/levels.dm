@@ -362,7 +362,7 @@
 	if(rebuild)
 		rebuild_verticality()
 		rebuild_transitions()
-		rebuild_level_multiz(list(real_z), TRUE, TRUE)
+		rebuild_level_multiz(list(instance.z_index), TRUE, TRUE)
 
 /**
  * destroys a loaded level and frees it for later usage

@@ -5,6 +5,8 @@
  * hooks fired off when shuttles takeoff/landing
  *
  * Remember: **If you block an operation, you must unblock it later!**
+ *
+ * * this is used for both shuttle docks and the shuttles
  */
 /datum/shuttle_hook
 	/// Player-facing name for what we are (what they're waiting on)
@@ -18,34 +20,30 @@
 	///
 	/// this is safe to reference like this because shuttles / docks never are in more than one dock / hosting more than one shuttle
 	/// at the same time.
+	///
+	/// we also only need one reference for this because it's impossible for a shuttle to fire more than one event at the same time as another.
 	var/datum/event_args/shuttle/blocking
 
 /datum/shuttle_hook/Destroy()
 	release()
 	return ..()
 
-/datum/shuttle_hook/proc/landing(datum/event_args/shuttle/movement/landing/packet)
+/**
+ * called when a translation event comes in
+ *
+ * * only fired shuttle-side, not dock-side
+ * * cannot be blocked.
+ */
+/datum/shuttle_hook/proc/on_translation_event(datum/event_args/shuttle/translation/event)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/takeoff(datum/event_args/shuttle/movement/takeoff/packet)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/datum/shuttle_hook/proc/docking(datum/event_args/shuttle/dock/docking/packet)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/datum/shuttle_hook/proc/undocking(datum/event_args/shuttle/dock/undocking/packet)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/datum/shuttle_hook/proc/post_docking(datum/event_args/shuttle/dock/docking/packet)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/datum/shuttle_hook/proc/post_undocking(datum/event_args/shuttle/dock/undocking/packet)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/datum/shuttle_hook/proc/post_landing(datum/event_args/shuttle/movement/landing/packet)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/datum/shuttle_hook/proc/post_takeoff(datum/event_args/shuttle/movement/takeoff/packet)
+/**
+ * called when a docking event comes in
+ *
+ * * fired shuttle-side and dock-side
+ * * some events ('post-xyz') cannot be blocked.
+ */
+/datum/shuttle_hook/proc/on_dock_event(datum/event_args/shuttle/docking/event)
 	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/shuttle_hook/proc/release()
@@ -59,6 +57,9 @@
 		return FALSE
 	blocking.update(src, reason_or_reasons)
 	return TRUE
+
+/datum/shuttle_hook/proc/block(datum/event_args/shuttle/event, list/reason_or_reasons, dangerous)
+	return event.block(src, reason_or_reasons, dangerous)
 
 /datum/shuttle_hook/proc/is_blocking()
 	return !isnull(blocking)

@@ -11,11 +11,6 @@
 	/// our host shuttle
 	var/datum/shuttle/shuttle
 
-	//* Control
-	/// does the UI even allow control?
-	/// for things like emergency shuttles, this would be FALSE
-	var/controllable = FALSE
-
 	//* Blocking
 	/// registration list for 'hostile environment' system, aka 'shuttle cannot launch right now'
 	///
@@ -212,6 +207,7 @@
 	)
 	// todo: can we like, make something that isn't an /obj? maybe a turf overlay? maybe vis contents?
 	transit_warning_visuals = list()
+	// todo: leave holes where the shuttle's geometry isn't so this isn't just an AABB bounding box of visuals.
 	for(var/turf/turf as anything in shuttle.anchor.aabb_ordered_turfs_at(motion, motion[4]))
 		var/obj/effect/temporary_effect/shuttle_landing/landing_effect = new(turf)
 		transit_warning_visuals += landing_effect
