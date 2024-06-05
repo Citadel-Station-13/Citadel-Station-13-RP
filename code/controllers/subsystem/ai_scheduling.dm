@@ -4,9 +4,7 @@
 /// if we fall behind this much, we reset buckets
 #define BUCKET_CATASTROPHIC_LAG_THRESHOLD AI_SCHEDULING_TOLERANCE
 /// this many buckets are kept
-#define BUCKET_AMOUNT ((AI_SCHEDULING_TOLERANCE + AI_SCHEDULING_LIMIT) / world.tick_lag)
-
-#warn transfer over
+#define BUCKET_AMOUNT ((AI_SCHEDULING_TOLERANCE + AI_SCHEDULING_LIMIT) * 0.1 * world.fps)
 
 /**
  * Handles ticking AI holders
@@ -17,12 +15,19 @@ SUBSYSTEM_DEF(ai_scheduling)
 	priority = FIRE_PRIORITY_AI_SCHEDULING
 	wait = 0
 
-	/// rolling bucket list; these hold the head node of linked /datum/ai_callback's
+	/// rolling bucket list; these hold the head node of linked ai_holders.
+	///
+	/// the head bucket is the last one we processed
+	/// after subsystem ticks, if it isn't interrupted, the head bucket
+	/// should be empty.
+	///
+	/// placing stuff onto head bucket = run immediately
+	/// placing stuff onto next bucket = run the tick after head
 	var/tmp/list/buckets
 	/// world.time of bucket head
-	var/bucket_position
+	var/bucket_head_time
 	/// index of bucket head
-	var/bucket_index
+	var/bucket_head_index
 	/// world.fps buckets were made for
 	var/bucket_fps
 
@@ -39,9 +44,34 @@ SUBSYSTEM_DEF(ai_scheduling)
 		subsystem_log("rebuilding buckets - world.fps [world.fps] != [bucket_fps]")
 		rebuild()
 		return
-	var/buckets_needing_processed = round(DS2TICKS(world.time - bucket_position))
-	var/position = buckets[bucket_index]
-	#warn impl
+	var/elapsed = world.time - bucket_head_time
+	if((elapsed) > BUCKET_CATASTROPHIC_LAG_THRESHOLD)
+		subsystem_log("rebuilding buckets - lagged too far behind")
+		rebuild()
+		return
+	var/buckets_needing_processed = round(elapsed * 0.1 * world.fps)
+	var/buckets_processed
+	var/bucket_amount = length(buckets)
+	var/head_index = bucket_head_index
+	var/now_index_raw = bucket_head_index + round(DS2TICKS(elapsed))
+	// cache for speed
+	var/list/buckets = src.buckets
+	// go through buckets
+	for(buckets_processed in 0 to buckets_needing_processed)
+		var/bucket_offset = (head_index + buckets_processed) % bucket_amount
+		var/datum/ai_callback/being_processed
+		while((being_processed = buckets[bucket_offset]))
+			being_processed.invoke()
+			buckets[bucket_offset] = being_processed.next
+			if(MC_TICK_CHECK)
+				break
+		if(state != SS_RUNNING)
+			// got tick check'd; break so we stay on this bucket for now
+			// otherwise we'd go forwards 1 and drop this bucket
+			break
+
+	bucket_head_index = (bucket_head_index + buckets_processed) % length(buckets)
+	bucket_head_time = bucket_head_time + TICKS2DS(buckets_processed)
 
 /datum/controller/subsystem/ai_scheduling/Recover()
 	rebuild()
@@ -49,25 +79,23 @@ SUBSYSTEM_DEF(ai_scheduling)
 
 /datum/controller/subsystem/ai_scheduling/proc/schedule_callback(datum/ai_callback/callback, delay)
 	// determine bucket without wrapping
-	var/bucket = bucket_index + round(max(0, DS2TICKS(delay)) + DS2TICKS(world.time - bucket_position))
+	var/raw_head_index = bucket_head_index + round(DS2TICKS(world.time - bucket_head_time))
 	// modulo it by total buckets to wrap
-	bucket = (bucket % length(buckets))
+	var/bucket = raw_head_index % length(buckets)
 	// inject
-	if(isnull(buckets[bucket]))
-		// nothing's there, we're there
-		buckets[bucket] = callback
-	else
+	var/datum/ai_callback/existing = buckets[bucket]
+	if(existing)
 		// put it before
-		callback.next = buckets[bucket]
-		buckets[bucket] = callback
+		callback.next = existing
+	buckets[bucket] = callback
 
 /**
  * perform error checking
  * rebuild all buckets
  */
 /datum/controller/subsystem/ai_scheduling/proc/rebuild()
-	bucket_position = world.time
-	bucket_index = 1
+	bucket_head_time = world.time
+	bucket_head_index = 1
 	bucket_fps = world.fps
 	// we don't give a crap about recovered scheduled events; shrimply not our issue
 	// if you change ticklag midgame all AIs should be rescheduling anyways.
@@ -112,3 +140,7 @@ SUBSYSTEM_DEF(ai_scheduling)
 
 /datum/ai_callback/CanProcCall(procname)
 	return FALSE // no thanks bucko
+
+/datum/ai_callback/proc/invoke()
+	SHOULD_NOT_SLEEP(TRUE)
+	call(parent, proc_ref)(arglist(arguments))
