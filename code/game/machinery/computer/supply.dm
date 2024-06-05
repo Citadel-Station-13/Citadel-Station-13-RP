@@ -58,16 +58,17 @@
 	var/orders[0]
 	var/receipts[0]
 
-	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
+	var/datum/shuttle/shuttle = GLOB.legacy_cargo_shuttle
+	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 	if(shuttle)
-		if(shuttle.has_arrive_time())
+		if(shuttle.is_in_transit())
 			shuttle_status["location"] = "In transit"
 			shuttle_status["mode"] = SUP_SHUTTLE_TRANSIT
-			shuttle_status["time"] = shuttle.legacy_eta_in_minutes()
+			shuttle_status["time"] = controller.legacy_eta_in_minutes()
 
 		else
 			shuttle_status["time"] = 0
-			if(shuttle.at_station())
+			if(controller.is_at_away())
 				if(shuttle.shuttle_docking_controller)
 					switch(shuttle.shuttle_docking_controller.get_docking_status())
 						if("docked")

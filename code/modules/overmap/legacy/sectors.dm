@@ -77,12 +77,6 @@
 //This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
 /obj/overmap/entity/visitable/proc/populate_sector_objects()
 
-/obj/overmap/entity/visitable/proc/get_areas()
-	. = list()
-	for(var/area/A)
-		if (A.z in map_z)
-			. += A
-
 /obj/overmap/entity/visitable/proc/find_z_levels()
 	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
 		map_z = GetConnectedZlevels(z)

@@ -6,20 +6,20 @@
 		message1 = "CARGO"
 		message2 = ""
 
-		var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
+		var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 		if(!shuttle)
 			message2 = "Error"
-		else if(shuttle.has_arrive_time())
+		else if(controller.is_in_transit())
 			message2 = get_supply_shuttle_timer()
 			if(length(message2) > CHARS_PER_LINE)
 				message2 = "Error"
 		else if(shuttle.is_launching())
-			if(shuttle.at_station())
+			if(controller.is_at_away())
 				message2 = "Launch"
 			else
 				message2 = "ETA"
 		else
-			if(shuttle.at_station())
+			if(controller.is_at_away())
 				message2 = "Docked"
 			else
 				message1 = ""

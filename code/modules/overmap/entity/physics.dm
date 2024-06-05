@@ -101,3 +101,9 @@
  */
 /obj/overmap/entity/proc/get_heading()
 	return (arctan(vel_y, vel_x) + 360) % 360
+
+/**
+ * copy physics of another entity, for speed, velocity, or both
+ */
+/obj/overmap/entity/proc/copy_physics(obj/overmap/entity/other)
+	#warn impl

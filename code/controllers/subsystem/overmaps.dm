@@ -6,8 +6,29 @@ SUBSYSTEM_DEF(overmaps)
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 	subsystem_flags = SS_KEEP_TIMING
 
-	
+	/// did you know? shuttle flight levels are free!
+	/// that means you can just take one!
+	///
+	/// * this is the list of currently unallocated/free'd up shuttle flight levels
+	/// * we don't use zclear system so overmaps is even-more-decoupled from SSmapping.
+	var/list/datum/map_level/shuttle/free_flight_levels = list()
+	/// currently in-use shuttle flight levels
+	var/list/datum/map_level/shuttle/used_flight_levels = list()
 
+/datum/controller/subsystem/overmaps/proc/allocate_flight_level(obj/overmap/entity/visitable/ship/landable/leader)
+	var/datum/map_level/shuttle/creating = new
+	SSmapping.load_level(creating)
+	src.owned_level = creating
+	. = creating
+	ASSERT(creating.loaded)
+	#warn impl
+
+/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave)
+	#warn impl
+
+/datum/controller/subsystem/overmaps/proc/clear_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave)
+
+/datum/controller/subsystem/overmaps
 //* LEGACY STUFF BELOW THIS LINE
 //* So, everything
 //* Yes, I'm staging this early for overmaps rewrite

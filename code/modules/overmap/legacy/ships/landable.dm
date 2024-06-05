@@ -3,43 +3,62 @@
 // Multiz shuttles currently not supported. Non-autodock shuttles currently not supported.
 
 /obj/overmap/entity/visitable/ship/landable
+	icon_state = "shuttle"
+	moving_state = "shuttle_moving"
 	/// our shuttle
 	var/datum/shuttle/shuttle
 	/// our shuttle controller
 	var/datum/shuttle_controller/overmap/shuttle_controller
 	/// our shuttle level, if any
-	var/datum/map_level/shuttle/flight_level
 	///
+	/// * this is if we are owning a flight level
+	var/datum/map_level/shuttle/owned_level
 
-/obj/overmap/entity/visitable/ship/landable
-	var/shuttle                                         // Name of associated shuttle. Must be autodock.
-	var/obj/effect/shuttle_landmark/ship/landmark       // Record our open space landmark for easy reference.
-	var/status = SHIP_STATUS_LANDED
-	icon_state = "shuttle"
-	moving_state = "shuttle_moving"
+/**
+ * checks if we're free-flighting
+ *
+ * if not, we're probably landed
+ */
+/obj/overmap/entity/visitable/ship/landable/proc/is_in_freeflight()
+	#warn impl
 
-/obj/overmap/entity/visitable/ship/landable/Destroy()
-	GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
-	GLOB.shuttle_moved_event.unregister(SSshuttle.shuttles[shuttle], src)
-	return ..()
+/**
+ * called when our shuttle is attempting to move to freeflight
+ */
+/obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_to_freeflight()
+	#warn impl
 
-/obj/overmap/entity/visitable/ship/landable/can_burn()
-	if(status != SHIP_STATUS_OVERMAP)
-		return 0
-	return ..()
+/**
+ * called when our shuttle enters a certain zlevel
+ */
+/obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_to_level(z)
+	#warn impl
 
-/obj/overmap/entity/visitable/ship/landable/burn()
-	if(status != SHIP_STATUS_OVERMAP)
-		return 0
-	return ..()
+/**
+ * called to hand off our level to another shuttle in it
+ *
+ * @params
+ * * hand_to - the new leading entity. if null, one is randomly and heuristically chosen.
+ */
+/obj/overmap/entity/visitable/ship/landable/proc/dangerously_hand_off_flight_level(obj/overmap/entity/visitable/ship/landable/hand_to)
+	#warn impl
 
-/obj/overmap/entity/visitable/ship/landable/check_ownership(obj/object)
-	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
-	if(!shuttle_datum)
-		return
-	var/list/areas = shuttle_datum.find_childfree_areas()
-	if(get_area(object) in areas)
-		return 1
+/**
+ * called if we're the last to leave a level and it should be disposed
+ */
+/obj/overmap/entity/visitable/ship/landable/proc/dangerously_dispose_flight_level()
+	return SSovermaps.dispose_flight_level(owned_level, src)
+
+/**
+ * Only call right before we jump to it. We don't want flight levels floating around.
+ */
+/obj/overmap/entity/visitable/ship/landable/proc/make_flight_level()
+	. = FALSE
+	ASSERT(isnull(owned_level))
+	owned_level = SSovermaps.allocate_flight_level()
+	ASSERT(!isnull(owned_level))
+
+#warn below
 
 // We autobuild our z levels.
 /obj/overmap/entity/visitable/ship/landable/find_z_levels()
@@ -66,12 +85,6 @@
 
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
-
-/obj/overmap/entity/visitable/ship/landable/get_areas()
-	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
-	if(!shuttle_datum)
-		return list()
-	return shuttle_datum.find_childfree_areas()
 
 /obj/overmap/entity/visitable/ship/landable/populate_sector_objects()
 	..()
@@ -140,3 +153,14 @@
 			return "Maneuvering under secondary thrust."
 		if(SHIP_STATUS_OVERMAP)
 			return "In open space."
+
+#warn above
+
+/obj/overmap/entity/visitable/ship/landable/can_burn()
+	return is_in_freeflight() && ..()
+
+/obj/overmap/entity/visitable/ship/landable/burn()
+	return is_in_freeflight() && ..()
+
+/obj/overmap/entity/visitable/ship/landable/check_ownership(obj/object)
+	return get_overmap_entity(object) == src

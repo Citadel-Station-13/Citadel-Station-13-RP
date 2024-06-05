@@ -218,6 +218,7 @@
 	if(!SSovermaps.overmap_halted)
 		halted = 0
 
+#warn make sure these still work lmao
 /obj/overmap/entity/visitable/ship/populate_sector_objects()
 	..()
 	for(var/obj/machinery/computer/ship/S in GLOB.machines)

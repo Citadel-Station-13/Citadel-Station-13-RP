@@ -16,8 +16,6 @@ SUBSYSTEM_DEF(supply)
 	var/list/adm_order_history = list()		// Complete history of all orders, for admin use
 	var/list/adm_export_history = list()	// Complete history of all crates sent back on the shuttle, for admin use
 	// Shuttle Movement
-	var/movetime = 1200
-	var/datum/shuttle/autodock/ferry/supply/shuttle
 	var/list/material_points_conversion = list(	// Any materials not named in this list are worth 0 points
 			MAT_PHORON = 5,
 			MAT_PLATINUM = 5,

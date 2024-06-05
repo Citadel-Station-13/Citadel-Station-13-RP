@@ -73,11 +73,6 @@ var/global/list/additional_antag_types = list()
 	else if(href_list["set"])
 		var/choice = ""
 		switch(href_list["set"])
-			if("shuttle_delay")
-				choice = input("Enter a new shuttle delay multiplier") as num
-				if(!choice || choice < 1 || choice > 20)
-					return
-				shuttle_delay = choice
 			if("antag_scaling")
 				choice = input("Enter a new antagonist cap scaling coefficient.") as num
 				if(isnull(choice) || choice < 0 || choice > 100)
