@@ -62,7 +62,7 @@
 		)
 
 	say_list_type = /datum/say_list/kururak
-	ai_holder_type = /datum/ai_holder/polaris/polaris/simple_mob/intentional/kururak
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/kururak
 
 	special_attack_min_range = 0
 	special_attack_max_range = 4

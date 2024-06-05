@@ -3,7 +3,7 @@
 
 /datum/ai_holder
 	/// our default pathfinding type
-	var/ai_pathfinder_type = /datum/ai_pathfinder/generic_jps
+	var/ai_pathfinder_type = /datum/ai_pathfinder/jps
 
 /**
  * @return /datum/ai_pathing results, or **null on failure**

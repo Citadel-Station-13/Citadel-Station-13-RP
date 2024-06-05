@@ -35,7 +35,7 @@
 	tod = null
 	timeofdeath = 0
 	if(istype(ai_holder, /datum/ai_holder/polaris))
-		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder?.go_wake()
 	failed_last_breath = 0
 	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING

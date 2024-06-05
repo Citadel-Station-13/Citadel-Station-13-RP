@@ -1,7 +1,7 @@
 /mob/living/death(gibbed)
 	wipe_fullscreens()
 	if(istype(ai_holder, /datum/ai_holder/polaris))
-		var/datum/ai_holder/polaris/ai_holder = ai_holder
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder.go_sleep()
 
 	if(nest) //Ew.

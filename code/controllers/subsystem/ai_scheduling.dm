@@ -49,13 +49,12 @@ SUBSYSTEM_DEF(ai_scheduling)
 		subsystem_log("rebuilding buckets - lagged too far behind")
 		rebuild()
 		return
+	// cache for speed
+	var/list/buckets = src.buckets
 	var/buckets_needing_processed = round(elapsed * 0.1 * world.fps)
 	var/buckets_processed
 	var/bucket_amount = length(buckets)
 	var/head_index = bucket_head_index
-	var/now_index_raw = bucket_head_index + round(DS2TICKS(elapsed))
-	// cache for speed
-	var/list/buckets = src.buckets
 	// go through buckets
 	for(buckets_processed in 0 to buckets_needing_processed)
 		var/bucket_offset = (head_index + buckets_processed) % bucket_amount
