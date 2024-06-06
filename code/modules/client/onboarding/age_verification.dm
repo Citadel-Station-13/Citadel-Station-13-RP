@@ -14,7 +14,12 @@
 		return TRUE
 	if(is_age_verified())
 		return TRUE
-	GLOB.age_verify_menu.ui_interact(mob)
+	// make absolute goddamn sure tgui is sent
+	SSassets.send_asset_pack(src, /datum/asset_pack/simple/tgui)
+	asset_cache_flush_browse_queue()
+	// wait a moment just to be sure too
+	spawn(5)
+		GLOB.age_verify_menu.ui_interact(mob)
 	return TRUE
 
 /client/proc/set_age_verified()
