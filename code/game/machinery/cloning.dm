@@ -495,7 +495,8 @@
 	name = "data disk - 'God Emperor of Mankind'"
 	read_only = 1
 
-/obj/item/disk/data/demo/New()
+/obj/item/disk/data/demo/Initialize(mapload)
+	. = ..()
 	initializeDisk()
 	buf.types=DNA2_BUF_UE|DNA2_BUF_UI
 	//data = "066000033000000000AF00330660FF4DB002690"

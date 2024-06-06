@@ -23,7 +23,7 @@
 		ll_x = round((world.maxx - real_width) / 2)
 		ll_x = round((world.maxy - real_height) / 2)
 
-	parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
+	return parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
 
 /proc/__load_raw_chunk(path, x, y, z, orientation = SOUTH, center = TRUE)
 	ASSERT(x && y && z)
@@ -43,4 +43,4 @@
 		ll_x -= round(real_width / 2)
 		ll_y -= round(real_height / 2)
 
-	parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
+	return parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
