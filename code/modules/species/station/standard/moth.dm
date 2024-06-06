@@ -141,7 +141,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 		/mob/living/carbon/human/proc/hide_tail,
 	)
 	abilities = list(
-		/datum/ability/species/toggle_flight
+		/datum/ability/species/toggle_flight,
+		/datum/ability/species/soar
 	)
 	color_mult = 1
 	// todo: replace with proper name
