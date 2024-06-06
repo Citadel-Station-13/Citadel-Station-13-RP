@@ -1,5 +1,5 @@
 // Involves cooperating with other ai_holders.
-/datum/ai_holder
+/datum/ai_holder/polaris
 	var/cooperative = FALSE						// If true, asks allies to help when fighting something.
 	var/call_distance = 14						// How far away calls for help will go for.
 	var/last_helpask_time = 0					// world.time when a mob asked for help.
@@ -12,19 +12,19 @@
 	var/call_players = FALSE					// (Currently nonfunctional) If true, players get notified of an allied mob calling for help.
 	var/called_player_message = "needs help!"	// (Currently nonfunctional) Part of a message used when above var is true. Full message is "\The [holder] [called_player_message]"
 
-/datum/ai_holder/New(new_holder)
+/datum/ai_holder/polaris/New(new_holder)
 	..()
 	if(cooperative)
 		build_faction_friends()
 
-/datum/ai_holder/Destroy()
+/datum/ai_holder/polaris/Destroy()
 	if(faction_friends.len) //This list is shared amongst the faction
 		faction_friends -= src
 	return ..()
 
 // Handles everything about that list.
 // Call on initialization or if something weird happened like the mob switched factions.
-/datum/ai_holder/proc/build_faction_friends()
+/datum/ai_holder/polaris/proc/build_faction_friends()
 	if(faction_friends.len) // Already have a list.
 		// Assume we're moving to a new faction.
 		faction_friends -= src   // Get us out of the current list shared by everyone else.
@@ -37,14 +37,15 @@
 			first_friend = L
 			break
 
-	if(first_friend) // Joining an already established faction.
-		faction_friends = first_friend.ai_holder.faction_friends
+	if(first_friend && first_friend.has_polaris_AI()) // Joining an already established faction.
+		var/datum/ai_holder/polaris/their_holder = first_friend.ai_holder
+		faction_friends = their_holder.faction_friends
 		faction_friends |= holder
 	else // We're the 'founder' (first and/or only member) of this faction.
 		faction_friends |= holder
 
 // Requests help in combat from other mobs possessing ai_holders.
-/datum/ai_holder/proc/request_help()
+/datum/ai_holder/polaris/proc/request_help()
 	ai_log("request_help() : Entering.", AI_LOG_DEBUG)
 	if(!cooperative || ((world.time - last_helpask_time) < 10 SECONDS))
 		return
@@ -70,13 +71,18 @@
 
 			else if(L.ai_holder) // Dealing with an AI.
 				ai_log("request_help() : Asking [L] (AI) for help.", AI_LOG_INFO)
-				L.ai_holder.help_requested(holder)
+				if(istype(L.ai_holder, /datum/ai_holder/polaris))
+					var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+					ai_holder.help_requested(holder)
 
 	ai_log("request_help() : Exiting.", AI_LOG_DEBUG)
 
 // What allies receive when someone else is calling for help.
-/datum/ai_holder/proc/help_requested(mob/living/friend)
+/datum/ai_holder/polaris/proc/help_requested(mob/living/friend)
 	ai_log("help_requested() : Entering.", AI_LOG_DEBUG)
+	if(!friend.has_polaris_AI())
+		return
+	var/datum/ai_holder/polaris/friend_ai_holder = friend.ai_holder
 	if(stance == STANCE_SLEEP)
 		ai_log("help_requested() : Help requested by [friend] but we are asleep.", AI_LOG_INFO)
 		return
@@ -92,7 +98,7 @@
 	if(!holder.IIsAlly(friend)) // Extra sanity.
 		ai_log("help_requested() : Help requested by [friend] but we hate them.", AI_LOG_INFO)
 		return
-	if(friend.ai_holder && friend.ai_holder.target && !can_attack(friend.ai_holder.target))
+	if(friend_ai_holder && friend_ai_holder.target && !can_attack(friend_ai_holder.target))
 		ai_log("help_requested() : Help requested by [friend] but we don't want to fight their target.", AI_LOG_INFO)
 		return
 	if(get_dist(holder, friend) <= follow_distance)
@@ -100,10 +106,10 @@
 		return
 	if(get_dist(holder, friend) <= vision_range) // Within our sight.
 		ai_log("help_requested() : Help requested by [friend], and within target sharing range.", AI_LOG_INFO)
-		if(friend.ai_holder) // AI calling for help.
-			if(friend.ai_holder.target && can_attack(friend.ai_holder.target)) // Friend wants us to attack their target.
+		if(friend_ai_holder) // AI calling for help.
+			if(friend_ai_holder.target && can_attack(friend_ai_holder.target)) // Friend wants us to attack their target.
 				last_conflict_time = world.time // So we attack immediately and not threaten.
-				give_target(friend.ai_holder.target) // This will set us to the appropiate stance.
+				give_target(friend_ai_holder.target) // This will set us to the appropiate stance.
 				ai_log("help_requested() : Given target [target] by [friend]. Exiting", AI_LOG_DEBUG)
 				return
 

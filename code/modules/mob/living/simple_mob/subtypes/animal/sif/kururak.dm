@@ -62,7 +62,7 @@
 		)
 
 	say_list_type = /datum/say_list/kururak
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/kururak
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/kururak
 
 	special_attack_min_range = 0
 	special_attack_max_range = 4
@@ -294,7 +294,7 @@
 				continue
 			if(K.faction != src.faction)
 				continue
-			var/datum/ai_holder/AI = K.ai_holder
+			var/datum/ai_holder/polaris/AI = K.ai_holder
 			to_chat(K, SPAN_NOTICE("The pack leader wishes for you to follow them."))
 			AI.set_follow(src)
 
@@ -323,14 +323,14 @@
 	else
 		remove_modifiers_of_type(/datum/modifier/ace)
 
-/datum/ai_holder/simple_mob/intentional/kururak
+/datum/ai_holder/polaris/simple_mob/intentional/kururak
 	hostile = FALSE
 	retaliate = TRUE
 	cooperative = TRUE
 	can_flee = TRUE
 	flee_when_dying = TRUE
 
-/datum/ai_holder/simple_mob/intentional/kururak/handle_special_strategical()
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/handle_special_strategical()
 	follow_distance = rand(initial(follow_distance), initial(follow_distance) + 2)
 	var/mob/living/simple_mob/animal/sif/kururak/K = holder
 
@@ -353,7 +353,7 @@
 	else
 		hostile = initial(hostile)
 
-/datum/ai_holder/simple_mob/intentional/kururak/pre_special_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/pre_special_attack(atom/A)
 	holder.a_intent = INTENT_HARM
 	if(isliving(A))
 		var/mob/living/L = A
@@ -372,7 +372,7 @@
 	else if(istype(A, /obj/mecha))
 		holder.a_intent = INTENT_GRAB
 
-/datum/ai_holder/simple_mob/intentional/kururak/post_melee_attack()
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/post_melee_attack()
 	if(holder.has_modifier_of_type(/datum/modifier/ace))
 		request_help()
 

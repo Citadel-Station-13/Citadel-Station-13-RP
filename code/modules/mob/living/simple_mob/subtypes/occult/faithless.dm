@@ -33,7 +33,7 @@
 	attacktext = list("gripped")
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 
 	taser_kill = FALSE
