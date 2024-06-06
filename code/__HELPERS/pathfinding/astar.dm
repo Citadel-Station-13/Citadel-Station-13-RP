@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /// visualization; obviously slow as hell
-#define ASTAR_DEBUGGING
+// #define ASTAR_DEBUGGING
 
 #ifdef ASTAR_DEBUGGING
 
@@ -59,18 +59,18 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 
 	/// our score
 	var/score
-	/// our inherent cost
-	var/weight
+	/// our self-heuristic
+	var/heuristic
 	/// node depth to get to here
 	var/depth
 	/// cost to get here from prev - built off of prev
 	var/cost
 
-/datum/astar_node/New(turf/pos, datum/astar_node/prev, score, weight, depth, cost)
+/datum/astar_node/New(turf/pos, datum/astar_node/prev, score, heuristic, depth, cost)
 	src.pos = pos
 	src.prev = prev
 	src.score = score
-	src.weight = weight
+	src.heuristic = heuristic
 	src.depth = depth
 	src.cost = cost
 
@@ -85,10 +85,11 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 		if(!isnull(TURF)) { \
 			if(ASTAR_ADJACENCY_CALL(current, considering)) { \
 				considering_cost = top.cost + considering.path_weight; \
-				considering_score = ASTAR_HEURISTIC_CALL(considering) * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
+				considering_heuristic = ASTAR_HEURISTIC_CALL(considering); \
+				considering_score = considering_heuristic * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
 				considering_node = node_by_turf[considering]; \
 				if(isnull(considering_node)) { \
-					considering_node = new /datum/astar_node(considering, top, considering_score, considering_cost, top.depth + 1, considering_cost); \
+					considering_node = new /datum/astar_node(considering, top, considering_score, considering_heuristic, top.depth + 1, considering_cost); \
 					open.enqueue(considering_node); \
 					node_by_turf[considering] = considering_node; \
 					turfs_got_colored[considering] = TRUE; \
@@ -112,10 +113,11 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 		if(!isnull(TURF)) { \
 			if(ASTAR_ADJACENCY_CALL(current, considering)) { \
 				considering_cost = top.cost + considering.path_weight; \
-				considering_score = ASTAR_HEURISTIC_CALL(considering) * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
+				considering_heuristic = ASTAR_HEURISTIC_CALL(considering); \
+				considering_score = considering_heuristic * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
 				considering_node = node_by_turf[considering]; \
 				if(isnull(considering_node)) { \
-					considering_node = new /datum/astar_node(considering, top, considering_score, considering_cost, top.depth + 1, considering_cost); \
+					considering_node = new /datum/astar_node(considering, top, considering_score, considering_heuristic, top.depth + 1, considering_cost); \
 					open.enqueue(considering_node); \
 					node_by_turf[considering] = considering_node; \
 				} \
@@ -162,6 +164,7 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 	var/turf/considering
 	var/considering_score
 	var/considering_cost
+	var/considering_heuristic
 	var/datum/astar_node/considering_node
 	var/list/node_by_turf = list()
 
@@ -169,13 +172,14 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 	// tracks the current best node so we can return it if it's within slack distance.
 	var/datum/astar_node/best_node_so_far
 	// cost of best node so far
-	var/best_cost_so_far
+	var/best_cost_so_far = INFINITY
 	// end
 
 	// make queue
 	var/datum/priority_queue/open = new /datum/priority_queue(/proc/cmp_astar_node)
 	// add initial node
-	var/datum/astar_node/initial_node = new(start, null, ASTAR_HEURISTIC_CALL(start), 0, 0, 0)
+	var/start_heuristic = ASTAR_HEURISTIC_CALL(start)
+	var/datum/astar_node/initial_node = new(start, null, start_heuristic * ASTAR_HEURISTIC_WEIGHT, start_heuristic, 0, 0)
 	open.enqueue(initial_node)
 	node_by_turf[start] = initial_node
 
@@ -190,9 +194,9 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 		current = top.pos
 
 		// experimental: slack
-		if(top.cost < best_cost_so_far)
+		if(top.heuristic < best_cost_so_far)
 			best_node_so_far = top
-			best_cost_so_far = top.cost
+			best_cost_so_far = top.heuristic
 		// end
 
 		#ifdef ASTAR_DEBUGGING
@@ -240,7 +244,7 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 			CRASH("A* hit node limit - something went horribly wrong! args: [json_encode(args)]; vars: [json_encode(vars)]")
 
 	// experimental: slack
-	if(!isnull(slack) && best_node_so_far.cost <= slack)
+	if(!isnull(slack) && best_node_so_far.heuristic <= slack)
 		#ifdef ASTAR_DEBUGGING
 		return astar_unwind_path(best_node_so_far, turfs_got_colored)
 		#else

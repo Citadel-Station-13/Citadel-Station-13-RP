@@ -4,7 +4,7 @@
 /// visualization; obviously slow as hell
 /// JPS visualization is currently not nearly as perfect as A*'s.
 /// notably is sometimes marks stuff closed that isn't because of the weird backtracking stuff I put in.
-#define JPS_DEBUGGING
+// #define JPS_DEBUGGING
 
 #ifdef JPS_DEBUGGING
 
@@ -91,6 +91,14 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
  * * all tiles are treated as 1 distance - including diagonals.
  * * max_dist is *really* weird. It uses JPs path lengths, so, you probably need it a good bit higher than your target distance.
  * * jps cannot handle turfs that allow in one dir only at all. for precision navigation in those cases, you'll need A*.
+ * * slack is extremely heuristic right now. to make it less-so would require modifying the main loop; which i'm not willing to do yet as it might impact performance.
+ *
+ * todo: slack needs to be injected into main loop in a **very** cheap way
+ * todo: see: "if about to drop a route, we see if dist is less than slack; if so, make a node as needed."
+ * todo: for whoever's reading this in the future, **DO NOT DO THIS NAIVELY.** JPS is only so fast because of a lot of microoptimizations,
+ *       one of which is 'do not make a node most of the time'. don't do shit without understanding why the algorithm is how it is, please,
+ *       i spent way too much fucking time giving us fast pathfinding to have it obliterated. profile your changes and test them with the
+ *       visual debugger.
  */
 /datum/pathfinding/jps
 	adjacency_call = /proc/jps_pathfinding_adjacency
@@ -129,7 +137,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	// tracks the current best node so we can return it if it's within slack distance.
 	var/datum/jps_node/best_node_so_far
 	// cost of best node so far
-	var/best_cost_so_far
+	var/best_cost_so_far = INFINITY
 	// end
 
 	//* variables - run
@@ -533,7 +541,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 
 	// experimental: slack
 	if(!isnull(slack) && best_node_so_far.heuristic <= slack)
-		#ifdef JPS_DBUGGING
+		#ifdef JPS_DEBUGGING
 		return jps_unwind_path(best_node_so_far, turfs_got_colored)
 		#else
 		return jps_unwind_path(best_node_so_far)
