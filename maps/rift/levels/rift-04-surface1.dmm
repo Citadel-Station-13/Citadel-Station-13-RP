@@ -38092,13 +38092,6 @@
 /obj/item/reagent_containers/food/snacks/cherrypie,
 /turf/simulated/floor/wood,
 /area/maintenance/research/lower)
-"xfC" = (
-/obj/structure/curtain/black{
-	anchored = 1;
-	icon_state = "open"
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/library)
 "xfE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -62820,7 +62813,7 @@ tyR
 hSZ
 gXw
 fCX
-tjR
+jdN
 tjR
 tjR
 tjR
@@ -63209,7 +63202,7 @@ vEx
 wyh
 fCX
 ope
-xfC
+ope
 ope
 fCX
 llv
