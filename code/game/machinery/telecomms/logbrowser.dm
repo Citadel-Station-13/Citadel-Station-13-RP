@@ -18,7 +18,7 @@
 
 	req_access = list(ACCESS_ENGINEERING_TELECOMMS)
 
-/obj/machinery/computer/telecomms/server/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/telecomms/server/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["universal_translate"] = universal_translate

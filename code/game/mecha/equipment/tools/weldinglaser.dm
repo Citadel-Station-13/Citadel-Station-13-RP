@@ -15,7 +15,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/powertool/welding/action(var/atom/target)
 	..()
 
-	var/datum/beam/weld_beam = null
+	var/datum/beam_legacy/weld_beam = null
 	if(is_ranged())
 		var/atom/movable/beam_origin = chassis
 		weld_beam = beam_origin.Beam(target, icon_state = "solar_beam", time = 0.3 SECONDS)

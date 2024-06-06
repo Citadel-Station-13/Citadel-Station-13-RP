@@ -27,7 +27,7 @@
 	active_beams = list()
 
 /obj/structure/cult/pylon/swarm/Destroy()
-	for(var/datum/beam/B in active_beams)
+	for(var/datum/beam_legacy/B in active_beams)
 		QDEL_NULL(B)
 	active_beams = null
 	..()
@@ -89,13 +89,13 @@
 
 	for(var/mob/living/silicon/robot/drone/swarm/S in view(3, src))
 		var/has_beam = FALSE
-		for(var/datum/beam/B in active_beams)
+		for(var/datum/beam_legacy/B in active_beams)
 			if(B.target == S)
 				has_beam = TRUE
 				break
 
 		if(!has_beam)
-			active_beams |= Beam(S,icon='icons/effects/beam.dmi',icon_state="holo_beam",time=3 SECONDS,maxdistance=3,beam_type = /obj/effect/ebeam)
+			active_beams |= Beam(S,icon='icons/effects/beam.dmi',icon_state="holo1_scaling",time=3 SECONDS,maxdistance=3,beam_type = /obj/effect/ebeam)
 
 		if(S.cell)
 			S.cell.give(rand(5, 30))

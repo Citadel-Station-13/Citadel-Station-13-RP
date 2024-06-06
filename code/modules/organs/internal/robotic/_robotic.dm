@@ -11,3 +11,4 @@
 	robotic = ORGAN_ROBOT
 	// I'd like to see you try to butcher a robot.
 	butcherable = FALSE
+	biology_type = BIOLOGY_TYPE_SYNTH

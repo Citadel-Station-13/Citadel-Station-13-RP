@@ -42,7 +42,7 @@
 		ui = new(user, src, "Signaler", name)
 		ui.open()
 
-/obj/item/assembly/signaler/ui_data(mob/user, datum/tgui/ui)
+/obj/item/assembly/signaler/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 	data["frequency"] = frequency
 	data["code"] = code

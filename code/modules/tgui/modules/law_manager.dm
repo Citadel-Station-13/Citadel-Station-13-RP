@@ -145,7 +145,7 @@
 	owner.lawsync()
 	return ..() // 800, is_malf(user) ? 600 : 400
 
-/datum/tgui_module_old/law_manager/ui_data(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/law_manager/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["ion_law_nr"] = ionnum()

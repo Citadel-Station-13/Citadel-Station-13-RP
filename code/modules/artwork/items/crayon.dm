@@ -73,7 +73,7 @@
 		ui = new(user, src, "Crayon")
 		ui.open()
 
-/obj/item/pen/crayon/ui_static_data(mob/user, datum/tgui/ui)
+/obj/item/pen/crayon/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	var/list/datapacks = list()
 	for(var/datum/crayon_decal_meta/datapack in GLOB.crayon_data)
@@ -84,7 +84,7 @@
 	.["colorList"] = crayon_pickable_colors
 	.["canonicalName"] = crayon_name
 
-/obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui)
+/obj/item/pen/crayon/ui_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["capped"] = capped
 	.["graffitiPickedIcon"] = current_graffiti_icon_string_path

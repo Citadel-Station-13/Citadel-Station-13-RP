@@ -869,9 +869,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 	return FALSE
 
-/**
- * clones us into a new datum
- */
 /datum/species/clone(include_contents)
 	var/datum/species/created = new type
 	created.copy_from(src)

@@ -131,9 +131,6 @@
 				add_talent(id)
 	return TRUE
 
-/**
- * clones
- */
 /datum/characteristics_holder/clone(include_contents)
 	RETURN_TYPE(/datum/characteristics_holder)
 	var/datum/characteristics_holder/cloning = ..()

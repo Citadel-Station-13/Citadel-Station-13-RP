@@ -338,7 +338,7 @@
 		ui = new(user, src, "DestinationTagger", name)
 		ui.open()
 
-/obj/item/destTagger/ui_data(mob/user, datum/tgui/ui)
+/obj/item/destTagger/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["currTag"] = currTag

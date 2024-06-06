@@ -18,7 +18,7 @@
 	. = ..()
 	QDEL_NULL(tgui_cardmod)
 
-/datum/computer_file/program/card_mod/ui_static_data(mob/user, datum/tgui/ui)
+/datum/computer_file/program/card_mod/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = get_header_data()
 
 /datum/computer_file/program/card_mod/ui_route(action, list/params, datum/tgui/ui, id)

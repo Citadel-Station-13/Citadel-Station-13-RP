@@ -4,60 +4,70 @@
 	encased = 0
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/groin/unbreakable/slime
 	nonsolid = 1
 	max_damage = 75
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/arm/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/arm/right/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/leg/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/leg/right/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/foot/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/foot/right/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/hand/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/hand/right/unbreakable/slime
 	nonsolid = 1
 	max_damage = 25
 	spread_dam = 1
 	transparent = 1
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/external/head/unbreakable/slime	//They don't need this anymore.
 	nonsolid = 1
@@ -68,3 +78,4 @@
 	spread_dam = 1
 	transparent = 1
 	hair_opacity = 160
+	biology_type = BIOLOGY_TYPE_SLIME

@@ -27,7 +27,7 @@
 		ui = new(user, src, "PrisonerManagement", name)
 		ui.open()
 
-/obj/machinery/computer/prisoner/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/prisoner/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/chemImplants = list()
 	var/list/trackImplants = list()
 	if(screen)

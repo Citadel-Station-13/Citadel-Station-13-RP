@@ -25,6 +25,8 @@
 
 	//Welding tool specific stuff
 	var/welding = 0 	//Whether or not the welding tool is off(0), on(1) or currently welding(2)
+	/// damage force when on (+ will be burning damage instead of brute)
+	var/damage_on = 15
 	var/status = 1 		//Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 
@@ -250,7 +252,7 @@
 			else if(T)
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
-			src.damage_force = 15
+			src.damage_force = damage_on
 			src.damtype = "fire"
 			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
@@ -272,7 +274,7 @@
 		else if(T)
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
-		src.damage_force = 3
+		src.damage_force = initial(damage_force)
 		src.damtype = "brute"
 		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
@@ -697,11 +699,6 @@
 /obj/item/weldingtool/electric/mounted/cyborg
 	tool_speed = 0.5
 
-
-/obj/item/weldingtool/electric/mounted/RIGset
-	name = "arc welder"
-	tool_speed = 0.7 // Let's see if this works with RIGs
-	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
 	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null

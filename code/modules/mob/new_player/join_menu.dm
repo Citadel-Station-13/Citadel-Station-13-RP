@@ -17,7 +17,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /datum/join_menu/ui_state()
 	return GLOB.explicit_new_player_state
 
-/datum/join_menu/ui_static_data(mob/user, datum/tgui/ui)
+/datum/join_menu/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 	// every entry will have:
 	// - faction
@@ -89,7 +89,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		ghostroles += list(ghostrole_data)	// wrap list
 	return data
 
-/datum/join_menu/ui_data(mob/user, datum/tgui/ui)
+/datum/join_menu/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 	// common info goes into ui data
 	var/level = "green"

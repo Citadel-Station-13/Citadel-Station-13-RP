@@ -1,0 +1,22 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
+/obj/item/rig_module/toolset/surgical
+	abstract_type = /obj/item/rig_module/toolset/surgical
+
+//? Basic (tier 1)
+
+/obj/item/rig_module/toolset/surgical/basic
+	#warn impl
+
+//? Advanced (tier 2)
+
+// todo: advanced
+
+/obj/item/rig_module/toolset/surgical/advanced
+
+//? Hardlight (tier 3)
+
+// todo: hardlight
+
+/obj/item/rig_module/toolset/surgical/hardlight

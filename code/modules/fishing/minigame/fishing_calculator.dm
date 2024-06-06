@@ -27,14 +27,14 @@
 /datum/fishing_calculator/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	qdel(src)
 
-/datum/fishing_calculator/ui_static_data(mob/user, datum/tgui/ui)
+/datum/fishing_calculator/ui_static_data(mob/user, datum/tgui/ui, is_module)
 	. = ..()
 	.["rod_types"] = typesof(/obj/item/fishing_rod)
 	.["hook_types"] = typesof(/obj/item/fishing_hook)
 	.["line_types"] = typesof(/obj/item/fishing_line)
 	.["spot_types"] = subtypesof(/datum/fish_source)
 
-/datum/fishing_calculator/ui_data(mob/user, datum/tgui/ui)
+/datum/fishing_calculator/ui_data(mob/user, datum/tgui/ui, is_module)
 	return list("info" = current_table)
 
 /datum/fishing_calculator/ui_act(action, list/params, datum/tgui/ui)

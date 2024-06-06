@@ -117,7 +117,7 @@
 		ui = new(user, src, "BombTester", name)
 		ui.open()
 
-/obj/machinery/bomb_tester/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/bomb_tester/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = ..()
 
 	data["simulating"] = simulating

@@ -64,10 +64,11 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
+ * * is_module - (optional) - set to TRUE if we're being queried for data as part of a module.
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user, datum/tgui/ui)
+/datum/proc/ui_data(mob/user, datum/tgui/ui, is_module)
 	return list() // Not implemented.
 
 /**
@@ -84,10 +85,29 @@
  * @params
  * * user - (optional) the mob using the UI
  * * ui - (optional) the host tgui
+ * * is_module - (optional) - set to TRUE if we're being queried for data as part of a module.
  *
  * return list Static Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user, datum/tgui/ui)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui, is_module)
+	return list()
+
+/**
+ * public
+ *
+ * Static module data to be sent to the UI.
+ *
+ * * We only have this, and not a module update, because you should be using module registration.
+ * * This is for stuff like RIGsuits, which do special implementations and need the first data send to have modules.
+ *
+ *
+ * @params
+ * * user - (optional) the mob using the UI
+ * * ui - (optional) the host tgui
+ *
+ * return key-value list: key is module ID, value is a list of data.
+ */
+/datum/proc/ui_static_modules(mob/user, datum/tgui/ui)
 	return list()
 
 /**
@@ -244,14 +264,17 @@
  * * user - when specified, only pushes this user. else, pushes to all windows.
  * * ui - when specified, only pushes this ui for a given user.
  * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ * * target_modules - if non-null, we will only push to uis using us as a module (or to uis that aren't)
  */
-/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
+/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data, target_modules)
 	// todo: the way this works is so jank; this should be COMSIG_DATUM_HOOK_UI_PUSH instead?
 	// todo: this is because user, ui, data needs to go to the signal before being auto-resolved, as modules
 	// todo: won't necessarily match the values!
 	// FUCK
 	// ~silicons
-	SEND_SIGNAL(src, COMSIG_DATUM_PUSH_UI_DATA, user, ui, data)
+	SEND_SIGNAL(src, COMSIG_DATUM_PUSH_UI_DATA, user, ui, data, target_modules)
+	if(!isnull(target_modules) && target_modules == TRUE)
+		return
 	if(!user)
 		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
 			window.push_data(data)

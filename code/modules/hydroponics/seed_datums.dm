@@ -1272,7 +1272,9 @@
 	seed_name = "grass"
 	display_name = "grass"
 	kitchen_tag = "grass"
-	mutants = list("carpet")
+	mutants = list(
+		"carpet",
+	)
 	chems = list("nutriment" = list(1,20))
 
 /datum/seed/grass/New()

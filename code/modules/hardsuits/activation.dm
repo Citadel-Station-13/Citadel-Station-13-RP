@@ -6,16 +6,16 @@
 	activation_state = new_state
 
 /obj/item/hardsuit/proc/is_activated()
-	return activation_state == RIG_ACTIVATION_ON
+	return activation_state == HARDSUIT_ACTIVATION_ON
 
 /obj/item/hardsuit/proc/is_activating()
-	return activation_state == RIG_ACTIVATION_STARTUP
+	return activation_state == HARDSUIT_ACTIVATION_STARTUP
 
 /obj/item/hardsuit/proc/is_deactivating()
-	return activation_state == RIG_ACTIVATION_SHUTDOWN
+	return activation_state == HARDSUIT_ACTIVATION_SHUTDOWN
 
 /obj/item/hardsuit/proc/is_cycling()
-	return activation_state == RIG_ACTIVATION_STARTUP || activation_state == RIG_ACTIVATION_SHUTDOWN
+	return activation_state == HARDSUIT_ACTIVATION_STARTUP || activation_state == HARDSUIT_ACTIVATION_SHUTDOWN
 
 /**
  * online - whether or not the hardsuit is semantically online. a completely depowered suit can be activated but not online.

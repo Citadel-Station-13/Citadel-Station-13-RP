@@ -92,7 +92,7 @@
 		if(demand.len > record_size)
 			demand.Cut(1, 2)
 
-/obj/machinery/power/sensor/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/power/sensor/ui_data(mob/user, datum/tgui/ui, is_module)
 	var/list/data = list()
 
 	data["name"] = name_tag
