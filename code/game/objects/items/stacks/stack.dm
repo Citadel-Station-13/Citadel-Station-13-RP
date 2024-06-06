@@ -166,6 +166,7 @@
 		return FALSE
 	log_stackcrafting(user, src, recipe.name, make_amount, needed, where)
 	use(needed)
+	return TRUE
 
 /**
  * Return 1 if an immediate subsequent call to use() would succeed.

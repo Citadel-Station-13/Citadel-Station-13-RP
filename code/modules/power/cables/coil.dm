@@ -8,7 +8,7 @@
 	color = COLOR_RED
 	desc = "A coil of power cable."
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
@@ -80,9 +80,9 @@
 
 /obj/item/stack/cable_coil/proc/update_wclass()
 	if(amount == 1)
-		w_class = ITEMSIZE_TINY
+		set_weight_class(WEIGHT_CLASS_TINY)
 	else
-		w_class = ITEMSIZE_SMALL
+		set_weight_class(WEIGHT_CLASS_SMALL)
 
 /obj/item/stack/cable_coil/examine_stack(mob/user, dist)
 	. = list()
@@ -96,7 +96,7 @@
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/mob/M = usr
 
 	if(CHECK_MOBILITY(M, MOBILITY_CAN_USE))
@@ -113,7 +113,7 @@
 
 /obj/item/stack/cable_coil/cyborg/verb/set_colour()
 	set name = "Change Colour"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in GLOB.possible_cable_coil_colours
 	set_cable_color(selected_type, usr)
@@ -179,7 +179,7 @@
 
 	put_cable(F, user, end_dir, dirn)
 	if(end_dir == DOWN)
-		put_cable(GetBelow(F), user, 0, UP)
+		put_cable(F.below(), user, 0, UP)
 		to_chat(user, "You slide some cable downward.")
 
 	return TRUE
@@ -269,7 +269,7 @@
 	name = "cable coil synthesizer"
 	desc = "A device that makes cable."
 	gender = NEUTER
-	materials = null
+	materials_base = null
 	uses_charge = 1
 	charge_costs = list(1)
 
@@ -393,13 +393,14 @@
 	icon_state = "coil"
 	color = COLOR_SILVER
 	throw_force = 10
-	w_class = ITEMSIZE_SMALL
+	throw_force = 10
 	throw_speed = 2
 	throw_range = 5
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
+	split_type = /obj/item/stack/cable_coil
 	tool_speed = 0.25
 
 /obj/item/stack/cable_coil/alien/Initialize(mapload, new_amount, merge, param_color)
@@ -419,31 +420,10 @@
 	return 1
 
 /obj/item/stack/cable_coil/alien/use()	//It's endless
-	return 1
+	return TRUE
 
 /obj/item/stack/cable_coil/alien/add()	//Still endless
 	return 0
 
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
-
-/obj/item/stack/cable_coil/alien/attack_hand(mob/user, list/params)
-	if (user.get_inactive_held_item() == src)
-		var/N = input("How many units of wire do you want to take from [src]?  You can only take up to [amount] at a time.", "Split stacks", 1) as num|null
-		if(N && N <= amount)
-			var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
-			CC.amount = N
-			CC.update_icon()
-			to_chat(user,"<font color=#4F49AF>You take [N] units of wire from the [src].</font>")
-			if (CC)
-				user.put_in_hands(CC)
-				src.add_fingerprint(user)
-				CC.add_fingerprint(user)
-				spawn(0)
-					if (src && usr.machine==src)
-						src.interact(usr)
-		else
-			return
-	else
-		..()
-	return
