@@ -1,6 +1,12 @@
+/**
+ * Ticker Subsystem
+ *
+ * While the Storyteller and World subsystems handle providing round content and storing IC definitions,
+ * we actually **tick** the round's flow, handling critical things like startup/shutdown of a given round.
+ */
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
-	wait = 20
+	wait = 2 SECONDS
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
@@ -67,6 +73,13 @@ SUBSYSTEM_DEF(ticker)
 	var/static/round_start_time
 	var/static/list/round_start_events
 	var/static/list/round_end_events
+
+	//* Game State
+	/// game factions
+	var/list/datum/game_faction/game_factions
+	/// objectives that need ticking
+	var/list/datum/game_objective/game_objectives_ticking
+	#warn hook stuff
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
@@ -536,6 +549,7 @@ SUBSYSTEM_DEF(ticker)
 		roundend_callbacks.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
 
+	#warn roundend stuff
 
 	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))

@@ -73,8 +73,11 @@ const RefreshingWindow = () => {
   );
 };
 
+// todo: optimize the subdirectory system, we're starting to get quite a few.
+
 const interfaceSubdirectories = [
   `.`,
+  `./admin`,
   `./computers`,
   `./items`,
   `./machines`,
