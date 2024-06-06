@@ -239,7 +239,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	B.volume += amount
 	B.initialize_data()
 	// todo: burn this file with fire
-	container.reagents.reagent_list += B
+	container.reagents.reagent_list |= B
 	container.reagents.update_total()
 
 	//set reagent data
