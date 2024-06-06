@@ -3996,12 +3996,13 @@
 /obj/machinery/door/airlock/vault/bolted{
 	id_tag = "the_end";
 	name = "RESTRICTED";
-	req_access = list(109)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	id = "ADMINFUN";
 	name = "RESTRICTED"
 	},
+/obj/map_helper/access_helper/airlock/station/command/vault,
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
 "mH" = (
@@ -16280,12 +16281,13 @@
 /obj/machinery/door/airlock/vault/bolted{
 	id_tag = "the_end";
 	name = "RESTRICTED";
-	req_access = list(109)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	id = "ADMINFUN";
 	name = "RESTRICTED"
 	},
+/obj/map_helper/access_helper/airlock/station/command/vault,
 /turf/simulated/floor/reinforced,
 /area/centcom/security)
 "ZL" = (
