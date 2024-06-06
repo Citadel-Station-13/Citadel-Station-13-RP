@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/freezer
 	name = "freezer"
-	desc = "It's an immobile card-locked frosty storage unit.
+	desc = "It's an immobile card-locked frosty storage unit."
 	icon = 'icons/obj/closets/bases/fridge.dmi'
 	icon_state = "base"
 	closet_appearance = /singleton/closet_appearance/secure_closet/freezer
