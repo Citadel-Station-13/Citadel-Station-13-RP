@@ -1431,8 +1431,10 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/glass/research{
-	name = "XenoArcheology"
+	name = "XenoArcheology";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "bkU" = (
@@ -2600,8 +2602,9 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
-	req_one_access = list(30,35,47,77)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "coN" = (
@@ -2680,8 +2683,9 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Research Lounge";
-	req_access = list(47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/breakroom)
 "cqX" = (
@@ -2814,8 +2818,9 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
-	req_one_access = list(30,35,47,77)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "cvM" = (
@@ -3462,10 +3467,9 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Lab";
-	req_access = list(29,47);
-	req_one_access = list(47)
+	name = "Robotics Lab"
 	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
 "cYH" = (
@@ -4427,8 +4431,9 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
-	req_one_access = list(30,35,47,77)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobiology,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "dQp" = (
@@ -4941,10 +4946,12 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/emt/general)
 "efT" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Public Airlock"
-	},
 /obj/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/glass_external{
+	name = "Public Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -5707,13 +5714,12 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/research{
-	name = "Research Entrance";
-	req_access = list(47);
-	req_one_access = list(47)
+	name = "Research Entrance"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "eUu" = (
@@ -5997,8 +6003,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/maintenance/research)
 "fcX" = (
@@ -6417,8 +6424,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
-	req_one_access = list(30,35,47,77)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobiology,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "fxj" = (
@@ -6866,8 +6874,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "fPK" = (
@@ -7340,7 +7351,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "gkl" = (
@@ -8214,16 +8228,17 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "gZv" = (
-/obj/machinery/door/airlock/glass/research{
-	name = "Weapons Testing Range";
-	req_access = list(47)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/glass/research{
+	name = "Weapons Testing Range";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "gZZ" = (
@@ -8453,10 +8468,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_1)
 "hjX" = (
-/obj/machinery/door/airlock/research{
-	name = "Toxins Lab";
-	req_access = list(8)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -8469,6 +8480,10 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/research{
+	name = "Toxins Lab"
+	},
+/obj/map_helper/access_helper/airlock/station/science/toxins,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "hkx" = (
@@ -9036,8 +9051,9 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "RDdoor";
 	name = "Research Director";
-	req_access = list(30)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "hDL" = (
@@ -9068,10 +9084,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Morgue";
-	req_access = list(29,47);
-	req_one_access = list(47)
+	name = "Robotics Morgue"
 	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
 "hEJ" = (
@@ -9161,10 +9176,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "hHa" = (
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/assembly/chargebay)
 "hJE" = (
@@ -9339,11 +9355,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "hQc" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Public Airlock"
-	},
 /obj/machinery/shield_diffuser,
 /obj/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/glass_external{
+	name = "Public Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -9363,8 +9381,9 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Xenoflora Research";
-	req_one_access = list(30,35,47,77)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobotany,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "hQy" = (
@@ -10176,13 +10195,13 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/research{
-	name = "Research Lab";
-	req_one_access = list(8,44)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/machinery/door/airlock/research{
+	name = "Research Lab"
+	},
+/obj/map_helper/access_helper/airlock/station/science/research_lab,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "iyW" = (
@@ -11331,11 +11350,6 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/command{
-	id_tag = "RDdoor";
-	name = "Research Director";
-	req_access = list(30)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -11348,6 +11362,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/machinery/door/airlock/command{
+	id_tag = "RDdoor";
+	name = "Research Director";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/head_office/research_director,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "jsT" = (
@@ -12527,13 +12547,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Prep";
-	req_access = list(29,47);
-	req_one_access = list(47)
+	name = "Robotics Prep"
 	},
-/obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "ktI" = (
@@ -13143,10 +13162,9 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Surgery";
-	req_access = list(29,47);
-	req_one_access = list(47)
+	name = "Robotics Surgery"
 	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "kWR" = (
@@ -13481,8 +13499,11 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "lnu" = (
@@ -14707,13 +14728,12 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "mqr" = (
-/obj/machinery/door/airlock/research{
-	name = "Research Entrance";
-	req_access = list(47);
-	req_one_access = list(47)
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/research{
+	name = "Research Entrance"
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "mqD" = (
@@ -15351,10 +15371,9 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Lab";
-	req_access = list(29,47);
-	req_one_access = list(47)
+	name = "Robotics Lab"
 	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled,
 /area/assembly/robotics)
 "mUK" = (
@@ -16371,10 +16390,13 @@
 /area/rnd/reception_desk)
 "nON" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "nOX" = (
@@ -16509,8 +16531,9 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/research)
 "nTO" = (
@@ -17336,8 +17359,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/maintenance/fore)
 "oFh" = (
@@ -17465,13 +17489,13 @@
 "oIU" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Isolation Room 1";
-	req_access = list(65);
-	req_one_access = list(47)
+	req_one_access = null
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_one)
 "oJw" = (
@@ -18072,11 +18096,13 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "pfe" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Public Airlock"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/glass_external{
+	name = "Public Airlock";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -18157,9 +18183,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
-	req_access = list();
-	req_one_access = list(7,29)
+	req_access = list()
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenobiology,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "pho" = (
@@ -18845,7 +18871,10 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "pIC" = (
@@ -19303,15 +19332,16 @@
 /area/medical/ward)
 "pXQ" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass/research{
-	name = "Research Lounge";
-	req_access = list(47)
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/glass/research{
+	name = "Research Lounge";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/breakroom)
 "pYs" = (
@@ -20770,9 +20800,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external{
 	name = "Isolation Room 2";
-	req_access = list(65);
-	req_one_access = list(47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/xenoarcheology,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab/containment_two)
 "rdw" = (
@@ -22369,7 +22399,10 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
 "sBd" = (
@@ -22943,10 +22976,9 @@
 	},
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Robotics Morgue";
-	req_access = list(29,47);
-	req_one_access = list(47)
+	name = "Robotics Morgue"
 	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "tbM" = (
@@ -25843,11 +25875,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "vya" = (
-/obj/machinery/door/airlock/glass/research{
-	name = "Circuitry Workshop";
-	req_access = list(7);
-	req_one_access = list(7)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25858,6 +25885,11 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass/research{
+	name = "Circuitry Workshop";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/fabrication,
 /turf/simulated/floor/tiled,
 /area/rnd/workshop)
 "vyp" = (
@@ -25927,9 +25959,9 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
-	req_access = list(8)
+	name = "Toxins Storage"
 	},
+/obj/map_helper/access_helper/airlock/station/science/toxins,
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
 "vBL" = (
@@ -26100,14 +26132,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "vHH" = (
-/obj/machinery/door/airlock/research{
-	name = "Xenobiology Emergecy Flood Storage";
-	req_access = list();
-	req_one_access = list(7,29)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/research{
+	name = "Xenobiology Emergecy Flood Storage";
+	req_access = list()
+	},
+/obj/map_helper/access_helper/airlock/station/science/xenobiology,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "vIj" = (
@@ -27042,12 +27074,13 @@
 /area/crew_quarters/medical_restroom)
 "wvF" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "wwu" = (
@@ -27648,8 +27681,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "wWa" = (
@@ -28752,9 +28788,9 @@
 "xTR" = (
 /obj/machinery/door/airlock/science{
 	name = "Circuitry Workshop";
-	req_access = list(7);
-	req_one_access = list(7)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/fabrication,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "xTU" = (
@@ -29073,13 +29109,14 @@
 /turf/simulated/floor/airless/ceiling,
 /area/rnd/research_foyer_auxiliary)
 "ymb" = (
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance/rnd{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 
