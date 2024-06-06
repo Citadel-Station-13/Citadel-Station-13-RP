@@ -38,7 +38,7 @@
 
 	mob_class = MOB_CLASS_ABERRATION
 
-/datum/ai_holder/simple_mob/horror
+/datum/ai_holder/polaris/simple_mob/horror
 	hostile = TRUE // The majority of simplemobs are hostile, gaslamps are nice.
 	cooperative = FALSE
 	retaliate = TRUE //so the monster can attack back

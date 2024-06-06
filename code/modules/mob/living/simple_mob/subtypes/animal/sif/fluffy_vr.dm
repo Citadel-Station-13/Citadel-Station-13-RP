@@ -34,7 +34,7 @@
 	hide_amount = 1
 
 	say_list_type = /datum/say_list/fluffy_vr
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 
 /datum/say_list/fluffy_vr
 	speak = list("Squee","Arf arf","Awoo","Squeak")

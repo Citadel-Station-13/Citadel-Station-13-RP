@@ -30,7 +30,7 @@
 
 	attacktext = list("slammed")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/inert //Segments dont need AI
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/inert //Segments dont need AI
 
 	mob_class = MOB_CLASS_ABERRATION	// It's a monster.
 
@@ -94,9 +94,9 @@
 
 	var/segment_count = 6
 
-	ai_holder_type = /datum/ai_holder/simple_mob/worm
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/worm
 
-/datum/ai_holder/simple_mob/worm
+/datum/ai_holder/polaris/simple_mob/worm
 	hostile = TRUE
 	retaliate = TRUE
 	cooperative = TRUE // Worm teammates

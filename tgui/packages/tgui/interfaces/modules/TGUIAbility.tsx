@@ -15,6 +15,7 @@ enum TGUIAbilityInteraction {
   NONE = "none",
   TRIGGER = "trigger",
   TOGGLE = "toggle",
+  SINGLE_TARGET = "single_target",
 }
 
 interface TGUIAbilityData extends ModuleData {

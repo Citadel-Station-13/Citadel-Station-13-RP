@@ -1,0 +1,130 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
+//? Definitions for /datum/ai_holder/dynamic.
+
+#warn anything?
+
+//* state var
+
+/// currently disabled
+#define AI_DYNAMIC_STATE_DISABLED 0 + 1
+/// sleeping due to no players on level; can be woken up by damage
+#define AI_DYNAMIC_STATE_SLEEPING 0 + 2
+
+/// idle; might be wandering
+#define AI_DYNAMIC_STATE_IDLE 10 + 1
+/// engaged in patrolling
+/// * under this state, we are using idle loop for movement
+#define AI_DYNAMIC_STATE_PATROL 10 + 2
+/// navigating to destination
+/// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_NAVIGATION 10 + 3
+/// threatening someone; this is still passive mode
+/// we will never waste time threatening while in combat mode
+/// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_ESCALATION 10 + 4
+
+/// ranged combat; stay at average effective engagement distance and fight
+/// * under this state, we are using the combat planner for movement
+#define AI_DYNAMIC_STATE_STRAFE 20 + 1
+/// melee combat; stay at maximally effective engagement distance and fight
+///               melee weapons will be preferred
+///               ranged weapons, however, may be chosen to be used instead (point blanking)
+/// * under this state, we are using the combat planner for movement
+#define AI_DYNAMIC_STATE_CQC 20 + 2
+/// hold position at **home**
+#define AI_DYNAMIC_STATE_GUARD 20 + 3
+/// fleeing towards **home**
+/// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_RETREAT 20 + 4
+/// fleeing towards somewhere that isn't home
+/// * under this state, we are using navigation for movement
+#define AI_DYNAMIC_STATE_FLEE 20 + 5
+/// move towards somewhere while shooting
+/// * under this state, we are using navigation for movement
+/// * chase behaviors are also used for this, because chases are highly interruptible.
+#define AI_DYNAMIC_STATE_FLANK 20 + 6
+
+//* stance var
+
+/// ranged combat; stay at average to max effective engagement distance and fight
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_STRAFE 1
+/// auto combat: stay at maximally effective distance of our combined weapons
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_AUTO 2
+/// melee combat: stay at average to min effective engagement distance and fight
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_CQC 3
+/// moving away from all enemies / targets
+//* movement: combat loop
+#define AI_DYNAMIC_STANCE_FLEE 4
+/// flee towards home
+//* movement: navigation
+#define AI_DYNAMIC_STANCE_RETREAT 5
+
+//* mode var
+
+/// disabled: disabled, sleeping
+#define AI_DYNAMIC_MODE_DISABLED 0
+/// passive: idle, navigation, patrol, escalation
+#define AI_DYNAMIC_MODE_PASSIVE 1
+/// combat: ranged, melee, hold, flee
+#define AI_DYNAMIC_MODE_COMBAT 2
+
+//* Core - Scheduling *//
+//? These are used as priorities for things like navigation and telegraph so we can interrupt
+//? a lower-tier action.
+
+/// do not use this as a real scheduling tier; pass this in to never pre-empt; used to check if we're scheduling
+#define AI_DYNAMIC_SCHEDULING_CHECK -1
+/// passive scheduled action, like RP fluff
+#define AI_DYNAMIC_SCHEDULING_FLUFF 0
+/// baseline combat scheduling for things like healing yourself
+#define AI_DYNAMIC_SCHEDULING_OPPORTUNISTIC 1
+/// combat scheduling for stuff like performing an aimed shot, throwing a grenade, etc
+#define AI_DYNAMIC_SCHEDULING_OFFENSIVE 2
+/// scheduling for stuff like running away / maximally important
+#define AI_DYNAMIC_SCHEDULING_CRITICAL 3
+/// do not use this as a real scheduling tier; pass this in to pre-empt the current scheduling
+#define AI_DYNAMIC_SCHEDULING_INTERRUPT 4
+
+//* Aiming *//
+
+#define AI_DYNAMIC_AIM_TRUE 0
+#define AI_DYNAMIC_AIM_FALSE 1
+#define AI_DYNAMIC_AIM_MISS 2
+
+//* Communication *//
+
+/// silenced
+#define AI_DYNAMIC_COMMUNICATION_NONE 0
+/// "help dying maint"
+#define AI_DYNAMIC_COMMUNICATION_BASIC 1
+/// "help being killed by the secret lore police at 170, 131, 2"
+#define AI_DYNAMIC_COMMUNICATION_FULL 2
+
+//* Factions *//
+
+/// someone is our teammate
+#define AI_DYNAMIC_FACTION_CHECK_GOOD 0
+/// someone is getting a little dicey (FF'd, etc; warn them)
+#define AI_DYNAMIC_FACTION_CHECK_LOUSY 1
+/// dunk that mf
+#define AI_DYNAMIC_FACTION_CHECK_TEAMKILLER 2
+/// they're not in our faction
+#define AI_DYNAMIC_FACTION_CHECK_UNKNOWN 3
+/// they're an enemy
+#define AI_DYNAMIC_FACTION_CHECK_ENEMY 4
+
+//* Navigation *//
+
+/// navigation succeeed
+#define AI_DYNAMIC_NAVIGATION_FINISHED_SUCCESSFULLY 0
+/// cancelled specifically
+#define AI_DYNAMIC_NAVIGATION_FINISHED_CANCELLED 1
+/// interrupted by a higher priority navigation request
+#define AI_DYNAMIC_NAVIGATION_FINISHED_INTERRUPTED 2
+/// navigation to target failed / couldn't reach with found path
+#define AI_DYNAMIC_NAVIGATION_FINISHED_NO_PATH 3

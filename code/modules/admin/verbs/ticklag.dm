@@ -12,7 +12,7 @@
 	if(newtick && newtick <= 2 && newtick > 0)
 		log_admin("[key_name(src)] has modified world.tick_lag to [newtick]", 0)
 		message_admins("[key_name(src)] has modified world.tick_lag to [newtick]", 0)
-		world.tick_lag = newtick
+		world.set_ticklag(newtick)
 		feedback_add_details("admin_verb","TICKLAG") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 		switch(alert("Enable Tick Compensation?","Tick Comp is currently: [config_legacy.Tickcomp]","Yes","No"))

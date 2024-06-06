@@ -103,9 +103,9 @@
 /mob/living/carbon/get_threat(var/mob/living/threatened)
 	. = ..()
 
-	if(has_AI())
-		if(!ai_holder.hostile)
-			return 0
+	// if(has_AI())
+	// 	if(!ai_holder.hostile)
+	// 		return 0
 
 	if(incapacitated(INCAPACITATION_DISABLED))
 		return 0

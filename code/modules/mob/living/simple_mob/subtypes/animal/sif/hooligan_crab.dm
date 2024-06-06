@@ -76,7 +76,7 @@
 	attacktext = list("clawed", "pinched", "crushed")
 	speak_emote = list("clicks")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hooligan
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hooligan
 	say_list_type = /datum/say_list/crab
 
 	var/weaken_amount = 2 // Be careful with this number. High values will equal a permastun.
@@ -97,7 +97,7 @@
 			visible_message(SPAN_DANGER("\The [src] crushes \the [L]!"))
 
 // The AI for hooligan crabs. Follows people for awhile.
-/datum/ai_holder/simple_mob/melee/hooligan
+/datum/ai_holder/polaris/simple_mob/melee/hooligan
 	hostile = FALSE
 	retaliate = TRUE
 	returns_home = TRUE
@@ -105,7 +105,7 @@
 	mauling = TRUE
 	var/random_follow = TRUE // Turn off if you want to bus with crabs.
 
-/datum/ai_holder/simple_mob/melee/hooligan/handle_stance_strategical()
+/datum/ai_holder/polaris/simple_mob/melee/hooligan/handle_stance_strategical()
 	..()
 	if(random_follow && stance == STANCE_IDLE && !leader)
 		if(prob(10))

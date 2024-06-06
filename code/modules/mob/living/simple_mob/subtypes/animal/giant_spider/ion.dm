@@ -19,4 +19,4 @@
 	poison_per_bite = 2
 	poison_type = "psilocybin"
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/electric_spider
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/electric_spider

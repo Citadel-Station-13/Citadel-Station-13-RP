@@ -19,7 +19,7 @@
 
 	mob_class = MOB_CLASS_ILLUSION
 
-	ai_holder_type = /datum/ai_holder/simple_mob/inert/astar // Gets controlled manually by technomancers/admins, with AI pathfinding assistance.
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/inert/astar // Gets controlled manually by technomancers/admins, with AI pathfinding assistance.
 
 	var/atom/movable/copying = null // The thing we're trying to look like.
 	var/realistic = FALSE // If true, things like bullets and weapons will hit it, to be a bit more convincing from a distance.

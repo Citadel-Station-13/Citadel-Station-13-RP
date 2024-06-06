@@ -30,7 +30,7 @@
 	meat_amount = 6
 	base_pixel_x = -16
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/otie
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive/otie
 	say_list_type = /datum/say_list/otie
 
 	var/mob/living/carbon/human/friend
@@ -229,7 +229,7 @@
 			if(health > 0)
 				M.visible_message("<span class='notice'>[M] [response_help] \the [src].</span>")
 				if(has_AI())
-					var/datum/ai_holder/AI = ai_holder
+					var/datum/ai_holder/polaris/AI = ai_holder
 					AI.set_stance(STANCE_IDLE)
 					if(prob(tame_chance))
 						AI.hostile = FALSE
@@ -243,7 +243,7 @@
 		if(INTENT_GRAB)
 			if(health > 0)
 				if(has_AI())
-					var/datum/ai_holder/AI = ai_holder
+					var/datum/ai_holder/polaris/AI = ai_holder
 					audible_emote("growls disapprovingly at [M].")
 					if(M == friend)
 						AI.lose_follow()
@@ -278,9 +278,9 @@
 	say_maybe_target = list("Ruh?", "Waf?")
 	say_got_target = list("Rurrr!", "ROAR!", "MARR!", "RERR!", "RAHH!", "RAH!", "WARF!")
 
-/datum/ai_holder/simple_mob/melee/evasive/otie
+/datum/ai_holder/polaris/simple_mob/melee/evasive/otie
 
-/datum/ai_holder/simple_mob/melee/evasive/otie/New(var/mob/living/simple_mob/otie/new_holder)
+/datum/ai_holder/polaris/simple_mob/melee/evasive/otie/New(var/mob/living/simple_mob/otie/new_holder)
 	.=..()
 	if(new_holder.tamed)
 		hostile = FALSE

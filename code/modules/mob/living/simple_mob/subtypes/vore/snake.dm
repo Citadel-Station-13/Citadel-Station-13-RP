@@ -30,7 +30,7 @@
 	base_pixel_x = -16
 	base_pixel_y = -16
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/giant_snake

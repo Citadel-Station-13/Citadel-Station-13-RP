@@ -7,10 +7,9 @@
  * adminghosted people do not count.
  */
 /mob/proc/is_ssd()
+	if(!isnull(ai_holder) && (ai_holder.ticking || !ai_holder.ticking_off_is_ssd))
+		return FALSE
 	return ckey && isnull(client) && isnull(teleop) && !IS_DEAD(src)
-
-/mob/living/is_ssd()
-	return isnull(ai_holder) && ..()
 
 /**
  * basically, indicates that a player's gone, and there's no ai holder
@@ -18,10 +17,9 @@
  * people who are dead do not count
  */
 /mob/proc/is_catatonic()
+	if(!isnull(ai_holder) && (ai_holder.ticking || !ai_holder.ticking_off_is_ssd))
+		return FALSE
 	return !ckey && !IS_DEAD(src)
-
-/mob/living/is_catatonic()
-	return isnull(ai_holder) && ..()
 
 /**
  * update ssd overlay

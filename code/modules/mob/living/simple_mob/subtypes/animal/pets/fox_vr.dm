@@ -40,7 +40,7 @@
 	hide_amount = 3
 
 	say_list_type = /datum/say_list/fox
-	ai_holder_type = /datum/ai_holder/simple_mob/fox
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/fox
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
@@ -52,7 +52,7 @@
 	say_maybe_target = list("Yip?","Yap?")
 	say_got_target = list("YAP!","YIP!")
 
-/datum/ai_holder/simple_mob/fox
+/datum/ai_holder/polaris/simple_mob/fox
 	hostile = FALSE
 	cooperative = TRUE
 	returns_home = FALSE
@@ -141,7 +141,7 @@
 	visible_emote(pick("nips [friend].", "brushes against [friend].", "tugs on [friend].", "chrrrrs."))
 
 	if(has_AI())
-		var/datum/ai_holder/AI = ai_holder
+		var/datum/ai_holder/polaris/AI = ai_holder
 		AI.set_follow(friend)
 
 /* Old fox friend AI, I'm not sure how to add the fancy "friend is dead" stuff so I'm commenting it out for someone else to figure it out, this is just baseline stuff.
@@ -208,7 +208,7 @@
 	//befriend_job = "Facility Director" Sebbe edit: couldn't make this work, commenting out for now.
 
 	var/mob/living/friend = null // Our best pal, who we'll follow. awoo.
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 	makes_dirt = FALSE	// No more dirt
 	randomized = FALSE
 

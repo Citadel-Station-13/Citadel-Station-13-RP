@@ -59,6 +59,9 @@
 /**
  * Does an action after a delay.
  *
+ * Note: the only reason this proc is so massive is because we don't copy the arg list
+ * a lot. The callback directly passes in the list, instead of copying it.
+ *
  * @params
  * * user - acting mob
  * * delay - how long in deciseconds
@@ -67,10 +70,11 @@
  * * mobility_flags - required mobility flags
  * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
  * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ * * data - user defined data that can be accepted by the callback.
  * * progress_anchor - override progressbar anchor location
  * * progress_instance - override progressbar instance
  */
-/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
+/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, data, atom/progress_anchor, datum/progressbar/progress_instance)
 	if(isnull(user))
 		return FALSE
 	if(!delay)
