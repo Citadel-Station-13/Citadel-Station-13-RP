@@ -48,7 +48,7 @@
 	var/poison_chance = 35			// Chance for injection to occur.
 	var/poison_per_bite = 5			// Amount added per injection.
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/apply_melee_effects(var/atom/A)

@@ -2,21 +2,7 @@
 // The neat thing with having this here instead of on the mob is that it is independant of Life(), and that different mobs
 // can use a more or less complex AI by giving it a different datum.
 
-/mob/living
-	var/datum/ai_holder/ai_holder = null
-	var/ai_holder_type = null // Which ai_holder datum to give to the mob when initialized. If null, nothing happens.
-
-/mob/living/Initialize(mapload)
-	if(ai_holder_type)
-		ai_holder = new ai_holder_type(src)
-	return ..()
-
-/mob/living/Destroy()
-	if(ai_holder)
-		QDEL_NULL(ai_holder)
-	return ..()
-
-/datum/ai_holder
+/datum/ai_holder/polaris
 	var/mob/living/holder = null		// The mob this datum is going to control.
 	var/stance = STANCE_IDLE			// Determines if the mob should be doing a specific thing, e.g. attacking, following, standing around, etc.
 	var/intelligence_level = AI_NORMAL	// Adjust to make the AI be intentionally dumber, or make it more robust (e.g. dodging grenades).
@@ -25,23 +11,21 @@
 										// mob to stay still (e.g. delayed attacwking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
 
-
-
-/datum/ai_holder/hostile
+/datum/ai_holder/polaris/hostile
 	hostile = TRUE
 
-/datum/ai_holder/retaliate
+/datum/ai_holder/polaris/retaliate
 	hostile = TRUE
 	retaliate = TRUE
 
-/datum/ai_holder/New(var/new_holder)
+/datum/ai_holder/polaris/New(var/new_holder)
 	ASSERT(new_holder)
 	holder = new_holder
 	SSai.processing += src
 	home_turf = get_turf(holder)
 	..()
 
-/datum/ai_holder/Destroy()
+/datum/ai_holder/polaris/Destroy()
 	holder = null
 	SSai.processing -= src // We might've already been asleep and removed, but byond won't care if we do this again and it saves a conditional.
 	home_turf = null
@@ -53,7 +37,7 @@
 // Makes this ai holder not get processed.
 // Called automatically when the host mob is killed.
 // Potential future optimization would be to sleep AIs which mobs that are far away from in-round players.
-/datum/ai_holder/proc/go_sleep()
+/datum/ai_holder/polaris/proc/go_sleep()
 	if(stance == STANCE_SLEEP)
 		return
 	forget_everything() // If we ever wake up, its really unlikely that our current memory will be of use.
@@ -62,7 +46,7 @@
 
 // Reverses the above proc.
 // Revived mobs will wake their AI if they have one.
-/datum/ai_holder/proc/go_wake()
+/datum/ai_holder/polaris/proc/go_wake()
 /*	if(stance != STANCE_SLEEP)
 		return
 	if(!should_wake())
@@ -71,7 +55,7 @@
 	set_stance(STANCE_IDLE)
 	SSai.processing += src
 
-/datum/ai_holder/proc/should_wake()
+/datum/ai_holder/polaris/proc/should_wake()
 	if(holder.client && !autopilot)
 		return FALSE
 	if(holder.stat >= DEAD)
@@ -79,7 +63,7 @@
 	return TRUE
 
 // Resets a lot of 'memory' vars.
-/datum/ai_holder/proc/forget_everything()
+/datum/ai_holder/polaris/proc/forget_everything()
 	// Some of these might be redundant, but hopefully this prevents future bugs if that changes.
 	lose_follow()
 	lose_target()
@@ -87,23 +71,23 @@
 	give_up_movement()
 
 // 'Tactical' processes such as moving a step, meleeing an enemy, firing a projectile, and other fairly cheap actions that need to happen quickly.
-/datum/ai_holder/proc/handle_tactics()
+/datum/ai_holder/polaris/proc/handle_tactics()
 	if(busy)
 		return
 	handle_special_tactic()
 	handle_stance_tactical()
 
 // 'Strategical' processes that are more expensive on the CPU and so don't get run as often as the above proc, such as A* pathfinding or robust targeting.
-/datum/ai_holder/proc/handle_strategicals()
+/datum/ai_holder/polaris/proc/handle_strategicals()
 	if(busy)
 		return
 	handle_special_strategical()
 	handle_stance_strategical()
 
 // Override these for special things without polluting the main loop.
-/datum/ai_holder/proc/handle_special_tactic()
+/datum/ai_holder/polaris/proc/handle_special_tactic()
 
-/datum/ai_holder/proc/handle_special_strategical()
+/datum/ai_holder/polaris/proc/handle_special_strategical()
 
 /*
 	//AI Actions
@@ -133,14 +117,14 @@
 */
 
 // For setting the stance WITHOUT processing it
-/datum/ai_holder/proc/set_stance(var/new_stance)
+/datum/ai_holder/polaris/proc/set_stance(var/new_stance)
 	ai_log("set_stance() : Setting stance from [stance] to [new_stance].", AI_LOG_INFO)
 	stance = new_stance
 	if(stance_coloring) // For debugging or really weird mobs.
 		stance_color()
 
 // This is called every half a second.
-/datum/ai_holder/proc/handle_stance_tactical()
+/datum/ai_holder/polaris/proc/handle_stance_tactical()
 	ai_log("========= Fast Process Beginning ==========", AI_LOG_TRACE) // This is to make it easier visually to disinguish between 'blocks' of what a tick did.
 	ai_log("handle_stance_tactical() : Called.", AI_LOG_TRACE)
 
@@ -235,7 +219,7 @@
 	ai_log("========= Fast Process Ending ==========", AI_LOG_TRACE)
 
 // This is called every two seconds.
-/datum/ai_holder/proc/handle_stance_strategical()
+/datum/ai_holder/polaris/proc/handle_stance_strategical()
 	ai_log("++++++++++ Slow Process Beginning ++++++++++", AI_LOG_TRACE)
 	ai_log("handle_stance_strategical() : Called.", AI_LOG_TRACE)
 
@@ -268,29 +252,35 @@
 
 // Helper proc to turn AI 'busy' mode on or off without having to check if there is an AI, to simplify writing code.
 /mob/living/proc/set_AI_busy(value)
-	if(ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(istype(ai_holder))
 		ai_holder.busy = value
 
 /mob/living/proc/is_AI_busy()
-	if(!ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(!istype(ai_holder))
 		return FALSE
 	return ai_holder.busy
 
 // Helper proc to check for the AI's stance.
 // Returns null if there's no AI holder, or the mob has a player and autopilot is not on.
 // Otherwise returns the stance.
-/mob/living/proc/get_AI_stance()
-	if(!ai_holder)
+/mob/living/proc/get_polaris_AI_stance()
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(!istype(ai_holder))
 		return null
 	if(client && !ai_holder.autopilot)
 		return null
 	return ai_holder.stance
 
 // Similar to above but only returns 1 or 0.
-/mob/living/proc/has_AI()
-	return get_AI_stance() ? TRUE : FALSE
+/mob/living/proc/has_polaris_AI()
+	if(!istype(ai_holder, /datum/ai_holder/polaris))
+		return FALSE
+	return get_polaris_AI_stance() ? TRUE : FALSE
 
 // 'Taunts' the AI into attacking the taunter.
 /mob/living/proc/taunt(atom/movable/taunter, force_target_switch = FALSE)
-	if(ai_holder)
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(istype(ai_holder))
 		ai_holder.receive_taunt(taunter, force_target_switch)

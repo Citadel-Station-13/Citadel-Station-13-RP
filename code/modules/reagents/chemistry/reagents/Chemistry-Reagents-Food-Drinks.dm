@@ -45,7 +45,6 @@
 	affect_ingest(M, alien, removed)
 
 /datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
-	var/hyd_removed
 	switch(alien)
 		if(IS_DIONA)
 			return
@@ -58,7 +57,7 @@
 	M.heal_organ_damage(0.5 * removed, 0)
 	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness
-	M.adjust_hydration(hydration_factor * hyd_removed)
+	M.adjust_hydration(hydration_factor * removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
@@ -1245,7 +1244,7 @@
 	taste_description = "tropical, somewhat buttery water"
 	color = "#fafafa70"
 	nutrition=1
-	
+
 	glass_name = "Coconut Water"
 	glass_desc = "A fresh clear liquid found within coconuts."
 
