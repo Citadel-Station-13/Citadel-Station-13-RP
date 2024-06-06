@@ -89,15 +89,20 @@
 		/datum/turf_reservation,
 	)
 
+	// create context
+	var/datum/dmm_context/context = create_dmm_context()
+	context.mangling_id = generate_mangling_id()
+	for(var/datum/map_injection/injection as anything in map_injections)
+		context.register_injection(injection)
+
 	// load into reservation
-	#warn this is context. also, fix the load stuff too.
-	#warn inject middleware int ocontext
-	#warn generate mangling id
-	var/list/loaded_bounds = parsed_map.load(
+	var/datum/dmm_context/loaded_context = parsed_map.load(
 		reservation.bottom_left_coords[1] + 1,
 		reservation.bottom_left_coords[2] + 1,
 		reservation.bottom_left_coords[3],
+		context = context,
 	)
+	var/list/loaded_bounds = loaded_context.loaded_bounds
 
 	// set descriptor
 	instance.descriptor = instance_descriptor()
@@ -122,6 +127,12 @@
 	else if(ispath(descriptor, /datum/shuttle_descriptor))
 		return new descriptor
 	CRASH("what? [descriptor] ([REF(descriptor)])")
+
+/datum/shuttle_template/proc/generate_mangling_id()
+	var/static/notch = 0
+	if(notch >= SHORT_REAL_LIMIT)
+		stack_trace("how the hell are we at this number?")
+	return "shuttle-[++notch]-[SSmapping.round_global_descriptor]"
 
 /datum/map_template/shuttle
 	abstract_type = /datum/map_template/shuttle

@@ -43,7 +43,7 @@
  * * fired shuttle-side and dock-side
  * * some events ('post-xyz') cannot be blocked.
  */
-/datum/shuttle_hook/proc/on_dock_event(datum/event_args/shuttle/docking/event)
+/datum/shuttle_hook/proc/on_dock_event(datum/event_args/shuttle/dock/event)
 	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/shuttle_hook/proc/release()

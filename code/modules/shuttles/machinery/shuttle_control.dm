@@ -51,6 +51,18 @@
 	if(.)
 		return
 	switch(action)
+		if("dock")
+		if("undock")
+		if("manual")
+		if("destination")
+		if("launch")
+		if("force")
+			var/dangerous = params["dangerous"]
+		if("abort")
+		if("removeCode")
+			var/code = params["code"]
+		if("addCode")
+			var/code = params["code"]
 		#warn impl
 
 /obj/machinery/computer/shuttle_control/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

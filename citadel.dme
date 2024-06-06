@@ -4602,6 +4602,7 @@
 #include "code\modules\shuttles\shuttle\shuttle_docker.dm"
 #include "code\modules\shuttles\shuttle\shuttle_port.dm"
 #include "code\modules\shuttles\shuttle\shuttle_template.dm"
+#include "code\modules\shuttles\shuttle\shuttle_transit_cycle.dm"
 #include "code\modules\shuttles\shuttle\controllers\escape_pod.dm"
 #include "code\modules\shuttles\shuttle\controllers\ferry.dm"
 #include "code\modules\shuttles\shuttle\controllers\overmap.dm"

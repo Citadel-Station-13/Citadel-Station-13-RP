@@ -156,7 +156,3 @@
 /datum/event_args/shuttle/translation/pre_move
 
 /datum/event_args/shuttle/translation/post_move
-
-/**
- *
- */

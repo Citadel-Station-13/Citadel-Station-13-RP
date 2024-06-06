@@ -23,11 +23,27 @@
 	var/list/blocked_from_moving
 	#warn hook
 
-	//* Docking
+	//* Docking - Control
 	/// stored docking codes
 	var/list/docking_codes
 	/// dock UIDs we always have codes for
 	var/list/docking_always_has_code_to_ids
+
+	//* Docking - State
+	/// current docking cycle
+	var/docking_cycle = 0
+	/// list of callbacks to invoke on end of docking cycle
+	///
+	/// * callbacks are invoked with (src, status: SHUTTLE_DOKCING_STATUS_*, state: SHUTTLE_DOCKING_STATE_*)
+	/// * 'state' in the third argument is the state that we were interrupted from; so if state is DOCKING, this was an interrupted docking.
+	var/list/datum/callback/docking_callbacks
+	/// docking state
+	var/docking_state = SHUTTLE_DOCKING_STATE_IDLE
+	/// nicely request that we aren't interrupted
+	/// ... so basically, does literally nothing other than stop players from doing it (not even admins)
+	var/docking_no_interrupt = FALSE
+
+	//* Manual Landing
 	/// current manual landing dock
 	var/obj/shuttle_dock/manual_dock
 	/// /datum/shuttle_docker instances by user
@@ -37,31 +53,8 @@
 	var/list/datum/shuttle_docker/docker_by_user
 
 	//* Transit
-	/// world.time we should arrive at destination
-	var/transit_arrival_time
-	/// dock we're going towards
-	/// this dock will have us set as inbound, which should
-	/// protect it from everything else
-	///
-	/// if the dock is occupied by the time we get there,
-	/// that is **undefined behavior.**
-	var/obj/shuttle_dock/transit_target_dock
-	/// are we doing a centered landing on said dock?
-	/// if not, and there's no aligning port, we align our anchor's coordinates on the dock's coordinates.
-	var/transit_target_centered_mode
-	/// which direction should we land, for centered?
-	var/transit_target_direction
-	/// if not centered, are we aligning with a specific port?
-	var/obj/shuttle_port/transit_target_port
-	/// timerid for movement
-	/// todo: cpu used shouldn't be counted against SStimers.
-	var/transit_timer_id
-	/// timerid for making warning bubbles
-	var/transit_visual_timer_id
-	/// callbacks for when transit is done: called with (controller: src, target: transit_target_dock, status: SHUTTLE_TRANSIT_STATUS_*)
-	var/list/datum/callback/transit_finish_callbacks
-	/// transit visuals
-	var/list/obj/effect/temporary_effect/shuttle_landing/transit_warning_visuals
+	/// in-progress transit
+	var/datum/shuttle_transit_cycle/transit_cycle
 	/// default transit time
 	var/transit_time_default = 10 SECONDS
 
@@ -85,18 +78,7 @@
 /datum/shuttle_controller/proc/unregister_movement_block(datum/source)
 	LAZYREMOVE(blocked_from_moving, source)
 
-//* Docking API - use this API always, do not manually control the shuttle. *//
-
-/**
- * @params
- * * dock - dock to move to
- * * force - hard force, ram everything out of the way on the destination side if needed
- * * immediate - blow past all docking procedures, do not block on anything IC fluff or otherwise
- *
- * @return TRUE / FALSE on success / failure
- */
-/datum/shuttle_controller/proc/move_to_dock(obj/shuttle_dock/dock, force = FALSE, immediate = FALSE)
-	#warn impl
+//* Docking - Control *//
 
 /datum/shuttle_controller/proc/has_codes_for(obj/shuttle_dock/dock)
 	if(dock.docking_code in docking_codes)
@@ -104,6 +86,108 @@
 	if(dock.dock_id in docking_always_has_code_to_ids)
 		return TRUE
 	return FALSE
+
+//* Docking - Main *//
+
+/**
+ * * returns existing op id if already docking
+ * * interrupts undocking automatically
+ *
+ * @params
+ * * no_interrupt - nicely suggests we shouldn't be interrupted. this doesn't actually make sure we aren't interrupted.
+ *
+ * @return op id
+ */
+/datum/shuttle_controller/proc/asynchronously_dock(datum/callback/on_finish, no_interrupt)
+	#warn impl
+
+/**
+ * * returns existing op id if already undocking
+ * * interrupts docking automatically
+ *
+ * @params
+ * * no_interrupt - nicely suggests we shouldn't be interrupted. this doesn't actually make sure we aren't interrupted.
+ *
+ * @return op id
+ */
+/datum/shuttle_controller/proc/asynchronously_undock(datum/callback/on_finish, no_interrupt)
+	#warn impl
+
+/**
+ * immediately interrupt docking
+ */
+/datum/shuttle_controller/proc/interrupt_docking()
+	#warn impl
+
+/**
+ * immediately interrupt docking
+ */
+/datum/shuttle_controller/proc/interrupt_undocking()
+	#warn impl
+
+/**
+ * * returns existing op id if already docking
+ * * interrupts undocking automatically
+ *
+ * @params
+ * * no_interrupt - nicely suggests we shouldn't be interrupted. this doesn't actually make sure we aren't interrupted.
+ *
+ * @return op id
+ */
+/datum/shuttle_controller/proc/synchronously_dock(no_interrupt)
+	#warn impl
+
+/**
+ * * returns existing op id if already undocking
+ * * interrupts docking automatically
+ *
+ * @params
+ * * no_interrupt - nicely suggests we shouldn't be interrupted. this doesn't actually make sure we aren't interrupted.
+ *
+ * @return op id
+ */
+/datum/shuttle_controller/proc/synchronously_undock(no_interrupt)
+	#warn impl
+
+/**
+ * block on a docking op
+ *
+ * @params
+ * * cycle - the operation id
+ *
+ * @return SHUTTLE_DOCKING_STATUS_*
+ */
+/datum/shuttle_controller/proc/block_on_docking(cycle)
+	#warn impl
+
+/**
+ * block on an undocking op
+ *
+ * @params
+ * * cycle - the operation id
+ *
+ * @return SHUTTLE_DOCKING_STATUS_*
+ */
+/datum/shuttle_controller/proc/block_on_undocking(cycle)
+	#warn impl
+
+/**
+ * @params
+ * * cycle - the operation id
+ * * callback - what to call
+ */
+/datum/shuttle_controller/proc/on_docking(cycle, datum/callback/callback)
+	#warn impl
+
+/**
+ * @params
+ * * cycle - the operation id
+ * * callback - what to call
+ */
+/datum/shuttle_controller/proc/on_undocking(cycle, datum/callback/callback)
+	#warn impl
+
+//* Docking - Manual Landmarks *//
 
 /**
  * call to designate a manual landing position
@@ -118,8 +202,6 @@
 	#warn impl
 	#warn interrupt in-progress moves
 
-//* Docking - Manual Landmarks *//
-
 /**
  * returns a list of name-to-turf of valid jump points on a given zlevel
  */
@@ -132,7 +214,7 @@
 /datum/shuttle_controller/proc/manual_landing_levels()
 	#warn impl
 
-//* Docking - Transit *//
+//* Movement - Transit *//
 
 /**
  * default transit time for a dock
@@ -316,7 +398,6 @@
 	. = ..()
 	.["$src"] = REF(src)
 	.["$tgui"] = tgui_module
-	.["controllable"] = controllable
 
 /datum/shuttle_controller/proc/tgui_act(action, list/params, authorization)
 	#warn impl
