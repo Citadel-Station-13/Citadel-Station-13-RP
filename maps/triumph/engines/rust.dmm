@@ -326,8 +326,9 @@
 	},
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "dB" = (
@@ -403,8 +404,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "gu" = (
@@ -932,14 +934,15 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
 "Hw" = (
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "HR" = (
@@ -1003,8 +1006,9 @@
 	},
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ll" = (
@@ -1057,8 +1061,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "Nf" = (
@@ -1080,8 +1085,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "NY" = (
