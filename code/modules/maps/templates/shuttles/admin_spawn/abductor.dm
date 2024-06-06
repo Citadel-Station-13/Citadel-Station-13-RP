@@ -68,9 +68,9 @@ You will find a dispenser within the room you started in which contains some bas
 	name = "anti-personnel turret"
 	installation = /obj/item/gun/energy/gun/taser
 	lethal = FALSE
-	health = 500 // Sturdier turrets, non-lethal, for capturing people alive
-	maxhealth = 500
-	req_one_access = list(777) // The code I've been using for events, same as the doors
+	integrity = 500
+	integrity_max = 500
+	req_one_access = list(ACCESS_FACTION_ALIEN) // The code I've been using for events, same as the doors
 
 /obj/machinery/porta_turret/alien/abductor/ion
 	name = "anti-personnel turret"

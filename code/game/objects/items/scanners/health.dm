@@ -6,10 +6,10 @@
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5
 	throw_range = 10
-	materials = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
 	var/mode = 1
 	var/advscan = 0
@@ -275,7 +275,7 @@
 
 /obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	mode = !mode
 	switch (mode)
@@ -286,7 +286,7 @@
 
 /obj/item/healthanalyzer/proc/toggle_adv()
 	set name = "Toggle Advanced Scan"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	showadvscan = !showadvscan
 	switch (showadvscan)

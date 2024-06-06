@@ -1,8 +1,7 @@
 // Operates TGUI
-/obj/item/modular_computer/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/simple/headers)
-	)
+/obj/item/modular_computer/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/headers
+	return ..()
 
 /obj/item/modular_computer/ui_interact(mob/user, datum/tgui/ui)
 	if(!screen_on || !enabled)
@@ -33,7 +32,7 @@
 		ui.set_autoupdate(TRUE)
 		ui.open()
 
-/obj/item/modular_computer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/modular_computer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = get_header_data()
 
 	data["login"] = list()
@@ -76,7 +75,7 @@
 	return data
 
 // Handles user's GUI input
-/obj/item/modular_computer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/modular_computer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

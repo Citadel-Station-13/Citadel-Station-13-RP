@@ -33,6 +33,3 @@
 		dx = s/abs(s)
 		dy = c / abs(s)
 
-	//now tell the solar control computers to update their status and linked devices
-	for(var/obj/machinery/power/solar_control/SC in GLOB.solars_list)
-		SC.update()

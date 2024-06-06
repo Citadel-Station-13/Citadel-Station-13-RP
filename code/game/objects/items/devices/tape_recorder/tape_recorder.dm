@@ -4,12 +4,12 @@
 	icon_state = "taperecorder_empty"
 	item_state = "analyzer"
 	icon = 'icons/obj/device.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	throw_force = 2
 	throw_speed = 4
 	throw_range = 20
-	materials = list(MAT_STEEL = 60, MAT_GLASS = 30)
+	materials_base = list(MAT_STEEL = 60, MAT_GLASS = 30)
 
 	/// inserted tape
 	var/obj/item/cassette_tape/tape = /obj/item/cassette_tape/random
@@ -106,7 +106,7 @@
 		if(user && !silent)
 			to_chat(user, SPAN_WARNING("[src] is busy!"))
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		if(user && !silent)
 			to_chat(user, SPAN_WARNING("[src] makes a scratchy noise."))
 		return
@@ -138,7 +138,7 @@
 	playing = FALSE
 	update_icon()
 
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		tape.ruin()
 		audible_message("<font color=Maroon><B>Tape Recorder</B>: This tape recorder will self-destruct in... Five.</font>")
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, audible_message), "<font color=Maroon><B>Tape Recorder</B>: Four.</font>"), 1 SECONDS)
@@ -167,6 +167,9 @@
 	if(!_read_lock())
 		if(user && !silent)
 			to_chat(user, SPAN_WARNING("[src] failed to lock the tape for reading."))
+		return
+	if(!tape.reel || !length(tape.reel))
+		to_chat(user, SPAN_WARNING("[src] has nothing to play!"))
 		return
 	if(!silent)
 		audible_message("[SPAN_BOLD("[src]")]: Playback started.")
@@ -202,7 +205,7 @@
 
 /obj/item/tape_recorder/verb/playback_memory()
 	set name = "Playback Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -254,14 +257,14 @@
 
 /obj/item/tape_recorder/verb/eject()
 	set name = "Eject Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
 	if(!tape)
 		to_chat(usr, "<span class='notice'>There's no tape in \the [src].</span>")
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		to_chat(usr, "<span class='notice'>The tape seems to be stuck inside.</span>")
 		return
 	to_chat(usr, "<span class='notice'>You remove [tape] from [src].</span>")
@@ -313,8 +316,8 @@
 //! end
 
 /obj/item/tape_recorder/emag_act(var/remaining_charges, var/mob/user)
-	if(obj_flags & EMAGGED)
-		obj_flags |= EMAGGED
+	if(obj_flags & OBJ_EMAGGED)
+		obj_flags |= OBJ_EMAGGED
 		recording = 0
 		to_chat(user, "<span class='warning'>PZZTTPFFFT</span>")
 		update_icon()
@@ -334,7 +337,7 @@
 
 /obj/item/tape_recorder/verb/record()
 	set name = "Start Recording"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -342,7 +345,7 @@
 
 /obj/item/tape_recorder/verb/stop()
 	set name = "Stop"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -352,11 +355,11 @@
 
 /obj/item/tape_recorder/verb/wipe_tape()
 	set name = "Wipe Tape"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(!tape)
@@ -373,7 +376,7 @@
 
 /obj/item/tape_recorder/verb/print_transcript()
 	set name = "Print Transcript"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return
@@ -383,7 +386,7 @@
 	if(tape.ruined)
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
-	if(obj_flags & EMAGGED)
+	if(obj_flags & OBJ_EMAGGED)
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(!print_ready())

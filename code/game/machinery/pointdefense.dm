@@ -66,7 +66,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			PD.Deactivate()
 		return TRUE
 
-/obj/machinery/pointdefense_control/ui_data(mob/user)
+/obj/machinery/pointdefense_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["id"] = id_tag
 	var/list/turrets = list()

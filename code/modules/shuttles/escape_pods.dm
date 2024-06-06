@@ -47,7 +47,7 @@
 	program = /datum/computer/file/embedded_program/docking/simple
 	var/datum/shuttle/autodock/ferry/escape_pod/pod
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_data(mob/user, datum/tgui/ui)
 	var/datum/computer/file/embedded_program/docking/simple/docking_program = program // Cast to proper type
 
 	. = list(
@@ -59,7 +59,7 @@
 		"internalTemplateName" = "EscapePodConsole",
 	)
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_act(action, params)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -81,7 +81,7 @@
 	program = /datum/computer/file/embedded_program/docking/simple/escape_pod_berth
 	valid_actions = list("toggle_override", "force_door")
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_data(mob/user, datum/tgui/ui)
 	var/datum/computer/file/embedded_program/docking/simple/docking_program = program // Cast to proper type
 
 	var/armed = null

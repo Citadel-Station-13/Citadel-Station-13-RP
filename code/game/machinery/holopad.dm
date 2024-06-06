@@ -447,7 +447,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		ui = new(user, src, "Holopad")
 		ui.open()
 
-/obj/machinery/holopad/ui_static_data(mob/user)
+/obj/machinery/holopad/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["connectivity"] = ui_connectivity_data()
 	.["isAI"] = isAI(user)
@@ -462,7 +462,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	.["ringerToggle"] = ringer_toggleable
 	.["autoToggle"] = call_auto_toggle
 
-/obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/holopad/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["isAIProjecting"] = isAI(user) && is_ai_projecting(user)
 	.["aiRequested"] = !request_ai_cooldown()
@@ -477,7 +477,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		ringing[++ringing.len] = holocall.ui_caller_id_source()
 	.["ringing"] = ringing
 
-/obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		// user requesting ai
@@ -583,7 +583,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 			outgoing_call.cleanup_remote_presence()
 			return TRUE
 
-/obj/machinery/holopad/ui_close(mob/user)
+/obj/machinery/holopad/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	// if they were remoting, kick 'em - they do get buttons on top left but
 	// we want to enforce interface being open.

@@ -59,7 +59,7 @@
 		ui = new(user, src, "AiRestorer", name)
 		ui.open()
 
-/obj/machinery/computer/aifixer/ui_data(mob/user)
+/obj/machinery/computer/aifixer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["ejectable"] = FALSE
@@ -80,7 +80,7 @@
 
 	return data
 
-/obj/machinery/computer/aifixer/ui_act(action, params)
+/obj/machinery/computer/aifixer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	if(!occupier)

@@ -30,15 +30,14 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "showcase_1"
 	desc = "A stand with the empty body of a cyborg bolted to it."
-	density = 1
-	anchored = 1
-	unacidable = 1//temporary until I decide whether the borg can be removed. -veyveyr
+	density = TRUE
+	anchored = TRUE
 
 /obj/structure/showcase/sign
 	name = "WARNING: WILDERNESS"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "wilderness1"
-	desc = "This appears to be a sign warning people that the other side is dangerous. It also says that NanoTrasen cannot guarantee your safety beyond this point."
+	desc = "This appears to be a sign warning people that the other side is dangerous. It also says that Nanotrasen cannot guarantee your safety beyond this point."
 
 /obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
@@ -48,7 +47,7 @@
 	name = "beach ball"
 	density = 0
 	anchored = 0
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 0.0
 	throw_force = 0.0
 	throw_speed = 1

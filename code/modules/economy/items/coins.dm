@@ -6,7 +6,7 @@
 	icon_state = "coin"
 	damage_force = 0.0
 	throw_force = 0.0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	var/string_attached
 	var/sides = 2

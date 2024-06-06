@@ -8,8 +8,10 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	preview_icon = 'icons/mob/species/shadekin/preview.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-	tail = "tail"
-	icobase_tail = TRUE
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+	)
 
 	//TODO: Something that's not wiki copypaste
 	blurb = {"
@@ -146,7 +148,7 @@
 /datum/species/shadekin/get_random_name()
 	return "shadekin"
 
-/datum/species/shadekin/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/shadekin/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	handle_shade(H)
 
 /datum/species/shadekin/can_breathe_water()

@@ -8,6 +8,14 @@
 	abstract_type = /datum/map
 	/// id - must be unique
 	var/id
+	/// mangling id override
+	var/mangling_id
+	/// force mangling ids of levels to be the same
+	/// you usually want this to be on!
+	var/levels_match_mangling_id = TRUE
+	/// override map id for persistence so two maps are considered the same
+	/// two maps should **never** be loaded at the same time with the same persistence ID!
+	var/persistence_id
 	/// in-code name
 	var/name = "Unknown Map"
 	/// in-code category
@@ -55,6 +63,12 @@
 	if(loaded)
 		. = QDEL_HINT_LETMELIVE
 		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED MAP.")
+	for(var/datum/map_level/level in levels)
+		if(level.parent_map != src)
+			stack_trace("how?")
+			continue
+		level.parent_map = null
+	levels = null
 	return ..()
 
 /datum/map/serialize()
@@ -115,7 +129,11 @@
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
 			var/datum/map_level/level_path = levels[i]
-			levels[i] = new level_path
+			var/datum/map_level/level_instance = new level_path
+			level_instance.hardcoded = TRUE
+			levels[i] = level_instance
+			if(levels_match_mangling_id)
+				level_instance.mangling_id = mangling_id || id
 
 /**
  * anything to do immediately on load
@@ -146,6 +164,10 @@
 	var/world_width
 	/// force world to be bigger height
 	var/world_height
+
+	/// allow random picking if no map set
+	/// used to exclude indev maps
+	var/allow_random_draw = TRUE
 
 	//! legacy below
 
@@ -210,8 +232,6 @@
 	var/datum/spawnpoint/spawnpoint_died = /datum/spawnpoint/arrivals	// Used if you end the round dead.
 	var/datum/spawnpoint/spawnpoint_left = /datum/spawnpoint/arrivals	// Used of you end the round at centcom.
 	var/datum/spawnpoint/spawnpoint_stayed = /datum/spawnpoint/cryo		// Used if you end the round on the station.
-	/// legacy persistence id
-	var/legacy_persistence_id
 
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.

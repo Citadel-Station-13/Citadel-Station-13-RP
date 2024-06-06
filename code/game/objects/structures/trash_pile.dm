@@ -43,12 +43,9 @@
 		"boxfort",
 		"trashbag",
 		"brokecomp")
-	pest_nest = new(src)
+	if(prob(50))
+		pest_nest = new(src)
 
-/obj/structure/trash_pile/Destroy()
-	qdel(pest_nest)
-	pest_nest = null
-	return ..()
 
 /obj/structure/trash_pile/attackby(obj/item/W as obj, mob/user as mob)
 	var/w_type = W.type
@@ -123,6 +120,12 @@
 
 	else
 		return ..()
+
+/obj/structure/trash_pile/proc/create_mob_spawner()
+	if(!pest_nest)
+		pest_nest = new(src)
+	else
+		debug_admins("[src] tried to create pest_nest when pest_nest already existsed([pest_nest])")
 
 //Random lists
 /obj/structure/trash_pile/proc/produce_alpha_item()
@@ -280,7 +283,6 @@
 	icon_state = "randompile"
 	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse)
 	simultaneous_spawns = 1
-	destructible = 1
 	spawn_delay = 1 HOUR
 
 /obj/structure/mob_spawner/pest_nest/Initialize(mapload)

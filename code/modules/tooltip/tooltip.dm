@@ -40,14 +40,15 @@ Notes:
 
 
 /datum/tooltip/New(client/C)
-	if (C)
-		owner = C
-		var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/jquery)
-		stuff.send(owner)
-		owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
+	if(!C)
+		return
+	owner = C
+	addtimer(CALLBACK(src, PROC_REF(init)), 0)
 
-	..()
-
+/datum/tooltip/proc/init()
+	var/datum/asset_pack/stuff = SSassets.ready_asset_pack(/datum/asset_pack/simple/jquery)
+	SSassets.send_asset_pack(owner, stuff)
+	owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
 
 /datum/tooltip/proc/show(atom/movable/thing, params = null, title = null, content = null, theme = "default", special = "none")
 	if (!thing || !params || (!title && !content) || !owner || !isnum(world.icon_size))
@@ -84,7 +85,6 @@ Notes:
 
 	return TRUE
 
-
 /datum/tooltip/proc/hide()
 	queueHide = showing ? TRUE : FALSE
 
@@ -107,8 +107,8 @@ Notes:
 /proc/openToolTip(mob/user = null, atom/movable/tip_src = null, params = null, title = "", content = "", theme = "")
 	if(istype(user))
 		if(user.client && user.client.tooltips)
-			if(!theme && user.client.prefs && user.client.prefs.tooltipstyle)
-				theme = lowertext(user.client.prefs.tooltipstyle)
+			if(!theme)
+				theme = lowertext(user.get_preference_entry(/datum/game_preference_entry/dropdown/tooltip_style))
 			if(!theme)
 				theme = "midnight"
 			user.client.tooltips.show(tip_src, params, title, content, theme)

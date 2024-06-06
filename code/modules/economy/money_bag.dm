@@ -6,7 +6,7 @@
 	icon_state = "moneybag"
 	damage_force = 10.0
 	throw_force = 2.0
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/moneybag/attack_hand(mob/user, list/params)
 	var/amt_supermatter = 0

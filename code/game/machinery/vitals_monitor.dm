@@ -133,7 +133,7 @@
 
 /obj/machinery/vitals_monitor/verb/toggle_beep()
 	set name = "Toggle Monitor Beeping"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	var/mob/user = usr

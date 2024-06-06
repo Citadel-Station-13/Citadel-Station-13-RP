@@ -86,7 +86,7 @@
 	damage_force = 15
 	sharp = 1
 	edge = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 
 /obj/item/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -293,7 +293,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 10
 	throw_force = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
 
@@ -420,8 +420,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "browncanemob_r", SLOT_ID_LEFT_HAND = "browncanemob_l")
 	damage_force = 5.0
 	throw_force = 7.0
-	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 50)
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 /obj/item/cane/fluff/tasald
@@ -439,10 +439,10 @@
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "alexiswandmob_r", SLOT_ID_LEFT_HAND = "alexiswandmob_l")
     damage_force = 1.0
     throw_force = 2.0
-    w_class = ITEMSIZE_SMALL
-    materials = list(MAT_STEEL = 50)
+    w_class = WEIGHT_CLASS_SMALL
+    materials_base = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
-    hitsound = 'sound/weapons/sparkle.ogg'
+    attack_sound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
     var/cooldown = 30
 
@@ -506,7 +506,7 @@
 /obj/item/reagent_containers/food/snacks/egg/roiz/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/pen/crayon ))
 		var/obj/item/pen/crayon/C = W
-		var/clr = C.colourName
+		var/clr = C.crayon_color_name
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
 			to_chat(user,"<span class='warning'>The egg refuses to take on this color!</span>")
@@ -568,7 +568,7 @@
 	desc = "A tiny supplemental battery for powering something or someone synthetic."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "dragor_dot"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/fluff/dragor_dot/attack_self(mob/user)
 	. = ..()
@@ -677,7 +677,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
 	var/cell_type = /obj/item/cell/device/weapon
@@ -951,7 +951,7 @@
 
 	spk.set_up(5, 0, M)
 	spk.attach(M)
-	playsound(T, "sparks", 50, 1)
+	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
 /obj/item/perfect_tele/proc/phase_in(var/mob/M,var/turf/T)
@@ -961,7 +961,7 @@
 
 	spk.start()
 	playsound(T, 'sound/effects/phasein.ogg', 25, 1)
-	playsound(T, 'sound/effects/sparks2.ogg', 50, 1)
+	playsound(T, /datum/soundbyte/grouped/sparks, 50, 1)
 	anim(T,M,'icons/mob/mob.dmi',,"phasein",,M.dir)
 	spk.set_up(5, 0, src)
 	spk.attach(src)
@@ -971,7 +971,7 @@
 	desc = "That's unusual."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 	var/tele_name
@@ -1016,7 +1016,7 @@
 // A single-beacon variant for use by miners (or whatever)
 /obj/item/perfect_tele/one_beacon
 	name = "mini-translocator"
-	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally. Legal for use in the pursuit of NanoTrasen interests, namely mining and exploration."
+	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally. Legal for use in the pursuit of Nanotrasen interests, namely mining and exploration."
 	icon_state = "minitrans"
 	beacons_left = 1 //Just one
 	cell_type = /obj/item/cell/device
@@ -1108,7 +1108,7 @@
 
 /obj/item/card/id/fluff/xennith
 	name = "\improper Amy Lessen's Central Command ID (Xenobiology Director)"
-	desc = "This ID card identifies Dr. Amelie Lessen as the founder and director of the NanoTrasen Xenobiology Research Department, circa 2553."
+	desc = "This ID card identifies Dr. Amelie Lessen as the founder and director of the Nanotrasen Xenobiology Research Department, circa 2553."
 	icon_state = "centcom"
 	registered_name = "Amy Lessen"
 	assignment = "Xenobiology Director"
@@ -1156,7 +1156,7 @@
 		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
 
 //For 2 handed fluff weapons.
-/obj/item/material/twohanded/fluff //Twohanded fluff items.
+/obj/item/fluff //Twohanded fluff items.
 	name = "fluff."
 	desc = "This object is so fluffy. Just from the sight of it, you know that either something went wrong or someone spawned the incorrect item."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -1165,23 +1165,17 @@
 				SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
 
-/obj/item/material/twohanded/fluff/Initialize(mapload, material_key)
-	..(mapload," ") //See materials_vr_dmi for more information as to why this is a blank space.
-
 //General use.
-/obj/item/material/twohanded/fluff/riding_crop
+/obj/item/fluff/riding_crop
 	name = "riding crop"
 	desc = "A steel rod, a little over a foot long with a widened grip and a thick, leather patch at the end. Made to smack naughty submissives."
-	//force_wielded = 0.05 //Stings, but does jack shit for damage, provided you don't hit someone 100 times. 1 damage with hardness of 60.
-	force_divisor = 0.05 //Required in order for the X attacks Y message to pop up.
-	unwielded_force_divisor = 1 // One here, too.
-	applies_material_colour = 0
-	unbreakable = 1
-	base_icon = "riding_crop"
+	damage_force = 1
+	// todo: proper dualwielding system for this
+	// base_icon = "riding_crop"
 	icon_state = "riding_crop0"
 	attack_verb = list("cropped","spanked","swatted","smacked","peppered")
 //1R1S: Malady Blanche
-/obj/item/material/twohanded/fluff/riding_crop/malady
+/obj/item/fluff/riding_crop/malady
 	name = "Malady's riding crop"
 	desc = "An infernum made riding crop with Malady Blanche engraved in the shaft. It's a little worn from how many butts it has spanked."
 
@@ -1208,7 +1202,7 @@
 /mob/living/carbon/human/proc/use_reagent_implant_evian()
 	set name = "Lay Egg"
 	set desc = "Force Evian to lay an egg by squeezing into his lower body! This makes the lizard extremely embarrassed, and it looks funny."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	//do_reagent_implant(usr)
@@ -1271,7 +1265,7 @@
 	sharp = 0
 	edge = 0
 	throw_force = 7
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
 	lightcolor = "#CC33FF"
@@ -1347,11 +1341,11 @@
 	slot_flags = SLOT_BACK
 	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 
-	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
+	insertion_whitelist = list(/obj/item/melee/baton/fluff/stunstaff)
 
-	w_class = ITEMSIZE_HUGE
-	max_w_class = ITEMSIZE_HUGE
-	max_storage_space = 16
+	w_class = WEIGHT_CLASS_HUGE
+	max_single_weight_class = WEIGHT_CLASS_HUGE
+	max_combined_volume = 16
 
 /obj/item/storage/backpack/fluff/stunstaff/Initialize(mapload)
 	. = ..()
@@ -1379,7 +1373,7 @@
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
-	w_class = active_w_class
+	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
 
 /obj/item/melee/fluffstuff/proc/deactivate(mob/living/user)
@@ -1392,7 +1386,7 @@
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 
 /obj/item/melee/fluffstuff/attack_self(mob/user)
 	. = ..()
@@ -1403,7 +1397,7 @@
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			var/mob/living/carbon/human/H = ishuman(user)? user : null
-			H?.take_organ_damage(5,5)
+			H?.take_random_targeted_damage(brute = 5, burn = 5)
 		deactivate(user)
 	else
 		activate(user)
@@ -1431,12 +1425,12 @@
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
 	active_force = 15
 	active_throwforce = 7
-	active_w_class = ITEMSIZE_LARGE
+	active_w_class = WEIGHT_CLASS_BULKY
 	damage_force = 1
 	throw_force = 1
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
@@ -1482,21 +1476,21 @@
 */
 
 //InterroLouis - Kai Highlands
-/obj/item/borg/upgrade/modkit/chassis_mod/kai
+/obj/item/ka_modkit/chassis_mod/kai
 	name = "kai chassis"
 	desc = "Makes your KA green. All the fun of having a more powerful KA without actually having a more powerful KA."
 	cost = 0
-	denied_type = /obj/item/borg/upgrade/modkit/chassis_mod
+	denied_type = /obj/item/ka_modkit/chassis_mod
 	chassis_icon = "kineticgun_K"
 	chassis_name = "Kai-netic Accelerator"
 	var/chassis_desc = "A self recharging, ranged mining tool that does increased damage in low temperature. Capable of holding up to six slots worth of mod kits. It seems to have been painted an ugly green, and has a small image of a bird scratched crudely into the stock."
 	var/chassis_icon_file = 'icons/vore/custom_guns_vr.dmi'
 
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
+/obj/item/ka_modkit/chassis_mod/kai/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
 	KA.desc = chassis_desc
 	KA.icon = chassis_icon_file
 	..()
-/obj/item/borg/upgrade/modkit/chassis_mod/kai/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/ka_modkit/chassis_mod/kai/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
 	KA.desc = initial(KA.desc)
 	KA.icon = initial(KA.icon)
 	..()
@@ -1548,7 +1542,7 @@
     icon = 'icons/vore/custom_items_vr.dmi'
     icon_state = "jazzcamcorder"
     item_state = "jazzcamcorder"
-    w_class = ITEMSIZE_LARGE
+    w_class = WEIGHT_CLASS_BULKY
     slot_flags = SLOT_BELT
     var/obj/machinery/camera/network/thunder/camera
 

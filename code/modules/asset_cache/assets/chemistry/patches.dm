@@ -1,4 +1,4 @@
-/datum/asset/spritesheet/simple/patches
+/datum/asset_pack/spritesheet/simple/patches
 	name = "patches"
 	assets = list(
 		"patch"       = 'icons/runtime/assets/medical/patches/patch.png',

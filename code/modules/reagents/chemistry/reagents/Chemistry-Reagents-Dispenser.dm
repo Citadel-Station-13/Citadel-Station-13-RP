@@ -1,70 +1,4 @@
-/datum/reagent/aluminum
-	name = "Aluminum"
-	id = "aluminum"
-	description = "A silvery white and ductile member of the boron group of chemical elements."
-	taste_description = "metal"
-	taste_mult = 1.1
-	reagent_state = REAGENT_SOLID
-	color = "#A8A8A8"
-
-/datum/reagent/calcium
-	name = "Calcium"
-	id = "calcium"
-	description = "A chemical element, the building block of bones."
-	taste_description = "metallic chalk" // Apparently, calcium tastes like calcium.
-	taste_mult = 1.3
-	reagent_state = REAGENT_SOLID
-	color = "#e9e6e4"
-
-/datum/reagent/carbon
-	name = "Carbon"
-	id = "carbon"
-	description = "A chemical element, the building block of life."
-	taste_description = "sour chalk"
-	taste_mult = 1.5
-	reagent_state = REAGENT_SOLID
-	color = "#1C1300"
-	ingest_met = REM * 5
-
-/datum/reagent/carbon/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
-		return
-	if(M.ingested && M.ingested.reagent_list.len > 1) // Need to have at least 2 reagents - cabon and something to remove
-		var/effect = 1 / (M.ingested.reagent_list.len - 1)
-		for(var/datum/reagent/R in M.ingested.reagent_list)
-			if(R == src)
-				continue
-			M.ingested.remove_reagent(R.id, removed * effect)
-
-/datum/reagent/carbon/touch_turf(turf/T)
-	if(!istype(T, /turf/space))
-		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
-		if (!dirtoverlay)
-			dirtoverlay = new/obj/effect/debris/cleanable/dirt(T)
-			dirtoverlay.alpha = volume * 30
-		else
-			dirtoverlay.alpha = min(dirtoverlay.alpha + volume * 30, 255)
-
-/datum/reagent/chlorine
-	name = "Chlorine"
-	id = "chlorine"
-	description = "A chemical element with a characteristic odour."
-	taste_description = "pool water"
-	reagent_state = REAGENT_GAS
-	color = "#d1db77"
-
-/datum/reagent/chlorine/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(1*REM, 0)
-
-/datum/reagent/chlorine/affect_touch(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(1*REM, 0)
-
-/datum/reagent/copper
-	name = "Copper"
-	id = "copper"
-	description = "A highly ductile metal."
-	taste_description = "pennies"
-	color = "#6E3B08"
+#define ETHANOL_MET_DIVISOR 20
 
 /datum/reagent/ethanol
 	name = "Ethanol" //Parent class for all alcoholic reagents.
@@ -74,17 +8,21 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#404030"
 
-	ingest_met = REM * 2
+	metabolism = REM/ETHANOL_MET_DIVISOR
+
+	ingest_met = REM * 5
 
 	var/nutriment_factor = 0
 	var/hydration_factor = 0
-	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
+	var/proof = 200
 	var/toxicity = 1
 
 	var/druggy = 0
 	var/adj_temp = 0
 	var/targ_temp = 310
 	var/halluci = 0
+
+	data=0
 
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
@@ -93,9 +31,10 @@
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 15)
 
+#define ABV (proof/200)
+
 /datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed) //This used to do just toxin. That's boring. Let's make this FUN.
-	if(issmall(M)) removed *= 2
-	var/strength_mod = 3 //Alcohol is 3x stronger when injected into the veins.
+	var/strength_mod = 1 //Alcohol is 3x stronger when injected into the veins.
 	if(alien == IS_SKRELL)
 		strength_mod *= 5
 	if(alien == IS_TAJARA)
@@ -111,83 +50,83 @@
 			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
 		strength_mod *=5 //cit change - alcohol ain't good for plants
 
-	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
+	var/effective_dose = volume * strength_mod * ABV * min(1,dose*(ETHANOL_MET_DIVISOR/10)) // give it 50 ticks to ramp up
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/10))
-			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/10)
+		if(proof > 0)
+			var/intolerant_dose = strength_mod*removed*ABV*10
+			if(prob((intolerant_dose)))
+				M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+			M.adjustToxLoss(intolerant_dose)
 		return 0
-	if(effective_dose >= strength) // Early warning
-		M.make_dizzy(18) // It is decreased at the speed of 3 per tick
-	if(effective_dose >= strength * 2) // Slurring
-		M.slurring = max(M.slurring, 90)
-	if(effective_dose >= strength * 3) // Confusion - walking in random directions
+	#define DOSE_LEVEL 6
+	var/effect_level=round(effective_dose/DOSE_LEVEL)
+	if(effect_level != data)
+		var/lowering=(data>effect_level)
+		data=effect_level
+		if(lowering)
+			switch(effect_level)
+				if(0)
+					to_chat(M,SPAN_NOTICE("You no longer feel under the influence."))
+				if(1)
+					to_chat(M,SPAN_DANGER("You are no longer slurring your words as much."))
+				if(2)
+					to_chat(M,SPAN_DANGER("You can walk straight again."))
+				if(3)
+					to_chat(M,SPAN_DANGER("You're not seeing double anymore."))
+				if(4)
+					to_chat(M,SPAN_DANGER("You no longer feel like you're going to puke."))
+				if(5)
+					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
+				if(6)
+					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
+		else
+			var/hydration_str=""
+			if(M.hydration<250)
+				hydration_str=" You're feeling a little dehydrated, too."
+			switch(effect_level)
+				if(1)
+					to_chat(M,SPAN_DANGER("You're starting to feel a little tipsy.[hydration_str]"))
+					M.dizziness=max(M.dizziness,150)
+				if(2)
+					to_chat(M,SPAN_DANGER("You're starting to slur your words.[hydration_str]"))
+				if(3)
+					to_chat(M,SPAN_DANGER("You can barely walk straight![hydration_str]"))
+				if(4)
+					to_chat(M,SPAN_DANGER("You're seeing double!.[hydration_str]"))
+					M.eye_blurry=max(M.eye_blurry,30)
+				if(5)
+					to_chat(M,SPAN_USERDANGER("You feel like you might puke...[hydration_str]"))
+				if(6)
+					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy![hydration_str]"))
+				if(7)
+					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk![hydration_str]"))
+	var/hydration_removal=(clamp((M.hydration-150)/300,0,1)*effect_level) + max(0,(M.hydration-450)/300)
+	if(hydration_removal>0)
+		M.adjust_hydration(-hydration_removal)
+		volume-=removed*hydration_removal*3
+	if(effect_level>=2)
+		M.slurring=max(M.slurring,10)
+	if(effect_level>=3 && prob(effect_level-2))
 		M.Confuse(60)
-	if(effective_dose >= strength * 4) // Blurry vision
-		M.eye_blurry = max(M.eye_blurry, 30)
-	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
-		M.drowsyness = max(M.drowsyness, 60)
-	if(effective_dose >= strength * 6) // Toxic dose
-		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
-	if(effective_dose >= strength * 7) // Pass out
-		M.afflict_unconscious(20 * 60)
-		M.afflict_sleeping(20 * 90)
-
-	if(druggy != 0)
-		M.druggy = max(M.druggy, druggy*3)
-
-	if(adj_temp > 0 && M.bodytemperature < targ_temp) // 310 is the normal bodytemp. 310.055
-		M.bodytemperature = min(targ_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	if(adj_temp < 0 && M.bodytemperature > targ_temp)
-		M.bodytemperature = min(targ_temp, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-
-	if(halluci)
-		M.hallucination = max(M.hallucination, halluci*3)
-	return effective_dose
+	if(effect_level>=5 && prob(effect_level-4) && !M.lastpuke)
+		M.vomit(1,0)
+		if(M.nutrition>=100)
+			volume-=DOSE_LEVEL/4
+	if(effect_level>=6 && prob(effect_level-5))
+		M.drowsyness=max(M.drowsyness,60)
+	if(effect_level>=7)
+		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
+		if(volume>DOSE_LEVEL*7)
+			volume-=REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
+	#undef DOSE_LEVEL
+	return
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
 	M.adjust_nutrition(nutriment_factor * removed)
 	M.adjust_hydration(hydration_factor * removed)
-	var/strength_mod = 1
-	if(alien == IS_SKRELL)
-		strength_mod *= 5
-	if(alien == IS_TAJARA)
-		strength_mod *= 1.25
-	if(alien == IS_UNATHI)
-		strength_mod *= 0.75
-	if(alien == IS_DIONA)
-		strength_mod = 0
-	if(alien == IS_SLIME)
-		strength_mod *= 2
-	var/is_vampire = M.species.is_vampire
-	if(is_vampire)
-		handle_vampire(M, alien, removed, is_vampire)
-
-	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
-	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		if(prob(effective_dose/10))
-			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(effective_dose/10)
-		return 0
-	M.add_chemical_effect(CE_ALCOHOL, 1)
-	if(effective_dose >= strength) // Early warning
-		M.make_dizzy(6) // It is decreased at the speed of 3 per tick
-	if(effective_dose >= strength * 2) // Slurring
-		M.slurring = max(M.slurring, 30)
-	if(effective_dose >= strength * 3) // Confusion - walking in random directions
-		M.Confuse(20)
-	if(effective_dose >= strength * 4) // Blurry vision
-		M.eye_blurry = max(M.eye_blurry, 10)
-	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
-		M.drowsyness = max(M.drowsyness, 20)
-	if(effective_dose >= strength * 6) // Toxic dose
-		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
-	if(effective_dose >= strength * 7) // Pass out
-		M.afflict_unconscious(20 * 20)
-		M.afflict_sleeping(20 * 30)
-
+	M.bloodstr.add_reagent("ethanol", removed * ABV)
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy)
 
@@ -198,7 +137,7 @@
 
 	if(halluci)
 		M.hallucination = max(M.hallucination, halluci)
-	return effective_dose
+	return
 
 /datum/reagent/ethanol/touch_obj(obj/O)
 	if(istype(O, /obj/item/paper))
@@ -217,136 +156,7 @@
 		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
 	return
 
-/datum/reagent/fluorine
-	name = "Fluorine"
-	id = "fluorine"
-	description = "A highly-reactive chemical element."
-	taste_description = "acid"
-	reagent_state = REAGENT_GAS
-	color = "#808080"
-
-/datum/reagent/fluorine/affect_blood(mob/living/carbon/M, alien, removed)
-	M.adjustToxLoss(removed)
-
-/datum/reagent/fluorine/affect_touch(mob/living/carbon/M, alien, removed)
-	M.adjustToxLoss(removed)
-
-/datum/reagent/hydrogen
-	name = "Hydrogen"
-	id = "hydrogen"
-	description = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
-	taste_mult = 0 //no taste
-	reagent_state = REAGENT_GAS
-	color = "#808080"
-
-/datum/reagent/iron
-	name = "Iron"
-	id = "iron"
-	description = "Pure iron is a metal."
-	taste_description = "metal"
-	reagent_state = REAGENT_SOLID
-	color = "#353535"
-
-/datum/reagent/iron/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_BLOODRESTORE, 8 * removed)
-
-/datum/reagent/lithium
-	name = "Lithium"
-	id = "lithium"
-	description = "A chemical element, used as antidepressant."
-	taste_description = "metal"
-	reagent_state = REAGENT_SOLID
-	color = "#808080"
-
-/datum/reagent/lithium/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
-			step(M, pick(GLOB.cardinal))
-		if(prob(5))
-			M.emote(pick("twitch", "drool", "moan"))
-
-/datum/reagent/mercury
-	name = "Mercury"
-	id = "mercury"
-	description = "A chemical element."
-	taste_mult = 0 //mercury apparently is tasteless. IDK
-	reagent_state = REAGENT_LIQUID
-	color = "#484848"
-
-/datum/reagent/mercury/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
-			step(M, pick(GLOB.cardinal))
-		if(prob(5))
-			M.emote(pick("twitch", "drool", "moan"))
-		M.adjustBrainLoss(0.1)
-
-/datum/reagent/nitrogen
-	name = "Nitrogen"
-	id = "nitrogen"
-	description = "A colorless, odorless, tasteless gas."
-	taste_mult = 0 //no taste
-	reagent_state = REAGENT_GAS
-	color = "#808080"
-
-/datum/reagent/oxygen
-	name = "Oxygen"
-	id = "oxygen"
-	description = "A colorless, odorless gas."
-	taste_mult = 0
-	reagent_state = REAGENT_GAS
-	color = "#808080"
-
-/datum/reagent/oxygen/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_VOX)
-		M.adjustToxLoss(removed * 3)
-
-/datum/reagent/phosphorus
-	name = "Phosphorus"
-	id = "phosphorus"
-	description = "A chemical element, the backbone of biological energy carriers."
-	taste_description = "vinegar"
-	reagent_state = REAGENT_SOLID
-	color = "#832828"
-
-/datum/reagent/phosphorus/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE)
-		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
-
-/datum/reagent/potassium
-	name = "Potassium"
-	id = "potassium"
-	description = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
-	taste_description = "sweetness" //potassium is bitter in higher doses but sweet in lower ones.
-	reagent_state = REAGENT_SOLID
-	color = "#A0A0A0"
-
-/datum/reagent/radium
-	name = "Radium"
-	id = "radium"
-	description = "Radium is an alkaline earth metal. It is extremely radioactive."
-	taste_mult = 0	//Apparently radium is tasteless
-	reagent_state = REAGENT_SOLID
-	color = "#C7C7C7"
-
-/datum/reagent/radium/affect_blood(mob/living/carbon/M, alien, removed)
-	if(issmall(M))
-		removed *= 2
-	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed))
-	if(M.virus2.len)
-		for(var/ID in M.virus2)
-			var/datum/disease2/disease/V = M.virus2[ID]
-			if(prob(5))
-				M.antibodies |= V.antigen
-
-/datum/reagent/radium/touch_turf(turf/T)
-	if(volume >= 3)
-		if(!istype(T, /turf/space))
-			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
-			if(!glow)
-				new /obj/effect/debris/cleanable/greenglow(T)
-			return
+#undef ABV
 
 /datum/reagent/acid
 	name = "Sulphuric acid"
@@ -362,13 +172,13 @@
 
 /datum/reagent/acid/affect_blood(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
-	M.take_organ_damage(0, removed * power * 2)
+	M.take_random_targeted_damage(brute = 0, brute = removed * power * 2)
 
 /datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.head)
-			if(H.head.unacidable)
+			if(H.head.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
 				remove_self(volume)
 				return
@@ -382,7 +192,7 @@
 			return
 
 		if(H.wear_mask)
-			if(H.wear_mask.unacidable)
+			if(H.wear_mask.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
 				remove_self(volume)
 				return
@@ -396,7 +206,7 @@
 			return
 
 		if(H.glasses)
-			if(H.glasses.unacidable)
+			if(H.glasses.integrity_flags & INTEGRITY_ACIDPROOF)
 				to_chat(H, "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>")
 				removed /= 2
 			else if(removed > meltdose)
@@ -408,24 +218,26 @@
 			return
 
 	if(volume < meltdose) // Not enough to melt anything
-		M.take_organ_damage(0, removed * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
+		M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.2) //burn damage, since it causes chemical burns. Acid doesn't make bones shatter, like brute trauma would.
 		return
 	if(!M.unacidable && removed > 0)
 		if(istype(M, /mob/living/carbon/human) && volume >= meltdose)
 			var/mob/living/carbon/human/H = M
 			var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
 			if(affecting)
-				if(affecting.take_damage(0, removed * power * 0.1))
-					H.UpdateDamageIcon()
+				affecting.inflict_bodypart_damage(
+					burn = removed * power * 0.1,
+				)
 				if(prob(100 * removed / meltdose)) // Applies disfigurement
 					if (affecting.organ_can_feel_pain())
 						H.emote("scream")
 		else
-			M.take_organ_damage(0, removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
+			M.take_random_targeted_damage(brute = 0, brute = removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
 /datum/reagent/acid/touch_obj(obj/O)
-	if(O.unacidable)
+	if(O.integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		return
+	// todo: newacid
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
 		var/obj/effect/debris/cleanable/molten_item/I = new/obj/effect/debris/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."
@@ -434,21 +246,6 @@
 		qdel(O)
 		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
 
-/datum/reagent/silicon
-	name = "Silicon"
-	id = "silicon"
-	description = "A tetravalent metalloid, silicon is less reactive than its chemical analog carbon."
-	taste_mult = 0
-	reagent_state = REAGENT_SOLID
-	color = "#A8A8A8"
-
-/datum/reagent/sodium
-	name = "Sodium"
-	id = "sodium"
-	description = "A chemical element, readily reacts with water."
-	taste_description = "salty metal"
-	reagent_state = REAGENT_SOLID
-	color = "#808080"
 
 /datum/reagent/sugar
 	name = "Sugar"
@@ -498,11 +295,3 @@
 	reagent_state = REAGENT_SOLID
 	color = "#BF8C00"
 
-/datum/reagent/tungsten
-	name = "Tungsten"
-	id = "tungsten"
-	description = "A chemical element, and a strong oxidising agent."
-	taste_description = "metal"
-	taste_mult = 0 //no taste
-	reagent_state = REAGENT_SOLID
-	color = "#DCDCDC"

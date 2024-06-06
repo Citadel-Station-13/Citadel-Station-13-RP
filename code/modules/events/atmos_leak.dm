@@ -64,6 +64,6 @@
 	// Fow now just add a bunch of it to the air
 	var/datum/gas_mixture/air_contents = new
 	air_contents.temperature = T20C + ((severity - 1) * rand(-50, 50))
-	air_contents.gas[gas_type] = 10 * MOLES_CELLSTANDARD
+	air_contents.gas[gas_type] = 10 * CELL_MOLES
 	target_turf.assume_air(air_contents)
 	playsound(target_turf, 'sound/effects/smoke.ogg', 50, 1)

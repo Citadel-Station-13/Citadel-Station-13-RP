@@ -118,9 +118,9 @@
 	if(H.backbag == 1)
 		H.put_in_hands_or_del(L)
 	else
-		H.equip_to_slot_or_del(L, /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(L, /datum/inventory_slot/abstract/put_in_backpack)
 
-/datum/species/zaddat/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/zaddat/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 
 	if(H.inStasisNow())
 		return

@@ -41,7 +41,7 @@
 	scanner_name = "XN-29 Prototype Shuttle"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
 [i]Class[/i]: Shuttle
-[i]Transponder[/i]: Transmitting (MIL), NanoTrasen
+[i]Transponder[/i]: Transmitting (MIL), Nanotrasen
 [b]Notice[/b]: Experimental vessel"}
 	color = "#00aaff" //Bluey
 	vessel_mass = 3000

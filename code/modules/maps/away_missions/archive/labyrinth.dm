@@ -224,8 +224,8 @@
 	health = 100
 	speed = 4
 	harm_intent_damage = 8
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 40
 	attacktext = "cleaved"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	min_oxy = 5
@@ -254,8 +254,8 @@
 	weapon1 = /obj/item/material/twohanded/spear
 	maxHealth = 150
 	health = 150
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 20
 
 /mob/living/simple_mob/hostile/tunnelclown/death()
 	..()
@@ -288,8 +288,8 @@
 	health = 10
 	speed = 1
 	harm_intent_damage = 8
-	melee_damage_lower = 1 // Pathetic creatures.
-	melee_damage_upper = 1
+	legacy_melee_damage_lower = 1 // Pathetic creatures.
+	legacy_melee_damage_upper = 1
 	attacktext = "honked"
 	attack_sound = 'sound/items/bikehorn.ogg'
 	status_flags = STATUS_CAN_PUSH

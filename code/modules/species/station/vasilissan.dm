@@ -8,8 +8,10 @@
 	deform = 'icons/mob/species/vasilissan/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/vasilissan/preview.dmi'
 	husk_icon = 'icons/mob/species/vasilissan/husk.dmi'
-	tail = "tail" // Spider tail.
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/vasilissan,
+	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 	slowdown  = -0.15  // Small speedboost, as they've got a bunch of legs. Or something. I dunno.
@@ -82,7 +84,7 @@
 		/datum/unarmed_attack/bite/sharp/numbing,
 	)
 
-/datum/species/vasilissan/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/vasilissan/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.stat == DEAD) // If they're dead they won't need anything.
 		return
 

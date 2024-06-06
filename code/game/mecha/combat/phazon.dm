@@ -6,8 +6,8 @@
 	step_in = 1
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3
-	health = 200		//God this is low
-	maxhealth = 200		//Don't forget to update the /old variant if  you change this number.
+	integrity = 200		//God this is low
+	integrity_max = 200		//Don't forget to update the /old variant if  you change this number.
 	deflect_chance = 30
 	damage_absorption = list("brute"=0.7,"fire"=0.7,"bullet"=0.7,"laser"=0.7,"energy"=0.7,"bomb"=0.7)
 	max_temperature = 25000
@@ -86,8 +86,8 @@
 	step_in = 1
 	dir_in = 1 //Facing North.
 	step_energy_drain = 3
-	health = 350
-	maxhealth = 350
+	integrity = 350
+	integrity_max = 350
 	deflect_chance = 30
 	damage_absorption = list("brute"=0.6,"fire"=0.7,"bullet"=0.7,"laser"=0.9,"energy"=0.7,"bomb"=0.5)
 	max_temperature = 10000
@@ -107,7 +107,7 @@
 	switch_dmg_type_possible = TRUE
 	cloak_possible = FALSE
 
-/obj/mecha/combat/phazon/janus/take_damage(amount, type="brute")
+/obj/mecha/combat/phazon/janus/take_damage_legacy(amount, type="brute")
 	..()
 	if(phasing)
 		phasing = FALSE
@@ -157,6 +157,6 @@
 
 /obj/mecha/combat/phazon/old/Initialize(mapload)
 	. = ..()
-	health = 25
-	maxhealth = 150	//Just slightly worse.
+	integrity = 25
+	integrity_max = 150	//Just slightly worse.
 	cell.charge = rand(0, (cell.charge/2))

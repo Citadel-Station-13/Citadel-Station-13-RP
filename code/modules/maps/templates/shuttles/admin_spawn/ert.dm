@@ -114,9 +114,6 @@
 	initial_generic_waypoints = list("ert_ship_near_fore", "ert_ship_near_aft", "ert_ship_near_port", "ert_ship_near_star", "ert_ship_port", "ert_ship_star", "ert_ship_base_dock", "omship_spawn_ert_lander")
 //	initial_restricted_waypoints = list("NRV Von Braun's Bay" = list("omship_spawn_ert_lander"))
 
-/obj/landmark/map_data/ert_ship
-	height = 1
-
 /obj/effect/shuttle_landmark/premade/ert_ship_port
 	name = "NRV Von Braun - Port Airlock"
 	landmark_tag = "ert_ship_port"

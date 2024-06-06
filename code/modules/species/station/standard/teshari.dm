@@ -27,16 +27,16 @@
 	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
-	tail = "teshtail"
-	tail_hair = "feathers"
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/teshari,
+	)
 
 	max_additional_languages = 3
 	name_language    = LANGUAGE_ID_TESHARI
 	intrinsic_languages = LANGUAGE_ID_TESHARI
 	whitelist_languages = list(
 		LANGUAGE_ID_TESHARI,
-		LANGUAGE_ID_SKRELL
+		LANGUAGE_ID_SKRELL,
 	)
 
 	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
@@ -91,7 +91,7 @@
 	breath_cold_level_2 = 100
 	breath_cold_level_3 = 60
 
-	heat_level_1 = 320
+	heat_level_1 = 330
 	heat_level_2 = 370
 	heat_level_3 = 600
 

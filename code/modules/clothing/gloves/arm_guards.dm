@@ -4,7 +4,7 @@
 	body_cover_flags = HANDS|ARMS
 	overgloves = 1
 	punch_force = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	drop_sound = 'sound/items/drop/metalshield.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
@@ -68,7 +68,7 @@
 	siemens_coefficient = 0.6
 	armor_type = /datum/armor/station/tactical
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = ARMS
+	cold_protection_cover = ARMS
 
 /obj/item/clothing/gloves/arm_guard/combat/imperial
 	name = "imperial gauntlets"

@@ -39,17 +39,17 @@ GLOBAL_LIST_EMPTY(sortedAreas)
 GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
 
 GLOBAL_LIST_INIT(ore_types, list(
-		MAT_HEMATITE = /obj/item/ore/iron,
-		MAT_URANIUM = /obj/item/ore/uranium,
-		MAT_GOLD = /obj/item/ore/gold,
-		MAT_SILVER = /obj/item/ore/silver,
-		MAT_DIAMOND = /obj/item/ore/diamond,
-		MAT_PHORON = /obj/item/ore/phoron,
-		MAT_OSMIUM = /obj/item/ore/osmium,
-		"hydrogen" = /obj/item/ore/hydrogen,
-		"silicates" = /obj/item/ore/glass,
-		MAT_CARBON = /obj/item/ore/coal,
-		MAT_VERDANTIUM = /obj/item/ore/verdantium,
-		MAT_MARBLE = /obj/item/ore/marble,
-		MAT_LEAD = /obj/item/ore/lead
+		MAT_HEMATITE = /obj/item/stack/ore/iron,
+		MAT_URANIUM = /obj/item/stack/ore/uranium,
+		MAT_GOLD = /obj/item/stack/ore/gold,
+		MAT_SILVER = /obj/item/stack/ore/silver,
+		MAT_DIAMOND = /obj/item/stack/ore/diamond,
+		MAT_PHORON = /obj/item/stack/ore/phoron,
+		MAT_OSMIUM = /obj/item/stack/ore/osmium,
+		"hydrogen" = /obj/item/stack/ore/hydrogen,
+		"silicates" = /obj/item/stack/ore/glass,
+		MAT_CARBON = /obj/item/stack/ore/coal,
+		MAT_VERDANTIUM = /obj/item/stack/ore/verdantium,
+		MAT_MARBLE = /obj/item/stack/ore/marble,
+		MAT_LEAD = /obj/item/stack/ore/lead
 	))

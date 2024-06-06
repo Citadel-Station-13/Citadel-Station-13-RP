@@ -4,7 +4,7 @@
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blob_shield"
 	desc = "A solid wall of slightly twitching tendrils."
-	max_integrity = 100
+	integrity_max = 100
 	point_return = 4
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 

@@ -18,7 +18,7 @@
 	id = "tail_wolf"
 	icon_state = "wolf"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "wolfinner"
 
 /datum/sprite_accessory/tail/blackwolf
@@ -36,28 +36,28 @@
 	id = "tail_kitsune_dual"
 	icon_state = "doublekitsune"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/fennec_tail
 	name = "Fennec tail"
 	id = "tail_fox_fennec"
 	icon_state = "fennec_tail_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/fox_tail
 	name = "Fox tail"
 	id = "tail_fox"
 	icon_state = "fox_tail_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/fox_tail_plain
 	name = "Fox tail 2"
 	id = "tail_fox2"
 	icon_state = "fox_tail_plain_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/foxtail
 	name = "Fox"
@@ -66,7 +66,7 @@
 	icon_state = "foxtail_but_good"
 	extra_overlay = "foxtail_but_good-tips"
 	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	ani_state = "foxtail_but_good_w"
 	extra_overlay_w = "foxtail_but_good-tips_w"
 
@@ -75,7 +75,7 @@
 	id = "tail_jackal"
 	icon_state = "jackal_bicolor"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "jackal_bicolor_extra"
 
 /datum/sprite_accessory/tail/otietail
@@ -84,7 +84,7 @@
 	icon_state = "otie"
 	ani_state = "otie_w"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/takahiro_kitsune
 	name = "Takahiro Kitsune Tails" //takahiro had five tails i just wanted to follow the 'T' naming convention vs. tamamo and triple
@@ -92,7 +92,7 @@
 	icon_state = "takahiro-kitsunetails"
 	extra_overlay = "takahiro-kitsunetails-tips"
 	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/tamamo_kitsune
 	name = "Tamamo Kitsune Tails" //Tamamo-no-Tiro, let it be known!
@@ -100,7 +100,7 @@
 	icon_state = "tamamo-kitsunetails"
 	extra_overlay = "tamamo-kitsunetails-tips"
 	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/triple_kitsune
 	name = "Triple Kitsune Tails"
@@ -108,7 +108,7 @@
 	icon_state = "triple-kitsunetails"
 	extra_overlay = "triple-kitsunetails-tips"
 	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/ketrai_wag
 	name = "fennix tail (vwag)"
@@ -122,4 +122,4 @@
 	icon_state = "wolf_citmain"
 	ani_state = "wolf_citmain_w"
 	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

@@ -64,8 +64,8 @@
 	desc = "A stripped down hivebot with many exposed mechanism.."
 	maxHealth = 1 LASERS_TO_KILL
 	health = 1 LASERS_TO_KILL
-	melee_damage_lower = 8
-	melee_damage_upper = 8
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 8
 
 /datum/ai_holder/simple_mob/hivebot
 	pointblank = TRUE
@@ -87,8 +87,8 @@
 	icon_state = "miner"
 	icon_living = "miner"
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/miner)
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 
 /datum/category_item/catalogue/technology/drone/hivebot/sword
 	name = "Hivebot - Swordsman"
@@ -104,8 +104,31 @@
 	icon_state = "sword"
 	icon_living = "sword"
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/sword)
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 	attack_sharp = 1
 	attack_edge = 1
+
+
+/datum/category_item/catalogue/technology/drone/hivebot/surveyor
+	name = "Enigmatic Salvager Surveyor"
+	desc = "The most basic unit of the Enigmatic Salvagers- a surveyor. Made up of cheap parts that appear to be hastily put together. \
+	They lack a standardized pattern, suggesting an amount of en-situ construction - machines that create machines that create machines that create machines. \
+	What are they looking for, besides the standard salvage and wreckages?"
+	value = CATALOGUER_REWARD_EASY
+
+//bit faster than the default bot, weaker, basically a reskin for flavor
+/mob/living/simple_mob/mechanical/hivebot/surveyor
+	name = "hivebot surveyor"
+	desc = "An unsteadily-built, willow-limbed bot of mismatched parts and absent technology. Has some kind of expedition pick repurposed as a blade."
+	icon_state = "surveyor"
+	icon_living = "surveyor"
+
+	movement_cooldown = 0.6 SECONDS
+
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/surveyor)
+

@@ -1,4 +1,4 @@
-/datum/asset/simple/contracts
+/datum/asset_pack/simple/contracts
 	assets = list(
 		"bluespace.png" = 'icons/ui_icons/contracts/bluespace.png',
 		"destruction.png" = 'icons/ui_icons/contracts/destruction.png',

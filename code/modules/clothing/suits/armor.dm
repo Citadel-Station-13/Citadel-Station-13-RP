@@ -1,15 +1,15 @@
 /obj/item/clothing/suit/armor
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_MEDAL\
 		|ACCESSORY_SLOT_INSIGNIA)
 
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = UPPER_TORSO|LOWER_TORSO
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.7
 
@@ -41,7 +41,7 @@
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"
-	desc = "An armored vest that protects against some damage. This one has a NanoTrasen corporate badge."
+	desc = "An armored vest that protects against some damage. This one has a Nanotrasen corporate badge."
 	icon_state = "armoralt"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 
@@ -140,15 +140,15 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY + ITEM_ENCUMBRANCE_ARMOR_HEAVY_BOOTS + ITEM_ENCUMBRANCE_ARMOR_HEAVY_GLOVES
 	weight = ITEM_WEIGHT_ARMOR_HEAVY + ITEM_WEIGHT_ARMOR_HEAVY_BOOTS + ITEM_WEIGHT_ARMOR_HEAVY_GLOVES
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
@@ -210,7 +210,7 @@
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
-		playsound(user.loc, "sparks", 50, 1)
+		playsound(user.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 
 		user.loc = picked
 		return PROJECTILE_FORCE_MISS
@@ -309,11 +309,11 @@
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = UPPER_TORSO|LOWER_TORSO
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
 
@@ -433,7 +433,7 @@
 	desc = "An armored vest made from advanced flexible ceramic plates. It's surprisingly mobile, if a little unfashionable."
 	icon_state = "flexitac"
 	item_state = "flexitac"
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = T0C - 20
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM
 	weight = ITEM_WEIGHT_ARMOR_MEDIUM
@@ -461,6 +461,7 @@
 	armor_type = /datum/armor/station/heavy
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY
 	weight = ITEM_WEIGHT_ARMOR_HEAVY
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
 	name = "officer heavy armor vest"
@@ -515,7 +516,7 @@
 	desc = "this doesn't exist"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS			//big coats keep you big warm
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS			//big coats keep you big warm
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	icon = 'icons/clothing/suit/coats/dept_overcoats.dmi'
 	armor_type = /datum/armor/security/light_formalwear
@@ -552,16 +553,16 @@
 
 //All of the armor below is mostly unused
 
-/obj/item/clothing/suit/armor/centcomm
+/obj/item/clothing/suit/armor/centcom
 	name = "CentCom armor"
 	desc = "A suit that protects against some damage."
 	icon_state = "centcom"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 
@@ -571,7 +572,7 @@
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor_type = /datum/armor/security/bulky_kinetic
-	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
+	w_class = WEIGHT_CLASS_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
@@ -602,7 +603,7 @@
 	icon_state = "samurai"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
 	armor_type = /datum/armor/general/samurai
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6
@@ -813,7 +814,7 @@
 	if(!.)
 		return FALSE
 	var/mob/living/carbon/human/H
-	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
+	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/legacy_taur/wolf))
 		return
 	else
 		to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
@@ -928,3 +929,48 @@
 	icon_state = "tau"
 	armor_type = /datum/armor/general/utilitarian_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/armor/baroque
+	name = "baroque military armor"
+	desc = "This ornately decorated armor has been lovingly adorned with holy symbols. It smells faintly of incense."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sister"
+	armor_type = /datum/armor/general/baroque_military
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/* Replika armor
+/obj/item/clothing/suit/armor/replika/klbr
+    name = "controller replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. The right shoulder has been painted an imposing shade of red."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "klbr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/lstr
+    name = "combat-engineer replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This plain-white version is a staple of SbRD's combat-engineer replikants."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "lstr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/stcr
+    name = "security-controller replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate fitted for use by 2nd generation biosynthetics. This version sports multiple red adjustable straps and a lack of shoulder pads."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "stcr"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium
+
+/obj/item/clothing/suit/armor/replika/star
+    name = "security-technician replikant armored chestplate"
+    desc = "A sloped titanium-composite chest plate with a matte black finish, fitted for use by 2nd generation biosynthetics. Comes with red adjustable straps."
+    icon = 'icons/clothing/suit/armor/replika.dmi'
+    icon_state = "star"
+    worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+    body_cover_flags = UPPER_TORSO
+    armor_type = /datum/armor/station/medium */

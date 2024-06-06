@@ -5,8 +5,8 @@
 	icon_state = "marauder"
 	initial_icon = "marauder"
 	step_in = 5
-	health = 350
-	maxhealth = 350		//Don't forget to update the /old variant if  you change this number.
+	integrity = 350
+	integrity_max = 350		//Don't forget to update the /old variant if  you change this number.
 	deflect_chance = 25
 	damage_absorption = list("brute"=0.5,"fire"=0.7,"bullet"=0.45,"laser"=0.6,"energy"=0.7,"bomb"=0.7)
 	max_temperature = 60000
@@ -55,7 +55,7 @@
 	initial_icon = "seraph"
 	operation_req_access = list(ACCESS_CENTCOM_ERT_LEAD)
 	step_in = 3
-	health = 450
+	integrity = 450
 	wreckage = /obj/effect/decal/mecha_wreckage/seraph
 	internal_damage_threshold = 20
 	force = 55
@@ -146,6 +146,6 @@
 
 /obj/mecha/combat/marauder/old/Initialize(mapload)
 	. = ..()
-	health = 25
-	maxhealth = 300	//Just slightly worse.
+	integrity = 25
+	integrity_max = 300	//Just slightly worse.
 	cell.charge = rand(0, (cell.charge/2))

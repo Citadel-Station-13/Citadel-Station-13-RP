@@ -3,7 +3,7 @@
 	id = "wing_robot1"
 	icon_state = "Drago_wing"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 //? synth furries count
 

@@ -18,13 +18,13 @@ enum AtmosPortableUIFlags {
 
 interface AtmosPortableControlProps {
   // portable data
-  data: AtmosPortableData;
+  readonly data: AtmosPortableData;
   // toggle on/off act
-  toggleAct?: () => void;
+  readonly toggleAct?: () => void;
   // set flow act
-  setFlowAct?: (amt: number) => void;
+  readonly setFlowAct?: (amt: number) => void;
   // any additional list items
-  additionalListItems?: InfernoNode;
+  readonly additionalListItems?: InfernoNode;
 }
 
 export const AtmosPortableControl = (props: AtmosPortableControlProps, context) => {
@@ -130,10 +130,10 @@ export interface AtmosPortableData {
 }
 
 interface AtmosPortableProps extends ComponentProps{
-  minimumHeight?: number;
-  minimumWidth?: number;
-  name: string;
-  additionalListItems?: InfernoNode;
+  readonly minimumHeight?: number;
+  readonly minimumWidth?: number;
+  readonly name: string;
+  readonly additionalListItems?: InfernoNode;
 }
 
 export const AtmosPortable = (props: AtmosPortableProps, context) => {

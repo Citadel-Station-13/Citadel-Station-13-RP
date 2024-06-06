@@ -102,10 +102,10 @@
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5
 	throw_range = 10
-	materials = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
@@ -117,10 +117,10 @@
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5
 	throw_range = 10
-	materials = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/obj/item/implant/mirror/imp = null

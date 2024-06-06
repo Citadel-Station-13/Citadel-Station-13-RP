@@ -159,7 +159,7 @@
 	if (panel_open)
 		add_overlay("panel_open")
 
-/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui, datum/tgui_module/module)
+/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -211,7 +211,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/media/jukebox/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/media/jukebox/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["playing"] = playing
@@ -240,7 +240,7 @@
 		ui = new(user, src, "Jukebox", "RetroBox - Space Style")
 		ui.open()
 
-/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/media/jukebox/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

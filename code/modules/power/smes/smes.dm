@@ -309,7 +309,7 @@ GLOBAL_LIST_EMPTY(smeses)
 		ui = new(user, src, "Smes", name)
 		ui.open()
 
-/obj/machinery/power/smes/ui_data()
+/obj/machinery/power/smes/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"capacity" = capacity,
 		"capacityPercent" = round(100.0*charge/capacity, 0.1),
@@ -327,7 +327,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	)
 	return data
 
-/obj/machinery/power/smes/ui_act(action, params)
+/obj/machinery/power/smes/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -499,6 +499,15 @@ GLOBAL_LIST_EMPTY(smeses)
 	charge = KWH_TO_KWM(SMES_COIL_STORAGE_BASIC * 1 * 0.8)
 	input_level = 100
 	output_level = 200
+
+/obj/machinery/power/smes/buildable/tcomms
+	name = "telecomms smes"
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to telecommunications."
+	charge = KWH_TO_KWM(SMES_COIL_STORAGE_BASIC * 1 * 0.25)
+	input_attempt = 1
+	input_level = 100
+	output_level = 200
+	RCon_tag = "Telecomms"
 
 #define SMES_UI_INPUT 1
 #define SMES_UI_OUTPUT 2

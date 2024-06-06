@@ -61,6 +61,8 @@
 	density = TRUE
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_FUEL
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	// construct_state = /singleton/machine_construction/default/panel_closed
 	// maximum_component_parts = list(/obj/item/stock_parts = 6)//don't want too many, let upgraded component shine

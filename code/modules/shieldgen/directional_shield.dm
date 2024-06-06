@@ -9,7 +9,7 @@
 	density = FALSE // People can move pass these shields.
 	opacity = FALSE
 	anchored = TRUE
-	unacidable = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 	layer = MOB_LAYER + 0.1
 	mouse_opacity = FALSE
 	var/obj/item/shield_projector/projector = null // The thing creating the shield.

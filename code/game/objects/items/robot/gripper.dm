@@ -84,7 +84,7 @@
 
 /obj/item/gripper/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	// todo: items should have a melee_receive_chain or something that
-	//       lets us arbitrarily route melee_attack_chain to something else.
+	//       lets us arbitrarily route melee_interaction_chain to something else.
 	if(!isnull(wrapped))
 		. = wrapped.attackby(I, user, params, clickchain_flags, damage_multiplier)
 		if(.)
@@ -92,9 +92,9 @@
 		return clickchain_flags | I.afterattack(src, user, clickchain_flags, params)
 	return ..()
 
-/obj/item/gripper/melee_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/gripper/melee_interaction_chain(atom/target, mob/user, clickchain_flags, list/params)
 	if(!isnull(wrapped))
-		return wrapped.melee_attack_chain(target, user, clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK, params)
+		return wrapped.melee_interaction_chain(target, user, clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK, params)
 	return ..()
 
 /obj/item/gripper/verb/drop_item()

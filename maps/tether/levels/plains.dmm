@@ -62,10 +62,6 @@
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
-"p" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/outpost/exploration_shed)
 "r" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -91,11 +87,6 @@
 "A" = (
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/tether/outpost/exploration_shed)
-"B" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/map_effect/portal/line/side_b,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/outpost/exploration_shed)
 "D" = (
 /mob/living/simple_mob/animal/passive/gaslamp,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -112,11 +103,8 @@
 /area/tether/outpost/exploration_shed)
 "G" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
+/obj/machinery/power/apc/east_mount{
+	alarms_hidden = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -140,10 +128,6 @@
 /area/tether/outpost/exploration_shed)
 "O" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/map_effect/portal/master/side_b{
-	name = "from_tether_to_wild";
-	portal_id = "wilderness_step"
-	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "P" = (
@@ -22857,10 +22841,10 @@ b
 "}
 (118,1,1) = {"
 O
-p
+O
 E
-p
-p
+O
+O
 F
 t
 d
@@ -23050,11 +23034,11 @@ u
 b
 "}
 (119,1,1) = {"
-B
-p
-p
-p
-p
+O
+O
+O
+O
+O
 Y
 t
 d
@@ -23244,13 +23228,13 @@ u
 b
 "}
 (120,1,1) = {"
-B
-p
-p
-p
-p
+O
+O
+O
+O
+O
 j
-p
+O
 d
 d
 d
@@ -23438,13 +23422,13 @@ u
 b
 "}
 (121,1,1) = {"
-B
-p
-p
-p
-p
+O
+O
+O
+O
+O
 k
-p
+O
 d
 d
 w
@@ -23632,10 +23616,10 @@ u
 b
 "}
 (122,1,1) = {"
-B
-p
-p
-p
+O
+O
+O
+O
 M
 F
 l
@@ -23826,13 +23810,13 @@ u
 b
 "}
 (123,1,1) = {"
-B
-p
-p
-p
-p
+O
+O
+O
+O
+O
 j
-p
+O
 d
 w
 w
@@ -24020,13 +24004,13 @@ u
 b
 "}
 (124,1,1) = {"
-B
-p
-p
-p
-p
+O
+O
+O
+O
+O
 k
-p
+O
 d
 d
 w
@@ -24214,11 +24198,11 @@ u
 b
 "}
 (125,1,1) = {"
-B
-p
-p
-p
-p
+O
+O
+O
+O
+O
 Y
 t
 d
@@ -24408,8 +24392,8 @@ u
 b
 "}
 (126,1,1) = {"
-B
-p
+O
+O
 m
 G
 o

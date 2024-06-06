@@ -157,7 +157,7 @@
 	SSnanoui.update_uis(src)
 
 /obj/machinery/computer/HolodeckControl/emag_act(var/remaining_charges, var/mob/user as mob)
-	playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
+	playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, 1)
 	last_to_emag = user //emag again to change the owner
 	if (!emagged)
 		emagged = 1
@@ -312,6 +312,7 @@
 
 	holographic_objs = A.copy_contents_to(linkedholodeck , 1)
 	for(var/obj/holo_obj in holographic_objs)
+		holo_obj.obj_flags |= OBJ_HOLOGRAM
 		holo_obj.alpha *= 0.8 //give holodeck objs a slight transparency
 
 	if(HP.ambience)

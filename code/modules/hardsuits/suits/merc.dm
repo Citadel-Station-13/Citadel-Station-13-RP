@@ -33,7 +33,6 @@
 		/obj/item/melee/baton,
 		/obj/item/melee/energy/sword,
 		/obj/item/handcuffs,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 

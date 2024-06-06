@@ -72,7 +72,7 @@
 	return ..()
 
 /obj/machinery/computer/med_data/verb/eject_id()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject ID Card"
 	set src in oview(1)
 
@@ -116,7 +116,7 @@
 		ui.set_autoupdate(FALSE)
 
 
-/obj/machinery/computer/med_data/ui_data(mob/user)
+/obj/machinery/computer/med_data/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 	data["temp"] = temp
 	data["scan"] = scan ? scan.name : null
@@ -202,7 +202,7 @@
 	data["modal"] = ui_modal_data(src)
 	return data
 
-/obj/machinery/computer/med_data/ui_act(action, params)
+/obj/machinery/computer/med_data/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

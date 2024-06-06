@@ -2,14 +2,24 @@
 	id = MAT_STEEL
 	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
-	integrity = 150
-	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
-	protectiveness = 10 // 33%
 	icon_base = 'icons/turf/walls/metal_wall.dmi'
 	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#666666"
 	table_icon_base = "metal"
 	tgui_icon_key = "metal"
+
+	// the true neutral material
+
+	relative_integrity = 1
+	density = 8
+	relative_conductivity = 1
+	relative_permeability = 0
+	relative_reactivity = 0.75
+	hardness = MATERIAL_RESISTANCE_MODERATE
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_LOW
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_NONE
 
 /datum/material/steel/generate_recipes()
 	. = ..()
@@ -90,6 +100,18 @@
 		cost = 5,
 		time = 2 SECONDS,
 	)
+	for(var/datum/frame2/frame_datum as anything in GLOB.frame_datum_lookup)
+		if(!frame_datum.material_buildable)
+			continue
+		. += create_stack_recipe_datum(
+			category = "frames",
+			cost = frame_datum.material_cost,
+			name = frame_datum.name,
+			recipe_type = /datum/stack_recipe/frame,
+			recipe_args = list(
+				frame_datum.type,
+			),
+		)
 	. += new /datum/stack_recipe/railing
 	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa middle", product = /obj/structure/bed/chair/sofa, exclusitivity = /obj/structure/bed)
 	. += create_stack_recipe_datum(category = "sofas", cost = 1, name = "sofa left", product = /obj/structure/bed/chair/sofa/left, exclusitivity = /obj/structure/bed)
@@ -100,13 +122,6 @@
 		category = "frames",
 		name = "light switch frame",
 		product = /obj/item/frame/lightswitch,
-		cost = 2,
-	)
-	// todo: frame rework
-	. += create_stack_recipe_datum(
-		category = "frames",
-		name = "apc frame",
-		product = /obj/item/frame/apc,
 		cost = 2,
 	)
 	// todo: frame rework
@@ -246,7 +261,7 @@
 	id = "steel_hull"
 	name = MAT_STEELHULL
 	stack_type = /obj/item/stack/material/steel/hull
-	integrity = 250
+	relative_integrity = 2
 	explosion_resistance = 10
 	icon_colour = "#666677"
 

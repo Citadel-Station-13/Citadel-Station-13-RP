@@ -3,7 +3,7 @@
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	origin_tech = list(TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500)
+	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 
 	wires = WIRE_PULSE
 
@@ -168,7 +168,7 @@
 		ui = new(user, src, "AssemblyInfrared", name)
 		ui.open()
 
-/obj/item/assembly/infra/ui_data(mob/user)
+/obj/item/assembly/infra/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -194,7 +194,7 @@
 
 /obj/item/assembly/infra/verb/rotate_clockwise()
 	set name = "Rotate Infrared Laser Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	setDir(turn(dir, 90))

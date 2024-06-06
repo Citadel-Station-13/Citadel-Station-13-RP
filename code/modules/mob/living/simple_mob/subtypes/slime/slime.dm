@@ -3,7 +3,7 @@
 /datum/category_item/catalogue/fauna/slime
 	name = "Slime"
 	desc = "Often referred to as Slimes, this mysterious alien \
-	species represents a larger biological curiosity to NanoTrasen. \
+	species represents a larger biological curiosity to Nanotrasen. \
 	Highly mutable, these carnivorous blobs of gelatinous tissue may \
 	be trained and farmed, but their temperament makes them a constant danger."
 	value = CATALOGUER_REWARD_EASY
@@ -28,7 +28,7 @@
 	maxHealth = 150
 	movement_cooldown = 0
 	pass_flags = ATOM_PASS_TABLE
-	makes_dirt = FALSE	// Goop
+	makes_dirt = FALSE	// Goopw
 	mob_class = MOB_CLASS_SLIME
 
 	response_help = "pets"
@@ -51,8 +51,8 @@
 	taser_kill = FALSE
 	water_resist = 0 // Slimes are very weak to water.
 
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
 	base_attack_cooldown = 10 // One attack a second.
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("glomped")

@@ -105,7 +105,7 @@
 			download_netspeed = NTNETSPEED_ETHERNET
 	download_completion += download_netspeed
 
-/datum/computer_file/program/ntnetdownload/ui_act(action, params)
+/datum/computer_file/program/ntnetdownload/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -127,7 +127,7 @@
 			return TRUE
 	return FALSE
 
-/datum/computer_file/program/ntnetdownload/ui_data(mob/user)
+/datum/computer_file/program/ntnetdownload/ui_data(mob/user, datum/tgui/ui)
 	my_computer = computer
 	if(!istype(my_computer))
 		return

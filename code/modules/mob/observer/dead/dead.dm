@@ -112,14 +112,15 @@ GLOBAL_LIST_EMPTY(observer_list)
 			var/mob/living/carbon/human/H = body
 			icon = H.icon
 			icon_state = H.icon_state
-			if(H.overlays_standing)
-				for(var/i in 1 to length(H.overlays_standing))
-					if(!H.overlays_standing[i])
-						continue
-					add_overlay(H.overlays_standing[i])
+			// todo: fixup (get rid of other planes)
+			for(var/key in H.standing_overlays)
+				add_overlay(H.standing_overlays[key])
+			for(var/slot_id in H.inventory.rendered_normal_overlays)
+				add_overlay(H.inventory.rendered_normal_overlays[slot_id])
 		else
 			icon = body.icon
 			icon_state = body.icon_state
+			// todo: fixup (get rid of other planes)
 			add_overlay(body.overlays)
 
 		gender = body.gender
@@ -141,12 +142,6 @@ GLOBAL_LIST_EMPTY(observer_list)
 	if(!T)
 		T = locate(1,1,1)
 	forceMove(T)
-
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
@@ -225,7 +220,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
 /mob/living/verb/ghost()
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
@@ -305,9 +300,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	medHUD = !medHUD
 	if(medHUD)
-		get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+		self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_OBSERVER)
 	else
-		get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
+		self_perspective.remove_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_OBSERVER)
 	to_chat(src,"<font color=#4F49AF><B>Medical HUD [medHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/verb/toggle_antagHUD()
@@ -330,11 +325,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		has_enabled_antagHUD = TRUE
 
 	antagHUD = !antagHUD
-	var/datum/atom_hud/H = GLOB.huds[ANTAG_HUD]
 	if(antagHUD)
-		H.add_hud_to(src)
+		self_perspective.add_atom_hud(/datum/atom_hud/antag, ATOM_HUD_SOURCE_OBSERVER)
 	else
-		H.remove_hud_from(src)
+		self_perspective.remove_atom_hud(/datum/atom_hud/antag, ATOM_HUD_SOURCE_OBSERVER)
 	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
 /mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
@@ -658,18 +652,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	// Give the ghost a cult icon which should be visible only to itself
 	toggle_icon("cult")
 
-/mob/observer/dead/verb/toggle_anonsay()
-	set category = "Ghost"
-	set name = "Toggle Anonymous Chat"
-	set desc = "Toggles showing your key in dead chat."
-
-	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
-	SScharacters.queue_preferences_save(client.prefs)
-	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
-		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
-	else
-		to_chat(src, "<span class='info'>Your key will be publicly visible again.</span>")
-
 /mob/observer/dead/canface()
 	return 1
 
@@ -717,7 +699,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/proc/ghost_whisper()
 	set name = "Spectral Whisper"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(is_manifest)  //Only able to whisper if it's hit with a tome.
 		var/list/options = list()

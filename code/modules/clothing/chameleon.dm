@@ -358,9 +358,9 @@
 	desc = "A hologram projector in the shape of a gun. There is a dial on the side to change the gun's disguise."
 	icon = 'icons/obj/gun/holographic.dmi'
 	icon_state = "deagle"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
-	materials = list()
+	materials_base = list()
 
 	fire_sound = 'sound/weapons/Gunshot1.ogg'
 	projectile_type = /obj/projectile/chameleon

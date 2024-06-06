@@ -18,7 +18,7 @@
 	// rotated
 	var/got_rotated_by_maploader
 
-/obj/turbolift_map_holder/preloading_dir(datum/map_preloader/preloader)
+/obj/turbolift_map_holder/preloading_dir(datum/dmm_preloader/preloader)
 	. = ..()
 	got_rotated_by_maploader = preloader.loading_orientation
 
@@ -200,6 +200,7 @@
 							qdel(thing)
 				if(checking.type == floor_type) // Don't build over empty space on lower levels.
 					var/obj/machinery/door/airlock/lift/newdoor = new door_type(checking)
+					newdoor.setDir(got_rotated_by_maploader ? got_rotated_by_maploader : dir)
 					if(internal)
 						lift.doors += newdoor
 						newdoor.lift = cfloor

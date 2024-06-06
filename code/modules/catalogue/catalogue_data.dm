@@ -229,6 +229,24 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	and as such many things about them have yet to be comprehensively studied."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/category_item/catalogue/fauna/krisitik
+	name = "Sapients - Krisitik"
+	desc = "Krisitik are a species of subterranean mammals from the planet of Murith. \
+	Their unstable genetics mean the species has a varied appearance, though they \
+	can generally be described as murine. Their unstable genetics also mean \
+	they are prone to cancers and lethal mutations, which is aggravated by the species' \
+	reliance on nuclear energy. \
+	<br><br>\
+	Their society is highly competitive, and the frequent disasters in their underground \
+	cities mean the species as a whole has a degree of paranoia far above average for \
+	most sapients, instinctively prepping for any kind of disaster. \
+	<br><br>\
+	Even before their discovery of FTL, the Krisitik had a very advanced society. \
+	Their discovery of FTL was likely delayed due to the subterranean nature of Krisitik \
+	society and the toxic atmosphere of their homeworld. This edge has meant the Krisitik \
+	have faired better as an independent species than other 'newcomers' to the galaxy. "
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /datum/category_item/catalogue/fauna/vox
 	name = "Sapients - Vox"
 	desc = "Probably the best known of these aliens are the Vox, a bird-like species \
@@ -315,7 +333,7 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 			qdel(O)
 
 /datum/category_item/catalogue/information/organization/nanotrasen
-	name = "TSC - NanoTrasen Incorporated"
+	name = "TSC - Nanotrasen Incorporated"
 	datum_to_copy = /datum/lore/organization/tsc/nanotrasen
 
 /datum/category_item/catalogue/information/organization/hephaestus
@@ -433,7 +451,7 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/anomalous/scorian_religion
 	name = "Scorian Religion"
-	desc = "To date, anthropologists and NanoTrasen researchers have been unable to fully decipher \
+	desc = "To date, anthropologists and Nanotrasen researchers have been unable to fully decipher \
 	the Scorian language. A fusion of pictographs and script, much of the modern conception of Ashlander \
 	religious practices comes from diagrams and depictions found on carved sandstone monuments and cave \
 	paintings. The Scorian people appear to be monotheistic, with different tribes worshipping members of \

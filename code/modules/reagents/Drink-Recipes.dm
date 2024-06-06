@@ -191,7 +191,7 @@
 /datum/chemical_reaction/drinks/kahlua
 	name = "Kahlua"
 	id = "kahlua"
-	result = "kahlua"
+	result = /datum/reagent/ethanol/coffee/kahlua
 	required_reagents = list("coffee" = 5, "sugar" = 5)
 	catalysts = list("enzyme" = 5)
 	result_amount = 5
@@ -462,18 +462,32 @@
 	required_reagents = list("grapejuice" = 2, "cola" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/nicola
-	name = "NiCola"
-	id = "nicola"
-	result = "nicola"
+/datum/chemical_reaction/drinks/kyocola
+	name = "KyoCola"
+	id = "kyocola"
+	result = "kyocola"
 	required_reagents = list("grenadine" = 1, "tonic" = 1, "cola" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/nicola/cherry
-	name = "NiCola Sakura"
-	id = "nicolacherry"
-	result = "nicolacherry"
-	required_reagents = list("cherryjelly" = 1, "nicola" = 1)
+/datum/chemical_reaction/drinks/kyocola/fire
+	name = "KyoCola Fire"
+	id = "kyocolafire"
+	result = "kyocolafire"
+	required_reagents = list("capsaicin" = 1, "kyocola" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/kyocola/cherry
+	name = "KyoCola Sakura"
+	id = "kyocolacherry"
+	result = "kyocolacherry"
+	required_reagents = list("cherryjelly" = 1, "kyocola" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/kyocola/blue
+	name = "KyoCola Blue"
+	id = "kyocolablue"
+	result = "kyocolablue"
+	required_reagents = list("berryjuice" = 1, "kyocola" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/cherrycola
@@ -1322,14 +1336,7 @@
 	name = "Gimlet"
 	id = "gimlet"
 	result = "gimlet"
-	required_reagents = list("gin" = 1, "limejuice" = 1, "sodawater" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/drinks/firepunch
-	name = "Fire Punch"
-	id = "firepunch"
-	result = "firepunch"
-	required_reagents = list("sugar" = 2, "rum" = 1)
+	required_reagents = list("gin" = 1, "limejuice" = 1, "sugar" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/newsheriff
@@ -1443,6 +1450,13 @@
 	id = "monstertamer"
 	result = "monstertamer"
 	required_reagents = list("whiskey" = 1, "protein" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/drymonstertamer
+	name = "Dry Monster Tamer"
+	id = "drymonstertamer"
+	result = "drymonstertamer"
+	required_reagents = list("sassafras" = 1, "protein" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/phobos
@@ -1865,7 +1879,14 @@
 	name = "David Martinez"
 	id = "martinez"
 	result = "martinez"
-	required_reagents = list("vodka" = 1, "nicola" = 1, "ice" = 1)
+	required_reagents = list("vodka" = 1, "kyocola" = 1, "ice" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/mimosa
+	name = "Mimosa"
+	id = "mimosa"
+	result = "mimosa"
+	required_reagents = list("orangejuice" = 1, "champagne" = 1)
 	result_amount = 3
 
 // Unathi drinks

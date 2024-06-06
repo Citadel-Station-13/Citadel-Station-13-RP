@@ -5,7 +5,7 @@
 	item_state = "ionrifle"
 	wielded_item_state = "ionrifle-wielded"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	slot_flags = SLOT_BACK
 	heavy = TRUE
@@ -20,7 +20,7 @@
 	desc = "The NT Mk63 EW Pan is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. This model sacrifices capacity for portability."
 	icon_state = "ionpistol"
 	item_state = null
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	heavy = FALSE
@@ -64,7 +64,7 @@
 
 /obj/item/gun/energy/floragun/verb/select_gene()
 	set name = "Select Gene"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	var/genemask = input("Choose a gene to modify.") as null|anything in SSplants.plant_gene_datums
@@ -90,7 +90,7 @@
 	icon_state = "riotgun"
 	item_state = "c20r"
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	projectile_type = /obj/projectile/meteor
 	cell_type = /obj/item/cell/potato
@@ -106,7 +106,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	item_state = "pen"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	heavy = FALSE
 	slot_flags = SLOT_BELT
 	one_handed_penalty = 0
@@ -123,7 +123,7 @@
 	name = "phoron pistol"
 	desc = "A failed experiment in anti-personnel weaponry from the onset of the Syndicate Wars. The Mk.1 NT-P uses an internal resevoir of phoron gas, excited into a photonic state with a standard weapon cell, to fire lethal bolts of phoron-based plasma."
 	icon_state = "toxgun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
 	projectile_type = /obj/projectile/energy/phoron
 
@@ -136,7 +136,7 @@
 	item_icons = null
 	icon_state = "staff"
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	charge_cost = 480
 	projectile_type = /obj/projectile/change
 	origin_tech = null
@@ -156,7 +156,7 @@
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
 		src.visible_message("*fizzle*")
-	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
+	playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, 1)
 /*
 /obj/item/gun/energy/staff/animate
 	name = "staff of animation"
@@ -189,7 +189,7 @@
 	icon_state = "dakkalaser"
 	item_state = "dakkalaser"
 	wielded_item_state = "dakkalaser-wielded"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/projectile/energy/blue_pellet
@@ -209,12 +209,12 @@
 /obj/item/gun/energy/maghowitzer
 	name = "portable MHD howitzer"
 	desc = "A massive weapon designed to destroy fortifications with a stream of molten tungsten."
-	description_fluff = "A weapon designed by joint cooperation of NanoTrasen, Hephaestus, and SCG scientists. Everything else is red tape and black highlighters."
+	description_fluff = "A weapon designed by joint cooperation of Nanotrasen, Hephaestus, and SCG scientists. Everything else is red tape and black highlighters."
 	description_info = "This weapon requires a wind-up period before being able to fire. Clicking on a target will create a beam between you and its turf, starting the timer. Upon completion, it will fire at the designated location."
 	icon_state = "mhdhowitzer"
 	item_state = "mhdhowitzer"
 	wielded_item_state = "mhdhowitzer-wielded"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
@@ -323,10 +323,10 @@
 	name = "service weapon"
 	icon_state = "service_grip"
 	item_state = "service_grip"
-	desc = "An anomalous weapon, long kept secure. It has recently been acquired by NanoTrasen's Paracausal Monitoring Division. How did it get here?"
+	desc = "An anomalous weapon, long kept secure. It has recently been acquired by Nanotrasen's Paracausal Monitoring Division. How did it get here?"
 	damage_force = 5
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/bullet/pistol/medium/silver
 	origin_tech = null
 	fire_delay = 10		//Old pistol
@@ -432,11 +432,11 @@
 	cell_type = /obj/item/cell
 	accept_cell_type = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
-	materials = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
 
 /obj/item/gun/energy/ionrifle/pistol/tyrmalin
@@ -457,7 +457,7 @@
 	cell_type = /obj/item/cell/device/weapon
 	battery_lock = 1
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	one_handed_penalty = 60
@@ -473,11 +473,11 @@
 	charge_cost = 400
 	cell_type = /obj/item/cell/device/weapon
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
+	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
 	one_handed_penalty = 50
 	var/overheating = 0
 
@@ -516,11 +516,11 @@
 	desc = "This scaled down NT-PLP-EX 'Wyrm' plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "ppistol"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	heavy = FALSE
 	damage_force = 5
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
+	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
 
 /obj/item/gun/energy/plasma/pistol/update_icon()

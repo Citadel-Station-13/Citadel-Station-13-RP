@@ -46,7 +46,7 @@
 			return TRUE
 		if(S.use(1))
 			to_chat(user, "You patch up \the [src] with a bit of \the [W].")
-			take_damage(-10)
+			take_damage_legacy(-10)
 		return TRUE
 	return ..()
 
@@ -56,7 +56,7 @@
 	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
 
 /obj/item/computer_hardware/Initialize(mapload)
-	w_class = hardware_size
+	set_weight_class(hardware_size)
 	if(istype(loc, /obj/item/modular_computer))
 		holder2 = loc
 	return ..()
@@ -90,6 +90,6 @@
 		. += "It seems to be slightly damaged."
 
 // Damages the component. Contains necessary checks. Negative damage "heals" the component.
-/obj/item/computer_hardware/take_damage(amount)
+/obj/item/computer_hardware/proc/take_damage_legacy(amount)
 	damage += round(amount) // We want nice rounded numbers here.
 	damage = clamp( damage, 0,  max_damage) // Clamp the value.

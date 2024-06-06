@@ -1,8 +1,13 @@
+/datum/physiology_modifier/intrinsic/species/alraune
+	carry_strength_add = CARRY_STRENGTH_ADD_ALRAUNE
+	carry_strength_factor = CARRY_FACTOR_MOD_ALRAUNE
+
 /datum/species/alraune
 	uid = SPECIES_ID_ALRAUNE
 	id = SPECIES_ID_ALRAUNE
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/alraune
 
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
@@ -12,7 +17,7 @@
 	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.
 
 	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they
-	are selfish or unable to empathise with others.
+	are selfish or unable to empathize with others.
 
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset.
 	"}
@@ -21,14 +26,16 @@
 	intrinsic_languages = LANGUAGE_ID_VERNAL
 
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
+	snow_movement  = -1 // Alraune can still wear shoes. Combined with winter boots, negates light snow slowdown but still slowed on ice.
+	water_movement = -1 // Combined with swimming fins, negates shallow water slowdown.
 	total_health = 100 //standard
 	metabolic_rate = 0.75 // slow metabolism
 
 	brute_mod     = 1    //nothing special
-	burn_mod      = 1.5  //plants don't like fire
+	burn_mod      = 1.1  //plants don't like fire
 	radiation_mod = 0.7  //cit change: plants seem to be pretty resilient. shouldn't come up much.
 
-	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
+	item_slowdown_mod = 0.1 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
 	max_age = 500
 	health_hud_intensity = 1.5
@@ -117,7 +124,7 @@
 	return TRUE //eh, why not? Aquatic plants are a thing.
 
 
-/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/alraune/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(H.inStasisNow()) // if they're in stasis, they won't need this stuff.
 		return
 
@@ -134,21 +141,8 @@
 	//They don't have lungs so breathe() will just return. Instead, they breathe through their skin.
 	//This is mostly normal breath code with some tweaks that apply to their particular biology.
 
-	var/datum/gas_mixture/breath = null
-	/// If they're wearing a fully sealed suit, their internals take priority.
-	var/fullysealed = FALSE
-	/// If no sealed suit, internals take priority in low pressure environements.
-	var/environmentalair = FALSE
-
-	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
-		fullysealed = TRUE
-	else // find out if local gas mixture is enough to override use of internals
-		var/envpressure = H.loc.return_pressure()
-		if(envpressure >= hazard_low_pressure)
-			environmentalair = TRUE
-
-	if(fullysealed || !environmentalair)
-		breath = H.get_breath_from_internal()
+	//just fuck off with this snowflake bullshit about checking if they're sealed off and just test for internals. too complicated.
+	var/datum/gas_mixture/breath = H.get_breath_from_internal()
 
 	if(!breath) //No breath from internals so let's try to get air from our location
 		// cut-down version of get_breath_from_environment - notably, gas masks provide no benefit
@@ -237,7 +231,7 @@
 	if(inhaling)
 		co2buff = (clamp(inhale_pp, 0, minimum_breath_pressure))/minimum_breath_pressure //returns a value between 0 and 1.
 
-	var/light_amount = fullysealed ? H.getlightlevel() : H.getlightlevel()/5 // if they're covered, they're not going to get much light on them.
+	var/light_amount = H.getlightlevel()
 
 	if(co2buff && !H.toxloss && light_amount >= 0.1) //if there's enough light and CO2 and you're not poisoned, heal. Note if you're wearing a sealed suit your heal rate will suck.
 		H.adjustBruteLoss(-(light_amount * co2buff * 2)) //at a full partial pressure of CO2 and full light, you'll only heal half as fast as diona.
@@ -325,7 +319,7 @@
 		else
 			temp_adj /= (BODYTEMP_HEAT_DIVISOR * 5)	//don't raise temperature as much as if we were directly exposed
 
-		var/relative_density = breath.total_moles / (MOLES_CELLSTANDARD * BREATH_PERCENTAGE)
+		var/relative_density = 8 * breath.total_moles / (CELL_MOLES * BREATH_PERCENTAGE)
 		temp_adj *= relative_density
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
@@ -366,7 +360,7 @@
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"
 	set desc = "Pick fruit off of [src]."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	//do_reagent_implant(usr)

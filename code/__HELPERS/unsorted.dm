@@ -430,7 +430,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode))
+		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -1022,6 +1022,10 @@
 		return TRUE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_SHARP)
+			return TRUE
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
@@ -1030,6 +1034,10 @@
 		return FALSE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_EDGE)
+			return TRUE
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
@@ -1085,7 +1093,7 @@ var/list/WALLITEMS = list(
 	/obj/machinery/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
-	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button/remote,
+	/obj/machinery/newscaster, /obj/machinery/fire_alarm, /obj/structure/noticeboard, /obj/machinery/button/remote,
 	/obj/machinery/computer/security/telescreen, /obj/machinery/embedded_controller/radio,
 	/obj/item/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
 	/obj/structure/mirror, /obj/structure/fireaxecabinet, /obj/machinery/computer/security/telescreen/entertainment,

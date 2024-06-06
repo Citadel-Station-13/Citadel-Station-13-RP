@@ -120,7 +120,10 @@ const TelecommsMultitoolMenuStatus = (props, context) => {
           ))}
         </LabeledList>
       </Section>
-      <Section title="Filtering Frequencies" mt={1}>
+      <Section title="Filtering Frequencies" mt={1} buttons={
+        <Button content="Add"
+          onClick={() => act('freq')} />
+      }>
         {filter.map(f => (
           <Button.Confirm
             key={f.index}

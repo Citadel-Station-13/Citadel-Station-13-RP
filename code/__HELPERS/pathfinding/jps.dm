@@ -406,7 +406,7 @@ GLOBAL_VAR_INIT(jps_visualization_resolve, TRUE)
 	while(TRUE);
 	#endif
 	//* loop
-	while(length(open.queue))
+	while(length(open.array))
 		node_top = open.dequeue()
 		node_top_pos = node_top.pos
 		#ifdef JPS_DEBUGGING

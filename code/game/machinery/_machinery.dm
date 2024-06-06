@@ -58,7 +58,7 @@
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
@@ -76,6 +76,8 @@
 	/// Can be anchored / unanchored by players without deconstructing by default with a wrench. null for off, number for time needed.
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
 	var/default_unanchor
+	/// default deconstruct requires panel open
+	var/default_deconstruct_requires_panel_open = TRUE
 	/// tool used for deconstruction
 	var/tool_deconstruct = TOOL_CROWBAR
 	/// tool used for panel open
@@ -124,6 +126,7 @@
 
 	var/interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_SET_MACHINE
 
+// todo: from_frame? arg for frame to pass in context..
 /obj/machinery/Initialize(mapload, new_dir)
 	if(!isnull(new_dir))
 		setDir(new_dir)
@@ -279,6 +282,8 @@
 
 // todo: refactor
 /obj/machinery/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(IsAdminGhost(user))
 		return FALSE
 	if(!(istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
@@ -410,13 +415,14 @@
 					continue
 				if(istype(B, P) && istype(A, P))
 					if(their_rating > our_rating)
-						R.remove_from_storage(B, src)
-						R.handle_item_insertion(A, null, TRUE)
+						R.obj_storage.remove(B, src)
+						R.obj_storage.insert(A, suppressed = TRUE, no_update = TRUE)
 						component_parts -= A
 						component_parts += B
 						B.loc = null
 						to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 						break
+		R.obj_storage.ui_queue_refresh()
 		update_appearance()
 		RefreshParts()
 	return 1
@@ -474,7 +480,6 @@
 	if(do_after(user, 20 * S.tool_speed))
 		if(machine_stat & BROKEN)
 			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
-			new /obj/item/material/shard(src.loc)
 		else
 			to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 		. = dismantle()
@@ -498,14 +503,15 @@
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
 	. = dismantle()
 
-/obj/machinery/proc/dismantle()
-	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-	drop_products(ATOM_DECONSTRUCT_DISASSEMBLED)
+/obj/machinery/deconstructed(method)
+	. = ..()
+	// todo: get rid of this, legacy.
 	on_deconstruction()
-	// If it doesn't have a circuit board, don't create a frame, instead just break.
-	if(!circuit)
-		qdel(src)
-		return 0
+
+/obj/machinery/drop_products(method, atom/where)
+	. = ..()
+	if(isnull(circuit))
+		return
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/circuitboard/M = circuit
 	A.circuit = M
@@ -546,8 +552,10 @@
 	A.update_appearance()
 	M.loc = null
 	M.after_deconstruct(src)
-	qdel(src)
-	return 1
+
+// todo: kill this shit, this is legacy
+/obj/machinery/proc/dismantle()
+	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 //called on machinery construction (i.e from frame to machinery) but not on initialization
 // /obj/machinery/proc/on_construction() //! Not used yet.
@@ -584,6 +592,16 @@
 	. = . % 9
 	dropped_atom.pixel_x = -8 + ((.%3)*8)
 	dropped_atom.pixel_y = -8 + (round( . / 3)*8)
+
+/obj/machinery/atom_break()
+	. = ..()
+	// todo: rework
+	machine_stat |= BROKEN
+
+/obj/machinery/atom_fix()
+	. = ..()
+	// todo: rework
+	machine_stat &= ~BROKEN
 
 //? Power - Availability
 

@@ -57,10 +57,10 @@
 	var/datum/sprite_accessory/HS = GLOB.sprite_accessory_hair[h_style_id]
 	var/datum/sprite_accessory/FS = GLOB.sprite_accessory_facial_hair[f_style_id]
 	if(!(HS.name in valid_hair))
-		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/bald
+		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/legacy/bald
 		h_style_id = initial(H.id)
 	if(!(FS.name in valid_fhair))
-		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/shaved
+		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/legacy/shaved
 		f_style_id = initial(FH.id)
 	// limbs/markings
 	reset_limbs()
@@ -113,10 +113,10 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 		ui.autoupdate = FALSE			// why the fuck are you updating species data??
 		ui.open()
 
-/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
-/datum/tgui_species_picker/ui_static_data(mob/user)
+/datum/tgui_species_picker/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	data["whitelisted"] = whitelisted
 	data["species"] = SScharacters.character_species_cache
@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	data["admin"] = !!admin_datums[user.ckey]
 	return data
 
-/datum/tgui_species_picker/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_species_picker/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)

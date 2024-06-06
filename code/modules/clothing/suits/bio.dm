@@ -9,14 +9,14 @@
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL | ALLOW_SURVIVALFOOD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD
 	encumbrance
 
 /obj/item/clothing/suit/bio_suit
 	name = "bio suit"
 	desc = "A suit that protects against biological contamination."
 	icon_state = "bio"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
@@ -26,7 +26,7 @@
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 
 //Standard biosuit, orange stripe
 /obj/item/clothing/head/bio_hood/general
@@ -104,13 +104,13 @@
 	body_cover_flags = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL | ALLOW_SURVIVALFOOD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOW_SURVIVALFOOD
 
 /obj/item/clothing/suit/beekeeper
 	name = "beekeeping suit"
 	desc = "A thick suit that protects against stinging insects."
 	icon_state = "beekeeper"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
@@ -120,4 +120,4 @@
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	atom_flags = PHORONGUARD
-	clothing_flags = CLOTHING_THICK_MATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT

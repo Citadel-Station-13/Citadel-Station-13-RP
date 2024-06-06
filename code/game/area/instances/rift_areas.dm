@@ -434,7 +434,6 @@
 	name = "\improper Outpost Maintenance"
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
-	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
 
 /area/outpost/mining_main/outpost/maintenance/south
@@ -578,6 +577,7 @@
 
 /area/maintenance/lower/trash_pit
 	name = "\improper Trash Pit"
+	area_flags = AREA_FLAG_ERODING
 
 /area/maintenance/lower/solars
 	name = "\improper Solars Maintenance"

@@ -1,6 +1,8 @@
 //TODO: Flash range does nothing currently
 
 /proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped)
+	if(isnull(epicenter))
+		return
 	var/multi_z_scalar = config_legacy.multi_z_explosion_scalar
 	spawn(0)
 		var/start = world.timeofday
@@ -16,10 +18,10 @@
 
 
 			if(adj_dev > 0 || adj_heavy > 0)
-				if(HasAbove(epicenter.z) && z_transfer & UP)
-					explosion(GetAbove(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, UP, shaped)
-				if(HasBelow(epicenter.z) && z_transfer & DOWN)
-					explosion(GetBelow(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, DOWN, shaped)
+				if(z_transfer & UP)
+					explosion(epicenter.above(), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, UP, shaped)
+				if(z_transfer & DOWN)
+					explosion(epicenter.below(), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, DOWN, shaped)
 
 		var/max_range = max(devastation_range, heavy_impact_range, light_impact_range, flash_range)
 

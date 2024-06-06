@@ -304,6 +304,21 @@
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
+/datum/crafting_recipe/clockwelder
+	name = "Replica Clockwork Welding Tool"
+	tools = list(/obj/item/cell/high,
+				/obj/item/reagent_containers/glass/beaker)
+	result = /obj/item/weldingtool/experimental/brass
+	reqs = list(/obj/item/weldingtool/experimental = 1,
+			/obj/item/stack/cable_coil = 20,
+			/obj/item/stack/material/brass = 5,
+			/datum/reagent/water = 25
+			)
+	time = 40
+	//always_available = FALSE
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
 /datum/crafting_recipe/brass_wirecutters
 	name = "Brass Wirecutters"
 	tools = list(/obj/item/cell/high,
@@ -555,7 +570,7 @@
 	name = "Bluespace Bike horn"
 	result = /obj/item/bikehorn/bluespacehonker
 	time = 10
-	reqs = list(/obj/item/stack/ore/bluespace_crystal = 1,
+	reqs = list(/obj/item/bluespace_crystal = 1,
 				/obj/item/toy/crayon/blue = 1,
 				/obj/item/bikehorn = 1)
 	subcategory = CAT_MISCELLANEOUS

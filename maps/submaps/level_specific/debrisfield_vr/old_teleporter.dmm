@@ -18,10 +18,9 @@
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_tele)
 "f" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/north_mount{
 	cell_type = null;
 	coverlocked = 0;
-	dir = 1;
 	locked = 0;
 	opened = 1;
 	pixel_y = 24

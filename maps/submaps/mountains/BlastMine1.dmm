@@ -71,9 +71,7 @@
 /area/submap/cave/BlastMine1)
 "q" = (
 /obj/structure/sign/warning/bomb_range,
-/turf/simulated/wall/sandstone{
-	damage = 20
-	},
+/turf/simulated/wall/sandstone,
 /area/submap/cave/BlastMine1)
 
 (1,1,1) = {"

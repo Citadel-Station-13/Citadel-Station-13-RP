@@ -94,9 +94,55 @@
 		/area/turbolift/t_station/level2
 		)
 
+/obj/turbolift_map_holder/tether/two
+	dir = WEST
+	areas_to_use = list(
+		/area/turbolift/t_surface/elevator_two/level1,
+		/area/turbolift/t_surface/elevator_two/level2,
+		/area/turbolift/t_surface/elevator_two/level3,
+		/area/turbolift/tether/elevator_two/transit,
+		/area/turbolift/t_station/elevator_two/level1,
+		/area/turbolift/t_station/elevator_two/level2
+		)
+
+/**Euthenia Lifts
+ */
+
+/obj/turbolift_map_holder/euthenia_medical
+	name = "Medical Elevator"
+	dir = NORTH
+	depth = 4
+	lift_size_x = 2
+	lift_size_y = 2
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+	floor_type = /turf/simulated/floor/glass/reinforced
+	areas_to_use = list(
+		/area/turbolift/medical/EutheniaDeck0,
+		/area/turbolift/medical/EutheniaDeck1,
+		/area/turbolift/medical/EutheniaDeck2,
+		/area/turbolift/medical/EutheniaDeck3
+		)
 
 
+/obj/turbolift_map_holder/euthenia_cargo
+	name = "Cargo Elevator"
+	dir = SOUTH
+	depth = 5
+	lift_size_x = 3
+	lift_size_y = 2
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+	floor_type = /turf/simulated/floor/tiled/techfloor/monogrid
+	areas_to_use = list(
+		/area/turbolift/cargo/EutheniaDeck0,
+		/area/turbolift/cargo/EutheniaDeck1,
+		/area/turbolift/cargo/EutheniaDeck2,
+		/area/turbolift/cargo/EutheniaDeck3,
+		/area/turbolift/cargo/EutheniaDeck4
+		)
 
+// I love finding these kevvy
 /* SHUT UP
 /datum/turbolift
 	music = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')  // Woo elevator music!

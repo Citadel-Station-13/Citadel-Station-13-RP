@@ -18,7 +18,7 @@
 		// machines may not yet be ordered at this point
 		monitored_alarms = dd_sortedObjectList(monitored_alarms)
 
-/datum/tgui_module_old/atmos_control/ui_act(action, params, datum/tgui/ui)
+/datum/tgui_module_old/atmos_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -31,10 +31,9 @@
 					alarm.ui_interact(usr, parent_ui = ui_ref, state = TS)
 			return 1
 
-/datum/tgui_module_old/atmos_control/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/simple/nanomaps),
-	)
+/datum/tgui_module_old/atmos_control/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/nanomaps
+	return ..()
 
 /datum/tgui_module_old/atmos_control/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -45,7 +44,7 @@
 		ui.open()
 	ui_ref = ui
 
-/datum/tgui_module_old/atmos_control/ui_static_data(mob/user)
+/datum/tgui_module_old/atmos_control/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
 	var/z = get_z(user)
@@ -67,7 +66,7 @@
 			"z" = alarm.z)
 	.["alarms"] = alarms
 
-/datum/tgui_module_old/atmos_control/ui_data(mob/user)
+/datum/tgui_module_old/atmos_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	var/z = get_z(user)
@@ -76,7 +75,7 @@
 
 	return data
 
-/datum/tgui_module_old/atmos_control/ui_close()
+/datum/tgui_module_old/atmos_control/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	ui_ref = null
 
@@ -110,5 +109,5 @@
 	ntos = TRUE
 
 /datum/tgui_module_old/atmos_control/robot
-/datum/tgui_module_old/atmos_control/robot/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/atmos_control/robot/ui_state()
 	return GLOB.self_state

@@ -125,7 +125,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data = list(
@@ -149,7 +149,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/massive_gas_pump/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

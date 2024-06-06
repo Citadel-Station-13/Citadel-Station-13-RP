@@ -30,7 +30,7 @@
 	var/obj/item/fishing_rod/used_rod
 	/// Lure visual
 	var/obj/effect/fishing_lure/lure
-	/// Background image from /datum/asset/simple/fishing_minigame
+	/// Background image from /datum/asset_pack/simple/fishing_minigame
 	var/background = "default"
 
 	/// Max distance we can move from the spot
@@ -155,24 +155,25 @@
 		ui.set_mouse_hook(TRUE)
 		ui.open()
 
-/datum/fishing_challenge/ui_host(mob/user)
+/datum/fishing_challenge/ui_host()
 	return lure //Could be the target really
 
 // Manually closing the ui is treated as lose
-/datum/fishing_challenge/ui_close(mob/user)
+/datum/fishing_challenge/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	if(!completed)
 		complete(FALSE)
 
-/datum/fishing_challenge/ui_static_data(mob/user)
+/datum/fishing_challenge/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["difficulty"] = max(1,min(difficulty,100))
 	.["fish_ai"] = fish_ai
 	.["special_effects"] = special_effects
 	.["background_image"] = background
 
-/datum/fishing_challenge/ui_assets(mob/user)
-	return list(get_asset_datum(/datum/asset/simple/fishing_minigame)) //preset screens
+/datum/fishing_challenge/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/fishing_minigame
+	return ..()
 
 /datum/fishing_challenge/ui_status(mob/user, datum/ui_state/state)
 	return min(
@@ -180,7 +181,7 @@
 		ui_status_user_is_abled(user, lure),
 	)
 
-/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/fishing_challenge/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

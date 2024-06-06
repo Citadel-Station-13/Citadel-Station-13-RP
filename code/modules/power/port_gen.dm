@@ -136,10 +136,11 @@
 	DropFuel()
 	return ..()
 
-/obj/machinery/power/port_gen/pacman/dismantle()
+/obj/machinery/power/port_gen/pacman/drop_products(method, atom/where)
+	. = ..()
+	// todo: refactor
 	while ( sheets > 0 )
 		DropFuel()
-	return ..()
 
 /obj/machinery/power/port_gen/pacman/RefreshParts()
 	var/temp_rating = 0
@@ -312,7 +313,7 @@
 		ui = new(user, src, "PortableGenerator", name)
 		ui.open()
 
-/obj/machinery/power/port_gen/pacman/ui_data(mob/user)
+/obj/machinery/power/port_gen/pacman/ui_data(mob/user, datum/tgui/ui)
 	// todo: rewrite the whole fuckin' UI.
 	var/list/data = list()
 
@@ -344,7 +345,7 @@
 
 	return data
 
-/obj/machinery/power/port_gen/pacman/ui_act(action, params)
+/obj/machinery/power/port_gen/pacman/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 

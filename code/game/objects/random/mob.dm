@@ -171,7 +171,9 @@
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/rapid,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong)
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/suppressor,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/kiting)
 
 /obj/random/mob/robotic/hivebot
 	name = "Random Hivebot"
@@ -182,12 +184,16 @@
 
 /obj/random/mob/robotic/hivebot/item_to_spawn()
 	return pick(prob(10);/mob/living/simple_mob/mechanical/hivebot,
-				prob(15);/mob/living/simple_mob/mechanical/hivebot/swarm,
+				prob(10);/mob/living/simple_mob/mechanical/hivebot/surveyor,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/swarm,
 				prob(10);/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/rapid,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,
 				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong)
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/strong,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/suppressor,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/kiting,
+				prob(5);/mob/living/simple_mob/mechanical/hivebot/ranged_damage/scorcher)
 
 //Mice
 

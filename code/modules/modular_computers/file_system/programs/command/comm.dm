@@ -44,6 +44,18 @@ var/global/last_message_id = 0
 	for(var/datum/comm_message_listener/l in comm_message_listeners)
 		l.Add(message)
 
+	// todo: refactor
+
+	//Old console support
+	for (var/obj/machinery/computer/communications/comm in GLOB.machines)
+		if (!(comm.machine_stat & (BROKEN | NOPOWER)) && comm.prints_intercept)
+			var/obj/item/paper/intercept = new /obj/item/paper( comm.loc )
+			intercept.name = message_title
+			intercept.info = message_text
+
+			comm.messagetitle.Add(message_title)
+			comm.messagetext.Add(message_text)
+
 /datum/comm_message_listener
 	var/list/messages
 

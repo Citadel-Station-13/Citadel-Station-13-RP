@@ -7,7 +7,7 @@ var/list/blob_cores = list()
 	icon_state = "blank_blob"
 	desc = "A huge, pulsating yellow mass."
 	density = TRUE
-	max_integrity = 150
+	integrity_max = 150
 	point_return = -1
 	health_regen = 0 //we regen in Life() instead of when pulsed
 	var/datum/blob_type/desired_blob_type = null // If this is set, the core always creates an overmind possessing this blob type.
@@ -125,7 +125,7 @@ var/list/blob_cores = list()
 		if(resource_delay <= world.time)
 			resource_delay = world.time + 1 SECOND
 			overmind.add_points(point_rate)
-	integrity = min(max_integrity, integrity + core_regen)
+	integrity = min(integrity_max, integrity + core_regen)
 //	if(overmind)
 //		overmind.update_health_hud()
 	pulse_area(overmind, 15, BLOB_CORE_PULSE_RANGE, BLOB_CORE_EXPAND_RANGE)

@@ -15,7 +15,7 @@
 // The 'ship' of the shuttle
 /obj/overmap/entity/visitable/ship/landable/specops
 	name = "NDV Quicksilver"
-	desc = "A NanoTrasen ST-ERT rapid response vessel."
+	desc = "A Nanotrasen ST-ERT rapid response vessel."
 	fore_dir = EAST
 	vessel_mass = 4000
 	vessel_size = SHIP_SIZE_SMALL

@@ -30,7 +30,7 @@ RSF
 		"condiment bottle" = /obj/item/reagent_containers/food/condiment
 		)
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/rsf/examine(mob/user, dist)
 	. = ..()

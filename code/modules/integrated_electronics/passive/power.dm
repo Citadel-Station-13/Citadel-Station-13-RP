@@ -94,7 +94,7 @@
 /obj/item/integrated_circuit/passive/power/relay
 	name = "tesla power relay"
 	desc = "A seemingly enigmatic device which connects to nearby APCs wirelessly and draws power from them."
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	extended_desc = "The siphon generates 250W of energy, so long as an APC is in the same room, with a cell that has energy.  It will always drain \
 	from the 'equipment' power channel."
 	icon_state = "power_relay"
@@ -113,7 +113,7 @@
 	 a source of organic fuel; blood from sapient creatures is more efficient."
 	atom_flags = OPENCONTAINER
 	complexity = 4
-	inputs = list()
+	inputs = list("push ref" = IC_PINTYPE_PULSE_IN)
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF)
 	activators = list()
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
@@ -129,6 +129,10 @@
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 	..()
+
+/obj/item/integrated_circuit/passive/power/chemical_cell/do_work()
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
+	push_data()
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/on_reagent_change()
 	set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
@@ -152,7 +156,7 @@
 /obj/item/integrated_circuit/passive/power/relay/large
 	name = "large tesla power relay"
 	desc = "A seemingly enigmatic device which connects to nearby APCs wirelessly and draws power from them, now in industiral size!"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	extended_desc = "The siphon generates 2 kW of energy, so long as an APC is in the same room, with a cell that has energy.  It will always drain \
 	from the 'equipment' power channel."
 	icon_state = "power_relay"

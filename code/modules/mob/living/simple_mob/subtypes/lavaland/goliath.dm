@@ -1,7 +1,7 @@
 /datum/category_item/catalogue/fauna/goliath/goliaths
 	name = "Goliaths"
 	desc = "The Goliath is native to KT-943, known commonly as Surt. Powerful and long-lived, early \
-	NanoTrasen mining operations struggled to contend with these hardy beasts. Due to overhunting and \
+	Nanotrasen mining operations struggled to contend with these hardy beasts. Due to overhunting and \
 	a presumed ecological disaster resulting from off-world exposure to contaminants, Goliaths were \
 	classified as extinct. Recent seismic activity has since opened up fissures in the surface of \
 	KT-943 which have provided fresh insights into the Goliath life cycle. Archaeological records \
@@ -26,7 +26,7 @@
 /datum/category_item/catalogue/fauna/goliath
 	name = "Goliath"
 	desc = "The common Goliath is easily recognizable. As KT-943's only known apex predator, it has left a \
-	lasting impression on NanoTrasen miners and engineers. Goliaths are bulky quadrupeds with thick, leathery \
+	lasting impression on Nanotrasen miners and engineers. Goliaths are bulky quadrupeds with thick, leathery \
 	hides which protect them from KT-943's volcanic atmosphere. At some point they evolved ambulatory tendrils \
 	which are used primarly for hunting and mating. These tendrils are able to regenerate if severed, although \
 	this process takes some time. Due to the way they employ their tendrils as weapons, it is difficult to \
@@ -61,8 +61,8 @@
 	special_attack_cooldown = 10 SECONDS
 
 	response_harm = "harmlessly punches"
-	melee_damage_lower = 18
-	melee_damage_upper = 22
+	legacy_melee_damage_lower = 18
+	legacy_melee_damage_upper = 22
 
 	attacktext = list ("pulverizes", "batters", "hammers")
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -273,7 +273,7 @@
 		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
 	for(var/obj/mecha/M in loc)
-		M.take_damage(20, BRUTE, null, null, null, 25)
+		M.take_damage_legacy(20, BRUTE, null, null, null, 25)
 	if(!latched)
 		retract()
 	else
@@ -330,8 +330,8 @@
 	special_attack_cooldown = 15 SECONDS
 
 	response_harm = "kicks"
-	melee_damage_lower = 8
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 15
 
 	meat_amount = 1
 	bone_amount = 2

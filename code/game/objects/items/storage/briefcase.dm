@@ -5,10 +5,10 @@
 	damage_force = 8.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 4
-	use_sound = 'sound/items/storage/briefcase.ogg'
+	w_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 4
+	sfx_open = 'sound/items/storage/briefcase.ogg'
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
@@ -19,13 +19,13 @@
 	icon_state = "clutch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "smpurse", SLOT_ID_LEFT_HAND = "smpurse")
 	damage_force = 0
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_COST_SMALL * 4
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/storage/briefcase/crafted
 	desc = "Hand crafted suitcase made of leather and cloth."
 	damage_force = 6
 
-/obj/item/storage/briefcase/crafted/PopulateContents()
+/obj/item/storage/briefcase/crafted/legacy_spawn_contents()
 	return //So we dont spawn items

@@ -15,6 +15,43 @@ GLOBAL_LIST_EMPTY(apcs)
 /// Power channel is on until power drops below a threshold
 #define POWERCHAN_ON_AUTO  3
 
+//NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
+//Critical//
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/critical, 22)
+/obj/machinery/apc/critical
+	is_critical = 1
+
+/// High capacity cell APCs
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/high, 22)
+/obj/machinery/apc/high
+	cell_type = /obj/item/cell/high
+
+/// Super capacity cell APCS
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/super, 22)
+/obj/machinery/apc/super
+	cell_type = /obj/item/cell/super
+
+/// Critical APCs with super cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/super/critical, 22)
+/obj/machinery/apc/super/critical
+	is_critical = 1
+
+/// APCS with hyper cells. How lewd
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/hyper, 22)
+/obj/machinery/apc/hyper
+	cell_type = /obj/item/cell/hyper
+
+/// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/alarms_hidden, 22)
+/obj/machinery/apc/alarms_hidden
+	alarms_hidden = TRUE
+
+/// APCS with hidden alarms and no power cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/alarms_hidden/no_cell, 22)
+/obj/machinery/apc/alarms_hidden/no_cell
+	cell_type = null
+	chargelevel = 0
+
 /**
  * APCs
  *
@@ -31,7 +68,8 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * ~silicons
  */
-#warn repath to /obj/machinery/apc on maps from /obj/machinery/power/apc.
+#warn repath to /obj/machinery/apc on maps from /obj/machinery/apc.
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 /obj/machinery/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -43,6 +81,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	use_power = USE_POWER_OFF
 	active_power_usage = 0
 	idle_power_usage = 0
+	armor_type = /datum/armor/object/medium
 	req_access = list(ACCESS_ENGINEERING_APC)
 
 	//? Appearance
@@ -147,6 +186,10 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/failure_timer = 0
 	var/force_update = 0
 
+	//Used for shuttles, workaround for broken mounting
+	//TODO: Remove when legacy walls are nuked
+	var/old_wall = FALSE
+
 /obj/machinery/apc/Initialize(mapload, set_dir, constructing)
 	if(!overlay_cache_generated)
 		generate_overlay_caches()
@@ -234,15 +277,43 @@ GLOBAL_LIST_EMPTY(apcs)
 	update_dir()
 
 /obj/machinery/apc/proc/update_dir()
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
-	terminal?.setDir(dir)
+	if(old_wall)
+		return
+
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(src, turn(dir, 180))
+	if(T.get_wallmount_anchor())
+		switch(dir)
+			if(SOUTH)
+				base_pixel_y = 22
+			if(NORTH)
+				base_pixel_y = -22
+			if(EAST)
+				base_pixel_x = -22
+			if(WEST)
+				base_pixel_x = 22
+	reset_pixel_offsets()
+
+	if(terminal)
+		terminal.disconnect_from_network()
+		terminal.setDir(turn(src.dir, 180)) // Terminal has same dir as master
+		terminal.connect_to_network() // Refresh the network the terminal is connected to.
 
 #warn what
 /obj/machinery/apc/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, round(duration))
 
-/obj/machinery/apc/proc/auto_build()
+/obj/machinery/apc/proc/make_terminal()
+	// create a terminal object at the same position as original turf loc
+	// wires will attach to this
+	terminal = new/obj/machinery/power/terminal(src.loc)
+	terminal.setDir(turn(dir, 180))
+	terminal.master = src
+
+/obj/machinery/apc/proc/autobuild()
+	has_electronics = 2 //installed and secured
+	// is starting with a power cell installed, create it and set its charge level
 	QDEL_NULL(cell)
 	if(cell_type)
 		cell = new cell_type(src)
@@ -297,6 +368,8 @@ GLOBAL_LIST_EMPTY(apcs)
 //attack with an item - open/close cover, insert cell, or (un)lock interface
 
 /obj/machinery/apc/attackby(obj/item/W, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 	if (istype(user, /mob/living/silicon) && get_dist(src,user)>1)
 		return src.attack_hand(user)
@@ -338,7 +411,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
 			return
-		if(W.w_class != ITEMSIZE_NORMAL)
+		if(W.w_class != WEIGHT_CLASS_NORMAL)
 			to_chat(user,"\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
 			return
 		if(!user.attempt_insert_item_for_installation(W, src))
@@ -470,7 +543,7 @@ GLOBAL_LIST_EMPTY(apcs)
 					"<span class='notice'>You disassembled the broken APC frame.</span>",\
 					"You hear welding.")
 			else
-				new /obj/item/frame/apc(loc)
+				new /obj/item/frame2/apc(loc)
 				user.visible_message(\
 					"<span class='warning'>[src] has been cut from the wall by [user.name] with the [WT.name].</span>",\
 					"<span class='notice'>You cut the APC frame from the wall.</span>",\
@@ -478,7 +551,7 @@ GLOBAL_LIST_EMPTY(apcs)
 			qdel(src)
 			return
 	else if (opened && ((machine_stat & BROKEN) || hacker || emagged))
-		if (istype(W, /obj/item/frame/apc) && (machine_stat & BROKEN))
+		if (istype(W, /obj/item/frame2/apc) && (machine_stat & BROKEN))
 			if(cell)
 				to_chat(user, "<span class='warning'>You need to remove the power cell first.</span>")
 				return
@@ -508,7 +581,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if ((machine_stat & BROKEN) \
 				&& !opened \
 				&& W.damage_force >= 5 \
-				&& W.w_class >= ITEMSIZE_SMALL )
+				&& W.w_class >= WEIGHT_CLASS_SMALL )
 			user.visible_message("<span class='danger'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
 				"<span class='danger'>You hit the [src.name] with your [W.name]!</span>", \
 				"You hear a bang!")
@@ -523,8 +596,6 @@ GLOBAL_LIST_EMPTY(apcs)
 				return src.attack_hand(user)
 			if (!opened && wiresexposed && (istype(W, /obj/item/multitool) || W.is_wirecutter() || istype(W, /obj/item/assembly/signaler)))
 				return src.attack_hand(user)
-			//Placeholder until someone can do take_damage() for APCs or something.
-			to_chat(user,"<span class='notice'>The [src.name] looks too sturdy to bash open with \the [W.name].</span>")
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 

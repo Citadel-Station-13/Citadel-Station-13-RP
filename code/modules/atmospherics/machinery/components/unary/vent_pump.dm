@@ -161,7 +161,7 @@
 	var/pressure_delta = get_pressure_delta(environment)
 	//src.visible_message("DEBUG >>> [src]: pressure_delta = [pressure_delta]")
 
-	if((environment.temperature || air_contents.temperature) && pressure_delta > 0.5)
+	if((environment.temperature || air_contents.temperature) && pressure_delta > 0.05)
 		if(pump_direction) //internal -> external
 			var/transfer_moles = calculate_transfer_moles(air_contents, environment, pressure_delta)
 			power_draw = pump_gas(src, air_contents, environment, transfer_moles, power_rating)
@@ -312,7 +312,7 @@
 	ui = new(user, src, "AtmosVentPump")
 	ui.open()
 
-/obj/machinery/atmospherics/component/unary/vent_pump/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["state"] = ui_vent_data()
 	.["name"] = name
@@ -482,7 +482,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on
 	on = TRUE
-	icon_state = "map_vent_out"
+	icon_state = "map_vent_out_retro"
 
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on/welded
 	welded = 1

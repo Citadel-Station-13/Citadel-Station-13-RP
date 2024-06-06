@@ -2,13 +2,6 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 // Persistent panic bunker passthrough
-/datum/controller/subsystem/persistence/LoadPersistence()
-	LoadPanicBunker()
-	return ..()
-
-/datum/controller/subsystem/persistence/SavePersistence()
-	SavePanicBunker()
-	return ..()
 
 /datum/controller/subsystem/persistence/proc/SavePanicBunker()
 	var/json_file = file(PERSISTENCE_FILE_BUNKER_PASSTHROUGH)

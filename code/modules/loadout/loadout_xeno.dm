@@ -9,7 +9,7 @@
 	category = LOADOUT_CATEGORY_XENOWEAR
 
 /datum/loadout_entry/xeno/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/shoes
 	slot = SLOT_ID_SHOES
@@ -41,7 +41,7 @@
 	legacy_species_lock = SPECIES_TAJ
 
 /datum/loadout_entry/xeno/tajaran/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/tajaran/shoes
 	slot = SLOT_ID_SHOES
@@ -66,7 +66,7 @@
 	legacy_species_lock = SPECIES_PROMETHEAN
 
 /datum/loadout_entry/xeno/promethean/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/promethean/shoes
 	slot = SLOT_ID_SHOES
@@ -90,7 +90,7 @@
 /datum/loadout_entry/xeno/teshari
 
 /datum/loadout_entry/xeno/teshari/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/teshari/shoes
 	slot = SLOT_ID_SHOES
@@ -122,7 +122,7 @@
 	legacy_species_lock = SPECIES_PHORONOID
 
 /datum/loadout_entry/xeno/phoronoid/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/phoronoid/shoes
 	slot = SLOT_ID_SHOES
@@ -156,7 +156,7 @@
 	// legacy_species_lock = SPECIES_SKRELL
 
 /datum/loadout_entry/xeno/skrell/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/skrell/shoes
 	slot = SLOT_ID_SHOES
@@ -189,7 +189,7 @@
 	legacy_species_lock = SPECIES_UNATHI
 
 /datum/loadout_entry/xeno/unathi/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/unathi/shoes
 	slot = SLOT_ID_SHOES
@@ -222,7 +222,7 @@
 	legacy_species_lock = SPECIES_VOX
 
 /datum/loadout_entry/xeno/vox/accessories
-	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
+	slot = /datum/inventory_slot/abstract/attach_as_accessory
 
 /datum/loadout_entry/xeno/vox/shoes
 	slot = SLOT_ID_SHOES
@@ -263,7 +263,7 @@
 /datum/loadout_entry/xeno/tajaran/eyes/veil/mesons
 	name = "Tajaran - Optical Meson Veil"
 	path = /obj/item/clothing/glasses/meson/prescription/tajblind
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Research Director", "Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer", "Research Director", "Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
 
 /datum/loadout_entry/xeno/tajaran/eyes/veil/material_scanners
 	name = "Tajaran - Material Scanning Veil"
@@ -392,7 +392,7 @@
 /datum/loadout_entry/xeno/vox/uniform/engineer
 	name = "Vox - Engineering - Pressure Suit"
 	path = /obj/item/clothing/under/pressuresuit/voxcivengineer
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/xeno/vox/uniform/engineer/ce
 	name = "Vox - Chief Engineer - Pressure Suit"
@@ -656,12 +656,12 @@
 /datum/loadout_entry/xeno/teshari/uniform/role_undercoat/engineer
 	name = "Teshari - Engineering Undercoat"
 	path = /obj/item/clothing/under/teshari/undercoat/jobs/engineer
-	allowed_roles = list("Chief Engineer", "Station Engineer")
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Senior Engineer")
 
 /datum/loadout_entry/xeno/teshari/uniform/role_undercoat/atmos
 	name = "Teshari - Atmospherics Undercoat"
 	path = /obj/item/clothing/under/teshari/undercoat/jobs/atmos
-	allowed_roles = list("Chief Engineer","Atmospheric Technician")
+	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/xeno/teshari/uniform/role_undercoat/research
 	name = "Teshari - Scientist Undercoat"
@@ -785,12 +785,12 @@
 /datum/loadout_entry/xeno/teshari/suit/role_cloak/engineer
 	name = "Teshari - Engineering Cloak"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/eningeer
-	allowed_roles = list("Chief Engineer","Station Engineer")
+	allowed_roles = list("Chief Engineer","Station Engineer", "Senior Engineer")
 
 /datum/loadout_entry/xeno/teshari/suit/role_cloak/atmos
 	name = "Teshari - Atmospherics Cloak"
 	path = /obj/item/clothing/suit/storage/teshari/cloak/jobs/atmos
-	allowed_roles = list("Chief Engineer","Atmospheric Technician")
+	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Senior Engineer")
 
 /datum/loadout_entry/xeno/teshari/suit/role_cloak/research
 	name = "Teshari - Scientist Cloak"
@@ -1023,7 +1023,7 @@
 /datum/loadout_entry/xeno/shoes/moth/workboots
 	name = "Moth - Workboots"
 	path = /obj/item/clothing/shoes/boots/moth
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Research Director", "Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer", "Research Director", "Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
 
 
 

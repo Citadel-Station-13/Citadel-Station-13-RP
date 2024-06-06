@@ -20,8 +20,8 @@
 
 	harm_intent_damage = 10
 
-	melee_damage_lower = 10
-	melee_damage_upper = 18
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 18
 	attacktext = list("clawed", "mauls")
 	friendly = list("pats", "hugs")
 	attack_sound = 'sound/hallucinations/growl1.ogg'
@@ -38,11 +38,16 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	movement_cooldown = -100
+	movement_cooldown = -1
 
 	ai_holder_type = /datum/ai_holder/simple_mob/statue
 
-
+/mob/living/simple_mob/living_statue/death()
+	new /obj/item/ectoplasm (src.loc)
+	new /obj/item/stack/material/marble (src.loc)
+	..(null,"shatters into a pile of rubble.")
+	ghostize()
+	qdel(src)
 
 //# Statue Subtypes
 
@@ -52,6 +57,13 @@
 	icon = 'icons/obj/statue.dmi'
 	icon_state = "human_female"
 	gender = NEUTER
+
+//Statue Shadow Organ
+/obj/item/statue_darkness
+	name = "void organ"
+	desc = "You shouldn't be seeing this. Contact a Maintainer."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "gift1"
 
 //# Mob AI Code.
 
@@ -75,6 +87,7 @@
 	// Give spells
 	add_spell(new/spell/aoe_turf/flicker_lights)
 	add_spell(new/spell/aoe_turf/blindness)
+	add_spell(new/spell/aoe_turf/veil_of_darkness)
 
 
 //? Cannot talk
@@ -86,8 +99,6 @@
 /mob/living/simple_mob/living_statue/gib()
 	dust()
 
-
-
 //# Statue powers
 
 /// Flicker lights AOE Spell
@@ -98,8 +109,8 @@
 	override_base = "grey"
 	hud_state = "blackout"
 
-	cooldown_min = 1 MINUTE // Overkill but by request.
 	charge_max = 300
+	cooldown_min = 300
 	range = 14
 
 
@@ -129,7 +140,8 @@
 
 	message = "<span class='notice'>You glare your eyes.</span>"
 
-	cooldown_min = 2 MINUTE // Overkill but by request.
+	charge_max = 600
+	cooldown_min = 600
 	range = 10
 
 /spell/aoe_turf/blindness/choose_targets(mob/user = usr)
@@ -143,7 +155,26 @@
 
 	return things
 
-
 /spell/aoe_turf/blindness/cast(list/targets, mob/user = usr)
 	for(var/mob/living/victim as anything in targets)
 		victim.Blind(4)
+
+/// Veil of Darkness Spell
+/spell/aoe_turf/veil_of_darkness
+	name = "Veil of Darkness"
+	desc = "You sheathe yourself in a powerful veil of darkness."
+
+	override_base = "grey"
+	hud_state = "wiz_smoke"
+
+	message = "<span class='notice'>You call upon the void.</span>"
+
+	charge_max = 1200
+	cooldown_min = 1200
+
+/spell/aoe_turf/veil_of_darkness/cast(list/targets, mob/user = user)
+	playsound(user, 'sound/effects/bamf.ogg', 50, 1, 5)
+	var/obj/item/statue_darkness/S = new
+	user.contents.Add(S)
+	S.set_light(5, -10, "#FFFFFF")
+	QDEL_IN(S, 2 SECONDS)

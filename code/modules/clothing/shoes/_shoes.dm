@@ -49,7 +49,7 @@
 /obj/item/clothing/shoes/proc/draw_knife()
 	set name = "Draw Boot Knife"
 	set desc = "Pull out your boot knife."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src in usr
 
 	if(usr.stat || usr.restrained() || usr.incapacitated())
@@ -78,6 +78,7 @@
 	 istype(I, /obj/item/material/kitchen/utensil) || \
 	 istype(I, /obj/item/storage/box/survival_knife) ||\
 	 istype(I, /obj/item/material/knife/stiletto) ||\
+	 istype(I, /obj/item/gps/dataknife) ||\
 	 istype(I, /obj/item/material/knife/tacknife)))
 		if(holding)
 			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")
@@ -116,7 +117,7 @@
 
 /obj/item/clothing/shoes/verb/toggle_layer()
 	set name = "Switch Shoe Layer"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(shoes_under_pants == -1)
 		to_chat(usr, SPAN_NOTICE("\The [src] cannot be worn under your pants"))

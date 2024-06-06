@@ -9,8 +9,10 @@
 
 	icobase = 'icons/mob/species/zorren_hi/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_hi/deformed_body.dmi'
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/zorren_highlander,
+	)
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_TERMINUS
@@ -75,8 +77,10 @@
 
 	icobase = 'icons/mob/species/zorren_fl/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_fl/deformed_body.dmi'
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/zorren_flatlander,
+	)
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_TERMINUS
