@@ -5,9 +5,33 @@
  * stores data about the current transit cycle
  */
 /datum/shuttle_transit_cycle
+	//* state / processing *//
 	/// current stage
 	var/transit_stage
+	/// timerid for movement
+	///
+	/// * only set once in transit; takeoff is done via spinlocks.
+	/// todo: cpu used shouldn't be counted against SStimers.
+	var/transit_timer_id
+	/// behavior flags
+	var/transit_flags = NONE
 
+	//* hooking *//
+	/// callbacks for when transit is done
+	///
+	/// * called with (controller: src, target: transit_target_dock, status: SHUTTLE_TRANSIT_STATUS_*)
+	var/list/datum/callback/transit_finish_callbacks
+
+	//* visuals *//
+	/// transit visuals
+	var/list/obj/effect/temporary_effect/shuttle_landing/transit_warning_visuals
+	/// timerid for making warning bubbles
+	///
+	/// * only set once in transit; takeoff is done via spinlocks.
+	/// * instant transits will not make visuals!
+	var/transit_visual_timer_id
+
+	//* arbitrary information *//
 	/// source information;
 	/// this is arbitrarily set by a shuttle controller type
 	/// and fed back into it on transit failure. this tells the shuttle controller
@@ -18,13 +42,7 @@
 	var/transit_abort_source_hint
 	#warn hook
 
-	/// we should not be interruptible
-	/// * this is just literally asking nicely the system to prevent players from aborting
-	/// * this can't actually prevent an abort from the code API
-	var/no_interrupt = FALSE
-	/// transit cannot be aborted
-	var/no_abort_mid_transit = FALSE
-
+	//* configuration *//
 	/// how long to spend in transit
 	///
 	/// * transit can be aborted if [no_abort_mid_transit] isn't set
@@ -39,12 +57,24 @@
 	/// * landing cannot be aborted
 	var/landing_duration
 	#warn default
+	/// the timeout allowed by docking / undocking
+	///
+	/// * if timeout expires, we will potentially have the transit cycle interrupted, even if it's no interrupt
+	var/dock_timeout
+	#warn default
+	/// the timeout allowed by takeoff / landing
+	///
+	/// * if timeout expires, we will potentially have the transit cycle interrupted, even if it's no interrupt
+	var/traversal_timeout
+	#warn default
 
+	//* computed as we go *//
 	/// world.time we should arrive at destination
 	///
 	/// * only set once in transit
 	var/arrival_time
 
+	//* target information *//
 	/// dock we're going towards
 	/// this dock will have us set as inbound, which should
 	/// protect it from everything else
@@ -59,19 +89,5 @@
 	var/target_direction
 	/// if not centered, are we aligning with a specific port?
 	var/obj/shuttle_port/target_port
-	/// timerid for movement
-	///
-	/// * only set once in transit; takeoff is done via spinlocks.
-	/// todo: cpu used shouldn't be counted against SStimers.
-	var/transit_timer_id
-	/// timerid for making warning bubbles
-	///
-	/// * only set once in transit; takeoff is done via spinlocks.
-	/// * instant transits will not make visuals!
-	var/transit_visual_timer_id
-	/// callbacks for when transit is done
-	///
-	/// * called with (controller: src, target: transit_target_dock, status: SHUTTLE_TRANSIT_STATUS_*)
-	var/list/datum/callback/transit_finish_callbacks
-	/// transit visuals
-	var/list/obj/effect/temporary_effect/shuttle_landing/transit_warning_visuals
+
+#warn oh no

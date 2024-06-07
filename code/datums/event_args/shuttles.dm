@@ -17,6 +17,9 @@
 	var/datum/shuttle_controller/controller
 
 	/// this is a blockable event
+	///
+	/// * this can be modified, and is not static per type of event.
+	/// * it is the job of the hook to handle events marked unblockable.
 	var/blockable = FALSE
 	/// things we're still waiting on, associated to list of UI data for why
 	var/list/datum/shuttle_hook/waiting_on_hooks
@@ -31,6 +34,11 @@
 	var/succeeded = FALSE
 	/// are we done?
 	var/finished = FALSE
+
+	/// timeout set on us
+	var/timeout_duration
+	/// world.time we will time out on
+	var/timeout_time
 
 /datum/event_args/shuttle/Destroy()
 	if(!finished)
@@ -47,6 +55,7 @@
 /datum/event_args/shuttle/proc/block(datum/shuttle_hook/hook, list/reason_or_reasons, dangerous)
 	. = FALSE
 	if(!blockable)
+		// it is YOUR job to check if an event is blockable.
 		CRASH("attempted to block an unblockable event")
 	ASSERT(isnull(hook.blocking))
 	hook.blocking = src
@@ -113,11 +122,13 @@
  * * only fired on aligned docks/undocks
  */
 /datum/event_args/shuttle/dock/docked
+	blockable = FALSE
 
 /**
  * * only fired on aligned docks/undocks
  */
 /datum/event_args/shuttle/dock/undocked
+	blockable = FALSE
 
 /datum/event_args/shuttle/dock/departing
 	blockable = TRUE

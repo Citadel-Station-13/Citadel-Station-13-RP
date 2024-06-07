@@ -84,59 +84,40 @@
 			return transit_time_away
 	return ..()
 
-/datum/shuttle_controller/ferry/on_transit_success(obj/shuttle_dock/dock)
+/datum/shuttle_controller/ferry/on_transit_end(datum/shuttle_transit_cycle/cycle, status)
 	. = ..()
-	if(dock.dock_id == dock_home_id)
-		on_successful_transit_to_home()
-	else if(dock.dock_id == dock_away_id)
-		on_successful_transit_to_away()
+	if(cycle.target_dock.dock_id == dock_home_id)
+		on_end_transit_to_home(cycle, status)
+	else if(cycle.target_dock.dock_id == dock_away_id)
+		on_end_transit_to_away(cycle, status)
 
 /**
  * only called if we're doing a default, non-manual docking with home dock!
  */
-/datum/shuttle_controller/ferry/proc/on_successful_transit_to_home()
+/datum/shuttle_controller/ferry/proc/on_end_transit_to_home(datum/shuttle_transit_cycle/cycle, status)
 	return
 
 /**
  * only called if we're doing a default, non-manual docking with away dock!
  */
-/datum/shuttle_controller/ferry/proc/on_successful_transit_to_away()
+/datum/shuttle_controller/ferry/proc/on_end_transit_to_away(datum/shuttle_transit_cycle/cycle, status)
 	return
 
-/datum/shuttle_controller/ferry/on_transit_abort(obj/shuttle_dock/dock, redirected)
+/datum/shuttle_controller/ferry/on_transit_begin(datum/shuttle_transit_cycle/cycle, redirected)
 	. = ..()
-	if(dock.dock_id == dock_home_id)
-		on_abort_transit_to_home()
-	else if(dock.dock_id == dock_away_id)
-		on_abort_transit_to_away()
+	if(cycle.target_dock.dock_id == dock_home_id)
+		on_begin_transit_to_home(cycle, redirected)
+	else if(cycle.target_dock.dock_id == dock_away_id)
+		on_begin_transit_to_away(cycle, redirected)
 
 /**
  * only called if we're doing a default, non-manual docking with home dock!
  */
-/datum/shuttle_controller/ferry/proc/on_abort_transit_to_home()
+/datum/shuttle_controller/ferry/proc/on_begin_transit_to_home(datum/shuttle_transit_cycle/cycle, redirected)
 	return
 
 /**
  * only called if we're doing a default, non-manual docking with away dock!
  */
-/datum/shuttle_controller/ferry/proc/on_abort_transit_to_away()
-	return
-
-/datum/shuttle_controller/ferry/on_transit_begin(obj/shuttle_dock/dock, redirected)
-	. = ..()
-	if(dock.dock_id == dock_home_id)
-		on_begin_transit_to_home()
-	else if(dock.dock_id == dock_away_id)
-		on_begin_transit_to_away()
-
-/**
- * only called if we're doing a default, non-manual docking with home dock!
- */
-/datum/shuttle_controller/ferry/proc/on_begin_transit_to_home()
-	return
-
-/**
- * only called if we're doing a default, non-manual docking with away dock!
- */
-/datum/shuttle_controller/ferry/proc/on_begin_transit_to_away()
+/datum/shuttle_controller/ferry/proc/on_begin_transit_to_away(datum/shuttle_transit_cycle/cycle, redirected)
 	return

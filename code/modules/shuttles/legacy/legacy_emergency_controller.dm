@@ -3,7 +3,7 @@ GLOBAL_DATUM(legacy_emergency_shuttle_controller, /datum/shuttle_controller/ferr
 /datum/shuttle_controller/ferry/emergency
 	var/round_end_armed = FALSE
 
-/datum/shuttle_controller/ferry/emergency/on_transit_begin(obj/shuttle_dock/dock, redirected)
+/datum/shuttle_controller/ferry/emergency/on_transit_begin(obj/shuttle_dock/dock, datum/shuttle_transit_cycle/cycle, redirected)
 	. = ..()
 
 	if(!round_end_armed)
@@ -11,7 +11,7 @@ GLOBAL_DATUM(legacy_emergency_shuttle_controller, /datum/shuttle_controller/ferr
 
 	SSemergencyshuttle.launch_time = world.time
 
-/datum/shuttle_controller/ferry/emergency/on_begin_transit_to_home()
+/datum/shuttle_controller/ferry/emergency/on_begin_transit_to_home(datum/shuttle_transit_cycle/cycle, redirected)
 	. = ..()
 
 	if(!round_end_armed)
@@ -26,7 +26,7 @@ GLOBAL_DATUM(legacy_emergency_shuttle_controller, /datum/shuttle_controller/ferr
 		else
 			priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 
-// /datum/shuttle_controller/ferry/emergency/on_successful_transit_to_away()
+// /datum/shuttle_controller/ferry/emergency/on_end_transit_to_away(datum/shuttle_transit_cycle/cycle, status)
 // 	. = ..()
 
 // 	if(!round_end_armed)
@@ -34,7 +34,7 @@ GLOBAL_DATUM(legacy_emergency_shuttle_controller, /datum/shuttle_controller/ferr
 
 // 	SSemergencyshuttle.shuttle_arrived()
 
-// /datum/shuttle_controller/ferry/emergency/on_successful_transit_to_home()
+// /datum/shuttle_controller/ferry/emergency/on_end_transit_to_home(datum/shuttle_transit_cycle/cycle, status)
 // 	. = ..()
 
 // 	if(!round_end_armed)
