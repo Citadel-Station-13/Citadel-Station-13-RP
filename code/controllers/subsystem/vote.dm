@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(vote)
 			text += SPAN_NOTICE("\nGhosts are excluded from the vote.")
 		log_vote(text)
 
-		to_chat(world, SPAN_INFOPLAIN("<con<b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote."))
+		to_chat(world, SPAN_INFOPLAIN("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>"))
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE)
 			SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
 
