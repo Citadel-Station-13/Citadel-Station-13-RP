@@ -138,7 +138,7 @@
 	. = list()
 	for(var/filename in files)
 		var/file = files[filename]
-		var/datum/asset_item/item = new(filename, file, do_not_mangle, absolute, FALSE)
+		var/datum/asset_item/item = new(filename, file, do_not_mangle || absolute, absolute, FALSE)
 		.[filename] = item
 	if(do_not_separate && !absolute) // if absolute, it's pointless to generate namespace as we'll be in the same folder anyways.
 		// generate their namespace and assign
