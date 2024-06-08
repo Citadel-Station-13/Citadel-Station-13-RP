@@ -176,10 +176,13 @@
 	viewsize = 11
 	soar_duration = 20 SECONDS
 	fake_windup = 5 SECONDS
+	crashmean = 50
 
 /datum/ability/species/soar/incanus
 	cooldown = 20 SECONDS
+	windup = 0.5 SECONDS
 	action_state = "soar_incanus"
 	viewsize = 6
+	crashmean = 20
 	soar_duration = 5 SECONDS
 	fake_windup = 1 SECONDS

@@ -101,7 +101,7 @@
 	action_state = "soar"
 	always_bind = TRUE
 	var/soar_duration = 10 SECONDS
-	var/fake_windup = 2 SECONDS	//fake windup to avoid hooking into
+	var/fake_windup = 2 SECONDS
 	var/crashmean = 40			//average damage from crashing into a ceiling & stun duration
 	var/viewsize = 9			//soar viewsize, any positive value will increase vision
 
@@ -153,7 +153,7 @@
 		if(get_z(owner) == get_z(observer.current) && observer != owner.mind)
 			var/dist = get_dist(observer.current.loc, owner.loc)
 			if(dist > 7 && dist <= 7 + viewsize/2)	//If they're off-screen, but within the vision range of the soar
-				to_chat(observer.current, SPAN_NOTICE("<b>You see something fly into the sky to your [get_dir(observer.current.loc, owner.loc)]!</b>"))
+				to_chat(observer.current, SPAN_NOTICE("You see something fly into the sky to your <b>[dir2text(get_dir(observer.current.loc, owner.loc))]!</b>"))
 	owner.visible_message(SPAN_NOTICE("[owner] soars into the sky, gaining a wide field of vision!"), SPAN_NOTICE("<b>You soar into the sky, the land opening up to you.</b>"), SPAN_NOTICE("You hear and feel a gust of wind as something takes off into the sky above you."), 7)
 
 /datum/ability/species/soar/on_trigger()
