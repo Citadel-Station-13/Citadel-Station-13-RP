@@ -1,0 +1,23 @@
+2024-06-04:
+  BlueWildrose:
+  - balance: Alraune physiology is boosted again to carry even more without being
+      slowed down.
+  - bugfix: Alraunes can use internals again.
+2024-06-07:
+  BlueWildrose:
+  - rscadd: You can now color your hardsuits and radio headsets in the colormate.
+  - tweak: Blood is no longer toxic to consume for all species except Skrell, and
+      in fact, can be slightly beneficial in some ways. Just roleplay it.
+  iliyaxox:
+  - rscadd: Added access helpers to every airlock on Rift.
+  - rscdel: Removed Rift's airlocks access var, and replaced them with access helpers.
+  - imageadd: Adds `disconnected` access helper icons, for traders, pirates, Syndicate
+      & Talon airlocks.
+2024-06-08:
+  Putnam3145:
+  - tweak: '"Adjusts their posture" only shows up when pose actually changes, and
+      not to the empty string'
+  washikarasu:
+  - rscadd: light fixture in the back of Atlas library
+  - bugfix: fixed the Atlas library's curtain
+  - config: changed meteors and cult's event PA announcement alarm volume
