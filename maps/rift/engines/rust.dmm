@@ -651,12 +651,13 @@
 	},
 /area/engineering/engine_room)
 "BP" = (
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
 	id_tag = "engine_access_hatch";
 	locked = 1;
 	name = "Fusion Core Access";
-	req_access = list(11)
+	req_one_access = null
 	},
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"

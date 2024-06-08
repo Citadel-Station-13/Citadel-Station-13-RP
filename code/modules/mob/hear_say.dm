@@ -83,7 +83,8 @@
 // Done here instead of on_hear_say() since that is NOT called if the mob is clientless (which includes most AI mobs).
 /mob/living/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	..()
-	if(has_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
+	if(has_polaris_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder.on_hear_say(speaker, message)
 
 /mob/proc/language_scramble(datum/language/L, str)
