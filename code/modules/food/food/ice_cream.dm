@@ -202,6 +202,7 @@ ICE_CREAM_PATHS(/datum/reagent/drink/juice/apple, apple)
 	middle.appearance_flags = KEEP_APART | RESET_COLOR
 	add_overlay(middle)
 
+	// todo: this doesn't work; we need melting dollop states..
 	if(length(dollops_left_colors))
 		color = BlendRGB(color || "#ffffff", dollops_left_colors[1], 0.5)
 		dollops_left_colors.Cut(1, 2)
