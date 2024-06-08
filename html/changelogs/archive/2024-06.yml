@@ -13,3 +13,11 @@
   - rscdel: Removed Rift's airlocks access var, and replaced them with access helpers.
   - imageadd: Adds `disconnected` access helper icons, for traders, pirates, Syndicate
       & Talon airlocks.
+2024-06-08:
+  Putnam3145:
+  - tweak: '"Adjusts their posture" only shows up when pose actually changes, and
+      not to the empty string'
+  washikarasu:
+  - rscadd: light fixture in the back of Atlas library
+  - bugfix: fixed the Atlas library's curtain
+  - config: changed meteors and cult's event PA announcement alarm volume
