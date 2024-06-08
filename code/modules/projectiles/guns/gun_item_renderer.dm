@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
 /**
  * gun render system
  *
@@ -5,15 +8,15 @@
  *
  * todo: better documentation
  */
-/datum/gun_renderer
+/datum/gun_item_renderer
 	/// firemode state is taken into account
 	var/use_firemode = FALSE
 
-/datum/gun_renderer/New(use_firemode)
+/datum/gun_item_renderer/New(use_firemode)
 	if(!isnull(use_firemode))
 		src.use_firemode = use_firemode
 
-/datum/gun_renderer/proc/render(obj/item/gun/gun)
+/datum/gun_item_renderer/proc/render(obj/item/gun/gun)
 	CRASH("attempted to render with abstract gun renderer")
 
 /**
@@ -25,7 +28,7 @@
  * segment state is "[gun.base_icon_state]-ammo"
  * empty state is "[gun.base_icon_state]-empty"
  */
-/datum/gun_renderer/segments
+/datum/gun_item_renderer/segments
 	var/count = 0
 	var/initial_x = 0
 	var/initial_y = 0
@@ -34,8 +37,8 @@
 	var/use_empty = FALSE
 	var/independent_firemode = FALSE
 
-/datum/gun_renderer/segments/New(count, offset_x, offset_y, initial_x, initial_y, use_empty_state, use_firemode, independent_firemode)
-	..(use_firemode = use_firemode)
+/datum/gun_item_renderer/segments/New(count, offset_x, offset_y, initial_x, initial_y, use_empty_state, use_firemode, independent_firemode)
+	..(use_firemode)
 	if(!isnull(count))
 		src.count = count
 	if(!isnull(offset_x))
@@ -51,7 +54,7 @@
 	if(!isnull(independent_firemode))
 		src.independent_firemode = independent_firemode
 
-/datum/gun_renderer/segments/render(obj/item/gun/gun)
+/datum/gun_item_renderer/segments/render(obj/item/gun/gun)
 
 #warn impl
 
@@ -67,14 +70,14 @@
  * if use_single_overlay is set, we only render the -n'th state,
  * otherwise we render -1 to -n, or -0 if empty (and use zero state is on)
  */
-/datum/gun_renderer/overlays
+/datum/gun_item_renderer/overlays
 	var/count
 	var/use_empty
 	var/use_single
 	var/independent_firemode
 
-/datum/gun_renderer/overlays/New(count, use_zero_state, use_single_overlay, use_firemode, independent_firemode)
-	..(use_firemode = use_firemode)
+/datum/gun_item_renderer/overlays/New(count, use_zero_state, use_single_overlay, use_firemode, independent_firemode)
+	..(use_firemode)
 	if(!isnull(count))
 		src.count = count
 	if(!isnull(use_zero_state))
@@ -84,7 +87,7 @@
 	if(!isnull(independent_firemode))
 		src.independent_firemode = independent_firemode
 
-/datum/gun_renderer/overlays/render(obj/item/gun/gun)
+/datum/gun_item_renderer/overlays/render(obj/item/gun/gun)
 
 #warn impl
 
@@ -96,17 +99,23 @@
  * gun's icon state is changed to "[gun.base_icon_state][use_firemode && "[firemode]-"]-[n]"
  * empty state append is -0
  */
-/datum/gun_renderer/states
+/datum/gun_item_renderer/states
 	var/use_empty
 	var/count
 
-/datum/gun_renderer/states/New(count, use_zero_state, use_firemode)
-	..(use_firemode = use_firemode)
+/datum/gun_item_renderer/states/New(count, use_zero_state, use_firemode)
+	..(use_firemode)
 	if(!isnull(use_zero_state))
 		src.use_empty = use_zero_state
 	if(!isnull(count))
 		src.count = count
 
-/datum/gun_renderer/states/render(obj/item/gun/gun)
+/datum/gun_item_renderer/states/render(obj/item/gun/gun)
 
 #warn impl
+
+/**
+ * standard "full or empty" renderer
+ */
+/datum/gun_item_renderer/states/all_or_nothing
+	count = 1

@@ -104,7 +104,9 @@
 	/// magazine rendering system is used for inhands
 	/// this will result in the effective item state for onmob being modified,
 	/// completely ignores render_magazine_system; this only uses states!
-	var/render_magazine_inhand = TRUE
+	///
+	/// * will add "-empty" to the end of the inhand state, but before "-wield"
+	var/render_magazine_inhand = FALSE
 	#warn hook above using render_append_state and priority overlays, and overriding build worn icon etc etc
 
 /obj/item/gun/projectile/ballistic/Initialize(mapload)

@@ -68,7 +68,16 @@
 	/// current firemode
 	var/datum/firemode/firemode
 	/// available firemodes
-	var/list/datum/firemode/regex_this_firemodes
+	///
+	/// * set to typepath, anonymous type, or instance
+	/// * typepaths will be globally cached
+	/// * anonymous types will be instantiated
+	/// * instances will be kept as-is
+	/// * the gun is expected to never directly edit these datums, so passing in shared copies is allowed
+	/// * if the gun does need to edit them, the gun should make a new one instead, or otherwise ensure it's not referencing a shared datum
+	var/list/datum/firemode/regex_this_firemodes = list(
+		/datum/firemode/semi_auto,
+	)
 
 	//* Firing
 	/// mid firing
@@ -92,35 +101,33 @@
 
 	//* Rendering
 	/// renderer datum we use for world rendering of the gun item itself
-	/// set this in prototype to a path or an instance via 'render_system = new /datum/gun_renderer/...(...)'
+	/// set this in prototype to a path or an instance via 'render_system = new /datum/gun_item_renderer/...(...)'
 	/// if null, we will not perform default rendering/updating of item states.
-	var/datum/gun_renderer/render_system
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_item_renderer/item_renderer
+	/// renderer datum ew use for mob rendering of the gun when held / worn
+	/// set this in prototype to a path or an instance via 'render_system = new /datum/gun_mob_renderer/...(...)'
+	/// if null, we will not perform default rendering/updating of onmob states
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || render_mob_base || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_mob_renderer/mob_renderer
 	/// if set, flick()s this state on this gun while firing.
 	var/render_flick_firing
-
-	/// perform onmob state rendering?
-	/// if FALSE, we will not perform default rendering/updating of mob states.
-	var/render_mob_enabled = FALSE
-
 	/// base onmob state override so we don't use base_icon_state if overridden
 	var/render_mob_base
-	/// we render to worn_state as well as inhand_state; this is an override because
-	/// most guns do not have different states for every slot, as opposed to inhands.
-	var/render_mob_slots = FALSE
-
-	/// how many states are there
-	var/render_mob_count
-	/// use empty "-0" state append when empty?
-	var/render_mob_empty
-	/// if set to TRUE, firemode is appended to state before count
-	var/render_mob_firemode
-	/// appended after
-	var/render_mob_append
+	/// a special state, interpreted by the [mob_renderer]
+	///
+	/// * on state mode, it is appended to the end of the base state, before firemode or the count
+	var/render_mob_special
 	/// only use the append, ignoring count and firemode while this is enabled; use this for mag-out states for energy weapons & similar
 	var/render_mob_exclusive
-
-	/// render as -wield if we're wielded? applied at the end, even while [render_mob_exclusive] is on.
-	/// ignores render_mob_enabled.
+	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
+	///
+	/// * ignores [mob_renderer]
+	/// * ignores [render_mob_exclusive]
 	var/render_mob_wielded = FALSE
 
 	#warn impl above
@@ -132,7 +139,7 @@
 	//* SFX
 	/// default firing sound
 	/// todo: priority is undefined right now :/
-	#warn do it
+	#warn todo: define it
 	var/fire_sound = "gunshot"
 
 	//* Wielding
