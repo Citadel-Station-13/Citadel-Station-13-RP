@@ -317,6 +317,29 @@
 	icon_state = "caseless-mag-alt"
 	ammo_type = /obj/item/ammo_casing/a5mmcaseless/stun
 
+/////// 12.7mm / 50 caliber caseless /////////
+
+/obj/item/ammo_magazine/mfiftycalcaseless
+	name = "Wild Hunt magazine (12.7mm caseless)"
+	ammo_type = /obj/item/ammo_casing/fiftycalcaseless
+	icon_state = "caseless-127"
+	caliber = "12.7mm caseless"
+	mag_type = MAGAZINE
+	max_ammo = 20
+	multiple_sprites = 1
+
+/////// phoron shrapnel smg //////
+
+/obj/item/ammo_magazine/mphoronshot
+	name = "compressed phoron matter container"
+	desc = "A compressed matter container meant for the Gorlex SHRAPNEL-SPITTER SMG. Contains a phoron alloy that self-oxidzes and ignites on contact with air. \n \nThey're in good shape for the shape they're in, \nbut God, I wonder how they think they can win, \nwith phoron rolling down their skin."
+	max_ammo = 40
+	caliber = "phoron shrapnel"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/phoron_shrap
+	icon_state = "spitterammo"
+	multiple_sprites = 1
+
 ///////// 9mm /////////
 
 /obj/item/ammo_magazine/m9mm

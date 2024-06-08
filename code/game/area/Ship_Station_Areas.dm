@@ -200,9 +200,7 @@
 /area/main_map/maintenance
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
-	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
-
 
 /area/main_map/maintenance/engineering
 	name = "Engineering Maintenance"

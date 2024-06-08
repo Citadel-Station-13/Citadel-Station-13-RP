@@ -1,12 +1,14 @@
 /**
- * used to hold data about a click action
+ * used to hold data about a click (melee/ranged/other) action
+ *
+ * the click may be real or fake.
  */
 /datum/event_args/actor/clickchain
-	/// a_intent
+	/// optional: a_intent
 	var/intent
-	/// click params
+	/// optional: click params
 	var/list/params
-	/// target atom
+	/// optional: target atom
 	var/atom/target
 
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, intent, list/params)

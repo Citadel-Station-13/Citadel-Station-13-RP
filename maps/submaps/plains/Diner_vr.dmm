@@ -358,7 +358,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "bi" = (
-/obj/item/frame/apc,
+/obj/item/frame2/apc,
 /turf/simulated/floor/lino,
 /area/submap/Diner)
 "bj" = (
