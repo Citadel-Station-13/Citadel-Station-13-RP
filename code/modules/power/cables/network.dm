@@ -66,10 +66,10 @@ GLOBAL_LIST_EMPTY(powernets)
 	GLOB.powernets -= src
 	return ..()
 
-/datum/wirenet/power/proc/observer_examine()
+/datum/wirenet/power/proc/diagnostic_examine()
 	. = list()
 	. += SPAN_NOTICE("Powernet Status - Last Cycle:")
-	. += "Total: [render_power(last_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] / [render_power(last_supply, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_KILO)]"
+	. += "Total: [render_power(last_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] / [render_power(last_supply, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)]"
 	. += "Flat Load: [render_power(last_flat_load, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)]"
 
 #warn handle power stuff on merge

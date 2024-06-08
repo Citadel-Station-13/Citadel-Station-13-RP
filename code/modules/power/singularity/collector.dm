@@ -78,14 +78,10 @@
 			to_chat(user, "<font color=#4F49AF>Remove the phoron tank first.</font>")
 			return 1
 		playsound(src, W.tool_sound, 75, 1)
-		src.anchored = !src.anchored
+		set_anchored(!anchored)
 		user.visible_message("[user.name] [anchored? "secures":"unsecures"] the [src.name].", \
 			"You [anchored? "secure":"undo"] the external bolts.", \
 			"You hear a ratchet.")
-		if(anchored)
-			connect_to_network()
-		else
-			disconnect_from_network()
 		return 1
 	else if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
 		if (src.allowed(user))
@@ -147,7 +143,9 @@
 	// if you don't have a powernet you still lose the poewr
 	stored_power -= attempt
 	//? kj to kw
-	add_avail((last_output = (attempt / delta_time)))
+	var/amount_to_send = attempt / delta_time
+	supply(amount_to_send)
+	last_output = amount_to_send
 
 /obj/machinery/power/rad_collector/proc/update_icons()
 	cut_overlays()

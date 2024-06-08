@@ -151,7 +151,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		if(d2 & (UP|DOWN))
 			// we do not need to check diagonals as UP|DOWN cannot be diagonal
 			reverse = global.reverse_dir[d2]
-			T = get_step_multiz(src, d2)
+			T = get_vertical_step(src, d2)
 			if(!isnull(T))
 				for(C in T)
 					if(C.d2 != reverse && C.d1 != reverse)
@@ -264,7 +264,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/structure/wire/cable/proc/shock(mob/victim, relative_exposure = 1)
 	var/datum/wirenet/power/network = src.network
 	network?.electrocute(victim, src, relative_exposure)
-	return !CHECK_MOBILITY(victim, MOBILITY_USE)
+	return !CHECK_MOBILITY(victim, MOBILITY_CAN_USE)
 
 /obj/structure/wire/cable/drain_energy(datum/actor, amount, flags)
 	var/datum/wirenet/power/network = src.network
@@ -286,7 +286,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(prob(2.5) && shock(user, 0.1))
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-		user.action_feedback(jointext(network.observer_examine(), "<br>"), src)
+		var/datum/wirenet/power/powernet = network
+		user.action_feedback(jointext(powernet.diagnostic_examine(), "<br>"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 

@@ -19,7 +19,6 @@
 /obj/machinery/power/tracker/Initialize(mapload)
 	. = ..()
 	update_icon()
-	connect_to_network()
 
 /obj/machinery/power/tracker/Destroy()
 	unset_control() //remove from control computer

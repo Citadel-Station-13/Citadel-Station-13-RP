@@ -1093,9 +1093,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		// open, don't bother
 		return
 	//! warning: legacy below
-	. += "apcox-[locked? 1 : 0]"
+	. += "apcox-[cover_locked? 1 : 0]"
 	. += "apco3-[charging + 1]"
-	if(breaker)
+	if(load_toggled)
 		. += (channels_auto & POWER_BIT_ENVIR)? \
 			((channels_active & POWER_BIT_ENVIR)? overlay_cache_envir[APC_CHANNEL_STATE_ON_AUTO] : overlay_cache_envir[APC_CHANNEL_STATE_OFF_AUTO]) : \
 			((channels_active & POWER_BIT_ENVIR)? overlay_cache_envir[APC_CHANNEL_STATE_ON] : overlay_cache_envir[APC_CHANNEL_STATE_OFF])

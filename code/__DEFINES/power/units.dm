@@ -196,13 +196,3 @@
  */
 #define KILOWATTS			* 1000
 #define MEGAWATTS			* 1000000
-
-/**
- * BALANCING - CELL AND EQUIPMENT
- */
-/// cost of shield difussion
-#define CELL_COST_SHIELD_DIFFUSION			120
-
-/**
- * BALANCING - MACHINERY POWER
- */

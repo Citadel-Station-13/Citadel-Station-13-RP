@@ -194,7 +194,7 @@
 	if(!level_or_path.id)
 		// levels must have an ID
 		do
-			level_or_path.id = "gen-[copytext(md5(rand(1, 1024 ** 2)), 1, 5)]"
+			level_or_path.id = "gen-[copytext(md5("[rand(1, 1024 ** 2)]"), 1, 5)]"
 		while(keyed_levels[level_or_path.id])
 	ASSERT(!keyed_levels[level_or_path.id])
 	keyed_levels[level_or_path.id] = level_or_path

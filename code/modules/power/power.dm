@@ -86,7 +86,7 @@
  * returns everything on the same powernet
  */
 /obj/machinery/power/proc/directly_connected_hosts()
-	return isnull(connection.network)? lists() : connection.network.get_hosts()
+	return isnull(connection.network)? list() : connection.network.get_hosts()
 
 /**
  * get available power on network at start of last cycle

@@ -1,6 +1,0 @@
-author: "iliyaxox"
-delete-after: True
-changes:
-  - rscadd: "Added access helpers to every airlock on Rift."
-  - rscdel: "Removed Rift's airlocks access var, and replaced them with access helpers."
-  - imageadd: "Adds `disconnected` access helper icons, for traders, pirates, Syndicate & Talon airlocks."

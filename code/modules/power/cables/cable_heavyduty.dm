@@ -3,6 +3,7 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "wire"
 
+// todo: refactor
 /obj/structure/cable/heavyduty
 	icon = 'icons/obj/power_cond_heavy.dmi'
 	name = "large power cable"

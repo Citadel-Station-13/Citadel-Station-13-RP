@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(cable_ender_lookup)
 	plane = TURF_PLANE
 	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
 	color = null
-	unacidable = 1
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	cut_time = null
 	/// what other cable enders we link to
 	var/id

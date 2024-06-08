@@ -49,7 +49,7 @@
 	..()
 
 /obj/machinery/power/emitter/update_icon()
-	if (active && is_connected() && power_available(active_power_usage * 0.001))
+	if (active && is_connected() && powered)
 		icon_state = "emitter_+a"
 	else
 		icon_state = "emitter"
@@ -72,6 +72,7 @@
 				investigate_log("turned <font color='red'>off</font> by [user.key]","singulo")
 			else
 				src.active = 1
+				last_powered = TRUE
 				to_chat(user, "You turn on [src].")
 				src.shot_number = 0
 				src.fire_delay = get_initial_fire_delay()
