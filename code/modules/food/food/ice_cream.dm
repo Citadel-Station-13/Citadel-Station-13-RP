@@ -14,7 +14,7 @@
 	atom_flags = NOREACT
 
 	/// already bit into? no double dipping!
-	var/can_keep_scooping = FALSE
+	var/can_keep_scooping = TRUE
 	/// overall sugar-ation; continuously compounded to be the % of scoops with sugar
 	var/snowflake_deliciousness = 0
 	/// max scoops
