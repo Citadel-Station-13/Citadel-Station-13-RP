@@ -1595,7 +1595,7 @@
 /area/main_map/maintenance/deck_three/starboard)
 "bGp" = (
 /obj/machinery/door/airlock/maintenance/command,
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward)
 "bHh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3155,10 +3155,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/xenobiology)
-"dqQ" = (
-/obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_three/forward)
 "drB" = (
 /obj/structure/curtain/black{
 	anchored = 1;
@@ -5877,6 +5873,9 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 6
 	},
+/obj/machinery/light/spot/no_nightshift{
+	dir = 4
+	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
 "gan" = (
@@ -6346,6 +6345,13 @@
 /obj/machinery/biogenerator,
 /turf/simulated/floor/outdoors/dirt,
 /area/hydroponics/garden)
+"gCC" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward)
 "gDo" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/brflowers,
@@ -7060,7 +7066,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward/starboard)
 "hrg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -9900,7 +9906,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward/starboard)
 "kkh" = (
 /obj/machinery/recharge_station,
@@ -11945,6 +11951,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/medical/psych_ward)
+"muD" = (
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward)
 "muL" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -14157,6 +14167,14 @@
 /obj/machinery/ai_slipper,
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"oBT" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait{
+	dir = 4;
+	name = "Maintenance Access"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/hydroponics/garden)
 "oCb" = (
 /turf/simulated/wall/r_wall,
 /area/main_map/maintenance/deck_three/aft/starboard)
@@ -14364,9 +14382,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward/starboard)
-"oLB" = (
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_three/forward)
 "oNB" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -14384,6 +14399,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/starboard)
+"oNO" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/main_map/maintenance/deck_three/forward)
 "oOs" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -14828,6 +14847,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
+"pjI" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_three/forward)
 "pkG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -17346,7 +17369,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward/starboard)
 "rVt" = (
 /obj/effect/floor_decal/borderfloor,
@@ -17451,6 +17474,12 @@
 /obj/machinery/atmospherics/component/unary/freezer,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"sfk" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_three/forward)
 "sfz" = (
 /obj/machinery/vending/hydronutrients{
 	dir = 4
@@ -18983,7 +19012,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward/starboard)
 "tNw" = (
 /obj/machinery/air_alarm{
@@ -19536,7 +19565,7 @@
 /turf/simulated/floor/greengrid,
 /area/ai)
 "ujR" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/structure/catwalk,
 /turf/simulated/floor/tiled/techmaint,
 /area/hydroponics/garden)
 "uke" = (
@@ -20903,7 +20932,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/forward/starboard)
 "vHr" = (
 /obj/machinery/door/window/brigdoor/southleft{
@@ -22061,6 +22090,14 @@
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck3)
+"wQN" = (
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/multi_tile/metal/mait{
+	dir = 4;
+	name = "Maintenance Access"
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_three/forward)
 "wQY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -22227,9 +22264,6 @@
 "wYJ" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/obj/machinery/light/spot/no_nightshift{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -48406,7 +48440,7 @@ uMe
 uMe
 uMe
 wbq
-tFl
+xIq
 xIq
 cAY
 wFb
@@ -48988,8 +49022,8 @@ txP
 crx
 uKh
 wbq
-xIq
-xIq
+oNO
+oNO
 cAY
 oBk
 ggL
@@ -49365,7 +49399,7 @@ aZn
 aZn
 aZn
 ujR
-aZn
+oBT
 aZn
 aZn
 aZn
@@ -49558,8 +49592,8 @@ xIq
 rPG
 rpG
 bDk
-oLB
-kAq
+pjI
+pjI
 ovP
 qUN
 qUN
@@ -49750,10 +49784,10 @@ rsM
 ueM
 xIq
 rPG
+sfk
 qUN
-qUN
-oLB
-qUN
+pjI
+pjI
 ovP
 qUN
 qUN
@@ -49946,8 +49980,8 @@ rPG
 rPG
 qUN
 qUN
-oLB
-qUN
+pjI
+pjI
 ovP
 lKN
 ovP
@@ -49961,7 +49995,7 @@ vva
 vva
 rPG
 qUN
-qUN
+oNO
 krP
 krP
 kEZ
@@ -50136,12 +50170,12 @@ knF
 llw
 qUN
 bGp
-oLB
-oLB
-oLB
-oLB
-oLB
 qUN
+qUN
+qUN
+qUN
+pjI
+pjI
 qUN
 qUN
 ovP
@@ -50334,8 +50368,8 @@ qUN
 qUN
 qUN
 qUN
-oLB
-qUN
+pjI
+pjI
 qUN
 qUN
 ovP
@@ -50528,11 +50562,11 @@ qUN
 qUN
 qUN
 lOo
-oLB
-oLB
-oLB
-oLB
-oLB
+pjI
+pjI
+qUN
+qUN
+qUN
 jPD
 qkX
 rPG
@@ -50722,8 +50756,8 @@ rPG
 rPG
 rPG
 rPG
-dqQ
-rPG
+pjI
+wQN
 rPG
 rPG
 rPG
@@ -50913,13 +50947,13 @@ cuN
 cuN
 uak
 rPG
-qUN
-qUN
-qUN
-oLB
-qUN
-kAq
-qUN
+muD
+muD
+muD
+muD
+muD
+gCC
+muD
 rPG
 vHY
 cuN
@@ -51107,13 +51141,13 @@ kEZ
 iyn
 rDh
 rPG
-qUN
-qUN
-qUN
-oLB
-qUN
-qUN
-qUN
+muD
+muD
+muD
+muD
+muD
+muD
+muD
 rPG
 teR
 kEk
@@ -51304,10 +51338,10 @@ rPG
 tFl
 tFl
 tFl
-xIq
 tFl
 tFl
-tFl
+pjI
+pjI
 rPG
 nDF
 kEZ
@@ -51500,8 +51534,8 @@ xIq
 xIq
 xIq
 xIq
-xIq
-xIq
+pjI
+pjI
 rPG
 nDF
 kEZ

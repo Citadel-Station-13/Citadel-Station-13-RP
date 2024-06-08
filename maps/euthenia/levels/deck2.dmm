@@ -4477,6 +4477,9 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
 	},
+/obj/structure/curtain/open/shower/medical{
+	pixel_y = -32
+	},
 /turf/simulated/floor/carpet,
 /area/medical/patient_wing)
 "dkK" = (
@@ -12335,6 +12338,10 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos/storage)
+"jrS" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/space)
 "jsw" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -19867,9 +19874,6 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
 	},
-/obj/structure/curtain/open/shower/medical{
-	pixel_y = 32
-	},
 /turf/simulated/floor/carpet,
 /area/medical/patient_wing)
 "oQN" = (
@@ -23196,6 +23200,9 @@
 /area/main_map/maintenance/deck_two/aft/starboard)
 "rvz" = (
 /obj/effect/floor_decal/spline/plain,
+/obj/structure/curtain/open/shower/medical{
+	pixel_y = -32
+	},
 /turf/simulated/floor/carpet,
 /area/medical/patient_wing)
 "rvB" = (
@@ -30083,15 +30090,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/storage)
-"wzB" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/obj/structure/curtain/open/shower/medical{
-	pixel_y = 32
-	},
-/turf/simulated/floor/carpet,
-/area/medical/patient_wing)
 "wzE" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -58057,9 +58055,9 @@ rTF
 pia
 tkA
 fTa
-vKm
-vKm
-vKm
+yao
+jrS
+jrS
 fkN
 fkN
 flG
@@ -58251,15 +58249,15 @@ iNH
 pia
 aNs
 fTa
-vKm
-hts
-vKm
-vKm
-pvA
-wzB
+yao
+yao
+yao
+yao
+fkN
+flG
 xjK
 rvz
-fkN
+pvA
 vKm
 fqv
 hts
@@ -58445,15 +58443,15 @@ uEV
 gnx
 nMd
 fTa
-vKm
-hts
-vKm
-vKm
-pvA
+mRB
+mRB
+mRB
+yao
+fkN
 oQC
 vfD
 dkc
-fkN
+pvA
 vKm
 fqv
 hts
@@ -58642,7 +58640,7 @@ fTa
 hts
 hts
 mRB
-mRB
+yao
 fkN
 fkN
 fkN
@@ -58836,9 +58834,9 @@ fTa
 hts
 hts
 mRB
-vKm
-vKm
-mRB
+yao
+yao
+yao
 mRB
 ykn
 vKm
@@ -59030,9 +59028,9 @@ vYd
 hts
 hts
 mRB
-vKm
-vKm
-mRB
+jrS
+jrS
+yao
 mRB
 pAq
 pAq
