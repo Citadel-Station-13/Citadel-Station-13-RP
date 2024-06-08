@@ -5,7 +5,7 @@
  *
  * @params
  * * amount - amount of recoil to inflict
- * * shake - screenshake forced, instead of automatically calculating it
+ * * shake - screenshake amount
  */
 /atom/movable/proc/inflict_gun_recoil(amount, shake)
 	return
@@ -15,6 +15,11 @@
  *
  * @params
  * * gun - the gun asking
+ * * gun_instability - the instability the gun currently has
+ *
+ * @return total instability to use for a shot
  */
-/atom/movable/proc/query_gun_instability(obj/item/gun/gun)
-	return 0
+/atom/movable/proc/query_gun_instability(obj/item/gun/gun, gun_instability)
+	return gun_instability
+
+#warn hook on /mob

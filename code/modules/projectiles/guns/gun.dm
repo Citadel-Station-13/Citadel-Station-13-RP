@@ -37,24 +37,25 @@
 
 	//* Accuracy & Stability
 	/// recoil to inflict per shot
+	/// this is sent into 'instability' of the mob, instead of just the gun.
 	var/recoil = GUN_RECOIL_NONE
 	/// multiplier to recoil to inflict per shot when wielded
 	var/recoil_wielded_multiplier = 1
 	/// screenshake forced; null = auto
-	var/recoil_screen_shake
+	var/recoil_screen_shake_override
 	/// instability applied per tile moved
 	var/instability_motion = GUN_INSTABILITY_MOTION_NONE
 	/// instability applied when drawing the weapon out
 	var/instability_draw = GUN_INSTABILITY_DRAW_NONE
 	/// instability applied when wielding the weapon
 	var/instability_wield = GUN_INSTABILITY_WIELD_NONE
-	/// how sensitive we are to instability ; multiplied to instability of firer
+	/// how sensitive we are to instability ; multiplied to instability of firer along with gun
 	var/instability_sensitivity = 1
 	/// inherent instability stored on gun
 	/// picking up or wielding a gun only applies instability to that gun
 	var/instability_stored = 0
-	/// recovery factor
-	#warn what should this mean?
+	/// recovery exponent
+	#warn impl; i = i * (recovery) ^ dt
 	var/instability_recovery = GUN_INSTABILITY_RECOVERY_NORMAL
 	/// last instability decay time
 	var/instability_decay

@@ -197,8 +197,8 @@
 			),
 			prob(6);list(
 				/obj/item/gun/projectile/ballistic/wt274,
-				/obj/item/ammo_magazine/m45uzi/wt274,
-				/obj/item/ammo_magazine/m45uzi/wt274
+				/obj/item/ammo_magazine/wt274,
+				/obj/item/ammo_magazine/wt274,
 			),
 			prob(2);list(
 				/obj/item/gun/projectile/ballistic/mini_uzi,

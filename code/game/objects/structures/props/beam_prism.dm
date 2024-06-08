@@ -131,7 +131,7 @@
 
 		Proj.penetrating += 1 // Needed for the beam to get out of the turret.
 
-		Proj.redirect(new_x, new_y, curloc, null)
+		Proj.regex_this_redirect(get_atom_angle(src, locate(new_x, new_y, curloc.z)), 8, TRUE)
 
 /obj/structure/prop/prism/incremental
 	free_rotate = 0

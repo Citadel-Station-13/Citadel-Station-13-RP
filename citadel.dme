@@ -4484,7 +4484,7 @@
 #include "code\modules\projectiles\guns\projectile\energy\special\stripper.dm"
 #include "code\modules\projectiles\guns\projectile\energy\special\temperature.dm"
 #include "code\modules\projectiles\guns\projectile\magfed\bore.dm"
-#include "code\modules\projectiles\guns\projectile\magfed\magnetic.dm"
+#include "code\modules\projectiles\guns\projectile\magfed\magfed.dm"
 #include "code\modules\projectiles\guns\projectile\magfed\magnetic_ammo.dm"
 #include "code\modules\projectiles\guns\projectile\magfed\magnetic_construction.dm"
 #include "code\modules\projectiles\guns\projectile\magfed\magnetic_railgun.dm"
