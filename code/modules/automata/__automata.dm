@@ -1,5 +1,7 @@
 /**
  * automata datums for propagating turf effects
+ *
+ * as you can see this isn't
  */
 /datum/automata
 	/// automata flags

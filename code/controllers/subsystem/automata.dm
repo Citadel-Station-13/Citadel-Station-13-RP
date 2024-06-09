@@ -3,8 +3,8 @@
  */
 SUBSYSTEM_DEF(automata)
 	name = "Automata"
-	wait = 1
-	subsystem_flags = SS_TICKER
+	wait = 0 // :trol:
+	priority = FIRE_PRIORITY_AUTOMATA
 
 	/// all automata in world
 	var/static/list/datum/automata/automatons = list()
