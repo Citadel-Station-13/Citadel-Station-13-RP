@@ -15,10 +15,16 @@
 	if(.)
 		return
 	if(action == "get_month")
+		var/datum/asset_pack/registered = SSassets.asset_packs_by_id[params["date"]]
+		if(registered && istype(registered))
+			ui.send_asset(registered)
+			return TRUE
 		var/datum/asset_pack/changelog_item/changelog_item = changelog_items[params["date"]]
 		if (!changelog_item)
 			changelog_item = new /datum/asset_pack/changelog_item(params["date"])
 			changelog_items[params["date"]] = changelog_item
+		changelog_item.id = params["date"]
+		SSassets.register_asset_pack(changelog_item)
 		ui.send_asset(changelog_item)
 		return TRUE
 
