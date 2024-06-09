@@ -23,7 +23,6 @@
 //       at some point, we need to audit the math in here for ourselves
 // todo: there is a lot of micro-optimizations that can still be done here, anywhere from not generating name eagerly (string ops bad),
 //       to touching up and re-verifying the math.
-// todo: maybe we should just sync this subsystem to tg since honestly i'm not really interested in dealing with it when they already have a solution
 
 /**
  * # Timer Subsystem
