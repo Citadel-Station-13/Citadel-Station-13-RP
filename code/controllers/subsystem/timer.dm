@@ -15,6 +15,10 @@
 /// Max float with integer precision
 #define TIMER_ID_MAX (2**24)
 
+// todo: while this subsystem generally works, it is not at all guarded against when world.time or world.tick_lag
+//       is an imprecise value, like a repeating decimal.
+//       that's fine because we guarded world.fps but it's something to keep in mind.
+
 /**
  * # Timer Subsystem
  *
