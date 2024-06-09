@@ -3,10 +3,9 @@
 /// Controls how many buckets should be kept, each representing a tick. (1 minutes worth)
 #define BUCKET_LEN (world.fps * BUCKET_AMOUNT_SECONDS)
 /// Helper for getting the correct bucket for a given timer
-#define BUCKET_POS(timer) ((round(DS2TICKS(timer.timeToRun - SStimer.head_offset)) % BUCKET_LEN) + 1)
-// #define BUCKET_POS(timer) (((round((timer.timeToRun - SStimer.head_offset) / world.tick_lag)+1) % BUCKET_LEN)||BUCKET_LEN) - OLD FROM /tg/
+#define BUCKET_POS(timer) ((ceil(DS2TICKS(timer.timeToRun - SStimer.head_offset)) % BUCKET_LEN) + 1)
 /// Gets the maximum time at which timers will be invoked from buckets, used for deferring to secondary queue.
-#define TIMER_MAX (SStimer.head_offset + (BUCKET_AMOUNT_SECONDS SECONDS) - world.tick_lag + TICKS2DS(SStimer.practical_offset - 1))
+#define TIMER_MAX (SStimer.head_offset + TICKS2DS(BUCKET_LEN + SStimer.practical_offset - 1))
 // Explanation of the above:
 // Head offset is front of timer queue
 // We then store BUCKET_AMOUNT_SECONDS seconds of timers after that, **minus** world.tick_lag because buckets[1] is actually the 0th tick, not the 1st tick,
@@ -590,6 +589,12 @@ SUBSYSTEM_DEF(timer)
  */
 /datum/timedevent/proc/bucketJoin()
 	// Generate debug-friendly name for timer
+	// * For anyone in the future modifying this:
+	//   Yes, tg's method of list is faster.
+	//   But for VV / debug purposes, it's utterly deranged to not have the name of a datum set.
+	//   If you plan on culting TG's stuff for performance later, make sure to add a #define to set the name still.
+	//   This is mandatory.
+	//   ~silicons
 	var/static/list/bitfield_flags = list("TIMER_UNIQUE", "TIMER_OVERRIDE", "TIMER_CLIENT_TIME", "TIMER_STOPPABLE", "TIMER_NO_HASH_WAIT", "TIMER_LOOP")
 	name = "Timer: [id] (\ref[src]), TTR: [timeToRun], wait:[wait] Flags: [jointext(bitfield2list(timer_flags, bitfield_flags), ", ")], \
 		callBack: \ref[callBack], callBack.object: [callBack.object]\ref[callBack.object]([getcallingtype()]), \
