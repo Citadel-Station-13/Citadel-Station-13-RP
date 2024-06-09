@@ -488,9 +488,7 @@ GLOBAL_LIST(topic_status_cache)
 	if(!is_terminating_fraction(10, fps))
 		// it's not.
 		// yell at them.
-		stack_trace("attempted to set ticklag to non-terminating ticklag [ticklag]. this would result in fatal imprecision.")
-		// then normalize it.
-		fps = force_terminating_denominator(fps)
+		stack_trace("someone just set ticklag to non-terminating ticklag [ticklag]. this might result in fatal imprecision.")
 
 	// Convert back into ticklag
 	ticklag = 10 / fps
