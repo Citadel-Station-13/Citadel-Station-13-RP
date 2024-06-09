@@ -602,12 +602,6 @@ SUBSYSTEM_DEF(timer)
  */
 /datum/timedevent/proc/bucketJoin()
 	// Generate debug-friendly name for timer
-	// * For anyone in the future modifying this:
-	//   Yes, tg's method of list is faster.
-	//   But for VV / debug purposes, it's utterly deranged to not have the name of a datum set.
-	//   If you plan on culting TG's stuff for performance later, make sure to add a #define to set the name still.
-	//   This is mandatory.
-	//   ~silicons
 	var/static/list/bitfield_flags = list("TIMER_UNIQUE", "TIMER_OVERRIDE", "TIMER_CLIENT_TIME", "TIMER_STOPPABLE", "TIMER_NO_HASH_WAIT", "TIMER_LOOP")
 	name = "Timer: [id] (\ref[src]), TTR: [timeToRun], wait:[wait] Flags: [jointext(bitfield2list(timer_flags, bitfield_flags), ", ")], \
 		callBack: \ref[callBack], callBack.object: [callBack.object]\ref[callBack.object]([getcallingtype()]), \
