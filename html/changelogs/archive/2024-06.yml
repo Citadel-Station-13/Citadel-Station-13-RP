@@ -21,3 +21,6 @@
   - rscadd: light fixture in the back of Atlas library
   - bugfix: fixed the Atlas library's curtain
   - config: changed meteors and cult's event PA announcement alarm volume
+2024-06-09:
+  Putnam3145:
+  - bugfix: Ice cream works
