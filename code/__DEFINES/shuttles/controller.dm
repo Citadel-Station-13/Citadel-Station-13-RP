@@ -60,6 +60,10 @@
 #define SHUTTLE_TRANSIT_FLAG_NO_ABORT (1<<0)
 /// do not allow users to abort mid-transit
 #define SHUTTLE_TRANSIT_FLAG_NO_TRANSIT_ABORT (1<<1)
+/// do not obtain exclusive lock on dock
+///
+/// * not doing this is very silly of you.
+#define SHUTTLE_TRANSIT_FLAG_NO_DOCK_MUTEX (1<<2)
 
 #warn DEFINE_BITFIELD
 

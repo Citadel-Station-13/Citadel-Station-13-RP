@@ -31,6 +31,7 @@
 
 	//* Docking - State
 	/// current docking cycle
+	//  todo: docking is currently on a spinlock system. should we put it on SSshuttles instead?
 	var/docking_cycle = 0
 	/// list of callbacks to invoke on end of docking cycle
 	///
@@ -420,7 +421,25 @@
 	transit_time,
 	jump_time,
 )
-	#warn impl
+	var/datum/shuttle_transit_cycle/cycle = new(
+		dock,
+		align_with_port,
+		centered,
+		direction,
+		transit_flags,
+		on_transit_callbacks,
+		traversal_flags_source,
+		traversal_flags_target,
+		dock_timeout,
+		traversal_timeout,
+		transit_time,
+		jump_time,
+	)
+	cycle.initialize()
+	return run_transit_cycle(cycle)
+	cycle.set_transit_flags(transit_flags)
+	cycle.set_source_traversal_flags(traversal_flags_source)
+	cycle.set_target_traversal_flags(traversal_flags_target)
 
 #warn below
 
