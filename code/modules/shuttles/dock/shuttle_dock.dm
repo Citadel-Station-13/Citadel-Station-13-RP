@@ -137,6 +137,9 @@
 	var/datum/shuttle/docked
 	/// the shuttle that's currently inbound while in transit
 	/// if set, **we are a protected dock, and no other shuttle should arrive during this time!**
+	///
+	/// * this is a hard protection that should not be overridden by anything
+	/// * if you don't want shuttles to do that to this dock, the shuttle side should specify DO_NOT_MUTEX as a transit flag.
 	var/datum/shuttle/inbound
 	/// starting shuttle template typepath or id
 	/// only loaded on mapload, not if it's persistence loaded or anything for now
@@ -276,25 +279,25 @@
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_landed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
+/obj/shuttle_dock/proc/on_shuttle_landed(datum/shuttle/shuttle, datum/event_args/shuttle/dock/arrived/e_args)
 	return
 
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_docked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
+/obj/shuttle_dock/proc/on_shuttle_docked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/docked/e_args)
 	return
 
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_departed(datum/shuttle/shuttle, datum/event_args/shuttle/movement/e_args)
+/obj/shuttle_dock/proc/on_shuttle_departed(datum/shuttle/shuttle, datum/event_args/shuttle/dock/departed/e_args)
 	return
 
 /**
  * called after all hooks finish
  */
-/obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/e_args)
+/obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/undocked/e_args)
 	return
 
 /obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
