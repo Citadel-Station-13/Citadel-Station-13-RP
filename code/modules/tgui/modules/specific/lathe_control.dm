@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * So why do we have discrete modules for lathe control?
  *
@@ -118,9 +121,9 @@
 				ui_custom_update()
 			return TRUE
 
-/datum/tgui_module/lathe_control/ui_assets(mob/user)
-	. = ..()
-	. += get_asset_datum(/datum/asset/spritesheet/materials)
+/datum/tgui_module/lathe_control/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/materials
+	return ..()
 
 /datum/tgui_module/lathe_control/proc/ui_design_data(datum/design/design)
 	var/list/datum/design/designs = islist(design)? design : list(design)

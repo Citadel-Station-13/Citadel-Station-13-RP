@@ -17,8 +17,8 @@
 /obj/item/gun/ballistic/automatic/advanced_smg
 	name = "advanced SMG"
 	desc = "The NT-S3W is an advanced submachine gun design, using a reflective laser optic for increased accuracy over competing models. Chambered for 9mm rounds."
-	icon_state = "advanced_smg-empty"
-	w_class = ITEMSIZE_NORMAL
+	icon_state = "advanced_smg"
+	w_class = WEIGHT_CLASS_NORMAL
 	load_method = MAGAZINE
 	caliber = "9mm"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
@@ -31,10 +31,6 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(60,30,20), dispersion=list(0.0, 0.3, 0.6))
 	)
 
-/obj/item/gun/ballistic/automatic/advanced_smg/update_icon_state()
-	. = ..()
-	icon_state = (ammo_magazine)? "advanced_smg" : "advanced_smg-empty"
-
 /obj/item/gun/ballistic/automatic/advanced_smg/loaded
 	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
 
@@ -43,7 +39,7 @@
 	desc = "The C-20r is a lightweight and rapid firing SMG, for when you REALLY need someone dead. It has 'Scarborough Arms - Per falcis, per pravitas' inscribed on the stock. Uses 10mm rounds."
 	icon_state = "c20r"
 	item_state = "c20r"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 10
 	caliber = "10mm"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
@@ -66,20 +62,20 @@
 
 /obj/item/gun/ballistic/automatic/sts35
 	name = "assault rifle"
-	desc = "The rugged STS-35 is a durable automatic weapon of a make popular on the frontier worlds. Uses 5.45mm rounds."
+	desc = "The rugged STS-35 is a durable automatic weapon of a make popular on the frontier worlds. Uses 5.56mm rounds."
 	icon_state = "arifle"
 	item_state = "arifle"
 	wielded_item_state = "arifle-wielded"
 	item_state = null
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "5.45mm"
+	caliber = "5.56mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m545
-	allowed_magazines = list(/obj/item/ammo_magazine/m545)
-	projectile_type = /obj/projectile/bullet/rifle/a545
+	magazine_type = /obj/item/ammo_magazine/m556
+	allowed_magazines = list(/obj/item/ammo_magazine/m556)
+	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/ltrifle_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/ltrifle_magout.ogg'
 	heavy = TRUE
@@ -93,10 +89,8 @@
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m545/small))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m556/small))
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
-	else
-		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
 
 /obj/item/gun/ballistic/automatic/sts35/update_icon(ignore_inhands)
 	. = ..()
@@ -108,7 +102,7 @@
 	desc = "The WT550 Saber is a cheap self-defense weapon mass-produced by Ward-Takahashi for paramilitary and private use. Uses 9mm rounds."
 	icon_state = "wt550"
 	item_state = "wt550"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	caliber = "9mm"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
@@ -134,7 +128,7 @@
 	icon_state = "carbine" // This isn't a carbine. :T
 	item_state = "z8carbine"
 	wielded_item_state = "z8carbine-wielded"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
@@ -204,20 +198,20 @@
 
 /obj/item/gun/ballistic/automatic/lmg
 	name = "light machine gun"
-	desc = "A rather traditionally made L6 SAW with a pleasantly lacquered wooden pistol grip. 'Aussec Armoury-2531' is engraved on the reciever. Uses 5.45mm rounds. It's also compatible with magazines from STS-35 assault rifles."
+	desc = "A rather traditionally made L6 SAW with a pleasantly lacquered wooden pistol grip. 'Aussec Armoury-2531' is engraved on the reciever. Uses 5.56mm rounds. It's also compatible with magazines from STS-35 assault rifles."
 	icon_state = "l6closed50"
 	item_state = "l6closed"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	slot_flags = 0
 	max_shells = 50
-	caliber = "5.45mm"
+	caliber = "5.56mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m545saw
-	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
-	projectile_type = /obj/projectile/bullet/rifle/a545
+	magazine_type = /obj/item/ammo_magazine/m556saw
+	allowed_magazines = list(/obj/item/ammo_magazine/m556saw, /obj/item/ammo_magazine/m556)
+	projectile_type = /obj/projectile/bullet/rifle/a556
 	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 	can_special_reload = FALSE
@@ -296,9 +290,12 @@
 	desc = "The MG 42 is an antique Terran machine gun, and very few original platforms have survived to the modern day. The Schwarzlindt Arms LTD manufacturer's stamp on the body marks this as a Frontier reproduction. It is no less deadly."
 	icon_state = "mg42closed50"
 	item_state = "mg42closed"
+	max_shells = 50
+	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m762_mg42
 	allowed_magazines = list(/obj/item/ammo_magazine/m762_mg42)
+	one_handed_penalty = 100
 
 /obj/item/gun/ballistic/automatic/lmg/mg42/update_icon_state()
 	. = ..()
@@ -332,8 +329,8 @@
 	name = "automatic shotgun"
 	desc = "The AS-24 is a rugged looking automatic shotgun produced for the military by Gurov Projectile Weapons LLC. For very obvious reasons, it's illegal to own in many juristictions. Uses 12g rounds."
 	icon_state = "ashot"
-	item_state = null
-	w_class = ITEMSIZE_LARGE
+	item_state = "ashot"
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	caliber = "12g"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -349,8 +346,9 @@
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
-		list(mode_name="3-round bursts", burst=3, move_delay=6, burst_accuracy = list(60,40,30,25,15), dispersion = list(0.0, 0.6, 0.6))
+		list(mode_name="3-round bursts", burst=3, move_delay=6, burst_accuracy = list(60,40,30,25,15), dispersion = list(0.0, 0.6, 0.6)),
 //		list(mode_name="6-round bursts", burst=6, move_delay=6, burst_accuracy = list(0,-15,-15,-30,-30, -30), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2, 1.2)),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
 /obj/item/gun/ballistic/automatic/as24/update_icon_state()
@@ -365,7 +363,7 @@
 	name = "\improper Uzi"
 	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. Cybersun Industries were the last major manufacturer of these designs, which have changed little since the 20th century. Uses .45 rounds."
 	icon_state = "mini-uzi"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	load_method = MAGAZINE
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
@@ -417,7 +415,7 @@
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 5.7x28mm rounds."
 	icon_state = "p90smg"
 	item_state = "p90"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	caliber = "5.7x28mm"
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
@@ -445,13 +443,13 @@
 
 /obj/item/gun/ballistic/automatic/p90/custom/update_icon_state()
 	. = ..()
-	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "empty"]"
+	icon_state = "p90smgC-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 6) : "e"]"
 
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Tommy Gun"
 	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries is currently reproducing these for a target market of historic gun collectors and classy criminals. Uses .45 rounds."
 	icon_state = "tommygun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
@@ -474,7 +472,7 @@
 	desc = "The bullpup configured GP3000 is a battle rifle produced by Gurov Projectile Weapons LLC. It is sold almost exclusively to standing armies. Uses 7.62mm rounds."
 	icon_state = "bullpup-small"
 	item_state = "bullpup"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -495,10 +493,6 @@
 	. = ..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762))
 		icon_state = "bullpup-small"
-	else if(istype(ammo_magazine,/obj/item/ammo_magazine/m762m))
-		icon_state = "bullpup"
-	else
-		item_state = "bullpup-empty"
 
 /obj/item/gun/ballistic/automatic/bullpup/update_icon()
 	. = ..()
@@ -509,7 +503,7 @@
 	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
 	icon_state = "fal"
 	item_state = "fal"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
@@ -538,7 +532,7 @@
 	icon_state = "automat"
 	item_state = "automat"
 	fire_anim = "automat_fire"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	caliber = "7.62mm"
 	heavy = TRUE
@@ -546,7 +540,6 @@
 	slot_flags = SLOT_BACK
 	load_method = SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a762
-	slowdown = 0.5
 	max_shells =  15
 	burst = 3
 	fire_delay = 7.2
@@ -570,8 +563,8 @@
 	name = "Holy automatic shotgun"
 	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
 	icon_state = "holyshotgun"
-	item_state = null
-	w_class = ITEMSIZE_LARGE
+	item_state = "holy_shot"
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	caliber = "12g"
@@ -594,7 +587,7 @@
 	if(ammo_magazine)
 		icon_state = "holyshotgun"
 	else
-		icon_state = "holyshotgun_empty"
+		icon_state = "holyshotgun-empty"
 
 //Clown Rifle
 /obj/item/gun/ballistic/automatic/clown_rifle
@@ -603,7 +596,7 @@
 	icon_state = "clownrifle"
 	item_state = "clownrifle"
 	wielded_item_state = "clownrifle_wielded"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	caliber = "organic"
@@ -657,10 +650,10 @@
 //NT SpecOps SMG
 /obj/item/gun/ballistic/automatic/combat
 	name = "\improper Harpy combat submachine gun"
-	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for NanoTrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
+	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for Nanotrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
 	icon_state = "combatsmg"
 	item_state = "combatsmg"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	caliber = "5.7x28mm"
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2)
@@ -679,10 +672,56 @@
 	. = ..()
 	icon_state = (ammo_magazine)? "combatsmg" : "combatsmg-empty"
 
+// Please don't spawn these regularly. I'm mostly just adding these for fun.
+/obj/item/gun/ballistic/automatic/bolter
+	name = "\improper Ballistae bolt rifle"
+	desc = "A boxy rifle clearly designed for larger hands. Uses .75 gyrojet rounds."
+	description_fluff = "The HI-GP mk 8 'Ballistae' is a bulky weapon designed to fire an obscenely robust .75 caliber gyrojet round with an explosive payload. The original design was sourced from Old Earth speculative documentation, and developed to test its efficacy. Although the weapon itself is undeniably powerful, its logistical demands, the recoil of the three-stage ammunition system, and its hefty size make it untenable on the modern battlefield."
+	icon_state = "bolter"
+	item_state = "bolter"
+	caliber = ".75"
+	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 2)
+	load_method = MAGAZINE
+	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
+	max_shells = 30
+	magazine_type = /obj/item/ammo_magazine/m75/sickle
+	allowed_magazines = list(/obj/item/ammo_magazine/m75/sickle)
+	heavy = TRUE
+	one_handed_penalty = 80
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="automatic", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/ballistic/automatic/bolter/update_icon_state()
+	. = ..()
+	icon_state = "bolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+
+/obj/item/gun/ballistic/automatic/bolter/storm
+	name = "\improper Onager heavy bolt rifle"
+	desc = "A hulking automatic weapon more fit for a crew serve position than personal use. Uses .75 gyrojet rounds."
+	description_fluff = "The HI-GP mk 2 'Onager' may perhaps be considered the one successful prototype to come out of Hephaestus' reclamatory efforts. Thanks to its large size many of the issues with ease of maintenance were successfully mitigated. However, the expense of replacing parts and the cost of the weapon's exotic ammunition still resulted in the inititative being considered a failure."
+	icon_state = "stormbolter"
+	item_state = "stormbolter"
+	max_shells = 50
+	magazine_type = /obj/item/ammo_magazine/m75/box
+	allowed_magazines = list(/obj/item/ammo_magazine/m75/box)
+	one_handed_penalty = 100
+
+	firemodes = list(
+		list(mode_name="semiauto", burst=1, fire_delay=0),
+		list(mode_name="automatic", burst=2, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
+
+/obj/item/gun/ballistic/automatic/bolter/storm/update_icon_state()
+	. = ..()
+	icon_state = "stormbolter-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 10) : "empty"]"
+
 //Foam Weapons
 /obj/item/gun/ballistic/automatic/advanced_smg/foam
 	name = "toy submachine gun"
-	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from NanoTrasen."
+	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from Nanotrasen."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
 	caliber = "foamdart"

@@ -5,7 +5,10 @@
 		health = 100
 		set_stat(CONSCIOUS)
 	else
+		var/old_health = health
 		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
+		if(old_health != health)
+			update_hud_med_health()
 
 /mob/living/update_stat(forced, update_mobility)
 	if(stat == DEAD)
@@ -31,7 +34,9 @@
 	//! WARNING: LEGACY CODE
 	tod = null
 	timeofdeath = 0
-	ai_holder?.go_wake()
+	if(istype(ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+		ai_holder?.go_wake()
 	failed_last_breath = 0
 	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING
 	//! END
@@ -96,7 +101,7 @@
  * set body temperature
  */
 /mob/living/proc/set_bodytemperature(amt)
-	bodytemperature = amt
+	bodytemperature = max(TCMB, amt)
 /**
  * adjust body temperature
  */

@@ -1,31 +1,10 @@
-/datum/sprite_accessory/wing/feathered
-	name = "feathered wings (colorable)"
-	id = "wing_feather"
-	icon_state = "feathered"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/feathered_medium
-	name = "medium feathered wings (colorable)" // Keekenox made these feathery things with a little bit more shape to them than the other wings. They are medium sized wing boys.
-	id = "wing_feather_medium"
-	icon_state = "feathered2"
-	spr_state = "feathered2_spr"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/wing/feathered_large //Made by Natje!
-	name = "large feathered wings (colorable)"
-	id = "wing_feather_large"
-	icon_state = "feathered3"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/harpywings
 	name = "harpy wings (colorable)"
 	id = "wing_harpy"
 	icon_state = "harpywings"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 // the below two weren't my doing
 // check blame, it wasn't me ~silicons
@@ -36,7 +15,7 @@
 	id = "wing_harpy_archeopterx"
 	icon_state = "Harpywings_alt"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "Neckfur"
 	extra_overlay2 = "Harpywings_altmarkings"
 
@@ -45,7 +24,7 @@
 	id = "wing_harpy_archeopteryx2"
 	icon_state = "harpywings_alt"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "harpywings_altmarkings"
 
 /datum/sprite_accessory/wing/harpywings_alt_neckfur
@@ -53,7 +32,7 @@
 	id = "wing_harpy_archeopteryx3"
 	icon_state = "harpywings_alt"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "harpywings_altmarkings"
 	extra_overlay2 = "neckfur"
 
@@ -62,7 +41,7 @@
 	id = "wing_harpy_bat2"
 	icon_state = "harpywings_bat"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "harpywings_batmarkings"
 
 /datum/sprite_accessory/wing/harpywings_bat_neckfur
@@ -70,14 +49,6 @@
 	id = "wing_harpy_bat_neckfur"
 	icon_state = "harpywings_bat"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "harpywings_batmarkings"
 	extra_overlay2 = "neckfur"
-
-/datum/sprite_accessory/wing/angel
-	name = "angel wings"
-	id = "angelwings"
-	icon_state = "angelwings"
-	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
-	front_behind_system = TRUE

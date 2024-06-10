@@ -25,11 +25,6 @@ meteor_act
 	if(!P.nodamage)
 		organ.add_autopsy_data("[P.name]", P.damage)
 
-	// Tell clothing we're wearing that it got hit by a bullet/laser/etc
-	var/list/clothing = get_clothing_list_organ(organ)
-	for(var/obj/item/clothing/C in clothing)
-		C.clothing_impact(P, P.damage)
-
 	//Shrapnel
 	if(P.can_embed())
 		var/armor = getarmor_organ(organ, "bullet")
@@ -130,6 +125,12 @@ meteor_act
 		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
 
+	// Modifiers.
+	for(var/thing in modifiers)
+		var/datum/modifier/M = thing
+		if(!isnull(M.siemens_coefficient))
+			siemens_coefficient *= M.siemens_coefficient
+
 	return siemens_coefficient
 
 // Similar to above but is for the mob's overall protection, being the average of all slots.
@@ -151,7 +152,7 @@ meteor_act
 
 // Returns a number between 0 to 1, with 1 being total protection.
 /mob/living/carbon/human/get_shock_protection()
-	return clamp( 1-get_siemens_coefficient_average(), 0,  1)
+	return min(1 - get_siemens_coefficient_average(), 1) // Don't go above 1, but negatives are fine.
 
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
@@ -253,12 +254,6 @@ meteor_act
 	if(!affecting)
 		return 0
 
-	// Allow clothing to respond to being hit.
-	// This is done up here so that clothing damage occurs even if fully blocked.
-	var/list/clothing = get_clothing_list_organ(affecting)
-	for(var/obj/item/clothing/C in clothing)
-		C.clothing_impact(I, effective_force)
-
 	if(soaked >= round(effective_force*0.8))
 		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.
@@ -331,7 +326,7 @@ meteor_act
 		effective_force -= round(effective_force*0.8)
 
 	//want the dislocation chance to be such that the limb is expected to dislocate after dealing a fraction of the damage needed to break the limb
-	var/dislocate_chance = effective_force/(dislocate_mult * organ.min_broken_damage * config_legacy.organ_health_multiplier)*100
+	var/dislocate_chance = effective_force/(dislocate_mult * organ.min_broken_damage)*100
 	if(prob(dislocate_chance * (100 - blocked)/100))
 		visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
 		organ.dislocate(1)
@@ -586,7 +581,7 @@ meteor_act
 	var/damage = shank_armor_helper(W, G, user)
 	var/obj/item/organ/external/chest = get_organ(hit_zone)
 
-	if(W.edge)
+	if(W.edge || (W.damage_mode & DAMAGE_MODE_EDGE))
 		organ_chance = 75
 	user.next_move = world.time + 20
 	user.visible_message("<span class='danger'>\The [user] begins to twist \the [W] around inside [src]'s [chest]!</span>")

@@ -76,15 +76,15 @@
 	movement_cooldown = 0
 	aquatic_movement = -2
 
-	melee_damage_lower = 1
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 5
 	attack_armor_pen = 15
 	attack_sharp = TRUE
 	attacktext = list("nipped", "bit", "pinched")
 
 	armor_type = /datum/armor/physiology/sif_leach
 	say_list_type = /datum/say_list/leech
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/leech
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/leech
 
 /mob/living/simple_mob/animal/sif/leech/IIsAlly(mob/living/L)
 	. = ..()
@@ -134,6 +134,9 @@
 				set_AI_busy(FALSE)
 
 /mob/living/simple_mob/animal/sif/leech/handle_special()
+	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
+		return
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 	if(prob(5))
 		randomized_reagent = pick(produceable_chemicals)
 
@@ -291,7 +294,8 @@
 
 		src.host = M
 		src.forceMove(M)
-		if(ai_holder)
+		if(istype(src.ai_holder, /datum/ai_holder/polaris))
+			var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 			ai_holder.hostile = FALSE
 			ai_holder.lose_target()
 
@@ -320,7 +324,8 @@
 	if(!host)
 		return
 
-	if(ai_holder)
+	if(istype(src.ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder.hostile = initial(ai_holder.hostile)
 		ai_holder.lose_target()
 
@@ -445,7 +450,7 @@
 		adjustBruteLoss(rand(-10,-60))
 		adjustFireLoss(rand(-10,-60))
 
-/datum/ai_holder/simple_mob/intentional/leech
+/datum/ai_holder/polaris/simple_mob/intentional/leech
 	hostile = TRUE
 	retaliate = TRUE
 	vision_range = 3
@@ -455,7 +460,7 @@
 	home_low_priority = TRUE	// If we've got a target, we're going for them.
 	max_home_distance = 1	// Low to ensure the creature doesn't leave the water unless it has a host.
 
-/datum/ai_holder/simple_mob/intentional/leech/handle_special_strategical()
+/datum/ai_holder/polaris/simple_mob/intentional/leech/handle_special_strategical()
 	var/mob/living/simple_mob/animal/sif/leech/SL = holder
 	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/water))
 		var/list/nearby_water = list()
@@ -466,13 +471,13 @@
 			if(T && can_attack(T))
 				home_turf = T
 
-/datum/ai_holder/simple_mob/intentional/leech/special_flee_check()
+/datum/ai_holder/polaris/simple_mob/intentional/leech/special_flee_check()
 	var/mob/living/simple_mob/animal/sif/leech/SL = holder
 
 	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/water))
 		return TRUE
 
-/datum/ai_holder/simple_mob/intentional/leech/pre_special_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/leech/pre_special_attack(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(ishuman(L) && !L.isSynthetic())

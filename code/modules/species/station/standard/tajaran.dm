@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/tajaran
+	carry_strength_add = CARRY_STRENGTH_ADD_TAJARAN
+	carry_strength_factor = CARRY_FACTOR_MOD_TAJARAN
+
 /datum/species/tajaran
 	uid = SPECIES_ID_TAJARAN
 	id = SPECIES_ID_TAJARAN
@@ -5,13 +9,16 @@
 	name_plural = "Tajaran"
 	category = "Tajaran"
 	default_bodytype = BODYTYPE_TAJARAN
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/tajaran
 
 	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
 	preview_icon = 'icons/mob/species/tajaran/preview.dmi'
 	husk_icon    = 'icons/mob/species/tajaran/husk.dmi'
-	tail = "tajtail"
-	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/tajaran,
+	)
 
 	max_additional_languages = 3
 	name_language = /datum/language/tajaran
@@ -31,7 +38,6 @@
 	burn_mod  = 1.15
 	flash_mod = 1.1
 
-	//Cattos be hungy
 	metabolic_rate = 1.1
 	gluttonous = 0
 	hunger_factor = 0.1
@@ -43,14 +49,15 @@
 
 
 	blurb = {"
-	The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system.
+	The Tajara are a race of humanoids that possess markedly felinoid traits that include
+	a semi-prehensile tail, a body covered in fur of varying shades, and padded, digitigrade feet.
+	They are a naturally superstitious species, with the new generations growing up with tales of the struggles of surviving a great ice age.
+	This spirit has led them forward to the reconstruction and advancement of their society to what they are today.
+	Their pride for the struggles they went through is heavily tied to their spiritual beliefs.
 
-	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact
-	and have accelerated the fledgling culture into the interstellar age. Their history is full of war and highly fractious
-	governments, something that permeates even to today's times. They prefer colder, tundra-like climates, much like their
-	home worlds and speak a variety of languages, especially Siik and Akhani.
-	"}
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajarans"
+	Recent discoveries have jump started the progression of highly advanced cybernetic technology, causing a culture shock within Tajaran society.
+	 "}
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajara"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tajaran)
 
 	body_temperature = 320.15 //Even more cold resistant, even more flammable
@@ -63,7 +70,7 @@
 	breath_cold_level_2 = 100
 	breath_cold_level_3 = 60
 
-	heat_level_1 = 330
+	heat_level_1 = 340
 	heat_level_2 = 380
 	heat_level_3 = 800
 

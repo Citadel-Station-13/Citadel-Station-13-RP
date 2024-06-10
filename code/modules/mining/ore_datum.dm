@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	smelts_to = "uranium"
 	result_amount = 5
 	spread_chance = 15
-	ore = /obj/item/ore/uranium
+	ore = /obj/item/stack/ore/uranium
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	alloy = 1
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/ore/iron
+	ore = /obj/item/stack/ore/iron
 	scan_icon = "mineral_common"
 
 /datum/ore/coal
@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	alloy = 1
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/ore/coal
+	ore = /obj/item/stack/ore/coal
 	scan_icon = "mineral_common"
 
 /datum/ore/glass
@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	//smelts_to = something that explodes violently on the conveyor, huhuhuhu
 	result_amount = 8
 	spread_chance = 15
-	ore = /obj/item/ore/phoron
+	ore = /obj/item/stack/ore/phoron
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	smelts_to = "silver"
 	result_amount = 5
 	spread_chance = 18
-	ore = /obj/item/ore/silver
+	ore = /obj/item/stack/ore/silver
 	scan_icon = "mineral_uncommon"
 
 /datum/ore/gold
@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	display_name = "native gold"
 	result_amount = 5
 	spread_chance = 15
-	ore = /obj/item/ore/gold
+	ore = /obj/item/stack/ore/gold
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	compresses_to = "diamond"
 	result_amount = 6
 	spread_chance = 15
-	ore = /obj/item/ore/diamond
+	ore = /obj/item/stack/ore/diamond
 	scan_icon = "mineral_rare"
 	xarch_source_mineral = "nitrogen"
 
@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	alloy = 1
 	result_amount = 5
 	spread_chance = 15
-	ore = /obj/item/ore/osmium
+	ore = /obj/item/stack/ore/osmium
 	scan_icon = "mineral_rare"
 
 /datum/ore/hydrogen
@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	compresses_to = MAT_VERDANTIUM
 	result_amount = 4
 	spread_chance = 13
-	ore = /obj/item/ore/verdantium
+	ore = /obj/item/stack/ore/verdantium
 	scan_icon = "mineral_rare"
 	xarch_ages = list(
 		"billion" = 13,
@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	compresses_to = "marble"
 	result_amount = 2
 	spread_chance = 10
-	ore = /obj/item/ore/marble
+	ore = /obj/item/stack/ore/marble
 	scan_icon = "mineral_common"
 
 /datum/ore/lead
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	smelts_to = "lead"
 	result_amount = 4
 	spread_chance = 17
-	ore = /obj/item/ore/lead
+	ore = /obj/item/stack/ore/lead
 	scan_icon = "mineral_rare"
 
 /datum/ore/vaudium
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	compresses_to = "silencium"
 	result_amount = 5
 	spread_chance = 20
-	ore = /obj/item/ore/vaudium
+	ore = /obj/item/stack/ore/vaudium
 	scan_icon = "mineral_rare"
 
 /datum/ore/copper
@@ -188,5 +188,5 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	alloy = 1
 	result_amount = 4
 	spread_chance = 20
-	ore = /obj/item/ore/copper
+	ore = /obj/item/stack/ore/copper
 	scan_icon = "mineral_common"

@@ -1,4 +1,8 @@
 /client/proc/age_verification()
+	set waitfor = FALSE
+	age_verification_impl()
+
+/client/proc/age_verification_impl()
 	if(!SSdbcore.Connect())
 		return TRUE
 	if(!player.block_on_available(10 SECONDS))
@@ -10,7 +14,12 @@
 		return TRUE
 	if(is_age_verified())
 		return TRUE
-	GLOB.age_verify_menu.ui_interact(mob)
+	// make absolute goddamn sure tgui is sent
+	SSassets.send_asset_pack(src, /datum/asset_pack/simple/tgui)
+	asset_cache_flush_browse_queue()
+	// wait a moment just to be sure too
+	spawn(5)
+		GLOB.age_verify_menu.ui_interact(mob)
 	return TRUE
 
 /client/proc/set_age_verified()
@@ -37,10 +46,10 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 /datum/age_verify_menu/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AgeVerifyMenu")
+		ui = new(user, src, "UIAgeVerifyMenu")
 		ui.open()
 
-/datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+/datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
 /datum/age_verify_menu/ui_act(action, list/params, datum/tgui/ui)
@@ -49,6 +58,7 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 		return
 
 	if(usr.client.is_age_verified())
+		qdel(ui)
 		return TRUE
 
 	var/player_month = text2num(params["month"])

@@ -16,8 +16,8 @@
 	icon_state = "security_rig"
 	suit_type = "combat hardsuit"
 	armor_type = /datum/armor/hardsuit/combat
-	slowdown = 1
-	offline_slowdown = 3
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
 	offline_vision_restriction = 1
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/combat
@@ -27,7 +27,6 @@
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
 		/obj/item/melee/baton,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 
@@ -65,8 +64,8 @@
 	icon_state = "military_rig"
 	suit_type = "military hardsuit"
 	armor_type = /datum/armor/hardsuit/military
-	slowdown = 1
-	offline_slowdown = 3
+	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY
+	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
 	offline_vision_restriction = 1
 	allowed = list(
 		/obj/item/flashlight,
@@ -88,7 +87,6 @@
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/roller,
 		/obj/item/suit_cooling_unit,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 

@@ -21,12 +21,12 @@
 	movement_cooldown = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 12
 
 	minbodytemp = 200
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 // Activate Noms!
 /mob/living/simple_mob/animal/wolf
@@ -41,8 +41,8 @@
 	movement_cooldown = 0
 
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 12
 
 	minbodytemp = 200
 

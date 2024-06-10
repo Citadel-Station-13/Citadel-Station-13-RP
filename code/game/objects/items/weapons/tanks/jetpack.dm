@@ -5,7 +5,7 @@
 	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
 	gauge_icon = null
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
@@ -35,13 +35,13 @@
 
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	stabilization_on = !( stabilization_on )
 	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
 /obj/item/tank/jetpack/verb/toggle()
 	set name = "Toggle Jetpack"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	on = !on
 	if(on)

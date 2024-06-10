@@ -1,23 +1,27 @@
 // These hivebots help their team in various ways, and can be very powerful with allies, but are otherwise very weak when alone.
 
 /mob/living/simple_mob/mechanical/hivebot/support
+	name = "support hivebot"
+	desc = "A white and blue colored hivebot normally meant to lead the others, though this one seems incomplete."
 	icon_state = "white"
 	icon_living = "white"
 	attacktext = list("prodded")
 	movement_cooldown = 5
-	melee_damage_lower = 2
-	melee_damage_upper = 2
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 2
 
 
 // This hivebot supplies a general buff to nearby hivebots that improve their performance.
 // Note that the commander itself does not receive the buff.
 /mob/living/simple_mob/mechanical/hivebot/support/commander
 	name = "commander hivebot"
-	desc = "A robot that appears to be directing the others."
+	desc = "A hivebot that appears to be directing the others."
 	maxHealth = 5 LASERS_TO_KILL // 150 health
 	health = 5 LASERS_TO_KILL
 	player_msg = "You <b>increase the performance of other hivebots near you</b> passively.<br>\
 	You are otherwise very weak offensively."
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/commander)
 
 /mob/living/simple_mob/mechanical/hivebot/support/commander/handle_special()
 	for(var/mob/living/L in range(4, src))
@@ -52,7 +56,7 @@
 			continue
 		if(L.faction != src.faction)
 			continue
-		var/datum/ai_holder/AI = L.ai_holder
+		var/datum/ai_holder/polaris/AI = L.ai_holder
 		AI.set_follow(src)
 	return ..()
 
@@ -62,7 +66,7 @@
 // Charges cannot exceed the initial starting amount.
 /mob/living/simple_mob/mechanical/hivebot/support/logistics
 	name = "logistics hivebot"
-	desc = "A robot that resupplies their allies."
+	desc = "A hivebot fitted to transport supplies."
 	maxHealth = 3 LASERS_TO_KILL // 90 health
 	health = 3 LASERS_TO_KILL
 	player_msg = "You <b>passively restore 'charges' to allies with special abilities</b> who are \
@@ -70,6 +74,8 @@
 	var/resupply_range = 5
 	var/resupply_cooldown = 4 SECONDS
 	var/last_resupply = null
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/logistics)
 
 /mob/living/simple_mob/mechanical/hivebot/support/logistics/handle_special()
 	if(last_resupply + resupply_cooldown > world.time)

@@ -37,13 +37,35 @@ On **May 9, 2022** we have changed the way to compile the codebase.
 
 [Guides for Contributors](.github/CONTRIBUTING.md)
 
-[CitadelRP HACKMD account](https://hackmd.io/@CitadelStation13RP)
+[CitadelRP HackMD - Design Documents & Planning](https://hackmd.io/@CitadelStation13RP)
 
 ## SQL Setup
 
-The SQL backend for the library and stats tracking requires a MySQL server.
+The SQL backend for the library and stats tracking requires a MariaDB server.
 Your server details go in /config/legacy/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql.
 More detailed setup instructions arecoming soon, for now ask in our Discord.
+
+todo: update this section
+
+## Static Files
+
+The following folders are considered 'static folders' and should be added to TGS4's static files:
+
+These are also the folders you are likely going to encounter while managing the server.
+
+- /config: server configuration
+  - /legacy: legacy configuration data go in here
+- /data: server persistent data
+  - /asset-cache - default location for caching of generated assets
+  - /asset-root - default location for generated assets to be served in webroot mode
+  - /logs: logs are dumped in here
+  - /players: player data, like saves and characters get dumped in here
+- /tmp: server scratch space
+  - /assets - for asset generation
+  
+You only need to make the top level folders (e.g. config, data) static folders in TGS4.
+
+Subfolders are automatically included.
 
 ## LICENSE
 

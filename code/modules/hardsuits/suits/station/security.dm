@@ -4,8 +4,6 @@
 	desc = "A Security hardsuit designed for prolonged EVA in dangerous environments."
 	icon_state = "hazard_rig"
 	armor_type = /datum/armor/hardsuit/hazard
-	slowdown = 1
-	offline_slowdown = 3
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.7
 
@@ -17,7 +15,6 @@
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
 		/obj/item/melee/baton,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 /datum/armor/hardsuit/hazard

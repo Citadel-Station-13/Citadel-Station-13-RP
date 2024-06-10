@@ -1,6 +1,10 @@
 #define DAM_SCALE_FACTOR 0.01
 #define METAL_PER_TICK 100
 
+/datum/physiology_modifier/intrinsic/species/protean
+	carry_strength_add = CARRY_STRENGTH_ADD_PROTEAN
+	carry_strength_factor = CARRY_FACTOR_MOD_PROTEAN
+
 /datum/species/protean
 	uid = SPECIES_ID_PROTEAN
 	name = SPECIES_PROTEAN
@@ -13,6 +17,7 @@
 	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/debris/cleanable/ash
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/protean
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 
@@ -112,6 +117,7 @@
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/carbon/human/proc/rig_self,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 
 	species_statpanel = TRUE
@@ -175,9 +181,9 @@
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/left)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/left)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack)
 
 /datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
@@ -204,7 +210,7 @@
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
 	return E.brute_dam + E.burn_dam
 
-/datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/protean/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if((getActualDamage(H) > damage_to_blob) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
@@ -301,8 +307,7 @@
 	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
 	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
-	holder.radiation = max(RAD_MOB_CURE_PROTEAN_REGEN)
-
+	holder.cure_radiation(RAD_MOB_CURE_PROTEAN_REGEN)
 
 /proc/protean_requires_healing(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -312,7 +317,7 @@
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"
-	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on NanoTrasen property. It must be renewed on a monthly basis."
+	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on Nanotrasen property. It must be renewed on a monthly basis."
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "permit-pan"
 /obj/item/clothing/accessory/permit/nanotech/set_name(var/new_name)
@@ -338,6 +343,27 @@
 			prig.forceMove(get_turf(src))
 			src.forceMove(prig)
 			return
+
+/mob/living/carbon/human/proc/rig_self()
+	set name = "Deploy Nanosuit To Self"
+	set desc = "Deploy a light nanocluster RIGsuit around yourself."
+	set category = "Abilities"
+
+	if(istype(back, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/suit = back
+		if(suit.myprotean == src)
+			suit.reset()
+			suit.forceMove(src)
+			to_chat(src, SPAN_WARNING("You retract your nanosuit."))
+			return
+
+	for(var/obj/item/hardsuit/protean/suit in contents)
+		force_equip_to_slot(suit, /datum/inventory_slot/inventory/back)
+		to_chat(src, SPAN_WARNING("You deploy your nanosuit."))
+		suit.toggle_seals(src, TRUE)
+		return
+
+	to_chat(src, SPAN_WARNING("You don't have a nanocluster RIG. Somehow."))
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK

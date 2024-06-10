@@ -28,7 +28,7 @@ var/global/list/minor_air_alarms = list()
 		ui = new(user, src, "AtmosAlertConsole", name)
 		ui.open()
 
-/obj/machinery/computer/atmos_alert/ui_data(mob/user)
+/obj/machinery/computer/atmos_alert/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/major_alarms = list()
 	var/list/minor_alarms = list()
@@ -58,7 +58,7 @@ var/global/list/minor_air_alarms = list()
 /obj/machinery/computer/atmos_alert/proc/on_alarm_update()
 	update_icon()
 
-/obj/machinery/computer/atmos_alert/ui_act(action, params)
+/obj/machinery/computer/atmos_alert/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

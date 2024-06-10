@@ -19,12 +19,16 @@ SUBSYSTEM_DEF(mapping)
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	TO_WORLD("Loading with Map: [src.loaded_station]")//This is just for IntTest logs
+
 	// load data
 	// todo: refactor
 	load_map_templates()
 	// todo: refactor
 	preloadShelterTemplates()
 
+	// init obfuscation
+	init_obfuscation_data()
 	// init maps
 	init_maps()
 	// load the map to use

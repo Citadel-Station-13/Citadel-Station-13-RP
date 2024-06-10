@@ -12,6 +12,25 @@
 #define CURRENT_MINUTE	3
 #define MINUTE_COUNT	4
 #define ADMINSWARNED_AT	5
+
+/**
+ * A 'hijack' / intercept proc.
+ * Override this and return TRUE if you handled it.
+ * This allows for clients to not have an overloaded Topic().
+ *
+ * The downside is additional overhead is generated due to the proc call overheads.
+ *
+ * * Logging & topic spam prevention is ran before this proc.
+ *
+ * @params
+ * * raw_href - the raw ?querystring that's sent by the client
+ * * href_list - the decoded, key-value query sent by client
+ * * raw_src - the raw src resolved by BYOND.
+ */
+/client/proc/on_topic_hook(raw_href, list/href_list, raw_src)
+	return FALSE
+
+
 	/*
 	When somebody clicks a link in game, this Topic is called first.
 	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
@@ -31,13 +50,6 @@
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
-
-	// asset_cache
-	var/asset_cache_job
-	if(href_list["asset_cache_confirm_arrival"])
-		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
-		if (!asset_cache_job)
-			return
 
 	// Rate limiting
 	var/mtl = config_legacy.minute_topic_limit		//CONFIG_GET(number/minute_topic_limit)
@@ -72,9 +84,8 @@
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
-
 	// Tgui Topic middleware
-	if(tgui_Topic(href_list))
+	if(tgui_topic(href_list))
 		if(CONFIG_GET(flag/emergency_tgui_logging))
 			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
@@ -84,18 +95,13 @@
 	// Log
 	log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
+	// Run normal hooks.
+	if(on_topic_hook(href, href_list, hsrc))
+		return
+
 	// Route statpanel
 	if(href_list["statpanel"])
 		_statpanel_act(href_list["statpanel"], href_list)
-		return
-
-	//byond bug ID:2256651
-	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
-		src << browse("...", "window=asset_cache_browser")
-		return
-	if (href_list["asset_cache_preload_data"])
-		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 		return
 
 	//Admin PM
@@ -149,10 +155,17 @@
 	return 1
 
 
-
 	///////////
 	//CONNECT//
 	///////////
+
+/**
+ * Linter check, do not call.
+ */
+/proc/lint__check_client_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/client/C
+	C.New()
 
 /client/New(TopicData)
 	//* pre-connect-ish
@@ -165,9 +178,12 @@
 		return null
 	// kick out guests
 	if(!config_legacy.guests_allowed && is_guest() && !is_localhost())
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
-		del(src)
-		return
+		security_kick(
+			message = "This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.",
+			tell_user = TRUE,
+			immediate = TRUE,
+		)
+		return null
 	// pre-connect greeting
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 	// register in globals
@@ -186,20 +202,38 @@
 
 	//* Resolve storage datums
 	// resolve persistent data
-	persistent = resolve_client_data(ckey)
+	persistent = resolve_client_data(ckey, key)
 	//* Resolve database data
-	player = new(key)
+	player = resolve_player_data(ckey, key)
 	player.log_connect()
-	// todo: move preferences up here but above persistent
+	//* Resolve preferences
+	preferences = SSpreferences.resolve_game_preferences(key, ckey)
+	//? WARNING: SHITCODE ALERT ?//
+	// We allow a client/New sleep because preferences is currently required for
+	// everything else to work
+	// todo: maybe don't do this?
+	if(!UNLINT(preferences.block_on_initialized(5 SECONDS)))
+		security_kick("A fatal error occurred while attempting to load: preferences not initialized. Please notify a coder.")
+		stack_trace("we just kicked a client due to prefs not loading; something is horribly wrong!")
+		return
+	// we wait until it inits to do this
+	// todo: is there a better way this is kind of awful
+	preferences.active = src
+	preferences.on_reconnect()
+	//? END ?//
 
 	//* Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate statpanel
-	statpanel_boot()
+	spawn(1)
+		statpanel_boot()
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 	// Instantiate cutscene system
-	init_cutscene_system()
+	spawn(1)
+		init_cutscene_system()
+	// instantiate tooltips
+	tooltips = new(src)
 
 	//* Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
@@ -256,16 +290,11 @@
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	handle_legacy_connection_whatevers()
-
 	//* Connection Security
 	// start caching it immediately
 	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
 	// run onboarding gauntlet
-	if(!onboarding())
-		if(!queued_security_kick)
-			security_kick("Unknown error during client init. Contact staff on Discord.", TRUE)
-		return FALSE
+	INVOKE_ASYNC(src, PROC_REF(onboarding))
 
 	//* Initialize Input
 	if(SSinput.initialized)
@@ -276,7 +305,7 @@
 	// initialize statbrowser
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
-	tgui_panel.initialize()
+	INVOKE_ASYNC(tgui_panel, TYPE_PROC_REF(/datum/tgui_panel, initialize))
 	// initialize cutscene browser
 	// (we don't, the JS does it for us.)
 
@@ -321,16 +350,18 @@
 	pre_init_viewport()
 	mob.reload_rendering()
 
-	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
-		if(config_legacy.aggressive_changelog)
-			changelog()
+	// todo: this is dead because changelog is dead but we should fix it tbvqh
+	// if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+	// 	to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+	// 	winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
+	// 	if(config_legacy.aggressive_changelog)
+	// 		changelog_async()
 
-	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
-		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
+	// run post-init 'lint'-like checks
+	on_new_hook_stability_checks()
 
-	hook_vr("client_new",list(src))
+	// todo: fuck you voreprefs
+	prefs_vr = new /datum/vore_preferences(src)
 
 	if(config_legacy.paranoia_logging)
 		if(isnum(player.player_age) && player.player_age == -1)
@@ -349,9 +380,28 @@
 	// update our hub label
 	SSserver_maint.UpdateHubStatus()
 
+/**
+ * Called in the middle of new, after everything critical
+ * is loaded / initialized.
+ *
+ * This proc should all be async; it is where you hook to ensure things are properly
+ * loaded.
+ */
+/client/proc/on_new_hook_stability_checks()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	//////////////
 	//DISCONNECT//
 	//////////////
+
+/**
+ * Linter check, do not call.
+ */
+/proc/lint__check_client_del_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/client/C
+	C.Del()
 
 /client/Del()
 	if(!gc_destroyed)
@@ -359,15 +409,19 @@
 	return ..()
 
 /client/Destroy()
+	// get rid of context menus
+	QDEL_NULL(context_menu)
 	// Unregister globals
 	GLOB.clients -= src
 	GLOB.directory -= ckey
 	// log
 	log_access("Logout: [key_name(src)]")
 	// unreference storage datums
-	prefs = null
 	persistent = null
 	player = null
+	if(preferences)
+		preferences.active = null
+		preferences = null
 
 	//* unsorted
 	GLOB.ahelp_tickets.ClientLogout(src)
@@ -382,10 +436,12 @@
 	active_mousedown_item = null
 	SSping.currentrun -= src
 
-	//* cleanup mob-side stuff
+	//* cleanup rendering
 	// clear perspective
 	if(using_perspective)
 		set_perspective(null)
+	// clear HUDs
+	clear_atom_hud_providers()
 
 	//* cleanup UI
 	// cleanup statbrowser
@@ -394,6 +450,8 @@
 	cleanup_cutscene_system()
 	// cleanup tgui panel
 	QDEL_NULL(tgui_panel)
+	// cleanup tooltips
+	QDEL_NULL(tooltips)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
@@ -494,7 +552,7 @@
 	if(ab) //Citadel edit, things with stuff.
 		return
 
-	if (prefs.hotkeys)
+	if (preferences.is_hotkeys_mode())
 		// If hotkey mode is enabled, then clicking the map will automatically
 		// unfocus the text bar. This removes the red color from the text bar
 		// so that the visual focus indicator matches reality.
@@ -512,6 +570,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
+	// force them to download rsc's from configured paths if needed
 #if (PRELOAD_RSC == 0)
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
@@ -520,22 +579,8 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 #endif
 
-	spawn (10) //removing this spawn causes all clients to not get verbs.
+	INVOKE_ASYNC(SSassets, TYPE_PROC_REF(/datum/controller/subsystem/assets, preload_client_assets), src)
 
-		//load info on what assets the client has
-		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
-
-		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		if (CONFIG_GET(flag/asset_simple_preload))
-			addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
-/*	// We don't have vox_sounds atm
-		#if (PRELOAD_RSC == 0)
-		for (var/name in GLOB.vox_sounds)
-			var/file = GLOB.vox_sounds[name]
-			Export("##action=load_rsc", file)
-			stoplag()
-		#endif
-*/
 //Hook, override it to run code when dir changes
 //Like for /atoms, but clients are their own snowflake FUCK
 /client/proc/setDir(newdir)

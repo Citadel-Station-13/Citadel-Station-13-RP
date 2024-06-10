@@ -27,12 +27,12 @@
 	response_harm = "hits the"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 1
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 3
 	attacktext = list("bapped")
 
 	say_list_type = /datum/say_list/fennec
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 
 // Activate Noms!
 /mob/living/simple_mob/vore/fennec

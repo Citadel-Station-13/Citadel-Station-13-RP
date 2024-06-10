@@ -4,8 +4,8 @@
 
 	scanner_desc = @{"[i]Registration[/i]: NSV Triumph
 [i]Class[/i]: Science Vessel
-[i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF
-[b]Notice[/b]: NanoTrasen Vessel, authorized personnel only"}
+[i]Transponder[/i]: Transmitting (CIV), Nanotrasen IFF
+[b]Notice[/b]: Nanotrasen Vessel, authorized personnel only"}
 
 	icon_state = "ship"
 	vessel_mass = 12500 // temporarily buffed by 2x due to vorestation fucking up large gas thruster code
@@ -22,5 +22,6 @@
 		"Civilian Transport" = list("triumph_civvie_home"),
 		"Dart EMT Shuttle" = list("triumph_emt_dock"),
 		"Beruang Trade Ship" = list("triumph_annex_dock"),
-		"Mining Shuttle" = list("triumph_mining_port")
+		"Mining Shuttle" = list("triumph_mining_port"),
+		"NDV Quicksilver" = list("triumph_specops_dock")
 		)

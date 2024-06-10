@@ -16,8 +16,8 @@
 	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "trade";
@@ -503,8 +503,8 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -538,9 +538,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "cb" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -625,9 +623,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
 "cq" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "cs" = (
@@ -638,8 +634,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -808,8 +804,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -917,7 +913,7 @@
 /area/tradeport)
 "dj" = (
 /obj/structure/table/glass,
-/obj/item/reagent_containers/food/snacks/chips,
+/obj/item/reagent_containers/food/snacks/bagged/chips,
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
@@ -979,8 +975,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_access = list(160);
@@ -1026,7 +1022,7 @@
 /area/tradeport/safarizoo)
 "dC" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 8018;
 	master_tag = "trade_space_lock";
 	pixel_x = -25;
@@ -1242,9 +1238,8 @@
 "es" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
@@ -1497,8 +1492,8 @@
 /area/tradeport/commons)
 "fy" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -1540,8 +1535,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -1570,9 +1565,6 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "fN" = (
-/obj/machinery/door/firedoor/multi_tile{
-	req_one_access = list(160)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -1582,6 +1574,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "fP" = (
@@ -1618,8 +1611,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Hydroponics"
@@ -1865,7 +1858,7 @@
 /area/tradeport/facility)
 "gS" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 8018;
 	master_tag = "trade_space_lock";
 	pixel_x = 25;
@@ -1925,8 +1918,8 @@
 	},
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
@@ -1955,7 +1948,7 @@
 	pixel_x = 30;
 	req_access = list(160)
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderstardoor";
 	pixel_x = -8;
 	pixel_y = -23
@@ -2042,7 +2035,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	pixel_x = 5;
 	pixel_y = 25;
@@ -2125,13 +2118,11 @@
 /turf/simulated/floor/airless,
 /area/space)
 "ie" = (
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /turf/simulated/wall,
 /area/tradeport/commons)
@@ -2200,8 +2191,7 @@
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor,
@@ -2231,8 +2221,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
@@ -2271,8 +2261,7 @@
 "iJ" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -2325,14 +2314,13 @@
 	},
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "iU" = (
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 1;
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
@@ -2358,10 +2346,8 @@
 "iW" = (
 /obj/structure/cable/yellow,
 /obj/structure/catwalk,
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /turf/simulated/floor,
@@ -2374,9 +2360,7 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -2615,8 +2599,8 @@
 	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/engineering)
@@ -2627,8 +2611,7 @@
 	name = "The Staff of Ahten-Ka"
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -3136,9 +3119,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "lL" = (
@@ -3356,9 +3337,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "mK" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -3390,7 +3369,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "mR" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "mS" = (
@@ -3402,7 +3381,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "tradeport_hangar_dock";
 	pixel_x = 25;
@@ -3796,8 +3775,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -3879,7 +3858,6 @@
 "os" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "spine_inbound";
-	layer = 3.3;
 	name = "inbound conveyor";
 	pixel_y = 8
 	},
@@ -4456,8 +4434,7 @@
 	name = "Harvest Blade"
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -4582,8 +4559,8 @@
 	req_access = list(160)
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/atmospherics)
@@ -4592,8 +4569,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -4735,7 +4712,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "tradeport_hangar_dock";
 	pixel_x = -25;
@@ -4886,8 +4863,8 @@
 	name = "Sleeping"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
@@ -4995,10 +4972,8 @@
 /obj/machinery/vending/nifsoft_shop{
 	dir = 8
 	},
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -5150,9 +5125,8 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
@@ -5202,8 +5176,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	id_tag = "tradedorm2";
@@ -5269,7 +5243,7 @@
 	pixel_x = 34;
 	pixel_y = 3
 	},
-/obj/machinery/button/windowtint/doortint{
+/obj/machinery/button/windowtint/multitint{
 	id = "traderportdoor";
 	pixel_x = -8;
 	pixel_y = 23
@@ -5394,8 +5368,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/commhall)
@@ -5567,17 +5541,9 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "uF" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/tradeport/spine)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/old_tile/red,
+/area/tradeport)
 "uG" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/snow,
@@ -5626,9 +5592,8 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -5740,8 +5705,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -5939,8 +5904,8 @@
 	id = "storeshutter1"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/facility)
@@ -6025,7 +5990,7 @@
 "wb" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/material/knife/tacknife/dataknife,
+/obj/item/gps/dataknife,
 /obj/item/gun/energy/frontier/taj,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -6033,7 +5998,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	pixel_x = 25;
 	pixel_y = 5;
@@ -6090,7 +6055,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "ww" = (
@@ -6116,8 +6081,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
@@ -6280,8 +6245,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -6365,7 +6330,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	pixel_x = -10;
 	pixel_y = 25;
 	req_access = list(160)
@@ -6383,9 +6348,7 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/rust,
@@ -6425,8 +6388,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
@@ -7044,9 +7007,7 @@
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/effect/floor_decal/corner/blue/border,
@@ -7081,8 +7042,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -7360,8 +7321,8 @@
 /area/tradeport/pads)
 "Bj" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -7439,8 +7400,7 @@
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
@@ -7543,8 +7503,8 @@
 	req_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
@@ -7604,9 +7564,8 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "BZ" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
@@ -7923,7 +7882,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	pixel_x = -5;
 	pixel_y = -25;
@@ -8301,8 +8260,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow{
@@ -8373,8 +8331,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/structure/table/marble,
@@ -8432,8 +8389,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "Fw" = (
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -8861,8 +8817,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Restrooms"
@@ -9117,9 +9073,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
@@ -9211,8 +9166,8 @@
 /area/tradeport/commons)
 "IT" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/command{
 	name = "Managers Office";
@@ -9242,8 +9197,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
@@ -9504,8 +9459,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -9667,8 +9622,8 @@
 /area/tradeport/facility)
 "KF" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -9740,7 +9695,6 @@
 "KY" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "spine_outbound";
-	layer = 3.3;
 	name = "outbound conveyor";
 	pixel_y = 8
 	},
@@ -10000,8 +9954,8 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -10176,8 +10130,8 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
@@ -10294,9 +10248,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "MV" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -10310,8 +10262,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	name = "Women"
@@ -10452,8 +10404,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -10541,8 +10493,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	id_tag = "tradedorm1";
@@ -10627,15 +10579,15 @@
 /area/tradeport/cyndishow)
 "Og" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	pixel_x = -6;
 	pixel_y = 25;
@@ -10800,9 +10752,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "OT" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -11005,8 +10955,7 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "PQ" = (
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/green{
@@ -11055,8 +11004,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
@@ -11232,9 +11181,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/cockpit)
 "QF" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -11472,18 +11419,14 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/spine)
 "Rm" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "Ro" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -11551,14 +11494,13 @@
 /area/tradeport/commons)
 "RH" = (
 /obj/item/stool/padded,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
-	},
 /obj/item/toy/plushie/squid/blue,
 /obj/landmark/spawnpoint/job/trader,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
+	},
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
@@ -11750,8 +11692,8 @@
 /area/tradeport/commons)
 "Sy" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
@@ -11775,8 +11717,8 @@
 /area/tradeport/cafeteria)
 "SD" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -11820,8 +11762,8 @@
 	req_one_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -12053,8 +11995,8 @@
 	req_access = null
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/commhall)
@@ -12206,6 +12148,10 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
+"Um" = (
+/obj/machinery/vending/weeb,
+/turf/simulated/floor/wood,
+/area/tradeport/cyndi)
 "Uo" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/warning,
@@ -12362,8 +12308,8 @@
 	},
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
@@ -12384,8 +12330,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/silver{
 	name = "Men"
@@ -12492,8 +12438,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -12515,8 +12461,8 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/cash_register/trader{
 	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Then have customer swipe their card. ";
@@ -12590,8 +12536,8 @@
 /area/tradeport/commons)
 "VS" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_access = list(160);
@@ -12603,8 +12549,8 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -12754,8 +12700,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -12795,8 +12741,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Kitchen"
@@ -12943,8 +12889,8 @@
 /area/tradeport/atmospherics)
 "Xd" = (
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/engineering)
@@ -13010,6 +12956,9 @@
 /area/tradeport/atmospherics)
 "Xo" = (
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/fire_alarm/west_mount{
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Xt" = (
@@ -13330,8 +13279,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
@@ -13393,10 +13342,10 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
+	on = 1;
 	pressure_checks = 2;
 	pressure_checks_default = 2;
-	pump_direction = 0;
-	on = 1
+	pump_direction = 0
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/tradeport/atmospherics)
@@ -13415,8 +13364,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor{
-	req_one_access = list(160);
-	dir = 8
+	dir = 8;
+	req_one_access = list(160)
 	},
 /obj/item/deskbell{
 	pixel_x = -7;
@@ -13431,9 +13380,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
@@ -13503,10 +13450,8 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
 "Zg" = (
-/obj/machinery/power/apc/alarms_hidden{
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	cell_type = /obj/item/cell/super;
-	name = "south bump";
-	pixel_y = -28;
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -13670,7 +13615,7 @@
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	pixel_x = 10;
 	pixel_y = -25;
 	req_access = list(160)
@@ -13707,9 +13652,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "ZZ" = (
-/obj/machinery/power/apc/alarms_hidden{
-	name = "south bump";
-	pixel_y = -28;
+/obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -21602,7 +21545,7 @@ Cn
 Fy
 Fy
 ll
-Fy
+Um
 Fy
 ox
 Fy
@@ -23010,7 +22953,7 @@ sm
 sm
 GT
 fE
-uF
+zd
 zd
 zd
 zd
@@ -23021,7 +22964,7 @@ Xt
 zd
 zd
 zd
-uF
+zd
 fE
 Mq
 sm
@@ -27838,7 +27781,7 @@ Tk
 Tk
 GT
 fE
-uF
+zd
 lm
 zd
 hC
@@ -27849,7 +27792,7 @@ Xt
 mZ
 zd
 lm
-uF
+zd
 fE
 Pf
 rX
@@ -29399,7 +29342,7 @@ lA
 VZ
 EP
 LP
-EP
+uF
 AV
 Ag
 vs

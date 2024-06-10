@@ -39,8 +39,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 8
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 10
 	attacktext = list("attacked")
 	attack_sound = 'sound/items/bikehorn.ogg'
 
@@ -54,7 +54,7 @@
 	name = "clown"
 	desc = "A denizen of clown planet. I wonder if that's a real gun."
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 	projectiletype = /obj/projectile/bullet/honker
 	projectilesound = 'sound/items/bikehorn.ogg'
@@ -94,8 +94,8 @@
 	response_harm = "wallops"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15		//Tac Knife damage
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15		//Tac Knife damage
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -104,7 +104,7 @@
 	corpse = /obj/spawner/corpse/clown/clownop
 	loot_list = list(/obj/item/melee/clownop = 100)	// Might as well give it the knife
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc
 	say_list_type = /datum/say_list/clownop
 
 	// Grenade special attack vars
@@ -188,7 +188,7 @@
 	projectilesound = 'sound/items/bikehorn.ogg'
 	needs_reload = TRUE
 	reload_max = 12
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 	loot_list = list(/obj/item/gun/ballistic/clown_pistol = 100,
 					/obj/item/ammo_magazine/mcompressedbio = 30,
 					/obj/item/ammo_magazine/mcompressedbio = 30
@@ -215,8 +215,8 @@
 	movement_cooldown = 0
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30		//Tac Knife damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//Tac Knife damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")

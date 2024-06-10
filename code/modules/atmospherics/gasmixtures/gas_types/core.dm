@@ -79,4 +79,4 @@
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT | GAS_FLAG_FILTERABLE | GAS_FLAG_CORE
 	gas_groups = GAS_GROUP_CORE
 
-	default_tlv = list(0, 0, 0, 0.5)
+	default_tlv = list(0, 0, 0.25, 0.5)

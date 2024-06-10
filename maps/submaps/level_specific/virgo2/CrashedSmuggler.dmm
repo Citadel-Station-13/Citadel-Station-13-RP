@@ -17,9 +17,8 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "cc" = (
-/obj/machinery/power/apc/alarms_hidden{
-	cell_type = /obj/item/cell/high/empty;
-	pixel_x = 28
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	cell_type = /obj/item/cell/high/empty
 	},
 /obj/structure/cable/cyan{
 	dir = 4
@@ -52,7 +51,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "eO" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /mob/living/simple_mob/animal/space/alien/drone,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -72,13 +71,13 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "fJ" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/item/digestion_remains/skull/teshari,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "fK" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/item/clothing/mask/facehugger,
 /obj/structure/simple_door/resin{
 	dir = 4
@@ -94,11 +93,11 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "gv" = (
 /obj/structure/simple_door/resin,
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "gR" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -149,7 +148,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "jf" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/item/clothing/mask/facehugger,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -160,12 +159,12 @@
 /obj/structure/simple_door/resin{
 	dir = 4
 	},
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "mP" = (
-/obj/effect/alien/weeds/node,
-/obj/effect/alien/egg,
+/obj/structure/alien/weeds/node,
+/obj/structure/alien/egg,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "np" = (
@@ -201,7 +200,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "sT" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -236,7 +235,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "wz" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/simple_door/resin{
 	dir = 4
 	},
@@ -250,10 +249,10 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "xc" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/item/clothing/shoes/bhop,
-/obj/item/material/knife/tacknife/dataknife,
+/obj/item/gps/dataknife,
 /obj/item/clothing/under/utility,
 /obj/item/digestion_remains/skull,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
@@ -270,7 +269,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "xR" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /mob/living/simple_mob/animal/space/alien/queen/empress,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -290,7 +289,7 @@
 /turf/simulated/mineral/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "zr" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/random/humanoidremains,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
@@ -413,11 +412,11 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Gf" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "Gh" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "GY" = (
@@ -456,7 +455,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "IB" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /mob/living/simple_mob/animal/space/alien/sentinel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -488,8 +487,8 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Lc" = (
-/obj/effect/alien/weeds,
-/obj/effect/alien/egg,
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg,
 /obj/item/clothing/mask/facehugger,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -510,7 +509,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "No" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/sentinel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -593,12 +592,12 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "RJ" = (
-/obj/effect/alien/weeds,
-/obj/effect/alien/egg,
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "Sr" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/item/storage/belt/security/tactical,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
@@ -618,7 +617,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "VT" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /obj/item/clothing/mask/facehugger,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -650,7 +649,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "ZN" = (
-/obj/effect/alien/weeds,
+/obj/structure/alien/weeds,
 /mob/living/simple_mob/animal/space/alien/drone,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)

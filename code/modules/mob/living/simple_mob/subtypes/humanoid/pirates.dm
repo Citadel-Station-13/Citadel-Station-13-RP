@@ -34,8 +34,8 @@
 	movement_cooldown = 2
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15		//Tac Knife damage
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15		//Tac Knife damage
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 
@@ -46,7 +46,7 @@
 
 	corpse = /obj/spawner/corpse/pirate/melee
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc
 	say_list_type = /datum/say_list/pirate
 
 //Armored Variant
@@ -80,8 +80,8 @@
 	response_harm = "hits"
 
 
-	melee_damage_lower = 25		//Macehte damage
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 25		//Macehte damage
+	legacy_melee_damage_upper = 25
 
 	attacktext = list("slashed", "chopped", "gouged", "ripped", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -115,8 +115,8 @@
 	icon_living = "piratemelee-las"
 	icon_dead = "piratemelee_dead"
 
-	melee_damage_lower = 30		//E-Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//E-Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 
 	attack_sound = 'sound/weapons/blade1.ogg'
@@ -156,7 +156,7 @@
 		if(prob(15))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -169,7 +169,7 @@
 	if(prob(25))
 		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			ai_holder.react_to_attack_polaris(Proj.firer)
 		return
 	else
 		..()
@@ -202,8 +202,8 @@
 	response_harm = "hits"
 
 
-	melee_damage_lower = 25		//Macehte damage
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 25		//Macehte damage
+	legacy_melee_damage_upper = 25
 
 	attacktext = list("slashed", "chopped", "gouged", "ripped", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -244,7 +244,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/pirate = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
 	corpse = /obj/spawner/corpse/pirate/ranged
 
@@ -281,7 +281,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 
 	corpse = /obj/spawner/corpse/pirate/ranged_blunderbuss
 
@@ -317,7 +317,7 @@
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive
 
 	corpse = /obj/spawner/corpse/pirate/ranged_laser
 
@@ -344,8 +344,8 @@
 	icon_living = "mate"
 	icon_dead = "piratemelee_dead"
 
-	melee_damage_lower = 30		//E-Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//E-Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 
 	attack_sound = 'sound/weapons/blade1.ogg'
@@ -371,8 +371,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 
 	projectiletype = /obj/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/weaponsounds_lasermid.ogg'
@@ -382,7 +382,7 @@
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
 	corpse = /obj/spawner/corpse/pirate/mate/pistol
 
@@ -391,7 +391,7 @@
 	desc = "An oily pirate mechanist. Thankfully he has but an old laser to defend himself with."
 	icon_state = "bosun"
 	icon_living = "bosun"
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
@@ -413,15 +413,15 @@
 	reload_max = 4
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	base_attack_cooldown = 5
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged/shotgun
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged/shotgun
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
@@ -443,8 +443,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/rifle/a762
@@ -564,7 +564,7 @@
 	icon_living = "old-pirateranged"
 	icon_dead = "old-piratemelee_dead"
 	loot_list = list(/obj/item/gun/ballistic/pirate = 100, /obj/item/material/knife/tacknife = 100)
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/armored/old
@@ -590,7 +590,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/shotgun/armored
@@ -622,7 +622,7 @@
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/handcannon/armored
@@ -645,8 +645,8 @@
 	icon_living = "mate"
 	icon_dead = "piratemelee_dead"
 
-	melee_damage_lower = 30		//E-Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30		//E-Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 50
 
 	attack_sound = 'sound/weapons/blade1.ogg'
@@ -671,8 +671,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 
 	projectiletype = /obj/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/weaponsounds_lasermid.ogg'
@@ -682,14 +682,14 @@
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/pirate = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 
 /mob/living/simple_mob/humanoid/pirate/mate/ranged/bosun /// Special Mech Pilot Pirate
 	name = "Bosun"
 	desc = "An oily pirate mechanist. Thankfully he has but an old laser to defend himself with."
 	icon_state = "bosun"
 	icon_living = "bosun"
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/head/welding = 100, /obj/item/clothing/suit/pirate = 100)
 
@@ -709,8 +709,8 @@
 	reload_max = 4
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/pellet/shotgun
@@ -735,8 +735,8 @@
 	reload_max = 5
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/projectile/bullet/rifle/a762

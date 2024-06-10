@@ -4,9 +4,9 @@
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	unacidable = 1 //glass
+	integrity_flags = INTEGRITY_ACIDPROOF
 	center_of_mass = list("x"=16, "y"=10)
-	materials = list(MAT_GLASS = 500)
+	materials_base = list(MAT_GLASS = 500)
 	icon = 'icons/obj/drinks.dmi'
 
 /obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
@@ -113,6 +113,9 @@ Drinks Data
 
 /datum/reagent/drink/milk
 	glass_icon_state = "glass_white"
+
+/datum/reagent/drink/milk/pilk
+	glass_icon_state = "glass_lightbrown"
 
 /datum/reagent/drink/milk/chocolate
 	glass_icon_state = "glass_brown"
@@ -418,7 +421,7 @@ Drinks Data
 	glass_icon_state = "italiancrisisglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
-/datum/reagent/ethanol/shroomjuice
+/datum/reagent/drink/shroomjuice
 	glass_icon_state = "shroomjuiceglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
@@ -556,7 +559,7 @@ Drinks Data
 	glass_icon_state = "bahama_mama"
 	glass_center_of_mass = list("x"=16, "y"=5)
 
-/datum/reagent/ethanol/bananahonk
+/datum/reagent/drink/bananahonk
 	glass_icon_state = "bananahonkglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
@@ -710,7 +713,7 @@ Drinks Data
 	glass_icon_state = "screwdriverglass"
 	glass_center_of_mass = list("x"=15, "y"=10)
 
-/datum/reagent/ethanol/silencer
+/datum/reagent/drink/silencer
 	glass_icon_state = "silencerglass"
 	glass_center_of_mass = list("x"=16, "y"=9)
 
@@ -795,7 +798,7 @@ Drinks Data
 	glass_icon_state = "ciderglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
-/datum/reagent/ethanol/gibbfloat
+/datum/reagent/drink/soda/gibbfloat
 	glass_icon_state = "gibbfloats"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
@@ -908,7 +911,7 @@ Drinks Data
 /datum/reagent/drink/soda/vortex_chill
 	glass_icon_state = "vortex_chill"
 
-/datum/reagent/ethanol/nebula_riptide
+/datum/reagent/drink/soda/nebula_riptide
 	glass_icon_state = "nebula_riptide"
 
 /datum/reagent/ethanol/sexonthebeach
@@ -1017,4 +1020,8 @@ Drinks Data
 
 /datum/reagent/ethanol/martinez
 	glass_icon_state = "martinez"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/mimosa
+	glass_icon_state = "mimosa"
 	glass_center_of_mass = list("x"=16, "y"=8)

@@ -1,14 +1,18 @@
 /**
- * # /mob/living
+ * living mobs
  *
- * mob/living is the base type of mobs that have health
- * there's probably a better explanation we can type someday but for that, uh
- * yeah.
+ * living mobs are the subtype of mobs that are semantically what you'd think of as a true mob
+ * health, inventory carry weight simulations, etc.
  */
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
 	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
 	buckle_flags = BUCKLING_PROJECTS_DEPTH
+
+	//* AI handling
+	/// AI agent type
+	/// While all /atom/movable's can have an ai holder, only /mob/living has an /Initialize() hook to make one.
+	var/ai_holder_type
 
 	//* Health and life related vars *//
 	/// Maximum health that should be possible.  Avoid adjusting this if you can, and instead use modifiers datums.
@@ -102,8 +106,11 @@
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
 
+	// todo: refactor this shit along with characters, aough
 	var/ooc_notes = null
 	var/datum/description_profile/profile
+	var/fullref_url
+	var/headshot_url
 	var/obj/structure/mob_spawner/source_spawner = null
 
 //custom say verbs
@@ -123,6 +130,15 @@
 	// TODO: /tg/ arbitrary hand numbers
 	/// Set to TRUE to enable the use of hands and the hands hud
 	var/has_hands = FALSE
+
+	//* Carry Weight
+	//  todo: put all this on /datum/inventory after hand refactor
+	/// cached carry weight of all items
+	var/cached_carry_weight = 0
+	/// cached encumbrance of all items
+	var/cached_carry_encumbrance = 0
+	/// highest flat encumbrance of all items
+	var/cached_carry_flat_encumbrance = 0
 
 	//? movement
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?

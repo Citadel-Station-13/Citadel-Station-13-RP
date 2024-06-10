@@ -5,7 +5,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pai"
 	item_state = "electronic"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_DATA = 2)
 	show_messages = FALSE
@@ -292,8 +292,11 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	setEmotion("null")
 	src.forceMove(get_turf(src))
 	pai.open_up()
+	pai.update_action_buttons()
 
 /obj/item/paicard/proc/removePersonality()
+	if(pai)
+		pai.delete_all_holograms()
 	QDEL_NULL(pai)
 	pai = null
 	cached_holo_image = null
@@ -383,3 +386,45 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 /obj/item/paicard/proc/stop_displaying_hologram()
 	displaying_hologram = FALSE
 	update_icons()
+
+/// Handling for ghosts going into empty pAI cards
+/obj/item/paicard/attack_ghost(mob/user)
+	. = ..()
+
+	if(src.pai != null) //Have a person in them already?
+		user.examinate(src)
+		return
+
+	var/datum/category_item/player_setup_item/player_global/pai/pai_pref = user.client.prefs.preference_by_type[/datum/category_item/player_setup_item/player_global/pai]
+	var/datum/paiCandidate/prefs = pai_pref?.candidate
+	var/has_pAI_data = !isnull(prefs) && !isnull(prefs.name)
+	var/options = (has_pAI_data ? list("Yes (As [prefs.name])") : list()) + list("Yes (Pick Name)", "No")
+
+	var/choice = input(user, "Do you wish to inhabit this PAI?") in options
+	if(choice == "No" || isnull(choice))
+		return
+
+	var/pai_name
+	var/actual_pai_name
+
+	if(choice == "Yes (Pick Name)")
+		pai_name = input(user, "Choose your character's name", "Character Name") as text
+		actual_pai_name = sanitize_species_name(pai_name)
+	else
+		actual_pai_name = sanitize_species_name(prefs.name)
+
+	if(isnull(actual_pai_name))
+		return
+
+	var/pai_key = user.key
+	var/turf/location = get_turf(src)
+	var/obj/item/paicard/card = new(location)
+	var/mob/living/silicon/pai/pai = new(card)
+	qdel(src)
+
+	if(choice != "Yes (Pick Name)")
+		pai.desc = prefs.description
+
+	pai.key = pai_key
+	card.setPersonality(pai)
+	pai.SetName(actual_pai_name)

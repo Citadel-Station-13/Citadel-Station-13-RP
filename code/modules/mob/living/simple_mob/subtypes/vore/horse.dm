@@ -33,8 +33,8 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 
-	melee_damage_lower = 1
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 5
 	attacktext = list("kicked")
 
 	meat_amount = 4
@@ -49,7 +49,7 @@
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 
 	say_list_type = /datum/say_list/horse
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 	var/rideable = 0
 
@@ -86,7 +86,7 @@
 	if(istype(O, /obj/item/tool/wirecutters) && rideable)
 		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
 		rideable = 0
-		DelComponent(/datum/component/riding_handler/horse)
+		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/horse)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/horse(T)
 	update_icon()

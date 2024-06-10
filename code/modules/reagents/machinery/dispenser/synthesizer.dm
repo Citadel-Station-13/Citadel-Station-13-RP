@@ -79,12 +79,12 @@
 		/datum/reagent/ethanol/cider,
 		/datum/reagent/ethanol/ale,
 		/datum/reagent/ethanol/mead,
-		/datum/reagent/ethanol/alcsassafras
 	)
 
 /obj/item/reagent_synth/cafe
 	name = "reagent synthesis module (Cafe)"
 	reagents_provided = list(
+		/datum/reagent/water,
 		/datum/reagent/drink/coffee,
 		/datum/reagent/drink/coffee/cafe_latte,
 		/datum/reagent/drink/coffee/soy_latte,
@@ -93,7 +93,9 @@
 		/datum/reagent/drink/milk/cream,
 		/datum/reagent/drink/tea,
 		/datum/reagent/drink/ice,
+		/datum/reagent/drink/tea/icetea,
 		/datum/reagent/nutriment/mint,
+		/datum/reagent/sugar,
 		/datum/reagent/drink/juice/orange,
 		/datum/reagent/drink/juice/lemon,
 		/datum/reagent/drink/juice/lime,
@@ -121,6 +123,7 @@
 		/datum/reagent/drink/juice/lemon,
 		/datum/reagent/drink/soda/sassafras,
 		/datum/reagent/drink/soda/sarsaparilla,
+		/datum/reagent/drink/soda/gingerale,
 	)
 
 /obj/item/reagent_synth/medicine

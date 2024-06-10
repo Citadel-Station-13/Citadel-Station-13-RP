@@ -48,7 +48,7 @@
 		ui = new(user, src, "IVDrip", name)
 		ui.open()
 
-/obj/machinery/iv_drip/ui_data(mob/user)
+/obj/machinery/iv_drip/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["transferRate"] = transfer_rate
 	data["maxInjectRate"] = MAX_IV_TRANSFER_RATE
@@ -58,7 +58,7 @@
 	data["beakerAttached"] = reagent_container ? TRUE : FALSE
 	return data
 
-/obj/machinery/iv_drip/ui_act(action, params)
+/obj/machinery/iv_drip/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -182,7 +182,11 @@
 		to_chat(attached_victim, SPAN_USERDANGER("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
 		var/list/arm_zones = shuffle(list(BP_R_ARM, BP_L_ARM))
 		var/obj/item/organ/external/chosen_limb = attached_victim.get_organ(arm_zones[1]) || attached_victim.get_organ(arm_zones[2]) || attached_victim.get_organ(BP_TORSO)
-		chosen_limb.take_damage(3)
+		chosen_limb.inflict_bodypart_damage(
+			brute = 3,
+			damage_mode = DAMAGE_MODE_SHARP,
+			weapon_descriptor = "a needle",
+		)
 		chosen_limb.create_wound(CUT, 5)
 		detach_iv()
 		return PROCESS_KILL
@@ -196,13 +200,13 @@
 				if(istype(reagent_container, /obj/item/reagent_containers/blood))
 					// speed up transfer on blood packs
 					real_transfer_amount *= 2
-				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_INJECT)
+				target_reagents.trans_to_mob(attached_victim, real_transfer_amount, type = CHEM_INJECT)
 				update_appearance()
 
 		// Take blood
 		else //? injection_mode == IV_TAKING
 			var/amount = target_reagents.maximum_volume - target_reagents.total_volume
-			amount = min(amount, 4) * delta_time * 0.5
+			amount = clamp(amount, 0, transfer_rate)
 			// If the beaker is full, ping
 			if(!amount)
 				if(prob(5))
@@ -214,7 +218,7 @@
 				visible_message(SPAN_HEAR("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
 			var/atom/movable/target = reagent_container
-			attached_victim.inject_blood(target, amount)
+			attached_victim.take_blood(target, amount)
 			update_appearance()
 
 /// Called when an IV is attached.
@@ -256,7 +260,7 @@
 	return reagent_container?.reagents
 
 /obj/machinery/iv_drip/verb/eject_beaker()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove IV Container"
 	set src in oview(1)
 
@@ -276,7 +280,7 @@
 		update_appearance()
 
 /obj/machinery/iv_drip/verb/toggle_mode()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Mode"
 	set src in oview(1)
 

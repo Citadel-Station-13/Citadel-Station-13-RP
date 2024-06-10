@@ -5,7 +5,7 @@
 	name = "Sonar Ping"
 	desc = "You send out a echolocating pulse, briefly showing your environment past the visible"
 	action_state = "shield"
-	cooldown = 8 SECONDS
+	cooldown = 2 SECONDS
 	always_bind = TRUE
 
 /datum/ability/species/sonar/unavailable_reason()

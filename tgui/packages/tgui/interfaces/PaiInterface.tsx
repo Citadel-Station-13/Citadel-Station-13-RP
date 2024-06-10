@@ -441,7 +441,7 @@ const RecordRow = (props) => {
   return (
     <Table.Row className="candystripe">
       {filteredRecord?.map((value) => {
-        return <Table.Cell key={value}>{value}</Table.Cell>;
+        return <Table.Cell key={`${value}`}>{value}</Table.Cell>;
       })}
     </Table.Row>
   );

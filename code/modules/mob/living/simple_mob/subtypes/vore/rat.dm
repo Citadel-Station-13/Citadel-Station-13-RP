@@ -22,8 +22,8 @@
 	health = 150
 	randomized = TRUE
 
-	melee_damage_lower = 2
-	melee_damage_upper = 7
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 7
 	grab_resist = 100
 
 	response_help = "pets the"
@@ -44,7 +44,7 @@
 	var/life_since_foodscan = 0
 
 	say_list_type = /datum/say_list/rat
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/rat
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/rat
 
 /mob/living/simple_mob/vore/aggressive/rat/tame		//not quite tame but does not attack on sight
 	name = "curious giant rat"
@@ -59,7 +59,7 @@
 
 	randomized = FALSE
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 /mob/living/simple_mob/vore/aggressive/rat/death()
 	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 50, 1)
@@ -78,8 +78,8 @@
 	maxHealth = 175
 	health = 175
 
-	melee_damage_lower = 8
-	melee_damage_upper = 16
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 16
 
 	min_oxy = 0
 	max_oxy = 0
@@ -98,5 +98,5 @@
 	say_maybe_target = list("Squeek?")
 	say_got_target = list("SQUEEK!")
 
-/datum/ai_holder/simple_mob/melee/rat
+/datum/ai_holder/polaris/simple_mob/melee/rat
 	speak_chance = 3

@@ -101,7 +101,7 @@
 		return
 	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
-			ai_holder.react_to_attack(L)
+			ai_holder.react_to_attack_polaris(L)
 
 /mob/living/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
@@ -121,7 +121,7 @@
 			signaler.signal()
 
 	if(ai_holder && P.firer)
-		ai_holder.react_to_attack(P.firer)
+		ai_holder.react_to_attack_polaris(P.firer)
 
 	//Armor
 	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
@@ -138,9 +138,11 @@
 		proj_sharp = 0
 		proj_edge = 0
 
-	var/list/impact_sounds = LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone))
+	var/list/impact_sounds = islist(P.impact_sounds)? LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone)) : P.impact_sounds
 	if(length(impact_sounds))
 		playsound(src, pick(impact_sounds), 75)
+	else if(!isnull(impact_sounds))
+		playsound(src, impact_sounds, 75)
 
 	//Stun Beams
 	if(P.taser_effect)
@@ -186,7 +188,7 @@
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
-	var/list/L = src.get_contents()
+	var/list/L = src.get_equipped_items(TRUE, TRUE)
 	for(var/obj/O in L)
 		O.emp_act(severity)
 	..()
@@ -234,7 +236,7 @@
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	if(ai_holder)
-		ai_holder.react_to_attack(user)
+		ai_holder.react_to_attack_polaris(user)
 
 	var/soaked = get_armor_soak(hit_zone, "melee")
 	var/blocked = run_armor_check(hit_zone, "melee")
@@ -295,7 +297,7 @@
 			if(!!client || !!M.client)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
 			if(ai_holder)
-				ai_holder.react_to_attack(TT.thrower)
+				ai_holder.react_to_attack_polaris(TT.thrower)
 
 		// Begin BS12 momentum-transfer code.
 		var/mass = 1.5
@@ -335,7 +337,7 @@
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
-	src.take_organ_damage(speed*5)
+	src.take_random_targeted_damage(brute = speed*5)
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
 	var/turf/T = get_step(get_turf(src),direction)
@@ -360,7 +362,7 @@
 	adjustBruteLoss(damage)
 	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_mob attacks
 	if(ai_holder)
-		ai_holder.react_to_attack(user)
+		ai_holder.react_to_attack_polaris(user)
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
 	spawn(1) update_health()
@@ -533,6 +535,8 @@
 
 	var/button_number = 0
 	for(var/datum/action/A in actions)
+		if(!A.button_visibility)
+			continue
 		button_number++
 		var/atom/movable/screen/movable/action_button/B = A.button
 

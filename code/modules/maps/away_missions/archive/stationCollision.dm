@@ -65,7 +65,7 @@
 obj/item/gun/energy/laser/retro/sc_retro
 	name ="retro laser"
 	icon_state = "retro"
-	desc = "An older model of the basic lasergun, no longer used by NanoTrasen's security or military forces."
+	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's security or military forces."
 	projectile_type = "/obj/projectile/practice"
 	//clumsy_check = 0 //No sense in having a harmless gun blow up in the clowns face
 
@@ -171,7 +171,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 	new /obj/item/clothing/head/helmet/space/cult(src)
 	new /obj/item/clothing/suit/space/cult(src)
 	//new /obj/item/teleportation_scroll(src)
-	new /obj/item/ore/diamond(src)
+	new /obj/item/stack/ore/diamond(src)
 
 /*
  * Modified Nar-Sie

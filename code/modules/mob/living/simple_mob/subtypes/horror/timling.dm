@@ -22,8 +22,8 @@
 	maxHealth = 200
 	health = 200
 
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 30
+	legacy_melee_damage_upper = 40
 	grab_resist = 100
 
 	response_help = "pets the"
@@ -34,7 +34,7 @@
 
 
 	say_list_type = /datum/say_list/TinyTim
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horror
 
 	bone_amount = 3
 	hide_amount = 5

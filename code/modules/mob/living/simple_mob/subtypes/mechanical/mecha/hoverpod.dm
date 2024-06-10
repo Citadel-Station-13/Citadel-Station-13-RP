@@ -2,14 +2,14 @@
 
 /datum/category_item/catalogue/technology/hoverpod
 	name = "Voidcraft - Hoverpod"
-	desc = "This is a small space-capable craft that has a round design. Can hold up to one pilot, \
-	and sometimes one or two passengers, with the right modifications made. \
-	Hoverpods have existed for a very long time, and the design has remained more or less consistant over its life. \
-	They carved out a niche in short ranged transportation of cargo or crew while in space, \
-	as they were more efficient compared to using a shuttle, and required less infrastructure to use due to being compact enough \
-	to use airlocks. As such, they acted as a sort of bridge between being EVA in a spacesuit, and being inside a 'real' spacecraft.\
-	<br><br>\
-	In recent times, the Hoverpod is seen as outdated by some, as newer solutions to that niche now exist, however it remains an ancient favorite."
+	desc = "This small space-capable craft can accomodate one pilot and up to two passengers, depending on its equipment. \
+	The Hoverpod's trademark round design and bright white coloration are easily recognizable to spacefarers. The design \
+	has been in use for nearly two centuries, and has remained largely consistent. Developed to address short ranged transport \
+	of crew nad cargo in EVA, the Hoverpod is a niche vehicle. Due to its reduced size and maneuverability, the Hoverpod saw \
+	frequent use in situations where a shuttle was deemed too cumbersome. Thanks to their ability to enter airlocks, Hoverpods \
+	have acted as a bridge between EVA in space suits and travelling within proper spacecraft. In recent times, however, the \
+	Hoverpod has begun to show its age. Newer solutions that address the same niche have begun to come to the forefront. \
+	In spite of this, the Hoverpod remains a cheap and reliable favorite across the Frontier."
 	value = CATALOGUER_REWARD_EASY
 
 /mob/living/simple_mob/mechanical/mecha/hoverpod

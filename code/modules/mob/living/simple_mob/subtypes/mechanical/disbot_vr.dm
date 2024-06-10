@@ -37,13 +37,13 @@
 	response_harm = "hits the"
 	faction = "vagrant"
 	harm_intent_damage = 3
-	melee_damage_lower = 6
-	melee_damage_upper = 9
+	legacy_melee_damage_lower = 6
+	legacy_melee_damage_upper = 9
 	light_color = "#8a0707"
 	attacktext = "drugged"
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 	say_list_type = /datum/say_list/disbot
 
 	var/poison_chance = 100

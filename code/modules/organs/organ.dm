@@ -5,14 +5,14 @@
 	drop_sound = 'sound/items/drop/flesh.ogg'
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
-//! ## STRINGS VARS
+	//* ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"
 	/// The organ holding this object.
 	var/parent_organ = BP_TORSO
 
 
-//! STATUS VARS
+	//* STATUS VARS
 	/// Various status flags
 	var/status = 0
 	/**
@@ -29,7 +29,7 @@
 	var/stapled_nerves = FALSE
 
 
-//! ##REFERENCE VARS
+	//* ##REFERENCE VARS
 	/// Current mob owning the organ.
 	var/mob/living/carbon/human/owner
 	/// Transplant match data.
@@ -45,12 +45,13 @@
 	var/s_base
 
 
-//! ## DAMAGE VARS
+	//* ## DAMAGE VARS
 	/// Damage before considered bruised
 	var/min_bruised_damage = 10
 	/// Damage before becoming broken
 	var/min_broken_damage = 30
 	/// Damage cap
+	/// For external organs / bodyparts, this is actually both brute and burn separate, so, you can have for 50 max damage 50 brute and 50 burn.
 	var/max_damage
 	/// Can this organ reject?
 	var/can_reject = TRUE
@@ -61,12 +62,12 @@
 	/// decay rate
 	var/decay_rate = ORGAN_DECAY_PER_SECOND_DEFAULT
 
-//! ## LANGUAGE VARS - For organs that assist with certain languages.
+	//* ## LANGUAGE VARS - For organs that assist with certain languages.
 	var/list/will_assist_languages = list()
 	var/list/datum/language/assists_languages = list()
 
 
-//! ## VERB VARS
+	//* ## VERB VARS
 	/// Verbs added by the organ when present in the body.
 	var/list/organ_verbs
 	/// Is the parent supposed to be organic, robotic, assisted?
@@ -85,7 +86,7 @@
 
 	if(isliving(loc))
 		owner = loc
-		w_class = max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
+		set_weight_class(max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1)) //smaller mobs have smaller organs.
 		if(internal)
 			LAZYDISTINCTADD(owner.internal_organs, src)
 			LAZYSET(owner.internal_organs_by_name, organ_tag, src)
@@ -298,7 +299,7 @@
 	W.time_inflicted = world.time
 
 //Note: external organs have their own version of this proc
-/obj/item/organ/take_damage(amount, var/silent=0)
+/obj/item/organ/proc/take_damage(amount, var/silent=0)
 	ASSERT(amount >= 0)
 	if(src.robotic >= ORGAN_ROBOT)
 		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
@@ -332,20 +333,6 @@
 ///Used to make the circuit-brain. On this level in the event more circuit-organs are added/tweaks are wanted.
 /obj/item/organ/proc/digitize()
 	robotize()
-
-/obj/item/organ/emp_act(severity)
-	if(!(robotic >= ORGAN_ASSISTED))
-		return
-	for(var/i = 1; i <= robotic; i++)
-		switch (severity)
-			if (1)
-				take_damage(rand(5,9))
-			if (2)
-				take_damage(rand(3,7))
-			if (3)
-				take_damage(rand(2,5))
-			if (4)
-				take_damage(rand(1,3))
 
 /obj/item/organ/proc/removed(var/mob/living/user)
 	if(owner)

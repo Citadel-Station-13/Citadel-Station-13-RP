@@ -2,13 +2,18 @@
  * mob inventory data goes in here.
  */
 /datum/inventory
-	//? basics
+	//* Basics *//
 	/// owning mob
 	var/mob/owner
 
-	//? slots
+	//* Inventory *//
 
-	//? caches
+	//* Caches *//
+	/// cached overlays by slot id
+	var/list/rendered_normal_overlays = list()
+	/// cached overlays by slot id
+	// todo: emissives
+	// var/list/rendered_emissive_overlays = list()
 
 /datum/inventory/New(mob/M)
 	if(!istype(M))
@@ -18,6 +23,95 @@
 /datum/inventory/Destroy()
 	owner = null
 	return ..()
+
+//* Rendering *//
+
+/datum/inventory/proc/remove_slot_renders()
+	var/list/transformed = list()
+	for(var/slot_id in rendered_normal_overlays)
+		transformed += rendered_normal_overlays[slot_id]
+	owner.cut_overlay(transformed)
+
+/datum/inventory/proc/reapply_slot_renders()
+	// try not to dupe
+	remove_slot_renders()
+	var/list/transformed = list()
+	for(var/slot_id in rendered_normal_overlays)
+		transformed += rendered_normal_overlays[slot_id]
+	owner.add_overlay(transformed)
+
+/**
+ * just update if a slot is visible
+ */
+/datum/inventory/proc/update_slot_visible(slot_id, cascade = TRUE)
+	// resolve item
+	var/obj/item/target = owner.item_by_slot_id(slot_id)
+
+	// first, cascade incase we early-abort later
+	if(cascade)
+		var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
+		slot.cascade_render_visibility(owner, target)
+
+	// check existing
+	if(isnull(rendered_normal_overlays[slot_id]))
+		return
+
+	// remove overlay first incase it's already there
+	owner.cut_overlay(rendered_normal_overlays[slot_id])
+
+	// check if slot should render
+	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
+	if(!slot.should_render(owner, target))
+		return
+
+	// add overlay if it should
+	owner.add_overlay(rendered_normal_overlays[slot_id])
+
+/**
+ * redo a slot's render
+ */
+/datum/inventory/proc/update_slot_render(slot_id, cascade = TRUE)
+	var/datum/inventory_slot/slot = resolve_inventory_slot(slot_id)
+	var/obj/item/target = owner.item_by_slot_id(slot_id)
+
+	// first, cascade incase we early-abort later
+	if(cascade)
+		slot.cascade_render_visibility(owner, target)
+
+	if(!slot.should_render(owner, target))
+		remove_slot_render(slot_id)
+		return
+
+	if(isnull(target))
+		remove_slot_render(slot_id)
+		return
+
+	var/bodytype = BODYTYPE_DEFAULT
+
+	if(ishuman(owner))
+		var/mob/living/carbon/human/casted_human = owner
+		bodytype = casted_human.species.get_effective_bodytype(casted_human, target, slot_id)
+
+	var/rendering_results = slot.render(owner, target, bodytype)
+	if(islist(rendering_results)? !length(rendering_results) : isnull(rendering_results))
+		remove_slot_render(slot_id)
+		return
+
+	set_slot_render(slot_id, rendering_results)
+
+/datum/inventory/proc/remove_slot_render(slot_id)
+	if(isnull(rendered_normal_overlays[slot_id]))
+		return
+	owner.cut_overlay(rendered_normal_overlays[slot_id])
+	rendered_normal_overlays -= slot_id
+
+/datum/inventory/proc/set_slot_render(slot_id, overlay)
+	if(!isnull(rendered_normal_overlays[slot_id]))
+		owner.cut_overlay(rendered_normal_overlays[slot_id])
+	rendered_normal_overlays[slot_id] = overlay
+	owner.add_overlay(overlay)
+
+//* Queries *//
 
 /**
  * returns list() of items with body_cover_flags
@@ -39,31 +133,40 @@
  * @return true/false based on if it worked
  */
 /mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, flags)
-	if(!ispath(slot, /datum/inventory_slot_meta/abstract))
-		slot = resolve_inventory_slot_meta(slot)?.type
-		if(!ispath(slot, /datum/inventory_slot_meta/abstract))
+	if(!ispath(slot, /datum/inventory_slot/abstract))
+		slot = resolve_inventory_slot(slot)?.type
+		if(!ispath(slot, /datum/inventory_slot/abstract))
 			stack_trace("invalid slot: [slot]")
-		else if(slot != /datum/inventory_slot_meta/abstract/put_in_hands)
+		else if(slot != /datum/inventory_slot/abstract/put_in_hands)
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
-		if(/datum/inventory_slot_meta/abstract/hand/left)
+		if(/datum/inventory_slot/abstract/hand/left)
 			return put_in_left_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/hand/right)
+		if(/datum/inventory_slot/abstract/hand/right)
 			return put_in_right_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/put_in_belt)
-			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
-			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
-		if(/datum/inventory_slot_meta/abstract/put_in_backpack)
-			var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
-		if(/datum/inventory_slot_meta/abstract/put_in_hands)
+		if(/datum/inventory_slot/abstract/put_in_belt)
+			var/obj/item/held = item_by_slot_id(SLOT_ID_BELT)
+			if(flags & INV_OP_FORCE)
+				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
+		if(/datum/inventory_slot/abstract/put_in_backpack)
+			var/obj/item/held = item_by_slot_id(SLOT_ID_BACK)
+			if(flags & INV_OP_FORCE)
+				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
+		if(/datum/inventory_slot/abstract/put_in_hands)
 			return put_in_hands(I, flags)
-		if(/datum/inventory_slot_meta/abstract/put_in_storage, /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
-			if(slot == /datum/inventory_slot_meta/abstract/put_in_storage_try_active)
-				if(s_active && Adjacent(s_active) && s_active.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
-					return TRUE
-			for(var/obj/item/storage/S in get_equipped_items_in_slots(list(
+		if(/datum/inventory_slot/abstract/put_in_storage, /datum/inventory_slot/abstract/put_in_storage_try_active)
+			if(slot == /datum/inventory_slot/abstract/put_in_storage_try_active)
+				// todo: redirection
+				if(flags & INV_OP_FORCE)
+					if(active_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING))
+						return TRUE
+				else
+					if(active_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND))
+						return TRUE
+			for(var/obj/item/held in get_equipped_items_in_slots(list(
 				SLOT_ID_BELT,
 				SLOT_ID_BACK,
 				SLOT_ID_UNIFORM,
@@ -71,10 +174,13 @@
 				SLOT_ID_LEFT_POCKET,
 				SLOT_ID_RIGHT_POCKET
 			)) + get_held_items())
-				if(S.try_insert(I, src, INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
-					return TRUE
+				if(isnull(held?.obj_storage))
+					continue
+				if(flags & INV_OP_FORCE)
+					return held.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+				return held.obj_storage.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 			return FALSE
-		if(/datum/inventory_slot_meta/abstract/attach_as_accessory)
+		if(/datum/inventory_slot/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items())
 				if(C.attempt_attach_accessory(I))
 					return TRUE
@@ -199,11 +305,12 @@
 		return TRUE
 
 	if(!slot)
-		slot = slot_by_item(I)
+		slot = slot_id_by_item(I)
 
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+			var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
+			to_chat(user, SPAN_WARNING("[I] is stubbornly stuck [slot_meta.display_preposition] your [slot_meta.display_name]!"))
 		return FALSE
 
 	var/blocked_by
@@ -241,7 +348,7 @@
 		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
 
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
 		. = FALSE
@@ -250,33 +357,29 @@
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
-			if(/datum/inventory_slot_meta/abstract/hand/left)
+			if(/datum/inventory_slot/abstract/hand/left)
 				return (flags & INV_OP_FORCE) || !get_left_held_item()
-			if(/datum/inventory_slot_meta/abstract/hand/right)
+			if(/datum/inventory_slot/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
-			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
-				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-				if(!istype(S))
-					return FALSE
-				return S.can_be_inserted(I, TRUE)
-			if(/datum/inventory_slot_meta/abstract/put_in_belt)
-				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-				if(!istype(S))
-					return FALSE
-				return S.can_be_inserted(I, TRUE)
-			if(/datum/inventory_slot_meta/abstract/put_in_hands)
+			if(/datum/inventory_slot/abstract/put_in_backpack)
+				var/obj/item/thing = item_by_slot_id(SLOT_ID_BACK)
+				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
+			if(/datum/inventory_slot/abstract/put_in_belt)
+				var/obj/item/thing = item_by_slot_id(SLOT_ID_BACK)
+				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
+			if(/datum/inventory_slot/abstract/put_in_hands)
 				return (flags & INV_OP_FORCE) || !hands_full()
 		return TRUE
 
 	if(!inventory_slot_bodypart_check(I, slot, user, flags) && !(flags & INV_OP_FORCE))
 		return FALSE
 
-	var/conflict_result = inventory_slot_conflict_check(I, slot)
+	var/conflict_result = inventory_slot_conflict_check(I, slot, flags)
 	var/obj/item/to_wear_over
 
 	if((flags & INV_OP_IS_FINAL_CHECK) && conflict_result && (slot != SLOT_ID_HANDS))
 		// try to fit over
-		var/obj/item/conflicting = item_by_slot(slot)
+		var/obj/item/conflicting = item_by_slot_id(slot)
 		if(conflicting)
 			// there's something there
 			var/can_fit_over = I.equip_worn_over_check(src, slot, user, conflicting, flags)
@@ -390,14 +493,20 @@
 		affected = list(affected)
 	for(var/obj/item/I as anything in affected)
 		if(!inventory_slot_bodypart_check(I, I.worn_slot, null, INV_OP_SILENT))
-			drop_item_to_ground(I)
+			drop_item_to_ground(I, INV_OP_SILENT)
 
 /**
  * checks for slot conflict
  */
-/mob/proc/inventory_slot_conflict_check(obj/item/I, slot)
-	if(_item_by_slot(slot))
-		return CAN_EQUIP_SLOT_CONFLICT_HARD
+/mob/proc/inventory_slot_conflict_check(obj/item/I, slot, flags)
+	var/obj/item/conflicting = _item_by_slot(slot)
+	if(conflicting)
+		if((flags & (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK)) == (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK))
+			drop_item_to_ground(conflicting, INV_OP_FORCE)
+			if(_item_by_slot(slot))
+				return CAN_EQUIP_SLOT_CONFLICT_HARD
+		else
+			return CAN_EQUIP_SLOT_CONFLICT_HARD
 	switch(slot)
 		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
 			if(I.slot_flags & SLOT_TWOEARS)
@@ -417,9 +526,9 @@
  *
  * return TRUE if conflicting, otherwise FALSE
  */
-/mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot_meta/slot, mob/user)
+/mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot/slot, mob/user)
 	. = FALSE
-	slot = resolve_inventory_slot_meta(slot)
+	slot = resolve_inventory_slot(slot)
 	return slot._equip_check(I, src, user)
 
 /**
@@ -440,12 +549,17 @@
 		return FALSE
 
 	// resolve slot
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
 
-	var/old_slot = slot_by_item(I)
+	// slots must have IDs.
+	ASSERT(!isnull(slot_meta.id))
+	// convert to ID after abstract slot checks
+	slot = slot_meta.id
+
+	var/old_slot = slot_id_by_item(I)
 
 	if(old_slot)
 		. = _handle_item_reequip(I, slot, old_slot, flags, user)
@@ -495,8 +609,8 @@
 	ASSERT(slot)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
-		// slot_by_item however uses cached values still!
-		old_slot = slot_by_item(I)
+		// slot_id_by_item however uses cached values still!
+		old_slot = slot_id_by_item(I)
 		if(!old_slot)
 			// still not there, wasn't already in inv
 			return FALSE
@@ -559,7 +673,7 @@
  * handles adding an item or updating an item to our hud
  */
 /mob/proc/_handle_inventory_hud_update(obj/item/I, slot)
-	var/datum/inventory_slot_meta/meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/meta = resolve_inventory_slot(slot)
 	I.screen_loc = meta.hud_position
 	if(client)
 		client.screen |= I
@@ -612,7 +726,7 @@
  * gets the primary item in a slot
  * null if not in inventory. inhands don't count as inventory here, use held item procs.
  */
-/mob/proc/item_by_slot(slot)
+/mob/proc/item_by_slot_id(slot)
 	return _item_by_slot(slot)	// why the needless indirection? so people don't override this for slots!
 
 /**
@@ -648,7 +762,7 @@
  * get slot of item if it's equipped.
  * null if not in inventory. SLOT_HANDS if held.
  */
-/mob/proc/slot_by_item(obj/item/I)
+/mob/proc/slot_id_by_item(obj/item/I)
 	return is_in_inventory(I) || null		// short circuited to that too
 									// if equipped/unequipped didn't set worn_slot well jokes on you lmfao
 

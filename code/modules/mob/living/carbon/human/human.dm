@@ -44,8 +44,6 @@
 		dna.real_name = real_name
 		sync_organ_dna()
 
-	init_world_bender_hud()
-
 	if(mapload)
 		return INITIALIZE_HINT_LATELOAD
 
@@ -65,18 +63,7 @@
 		qdel(organ)
 	QDEL_NULL(nif)
 	QDEL_LIST_NULL(vore_organs)
-	cleanup_world_bender_hud()
 	return ..()
-
-/mob/living/carbon/human/prepare_data_huds()
-	//Update med hud images...
-	. = ..()
-	//...sec hud images...
-	update_hud_sec_implants()
-	update_hud_sec_job()
-	update_hud_sec_status()
-	//...and display them.
-	add_to_all_human_data_huds()
 
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
@@ -162,27 +149,39 @@
 			if (prob(50) && !shielded)
 				afflict_unconscious(20 * 10)
 
-	var/update = 0
 
 	// focus most of the blast on one organ
 	var/obj/item/organ/external/take_blast = pick(organs)
-	update |= take_blast.take_damage(b_loss * 0.9, f_loss * 0.9, used_weapon = "Explosive blast")
+	take_blast.inflict_bodypart_damage(
+		brute = b_loss * 0.9,
+		burn = f_loss * 0.9,
+		weapon_descriptor = "concussive force",
+	)
 
 	// distribute the remaining 10% on all limbs equally
 	b_loss *= 0.1
 	f_loss *= 0.1
 
-	var/weapon_message = "Explosive Blast"
-
 	for(var/obj/item/organ/external/temp in organs)
 		switch(temp.organ_tag)
 			if(BP_HEAD)
-				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message)
+				temp.inflict_bodypart_damage(
+					brute = b_loss * 0.2,
+					burn = f_loss * 0.2,
+					weapon_descriptor = "concussive force",
+				)
 			if(BP_TORSO)
-				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message)
+				temp.inflict_bodypart_damage(
+					brute = b_loss * 0.4,
+					burn = f_loss * 0.4,
+					weapon_descriptor = "concussive force",
+				)
 			else
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
-	if(update)	UpdateDamageIcon()
+				temp.inflict_bodypart_damage(
+					brute = b_loss * 0.05,
+					burn = f_loss * 0.05,
+					weapon_descriptor = "concussive force",
+				)
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
 	if(!config_legacy.use_loyalty_implants && !override) return // Nuh-uh.
@@ -1025,15 +1024,19 @@
 			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
 		custom_pain(msg, 40)
 	if(istype(O, /obj/item/melee/spike))
-		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
+		organ.inflict_bodypart_damage(
+			brute = rand(3, 9),
+		)
 		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
 		afflict_paralyze(20 * 2) // having a very jagged stick jammed into your bits is Bad for your health
-	organ.take_damage(rand(1,3), 0, 0)
+	organ.inflict_bodypart_damage(
+		brute = rand(1, 3),
+	)
 	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
 		organ.status |= ORGAN_BLEEDING
 
 /mob/living/carbon/human/verb/check_pulse()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Check pulse"
 	set desc = "Approximately count somebody's pulse. Requires you to stand still at least 6 seconds."
 	set src in view(1)
@@ -1099,6 +1102,7 @@
 		return
 
 	var/datum/species/S
+	var/datum/species/old_species = species
 
 	// provided? if so, set
 	// (and hope to god the provider isn't stupid and didn't quantum entangle a datum)
@@ -1132,6 +1136,36 @@
 	reload_rendering()
 	update_vision()
 
+	//! FUCK FUCK FUCK FUCK FUCK FUCK FUCK
+	for(var/key in species.sprite_accessory_defaults)
+		var/datum/sprite_accessory/accessory = species.sprite_accessory_defaults[key]
+		var/datum/sprite_accessory/existing = get_sprite_accessory(key)
+		if(existing && old_species?.sprite_accessory_defaults?[key] != existing)
+			continue
+		switch(key)
+			if(SPRITE_ACCESSORY_SLOT_EARS)
+				ear_style = accessory
+				r_ears = r_skin
+				g_ears = g_skin
+				b_ears = b_skin
+			if(SPRITE_ACCESSORY_SLOT_FACEHAIR)
+			if(SPRITE_ACCESSORY_SLOT_HAIR)
+			if(SPRITE_ACCESSORY_SLOT_HORNS)
+				horn_style = accessory
+				r_horn = r_skin
+				g_horn = g_skin
+				b_horn = b_skin
+			if(SPRITE_ACCESSORY_SLOT_TAIL)
+				tail_style = accessory
+				r_tail = r_skin
+				g_tail = g_skin
+				b_tail = b_skin
+			if(SPRITE_ACCESSORY_SLOT_WINGS)
+				wing_style = accessory
+				r_wing = r_skin
+				g_wing = g_skin
+				b_wing = b_skin
+
 	// skip the rest
 	if(skip)
 		return
@@ -1153,6 +1187,11 @@
 		for(var/desctype in species.descriptors)
 			var/datum/mob_descriptor/descriptor = species.descriptors[desctype]
 			descriptors[desctype] = descriptor.default_value
+
+	if(ispath(species.custom_ability_handler, /datum/ability_handler))
+		ab_handler = new species.custom_ability_handler()
+	else
+		ab_handler = new /datum/ability_handler()
 
 	// dumb shit transformation shit here
 	if(example)
@@ -1184,7 +1223,7 @@
 		return set_species(/datum/species/human, force = force)
 
 /mob/living/carbon/human/proc/bloody_doodle()
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set name = "Write in blood"
 	set desc = "Use blood on your hands to write a short message on the floor or a wall, murder mystery style."
 
@@ -1239,6 +1278,7 @@
 		W.add_fingerprint(src)
 
 /mob/living/carbon/human/emp_act(severity)
+	. = ..()
 	if(isSynthetic())
 		switch(severity)
 			if(1)
@@ -1258,8 +1298,6 @@
 		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
 		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
 		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
-		..()
-
 
 /mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	. = 1
@@ -1378,7 +1416,7 @@
 		return 1
 
 /mob/living/carbon/human/proc/relocate()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Relocate Joint"
 	set desc = "Pop a joint back into place. Extremely painful."
 	set src in view(1)
@@ -1439,7 +1477,7 @@
 /mob/living/carbon/human/verb/toggle_underwear()
 	set name = "Toggle Underwear"
 	set desc = "Shows/hides selected parts of your underwear."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(stat) return
 	var/datum/category_group/underwear/UWC = input(usr, "Choose underwear:", "Show/hide underwear") as null|anything in GLOB.global_underwear.categories
@@ -1456,7 +1494,7 @@
 /mob/living/carbon/human/verb/pull_punches()
 	set name = "Pull Punches"
 	set desc = "Try not to hurt them."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(stat) return
 	pulling_punches = !pulling_punches
@@ -1565,21 +1603,6 @@
 	msg += get_display_species()
 	return msg
 
-//Crazy alternate human stuff
-/mob/living/carbon/human/proc/init_world_bender_hud()
-	var/animal = pick("cow","chicken_brown", "chicken_black", "chicken_white", "chick", "mouse_brown", "mouse_gray", "mouse_white", "lizard", "cat2", "goose", "penguin")
-	var/image/img = image('icons/mob/animal.dmi', src, animal)
-	// hud refactor when
-	img.override = TRUE
-	LAZYINITLIST(hud_list)
-	hud_list[WORLD_BENDER_ANIMAL_HUD] = img
-	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-	A.add_to_hud(src)
-
-/mob/living/carbon/human/proc/cleanup_world_bender_hud()
-	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-	A.remove_from_hud(src)
-
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
 
@@ -1633,10 +1656,15 @@
 			LAZYDISTINCTADD(., SLOT_FEET)
 
 //! Pixel Offsets
-/mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)
+/mob/living/carbon/human/get_centering_pixel_x_offset(dir)
 	. = ..()
 	// uh oh stinky
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
 	// groan
 	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)
+
+/mob/living/carbon/human/ClickOn(var/atom/A)
+	if(ab_handler?.process_click(src, A))
+		return
+	..()

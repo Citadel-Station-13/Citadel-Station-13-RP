@@ -179,14 +179,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
@@ -199,14 +199,14 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor{
@@ -746,7 +746,7 @@
 /area/centcom/specops)
 "cs" = (
 /obj/structure/table/reinforced,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -2636,7 +2636,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchenC";
-	layer = 3.3;
 	name = "Kitchen Shutters"
 	},
 /turf/unsimulated/floor/steel,
@@ -2943,7 +2942,7 @@
 	},
 /area/tdome)
 "hw" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hz" = (
@@ -3344,7 +3343,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC2";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor/steel,
@@ -3795,7 +3793,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "kX" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "kY" = (
@@ -4050,7 +4048,7 @@
 /area/centcom/medical)
 "lQ" = (
 /obj/machinery/account_database{
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -4874,7 +4872,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "oo" = (
@@ -5453,7 +5451,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ps" = (
@@ -6504,7 +6502,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access = list(5)
 	},
-/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/firedoor/glass,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -6512,7 +6510,7 @@
 "ru" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Offices";
+	name = "Nanotrasen Offices";
 	req_one_access = list(101)
 	},
 /turf/unsimulated/floor/steel,
@@ -6523,13 +6521,13 @@
 /area/centcom/command)
 "rw" = (
 /obj/machinery/door/airlock/centcom{
-	name = "NanoTrasen Offices"
+	name = "Nanotrasen Offices"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "rx" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "NanoTrasen Offices";
+	name = "Nanotrasen Offices";
 	req_one_access = list(101)
 	},
 /obj/machinery/door/firedoor,
@@ -7706,7 +7704,7 @@
 "tZ" = (
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security{
-	desc = "This locker is filled silly stickers and some other serious NanoTrasen ones. It is lazily labeled 'The big cat'."
+	desc = "This locker is filled silly stickers and some other serious Nanotrasen ones. It is lazily labeled 'The big cat'."
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -8956,7 +8954,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "ArmouryC4";
-	layer = 3.3;
 	name = "Armoury"
 	},
 /turf/unsimulated/floor{
@@ -9635,7 +9632,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "CT" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/tall,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -10345,22 +10342,22 @@
 "Fo" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -10458,11 +10455,11 @@
 "Fy" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12331,6 +12328,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
+"NC" = (
+/obj/machinery/door/firedoor/glass,
+/turf/unsimulated/floor/steel{
+	icon_state = "white"
+	},
+/area/centcom/medical)
 "NE" = (
 /obj/structure/table/reinforced,
 /obj/item/material/minihoe,
@@ -13895,7 +13898,7 @@
 /obj/structure/table/reinforced,
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "TU" = (
@@ -14165,14 +14168,14 @@
 /obj/structure/table/rack,
 /obj/item/gun/ballistic/automatic/lmg,
 /obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14677,7 +14680,6 @@
 /area/centcom/evac)
 "Yc" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 28
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -21803,7 +21805,7 @@ kv
 pT
 oS
 kv
-kv
+NC
 kv
 kv
 kv

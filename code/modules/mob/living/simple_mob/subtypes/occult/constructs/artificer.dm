@@ -22,8 +22,8 @@
 	health = 100
 	response_harm = "viciously beaten"
 	harm_intent_damage = 5
-	melee_damage_lower = 15 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 15 //It's not the strongest of the bunch, but that doesn't mean it can't hurt you.
+	legacy_melee_damage_upper = 20
 	attacktext = list("rammed")
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	construct_spells = list(/spell/aoe_turf/conjure/construct/lesser,
@@ -39,7 +39,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/artificer)
 
-	ai_holder_type = /datum/ai_holder/mimic
+	ai_holder_type = /datum/ai_holder/polaris/mimic
 
 /mob/living/simple_mob/construct/artificer/Initialize(mapload)
 	. = ..()
@@ -56,6 +56,6 @@
 	desc = "A bulbous construct dedicated to building and maintaining temples to their otherworldly lords. Its central eye glows with unknowable power."
 	icon_state = "caster_artificer"
 	icon_living = "caster_artificer"
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'

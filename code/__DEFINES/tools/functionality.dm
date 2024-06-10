@@ -23,6 +23,31 @@
 #define TOOL_GLASS_CUT		"glasskit"
 #define TOOL_BONESET		"bonesetter"
 
+GLOBAL_REAL_VAR(all_tool_functions) = list(
+	// engineering
+	TOOL_CROWBAR,
+	TOOL_MULTITOOL,
+	TOOL_SCREWDRIVER,
+	TOOL_WIRECUTTER,
+	TOOL_WRENCH,
+	TOOL_WELDER,
+	TOOL_ANALYZER,
+	// mining
+	TOOL_MINING,
+	TOOL_SHOVEL,
+	// surgery
+	TOOL_RETRACTOR,
+	TOOL_HEMOSTAT,
+	TOOL_CAUTERY,
+	TOOL_DRILL,
+	TOOL_SCALPEL,
+	TOOL_SAW,
+	// glassworking
+	TOOL_BLOW,
+	TOOL_GLASS_CUT,
+	TOOL_BONESET,
+)
+
 /// Yes, this is a real global. No, you shouldn't touch this for no reason.
 /// Add tools to this when they get states in the default icon file for:
 /// - neutral (no append)
@@ -31,22 +56,23 @@
 GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 	null = "unknown",
 	TOOL_CROWBAR = "crowbar",
-	TOOL_SCREWDRIVER = "screwdriver"
+	TOOL_SCREWDRIVER = "screwdriver",
 )
 
 //? Tool usage flags
 
-//* None yet! Waiting on skill-system design.
-
-//? Tool hints - make these human readable!
-
-#define TOOL_HINT_UNSCREWING_WINDOW_FRAME "unsecure frame"
-#define TOOL_HINT_SCREWING_WINDOW_FRAME "secure frame"
-#define TOOL_HINT_UNSCREWING_WINDOW_PANE "unfasten pane"
-#define TOOL_HINT_SCREWING_WINDOW_PANE "fasten pane"
-#define TOOL_HINT_CROWBAR_WINDOW_IN "pane in"
-#define TOOL_HINT_CROWBAR_WINDOW_OUT "pane out"
-#define TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY "dismantle"
+/// repairing
+#define TOOL_USAGE_REPAIR (1<<0)
+/// initial construction
+#define TOOL_USAGE_CONSTRUCT (1<<1)
+/// deconstruct
+#define TOOL_USAGE_DECONSTRUCT (1<<2)
+/// superstructure, making / breaking turfs, etc
+#define TOOL_USAGE_BUILDING_SUPERSTRUCTURE (1<<3)
+/// making railings, catwalks, wires, etc
+#define TOOL_USAGE_BUILDING_FRAMEWORK (1<<4)
+/// making tables, detailed furnishings, etc
+#define TOOL_USAGE_BUILDING_FURNISHINGS (1<<5)
 
 //? tool_locked var
 
@@ -56,3 +82,9 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 #define TOOL_LOCKING_STATIC 2
 /// automatically, if we only have one dynamic behavior, use that
 #define TOOL_LOCKING_AUTO 3
+
+//? Tool directions - used as hints.
+
+#define TOOL_DIRECTION_FORWARDS "forwards"
+#define TOOL_DIRECTION_BACKWARDS "backwards"
+#define TOOL_DIRECTION_NEUTRAL "neutral"

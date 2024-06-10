@@ -36,15 +36,15 @@
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
-	melee_damage_lower = 4 // Approx 8 DPS.
-	melee_damage_upper = 4
+	legacy_melee_damage_lower = 4 // Approx 8 DPS.
+	legacy_melee_damage_upper = 4
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	attack_sharp = 1
 	attack_edge = 1
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = list("cut", "sliced")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 /mob/living/simple_mob/mechanical/viscerator/death()
 	..(null,"is smashed into pieces!")
@@ -73,8 +73,8 @@
 	maxHealth = 20
 	health = 20
 
-	melee_damage_lower = 2
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 5
 	base_attack_cooldown = 8
 
 /mob/living/simple_mob/mechanical/viscerator/station/IIsAlly(mob/living/L)

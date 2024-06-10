@@ -4,7 +4,7 @@
 	if(!client && !teleop)
 		return
 
-	if(speaker && !speaker.client && istype(src,/mob/observer/dead) && is_preference_enabled(/datum/client_preference/ghost_ears) && !(speaker in view(src)))
+	if(speaker && !speaker.client && istype(src,/mob/observer/dead) && get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears) && !(speaker in view(src)))
 			//Does the speaker have a client?  It's either random stuff that observers won't care about (Experiment 97B says, 'EHEHEHEHEHEHEHE')
 			//Or someone snoring.  So we make it where they won't hear it.
 		return
@@ -52,7 +52,7 @@
 		if(speaker_name != speaker.real_name && speaker.real_name)
 			speaker_name = "[speaker.real_name] ([speaker_name])"
 		track = "([ghost_follow_link(speaker, src)]) "
-		if(is_preference_enabled(/datum/client_preference/ghost_ears) && (speaker in view(src)))
+		if(get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears) && (speaker in view(src)))
 			message = "<b>[message]</b>"
 
 	if(is_deaf())
@@ -65,12 +65,12 @@
 		var/message_to_send = null
 		if(language)
 			//Hivemind languages already say their names. Also, no indicator if you don't know the language.
-			if(client && !(language.language_flags & LANGUAGE_HIVEMIND) && say_understands(speaker, language) && language.shorthand && client.is_preference_enabled(/datum/client_preference/language_indicator))
+			if(client && !(language.language_flags & LANGUAGE_HIVEMIND) && say_understands(speaker, language) && language.shorthand && client.get_preference_toggle(/datum/game_preference_toggle/chat/language_indicators))
 				verb += " ([language.shorthand])"
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][language.format_message(message, verb)]</span>"
 		else
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='body'>\"[message]\"</span></span></span>"
-		if(check_mentioned(message) && is_preference_enabled(/datum/client_preference/check_mention))
+		if(check_mentioned(message) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
 			message_to_send = "<font size='3'><b>[message_to_send]</b></font>"
 
 
@@ -83,7 +83,8 @@
 // Done here instead of on_hear_say() since that is NOT called if the mob is clientless (which includes most AI mobs).
 /mob/living/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
 	..()
-	if(has_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
+	if(has_polaris_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder.on_hear_say(speaker, message)
 
 /mob/proc/language_scramble(datum/language/L, str)
@@ -252,7 +253,7 @@
 
 	var/formatted
 	if(language)
-		if(client && !(language.language_flags & LANGUAGE_HIVEMIND) && say_understands(speaker, language) && language.shorthand && client.is_preference_enabled(/datum/client_preference/language_indicator))
+		if(client && !(language.language_flags & LANGUAGE_HIVEMIND) && say_understands(speaker, language) && language.shorthand && client.get_preference_toggle(/datum/game_preference_toggle/chat/language_indicators))
 			verb += " ([language.shorthand])"
 		formatted = "[language.format_message_radio(message, verb)][part_c]"
 	else
@@ -270,20 +271,20 @@
 
 /mob/proc/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/final_message = "[part_a][speaker_name][part_b][formatted]"
-	if(check_mentioned(formatted) && is_preference_enabled(/datum/client_preference/check_mention))
+	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
 		final_message = "<font size='3'><b>[final_message]</b></font>"
 	to_chat(src, final_message)
 
 /mob/observer/dead/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/final_message = "[part_a][track][part_b][formatted]"
-	if(check_mentioned(formatted) && is_preference_enabled(/datum/client_preference/check_mention))
+	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
 		final_message = "<font size='3'><b>[final_message]</b></font>"
 	to_chat(src, final_message)
 
 /mob/living/silicon/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/time = say_timestamp()
 	var/final_message = "[part_a][speaker_name][part_b][formatted]"
-	if(check_mentioned(formatted) && is_preference_enabled(/datum/client_preference/check_mention))
+	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
 		final_message = "[time]<font size='3'><b>[final_message]</b></font>"
 	else
 		final_message = "[time][final_message]"
@@ -292,7 +293,7 @@
 /mob/living/silicon/ai/on_hear_radio(part_a, speaker_name, track, part_b, formatted)
 	var/time = say_timestamp()
 	var/final_message = "[part_a][track][part_b][formatted]"
-	if(check_mentioned(formatted) && is_preference_enabled(/datum/client_preference/check_mention))
+	if(check_mentioned(formatted) && get_preference_toggle(/datum/game_preference_toggle/game/legacy_name_highlight))
 		final_message = "[time]<font size='3'><b>[final_message]</b></font>"
 	else
 		final_message = "[time][final_message]"

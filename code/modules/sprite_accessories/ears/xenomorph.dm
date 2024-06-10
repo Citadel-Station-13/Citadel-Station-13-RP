@@ -4,7 +4,7 @@
 	icon = "icons/mob/sprite_accessories/xeno_parts.dmi"
 	icon_state = "xenohead_standard"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/xenohead/royal
 	name = "Xenomorph Royal dome"

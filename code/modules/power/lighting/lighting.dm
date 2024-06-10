@@ -296,6 +296,14 @@ var/global/list/light_type_cache = list()
 	var/brightness_power_ns
 	var/brightness_color_ns
 
+	//Used for shuttles, workaround for broken mounting
+	//TODO: Remove when legacy walls are nuked
+	var/old_wall = FALSE
+
+	#ifdef IN_MAP_EDITOR // So its actually visible in the mapping editor
+	icon_state = "tube_map"
+	#endif
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
 
@@ -419,6 +427,8 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/tube/large
 	shows_alerts = FALSE
 
+/obj/machinery/light/spot/no_nightshift
+	nightshift_allowed = FALSE
 /obj/machinery/light/spot/flicker
 	auto_flicker = TRUE
 
@@ -496,6 +506,10 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/setDir(ndir)
 	. = ..()
+
+	if(old_wall)
+		return
+
 	base_pixel_y = 0
 	base_pixel_x = 0
 	var/turf/T = get_step(get_turf(src), src.dir)
@@ -560,9 +574,9 @@ var/global/list/light_type_cache = list()
 		needsound = FALSE // Don't play sound again until we've been turned off
 
 	if(on)
-		var/correct_range = nightshift_enabled ? brightness_range_ns : brightness_range
-		var/correct_power = nightshift_enabled ? brightness_power_ns : brightness_power
-		var/correct_color = nightshift_enabled ? brightness_color_ns : brightness_color
+		var/correct_range = nightshift_enabled ? (brightness_range_ns || brightness_range) : brightness_range
+		var/correct_power = nightshift_enabled ? (brightness_power_ns || brightness_power) : brightness_power
+		var/correct_color = nightshift_enabled ? (brightness_color_ns || brightness_color) : brightness_color
 		if(light_range != correct_range || light_power != correct_power || light_color != correct_color)
 			if(!auto_flicker)
 				switchcount++
@@ -613,17 +627,12 @@ var/global/list/light_type_cache = list()
 	broken()
 	return 1
 
-/obj/machinery/light/take_damage(var/damage)
-	if(!damage)
-		return
+/obj/machinery/light/atom_break()
+	. = ..()
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		return
 	if(!(status == LIGHT_OK||status == LIGHT_BURNED))
 		return
-	broken()
-	return 1
-
-/obj/machinery/light/blob_act()
 	broken()
 
 // attempt to set the light's on/off status
@@ -632,7 +641,7 @@ var/global/list/light_type_cache = list()
 	on = (s && status == LIGHT_OK)
 	update()
 
-/obj/machinery/light/get_cell()
+/obj/machinery/light/get_cell(inducer)
 	return cell
 
 // examine verb
@@ -1014,4 +1023,4 @@ var/global/list/light_type_cache = list()
 	desc = "A lamp shade for a lamp."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lampshade"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY

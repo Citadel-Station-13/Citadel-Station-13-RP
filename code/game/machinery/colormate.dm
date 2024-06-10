@@ -33,6 +33,8 @@
 		/obj/item/clothing,
 		/obj/item/storage/backpack,
 		/obj/item/storage/belt,
+		/obj/item/radio/headset,
+		/obj/item/hardsuit,
 		/obj/item/toy
 	)
 
@@ -137,7 +139,7 @@
 		ui.set_autoupdate(FALSE) //This might be a bit intensive, better to not update it every few ticks
 		ui.open()
 
-/obj/machinery/gear_painter/ui_data(mob/user)
+/obj/machinery/gear_painter/ui_data(mob/user, datum/tgui/ui)
 	. = list()
 	.["activemode"] = active_mode
 	.["matrixcolors"] = list(
@@ -167,7 +169,7 @@
 	else
 		.["item"] = null
 
-/obj/machinery/gear_painter/ui_act(action, params)
+/obj/machinery/gear_painter/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "template"
 	size = -1
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	removable = FALSE
 
 /obj/item/integrated_circuit/built_in/device_input

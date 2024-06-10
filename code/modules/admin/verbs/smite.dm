@@ -90,10 +90,12 @@
 			target.electrocute_act(75,def_zone = BP_HEAD)
 			target.visible_message("<span class='danger'>[target] is struck by lightning!</span>")
 		if(SMITE_AUTOSAVE)
-			fake_autosave(target, src)
+			var/time_to_stun = tgui_input_number(src, "How long would you like the saving to take? (in seconds)", "Autosave Time", 10, min_value = 1)
+			fake_autosave(target, time_to_stun, src)
 
 		if(SMITE_AUTOSAVE_WIDE)
-			fake_autosave(target, src, TRUE)
+			var/time_to_stun = tgui_input_number(src, "How long would you like the saving to take? (in seconds)", "Autosave Time", 10, min_value = 1)
+			fake_autosave(target, time_to_stun, src, TRUE)
 
 		if(SMITE_DARKSPACE_ABDUCT)
 			darkspace_abduction(target, src)
@@ -140,17 +142,17 @@
 		target.afflict_paralyze(20 * 20)
 		target.stuttering = 20
 
-/proc/fake_autosave(var/mob/living/target, var/client/user, var/wide)
+/proc/fake_autosave(var/mob/living/target, var/duration, var/client/user, var/wide)
 	if(!istype(target) || !target.client)
 		to_chat(user, "<span class='warning'>Skipping [target] because they are not a /mob/living or have no client.</span>")
 		return
 
 	if(wide)
 		for(var/mob/living/L in orange(user.view, user.mob))
-			fake_autosave(L, user)
+			fake_autosave(L, duration, user)
 		return
 
-	target.applyMoveCooldown(10 SECONDS)
+	target.applyMoveCooldown(duration SECONDS)
 
 	to_chat(target, "<span class='notice' style='font: small-caps bold large monospace!important'>Autosaving your progress, please wait...</span>")
 	target << 'sound/effects/ding.ogg'
@@ -178,7 +180,7 @@
 	loader.screen_loc = "NORTH-1, EAST-1"
 	target.client.screen += loader
 
-	spawn(10 SECONDS)
+	spawn(duration SECONDS)
 		if(target)
 			to_chat(target, "<span class='notice' style='font: small-caps bold large monospace!important'>Autosave complete!</span>")
 			if(target.client)

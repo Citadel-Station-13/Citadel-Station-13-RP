@@ -563,7 +563,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "frozen";
-	layer = 3.3;
 	name = "Frozen Dock Controller";
 	pixel_y = 30
 	},
@@ -869,8 +868,7 @@
 /area/class_p/unexplored)
 "Sj" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/alarms_hidden{
-	dir = 4;
+/obj/machinery/power/apc/east_mount{
 	pixel_x = 32;
 	req_access = null;
 	start_charge = 0
@@ -949,6 +947,11 @@
 	color = "#8ba7ad";
 	icon_state = "tile_full"
 	},
+/area/class_p/unexplored)
+"Wc" = (
+/obj/structure/table/standard,
+/obj/item/clothing/mask/warmer,
+/turf/simulated/floor/classp,
 /area/class_p/unexplored)
 "Wr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -31163,7 +31166,7 @@ yW
 at
 at
 Pr
-cp
+Wc
 yW
 iL
 iL

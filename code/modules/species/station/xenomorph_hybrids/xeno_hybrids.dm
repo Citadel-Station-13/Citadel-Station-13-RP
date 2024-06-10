@@ -1,9 +1,14 @@
+/datum/physiology_modifier/intrinsic/species/xenohybrid
+	carry_strength_add = CARRY_STRENGTH_ADD_XENOHYBRID
+	carry_strength_factor = CARRY_FACTOR_MOD_XENOHYBRID
+
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
 	uid = SPECIES_ID_XENOHYBRID
 	id = SPECIES_ID_XENOHYBRID
 	default_bodytype = BODYTYPE_XENOHYBRID
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenohybrid
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
@@ -13,8 +18,10 @@
 		"Alternate" = "alt",
 	)
 
-	tail = "tail"
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenohybrid,
+	)
+
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	max_additional_languages = 2
 
@@ -121,14 +128,14 @@
 			H.active_regen = FALSE
 		healing_factor *= 4
 	var/turf/T = get_turf(H)
-	if(/obj/effect/alien/weeds in T.contents)
+	if(/obj/structure/alien/weeds in T.contents)
 		healing_factor *= 1.1
 	if(/obj/structure/bed/hybrid_nest in T.contents)
 		healing_factor *= 1.2
 
 	return healing_factor // highest value is 6,336
 
-/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	var/heal_amount = heal_rate * handle_healing_conditions(H)
 
 	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)//Heal rate and not heal_amount, since we want to reward taking the modifiers

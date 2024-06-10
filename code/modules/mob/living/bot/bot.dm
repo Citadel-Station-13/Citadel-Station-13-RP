@@ -123,9 +123,6 @@
 	if(on && !client && !busy)
 		spawn(0)
 			handleAI()
-	if(on && !client && !busy)
-		spawn(0)
-			handleAI()
 
 /mob/living/bot/update_health()
 	if(status_flags & STATUS_GODMODE)
@@ -327,7 +324,7 @@
 /mob/living/bot/proc/startPatrol()
 	var/turf/T = getPatrolTurf()
 	if(T)
-		patrol_path = AStar(get_turf(loc), T, TYPE_PROC_REF(/turf, CardinalTurfsWithAccess), TYPE_PROC_REF(/turf, Distance), 0, max_patrol_dist, id = botcard, exclude = obstacle)
+		target_path = SSpathfinder.default_bot_pathfinding(src, T, 1)
 		if(!patrol_path)
 			patrol_path = list()
 		obstacle = null
@@ -359,7 +356,7 @@
 	return
 
 /mob/living/bot/proc/calcTargetPath()
-	target_path = AStar(get_turf(loc), get_turf(target), TYPE_PROC_REF(/turf, CardinalTurfsWithAccess), TYPE_PROC_REF(/turf, Distance), 0, max_target_dist, id = botcard, exclude = obstacle)
+	target_path = SSpathfinder.default_bot_pathfinding(src, get_turf(target), 1)
 	if(!target_path)
 		if(target && target.loc)
 			ignore_list |= target

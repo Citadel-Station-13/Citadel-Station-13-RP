@@ -4,9 +4,6 @@
 
 /atom/proc/attack_alien(mob/user)
 
-/atom/proc/take_damage(var/damage)
-	return 0
-
 /*
 	Humans:
 	Adds an exception for gloves, to allow special glove types like the ninja ones.
@@ -31,8 +28,26 @@
 	A.attack_hand(src)
 
 /// Return TRUE to cancel other attack hand effects that respect it.
+// todo: /datum/event_args/actor/clickchain
 /atom/proc/attack_hand(mob/user, list/params)
+	var/datum/event_args/actor/clickchain/e_args = new(user, target = src, intent = user.a_intent, params = params)
+	if(on_attack_hand(e_args))
+		return TRUE
+	if(user.a_intent == INTENT_HARM)
+		return user.melee_attack_chain(src, e_args)
 	. = _try_interact(user)
+
+/**
+ * Override this instead of attack_hand.
+ * This happens before melee attack chain checks.
+ *
+ * Return TRUE to cancel other attack hand effects that respect it.
+ *
+ * @params
+ * * e_args - click data
+ */
+/atom/proc/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+	return FALSE
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)
@@ -52,7 +67,7 @@
 	// 	return FALSE
 	return TRUE
 
-/atom/ui_status(mob/user)
+/atom/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(!can_interact(user) && !IsAdminGhost(user))
 		. = min(., UI_UPDATE)
@@ -123,13 +138,6 @@
 
 	setClickCooldown(get_attack_speed())
 	A.attack_generic(src,rand(5,6),"bitten")
-
-/*
-	pAI
-*/
-
-/mob/living/silicon/pai/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
-	return
 
 /*
 	New Players:

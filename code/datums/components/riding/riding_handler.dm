@@ -10,7 +10,7 @@
 	//? disabled as we don't have dupe handling
 	can_transfer = FALSE
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	dupe_type = /datum/component/riding_handler
+	registered_type = /datum/component/riding_handler
 	//! main
 	/// expected typepath of what we're handling for
 	var/expected_typepath = /atom/movable
@@ -161,14 +161,18 @@
 	full_update_riders(force = TRUE)
 	if(isliving(parent))
 		var/mob/living/L = parent
-		L.ai_holder?.pause_automated_movement()
+		if(istype(L.ai_holder, /datum/ai_holder/polaris))
+			var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+			ai_holder?.pause_automated_movement()
 
 /datum/component/riding_handler/proc/on_rider_unbuckled(mob/rider, semantic)
 	reset_rider(rider, semantic)
 	full_update_riders(force = TRUE)
 	if(isliving(parent))
 		var/mob/living/L = parent
-		L.ai_holder?.resume_automated_movement()
+		if(istype(L.ai_holder, /datum/ai_holder/polaris))
+			var/datum/ai_holder/polaris/ai_holder = L.ai_holder
+			ai_holder?.resume_automated_movement()
 
 /datum/component/riding_handler/proc/reset_rider(mob/rider, semantic)
 	rider.reset_plane_and_layer()

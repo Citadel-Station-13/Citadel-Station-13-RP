@@ -3,11 +3,11 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pinoff"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20
-	materials = list(MAT_STEEL = 500)
+	materials_base = list(MAT_STEEL = 500)
 	preserve_item = 1
 	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0
@@ -119,7 +119,7 @@
 	spawn(5) .()
 
 /obj/item/pinpointer/advpinpointer/verb/toggle_mode()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle Pinpointer Mode"
 	set src in view(1)
 

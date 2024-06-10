@@ -2,29 +2,54 @@
 
 GLOBAL_LIST_EMPTY(preferences_datums)
 
+/**
+ * Fetches a prefs datum by ckey
+ *
+ * @params
+ * * ckey - their canonical key
+ * * only_if_exists - only load / create if it already exists
+ *
+ * @return the preferences datum if found, or null
+ *
+ * todo: /datum/character
+ */
+/datum/controller/subsystem/characters/proc/fetch_preferences_datum(ckey, only_if_exists = FALSE)
+	RETURN_TYPE(/datum/preferences)
+	ckey = ckey(ckey)
+	if(!isnull(GLOB.preferences_datums[ckey]))
+		return GLOB.preferences_datums[ckey]
+	var/datum/preferences/creating = new
+	creating.client_ckey = ckey
+	if(only_if_exists && !creating.load_path())
+		qdel(creating)
+		return
+	GLOB.preferences_datums[ckey] = creating
+	if(initialized)
+		creating.Initialize()
+	return creating
+
 /datum/preferences
-	//! Intrinsics
+		//* Intrinsics
 	/// did we load yet?
 	var/initialized = FALSE
 
-	//! Error Handling
+		//* Error Handling
 	/// queued error messages to display
 	var/list/io_error_queue
 
-//! ## Doohickeys For Savefiles
+	//* ## Doohickeys For Savefiles
 	var/path
 	/// Holder so it doesn't default to slot 1, rather the last one used.
 	var/default_slot = 1
 	var/savefile_version = 0
 
 // todo: kick this out of prefs
-//! ## Non-Preference Stuff
-	var/warns = 0
+	//* ## Non-Preference Stuff
 	var/muted = 0
 	var/last_ip
 	var/last_id
 
-//! ## Cooldowns for saving/loading.
+	//* ## Cooldowns for saving/loading.
 //? ## These are four are all separate due to loading code calling these one after another.
 	var/saveprefcooldown
 	var/loadprefcooldown
@@ -35,7 +60,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//? These lists may only ever contain associative key-values, where
 	//? values MUST be string, number, or null.
 	//? Savefiles do not play nice with typepaths.
-	//! Loaded data
+		//* Loaded data
 	/// character data
 	var/list/character
 	/// global data
@@ -43,25 +68,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// data for byond skin - checkboxes and whatnot; this is ENTIRELY synchronized by the skin system.
 	var/list/skin
 
-//! ## Game Preferences
-	var/tgui_fancy = TRUE
-	var/tgui_lock = TRUE
-	/// Saved changlog filesize to detect if there was a change.
-	var/lastchangelog = ""
-	/// Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color.
-	var/ooccolor = "#010000"
+	//* ## Game Preferences
 	/// Special role selection.
 	var/be_special = 0
 	/// Event role prefs flag.
 	var/be_event_role = NONE
-	var/UI_style = UI_STYLE_DEFAULT
-	var/UI_style_color = "#ffffff"
-	var/UI_style_alpha = 255
-	/// Style for popup tooltips.
-	var/tooltipstyle = "Midnight"
-	var/client_fps = 40
 
-//! ## Character Preferences
+	//* ## Character Preferences
 	/// Our character's name
 	var/real_name
 	/// Whether we are a random name every round
@@ -133,7 +146,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Enable/disable markings on synth parts.
 	var/synth_markings = 1
 
-//! ## Background Preferences
+	//* ## Background Preferences
 	///Antag associated faction.
 	var/antag_faction = "None"
 	///How visible antag association is to others.
@@ -150,7 +163,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/uplinklocation = "PDA"
 
-//! ## Mob Preview
+	//* ## Mob Preview
 	/// Should only be a key-value list of north/south/east/west = atom/movable/screen.
 	var/list/char_render_holders
 	var/static/list/preview_screen_locs = list(
@@ -161,13 +174,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"BG" = "character_preview_map:1,1 to 3,8"
 	)
 
-//! ## Skills Preferences - Depricated.
+	//* ## Skills Preferences - Depricated.
 	var/used_skillpoints = 0
 	var/skill_specialization = null
 	/// Skills can range from 0 to 3.
 	var/list/skills = list()
 
-//! ## Body Preferences
+	//* ## Body Preferences
 	/// Maps each organ to either null(intact), "cyborg" or "amputated"
 	/// will probably not be able to do this for head and torso ;)
 	var/list/organ_data = list()
@@ -182,7 +195,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/list/body_descriptors = list()
 
-//! ## OOC Metadata
+	//* ## OOC Metadata
 	var/metadata = ""
 	var/headshot_url = ""
 	var/full_ref_url = ""
@@ -201,10 +214,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 
-	/// Hash of last seen lobby news content.
-	var/lastnews
-
-//! ## Character Directory Stuff
+	//* ## Character Directory Stuff
 	/// Should we show in Character Directory.
 	var/show_in_directory = 1
 	/// Sorting tag to use for vore-prefs.
@@ -217,17 +227,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Set character's suit sensor level.
 	var/sensorpref = 5
 
-	/// Should we automatically fit the viewport?
-	var/auto_fit_viewport = TRUE
-
-	/// Should we be in the widescreen mode set by the config?
-	var/widescreenpref = TRUE	// Exists now...
-
 /datum/preferences/New(client/C)
 	if(istype(C))
 		client = C
 		client_ckey = C.ckey
-	if(SScharacters.initialized)
+	if(client_ckey && SScharacters.initialized)
 		Initialize()
 
 /datum/preferences/proc/Initialize()
@@ -242,20 +246,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	real_name = random_name(identifying_gender, real_species_name())
 	b_type = RANDOM_BLOOD_TYPE
 
-	if(client)
-		if(!IsGuestKey(client.key))
-			if(load_path(client.ckey))
-				if(load_preferences())
-					if(load_character())
-						load_skin()
-						sanitize_everything()
-						player_setup.sanitize_setup()
-						client.update_movement_keys()
-						initialized = TRUE
-						return
+	if(load_path(client_ckey))
+		if(load_preferences())
+			if(load_character())
+				load_skin()
+				sanitize_everything()
+				player_setup.sanitize_setup()
+				initialized = TRUE
+				return
 
-	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
-	client?.update_movement_keys(src)
 	LAZYINITLIST(character)
 	LAZYINITLIST(options)
 	LAZYINITLIST(skin)
@@ -427,35 +426,3 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
-
-//Vore noises.
-/client/verb/toggle_eating_noises()
-	set name = "Eating Noises"
-	set category = "Vore"
-	set desc = "Toggles Vore Eating noises."
-
-	var/pref_path = /datum/client_preference/eating_noises
-
-	toggle_preference(pref_path)
-
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear eating related vore noises.")
-
-	SScharacters.queue_preferences_save(prefs)
-
-	feedback_add_details("admin_verb","TEatNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
-/client/verb/toggle_digestion_noises()
-	set name = "Digestion Noises"
-	set category = "Vore"
-	set desc = "Toggles Vore Digestion noises."
-
-	var/pref_path = /datum/client_preference/digestion_noises
-
-	toggle_preference(pref_path)
-
-	to_chat(src, "You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] hear digestion related vore noises.")
-
-	SScharacters.queue_preferences_save(prefs)
-
-	feedback_add_details("admin_verb","TDigestNoise") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

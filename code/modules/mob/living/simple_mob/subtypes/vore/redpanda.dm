@@ -28,12 +28,12 @@
 	response_harm = "hits the"
 
 	harm_intent_damage = 3
-	melee_damage_lower = 3
-	melee_damage_upper = 1
+	legacy_melee_damage_lower = 3
+	legacy_melee_damage_upper = 1
 	attacktext = list("bapped")
 
 	say_list_type = /datum/say_list/redpanda
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 
 // Activate Noms!
 /mob/living/simple_mob/vore/redpanda
@@ -60,8 +60,8 @@
 	vore_bump_chance = 75
 	maxHealth = 100
 	health = 100
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 
 /datum/say_list/redpanda
 	speak = list("Wah!","Wah?","Waaaah.")

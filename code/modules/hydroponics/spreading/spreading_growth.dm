@@ -67,14 +67,12 @@
 	if(!T)
 		qdel(src)
 		return
-	if(istype(T))
-		health -= seed.handle_environment(T,T.return_air(),null,1)
-	if(health < max_health)
-		health += rand(3,5)
-		refresh_icon()
-		if(health > max_health)
-			health = max_health
-	else if(health == max_health && !plant)
+	var/health_change = -seed.handle_environment(T,T.return_air(),null,1)
+	var/thriving = health_change > 0
+	// heal
+	health_change += rand(3, 5)
+	adjust_integrity(health_change)
+	if(thriving && !plant)
 		plant = new(T,seed)
 		plant.dir = src.dir
 		plant.transform = src.transform
@@ -107,7 +105,13 @@
 			for(var/mob/living/M in neighbor)
 				if(seed.get_trait(TRAIT_SPREAD) >= 2 && (M.lying || prob(round(seed.get_trait(TRAIT_POTENCY)))))
 					entangle(M)
-
+	if(is_mature() && seed.get_trait(TRAIT_CARNIVOROUS))
+		for(var/obj/effect/plant/thing in loc)
+			if(thing != src)
+				if(thing.seed != seed)
+					thing.vine_overrun(src,src)
+				else
+					thing.die_off(TRUE) // let's just make sure there's only one
 	if(is_mature() && neighbors.len && prob(spread_chance))
 		//spread to 1-3 adjacent turfs depending on yield trait.
 		var/max_spread = between(1, round(seed.get_trait(TRAIT_YIELD)*3/14), 3)
@@ -120,7 +124,6 @@
 				spread_to(pick(neighbors))
 
 	// We shouldn't have spawned if the controller doesn't exist.
-	check_health()
 	if(has_buckled_mobs() || neighbors.len)
 		SSplants.add_plant(src)
 
@@ -163,9 +166,20 @@
 
 		child.finish_spreading()
 
-/obj/effect/plant/proc/die_off()
+/obj/effect/plant/Cross(atom/movable/AM)
+	// we check here to prevent plants from stacking up from zlevel falling
+	// since zfall obstructions check Cross()ing
+	if(istype(AM, /obj/effect/plant)) // no stackies!!
+		var/obj/effect/plant/enemy = AM
+		if(enemy.seed != seed)
+			return TRUE // yes vines, battle to the death!!
+		return FALSE
+	return ..()
+
+/obj/effect/plant/proc/die_off(destroying)
 	// Kill off our plant.
-	if(plant) plant.die()
+	if(plant)
+		plant.die()
 	// This turf is clear now, let our buddies know.
 	for(var/turf/simulated/check_turf in get_cardinal_neighbors())
 		if(!istype(check_turf))
@@ -173,6 +187,7 @@
 		for(var/obj/effect/plant/neighbor in check_turf.contents)
 			neighbor.neighbors |= check_turf
 			SSplants.add_plant(neighbor)
-	spawn(1) if(src) qdel(src)
+	if(!destroying)
+		QDEL_IN(src, 0)
 
 #undef NEIGHBOR_REFRESH_TIME

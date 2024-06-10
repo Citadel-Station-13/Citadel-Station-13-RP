@@ -83,7 +83,7 @@
 // Proc: ui_state()
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
-/obj/item/communicator/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/communicator/ui_state()
 	return GLOB.inventory_state
 
 // Proc: ui_interact()
@@ -108,7 +108,7 @@
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
 
-/obj/item/communicator/ui_close(mob/user, datum/tgui_module/module)
+/obj/item/communicator/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 	if(isnull(user.client))
 		return // what???
@@ -118,7 +118,7 @@
 // Proc: ui_data()
 // Parameters: User, UI, State
 // Description: Uses a bunch of for loops to turn lists into lists of lists, so they can be displayed in nanoUI, then displays various buttons to the user.
-/obj/item/communicator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_data(mob/user, datum/tgui/ui)
 	// this is the data which will be sent to the ui
 	var/list/data = list()						//General nanoUI information
 	var/list/communicators = list()			    //List of communicators
@@ -298,7 +298,7 @@
 // Proc: ui_static_data()
 // Parameters: User, UI, State
 // Description: Just like ui_data, except it only gets called once when the user opens the UI, not every tick.
-/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	// Update manifest'
 	if(data_core)
@@ -373,7 +373,7 @@
 				im_list += list(list("address" = exonet.address, "to_address" = their_address, "im" = text))
 				log_pda("(COMM: [src]) sent \"[text]\" to [exonet.get_atom_from_address(their_address)]", usr)
 				for(var/mob/M in GLOB.player_list)
-					if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
+					if(M.stat == DEAD && M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
 						if(istype(M, /mob/new_player) || M.forbid_seeing_deadchat)
 							continue
 						if(exonet.get_atom_from_address(their_address) == M)

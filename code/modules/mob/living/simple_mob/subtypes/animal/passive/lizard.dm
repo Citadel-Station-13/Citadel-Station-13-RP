@@ -26,8 +26,8 @@
 	response_harm   = "stomps on"
 
 	attacktext = list("bitten")
-	melee_damage_lower = 1
-	melee_damage_upper = 2
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 2
 
 	speak_emote = list("hisses")
 
@@ -42,8 +42,8 @@
 	maxHealth = 20
 	health = 20
 
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 15
 
 	attack_sharp = TRUE
 
@@ -54,4 +54,4 @@
 	maxHealth = 30
 	health = 30
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative

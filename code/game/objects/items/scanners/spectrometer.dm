@@ -3,14 +3,14 @@
 	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "spectrometer"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
 
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/details = 0

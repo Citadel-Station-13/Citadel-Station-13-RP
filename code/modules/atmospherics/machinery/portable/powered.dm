@@ -30,16 +30,16 @@
 		return 1
 	return 0
 
-/obj/machinery/portable_atmospherics/powered/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/portable_atmospherics/powered/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["useCharge"] = TRUE
-	.["maxCharge"] = isnull(cell)? cell.maxcharge : 0
+	.["maxCharge"] = isnull(cell)? 0 : cell.maxcharge
 	.["powerRating"] = power_maximum
 	.["useCell"] = use_cell
 
-/obj/machinery/portable_atmospherics/powered/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/portable_atmospherics/powered/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["charge"] = isnull(cell)? cell.charge : 0
+	.["charge"] = isnull(cell)? 0 : cell.charge
 	if(atmos_portable_ui_flags & (ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SET_POWER))
 		.["powerCurrent"] = power_current
 	.["hasCell"] = !isnull(cell)
@@ -79,6 +79,8 @@
 /obj/machinery/portable_atmospherics/powered/use_power(amount, chan, dt)
 	if(!use_cell)
 		return ..()
+	else if(!cell)
+		return 0
 	. = cell.use(DYNAMIC_W_TO_CELL_UNITS(amount, dt))
 	if(!cell.charge)
 		power_change()

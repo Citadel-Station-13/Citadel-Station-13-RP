@@ -37,6 +37,8 @@
 #define INV_OP_FATAL				(1<<17)
 /// hint: we're just checking instead of doing, don't invoke delayed checks just yet
 #define INV_OP_JUST_CHECKING		(1<<18)
+/// during force, can force other things out of the slot
+#define INV_OP_CAN_DISPLACE			(1<<19)
 
 /// no delays and reachability checks entirely
 #define INV_OP_FLUFFLESS			(INV_OP_IGNORE_REACHABILITY | INV_OP_IGNORE_DELAY)
@@ -58,7 +60,7 @@
 #define INVENTORY_SLOT_DOES_NOT_EXIST			-1
 
 //! return values for inv view/strip/access/panel procs:
-//? /datum/inventory_slot_meta/proc/check_strip_conceal()
+//? /datum/inventory_slot/proc/check_strip_conceal()
 /// do not show slot
 #define INV_VIEW_OBFUSCATE_HIDE_SLOT			(1<<0)
 /// do not allow operations

@@ -11,10 +11,11 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /area
 	var/obj/machinery/air_alarm/master_air_alarm
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 /obj/machinery/air_alarm
 	name = "alarm"
 	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/modules/atmospherics/air_alarm.dmi'
 	icon_state = "alarm0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
@@ -74,6 +75,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/danger_level = 0
 	var/pressure_dangerlevel = 0
 
+	var/last_sound_played = 0
 	var/report_danger_level = 1
 	///If the alarms from this machine are visible on consoles
 	var/alarms_hidden = FALSE
@@ -126,7 +128,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			continue
 		if(!isnull(tlv_ids[id]))
 			continue
-		tlv_ids[id] = default
+		tlv_ids[id] = default.Copy()
 	for(var/group in global.gas_data.gas_group_names_filterable)
 		if(!isnull(tlv_groups[group]))
 			continue
@@ -147,6 +149,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	var/old_level = danger_level
 	var/old_pressurelevel = pressure_dangerlevel
 	danger_level = overall_danger_level(environment)
+	if (danger_level)
+		handle_sounds()
 
 	if(old_level != danger_level)
 		apply_danger_level(danger_level)
@@ -173,6 +177,21 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			remote_control = 1
 
 	return
+
+/obj/machinery/air_alarm/proc/handle_sounds()
+	if(!report_danger_level)
+		return
+	// todo: this needs to be a soundloop datum that adjusts volume based on if the user's been hearing it, because constant alarm whine is obnoxious
+	// disabled for now ~silicons
+/*
+	if(world.time > last_sound_played + (60 SECONDS / (danger_level ? danger_level : 1)))
+		if (danger_level == AIR_ALARM_RAISE_WARNING)
+			playsound(src,'sound/machines/air_alarm/warning.ogg', 100, pressure_affected = TRUE)
+			last_sound_played = world.time
+		if (danger_level == AIR_ALARM_RAISE_DANGER)
+			playsound(src, 'sound/machines/air_alarm/danger.ogg', 100, pressure_affected = FALSE)
+			last_sound_played = world.time
+*/
 
 /obj/machinery/air_alarm/proc/handle_heating_cooling(var/datum/gas_mixture/environment)
 	var/list/tlv = tlv_temperature
@@ -406,29 +425,29 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
-				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
+				send_signal(pump.id_tag, list("power" = FALSE))
 			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
 					continue
-				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
+				send_signal(scrubber.id_tag, list("power" = FALSE))
 		if(AIR_ALARM_MODE_SCRUB)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
-				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = TRUE))
+				send_signal(pump.id_tag, list("hard_reset" = TRUE))
 			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
 					continue
-				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE))
+				send_signal(scrubber.id_tag, list("expand" = "default", "siphon" = FALSE, "power" = TRUE))
 		if(AIR_ALARM_MODE_REPLACE)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
 					continue
-				send_signal(pump.id_tag, list("hard_reset" = TRUE, "power" = TRUE))
+				send_signal(pump.id_tag, list("hard_reset" = TRUE))
 			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
 					continue
-				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "siphon" = TRUE))
+				send_signal(scrubber.id_tag, list("expand" = FALSE, "power" = TRUE, "siphon" = TRUE))
 		if(AIR_ALARM_MODE_SIPHON, AIR_ALARM_MODE_CYCLE)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
@@ -437,7 +456,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
 					continue
-				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "siphon" = TRUE))
+				send_signal(scrubber.id_tag, list("expand" = FALSE, "power" = TRUE, "siphon" = TRUE))
 		if(AIR_ALARM_MODE_PANIC)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
@@ -446,7 +465,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
 					continue
-				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "siphon" = TRUE, "expand" = TRUE))
+				send_signal(scrubber.id_tag, list("power" = TRUE, "siphon" = TRUE, "expand" = TRUE))
 		if(AIR_ALARM_MODE_CONTAMINATED)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
@@ -455,7 +474,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
 					continue
-				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = TRUE, "expand" = TRUE))
+				send_signal(scrubber.id_tag, list("siphon" = FALSE, "power" = TRUE, "expand" = TRUE))
 		if(AIR_ALARM_MODE_FILL)
 			for(var/obj/machinery/atmospherics/component/unary/vent_pump/pump as anything in registered_area.vent_pumps)
 				if(!pump.controllable_from_alarm || !pump.environmental)
@@ -464,7 +483,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in registered_area.vent_scrubbers)
 				if(!scrubber.controllable_from_alarm || !scrubber.environmental)
 					continue
-				send_signal(scrubber.id_tag, list("hard_reset" = TRUE, "power" = FALSE))
+				send_signal(scrubber.id_tag, list("power" = FALSE))
 
 /obj/machinery/air_alarm/proc/apply_danger_level(var/new_danger_level)
 	if(report_danger_level && alarm_area.atmosalert(new_danger_level, src))
@@ -505,7 +524,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	ui_interact(user)
 	wires.Interact(user)
 
-/obj/machinery/air_alarm/ui_status(mob/user)
+/obj/machinery/air_alarm/ui_status(mob/user, datum/ui_state/state)
 	if(isAI(user) && aidisabled)
 		to_chat(user, "AI control has been disabled.")
 	else if(!shorted)
@@ -520,7 +539,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			ui.set_state(state)
 		ui.open()
 
-/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/air_alarm/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/datum/gas_mixture/environment = loc.return_air()
 	.["environment"] = environment.tgui_analyzer_scan(GAS_GROUP_REAGENT | GAS_GROUP_UNKNOWN)
@@ -554,7 +573,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	. += data
 	//! end
 
-/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/air_alarm/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["gasContext"] = global.gas_data.tgui_gas_context()
 	.["gasTLV"] = tlv_ids
@@ -570,7 +589,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	data["temperatureTLV"] = tlv_temperature
 	push_ui_data(data = data)
 
-/obj/machinery/air_alarm/ui_act(action, params, datum/tgui/ui)
+/obj/machinery/air_alarm/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -660,7 +679,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 			var/index = text2num(params["index"]) + 1
 			if((index < AIR_ALARM_TLV_INDEX_MIN) || (index > AIR_ALARM_TLV_INDEX_MAX))
 				return TRUE
-			var/val = clamp(0, text2num(params["val"]), 1000000)
+			var/val = clamp(-1, text2num(params["val"]), 1000000)
 			var/list/target
 			switch(entry)
 				if("pressure")
@@ -720,7 +739,8 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		return
 
 	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))// trying to unlock the interface with an ID card
-		togglelock()
+		togglelock(user)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/machinery/air_alarm/verb/togglelock(mob/user as mob)
@@ -737,7 +757,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 /obj/machinery/air_alarm/AltClick()
 	..()
-	togglelock()
+	togglelock(usr)
 
 /obj/machinery/air_alarm/power_change()
 	..()
@@ -748,6 +768,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 #undef TEST_TLV_VALUES
 #undef DECLARE_TLV_VALUES
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/alarms_hidden, 26)
 /obj/machinery/air_alarm/alarms_hidden
 	alarms_hidden = TRUE
 
@@ -761,6 +782,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	pixel_x = (dir & 3) ? 0 : (dir == 4 ? -21 : 21)
 	pixel_y = (dir & 3) ? (dir == 1 ? -18 : 20) : 0
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/freezer, 26)
 /obj/machinery/air_alarm/freezer
 	target_temperature = T0C - 13.15 // Chilly freezer room
 
@@ -769,13 +791,16 @@ GLOBAL_LIST_EMPTY(air_alarms)
 		tlv_temperature = list(T0C - 40, T0C - 20, T0C + 40, T0C + 60)
 	return ..()
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/monitor, 26)
 /obj/machinery/air_alarm/monitor
 	report_danger_level = 0
 	breach_detection = 0
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/nobreach, 26)
 /obj/machinery/air_alarm/nobreach
 	breach_detection = 0
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/server, 26)
 /obj/machinery/air_alarm/server/Initialize(mapload)
 	. = ..()
 	req_access = list(ACCESS_SCIENCE_RD, ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)

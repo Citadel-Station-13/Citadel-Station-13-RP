@@ -3,7 +3,7 @@
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "psiphon:0"
 	density = 1
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	var/direction_out = 0 //0 = siphoning, 1 = releasing
 	var/target_pressure = ONE_ATMOSPHERE
@@ -68,9 +68,9 @@
 
 		var/transfer_moles
 		if(direction_out)
-			transfer_moles = xgm_cheap_transfer_moles(air_contents, environment, target_pressure, speedy = TRUE)
+			transfer_moles = air_contents.total_moles? xgm_cheap_transfer_moles(air_contents, environment, target_pressure, speedy = TRUE) : 0
 		else
-			transfer_moles = -xgm_cheap_transfer_moles_single(environment, target_pressure)
+			transfer_moles = environment.total_moles? -xgm_cheap_transfer_moles_single(environment, target_pressure) : 0
 
 		if (transfer_moles > 0.01)
 			if (direction_out)
@@ -113,10 +113,10 @@
 		ui.open()
 
 
-/obj/machinery/portable_atmospherics/powered/pump/ui_state(mob/user, datum/tgui_module/module)
+/obj/machinery/portable_atmospherics/powered/pump/ui_state()
 	return GLOB.physical_state
 
-/obj/machinery/portable_atmospherics/powered/pump/ui_data(mob/user)
+/obj/machinery/portable_atmospherics/powered/pump/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["on"] = on ? TRUE : FALSE
@@ -142,7 +142,7 @@
 
 	return data
 
-/obj/machinery/portable_atmospherics/powered/pump/ui_act(action, params)
+/obj/machinery/portable_atmospherics/powered/pump/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -183,6 +183,8 @@
 	icon_state = "siphon:0"
 	anchored = 1
 	volume = 500000
+	default_access_interface = FALSE
+	default_multitool_hijack = TRUE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
@@ -200,9 +202,6 @@
 	gid++
 
 	name = "[name] (ID [id])"
-
-/obj/machinery/portable_atmospherics/powered/pump/huge/attack_hand(mob/user, list/params)
-	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the pump control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()
 	cut_overlays()

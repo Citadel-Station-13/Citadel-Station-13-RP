@@ -247,26 +247,26 @@
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
 /obj/item/gun/ballistic/automatic/sts35,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545/ap,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
-/obj/item/ammo_magazine/m545,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556/ap,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
+/obj/item/ammo_magazine/m556,
 /obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/item/gun/ballistic/shotgun/pump/combat,
 /obj/item/storage/box/shotgunshells/large,
@@ -334,7 +334,6 @@
 "ah" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	id = "tabi-hangar1"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -512,7 +511,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "tabiranth_airlock";
 	name = "exterior access button";
@@ -650,7 +649,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "tabiranth_airlock";
 	pixel_x = 5;
@@ -668,7 +667,7 @@
 	req_one_access = list(101)
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "tabiranth_docker";
 	pixel_x = -5;
@@ -695,22 +694,22 @@
 /obj/item/clothing/under/ert,
 /obj/item/clothing/under/ert,
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/storage/box/survival/comp{
-	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
+	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
 /obj/item/perfect_tele,
 /obj/item/storage/belt/utility/chief/full,
@@ -1035,7 +1034,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "aY" = (
@@ -1149,7 +1148,7 @@
 /obj/item/gun/energy/medigun,
 /obj/item/gun/energy/captain,
 /obj/item/material/knife/machete/deluxe{
-	default_material = "durasteel"
+	material_parts = /datum/material/durasteel
 	},
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/storage/firstaid/combat,
@@ -1341,16 +1340,16 @@
 /obj/item/gun/energy/pulse_rifle,
 /obj/item/gun/ballistic/automatic/lmg,
 /obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
-/obj/item/ammo_magazine/m545saw/ap,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
+/obj/item/ammo_magazine/m556saw/ap,
 /obj/item/gun/ballistic/automatic/z8,
 /obj/item/gun/ballistic/automatic/z8,
 /obj/item/gun/ballistic/heavysniper,
@@ -1667,7 +1666,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "tabiranth_docker";
 	name = "exterior access button";
@@ -1693,7 +1692,6 @@
 	req_one_access = list(108)
 	},
 /obj/machinery/door/blast/regular{
-	destroy_hits = 100;
 	dir = 4;
 	id = "tabi-vault";
 	name = "Vault"
@@ -1716,9 +1714,9 @@
 /obj/machinery/mech_recharger,
 /obj/mecha/combat/fighter/baron{
 	ground_capable = 1;
-	health = 800;
+	integrity = 800;
 	internal_damage_threshold = 100;
-	maxhealth = 800;
+	integrity_max = 800;
 	name = "Panther"
 	},
 /turf/simulated/floor/reinforced,
@@ -1731,7 +1729,6 @@
 "wz" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
-	destroy_hits = 1000;
 	id = "tabi-hangar2"
 	},
 /turf/simulated/floor/tiled/steel_ridged,

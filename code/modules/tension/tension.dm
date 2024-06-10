@@ -20,12 +20,13 @@
 
 	// First lets consider their attack ability.
 	var/will_point_blank = FALSE
-	if(has_AI())
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		will_point_blank = ai_holder.pointblank
 
 	var/potential_damage = 0
 	if(!projectiletype || ( ( get_dist(src, threatened) >= 1) && !will_point_blank ) ) // Melee damage.
-		potential_damage = (melee_damage_lower + melee_damage_upper) / 2
+		potential_damage = (legacy_melee_damage_lower + legacy_melee_damage_upper) / 2
 
 		// Treat potential_damage as estimated DPS. If the enemy attacks twice as fast as usual, it will double the number.
 		potential_damage *= 1 SECOND / (base_attack_cooldown + melee_attack_delay)
@@ -60,7 +61,8 @@
 /mob/living/simple_mob/get_threat(var/mob/living/threatened)
 	. = ..()
 
-	if(has_AI())
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(!ai_holder.hostile)
 			return 0 // Can't hurt anyone.
 
@@ -103,7 +105,8 @@
 /mob/living/carbon/get_threat(var/mob/living/threatened)
 	. = ..()
 
-	if(has_AI())
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		if(!ai_holder.hostile)
 			return 0
 
@@ -141,7 +144,8 @@
 
 	// First lets consider their attack ability.
 	var/will_point_blank = FALSE
-	if(has_AI())
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		will_point_blank = ai_holder.pointblank
 
 	. = ..()

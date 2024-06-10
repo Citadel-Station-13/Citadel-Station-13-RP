@@ -22,8 +22,8 @@
 	maxHealth = 175
 	health = 175
 
-	melee_damage_lower = 25
-	melee_damage_upper = 35
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 35
 	grab_resist = 100
 
 	projectiletype = /obj/projectile/bullet/pistol/medium
@@ -41,7 +41,7 @@
 
 
 	say_list_type = /datum/say_list/Steve
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horror
 
 	exotic_amount = 2
 	hide_amount = 1

@@ -238,8 +238,8 @@ research holder datum.
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "datadisk2"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 10)
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/tech/stored
 
 /obj/item/disk/tech_disk/Initialize(mapload)
@@ -253,8 +253,8 @@ research holder datum.
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "datadisk2"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
-	materials = list(MAT_STEEL = 30, MAT_GLASS = 10)
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/design/blueprint
 
 /obj/item/disk/design_disk/Initialize(mapload)

@@ -1,6 +1,6 @@
 /obj/item/gun/energy
 	name = "energy gun"
-	desc = "A basic energy-based gun. NanoTrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
+	desc = "A basic energy-based gun. Nanotrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energy"
 	fire_sound_text = "laser blast"
@@ -46,7 +46,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/energy/get_cell()
+/obj/item/gun/energy/get_cell(inducer)
 	return power_supply
 
 /obj/item/gun/energy/process(delta_time)

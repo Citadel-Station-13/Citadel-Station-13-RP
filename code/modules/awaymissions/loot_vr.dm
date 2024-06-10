@@ -12,8 +12,9 @@
 	icon_state = "grabbed"
 	low_probability = 1
 
-/obj/landmark/loot_spawn/New()
-
+/obj/landmark/loot_spawn/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
+	atom_flags |= ATOM_INITIALIZED
 	switch(pick( \
 	low_probability * 1000;"nothing", \
 	200 - low_probability * 175;"treasure", \
@@ -187,12 +188,12 @@
 					prob(5);/obj/item/ammo_magazine/s38,\
 					prob(5);/obj/item/ammo_magazine/s38/rubber,\
 					prob(5);/obj/item/storage/box/flashbangs,\
-					prob(5);/obj/item/ammo_magazine/m545,\
+					prob(5);/obj/item/ammo_magazine/m556,\
 					prob(4);/obj/item/ammo_magazine/clip/c545,\
 					prob(4);/obj/item/ammo_magazine/clip/c45,\
 					prob(4);/obj/item/ammo_magazine/clip/c9mm,\
 					prob(4);/obj/item/ammo_magazine/m45uzi,\
-					prob(4);/obj/item/ammo_magazine/m545/ext,\
+					prob(4);/obj/item/ammo_magazine/m556/ext,\
 					prob(4);/obj/item/ammo_magazine/m9mm,\
 					prob(4);/obj/item/ammo_magazine/m9mml,\
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
@@ -201,14 +202,14 @@
 					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
 				/*	prob(4);/obj/item/ammo_magazine/m14,\
 					prob(4);/obj/item/ammo_magazine/m14/large,\*/
-					prob(4);/obj/item/ammo_magazine/m545/ext,
+					prob(4);/obj/item/ammo_magazine/m556/ext,
 					prob(4);/obj/item/ammo_magazine/m762,\
-					prob(4);/obj/item/ammo_magazine/m545/ext,\
+					prob(4);/obj/item/ammo_magazine/m556/ext,\
 					prob(3);/obj/item/ammo_magazine/clip/c10mm,\
 					prob(3);/obj/item/ammo_magazine/clip/c44,\
-					prob(3);/obj/item/ammo_magazine/m545,\
+					prob(3);/obj/item/ammo_magazine/m556,\
 					prob(2);/obj/item/ammo_magazine/m44,\
-					prob(2);/obj/item/ammo_magazine/m545,\
+					prob(2);/obj/item/ammo_magazine/m556,\
 					prob(1);/obj/item/storage/box/frags,\
 				/*	prob(1);/obj/item/ammo_magazine/m95,\ */
 					prob(1);/obj/item/ammo_casing/rocket,\
@@ -342,8 +343,7 @@
 			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
 			new /obj/item/storage/toolbox/electrical(C)
 
-	qdel(src)
-
+	return INITIALIZE_HINT_QDEL
 
 /**********************************/
 

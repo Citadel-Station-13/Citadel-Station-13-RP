@@ -37,7 +37,7 @@
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
-	w_class = active_w_class
+	set_weight_class(active_w_class)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
@@ -54,7 +54,7 @@
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	update_icon()
 	set_light(0,0)
 
@@ -90,7 +90,7 @@
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			var/mob/living/carbon/human/H = ishuman(user)? user : null
-			H.take_organ_damage(5,5)
+			H.take_random_targeted_damage(brute = 5, burn = 5)
 		deactivate(user)
 	else
 		activate(user)
@@ -145,7 +145,7 @@
 			return
 	return ..()
 
-/obj/item/melee/energy/get_cell()
+/obj/item/melee/energy/get_cell(inducer)
 	return bcell
 
 /obj/item/melee/energy/update_icon()
@@ -195,14 +195,14 @@
 	//active_force = 150 //holy...
 	active_force = 60
 	active_throwforce = 35
-	active_w_class = ITEMSIZE_HUGE
+	active_w_class = WEIGHT_CLASS_HUGE
 	//damage_force = 40
 	//throw_force = 25
 	damage_force = 20
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 4)
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	sharp = 1
@@ -248,12 +248,12 @@
 	item_state = "esword"
 	active_force = 30
 	active_throwforce = 20
-	active_w_class = ITEMSIZE_LARGE
+	active_w_class = WEIGHT_CLASS_BULKY
 	damage_force = 3
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	atom_flags = NOBLOODY
 	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 4)
 	sharp = 1
@@ -349,18 +349,6 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	projectile_parry_chance = 85
 
-/obj/item/melee/energy/sword/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(prob(50))
-		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
-	return ..()
-
-/obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
-	for(var/i in list(NORTH,SOUTH,EAST,WEST))
-		user.setDir(i)
-		if(i == WEST)
-			user.emote("flip")
-		sleep(1)
-
 /*
  *Ionic Rapier
  */
@@ -408,7 +396,7 @@
 
 		// Make lesser robots really mad at us.
 		if(L.mob_class & MOB_CLASS_SYNTHETIC)
-			if(L.has_AI())
+			if(L.has_polaris_AI())
 				L.taunt(user)
 			L.adjustFireLoss(damage_force * 6) // 30 Burn, for 50 total.
 
@@ -467,18 +455,6 @@
 	projectile_parry_chance = 65
 	hitcost = 150
 
-/obj/item/melee/energy/sword/charge/dualsaber/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(prob(50))
-		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
-	return ..()
-
-/obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
-	for(var/i in list(NORTH,SOUTH,EAST,WEST))
-		user.setDir(i)
-		if(i == WEST)
-			user.emote("flip")
-		sleep(1)
-
 //Energy Blade (ninja uses this)
 
 //Can't be activated or deactivated, so no reason to be a subtype of energy
@@ -495,7 +471,7 @@
 	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1
 	throw_range = 1
-	w_class = ITEMSIZE_LARGE//So you can't hide it in your pocket or some such.
+	w_class = WEIGHT_CLASS_BULKY//So you can't hide it in your pocket or some such.
 	atom_flags = NOBLOODY
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	var/mob/living/creator
@@ -586,10 +562,10 @@
 	throw_speed = 7
 	throw_range = 11
 	reach = 2
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	active_force = 25
 	active_throwforce = 30
-	active_w_class = ITEMSIZE_HUGE
+	active_w_class = WEIGHT_CLASS_HUGE
 	colorable = TRUE
 	lcolor = "#800080"
 
@@ -634,7 +610,7 @@
 	attack_verb = list("attacked", "diced", "cleaved", "torn", "cut", "slashed")
 	armor_penetration = 50
 	var/base_state = "hfmachete"
-	hitsound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
+	attack_sound = "machete_hit_sound" // dont mind the meaty hit sounds if you hit something that isnt meaty
 	can_cleave = TRUE
 	embed_chance = 0 // let's not
 
@@ -642,9 +618,6 @@
 	icon_state = "[base_state][active]"
 
 /obj/item/melee/energy/hfmachete/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	toggleActive(user)
 	add_fingerprint(user)
 
@@ -665,7 +638,7 @@
 		armor_penetration = 100
 		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete1.ogg', 40, 0)
-		w_class = WEIGHT_CLASS_BULKY
+		set_weight_class(WEIGHT_CLASS_BULKY)
 		// user.lazy_register_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	else
 		damage_force = initial(damage_force)
@@ -676,7 +649,7 @@
 		armor_penetration = initial(armor_penetration)
 		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete0.ogg', 40, 0)
-		w_class = WEIGHT_CLASS_NORMAL
+		set_weight_class(WEIGHT_CLASS_NORMAL)
 		// user.lazy_unregister_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	update_icon()
 

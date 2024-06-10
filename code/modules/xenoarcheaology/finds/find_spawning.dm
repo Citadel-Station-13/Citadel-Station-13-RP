@@ -139,9 +139,9 @@
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
 			new_item.icon_state = "box"
 			var/obj/item/storage/box/new_box = new_item
-			new_box.max_w_class = pick(1,2,2,3,3,3,4,4)
-			var/storage_amount = 2**(new_box.max_w_class-1)
-			new_box.max_storage_space = rand(storage_amount, storage_amount * 10)
+			new_box.max_single_weight_class = pick(1,2,2,3,3,3,4,4)
+			var/storage_amount = 2**(new_box.max_single_weight_class-1)
+			new_box.max_combined_volume = rand(storage_amount, storage_amount * 10)
 			if(prob(30))
 				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 				apply_image_decorations = 1
@@ -244,9 +244,9 @@
 		if(20)
 			//arcane clothing
 			apply_prefix = 0
-			var/list/possible_spawns = list(/obj/item/clothing/head/culthood,
-			/obj/item/clothing/head/culthood/magus,
-			/obj/item/clothing/head/culthood/alt,
+			var/list/possible_spawns = list(/obj/item/clothing/head/cult,
+			/obj/item/clothing/head/cult/magus,
+			/obj/item/clothing/head/cult/alt,
 			/obj/item/clothing/head/helmet/space/cult)
 
 			var/new_type = pick(possible_spawns)
@@ -544,21 +544,15 @@
 			MAT_SUPERMATTER = 1
 			))
 		var/obj/item/material/MW = new_item
-		MW.applies_material_colour = TRUE
-		MW.set_material(new_item_mat)
-		if(istype(MW, /obj/item/material/twohanded))
-			var/obj/item/material/twohanded/TH = MW
-			TH.force_unwielded *= 0.7
-			TH.force_wielded *= 0.5
-		else
-			MW.damage_force *= 0.3
+		MW.material_color = TRUE
+		MW.set_material_part(MATERIAL_PART_DEFAULT, get_material_by_name(new_item_mat))
 
 	var/decorations = ""
 	if(apply_material_decorations)
 		source_material = pick("cordite","quadrinium",MAT_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 		if(istype(new_item, /obj/item/material))
 			var/obj/item/material/MW = new_item
-			source_material = MW.material.display_name
+			source_material = MW.get_primary_material()?.display_name || "some unknown material"
 		desc = "A [material_descriptor ? "[material_descriptor] " : ""][item_type] made of [source_material], all craftsmanship is of [pick("the lowest","low","average","high","the highest")] quality."
 
 		var/list/descriptors = list()

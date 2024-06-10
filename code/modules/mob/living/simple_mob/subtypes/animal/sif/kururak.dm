@@ -42,8 +42,8 @@
 
 	movement_cooldown = 1
 
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 25
 	attack_armor_pen = 40
 	base_attack_cooldown = 2 SECONDS
 	attacktext = list("gouged", "bit", "cut", "clawed", "whipped")
@@ -62,7 +62,7 @@
 		)
 
 	say_list_type = /datum/say_list/kururak
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/kururak
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/kururak
 
 	special_attack_min_range = 0
 	special_attack_max_range = 4
@@ -102,11 +102,11 @@
 			var/mob/living/carbon/human/H = L
 			if(H.get_active_held_item())
 				var/obj/item/I = H.get_active_held_item()
-				if(I.damage_force >= 1.20 * melee_damage_upper)
+				if(I.damage_force >= 1.20 * legacy_melee_damage_upper)
 					return TRUE
 		else if(istype(L, /mob/living/simple_mob))
 			var/mob/living/simple_mob/S = L
-			if(S.melee_damage_upper > 1.20 * melee_damage_upper)
+			if(S.legacy_melee_damage_upper > 1.20 * legacy_melee_damage_upper)
 				return TRUE
 
 /mob/living/simple_mob/animal/sif/kururak/handle_special()
@@ -257,7 +257,7 @@
 
 	if(!(src.Adjacent(A))) return
 
-	var/damage_to_apply = rand(melee_damage_lower, melee_damage_upper) + 10
+	var/damage_to_apply = rand(legacy_melee_damage_lower, legacy_melee_damage_upper) + 10
 	if(isliving(A))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws across [A]."))
 		var/mob/living/L = A
@@ -273,7 +273,7 @@
 	else if(istype(A, /obj/mecha))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws against \the [A]."))
 		var/obj/mecha/M = A
-		M.take_damage(damage_to_apply)
+		M.take_damage_legacy(damage_to_apply)
 		if(prob(3) && do_after(src, 5))
 			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant] out!"))
 			M.go_out()
@@ -294,7 +294,7 @@
 				continue
 			if(K.faction != src.faction)
 				continue
-			var/datum/ai_holder/AI = K.ai_holder
+			var/datum/ai_holder/polaris/AI = K.ai_holder
 			to_chat(K, SPAN_NOTICE("The pack leader wishes for you to follow them."))
 			AI.set_follow(src)
 
@@ -323,14 +323,14 @@
 	else
 		remove_modifiers_of_type(/datum/modifier/ace)
 
-/datum/ai_holder/simple_mob/intentional/kururak
+/datum/ai_holder/polaris/simple_mob/intentional/kururak
 	hostile = FALSE
 	retaliate = TRUE
 	cooperative = TRUE
 	can_flee = TRUE
 	flee_when_dying = TRUE
 
-/datum/ai_holder/simple_mob/intentional/kururak/handle_special_strategical()
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/handle_special_strategical()
 	follow_distance = rand(initial(follow_distance), initial(follow_distance) + 2)
 	var/mob/living/simple_mob/animal/sif/kururak/K = holder
 
@@ -353,7 +353,7 @@
 	else
 		hostile = initial(hostile)
 
-/datum/ai_holder/simple_mob/intentional/kururak/pre_special_attack(atom/A)
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/pre_special_attack(atom/A)
 	holder.a_intent = INTENT_HARM
 	if(isliving(A))
 		var/mob/living/L = A
@@ -372,7 +372,7 @@
 	else if(istype(A, /obj/mecha))
 		holder.a_intent = INTENT_GRAB
 
-/datum/ai_holder/simple_mob/intentional/kururak/post_melee_attack()
+/datum/ai_holder/polaris/simple_mob/intentional/kururak/post_melee_attack()
 	if(holder.has_modifier_of_type(/datum/modifier/ace))
 		request_help()
 

@@ -66,7 +66,7 @@
 
 	mob_size = MOB_SMALL
 	pass_flags = ATOM_PASS_TABLE
-//	can_pull_size = ITEMSIZE_TINY
+//	can_pull_size = WEIGHT_CLASS_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0
@@ -76,8 +76,8 @@
 	response_harm   = "stomps on"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 5
 	attack_edge = 1
 	attacktext = list("bit", "scratched","clawed")
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -89,7 +89,7 @@
 	speak_emote = list("chitters")
 	say_list_type = /datum/say_list/roach
 	holder_type = /obj/item/holder/roach
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
@@ -118,7 +118,7 @@
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 	taser_kill = 0
 
@@ -128,8 +128,8 @@
     size_multiplier = 1
     maxHealth = maxHealth
     health = health
-    melee_damage_lower = melee_damage_lower
-    melee_damage_upper = melee_damage_upper
+    legacy_melee_damage_lower = legacy_melee_damage_lower
+    legacy_melee_damage_upper = legacy_melee_damage_upper
     movement_cooldown = movement_cooldown
     meat_amount = meat_amount
     update_icons()
@@ -162,10 +162,10 @@
 
 	movement_cooldown = 4
 
-	melee_damage_lower = 2
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 	var/amount_grown = -1
 	var/spawn_delay = 20
@@ -254,13 +254,13 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 7
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 7
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 4
 
 	armor_type = /datum/armor/physiology/roach/jaegar
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 //When I said roaches made me sick, this isn't what I meant.
 /datum/category_item/catalogue/fauna/roach/seuche
@@ -341,8 +341,8 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 3
 
 	armor_type = /datum/armor/physiology/roach/atomar
 
@@ -350,12 +350,12 @@
 	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 //Nanomachines? Huh. That's not very Patriotic.
 /datum/category_item/catalogue/fauna/roach/uberfallen
 	name = "Infested Roach"
-	desc = "WARNING: Infested roaches are currently flagged as a Class Red threat by NanoTrasen.\
+	desc = "WARNING: Infested roaches are currently flagged as a Class Red threat by Nanotrasen.\
 	This dangerous organism appeared shortly after the unidentified incident on local NT asset 'Surt',\
 	bearing many of the hallmarks of other hostile organisms encountered in the Rift. Roaches originally,\
 	Infested are now skittering nanite factories. Reports indicate they are able to expel hostile nanites\
@@ -384,14 +384,14 @@
 	taser_kill = 0
 	movement_cooldown = 8
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	armor_type = /datum/armor/physiology/roach/uberfallen
 
 	base_attack_cooldown = 8
 	projectiletype = /obj/projectile/energy/declone
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 //Remember when Liam Neeson taught you how to kill these?
 /datum/category_item/catalogue/fauna/roach/strahlend
@@ -428,7 +428,7 @@
 	base_attack_cooldown = 4
 	projectiletype = /obj/projectile/energy/dart
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 //The Color out of Bluespace
 /datum/category_item/catalogue/fauna/roach/zeitraum
@@ -462,14 +462,14 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 3
 
 	armor_type = /datum/armor/physiology/roach/zeitraum
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hit_and_run
 
 	var/stealthed = FALSE
 	var/stealthed_alpha = 60			// Lower = Harder to see.
@@ -577,8 +577,8 @@
 
 	taser_kill = 0
 
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 
 	movement_cooldown = 6
 

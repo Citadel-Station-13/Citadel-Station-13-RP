@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(playtime)
 				"player" = playerid
 			)
 		C.persistent.playtime_queued = list()
-	SSdbcore.MassInsert(format_table_name("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
+	SSdbcore.MassInsertLegacy(format_table_name("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
 
 /**
  * returns a list of playtime roles
@@ -67,6 +67,10 @@ SUBSYSTEM_DEF(playtime)
 			. += PLAYER_PLAYTIME_ROLE(J.id)
 
 /datum/controller/subsystem/playtime/proc/queue_playtimes(client/C)
+	set waitfor = FALSE
+	queue_playtimes_sync(C)
+
+/datum/controller/subsystem/playtime/proc/queue_playtimes_sync(client/C)
 	if(isnull(C))
 		return
 	if(!C.initialized)

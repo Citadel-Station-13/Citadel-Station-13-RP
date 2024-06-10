@@ -7,7 +7,7 @@
 
 /obj/machinery/conveyor
 	icon = 'icons/obj/recycling.dmi'
-	icon_state = "conveyor0"
+	icon_state = "conveyor_map"
 	name = "conveyor belt"
 	desc = "A conveyor belt."
 	plane = TURF_PLANE
@@ -29,9 +29,12 @@
 /obj/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
 
+
+
 	// create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
+	icon_state = "conveyor0"
 	if(newdir)
 		setDir(newdir)
 
@@ -217,6 +220,8 @@
 	var/list/conveyors		// the list of converyors that are controlled by this switch
 	anchored = 1
 
+/obj/machinery/conveyor_switch/two_way_on
+	position = 1
 
 
 /obj/machinery/conveyor_switch/Initialize(mapload)

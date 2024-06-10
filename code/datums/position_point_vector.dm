@@ -117,6 +117,9 @@
 /datum/point/proc/return_turf()
 	return locate(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
 
+/datum/point/proc/clamped_return_turf()
+	return locate(clamp(CEILING(x / world.icon_size, 1), 1, world.maxx), clamp(CEILING(y / world.icon_size, 1), 1, world.maxy), z)
+
 /datum/point/proc/return_coordinates()		//[turf_x, turf_y, z]
 	return list(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
 

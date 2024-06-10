@@ -151,10 +151,9 @@
 	QDEL_NULL(TM)
 	return 1
 
-/datum/computer_file/program/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/simple/headers)
-	)
+/datum/computer_file/program/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/headers
+	return ..()
 
 /datum/computer_file/program/ui_interact(mob/user, datum/tgui/ui)
 	if(program_state != PROGRAM_STATE_ACTIVE)
@@ -167,8 +166,12 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui && tgui_id)
 		ui = new(user, src, tgui_id, filedesc)
+		ui_pre_open(ui)
 		ui.open()
 	return 1
+
+/datum/computer_file/program/proc/ui_pre_open(datum/tgui/ui)
+	return
 
 // CONVENTIONS, READ THIS WHEN CREATING NEW PROGRAM AND OVERRIDING THIS PROC:
 // Topic calls are automagically forwarded from NanoModule this program contains.
@@ -186,7 +189,7 @@
 // Calls beginning with "PRG_" are reserved for programs handling.
 // Calls beginning with "PC_" are reserved for computer handling (by whatever runs the program)
 // ALWAYS INCLUDE PARENT CALL ..() OR DIE IN FIRE.
-/datum/computer_file/program/ui_act(action,list/params, datum/tgui/ui)
+/datum/computer_file/program/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return 1
 	if(computer)

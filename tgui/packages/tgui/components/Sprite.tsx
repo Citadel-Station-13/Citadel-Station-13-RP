@@ -7,11 +7,11 @@ import { BooleanLike, classes } from "common/react";
 import { Box, BoxProps } from "./Box";
 
 interface SpriteProps extends BoxProps {
-  sheet: string;
-  sizeKey: string;
-  prefix?: string;
-  sprite: string;
-  fill?: BooleanLike;
+  readonly sheet: string;
+  readonly sizeKey: string;
+  readonly prefix?: string;
+  readonly sprite: string;
+  readonly fill?: BooleanLike;
 }
 
 export const Sprite = (props: SpriteProps) => {
@@ -25,3 +25,5 @@ export const Sprite = (props: SpriteProps) => {
       ])} />
   );
 };
+
+// todo: this is all kind of terrible; we need a way to autodetect sizeKeys too so it's more friendly to users.

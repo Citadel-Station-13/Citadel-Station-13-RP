@@ -41,13 +41,7 @@
 		else
 			pref.all_underwear -= underwear_category_name
 
-	// TODO - Looks like this is duplicating the work of sanitize_character() if so, remove
-	if(pref.backbag > 7 || pref.backbag < 1)
-		pref.backbag = 1 //Same as above
 	character.backbag = pref.backbag
-
-	if(pref.pdachoice > 7 || pref.pdachoice < 1)
-		pref.pdachoice = 1
 	character.pdachoice = pref.pdachoice
 	return TRUE
 

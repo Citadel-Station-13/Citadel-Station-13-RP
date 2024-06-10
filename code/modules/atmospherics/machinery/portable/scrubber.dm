@@ -3,18 +3,19 @@
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "pscrubber:0"
 	density = TRUE
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	atmos_portable_ui_flags = ATMOS_PORTABLE_UI_TOGGLE_POWER | ATMOS_PORTABLE_UI_SEE_POWER | ATMOS_PORTABLE_UI_SEE_FLOW
 	power_maximum = 7500
 	flow_maximum = 5000
+	tgui_interface = "AtmosPortableScrubber"
 
 	volume = 1000
 
 	/// scrubbing ids
-	var/list/scrubbing_ids
+	var/list/scrubbing_ids = list()
 	/// scrubbing groups
-	var/scrubbing_groups
+	var/scrubbing_groups = NONE
 	/// molar rate current
 	var/transfer_current = 0
 	/// minimum moles to scrub per tick (if enough power) even if flow is not enough
@@ -54,17 +55,17 @@
 
 //! LEGACY ABOVE
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["atmosContext"] = global.gas_data.tgui_gas_context()
 	.["scrubbingIds"] = scrubbing_ids
 	.["scrubbingGroups"] = scrubbing_groups
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["moleRate"] = transfer_current
 
-/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, params)
+/obj/machinery/portable_atmospherics/powered/scrubber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -95,7 +96,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
 	..()
 
-	if(on && cell?.charge)
+	if(on && (cell?.charge || !use_cell))
 		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
 		var/old_mols = scrubbing.total_moles
 		// todo: compensate for delta_time, right now this is not stable and will go faster/slower based on SSair tick rate.
@@ -116,6 +117,8 @@
 	volume = 1000000
 	flow_maximum = 50000
 	use_cell = FALSE
+	default_access_interface = FALSE
+	default_multitool_hijack = TRUE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
@@ -134,9 +137,6 @@
 
 	name = "[name] (ID [id])"
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/attack_hand(mob/user, list/params)
-	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the scrubber control console.</span>")
-
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	cut_overlays()
 
@@ -150,7 +150,6 @@
 	..()
 	if (old_stat != machine_stat)
 		update_icon()
-
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	if(I.is_wrench())

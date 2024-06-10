@@ -24,13 +24,13 @@
 
 	faction = "synthtide"
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	maxHealth = 175
 	health = 175
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 
 	movement_cooldown = 3
 	movement_sound = 'sound/effects/houndstep.ogg'
@@ -72,8 +72,8 @@
 	maxHealth = 75
 	health = 75
 
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attacktext = "splatters on"
 	attack_sound = 'sound/effects/slime_squish.ogg'
 
@@ -108,8 +108,8 @@
 	maxHealth = 250
 	health = 250
  // Four attacks per second.
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 	attack_armor_pen = 50
 	base_attack_cooldown = 2.5
 	attack_sharp = 1
@@ -120,7 +120,7 @@
 	movement_cooldown = 9
 	movement_sound = 'sound/effects/houndstep.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
  // You do NOT Want to get in touchy range of this thing.
 	armor_legacy_mob = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
@@ -206,7 +206,7 @@
 	icon_dead = "vox_cyber_horror_dead"
 
 	armor_legacy_mob = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
@@ -221,7 +221,7 @@
 	icon_dead = "tajaran_cyber_horror_dead"
 
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/hit_and_run
 
 	var/stealthed = FALSE
  // Lower = Harder to see.
@@ -318,7 +318,7 @@
 
 	projectiletype = /obj/projectile/arc/blue_energy
 	projectilesound = 'sound/weapons/Laser.ogg'
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 	armor_legacy_mob = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
 
@@ -342,7 +342,7 @@
 	projectilesound = 'sound/weapons/laser3.ogg'
 	movement_sound = 'sound/effects/servostep.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 
 //Cats and mayhem
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror
@@ -361,8 +361,8 @@
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 2
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 2
  // Four attacks per second.
 	base_attack_cooldown = 2.5
 	attack_sharp = 1
@@ -410,8 +410,8 @@
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
 	response_harm = "harmlessly punches"
 	harm_intent_damage = 0
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 15
 	attack_armor_pen = 20
 	mob_class = MOB_CLASS_ABERRATION
 	mob_size = MOB_HUGE
@@ -427,7 +427,7 @@
 	base_attack_cooldown = 30
 	projectiletype = /obj/projectile/arc/blue_energy/priest
 	projectilesound = 'sound/weapons/Laser.ogg'
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/priest
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
 
 /obj/projectile/arc/blue_energy/priest
 	name = "nanite cloud"
@@ -440,7 +440,7 @@
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(3,5))
 
-/datum/ai_holder/simple_mob/ranged/aggressive/priest //Adopted from the Blood Hunter.
+/datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest //Adopted from the Blood Hunter.
 	pointblank = FALSE
 	closest_distance = 0
 
@@ -590,8 +590,8 @@
 	health = 1500
 	armor_legacy_mob = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
 	movement_cooldown = 4
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 25
 	attack_armor_pen = 25
 	base_attack_cooldown = 7
 

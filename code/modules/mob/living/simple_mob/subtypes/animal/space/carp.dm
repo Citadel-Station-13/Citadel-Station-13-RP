@@ -45,8 +45,8 @@
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 
-	melee_damage_lower = 7 // About 14 DPS.
-	melee_damage_upper = 7
+	legacy_melee_damage_lower = 7 // About 14 DPS.
+	legacy_melee_damage_upper = 7
 	base_attack_cooldown = 10 // One attack a second.
 	attack_sharp = TRUE
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -56,7 +56,7 @@
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
 	bone_amount = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 /* //Commenting out for now
 	var/knockdown_chance = 15
 
@@ -71,7 +71,7 @@
 
 // Won't wander away.
 /mob/living/simple_mob/animal/space/carp/event
-	ai_holder_type = /datum/ai_holder/simple_mob/event
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
 
 
 /mob/living/simple_mob/animal/space/carp/large
@@ -109,8 +109,8 @@
 	health = 230
 	movement_cooldown = 10
 
-	melee_damage_lower = 15 // About 20 DPS.
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 15 // About 20 DPS.
+	legacy_melee_damage_upper = 25
 
 	pixel_y = -16
 	base_pixel_y = -16
@@ -143,7 +143,8 @@
 // Presumably the holodeck emag code requires this.
 // Pass TRUE to make safe. Pass FALSE to make unsafe.
 /mob/living/simple_mob/animal/space/carp/holographic/proc/set_safety(safe)
-	if(!isnull(get_AI_stance())) // Will return null if lacking an AI holder or a player is controlling it w/o autopilot var.
+	if(!isnull(get_polaris_AI_stance())) // Will return null if lacking an AI holder or a player is controlling it w/o autopilot var.
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 		ai_holder.hostile = !safe // Inverted so safe = TRUE means hostility = FALSE.
 		ai_holder.forget_everything() // Reset state so it'll stop chewing on its target.
 
