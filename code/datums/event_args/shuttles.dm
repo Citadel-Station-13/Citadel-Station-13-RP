@@ -105,6 +105,21 @@
 	var/obj/shuttle_port/shuttle_port
 	/// the dock in question, if any
 	var/obj/shuttle_dock/dock
+	/// hint: how much time does the shuttle have left to leaving / needing the next step?
+	///
+	/// e.g. if takeoff_time is 3 seconds, you set this to 3 seconds for 'departing'
+	/// so things like hanger doors open only before the end
+	var/duration_to_next
+	/// for the above, the world.time we were fired
+	/// so things that require checking elapsed time work
+	var/started_at
+	#warn hook
+
+/**
+ * negative returns mean that we have overshot the available time
+ */
+/datum/event_args/shuttle/dock/proc/time_to_next()
+	return duration_to_next - (world.time - started_at)
 
 /**
  * * only fired on aligned docks/undocks

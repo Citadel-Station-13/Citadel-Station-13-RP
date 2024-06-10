@@ -357,7 +357,7 @@
  */
 /datum/shuttle_controller/proc/run_transit_cycle(datum/shuttle_transit_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
-	begin_transit_cycle_impl(cycle)
+	run_transit_cycle_impl(cycle)
 
 /**
  * internal proc; do not use
@@ -371,7 +371,9 @@
  * immediate transit towards a specific dock
  *
  * * immediately jumps us into transit space, or the target dock
- * * blows past all undocking events / they are marked as non-blockable
+ * * all docking / traversal events are marked as force-on-fail with a hard timeout equal to [jump_time]
+ * * this means if anything takes longer than that it's immediately forced past.
+ * * this does not flag the transit as DO_NOT_INTERRUPT, so if [transit_time] isn't instant the user can abort this!
  * * mostly a helper proc
  */
 /datum/shuttle_controller/proc/perform_immediate_transit(
@@ -381,10 +383,25 @@
 	direction,
 	transit_flags,
 	list/datum/callback/on_transit_callbacks,
-	dock_timeout,
-	traversal_timeout,
+	traversal_flags_source = NONE,
+	traversal_flags_target = NONE,
+	transit_time = 0,
+	jump_time = 0,
 )
-#warn reconsider this
+	traversal_flags_source |= SHUTTLE_TRAVERSAL_FLAGS_FORCE_ON_FAIL
+	traversal_flags_target |= SHUTTLE_TRAVERSAL_FLAGS_FORCE_ON_FAIL
+	return transit_towards_dock(
+		dock,
+		align_with_port,
+		centered,
+		direction,
+		transit_flags,
+		on_transit_callbacks,
+		traversal_flags_source,
+		traversal_flags_target,
+		transit_time = transit_time,
+		jump_time = jump_time,
+	)
 
 /**
  * normal transit cycle towards a specific dock.
@@ -394,16 +411,16 @@
 	obj/shuttle_port/align_with_port,
 	centered,
 	direction,
-	takeoff_time,
-	transit_time,
-	landing_time,
 	transit_flags,
 	list/datum/callback/on_transit_callbacks,
+	traversal_flags_source,
+	traversal_flags_target,
 	dock_timeout,
 	traversal_timeout,
+	transit_time,
+	jump_time,
 )
-#warn reconsider this
-
+	#warn impl
 
 #warn below
 

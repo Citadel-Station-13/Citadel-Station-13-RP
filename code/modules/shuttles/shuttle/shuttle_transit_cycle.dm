@@ -46,27 +46,28 @@
 	/// how long to spend in transit
 	///
 	/// * transit can be aborted if [no_abort_mid_transit] isn't set
-	var/transit_duration
+	/// * this time includes spool-up time to jump to target
+	var/transit_duration = 0
 	/// how long to spend spooling up / taking off
 	///
-	/// * takeoff can be aborted
-	var/takeoff_duration
-	#warn default
-	/// how long to spend spooling down / landing
-	///
-	/// * landing cannot be aborted
-	var/landing_duration
-	#warn default
+	/// * takeoff can be aborted during this
+	/// * landing can be aboted during this
+	/// * time needed to jump out of source, basically
+	var/jump_duration = 4 SECONDS
 	/// the timeout allowed by docking / undocking
 	///
 	/// * if timeout expires, we will potentially have the transit cycle interrupted, even if it's no interrupt
-	var/dock_timeout
-	#warn default
+	/// * don't set this too low because the user can only force inside this timeout
+	var/dock_timeout = 30 SECONDS
 	/// the timeout allowed by takeoff / landing
 	///
 	/// * if timeout expires, we will potentially have the transit cycle interrupted, even if it's no interrupt
-	var/traversal_timeout
-	#warn default
+	/// * don't set this too low because the user can only force inside this timeout
+	var/traversal_timeout = 15 SECONDS
+	/// the traversal flags used at the source
+	var/traversal_flags_source = NONE
+	/// the traversal flags used at the destination
+	var/traversal_flags_target = NONE
 
 	//* computed as we go *//
 	/// world.time we should arrive at destination

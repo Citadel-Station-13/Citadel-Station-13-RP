@@ -60,47 +60,53 @@
 #define SHUTTLE_TRANSIT_FLAG_NO_ABORT (1<<0)
 /// do not allow users to abort mid-transit
 #define SHUTTLE_TRANSIT_FLAG_NO_TRANSIT_ABORT (1<<1)
-/// do not allow interruption from undock
-#define SHUTTLE_TRANSIT_FLAG_FORCE_UNDOCK (1<<2)
-/// do not allow interruption from dock
-#define SHUTTLE_TRANSIT_FLAG_FORCE_DOCK (1<<3)
-/// suppress negative effects from undock
-///
-/// * useful with FORCE_UNDOCK, as otherwise bad things might happen to occupants.
-#define SHUTTLE_TRANSIT_FLAG_SAFE_UNDOCK (1<<4)
-/// suppress negative effects from dock
-///
-/// * useful with FORCE_DOCK, as otherwise bad things might happen to occupants.
-#define SHUTTLE_TRANSIT_FLAG_SAFE_DOCK (1<<5)
-/// do not allow interruption from takeoff
-#define SHUTTLE_TRANSIT_FLAG_FORCE_TAKEOFF (1<<6)
-/// do not allow interruption from landing
-#define SHUTTLE_TRANSIT_FLAG_FORCE_LANDING (1<<7)
-/// suppress negative effects from takeoff
-///
-/// * useful with FORCE_TAKEOFF, as otherwise really bad things might happen to occupants.
-#define SHUTTLE_TRANSIT_FLAG_SAFE_TAKEOFF (1<<8)
-/// suppress negative effects from landing
-///
-/// * useful with FORCE_LANDING, as otherwise really bad things might happen to occupants.
-#define SHUTTLE_TRANSIT_FLAG_SAFE_LANDING (1<<9)
-/// if docking or undocking times out, force it
-///
-/// * unlike general FORCE flags, this allows timeout to expire first before doing so.
-#define SHUTTLE_TRANSIT_FLAG_FORCE_IF_DOCK_TIMEOUT (1<<10)
-/// if docking or undocking fails, force it
-///
-/// * unlike general FORCE flags, this will not execute unless docking fails
-#define SHUTTLE_TRANSIT_FLAG_FORCE_IF_DOCK_FAIL (1<<11)
-/// if takeoff or landing times out, force it
-///
-/// * unlike general FORCE flags, this allows timeout to expire first before doing so.
-#define SHUTTLE_TRANSIT_FLAG_FORCE_IF_TRAVERSAL_TIMEOUT (1<<12)
-/// if takeoff or landing fails, force it
-///
-/// * unlike general FORCE flags, this will not execute unless traversal fails
-#define SHUTTLE_TRANSIT_FLAG_FORCE_IF_TRAVERSAL_FAIL (1<<13)
 
-#warn reconsider this
+#warn DEFINE_BITFIELD
+
+//* traversal flags
+
+/// immediate force
+///
+/// * doesn't wait, just slam through checks
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL (1<<0)
+/// immediate force
+///
+/// * doesn't wait, just slam through checks
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING (1<<1)
+/// force if something fails, not just times out
+///
+/// * implies FORCE_ON_TIMEOUT
+/// * does wait for all other checks to either fail or time out
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_FAIL (1<<2)
+/// force if something fails, not just times out
+///
+/// * implies FORCE_ON_TIMEOUT
+/// * does wait for all other checks to either fail or time out
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_FAIL (1<<3)
+/// force if something times out, but not if it fails
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_TIMEOUT (1<<4)
+/// force if something times out, but not if it fails
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_TIMEOUT (1<<5)
+/// prevents negative effects from takeoff / landing
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_SAFETY (1<<6)
+/// prevents negative effects from dock / undock step
+#define SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_SAFETY (1<<7)
+
+#define SHUTTLE_TRAVERSAL_FLAGS_FORCE_IMMEDIATE ( \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING | \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL \
+)
+#define SHUTTLE_TRAVERSAL_FLAGS_FORCE_SAFETY ( \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_SAFETY | \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_SAFETY \
+)
+#define SHUTTLE_TRAVERSAL_FLAGS_FORCE_ON_FAIL ( \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_FAIL | \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_FAIL \
+)
+#define SHUTTLE_TRAVERSAL_FLAGS_FORCE_ON_TIMEOUT ( \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_TIMEOUT | \
+	SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_TIMEOUT \
+)
 
 #warn DEFINE_BITFIELD
