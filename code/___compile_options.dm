@@ -1,7 +1,8 @@
 //? This is here because the linter will explode if this isn't here. Don't believe me? Remove it. I dare you.
 /datum/language_server_error_blocker
 
-//* Please prefix all flags with CF_
+//* Please prefix all flags with CF_ (compile flag)
+//* Please prefix all values with CT_ (compile tweak)
 
 //## Core settings
 //! Fastboot flags - useful for debugging
@@ -198,7 +199,15 @@
 
 // #define TIMER_LOOP_DEBUGGING
 
+#ifdef TIMER_LOOP_DEBUGGING
+	#warn Timer loop debugging has been enabled. This has a performance impact.
+#endif
+
 // ## Shuttles
 
 /// Uncomment to enable shuttle bounding box visualizations
 #define CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
+
+#ifdef CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
+	#warn Shuttle bounding box visualizations enabled.
+#endif

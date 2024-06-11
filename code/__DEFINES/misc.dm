@@ -466,9 +466,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define CASSETTE_METADATA_LANGUAGE "%"
 #define CASSETTE_METADATA_NAME "^"
 
-
-#define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))
-
 //Turf/area values for 'this space is outside' checks
 #define OUTSIDE_AREA null
 #define OUTSIDE_NO   FALSE

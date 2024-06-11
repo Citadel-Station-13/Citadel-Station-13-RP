@@ -61,6 +61,8 @@
 	var/datum/shuttle_transit_cycle/transit_cycle
 	/// default transit time
 	var/transit_time_default = 10 SECONDS
+	/// default takeoff time
+	var/takeoff_time_default = 5 SECONDS
 
 	//* UI
 	/// tgui interface to load
@@ -344,10 +346,22 @@
 //* Transit - Configuration *//
 
 /**
- * default transit time for a dock
+ * default transit time
+ *
+ * @params
+ * * towards_dock - the dock we want to fly to; optional
  */
-/datum/shuttle_controller/proc/default_transit_time_for_dock(obj/shuttle_dock/dock)
+/datum/shuttle_controller/proc/default_transit_time(obj/shuttle_dock/towards_dock)
 	return transit_time_default
+
+/**
+ * default spool-up/takeoff time
+ *
+ * @params
+ * * from_dock - the dock we want to take off from; optional
+ */
+/datum/shuttle_controller/proc/default_takeoff_time(obj/shuttle_dock/from_dock)
+	return takeoff_time_default
 
 //* Transit - Main *//
 
@@ -571,16 +585,6 @@
 /datum/shuttle_controller/proc/is_in_transit()
 	return !isnull(transit_timer_id)
 
-/**
- * gets world.time time (so, deciseconds) left in transit
- *
- * negative values can be returned if we're overdue, somehow!
- */
-/datum/shuttle_controller/proc/transit_time_left()
-	if(isnull(transit_timer_id))
-		return
-	return transit_arrival_time - world.time
-
 #warn above
 
 //* Transit - Hooks *//
@@ -614,6 +618,14 @@
 	if(isnull(transit_cycle))
 		return SHUTTLE_TRANSIT_STAGE_IDLE
 	return transit_cycle.stage
+
+/**
+ * gets world.time time (so, deciseconds) left in transit
+ *
+ * negative values can be returned if we're overdue, somehow!
+ */
+/datum/shuttle_controller/proc/transit_time_left()
+	#warn impl
 
 //* Interface *//
 

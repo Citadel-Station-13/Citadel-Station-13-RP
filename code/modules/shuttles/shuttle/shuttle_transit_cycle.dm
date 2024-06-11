@@ -74,12 +74,13 @@
 	var/arrival_time
 
 	//* target information *//
+	#warn how to handle overmaps? their docks are lazy
 	/// dock we're going towards
+	///
 	/// this dock will have us set as inbound, which should
 	/// protect it from everything else
 	///
-	/// if the dock is occupied by the time we get there,
-	/// that is **undefined behavior.**
+	/// * this won't be done if we have TRANSIT_NO_MUTEX in our flags.
 	var/obj/shuttle_dock/target_dock
 	/// are we doing a centered landing on said dock?
 	/// if not, and there's no aligning port, we align our anchor's coordinates on the dock's coordinates.

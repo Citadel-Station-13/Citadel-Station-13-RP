@@ -75,11 +75,11 @@
 
 #warn impl all
 
-/datum/shuttle_controller/ferry/default_transit_time_for_dock(obj/shuttle_dock/dock)
-	if(dock.dock_id == dock_home_id)
+/datum/shuttle_controller/ferry/default_transit_time(obj/shuttle_dock/towards_dock)
+	if(towards_dock.dock_id == dock_home_id)
 		if(!isnull(transit_time_home))
 			return transit_time_home
-	else if(dock.dock_id == dock_away_id)
+	else if(towards_dock.dock_id == dock_away_id)
 		if(!isnull(transit_time_away))
 			return transit_time_away
 	return ..()
@@ -121,3 +121,9 @@
  */
 /datum/shuttle_controller/ferry/proc/on_begin_transit_to_away(datum/shuttle_transit_cycle/cycle, redirected)
 	return
+
+/datum/shuttle_controller/ferry/proc/is_in_transit_towards_home()
+	#warn impl
+
+/datum/shuttle_controller/ferry/proc/is_in_transit_towards_away()
+	#warn impl

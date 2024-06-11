@@ -202,10 +202,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/eta
 	if(GLOB.legacy_emergency_shuttle_controller.is_in_transit())
 		//we are in transition and can get an accurate ETA
-		eta = GLOB.legacy_emergency_shuttle_controller.transit_arrival_time
+		eta = GLOB.legacy_emergency_shuttle_controller.transit_time_left()
 	else
 		//otherwise we need to estimate the arrival time using the scheduled launch time
-		eta = launch_time + shuttle.move_time*10 + shuttle.warmup_time*10
+		eta = launch_time + GLOB.legacy_emergency_shuttle_controller.default_takeoff_time() + GLOB.legacy_emergency_shuttle_controller.default_transit_time()
 	return (eta - world.time)/10
 
 //returns the time left until the shuttle launches, in seconds
@@ -231,11 +231,11 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to the station
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_station()
-	return GLOB.legacy_emergency_shuttle_controller.transit_target_dock == GLOB.legacy_emergency_shuttle_station_dock
+	return GLOB.legacy_emergency_shuttle_controller.is_in_transit_towards_away()
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to centcom
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_centcom()
-	return GLOB.legacy_emergency_shuttle_controller.transit_target_dock == GLOB.legacy_emergency_shuttle_centcom_dock
+	return GLOB.legacy_emergency_shuttle_controller.is_in_transit_towards_home()
 
 /datum/controller/subsystem/emergencyshuttle/proc/get_status_panel_eta()
 	if (online())
@@ -244,8 +244,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 			return "ETA-[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 
 		if (waiting_to_leave())
-			if (shuttle.moving_status == SHUTTLE_WARMUP)
-				return "Departing..."
+			switch(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
+				if(SHUTTLE_TRANSIT_STAGE_TAKEOFF, SHUTTLE_TRANSIT_STAGE_UNDOCK)
+					return "Departing..."
 
 			var/timeleft = estimate_launch_time()
 			return "ETD-[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]"

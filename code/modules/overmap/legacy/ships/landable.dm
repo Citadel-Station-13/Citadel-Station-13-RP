@@ -17,13 +17,19 @@
 /**
  * checks if we're free-flighting
  *
- * if not, we're probably landed
+ * if not, we're probably, but not provably, landed
+ *
+ * todo: use a get_flight_status() unified proc for overmap entities with enums
  */
 /obj/overmap/entity/visitable/ship/landable/proc/is_in_freeflight()
 	#warn impl
 
 /**
  * checks if we've landed
+ *
+ * if not, we're probably, but not provably, in freeflight
+ *
+ * todo: use a get_flight_status() unified proc for overmap entities with enums
  */
 /obj/overmap/entity/visitable/ship/landable/proc/is_landed()
 	#warn impl
@@ -53,15 +59,15 @@
  * called if we're the last to leave a level and it should be disposed
  */
 /obj/overmap/entity/visitable/ship/landable/proc/dangerously_dispose_flight_level()
-	return SSovermaps.dispose_flight_level(owned_level, src)
+	#warn impl
 
 /**
  * Only call right before we jump to it. We don't want flight levels floating around.
  */
-/obj/overmap/entity/visitable/ship/landable/proc/make_flight_level()
+/obj/overmap/entity/visitable/ship/landable/proc/ensure_flight_level_exists()
 	. = FALSE
 	ASSERT(isnull(owned_level))
-	owned_level = SSovermaps.allocate_flight_level()
+	SSovermaps.assign_flight_level(src)
 	ASSERT(!isnull(owned_level))
 
 #warn below

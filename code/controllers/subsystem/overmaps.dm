@@ -15,7 +15,9 @@ SUBSYSTEM_DEF(overmaps)
 	/// currently in-use shuttle flight levels
 	var/list/datum/map_level/shuttle/used_flight_levels = list()
 
-/datum/controller/subsystem/overmaps/proc/allocate_flight_level(obj/overmap/entity/visitable/ship/landable/leader)
+/datum/controller/subsystem/overmaps/proc/assign_flight_level(obj/overmap/entity/visitable/ship/landable/leader)
+	if(length(free_flight_levels))
+		var/datum/map_level/shuttle/level = free_flight_levels[1]
 	var/datum/map_level/shuttle/creating = new
 	SSmapping.load_level(creating)
 	src.owned_level = creating
@@ -27,6 +29,22 @@ SUBSYSTEM_DEF(overmaps)
 	#warn impl
 
 /datum/controller/subsystem/overmaps/proc/clear_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave)
+	ASSERT(level.initialized)
+	ASSERT(level.z_index)
+
+	var/list/turf/clearing_turfs = Z_TURFS(level.z_index)
+	var/list/atom/movable/clearing_movables = list()
+	var/area/move_to_area = unique_area_of_type(/area/space)
+	var/deleted = 0
+	var/cycles_so_far = 0
+
+	do
+
+	while()
+
+	// finished, finalize
+	move_to_area.take_turfs(clearing_turfs)
+	return deleted
 
 /datum/controller/subsystem/overmaps
 //* LEGACY STUFF BELOW THIS LINE
