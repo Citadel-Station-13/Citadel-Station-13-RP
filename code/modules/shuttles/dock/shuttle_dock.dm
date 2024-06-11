@@ -153,7 +153,7 @@
 	/// if a shuttle still cannot fit when centered,
 	/// uhh,
 	/// idk lol i'll just call it 'undefined behavior' when shit explodes
-	///
+	///p
 	/// note: centered docking counts as 'nonaligned docking',
 	///       meanining shuttle hooks like airlocks won't count it as docked.
 	var/starting_shuttle_always_center = FALSE

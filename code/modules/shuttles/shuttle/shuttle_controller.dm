@@ -605,6 +605,16 @@
 /datum/shuttle_controller/proc/on_transit_end(datum/shuttle_transit_cycle/cycle, status)
 	return
 
+//* Transit - Access *//
+
+/**
+ * Get transit stage
+ */
+/datum/shuttle_controller/proc/get_transit_stage()
+	if(isnull(transit_cycle))
+		return SHUTTLE_TRANSIT_STAGE_IDLE
+	return transit_cycle.stage
+
 //* Interface *//
 
 /datum/shuttle_controller/ui_data(mob/user, datum/tgui/ui)
@@ -625,3 +635,69 @@
 /datum/shuttle_controller/proc/push_ui_location()
 	#warn uh oh
 	return
+
+//* Interface - Authorization *//
+
+/// Specifications for 'actor'
+///
+/// * Actor must always be the person who accesses the UI that's then checking this
+/// * Actor should be null if something is logically 'abstracted' enough that an actor isn't directly controlling the shuttle / interfacing with it
+
+/// Specifications for 'endpoint'
+///
+/// todo: < control columns aren't actually implemented yet, this is just here so we know what to do when they are. >
+///
+/// * Shuttle control consoles return themselves
+/// * Overmap control consoles return the control column they're accessing the shuttle with
+/// * Shuttle / Overmaps control augments return the control column they're accessing the shuttle with
+/// * Admin panels return the admin holder (/datum/holder) that they belong to / are being called from
+
+/**
+ * checks if a user with a given set of flags should be allowed to abort a transit cycle
+ *
+ * * you are responsible for checking transit stage
+ *
+ * @params
+ * * authorization - SHUTTLE_AUTHORIZATION_* flags
+ * * actor - actor tuple; optional
+ * * endpoint - the accessing control source; e.g. an overmaps column, a shuttle console, or an admin holder
+ *
+ * @return TRUE if we are allowed to toss the current transit cycle
+ */
+/datum/shuttle_controller/proc/check_auth_abort_transit(authorization, datum/event_args/actor/actor, datum/endpoint)
+	#warn impl
+
+/**
+ * checks if a user with a given set of flags should be allowed to force the shuttle to depart
+ *
+ * @params
+ * * authorization - SHUTTLE_AUTHORIZATION_* flags
+ * * actor - actor tuple; optional
+ * * endpoint - the accessing control source; e.g. an overmaps column, a shuttle console, or an admin holder
+ *
+ * @return NONE | SHUTTLE_AUTHORIZE_TO_SOFT_FORCE | SHUTTLE_AUTHORIZE_TO_HARD_FORCE
+ */
+/datum/shuttle_controller/proc/check_auth_force_launch(authorization, datum/event_args/actor/actor, datum/endpoint)
+	#warn impl
+
+/**
+ * checks if a user with a given set of flags should be allowed to perform manual landing
+ *
+ * * anchor_turf, anchor_direction is only needed when someone is attempting to finalize a landing operation
+ * * they will not be provided for checking if someone should be allowed to launch a shuttle docker
+ *
+ * @params
+ * * authorization - SHUTTLE_AUTHORIZATION_* flags
+ * * actor - actor tuple; optional
+ * * endpoint - the accessing control source; e.g. an overmaps column, a shuttle console, or an admin holder
+ * * anchor_turf - where the anchor will be
+ * * anchor_direction - the direction the anchor (and therefoer shuttle) will be
+ *
+ * @return NONE | SHUTTLE_AUTHORIZED_TO_DESIGNATE_MANUAL_LANDING | SHUTTLE_AUTHORIZED_TO_MANUAL_LAND_THERE
+ */
+/datum/shuttle_controller/proc/check_auth_manual_landing(authorization, datum/event_args/actor/actor, datum/endpoint)
+	#warn impl
+
+#warn auth for picking a dock
+#warn auth for changing codes
+#warn auth for beginning a launch / transit

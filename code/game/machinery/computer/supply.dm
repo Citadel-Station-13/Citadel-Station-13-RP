@@ -61,35 +61,28 @@
 	var/datum/shuttle/shuttle = GLOB.legacy_cargo_shuttle
 	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 	if(shuttle)
-		if(shuttle.is_in_transit())
+		if(controller.is_in_transit())
 			shuttle_status["location"] = "In transit"
 			shuttle_status["mode"] = SUP_SHUTTLE_TRANSIT
 			shuttle_status["time"] = controller.legacy_eta_in_minutes()
-
 		else
 			shuttle_status["time"] = 0
 			if(controller.is_at_away())
-				if(shuttle.shuttle_docking_controller)
-					switch(shuttle.shuttle_docking_controller.get_docking_status())
-						if("docked")
-							shuttle_status["location"] = "Docked"
-							shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
-						if("undocked")
-							shuttle_status["location"] = "Undocked"
-							shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKED
-						if("docking")
-							shuttle_status["location"] = "Docking"
-							shuttle_status["mode"] = SUP_SHUTTLE_DOCKING
-							shuttle_status["force"] = shuttle.can_force()
-						if("undocking")
-							shuttle_status["location"] = "Undocking"
-							shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKING
-							shuttle_status["force"] = shuttle.can_force()
-
-				else
-					shuttle_status["location"] = "Station"
-					shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
-
+				switch(controller.docking_state)
+					if(SHUTTLE_DOCKING_STATE_DOCKED)
+						shuttle_status["location"] = "Docked"
+						shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
+					if(SHUTTLE_DOCKING_STATE_DOCKING)
+						shuttle_status["location"] = "Docking"
+						shuttle_status["mode"] = SUP_SHUTTLE_DOCKING
+						shuttle_status["force"] = shuttle.can_force()
+					if(SHUTTLE_DOCKING_STATE_UNDOCKING)
+						shuttle_status["location"] = "Undocking"
+						shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKING
+						shuttle_status["force"] = shuttle.can_force()
+					else
+						shuttle_status["location"] = "Undocked"
+						shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKED
 			else
 				shuttle_status["location"] = "Away"
 				shuttle_status["mode"] = SUP_SHUTTLE_AWAY
@@ -101,14 +94,13 @@
 			else
 				shuttle_status["launch"] = 0
 
-		switch(shuttle.moving_status)
-			if(SHUTTLE_IDLE)
-				shuttle_status["engine"] = "Idle"
-			if(SHUTTLE_WARMUP)
+		switch(shuttle.controller.get_transit_stage())
+			if(SHUTTLE_TRANSIT_STAGE_TAKEOFF)
 				shuttle_status["engine"] = "Warming up"
-			if(SHUTTLE_INTRANSIT)
+			if(SHUTTLE_TRANSIT_STAGE_FLIGHT)
 				shuttle_status["engine"] = "Engaged"
-
+			else
+				shuttle_status["engine"] = "Idle"
 	else
 		shuttle["mode"] = SUP_SHUTTLE_ERROR
 

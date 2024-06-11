@@ -39,6 +39,8 @@
 
 //* transit stages
 
+/// not doing anything right now
+#define SHUTTLE_TRANSIT_STAGE_IDLE 0
 /// undocking
 #define SHUTTLE_TRANSIT_STAGE_UNDOCK 1
 /// taking off

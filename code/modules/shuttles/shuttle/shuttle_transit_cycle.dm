@@ -11,7 +11,7 @@
 /datum/shuttle_transit_cycle
 	//* state / processing *//
 	/// current stage
-	var/transit_stage
+	var/stage
 	/// behavior flags
 	var/transit_flags = NONE
 	/// the controller we're executing on
@@ -156,16 +156,16 @@
 	src.target_direction = direction
 
 /datum/shuttle_transit_cycle/proc/is_initialized()
-	return !isnull(transit_stage)
+	return !isnull(stage)
 
 /**
  * call to setup cycle
- * 
+ *
  * this should be called before being fed into run_transit_cycle on shuttle controllers!
  */
 /datum/shuttle_transit_cycle/proc/initialize()
-	ASSERT(isnull(transit_stage))
+	ASSERT(isnull(stage))
 
-	transit_stage = SHUTTLE_TRANSIT_STAGE_UNDOCK
+	stage = SHUTTLE_TRANSIT_STAGE_UNDOCK
 
 #warn oh no
