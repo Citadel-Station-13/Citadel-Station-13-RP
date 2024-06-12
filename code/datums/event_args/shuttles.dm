@@ -28,7 +28,12 @@
 
 	/// Are we forcefully attempting to proceed?
 	var/forcing = FALSE
-	/// Are we recovering from a bad dock operation?
+	/// Are we dangerously attempting to force?
+	///
+	/// * 'forcing' will only kick out non-dangerous hooks
+	/// * 'dangerously_forcing' will kick out all hooks that can be forced
+	var/dangerously_forcing = FALSE
+	/// Are we recovering from a failed dock operation?
 	var/recovering = FALSE
 	/// did we succeed?
 	var/succeeded = FALSE
@@ -38,7 +43,7 @@
 	/// timeout set on us
 	var/timeout_duration
 	/// world.time we will time out on
-	var/timeout_time
+	var/timeout_at
 
 /datum/event_args/shuttle/Destroy()
 	if(!finished)
@@ -98,6 +103,12 @@
  * * On success, post-landing is fired
  * * On failure, post-takeoff is fired on the dock the shuttle was landing onwith recovery.
  * * On failure, post-landing is fired on the dock the shuttle was taking off from with recovery.
+ *
+ * ## Notes
+ *
+ * * Only called by controller and managed transit cycles. This is not a low-level hook
+ * * Direct shuttle translation calls will not call this.
+ * * For things that reference each other / connect to a shuttle, please hook translation hooks to ensure disconnection.
  */
 #warn how to deal with takeoff/landing?
 /datum/event_args/shuttle/dock
@@ -167,17 +178,15 @@
  *
  * * only called on shuttle side hooks
  * * cannot be blocked
+ * * called even if a controller is not involved, as these are considered low-level hooks.
  */
 /datum/event_args/shuttle/translation
 	blockable = FALSE
-	/// shuttle port being used, if any
-	var/obj/shuttle_port/from_shuttle_port
-	/// the dock in question, if any
-	var/obj/shuttle_dock/from_dock
-	/// shuttle port being used, if any
-	var/obj/shuttle_port/to_shuttle_port
-	/// the dock in question, if any
-	var/obj/shuttle_dock/to_dock
+
+	/// list(x, y, z, dir) of anchor pre-move
+	var/list/old_location
+	/// list(x, y, z, dir) of anchor post-move
+	var/list/new_location
 
 /datum/event_args/shuttle/translation/pre_move
 

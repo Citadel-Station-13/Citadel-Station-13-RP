@@ -27,6 +27,10 @@
 //* transit callback status
 
 /// at destination
+///
+/// * this is purely a 'we are at destination'. we do not need a successful docking
+/// * as an example, if we land on a dock, but don't have codes, this is still successful!
+/// * again, this is only the transit status, not the docking status!
 #define SHUTTLE_TRANSIT_STATUS_SUCCESS 1
 /// aborted; destination was blocked on arrival
 #define SHUTTLE_TRANSIT_STATUS_BLOCKED 2

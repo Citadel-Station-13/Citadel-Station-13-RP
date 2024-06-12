@@ -380,7 +380,11 @@
 /datum/shuttle_controller/proc/run_transit_cycle_impl(datum/shuttle_transit_cycle/cycle)
 	SHOULD_NOT_SLEEP(TRUE)
 	PRIVATE_PROC(TRUE)
-	#warn impl
+	// clean up anything left
+	terminate_transit(SHUTTLE_TRANSIT_STATUS_REDIRECTED)
+	// initialize & start
+	cycle.initialize()
+	cycle.start()
 
 /**
  * immediate transit towards a specific dock
@@ -390,6 +394,7 @@
  * * this means if anything takes longer than that it's immediately forced past.
  * * this does not flag the transit as DO_NOT_INTERRUPT, so if [transit_time] isn't instant the user can abort this!
  * * mostly a helper proc
+ * * in-progress transits are terminated and the new transit immediately starts.
  */
 /datum/shuttle_controller/proc/perform_immediate_transit(
 	obj/shuttle_dock/dock,
@@ -420,6 +425,8 @@
 
 /**
  * normal transit cycle towards a specific dock.
+ *
+ * * in-progress transits are terminated and the new transit immediately starts.
  */
 /datum/shuttle_controller/proc/transit_towards_dock(
 	obj/shuttle_dock/dock,
@@ -449,11 +456,40 @@
 		transit_time,
 		jump_time,
 	)
-	cycle.initialize()
-	return run_transit_cycle(cycle)
 	cycle.set_transit_flags(transit_flags)
 	cycle.set_source_traversal_flags(traversal_flags_source)
 	cycle.set_target_traversal_flags(traversal_flags_target)
+	return run_transit_cycle(cycle)
+
+/**
+ * abort an in progress transit cycle gracefully
+ *
+ * @return TRUE if either successful or transit doesn't exist; FALSE if failed / too late to abort
+ */
+/datum/shuttle_controller/proc/asynchronously_abort_transit()
+	SHOULD_NOT_SLEEP(TRUE)
+	return transit_cycle?.abort() || FALSE
+
+/**
+ * aborts an in progress transit cycle gracefully
+ *
+ * blocks on the cycle aborting
+ *
+ * @return TRUE if either successful or transit doesn't exist; FALSE if failed / too late to abort
+ */
+/datum/shuttle_controller/proc/synchronously_abort_transit()
+	var/datum/shuttle_transit_cycle/in_progress = transit_cycle
+	. = transit_cycle?.abort() || FALSE
+	if(!.)
+		return
+	UNTIL(in_progress != transit_cycle)
+
+/**
+ * immediately terminates an in progress transit cycle. asynchronous.
+ */
+/datum/shuttle_controller/proc/terminate_transit()
+	SHOULD_NOT_SLEEP(TRUE)
+	transit_cycle?.terminate()
 
 #warn below
 
@@ -487,12 +523,7 @@
 	dock.inbound = src
 	// jump into transit
 	shuttle.move_to_transit()
-	// set variables
-	transit_target_dock = dock
-	transit_target_centered_mode = centered
-	transit_target_direction = direction
-	transit_target_port = align_with_port
-
+	//
 	if(islist(on_transit_callbacks))
 	else if(!isnull(on_transit_callbacks))
 		on_transit_callbacks = list(on_transit_callbacks)
@@ -505,29 +536,6 @@
 	transit_visual_timer_id = addtimer(CALLBACK(src, PROC_REF(make_transit_warning_visuals)), max(0, time - 4.9 SECONDS), TIMER_STOPPABLE)
 	on_transit_begin(transit_target_dock, redirected)
 	return TRUE
-
-/**
- * @return FALSE if we're not in transit
- */
-/datum/shuttle_controller/proc/register_transit_callback(datum/callback/cb)
-	if(!is_in_transit())
-		return FALSE
-	transit_finish_callbacks += cb
-	return TRUE
-
-/datum/shuttle_controller/proc/make_transit_warning_visuals()
-	var/list/motion = shuttle.anchor.calculate_resultant_motion_from_docking(
-		transit_target_dock,
-		align_with_port = transit_target_port,
-		centered = transit_target_centered_mode,
-		direction = transit_target_direction,
-	)
-	// todo: can we like, make something that isn't an /obj? maybe a turf overlay? maybe vis contents?
-	transit_warning_visuals = list()
-	// todo: leave holes where the shuttle's geometry isn't so this isn't just an AABB bounding box of visuals.
-	for(var/turf/turf as anything in shuttle.anchor.aabb_ordered_turfs_at(motion, motion[4]))
-		var/obj/effect/temporary_effect/shuttle_landing/landing_effect = new(turf)
-		transit_warning_visuals += landing_effect
 
 /datum/shuttle_controller/proc/finish_transit()
 	ASSERT(transit_target_dock)
@@ -548,49 +556,12 @@
 	on_transit_success(transit_target_dock)
 	cleanup_transit()
 
-/**
- * stops transiting towards the current dock
- *
- * **we will be orphaned in transit space upon this call.**
- */
-/datum/shuttle_controller/proc/abort_transit(redirected)
-	if(!is_in_transit())
-		return FALSE
-	for(var/datum/callback/callback in transit_finish_callbacks)
-		callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_ABORTED)
-	on_transit_abort(transit_target_dock, redirected)
-	cleanup_transit()
-	return TRUE
-
-/datum/shuttle_controller/proc/cleanup_transit()
-	transit_target_dock = null
-	transit_target_centered_mode = null
-	transit_target_direction = null
-	transit_target_port = null
-	transit_finish_callbacks = null
-	if(transit_timer_id)
-		deltimer(transit_timer_id)
-	if(transit_visual_timer_id)
-		deltimer(transit_visual_timer_id)
-	for(var/obj/effect/temporary_effect/shuttle_landing/visual as anything in transit_warning_visuals)
-		if(QDELETED(visual))
-			continue
-		qdel(visual)
-	transit_warning_visuals = null
-
-/**
- * checks if we're in transit towards a dock
- * not if the shuttle is in transit space, but if **we**, the controller, have a transit queued.
- */
-/datum/shuttle_controller/proc/is_in_transit()
-	return !isnull(transit_timer_id)
-
 #warn above
 
 //* Transit - Hooks *//
 
 /**
- * called on transit begint
+ * called on transit begin by the cycle
  *
  * @params
  * * cycle - the transit cycle
@@ -600,7 +571,7 @@
 	return
 
 /**
- * called on transit success
+ * called on transit termination by the cycle
  *
  * @params
  * * cycle - the transit cycle
@@ -608,6 +579,20 @@
  */
 /datum/shuttle_controller/proc/on_transit_end(datum/shuttle_transit_cycle/cycle, status)
 	return
+
+/**
+ * registers a callback to be fired when transit ends
+ *
+ * @params
+ * * cb - a callback or a list of callbacks
+ *
+ * @return FALSE if we're not in transit
+ */
+/datum/shuttle_controller/proc/register_transit_callback(datum/callback/cb)
+	if(!is_in_transit())
+		return FALSE
+	transit_cycle.finish_callbacks += cb
+	return TRUE
 
 //* Transit - Access *//
 

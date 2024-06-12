@@ -550,6 +550,7 @@
  *
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
+ * * does not fire off shuttle hooks; shuttle transit cycles and controllers do that.
  *
  * @params
  * * dock - the dock to use
@@ -573,12 +574,13 @@
  *
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
+ * * does not fire off shuttle hooks; shuttle transit cycles and controllers do that.
  * * DO NOT USE THIS FOR DOCKING. It only handles undocking, not docking!
  *
  * @return TRUE / FALSE on success / failure
  */
 /datum/shuttle/proc/aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
-	#warn uhh
+	#warn unbind from dock
 
 	// get ordered turfs
 	if(isnull(use_before_turfs))
@@ -596,6 +598,7 @@
  * immediate shuttle move to a turf
  *
  * * all translations must use this.
+ * * warning: this does not fire hooks or do anything. [aligned_translation()] does that. seriously, do not mess with this.
  * * warning: absolutely no safety checks are done. none of the aftereffects are handled either. don't use this.
  * * this means if you fuck up, things just flat out get annihilated or scrambled. the round might even crash, and you might get angry Discord messages.
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
@@ -608,6 +611,7 @@
  * ports should generally be centered.
  */
 /datum/shuttle/proc/unsafe_aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+	PRIVATE_PROC(TRUE)
 	// cache old data
 	var/turf/move_from = get_turf(anchor)
 	ASSERT(isturf(move_from))
@@ -649,6 +653,14 @@
 			old_anchor_location[4],
 			new_anchor_location[4],
 		)
+
+	// - POINT OF NO RETURN -//
+
+	// fire premove hook
+	var/datum/event_args/shuttle/translation/pre_move/pre_move_event = new
+	pre_move_event.old_location = old_anchor_location
+	pre_move_event.new_location = new_anchor_location
+	fire_translation_hooks(pre_move_event)
 
 	// move ports and anchors
 	anchor.abstract_move(locate(new_anchor_location[1], new_anchor_location[2], new_anchor_location[3]))
@@ -756,6 +768,16 @@
 		= translating_forward_width \
 		= translating_side_length \
 		= null
+
+	// fire postmove hook
+	var/datum/event_args/shuttle/translation/post_move/post_move_event = new
+	post_move_event.old_location = old_anchor_location
+	post_move_event.new_location = new_anchor_location
+	fire_translation_hooks(post_move_event)
+
+	// -- Finished -- //
+
+	pass()
 
 //* Docking - Bounding Checks *//
 
@@ -871,6 +893,18 @@
 		// no landing indoors unless it's a dock
 		return FALSE
 	return TRUE
+
+//* Hooks *//
+
+/datum/shuttle/proc/fire_translation_hooks(datum/event_args/shuttle/translation/event)
+	SHOULD_NOT_SLEEP(TRUE)
+	for(var/datum/shuttle_hook/hook as anything in hooks)
+		hook.on_translation_event(event)
+
+/datum/shuttle/proc/fire_docking_hooks(datum/event_args/shuttle/dock/event)
+	SHOULD_NOT_SLEEP(TRUE)
+	for(var/datum/shuttle_hook/hook as anything in hooks)
+		hook.on_dock_event(event)
 
 //* Location *//
 

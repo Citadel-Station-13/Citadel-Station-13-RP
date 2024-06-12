@@ -11,13 +11,17 @@
 /datum/shuttle_transit_cycle
 	//* state / processing *//
 	/// current stage
-	var/stage
+	var/stage = SHUTTLE_TRANSIT_STAGE_IDLE
 	/// behavior flags
 	var/transit_flags = NONE
 	/// the controller we're executing on
 	var/datum/shuttle_controller/controller
 	/// running?
 	var/running = FALSE
+	/// aborting?
+	var/aborting = FALSE
+	/// finished? also if aborted; we do not allow reuse of a cycle for now
+	var/finished = FALSE
 
 	//* hooking *//
 	/// callbacks for when transit is done
@@ -28,17 +32,6 @@
 	//* visuals *//
 	/// transit visuals
 	var/list/obj/effect/temporary_effect/warning_visuals
-
-	//* arbitrary information *//
-	/// source information;
-	/// this is arbitrarily set by a shuttle controller type
-	/// and fed back into it on transit failure. this tells the shuttle controller
-	/// where to send the shuttle should things fail or get aborted.
-	///
-	/// * example: overmap controller usually feeds in the target overmap entity, so if transit is interrupted we go back to space ontop of it
-	/// * this is also used if someone aborts the transit!
-	var/abort_source_hint
-	#warn hook
 
 	//* configuration *//
 	/// how long to spend in transit
@@ -74,7 +67,24 @@
 	var/arrival_time
 
 	//* target information *//
-	#warn how to handle overmaps? their docks are lazy
+	/// for lazy docking support - dock has been resolved
+	var/target_resolved = FALSE
+	/// for lazy docking support - the callback to call for resolving the target
+	///
+	/// * called past PNR (so when shuttle is about to translate)
+	/// * called with (shuttle transit cycle)
+	/// * the callback should set [target_dock], [target_centered], [target_direction], [target_port] on us as needed
+	/// * the callback should return FALSE if it fails to resolve target
+	/// * it is a fatal error to fail to resolve target on the final translation to the new dock. if this happens, the cycle is terminated and the shuttle orphaned.
+	var/datum/callback/target_resolver
+	/// called if we are aborted to resolve where to go
+	///
+	/// * if this doesn't exist, we are orphaned (terminated).
+	/// * if this doesn't exist, we are by default, DO_NOT_INTERRUPT
+	/// * the callback should set [target_dock], [target_centered], [target_direction], [target_port] on us as needed
+	/// * the callback should return FALSE if it fails to resolve target
+	/// * if this fails to resolve target, we are orphaned (terminated).
+	var/datum/callback/target_aborted_resolver
 	/// dock we're going towards
 	///
 	/// this dock will have us set as inbound, which should
@@ -117,6 +127,17 @@
 	src.transit_duration = transit_time
 	src.jump_duration = jump_time
 
+/datum/shuttle_transit_cycle/Destroy()
+	if(!finished)
+		terminate()
+	return ..()
+
+/**
+ * callbacks are immediately invoked if we are already done.
+ */
+/datum/shuttle_transit_cycle/proc/register_on_finish(list/datum/callback/callback_or_callbacks)
+	#warn impl
+
 /datum/shuttle_transit_cycle/proc/set_transit_flags(new_flags)
 	src.transit_flags = new_flags
 
@@ -151,10 +172,20 @@
  */
 /datum/shuttle_transit_cycle/proc/set_target(obj/shuttle_dock/dock, obj/shuttle_port/with_port, centered, direction)
 	#warn check for in-transit
+	src.target_resolved = TRUE
 	src.target_dock = dock
 	src.target_port = with_port
 	src.target_centered = centered
 	src.target_direction = direction
+
+/**
+ * for overmaps controllers.
+ */
+/datum/shuttle_transit_cycle/proc/set_lazy_target(datum/callback/target_resolver)
+	#warn check for in-transit
+	src.target_resolver = target_resolved
+	src.target_resolved = FALSE
+	src.target_centered = src.target_direction = src.target_dock = src.target_port = null
 
 /datum/shuttle_transit_cycle/proc/is_initialized()
 	return !isnull(stage)
@@ -166,7 +197,126 @@
  */
 /datum/shuttle_transit_cycle/proc/initialize()
 	ASSERT(isnull(stage))
+	// nothing yet
 
+/**
+ * called right before we jump out of our transit dock (or directly to the destination if not using transit)
+ *
+ * * can be called in other circumstances too, but the callback is free to refuse if it isn't right before our arrival.
+ */
+/datum/shuttle_transit_cycle/proc/resolve_target()
+	SHOULD_NOT_SLEEP(TRUE) // absolutely fucking not!
+	if(target_resolved)
+		return
+	if(!target_resolver.Invoke(src))
+		return
+	if(!target_dock)
+		stack_trace("target resolver didn't fail yet we don't have a dock..?")
+		return
+	target_resolved = TRUE
+
+/**
+ * immediate termination
+ *
+ * also called on finish!
+ */
+/datum/shuttle_transit_cycle/proc/terminate(status)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(isnull(status))
+		if(aborting)
+			status = SHUTTLE_TRANSIT_STATUS_CANCELLED
+		else
+			status = SHUTTLE_TRANSIT_STATUS_FAILED
+	#warn fire callbacks
+	if(finished)
+		return TRUE // already should be gone
+	finished = TRUE
+	cleanup()
+	qdel(src)
+	return TRUE
+
+/**
+ * cleans everything up
+ */
+/datum/shuttle_transit_cycle/proc/cleanup()
+	cleanup_warning_visuals()
+
+/**
+ * graceful abort, tries to kick the shuttle to elsewhere
+ *
+ * @return TRUE / FALSE
+ */
+/datum/shuttle_transit_cycle/proc/abort()
+	SHOULD_NOT_SLEEP(TRUE)
+	if(aborting)
+		return TRUE // already aborting
+	switch(stage)
+		if(SHUTTLE_TRANSIT_STAGE_DOCK)
+			return FALSE
+	src.target_resolved = FALSE
+	src.target_centered = src.target_direction = src.target_dock = src.target_port = null
+	if(!src.target_aborted_resolver?.Invoke(src))
+		terminate()
+	if(!src.target_dock)
+		terminate()
+		stack_trace("didn't fail to resolve abort dock, but still no dock")
+	aborting = TRUE
+	return TRUE
+
+/datum/shuttle_transit_cycle/proc/start()
+	SHOULD_NOT_SLEEP(TRUE)
+	#warn impl
+
+/datum/shuttle_transit_cycle/proc/why_isnt_this_a_subsystem()
+	if(finished)
+		CRASH("attempted to move to main loop while already finished")
+
+	// ensure we're in idle
+	ASSERT(stage == SHUTTLE_TRANSIT_STAGE_IDLE)
+
+	// undock
 	stage = SHUTTLE_TRANSIT_STAGE_UNDOCK
 
+	// takeoff
+	stage = SHUTTLE_TRANSIT_STAGE_TAKEOFF
+
+	// transit
+	stage = SHUTTLE_TRANSIT_STAGE_FLIGHT
+
+	// land
+	stage = SHUTTLE_TRANSIT_STAGE_LANDING
+
+	// dock
+	stage = SHUTTLE_TRANSIT_STAGE_DOCK
+
+	#warn impl
+
+	// we got through everything, fire callbacks
+	terminate(SHUTTLE_TRANSIT_STATUS_SUCCESS)
+
 #warn oh no
+
+//* Visuals *//
+
+/datum/shuttle_transit_cycle/proc/make_warning_visuals()
+	resolve_target()
+	cleanup_warning_visuals()
+
+	if(!target_resolved)
+		return
+
+	var/list/motion = controller.shuttle.anchor.calculate_resultant_motion_from_docking(
+		target_dock,
+		target_port,
+		target_centered,
+		target_direction,
+	)
+
+	warning_visuals = list()
+
+	for(var/turf/turf as anything in shuttle.anchor.aabb_ordered_turfs_at(motion, motion[4]))
+		var/obj/effect/temporary_effect/shuttle_landing/landing_effect = new(turf)
+		warning_visuals += landing_effect
+
+/datum/shuttle_transit_cycle/proc/cleanup_warning_visuals()
+	QDEL_LIST(warning_visuals)
