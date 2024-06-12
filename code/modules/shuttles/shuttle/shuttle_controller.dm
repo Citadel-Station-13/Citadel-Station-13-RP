@@ -381,10 +381,13 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	PRIVATE_PROC(TRUE)
 	// clean up anything left
-	terminate_transit(SHUTTLE_TRANSIT_STATUS_REDIRECTED)
+	var/redirected = FALSE
+	if(transit_cycle)
+		terminate_transit(SHUTTLE_TRANSIT_STATUS_REDIRECTED)
+		redirected = TRUE
 	// initialize & start
-	cycle.initialize()
-	cycle.start()
+	cycle.initialize(src)
+	cycle.start(redirected)
 
 /**
  * immediate transit towards a specific dock
@@ -506,19 +509,6 @@
 	transit_visual_timer_id = addtimer(CALLBACK(src, PROC_REF(make_transit_warning_visuals)), max(0, time - 4.9 SECONDS), TIMER_STOPPABLE)
 	on_transit_begin(transit_target_dock, redirected)
 	return TRUE
-
-/datum/shuttle_controller/proc/finish_transit()
-	ASSERT(transit_target_dock)
-
-	. = shuttle.dock(
-		transit_target_dock,
-		align_with_port = transit_target_port,
-		centered = transit_target_centered_mode,
-		direction = transit_target_direction,
-	)
-	
-	on_transit_success(transit_target_dock)
-	cleanup_transit()
 
 #warn above
 

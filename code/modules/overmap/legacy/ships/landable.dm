@@ -14,6 +14,8 @@
 	/// * this is if we are owning a flight level
 	var/datum/map_level/shuttle/owned_level
 
+/obj/overmap/entity/visitable/ship/landable
+
 /**
  * checks if we're free-flighting
  *
@@ -35,15 +37,24 @@
 	#warn impl
 
 /**
- * called when our shuttle is attempting to move to freeflight
- */
-/obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_to_freeflight()
-	#warn impl
-
-/**
  * called when our shuttle enters a certain zlevel
  */
+#warn hook
 /obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_to_level(z)
+	var/obj/overmap/entity/currently_inside
+	var/obj/overmap/entity/going_into = get_overmap_entity(z)
+
+	// we have to detect this from our state because by the time this proc is called the shuttle has already moved
+	if(istype(loc, /obj/overmap/entity))
+		currently_inside = loc
+
+	var/datum/map_level/level = SSmapping.ordered_levels[z]
+	var/datum/map_level/shuttle/flight_level
+	if(istype(level, /datum/map_level/shuttle))
+		// we're in someone's freeflight level
+		flight_level = level
+
+
 	#warn impl
 
 /**

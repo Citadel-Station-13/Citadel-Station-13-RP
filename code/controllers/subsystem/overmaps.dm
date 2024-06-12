@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(overmaps)
 		level_baseturf = world.turf
 	for(var/turf/T as anything in clearing_turfs)
 		CHECK_TICK
-		if(istype(T, /turf/space))
+		if(istype(T, level_baseturf))
 			continue
 		T.ChangeTurf(level_baseturf, level_baseturf)
 	return deleted

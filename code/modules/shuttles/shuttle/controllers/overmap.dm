@@ -25,6 +25,25 @@
 /datum/shuttle_controller/overmap/push_ui_location()
 	. = ..()
 
-/datum/shuttle_controller/overmap/
+/datum/shuttle_controller/overmap/proc/transit_to_freeflight(
+	transit_flags,
+	source_traversal_flags,
+	target_traversal_flags,
+)
+	var/datum/shuttle_transit_cycle/cycle = new
+	cycle.set_lazy_target(
+		CALLBACK(src, PROC_REF(resolve_freeflight_for_transit)),
+		SHUTTLE_LAZY_TARGET_HINT_MOVE_TO_FREEFLIGHT,
+	)
+	cycle.set_transit_flags(transit_flags)
+	cycle.set_source_traversal_flags(source_traversal_flags)
+	cycle.set_target_traversal_flags(target_traversal_flags)
+	return run_transit_cycle(cycle)
+
+/datum/shuttle_controller/overmap/proc/resolve_freeflight_for_transit(datum/shuttle_transit_cycle/cycle)
+	ASSERT(istype(entity, /obj/overmap/entity/visitable/landable))
+	var/obj/overmap/entity/visitable/landable/casted = entity
+	#warn impl
+	return TRUE
 
 #warn impl all

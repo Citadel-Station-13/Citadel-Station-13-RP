@@ -16,6 +16,8 @@
 	var/transit_flags = NONE
 	/// the controller we're executing on
 	var/datum/shuttle_controller/controller
+	/// our shuttle
+	var/datum/shuttle/shuttle
 	/// running?
 	var/running = FALSE
 	/// aborting?
@@ -69,6 +71,10 @@
 	//* target information *//
 	/// for lazy docking support - dock has been resolved
 	var/target_resolved = FALSE
+	/// lazy target resolution hint; arbitrarily set by something calling the transit
+	///
+	/// * also useful for UI!
+	var/target_resolver_hint
 	/// for lazy docking support - the callback to call for resolving the target
 	///
 	/// * called past PNR (so when shuttle is about to translate)
@@ -132,11 +138,10 @@
 		terminate()
 	return ..()
 
-/**
- * callbacks are immediately invoked if we are already done.
- */
 /datum/shuttle_transit_cycle/proc/register_on_finish(list/datum/callback/callback_or_callbacks)
-	#warn impl
+	if(finished)
+		CRASH("tried to register callbacks on a finished cycle")
+	finish_callbacks += callback_or_callbacks
 
 /datum/shuttle_transit_cycle/proc/set_transit_flags(new_flags)
 	src.transit_flags = new_flags
@@ -173,6 +178,8 @@
 /datum/shuttle_transit_cycle/proc/set_target(obj/shuttle_dock/dock, obj/shuttle_port/with_port, centered, direction)
 	#warn check for in-transit
 	src.target_resolved = TRUE
+	src.target_resolver_hint = null
+	src.target_resolver = null
 	src.target_dock = dock
 	src.target_port = with_port
 	src.target_centered = centered
@@ -181,9 +188,10 @@
 /**
  * for overmaps controllers.
  */
-/datum/shuttle_transit_cycle/proc/set_lazy_target(datum/callback/target_resolver)
+/datum/shuttle_transit_cycle/proc/set_lazy_target(datum/callback/target_resolver, target_hint)
 	#warn check for in-transit
 	src.target_resolver = target_resolved
+	src.target_resolver_hint = target_hint
 	src.target_resolved = FALSE
 	src.target_centered = src.target_direction = src.target_dock = src.target_port = null
 
@@ -195,9 +203,11 @@
  *
  * this should be called before being fed into run_transit_cycle on shuttle controllers!
  */
-/datum/shuttle_transit_cycle/proc/initialize()
-	ASSERT(isnull(stage))
-	// nothing yet
+/datum/shuttle_transit_cycle/proc/initialize(datum/shuttle_controller/for_controller)
+	ASSERT(!running && !finished)
+
+	src.controller = for_controller
+	src.shuttle = for_controller.shuttle
 
 /**
  * called right before we jump out of our transit dock (or directly to the destination if not using transit)
@@ -222,6 +232,10 @@
  */
 /datum/shuttle_transit_cycle/proc/terminate(status)
 	SHOULD_NOT_SLEEP(TRUE)
+	if(finished)
+		CRASH("tried to terminate a finished cycle")
+	if(!running)
+		CRASH("tried to terminate a non-running cycle")
 	if(isnull(status))
 		if(aborting)
 			status = SHUTTLE_TRANSIT_STATUS_CANCELLED
@@ -229,10 +243,9 @@
 			status = SHUTTLE_TRANSIT_STATUS_FAILED
 	for(var/datum/callback/callback in finish_callbacks)
 		callback.InvokeAsync(controller, src, status)
-	#warn fire callbacks
-	if(finished)
-		return TRUE // already should be gone
+	shtutle.on_transit_end(src, status)
 	finished = TRUE
+	running = FALSE
 	cleanup()
 	qdel(src)
 	return TRUE
@@ -250,6 +263,10 @@
  */
 /datum/shuttle_transit_cycle/proc/abort()
 	SHOULD_NOT_SLEEP(TRUE)
+	if(finished)
+		CRASH("tried to abort a finished cycle")
+	if(!running)
+		CRASH("tried to abort a non-running cycle")
 	if(aborting)
 		return TRUE // already aborting
 	switch(stage)
@@ -265,8 +282,16 @@
 	aborting = TRUE
 	return TRUE
 
-/datum/shuttle_transit_cycle/proc/start()
+/datum/shuttle_transit_cycle/proc/start(redirected)
 	SHOULD_NOT_SLEEP(TRUE)
+	if(finished)
+		CRASH("tried to start a finished cycle")
+	if(running)
+		CRASH("tried to start a cycle twice")
+	running = TRUE
+	shuttle.on_transit_begin(src, redirected)
+	why_isnt_this_a_subsystem()
+
 	#warn impl
 
 /datum/shuttle_transit_cycle/proc/why_isnt_this_a_subsystem()
@@ -274,7 +299,9 @@
 		CRASH("attempted to move to main loop while already finished")
 
 	// ensure we're in idle
-	ASSERT(stage == SHUTTLE_TRANSIT_STAGE_IDLE)
+	if(stage != SHUTTLE_TRANSIT_STAGE_IDLE)
+		terminate()
+		CRASH("tried to enter loop without cycle status being idle")
 
 	// undock
 	stage = SHUTTLE_TRANSIT_STAGE_UNDOCK
@@ -287,6 +314,15 @@
 
 	// land
 	stage = SHUTTLE_TRANSIT_STAGE_LANDING
+
+	var/successful_docking = shuttle.dock(
+		target_dock,
+		target_port,
+		target_centered,
+		target_direction,
+	)
+
+	#warn handle non-successful
 
 	// dock
 	stage = SHUTTLE_TRANSIT_STAGE_DOCK
@@ -307,7 +343,7 @@
 	if(!target_resolved)
 		return
 
-	var/list/motion = controller.shuttle.anchor.calculate_resultant_motion_from_docking(
+	var/list/motion = shuttle.anchor.calculate_resultant_motion_from_docking(
 		target_dock,
 		target_port,
 		target_centered,

@@ -122,3 +122,8 @@
 )
 
 #warn DEFINE_BITFIELD
+
+//* 'lazy' target resolution hints
+
+/// going to overmaps
+#define SHUTTLE_LAZY_TARGET_HINT_MOVE_TO_FREEFLIGHT "freeflight"
