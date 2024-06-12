@@ -70,7 +70,7 @@ DEFINE_BITFIELD(movable_flags, list(
 	BITFIELD(MOVABLE_NO_THROW_SPEED_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_DAMAGE_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_SPIN),
-	BITFILED_NAMED("Prevent Deletion by Shuttle Orphaning", MOVABLE_NO_LOST_IN_SPACE),
+	BITFIELD_NAMED("Prevent Deletion by Shuttle Orphaning", MOVABLE_NO_LOST_IN_SPACE),
 ))
 
 // Flags for pass_flags. - Used in /atom/movable/var/pass_flags, and /atom/var/pass_flags_self

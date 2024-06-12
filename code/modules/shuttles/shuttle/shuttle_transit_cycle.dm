@@ -245,7 +245,7 @@
 			status = SHUTTLE_TRANSIT_STATUS_FAILED
 	for(var/datum/callback/callback in finish_callbacks)
 		callback.InvokeAsync(controller, src, status)
-	shtutle.on_transit_end(src, status)
+	shuttle.on_transit_end(src, status)
 	finished = TRUE
 	running = FALSE
 	cleanup()
@@ -291,7 +291,7 @@
 	if(running)
 		CRASH("tried to start a cycle twice")
 	running = TRUE
-	shuttle.on_transit_begin(src, redirected)
+	controller.on_transit_begin(src, redirected)
 	why_isnt_this_a_subsystem()
 
 	#warn impl
