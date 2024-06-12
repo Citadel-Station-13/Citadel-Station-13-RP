@@ -360,7 +360,7 @@
 //* bounding box *//
 
 /obj/shuttle_dock/proc/check_bounds()
-	if(QDELTING(src) || !loc)
+	if(QDELING(src) || !loc)
 		return FALSE
 	#warn ensure not out of bounds/nullspace.
 

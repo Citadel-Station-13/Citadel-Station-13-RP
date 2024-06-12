@@ -16,10 +16,10 @@ SUBSYSTEM_DEF(shuttle)
 	//* Docks
 	/// shuttle docks by type for non-id registration
 	//  todo: non-static, recover()?
-	var/static/list/dock_type_registry = list()
+	var/static/list/obj/shuttle_dock/dock_type_registry = list()
 	/// shuttle docks by id for id registration
 	//  todo: non-static, recover()?
-	var/static/list/dock_id_registry = list()
+	var/static/list/obj/shuttle_dock/dock_id_registry = list()
 	/// docks by zlevel
 	//  todo: non-static, recover()?
 	var/static/list/docks_by_level = list()
@@ -70,10 +70,10 @@ SUBSYSTEM_DEF(shuttle)
 		else
 			dock_type_registry[dock.type] = dock
 	if(dock.dock_id)
-		if(dock_id_registry[dock.id])
-			stack_trace("id collision between [dock] [COORD(dock)] and [dock_id_registry[dock.id]] [COORD(dock_id_registry[dock.id])] on [dock.id]")
+		if(dock_id_registry[dock.dock_id])
+			stack_trace("id collision between [dock] [COORD(dock)] and [dock_id_registry[dock.dock_id]] [COORD(dock_id_registry[dock.dock_id])] on [dock.dock_id]")
 		else
-			dock_id_registry[dock.id] = dock
+			dock_id_registry[dock.dock_id] = dock
 	docks_by_level[dock.z] += dock
 	dock.registered = TRUE
 	return TRUE
@@ -85,8 +85,8 @@ SUBSYSTEM_DEF(shuttle)
 		else
 			dock_type_registry -= dock.type
 	if(dock.dock_id)
-		if(dock_id_registry[dock.id] != dock)
-			stack_trace("dock id registry mismatch during unregister on [dock] [COORD(dock)] for [dock.id], got [dock_id_registry[dock.id]] [COORD(dock_id_registry[dock.id])]")
+		if(dock_id_registry[dock.dock_id] != dock)
+			stack_trace("dock id registry mismatch during unregister on [dock] [COORD(dock)] for [dock.dock_id], got [dock_id_registry[dock.dock_id]] [COORD(dock_id_registry[dock.dock_id])]")
 		else
 			dock_id_registry -= dock.dock_id
 	docks_by_level[dock.z] -= dock
@@ -108,7 +108,6 @@ SUBSYSTEM_DEF(shuttle)
 	ASSERT(istext(shuttle.id))
 	ASSERT(isnull(shuttle_id_registry[shuttle.id]))
 	shuttle_id_registry[shuttle.id] = shuttle
-	#warn impl
 
 //* Shuttle Templates *//
 
