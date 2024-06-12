@@ -102,7 +102,7 @@
 	var/registered = FALSE
 	/// do we register by type?
 	///
-	/// if we want to reference this dock by type, we must set this to TRUe.
+	/// if we want to reference this dock by type, we must set this to TRUE.
 	var/register_by_type = FALSE
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
@@ -272,7 +272,8 @@
 	unregister_dock()
 	. = ..()
 	if(!check_bounds())
-		stack_trace("shuttle dock got moved somewhere where its bounds fail checks.")
+		if(QDELING(src))
+			stack_trace("shuttle dock got moved somewhere where its bounds fail checks.")
 		return
 	register_dock()
 
@@ -359,6 +360,8 @@
 //* bounding box *//
 
 /obj/shuttle_dock/proc/check_bounds()
+	if(QDELTING(src) || !loc)
+		return FALSE
 	#warn ensure not out of bounds/nullspace.
 
 /obj/shuttle_dock/proc/init_bounds()
@@ -519,6 +522,24 @@
 	augmenting += round(augmenting[2] + (augmenting[4] - augmenting[2]) / 2) // 6
 	return augmenting
 
+/obj/shuttle_dock/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	// these aren't security issues
+	if(!raw_edit)
+		return ..()
+	// begin intercepts of dock id/registration
+	switch(var_name)
+		if(NAMEOF(src, dock_id))
+			if(SSshuttle.dock_id_registry[var_value] && SSshuttle.dock_id_registry[var_value] != src)
+				if(!mass_edit)
+					to_chat(usr, FORMAT_SERVER_ERROR("You cannot edit [src]'s dock id to [var_value] because another dock already has it."))
+				return FALSE
+			unregister_dock()
+		if(NAMEOF(src, register_by_type))
+			return FALSE // **no.**
+	. = ..()
+	switch(var_name)
+		if(NAMEOF(src, dock_id))
+			register_dock()
 
 //* grid moves handling - we don't move as nested shuttle support isn't a thing yet *//
 

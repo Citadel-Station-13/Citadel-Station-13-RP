@@ -60,11 +60,17 @@ DEFINE_BITFIELD(atom_flags, list(
 #define MOVABLE_NO_THROW_DAMAGE_SCALING (1<<1)
 /// Do not spin when thrown.
 #define MOVABLE_NO_THROW_SPIN           (1<<2)
+/// throw them out of the sky when a shuttle leaves
+/// aka 'don't just qdel this'
+///
+/// * INTEGRITY_INDESTRUCTIBLE does not imply this.
+#define MOVABLE_NO_LOST_IN_SPACE		(1<<3)
 
 DEFINE_BITFIELD(movable_flags, list(
 	BITFIELD(MOVABLE_NO_THROW_SPEED_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_DAMAGE_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_SPIN),
+	BITFILED_NAMED("Prevent Deletion by Shuttle Orphaning", MOVABLE_NO_LOST_IN_SPACE),
 ))
 
 // Flags for pass_flags. - Used in /atom/movable/var/pass_flags, and /atom/var/pass_flags_self

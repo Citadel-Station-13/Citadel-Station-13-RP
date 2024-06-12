@@ -58,7 +58,18 @@
 /// docking
 #define SHUTTLE_TRANSIT_STAGE_DOCK 5
 
-#warn DEFINE_ENUM
+DEFINE_ENUM("shuttle_transit_stages", list(
+	/datum/shuttle_transit_cycle = list(
+		"stage",
+	),
+), list(
+	ENUM("Idle", SHUTTLE_TRANSIT_STAGE_IDLE),
+	ENUM("Undocking", SHUTTLE_TRANSIT_STAGE_UNDOCK),
+	ENUM("Takeoff", SHUTTLE_TRANSIT_STAGE_TAKEOFF),
+	ENUM("Transit", SHUTTLE_TRANSIT_STAGE_FLIGHT),
+	ENUM("Landing", SHUTTLE_TRANSIT_STAGE_LANDING),
+	ENUM("Docking", SHUTTLE_TRANSIT_STAGE_DOCK),
+))
 
 //* transit flags
 
@@ -70,10 +81,18 @@
 #define SHUTTLE_TRANSIT_FLAG_NO_TRANSIT_ABORT (1<<1)
 /// do not obtain exclusive lock on dock
 ///
-/// * not doing this is very silly of you.
+/// * not doing this is very silly of you, but sometimes it's necessary
 #define SHUTTLE_TRANSIT_FLAG_NO_DOCK_MUTEX (1<<2)
 
-#warn DEFINE_BITFIELD
+DEFINE_BITFIELD_NEW("shuttle_transit_flags", list(
+	/datum/shuttle_transit_cycle = list(
+		"transit_flags",
+	),
+), list(
+	BITFIELD_NAMED("Disallow Abort", SHUTTLE_TRANSIT_FLAG_NO_ABORT),
+	BITFIELD_NAMED("Disallow Abort in Transit", SHUTTLE_TRANSIT_FLAG_NO_TRANSIT_ABORT),
+	BITFIELD_NAMED("No Exclusive Lock on Target Dock", SHUTTLE_TRANSIT_FLAG_NO_DOCK_MUTEX),
+))
 
 //* traversal flags
 
@@ -121,7 +140,21 @@
 	SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_TIMEOUT \
 )
 
-#warn DEFINE_BITFIELD
+DEFINE_BITFIELD("shuttle_traversal_flags", list(
+	/datum/shuttle_transit_cycle = list(
+		"source_traversal_flags",
+		"target_traversal_flags",
+	),
+), list(
+	BITFIELD_NAMED("Force Takeoff / Landing", SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL),
+	BITFIELD_NAMED("Force Takeoff / Landing on fail", SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_FAIL),
+	BITFIELD_NAMED("Force Takeoff / Landing on timeout", SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_TIMEOUT),
+	BITFIELD_NAMED("Force Takeoff / Landing safety", SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_SAFETY),
+	BITFIELD_NAMED("Force Docking / Undocking", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING),
+	BITFIELD_NAMED("Force Docking / Undocking on fail", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_FAIL),
+	BITFIELD_NAMED("Force Docking / Undocking on timeout", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_TIMEOUT),
+	BITFIELD_NAMED("Force Docking / Undocking safety", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_SAFETY),
+))
 
 //* 'lazy' target resolution hints
 

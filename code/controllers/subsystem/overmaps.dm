@@ -15,23 +15,75 @@ SUBSYSTEM_DEF(overmaps)
 	/// currently in-use shuttle flight levels
 	var/list/datum/map_level/shuttle/used_flight_levels = list()
 
-/datum/controller/subsystem/overmaps/proc/assign_flight_level(obj/overmap/entity/visitable/ship/landable/leader)
-	if(length(free_flight_levels))
-		var/datum/map_level/shuttle/level = free_flight_levels[1]
-	var/datum/map_level/shuttle/creating = new
-	SSmapping.load_level(creating)
-	src.owned_level = creating
-	. = creating
-	ASSERT(creating.loaded)
-	#warn impl
+//* Flight Levels *//
 
-/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave)
+/datum/controller/subsystem/overmaps/proc/assign_flight_level(obj/overmap/entity/visitable/ship/landable/leader)
+	// make sure they don't already have one
+	ASSERT(!leader.owned_level)
+	// get a free level or allocate a new one
+	var/datum/map_level/shuttle/assigning
+	if(length(free_flight_levels))
+		assigning = free_flight_levels[free_flight_levels.len]
+		free_flight_levels.len--
+	else
+		var/datum/map_level/shuttle/creating = new
+		SSmapping.load_level(creating)
+		assigning = creating
+	// mark as used
+	used_flight_levels += assigning
+	// assign them their level
+	leader.owned_level = assigning
+	// done
+	return TRUE
+
+/**
+ * called when the leader leaves their owned level
+ *
+ * we make a best estimate of where to send things on the level based on
+ *
+ * 1. where the leader is going
+ * 2. who is left on the level
+ *
+ * @params
+ * * level - the level now orphaned
+ * * leader - the leader who left
+ * * moving_into - (optional) the overmap entity the leader is going into
+ * * moving_to_level - (optional) the zlevel index the leader is goign to
+ * * hand_off_to - (optional) forcefully set which entity to hand this off to. this doesn't need to be set, we can autodetect
+ */
+/datum/controller/subsystem/overmaps/proc/release_flight_level(
+	datum/map_level/shuttle/level,
+	obj/overmap/entity/visitable/ship/landable,
+	obj/overmap/entity/moving_into,
+	moving_to_level,
+	obj/overmap/entity/visitable/ship/hand_off_to,
+)
+	#warn stuff
+
+/**
+ * called when the last shuttle leaves a flight level
+ */
+/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave, obj/overmap/entity/shuttle_went_into)
 	#warn impl
 	clear_flight_level(level, last_to_leave)
 
+/**
+ * internal proc: merges a flight level into another
+ *
+ * called by clear_flight_level
+ *
+ * * we don't move turfs or anything; non shuttle turfs are just left behind
+ */
+/datum/controller/subsystem/overmaps/proc/merge_flight_level_contents(datum/map_level/shuttle/disposing, datum/map_level/shuttle/merging_into, list/atom/movable/movables)
+
 // todo: SSzclear when?
-/datum/controller/subsystem/overmaps/proc/clear_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave)
-	ASSERT(level.initialized)
+/**
+ * internal proc: clears a flight level
+ */
+/datum/controller/subsystem/overmaps/proc/clear_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave, obj/overmap/entity/shuttle_went_into)
+	PRIVATE_PROC(TRUE)
+
+	ASSERT(level.loaded)
 	ASSERT(level.z_index)
 
 	var/list/turf/clearing_turfs = Z_TURFS(level.z_index)
@@ -56,26 +108,22 @@ SUBSYSTEM_DEF(overmaps)
 		// yes check tick on this one
 		for(var/atom/movable/AM as anything in clearing_movables)
 			// WELCOME TO HELL: this is how we handle atoms
-			if(isliving(AM))
-				var/mob/living/victim = AM
-				var/throw_them_out_of_the_sky = FALSE
-				// if they have a mind, they're probably relevant
-				if(victim.mind)
-					throw_them_out_of_the_sky = TRUE
-				else if(victim.ckey)
-					stack_trace("victim [victim] with ckey [victim.ckey] but no mind ([victim.type])")
-					throw_them_out_of_the_sky = TRUE
-				if(!throw_them_out_of_the_sky)
-					// Bye Bye!
-					qdel(victim)
-					continue
-				#warn uh oh
-			else
-				// * objs
-				// * /mob, but not /mob/living
+			var/yeet_them_out_of_the_sky = AM.movable_flags & MOVABLE_NO_LOST_IN_SPACE
+			if(!yeet_them_out_of_the_sky)
+				if(isliving(AM))
+					var/mob/living/victim = AM
+					// if they have a mind, they're probably relevant
+					if(victim.mind)
+						yeet_them_out_of_the_sky = TRUE
+					else if(victim.ckey)
+						stack_trace("victim [victim] with ckey [victim.ckey] but no mind ([victim.type])")
+						yeet_them_out_of_the_sky  = TRUE
+			if(!yeet_them_out_of_the_sky)
 				// Bye Bye!
 				qdel(AM)
 				continue
+			#warn yuh YEET
+			#warn deal with shuttle interdiction
 
 	while(!clean && cycles_so_far <= 5)
 
@@ -95,10 +143,10 @@ SUBSYSTEM_DEF(overmaps)
 		T.ChangeTurf(level_baseturf, level_baseturf)
 	return deleted
 
-/datum/controller/subsystem/overmaps
 //* LEGACY STUFF BELOW THIS LINE
 //* So, everything
 //* Yes, I'm staging this early for overmaps rewrite
+/datum/controller/subsystem/overmaps
 
 	/// Whether ships can move on the overmap; used for adminbus.
 	var/static/overmap_halted = FALSE

@@ -41,8 +41,8 @@
 	return run_transit_cycle(cycle)
 
 /datum/shuttle_controller/overmap/proc/resolve_freeflight_for_transit(datum/shuttle_transit_cycle/cycle)
-	ASSERT(istype(entity, /obj/overmap/entity/visitable/landable))
-	var/obj/overmap/entity/visitable/landable/casted = entity
+	ASSERT(istype(entity, /obj/overmap/entity/visitable/ship/landable))
+	var/obj/overmap/entity/visitable/ship/landable/casted = entity
 	#warn impl
 	return TRUE
 

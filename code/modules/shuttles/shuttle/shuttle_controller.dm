@@ -69,7 +69,14 @@
 	var/tgui_module
 
 /datum/shuttle_controller/Destroy()
-	abort_transit()
+	terminate_transit()
+	interrupt_docking()
+	interrupt_undocking()
+	QDEL_LIST_ASSOC_VAL(docker_by_user)
+	QDEL_NULL(manual_dock)
+	if(shuttle.controller == src)
+		shuttle.controller = null
+	shuttle = null
 	return ..()
 
 /datum/shuttle_controller/proc/initialize(datum/shuttle/shuttle)

@@ -9,32 +9,25 @@
 	var/datum/shuttle/shuttle
 	/// our shuttle controller
 	var/datum/shuttle_controller/overmap/shuttle_controller
-	/// our shuttle level, if any
+	/// if we're on a shuttle level at all
 	///
-	/// * this is if we are owning a flight level
-	var/datum/map_level/shuttle/owned_level
+	/// * if we own one, this is going to also be the same level
+	/// * we can share this level with others
+	var/datum/map_level/shuttle/flight_level
+	/// our status
+	var/flight_status = OVERMAP_FLIGHT_STATUS_UNKNOWN
 
-/obj/overmap/entity/visitable/ship/landable
+/obj/overmap/entity/visitable/ship/landable/proc/get_flight_status()
+	return flight_status
 
-/**
- * checks if we're free-flighting
- *
- * if not, we're probably, but not provably, landed
- *
- * todo: use a get_flight_status() unified proc for overmap entities with enums
- */
-/obj/overmap/entity/visitable/ship/landable/proc/is_in_freeflight()
-	#warn impl
+/obj/overmap/entity/visitable/ship/landable/proc/set_flight_status(status)
+	status = OVERMAP_FLIGHT_STATUS_TRANSITING
 
 /**
- * checks if we've landed
- *
- * if not, we're probably, but not provably, in freeflight
- *
- * todo: use a get_flight_status() unified proc for overmap entities with enums
+ * called when our shuttle starts a transit cycle
  */
-/obj/overmap/entity/visitable/ship/landable/proc/is_landed()
-	#warn impl
+/obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_cycle(datum/shuttle_transit_cycle/cycle)
+	set_flight_status(OVERMAP_FLIGHT_STATUS_TRANSITING)
 
 /**
  * called when our shuttle enters a certain zlevel

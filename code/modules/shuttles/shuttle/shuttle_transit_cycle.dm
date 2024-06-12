@@ -177,6 +177,7 @@
  */
 /datum/shuttle_transit_cycle/proc/set_target(obj/shuttle_dock/dock, obj/shuttle_port/with_port, centered, direction)
 	#warn check for in-transit
+	#warn check dock 'inbound' if mutex enabled
 	src.target_resolved = TRUE
 	src.target_resolver_hint = null
 	src.target_resolver = null
@@ -190,6 +191,7 @@
  */
 /datum/shuttle_transit_cycle/proc/set_lazy_target(datum/callback/target_resolver, target_hint)
 	#warn check for in-transit
+	#warn check dock 'inbound' if mutex enabled
 	src.target_resolver = target_resolved
 	src.target_resolver_hint = target_hint
 	src.target_resolved = FALSE

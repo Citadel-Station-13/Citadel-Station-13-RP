@@ -9,22 +9,20 @@ SUBSYSTEM_DEF(shuttle)
 	wait = 1 SECONDS
 	priority = FIRE_PRIORITY_SHUTTLES
 	init_order = INIT_ORDER_SHUTTLES
-	subsystem_flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
+	// shuttles use spinlocks for now, we'll use subsystem processing at some point
+	subsystem_flags = SS_NO_FIRE | SS_NO_TICK_CHECK | SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	//* Docks
 	/// shuttle docks by type for non-id registration
 	//  todo: non-static, recover()?
 	var/static/list/dock_type_registry = list()
-	#warn hook
 	/// shuttle docks by id for id registration
 	//  todo: non-static, recover()?
 	var/static/list/dock_id_registry = list()
-	#warn hook
 	/// docks by zlevel
 	//  todo: non-static, recover()?
 	var/static/list/docks_by_level = list()
-	#warn hook
 
 	//* Controllers & Maps
 	/// Web maps by path
@@ -38,10 +36,6 @@ SUBSYSTEM_DEF(shuttle)
 	/// All shuttles by id
 	//  todo: non-static, recover()?
 	var/static/list/datum/shuttle/shuttle_id_registry = list()
-	/// Shuttles currently requiring processing
-	//  todo: non-static, recover()?
-	var/static/list/datum/shuttle/active_shuttles = list()
-	#warn hook
 
 	//* Templates
 	/// templates by path
@@ -70,10 +64,34 @@ SUBSYSTEM_DEF(shuttle)
 		CRASH("what?")
 
 /datum/controller/subsystem/shuttle/proc/register_dock(obj/shuttle_dock/dock)
-	#warn impl
+	if(dock.register_by_type)
+		if(dock_type_registry[dock.type])
+			stack_trace("type collision between [dock] [COORD(dock)] and [dock_type_registry[dock.type]] [COORD(dock_type_registry[dock.type])] on [dock.type]")
+		else
+			dock_type_registry[dock.type] = dock
+	if(dock.dock_id)
+		if(dock_id_registry[dock.id])
+			stack_trace("id collision between [dock] [COORD(dock)] and [dock_id_registry[dock.id]] [COORD(dock_id_registry[dock.id])] on [dock.id]")
+		else
+			dock_id_registry[dock.id] = dock
+	docks_by_level[dock.z] += dock
+	dock.registered = TRUE
+	return TRUE
 
 /datum/controller/subsystem/shuttle/proc/unregister_dock(obj/shuttle_dock/dock)
-	#warn impl
+	if(dock.register_by_type)
+		if(dock_type_registry[dock.type] != dock)
+			stack_trace("dock type registry mismatch during unregister on [dock] [COORD(dock)] for [dock.type], got [dock_type_registry[dock.type]] [COORD(dock_type_registry[dock.type])]")
+		else
+			dock_type_registry -= dock.type
+	if(dock.dock_id)
+		if(dock_id_registry[dock.id] != dock)
+			stack_trace("dock id registry mismatch during unregister on [dock] [COORD(dock)] for [dock.id], got [dock_id_registry[dock.id]] [COORD(dock_id_registry[dock.id])]")
+		else
+			dock_id_registry -= dock.dock_id
+	docks_by_level[dock.z] -= dock
+	dock.registered = FALSE
+	return TRUE
 
 //* Shuttles *//
 
