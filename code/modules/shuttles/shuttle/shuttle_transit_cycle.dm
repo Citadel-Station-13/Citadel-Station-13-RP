@@ -26,7 +26,7 @@
 	//* hooking *//
 	/// callbacks for when transit is done
 	///
-	/// * called with (controller: src, target: transit_target_dock, status: SHUTTLE_TRANSIT_STATUS_*)
+	/// * called with (controller: controller, cycle: src, status: SHUTTLE_TRANSIT_STATUS_*)
 	var/list/datum/callback/finish_callbacks
 
 	//* visuals *//
@@ -208,10 +208,10 @@
 	SHOULD_NOT_SLEEP(TRUE) // absolutely fucking not!
 	if(target_resolved)
 		return
-	if(!target_resolver.Invoke(src))
+	if(!target_resolver.InvokeAsync(src))
 		return
 	if(!target_dock)
-		stack_trace("target resolver didn't fail yet we don't have a dock..?")
+		stack_trace("target resolver didn't fail yet we don't have a dock..? it's also possible the resolver callback slept and was therefore ignroed.")
 		return
 	target_resolved = TRUE
 
@@ -227,6 +227,8 @@
 			status = SHUTTLE_TRANSIT_STATUS_CANCELLED
 		else
 			status = SHUTTLE_TRANSIT_STATUS_FAILED
+	for(var/datum/callback/callback in finish_callbacks)
+		callback.InvokeAsync(controller, src, status)
 	#warn fire callbacks
 	if(finished)
 		return TRUE // already should be gone
@@ -255,11 +257,11 @@
 			return FALSE
 	src.target_resolved = FALSE
 	src.target_centered = src.target_direction = src.target_dock = src.target_port = null
-	if(!src.target_aborted_resolver?.Invoke(src))
+	if(!src.target_aborted_resolver?.InvokeAsync(src))
 		terminate()
 	if(!src.target_dock)
 		terminate()
-		stack_trace("didn't fail to resolve abort dock, but still no dock")
+		stack_trace("didn't fail to resolve abort dock, but still no dock. alternatively, abort resolver slept and was ignored.")
 	aborting = TRUE
 	return TRUE
 

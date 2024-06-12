@@ -27,7 +27,9 @@ SUBSYSTEM_DEF(overmaps)
 
 /datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave)
 	#warn impl
+	clear_flight_level(level, last_to_leave)
 
+// todo: SSzclear when?
 /datum/controller/subsystem/overmaps/proc/clear_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave)
 	ASSERT(level.initialized)
 	ASSERT(level.z_index)
@@ -37,13 +39,60 @@ SUBSYSTEM_DEF(overmaps)
 	var/area/move_to_area = unique_area_of_type(/area/space)
 	var/deleted = 0
 	var/cycles_so_far = 0
+	var/clean = FALSE
 
 	do
+		// no check tick on this one
+		for(var/turf/T as anything in clearing_turfs)
+			for(var/atom/movable/AM as anything in T)
+				if(AM.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+					continue
+				clearing_movables += AM
 
-	while()
+		clean = !length(clearing_turfs)
+		if(clean)
+			continue
+
+		// yes check tick on this one
+		for(var/atom/movable/AM as anything in clearing_movables)
+			// WELCOME TO HELL: this is how we handle atoms
+			if(isliving(AM))
+				var/mob/living/victim = AM
+				var/throw_them_out_of_the_sky = FALSE
+				// if they have a mind, they're probably relevant
+				if(victim.mind)
+					throw_them_out_of_the_sky = TRUE
+				else if(victim.ckey)
+					stack_trace("victim [victim] with ckey [victim.ckey] but no mind ([victim.type])")
+					throw_them_out_of_the_sky = TRUE
+				if(!throw_them_out_of_the_sky)
+					// Bye Bye!
+					qdel(victim)
+					continue
+				#warn uh oh
+			else
+				// * objs
+				// * /mob, but not /mob/living
+				// Bye Bye!
+				qdel(AM)
+				continue
+
+	while(!clean && cycles_so_far <= 5)
+
+	if(cycles_so_far >= 5)
+		stack_trace("aborted clearing level due to taking more than 5 cycles to do so.")
 
 	// finished, finalize
 	move_to_area.take_turfs(clearing_turfs)
+	// deal with turfs
+	var/level_baseturf = level.base_turf
+	if(!ispath(level_baseturf, /turf))
+		level_baseturf = world.turf
+	for(var/turf/T as anything in clearing_turfs)
+		CHECK_TICK
+		if(istype(T, /turf/space))
+			continue
+		T.ChangeTurf(level_baseturf, level_baseturf)
 	return deleted
 
 /datum/controller/subsystem/overmaps

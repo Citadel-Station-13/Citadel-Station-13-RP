@@ -429,7 +429,7 @@ var/list/civilian_cartridges = list(
 		var/supplyData[0]
 		var/datum/shuttle_controller/ferry/cargo/shuttle = GLOB.legacy_cargo_shuttle_controller
 		if (shuttle)
-			supplyData["shuttle_moving"] = shuttle.is_in_transit()
+			supplyData["shuttle_moving"] = shuttle.!!get_transit_stage()
 			supplyData["shuttle_eta"] = shuttle.legacy_eta_in_minutes()
 			supplyData["shuttle_loc"] = shuttle.is_at_away() ? "Station" : "Dock"
 		var/supplyOrderCount = 0

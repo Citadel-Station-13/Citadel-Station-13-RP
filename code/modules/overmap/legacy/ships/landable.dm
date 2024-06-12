@@ -155,7 +155,7 @@
 #warn above
 
 /obj/overmap/entity/visitable/ship/landable/get_landed_info()
-	if(shuttle_controller.is_in_transit())
+	if(shuttle_controller.!!get_transit_stage())
 		return "Maneuvering under secondary thrust."
 	if(is_in_freeflight())
 		return "In open space."

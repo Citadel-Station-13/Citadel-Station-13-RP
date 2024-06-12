@@ -163,7 +163,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 /datum/controller/subsystem/emergencyshuttle/proc/can_call()
 	if (deny_shuttle)
 		return 0
-	if(GLOB.legacy_emergency_shuttle_controller.is_in_transit() || !GLOB.legacy_emergency_shuttle_controller.is_at_home())
+	if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage() || !GLOB.legacy_emergency_shuttle_controller.is_at_home())
 		return 0
 	if (wait_for_launch)	//already launching
 		return 0
@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 //e.g. the shuttle is already at the station or wasn't called to begin with
 //other reasons for the shuttle not being recallable should be handled elsewhere
 /datum/controller/subsystem/emergencyshuttle/proc/can_recall()
-	if(GLOB.legacy_emergency_shuttle_controller.is_in_transit())
+	if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
 		return 0
 	if(!GLOB.legacy_emergency_shuttle_controller.is_at_home())
 		//already at the station.
@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 /datum/controller/subsystem/emergencyshuttle/proc/waiting_to_leave()
 	if(GLOB.legacy_emergency_shuttle_controller.is_at_home())
 		return 0	//not at station
-	return (wait_for_launch || !GLOB.legacy_emergency_shuttle_controller.is_in_transit())
+	return (wait_for_launch || !GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
 
 //so we don't have emergencyshuttleshuttle.location everywhere
 /datum/controller/subsystem/emergencyshuttle/proc/location()
@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 //returns the time left until the shuttle arrives at it's destination, in seconds
 /datum/controller/subsystem/emergencyshuttle/proc/estimate_arrival_time()
 	var/eta
-	if(GLOB.legacy_emergency_shuttle_controller.is_in_transit())
+	if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
 		//we are in transition and can get an accurate ETA
 		eta = GLOB.legacy_emergency_shuttle_controller.transit_time_left()
 	else
@@ -213,7 +213,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	return (launch_time - world.time)/10
 
 /datum/controller/subsystem/emergencyshuttle/proc/has_eta()
-	return (wait_for_launch || GLOB.legacy_emergency_shuttle_controller.is_in_transit())
+	return (wait_for_launch || GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
 
 //returns 1 if the shuttle has gone to the station and come back at least once,
 //used for game completion checking purposes
@@ -225,7 +225,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	if(!shuttle)
 		return FALSE
 	if(!GLOB.legacy_emergency_shuttle_controller.is_at_home())
-	if (wait_for_launch || GLOB.legacy_emergency_shuttle_controller.is_in_transit())
+	if (wait_for_launch || GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
 		return 1
 	return 0
 
@@ -239,7 +239,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 /datum/controller/subsystem/emergencyshuttle/proc/get_status_panel_eta()
 	if (online())
-		if(GLOB.legacy_emergency_shuttle_controller.is_in_transit())
+		if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
 			var/timeleft = estimate_arrival_time()
 			return "ETA-[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 

@@ -493,43 +493,13 @@
 
 #warn below
 
-/**
- * start transiting towards a specific dock
- *
- * we will be immediately jumped into transit space on this call!
- * we will process immediate undocking events but we will not be able to be blocked.
- *
- * @params
- * * dock - dock to go to.
- * * time - time to spend in transit.
- * * align_with_port - the port to align with; overrides 'centered'
- * * centered - should we be centered on the dock's bounding box? if not, we move our anchor onto the dock directly.
- * * direction - the direction to use for centered landing.
- * * on_transit_callbacks - a callback or list of callbacks to register; if this proc fails they will NOT be called!
- *
- * @return TRUE / FALSE on success / failure
- */
 /datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, time = default_transit_time_for_dock(dock), obj/shuttle_port/align_with_port, centered, direction, list/datum/callback/on_transit_callbacks)
-	if(isnull(direction))
-		direction = shuttle.anchor.dir
-	// abort existing transit
-	var/redirected = FALSE
-	if(is_in_transit())
-		redirected = TRUE
-		abort_transit(TRUE)
 	// obtain exclusive lock on dock
 	if(dock.inbound)
 		return FALSE
 	dock.inbound = src
 	// jump into transit
 	shuttle.move_to_transit()
-	//
-	if(islist(on_transit_callbacks))
-	else if(!isnull(on_transit_callbacks))
-		on_transit_callbacks = list(on_transit_callbacks)
-	else
-		on_transit_callbacks = list()
-	transit_finish_callbacks = on_transit_callbacks.Copy()
 
 	// register timers
 	transit_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_transit)), time, TIMER_STOPPABLE)
@@ -546,13 +516,7 @@
 		centered = transit_target_centered_mode,
 		direction = transit_target_direction,
 	)
-	if(!.)
-		for(var/datum/callback/callback in transit_finish_callbacks)
-			callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_BLOCKED)
-	else
-		for(var/datum/callback/callback in transit_finish_callbacks)
-			callback.Invoke(src, transit_target_dock, SHUTTLE_TRANSIT_STATUS_SUCCESS)
-
+	
 	on_transit_success(transit_target_dock)
 	cleanup_transit()
 
@@ -589,7 +553,7 @@
  * @return FALSE if we're not in transit
  */
 /datum/shuttle_controller/proc/register_transit_callback(datum/callback/cb)
-	if(!is_in_transit())
+	if(!!!get_transit_stage())
 		return FALSE
 	transit_cycle.finish_callbacks += cb
 	return TRUE
