@@ -9,7 +9,7 @@
 		var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 		if(!controller)
 			message2 = "Error"
-		else if(controller.!!get_transit_stage())
+		else if(!!controller.get_transit_stage())
 			message2 = get_supply_shuttle_timer()
 			if(length(message2) > CHARS_PER_LINE)
 				message2 = "Error"

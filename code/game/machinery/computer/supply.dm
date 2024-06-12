@@ -61,7 +61,7 @@
 	var/datum/shuttle/shuttle = GLOB.legacy_cargo_shuttle
 	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 	if(shuttle)
-		if(controller.!!get_transit_stage())
+		if(!controller.get_transit_stage())
 			shuttle_status["location"] = "In transit"
 			shuttle_status["mode"] = SUP_SHUTTLE_TRANSIT
 			shuttle_status["time"] = controller.legacy_eta_in_minutes()
