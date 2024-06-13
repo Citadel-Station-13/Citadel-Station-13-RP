@@ -480,6 +480,13 @@ BLIND     // can't see anything
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
+/*obj/item/clothing/glasses/sunglasses/blindfold/equipped(mob/user, slot, flags)
+	. = ..()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = user
+		loc.add_modifier(/datum/modifier/sight/blindness)*/
+
+
 /obj/item/clothing/glasses/sunglasses/blindfold/tape
 	name = "length of tape"
 	desc = "It's a robust DIY blindfold!"
@@ -610,7 +617,7 @@ BLIND     // can't see anything
 		var/mob/living/carbon/human/M = src.loc
 		to_chat(M, "<font color='red'>The Optical Thermal Scanner overloads and blinds you!</font>")
 		if(M.glasses == src)
-			M.Blind(3)
+			M.apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 			M.eye_blurry = 5
 			// Don't cure being nearsighted
 			if(!(M.disabilities & DISABILITY_NEARSIGHTED))

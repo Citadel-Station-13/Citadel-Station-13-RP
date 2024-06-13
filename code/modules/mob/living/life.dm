@@ -123,11 +123,13 @@
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
-	if(sdisabilities & SDISABILITY_NERVOUS || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
-		SetBlinded(1)
-	else if(eye_blind)			//blindness, heals slowly over time
-		AdjustBlinded(-1)
-	else if(eye_blurry)			//blurry eyes heal slowly
+	if(sdisabilities & SDISABILITY_NERVOUS)	//blindness from disability or unconsciousness doesn't get better on its own
+		add_blindness_source(TRAIT_BLINDNESS_DISABILITY)
+	else
+		if(HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_DISABILITY))
+			remove_blindness_source(TRAIT_BLINDNESS_DISABILITY)
+
+	if(eye_blurry)//blurry eyes heal slowly
 		eye_blurry = max(eye_blurry-1, 0)
 
 	//Ears
@@ -147,9 +149,6 @@
 	// mute trait shim for now
 	if(HAS_TRAIT(src, TRAIT_MUTE))
 		silent = max(silent, 1)
-	// blind trait shim for now
-	if(HAS_TRAIT(src, TRAIT_BLIND))
-		eye_blind = max(eye_blind, 1)
 
 /mob/living/handle_regular_hud_updates()
 	if(!client)

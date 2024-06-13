@@ -11,7 +11,6 @@ GLOBAL_LIST_EMPTY(observer_list)
 	alpha = 127
 	stat = DEAD
 	mobility_flags = NONE
-	blinded = FALSE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
