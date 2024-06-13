@@ -1,0 +1,4 @@
+author: "washikarasu"
+delete-after: True
+changes:
+  - bugfix: "fixed maintenance airlock permissions for mining refinery"
