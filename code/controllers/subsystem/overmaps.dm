@@ -11,28 +11,73 @@ SUBSYSTEM_DEF(overmaps)
 	///
 	/// * this is the list of currently unallocated/free'd up shuttle flight levels
 	/// * we don't use zclear system so overmaps is even-more-decoupled from SSmapping.
-	var/list/datum/map_level/shuttle/free_flight_levels = list()
+	var/list/datum/map_level/freeflight/free_flight_levels = list()
 	/// currently in-use shuttle flight levels
-	var/list/datum/map_level/shuttle/used_flight_levels = list()
+	var/list/datum/map_level/freeflight/used_flight_levels = list()
 
 //* Flight Levels *//
 
+/**
+ * The core issue this is solving is BYOND zlevels.
+ *
+ * When shuttles fly, they don't really move. They move the space around them, their zlevel,
+ * on a virtual map.
+ *
+ * Flight levels are what we call those; and all of this is solving the problem of what
+ * we do with that level when one flight level intersects another, or an entity during landing
+ *
+ * How this is done before (baystation / vorestation):
+ * 1. shuttles own an exclusive level
+ * 2. shuttles can only access that exclusive level or another thing's level
+ * 3. interdictions: shuttles 'visiting' other shuttles land on that shuttle's exclusive level
+ * 4. because shuttles have exclusive permanent levels, shuttles cannot escape from interdictions
+ *
+ * How we do it now:
+ *
+ * We try our best to solve the issues of,
+ *
+ * * interdictions: shuttles should be able to escape from them as per gameplay.
+ * * level recycling: we have a lot more shuttles than the shuttles in use. we want to recycle levels whenever possible.
+ * * balance / PvP: disengagement is considered here in terms of what happens
+ *
+ * What we arrived at is thus these following axioms:
+ *
+ * * Shuttles must always have a flight level while in freeflight, not transit
+ * * Shuttles must always teardown their flightlevel when permanently leaving freeflight, or hand it off to another
+ * * Objects left behind with MOVABLE_NO_LOST_IN_SPACE will have their continuity preserved, but will not necessarily survive.
+ * * Objects left behind without that flag are treated as we please, up to and including usually just deleting it.
+ * * Turfs left behind are implementation-defined for how we treat it. Players shouldn't be putting turfs outside of shuttles anyways.
+ *
+ * Thus, the following specs determine what happens and when.
+ *
+ * * visiting --> freeflight: shuttle allocates a new flight level
+ * * freeflight --> freeflight (interdiction): shuttle merges their flight level into the victim's
+ * * freeflight --> visiting: freeflight level is torn down and merged. planets = skyfall, non-planets = put on zlevel edges if possible.
+ *
+ * Here's what happens during merges
+ *
+ * * freeflight --> freeflight: direct x/y preserving merge. blocked turfs get their contents kicked to nearby turfs via algorithm
+ * * freeflight --> visiting (planet): skyfall on outdoors
+ * * freeflight --> visiting (non-planet): put on nearby turf to shuttle as debris cloud
+ */
+#warn /datum/component/recursive_freeflight_permeance
+
 /datum/controller/subsystem/overmaps/proc/assign_flight_level(obj/overmap/entity/visitable/ship/landable/leader)
 	// make sure they don't already have one
-	ASSERT(!leader.owned_level)
+	ASSERT(!leader.flight_level)
 	// get a free level or allocate a new one
-	var/datum/map_level/shuttle/assigning
+	var/datum/map_level/freeflight/assigning
 	if(length(free_flight_levels))
 		assigning = free_flight_levels[free_flight_levels.len]
 		free_flight_levels.len--
 	else
-		var/datum/map_level/shuttle/creating = new
+		var/datum/map_level/freeflight/creating = new
 		SSmapping.load_level(creating)
 		assigning = creating
 	// mark as used
 	used_flight_levels += assigning
 	// assign them their level
-	leader.owned_level = assigning
+	leader.flight_level = assigning
 	// done
 	return TRUE
 
@@ -52,7 +97,7 @@ SUBSYSTEM_DEF(overmaps)
  * * hand_off_to - (optional) forcefully set which entity to hand this off to. this doesn't need to be set, we can autodetect
  */
 /datum/controller/subsystem/overmaps/proc/release_flight_level(
-	datum/map_level/shuttle/level,
+	datum/map_level/freeflight/level,
 	obj/overmap/entity/visitable/ship/landable,
 	obj/overmap/entity/moving_into,
 	moving_to_level,
@@ -63,7 +108,7 @@ SUBSYSTEM_DEF(overmaps)
 /**
  * called when the last shuttle leaves a flight level
  */
-/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave, obj/overmap/entity/shuttle_went_into)
+/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/freeflight/level, obj/overmap/entity/visitable/ship/landable/last_to_leave, obj/overmap/entity/shuttle_went_into)
 	#warn impl
 	clear_flight_level(level, last_to_leave)
 
@@ -74,13 +119,19 @@ SUBSYSTEM_DEF(overmaps)
  *
  * * we don't move turfs or anything; non shuttle turfs are just left behind
  */
-/datum/controller/subsystem/overmaps/proc/merge_flight_level_contents(datum/map_level/shuttle/disposing, datum/map_level/shuttle/merging_into, list/atom/movable/movables)
+/datum/controller/subsystem/overmaps/proc/merge_flight_level_contents(datum/map_level/freeflight/disposing, datum/map_level/freeflight/merging_into, list/atom/movable/movables)
 
 // todo: SSzclear when?
 /**
  * internal proc: clears a flight level
+ *
+ * @params
+ * * level - the level to clear
+ * * handler - what to do with atoms
+ * * live_handler - what to do with atoms to not destroy; called with (list/atom/movable/movables)
+ * * dead_handler - what to do with atoms to destroy; called with (list/atom/movable/movables)
  */
-/datum/controller/subsystem/overmaps/proc/clear_flight_level(datum/map_level/shuttle/level, obj/overmap/entity/visitable/ship/landable/last_to_leave, obj/overmap/entity/shuttle_went_into)
+/datum/controller/subsystem/overmaps/proc/clear_flight_level(datum/map_level/freeflight/level, datum/callback/live_handler, datum/callback/dead_handler)
 	PRIVATE_PROC(TRUE)
 
 	ASSERT(level.loaded)
@@ -97,7 +148,7 @@ SUBSYSTEM_DEF(overmaps)
 		// no check tick on this one
 		for(var/turf/T as anything in clearing_turfs)
 			for(var/atom/movable/AM as anything in T)
-				if(AM.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+				if(AM.atom_flags & (ATOM_ABSTRACT))
 					continue
 				clearing_movables += AM
 

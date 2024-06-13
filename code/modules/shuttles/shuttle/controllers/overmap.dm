@@ -11,6 +11,12 @@
 	var/obj/overmap/entity/entity
 	#warn hook, somehow
 
+/datum/shuttle_controller/overmap/initialize(datum/shuttle/shuttle)
+	. = ..()
+	#warn we need to make the entity and initialize_controller on us;
+	#warn we also need to make sure the entity is in the right place after we move to roundstart.
+	#warn alternatively when we finish a translation we immediately move our entity as needed.
+
 /datum/shuttle_controller/overmap/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 

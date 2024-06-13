@@ -4138,6 +4138,7 @@
 #include "code\modules\organs\subtypes\nano.dm"
 #include "code\modules\organs\subtypes\unbreakable.dm"
 #include "code\modules\organs\subtypes\unseverable.dm"
+#include "code\modules\overmap\freeflight.dm"
 #include "code\modules\overmap\public.dm"
 #include "code\modules\overmap\entity\entity.dm"
 #include "code\modules\overmap\entity\physics.dm"

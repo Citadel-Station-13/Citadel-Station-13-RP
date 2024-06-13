@@ -140,7 +140,7 @@ DEFINE_BITFIELD_NEW("shuttle_transit_flags", list(
 	SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_TIMEOUT \
 )
 
-DEFINE_BITFIELD("shuttle_traversal_flags", list(
+DEFINE_BITFIELD_NEW("shuttle_traversal_flags", list(
 	/datum/shuttle_transit_cycle = list(
 		"source_traversal_flags",
 		"target_traversal_flags",

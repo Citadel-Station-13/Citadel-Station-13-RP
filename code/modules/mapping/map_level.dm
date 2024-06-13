@@ -598,20 +598,3 @@
 
 /datum/map_level/reserved/allow_deallocate()
 	return FALSE
-
-/**
- * freeflight levels used by overmaps for shuttle interdictions
- */
-/datum/map_level/shuttle
-	transition = Z_TRANSITION_FORCED
-
-	/// the current owning entity
-	var/obj/overmap/entity/visitable/ship/landable/leader
-	/// the overmap entities within us
-	///
-	/// * this does include the [leader]!
-	var/list/obj/overmap/entity/visitable/ship/landable/visiting = list()
-
-/datum/map_level/shuttle/New(datum/map/parent_map)
-	..()
-	dangerously_make_selflooping()

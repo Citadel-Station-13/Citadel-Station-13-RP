@@ -12,6 +12,11 @@
 	var/mass = 5
 	/// if set to false, this is absolute-ly unable to land on a planet
 	var/allow_atmospheric_landing = TRUE
+	/// preferred flight orientation
+	///
+	/// * null = use orientation at takeoff
+	#warn hook
+	var/preferred_orientation
 
 	//* Jumps (ferry & moving to/from overmaps)
 	/// engine charging time when starting a move
@@ -22,9 +27,10 @@
 
 /datum/shuttle_descriptor/clone(include_contents)
 	var/datum/shuttle_descriptor/clone = ..()
-	
+
 	clone.mass = mass
 	clone.allow_atmospheric_landing = allow_atmospheric_landing
+	clone.preferred_orientation = preferred_orientation
 
 	clone.jump_charging_time = jump_charging_time
 	clone.jump_move_time = jump_move_time

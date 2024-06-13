@@ -10,6 +10,7 @@
 	create_bounding_box_area = FALSE
 
 /obj/shuttle_dock/ephemeral/on_shuttle_departed(datum/shuttle/shuttle)
+	#warn make sure it doesn't delete if the shuttle is coming right backbaglist
 	qdel(src)
 
 /**
