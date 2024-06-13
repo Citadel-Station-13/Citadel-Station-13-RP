@@ -91,14 +91,13 @@
 			apply_damage(incoming_damage, P.damage_type, null, armorcheck, soakedcheck, is_sharp(P), has_edge(P), P)
 
 		// Find a turf near or on the original location to bounce to
-		if(P.starting)
-			var/new_x = P.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
-			var/new_y = P.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+		if(P.starting_turf)
+			var/new_x = P.starting_turf.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+			var/new_y = P.starting_turf.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
 			var/turf/curloc = get_turf(src)
 
 			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, src)
-			P.reflected = 1
+			regex_this_redirect(get_atom_angle(curloc, P.starting_turf), 8, TRUE)
 
 		return -1 // complete projectile permutation
 

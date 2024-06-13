@@ -26,7 +26,7 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = HEAVY
 
-	used_weapon = /obj/item/gun/energy/taser
+	used_weapon = /obj/item/gun/projectile/energy/taser
 
 	var/shot_delay = 4
 	var/last_shot = 0
@@ -43,7 +43,7 @@
 
 	new /obj/item/secbot_assembly/ed209_assembly(Tsec)
 
-	var/obj/item/gun/energy/taser/G = new used_weapon(Tsec)
+	var/obj/item/gun/projectile/energy/taser/G = new used_weapon(Tsec)
 	G.power_supply.charge = 0
 	if(prob(50))
 		new /obj/item/robot_parts/l_leg(Tsec)
@@ -171,7 +171,7 @@
 				return
 
 		if(7)
-			if(istype(W, /obj/item/gun/energy/taser/xeno))
+			if(istype(W, /obj/item/gun/projectile/energy/taser/xeno))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				name = "xenotaser SL-ED-209 assembly"
@@ -188,7 +188,7 @@
 				S.created_name = created_name
 				qdel(src)
 
-			else if(istype(W, /obj/item/gun/energy/taser))
+			else if(istype(W, /obj/item/gun/projectile/energy/taser))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				name = "taser ED-209 assembly"

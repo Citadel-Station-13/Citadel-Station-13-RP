@@ -18,7 +18,8 @@
 			return TRUE
 	else if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
-		if(istype(P.firer) && P.firer.faction == "swarmer")
+		var/mob/potential_firer = P.firer
+		if(istype(potential_firer) && potential_firer.faction == "swarmer")
 			return TRUE
 	return ..()
 

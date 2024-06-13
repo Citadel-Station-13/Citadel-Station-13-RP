@@ -14,8 +14,8 @@
 	. = ..()
 	playsound(src, "shatter", 70, 1)
 	new /obj/item/material/shard(drop_location())
+	new /obj/item/gun/projectile/energy/captain(drop_location())
 	update_icon()
-
 
 /obj/structure/displaycase/update_icon()
 	if(atom_flags & ATOM_BROKEN)

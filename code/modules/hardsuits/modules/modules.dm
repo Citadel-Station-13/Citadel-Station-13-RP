@@ -144,7 +144,7 @@
 	return
 
 //Proc for one-use abilities like teleport.
-/obj/item/hardsuit_module/proc/engage()
+/obj/item/hardsuit_module/proc/engage(atom/target)
 
 	if(damage >= 2)
 		to_chat(usr, "<span class='warning'>The [interface_name] is damaged beyond use!</span>")

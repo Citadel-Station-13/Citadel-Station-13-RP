@@ -92,7 +92,6 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-
 /turf/simulated/wall/proc/clear_plants()
 	for(var/obj/effect/overlay/wallrot/WR in src)
 		qdel(WR)

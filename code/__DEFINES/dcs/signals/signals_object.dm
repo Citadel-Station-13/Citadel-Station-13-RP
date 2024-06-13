@@ -271,7 +271,7 @@
 ////#define COMSIG_GUN_FIRED "gun_fired"
 /// Called in /obj/item/gun/process_chamber (src)
 ////#define COMSIG_GUN_CHAMBER_PROCESSED "gun_chamber_processed"
-/// Called in /obj/item/gun/ballistic/process_chamber (casing)
+/// Called in /obj/item/gun/projectile/ballistic/process_chamber (casing)
 ////#define COMSIG_CASING_EJECTED "casing_ejected"
 
 //! /obj/effect/proc_holder/spell signals

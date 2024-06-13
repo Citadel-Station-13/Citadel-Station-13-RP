@@ -19,5 +19,4 @@
 
 /datum/keybinding/human/toggle_gun_safety/down(client/user)
 	var/obj/item/gun/G = locate() in user.mob.get_held_items()
-	if(G)
-		G.toggle_safety(user)
+	G?.toglge_safety(user)
