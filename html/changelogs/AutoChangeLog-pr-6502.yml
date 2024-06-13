@@ -1,0 +1,4 @@
+author: "BlueWildrose"
+delete-after: True
+changes:
+  - tweak: "The vote notification text should be slightly more noticeable."
