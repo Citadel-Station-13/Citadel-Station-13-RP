@@ -425,8 +425,10 @@
 	icon_state = "door_locked";
 	id_tag = "supply_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "la" = (
@@ -635,8 +637,10 @@
 	icon_state = "door_locked";
 	id_tag = "supply_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "qd" = (
@@ -1244,9 +1248,6 @@
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
-"CU" = (
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_picnicarea)
 "Dl" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/grass,
@@ -2045,8 +2046,10 @@
 	icon_state = "door_locked";
 	id_tag = "supply_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "Ws" = (
@@ -26654,8 +26657,8 @@ Ob
 Nr
 xe
 kC
-CU
-CU
+At
+At
 xv
 xe
 Nr
@@ -26848,8 +26851,8 @@ Dl
 xe
 Nr
 nx
-CU
-CU
+At
+At
 vt
 Nr
 xe
@@ -27042,8 +27045,8 @@ Ob
 Nr
 SA
 GF
-CU
-CU
+At
+At
 Xu
 TZ
 Nr
@@ -27236,8 +27239,8 @@ Dl
 xe
 kC
 At
-CU
-CU
+At
+At
 At
 xv
 xe
@@ -27817,10 +27820,10 @@ AP
 Dl
 Nr
 nx
-CU
-CU
-CU
-CU
+At
+At
+At
+At
 vt
 Nr
 Dl
