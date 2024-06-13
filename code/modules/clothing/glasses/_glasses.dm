@@ -410,6 +410,13 @@ BLIND     // can't see anything
 	desc = "A pair of designer sunglasses."
 	icon_state = "aviator"
 
+/obj/item/clothing/glasses/sunglasses/aureate
+	name = "aureate headdress"
+	desc = "An elegant head-mounted ornament. It's shaped like a crown, and obscures quite a bit of bright light, but not enough for welding."
+	icon_state = "aureate_headdress"
+	icon = 'icons/clothing/head/aureate.dmi'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /obj/item/clothing/glasses/welding
 	name = "welding goggles"
 	desc = "Protects the eyes from welders, approved by the mad scientist association."
