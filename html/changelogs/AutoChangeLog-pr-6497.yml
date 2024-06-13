@@ -1,0 +1,7 @@
+author: "iliyaxox"
+delete-after: True
+changes:
+  - rscadd: "Added access helpers to every airlock on Triumph."
+  - rscadd: "Added additional maintenance airlocks & hatches to Triumph's engine chamber."
+  - rscadd: "Pathfinders now have access to Rift's RnD"
+  - rscdel: "Removed Triumph's airlocks access vars, and replaced them with access helpers."
