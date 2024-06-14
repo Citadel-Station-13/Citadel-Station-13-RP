@@ -139,7 +139,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			color_overlay.Blend(door_color, ICON_MULTIPLY)
 			GLOB.airlock_icon_cache["[ikey]"] = color_overlay
 
-	if(door_color && !(door_color == "none"))
+	if((door_color && !(door_color == "none")) || (window_color && !(window_color == "none")))
 		var/ikey = "[airlock_type]-[door_color]-fillcolor-[glass]"
 		filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
 		if(!filling_overlay)
