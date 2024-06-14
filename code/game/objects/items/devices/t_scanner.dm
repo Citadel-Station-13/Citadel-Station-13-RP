@@ -117,7 +117,7 @@
 	// will INVISIBILITY_ABSTRACt while hiding underfloor,
 	// so normal range won't pick it up
 	for(var/turf/T in range(scan_range, center))
-		if!(T.hides_underfloor_objects())
+		if(!T.hides_underfloor_objects())
 			continue
 
 		for(var/obj/O in T.contents)

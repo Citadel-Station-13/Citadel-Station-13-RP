@@ -159,7 +159,7 @@
 					qdel(src)
 	*/
 
-	updateicon()
+	update_icon()
 
 /obj/machinery/magnetic_module/proc/magnetic_process() // proc that actually does the pull_active
 	if(pull_active)

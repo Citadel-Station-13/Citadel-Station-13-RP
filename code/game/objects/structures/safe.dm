@@ -176,6 +176,3 @@ FLOOR SAFES
 /obj/structure/safe/floor/Initialize(mapload)
 	. = ..()
 	update_icon()
-
-/obj/structure/safe/floor/hide(var/intact)
-	invisibility = intact ? 101 : 0

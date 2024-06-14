@@ -137,6 +137,8 @@
 	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
 	var/hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	/// call update icon after update_hiding_underfloor()
+	///
+	/// * update_icon() called regardless of [hides_underfloor_defaulting] if TRUE
 	var/hides_underfloor_update_icon = FALSE
 	/// are we fully INVISIBILITY_ABSTRACT while hidden?
 	///
@@ -150,6 +152,9 @@
 	///
 	/// as an example, if the codebase's t-ray scanners use range(), you're not going to get anything
 	/// that is abstract-invisible on a scan.
+	///
+	/// * if this is FALSE, we use [INVISIBILITY_UNDERFLOOR]
+	/// * automatic invisibility updates require [hides_underfloor_defaulting]
 	var/hides_underfloor_invisibility_abstract = FALSE
 	/// perform default behavior if hiding underfloor?
 	var/hides_underfloor_defaulting = TRUE
@@ -906,9 +911,8 @@
 	switch(new_value)
 		if(OBJ_UNDERFLOOR_IF_COVERED, OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP)
 			var/turf/where_we_are = loc
-			if(istype(where_we_are) && (where_we_are.hides_underfloor_objects() || hide_anyways))
+			if(istype(where_we_are) && where_we_are.hides_underfloor_objects())
 				new_value = OBJ_UNDERFLOOR_ALWAYS
-				update_hiding_underfloor(TRUE)
 			else
 				new_value = OBJ_UNDERFLOOR_NEVER
 	hides_underfloor = new_value
@@ -922,9 +926,8 @@
  * * that means this is called during Initialize() if and only if we need to be hiding underfloor
  */
 /obj/proc/update_hiding_underfloor(new_value)
-	if(!hides_underfloor_defaulting)
-		return TRUE
-	invisibility = hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR
+	if(hides_underfloor_defaulting)
+		invisibility = hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR
 	if(hides_underfloor_update_icon)
 		update_icon()
 	return TRUE
@@ -981,4 +984,4 @@
 	. = ..()
 	switch(var_name)
 		if(NAMEOF(src, hides_underfloor))
-			set_hideS_underfloor(var_value)
+			set_hides_underfloor(var_value)

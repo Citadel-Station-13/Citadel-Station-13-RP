@@ -11,14 +11,9 @@
 	anchored = TRUE
 	density = FALSE
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor_update_icon = TRUE
 	var/alarm = FALSE
 	var/enabled = TRUE
-
-//If underfloor, hide the cable^H^H diffuser
-/obj/machinery/shield_diffuser/hide(var/i)
-	if(istype(loc, /turf))
-		invisibility = i ? 101 : 0
-	update_icon()
 
 /obj/machinery/shield_diffuser/process(delta_time)
 	if(alarm)

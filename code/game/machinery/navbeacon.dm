@@ -75,7 +75,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message("[user] [open ? "opens" : "closes"] the beacon's cover.", "You [open ? "open" : "close"] the beacon's cover.")
 
-		updateicon()
+		update_icon()
 
 	else if(I.GetID())
 		if(open)

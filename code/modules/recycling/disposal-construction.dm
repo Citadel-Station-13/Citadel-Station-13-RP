@@ -43,8 +43,13 @@
 	else
 		update() // do_a_flip() calls update anyway, so, lazy way of catching unupdated pipe!
 
-// update iconstate and dpdir due to dir and type
 /obj/structure/disposalconstruct/proc/update()
+	// todo: rework this..
+	update_icon()
+
+// update iconstate and dpdir due to dir and type
+/obj/structure/disposalconstruct/update_icon()
+	. = ..()
 	var/flip = turn(dir, 180)
 	var/left = turn(dir, 90)
 	var/right = turn(dir, -90)
@@ -117,13 +122,6 @@
 	else
 		alpha = 255
 		//otherwise burying half-finished pipes under floors causes them to half-fade
-
-// hide called by levelupdate if turf intact status changes
-// change visibility status and force update of icon
-/obj/structure/disposalconstruct/hide(var/intact)
-	invisibility = (intact && level==1) ? 101: 0	// hide if floor is intact
-	update()
-
 
 // flip and rotate verbs
 /obj/structure/disposalconstruct/verb/rotate()
