@@ -16,22 +16,44 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
 
-// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
+/// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
+///
+/// * Invisibility is different from just hiding something via plane masters.
+/// * They're more akin to images, where we actively block the client from seeing it if they don't have it
+/// * They're not as secure as images, because invisibility is still a client-side check
+/// * Invisibility completely hides objects from view() queries, verb queries, and more.
+///
+/// That said, this is nowhere near as granular and arbitrarily controllable as planes, so,
+/// the only things we use invisibility on are
+///
+/// * Lighting (TODO: should we remove this? we use planes now)
+/// * Fullscreens (piggybacks off lighting)
+/// * Observers / Ghosts (we don't want them to be interactable at all)
+/// * Underfloor objects (we don't want them to be interactable at all)
+/// * Abstract objects (we don't want them to be interactable at all)
+
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
 #define INVISIBILITY_LEVEL_TWO		45
 #define INVISIBILITY_OBSERVER		60
 #define INVISIBILITY_EYE			61
 
-#define SEE_INVISIBLE_LIVING		25
+#define SEE_INVISIBLE_MINIMUM		5
 #define SEE_INVISIBLE_NOLIGHTING	15
+#define SEE_INVISIBLE_LIVING		25
 #define SEE_INVISIBLE_LEVEL_ONE		35
 #define SEE_INVISIBLE_LEVEL_TWO		45
 #define SEE_INVISIBLE_CULT			60
 #define SEE_INVISIBLE_OBSERVER		61
 
-#define SEE_INVISIBLE_MINIMUM		5
+/// Underfloor things are by default, this invisibility.
+#define INVISIBILITY_UNDERFLOOR		90
+/// Maximum invisibility without being abstract.
 #define INVISIBILITY_MAXIMUM		100
+/// At this invisibility, some weird things happen.
+///
+/// * The thing basically isn't a real object anymore for some contexts.
+/// * view(), range(), etc, won't pick the atom up.
 #define INVISIBILITY_ABSTRACT		101
 
 /// Pseudo-Invis, like Ninja, Ling, Etc.

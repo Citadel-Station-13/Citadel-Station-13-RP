@@ -2159,6 +2159,7 @@
 #include "code\modules\admin\verbs\SDQL2\SDQL_2.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2_parser.dm"
 #include "code\modules\admin\verbs\SDQL2\SDQL_2_wrappers.dm"
+#include "code\modules\admin\verbs\SDQL2\wrappers\map.dm"
 #include "code\modules\admin\verbs\server\admin_reboot.dm"
 #include "code\modules\admin\view_variables\admin_delete.dm"
 #include "code\modules\admin\view_variables\color_matrix_editor.dm"

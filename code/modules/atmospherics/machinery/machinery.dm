@@ -239,15 +239,6 @@ Pipelines + Other Objects -> Pipe network
 	else
 		reset_plane_and_layer()
 
-// todo: refactor
-
-/obj/machinery/atmospherics/is_hidden_underfloor()
-	var/turf/T = loc
-	return istype(T) && (level == 1) && !T.is_plating()
-
-/obj/machinery/atmospherics/should_hide_underfloor()
-	return level == 1
-
 /**
  * currently unimplemented
  * call when our internal settings change to push changes to relevant uis.

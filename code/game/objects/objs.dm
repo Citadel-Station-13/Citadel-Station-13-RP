@@ -136,6 +136,21 @@
 	/// * we are assumed to not be underfloor when we are first made
 	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
 	var/hides_underfloor = OBJ_UNDERFLOOR_NEVER
+	/// are we fully INVISIBILITY_ABSTRACT while hidden?
+	///
+	/// this has implications.
+	/// * range(), view(), and others will not target things that are abstract-invisible
+	/// * verbs don't work at all (not a bad thing necessarily)
+	/// * basically this thing acts like it's not there
+	///
+	/// this is sometimes desired for things like mostly impactless objects for performance,
+	/// but is not always desireable
+	///
+	/// as an example, if the codebase's t-ray scanners use range(), you're not going to get anything
+	/// that is abstract-invisible on a scan.
+	var/hides_underfloor_invisibility_abstract = FALSE
+	/// perform default behavior if hiding underfloor?
+	var/hides_underfloor_defaulting = TRUE
 
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
@@ -622,14 +637,6 @@
 			for(var/atom/movable/inside in obj_storage.contents())
 				inside.emp_act(severity)
 
-//* Hiding / Underfloor *//
-
-/obj/proc/is_hidden_underfloor()
-	return FALSE
-
-/obj/proc/should_hide_underfloor()
-	return FALSE
-
 //* Inventory *//
 
 /obj/AllowDrop()
@@ -913,7 +920,21 @@
  * * that means this is called during Initialize() if and only if we need to be hiding underfloor
  */
 /obj/proc/update_hiding_underfloor(new_value)
-	return
+	if(!hides_underfloor_defaulting)
+		return
+	invisibility = hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR
+	
+/**
+ * **guesses** if we're hidden underfloor
+ * this is not the actual state!
+ */
+/obj/proc/is_probably_hidden_underfloor()
+	switch(hides_underfloor)
+		if(OBJ_UNDERFLOOR_ALWAYS)
+			var/turf/where_we_are = loc
+			return !where_we_are.hides_underfloor_objects()
+		if(OBJ_UNDERFLOOR_NEVER)
+			return FALSE
 
 /**
  * called at init
