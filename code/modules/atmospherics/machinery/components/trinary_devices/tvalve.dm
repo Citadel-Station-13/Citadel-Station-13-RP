@@ -7,7 +7,6 @@
 	name = "manual switching valve"
 	desc = "A pipe valve"
 
-	level = 1
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|WEST
 

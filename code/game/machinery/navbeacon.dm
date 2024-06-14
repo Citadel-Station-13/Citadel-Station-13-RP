@@ -9,6 +9,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	name = "navigation beacon"
 	desc = "A beacon used for bot navigation."
 	plane = TURF_PLANE
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
 	anchored = TRUE
 	/// TRUE if cover is open.
 	var/open = FALSE
@@ -30,8 +31,6 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	if(freq)
 		warning("[src] at [x],[y],[z] has deprecated var freq=[freq].  Replace it with proper type.")
 
-	var/turf/T = loc
-	hide(!T.is_plating())
 	navbeacons += src
 
 // set the transponder codes assoc list from codes_txt

@@ -22,6 +22,7 @@ Pipelines + Other Objects -> Pipe network
 	atom_colouration_system = FALSE
 	climb_allowed = FALSE
 	depth_projected = FALSE
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
 
 	///The color of the pipe
 	var/pipe_color
@@ -188,8 +189,6 @@ Pipelines + Other Objects -> Pipe network
 	pipe_color = obj_color
 	setPipingLayer(set_layer)
 	// TODO - M.connect_types = src.connect_types - Or otherwise copy from item? Or figure it out from piping layer?
-	var/turf/T = get_turf(src)
-	level = !T.is_plating() ? 2 : 1
 	atmos_init()
 	if(QDELETED(src))
 		return // TODO - Eventually should get rid of the need for this.

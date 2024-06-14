@@ -88,10 +88,8 @@
 	return ..()
 
 // Walls always hide the stuff below them.
-/turf/simulated/wall/levelupdate()
-	for(var/obj/O in src)
-		O.hide(1)
-
+/turf/simulated/wall/hides_underfloor_objects()
+	return TRUE
 
 /turf/simulated/wall/proc/clear_plants()
 	for(var/obj/effect/overlay/wallrot/WR in src)

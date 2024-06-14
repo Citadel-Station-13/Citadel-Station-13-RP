@@ -2,7 +2,6 @@
 // This is the pipe that you drag around, not the attached ones.
 
 /obj/structure/disposalconstruct
-
 	name = "disposal pipe segment"
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
@@ -11,7 +10,6 @@
 	density = 0
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	materials_base = list(MAT_STEEL = 1850)
-	level = 2
 	var/sortType = ""
 	var/ptype = 0
 	var/subtype = 0
@@ -260,7 +258,7 @@
 		if(anchored)
 			anchored = 0
 			if(ispipe)
-				level = 2
+				set_hides_underfloor(OBJ_UNDERFLOOR_NEVER)
 				density = 0
 			else
 				density = 1
@@ -286,7 +284,7 @@
 
 			anchored = 1
 			if(ispipe)
-				level = 1 // We don't want disposal bins to disappear under the floors
+				set_hides_underfloor(OBJ_UNDERFLOOR_ALWAYS)
 				density = 0
 			else
 				density = 1 // We don't want disposal bins or outlets to go density 0

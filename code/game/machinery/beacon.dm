@@ -3,7 +3,7 @@
 	icon_state = "floor_beaconf"
 	name = "Bluespace Gigabeacon"
 	desc = "A device that draws power from bluespace and creates a permanent tracking beacon."
-	level = 1		// underfloor
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
 	layer = UNDER_JUNK_LAYER
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -16,8 +16,6 @@
 	Beacon = new /obj/item/radio/beacon
 	Beacon.invisibility = INVISIBILITY_MAXIMUM
 	Beacon.loc = T
-
-	hide(!T.is_plating())
 
 /obj/machinery/bluespace_beacon/Destroy()
 	if(Beacon)

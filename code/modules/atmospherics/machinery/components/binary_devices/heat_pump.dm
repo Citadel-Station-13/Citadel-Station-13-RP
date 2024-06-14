@@ -5,8 +5,6 @@
 	name = "heat pump"
 	desc = "A heat pump, used to transfer heat between two pipe systems."
 
-	level = 1
-
 	icon = 'icons/atmos/heat_pump.dmi'
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional

@@ -21,8 +21,10 @@
 		//minimum pressure before check_pressure(...) should be called
 
 /obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
-	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))
-		level = 1
+	// pipes are always underfloor if inside a wall
+	// we just check for loc.density 'cause speed lmao
+	if(loc.density)
+		hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	return ..()
 
 /obj/machinery/atmospherics/pipe/hides_under_flooring()

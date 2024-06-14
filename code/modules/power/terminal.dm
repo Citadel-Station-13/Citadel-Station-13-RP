@@ -7,18 +7,11 @@
 	name = "terminal"
 	icon_state = "term"
 	desc = "It's an underfloor wiring terminal for power equipment."
-	level = 1
 	var/obj/machinery/power/master = null
 	anchored = 1
 	plane = TURF_PLANE
 	layer = EXPOSED_WIRE_TERMINAL_LAYER
-
-
-/obj/machinery/power/terminal/Initialize(mapload, newdir)
-	. = ..()
-	var/turf/T = src.loc
-	if(level==1)
-		hide(!T.is_plating())
+	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 
 /obj/machinery/power/terminal/Destroy()
 	if(master)

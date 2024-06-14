@@ -685,7 +685,7 @@
 	desc = "An underfloor disposal pipe."
 	anchored = 1
 	density = 0
-	level = 1 // underfloor only
+	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	dir = 0 // dir will contain dominant direction for junction pipes
 	plane = TURF_PLANE
 	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
