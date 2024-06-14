@@ -127,6 +127,16 @@
 	/// storage system
 	var/datum/object_system/storage/obj_storage
 
+	//* Underfloor *//
+
+	/// do we hide underfloor?
+	///
+	/// * uses OBJ_UNDERFLOOR_* defines
+	/// * gets set_underfloor(is_underfloor = TRUE | FALSE) called on init or turf init
+	/// * we are assumed to not be underfloor when we are first made
+	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
+	var/hides_underfloor = OBJ_UNDERFLOOR_NONE
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -276,12 +286,6 @@
 	var/mob/M = src.loc
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
-
-/obj/proc/hide(h)
-	return
-
-/obj/proc/hides_under_flooring()
-	return 0
 
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)
@@ -880,3 +884,22 @@
 		otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+//* Underfloor *//
+
+#warn audit /hide()
+#warn audit /hides_under_flooring()
+/**
+ * sets our hides_underfloor
+ */
+/obj/proc/set_hides_underfloor(new_value)
+	#warn impl
+
+/**
+ * called to inform us we should / shouldn't be underfloor
+ *
+ * * we are assumed to not be underfloor when we are first made
+ * * that means this is called during Initialize() if and only if we need to be hiding underfloor
+ */
+/obj/proc/update_hiding_underfloor(new_value)
+	return

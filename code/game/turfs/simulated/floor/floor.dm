@@ -43,6 +43,9 @@
 /turf/simulated/floor/is_plating()
 	return !flooring
 
+/turf/simulated/floor/hides_underfloor_objects()
+	return flooring
+
 /turf/simulated/floor/Initialize(mapload, floortype)
 	. = ..()
 	if(!floortype && initial_flooring)

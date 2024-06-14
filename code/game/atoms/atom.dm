@@ -21,7 +21,6 @@
 	var/pass_flags_self = NONE
 
 	//? Unsorted / Legacy
-	var/level = 2
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
 	/// Holder for the last time we have been bumped.

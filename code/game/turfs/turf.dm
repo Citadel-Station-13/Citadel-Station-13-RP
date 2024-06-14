@@ -362,6 +362,14 @@
 /turf/proc/is_plating()
 	return 0
 
+/**
+ * override this on child types for speed!
+ *
+ * @return a truthy value. Do not use this value for anything else; all we care is whether or not it's truthy.
+ */
+/turf/proc/hides_underfloor_objects()
+	return !is_plating()
+
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && !is_plating())
