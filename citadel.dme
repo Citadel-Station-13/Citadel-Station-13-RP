@@ -2008,7 +2008,6 @@
 #include "code\game\turfs\simulated\floor\floor_attackby.dm"
 #include "code\game\turfs\simulated\floor\floor_damage.dm"
 #include "code\game\turfs\simulated\floor\floor_icon.dm"
-#include "code\game\turfs\simulated\floor\floor_static.dm"
 #include "code\game\turfs\simulated\floor\floor_types.dm"
 #include "code\game\turfs\simulated\floor\floor_types_eris.dm"
 #include "code\game\turfs\simulated\floor\floor_types_vr.dm"
