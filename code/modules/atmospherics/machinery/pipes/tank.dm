@@ -11,7 +11,6 @@
 	volume = 10000 //in liters, 1 meters by 1 meters by 2 meters ~tweaked it a little to simulate a pressure tank without needing to recode them yet
 
 	layer = EXPOSED_PIPE_LAYER
-	level = 1
 	dir = SOUTH
 	initialize_directions = SOUTH
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY

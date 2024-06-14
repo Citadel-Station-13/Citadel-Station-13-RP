@@ -19272,7 +19272,6 @@
 	icon_state = "pdoor0";
 	id = "englockdown";
 	layer = 1;
-	level = 1;
 	name = "Engineering Lockdown";
 	opacity = 0;
 	open_layer = 1
@@ -24698,7 +24697,6 @@
 	icon_state = "pdoor0";
 	id = "englockdown";
 	layer = 1;
-	level = 1;
 	name = "Engineering Lockdown";
 	opacity = 0;
 	open_layer = 1

@@ -57,7 +57,7 @@
 	if(GLOB.holy_weapon_type)
 		return
 	var/obj/item/holy_weapon
-	var/list/holy_weapons_list = subtypesof(/obj/item/nullrod) + list(HOLY_WEAPONS)
+	var/list/holy_weapons_list = typesof(/obj/item/nullrod)
 	var/list/display_names = list()
 	var/list/nullrod_icons = list()
 	for(var/V in holy_weapons_list)

@@ -19,7 +19,6 @@
 
 	var/on = 0
 	use_power = USE_POWER_OFF
-	level = 1
 
 /obj/machinery/atmospherics/portables_connector/fuel
 	icon_state = "map_connector-fuel"

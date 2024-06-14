@@ -11,8 +11,6 @@
 
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SCRUBBER //connects to regular and scrubber pipes
 
-	level = 1
-
 	hijack_require_exposed = TRUE
 	default_multitool_hijack = TRUE
 	tgui_interface = "AtmosVentScrubber"

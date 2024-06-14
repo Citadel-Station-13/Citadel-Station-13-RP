@@ -45,16 +45,9 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."
 	anchored = TRUE
 	w_class = WEIGHT_CLASS_HUGE
-	//randpixel = 0
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
 
 	var/repair_fail_chance = 35
-
-
-/obj/item/radio/beacon/anchored/Initialize(mapload)
-	. = ..()
-	var/turf/T = get_turf(src)
-	hide(hides_under_flooring() && !T.is_plating())
-
 
 /obj/item/radio/beacon/anchored/attackby(obj/item/I, mob/living/user)
 	..()

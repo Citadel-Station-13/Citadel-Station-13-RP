@@ -22,6 +22,8 @@ Pipelines + Other Objects -> Pipe network
 	atom_colouration_system = FALSE
 	climb_allowed = FALSE
 	depth_projected = FALSE
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor_defaulting = FALSE
 
 	///The color of the pipe
 	var/pipe_color
@@ -188,8 +190,6 @@ Pipelines + Other Objects -> Pipe network
 	pipe_color = obj_color
 	setPipingLayer(set_layer)
 	// TODO - M.connect_types = src.connect_types - Or otherwise copy from item? Or figure it out from piping layer?
-	var/turf/T = get_turf(src)
-	level = !T.is_plating() ? 2 : 1
 	atmos_init()
 	if(QDELETED(src))
 		return // TODO - Eventually should get rid of the need for this.
@@ -234,20 +234,14 @@ Pipelines + Other Objects -> Pipe network
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
 
-/obj/machinery/atmospherics/hide(do_hide)
-	if(do_hide && level == 1)
+/obj/machinery/atmospherics/update_hiding_underfloor(new_value)
+	. = ..()
+	if(!.)
+		return
+	if(new_value)
 		layer = PIPE_LAYER
 	else
 		reset_plane_and_layer()
-
-// todo: refactor
-
-/obj/machinery/atmospherics/is_hidden_underfloor()
-	var/turf/T = loc
-	return istype(T) && (level == 1) && !T.is_plating()
-
-/obj/machinery/atmospherics/should_hide_underfloor()
-	return level == 1
 
 /**
  * currently unimplemented

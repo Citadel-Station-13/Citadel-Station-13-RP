@@ -17,7 +17,6 @@ Thus, the two variables affect pump operation are set in New():
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
-	level = 1
 	var/base_icon = "pump"
 
 	name = "gas pump"

@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	layer = EXPOSED_WIRE_LAYER
 	color = COLOR_RED
 
-	level = 1
+	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	anchored =1
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
@@ -90,10 +90,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(dir != SOUTH)
 		// handle maploader turning
 		setDir(dir)
-
-	var/turf/T = src.loc // hide if turf is not intact
-	if(level==1 && T)
-		hide(!T.is_plating())
 
 	cable_list += src //add it to the global cable list
 	if(auto_merge)
@@ -189,9 +185,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(istype(loc, /turf))
 		invisibility = i ? 101 : 0
 	update_icon()
-
-/obj/structure/cable/hides_under_flooring()
-	return 1
 
 /obj/structure/cable/update_icon()
 	if(!(atom_flags & ATOM_INITIALIZED))

@@ -8,7 +8,6 @@
 	use_power = USE_POWER_IDLE
 	initialize_directions = 0
 	construction_type = /obj/item/pipe/quaternary
-	level = 1
 
 	var/configuring = 0
 	//var/target_pressure = ONE_ATMOSPHERE	//a base type as abstract as this should NOT be making these kinds of assumptions

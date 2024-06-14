@@ -6,7 +6,7 @@
 	icon_state = "intact"
 	pipe_icon = "hepipe"
 	color = "#404040"
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	connect_types = CONNECT_TYPE_HE
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	construction_type = /obj/item/pipe/binary/bendable
@@ -128,7 +128,7 @@
 	icon = 'icons/atmos/junction.dmi'
 	icon_state = "intact"
 	pipe_icon = "hejunction"
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_HE
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "junction"

@@ -17,8 +17,6 @@
 	tgui_interface = "AtmosVentPump"
 	atmos_component_ui_flags = NONE
 
-	level = 1
-
 	/// registered area
 	var/area/registered_area
 	/// auto name by area
