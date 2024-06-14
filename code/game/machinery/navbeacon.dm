@@ -10,6 +10,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	desc = "A beacon used for bot navigation."
 	plane = TURF_PLANE
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor_update_icon = TRUE
 	anchored = TRUE
 	/// TRUE if cover is open.
 	var/open = FALSE
@@ -53,14 +54,8 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 		else
 			codes[e] = "1"
 
-// called when turf state changes
-// hide the object if turf is intact
-/obj/machinery/navbeacon/hide(var/intact)
-	invisibility = intact ? 101 : 0
-	updateicon()
-
 // update the icon_state
-/obj/machinery/navbeacon/proc/updateicon()
+/obj/machinery/navbeacon/update_icon_state()
 	var/state="navbeacon[open]"
 
 	if(invisibility)
@@ -68,6 +63,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 									// in case revealed by T-scanner
 	else
 		icon_state = "[state]"
+	return ..()
 
 /obj/machinery/navbeacon/attackby(obj/item/I, mob/user)
 	var/turf/T = loc

@@ -23,6 +23,7 @@ Pipelines + Other Objects -> Pipe network
 	climb_allowed = FALSE
 	depth_projected = FALSE
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor_defaulting = FALSE
 
 	///The color of the pipe
 	var/pipe_color
@@ -233,8 +234,11 @@ Pipelines + Other Objects -> Pipe network
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
 
-/obj/machinery/atmospherics/hide(do_hide)
-	if(do_hide && level == 1)
+/obj/machinery/atmospherics/update_hiding_underfloor(new_value)
+	. = ..()
+	if(!.)
+		return
+	if(new_value)
 		layer = PIPE_LAYER
 	else
 		reset_plane_and_layer()

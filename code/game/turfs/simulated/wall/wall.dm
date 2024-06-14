@@ -87,9 +87,15 @@
 	clear_plants()
 	return ..()
 
-// Walls always hide the stuff below them.
+/// walls **do not** hide things underfloor
+/// why, even though it makes sense?
+/// because balance-wise we don't want to make you have to tear down
+/// walls just to run pipes through
+///
+/// if there's a way to do it later then we can set this back to yes but for now, hell no.
+/// do not change this without permission ~silicons
 /turf/simulated/wall/hides_underfloor_objects()
-	return TRUE
+	return FALSE
 
 /turf/simulated/wall/proc/clear_plants()
 	for(var/obj/effect/overlay/wallrot/WR in src)

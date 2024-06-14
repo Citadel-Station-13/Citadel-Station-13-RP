@@ -36,6 +36,7 @@
 	icon = 'icons/obj/atmospherics/mainspipe.dmi'
 	plane = TURF_PLANE
 	layer = PIPE_LAYER
+	hides_underfloor_defaulting = TRUE
 
 	var/volume = 0
 
@@ -67,11 +68,6 @@
 	aux = new(src)
 	aux.volume = volume
 	aux.nodes.len = nodes.len
-
-/obj/machinery/atmospherics/mains_pipe/hide(var/i)
-	if(level == 1 && istype(loc, /turf/simulated))
-		invisibility = i ? 101 : 0
-	update_icon()
 
 /obj/machinery/atmospherics/mains_pipe/proc/burst()
 	for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)

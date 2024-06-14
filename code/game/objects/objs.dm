@@ -136,6 +136,8 @@
 	/// * we are assumed to not be underfloor when we are first made
 	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
 	var/hides_underfloor = OBJ_UNDERFLOOR_NEVER
+	/// call update icon after update_hiding_underfloor()
+	var/hides_underfloor_update_icon = FALSE
 	/// are we fully INVISIBILITY_ABSTRACT while hidden?
 	///
 	/// this has implications.
@@ -921,9 +923,12 @@
  */
 /obj/proc/update_hiding_underfloor(new_value)
 	if(!hides_underfloor_defaulting)
-		return
+		return TRUE
 	invisibility = hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR
-	
+	if(hides_underfloor_update_icon)
+		update_icon()
+	return TRUE
+
 /**
  * **guesses** if we're hidden underfloor
  * this is not the actual state!

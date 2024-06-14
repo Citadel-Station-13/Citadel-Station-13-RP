@@ -51,11 +51,6 @@
 		if(SOUTHWEST)
 			initialize_directions = SOUTH
 
-/obj/machinery/atmospherics/pipe/zpipe/hide(var/i)
-	if(istype(loc, /turf/simulated))
-		invisibility = i ? 101 : 0
-	update_icon()
-
 /obj/machinery/atmospherics/pipe/zpipe/process(delta_time)
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
 		..()
@@ -103,7 +98,6 @@
 
 /obj/machinery/atmospherics/pipe/zpipe/update_icon()
 	color = pipe_color
-	return
 
 /obj/machinery/atmospherics/pipe/zpipe/disconnect(obj/machinery/atmospherics/reference)
 	if(reference == node1)
@@ -183,10 +177,6 @@
 				if (check_connectable(target) && target.check_connectable(src))
 					node2 = target
 					break
-
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)	// but respect level
 
 ///////////////////////
 // supply/scrubbers  //

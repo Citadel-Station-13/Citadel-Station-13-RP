@@ -6,6 +6,8 @@
 	buckle_flags = BUCKLING_REQUIRES_RESTRAINTS
 
 	use_power = USE_POWER_OFF
+	hides_underfloor_update_icon = TRUE
+	hides_underfloor_defaulting = TRUE
 
 	pipe_flags = NONE // Does not have PIPING_DEFAULT_LAYER_ONLY flag.
 
@@ -89,7 +91,7 @@
 	if (!W.is_wrench())
 		return ..()
 	var/turf/T = src.loc
-	if (level==1 && isturf(T) && !T.is_plating())
+	if (is_hidden_underfloor() && isturf(T) && !T.is_plating())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
@@ -125,11 +127,6 @@
 		return node.pipe_color
 	else
 		return pipe_color
-
-/obj/machinery/atmospherics/pipe/hide(var/i)
-	if(istype(loc, /turf/simulated))
-		invisibility = i ? 100 : 0
-	update_icon()
 
 /obj/machinery/atmospherics/pipe/process(delta_time)
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
