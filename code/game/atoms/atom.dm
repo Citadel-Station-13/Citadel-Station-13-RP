@@ -928,8 +928,10 @@
 /**
  * called when we're hit by a radiation wave
  *
- * this is only called on the top level atoms directly on a turf
- * for nested atoms, you need /datum/component/radiation_listener
+ * * this is only called directly on turfs
+ * * this is also called directly if an outgoing pulse is shielded by something, so it hits everything inside it instead
+ * * for any other atom on turf, you need /datum/component/radiation_listener
+ * * /datum/element/z_radiation_listener is needed if you want to listen to z-wide and other high-gain rad pulses
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
 	SHOULD_CALL_PARENT(TRUE)
