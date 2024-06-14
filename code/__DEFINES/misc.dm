@@ -14,8 +14,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 //define THIS_PROC_TYPE_WEIRD_STR "[THIS_PROC_TYPE_WEIRD]" //Included for completeness
 //define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])" //Ditto
 
-#define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
-
 /// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 ///
 /// * Invisibility is different from just hiding something via plane masters.
@@ -399,10 +397,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define MR_NORMAL	0
 #define MR_UNSURE	1
 #define MR_DEAD		2
-
-//Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
-#define HOLY_WEAPONS /obj/item/nullrod
-#define HOLY_ICONS /obj/item/godfig
 
 // Used by radios to indicate that they have sent a message via something other than subspace
 #define RADIO_CONNECTION_FAIL 0
