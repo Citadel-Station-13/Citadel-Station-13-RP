@@ -27,9 +27,6 @@
 		hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	return ..()
 
-/obj/machinery/atmospherics/pipe/hides_under_flooring()
-	return level != 2
-
 /obj/machinery/atmospherics/pipe/proc/pipeline_expansion()
 	return null
 

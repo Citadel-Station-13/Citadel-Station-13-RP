@@ -890,7 +890,6 @@
 //* Underfloor *//
 
 #warn audit /hide()
-#warn audit /hides_under_flooring()
 /**
  * sets our hides_underfloor
  */

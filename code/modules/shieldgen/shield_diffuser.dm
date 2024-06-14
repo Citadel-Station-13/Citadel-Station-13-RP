@@ -20,9 +20,6 @@
 		invisibility = i ? 101 : 0
 	update_icon()
 
-/obj/machinery/shield_diffuser/hides_under_flooring()
-	return TRUE
-
 /obj/machinery/shield_diffuser/process(delta_time)
 	if(alarm)
 		alarm--

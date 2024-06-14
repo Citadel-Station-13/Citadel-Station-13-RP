@@ -348,12 +348,6 @@
 			to_chat(user, "You need to attach it to the plating first!")
 			return
 
-/obj/structure/disposalconstruct/hides_under_flooring()
-	if(anchored)
-		return 1
-	else
-		return 0
-
 /obj/structure/disposalconstruct/proc/is_pipe()
 	return (ptype != DISPOSAL_PIPE_BIN && ptype != DISPOSAL_PIPE_OUTLET && ptype != DISPOSAL_PIPE_CHUTE)
 

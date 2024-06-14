@@ -186,9 +186,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		invisibility = i ? 101 : 0
 	update_icon()
 
-/obj/structure/cable/hides_under_flooring()
-	return 1
-
 /obj/structure/cable/update_icon()
 	if(!(atom_flags & ATOM_INITIALIZED))
 		return // do NOT trample d1/d2 before they're set..

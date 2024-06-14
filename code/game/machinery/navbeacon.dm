@@ -53,9 +53,6 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 		else
 			codes[e] = "1"
 
-/obj/machinery/navbeacon/hides_under_flooring()
-	return 1
-
 // called when turf state changes
 // hide the object if turf is intact
 /obj/machinery/navbeacon/hide(var/intact)
