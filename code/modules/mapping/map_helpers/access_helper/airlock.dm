@@ -46,6 +46,15 @@
 		ACCESS_COMMAND_IAA,
 	)
 
+// used for tether's EVA - when your EVA is shared between departments
+/obj/map_helper/access_helper/airlock/station/general_eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_GENERAL_EXPLORER,
+	)
+
 /**
  * for pilots
  */
@@ -530,6 +539,18 @@
 /obj/map_helper/access_helper/airlock/station/command/vault
 	req_access = list(
 		ACCESS_COMMAND_VAULT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/command/maintenance
+	req_one_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
+// not to be mistaken with /station/general_eva
+/obj/map_helper/access_helper/airlock/station/command/eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
 	)
 
 /obj/map_helper/access_helper/airlock/station/centcom
