@@ -1,6 +1,0 @@
-author: "BlueWildrose"
-delete-after: True
-changes:
-  - bugfix: "Clown dufflebag sprite fixed."
-  - bugfix: "Cigarette boxes will no longer become invisible."
-  - bugfix: "Trashbag sprites will update again."

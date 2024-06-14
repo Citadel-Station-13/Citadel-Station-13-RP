@@ -1,4 +1,0 @@
-author: "Putnam3145"
-delete-after: True
-changes:
-  - bugfix: "Can no longer swap guest passes into guest pass terminals"

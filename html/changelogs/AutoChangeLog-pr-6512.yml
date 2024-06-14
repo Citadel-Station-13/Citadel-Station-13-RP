@@ -1,4 +1,0 @@
-author: "lunar-crater-ex"
-delete-after: True
-changes:
-  - tweak: "Dirtying happens sooner, at 75 steps instead of 500."
