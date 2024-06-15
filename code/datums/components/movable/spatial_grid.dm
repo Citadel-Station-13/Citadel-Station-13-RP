@@ -38,7 +38,7 @@
 /datum/component/spatial_grid/CheckDupeComponent(datum/component/C, datum/spatial_grid/grid)
 	return grid != src.grid
 
-/datum/component/spatial_grid/proc/construct(atom/root = parent:loc)
+/datum/component/spatial_grid/proc/construct(atom/root = parent)
 	while(ismovable(root))
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		root = root.loc
@@ -47,7 +47,7 @@
 		grid.direct_insert(parent, root.z, idx)
 		current_index = idx
 
-/datum/component/spatial_grid/proc/teardown(atom/root = parent:loc)
+/datum/component/spatial_grid/proc/teardown(atom/root = parent)
 	while(ismovable(root))
 		UnregisterSignal(root, COMSIG_MOVABLE_MOVED)
 		root = root.loc

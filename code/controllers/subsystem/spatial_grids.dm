@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(spatial_grids)
 
 /datum/spatial_grid/proc/sync_world_z(size)
 	src.grids.len = max(src.grids.len, size)
-	for(var/i in 1 to length(size))
+	for(var/i in 1 to size)
 		if(src.grids[i])
 			continue
 		src.grids[i] = new /list(src.width * src.height)
@@ -107,7 +107,7 @@ SUBSYSTEM_DEF(spatial_grids)
 	var/list/grid = src.grids[epicenter.z]
 	for(var/x in max(1, min_x) to min(src.width, max_x))
 		for(var/y in max(1, min_y) to min(src.height, max_y))
-			var/index = x + src.width * y
+			var/index = x + src.width * (y - 1)
 			if(grid[index])
 				var/entry = grid[index]
 				if(islist(entry))
