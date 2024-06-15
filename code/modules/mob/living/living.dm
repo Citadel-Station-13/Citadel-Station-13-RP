@@ -1,5 +1,7 @@
+TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grid.living)
 /mob/living/Initialize(mapload)
 	. = ..()
+	// make radiation sensitive
 	AddComponent(/datum/component/radiation_listener)
 	AddElement(/datum/element/z_radiation_listener)
 
