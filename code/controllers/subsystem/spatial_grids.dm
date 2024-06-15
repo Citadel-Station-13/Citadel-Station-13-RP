@@ -3,14 +3,15 @@
 
 SUBSYSTEM_DEF(spatial_grids)
 	name = "Spatial Grids"
-	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
+	init_order = INIT_ORDER_SPATIAL_GRIDS
+	subsystem_flags = SS_NO_FIRE
 
 	/// /living mobs. they don't have to be alive, just a subtype of /living.
 	var/datum/spatial_grid/living
 
-/datum/controller/subsystem/spatial_grids/PreInit()
-	. = ..()
+/datum/controller/subsystem/spatial_grids/Initialize()
 	make_grids()
+	return ..()
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
 	living = new /datum/spatial_grid(/mob/living, 16)
