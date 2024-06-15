@@ -2,9 +2,6 @@
  * automata datums for propagating turf effect
  */
 /datum/automata
-	/// automata flags
-	var/automata_flags = NONE
-
 	/// are we ready?
 	var/ready = FALSE
 

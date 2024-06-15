@@ -23,9 +23,6 @@
 
 	//* processing variables *//
 
-	/// current iteration
-	var/iteration
-
 	/// processed turfs, assoc list to power. makes sure we don't fold in on ourselves.
 	var/list/processed
 	/// current edges
@@ -65,6 +62,7 @@
 
 /datum/automata/explosion/tick()
 	#warn impl
+	return ..()
 
 /datum/automata/explosion/act_cross(atom/movable/AM, data)
 	#warn impl
