@@ -19,4 +19,13 @@
 /// * DEPENDS_ON_CREATION, but always underfloor if made in mapload
 #define OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP "initially-underfloor"
 
-#warn DEFINE_ENUM
+DEFINE_ENUM("obj_hides_underfloor", list(
+	/obj = list(
+		"hides_underfloor",
+	),
+), list(
+	"Never" = OBJ_UNDERFLOOR_NEVER,
+	"Always" = OBJ_UNDERFLOOR_ALWAYS,
+	"If Covered (Init Only)" = OBJ_UNDERFLOOR_IF_COVERED,
+	"If Created On Floor (Init Only)" = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP,
+))
