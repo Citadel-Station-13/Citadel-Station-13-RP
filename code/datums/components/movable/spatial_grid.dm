@@ -40,8 +40,8 @@
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		root = root.loc
 	if(isturf(root))
-		var/idx = ceil(root.x / grid_resolution) + grid_width * ceil(root.y / grid_resolution)
-		grid.direct_insert(parent, idx)
+		var/idx = ceil(root.x / grid_resolution) + grid_width * floor(root.y / grid_resolution)
+		grid.direct_insert(parent, root.z, idx)
 		current_index = idx
 
 /datum/component/spatial_grid/proc/teardown(atom/root = parent:loc)
@@ -49,7 +49,7 @@
 		UnregisterSignal(root, COMSIG_MOVABLE_MOVED)
 		root = root.loc
 	if(isturf(root))
-		grid.direct_remove(parent, current_index)
+		grid.direct_remove(parent, root.z, current_index)
 		current_index = null
 
 /datum/component/spatial_grid/proc/update(atom/movable/source, atom/oldloc)
@@ -57,11 +57,12 @@
 	if(newloc == oldloc)
 		return
 	// turf --> turf, try to do an optimized, lazy update
-	if(isturf(oldloc) && isturf(newloc))
-		var/new_index = ceil(newloc.x / grid_resolution) + grid_width * ceil(newloc.y / grid_resolution)
+	if(isturf(oldloc) && isturf(newloc) && (oldloc.z == newloc.z))
+		var/new_index = ceil(newloc.x / grid_resolution) + grid_width * floor(newloc.y / grid_resolution)
+		var/z = oldloc.z
 		if(new_index != current_index)
-			grid.direct_remove(parent, current_index)
-			grid.direct_insert(parent, new_index)
+			grid.direct_remove(parent, z, current_index)
+			grid.direct_insert(parent, z, new_index)
 			current_index = new_index
 	// turf --> somewhere else or somewhere else --> turf or somewhere else --> somewhere else, do full cycle
 	else

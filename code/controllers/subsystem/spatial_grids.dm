@@ -16,12 +16,16 @@ SUBSYSTEM_DEF(spatial_grids)
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
 	living = new /datum/spatial_grid(/mob/living, 16)
 
+/datum/controller/subsystem/spatial_grids/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	living.sync_world_z(new_z_count)
+
 /**
  * index = ceil(x / resolution) + width * ceil(y / resolution)
  */
 /datum/spatial_grid
-	/// our grid
-	var/list/grid = list()
+	/// our grid; list[z] = grid: list()
+	var/list/grids = list()
 	/// our grid width
 	var/width
 	/// our grid height
@@ -39,14 +43,24 @@ SUBSYSTEM_DEF(spatial_grids)
 	// initialize grid
 	src.width = ceil(world.maxx / resolution)
 	src.height = ceil(world.maxy / resolution)
-	src.grid = new /list(width * height)
+	src.grids = new /list()
 	src.resolution = resolution
 	src.expected_type = expected_type
+
+	sync_world_z(world.maxz)
+
+/datum/spatial_grid/proc/sync_world_z(size)
+	src.grids.len = max(src.grids.len, size)
+	for(var/i in 1 to length(size))
+		if(src.grids[i])
+			continue
+		src.grids[i] = new /list(src.width * src.height)
 
 /**
  * injects a movable at an index
  */
-/datum/spatial_grid/proc/direct_insert(atom/movable/AM, index)
+/datum/spatial_grid/proc/direct_insert(atom/movable/AM, z, index)
+	var/list/grid = grids[z]
 	var/entry = grid[index]
 	if(entry)
 		if(islist(entry))
@@ -59,7 +73,8 @@ SUBSYSTEM_DEF(spatial_grids)
 /**
  * removes a movable
  */
-/datum/spatial_grid/proc/direct_remove(atom/movable/AM, index)
+/datum/spatial_grid/proc/direct_remove(atom/movable/AM, z, index)
+	var/list/grid = grids[z]
 	var/entry = grid[index]
 	if(islist(entry))
 		entry -= AM
@@ -80,10 +95,10 @@ SUBSYSTEM_DEF(spatial_grids)
 /datum/spatial_grid/proc/range_query(turf/epicenter, distance)
 	. = list()
 	var/min_x = ceil((epicenter.x - distance) / src.resolution)
-	var/min_y = ceil((epicenter.y - distance) / src.resolution)
+	var/min_y = floor((epicenter.y - distance) / src.resolution)
 	var/max_x = ceil((epicenter.x + distance) / src.resolution)
-	var/max_y = ceil((epicenter.y + distance) / src.resolution)
-	var/list/grid = src.grid
+	var/max_y = floor((epicenter.y + distance) / src.resolution)
+	var/list/grid = src.grids[epicenter.z]
 	for(var/x in max(1, min_x) to min(src.width, max_x))
 		for(var/y in max(1, min_y) to min(src.height, max_y))
 			var/index = x + src.width * y
@@ -101,10 +116,18 @@ SUBSYSTEM_DEF(spatial_grids)
  *
  * * somewhat inefficient, why are you doing this?
  */
-/datum/spatial_grid/proc/all_atoms()
+/datum/spatial_grid/proc/all_atoms(z)
 	. = list()
-	var/list/grid = src.grid
-	for(var/i in 1 to length(grid))
-		if(!grid[i])
-			continue
-		. += grid[i]
+	if(z)
+		var/list/grid = src.grids[z]
+		for(var/i in 1 to length(grid))
+			if(!grid[i])
+				continue
+			. += grid[i]
+	else
+		for(var/i in 1 to world.maxz)
+			var/list/grid = src.grids[i]
+			for(var/i in 1 to length(grid))
+				if(!grid[i])
+					continue
+				. += grid[i]
