@@ -14,7 +14,7 @@
 #define TYPE_REGISTER_SPATIAL_GRID(TYPEPATH, GRID) \
 ##TYPEPATH/Initialize(...) { \
 	. = ..(); \
-	if(. == INITIALIZE_HIND_QDEL) { \
+	if(. == INITIALIZE_HINT_QDEL) { \
 		return; \
 	} \
 	AddComponent(/datum/component/spatial_grid, GRID); \

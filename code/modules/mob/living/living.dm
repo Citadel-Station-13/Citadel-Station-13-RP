@@ -1,4 +1,4 @@
-TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grid.living)
+TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 /mob/living/Initialize(mapload)
 	. = ..()
 	// make radiation sensitive

@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(spatial_grids)
 	make_grids()
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
-	living = new(/mob/living, 16)
+	living = new /datum/spatial_grid(/mob/living, 16)
 
 /**
  * index = ceil(x / resolution) + width * ceil(y / resolution)
@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(spatial_grids)
 		grid[index] = null
 
 /**
- * queries things within distance
+ * queries things within distance in tiles
  *
  * * distance is in tiles
  * * our measurement of distance uses get_dist().
@@ -87,7 +87,13 @@ SUBSYSTEM_DEF(spatial_grids)
 		for(var/y in max(1, min_y) to min(src.height, max_y))
 			var/index = x + src.width * y
 			if(grid[index])
-				. += grid[index]
+				var/entry = grid[index]
+				if(islist(entry))
+					for(var/atom/movable/AM as anything in entry)
+						if(get_dist(AM, epicenter) <= distance)
+							. += AM
+				else if(get_dist(entry, epicenter) <= distance)
+					. += entry
 
 /**
  * gets all registered movables

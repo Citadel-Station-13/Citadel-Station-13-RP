@@ -57,7 +57,7 @@
 	if(newloc == oldloc)
 		return
 	// turf --> turf, try to do an optimized, lazy update
-	if(isturf(oldoc) && isturf(newloc))
+	if(isturf(oldloc) && isturf(newloc))
 		var/new_index = ceil(newloc.x / grid_resolution) + grid_width * (newloc.y / grid_resolution)
 		if(new_index != current_index)
 			grid.direct_remove(parent, current_index)
