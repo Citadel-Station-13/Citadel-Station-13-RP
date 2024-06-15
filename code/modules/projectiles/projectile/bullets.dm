@@ -507,10 +507,10 @@
 	penetrating = 5
 	combustion = TRUE
 
-/obj/projectile/bullet/incendiary/caseless/on_hit(var/atom/movable/target, var/blocked = 0) //emphasizing that this is horrific and bad
+/obj/projectile/bullet/incendiary/caseless/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(isliving(target))
 		var/mob/living/L = target
-		L.adjustBurnloss = 15
+		L.adjustFireLoss(10)
 
 /obj/projectile/bullet/incendiary/phoronshrap
 	name = "phoron shrapnel slug"
