@@ -235,7 +235,7 @@
 //EMP shotgun 'slug', it's basically a beanbag that pops a tiny emp when it hits. //Not currently used
 /obj/projectile/bullet/shotgun/ion
 	name = "ion slug"
-	fire_sound = 'sound/weapons/Laser.ogg' // Really? We got nothing better than this?
+	fire_sound = 'sound/weapons/gunshot/gunshot_tech_huge.ogg'
 	damage = 15
 	embed_chance = 0
 	sharp = 0
@@ -497,14 +497,31 @@
 	range = 6
 
 /obj/projectile/bullet/incendiary/caseless
-	name = "caseless phoron slug"
+	name = "12.7mm phoron slug"
 	icon_state = "bullet_alt"
-	damage = 50
+	damage = 60
 	damage_type = BRUTE
 	incendiary = 1
 	flammability = 4
-	armor_penetration = 35
+	armor_penetration = 40
+	penetrating = 5
+	combustion = TRUE
 
+/obj/projectile/bullet/incendiary/caseless/on_hit(var/atom/movable/target, var/blocked = 0) //emphasizing that this is horrific and bad
+	if(isliving(target))
+		var/mob/living/L = target
+		L.adjustBurnloss = 15
+
+/obj/projectile/bullet/incendiary/phoronshrap
+	name = "phoron shrapnel slug"
+	icon_state = "bullet_alt"
+	damage = 40
+	armor_penetration = 30
+	damage_type = BRUTE
+	incendiary = 1
+	flammability = 4
+	penetrating = 1
+	combustion = TRUE
 
 
 /* Practice rounds and blanks */
