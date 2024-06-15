@@ -84,8 +84,11 @@ SUBSYSTEM_DEF(spatial_grids)
 	var/entry = grid[index]
 	if(islist(entry))
 		entry -= AM
-		if(length(entry) <= 1)
-			grid[index] = entry
+		switch(length(entry))
+			if(0)
+				grid[index] = null
+			if(1)
+				grid[index] = entry[1]
 	else
 		grid[index] = null
 
