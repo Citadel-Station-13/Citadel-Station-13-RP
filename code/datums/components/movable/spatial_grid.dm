@@ -35,6 +35,9 @@
 	teardown()
 	return ..()
 
+/datum/component/spatial_grid/CheckDupeComponent(datum/component/C, datum/spatial_grid/grid)
+	return grid != src.grid
+
 /datum/component/spatial_grid/proc/construct(atom/root = parent:loc)
 	while(ismovable(root))
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))

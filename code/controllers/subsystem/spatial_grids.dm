@@ -1,6 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+// todo: Recover() that calls full_rebuild(); forcefully resets spatial grid and rebuilds component on all relevant auto-bound atoms.
+//       why? because admins might fuck up and because things might break. don't argue about 'this isn't necessary if admins don't fuck up',
+//       they **will** fuck up eventually and it's good practice to have error-recovery be built into things.
+
 SUBSYSTEM_DEF(spatial_grids)
 	name = "Spatial Grids"
 	init_order = INIT_ORDER_SPATIAL_GRIDS
@@ -18,6 +22,8 @@ SUBSYSTEM_DEF(spatial_grids)
 
 /datum/controller/subsystem/spatial_grids/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
+	if(!initialized)
+		return
 	living.sync_world_z(new_z_count)
 
 /**
