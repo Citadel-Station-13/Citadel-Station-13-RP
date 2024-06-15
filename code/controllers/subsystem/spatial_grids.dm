@@ -125,8 +125,8 @@ SUBSYSTEM_DEF(spatial_grids)
 				continue
 			. += grid[i]
 	else
-		for(var/i in 1 to world.maxz)
-			var/list/grid = src.grids[i]
+		for(var/level in 1 to world.maxz)
+			var/list/grid = src.grids[level]
 			for(var/i in 1 to length(grid))
 				if(!grid[i])
 					continue
