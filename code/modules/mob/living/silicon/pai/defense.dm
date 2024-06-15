@@ -62,7 +62,7 @@
 			attack_generic(H, rand(15,20), "slashed")
 			return
 
-/mob/living/silicon/pai/emp_act(severity)
+/mob/living/silicon/pai/emp_act_legacy(severity)
 	// Silence for 2 minutes
 	// 20% chance to kill
 		// 33% chance to unbind

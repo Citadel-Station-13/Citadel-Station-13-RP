@@ -102,11 +102,11 @@
 			charging = null
 			update_icon()
 
-/obj/machinery/cell_charger/emp_act(severity)
+/obj/machinery/cell_charger/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(charging)
-		charging.emp_act(severity)
+		charging.emp_act_legacy(severity)
 	..(severity)
 
 

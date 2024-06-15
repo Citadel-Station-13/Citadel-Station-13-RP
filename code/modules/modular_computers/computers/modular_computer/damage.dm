@@ -42,7 +42,7 @@
 	take_damage_legacy(rand(100,200) / severity, 30 / severity)
 
 /// EMPs are similar to explosions, but don't cause physical damage to the casing. Instead they screw up the components
-/obj/item/modular_computer/emp_act(severity)
+/obj/item/modular_computer/emp_act_legacy(severity)
 	. = ..()
 	take_damage_legacy(rand(100,200) / severity, 50 / severity, 0)
 

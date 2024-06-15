@@ -282,10 +282,10 @@
 		remove_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
 		accessories = null
 
-/obj/item/clothing/emp_act(severity)
+/obj/item/clothing/emp_act_legacy(severity)
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.emp_act(severity)
+			A.emp_act_legacy(severity)
 	..()
 
 /obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")

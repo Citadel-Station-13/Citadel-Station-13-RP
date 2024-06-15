@@ -32,7 +32,7 @@
 	if(prob(85) && explosive)
 		explosion(loc, 0, 2, 4, /*flame_range = 2,*/ adminlog = FALSE/*, smoke = FALSE*/) // No devastation range
 	else if(prob(50))
-		emp_act(2)
+		emp_act_legacy(2)
 	else
 		legacy_ex_act(2)
 

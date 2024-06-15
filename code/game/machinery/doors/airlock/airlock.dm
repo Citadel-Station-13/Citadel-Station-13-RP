@@ -1157,7 +1157,7 @@ About the new airlock wires panel:
 	drop_airlock_assembly(where)
 	drop_airlock_electronics(where, (atom_flags & ATOM_BROKEN) || (method != ATOM_DECONSTRUCT_DISASSEMBLED))
 
-/obj/machinery/door/airlock/emp_act(var/severity)
+/obj/machinery/door/airlock/emp_act_legacy(var/severity)
 	if(prob(40/severity))
 		var/duration = world.time + SecondsToTicks(30 / severity)
 		if(duration > electrified_until)

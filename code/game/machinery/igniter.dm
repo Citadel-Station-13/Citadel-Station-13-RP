@@ -110,7 +110,7 @@
 		location.hotspot_expose(1000,500,1)
 	return TRUE
 
-/obj/machinery/sparker/emp_act(severity)
+/obj/machinery/sparker/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

@@ -43,9 +43,9 @@
 	var/obj/item/integrated_circuit/built_in/action_button/action_circuit = null // This gets pulsed when someone clicks the button on the hud.
 	var/EA_Installed = null
 
-/obj/item/clothing/emp_act(severity)
+/obj/item/clothing/emp_act_legacy(severity)
 	if(EA)
-		EA.emp_act(severity)
+		EA.emp_act_legacy(severity)
 	..()
 
 /obj/item/clothing/examine(mob/user, dist)

@@ -151,7 +151,7 @@ field_generator power level display
 		return
 
 
-/obj/machinery/field_generator/emp_act()
+/obj/machinery/field_generator/emp_act_legacy()
 	return 0
 
 /obj/machinery/field_generator/bullet_act(var/obj/projectile/Proj)

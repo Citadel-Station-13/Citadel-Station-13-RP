@@ -137,9 +137,9 @@
 	user.update_action_buttons()
 	return TRUE
 
-/obj/item/flashlight/emp_act(severity)
+/obj/item/flashlight/emp_act_legacy(severity)
 	for(var/obj/O in contents)
-		O.emp_act(severity)
+		O.emp_act_legacy(severity)
 	..()
 
 /obj/item/flashlight/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

@@ -31,6 +31,7 @@
 	integrity_failure = 0
 
 	hit_sound_brute = 'sound/effects/Glasshit.ogg'
+	damage_classifier = DAMAGE_CLASSIFIER_GLASS
 
 	/// are we reinforced? this is only to modify our construction state/steps.
 	var/considered_reinforced = FALSE

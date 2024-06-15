@@ -1265,7 +1265,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 
 // damage and destruction acts
-/obj/machinery/power/apc/emp_act(severity)
+/obj/machinery/power/apc/emp_act_legacy(severity)
 	// Fail for 8-12 minutes (divided by severity)
 	// Division by 2 is required, because machinery ticks are every two seconds. Without it we would fail for 16-24 minutes.
 	if(is_critical)
@@ -1273,13 +1273,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		// Critical APCs are also more resilient to cell corruption/power drain.
 		energy_fail(rand(240, 360) / severity / CRITICAL_APC_EMP_PROTECTION)
 		if(cell)
-			cell.emp_act(severity+2)
+			cell.emp_act_legacy(severity+2)
 	else
 		// Regular APCs fail for normal time.
 		energy_fail(rand(240, 360) / severity)
 		//Cells are partially shielded by the APC frame.
 		if(cell)
-			cell.emp_act(severity+1)
+			cell.emp_act_legacy(severity+1)
 
 	update_icon()
 	..()

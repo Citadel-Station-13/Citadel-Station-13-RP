@@ -135,7 +135,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		//The construction/deconstruction of the console code.
 		return ..()
 
-/obj/machinery/computer/rdconsole/emp_act(var/remaining_charges, var/mob/user)
+/obj/machinery/computer/rdconsole/emp_act_legacy(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		playsound(src, /datum/soundbyte/grouped/sparks, 75, 1)
 		emagged = 1

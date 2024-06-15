@@ -377,7 +377,7 @@
 	if(istype(target, /obj) && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && active)
 		// EMP stuff.
 		var/obj/O = target
-		O.emp_act(3) // A weaker severity is used because this has infinite uses.
+		O.emp_act_legacy(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(O), 'sound/effects/EMPulse.ogg', 100, 1)
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
 	return ..()
@@ -388,8 +388,8 @@
 	if(!istype(L))
 		return
 	if(L.isSynthetic() && active)
-		// Do some extra damage.  Not a whole lot more since emp_act() is pretty nasty on FBPs already.
-		L.emp_act(3) // A weaker severity is used because this has infinite uses.
+		// Do some extra damage.  Not a whole lot more since emp_act_legacy() is pretty nasty on FBPs already.
+		L.emp_act_legacy(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(L), 'sound/effects/EMPulse.ogg', 100, 1)
 		L.adjustFireLoss(damage_force * 3) // 15 Burn, for 20 total.
 		playsound(get_turf(L), 'sound/weapons/blade1.ogg', 100, 1)

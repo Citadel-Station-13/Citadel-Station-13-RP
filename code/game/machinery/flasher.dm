@@ -95,7 +95,7 @@
 				L.flash_eyes()
 		O.afflict_paralyze(20 * flash_time)
 
-/obj/machinery/flasher/emp_act(severity)
+/obj/machinery/flasher/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

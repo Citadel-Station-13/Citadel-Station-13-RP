@@ -17,6 +17,7 @@
 	integrity_failure = 0
 
 	armor_type = /datum/armor/object/heavy
+	damage_classifier = DAMAGE_CLASSIFIER_WALL
 
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	layer = PLATING_LAYER

@@ -598,7 +598,7 @@ BLIND     // can't see anything
 	enables_planes = list(/atom/movable/screen/plane_master/cloaked)
 	flash_protection = FLASH_PROTECTION_REDUCED
 
-/obj/item/clothing/glasses/thermal/emp_act(severity)
+/obj/item/clothing/glasses/thermal/emp_act_legacy(severity)
 	if(istype(src.loc, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = src.loc
 		to_chat(M, "<font color='red'>The Optical Thermal Scanner overloads and blinds you!</font>")

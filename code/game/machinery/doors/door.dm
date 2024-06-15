@@ -21,6 +21,7 @@
 	integrity_failure = 100
 
 	hit_sound_brute = 'sound/weapons/smash.ogg'
+	damage_classifier = DAMAGE_CLASSIFIER_DOOR
 
 	var/mineral
 	var/open_layer = DOOR_OPEN_LAYER
@@ -293,7 +294,7 @@
 	machine_stat &= (~BROKEN)
 	update_icon()
 
-/obj/machinery/door/emp_act(severity)
+/obj/machinery/door/emp_act_legacy(severity)
 	if(prob(20/severity) && (istype(src,/obj/machinery/door/airlock) || istype(src,/obj/machinery/door/window)) )
 		spawn(0)
 			open()

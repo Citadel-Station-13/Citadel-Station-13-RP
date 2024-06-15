@@ -190,8 +190,8 @@
 
 
 // Electromagnetism
-/mob/living/simple_mob/emp_act(severity)
-	..() // To emp_act() its contents.
+/mob/living/simple_mob/emp_act_legacy(severity)
+	..() // To emp_act_legacy() its contents.
 	if(!isSynthetic())
 		return
 	switch(severity)

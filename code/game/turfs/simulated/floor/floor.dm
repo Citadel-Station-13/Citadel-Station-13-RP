@@ -16,6 +16,8 @@
 	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_OPEN_FLOOR)
 
+	damage_classifier = DAMAGE_CLASSIFIER_FLOOR
+
 	// Damage to flooring.
 	var/broken
 	var/burnt

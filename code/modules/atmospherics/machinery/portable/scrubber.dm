@@ -27,7 +27,7 @@
 
 //! LEGACY BELOW
 
-/obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
+/obj/machinery/portable_atmospherics/powered/scrubber/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

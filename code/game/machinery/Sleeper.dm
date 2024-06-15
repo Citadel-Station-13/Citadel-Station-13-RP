@@ -322,7 +322,7 @@
 	..()
 	go_out()
 
-/obj/machinery/sleeper/emp_act(var/severity)
+/obj/machinery/sleeper/emp_act_legacy(var/severity)
 	if(filtering)
 		toggle_filter()
 

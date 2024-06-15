@@ -67,7 +67,7 @@
 		produce_heat()
 		delay = initial(delay)
 
-/obj/machinery/r_n_d/server/emp_act(severity)
+/obj/machinery/r_n_d/server/emp_act_legacy(severity)
 	griefProtection()
 	..()
 

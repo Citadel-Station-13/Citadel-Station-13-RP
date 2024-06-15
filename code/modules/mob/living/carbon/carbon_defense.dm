@@ -4,11 +4,11 @@
 		return null
 	..()
 
-/mob/living/carbon/emp_act(severity)
+/mob/living/carbon/emp_act_legacy(severity)
 	. = ..()
 	// tODO: REFACTOR THIS DUMB SHIT
 	for(var/obj/item/organ/organ in organs | internal_organs)
-		organ.emp_act(severity)
+		organ.emp_act_legacy(severity)
 
 /mob/living/carbon/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)

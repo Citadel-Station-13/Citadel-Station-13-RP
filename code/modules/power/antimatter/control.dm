@@ -87,7 +87,7 @@
 	return
 
 
-/obj/machinery/power/am_control_unit/emp_act(severity)
+/obj/machinery/power/am_control_unit/emp_act_legacy(severity)
 	switch(severity)
 		if(1)
 			if(active)	toggle_power()

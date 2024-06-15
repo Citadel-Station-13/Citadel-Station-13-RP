@@ -161,7 +161,7 @@
 	else if(istype(target, /obj/machinery/camera))
 		var/obj/machinery/camera/C = target
 		if(prob(effectchance * diode.rating))
-			C.emp_act(4 - diode.rating)
+			C.emp_act_legacy(4 - diode.rating)
 			outmsg = "<span class='notice'>You shine the [src] into the lens of [C].</span>"
 			add_attack_logs(user,C.name,"Tried disabling using [src]")
 		else

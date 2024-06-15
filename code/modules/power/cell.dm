@@ -219,7 +219,7 @@
 	if (prob(10))
 		rigged = 1 //broken batteries are dangerous
 
-/obj/item/cell/emp_act(severity)
+/obj/item/cell/emp_act_legacy(severity)
 	. = ..()
 	if(emp_proof)
 		return

@@ -238,9 +238,9 @@
 		update_icon()
 		return 1
 
-/obj/structure/closet/crate/secure/emp_act(severity)
+/obj/structure/closet/crate/secure/emp_act_legacy(severity)
 	for(var/obj/O in src)
-		O.emp_act(severity)
+		O.emp_act_legacy(severity)
 	if(!broken && !opened  && prob(50/severity))
 		cut_overlays()
 		if(!locked)

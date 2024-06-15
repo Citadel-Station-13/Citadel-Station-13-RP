@@ -91,9 +91,9 @@
 		set_overlays(emotion)
 		current_emotion = emotion
 
-/obj/item/sleevecard/emp_act(severity)
+/obj/item/sleevecard/emp_act_legacy(severity)
 	for(var/mob/M in src)
-		M.emp_act(severity)
+		M.emp_act_legacy(severity)
 
 /obj/item/sleevecard/legacy_ex_act(severity)
 	if(infomorph)

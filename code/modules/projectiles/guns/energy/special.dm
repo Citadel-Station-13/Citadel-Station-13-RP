@@ -12,7 +12,7 @@
 	projectile_type = /obj/projectile/ion
 	one_handed_penalty = 15
 
-/obj/item/gun/energy/ionrifle/emp_act(severity)
+/obj/item/gun/energy/ionrifle/emp_act_legacy(severity)
 	..(max(severity, 4)) //so it doesn't EMP itself, I guess
 
 /obj/item/gun/energy/ionrifle/pistol

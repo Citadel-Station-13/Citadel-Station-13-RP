@@ -187,10 +187,10 @@
 /mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
 	  return 0 //only carbon liveforms have this proc
 
-/mob/living/emp_act(severity)
+/mob/living/emp_act_legacy(severity)
 	var/list/L = src.get_equipped_items(TRUE, TRUE)
 	for(var/obj/O in L)
-		O.emp_act(severity)
+		O.emp_act_legacy(severity)
 	..()
 
 /mob/living/blob_act(var/obj/structure/blob/B)
@@ -457,7 +457,7 @@
 	afflict_unconscious(20 * 5)
 	stuttering += 20
 	make_jittery(150)
-	emp_act(1)
+	emp_act_legacy(1)
 	to_chat(src, SPAN_CRITICAL("You've been struck by lightning!"))
 
 // Called when touching a lava tile.

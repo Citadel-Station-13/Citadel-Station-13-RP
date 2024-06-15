@@ -1,5 +1,5 @@
-// Uncomment this define to check for possible lengthy processing of emp_act()s.
-// If emp_act() takes more than defined deciseconds (1/10 seconds) an admin message and log is created.
+// Uncomment this define to check for possible lengthy processing of emp_act_legacy()s.
+// If emp_act_legacy() takes more than defined deciseconds (1/10 seconds) an admin message and log is created.
 // I do not recommend having this uncommented on main server, it probably causes a bit more lag, espicially with larger EMPs.
 
 // #define EMPDEBUG 10
@@ -43,33 +43,33 @@
 			distance = 0
 		//Worst effects, really hurts
 		if(distance < first_range)
-			T.emp_act(1)
+			T.emp_act_legacy(1)
 		else if(distance == first_range)
 			if(prob(50))
-				T.emp_act(1)
+				T.emp_act_legacy(1)
 			else
-				T.emp_act(2)
+				T.emp_act_legacy(2)
 		//Slightly less painful
 		else if(distance <= second_range)
-			T.emp_act(2)
+			T.emp_act_legacy(2)
 		else if(distance == second_range)
 			if(prob(50))
-				T.emp_act(2)
+				T.emp_act_legacy(2)
 			else
-				T.emp_act(3)
+				T.emp_act_legacy(3)
 		//Even less slightly less painful
 		else if(distance <= third_range)
-			T.emp_act(3)
+			T.emp_act_legacy(3)
 		else if(distance == third_range)
 			if(prob(50))
-				T.emp_act(2)
+				T.emp_act_legacy(2)
 			else
-				T.emp_act(3)
+				T.emp_act_legacy(3)
 		//This should be more or less harmless
 		else if(distance <= fourth_range)
-			T.emp_act(4)
+			T.emp_act_legacy(4)
 		#ifdef EMPDEBUG
 		if((world.timeofday - time) >= EMPDEBUG)
-			log_and_message_admins("EMPDEBUG: [T.name] - [T.type] - took [world.timeofday - time]ds to process emp_act()!")
+			log_and_message_admins("EMPDEBUG: [T.name] - [T.type] - took [world.timeofday - time]ds to process emp_act_legacy()!")
 		#endif
 	return 1

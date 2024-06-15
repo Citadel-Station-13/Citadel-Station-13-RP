@@ -1267,7 +1267,7 @@
 	return
 */
 
-/obj/mecha/emp_act(severity)
+/obj/mecha/emp_act_legacy(severity)
 	if(get_charge())
 		use_power((cell.charge/2)/severity)
 		take_damage_legacy(50 / severity,"energy")

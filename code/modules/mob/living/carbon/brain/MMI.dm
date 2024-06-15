@@ -174,7 +174,7 @@
 	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity. This one comes with a built-in radio. Wait, don't they all?"
 	origin_tech = list(TECH_BIO = 4)
 
-/obj/item/mmi/emp_act(severity)
+/obj/item/mmi/emp_act_legacy(severity)
 	if(!brainmob)
 		return
 	else
@@ -226,7 +226,7 @@
 		else
 			. += SPAN_NOTICE("\The [src] indicates that the brain is active.")
 
-/obj/item/mmi/digital/emp_act(severity)
+/obj/item/mmi/digital/emp_act_legacy(severity)
 	if(!brainmob)
 		return
 	else

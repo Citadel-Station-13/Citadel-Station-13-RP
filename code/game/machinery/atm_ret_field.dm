@@ -109,7 +109,7 @@
 		disable_field()
 		update_icon()
 
-/obj/machinery/atmospheric_field_generator/emp_act()
+/obj/machinery/atmospheric_field_generator/emp_act_legacy()
 	. = ..()
 	disable_field() //shutting dowwwwwwn
 	if(alwaysactive || wasactive) //reboot after a short delay if we were online before
@@ -128,7 +128,7 @@
 			src.visible_message("The ARF-G cracks and shatters!","You hear an uncomfortable metallic crunch.")
 			disable_field()
 		if(3)
-			emp_act()
+			emp_act_legacy()
 	return
 
 /obj/machinery/atmospheric_field_generator/proc/generate_field()

@@ -13,6 +13,7 @@
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
 	atom_colouration_system = TRUE
+	damage_classifier = DAMAGE_CLASSIFIER_MOB
 
 	//? Core
 	/// mobs use ids as ref tags instead of actual refs.

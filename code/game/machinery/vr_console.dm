@@ -68,7 +68,7 @@
 
 
 
-/obj/machinery/vr_sleeper/emp_act(severity)
+/obj/machinery/vr_sleeper/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

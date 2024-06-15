@@ -18,4 +18,4 @@
 /datum/gm_action/comms_blackout/start()
 	..()
 	for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
-		T.emp_act(1)
+		T.emp_act_legacy(1)

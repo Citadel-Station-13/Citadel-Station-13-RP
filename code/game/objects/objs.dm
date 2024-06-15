@@ -7,6 +7,7 @@
 	atom_colouration_system = TRUE
 	integrity_enabled = TRUE
 	armor_type = /datum/armor/object/default
+	damage_classifier = DAMAGE_CLASSIFIER_OBJ
 
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
@@ -602,19 +603,19 @@
 
 //* EMP *//
 
-/obj/emp_act(severity)
+/obj/emp_act_legacy(severity)
 	. = ..()
 	if(obj_cell_slot?.receive_emp)
-		obj_cell_slot?.cell?.emp_act(severity)
+		obj_cell_slot?.cell?.emp_act_legacy(severity)
 	if(obj_storage?.pass_emp_inside)
 		// ugh
 		if(obj_storage.pass_emp_weaken && severity < 4)
 			var/pass_severity = severity - 1
 			for(var/atom/movable/inside in obj_storage.contents())
-				inside.emp_act(pass_severity)
+				inside.emp_act_legacy(pass_severity)
 		else
 			for(var/atom/movable/inside in obj_storage.contents())
-				inside.emp_act(severity)
+				inside.emp_act_legacy(severity)
 
 //* Hiding / Underfloor *//
 

@@ -158,7 +158,7 @@
 	..()
 
 //ion rifle!
-/mob/living/simple_mob/hostile/malf_drone/emp_act(severity)
+/mob/living/simple_mob/hostile/malf_drone/emp_act_legacy(severity)
 	health -= rand(3,15) * (severity + 1)
 	disabled = rand(150, 600)
 	hostile = 0

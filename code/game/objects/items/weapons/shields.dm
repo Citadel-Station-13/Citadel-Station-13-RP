@@ -156,9 +156,9 @@
 				return
 	..()
 
-/obj/item/shield/riot/flash/emp_act(severity)
+/obj/item/shield/riot/flash/emp_act_legacy(severity)
 	. = ..()
-	embedded_flash.emp_act(severity)
+	embedded_flash.emp_act_legacy(severity)
 	update_icon()
 
 /obj/item/shield/riot/flash/update_icon_state()

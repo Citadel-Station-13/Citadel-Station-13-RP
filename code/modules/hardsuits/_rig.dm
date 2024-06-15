@@ -1003,7 +1003,7 @@
 /obj/item/hardsuit/proc/malfunction()
 	return 0
 
-/obj/item/hardsuit/emp_act(severity_class)
+/obj/item/hardsuit/emp_act_legacy(severity_class)
 	//set malfunctioning
 	if(emp_protection < 30) //for ninjas, really.
 		malfunctioning += 10
@@ -1011,7 +1011,7 @@
 			malfunction_delay = max(malfunction_delay, round(30/severity_class))
 
 	//drain some charge
-	if(cell) cell.emp_act(severity_class + 15)
+	if(cell) cell.emp_act_legacy(severity_class + 15)
 
 	//possibly damage some modules
 	take_hit((100/severity_class), "electrical pulse", 1)

@@ -73,7 +73,7 @@ var/list/blobs = list()
 		return overmind.blob_type.effect_desc
 	return ..()
 
-/obj/structure/blob/emp_act(severity)
+/obj/structure/blob/emp_act_legacy(severity)
 	if(overmind)
 		overmind.blob_type.on_emp(src, severity)
 

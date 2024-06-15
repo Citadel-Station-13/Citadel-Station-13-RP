@@ -278,7 +278,7 @@
 
 	return
 
-/obj/item/flash/emp_act(severity)
+/obj/item/flash/emp_act_legacy(severity)
 	if(broken)	return
 	flash_recharge()
 	if(!check_capacitor())

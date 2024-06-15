@@ -144,10 +144,10 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		else
 			. += "<span class='notice'>The device doesn't appear to be transmitting any data.</span>"
 
-// Proc: emp_act()
+// Proc: emp_act_legacy()
 // Parameters: None
 // Description: Drops all calls when EMPed, so the holder can then get murdered by the antagonist.
-/obj/item/communicator/emp_act()
+/obj/item/communicator/emp_act_legacy()
 	close_connection(reason = "Hardware error de%#_^@%-BZZZZZZZT")
 
 // Proc: add_to_EPv2()

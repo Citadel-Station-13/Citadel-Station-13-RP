@@ -1277,7 +1277,7 @@
 		W.message = message
 		W.add_fingerprint(src)
 
-/mob/living/carbon/human/emp_act(severity)
+/mob/living/carbon/human/emp_act_legacy(severity)
 	. = ..()
 	if(isSynthetic())
 		switch(severity)

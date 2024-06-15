@@ -202,7 +202,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	update_icon()
 
 //EMP adds wear and disables all nifsoft
-/obj/item/nif/emp_act(var/severity)
+/obj/item/nif/emp_act_legacy(var/severity)
 	notify("Danger! Significant electromagnetic interference!",TRUE)
 	for(var/nifsoft in nifsofts)
 		if(nifsoft)

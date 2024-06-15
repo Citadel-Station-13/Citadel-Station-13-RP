@@ -207,7 +207,7 @@
 	empulse(B.loc, 0, 1, 2)
 
 /datum/blob_type/electromagnetic_web/on_attack(obj/structure/blob/B, mob/living/victim)
-	victim.emp_act(2)
+	victim.emp_act_legacy(2)
 
 
 // Makes spores that spread the blob and infest dead people.

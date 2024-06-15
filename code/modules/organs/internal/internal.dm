@@ -68,7 +68,7 @@
 		if (prob(50))
 			take_damage(1,silent=prob(15))
 
-/obj/item/organ/internal/emp_act(severity)
+/obj/item/organ/internal/emp_act_legacy(severity)
 	if(!(robotic >= ORGAN_ASSISTED))
 		return
 	switch (severity)

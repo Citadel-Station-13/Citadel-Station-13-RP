@@ -7,24 +7,20 @@
 //? Hooks / External
 
 /**
- * todo: implement on most atoms/generic damage system
- * todo: replace legacy_ex_act entirely with this
- *
  * React to being hit by an explosive shockwave
  *
  * ? Tip for overrides: . = ..() when you want signal to be sent, mdify power before if you need to; to ignore parent
  * ? block power, just `return power` in your proc after . = ..().
  *
  * @params
- * - power - power our turf was hit with
- * - direction - DIR_BIT bits; can bwe null if it wasn't a wave explosion!!
- * - explosion - explosion automata datum; can be null
+ * * power - power our turf was hit with
+ * * damage_multiplier - (optional) DAMAGE_CLASSIFIER_* define associated to damage multiplier
  *
  * @return power after falloff (e.g. hit with 30 power, return 20 to apply 10 falloff)
  */
-/atom/proc/ex_act(power, dir, datum/automata/wave/explosion/E)
+/atom/proc/ex_act(power, list/damage_multiplier)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
+	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, args)
 	return power
 
 /**

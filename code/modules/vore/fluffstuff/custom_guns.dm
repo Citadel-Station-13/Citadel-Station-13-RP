@@ -760,7 +760,7 @@ END OF CITADEL CHANGES */
 		return
 	..()
 
-/obj/item/gun/energy/frontier/emp_act(severity)
+/obj/item/gun/energy/frontier/emp_act_legacy(severity)
 	return ..(severity+2)
 
 /obj/item/gun/energy/frontier/legacy_ex_act() //|rugged|

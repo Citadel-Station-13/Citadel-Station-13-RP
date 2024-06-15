@@ -39,7 +39,7 @@
 	add_overlay(overlays_to_add)
 	return
 
-/obj/machinery/portable_atmospherics/powered/pump/emp_act(severity)
+/obj/machinery/portable_atmospherics/powered/pump/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

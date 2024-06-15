@@ -221,7 +221,7 @@
 
 
 // EMP. It may seem weak but keep in mind that multiple shield segments are likely to be affected.
-/obj/effect/shield/emp_act(var/severity)
+/obj/effect/shield/emp_act_legacy(var/severity)
 	if(!disabled_for)
 		take_damage_legacy(rand(30,60) / severity, SHIELD_DAMTYPE_EM)
 

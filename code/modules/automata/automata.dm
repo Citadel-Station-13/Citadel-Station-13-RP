@@ -1,29 +1,33 @@
 /**
- * automata datums for propagating turf effects
- *
- * as you can see this isn't
+ * automata datums for propagating turf effect
  */
 /datum/automata
 	/// automata flags
 	var/automata_flags = NONE
+
+	/// are we ready?
+	var/ready = FALSE
+
 	/// are we ticking?
 	var/ticking = FALSE
 	/// next world.time we should tick
 	var/next_tick = 0
 	/// delay in ds between ticks
-	var/delay = 0.5
+	var/delay = 0
 	/// iteration
 	var/iteration = 1
 	/// start at
 	var/start_at
 	/// last tick at
 	var/last_tick
+
 	/// del when done?
 	var/del_on_finish = TRUE
+	/// callbacks to call when done with (automata: src)
+	var/list/datum/callback/on_finish
+
 	/// turfs we're acting on
 	var/list/turfs_acting = list()
-	/// callback to call when done
-	var/datum/callback/on_finish
 
 /datum/automata/New()
 	SSautomata.automatons += src
@@ -31,21 +35,23 @@
 /datum/automata/Destroy()
 	if(ticking)
 		stop()
-	cleanup()
 	SSautomata.automatons -= src
 	return ..()
 
-/**
- * sets up with a single turf and data
- * you usually want to use this
- */
-/datum/automata/proc/setup_auto(...)
+/datum/automata/proc/setup(...)
+	CRASH("abstract proc called")
+
+/datum/automata/proc/init()
+	ready = TRUE
 
 /**
  * start ticking
  */
 /datum/automata/proc/start(quickstart)
 	SHOULD_CALL_PARENT(TRUE)
+	ASSERT(ready)
+	if(ticking)
+		CRASH("double start")
 	ticking = TRUE
 	SSautomata.ticking += src
 	if(isnull(start_at))
@@ -56,16 +62,16 @@
 /**
  * stop ticking
  */
-/datum/automata/proc/stop(done)
+/datum/automata/proc/stop(done = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
+	if(!ticking)
+		CRASH("not started")
 	ticking = FALSE
 	SSautomata.ticking -= src
-	cleanup_turfs_acting()
-	if(done)
-		if(on_finish)
-			on_finish.InvokeAsync()
-		if(del_on_finish)
-			qdel(src)
+	for(var/datum/callback/callback in on_finish)
+		callback.InvokeAsync(src, done)
+	if(del_on_finish && !QDELING(src))
+		qdel(src)
 
 /**
  * cleans up vars
@@ -87,14 +93,16 @@
 /**
  * adds us to a turf's acting_automata
  */
-/datum/automata/proc/add_turf_acting(turf/T, power)
-	LAZYSET(T.acting_automata, src, power)
-	turfs_acting += T
+/datum/automata/proc/add_turfs_acting(list/turf/turfs, data)
+	for(var/turf/T as anything in turfs)
+		LAZYSET(T.acting_automata, src, data)
+		turfs_acting += T
 
 /**
  * act on crossed atom
  */
-/datum/automata/proc/act_cross(atom/movable/AM, power)
+/datum/automata/proc/act_cross(atom/movable/AM, data)
+	return
 
 /**
  * ticks

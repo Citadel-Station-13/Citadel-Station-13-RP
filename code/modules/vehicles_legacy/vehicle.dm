@@ -148,7 +148,7 @@
 				return
 	return
 
-/obj/vehicle_old/emp_act(severity)
+/obj/vehicle_old/emp_act_legacy(severity)
 	if(!mechanical)
 		return
 

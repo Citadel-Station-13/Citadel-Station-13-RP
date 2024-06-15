@@ -142,7 +142,7 @@
 /obj/machinery/computer/shuttle_control/legacy_ex_act()
 	return
 
-/obj/machinery/computer/shuttle_control/emp_act()
+/obj/machinery/computer/shuttle_control/emp_act_legacy()
 	return
 
 

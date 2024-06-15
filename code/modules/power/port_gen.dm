@@ -55,7 +55,7 @@
 	else
 		. += "<span class='notice'>The generator is off.</span>"
 
-/obj/machinery/power/port_gen/emp_act(severity)
+/obj/machinery/power/port_gen/emp_act_legacy(severity)
 	if(!active)
 		return
 	var/duration = 6000 //ten minutes

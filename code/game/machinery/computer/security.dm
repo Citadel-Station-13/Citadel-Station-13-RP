@@ -478,7 +478,7 @@
 		if (selection)
 			return selection.full_image()
 
-/obj/machinery/computer/secure_data/emp_act(severity)
+/obj/machinery/computer/secure_data/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

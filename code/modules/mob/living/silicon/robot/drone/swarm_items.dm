@@ -123,7 +123,7 @@
 	pulses_remaining = 5
 	pulse_delay = 2 SECONDS
 
-/obj/effect/temporary_effect/pulse/disintegrate/emp_act()
+/obj/effect/temporary_effect/pulse/disintegrate/emp_act_legacy()
 	visible_message("<span class='warning'>\The [src] flickers, before dispersing energetically.</span>")
 	qdel(src)
 

@@ -187,7 +187,7 @@
 	if(traffic > 0)
 		traffic -= netspeed
 
-/obj/machinery/telecomms/emp_act(severity)
+/obj/machinery/telecomms/emp_act_legacy(severity)
 	if(prob(100/severity))
 		if(!(machine_stat & EMPED))
 			machine_stat |= EMPED

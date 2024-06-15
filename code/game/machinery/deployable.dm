@@ -63,7 +63,7 @@
 		return
 	return ..()
 
-/obj/machinery/deployable/barrier/emp_act(severity)
+/obj/machinery/deployable/barrier/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(prob(50/severity))

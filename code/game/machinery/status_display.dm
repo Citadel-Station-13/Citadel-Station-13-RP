@@ -77,7 +77,7 @@
 		return
 	update()
 
-/obj/machinery/status_display/emp_act(severity)
+/obj/machinery/status_display/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

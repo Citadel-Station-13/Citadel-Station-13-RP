@@ -415,7 +415,7 @@
 	go_out()
 	return
 
-/obj/machinery/clonepod/emp_act(severity)
+/obj/machinery/clonepod/emp_act_legacy(severity)
 	if(prob(100/severity))
 		malfunction()
 	..()

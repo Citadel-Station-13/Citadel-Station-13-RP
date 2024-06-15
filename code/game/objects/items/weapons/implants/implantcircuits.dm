@@ -33,8 +33,8 @@
 	<b>Integrity:</b> Implant is not shielded from electromagnetic interference, otherwise it is independent of subject's status."}
 	return dat
 
-/obj/item/implant/integrated_circuit/emp_act(severity)
-	IC.emp_act(severity)
+/obj/item/implant/integrated_circuit/emp_act_legacy(severity)
+	IC.emp_act_legacy(severity)
 
 /obj/item/implant/integrated_circuit/examine(mob/user, dist)
 	return IC.examine(user)

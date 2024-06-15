@@ -180,9 +180,9 @@
 			H.forcesay(hit_appends)
 	powercheck(hitcost)
 
-/obj/item/melee/baton/emp_act(severity)
+/obj/item/melee/baton/emp_act_legacy(severity)
 	if(bcell)
-		bcell.emp_act(severity)	//let's not duplicate code everywhere if we don't have to please.
+		bcell.emp_act_legacy(severity)	//let's not duplicate code everywhere if we don't have to please.
 	..()
 
 //secborg stun baton module

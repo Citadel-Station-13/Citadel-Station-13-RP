@@ -1,14 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/ex_act(power, dir, datum/automata/wave/explosion/E)
+/obj/ex_act(power, list/damage_multipliers)
 	. = ..()
 	// todo: wave explosions
 	inflict_atom_damage(power * (1 / 2.5), flag = ARMOR_BOMB)
-
-/obj/legacy_ex_act(severity, target)
-	. = ..()
-	inflict_atom_damage(global._legacy_ex_atom_damage[severity], flag = ARMOR_BOMB)
 
 /obj/melee_act(mob/user, obj/item/weapon, target_zone, mult)
 	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
