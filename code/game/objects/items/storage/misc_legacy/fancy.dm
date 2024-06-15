@@ -253,9 +253,9 @@
 			C.desc += " This one is \a [brand]."
 
 /obj/item/storage/fancy/cigarettes/update_icon_state()
+	. = ..()
 	if(overlay_amount)
 		icon_state = "[initial(icon_state)][min(length(contents), overlay_amount)]"
-	return ..()
 
 /obj/item/storage/fancy/cigarettes/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()

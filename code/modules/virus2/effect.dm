@@ -489,7 +489,7 @@
 	stage = 2
 
 /datum/disease2/effect/blind/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.SetBlinded(4)
+	mob.apply_status_effect(/datum/status_effect/sight/blindness, 4 SECONDS)
 
 /datum/disease2/effect/cough
 	name = "Severe Cough"

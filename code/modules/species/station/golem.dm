@@ -18,6 +18,8 @@
 
 	assisted_langs = list()
 
+	vision_organ = O_EYES
+
 	breath_type = null
 	poison_type = null
 

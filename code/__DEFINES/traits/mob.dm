@@ -68,3 +68,22 @@ DATUM_TRAIT(/mob, TRAIT_UNOBSERVANT)
 /// This mob can't digest alcohol
 #define TRAIT_ALCOHOL_INTOLERANT "alcohol_intolerant"
 DATUM_TRAIT(/mob, TRAIT_ALCOHOL_INTOLERANT)
+
+//Disabilities
+#define TRAIT_BLIND 			"blind"
+DATUM_TRAIT(/mob, TRAIT_BLIND)
+#define TRAIT_MUTE				"mute"
+DATUM_TRAIT(/mob, TRAIT_MUTE)
+#define TRAIT_DEAF				"deaf"
+DATUM_TRAIT(/mob, TRAIT_DEAF)
+
+//! Blindness causes
+#define TRAIT_BLINDNESS_NO_EYES 		"No Eyes"
+#define TRAIT_BLINDNESS_SPECIES			"Species cant see"
+#define TRAIT_BLINDNESS_VIS_ORGAN_MISSING "Missing Vision_organ"
+#define TRAIT_BLINDNESS_CAMERA			"Broken Camera on synth"
+#define TRAIT_BLINDNESS_EYE_DMG			"severe Eye damage"
+#define TRAIT_BLINDNESS_DISABILITY		"sdisability nervous"
+#define TRAIT_BLINDNESS_STATUS_EFF		"Status Effect: Blindness"
+#define TRAIT_BLINDNESS_NEGATIV			"Negative custom trait"
+

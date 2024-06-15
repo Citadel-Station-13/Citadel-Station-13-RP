@@ -139,7 +139,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			color_overlay.Blend(door_color, ICON_MULTIPLY)
 			GLOB.airlock_icon_cache["[ikey]"] = color_overlay
 
-	if(door_color && !(door_color == "none"))
+	if((door_color && !(door_color == "none")) || (window_color && !(window_color == "none")))
 		var/ikey = "[airlock_type]-[door_color]-fillcolor-[glass]"
 		filling_overlay = GLOB.airlock_icon_cache["[ikey]"]
 		if(!filling_overlay)
@@ -865,7 +865,7 @@ About the new airlock wires panel:
 		lock()
 	. = ..()
 	for (var/mob/O in viewers(src, null))
-		if ((O.client && !( O.blinded )))
+		if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 			O.show_message("[src.name]'s control panel bursts open, sparks spewing out!")
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread

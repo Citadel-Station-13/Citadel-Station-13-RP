@@ -93,12 +93,12 @@
 	update_health()
 
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
-		blinded = 1
+		src.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)//60 seconds is just a randomly picked number, the modifier does not expire as long as the holder is dead
 		silent = 0
 	else				//ALIVE. LIGHTS ARE ON
 		if( !container && (health < config_legacy.health_threshold_dead || ((world.time - timeofhostdeath) > config_legacy.revival_brain_life)) )
 			death()
-			blinded = 1
+			src.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 			silent = 0
 			return 1
 
@@ -112,8 +112,7 @@
 				if(31 to INFINITY)
 					emp_damage = 30//Let's not overdo it
 				if(21 to 30)//High level of EMP damage, unable to see, hear, or speak
-					SetBlinded(1)
-					blinded = 1
+					src.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 					ear_deaf = 1
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
@@ -124,8 +123,6 @@
 						emp_damage -= 1
 				if(20)
 					alert = 0
-					blinded = 0
-					SetBlinded(0)
 					ear_deaf = 0
 					silent = 0
 					emp_damage -= 1
@@ -188,22 +185,19 @@
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (stat != 2)
-		if ((blinded))
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
+		//Blindness is handled by the modifier
+		if(disabilities & DISABILITY_NEARSIGHTED)
+			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
 		else
-			clear_fullscreen("blind")
-			if(disabilities & DISABILITY_NEARSIGHTED)
-				overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
-			else
-				clear_fullscreen("impaired")
-			if(eye_blurry)
-				overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
-			else
-				clear_fullscreen("blurry")
-			if(druggy)
-				overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
-			else
-				clear_fullscreen("high")
+			clear_fullscreen("impaired")
+		if(eye_blurry)
+			overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+		else
+			clear_fullscreen("blurry")
+		if(druggy)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+		else
+			clear_fullscreen("high")
 
 		if(IsRemoteViewing())
 			if(machine && machine.check_eye(src) < 0)

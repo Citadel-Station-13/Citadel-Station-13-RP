@@ -21,3 +21,29 @@
   - rscadd: light fixture in the back of Atlas library
   - bugfix: fixed the Atlas library's curtain
   - config: changed meteors and cult's event PA announcement alarm volume
+2024-06-09:
+  Putnam3145:
+  - bugfix: Ice cream works
+2024-06-14:
+  BlueWildrose:
+  - bugfix: Clown dufflebag sprite fixed.
+  - bugfix: Cigarette boxes will no longer become invisible.
+  - bugfix: Trashbag sprites will update again.
+  - tweak: The vote notification text should be slightly more noticeable.
+  FreeStylaLT:
+  - rscadd: New Aureate clothing to the loadout
+  Putnam3145:
+  - bugfix: Can no longer swap guest passes into guest pass terminals
+  TheLordME:
+  - refactor: refactored blinding code
+  - bugfix: fixed airlock glass filling being inconsistent
+  iliyaxox:
+  - rscadd: Added access helpers to every airlock on Triumph.
+  - rscadd: Added additional maintenance airlocks & hatches to Triumph's engine chamber.
+  - rscadd: Pathfinders now have access to Rift's RnD
+  - rscdel: Removed Triumph's airlocks access vars, and replaced them with access
+      helpers.
+  lunar-crater-ex:
+  - tweak: Dirtying happens sooner, at 75 steps instead of 500.
+  washikarasu:
+  - bugfix: fixed maintenance airlock permissions for mining refinery
