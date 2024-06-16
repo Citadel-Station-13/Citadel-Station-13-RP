@@ -133,11 +133,6 @@
 		visible_message("Cracks begin to appear in [src]!" )
 		update_appearance(UPDATE_ICON)
 
-/obj/structure/window/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-	if(QDELETED(src)) // we got destroyed
-		return COMPONENT_THROW_HIT_PIERCE
-
 /obj/structure/window/proc/apply_silicate(amount)
 	if(integrity < integrity_max)
 		heal_integrity(amount * 3)
