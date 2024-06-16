@@ -146,9 +146,15 @@
 
 
 /**
- * ## Modules follow
+ * ## Sections follow
  */
 
+// ## Assets
+
+/**
+ * If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
+ */
+//#define DO_NOT_DEFER_ASSETS
 
 // ## Atmospherics
 
@@ -178,12 +184,9 @@
 	#define ZAS_BREAKPOINT_HOOKS
 #endif
 
-// ## Assets
+// ## Lighting
 
-/**
- * If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
- */
-//#define DO_NOT_DEFER_ASSETS
+// #define AO_USE_LIGHTING_OPACITY
 
 // ## Overlays
 /**
@@ -192,12 +195,6 @@
  */
 #define MAX_ATOM_OVERLAYS 100
 
-
 // ## Timers
 
 // #define TIMER_LOOP_DEBUGGING
-
-
-// ## Lighting
-
-// #define AO_USE_LIGHTING_OPACITY
