@@ -243,6 +243,12 @@
 		ACCESS_MEDICAL_MORGUE,
 	)
 
+/obj/map_helper/access_helper/airlock/station/medical/maintenance
+	req_one_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
 /obj/map_helper/access_helper/airlock/station/service
 	icon_state = "service"
 
@@ -297,6 +303,11 @@
 /obj/map_helper/access_helper/airlock/station/service/mime
 	req_access = list(
 		ACCESS_GENERAL_MIME,
+	)
+
+/obj/map_helper/access_helper/airlock/station/service/tomfoolery
+	req_access = list(
+		ACCESS_GENERAL_TOMFOOLERY,
 	)
 
 /obj/map_helper/access_helper/airlock/station/supply
