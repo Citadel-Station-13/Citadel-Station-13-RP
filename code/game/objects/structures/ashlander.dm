@@ -67,7 +67,13 @@
 	for (var/ty in ore_mapping)
 		if (istype(O, ty))
 			var/target_type = ore_mapping[ty]
-			new target_type(get_turf(src))
+			if(istype(target_type, /obj/item/stack))
+				var/obj/item/stack/ttstack = target_type
+				new ttstack(get_turf(src),	amount)
+			else //I sure hope nobody DOES make production machines that results in non-stackable objects.
+				var/i = 0
+				for(i = 0; i < amount, ++i)
+					new target_type(get_turf(src))
 			return TRUE
 
 	return FALSE
