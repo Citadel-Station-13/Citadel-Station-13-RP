@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(spatial_grids)
 	// initialize grid
 	src.width = ceil(world.maxx / resolution)
 	src.height = ceil(world.maxy / resolution)
-	src.grids = new /list()
+	src.grids = list()
 	src.resolution = resolution
 	src.expected_type = expected_type
 
@@ -60,7 +60,9 @@ SUBSYSTEM_DEF(spatial_grids)
 	for(var/i in 1 to size)
 		if(src.grids[i])
 			continue
-		src.grids[i] = new /list(src.width * src.height)
+		var/list/creating_grid = list()
+		creating_grid.len = src.width * src.height
+		src.grids[i] = creating_grid
 
 /**
  * injects a movable at an index
