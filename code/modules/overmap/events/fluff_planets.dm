@@ -143,7 +143,7 @@ Notice: Damage to [faction] property may result in legal action.<br>"}
 
 /obj/overmap/entity/fluff/probe/hostile //Probes owned by hostile actors.
 	name = "Unknown Probe"
-	desc = "An small unmanned probe used for automated scanning or to help transmit data. This one shouldn't be hre."
+	desc = "An small unmanned probe used for automated scanning or to help transmit data. This one shouldn't be here."
 	color = "#FF3333"
 
 
@@ -155,4 +155,4 @@ Notice: Damage to [faction] property may result in legal action.<br>"}
 	scanned_icon = "probe"
 	scanner_desc = {"Registration: Unknown. Potential [faction] Transmission Detected. <br>
 Class: Unknown. Potential [body_subtype] Satellite.<br>
-Notice: Destruction of Satellite Reccomended.<br>"}
+Notice: Destruction of Satellite Recommended.<br>"}
