@@ -121,6 +121,7 @@
 	name = "Powernet Sensor - Engine Power";
 	name_tag = "Engine Power"
 	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "gu" = (
@@ -582,6 +583,7 @@
 	name = "Powernet Sensor - Engine Output";
 	name_tag = "Engine Output"
 	},
+/obj/structure/cable/yellow,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Am" = (
