@@ -844,25 +844,26 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/energy/hardlight_bow
 	name = "hardlight bow"
-	desc = "An experimental, unlicensed design from Haephestus that never actually went anywhere; the idea of a crankable ion weapon was of interest, but the lack of practicality made it undesirable. /n ...and his music was electric."
-	icon = 'icons\obj\gun\ballistic.dmi'
+	desc = "An experimental, unlicensed design from Haephestus that never actually went anywhere; the idea of a crankable ion weapon was of interest, but the lack of practicality made it undesirable. /n /n ...and his music was electric."
+	icon = 'icons\obj\gun\energy.dmi'
 	icon_state = "bow_hardlight"
 	item_state = "bow_pipe"
+	charge_sections = 4
 
-	charge_cost = 100
+	charge_cost = 2400
 	battery_lock = 1
 	projectile_type = /obj/projectile/ion
 
 
 	var/recharging = 0
-	var/phase_power = 75
+	var/phase_power = 240
 
 
 obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
 	if(recharging)
 		return
 	recharging = 1
-//	update_icon()
+	update_icon()
 	user.visible_message("<span class='notice'>[user] begins to tighten \the [src]'s electric bowstring.</span>", \
 						"<span class='notice'>You begin to tighten \the [src]'s electric bowstring</span>")
 	while(recharging)
@@ -875,6 +876,8 @@ obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
 	recharging = 0
 	update_icon()
 
-/obj/item/gun/proc/handle_post_fire //i'm so fucking sorry
+/obj/item/gun/energy/frontier/update_icon()
 	if(src.
-	icon_state =
+
+
+
