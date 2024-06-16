@@ -45,6 +45,7 @@
 	base_color  = "#333333"
 	blood_color = "#240bc4"
 	color_mult = 1
+	vision_organ = O_EYES
 
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
@@ -114,6 +115,7 @@
 	base_color  = "#333333"
 	blood_color = "#240bc4"
 	color_mult = 1
+	vision_organ = O_EYES
 
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,

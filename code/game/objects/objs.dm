@@ -848,7 +848,7 @@
 
 //* Tool System *//
 
-/obj/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/obj/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
 	if(isnull(obj_cell_slot) || !obj_cell_slot.remove_tool_behavior || !obj_cell_slot.interaction_active(e_args.performer))
 		return ..()
 	. = list()

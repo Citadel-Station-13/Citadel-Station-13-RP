@@ -183,12 +183,13 @@
 	desc = "You're blind. Permanently."
 	cost = -3
 	custom_only = FALSE
-	traits = list(
-		TRAIT_BLIND
-	)
 	excludes = list(
 		/datum/trait/negative/deaf
 	)
+
+/datum/trait/negative/blind/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	.=..()
+	H.add_blindness_source(TRAIT_BLINDNESS_NEGATIV)
 
 // todo: use it as a disability to vocal ears? organs? same as above? please?
 /datum/trait/negative/deaf

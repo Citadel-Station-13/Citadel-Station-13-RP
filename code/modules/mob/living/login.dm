@@ -8,8 +8,10 @@
 	update_antag_icons(mind)
 	update_action_buttons()
 
-	if(ai_holder && !ai_holder.autopilot)
-		ai_holder.go_sleep()
-		to_chat(src,"<span class='notice'>Mob AI disabled while you are controlling the mob.</span>")
+	if(istype(src.ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+		if(ai_holder && !ai_holder.autopilot)
+			ai_holder.go_sleep()
+			to_chat(src,"<span class='notice'>Mob AI disabled while you are controlling the mob.</span>")
 
 	return .

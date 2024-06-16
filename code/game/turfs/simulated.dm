@@ -103,7 +103,7 @@
 		if(M.dirties_floor())
 			// Dirt overlays.
 			// todo: currently nerfed
-			update_dirt(0.2)
+			update_dirt(0.8)
 
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M

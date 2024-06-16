@@ -22,15 +22,19 @@
 /turf/space/basic
 	atom_flags = ATOM_INITIALIZED
 
-/turf/space/basic/New()	//Do not convert to Initialize
-	//This is used to optimize the map loader
-	return
+/turf/space/basic/New()
+	// Do not convert to Initialize
+	// This is used to optimize the map loader
+	SHOULD_CALL_PARENT(FALSE)
+	// turn preloader off so it doesn't hit something else
+	global.dmm_preloader_active = FALSE
 
 /turf/space/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 
-	icon_state = SPACE_ICON_STATE(x, y, z)
+	// we have parallax and don't need this anymore
+	// icon_state = SPACE_ICON_STATE(x, y, z)
 
 	// We might be an edge
 	if(y == world.maxy || forced_dirs & NORTH)
@@ -46,18 +50,23 @@
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
 
-	var/turf/below = below()
-	if(isnull(below))
-		return INITIALIZE_HINT_NORMAL
-
-	if(isspaceturf(below))
-		return INITIALIZE_HINT_NORMAL
-
-	var/area/A = below.loc
-	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
-		return INITIALIZE_HINT_NORMAL
-
+	// todo: audit all this again
+	// tl;dr given we load maps at runtime now, the maploader will do changeturfing, which means
+	// we don't need to manually check all this in initialize
 	return INITIALIZE_HINT_NORMAL
+
+	// var/turf/below = below()
+	// if(isnull(below))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// if(isspaceturf(below))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// var/area/A = below.loc
+	// if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// return INITIALIZE_HINT_NORMAL
 	// todo: wtf happened there..?
 	// return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 

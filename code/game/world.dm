@@ -451,6 +451,67 @@ GLOBAL_LIST(topic_status_cache)
 	. = ++maxz
 	max_z_changed(. - 1, .)
 
+//* Ticklag / FPS *//
+
+/// Set FPS
+/world/proc/set_fps(fps)
+	// This isn't just here to avoid duplicate code.
+	// Setting world.tick_lag is a lot more accurate than setting world.fps.
+	// Do not ever set FPs directly.
+	set_ticklag(10 / fps)
+	return world.fps
+
+/// Set ticklag
+/world/proc/set_ticklag(ticklag)
+	// 0.1 is 100 fps.
+	// Round to nearest 1 fps.
+	// We divide 10 by it becuase BYOND measures time in deciseconds, so each second has 10.
+	var/fps = 10 / ticklag
+	fps = clamp(round(fps, 1), 1, 100)
+
+	// FPS that result in repeating decimals for world.time not allowed.
+	// Using them results in floating point inaccuracy within high-precision timing systems.
+	// That's very bad, and causes stuff like timers to infinitely loop or worse.
+	// Not only that, world.time is, as far as I can see, internally rounded
+
+	// terminating decimals are of the form
+	//
+	// k (2**n * 5**m), where
+	//
+	// k = integer
+	// n = some power
+	// m = some power
+
+	// our conversion from FPS to ticklag is conveniently 10 / fps
+	// thus with k = 10,
+	// we try to check for termination on fps
+	if(!is_terminating_fraction(10, fps))
+		// it's not.
+		// yell at them.
+		stack_trace("someone just set ticklag to non-terminating ticklag [ticklag]. this might result in fatal imprecision.")
+
+	// Convert back into ticklag
+	ticklag = 10 / fps
+
+	set_ticklag_impl(ticklag)
+
+/// OH GOD WHAT ARE YOU DOING
+/// this is just here for debugging/admins
+/// because sometimes we want to intentionally make 'bad' ticklags to see
+/// how things react.
+/world/proc/set_ticklag_impl(ticklag)
+	PRIVATE_PROC(TRUE)
+
+	// set
+	var/old = src.tick_lag
+	src.tick_lag = ticklag
+
+	// update
+	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
+		subsystem.on_ticklag_changed(old, ticklag)
+
+//* Log Shunter *//
+
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE
 /**
  * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
@@ -493,6 +554,7 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 //! END
 
+//* Byond-Tracy *//
 
 /world/proc/init_byond_tracy()
 	var/library

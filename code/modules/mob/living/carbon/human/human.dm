@@ -44,14 +44,16 @@
 		dna.real_name = real_name
 		sync_organ_dna()
 
-	init_world_bender_hud()
-
 	if(mapload)
 		return INITIALIZE_HINT_LATELOAD
 
 	// rebuild everything
 	regenerate_icons()
 	update_transform()
+
+	//Permanent blindness due to stupidly setup vision organs
+	if(!species.vision_organ)
+		add_blindness_source(TRAIT_BLINDNESS_SPECIES)
 
 //! WARNING SHITCODE REMOVE LATER
 /mob/living/carbon/human/LateInitialize()
@@ -65,18 +67,7 @@
 		qdel(organ)
 	QDEL_NULL(nif)
 	QDEL_LIST_NULL(vore_organs)
-	cleanup_world_bender_hud()
 	return ..()
-
-/mob/living/carbon/human/prepare_data_huds()
-	//Update med hud images...
-	. = ..()
-	//...sec hud images...
-	update_hud_sec_implants()
-	update_hud_sec_job()
-	update_hud_sec_status()
-	//...and display them.
-	add_to_all_human_data_huds()
 
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
@@ -117,7 +108,7 @@
 		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
 /mob/living/carbon/human/legacy_ex_act(severity)
-	if(!blinded)
+	if(!has_status_effect(/datum/status_effect/sight/blindness))
 		flash_eyes()
 
 	var/shielded = 0
@@ -1291,6 +1282,7 @@
 		W.add_fingerprint(src)
 
 /mob/living/carbon/human/emp_act(severity)
+	. = ..()
 	if(isSynthetic())
 		switch(severity)
 			if(1)
@@ -1310,8 +1302,6 @@
 		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
 		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
 		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
-		..()
-
 
 /mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	. = 1
@@ -1616,21 +1606,6 @@
 
 	msg += get_display_species()
 	return msg
-
-//Crazy alternate human stuff
-/mob/living/carbon/human/proc/init_world_bender_hud()
-	var/animal = pick("cow","chicken_brown", "chicken_black", "chicken_white", "chick", "mouse_brown", "mouse_gray", "mouse_white", "lizard", "cat2", "goose", "penguin")
-	var/image/img = image('icons/mob/animal.dmi', src, animal)
-	// hud refactor when
-	img.override = TRUE
-	LAZYINITLIST(hud_list)
-	hud_list[WORLD_BENDER_ANIMAL_HUD] = img
-	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-	A.add_to_hud(src)
-
-/mob/living/carbon/human/proc/cleanup_world_bender_hud()
-	var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
-	A.remove_from_hud(src)
 
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)

@@ -1,6 +1,7 @@
 /datum/loadout_entry/cane
 	name = "Cane"
 	path = /obj/item/cane
+	slot = SLOT_ID_HANDS
 
 /datum/loadout_entry/cane/white
 	name = "Cane - White"
@@ -135,3 +136,8 @@
 		var/obj/item/storage/box/fluff/swimsuit/swimsuit_type = swimsuit
 		swimsuits[initial(swimsuit_type.name)] = swimsuit_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(swimsuits, GLOBAL_PROC_REF(cmp_text_asc)))
+
+/datum/loadout_entry/customizable_permit
+	name = "Customizable Permit"
+	description = "A customizable permit you can use for... just about anything! Be sure to customize the name and description. It is meant to represent generic driver's or pilot's licenses, and similar fluff items. It includes an irremovable disclaimer and may be freely confiscated or revoked at the discretion of Security and/or Command if you attempt to abuse it!"
+	path = /obj/item/card_fluff

@@ -350,6 +350,10 @@
 	name = "Aureate Hood"
 	path = /obj/item/clothing/head/hood/aureate
 
+/datum/loadout_entry/head/aureate_hood_dark
+	name = "Aureate Dark Hood"
+	path = /obj/item/clothing/head/hood/aureate/dark
+
 
 //Tajaran head wears
 
