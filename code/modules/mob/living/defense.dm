@@ -274,7 +274,7 @@
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		var/dtype = O.damtype
-		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/miss_chance = 15
 		var/distance = get_dist(TT.initial_turf, loc)
