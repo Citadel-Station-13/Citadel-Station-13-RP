@@ -263,6 +263,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck4/fore)
+"aY" = (
+/obj/structure/stairs/spawner/west,
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "aZ" = (
 /obj/structure/largecrate,
 /obj/random/maintenance/research,
@@ -3829,6 +3834,13 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_four)
+"nN" = (
+/obj/structure/stairs/spawner/west,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "nO" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/mains_pipe/split/hidden/scrubbers{
@@ -5122,6 +5134,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/lower)
+"sm" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/main_map/maintenance/deck_four/forward)
 "sn" = (
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward/port)
@@ -5326,12 +5344,6 @@
 /obj/item/frame2/apc,
 /turf/simulated/floor/airless,
 /area/main_map/maintenance/deck_four/starboard)
-"tj" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_four/forward)
 "tl" = (
 /obj/machinery/smartfridge/secure/extract,
 /obj/structure/window/reinforced{
@@ -5926,6 +5938,12 @@
 "vo" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/hallway/deck4)
+"vp" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_four/forward)
 "vr" = (
 /turf/simulated/wall/r_wall,
 /area/quartermaster/miningdock)
@@ -6104,6 +6122,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck4/fore)
+"vU" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/map_helper/network_builder/power_cable/green/auto,
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_four/forward)
 "vV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
@@ -6716,6 +6741,12 @@
 	},
 /turf/simulated/floor/reinforced/overhang,
 /area/main_map/maintenance/deck_four/forward/port)
+"xX" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "xY" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "auto"
@@ -7812,6 +7843,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/forward)
 "BF" = (
@@ -9071,6 +9103,11 @@
 	},
 /turf/simulated/floor/reinforced/overhang,
 /area/main_map/maintenance/deck_four/starboard)
+"FU" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/main_map/maintenance/deck_four/forward)
 "FV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
 	dir = 4
@@ -10877,6 +10914,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
+"Ms" = (
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "Mt" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -11235,6 +11276,13 @@
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4)
+"NF" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/obj/map_helper/network_builder/power_cable/green/auto,
+/turf/simulated/floor/tiled/techfloor,
+/area/main_map/maintenance/deck_four/forward)
 "NH" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -13526,6 +13574,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/forward)
 "VY" = (
@@ -14285,6 +14334,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_four/forward)
 "YG" = (
@@ -24295,8 +24345,8 @@ vv
 vv
 vv
 vv
-vv
-vv
+nN
+aY
 vv
 Bj
 DJ
@@ -24489,8 +24539,8 @@ vv
 vv
 vv
 vv
-vv
-vv
+xX
+Ms
 vv
 Bj
 DJ
@@ -39802,7 +39852,7 @@ kA
 wM
 wM
 nw
-uv
+sm
 wM
 wM
 wM
@@ -41744,7 +41794,7 @@ Yw
 Yw
 Yw
 nw
-wM
+vp
 uv
 nw
 wM
@@ -41760,7 +41810,7 @@ nw
 wM
 nw
 tM
-qf
+FU
 nw
 Yw
 Yw
@@ -41939,17 +41989,17 @@ Yw
 Yw
 nw
 wM
-tj
+uv
 uv
 uv
 mG
 VU
-KP
-KP
+vU
+vU
 BE
-KP
-KP
-rw
+vU
+vU
+NF
 KI
 Dt
 Dt
