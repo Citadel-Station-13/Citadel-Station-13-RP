@@ -215,6 +215,14 @@
 /area/maintenance/bar)
 "aaJ" = (
 /obj/structure/table/wooden_reinforced,
+/obj/item/storage/single_use/mre/random{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/single_use/mre/random{
+	pixel_x = -2;
+	pixel_y = -2
+	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/exploration/meeting)
 "aaK" = (
@@ -2783,14 +2791,7 @@
 "aiS" = (
 /obj/machinery/light,
 /obj/structure/table/woodentable,
-/obj/item/storage/single_use/mre/random{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/storage/single_use/mre/random{
-	pixel_x = -2;
-	pixel_y = -2
-	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "aiT" = (
@@ -10452,6 +10453,9 @@
 /obj/item/storage/box/donkpockets{
 	pixel_x = -2;
 	pixel_y = -2
+	},
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
@@ -25121,9 +25125,6 @@
 /area/rift/surfacebase/outside/outside3)
 "qgY" = (
 /obj/structure/table/hardwoodtable,
-/obj/machinery/chemical_dispenser/catering/bar_coffee{
-	pixel_y = 7
-	},
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/floor_decal/corner/black/diagonal,
 /obj/effect/floor_decal/corner/red/diagonal,
@@ -27090,6 +27091,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/structure/curtain,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
 "uDh" = (

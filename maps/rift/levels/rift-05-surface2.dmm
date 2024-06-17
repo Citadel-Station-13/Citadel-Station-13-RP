@@ -4863,6 +4863,11 @@
 "dbd" = (
 /obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
+/obj/item/storage/box/glasses/meta,
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "dbt" = (
@@ -12468,6 +12473,11 @@
 	},
 /turf/simulated/open,
 /area/maintenance/lower/medsec_maintenance)
+"hTl" = (
+/obj/structure/table/glass,
+/obj/item/storage/box/glasses/meta,
+/turf/simulated/floor/carpet/blue,
+/area/security/breakroom)
 "hTW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -13393,8 +13403,7 @@
 "iBU" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin,
-/obj/item/storage/firstaid/regular,
-/obj/item/pen,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "iCs" = (
@@ -33310,6 +33319,12 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"uZm" = (
+/obj/structure/table/glass,
+/obj/item/pen,
+/obj/item/storage/firstaid/regular,
+/turf/simulated/floor/carpet/blue,
+/area/security/breakroom)
 "uZq" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -60854,8 +60869,8 @@ vBG
 vjN
 bqU
 ufT
-uqC
-uqC
+uZm
+hTl
 xkh
 hVm
 kgx

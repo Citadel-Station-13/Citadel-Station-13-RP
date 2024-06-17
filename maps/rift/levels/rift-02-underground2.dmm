@@ -753,6 +753,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"dn" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/box/glasses/square,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/simulated/floor/carpet,
+/area/engineering/break_room)
 "dp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1792,12 +1801,10 @@
 /area/engineering/engineering_monitoring)
 "gX" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/box/donkpockets{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/storage/box/glasses/square,
 /obj/effect/floor_decal/corner/white/diagonal,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "gY" = (
@@ -32532,7 +32539,7 @@ le
 et
 DB
 AF
-SD
+dn
 hE
 Ko
 DB
