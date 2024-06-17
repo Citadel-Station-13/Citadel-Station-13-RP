@@ -848,7 +848,7 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "bow_hardlight"
 	item_state = "bow_pipe"
-	slot_flags = SLOT_BACK, SLOT_BELT
+	slot_flags = SLOT_BACK | SLOT_BELT
 	charge_cost = 1200
 	battery_lock = 1
 	projectile_type = /obj/projectile/ion
