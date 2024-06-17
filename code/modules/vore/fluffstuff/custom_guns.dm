@@ -848,8 +848,8 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "bow_hardlight"
 	item_state = "bow_pipe"
-
-	charge_cost = 2400
+	slot_flags = SLOT_BACK, SLOT_BELT
+	charge_cost = 1200
 	battery_lock = 1
 	projectile_type = /obj/projectile/ion
 
@@ -862,7 +862,6 @@ obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
 	if(recharging)
 		return
 	recharging = 1
-//	update_icon()
 	user.visible_message("<span class='notice'>[user] begins to tighten \the [src]'s electric bowstring.</span>", \
 						"<span class='notice'>You begin to tighten \the [src]'s electric bowstring</span>")
 	while(recharging)
@@ -873,12 +872,7 @@ obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
 			break
 
 	recharging = 0
-//	update_icon()
 
-/*
-/obj/item/gun/energy/frontier/update_icon()
-	if(src.
-*/
 
 
 
