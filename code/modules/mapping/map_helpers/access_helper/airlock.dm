@@ -465,9 +465,8 @@
  * use for mech lab specifically
  */
 /obj/map_helper/access_helper/airlock/station/science/mechatronics
-	req_one_access = list(
+	req_access = list(
 		ACCESS_SCIENCE_ROBOTICS,
-		ACCESS_SCIENCE_MAIN,
 	)
 
 /**
@@ -477,6 +476,7 @@
 /obj/map_helper/access_helper/airlock/station/science/robotics
 	req_access = list(
 		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration
