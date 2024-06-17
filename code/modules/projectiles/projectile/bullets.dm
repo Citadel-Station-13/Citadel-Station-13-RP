@@ -537,6 +537,8 @@
 	nodamage = 1
 	embed_chance = 0
 	sharp = 0
+	incendiary = 1
+	flammability = 4
 
 	combustion = FALSE
 
