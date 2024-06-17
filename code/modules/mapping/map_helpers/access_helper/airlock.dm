@@ -310,6 +310,13 @@
 		ACCESS_GENERAL_TOMFOOLERY,
 	)
 
+// access shared between the chef and botanist
+/obj/map_helper/access_helper/airlock/station/service/kitchen_botany
+	req_one_access = list(
+		ACCESS_GENERAL_KITCHEN,
+		ACCESS_GENERAL_BOTANY,
+	)
+
 /obj/map_helper/access_helper/airlock/station/supply
 	icon_state = "supply"
 
@@ -406,6 +413,12 @@
 		ACCESS_SCIENCE_MAIN,
 	)
 
+/obj/map_helper/access_helper/airlock/station/science/shared_xenoflora
+	req_one_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_BOTANY,
+	)
+
 /**
  * so, what toxins is becoming.
  *
@@ -452,8 +465,9 @@
  * use for mech lab specifically
  */
 /obj/map_helper/access_helper/airlock/station/science/mechatronics
-	req_access = list(
+	req_one_access = list(
 		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
 	)
 
 /**
