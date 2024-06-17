@@ -844,11 +844,10 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/energy/hardlight_bow
 	name = "hardlight bow"
-	desc = "An experimental, unlicensed design from Haephestus that never actually went anywhere; the idea of a crankable ion weapon was of interest, but the lack of practicality made it undesirable. \n \n ...and his music was electric."
+	desc = "An experimental, unlicensed design from Haephestus that never actually went anywhere; the idea of a crankable ion weapon was of interest, but the lack of practicality made it undesirable. \n \n <i>\"...and his music was electric.\"</i>"
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "bow_hardlight"
 	item_state = "bow_pipe"
-	charge_sections = 4
 
 	charge_cost = 2400
 	battery_lock = 1
@@ -856,7 +855,7 @@ END OF CITADEL CHANGES */
 
 
 	var/recharging = 0
-	var/phase_power = 240
+	var/phase_power = 75
 
 
 obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
@@ -869,7 +868,7 @@ obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
 	while(recharging)
 		if(!do_after(user, 10, src))
 			break
-		playsound(get_turf(src),'sound/items/change_drill.ogg',25,1)
+		playsound(get_turf(src),'sound/weapons/hardlight_bow_charge.ogg',25,1)
 		if(power_supply.give(phase_power) < phase_power)
 			break
 
