@@ -82,23 +82,24 @@ SUBSYSTEM_DEF(overmaps)
 	return TRUE
 
 /**
- * called when the leader leaves their owned level
+ * called when a shuttle leaves their flight level
  *
  * we make a best estimate of where to send things on the level based on
  *
- * 1. where the leader is going
+ * 1. who the leader is
  * 2. who is left on the level
+ * 3. where the leaving shuttle is going
  *
  * @params
  * * level - the level now orphaned
- * * leader - the leader who left
+ * * leaving - the shuttle who left
  * * moving_into - (optional) the overmap entity the leader is going into
  * * moving_to_level - (optional) the zlevel index the leader is goign to
  * * hand_off_to - (optional) forcefully set which entity to hand this off to. this doesn't need to be set, we can autodetect
  */
 /datum/controller/subsystem/overmaps/proc/release_flight_level(
 	datum/map_level/freeflight/level,
-	obj/overmap/entity/visitable/ship/landable,
+	obj/overmap/entity/visitable/ship/leaving,
 	obj/overmap/entity/moving_into,
 	moving_to_level,
 	obj/overmap/entity/visitable/ship/hand_off_to,
@@ -108,9 +109,9 @@ SUBSYSTEM_DEF(overmaps)
 /**
  * called when the last shuttle leaves a flight level
  */
-/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/freeflight/level, obj/overmap/entity/visitable/ship/landable/last_to_leave, obj/overmap/entity/shuttle_went_into)
+/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/freeflight/level, obj/overmap/entity/visitable/ship/landable/leaving, obj/overmap/entity/going into)
 	#warn impl
-	clear_flight_level(level, last_to_leave)
+	clear_flight_level(level, leaving)
 
 /**
  * internal proc: merges a flight level into another

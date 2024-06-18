@@ -38,7 +38,42 @@
  * called when our shuttle ends a transit cycle
  */
 /obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_end(datum/shuttle_transit_cycle/cycle)
-	#warn impl
+	on_shuttle_transit_to_level(cycle.target_dock)
+
+	if(flight_level && cycle.target_dock?.z == flight_level.z_index)
+		// we're flying to the same level, likely as a flyby or something
+	else
+		// we're going to a different level. tear it down.
+		var/obj/overmap/entity/target_entity
+		if(cycle.target_resolved)
+			target_entity = get_overmap_entity(cycle.target_dock)
+		SSovermaps.release_flight_level(flight_level, src, target_entity, cycle.target_dock?.z)
+
+/obj/overmap/entity/visitable/ship/landable/proc/resolve_freeflight_for_transit(datum/shuttle_transit_cycle/cycle)
+	switch(cycle.target_resolver_hint)
+		if(SHUTTLE_LAZY_TARGET_HINT_MOVE_TO_FREEFLIGHT)
+			// prefer current direction
+			ensure_flight_level_exists(shuttle.anchor.dir)
+			#warn set target vars to flight dock
+		else
+			. = FALSE
+			CRASH("unexpected hint")
+
+/obj/overmap/entity/visitable/ship/landable/proc/ensure_flight_level_exists(preferred_direction)
+	// already have one? don't.
+	if(flight_level)
+		return
+	// make one, with us as leader
+	SSovermaps.assign_flight_level(src)
+	// check dir
+	if(isnull(preferred_direction))
+		preferred_direction = shuttle.descriptor.preferred_orientation
+	// make our dock
+	var/height = shuttle.anchor.overall_height(preferred_direction)
+	var/width = shuttle.anchor.overall_width(preferred_direction)
+	flight_level.make_leader_dock(width, height, preferred_orientation)
+
+#warn below
 
 /**
  * called when our shuttle enters a certain zlevel
@@ -61,29 +96,7 @@
 
 	#warn impl
 
-/**
- * called to hand off our level to another shuttle in it
- *
- * @params
- * * hand_to - the new leading entity. if null, one is randomly and heuristically chosen.
- */
-/obj/overmap/entity/visitable/ship/landable/proc/dangerously_hand_off_flight_level(obj/overmap/entity/visitable/ship/landable/hand_to)
-	#warn impl
-
-/**
- * called if we're the last to leave a level and it should be disposed
- */
-/obj/overmap/entity/visitable/ship/landable/proc/dangerously_dispose_flight_level()
-	#warn impl
-
-/**
- * Only call right before we jump to it. We don't want flight levels floating around.
- */
-/obj/overmap/entity/visitable/ship/landable/proc/ensure_flight_level_exists()
-	. = FALSE
-	ASSERT(isnull(owned_level))
-	SSovermaps.assign_flight_level(src)
-	ASSERT(!isnull(owned_level))
+#warn above
 
 /obj/overmap/entity/visitable/ship/landable/get_landed_info()
 	if(!!shuttle_controller.get_transit_stage())
