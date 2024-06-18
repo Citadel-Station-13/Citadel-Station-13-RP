@@ -16,6 +16,7 @@
 	default_multitool_hijack = TRUE
 	tgui_interface = "AtmosVentPump"
 	atmos_component_ui_flags = NONE
+	hides_underfloor_underlays = TRUE
 
 	/// registered area
 	var/area/registered_area
@@ -125,9 +126,9 @@
 			else
 				add_underlay(T,, dir)
 
-/obj/machinery/atmospherics/component/unary/vent_pump/hide()
+/obj/machinery/atmospherics/component/unary/vent_pump/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/proc/can_pump()
 	if(machine_stat & (NOPOWER|BROKEN))

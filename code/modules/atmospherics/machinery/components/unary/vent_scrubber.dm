@@ -15,6 +15,7 @@
 	default_multitool_hijack = TRUE
 	tgui_interface = "AtmosVentScrubber"
 	atmos_component_ui_flags = NONE
+	hides_underfloor_underlays = TRUE
 
 	/// registered area
 	var/area/registered_area
@@ -216,9 +217,9 @@
 
 	return 1
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
+/obj/machinery/atmospherics/component/unary/vent_scrubber/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/power_change()
 	var/old_stat = machine_stat

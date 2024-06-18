@@ -10,6 +10,7 @@
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "connector"
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	hides_underfloor_underlays = TRUE
 
 	var/obj/machinery/portable_atmospherics/connected_device
 
@@ -47,9 +48,6 @@
 		if(!istype(T))
 			return
 		add_underlay(T, node, dir, node?.icon_connect_type)
-
-/obj/machinery/atmospherics/portables_connector/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/portables_connector/process(delta_time)
 	..()

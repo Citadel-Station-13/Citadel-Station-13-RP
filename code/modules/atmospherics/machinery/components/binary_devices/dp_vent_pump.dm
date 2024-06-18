@@ -25,6 +25,8 @@
 	pipe_flags = PIPING_ALL_LAYER
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY|CONNECT_TYPE_SCRUBBER //connects to regular, supply and scrubbers pipes
 
+	hides_underfloor_underlays = TRUE
+
 	var/pump_direction = 1 //0 = siphoning, 1 = releasing
 
 	var/external_pressure_bound = EXTERNAL_PRESSURE_BOUND
@@ -98,9 +100,9 @@
 			else
 				add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/hide(var/i)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/dp_vent_pump/process(delta_time)
 	..()

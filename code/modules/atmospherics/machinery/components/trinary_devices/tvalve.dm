@@ -9,6 +9,7 @@
 
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|WEST
+	hides_underfloor_underlays = TRUE
 
 	var/state = 0 // 0 = go straight, 1 = go to side
 
@@ -42,9 +43,6 @@
 		add_underlay(T, node1, node_connects[1])
 		add_underlay(T, node2, node_connects[2])
 		add_underlay(T, node3, node_connects[3])
-
-/obj/machinery/atmospherics/tvalve/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/tvalve/init_dir()
 	initialize_directions = get_initialize_directions_trinary(dir, mirrored)

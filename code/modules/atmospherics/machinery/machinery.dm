@@ -25,6 +25,10 @@ Pipelines + Other Objects -> Pipe network
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
 	hides_underfloor_defaulting = FALSE
 
+	//* Underfloor *//
+	/// automatically update_underlays() during update_underfloor
+	var/hides_underfloor_underlays = FALSE
+
 	///The color of the pipe
 	var/pipe_color
 	///The flags of the pipe/component (PIPING_ALL_LAYER | PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE)
@@ -242,6 +246,8 @@ Pipelines + Other Objects -> Pipe network
 		layer = PIPE_LAYER
 	else
 		reset_plane_and_layer()
+	if(hides_underfloor_underlays)
+		update_underlays()
 
 /**
  * currently unimplemented

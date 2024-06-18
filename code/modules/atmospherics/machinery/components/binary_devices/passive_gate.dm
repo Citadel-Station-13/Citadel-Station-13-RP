@@ -11,6 +11,7 @@
 
 	name = "pressure regulator"
 	desc = "A one-way air valve that can be used to regulate input or output pressure, and flow rate. Does not require power."
+	hides_underfloor_underlays = TRUE
 
 	use_power = USE_POWER_OFF
 
@@ -46,9 +47,6 @@
 			return
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
-
-/obj/machinery/atmospherics/component/binary/passive_gate/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/passive_gate/process(delta_time)
 	..()

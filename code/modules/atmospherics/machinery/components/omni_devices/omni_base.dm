@@ -8,6 +8,7 @@
 	use_power = USE_POWER_IDLE
 	initialize_directions = 0
 	construction_type = /obj/item/pipe/quaternary
+	hides_underfloor_underlays = TRUE
 
 	var/configuring = 0
 	//var/target_pressure = ONE_ATMOSPHERE	//a base type as abstract as this should NOT be making these kinds of assumptions
@@ -203,9 +204,6 @@
 	for(var/datum/omni_port/P in ports)
 		P.update = 1
 	update_ports()
-
-/obj/machinery/atmospherics/component/quaternary/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/quaternary/proc/update_ports()
 	sort_ports()
