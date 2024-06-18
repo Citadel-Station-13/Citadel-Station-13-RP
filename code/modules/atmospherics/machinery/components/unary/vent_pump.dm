@@ -100,7 +100,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(is_probably_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		vent_icon += "h"
 
 	if(welded)
@@ -118,7 +118,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(is_probably_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 			return
 		else
 			if(node)
@@ -277,7 +277,7 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
-	if (node && node.level==1 && isturf(T) && !T.is_plating())
+	if(is_probably_hidden_underfloor() && node?.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
@@ -498,7 +498,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		vent_icon += "h"
 
 	if(welded)

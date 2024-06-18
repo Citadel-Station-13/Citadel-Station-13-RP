@@ -41,7 +41,10 @@
 
 /obj/machinery/atmospherics/pipe/vent/update_icon()
 	if(node1)
-		icon_state = "intact"
+		if(is_probably_hidden_underfloor())
+			icon_state = "hintact"
+		else
+			icon_state = "intact"
 		setDir(get_dir(src, node1))
 	else
 		icon_state = "exposed"
@@ -66,12 +69,6 @@
 
 	return null
 
-#warn update_icon()
 /obj/machinery/atmospherics/pipe/vent/update_hiding_underfloor(new_value)
 	. = ..()
-
-	if(node1)
-		icon_state = "[i == 1 && istype(loc, /turf/simulated) ? "h" : "" ]intact"
-		setDir(get_dir(src, node1))
-	else
-		icon_state = "exposed"
+	update_icon()

@@ -72,7 +72,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node1 && node2 && node1.level == 1 && node2.level == 1 && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe))
+	if(T.hides_underfloor_objects() && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe) && node1.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS && node2.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		vent_icon += "h"
 
 	if(!powered())
@@ -88,7 +88,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node1 && node2 && node1.level == 1 && node2.level == 1 && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe))
+		if(T.hides_underfloor_objects() && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe) && node1.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS && node2.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 			return
 		else
 			if (node1)
