@@ -16,8 +16,6 @@
 	world.maxx = width
 	world.maxy = height
 	ASSERT(length(reserve_levels) == 0)
-	reserved_level_count = 1
-	reserve_levels = list(1)
-	ordered_levels = list(new /datum/map_level/reserved)
-	world.max_z_changed(0, 1)
-	initialize_reserved_level(1)
+	// basically makes allocate_level() grab the first one
+	reusable_levels += 1
+	allocate_reserved_level()

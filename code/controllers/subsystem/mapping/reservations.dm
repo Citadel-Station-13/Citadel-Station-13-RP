@@ -44,10 +44,11 @@
 	if(reserved_level_count && ((world.maxx * world.maxy * (reserved_level_count + 1)) > reserved_turfs_max))
 		log_and_message_admins(SPAN_USERDANGER("Out of dynamic reservation allocations. Is there a memory leak with turf reservations?"))
 		return FALSE
-	log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count]. This is probably not a good thing if the server is not at high load right now."))
+	if(reserved_level_count)
+		log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count + 1]. This is probably not a good thing if the server is not at high load right now."))
+	reserved_level_count++
 	var/datum/map_level/reserved/level_struct = new
 	ASSERT(allocate_level(level_struct))
-	reserved_level_count++
 	initialize_reserved_level(level_struct.z_index)
 	reserve_levels |= level_struct.z_index
 	// make a list with a predetermined size for the lookup
