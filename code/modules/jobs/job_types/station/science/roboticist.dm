@@ -31,12 +31,12 @@
 		"Junior Roboticist" = /datum/prototype/struct/alt_title/junior_roboticist,
 		)
 
-/datum/prototype/struct/alt_title/artificer_biotechnicist
-	title = "Artificer-Biotechnicist"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
+// /datum/prototype/struct/alt_title/artificer_biotechnicist
+// 	title = "Artificer-Biotechnicist"
+// 	background_allow = list(
+// 		/datum/lore/character_background/faction/naramadiguilds
+// 	)
+// 	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/junior_roboticist
 	title = "Junior Roboticist"

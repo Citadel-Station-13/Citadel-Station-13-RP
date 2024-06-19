@@ -38,13 +38,13 @@
 
 // Medical Doctor Alt Titles
 
-/datum/prototype/struct/alt_title/biotechnician
-	title = "Biotechnician"
-	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
-	background_allow = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
-	background_enforce = TRUE
+// /datum/prototype/struct/alt_title/biotechnician
+// 	title = "Biotechnician"
+// 	title_outfit = /datum/outfit/job/station/medical_doctor/surgeon //todo: add OSSNECRO outfits
+// 	background_allow = list(
+// 		/datum/lore/character_background/faction/onkhera_necropolis
+// 	)
+// 	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/surgeon
 	title = "Surgeon"

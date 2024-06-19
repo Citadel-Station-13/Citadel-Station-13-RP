@@ -41,12 +41,12 @@
 	title = "Engineering Training Specialist"
 	title_blurb = "An Engineering Training Specialist is an experienced engineer who dedicates their time and expertise to the training of those who are less knowledgeable."
 
-/datum/prototype/struct/alt_title/artificer_adept
-	title = "Artificer-Adept"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
+// /datum/prototype/struct/alt_title/artificer_adept
+// 	title = "Artificer-Adept"
+// 	background_allow = list(
+// 		/datum/lore/character_background/faction/naramadiguilds
+// 	)
+// 	background_enforce = TRUE
 
 /datum/outfit/job/station/station_engineer/senior
 	name = OUTFIT_JOB_NAME("Senior Engineer")
