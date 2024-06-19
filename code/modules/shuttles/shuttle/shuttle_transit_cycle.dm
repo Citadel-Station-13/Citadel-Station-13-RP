@@ -79,7 +79,8 @@
 	///
 	/// * called past PNR (so when shuttle is about to translate)
 	/// * called with (shuttle transit cycle)
-	/// * the callback should set [target_dock], [target_centered], [target_direction], [target_port] on us as needed
+	/// * the target should call [set_target()] to set our new target.
+	/// * the callback should return TRUE if it succeeds
 	/// * the callback should return FALSE if it fails to resolve target
 	/// * it is a fatal error to fail to resolve target on the final translation to the new dock. if this happens, the cycle is terminated and the shuttle orphaned.
 	var/datum/callback/target_resolver
@@ -225,7 +226,8 @@
 	if(!target_dock)
 		stack_trace("target resolver didn't fail yet we don't have a dock..? it's also possible the resolver callback slept and was therefore ignroed.")
 		return
-	target_resolved = TRUE
+	if(!target_resolved)
+		stack_trace("target_resolved wasn't set; did the target resolver properly call set_target()?")
 
 /**
  * immediate termination

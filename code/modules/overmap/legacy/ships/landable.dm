@@ -38,10 +38,12 @@
  * called when our shuttle ends a transit cycle
  */
 /obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_end(datum/shuttle_transit_cycle/cycle)
-	on_shuttle_transit_to_level(cycle.target_dock)
-
+	// handle our level
 	if(flight_level && cycle.target_dock?.z == flight_level.z_index)
-		// we're flying to the same level, likely as a flyby or something
+		// we're flying to the same level
+		// this is either
+		// * a flyby
+		// * us entering freeflight
 	else
 		// we're going to a different level. tear it down.
 		var/obj/overmap/entity/target_entity
@@ -49,12 +51,54 @@
 			target_entity = get_overmap_entity(cycle.target_dock)
 		SSovermaps.release_flight_level(flight_level, src, target_entity, cycle.target_dock?.z)
 
+	// where are we now?
+	if(flight_level && flight_level.leader == src)
+		// we're on freeflight
+		set_flight_status(OVERMAP_FLIGHT_STATUS_FREEFLIGHT)
+		// were we in something?
+		var/obj/overmap/entity/currently_inside = loc
+		if(currently_inside)
+			// get out
+			move_outside(currently_inside, TRUE)
+		else
+			// uh oh, where the hell were we?
+			stack_trace("overmap shuttle didn't have a valid location for freeflight. uh oh!")
+			message_admins("overmap shuttle didn't have a valid location for freeflight. uh oh!")
+		// we're done here
+		return
+
+	// ok so we're not a leader. where did we go?
+	var/went_to_z = cycle.target_dock?.z
+
+	if(!went_to_z)
+		message_admins("overmap shuttle didn't go to a dock with a zlevel. what happened here?")
+		CRASH("overmap shuttle didn't go to a dock with a zlevel. what happened here?")
+
+	// we want to see where we went
+	var/obj/overmap/entity/arrived_at_entity = get_overmap_entity(went_to_z)
+
+	if(istype(arrived_at_entity, /obj/overmap/entity/visitable/ship/landable))
+		// yay, another shuttle
+		var/obj/overmap/entity/visitable/ship/landable/interdicting = arrived_at_entity
+		// we're now on their flight level
+		flight_level = interdicting.flight_level
+		// set status
+		set_flight_status(OVERMAP_FLIGHT_STATUS_INTERDICTION)
+	else if(istype(arrived_at_entity, /obj/overmap/entity/visitable))
+		// we're just in a sector
+		// set status
+		set_flight_status(OVERMAP_FLIGHT_STATUS_VISITING)
+	else
+		// where the hell are we?
+		set_flight_status(OVERMAP_FLIGHT_STATUS_UNKNOWN)
+
 /obj/overmap/entity/visitable/ship/landable/proc/resolve_freeflight_for_transit(datum/shuttle_transit_cycle/cycle)
 	switch(cycle.target_resolver_hint)
 		if(SHUTTLE_LAZY_TARGET_HINT_MOVE_TO_FREEFLIGHT)
 			// prefer current direction
 			ensure_flight_level_exists(shuttle.anchor.dir)
-			#warn set target vars to flight dock
+			cycle.set_target(flight_level.leader_dock, centered = TRUE)
+			return TRUE
 		else
 			. = FALSE
 			CRASH("unexpected hint")
@@ -71,32 +115,7 @@
 	// make our dock
 	var/height = shuttle.anchor.overall_height(preferred_direction)
 	var/width = shuttle.anchor.overall_width(preferred_direction)
-	flight_level.make_leader_dock(width, height, preferred_orientation)
-
-#warn below
-
-/**
- * called when our shuttle enters a certain zlevel
- */
-#warn hook
-/obj/overmap/entity/visitable/ship/landable/proc/on_shuttle_transit_to_level(z)
-	var/obj/overmap/entity/currently_inside
-	var/obj/overmap/entity/going_into = get_overmap_entity(z)
-
-	// we have to detect this from our state because by the time this proc is called the shuttle has already moved
-	if(istype(loc, /obj/overmap/entity))
-		currently_inside = loc
-
-	var/datum/map_level/level = SSmapping.ordered_levels[z]
-	var/datum/map_level/freeflight/flight_level
-	if(istype(level, /datum/map_level/freeflight))
-		// we're in someone's freeflight level
-		flight_level = level
-
-
-	#warn impl
-
-#warn above
+	flight_level.make_leader_dock(width, height, preferred_direction)
 
 /obj/overmap/entity/visitable/ship/landable/get_landed_info()
 	if(!!shuttle_controller.get_transit_stage())

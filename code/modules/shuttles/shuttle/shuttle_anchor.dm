@@ -178,7 +178,7 @@
  * @params
  * * dock - the dock in question
  * * direction - the direction we should dock
- * * dock_bbox - llx, lly, urx, ury, cx, cy tuple, if you already have this information
+ * * dock_bbox - llx, lly, urx, ury tuple, if you already have this information
  *
  * @return list(x, y, z, dir)
  */

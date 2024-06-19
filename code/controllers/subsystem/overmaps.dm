@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(overmaps)
 /**
  * called when the last shuttle leaves a flight level
  */
-/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/freeflight/level, obj/overmap/entity/visitable/ship/landable/leaving, obj/overmap/entity/going into)
+/datum/controller/subsystem/overmaps/proc/dispose_flight_level(datum/map_level/freeflight/level, obj/overmap/entity/visitable/ship/landable/leaving, obj/overmap/entity/going_into)
 	#warn impl
 	clear_flight_level(level, leaving)
 

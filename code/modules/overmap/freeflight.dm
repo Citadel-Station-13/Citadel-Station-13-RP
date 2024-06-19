@@ -22,16 +22,46 @@
 	..()
 	dangerously_make_selflooping()
 
+/**
+ * makes an anchor-aligned dock for a shuttle to land at the center of the sector.
+ *
+ * @params
+ * * width - real width (x coord)
+ * * height - real height (y coord)
+ * * dir - direction of shuttle
+ */
 /datum/map_level/freeflight/proc/make_leader_dock(width, height, dir)
-	#warn check size x/y
-	#warn uhh
+	ASSERT(!leader_dock)
+
+	var/center_x = floor(world.maxx / 2)
+	var/center_y = floor(world.maxy / 2)
+	var/low_x = center_x - floor(width / 2)
+	var/low_y = center_y - floor(height / 2)
+	var/high_x = low_x + width - 1
+	var/high_y = low_y + width - 1
+
+	leader_dock = new /obj/shuttle_dock/freeflight(
+		locate(),
+		with_dir = dir,
+		lx_ly_hx_hy = list(
+			low_x,
+			low_y,
+			high_x,
+			high_y,
+		),
+	)
+
+	return TRUE
 
 /**
  * freeflight docks
  */
 /obj/shuttle_dock/freeflight
-	// always aligned landing
-	centered_landing_allowed = FALSE
+	// always centered landing
+	centered_landing_allowed = TRUE
+	centered_landing_only = TRUE
+	// always trample
+	trample_bounding_box = TRUE
 	// no one can block us
 	protect_bounding_box = TRUE
 

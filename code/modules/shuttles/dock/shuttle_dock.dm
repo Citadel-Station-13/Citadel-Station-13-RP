@@ -174,13 +174,39 @@
  * @params
  * * mapload - passed in by SSatoms
  * * with_id - the id to set this to / override this to
+ * * with_dir - the dir to set us to
  * * sx_sy_ox_oy - size x, size y, offset x, offset y; used to force our bounds to something.
+ * * lx_ly_hx_hy - low x, low y, high x, high y; used to force our bounds to a set of absolute coordinates. we must be inside this range or we will runtime.
  */
-/obj/shuttle_dock/Initialize(mapload, with_id, list/sx_sy_ox_oy)
+/obj/shuttle_dock/Initialize(mapload, with_id, with_dir, list/sx_sy_ox_oy, list/lx_ly_hx_hy)
+	if(!isnull(with_dir))
+		src.dir = with_dir
 	. = ..()
 	if(!isnull(with_id))
 		src.dock_id = with_id
-	if(!isnull(sx_sy_ox_oy))
+	if(!isnull(lx_ly_hx_hy))
+		if(x < lx_ly_hx_hy[1] || x > lx_ly_hx_hy[2] || y < lx_ly_hx_hy[3] || y > lx_ly_hx_hy[4])
+			. = INITIALIZE_HINT_QDEL
+			CRASH("absolute bounding box provided but we were outside of it; deleting self.")
+		if(lx_ly_hx_hy[1] > lx_ly_hx_hy[2] || lx_ly_hx_hy[3] > lx_ly_hx_hy[4])
+			. = INITIALIZE_HINT_QDEL
+			CRASH("invalid absolute bounding box; are you putting things in the right list indices?")
+		size_x = lx_ly_hx_hy[2] - lx_ly_hx_hy[1] + 1
+		size_y = lx_ly_hx_hy[4] - lx_ly_hx_hy[2] + 1
+		switch(dir)
+			if(NORTH)
+				offset_x = x - lx_ly_hx_hy[1]
+				offset_y = lx_ly_hx_hy[4] - y
+			if(SOUTH)
+				offset_x = lx_ly_hx_hy[3] - x
+				offset_y = y - lx_ly_hx_hy[2]
+			if(EAST)
+				offset_x = lx_ly_hx_hy[4] - y
+				offset_y = lx_ly_hx_hy[3] - x
+			if(WEST)
+				offset_x = y - lx_ly_hx_hy[2]
+				offset_y = x - lx_ly_hx_hy[1]
+	else if(!isnull(sx_sy_ox_oy))
 		size_x = sx_sy_ox_oy[1]
 		size_y = sx_sy_ox_oy[2]
 		offset_x = sx_sy_ox_oy[3]
