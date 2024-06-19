@@ -81,6 +81,7 @@
 		// yay, another shuttle
 		var/obj/overmap/entity/visitable/ship/landable/interdicting = arrived_at_entity
 		// we're now on their flight level
+		ASSERT(!flight_level)
 		flight_level = interdicting.flight_level
 		// set status
 		set_flight_status(OVERMAP_FLIGHT_STATUS_INTERDICTION)

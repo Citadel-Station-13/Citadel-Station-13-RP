@@ -18,8 +18,7 @@ SUBSYSTEM_DEF(mapping)
 	// this is an acceptable lazy lookup but we need to standardize what this means / look at how this is generated.
 	var/list/areas_in_z = list()
 
-/datum/controller/subsystem/mapping/Initialize(timeofday)
-	// load data
+/datum/controller/subsystem/mapping/Initialize(timeofday)	// load data
 	// todo: refactor
 	load_map_templates()
 	// todo: refactor
