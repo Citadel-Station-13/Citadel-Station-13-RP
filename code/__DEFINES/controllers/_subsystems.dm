@@ -114,6 +114,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_MATERIALS       55
 #define INIT_ORDER_PHOTOGRAPHY     50
 #define INIT_ORDER_MAPPING         45
+#define INIT_ORDER_SPATIAL_GRIDS   43 // must be after SSmapping so we know world.maxx and world.maxy
 #define INIT_ORDER_GAME_WORLD      40
 #define INIT_ORDER_LEGACY_ATC      37
 #define INIT_ORDER_LEGACY_LORE     35
@@ -127,9 +128,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_DEFAULT         0
 #define INIT_ORDER_AIR            -1
 #define INIT_ORDER_PLANETS        -2
-#define INIT_ORDER_PERSISTENCE    -3
-#define INIT_ORDER_MISC_LATE      -5
-#define INIT_ORDER_HOLOMAPS       -5
+#define INIT_ORDER_PERSISTENCE        -3
+#define INIT_ORDER_AMBIENT_OCCLUSION  -5
+#define INIT_ORDER_HOLOMAPS           -5
 #define INIT_ORDER_NIGHTSHIFT     -5
 #define INIT_ORDER_ICON_SMOOTHING -6
 #define INIT_ORDER_OVERLAY        -7
@@ -142,7 +143,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_XENOARCH       -50
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
-#define INIT_ORDER_PATH           -98
 #define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
 
 
