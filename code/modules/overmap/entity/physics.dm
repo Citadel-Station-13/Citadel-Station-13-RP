@@ -107,7 +107,6 @@
  */
 /obj/overmap/entity/proc/move_outside(obj/overmap/entity/other, copy_velocity)
 	forceMove(other.loc)
-	unhalt()
 	if(copy_velocity)
 		copy_velocity(other)
 
