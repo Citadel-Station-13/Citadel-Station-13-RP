@@ -167,3 +167,22 @@ SUBSYSTEM_DEF(spatial_grids)
 			if(!grid[index])
 				continue
 			. += grid[index]
+
+//* basically the above but only within a certain turf reservation, if reservation exists; otherwise, proceed as normal *//
+//* if on a reservation level, but no reservation, we return nothing.                                                   *//
+
+/datum/spatial_grid/proc/automatic_range_query(turf/epicenter, distance)
+	// check if we're on a reserved level
+	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[epicenter.z]
+	if(!spatial_lookup)
+		// we're not on a reserved level, use normal
+		return range_query(epicenter, distance)
+	// we're on a reserve level
+	var/datum/turf_reservation/reservation = spatial_lookup[floor(epicenter.x / TURF_CHUNK_RESOLUTION) + (floor(epicenter.y / TURF_CHUNK_RESOLUTION) - 1) * floor(world.maxx / TURF_CHUNK_RESOLUTION)]
+	// check if reservation exists
+	if(reservation)
+		// it does, get stuff in reservation
+		return reservation_range_query(reservation, epicenter, distance)
+	else
+		// it doesn't, return nothing
+		return list()
