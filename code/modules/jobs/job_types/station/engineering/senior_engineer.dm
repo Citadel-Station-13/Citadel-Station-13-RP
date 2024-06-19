@@ -34,7 +34,7 @@
 
 	alt_titles = list(
 		"Engineering Training Specialist" = /datum/prototype/struct/alt_title/engi_trainer,
-		"Artificer-Adept" = /datum/prototype/struct/alt_title/artificer_adept
+		// "Artificer-Adept" = /datum/prototype/struct/alt_title/artificer_adept
 		)
 
 /datum/prototype/struct/alt_title/engi_trainer

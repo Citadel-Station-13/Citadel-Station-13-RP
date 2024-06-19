@@ -31,8 +31,8 @@
 		"Apprentice Engineer" = /datum/prototype/struct/alt_title/apprentice_engineer,
 		"Construction Engineer" = /datum/prototype/struct/alt_title/construction_engi,
 		"Damage Control Technician" = /datum/prototype/struct/alt_title/damage_tech,
-		"Artificer-Apprentice" = /datum/prototype/struct/alt_title/artificer_apprentice,
-		"Artificer" = /datum/prototype/struct/alt_title/artificer
+		// "Artificer-Apprentice" = /datum/prototype/struct/alt_title/artificer_apprentice,
+		// "Artificer" = /datum/prototype/struct/alt_title/artificer
 		)
 
 	minimal_player_age = 3

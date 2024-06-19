@@ -25,8 +25,8 @@
 						because Central Command gives a partial refund."
 	alt_titles = list(
 		"Logistics Specialist" = /datum/prototype/struct/alt_title/logi_spec,
-		"Logisticai-Apprentice" = /datum/prototype/struct/alt_title/logisticai_apprentice,
-		"Logisticai" = /datum/prototype/struct/alt_title/logisticai
+		// "Logisticai-Apprentice" = /datum/prototype/struct/alt_title/logisticai_apprentice,
+		// "Logisticai" = /datum/prototype/struct/alt_title/logisticai
 		)
 
 // /datum/prototype/struct/alt_title/logisticai_apprentice

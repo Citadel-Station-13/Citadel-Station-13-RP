@@ -27,7 +27,7 @@
 	alt_titles = list(
 		"Biomechanical Engineer" = /datum/prototype/struct/alt_title/biomech,
 		"Mechatronic Engineer" = /datum/prototype/struct/alt_title/mech_tech,
-		"Artificer-Biotechnicist" = /datum/prototype/struct/alt_title/artificer_biotechnicist,
+		// "Artificer-Biotechnicist" = /datum/prototype/struct/alt_title/artificer_biotechnicist,
 		"Junior Roboticist" = /datum/prototype/struct/alt_title/junior_roboticist,
 		)
 

@@ -35,7 +35,7 @@
 	alt_titles = list(
 		"Supply Chief" = /datum/prototype/struct/alt_title/supply_chief,
 		"Logistics Manager" = /datum/prototype/struct/alt_title/logi_man,
-		"Logisticai-Adept" = /datum/prototype/struct/alt_title/logisticai_adept
+		// "Logisticai-Adept" = /datum/prototype/struct/alt_title/logisticai_adept
 		)
 
 // /datum/prototype/struct/alt_title/logisticai_adept

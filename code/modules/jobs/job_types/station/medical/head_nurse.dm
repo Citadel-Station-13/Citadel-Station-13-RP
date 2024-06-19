@@ -33,7 +33,7 @@
 
 	alt_titles = list (
 		"Medical Training Specialist" = /datum/prototype/struct/alt_title/medical_specialist,
-		"Biotechnical Advisor" = /datum/prototype/struct/alt_title/biotechnical_advisor
+		// "Biotechnical Advisor" = /datum/prototype/struct/alt_title/biotechnical_advisor
 	)
 
 // /datum/prototype/struct/alt_title/biotechnical_advisor

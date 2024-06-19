@@ -35,7 +35,7 @@
 		"Life Support Technician" = /datum/prototype/struct/alt_title/life_support,
 		"Pipe Network Specialist" = /datum/prototype/struct/alt_title/pipe_spec,
 		"Disposals Technician" = /datum/prototype/struct/alt_title/disposals_tech,
-"Artificer" = /datum/prototype/struct/alt_title/atmos_artificer
+// "Artificer" = /datum/prototype/struct/alt_title/atmos_artificer
 		)
 
 // Atmos Tech Alt Titles

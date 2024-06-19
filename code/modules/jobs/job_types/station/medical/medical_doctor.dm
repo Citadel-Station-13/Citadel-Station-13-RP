@@ -33,7 +33,7 @@
 		"Virologist" = /datum/prototype/struct/alt_title/virologist,
 		"Medical Resident" = /datum/prototype/struct/alt_title/doctor/resident,
 		"Medical Intern" = /datum/prototype/struct/alt_title/doctor/intern,
-		"Biotechnician" = /datum/prototype/struct/alt_title/biotechnician
+		// "Biotechnician" = /datum/prototype/struct/alt_title/biotechnician
 		)
 
 // Medical Doctor Alt Titles

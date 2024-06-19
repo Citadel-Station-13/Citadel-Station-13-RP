@@ -29,7 +29,7 @@
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
 	alt_titles = list(
 		"Emergency Medical Technician" = /datum/prototype/struct/alt_title/emt,
-		"Biotechnical Responder" = /datum/prototype/struct/alt_title/biotech_responder
+		// "Biotechnical Responder" = /datum/prototype/struct/alt_title/biotech_responder
 		)
 
 // /datum/prototype/struct/alt_title/biotech_responder

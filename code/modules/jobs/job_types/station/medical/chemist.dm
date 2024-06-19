@@ -29,7 +29,7 @@
 	alt_titles = list(
 		"Pharmacist" = /datum/prototype/struct/alt_title/pharmacist,
 		"Pharmacologist" = /datum/prototype/struct/alt_title/pharmacologist,
-		"Biochemist" = /datum/prototype/struct/alt_title/biochemist
+		// "Biochemist" = /datum/prototype/struct/alt_title/biochemist
 		)
 
 // /datum/prototype/struct/alt_title/biochemist
