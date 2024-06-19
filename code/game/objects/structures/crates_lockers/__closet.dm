@@ -1,3 +1,4 @@
+// todo: god damnit it's time to refactor lockers again ~silicons
 /obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
@@ -51,10 +52,12 @@
 	var/not_actually_a_closet = FALSE
 	//! end
 
-/obj/structure/closet/Initialize(mapload)
+/obj/structure/closet/Initialize(mapload, singleton/closet_appearance/use_closet_appearance)
 	. = ..()
 	if(mapload && !opened)
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
+	if(!isnull(use_closet_appearance))
+		src.closet_appearance = use_closet_appearance
 	legacy_spawn_contents()
 	/*
 	if(secure)
@@ -588,7 +591,7 @@
 		locked = !locked
 		playsound(src, 'sound/machines/click.ogg', 15, 1, -3)
 		for(var/mob/O in viewers(user, 3))
-			if((O.client && !( O.blinded )))
+			if((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 				to_chat(O, "<span class='notice'>The locker has been [locked ? null : "un"]locked by [user].</span>")
 		update_icon()
 	else

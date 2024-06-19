@@ -3,6 +3,9 @@
 	AddComponent(/datum/component/radiation_listener)
 	AddElement(/datum/element/z_radiation_listener)
 
+	if(ai_holder_type && !ai_holder)
+		ai_holder = new ai_holder_type(src)
+
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
 /mob/living/Destroy()
@@ -328,19 +331,6 @@ default behaviour is:
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
 
-/mob/living/Blind(amount)
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.disable_duration_percent))
-			amount = round(amount * M.disable_duration_percent)
-	..(amount)
-
-/mob/living/AdjustBlinded(amount)
-	if(amount > 0)
-		for(var/datum/modifier/M in modifiers)
-			if(!isnull(M.disable_duration_percent))
-				amount = round(amount * M.disable_duration_percent)
-	..(amount)
-
 // ++++ROCKDTBEN++++ MOB PROCS //END
 
 // Applies direct "cold" damage while checking protection against the cold.
@@ -432,7 +422,7 @@ default behaviour is:
 
 //called when the mob receives a bright flash
 /mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
-	if(override_blindness_check || !(disabilities & SDISABILITY_NERVOUS))
+	if(override_blindness_check || has_status_effect(/datum/status_effect/sight/blindness))
 		overlay_fullscreen("flash", type)
 		spawn(25)
 			if(src)
@@ -693,7 +683,7 @@ default behaviour is:
 		return ..()
 
 /mob/living/proc/has_vision()
-	return !(eye_blind || (disabilities & SDISABILITY_NERVOUS) || stat || blinded)
+	return !(has_status_effect(/datum/status_effect/sight/blindness))
 
 /mob/living/proc/dirties_floor()	// If we ever decide to add fancy conditionals for making dirty floors (floating, etc), here's the proc.
 	return makes_dirt

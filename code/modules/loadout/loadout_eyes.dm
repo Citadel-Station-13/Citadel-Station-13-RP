@@ -152,3 +152,7 @@
 /datum/loadout_entry/eyes/laconic
 	name = "Laconic Goggles"
 	path = /obj/item/clothing/glasses/welding/laconic
+
+/datum/loadout_entry/eyes/aureate
+	name = "Aureate Headdress"
+	path = /obj/item/clothing/glasses/sunglasses/aureate

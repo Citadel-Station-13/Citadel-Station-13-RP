@@ -993,14 +993,15 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ol" = (
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "On" = (
@@ -1114,8 +1115,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Qx" = (
@@ -1202,8 +1204,9 @@
 	},
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "TK" = (
@@ -1253,8 +1256,9 @@
 	},
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "UK" = (
@@ -1271,8 +1275,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "UW" = (
@@ -1353,8 +1358,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/vault{
 	name = "REACTOR ROOM";
-	req_one_access = list(10)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ww" = (
