@@ -421,6 +421,26 @@
 	desc = "A synthetic armor vest with Orion Confederation printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
 	icon_state = "comwebvest"
 
+/obj/item/clothing/suit/storage/vest/leaguearmor
+	name = "leaguer armored vest"
+	desc = "A cumbersome green armored vest with steel plates slotted on the inside. Part of the new MOROD gear rollout for IWL armed forces."
+	icon = 'icons/clothing/suit/armor/iwlsuit.dmi'
+	icon_state = "iwl_armor"
+	armor_type = /datum/armor/station/tactical
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/storage/vest/leaguearmorheavy
+	name = "leaguer heavy armored vest"
+	desc = "An even cumbersome green armored vest with steel plates slotted on the inside, side-padding and an armored collar. Part of the new MOROD gear rollout for IWL armed forces. Looks like it can take a huge beating."
+	icon = 'icons/clothing/suit/armor/iwlsuit.dmi'
+	icon_state = "iwl_armor_heavy"
+	armor_type = /datum/armor/station/heavy
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY
+	weight = ITEM_WEIGHT_ARMOR_HEAVY
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 /obj/item/clothing/suit/storage/vest/tactical //crack at a more balanced mid-range armor, minor improvements over standard vests, with the idea "modern" combat armor would focus on energy weapon protection.
 	name = "tactical armored vest"
 	desc = "A heavy armored vest in a fetching tan. It is surprisingly flexible and light, even with the extra webbing and advanced ceramic plates."
