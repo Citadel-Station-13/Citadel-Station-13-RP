@@ -224,6 +224,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	WRITE_LOG(GLOB.world_game_log, "SECURITY: [text]")
 
 /proc/log_subsystem(subsystem, text)
+	#ifdef CITESTING
+	log_world("[subsystem]: [text]")
+	#endif
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 
 /**

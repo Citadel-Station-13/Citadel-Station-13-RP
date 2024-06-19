@@ -147,6 +147,7 @@
 #define SPAN_TINYNOTICEITAL(str) ("<span class='tinynoticeital'>[str]</span>")
 #define SPAN_UNCONSCIOUS(str) ("<span class='unconscious'>[str]</span>")
 #define SPAN_USERDANGER(str) ("<span class='userdanger'>[str]</span>")
+#define SPAN_VOTENOTIFICATION(str) ("<span class='votenotification'>[str]</span>")
 #define SPAN_WARNING(str) ("<span class='warning'>[str]</span>")
 #define SPAN_YELL(str) ("<span class='yell'>[str]</span>")
 #define SPAN_YELLOWTEAMRADIO(str) ("<span class='yellowteamradio'>[str]</span>")

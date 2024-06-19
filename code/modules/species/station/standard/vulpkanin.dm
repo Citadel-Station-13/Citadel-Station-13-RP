@@ -20,6 +20,7 @@
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 
 	vision_innate = /datum/vision/baseline/species_tier_1
+	vision_organ = O_EYES
 
 	color_mult = 1
 

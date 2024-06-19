@@ -202,14 +202,14 @@ SUBSYSTEM_DEF(vote)
 		initiator = initiator_key
 		started_time = world.time
 		duration = time
-		var/text = "[capitalize(mode)] vote started by [initiator]."
+		var/text = SPAN_VOTENOTIFICATION("[capitalize(mode)] vote started by [initiator].")
 		if(mode == VOTE_CUSTOM)
-			text += "\n[question]"
+			text += SPAN_VOTENOTIFICATION("\n[question]")
 		if(ghost_weight_percent <= 0)
 			text += SPAN_NOTICE("\nGhosts are excluded from the vote.")
 		log_vote(text)
 
-		to_chat(world, "<span class='infoplain'><font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>")
+		to_chat(world, SPAN_INFOPLAIN("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>"))
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE)
 			SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
 
