@@ -192,7 +192,7 @@
 			/datum/reagent/nutriment/flour,
 			/datum/reagent/drink/ice,
 			/datum/reagent/drink/milk,
-			/datum/reagent/sugar
+			/datum/reagent/sugar,
 		),
 	)
 	if(!units_transferred)
