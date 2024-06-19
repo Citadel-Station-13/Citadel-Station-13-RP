@@ -32,5 +32,6 @@
 	// basically makes allocate_level() grab the first one
 	reusable_levels += 1
 	ordered_levels += null
+	world.max_z_changed(0, 1)
 	synchronize_datastructures()
 	allocate_reserved_level()
