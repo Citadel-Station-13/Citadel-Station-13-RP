@@ -9,8 +9,6 @@
 	registered_type = /datum/component/spatial_grid
 	/// target spatial grid
 	var/datum/spatial_grid/grid
-	/// target grid resolution
-	var/grid_resolution
 	/// target grid width
 	var/grid_width
 	/// last grid index
@@ -24,7 +22,6 @@
 		return COMPONENT_INCOMPATIBLE
 
 	src.grid = grid
-	src.grid_resolution = grid.resolution
 	src.grid_width = grid.width
 
 /datum/component/spatial_grid/RegisterWithParent()
@@ -43,7 +40,7 @@
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		root = root.loc
 	if(isturf(root))
-		var/idx = ceil(root.x / grid_resolution) + grid_width * floor(root.y / grid_resolution)
+		var/idx = ceil(root.x / TURF_CHUNK_RESOLUTION) + grid_width * floor(root.y / TURF_CHUNK_RESOLUTION)
 		grid.direct_insert(parent, root.z, idx)
 		current_index = idx
 
@@ -61,7 +58,7 @@
 		return
 	// turf --> turf, try to do an optimized, lazy update
 	if(isturf(oldloc) && isturf(newloc) && (oldloc.z == newloc.z))
-		var/new_index = ceil(newloc.x / grid_resolution) + grid_width * floor(newloc.y / grid_resolution)
+		var/new_index = ceil(newloc.x / TURF_CHUNK_RESOLUTION) + grid_width * floor(newloc.y / TURF_CHUNK_RESOLUTION)
 		var/z = oldloc.z
 		if(new_index != current_index)
 			grid.direct_remove(parent, z, current_index)

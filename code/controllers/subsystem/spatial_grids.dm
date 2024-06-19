@@ -36,21 +36,14 @@ SUBSYSTEM_DEF(spatial_grids)
 	var/width
 	/// our grid height
 	var/height
-	/// our grid resolution in tiles
-	var/resolution = 16
 	/// expected type
 	var/expected_type = /atom/movable
 
-/datum/spatial_grid/New(expected_type, resolution)
-	// make sure resolution is reasonable
-	if(resolution <= 8 || resolution >= 128)
-		stack_trace("invalid resolution: [resolution]")
-		resolution = 16
+/datum/spatial_grid/New(expected_type)
 	// initialize grid
-	src.width = ceil(world.maxx / resolution)
-	src.height = ceil(world.maxy / resolution)
+	src.width = ceil(world.maxx / TURF_CHUNK_RESOLUTION)
+	src.height = ceil(world.maxy / TURF_CHUNK_RESOLUTION)
 	src.grids = list()
-	src.resolution = resolution
 	src.expected_type = expected_type
 
 	sync_world_z(world.maxz)
@@ -105,10 +98,10 @@ SUBSYSTEM_DEF(spatial_grids)
  */
 /datum/spatial_grid/proc/range_query(turf/epicenter, distance)
 	. = list()
-	var/min_x = ceil((epicenter.x - distance) / src.resolution)
-	var/min_y = floor((epicenter.y - distance) / src.resolution)
-	var/max_x = ceil((epicenter.x + distance) / src.resolution)
-	var/max_y = floor((epicenter.y + distance) / src.resolution)
+	var/min_x = ceil((epicenter.x - distance) / TURF_CHUNK_RESOLUTION)
+	var/min_y = floor((epicenter.y - distance) / TURF_CHUNK_RESOLUTION)
+	var/max_x = ceil((epicenter.x + distance) / TURF_CHUNK_RESOLUTION)
+	var/max_y = floor((epicenter.y + distance) / TURF_CHUNK_RESOLUTION)
 	var/list/grid = src.grids[epicenter.z]
 	for(var/x in max(1, min_x) to min(src.width, max_x))
 		for(var/y in max(1, min_y) to min(src.height, max_y))

@@ -16,7 +16,14 @@
 	/// doing some blocking op on reservation system
 	var/static/reservation_blocking_op = FALSE
 	/// singleton area holding all free reservation turfs
-	var/static/area/unused_reservation_area/unallocated_reserve_area = new
+	var/static/area/unused_reservation_area/reservation_unallocated_area = new
+	/// spatial grid of turf reservations. the owner of a chunk is the bottom left tile's owner.
+	var/static/list/reservation_spatial_lookups = list()
+
+/datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	if(length(reservation_spatial_lookups) < new_z_count)
+		reservation_spatial_lookups.len = new_z_count
 
 /datum/controller/subsystem/mapping/Recover()
 	. = ..()
@@ -35,6 +42,8 @@
 	reserved_level_count++
 	initialize_reserved_level(level_struct.z_index)
 	reserve_levels |= level_struct.z_index
+	// make a list with a predetermined size for the lookup
+	reservation_spatial_lookups[level_struct.z_index] = new /list(ceil(world.maxx / TURF_CHUNK_RESOLUTION) * ceil(world.maxy / TURF_CHUNK_RESOLUTION))
 	return level_struct.z_index
 
 /**
@@ -71,7 +80,20 @@
 		T.turf_flags |= UNUSED_RESERVATION_TURF
 		CHECK_TICK
 	// todo: area.assimilate_turfs?
-	unallocated_reserve_area.contents.Add(turfs)
+	reservation_unallocated_area.contents.Add(turfs)
+
+/**
+ * @return turf reservation someone's in, or null if they're not in a reservation
+ */
+/datum/controller/subsystem/mapping/proc/get_turf_reservation(atom/where)
+	where = get_turf(where)
+	if(!where)
+		return
+	// this doubles as 'is this a reserved level'
+	var/list/spatial_lookup = reservation_spatial_lookups[where.z]
+	if(!spatial_lookup)
+		return
+	return spatial_lookup[floor(where.x / TURF_CHUNK_RESOLUTION) + (floor(where.y / TURF_CHUNK_RESOLUTION) - 1) * floor(world.maxx / TURF_CHUNK_RESOLUTION)]
 
 /area/unused_reservation_area
 	name = "Unused Reservation Area"

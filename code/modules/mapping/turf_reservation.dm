@@ -43,6 +43,23 @@
 	allocated = FALSE
 	SSmapping.reservations -= src
 
+	// unegister from lookup
+	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[bottom_left_coords[3]]
+	var/spatial_bl_x = floor(bottom_left_coords[1] / TURF_CHUNK_RESOLUTION)
+	var/spatial_bl_y = floor(top_right_coords[1] / TURF_CHUNK_RESOLUTION)
+	var/spatial_tr_x = floor(bottom_left_coords[2] / TURF_CHUNK_RESOLUTION)
+	var/spatial_tr_y = floor(top_right_coords[2] / TURF_CHUNK_RESOLUTION)
+	var/spatial_width = floor(world.maxx / TURF_CHUNK_RESOLUTION)
+	for(var/spatial_x in spatial_bl_x to spatial_tr_x)
+		for(var/spatial_y in spatial_bl_y to spatial_tr_y)
+			var/index = spatial_x + (spatial_y - 1) * spatial_width
+			if(spatial_lookup[index] != src)
+				stack_trace("index [index] wasn't self, what happened?")
+				continue
+			spatial_lookup[index] = null
+
+	return TRUE
+
 /datum/turf_reservation/proc/reserve(width, height, z_override)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
 		CRASH("invalid request")
@@ -59,25 +76,25 @@
 	var/area/area_path = area_type
 	var/area/area_instance = initial(area_path.unique)? (GLOB.areas_by_type[area_path] || new area_path) : new area_path
 	var/found_a_spot = FALSE
-	var/how_many_wide = FLOOR(width / RESERVED_TURF_RESOLUTION, 1)
-	var/how_many_high = FLOOR(height / RESERVED_TURF_RESOLUTION, 1)
-	var/total_many_wide = FLOOR(world.maxx / RESERVED_TURF_RESOLUTION, 1)
-	var/total_many_high = FLOOR(world.maxy / RESERVED_TURF_RESOLUTION, 1)
+	var/how_many_wide = FLOOR(width / TURF_CHUNK_RESOLUTION, 1)
+	var/how_many_high = FLOOR(height / TURF_CHUNK_RESOLUTION, 1)
+	var/total_many_wide = FLOOR(world.maxx / TURF_CHUNK_RESOLUTION, 1)
+	var/total_many_high = FLOOR(world.maxy / TURF_CHUNK_RESOLUTION, 1)
 	// the dreaded 5 deep for loop
 	while((level_index = z_override) || (level_index = pick_n_take(possible_levels)))
 		/**
 		 * here's the magic
-		 * because reservations are aligned to RESERVED_TURF_RESOLUTION,
+		 * because reservations are aligned to TURF_CHUNK_RESOLUTION,
 		 * we just have to check the start spots, since we always align to them.
 		 *
-		 * bottom-right turfs on reservations align to 0 * RESERVED_TURF_RESOLUTION + 1, 1 * RESERVED_TURF_RESOLUTION + 1, 2 * RESERVED_TURF_RESOLUTION + 1, ...
+		 * bottom-right turfs on reservations align to 0 * TURF_CHUNK_RESOLUTION + 1, 1 * TURF_CHUNK_RESOLUTION + 1, 2 * TURF_CHUNK_RESOLUTION + 1, ...
 		 */
 		for(var/outer_x in 1 to (total_many_wide - how_many_wide + 1))
 			for(var/outer_y in 1 to (total_many_high - how_many_high + 1))
 				var/passing = TRUE
 				for(var/inner_x in outer_x to outer_x + how_many_wide - 1)
 					for(var/inner_y in outer_y to outer_y + how_many_high - 1)
-						var/turf/checking = locate(1 + RESERVED_TURF_RESOLUTION * (inner_x - 1), 1 + RESERVED_TURF_RESOLUTION * (inner_y - 1), level_index)
+						var/turf/checking = locate(1 + TURF_CHUNK_RESOLUTION * (inner_x - 1), 1 + TURF_CHUNK_RESOLUTION * (inner_y - 1), level_index)
 						if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
 							passing = FALSE
 							break
@@ -85,7 +102,7 @@
 						break
 				if(!passing)
 					continue
-				BL = locate(1 + RESERVED_TURF_RESOLUTION * (outer_x - 1), 1 + RESERVED_TURF_RESOLUTION * (outer_y - 1), level_index)
+				BL = locate(1 + TURF_CHUNK_RESOLUTION * (outer_x - 1), 1 + TURF_CHUNK_RESOLUTION * (outer_y - 1), level_index)
 				TR = locate(BL.x + width - 1, BL.y + height - 1, BL.z)
 				final = block(BL, TR)
 				found_a_spot = TRUE
@@ -116,4 +133,20 @@
 	allocated = TRUE
 	SSmapping.reservation_blocking_op = FALSE
 	SSmapping.reservations += src
+
+	// register in lookup
+	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[bottom_left_coords[3]]
+	var/spatial_bl_x = floor(bottom_left_coords[1] / TURF_CHUNK_RESOLUTION)
+	var/spatial_bl_y = floor(top_right_coords[1] / TURF_CHUNK_RESOLUTION)
+	var/spatial_tr_x = floor(bottom_left_coords[2] / TURF_CHUNK_RESOLUTION)
+	var/spatial_tr_y = floor(top_right_coords[2] / TURF_CHUNK_RESOLUTION)
+	var/spatial_width = floor(world.maxx / TURF_CHUNK_RESOLUTION)
+	for(var/spatial_x in spatial_bl_x to spatial_tr_x)
+		for(var/spatial_y in spatial_bl_y to spatial_tr_y)
+			var/index = spatial_x + (spatial_y - 1) * spatial_width
+			if(spatial_lookup[index])
+				stack_trace("index [index] wasn't null, what happened?")
+				continue
+			spatial_lookup[index] = src
+
 	return TRUE

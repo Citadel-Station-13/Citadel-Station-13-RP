@@ -7,6 +7,9 @@
  * so we snowflaked it by compiling a single empty space level
  * this is called during initial world loading to expand that space level to the size of the world,
  * and init it as our first reserved level.
+ *
+ * width and height exist to init the world's dimensions based on the map being loaded
+ * this must be done before anything like spatial hashes are made, as those depend on world dimensions!
  */
 /datum/controller/subsystem/mapping/proc/load_server_initial_reservation_area(width, height)
 	ASSERT(world.maxz == 1)
