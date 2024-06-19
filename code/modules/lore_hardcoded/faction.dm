@@ -26,26 +26,13 @@
 	var/list/citizenship_whitelist
 
 /datum/lore/character_background/faction/New()
-	// convert to id
-	for(var/i in 1 to length(job_whitelist))
-		var/key = job_whitelist[i]
-		if(ispath(key))
-			var/datum/role/job/casted = key
-			key = initial(casted.id)
-		job_whitelist[i] = key
 	// job whitelist cache
 	for(var/i in job_whitelist)
 		job_whitelist[i] = TRUE
-	// convert to id
-	for(var/i in 1 to length(job_blacklist))
-		var/key = job_blacklist[i]
-		if(ispath(key))
-			var/datum/role/job/casted = key
-			key = initial(casted.id)
-		job_blacklist[i] = key
 	// job blacklist cache
-	for(var/i in job_blacklist)
-		job_blacklist[i] = TRUE
+	if(job_blacklist)
+		for(var/i in job_blacklist)
+			job_blacklist[i] = TRUE
 	return ..()
 
 /datum/lore/character_background/faction/check_character_species(datum/character_species/S)
