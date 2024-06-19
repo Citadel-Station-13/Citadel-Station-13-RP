@@ -73,7 +73,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 2 // The battlerifle was known for its nasty recoil.
 	max_shells = 45
-	caliber = "7.2x35mm"
+	caliber = "9.5x40mm"
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/k25_m
 	allowed_magazines = list(/obj/item/ammo_magazine/k25_m)
@@ -618,19 +618,19 @@ END OF CITADEL CHANGES */
 //------------- K25 -------------
 
 /obj/item/ammo_magazine/k25_m
-	name = "box mag (7.2x35mm)"
+	name = "box mag (9.5x40mm)"
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "k25_m"
-	caliber = "7.2x35mm"
+	caliber = "9.5x40mm"
 	ammo_type = /obj/item/ammo_casing/a95
 	max_ammo = 45
 	mag_type = MAGAZINE
 	multiple_sprites = 1
 
 /obj/item/ammo_casing/s72
-	desc = "A 7.2x35mm bullet casing."
+	desc = "A 9.5x40mm bullet casing."
 	icon_state = "rifle-casing"
-	caliber = "7.2x35mm"
+	caliber = "9.5x40mm"
 	projectile_type = /obj/projectile/bullet/rifle/s72
 
 /obj/projectile/bullet/rifle/s72
