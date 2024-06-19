@@ -46,6 +46,15 @@
 		ACCESS_COMMAND_IAA,
 	)
 
+// used for tether's EVA - when your EVA is shared between departments
+/obj/map_helper/access_helper/airlock/station/general_eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_GENERAL_EXPLORER,
+	)
+
 /**
  * for pilots
  */
@@ -234,6 +243,12 @@
 		ACCESS_MEDICAL_MORGUE,
 	)
 
+/obj/map_helper/access_helper/airlock/station/medical/maintenance
+	req_one_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
 /obj/map_helper/access_helper/airlock/station/service
 	icon_state = "service"
 
@@ -288,6 +303,18 @@
 /obj/map_helper/access_helper/airlock/station/service/mime
 	req_access = list(
 		ACCESS_GENERAL_MIME,
+	)
+
+/obj/map_helper/access_helper/airlock/station/service/tomfoolery
+	req_access = list(
+		ACCESS_GENERAL_TOMFOOLERY,
+	)
+
+// access shared between the chef and botanist
+/obj/map_helper/access_helper/airlock/station/service/kitchen_botany
+	req_one_access = list(
+		ACCESS_GENERAL_KITCHEN,
+		ACCESS_GENERAL_BOTANY,
 	)
 
 /obj/map_helper/access_helper/airlock/station/supply
@@ -386,6 +413,12 @@
 		ACCESS_SCIENCE_MAIN,
 	)
 
+/obj/map_helper/access_helper/airlock/station/science/shared_xenoflora
+	req_one_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_BOTANY,
+	)
+
 /**
  * so, what toxins is becoming.
  *
@@ -443,6 +476,7 @@
 /obj/map_helper/access_helper/airlock/station/science/robotics
 	req_access = list(
 		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration
@@ -530,6 +564,18 @@
 /obj/map_helper/access_helper/airlock/station/command/vault
 	req_access = list(
 		ACCESS_COMMAND_VAULT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/command/maintenance
+	req_one_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
+// not to be mistaken with /station/general_eva
+/obj/map_helper/access_helper/airlock/station/command/eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
 	)
 
 /obj/map_helper/access_helper/airlock/station/centcom
