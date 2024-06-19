@@ -391,7 +391,7 @@ SUBSYSTEM_DEF(throwing)
 /**
  * get damage scaling - default handling
  */
-/datum/thrownthing/proc/get_damage_multiplier()
+/datum/thrownthing/proc/get_damage_multiplier(atom/target)
 	if(!resist)
 		return MAX_THROWING_DAMAGE_MULTIPLIER
 	. = damage_multiplier
@@ -399,10 +399,25 @@ SUBSYSTEM_DEF(throwing)
 		return
 	if(throw_flags & THROW_AT_NO_SCALE_DAMAGE)
 		return
+	// todo: this should be damage_multipliers and damage_classifier based
+	// for now, snowflake.
+	if(ismob(thrownthing) && isobj(target))
+		. *= 2.5 // :trol:
 	// multiplier = force > resist? (force / resist) ** (p * 0.1) : 1 / (force / resist) ** (p * 0.1)
 	if(isnull(force))
 		. *= speed > resist? (speed / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1) : 1 / (speed / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1)
 	. *= force > resist? (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1) : 1 / (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1)
+
+/**
+ * get damage tier - default handling
+ */
+/datum/thrownthing/proc/get_damage_tier(atom/target)
+	if(isitem(thrownthing))
+		var/obj/item/thing = thrownthing
+		return thing.damage_tier
+	if(iscarbon(thrownthing))
+		return MELEE_TIER_HEAVY // :trol:
+	return MELEE_TIER_LIGHT
 
 /**
  * simulated thrownthing datums
