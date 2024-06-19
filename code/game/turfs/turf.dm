@@ -656,10 +656,15 @@
 
 /**
  * tell all objects on us to reconsider their underfloor status
+ *
+ * we are always called at mapload by turfs that can hide underfloor objects,
+ * because objs are configured to only check themselves outside of mapload.
  */
 /turf/proc/update_underfloor_objects()
 	var/we_should_cover = hides_underfloor_objects()
 	for(var/obj/thing in contents)
+		if(thing.hides_underfloor == OBJ_UNDERFLOOR_DISABLED)
+			continue
 		thing.update_hiding_underfloor(
 			(thing.hides_underfloor != OBJ_UNDERFLOOR_NEVER) && we_should_cover,
 		)

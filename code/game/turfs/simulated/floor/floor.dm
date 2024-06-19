@@ -54,6 +54,7 @@
 		set_flooring(get_flooring_data(floortype), TRUE)
 	else
 		footstep_sounds = base_footstep_sounds
+		update_underfloor_objects()
 	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
@@ -85,6 +86,8 @@
 
 /turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
 	if(flooring == newflooring)
+		if(init)
+			update_underfloor_objects()
 		return
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
@@ -109,7 +112,6 @@
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
-
 	update_underfloor_objects()
 	update_layer()
 

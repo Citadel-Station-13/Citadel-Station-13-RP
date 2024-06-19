@@ -5,6 +5,8 @@
 
 /// do not change these willy-nilly, these are strings for the map editor.
 
+/// just Don't
+#define OBJ_UNDERFLOOR_DISABLED "disabled"
 /// never underfloor, even if floor isn't plating
 #define OBJ_UNDERFLOOR_NEVER "never"
 /// always underfloor, as long as floor isn't plating
@@ -24,6 +26,7 @@ DEFINE_ENUM("obj_hides_underfloor", list(
 		"hides_underfloor",
 	),
 ), list(
+	"Disabled" = OBJ_UNDERFLOOR_DISABLED,
 	"Never" = OBJ_UNDERFLOOR_NEVER,
 	"Always" = OBJ_UNDERFLOOR_ALWAYS,
 	"If Covered (Init Only)" = OBJ_UNDERFLOOR_IF_COVERED,

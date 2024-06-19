@@ -276,7 +276,6 @@
 	if (!(machine_stat & NOPOWER) && on)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
-	var/turf/T = src.loc
 	if(is_probably_hidden_underfloor() && node?.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1

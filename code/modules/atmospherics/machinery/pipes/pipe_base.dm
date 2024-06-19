@@ -90,7 +90,6 @@
 
 	if (!W.is_wrench())
 		return ..()
-	var/turf/T = src.loc
 	if (is_probably_hidden_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1

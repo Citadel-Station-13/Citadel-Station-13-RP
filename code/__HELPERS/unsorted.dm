@@ -1157,7 +1157,7 @@ var/list/WALLITEMS = list(
 
 /// Call to generate a stack trace and print to runtime logs.
 /proc/crash_with(msg)
-	CRASH(msg)
+ 	CRASH(msg)
 
 /proc/screen_loc2turf(scr_loc, turf/origin)
 	var/tX = splittext(scr_loc, ",")

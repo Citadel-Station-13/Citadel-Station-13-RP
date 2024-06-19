@@ -135,7 +135,7 @@
 	/// * gets set_underfloor(is_underfloor = TRUE | FALSE) called on init or turf init
 	/// * we are assumed to not be underfloor when we are first made
 	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
-	var/hides_underfloor = OBJ_UNDERFLOOR_NEVER
+	var/hides_underfloor = OBJ_UNDERFLOOR_DISABLED
 	/// call update icon after update_hiding_underfloor()
 	///
 	/// * update_icon() called regardless of [hides_underfloor_defaulting] if TRUE
@@ -215,7 +215,7 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
-	if(hides_underfloor)
+	if((hides_underfloor != OBJ_UNDERFLOOR_NEVER) && !mapload)
 		initialize_hiding_underfloor(mapload)
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
@@ -906,7 +906,7 @@
 /**
  * sets our hides_underfloor
  */
-/obj/proc/set_hides_underfloor(new_value)
+/obj/proc/set_hides_underfloor(new_value, mapload)
 	switch(new_value)
 		if(OBJ_UNDERFLOOR_IF_COVERED, OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP)
 			var/turf/where_we_are = loc
@@ -926,7 +926,7 @@
  */
 /obj/proc/update_hiding_underfloor(new_value)
 	if(hides_underfloor_defaulting)
-		invisibility = hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR
+		invisibility = new_value? (hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR) : 0
 	if(hides_underfloor_update_icon)
 		update_icon()
 	return TRUE
@@ -939,9 +939,10 @@
 	switch(hides_underfloor)
 		if(OBJ_UNDERFLOOR_ALWAYS)
 			var/turf/where_we_are = loc
-			return !where_we_are.hides_underfloor_objects()
+			return where_we_are.hides_underfloor_objects()
 		if(OBJ_UNDERFLOOR_NEVER)
 			return FALSE
+	return FALSE
 
 /**
  * called at init
@@ -951,14 +952,15 @@
 		if(OBJ_UNDERFLOOR_IF_COVERED, OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP)
 			var/turf/where_we_are = loc
 			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP) && mapload
-			if(istype(where_we_are) && (where_we_are.hides_underfloor_objects() || hide_anyways))
+			if(istype(where_we_are) && (hide_anyways || where_we_are.hides_underfloor_objects()))
 				hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
-				update_hiding_underfloor(TRUE)
+				if(!mapload)
+					update_hiding_underfloor(TRUE)
 			else
 				hides_underfloor = OBJ_UNDERFLOOR_NEVER
 		if(OBJ_UNDERFLOOR_ALWAYS)
 			var/turf/where_we_are = loc
-			if(istype(where_we_are) && where_we_are.hides_underfloor_objects())
+			if(!mapload && istype(where_we_are) && where_we_are.hides_underfloor_objects())
 				update_hiding_underfloor(TRUE)
 
 /**
@@ -974,8 +976,7 @@
 			update_hiding_underfloor(FALSE)
 		else
 			// we're way beyond initialize, so..
-			hides_underfloor = OBJ_UNDERFLOOR_NEVER
-			update_hiding_underfloor(FALSE)
+			hides_underfloor = OBJ_UNDERFLOOR_DISABLED
 
 //* VV hooks *//
 
