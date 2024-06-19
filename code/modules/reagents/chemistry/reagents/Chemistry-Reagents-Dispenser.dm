@@ -53,12 +53,14 @@
 	var/effective_dose = volume * strength_mod * ABV * min(1,dose*(ETHANOL_MET_DIVISOR/10)) // give it 50 ticks to ramp up
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
-		var/intolerant_dose = strength_mod*removed*ABV*10
-		if(prob((intolerant_dose)))
-			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.adjustToxLoss(intolerant_dose)
+		if(proof > 0)
+			var/intolerant_dose = strength_mod*removed*ABV*10
+			if(prob((intolerant_dose)))
+				M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+			M.adjustToxLoss(intolerant_dose)
 		return 0
-	var/effect_level=round(effective_dose/6)
+	#define DOSE_LEVEL 6
+	var/effect_level=round(effective_dose/DOSE_LEVEL)
 	if(effect_level != data)
 		var/lowering=(data>effect_level)
 		data=effect_level
@@ -73,37 +75,51 @@
 				if(3)
 					to_chat(M,SPAN_DANGER("You're not seeing double anymore."))
 				if(4)
-					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
+					to_chat(M,SPAN_DANGER("You no longer feel like you're going to puke."))
 				if(5)
+					to_chat(M,SPAN_DANGER("You don't feel like you're going to pass out anymore."))
+				if(6)
 					to_chat(M,SPAN_DANGER("You feel like you're out of the danger zone."))
 		else
+			var/hydration_str=""
+			if(M.hydration<250)
+				hydration_str=" You're feeling a little dehydrated, too."
 			switch(effect_level)
 				if(1)
-					to_chat(M,SPAN_DANGER("You're starting to feel a little tipsy."))
+					to_chat(M,SPAN_DANGER("You're starting to feel a little tipsy.[hydration_str]"))
 					M.dizziness=max(M.dizziness,150)
 				if(2)
-					to_chat(M,SPAN_DANGER("You're starting to slur your words."))
+					to_chat(M,SPAN_DANGER("You're starting to slur your words.[hydration_str]"))
 				if(3)
-					to_chat(M,SPAN_DANGER("You can barely walk straight!"))
+					to_chat(M,SPAN_DANGER("You can barely walk straight![hydration_str]"))
 				if(4)
-					to_chat(M,SPAN_DANGER("You're seeing double!."))
+					to_chat(M,SPAN_DANGER("You're seeing double!.[hydration_str]"))
 					M.eye_blurry=max(M.eye_blurry,30)
 				if(5)
-					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy!"))
+					to_chat(M,SPAN_USERDANGER("You feel like you might puke...[hydration_str]"))
 				if(6)
-					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk!"))
-	
+					to_chat(M,SPAN_USERDANGER("Your eyelids feel heavy![hydration_str]"))
+				if(7)
+					to_chat(M,SPAN_USERDANGER("You are getting dangerously drunk![hydration_str]"))
+	var/hydration_removal=(clamp((M.hydration-150)/300,0,1)*effect_level) + max(0,(M.hydration-450)/300)
+	if(hydration_removal>0)
+		M.adjust_hydration(-hydration_removal)
+		volume-=removed*hydration_removal*3
 	if(effect_level>=2)
 		M.slurring=max(M.slurring,10)
-	if(effect_level>=3)
+	if(effect_level>=3 && prob(effect_level-2))
 		M.Confuse(60)
-	if(effect_level>=5)
+	if(effect_level>=5 && prob(effect_level-4) && !M.lastpuke)
+		M.vomit(1,0)
+		if(M.nutrition>=100)
+			volume-=DOSE_LEVEL/4
+	if(effect_level>=6 && prob(effect_level-5))
 		M.drowsyness=max(M.drowsyness,60)
-	if(effect_level>=6)
+	if(effect_level>=7)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*strength_mod)
-		if(volume>36 + REM)
+		if(volume>DOSE_LEVEL*7)
 			volume-=REM // liver working overtime, or whatever (mostly to prevent people from always just dying from this)
-
+	#undef DOSE_LEVEL
 	return
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)

@@ -21,6 +21,8 @@
 	#endif
 
 /atom/movable/lighting_overlay/New(newloc, update_now = FALSE)
+	SHOULD_CALL_PARENT(FALSE)
+
 	atom_flags |= ATOM_INITIALIZED
 	SSlighting.total_lighting_overlays += 1
 

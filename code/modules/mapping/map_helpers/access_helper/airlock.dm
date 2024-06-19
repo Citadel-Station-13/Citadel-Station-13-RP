@@ -29,6 +29,32 @@
 	)
 	icon_state = "engineering"
 
+/obj/map_helper/access_helper/airlock/station/hangar
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_GENERAL_PILOT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/mining_operations
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_COMMAND_IAA,
+	)
+
+// used for tether's EVA - when your EVA is shared between departments
+/obj/map_helper/access_helper/airlock/station/general_eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_GENERAL_EXPLORER,
+	)
+
 /**
  * for pilots
  */
@@ -46,6 +72,13 @@
 		ACCESS_ENGINEERING_TECHSTORAGE,
 	)
 	icon_state = "engineering"
+
+/obj/map_helper/access_helper/airlock/station/technical_storage/secure
+	req_access = list(
+		ACCESS_ENGINEERING_TECHSTORAGE,
+		ACCESS_COMMAND_BRIDGE,
+	)
+	icon_state = "command"
 
 /**
  * for general EVA / stationkeeping storage
@@ -74,6 +107,21 @@
 		ACCESS_SECURITY_BRIG,
 		ACCESS_SECURITY_EQUIPMENT,
 		ACCESS_SECURITY_MAIN,
+		ACCESS_SECURITY_FORENSICS,
+	)
+
+/obj/map_helper/access_helper/airlock/station/security/processing
+	req_one_access = list(
+		ACCESS_SECURITY_BRIG,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_SECURITY_FORENSICS,
+		ACCESS_COMMAND_IAA
+	)
+
+/obj/map_helper/access_helper/airlock/station/security/general
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_COMMAND_IAA,
 	)
 
 /obj/map_helper/access_helper/airlock/station/security/equipment
@@ -101,6 +149,18 @@
 		ACCESS_SECURITY_BRIG,
 	)
 
+/obj/map_helper/access_helper/airlock/station/security/external_airlock
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/security/maintenance
+	req_one_access = list(
+		ACCESS_SECURITY_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
 /obj/map_helper/access_helper/airlock/station/engineering
 	icon_state = "engineering"
 
@@ -109,6 +169,11 @@
 		ACCESS_ENGINEERING_MAIN,
 		ACCESS_ENGINEERING_ATMOS,
 		ACCESS_ENGINEERING_ENGINE,
+	)
+
+/obj/map_helper/access_helper/airlock/station/engineering/equipment
+	req_access = list(
+		ACCESS_ENGINEERING_MAIN,
 	)
 
 /**
@@ -173,6 +238,17 @@
 		ACCESS_MEDICAL_EQUIPMENT,
 	)
 
+/obj/map_helper/access_helper/airlock/station/medical/morgue
+	req_access = list(
+		ACCESS_MEDICAL_MORGUE,
+	)
+
+/obj/map_helper/access_helper/airlock/station/medical/maintenance
+	req_one_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
 /obj/map_helper/access_helper/airlock/station/service
 	icon_state = "service"
 
@@ -219,6 +295,28 @@
 		ACCESS_GENERAL_TOMFOOLERY,
 	)
 
+/obj/map_helper/access_helper/airlock/station/service/clown
+	req_access = list(
+		ACCESS_GENERAL_CLOWN,
+	)
+
+/obj/map_helper/access_helper/airlock/station/service/mime
+	req_access = list(
+		ACCESS_GENERAL_MIME,
+	)
+
+/obj/map_helper/access_helper/airlock/station/service/tomfoolery
+	req_access = list(
+		ACCESS_GENERAL_TOMFOOLERY,
+	)
+
+// access shared between the chef and botanist
+/obj/map_helper/access_helper/airlock/station/service/kitchen_botany
+	req_one_access = list(
+		ACCESS_GENERAL_KITCHEN,
+		ACCESS_GENERAL_BOTANY,
+	)
+
 /obj/map_helper/access_helper/airlock/station/supply
 	icon_state = "supply"
 
@@ -230,6 +328,24 @@
 /obj/map_helper/access_helper/airlock/station/supply/department
 	req_access = list(
 		ACCESS_SUPPLY_MAIN,
+	)
+
+/obj/map_helper/access_helper/airlock/station/supply/external_airlock
+	req_one_access = list(
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/supply/maintenance
+	req_one_access = list(
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/supply/infirmary
+	req_one_access = list(
+		ACCESS_SUPPLY_MAIN,
+		ACCESS_MEDICAL_MAIN,
 	)
 
 /**
@@ -259,6 +375,48 @@
 /obj/map_helper/access_helper/airlock/station/science/fabrication
 	req_access = list(
 		ACCESS_SCIENCE_FABRICATION,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/external_airlock
+	req_one_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/maintenance
+	req_one_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/toxins
+	req_access = list(
+		ACCESS_SCIENCE_TOXINS,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/secure_storage
+	req_one_access = list(
+		ACCESS_COMMAND_CAPTAIN,
+		ACCESS_SCIENCE_RD,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/infirmary
+	req_one_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_MEDICAL_MAIN,
+	)
+
+// ppl really want pathfinders to have access to this
+/obj/map_helper/access_helper/airlock/station/science/research_lab
+	req_one_access = list(
+		ACCESS_GENERAL_PATHFINDER,
+		ACCESS_SCIENCE_MAIN,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/shared_xenoflora
+	req_one_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_BOTANY,
 	)
 
 /**
@@ -318,14 +476,47 @@
 /obj/map_helper/access_helper/airlock/station/science/robotics
 	req_access = list(
 		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration
 	icon_state = "science"
 
+/obj/map_helper/access_helper/airlock/station/exploration/department
+	req_one_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_COMMAND_BRIDGE,
+	)
+
 /obj/map_helper/access_helper/airlock/station/exploration/explorer
 	req_access = list(
 		ACCESS_GENERAL_EXPLORER,
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/external_airlock
+	req_one_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/pilot
+	req_access = list(
+		ACCESS_GENERAL_PILOT
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/maintenance
+	req_one_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/exploration/infirmary
+	req_one_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_MEDICAL_MAIN,
 	)
 
 /**
@@ -375,8 +566,29 @@
 		ACCESS_COMMAND_VAULT,
 	)
 
+/obj/map_helper/access_helper/airlock/station/command/maintenance
+	req_one_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
+// not to be mistaken with /station/general_eva
+/obj/map_helper/access_helper/airlock/station/command/eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
+	)
+
 /obj/map_helper/access_helper/airlock/station/centcom
+	req_access = list(
+		ACCESS_CENTCOM_GENERAL,
+	)
 	icon_state = "centcom"
+
+/obj/map_helper/access_helper/airlock/station/centcom/ert
+	req_one_access = list(
+		ACCESS_CENTCOM_ERT,
+		ACCESS_CENTCOM_GENERAL,
+	)
 
 /**
  * special offices are under this
@@ -441,4 +653,26 @@
 /obj/map_helper/access_helper/airlock/offmap
 	icon_state = "offmap"
 
+// For antagonists and off-station personnel; traders, pirates, etc.
+/obj/map_helper/access_helper/airlock/disconnected
+	icon_state = "disconnected"
 
+/obj/map_helper/access_helper/airlock/disconnected/trader
+	req_access = list(
+		ACCESS_FACTION_TRADER,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/pirate
+	req_access = list(
+		ACCESS_FACTION_PIRATE,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/syndicate
+	req_access = list(
+		ACCESS_FACTION_SYNDICATE,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/talon
+	req_access = list(
+		ACCESS_FACTION_TALON,
+	)

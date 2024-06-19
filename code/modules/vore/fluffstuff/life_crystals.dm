@@ -41,8 +41,8 @@
 		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
 		return 0
 
-	owner = user	//We're paired to this guy
-	owner_c = user.client	//This is his client
+	owner = user	//We're paired to this person
+	owner_c = user.client	//This is their client
 	update_state(1)
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
 	START_PROCESSING(SSobj, src)
@@ -51,9 +51,10 @@
 	//He's dead, jim
 	if(state < 1)
 		return
-	if(!owner)//How did we get here?
+	if(!owner && !owner_c) //How did we get here?
+		//It's likely because the owner got gibbed. But if it truly bugged out, there'd be no client.
 		return
-	if((owner.stat == DEAD) || (get_turf(owner) != get_turf(src)))
+	if((!owner && owner_c) || (owner.stat == DEAD) || (get_turf(owner) != get_turf(src)))
 		if(state == 1)
 			become_alert()
 		if((state == 2) && (last_vitals < world.time - 1 MINUTE))

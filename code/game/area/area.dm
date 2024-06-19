@@ -363,8 +363,9 @@
 		if(!all_arfgs)
 			return
 		for(var/obj/machinery/atmospheric_field_generator/E in all_arfgs)
-			E.disable_field()
-			E.wasactive = FALSE
+			if(!E.alwaysactive)
+				E.disable_field()
+				E.wasactive = FALSE
 
 
 /area/proc/fire_alert()
@@ -641,6 +642,9 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	CRASH("Bad op: area/drop_location() called")
 
 // A hook so areas can modify the incoming args
+/**
+ * * THIS CANNOT CALL ANY 'new' BECAUSE WE ARE POTENTIALLY BEING PRELOADED!
+ */
 /area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	return flags
 
