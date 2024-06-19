@@ -18,6 +18,14 @@
 	/// singleton area holding all free reservation turfs
 	var/static/area/unused_reservation_area/reservation_unallocated_area = new
 	/// spatial grid of turf reservations. the owner of a chunk is the bottom left tile's owner.
+	///
+	/// this is a list with length of world.maxz, with the actual spatial grid list being at the index of the z
+	/// e.g. to grab a reserved level's lookup, do `reservation_spatia_lookups[z_index]`
+	///
+	/// * null means that a level isn't a reservation level
+	/// * this also means that we can't zclear / 'free' reserved levels; they're effectively immovable due to this datastructure
+	/// * if it is a reserved level, it returns the spatial grid
+	/// * to get a chunk, do `spatial_lookup[floor(where.x / TURF_CHUNK_RESOLUTION) + (floor(where.y / TURF_CHUNK_RESOLUTION) - 1) * floor(world.maxx / TURF_CHUNK_RESOLUTION)]`
 	var/static/list/reservation_spatial_lookups = list()
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)

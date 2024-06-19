@@ -28,6 +28,8 @@ SUBSYSTEM_DEF(spatial_grids)
 
 /**
  * index = ceil(x / resolution) + width * ceil(y / resolution)
+ *
+ * * at time of writing, spatial grids are intentionally aligned with turf reservation resolution. this is intentional so looking stuff up in grids on a reservation is lightning-fast.
  */
 /datum/spatial_grid
 	/// our grid; list[z] = grid: list()
