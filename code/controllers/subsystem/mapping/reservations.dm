@@ -25,7 +25,7 @@
 	/// * null means that a level isn't a reservation level
 	/// * this also means that we can't zclear / 'free' reserved levels; they're effectively immovable due to this datastructure
 	/// * if it is a reserved level, it returns the spatial grid
-	/// * to get a chunk, do `spatial_lookup[floor(where.x / TURF_CHUNK_RESOLUTION) + (floor(where.y / TURF_CHUNK_RESOLUTION) - 1) * floor(world.maxx / TURF_CHUNK_RESOLUTION)]`
+	/// * to get a chunk, do `spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]`
 	var/static/list/reservation_spatial_lookups = list()
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
@@ -101,7 +101,7 @@
 	var/list/spatial_lookup = reservation_spatial_lookups[where.z]
 	if(!spatial_lookup)
 		return
-	return spatial_lookup[floor(where.x / TURF_CHUNK_RESOLUTION) + (floor(where.y / TURF_CHUNK_RESOLUTION) - 1) * floor(world.maxx / TURF_CHUNK_RESOLUTION)]
+	return spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
 
 /area/unused_reservation_area
 	name = "Unused Reservation Area"

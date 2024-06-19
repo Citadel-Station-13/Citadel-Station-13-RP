@@ -40,7 +40,7 @@
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		root = root.loc
 	if(isturf(root))
-		var/idx = ceil(root.x / TURF_CHUNK_RESOLUTION) + grid_width * floor(root.y / TURF_CHUNK_RESOLUTION)
+		var/idx = ceil(root.x / TURF_CHUNK_RESOLUTION) + grid_width * (ceil(root.y / TURF_CHUNK_RESOLUTION) - 1)
 		grid.direct_insert(parent, root.z, idx)
 		current_index = idx
 
@@ -58,7 +58,7 @@
 		return
 	// turf --> turf, try to do an optimized, lazy update
 	if(isturf(oldloc) && isturf(newloc) && (oldloc.z == newloc.z))
-		var/new_index = ceil(newloc.x / TURF_CHUNK_RESOLUTION) + grid_width * floor(newloc.y / TURF_CHUNK_RESOLUTION)
+		var/new_index = ceil(newloc.x / TURF_CHUNK_RESOLUTION) + grid_width * (ceil(newloc.y / TURF_CHUNK_RESOLUTION) - 1)
 		var/z = oldloc.z
 		if(new_index != current_index)
 			grid.direct_remove(parent, z, current_index)

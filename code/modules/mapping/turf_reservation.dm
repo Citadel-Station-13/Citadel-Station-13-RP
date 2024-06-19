@@ -52,7 +52,7 @@
 
 	// unegister from lookup
 	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[spatial_z]
-	var/spatial_width = floor(world.maxx / TURF_CHUNK_RESOLUTION)
+	var/spatial_width = ceil(world.maxx / TURF_CHUNK_RESOLUTION)
 	for(var/spatial_x in spatial_bl_x to spatial_tr_x)
 		for(var/spatial_y in spatial_bl_y to spatial_tr_y)
 			var/index = spatial_x + (spatial_y - 1) * spatial_width
@@ -80,11 +80,14 @@
 	var/list/turf/final
 	var/area/area_path = area_type
 	var/area/area_instance = initial(area_path.unique)? (GLOB.areas_by_type[area_path] || new area_path) : new area_path
+
 	var/found_a_spot = FALSE
-	var/how_many_wide = FLOOR(width / TURF_CHUNK_RESOLUTION, 1)
-	var/how_many_high = FLOOR(height / TURF_CHUNK_RESOLUTION, 1)
-	var/total_many_wide = FLOOR(world.maxx / TURF_CHUNK_RESOLUTION, 1)
-	var/total_many_high = FLOOR(world.maxy / TURF_CHUNK_RESOLUTION, 1)
+
+	var/how_many_wide = ceil(width / TURF_CHUNK_RESOLUTION)
+	var/how_many_high = ceil(height / TURF_CHUNK_RESOLUTION)
+	var/total_many_wide = floor(world.maxx / TURF_CHUNK_RESOLUTION)
+	var/total_many_high = floor(world.maxy / TURF_CHUNK_RESOLUTION)
+
 	// the dreaded 5 deep for loop
 	while((level_index = z_override) || (level_index = pick_n_take(possible_levels)))
 		/**
@@ -92,14 +95,20 @@
 		 * because reservations are aligned to TURF_CHUNK_RESOLUTION,
 		 * we just have to check the start spots, since we always align to them.
 		 *
-		 * bottom-right turfs on reservations align to 0 * TURF_CHUNK_RESOLUTION + 1, 1 * TURF_CHUNK_RESOLUTION + 1, 2 * TURF_CHUNK_RESOLUTION + 1, ...
+		 * bottom-left turfs on reservations align to
+		 * (chunk_x - 1) * TURF_CHUNK_RESOLUTION + 1
+		 * (chunk_y - 1) * TURF_CHUNK_RESOLUTION + 1
 		 */
 		for(var/outer_x in 1 to (total_many_wide - how_many_wide + 1))
 			for(var/outer_y in 1 to (total_many_high - how_many_high + 1))
 				var/passing = TRUE
 				for(var/inner_x in outer_x to outer_x + how_many_wide - 1)
 					for(var/inner_y in outer_y to outer_y + how_many_high - 1)
-						var/turf/checking = locate(1 + TURF_CHUNK_RESOLUTION * (inner_x - 1), 1 + TURF_CHUNK_RESOLUTION * (inner_y - 1), level_index)
+						var/turf/checking = locate(
+							1 + (inner_x - 1) * TURF_CHUNK_RESOLUTION,
+							1 + (inner_y - 1) * TURF_CHUNK_RESOLUTION,
+							level_index,
+						)
 						if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
 							passing = FALSE
 							break
@@ -141,12 +150,12 @@
 
 	// register in lookup
 	ASSERT(bottom_left_coords[3] == top_right_coords[3]) // just to make sure assumptions made at time of writing are still true
-	src.spatial_bl_x = floor(bottom_left_coords[1] / TURF_CHUNK_RESOLUTION)
-	src.spatial_bl_y = floor(top_right_coords[1] / TURF_CHUNK_RESOLUTION)
-	src.spatial_tr_x = floor(bottom_left_coords[2] / TURF_CHUNK_RESOLUTION)
-	src.spatial_tr_y = floor(top_right_coords[2] / TURF_CHUNK_RESOLUTION)
+	src.spatial_bl_x = ceil(bottom_left_coords[1] / TURF_CHUNK_RESOLUTION)
+	src.spatial_bl_y = ceil(bottom_left_coords[2] / TURF_CHUNK_RESOLUTION)
+	src.spatial_tr_x = ceil(top_right_coords[1] / TURF_CHUNK_RESOLUTION)
+	src.spatial_tr_y = ceil(top_right_coords[2] / TURF_CHUNK_RESOLUTION)
 	src.spatial_z = bottom_left_coords[3]
-	var/spatial_width = floor(world.maxx / TURF_CHUNK_RESOLUTION)
+	var/spatial_width = ceil(world.maxx / TURF_CHUNK_RESOLUTION)
 	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[spatial_z]
 	for(var/spatial_x in src.spatial_bl_x to src.spatial_tr_x)
 		for(var/spatial_y in src.spatial_bl_y to src.spatial_tr_y)
