@@ -568,7 +568,9 @@
 /**
  * gets world.time time (so, deciseconds) left in transit
  *
- * negative values can be returned if we're overdue, somehow!
+ * * negative values can be returned if we're overdue, somehow!
+ * * return null if we're not in transit
+ * * having a transit cycle isn't the same as being in transit.
  */
 /datum/shuttle_controller/proc/transit_time_left()
 	#warn impl

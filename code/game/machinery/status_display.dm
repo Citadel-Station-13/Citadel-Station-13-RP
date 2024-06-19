@@ -101,7 +101,7 @@
 				return 1
 			if(SSemergencyshuttle.waiting_to_leave())
 				message1 = "-ETD-"
-				if(SSemergencyshuttle.shuttle.is_launching())
+				if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
 					message2 = "Launch"
 				else
 					message2 = get_shuttle_timer_departure()
@@ -213,12 +213,13 @@
 	return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
 
 /obj/machinery/status_display/proc/get_supply_shuttle_timer()
-	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
-	if(!shuttle)
+	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
+	if(!controller)
 		return "Error"
 
-	if(shuttle.has_arrive_time())
-		var/timeleft = round((shuttle.arrive_time - world.time) / 10,1)
+	var/timeleft = controller.transit_time_left()
+	if(timeleft)
+		timeleft = round(timeleft/ 10,1)
 		if(timeleft < 0)
 			return "Late"
 		return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
