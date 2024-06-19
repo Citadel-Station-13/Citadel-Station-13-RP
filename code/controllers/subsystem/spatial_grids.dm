@@ -135,3 +135,35 @@ SUBSYSTEM_DEF(spatial_grids)
 				if(!grid[i])
 					continue
 				. += grid[i]
+
+//* basically the above but only within a certain turf reservation *//
+
+/datum/spatial_grid/proc/reservation_range_query(datum/turf_reservation/reservation, turf/epicenter, distance)
+	ASSERT(reservation.spatial_z == epicenter.z)
+	. = list()
+	var/min_x = ceil((epicenter.x - distance) / TURF_CHUNK_RESOLUTION)
+	var/min_y = floor((epicenter.y - distance) / TURF_CHUNK_RESOLUTION)
+	var/max_x = ceil((epicenter.x + distance) / TURF_CHUNK_RESOLUTION)
+	var/max_y = floor((epicenter.y + distance) / TURF_CHUNK_RESOLUTION)
+	var/list/grid = src.grids[epicenter.z]
+	for(var/x in max(1, min_x, reservation.spatial_bl_x) to min(src.width, max_x, reservation.spatial_tr_x))
+		for(var/y in max(1, min_y, reservation.spatial_bl_y) to min(src.height, max_y, reservation.spatial_tr_y))
+			var/index = x + src.width * (y - 1)
+			if(grid[index])
+				var/entry = grid[index]
+				if(islist(entry))
+					for(var/atom/movable/AM as anything in entry)
+						if(get_dist(AM, epicenter) <= distance)
+							. += AM
+				else if(get_dist(entry, epicenter) <= distance)
+					. += entry
+
+/datum/spatial_grid/proc/reservation_all_atoms(datum/turf_reservation/reservation)
+	. = list()
+	var/list/grid = src.grids[reservation.spatial_z]
+	for(var/x in reservation.spatial_bl_x to reservation.spatial_tr_x)
+		for(var/y in reservation.spatial_bl_y to reservation.spatial_tr_y)
+			var/index = x + src.width * (y - 1)
+			if(!grid[index])
+				continue
+			. += grid[index]

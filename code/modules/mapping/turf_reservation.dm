@@ -27,6 +27,13 @@
 	/// type of our area - null for default
 	var/area_type
 
+	//* spatial lookup *//
+	var/spatial_bl_x
+	var/spatial_bl_y
+	var/spatial_tr_x
+	var/spatial_tr_y
+	var/spatial_z
+
 /datum/turf_reservation/New()
 	if(isnull(turf_type))
 		turf_type = RESERVED_TURF_TYPE
@@ -44,11 +51,7 @@
 	SSmapping.reservations -= src
 
 	// unegister from lookup
-	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[bottom_left_coords[3]]
-	var/spatial_bl_x = floor(bottom_left_coords[1] / TURF_CHUNK_RESOLUTION)
-	var/spatial_bl_y = floor(top_right_coords[1] / TURF_CHUNK_RESOLUTION)
-	var/spatial_tr_x = floor(bottom_left_coords[2] / TURF_CHUNK_RESOLUTION)
-	var/spatial_tr_y = floor(top_right_coords[2] / TURF_CHUNK_RESOLUTION)
+	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[spatial_z]
 	var/spatial_width = floor(world.maxx / TURF_CHUNK_RESOLUTION)
 	for(var/spatial_x in spatial_bl_x to spatial_tr_x)
 		for(var/spatial_y in spatial_bl_y to spatial_tr_y)
@@ -57,6 +60,8 @@
 				stack_trace("index [index] wasn't self, what happened?")
 				continue
 			spatial_lookup[index] = null
+
+	spatial_bl_x = spatial_tr_x = spatial_bl_y = spatial_tr_y = spatial_z = null
 
 	return TRUE
 
@@ -135,14 +140,16 @@
 	SSmapping.reservations += src
 
 	// register in lookup
-	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[bottom_left_coords[3]]
-	var/spatial_bl_x = floor(bottom_left_coords[1] / TURF_CHUNK_RESOLUTION)
-	var/spatial_bl_y = floor(top_right_coords[1] / TURF_CHUNK_RESOLUTION)
-	var/spatial_tr_x = floor(bottom_left_coords[2] / TURF_CHUNK_RESOLUTION)
-	var/spatial_tr_y = floor(top_right_coords[2] / TURF_CHUNK_RESOLUTION)
+	ASSERT(bottom_left_coords[3] == top_right_coords[3]) // just to make sure assumptions made at time of writing are still true
+	src.spatial_bl_x = floor(bottom_left_coords[1] / TURF_CHUNK_RESOLUTION)
+	src.spatial_bl_y = floor(top_right_coords[1] / TURF_CHUNK_RESOLUTION)
+	src.spatial_tr_x = floor(bottom_left_coords[2] / TURF_CHUNK_RESOLUTION)
+	src.spatial_tr_y = floor(top_right_coords[2] / TURF_CHUNK_RESOLUTION)
+	src.spatial_z = bottom_left_coords[3]
 	var/spatial_width = floor(world.maxx / TURF_CHUNK_RESOLUTION)
-	for(var/spatial_x in spatial_bl_x to spatial_tr_x)
-		for(var/spatial_y in spatial_bl_y to spatial_tr_y)
+	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[spatial_z]
+	for(var/spatial_x in src.spatial_bl_x to src.spatial_tr_x)
+		for(var/spatial_y in src.spatial_bl_y to src.spatial_tr_y)
 			var/index = spatial_x + (spatial_y - 1) * spatial_width
 			if(spatial_lookup[index])
 				stack_trace("index [index] wasn't null, what happened?")
