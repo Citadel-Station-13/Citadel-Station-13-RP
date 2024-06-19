@@ -40,8 +40,8 @@
 	var/high_x = low_x + width - 1
 	var/high_y = low_y + width - 1
 
-	leader_dock = new /obj/shuttle_dock/freeflight(
-		locate(),
+	leader_dock = create_shuttle_dock(
+		locate(low_x, low_y, z_index),
 		with_dir = dir,
 		lx_ly_hx_hy = list(
 			low_x,

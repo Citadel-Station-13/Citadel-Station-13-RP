@@ -2,6 +2,12 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /**
+ * lets us use named arguments.
+ */
+/proc/create_shuttle_dock(turf/loc, with_id, with_dir, list/sx_sy_ox_oy, list/lx_ly_hx_hy)
+	return new /obj/shuttle_dock(loc, with_id, with_dir, sx_sy_ox_oy, lx_ly_hx_hy)
+
+/**
  * Shuttle docking points.
  *
  * When a shuttle docks, the shuttle aligns its docking port with our shuttle dock with some Magic Bullshit Math.
@@ -268,8 +274,16 @@
 			ready_shuttle(loaded)
 
 /obj/shuttle_dock/Destroy()
-	inbound?.controller?.abort_transit()
+	// if inbound, and it has a controller,
+	if(inbound?.controller)
+		// tell it to get out
+		inbound.controller.asynchronously_abort_transit()
+		// still going?
+		if(inbound)
+			inbound.controller.terminate_transit()
+	// alright bye
 	inbound = null
+	// unregister from SSshuttles
 	unregister_dock()
 	// cleanup our area
 	if(create_bounding_box_area && base_area?.unique)

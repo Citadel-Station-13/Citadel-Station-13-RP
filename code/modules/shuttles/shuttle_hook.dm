@@ -24,6 +24,8 @@
 	/// we also only need one reference for this because it's impossible for a shuttle to fire more than one event at the same time as another.
 	var/datum/event_args/shuttle/blocking
 
+#warn multi-blocks; for stuff like planetary hooks
+
 /datum/shuttle_hook/Destroy()
 	release()
 	return ..()
