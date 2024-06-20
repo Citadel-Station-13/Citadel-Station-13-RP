@@ -341,6 +341,10 @@
 /obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/undocked/e_args)
 	return
 
+#warn hook above 4
+
+//* docking - authorization *//
+
 /obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
 	if(docking_hard_restrict)
 		#warn redo
@@ -373,6 +377,15 @@
 	// we just fully protect our bounding box.
 	// todo: someday we should have a visual for seeing that a shuttle is inbound in docker mode?
 	return protect_bounding_box || inbound
+
+//* hooks *//
+
+/**
+ * fire a docking event on hooks
+ */
+/obj/shuttle_dock/proc/fire_docking_hooks(datum/event_args/shuttle/event)
+	for(var/datum/shuttle_hook/hook as anything in hooks)
+		hook.on_dock_event(event)
 
 //* init *//
 

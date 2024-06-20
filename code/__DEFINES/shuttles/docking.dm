@@ -10,8 +10,7 @@
 
 /// codes valid
 #define SHUTTLE_DOCKING_AUTHORIZATION_VALID 0
-/// codes invalid, can't do a proper airlock docking / other stuff	var/list/translating_right_lookup
-
+/// codes invalid, can't do a proper airlock docking / other stuff
 #define SHUTTLE_DOCKING_AUTHORIZATION_INVALID 1
 /// completely disallow docking
 #define SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED 2

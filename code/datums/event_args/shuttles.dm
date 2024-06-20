@@ -45,6 +45,10 @@
 	/// world.time we will time out on
 	var/timeout_at
 
+/datum/event_args/shuttle/proc/initialize(datum/shuttle/shuttle)
+	src.shuttle = shuttle
+	src.controller = shuttle.controller
+
 /datum/event_args/shuttle/Destroy()
 	if(!finished)
 		finish(FALSE)
@@ -52,18 +56,40 @@
 	controller = null
 	return ..()
 
+/datum/event_args/shuttle/proc/begin(timeout)
+	src.timeout_duration = timeout
+	src.timeout_at = isnull(timeout)? null : world.time + timeout
+
+/datum/event_args/shuttle/proc/force()
+	if(forcing)
+		return
+	forcing = TRUE
+	#warn impl
+
+/**
+ * implies [force()]
+ */
+/datum/event_args/shuttle/proc/dangerously_force()
+	force()
+	if(dangerously_forcing)
+		return
+	dangerously_forcing = TRUE
+	#warn impl
+
 /datum/event_args/shuttle/proc/finish(success)
 	succeeded = success
 	finished = TRUE
-	#warn make hooks gtfo
+
+	for(var/datum/shuttle_hook/hook in waiting_on_hooks)
+		release(hook)
 
 /datum/event_args/shuttle/proc/block(datum/shuttle_hook/hook, list/reason_or_reasons, dangerous)
 	. = FALSE
 	if(!blockable)
 		// it is YOUR job to check if an event is blockable.
 		CRASH("attempted to block an unblockable event")
-	ASSERT(isnull(hook.blocking))
-	hook.blocking = src
+	ASSERT(!(src in hook.blocking))
+	LAZYADD(hook.blocking, src)
 	waiting_on_hooks[hook] = islist(reason_or_reasons)? reason_or_reasons : list(reason_or_reasons)
 	if(dangerous)
 		forcing_could_be_dangerous = TRUE
@@ -71,7 +97,7 @@
 
 /datum/event_args/shuttle/proc/release(datum/shuttle_hook/hook)
 	waiting_on_hooks -= hook
-	hook.blocking = null
+	LAZYREMOVE(hook.blocking, src)
 
 /datum/event_args/shuttle/proc/update(datum/shuttle_hook/hook, list/reason_or_reasons)
 	waiting_on_hooks[hook] = islist(reason_or_reasons)? reason_or_reasons : list(reason_or_reasons)
@@ -124,7 +150,16 @@
 	/// for the above, the world.time we were fired
 	/// so things that require checking elapsed time work
 	var/started_at
-	#warn hook
+
+/datum/event_args/shuttle/dock/initialize(datum/shuttle/shuttle, obj/shuttle_dock/dock, obj/shuttle_port/port)
+	. = ..()
+	src.dock = dock
+	src.shuttle_port = port
+
+/datum/event_args/shuttle/dock/begin(timeout, spool_duration)
+	. = ..()
+	started_at = world.time
+	duration_to_next = spool_duration
 
 /**
  * negative returns mean that we have overshot the available time
@@ -160,11 +195,13 @@
 	blockable = TRUE
 
 /datum/event_args/shuttle/dock/departed
+	blockable = FALSE
 
 /datum/event_args/shuttle/dock/arriving
 	blockable = TRUE
 
 /datum/event_args/shuttle/dock/arrived
+	blockable = FALSE
 
 /**
  * Shuttle translation

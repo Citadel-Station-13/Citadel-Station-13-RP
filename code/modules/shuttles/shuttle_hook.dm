@@ -10,24 +10,20 @@
  */
 /datum/shuttle_hook
 	/// Player-facing name for what we are (what they're waiting on)
-	var/name = "Unknown Protocols (report this to a coder!)"
+	var/name = "Unknown Protocols (bug!)"
 	/// are we obfuscated (they get told something's blocking them, but not what)
 	var/obfuscated = FALSE
 
-	/// we're currently blocking this operation
+	/// we're currently blocking these operations
 	///
 	/// this is the only place where a shuttle event may be referenced outside of the shuttle itself!
 	///
-	/// this is safe to reference like this because shuttles / docks never are in more than one dock / hosting more than one shuttle
+	/// this is safe to reference like this because shuttles never are in more than one dock
 	/// at the same time.
-	///
-	/// we also only need one reference for this because it's impossible for a shuttle to fire more than one event at the same time as another.
-	var/datum/event_args/shuttle/blocking
-
-#warn multi-blocks; for stuff like planetary hooks
+	var/list/datum/event_args/shuttle/blocking
 
 /datum/shuttle_hook/Destroy()
-	release()
+	release_all()
 	return ..()
 
 /**
@@ -48,20 +44,29 @@
 /datum/shuttle_hook/proc/on_dock_event(datum/event_args/shuttle/dock/event)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/datum/shuttle_hook/proc/release()
-	if(isnull(blocking))
-		return FALSE
-	blocking.release(src)
+/datum/shuttle_hook/proc/release_all()
+	for(var/datum/event_args/shuttle/event as anything in blocking)
+		release(event)
+	ASSERT(!length(blocking))
 	return TRUE
 
-/datum/shuttle_hook/proc/update(list/reason_or_reasons)
-	if(isnull(blocking))
-		return FALSE
-	blocking.update(src, reason_or_reasons)
+/datum/shuttle_hook/proc/release(datum/event_args/shuttle/event)
+	event.release(src)
+	return TRUE
+
+/datum/shuttle_hook/proc/update_all(list/reason_or_reasons)
+	for(var/datum/event_args/shuttle/event as anything in blocking)
+		update(event, reason_or_reasons)
+	return TRUE
+
+/datum/shuttle_hook/proc/update(datum/event_args/shuttle/event, list/reason_or_reasons)
+	event.update(src, reason_or_reasons)
 	return TRUE
 
 /datum/shuttle_hook/proc/block(datum/event_args/shuttle/event, list/reason_or_reasons, dangerous)
 	return event.block(src, reason_or_reasons, dangerous)
 
-/datum/shuttle_hook/proc/is_blocking()
+/datum/shuttle_hook/proc/is_blocking_anything()
 	return !isnull(blocking)
+
+#warn forcing

@@ -247,7 +247,7 @@
 			status = SHUTTLE_TRANSIT_STATUS_FAILED
 	for(var/datum/callback/callback in finish_callbacks)
 		callback.InvokeAsync(controller, src, status)
-	shuttle.on_transit_end(src, status)
+	controller.on_transit_end(src, status)
 	finished = TRUE
 	running = FALSE
 	cleanup()
@@ -310,11 +310,35 @@
 	// undock
 	stage = SHUTTLE_TRANSIT_STAGE_UNDOCK
 
+	controller.synchronously_undock(
+		transit_flags & SHUTTLE_TRANSIT_FLAG_NO_ABORT,
+		timeout = dock_timeout,
+	)
+	#warn impl traversal flags, where to fire hooks?
+
 	// takeoff
 	stage = SHUTTLE_TRANSIT_STAGE_TAKEOFF
 
+	var/datum/event_args/shuttle/dock/departing/departing_event = new
+	departing_event.initialize(shuttle, shuttle.dock, shuttle.docked_via_port)
+	departing_event.begin(traversal_timeout)
+
+
+	var/datum/event_args/shuttle/dock/departed/departed_event = new
+	departing_event.initialize(shuttle, shuttle.dock, shuttle.docked_via_port)
+	shuttle.fire_docking_hooks(departed_event)
+	shuttle.dock.fire_docking_hooks(departed_event)
+
+
 	// transit
 	stage = SHUTTLE_TRANSIT_STAGE_FLIGHT
+
+	if(!shuttle.move_to_transit())
+		message_admins("shuttle failed move_to_transit(); this is undefined behavior")
+		// don't think the code ever cared what was or wasn't allowed but whatever..
+		stack_trace("shuttle failed to move to transit. this is not allowed.")
+
+	#warn impl all
 
 	// land
 	stage = SHUTTLE_TRANSIT_STAGE_LANDING
@@ -331,12 +355,14 @@
 	// dock
 	stage = SHUTTLE_TRANSIT_STAGE_DOCK
 
-	#warn impl
+	controller.synchronously_dock(
+		transit_flags & SHUTTLE_TRANSIT_FLAG_NO_ABORT,
+		timeout = dock_timeout,
+	)
+	#warn impl traversal flags, where to fire hooks?
 
 	// we got through everything, fire callbacks
 	terminate(SHUTTLE_TRANSIT_STATUS_SUCCESS)
-
-#warn oh no
 
 //* Visuals *//
 
