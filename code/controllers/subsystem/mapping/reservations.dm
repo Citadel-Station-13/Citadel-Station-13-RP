@@ -16,7 +16,22 @@
 	/// doing some blocking op on reservation system
 	var/static/reservation_blocking_op = FALSE
 	/// singleton area holding all free reservation turfs
-	var/static/area/unused_reservation_area/unallocated_reserve_area = new
+	var/static/area/unused_reservation_area/reservation_unallocated_area = new
+	/// spatial grid of turf reservations. the owner of a chunk is the bottom left tile's owner.
+	///
+	/// this is a list with length of world.maxz, with the actual spatial grid list being at the index of the z
+	/// e.g. to grab a reserved level's lookup, do `reservation_spatia_lookups[z_index]`
+	///
+	/// * null means that a level isn't a reservation level
+	/// * this also means that we can't zclear / 'free' reserved levels; they're effectively immovable due to this datastructure
+	/// * if it is a reserved level, it returns the spatial grid
+	/// * to get a chunk, do `spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]`
+	var/static/list/reservation_spatial_lookups = list()
+
+/datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	if(length(reservation_spatial_lookups) < new_z_count)
+		reservation_spatial_lookups.len = new_z_count
 
 /datum/controller/subsystem/mapping/Recover()
 	. = ..()
@@ -29,12 +44,15 @@
 	if(reserved_level_count && ((world.maxx * world.maxy * (reserved_level_count + 1)) > reserved_turfs_max))
 		log_and_message_admins(SPAN_USERDANGER("Out of dynamic reservation allocations. Is there a memory leak with turf reservations?"))
 		return FALSE
-	log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count]. This is probably not a good thing if the server is not at high load right now."))
+	if(reserved_level_count)
+		log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count + 1]. This is probably not a good thing if the server is not at high load right now."))
+	reserved_level_count++
 	var/datum/map_level/reserved/level_struct = new
 	ASSERT(allocate_level(level_struct))
-	reserved_level_count++
 	initialize_reserved_level(level_struct.z_index)
 	reserve_levels |= level_struct.z_index
+	// make a list with a predetermined size for the lookup
+	reservation_spatial_lookups[level_struct.z_index] = new /list(ceil(world.maxx / TURF_CHUNK_RESOLUTION) * ceil(world.maxy / TURF_CHUNK_RESOLUTION))
 	return level_struct.z_index
 
 /**
@@ -71,7 +89,20 @@
 		T.turf_flags |= UNUSED_RESERVATION_TURF
 		CHECK_TICK
 	// todo: area.assimilate_turfs?
-	unallocated_reserve_area.contents.Add(turfs)
+	reservation_unallocated_area.contents.Add(turfs)
+
+/**
+ * @return turf reservation someone's in, or null if they're not in a reservation
+ */
+/datum/controller/subsystem/mapping/proc/get_turf_reservation(atom/where)
+	where = get_turf(where)
+	if(!where)
+		return
+	// this doubles as 'is this a reserved level'
+	var/list/spatial_lookup = reservation_spatial_lookups[where.z]
+	if(!spatial_lookup)
+		return
+	return spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
 
 /area/unused_reservation_area
 	name = "Unused Reservation Area"

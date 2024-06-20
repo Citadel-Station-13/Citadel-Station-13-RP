@@ -27,7 +27,9 @@ SUBSYSTEM_DEF(spatial_grids)
 	living.sync_world_z(new_z_count)
 
 /**
- * index = ceil(x / resolution) + width * ceil(y / resolution)
+ * index = ceil(x / resolution) + width * (ceil(y / resolution) - 1)
+ *
+ * * at time of writing, spatial grids are intentionally aligned with turf reservation resolution. this is intentional so looking stuff up in grids on a reservation is lightning-fast.
  */
 /datum/spatial_grid
 	/// our grid; list[z] = grid: list()
@@ -36,21 +38,14 @@ SUBSYSTEM_DEF(spatial_grids)
 	var/width
 	/// our grid height
 	var/height
-	/// our grid resolution in tiles
-	var/resolution = 16
 	/// expected type
 	var/expected_type = /atom/movable
 
-/datum/spatial_grid/New(expected_type, resolution)
-	// make sure resolution is reasonable
-	if(resolution <= 8 || resolution >= 128)
-		stack_trace("invalid resolution: [resolution]")
-		resolution = 16
+/datum/spatial_grid/New(expected_type)
 	// initialize grid
-	src.width = ceil(world.maxx / resolution)
-	src.height = ceil(world.maxy / resolution)
+	src.width = ceil(world.maxx / TURF_CHUNK_RESOLUTION)
+	src.height = ceil(world.maxy / TURF_CHUNK_RESOLUTION)
 	src.grids = list()
-	src.resolution = resolution
 	src.expected_type = expected_type
 
 	sync_world_z(world.maxz)
@@ -105,10 +100,10 @@ SUBSYSTEM_DEF(spatial_grids)
  */
 /datum/spatial_grid/proc/range_query(turf/epicenter, distance)
 	. = list()
-	var/min_x = ceil((epicenter.x - distance) / src.resolution)
-	var/min_y = floor((epicenter.y - distance) / src.resolution)
-	var/max_x = ceil((epicenter.x + distance) / src.resolution)
-	var/max_y = floor((epicenter.y + distance) / src.resolution)
+	var/min_x = ceil((epicenter.x - distance) / TURF_CHUNK_RESOLUTION)
+	var/min_y = ceil((epicenter.y - distance) / TURF_CHUNK_RESOLUTION)
+	var/max_x = ceil((epicenter.x + distance) / TURF_CHUNK_RESOLUTION)
+	var/max_y = ceil((epicenter.y + distance) / TURF_CHUNK_RESOLUTION)
 	var/list/grid = src.grids[epicenter.z]
 	for(var/x in max(1, min_x) to min(src.width, max_x))
 		for(var/y in max(1, min_y) to min(src.height, max_y))
@@ -142,3 +137,54 @@ SUBSYSTEM_DEF(spatial_grids)
 				if(!grid[i])
 					continue
 				. += grid[i]
+
+//* basically the above but only within a certain turf reservation *//
+
+/datum/spatial_grid/proc/reservation_range_query(datum/turf_reservation/reservation, turf/epicenter, distance)
+	ASSERT(reservation.spatial_z == epicenter.z)
+	. = list()
+	var/min_x = ceil((epicenter.x - distance) / TURF_CHUNK_RESOLUTION)
+	var/min_y = ceil((epicenter.y - distance) / TURF_CHUNK_RESOLUTION)
+	var/max_x = ceil((epicenter.x + distance) / TURF_CHUNK_RESOLUTION)
+	var/max_y = ceil((epicenter.y + distance) / TURF_CHUNK_RESOLUTION)
+	var/list/grid = src.grids[epicenter.z]
+	for(var/x in max(1, min_x, reservation.spatial_bl_x) to min(src.width, max_x, reservation.spatial_tr_x))
+		for(var/y in max(1, min_y, reservation.spatial_bl_y) to min(src.height, max_y, reservation.spatial_tr_y))
+			var/index = x + src.width * (y - 1)
+			if(grid[index])
+				var/entry = grid[index]
+				if(islist(entry))
+					for(var/atom/movable/AM as anything in entry)
+						if(get_dist(AM, epicenter) <= distance)
+							. += AM
+				else if(get_dist(entry, epicenter) <= distance)
+					. += entry
+
+/datum/spatial_grid/proc/reservation_all_atoms(datum/turf_reservation/reservation)
+	. = list()
+	var/list/grid = src.grids[reservation.spatial_z]
+	for(var/x in reservation.spatial_bl_x to reservation.spatial_tr_x)
+		for(var/y in reservation.spatial_bl_y to reservation.spatial_tr_y)
+			var/index = x + src.width * (y - 1)
+			if(!grid[index])
+				continue
+			. += grid[index]
+
+//* basically the above but only within a certain turf reservation, if reservation exists; otherwise, proceed as normal *//
+//* if on a reservation level, but no reservation, we return nothing.                                                   *//
+
+/datum/spatial_grid/proc/automatic_range_query(turf/epicenter, distance)
+	// check if we're on a reserved level
+	var/list/spatial_lookup = SSmapping.reservation_spatial_lookups[epicenter.z]
+	if(!spatial_lookup)
+		// we're not on a reserved level, use normal
+		return range_query(epicenter, distance)
+	// we're on a reserve level
+	var/datum/turf_reservation/reservation = spatial_lookup[ceil(epicenter.x / TURF_CHUNK_RESOLUTION) + (ceil(epicenter.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
+	// check if reservation exists
+	if(reservation)
+		// it does, get stuff in reservation
+		return reservation_range_query(reservation, epicenter, distance)
+	else
+		// it doesn't, return nothing
+		return list()
