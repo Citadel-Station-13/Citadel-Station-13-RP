@@ -109,6 +109,8 @@
 		/datum/role/job/station/off_duty/civilian::id,
 		/datum/role/job/station/off_duty/exploration::id,
 		/datum/role/job/station/off_duty/medical::id,
+		// trader
+		/datum/role/job/trader::id,
 	)
 	innate_languages = list(
 		/datum/language/trader,
