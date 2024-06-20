@@ -573,8 +573,8 @@
 		var/obj/item/storage/part_replacer/partreplacer = P
 		var/addedparts = FALSE
 		for(var/obj/item/I in partreplacer.contents)
-			var/index = is_valid_part(I)
-			if(index)
+			var/index = get_valid_part_index(I)
+			if(index >= 0)
 				partreplacer.obj_storage.remove(I)
 				take_part(I, index)
 				addedparts = TRUE
@@ -584,8 +584,8 @@
 		else
 			to_chat(user, SPAN_NOTICE("There doesn't seem to be any components in [partreplacer] that can be added."))
 	else if(istype(P, /obj/item) && state == FRAME_WIRED && frame_type.frame_class == FRAME_CLASS_MACHINE)
-		var/index = is_valid_part(P)
-		if(!index)
+		var/index = get_valid_part_index(P)
+		if(index < 0)
 			to_chat(user, SPAN_WARNING("You cannot add that component to the machine!"))
 			return
 		if(!user.attempt_insert_item_for_installation(P, src))
@@ -633,11 +633,11 @@
 
 	return
 
-/obj/structure/frame/proc/is_valid_part(obj/item/P)
+/obj/structure/frame/proc/get_valid_part_index(obj/item/P)
 	for(var/I in req_components)
 		if(istype(P, text2path(I)) && (req_components[I] > 0))
 			return I
-	return FALSE
+	return -1
 
 /obj/structure/frame/proc/take_part(obj/item/P, index)
 	if(istype(P, /obj/item/stack)) //usually for cable coil. can support other stacks.
