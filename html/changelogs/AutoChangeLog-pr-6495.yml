@@ -1,4 +1,0 @@
-author: "Putnam3145"
-delete-after: True
-changes:
-  - tweak: "\"Adjusts their posture\" only shows up when pose actually changes, and not to the empty string"

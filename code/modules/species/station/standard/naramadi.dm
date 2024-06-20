@@ -24,6 +24,7 @@
 	intrinsic_languages = LANGUAGE_ID_NARAMADI
 	name_language = LANGUAGE_ID_NARAMADI
 	color_mult = 1
+	vision_organ = O_EYES
 
 	max_age = 120
 
