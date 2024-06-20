@@ -58,6 +58,9 @@
 	/// allow weapon guidance - if you turn this on without turning on laser_visible i will replace your eyelids with lemons
 	var/laser_weapons_guidance = FALSE
 
+	/// currently tracking target for laser designator
+	var/datum/laser_designator_target/laser_target
+
 #warn impl
 
 /obj/item/rangefinder/laser_designator

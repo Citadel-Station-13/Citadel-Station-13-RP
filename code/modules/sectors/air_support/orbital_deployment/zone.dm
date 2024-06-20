@@ -2,11 +2,9 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /datum/orbital_deployment_zone
-	/// lower left turf
-	var/turf/lower_left
-	/// upper right turf
-	var/turf/upper_right
-
-/datum/orbital_deployment_zone/proc/deploy(turf/target_bottom_left)
+	/// lower left marker
+	var/obj/orbital_deployment_marker/lower_left
+	/// upper right marker
+	var/obj/orbital_deployment_marker/upper_right
 
 #warn impl
