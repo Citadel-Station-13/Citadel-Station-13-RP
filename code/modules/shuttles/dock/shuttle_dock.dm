@@ -367,6 +367,16 @@
 		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
 	return base_area
 
+/**
+ * basically check if we're able to be mutex'd or docked with
+ *
+ * no permission checks, that's not our problem
+ *
+ * this just returns if we're currently available for an inbound transit cycle
+ */
+/obj/shuttle_dock/proc/check_inbound_validity(datum/shuttle_transit_cycle/cycle)
+	return !inbound
+
 //* docking - bounding box *//
 
 /**

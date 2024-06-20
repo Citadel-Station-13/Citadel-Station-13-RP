@@ -43,13 +43,22 @@
  * you *must* manually clean it up after you're done with it, or else it's a memory leak.
  *
  * failures are considered a runtime due to how sensitive turf management systems are.
+ *
+ * @params
+ * * width - width of reserved block
+ * * height - height of reserved block
+ * * type - /datum/turf_reservation type to make
+ * * turf_override - init turf contents to type instead of world.area
+ * * area_override - init area typepath to type instead of world.area
+ * * border - border turfs; these are outside of the allocation.
+ * * border_handler - what callback to call with (atom/movable/mover) when something crosses the border.
+ * * border_initializer - what callback to call with (turf/bordering) on every border turf to init them. defaults to just making loop-back turfs
  */
-/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/turf_reservation, turf_override, border_override, area_override)
+/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/turf_reservation, turf_override, area_override, border, datum/callback/border_handler, datum/callback/border_initializer)
+	#warn impl border, border_handler, border_initializer
 	var/datum/turf_reservation/reserve = new type
 	if(!isnull(turf_override))
 		reserve.turf_type = turf_override
-	if(!isnull(border_override))
-		reserve.border_type = border_override
 	if(!isnull(area_override))
 		reserve.area_type = area_override
 	if(reserve.reserve(width, height))

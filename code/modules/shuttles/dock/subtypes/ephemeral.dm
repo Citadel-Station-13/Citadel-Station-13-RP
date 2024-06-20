@@ -18,8 +18,3 @@
  * manual dock
  */
 /obj/shuttle_dock/ephemeral/manual
-
-/**
- * transit dock
- */
-/obj/shuttle_dock/ephemeral/transit

@@ -294,9 +294,31 @@
 		CRASH("tried to start a cycle twice")
 	running = TRUE
 	controller.on_transit_begin(src, redirected)
+
+	spawn(0)
+		perform_the_circus()
+
+/datum/shuttle_transit_cycle/proc/perform_the_circus()
+	// check if target dock is valid
+	if(target_resolved && !target_dock.check_inbound_validity(src))
+		terminate(SHUTTLE_TRANSIT_STATUS_FAILED)
+		return
+	// check if we need to mutex
+	if(!(transit_flags & SHUTTLE_TRANSIT_FLAG_NO_DOCK_MUTEX) && target_resolved)
+		if(target_dock.inbound)
+			terminate(SHUTTLE_TRANSIT_STATUS_FAILED)
+			CRASH("target dock already had inbound")
+		target_dock.inbound = src
+
+	// run cycle to completion
 	why_isnt_this_a_subsystem()
 
-	#warn impl
+	// if we mutex'd, clean it up
+	if(target_dock?.inbound == src)
+		target_dock.inbound = null
+
+	#warn handlers for transit teardown
+	shuttle.teardown_transit()
 
 /datum/shuttle_transit_cycle/proc/why_isnt_this_a_subsystem()
 	if(finished)
@@ -333,8 +355,8 @@
 	// transit
 	stage = SHUTTLE_TRANSIT_STAGE_FLIGHT
 
-	if(!shuttle.move_to_transit())
-		message_admins("shuttle failed move_to_transit(); this is undefined behavior")
+	if(!shuttle.prepare_transit())
+		message_admins("shuttle failed prepare_transit(); this is undefined behavior")
 		// don't think the code ever cared what was or wasn't allowed but whatever..
 		stack_trace("shuttle failed to move to transit. this is not allowed.")
 

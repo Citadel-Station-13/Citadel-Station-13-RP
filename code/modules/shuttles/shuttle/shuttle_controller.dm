@@ -501,24 +501,6 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	transit_cycle?.terminate()
 
-#warn below
-
-/datum/shuttle_controller/proc/transit_towards_dock(obj/shuttle_dock/dock, time = default_transit_time_for_dock(dock), obj/shuttle_port/align_with_port, centered, direction, list/datum/callback/on_transit_callbacks)
-	// obtain exclusive lock on dock
-	if(dock.inbound)
-		return FALSE
-	dock.inbound = src
-	// jump into transit
-	shuttle.move_to_transit()
-
-	// register timers
-	transit_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_transit)), time, TIMER_STOPPABLE)
-	transit_visual_timer_id = addtimer(CALLBACK(src, PROC_REF(make_transit_warning_visuals)), max(0, time - 4.9 SECONDS), TIMER_STOPPABLE)
-	on_transit_begin(transit_target_dock, redirected)
-	return TRUE
-
-#warn above
-
 //* Transit - Hooks *//
 
 /**

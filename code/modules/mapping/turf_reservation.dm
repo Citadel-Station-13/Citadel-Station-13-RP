@@ -22,8 +22,6 @@
 	var/top_right_coords
 	/// type of our turf - null for default
 	var/turf_type
-	/// type of our border - null to default to turf_type
-	var/border_type
 	/// type of our area - null for default
 	var/area_type
 
@@ -43,6 +41,12 @@
 		bottom_left_coords[2] + floor(top_right_coords[2] - bottom_left_coords[2]),
 		bottom_left_coords[3],
 	)
+
+/datum/turf_reservation/proc/is_atom_inside(atom/A)
+	A = get_turf(A)
+	return A.z == bottom_left_coords[3] && \
+		A.x >= bottom_left_coords[1] && A.x <= top_right_coords[1] && \
+		A.y >= bottom_left_coords[2] && A.y <= top_right_coords[2]
 
 /datum/turf_reservation/proc/release()
 	SSmapping.reserve_turfs(reserved_turfs)

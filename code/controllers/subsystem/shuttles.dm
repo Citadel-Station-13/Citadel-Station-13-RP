@@ -146,5 +146,10 @@ SUBSYSTEM_DEF(shuttle)
 /**
  * sets in_transit_reservation and in_transit_dock and in_transit for a shuttle
  */
-/datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(datum/shuttle/shuttle)
+/datum/controller/subsystem/shuttle/proc/prepare_transit(datum/shuttle/shuttle)
+	// * hardcoded values *//
+	// bit above widescreen vision range
+	var/border_size = 10
+	// bit more space so you can walk out without getting deleted
+	var/interior_padding = 10
 	#warn what the fuck

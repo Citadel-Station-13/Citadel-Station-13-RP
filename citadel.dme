@@ -4609,6 +4609,7 @@
 #include "code\modules\shieldgen\shield_generator.dm"
 #include "code\modules\shieldgen\shield_modes.dm"
 #include "code\modules\shuttles\shuttle_hook.dm"
+#include "code\modules\shuttles\transit_reservation.dm"
 #include "code\modules\shuttles\dock\shuttle_dock.dm"
 #include "code\modules\shuttles\dock\shuttle_dock_corner.dm"
 #include "code\modules\shuttles\dock\subtypes\ephemeral.dm"
