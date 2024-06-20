@@ -238,14 +238,31 @@ Pipelines + Other Objects -> Pipe network
 	// pixel_y = PIPE_PIXEL_OFFSET_Y(piping_layer)
 	// layer = initial(layer) + PIPE_LAYER_OFFSET(piping_layer)
 
+/obj/machinery/atmospherics/proc/get_standard_layer(underfloor)
+	if(underfloor)
+		switch(piping_layer)
+			if(PIPING_LAYER_SCRUBBER)
+				return PIPES_SCRUBBER_LAYER
+			if(PIPING_LAYER_SUPPLY)
+				return PIPES_SUPPLY_LAYER
+			if(PIPING_LAYER_FUEL)
+				return PIPES_FUEL_LAYER
+			if(PIPING_LAYER_AUX)
+				return PIPES_AUX_LAYER
+			else
+				return PIPE_LAYER
+	else
+		return EXPOSED_PIPE_LAYER
+
+/obj/machinery/atmospherics/reset_plane_and_layer()
+	set_plane(TURF_PLANE)
+	set_base_layer(get_standard_layer())
+
 /obj/machinery/atmospherics/update_hiding_underfloor(new_value)
 	. = ..()
 	if(!.)
 		return
-	if(new_value)
-		layer = PIPE_LAYER
-	else
-		reset_plane_and_layer()
+	reset_plane_and_layer()
 	if(hides_underfloor_underlays)
 		update_underlays()
 

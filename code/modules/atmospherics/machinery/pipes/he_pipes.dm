@@ -34,6 +34,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/get_init_dirs()
 	return ..() | initialize_directions_he
 
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/get_standard_layer(underfloor)
+	return PIPES_HE_LAYER
+
 // Use initialize_directions_he to connect to neighbors instead.
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/can_be_node(var/obj/machinery/atmospherics/pipe/simple/heat_exchanging/target)
 	if(!istype(target))
