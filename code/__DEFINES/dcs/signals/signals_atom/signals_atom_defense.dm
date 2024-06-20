@@ -2,3 +2,4 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 // todo: this file left intentionally empty since shieldcalls were moved to datums
+// todo: add signals for integrity
