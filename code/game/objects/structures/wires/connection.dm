@@ -15,7 +15,7 @@
 	var/datum/host
 	/// connected wire.
 	var/obj/structure/wire/joint
-	/// automatic handling of attach/detach/discovery. VERY EXPENSIVE, avoid using.
+	/// automatic handling of attach/detach/discovery. somewhat expensive, avoid using.
 	var/automatic = FALSE
 
 /datum/wirenet_connection/New(datum/host)

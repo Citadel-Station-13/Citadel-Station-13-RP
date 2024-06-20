@@ -10,3 +10,5 @@ DEFINE_SHARED_BITFIELD(powernet_status, list(
 	BITFIELD(POWERNET_STATUS_SURGE_DRAIN),
 	BITFIELD(POWERNET_STATUS_SURGE_FAULT),
 ))
+
+#warn how to handle status

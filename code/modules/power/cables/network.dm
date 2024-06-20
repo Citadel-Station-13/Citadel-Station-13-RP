@@ -21,6 +21,8 @@ GLOBAL_LIST_EMPTY(powernets)
  * all variables are in **kilowatts** unless otherwise stated.
  */
 /datum/wirenet/power
+	#warn how to handle status
+
 	//* next tick
 	/// available power in network accumulated for the next tick
 	var/accumulated = 0
@@ -38,8 +40,6 @@ GLOBAL_LIST_EMPTY(powernets)
 	var/dynamic_load = EMPTY_POWER_BALANCING_LIST
 	/// calculated utilization allowed for a given load balancing tier
 	var/dynamic_factor = EMPTY_POWER_BALANCING_LIST
-	/// status flags
-	var/powernet_status = NONE
 
 	//* last tick
 	/// last load - used for viewing
@@ -55,8 +55,6 @@ GLOBAL_LIST_EMPTY(powernets)
 	/// e.g. 0.3 = 30% of power last tick was not consumed, and so a SMES outputting a balanced 1MW can take back 300KW of it.
 	/// *this can be negative*
 	var/last_excess_ratio = 0
-	/// status flags
-	var/last_powernet_status = NONE
 
 /datum/wirenet/power/New()
 	..()
@@ -99,8 +97,6 @@ GLOBAL_LIST_EMPTY(powernets)
 
 	last_excess = supply - load
 	last_excess_ratio = last_excess / supply
-
-	last_powernet_status = powernet_status
 
 	var/last_nonflat_available = last_supply - last_flat_load
 	if(last_nonflat_available <= 0)
