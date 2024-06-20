@@ -193,6 +193,12 @@ h1.alert, h2.alert		{color: #000000;}
 .clown					{color: #FF69Bf;	font-size: 3;	font-family: "Comic Sans MS", cursive, sans-serif;	font-weight: bold;}
 .singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
 .his_grace				{color: #15D512;	font-family: "Courier New", cursive, sans-serif;	font-style: italic;}
+.votenotification 		{color: #490049;	font-size: 3; 	font-weight: bold;		animation: votenotification 3000ms infinite;	}
+	@keyframes votenotification {
+		0% 		{color: #490049;}
+		50% 	{color: #ff00ff;}
+		100% 	{color: #490049;}
+}
 .hypnophrase			{color: #3bb5d3;	font-weight: bold;	animation: hypnocolor 1500ms infinite; animation-direction: alternate;}
 	@keyframes hypnocolor {
 		0%		{color: #0d0d0d;}

@@ -31,7 +31,7 @@
 
 				if(flash_strength > 0)
 					H.Confuse(flash_strength + 5)
-					H.Blind(flash_strength)
+					H.apply_status_effect(/datum/status_effect/sight/blindness, flash_strength SECONDS)
 					H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 					H.adjustHalLoss(22 * (flash_strength / 5)) // Five flashes to stun.  Bit weaker than melee flashes due to being ranged.
 

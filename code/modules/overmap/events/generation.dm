@@ -78,3 +78,11 @@
 	radius = 3
 	continuous = FALSE
 	hazards = /obj/overmap/tiled/hazard/pirate
+
+/datum/overmap_event/fluff_body
+	name = "Fluff Body"
+	count = 1
+	radius = 1
+	continuous = FALSE
+	hazards = /obj/random/fluff_body
+

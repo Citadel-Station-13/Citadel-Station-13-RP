@@ -17,6 +17,8 @@
 	name_language = null
 	intrinsic_languages = LANGUAGE_ID_BIRDSONG
 
+	vision_organ = O_EYES
+
 	color_mult = 1
 	max_age = 80
 

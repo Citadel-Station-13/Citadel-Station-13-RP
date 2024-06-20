@@ -72,6 +72,7 @@
 		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
 		O_FACT = /obj/item/organ/internal/nano/refactory
 		)
+	vision_organ = O_BRAIN
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/nano),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/nano),

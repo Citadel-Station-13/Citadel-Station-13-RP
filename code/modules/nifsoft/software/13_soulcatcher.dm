@@ -407,11 +407,11 @@
 
 	//If they're blinded
 	if(ext_blind)
-		eye_blind = 5
+		apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 		client.screen.Remove(GLOB.global_hud.whitense)
 		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 	else
-		eye_blind = 0
+		remove_status_effect(/datum/status_effect/sight/blindness)
 		clear_fullscreen("blind")
 		client.screen.Add(GLOB.global_hud.whitense)
 
