@@ -32,4 +32,5 @@ GLOBAL_LIST_EMPTY(escape_pod_controllers)
 
 	// todo: better escape pod behavior
 	// immediate move to transit as we wait for round-end.
-	shuttle.move_to_transit()
+	shuttle.prepare_transit()
+	shuttle.dock(shuttle.transit_reservation.transit_dock, centered = TRUE)

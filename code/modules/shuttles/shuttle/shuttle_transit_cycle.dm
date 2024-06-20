@@ -44,7 +44,7 @@
 	/// how long to spend spooling up / taking off
 	///
 	/// * takeoff can be aborted during this
-	/// * landing can be aboted during this
+	/// * landing can be aborted during this
 	/// * time needed to jump out of source, basically
 	var/jump_duration = 4 SECONDS
 	/// the timeout allowed by docking / undocking
@@ -156,11 +156,9 @@
 	src.traversal_flags_target = new_flags
 
 /datum/shuttle_transit_cycle/proc/set_transit_duration(new_duration)
-	#warn handle mid-transit
 	src.transit_duration = new_duration
 
 /datum/shuttle_transit_cycle/proc/set_jump_duration(new_duration)
-	#warn handle mid-jump
 	src.jump_duration = new_duration
 
 /datum/shuttle_transit_cycle/proc/set_dock_timeout(new_timeout)
@@ -317,7 +315,7 @@
 	if(target_dock?.inbound == src)
 		target_dock.inbound = null
 
-	#warn handlers for transit teardown
+	// cleanup transit if it's there
 	shuttle.teardown_transit()
 
 /datum/shuttle_transit_cycle/proc/why_isnt_this_a_subsystem()
@@ -329,8 +327,12 @@
 		terminate()
 		CRASH("tried to enter loop without cycle status being idle")
 
+	// prep state vars
+	var/stage_begin_time
+
 	// undock
 	stage = SHUTTLE_TRANSIT_STAGE_UNDOCK
+	stage_begin_time = world.time
 
 	controller.synchronously_undock(
 		transit_flags & SHUTTLE_TRANSIT_FLAG_NO_ABORT,
@@ -340,30 +342,58 @@
 
 	// takeoff
 	stage = SHUTTLE_TRANSIT_STAGE_TAKEOFF
+	stage_begin_time = world.time
 
+	// fire departing event
 	var/datum/event_args/shuttle/dock/departing/departing_event = new
-	departing_event.initialize(shuttle, shuttle.dock, shuttle.docked_via_port)
+	departing_event.initialize(shuttle, shuttle.docked, shuttle.docked_via_port)
 	departing_event.begin(traversal_timeout)
+	shuttle.fire_docking_hooks(departing_event)
+	shuttle.docked.fire_docking_hooks(departing_event)
 
+	// wait
+	UNTIL(!departing_event.is_blocked() || (world.time > stage_begin_time + traversal_timeout))
 
-	var/datum/event_args/shuttle/dock/departed/departed_event = new
-	departing_event.initialize(shuttle, shuttle.dock, shuttle.docked_via_port)
-	shuttle.fire_docking_hooks(departed_event)
-	shuttle.dock.fire_docking_hooks(departed_event)
+	// are we still blocked?
+	if(departing_event.is_blocked())
+	else
+		// go
+		var/datum/event_args/shuttle/dock/departed/departed_event = new
+		departing_event.initialize(shuttle, shuttle.docked, shuttle.docked_via_port)
+		shuttle.fire_docking_hooks(departed_event)
+		shuttle.docked.fire_docking_hooks(departed_event)
 
+	#warn handle non-successful
 
-	// transit
-	stage = SHUTTLE_TRANSIT_STAGE_FLIGHT
-
+	// prep transit
 	if(!shuttle.prepare_transit())
 		message_admins("shuttle failed prepare_transit(); this is undefined behavior")
 		// don't think the code ever cared what was or wasn't allowed but whatever..
 		stack_trace("shuttle failed to move to transit. this is not allowed.")
+		terminate(SHUTTLE_TRANSIT_STATUS_FAILED)
+		return
+	// make sure we're still going
+	if(finished)
+		return
+	// jump to transit
+	if(!shuttle.dock(shuttle.transit_reservation.transit_dock, centered = TRUE))
+		message_admins("shuttle failed to dock() to transit dock. this is undefined behavior")
+		stack_trace("shuttle failed to jump to transit dock")
+		terminate(SHUTTLE_TRANSIT_STATUS_FAILED)
+		return
 
-	#warn impl all
+	// transit
+	stage = SHUTTLE_TRANSIT_STAGE_FLIGHT
+	stage_begin_time = world.time
+
+	// wait here
+	UNTIL(finished || (world.time >= (stage_begin_time + (transit_duration - jump_duration))))
 
 	// land
 	stage = SHUTTLE_TRANSIT_STAGE_LANDING
+	stage_begin_time = world.time
+
+
 
 	var/successful_docking = shuttle.dock(
 		target_dock,
@@ -376,6 +406,7 @@
 
 	// dock
 	stage = SHUTTLE_TRANSIT_STAGE_DOCK
+	stage_begin_time = world.time
 
 	controller.synchronously_dock(
 		transit_flags & SHUTTLE_TRANSIT_FLAG_NO_ABORT,

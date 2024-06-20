@@ -41,6 +41,8 @@
 	var/finished = FALSE
 
 	/// timeout set on us
+	///
+	/// * this isn't actually enforced on our side; it's enforced on the shuttle controller's side.
 	var/timeout_duration
 	/// world.time we will time out on
 	var/timeout_at
@@ -65,6 +67,9 @@
 		return
 	forcing = TRUE
 	#warn impl
+
+/datum/event_args/shuttle/proc/is_blocked()
+	return blockable && length(waiting_on_hooks)
 
 /**
  * implies [force()]

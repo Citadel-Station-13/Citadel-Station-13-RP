@@ -187,10 +187,7 @@
 	if(!SSsupply)
 		log_world("## ERROR: The supply_controller datum is missing.")
 		return
-	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
-	if (!shuttle)
-		log_world("## ERROR: The supply shuttle datum is missing.")
-		return
+	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 	if(..())
 		return 1
 
@@ -387,14 +384,18 @@
 
 	switch(href_list["send_shuttle"])
 		if("send_away")
-			if (shuttle.forbidden_atoms_check())
+			if(legacy_supply_forbidden_atoms_check(controller.shuttle))
 				to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons.</span>")
 			else
-				shuttle.launch(src)
+				if(controller.get_transit_stage() || !controller.is_at_away())
+					return
+				controller.transit_towards_home()
 				to_chat(usr, "<span class='notice'>Initiating launch sequence.</span>")
 
 		if("send_to_station")
-			shuttle.launch(src)
+			if(controller.get_transit_stage() || !controller.is_at_home())
+				return
+			controller.transit_towards_away()
 			to_chat(usr, "<span class='notice'>The supply shuttle has been called and will arrive in approximately [round(SSsupply.movetime/600,1)] minutes.</span>")
 
 		if("cancel_shuttle")

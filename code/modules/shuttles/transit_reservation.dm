@@ -29,6 +29,12 @@
 
 	return TRUE
 
+/**
+ * transit docks
+ *
+ * * we do not receive shuttle events, as we're considered an ephemeral / otherwise not a useful dock
+ * * /obj/shuttle_dock/freeflight docks do receive shuttle events.
+ */
 /obj/shuttle_dock/transit
 	centered_landing_allowed = TRUE
 	centered_landing_only = TRUE

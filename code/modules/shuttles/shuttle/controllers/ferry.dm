@@ -50,6 +50,9 @@
 /datum/shuttle_controller/ferry/proc/is_at_known_location()
 	return is_at_home() || is_at_away()
 
+/**
+ * on_transit_callbacks must be a named argument!
+ */
 /datum/shuttle_controller/ferry/proc/transit_towards_home(time, list/datum/callback/on_transit_callbacks)
 	return transit_towards_dock(
 		SSshuttle.resolve_dock(dock_home_id),
@@ -57,6 +60,9 @@
 		on_transit_callbacks = on_transit_callbacks,
 	)
 
+/**
+ * on_transit_callbacks must be a named argument!
+ */
 /datum/shuttle_controller/ferry/proc/transit_towards_away(time, list/datum/callback/on_transit_callbacks)
 	return transit_towards_dock(
 		SSshuttle.resolve_dock(dock_away_id),
