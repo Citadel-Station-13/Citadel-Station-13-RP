@@ -28,12 +28,10 @@
 	src.grid_width = grid.width
 
 /datum/component/spatial_grid/RegisterWithParent()
-	. = ..()
 	construct()
 
 /datum/component/spatial_grid/UnregisterFromParent()
 	teardown()
-	return ..()
 
 /datum/component/spatial_grid/CheckDupeComponent(datum/component/C, datum/spatial_grid/grid)
 	return grid != src.grid

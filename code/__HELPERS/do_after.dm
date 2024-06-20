@@ -56,6 +56,8 @@
 
 	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
+#warn cm-style indicators when someone's doing something
+
 /**
  * Does an action after a delay.
  *

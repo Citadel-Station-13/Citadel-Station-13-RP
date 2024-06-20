@@ -12,6 +12,10 @@ SUBSYSTEM_DEF(spatial_grids)
 
 	/// /living mobs. they don't have to be alive, just a subtype of /living.
 	var/datum/spatial_grid/living
+	/// laser designator tracks
+	var/datum/spatial_grid/laser_designations
+	/// signal flares
+	var/datum/spatial_grid/signal_flares
 
 /datum/controller/subsystem/spatial_grids/Initialize()
 	make_grids()
@@ -19,12 +23,18 @@ SUBSYSTEM_DEF(spatial_grids)
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
 	living = new /datum/spatial_grid(/mob/living, 16)
+	laser_designations = new /datum/spatial_grid(/atom, 16)
+	signal_flares = new /datum/spatial_grid(/obj/item/signal_flare, 16)
 
 /datum/controller/subsystem/spatial_grids/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
 	if(!initialized)
 		return
 	living.sync_world_z(new_z_count)
+	laser_designations.sync_world_z(new_z_count)
+	signal_flares.sync_world_z(new_z_count)
+
+#warn var/optimized_get_all for registering everything in a list
 
 /**
  * index = ceil(x / resolution) + width * ceil(y / resolution)
