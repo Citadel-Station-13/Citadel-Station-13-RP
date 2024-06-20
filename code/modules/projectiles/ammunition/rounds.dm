@@ -530,7 +530,7 @@
 	desc = "Should you really be holding this?"
 	caliber = "phoron shrapnel"
 	icon_state = "phoronshrap"
-	projectile_type = /obj/projectile/bullet/incendiary/caseless
+	projectile_type = /obj/projectile/bullet/incendiary/phoronshrap
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/rocket
