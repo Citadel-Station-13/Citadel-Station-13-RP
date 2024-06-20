@@ -449,7 +449,7 @@
 						break
 		R.obj_storage.ui_queue_refresh()
 		if(replaced)
-			playsound(R, R.part_replacement_sound, 50, TRUE)
+			playsound(src.loc, R.part_replacement_sound, 50, TRUE)
 		update_appearance()
 		RefreshParts()
 
