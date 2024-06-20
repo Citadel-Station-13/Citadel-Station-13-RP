@@ -81,7 +81,7 @@
 	desc = "A remote control switch for polarized windows and doors."
 
 /obj/machinery/button/windowtint/multitint/toggle_tint()
-	use_power(5)
+	use_burst_power(5)
 	active = !active
 	update_icon()
 

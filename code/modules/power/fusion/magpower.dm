@@ -1,6 +1,8 @@
 #define ENERGY_KW_PER_K 20
 #define MINIMUM_PLASMA_TEMPERATURE 10000
 
+// todo: rework
+
 /obj/machinery/power/hydromagnetic_trap
 	name = "\improper hydromagnetic trap"
 	desc = "A device for extracting power from high-energy plasma in toroidal fields."

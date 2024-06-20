@@ -211,7 +211,7 @@
 
 	if (power_current >= 0)
 		last_power_draw_legacy = power_current
-		use_power(power_current)
+		use_burst_power(power_current)
 
 	if(network)
 		network.update = 1

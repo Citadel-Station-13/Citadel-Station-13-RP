@@ -37,9 +37,9 @@
 
 /obj/machinery/ntnet_relay/process(delta_time)
 	if(operable())
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 	else
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 
 	if(dos_overload)
 		dos_overload = max(0, dos_overload - dos_dissipate)

@@ -13,7 +13,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm, 21)
 	use_power = TRUE
 	idle_power_usage = 2
 	active_power_usage = 6
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	panel_open = FALSE
 	circuit = /obj/item/circuitboard/firealarm
 	var/detecting = TRUE

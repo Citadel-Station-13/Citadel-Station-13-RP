@@ -88,10 +88,12 @@
 
 /obj/item/stack/examine(mob/user, dist)
 	. = ..()
-	if(!uses_charge)
-		. += "There are [amount] [singular_name]\s in the stack."
-	else
-		. += "There is enough charge for [get_amount()]."
+	. += examine_stack(user, dist)
+
+/obj/item/stack/proc/examine_stack(mob/user, dist)
+	return list(
+		uses_charge? "There is enough charge for [get_amount()]." : "There are [amount] [singular_name]\s in the stack."
+	)
 
 /**
  * Get the explicit recipes of this stack type
@@ -164,6 +166,7 @@
 		return FALSE
 	log_stackcrafting(user, src, recipe.name, make_amount, needed, where)
 	use(needed)
+	return TRUE
 
 /**
  * Return 1 if an immediate subsequent call to use() would succeed.

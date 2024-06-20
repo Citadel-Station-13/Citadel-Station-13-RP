@@ -36,7 +36,7 @@
 		add_hiddenprint(user)
 		if(powered())
 			to_chat(user, "You toggle the power to the [src] [on ? "Off" : "On"].")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			on = !on
 			update_icon()
 		else
@@ -140,8 +140,8 @@
 	var/power_draw = pump_heat(target_temp, air1, air2, power_rating)
 
 	if (power_draw >= 0)
+		use_burst_power(power_draw)
 		last_power_draw_legacy = power_draw
-		use_power(power_draw)
 		if(network1)
 			network1.update = 1
 		if(network2)

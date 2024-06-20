@@ -175,7 +175,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
-		use_power(power_draw)
+		use_burst_power(power_draw)
 		if(network)
 			network.update = 1
 
@@ -445,7 +445,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume
 	name = "Large Air Vent"
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	power_rating = 45000
 
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux
@@ -470,7 +470,7 @@
 
 /obj/machinery/atmospherics/component/unary/vent_pump/engine
 	name = "Engine Core Vent"
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	power_rating = 30000	//15 kW ~ 20 HP
 
 /obj/machinery/atmospherics/component/unary/vent_pump/engine/Initialize(mapload)

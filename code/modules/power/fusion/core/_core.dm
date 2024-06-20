@@ -68,7 +68,7 @@ var/list/fusion_cores = list()
 	owned_field = new(loc, src)
 	owned_field.ChangeFieldStrength(field_strength)
 	icon_state = "core1"
-	update_use_power(USE_POWER_ACTIVE)
+	set_use_power(USE_POWER_ACTIVE)
 	. = 1
 
 /obj/machinery/power/fusion_core/proc/Shutdown(var/force_rupture)
@@ -80,7 +80,7 @@ var/list/fusion_cores = list()
 			owned_field.RadiateAll()
 		qdel(owned_field)
 		owned_field = null
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 
 /obj/machinery/power/fusion_core/proc/AddParticles(var/name, var/quantity = 1)
 	if(owned_field)

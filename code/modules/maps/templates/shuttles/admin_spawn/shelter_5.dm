@@ -11,7 +11,7 @@
 /area/shuttle/deployable/escapepod
 	name = "\improper Escape Pod"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 
 // The shuttle's 'shuttle' computer
 /obj/machinery/computer/shuttle_control/explore/escapepod

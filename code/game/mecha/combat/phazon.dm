@@ -55,7 +55,7 @@
 				can_phase = FALSE
 				flick("[initial_icon]-phase", src)
 				src.loc = get_step(src,src.dir)
-				src.use_power(phasing_energy_drain)
+				src.use_burst_power(phasing_energy_drain)
 				sleep(step_in*3)
 				can_phase = TRUE
 	else

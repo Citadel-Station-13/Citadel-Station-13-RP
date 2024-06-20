@@ -1,4 +1,10 @@
 
+/area/overmap
+	name = "System Map"
+	icon_state = "start"
+	area_power_override = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+
 /turf/overmap
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"

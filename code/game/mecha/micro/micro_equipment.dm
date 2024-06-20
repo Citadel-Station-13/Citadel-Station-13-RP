@@ -117,7 +117,7 @@
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
 	occupant_message("<span class='danger'>You start to drill [target]</span>")
 	var/T = chassis.loc
@@ -167,7 +167,7 @@
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	chassis.visible_message("<span class='info'>[chassis] sweeps around with its ore scoop.</span>")
 	occupant_message("<span class='info'>You sweep around the area with the scoop.</span>")
 	var/T = chassis.loc

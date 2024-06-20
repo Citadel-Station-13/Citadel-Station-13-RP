@@ -1088,7 +1088,7 @@
  * TODO - Fix this ancient list of wall items. Preferably make it dynamically populated. ~Leshana
 */
 var/list/WALLITEMS = list(
-	/obj/machinery/power/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
+	/obj/machinery/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
 	/obj/machinery/newscaster, /obj/machinery/fire_alarm, /obj/structure/noticeboard, /obj/machinery/button/remote,

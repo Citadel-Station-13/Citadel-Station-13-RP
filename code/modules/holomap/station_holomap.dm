@@ -120,10 +120,10 @@
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
+			set_use_power(USE_POWER_ACTIVE)
 			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, PROC_REF(checkPosition))
 			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, PROC_REF(checkPosition))
 			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, PROC_REF(stopWatching))
-			update_use_power(USE_POWER_ACTIVE)
 
 			if(bogus)
 				to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")
@@ -153,7 +153,7 @@
 		UnregisterSignal(watching_mob, COMSIG_MOVABLE_MOVED)
 		UnregisterSignal(watching_mob, COMSIG_PARENT_QDELETING)
 	watching_mob = null
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 
 /obj/machinery/station_map/power_change()
 	. = ..()

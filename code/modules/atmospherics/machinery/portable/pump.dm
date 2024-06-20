@@ -223,9 +223,7 @@
 		last_flow_rate_legacy = 0
 		last_power_draw_legacy = 0
 		update_icon()
-	var/new_use_power = 1 + on
-	if(new_use_power != use_power)
-		update_use_power(new_use_power)
+	set_use_power(on? USE_POWER_ACTIVE : USE_POWER_IDLE)
 	if(!on)
 		return
 
@@ -257,7 +255,7 @@
 		last_flow_rate_legacy = 0
 		last_power_draw_legacy = 0
 	else
-		use_power(power_draw)
+		use_burst_power(power_draw)
 		update_connected_network()
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/attackby(var/obj/item/I, var/mob/user)

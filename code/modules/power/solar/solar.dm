@@ -26,7 +26,6 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar/Initialize(mapload)
 	. = ..()
-	connect_to_network()
 	update_icon()
 
 /obj/machinery/power/solar/Destroy()
@@ -111,13 +110,12 @@ GLOBAL_LIST_EMPTY(solars_list)
 	if(!sunfrac) //Not getting any sun, so why process
 		return
 
-	if(powernet)
-		if(powernet == control.powernet)//check if the panel is still connected to the computer
-			var/sgen = GLOB.solar_gen_rate * sunfrac
-			add_avail(sgen * 0.001)
-			control.gen += sgen
-		else //if we're no longer on the same powernet, remove from control computer
-			unset_control()
+	var/sgen = GLOB.solar_gen_rate * sunfrac
+	supply(sgen * 0.001)
+	control.gen += sgen
+	if(powernet == control.powernet)//check if the panel is still connected to the computer
+	else //if we're no longer on the same powernet, remove from control computer
+		unset_control()
 
 /obj/machinery/power/solar/atom_break()
 	. = ..()

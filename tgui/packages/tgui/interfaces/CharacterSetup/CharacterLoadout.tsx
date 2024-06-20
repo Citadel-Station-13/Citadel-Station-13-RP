@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { Component } from "inferno";
 import { useLocalState } from "../../backend";
 import { Box, Button, Collapsible, Dropdown, Input, Stack, Tabs } from "../../components";

@@ -43,10 +43,7 @@
 		if(active_for <= 0)
 			active_for = 0
 			scan_for_collectors(0)
-	if(powernet)
-		if(power_total > 0)
-			add_avail(power_total/power_factor)
-
+	supply(power_total / power_factor)
 
 /obj/machinery/power/geothermal_controller/update_icon_state()
 	switch(power_total)
@@ -62,7 +59,6 @@
 			icon_state = "controller_idle"
 	return ..()
 
-
 /obj/machinery/power/geothermal_controller/proc/scan_for_collectors(var/ran)
 	power_total = 0
 	for (var/obj/machinery/power/geothermal_collector/col in range(ran, src))
@@ -74,10 +70,10 @@
 /obj/machinery/power/geothermal_controller/attackby(obj/item/W, mob/user)
 	if(scanner && istype(scanner))
 		if(W.is_multitool())
-			//update_use_power(USE_POWER_IDLE)
+			//set_use_power(USE_POWER_IDLE)
 			to_chat(user, "The [scanner] allows the Controller to gather [power_total/power_factor] kW from Collectors up to [scanner.range] meters away.")
 		if(W.is_screwdriver())
-			update_use_power(USE_POWER_OFF)
+			set_use_power(USE_POWER_OFF)
 			to_chat(user, "You remove the [scanner] from [src]")
 			scanner.forceMove(src.loc)
 			scanner = null

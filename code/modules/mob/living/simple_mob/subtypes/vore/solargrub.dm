@@ -57,8 +57,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	var/poison_per_bite = 5 //grubs cause a shock when they bite someone
 	var/poison_type = "shockchem"
 	var/poison_chance = 50
-	var/datum/powernet/PN            // Our powernet
-	var/obj/structure/cable/attached        // the attached cable
+	var/datum/wirenet/power/PN            // Our powernet
+	var/obj/structure/wire/cable/attached        // the attached cable
 	var/shock_chance = 10 // Beware
 
 	// kw drain
@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 					sparks.start()
 				anchored = 1
 				PN = attached.powernet
-				PN.draw_power(power_drain)
+				PN.flat_draw(power_drain)
 				charge += power_drain
 				for(var/obj/machinery/power/terminal/T in PN.nodes)
 					if(istype(T.master, /obj/machinery/power/apc))

@@ -1,25 +1,145 @@
-//////////////////////////////
-// POWER MACHINERY BASE CLASS
-//////////////////////////////
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
-/////////////////////////////
-// Definitions
-/////////////////////////////
-
+/**
+ * these machines intrinsically have auto-linking powernet connections
+ *
+ * you can further customize them with when/where their powernet connections should try to attach to turf.
+ */
 /obj/machinery/power
-	name = null
 	icon = 'icons/obj/power.dmi'
-	anchored = 1.0
-	var/datum/powernet/powernet = null
+	anchored = TRUE
 	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	active_power_usage = 0
 
-/obj/machinery/power/Destroy()
-	disconnect_from_network()
-	disconnect_terminal()
+	/// our powernet connection
+	var/datum/wirenet_connection/power/connection
+	/// connect while unanchored?
+	var/connection_requires_anchored = TRUE
+	#warn handling
 
+/obj/machinery/power/Initialize(mapload)
+	connection = new(src)
+	auto_connect()
 	return ..()
+
+/obj/machinery/power/Destroy()
+	disconnect()
+	QDEL_NULL(connection)
+	return ..()
+
+/obj/machinery/power/proc/should_connect()
+	return !connection_requires_anchored || anchored
+
+/obj/machinery/power/set_anchored(anchorvalue)
+	. = ..()
+	auto_connect()
+
+/obj/machinery/power/proc/auto_connect()
+	#warn impl
+
+/obj/machinery/power/proc/disconnect()
+	#warn impl
+
+/obj/machinery/power/proc/connect()
+	#warn impl
+
+/obj/machinery/power/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	auto_connect()
+
+/obj/machinery/power/proc/is_connected()
+	return connection.is_connected()
+
+/obj/machinery/power/proc/supply(amount)
+	connection.network?.supply(amount)
+
+/**
+ * high priority non load balanced draw
+ *
+ * @params
+ * * amount - amount in kw
+ *
+ * @return kw's successfully drawn
+ */
+/obj/machinery/power/proc/flat_draw(amount)
+	if(isnull(connection.network))
+		return 0
+	return connection.network.flat_draw(amount)
+
+/**
+ * dynamic priority load balanced draw
+ *
+ * @params
+ * * amount - amount in kw
+ * * tier - load balancing tier
+ *
+ * @return kw's successfully drawn
+ */
+/obj/machinery/power/proc/dynamic_draw(amount, tier)
+	if(isnull(connection.network))
+		return 0
+	return connection.network.dynamic_draw(amount, tier)
+
+/**
+ * returns everything on the same powernet
+ */
+/obj/machinery/power/proc/directly_connected_hosts()
+	return isnull(connection.network)? list() : connection.network.get_hosts()
+
+/**
+ * get available power on network at start of last cycle
+ *
+ * this is including already used power! e.g. 1MW available with 900KW used is still 1MW. You need get_powernet_surplus() for the 100kw.
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless we have atleast that.
+ */
+/obj/machinery/power/proc/get_powernet_supply(kw)
+	#warn impl
+
+/**
+ * get surplus power on network at end of last cycle
+ *
+ * this is not including already used power.
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless we have atleast that.
+ */
+/obj/machinery/power/proc/get_powernet_surplus(kw)
+	#warn impl
+
+/**
+ * get total draw on network at end of last cycle
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
+ */
+/obj/machinery/power/proc/get_powernet_load_overall(kw)
+	#warn impl
+
+/**
+ * get tier draw on network at end of last cycle
+ *
+ * @params
+ * * tier - the tier we're checking
+ * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
+ */
+/obj/machinery/power/proc/get_powernet_load_tier(tier, kw)
+	#warn impl
+
+/**
+ * get flat draw on network at end of last cycle
+ *
+ * @params
+ * * kw - kilowatts needed; if specified, this returns 0 unless the network is under atleast that amount of load.
+ */
+/obj/machinery/power/proc/get_powernet_load_flat(kw)
+	#warn impl
+
+
+#warn below
 
 ///////////////////////////////
 // General procedures
@@ -34,72 +154,6 @@
 /obj/machinery/power/can_drain_energy(datum/actor, amount)
 	return TRUE
 
-/**
- * amount is in KW, NOT W
- */
-/obj/machinery/power/proc/add_avail(amount)
-	if(powernet)
-		powernet.newavail += amount
-
-/**
- * amount is in KW, NOT W
- */
-/obj/machinery/power/proc/draw_power(amount)
-	if(powernet)
-		return powernet.draw_power(amount)
-	return 0
-
-/**
- * amount is in KW, NOT W
- *
- * include amount to turn this into a boolean check.
- */
-/obj/machinery/power/proc/surplus(amount)
-	if(!powernet)
-		return 0
-	. = powernet.avail - powernet.load
-	if(!isnull(amount))
-		. = . >= amount
-
-/**
- * amount is in KW, NOT W
- *
- * include amount to turn this into a boolean check.
- */
-/obj/machinery/power/proc/avail(amount)
-	return isnull(amount)? (powernet?.avail || 0) : (powernet?.avail >= amount)
-
-/**
- * amount is in KW, NOT W
- */
-/obj/machinery/power/proc/viewload()
-	if(powernet)
-		return powernet.viewload
-	else
-		return 0
-
-/obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no fowl.
-	return
-
-// connect the machine to a powernet if a node cable is present on the turf
-/obj/machinery/power/proc/connect_to_network()
-	var/turf/T = src.loc
-	if(!T || !istype(T))
-		return 0
-
-	var/obj/structure/cable/C = T.get_cable_node() //check if we have a node cable on the machine turf, the first found is picked
-	if(!C || !C.powernet)
-		return 0
-
-	C.powernet.add_machine(src)
-	return 1
-
-// remove and disconnect the machine from its current powernet
-/obj/machinery/power/proc/disconnect_from_network()
-	if(!powernet)
-		return 0
-	powernet.remove_machine(src)
-	return 1
 
 // attach a wire to a power machine - leads from the turf you are standing on
 //almost never called, overwritten by all power machines but terminal and generator
@@ -121,15 +175,6 @@
 		return
 	else
 		..()
-	return
-
-// Power machinery should also connect/disconnect from the network.
-/obj/machinery/power/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 20)
-	if((. = ..()))
-		if(anchored)
-			connect_to_network()
-		else
-			disconnect_from_network()
 
 // Used for power spikes by the engine, has specific effects on different machines.
 /obj/machinery/power/proc/overload(var/obj/machinery/power/source)
@@ -163,33 +208,6 @@
 			if(C.powernet)	continue
 			if(C.d1 == cdir || C.d2 == cdir)
 				. += C
-	return .
-
-//returns all the cables in neighbors turfs,
-//pointing towards the turf the machine is located at
-/obj/machinery/power/proc/get_marked_connections()
-
-	. = list()
-
-	var/cdir
-	var/turf/T
-
-	for(var/card in GLOB.cardinal)
-		T = get_step(loc,card)
-		cdir = get_dir(T,loc)
-
-		for(var/obj/structure/cable/C in T)
-			if(C.d1 == cdir || C.d2 == cdir)
-				. += C
-	return .
-
-//returns all the NODES (O-X) cables WITHOUT a powernet in the turf the machine is located at
-/obj/machinery/power/proc/get_indirect_connections()
-	. = list()
-	for(var/obj/structure/cable/C in loc)
-		if(C.powernet)	continue
-		if(C.d1 == 0) // the cable is a node cable
-			. += C
 	return .
 
 ///////////////////////////////////////////
@@ -255,33 +273,6 @@
 		if(!PM.connect_to_network()) //couldn't find a node on its turf...
 			PM.disconnect_from_network() //... so disconnect if already on a powernet
 
-
-//Merge two powernets, the bigger (in cable length term) absorbing the other
-/proc/merge_powernets(var/datum/powernet/net1, var/datum/powernet/net2)
-	if(!net1 || !net2) //if one of the powernet doesn't exist, return
-		return
-
-	if(net1 == net2) //don't merge same powernets
-		return
-
-	//We assume net1 is larger. If net2 is in fact larger we are just going to make them switch places to reduce on code.
-	if(net1.cables.len < net2.cables.len)	//net2 is larger than net1. Let's switch them around
-		var/temp = net1
-		net1 = net2
-		net2 = temp
-
-	//merge net2 into net1
-	for(var/obj/structure/cable/Cable in net2.cables) //merge cables
-		net1.add_cable(Cable)
-
-	if(!net2) return net1
-
-	for(var/obj/machinery/power/Node in net2.nodes) //merge power machines
-		if(!Node.connect_to_network())
-			Node.disconnect_from_network() //if somehow we can't connect the machine to the new powernet, disconnect it from the old nonetheless
-
-	return net1
-
 //Determines how strong could be shock, deals damage to mob, uses power.
 //M is a mob who touched wire/whatever
 //power_source is a source of electricity, can be powercell, area, apc, cable, powernet or null
@@ -305,8 +296,8 @@
 		PN = power_source
 	else if(istype(power_source,/obj/item/cell))
 		cell = power_source
-	else if(istype(power_source,/obj/machinery/power/apc))
-		var/obj/machinery/power/apc/apc = power_source
+	else if(istype(power_source,/obj/machinery/apc))
+		var/obj/machinery/apc/apc = power_source
 		cell = apc.cell
 		if (apc.terminal)
 			PN = apc.terminal.powernet
@@ -351,7 +342,7 @@
 	// 10kw per hp
 	var/drained_energy = drained_hp * 10000
 	if (source_area)
-		source_area.use_power_oneoff(drained_energy)
+		source_area.use_burst_power(drained_energy)
 	else if (istype(power_source,/datum/powernet))
 		drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
 	else if (istype(power_source, /obj/item/cell))

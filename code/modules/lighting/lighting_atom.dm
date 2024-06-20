@@ -66,7 +66,7 @@
 
 /**
  * Updates the atom's opacity value.
- * 
+ *
  * Should always be used to change the opacity of an atom.
  * This exists to act as a hook for associated behavior.
  * It notifies (potentially) affected light sources so they can update (if needed).
@@ -77,7 +77,7 @@
 	. = TRUE
 	SEND_SIGNAL(src, COMSIG_ATOM_SET_OPACITY, new_opacity)
 	opacity = new_opacity
-	
+
 	var/turf/T = loc
 	if (!isturf(T))
 		return
@@ -133,6 +133,8 @@
 
 /atom/setDir(newdir)
 	. = ..()
+	if(!.)
+		return
 	if (light_source_solo)
 		if (light_source_solo.light_angle)
 			light_source_solo.source_atom.update_light()

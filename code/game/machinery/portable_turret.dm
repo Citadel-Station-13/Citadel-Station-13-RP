@@ -47,7 +47,7 @@
 	/// When active, this turret takes up constant 300 Equipment power.
 	active_power_usage = 300
 	/// Drains power from the EQUIPMENT channel.
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_BRIDGE)
 
 	integrity = 200
@@ -689,7 +689,7 @@
 					popDown() // no valid targets, close the cover
 
 	if(auto_repair && (integrity < integrity_max))
-		use_power(20000)
+		use_burst_power(20000)
 		heal_integrity(1)
 
 /obj/machinery/porta_turret/proc/assess_and_assign(mob/living/L, list/targets, list/secondarytargets)
@@ -861,7 +861,7 @@
 
 	// Lethal/emagged turrets use twice the power due to higher energy beams
 	// Emagged turrets again use twice as much power due to higher firing rates
-	use_power(reqpower * (2 * (emagged || lethal)) * (2 * emagged))
+	use_burst_power(reqpower * (2 * (emagged || lethal)) * (2 * emagged))
 
 	//Turrets aim for the center of mass by default.
 	//If the target is grabbing someone then the turret smartly aims for extremities

@@ -22,8 +22,8 @@
 	var/obj/machinery/telecomms/buffer // simple machine buffer for device linkage
 
 /obj/item/debugger/is_used_on(obj/O, mob/user)
-	if(istype(O, /obj/machinery/power/apc))
-		var/obj/machinery/power/apc/A = O
+	if(istype(O, /obj/machinery/apc))
+		var/obj/machinery/apc/A = O
 		if(A.emagged || A.hacker)
 			to_chat(user, "<span class='warning'>There is a software error with the device.</span>")
 		else

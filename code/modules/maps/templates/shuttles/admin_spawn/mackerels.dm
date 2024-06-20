@@ -35,43 +35,43 @@
 /area/shuttle/mackerel_sh
 	name = "\improper Mackerel Stationhopper"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/mackerel_lc
 	name = "\improper Mackerel Light Cargo"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/mackerel_hc
 	name = "\improper Mackerel Heavy Cargo"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/mackerel_hc_skel
 	name = "\improper Mackerel Heavy Cargo Spartan"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/mackerel_hc_skel_cockpit
 	name = "\improper Mackerel Heavy Cargo Cockpit"
 	icon_state = "purple"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/mackerel_hc_skel_eng
 	name = "\improper Mackerel Heavy Cargo Engineering"
 	icon_state = "yellow"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 /area/shuttle/mackerel_lc_wreck
 	name = "\improper Wrecked Mackerel Light Cargo"
 	icon_state = "green"
-	requires_power = 1
+	area_power_override = null
 	has_gravity = 0
 
 // The shuttle's 'shuttle' computer

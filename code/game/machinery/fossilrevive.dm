@@ -6,7 +6,7 @@
 	icon_state = "pod_0"
 	anchored = TRUE
 	density = TRUE
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100

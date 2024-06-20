@@ -11,7 +11,7 @@
 		while(chassis.get_charge() >= projectile_energy_cost && projectiles_to_add)
 			projectiles++
 			projectiles_to_add--
-			chassis.use_power(projectile_energy_cost)
+			chassis.use_burst_power(projectile_energy_cost)
 	send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
 	log_message("Rearmed [src.name].")
 	return

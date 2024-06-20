@@ -28,9 +28,9 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 
 /obj/machinery/door/airlock
 	name = "Airlock"
+	power_channel = POWER_CHANNEL_ENVIR
 	icon = 'icons/obj/doors/station/door.dmi'
 	icon_state = "preview"
-	power_channel = ENVIRON
 	rad_flags = RAD_BLOCK_CONTENTS
 	rad_insulation = RAD_INSULATION_MEDIUM
 	armor_type = /datum/armor/door/airlock
@@ -876,7 +876,7 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/open(var/forced=0)
 	if(!can_open(forced))
 		return 0
-	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
+	use_burst_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator
 	if(arePowerSystemsOn())
@@ -907,7 +907,7 @@ About the new airlock wires panel:
 			if(AM.airlock_crush(DOOR_CRUSH_DAMAGE))
 				inflict_atom_damage(DOOR_CRUSH_DAMAGE, flag = ARMOR_MELEE)
 
-	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
+	use_burst_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	has_beeped = 0
 	if(arePowerSystemsOn())
 		playsound(src.loc, close_sound_powered, 50, 1)
