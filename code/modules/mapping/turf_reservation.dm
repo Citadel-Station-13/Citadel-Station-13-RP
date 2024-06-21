@@ -168,6 +168,11 @@
 				if(!passing)
 					continue
 
+				// calculate non-bordered
+				BL = locate(1 + TURF_CHUNK_RESOLUTION * (outer_x - 1) + border, 1 + TURF_CHUNK_RESOLUTION * (outer_y - 1) + border, level_index)
+				TR = locate(BL.x + real_width - 1 - border, BL.y + real_height - 1 - border, BL.z)
+				final = block(BL, TR)
+
 				// calculate border
 				if(border)
 					final_border = list(
@@ -216,11 +221,6 @@
 								level_index,
 							),
 						)
-
-				// calculate non-bordered
-				BL = locate(1 + TURF_CHUNK_RESOLUTION * (outer_x - 1) + border, 1 + TURF_CHUNK_RESOLUTION * (outer_y - 1) + border, level_index)
-				TR = locate(BL.x + real_width - 1 - border, BL.y + real_height - 1 - border, BL.z)
-				final = block(BL, TR)
 
 				found_a_spot = TRUE
 				break
