@@ -195,8 +195,8 @@
 
 //? Shuttle Movement
 
-/turf/simulated/CopyTurf(turf/T, copy_flags)
-	if(copy_flags & COPYTURF_IGNORE_AIR)
+/turf/simulated/CopyTurf(turf/T, change_flags)
+	if(!(change_flags & CHANGETURF_INHERIT_AIR))
 		return ..()
 	// invalidate zone
 	if(has_valid_zone())
