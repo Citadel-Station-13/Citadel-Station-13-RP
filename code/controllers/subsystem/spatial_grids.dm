@@ -150,8 +150,8 @@ SUBSYSTEM_DEF(spatial_grids)
 			return z_all_atoms[z]:Copy()
 		else
 			var/list/built = list()
-			for(var/z in 1 to world.maxz)
-				built += z_all_atoms[z]
+			for(var/i in 1 to world.maxz)
+				built += z_all_atoms[i]
 			return built
 
 	. = list()
