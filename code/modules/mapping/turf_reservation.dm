@@ -239,6 +239,9 @@
 		if(T.type != turf_type)
 			T.ChangeTurf(turf_type, turf_type)
 
+	src.bottom_left_coords = list(BL.x, BL.y, BL.z)
+	src.top_right_coords = list(TR.x, TR.y, TR.z)
+
 	if(border)
 		var/mirage_range = max(min(width - 3, height - 3, 7), 0)
 		var/should_mirage = (border_mirage_anyways || !border_initializer) && mirage_range
@@ -327,8 +330,6 @@
 	// todo: area.assimilate_turfs?
 	area_instance.contents.Add(final)
 	src.reserved_turfs = final.Copy()
-	src.bottom_left_coords = list(BL.x, BL.y, BL.z)
-	src.top_right_coords = list(TR.x, TR.y, TR.z)
 	src.width = width
 	src.height = height
 	src.border = border
