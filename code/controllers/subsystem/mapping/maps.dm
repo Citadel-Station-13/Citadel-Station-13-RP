@@ -222,7 +222,7 @@
 			var/datum/map/station/map = keyed_maps[id]
 			if(!istype(map, /datum/map/station))
 				continue
-			if(map.allow_random_draw)
+			if(!map.allow_random_draw)
 				continue
 			valid += map
 		instance = pick(valid)
