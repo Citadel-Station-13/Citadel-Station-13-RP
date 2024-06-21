@@ -158,6 +158,7 @@
 	instance.prime()
 
 	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
+	log_world("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
 
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
