@@ -127,11 +127,6 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_pulse
 	impact_type = /obj/effect/projectile/impact/laser_pulse
 
-/obj/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
-	if(isturf(target))
-		LEGACY_EX_ACT(target, 2, null)
-	..()
-
 /obj/projectile/beam/pulse/shotgun
 	damage = 50
 	armor_penetration = 25

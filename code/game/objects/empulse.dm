@@ -73,3 +73,5 @@
 			log_and_message_admins("EMPDEBUG: [T.name] - [T.type] - took [world.timeofday - time]ds to process emp_act_legacy()!")
 		#endif
 	return 1
+
+/atom/proc/emp_act_legacy(severity)

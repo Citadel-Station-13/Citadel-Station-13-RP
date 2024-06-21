@@ -329,12 +329,6 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	for(var/mob/M in src)
 		M.emp_act_legacy(severity)
 
-/obj/item/paicard/legacy_ex_act(severity)
-	if(pai)
-		LEGACY_EX_ACT(pai, severity, null)
-	else
-		qdel(src)
-
 /obj/item/paicard/show_message(msg, type, alt, alt_type)
 	if(pai && pai.client)
 		var/rendered = "<span class='message'>[msg]</span>"

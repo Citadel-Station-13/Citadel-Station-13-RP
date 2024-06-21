@@ -22,13 +22,13 @@
  * @return power left
  */
 /datum/automata/explosion/proc/explode_turf(turf/tile, power)
-	#warn impl
+	return tile.run_ex_act(power, damage_multipliers)
 
 /**
  * @return power left
  */
 /datum/automata/explosion/proc/explode_crossed_movable(atom/movable/AM, power)
-	#warn impl
+	return AM.ex_act(power, damage_multipliers)
 
 /datum/automata/explosion/act_cross(atom/movable/AM, data)
 	explode_crossed_movable(AM, data)

@@ -67,6 +67,7 @@
 	SSautomata.ticking -= src
 	for(var/datum/callback/callback in on_finish)
 		callback.InvokeAsync(src, done)
+	cleanup()
 	if(del_on_finish && !QDELING(src))
 		qdel(src)
 
@@ -89,6 +90,10 @@
 
 /**
  * adds us to a turf's acting_automata
+ *
+ * @params
+ * * turfs - a list of turfs associated to data
+ * * data - a data to use if turfs isn't associative; overrides turfs associativity.
  */
 /datum/automata/proc/add_turfs_acting(list/turf/turfs, data)
 	if(data)

@@ -2,16 +2,19 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 //! Global balancing numbers; everything should derive off of these so we can adjust everything at once.
-/// global default multiplier for falloff factor
-#define EXPLOSION_FALLOFF_FACTOR 1
-/// global default multiplier for bypass factor
-#define EXPLOSION_BYPASS_FACTOR 1
+/// global default multiplier for falloff exponential
+#define EXPLOSION_FALLOFF_BASE_EXPONENT 0.97
+/// global default subtractor for falloff linear
+#define EXPLOSION_FALLOFF_BASE_LINEAR 10
 
-/// global default "nominal" maxcap power; being hit by this is what causes the most severe effects like turfs completely peeling away, people gibbing, etc.
-#define EXPLOSION_POWER_DEVASTATING 1000
-/// global default "nominal" heavy power; being hit by this is what causes things like turfs exploding, people taking immediately lethal damage/devastating damage, etc.
-#define EXPLOSION_POWER_SEVERE (EXPLOSION_POWER_DEVASTATING * 0.5)
-/// global default "nominal" minor power; being hit by this is what causes minor wounds
-#define EXPLOSION_POWER_MINOR  (EXPLOSION_POWER_DEVASTATING * 0.25)
+/// arbitrary value that's semi-equivalent of being in the middle of a 5/10/20 on old explosions
+#define EXPLOSION_POWER_MAXCAP_EQUIVALENT 1000
+/// arbitrary value that's semi-equivalent of being hit with sev 1 in old explosions
+#define EXPLOSION_POWER_APPROXIMATE_DEVASTATE 1000
+/// arbitrary value that's semi-equivalent of being hit with a severity 2 explosion on old explosions
+#define EXPLOSION_POWER_APPROXIMATE_HEAVY 500
+/// arbitrary value that's semi-equivalent of being hit with a sev 3 in old explosions
+#define EXPLOSION_POWER_APPROXIMATE_LIGHT 250
+
 /// below this explosions are considered so trivial we just drop the wave
 #define EXPLOSION_POWER_DROPPED 50

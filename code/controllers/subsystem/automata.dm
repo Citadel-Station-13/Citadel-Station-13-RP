@@ -21,4 +21,4 @@ SUBSYSTEM_DEF(automata)
 			continue
 		A.tick()
 		if(MC_TICK_CHECK)
-			return
+			break
