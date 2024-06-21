@@ -214,65 +214,6 @@
 // GLOBAL PROCS for powernets handling
 //////////////////////////////////////////
 
-
-// returns a list of all power-related objects (nodes, cable, junctions) in turf,
-// excluding source, that match the direction d
-// if unmarked==1, only return those with no powernet
-/proc/power_list(var/turf/T, var/source, var/d, var/unmarked=0, var/cable_only = 0)
-	. = list()
-
-	var/reverse = d ? global.reverse_dir[d] : 0
-	for(var/AM in T)
-		if(AM == source)	continue			//we don't want to return source
-
-		if(!cable_only && istype(AM,/obj/machinery/power))
-			var/obj/machinery/power/P = AM
-			if(P.powernet == 0)	continue		// exclude APCs which have powernet=0
-
-			if(!unmarked || !P.powernet)		//if unmarked=1 we only return things with no powernet
-				if(d == 0)
-					. += P
-
-		else if(istype(AM,/obj/structure/cable))
-			var/obj/structure/cable/C = AM
-
-			if(!unmarked || !C.powernet)
-				if(C.d1 == d || C.d2 == d || C.d1 == reverse || C.d2 == reverse )
-					. += C
-	return .
-
-//remove the old powernet and replace it with a new one throughout the network.
-/proc/propagate_network(var/obj/O, var/datum/powernet/PN)
-	//to_chat(world.log, "propagating new network")
-	var/list/worklist = list()
-	var/list/found_machines = list()
-	var/index = 1
-	var/obj/P = null
-
-	worklist+=O //start propagating from the passed object
-
-	while(index<=worklist.len) //until we've exhausted all power objects
-		P = worklist[index] //get the next power object found
-		index++
-
-		if( istype(P,/obj/structure/cable))
-			var/obj/structure/cable/C = P
-			if(C.powernet != PN) //add it to the powernet, if it isn't already there
-				PN.add_cable(C)
-			worklist |= C.get_connections() //get adjacents power objects, with or without a powernet
-
-		else if(P.anchored && istype(P,/obj/machinery/power))
-			var/obj/machinery/power/M = P
-			found_machines |= M //we wait until the powernet is fully propagates to connect the machines
-
-		else
-			continue
-
-	//now that the powernet is set, connect found machines to it
-	for(var/obj/machinery/power/PM in found_machines)
-		if(!PM.connect_to_network()) //couldn't find a node on its turf...
-			PM.disconnect_from_network() //... so disconnect if already on a powernet
-
 //Determines how strong could be shock, deals damage to mob, uses power.
 //M is a mob who touched wire/whatever
 //power_source is a source of electricity, can be powercell, area, apc, cable, powernet or null

@@ -337,7 +337,7 @@
 	data["power_generated"] = render_power(power_gen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
 	data["power_output"] = render_power(power_gen * power_output, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
 	data["unsafe_output"] = power_output > max_safe_output
-	data["power_available"] = (is_connected() ? 0 : render_power(power_available(), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE))
+	data["power_available"] = (is_connected() ? 0 : render_power(get_powernet_supply(), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE))
 	data["temperature_current"] = temperature
 	data["temperature_max"] = max_temperature
 	data["temperature_overheat"] = overheating

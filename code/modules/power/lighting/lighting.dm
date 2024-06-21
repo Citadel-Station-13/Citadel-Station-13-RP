@@ -799,14 +799,11 @@ var/global/list/light_type_cache = list()
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/A = get_area(src)
-	return A && A.lightswitch && (!A.requires_power || A.power_light)
+	return A && A.lightswitch && A.powered(POWER_CHANNEL_LIGHT)
 
 /obj/machinery/light/flamp/has_power()
 	var/area/A = get_area(src)
-	if(lamp_shade)
-		return A && (!A.requires_power || A.power_light)
-	else
-		return A && A.lightswitch && (!A.requires_power || A.power_light)
+	return A && (lamp_shade || A.lightswitch) && A.powered(POWER_CHANNEL_LIGHT)
 
 // returns whether this light has emergency power
 // can also return if it has access to a certain amount of that power
