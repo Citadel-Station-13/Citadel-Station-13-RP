@@ -8,7 +8,7 @@
 	if(species.slowdown)
 		tally = species.slowdown
 
-		if(istype(loc,/turf/))
+	if(istype(loc,/turf/))
 		var/turf/T = loc
 		if(species.light_slowdown || species.dark_slowdown)
 			var/lumcount = T.get_lumcount()
