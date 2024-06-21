@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * turf reservation system
@@ -16,7 +16,7 @@
 	/// doing some blocking op on reservation system
 	var/static/reservation_blocking_op = FALSE
 	/// singleton area holding all free reservation turfs
-	var/static/area/unused_reservation_area/reservation_unallocated_area = new
+	var/static/area/reservation_unused/reservation_unallocated_area = new
 	/// spatial grid of turf reservations. the owner of a chunk is the bottom left tile's owner.
 	///
 	/// this is a list with length of world.maxz, with the actual spatial grid list being at the index of the z
@@ -26,6 +26,7 @@
 	/// * this also means that we can't zclear / 'free' reserved levels; they're effectively immovable due to this datastructure
 	/// * if it is a reserved level, it returns the spatial grid
 	/// * to get a chunk, do `spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]`
+	/// * being in border counts as being in the reservation. you won't be soon, though.
 	var/static/list/reservation_spatial_lookups = list()
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
@@ -61,20 +62,32 @@
  * you *must* manually clean it up after you're done with it, or else it's a memory leak.
  *
  * failures are considered a runtime due to how sensitive turf management systems are.
+ *
+ * @params
+ * * width - width of reserved block
+ * * height - height of reserved block
+ * * type - /datum/turf_reservation type to make
+ * * turf_override - init turf contents to type instead of world.area
+ * * area_override - init area typepath to type instead of world.area
+ * * border - border turfs; these are outside of the allocation.
+ * * border_handler - what callback to call with (atom/movable/mover) when something crosses the border. the handler should always evict the atom from the border turfs!
+ * * border_initializer - what callback to call with (turf/bordering) on every border turf to init them. defaults to just making loop-back turfs
  */
-/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/turf_reservation, turf_override, border_override, area_override)
+/datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/turf_reservation, turf_override, area_override, border, datum/callback/border_handler, datum/callback/border_initializer)
 	var/datum/turf_reservation/reserve = new type
 	if(!isnull(turf_override))
 		reserve.turf_type = turf_override
-	if(!isnull(border_override))
-		reserve.border_type = border_override
 	if(!isnull(area_override))
 		reserve.area_type = area_override
-	if(reserve.reserve(width, height))
+	if(border_handler)
+		reserve.border_handler = border_handler
+	if(border_initializer)
+		reserve.border_initializer = border_initializer
+	if(reserve.reserve(width, height, border))
 		return reserve
 	var/index = allocate_reserved_level()
 	ASSERT(index)
-	if(reserve.reserve(width, height, index))
+	if(reserve.reserve(width, height, border, index))
 		return reserve
 	QDEL_NULL(reserve)
 	CRASH("failed to reserve")
@@ -104,8 +117,8 @@
 		return
 	return spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
 
-/area/unused_reservation_area
-	name = "Unused Reservation Area"
+/area/reservation_unused
+	name = "Unallocated Reservation Area"
 	unique = TRUE
 	always_unpowered = TRUE
 	has_gravity = FALSE

@@ -757,6 +757,7 @@
 #include "code\datums\components\riding\mob\robot.dm"
 #include "code\datums\components\riding\simple\_simple.dm"
 #include "code\datums\components\riding\vehicle\_vehicle.dm"
+#include "code\datums\components\turfs\reservation_border.dm"
 #include "code\datums\components\turfs\transition_border.dm"
 #include "code\datums\design\design.dm"
 #include "code\datums\design\design_holder.dm"
