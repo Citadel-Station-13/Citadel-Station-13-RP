@@ -243,7 +243,7 @@
 	src.top_right_coords = list(TR.x, TR.y, TR.z)
 
 	if(border)
-		var/mirage_range = max(min(width - 3, height - 3, 7), 0)
+		var/mirage_range = max(min(width - 3, height - 3, 9), 0)
 		var/should_mirage = (border_mirage_anyways || !border_initializer) && mirage_range
 		var/needs_component = border_handler || (should_mirage && !border_initializer)
 
@@ -304,19 +304,19 @@
 		corner = locate(top_right_coords[1] + 1, top_right_coords[2] + 1, bottom_left_coords[3])
 		border_initializer?.Invoke(corner)
 		if(needs_component)
-			corner.AddComponent(/datum/component/reservation_border, mirage_range, NORTHWEST, should_mirage, locate(bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]), border_handler)
+			corner.AddComponent(/datum/component/reservation_border, mirage_range, NORTHEAST, should_mirage, locate(bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]), border_handler)
 		immediate_corners += corner
 		// bottom left
 		corner = locate(bottom_left_coords[1] - 1, bottom_left_coords[2] - 1, bottom_left_coords[3])
 		border_initializer?.Invoke(corner)
 		if(needs_component)
-			corner.AddComponent(/datum/component/reservation_border, mirage_range, NORTHWEST, should_mirage, locate(top_right_coords[1], top_right_coords[2], bottom_left_coords[3]), border_handler)
+			corner.AddComponent(/datum/component/reservation_border, mirage_range, SOUTHWESt, should_mirage, locate(top_right_coords[1], top_right_coords[2], bottom_left_coords[3]), border_handler)
 		immediate_corners += corner
 		// bottom right
 		corner = locate(top_right_coords[1] + 1, bottom_left_coords[2] - 1, bottom_left_coords[3])
 		border_initializer?.Invoke(corner)
 		if(needs_component)
-			corner.AddComponent(/datum/component/reservation_border, mirage_range, NORTHWEST, should_mirage, locate(bottom_left_coords[1], top_right_coords[2], bottom_left_coords[3]), border_handler)
+			corner.AddComponent(/datum/component/reservation_border, mirage_range, SOUTHEAST, should_mirage, locate(bottom_left_coords[1], top_right_coords[2], bottom_left_coords[3]), border_handler)
 		immediate_corners += corner
 
 		final_immediate_border = \
