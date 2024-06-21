@@ -760,3 +760,19 @@ var/list/ghostteleportlocs = list()
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
 		if(scrubber.id_tag == id)
 			return scrubber
+
+//* Turfs *//
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs(list/turf/turfs)
+	for(var/turf/T in turfs)
+		ChangeArea(T, src)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		ChangeArea(T, give_to)
