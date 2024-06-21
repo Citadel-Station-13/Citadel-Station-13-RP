@@ -10,6 +10,7 @@
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pai"
 	item_state = "electronic"
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
@@ -94,12 +95,6 @@
 /obj/item/sleevecard/emp_act_legacy(severity)
 	for(var/mob/M in src)
 		M.emp_act_legacy(severity)
-
-/obj/item/sleevecard/legacy_ex_act(severity)
-	if(infomorph)
-		LEGACY_EX_ACT(infomorph, severity, null)
-	else
-		qdel(src)
 
 /obj/item/sleevecard/see_emote(mob/living/M, text)
 	if(infomorph && infomorph.client)

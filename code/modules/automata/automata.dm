@@ -91,9 +91,14 @@
  * adds us to a turf's acting_automata
  */
 /datum/automata/proc/add_turfs_acting(list/turf/turfs, data)
-	for(var/turf/T as anything in turfs)
-		LAZYSET(T.acting_automata, src, data)
-		turfs_acting += T
+	if(data)
+		for(var/turf/T as anything in turfs)
+			LAZYSET(T.acting_automata, src, data)
+			turfs_acting += T
+	else
+		for(var/turf/T as anything in turfs)
+			LAZYSET(T.acting_automata, src, turfs[T])
+			turfs_acting += T
 
 /**
  * act on crossed atom
