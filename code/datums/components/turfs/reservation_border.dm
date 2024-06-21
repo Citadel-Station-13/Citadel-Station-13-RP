@@ -17,7 +17,7 @@
 	/// do we render visuals?
 	var/render = TRUE
 	/// custom callback to call when something crosses us
-	var/datum/handler_callback
+	var/datum/callback/handler_callback
 
 /datum/component/reservation_border/Initialize(range = 10, dir, render, turf/paired, datum/callback/handler_callback)
 	if(!isturf(parent))
