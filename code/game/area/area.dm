@@ -1,4 +1,28 @@
 /**
+ * Gets a cached area of a given type, if it's unique
+ * If it's not unique, throw a runtime
+ */
+/proc/unique_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	ASSERT(creating.unique)
+	if(!isnull(GLOB.areas_by_type[path]))
+		return GLOB.areas_by_type[path]
+	creating = new path(null)
+	GLOB.areas_by_type[path] = creating
+	return creating
+
+/**
+ * Gets the global reference to an area, or a new copy, depending on if it's unique or not
+ */
+/proc/dynamic_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	if(!creating.unique)
+		return new path(null)
+	return unique_area_of_type(path)
+
+/**
  * # area
  *
  * A grouping of tiles into a logical space, mostly used by map editors
