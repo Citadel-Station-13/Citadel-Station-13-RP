@@ -70,9 +70,17 @@
 
 /datum/turf_reservation/proc/release()
 	if(border)
-		SSmapping.reserve_turfs(block(locate(arglist(bottom_left_border_coords)), locate(arglist(top_right_border_coords))))
+		SSmapping.reserve_turfs(block(locate(
+			bottom_left_border_coords[1], bottom_left_border_coords[2], bottom_left_border_coords[3]
+			), locate(
+			top_right_border_coords[1], top_right_border_coords[2], top_right_border_coords[3])
+		))
 	else
-		SSmapping.reserve_turfs(block(locate(arglist(bottom_left_coords)), locate(arglist(top_right_coords))))
+		SSmapping.reserve_turfs(block(locate(
+			bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]
+			), locate(
+			top_right_coords[1], top_right_coords[2], top_right_coords[3])
+		))
 	reserved_turfs = null
 	allocated = FALSE
 	if(border_area)

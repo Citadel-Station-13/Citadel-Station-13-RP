@@ -47,14 +47,14 @@ SUBSYSTEM_DEF(spatial_grids)
 	/// optimize get all atoms on z
 	var/optimize_get_all_on_z = FALSE
 
-/datum/spatial_grid/New(expected_type, optimize_get_all_on_z)
+/datum/spatial_grid/New(expected_type, init_flags)
 	// initialize grid
 	src.width = ceil(world.maxx / TURF_CHUNK_RESOLUTION)
 	src.height = ceil(world.maxy / TURF_CHUNK_RESOLUTION)
 	src.grids = list()
 	src.expected_type = expected_type
 
-	src.optimize_get_all_on_z = optimize_get_all_on_z
+	src.optimize_get_all_on_z = !!(init_flags & SPATIAL_GRID_INIT_OPTIMIZE_ALL_Z)
 	if(src.optimize_get_all_on_z)
 		src.z_all_atoms = list()
 
