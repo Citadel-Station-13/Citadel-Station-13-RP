@@ -8,6 +8,24 @@
 	if(species.slowdown)
 		tally = species.slowdown
 
+	/// How affected by light the species is. Positive values slow down, negative speed up.
+	/// Values are a maximum slowdown / speedup based on amount of light or lack thereof.
+	var/light_slowdown = 0
+	var/dark_slowdown = 0
+
+		if(istype(loc,/turf/))
+		var/turf/T = loc
+		if(species.light_slowdown || species.dark_slowdown)
+			var/lumcount = T.get_lumcount()
+			var/mod
+			if(lumcount == 0)
+				mod = species.dark_slowdown
+			else if(lumcount == 1)
+				mod = species.light_slowdown
+			else
+				mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
+			tally += mod
+
 	if (istype(loc, /turf/space))
 		return 1		//until tg movement slowdown + modifiers is a thing I guess ...
 
