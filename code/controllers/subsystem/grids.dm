@@ -348,9 +348,9 @@ SUBSYSTEM_DEF(grids)
 /turf/proc/grid_transfer(grid_flags, turf/new_turf, baseturf_boundary)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(isnull(baseturf_boundary))
-		new_turf.CopyOnTop(src, null, null, copy_flags = COPYTURF_COPY_AIR)
+		new_turf.CopyOnTop(src, null, null, CHANGETURF_INHERIT_AIR)
 	else
-		new_turf.CopyOnTop(src, 1, length(baseturfs) - baseturfs.Find(baseturf_boundary) + 1, COPYTURF_COPY_AIR)
+		new_turf.CopyOnTop(src, 1, length(baseturfs) - baseturfs.Find(baseturf_boundary) + 1, CHANGETURF_INHERIT_AIR)
 
 /**
  * Called when cleaning up after transfer
