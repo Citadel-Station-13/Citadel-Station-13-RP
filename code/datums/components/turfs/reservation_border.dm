@@ -31,6 +31,7 @@
 	src.range = range
 	src.dir = dir
 	src.handler_callback = handler_callback
+	src.paired = paired
 	if(!isnull(render))
 		src.render = render
 
