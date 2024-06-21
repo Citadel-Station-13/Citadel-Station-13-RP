@@ -8,11 +8,6 @@
 	if(species.slowdown)
 		tally = species.slowdown
 
-	/// How affected by light the species is. Positive values slow down, negative speed up.
-	/// Values are a maximum slowdown / speedup based on amount of light or lack thereof.
-	var/light_slowdown = 0
-	var/dark_slowdown = 0
-
 		if(istype(loc,/turf/))
 		var/turf/T = loc
 		if(species.light_slowdown || species.dark_slowdown)
