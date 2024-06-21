@@ -2,11 +2,14 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /obj/machinery/orbital_deployment_controller
+	//* Init *//
 
 	/// search radius for orbital deployment markers (zones)
 	///
 	/// * we throw an error if multiple are found
 	var/linkage_search_radius = 10
+
+	//* State *//
 
 /obj/machinery/orbital_deployment_controller/Initialize(mapload)
 	. = ..()

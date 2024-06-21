@@ -4592,7 +4592,6 @@
 #include "code\modules\sectors\air_support\signal_flare.dm"
 #include "code\modules\sectors\air_support\system.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\controller.dm"
-#include "code\modules\sectors\air_support\orbital_deployment\initializer.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\marker.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\superstructure.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\zone.dm"

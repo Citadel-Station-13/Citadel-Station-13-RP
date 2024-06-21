@@ -2,6 +2,10 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /obj/orbital_deployment_marker
+	plane = DEBUG_PLANE
+	layer = DEBUG_
+	invisibility = INVISIBILITY_MAP_HELPER
+	/// search radius
 
 /obj/orbital_deployment_marker/lower_left
 
