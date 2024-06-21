@@ -812,7 +812,6 @@
 #include "code\datums\elements\clothing\dynamic_recolor.dm"
 #include "code\datums\elements\items\darksight_granter.dm"
 #include "code\datums\elements\items\hud_granter.dm"
-#include "code\datums\elements\objs\hides_underfloor.dm"
 #include "code\datums\event_args\_event_args.dm"
 #include "code\datums\event_args\actor.dm"
 #include "code\datums\event_args\clickchain.dm"
