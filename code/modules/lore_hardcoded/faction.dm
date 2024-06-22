@@ -104,10 +104,14 @@
 		/datum/role/job/station/mime::id,
 		// med staff - paramedic only
 		/datum/role/job/station/paramedic::id,
+		// engineering staff - engi and atmos tech
+		/datum/role/job/station/engineer::id,
+		/datum/role/job/station/atmos::id,
 		// off duty
 		/datum/role/job/station/off_duty/cargo::id,
 		/datum/role/job/station/off_duty/civilian::id,
 		/datum/role/job/station/off_duty/exploration::id,
+		/datum/role/job/station/off_duty/engineering::id,
 		/datum/role/job/station/off_duty/medical::id,
 		// trader
 		/datum/role/job/trader::id,
