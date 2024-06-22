@@ -263,7 +263,7 @@
 	if(marking) { \
 		marking_existing_power = processed[marking]; \
 		if(marking_existing_power < POWER) { \
-			edges_next[marking] = max(edge_turfs_next[marking], POWER); \
+			edges_next[marking] = max(edges_next[marking], POWER); \
 			edges_next_dirs[marking] |= DIR; \
 		} \
 	}
@@ -305,7 +305,7 @@
 	if(marking) { \
 		marking_existing_power = processed[marking]; \
 		if(marking_existing_power < POWER) { \
-			edges_next[marking] = max(edge_turfs_next[marking], POWER); \
+			edges_next[marking] = max(edges_next[marking], POWER); \
 			edges_next_dirs[marking] |= DIR; \
 		} \
 	}

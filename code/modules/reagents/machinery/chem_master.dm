@@ -78,16 +78,6 @@
 	for(var/obj/item/reagent_containers/glass/beaker/B in component_parts)
 		reagents.maximum_volume += B.reagents.maximum_volume
 
-/obj/machinery/chem_master/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				qdel(src)
-				return
-
 /obj/machinery/chem_master/update_icon_state()
 	icon_state = "[base_icon_state][beaker ? 1 : 0][(machine_stat & BROKEN) ? "_b" : (powered() ? null : "_nopower")]"
 	return ..()

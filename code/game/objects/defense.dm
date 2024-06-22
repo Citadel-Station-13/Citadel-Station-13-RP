@@ -1,9 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/obj/ex_act(power, list/damage_multipliers)
+/obj/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
 	. = ..()
-	// todo: wave explosions
+	var/inbound_multiplier = damage_multipliers?[damage_classifier]
+	if(!isnull(unbound_multiplier))
+		effective_damage_multiplier *= inbound_multiplier
+	#warn damage scaling
 	inflict_atom_damage(power * (1 / 2.5), flag = ARMOR_BOMB)
 
 /obj/melee_act(mob/user, obj/item/weapon, target_zone, mult)

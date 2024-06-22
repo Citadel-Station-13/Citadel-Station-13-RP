@@ -93,8 +93,10 @@
 		if(!istype(Proj ,/obj/projectile/beam/lasertag) && !istype(Proj ,/obj/projectile/beam/practice) )
 			explode()
 
-/obj/structure/reagent_dispensers/fueltank/legacy_ex_act()
-	explode()
+/obj/structure/reagent_dispensers/fueltank/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	. = ..()
+	if(effective_damage_multiplier >= 0.1) // if we weren't somehow completely blocked
+		explode()
 
 /obj/structure/reagent_dispensers/fueltank/blob_act()
 	explode()

@@ -147,7 +147,7 @@
 								ore.forceMove(ore_box)
 			else if(target.loc == C)
 				log_message("Drilled through [target]")
-				LEGACY_EX_ACT(target, 2, null)
+				target.ex_act(EXPLOSION_POWER_APPROXIMATE_HEAVY)
 	return 1
 
 

@@ -14,11 +14,13 @@
  *
  * @params
  * * power - power our turf was hit with
- * * damage_multiplier - (optional) DAMAGE_CLASSIFIER_* define associated to damage multiplier
+ * * damage_multipliers - (optional) DAMAGE_CLASSIFIER_* define associated to damage multiplier
+ * * effective_damage_multiplier - a variable passed around through the call chain with args, allowing us to modify the effective multiplier in ex_act() and still have damage be handled at /obj's base ex_act.
+ *                                 effective damage multiplier will be modified at base /obj to corrospond to its damage classifier's multiplier in damage_multipliers!
  *
  * @return power after falloff (e.g. hit with 30 power, return 20 to apply 10 falloff)
  */
-/atom/proc/ex_act(power, list/damage_multiplier)
+/atom/proc/ex_act(power, list/damage_multipliers, effective_damage_multiplier = 1)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, args)
 	return power

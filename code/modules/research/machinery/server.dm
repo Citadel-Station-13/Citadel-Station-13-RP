@@ -71,10 +71,6 @@
 	griefProtection()
 	..()
 
-/obj/machinery/r_n_d/server/legacy_ex_act(severity)
-	griefProtection()
-	..()
-
 //Backup files to CentCom to help admins recover data after greifer attacks
 /obj/machinery/r_n_d/server/proc/griefProtection()
 	for(var/obj/machinery/r_n_d/server/centcom/C in GLOB.machines)
