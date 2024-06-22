@@ -105,10 +105,6 @@
 	qdel(src)
 	return
 
-/obj/item/mecha_parts/mecha_tracking/legacy_ex_act()
-	qdel(src)
-	return
-
 /obj/item/mecha_parts/mecha_tracking/proc/in_mecha()
 	if(istype(loc, /obj/mecha))
 		return loc

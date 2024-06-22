@@ -336,14 +336,6 @@
 	CheckHealth()
 	return
 
-/obj/item/uav/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			die()
-		if(2.0)
-			health -= 25
-			CheckHealth()
-
 /obj/item/uav/proc/CheckHealth()
 	if(health <= 0)
 		die()

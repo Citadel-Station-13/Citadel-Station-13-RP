@@ -18,3 +18,18 @@
 
 /// below this explosions are considered so trivial we just drop the wave
 #define EXPLOSION_POWER_DROPPED 50
+
+//* balancing slop below *//
+
+/// overall damage
+#define EXPLOSION_POWER_TO_OBJ_DAMAGE(POWER, VARIANCE)
+/// overall damage
+#define EXPLOSION_POWER_TO_MOB_DAMAGE(POWER, VARIANCE)
+/// modifier to how likely it is that a limb gets obliterated
+#define EXPLOSION_POWER_TO_MOB_DISMEMBER_MULTIPLIER(POWER, VARIANCE)
+
+// modified two-threshold inverse-quadratic
+#define EXPLOSION_POWER_MOB_GIB_ALWAYS 850
+#define EXPLOSION_POWER_MOB_GIB_LD50 750
+#define EXPLOSION_POWER_MOB_GIB_MINIMUM 650
+#define EXPLOSION_POWER_TO_MOB_GIB_CHANCE(POWER)

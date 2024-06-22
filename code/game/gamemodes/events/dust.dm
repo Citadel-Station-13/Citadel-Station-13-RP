@@ -113,7 +113,3 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 /obj/effect/space_dust/Bumped(atom/A)
 	hit(A)
 	return
-
-/obj/effect/space_dust/legacy_ex_act(severity)
-	qdel(src)
-	return

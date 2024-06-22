@@ -246,15 +246,6 @@
 			return
 	return ..()
 
-/obj/structure/railing/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			qdel(src)
-		if(3.0)
-			qdel(src)
-
 // TODO - This here might require some investigation
 // todo: no, this here needs to be thrown out, we have depth system now
 /obj/structure/proc/neighbor_turf_impassable()

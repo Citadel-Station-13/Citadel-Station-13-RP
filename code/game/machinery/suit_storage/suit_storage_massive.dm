@@ -9,6 +9,8 @@
 
 	anchored = 1
 	density = 1
+	// todo: remove when constructable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/list/obj/item/clothing/suit/space/suits = list()
 	var/suit_stored_TYPE = /obj/item/clothing/suit/space/void
@@ -53,17 +55,6 @@
 	else
 		ispowered = 0
 		//Todo: add lockdown
-
-/obj/machinery/suit_storage_closet/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			if(prob(50))
-				dump_everything() //So suits dont survive all the time
-			qdel(src)
-		if(2.0)
-			if(prob(50))
-				dump_everything()
-				qdel(src)
 
 /obj/machinery/suit_storage_closet/attack_hand(mob/user, list/params)
 	if(..())

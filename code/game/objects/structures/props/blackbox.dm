@@ -6,11 +6,7 @@
 	This one looks like it has ceased writing to its internal data storage."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "blackbox_off"
-
-// Black boxes are resistant to explosions.
-/obj/structure/prop/blackbox/legacy_ex_act(severity)
-	..(++severity)
-
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE // todo: change this, make it destructible and have contents, etc
 
 /obj/structure/prop/blackbox/quarantined_shuttle
 	catalogue_data = list(/datum/category_item/catalogue/information/blackbox/quarantined_shuttle)

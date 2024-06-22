@@ -92,6 +92,7 @@
 	icon_state = "small"
 	density = 1
 	anchored = 1
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/hits = 4
 	var/hitpwr = 2 //Level of legacy_ex_act to be called on hit.
 	var/dest
@@ -178,9 +179,6 @@
 	make_debris()
 	meteor_effect(explode)
 	qdel(src)
-
-/obj/effect/meteor/legacy_ex_act()
-	return
 
 /obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(istype(W, /obj/item/pickaxe))

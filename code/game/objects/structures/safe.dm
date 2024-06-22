@@ -12,6 +12,7 @@ FLOOR SAFES
 	icon_state = "safe"
 	anchored = 1
 	density = 1
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/open = 0		//is the safe open?
 	var/tumbler_1_pos	//the tumbler position- from 0 to 72
 	var/tumbler_1_open	//the tumbler position to open at- 0 to 72
@@ -159,10 +160,6 @@ FLOOR SAFES
 		if(istype(I, /obj/item/clothing/accessory/stethoscope))
 			to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
 			return
-
-
-/obj/structure/safe/legacy_ex_act(severity)
-	return
 
 //FLOOR SAFES
 /obj/structure/safe/floor

@@ -420,31 +420,6 @@
 		malfunction()
 	..()
 
-/obj/machinery/clonepod/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			for(var/atom/movable/A as mob|obj in src)
-				A.loc = src.loc
-				legacy_ex_act(severity)
-			qdel(src)
-			return
-		if(2.0)
-			if(prob(50))
-				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					legacy_ex_act(severity)
-				qdel(src)
-				return
-		if(3.0)
-			if(prob(25))
-				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					legacy_ex_act(severity)
-				qdel(src)
-				return
-		else
-	return
-
 /obj/machinery/clonepod/update_icon()
 	..()
 	icon_state = "pod_0"
