@@ -286,6 +286,41 @@ SUBSYSTEM_DEF(grids)
 
 	return TRUE
 
+//* Debug Functions *//
+
+/**
+ * source/target specifiers can be turfs or lists
+ */
+/datum/controller/subsystem/grids/proc/debug_yeet_a_chunk(source_lower_left, source_top_right, target_lower_left, target_top_right, turn_angle = 0)
+	var/list/S_LL
+	var/list/S_TR
+	var/list/T_LL
+	var/list/T_TR
+
+	if(isturf(source_lower_left))
+		S_LL = list(source_lower_left:x, source_lower_left:y, source_lower_left:z)
+	else
+		S_LL = source_lower_left
+	if(isturf(source_top_right))
+		S_TR = list(source_top_right:x, source_top_right:y, source_top_right:z)
+	else
+		S_TR = source_top_right
+	if(isturf(target_lower_left))
+		T_LL = list(target_lower_left:x, target_lower_left:y, target_lower_left:z)
+	else
+		T_LL = target_lower_left
+	if(isturf(target_top_right))
+		T_TR = list(target_top_right:x, target_top_right:y, target_top_right:z)
+	else
+		T_TR = target_top_right
+
+	var/list/from_turfs = get_ordered_turfs(S_LL[1], S_TR[1], S_LL[2], S_TR[2], S_LL[3], SOUTH)
+	var/list/to_turfs = get_ordered_turfs(T_LL[1], T_TR[1], T_LL[2], T_TR[2], T_LL[3], turn(SOUTH, turn_angle))
+
+	ASSERT(length(from_turfs) == length(to_turfs))
+
+	translate(from_turfs, to_turfs, SOUTH, turn(SOUTH, turn_angle))
+
 //* Areas
 
 /**
@@ -425,7 +460,8 @@ SUBSYSTEM_DEF(grids)
 /area/grid_orphaned
 	name = "orphaned grid area"
 	desc = "someone fucked up"
-	icon = 'icons/turf/area/debug.dmi'
-	icon_state = "grid-orphan"
+	// it's on shuttle branch :>
+	// icon = 'icons/turf/area/debug.dmi'
+	// icon_state = "grid-orphan"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_AREA_OVERLAYS
