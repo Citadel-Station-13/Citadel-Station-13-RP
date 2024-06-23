@@ -955,7 +955,7 @@
 		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			var/turf/where_we_are = loc
 			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP) && mapload
-			var/we_are_hidden = where_we_are.hides_underfloor_objects()
+			var/we_are_hidden = where_we_are?.hides_underfloor_objects()
 			if(istype(where_we_are) && (hide_anyways || !we_are_hidden))
 				hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 				if(!mapload && we_are_hidden)
