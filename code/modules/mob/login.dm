@@ -80,6 +80,8 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
 	// reset cutscene to default; this is a proc for new players.
 	login_cutscene()
+	// Make sure blindness fullscreen is applied if needed
+	blindness_handle_reconnect()
 
 	//* legacy
 	// this is below reset_perspective so self perspective generates.

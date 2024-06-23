@@ -55,6 +55,7 @@
 		O_POLYP    = /obj/item/organ/internal/diona/polyp,
 		O_ANCHOR   = /obj/item/organ/internal/diona/ligament,
 	)
+	vision_organ = O_BRAIN
 
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/diona/chest),

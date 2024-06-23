@@ -29,6 +29,7 @@
 	)
 
 	vision_innate = /datum/vision/baseline/species_tier_2
+	vision_organ = O_EYES
 
 	slowdown  = -0.5
 	snow_movement = -1 //Ignores half of light snow

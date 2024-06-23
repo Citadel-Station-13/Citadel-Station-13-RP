@@ -9,14 +9,15 @@
 	var/mob/living/affected_mob
 	var/stage = 0
 
-/obj/item/alien_embryo/New()
+/obj/item/alien_embryo/Initialize(mapload)
+	. = ..()
 	if(istype(loc, /mob/living))
 		affected_mob = loc
 		START_PROCESSING(SSobj, src)
 		spawn(0)
 			AddInfectionImages(affected_mob)
 	else
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/alien_embryo/Destroy()
 	if(affected_mob)

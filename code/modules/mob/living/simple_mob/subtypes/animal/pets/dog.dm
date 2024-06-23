@@ -44,7 +44,7 @@
 	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M in viewers(user, null))
-				if ((M.client && !( M.blinded )))
+				if ((M.client && !( M.has_status_effect(/datum/status_effect/sight/blindness) )))
 					M.show_message("<font color=#4F49AF>[user] baps [name] on the nose with the rolled up [O]</font>")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))

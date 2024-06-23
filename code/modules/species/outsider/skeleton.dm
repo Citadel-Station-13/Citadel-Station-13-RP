@@ -37,6 +37,8 @@
 	flash_mod     = 0
 	chemOD_mod    = 0
 
+	vision_organ = O_EYES
+
 	siemens_coefficient = 0
 
 	death_message    = "falls over and stops moving!"

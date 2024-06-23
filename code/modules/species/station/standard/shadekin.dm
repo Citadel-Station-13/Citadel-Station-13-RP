@@ -86,6 +86,7 @@
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
+	vision_organ = O_EYES
 
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/crewkin),

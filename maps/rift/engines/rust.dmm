@@ -10,9 +10,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "aQ" = (
 /obj/machinery/air_alarm{
@@ -74,9 +72,7 @@
 	id_tag = "engine_sensor";
 	output = 63
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "ea" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -125,6 +121,7 @@
 	name = "Powernet Sensor - Engine Power";
 	name_tag = "Engine Power"
 	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "gu" = (
@@ -250,7 +247,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/greengrid/nitrogen,
+/turf/simulated/floor/greengrid/airless,
 /area/engineering/engine_room)
 "kN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -372,9 +369,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "qc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
@@ -451,9 +446,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "tR" = (
 /obj/structure/cable/yellow{
@@ -580,9 +573,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Al" = (
 /obj/structure/cable/yellow{
@@ -592,6 +583,7 @@
 	name = "Powernet Sensor - Engine Output";
 	name_tag = "Engine Output"
 	},
+/obj/structure/cable/yellow,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Am" = (
@@ -630,9 +622,7 @@
 	id = "cooling_in";
 	use_power = 1
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Bg" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -651,12 +641,13 @@
 	},
 /area/engineering/engine_room)
 "BP" = (
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
 	id_tag = "engine_access_hatch";
 	locked = 1;
 	name = "Fusion Core Access";
-	req_access = list(11)
+	req_one_access = null
 	},
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
@@ -848,9 +839,7 @@
 	pump_direction = 0;
 	on = 1
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "LL" = (
 /turf/template_noop,
@@ -935,9 +924,7 @@
 	id = "cooling_in";
 	use_power = 1
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "NN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -1043,9 +1030,7 @@
 /turf/simulated/floor,
 /area/template_noop)
 "Ta" = (
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Th" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
@@ -1077,9 +1062,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "WC" = (
 /obj/structure/cable/cyan{

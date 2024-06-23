@@ -37,6 +37,8 @@
 	brute_mod = 1.5
 	burn_mod = 1.5
 
+	vision_organ = O_EYES
+
 	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	bump_flag  = MONKEY

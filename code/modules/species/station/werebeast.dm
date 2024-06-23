@@ -21,6 +21,7 @@
 	item_slowdown_mod = 0.25
 	hunger_factor = 0.4
 	vision_innate = /datum/vision/baseline/species_tier_3
+	vision_organ = O_EYES
 	mob_size  = MOB_LARGE
 
 	max_age = 200

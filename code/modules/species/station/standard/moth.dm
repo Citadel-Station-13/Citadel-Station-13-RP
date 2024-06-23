@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
 	vision_innate = /datum/vision/baseline/species_tier_2
+	vision_organ = O_EYES
 
 	// i'd like to see oyu move in water with wings
 	water_movement = 0.3

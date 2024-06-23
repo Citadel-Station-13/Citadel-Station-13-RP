@@ -138,8 +138,9 @@
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Science Outpost Atmospherics";
-	req_one_access = list(10,47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "bZ" = (
@@ -357,6 +358,8 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
+/obj/map_helper/access_helper/airlock/station/head_office/pathfinder,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/outpost/underground)
 "ey" = (
@@ -702,6 +705,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
+"hY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/maintenance/rnd{
+	name = "Science Outpost Maintenance";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "ic" = (
@@ -1265,11 +1281,12 @@
 "oS" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "Science Outpost Substation";
-	req_one_access = list(10,47)
+	req_one_access = null
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "oT" = (
@@ -1303,11 +1320,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Science Outpost Maintenance";
-	req_one_access = list(10,47)
+	req_one_access = null
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "pG" = (
@@ -1378,10 +1396,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass/mining,
+/obj/machinery/door/airlock/glass/mining{
+	req_one_access = null
+	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/storage)
 "qC" = (
@@ -1462,6 +1483,23 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
+"rh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance/rnd{
+	name = "Science Outpost Maintenance";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/science/maintenance,
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "ri" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "D-NW"
@@ -3387,22 +3425,6 @@
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
-"Ox" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/door/airlock/maintenance/rnd{
-	name = "Science Outpost Maintenance";
-	req_one_access = list(10,47)
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
 "Oy" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -3686,6 +3708,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance/common,
+/obj/map_helper/access_helper/airlock/station/supply/maintenance,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "Rs" = (
@@ -34282,7 +34305,7 @@ mA
 mA
 Eb
 mA
-pF
+hY
 YK
 DW
 EE
@@ -34677,7 +34700,7 @@ ej
 Iq
 Iq
 oO
-Ox
+rh
 oO
 oO
 be

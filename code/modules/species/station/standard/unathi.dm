@@ -111,6 +111,7 @@
 		O_STOMACH   = /obj/item/organ/internal/stomach/unathi,
 		O_INTESTINE = /obj/item/organ/internal/intestine/unathi,
 	)
+	vision_organ = O_EYES
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,

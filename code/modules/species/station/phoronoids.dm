@@ -63,6 +63,7 @@
 		O_BRAIN   = /obj/item/organ/internal/brain,
 		O_EYES    = /obj/item/organ/internal/eyes,
 	)
+	vision_organ = O_EYES
 
 	cold_level_1 = 200
 	cold_level_2 = 180

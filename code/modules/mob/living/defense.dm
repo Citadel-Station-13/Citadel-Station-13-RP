@@ -101,7 +101,7 @@
 		return
 	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
-			ai_holder.react_to_attack(L)
+			ai_holder.react_to_attack_polaris(L)
 
 /mob/living/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
@@ -121,7 +121,7 @@
 			signaler.signal()
 
 	if(ai_holder && P.firer)
-		ai_holder.react_to_attack(P.firer)
+		ai_holder.react_to_attack_polaris(P.firer)
 
 	//Armor
 	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
@@ -236,7 +236,7 @@
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	if(ai_holder)
-		ai_holder.react_to_attack(user)
+		ai_holder.react_to_attack_polaris(user)
 
 	var/soaked = get_armor_soak(hit_zone, "melee")
 	var/blocked = run_armor_check(hit_zone, "melee")
@@ -274,7 +274,7 @@
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		var/dtype = O.damtype
-		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/miss_chance = 15
 		var/distance = get_dist(TT.initial_turf, loc)
@@ -297,7 +297,7 @@
 			if(!!client || !!M.client)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
 			if(ai_holder)
-				ai_holder.react_to_attack(TT.thrower)
+				ai_holder.react_to_attack_polaris(TT.thrower)
 
 		// Begin BS12 momentum-transfer code.
 		var/mass = 1.5
@@ -362,7 +362,7 @@
 	adjustBruteLoss(damage)
 	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_mob attacks
 	if(ai_holder)
-		ai_holder.react_to_attack(user)
+		ai_holder.react_to_attack_polaris(user)
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
 	spawn(1) update_health()
@@ -570,7 +570,7 @@
 /mob/living/proc/get_accuracy_penalty()
 	// Certain statuses make it harder to score a hit.
 	var/accuracy_penalty = 0
-	if(blinded)
+	if(has_status_effect(/datum/status_effect/sight/blindness))
 		accuracy_penalty += 75
 	if(eye_blurry)
 		accuracy_penalty += 30

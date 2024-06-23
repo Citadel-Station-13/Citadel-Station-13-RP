@@ -1062,9 +1062,12 @@
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
+	var/old_pose = pose
+
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
 
-	visible_emote("adjusts [T.his] posture.")
+	if (length(pose)>0 && pose != old_pose)
+		visible_emote("adjusts [T.his] posture.")
 
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"

@@ -117,8 +117,6 @@
 				user.visible_message("<span class='notice'>[user] treats damage to [target]'s [I.name] with [tool_name].</span>", \
 				"<span class='notice'>You treat damage to [target]'s [I.name] with [tool_name].</span>" )
 				I.revive(TRUE)
-				if(I.organ_tag == O_EYES)
-					target.sdisabilities &= ~SDISABILITY_NERVOUS
 				if(I.organ_tag == O_LUNGS)
 					target.SetLosebreath(0)
 

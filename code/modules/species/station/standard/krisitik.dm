@@ -17,6 +17,7 @@
 	intrinsic_languages = LANGUAGE_ID_SQUEAKISH
 
 	vision_innate = /datum/vision/baseline/species_tier_2
+	vision_organ = O_EYES
 
 	color_mult = 1
 

@@ -21,7 +21,6 @@
 	var/pass_flags_self = NONE
 
 	//? Unsorted / Legacy
-	var/level = 2
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
 	/// Holder for the last time we have been bumped.
@@ -220,6 +219,10 @@
 	/// Default sound played on a burn type impact. This is usually null for default.
 	var/hit_sound_burn
 
+/proc/lint__check_atom_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/atom/target
+	target.New()
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -232,8 +235,9 @@
  * We also generate a tag here if the DF_USE_TAG flag is set on the atom
  */
 /atom/New(loc, ...)
-	//atom creation method that preloads variables at creation
-	if(global.use_preloader && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	// atom creation method that preloads variables at creation
+	// todo: we shouldn't need a type check here.
+	if(global.dmm_preloader_active && global.dmm_preloader_target == type)
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
@@ -245,6 +249,20 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
+
+/**
+ * Called by the maploader if a dmm_context is set
+ */
+/atom/proc/preloading_instance(datum/dmm_context/context)
+	return
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/dmm_preloader/preloader)
+	return TRUE
 
 /**
  * The primary method that objects are setup in SS13 with
@@ -909,8 +927,10 @@
 /**
  * called when we're hit by a radiation wave
  *
- * this is only called on the top level atoms directly on a turf
- * for nested atoms, you need /datum/component/radiation_listener
+ * * this is only called directly on turfs
+ * * this is also called directly if an outgoing pulse is shielded by something, so it hits everything inside it instead
+ * * for any other atom on turf, you need /datum/component/radiation_listener
+ * * /datum/element/z_radiation_listener is needed if you want to listen to z-wide and other high-gain rad pulses
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
 	SHOULD_CALL_PARENT(TRUE)

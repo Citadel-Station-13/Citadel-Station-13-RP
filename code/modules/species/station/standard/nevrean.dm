@@ -33,6 +33,7 @@
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
+	vision_organ = O_EYES
 
 	color_mult = 1
 	max_age = 80

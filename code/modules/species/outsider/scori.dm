@@ -39,6 +39,8 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_3
 
+	vision_organ = O_EYES
+
 	//Adapted to overcast skies and caverns.
 	flash_mod = 3.0
 
