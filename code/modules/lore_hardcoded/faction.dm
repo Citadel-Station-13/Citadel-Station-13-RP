@@ -129,6 +129,7 @@
 	prevents any contracting polities from using their own materiel against them. The Orion Confederation itself is one of Hephaestus' largest \
 	non-corporate bulk contractors."
 	contractor_info = "Nanotrasen and Hephaestus have a long and beneficial working relationship. Your employers would not like it if you strained that relationship in any way, and therefore, neither would you."
+	job_whitelist = null
 	job_blacklist = list(
 		// NT is still in charge
 		/datum/role/job/station/captain::id,
@@ -189,6 +190,7 @@
 	essential to modern sleeving techniques. Vey-Medical possesses a number of trade agreements and research pacts with Nanotrasen, \
 	resulting in what is functionally considered an alliance."
 	contractor_info = "Working with Nanotrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
+	job_whitelist = null
 	job_blacklist = list(
 		// NT is still in charge
 		/datum/role/job/station/captain::id,
