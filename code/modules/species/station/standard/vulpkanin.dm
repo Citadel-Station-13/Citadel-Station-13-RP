@@ -73,6 +73,13 @@
 	if(!isliving(user))
 		return
 
+	var/atom/target = get_edge_target_turf(user, user.dir) //gets the user's direction
+
+	playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
+	user.visible_message(SPAN_WARNING("[user] dashes forward!"))
+	user.throw_at_old(target, jumpdistance, jumpspeed)
+	recharging_time = world.time + recharging_rate
+
 /*
 /obj/item/clothing/shoes/bhop/ui_action_click()
 	var/mob/living/user = loc
