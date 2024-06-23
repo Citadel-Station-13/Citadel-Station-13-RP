@@ -856,7 +856,7 @@ END OF CITADEL CHANGES */
 
 
 	var/recharging = 0
-	var/phase_power = 75
+	var/phase_power = 150
 
 
 /obj/item/gun/energy/hardlight_bow/unload_ammo(var/mob/user)
