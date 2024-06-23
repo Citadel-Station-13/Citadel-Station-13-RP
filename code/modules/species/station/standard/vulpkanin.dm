@@ -59,3 +59,37 @@
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
 	)
+
+
+/datum/ability/species/vulp/dash
+	name = "Dash"
+	desc = "Dash forwards."
+	action_state = "genetic_jump"
+	cooldown = 10 SECONDS
+	nutrition_cost = 10
+
+/datum/ability/species/vulp/dash/on_trigger()
+	. = ..()
+	if(!isliving(user))
+		return
+
+/*
+/obj/item/clothing/shoes/bhop/ui_action_click()
+	var/mob/living/user = loc
+	if(!isliving(user))
+		return
+
+	if(user.throwing)
+		return // User is already being thrown
+
+	if(recharging_time > world.time)
+		to_chat(user, SPAN_WARNING("The boot's internal propulsion needs to recharge still!"))
+		return
+
+	var/atom/target = get_edge_target_turf(user, user.dir) //gets the user's direction
+
+	playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
+	user.visible_message(SPAN_WARNING("[user] dashes forward into the air!"))
+	user.throw_at_old(target, jumpdistance, jumpspeed)
+	recharging_time = world.time + recharging_rate
+*/
