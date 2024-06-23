@@ -908,7 +908,7 @@
  */
 /obj/proc/set_hides_underfloor(new_value, mapload)
 	switch(new_value)
-		if(OBJ_UNDERFLOOR_IF_COVERED, OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP)
+		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			var/turf/where_we_are = loc
 			if(istype(where_we_are) && where_we_are.hides_underfloor_objects())
 				new_value = OBJ_UNDERFLOOR_ALWAYS
@@ -949,10 +949,10 @@
  */
 /obj/proc/initialize_hiding_underfloor(mapload)
 	switch(hides_underfloor)
-		if(OBJ_UNDERFLOOR_IF_COVERED, OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP)
+		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			var/turf/where_we_are = loc
-			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP) && mapload
-			if(istype(where_we_are) && (hide_anyways || where_we_are.hides_underfloor_objects()))
+			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP) && mapload
+			if(istype(where_we_are) && (hide_anyways || !where_we_are.hides_underfloor_objects()))
 				hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 				if(!mapload)
 					update_hiding_underfloor(TRUE)
