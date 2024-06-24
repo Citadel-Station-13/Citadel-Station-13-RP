@@ -24,9 +24,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(turf_type)
 		ChangeTurf(turf_type)
 
-/turf/proc/CopyTurf(turf/T, copy_flags = NONE)
-	if(T.type != type)
-		T.ChangeTurf(type)
+/**
+ * @params
+ * * T - the turf to copy to
+ * * change_flags - ChangeTurf() flags
+ */
+/turf/proc/CopyTurf(turf/T, change_flags)
+	if(T.type != type || (change_flags & CHANGETURF_FORCEOP))
+		T.ChangeTurf(type, null, change_flags)
 	if(T.icon_state != icon_state)
 		T.icon_state = icon_state
 	if(T.icon != icon)
@@ -412,7 +417,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 // Copy an existing turf and put it on top
 // Returns the new turf
-/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_air = FALSE)
+/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_flags)
 	var/list/new_baseturfs = list()
 	new_baseturfs += baseturfs
 	new_baseturfs += type
@@ -429,7 +434,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			target_baseturfs -= new_baseturfs & GLOB.blacklisted_automated_baseturfs
 			new_baseturfs += target_baseturfs
 
-	var/turf/newT = copytarget.CopyTurf(src, copy_air)
+	var/turf/newT = copytarget.CopyTurf(src, copy_flags)
 	newT.baseturfs = baseturfs_string_list(new_baseturfs, newT)
 	return newT
 
