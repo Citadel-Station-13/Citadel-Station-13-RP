@@ -64,11 +64,11 @@
 
 /obj/projectile/arc/fire(angle, atom/direct_target)
 	..() // The trajectory must exist for set_pixel_speed() to work.
-	set_pixel_speed(projectile_speed_modifier) // Slows it down and makes the distance checking more accurate.
+	set_speed(32 * projectile_speed_modifier)
 
-/obj/projectile/arc/pixel_move(trajectory_multiplier, hitscanning = FALSE)
+/obj/projectile/arc/physics_iteration(pixels)
 	// Do the other important stuff first.
-	..(trajectory_multiplier, hitscanning)
+	. = ..()
 
 	// Test to see if its time to 'hit the ground'.
 	var/pixels_flown = distance_flown()

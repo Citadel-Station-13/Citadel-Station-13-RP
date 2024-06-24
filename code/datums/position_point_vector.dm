@@ -9,7 +9,10 @@
 #define RETURN_POINT_VECTOR(ATOM, ANGLE, SPEED) {new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED)}
 #define RETURN_POINT_VECTOR_INCREMENT(ATOM, ANGLE, SPEED, AMT) new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED, AMT)
 
-/datum/position			//For positions with map x/y/z and pixel x/y so you don't have to return lists. Could use addition/subtraction in the future I guess.
+/**
+ * Stores x/y/z and pixel_x/pixel_y
+ */
+/datum/position
 	var/x = 0
 	var/y = 0
 	var/z = 0
@@ -66,7 +69,12 @@
 /proc/angle_between_points(datum/point/a, datum/point/b)
 	return arctan((b.y - a.y), (b.x - a.x))
 
-/datum/point		//A precise point on the map in absolute pixel locations based on world.icon_size. Pixels are FROM THE EDGE OF THE MAP!
+/**
+ * A precise point on the map.
+ *
+ * x/y are absolute pixels from map edge, so 1, 1 = the lower-left most pixel on the zlevel, not the center of turf (1,1)!
+ */
+/datum/point
 	var/x = 0
 	var/y = 0
 	var/z = 0
