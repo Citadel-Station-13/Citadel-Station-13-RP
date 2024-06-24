@@ -18,22 +18,48 @@
 	var/range = 50
 	var/originalRange
 
-	//* PHysics - Configuration *//
+	//* Physics - Configuration *//
 
 	/// speed, in pixels per decisecond
 	var/speed_regex_this = 32 / 0.55 // ~18 tiles/second
+	/// angle, in degrees **clockwise of north**
+	var/angle
+
+	//* Physics - State *//
+
+	/// paused? if so, we completely get passed over during processing
+	var/paused = FALSE
+	/// currently hitscanning
+	var/hitscanning = FALSE
+	/// a flag to prevent movement hooks from resetting our physics on a forced movement
+	var/trajectory_ignore_forcemove = FALSE
+	/// cached value: move this much x for this much distance
+	/// basically, dx / distance
+	var/calculated_dx
+	/// cached value: move this much y for this much distance
+	/// basically, dy / distance
+	var/calculated_dy
+	/// our current pixel location on turf
+	/// byond pixel_x rounds, and we don't want that
+	///
+	/// * at plus or minus WORLD_ICON_SIZE / 2, we move to next turf
+	var/current_px
+	/// our current pixel location on turf
+	/// byond pixel_y rounds, and we don't want that
+	///
+	/// * at plus or minus WORLD_ICON_SIZE / 2, we move to next turf
+	var/current_py
+	/// used to track if we got kicked forwards after calling Move()
+	var/trajectory_kicked_forwards
+	/// to avoid going too fast when kicked forwards by a mirror, if we overshoot the pixels we're
+	/// supposed to move this gets set to penalize the next move with a weird algorithm
+	/// that i won't bother explaining
+	var/trajectory_penalty_applied = 0
 
 	//Fired processing vars
 	var/fired = FALSE	//Have we been fired yet
-	var/paused = FALSE	//for suspending the projectile midair
-	var/last_projectile_move = 0
-	var/last_process = 0
-	var/time_offset = 0
-	var/datum/point/vector/trajectory
-	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 	var/ignore_source_check = FALSE
 
-	var/Angle = 0
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
 	var/spread = 0			//amount (in degrees) of projectile spread
@@ -72,7 +98,9 @@
 	//Homing
 	var/homing = FALSE
 	var/atom/homing_target
-	var/homing_turn_speed = 10		//Angle per tick.
+	// angle per deciseconds
+	// this is smoother the less time between SSprojectiles fires
+	var/homing_turn_speed = 10
 	var/homing_inaccuracy_min = 0		//in pixels for these. offsets are set once when setting target.
 	var/homing_inaccuracy_max = 0
 	var/homing_offset_x = 0
@@ -262,60 +290,6 @@
 		if(can_hit_target(L, permutated, (AM == original)))
 			Bump(AM)
 
-/obj/projectile/proc/process_homing()			//may need speeding up in the future performance wise.
-	if(!homing_target)
-		return FALSE
-	var/datum/point/PT = RETURN_PRECISE_POINT(homing_target)
-	PT.x += clamp(homing_offset_x, 1, world.maxx)
-	PT.y += clamp(homing_offset_y, 1, world.maxy)
-	var/angle = closer_angle_difference(Angle, angle_between_points(RETURN_PRECISE_POINT(src), PT))
-	setAngle(Angle + clamp(angle, -homing_turn_speed, homing_turn_speed))
-
-/obj/projectile/proc/set_homing_target(atom/A)
-	if(!A || (!isturf(A) && !isturf(A.loc)))
-		return FALSE
-	homing = TRUE
-	homing_target = A
-	homing_offset_x = rand(homing_inaccuracy_min, homing_inaccuracy_max)
-	homing_offset_y = rand(homing_inaccuracy_min, homing_inaccuracy_max)
-	if(prob(50))
-		homing_offset_x = -homing_offset_x
-	if(prob(50))
-		homing_offset_y = -homing_offset_y
-
-/obj/projectile/process(delta_time)
-	last_process = world.time
-	if(!loc || !fired || !trajectory)
-		fired = FALSE
-		return PROCESS_KILL
-	if(paused || !isturf(loc))
-		last_projectile_move += world.time - last_process		//Compensates for pausing, so it doesn't become a hitscan projectile when unpaused from charged up ticks.
-		return
-	var/elapsed_time_deciseconds = (world.time - last_projectile_move) + time_offset
-	time_offset = 0
-	var/required_moves = speed > 0? FLOOR(elapsed_time_deciseconds / speed, 1) : MOVES_HITSCAN			//Would be better if a 0 speed made hitscan but everyone hates those so I can't make it a universal system :<
-	if(required_moves == MOVES_HITSCAN)
-		required_moves = SSprojectiles.global_max_tick_moves
-	else
-		if(required_moves > SSprojectiles.global_max_tick_moves)
-			var/overrun = required_moves - SSprojectiles.global_max_tick_moves
-			required_moves = SSprojectiles.global_max_tick_moves
-			time_offset += overrun * speed
-		time_offset += MODULUS(elapsed_time_deciseconds, speed)
-
-	for(var/i in 1 to required_moves)
-		pixel_move(1, FALSE)
-
-/obj/projectile/proc/setAngle(new_angle)	//wrapper for overrides.
-	Angle = new_angle
-	if(!nondirectional_sprite)
-		var/matrix/M = new
-		M.Turn(Angle)
-		transform = M
-	if(trajectory)
-		trajectory.set_angle(new_angle)
-	return TRUE
-
 /obj/projectile/forceMove(atom/target)
 	if(!isloc(target) || !isloc(loc) || !z)
 		return ..()
@@ -474,7 +448,6 @@
 	if(hitscan)
 		finalize_hitscan_and_generate_tracers()
 	STOP_PROCESSING(SSprojectiles, src)
-	qdel(trajectory)
 	return ..()
 
 /obj/projectile/proc/cleanup_beam_segments()
@@ -807,22 +780,118 @@
 /obj/projectile/proc/get_final_damage(atom/target)
 	return run_damage_vulnerability(target)
 
-//* Physics *//
+//* Physics - Configuration *//
+
+/**
+ * sets our angle
+ */
+/obj/projectile/proc/set_angle(new_angle)
+	angle = new_angle
+
+	// update sprite
+	if(!nondirectional_sprite)
+		var/matrix/M = new
+		M.Turn(angle)
+		transform = M
+
+	// update trajectory
+	calculated_dx = sin(new_angle)
+	calculated_dy = cos(new_angle)
+
+	#warn handle hitscan tracer
+
+/**
+ * sets our speed in pixels per decisecond
+ */
+/obj/projectile/proc/set_speed(new_speed)
+	speed = new_speed
+
+/**
+ * sets our angle and speed
+ */
+/obj/projectile/proc/set_velocity(new_angle, new_speed)
+	// this is so this can be micro-optimized later but for once i'm not going to do it early for no reason
+	set_speed(new_speed)
+	set_angle(new_angle)
+
+/**
+ * todo: this is somewhat mildly terrible
+ */
+/obj/projectile/proc/set_homing_target(atom/A)
+	if(!A || (!isturf(A) && !isturf(A.loc)))
+		return FALSE
+	homing = TRUE
+	homing_target = A
+	homing_offset_x = rand(homing_inaccuracy_min, homing_inaccuracy_max)
+	homing_offset_y = rand(homing_inaccuracy_min, homing_inaccuracy_max)
+	if(prob(50))
+		homing_offset_x = -homing_offset_x
+	if(prob(50))
+		homing_offset_y = -homing_offset_y
+
+//* Physics - Processing *//
+
+/obj/projectile/process(delta_time)
+	if(paused)
+		return
+	physics_iteration(delta_time * speed)
 
 /**
  * immediately processes hitscan
  */
 /obj/projectile/proc/physics_hitscan()
+	hitscanning = TRUE
+
+	hitscanning = FALSE
 
 /**
  * ticks forwards a number of pixels
+ *
+ * todo: potential lazy animate support for performance, as we honestly don't need to animate at full fps if the server's above 20fps
  */
 /obj/projectile/proc/physics_iteration(pixels)
+	var/moved
+
+#warn crying rn
 
 /**
- * immediately move into the next tile
+ * immediately, without processing, kicks us forward a number of pixels
+ *
+ * since we immediately cross over into a turf when entering,
+ * things like mirrors/reflectors will immediately set angle
+ *
+ * it looks ugly and is pretty bad to just reflect off the edge of a turf so said things can
+ * call this proc to kick us forwards by a bit
  */
-/obj/projectile/proc/physics_move_forwards()
+/obj/projectile/proc/physics_kick_forwards(pixels)
+	current_px += pixels * calculated_dx
+	current_py += pixels * calculated_dy
+
+/**
+ * only works during non-hitscan
+ *
+ * this is smoother the more often it's called so effects vary between 20 and 40 fps
+ * unfortunately this will always be somewhat janky
+ *
+ * todo: this is somewhat mildly terrible
+ */
+/obj/projectile/proc/process_homing(delta_time)
+	// checks if they're 1. on a turf, 2. on our z
+	// todo: should we add support for tracking something even if it leaves a turf?
+	if(homing_target?.z != z)
+		// bye bye!
+		return FALSE
+	// todo: this assumes single-tile objects. at some point, we should upgrade this to be unnecessarily expensive and always center-mass.
+	var/dx = (homing_target.x - src.x) * WORLD_ICON_SIZE + (0 - current_px)
+	var/dy = (homing_target.y - src.y) * WORLD_ICON_SIZE + (0 - current_py)
+	// say it with me, arctan()
+	// is CCW of east if (dx, dy)
+	// and CW of north if (dy, dx)
+	// where dx and dy is distance in x/y pixels from us to them.
+
+	var/nudge_towards = closer_angle_difference(arctan(dy, dx))
+
+	set_angle(angle + clamp(nudge_towards, -homing_turn_speed, homing_turn_speed))
 
 //* Targeting *//
 
