@@ -2,6 +2,24 @@
 #define MOVES_HITSCAN -1
 ///How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
 #define MUZZLE_EFFECT_PIXEL_INCREMENT 17
+
+/**
+ * ## Physics Specifications
+ *
+ * We track physics as absolute pixel on a tile, not byond's pixel x/y
+ * thus the first pixel at bottom left of tile is 1, 1
+ * and the last pixel at top right is 32, 32 (for a world icon size of 32 pixels)
+ *
+ * We cross over to the next tile at above 32, for up/right,
+ * and to the last tile at below 1, for bottom/left.
+ *
+ * The code might handle it based on how it's implemented,
+ * but as long as the error is 1 pixel or below, it's not a big deal.
+ *
+ * The reason we're so accurate (1 pixel/below is pretty insanely strict) is
+ * so players have the projectile act like what the screen says it should be like;
+ * hence why projectiles can realistically path across corners based on their 'hitbox center'.
+ */
 /obj/projectile
 	name = "projectile"
 	icon = 'icons/obj/projectiles.dmi'
@@ -21,6 +39,7 @@
 	//* Physics - Configuration *//
 
 	/// speed, in pixels per decisecond
+	#warn regex that!
 	var/speed_regex_this = 32 / 0.55 // ~18 tiles/second
 	/// angle, in degrees **clockwise of north**
 	var/angle
@@ -42,12 +61,12 @@
 	/// our current pixel location on turf
 	/// byond pixel_x rounds, and we don't want that
 	///
-	/// * at plus or minus WORLD_ICON_SIZE / 2, we move to next turf
+	/// * at below 0 or at equals to WORLD_ICON_SIZE, we move to the next turf
 	var/current_px
 	/// our current pixel location on turf
 	/// byond pixel_y rounds, and we don't want that
 	///
-	/// * at plus or minus WORLD_ICON_SIZE / 2, we move to next turf
+	/// * at below 0 or at equals to WORLD_ICON_SIZE, we move to the next turf
 	var/current_py
 	/// used to track if we got kicked forwards after calling Move()
 	var/trajectory_kicked_forwards
@@ -196,27 +215,6 @@
 /obj/projectile/proc/on_range() //if we want there to be effects when they reach the end of their range
 	qdel(src)
 
-/obj/projectile/proc/return_predicted_turf_after_moves(moves, forced_angle)		//I say predicted because there's no telling that the projectile won't change direction/location in flight.
-	if(!trajectory && isnull(forced_angle) && isnull(Angle))
-		return FALSE
-	var/datum/point/vector/current = trajectory
-	if(!current)
-		var/turf/T = get_turf(src)
-		current = new(T.x, T.y, T.z, pixel_x, pixel_y, isnull(forced_angle)? Angle : forced_angle, SSprojectiles.global_pixel_speed)
-	var/datum/point/vector/v = current.return_vector_after_increments(moves * SSprojectiles.global_iterations_per_move)
-	return v.return_turf()
-
-/obj/projectile/proc/return_pathing_turfs_in_moves(moves, forced_angle)
-	var/turf/current = get_turf(src)
-	var/turf/ending = return_predicted_turf_after_moves(moves, forced_angle)
-	return getline(current, ending)
-
-/obj/projectile/proc/set_pixel_speed(new_speed)
-	if(trajectory)
-		trajectory.set_speed(new_speed)
-		return TRUE
-	return FALSE
-
 /obj/projectile/proc/record_hitscan_start(datum/point/pcache)
 	if(!has_tracer)
 		return
@@ -298,6 +296,7 @@
 	if(zc)
 		before_z_change(old, target)
 	. = ..()
+	#warn reset_physics_to_turf
 	if(trajectory && !trajectory_ignore_forcemove && isturf(target))
 		if(hitscan)
 			finalize_hitscan_and_generate_tracers(FALSE)
@@ -804,7 +803,7 @@
  * sets our speed in pixels per decisecond
  */
 /obj/projectile/proc/set_speed(new_speed)
-	speed = new_speed
+	speed_regex_this = new_speed
 
 /**
  * sets our angle and speed
@@ -829,12 +828,26 @@
 	if(prob(50))
 		homing_offset_y = -homing_offset_y
 
+/**
+ * called after an unhandled forcemove is detected, or other event
+ * that should reset our on-turf state
+ */
+/obj/projectile/proc/reset_physics_to_turf()
+	// we use this because we can center larger than 32x32 projectiles
+	// without disrupting physics this way
+	//
+	// we add by (WORLD_ICON_SIZE / 2) because
+	// pixel_x / pixel_y starts at center,
+	//
+	current_px = pixel_x - base_pixel_x + (WORLD_ICON_SIZE / 2)
+	current_py = pixel_y - base_pixel_y + (WORLD_ICON_SIZE / 2)
+
 //* Physics - Processing *//
 
 /obj/projectile/process(delta_time)
 	if(paused)
 		return
-	physics_iteration(delta_time * speed)
+	physics_iteration(delta_time * speed_regex_this)
 
 /**
  * immediately processes hitscan
@@ -870,12 +883,13 @@
 /**
  * only works during non-hitscan
  *
- * this is smoother the more often it's called so effects vary between 20 and 40 fps
- * unfortunately this will always be somewhat janky
+ * this is called once per turf
+ * if fps / movement is too fast the projectile will look extremely weird
  *
  * todo: this is somewhat mildly terrible
+ * todo: this has absolutely no arc/animation support; this is bad
  */
-/obj/projectile/proc/process_homing(delta_time)
+/obj/projectile/proc/physics_tick_homing(delta_time)
 	// checks if they're 1. on a turf, 2. on our z
 	// todo: should we add support for tracking something even if it leaves a turf?
 	if(homing_target?.z != z)
@@ -892,6 +906,37 @@
 	var/nudge_towards = closer_angle_difference(arctan(dy, dx))
 
 	set_angle(angle + clamp(nudge_towards, -homing_turn_speed, homing_turn_speed))
+
+//* Physics - Querying *//
+
+/**
+ * predict what turf we'll be in after going forwards a certain amount of pixels
+ *
+ * doesn't actually sim; so this will go through walls/obstacles!
+ *
+ * * if we go out of bounds, we will return null; this doesn't level-wrap
+ */
+/obj/projectile/proc/physics_predicted_turf_after_iteration(pixels)
+	// -1 at the end if 0, because:
+	//
+	// -32 is go back 1 tile and be at the 1st pixel (as 0 is going back)
+	// 0 is go back 1 tile and be at the 32nd pixel.
+	var/incremented_px = (current_px + pixels * calculated_dx) || - 1
+	var/incremented_py = (current_py + pixels * calculated_dy) || - 1
+
+	var/incremented_tx = floor(incremented_px / 32)
+	var/incremented_ty = floor(incremented_py / 32)
+
+	return locate(x + incremented_tx, y + incremented_ty, z)
+
+/**
+ * predict what turfs we'll hit, excluding the current turf, after going forwards
+ * a certain amount of pixels
+ *
+ * doesn't actually sim; so this will go through walls/obstacles!
+ */
+/obj/projectile/proc/physics_predicted_turfs_during_iteration(pixels)
+	#warn impl
 
 //* Targeting *//
 
