@@ -18,6 +18,11 @@
 	var/range = 50
 	var/originalRange
 
+	//* PHysics - Configuration *//
+
+	/// speed, in pixels per decisecond
+	var/speed_regex_this = 32 / 0.55 // ~18 tiles/second
+
 	//Fired processing vars
 	var/fired = FALSE	//Have we been fired yet
 	var/paused = FALSE	//for suspending the projectile midair
@@ -28,7 +33,6 @@
 	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 	var/ignore_source_check = FALSE
 
-	var/speed = 0.55			//Amount of deciseconds it takes for projectile to travel
 	var/Angle = 0
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
@@ -803,7 +807,24 @@
 /obj/projectile/proc/get_final_damage(atom/target)
 	return run_damage_vulnerability(target)
 
-//? Targeting
+//* Physics *//
+
+/**
+ * immediately processes hitscan
+ */
+/obj/projectile/proc/physics_hitscan()
+
+/**
+ * ticks forwards a number of pixels
+ */
+/obj/projectile/proc/physics_iteration(pixels)
+
+/**
+ * immediately move into the next tile
+ */
+/obj/projectile/proc/physics_move_forwards()
+
+//* Targeting *//
 
 /**
  * Checks if something is a valid target when directly clicked.

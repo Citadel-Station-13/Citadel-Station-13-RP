@@ -9,7 +9,8 @@
 	var/beam_state = "b_beam"
 
 	damage = 5
-	speed = 2
+	// ~5 tiles/second
+	speed_regex_this = 32 / 2
 	damage_type = BURN
 	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
