@@ -27,8 +27,8 @@
 	var/new_turf_x = CEILING(new_pos_pix_x / WORLD_ICON_SIZE, 1)
 	var/new_turf_y = CEILING(new_pos_pix_y / WORLD_ICON_SIZE, 1)
 
-	var/new_pixel_x = MODULUS(new_pos_pix_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
-	var/new_pixel_y = MODULUS(new_pos_pix_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
+	var/new_pixel_x = MODULUS_F(new_pos_pix_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
+	var/new_pixel_y = MODULUS_F(new_pos_pix_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
 
 	var/new_loc = locate(new_turf_x, new_turf_y, z)
 

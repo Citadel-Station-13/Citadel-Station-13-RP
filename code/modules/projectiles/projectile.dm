@@ -936,7 +936,7 @@
  * doesn't actually sim; so this will go through walls/obstacles!
  */
 /obj/projectile/proc/physics_predicted_turfs_during_iteration(pixels)
-	#warn impl
+	return pixel_physics_raycast(loc, current_px, current_py, angle, pixels)
 
 //* Targeting *//
 
