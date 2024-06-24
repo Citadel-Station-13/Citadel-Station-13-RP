@@ -217,16 +217,14 @@
 	var/no_attack_log = FALSE
 
 /obj/projectile/Destroy()
-	#warn should this be done here?
-	if(hitscan)
-		finalize_hitscan_and_generate_tracers()
 	// stop processing
 	STOP_PROCESSING(SSprojectiles, src)
 	// cleanup
-	QDEL_LIST(tracer_vertices)
+	cleanup_hitscan_tracers()
 	return ..()
 
 /obj/projectile/proc/legacy_on_range() //if we want there to be effects when they reach the end of their range
+	finalize_hitscan_tracers(impact_effect = FALSE)
 	qdel(src)
 
 /obj/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
@@ -287,7 +285,7 @@
 		physics_hitscan()
 	else
 		START_PROCESSING(SSprojectiles, src)
-		pixel_move(1, FALSE)	//move it now!
+		physics_iteration(WORLD_ICON_SIZE, SSprojectiles.wait)
 
 /obj/projectile/Move(atom/newloc, dir = NONE)
 	. = ..()
@@ -467,6 +465,7 @@
 	if(A)
 		on_impact(A)
 	qdel(src)
+	finalize_hitscan_tracers(impact_effect = TRUE)
 	return TRUE
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
@@ -696,15 +695,27 @@
 		CRASH("tried to add more than 25 vertices to a hitscan tracer")
 	tracer_vertices += point
 
-#warn below
-
-/obj/projectile/proc/finalize_hitscan_and_generate_tracers(impacting = TRUE)
+/obj/projectile/proc/render_hitscan_tracers()
 	if(!has_tracer)
 		return
-	if(trajectory && beam_index)
-		var/datum/point/pcache = trajectory.copy_to()
-		beam_segments[beam_index] = pcache
-	generate_hitscan_tracers(null, null, impacting)
+	var/list/atom/movable/beam_components = list()
+	if(tracer_type)
+		
+	#warn impl
+
+
+/obj/projectile/proc/cleanup_hitscan_tracers()
+	QDEL_NULL(tracer_vertices)
+
+/obj/projectile/proc/finalize_hitscan_tracers(impact_effect, kick_forwards)
+	// if end wasn't recorded yet and we're still on a turf, record end
+	if(isnull(tracer_impact_effect) && loc)
+		record_hitscan_end(impact_marker = impact_effect, kick_forwards = kick_forwards)
+	// render & cleanup
+	render_hitscan_tracers()
+	cleanup_hitscan_tracers()
+
+#warn below
 
 /obj/projectile/proc/generate_hitscan_tracers(cleanup = TRUE, duration = 5, impacting = TRUE)
 	if(!length(beam_segments))
