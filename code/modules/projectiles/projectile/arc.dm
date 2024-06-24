@@ -44,7 +44,7 @@
 	var/datum/point/starting_point = new(starting)
 	return pixel_length_between_points(current_point, starting_point)
 
-/obj/projectile/arc/on_range()
+/obj/projectile/arc/legacy_on_range()
 	if(loc)
 		on_impact(loc)
 	return ..()
@@ -74,7 +74,7 @@
 	var/pixels_flown = distance_flown()
 
 	if(pixels_flown >= distance_to_fly)
-		on_range() // This will also cause the projectile to be deleted.
+		legacy_on_range() // This will also cause the projectile to be deleted.
 
 	else
 		// Handle visual projectile turning in flight.

@@ -29,8 +29,7 @@
 	//* Physics - Configuration *//
 
 	/// speed, in pixels per decisecond
-	#warn regex that!
-	var/speed_regex_this = 32 / 0.55 // ~18 tiles/second
+	var/speed = 32 / 0.55 // ~18 tiles/second
 	/// are we a hitscan projectile?
 	var/hitscan = FALSE
 	/// angle, in degrees **clockwise of north**
@@ -38,7 +37,7 @@
 	/// max distance in pixels
 	///
 	/// * please set this to a multiple of [WORLD_ICON_SIZE] so we scale with tile size.
-	var/range_regex_this = WORLD_ICON_SIZE * 50
+	var/range = WORLD_ICON_SIZE * 50
 	// todo: lifespan
 
 	//* Physics - Tracers *//
@@ -282,7 +281,6 @@
 	original_angle = angle
 	forceMove(starting)
 	permutated = list()
-	originalRange = range
 	fired = TRUE
 	// kickstart
 	if(hitscan)
@@ -598,7 +596,7 @@
 					SM.damage = damage_override
 				if(submunition_constant_spread)
 					SM.dispersion = 0
-					var/calculated = Angle + round((count / amt - 0.5) * submunition_spread_max, 1)
+					var/calculated = angle + round((count / amt - 0.5) * submunition_spread_max, 1)
 					SM.launch_projectile(target, target_zone, user, params, calculated)
 				else
 					SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
@@ -731,7 +729,7 @@
 		var/atom/movable/thing = new impact_type
 		p.move_atom_to_src(thing)
 		var/matrix/M = new
-		M.Turn(Angle)
+		M.Turn(angle)
 		thing.transform = M
 		thing.color = color
 		thing.set_light(impact_light_range, impact_light_intensity, impact_light_color_override? impact_light_color_override : color)
@@ -768,7 +766,7 @@
  * sets our speed in pixels per decisecond
  */
 /obj/projectile/proc/set_speed(new_speed)
-	speed_regex_this = new_speed
+	speed = new_speed
 
 /**
  * sets our angle and speed
@@ -818,7 +816,7 @@
 /obj/projectile/process(delta_time)
 	if(paused)
 		return
-	physics_iteration(delta_time * speed_regex_this, delta_time)
+	physics_iteration(delta_time * speed, delta_time)
 
 /**
  * immediately processes hitscan
@@ -844,7 +842,7 @@
 		// move forwards by 1 tile length
 		distance_travelled += physics_step(WORLD_ICON_SIZE)
 		// see if we're done
-		if(distance_travelled >= range_regex_this)
+		if(distance_travelled >= range)
 			legacy_on_range()
 			break
 
@@ -867,7 +865,7 @@
 	trajectory_penalty_applied -= penalizing
 
 	// clamp to max distance
-	pixels_remaining = min(pixels_remaining, range_regex_this - distance_travelled)
+	pixels_remaining = min(pixels_remaining, range - distance_travelled)
 
 	// move as many times as we need to
 	//
@@ -895,7 +893,7 @@
 		return
 
 	// if we're at max range
-	if(distance_travelled >= range_regex_this)
+	if(distance_travelled >= range)
 		// todo: egh
 		legacy_on_range()
 		if(QDELETED(src))

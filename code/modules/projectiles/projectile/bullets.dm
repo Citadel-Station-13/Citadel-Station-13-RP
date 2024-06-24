@@ -131,11 +131,11 @@
 	accuracy = -20 // he do miss actually
 	// if the pathfinder gets a funny burst rifle, they deserve a rival
 	// ~25 tiles/second
-	speed_regex_this = 32 / 0.4
+	speed = 32 / 0.4
 
 /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // spicy boys
 	// ~50 tiles/second
-	speed_regex_this = 32 / 0.2
+	speed = 32 / 0.2
 
 /obj/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
@@ -303,7 +303,7 @@
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
 	// ~25 tiles/second
-	speed_regex_this = 32 / 0.4
+	speed = 32 / 0.4
 
 /obj/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20
@@ -391,7 +391,7 @@
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage = 60
 	// ~8.3 tiles/second
-	speed_regex_this = 32 / 1.2
+	speed = 32 / 1.2
 	armor_penetration = -50
 
 /obj/projectile/bullet/musket/silver // What its a classic
@@ -490,7 +490,7 @@
 	//incendiary = 2 //The Trail of Fire doesn't work.
 	flammability = 4
 	agony = 30
-	range = 4
+	range = WORLD_ICON_SIZE * 4
 	vacuum_traversal = 0
 
 /obj/projectile/bullet/incendiary/flamethrower/weak
@@ -498,7 +498,7 @@
 
 /obj/projectile/bullet/incendiary/flamethrower/large
 	damage = 15
-	range = 6
+	range = WORLD_ICON_SIZE * 6
 
 /obj/projectile/bullet/incendiary/caseless
 	name = "12.7mm phoron slug"
