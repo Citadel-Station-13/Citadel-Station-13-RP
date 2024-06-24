@@ -192,3 +192,25 @@
 	. = ..()
 	for(var/atom/movable/AM as anything in contents)
 		rad_insulation_contents *= AM.rad_insulation
+
+//? Shuttle Movement
+
+/turf/simulated/CopyTurf(turf/T, change_flags)
+	if(!(change_flags & CHANGETURF_INHERIT_AIR))
+		return ..()
+	// invalidate zone
+	if(has_valid_zone())
+		if(can_safely_remove_from_zone())
+			zone.remove(src)
+			queue_zone_update()
+		else
+			zone.rebuild()
+	// store air
+	var/datum/gas_mixture/old_air = remove_cell_volume()
+	. = ..()
+	// restore air
+	if(istype(., /turf/simulated))
+		var/turf/simulated/casted = .
+		if(casted.has_valid_zone())
+			stack_trace("zone rebuilt too fast")
+		casted.air = old_air
