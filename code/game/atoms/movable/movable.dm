@@ -224,52 +224,6 @@
 		if(mover.loc in locs)
 			. = TRUE
 
-/atom/movable/proc/touch_map_edge()
-	if(z in (LEGACY_MAP_DATUM).sealed_levels)
-		return
-
-	if((LEGACY_MAP_DATUM).use_overmap)
-		overmap_spacetravel(get_turf(src), src)
-		return
-
-	var/move_to_z = src.get_transit_zlevel()
-	if(move_to_z)
-		var/new_z = move_to_z
-		var/new_x
-		var/new_y
-
-		if(x <= TRANSITIONEDGE)
-			new_x = world.maxx - TRANSITIONEDGE - 2
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (x >= (world.maxx - TRANSITIONEDGE + 1))
-			new_x = TRANSITIONEDGE + 1
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (y <= TRANSITIONEDGE)
-			new_y = world.maxy - TRANSITIONEDGE -2
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		else if (y >= (world.maxy - TRANSITIONEDGE + 1))
-			new_y = TRANSITIONEDGE + 1
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		if(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear))	// Only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = SSticker.mode
-			G.check_nuke_disks()
-
-		var/turf/T = locate(new_x, new_y, new_z)
-		if(istype(T))
-			forceMove(T)
-
-//by default, transition randomly to another zlevel
-/atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = SSmapping.crosslinked_levels()
-	candidates -= z
-	if(!length(candidates))
-		return
-	return pick(candidates)
-
 // Returns the current scaling of the sprite.
 // Note this DOES NOT measure the height or width of the icon, but returns what number is being multiplied with to scale the icons, if any.
 /atom/movable/proc/get_icon_scale_x()
