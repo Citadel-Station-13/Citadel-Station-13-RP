@@ -46,6 +46,15 @@
 		ACCESS_COMMAND_IAA,
 	)
 
+// used for tether's EVA - when your EVA is shared between departments
+/obj/map_helper/access_helper/airlock/station/general_eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_GENERAL_EXPLORER,
+	)
+
 /**
  * for pilots
  */
@@ -234,6 +243,12 @@
 		ACCESS_MEDICAL_MORGUE,
 	)
 
+/obj/map_helper/access_helper/airlock/station/medical/maintenance
+	req_one_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
 /obj/map_helper/access_helper/airlock/station/service
 	icon_state = "service"
 
@@ -290,6 +305,18 @@
 		ACCESS_GENERAL_MIME,
 	)
 
+/obj/map_helper/access_helper/airlock/station/service/tomfoolery
+	req_access = list(
+		ACCESS_GENERAL_TOMFOOLERY,
+	)
+
+// access shared between the chef and botanist
+/obj/map_helper/access_helper/airlock/station/service/kitchen_botany
+	req_one_access = list(
+		ACCESS_GENERAL_KITCHEN,
+		ACCESS_GENERAL_BOTANY,
+	)
+
 /obj/map_helper/access_helper/airlock/station/supply
 	icon_state = "supply"
 
@@ -316,7 +343,7 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/supply/infirmary
-	req_one_access = list (
+	req_one_access = list(
 		ACCESS_SUPPLY_MAIN,
 		ACCESS_MEDICAL_MAIN,
 	)
@@ -368,15 +395,28 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/science/secure_storage
-	req_one_access = list (
+	req_one_access = list(
 		ACCESS_COMMAND_CAPTAIN,
 		ACCESS_SCIENCE_RD,
 	)
 
 /obj/map_helper/access_helper/airlock/station/science/infirmary
-	req_one_access = list (
+	req_one_access = list(
 		ACCESS_SCIENCE_MAIN,
 		ACCESS_MEDICAL_MAIN,
+	)
+
+// ppl really want pathfinders to have access to this
+/obj/map_helper/access_helper/airlock/station/science/research_lab
+	req_one_access = list(
+		ACCESS_GENERAL_PATHFINDER,
+		ACCESS_SCIENCE_MAIN,
+	)
+
+/obj/map_helper/access_helper/airlock/station/science/shared_xenoflora
+	req_one_access = list(
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_BOTANY,
 	)
 
 /**
@@ -436,6 +476,7 @@
 /obj/map_helper/access_helper/airlock/station/science/robotics
 	req_access = list(
 		ACCESS_SCIENCE_ROBOTICS,
+		ACCESS_SCIENCE_MAIN,
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration
@@ -471,7 +512,7 @@
 	)
 
 /obj/map_helper/access_helper/airlock/station/exploration/infirmary
-	req_one_access = list (
+	req_one_access = list(
 		ACCESS_GENERAL_EXPLORER,
 		ACCESS_GENERAL_PILOT,
 		ACCESS_COMMAND_BRIDGE,
@@ -523,6 +564,18 @@
 /obj/map_helper/access_helper/airlock/station/command/vault
 	req_access = list(
 		ACCESS_COMMAND_VAULT,
+	)
+
+/obj/map_helper/access_helper/airlock/station/command/maintenance
+	req_one_access = list(
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_ENGINEERING_MAINT,
+	)
+
+// not to be mistaken with /station/general_eva
+/obj/map_helper/access_helper/airlock/station/command/eva
+	req_one_access = list(
+		ACCESS_COMMAND_EVA,
 	)
 
 /obj/map_helper/access_helper/airlock/station/centcom

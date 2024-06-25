@@ -943,7 +943,7 @@ blockquote.brass {
 }
 
 .interface {
-  color: #750e75;
+  color: #891089;
 }
 
 .sans {
@@ -999,6 +999,28 @@ blockquote.brass {
 /*jacq */
 .spooky {
   color: #FF9100;
+}
+
+/*pay attention to the votes.*/
+.votenotification {
+  color: #ff00ff;
+  font-size: 125%;
+  font-weight: bold;
+  animation: votenotification 5000ms infinite;
+}
+
+@keyframes votenotification {
+  0% {
+    color: #ff00ff;
+  }
+
+  50% {
+    color: #490049;
+  }
+
+  100% {
+    color: #ff00ff;
+  }
 }
 
 .hypnophrase {
@@ -1152,12 +1174,12 @@ blockquote.brass {
 
 /* LANGAUGES */
 .alien {
-  color: #543354;
+  color: #9e619e;
 }
 
 
 .tajaran {
-  color: #803B56;
+  color: #8c405d;
 }
 
 
@@ -1262,7 +1284,7 @@ blockquote.brass {
 }
 
 .interface {
-  color: #330033;
+  color: #990099;
 }
 
 /* HELPER CLASSES */

@@ -301,7 +301,7 @@
 	return 1
 
 /mob/living/silicon/legacy_ex_act(severity)
-	if(!blinded)
+	if(!has_status_effect(/datum/status_effect/sight/blindness))
 		flash_eyes()
 
 	switch(severity)

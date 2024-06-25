@@ -166,7 +166,7 @@
 			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [L]'s eyes."), \
 							 	 SPAN_NOTICE("You direct [src] to [L]'s eyes."))
 			if(H != user)	//can't look into your own eyes buster
-				if(L.stat == DEAD || L.blinded)	//mob is dead or fully blind
+				if(L.stat == DEAD || L.has_status_effect(/datum/status_effect/sight/blindness))	//mob is dead or fully blind
 					to_chat(user, SPAN_WARNING("\The [L]'s pupils do not react to the light!"))
 					return
 				if(MUTATION_XRAY in L.mutations)

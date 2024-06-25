@@ -202,7 +202,6 @@
 	var/sdisabilities = 0	//?Carbon
 	var/disabilities = 0	//?Carbon
 	var/transforming = null	//?Carbon
-	var/eye_blind = null	//?Carbon
 	var/eye_blurry = null	//?Carbon
 	var/ear_deaf = null		//?Carbon
 	var/ear_damage = null	//?Carbon
@@ -216,7 +215,6 @@
 	var/gen_record = ""
 	var/exploit_record = ""
 	var/exploit_addons = list()		//Assorted things that show up at the end of the exploit_record list
-	var/blinded = null
 	var/bhunger = 0			//?Carbon
 	var/ajourn = 0
 	var/druggy = 0			//?Carbon

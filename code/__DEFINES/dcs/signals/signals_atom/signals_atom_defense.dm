@@ -9,3 +9,4 @@
 	#define EX_ACT_ARG_MULTIPLIERS 2
 
 // todo: this file left intentionally empty since shieldcalls were moved to datums
+// todo: add signals for integrity

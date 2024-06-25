@@ -14,8 +14,6 @@
 	var/exit_delay = 2
 	var/enter_delay = 1
 
-	level = 2
-
 	// alldirs in global.dm is the same list of directions, but since
 	//  the specific order matters to get a usable icon_state, it is
 	//  copied here so that, in the unlikely case that alldirs is changed,
@@ -30,7 +28,6 @@
 
 //A variant that will can be hidden underneath tiles similiar to pipes and such
 /obj/structure/transit_tube/hidden
-	level = 1
 	plane = TURF_PLANE
 	layer = BELOW_TURF_LAYER
 
@@ -83,8 +80,6 @@
 	if(tube_dirs == null)
 		init_dirs()
 
-	var/turf/T = loc
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/structure/transit_tube/Bumped(mob/AM as mob|obj)

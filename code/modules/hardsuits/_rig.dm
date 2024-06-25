@@ -21,6 +21,7 @@
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
+	rad_flags = NONE
 	action_button_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.

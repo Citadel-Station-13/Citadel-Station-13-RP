@@ -300,6 +300,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "lS" = (
@@ -882,8 +883,9 @@
 	icon_state = "door_locked";
 	id_tag = "engine_access_hatch";
 	locked = 1;
-	req_access = list(11)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "FV" = (
@@ -1007,6 +1009,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "MW" = (
@@ -1096,6 +1099,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ry" = (
@@ -1244,6 +1248,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "VH" = (
@@ -1269,14 +1274,15 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "VK" = (
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = list(10)
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "VS" = (
@@ -1394,6 +1400,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Yr" = (

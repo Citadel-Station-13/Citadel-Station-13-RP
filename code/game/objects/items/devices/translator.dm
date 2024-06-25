@@ -138,7 +138,7 @@
 	if (language && (language.language_flags & LANGUAGE_NONVERBAL))
 		return //Not gonna translate sign language
 
-	if (visual && ((L.sdisabilities & SDISABILITY_NERVOUS) || L.eye_blind))
+	if (visual && L.has_status_effect(/datum/status_effect/sight/blindness))
 		return //Can't see the screen, don't get the message
 
 	if (audio && ((L.sdisabilities & SDISABILITY_DEAF) || L.ear_deaf))

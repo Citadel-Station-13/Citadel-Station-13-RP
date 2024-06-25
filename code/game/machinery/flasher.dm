@@ -90,9 +90,10 @@
 				H.flash_eyes()
 				E.damage += rand(1, 5)
 		else
-			if(!O.blinded && isliving(O))
+			if(isliving(O))
 				var/mob/living/L = O
-				L.flash_eyes()
+				if(!L.has_status_effect(/datum/status_effect/sight/blindness))
+					L.flash_eyes()
 		O.afflict_paralyze(20 * flash_time)
 
 /obj/machinery/flasher/emp_act_legacy(severity)
