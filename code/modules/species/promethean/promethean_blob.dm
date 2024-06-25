@@ -181,11 +181,8 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/slime/promethean/legacy_ex_act(severity)
-	if(humanform)
-		LEGACY_EX_ACT(humanform, severity, null)
-	else
-		return ..()
+/mob/living/simple_mob/slime/promethean/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	return humanform? humanform.ex_act(arglist(args)) : ..()
 
 /mob/living/simple_mob/slime/promethean/rad_act(severity)
 	. = ..()

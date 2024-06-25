@@ -29,8 +29,9 @@
 	if(!is_miniball)
 		set_light(10, 7, "#EEEEFF")
 
-/obj/singularity/energy_ball/legacy_ex_act(severity, target)
-	return
+/obj/singularity/energy_ball/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	effective_damage_multiplier = 0
+	return ..()
 
 /obj/singularity/energy_ball/Destroy()
 	if(orbiting && istype(orbiting.parent, /obj/singularity/energy_ball))

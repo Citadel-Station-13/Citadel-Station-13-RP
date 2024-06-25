@@ -14,7 +14,6 @@
 	atom_flags = ATOM_BORDER
 	opacity = 0
 	var/obj/item/airlock_electronics/electronics = null
-	explosion_resistance = 5
 	air_properties_vary_with_direction = 1
 
 /obj/machinery/door/window/Initialize(mapload)
@@ -117,7 +116,6 @@
 	playsound(loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	sleep(10)
 
-	explosion_resistance = 0
 	density = 0
 	update_icon()
 	update_nearby_tiles()
@@ -135,7 +133,6 @@
 
 	density = TRUE
 	update_icon()
-	explosion_resistance = initial(explosion_resistance)
 	update_nearby_tiles()
 
 	sleep(10)

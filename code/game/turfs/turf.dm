@@ -658,6 +658,16 @@
 	return !is_plating()
 
 /**
+ * returns if we should cover underfloor objects from things like explosions
+ *
+ * * override this on child types for speed!
+ *
+ * @return a truthy value
+ */
+/turf/proc/covers_underfloor_objects()
+	return hides_underfloor_objects()
+
+/**
  * tell all objects on us to reconsider their underfloor status
  *
  * we are always called at mapload by turfs that can hide underfloor objects,

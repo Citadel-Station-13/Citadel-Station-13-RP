@@ -763,9 +763,6 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/frontier/emp_act_legacy(severity)
 	return ..(severity+2)
 
-/obj/item/gun/energy/frontier/legacy_ex_act() //|rugged|
-	return
-
 /obj/item/gun/energy/frontier/locked
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	pin = /obj/item/firing_pin/explorer

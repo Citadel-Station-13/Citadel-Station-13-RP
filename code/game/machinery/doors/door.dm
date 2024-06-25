@@ -47,16 +47,19 @@
 
 	var/reinforcing = 0
 
+	//* Defense *//
+	/// if closed, explosion mitigation %; 0 = full block, 1 = no block
+	var/explosion_block_exp = 0
+	/// if closed, explosion mit -
+	var/explosion_block_lin = 0
 
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
 	if(density)
 		layer = closed_layer
-		explosion_resistance = initial(explosion_resistance)
 		update_heat_protection(get_turf(src))
 	else
 		layer = open_layer
-		explosion_resistance = 0
 
 	if(width > 1)
 		if(dir in list(EAST, WEST))
@@ -76,6 +79,50 @@
 	density = FALSE
 	update_nearby_tiles()
 	. = ..()
+
+//* Defense *//
+
+/obj/machinery/door/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	var/integrity_previous = integrity
+	var/was_open = !density
+	. = ..()
+	// is open, not gonna block much
+	if(was_open)
+		return 0
+	// still here
+	if(!QDELETED(src) && density)
+		return 0
+	#warn algorithm to get power left after we are damaged
+
+/obj/machinery/door/damage_integrity(amount, gradual, do_not_break)
+	var/initial_integrity = integrity
+	. = ..()
+	if(gradual)
+		update_appearance(UPDATE_ICON)
+		return
+	if(integrity < integrity_max / 4 && initial_integrity >= integrity_max / 4)
+		visible_message("[src] looks like it's about to break!" )
+		update_appearance(UPDATE_ICON)
+	else if(integrity < integrity_max / 2 && initial_integrity >= integrity_max / 2)
+		visible_message("[src] looks seriously damaged!" )
+		update_appearance(UPDATE_ICON)
+	else if(integrity < integrity_max * 3/4 && initial_integrity >= integrity_max * 3/4 && integrity > 0)
+		visible_message("[src] shows signs of damage!" )
+		update_appearance(UPDATE_ICON)
+
+/obj/machinery/door/atom_break()
+	. = ..()
+	// todo: this is shitcode
+	if(!istype(src, /obj/machinery/door/airlock))
+		for (var/mob/O in viewers(src, null))
+			if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
+				O.show_message("[src.name] breaks!" )
+	update_icon()
+
+/obj/machinery/door/atom_fix()
+	. = ..()
+	machine_stat &= (~BROKEN)
+	update_icon()
 
 /obj/machinery/door/process(delta_time)
 	if(close_door_at && world.time >= close_door_at)
@@ -264,36 +311,6 @@
 		operating = -1
 		return 1
 
-/obj/machinery/door/damage_integrity(amount, gradual, do_not_break)
-	var/initial_integrity = integrity
-	. = ..()
-	if(gradual)
-		update_appearance(UPDATE_ICON)
-		return
-	if(integrity < integrity_max / 4 && initial_integrity >= integrity_max / 4)
-		visible_message("[src] looks like it's about to break!" )
-		update_appearance(UPDATE_ICON)
-	else if(integrity < integrity_max / 2 && initial_integrity >= integrity_max / 2)
-		visible_message("[src] looks seriously damaged!" )
-		update_appearance(UPDATE_ICON)
-	else if(integrity < integrity_max * 3/4 && initial_integrity >= integrity_max * 3/4 && integrity > 0)
-		visible_message("[src] shows signs of damage!" )
-		update_appearance(UPDATE_ICON)
-
-/obj/machinery/door/atom_break()
-	. = ..()
-	// todo: this is shitcode
-	if(!istype(src, /obj/machinery/door/airlock))
-		for (var/mob/O in viewers(src, null))
-			if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
-				O.show_message("[src.name] breaks!" )
-	update_icon()
-
-/obj/machinery/door/atom_fix()
-	. = ..()
-	machine_stat &= (~BROKEN)
-	update_icon()
-
 /obj/machinery/door/emp_act_legacy(severity)
 	if(prob(20/severity) && (istype(src,/obj/machinery/door/airlock) || istype(src,/obj/machinery/door/window)) )
 		spawn(0)
@@ -338,7 +355,6 @@
 	update_nearby_tiles()
 	sleep(7)
 	src.layer = open_layer
-	explosion_resistance = 0
 	update_icon()
 	set_opacity(0)
 	rad_insulation = RAD_INSULATION_NONE
@@ -361,7 +377,6 @@
 	do_animate(DOOR_ANIMATION_CLOSE)
 	sleep(3)
 	src.density = 1
-	explosion_resistance = initial(explosion_resistance)
 	src.layer = closed_layer
 	update_nearby_tiles()
 	sleep(7)

@@ -32,7 +32,3 @@
 		return
 	else
 		..()
-
-// Because they cannot be rebuilt, they are hard to destroy
-/obj/structure/cable/ender/legacy_ex_act(severity)
-	return

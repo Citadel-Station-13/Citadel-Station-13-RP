@@ -279,21 +279,9 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			return 1
 	return 0
 
-//explosion handling
-/obj/structure/cable/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			if (prob(50))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
-				qdel(src)
-
-		if(3.0)
-			if (prob(25))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
-				qdel(src)
-	return
+/obj/structure/cable/drop_products(method, atom/where)
+	. = ..()
+	drop_product(method, new /obj/item/stack/cable_coil(null, d1? 2 : 1, null, color), where)
 
 /obj/structure/cable/proc/cableColor(colorC)
 	var/color_n = "#DD0000"

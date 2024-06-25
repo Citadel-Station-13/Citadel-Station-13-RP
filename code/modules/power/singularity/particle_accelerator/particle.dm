@@ -73,10 +73,6 @@
 					PC.parent.energy += energy
 					loc = null
 
-
-/obj/effect/accelerated_particle/legacy_ex_act(severity)
-	qdel(src)
-
 /obj/effect/accelerated_particle/singularity_act()
 	return
 

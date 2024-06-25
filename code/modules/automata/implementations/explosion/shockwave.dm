@@ -325,8 +325,6 @@
 		DIAGONAL_MARK(WEST, returned)
 #undef DIAGONAL_MARK
 
-	// record on turfs
-	add_turfs_acting(edges)
 	// swap edges/next
 	src.edges = edges_next
 	// finish iteration

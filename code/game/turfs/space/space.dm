@@ -90,6 +90,9 @@
 /turf/space/hides_underfloor_objects()
 	return FALSE
 
+/turf/space/covers_underfloor_objects()
+	return FALSE
+
 /turf/space/is_solid_structure()
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
 

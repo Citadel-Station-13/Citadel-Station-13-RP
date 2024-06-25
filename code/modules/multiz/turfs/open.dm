@@ -46,6 +46,9 @@
 /turf/simulated/open/hides_underfloor_objects()
 	return FALSE
 
+/turf/simulated/open/covers_underfloor_objects()
+	return FALSE
+
 /turf/simulated/open/is_space()
 	return below()?.is_space()
 

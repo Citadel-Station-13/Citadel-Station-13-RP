@@ -3,6 +3,7 @@ var/global/list/weavable_structures = list()
 var/global/list/weavable_items = list()
 
 // Structures
+// todo: why is this /obj/effect?
 
 /obj/effect/weaversilk
 	name = "weaversilk web"
@@ -10,10 +11,6 @@ var/global/list/weavable_items = list()
 	icon = 'icons/vore/weaver_icons_vr.dmi'
 	anchored = TRUE
 	density = FALSE
-
-/obj/effect/weaversilk/legacy_ex_act(severity)
-	qdel(src)
-	return
 
 /obj/effect/weaversilk/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))

@@ -98,6 +98,9 @@
 /turf/simulated/wall/hides_underfloor_objects()
 	return FALSE
 
+/turf/simulated/wall/covers_underfloor_objects()
+	return TRUE
+
 /turf/simulated/wall/proc/clear_plants()
 	for(var/obj/effect/overlay/wallrot/WR in src)
 		qdel(WR)

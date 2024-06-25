@@ -288,6 +288,7 @@
 	qdel(src)
 
 //Floor Mimics... Because mimics you have to interact with to activate was not enough...
+// todo: why is this an /obj/effect and not an /obj/structure? or better, a mob with sleeping mob ai?
 
 /obj/effect/floormimic //As Floor Mimics are triggered by bumps rather than click interaction... They are effects rather than structures
 	name = "loose wooden floor"
@@ -296,6 +297,7 @@
 	anchored = 1
 	icon = 'icons/mob/mimic.dmi'
 	icon_state = "wmimic"
+	integrity_enabled = TRUE
 	var/mimic_chance = 30
 	var/mimic_active = TRUE
 	var/mimic_type = /mob/living/simple_mob/vore/aggressive/mimic/floor
@@ -332,9 +334,6 @@
 		awaken(L)
 	else
 		return ..()
-
-/obj/effect/floormimic/legacy_ex_act(severity)
-	qdel(src)
 
 /obj/effect/floormimic/safe
 	mimic_chance = 0

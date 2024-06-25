@@ -38,7 +38,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	integrity = 300
 	integrity_max = 300
 
-	explosion_resistance = 10
 	autoclose = 1
 	normalspeed = 1
 

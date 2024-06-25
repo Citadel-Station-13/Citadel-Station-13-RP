@@ -8,7 +8,6 @@
 	icon = 'icons/obj/doors/alien/door_blue.dmi'
 	bolts_file = 'icons/obj/doors/alien/lights_bolts_blue.dmi'
 	lights_file = 'icons/obj/doors/alien/lights_green_blue.dmi'
-	explosion_resistance = 20
 	secured_wires = TRUE
 	hackProof = TRUE
 	assembly_type = /obj/structure/door_assembly/door_assembly_alien

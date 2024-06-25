@@ -33,13 +33,14 @@
 	if(damage >= max_damage)
 		legacy_break_apart()
 
-/**
- * Stronger explosions cause serious damage to internal components
- * Minor explosions are mostly mitigitated by casing.
- */
-/obj/item/modular_computer/legacy_ex_act(severity)
-	. = ..()
-	take_damage_legacy(rand(100,200) / severity, 30 / severity)
+// todo: someone else'es problem down the line
+// /**
+//  * Stronger explosions cause serious damage to internal components
+//  * Minor explosions are mostly mitigitated by casing.
+//  */
+// /obj/item/modular_computer/legacy_ex_act(severity)
+// 	. = ..()
+// 	take_damage_legacy(rand(100,200) / severity, 30 / severity)
 
 /// EMPs are similar to explosions, but don't cause physical damage to the casing. Instead they screw up the components
 /obj/item/modular_computer/emp_act_legacy(severity)

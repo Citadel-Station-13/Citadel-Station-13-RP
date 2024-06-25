@@ -16,12 +16,18 @@
 	// check config
 	if(!damage_multipliers)
 		damage_multipliers = list()
+	// that list is definitely going to be used
+	LAZYINITLIST(turfs_acting)
 	return ..()
 
 /**
  * @return power left
  */
 /datum/automata/explosion/proc/explode_turf(turf/tile, power)
+	// add us to acting so anything it drops is exploded too
+	turfs_acting += tile
+	LAZYSET(tile.acting_automata, src, power)
+	// do the thing
 	return tile.run_ex_act(power, damage_multipliers)
 
 /**

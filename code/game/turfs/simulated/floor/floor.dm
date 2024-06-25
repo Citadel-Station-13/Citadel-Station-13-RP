@@ -48,6 +48,9 @@
 /turf/simulated/floor/hides_underfloor_objects()
 	return flooring
 
+/turf/simulated/floor/covers_underfloor_objects()
+	return flooring
+
 /turf/simulated/floor/Initialize(mapload, floortype)
 	. = ..()
 	if(!floortype && initial_flooring)
