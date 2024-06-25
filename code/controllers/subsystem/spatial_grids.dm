@@ -34,30 +34,46 @@ SUBSYSTEM_DEF(spatial_grids)
 /datum/spatial_grid
 	/// our grid; list[z] = grid: list()
 	var/list/grids = list()
+	/// our z-lookups; list[z] = list()
+	///
+	/// * only made if optimize_get_all_on_z is enabled
+	var/list/z_all_atoms
 	/// our grid width
 	var/width
 	/// our grid height
 	var/height
 	/// expected type
 	var/expected_type = /atom/movable
+	/// optimize get all atoms on z
+	var/optimize_get_all_on_z = FALSE
 
-/datum/spatial_grid/New(expected_type)
+/datum/spatial_grid/New(expected_type, init_flags)
 	// initialize grid
 	src.width = ceil(world.maxx / TURF_CHUNK_RESOLUTION)
 	src.height = ceil(world.maxy / TURF_CHUNK_RESOLUTION)
 	src.grids = list()
 	src.expected_type = expected_type
 
+	src.optimize_get_all_on_z = !!(init_flags & SPATIAL_GRID_INIT_OPTIMIZE_ALL_Z)
+	if(src.optimize_get_all_on_z)
+		src.z_all_atoms = list()
+
 	sync_world_z(world.maxz)
 
 /datum/spatial_grid/proc/sync_world_z(size)
 	src.grids.len = max(src.grids.len, size)
+	src.z_all_atoms?.len = max(src.z_all_atoms.len, size)
 	for(var/i in 1 to size)
 		if(src.grids[i])
 			continue
 		var/list/creating_grid = list()
 		creating_grid.len = src.width * src.height
 		src.grids[i] = creating_grid
+	if(optimize_get_all_on_z)
+		for(var/i in 1 to size)
+			if(src.z_all_atoms[i])
+				continue
+			src.z_all_atoms[i] = list()
 
 /**
  * injects a movable at an index
@@ -72,6 +88,9 @@ SUBSYSTEM_DEF(spatial_grids)
 			grid[index] = list(grid[index], AM)
 	else
 		grid[index] = AM
+
+	if(optimize_get_all_on_z)
+		z_all_atoms[z] += AM
 
 /**
  * removes a movable
@@ -88,6 +107,9 @@ SUBSYSTEM_DEF(spatial_grids)
 				grid[index] = entry[1]
 	else
 		grid[index] = null
+
+	if(optimize_get_all_on_z)
+		z_all_atoms[z] -= AM
 
 /**
  * queries things within distance in tiles
@@ -123,6 +145,15 @@ SUBSYSTEM_DEF(spatial_grids)
  * * somewhat inefficient, why are you doing this?
  */
 /datum/spatial_grid/proc/all_atoms(z)
+	if(optimize_get_all_on_z)
+		if(z)
+			return z_all_atoms[z]:Copy()
+		else
+			var/list/built = list()
+			for(var/i in 1 to world.maxz)
+				built += z_all_atoms[i]
+			return built
+
 	. = list()
 	if(z)
 		var/list/grid = src.grids[z]

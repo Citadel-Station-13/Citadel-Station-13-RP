@@ -1,4 +1,28 @@
 /**
+ * Gets a cached area of a given type, if it's unique
+ * If it's not unique, throw a runtime
+ */
+/proc/unique_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	ASSERT(creating.unique)
+	if(!isnull(GLOB.areas_by_type[path]))
+		return GLOB.areas_by_type[path]
+	creating = new path(null)
+	GLOB.areas_by_type[path] = creating
+	return creating
+
+/**
+ * Gets the global reference to an area, or a new copy, depending on if it's unique or not
+ */
+/proc/dynamic_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	if(!creating.unique)
+		return new path(null)
+	return unique_area_of_type(path)
+
+/**
  * # area
  *
  * A grouping of tiles into a logical space, mostly used by map editors
@@ -736,3 +760,19 @@ var/list/ghostteleportlocs = list()
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
 		if(scrubber.id_tag == id)
 			return scrubber
+
+//* Turfs *//
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs(list/turf/turfs)
+	for(var/turf/T in turfs)
+		ChangeArea(T, src)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		ChangeArea(T, give_to)
