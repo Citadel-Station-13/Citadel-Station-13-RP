@@ -266,7 +266,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
-		if(C.sdisabilities & SDISABILITY_NERVOUS || C.blinded)
+		if(C.has_status_effect(/datum/status_effect/sight/blindness))
 			return 1
 	return 0
 
@@ -497,7 +497,10 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return SAFE_PERP
 
 	// Otherwise Runtime gets killed.
-	if(has_AI() && ai_holder.hostile && faction != "neutral")
+	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
+		return SAFE_PERP
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(has_polaris_AI() && ai_holder.hostile && faction != "neutral")
 		threatcount += 4
 	return threatcount
 
@@ -521,8 +524,8 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	if(victim)
 		threatcount += 4
 */
-	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		if(AI.rabid)
 			threatcount = 10
 
@@ -603,7 +606,7 @@ var/list/global/organ_rel_size = list(
 		return
 
 	// They may have hidden the icons in the bottom left with the hide button.
-	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot_meta(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
+	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
 		item.screen_loc = null
 		return
 

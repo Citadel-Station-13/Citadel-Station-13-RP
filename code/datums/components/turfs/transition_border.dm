@@ -9,6 +9,8 @@
  *
  * This way, we have *near* perfect native-like simulation with moves without
  * having to do anything too special.
+ *
+ * todo: multi-tile object support
  */
 /datum/component/transition_border
 	var/atom/movable/mirage_border/holder1

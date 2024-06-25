@@ -344,17 +344,22 @@
 	name = "Off the Shoulder Shirt, Female"
 	icon_state = "one_arm_f"
 
-/datum/category_item/underwear/undershirt/sleevelessturtle
-	name = "Sleeveless Turtleneck"
-	icon_state = "sleevelessturtle"
-
-/datum/category_item/underwear/undershirt/sleevelessturtle_f
-	name = "Sleeveless Turtleneck, Female"
-	icon_state = "sleevelessturtle_f"
-
 /datum/category_item/underwear/undershirt/turtleneck
-	name = "Turtleneck"
+	name = "Turtleneck (Sweater)"
 	icon_state = "turtleneck"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/turtleneck/sleeveless
+	name = "Turtleneck (Sleeveless)"
+	icon_state = "turtleneck_sleeveless"
+
+/datum/category_item/underwear/undershirt/turtleneck/leotard
+	name = "Turtleneck (Leotard)"
+	icon_state = "leotard_turtleneck"
+
+/datum/category_item/underwear/undershirt/turtleneck/leotard/sleeveless
+	name = "Turtleneck (Leotard Sleeveless)"
+	icon_state = "leotard_turtleneck_sleeveless"
 
 /datum/category_item/underwear/undershirt/pinkblack_tshirt_f
 	name = "Pink and Black T-Shirt"

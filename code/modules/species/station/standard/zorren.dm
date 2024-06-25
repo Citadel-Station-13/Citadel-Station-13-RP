@@ -9,8 +9,10 @@
 
 	icobase = 'icons/mob/species/zorren_hi/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_hi/deformed_body.dmi'
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/zorren_highlander,
+	)
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_TERMINUS
@@ -43,6 +45,7 @@
 	base_color  = "#333333"
 	blood_color = "#240bc4"
 	color_mult = 1
+	vision_organ = O_EYES
 
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
@@ -75,8 +78,10 @@
 
 	icobase = 'icons/mob/species/zorren_fl/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_fl/deformed_body.dmi'
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/zorren_flatlander,
+	)
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_TERMINUS
@@ -110,6 +115,7 @@
 	base_color  = "#333333"
 	blood_color = "#240bc4"
 	color_mult = 1
+	vision_organ = O_EYES
 
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,

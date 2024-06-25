@@ -29,9 +29,12 @@
 	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
 	if(isitem(AM))
 		var/obj/item/I = AM
-		inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(), I.damage_tier, I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)
+		inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)
 	else
-		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(), MELEE_TIER_LIGHT, ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
+		inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
+	// if we got destroyed
+	if(QDELETED(src) && (obj_flags & OBJ_ALLOW_THROW_THROUGH))
+		. |= COMPONENT_THROW_HIT_PIERCE
 
 /obj/blob_act(obj/structure/blob/blob)
 	. = ..()

@@ -685,7 +685,7 @@
 	desc = "An underfloor disposal pipe."
 	anchored = 1
 	density = 0
-	level = 1 // underfloor only
+	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	dir = 0 // dir will contain dominant direction for junction pipes
 	plane = TURF_PLANE
 	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
@@ -759,18 +759,6 @@
 		return null
 
 	return P
-
-
-// update the icon_state to reflect hidden status
-/obj/structure/disposalpipe/proc/update()
-	var/turf/T = src.loc
-	hide(!T.is_plating() && !istype(T,/turf/space))	// space never hides pipes
-
-// hide called by levelupdate if turf intact status changes
-// change visibility status and force update of icon
-/obj/structure/disposalpipe/hide(var/intact)
-	invisibility = intact ? 101: 0	// hide if floor is intact
-	updateicon()
 
 // update actual icon_state depending on visibility
 // if invisible, append "f" to icon_state to show faded version
@@ -962,14 +950,6 @@
 			expel(H, T, 0)
 	..()
 
-/obj/structure/disposalpipe/hides_under_flooring()
-	return 1
-
-// *** TEST verb
-//client/verb/dispstop()
-//	for(var/obj/structure/disposalholder/H in world)
-//		H.active = 0
-
 // a straight or bent segment
 /obj/structure/disposalpipe/segment
 	icon_state = "pipe-s"
@@ -980,8 +960,6 @@
 		dpdir = dir | turn(dir, 180)
 	else
 		dpdir = dir | turn(dir, -90)
-
-	update()
 	return
 
 ///// Z-Level stuff
@@ -991,7 +969,6 @@
 /obj/structure/disposalpipe/up/New()
 	..()
 	dpdir = dir
-	update()
 	return
 
 /obj/structure/disposalpipe/up/nextdir(fromdir)
@@ -1041,7 +1018,6 @@
 /obj/structure/disposalpipe/down/New()
 	..()
 	dpdir = dir
-	update()
 	return
 
 /obj/structure/disposalpipe/down/nextdir(fromdir)
@@ -1101,7 +1077,6 @@
 		dpdir = dir | turn(dir, 90) | turn(dir,180)
 	else // pipe-y
 		dpdir = dir | turn(dir,90) | turn(dir, -90)
-	update()
 	return
 
 
@@ -1158,7 +1133,6 @@
 	if(sort_tag) GLOB.tagger_locations |= sort_tag
 	updatename()
 	updatedesc()
-	update()
 
 /obj/structure/disposalpipe/tagger/attackby(obj/item/I, mob/user)
 	if(..())
@@ -1226,7 +1200,6 @@
 	updatedir()
 	updatename()
 	updatedesc()
-	update()
 
 /obj/structure/disposalpipe/sortjunction/attackby(obj/item/I, mob/user)
 	if(..())
@@ -1318,8 +1291,6 @@
 /obj/structure/disposalpipe/trunk/LateInitialize()
 	. = ..()
 	getlinked()
-	update()
-
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null
 	var/obj/machinery/disposal/D = locate() in src.loc
@@ -1331,8 +1302,6 @@
 	var/obj/structure/disposaloutlet/O = locate() in src.loc
 	if(O)
 		linked = O
-
-	update()
 	return
 
 	// Override attackby so we disallow trunkremoval when somethings ontop
@@ -1415,11 +1384,6 @@
 	dpdir = 0		// broken pipes have dpdir=0 so they're not found as 'real' pipes
 					// i.e. will be treated as an empty turf
 	desc = "A broken piece of disposal pipe."
-
-/obj/structure/disposalpipe/broken/New()
-	..()
-	update()
-	return
 
 // called when welded
 // for broken pipe, remove and turn into scrap

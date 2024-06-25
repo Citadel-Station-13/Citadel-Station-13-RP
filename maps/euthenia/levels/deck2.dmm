@@ -2305,11 +2305,9 @@
 /area/engineering/atmos/gas_storage)
 "byD" = (
 /obj/structure/sign/directions/security{
-	dir = 2;
 	pixel_y = -4
 	},
 /obj/structure/sign/directions/science{
-	dir = 2;
 	pixel_y = 3
 	},
 /turf/simulated/wall,
@@ -9608,7 +9606,6 @@
 /area/medical/patient_d)
 "hmk" = (
 /obj/machinery/door/window/survival_pod{
-	dir = 2;
 	req_one_access = list(19)
 	},
 /obj/machinery/air_alarm{
@@ -9917,9 +9914,7 @@
 /turf/simulated/open,
 /area/engineering/engine_gas)
 "hAy" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
@@ -10743,9 +10738,7 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/rdoffice)
 "ijz" = (
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 2
-	},
+/obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 1;
 	name = "Fighter Hangar";
@@ -10961,9 +10954,6 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "isz" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway)
 "isO" = (
@@ -11569,9 +11559,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/storage)
 "iTf" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -13020,9 +13008,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "jVR" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "jWN" = (
@@ -13432,9 +13418,6 @@
 "kkh" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/high/north_mount,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2/a)
 "kkK" = (
@@ -14277,9 +14260,7 @@
 /area/quartermaster/warehouse)
 "kOB" = (
 /obj/structure/catwalk,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -16903,13 +16884,6 @@
 "mSp" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/maintenance/substation/medical)
-"mSD" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_two/aft/port)
 "mSU" = (
 /obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/tiled,
@@ -17160,20 +17134,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/security/brig)
-"ncb" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/steeldecal/steel_decals6,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/robotics)
 "ncn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -18096,13 +18056,6 @@
 "nKv" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/foyer)
-"nLf" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_two/aft/port)
 "nLn" = (
 /obj/structure/railing{
 	dir = 8
@@ -18165,9 +18118,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2)
 "nNs" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -18934,9 +18885,6 @@
 	dir = 8
 	},
 /obj/map_helper/network_builder/power_cable/red/auto,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck2)
 "opW" = (
@@ -21241,16 +21189,6 @@
 "pYz" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/barrestroom)
-"pZC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/map_helper/network_builder/power_cable/red/auto,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/main_map/hallway/deck2)
 "pZS" = (
 /obj/machinery/door/window/northright{
 	name = "Air Mix Controller";
@@ -22671,7 +22609,6 @@
 /area/crew_quarters/bar)
 "rgO" = (
 /obj/machinery/door/window/survival_pod{
-	dir = 2;
 	req_one_access = list(19)
 	},
 /turf/simulated/floor/reinforced,
@@ -22694,9 +22631,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
 "rhN" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/catwalk,
 /obj/machinery/door/window/brigdoor/southright,
 /turf/simulated/floor/plating,
@@ -22811,9 +22746,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
-"rlE" = (
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_two/starboard)
 "rms" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -22860,9 +22792,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/port)
 "rnU" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -22918,9 +22848,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "rpI" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/monotile,
 /area/security/observation)
 "rqL" = (
@@ -23745,9 +23673,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/warehouse)
 "rXS" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
@@ -23927,9 +23853,7 @@
 "sjO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -26222,9 +26146,7 @@
 /turf/simulated/wall/prepainted/medical,
 /area/main_map/maintenance/deck_two/forward/starboard)
 "tRs" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass,
@@ -29093,9 +29015,7 @@
 /area/rnd/rdoffice)
 "wdx" = (
 /obj/structure/catwalk,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/window/brigdoor/southright,
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -29367,9 +29287,7 @@
 /turf/simulated/floor/wood,
 /area/medical/patient_wing)
 "wmU" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
@@ -32113,9 +32031,6 @@
 "yhd" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/power/apc/high/north_mount,
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2/b)
 "yhH" = (
@@ -44047,8 +43962,8 @@ sQC
 bkS
 wTj
 dcQ
-ncb
-ncb
+dcQ
+dcQ
 wTj
 jHP
 vKm
@@ -44925,7 +44840,7 @@ vKm
 vKm
 vKm
 mRB
-mSD
+sBK
 fPn
 fPn
 fPn
@@ -46090,7 +46005,7 @@ yao
 yao
 mRB
 gMH
-nLf
+sBK
 sBK
 sBK
 sBK
@@ -46894,7 +46809,7 @@ bRJ
 bMm
 akV
 lPV
-pZC
+efy
 olw
 wPE
 xsM
@@ -46931,7 +46846,7 @@ xsM
 wSY
 nIp
 efy
-pZC
+efy
 pzh
 iwO
 qQJ
@@ -49661,7 +49576,7 @@ pDn
 quC
 fVD
 ycY
-rlE
+bEC
 dCu
 xQE
 huZ

@@ -215,6 +215,15 @@
 /obj/machinery/camera/network/crescent,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/bathroom)
+"cd" = (
+/obj/machinery/door/airlock/medical{
+	name = "Operating Theatre";
+	req_one_access = null
+	},
+/obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/turf/simulated/floor/tiled/white,
+/area/centcom/simulated/medical)
 "cf" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -778,8 +787,10 @@
 	icon_state = "door_locked";
 	id_tag = "escape_shuttle_hatch_station";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "gY" = (
@@ -1124,8 +1135,10 @@
 /area/centcom/simulated/terminal)
 "kc" = (
 /obj/machinery/door/airlock/security{
-	name = "Tram Security"
+	name = "Tram Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/red,
 /area/shuttle/escape)
 "kg" = (
@@ -1782,8 +1795,10 @@
 /area/unknown/dorm6)
 "pD" = (
 /obj/machinery/door/airlock/medical{
-	name = "Tram Medical"
+	name = "Tram Medical";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/escape)
 "pF" = (
@@ -1938,8 +1953,10 @@
 	icon_state = "door_locked";
 	id_tag = "escape_shuttle_hatch_offsite";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "qD" = (
@@ -1992,12 +2009,14 @@
 	icon_state = "door_locked";
 	id_tag = "supply_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad2"
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "qZ" = (
@@ -2148,7 +2167,8 @@
 	icon_state = "door_locked";
 	id_tag = "escape_shuttle_hatch_station";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -2156,6 +2176,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "sy" = (
@@ -3075,10 +3096,9 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "zw" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	req_access = list(5)
-	},
+/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "zy" = (
@@ -3890,8 +3910,10 @@
 	icon_state = "door_locked";
 	id_tag = "escape_shuttle_hatch_offsite";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "Fz" = (
@@ -5222,8 +5244,10 @@
 /area/centcom/simulated/restaurant)
 "Po" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "Pr" = (
@@ -5623,8 +5647,10 @@
 	icon_state = "door_locked";
 	id_tag = "supply_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "Sc" = (
@@ -6073,9 +6099,10 @@
 /turf/unsimulated/beach/sand,
 /area/beach)
 "Vw" = (
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /obj/machinery/door/airlock/medical{
-	name = "Operating Theatre";
-	req_access = list(45)
+	name = "Morgue";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/centcom/simulated/medical)
@@ -6222,8 +6249,10 @@
 /area/holodeck/source_desert)
 "WC" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "WH" = (
@@ -6237,11 +6266,12 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/escape)
 "WI" = (
-/obj/machinery/door/airlock/medical{
-	name = "Operating Theatre";
-	req_access = list(45)
-	},
 /obj/machinery/door/firedoor,
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/obj/machinery/door/airlock/medical{
+	name = "Chemistry and Resleeving";
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "WJ" = (
@@ -6309,8 +6339,10 @@
 "Xk" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "Xn" = (
@@ -6483,17 +6515,19 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "Yk" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad"
+	},
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
 	icon_state = "door_locked";
 	id_tag = "supply_shuttle_hatch";
 	locked = 1;
-	name = "Shuttle Hatch"
+	name = "Shuttle Hatch";
+	req_one_access = null
 	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "Yl" = (
@@ -41947,7 +41981,7 @@ HF
 At
 At
 At
-WI
+cd
 dw
 sU
 sU

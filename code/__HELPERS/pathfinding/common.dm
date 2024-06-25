@@ -60,16 +60,26 @@ GLOBAL_DATUM_INIT(generic_pathfinding_actor, /atom/movable/pathfinding_predicate
 	/// danger flags to ignore
 	var/turf_path_danger_ignore = NONE
 
+	//* experimental
+	/// allow returning a turf that's within this much **heuristic distance** from the end
+	/// if we can't find a proper route.
+	///
+	/// this is *not* the same as target distance.
+	/// target distance is we only try to get that far.
+	/// this is we try to get as far as we can but *accept* an answer that's at most this far.
+	var/slack
+
 	//* ss13-specific things
 	/// access list ; used to get through doors and other objects if set
 	var/list/ss13_with_access
 
-/datum/pathfinding/New(atom/movable/actor, turf/start, turf/goal, target_distance, max_path_length)
+/datum/pathfinding/New(atom/movable/actor, turf/start, turf/goal, target_distance, max_path_length, slack)
 	src.actor = actor
 	src.start = start
 	src.goal = goal
 	src.target_distance = target_distance
 	src.max_path_length = max_path_length
+	src.slack = slack
 
 /**
  * returns raw list of nodes returned by algorithm

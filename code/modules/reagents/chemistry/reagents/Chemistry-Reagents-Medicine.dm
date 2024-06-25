@@ -552,7 +552,7 @@
 				H.losebreath = 10
 				H.adjustOxyLoss(5)
 		if(prob(2))
-			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
+			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at the back of your head...</span>")
 			H.hallucination += 20 //It messes with your mind for some reason.
 			H.eye_blurry += 20 //Groggy vision for a small bit.
 		if(prob(3))
@@ -653,7 +653,6 @@
 
 /datum/reagent/imidazoline/affect_blood(mob/living/carbon/M, alien, removed)
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
-	M.AdjustBlinded(-5)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
@@ -663,7 +662,7 @@
 			if(E.damage > 0)
 				E.heal_damage_i(5 * removed, can_revive = TRUE)
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 /datum/reagent/peridaxon
 	name = "Peridaxon"
@@ -686,7 +685,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -711,7 +710,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -1421,11 +1420,11 @@
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
-			else
+			if(prob(1))
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
 				M.hallucination += 200
+			else
+				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
 
 /datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Adranol"

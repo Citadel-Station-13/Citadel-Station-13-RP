@@ -284,7 +284,7 @@
 	// todo: this is shitcode
 	if(!istype(src, /obj/machinery/door/airlock))
 		for (var/mob/O in viewers(src, null))
-			if ((O.client && !( O.blinded )))
+			if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 				O.show_message("[src.name] breaks!" )
 	update_icon()
 

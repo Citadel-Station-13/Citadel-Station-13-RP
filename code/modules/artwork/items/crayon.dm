@@ -92,9 +92,9 @@
 	.["graffitiPickedAngle"] = current_graffiti_angle
 	.["graffitiPickedColor"] = crayon_color
 
-/obj/item/pen/crayon/ui_assets(mob/user)
-	. = ..()
-	. += get_asset_datum(/datum/asset/spritesheet/crayons)
+/obj/item/pen/crayon/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/crayons
+	return ..()
 
 /obj/item/pen/crayon/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -211,7 +211,9 @@
 
 	playsound(src, crayon_sound, 50, TRUE, -1)
 
-	return make_graffiti(target, datapack, state, angle, pixel_x, pixel_y)
+	. = make_graffiti(target, datapack, state, angle, pixel_x, pixel_y)
+	if(.)
+		log_construction(actor, ., "created graffiti ([datapack] - [state])")
 
 /obj/item/pen/crayon/proc/attempt_color_entity(atom/target, datum/event_args/actor/actor)
 	// todo: implement attempt_color_entity

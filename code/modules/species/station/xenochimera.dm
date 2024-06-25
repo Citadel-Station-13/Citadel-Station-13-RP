@@ -17,12 +17,11 @@
 	deform       = 'icons/mob/species/xenochimera/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/xenochimera/preview.dmi'
 	husk_icon    = 'icons/mob/species/xenochimera/husk.dmi'
-	tail = "tail" //Scree's tail. Can be disabled in the Species Customization tab by choosing "hide species specific tail sprite"
-	icobase_tail = 1
 
 	max_additional_languages = 5
 
 	vision_innate = /datum/vision/baseline/species_tier_3
+	vision_organ = O_EYES
 	slowdown      = -0.2  //scuttly, but not as scuttly as a tajara or a teshari.
 	brute_mod     = 0.8   //About as tanky to brute as a Unathi. They'll probably snap and go feral when hurt though.
 	burn_mod      = 1.15  //As vulnerable to burn as a Tajara.
@@ -526,13 +525,17 @@
 		switch(atmos_biomorph)
 			if("flexible")
 				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
-				target.species.hazard_low_pressure = -1
+				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
 				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
 				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("compact")
 				target.species.warning_low_pressure = 50
-				target.species.hazard_low_pressure = -1
+				target.species.hazard_low_pressure = 0
+				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE
+				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 			if("elastic")
+				target.species.warning_low_pressure = WARNING_LOW_PRESSURE
+				target.species.hazard_low_pressure = HAZARD_LOW_PRESSURE
 				target.species.warning_high_pressure = WARNING_HIGH_PRESSURE + 200
 				target.species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 400
 
@@ -629,8 +632,7 @@
 	H.adjustOxyLoss(-healing_amount)
 	H.adjustCloneLoss(-healing_amount)
 	H.adjustBrainLoss(-healing_amount)
-	H.blinded = FALSE
-	H.SetBlinded(FALSE)
+	H.remove_status_effect(/datum/status_effect/sight/blindness)
 	H.eye_blurry = FALSE
 	H.ear_deaf = FALSE
 	H.ear_damage = FALSE

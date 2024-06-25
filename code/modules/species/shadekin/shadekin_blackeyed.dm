@@ -9,7 +9,10 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	preview_icon = 'icons/mob/species/shadekin/preview_blackeyed.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-	tail = "tail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+	)
 
 	//TODO: Something more fitting for black-eyes
 	//TODO: CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why they're around wherever we are.
@@ -34,6 +37,7 @@
 	siemens_coefficient = 1 // Mirroring the shockproof removal of Shadekin
 
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
+	vision_organ = O_EYES
 
 	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
 	item_slowdown_mod = 2 // Originally 1.5. They're not as physically fits, slowed down more by heavy gear.

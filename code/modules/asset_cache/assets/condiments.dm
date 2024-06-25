@@ -1,4 +1,4 @@
-/datum/asset/spritesheet/simple/condiments
+/datum/asset_pack/spritesheet/simple/condiments
 	name = "condiments"
 	assets = list(
 		CONDIMASTER_STYLE_FALLBACK = 'icons/runtime/assets/condiments/emptycondiment.png',

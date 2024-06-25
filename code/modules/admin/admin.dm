@@ -223,7 +223,15 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins))
 		to_chat(usr, "Error: you are not an admin!")
 		return
-	PlayerNotesPage(1)
+	//PlayerNotesPage(1)
+	tgui_notes()
+
+/datum/admins/proc/tgui_notes()
+	var/savefile/S=new("data/player_notes.sav")
+	var/list/note_keys
+	S >> note_keys
+	var/selected_ckey = tgui_input_list(usr, "Select the ckey you want the notes off:", "Ckey Select",sortList(note_keys))
+	show_player_info(selected_ckey)
 
 /datum/admins/proc/PlayerNotesPage(page)
 	var/dat = "<B>Player notes</B><HR>"

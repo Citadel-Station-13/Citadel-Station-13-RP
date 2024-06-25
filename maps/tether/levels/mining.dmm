@@ -373,13 +373,16 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "il" = (
-/obj/machinery/door/airlock/glass/mining,
+/obj/machinery/door/airlock/glass/mining{
+	req_one_access = null
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/supply/maintenance,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/secondary_gear_storage)
 "iP" = (
@@ -895,7 +898,8 @@
 /area/outpost/mining_main/break_room)
 "xq" = (
 /obj/machinery/door/airlock/mining{
-	name = "Quarters"
+	name = "Quarters";
+	req_one_access = null
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -909,6 +913,7 @@
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
 "xs" = (
@@ -1018,8 +1023,10 @@
 	frequency = 1379;
 	icon_state = "door_locked";
 	id_tag = "mining_outpost_airlock_outer";
-	locked = 1
+	locked = 1;
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/airlock)
 "zi" = (
@@ -1055,9 +1062,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "As" = (
-/turf/simulated/mineral/floor/virgo3b{
-	color = "#AAAAAA"
-	},
+/turf/simulated/open/virgo3b,
 /area/mine/explored)
 "Ay" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1540,11 +1545,13 @@
 	frequency = 1379;
 	icon_state = "door_locked";
 	id_tag = "mining_outpost_airlock_inner";
-	locked = 1
+	locked = 1;
+	req_one_access = null
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
 "Qe" = (
@@ -1740,8 +1747,10 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/mining{
-	name = "Utility Room"
+	name = "Utility Room";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/maintenance)
 "UI" = (
@@ -1850,13 +1859,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
-"WM" = (
-/obj/effect/step_trigger/teleporter/to_underdark{
-	dir = 4;
-	pixel_x = -16
-	},
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-/area/mine/explored)
 "Xe" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -1882,13 +1884,16 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "XJ" = (
-/obj/machinery/door/airlock/glass/mining,
+/obj/machinery/door/airlock/glass/mining{
+	req_one_access = null
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
+/obj/map_helper/access_helper/airlock/station/supply/mining,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/hangar)
 "XP" = (
@@ -1940,10 +1945,6 @@
 /obj/spawner/window/low_wall/borosillicate/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/secondary_gear_storage)
-"ZF" = (
-/obj/effect/step_trigger/teleporter/from_mining,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/outpost/mining_main/passage)
 "ZO" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -26607,7 +26608,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (128,1,1) = {"
 Se
@@ -26801,7 +26802,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (129,1,1) = {"
 Se
@@ -26995,7 +26996,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (130,1,1) = {"
 Se
@@ -27189,7 +27190,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (131,1,1) = {"
 Se
@@ -27383,7 +27384,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (132,1,1) = {"
 Se
@@ -27577,7 +27578,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (133,1,1) = {"
 Se
@@ -27771,7 +27772,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (134,1,1) = {"
 Se
@@ -27965,7 +27966,7 @@ mk
 us
 us
 us
-ZF
+us
 "}
 (135,1,1) = {"
 Se
@@ -28159,7 +28160,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (136,1,1) = {"
 Se
@@ -28353,7 +28354,7 @@ OH
 us
 us
 us
-ZF
+us
 "}
 (137,1,1) = {"
 Se
@@ -37288,8 +37289,8 @@ OH
 OH
 OH
 jz
-WM
-WM
+As
+As
 SD
 OH
 OH
@@ -37482,8 +37483,8 @@ OH
 OH
 OH
 jz
-OH
-OH
+As
+As
 SD
 OH
 OH

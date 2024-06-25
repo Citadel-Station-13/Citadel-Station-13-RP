@@ -34,7 +34,9 @@
 	//! WARNING: LEGACY CODE
 	tod = null
 	timeofdeath = 0
-	ai_holder?.go_wake()
+	if(istype(ai_holder, /datum/ai_holder/polaris))
+		var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+		ai_holder?.go_wake()
 	failed_last_breath = 0
 	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING
 	//! END
@@ -73,9 +75,7 @@
 	//! WARNING: LEGACY CODE
 	sdisabilities = 0 // ???
 	disabilities = 0 // ???
-	blinded = 0
-	SetBlinded(0)
-	eye_blind = 0
+	remove_status_effect(/datum/status_effect/sight/blindness)
 	ear_deaf = 0
 	ear_damage = 0
 	failed_last_breath = 0
@@ -99,7 +99,7 @@
  * set body temperature
  */
 /mob/living/proc/set_bodytemperature(amt)
-	bodytemperature = amt
+	bodytemperature = max(TCMB, amt)
 /**
  * adjust body temperature
  */
