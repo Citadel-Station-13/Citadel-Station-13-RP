@@ -221,26 +221,3 @@
 	Please render assistance under your obligations per the Interplanetary Convention on Space SAR, or relay this message to a party who can. Thank you for your urgent assistance."
 
 	priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = -1)
-
-/proc/build_overmap()
-	if(!(LEGACY_MAP_DATUM).use_overmap)
-		return 1
-
-	ASSERT(!(LEGACY_MAP_DATUM).overmap_z)
-	testing("Building overmap...")
-	(LEGACY_MAP_DATUM).overmap_z = SSmapping.allocate_level().z_index
-
-	testing("Putting overmap on [(LEGACY_MAP_DATUM).overmap_z]")
-	var/area/overmap/A = new
-	for (var/square in block(locate(1,1,(LEGACY_MAP_DATUM).overmap_z), locate((LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_z)))
-		var/turf/T = square
-		if(T.x == 1 || T.y == 1 || T.x == (LEGACY_MAP_DATUM).overmap_size || T.y == (LEGACY_MAP_DATUM).overmap_size)
-			T = T.ChangeTurf(/turf/overmap/edge)
-		else
-			T = T.ChangeTurf(/turf/overmap)
-		ChangeArea(T, A)
-
-	(LEGACY_MAP_DATUM).sealed_levels |= (LEGACY_MAP_DATUM).overmap_z
-
-	testing("Overmap build complete.")
-	return 1

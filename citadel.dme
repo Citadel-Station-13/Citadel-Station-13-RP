@@ -4189,6 +4189,8 @@
 #include "code\modules\overmap\legacy\ships\engines\ion_thruster.dm"
 #include "code\modules\overmap\map\area.dm"
 #include "code\modules\overmap\map\object.dm"
+#include "code\modules\overmap\map\overmap.dm"
+#include "code\modules\overmap\map\overmap_template.dm"
 #include "code\modules\overmap\map\turf.dm"
 #include "code\modules\overmap\tiled\tiled.dm"
 #include "code\modules\paperwork\adminpaper.dm"
