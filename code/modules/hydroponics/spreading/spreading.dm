@@ -138,10 +138,11 @@
 	update_icon()
 	SSplants.add_plant(src)
 	//Some plants eat through plating.
-	if(islist(seed.chems) && !isnull(seed.chems["pacid"]))
-		var/turf/T = get_turf(src)
-		var/P = prob(80)? 3 : 2
-		LEGACY_EX_ACT(T, P, null)
+	// todo: next guy's problem now
+	// if(islist(seed.chems) && !isnull(seed.chems["pacid"]))
+	// 	var/turf/T = get_turf(src)
+	// 	var/P = prob(80)? 3 : 2
+	// 	LEGACY_EX_ACT(T, P, null)
 
 /obj/effect/plant/update_icon()
 	//TODO: should really be caching this.

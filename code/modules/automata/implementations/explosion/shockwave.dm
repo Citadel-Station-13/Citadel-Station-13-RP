@@ -7,12 +7,25 @@
  * * power - a number for power, or a /datum/explosion_preset path
  * * falloff_exp - exponential falloff factor
  * * falloff_lin - linear falloff factor
+ * * falloff_exp_delay_cycles - only apply exponential falloff after this many cycles
  * * damage_multipliers - DAMAGE_CLASSIFIER_* associated to multipliers to use
  * * make_sound - automatically make a 'boom'
  * * shake_screen - automatically screenshake people around based on power
  */
-/proc/explosion_shockwave(turf/epicenter, power, falloff_exp, falloff_lin, list/damage_multipliers, make_sound = TRUE, shake_screen = TRUE)
-	#warn impl
+/proc/explosion_shockwave(turf/epicenter, power, falloff_exp, falloff_lin, falloff_exp_delay_cycles, list/damage_multipliers, make_sound = TRUE, shake_screen = TRUE)
+	RETURN_TYPE(/datum/automata/explosion/shockwave)
+	// atoms are accepted but if it's nothing we return null
+	epicenter = get_turf(epicenter)
+	if(!epicenter)
+		return
+	// unpack preset if needed
+	if(ispath(power, /datum/explosion_preset))
+		var/datum/explosion_preset/unpacking = power
+		power = initial(unpacking.power)
+		falloff_exp = isnull(falloff_exp)? initial(unpacking.falloff_exp) : falloff_exp
+		falloff_lin = isnull(falloff_lin)? initial(unpacking.falloff_lin) : falloff_lin
+		falloff_exp_delay_cycles = isnull(falloff_exp_delay_cycles)? initial(unpacking.falloff_exp_delay_cycles) : falloff_exp_delay_cycles
+	#warn impl; return shockwave explosion after
 
 /*
 /proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped)
@@ -23,6 +36,7 @@
 		var/start = world.timeofday
 		epicenter = get_turf(epicenter)
 		if(!epicenter) return
+		explosion(T,1,3,7)
 
 		// Handles recursive propagation of explosions.
 		if(z_transfer && multi_z_scalar)
@@ -152,6 +166,8 @@
 	var/falloff_exp
 	/// subtract to power per step traveled
 	var/falloff_lin
+	/// how many cycles to go before applying exponential falloff
+	var/falloff_exp_delay_cycles
 	/// how resistant we are to being blocked
 	/// if truthy (not zero, or null), we multiply the actual block amount by this
 	///
@@ -178,15 +194,17 @@
  * * power - power on epicenter, or null if epicenter is an associative list
  * * falloff_exp - multiplier to power per iteration. 0 to 1, inclusive
  * * falloff_lin - subtractor to power per iteration. 0 to infinity, inclusive
+ * * falloff_exp_delay_cycles - cycles to wait before applying exponential falloff.
  * * max_iterations - maximum expansions. not exactly the same as a range variable but somewhat close. 0 to 1000, inclusive.
  * * considered_dead - power below this value is dropped immediately.
  */
-/datum/automata/explosion/shockwave/setup(turf/epicenter, power, falloff_exp, falloff_lin, max_iterations = 1000, considered_dead = EXPLOSION_POWER_DROPPED)
+/datum/automata/explosion/shockwave/setup(turf/epicenter, power, falloff_exp, falloff_lin, falloff_exp_delay_cycles, max_iterations = 1000, considered_dead = EXPLOSION_POWER_DROPPED)
 	// clamped
 	src.max_iterations = max_iterations
 	src.considered_dead = considered_dead
 	src.falloff_exp = falloff_exp
 	src.falloff_lin = falloff_lin
+	src.falloff_exp_delay_cycles = falloff_exp_delay_cycles
 	// setup edges
 	src.edges_initial = islist(epicenter)? epicenter : list((epicenter) = power)
 	return ..()
@@ -236,7 +254,7 @@
 	// cache config for speed
 	var/power_considered_dead = src.considered_dead
 	var/max_iterations = src.max_iterations
-	var/falloff_exp = src.falloff_exp
+	var/falloff_exp = falloff_exp_delay_cycles < src.iteration? src.falloff_exp : 1
 	var/falloff_lin = src.falloff_lin
 
 	// we're going to be a more simple this time around

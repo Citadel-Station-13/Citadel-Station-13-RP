@@ -43,5 +43,19 @@
  * instead of requiring codebase-wise audits of function calls is good.
  */
 /datum/explosion_preset
+	var/power = 0
+	var/falloff_lin = 0
+	var/falloff_exp = 0
+	var/falloff_exp_delay_cycles = 0
 
-/datum/explosion_preset/
+/datum/explosion_preset/telecube_implosion
+	power = LERP(EXPLOSION_POWER_APPROXIMATE_HEAVY, EXPLOSION_POWER_APPROXIMATE_DEVASTATE, 0.5)
+	falloff_exp_delay_cycles = 2
+	falloff_exp = 0.88
+	falloff_lin = EXPLOSION_POWER_APPROXIMATE_DEVASTATE / 12
+
+#warn level 1 to 5 standard ones
+
+#warn 3 item detonation's
+
+#warn 3 standard grenade levels
