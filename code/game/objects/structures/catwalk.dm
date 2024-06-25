@@ -70,17 +70,6 @@
 
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
 
-
-/obj/structure/catwalk/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			qdel(src)
-		if(3.0)
-			qdel(src)
-	return
-
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = C

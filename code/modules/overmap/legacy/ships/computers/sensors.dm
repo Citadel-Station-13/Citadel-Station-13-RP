@@ -245,9 +245,6 @@
 	if (heat > 0)
 		heat = max(0, heat - heat_reduction)
 
-/obj/machinery/shipsensors/legacy_ex_act()
-	return
-
 /obj/machinery/shipsensors/power_change()
 	. = ..()
 	if(use_power && !powered())

@@ -696,6 +696,7 @@
 #include "code\datums\armor\clothing\suit.dm"
 #include "code\datums\armor\clothing\uniform.dm"
 #include "code\datums\armor\objects\doors.dm"
+#include "code\datums\armor\objects\misc.dm"
 #include "code\datums\armor\objects\standard.dm"
 #include "code\datums\armor\objects\windows.dm"
 #include "code\datums\armor\outsider\autolok.dm"

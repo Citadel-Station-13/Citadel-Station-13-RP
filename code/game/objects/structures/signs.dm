@@ -7,20 +7,6 @@
 	layer = ABOVE_JUNK_LAYER
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/structure/sign/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			qdel(src)
-			return
-		if(3.0)
-			qdel(src)
-			return
-		else
-	return
-
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
 	if(tool.is_screwdriver() && !istype(src, /obj/structure/sign/double))
 		playsound(src, tool.tool_sound, 50, 1)

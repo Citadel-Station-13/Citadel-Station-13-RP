@@ -191,7 +191,8 @@
 		return list()
 	return T.AtmosAdjacencyFloodfillHeuristic(amt, maxrad)
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/legacy_ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	. = ..()
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
 	ignite()
 
@@ -646,7 +647,8 @@
 
 	return ..()
 
-/mob/living/simple_mob/slime/xenobio/oil/legacy_ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/oil/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	. = ..()
 	log_and_message_admins("[src] exploded due to a chain reaction with another explosion.")
 	explode()
 

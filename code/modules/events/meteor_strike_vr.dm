@@ -97,9 +97,6 @@
 		if(91 to 100)
 			new /obj/machinery/artifact(src)
 
-/obj/structure/meteorite/legacy_ex_act()
-	return
-
 /obj/structure/meteorite/attackby(var/obj/item/I, var/mob/M)
 	if(istype(I, /obj/item/pickaxe))
 		var/obj/item/pickaxe/P = I

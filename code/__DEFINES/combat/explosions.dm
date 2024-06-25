@@ -33,3 +33,15 @@
 #define EXPLOSION_POWER_MOB_GIB_LD50 750
 #define EXPLOSION_POWER_MOB_GIB_MINIMUM 650
 #define EXPLOSION_POWER_TO_MOB_GIB_CHANCE(POWER)
+
+//* presets *//
+
+/**
+ * why is this in this file?
+ * because honestly, for such a horrifically mathy system,
+ * having all the balancing be in one file for easy referencing and adaptation
+ * instead of requiring codebase-wise audits of function calls is good.
+ */
+/datum/explosion_preset
+
+/datum/explosion_preset/

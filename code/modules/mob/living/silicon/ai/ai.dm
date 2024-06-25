@@ -712,13 +712,6 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/is_in_chassis()
 	return istype(loc, /turf)
 
-
-/mob/living/silicon/ai/legacy_ex_act(var/severity)
-	if(severity == 1.0)
-		qdel(src)
-		return
-	..()
-
 /mob/living/silicon/ai/updateicon()
 	if(!selected_sprite) selected_sprite = default_ai_icon
 

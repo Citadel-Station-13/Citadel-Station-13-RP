@@ -18,6 +18,8 @@
  * * effective_damage_multiplier - a variable passed around through the call chain with args, allowing us to modify the effective multiplier in ex_act() and still have damage be handled at /obj's base ex_act.
  *                                 effective damage multiplier will be modified at base /obj to corrospond to its damage classifier's multiplier in damage_multipliers!
  *
+ * todo: add the /datum/automata/explosion to this so we can do logging for important / major chain reactions
+ *
  * @return power after falloff (e.g. hit with 30 power, return 20 to apply 10 falloff)
  */
 /atom/proc/ex_act(power, list/damage_multipliers, effective_damage_multiplier = 1)

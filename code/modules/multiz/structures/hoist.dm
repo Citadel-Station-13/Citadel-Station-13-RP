@@ -143,36 +143,38 @@
 		release_hoistee()
 	QDEL_NULL(source_hook)
 
-/obj/structure/hoist/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if(prob(50))
-				qdel(src)
-			else
-				visible_message("\The [src] shakes violently, and neatly collapses as its damage sensors go off.")
-				collapse_kit()
-			return
-		if(3.0)
-			if(prob(50) && !broken)
-				break_hoist()
-			return
+// todo: object damage
 
-/obj/effect/hoist_hook/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			source_hoist.break_hoist()
-			return
-		if(2.0)
-			if(prob(50))
-				source_hoist.break_hoist()
-			return
-		if(3.0)
-			if(prob(25))
-				source_hoist.break_hoist()
-			return
+// /obj/structure/hoist/legacy_ex_act(severity)
+// 	switch(severity)
+// 		if(1.0)
+// 			qdel(src)
+// 			return
+// 		if(2.0)
+// 			if(prob(50))
+// 				qdel(src)
+// 			else
+// 				visible_message("\The [src] shakes violently, and neatly collapses as its damage sensors go off.")
+// 				collapse_kit()
+// 			return
+// 		if(3.0)
+// 			if(prob(50) && !broken)
+// 				break_hoist()
+// 			return
+
+// /obj/effect/hoist_hook/legacy_ex_act(severity)
+// 	switch(severity)
+// 		if(1.0)
+// 			source_hoist.break_hoist()
+// 			return
+// 		if(2.0)
+// 			if(prob(50))
+// 				source_hoist.break_hoist()
+// 			return
+// 		if(3.0)
+// 			if(prob(25))
+// 				source_hoist.break_hoist()
+// 			return
 
 
 /obj/structure/hoist/attack_hand(mob/user, list/params)

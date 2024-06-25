@@ -229,19 +229,6 @@ Alien plants should do something if theres a lot of poison
 			if(prob(max(10, 40 - (5 * nearby_weeds.len))))
 				W.process()
 
-
-/obj/structure/alien/weeds/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-		if(2.0)
-			if (prob(50))
-				qdel(src)
-		if(3.0)
-			if (prob(5))
-				qdel(src)
-	return
-
 /obj/structure/alien/weeds/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300 + T0C)
 		damage_integrity(5, TRUE)

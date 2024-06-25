@@ -1,7 +1,17 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-/proc/explosion_shockwave(turf/epicenter, power, falloff_exp, falloff_lin, list/damage_multipliers, make_sound, shake_screen)
+/**
+ * @params
+ * * epicenter - center
+ * * power - a number for power, or a /datum/explosion_preset path
+ * * falloff_exp - exponential falloff factor
+ * * falloff_lin - linear falloff factor
+ * * damage_multipliers - DAMAGE_CLASSIFIER_* associated to multipliers to use
+ * * make_sound - automatically make a 'boom'
+ * * shake_screen - automatically screenshake people around based on power
+ */
+/proc/explosion_shockwave(turf/epicenter, power, falloff_exp, falloff_lin, list/damage_multipliers, make_sound = TRUE, shake_screen = TRUE)
 	#warn impl
 
 /*
