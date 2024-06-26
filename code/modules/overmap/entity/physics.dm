@@ -1,5 +1,7 @@
 /**
  * (re)initialize physics
+ *
+ * always sets us back to a non-ticking state
  */
 /obj/overmap/entity/proc/initialize_physics()
 	deactivate_physics()
@@ -16,6 +18,8 @@
 	physics_tick(delta_time)
 
 /obj/overmap/entity/proc/physics_tick(dt)
+	if(!overmap)
+		return // what are we doing
 	// todo: proper overmaps physics, take diff from overmap south/west
 	var/new_position_x = pos_x + vel_x * dt
 	var/new_position_y = pos_y + vel_y * dt

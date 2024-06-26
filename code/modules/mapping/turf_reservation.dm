@@ -11,8 +11,13 @@
 	/// are we allocated?
 	var/tmp/allocated = FALSE
 	/// reserved turfs - set when allocated
-	var/list/turf/reserved_turfs
+	///
+	/// * does not include borders
+	var/list/turf/inner_turfs
 	/// border turfs - just the first layer / the immediate border
+	///
+	/// * does not include the rest of the border
+	/// * you shouldn't need to initialize more than one layer of turfs.
 	var/list/turf/border_turfs
 
 	/// width
@@ -50,6 +55,8 @@
 
 	/// our border area instance if needed
 	var/area/reservation_border/border_area
+	/// our area instance
+	var/area/reservation_area
 
 	//* spatial lookup *//
 	var/spatial_bl_x
@@ -81,7 +88,7 @@
 			), locate(
 			top_right_coords[1], top_right_coords[2], top_right_coords[3])
 		))
-	reserved_turfs = null
+	inner_turfs = null
 	allocated = FALSE
 	if(border_area)
 		QDEL_NULL(border_area)
@@ -99,6 +106,10 @@
 			spatial_lookup[index] = null
 
 	spatial_bl_x = spatial_tr_x = spatial_bl_y = spatial_tr_y = spatial_z = null
+
+	if(!reservation_area.unique)
+		qdel(reservation_area)
+	reservation_area = null
 
 	return TRUE
 
@@ -329,7 +340,8 @@
 
 	// todo: area.assimilate_turfs?
 	area_instance.contents.Add(final)
-	src.reserved_turfs = final.Copy()
+	src.reservation_area = area_instance
+	src.inner_turfs = final.Copy()
 	src.width = width
 	src.height = height
 	src.border = border

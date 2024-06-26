@@ -4,13 +4,17 @@
  * overmap objects capable of motion
  */
 /obj/overmap/entity
-	//* identity
+	//* identity *//
 	/// id
 	var/id
 	/// next id
 	var/static/id_next = 0
 
-	//* physics
+	//* overmap *//
+	/// if we're currently in an overmap; if so, which?
+	var/datum/overmap/overmap
+
+	//* physics *//
 	/// velocity x in overmap units per second
 	var/vel_x
 	/// velocity y in overmap units per second
@@ -31,10 +35,14 @@
 
 /obj/overmap/entity/Initialize(mapload)
 	. = ..()
+	// init physics
 	initialize_physics()
 	update_velocity_ticking()
+	// add to spatial grid
+	AddComponent(/datum/component/spatial_grid, SSspatial_grids.overmap_entities)
 
 /obj/overmap/entity/Destroy()
+	// stop physics
 	deactivate_physics()
 	return ..()
 
@@ -42,6 +50,7 @@
 	. = ..()
 	if(!isturf(old_loc) || forced)
 		initialize_physics()
+	#warn impl
 
 /obj/overmap/entity/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	switch(var_name)
@@ -52,3 +61,15 @@
 			set_velocity(vy = var_value)
 			return TRUE
 	return ..()
+
+/**
+ * called when we join an overmap
+ */
+/obj/overmap/entity/proc/on_overmap_join(datum/overmap/map)
+	src.overmap = map
+
+/**
+ * called when we leave an overmap
+ */
+/obj/overmap/entity/proc/on_overmap_leave(datum/overmap/map)
+	src.overmap = map

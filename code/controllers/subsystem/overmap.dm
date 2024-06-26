@@ -3,7 +3,16 @@ SUBSYSTEM_DEF(overmaps)
 	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_OVERMAPS
 
+	/// overmap by id
+	//  todo: recover
+	var/static/list/datum/overmap/overmap_by_id = list()
+
+	/// im so sorry bros dont hurt me please--
+	/// (eventually we'll have proper bindings but for now, uh, this is how it is!)
+	var/const/default_overmap_id = "main"
+
 /datum/controller/subsystem/overmaps/Initialize()
+	make_default_overmap()
 	if((LEGACY_MAP_DATUM).use_overmap)
 		GLOB.overmap_event_handler.create_events((LEGACY_MAP_DATUM).overmap_z, (LEGACY_MAP_DATUM).overmap_size, (LEGACY_MAP_DATUM).overmap_event_areas)
 	rebuild_helm_computers()
@@ -17,6 +26,9 @@ SUBSYSTEM_DEF(overmaps)
 	if(!initialized)
 		return
 	addtimer(CALLBACK(src, PROC_REF(rebuild_helm_computers)), 0, TIMER_UNIQUE)
+
+/datum/controller/subsystem/overmaps/proc/make_default_overmap()
+	#warn screaming above/below
 
 /proc/build_overmap()
 	if(!(LEGACY_MAP_DATUM).use_overmap)
