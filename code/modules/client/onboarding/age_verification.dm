@@ -77,8 +77,6 @@
 	if(isnull(player_month) || isnull(player_year))
 		return TRUE
 
-	message_admins("yippeeee")
-
 	var/current_time = world.realtime
 	var/current_month = text2num(time2text(current_time, "MM"))
 	var/current_year = text2num(time2text(current_time, "YYYY"))
