@@ -22,8 +22,10 @@
  * * angle - angle, clockwise of north
  * * distance - pixels to go forwards
  * * include_start - include starting turf
+ * * diagonal_expand_north - get turfs above diagonal if perfect diagonal. if both expand params are null, we use the same priority as SS13's movement handler.
+ * * diagonal_expand_south - get turfs below diagonal if perfect diagonal. if both expand params are null, we use the same priority as SS13's movement handler.
  */
-/proc/pixel_physics_raycast(turf/starting, starting_px, starting_py, angle, distance, include_start)
+/proc/pixel_physics_raycast(turf/starting, starting_px, starting_py, angle, distance, include_start, diagonal_expand_north, diagonal_expand_south)
 	if(starting_px < 0 || starting_py < 0 || starting_px > 33 || starting_py > 33)
 		CRASH("starting_px or starting_py is not 0 < x < 33")
 	starting_px = clamp(starting_px, 1, 32)
@@ -42,6 +44,7 @@
 			// cardinal
 			var/c_sdx
 			var/c_sdy
+			var/c_dist_to_next
 			switch(angle)
 				if(0)
 					c_sdx = 0

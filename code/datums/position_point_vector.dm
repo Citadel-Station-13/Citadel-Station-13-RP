@@ -117,29 +117,56 @@
 	var/turf/T = return_turf()
 	return "\ref[src] aX [x] aY [y] aZ [z] pX [return_px()] pY [return_py()] mX [T.x] mY [T.y] mZ [T.z]"
 
-/datum/point/proc/move_atom_to_src(atom/movable/AM)
-	AM.forceMove(return_turf())
-	AM.pixel_x = return_px()
-	AM.pixel_y = return_py()
+/**
+ * angle is clockwise from north
+ */
+/datum/point/proc/shift_in_projectile_angle(angle, distance)
+	x += sin(angle) * distance
+	y += cos(angle) * distance
 
-/datum/point/proc/return_turf()
-	return locate(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
+/**
+ * if not on a turf, we return null
+ */
+/datum/point/proc/instantiate_movable_at(typepath, ...)
+	ASSERT(ispath(typepath, /atom/movable))
+	var/turf/where = return_turf()
+	if(!where)
+		return
+	var/atom/movable/created = new typepath(arglist(list(where) + args.Copy(2)))
+	return created
 
-/datum/point/proc/clamped_return_turf()
-	return locate(clamp(CEILING(x / world.icon_size, 1), 1, world.maxx), clamp(CEILING(y / world.icon_size, 1), 1, world.maxy), z)
-
-/datum/point/proc/return_coordinates()		//[turf_x, turf_y, z]
-	return list(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
-
-/datum/point/proc/return_position()
-	return new /datum/position(src)
-
+/**
+ * return pixel x
+ */
 /datum/point/proc/return_px()
 	return MODULUS_F(x, world.icon_size) - 16 - 1
 
+/**
+ * return pixel y
+ */
 /datum/point/proc/return_py()
 	return MODULUS_F(y, world.icon_size) - 16 - 1
 
+/**
+ * return  turf
+ */
+/datum/point/proc/return_turf()
+	return locate(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
+
+
+/**
+ * extract closest in-bounds turf
+ *
+ * does not check for map transitions
+ */
+/datum/point/proc/clamped_return_turf()
+	return locate(clamp(CEILING(x / world.icon_size, 1), 1, world.maxx), clamp(CEILING(y / world.icon_size, 1), 1, world.maxy), z)
+
+/**
+ * return list(x, y, z)
+ */
+/datum/point/proc/return_coordinates()		//[turf_x, turf_y, z]
+	return list(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
 
 /datum/point/vector
 	/// Pixels per iteration
