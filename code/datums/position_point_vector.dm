@@ -125,14 +125,20 @@
 	y += cos(angle) * distance
 
 /**
+ * doesn't use set base pixel x/y
+ *
  * if not on a turf, we return null
  */
-/datum/point/proc/instantiate_movable_at(typepath, ...)
+/datum/point/proc/instantiate_movable_with_unmanaged_offsets(typepath, ...)
 	ASSERT(ispath(typepath, /atom/movable))
-	var/turf/where = return_turf()
+	var/turf/where = locate(ceil(x / WORLD_ICON_SIZE), ceil(y / WORLD_ICON_SIZE), z)
 	if(!where)
 		return
 	var/atom/movable/created = new typepath(arglist(list(where) + args.Copy(2)))
+	var/px = MODULUS_F(x, WORLD_ICON_SIZE) - 16 - 1
+	var/py = MODULUS_F(y, WORLD_ICON_SIZE) - 16 - 1
+	created.pixel_x = px
+	created.pixel_y = py
 	return created
 
 /**

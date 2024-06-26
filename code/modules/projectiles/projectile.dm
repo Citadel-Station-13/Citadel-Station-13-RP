@@ -79,8 +79,16 @@
 	///
 	/// * at below 0 or at equals to WORLD_ICON_SIZE, we move to the next turf
 	var/current_py
+	/// the pixel location we're moving to, or the [current_px] after this iteration step
+	///
+	/// * used so stuff like hitscan deflections work based on the actual raycasted collision step, and not the prior step.
+	var/next_px
+	/// the pixel location we're moving to, or the [current_px] after this iteration step
+	///
+	/// * used so stuff like hitscan deflections work based on the actual raycasted collision step, and not the prior step.
+	var/next_py
 	/// used to track if we got kicked forwards after calling Move()
-	var/trajectory_kicked_forwards
+	var/trajectory_kick_forwards
 	/// to avoid going too fast when kicked forwards by a mirror, if we overshoot the pixels we're
 	/// supposed to move this gets set to penalize the next move with a weird algorithm
 	/// that i won't bother explaining
@@ -678,8 +686,13 @@
 /obj/projectile/proc/get_tracer_point()
 	RETURN_TYPE(/datum/point)
 	var/datum/point/point = new
-	point.x = (x - 1) * WORLD_ICON_SIZE + current_px
-	point.y = (y - 1) * WORLD_ICON_SIZE + current_py
+	if(trajectory_moving_to)
+		// we're in move. use next px/py to respect 1. kick forwards 2. deflections
+		point.x = (x - 1) * WORLD_ICON_SIZE + next_px
+		point.y = (y - 1) * WORLD_ICON_SIZE + next_py
+	else
+		point.x = (x - 1) * WORLD_ICON_SIZE + current_px
+		point.y = (y - 1) * WORLD_ICON_SIZE + current_py
 	point.z = z
 	return point
 
@@ -743,8 +756,8 @@
 
 	// make the point based on how far we need to go
 	var/datum/point/point = new
-	point.x = (x - 1) * WORLD_ICON_SIZE + current_px + needed_distance * sin(angle)
-	point.y = (y - 1) * WORLD_ICON_SIZE + current_py + needed_distance * cos(angle)
+	point.x = future_x
+	point.y = future_y
 	point.z = z
 	return point
 
@@ -800,7 +813,7 @@
 	// muzzle
 	if(muzzle_type && tracer_muzzle_flash)
 		var/datum/point/starting = tracer_vertices[1]
-		var/atom/movable/muzzle_effect = starting.instantiate_movable_at(muzzle_type)
+		var/atom/movable/muzzle_effect = starting.instantiate_movable_with_unmanaged_offsets(muzzle_type)
 		// turn it
 		var/matrix/muzzle_transform = matrix()
 		muzzle_transform.Turn(original_angle)
@@ -812,7 +825,7 @@
 	// impact
 	if(impact_type && tracer_impact_effect)
 		var/datum/point/starting = tracer_vertices[length(tracer_vertices)]
-		var/atom/movable/impact_effect = starting.instantiate_movable_at(impact_type)
+		var/atom/movable/impact_effect = starting.instantiate_movable_with_unmanaged_offsets(impact_type)
 		// turn it
 		var/matrix/impact_transform = matrix()
 		impact_transform.Turn(original_angle)
@@ -1050,8 +1063,39 @@
 	var/d_next_vertical = \
 		(calculated_sdy? ((calculated_sdy > 0? (WORLD_ICON_SIZE + 0.5) - current_py : -current_py + 0.5) / calculated_dy) : INFINITY)
 	var/turf/move_to_target
-	var/next_px
-	var/next_py
+
+	/**
+	 * explanation on why current and next are done:
+	 *
+	 * projectiles track their pixel x/y on turf, not absolute pixel x/y from edge of map
+	 * this is done to make it simpler to reason about, but is not necessarily the most simple
+	 * or efficient way to do things.
+	 *
+	 * part of the problems with this approach is that Move() is not infallible. the projectile can be blocked.
+	 * if we immediately set current pixel x/y, if the projectile is intercepted by a Bump, we now dont' know the 'real'
+	 * position of the projectile because it's out of sync with where it should be
+	 *
+	 * now, things that require math operations on it don't know the actual location of the projectile until this proc
+	 * rolls it back
+	 *
+	 * so instead, we never touch current px/py until the move is known to be successful, then we set it
+	 * to the stored next px/py
+	 *
+	 * this way, things accessing can mutate our state freely without worrying about needing to handle rollbacks
+	 *
+	 * this entire system however adds overhead
+	 * if we want to not have overhead, we'll need to rewrite hit processing and have it so moves are fully illegal to fail
+	 * but doing that is literally not possible because anything can reject a move for any reason whatsoever
+	 * and we cannot control that, so, instead, we make projectiles track in absolute pixel x/y coordinates from edge of map
+	 *
+	 * that way, we don't even need to care about where the .loc is, we just know where the projectile is supposed to be by
+	 * knowing where it isn't, and by taking the change in its pixels the projectile controller can tell the projectile
+	 * where to go-
+	 *
+	 * (all shitposting aside, this is for future work; it works right now and we have an API to do set angle, kick forwards, etc)
+	 * (so i'm not going to touch this more because it's 4 AM and honestly this entire raycaster is already far less overhead)
+	 * (than the old system of a 16-loop of brute forced 2 pixel increments)
+	 */
 
 	if(d_next_horizontal == d_next_vertical)
 		// we're diagonal
@@ -1092,20 +1136,31 @@
 		var/atom/old_loc = loc
 		trajectory_moving_to = move_to_target
 		if(!Move(move_to_target))
+			// if we don't successfully move, don't change anything, we didn't move.
+			. = 0
 			if(loc == old_loc)
 				stack_trace("projectile failed to move, but is still on turf instead of deleted or relocated.")
 				qdel(src) // bye
+		else
+			// only do these if we successfully move
+			if(trajectory_kick_forwards)
+				. += trajectory_kick_forwards
+			current_px = next_px
+			current_py = next_py
+			#ifdef CF_PROJECTILE_RAYCAST_VISUALS
+			new /atom/movable/render/projectile_raycast(move_to_target, current_px, current_py, "#77ff77")
+			#endif
 		trajectory_moving_to = null
-		current_px = next_px
-		current_py = next_py
-		#ifdef CF_PROJECTILE_RAYCAST_VISUALS
-		new /atom/movable/render/projectile_raycast(move_to_target, current_px, current_py, "#77ff77")
-		#endif
 	else
 		// not moving to another tile, so, just move on current tile
+		if(trajectory_kick_forwards)
+			trajectory_kick_forwards = 0
+			stack_trace("how did something kick us forwards when we didn't even move?")
 		. = limit
 		current_px += limit * calculated_dx
 		current_py += limit * calculated_dy
+		next_px = current_px
+		next_py = current_py
 		#ifdef CF_PROJECTILE_RAYCAST_VISUALS
 		new /atom/movable/render/projectile_raycast(loc, current_px, current_py, "#ff3333")
 		#endif
@@ -1140,8 +1195,9 @@ GLOBAL_VAR_INIT(projectile_raycast_debug_visual_delay, 2 SECONDS)
  * call this proc to kick us forwards by a bit
  */
 /obj/projectile/proc/physics_kick_forwards(pixels)
-	current_px += pixels * calculated_dx
-	current_py += pixels * calculated_dy
+	trajectory_kick_forwards += pixels
+	next_px += pixels * calculated_dx
+	next_py += pixels * calculated_dy
 
 /**
  * only works during non-hitscan
