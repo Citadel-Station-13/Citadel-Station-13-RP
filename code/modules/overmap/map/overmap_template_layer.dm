@@ -15,5 +15,4 @@
  */
 /datum/overmap_template_layer/proc/apply_to(datum/overmap/map)
 	return TRUE
-
-#warn impl
+	

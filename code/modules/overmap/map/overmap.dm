@@ -22,12 +22,21 @@
 	src.id = id
 	src.template = template
 
+/**
+ * initializes an overmap from a template
+ */
 /datum/overmap/proc/initialize(datum/overmap_template/template = src.template)
 	construct(template)
-	allocate()
-	ASSERT(reservation)
-	build_map(template)
 
+	allocate()
+	template.on_allocation(src)
+
+	build(template)
+	template.on_allocation_initialized(src)
+
+/**
+ * allocates our reservation block
+ */
 /datum/overmap/proc/allocate()
 	if(reservation)
 		CRASH("has reservation already")
@@ -37,28 +46,31 @@
 		height,
 		area_override = /area/overmap,
 		border = 1,
-		border_handler = CALLBACK(src, PROC_REF(reservation_border_handler)),
 		border_initializer = CALLBACK(src, PROC_REF(reservation_border_initializer)),
 	)
-	if(!reservation)
-		CRASH("failed to allocate")
+	var/area/overmap/created_area = reservation.reservation_area
+	created_area.overmap = src
 	return reservation
 
+/**
+ * constructs our parameters from template
+ */
 /datum/overmap/proc/construct(datum/overmap_template/template)
 	src.width = template.width
 	src.height = template.height
 
-/datum/overmap/proc/build_map(datum/overmap_template/template)
-	#warn impl
-
 /**
- * handles when something touches our border
+ * builds and initializes our map, which is usually blank unless a template put stuff in.
  */
-/datum/overmap/proc/reservation_border_handler(atom/movable/AM)
-	#warn impl looping
+/datum/overmap/proc/build()
+	var/list/turf/map_turfs = reservation.inner_turfs.Copy()
+	for(var/turf/turf as anything in map_turfs)
+		
+	#warn impl
 
 /**
  * makes a border turf
  */
-/datum/overmap/proc/reservation_border_initializer(turf/border)
-	border.ChangeTurf(/turf/overmap/edge)
+/datum/overmap/proc/reservation_border_initializer(turf/border, datum/turf_reservation/reservation)
+	var/turf/overmap/edge/edge = border.ChangeTurf(/turf/overmap/edge)
+	edge.initialize_overmap(src)

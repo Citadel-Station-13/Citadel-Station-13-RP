@@ -18,3 +18,17 @@
 /area/overmap/Destroy()
 	overmap = null
 	return ..()
+
+/area/overmap/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(!istype(AM, /obj/overmap/entity))
+		return
+	var/obj/overmap/entity/entity = AM
+	entity.on_overmap_join(src)
+
+/area/overmap/Exited(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(!istype(AM, /obj/overmap/entity))
+		return
+	var/obj/overmap/entity/entity = AM
+	entity.on_overmap_leave(src)

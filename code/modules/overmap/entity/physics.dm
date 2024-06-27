@@ -41,6 +41,7 @@
 
 	if(new_loc != loc)
 		var/turf/old_loc = loc
+		#warn handle edge
 		Move(new_loc, NORTH, dt * 10)
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x

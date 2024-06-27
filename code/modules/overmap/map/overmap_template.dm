@@ -15,9 +15,25 @@
 	var/list/layers = list()
 
 /datum/overmap_template/proc/initialize()
-	#warn impl 
+	for(var/index in 1 to length(layers))
+		var/datum/overmap_template_layer/maybe_layer = layers[index]
+		if(istype(maybe_layer))
+			continue
+		maybe_layer = new maybe_layer
+		layers[index] = maybe_layer
 
-#warn impl
+/**
+ * called right after the turf reservation is allocated and initialized
+ */
+/datum/overmap_template/proc/on_allocation_initialized(datum/overmap/map)
+	for(var/datum/overmap_template_layer/layer as anything in layers)
+		layer.apply_to(map)
+
+/**
+ * called right after the turf reservation is allocated, but not initialized
+ */
+/datum/overmap_template/proc/on_allocation(datum/overmap/map)
+	return
 
 /**
  * default
@@ -31,4 +47,4 @@
 
 /datum/overmap_template/legacy_default/initialize()
 	. = ..()
-	layers += new /datum/overmap_template_layer/legacy_events(2)
+	layers += new /datum/overmap_template_layer/legacy_events(event_clouds)

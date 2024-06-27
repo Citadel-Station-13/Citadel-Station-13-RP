@@ -50,7 +50,6 @@
 	. = ..()
 	if(!isturf(old_loc) || forced)
 		initialize_physics()
-	#warn impl
 
 /obj/overmap/entity/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	switch(var_name)

@@ -12,6 +12,9 @@
 	opacity = TRUE
 	density = TRUE
 
+/turf/overmap/edge/proc/initialize_overmap(datum/overmap/map)
+	#warn impl
+
 /turf/overmap/Initialize(mapload)
 	. = ..()
 	name = "[x]-[y]"

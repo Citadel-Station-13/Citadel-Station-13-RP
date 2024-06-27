@@ -10,10 +10,6 @@
 /datum/turf_reservation
 	/// are we allocated?
 	var/tmp/allocated = FALSE
-	/// reserved turfs - set when allocated
-	///
-	/// * does not include borders
-	var/list/turf/inner_turfs
 	/// border turfs - just the first layer / the immediate border
 	///
 	/// * does not include the rest of the border
@@ -38,6 +34,7 @@
 
 	/// callback to use when something crosses border
 	///
+	/// * called with (turf/border)
 	/// * only used if border is custom-initalized, otherwise we use selflooping transition borders
 	/// * specifying this makes us put a reservation border component on the turfs as needed.
 	var/datum/callback/border_handler
@@ -45,6 +42,7 @@
 	var/border_mirage_anyways = FALSE
 	/// border initializer to call with every turf on the border to init them
 	///
+	/// * called with (turf/border, datum/turf_reservation/reservation)
 	/// * if border is specified but initializer isn't, we just make them transition borders.
 	var/datum/callback/border_initializer
 
@@ -88,7 +86,6 @@
 			), locate(
 			top_right_coords[1], top_right_coords[2], top_right_coords[3])
 		))
-	inner_turfs = null
 	allocated = FALSE
 	if(border_area)
 		QDEL_NULL(border_area)
@@ -272,7 +269,7 @@
 			locate(bottom_left_coords[1] - 1, top_right_coords[2], bottom_left_coords[3]),
 		)
 		for(var/turf/T as anything in immediate_left)
-			border_initializer?.Invoke(T)
+			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, WEST, should_mirage, locate(top_right_coords[1], T.y, T.z), border_handler)
 		// right
@@ -281,7 +278,7 @@
 			locate(top_right_coords[1] + 1, top_right_coords[2], bottom_left_coords[3]),
 		)
 		for(var/turf/T as anything in immediate_right)
-			border_initializer?.Invoke(T)
+			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, EAST, should_mirage, locate(bottom_left_coords[1], T.y, T.z), border_handler)
 		// up
@@ -290,7 +287,7 @@
 			locate(top_right_coords[1], top_right_coords[2] + 1, bottom_left_coords[3]),
 		)
 		for(var/turf/T as anything in immediate_up)
-			border_initializer?.Invoke(T)
+			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, NORTH, should_mirage, locate(T.x, bottom_left_coords[2], T.z), border_handler)
 		// down
@@ -299,7 +296,7 @@
 			locate(top_right_coords[1], bottom_left_coords[2] - 1, bottom_left_coords[3]),
 		)
 		for(var/turf/T as anything in immediate_down)
-			border_initializer?.Invoke(T)
+			border_initializer?.Invoke(T, src)
 			if(needs_component)
 				T.AddComponent(/datum/component/reservation_border, mirage_range, SOUTH, should_mirage, locate(T.x, top_right_coords[2], T.z), border_handler)
 
@@ -307,7 +304,7 @@
 		var/turf/corner
 		// top left
 		corner = locate(bottom_left_coords[1] - 1, top_right_coords[2] + 1, bottom_left_coords[3])
-		border_initializer?.Invoke(corner)
+		border_initializer?.Invoke(corner, src)
 		if(needs_component)
 			corner.AddComponent(/datum/component/reservation_border, mirage_range, NORTHWEST, should_mirage, locate(top_right_coords[1], bottom_left_coords[2], bottom_left_coords[3]), border_handler)
 		immediate_corners += corner
@@ -341,7 +338,6 @@
 	// todo: area.assimilate_turfs?
 	area_instance.contents.Add(final)
 	src.reservation_area = area_instance
-	src.inner_turfs = final.Copy()
 	src.width = width
 	src.height = height
 	src.border = border
@@ -367,6 +363,17 @@
 			spatial_lookup[index] = src
 
 	return TRUE
+
+/**
+ * gets an unordered list of all inner (non-border) turfs
+ */
+/datum/turf_reservation/proc/unordered_inner_turfs()
+	return block(
+		locate(bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]),
+		locate(top_right_coords[1], top_right_coords[2], top_right_coords[3]),
+	)
+
+//* Reservation Border Area *//
 
 /area/reservation_border
 	name = "Reservation Border Area"
