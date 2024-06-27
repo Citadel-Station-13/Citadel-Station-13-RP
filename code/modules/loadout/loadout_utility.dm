@@ -164,6 +164,10 @@
 	path = /obj/item/melee/umbrella
 	cost = 3
 
+/datum/loadout_entry/utility/bluespace_bracelet
+	name = "size standardization bracelet"
+	path = /obj/item/clothing/gloves/size
+
 /****************
 modular computers
 ****************/
