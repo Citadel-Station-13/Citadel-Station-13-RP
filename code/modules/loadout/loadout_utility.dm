@@ -165,7 +165,7 @@
 	cost = 3
 
 /datum/loadout_entry/utility/bluespace_bracelet
-	name = "size standardization bracelet"
+	name = "Size Standardization Bracelet"
 	path = /obj/item/clothing/gloves/size
 
 /****************
