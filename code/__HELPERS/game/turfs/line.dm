@@ -74,6 +74,8 @@
 			remaining_distance -= c_dist_to_next
 			while(remaining_distance >= 0)
 				c_moving_into = locate(c_moving_into.x + c_sdx, c_moving_into.y + c_sdy, c_moving_into.z)
+				if(!c_moving_into)
+					break
 				. += c_moving_into
 				remaining_distance -= WORLD_ICON_SIZE
 			return
@@ -84,6 +86,12 @@
 			var/d_dist_to_next
 			var/d_sdx
 			var/d_sdy
+			/// direction to go if we want to include the northern-most cardinal step
+			var/d_north_dir
+			/// direction to go if we want to include the southern-most cardinal step
+			var/d_south_dir
+			/// direction to go if using ss13 native movement to solve for the cardinal steps
+			var/d_native_dir
 			// we're diagonal
 			switch(angle)
 				if(45)
@@ -91,27 +99,50 @@
 					d_sdx = 1
 					d_sdy = 1
 					d_dist_to_next = ((((WORLD_ICON_SIZE + 0.5) ** 2) * 2) ** 0.5) - (starting_px / WORLD_ICON_SIZE) * d_diagonal_distance
+					d_north_dir = WEST
+					d_south_dir = SOUTH
+					d_native_dir = WEST
 				if(135)
 					is_diagonal_case = round(starting_px, 1) == (WORLD_ICON_SIZE - round(starting_py, 1) + 1)
 					d_sdx = 1
 					d_sdy = -1
 					d_dist_to_next = ((((WORLD_ICON_SIZE + 0.5) ** 2) * 2) ** 0.5) - (starting_px / WORLD_ICON_SIZE) * d_diagonal_distance
+					d_north_dir = NORTH
+					d_south_dir = WEST
+					d_native_dir = WEST
 				if(225)
 					is_diagonal_case = round(starting_px, 1) == round(starting_py, 1)
 					d_sdx = -1
 					d_sdy = -1
 					d_dist_to_next = ((starting_px - 0.5) / WORLD_ICON_SIZE) * d_diagonal_distance
+					d_north_dir = NORTH
+					d_south_dir = EAST
+					d_native_dir = EAST
 				if(315)
 					is_diagonal_case = round(starting_px, 1) == (WORLD_ICON_SIZE - round(starting_py, 1) + 1)
 					d_sdx = -1
 					d_sdy = 1
 					d_dist_to_next = ((starting_px - 0.5) / WORLD_ICON_SIZE) * d_diagonal_distance
+					d_north_dir = EAST
+					d_south_dir = SOUTH
+					d_native_dir = EAST
 			// only do special diag stuff if it's a close enough to a perfect diagonal
 			if(is_diagonal_case)
 				remaining_distance -= d_dist_to_next
+				var/use_ss13_default_priority = isnull(diagonal_expand_north) && isnull(diagonal_expand_south)
 				while(remaining_distance >= 0)
 					d_moving_into = locate(d_moving_into.x + d_sdx, d_moving_into.y + d_sdy, d_moving_into.z)
+					if(!do_moving_into)
+						break
 					. += d_moving_into
+					if(use_ss13_default_priority)
+					else
+						if(diagonal_expand_north)
+							// we actually want to get the one behind them; we don't need to null check either because of that
+							. += get_step(d_moving_into, d_north_dir)
+						if(diagonal_expand_south)
+							// we actually want to get the one behind them; we don't need to null check either because of that
+							. += get_step(d_moving_into, d_south_dir)
 					remaining_distance -= WORLD_ICON_SIZE
 				return
 
