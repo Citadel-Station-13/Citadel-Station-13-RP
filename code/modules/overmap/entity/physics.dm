@@ -41,8 +41,17 @@
 
 	if(new_loc != loc)
 		var/turf/old_loc = loc
-		#warn handle edge
-		Move(new_loc, NORTH, dt * 10)
+		var/jumping = FALSE
+		if(istype(new_loc, /turf/overmap/edge))
+			var/turf/overmap/edge/edge = new_loc
+			new_loc = edge.get_wrap_counterpart()
+			jumping = TRUE
+		if(jumping)
+			is_forced_moving = TRUE
+			forceMove(new_loc)
+			is_forced_moving = FALSE
+		else
+			Move(new_loc, NORTH, dt * 10)
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y

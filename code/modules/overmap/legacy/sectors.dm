@@ -44,7 +44,7 @@
 	find_z_levels() // This populates map_z and assigns z levels to the ship.
 	register_z_levels() // This makes external calls to update global z level information.
 
-	var/datum/overmap/legacy_bind_overmap = SSmapping.get_or_load_default_overmap()
+	var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
 	var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
 	start_x = where_to_go.x
 	start_y = where_to_go.y

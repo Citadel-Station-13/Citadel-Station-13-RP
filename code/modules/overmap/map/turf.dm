@@ -25,12 +25,18 @@
 /turf/overmap/edge
 	opacity = TRUE
 	density = TRUE
-	#warn impl
+
+	/// stores a reference to our overmap for wrap purposes
+	///
+	/// todo: is this a good method? it works for now but i hate storing turf vars...
+	var/datum/overmap/overmap
 
 /turf/overmap/edge/initialize_overmap(datum/overmap/map)
 	name = "border (warp-enabled)"
+	overmap = map
+
 	var/number
-	if(x == map.lower_left_x - 1 || x == map.upper_right_x)
+	if(x == map.lower_left_x - 1 || x == map.upper_right_x + 1)
 		// left or right borders
 		number = y - map.lower_left_y
 	else if(y == map.lower_left_y - 1 || y == map.upper_right_y + 1)
@@ -38,6 +44,29 @@
 		number = x - map.lower_left_x
 
 	maptext = MAPTEXT("[number]")
+
+/**
+ * get where a ship wraps to when it touches us
+ *
+ * supports diagonals.
+ */
+/turf/overmap/edge/proc/get_wrap_counterpart()
+	if(x == map.lower_left_x - 1)
+		if(y == map.lower_left_y - 1)
+			return locate(map.upper_right_x, map.upper_right_y, z)
+		return locate(map.upper_right_x, y, z)
+	else if(x == map.upper_right_x + 1)
+		if(y == map.upper_right_y + 1)
+			return locate(map.lower_left_x, map.lower_left_y, z)
+		return locate(map.lower_left_x, y, z)
+	if(y == map.lower_left_y - 1)
+		if(x == map.upper_right_x + 1)
+			return locate(map.lower_left_x, map.upper_right_y, z)
+		return locate(x, map.upper_right_y, z)
+	else if(y == map.upper_right_y + 1)
+		if(x == map.lower_left_x - 1)
+			return locate(map.upper_right_x, map.lower_left_y, z)
+		return locate(x, map.lower_left_y, z)
 
 //! LEGACY BELOW
 

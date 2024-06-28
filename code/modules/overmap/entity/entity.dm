@@ -27,6 +27,10 @@
 	var/max_speed = OVERMAP_DISTANCE_TILE
 	/// is moving
 	var/tmp/is_moving = FALSE
+	/// is forced moving
+	///
+	/// todo: reevaluate if this is the right way to perform forced movements like wrapping.
+	var/tmp/is_forced_moving = FALSE
 
 /obj/overmap/entity/New()
 	// assign id immediately
@@ -48,7 +52,7 @@
 
 /obj/overmap/entity/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
-	if(!isturf(old_loc) || forced)
+	if(!isturf(old_loc) || (forced && !is_forced_moving))
 		initialize_physics()
 
 /obj/overmap/entity/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
