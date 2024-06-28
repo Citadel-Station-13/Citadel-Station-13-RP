@@ -13,10 +13,10 @@ SUBSYSTEM_DEF(overmaps)
 
 /datum/controller/subsystem/overmaps/Initialize()
 	make_default_overmap()
-	if((LEGACY_MAP_DATUM).use_overmap)
-		GLOB.overmap_event_handler.create_events((LEGACY_MAP_DATUM).overmap_z, (LEGACY_MAP_DATUM).overmap_size, (LEGACY_MAP_DATUM).overmap_event_areas)
 	rebuild_helm_computers()
 	return ..()
+
+//! legacy code below
 
 /datum/controller/subsystem/overmaps/proc/rebuild_helm_computers()
 	for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
@@ -27,28 +27,40 @@ SUBSYSTEM_DEF(overmaps)
 		return
 	addtimer(CALLBACK(src, PROC_REF(rebuild_helm_computers)), 0, TIMER_UNIQUE)
 
+//! end
+
+//* Overmap Management *//
+
 /datum/controller/subsystem/overmaps/proc/make_default_overmap()
-	#warn screaming above/below
+	var/datum/map/station/map_datum = SSmapping.loaded_station
+	if(!map_datum.use_overmap)
+		return
+	var/datum/overmap_template/legacy_default/using_default_template = new(map_datum.overmap_size, map_datum.overmap_size, event_clouds = map_datum.overmap_event_areas)
+	create_overmap_from_template(using_default_template, default_overmap_id)
 
-/proc/build_overmap()
-	if(!(LEGACY_MAP_DATUM).use_overmap)
-		return 1
+/datum/controller/subsystem/overmaps/proc/create_overmap_from_template(datum/overmap_template/templatelike, use_id)
+	if(ispath(templatelike))
+		templatelike = new templatelike
+	// make sure template is valid
+	ASSERT(istype(templatelike))
+	// get template into another var
+	var/datum/overmap_template/template = templatelike
+	// get id or generate
+	id = use_id || generate_overmap_id()
+	ASSERT(!overmap_by_id[id])
+	// make overmap
+	var/datum/overmap/creating = new(id, template)
+	// instantiation
+	creating.initialize()
+	// done
+	return creating
 
-	ASSERT(!(LEGACY_MAP_DATUM).overmap_z)
-	testing("Building overmap...")
-	(LEGACY_MAP_DATUM).overmap_z = SSmapping.allocate_level().z_index
-
-	testing("Putting overmap on [(LEGACY_MAP_DATUM).overmap_z]")
-	var/area/overmap/A = new
-	for (var/square in block(locate(1,1,(LEGACY_MAP_DATUM).overmap_z), locate((LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_z)))
-		var/turf/T = square
-		if(T.x == 1 || T.y == 1 || T.x == (LEGACY_MAP_DATUM).overmap_size || T.y == (LEGACY_MAP_DATUM).overmap_size)
-			T = T.ChangeTurf(/turf/overmap/edge)
-		else
-			T = T.ChangeTurf(/turf/overmap)
-		ChangeArea(T, A)
-
-	(LEGACY_MAP_DATUM).sealed_levels |= (LEGACY_MAP_DATUM).overmap_z
-
-	testing("Overmap build complete.")
-	return 1
+/datum/controller/subsystem/overmaps/proc/generate_overmap_id()
+	var/potential
+	var/safety = 1000
+	do
+		if(safety-- <= 0)
+			CRASH("failed to generate overmap id - too many loops")
+		potential = "[SSmapping.round_global_descriptor && "[SSmapping.round_global_descriptor]-"][copytext(md5("[rand(1, 1000000)]"), 1, 5)]"
+	while(overmap_by_id[potential])
+	return potential

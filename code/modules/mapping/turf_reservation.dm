@@ -12,6 +12,8 @@
 	var/tmp/allocated = FALSE
 	/// border turfs - just the first layer / the immediate border
 	///
+	///  todo: this shouldn't be a var, make it a proc
+	///
 	/// * does not include the rest of the border
 	/// * you shouldn't need to initialize more than one layer of turfs.
 	var/list/turf/border_turfs

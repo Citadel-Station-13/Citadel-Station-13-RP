@@ -1,47 +1,45 @@
 
 /turf/overmap
+	name = "--init--"
+	desc = "If you see this, it means coders didn't update the description but did allow perspective-relayed examine. Yell at them."
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"
 	permit_ao = FALSE
-//	initialized = FALSE	// TODO - Fix unsimulated turf initialization so this override is not necessary!
+
+	maptext_width = 32
+	maptext_y = 12
+
+/turf/overmap/proc/initialize_overmap(datum/overmap/map)
+	return
 
 /turf/overmap/map
+	opacity = FALSE
+	density = FALSE
 	#warn impl
+
+/turf/overmap/map/initialize_overmap(datum/overmap/map)
+	var/calculated_x = x - map.lower_left_x
+	var/calculated_y = y - map.lower_left_y
+	name = "[calculated_x]-[calculated_y]"
 
 /turf/overmap/edge
 	opacity = TRUE
 	density = TRUE
-
-/turf/overmap/edge/proc/initialize_overmap(datum/overmap/map)
 	#warn impl
 
-/turf/overmap/Initialize(mapload)
-	. = ..()
-	name = "[x]-[y]"
-	var/list/numbers = list()
+/turf/overmap/edge/initialize_overmap(datum/overmap/map)
+	name = "border (warp-enabled)"
+	var/number
+	if(x == map.lower_left_x - 1 || x == map.upper_right_x)
+		// left or right borders
+		number = y - map.lower_left_y
+	else if(y == map.lower_left_y - 1 || y == map.upper_right_y + 1)
+		// top or bottom borders
+		number = x - map.lower_left_x
 
-	if(x == 1 || x == (LEGACY_MAP_DATUM).overmap_size)
-		numbers += list("[round(y/10)]","[round(y%10)]")
-		if(y == 1 || y == (LEGACY_MAP_DATUM).overmap_size)
-			numbers += "-"
-	if(y == 1 || y == (LEGACY_MAP_DATUM).overmap_size)
-		numbers += list("[round(x/10)]","[round(x%10)]")
+	maptext = MAPTEXT("[number]")
 
-	for(var/i = 1 to numbers.len)
-		var/image/I = image('icons/effects/numbers.dmi',numbers[i])
-		I.pixel_x = 5*i - 2
-		I.pixel_y = world.icon_size/2 - 3
-		if(y == 1)
-			I.pixel_y = 3
-			I.pixel_x = 5*i + 4
-		if(y == (LEGACY_MAP_DATUM).overmap_size)
-			I.pixel_y = world.icon_size - 9
-			I.pixel_x = 5*i + 4
-		if(x == 1)
-			I.pixel_x = 5*i - 2
-		if(x == (LEGACY_MAP_DATUM).overmap_size)
-			I.pixel_x = 5*i + 2
-		add_overlay(I)
+//! LEGACY BELOW
 
 /turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()
@@ -52,3 +50,5 @@
 	..()
 	if(istype(O, /obj/overmap/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)
+
+//! END

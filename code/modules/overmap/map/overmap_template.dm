@@ -14,6 +14,11 @@
 	/// applied in order
 	var/list/layers = list()
 
+/datum/overmap_template/New(width, height, list/additional_layers)
+	src.width = width
+	src.height = height
+	src.layers += additional_layers
+
 /datum/overmap_template/proc/initialize()
 	for(var/index in 1 to length(layers))
 		var/datum/overmap_template_layer/maybe_layer = layers[index]
@@ -44,6 +49,10 @@
 
 	/// event clouds to spawn
 	var/event_clouds = 2
+
+/datum/overmap_template/legacy_default/New(width, height, list/additional_layers, event_clouds)
+	..()
+	src.event_clouds = event_clouds
 
 /datum/overmap_template/legacy_default/initialize()
 	. = ..()
