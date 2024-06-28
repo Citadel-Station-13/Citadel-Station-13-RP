@@ -31,7 +31,20 @@ SUBSYSTEM_DEF(overmaps)
 
 //* Overmap Management *//
 
+/**
+ * i don't know what to put here
+ * this isn't a good long-term proc but for now it's fine
+ */
+/datum/controller/subsystem/overmaps/proc/get_or_load_default_overmap()
+	if(overmap_by_id[default_overmap_id])
+		return overmap_by_id[default_overmap_id]
+	make_default_overmap()
+	return overmap_by_id[default_overmap_id]
+
+
 /datum/controller/subsystem/overmaps/proc/make_default_overmap()
+	if(overmap_by_id[default_overmap_id])
+		return
 	var/datum/map/station/map_datum = SSmapping.loaded_station
 	if(!map_datum.use_overmap)
 		return
@@ -46,7 +59,7 @@ SUBSYSTEM_DEF(overmaps)
 	// get template into another var
 	var/datum/overmap_template/template = templatelike
 	// get id or generate
-	id = use_id || generate_overmap_id()
+	var/id = use_id || generate_overmap_id()
 	ASSERT(!overmap_by_id[id])
 	// make overmap
 	var/datum/overmap/creating = new(id, template)

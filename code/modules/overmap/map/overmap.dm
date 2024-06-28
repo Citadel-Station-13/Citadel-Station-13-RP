@@ -31,7 +31,7 @@
  * initializes an overmap from a template
  */
 /datum/overmap/proc/initialize(datum/overmap_template/template = src.template)
-	ASSERT(!SSovermaps.overmaps_by_id[id])
+	ASSERT(!SSovermaps.overmap_by_id[id])
 
 	construct(template)
 

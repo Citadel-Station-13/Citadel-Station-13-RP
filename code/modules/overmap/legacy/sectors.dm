@@ -44,12 +44,12 @@
 	find_z_levels() // This populates map_z and assigns z levels to the ship.
 	register_z_levels() // This makes external calls to update global z level information.
 
-	ASSERT((LEGACY_MAP_DATUM).overmap_z)
+	var/datum/overmap/legacy_bind_overmap = SSmapping.get_or_load_default_overmap()
+	var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
+	start_x = where_to_go.x
+	start_y = where_to_go.y
 
-	start_x = start_x || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
-	start_y = start_y || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
-
-	forceMove(locate(start_x, start_y, (LEGACY_MAP_DATUM).overmap_z))
+	forceMove(where_to_go)
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
@@ -221,3 +221,19 @@
 	Please render assistance under your obligations per the Interplanetary Convention on Space SAR, or relay this message to a party who can. Thank you for your urgent assistance."
 
 	priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = -1)
+
+/obj/overmap/entity/visitable/proc/free_overmap_space(datum/overmap/map)
+	var/list/turf/potential_turfs = map.reservation.unordered_inner_turfs()
+	var/safety = 1000
+	var/turf/potential
+	while((potential = pick_n_take(potential_turfs)))
+		if(length(potential.contents))
+			// something already here
+			continue
+		if(safety-- < 0)
+			stack_trace("safety ran out, that shouldn't really happen but okay")
+			break
+		break
+	if(!potential)
+		potential = locate(map.lower_left_x, map.lower_left_y, map.reservation.bottom_left_coords[3])
+	return potential
