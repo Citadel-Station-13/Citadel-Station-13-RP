@@ -44,32 +44,32 @@
 	find_z_levels() // This populates map_z and assigns z levels to the ship.
 	register_z_levels() // This makes external calls to update global z level information.
 
-	var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
-	var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
-	start_x = where_to_go.x
-	start_y = where_to_go.y
-
-	forceMove(where_to_go)
-
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
-	testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
+	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
+	spawn(-1)
+		var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
+		var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
+		start_x = where_to_go.x
+		start_y = where_to_go.y
 
-	LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
-	SSshuttle.process_init_queues()
+		forceMove(where_to_go)
+		testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
 
-	if(known)
-		plane = ABOVE_LIGHTING_PLANE
-		for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
-			H.get_known_sectors()
-	else
-		real_appearance = image(icon, src, icon_state)
-		real_appearance.override = TRUE
-		name = unknown_name
-		icon_state = unknown_state
-		color = null
-		desc = "Scan this to find out more information."
+		if(known)
+			plane = ABOVE_LIGHTING_PLANE
+			for(var/obj/machinery/computer/ship/helm/H in GLOB.machines)
+				H.get_known_sectors()
+		else
+			real_appearance = image(icon, src, icon_state)
+			real_appearance.override = TRUE
+			name = unknown_name
+			icon_state = unknown_state
+			color = null
+			desc = "Scan this to find out more information."
 
+		LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
+		SSshuttle.process_init_queues()
 
 // You generally shouldn't destroy these.
 /obj/overmap/entity/visitable/Destroy()
