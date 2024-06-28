@@ -36,45 +36,84 @@
 	if(include_start)
 		. += starting
 
+	var/remaining_distance = distance
+	var/safety = world.maxx + world.maxy
+
 	// if angle is completely cardinal or completely diagonal
 	// we use MODULUS_F because it's floating-compatible
 	if(!MODULUS_F(angle, 45))
-		angle = angle % 360 // normalize; we already know it's basically diagonal
+		// normalize; we already know it's basically diagonal
+		angle = angle % 360
+		if(angle < 0)
+			angle += 360
+		// go do cardinal / diagonal specials
 		if(angle % 90)
 			// cardinal
 			var/c_sdx
 			var/c_sdy
 			var/c_dist_to_next
+			var/turf/c_moving_into = starting
 			switch(angle)
 				if(0)
 					c_sdx = 0
 					c_sdy = 1
+					c_dist_to_next = (WORLD_ICON_SIZE + 0.5) - starting_py
 				if(90)
 					c_sdx = 1
 					c_sdy = 0
+					c_dist_to_next = (WORLD_ICON_SIZE + 0.5) - starting_px
 				if(180)
 					c_sdx = 0
 					c_sdy = -1
+					c_dist_to_next = starting_py - 0.5
 				if(270)
 					c_sdx = -1
 					c_sdy = 0
+					c_dist_to_next = starting_px - 0.5
+
+			remaining_distance -= c_dist_to_next
+			while(remaining_distance >= 0)
+				c_moving_into = locate(c_moving_into.x + c_sdx, c_moving_into.y + c_sdy, c_moving_into.z)
+				. += c_moving_into
+				remaining_distance -= WORLD_ICON_SIZE
+			return
 		else
+			var/is_diagonal_case
+			var/turf/d_moving_into = starting
+			var/d_diagonal_distance = (((WORLD_ICON_SIZE ** 2) * 2) ** 0.5)
+			var/d_dist_to_next
 			var/d_sdx
 			var/d_sdy
 			// we're diagonal
 			switch(angle)
 				if(45)
+					is_diagonal_case = round(starting_px, 1) == round(starting_py, 1)
 					d_sdx = 1
 					d_sdy = 1
+					d_dist_to_next = ((((WORLD_ICON_SIZE + 0.5) ** 2) * 2) ** 0.5) - (starting_px / WORLD_ICON_SIZE) * d_diagonal_distance
 				if(135)
+					is_diagonal_case = round(starting_px, 1) == (WORLD_ICON_SIZE - round(starting_py, 1) + 1)
 					d_sdx = 1
 					d_sdy = -1
+					d_dist_to_next = ((((WORLD_ICON_SIZE + 0.5) ** 2) * 2) ** 0.5) - (starting_px / WORLD_ICON_SIZE) * d_diagonal_distance
 				if(225)
+					is_diagonal_case = round(starting_px, 1) == round(starting_py, 1)
 					d_sdx = -1
 					d_sdy = -1
+					d_dist_to_next = ((starting_px - 0.5) / WORLD_ICON_SIZE) * d_diagonal_distance
 				if(315)
+					is_diagonal_case = round(starting_px, 1) == (WORLD_ICON_SIZE - round(starting_py, 1) + 1)
 					d_sdx = -1
 					d_sdy = 1
+					d_dist_to_next = ((starting_px - 0.5) / WORLD_ICON_SIZE) * d_diagonal_distance
+			// only do special diag stuff if it's a close enough to a perfect diagonal
+			if(is_diagonal_case)
+				remaining_distance -= d_dist_to_next
+				while(remaining_distance >= 0)
+					d_moving_into = locate(d_moving_into.x + d_sdx, d_moving_into.y + d_sdy, d_moving_into.z)
+					. += d_moving_into
+					remaining_distance -= WORLD_ICON_SIZE
+				return
 
 	// dx, dy for every distance pixel
 	var/ddx = sin(angle)
@@ -84,4 +123,45 @@
 	var/sdx = ddx > 0? 1 : -1
 	var/sdy = ddy > 0? 1 : -1
 
-#warn impl
+	var/cx = starting_px
+	var/cy = starting_py
+
+	var/turf/moving_into = starting
+	while(safety-- && remaining_distance)
+		var/d_next_horizontal = \
+			(sdx? ((sdx > 0? (WORLD_ICON_SIZE + 0.5) - px : -px + 0.5) / ddx) : INFINITY)
+		var/d_next_vertical = \
+			(sdy? ((sdy > 0? (WORLD_ICON_SIZE + 0.5) - py : -py + 0.5) / ddy) : INFINITY)
+		var/consumed = 0
+
+		if(d_next_horizontal == d_next_vertical)
+			// we're diagonal
+			if(d_next_horizontal <= remaining_distance)
+				moving_into = locate(moving_into.x + sdx, moving_into.y + sdy, moving_into.z)
+				consumed = d_next_horizontal
+				if(!moving_into)
+					break
+				cx = sdx > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
+				cy = sdy > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
+		else if(d_next_horizontal < d_next_vertical)
+			// closer is to move left/right
+			if(d_next_horizontal <= remaining_distance)
+				moving_into = locate(moving_into.x + sdx, moving_into.y, moving_into.z)
+				consumed = d_next_horizontal
+				if(!moving_into)
+					break
+				cx = sdx > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
+				cy = cy + d_next_horizontal * calculated_dy
+		else if(d_next_vertical < d_next_horizontal)
+			// closer is to move up/down
+			if(d_next_vertical <= remaining_distance)
+				moving_into = locate(moving_into.x, moving_into.y + sdy, moving_into.z)
+				consumed = d_next_vertical
+				if(!moving_into)
+					break
+				cx = cx + d_next_vertical * calculated_dx
+				cy = sdy > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
+
+		// if we need to move
+		if(moving_into)
+			. += moving_into

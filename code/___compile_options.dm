@@ -201,7 +201,7 @@
 /**
  * Enable raycast visuals
  */
-#define CF_PROJECTILE_RAYCAST_VISUALS
+// #define CF_PROJECTILE_RAYCAST_VISUALS
 
 #ifdef CF_PROJECTILE_RAYCAST_VISUALS
 	#warn Visualization of projectile raycast algorithm enabled.

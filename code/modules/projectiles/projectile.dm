@@ -88,7 +88,7 @@
 	/// * used so stuff like hitscan deflections work based on the actual raycasted collision step, and not the prior step.
 	var/next_py
 	/// used to track if we got kicked forwards after calling Move()
-	var/trajectory_kick_forwards
+	var/trajectory_kick_forwards = 0
 	/// to avoid going too fast when kicked forwards by a mirror, if we overshoot the pixels we're
 	/// supposed to move this gets set to penalize the next move with a weird algorithm
 	/// that i won't bother explaining
@@ -291,7 +291,7 @@
 		var/turf/target = locate(clamp(starting + xo, 1, world.maxx), clamp(starting + yo, 1, world.maxy), starting.z)
 		set_angle(get_visual_angle(src, target))
 	if(dispersion)
-		set_angle(set_angle_to + rand(-dispersion, dispersion))
+		set_angle(angle + rand(-dispersion, dispersion))
 	original_angle = angle
 	forceMove(starting)
 	permutated = list()
@@ -688,8 +688,8 @@
 	var/datum/point/point = new
 	if(trajectory_moving_to)
 		// we're in move. use next px/py to respect 1. kick forwards 2. deflections
-		point.x = (x - 1) * WORLD_ICON_SIZE + next_px
-		point.y = (y - 1) * WORLD_ICON_SIZE + next_py
+		point.x = (trajectory_moving_to.x - 1) * WORLD_ICON_SIZE + next_px
+		point.y = (trajectory_moving_to.y - 1) * WORLD_ICON_SIZE + next_py
 	else
 		point.x = (x - 1) * WORLD_ICON_SIZE + current_px
 		point.y = (y - 1) * WORLD_ICON_SIZE + current_py
@@ -766,9 +766,11 @@
  *
  * this can edit the point passed in!
  */
-/obj/projectile/proc/record_hitscan_start(datum/point/point = get_tracer_point(), muzzle_marker, kick_forwards)
+/obj/projectile/proc/record_hitscan_start(datum/point/point, muzzle_marker, kick_forwards)
 	if(!hitscanning)
 		return
+	if(isnull(point))
+		point = get_tracer_point()
 	tracer_vertices = list(point)
 	tracer_muzzle_flash = muzzle_marker
 
@@ -780,9 +782,11 @@
  *
  * this can edit the point passed in!
  */
-/obj/projectile/proc/record_hitscan_end(datum/point/point = get_tracer_point(), impact_marker, kick_forwards)
+/obj/projectile/proc/record_hitscan_end(datum/point/point, impact_marker, kick_forwards)
 	if(!hitscanning)
 		return
+	if(isnull(point))
+		point = get_tracer_point()
 	tracer_vertices += point
 	tracer_impact_effect = impact_marker
 
@@ -792,9 +796,11 @@
 /**
  * records a deflection (change in angle, aka generate new tracer)
  */
-/obj/projectile/proc/record_hitscan_deflection(datum/point/point = get_tracer_point())
+/obj/projectile/proc/record_hitscan_deflection(datum/point/point)
 	if(!hitscanning)
 		return
+	if(isnull(point))
+		point = get_tracer_point()
 	// there's no way you need more than 25
 	// if this is hit, fix your shit, don't bump this up; there's absolutely no reason for example,
 	// to simulate reflectors working !!25!! times.
@@ -828,7 +834,7 @@
 		var/atom/movable/impact_effect = starting.instantiate_movable_with_unmanaged_offsets(impact_type)
 		// turn it
 		var/matrix/impact_transform = matrix()
-		impact_transform.Turn(original_angle)
+		impact_transform.Turn(angle)
 		impact_effect.transform = impact_transform
 		impact_effect.color = color
 		impact_effect.set_light(impact_light_range, impact_light_intensity, impact_light_color_override? impact_light_color_override : color)
@@ -929,6 +935,8 @@
 	//
 	current_px = pixel_x - base_pixel_x + (WORLD_ICON_SIZE / 2)
 	current_py = pixel_y - base_pixel_y + (WORLD_ICON_SIZE / 2)
+	// interrupt active move logic
+	trajectory_moving_to = null
 
 //* Physics - Processing *//
 
@@ -1102,6 +1110,12 @@
 		if(d_next_horizontal <= limit)
 			move_to_target = locate(x + calculated_sdx, y + calculated_sdy, z)
 			. = d_next_horizontal
+			if(!move_to_target)
+				// we hit the world edge and weren't transit; time to get deleted.
+				if(hitscanning)
+					finalize_hitscan_tracers(impact_effect = FALSE)
+				qdel(src)
+				return
 			next_px = calculated_sdx > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
 			next_py = calculated_sdy > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
 	else if(d_next_horizontal < d_next_vertical)
@@ -1135,16 +1149,17 @@
 	if(move_to_target)
 		var/atom/old_loc = loc
 		trajectory_moving_to = move_to_target
-		if(!Move(move_to_target))
+		if(!Move(move_to_target) && ((loc != move_to_target) || !trajectory_moving_to))
 			// if we don't successfully move, don't change anything, we didn't move.
 			. = 0
 			if(loc == old_loc)
 				stack_trace("projectile failed to move, but is still on turf instead of deleted or relocated.")
 				qdel(src) // bye
 		else
-			// only do these if we successfully move
+			// only do these if we successfully move, or somehow end up in that turf anyways
 			if(trajectory_kick_forwards)
 				. += trajectory_kick_forwards
+				trajectory_kick_forwards = 0
 			current_px = next_px
 			current_py = next_py
 			#ifdef CF_PROJECTILE_RAYCAST_VISUALS
@@ -1164,7 +1179,6 @@
 		#ifdef CF_PROJECTILE_RAYCAST_VISUALS
 		new /atom/movable/render/projectile_raycast(loc, current_px, current_py, "#ff3333")
 		#endif
-
 
 #ifdef CF_PROJECTILE_RAYCAST_VISUALS
 GLOBAL_VAR_INIT(projectile_raycast_debug_visual_delay, 2 SECONDS)
