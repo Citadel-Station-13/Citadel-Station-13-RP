@@ -47,7 +47,7 @@
 		if(angle < 0)
 			angle += 360
 		// go do cardinal / diagonal specials
-		if(angle % 90)
+		if(!(angle % 90))
 			// cardinal
 			var/c_sdx
 			var/c_sdy
@@ -132,10 +132,11 @@
 				var/use_ss13_default_priority = isnull(diagonal_expand_north) && isnull(diagonal_expand_south)
 				while(remaining_distance >= 0)
 					d_moving_into = locate(d_moving_into.x + d_sdx, d_moving_into.y + d_sdy, d_moving_into.z)
-					if(!do_moving_into)
+					if(!d_moving_into)
 						break
 					. += d_moving_into
 					if(use_ss13_default_priority)
+						. += get_step(d_moving_into, d_native_dir)
 					else
 						if(diagonal_expand_north)
 							// we actually want to get the one behind them; we don't need to null check either because of that
@@ -158,11 +159,11 @@
 	var/cy = starting_py
 
 	var/turf/moving_into = starting
-	while(safety-- && remaining_distance)
+	while(safety-- > 0 && remaining_distance > 0)
 		var/d_next_horizontal = \
-			(sdx? ((sdx > 0? (WORLD_ICON_SIZE + 0.5) - px : -px + 0.5) / ddx) : INFINITY)
+			(sdx? ((sdx > 0? (WORLD_ICON_SIZE + 0.5) - cx : -cx + 0.5) / ddx) : INFINITY)
 		var/d_next_vertical = \
-			(sdy? ((sdy > 0? (WORLD_ICON_SIZE + 0.5) - py : -py + 0.5) / ddy) : INFINITY)
+			(sdy? ((sdy > 0? (WORLD_ICON_SIZE + 0.5) - cy : -cy + 0.5) / ddy) : INFINITY)
 		var/consumed = 0
 
 		if(d_next_horizontal == d_next_vertical)
@@ -174,6 +175,8 @@
 					break
 				cx = sdx > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
 				cy = sdy > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
+			else
+				break
 		else if(d_next_horizontal < d_next_vertical)
 			// closer is to move left/right
 			if(d_next_horizontal <= remaining_distance)
@@ -182,7 +185,7 @@
 				if(!moving_into)
 					break
 				cx = sdx > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
-				cy = cy + d_next_horizontal * calculated_dy
+				cy = cy + d_next_horizontal * ddy
 		else if(d_next_vertical < d_next_horizontal)
 			// closer is to move up/down
 			if(d_next_vertical <= remaining_distance)
@@ -190,8 +193,12 @@
 				consumed = d_next_vertical
 				if(!moving_into)
 					break
-				cx = cx + d_next_vertical * calculated_dx
+				cx = cx + d_next_vertical * ddx
 				cy = sdy > 0? 0.5 : (WORLD_ICON_SIZE + 0.5)
+			else
+				break
+
+		remaining_distance -= consumed
 
 		// if we need to move
 		if(moving_into)
