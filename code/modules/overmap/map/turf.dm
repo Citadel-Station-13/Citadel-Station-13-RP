@@ -2,7 +2,7 @@
 /turf/overmap
 	name = "--init--"
 	desc = "If you see this, it means coders didn't update the description but did allow perspective-relayed examine. Yell at them."
-	icon = 'icons/turf/space.dmi'
+	icon = 'icons/modules/overmap/turf.dmi'
 	icon_state = "map"
 	permit_ao = FALSE
 
@@ -15,7 +15,6 @@
 /turf/overmap/map
 	opacity = FALSE
 	density = FALSE
-	#warn impl
 
 /turf/overmap/map/initialize_overmap(datum/overmap/map)
 	var/calculated_x = x - map.lower_left_x

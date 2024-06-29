@@ -7,7 +7,8 @@
  */
 /area/overmap
 	name = "Overmap Zone"
-	#warn redo sprite?
+	icon = 'icons/modules/overmap/area.dmi'
+	icon_state = "map"
 	icon_state = "start"
 	// todo: sensor update
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
