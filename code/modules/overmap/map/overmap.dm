@@ -31,7 +31,7 @@
 		CRASH("failed to allocate")
 	return reservation
 
-/datum/overmap/proc/construction(datum/overmap_template/template)
+/datum/overmap/proc/construct(datum/overmap_template/template)
 	src.width = template.width
 	src.height = template.height
 
