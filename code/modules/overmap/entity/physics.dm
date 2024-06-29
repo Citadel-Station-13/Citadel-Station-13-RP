@@ -1,5 +1,7 @@
 /**
  * (re)initialize physics
+ *
+ * always sets us back to a non-ticking state
  */
 /obj/overmap/entity/proc/initialize_physics()
 	deactivate_physics()
@@ -16,6 +18,8 @@
 	physics_tick(delta_time)
 
 /obj/overmap/entity/proc/physics_tick(dt)
+	if(!overmap)
+		return // what are we doing
 	// todo: proper overmaps physics, take diff from overmap south/west
 	var/new_position_x = pos_x + vel_x * dt
 	var/new_position_y = pos_y + vel_y * dt
@@ -37,7 +41,17 @@
 
 	if(new_loc != loc)
 		var/turf/old_loc = loc
-		Move(new_loc, NORTH, dt * 10)
+		var/jumping = FALSE
+		if(istype(new_loc, /turf/overmap/edge))
+			var/turf/overmap/edge/edge = new_loc
+			new_loc = edge.get_wrap_counterpart()
+			jumping = TRUE
+		if(jumping)
+			is_forced_moving = TRUE
+			forceMove(new_loc)
+			is_forced_moving = FALSE
+		else
+			Move(new_loc, NORTH, dt * 10)
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
