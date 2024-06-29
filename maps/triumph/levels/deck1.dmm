@@ -1098,6 +1098,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "dz" = (
@@ -7505,6 +7506,9 @@
 	pixel_y = -22
 	},
 /obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/catering/bar_coffee/unanchored{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "zj" = (

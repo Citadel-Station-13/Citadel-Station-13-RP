@@ -7386,7 +7386,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "gkp" = (
-/obj/machinery/vending/coffee,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak/surgery)
 "gkq" = (
@@ -22183,7 +22186,9 @@
 /area/medical/psych_ward)
 "snE" = (
 /obj/structure/table/glass,
-/obj/item/storage/box/donkpockets,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "snO" = (
@@ -24847,6 +24852,8 @@
 	},
 /obj/item/storage/box/donkpockets,
 /obj/structure/table/glass,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "uyb" = (
