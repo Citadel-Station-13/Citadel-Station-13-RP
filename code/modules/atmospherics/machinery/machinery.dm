@@ -22,7 +22,7 @@ Pipelines + Other Objects -> Pipe network
 	atom_colouration_system = FALSE
 	climb_allowed = FALSE
 	depth_projected = FALSE
-	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 	hides_underfloor_defaulting = FALSE
 
 	//* Underfloor *//
