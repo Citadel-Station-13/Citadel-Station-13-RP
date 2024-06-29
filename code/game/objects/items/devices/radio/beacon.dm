@@ -45,7 +45,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."
 	anchored = TRUE
 	w_class = WEIGHT_CLASS_HUGE
-	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 
 	var/repair_fail_chance = 35
 

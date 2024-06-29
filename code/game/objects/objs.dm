@@ -908,7 +908,7 @@
  */
 /obj/proc/set_hides_underfloor(new_value, mapload)
 	switch(new_value)
-		if(OBJ_UNDERFLOOR_IF_COVERED, OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP)
+		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			var/turf/where_we_are = loc
 			if(istype(where_we_are) && where_we_are.hides_underfloor_objects())
 				new_value = OBJ_UNDERFLOOR_ALWAYS
@@ -946,15 +946,19 @@
 
 /**
  * called at init
+ *
+ * todo: should this be called from obj init? we can probably shave a few centiseconds off init if it was on turf
+ *       as we wouldn't need to keep calling hides_underfloor_objects()
  */
 /obj/proc/initialize_hiding_underfloor(mapload)
 	switch(hides_underfloor)
-		if(OBJ_UNDERFLOOR_IF_COVERED, OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP)
+		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			var/turf/where_we_are = loc
-			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP) && mapload
-			if(istype(where_we_are) && (hide_anyways || where_we_are.hides_underfloor_objects()))
+			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP) && mapload
+			var/we_are_hidden = where_we_are?.hides_underfloor_objects()
+			if(istype(where_we_are) && (hide_anyways || !we_are_hidden))
 				hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
-				if(!mapload)
+				if(!mapload && we_are_hidden)
 					update_hiding_underfloor(TRUE)
 			else
 				hides_underfloor = OBJ_UNDERFLOOR_NEVER

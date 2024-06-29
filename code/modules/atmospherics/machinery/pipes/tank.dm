@@ -16,6 +16,7 @@
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY
 	density = TRUE
 	hides_underfloor_underlays = TRUE
+	hides_underfloor_defaulting = FALSE
 
 	var/start_pressure = 75*ONE_ATMOSPHERE
 

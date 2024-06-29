@@ -13,13 +13,13 @@
 #define OBJ_UNDERFLOOR_ALWAYS "always"
 /// automatic
 ///
-/// * gets set to UNDERFLOOR_NONE if we were made while the floor is intact
+/// * gets set to UNDERFLOOR_NEVER if we were made while the floor is intact
 /// * gets set to UNDERFLOOR_ALWAYS if we were made while the floor isn't intact
-#define OBJ_UNDERFLOOR_IF_COVERED "initially-covered"
+#define OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED "initially-covered"
 /// automatic
 ///
-/// * DEPENDS_ON_CREATION, but always underfloor if made in mapload
-#define OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP "initially-underfloor"
+/// * IF_CREATED_UNCOVERED, but always underfloor if made in mapload
+#define OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP "initially-underfloor"
 
 DEFINE_ENUM("obj_hides_underfloor", list(
 	/obj = list(
@@ -29,6 +29,6 @@ DEFINE_ENUM("obj_hides_underfloor", list(
 	"Disabled" = OBJ_UNDERFLOOR_DISABLED,
 	"Never" = OBJ_UNDERFLOOR_NEVER,
 	"Always" = OBJ_UNDERFLOOR_ALWAYS,
-	"If Covered (Init Only)" = OBJ_UNDERFLOOR_IF_COVERED,
-	"If Created On Floor (Init Only)" = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP,
+	"If Created Uncovered (Init Only)" = OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED,
+	"If Created Uncovered Or In Mapload (Init Only)" = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP,
 ))

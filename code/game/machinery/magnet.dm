@@ -13,7 +13,7 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
-	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 	hides_underfloor_update_icon = TRUE
 
 	/// Radio frequency.
