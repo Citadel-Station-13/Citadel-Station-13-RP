@@ -33,6 +33,9 @@
 /datum/overmap/proc/initialize(datum/overmap_template/template = src.template)
 	ASSERT(!SSovermaps.overmap_by_id[id])
 
+	if(!template.initialized)
+		template.initialize()
+
 	construct(template)
 
 	allocate()

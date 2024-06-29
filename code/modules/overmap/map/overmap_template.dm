@@ -5,6 +5,8 @@
  * a template used to construct an overmap
  */
 /datum/overmap_template
+	/// are we initialized?
+	var/initialized = FALSE
 	/// our width
 	var/width
 	/// our height
@@ -17,8 +19,12 @@
 /datum/overmap_template/New(width, height, list/additional_layers)
 	src.width = width
 	src.height = height
-	src.layers += additional_layers
+	if(additional_layers)
+		src.layers += additional_layers
 
+/**
+ * should be idempotent!
+ */
 /datum/overmap_template/proc/initialize()
 	for(var/index in 1 to length(layers))
 		var/datum/overmap_template_layer/maybe_layer = layers[index]
@@ -26,6 +32,8 @@
 			continue
 		maybe_layer = new maybe_layer
 		layers[index] = maybe_layer
+
+	initialized = TRUE
 
 /**
  * called right after the turf reservation is allocated and initialized
@@ -55,5 +63,5 @@
 	src.event_clouds = event_clouds
 
 /datum/overmap_template/legacy_default/initialize()
-	. = ..()
 	layers += new /datum/overmap_template_layer/legacy_events(event_clouds)
+	return ..()
