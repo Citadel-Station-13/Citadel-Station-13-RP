@@ -44,6 +44,9 @@
 	/// base turf typepath for this level
 	var/base_turf = /turf/space
 	/// base area typepath for this level
+	///
+	/// this should be an unique area, like /area/space
+	/// otherwise, stuff like grids will be mad at you and explode
 	var/base_area = /area/space
 	/// id of north zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
 	/// can also be set to instance - used for structs.
@@ -150,7 +153,8 @@
 	src.parent_map = parent_map
 
 	if(!isnull(parent_map))
-		id = "[parent_map.id]-[id]"
+		if(id)
+			id = "[parent_map.id]-[id]"
 
 	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
 	UNPACK_LINK(link_north)
@@ -312,6 +316,15 @@
 		if(DOWN)
 			return RESOLVE(link_below)
 		#undef RESOLVE
+
+/**
+ * make us selflooping
+ *
+ * * do not use this unless you know what you're doing
+ * * does not update transitions!link_
+ */
+/datum/map_level/proc/dangerously_make_selflooping()
+	link_north = link_south = link_east = link_west = src
 
 /**
  * called right after we physically load in, before init
@@ -585,9 +598,3 @@
 
 /datum/map_level/reserved/allow_deallocate()
 	return FALSE
-
-/**
- * transit levels for shuttles
- */
-/datum/map_level/transit
-	transition = Z_TRANSITION_DISABLED

@@ -34,7 +34,7 @@
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	//? intrinsics
+	//* intrinsics
 	/// area flags
 	var/area_flags = NONE
 	/// stores the next uid to use
@@ -47,11 +47,16 @@
 	 */
 	var/unique = TRUE
 
-	//? defaults
+	//* defaults
 	/// outdoors by default?
 	var/initial_outdoors = FALSE
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
+
+
+	//* Identity
+	/// player-facing name, overrides name when / if necessary.
+	var/display_name
 
 	//? nightshift
 	/// nightshift level
@@ -247,6 +252,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+#warn refactor changearea
 /**
  * Changes the area of T to A. Do not do this manually.
  * Area is expected to be a non-null instance.
@@ -715,7 +721,7 @@ var/list/ghostteleportlocs = list()
 
 	return 1
 
-//* Atmospherics
+//* Atmospherics *//
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)

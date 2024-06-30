@@ -58,37 +58,31 @@
 	var/orders[0]
 	var/receipts[0]
 
-	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
+	var/datum/shuttle/shuttle = GLOB.legacy_cargo_shuttle
+	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 	if(shuttle)
-		if(shuttle.has_arrive_time())
+		if(!controller.get_transit_stage())
 			shuttle_status["location"] = "In transit"
 			shuttle_status["mode"] = SUP_SHUTTLE_TRANSIT
-			shuttle_status["time"] = shuttle.eta_minutes()
-
+			shuttle_status["time"] = controller.legacy_eta_in_minutes()
 		else
 			shuttle_status["time"] = 0
-			if(shuttle.at_station())
-				if(shuttle.shuttle_docking_controller)
-					switch(shuttle.shuttle_docking_controller.get_docking_status())
-						if("docked")
-							shuttle_status["location"] = "Docked"
-							shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
-						if("undocked")
-							shuttle_status["location"] = "Undocked"
-							shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKED
-						if("docking")
-							shuttle_status["location"] = "Docking"
-							shuttle_status["mode"] = SUP_SHUTTLE_DOCKING
-							shuttle_status["force"] = shuttle.can_force()
-						if("undocking")
-							shuttle_status["location"] = "Undocking"
-							shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKING
-							shuttle_status["force"] = shuttle.can_force()
-
-				else
-					shuttle_status["location"] = "Station"
-					shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
-
+			if(controller.is_at_away())
+				switch(controller.docking_state)
+					if(SHUTTLE_DOCKING_STATE_DOCKED)
+						shuttle_status["location"] = "Docked"
+						shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
+					if(SHUTTLE_DOCKING_STATE_DOCKING)
+						shuttle_status["location"] = "Docking"
+						shuttle_status["mode"] = SUP_SHUTTLE_DOCKING
+						shuttle_status["force"] = shuttle.can_force()
+					if(SHUTTLE_DOCKING_STATE_UNDOCKING)
+						shuttle_status["location"] = "Undocking"
+						shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKING
+						shuttle_status["force"] = shuttle.can_force()
+					else
+						shuttle_status["location"] = "Undocked"
+						shuttle_status["mode"] = SUP_SHUTTLE_UNDOCKED
 			else
 				shuttle_status["location"] = "Away"
 				shuttle_status["mode"] = SUP_SHUTTLE_AWAY
@@ -100,14 +94,13 @@
 			else
 				shuttle_status["launch"] = 0
 
-		switch(shuttle.moving_status)
-			if(SHUTTLE_IDLE)
-				shuttle_status["engine"] = "Idle"
-			if(SHUTTLE_WARMUP)
+		switch(shuttle.controller.get_transit_stage())
+			if(SHUTTLE_TRANSIT_STAGE_TAKEOFF)
 				shuttle_status["engine"] = "Warming up"
-			if(SHUTTLE_INTRANSIT)
+			if(SHUTTLE_TRANSIT_STAGE_FLIGHT)
 				shuttle_status["engine"] = "Engaged"
-
+			else
+				shuttle_status["engine"] = "Idle"
 	else
 		shuttle["mode"] = SUP_SHUTTLE_ERROR
 
@@ -194,10 +187,7 @@
 	if(!SSsupply)
 		log_world("## ERROR: The supply_controller datum is missing.")
 		return
-	var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
-	if (!shuttle)
-		log_world("## ERROR: The supply shuttle datum is missing.")
-		return
+	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 	if(..())
 		return 1
 
@@ -394,14 +384,18 @@
 
 	switch(href_list["send_shuttle"])
 		if("send_away")
-			if (shuttle.forbidden_atoms_check())
+			if(legacy_supply_forbidden_atoms_check(controller.shuttle))
 				to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons.</span>")
 			else
-				shuttle.launch(src)
+				if(controller.get_transit_stage() || !controller.is_at_away())
+					return
+				controller.transit_towards_home()
 				to_chat(usr, "<span class='notice'>Initiating launch sequence.</span>")
 
 		if("send_to_station")
-			shuttle.launch(src)
+			if(controller.get_transit_stage() || !controller.is_at_home())
+				return
+			controller.transit_towards_away()
 			to_chat(usr, "<span class='notice'>The supply shuttle has been called and will arrive in approximately [round(SSsupply.movetime/600,1)] minutes.</span>")
 
 		if("cancel_shuttle")

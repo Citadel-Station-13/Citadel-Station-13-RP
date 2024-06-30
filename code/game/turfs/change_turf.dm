@@ -1,3 +1,5 @@
+// todo: overhaul the baseturf system including snake_casing everything
+
 // This is a list of turf types we dont want to assign to baseturfs unless through initialization or explicitly
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	/turf/space,
@@ -47,11 +49,11 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
 	// this is very obviously a copypaste from ChangeTurf.
-	. = SSmapping.level_baseturf(z) || world.turf
+	. = SSmapping.level_base_turf(z) || world.turf
 	if(!ispath(.))
 		. = text2path(.)
 		if (!ispath(.))
-			warning("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+			warning("Z-level [z] has invalid baseturf '[SSmapping.level_base_turf(z)]'")
 			. = world.turf
 	if(. == world.turf)		// no space/basic check, if you use space/basic in a map honestly get bent
 		if(istype(below(), /turf/simulated))
@@ -76,6 +78,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
+// todo: optimization pass for all this
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	// todo: hopefully someday we can get simulated/open to just be turf/open or something once
 	//       we refactor ZAS
@@ -87,9 +90,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			return
 		if(/turf/baseturf_bottom)
 			var/turf/below = below()
-			path = SSmapping.level_baseturf(z) || /turf/space
+			path = SSmapping.level_base_turf(z) || /turf/space
 			if(!ispath(path))
-				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
+				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_base_turf(z)]'")
 				path = /turf/space
 			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
 				if(istype(below, /turf/simulated))
@@ -211,38 +214,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		QUEUE_SMOOTH_NEIGHBORS(src)
 
 	return new_turf
-
-// todo: zas refactor
-/turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
-	// invalidate zone
-	if(has_valid_zone())
-		if(can_safely_remove_from_zone())
-			zone.remove(src)
-			queue_zone_update()
-		else
-			zone.rebuild()
-	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
-		// store air
-		var/datum/gas_mixture/GM = remove_cell_volume()
-		. = ..()
-		if(!.)
-			return
-		if(has_valid_zone())
-			stack_trace("zone rebuilt too fast")
-		// restore air
-		air = GM
-	else
-		// at this point the zone does not have our gas mixture in it, and is invalidated
-		. = ..()
-		if(!.)
-			return
-		// ensure zone didn't rebuild yet
-		if(has_valid_zone())
-			stack_trace("zone reubilt too fast")
-		// reset air
-		if(!air)
-			air = new /datum/gas_mixture(CELL_VOLUME)
-		air.parse_gas_string(initial_gas_mix, src)
 
 /// Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount=1, flags)

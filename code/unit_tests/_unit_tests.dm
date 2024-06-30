@@ -82,6 +82,7 @@
 #include "language/_language.dm"
 #include "mob/_mob.dm"
 #include "reagents/_reagents.dm"
+#include "shuttles/_shuttles.dm"
 
 // #include "anchored_mobs.dm"
 #include "bad_alcohol_reagents.dm"

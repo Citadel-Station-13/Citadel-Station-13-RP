@@ -21,6 +21,13 @@
 #define MESSAGE_TYPE_ATTACKLOG "attacklog"
 #define MESSAGE_TYPE_DEBUG "debug"
 
+//* legacy above, new below
+
+#define MESSAGE_TYPE_SERVER_NOTICE "system"
+#define MESSAGE_TYPE_SERVER_WARN "system"
+#define MESSAGE_TYPE_SERVER_ERROR "system"
+#define MESSAGE_TYPE_SERVER_FATAL "system"
+
 //! ## Debug printing macros (for development and testing)
 /// Used for debug messages to the world
 #define debug_world(msg) if (GLOB.Debug2) to_chat(world, \

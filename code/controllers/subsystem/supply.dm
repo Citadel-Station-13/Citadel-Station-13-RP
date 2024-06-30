@@ -16,8 +16,6 @@ SUBSYSTEM_DEF(supply)
 	var/list/adm_order_history = list()		// Complete history of all orders, for admin use
 	var/list/adm_export_history = list()	// Complete history of all crates sent back on the shuttle, for admin use
 	// Shuttle Movement
-	var/movetime = 1200
-	var/datum/shuttle/autodock/ferry/supply/shuttle
 	var/list/material_points_conversion = list(	// Any materials not named in this list are worth 0 points
 			MAT_PHORON = 5,
 			MAT_PLATINUM = 5,
@@ -81,10 +79,10 @@ SUBSYSTEM_DEF(supply)
 
 // Selling
 /datum/controller/subsystem/supply/proc/sell()
-	// Loop over each area in the supply shuttle
-	for(var/area/subarea in shuttle.shuttle_area)
-		callHook("sell_shuttle", list(subarea));
-		for(var/atom/movable/MA in subarea)
+	var/list/turf/region = GLOB.legacy_cargo_shuttle?.shuttle_turfs_here()
+	for(var/turf/turf as anything in region)
+		callHook("sell_turf", list(turf));
+		for(var/obj/MA in turf)
 			if(MA.anchored)
 				continue
 
@@ -97,7 +95,7 @@ SUBSYSTEM_DEF(supply)
 			// Must be in a crate!
 			if(istype(MA,/obj/structure/closet/crate))
 				var/obj/structure/closet/crate/CR = MA
-				callHook("sell_crate", list(CR, subarea))
+				callHook("sell_crate", list(CR))
 
 				points += CR.points_per_crate
 				if(CR.points_per_crate)
@@ -162,18 +160,19 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/proc/get_clear_turfs()
 	var/list/clear_turfs = list()
 
-	for(var/area/subarea in shuttle.shuttle_area)
-		for(var/turf/T in subarea)
-			if(T.density)
+	var/list/potential = GLOB.legacy_cargo_shuttle.shuttle_turfs_here()
+
+	for(var/turf/T in potential)
+		if(T.density)
+			continue
+		var/occupied = 0
+		for(var/atom/A in T.contents)
+			if((A.atom_flags & ATOM_ABSTRACT))
 				continue
-			var/occupied = 0
-			for(var/atom/A in T.contents)
-				if((A.atom_flags & ATOM_ABSTRACT))
-					continue
-				occupied = 1
-				break
-			if(!occupied)
-				clear_turfs += T
+			occupied = 1
+			break
+		if(!occupied)
+			clear_turfs += T
 
 	return clear_turfs
 

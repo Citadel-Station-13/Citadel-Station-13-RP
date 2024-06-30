@@ -87,7 +87,7 @@ var/list/cached_space = list()
 	if (!T || !A)
 		return
 
-	var/obj/overmap/entity/visitable/M = get_overmap_sector(T.z)
+	var/obj/overmap/entity/visitable/M = get_overmap_entity(T.z)
 	if (!M)
 		return
 

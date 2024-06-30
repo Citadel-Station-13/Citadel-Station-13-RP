@@ -18,18 +18,9 @@
 	icon_state = "shuttle2"
 	requires_power = 1
 
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/generic_shuttle
-	name = "short jump console"
-	shuttle_tag = "Private Vessel"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/generic_shuttle
 	name = "Origin - Private Vessel"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "omship_spawn_generic_shuttle"
 	shuttle_type = /datum/shuttle/autodock/overmap/generic_shuttle
 
 // The 'shuttle'

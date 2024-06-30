@@ -30,6 +30,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 /// * Underfloor objects (we don't want them to be interactable at all)
 /// * Abstract objects (we don't want them to be interactable at all)
 
+// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
+#define INVISIBILITY_NONE			0
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
 #define INVISIBILITY_LEVEL_TWO		45
@@ -67,38 +69,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 /// Used to trigger removal from a processing list.
 #define PROCESS_KILL	26
-
-//	Shuttles.
-
-// These define the time taken for the shuttle to get to the space station, and the time before it leaves again.
-/// 5 minutes = 300 seconds - after this time, the shuttle departs centcom and cannot be recalled.
-#define SHUTTLE_PREPTIME 300
-/// 3 minutes = 180 seconds - the duration for which the shuttle will wait at the station after arriving.
-#define SHUTTLE_LEAVETIME 180
-/// 5 minutes = 300 seconds - how long it takes for the shuttle to get to the station.
-#define SHUTTLE_TRANSIT_DURATION 300
-/// 2 minutes = 120 seconds - for some reason it takes less time to come back, go figure.
-#define SHUTTLE_TRANSIT_DURATION_RETURN	120
-
-// Shuttle moving status.
-#define SHUTTLE_IDLE		0
-#define SHUTTLE_WARMUP		1
-#define SHUTTLE_INTRANSIT	2
-/// Yup that can happen now
-#define SHUTTLE_CRASHED	3
-
-// Sound defines for shuttles.
-#define HYPERSPACE_WARMUP	0
-#define HYPERSPACE_PROGRESS	1
-#define HYPERSPACE_END		2
-
-// Ferry shuttle processing status.
-#define IDLE_STATE		0
-#define WAIT_LAUNCH		1
-#define FORCE_LAUNCH	2
-#define WAIT_ARRIVE		3
-#define WAIT_FINISH		4
-#define DO_AUTOPILOT	5
 
 // Bluespace shelter deploy checks
 #define SHELTER_DEPLOY_ALLOWED			"allowed"
@@ -512,9 +482,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 //* metadata
 #define CASSETTE_METADATA_LANGUAGE "%"
 #define CASSETTE_METADATA_NAME "^"
-
-
-#define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))
 
 //Turf/area values for 'this space is outside' checks
 #define OUTSIDE_AREA null

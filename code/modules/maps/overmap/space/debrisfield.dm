@@ -158,13 +158,10 @@
 
 /obj/effect/shuttle_landmark/shuttle_initializer/tinycarrier
 	name = "Debris Field"
-	base_area = /area/space
-	base_turf = /turf/space
-	landmark_tag = "debris_field_carrier_start"
 	shuttle_type = /datum/shuttle/autodock/overmap/tinycarrier
 
 /obj/effect/shuttle_landmark/shuttle_initializer/tinycarrier/Initialize(mapload)
-	var/obj/overmap/entity/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
+	var/obj/overmap/entity/visitable/O = get_overmap_entity(get_z(src)) //make this into general system some other time
 	LAZYINITLIST(O.initial_restricted_waypoints)
 	O.initial_restricted_waypoints["Debris Carrier"] = list(landmark_tag)
 	. = ..()
@@ -205,10 +202,6 @@
 		for(var/obj/machinery/air_alarm/AA in A)
 			AA.name = "[A.name] Air Alarm"
 */
-
-/obj/machinery/computer/shuttle_control/explore/tinycarrier
-	shuttle_tag = "Debris Carrier"
-	req_one_access = list()
 
 /obj/mecha/combat/fighter/baron/loaded/busted
 /*

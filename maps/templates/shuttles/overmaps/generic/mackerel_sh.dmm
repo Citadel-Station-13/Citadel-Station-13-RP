@@ -53,7 +53,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_sh)
 "cv" = (
-/obj/machinery/computer/shuttle_control/explore/mackerel_sh,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_sh)
 "cD" = (

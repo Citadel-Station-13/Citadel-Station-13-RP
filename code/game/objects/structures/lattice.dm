@@ -79,3 +79,10 @@
 	if(check_standard_flag_pass(victim))
 		return ..()
 	return fall_flags | FALL_BLOCKED
+
+/obj/structure/lattice/grid_collect(grid_flags, turf/new_turf, loc_opinion)
+	// remember! The Nanotrasen Safety Administration reminds you that
+	// even if your shuttle turns into a crater from ticking off the Wrong Dudes
+	// when exploring planets, lattices may be the difference between bringing
+	// whatever chunk is left of it back, or losing something irreplaceable!
+	return ..() | GRID_MOVE_MOVABLES

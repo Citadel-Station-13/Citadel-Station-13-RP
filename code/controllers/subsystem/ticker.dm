@@ -4,6 +4,16 @@ SUBSYSTEM_DEF(ticker)
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
+	//* Finales
+	/// registered map finales
+	//  todo: no static, have Recover() behavior
+	var/static/list/datum/map_finale/map_finales = list()
+	/// active map finales
+	//  todo: no static, have Recover() behavior
+	var/static/list/datum/map_finale/called_finales = list()
+
+//* Legacy Below
+
 	/// Current state of the game
 	var/static/current_state = GAME_STATE_INIT
 
@@ -78,6 +88,31 @@ SUBSYSTEM_DEF(ticker)
 
 	return ..()
 
+//* legacy above
+
+//* Finales
+
+// /datum/controller/subsystem/ticker/proc/register_finale(datum/map_finale/instance)
+// 	#warn impl
+
+// /datum/controller/subsystem/ticker/proc/unregister_finale(datum/map_finale/instance)
+// 	#warn impl
+
+// /datum/controller/subsystem/ticker/proc/is_finale_called(datum/map_finale/instance_or_type)
+// 	if(ispath(instance_or_type))
+// 		instance_or_type = locate(instance_or_type) in map_finales
+// 	instance_or_type = (instance_or_type in map_finales)? instance_or_type : null
+// 	if(isnull(instance_or_type))
+// 		return FALSE
+// 	return instance_or_type.currently_called
+
+// /datum/controller/subsystem/ticker/proc/fetch_finale_if_exists(datum/map_finale/instance_or_type)
+// 	if(ispath(instance_or_type))
+// 		return locate(instance_or_type) in map_finales
+// 	return (instance_or_type in map_finales)? instance_or_type : null
+
+//* legacy below
+
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
 		if(GAME_STATE_INIT)
@@ -122,6 +157,16 @@ SUBSYSTEM_DEF(ticker)
 				SSpersistence.SavePersistence()
 				if(!SSpersistence.world_saved_count && CONFIG_GET(flag/persistence) && !SSpersistence.world_non_canon)
 					SSpersistence.save_the_world()
+
+	// prep
+	// var/dt = SUBSYSTEM_FIRE_COMPUTE_DT
+	// process finales
+	// for(var/datum/map_finale/finale in map_finales)
+	// 	if(!finale.requires_constant_ticking)
+	// 		continue
+	// 	finale.on_idle_tick(dt)
+	// for(var/datum/map_finale/finale in called_finales)
+	// 	finale.on_active_tick(dt)
 
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()

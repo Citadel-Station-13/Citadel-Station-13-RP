@@ -420,13 +420,11 @@
 
 	update_nearby_tiles()
 
-/obj/machinery/door/morgue
-	icon = 'icons/obj/doors/doormorgue.dmi'
+//* Airlock API *//
 
-//Flesh Door
-/obj/machinery/door/flesh_door
-	name = "flesh door"
-	desc = "This door pulses and twitches as if it's alive. It is."
-
-	icon = 'icons/turf/stomach_vr.dmi'
-	icon_state = "fleshclosed"
+/**
+ * Called when an airlock requests we set our state to something
+ */
+/obj/machinery/door/proc/airlock_set(open, lock)
+	return FALSE
+	#warn impl on /airlock

@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 /datum/controller/subsystem/lighting/proc/InitializeZlev(zlev)
-	for (var/thing in Z_ALL_TURFS(zlev))
+	for (var/thing in Z_TURFS(zlev))
 		var/turf/T = thing
 		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			if (T.lighting_overlay)

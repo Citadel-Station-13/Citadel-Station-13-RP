@@ -1067,7 +1067,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade)
 "cE" = (
-/obj/machinery/computer/shuttle_control/multi/trade{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,

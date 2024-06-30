@@ -26,8 +26,6 @@ var/global/list/additional_antag_types = list()
 	/// Mostly used for Malf.  This check is performed in job_controller so it doesn't spawn a regular AI.
 	var/list/disabled_jobs = list()
 
-	/// Shuttle transit time is multiplied by this.
-	var/shuttle_delay = 1
 	/// Will the shuttle automatically be recalled?
 	var/auto_recall_shuttle = 0
 
@@ -75,11 +73,6 @@ var/global/list/additional_antag_types = list()
 	else if(href_list["set"])
 		var/choice = ""
 		switch(href_list["set"])
-			if("shuttle_delay")
-				choice = input("Enter a new shuttle delay multiplier") as num
-				if(!choice || choice < 1 || choice > 20)
-					return
-				shuttle_delay = choice
 			if("antag_scaling")
 				choice = input("Enter a new antagonist cap scaling coefficient.") as num
 				if(isnull(choice) || choice < 0 || choice > 100)

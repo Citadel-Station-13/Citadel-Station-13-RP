@@ -64,7 +64,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc_wreck)
 "cv" = (
-/obj/machinery/computer/shuttle_control/explore/mackerel_lc_wreck,
+/obj/machinery/computer/shuttle_control,
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/mackerel_lc_wreck)

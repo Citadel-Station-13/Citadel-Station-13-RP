@@ -47,3 +47,15 @@ GLOBAL_VAR_INIT(cellefficiency, 1)
 #define CYBORG_POWER_USAGE_MULTIPLIER					2
 #define SPACE_HEATER_CHEAT_FACTOR						1.5
 #define THERMOREGULATOR_CHEAT_FACTOR					5
+
+// todo: move to own file
+//* Thermodynamic Efficiencies *//
+/// tl;dr enforcement to ensure you can't make infinite power machines
+/// or at the very least have a harder time
+
+/// towards / with gradient
+#define THERMODYNAMICS_AIRLOCK_HEAT_PUMP_EFFICIENCY_FAVORABLE 20
+/// against gradient
+#define THERMODYNAMICS_AIRLOCK_HEAT_PUMP_EFFICIENCY_UNFAVORABLE 10
+/// electrical heating
+#define THERMODYNAMICS_AIRLOCK_ELECTRIC_HEATING_EFFICIENCY 5

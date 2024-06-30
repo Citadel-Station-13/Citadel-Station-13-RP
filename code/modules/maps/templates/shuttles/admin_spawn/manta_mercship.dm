@@ -135,47 +135,26 @@
 
 /obj/effect/shuttle_landmark/premade/manta_ship_port
 	name = "SAARE Cruiser - Port Airlock"
-	landmark_tag = "manta_ship_port"
 
 /obj/effect/shuttle_landmark/premade/manta_ship_star
 	name = "SAARE Cruiser - Starboard Airlock"
-	landmark_tag = "manta_ship_star"
 
 /obj/effect/shuttle_landmark/premade/manta_ship_near_fore
 	name = "Near SAARE Cruiser (Fore)"
-	landmark_tag = "manta_ship_near_fore"
 
 /obj/effect/shuttle_landmark/premade/manta_ship_near_aft
 	name = "Near SAARE Cruiser (Aft)"
-	landmark_tag = "manta_ship_near_aft"
 
 /obj/effect/shuttle_landmark/premade/manta_ship_near_port
 	name = "Near SAARE Cruiser (Port)"
-	landmark_tag = "manta_ship_near_port"
 
 /obj/effect/shuttle_landmark/premade/manta_ship_near_star
 	name = "Near SAARE Cruiser (Starboard)"
-	landmark_tag = "manta_ship_near_star"
-
-// The shuttle's 'shuttle' computer
-/obj/machinery/computer/shuttle_control/explore/manta_ship_boat
-	name = "boat control console"
-	shuttle_tag = "Boarding Craft"
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/manta_ship_boat
 	name = "Mercenary Cruiser's Bay"
-	base_area = /area/ship/manta/hangar
-	base_turf = /turf/simulated/floor/reinforced
-	landmark_tag = "omship_spawn_manta_lander"
-	docking_controller = "manta_boarding_shuttle_dock"
 	shuttle_type = /datum/shuttle/autodock/overmap/manta_ship_boat
-
-// The 'shuttle'
-/obj/machinery/computer/shuttle_control/explore/manta_ship_boat
-	name = "LC control console"
-	shuttle_tag = "Boarding Craft"
-	req_one_access = list(150)
 
 /datum/shuttle/autodock/overmap/manta_ship_boat
 	name = "Boarding Craft"

@@ -6,8 +6,6 @@
 /datum/rogue/zonemaster
 	// Our area
 	var/area/asteroid/rogue/myarea
-	// var/area/shuttle/belter/myshuttle
-	var/obj/effect/shuttle_landmark/myshuttle_landmark
 
 	//world.time
 	var/prepared_at = 0
@@ -33,7 +31,8 @@
 /datum/rogue/zonemaster/New(var/area/A)
 	ASSERT(A)
 	myarea = A
-	myshuttle_landmark = locate(/obj/effect/shuttle_landmark) in myarea
+
+	var/obj/shuttle_dock/myshuttle_landmark = locate(/obj/shuttle_dock/hardcoded_legacy/belter/away) in myarea
 	if(!istype(myshuttle_landmark))
 		warning("Zonemaster cannot find a shuttle landmark in its area '[A]'")
 	spawn(10)	// This is called from controller New() and freaks out if this calls back too fast.
@@ -46,7 +45,7 @@
 /datum/rogue/zonemaster/proc/is_occupied()
 	var/humans = 0
 	for(var/mob/living/carbon/human/H in human_mob_list)
-		if(H.stat >= DEAD)	// Conditions for exclusion here, like if disconnected people start blocking it.
+		if(!IS_CONSCIOUS(H) || H.is_ssd())	// Conditions for exclusion here, like if disconnected people start blocking it.
 			continue
 		var/area/A = get_area(H)
 		if(A == myarea)	// The loc of a turf is the area it is in.
@@ -379,13 +378,14 @@
 	var/ignored = typecacheof(list(
 	/obj/asteroid_spawner,
 	/obj/rogue_mobspawner,
-	/obj/effect/shuttle_landmark,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/north,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/south,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/east,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/west))
 
 	for(var/atom/I in myarea.contents)
+		if(I.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+			continue
 		if(isturf(I))
 			var/turf/T = I
 			if(!istype(T, /turf/space))

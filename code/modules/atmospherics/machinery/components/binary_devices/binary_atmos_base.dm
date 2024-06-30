@@ -11,9 +11,8 @@
 	var/datum/pipe_network/network2
 
 /obj/machinery/atmospherics/component/binary/Initialize(mapload)
-	air1 = new(200)
-	air2 = new(200)
-
+	air1 = new(volume)
+	air2 = new(volume)
 	return ..()
 
 /obj/machinery/atmospherics/component/binary/init_dir()

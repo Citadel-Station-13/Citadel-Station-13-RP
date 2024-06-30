@@ -47,10 +47,10 @@
 	// rotation support
 	if(dir != NORTH)
 		fore_dir = turn(fore_dir, -dir2angle(dir))
-	SSshuttle.ships += src
+	SSovermaps.ships += src
 
 /obj/overmap/entity/visitable/ship/Destroy()
-	SSshuttle.ships -= src
+	SSovermaps.ships -= src
 	. = ..()
 
 //? todo why tf is this relaymove
@@ -215,15 +215,16 @@
 	halted = 1
 
 /obj/overmap/entity/visitable/ship/proc/unhalt()
-	if(!SSshuttle.overmap_halted)
+	if(!SSovermaps.overmap_halted)
 		halted = 0
 
+#warn make sure these still work lmao
 /obj/overmap/entity/visitable/ship/populate_sector_objects()
 	..()
 	for(var/obj/machinery/computer/ship/S in GLOB.machines)
 		S.attempt_hook_up(src)
 	for(var/datum/ship_engine/E in ship_engines)
-		if(check_ownership(E.holder))
+		if(get_overmap_entity(E.holder) == src)
 			engines |= E
 
 /obj/overmap/entity/visitable/ship/proc/get_landed_info()

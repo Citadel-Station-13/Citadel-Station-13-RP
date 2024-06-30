@@ -656,7 +656,3 @@ var/list/global/tank_gauge_cache = list()
 	else
 		tank.update_icon()
 		tank.cut_overlay("bomb_assembly")
-
-/obj/item/tankassemblyproxy/HasProximity(atom/movable/AM)
-	if(assembly)
-		assembly.HasProximity(AM)

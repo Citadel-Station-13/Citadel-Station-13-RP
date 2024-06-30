@@ -31,7 +31,7 @@
 	unlook(user)
 
 /datum/tgui_module_old/ship/proc/sync_linked()
-	var/obj/overmap/entity/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
+	var/obj/overmap/entity/visitable/ship/sector = get_overmap_entity(get_z(ui_host()))
 	if(!sector)
 		return
 	return attempt_hook_up_recursive(sector)
@@ -46,7 +46,7 @@
 /datum/tgui_module_old/ship/proc/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!istype(sector))
 		return
-	if(sector.check_ownership(ui_host()))
+	if(get_overmap_entity(ui_host()) == sector)
 		linked = sector
 		return 1
 
@@ -173,7 +173,7 @@
 			known_sectors[S.name] = R
 	// SENSORS
 	for(var/obj/machinery/shipsensors/S in GLOB.machines)
-		if(linked.check_ownership(S))
+		if(get_overmap_entity(S) == linked)
 			sensors = S
 			break
 

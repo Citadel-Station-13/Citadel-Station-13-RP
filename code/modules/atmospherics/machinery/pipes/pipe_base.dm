@@ -29,6 +29,11 @@
 		hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	return ..()
 
+/obj/machinery/atmospherics/pipe/handle_grid_overlap(grid_flags)
+	// aight we're headin' out
+	qdel(src)
+	return TRUE
+
 /obj/machinery/atmospherics/pipe/proc/pipeline_expansion()
 	return null
 

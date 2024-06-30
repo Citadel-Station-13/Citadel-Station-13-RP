@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		"Brown" = COLOR_BROWN
 	))
 
+#warn grid hooks
 /obj/structure/cable
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
@@ -62,6 +63,20 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	var/d2 = 1
 	var/datum/powernet/powernet
 	var/obj/machinery/power/breakerbox/breaker_box
+
+/obj/structure/cable/handle_grid_overlap(grid_flags)
+	qdel(src)
+	return TRUE
+
+/obj/structure/cable/grid_move(grid_flags, turf/new_turf)
+	powernet.remove_cable(src)
+	return ..()
+
+/obj/structure/cable/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	. = ..()
+	if(isnull(powernet))
+		powernet = new
+		propagate_network(src, powernet)
 
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)

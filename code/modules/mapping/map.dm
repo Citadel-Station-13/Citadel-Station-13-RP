@@ -45,9 +45,6 @@
 	/// don't touch this unless you know what you're doing.
 	var/bundle_area_cache = TRUE
 
-	//! legacy : spawn these shuttle datums on load
-	var/list/legacy_assert_shuttle_datums
-
 /datum/map/New()
 	// immediately resolve dependencies / lateload
 	for(var/i in 1 to length(dependencies))
@@ -160,10 +157,21 @@
 	abstract_type = /datum/map/station
 	category = "Stations"
 
+	//* World Parameters *//
+
 	/// force world to be bigger width
 	var/world_width
 	/// force world to be bigger height
 	var/world_height
+
+	//* Map Finales *//
+
+	// todo: finish this; it's a system to allow more ways to end round than emergency shuttle.
+	/// possible ending typepaths, if none, we default to /datum/map_finale/end_the_shift
+	// var/list/datum/map_finale/finales
+	/// the finale to use for transfer
+	// var/finale_transfer
+	// #warn set these on our maps
 
 	/// allow random picking if no map set
 	/// used to exclude indev maps
@@ -185,6 +193,15 @@
 	/// * if null, the storyteller system will be inactive.
 	/// * seriously you don't want this to be null.
 	var/world_faction_id = /datum/world_faction/corporation/nanotrasen::id
+
+	//* Shuttles - Legacy *//
+	/// typepath of emergency shuttle template
+	var/datum/shuttle_template/legacy_emergency_shuttle
+	/// typepath of cargo shuttle template
+	var/datum/shuttle_template/legacy_cargo_shuttle
+	/// typepath of belter shuttle template
+	var/datum/shuttle_template/legacy_belter_shuttle
+	#warn set these on our maps, translate into instances on init
 
 	//! legacy below
 
@@ -375,7 +392,7 @@
 /datum/map/station/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
 	// Overmap behavior
 	if(use_overmap)
-		var/obj/overmap/entity/visitable/O = get_overmap_sector(srcz)
+		var/obj/overmap/entity/visitable/O = get_overmap_entity(srcz)
 		if(!istype(O))
 			return list(srcz)
 

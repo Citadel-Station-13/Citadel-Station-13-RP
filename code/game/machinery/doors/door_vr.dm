@@ -1,4 +1,15 @@
 
+/obj/machinery/door/morgue
+	icon = 'icons/obj/doors/doormorgue.dmi'
+
+//Flesh Door
+/obj/machinery/door/flesh_door
+	name = "flesh door"
+	desc = "This door pulses and twitches as if it's alive. It is."
+
+	icon = 'icons/turf/stomach_vr.dmi'
+	icon_state = "fleshclosed"
+
 // Returns true only if one of the actions unique to reinforcing is done, otherwise false and continuing normal attackby
 /obj/machinery/door/proc/attackby_vr(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_material_stack_of(/datum/material/plasteel))
