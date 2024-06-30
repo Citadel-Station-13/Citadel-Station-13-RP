@@ -190,7 +190,7 @@
 	var/topright_x = -INFINITY
 	var/topright_y = -INFINITY
 	// scan turfs & collect
-	for(var/turf/scanning in from_reservation.get_unordered_turfs())
+	for(var/turf/scanning in from_reservation.unordered_inner_turfs())
 		if(!istype(scanning.loc, /area/shuttle))
 			continue
 		if(!area_cache[scanning.loc])
@@ -1038,7 +1038,7 @@
 	#warn how to handle turns and translations??
 
 	if(turf_handler)
-		for(var/turf/T as anything in transit_reservation.get_unordered_turfs())
+		for(var/turf/T as anything in transit_reservation.unordered_inner_turfs())
 			if(T.type == transit_reservation.turf_type)
 				continue
 			turf_handler.Invoke(T)

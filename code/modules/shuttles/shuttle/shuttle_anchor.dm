@@ -649,7 +649,7 @@
 			return null
 		// do not allow zlevel borders; annihilating them would be bad
 		// also don't cross out of reservations that would be really, really bad.
-		if(T.turf_flags & (TURF_FLAG_LEVEL_BORDER | TURF_FLAG_UNUSE_RESERVATION))
+		if(T.turf_flags & (TURF_FLAG_LEVEL_BORDER | TURF_FLAG_UNUSED_RESERVATION))
 			return null
 
 	return ordered_turfs_at
