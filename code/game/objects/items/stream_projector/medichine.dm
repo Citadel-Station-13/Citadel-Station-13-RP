@@ -16,7 +16,6 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  *
  * todo: should we use reagents instead..?
  */
-ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, interface)
 /obj/item/stream_projector/medichine
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
@@ -38,8 +37,6 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/injection_rate = 2
 	/// standard suspension limit multiplier
 	var/suspension_multiplier = 1
-	/// interface to draw from if provided
-	var/datum/item_interface/interface
 	/// all beams
 	var/list/datum/beam/beams_by_entity
 	/// maximum distance
@@ -184,7 +181,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	)
 
 /obj/item/stream_projector/medichine/proc/effective_cell_datum()
-	return isnull(interface)? inserted_cartridge?.cell_datum : interface.query_medichines()
+	return inserted_cartridge?.cell_datum
 
 /obj/item/stream_projector/medichine/process(delta_time)
 	..()
@@ -210,7 +207,7 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 			var/datum/component/medichine_field/field = entity.LoadComponent(/datum/component/medichine_field)
 			var/distance_multiplier = 1 / max(1, 1 + max(get_dist(src, entity) - distance_penalty_start, 0) * distance_divisor_multiplier)
 			var/requested = min(injecting_rate * distance_multiplier, max(0, injecting_suspension - field.active?[injecting_package]))
-			var/allowed = isnull(interface)? inserted_cartridge?.use(injecting_package, requested) : interface.use_medichines(injecting_package, requested)
+			var/allowed = inserted_cartridge?.use(injecting_package, requested)
 			field.inject_medichines(injecting_package, allowed)
 
 //? Field
