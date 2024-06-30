@@ -1070,7 +1070,7 @@
 		visible_emote("adjusts [T.his] posture.")
 
 /mob/living/carbon/human/verb/timed_pose()
-	set name = "Set Temporary Pose"
+	set name = "Set Pose (Temporary)"
 	set desc = "Sets a description which will be shown when someone examines you, expiring after a given number of seconds."
 	set category = VERB_CATEGORY_IC
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
