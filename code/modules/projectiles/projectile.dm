@@ -48,7 +48,7 @@
 	var/tracer_type
 	var/muzzle_type
 	var/impact_type
-	var/datum/beam_components_cache/beam_components
+	var/datum/beam_legacy_components_cache/beam_components
 
 	var/miss_sounds
 	var/ricochet_sounds

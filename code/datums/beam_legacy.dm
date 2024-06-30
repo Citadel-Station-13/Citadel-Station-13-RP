@@ -11,7 +11,7 @@
  * You can add more special effects to the beam itself by changing what the drawn beam effects do. For example you can make a vine that pricks people by making the beam_type
  * include a crossed proc that damages the crosser. Examples in venus_human_trap.dm
 */
-/datum/beam
+/datum/beam_legacy
 	///where the beam goes from
 	var/atom/origin = null
 	///where the beam goes to
@@ -41,7 +41,7 @@
 	/// If set will be used instead of targets's pixel_y in offset calculations
 	var/override_target_pixel_y = null
 
-/datum/beam/New(origin, target,	icon = 'icons/effects/beam.dmi', icon_state = "b_beam",	time = INFINITY, max_distance = INFINITY, beam_type = /obj/effect/ebeam, beam_color = null, emissive = TRUE, override_origin_pixel_x = null,	override_origin_pixel_y = null, override_target_pixel_x = null, override_target_pixel_y = null)
+/datum/beam_legacy/New(origin, target,	icon = 'icons/effects/beam.dmi', icon_state = "b_beam",	time = INFINITY, max_distance = INFINITY, beam_type = /obj/effect/ebeam, beam_color = null, emissive = TRUE, override_origin_pixel_x = null,	override_origin_pixel_y = null, override_target_pixel_x = null, override_target_pixel_y = null)
 	src.origin = origin
 	src.target = target
 	src.icon = icon
@@ -60,7 +60,7 @@
 /**
  * Proc called by the atom Beam() proc. Sets up signals, and draws the beam for the first time.
  */
-/datum/beam/proc/Start()
+/datum/beam_legacy/proc/Start()
 	visuals = new beam_type()
 	visuals.icon = icon
 	visuals.icon_state = icon_state
@@ -81,7 +81,7 @@
  * oldloc: from where mover moved.
  * direction: in what direction mover moved from.
  */
-/datum/beam/proc/redrawing(atom/movable/mover, atom/oldloc, direction)
+/datum/beam_legacy/proc/redrawing(atom/movable/mover, atom/oldloc, direction)
 	SIGNAL_HANDLER
 	if(origin && target && get_dist(origin,target)<max_distance && origin.z == target.z)
 		QDEL_LIST(elements)
@@ -89,7 +89,7 @@
 	else
 		qdel(src)
 
-/datum/beam/Destroy()
+/datum/beam_legacy/Destroy()
 	QDEL_LIST(elements)
 	QDEL_NULL(visuals)
 	UnregisterSignal(origin, COMSIG_MOVABLE_MOVED)
@@ -101,8 +101,8 @@
 /**
  * Creates the beam effects and places them in a line from the origin to the target. Sets their rotation to make the beams face the target, too.
  */
-/datum/beam/proc/Draw()
-	if(SEND_SIGNAL(src, COMSIG_BEAM_BEFORE_DRAW) & BEAM_CANCEL_DRAW)
+/datum/beam_legacy/proc/Draw()
+	if(SEND_SIGNAL(src, COMSIG_LEGACY_BEAM_BEFORE_DRAW) & LEGACY_BEAM_CANCEL_DRAW)
 		return
 	var/origin_px = isnull(override_origin_pixel_x) ? origin.pixel_x : override_origin_pixel_x
 	var/origin_py = isnull(override_origin_pixel_y) ? origin.pixel_y : override_origin_pixel_y
@@ -168,7 +168,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	var/emissive = TRUE
-	var/datum/beam/owner
+	var/datum/beam_legacy/owner
 
 /obj/effect/ebeam/Initialize(mapload, beam_owner)
 	owner = beam_owner
@@ -239,8 +239,8 @@
  * beam_type: The type of your custom beam. This is for adding other wacky stuff for your beam only. Most likely, you won't (and shouldn't) change it.
  */
 /atom/proc/Beam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi',time=INFINITY,maxdistance=INFINITY,beam_type=/obj/effect/ebeam, beam_color = null, emissive = TRUE, override_origin_pixel_x = null, override_origin_pixel_y = null, override_target_pixel_x = null, override_target_pixel_y = null)
-	var/datum/beam/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type, beam_color, emissive, override_origin_pixel_x, override_origin_pixel_y, override_target_pixel_x, override_target_pixel_y )
-	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam/, Start))
+	var/datum/beam_legacy/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type, beam_color, emissive, override_origin_pixel_x, override_origin_pixel_y, override_target_pixel_x, override_target_pixel_y )
+	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam_legacy/, Start))
 	return newbeam
 
 
