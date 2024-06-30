@@ -6,7 +6,9 @@
 	icon_state = "map"
 	permit_ao = FALSE
 
+	maptext_height = 32
 	maptext_width = 32
+	maptext_x = 0
 	maptext_y = 12
 
 /turf/overmap/proc/initialize_overmap(datum/overmap/map)
@@ -29,20 +31,49 @@
 	///
 	/// todo: is this a good method? it works for now but i hate storing turf vars...
 	var/datum/overmap/overmap
+	/// sign of wrap, x
+	var/wrap_sign_x
+	/// sign of wrap, y
+	var/wrap_sign_y
 
 /turf/overmap/edge/initialize_overmap(datum/overmap/map)
 	name = "border (warp-enabled)"
 	overmap = map
 
 	var/number
-	if(x == map.lower_left_x - 1 || x == map.upper_right_x + 1)
+	if((x == map.lower_left_x - 1) || (x == map.upper_right_x + 1))
 		// left or right borders
-		number = y - map.lower_left_y
-	else if(y == map.lower_left_y - 1 || y == map.upper_right_y + 1)
+		if((y == map.lower_left_y - 1) || (y == map.upper_right_y + 1))
+		else
+			number = y - map.lower_left_y + 1
+	else if((y == map.lower_left_y - 1) || (y == map.upper_right_y + 1))
 		// top or bottom borders
-		number = x - map.lower_left_x
+		if((x == map.lower_left_x - 1) || (x == map.upper_right_x + 1))
+		else
+			number = x - map.lower_left_x + 1
 
-	maptext = MAPTEXT("[number]")
+	wrap_sign_x = 0
+	wrap_sign_y = 0
+
+	if(x == overmap.lower_left_x - 1)
+		if(y == overmap.lower_left_y - 1)
+			wrap_sign_y = 1
+		wrap_sign_x = 1
+	else if(x == overmap.upper_right_x + 1)
+		if(y == overmap.upper_right_y + 1)
+			wrap_sign_y = -1
+		wrap_sign_x = -1
+	if(y == overmap.lower_left_y - 1)
+		if(x == overmap.upper_right_x + 1)
+			wrap_sign_x = -1
+		wrap_sign_y = 1
+	else if(y == overmap.upper_right_y + 1)
+		if(x == overmap.lower_left_x - 1)
+			wrap_sign_x = 1
+		wrap_sign_y = -1
+
+	if(number)
+		maptext = MAPTEXT_CENTER("[number]")
 
 /**
  * get where a ship wraps to when it touches us

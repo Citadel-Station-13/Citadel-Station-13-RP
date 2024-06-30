@@ -46,6 +46,8 @@
 			var/turf/overmap/edge/edge = new_loc
 			new_loc = edge.get_wrap_counterpart()
 			jumping = TRUE
+			pos_x += edge.wrap_sign_x * OVERMAP_DISTANCE_TILE * overmap.width
+			pos_y += edge.wrap_sign_y * OVERMAP_DISTANCE_TILE * overmap.height
 		if(jumping)
 			is_forced_moving = TRUE
 			forceMove(new_loc)
@@ -104,8 +106,30 @@
 /obj/overmap/entity/proc/is_moving()
 	return QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)
 
+//* Getters *//
+
 /**
- * gets our movement (non-angular) speed
+ * gets our tile X on overmap
+ *
+ * @return 0 if not on overmap
+ */
+/obj/overmap/entity/proc/get_tile_x()
+	if(!overmap)
+		return 0
+	return x - overmap.lower_left_x + 1
+
+/**
+ * gets our tile Y on overmap
+ *
+ * @return 0 if not on overmap
+ */
+/obj/overmap/entity/proc/get_tile_y()
+	if(!overmap)
+		return 0
+	return y - overmap.lower_left_y + 1
+
+/**
+ * gets our movement (non-angular) speed in overmaps units per second
  */
 /obj/overmap/entity/proc/get_speed()
 	return sqrt(vel_x ** 2 + vel_y ** 2)

@@ -25,11 +25,11 @@
 	if(!istype(AM, /obj/overmap/entity))
 		return
 	var/obj/overmap/entity/entity = AM
-	entity.on_overmap_join(src)
+	entity.on_overmap_join(overmap)
 
 /area/overmap/Exited(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(!istype(AM, /obj/overmap/entity))
 		return
 	var/obj/overmap/entity/entity = AM
-	entity.on_overmap_leave(src)
+	entity.on_overmap_leave(overmap)

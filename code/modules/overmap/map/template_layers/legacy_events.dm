@@ -65,6 +65,8 @@
 		else
 			expanding -= expanding
 
+	return selected
+
 /datum/overmap_template_layer/legacy_events/proc/get_random_neighbor(turf/origin, list/turf/candidates, continuous, range)
 	var/list/turf/potential
 	if(continuous)
