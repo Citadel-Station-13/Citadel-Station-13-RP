@@ -114,7 +114,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/fixed,
+/turf/simulated/floor,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "cm" = (
 /obj/effect/debris/cleanable/dirt,
@@ -1496,7 +1496,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/fixed,
+/turf/simulated/floor,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "HL" = (
 /obj/machinery/artifact_analyser,
@@ -1859,7 +1859,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/fixed,
+/turf/simulated/floor,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Qy" = (
 /obj/structure/closet/hydrant,
@@ -2193,7 +2193,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/fixed,
+/turf/simulated/floor,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Ym" = (
 /obj/effect/debris/cleanable/dirt,

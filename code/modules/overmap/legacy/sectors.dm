@@ -146,10 +146,6 @@
 	icon_state = "sector"
 	anchored = TRUE
 
-// Because of the way these are spawned, they will potentially have their invisibility adjusted by the turfs they are mapped on
-// 	prior to being moved to the overmap. This blocks that. Use set_invisibility to adjust invisibility as needed instead.
-/obj/overmap/entity/visitable/sector/hide()
-
 /obj/overmap/entity/visitable/proc/distress(mob/user)
 	if(has_distress_beacon)
 		return FALSE

@@ -234,27 +234,30 @@
 		SSplanets.legacy_planet_assert(z_index, level_or_path.planet_path)
 
 	//! LEGACY
-	if((level_or_path.flags & LEGACY_LEVEL_STATION) || level_or_path.has_trait(ZTRAIT_STATION))
-		loaded_station.station_levels += z_index
-	if((level_or_path.flags & LEGACY_LEVEL_ADMIN) || level_or_path.has_trait(ZTRAIT_ADMIN))
-		loaded_station.admin_levels += z_index
-	if((level_or_path.flags & LEGACY_LEVEL_CONTACT) || level_or_path.has_trait(ZTRAIT_STATION))
-		loaded_station.contact_levels += z_index
-	if((level_or_path.flags & LEGACY_LEVEL_SEALED))
-		loaded_station.sealed_levels += z_index
-	if((level_or_path.flags & LEGACY_LEVEL_CONSOLES) || level_or_path.has_trait(ZTRAIT_STATION))
-		loaded_station.map_levels += z_index
-	// Holomaps
-	// Auto-center the map if needed (Guess based on maxx/maxy)
-	if (level_or_path.holomap_offset_x < 0)
-		level_or_path.holomap_offset_x = ((HOLOMAP_ICON_SIZE - world.maxx) / 2)
-	if (level_or_path.holomap_offset_x < 0)
-		level_or_path.holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
-	// Assign them to the map lists
-	LIST_NUMERIC_SET(loaded_station.holomap_offset_x, z_index, level_or_path.holomap_offset_x)
-	LIST_NUMERIC_SET(loaded_station.holomap_offset_y, z_index, level_or_path.holomap_offset_y)
-	LIST_NUMERIC_SET(loaded_station.holomap_legend_x, z_index, level_or_path.holomap_legend_x)
-	LIST_NUMERIC_SET(loaded_station.holomap_legend_y, z_index, level_or_path.holomap_legend_y)
+	// the fact that this exists is stupid but this check
+	// make sure we're not loading system maps like reserved levels before station loads.
+	if(loaded_station)
+		if((level_or_path.flags & LEGACY_LEVEL_STATION) || level_or_path.has_trait(ZTRAIT_STATION))
+			loaded_station.station_levels += z_index
+		if((level_or_path.flags & LEGACY_LEVEL_ADMIN) || level_or_path.has_trait(ZTRAIT_ADMIN))
+			loaded_station.admin_levels += z_index
+		if((level_or_path.flags & LEGACY_LEVEL_CONTACT) || level_or_path.has_trait(ZTRAIT_STATION))
+			loaded_station.contact_levels += z_index
+		if((level_or_path.flags & LEGACY_LEVEL_SEALED))
+			loaded_station.sealed_levels += z_index
+		if((level_or_path.flags & LEGACY_LEVEL_CONSOLES) || level_or_path.has_trait(ZTRAIT_STATION))
+			loaded_station.map_levels += z_index
+		// Holomaps
+		// Auto-center the map if needed (Guess based on maxx/maxy)
+		if (level_or_path.holomap_offset_x < 0)
+			level_or_path.holomap_offset_x = ((HOLOMAP_ICON_SIZE - world.maxx) / 2)
+		if (level_or_path.holomap_offset_x < 0)
+			level_or_path.holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
+		// Assign them to the map lists
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_x, z_index, level_or_path.holomap_offset_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_offset_y, z_index, level_or_path.holomap_offset_y)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_x, z_index, level_or_path.holomap_legend_x)
+		LIST_NUMERIC_SET(loaded_station.holomap_legend_y, z_index, level_or_path.holomap_legend_y)
 	//! END
 
 /**

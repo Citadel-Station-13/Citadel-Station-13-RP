@@ -27,8 +27,6 @@
 
 /turf/simulated/Initialize(mapload)
 	. = ..()
-	if(mapload)
-		levelupdate()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
@@ -232,7 +230,9 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 
 //? Shuttle Movement
 
-/turf/simulated/CopyTurf(turf/T, copy_flags)
+/turf/simulated/CopyTurf(turf/T, change_flags)
+	if(!(change_flags & CHANGETURF_INHERIT_AIR))
+		return ..()
 	// invalidate zone
 	if(has_valid_zone())
 		if(can_safely_remove_from_zone())

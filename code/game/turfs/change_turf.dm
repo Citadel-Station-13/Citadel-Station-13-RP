@@ -26,9 +26,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(turf_type)
 		ChangeTurf(turf_type)
 
-/turf/proc/CopyTurf(turf/T, copy_flags)
-	if(T.type != type)
-		T.ChangeTurf(type)
+/**
+ * @params
+ * * T - the turf to copy to
+ * * change_flags - ChangeTurf() flags
+ */
+/turf/proc/CopyTurf(turf/T, change_flags)
+	if(T.type != type || (change_flags & CHANGETURF_FORCEOP))
+		T.ChangeTurf(type, null, change_flags)
 	if(T.icon_state != icon_state)
 		T.icon_state = icon_state
 	if(T.icon != icon)
@@ -406,7 +411,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
-	levelupdate()
+	update_underfloor_objects()
 	if (above)
 		above.update_mimic()
 

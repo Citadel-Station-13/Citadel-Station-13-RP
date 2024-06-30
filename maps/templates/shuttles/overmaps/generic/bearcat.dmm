@@ -957,7 +957,7 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4;
 	icon_state = "intact";
-	level = 2
+	hides_underfloor = "never"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2063,7 +2063,7 @@
 "fp" = (
 /obj/machinery/atmospherics/pipe/simple{
 	icon_state = "intact";
-	level = 2
+	hides_underfloor = "never"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -2592,7 +2592,7 @@
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 5;
 	icon_state = "intact";
-	level = 2
+	hides_underfloor = "never"
 	},
 /obj/machinery/meter,
 /turf/simulated/floor/plating,

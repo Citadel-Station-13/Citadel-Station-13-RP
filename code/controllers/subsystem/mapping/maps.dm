@@ -158,6 +158,7 @@
 	instance.prime()
 
 	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
+	log_world("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
 
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
@@ -228,7 +229,7 @@
 			var/datum/map/station/map = keyed_maps[id]
 			if(!istype(map, /datum/map/station))
 				continue
-			if(map.allow_random_draw)
+			if(!map.allow_random_draw)
 				continue
 			valid += map
 		instance = pick(valid)

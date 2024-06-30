@@ -170,7 +170,3 @@
 				return
 			to_chat(user, SPAN_WARNING("You install [W] in [src]."))
 	update_icon()
-
-// Walls hide stuff inside them, but we want to be visible.
-/obj/structure/fuel_port/hide()
-	return

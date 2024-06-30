@@ -286,6 +286,41 @@ SUBSYSTEM_DEF(grids)
 
 	return TRUE
 
+//* Debug Functions *//
+
+/**
+ * source/target specifiers can be turfs or lists
+ */
+/datum/controller/subsystem/grids/proc/debug_yeet_a_chunk(source_lower_left, source_top_right, target_lower_left, target_top_right, turn_angle = 0)
+	var/list/S_LL
+	var/list/S_TR
+	var/list/T_LL
+	var/list/T_TR
+
+	if(isturf(source_lower_left))
+		S_LL = list(source_lower_left:x, source_lower_left:y, source_lower_left:z)
+	else
+		S_LL = source_lower_left
+	if(isturf(source_top_right))
+		S_TR = list(source_top_right:x, source_top_right:y, source_top_right:z)
+	else
+		S_TR = source_top_right
+	if(isturf(target_lower_left))
+		T_LL = list(target_lower_left:x, target_lower_left:y, target_lower_left:z)
+	else
+		T_LL = target_lower_left
+	if(isturf(target_top_right))
+		T_TR = list(target_top_right:x, target_top_right:y, target_top_right:z)
+	else
+		T_TR = target_top_right
+
+	var/list/from_turfs = get_ordered_turfs(S_LL[1], S_TR[1], S_LL[2], S_TR[2], S_LL[3], SOUTH)
+	var/list/to_turfs = get_ordered_turfs(T_LL[1], T_TR[1], T_LL[2], T_TR[2], T_LL[3], turn(SOUTH, turn_angle))
+
+	ASSERT(length(from_turfs) == length(to_turfs))
+
+	translate(from_turfs, to_turfs, SOUTH, turn(SOUTH, turn_angle))
+
 //* Areas
 
 /**
@@ -348,9 +383,9 @@ SUBSYSTEM_DEF(grids)
 /turf/proc/grid_transfer(grid_flags, turf/new_turf, baseturf_boundary)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(isnull(baseturf_boundary))
-		new_turf.CopyOnTop(src, null, null, copy_flags = COPYTURF_COPY_AIR)
+		new_turf.CopyOnTop(src, null, null, CHANGETURF_INHERIT_AIR)
 	else
-		new_turf.CopyOnTop(src, 1, length(baseturfs) - baseturfs.Find(baseturf_boundary) + 1, COPYTURF_COPY_AIR)
+		new_turf.CopyOnTop(src, 1, length(baseturfs) - baseturfs.Find(baseturf_boundary) + 1, CHANGETURF_INHERIT_AIR)
 
 /**
  * Called when cleaning up after transfer

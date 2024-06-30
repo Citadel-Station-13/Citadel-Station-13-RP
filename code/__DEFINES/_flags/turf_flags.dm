@@ -3,7 +3,7 @@
 //  todo: kill this with fire
 #define NO_JAUNT						(1<<0)
 /// Unused reservation turf
-#define TURF_FLAG_UNUSE_RESERVATION			(1<<2)
+#define TURF_FLAG_UNUSED_RESERVATION			(1<<2)
 /// queued for planet turf addition
 //  todo: planet rework
 #define TURF_PLANET_QUEUED				(1<<3)
