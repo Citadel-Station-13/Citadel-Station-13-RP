@@ -90,9 +90,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "dT" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -111,9 +109,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "eB" = (
 /obj/structure/cable/yellow{
@@ -132,9 +128,7 @@
 	id_tag = "engine_out";
 	frequency = 1437
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "eU" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
@@ -152,9 +146,7 @@
 	dir = 1
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "gF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -173,9 +165,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "gL" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -201,9 +191,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "ho" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -263,9 +251,7 @@
 	dir = 4
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "lf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
@@ -327,9 +313,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "oe" = (
 /turf/template_noop,
@@ -354,9 +338,7 @@
 	dir = 4
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -406,9 +388,7 @@
 	dir = 1
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "sH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -517,9 +497,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "xI" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black,
@@ -591,9 +569,7 @@
 	dir = 1;
 	frequency = 1437
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "BU" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black,
@@ -608,9 +584,7 @@
 	id_tag = "engine_sensor";
 	output = 63
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Cy" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -656,6 +630,7 @@
 	name = "Powernet Sensor - Engine Output";
 	name_tag = "Engine Output"
 	},
+/obj/structure/cable/yellow,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Fi" = (
@@ -664,9 +639,7 @@
 	dir = 4
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Fw" = (
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -684,9 +657,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "FW" = (
 /obj/structure/cable/yellow{
@@ -733,6 +704,7 @@
 	name = "Powernet Sensor - Engine Power";
 	name_tag = "Engine Power"
 	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "HU" = (
@@ -758,18 +730,14 @@
 	id = "engine_in";
 	volume_rate = 100
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Ji" = (
 /obj/structure/window/phoronreinforced/full{
 	dir = 8
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "JK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -788,9 +756,7 @@
 	dir = 4
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "JS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -888,18 +854,14 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "MK" = (
 /obj/machinery/igniter{
 	id = "engine_igniter";
 	on = 0
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "MZ" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger,
@@ -945,9 +907,7 @@
 	dir = 1
 	},
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Pz" = (
 /obj/machinery/atmospherics/component/unary/heat_exchanger{
@@ -1002,9 +962,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Tl" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
@@ -1031,9 +989,7 @@
 "Vi" = (
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/grille,
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Vl" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -1062,9 +1018,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/reinforced/nitrogen{
-	initial_gas_mix = "n2=82.1472;TEMP=293.15"
-	},
+/turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "VX" = (
 /obj/effect/floor_decal/industrial/warning{

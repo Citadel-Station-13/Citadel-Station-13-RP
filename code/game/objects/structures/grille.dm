@@ -13,6 +13,7 @@
 	explosion_resistance = 1
 	color = COLOR_GRAY
 	armor_type = /datum/armor/none
+	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE | OBJ_ALLOW_THROW_THROUGH
 
 	plane = OBJ_PLANE
 	smoothing_flags = SMOOTH_BITMASK
