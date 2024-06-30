@@ -526,13 +526,12 @@
 	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
+	if(full_copy)
+		ensure_render_target()
 	if(em_block)
 		em_block.render_source = full_copy? render_target : null
 		update_emissive_blocker()
 		return
-	if(render_target && render_target != REF(src))
-		CRASH("already had render target; refusing to overwrite.")
-	render_target = REF(src)
 	em_block = new(src, full_copy? render_target : null)
 	vis_contents += em_block
 	update_emissive_blocker()
@@ -551,13 +550,12 @@
 	em_block = null
 
 /atom/movable/proc/add_emissive_render(full_copy = TRUE)
+	if(full_copy)
+		ensure_render_target()
 	if(em_render)
 		em_render.render_source = full_copy? render_target : null
 		update_emissive_render()
 		return
-	if(render_target && render_target != REF(src))
-		CRASH("already had render target; refusing to overwrite.")
-	render_target = REF(src)
 	em_render = new(src, full_copy? render_target : null)
 	vis_contents += em_render
 	update_emissive_render()
@@ -661,3 +659,13 @@
 		else if(C)
 			color = C
 			return
+
+//* Rendering *//
+
+/**
+ * for the love of god don't call this unnecessarily this fucks people's GPUs up if spammed
+ */
+/atom/movable/proc/ensure_render_target(make_us_invisible)
+	if(!isnull(render_target))
+		return
+	render_target = "[make_us_invisible? "*":""][REF(src)]-[rand(1,1000)]-[world.time]"

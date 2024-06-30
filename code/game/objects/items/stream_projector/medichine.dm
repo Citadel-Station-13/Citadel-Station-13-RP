@@ -655,6 +655,8 @@ ITEM_AUTO_BINDS_SINGLE_INTERFACE_TO_VAR(/obj/item/stream_projector/medichine, in
 	var/burn_loss_instances = 0
 	var/list/datum/wound/wounds_healing = list()
 	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
+		if(!ext.is_any_biology_type(biology_types))
+			continue
 		// only heal 15 wounds at a time thank you!
 		if(length(wounds_healing) > 15)
 			break
