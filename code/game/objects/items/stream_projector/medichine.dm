@@ -225,6 +225,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * component used to form a mob's nanite cloud visuals + processing
  *
  * todo: scale / whatever properly to large mobs, including taurs
+ * todo: fields might need to pull from projectors, rather than projectors pushing to fields. this prevents oscillation.
+ * todo: the current anti-oscillation is a little overpowered for buff effects, as buff effects won't generally check for amount.
  */
 /datum/component/medichine_field
 	registered_type = /datum/component/medichine_field
@@ -267,24 +269,32 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		var/reacting = min(cell_package.reaction_rate, cell_volume)
 		var/reacted_ratio = 0
 
-		// perform tick
-		for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
-			var/used_ratio
-			used_ratio = cell_effect.tick_on_mob(src, victim, reacting)
-			if(isnull(used_ratio))
-				continue
-			reacted_ratio = max(reacted_ratio, used_ratio)
-
-		var/decaying = max(cell_package.decay_minimum_baseline, reacting * reacted_ratio)
-		active[cell_package] -= decaying
-		total_volume -= decaying
-		if(active[cell_package] < 0)
+		// if we were already at 0, remove
+		if(reacting <= 0)
 			active -= cell_package
 			for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
 				cell_effect.target_removed(victim)
 			removed_something = TRUE
+		// else, tick
+		else if(reacting > 0)
+			// perform tick
+			for(var/datum/medichine_effect/cell_effect as anything in cell_package.effects)
+				var/used_ratio
+				used_ratio = cell_effect.tick_on_mob(src, victim, reacting)
+				if(isnull(used_ratio))
+					continue
+				reacted_ratio = max(reacted_ratio, used_ratio)
+
+			var/decaying = max(cell_package.decay_minimum_baseline, reacting * reacted_ratio, 0)
+			active[cell_package] -= decaying
+			total_volume -= decaying
+			// if we're at 0, we do nothing; it's removed next tick
+			// this way, if the projector adds more before next tick, we don't oscillate as hard.
 	if(removed_something)
-		recalculate_color()
+		if(!length(active))
+			qdel(src)
+		else
+			recalculate_color()
 
 /datum/component/medichine_field/proc/recalculate_color()
 	if(!total_volume)
@@ -292,7 +302,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	else
 		var/list/blended = list(0, 0, 0)
 		for(var/datum/medichine_cell/package as anything in active)
-			var/ratio = active[package] / total_volume
+			var/ratio = 1 / length(active)
 			blended[1] += package.color_rgb_list[1] * ratio
 			blended[2] += package.color_rgb_list[2] * ratio
 			blended[3] += package.color_rgb_list[3] * ratio
@@ -302,12 +312,15 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /datum/component/medichine_field/proc/inject_medichines(datum/medichine_cell/medichines, amount)
 	LAZYINITLIST(active)
 	ensure_visuals()
+	var/wasnt_there
 	if(isnull(active[medichines]))
+		wasnt_there = TRUE
+	active[medichines] += amount
+	total_volume += amount
+	if(wasnt_there)
 		for(var/datum/medichine_effect/effect as anything in medichines.effects)
 			effect.target_added(parent)
 		recalculate_color()
-	active[medichines] += amount
-	total_volume += amount
 
 /datum/component/medichine_field/proc/ensure_visuals()
 	if(!isnull(renderer))
@@ -519,8 +532,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 			biology_types = BIOLOGY_TYPES_FLESHY;
 			disinfect_wounds = TRUE;
 			seal_wounds = TRUE;
-			repair_strength_brute = 4;
-			repair_strength_burn = 4;
+			repair_strength_brute = 2.5;
+			repair_strength_burn = 2.5;
 		}
 	)
 	color = "#aa0000"
@@ -537,8 +550,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 			biology_types = BIOLOGY_TYPES_FLESHY;
 			disinfect_wounds = TRUE;
 			seal_wounds = TRUE;
-			repair_strength_brute = 2;
-			repair_strength_burn = 2;
+			repair_strength_brute = 5;
+			repair_strength_burn = 5;
 		},
 	)
 	color = "#ff3300"
