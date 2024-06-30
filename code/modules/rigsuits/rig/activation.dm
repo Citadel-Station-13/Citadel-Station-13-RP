@@ -20,7 +20,7 @@
  * checks if we're in the right inventory slot to activate.
  */
 /obj/item/rig/proc/is_in_right_slot()
-	var/datum/inventory_slot_meta/wslot = wearer_required_slot_id
+	var/datum/inventory_slot/wslot = wearer_required_slot_id
 	return worn_slot == (ispath(wslot)? initial(wslot.id) : wslot)
 
 /**

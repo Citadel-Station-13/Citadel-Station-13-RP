@@ -102,7 +102,7 @@
  * Creates the beam effects and places them in a line from the origin to the target. Sets their rotation to make the beams face the target, too.
  */
 /datum/beam_legacy/proc/Draw()
-	if(SEND_SIGNAL(src, COMSIG_BEAM_BEFORE_DRAW) & BEAM_CANCEL_DRAW)
+	if(SEND_SIGNAL(src, COMSIG_LEGACY_BEAM_BEFORE_DRAW) & LEGACY_BEAM_CANCEL_DRAW)
 		return
 	var/origin_px = isnull(override_origin_pixel_x) ? origin.pixel_x : override_origin_pixel_x
 	var/origin_py = isnull(override_origin_pixel_y) ? origin.pixel_y : override_origin_pixel_y

@@ -1,5 +1,5 @@
-/datum/asset/spritesheet/holofabricator
+/datum/asset_pack/spritesheet/holofabricator
 	name = "holofabricator"
 
-/datum/asset/spritesheet/holofabricator/create_spritesheets()
+/datum/asset_pack/spritesheet/holofabricator/create_spritesheets()
 	#warn InsertAll stuff lmao
