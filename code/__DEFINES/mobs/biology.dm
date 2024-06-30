@@ -22,12 +22,9 @@
 #define BIOLOGY_TYPES_SYNTHETIC (BIOLOGY_TYPE_SYNTH | BIOLOGY_TYPE_NANITES)
 #define BIOLOGY_TYPES_ALL (ALL)
 
-DEFINE_BITFIELD_NEW(biology_types, list(
+DEFINE_BITFIELD(biology_types, list(
 	/datum/medichine_effect/wound_healing = list(
 		"biology_types",
-	),
-	/obj/item/organ = list(
-		"biology_type",
 	),
 ), list(
 	BITFIELD_NEW("Human", BIOLOGY_TYPE_HUMAN),
