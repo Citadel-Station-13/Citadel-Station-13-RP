@@ -524,13 +524,6 @@
 	body_cover_flags = 0
 	inv_hide_flags = BLOCKHAIR
 
-/obj/item/clothing/head/iwlcap
-	name = "officer's cap"
-	desc = "A fine officer's cap denoting a leaguer rank-bearer. A golden star is embedded to the front."
-	icon = 'icons/clothing/head/iwlhelms.dmi'
-	icon_state = "iwl_cap"
-	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-
 /obj/item/clothing/head/pharaoh
 	name = "pharaoh cap"
 	desc = "An alternate headdress worn by ancient Egyptian Pharaohs. Studies have concluded that wearing this does not, in fact, make you an Egyptian."
