@@ -812,7 +812,7 @@
 		if(ORGAN_ASSISTED)
 			return biology_types & BIOLOGY_TYPE_HUMAN
 		if(ORGAN_CRYSTAL)
-			return biology_types & BIOLOGY_TYPE_CRYSTAL
+			return biology_types & BIOLOGY_TYPE_CRYSTALLINE
 		if(ORGAN_ROBOT)
 			return biology_types & BIOLOGY_TYPE_SYNTH
 		if(ORGAN_NANOFORM)

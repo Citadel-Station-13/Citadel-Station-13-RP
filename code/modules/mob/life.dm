@@ -53,3 +53,11 @@
  * handle modifiers - physical/biological life haltedd is passed in
  */
 /mob/proc/handle_modifiers(component_signal)
+
+//* Metabolism *//
+
+/**
+ * Force x seconds of metabolism.
+ */
+/mob/proc/forced_metabolism(seconds)
+	return

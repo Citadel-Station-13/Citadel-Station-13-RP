@@ -3586,6 +3586,7 @@
 #include "code\modules\mob\living\carbon\give.dm"
 #include "code\modules\mob\living\carbon\health.dm"
 #include "code\modules\mob\living\carbon\inventory.dm"
+#include "code\modules\mob\living\carbon\life.dm"
 #include "code\modules\mob\living\carbon\organs.dm"
 #include "code\modules\mob\living\carbon\perspective.dm"
 #include "code\modules\mob\living\carbon\physiology.dm"
