@@ -1,3 +1,4 @@
+// todo: this doesn't work
 ///This component allows us to give a mob access without giving them an ID card.
 /datum/component/simple_access
 	dupe_mode = COMPONENT_DUPE_ALLOWED
