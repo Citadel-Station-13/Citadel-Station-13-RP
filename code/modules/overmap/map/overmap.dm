@@ -91,4 +91,4 @@
  */
 /datum/overmap/proc/reservation_border_initializer(turf/border, datum/turf_reservation/reservation)
 	var/turf/overmap/edge/edge = border.ChangeTurf(/turf/overmap/edge)
-	edge.initialize_overmap(src)
+	edge.initialize_border(src, reservation)

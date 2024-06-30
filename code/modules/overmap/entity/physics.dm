@@ -52,8 +52,12 @@
 			is_forced_moving = TRUE
 			forceMove(new_loc)
 			is_forced_moving = FALSE
-		else
+		else if(get_dist(loc, new_loc) == 1)
 			Move(new_loc, NORTH, dt * 10)
+		else
+			to_chat(world, SPAN_DANGER("overmap caught illegal move by a shuttle; please check logs. halting movement of affected entity."))
+			set_velocity(0, 0)
+			CRASH("attempted to move not one tile but also while not jumping")
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
@@ -73,7 +77,7 @@
 /obj/overmap/entity/proc/set_velocity(vx, vy)
 	if(!isnull(vx))
 		vel_x = vx
-	if(isnull(vy))
+	if(!isnull(vy))
 		vel_y = vy
 
 	if(!is_moving && (QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)))

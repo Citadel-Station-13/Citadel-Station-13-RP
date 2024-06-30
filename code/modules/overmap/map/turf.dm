@@ -12,7 +12,7 @@
 	maptext_y = 12
 
 /turf/overmap/proc/initialize_overmap(datum/overmap/map)
-	return
+	return TRUE
 
 /turf/overmap/map
 	opacity = FALSE
@@ -22,6 +22,7 @@
 	var/calculated_x = x - map.lower_left_x
 	var/calculated_y = y - map.lower_left_y
 	name = "[calculated_x]-[calculated_y]"
+	return ..()
 
 /turf/overmap/edge
 	opacity = TRUE
@@ -39,36 +40,48 @@
 /turf/overmap/edge/initialize_overmap(datum/overmap/map)
 	name = "border (warp-enabled)"
 	overmap = map
+	return ..()
+
+/**
+ * initializes our locality
+ *
+ * remember: at this point, overmap hasn't been set, because we're currently being called from a /datum/turf_reservation!
+ */
+/turf/overmap/edge/proc/initialize_border(datum/overmap/map, datum/turf_reservation/reservation)
+	var/lower_left_x = reservation.bottom_left_coords[1]
+	var/lower_left_y = reservation.bottom_left_coords[2]
+	var/upper_right_x = reservation.top_right_coords[1]
+	var/upper_right_y = reservation.top_right_coords[2]
 
 	var/number
-	if((x == map.lower_left_x - 1) || (x == map.upper_right_x + 1))
+	if((x == lower_left_x - 1) || (x == upper_right_x + 1))
 		// left or right borders
-		if((y == map.lower_left_y - 1) || (y == map.upper_right_y + 1))
+		if((y == lower_left_y - 1) || (y == upper_right_y + 1))
 		else
-			number = y - map.lower_left_y + 1
-	else if((y == map.lower_left_y - 1) || (y == map.upper_right_y + 1))
+			number = y - lower_left_y + 1
+	else if((y == lower_left_y - 1) || (y == upper_right_y + 1))
 		// top or bottom borders
-		if((x == map.lower_left_x - 1) || (x == map.upper_right_x + 1))
+		if((x == lower_left_x - 1) || (x == upper_right_x + 1))
 		else
-			number = x - map.lower_left_x + 1
+			number = x - lower_left_x + 1
 
 	wrap_sign_x = 0
 	wrap_sign_y = 0
 
-	if(x == overmap.lower_left_x - 1)
-		if(y == overmap.lower_left_y - 1)
+	if(x == lower_left_x - 1)
+		if(y == lower_left_y - 1)
 			wrap_sign_y = 1
 		wrap_sign_x = 1
-	else if(x == overmap.upper_right_x + 1)
-		if(y == overmap.upper_right_y + 1)
+	else if(x == upper_right_x + 1)
+		if(y == upper_right_y + 1)
 			wrap_sign_y = -1
 		wrap_sign_x = -1
-	if(y == overmap.lower_left_y - 1)
-		if(x == overmap.upper_right_x + 1)
+	if(y == lower_left_y - 1)
+		if(x == upper_right_x + 1)
 			wrap_sign_x = -1
 		wrap_sign_y = 1
-	else if(y == overmap.upper_right_y + 1)
-		if(x == overmap.lower_left_x - 1)
+	else if(y == upper_right_y + 1)
+		if(x == lower_left_x - 1)
 			wrap_sign_x = 1
 		wrap_sign_y = -1
 

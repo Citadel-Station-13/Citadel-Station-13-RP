@@ -180,7 +180,7 @@
 
 				// calculate non-bordered
 				BL = locate(1 + TURF_CHUNK_RESOLUTION * (outer_x - 1) + border, 1 + TURF_CHUNK_RESOLUTION * (outer_y - 1) + border, level_index)
-				TR = locate(BL.x + real_width - 1 - border, BL.y + real_height - 1 - border, BL.z)
+				TR = locate(BL.x + width - 1, BL.y + height - 1, level_index)
 				final = block(BL, TR)
 
 				// calculate border
@@ -374,6 +374,23 @@
 		locate(bottom_left_coords[1], bottom_left_coords[2], bottom_left_coords[3]),
 		locate(top_right_coords[1], top_right_coords[2], top_right_coords[3]),
 	)
+
+/**
+ * gets an unordered list of all outer (border) turfs
+ */
+/datum/turf_reservation/proc/unordered_border_turfs()
+	if(!border)
+		return list()
+	return border_turfs.Copy()
+
+/**
+ * gets an unordered list of all immediate (1-outside) turfs
+ */
+/datum/turf_reservation/proc/unordered_immediate_border_turfs()
+	if(!border)
+		return list()
+	// todo: implement this
+	CRASH("unimplemented")
 
 //* Reservation Border Area *//
 
