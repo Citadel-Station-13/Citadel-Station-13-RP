@@ -92,6 +92,13 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	return ..()
 
 /obj/item/stream_projector/medichine/try_lock_target(atom/entity, datum/event_args/actor/actor, silent)
+	var/datum/medichine_cell/effective_cell = effective_cell_datum()
+	if(isnull(effective_cell))
+		actor.chat_feedback(
+			SPAN_WARNING("There's no medichines loaded."),
+			target = src,
+		)
+		return FALSE
 	var/turf/where_we_are = get_turf(src)
 	var/turf/where_they_are = get_turf(entity)
 	if(get_dist(where_we_are, where_they_are) > maximum_distance)
@@ -168,9 +175,10 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		return
 	var/datum/medichine_cell/effective_cell = effective_cell_datum()
 	if(!isnull(effective_cell))
+		var/beam_color = beam_color(effective_cell.color)
 		for(var/atom/entity as anything in beams_by_entity)
 			var/datum/beam/entity_beam = beams_by_entity[entity]
-			entity_beam.segmentation.color = beam_color(effective_cell.color)
+			entity_beam.segmentation.color = beam_color
 
 /obj/item/stream_projector/medichine/proc/beam_color(color)
 	var/list/decoded = ReadRGB(color)
@@ -196,6 +204,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		drop_all_targets()
 		return
 	// todo: this is for multi-cell support; implement that.
+	// todo: this needs to work for mounts and item interfaces, so... how do we do that?
 	var/list/datum/medichine_cell/injecting_packages = list(effective_package)
 	// for each cell
 	for(var/datum/medichine_cell/injecting_package as anything in injecting_packages)
@@ -214,8 +223,11 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 
 /**
  * component used to form a mob's nanite cloud visuals + processing
+ *
+ * todo: scale / whatever properly to large mobs, including taurs
  */
 /datum/component/medichine_field
+	registered_type = /datum/component/medichine_field
 	/// active effect packages associated to nanite volume
 	var/list/datum/medichine_cell/active
 	/// cached total volume
@@ -232,11 +244,11 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 
 /datum/component/medichine_field/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOB_ON_LIFE, PROC_REF(on_life))
+	RegisterSignal(parent, COMSIG_MOB_PHYSICAL_LIFE, PROC_REF(on_life))
 
 /datum/component/medichine_field/UnregisterFromParent()
 	. = ..()
-	UnregisterSignal(parent, COMSIG_MOB_ON_LIFE)
+	UnregisterSignal(parent, COMSIG_MOB_PHYSICAL_LIFE)
 	QDEL_NULL(renderer)
 
 /datum/component/medichine_field/proc/on_life(datum/source, seconds, times_fired)
@@ -280,12 +292,12 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	else
 		var/list/blended = list(0, 0, 0)
 		for(var/datum/medichine_cell/package as anything in active)
-			var/ratio = 1 / length(active)
+			var/ratio = active[package] / total_volume
 			blended[1] += package.color_rgb_list[1] * ratio
 			blended[2] += package.color_rgb_list[2] * ratio
 			blended[3] += package.color_rgb_list[3] * ratio
 		current_color = rgb(blended[1], blended[2], blended[3])
-	renderer.color = current_color
+	renderer.particles.color = current_color
 
 /datum/component/medichine_field/proc/inject_medichines(datum/medichine_cell/medichines, amount)
 	LAZYINITLIST(active)
@@ -308,8 +320,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		var/atom/entity = parent
 		renderer.loc = entity
 	var/particles/particle_instance = new /particles/medichine_field
+	particle_instance.color = current_color
 	renderer.particles = particle_instance
-	renderer.color = current_color
 
 //? VFX
 
@@ -320,7 +332,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	width = 32
 	height = 32
 	count = 75
-	spawning = 1.25
+	spawning = 0.65
 	fade = 3
 	lifespan = 3
 	velocity = list(0, 2.5, 0)
@@ -708,7 +720,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 				wound.salve()
 			if(disinfect_wounds)
 				wound.disinfect()
-	return max(1 - (burn_healing_left / burn_healing_total), 1 - (brute_healing_left / brute_healing_total))
+	return max(burn_healing_total && (1 - (burn_healing_left / burn_healing_total)), brute_healing_total && (1 - (brute_healing_left / brute_healing_total)))
 
 /datum/medichine_effect/oxygenate
 	/// works on the dead

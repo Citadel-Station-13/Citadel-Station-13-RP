@@ -156,6 +156,8 @@
 	teardown_target_visuals(entity)
 	on_target_remove(entity)
 	LAZYREMOVE(active_targets, entity)
+	if(ismovable(entity))
+		UnregisterSignal(entity, COMSIG_MOVABLE_MOVED)
 	if(!length(active_targets) && process_while_active && !process_always)
 		STOP_PROCESSING(SSprocessing, src)
 	return TRUE
