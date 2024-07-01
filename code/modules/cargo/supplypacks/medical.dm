@@ -424,6 +424,33 @@
 	access = ACCESS_MEDICAL_EQUIPMENT
 
 /datum/supply_pack/med/medigun
+	name = "Cell-Loaded Medigun crate"
+	contains = list(
+			/obj/item/gun/ballistic/cell_loaded/medical = 1,
+			/obj/item/ammo_magazine/cell_mag/medical = 1
+			)
+	cost = 250
+	container_type = /obj/structure/closet/crate/secure/corporate/veymed
+	container_name = "Cell-Loaded Medigun crate"
+	access = ACCESS_MEDICAL_CMO
+
+/datum/supply_pack/med/medigun_cells
+	name = "Cell-Loaded Medigun Cell Pack crate"
+	contains = list(
+			/obj/item/ammo_casing/microbattery/medical/brute = 3,
+			/obj/item/ammo_casing/microbattery/medical/burn = 3,
+			/obj/item/ammo_casing/microbattery/medical/stabilize = 3
+			)
+	cost = 100
+	container_type = /obj/structure/closet/crate/secure/corporate/veymed
+	container_name = "Cell-Loaded Medigun Cell Pack crate"
+	access = ACCESS_MEDICAL_CMO
+
+/*
+do not uncomment this without consulting silicons or another balance-minded maintainer
+this is explicitly disallowed at the moment due to in-progress plans of whether or not handheld variants are to be allowed.
+
+/datum/supply_pack/med/medigun
 	name = "Medichine Stream Projector"
 	contains = list(
 		/obj/item/stream_projector/medichine = 1,
@@ -443,3 +470,4 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed
 	access = ACCESS_MEDICAL_EQUIPMENT
+*/

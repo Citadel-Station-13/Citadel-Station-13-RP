@@ -281,7 +281,7 @@
 /datum/component/rig_piece/proc/is_deployed()
 	var/obj/item/I = parent
 	if(ispath(inventory_slot))
-		var/datum/inventory_slot_meta/slot_meta = inventory_slot
+		var/datum/inventory_slot/slot_meta = inventory_slot
 		inventory_slot = initial(slot_meta.id)
 	return I.worn_slot == inventory_slot
 

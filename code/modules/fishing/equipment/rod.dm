@@ -114,7 +114,7 @@
 	var/beam_color = line?.line_color || default_line_color
 	var/datum/beam_legacy/fishing_line/fishing_line_beam = new(user, target, icon_state = "gray_pixel_line_scaling", beam_color = beam_color, override_target_pixel_y = target_py)
 	fishing_line_beam.lefthand = user.get_held_index(src) % 2 == 1
-	RegisterSignal(fishing_line_beam, COMSIG_BEAM_BEFORE_DRAW, PROC_REF(check_los))
+	RegisterSignal(fishing_line_beam, COMSIG_LEGACY_BEAM_BEFORE_DRAW, PROC_REF(check_los))
 	RegisterSignal(fishing_line_beam, COMSIG_PARENT_QDELETING, PROC_REF(clear_line))
 	fishing_lines += fishing_line_beam
 	INVOKE_ASYNC(fishing_line_beam, TYPE_PROC_REF(/datum/beam_legacy/, Start))
@@ -182,7 +182,7 @@
 
 	if(!ismob(loc) || !check_fishing_reach(source.target, loc))
 		SEND_SIGNAL(source, COMSIG_FISHING_LINE_SNAPPED) //Stepped out of range or los interrupted
-		return BEAM_CANCEL_DRAW
+		return LEGACY_BEAM_CANCEL_DRAW
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
