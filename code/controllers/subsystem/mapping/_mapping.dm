@@ -35,10 +35,6 @@ SUBSYSTEM_DEF(mapping)
 	// load world - this also initializes our first reserved level, which is compiled in.
 	load_station()
 
-	// perform snowflake legacy init stuff
-	// todo: refactor
-	if(!(LEGACY_MAP_DATUM).overmap_z)
-		build_overmap()
 	// todo: refactor - Set up antagonists.
 	populate_antag_type_list()
 	// todo: refactor - Set up spawn points.

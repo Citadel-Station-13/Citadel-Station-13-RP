@@ -35,7 +35,8 @@
 
 // Update when moving between areas.
 // TODO - While this direct override might technically be faster, probably better code to use observer or hooks ~Leshana
-/area/Entered(var/mob/living/M)
+/area/Entered(atom/movable/AM, atom/oldLoc)
+	var/mob/M = AM
 	// Note, we cannot call ..() first, because it would update lastarea.
 	if(!istype(M))
 		return ..()

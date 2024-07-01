@@ -12,13 +12,16 @@ SUBSYSTEM_DEF(spatial_grids)
 
 	/// /living mobs. they don't have to be alive, just a subtype of /living.
 	var/datum/spatial_grid/living
+	/// /obj/overmap/entity's
+	var/datum/spatial_grid/overmap_entities
 
 /datum/controller/subsystem/spatial_grids/Initialize()
 	make_grids()
 	return ..()
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
-	living = new /datum/spatial_grid(/mob/living, 16)
+	living = new /datum/spatial_grid(/mob/living)
+	overmap_entities = new /datum/spatial_grid(/obj/overmap/entity)
 
 /datum/controller/subsystem/spatial_grids/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()

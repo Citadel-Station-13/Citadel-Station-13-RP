@@ -110,8 +110,8 @@
 
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
-	data["s_x"] = linked.x
-	data["s_y"] = linked.y
+	data["s_x"] = linked.get_tile_x()
+	data["s_y"] = linked.get_tile_y()
 	data["speed"] = round(linked.get_speed_legacy()*1000, 0.01)
 	data["accel"] = round(linked.get_acceleration_legacy()*1000, 0.01)
 	data["heading"] = linked.get_heading()
@@ -188,8 +188,8 @@
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
 	data["landed"] = linked.get_landed_info()
-	data["s_x"] = linked.x
-	data["s_y"] = linked.y
+	data["s_x"] = linked.get_tile_x()
+	data["s_y"] = linked.get_tile_y()
 	data["dest"] = dy && dx
 	data["d_x"] = dx
 	data["d_y"] = dy
@@ -311,11 +311,11 @@
 				return TRUE
 			switch(params["add"])
 				if("current")
-					R.fields["x"] = linked.x
-					R.fields["y"] = linked.y
+					R.fields["x"] = linked.get_tile_x()
+					R.fields["y"] = linked.get_tile_y()
 				if("new")
-					var/newx = input("Input new entry x coordinate", "Coordinate input", linked.x) as num
-					var/newy = input("Input new entry y coordinate", "Coordinate input", linked.y) as num
+					var/newx = input("Input new entry x coordinate", "Coordinate input", linked.get_tile_x()) as num
+					var/newy = input("Input new entry y coordinate", "Coordinate input", linked.get_tile_y()) as num
 					R.fields["x"] = clamp(newx, 1, world.maxx)
 					R.fields["y"] = clamp(newy, 1, world.maxy)
 			known_sectors[sec_name] = R

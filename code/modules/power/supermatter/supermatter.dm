@@ -240,16 +240,6 @@
 			GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
 
-
-/obj/machinery/power/supermatter/get_transit_zlevel()
-	//don't send it back to the station -- most of the time
-	if(prob(99))
-		var/list/candidates = SSmapping.crosslinked_levels() - (LEGACY_MAP_DATUM).station_levels
-		. = SAFEPICK(candidates)
-		if(.)
-			return
-	return ..()
-
 /obj/machinery/power/supermatter/process(delta_time)
 
 	var/turf/L = loc
