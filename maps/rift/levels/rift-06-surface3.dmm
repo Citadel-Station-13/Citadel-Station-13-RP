@@ -50,7 +50,7 @@
 /obj/machinery/holopad,
 /obj/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "aal" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/lightorange{
@@ -157,7 +157,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "aaw" = (
 /obj/item/storage/secure/safe{
 	pixel_x = 36;
@@ -767,7 +767,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "acF" = (
 /obj/structure/metal_edge,
 /obj/structure/catwalk,
@@ -1135,7 +1135,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "adL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -2029,7 +2029,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "agH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -2471,7 +2471,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "aib" = (
 /obj/machinery/recharge_station,
 /obj/effect/floor_decal/borderfloorblack,
@@ -3861,7 +3861,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "amb" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -4154,7 +4154,7 @@
 /obj/item/pen,
 /obj/item/paper/monitorkey,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "amW" = (
 /obj/machinery/cryopod/robot/door/gateway,
 /obj/effect/floor_decal/corner/lightgrey{
@@ -6393,7 +6393,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "atA" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
@@ -6533,7 +6533,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "atZ" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
@@ -7828,7 +7828,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "axx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8965,7 +8965,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "aBc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -9890,7 +9890,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "aEl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -10421,7 +10421,7 @@
 	},
 /obj/machinery/blackbox_recorder,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "aFN" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/tiled/techmaint,
@@ -10800,7 +10800,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "aHd" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
@@ -12873,7 +12873,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "aMZ" = (
 /obj/machinery/door/airlock/research{
 	name = "Charging Station"
@@ -16074,7 +16074,7 @@
 "aWx" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_cyborg_station)
+/area/ai_server_room)
 "aWz" = (
 /obj/structure/railing{
 	dir = 4
@@ -23774,7 +23774,7 @@
 	name = "JoinLateRobotic"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ai_server_room)
+/area/ai_cyborg_station)
 "nms" = (
 /obj/structure/table/rack/steel,
 /obj/random/maintenance/medical,
@@ -52254,18 +52254,18 @@ dDI
 pyj
 dDI
 oJN
-gGW
-gGW
-gGW
-gGW
+iJw
+iJw
+iJw
+iJw
 jZP
 jZP
 jHB
 mRT
 jZP
-iJw
-iJw
-iJw
+gGW
+gGW
+gGW
 owP
 owP
 owP
@@ -52448,7 +52448,7 @@ taq
 bRh
 eEa
 lzf
-gGW
+iJw
 atz
 aFM
 acE
@@ -52642,7 +52642,7 @@ eIs
 xgH
 lcP
 fGK
-gGW
+iJw
 axv
 aWx
 ama
@@ -52836,7 +52836,7 @@ jbR
 qjW
 fOF
 tnY
-gGW
+iJw
 amV
 aBb
 aEk
@@ -53030,18 +53030,18 @@ vpd
 eIk
 rJB
 kTT
-gGW
-gGW
-gGW
-gGW
+iJw
+iJw
+iJw
+iJw
 jZP
 jZP
 ciN
 jZP
 jZP
-iJw
-iJw
-iJw
+gGW
+gGW
+gGW
 owP
 aEn
 aJd

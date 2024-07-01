@@ -3630,7 +3630,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/glass/engineering{
-	req_one_access = null
+	req_one_access = null;
+	name = "Atmospherics Airlock"
 	},
 /obj/map_helper/access_helper/airlock/station/engineering/department,
 /turf/simulated/floor/tiled/monotile,
@@ -4376,7 +4377,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
 "mr" = (
-/obj/structure/sign/department/eng{
+/obj/structure/sign/department/atmos{
 	pixel_y = -32
 	},
 /obj/machinery/light,
