@@ -1053,7 +1053,8 @@
 
 
 
-
+/mob/living/carbon/human/proc/set_pose(new_pose)
+	pose = sanitize(new_pose)
 
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
@@ -1064,7 +1065,9 @@
 
 	var/old_pose = pose
 
-	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+
+	set_pose(new_pose)
 
 	if (length(pose)>0 && pose != old_pose)
 		visible_emote("adjusts [T.his] posture.")
@@ -1077,15 +1080,16 @@
 
 	var/old_pose = pose
 
-	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
 
-	var/time = input(usr, "How long should the pose be visible (in seconds)?","Pose",60)
+	var/time = input(usr, "How long should the pose be visible (in seconds)?","Pose",60) as num|null
+
+	set_pose(new_pose)
 
 	if (length(pose)>0 && pose != old_pose)
 		visible_emote("adjusts [T.his] posture.")
-
-	spawn(time SECONDS)
-		pose=""
+		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
+	
 
 /mob/living/carbon/human/verb/silent_pose()
 	set name = "Set Pose (Stealth)"
@@ -1093,7 +1097,8 @@
 	set category = VERB_CATEGORY_IC
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
-	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
+	var/new_pose=input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	set_pose(new_pose)
 
 
 
