@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 //* WELCOME TO THE SEVENTH CIRCLE OF WEBDEV HELL
 /// For efficiency, rigs will internally track and cache what needs to update.
@@ -295,6 +295,8 @@
 
 /**
  * attempts to detect theme from wearer, if ui theme is not being forced
+ *
+ * requested by cabbages
  */
 /obj/item/rig/proc/detect_ui_theme()
 	var/mob/living/carbon/human/casted = wearer
