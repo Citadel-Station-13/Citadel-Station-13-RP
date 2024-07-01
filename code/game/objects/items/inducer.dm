@@ -138,7 +138,7 @@
 				break
 			if(charged <= 0)
 				break
-			obj_cell_slot.cell.use(charged)
+			obj_cell_slot.use(charged)
 			used += charged
 
 	qdel(spark_system)
