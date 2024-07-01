@@ -281,12 +281,12 @@
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
 	ensure_buttons()
 	if(allow_mass_gather && allow_mass_gather_mode_switch)
-		action_mode_switch.grant(wearer)
+		action_mode_switch.regex_this_grant(wearer.inventory.actions)
 
 /datum/object_system/storage/proc/revoke_buttons(mob/wearer)
-	action_mode_switch?.remove(wearer)
+	action_mode_switch?.revoke(wearer.inventory.actions)
 
-/datum/object_system/storage/ui_action_click(datum/action/action, mob/user)
+/datum/object_system/storage/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	switch_gathering_modes(user)
 
 //* Caches *//

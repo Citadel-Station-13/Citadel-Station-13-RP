@@ -16,7 +16,7 @@
 	var/on = 0.0
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
-	action_button_name = "Toggle Jetpack"
+	item_action_name = "Toggle Jetpack"
 
 /obj/item/tank/jetpack/Initialize(mapload)
 	. = ..()
@@ -74,7 +74,7 @@
 	qdel(G)
 	return
 
-/obj/item/tank/jetpack/ui_action_click()
+/obj/item/tank/jetpack/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle()
 
 /obj/item/tank/jetpack/void

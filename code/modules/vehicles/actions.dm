@@ -93,7 +93,7 @@
 //ACTION DATUMS
 
 /datum/action/vehicle
-	check_flags = ACTION_CHECK_RESTRAINED | ACTION_CHECK_STUNNED | ACTION_CHECK_CONSCIOUS
+	check_mobility_flags = MOBILITY_CAN_USE
 	button_icon = 'icons/screen/actions/vehicles.dmi'
 	button_icon_state = "vehicle_eject"
 

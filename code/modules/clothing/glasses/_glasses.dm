@@ -145,7 +145,7 @@ BLIND     // can't see anything
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "meson", SLOT_ID_LEFT_HAND = "meson")
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
@@ -163,7 +163,7 @@ BLIND     // can't see anything
 	icon_state = "aviator_eng"
 	inactive_icon_state = "aviator"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
-	action_button_name = "Toggle HUD"
+	item_action_name = "Toggle HUD"
 	activation_sound = 'sound/effects/pop.ogg'
 
 /obj/item/clothing/glasses/meson/aviator/prescription
@@ -176,7 +176,7 @@ BLIND     // can't see anything
 	desc = "Modified aviator glasses with a toggled health HUD."
 	icon_state = "aviator_med"
 	inactive_icon_state = "aviator"
-	action_button_name = "Toggle Mode"
+	item_action_name = "Toggle Mode"
 	toggleable = 1
 	activation_sound = 'sound/effects/pop.ogg'
 
@@ -191,7 +191,7 @@ BLIND     // can't see anything
 	icon_state = "purple"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	body_cover_flags = EYES
 	clothing_flags = SCAN_REAGENTS
 
@@ -210,7 +210,7 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 2)
 	toggleable = 1
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	body_cover_flags = EYES // Cit change
 	inactive_icon_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
@@ -282,7 +282,7 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 	toggleable = 1
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
@@ -299,7 +299,7 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 2, TECH_BLUESPACE = 1)
 	toggleable = 1
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	inactive_icon_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
 	vision_flags_remove = SEE_BLACKNESS
@@ -422,7 +422,7 @@ BLIND     // can't see anything
 	desc = "Protects the eyes from welders, approved by the mad scientist association."
 	icon_state = "welding-g"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding-g", SLOT_ID_LEFT_HAND = "welding-g")
-	action_button_name = "Flip Welding Goggles"
+	item_action_name = "Flip Welding Goggles"
 	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 1000)
 	var/up = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
@@ -551,7 +551,7 @@ BLIND     // can't see anything
 	desc = "Modified aviator glasses that can be switch between HUD and flash protection modes."
 	icon_state = "aviator_sec"
 	inactive_icon_state = "aviator"
-	action_button_name = "Toggle Mode"
+	item_action_name = "Toggle Mode"
 	var/on = 1
 	toggleable = 1
 	activation_sound = 'sound/effects/pop.ogg'
@@ -605,7 +605,7 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 3)
 	toggleable = 1
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	vision_flags = SEE_MOBS
 	vision_flags_remove = SEE_BLACKNESS
 	vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
@@ -636,7 +636,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/thermal/plain
 	toggleable = 0
 	activation_sound = null
-	action_button_name = null
+	item_action_name = null
 
 /obj/item/clothing/glasses/thermal/plain/monocle
 	name = "thermonocle"
@@ -644,7 +644,7 @@ BLIND     // can't see anything
 	icon_state = "thermoncle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	toggleable = 1
-	action_button_name = "Toggle Monocle"
+	item_action_name = "Toggle Monocle"
 	atom_flags = NONE //doesn't protect eyes because it's a monocle, duh
 
 	body_cover_flags = 0
@@ -656,7 +656,7 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
 	body_cover_flags = 0
 	toggleable = 1
-	action_button_name = "Toggle Eyepatch"
+	item_action_name = "Toggle Eyepatch"
 
 /obj/item/clothing/glasses/thermal/plain/jensen
 	name = "optical thermal implants"
@@ -669,7 +669,7 @@ BLIND     // can't see anything
 	desc = "Teshari designed lightweight goggles."
 	icon_state = "orange-g"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
-	action_button_name = "Adjust Orange Goggles"
+	item_action_name = "Adjust Orange Goggles"
 	atom_flags = PHORONGUARD
 	var/up = 0
 	body_cover_flags = EYES
@@ -716,7 +716,7 @@ BLIND     // can't see anything
 	icon_state = "jensenshades"
 	inactive_icon_state = "jensenshades_off"
 	toggleable = 1
-	action_button_name = "Toggle Out/In"
+	item_action_name = "Toggle Out/In"
 
 /obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
 	name = "white blindfold"
@@ -862,5 +862,5 @@ BLIND     // can't see anything
 	desc = "Welding goggles fashioned out of brass. Brass goggles."
 	icon_state = "laconic-g"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding-g", SLOT_ID_LEFT_HAND = "welding-g")
-	action_button_name = "Adjust Goggles"
+	item_action_name = "Adjust Goggles"
 	materials_base = list("brass" = 1500, MAT_GLASS = 1000)

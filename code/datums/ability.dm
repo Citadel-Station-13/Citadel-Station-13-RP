@@ -129,7 +129,7 @@
 	if(next_available > 0)
 		addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
 
-/datum/ability/ui_action_click(datum/action/action, mob/user)
+/datum/ability/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()
 	action_trigger(user)
 

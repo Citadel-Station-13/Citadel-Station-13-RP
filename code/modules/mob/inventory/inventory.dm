@@ -6,6 +6,10 @@
 	/// owning mob
 	var/mob/owner
 
+	//* Actions *//
+	/// our action holder
+	var/datum/action_holder/actions
+
 	//* Inventory *//
 
 	//* Caches *//
@@ -19,8 +23,11 @@
 	if(!istype(M))
 		CRASH("no mob")
 	owner = M
+	/// no lazy-init for actions for now since items with actions are so common
+	actions = new
 
 /datum/inventory/Destroy()
+	QDEL_NULL(actions)
 	owner = null
 	return ..()
 

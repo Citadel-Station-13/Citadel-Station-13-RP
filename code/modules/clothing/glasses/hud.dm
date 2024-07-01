@@ -137,7 +137,7 @@
 	desc = "The VM-62-M AR glasses are a design from Vey Med. \
 	These have been upgraded with medical records access and virus database integration."
 	mode = "med"
-	action_button_name = "AR Console (Crew Monitor)"
+	item_action_name = "AR Console (Crew Monitor)"
 	prescription = 1
 	tgarscreen_path = /datum/tgui_module_old/crew_monitor/glasses
 	enables_planes = list(/atom/movable/screen/plane_master/augmented)
@@ -158,7 +158,7 @@
 	mode = "sec"
 	flash_protection = FLASH_PROTECTION_MAJOR
 	prescription = 1
-	action_button_name = "AR Console (Security Alerts)"
+	item_action_name = "AR Console (Security Alerts)"
 	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
@@ -177,7 +177,7 @@
 	mode = "eng"
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
-	action_button_name = "AR Console (Station Alerts)"
+	item_action_name = "AR Console (Station Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/engineering
 
 /obj/item/clothing/glasses/omnihud/eng/ar_interact(var/mob/living/carbon/human/user)
@@ -245,10 +245,10 @@
 	mode = "exp"
 	icon_state = "pf_goggles"
 	prescription = 1
-	action_button_name = "Toggle Zoom"
+	item_action_name = "Toggle Zoom"
 	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
-/obj/item/clothing/glasses/omnihud/exp/ui_action_click()
+/obj/item/clothing/glasses/omnihud/exp/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	zoom(wornslot = SLOT_ID_GLASSES)
 
 /obj/item/clothing/glasses/omnihud/all

@@ -18,6 +18,7 @@
 		user.close_up_safe()
 
 /datum/action/pai/toggle_fold/update_button()
+	#warn get rid of this
 	var/mob/living/silicon/pai/user = owner
 	if(!istype(user))
 		return
@@ -56,6 +57,7 @@
 	user.revert_to_card()
 
 /datum/action/pai/revert_to_card/update_button()
+	#warn get rid of this
 	..()
 
 	var/mob/living/silicon/pai/user = owner
@@ -83,6 +85,7 @@
 	user.card_hologram_display()
 
 /datum/action/pai/hologram_display/update_button()
+	#warn get rid of this
 	..()
 
 	var/mob/living/silicon/pai/user = owner
