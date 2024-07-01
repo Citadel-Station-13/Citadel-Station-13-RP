@@ -2487,6 +2487,7 @@
 #include "code\modules\client\onboarding\age_verification.dm"
 #include "code\modules\client\onboarding\panic_bunker.dm"
 #include "code\modules\client\onboarding\security_checks.dm"
+#include "code\modules\client\verbs\debug.dm"
 #include "code\modules\client\verbs\minimap.dm"
 #include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\client\verbs\system.dm"

@@ -44,6 +44,8 @@
  * return bool If TRUE, prevents propagation of the topic call.
  */
 /client/proc/tgui_topic(list/href_list)
+	#warn get rid of this
+	log_tgui(src, "[english_list(href_list)]", "DEBUG")
 	// Skip non-tgui topics
 	if(!href_list["tgui"])
 		return FALSE
