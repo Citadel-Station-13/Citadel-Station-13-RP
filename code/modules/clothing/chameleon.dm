@@ -66,7 +66,7 @@
 	desc = "It's a plain jumpsuit. It seems to have a small dial on the wrist."
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/clothing/under/chameleon/emp_act(severity)
+/obj/item/clothing/under/chameleon/emp_act_legacy(severity)
 	name = "psychedelic"
 	desc = "Groovy!"
 	icon_state = "psyche"
@@ -96,7 +96,7 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	body_cover_flags = 0
 
-/obj/item/clothing/head/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/clothing/head/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "grey cap"
 	desc = "It's a baseball hat in a tasteful grey colour."
 	icon_state = "greysoft"
@@ -124,7 +124,7 @@
 	desc = "It appears to be a vest of standard armor, except this is embedded with a hidden holographic cloaker, allowing it to change it's appearance, but offering no protection.. It seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/clothing/suit/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/clothing/suit/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "armor"
 	desc = "An armored vest that protects against some damage."
 	icon_state = "armor"
@@ -151,7 +151,7 @@
 	desc = "They're comfy black shoes, with clever cloaking technology built in. It seems to have a small dial on the back of each shoe."
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/clothing/shoes/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/clothing/shoes/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "black shoes"
 	desc = "A pair of black shoes."
 	icon_state = "black"
@@ -178,7 +178,7 @@
 	desc = "A backpack outfitted with cloaking tech. It seems to have a small dial inside, kept away from the storage."
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/storage/backpack/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/storage/backpack/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."
 	icon_state = "backpack"
@@ -212,7 +212,7 @@
 	desc = "It looks like a pair of gloves, but it seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/clothing/gloves/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/clothing/gloves/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "black gloves"
 	desc = "It looks like a pair of gloves, but it seems to have a small dial inside."
 	icon_state = "black"
@@ -240,7 +240,7 @@
 	desc = "It looks like a plain gask mask, but on closer inspection, it seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/clothing/mask/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/clothing/mask/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "gas mask"
 	desc = "It's a gas mask."
 	icon_state = "gas_alt"
@@ -269,7 +269,7 @@
 	desc = "It looks like a plain set of mesons, but on closer inspection, it seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/clothing/glasses/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/clothing/glasses/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "Optical Meson Scanner"
 	desc = "It's a set of mesons."
 	icon_state = "meson"
@@ -298,7 +298,7 @@
 	icon_state = "utilitybelt"
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/storage/belt/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/storage/belt/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "belt"
 	desc = "Can hold various things."
 	icon_state = "utilitybelt"
@@ -332,7 +332,7 @@
 	icon_state = "blacktie"
 	origin_tech = list(TECH_ILLEGAL = 3)
 
-/obj/item/clothing/accessory/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/clothing/accessory/chameleon/emp_act_legacy(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "black tie"
 	desc = "Looks like a black tie, but his one also has a dial inside."
 	icon_state = "blacktie"
@@ -395,7 +395,7 @@
 		P.impact_type = initial(copy_projectile.impact_type)
 	return P
 
-/obj/item/gun/energy/chameleon/emp_act(severity)
+/obj/item/gun/energy/chameleon/emp_act_legacy(severity)
 	name = "desert eagle"
 	desc = "It's a desert eagle."
 	icon_state = "deagle"

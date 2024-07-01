@@ -136,7 +136,7 @@
 			. += SPAN_NOTICE("Current consciousness seed: \"[ask_role]\"")
 		. += SPAN_BOLDNOTICE("Alt-click to set a consciousness seed, specifying what [src] will be used for. This can help generate a personality interested in that role.")
 
-/obj/item/mmi/digital/posibrain/emp_act(severity)
+/obj/item/mmi/digital/posibrain/emp_act_legacy(severity)
 	if(!src.brainmob)
 		return
 	else

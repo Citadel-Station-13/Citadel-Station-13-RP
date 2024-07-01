@@ -248,9 +248,6 @@
 	if (heat > 0)
 		heat = max(0, heat - heat_reduction)
 
-/obj/machinery/shipsensors/legacy_ex_act()
-	return
-
 /obj/machinery/shipsensors/power_change()
 	. = ..()
 	if(use_power && !powered())
@@ -260,7 +257,7 @@
 	range = nrange
 	change_power_consumption(1500 * (range**2), USE_POWER_IDLE) //Exponential increase, also affects speed of overheating
 
-/obj/machinery/shipsensors/emp_act(severity)
+/obj/machinery/shipsensors/emp_act_legacy(severity)
 	if(!use_power)
 		return
 	take_damage_legacy(20/severity)

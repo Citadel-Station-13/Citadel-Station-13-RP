@@ -1560,9 +1560,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new newcart(src)
 
 // Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
-/obj/item/pda/emp_act(severity)
+/obj/item/pda/emp_act_legacy(severity)
 	for(var/atom/A in src)
-		A.emp_act(severity)
+		A.emp_act_legacy(severity)
 
 /obj/item/pda/proc/analyze_air()
 	var/list/results = list()

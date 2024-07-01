@@ -117,7 +117,7 @@
 		mate.visible_message("<span class='critical'>\The [mate] collapses into itself!</span>")
 		mate.mate = null
 		mate = null
-		explosion(T,1,3,7)
+		explosion_shockwave(src, /datum/explosion_preset/telecube_implosion)
 
 	..()
 

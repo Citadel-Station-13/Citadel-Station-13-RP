@@ -64,11 +64,6 @@
 			bound_overlay.setDir(dir)
 	return TRUE
 
-// No blowing up abstract objects.
-/atom/movable/openspace/ex_act(ex_sev)
-	SHOULD_CALL_PARENT(FALSE)
-	return
-
 /atom/movable/openspace/singularity_act()
 	return
 

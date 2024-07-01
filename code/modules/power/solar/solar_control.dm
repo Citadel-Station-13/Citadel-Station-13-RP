@@ -273,25 +273,9 @@
 	..()
 	update_icon()
 
-
 /obj/machinery/power/solar_control/proc/broken()
 	machine_stat |= BROKEN
 	update_icon()
-
-
-/obj/machinery/power/solar_control/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			//SN src = null
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				broken()
-		if(3.0)
-			if (prob(25))
-				broken()
-	return
 
 /proc/rate_control(var/S, var/V, var/C, var/Min=1, var/Max=5, var/Limit=null) //How not to name vars
 	var/href = "<A href='?src=\ref[S];rate control=1;[V]"

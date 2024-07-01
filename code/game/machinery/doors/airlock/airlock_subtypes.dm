@@ -140,7 +140,6 @@
 	open_sound_powered = 'sound/machines/door/hall1o.ogg'
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
 	hit_sound_brute = 'sound/effects/Glasshit.ogg'
-	explosion_resistance = 5
 	opacity = FALSE
 	glass = TRUE
 	tinted = FALSE
@@ -167,7 +166,6 @@
 /obj/machinery/door/airlock/vault
 	name = "Vault"
 	airlock_type = "Vault"
-	explosion_resistance = 20
 	opacity = 1
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/high_security //Until somebody makes better sprites.
@@ -192,7 +190,6 @@
 /obj/machinery/door/airlock/hatch
 	name = "Airtight Hatch"
 	airlock_type = "Hatch"
-	explosion_resistance = 20
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/hatch
 	req_one_access = list(ACCESS_ENGINEERING_MAINT)
@@ -214,7 +211,6 @@
 /obj/machinery/door/airlock/maintenance_hatch
 	name = "Maintenance Hatch"
 	airlock_type = "Hatch"
-	explosion_resistance = 20
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/hatch/maint
 	req_one_access = list(ACCESS_ENGINEERING_MAINT)
@@ -237,7 +233,6 @@
 	name = "Command Airlock"
 	opacity = FALSE
 	glass = TRUE
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/command
 	glass = 1
@@ -251,7 +246,6 @@
 
 /obj/machinery/door/airlock/glass/engineering
 	name = "Engineering Airlock"
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/engi
 	glass = 1
@@ -264,7 +258,6 @@
 
 /obj/machinery/door/airlock/glass/engineeringatmos
 	name = "Atmospherics Airlock"
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/engi_atmos
 	glass = 1
@@ -277,7 +270,6 @@
 
 /obj/machinery/door/airlock/glass/security
 	name = "Security Airlock"
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/security
 	glass = 1
@@ -289,7 +281,6 @@
 
 /obj/machinery/door/airlock/glass/medical
 	name = "Medical Airlock"
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/medical
 	glass = 1
@@ -328,7 +319,6 @@
 
 /obj/machinery/door/airlock/glass/research
 	name = "Research Airlock"
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/research
 	glass = 1
@@ -341,7 +331,6 @@
 
 /obj/machinery/door/airlock/glass/mining
 	name = "Mining Airlock"
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/mining
 	glass = 1
@@ -354,7 +343,6 @@
 
 /obj/machinery/door/airlock/glass/atmos
 	name = "Atmospherics Airlock"
-	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/atmos
 	glass = 1
@@ -433,7 +421,6 @@
 	airlock_type = "Secure"
 	icon = 'icons/obj/doors/secure/door.dmi'
 	fill_file = 'icons/obj/doors/secure/fill_steel.dmi'
-	explosion_resistance = 20
 	secured_wires = 1
 	assembly_type = /obj/structure/door_assembly/high_security
 	req_one_access = list(ACCESS_COMMAND_VAULT)
@@ -443,7 +430,6 @@
 /obj/machinery/door/airlock/voidcraft
 	name = "voidcraft hatch"
 	desc = "It's an extra resilient airlock intended for spacefaring vessels."
-	explosion_resistance = 20
 	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/voidcraft
@@ -484,7 +470,6 @@
 	sparks_damaged_file = 'icons/obj/doors/alien/sparks_damaged.dmi'
 	sparks_broken_file = 'icons/obj/doors/alien/sparks_broken.dmi'
 	welded_file = 'icons/obj/doors/alien/welded.dmi'
-	explosion_resistance = 20
 	secured_wires = TRUE
 	hackProof = TRUE
 	assembly_type = /obj/structure/door_assembly/door_assembly_alien

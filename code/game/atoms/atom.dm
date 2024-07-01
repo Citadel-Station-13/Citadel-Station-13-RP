@@ -12,6 +12,10 @@
 	/// Atom flags.
 	var/atom_flags = NONE
 
+	//* Damage *//
+	/// our damage classifier
+	var/damage_classifier = DAMAGE_CLASSIFIER_DEFAULT
+
 	//? Interaction
 	/// Intearaction flags.
 	var/interaction_flags_atom = NONE

@@ -1,10 +1,13 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
 /**
  * subsystem for ticking automata datums
  */
 SUBSYSTEM_DEF(automata)
 	name = "Automata"
-	wait = 1
-	subsystem_flags = SS_TICKER
+	wait = 0 // :trol:
+	priority = FIRE_PRIORITY_AUTOMATA
 
 	/// all automata in world
 	var/static/list/datum/automata/automatons = list()
@@ -18,4 +21,4 @@ SUBSYSTEM_DEF(automata)
 			continue
 		A.tick()
 		if(MC_TICK_CHECK)
-			return
+			break

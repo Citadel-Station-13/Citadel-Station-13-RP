@@ -230,23 +230,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			ispowered = FALSE
 			update_icon()
 
-/obj/machinery/newscaster/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			isbroken=1
-			if(prob(50))
-				qdel(src)
-			else
-				update_icon() //can't place it above the return and outside the if-else. or we might get runtimes of null.update_icon() if(prob(50)) goes in.
-			return
-		else
-			if(prob(50))
-				isbroken=1
-			update_icon()
-
 /obj/machinery/newscaster/attack_ai(mob/user)
 	return attack_hand(user)
 

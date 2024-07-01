@@ -38,7 +38,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	integrity = 300
 	integrity_max = 300
 
-	explosion_resistance = 10
 	autoclose = 1
 	normalspeed = 1
 
@@ -1158,7 +1157,7 @@ About the new airlock wires panel:
 	drop_airlock_assembly(where)
 	drop_airlock_electronics(where, (atom_flags & ATOM_BROKEN) || (method != ATOM_DECONSTRUCT_DISASSEMBLED))
 
-/obj/machinery/door/airlock/emp_act(var/severity)
+/obj/machinery/door/airlock/emp_act_legacy(var/severity)
 	if(prob(40/severity))
 		var/duration = world.time + SecondsToTicks(30 / severity)
 		if(duration > electrified_until)

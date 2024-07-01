@@ -100,7 +100,7 @@
 	if(..())
 		update_icon()
 
-/obj/item/gun/energy/emp_act(severity)
+/obj/item/gun/energy/emp_act_legacy(severity)
 	..()
 	update_icon()
 

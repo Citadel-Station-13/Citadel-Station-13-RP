@@ -103,7 +103,7 @@
 			return 1
 
 		//Handling EMP effect in the Life(), it's made VERY simply, and has some additional effects handled elsewhere
-		if(emp_damage)			//This is pretty much a damage type only used by MMIs, dished out by the emp_act
+		if(emp_damage)			//This is pretty much a damage type only used by MMIs, dished out by the emp_act_legacy
 			if(!(container && istype(container, /obj/item/mmi)))
 				emp_damage = 0
 			else

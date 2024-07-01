@@ -182,7 +182,7 @@
 	deltimer(recharge_timerid)
 	recharge_timerid = addtimer(CALLBACK(src, PROC_REF(reload)), recharge_time * carried, TIMER_STOPPABLE)
 
-/obj/item/gun/energy/kinetic_accelerator/emp_act(severity)
+/obj/item/gun/energy/kinetic_accelerator/emp_act_legacy(severity)
 	return
 
 /obj/item/gun/energy/kinetic_accelerator/proc/reload()

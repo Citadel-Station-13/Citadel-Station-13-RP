@@ -83,7 +83,7 @@
 	return
 
 
-/obj/machinery/am_shielding/emp_act()//Immune due to not really much in the way of electronics.
+/obj/machinery/am_shielding/emp_act_legacy()//Immune due to not really much in the way of electronics.
 	return 0
 
 

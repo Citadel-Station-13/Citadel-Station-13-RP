@@ -189,6 +189,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_AI_HOLDERS       150
 #define FIRE_PRIORITY_NANO             150
 #define FIRE_PRIORITY_AI               200
+#define FIRE_PRIORITY_AUTOMATA         200
 #define FIRE_PRIORITY_TGUI             200
 #define FIRE_PRIORITY_PROJECTILES      200
 #define FIRE_PRIORITY_THROWING         200

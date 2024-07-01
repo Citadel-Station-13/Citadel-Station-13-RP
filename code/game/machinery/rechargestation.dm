@@ -146,12 +146,12 @@
 	go_out()
 	return
 
-/obj/machinery/recharge_station/emp_act(severity)
+/obj/machinery/recharge_station/emp_act_legacy(severity)
 	if(occupant)
-		occupant.emp_act(severity)
+		occupant.emp_act_legacy(severity)
 		go_out()
 	if(cell)
-		cell.emp_act(severity)
+		cell.emp_act_legacy(severity)
 	..(severity)
 
 /obj/machinery/recharge_station/attackby(obj/item/O, mob/user)

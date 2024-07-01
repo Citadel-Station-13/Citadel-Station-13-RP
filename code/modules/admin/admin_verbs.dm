@@ -647,6 +647,13 @@ var/list/admin_verbs_event_manager = list(
 		if("Big Bomb")
 			explosion(epicenter, 3, 5, 7, 5)
 		if("Custom Bomb")
+			#warn impl
+			var/power = input("Power", "Drop Bomb", EXPLOSION_POWER_APPROXIMATE_HEAVY) as num|null
+			var/falloff_exp = input("Falloff (Exponential)", "Drop Bomb", EXPLOSION_FALLOFF_BASE_EXPONENT) as num|null
+			if(falloff_exp > 0.97)
+				var/are_you_sure = alert("You have set an exponential falloff of [falloff_exp] >= 0.97; Are you absolutely sure about this?", "This is not a good idea.", "No", "Yes")
+				if(are_you_sure != "Yes")
+					return
 			var/devastation_range = input("Devastation range (in tiles):") as num
 			var/heavy_impact_range = input("Heavy impact range (in tiles):") as num
 			var/light_impact_range = input("Light impact range (in tiles):") as num

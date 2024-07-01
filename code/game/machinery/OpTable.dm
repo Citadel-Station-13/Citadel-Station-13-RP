@@ -4,6 +4,7 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE // todo: remove when buildable
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/operating_table
@@ -22,24 +23,6 @@
 		if(computer)
 			computer.table = src
 			break
-
-//	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
-//		process()
-
-/obj/machinery/optable/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			//SN src = null
-			qdel(src)
-			return
-		if(2.0)
-			if(prob(50))
-				//SN src = null
-				qdel(src)
-				return
-		if(3.0)
-			if(prob(25))
-				density = 0
 
 /obj/machinery/optable/attack_hand(mob/user, list/params)
 	if(MUTATION_HULK in usr.mutations)

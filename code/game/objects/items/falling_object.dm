@@ -44,6 +44,3 @@
 
 /obj/effect/falling_effect/singularity_pull()
 	return
-
-/obj/effect/falling_effect/legacy_ex_act()
-	return

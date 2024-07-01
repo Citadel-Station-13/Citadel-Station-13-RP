@@ -81,7 +81,7 @@
 /obj/machinery/pda_multicaster/process(delta_time)
 	update_power()
 
-/obj/machinery/pda_multicaster/emp_act(severity)
+/obj/machinery/pda_multicaster/emp_act_legacy(severity)
 	if(!(machine_stat & EMPED))
 		machine_stat |= EMPED
 		var/duration = (300 * 10)/severity

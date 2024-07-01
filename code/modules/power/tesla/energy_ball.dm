@@ -29,8 +29,9 @@
 	if(!is_miniball)
 		set_light(10, 7, "#EEEEFF")
 
-/obj/singularity/energy_ball/legacy_ex_act(severity, target)
-	return
+/obj/singularity/energy_ball/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	effective_damage_multiplier = 0
+	return ..()
 
 /obj/singularity/energy_ball/Destroy()
 	if(orbiting && istype(orbiting.parent, /obj/singularity/energy_ball))
@@ -294,7 +295,7 @@
 		if(issilicon(closest_mob))
 			var/mob/living/silicon/S = closest_mob
 			if(stun_mobs)
-				S.emp_act(3 /*EMP_LIGHT*/)
+				S.emp_act_legacy(3 /*EMP_LIGHT*/)
 			tesla_zap(closest_mob, 7, power / 1.5, explosive, stun_mobs) // metallic folks bounce it further
 		else
 			tesla_zap(closest_mob, 5, power / 1.5, explosive, stun_mobs)

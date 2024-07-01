@@ -112,7 +112,7 @@
 			else
 				src.bodytemp.icon_state = "temp-2"
 
-/mob/living/silicon/emp_act(severity)
+/mob/living/silicon/emp_act_legacy(severity)
 	switch(severity)
 		if(1)
 			src.take_random_targeted_damage(brute = 0, burn = 20, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")

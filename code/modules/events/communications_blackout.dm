@@ -32,18 +32,18 @@
 /datum/event/communications_blackout/start()
 	if(!length(affecting_z))
 		for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
-			T.emp_act(1)
+			T.emp_act_legacy(1)
 		for(var/obj/machinery/exonet_node/N in GLOB.machines)
-			N.emp_act(1)
+			N.emp_act_legacy(1)
 	else
 		for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 			if(!(T.z in affecting_z))
 				continue
-			T.emp_act(1)
+			T.emp_act_legacy(1)
 		for(var/obj/machinery/exonet_node/N in GLOB.machines)
 			if(!(N.z in affecting_z))
 				continue
-			N.emp_act(1)
+			N.emp_act_legacy(1)
 
 /datum/event/communications_blackout/overmap/announce()
 	command_announcement.Announce("Ionospheric anomalies detected. Communications failing!", new_sound = sound('sound/misc/interference.ogg', volume=25))

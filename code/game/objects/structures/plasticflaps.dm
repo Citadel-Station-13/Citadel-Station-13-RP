@@ -79,17 +79,6 @@
 
 	return ..()
 
-/obj/structure/plasticflaps/legacy_ex_act(severity)
-	switch(severity)
-		if (1)
-			qdel(src)
-		if (2)
-			if (prob(50))
-				qdel(src)
-		if (3)
-			if (prob(5))
-				qdel(src)
-
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps. Have extra safety installed, preventing passage of living beings."

@@ -171,7 +171,7 @@
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
 
-/obj/item/hardsuit/ert/para/emp_act(severity)
+/obj/item/hardsuit/ert/para/emp_act_legacy(severity)
 	if(emp_proof)
 		emp_protection = 75
 	else

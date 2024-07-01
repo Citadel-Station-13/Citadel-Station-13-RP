@@ -115,20 +115,6 @@ var/global/list/stool_cache = list() //haha stool
 		T.apply_damage(20)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/stool/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				qdel(src)
-				return
-		if(3.0)
-			if (prob(5))
-				qdel(src)
-				return
-
 /obj/item/stool/proc/dismantle()
 	if(material_base)
 		material_base.place_sheet(get_turf(src))

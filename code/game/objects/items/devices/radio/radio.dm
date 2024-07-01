@@ -637,7 +637,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		updateDialog()
 		return
 
-/obj/item/radio/emp_act(severity)
+/obj/item/radio/emp_act_legacy(severity)
 	broadcasting = FALSE
 	listening = FALSE
 	for (var/ch_name in channels)

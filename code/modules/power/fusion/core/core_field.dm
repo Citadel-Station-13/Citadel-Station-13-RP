@@ -338,7 +338,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 			AM.visible_message("<span class='danger'>The field buckles visibly around \the [AM]!</span>")
 			tick_instability += rand(30,50)
-			AM.emp_act(empsev)
+			AM.emp_act_legacy(empsev)
 
 /obj/effect/fusion_em_field/proc/change_size(var/newsize = 1)
 	var/changed = 0

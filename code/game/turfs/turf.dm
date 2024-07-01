@@ -41,6 +41,12 @@
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
 
+	//* Defense *//
+	/// bleed passing explosions by this much power additively.
+	var/explosion_block_lin = 0
+	/// bleed passing explosions by this much power multiplicatively
+	var/explosion_block_exp = 1
+
 	//* Flags
 	/// turf flags
 	var/turf_flags = NONE
@@ -237,9 +243,6 @@
 /// We do it because moving signals over was needlessly expensive, and bloated a very commonly used bit of code
 /turf/clear_signal_refs()
 	return
-
-/turf/legacy_ex_act(severity)
-	return FALSE
 
 /turf/proc/is_space()
 	return FALSE
@@ -653,6 +656,16 @@
  */
 /turf/proc/hides_underfloor_objects()
 	return !is_plating()
+
+/**
+ * returns if we should cover underfloor objects from things like explosions
+ *
+ * * override this on child types for speed!
+ *
+ * @return a truthy value
+ */
+/turf/proc/covers_underfloor_objects()
+	return hides_underfloor_objects()
 
 /**
  * tell all objects on us to reconsider their underfloor status

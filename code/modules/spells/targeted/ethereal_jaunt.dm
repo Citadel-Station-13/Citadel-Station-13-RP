@@ -102,8 +102,3 @@
 		to_chat(user, "<span class='warning'>Some strange aura is blocking the way!</span>")
 	src.canmove = 0
 	spawn(2) src.canmove = 1
-
-/obj/effect/dummy/spell_jaunt/legacy_ex_act(blah)
-	return
-/obj/effect/dummy/spell_jaunt/bullet_act(blah)
-	return

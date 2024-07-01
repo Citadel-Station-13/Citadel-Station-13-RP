@@ -128,7 +128,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 /obj/machinery/fire_alarm/bullet_act()
 	return alarm()
 
-/obj/machinery/fire_alarm/emp_act(severity)
+/obj/machinery/fire_alarm/emp_act_legacy(severity)
 	if(prob(50 / severity))
 		alarm(rand(30 / severity, 60 / severity))
 	..()

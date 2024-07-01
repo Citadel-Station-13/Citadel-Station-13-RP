@@ -123,7 +123,7 @@
 	if(new_color)
 		add_atom_colour(new_color, FIXED_COLOUR_PRIORITY)
 
-/obj/item/storage/wallet/poly/emp_act()
+/obj/item/storage/wallet/poly/emp_act_legacy()
 	var/original_state = icon_state
 	icon_state = "wallet-emp"
 	update_icon()

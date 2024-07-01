@@ -196,7 +196,7 @@
 				icon_state = icon_state_charged
 				update_use_power(USE_POWER_IDLE)
 
-/obj/machinery/recharger/emp_act(severity)
+/obj/machinery/recharger/emp_act_legacy(severity)
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		..(severity)
 		return
@@ -204,7 +204,7 @@
 	if(charging)
 		var/obj/item/cell/C = charging.get_cell()
 		if(istype(C))
-			C.emp_act(severity)
+			C.emp_act_legacy(severity)
 
 	..(severity)
 

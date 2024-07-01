@@ -2,52 +2,60 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 //! Global balancing numbers; everything should derive off of these so we can adjust everything at once.
-/// global default multiplier for falloff factor
-#define EXPLOSION_FALLOFF_FACTOR 1
-/// global default multiplier for bypass factor
-#define EXPLOSION_BYPASS_FACTOR 1
-/// global default "nominal" maxcap power; being hit by this is what causes the most severe effects like turfs completely peeling away, people gibbing, etc.
-#define EXPLOSION_CONSTANT_DEVASTATING 1000
-/// global default "nominal" heavy power; being hit by this is what causes things like turfs exploding, people taking immediately lethal damage/devastating damage, etc.
-#define EXPLOSION_CONSTANT_SEVERE (EXPLOSION_CONSTANT_DEVASTATING * 0.5)
-/// global default "nominal" minor power; being hit by this is what causes minor wounds
-#define EXPLOSION_CONSTANT_MINOR  (EXPLOSION_CONSTANT_DEVASTATING * 0.25)
+/// global default multiplier for falloff exponential
+#define EXPLOSION_FALLOFF_BASE_EXPONENT 0.97
+/// global default subtractor for falloff linear
+#define EXPLOSION_FALLOFF_BASE_LINEAR 10
+
+/// arbitrary value that's semi-equivalent of being in the middle of a 5/10/20 on old explosions
+#define EXPLOSION_POWER_MAXCAP_EQUIVALENT 1000
+/// arbitrary value that's semi-equivalent of being hit with sev 1 in old explosions
+#define EXPLOSION_POWER_APPROXIMATE_DEVASTATE 1000
+/// arbitrary value that's semi-equivalent of being hit with a severity 2 explosion on old explosions
+#define EXPLOSION_POWER_APPROXIMATE_HEAVY 500
+/// arbitrary value that's semi-equivalent of being hit with a sev 3 in old explosions
+#define EXPLOSION_POWER_APPROXIMATE_LIGHT 250
+
 /// below this explosions are considered so trivial we just drop the wave
-#define EXPLOSION_CONSTANT_DROPPED 50
+#define EXPLOSION_POWER_DROPPED 50
 
-//? Rest of defines will come when we fully implement new explosions.
+//* balancing slop below *//
 
-//! legacy shims
-#define LEGACY_EXPLOSION_DEVASTATE_POWER EXPLOSION_CONSTANT_DEVASTATING
-#define LEGACY_EXPLOSION_SEVERE_POWER EXPLOSION_CONSTANT_SEVERE
-#define LEGACY_EXPLOSION_MINOR_POWER EXPLOSION_CONSTANT_MINOR
+/// overall damage
+#define EXPLOSION_POWER_TO_OBJ_DAMAGE(POWER, VARIANCE)
+/// overall damage
+#define EXPLOSION_POWER_TO_MOB_DAMAGE(POWER, VARIANCE)
+/// modifier to how likely it is that a limb gets obliterated
+#define EXPLOSION_POWER_TO_MOB_DISMEMBER_MULTIPLIER(POWER, VARIANCE)
 
-#define LEGACY_EXPLOSION_DEVASTATE_INTEGRITY 1000
-#define LEGACY_EXPLOSION_SEVERE_INTEGRITY 180
-#define LEGACY_EXPLOSION_MINOR_INTEGRITY 50
-#define LEGACY_EXPLOSION_INTEGRITY_MULT (0.01 * rand(50, 200))
+// modified two-threshold inverse-quadratic
+#define EXPLOSION_POWER_MOB_GIB_ALWAYS 850
+#define EXPLOSION_POWER_MOB_GIB_LD50 750
+#define EXPLOSION_POWER_MOB_GIB_MINIMUM 650
+#define EXPLOSION_POWER_TO_MOB_GIB_CHANCE(POWER)
 
-// why the extra numbers? so if someone does weird math we don't out of bounds
-GLOBAL_REAL(_legacy_expowers, /list) = list(
-	LEGACY_EXPLOSION_DEVASTATE_POWER,
-	LEGACY_EXPLOSION_SEVERE_POWER,
-	LEGACY_EXPLOSION_MINOR_POWER,
-	0,
-	0,
-	0
-)
+//* presets *//
 
-// ditto
-GLOBAL_REAL(_legacy_ex_atom_damage, /list) = list(
-	LEGACY_EXPLOSION_DEVASTATE_INTEGRITY,
-	LEGACY_EXPLOSION_SEVERE_INTEGRITY,
-	LEGACY_EXPLOSION_MINOR_INTEGRITY,
-	0,
-	0,
-	0
-)
+/**
+ * why is this in this file?
+ * because honestly, for such a horrifically mathy system,
+ * having all the balancing be in one file for easy referencing and adaptation
+ * instead of requiring codebase-wise audits of function calls is good.
+ */
+/datum/explosion_preset
+	var/power = 0
+	var/falloff_lin = 0
+	var/falloff_exp = 0
+	var/falloff_exp_delay_cycles = 0
 
-#define LEGACY_EXPLOSION_ATOM_DAMAGE(P) (global._legacy_ex_atom_damage[P] * LEGACY_EXPLOSION_INTEGRITY_MULT)
+/datum/explosion_preset/telecube_implosion
+	power = LERP(EXPLOSION_POWER_APPROXIMATE_HEAVY, EXPLOSION_POWER_APPROXIMATE_DEVASTATE, 0.5)
+	falloff_exp_delay_cycles = 2
+	falloff_exp = 0.88
+	falloff_lin = EXPLOSION_POWER_APPROXIMATE_DEVASTATE / 12
 
-// this works out becuase epxlosions are 1-3 in legacy, so we can just use it as list indices
-#define LEGACY_EX_ACT(ATOM, POWER, TARGET) ATOM.legacy_ex_act(POWER, TARGET); ATOM.ex_act(_legacy_expowers[POWER]);
+#warn level 1 to 5 standard ones
+
+#warn 3 item detonation's
+
+#warn 3 standard grenade levels

@@ -6,6 +6,7 @@ var/bomb_set
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "nuclearbomb0"
 	density = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/deployable = FALSE
 	var/extended = FALSE
 	var/lighthack = FALSE
@@ -356,11 +357,6 @@ var/bomb_set
 		usr << browse(null, "window=nuclearbomb")
 		return
 	return
-
-
-/obj/machinery/nuclearbomb/legacy_ex_act(severity)
-	return
-
 
 #define NUKERANGE 80
 /obj/machinery/nuclearbomb/proc/explode()
