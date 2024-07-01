@@ -110,9 +110,9 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			to_chat(src, "<span class='danger'>Your eyes burn!</span>")
 		E.damage += 2.5
 		eye_blurry = min(eye_blurry+1.5,50)
-		if (prob(max(0,E.damage - 15) + 1) &&!eye_blind)
+		if (prob(max(0,E.damage - 15) + 1) && !has_status_effect(/datum/status_effect/sight/blindness))
 			to_chat(src, "<span class='danger'>You are blinded!</span>")
-			Blind(20)
+			apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 
 /mob/living/carbon/human/proc/pl_head_protected()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/phoronguard_only, phoronguard_only)

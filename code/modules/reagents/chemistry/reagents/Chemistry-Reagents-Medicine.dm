@@ -653,7 +653,6 @@
 
 /datum/reagent/imidazoline/affect_blood(mob/living/carbon/M, alien, removed)
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
-	M.AdjustBlinded(-5)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
@@ -663,7 +662,7 @@
 			if(E.damage > 0)
 				E.heal_damage_i(5 * removed, can_revive = TRUE)
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 /datum/reagent/peridaxon
 	name = "Peridaxon"
@@ -686,7 +685,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -711,7 +710,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))

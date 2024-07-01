@@ -33,6 +33,8 @@
 		/obj/item/clothing,
 		/obj/item/storage/backpack,
 		/obj/item/storage/belt,
+		/obj/item/radio/headset,
+		/obj/item/hardsuit,
 		/obj/item/toy
 	)
 

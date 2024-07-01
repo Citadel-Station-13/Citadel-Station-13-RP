@@ -115,6 +115,7 @@
 		O_FLOAT        = /obj/item/organ/internal/adherent/float,
 		O_JETS         = /obj/item/organ/internal/adherent/jets,
 	)
+	vision_organ = O_EYES
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/snake
 

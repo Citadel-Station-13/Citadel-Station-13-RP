@@ -106,19 +106,21 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_CHARACTERS      140
 #define INIT_ORDER_SOUNDS          130
 #define INIT_ORDER_GARBAGE         120
-#define INIT_ORDER_VIS             80
-#define INIT_ORDER_SERVER_MAINT    65
-#define INIT_ORDER_INSTRUMENTS     50
-#define INIT_ORDER_MEDIA_TRACKS    38
-#define INIT_ORDER_CHEMISTRY       35
-#define INIT_ORDER_MATERIALS       34
-#define INIT_ORDER_PHOTOGRAPHY     27
-#define INIT_ORDER_MAPPING         25
-#define INIT_ORDER_LEGACY_ATC      24
-#define INIT_ORDER_LEGACY_LORE     23
-#define INIT_ORDER_LOBBY           22
-#define INIT_ORDER_PLANTS          19
-#define INIT_ORDER_ALARMS          18
+#define INIT_ORDER_VIS             90
+#define INIT_ORDER_SERVER_MAINT    75
+#define INIT_ORDER_INSTRUMENTS     70
+#define INIT_ORDER_MEDIA_TRACKS    65
+#define INIT_ORDER_CHEMISTRY       60
+#define INIT_ORDER_MATERIALS       55
+#define INIT_ORDER_PHOTOGRAPHY     50
+#define INIT_ORDER_MAPPING         45
+#define INIT_ORDER_SPATIAL_GRIDS   43 // must be after SSmapping so we know world.maxx and world.maxy
+#define INIT_ORDER_GAME_WORLD      40
+#define INIT_ORDER_LEGACY_ATC      37
+#define INIT_ORDER_LEGACY_LORE     35
+#define INIT_ORDER_LOBBY           30
+#define INIT_ORDER_PLANTS          25
+#define INIT_ORDER_ALARMS          20
 #define INIT_ORDER_RESEARCH        17
 #define INIT_ORDER_ATOMS           15
 #define INIT_ORDER_MACHINES        10
@@ -126,9 +128,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_DEFAULT         0
 #define INIT_ORDER_AIR            -1
 #define INIT_ORDER_PLANETS        -2
-#define INIT_ORDER_PERSISTENCE    -3
-#define INIT_ORDER_MISC_LATE      -5
-#define INIT_ORDER_HOLOMAPS       -5
+#define INIT_ORDER_PERSISTENCE        -3
+#define INIT_ORDER_AMBIENT_OCCLUSION  -5
+#define INIT_ORDER_HOLOMAPS           -5
 #define INIT_ORDER_NIGHTSHIFT     -5
 #define INIT_ORDER_ICON_SMOOTHING -6
 #define INIT_ORDER_OVERLAY        -7
@@ -141,7 +143,6 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_XENOARCH       -50
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
-#define INIT_ORDER_PATH           -98
 #define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
 
 
@@ -183,6 +184,9 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_INSTRUMENTS      90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
+#define FIRE_PRIORITY_AI_MOVEMENT      150
+#define FIRE_PRIORITY_AI_SCHEDULING    150
+#define FIRE_PRIORITY_AI_HOLDERS       150
 #define FIRE_PRIORITY_NANO             150
 #define FIRE_PRIORITY_AI               200
 #define FIRE_PRIORITY_TGUI             200

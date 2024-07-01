@@ -133,6 +133,12 @@
 		/obj/item/toy/plushie/doll = 3,
 		/obj/item/storage/daki = 10,
 		/obj/item/toy/gnome = 4,
+		/obj/item/toy/axi = 3,
+		/obj/item/toy/snek = 3,
+		/obj/item/toy/pan = 3,
+		/obj/item/toy/bun = 3,
+		/obj/item/toy/demon = 3,
+		/obj/item/toy/jay = 3
 	)
 	premium = list(
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
@@ -176,6 +182,12 @@
 		/obj/item/toy/plushie/doll = 50,
 		/obj/item/storage/daki = 100,
 		/obj/item/toy/gnome = 20,
+		/obj/item/toy/axi = 30,
+		/obj/item/toy/snek = 30,
+		/obj/item/toy/pan = 30,
+		/obj/item/toy/bun = 25,
+		/obj/item/toy/demon = 15,
+		/obj/item/toy/jay = 10
 	)
 
 //Custom vendors
