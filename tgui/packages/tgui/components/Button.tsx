@@ -1,4 +1,7 @@
 /**
+ * todo: combine flashing and selected into ButtonStatus or something, god.
+ * todo: combine circular/elipssis/etc into a style, god. this is awful.
+ *
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
@@ -11,13 +14,14 @@ import { Component, createRef } from 'inferno';
 import { createLogger } from '../logging';
 import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
+import { markClickEventNoSwitchTab } from './Tabs';
 import { Tooltip } from './Tooltip';
 
 const logger = createLogger('Button');
 
 export type ButtonProps = BoxProps & {
   readonly fluid?: BooleanLike;
-  readonly icon?: string | BooleanLike;
+  readonly icon?: string;
   readonly iconRotation?: number;
   readonly iconSpin?: BooleanLike;
   readonly iconColor?: any;
@@ -33,6 +37,7 @@ export type ButtonProps = BoxProps & {
   readonly content?: any;
   readonly onClick?: any;
   readonly verticalAlignContent?: 'top' | 'middle' | 'bottom';
+  readonly flashing?: BooleanLike;
 }
 
 export const Button = (props: ButtonProps) => {
@@ -69,6 +74,7 @@ export const Button = (props: ButtonProps) => {
       + `https://infernojs.org/docs/guides/event-handling`);
   }
   rest.onClick = e => {
+    markClickEventNoSwitchTab(e);
     if (!disabled && onClick) {
       onClick(e);
     }
@@ -77,13 +83,13 @@ export const Button = (props: ButtonProps) => {
   if (Byond.IS_LTE_IE8) {
     rest.unselectable = true;
   }
+  let buttonColor = props.color || 'default';
   let buttonContent = (
     <div
       className={classes([
         'Button',
         fluid && 'Button--fluid',
         disabled && 'Button--disabled',
-        selected && 'Button--selected',
         hasContent && 'Button--hasContent',
         ellipsis && 'Button--ellipsis',
         circular && 'Button--circular',
@@ -92,9 +98,9 @@ export const Button = (props: ButtonProps) => {
         verticalAlignContent && "Button--flex",
         (verticalAlignContent && fluid) && "Button--flex--fluid",
         verticalAlignContent && 'Button--verticalAlignContent--' + verticalAlignContent,
-        (color && typeof color === 'string')
-          ? 'Button--color--' + color
-          : 'Button--color--default',
+        (props.flashing? `Button--flash--${buttonColor}` : (`Button--color--${buttonColor}`)),
+        selected && !props.flashing && (buttonColor === 'default' || buttonColor === 'transparent')
+        && 'Button--selected',
         className,
         computeBoxClassName(rest),
       ])}
@@ -159,15 +165,25 @@ Button.defaultHooks = pureComponentHooks;
 
 interface ButtonCheckboxProps extends ButtonProps {
   readonly checked?: BooleanLike;
+  readonly checkedIcon?: string;
+  readonly uncheckedIcon?: string;
 }
 
 export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
-  const { checked, ...rest } = props;
+  const {
+    checked,
+    icon,
+    color,
+    selected = checked,
+    checkedIcon = 'check-square-o',
+    uncheckedIcon = 'square-o',
+    ...rest
+  } = props;
   return (
     <Button
       color="transparent"
       icon={checked ? 'check-square-o' : 'square-o'}
-      selected={checked}
+      selected={selected}
       {...rest} />
   );
 };
@@ -175,8 +191,9 @@ export const ButtonCheckbox = (props: ButtonCheckboxProps) => {
 Button.Checkbox = ButtonCheckbox;
 
 type ButtonConfirmProps = ButtonProps & {
-  readonly confirmContent?: string;
+  readonly confirmContent?: string | null;
   readonly confirmColor?: string;
+  readonly confirmIcon?: string;
 }
 
 type ButtonConfirmState = {
@@ -220,9 +237,10 @@ export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmSt
         content={this.state.clicked ? confirmContent : content}
         icon={this.state.clicked ? confirmIcon : icon}
         color={this.state.clicked ? confirmColor : color}
-        onClick={(e) => this.state.clicked
-          ? onClick?.(e)
-          : this.setClickedOnce(true)}
+        onClick={(e) => {
+          markClickEventNoSwitchTab(e);
+          this.state.clicked ? onClick?.(e) : this.setClickedOnce(true);
+        }}
         {...rest}
       />
     );
@@ -301,7 +319,7 @@ export class ButtonInput<T extends ButtonInputProps> extends Component<T, {}> {
           'Button--color--' + color,
         ])}
         {...rest}
-        onClick={() => this.setInInput(true)}>
+        onClick={(e) => { markClickEventNoSwitchTab(e); this.setInInput(true); }}>
         {icon && (
           <Icon name={icon} rotation={iconRotation} spin={iconSpin} />
         )}

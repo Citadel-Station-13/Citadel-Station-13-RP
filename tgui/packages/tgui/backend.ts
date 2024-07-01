@@ -488,7 +488,7 @@ export type ModuleBackend<TData extends ModuleData> = {
   data: TData;
   act: actFunctionType;
   backend: Backend<{}>;
-  // / module id if is currently embedded module, null otherwise
+  // module id if is currently embedded module, null otherwise
   moduleID: string | null;
 }
 

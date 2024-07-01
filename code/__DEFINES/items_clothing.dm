@@ -77,3 +77,45 @@
 #define FIRE_MAX_STACKS           25
 /// If the number of stacks goes above this firesuits won't protect you anymore. If not, you can walk around while on fire like a badass.
 #define FIRE_MAX_FIRESUIT_STACKS  20
+
+// todo: move all this somewhere else
+//* Cold / Heat Protection Defines                             *//
+//* These are weird because there's far more heat protection   *//
+//* tiers than cold, as fire is far more varied than freezing. *//
+
+/// tier max
+#define COLD_PROTECTION_VOIDSUIT (TCMB)
+
+/// tier 5
+#define COLD_PROTECTION_SHIELDED_CLOTHING (T0C - 200)
+/// tier 4
+#define COLD_PROTECTION_HEAVY_WINTER_CLOTHING (T0C - 125)
+/// tier 3
+#define COLD_PROTECTION_MEDIUM_WINTER_CLOTHING (T0C - 75)
+/// tier 2
+#define COLD_PROTECTION_LIGHT_WINTER_CLOTHING (T0C - 35)
+/// tier 1
+#define COLD_PROTECTION_MILDLY_THICK_CLOTHING (T0C - 10)
+
+#define COLD_PROTECTION_NONE (T20C)
+
+#define HEAT_PROTECTION_NONE (T20C)
+
+/// tier 1
+#define HEAT_PROTECTION_MILDLY_THICK_CLOTHING (T0C + 50)
+/// tier 2
+#define HEAT_PROTECTION_VERY_THICK_CLOTHING (T0C + 100)
+/// tier 3
+#define HEAT_PROTECTION_LIGHT_FIRESUIT (T0C + 500)
+/// tier 4
+#define HEAT_PROTECTION_NORMAL_VOIDSUIT (T0C + 1000)
+/// tier 4
+#define HEAT_PROTECTION_NORMAL_FIRESUIT (T0C + 1000)
+/// tier 5
+#define HEAT_PROTECTION_HEAVY_FIRESUIT (T0C + 1500)
+/// tier 6
+#define HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT (T0C + 5000)
+/// tier 7
+#define HEAT_PROTECTION_SHIELDED_VOIDSUIT (T0C + 10000)
+/// tier 8
+#define HEAT_PROTECTION_ATMOS_VOIDSUIT (T0C + 20000)

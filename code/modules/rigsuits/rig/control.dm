@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
 /obj/item/rig/proc/effective_control_flags(mob/M)
-	if(is_admin_interactive(M))
+	if(IsAdminGhost(M))
 		return RIG_CONTROL_FLAGS_ALL
 	// todo: rig control system
 	return M == wearer? RIG_CONTROL_FLAGS_WEARER : NONE

@@ -59,11 +59,11 @@ export const Flex = (props: FlexProps) => {
 Flex.defaultHooks = pureComponentHooks;
 
 export type FlexItemProps = BoxProps & {
-  grow?: number | CSSWideKeyword | undefined;
-  order?: number;
-  shrink?: number | CSSWideKeyword | undefined;
-  basis?: string | BooleanLike;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
+  readonly grow?: number | CSSWideKeyword | undefined;
+  readonly order?: number;
+  readonly shrink?: number | CSSWideKeyword | undefined;
+  readonly basis?: string | BooleanLike;
+  readonly align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | "auto" | undefined;
 };
 
 export const computeFlexItemClassName = (props: FlexItemProps) => {
@@ -101,7 +101,7 @@ export const computeFlexItemProps = (props: FlexItemProps) => {
   });
 };
 
-const FlexItem = props => {
+const FlexItem = (props: FlexItemProps) => {
   const { className, ...rest } = props;
   return (
     <div
