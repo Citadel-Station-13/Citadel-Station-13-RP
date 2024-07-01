@@ -1751,6 +1751,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "bgc" = (
@@ -4942,6 +4943,9 @@
 /area/hydroponics/garden)
 "dqd" = (
 /obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "dqg" = (
@@ -5190,7 +5194,9 @@
 /area/maintenance/security/starboard)
 "dvA" = (
 /obj/structure/table/woodentable,
-/obj/item/storage/box/glasses/meta,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "dvF" = (
@@ -16893,6 +16899,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/tram)
+"lEp" = (
+/obj/structure/table/woodentable,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/exploration/meeting)
 "lEq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -24139,7 +24152,9 @@
 /area/hallway/primary/aft)
 "qPr" = (
 /obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/catering/bar_soft,
+/obj/machinery/chemical_dispenser/catering/bar_soft{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "qPy" = (
@@ -29830,6 +29845,11 @@
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"uPd" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/box/glasses/meta,
+/turf/simulated/floor/carpet/purcarpet,
+/area/exploration/meeting)
 "uPx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -42115,7 +42135,7 @@ fjs
 jjf
 dtb
 cfh
-rYj
+lEp
 oCT
 rKA
 rKA
@@ -42502,7 +42522,7 @@ mLh
 eyp
 wQh
 xaF
-xaF
+uPd
 wZL
 hzU
 uvm

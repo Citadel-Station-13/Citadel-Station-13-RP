@@ -10420,6 +10420,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 8;
+	pixel_y = 2
+	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "gVI" = (
@@ -12874,7 +12878,6 @@
 /turf/simulated/floor/wood,
 /area/rift/surfacebase/outside/outside1)
 "iqK" = (
-/obj/machinery/vending/coffee,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -12885,6 +12888,8 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/item/reagent_containers/glass/cooler_bottle,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "iqL" = (
@@ -22538,12 +22543,22 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
-/obj/structure/reagent_dispensers/water_cooler/full,
-/obj/item/reagent_containers/glass/cooler_bottle,
 /obj/structure/extinguisher_cabinet{
 	dir = 4;
 	pixel_x = -30
 	},
+/obj/structure/table/standard,
+/obj/item/paper_bin{
+	pixel_x = -12
+	},
+/obj/item/pen{
+	pixel_x = -12
+	},
+/obj/item/storage/box/cups{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "ohd" = (
@@ -31307,19 +31322,8 @@
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
-/obj/item/paper_bin{
-	pixel_x = -12
-	},
-/obj/item/storage/box/cups{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/storage/box/donkpockets{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/pen{
-	pixel_x = -12
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
@@ -35719,7 +35723,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison/upper)
 "vMO" = (
-/obj/machinery/vending/coffee,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -35729,6 +35732,9 @@
 /obj/machinery/camera/network/cargo{
 	dir = 4
 	},
+/obj/structure/table/reinforced,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
+/obj/item/storage/box/glasses/meta,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "vNx" = (
