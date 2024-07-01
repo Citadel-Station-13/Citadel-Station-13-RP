@@ -311,7 +311,7 @@
 	var/bone_heal = 0	// Percent chance it will heal a broken bone. this does not mean 'make it not instantly re-break'.
 
 	var/mob/living/Target = null
-	var/datum/beam/MyBeam = null
+	var/datum/beam_legacy/MyBeam = null
 
 	equip_type = EQUIP_HULL
 
