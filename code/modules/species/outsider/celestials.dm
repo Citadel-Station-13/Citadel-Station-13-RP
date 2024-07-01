@@ -58,7 +58,8 @@
 
 	abilities = list(
 		/datum/ability/species/toggle_flight/auril,
-		/datum/ability/species/toggle_agility
+		/datum/ability/species/toggle_agility,
+		/datum/ability/species/soar
 	)
 
 /datum/species/auril/praesidus
@@ -82,6 +83,7 @@
 
 	abilities = list(
 		/datum/ability/species/toggle_flight/auril,
+		/datum/ability/species/soar/praesidus
 	)
 
 /datum/species/auril/incanus
@@ -103,6 +105,7 @@
 
 	abilities = list(
 		/datum/ability/species/toggle_flight/auril,
+		/datum/ability/species/soar/incanus
 	)
 
 /datum/species/dremachir
@@ -134,7 +137,7 @@
 	blood_color = "#27173D"
 	base_color  = "#580412"
 
-	vision_innate = /datum/vision/baseline/species_tier_1
+	vision_innate = /datum/vision/baseline/species_tier_2
 
 	//Demons glow in the dark.
 	has_glowing_eyes = TRUE
@@ -165,3 +168,20 @@
 	name = "Toggle Advanced Flight"
 	action_state = "flight_enhanced"
 	windup = 0
+
+/datum/ability/species/soar/praesidus
+	cooldown = 120 SECONDS
+	action_state = "soar_praesidus"
+	viewsize = 11
+	soar_duration = 20 SECONDS
+	fake_windup = 5 SECONDS
+	crashmean = 50
+
+/datum/ability/species/soar/incanus
+	cooldown = 20 SECONDS
+	windup = 0.5 SECONDS
+	action_state = "soar_incanus"
+	viewsize = 6
+	crashmean = 20
+	soar_duration = 5 SECONDS
+	fake_windup = 1 SECONDS
