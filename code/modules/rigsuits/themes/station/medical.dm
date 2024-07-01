@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /datum/rig_theme/station/medical
 	abstract_type = /datum/rig_theme/station/medical
@@ -50,7 +50,9 @@ AUTO_RIG_THEME(/station/medical/standard)
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TAJARAN, BODYTYPE_IPC);
 		},
 	)
-	#warn encumbrance
+	base_weight = 14 // a little heavy though
+	offline_encumbrance = 30
+	online_encumbrance = 15 // gigachad low encumbrance engineer rigs
 
 AUTO_RIG_THEME(/station/medical/advanced)
 /datum/rig_theme/station/medical/advanced
@@ -65,7 +67,7 @@ AUTO_RIG_THEME(/station/medical/advanced)
 	visible_name = "Rescue"
 	armor = /datum/armor/rigsuit/station/medical/advanced
 	siemens_coefficient = 0.7
-	#warn encumbrance
+	base_weight = 15
 
 /datum/armor/rigsuit/station/medical/advanced
 	melee = 0.35

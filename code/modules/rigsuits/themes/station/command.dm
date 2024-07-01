@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /datum/rig_theme/station/command
 	abstract_type = /datum/rig_theme/station/command
@@ -17,7 +17,9 @@ AUTO_RIG_THEME(/station/command/captain)
 	display_name = "director"
 	visible_name = "Director"
 	armor = /datum/armor/rigsuit/station/command/captain
-	#warn encumbrance
+	base_weight = 40 // heavy as hell
+	offline_encumbrance = 45 // heavy as hell
+	online_encumbrance = 25 // heavy as hell
 
 /datum/armor/rigsuit/station/command/captain
 	melee = 0.4
@@ -35,6 +37,6 @@ AUTO_RIG_THEME(/station/command/captain)
 	energy = 0.35
 	bomb = 0.45
 	bio = 1.0
-	rad = 0.35
+	rad = 0.65
 	fire = 0.75
 	acid = 1.0

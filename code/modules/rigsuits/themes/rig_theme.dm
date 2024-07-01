@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 GLOBAL_LIST_EMPTY(rig_theme_cache)
 
@@ -66,15 +66,11 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/boot_delay = 5 SECONDS
 	/// piece seal/unseal time
 	var/seal_delay = 3 SECONDS
-	/// base weight
-	#warn weight
-	var/offline_weight = 0
+	/// base weight of the suit
+	var/base_weight = 10 // very optimistic 10 kilograms for the suit itself before upgrades
 	/// base encumbrance
 	#warn encumbrance
 	var/offline_encumbrance = 0
-	/// base online weight
-	#warn weight
-	var/online_weight = 0
 	/// base online encumbrance
 	#warn encumbrance
 	var/online_encumbrance = 0
@@ -131,9 +127,8 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 /datum/rig_theme/proc/imprint_control_behavior(obj/item/rig/control_module)
 	control_module.siemens_coefficient = siemens_coefficient
 	control_module.offline_encumbrance = offline_encumbrance
-	control_module.offline_weight = offline_weight
 	control_module.online_encumbrance = online_encumbrance
-	control_module.online_weight = online_weight
+	control_module.base_weight = base_weight
 	control_module.boot_delay = boot_delay
 	control_module.seal_delay = seal_delay
 	control_module.theme_name = display_name || name

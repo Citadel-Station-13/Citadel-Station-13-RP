@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /**
  * # Rigsuits
@@ -38,14 +38,6 @@
 	//* Console
 	/// Our console
 	var/datum/rig_console/console
-
-	//* Control
-	#warn todo
-
-	//* Defense
-
-	//* Environmentals
-	#warn todo
 
 	//* Legacy - to be made into dynamic data once components/modules are done.
 	var/datum/armor/suit_armor
@@ -93,22 +85,17 @@
 	/// list of /datum/component/rig_piece's by its lookup_id
 	var/list/datum/component/rig_piece/piece_lookup
 
-	//* Power
-	#warn todo.
-
 	//* Stats - Base
 	/// startup/shutdown time
 	var/boot_delay
 	/// seal/unseal time
 	//  todo: maybe by-piece ones too..?
 	var/seal_delay
-	/// offline weight
-	var/offline_weight
+	/// base weight
+	var/base_weight
 	/// offline encumbrance
 	//  todo: maybe by-piece ones too..?
 	var/offline_encumbrance
-	/// online weight
-	var/online_weight
 	/// online encumbrance
 	//  todo: maybe by-piece ones too..?
 	var/online_encumbrance
@@ -221,7 +208,6 @@
 	for(var/id in piece_lookup)
 		var/datum/component/rig_piece/piece = piece_lookup[id]
 		remove_piece(piece)
-	#warn annihilate modules
 	z_head.reset_state_after_wipe()
 	z_chest.reset_state_after_wipe()
 	z_left_arm.reset_state_after_wipe()
