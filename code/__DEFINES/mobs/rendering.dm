@@ -75,8 +75,17 @@
 #define HUMAN_LAYER_DAMAGE (FLOAT_LAYER - 850)
 //! legacy - blood on skin
 #define HUMAN_LAYER_BLOOD (FLOAT_LAYER - 875)
-//! legacy - species skin
-#define HUMAN_LAYER_SKIN (FLOAT_LAYER - 900)
+
+//! legacy - genetics
+#define HUMAN_LAYER_MUTATIONS (FLOAT_LAYER - 1000)
+
+/// organs go in here, grouped by a single renderer overlay
+#define HUMAN_LAYER_BODY 950
+	#define HUMAN_BODYLAYER_FRONT -1
+	#define HUMAN_BODYLAYER_MIDDLE -2
+	#define HUMAN_BODYLAYER_BEHIND -3
+	#define HUMAN_BODYLAYER_UNDER -4
+
 
 #define HUMAN_LAYER_SPRITEACC_HORNS_BEHIND (FLOAT_LAYER - 950)
 #define HUMAN_LAYER_SPRITEACC_EARS_BEHIND (FLOAT_LAYER - 951)
@@ -84,9 +93,6 @@
 #define HUMAN_LAYER_SPRITEACC_FACEHAIR_BEHIND (FLOAT_LAYER - 953)
 #define HUMAN_LAYER_SPRITEACC_WINGS_BEHIND (FLOAT_LAYER - 954)
 #define HUMAN_LAYER_SPRITEACC_TAIL_BEHIND (FLOAT_LAYER - 955)
-
-//! legacy - genetics
-#define HUMAN_LAYER_MUTATIONS (FLOAT_LAYER - 1000)
 
 //* Helpers *//
 

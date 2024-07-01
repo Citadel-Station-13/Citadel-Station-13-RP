@@ -20,11 +20,6 @@ var/list/wrapped_species_by_ref = list()
 /datum/species/shapeshifter/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return valid_transform_species
 
-/datum/species/shapeshifter/get_icobase(mob/living/carbon/human/H, get_deform)
-	if(!H) return ..(null, get_deform)
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_icobase(H, get_deform)
-
 /datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
 	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
 
@@ -48,28 +43,16 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_blood_mask(H)
 
-/datum/species/shapeshifter/get_damage_mask(mob/living/carbon/human/H)
+/datum/species/shapeshifter/get_effective_bodyset(mob/living/carbon/human/H)
 	if(!H) return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_damage_mask(H)
-
-/datum/species/shapeshifter/get_damage_overlays(mob/living/carbon/human/H)
-	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_damage_overlays(H)
+	return S.get_effective_bodyset(H)
 
 /datum/species/shapeshifter/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
 	if(!character)
 		return ..()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[character]"])
 	return S.get_default_sprite_accessory(arglist(args))
-
-/datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
-	if(H)
-		var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-		if(S)
-			return S.get_husk_icon(H)
-	 return ..()
 
 /datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()

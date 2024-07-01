@@ -16,9 +16,6 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Scori"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)
 
-	icobase = 'icons/mob/species/human/body_greyscale.dmi'
-	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
-
 	color_mult = 1
 	flesh_color = "#5a5979"
 	base_color = "#373652"

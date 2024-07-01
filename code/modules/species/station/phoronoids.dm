@@ -7,7 +7,6 @@
 
 	icobase      = 'icons/mob/species/phoronoid/body.dmi'
 	deform       = 'icons/mob/species/phoronoid/body.dmi'
-	preview_icon = 'icons/mob/species/phoronoid/preview.dmi'
 	husk_icon    = 'icons/mob/species/phoronoid/husk.dmi'
 
 	intrinsic_languages = LANGUAGE_ID_PHORONOID

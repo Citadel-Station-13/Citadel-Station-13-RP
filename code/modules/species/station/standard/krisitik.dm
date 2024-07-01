@@ -5,10 +5,8 @@
 	name_plural = SPECIES_KRISITIK
 	default_bodytype = BODYTYPE_KRISITIK
 
-	icobase      = 'icons/mob/species/krisitik/body.dmi'
-	deform       = 'icons/mob/species/krisitik/body.dmi' // They don't have a proper one for some reason...
-	preview_icon = 'icons/mob/species/krisitik/preview.dmi'
-	husk_icon    = 'icons/mob/species/krisitik/husk.dmi'
+	bodyset = /datum/bodyset/organic/krisitik
+
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/krisitik,

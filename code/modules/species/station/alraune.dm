@@ -9,9 +9,6 @@
 	name_plural = "Alraunes"
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/alraune
 
-	icobase = 'icons/mob/species/human/body_greyscale.dmi'
-	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
-
 	blurb = {"
 	Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many
 	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.

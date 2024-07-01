@@ -6,7 +6,6 @@
 
 	icobase = 'icons/mob/species/vasilissan/body.dmi'
 	deform = 'icons/mob/species/vasilissan/deformed_body.dmi'
-	preview_icon = 'icons/mob/species/vasilissan/preview.dmi'
 	husk_icon = 'icons/mob/species/vasilissan/husk.dmi'
 
 	sprite_accessory_defaults = list(

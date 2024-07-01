@@ -7,10 +7,7 @@
 
 	blurb = "Ook."
 
-	icobase         = 'icons/mob/species/monkey/body_monkey.dmi'
-	deform          = 'icons/mob/species/monkey/body_monkey.dmi'
-	damage_overlays = 'icons/mob/species/monkey/damage_overlay.dmi'
-	damage_mask     = 'icons/mob/species/monkey/damage_mask.dmi'
+	bodyset = /datum/bodyset/monkey
 	blood_mask      = 'icons/mob/species/monkey/blood_mask.dmi'
 
 	default_language = LANGUAGE_ID_CHIMPANZEE
@@ -82,8 +79,7 @@
 	name_plural = SPECIES_MONKEY_TAJ
 	uid = SPECIES_ID_FARWA
 
-	icobase = 'icons/mob/species/monkey/body_farwa.dmi'
-	deform  = 'icons/mob/species/monkey/body_farwa.dmi'
+	bodyset = /datum/bodyset/monkey/farwa
 
 	greater_form = SPECIES_TAJ
 	default_language = LANGUAGE_ID_FARWA
@@ -100,8 +96,7 @@
 	name_plural = SPECIES_MONKEY_SKRELL
 	uid = SPECIES_ID_NEAERA
 
-	icobase = 'icons/mob/species/monkey/body_neaera.dmi'
-	deform  = 'icons/mob/species/monkey/body_neaera.dmi'
+	bodyset = /datum/bodyset/monkey/naera
 
 	greater_form = SPECIES_SKRELL
 	default_language = LANGUAGE_ID_NEAERA
@@ -117,8 +112,7 @@
 	name_plural = SPECIES_MONKEY_UNATHI
 	uid = SPECIES_ID_STOK
 
-	icobase = 'icons/mob/species/monkey/body_stok.dmi'
-	deform  = 'icons/mob/species/monkey/body_stok.dmi'
+	bodyset = /datum/bodyset/monkey/stok
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/monkey/stok,
@@ -136,8 +130,7 @@
 	name_plural = SPECIES_MONKEY_AKULA
 	uid = SPECIES_ID_SOBAKA
 
-	icobase = 'icons/mob/species/monkey/body_sobaka.dmi'
-	deform  = 'icons/mob/species/monkey/body_sobaka.dmi'
+	bodyset = /datum/bodyset/monkey/sobaka
 
 	sprite_accessory_defaults = list()
 
@@ -150,8 +143,7 @@
 	greater_form = SPECIES_SERGAL
 	uid = SPECIES_ID_SERGLING
 
-	icobase = 'icons/mob/species/monkey/body_sergaling.dmi'
-	deform  = 'icons/mob/species/monkey/body_sergaling.dmi'
+	bodyset = /datum/bodyset/monkey/sergaling
 
 	sprite_accessory_defaults = list()
 
@@ -163,8 +155,8 @@
 	name_plural = SPECIES_MONKEY_NEVREAN
 	uid = SPECIES_ID_SPARRA
 	greater_form = SPECIES_NEVREAN
-	icobase = 'icons/mob/species/monkey/body_sparra.dmi'
-	deform  = 'icons/mob/species/monkey/body_sparra.dmi'
+
+	bodyset = /datum/bodyset/monkey/sparra
 
 	sprite_accessory_defaults = list()
 
@@ -192,8 +184,7 @@
 	name_plural = SPECIES_MONKEY_VULPKANIN
 	uid = SPECIES_ID_WOLPIN
 
-	icobase = 'icons/mob/species/monkey/body_wolpin.dmi'
-	deform = 'icons/mob/species/monkey/body_wolpin.dmi'
+	bodyset = /datum/bodyset/monkey/wolpin
 
 	greater_form = SPECIES_VULPKANIN
 	default_language = LANGUAGE_ID_VULPKANIN

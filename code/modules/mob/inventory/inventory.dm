@@ -790,7 +790,7 @@
 	// get all
 	if(sorted)
 		. = list()
-		for(var/id as anything in GLOB.inventory_slot_meta)
+		for(var/id as anything in GLOB.inventory_slot_lookup)
 			if(!semantically_has_slot(id))
 				continue
 			. += id

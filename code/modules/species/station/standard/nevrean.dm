@@ -8,7 +8,6 @@
 
 	icobase      = 'icons/mob/species/nevrean/body.dmi'
 	deform       = 'icons/mob/species/nevrean/deformed_body.dmi'
-	preview_icon = 'icons/mob/species/nevrean/preview.dmi'
 	husk_icon    = 'icons/mob/species/nevrean/husk.dmi'
 
 	sprite_accessory_defaults = list(
