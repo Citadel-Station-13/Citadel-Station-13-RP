@@ -305,7 +305,6 @@
 #include "code\__DEFINES\research\research.dm"
 #include "code\__DEFINES\research\xenoarcheaology.dm"
 #include "code\__DEFINES\rigsuits\activation.dm"
-#include "code\__DEFINES\rigsuits\balancing.dm"
 #include "code\__DEFINES\rigsuits\control.dm"
 #include "code\__DEFINES\rigsuits\modules.dm"
 #include "code\__DEFINES\rigsuits\piece.dm"

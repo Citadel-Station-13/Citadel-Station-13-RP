@@ -22,7 +22,9 @@ AUTO_RIG_THEME(/nanotrasen/asset_protection)
 	armor = /datum/armor/rigsuit/nanotrasen/asset_protection
 	// bye-bye security
 	siemens_coefficient = 0.35
-	#warn encumbrance
+	base_weight = 20 // heavy as shit
+	online_encumbrance = 30 // bulk up, squids
+	offline_encumbrance = 50
 
 /datum/armor/rigsuit/nanotrasen/asset_protection
 	melee = 0.55
@@ -58,7 +60,9 @@ AUTO_RIG_THEME(/nanotrasen/officer)
 	every facet of this suit seems to have been redone with heavier internals. The quite-literal silver \
 	linings does point towards the holder of this suit having some rank, or perhaps wishes for such."
 	armor = /datum/armor/rigsuit/nanotrasen/officer
-	#warn encumbrance
+	base_weight = 15
+	online_encumbrance = 20 // not as bad as DS
+	offline_encumbrance = 35
 
 /datum/armor/rigsuit/nanotrasen/officer
 	melee = 0.45
@@ -93,7 +97,9 @@ AUTO_RIG_THEME(/nanotrasen/inquisition)
 	serious superstition of vampires and werewolves. There's silver paneling everywhere on it, including a \
 	rather gaudy cap on the top. How ridiculous."
 	armor = /datum/armor/rigsuit/nanotrasen/inquisition
-	#warn encumbrance
+	base_weight = 15
+	online_encumbrance = 25
+	offline_encumbrance = 40
 
 /datum/armor/rigsuit/nanotrasen/inquisition
 	melee = 0.35
@@ -115,6 +121,9 @@ AUTO_RIG_THEME(/nanotrasen/inquisition)
 	fire = 0.75
 	acid = 1.0
 
+/**
+ * relatively light, uses tensile instead of absorbant armor.
+ */
 /datum/rig_theme/nanotrasen/response
 	abstract_type = /datum/rig_theme/nanotrasen/response
 	control_sealed_append = ""
@@ -123,7 +132,9 @@ AUTO_RIG_THEME(/nanotrasen/inquisition)
 	fluff_desc = "Made with a joint, heavily publicized effort with Hephaestus Industries, these heavily \
 	reinforced hardsuits are used by Nanotrasen's Emergency Responders. Reception to the sight of these \
 	tends to be mixed, given that something usually will have went down for responders to be sent."
-	#warn encumbrance
+	base_weight = 15
+	online_encumbrance = 20
+	offline_encumbrance = 40
 
 /datum/armor/rigsuit/nanotrasen/response
 	melee = 0.35

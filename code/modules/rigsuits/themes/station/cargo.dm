@@ -40,9 +40,12 @@ AUTO_RIG_THEME(/station/cargo/asteroid)
 	armor = /datum/armor/rigsuit/station/cargo/asteroid
 	// sealed
 	max_temperature_protect = HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT
-	#warn encumbrance
+	base_weight = 12.5
+	offline_encumbrance = 35 // literally plate armor
+	online_encumbrance = 22.5 // a bit better
 
 /datum/armor/rigsuit/station/cargo/asteroid
+	rad = 0.97
 
 AUTO_RIG_THEME(/station/cargo/mining)
 /datum/rig_theme/station/cargo/mining
@@ -60,7 +63,9 @@ AUTO_RIG_THEME(/station/cargo/mining)
 	max_pressure_protect = ONE_ATMOSPHERE
 	min_temperature_protect = COLD_PROTECTION_HEAVY_WINTER_CLOTHING
 	max_temperature_protect = HEAT_PROTECTION_LIGHT_FIRESUIT
-	#warn encumbrance
+	base_weight = 7.5 // lightweight
+	offline_encumbrance = 25 // lightweight metamaterials
+	online_encumbrance = 15 // a lot better
 
 /datum/armor/rigsuit/station/cargo/mining
 	bullet = 0.2
@@ -85,9 +90,11 @@ AUTO_RIG_THEME(/station/cargo/loader)
 	max_pressure_protect = ONE_ATMOSPHERE
 	min_temperature_protect = COLD_PROTECTION_MEDIUM_WINTER_CLOTHING
 	max_temperature_protect = HEAT_PROTECTION_VERY_THICK_CLOTHING
-	#warn encumbrance
+	base_weight = 15
+	offline_encumbrance = 40 // annoying as shit to move in without assistance
+	online_encumbrance = 15 // indoors suit
 
 /datum/armor/rigsuit/station/cargo/loader
 	bullet = 0.25
 	laser = 0.15
-	rad = 0.1
+	rad = 0.235

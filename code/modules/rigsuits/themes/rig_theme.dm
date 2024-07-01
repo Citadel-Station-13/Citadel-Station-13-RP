@@ -66,15 +66,11 @@ GLOBAL_LIST_EMPTY(rig_theme_cache)
 	var/boot_delay = 5 SECONDS
 	/// piece seal/unseal time
 	var/seal_delay = 3 SECONDS
-	/// base weight
-	#warn weight
-	var/offline_weight = 0
+	/// base weight of the suit
+	var/weight = 10 // very optimistic 10 kilograms for the suit itself before upgrades
 	/// base encumbrance
 	#warn encumbrance
 	var/offline_encumbrance = 0
-	/// base online weight
-	#warn weight
-	var/online_weight = 0
 	/// base online encumbrance
 	#warn encumbrance
 	var/online_encumbrance = 0

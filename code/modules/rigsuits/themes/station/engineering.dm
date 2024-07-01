@@ -23,7 +23,7 @@
 	energy = 0.25
 	bomb = 0.4
 	bio = 1.0
-	rad = 0.65
+	rad = 1.0
 	fire = 0.75
 	acid = 1.0
 
@@ -41,7 +41,9 @@ AUTO_RIG_THEME(/station/engineering/standard)
 	max_pressure_protect = ONE_ATMOSPHERE * 15
 	max_temperature_protect = HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/standard
-	#warn encumbrance
+	base_weight = 14 // a little heavy though
+	offline_encumbrance = 30
+	online_encumbrance = 15 // gigachad low encumbrance engineer rigs
 
 /datum/armor/rigsuit/station/engineering/standard
 	rad = 0.8
@@ -58,11 +60,11 @@ AUTO_RIG_THEME(/station/engineering/atmospherics)
 	max_pressure_protect = ONE_ATMOSPHERE * 20
 	max_temperature_protect = HEAT_PROTECTION_ATMOS_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/atmospherics
-	#warn encumbrance
+	base_weight = 18 // more heavy
 
 /datum/armor/rigsuit/station/engineering/atmospherics
 	fire = 1.0
-	rad = 0.45
+	rad = 0.75
 
 AUTO_RIG_THEME(/station/engineering/advanced)
 /datum/rig_theme/station/engineering/advanced
@@ -77,11 +79,11 @@ AUTO_RIG_THEME(/station/engineering/advanced)
 	max_pressure_protect = ONE_ATMOSPHERE * 20
 	max_temperature_protect = HEAT_PROTECTION_ATMOS_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/advanced
-	#warn encumbrance
+	base_weight = 18 // more heavy
 
 /datum/armor/rigsuit/station/engineering/advanced
 	fire = 1.0
-	rad = 0.85
+	rad = 1.0
 	melee = 0.3
 	bullet_tier = BULLET_TIER_MEDIUM
 	laser_deflect = 5

@@ -11,6 +11,9 @@
 
 //? Carry strength - flat strength. you can carry up to this with no penalty.
 
+/// pretty much the base max(weight, encumbrance) someone can carry
+///
+/// balance your overpowered gamer gear around this, gamers!
 #define CARRY_STRENGTH_BASELINE 20
 
 #define CARRY_STRENGTH_ADD_HUMAN 1.25

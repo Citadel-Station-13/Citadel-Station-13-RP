@@ -19,7 +19,7 @@
 	laser_tier = LASER_TIER_MEDIUM
 	laser_soak = 3
 	laser_deflect = 0
-	energy = 0.225
+	energy = 0.45
 	bomb = 0.3
 	bio = 1.0
 	rad = 0.75
@@ -27,6 +27,11 @@
 	acid = 1.0
 
 AUTO_RIG_THEME(/species/nepid/generic)
+/**
+ * moth EVA harness
+ *
+ * engineering-capable
+ */
 /datum/rig_theme/species/nepid/generic
 	name = "Dnin-Nepid EVA harness"
 	base_state = "generic"
@@ -39,4 +44,8 @@ AUTO_RIG_THEME(/species/nepid/generic)
 	visible_name = "flight"
 	insulated_gloves = TRUE
 	siemens_coefficient = 0.5
-	#warn encumbrance
+	max_pressure_protect = ONE_ATMOSPHERE * 11.5
+	max_temperature_protect = HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT
+	base_weight = 12.5 // uncommonly light for what it is
+	offline_encumbrance = 25.5
+	online_encumbrance = 17.5
