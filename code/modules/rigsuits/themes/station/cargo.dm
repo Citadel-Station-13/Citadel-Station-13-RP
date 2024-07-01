@@ -49,9 +49,9 @@ AUTO_RIG_THEME(/station/cargo/mining)
 	name = "mining rig"
 	base_state = "mining"
 	desc = "A prototype, ash-like suit used by many a corporate spelunker."
-	fluff_desc = "The Nanotrasen <b>PK-H</b> line of terrestrial mining suits. Based off of prior designs given by \
+	fluff_desc = "The Nanotrasen <b>Spelunker</b> line of terrestrial mining suits. Based off of prior designs given by \
 	Hephaestus Industries, this suit incorporates some of the same technologies used in the proto-kinetic line of \
-	mining prototypes. While lacking in penetrative armor, it offers far more mobility than most industrial RIGs."
+	mining prototypes. While lacking in seals, it offers far more mobility than most industrial RIGs."
 	display_name = "mining"
 	visible_name = "Mining"
 	armor = /datum/armor/rigsuit/station/cargo/mining
@@ -74,7 +74,7 @@ AUTO_RIG_THEME(/station/cargo/loader)
 	name = "loader rig"
 	base_state = "loader"
 	desc = "An efficient, sleek suit used by logistics workers."
-	fluff_desc = "The Hephaestus Industries <b>L-9</b> series of assisted loader suits, used to provide underpaid \
+	fluff_desc = "The Hephaestus Industries <b>LL-9</b> series of assisted loader suits, used to provide underpaid \
 	frontier workers just a bit more protection in their long toils aboard their freighters - as well as a <i>lot</i> more \
 	comfort."
 	display_name = "loader"

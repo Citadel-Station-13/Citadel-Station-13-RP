@@ -71,7 +71,7 @@ AUTO_RIG_THEME(/station/engineering/advanced)
 	desc = "A sleek, shiny, and obnoxiously expensive hardsuit used by high-end corporate engineers."
 	fluff_desc = "The popular AAR technician suit modified by Hephaestus Industries, and given an once-over \
 	by Nanotrasen for a more welcoming paintjob. This suit packs enhanced shielding, plating, and everything \
-	in-between - though it tends to be more power-hungry than similar suits thanks to the similarly 'enhanced' weight."
+	in-between - though it tends to be more power-hungry than similar suits, thanks to the similarly 'enhanced' weight."
 	display_name = "advanced"
 	visible_name = "Advanced"
 	max_pressure_protect = ONE_ATMOSPHERE * 20
