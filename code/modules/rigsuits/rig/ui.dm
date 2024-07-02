@@ -261,7 +261,7 @@
 	// it'd be a better idea to use state datums but i don't care
 
 	// if they're admin abusing, give full control
-	if(is_admin_interactive(user, src))
+	if(IsAdminGhost(user, src))
 		return UI_INTERACTIVE
 
 	// check if they should be able to view

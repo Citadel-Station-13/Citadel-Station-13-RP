@@ -4,10 +4,8 @@
 /obj/item/rig/proc/set_activation_state(new_state)
 	activation_state = new_state
 	if(activation_state & (RIG_ACTIVATION_ACTIVATING | RIG_ACTIVATION_OFFLINE))
-		set_weight(offline_weight)
 		set_encumbrance(offline_encumbrance)
 	else
-		set_weight(online_weight)
 		set_encumbrance(online_encumbrance)
 
 /obj/item/rig/proc/fully_activated()
@@ -127,7 +125,6 @@
 
 	. = TRUE
 
-	set_weight(online_weight)
 	set_encumbrance(online_encumbrance)
 
 	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
@@ -156,7 +153,6 @@
 			INVOKE_ASYNC(src, PROC_REF(seal_piece_sync), piece)
 
 /obj/item/rig/proc/deactivate(undeploy, silent, subtle, force, was_instant)
-	set_weight(offline_weight)
 	set_encumbrance(offline_encumbrance)
 
 	interrupt_if_activating()

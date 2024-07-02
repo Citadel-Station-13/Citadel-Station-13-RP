@@ -220,7 +220,7 @@
 	return fully_activated()? online_encumbrance : offline_encumbrance
 
 /obj/item/rig/get_weight()
-	return fully_activated()? online_weight : offline_weight
+	return base_weight
 
 /obj/item/rig/update_icon_state()
 	if(partially_activated())
