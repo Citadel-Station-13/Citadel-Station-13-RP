@@ -149,21 +149,21 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	if(second < 60)
 		return "[second] second[(second != 1)? "s":""]"
 	var/minute = FLOOR(second / 60, 1)
-	second = MODULUS(second, 60)
+	second = MODULUS_F(second, 60)
 	var/secondT
 	if(second)
 		secondT = " and [second] second[(second != 1)? "s":""]"
 	if(minute < 60)
 		return "[minute] minute[(minute != 1)? "s":""][secondT]"
 	var/hour = FLOOR(minute / 60, 1)
-	minute = MODULUS(minute, 60)
+	minute = MODULUS_F(minute, 60)
 	var/minuteT
 	if(minute)
 		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
 	if(hour < 24)
 		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
 	var/day = FLOOR(hour / 24, 1)
-	hour = MODULUS(hour, 24)
+	hour = MODULUS_F(hour, 24)
 	var/hourT
 	if(hour)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"

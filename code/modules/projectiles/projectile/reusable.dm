@@ -16,7 +16,7 @@
 	handle_drop()
 	//handle_shatter()
 
-/obj/projectile/bullet/reusable/on_range()
+/obj/projectile/bullet/reusable/legacy_on_range()
 	handle_drop()
 	..()
 

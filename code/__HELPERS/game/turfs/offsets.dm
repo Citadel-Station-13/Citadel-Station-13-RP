@@ -54,7 +54,7 @@
 	// dir2angle is north-zero clockwise
 	// turn_amount will therefore be how much we need to turn clockwise to get there
 	//
-	// we know this will be a whole number so we use native % instead of MODULUS
+	// we know this will be a whole number so we use native % instead of MODULUS_F
 	var/turn_amount = (dir2angle(new_dir) - dir2angle(old_dir)) % 360
 
 	// rotated x/y is where the entity will be after being rotated in its **current**

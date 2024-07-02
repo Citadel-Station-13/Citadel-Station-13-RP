@@ -45,7 +45,11 @@
 		set_multiplied_integrity(1)
 	else
 		name = "[material_reinforcing.display_name]-reinforced [material_structure.display_name] girder"
-		set_multiplied_integrity(material_structure.relative_integrity * multiply_effect_multiplier(material_reinforcing.relative_integrity, 0.5))
+		// ()'s to coerce them into instances, and not text strings.
+		set_multiplied_integrity(SSmaterials.dynamic_calculate_relative_integrity(list(
+			(material_structure) = 1,
+			(material_reinforcing) = 0.5,
+		)))
 
 	// todo: refactor
 	if(material_color)

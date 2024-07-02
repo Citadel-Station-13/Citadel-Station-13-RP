@@ -41,7 +41,7 @@
 #define WRAP(val, min, max) ( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) )
 
 // Real modulus that handles decimals
-#define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
+#define MODULUS_F(x, y) ( (x) - (y) * round((x) / (y)) )
 
 // Cotangent
 #define COT(x) (1 / tan(x))
@@ -128,12 +128,13 @@
 
 // Will filter out extra rotations and negative rotations
 // E.g: 540 becomes 180. -180 becomes 180.
-#define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees), 360))
+#define SIMPLIFY_DEGREES(degrees) (MODULUS_F((degrees), 360))
 
-#define GET_ANGLE_OF_INCIDENCE(face, input) (MODULUS((face) - (input), 360))
+#define GET_ANGLE_OF_INCIDENCE(face, input) (MODULUS_F((face) - (input), 360))
 
 //Finds the shortest angle that angle A has to change to get to angle B. Aka, whether to move clock or counterclockwise.
 /proc/closer_angle_difference(a, b)
+	// todo: optimize this shit
 	if(!isnum(a) || !isnum(b))
 		return
 	a = SIMPLIFY_DEGREES(a)

@@ -74,7 +74,7 @@
 	light_range = 2
 	light_power = 0.6
 	light_color = "#cea036"
-	range = 20
+	range = WORLD_ICON_SIZE * 20
 	damage = 5 //minor penalty for repeated FF
 	SA_bonus_damage = 25	// 30 total on animals - lowest of all phasers
 	SA_vulnerability = MOB_CLASS_ANIMAL

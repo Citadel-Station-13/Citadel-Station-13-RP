@@ -334,7 +334,7 @@
 	impact_sounds = 'sound/items/bikehorn.ogg'
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana"
-	range = 200
+	range = WORLD_ICON_SIZE * 200
 
 /obj/projectile/bullet/honker/Initialize(mapload)
 	. = ..()
