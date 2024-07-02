@@ -814,11 +814,24 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * null
  * * a list of actions
  * * an action instance
- *
- * called if it's null, and only if it's null
  */
 /obj/item/proc/ensure_actions_loaded()
-	#warn impl
+	if(item_actions)
+		if(islist(item_actions))
+			var/requires_init = FALSE
+			for(var/i in 1 to length(item_actions))
+				if(ispath(item_actions[i]))
+					requires_init = TRUE
+					break
+			if(requires_init)
+				set_actions_to(item_actions)
+		else if(ispath(item_actions))
+			set_actions_to(item_actions)
+	else if(item_action_name)
+		var/datum/action/item_action/created = new(src)
+		created.name = item_action_name
+		created.check_mobility_flags = item_action_mobility_flags
+		set_actions_to(created)
 
 /**
  * setter for [item_actions]
@@ -836,7 +849,17 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(worn_mob)
 		unregister_item_actions(worn_mob)
 
-	#warn set and verify
+	if(ispath(descriptor, /datum/action))
+		descriptor = new descriptor(src)
+	else if(islist(descriptor))
+		var/list/transforming = descriptor:Copy()
+		for(var/i in 1 to length(transforming))
+			if(ispath(transforming[i], /datum/action))
+				var/path = transforming[i]
+				transforming[i] = new path(src)
+		descriptor = transforming
+	else
+		item_actions = descriptor
 
 	if(worn_mob)
 		register_item_actions(worn_mob)

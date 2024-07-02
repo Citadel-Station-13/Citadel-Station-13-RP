@@ -4,7 +4,7 @@
  * the click may be real or fake.
  */
 /datum/event_args/actor/clickchain
-	/// optional: a_intent
+	/// optional: attack intent
 	var/intent
 	/// optional: click params
 	var/list/params
@@ -15,7 +15,7 @@
 	..()
 	src.target = target
 	src.params = params || list()
-	src.intent = intent || initiator?.intent || performer.intent
+	src.intent = intent
 
 /datum/event_args/actor/clickchain/clone()
 	var/datum/event_args/actor/clickchain/cloned = new(performer, initiator, target, params, intent)

@@ -221,21 +221,21 @@
 
 //All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
 
-	var/datum/action/innate/mecha/mech_eject/eject_action = new
-	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
-	var/datum/action/innate/mecha/mech_toggle_lights/lights_action = new
-	var/datum/action/innate/mecha/mech_view_stats/stats_action = new
-	var/datum/action/innate/mecha/strafe/strafing_action = new
+	var/datum/action/mecha/mech_eject/eject_action = new
+	var/datum/action/mecha/mech_toggle_internals/internals_action = new
+	var/datum/action/mecha/mech_toggle_lights/lights_action = new
+	var/datum/action/mecha/mech_view_stats/stats_action = new
+	var/datum/action/mecha/strafe/strafing_action = new
 
-	var/datum/action/innate/mecha/mech_defence_mode/defence_action = new
-	var/datum/action/innate/mecha/mech_overload_mode/overload_action = new
-	var/datum/action/innate/mecha/mech_smoke/smoke_action = new
-	var/datum/action/innate/mecha/mech_zoom/zoom_action = new
-	var/datum/action/innate/mecha/mech_toggle_thrusters/thrusters_action = new
-	var/datum/action/innate/mecha/mech_cycle_equip/cycle_action = new
-	var/datum/action/innate/mecha/mech_switch_damtype/switch_damtype_action = new
-	var/datum/action/innate/mecha/mech_toggle_phasing/phasing_action = new
-	var/datum/action/innate/mecha/mech_toggle_cloaking/cloak_action = new
+	var/datum/action/mecha/mech_defence_mode/defence_action = new
+	var/datum/action/mecha/mech_overload_mode/overload_action = new
+	var/datum/action/mecha/mech_smoke/smoke_action = new
+	var/datum/action/mecha/mech_zoom/zoom_action = new
+	var/datum/action/mecha/mech_toggle_thrusters/thrusters_action = new
+	var/datum/action/mecha/mech_cycle_equip/cycle_action = new
+	var/datum/action/mecha/mech_switch_damtype/switch_damtype_action = new
+	var/datum/action/mecha/mech_toggle_phasing/phasing_action = new
+	var/datum/action/mecha/mech_toggle_cloaking/cloak_action = new
 
 	/// So combat mechs don't switch to their equipment at times.
 	var/weapons_only_cycle = FALSE

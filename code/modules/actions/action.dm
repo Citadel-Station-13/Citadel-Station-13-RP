@@ -251,11 +251,19 @@
 /**
  * called when someone tries to invoke us
  *
+ * * this is the **only** place where user input should go
+ * *add a force parameter if we at some point need a way to ignore check_invoke
+ * * we require this because logging goes through here!
+ *
  * @return TRUE / FALSE
  */
 /datum/action/proc/try_invoke(datum/event_args/actor/actor)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE) // logging happens here, do not fuck around and find out!
 	if(!check_invoke(actor))
+		log_click_action(actor, src, "failed-invoke")
 		return FALSE
+	log_click_action(actor, src, "invoke")
 	invoke(actor)
 	return TRUE
 
@@ -269,20 +277,19 @@
 
 	if((performer.mobility_flags & check_mobility_flags) != check_mobility_flags)
 		return FALSE
-
-	//! LEGACY CHECKS BELOW
-
-	//! END
-	#warn impl
+	return TRUE
 
 /**
  * called when we are invoked
  *
+ * * **do not directly call this proc**, this doesn't log!
  * * please return immediately if ..() returns a truthy value!
  *
  * @return TRUE to stop propagation
  */
 /datum/action/proc/invoke(datum/event_args/actor/actor)
+	PROTECTED_PROC(TRUE) // you thought i was joking??? do not directly call this goddamn proc.
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(invoke_callback?.Invoke())
 		return TRUE
 	if(invoke_target(target, actor))
@@ -303,14 +310,6 @@
  */
 /datum/action/proc/invoke_target(datum/target, datum/event_args/actor/actor)
 	return target?.ui_action_click(src, actor)
-
-#warn below
-
-/datum/action/innate
-	action_type = ACTION_TYPE_INNATE
-
-
-#warn above
 
 //* Ownership *//
 
