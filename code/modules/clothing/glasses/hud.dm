@@ -221,8 +221,10 @@
 	set name = "Toggle projector"
 	set category = VERB_CATEGORY_OBJECT
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(!istype(usr, /mob/living))
+		return
+	if(usr.stat)
+		return
 	if(toggleable)
 		if(active)
 			active = 0
@@ -236,7 +238,8 @@
 			item_state = initial(item_state)
 			usr.update_inv_glasses()
 			to_chat(usr, "You activate the retinal projector on the [src].")
-		usr.update_action_buttons()
+		update_worn_icon()
+		update_action_buttons()
 
 /obj/item/clothing/glasses/omnihud/exp
 	name = "\improper AR-V goggles"

@@ -7,11 +7,15 @@
 	scan_range = 1
 	tool_speed = 1.2
 
-/obj/item/cataloguer/compact/update_icon()
-	if(busy)
-		icon_state = "[initial(icon_state)]_s"
+/obj/item/cataloguer/compact/update_icon_state()
+	var/base_state = base_icon_state || initial(icon_state)
+	if(!deployed)
+		icon_state = "[base_state]_closed"
+	else if(busy)
+		icon_state = "[base_state]_s"
 	else
-		icon_state = initial(icon_state)
+		icon_state = base_state
+	return ..()
 
 /obj/item/cataloguer/compact/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle()
@@ -27,16 +31,12 @@
 	deployed = !(deployed)
 	if(deployed)
 		set_weight_class(WEIGHT_CLASS_NORMAL)
-		icon_state = "[initial(icon_state)]"
 		to_chat(usr, SPAN_NOTICE("You flip open \the [src]."))
 	else
 		set_weight_class(WEIGHT_CLASS_SMALL)
-		icon_state = "[initial(icon_state)]_closed"
 		to_chat(usr, SPAN_NOTICE("You close \the [src]."))
 
-	if (ismob(usr))
-		var/mob/M = usr
-		M.update_action_buttons()
+	update_full_icon()
 
 /obj/item/cataloguer/compact/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!deployed)

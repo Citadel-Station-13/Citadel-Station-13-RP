@@ -133,8 +133,7 @@
 	else if(power_use)
 		STOP_PROCESSING(SSobj, src)
 	playsound(src.loc, 'sound/weapons/empty.ogg', 15, TRUE, -3)
-	update_appearance()
-	user.update_action_buttons()
+	update_full_icon()
 	return TRUE
 
 /obj/item/flashlight/emp_act(severity)

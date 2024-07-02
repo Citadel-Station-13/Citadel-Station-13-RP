@@ -1137,6 +1137,22 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	..()
 	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_EXITED, usr)
 
+//* Rendering *//
+
+/**
+ * invokes
+ *
+ * * update_icon()
+ * * update_worn_icon()
+ * * update_action_buttons()
+ *
+ * please be very delicate with this, this is expensive
+ */
+/obj/item/proc/update_full_icon()
+	update_icon()
+	update_worn_icon()
+	update_action_buttons()
+
 //* Storage *//
 
 /obj/item/proc/get_weight_class()
