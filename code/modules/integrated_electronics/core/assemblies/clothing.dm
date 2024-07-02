@@ -15,7 +15,7 @@
 /obj/item/electronic_assembly/clothing/ui_host()
 	return clothing.ui_host()
 
-/obj/item/electronic_assembly/clothing/ui_action_click()
+/obj/item/electronic_assembly/clothing/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	clothing.action_circuit.do_work()
 
 // This is 'small' relative to the size of regular clothing assemblies.
@@ -94,7 +94,7 @@
 	EA.add_component(action_circuit)
 	var/obj/item/integrated_circuit/built_in/self_sensor/S = new(src.EA)
 	EA.add_component(S)
-	EA.action_button_name = "Activate [name]"
+	EA.item_action_name = "Activate [name]"
 
 
 

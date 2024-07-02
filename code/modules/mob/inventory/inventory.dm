@@ -6,6 +6,10 @@
 	/// owning mob
 	var/mob/owner
 
+	//* Actions *//
+	/// our action holder
+	var/datum/action_holder/actions
+
 	//* Inventory *//
 
 	//* Caches *//
@@ -19,8 +23,11 @@
 	if(!istype(M))
 		CRASH("no mob")
 	owner = M
+	/// no lazy-init for actions for now since items with actions are so common
+	actions = new
 
 /datum/inventory/Destroy()
+	QDEL_NULL(actions)
 	owner = null
 	return ..()
 
@@ -247,8 +254,6 @@
 					I.forceMove(newloc)
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
-
-	update_action_buttons()
 
 /mob/proc/handle_item_denesting(obj/item/I, old_slot, flags, mob/user)
 	// if the item was inside something,
@@ -589,8 +594,6 @@
 		I.equipped(src, slot, flags)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")
-
-	update_action_buttons()
 
 	if(I.zoom)
 		I.zoom()

@@ -16,7 +16,7 @@
 	var/on = 0.0
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
-	action_button_name = "Toggle Jetpack"
+	item_action_name = "Toggle Jetpack"
 
 /obj/item/tank/jetpack/Initialize(mapload)
 	. = ..()
@@ -33,6 +33,10 @@
 		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of gas!</span>"
 		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
+/obj/item/tank/jetpack/update_icon_state()
+	icon_state = "[base_icon_state || initial(icon_state)][on ? "-on" : ""]"
+	return ..()
+
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
 	set category = VERB_CATEGORY_OBJECT
@@ -45,16 +49,11 @@
 
 	on = !on
 	if(on)
-		icon_state = "[icon_state]-on"
 		ion_trail.start()
 	else
-		icon_state = initial(icon_state)
 		ion_trail.stop()
 
-	if (ismob(usr))
-		var/mob/M = usr
-		M.update_inv_back()
-		M.update_action_buttons()
+	update_full_icon()
 
 	to_chat(usr, "You toggle the thrusters [on? "on":"off"].")
 
@@ -74,7 +73,7 @@
 	qdel(G)
 	return
 
-/obj/item/tank/jetpack/ui_action_click()
+/obj/item/tank/jetpack/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle()
 
 /obj/item/tank/jetpack/void

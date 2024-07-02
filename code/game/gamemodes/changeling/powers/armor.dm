@@ -61,7 +61,7 @@
 	desc = "A suction cupped mass of flesh, shaped like a foot."
 	name = "fleshy grippers"
 	icon_state = "lingspacesuit"
-	action_button_name = "Toggle Grippers"
+	item_action_name = "Toggle Grippers"
 	clothing_flags = NONE
 	item_flags = ITEM_DROPDEL
 	encumbrance = ITEM_ENCUMBRANCE_CHANGELING_MAGBOOTS
@@ -115,7 +115,7 @@
 	desc = "A tough, hard mass of chitin, with long talons for digging into terrain."
 	name = "chitinous talons"
 	icon_state = "lingarmor"
-	action_button_name = "Toggle Talons"
+	item_action_name = "Toggle Talons"
 
 /obj/item/clothing/gloves/combat/changeling //Combined insulated/fireproof gloves
 	name = "chitinous gauntlets"

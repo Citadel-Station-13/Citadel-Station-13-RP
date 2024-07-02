@@ -22,7 +22,7 @@
 	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 	body_cover_flags = HEAD|FACE|EYES
-	action_button_name = "Flip Welding Mask"
+	item_action_name = "Flip Welding Mask"
 	siemens_coefficient = 0.9
 	w_class = WEIGHT_CLASS_NORMAL
 	var/base_state
@@ -67,7 +67,7 @@
 		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
 			var/mob/M = src.loc
 			M.update_inv_wear_mask()
-		usr.update_action_buttons()
+		update_action_buttons()
 
 /obj/item/clothing/head/welding/demon
 	name = "demonic welding helmet"
