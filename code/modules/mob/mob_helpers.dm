@@ -568,6 +568,8 @@ var/list/global/organ_rel_size = list(
 	BP_L_FOOT = 10,
 	BP_R_FOOT = 10,
 )
+//* Keep this up to date with organ_rel_size. This is all of them added together.
+GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 + 10 + 10)
 
 /mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	return

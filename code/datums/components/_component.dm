@@ -267,11 +267,19 @@
 	if(!signal_procs[target].len)
 		signal_procs -= target
 
-/**
- * RegisterSignal on SSdcs to listen to global signals.
- */
 /datum/proc/UnregisterGlobalSignal(sig_type_or_types)
 	UnregisterSignal(SSdcs, sig_type_or_types)
+
+/**
+ * Checks if a target is listening to a specific signal on us
+ *
+ * * This is just here for completeness. If you need to use this, you are almost certainly doing something wrong.
+ */
+/datum/proc/has_signal_registration(sigtype, datum/source)
+	var/list/existing_registree = comp_lookup[sigtype]
+	if(!existing_registree)
+		return FALSE
+	return existing_registree == source || (islist(existing_registree) && existing_registree[source])
 
 /**
  * Called on a component when a component of the same type was added to the same parent

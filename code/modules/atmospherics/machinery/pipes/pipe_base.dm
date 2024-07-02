@@ -25,7 +25,7 @@
 /obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
 	// pipes are always underfloor if inside a wall
 	// we just check for loc.density 'cause speed lmao
-	if(loc.density)
+	if(loc?.density)
 		hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	return ..()
 

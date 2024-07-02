@@ -10,7 +10,7 @@
 	active_power_usage = 500	// Previously 2000
 	anchored = TRUE
 	density = FALSE
-	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 	hides_underfloor_update_icon = TRUE
 	var/alarm = FALSE
 	var/enabled = TRUE

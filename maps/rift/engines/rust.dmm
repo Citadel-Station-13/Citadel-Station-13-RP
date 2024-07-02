@@ -20,7 +20,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bt" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -96,7 +96,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "fe" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -414,7 +414,7 @@
 /area/engineering/engine_room)
 "rG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -718,7 +718,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "EU" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
 	dir = 4
@@ -786,8 +786,8 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "IY" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/visible/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -814,7 +814,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "JU" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
