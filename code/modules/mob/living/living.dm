@@ -299,6 +299,18 @@ default behaviour is:
 	halloss = min(max(halloss + amount, 0),(getMaxHealth()*2))
 	update_health()
 
+/mob/living/proc/adjustHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(hallucination + amount, 0, 400) //cap at 400, any higher is just obnoxious
+
+/mob/living/proc/setHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(amount, 0, 400) //cap at 400, any higher is just obnoxious
+
 /mob/living/proc/setHalLoss(var/amount)
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	halloss = amount
@@ -332,18 +344,6 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
-
-/mob/living/adjustHallucination(amount)
-	if(status_flags & STATUS_GODMODE)
-		hallucination = 0
-		return 0	//godmode
-	hallucination = clamp(hallucination + amount, 0, 400) //cap at 400, any higher is just obnoxious
-
-/mob/living/setHallucination(amount)
-	if(status_flags & STATUS_GODMODE)
-		hallucination = 0
-		return 0	//godmode
-	hallucination = clamp(amount, 0, 400) //cap at 400, any higher is just obnoxious
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
 
