@@ -58,9 +58,7 @@
 		return
 	active = !active
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
-	update_icon()
-	user.update_inv_wear_suit()
-	user.update_action_buttons()
+	update_full_icon()
 
 /obj/item/clothing/suit/armor/tesla/update_icon()
 	if(active && ready)

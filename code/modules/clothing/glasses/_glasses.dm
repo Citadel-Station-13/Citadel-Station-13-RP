@@ -80,7 +80,7 @@ BLIND     // can't see anything
 			enables_planes = away_planes
 			away_planes = null
 			to_chat(usr, "You activate the optical matrix on the [src].")
-		user.update_action_buttons()
+		update_action_buttons()
 		user.recalculate_vis()
 	..()
 
@@ -434,30 +434,33 @@ BLIND     // can't see anything
 		return
 	toggle()
 
+/obj/item/clothing/glasses/welding/update_icon_state()
+	icon_state = "[base_icon_state || initial(icon_state)][up ? "up" : ""]"
+	return ..()
+
 /obj/item/clothing/glasses/welding/verb/toggle()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust welding goggles"
 	set src in usr
 
 	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
-		if(src.up)
-			src.up = !src.up
-			inv_hide_flags |= HIDEEYES
-			body_cover_flags |= EYES
-			icon_state = initial(icon_state)
-			flash_protection = initial(flash_protection)
-			tint = initial(tint)
-			to_chat(usr, "You flip \the [src] down to protect your eyes.")
-		else
-			src.up = !src.up
-			inv_hide_flags &= ~HIDEEYES
-			body_cover_flags &= ~EYES
-			icon_state = "[initial(icon_state)]up"
-			flash_protection = FLASH_PROTECTION_NONE
-			tint = TINT_NONE
-			to_chat(usr, "You push \the [src] up out of your face.")
-		update_worn_icon()
-		usr.update_action_buttons()
+		return
+
+	if(src.up)
+		src.up = !src.up
+		inv_hide_flags |= HIDEEYES
+		body_cover_flags |= EYES
+		flash_protection = initial(flash_protection)
+		tint = initial(tint)
+		to_chat(usr, "You flip \the [src] down to protect your eyes.")
+	else
+		src.up = !src.up
+		inv_hide_flags &= ~HIDEEYES
+		body_cover_flags &= ~EYES
+		flash_protection = FLASH_PROTECTION_NONE
+		tint = TINT_NONE
+		to_chat(usr, "You push \the [src] up out of your face.")
+	update_full_icon()
 
 /obj/item/clothing/glasses/welding/prescription
 	name = "prescription welding goggles"
@@ -575,8 +578,8 @@ BLIND     // can't see anything
 		update_icon()
 		SEND_SOUND(user, activation_sound)
 		user.recalculate_vis()
-		user.update_inv_glasses()
-		user.update_action_buttons()
+		update_worn_icon()
+		update_action_buttons()
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator/update_icon()
 	if(on)

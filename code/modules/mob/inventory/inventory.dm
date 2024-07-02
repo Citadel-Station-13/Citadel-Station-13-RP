@@ -255,8 +255,6 @@
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
-	update_action_buttons()
-
 /mob/proc/handle_item_denesting(obj/item/I, old_slot, flags, mob/user)
 	// if the item was inside something,
 	if(I.worn_inside)
@@ -596,8 +594,6 @@
 		I.equipped(src, slot, flags)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")
-
-	update_action_buttons()
 
 	if(I.zoom)
 		I.zoom()
