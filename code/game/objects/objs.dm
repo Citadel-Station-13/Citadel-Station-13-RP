@@ -594,22 +594,47 @@
 		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
 			ASSERT(length(colors) == 1)
 			color = colors[1]
-		if(COLORATION_MODE_RB_MATRIX)
+		if(COLORATION_MODE_RG_MATRIX)
 			ASSERT(length(colors) == 2)
-			// todo: implement
-			pass()
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/green_decoded = ReadRGB(colors[2])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				0, 0, 0, 0,
+				0, 0, 0, 1,
+			)
 		if(COLORATION_MODE_GB_MATRIX)
 			ASSERT(length(colors) == 2)
-			// todo: implement
-			pass()
+			var/list/green_decoded = ReadRGB(colors[1])
+			var/list/blue_decoded = ReadRGB(colors[2])
+			color = list(
+				0, 0, 0, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
 		if(COLORATION_MODE_RB_MATRIX)
 			ASSERT(length(colors) == 2)
-			// todo: implement
-			pass()
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/blue_decoded = ReadRGB(colors[2])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				0, 0, 0, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
 		if(COLORATION_MODE_RGB_MATRIX)
 			ASSERT(length(colors) == 3)
-			// todo: implement
-			pass()
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/green_decoded = ReadRGB(colors[2])
+			var/list/blue_decoded = ReadRGB(colors[3])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
 		if(COLORATION_MODE_OVERLAYS)
 			ASSERT(length(colors) == coloration_amount)
 			// todo: implement; we'll probably have to hook both update_overlays as well as
@@ -620,7 +645,6 @@
 			ASSERT(!length(colors))
 			color = null
 	coloration = pack_coloration_string(colors)
-
 
 /obj/proc/set_coloration_packed(packed_colors)
 	var/list/unpacked = unpack_coloration_string(packed_colors)
