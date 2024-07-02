@@ -219,9 +219,6 @@
 			return TRUE
 	return FALSE
 
-/proc/sign(x)
-	return x!=0?x/abs(x):0
-
 /// Ultra-Fast Bresenham Line-Drawing Algorithm.
 /proc/getline(atom/M,atom/N)
 	/// Starting x coordinate.
@@ -239,9 +236,9 @@
 	/// Absolute value of y distance.
 	var/dyabs = abs(dy)
 	///Sign of x distance (+ or -).
-	var/sdx = sign(dx)
+	var/sdx = SIGN(dx)
 	///Sign of y distance (+ or -).
-	var/sdy = sign(dy)
+	var/sdy = SIGN(dy)
 	/// Counters for steps taken, setting to distance/2.
 	var/x = (dxabs >> 1)
 	/// Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
@@ -490,13 +487,6 @@
 //	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
 //		GLOB.mob_list.Add(M)
 	return moblist
-
-/// Forces a variable to be positive.
-/proc/modulus(variable)
-	if(variable >= 0)
-		return variable
-	if(variable < 0)
-		return -variable
 
 /// Returns the turf located at the map edge in the specified direction relative to A.
 /proc/get_edge_target_turf(atom/A, direction) //Used for mass driver
