@@ -74,6 +74,9 @@
 	reset_perspective(no_optimizations = TRUE)
 	// load rendering onto client's screen
 	reload_rendering()
+	// bind actions
+	client.action_drawer.register_holder(actions_controlled)
+	client.action_drawer.register_holder(actions_innate)
 	// reset statpanel of any verbs/whatnot
 	client.statpanel_reload()
 	// update ssd overlay

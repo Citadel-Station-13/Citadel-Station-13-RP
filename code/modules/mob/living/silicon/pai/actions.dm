@@ -56,13 +56,6 @@
 /datum/action/pai/revert_to_card/on_trigger(mob/living/silicon/pai/user)
 	user.revert_to_card()
 
-/datum/action/pai/revert_to_card/update_button()
-	#warn get rid of this
-	..()
-
-	var/mob/living/silicon/pai/user = owner
-	button_visibility = (user.shell != user.card)
-
 /// Clothing Transform
 /datum/action/pai/clothing_transform
 	name = "Clothing Transform"
@@ -83,13 +76,6 @@
 
 /datum/action/pai/hologram_display/on_trigger(mob/living/silicon/pai/user)
 	user.card_hologram_display()
-
-/datum/action/pai/hologram_display/update_button()
-	#warn get rid of this
-	..()
-
-	var/mob/living/silicon/pai/user = owner
-	button_visibility = (user.loc == user.card)
 
 /// Hologram Placement
 /datum/action/pai/place_hologram

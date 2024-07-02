@@ -11,11 +11,12 @@
 	/// optional: target atom
 	var/atom/target
 
-/datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, intent, list/params)
+/datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()
 	src.target = target
-	src.intent = isnull(intent)? performer.a_intent : intent
-	src.params = isnull(params)? list() : params
+	src.params = params || list()
+	src.intent = intent || initiator?.intent || performer.intent
 
 /datum/event_args/actor/clickchain/clone()
-	return new /datum/event_args/actor/clickchain(performer, initiator, target, intent, params)
+	var/datum/event_args/actor/clickchain/cloned = new(performer, initiator, target, params, intent)
+	return cloned

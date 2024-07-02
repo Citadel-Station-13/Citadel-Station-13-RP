@@ -52,7 +52,11 @@
 	/// panic bunker is still resolving
 	var/panic_bunker_pending = FALSE
 
-	//? Context Menus
+	//* Actions *//
+	/// our action holder
+	var/datum/action_holder/action_holder
+
+	//* Context Menus *//
 	/// open context menu
 	var/datum/radial_menu/context_menu/context_menu
 
@@ -137,6 +141,13 @@
 	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
 	var/cutscene_lockout = FALSE
 
+	//* UI *//
+	/// Our action drawer
+	var/datum/action_drawer/action_drawer
+	/// our tooltips system
+	var/datum/tooltip/tooltips
+
+
 		////////////////
 		//ADMIN THINGS//
 		////////////////
@@ -164,7 +175,6 @@
 	var/area = null
 	///when the client last died as a mouse
 	var/time_died_as_mouse = null
-	var/datum/tooltip/tooltips 	= null
 
 	var/adminhelped = 0
 

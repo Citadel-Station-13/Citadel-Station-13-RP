@@ -1,10 +1,35 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
+INITIALIZE_IMMEDIATE(/atom/movable/screen/movable/action_button)
 /atom/movable/screen/movable/action_button
 	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER
-	var/datum/action/owner
 	screen_loc = "LEFT,TOP"
+
+	/// the action_holder that ultimately led to us being put on a drawer
+	///
+	/// * if there's multiple, we use the first registered one
+	/// * this is used to resolve actor data for invocation!
+	var/datum/action_holder/holder
+	/// our target action
+	var/datum/action/action
+
+/atom/movable/screen/movable/action_button/Initialize(mapload, datum/action_holder/holder, datum/action/action)
+	src.holder = holder
+	src.action = action
+	return ..()
+
+/atom/movable/screen/movable/action_button/Destroy()
+	holder = null
+	action = null
+	return ..()
+
+/atom/movable/screen/movable/action_button/Click(location, control, params)
+	#warn impl - moving?
+	#warn impl - invoke
+
+#warn below
+
 
 /atom/movable/screen/movable/action_button/Click(location,control,params)
 	var/list/modifiers = params2list(params)
@@ -43,10 +68,6 @@
 /mob/living/update_action_buttons()
 	// todo: remove this, move to event driven
 	handle_actions()
-	if(!hud_used)
-		return
-	if(!client)
-		return
 
 	if(hud_used.hud_shown != 1)	//Hud toggled to minimal
 		return
@@ -93,30 +114,3 @@
 			hud_used.hide_actions_toggle.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number+1)
 			//hud_used.SetButtonCoords(hud_used.hide_actions_toggle,button_number+1)
 		client.screen += hud_used.hide_actions_toggle
-
-#define AB_WEST_OFFSET 4
-#define AB_NORTH_OFFSET 26
-#define AB_MAX_COLUMNS 10
-
-/datum/hud/proc/ButtonNumberToScreenCoords(var/number) // TODO : Make this zero-indexed for readabilty
-	var/row = round((number-1)/AB_MAX_COLUMNS)
-	var/col = ((number - 1)%(AB_MAX_COLUMNS)) + 1
-	var/coord_col = "+[col-1]"
-	var/coord_col_offset = AB_WEST_OFFSET+2*col
-	var/coord_row = "[-1 - row]"
-	var/coord_row_offset = AB_NORTH_OFFSET
-	return "LEFT[coord_col]:[coord_col_offset],TOP[coord_row]:[coord_row_offset]"
-
-/datum/hud/proc/SetButtonCoords(var/atom/movable/screen/button,var/number)
-	var/row = round((number-1)/AB_MAX_COLUMNS)
-	var/col = ((number - 1)%(AB_MAX_COLUMNS)) + 1
-	var/x_offset = 32*(col-1) + AB_WEST_OFFSET + 2*col
-	var/y_offset = -32*(row+1) + AB_NORTH_OFFSET
-
-	var/matrix/M = matrix()
-	M.Translate(x_offset,y_offset)
-	button.transform = M
-
-#undef AB_WEST_OFFSET
-#undef AB_NORTH_OFFSET
-#undef AB_MAX_COLUMNS

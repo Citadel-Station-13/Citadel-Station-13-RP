@@ -10,6 +10,11 @@
 	/// * this is a lazylist
 	var/list/datum/action/actions
 
+/datum/action_holder/Destroy()
+	for(var/datum/action/action as anything in actions)
+		remove_action(action)
+	return ..()
+
 /**
  * adds an action to us
  */
@@ -33,3 +38,34 @@
  */
 /datum/action_holder/proc/on_action_remove(datum/action/action)
 	#warn impl
+
+/**
+ * get an actor tuple based on an invoker
+ */
+/datum/action_holder/proc/get_actor_data(mob/invoker)
+	return new /datum/event_args/actor(invoker)
+
+/**
+ * for mob actions
+ */
+/datum/action_holder/mob_actor
+	var/mob/user
+
+/datum/action_holder/mob_actor/New(mob/user)
+	src.user = user
+	..()
+
+/datum/action_holder/mob_actor/Destroy()
+	user = null
+	return ..()
+
+/datum/action_holder/mob_actor/get_actor_data(mob/invoker)
+	return new /datum/event_args/actor(user, invoker)
+
+/**
+ * for client
+ */
+/datum/action_holder/client_actor
+
+/datum/action_holder/client_actor/New(client/user)
+	..()

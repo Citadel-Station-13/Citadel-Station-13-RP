@@ -37,6 +37,13 @@
 	log_click("CONTEXT: [key_name(e_args.initiator)][e_args.performer != e_args.initiator? " via [key_name(e_args.performer)]" : ""] -> [target] [AUDIT_COORD(target)]: [message]")
 
 /**
+ * log click - action buttons
+ */
+/proc/log_click_action(datum/event_args/actor/e_args, datum/action/action, message)
+	log_click()
+	#warn impl
+
+/**
  * Log stack crafting
  *
  * todo: log initiator

@@ -1,11 +1,3 @@
-//? YOU SHOULD ALWAYS USE AB DEFAULT; THE OTHERS ARE LEGACY. STOP USING THEM.
-#define ACTION_TYPE_DEFAULT 0
-#define ACTION_TYPE_INNATE 3
-
-//? Action Datum
-
-// todo: multiple owners
-// todo: ability datums? cooldown needs more checking
 /**
  * action datums
  *
@@ -51,35 +43,32 @@
 	/// expected target type
 	var/target_type
 
-	//? legacy / unsorted
-	/// action type for legacy non-default handling
-	var/action_type = ACTION_TYPE_DEFAULT
-	var/procname = null
-	var/check_flags = 0
-	var/processing = 0
-	var/active = 0
-	var/button_icon = 'icons/screen/actions/actions.dmi'
-
-	var/button_icon_state = "default"
-
-	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
-	/// background icon state in [background_icon] - the state_on overlay will be added when this is active, automatically.
-	var/background_icon_state = "default"
-
 	//* Button(s) *//
 	/// all buttons that are on us right now
 	var/list/atom/movable/screen/movable/action_button/buttons
+	/// do not update buttons; something else manages them
+	var/rendering_externally_managed = FALSE
+	/// where the button's background icon is from
+	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
+	/// what the action's background state should be
+	var/background_icon_state = "default"
+	/// custom background overlay to add; this goes below button sprite / overlays!
+	var/background_additional_overlay
+	/// the icon of the button's actual internal sprite, overlaid on the background
+	var/button_icon = 'icons/screen/actions/actions.dmi'
+	/// the icon_state of the button's actual internal sprite, overlaid on the background
+	var/button_icon_state = "default"
+	/// only overlay [button_additional_overlay]
+	var/button_additional_only = FALSE
+	/// custom overlay to add to all buttons; this is arbitrary, and can be a reference to an atom
+	var/button_additional_overlay
+
+	#warn below
 
 	/// last button availability
 	var/button_availability
-	/// last button toggle
-	var/button_toggled
-	/// are button updates managed? if so, we don't auto update.
-	var/button_managed = FALSE
-	/// is the button visible
-	var/button_visibility = TRUE
-	/// custom overlay to add to button; this is arbitrary, and can be a reference to an item
-	var/button_overlay
+
+	#warn above
 
 /datum/action/New(datum/target)
 	if(!target_compatible(target))
@@ -92,6 +81,8 @@
  */
 /datum/action/proc/target_compatible(datum/target)
 	return isnull(target_type) || istype(target, target_type)
+
+#warn below
 
 /datum/action/Destroy()
 	if(owner)
@@ -126,29 +117,6 @@
 		return
 	button = new
 	button.owner = src
-
-/datum/action/proc/_trigger(mob/user)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	// todo: log
-	if(!Checks())
-		return FALSE
-	on_trigger(user, target)
-	switch(action_type)
-		if(ACTION_TYPE_INNATE)
-			if(!active)
-				Activate()
-			else
-				Deactivate()
-	return TRUE
-
-/datum/action/proc/Activate()
-	return
-
-/datum/action/proc/Deactivate()
-	return
-
-/datum/action/proc/CheckRemoval(mob/living/user) // 1 if action is no longer valid for this mob and should be removed
-	return 0
 
 /datum/action/proc/IsAvailable()
 	return Checks()
@@ -220,13 +188,46 @@
  * update all button appearances / states
  */
 /datum/action/proc/update_buttons()
+	if(rendering_externally_managed)
+		return
+	var/appearance/direct_appearance = render_button_appearance()
 	for(var/atom/movable/screen/movable/action_button/button as anything in buttons)
-		update_button(button)
+		update_button(button, direct_appearance)
 
 /**
  * updates a button's appearance / state
  */
-/datum/action/proc/update_button(atom/movable/screen/movable/action_button/button)
+/datum/action/proc/update_button(atom/movable/screen/movable/action_button/button, appearance/use_direct)
+	if(rendering_externally_managed)
+		return
+	if(isnull(use_direct))
+		use_direct = render_button_appearance()
+	button.appearance = use_direct
+
+/**
+ * gets our button appearance
+ */
+/datum/action/proc/render_button_appearance()
+	var/image/generating = new
+
+	generating.icon = background_icon
+	generating.icon_state = background_icon_state
+
+	if(background_additional_overlay)
+		generating.overlays += background_additional_overlay
+
+	var/image/button
+	if(button_additional_only)
+		if(button_additional_overlay)
+			button = button_additional_overlay
+	else
+		button = new
+		button.icon = button_icon
+		button.icon_state = button_icon_state
+		if(button_additional_overlay)
+			button.overlays += button_additional_overlay
+
+	return generating
 
 #warn impl all
 

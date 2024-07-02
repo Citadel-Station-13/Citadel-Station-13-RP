@@ -1079,7 +1079,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	. = ..()
 	if(.)
 		return
-	receiver.disconnect(receiver.source)
+	target.disconnect(target.source)
 	return TRUE
 
 /datum/action/holocall/swap_view
@@ -1093,7 +1093,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	. = ..()
 	if(.)
 		return
-	receiver.cleanup_remote_presence(receiver.source)
+	target.cleanup_remote_presence(target.source)
 	return TRUE
 
 /**

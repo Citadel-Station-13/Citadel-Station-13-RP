@@ -1,9 +1,11 @@
+// todo: rework everything, new actions are multi-owner!
+
 //VEHICLE DEFAULT HANDLING
 /obj/vehicle/proc/generate_actions()
 	return
 
 /obj/vehicle/proc/generate_action_type(actiontype)
-	var/datum/action/vehicle/A = new actiontype
+	var/datum/action/vehicle/A = new actiontype(src)
 	if(!istype(A))
 		return
 	// A.vehicle_target = src
@@ -28,7 +30,7 @@
 	if(occupant_actions[m][actiontype])
 		return TRUE
 	var/datum/action/action = generate_action_type(actiontype)
-	action.grant(m)
+	action.regex_this_grant(m.actions_controlled)
 	occupant_actions[m][action.type] = action
 	return TRUE
 
@@ -38,7 +40,7 @@
 	LAZYINITLIST(occupant_actions[m])
 	if(occupant_actions[m][actiontype])
 		var/datum/action/action = occupant_actions[m][actiontype]
-		action.remove(m)
+		action.revoke(m.actions_controlled)
 		occupant_actions[m] -= actiontype
 	return TRUE
 
@@ -85,7 +87,7 @@
 	for(var/path in occupant_actions[M])
 		stack_trace("Leftover action type [path] in vehicle type [type] for mob type [M.type] - THIS SHOULD NOT BE HAPPENING!")
 		var/datum/action/action = occupant_actions[M][path]
-		action.remove(M)
+		action.revoke(M.actions_controlled)
 		occupant_actions[M] -= path
 	occupant_actions -= M
 	return TRUE
@@ -98,26 +100,26 @@
 	button_icon_state = "vehicle_eject"
 
 /datum/action/vehicle/sealed
-	var/obj/vehicle/sealed/vehicle_entered_target
+	target_type = /obj/vehicle/sealed
 
 /datum/action/vehicle/sealed/climb_out
 	name = "Climb Out"
 	desc = "Climb out of your vehicle!"
 	button_icon_state = "car_eject"
 
-/datum/action/vehicle/sealed/climb_out/on_trigger(mob/user)
+/datum/action/vehicle/sealed/climb_out/invoke_target(obj/vehicle/sealed/target, datum/event_args/actor/actor)
 	. = ..()
-	if(istype(vehicle_entered_target))
-		vehicle_entered_target.mob_try_exit(owner, owner)
-
-/datum/action/vehicle/ridden
-	var/obj/vehicle/ridden/vehicle_ridden_target
+	if(.)
+		return
+	target.mob_try_exit(actor.performer, actor.performer)
 
 /datum/action/vehicle/sealed/remove_key
 	name = "Remove key"
 	desc = "Take your key out of the vehicle's ignition"
 	button_icon_state = "car_removekey"
 
-/datum/action/vehicle/sealed/remove_key/on_trigger(mob/user, datum/receiver)
+/datum/action/vehicle/sealed/remove_key/invoke_target(obj/vehicle/sealed/target, datum/event_args/actor/actor)
 	. = ..()
-	vehicle_entered_target.remove_key(owner)
+	if(.)
+		return
+	target.remove_key(actor.performer)

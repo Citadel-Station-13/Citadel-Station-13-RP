@@ -326,7 +326,7 @@
 			item_state = initial(item_state)
 			usr.update_inv_glasses()
 			to_chat(usr, "You activate the retinal projector on the [src].")
-		usr.update_action_buttons()
+		update_action_buttons()
 
 /obj/item/clothing/glasses/hud/health/eyepatch
 	name = "Health Scanner Patch"

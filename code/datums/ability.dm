@@ -234,12 +234,12 @@
 	bound = TRUE
 	generate_action()
 	if(!isnull(owner))
-		action?.grant(owner)
+		action?.regex_this_grant(owner.actions_innate)
 
 /datum/ability/proc/unbind()
 	bound = FALSE
 	if(!isnull(owner))
-		action?.remove(owner)
+		action?.revoke(owner.actions_innate)
 
 /datum/ability/proc/associate(mob/M)
 	if(owner == M)
@@ -248,7 +248,7 @@
 	owner = M
 	owner.register_ability(src)
 	if(bound)
-		action?.grant(M)
+		action?.regex_this_grant(owner.actions_innate)
 		update_action()
 	else if(always_bind && !hidden)
 		quickbind()
@@ -256,7 +256,7 @@
 /datum/ability/proc/disassociate(mob/M)
 	ASSERT(owner == M)
 	if(bound)
-		action?.remove(owner)
+		action?.revoke(owner.actions_innate)
 	owner.unregister_ability(src)
 	owner = null
 

@@ -98,7 +98,7 @@
 		magpulse = 1
 		ADD_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
-	user.update_action_buttons()
+	update_action_buttons()
 
 //In case they somehow come off while enabled.
 /obj/item/clothing/shoes/magboots/vox/dropped(mob/user, flags, atom/newLoc)

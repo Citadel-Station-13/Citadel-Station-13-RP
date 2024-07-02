@@ -703,7 +703,7 @@ BLIND     // can't see anything
 			icon_state = "[initial(icon_state)]up"
 			to_chat(usr, "You push \the [src] up from in front of your eyes.")
 		update_worn_icon()
-		usr.update_action_buttons()
+		update_action_buttons()
 
 /obj/item/clothing/glasses/jamjar
 	name = "jamjar glasses"

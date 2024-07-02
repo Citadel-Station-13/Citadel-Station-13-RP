@@ -32,6 +32,18 @@
 	return ..()
 
 /**
+ * adds a holder
+ */
+/datum/action_drawer/proc/register_holder(datum/action_holder/holder)
+	#warn impl
+
+/**
+ * unregisters a holder
+ */
+/datum/action_drawer/proc/unregister_holder(datum/action_holder/holder)
+	#warn impl
+
+/**
  * propagates an action being pushed up by a holder
  */
 /datum/action_drawer/proc/add_action(datum/action/action)
@@ -48,11 +60,12 @@
  */
 /datum/action_drawer/proc/toggle_hiding_buttons()
 	hiding_buttons = !hiding_buttons
-	var/list/atom/mvoable/screen/movable/action_button/buttons = all_action_buttons()
+	var/list/atom/movable/screen/movable/action_button/buttons = all_action_buttons()
 	if(hiding_buttons)
 		client.screen -= buttons
 	else
 		client.screen += buttons
+	hide_toggle?.update_icon()
 
 /**
  * gets all action button screen objects
@@ -62,3 +75,22 @@
 	for(var/key as anything in using_actions)
 		. += using_actions[key]
 
+#define ACTION_DRAWER_WEST_OFFSET 4
+#define ACTION_DRAWER_NORTH_OFFSET 26
+#define ACTION_DRAWER_MAX_COLUMNS 12
+#define ACTION_DRAWER_COLUMN_SPACING 2
+
+/**
+ * generates screen location for a button at a specific index
+ */
+/datum/action_drawer/proc/screen_loc_for_index(index)
+	var/row = ceil((index + 1) / ACTION_DRAWER_MAX_COLUMNS)
+	var/column = (index % ACTION_DRAWER_MAX_COLUMNS) || ACTION_DRAWER_MAX_COLUMNS
+
+	return "LEFT+[column]:[ACTION_DRAWER_WEST_OFFSET + (column - 1) * ACTION_DRAWER_COLUMN_SPACING]\
+			,TOP-[row]:[ACTION_DRAWER_NORTH_OFFSET]"
+
+#undef ACTION_DRAWER_COLUMN_SPACING
+#undef ACTION_DRAWER_WEST_OFFSET
+#undef ACTION_DRAWER_NORTH_OFFSET
+#undef ACTION_DRAWER_MAX_COLUMNS

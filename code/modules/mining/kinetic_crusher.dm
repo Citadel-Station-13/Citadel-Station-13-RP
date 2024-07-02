@@ -211,7 +211,7 @@
 /obj/item/kinetic_crusher/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	light_on = !light_on
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
-	update_brightness(user)
+	update_brightness(actor.performer)
 	update_icon()
 
 /obj/item/kinetic_crusher/proc/update_brightness(mob/user = null)
