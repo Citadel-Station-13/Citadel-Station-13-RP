@@ -107,9 +107,9 @@
 
 /datum/point/proc/initialize_location(tile_x, tile_y, tile_z, p_x = 0, p_y = 0)
 	if(!isnull(tile_x))
-		x = ((tile_x - 1) * world.icon_size) + world.icon_size / 2 + p_x + 1
+		x = ((tile_x - 1) * WORLD_ICON_SIZE) + WORLD_ICON_SIZE / 2 + p_x + 1
 	if(!isnull(tile_y))
-		y = ((tile_y - 1) * world.icon_size) + world.icon_size / 2 + p_y + 1
+		y = ((tile_y - 1) * WORLD_ICON_SIZE) + WORLD_ICON_SIZE / 2 + p_y + 1
 	if(!isnull(tile_z))
 		z = tile_z
 
@@ -131,7 +131,8 @@
  */
 /datum/point/proc/instantiate_movable_with_unmanaged_offsets(typepath, ...)
 	ASSERT(ispath(typepath, /atom/movable))
-	var/turf/where = locate(ceil(x / WORLD_ICON_SIZE), ceil(y / WORLD_ICON_SIZE), z)
+	// todo: inline everything
+	var/turf/where = return_turf()
 	if(!where)
 		return
 	var/atom/movable/created = new typepath(arglist(list(where) + args.Copy(2)))
@@ -146,7 +147,7 @@
 	// 1 = -15,
 	// 32 = +16
 	// we start at 16, 16
-	. = x % world.icon_size
+	. = x % WORLD_ICON_SIZE
 	if(!.)
 		return 16
 	. -= 16
@@ -158,7 +159,7 @@
 	// 1 = -15,
 	// 32 = +16
 	// we start at 16, 16
-	. = y % world.icon_size
+	. = y % WORLD_ICON_SIZE
 	if(!.)
 		return 16
 	. -= 16
@@ -167,8 +168,11 @@
  * return  turf
  */
 /datum/point/proc/return_turf()
-	return locate(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
-
+	return locate(
+		ceil(floor(x) / WORLD_ICON_SIZE),
+		ceil(floor(y) / WORLD_ICON_SIZE),
+		z,
+	)
 
 /**
  * extract closest in-bounds turf
@@ -176,13 +180,21 @@
  * does not check for map transitions
  */
 /datum/point/proc/clamped_return_turf()
-	return locate(clamp(CEILING(x / world.icon_size, 1), 1, world.maxx), clamp(CEILING(y / world.icon_size, 1), 1, world.maxy), z)
+	return locate(
+		clamp(ceil(floor(x) / WORLD_ICON_SIZE), 1, world.maxx),
+		clamp(ceil(floor(y) / WORLD_ICON_SIZE), 1, world.maxy),
+		z,
+	)
 
 /**
  * return list(x, y, z)
  */
 /datum/point/proc/return_coordinates()		//[turf_x, turf_y, z]
-	return list(CEILING(x / world.icon_size, 1), CEILING(y / world.icon_size, 1), z)
+	return list(
+		ceil(floor(x) / WORLD_ICON_SIZE),
+		ceil(floor(y) / WORLD_ICON_SIZE),
+		z,
+	)
 
 /datum/point/vector
 	/// Pixels per iteration
