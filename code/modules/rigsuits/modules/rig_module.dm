@@ -167,6 +167,8 @@
 
 //* Power *//
 
+/*
+
 /obj/item/rig_module/proc/set_high_power_draw(watts)
 	#warn impl
 
@@ -178,6 +180,8 @@
 
 /obj/item/rig_module/proc/use_low_burst_power(joules)
 	return isnull(host)? 0 : host.draw_low_power(joules)
+
+*/
 
 //* Setters *//
 
