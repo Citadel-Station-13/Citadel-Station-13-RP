@@ -156,7 +156,7 @@
 
 /mob/living/carbon/brain/handle_regular_hud_updates()
 	if (healths)
-		if (stat != 2)
+		if (stat != DEAD)
 			switch(health)
 				if(100 to INFINITY)
 					healths.icon_state = "health0"
@@ -175,16 +175,16 @@
 		else
 			healths.icon_state = "health7"
 
-	if (stat == 2 || (MUTATION_XRAY in src.mutations))
+	if (stat == DEAD || (MUTATION_XRAY in src.mutations))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		self_perspective?.legacy_force_set_hard_darkvision(0)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_ONE)
-	else if (stat != 2)
+	else if (stat != DEAD)
 		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		self_perspective?.legacy_force_set_hard_darkvision(null)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
-	if (stat != 2)
+	if (stat != DEAD)
 		//Blindness is handled by the modifier
 		if(disabilities & DISABILITY_NEARSIGHTED)
 			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)

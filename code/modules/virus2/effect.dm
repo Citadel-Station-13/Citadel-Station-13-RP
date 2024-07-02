@@ -366,7 +366,7 @@
 	stage = 3
 
 /datum/disease2/effect/hallucinations/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob.hallucination += 25
+	mob.adjustHallucination(25)
 
 /datum/disease2/effect/minordeaf
 	name = "Hearing Loss"

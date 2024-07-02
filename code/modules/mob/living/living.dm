@@ -333,6 +333,18 @@ default behaviour is:
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
 
+/mob/living/adjustHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(hallucination + amount, 0, 400) //cap at 400, any higher is just obnoxious
+
+/mob/living/setHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(amount, 0, 400) //cap at 400, any higher is just obnoxious
+
 // ++++ROCKDTBEN++++ MOB PROCS //END
 
 // Applies direct "cold" damage while checking protection against the cold.

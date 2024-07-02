@@ -1141,7 +1141,7 @@
 				if(!handling_hal)
 					spawn handle_hallucinations() //The not boring kind!
 
-			hallucination = max(0, hallucination - 2)
+			adjustHallucination(-2)
 		else
 			for(var/atom/a in hallucinations)
 				qdel(a)
@@ -1164,6 +1164,7 @@
 			apply_status_effect(/datum/status_effect/sight/blindness, 5 SECOND)
 			animate_tail_reset()
 			adjustHalLoss(-3)
+			adjustHallucination(-3)
 
 		if(is_sleeping())
 			handle_dreams()
