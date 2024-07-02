@@ -135,23 +135,33 @@
 	if(!where)
 		return
 	var/atom/movable/created = new typepath(arglist(list(where) + args.Copy(2)))
-	var/px = MODULUS_F(x, WORLD_ICON_SIZE) - 16 - 1
-	var/py = MODULUS_F(y, WORLD_ICON_SIZE) - 16 - 1
-	created.pixel_x = px
-	created.pixel_y = py
+	created.pixel_x = return_px()
+	created.pixel_y = return_py()
 	return created
 
 /**
- * return pixel x
+ * return rounded pixel x
  */
 /datum/point/proc/return_px()
-	return MODULUS_F(x, world.icon_size) - 16 - 1
+	// 1 = -15,
+	// 32 = +16
+	// we start at 16, 16
+	. = x % world.icon_size
+	if(!.)
+		return 16
+	. -= 16
 
 /**
- * return pixel y
+ * return rounded pixel y
  */
 /datum/point/proc/return_py()
-	return MODULUS_F(y, world.icon_size) - 16 - 1
+	// 1 = -15,
+	// 32 = +16
+	// we start at 16, 16
+	. = y % world.icon_size
+	if(!.)
+		return 16
+	. -= 16
 
 /**
  * return  turf
