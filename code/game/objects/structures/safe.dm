@@ -171,7 +171,7 @@ FLOOR SAFES
 	density = 0
 	plane = TURF_PLANE
 	layer = BELOW_TURF_LAYER
-	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 
 /obj/structure/safe/floor/Initialize(mapload)
 	. = ..()
