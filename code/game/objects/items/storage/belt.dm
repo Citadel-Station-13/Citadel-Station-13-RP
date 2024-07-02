@@ -522,12 +522,16 @@
 	icon_state = "sheath-sabre"
 	max_items = 1
 	insertion_whitelist = list(
-		/obj/item/melee/sabre,
+		/obj/item/material/sword/sabre,
 		/obj/item/melee/baton/stunsword,
 		)
 	starts_with = list(
-		/obj/item/melee/sabre,
+		/obj/item/material/sword/sabre,
 		)
+
+/obj/item/storage/belt/sheath/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/belt/sheath/update_icon()
 	icon_state = "sheath"
@@ -539,6 +543,7 @@
 		var/mob/living/L = loc
 		L.regenerate_icons()
 	..()
+
 /obj/item/storage/belt/ranger
 	name = "ranger belt"
 	desc = "The fancy utility-belt holding the tools, cuffs and gadgets of the Go Go ERT-Rangers. The belt buckle is not real phoron, but it is still surprisingly comfortable to wear."
