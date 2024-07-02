@@ -14,8 +14,10 @@
 #define BITFIELD(thing) #thing = thing
 #define BITFIELD_NAMED(name, thing) name = thing
 
-// todo: impl
 /// KEY: must be unique, may be arbitrary; not a string, as it's used in typepath generation
 /// CONSTRAINTS: list(/type = list(varname, ...), ...)
-/// BITFIELDS: list of BITFIELD_NAME().
+/// BITFIELDS: list of BITFIELD_NEW().
 #define DEFINE_BITFIELD_NEW(KEY, CONSTRAINTS, BITFIELDS)
+/// NAME: must be a string
+/// VALUE: the actual enum value, whatever it is
+#define BITFIELD_NEW(NAME, VALUE) ##NAME = ##VALUE
