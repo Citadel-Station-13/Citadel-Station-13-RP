@@ -17,6 +17,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * todo: should we use reagents instead..?
  */
 /obj/item/stream_projector/medichine
+	prototype_id = "medichine-projector"
 	name = "medichine stream projector"
 	desc = "A specialized, locked-down variant of a nanite stream projector. Deploys medichines from a cartridge onto a target's surface."
 	icon = 'icons/items/stream_projector/medichine.dmi'
@@ -361,6 +362,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
  * medical beamgun cell
  */
 /obj/item/medichine_cell
+	prototype_id = "medichine-cell"
 	name = "medichine cartridge (EMPTY)"
 	desc = "A cartridge meant to hold medicinal nanites."
 	icon = 'icons/items/stream_projector/medichine.dmi'
@@ -399,6 +401,26 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		var/image/I = image(icon, "[base_icon_state]-[number]")
 		I.color = cell_datum.color
 		add_overlay(I, TRUE)
+
+/obj/item/medichine_cell/serialize()
+	. = ..()
+	// todo: id
+	.["cell"] = "[cell_datum.type]"
+	.["volume"] = volume
+	// todo: how do we know when we should serialize varedits? we have a serious potential desync issue otherwise
+	.["max_volume"] = max_volume
+
+/obj/item/medichine_cell/deserialize(list/data)
+	// todo: id
+	if(data["cell"])
+		var/datum/medichine_cell/cell_found = fetch_cached_medichine_cell_datum(text2path(data["cell"]))
+		if(cell_found)
+			cell_datum = cell_found
+	if(!isnull(data["volume"]))
+		volume = data["volume"]
+	if(!isnull(data["max_volume"]))
+		max_volume = data["max_volume"]
+	return ..()
 
 /obj/item/medichine_cell/proc/fill(amount)
 	. = min(amount, volume)

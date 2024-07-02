@@ -8,9 +8,13 @@
 	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
-	//? Core
+	//* Core *//
 	/// Atom flags.
 	var/atom_flags = NONE
+	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
+	///
+	/// * this is very much a 'set this on type and all subtypes or don't set it at all' situation.
+	var/prototype_id
 
 	//? Interaction
 	/// Intearaction flags.

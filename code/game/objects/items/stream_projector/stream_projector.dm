@@ -9,6 +9,7 @@
  * processing uses SSprocessing.
  */
 /obj/item/stream_projector
+	abstract_type = /obj/item/stream_projector
 	/// locked targets; associated value must be truthy but is reserved by visual construction.
 	var/list/atom/active_targets
 	/// drop all targets on attack self
