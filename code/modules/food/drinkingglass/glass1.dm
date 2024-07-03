@@ -59,6 +59,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 30
 	center_of_mass = list("x"=16, "y"=16)
+	materials_base = list(MAT_GLASS = 60)
 
 /obj/item/reagent_containers/food/drinks/cup/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
