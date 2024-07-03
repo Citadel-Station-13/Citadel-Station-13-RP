@@ -183,7 +183,7 @@
 	switch(construct_class)
 		if("Juggernaut")
 			var/mob/living/simple_mob/construct/juggernaut/Z = new /mob/living/simple_mob/construct/juggernaut (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -193,7 +193,7 @@
 			qdel(src)
 		if("Wraith")
 			var/mob/living/simple_mob/construct/wraith/Z = new /mob/living/simple_mob/construct/wraith (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -203,7 +203,7 @@
 			qdel(src)
 		if("Artificer")
 			var/mob/living/simple_mob/construct/artificer/Z = new /mob/living/simple_mob/construct/artificer (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -213,7 +213,7 @@
 			qdel(src)
 		if("Harvester")
 			var/mob/living/simple_mob/construct/harvester/Z = new /mob/living/simple_mob/construct/harvester (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -223,7 +223,7 @@
 			qdel(src)
 		if("Behemoth")
 			var/mob/living/simple_mob/construct/juggernaut/behemoth/Z = new /mob/living/simple_mob/construct/juggernaut/behemoth (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)

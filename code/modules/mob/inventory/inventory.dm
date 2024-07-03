@@ -25,6 +25,7 @@
 	owner = M
 	/// no lazy-init for actions for now since items with actions are so common
 	actions = new
+	M.client?.action_drawer.register_holder(actions)
 
 /datum/inventory/Destroy()
 	QDEL_NULL(actions)
@@ -130,6 +131,14 @@
 	for(var/obj/item/I as anything in owner.get_equipped_items())
 		if(I.body_cover_flags & cover_flags)
 			. += I
+
+//* Update Hooks *//
+
+/datum/inventory/proc/on_mobility_update()
+	for(var/datum/action/action in actions)
+		action.update_button_availability()
+
+// todo: redo things below, slowly
 
 /**
  * handles the insertion

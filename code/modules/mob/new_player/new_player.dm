@@ -202,7 +202,7 @@
 			observer.name = observer.real_name
 			if(!client.holder && !config_legacy.antag_hud_allowed)			// For new ghosts we remove the verb from even showing up if it's not allowed.
 				remove_verb(observer, /mob/observer/dead/verb/toggle_antagHUD)	// Poor guys, don't know what they are missing!
-			observer.key = key
+			transfer_client_to(observer)
 			observer.client?.holder?.update_stealth_ghost()
 			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return 0 and pass 0 into set_respawn_timer which will use the defaults
 			qdel(src)
@@ -578,7 +578,7 @@
 	new_character.update_icons_body()
 	new_character.update_eyes()
 
-	new_character.key = key		//Manually transfer the key to log them in
+	transfer_client_to(new_character)
 
 	return new_character
 

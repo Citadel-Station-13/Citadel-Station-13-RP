@@ -303,3 +303,14 @@
 	for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
 		provider.remove_client(src)
 	atom_hud_providers = null
+
+//* Transfer *//
+
+/**
+ * transfers us to a mob
+ *
+ * **never directly set ckey on a client or mob!**
+ */
+/client/proc/transfer_to(mob/moving_to)
+	var/mob/moving_from = mob
+	return moving_from.transfer_client_to(moving_to)

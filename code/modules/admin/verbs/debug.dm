@@ -142,7 +142,7 @@
 	var/mob/living/silicon/pai/pai = new(card)
 	pai.name = sanitizeSafe(input(choice, "Enter your pAI name:", "pAI Name", "Personal AI") as text)
 	pai.real_name = pai.name
-	pai.key = choice.key
+	choice.transfer_client_to(pai)
 	card.setPersonality(pai)
 	for(var/datum/paiCandidate/candidate in paiController.pai_candidates)
 		if(candidate.key == choice.key)
@@ -336,11 +336,11 @@
 			return
 		else
 			var/mob/observer/dead/ghost = new/mob/observer/dead(M,1)
-			ghost.ckey = M.ckey
+			M.transfer_ckey_to(ghost)
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] assumed direct control of [M].</font>", 1)
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob
-	M.ckey = src.ckey
+	transfer_to(M)
 	if( isobserver(adminmob) )
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

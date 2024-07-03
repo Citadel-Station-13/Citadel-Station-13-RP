@@ -12,9 +12,9 @@
 	/// holders that we are currently reigstered to
 	var/list/datum/action_holder/using_holders
 	/// actions on us, associated to their screen button
-	var/list/datum/action/using_actions
-	/// action = extra instances; used for deduping efficiently
-	var/list/datum/action/duped_actions
+	var/list/using_actions
+	/// action = number of extra instances; used for deduping efficiently
+	var/list/duped_actions
 
 	/// hiding all action buttons?
 	var/hiding_buttons = FALSE

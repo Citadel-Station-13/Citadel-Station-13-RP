@@ -594,7 +594,7 @@
 		qdel(M)
 		return
 
-	M.key = key
+	transfer_client_to(M)
 	if(M.mind)
 		M.mind.reset()
 	return

@@ -114,7 +114,7 @@
 /datum/action/proc/update_button_availability()
 	if(!button_availability_automatic)
 		return
-	var/calculated = check_availability()
+	var/calculated = calculate_availability()
 	if(calculated == button_availability)
 		return
 	button_availability = calculated
@@ -138,7 +138,7 @@
 		return
 	if(!no_state_calculations)
 		if(button_availability_automatic)
-			button_availability = check_availability()
+			button_availability = calculate_availability()
 	pre_render_hook()
 	var/appearance/direct_appearance = render_button_appearance()
 	for(var/atom/movable/screen/movable/action_button/button as anything in buttons)
