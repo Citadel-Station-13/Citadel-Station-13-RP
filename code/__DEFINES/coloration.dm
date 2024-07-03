@@ -1,6 +1,6 @@
 
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station developers.          *//
 
 //* coloration_mode; only bitfields for quick checks. only one can be applied at a time!
 
