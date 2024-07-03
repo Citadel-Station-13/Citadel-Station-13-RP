@@ -37,7 +37,9 @@
 
 	if(new_loc != loc)
 		var/turf/old_loc = loc
-		Move(new_loc, NORTH, dt * 10)
+		if(!Move(new_loc, NORTH, dt * 10))
+			initialize_physics() // for athena's event
+			return
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
