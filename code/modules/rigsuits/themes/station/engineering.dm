@@ -13,7 +13,7 @@
 	melee_soak = 0
 	melee_deflect = 5
 	bullet = 0.15
-	bullet_tier = BULLET_TIER_LOW
+	bullet_tier = BULLET_TIER_MEDIUM
 	bullet_soak = 0
 	bullet_deflect = 0
 	laser = 0.3
