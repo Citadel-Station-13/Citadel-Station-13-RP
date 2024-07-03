@@ -109,7 +109,7 @@
  * subtypes must implement this!
  */
 /atom/movable/screen/movable/proc/request_position_reset()
-	screen_loc = initia(screen_loc)
+	screen_loc = initial(screen_loc)
 
 /**
  * use in Click() to allow ctrl shift click resetting of position

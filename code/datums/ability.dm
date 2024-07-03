@@ -211,7 +211,7 @@
 	if(update_action)
 		update_action()
 	action?.background_icon_state += "_on"
-	action?.update_button()
+	action?.update_buttons()
 	on_enable()
 
 /datum/ability/proc/disable(update_action)
@@ -219,7 +219,7 @@
 	if(update_action)
 		update_action()
 	action?.background_icon_state = background_state
-	action?.update_button()
+	action?.update_buttons()
 	on_disable()
 
 /datum/ability/proc/on_enable()

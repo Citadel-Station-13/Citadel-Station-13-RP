@@ -70,10 +70,8 @@
 		item_state = normal_icon_state
 		set_light(0, 0, l_color = "#000000")
 
-	if(ishuman(loc))
-		var/mob/living/carbon/human/H = loc
-		H.update_inv_wear_suit(0)
-		H.update_action_buttons()
+	update_worn_icon()
+	update_action_buttons()
 	..()
 
 /obj/item/clothing/suit/armor/tesla/proc/shoot_lightning(mob/target, power)

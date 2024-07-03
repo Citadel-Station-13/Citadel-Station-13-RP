@@ -275,8 +275,8 @@
 	if(!isnull(action_mode_switch))
 		return
 	action_mode_switch = new(src)
-	action_mode_switch.button_overlay = parent
-	action_mode_switch.update_button()
+	action_mode_switch.button_additional_only = TRUE
+	action_mode_switch.button_additional_overlay = parent
 
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
 	ensure_buttons()
@@ -740,7 +740,8 @@ b
 
 /datum/object_system/storage/proc/update_icon()
 	parent.update_icon()
-	action_mode_switch?.button_overlay = parent
+	action_mode_switch?.button_additional_overlay = parent
+	action_mode_switch?.update_buttons(TRUE)
 
 //* Transfer *//
 

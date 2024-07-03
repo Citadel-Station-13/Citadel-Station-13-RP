@@ -464,13 +464,12 @@
 		A.regex_this_grant(actions_innate)
 		A.grant(src)
 		if(A.update_on_grant)
-			A.update_button()
+			A.update_buttons()
 
 /mob/living/silicon/pai/proc/update_chassis_actions()
 	for(var/datum/action/pai/A in actions)
 		if(A.update_on_chassis_change)
-			A.update_button()
-	update_action_buttons()
+			A.update_buttons()
 
 /mob/living/silicon/pai/proc/handle_hologram_destroy(var/obj/effect/pai_hologram/hologram)
 	active_holograms -= hologram
