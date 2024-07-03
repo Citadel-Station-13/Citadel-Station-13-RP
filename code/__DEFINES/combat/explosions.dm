@@ -54,8 +54,93 @@
 	falloff_exp = 0.88
 	falloff_lin = EXPLOSION_POWER_APPROXIMATE_DEVASTATE / 12
 
-#warn level 1 to 5 standard ones
+/**
+ * annihilation / maxcap
+ */
+/datum/explosion_preset/level_5
 
-#warn 3 item detonation's
+/**
+ * halfcap / devastating
+ */
+/datum/explosion_preset/level_4
 
-#warn 3 standard grenade levels
+/**
+ * minibomb devastation, large radius / major
+ */
+/datum/explosion_preset/level_3
+
+/**
+ * moderately sized explosion
+ */
+/datum/explosion_preset/level_2
+
+/**
+ * minibomb
+ */
+/datum/explosion_preset/level_1
+
+/**
+ * devastating backfire
+ */
+/datum/explosion_preset/item_backfire_3
+
+/**
+ * major backfire
+ */
+/datum/explosion_preset/item_backfire_2
+
+/**
+ * minor backfire
+ */
+/datum/explosion_preset/item_backfire_1
+
+/**
+ * massive radius / antigrain
+ */
+/datum/explosion_preset/grenade_5
+
+/**
+ * large radius / boosted
+ */
+/datum/explosion_preset/grenade_4
+
+/**
+ * medium / high explosive grenade
+ */
+/datum/explosion_preset/grenade_3
+
+/**
+ * small radius
+ */
+/datum/explosion_preset/grenade_2
+
+/**
+ * tiny / weak
+ */
+/datum/explosion_preset/grenade_1
+
+/**
+ * seismic charges
+ */
+/datum/explosive_preset/seismic_charge
+
+/**
+ * seismic charges - boosted
+ */
+/datum/explosive_preset/seismic_charge/boosted
+
+/**
+ * R-UST fusion rupture
+ *
+ * todo: this is awful
+ */
+/datum/explosive_preset/fusion_rupture_legacy
+	#warn 0/5/5 before
+
+/**
+ * disperser beam collision with turf
+ */
+/datum/explosive_preset/disperser_beam_collision
+	#warn 1/2/3 before
+
+#warn impl all

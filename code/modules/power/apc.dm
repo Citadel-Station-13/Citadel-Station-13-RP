@@ -119,6 +119,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	use_power = USE_POWER_OFF
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	armor_type = /datum/armor/object/medium
+	integrity = 300
+	integrity_max = 300
+	integrity_failure = 100
 	var/area/area
 	var/areastring = null
 	var/obj/item/cell/cell
@@ -1283,32 +1286,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 	update_icon()
 	..()
-
-/obj/machinery/power/apc/legacy_ex_act(severity)
-
-	switch(severity)
-		if(1)
-			//set_broken() //now qdel() do what we need
-			if (cell)
-				LEGACY_EX_ACT(cell, 1, null) // more lags woohoo
-			qdel(src)
-			return
-		if(2)
-			if (prob(75))
-				set_broken()
-				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 2, null)
-		if(3)
-			if (prob(50))
-				set_broken()
-				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 3, null)
-		if(4)
-			if (prob(25))
-				set_broken()
-				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 3, null)
-	return
 
 /obj/machinery/power/apc/disconnect_terminal()
 	if(terminal)

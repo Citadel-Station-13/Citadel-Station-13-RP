@@ -33,4 +33,4 @@
 			. *= AM.ex_act(power, damage_multiplier) / remaining
 
 /turf/ex_act(power, list/damage_multiplier)
-	return power * explosion_block_exp - explosion_block_lin
+	return ..() * explosion_block_exp - explosion_block_lin

@@ -18,17 +18,17 @@
 		distance++
 		if(T.density)
 			if(distance < 7)
-				explosion(T,1,2,3)
+				explosion_shockwave(T, /datum/explosive_preset/disperser_beam_collision)
 				continue
 			else
-				LEGACY_EX_ACT(T, 1, null)
+				T.run_ex_act(EXPLOSION_POWER_APPROXIMATE_DEVASTATE)
 		for(var/atom/A in T)
 			if(A.density)
 				if(distance < 7)
-					explosion(A,1,2,3)
+					explosion_shockwave(T, /datum/explosive_preset/disperser_beam_collision)
 					break
 				else
-					LEGACY_EX_ACT(A, 1, null)
+					A.ex_act(EXPLOSION_POWER_APPROXIMATE_DEVASTATE)
 
 	var/list/relevant_z = GetConnectedZlevels(start.z)
 	for(var/mob/M in global.GLOB.player_list)
