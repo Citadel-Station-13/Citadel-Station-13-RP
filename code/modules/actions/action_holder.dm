@@ -9,10 +9,14 @@
 	///
 	/// * this is a lazylist
 	var/list/datum/action/actions
+	/// all drawers using us
+	var/list/datum/action_drawer/drawers
 
 /datum/action_holder/Destroy()
 	for(var/datum/action/action as anything in actions)
 		remove_action(action)
+	for(var/datum/action_drawer/drawer as anything in drawers)
+		drawer.unregister_holder(src)
 	return ..()
 
 /**
@@ -31,13 +35,15 @@
  * called when an action is added
  */
 /datum/action_holder/proc/on_action_add(datum/action/action)
-	#warn impl
+	for(var/datum/action_drawer/drawer as anything in drawers)
+		drawer.add_action(action, src)
 
 /**
  * called when an action is removed
  */
 /datum/action_holder/proc/on_action_remove(datum/action/action)
-	#warn impl
+	for(var/datum/action_drawer/drawer as anything in drawers)
+		drawer.remove_action(action, src)
 
 /**
  * get an actor tuple based on an invoker

@@ -35,25 +35,55 @@
  * adds a holder
  */
 /datum/action_drawer/proc/register_holder(datum/action_holder/holder)
-	#warn impl
+	ASSERT(!(holder in using_holders))
+	LAZYADD(using_holders, holder)
+
+	for(var/datum/action/action as anything in holder.actions)
+		add_action(action, holder)
 
 /**
  * unregisters a holder
  */
 /datum/action_drawer/proc/unregister_holder(datum/action_holder/holder)
-	#warn impl
+	ASSERT(holder in using_holders)
+	LAZYREMOVE(using_holders, holder)
+
+	for(var/datum/action/action as anything in holder.actions)
+		remove_action(action, holder)
 
 /**
  * propagates an action being pushed up by a holder
  */
-/datum/action_drawer/proc/add_action(datum/action/action)
-	#warn impl
+/datum/action_drawer/proc/add_action(datum/action/action, datum/action_holder/holder)
+	if(using_actions?[action])
+		if(!duped_actions)
+			duped_actions = list()
+		duped_actions[action] = duped_actions[action] + 1
+		return
+	if(!using_actions)
+		using_actions = list()
+	var/atom/movable/screen/movable/action_button/button
+	using_actions[action] = button = action.create_button(src, holder)
+	if(!hiding_buttons)
+		client?.screen += button
 
 /**
  * propagates an action being removed from a holder
  */
-/datum/action_drawer/proc/remove_action(datum/action/action)
-	#warn impl
+/datum/action_drawer/proc/remove_action(datum/action/action, datum/action_holder/holder)
+	ASSERT(using_actions?[action])
+	if(duped_actions?[action])
+		duped_actions[action]--
+		if(!duped_actions[action])
+			duped_actions -= action
+			if(!length(duped_actions))
+				duped_actions = null
+		return
+	var/atom/movable/screen/movable/action_button/button = using_actions[action]
+	if(!hiding_buttons)
+		client?.screen -= button
+	action.destroy_button(button)
+	using_actions -= action
 
 /**
  * toggles if we're hiding buttons
@@ -74,6 +104,21 @@
 	. = list()
 	for(var/key as anything in using_actions)
 		. += using_actions[key]
+
+/**
+ * aligns a button
+ */
+/datum/action_drawer/proc/align_button(atom/movable/screen/movable/action_button/button)
+	button.screen_loc = screen_loc_for_index(using_actions.Find(button.action))
+
+/**
+ * aligns all buttons
+ */
+/datum/action_drawer/proc/align_buttons()
+	for(var/i in 1 to length(using_actions))
+		var/key = using_actions[i]
+		var/atom/movable/screen/movable/action_button/button = using_actions[key]
+		button.screen_loc = screen_loc_for_index(i)
 
 #define ACTION_DRAWER_WEST_OFFSET 4
 #define ACTION_DRAWER_NORTH_OFFSET 26

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
 /**
  * action datums
  *
@@ -21,7 +24,6 @@
 	var/desc = "An action."
 
 	//* Checks *//
-
 	/// required mobility flags
 	var/check_mobility_flags = NONE
 	/// custom check callback called before invocation with (actor)
@@ -30,7 +32,6 @@
 	var/datum/callback/check_callback
 
 	//* Target / Delegate *//
-
 	/// callback to invoke with (actor) on trigger at base of /invoke().
 	///
 	/// * return a truthy value from the callback to halt propagation
@@ -42,6 +43,10 @@
 	var/datum/target
 	/// expected target type
 	var/target_type
+
+	//* Ownership *//
+	/// the holders we're in
+	var/list/datum/action_holder/holders
 
 	//* Button(s) *//
 	/// all buttons that are on us right now
@@ -62,13 +67,10 @@
 	var/button_additional_only = FALSE
 	/// custom overlay to add to all buttons; this is arbitrary, and can be a reference to an atom
 	var/button_additional_overlay
-
-	#warn below
-
-	/// last button availability
-	var/button_availability
-
-	#warn above
+	/// set availability to; it must be 0 to 1, inclusive.
+	var/button_availability = 1
+	/// default handling for availability should be invoked
+	var/button_availability_automatic = TRUE
 
 /datum/action/New(datum/target)
 	if(!target_compatible(target))
@@ -76,120 +78,68 @@
 		CRASH("invalid target for [src] - [target]")
 	src.target = target
 
+/datum/action/Destroy()
+	target = null
+	invoke_callback = null
+	check_callback = null
+	for(var/datum/action_holder/holder in holders)
+		holder.remove_action(src)
+	if(length(buttons))
+		stack_trace("still had buttons after Destroy")
+		QDEL_LIST(buttons)
+	// clear refs to overlays; they might be objects / not belonging to us, do not delete it
+	button_additional_overlay = null
+	background_additional_overlay = null
+	return ..()
+
 /**
  * checks if a datum is a valid target for us
  */
 /datum/action/proc/target_compatible(datum/target)
 	return isnull(target_type) || istype(target, target_type)
 
-#warn below
-
-/datum/action/Destroy()
-	if(owner)
-		remove(owner)
-	target = null
-	QDEL_NULL(button)
-	// clear ref, because it might be directly an object
-	button_overlay = null
-	return ..()
-
-/datum/action/proc/_grant(mob/living/T)
-	if(owner)
-		if(owner == T)
-			return
-		remove(owner)
-	assert_button()
-	owner = T
-	owner.actions.Add(src)
-	owner.update_action_buttons()
-
-/datum/action/proc/_remove(mob/living/T)
-	if(button)
-		if(T.client)
-			T.client.screen -= button
-		QDEL_NULL(button)
-	T.actions.Remove(src)
-	T.update_action_buttons()
-	owner = null
-
-/datum/action/proc/assert_button()
-	if(!isnull(button))
-		return
-	button = new
-	button.owner = src
-
-/datum/action/proc/IsAvailable()
-	return Checks()
-
-/datum/action/proc/UpdateName()
-	return name
-
-/**
- * updates button state to match our stored state.
- */
-/datum/action/proc/update_button()
-	if(isnull(button))
-		return
-
-	auto_button_update(update = FALSE)
-
-	button.icon = background_icon
-	button.icon_state = background_icon_state
-
-	button.cut_overlays()
-	var/image/img
-	if(action_type == ACTION_TYPE_ITEM && isitem(target))
-		var/obj/item/I = target
-		img = image(I.icon, src , I.icon_state)
-	else if(button_icon && button_icon_state)
-		img = image(button_icon,src,button_icon_state)
-	img.pixel_x = 0
-	img.pixel_y = 0
-	button.add_overlay(img)
-
-	if(button_overlay)
-		button.add_overlay(button_overlay)
-
-	if(button_availability < 1)
-		button.color = rgb(128,0,0,128)
-	else
-		button.color = rgb(255,255,255,255)
-
-/**
- * pushes immediate button update
- *
- * @params
- * * availability - 0 to 1 of how ready we are
- * * active - turned on?
- * * update - update button appearance?
- */
-/datum/action/proc/push_button_update(availability, active, update = TRUE)
-	button_availability = availability
-	button_toggled = active
-	if(update)
-		update_button()
-
-/**
- * automatically updates button
- *
- * @params
- * * update - update button appearance?
- */
-/datum/action/proc/auto_button_update(update)
-	if(button_managed)
-		return
-	push_button_update(IsAvailable()? 1 : 0, active, update)
-
-#warn above
-
 //* Button *//
+
+/**
+ * set button availability
+ */
+/datum/action/proc/push_button_availability(availability, update = TRUE)
+	button_availability = availability
+	if(update)
+		update_buttons(TRUE)
+
+/**
+ * updates if availability changed
+ */
+/datum/action/proc/update_button_availability()
+	if(!button_availability_automatic)
+		return
+	var/calculated = check_availability()
+	if(calculated == button_availability)
+		return
+	button_availability = calculated
+	update_buttons(TRUE)
+
+/**
+ * called pre-render
+ *
+ * use this to automatically update overlays and whatnot
+ *
+ * * called once for all buttons, not once per button!
+ */
+/datum/action/proc/pre_render_hook()
+	return
 
 /**
  * update all button appearances / states
  */
-/datum/action/proc/update_buttons()
+/datum/action/proc/update_buttons(no_state_calculations)
 	if(rendering_externally_managed)
 		return
+	if(!no_state_calculations)
+		if(button_availability_automatic)
+			button_availability = check_availability()
+	pre_render_hook()
 	var/appearance/direct_appearance = render_button_appearance()
 	for(var/atom/movable/screen/movable/action_button/button as anything in buttons)
 		update_button(button, direct_appearance)
@@ -201,6 +151,7 @@
 	if(rendering_externally_managed)
 		return
 	if(isnull(use_direct))
+		pre_render_hook()
 		use_direct = render_button_appearance()
 	button.appearance = use_direct
 
@@ -227,15 +178,24 @@
 		if(button_additional_overlay)
 			button.overlays += button_additional_overlay
 
+	if(button_availability < 1)
+		generating.color = rgb(128, 0, 0, 128)
+	else
+		generating.color = rgb(255, 255, 255, 255)
+
 	return generating
 
-#warn impl all
+/**
+ * calculates current automatic availability
+ */
+/datum/action/proc/calculate_availability()
+	return 1
 
 /**
  * create a button for a specific action drawer
  */
-/datum/action/proc/create_button(datum/action_drawer/drawer)
-	RETURN_TYPE(/atom/movable/screen/movable/action_button/button)
+/datum/action/proc/create_button(datum/action_drawer/drawer, datum/action_holder/holder)
+	RETURN_TYPE(/atom/movable/screen/movable/action_button)
 
 	#warn impl
 
@@ -317,13 +277,19 @@
  * grant us to an action holder
  */
 /datum/action/proc/regex_this_grant(datum/action_holder/holder)
-	#warn impl
+	ASSERT(!(src in holder.actions))
+	LAZYADD(holders, holder)
+	holder.actions += src
+	holder.on_action_add(src)
 
 /**
  * remove us from an action holder
  */
 /datum/action/proc/revoke(datum/action_holder/holder)
-	#warn impl
+	ASSERT(src in holder.actions)
+	LAZYREMOVE(holders, holder)
+	holder.actions -= src
+	holder.on_action_remove(src)
 
 //* /datum implementation & hooks *//
 
@@ -338,7 +304,3 @@
  */
 /datum/proc/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	return
-
-//* Subtypes *//
-
-/datum/action/item_action

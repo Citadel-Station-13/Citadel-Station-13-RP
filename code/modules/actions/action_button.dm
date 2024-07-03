@@ -13,6 +13,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/movable/action_button)
 	var/datum/action_holder/holder
 	/// our target action
 	var/datum/action/action
+	/// our index in the holder
+	var/index
 
 /atom/movable/screen/movable/action_button/Initialize(mapload, datum/action_holder/holder, datum/action/action)
 	src.holder = holder
