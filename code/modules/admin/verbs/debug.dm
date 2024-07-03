@@ -336,7 +336,7 @@
 			return
 		else
 			var/mob/observer/dead/ghost = new/mob/observer/dead(M,1)
-			M.transfer_ckey_to(ghost)
+			M.transfer_client_to(ghost)
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] assumed direct control of [M].</font>", 1)
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob

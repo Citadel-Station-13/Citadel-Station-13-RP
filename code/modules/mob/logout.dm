@@ -1,34 +1,3 @@
-/**
- * **never directly set ckey on a mob**
- *
- * use this to transfer
- */
-/mob/proc/transfer_client_to(mob/transfer_to)
-	if(client)
-		pre_logout()
-	// if they have a client, kick them out
-	if(transfer_to.client)
-		transfer_to.pre_logout()
-	// if we're logged in, client is transferred. if we're not, they'll log in at the other mob
-	transfer_to.ckey = ckey
-
-/**
- * sets our ckey
- */
-/mob/proc/set_ckey(ckey)
-	var/client/resolved = GLOB.directory[ckey]
-	// see if this is an active client
-	if(resolved)
-		// if it's the same client, don't do anything
-		if(client == resolved)
-			return
-		// tell their mob the client is about to leave
-		resolved.mob?.pre_logout()
-	// if we have a client it isn't the same as the resolved one so that is going away
-	if(client)
-		pre_logout()
-	// transfer
-	src.ckey = ckey
 
 /**
  * called before logout, because by the time logout happens client is no longer in us
