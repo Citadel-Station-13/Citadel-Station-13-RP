@@ -10269,5 +10269,45 @@
 "secret": true,
 "lobby": false,
 "jukebox": true
+},
+{
+"url": "https://files.catbox.moe/sx6g4k.m4a",
+"title": "Lust for a Vampyr",
+"duration": 2740,
+"artist": "I Monster",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/n6pus8.m4a",
+"title": "Simple Machine",
+"duration": 2500,
+"artist": "Dubmood",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/ktw3nn.m4a",
+"title": "Rust",
+"duration": 1500,
+"artist": "No, Really",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/ylfpsj.m4a",
+"title": "Smaller God",
+"duration": 2630,
+"artist": "Darling Violetta",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
 }
 ]
