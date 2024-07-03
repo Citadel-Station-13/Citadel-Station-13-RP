@@ -25,14 +25,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/movable/action_button)
 	return ..()
 
 /atom/movable/screen/movable/action_button/Click(location, control, params)
+	var/list/decoded_params = params2list(params)
+	if(ctrl_shift_click_reset_hook(decoded_params))
+		return
 	var/datum/event_args/actor = holder.get_actor_data(usr)
 	action.try_invoke(actor)
-
-#warn below
-
-
-/atom/movable/screen/movable/action_button/Click(location,control,params)
-	var/list/modifiers = params2list(params)
-	if(modifiers["shift"])
-		moved = 0
-		return 1
