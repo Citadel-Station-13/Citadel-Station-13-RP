@@ -196,15 +196,16 @@
  */
 /datum/action/proc/create_button(datum/action_drawer/drawer, datum/action_holder/holder)
 	RETURN_TYPE(/atom/movable/screen/movable/action_button)
-
-	#warn impl
+	var/atom/movable/screen/movable/action_button/creating = new(null, holder, src)
+	pre_render_hook()
+	creating.appearance = render_button_appearance()
+	return creating
 
 /**
  * asks us to gc a button used by a drawer that no longer has us
  */
 /datum/action/proc/destroy_button(atom/movable/screen/movable/action_button/button, datum/action_drawer/drawer)
-
-	#warn impl
+	qdel(button)
 
 //* Invocation *//
 
