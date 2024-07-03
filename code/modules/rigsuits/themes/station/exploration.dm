@@ -59,9 +59,9 @@ AUTO_RIG_THEME(/station/exploration/standard)
 
 // the protagonist armor :skull:
 /datum/armor/rigsuit/station/exploration/pathfinder
-	melee = 0.55
-	bullet = 0.45
-	laser = 0.45
+	melee = 0.5
+	bullet = 0.4
+	laser = 0.4
 
 AUTO_RIG_THEME(/station/exploration/pathfinder)
 /datum/rig_theme/station/exploration/pathfinder

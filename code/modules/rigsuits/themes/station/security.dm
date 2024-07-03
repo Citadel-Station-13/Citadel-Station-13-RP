@@ -8,15 +8,15 @@
 	siemens_coefficient = 0.65
 
 /datum/armor/rigsuit/station/security
-	melee = 0.45
+	melee = 0.5
 	melee_tier = MELEE_TIER_MEDIUM
 	melee_soak = 2
 	melee_deflect = 5
-	bullet = 0.35
+	bullet = 0.4
 	bullet_tier = BULLET_TIER_MEDIUM
 	bullet_soak = 5
 	bullet_deflect = 0
-	laser = 0.35
+	laser = 0.4
 	laser_tier = LASER_TIER_MEDIUM
 	laser_soak = 5
 	laser_deflect = 0
