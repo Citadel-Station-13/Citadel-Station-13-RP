@@ -93,3 +93,12 @@
 /obj/machinery/turnstile/exit
 	name = "\improper Exit"
 	req_one_access = list(112)
+
+
+/obj/machinery/turnstile/resort
+	name = "\improper Park Entrance"
+	req_one_access = list(250)
+
+/obj/machinery/turnstile/resort/premium
+	name = "\improper VIPs Only"
+	req_one_access = list(251)

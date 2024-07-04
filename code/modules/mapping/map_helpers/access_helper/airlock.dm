@@ -662,6 +662,21 @@
 		ACCESS_FACTION_TRADER,
 	)
 
+/obj/map_helper/access_helper/airlock/disconnected/gaia
+	req_access = list(
+		ACCESS_GAIA_GUEST,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/gaia/premium
+	req_access = list(
+		ACCESS_GAIA_VIP,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/gaia/staff
+	req_access = list(
+		ACCESS_GAIA_STAFF,
+	)
+
 /obj/map_helper/access_helper/airlock/disconnected/pirate
 	req_access = list(
 		ACCESS_FACTION_PIRATE,
