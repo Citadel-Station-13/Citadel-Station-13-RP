@@ -59,7 +59,7 @@
  */
 /datum/object_system/cell_slot/proc/mob_remove_cell(mob/user)
 	if(isnull(cell))
-		return
+		return FALSE
 	. = cell
 	user.put_in_hands_or_drop(cell)
 	cell = null
