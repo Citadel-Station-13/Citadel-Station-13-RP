@@ -7,6 +7,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"aX" = (
+/obj/structure/anomaly_container,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "bG" = (
 /mob/living/simple_mob/animal/space/bats/surt,
 /turf/simulated/floor/outdoors/lavaland,
@@ -68,8 +72,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Dorms";
-	req_access = null;
-	req_one_access = list(1,5,31,38,47,48)
+	req_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -79,6 +82,13 @@
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
+"dP" = (
+/obj/machinery/recharge_station,
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -351,7 +361,7 @@
 "iA" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "SMES Access";
-	req_access = list(48)
+	req_one_access = list(10,24,11,1,5,31,38,47,48)
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -471,7 +481,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "SMES Access";
-	req_access = list(48)
+	req_one_access = list(10,24,11,1,5,31,38,47,48)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -507,7 +517,7 @@
 	master_tag = "mining_engine";
 	pixel_x = -10;
 	pixel_y = -25;
-	req_one_access = list(48)
+	req_one_access = list(10,24,11,1,5,31,38,47,48)
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -680,6 +690,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"ob" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "oj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
@@ -769,6 +783,32 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
+"pv" = (
+/obj/item/storage/excavation,
+/obj/item/storage/excavation,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/tool/wrench,
+/obj/item/tool/wrench,
+/obj/item/measuring_tape,
+/obj/item/measuring_tape,
+/obj/item/stack/flag/yellow,
+/obj/item/stack/flag/yellow,
+/obj/structure/table/rack,
+/obj/item/gps/science,
+/obj/item/gps/science,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/eastleft{
+	name = "Xenoarcheology Storage";
+	req_access = list(65)
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "pz" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -801,7 +841,7 @@
 	frequency = 1384;
 	id_tag = "mining_engine";
 	pixel_x = 25;
-	req_one_access = list(48)
+	req_one_access = list(10,24,11,1,5,31,38,47,48)
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -1028,8 +1068,7 @@
 	req_one_access = list(48)
 	},
 /obj/machinery/door/airlock/glass{
-	name = "Storage";
-	req_access = list(48)
+	name = "Storage"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1090,6 +1129,25 @@
 	dir = 4;
 	pixel_x = -27;
 	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
+"tN" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/suspension_gen{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/door/window/eastright{
+	name = "Xenoarcheology Storage";
+	req_access = list(65)
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -1278,7 +1336,7 @@
 "wY" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Engine Room";
-	req_access = list(48)
+	req_one_access = list(10,24,11,1,5,31,38,47,48)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1300,10 +1358,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"xH" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "xJ" = (
 /obj/machinery/door/airlock{
-	name = "Showers";
-	req_one_access = list(48)
+	name = "Showers"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1322,18 +1383,9 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "xV" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 1;
-	pixel_y = -23;
-	req_one_access = list(48)
-	},
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
-/obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "yp" = (
@@ -1449,9 +1501,16 @@
 	master_tag = "mining_engine";
 	pixel_x = 22;
 	pixel_y = 25;
-	req_one_access = list(48)
+	req_one_access = list(10,24,11,1,5,31,38,47,48)
 	},
 /turf/simulated/floor/plating,
+/area/lavaland/central/base/common)
+"Ab" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ak" = (
 /obj/structure/bed/chair/sofa/left,
@@ -1464,8 +1523,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	name = "Lounge";
-	req_access = null;
-	req_one_access = list(1,5,31,38,47,48)
+	req_access = null
 	},
 /obj/machinery/door/firedoor/glass{
 	dir = 8
@@ -1540,7 +1598,7 @@
 "Dx" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Supplies";
-	req_one_access = list(48)
+	req_one_access = list(26,1,5,31,38,47,48)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1647,6 +1705,23 @@
 /obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"Hk" = (
+/obj/structure/table/rack,
+/obj/item/storage/bag/ore,
+/obj/item/gun/energy/kinetic_accelerator,
+/obj/machinery/door/window/westleft{
+	req_one_access = list(48);
+	name = "Mining Storage"
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/pickaxe,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "Hr" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled,
@@ -1688,6 +1763,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Iq" = (
@@ -1716,16 +1792,30 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/lavaland/central/base/common)
 "Iy" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
+/obj/structure/table/rack,
+/obj/item/storage/belt/archaeology,
+/obj/item/clothing/suit/space/anomaly,
+/obj/item/clothing/head/helmet/space/anomaly,
+/obj/item/clothing/mask/breath,
+/obj/item/storage/belt/archaeology,
+/obj/item/clothing/suit/space/anomaly,
+/obj/item/clothing/head/helmet/space/anomaly,
+/obj/item/clothing/mask/breath,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/ore_box,
+/obj/machinery/door/window/eastright{
+	name = "Xenoarcheology Storage";
+	req_access = list(65)
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "IR" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Lounge";
-	req_one_access = list(1,5,31,38,47,48)
+	name = "Lounge"
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
@@ -1738,6 +1828,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
+/area/lavaland/central/base/common)
+"Jw" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Jz" = (
 /obj/machinery/light/small{
@@ -1836,6 +1930,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"MO" = (
+/obj/structure/table/steel,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "MV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1864,8 +1969,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Ob" = (
-/obj/machinery/light/small,
-/obj/structure/ore_box,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Og" = (
@@ -2034,8 +2138,7 @@
 "Ru" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_orange";
-	name = "Dormitory";
-	req_access = list(48)
+	name = "Dormitory"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2062,8 +2165,7 @@
 "RS" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_purp";
-	name = "Dormitory";
-	req_access = list(48)
+	name = "Dormitory"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2213,16 +2315,24 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Vw" = (
-/obj/structure/flora/pottedplant/subterranean,
 /obj/machinery/camera/network/mining{
 	dir = 1
 	},
+/obj/structure/flora/pottedplant/subterranean,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "VA" = (
-/obj/structure/table/rack,
-/obj/item/storage/bag/ore,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/machinery/suspension_gen{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/eastleft{
+	name = "Xenoarcheology Storage";
+	req_access = list(65)
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "VC" = (
@@ -2262,6 +2372,7 @@
 	},
 /obj/structure/table/steel,
 /obj/machinery/cell_charger,
+/obj/item/cell/high,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "VX" = (
@@ -2289,8 +2400,7 @@
 "Wd" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_blue";
-	name = "Dormitory";
-	req_access = list(48)
+	name = "Dormitory"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2303,8 +2413,7 @@
 "Wf" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_black";
-	name = "Dormitory";
-	req_access = list(48)
+	name = "Dormitory"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2335,10 +2444,18 @@
 /turf/simulated/wall/sandstone/lavaland,
 /area/lavaland/central/explored)
 "Wv" = (
-/obj/item/geiger_counter,
-/obj/item/geiger_counter,
-/obj/item/geiger_counter,
-/obj/structure/table/steel,
+/obj/structure/table/rack,
+/obj/item/storage/bag/ore,
+/obj/item/gun/energy/kinetic_accelerator,
+/obj/machinery/door/window/westright{
+	req_one_access = list(48);
+	name = "Mining Storage"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/pickaxe,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Wy" = (
@@ -9740,7 +9857,7 @@ ew
 YJ
 eM
 NW
-ZK
+gy
 ZK
 ZK
 ZK
@@ -9934,7 +10051,7 @@ ew
 Zh
 VC
 NW
-ZK
+gy
 ZK
 ZK
 ZK
@@ -10128,7 +10245,7 @@ ew
 Zw
 Cg
 NW
-ZK
+gy
 ZK
 ZK
 ZK
@@ -10322,7 +10439,7 @@ ew
 YJ
 ut
 NW
-ZK
+gy
 ZK
 ZK
 ZK
@@ -11682,10 +11799,10 @@ oX
 YS
 ew
 NW
-ZK
-ZK
 gy
-tV
+gy
+gy
+gy
 tV
 tV
 tV
@@ -11876,7 +11993,7 @@ bH
 uh
 ew
 NW
-ZK
+gy
 gy
 gy
 gy
@@ -12059,7 +12176,7 @@ db
 zl
 ew
 db
-Hr
+Hz
 Zw
 VD
 ew
@@ -12072,8 +12189,8 @@ ew
 NW
 gy
 gy
-ZK
-tV
+gy
+gy
 tV
 tV
 tV
@@ -12253,7 +12370,7 @@ Yb
 zm
 ew
 db
-Hz
+Hr
 Mw
 ew
 Vw
@@ -12266,7 +12383,7 @@ SL
 AO
 gy
 gy
-ZK
+gy
 gy
 tV
 tV
@@ -12458,10 +12575,10 @@ sV
 AO
 AO
 AO
-gy
-gy
-gy
-tV
+AO
+AO
+AO
+ZK
 tV
 tV
 tV
@@ -12648,14 +12765,14 @@ VT
 AO
 KZ
 ew
-tU
+Mw
 xV
+tN
+VA
+Iy
+pv
 AO
 ZK
-tV
-tV
-tV
-tV
 tV
 ZK
 tV
@@ -12842,14 +12959,14 @@ AO
 AO
 xf
 ew
-Pv
+ND
 Ob
+VD
+ew
+ew
+We
 AO
 ZK
-tV
-tV
-tV
-tV
 tV
 tV
 tV
@@ -13034,15 +13151,15 @@ ND
 VD
 VX
 AO
-Kj
+dP
 ew
-ub
-Iy
+Pv
+ew
+ew
+ew
+ew
+aX
 NW
-gy
-gy
-ZK
-ZK
 tV
 tV
 tV
@@ -13215,12 +13332,12 @@ ZK
 ZK
 ZK
 ZK
-gy
-gy
-gy
-gy
 ZK
 ZK
+ZK
+ZK
+ZK
+gy
 gy
 AO
 sH
@@ -13228,15 +13345,15 @@ Pv
 ew
 ew
 AO
-Wv
-VA
-VA
-mq
+Kj
+ew
+ub
+ob
+Ay
+ew
+ew
+aX
 NW
-ZK
-gy
-ZK
-ZK
 tV
 tV
 tV
@@ -13415,23 +13532,23 @@ ZK
 ZK
 ZK
 ZK
-ZK
+gy
 NW
 kp
 ub
 Ay
 sJ
 AO
+MO
+Hk
+Wv
+mq
+Ab
+xH
+xH
+Jw
 AO
-AO
-NW
-NW
-AO
 ZK
-ZK
-ZK
-ZK
-tV
 tV
 tV
 tV
@@ -13609,23 +13726,23 @@ ZK
 ZK
 ZK
 ZK
-ZK
+gy
 AO
 AO
 RE
 RE
 AO
 AO
-gy
-gy
-gy
-gy
+AO
+AO
+NW
+NW
+AO
+AO
+AO
+AO
+AO
 ZK
-ZK
-ZK
-ZK
-ZK
-tV
 tV
 tV
 tV
@@ -13800,10 +13917,10 @@ RL
 RL
 ZK
 ZK
-gy
-gy
-gy
 ZK
+ZK
+ZK
+gy
 gy
 Iq
 gy
@@ -13812,14 +13929,14 @@ VY
 gy
 gy
 gy
+gy
+gy
 ZK
 ZK
 ZK
 ZK
 ZK
 ZK
-ZK
-tV
 tV
 tV
 tV
@@ -13996,8 +14113,8 @@ ZK
 ZK
 ZK
 ZK
-gy
-gy
+ZK
+ZK
 gy
 gy
 gy
@@ -14013,7 +14130,7 @@ ZK
 ZK
 ZK
 ZK
-tV
+ZK
 tV
 tV
 tV
@@ -14191,13 +14308,13 @@ ZK
 ZK
 ZK
 ZK
+ZK
+ZK
+ZK
+ZK
+ZK
 gy
 gy
-ZK
-ZK
-ZK
-gy
-gy
 gy
 ZK
 ZK
@@ -14207,7 +14324,7 @@ ZK
 ZK
 ZK
 ZK
-tV
+ZK
 tV
 tV
 tV
@@ -14401,7 +14518,7 @@ ZK
 ZK
 ZK
 ZK
-tV
+ZK
 tV
 tV
 tV
@@ -14589,13 +14706,13 @@ gy
 gy
 gy
 gy
-gy
-gy
+ZK
+ZK
 ZK
 RL
 RL
 ZK
-tV
+ZK
 tV
 tV
 tV
@@ -14783,13 +14900,13 @@ ZK
 gy
 gy
 gy
-gy
+ZK
 ZK
 ZK
 RL
 RL
 ZK
-tV
+ZK
 tV
 tV
 tV
@@ -14977,13 +15094,13 @@ RL
 gy
 gy
 gy
-gy
+ZK
 ZK
 RL
 ZK
 ZK
 ZK
-tV
+ZK
 tV
 tV
 tV
@@ -15177,7 +15294,7 @@ RL
 ZK
 ZK
 ZK
-tV
+ZK
 tV
 tV
 tV
@@ -15371,7 +15488,7 @@ ZK
 ZK
 ZK
 RL
-tV
+ZK
 tV
 tV
 tV
