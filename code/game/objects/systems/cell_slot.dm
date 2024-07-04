@@ -147,7 +147,7 @@
 /**
  * cell function wrapper - returns the cell src or null
  */
-/datum/object_system/cell_slot/proc/get_cell(var/inducer)
+/datum/object_system/cell_slot/proc/get_cell(inducer)
 	return cell?.get_cell(inducer)
 
 /**
