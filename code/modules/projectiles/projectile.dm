@@ -481,12 +481,16 @@
 	if(A)
 		on_impact(A)
 
-	// create tracers
-	var/datum/point/visual_impact_point = get_intersection_point(trajectory_moving_to)
-	// kick it forwards a bit
-	visual_impact_point.shift_in_projectile_angle(angle, 2)
-	// draw
-	finalize_hitscan_tracers(visual_impact_point, impact_effect = TRUE)
+	if(hitscanning)
+		if(trajectory_moving_to)
+			// create tracers
+			var/datum/point/visual_impact_point = get_intersection_point(trajectory_moving_to)
+			// kick it forwards a bit
+			visual_impact_point.shift_in_projectile_angle(angle, 2)
+			// draw
+			finalize_hitscan_tracers(visual_impact_point, impact_effect = TRUE)
+		else
+			finalize_hitscan_tracers(impact_effect = TRUE, kick_forwards = 32)
 
 	qdel(src)
 	return TRUE
@@ -820,26 +824,28 @@
 	if(muzzle_type && tracer_muzzle_flash)
 		var/datum/point/starting = tracer_vertices[1]
 		var/atom/movable/muzzle_effect = starting.instantiate_movable_with_unmanaged_offsets(muzzle_type)
-		// turn it
-		var/matrix/muzzle_transform = matrix()
-		muzzle_transform.Turn(original_angle)
-		muzzle_effect.transform = muzzle_transform
-		muzzle_effect.color = color
-		muzzle_effect.set_light(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override? muzzle_flash_color_override : color)
-		// add to list
-		beam_components += muzzle_effect
+		if(muzzle_effect)
+			// turn it
+			var/matrix/muzzle_transform = matrix()
+			muzzle_transform.Turn(original_angle)
+			muzzle_effect.transform = muzzle_transform
+			muzzle_effect.color = color
+			muzzle_effect.set_light(muzzle_flash_range, muzzle_flash_intensity, muzzle_flash_color_override? muzzle_flash_color_override : color)
+			// add to list
+			beam_components += muzzle_effect
 	// impact
 	if(impact_type && tracer_impact_effect)
 		var/datum/point/starting = tracer_vertices[length(tracer_vertices)]
 		var/atom/movable/impact_effect = starting.instantiate_movable_with_unmanaged_offsets(impact_type)
-		// turn it
-		var/matrix/impact_transform = matrix()
-		impact_transform.Turn(angle)
-		impact_effect.transform = impact_transform
-		impact_effect.color = color
-		impact_effect.set_light(impact_light_range, impact_light_intensity, impact_light_color_override? impact_light_color_override : color)
-		// add to list
-		beam_components += impact_effect
+		if(impact_effect)
+			// turn it
+			var/matrix/impact_transform = matrix()
+			impact_transform.Turn(angle)
+			impact_effect.transform = impact_transform
+			impact_effect.color = color
+			impact_effect.set_light(impact_light_range, impact_light_intensity, impact_light_color_override? impact_light_color_override : color)
+			// add to list
+			beam_components += impact_effect
 	// path tracers
 	if(tracer_type)
 		var/tempref = "\ref[src]"
@@ -891,7 +897,7 @@
  * sets our speed in pixels per decisecond
  */
 /obj/projectile/proc/set_speed(new_speed)
-	speed = new_speed
+	speed = clamp(new_speed, 1, WORLD_ICON_SIZE * 5)
 
 /**
  * sets our angle and speed
@@ -943,17 +949,17 @@
 /obj/projectile/process(delta_time)
 	if(paused)
 		return
+	delta_time *= 10 // sigh im fucking mad but whatever why are we using delta_time as seconds and not deciseconds
 	physics_iteration(delta_time * speed, delta_time)
 
 /**
  * immediately processes hitscan
  */
-/obj/projectile/proc/physics_hitscan()
-	hitscanning = TRUE
-
+/obj/projectile/proc/physics_hitscan(safety = 250, resuming)
 	// setup
-	var/safety = 250
-	record_hitscan_start(muzzle_marker = TRUE, kick_forwards = 16)
+	if(!resuming)
+		hitscanning = TRUE
+		record_hitscan_start(muzzle_marker = TRUE, kick_forwards = 16)
 
 	// just move as many times as we can
 	while(!QDELETED(src) && loc)
@@ -968,6 +974,12 @@
 
 		// move forwards by 1 tile length
 		distance_travelled += physics_step(WORLD_ICON_SIZE)
+		// if we're being yanked, yield
+		if(movable_flags & MOVABLE_IN_MOVED_YANK)
+			spawn(0)
+				physics_hitscan(safety, TRUE)
+			return
+
 		// see if we're done
 		if(distance_travelled >= range)
 			legacy_on_range()
@@ -979,8 +991,10 @@
  * ticks forwards a number of pixels
  *
  * todo: potential lazy animate support for performance, as we honestly don't need to animate at full fps if the server's above 20fps
+ *
+ * * delta_tiem is in deciseconds, not seconds.
  */
-/obj/projectile/proc/physics_iteration(pixels, delta_time)
+/obj/projectile/proc/physics_iteration(pixels, delta_time, additional_animation_length)
 	// setup iteration
 	var/safety = 10
 	var/pixels_remaining = pixels
@@ -1009,7 +1023,11 @@
 		distance_travelled += pixels_moved
 		distance_travelled_this_iteration += pixels_moved
 		pixels_remaining -= pixels_moved
-
+		// we're being yanked, yield
+		if(movable_flags & MOVABLE_IN_MOVED_YANK)
+			spawn(0)
+				physics_iteration(pixels_remaining, delta_time, distance_travelled_this_iteration)
+			return
 		if(!loc || paused)
 			break
 
@@ -1043,15 +1061,18 @@
 	// to be accurate anymore
 	//
 	// so instead, as of right now, we backtrack via how much we know we moved.
-	pixel_x = -(distance_travelled_this_iteration * sin(angle)) + base_pixel_x
-	pixel_y = -(distance_travelled_this_iteration * cos(angle)) + base_pixel_y
+	var/final_px = base_pixel_x + current_px - (WORLD_ICON_SIZE / 2)
+	var/final_py = base_pixel_y + current_py - (WORLD_ICON_SIZE / 2)
+	var/anim_dist = distance_travelled_this_iteration + additional_animation_length
+	pixel_x = final_px - (anim_dist * sin(angle))
+	pixel_y = final_py - (anim_dist * cos(angle))
 
 	animate(
 		src,
 		delta_time,
 		flags = ANIMATION_END_NOW,
-		pixel_x = base_pixel_x + current_px - (WORLD_ICON_SIZE / 2),
-		pixel_y = base_pixel_y + current_py - (WORLD_ICON_SIZE / 2),
+		pixel_x = final_px,
+		pixel_y = final_py,
 	)
 
 /**
