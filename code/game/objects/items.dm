@@ -584,15 +584,6 @@
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
-	//if((MUTATION_CLUMSY in user.mutations) && prob(50))
-	//	M = user
-		/*
-		to_chat(M, "<span class='warning'>You stab yourself in the eye.</span>")
-		M.sdisabilities |= SDISABILITY_NERVOUS
-		M.weakened += 4
-		M.adjustBruteLoss(10)
-		*/
-
 	if(istype(H))
 
 		var/obj/item/organ/internal/eyes/eyes = H.internal_organs_by_name[O_EYES]
@@ -931,7 +922,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(!isnull(obj_storage) && obj_storage.allow_quick_empty && obj_storage.allow_quick_empty_via_attack_self)
 		var/turf/turf = get_turf(e_args.performer)
 		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return TRUE
 	return FALSE
 
 /**

@@ -12,6 +12,8 @@
 /// sentinel id; set this if you want something to persist but generate its own dynamic id
 /// instead of setting one manually
 #define PERSISTENCE_DYNAMIC_ID_AUTOSET "!autoset"
+/// map id if a level is standalone
+#define PERSISTENCE_MAP_ID_STANDALONE "!standalone"
 
 //* /obj - obj_persist_status *//
 

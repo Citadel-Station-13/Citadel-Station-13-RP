@@ -72,6 +72,7 @@
 		O_ORCH = /obj/item/organ/internal/nano/orchestrator,
 		O_FACT = /obj/item/organ/internal/nano/refactory
 		)
+	vision_organ = O_BRAIN
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/nano),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/nano),
@@ -307,8 +308,7 @@
 	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
 	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
-	holder.radiation = max(RAD_MOB_CURE_PROTEAN_REGEN)
-
+	holder.cure_radiation(RAD_MOB_CURE_PROTEAN_REGEN)
 
 /proc/protean_requires_healing(mob/living/carbon/human/H)
 	if(!istype(H))

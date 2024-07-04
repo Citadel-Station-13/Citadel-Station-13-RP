@@ -133,6 +133,11 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/head/hood/aureate/dark
+	name = "aureate dark hood"
+	desc = "A detached, dark ornamental hood with gold embellishments. Seems to be made out of insulated fiber."
+	icon_state = "aureate_dark_hood"
+
 //Hazardous Softsuit Hoods
 /obj/item/clothing/head/hood/explorer
 	name = "explorer hood"

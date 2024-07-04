@@ -64,23 +64,11 @@
 
 	update_client_color()
 
-	//Reload alternate appearances
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
-
-	if(!client.tooltips)
-		client.tooltips = new(client)
-
 	var/turf/T = get_turf(src)
 	if(isturf(T))
 		update_client_z(T.z)
 
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
-
-	reload_huds()
 
 	// reset perspective to using
 	reset_perspective(no_optimizations = TRUE)
@@ -92,6 +80,8 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
 	// reset cutscene to default; this is a proc for new players.
 	login_cutscene()
+	// Make sure blindness fullscreen is applied if needed
+	blindness_handle_reconnect()
 
 	//* legacy
 	// this is below reset_perspective so self perspective generates.

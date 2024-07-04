@@ -25,3 +25,5 @@ export const Sprite = (props: SpriteProps) => {
       ])} />
   );
 };
+
+// todo: this is all kind of terrible; we need a way to autodetect sizeKeys too so it's more friendly to users.

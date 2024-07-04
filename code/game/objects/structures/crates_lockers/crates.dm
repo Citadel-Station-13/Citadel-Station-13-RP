@@ -50,6 +50,7 @@
 	icon_state = icon_opened
 	src.opened = 1
 	shake_climbers()
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/close()
@@ -74,6 +75,7 @@
 
 	icon_state = icon_closed
 	src.opened = 0
+	update_icon()
 	return 1
 
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
@@ -351,7 +353,7 @@
 	//closet_appearance = /singleton/closet_appearance/crate/engineering
 
 	starts_with = list(
-		/obj/item/solar_assembly = 21,
+		/obj/item/frame2/solar_panel = 2,
 		/obj/item/circuitboard/solar_control,
 		/obj/item/tracker_electronics,
 		/obj/item/paper/solar)

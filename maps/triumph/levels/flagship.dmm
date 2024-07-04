@@ -3,6 +3,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "ae" = (
@@ -139,15 +140,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
-"aB" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Teleporter";
-	req_access = list(103)
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
 "aC" = (
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor{
@@ -581,11 +573,21 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/holding)
+"bQ" = (
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "bV" = (
 /obj/machinery/vending/cigarette,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -630,9 +632,9 @@
 "cb" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/metal{
-	name = "Nanotrasen Offices";
-	req_one_access = list(101)
+	name = "Nanotrasen Offices"
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "cc" = (
@@ -775,9 +777,11 @@
 	},
 /area/centcom/bar)
 "cA" = (
+/obj/map_helper/access_helper/airlock/station/security/general,
 /obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = list()
+	req_access = list();
+	req_one_access = null
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -1219,6 +1223,7 @@
 /area/centcom/specops)
 "dI" = (
 /obj/machinery/door/airlock,
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "dK" = (
@@ -1521,8 +1526,10 @@
 /area/centcom/security)
 "eG" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -2243,9 +2250,9 @@
 "gN" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Secure Armoury Section";
-	req_access = list(58);
-	req_one_access = list(19)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2638,6 +2645,14 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"in" = (
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0;
+	old_wall = 1
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "ip" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -2750,8 +2765,9 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "HoSdoor";
 	name = "Head of Security";
-	req_access = list(58)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2889,8 +2905,10 @@
 /area/centcom/bar)
 "jq" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3167,8 +3185,9 @@
 "kk" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Special Operations";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor/steel,
 /area/centcom/specops)
 "kl" = (
@@ -3355,6 +3374,15 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
+"kV" = (
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "kW" = (
@@ -3678,9 +3706,10 @@
 /area/centcom/control)
 "lS" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Commander";
-	req_access = list(103)
+	name = "Teleporter";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3711,8 +3740,9 @@
 "lY" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office";
-	req_access = list(3)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/armory,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3966,12 +3996,13 @@
 /obj/machinery/door/airlock/vault/bolted{
 	id_tag = "the_end";
 	name = "RESTRICTED";
-	req_access = list(109)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	id = "ADMINFUN";
 	name = "RESTRICTED"
 	},
+/obj/map_helper/access_helper/airlock/station/command/vault,
 /turf/simulated/floor/reinforced,
 /area/centcom/command)
 "mH" = (
@@ -4097,8 +4128,10 @@
 "na" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = list()
+	req_access = list();
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4346,11 +4379,22 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"nH" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/security)
 "nI" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Robotics Lab";
-	req_access = list(29,47)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/robotics,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4367,9 +4411,9 @@
 "nL" = (
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
-	name = "Research Division Access";
-	req_access = list(47)
+	name = "Research Division Access"
 	},
+/obj/map_helper/access_helper/airlock/station/science/department,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4701,6 +4745,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"pa" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/white,
+/area/shuttle/escape)
 "pb" = (
 /obj/machinery/status_display{
 	pixel_y = 29
@@ -4857,6 +4907,14 @@
 /obj/structure/flora/pottedplant,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"pA" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/general,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "pB" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor,
@@ -5348,6 +5406,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"rn" = (
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/general,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "ro" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/floor_decal/borderfloorblack{
@@ -5446,6 +5513,19 @@
 	dir = 9
 	},
 /obj/machinery/camera/network/crescent,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
+"rz" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/bordercorner{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/northright{
+	req_access = list(63);
+	req_one_access = list(1)
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "rA" = (
@@ -5821,8 +5901,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Engine Bay";
-	req_one_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "sw" = (
@@ -6149,7 +6230,10 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "tp" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "tr" = (
@@ -6401,8 +6485,10 @@
 "uq" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "front";
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
 "uu" = (
@@ -6583,9 +6669,9 @@
 /area/centcom/specops)
 "uY" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
-	req_access = list(28)
+	name = "Kitchen cold room"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -7336,6 +7422,21 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
+"xn" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "xp" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -7354,6 +7455,14 @@
 	icon_state = "dark"
 	},
 /area/tdome/tdome1)
+"xv" = (
+/obj/machinery/door/airlock/centcom{
+	name = "General Access";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/centcom,
+/turf/unsimulated/floor/steel,
+/area/centcom/control)
 "xw" = (
 /obj/item/storage/box/flashshells,
 /obj/item/storage/box/flashshells,
@@ -7730,6 +7839,19 @@
 	icon_state = "dark"
 	},
 /area/centcom/command)
+"yI" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/blue/bordercorner{
+	dir = 1
+	},
+/obj/machinery/door/window/brigdoor/northleft{
+	req_access = list(63);
+	req_one_access = list(1)
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "yJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/skills,
@@ -7795,8 +7917,9 @@
 "yY" = (
 /obj/machinery/door/airlock/medical{
 	name = "Operating Theatre";
-	req_access = list(45)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -7828,8 +7951,10 @@
 /area/centcom/medical)
 "zb" = (
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "zc" = (
@@ -8112,6 +8237,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Brig Dormitories"
 	},
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8277,8 +8403,9 @@
 "Au" = (
 /obj/machinery/door/airlock/centcom{
 	name = "General Access";
-	req_access = list(101)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8759,9 +8886,9 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass{
-	name = "Kitchen";
-	req_access = list(28)
+	name = "Kitchen"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -8769,8 +8896,9 @@
 "Cl" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Research and Development";
-	req_access = list(7)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/science/research_lab,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -8821,8 +8949,9 @@
 "Cw" = (
 /obj/machinery/door/airlock/medical{
 	name = "Shuttle Medbay";
-	req_access = list(45)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
 "Cx" = (
@@ -8880,8 +9009,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Cockpit";
-	req_one_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "CD" = (
@@ -9709,7 +9839,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -9909,6 +10040,10 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"Gg" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Gh" = (
 /obj/machinery/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
@@ -9950,8 +10085,9 @@
 "Go" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Security Processing";
-	req_access = list(1)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/general,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10039,13 +10175,15 @@
 	dir = 4
 	},
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	name = "Ship Hatch"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "GC" = (
@@ -10092,7 +10230,10 @@
 	},
 /area/centcom/medical)
 "GJ" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "GK" = (
@@ -10288,8 +10429,9 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "HoSdoor";
 	name = "Head of Security";
-	req_access = list(58)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/head_office/head_of_security,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10354,8 +10496,10 @@
 /area/centcom/medical)
 "HQ" = (
 /obj/machinery/door/airlock/glass/medical{
-	name = "Virology Laboratory"
+	name = "Virology Laboratory";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -10452,8 +10596,9 @@
 "Ia" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Special Operations";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10519,13 +10664,15 @@
 	pixel_y = 26
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	name = "Ship Hatch"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "Ih" = (
@@ -10631,8 +10778,9 @@
 "Ix" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Living Quarters";
-	req_access = list(105)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor{
 	icon_state = "carpet"
 	},
@@ -10854,13 +11002,21 @@
 /obj/structure/table/woodentable,
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
+"Jg" = (
+/obj/structure/handrail{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/escape)
 "Ji" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
 /obj/machinery/door/airlock/security{
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "Jj" = (
@@ -11171,7 +11327,10 @@
 	},
 /area/centcom/control)
 "Kg" = (
-/obj/machinery/door/airlock/command,
+/obj/machinery/door/airlock/command{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/command/bridge,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
 "Kh" = (
@@ -12124,9 +12283,9 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass{
-	name = "Kitchen";
-	req_access = list(28)
+	name = "Kitchen"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -12169,7 +12328,8 @@
 /obj/machinery/vending/medical,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -12268,6 +12428,16 @@
 	icon_state = "white"
 	},
 /area/centcom/control)
+"NA" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/equipment,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/security)
 "NC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -12364,8 +12534,9 @@
 "NU" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Confiscated Items";
-	req_access = list(3)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/armory,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12538,9 +12709,9 @@
 /area/centcom/terminal)
 "Op" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
-	req_access = list(28)
+	name = "Kitchen cold room"
 	},
+/obj/map_helper/access_helper/airlock/station/service/kitchen,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -12607,11 +12778,16 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
+"Ox" = (
+/obj/structure/handrail,
+/turf/simulated/shuttle/floor,
+/area/shuttle/escape)
 "Oz" = (
 /obj/machinery/vending/fitness,
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
@@ -13073,8 +13249,9 @@
 "PW" = (
 /obj/machinery/door/airlock/medical{
 	name = "Virology Access";
-	req_access = list(5)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/virology,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -13374,20 +13551,19 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
+"QT" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/unsimulated/floor/steel,
+/area/centcom/evac)
 "QU" = (
 /obj/machinery/camera/network/crescent{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"QW" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	name = "Nanotrasen Offices";
-	req_one_access = list(101)
-	},
-/obj/machinery/door/firedoor,
-/turf/unsimulated/floor/steel,
-/area/centcom/command)
 "QX" = (
 /obj/machinery/shieldwallgen,
 /turf/unsimulated/floor{
@@ -13441,6 +13617,21 @@
 /obj/structure/bed/chair,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"Ri" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass/security{
+	name = "Security";
+	req_access = list();
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/turf/unsimulated/floor/steel,
+/area/centcom/security)
 "Rj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -13571,7 +13762,10 @@
 	},
 /area/centcom/security)
 "Rx" = (
-/obj/machinery/light,
+/obj/machinery/light{
+	old_wall = 1;
+	use_power = 0
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
 "Ry" = (
@@ -13626,8 +13820,9 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = "innerS";
 	name = "Colonial Security Airlock";
-	req_access = list(63)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13710,8 +13905,10 @@
 "RW" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "front";
-	name = "Security"
+	name = "Security";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/security/department,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14054,6 +14251,15 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Tf" = (
+/obj/machinery/door/airlock/security{
+	name = "Security";
+	req_one_access = null
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/security)
 "Tg" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -14359,7 +14565,8 @@
 "Ui" = (
 /obj/machinery/light{
 	dir = 8;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
@@ -14682,8 +14889,9 @@
 "Vy" = (
 /obj/machinery/door/airlock/centcom{
 	name = "SpecOps Hangar";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -14965,11 +15173,10 @@
 /turf/unsimulated/floor/wood,
 /area/centcom/restaurant)
 "Wy" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	req_access = list(5)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/map_helper/access_helper/airlock/station/medical/department,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -15218,7 +15425,8 @@
 	},
 /obj/machinery/light{
 	dir = 4;
-	use_power = 0
+	use_power = 0;
+	old_wall = 1
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
@@ -15423,15 +15631,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"Yb" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Silicon's Living Quarters";
-	req_access = list(105)
-	},
-/turf/unsimulated/floor{
-	icon_state = "carpet"
-	},
-/area/centcom/control)
 "Yd" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
@@ -15551,8 +15750,9 @@
 "Yt" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Commander";
-	req_access = list(103)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom/ert,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "Yu" = (
@@ -15594,8 +15794,10 @@
 /area/centcom/security)
 "Yy" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Nanotrasen Offices"
+	name = "Nanotrasen Offices";
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Yz" = (
@@ -16044,8 +16246,9 @@
 "ZC" = (
 /obj/machinery/door/airlock/medical{
 	name = "Morgue";
-	req_access = list(6)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/medical/morgue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -16078,12 +16281,13 @@
 /obj/machinery/door/airlock/vault/bolted{
 	id_tag = "the_end";
 	name = "RESTRICTED";
-	req_access = list(109)
+	req_one_access = null
 	},
 /obj/machinery/door/blast/regular{
 	id = "ADMINFUN";
 	name = "RESTRICTED"
 	},
+/obj/map_helper/access_helper/airlock/station/command/vault,
 /turf/simulated/floor/reinforced,
 /area/centcom/security)
 "ZL" = (
@@ -29442,7 +29646,7 @@ jQ
 wG
 Pn
 yz
-Pn
+in
 wG
 jQ
 jQ
@@ -29825,15 +30029,15 @@ AF
 AF
 AF
 jQ
-CG
+Gg
 yz
 Ui
+pa
 yz
-yz
-yz
+pa
 Ui
 yz
-CG
+Jg
 jQ
 AF
 AF
@@ -30989,7 +31193,7 @@ AF
 AF
 AF
 jQ
-CG
+Gg
 yz
 Pn
 yz
@@ -30997,7 +31201,7 @@ yz
 yz
 yz
 Pn
-CG
+Jg
 jQ
 AF
 AF
@@ -31381,8 +31585,8 @@ Ne
 AA
 OZ
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 ze
 lM
@@ -31765,7 +31969,7 @@ AF
 AF
 AF
 jQ
-Sp
+Ox
 Sp
 dx
 mE
@@ -31963,8 +32167,8 @@ mA
 Sp
 dx
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 nb
 lM
@@ -32351,8 +32555,8 @@ Sp
 Sp
 Sp
 jQ
-CG
-CG
+Gg
+Jg
 jQ
 lM
 lM
@@ -33884,7 +34088,7 @@ vc
 vc
 vc
 vc
-tp
+QT
 wi
 wi
 tp
@@ -34078,10 +34282,10 @@ vc
 vc
 vc
 vc
-tp
+QT
 wi
 wi
-tp
+QT
 wi
 wi
 wi
@@ -37596,7 +37800,7 @@ dj
 DF
 gp
 nc
-mz
+nH
 Bx
 ri
 Bx
@@ -37793,7 +37997,7 @@ WK
 WK
 WK
 WK
-mz
+nH
 WK
 Zs
 Zs
@@ -41847,7 +42051,7 @@ sm
 sm
 sm
 sm
-QW
+cb
 sm
 sm
 sm
@@ -42996,7 +43200,7 @@ Ld
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 hE
@@ -43182,7 +43386,7 @@ es
 es
 lR
 lR
-sB
+xv
 lR
 lR
 es
@@ -43966,7 +44170,7 @@ es
 ht
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 Az
@@ -44738,11 +44942,11 @@ Ld
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 Ld
 it
@@ -44980,7 +45184,7 @@ Jf
 Jf
 rs
 WK
-mz
+nH
 WK
 WK
 WK
@@ -45131,7 +45335,7 @@ Ld
 Ld
 Ld
 es
-sB
+xv
 lR
 es
 Qu
@@ -45502,7 +45706,7 @@ oF
 UF
 xS
 zd
-Yb
+Ix
 Ld
 Ld
 Ld
@@ -45518,7 +45722,7 @@ Ld
 Ld
 Ld
 Ld
-sB
+xv
 Ld
 PC
 gc
@@ -45950,19 +46154,19 @@ rp
 rp
 rp
 WK
-mz
+nH
 WK
 WK
 WK
 WK
-mz
+nH
 WK
 WK
 WK
 WK
 WK
 WK
-mz
+nH
 WK
 Ic
 Ic
@@ -46698,8 +46902,8 @@ WK
 WK
 WK
 wp
-zb
-zb
+pA
+pA
 wp
 dj
 dj
@@ -47262,7 +47466,7 @@ Bx
 Bx
 Bx
 Bx
-Bx
+gN
 Bx
 Bx
 sP
@@ -47296,10 +47500,10 @@ cT
 AW
 Bx
 Bx
-mz
+NA
 Bx
 Bx
-mz
+Tf
 Xd
 Xd
 Xd
@@ -47456,7 +47660,7 @@ Bx
 Bx
 Bx
 Bx
-Bx
+gN
 Bx
 Bx
 sP
@@ -48075,7 +48279,7 @@ ee
 WK
 VW
 Bx
-mz
+nH
 Bx
 XO
 Cq
@@ -48249,7 +48453,7 @@ cS
 kE
 kT
 YP
-cA
+rn
 Xd
 Xd
 Ji
@@ -48824,7 +49028,7 @@ bm
 HA
 Xd
 Xd
-Xd
+kV
 Xd
 Xd
 Xd
@@ -49218,7 +49422,7 @@ WK
 WK
 WK
 LS
-Xd
+WK
 WV
 WK
 WK
@@ -50179,10 +50383,10 @@ Xd
 Xd
 Xd
 Xd
-cA
+bQ
 Xd
 jR
-LJ
+Ri
 Tr
 Xd
 LU
@@ -50192,7 +50396,7 @@ yR
 BX
 Xd
 jR
-Tr
+yI
 Xd
 iu
 rK
@@ -50373,10 +50577,10 @@ Xd
 Xd
 Xd
 Xd
-cA
+bQ
 Xd
 Zb
-TN
+xn
 TD
 Xd
 LU
@@ -50386,7 +50590,7 @@ Ds
 BX
 Xd
 Zb
-TD
+rz
 Xd
 iu
 rK
@@ -50537,7 +50741,7 @@ Hp
 xa
 xa
 xa
-aB
+lS
 lS
 es
 lE

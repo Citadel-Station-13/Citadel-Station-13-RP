@@ -113,7 +113,7 @@
 	if(!default_access_interface)
 		return FALSE
 	// todo: refactor silicon interaction
-	if(interface_require_exposed && is_hidden_underfloor() && !issilicon(user))
+	if(interface_require_exposed && is_probably_hidden_underfloor() && !issilicon(user))
 		return FALSE
 	return ..()
 
@@ -132,7 +132,7 @@
 		return
 	if(isnull(default_multitool_hijack))
 		return FALSE
-	if(hijack_require_exposed && is_hidden_underfloor())
+	if(hijack_require_exposed && is_probably_hidden_underfloor())
 		e_args.chat_feedback(SPAN_WARNING("You can't reach the controls of [src] while it's covered by flooring."), src)
 		return TRUE
 	e_args.visible_feedback(

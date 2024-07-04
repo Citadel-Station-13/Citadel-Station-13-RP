@@ -169,19 +169,10 @@ FLOOR SAFES
 	name = "floor safe"
 	icon_state = "floorsafe"
 	density = 0
-	level = 1	//underfloor
 	plane = TURF_PLANE
 	layer = BELOW_TURF_LAYER
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 
 /obj/structure/safe/floor/Initialize(mapload)
 	. = ..()
-	var/turf/T = loc
-	if(istype(T) && !T.is_plating())
-		hide(1)
 	update_icon()
-
-/obj/structure/safe/floor/hide(var/intact)
-	invisibility = intact ? 101 : 0
-
-/obj/structure/safe/floor/hides_under_flooring()
-	return 1

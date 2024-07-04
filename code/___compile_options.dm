@@ -71,13 +71,6 @@
  */
 // #define USE_BYOND_TRACY
 
-
-/**
- * If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
- */
-//#define DO_NOT_DEFER_ASSETS
-
-
 /**
  * If this is uncommented, Autowiki will generate edits and shut down the server.
  * Prefer the autowiki build target instead.
@@ -153,9 +146,15 @@
 
 
 /**
- * ## Modules follow
+ * ## Sections follow
  */
 
+// ## Assets
+
+/**
+ * If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
+ */
+//#define DO_NOT_DEFER_ASSETS
 
 // ## Atmospherics
 
@@ -185,7 +184,9 @@
 	#define ZAS_BREAKPOINT_HOOKS
 #endif
 
+// ## Lighting
 
+// #define AO_USE_LIGHTING_OPACITY
 
 // ## Overlays
 /**
@@ -194,12 +195,6 @@
  */
 #define MAX_ATOM_OVERLAYS 100
 
-
 // ## Timers
 
 // #define TIMER_LOOP_DEBUGGING
-
-
-// ## Lighting
-
-// #define AO_USE_LIGHTING_OPACITY

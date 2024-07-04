@@ -38,7 +38,8 @@
 
 	siemens_coefficient = 1
 	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
-
+	vision_organ = O_EYES
+	
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
