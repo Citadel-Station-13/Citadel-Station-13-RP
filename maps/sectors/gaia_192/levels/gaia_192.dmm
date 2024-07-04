@@ -78,13 +78,6 @@
 	},
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/garage)
-"az" = (
-/obj/machinery/light/spot{
-	dir = 8;
-	nightshift_allowed = 0
-	},
-/turf/simulated/floor/wood/classh,
-/area/class_m/outside/desert)
 "aC" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -309,6 +302,12 @@
 	},
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
+"bw" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_m/outside/winter)
 "bz" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -964,12 +963,6 @@
 	},
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
-"er" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
-/area/class_m/outside/winter)
 "es" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/water/river/south/outdoors,
@@ -1418,9 +1411,39 @@
 /obj/item/tool/wirecutters/clippers/trimmers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"gw" = (
+/obj/structure/closet/secure_closet/freezer,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/snacks/icecreamsandwich,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/obj/item/reagent_containers/food/drinks/cans/coconutwater,
+/turf/simulated/floor/wood/classh,
+/area/class_m/outside/desert)
 "gy" = (
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside/island)
+"gz" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/ice/classp/indoors,
+/area/class_m/outside/winter)
 "gA" = (
 /obj/structure/flora/rock/ice/alternative_1,
 /obj/structure/railing/grey{
@@ -1769,6 +1792,12 @@
 /obj/structure/railing,
 /obj/structure/catwalk,
 /turf/simulated/floor/water/river/south/outdoors,
+/area/class_m/outside)
+"ib" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/classm,
 /area/class_m/outside)
 "ic" = (
 /obj/machinery/vending/wallmed1{
@@ -2856,12 +2885,6 @@
 	},
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside/beachmiddle)
-"lM" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/classm,
-/area/class_m/outside)
 "lO" = (
 /obj/structure/flora/pottedplant/flower,
 /turf/simulated/floor/wood/classm,
@@ -3292,12 +3315,6 @@
 /obj/structure/bed/chair/bay/chair/padded/red/bignest,
 /turf/simulated/floor/wood/classp,
 /area/class_m/inside/igloos)
-"ny" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/ice/classp/indoors,
-/area/class_m/outside/winter)
 "nz" = (
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
@@ -3475,12 +3492,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
-"ox" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/classp,
-/area/class_m/outside/winter)
 "oA" = (
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
@@ -3994,6 +4005,13 @@
 	},
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
+"qF" = (
+/obj/machinery/light/spot{
+	dir = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_m/outside/desert)
 "qG" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/wood/classm,
@@ -4275,10 +4293,6 @@
 	icon_state = "concrete20"
 	},
 /area/class_m/outside/beachmiddle)
-"rB" = (
-/obj/machinery/light/spot/no_nightshift,
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside/coats)
 "rE" = (
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
@@ -4940,21 +4954,11 @@
 /obj/structure/railing,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
-"ux" = (
-/obj/structure/lightpost,
-/obj/structure/flora/rock/ice/alternative_1,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
-/area/class_m/outside/winter)
 "uB" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /turf/simulated/floor/water/classh,
-/area/class_m/outside/desert)
-"uC" = (
-/obj/structure/table/sandstone,
-/obj/item/reagent_containers/glass/bottle/lotion,
-/turf/simulated/floor/wood/classh,
 /area/class_m/outside/desert)
 "uD" = (
 /turf/simulated/floor/carpet/patterened/orange,
@@ -5457,6 +5461,11 @@
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"xg" = (
+/obj/structure/lightpost,
+/obj/structure/flora/rock/ice/alternative_1,
+/turf/simulated/floor/outdoors/ice/classp/indoors,
+/area/class_m/outside/winter)
 "xh" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
@@ -6341,10 +6350,10 @@
 /turf/simulated/floor/water/river/south/outdoors,
 /area/class_m/outside)
 "Ba" = (
-/mob/living/carbon/human/dummy/mannequin/mummy,
 /obj/structure/railing/grey{
 	dir = 1
 	},
+/obj/item/clothing/head/pharaoh,
 /turf/simulated/floor/sandstone,
 /area/class_m/outside/desert)
 "Bb" = (
@@ -6391,11 +6400,6 @@
 	},
 /turf/simulated/floor/water/river/deep/south/outdoors,
 /area/class_m/outside)
-"Bl" = (
-/obj/structure/bed/double/padded,
-/obj/item/bedsheet/double,
-/turf/simulated/floor/wood/classh,
-/area/class_m/outside/desert)
 "Bm" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -6526,30 +6530,6 @@
 "BM" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/inside/hotspringcaves)
-"BN" = (
-/obj/structure/closet/secure_closet/freezer,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/snacks/icecreamsandwich,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/obj/item/reagent_containers/food/drinks/cans/coconutwater,
-/turf/simulated/floor/wood/classh,
-/area/class_m/outside/desert)
 "BO" = (
 /obj/effect/map_effect/interval/effect_emitter/steam,
 /obj/machinery/light/spot{
@@ -6609,12 +6589,6 @@
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
-"Cc" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/classp,
-/area/class_m/outside/winter)
 "Cf" = (
 /turf/simulated/wall/planetary/gaia/classm,
 /area/class_m/inside/maintenance)
@@ -6843,6 +6817,12 @@
 /obj/effect/mist,
 /turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
+"Di" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/ice/classp/indoors,
+/area/class_m/outside/winter)
 "Dm" = (
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside/main)
@@ -6969,6 +6949,11 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside/hotspringcaves)
+"DS" = (
+/obj/structure/table/sandstone,
+/obj/item/storage/box/fluff/swimsuit/highclass,
+/turf/simulated/floor/wood/classh,
+/area/class_m/outside/desert)
 "DT" = (
 /obj/structure/flora/ausbushes,
 /turf/simulated/floor/outdoors/grass,
@@ -7311,12 +7296,6 @@
 "Fq" = (
 /turf/simulated/floor/water/shoreline/classh,
 /area/class_m/outside/desert)
-"Fr" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/classp,
-/area/class_m/outside/winter)
 "Fs" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/water/river/south/outdoors,
@@ -7453,14 +7432,13 @@
 /obj/structure/flora/rock,
 /turf/simulated/floor/outdoors/beach/sand/desert/classh,
 /area/class_m/outside/desert)
+"Ga" = (
+/obj/structure/closet/wardrobe,
+/turf/simulated/floor/wood/classh,
+/area/class_m/outside/desert)
 "Gb" = (
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside/cabin)
-"Gd" = (
-/obj/structure/table/sandstone,
-/obj/item/storage/box/fluff/swimsuit/highclass,
-/turf/simulated/floor/wood/classh,
-/area/class_m/outside/desert)
 "Gf" = (
 /obj/machinery/button/remote/airlock{
 	id = "room7";
@@ -7538,8 +7516,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside/main)
 "Gv" = (
-/mob/living/carbon/human/dummy/mannequin/mummy,
 /obj/structure/railing/grey,
+/obj/item/clothing/head/pharaoh,
 /turf/simulated/floor/sandstone,
 /area/class_m/outside/desert)
 "Gx" = (
@@ -7845,6 +7823,10 @@
 /obj/item/trash/sosjerky,
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside/maintenance)
+"HW" = (
+/obj/machinery/light/spot/no_nightshift,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside/coats)
 "HX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -8111,13 +8093,6 @@
 /obj/structure/flora/ausbushes/reedbush,
 /turf/simulated/floor/water/river/south/outdoors,
 /area/class_m/outside/beachmiddle)
-"Jf" = (
-/obj/machinery/light/spot{
-	dir = 4;
-	nightshift_allowed = 0
-	},
-/turf/simulated/floor/wood/classh,
-/area/class_m/outside/desert)
 "Jg" = (
 /obj/effect/floor_decal/river_beach_edge{
 	dir = 10
@@ -8354,6 +8329,12 @@
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
+"Kd" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside/coats)
 "Kf" = (
 /obj/machinery/door/airlock{
 	name = "Restroom"
@@ -9230,6 +9211,13 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside/main)
+"NN" = (
+/obj/machinery/light/spot{
+	dir = 4;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classh,
+/area/class_m/outside/desert)
 "NO" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/water/deep/indoors,
@@ -9658,14 +9646,15 @@
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
-"OE" = (
-/obj/structure/closet/wardrobe,
-/turf/simulated/floor/wood/classh,
-/area/class_m/outside/desert)
 "OF" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
+"OG" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/double,
+/turf/simulated/floor/wood/classh,
+/area/class_m/outside/desert)
 "OI" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 5
@@ -9847,6 +9836,12 @@
 /obj/machinery/vending/dinnerware,
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
+"PK" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_m/outside/winter)
 "PL" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -10527,12 +10522,6 @@
 	},
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside/hangars)
-"Tn" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside/coats)
 "Ts" = (
 /obj/structure/flora/tree/palm,
 /obj/structure/flora/ausbushes/leafybush,
@@ -11093,6 +11082,11 @@
 /obj/effect/mist,
 /turf/simulated/floor/water/indoors,
 /area/class_m/inside/hotspringcaves)
+"Wn" = (
+/obj/structure/table/sandstone,
+/obj/item/reagent_containers/glass/bottle/lotion,
+/turf/simulated/floor/wood/classh,
+/area/class_m/outside/desert)
 "Wp" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -11175,6 +11169,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/bathroom)
+"WS" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_m/outside/winter)
 "WT" = (
 /obj/machinery/light/spot{
 	dir = 4;
@@ -11995,15 +11995,15 @@ ua
 uT
 uT
 uT
-Cc
+WS
 uT
 uT
 uT
-Cc
+WS
 uT
 uT
 uT
-Cc
+WS
 uT
 uT
 uT
@@ -12011,7 +12011,7 @@ uT
 uT
 uT
 uT
-Cc
+WS
 uT
 ql
 ql
@@ -12031,17 +12031,17 @@ ql
 ql
 ql
 ql
-er
+Di
 ql
 ql
 ql
 ql
-Cc
+WS
 uT
 uT
 uT
 uT
-Cc
+WS
 uT
 uT
 uT
@@ -12574,7 +12574,7 @@ id
 "}
 (5,1,1) = {"
 ua
-Fr
+bw
 uT
 uT
 uT
@@ -12995,7 +12995,7 @@ wA
 ql
 ql
 ql
-ux
+xg
 wA
 ql
 ql
@@ -13350,7 +13350,7 @@ id
 "}
 (9,1,1) = {"
 ua
-Fr
+bw
 aR
 uT
 uT
@@ -14126,7 +14126,7 @@ id
 "}
 (13,1,1) = {"
 ua
-Fr
+bw
 uT
 uT
 uT
@@ -14161,7 +14161,7 @@ yU
 fK
 Qv
 ql
-ux
+xg
 wA
 ql
 ql
@@ -14902,7 +14902,7 @@ id
 "}
 (17,1,1) = {"
 ua
-Fr
+bw
 uT
 uT
 uT
@@ -18006,7 +18006,7 @@ id
 "}
 (33,1,1) = {"
 ua
-Fr
+bw
 uT
 uT
 uT
@@ -18056,7 +18056,7 @@ lb
 lb
 RK
 IZ
-rB
+HW
 LC
 xb
 WN
@@ -18440,7 +18440,7 @@ uT
 uT
 uT
 lb
-Tn
+Kd
 RK
 IZ
 IZ
@@ -18782,7 +18782,7 @@ id
 "}
 (37,1,1) = {"
 ua
-Fr
+bw
 uT
 uT
 uT
@@ -19026,7 +19026,7 @@ IZ
 IZ
 IZ
 IZ
-rB
+HW
 LC
 LC
 LC
@@ -19558,7 +19558,7 @@ id
 "}
 (41,1,1) = {"
 ua
-Fr
+bw
 uT
 uT
 uT
@@ -19608,7 +19608,7 @@ RK
 IZ
 pD
 IZ
-rB
+HW
 LC
 LC
 LC
@@ -19992,7 +19992,7 @@ kp
 kp
 kp
 lb
-Tn
+Kd
 IZ
 Zo
 IZ
@@ -20143,21 +20143,21 @@ ua
 uT
 uT
 uT
-ox
+PK
 uT
 ql
-ny
+gz
 ql
 ql
 ql
-ny
+gz
 ql
 ql
 ql
-ny
+gz
 ql
 uT
-ox
+PK
 uT
 uT
 uT
@@ -20190,7 +20190,7 @@ RK
 IZ
 pD
 IZ
-rB
+HW
 LC
 LC
 LC
@@ -20574,7 +20574,7 @@ vW
 vW
 rn
 LC
-Tn
+Kd
 IZ
 IZ
 IZ
@@ -38410,7 +38410,7 @@ mH
 mH
 ZP
 NU
-lM
+ib
 NU
 ZP
 Wb
@@ -43627,7 +43627,7 @@ rF
 RP
 Xh
 Fn
-eU
+NN
 hJ
 mH
 cq
@@ -46720,9 +46720,9 @@ MX
 xj
 vI
 Xh
-Bl
-az
-Gd
+OG
+qF
+DS
 Xh
 vI
 Fq
@@ -46916,7 +46916,7 @@ vI
 Xh
 eU
 eU
-uC
+Wn
 Xh
 Xh
 TS
@@ -47108,10 +47108,10 @@ nF
 xj
 vI
 Xh
-OE
+Ga
 eU
 eU
-BN
+gw
 Xh
 vI
 Fq
@@ -47303,7 +47303,7 @@ xj
 vI
 Xh
 uf
-Jf
+NN
 eU
 eU
 Xh
@@ -48762,7 +48762,7 @@ RU
 RU
 RU
 Pq
-Yp
+PE
 eP
 eP
 eP
