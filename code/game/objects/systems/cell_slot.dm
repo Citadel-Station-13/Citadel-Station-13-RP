@@ -55,16 +55,17 @@
 	parent.object_cell_slot_removed(., src)
 
 /**
- * removes cell from the system and drops it in users hands
+ * helper to have a mob yank a cell
+ *
+ * * this does not check adjacency!
+ * * puts the cell in their hand if possible, otherwise drops it on them
  */
-/datum/object_system/cell_slot/proc/mob_remove_cell(mob/user)
-	if(isnull(cell))
-		return FALSE
-	. = cell
-	user.put_in_hands_or_drop(cell)
-	cell = null
-	parent.object_cell_slot_removed(., src)
-	return TRUE
+/datum/object_system/cell_slot/proc/mob_yank_cell(mob/user)
+	var/obj/item/cell/removed = remove_cell(user)
+	if(!removed)
+		return
+	user.put_in_hands_or_drop(removed)
+	return removed
 
 /**
  * replaces the existing cell with the inserted cell, dropping the old cell
