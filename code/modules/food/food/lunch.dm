@@ -11,7 +11,7 @@ var/list/lunchables_lunches_ = list(/obj/item/reagent_containers/food/snacks/san
 								  /obj/item/reagent_containers/food/snacks/liquid/protein,
                                   /obj/item/reagent_containers/food/snacks/jellysandwich/cherry,
                                   /obj/item/reagent_containers/food/snacks/tossedsalad,
-								  /obj/item/reagent_containers/food/snacks/bloodsausage,
+								  /obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood,
                                   /obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose)
 
 var/list/lunchables_snacks_ = list(/obj/item/reagent_containers/food/snacks/donut/jelly,
@@ -41,7 +41,7 @@ var/list/lunchables_snacks_ = list(/obj/item/reagent_containers/food/snacks/donu
                                    /obj/item/reagent_containers/food/snacks/watermelonslice,
                                    /obj/item/reagent_containers/food/snacks/slice/applecake/filled,
                                    /obj/item/reagent_containers/food/snacks/slice/pumpkinpie/filled,
-								   /obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood,
+								   /obj/item/reagent_containers/food/snacks/bloodsausage,
                                    /obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks)
 
 var/list/lunchables_drinks_ = list(/obj/item/reagent_containers/food/drinks/cans/cola,
