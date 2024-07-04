@@ -479,7 +479,7 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[desc]"
-	if(get_description_info() || get_description_fluff() || get_description_interaction(user))
+	if(get_description_info() || get_description_fluff() || length(get_description_interaction(user)))
 		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
