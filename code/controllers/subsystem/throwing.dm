@@ -394,7 +394,7 @@ SUBSYSTEM_DEF(throwing)
 /datum/thrownthing/proc/get_damage_force(atom/target)
 	. = thrownthing.throw_force
 	if(isitem(thrownthing))
-		var/obj/item/I = throwthing
+		var/obj/item/I = thrownthing
 		if(isnull(.))
 			. = I.damage_force
 	return . * get_damage_multiplier(target)
