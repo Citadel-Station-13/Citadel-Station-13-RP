@@ -287,7 +287,7 @@
 	action_mode_switch?.revoke(wearer.inventory.actions)
 
 /datum/object_system/storage/ui_action_click(datum/action/action, datum/event_args/actor/actor)
-	switch_gathering_modes(user)
+	switch_gathering_modes(actor.performer)
 
 //* Caches *//
 

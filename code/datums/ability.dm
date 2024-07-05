@@ -102,7 +102,6 @@
 		action = new(src)
 	action.name = hotbind_name()
 	action.desc = hotbind_desc()
-	action.button_managed = TRUE
 	action.button_icon = action_icon
 	action.button_icon_state = action_state
 	action.background_icon = background_icon
@@ -116,7 +115,9 @@
 	var/availability = 1
 	if(cooldown && !isnull(last_used))
 		availability = clamp((world.time - last_used) / cooldown, 0, 1)
-	action?.push_button_update(availability, (interact_type == ABILITY_INTERACT_TOGGLE) && enabled)
+	action?.background_additional_overlay = (interact_type) == ABILITY_INTERACT_TOGGLE && enabled ? "[background_state]_on" : null
+	action?.push_button_availability(availability, FALSE)
+	action?.update_buttons()
 	recheck_queued_action_update()
 
 /datum/ability/proc/recheck_queued_action_update()

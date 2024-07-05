@@ -342,7 +342,7 @@
 	if(!player)
 		return
 
-	player.transfer_client_to(src)
+	player.transfer_to(src)
 
 	if(player.mob && player.mob.mind)
 		player.mob.mind.transfer(src)
