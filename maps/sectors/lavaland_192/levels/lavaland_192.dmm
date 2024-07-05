@@ -90,6 +90,9 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "dX" = (
@@ -802,11 +805,11 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/window/eastleft{
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/eastright{
 	name = "Xenoarcheology Storage";
 	req_access = list(65)
 	},
-/obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "pz" = (
@@ -1145,7 +1148,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/window/eastright{
+/obj/machinery/door/window/eastleft{
 	name = "Xenoarcheology Storage";
 	req_access = list(65)
 	},
@@ -1709,10 +1712,6 @@
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
 /obj/item/gun/energy/kinetic_accelerator,
-/obj/machinery/door/window/westleft{
-	req_one_access = list(48);
-	name = "Mining Storage"
-	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -1720,6 +1719,11 @@
 	dir = 4
 	},
 /obj/item/pickaxe,
+/obj/item/gps/mining,
+/obj/machinery/door/window/westright{
+	req_one_access = list(48);
+	name = "Mining Storage"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Hr" = (
@@ -1763,7 +1767,10 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
-/obj/machinery/recharger,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Iq" = (
@@ -1807,7 +1814,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/window/eastright{
+/obj/item/ano_scanner,
+/obj/item/ano_scanner,
+/obj/machinery/door/window/eastleft{
 	name = "Xenoarcheology Storage";
 	req_access = list(65)
 	},
@@ -1851,6 +1860,9 @@
 /area/lavaland/central/explored)
 "Kj" = (
 /obj/machinery/recharge_station,
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "KC" = (
@@ -1962,6 +1974,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
+"NN" = (
+/obj/structure/table/steel,
+/obj/machinery/cell_charger,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "NW" = (
@@ -2329,7 +2346,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/obj/machinery/door/window/eastleft{
+/obj/machinery/door/window/eastright{
 	name = "Xenoarcheology Storage";
 	req_access = list(65)
 	},
@@ -2447,15 +2464,16 @@
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
 /obj/item/gun/energy/kinetic_accelerator,
-/obj/machinery/door/window/westright{
-	req_one_access = list(48);
-	name = "Mining Storage"
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/item/pickaxe,
+/obj/item/gps/mining,
+/obj/machinery/door/window/westleft{
+	req_one_access = list(48);
+	name = "Mining Storage"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Wy" = (
@@ -12764,9 +12782,9 @@ ew
 VT
 AO
 KZ
-ew
-Mw
 xV
+Mw
+NN
 tN
 VA
 Iy
