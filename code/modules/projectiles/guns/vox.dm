@@ -78,7 +78,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 55
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#8837A3"
 
 	muzzle_type = /obj/effect/projectile/muzzle/darkmatterstun
@@ -89,9 +89,9 @@
 	name = "dark matter bolt"
 	icon_state = "darkb"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	damage = 35
+	damage_force = 35
 	armor_penetration = 35
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
 
@@ -105,9 +105,9 @@
 	name = "dark matter pellet"
 	icon_state = "dark_pellet"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	damage = 20
+	damage_force = 20
 	armor_penetration = 35
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_ENERGY
 	light_color = "#8837A3"
 
@@ -138,10 +138,12 @@
 	name = "sonic pulse"
 	icon_state = "sound"
 	fire_sound = 'sound/effects/basscannon.ogg'
-	damage = 5
-	armor_penetration = 30
-	damage_type = BRUTE
+
+	damage_force = 5
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
+	damage_tier = MELEE_TIER_HEAVY
+
 	embed_chance = 0
 	vacuum_traversal = 0
 
@@ -149,7 +151,7 @@
 	agony = 50
 
 /obj/projectile/sonic/strong
-	damage = 45
+	damage_force = 45
 
 /obj/projectile/sonic/strong/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(ismob(target))

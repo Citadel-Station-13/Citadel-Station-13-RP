@@ -65,7 +65,7 @@
 	name = "size beam"
 	icon_state = "xray"
 	nodamage = 1
-	damage = 0
+	damage_force = 0
 	damage_flag = ARMOR_LASER
 	var/set_size = 1 //Let's default to 100%
 

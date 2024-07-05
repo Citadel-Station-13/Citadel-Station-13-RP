@@ -8,7 +8,7 @@
 
 	var/beam_state = "b_beam"
 
-	damage = 5
+	damage_force = 5
 	speed = 2
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
@@ -187,4 +187,4 @@
 	name = "green orb"
 	icon_state = "green_laser"
 	beam_state = "n_beam"
-	damage = 3
+	damage_force = 3

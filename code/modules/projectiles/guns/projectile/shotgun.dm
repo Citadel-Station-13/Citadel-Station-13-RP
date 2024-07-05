@@ -313,11 +313,13 @@
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	max_shells = 1
 	w_class = WEIGHT_CLASS_BULKY
+
 	damage_force = 25
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	damage_tier = MELEE_TIER_MEDIUM
+
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
-	sharp = 1
-	edge = 1
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/underslung

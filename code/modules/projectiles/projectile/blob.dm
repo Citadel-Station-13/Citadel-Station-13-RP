@@ -1,7 +1,7 @@
 /obj/projectile/energy/blob //Not super strong.
 	name = "spore"
 	icon_state = "declone"
-	damage = 3
+	damage_force = 3
 	armor_penetration = 40
 	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE

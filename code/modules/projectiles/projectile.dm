@@ -13,6 +13,18 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
 
+	//* Damage - Default handling *//
+	/// damage amount
+	var/damage_force = 10
+	/// damage tier - goes hand in hand with [damage_armor]
+	var/damage_tier = BULLET_TIER_DEFAULT
+	/// damage type to inflict; any [DAMAGE_TYPE_*] enum is valid
+	var/damage_type = DAMAGE_TYPE_BRUTE
+	/// armor flag for damage - goes hand in hand with [damage_tier]
+	var/damage_flag = ARMOR_BULLET
+	/// damage mode - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+
 	////TG PROJECTILE SYTSEM
 	//Projectile stuff
 	var/range = 50
@@ -101,18 +113,6 @@
 	var/submunition_constant_spread = FALSE
 	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
 	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
-
-	//? Damage - default handling
-	/// damage amount
-	var/damage = 10
-	/// damage tier - goes hand in hand with [damage_armor]
-	var/damage_tier = BULLET_TIER_DEFAULT
-	/// todo: legacy - BRUTE, BURN, TOX, OXY, CLONE, HALLOSS, ELECTROCUTE, BIOACID are the only things that should be in here
-	var/damage_type = DAMAGE_TYPE_BRUTE
-	/// armor flag for damage - goes hand in hand with [damage_tier]
-	var/damage_flag = ARMOR_BULLET
-	/// damage mode - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
 
 	var/SA_bonus_damage = 0 // Some bullets inflict extra damage on simple animals.
 	var/SA_vulnerability = null // What kind of simple animal the above bonus damage should be applied to. Set to null to apply to all SAs.

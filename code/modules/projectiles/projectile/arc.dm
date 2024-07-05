@@ -121,7 +121,7 @@
 /obj/projectile/arc/blue_energy
 	name = "energy missile"
 	icon_state = "force_missile"
-	damage = 15
+	damage_force = 15
 	damage_type = DAMAGE_TYPE_BURN
 
 /obj/projectile/arc/blue_energy/on_impact(turf/T)

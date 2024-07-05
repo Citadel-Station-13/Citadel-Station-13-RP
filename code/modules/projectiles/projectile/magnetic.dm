@@ -3,7 +3,7 @@
 	name = "rod"
 	icon_state = "rod"
 	fire_sound = 'sound/weapons/railgun.ogg'
-	damage = 65
+	damage_force = 65
 	stun = 1
 	weaken = 1
 	penetrating = 5
@@ -12,14 +12,14 @@
 /obj/projectile/bullet/magnetic/slug
 	name = "slug"
 	icon_state = "gauss_silenced"
-	damage = 75
+	damage_force = 75
 	armor_penetration = 90
 
 /obj/projectile/bullet/magnetic/flechette
 	name = "flechette"
 	icon_state = "flechette"
 	fire_sound = 'sound/weapons/rapidslice.ogg'
-	damage = 20
+	damage_force = 20
 	armor_penetration = 100
 
 /obj/projectile/bullet/magnetic/flechette/hunting
@@ -33,13 +33,13 @@
 	icon_state = "gauss"
 	weaken = 0
 	stun = 0
-	damage = 30
+	damage_force = 30
 	damage_type = DAMAGE_TYPE_SEARING
 	embed_chance = 0
 
 /obj/projectile/bullet/magnetic/heated/weak
 	icon_state = "gauss_silenced"
-	damage = 15
+	damage_force = 15
 	agony = 5
 	embed_chance = 0
 	armor_penetration = 50
@@ -47,7 +47,7 @@
 /obj/projectile/bullet/magnetic/fuelrod
 	name = "fuel rod"
 	icon_state = "fuel-deuterium"
-	damage = 70 //it's a fusion fuel rod propelled faster than sound, it should hurt.
+	damage_force = 70 //it's a fusion fuel rod propelled faster than sound, it should hurt.
 	stun = 1
 	weaken = 0
 	agony = 50
@@ -99,7 +99,7 @@
 
 /obj/projectile/bullet/magnetic/fuelrod/tritium
 	icon_state = "fuel-tritium"
-	damage = 100 //Much harder to get than tritium - needs mhydrogen
+	damage_force = 100 //Much harder to get than tritium - needs mhydrogen
 	flammability = -1
 	armor_penetration = 50
 	penetrating = 3
@@ -107,7 +107,7 @@
 /obj/projectile/bullet/magnetic/fuelrod/phoron
 	name = "blazing fuel rod"
 	icon_state = "fuel-phoron"
-	damage = 65 //leaves a trail of fire, irradiates and is much easier to get than the other two, so less damage is fine
+	damage_force = 65 //leaves a trail of fire, irradiates and is much easier to get than the other two, so less damage is fine
 	incendiary = 2
 	flammability = 2
 	armor_penetration = 60
@@ -118,7 +118,7 @@
 /obj/projectile/bullet/magnetic/fuelrod/supermatter
 	name = "painfully incandescent fuel rod"
 	icon_state = "fuel-supermatter"
-	damage = 15 //it qdels things
+	damage_force = 15 //it qdels things
 	incendiary = 2
 	flammability = 4
 	weaken = 2
@@ -143,7 +143,7 @@
 /obj/projectile/bullet/magnetic/bore
 	name = "phorogenic blast"
 	icon_state = "purpleemitter"
-	damage = 20
+	damage_force = 20
 	incendiary = 1
 	armor_penetration = 20
 	penetrating = 0
@@ -168,7 +168,7 @@
 /obj/projectile/bullet/magnetic/bore/powerful
 	name = "energetic phorogenic blast"
 	icon_state = "purpleemitter"
-	damage = 30
+	damage_force = 30
 	incendiary = 2
 	armor_penetration = 20
 	penetrating = 0

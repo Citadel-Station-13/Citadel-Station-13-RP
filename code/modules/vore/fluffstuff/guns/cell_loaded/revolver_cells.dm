@@ -64,8 +64,9 @@
 	nodamage = 1
 	agony = 5
 	embed_chance = 0
-	sharp = 0
 	damage_flag = ARMOR_MELEE
+	damage_force = 0
+	damage_mode = NONE
 
 /obj/projectile/bullet/stripper/on_hit(var/atom/stripped)
 	if(ishuman(stripped))
