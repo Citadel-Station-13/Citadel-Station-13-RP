@@ -2847,10 +2847,6 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
-"lE" = (
-/mob/living/simple_mob/animal/sif/glitterfly,
-/turf/simulated/floor/outdoors/ice/classp/indoors,
-/area/class_m/outside/winter)
 "lF" = (
 /obj/machinery/light/spot{
 	dir = 8;
@@ -7246,6 +7242,13 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"Fc" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 8
+	},
+/mob/living/simple_mob/animal/sif/diyaab,
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_m/outside/winter)
 "Fd" = (
 /mob/living/simple_mob/animal/passive/fish/koi,
 /turf/simulated/floor/water/deep/classm,
@@ -7443,6 +7446,10 @@
 "Gb" = (
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside/cabin)
+"Gd" = (
+/mob/living/simple_mob/animal/sif/glitterfly,
+/turf/simulated/floor/outdoors/ice/classp/indoors,
+/area/class_m/outside/winter)
 "Gf" = (
 /obj/machinery/button/remote/airlock{
 	id = "room7";
@@ -10333,13 +10340,6 @@
 /obj/structure/flora/tree/palm,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
-"Sv" = (
-/obj/machinery/light/spot/no_nightshift{
-	dir = 8
-	},
-/mob/living/simple_mob/animal/sif/diyaab,
-/turf/simulated/floor/outdoors/snow/classp,
-/area/class_m/outside/winter)
 "Sw" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -11672,6 +11672,10 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
+"Zn" = (
+/mob/living/simple_mob/animal/sif/duck,
+/turf/simulated/floor/water/indoors/classp,
+/area/class_m/outside/winter)
 "Zo" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -12022,7 +12026,7 @@ uT
 uT
 uT
 uT
-Sv
+Fc
 uT
 ql
 ql
@@ -12239,7 +12243,7 @@ ql
 ql
 ql
 ql
-lE
+Gd
 ql
 uT
 uT
@@ -12820,7 +12824,7 @@ ql
 ql
 ql
 dJ
-ql
+aP
 ql
 ql
 uT
@@ -14555,7 +14559,7 @@ yU
 yU
 rU
 yU
-yU
+Zn
 yU
 Os
 ql
@@ -14745,7 +14749,7 @@ Xa
 nU
 ug
 yU
-yU
+Zn
 yU
 yU
 yU
