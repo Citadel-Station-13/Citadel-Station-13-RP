@@ -1653,12 +1653,11 @@
 /turf/simulated/floor/water/deep/indoors,
 /area/class_m/inside/main)
 "hy" = (
-/obj/effect/overlay/coconut,
-/obj/item/fish/crab,
+/mob/living/simple_mob/animal/passive/crab,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
 	name = "beach"
 	},
-/area/class_m/outside/beach)
+/area/class_m/outside/island2)
 "hz" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -4295,6 +4294,12 @@
 	icon_state = "concrete20"
 	},
 /area/class_m/outside/beachmiddle)
+"rD" = (
+/mob/living/simple_mob/animal/passive/crab,
+/turf/simulated/floor/outdoors/beach/sand/desert/classm{
+	name = "beach"
+	},
+/area/class_m/outside/island)
 "rE" = (
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
@@ -5943,7 +5948,7 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside/maintenance/winter)
 "zw" = (
-/obj/item/fish/crab,
+/mob/living/simple_mob/animal/passive/crab,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
 	name = "beach"
 	},
@@ -7925,7 +7930,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/vip_dorms)
 "Iu" = (
-/obj/item/fish/crab,
+/mob/living/simple_mob/animal/passive/crab,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
 	name = "beach"
 	},
@@ -15246,11 +15251,11 @@ nB
 nB
 nB
 nB
-nB
+zw
 nB
 qY
 nB
-zw
+nB
 nB
 KI
 Sa
@@ -15671,7 +15676,7 @@ iW
 Za
 ZI
 ZI
-ZI
+rD
 Qw
 zA
 An
@@ -16213,7 +16218,7 @@ nB
 nB
 nB
 nB
-nB
+zw
 nB
 nB
 nB
@@ -16796,7 +16801,7 @@ nB
 nB
 nB
 nB
-zw
+nB
 nB
 nB
 nB
@@ -17601,7 +17606,7 @@ gy
 An
 iC
 iW
-ZI
+rD
 ad
 JQ
 An
@@ -19309,7 +19314,7 @@ nB
 nB
 nB
 nB
-hy
+PZ
 nB
 nB
 nB
@@ -22222,7 +22227,7 @@ iO
 jC
 jC
 jC
-Iu
+jC
 jC
 jC
 jC
@@ -23195,7 +23200,7 @@ jC
 jC
 jC
 jC
-jC
+Iu
 jC
 jC
 jC
@@ -23391,7 +23396,7 @@ jC
 jC
 jC
 jC
-Iu
+jC
 jC
 jC
 jC
@@ -24755,7 +24760,7 @@ jC
 jC
 jC
 jC
-Iu
+jC
 jC
 Bi
 gG
@@ -25335,7 +25340,7 @@ jC
 jC
 jC
 jC
-jC
+Iu
 jC
 jC
 jC
@@ -32752,7 +32757,7 @@ rP
 rP
 rP
 rP
-rP
+hy
 rP
 Tz
 Bx
@@ -35654,7 +35659,7 @@ rP
 rV
 rP
 rP
-rP
+hy
 rP
 rP
 rP
