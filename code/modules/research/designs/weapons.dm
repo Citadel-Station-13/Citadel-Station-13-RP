@@ -286,7 +286,6 @@
 	desc = "An advanced chem spraying device."
 	id = "chemsprayer"
 	req_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_BIO = 2)
-	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 	build_path = /obj/item/reagent_containers/spray/chemsprayer
 
 /datum/design/science/weapon/fuelrod

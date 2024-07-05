@@ -6452,9 +6452,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance/cargo{
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/maintenance/cargo,
 /obj/map_helper/access_helper/airlock/station/supply/department,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
@@ -8757,9 +8755,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/cargo{
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/maintenance/cargo,
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
@@ -10345,9 +10341,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/cargo{
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/maintenance/cargo,
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "MC" = (
@@ -12737,9 +12732,7 @@
 /turf/simulated/floor/wood,
 /area/chapel/observation)
 "VC" = (
-/obj/machinery/door/airlock/maintenance/cargo{
-	req_one_access = null
-	},
+/obj/machinery/door/airlock/maintenance/cargo,
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/plating,

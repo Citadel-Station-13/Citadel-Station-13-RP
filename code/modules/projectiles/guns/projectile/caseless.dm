@@ -58,7 +58,7 @@
 	one_handed_penalty = 100 //you simply do not
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
+	fire_sound = 'sound/weapons/gunshot/gunshot_tech_huge.ogg'
 
 	firemodes = list(
 		list(mode_name="semiauto",      	burst=1, 	fire_delay=0,    move_delay=null,	burst_accuracy=null, dispersion=null),
@@ -94,6 +94,7 @@
 	one_handed_penalty = 50
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	fire_sound = 'sound/weapons/gunshot/gunshot_tech_smg.ogg'
 
 	firemodes = list(
 		list(mode_name="full auto", burst=1, fire_delay=-1, move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1),

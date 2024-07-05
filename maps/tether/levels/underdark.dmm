@@ -110,7 +110,10 @@
 	},
 /area/mine/explored/underdark)
 "G" = (
-/obj/machinery/door/airlock/maintenance/cargo,
+/obj/machinery/door/airlock/maintenance/cargo{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/supply/cargo_bay,
 /turf/simulated/floor/virgo3b,
 /area/mine/explored/underdark)
 "H" = (

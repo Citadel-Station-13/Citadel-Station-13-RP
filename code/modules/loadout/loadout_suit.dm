@@ -612,6 +612,9 @@
 	name = "Aureate Kimono"
 	path = /obj/item/clothing/suit/storage/aureate
 
+/datum/loadout_entry/suit/aureate_kimono_dark
+	name = "Aureate Dark Kimono"
+	path = /obj/item/clothing/suit/storage/aureate/dark
 
 //Tajaran wears
 

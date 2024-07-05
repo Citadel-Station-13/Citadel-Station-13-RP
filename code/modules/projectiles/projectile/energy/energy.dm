@@ -12,7 +12,7 @@
 	icon_state = "bullet"
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	damage = 5
-	range = 15 //if the shell hasn't hit anything after travelling this far it just explodes.
+	range = WORLD_ICON_SIZE * 15 //if the shell hasn't hit anything after travelling this far it just explodes.
 	var/flash_range = 1
 	var/brightness = 7
 	var/light_colour = "#ffffff"
@@ -31,7 +31,7 @@
 
 				if(flash_strength > 0)
 					H.Confuse(flash_strength + 5)
-					H.Blind(flash_strength)
+					H.apply_status_effect(/datum/status_effect/sight/blindness, flash_strength SECONDS)
 					H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 					H.adjustHalLoss(22 * (flash_strength / 5)) // Five flashes to stun.  Bit weaker than melee flashes due to being ranged.
 
@@ -68,7 +68,7 @@
 	name = "chemical shell"
 	icon_state = "bullet"
 	damage = 10
-	range = 15 //if the shell hasn't hit anything after travelling this far it just explodes.
+	range = 15 * WORLD_ICON_SIZE //if the shell hasn't hit anything after travelling this far it just explodes.
 	flash_strength = 15
 	brightness = 15
 
@@ -186,7 +186,7 @@
 	icon_state = "plasma_stun"
 	fire_sound = 'sound/weapons/blaster.ogg'
 	armor_penetration = 10
-	range = 4
+	range = WORLD_ICON_SIZE * 4
 	damage = 5
 	agony = 55
 	damage_type = BURN
@@ -238,20 +238,20 @@
 /obj/projectile/energy/phase
 	name = "phase wave"
 	icon_state = "phase"
-	range = 25
+	range = WORLD_ICON_SIZE * 25
 	damage = 5
 	SA_bonus_damage = 45	// 50 total on animals
 	SA_vulnerability = MOB_CLASS_ANIMAL
 
 /obj/projectile/energy/phase/light
-	range = 15
+	range = WORLD_ICON_SIZE * 15
 	SA_bonus_damage = 35	// 40 total on animals
 
 /obj/projectile/energy/phase/heavy
-	range = 20
+	range = WORLD_ICON_SIZE * 20
 	SA_bonus_damage = 55	// 60 total on animals
 
 /obj/projectile/energy/phase/heavy/cannon
-	range = 30
+	range = WORLD_ICON_SIZE * 30
 	damage = 15
 	SA_bonus_damage = 60	// 75 total on animals

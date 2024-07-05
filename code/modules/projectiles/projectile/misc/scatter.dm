@@ -10,7 +10,13 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
 
-	damage = 30
+	use_submunitions = TRUE
+
+	spread_submunition_damage = TRUE
+	only_submunitions = TRUE
+
+	submunition_spread_max = 30
+	submunition_spread_min = 2
 
 	submunitions_only = TRUE
 	submunition_disperse_type = /obj/projectile/bullet/pellet/shotgun/flak

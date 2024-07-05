@@ -119,7 +119,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts recharging [A] with [src]."), SPAN_NOTICE("You start recharging [A] with [src]."))
 	A.add_filter("inducer_outline", 1, outline_filter(1, "#22aaFF"))
 
-	var/datum/beam/charge_beam = user.Beam(A, icon_state = "rped_upgrade", time = 20 SECONDS)
+	var/datum/beam_legacy/charge_beam = user.Beam(A, icon_state = "rped_upgrade", time = 20 SECONDS)
 	var/datum/effect_system/spark_spread/spark_system = new
 	spark_system.set_up(5, 0, get_turf(A))
 	spark_system.attach(A)

@@ -708,7 +708,7 @@
 		for(var/mob/living/L in oview(2,user))
 			if(L.stat)
 				continue
-			if(L.blinded)
+			if(L.has_status_effect(/datum/status_effect/sight/blindness))
 				to_chat(L, "You hear a [fire_sound_text]!")
 				continue
 			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")

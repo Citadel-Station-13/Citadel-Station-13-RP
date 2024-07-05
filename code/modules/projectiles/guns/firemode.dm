@@ -51,19 +51,19 @@
 /datum/firemode/semi_auto
 	name = "single fire"
 
-/datum/firemode/2_burst
+/datum/firemode/burst_2
 	name = "2-burst"
 	burst_amount = 2
 
-/datum/firemode/3_burst
+/datum/firemode/burst_3
 	name = "3-burst"
 	burst_amount = 3
 
-/datum/firemode/4_burst
+/datum/firemode/burst_4
 	name = "4-burst"
 	burst_amount = 4
 
-/datum/firemode/5_burst
+/datum/firemode/burst_5
 	name = "5-burst"
 	burst_amount = 5
 

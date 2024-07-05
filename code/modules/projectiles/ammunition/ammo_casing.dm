@@ -104,7 +104,7 @@
 /obj/item/ammo_casing/proc/init_projectile()
 	if(istype(stored))
 		CRASH("double init?")
-	stored = new projectile_type
+	stored = new projectile_type(src)
 	return stored
 
 /obj/item/ammo_casing/update_icon_state()

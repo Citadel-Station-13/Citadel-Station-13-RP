@@ -113,6 +113,7 @@
 		CRASH("FATAL - Failed to get next map")
 	next_station = next_map
 	subsystem_log("loaded map [next_station] ([next_station.id])")
+	log_world("loaded map [next_station] ([next_station.id])")
 	return next_map
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
@@ -157,6 +158,7 @@
 	instance.prime()
 
 	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
+	log_world("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
 
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
@@ -217,8 +219,10 @@
 	if(isnull(instance))
 		var/list/datum/map/station/valid = list()
 		for(var/id in keyed_maps)
-			var/datum/map/map = keyed_maps[id]
+			var/datum/map/station/map = keyed_maps[id]
 			if(!istype(map, /datum/map/station))
+				continue
+			if(!map.allow_random_draw)
 				continue
 			valid += map
 		instance = pick(valid)

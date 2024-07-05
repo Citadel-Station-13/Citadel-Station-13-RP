@@ -287,7 +287,7 @@ GLOBAL_LIST_EMPTY(movespeed_modification_cache)
 			else
 				continue
 		. = M.apply_multiplicative(., src)
-	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND)
+	cached_multiplicative_slowdown = min(., 10 / MOVESPEED_ABSOLUTE_MINIMUM_PROJECTILE_SPEED_FOR_TPS)
 	if(!client)
 		return
 	var/diff = (last_move_time - move_delay) - cached_multiplicative_slowdown

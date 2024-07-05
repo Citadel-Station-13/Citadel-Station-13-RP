@@ -37,4 +37,4 @@
 
 //* helpers
 /// tiles per second to pixels per decisecond
-#define TILES_PER_SECOND(tiles) (tiles * WORLD_ICON_SIZE / 10)
+#define PROJECTILE_SPEED_FOR_TPS(tiles) (tiles * WORLD_ICON_SIZE / 10)

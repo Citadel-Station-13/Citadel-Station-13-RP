@@ -2312,7 +2312,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/map_helper/access_helper/airlock/station/science/fabrication,
+/obj/map_helper/access_helper/airlock/station/science/research_lab,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "bns" = (

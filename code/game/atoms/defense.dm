@@ -4,6 +4,8 @@
 //! Welcome to the atom damage module.
 //! Enjoy the bitfield and #define vomit.
 
+// todo: everything needs comsigs comsigs comsigs
+
 //? Hooks / External
 
 /**
@@ -106,6 +108,7 @@
 //? Hitsound API
 
 // todo: stuff like metal limbs punching walls making special sounds
+// todo: this probably needs a rework
 
 /**
  * gets hitsound override. return a value to be fed into playsound, or null for default.

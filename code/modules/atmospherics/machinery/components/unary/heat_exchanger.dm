@@ -66,8 +66,7 @@
 /obj/machinery/atmospherics/component/unary/heat_exchanger/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
-	var/turf/T = src.loc
-	if (level==1 && isturf(T) && !T.is_plating())
+	if(is_probably_hidden_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
