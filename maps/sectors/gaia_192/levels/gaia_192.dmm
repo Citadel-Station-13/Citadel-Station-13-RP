@@ -144,7 +144,7 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside/dorms)
 "aR" = (
-/mob/living/simple_mob/animal/sif/frostfly,
+/mob/living/simple_mob/animal/sif/diyaab,
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_m/outside/winter)
 "aS" = (
@@ -2847,6 +2847,10 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"lE" = (
+/mob/living/simple_mob/animal/sif/glitterfly,
+/turf/simulated/floor/outdoors/ice/classp/indoors,
+/area/class_m/outside/winter)
 "lF" = (
 /obj/machinery/light/spot{
 	dir = 8;
@@ -10329,6 +10333,13 @@
 /obj/structure/flora/tree/palm,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
+"Sv" = (
+/obj/machinery/light/spot/no_nightshift{
+	dir = 8
+	},
+/mob/living/simple_mob/animal/sif/diyaab,
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_m/outside/winter)
 "Sw" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -12011,7 +12022,7 @@ uT
 uT
 uT
 uT
-WS
+Sv
 uT
 ql
 ql
@@ -12206,7 +12217,7 @@ uT
 uT
 uT
 uT
-aR
+uT
 ql
 ql
 ql
@@ -12228,7 +12239,7 @@ ql
 ql
 ql
 ql
-ql
+lE
 ql
 uT
 uT
@@ -12424,7 +12435,7 @@ ql
 ql
 ql
 ql
-aR
+uT
 uT
 uT
 uT
@@ -12814,7 +12825,7 @@ ql
 ql
 uT
 uT
-uT
+aR
 uT
 uT
 uT
@@ -12964,7 +12975,7 @@ id
 ua
 uT
 uT
-uT
+XE
 uT
 EZ
 bh
@@ -13351,7 +13362,7 @@ id
 (9,1,1) = {"
 ua
 bw
-aR
+uT
 uT
 uT
 uT
@@ -13744,7 +13755,7 @@ uT
 uT
 uT
 uT
-uT
+aR
 uT
 uT
 uT
@@ -14131,7 +14142,7 @@ uT
 uT
 uT
 uT
-aR
+uT
 uT
 uT
 uT
@@ -16086,7 +16097,7 @@ eg
 eg
 uT
 uT
-aR
+uT
 uT
 uT
 uT
@@ -16102,7 +16113,7 @@ mA
 Xa
 uT
 uT
-uT
+aR
 uT
 uT
 Do
@@ -16853,7 +16864,7 @@ mA
 mA
 SZ
 uT
-aR
+uT
 uT
 uT
 uT
@@ -17082,7 +17093,7 @@ mA
 Xa
 uT
 uT
-uT
+aR
 eg
 eg
 eg
@@ -17250,7 +17261,7 @@ uT
 uT
 uT
 uT
-uT
+aR
 eg
 eg
 eg
@@ -18239,7 +18250,7 @@ uT
 AG
 uT
 uT
-aR
+uT
 uT
 eg
 eg
@@ -18434,7 +18445,7 @@ uT
 uT
 uT
 uT
-uT
+aR
 eg
 uT
 uT
@@ -18789,7 +18800,7 @@ uT
 uT
 uT
 uT
-uT
+XE
 uT
 uT
 uT
@@ -18980,7 +18991,7 @@ uT
 uT
 uT
 uT
-aR
+uT
 uT
 uT
 uT
@@ -19173,7 +19184,7 @@ ua
 uT
 uT
 uT
-uT
+aR
 uT
 uT
 ql
