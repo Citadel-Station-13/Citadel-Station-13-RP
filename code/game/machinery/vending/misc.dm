@@ -263,6 +263,6 @@
 	)
 
 	prices = list(
-		/obj/item/card/id/external/gaia = 125,
-		/obj/item/card/id/external/gaia/vip = 200,
+		/obj/item/card/id/external/gaia = 150,
+		/obj/item/card/id/external/gaia/vip = 250,
 	)
