@@ -22,16 +22,33 @@
 	density = FALSE
 	anchored = TRUE
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
-	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
 
 	//* Collision Handling *//
 
+	/** PROJECTILE PIERCING
+	  * WARNING:
+	  * Projectile piercing MUST be done using these variables.
+	  * Ordinary passflags will result in can_hit_target being false unless directly clicked on - similar to pass_flags_phase but without even going to process_hit.
+	  * The two flag variables below both use pass flags.
+	  * In the context of ATOM_PASS_THROWN, it means the projectile will ignore things that are currently "in the air" from a throw.
+	  *
+	  * Also, projectiles sense hits using Bump(), and then pierce them if necessary.
+	  * They simply do not follow conventional movement rules.
+	  * NEVER flag a projectile as PHASING movement type.
+	  * If you so badly need to make one go through *everything*, override check_pierce() for your projectile to always return PROJECTILE_PIERCE_PHASE/HIT.
+	  */
+	/// The "usual" flags of pass_flags is used in that can_hit_target ignores these unless they're specifically targeted/clicked on. This behavior entirely bypasses process_hit if triggered, rather than phasing which uses prehit_pierce() to check.
+	pass_flags = ATOM_PASS_TABLE
+	/// If FALSE, allow us to hit something directly targeted/clicked/whatnot even if we're able to phase through it
+	var/phases_through_direct_target = FALSE
 	/// anything with these pass flags are automatically pierced
 	var/pass_flags_pierce = NONE
 	/// anything with these pass flags are automatically phased through
 	var/pass_flags_phase = NONE
+	/// number of times we've pierced something. Incremented BEFORE bullet_act and similar procs run!
+	var/pierces = 0
 
 	#warn impl
 
@@ -877,6 +894,46 @@
 	// render & cleanup
 	render_hitscan_tracers()
 	cleanup_hitscan_tracers()
+
+//* Impact Processing *//
+
+/**
+ * Called to perform an impact
+ *
+ * @params
+ * * target - thing being hit
+ * * impact_flags - impact flags to feed in
+ * * def_zone - zone to hit; otherwise this'll be calculated.
+ *
+ * @return resultant impact_flags
+ */
+/obj/projectile/proc/impact(atom/target, impact_flags, def_zone)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn impl
+
+/**
+ * Called at the start of impact.
+ *
+ * * Hooks to return flags / whatnot should happen here
+ * * You are allowed to edit the projectile here, but it is absolutely not recommended.
+ *
+ * @return new impact_flags
+ */
+/obj/projectile/proc/pre_impact(atom/target, impact_flags, def_zone)
+	#warn impl
+
+/**
+ * Called after bullet_act() of the target.
+ *
+ * * Please take into account impact_flags.
+ * * Hooks to return more flags / whatnot should happen here, like forcing a projectile to pierce.
+ *
+ * @return new impact_flags
+ */
+/obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone)
+	#warn impl
+
+#warn impl all
 
 //* Physics - Configuration *//
 

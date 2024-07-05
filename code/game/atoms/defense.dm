@@ -57,6 +57,23 @@
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
+/**
+ * WIP
+ *
+ * @params
+ * * proj - the projectile
+ * * impact_flags - PROJECTILE_IMPACT_* flags
+ * * def_zone - impacting zone; calculated by projectile side, usually
+ */
+/atom/proc/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	P.on_hit(src, 0, def_zone)
+	. = 0
+#warn impl
+
+/atom/proc/bullet_act()
+	SHOULD_NOT_OVERRIDE(TRUE)
+#warn just here to spot the old ones
+
 //? Damage API
 
 /**
