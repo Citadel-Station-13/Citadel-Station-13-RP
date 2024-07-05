@@ -83,7 +83,7 @@
 		return
 	var/obj/mecha/chassis = target
 	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "off" : "on"]"
-	button.UpdateIcon()
+	update_buttons()
 	chassis.internal_tank()
 
 /datum/action/mecha/mech_view_stats

@@ -132,7 +132,7 @@
 
 /datum/ability/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()
-	action_trigger(user)
+	action_trigger(actor.performer)
 
 /datum/ability/proc/action_trigger(mob/user)
 	attempt_trigger(user)

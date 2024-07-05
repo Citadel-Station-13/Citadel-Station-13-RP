@@ -30,10 +30,9 @@
 		refresh_action_button()
 
 /obj/item/organ/internal/powered/refresh_action_button()
-	. = ..()
-	if(.)
-		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
-		if(action.button) action.button.UpdateIcon()
+	#warn impl
+	action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
+	return ..()
 
 /obj/item/organ/internal/powered/attack_self(mob/user)
 	. = ..()
