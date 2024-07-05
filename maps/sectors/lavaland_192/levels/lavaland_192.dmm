@@ -787,21 +787,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
 "pv" = (
-/obj/item/storage/excavation,
-/obj/item/storage/excavation,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/tool/wrench,
-/obj/item/tool/wrench,
-/obj/item/measuring_tape,
-/obj/item/measuring_tape,
-/obj/item/stack/flag/yellow,
-/obj/item/stack/flag/yellow,
 /obj/structure/table/rack,
-/obj/item/gps/science,
-/obj/item/gps/science,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -810,6 +796,19 @@
 	name = "Xenoarcheology Storage";
 	req_access = list(65)
 	},
+/obj/item/storage/excavation,
+/obj/item/pickaxe,
+/obj/item/tool/wrench,
+/obj/item/measuring_tape,
+/obj/item/stack/flag/yellow,
+/obj/item/gps/science,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/storage/belt/archaeology,
+/obj/item/ano_scanner,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/suit/space/anomaly,
+/obj/item/clothing/head/helmet/space/anomaly,
+/obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "pz" = (
@@ -1724,6 +1723,7 @@
 	req_one_access = list(48);
 	name = "Mining Storage"
 	},
+/obj/item/clothing/glasses/material,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Hr" = (
@@ -1799,27 +1799,30 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/lavaland/central/base/common)
 "Iy" = (
-/obj/structure/table/rack,
-/obj/item/storage/belt/archaeology,
-/obj/item/clothing/suit/space/anomaly,
-/obj/item/clothing/head/helmet/space/anomaly,
-/obj/item/clothing/mask/breath,
-/obj/item/storage/belt/archaeology,
-/obj/item/clothing/suit/space/anomaly,
-/obj/item/clothing/head/helmet/space/anomaly,
-/obj/item/clothing/mask/breath,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/ano_scanner,
-/obj/item/ano_scanner,
 /obj/machinery/door/window/eastleft{
 	name = "Xenoarcheology Storage";
 	req_access = list(65)
 	},
+/obj/structure/table/rack,
+/obj/item/storage/excavation,
+/obj/item/pickaxe,
+/obj/item/tool/wrench,
+/obj/item/measuring_tape,
+/obj/item/stack/flag/yellow,
+/obj/item/gps/science,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/storage/belt/archaeology,
+/obj/item/ano_scanner,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/suit/space/anomaly,
+/obj/item/clothing/head/helmet/space/anomaly,
+/obj/item/clothing/glasses/meson,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "IR" = (
@@ -2474,6 +2477,7 @@
 	req_one_access = list(48);
 	name = "Mining Storage"
 	},
+/obj/item/clothing/glasses/material,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Wy" = (
