@@ -17,9 +17,9 @@ AUTO_RIG_THEME(/station/civilian/standard)
 	visible_name = "Standard"
 	armor = /datum/armor/rigsuit/station/civilian/standard
 	max_temperature_protect = HEAT_PROTECTION_LIGHT_FIRESUIT
-	base_weight = 7.5
-	offline_encumbrance = 25 // very light
-	online_encumbrance = 17.5 // very light
+	base_weight = 15
+	offline_encumbrance = 35 // very light
+	online_encumbrance = 20 // very light
 
 /datum/armor/rigsuit/station/civilian/standard
 	melee = 0.15

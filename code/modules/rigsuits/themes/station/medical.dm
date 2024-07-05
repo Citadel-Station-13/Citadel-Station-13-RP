@@ -50,9 +50,9 @@ AUTO_RIG_THEME(/station/medical/standard)
 			worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TAJARAN, BODYTYPE_IPC);
 		},
 	)
-	base_weight = 14 // a little heavy though
-	offline_encumbrance = 30
-	online_encumbrance = 15 // gigachad low encumbrance engineer rigs
+	base_weight = 25 // a little heavy though
+	offline_encumbrance = 50
+	online_encumbrance = 35 // gigachad low encumbrance engineer rigs
 
 AUTO_RIG_THEME(/station/medical/advanced)
 /datum/rig_theme/station/medical/advanced
@@ -67,7 +67,7 @@ AUTO_RIG_THEME(/station/medical/advanced)
 	visible_name = "Rescue"
 	armor = /datum/armor/rigsuit/station/medical/advanced
 	siemens_coefficient = 0.7
-	base_weight = 15
+	base_weight = 25
 
 /datum/armor/rigsuit/station/medical/advanced
 	melee = 0.35

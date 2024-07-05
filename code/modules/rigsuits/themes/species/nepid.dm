@@ -7,16 +7,16 @@
 	armor = /datum/armor/rigsuit/species/nepid
 
 /datum/armor/rigsuit/species/nepid
-	melee = 0.3
-	melee_tier = MELEE_TIER_MEDIUM
+	melee = 0.1
+	melee_tier = MELEE_TIER_HEAVY
 	melee_soak = 0
 	melee_deflect = 5
-	bullet = 0.2
+	bullet = 0.3
 	bullet_tier = BULLET_TIER_MEDIUM
 	bullet_soak = 0
 	bullet_deflect = 5
-	laser = 0.3
-	laser_tier = LASER_TIER_MEDIUM
+	laser = 0.1
+	laser_tier = LASER_TIER_HIGH
 	laser_soak = 3
 	laser_deflect = 0
 	energy = 0.45
@@ -46,6 +46,6 @@ AUTO_RIG_THEME(/species/nepid/generic)
 	siemens_coefficient = 0.5
 	max_pressure_protect = ONE_ATMOSPHERE * 11.5
 	max_temperature_protect = HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT
-	base_weight = 12.5 // uncommonly light for what it is
-	offline_encumbrance = 25.5
-	online_encumbrance = 17.5
+	base_weight = 20 // uncommonly light for what it is
+	offline_encumbrance = 40
+	online_encumbrance = 30 // engineering suits

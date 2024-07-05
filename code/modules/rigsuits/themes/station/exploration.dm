@@ -38,8 +38,8 @@
 	max_temperature_protect = HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/exploration
 	base_weight = 12.5 // heavy
-	offline_encumbrance = 30
-	online_encumbrance = 20
+	offline_encumbrance = 60
+	online_encumbrance = 40
 
 AUTO_RIG_THEME(/station/exploration/standard)
 /datum/rig_theme/station/exploration/standard
@@ -110,6 +110,7 @@ AUTO_RIG_THEME(/station/exploration/medic)
 	display_name = "medic"
 	visible_name = "medic"
 	armor = /datum/armor/rigsuit/station/exploration/medic
+	online_encumbrance = 35
 
 /**
  * the *real* protagonist's armor
@@ -117,11 +118,11 @@ AUTO_RIG_THEME(/station/exploration/medic)
  * just don't get hit!
  */
 /datum/armor/rigsuit/station/exploration/pilot
-	melee = 0.15
+	melee = 0.05
 	melee_tier = MELEE_TIER_HEAVY
-	bullet = 0.15
+	bullet = 0.05
 	bullet_tier = BULLET_TIER_HIGH
-	laser = 0.15
+	laser = 0.05
 	laser_tier = LASER_TIER_HIGH
 	rad = 1.0
 
@@ -141,3 +142,4 @@ AUTO_RIG_THEME(/station/exploration/pilot)
 	display_name = "pilot"
 	visible_name = "pilot"
 	armor = /datum/armor/rigsuit/station/exploration/pilot
+	online_encumbrance = 35

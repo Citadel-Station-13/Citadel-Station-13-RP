@@ -41,9 +41,9 @@ AUTO_RIG_THEME(/station/engineering/standard)
 	max_pressure_protect = ONE_ATMOSPHERE * 15
 	max_temperature_protect = HEAT_PROTECTION_INDUSTRIAL_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/standard
-	base_weight = 14 // a little heavy though
-	offline_encumbrance = 30
-	online_encumbrance = 15 // gigachad low encumbrance engineer rigs
+	base_weight = 25 // a little heavy though
+	offline_encumbrance = 50
+	online_encumbrance = 35 // gigachad low encumbrance engineer rigs
 
 /datum/armor/rigsuit/station/engineering/standard
 	rad = 0.8
@@ -60,7 +60,7 @@ AUTO_RIG_THEME(/station/engineering/atmospherics)
 	max_pressure_protect = ONE_ATMOSPHERE * 20
 	max_temperature_protect = HEAT_PROTECTION_ATMOS_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/atmospherics
-	base_weight = 18 // more heavy
+	base_weight = 30 // more heavy
 
 /datum/armor/rigsuit/station/engineering/atmospherics
 	fire = 1.0
@@ -79,7 +79,7 @@ AUTO_RIG_THEME(/station/engineering/advanced)
 	max_pressure_protect = ONE_ATMOSPHERE * 20
 	max_temperature_protect = HEAT_PROTECTION_ATMOS_VOIDSUIT
 	armor = /datum/armor/rigsuit/station/engineering/advanced
-	base_weight = 18 // more heavy
+	base_weight = 30 // more heavy
 
 /datum/armor/rigsuit/station/engineering/advanced
 	fire = 1.0

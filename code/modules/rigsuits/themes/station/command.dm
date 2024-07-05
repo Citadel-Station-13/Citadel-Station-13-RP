@@ -17,9 +17,9 @@ AUTO_RIG_THEME(/station/command/captain)
 	display_name = "director"
 	visible_name = "Director"
 	armor = /datum/armor/rigsuit/station/command/captain
-	base_weight = 40 // heavy as hell
-	offline_encumbrance = 45 // heavy as hell
-	online_encumbrance = 25 // heavy as hell
+	base_weight = 30 // heavy as hell
+	offline_encumbrance = 60 // heavy as hell
+	online_encumbrance = 40 // heavy as hell
 
 /datum/armor/rigsuit/station/command/captain
 	melee = 0.4

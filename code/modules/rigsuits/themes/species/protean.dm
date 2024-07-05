@@ -25,18 +25,16 @@ AUTO_RIG_THEME(/species/protean)
 
 // thin, but resistant against piercing
 /datum/armor/rigsuit/species/protean
-	melee = 0.15
-	melee_tier = MELEE_TIER_HEAVY
-	melee_soak = 0
+	melee = 0.05
+	melee_soak = 5
 	melee_deflect = 5
-	bullet = 0.15
-	bullet_tier = BULLET_TIER_HIGH
-	bullet_soak = 0
+	melee_tier = MELEE_TIER_HEAVY
+	bullet = 0.05
 	bullet_deflect = 5
-	laser = 0.15
+	bullet_tier = BULLET_TIER_HIGH
+	laser = 0.075
+	laser_deflect = 5
 	laser_tier = LASER_TIER_HIGH
-	laser_soak = 3
-	laser_deflect = 0
 	energy = 0.25
 	bomb = 0.45
 	bio = 1.0

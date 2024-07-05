@@ -12,7 +12,7 @@
 	melee_tier = MELEE_TIER_MEDIUM
 	melee_soak = 2
 	melee_deflect = 5
-	bullet = 0.4
+	bullet = 0.35
 	bullet_tier = BULLET_TIER_MEDIUM
 	bullet_soak = 5
 	bullet_deflect = 0
