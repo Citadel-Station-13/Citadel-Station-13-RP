@@ -56,7 +56,7 @@
 	penetrating = 2
 	embed_chance = 0
 	armor_penetration = 40
-	range = 20
+	range = WORLD_ICON_SIZE * 20
 
 	var/searing = 0 //Does this fuelrod ignore shields?
 	var/detonate_travel = 0 //Will this fuelrod explode when it reaches maximum distance?
@@ -125,7 +125,7 @@
 	armor_penetration = 100
 	penetrating = 100 //Theoretically, this shouldn't stop flying for a while, unless someone lines it up with a wall or fires it into a mountain.
 	irradiate = 120
-	range = 75
+	range = WORLD_ICON_SIZE * 75
 	searing = 1
 	detonate_travel = 1
 	detonate_mob = 1
@@ -149,7 +149,7 @@
 	penetrating = 0
 	damage_flag = ARMOR_MELEE
 	irradiate = 20
-	range = 6
+	range = WORLD_ICON_SIZE * 6
 
 /obj/projectile/bullet/magnetic/bore/Bump(atom/A, forced=0)
 	if(istype(A, /turf/simulated/mineral))
@@ -174,4 +174,4 @@
 	penetrating = 0
 	damage_flag = ARMOR_MELEE
 	irradiate = 20
-	range = 12
+	range = WORLD_ICON_SIZE * 12

@@ -9,7 +9,8 @@
 	var/beam_state = "b_beam"
 
 	damage_force = 5
-	speed = 2
+	// ~5 tiles/second
+	speed = 32 / 2
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
@@ -29,7 +30,7 @@
 
 /obj/projectile/energy/hook/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/expected_distance = get_dist(target, loc)
-	range = expected_distance // So the hook hits the ground if no mob is hit.
+	range = WORLD_ICON_SIZE * expected_distance // So the hook hits the ground if no mob is hit.
 	target_distance = expected_distance
 	if(firer)	// Needed to ensure later checks in impact and on hit function.
 		launcher_intent = firer.a_intent

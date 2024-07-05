@@ -25,10 +25,8 @@
 	has_tracer = FALSE
 	var/list/hit = list()
 
-/obj/projectile/test/process_hitscan()
-	. = ..()
-	if(!QDELING(src))
-		qdel(src)
+/obj/projectile/test/fire(angle, atom/direct_target)
+	..()
 	return hit
 
 /obj/projectile/test/Bump(atom/A)
