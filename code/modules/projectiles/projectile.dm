@@ -26,6 +26,15 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	depth_level = INFINITY // nothing should be passing over us from depth
 
+	//* Collision Handling *//
+
+	/// anything with these pass flags are automatically pierced
+	var/pass_flags_pierce = NONE
+	/// anything with these pass flags are automatically phased through
+	var/pass_flags_phase = NONE
+
+	#warn impl
+
 	//* Physics - Configuration *//
 
 	/// speed, in pixels per decisecond
