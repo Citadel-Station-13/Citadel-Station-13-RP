@@ -9,6 +9,7 @@
 	var/unlocked = FALSE
 	var/open = FALSE
 	var/brightness_on = 8		//can't remember what the maxed out value is
+	climb_allowed = TRUE
 
 /obj/machinery/floodlight/Initialize(mapload)
 	. = ..()
@@ -119,3 +120,6 @@
 				cell = W
 				to_chat(user, SPAN_NOTICE("You insert the power cell."))
 	update_icon()
+
+	if(user.a_intent = INTENT_HARM)
+		return ..()

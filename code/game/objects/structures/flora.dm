@@ -107,6 +107,8 @@
 			new /obj/item/stack/tile/grass(get_turf(usr), 1)
 			qdel(src)
 			return
+	if(user.a_intent = INTENT_HARM) // who said you CAN'T touch grass (violently)?
+		return ..()
 
 /obj/structure/flora/ausbushes/Initialize(mapload)
 	. = ..()
