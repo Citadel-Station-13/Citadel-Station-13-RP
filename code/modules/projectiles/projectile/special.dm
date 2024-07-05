@@ -3,7 +3,7 @@
 	icon_state = "ion"
 	fire_sound = 'sound/weapons/Laser.ogg'
 	damage = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -50,7 +50,7 @@
 	icon_state = "ice_2"
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	damage = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY // It actually checks heat/cold protection.
@@ -97,7 +97,7 @@
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "smallf"
 	damage = 0
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 1
 	damage_flag = ARMOR_BULLET
 
@@ -116,7 +116,7 @@
 /obj/projectile/meteor/slug
 	name = "meteor"
 	damage = 25
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 0
 
 /obj/projectile/energy/floramut
@@ -124,7 +124,7 @@
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage = 0
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -171,7 +171,7 @@
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage = 0
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	var/singleton/plantgene/gene = null
@@ -181,7 +181,7 @@
 	icon_state = "energy2"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage = 0
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	nodamage = 1
 	damage_flag = ARMOR_ENERGY
 	light_range = 2
@@ -216,7 +216,7 @@
 	damage = 1 // stop trying to murderbone with a fake gun dumbass!!!
 	embed_chance = 0 // nope
 	nodamage = 1
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
 
 /obj/projectile/bola
@@ -224,7 +224,7 @@
 	icon_state = "bola"
 	damage = 5
 	embed_chance = 0 //Nada.
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	muzzle_type = null
 
 	combustion = FALSE
@@ -243,7 +243,7 @@
 	icon_state = "bola"
 	damage = 10
 	embed_chance = 0 //Nada.
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	muzzle_type = null
 
 	combustion = FALSE
@@ -262,7 +262,7 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	damage = 70
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	light_range = 4
 	light_power = 3
@@ -343,7 +343,7 @@
 /obj/projectile/bullet/honker/lethal
 	damage = 20
 	nodamage = FALSE
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 
 /obj/projectile/bullet/honker/lethal/Initialize(mapload)
 	. = ..()
@@ -358,19 +358,19 @@
 //Bio-Organic
 /obj/projectile/bullet/organic
 	damage = 10
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BULLET
 	impact_sounds = 'sound/effects/splat.ogg'
 	icon_state = "organic"
 
 /obj/projectile/bullet/organic/wax
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	color = "#E6E685"
 	icon_state = "organic"
 
 /obj/projectile/bullet/organic/stinger
 	damage = 15
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	impact_sounds = 'sound/weapons/bladeslice.ogg'
 	icon_state = "SpearFlight"
 
@@ -379,7 +379,7 @@
 	name ="plasma bolt"
 	icon_state= "fuel-tritium"
 	damage = 50
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	light_range = 4
 	light_power = 3

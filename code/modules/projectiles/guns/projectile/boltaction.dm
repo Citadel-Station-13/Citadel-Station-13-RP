@@ -49,7 +49,7 @@
 
 // Stole hacky terrible code from doublebarrel shotgun. -Spades
 /obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
 			afterattack(user, user)
@@ -89,7 +89,7 @@
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
 			afterattack(user, user)
@@ -133,7 +133,7 @@
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/vintage/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming) || istype(A, /obj/item/pickaxe/plasmacutter) && w_class != WEIGHT_CLASS_NORMAL)
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel and stock of \the [src].</span>")
 		if(loaded.len)
 			afterattack(user, user)

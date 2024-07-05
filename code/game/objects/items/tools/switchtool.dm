@@ -344,7 +344,7 @@
 		/obj/item/multitool/holoswitch = SWITCHTOOL_MULTITOOL,
 		/obj/item/flashlight/holoswitch = SWITCHTOOL_LIGHT,
 		/obj/item/soap/holoswitch = SWITCHTOOL_SOAP,
-		/obj/item/melee/energy/sword/holoswitch = SWITCHTOOL_SWORD,
+		/obj/item/melee/transforming/sword/holoswitch = SWITCHTOOL_SWORD,
 		/obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
 	)
 	tool_functions = list(
@@ -484,7 +484,7 @@
 	desc = "This should not exist."
 	tool_speed = 0.9
 
-/obj/item/melee/energy/sword/holoswitch
+/obj/item/melee/transforming/sword/holoswitch
 	name = "hardlight blade"
 	desc = "This should not exist."
 

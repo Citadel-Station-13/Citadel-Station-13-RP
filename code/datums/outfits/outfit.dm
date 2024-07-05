@@ -263,7 +263,7 @@
 	belt = /obj/item/storage/belt/security/tactical/bandolier
 	l_pocket = /obj/item/cell/device/weapon
 	r_pocket = /obj/item/cell/device/weapon
-	r_hand = /obj/item/melee/energy/sword/imperial
+	r_hand = /obj/item/melee/transforming/sword/imperial
 	l_hand = /obj/item/shield/energy/imperial
 	suit_store = /obj/item/gun/energy/imperial
 
@@ -279,6 +279,6 @@
 	belt = /obj/item/storage/belt/security/tactical/bandolier
 	l_pocket = /obj/item/cell/device/weapon
 	r_pocket = /obj/item/cell/device/weapon
-	r_hand = /obj/item/melee/energy/sword/imperial
+	r_hand = /obj/item/melee/transforming/sword/imperial
 	l_hand = /obj/item/shield/energy/imperial
 	suit_store = /obj/item/gun/energy/imperial

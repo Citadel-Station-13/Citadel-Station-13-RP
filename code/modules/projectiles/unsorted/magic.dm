@@ -2,7 +2,7 @@
 	name = "bolt of nothing"
 	icon_state = "energy"
 	damage = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 	armor_penetration = 100
 	var/magic = TRUE
@@ -25,7 +25,7 @@
 	name = "bolt of resurrection"
 	icon_state = "ion"
 	damage = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 
 /obj/projectile/magic/resurrection/on_hit(mob/living/carbon/target)
@@ -44,7 +44,7 @@
 	name = "bolt of teleportation"
 	icon_state = "bluespace"
 	damage = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 	var/inner_tele_radius = 0
 	var/outer_tele_radius = 6
@@ -72,7 +72,7 @@
 	name = "bolt of door creation"
 	icon_state = "energy"
 	damage = 0
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 	nodamage = 1
 	var/list/door_types = list(/obj/structure/simple_door/wood, /obj/structure/simple_door/iron, /obj/structure/simple_door/silver, /obj/structure/simple_door/gold, /obj/structure/simple_door/uranium, /obj/structure/simple_door/sandstone, /obj/structure/simple_door/phoron, /obj/structure/simple_door/diamond)
 
@@ -101,7 +101,7 @@
 	name = "bolt of change"
 	icon_state = "ice_1"
 	damage = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 1
 
 /obj/projectile/magic/change/on_hit(atom/change)
@@ -250,7 +250,7 @@
 	name = "bolt of animation"
 	icon_state = "red_1"
 	damage = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 1
 
 /obj/projectile/magic/animate/on_hit(atom/target, blocked = FALSE)
@@ -295,7 +295,7 @@
 	name = "blade energy"
 	icon_state = "lavastaff"
 	damage = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	sharp = TRUE
 	magic = TRUE
 
@@ -312,7 +312,7 @@
 	name = "arcane bolt"
 	icon_state = "arcane_barrage"
 	damage = 20
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 0
 	armor_penetration = 0
 	magic = TRUE
@@ -415,7 +415,7 @@
 	name = "lightning bolt"
 	icon_state = "tesla_projectile"	//Better sprites are REALLY needed and appreciated!~
 	damage = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	nodamage = 0
 	magic = TRUE
 
@@ -448,7 +448,7 @@
 	name = "bolt of fireball"
 	icon_state = "fireball"
 	damage = 10
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 0
 
 	//explosion values
@@ -518,7 +518,7 @@
 	name = "enchanted card"
 	desc = "A piece of paper enchanted to give it extreme durability and stiffness, along with a very hot burn to anyone unfortunate enough to get hit by a charged one."
 	icon_state = "spellcard"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage = 2
 
 /obj/projectile/magic/spellcard/book
@@ -526,7 +526,7 @@
 	name = "enchanted page"
 	desc = "A piece of paper enchanted to give it extreme durability and stiffness, along with a very hot burn to anyone unfortunate enough to get hit by a charged one."
 	icon_state = "spellcard"
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage = 12
 	magic = TRUE
 

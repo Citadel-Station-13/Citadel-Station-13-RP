@@ -11,7 +11,6 @@
 	tool_behaviour = TOOL_WELDER
 
 	//Amount of OUCH when it's thrown
-	damage_force = 3.0
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
@@ -40,6 +39,28 @@
 	tool_speed = 1
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
+
+	//* Combat Stats *//
+	damage_force = 3
+	damage_tier = MELEE_TIER_MEDIUM
+
+	var/on_damage_flag = ARMOR_MELEE
+	var/on_damage_force = 15
+	var/on_damage_mode = NONE
+	var/on_damage_tier = MELEE_TIER_MEDIUM
+	var/on_damage_type = DAMAGE_TYPE_BURN
+	var/on_weight_class
+	var/on_weight_volume
+	var/on_throw_force
+
+	var/off_damage_flag
+	var/off_damage_force
+	var/off_damage_mode
+	var/off_damage_tier
+	var/off_damage_type
+	var/off_weight_class
+	var/off_weight_volume
+	var/off_throw_force
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
@@ -250,9 +271,13 @@
 			else if(T)
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
-			src.damage_force = 15
-			src.damtype = "fire"
-			src.set_weight_class(WEIGHT_CLASS_BULKY)
+			damage_force = on_damage_force
+			damage_type = on_damage_type
+			damage_tier = on_damage_tier
+			damage_mode = on_damage_mode
+			damage_flag = on_damage_flag
+			set_weight_class(isnull(on_weight_class)? on_weight_class : initial(w_class))
+			set_weight_volume(isnull(on_weight_volume)? on_weight_volume : initial(weight_volume))
 			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
 			update_icon()
@@ -272,9 +297,13 @@
 		else if(T)
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
-		src.damage_force = 3
-		src.damtype = "brute"
-		src.set_weight_class(initial(src.w_class))
+		damage_force = isnull(off_damage_force)? initial(damage_force) : off_damage_force
+		damage_type = isnull(off_damage_type)? initial(damage_type) : off_damage_type
+		damage_tier = isnull(off_damage_tier)? initial(damage_tier) : off_damage_tier
+		damage_mode = isnull(off_damage_mode)? initial(damage_mode) : off_damage_mode
+		damage_flag = isnull(off_damage_flag)? initial(damage_flag) : off_damage_flag
+		set_weight_class(isnull(off_weight_class)? off_weight_class : initial(w_class))
+		set_weight_volume(isnull(off_weight_volume)? off_weight_volume : initial(weight_volume))
 		src.welding = 0
 		src.attack_sound = initial(src.attack_sound)
 		update_icon()

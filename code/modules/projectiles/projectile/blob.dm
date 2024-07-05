@@ -3,7 +3,7 @@
 	icon_state = "declone"
 	damage = 3
 	armor_penetration = 40
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_MELEE
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_BLOB
 	fire_sound = 'sound/effects/slime_squish.ogg'
@@ -43,7 +43,7 @@
 			reagents.add_reagent(reagent, reagent_vol)
 
 /obj/projectile/energy/blob/toxic
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	damage_flag = ARMOR_BIO
 	my_chems = list("amatoxin")
 
@@ -51,7 +51,7 @@
 	splatter = TRUE
 
 /obj/projectile/energy/blob/acid
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_BIO
 	my_chems = list("sacid", "mold")
 

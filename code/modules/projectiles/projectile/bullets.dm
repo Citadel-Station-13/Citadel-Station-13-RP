@@ -3,7 +3,7 @@
 	icon_state = "bullet"
 	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg'
 	damage = 60
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	nodamage = 0
 	damage_flag = ARMOR_BULLET
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
@@ -340,12 +340,12 @@
 /obj/projectile/bullet/suffocationbullet//How does this even work?
 	name = "co bullet"
 	damage = 20
-	damage_type = OXY
+	damage_type = DAMAGE_TYPE_OXY
 
 /obj/projectile/bullet/cyanideround
 	name = "poison bullet"
 	damage = 40
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 
 /obj/projectile/bullet/cyanideround/jezzail
 	name = "toxic penetrator shard"
@@ -353,7 +353,7 @@
 	armor_penetration = 20
 	agony = 5
 	embed_chance = 1
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 
 /obj/projectile/bullet/burstbullet
 	name = "exploding bullet"
@@ -465,7 +465,7 @@
 	name = "incendiary bullet"
 	icon_state = "bullet_alt"
 	damage = 15
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	incendiary = 1
 	flammability = 2
 
@@ -473,7 +473,7 @@
 	name = "dragonsbreath pellet"
 	icon_state = "bullet_alt"
 	damage = 10
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	incendiary = 1
 	flammability = 2
 
@@ -500,7 +500,7 @@
 	name = "12.7mm phoron slug"
 	icon_state = "bullet_alt"
 	damage = 60
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	incendiary = 1
 	flammability = 4
 	armor_penetration = 40
@@ -517,7 +517,7 @@
 	icon_state = "bullet_alt"
 	damage = 40
 	armor_penetration = 30
-	damage_type = BRUTE
+	damage_type = DAMAGE_TYPE_BRUTE
 	incendiary = 1
 	flammability = 4
 	penetrating = 1
@@ -531,7 +531,7 @@
 
 /obj/projectile/bullet/pistol/cap // Just the primer, such as a cap gun.
 	name = "cap"
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	fire_sound = 'sound/effects/snap.ogg'
 	damage = 0
 	nodamage = 1
@@ -548,7 +548,7 @@
 
 /obj/projectile/bullet/blank
 	name = "blank"
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg' // Blanks still make loud noises.
 	damage = 0
 	nodamage = 1

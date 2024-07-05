@@ -118,5 +118,5 @@
 	name = "riot dart"
 	desc = "A flexible projectile made out of hardened orange foam with a red plastic tip."
 	damage = 10
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	ammo_type = /obj/item/ammo_casing/foam/riot

@@ -3,7 +3,35 @@
 
 //? damage types
 
-// todo: refactor damage types
+//* direct damage types; maps to most systems in the game *//
+
+#define DAMAGE_TYPE_BRUTE "brute"
+#define DAMAGE_TYPE_BURN "burn"
+
+//* special damage types; only relevant for certain biologies *//
+//* most of these will be reworked in brainmed update         *//
+
+/// body toxins / systems instability
+#define DAMAGE_TYPE_TOX "tox"
+/// oxygen deprivation
+#define DAMAGE_TYPE_OXY "oxy"
+/// dna damage
+#define DAMAGE_TYPE_CLONE "clone"
+/// pain
+/// todo: stamina vs pain
+#define DAMAGE_TYPE_HALLOSS "halloss"
+
+//* special hybrid types; processed specially depending on type *//
+
+/// passed to electrocute_act()
+/// todo: remove
+#define DAMAGE_TYPE_ELECTROCUTE "electrocute"
+/// bioacid ; toxins for organics, acid for synthetics
+/// todo: better hybrid type handling
+#define DAMAGE_TYPE_BIOACID "bioacid"
+/// searing; half brute, half bur
+/// todo: better hybrid type handling
+#define DAMAGE_TYPE_SEARING "searing"
 
 //? damage_mode bitfield
 

@@ -235,11 +235,11 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -10694,11 +10694,11 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -11332,7 +11332,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12059,7 +12059,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/green,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -12076,7 +12076,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -13315,7 +13315,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

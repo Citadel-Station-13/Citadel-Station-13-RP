@@ -174,7 +174,7 @@
 	icon = 'icons/obj/projectiles_vr.dmi'
 	icon_state = "particle"
 	damage = 40
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	embed_chance = 0
 

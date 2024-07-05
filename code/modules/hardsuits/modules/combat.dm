@@ -201,7 +201,7 @@
 /obj/item/hardsuit_module/mounted/energy_blade/process(delta_time)
 
 	if(holder && holder.wearer)
-		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
+		if(!(locate(/obj/item/melee/transforming/blade) in holder.wearer))
 			deactivate()
 			return 0
 
@@ -218,7 +218,7 @@
 		deactivate()
 		return
 
-	var/obj/item/melee/energy/blade/blade = new(M)
+	var/obj/item/melee/transforming/blade/blade = new(M)
 	blade.creator = M
 	M.put_in_hands(blade)
 
@@ -231,7 +231,7 @@
 	if(!M)
 		return
 
-	for(var/obj/item/melee/energy/blade/blade in M.contents)
+	for(var/obj/item/melee/transforming/blade/blade in M.contents)
 		qdel(blade)
 
 /obj/item/hardsuit_module/fabricator

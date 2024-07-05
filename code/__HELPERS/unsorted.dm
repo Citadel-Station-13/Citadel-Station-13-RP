@@ -1007,7 +1007,7 @@
 				return FALSE
 		if(/obj/item/pickaxe/plasmacutter)
 			return 3800
-		if(/obj/item/melee/energy)
+		if(/obj/item/melee/transforming)
 			return 3500
 		else
 			return FALSE

@@ -1099,7 +1099,7 @@
 /area/shuttle/skipjack)
 "cK" = (
 /obj/structure/table/rack,
-/obj/item/melee/energy/sword/pirate,
+/obj/item/melee/transforming/sword/pirate,
 /obj/item/clothing/suit/space/pirate,
 /obj/item/clothing/suit/space/pirate,
 /obj/item/tank/oxygen,

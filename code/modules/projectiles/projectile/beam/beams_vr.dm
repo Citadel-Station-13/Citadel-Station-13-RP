@@ -4,7 +4,7 @@
     nodamage = 1
     taser_effect = 1
     agony = 100 //One shot stuns for the time being until adjustments are fully made.
-    damage_type = HALLOSS
+    damage_type = DAMAGE_TYPE_HALLOSS
     light_color = "#00CECE"
 
     muzzle_type = /obj/effect/projectile/muzzle/laser_omni
@@ -19,7 +19,7 @@
 	icon_state = "xray"
 	nodamage = 1
 	agony = 5
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#00CC33"
 
 	muzzle_type = /obj/effect/projectile/muzzle/xray
@@ -48,7 +48,7 @@
 	damage = 0 //stops it damaging walls
 	nodamage = TRUE
 	no_attack_log = TRUE
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	light_color = "#80F5FF"
 

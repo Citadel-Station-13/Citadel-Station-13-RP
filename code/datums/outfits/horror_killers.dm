@@ -41,7 +41,7 @@
 	gloves = /obj/item/clothing/gloves/black
 	l_ear = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/sunglasses
-	l_pocket = /obj/item/melee/energy/sword
+	l_pocket = /obj/item/melee/transforming/sword
 	mask = /obj/item/clothing/mask/gas/clown_hat
 
 	id_slot = SLOT_ID_WORN_ID

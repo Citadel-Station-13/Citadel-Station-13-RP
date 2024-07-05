@@ -271,7 +271,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "bw" = (
 /obj/structure/table/reinforced,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bx" = (
@@ -930,7 +930,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fa" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)

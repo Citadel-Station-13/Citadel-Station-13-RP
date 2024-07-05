@@ -9351,12 +9351,12 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4

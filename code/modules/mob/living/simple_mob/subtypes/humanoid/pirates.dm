@@ -122,7 +122,7 @@
 	attack_sound = 'sound/weapons/blade1.ogg'
 
 
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100)
+	loot_list = list(/obj/item/melee/transforming/sword/pirate = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_energy
 
@@ -134,7 +134,7 @@
 	icon_living = "piratemelee-las-armor"
 	movement_cooldown = 4
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
+	loot_list = list(/obj/item/melee/transforming/sword/pirate = 100, /obj/item/clothing/accessory/armor/armorplate/stab = 100)
 
 	corpse = /obj/spawner/corpse/pirate/melee_energy_armor
 
@@ -352,7 +352,7 @@
 
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
+	loot_list = list(/obj/item/melee/transforming/sword/pirate = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
 	corpse = /obj/spawner/corpse/pirate/mate
 
@@ -526,13 +526,13 @@
 	icon_state = "old-piratemelee-las"
 	icon_living = "old-piratemelee-las"
 	icon_dead = "old-piratemelee_dead"
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100)
+	loot_list = list(/obj/item/melee/transforming/sword/pirate = 100)
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/las/armored/old
 	icon_state = "old-piratemelee-las-armor"
 	icon_living = "old-piratemelee-las-armor"
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
+	loot_list = list(/obj/item/melee/transforming/sword/pirate = 100, /obj/item/clothing/suit/armor/material/makeshift = 100)
 
 //Shield Pirate
 /mob/living/simple_mob/humanoid/pirate/shield/old
@@ -653,7 +653,7 @@
 
 	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, energy = 5, bomb = 5, bio = 100, rad = 100)
 
-	loot_list = list(/obj/item/melee/energy/sword/pirate = 100, /obj/item/clothing/suit/pirate = 100)
+	loot_list = list(/obj/item/melee/transforming/sword/pirate = 100, /obj/item/clothing/suit/pirate = 100)
 
 
 ///////////////////////////////

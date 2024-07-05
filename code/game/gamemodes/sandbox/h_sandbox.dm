@@ -139,7 +139,7 @@ datum/hSB
 							continue
 						if(istype(O, /obj/item/dummy))
 							continue
-						if(istype(O, /obj/item/melee/energy/sword))
+						if(istype(O, /obj/item/melee/transforming/sword))
 							continue
 						if(istype(O, /obj/structure))
 							continue

@@ -495,12 +495,12 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
 	pixel_y = 32

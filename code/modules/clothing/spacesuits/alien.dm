@@ -33,7 +33,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
-	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs,/obj/item/tank)
+	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/sword,/obj/item/handcuffs,/obj/item/tank)
 	armor_type = /datum/armor/vox/space/armored
 	siemens_coefficient = 0.2
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS

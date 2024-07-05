@@ -6,7 +6,7 @@
 	shoes = /obj/item/clothing/shoes/brown
 	head = /obj/item/clothing/head/bandana
 	glasses = /obj/item/clothing/glasses/eyepatch
-	l_hand = /obj/item/melee/energy/sword/pirate
+	l_hand = /obj/item/melee/transforming/sword/pirate
 
 /datum/outfit/pirate/norm
 
@@ -25,7 +25,7 @@
 	gloves = /obj/item/clothing/gloves/light_brown
 	mask = /obj/item/clothing/mask/breath
 	back = /obj/item/tank/vox
-	l_hand = /obj/item/melee/energy/sword/pirate
+	l_hand = /obj/item/melee/transforming/sword/pirate
 	r_hand = /obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting
 	l_pocket = /obj/item/ammo_magazine/clip/c762
 	r_pocket = /obj/item/ammo_magazine/clip/c762

@@ -72,7 +72,7 @@
 	/// This affects multiplicative movespeed.
 	var/slowdown = 0
 
-	//? Combat
+	//* Combat *//
 	/// Amount of damage we do on melee.
 	var/damage_force = 0
 	/// armor flag for melee attacks
@@ -81,7 +81,22 @@
 	var/damage_tier = MELEE_TIER_MEDIUM
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
-	// todo: port over damtype
+	/// our damage type
+	var/damage_type = DAMAGE_TYPE_BRUTE
+
+	//* Sounds *//
+	/// sound used when used in melee attacks. null for default for our damage tpye.
+	var/attack_sound
+	/// Used when thrown into a mob.
+	var/mob_throw_hit_sound
+	/// Sound used when equipping the item into a valid slot from hands or ground
+	var/equip_sound
+	/// Sound used when uneqiupping the item from a valid slot to hands or ground
+	var/unequip_sound
+	/// Pickup sound - played when picking something up off the floor.
+	var/pickup_sound = 'sound/items/pickup/device.ogg'
+	/// Drop sound - played when dropping something onto the floor.
+	var/drop_sound = 'sound/items/drop/device.ogg'
 
 	//* Storage *//
 	/// storage cost for volumetric storage
@@ -138,20 +153,6 @@
 	var/reach = 1
 	/// Icon overlay for ADD highlights when applicable.
 	var/addblends
-
-	//? Sounds
-	/// sound used when used in melee attacks. null for default for our damage tpye.
-	var/attack_sound
-	/// Used when thrown into a mob.
-	var/mob_throw_hit_sound
-	/// Sound used when equipping the item into a valid slot from hands or ground
-	var/equip_sound
-	/// Sound used when uneqiupping the item from a valid slot to hands or ground
-	var/unequip_sound
-	/// Pickup sound - played when picking something up off the floor.
-	var/pickup_sound = 'sound/items/pickup/device.ogg'
-	/// Drop sound - played when dropping something onto the floor.
-	var/drop_sound = 'sound/items/drop/device.ogg'
 
 	/// Whether or not we are heavy. Used for some species to determine if they can two-hand it.
 	var/heavy = FALSE
@@ -642,7 +643,7 @@
 	if (!..())
 		return 0
 
-	if(istype(src, /obj/item/melee/energy))
+	if(istype(src, /obj/item/melee/transforming))
 		return
 
 	//if we haven't made our blood_overlay already

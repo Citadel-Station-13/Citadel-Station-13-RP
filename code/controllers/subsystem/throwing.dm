@@ -389,6 +389,17 @@ SUBSYSTEM_DEF(throwing)
 	return throw_flags & THROW_AT_IS_GENTLE
 
 /**
+ * get damage for a target
+ */
+/datum/thrownthing/proc/get_damage_force(atom/target)
+	. = thrownthing.throw_force
+	if(isitem(thrownthing))
+		var/obj/item/I = throwthing
+		if(isnull(.))
+			. = I.damage_force
+	return . * get_damage_multiplier(target)
+
+/**
  * get damage scaling - default handling
  */
 /datum/thrownthing/proc/get_damage_multiplier(atom/target)

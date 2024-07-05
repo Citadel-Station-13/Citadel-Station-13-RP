@@ -2,7 +2,7 @@
 	name = "energy"
 	icon_state = "spark"
 	damage = 0
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	var/flash_strength = 10
 
@@ -92,7 +92,7 @@
 	icon_state = "declone"
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	nodamage = 1
-	damage_type = CLONE
+	damage_type = DAMAGE_TYPE_CLONE
 	irradiate = 40
 	light_range = 2
 	light_power = 0.5
@@ -104,7 +104,7 @@
 	name = "dart"
 	icon_state = "toxin"
 	damage = 5
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	agony = 120
 	damage_flag = ARMOR_ENERGY
 
@@ -114,7 +114,7 @@
 	name = "bolt"
 	icon_state = "cbbolt"
 	damage = 10
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	agony = 40
 	stutter = 10
 
@@ -126,7 +126,7 @@
 	name = "acidic spit"
 	icon_state = "neurotoxin"
 	damage = 30
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	agony = 10
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid
@@ -137,7 +137,7 @@
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	damage = 5
-	damage_type = BIOACID
+	damage_type = DAMAGE_TYPE_BIOACID
 	agony = 80
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
@@ -148,7 +148,7 @@
 	name = "neurotoxic spit"
 	icon_state = "neurotoxin"
 	damage = 20
-	damage_type = BIOACID
+	damage_type = DAMAGE_TYPE_BIOACID
 	agony = 20
 	damage_flag = ARMOR_BIO
 	armor_penetration = 25	// It's acid-based
@@ -158,7 +158,7 @@
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage = 20
-	damage_type = TOX
+	damage_type = DAMAGE_TYPE_TOX
 	irradiate = 20
 	light_range = 2
 	light_power = 0.5
@@ -174,7 +174,7 @@
 	range = 4
 	damage = 5
 	agony = 55
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	vacuum_traversal = 0	//Projectile disappears in empty space
 
 /obj/projectile/energy/plasmastun/proc/bang(var/mob/living/carbon/M)
@@ -213,7 +213,7 @@
 	damage = 5
 	armor_penetration = 75
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	light_color = "#0000FF"
 
