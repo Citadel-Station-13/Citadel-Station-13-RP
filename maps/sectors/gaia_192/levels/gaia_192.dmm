@@ -1390,7 +1390,7 @@
 /area/class_m/inside/hotspringcaves)
 "gp" = (
 /obj/structure/fans/tiny,
-/obj/machinery/turnstile/resort{
+/obj/machinery/turnstile/resort/exit{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/classm,
@@ -1618,6 +1618,9 @@
 	dir = 1
 	},
 /area/class_m/outside)
+"ht" = (
+/turf/simulated/floor/carpet/patterened/purple,
+/area/class_m/inside/vip_dorms)
 "hu" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/table/standard,
@@ -4478,7 +4481,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 5
 	},
-/obj/machinery/turnstile/resort/premium,
+/obj/machinery/turnstile/resort/exit,
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/vip_dorms)
 "sw" = (
@@ -4913,7 +4916,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/turnstile/resort/premium{
+/obj/machinery/turnstile/resort/exit{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -5310,7 +5313,7 @@
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
 "wC" = (
-/obj/machinery/turnstile/resort/premium,
+/obj/machinery/turnstile/resort/exit,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
 "wF" = (
@@ -6450,6 +6453,13 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/patterened/magneta,
 /area/class_m/inside/coats)
+"Bw" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -14
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_m/inside/vip_dorms)
 "Bx" = (
 /turf/simulated/floor/water/beach{
 	dir = 10
@@ -7357,6 +7367,12 @@
 	},
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/main)
+"FH" = (
+/obj/machinery/turnstile/resort/exit{
+	dir = 4
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/main)
 "FI" = (
 /turf/simulated/floor/water/river/deep/south/outdoors,
 /area/class_m/outside/beach)
@@ -7696,6 +7712,12 @@
 /obj/structure/flora/pottedplant/largebush,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/dorms)
+"Hl" = (
+/obj/machinery/turnstile/resort/exit{
+	dir = 8
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/main)
 "Hm" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -7736,6 +7758,12 @@
 	dir = 8
 	},
 /area/class_m/outside/beachmiddle)
+"Ht" = (
+/obj/machinery/light/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/vip_dorms)
 "Hv" = (
 /obj/structure/bed/chair/sofa/black,
 /obj/item/radio/intercom/entertainment{
@@ -7957,6 +7985,10 @@
 	},
 /turf/simulated/floor/carpet,
 /area/class_m/inside/main)
+"IA" = (
+/obj/structure/flora/pottedplant/large,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/vip_dorms)
 "IB" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -8209,6 +8241,9 @@
 /obj/machinery/vending/gaia,
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/class_m/inside/entrance)
+"Jx" = (
+/turf/simulated/floor/carpet/patterened/green,
+/area/class_m/inside/vip_dorms)
 "Jy" = (
 /turf/simulated/wall/sandstonediamond/classm,
 /area/class_m/outside/desert)
@@ -8549,6 +8584,12 @@
 "KS" = (
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"KT" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/vip_dorms)
 "KU" = (
 /obj/machinery/door/airlock{
 	id_tag = "room15";
@@ -9130,6 +9171,11 @@
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
+"Ni" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/box/donkpockets,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/vip_dorms)
 "Nk" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
@@ -10050,7 +10096,14 @@
 "QM" = (
 /turf/simulated/wall/classm,
 /area/class_m/inside/hangars)
+"QN" = (
+/turf/simulated/floor/carpet/patterened/red,
+/area/class_m/inside/vip_dorms)
 "QQ" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 14
+	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/vip_dorms)
 "QU" = (
@@ -10095,6 +10148,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/water/river/south/outdoors,
 /area/class_m/outside)
+"Rl" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/vip_dorms)
 "Rm" = (
 /obj/structure/table/marble,
 /obj/machinery/reagentgrinder{
@@ -10143,6 +10200,10 @@
 /obj/machinery/recharger,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"Rx" = (
+/obj/structure/flora/pottedplant/tropical,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/vip_dorms)
 "RA" = (
 /obj/machinery/shower{
 	pixel_y = 29
@@ -10628,6 +10689,10 @@
 	dir = 4;
 	pixel_y = -32
 	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 14
+	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/vip_dorms)
 "TK" = (
@@ -10789,6 +10854,10 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside)
+"UD" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/vip_dorms)
 "UF" = (
 /obj/structure/railing{
 	dir = 4
@@ -11152,6 +11221,17 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/water/river/south/outdoors,
 /area/class_m/outside)
+"WM" = (
+/obj/structure/mirror{
+	dir = 4;
+	pixel_y = -32
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -14
+	},
+/turf/simulated/floor/tiled/white,
+/area/class_m/inside/vip_dorms)
 "WN" = (
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
@@ -11664,6 +11744,9 @@
 "Zg" = (
 /turf/simulated/mineral/classh,
 /area/class_m/outside/desert)
+"Zi" = (
+/turf/simulated/floor/carpet/patterened/blue,
+/area/class_m/inside/vip_dorms)
 "Zj" = (
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -13076,23 +13159,23 @@ wj
 Oo
 tF
 WB
-zm
+IA
 tg
 qT
 zm
 WB
 zm
 VC
-zm
+OS
 WB
-yy
+zm
 rM
 zm
 WB
 zm
 tg
 qT
-OS
+Ni
 WB
 tF
 tF
@@ -13276,11 +13359,11 @@ tQ
 zm
 Ui
 zm
-zm
-zm
+ht
+Rl
 WB
-zm
-zm
+KT
+Zi
 zm
 Ui
 zm
@@ -13467,7 +13550,7 @@ PH
 qC
 tQ
 tQ
-OS
+Ni
 WB
 zm
 Tx
@@ -13477,7 +13560,7 @@ Tx
 It
 zm
 WB
-zm
+yy
 CT
 CT
 TU
@@ -13859,10 +13942,10 @@ zm
 zm
 Kf
 fa
-TI
+WM
 WB
 ML
-QQ
+Bw
 Kf
 zm
 zm
@@ -15225,7 +15308,7 @@ WB
 mP
 HG
 zm
-OS
+Ni
 CL
 WB
 HA
@@ -15420,7 +15503,7 @@ zm
 zm
 Eq
 Eq
-zm
+Rx
 WB
 tF
 oT
@@ -15598,7 +15681,7 @@ oT
 oT
 lS
 WB
-zm
+UD
 Vi
 Vi
 zm
@@ -15611,7 +15694,7 @@ WB
 WB
 WB
 WB
-zm
+yy
 Eq
 Eq
 TU
@@ -15792,17 +15875,17 @@ oT
 oT
 GA
 WB
-OS
+Ni
 Vi
 Vi
 zm
 Ui
 zm
-zm
+Ht
 Tx
 WB
 Tx
-zm
+Ht
 zm
 SH
 zm
@@ -15992,11 +16075,11 @@ zm
 zm
 WB
 zm
-zm
+Jx
 It
 WB
 It
-zm
+QN
 zm
 WB
 zm
@@ -16186,11 +16269,11 @@ PH
 PH
 WB
 zm
-zm
+Jx
 zm
 WB
 zm
-zm
+QN
 zm
 WB
 PH
@@ -16381,9 +16464,9 @@ fQ
 Ui
 zm
 Xr
-zm
+OS
 WB
-yy
+OS
 Fy
 zm
 Ui
@@ -32302,7 +32385,7 @@ Bc
 hK
 pI
 pI
-wv
+Hl
 Zc
 Kp
 pI
@@ -33075,7 +33158,7 @@ Hw
 Hw
 Hw
 cp
-Kp
+FH
 pI
 pI
 wv

@@ -102,3 +102,7 @@
 /obj/machinery/turnstile/resort/premium
 	name = "\improper VIPs Only"
 	req_one_access = list(251)
+
+/obj/machinery/turnstile/resort/exit
+	name = "\improper Exit"
+	req_one_access = list()
