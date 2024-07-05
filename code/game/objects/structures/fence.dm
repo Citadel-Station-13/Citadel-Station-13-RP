@@ -100,7 +100,7 @@
 				update_cut_status()
 	return TRUE
 
-	if(user.a_intent = INTENT_HARM)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
 
 /obj/structure/fence/proc/update_cut_status()

@@ -48,7 +48,7 @@
 			qdel(src)
 		return
 	else
-		if(user.a_intent = INTENT_HARM)
+		if(user.a_intent == INTENT_HARM)
 			return ..()
 		src.attack_hand(user)
 	return

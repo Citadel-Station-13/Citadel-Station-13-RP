@@ -8,7 +8,7 @@
 	anchored = 1
 
 /obj/structure/dancepole/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(user.a_intent = INTENT_HARM)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
 
 	if(O.is_wrench())

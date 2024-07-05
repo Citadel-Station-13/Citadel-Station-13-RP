@@ -109,7 +109,7 @@
 	. = ..()
 
 /obj/structure/outcrop/bullet_act(obj/projectile/P, def_zone)
-	if(P.damage_flag = DAMAGE_BOMB) //Intended for kinetic accelerators/daggers to just get rid of this stuff quickly. They're rocks.
+	if(P.damage_flag == ARMOR_BOMB) //Intended for kinetic accelerators/daggers to just get rid of this stuff quickly. They're rocks.
 		GetDrilled()
 		return
 	. = ..()

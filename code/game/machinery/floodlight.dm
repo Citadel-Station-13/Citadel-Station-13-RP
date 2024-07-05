@@ -121,5 +121,5 @@
 				to_chat(user, SPAN_NOTICE("You insert the power cell."))
 	update_icon()
 
-	if(user.a_intent = INTENT_HARM)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
