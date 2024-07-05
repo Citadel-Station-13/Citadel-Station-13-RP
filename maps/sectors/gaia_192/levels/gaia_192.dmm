@@ -3690,10 +3690,12 @@
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside)
 "pp" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Gaia Bar Backroom"
-	},
-/obj/map_helper/access_helper/airlock/disconnected/gaia/staff,
+/obj/structure/table/rack/shelf,
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff,
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff,
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff,
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff,
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
 "pr" = (
@@ -4778,20 +4780,9 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
 "tO" = (
-/obj/machinery/holoposter{
-	pixel_y = -32
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
 	},
-/obj/structure/table/rack/shelf,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
-/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
 "tP" = (
@@ -5264,9 +5255,16 @@
 /area/class_m/outside)
 "wp" = (
 /obj/structure/table/rack/shelf,
-/obj/item/multitool,
-/obj/item/storage/toolbox/electrical,
-/obj/item/storage/toolbox/mechanical,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
 "wq" = (
@@ -32878,7 +32876,7 @@ Hw
 Hw
 Hw
 Hw
-Hw
+tO
 Hw
 Hw
 Hw
@@ -33072,10 +33070,10 @@ Hw
 Hw
 Hw
 cp
+Kp
 pI
 pI
-pp
-pI
+wv
 pI
 hg
 kH
@@ -33266,10 +33264,10 @@ mp
 mp
 mp
 pI
+Hw
 gY
-Hw
-Hw
 Lw
+IM
 pI
 pI
 pI
@@ -33460,10 +33458,10 @@ mk
 RH
 mk
 pI
+Hw
+pp
 wp
-Hw
-Hw
-tO
+IM
 pI
 uE
 xM
@@ -33655,8 +33653,8 @@ Hw
 xm
 dl
 Hw
-Hw
-Hw
+ni
+Ea
 Hw
 pI
 GA
@@ -33848,10 +33846,10 @@ gJ
 Hw
 Hw
 pI
-ni
 Hw
+DH
+Oa
 Hw
-Ea
 pI
 tF
 Xb
@@ -34042,10 +34040,10 @@ gi
 aS
 Le
 pI
-DH
 Hw
 Hw
-Oa
+Hw
+Hw
 pI
 tF
 vA
