@@ -17,7 +17,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/movable/action_drawer_toggle)
 /atom/movable/screen/movable/action_drawer_toggle/request_position_reset()
 	screen_loc = drawer.screen_loc_for_index(drawer.hiding_buttons? 1 : length(drawer.using_actions + 1))
 
-/atom/movable/screen/movable/action_drawer_toggle/Click()
+/atom/movable/screen/movable/action_drawer_toggle/Click(location, control, params)
 	if(usr.client != drawer.client)
 		return
 	var/list/decoded_params = params2list(params)
