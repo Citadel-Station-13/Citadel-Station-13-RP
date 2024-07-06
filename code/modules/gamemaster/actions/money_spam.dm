@@ -20,7 +20,7 @@
 /datum/gm_action/pda_spam/start()
 	..()
 	var/safety = 100
-	while(world.time < last_spam_time + 3000)
+	while(last_spam_time + 3000 < world.time)
 		safety -= 1
 		if(safety <= 0)
 			CRASH("ran out of safety")
