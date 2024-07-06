@@ -911,7 +911,7 @@
 		return FALSE
 	. = TRUE
 	// todo: mobility flags
-	var/extra_time = MODULUS(time, interval)
+	var/extra_time = MODULUS_F(time, interval)
 	var/i
 	for(i in 1 to round(time / interval))
 		if(!do_after(escapee, interval, mobility_flags = MOBILITY_CAN_RESIST))

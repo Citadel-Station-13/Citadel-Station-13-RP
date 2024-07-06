@@ -310,7 +310,7 @@
 	damage = 0 //We're just here to mark people. This is still a melee weapon.
 	damage_type = BRUTE
 	damage_flag = ARMOR_BOMB
-	range = 6
+	range = WORLD_ICON_SIZE * 6
 	accuracy = INFINITY	// NO.
 	// log_override = TRUE
 	var/obj/item/kinetic_crusher/hammer_synced
