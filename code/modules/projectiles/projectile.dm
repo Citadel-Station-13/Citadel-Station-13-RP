@@ -28,8 +28,8 @@
 
 	//* Physics - Configuration *//
 
-	/// speed, in pixels per decisecond
-	var/speed = 32 / 0.55 // ~18 tiles/second
+	/// speed, in pixels per second
+	var/speed = 25 * WORLD_ICON_SIZE
 	/// are we a hitscan projectile?
 	var/hitscan = FALSE
 	/// angle, in degrees **clockwise of north**
@@ -39,6 +39,24 @@
 	/// * please set this to a multiple of [WORLD_ICON_SIZE] so we scale with tile size.
 	var/range = WORLD_ICON_SIZE * 50
 	// todo: lifespan
+
+	//* Physics - Homing *//
+	/// Are we homing in on something?
+	var/homing = FALSE
+	/// current homing target
+	var/atom/homing_target
+	/// angle per second
+	///
+	/// * this is smoother the less time between SSprojectiles fires
+	var/homing_turn_speed = 100
+	/// rand(min, max) for inaccuracy offsets
+	var/homing_inaccuracy_min = 0
+	/// rand(min, max) for inaccuracy offsets
+	var/homing_inaccuracy_max = 0
+	/// pixels; added to the real location of target so we're not exactly on-point
+	var/homing_offset_x = 0
+	/// pixels; added to the real location of target so we're not exactly on-point
+	var/homing_offset_y = 0
 
 	//* Physics - Tracers *//
 
@@ -137,17 +155,6 @@
 	var/impact_light_intensity = 3
 	var/impact_light_range = 2
 	var/impact_light_color_override
-
-	//Homing
-	var/homing = FALSE
-	var/atom/homing_target
-	// angle per deciseconds
-	// this is smoother the less time between SSprojectiles fires
-	var/homing_turn_speed = 10
-	var/homing_inaccuracy_min = 0		//in pixels for these. offsets are set once when setting target.
-	var/homing_inaccuracy_max = 0
-	var/homing_offset_x = 0
-	var/homing_offset_y = 0
 
 	//Targetting
 	var/yo = null
@@ -897,7 +904,7 @@
  * sets our speed in pixels per decisecond
  */
 /obj/projectile/proc/set_speed(new_speed)
-	speed = clamp(new_speed, 1, WORLD_ICON_SIZE * 5)
+	speed = clamp(new_speed, 1, WORLD_ICON_SIZE * 100)
 
 /**
  * sets our angle and speed
@@ -949,8 +956,7 @@
 /obj/projectile/process(delta_time)
 	if(paused)
 		return
-	delta_time *= 10 // sigh im fucking mad but whatever why are we using delta_time as seconds and not deciseconds
-	physics_iteration(delta_time * speed, delta_time)
+	physics_iteration(min(10 * WORLD_ICON_SIZE, delta_time * speed * SSprojectiles.global_projectile_speed_multiplier), delta_time)
 
 /**
  * immediately processes hitscan
@@ -996,7 +1002,7 @@
  */
 /obj/projectile/proc/physics_iteration(pixels, delta_time, additional_animation_length)
 	// setup iteration
-	var/safety = 10
+	var/safety = 15
 	var/pixels_remaining = pixels
 	distance_travelled_this_iteration = 0
 
@@ -1244,14 +1250,16 @@ GLOBAL_VAR_INIT(projectile_raycast_debug_visual_delay, 2 SECONDS)
  * todo: this has absolutely no arc/animation support; this is bad
  */
 /obj/projectile/proc/physics_tick_homing(delta_time)
+	if(!homing)
+		return FALSE
 	// checks if they're 1. on a turf, 2. on our z
 	// todo: should we add support for tracking something even if it leaves a turf?
 	if(homing_target?.z != z)
 		// bye bye!
 		return FALSE
 	// todo: this assumes single-tile objects. at some point, we should upgrade this to be unnecessarily expensive and always center-mass.
-	var/dx = (homing_target.x - src.x) * WORLD_ICON_SIZE + (0 - current_px)
-	var/dy = (homing_target.y - src.y) * WORLD_ICON_SIZE + (0 - current_py)
+	var/dx = (homing_target.x - src.x) * WORLD_ICON_SIZE + (0 - current_px) + homing_offset_x
+	var/dy = (homing_target.y - src.y) * WORLD_ICON_SIZE + (0 - current_py) + homing_offset_y
 	// say it with me, arctan()
 	// is CCW of east if (dx, dy)
 	// and CW of north if (dy, dx)
