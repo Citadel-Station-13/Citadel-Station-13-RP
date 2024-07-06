@@ -89,10 +89,6 @@
 	else
 		set_light(0)
 
-/obj/item/flashlight/update_appearance(updates)
-	. = ..()
-	set_flashlight()
-
 /obj/item/flashlight/update_icon_state()
 	. = ..()
 
@@ -133,6 +129,7 @@
 	else if(power_use)
 		STOP_PROCESSING(SSobj, src)
 	playsound(src.loc, 'sound/weapons/empty.ogg', 15, TRUE, -3)
+	set_flashlight()
 	update_full_icon()
 	return TRUE
 

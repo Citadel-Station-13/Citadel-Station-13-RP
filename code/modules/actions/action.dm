@@ -165,6 +165,8 @@
 	generating.desc = desc
 	generating.icon = background_icon
 	generating.icon_state = background_icon_state
+	generating.plane = HUD_PLANE
+	generating.layer = HUD_LAYER_BASE
 
 	if(background_additional_overlay)
 		generating.overlays += background_additional_overlay
