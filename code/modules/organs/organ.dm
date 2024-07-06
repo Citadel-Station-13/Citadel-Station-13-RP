@@ -837,7 +837,7 @@
 		organ_actions = new organ_actions
 	else if(istype(organ_actions, /datum/action))
 	else if(organ_action_name)
-		var/datum/action/organ/creating = new(src)
+		var/datum/action/organ_action/creating = new(src)
 		organ_actions = creating
 		creating.name = organ_action_name
 		creating.desc = organ_action_desc || desc
