@@ -38,7 +38,7 @@
 /obj/item/robot_module/robot/lost/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	// Potato
-	emag = new /obj/item/gun/energy/retro/mounted(src)
+	emag = new /obj/item/gun/projectile/energy/retro/mounted(src)
 
 	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
 	C.synths = list(synths_by_kind[MATSYN_WIRE])
@@ -83,7 +83,7 @@
 /obj/item/robot_module/robot/gravekeeper/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
 	// For really persistent looters
-	emag = new /obj/item/gun/energy/retro/mounted(src)
+	emag = new /obj/item/gun/projectile/energy/retro/mounted(src)
 
 	var/obj/item/stack/material/cyborg/wood/W = new (src)
 	W.synths = list(synths_by_kind[MATSYN_WOOD])

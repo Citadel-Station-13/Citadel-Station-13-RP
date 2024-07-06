@@ -1,5 +1,5 @@
 // The Gun //
-/obj/item/gun/ballistic/cell_loaded/medical
+/obj/item/gun/projectile/ballistic/cell_loaded/medical
 	name = "cell-loaded medigun"
 	desc = "The Nanotrasen-VayMed Adaptive Medical Laser, or the NT-V 'AML', is a powerful cell-based ranged healing device designed by Nanotrasen with a partnership with Vey-Med. It uses an internal nanite fabricator, powered and controlled by discrete cells, to deliver a variety of effects at range. Up to six combinations of healing beams can be configured at once, depending on cartridge used. Ammo not included."
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
@@ -12,7 +12,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/cell_mag/medical)
 	no_pin_required = 1
 
-/obj/item/gun/ballistic/cell_loaded/medical/cmo
+/obj/item/gun/projectile/ballistic/cell_loaded/medical/cmo
 	name = "advanced cell-loaded medigun"
 	desc = "This is a variation on the AML 'Medigun', a powerful cell-based ranged healing device based on the same model made by Nanotrasen and Vey-Med \
 	It has an extended sight for increased accuracy, and much more comfortable grip. Ammo not included."
@@ -33,7 +33,7 @@
 /obj/item/ammo_magazine/cell_mag/medical/advanced
 	name = "advanced nanite magazine"
 	desc = "A nanite discharge cell for the \'AML\'. This one is a more advanced version which can hold six individual nanite discharge cells."
-	max_ammo = 6
+	ammo_max = 6
 	x_offset = 3
 	icon_state = "ml3m_mag_extended"
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5)
@@ -47,7 +47,7 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/ml3m_pack_med/legacy_spawn_contents()
-	new /obj/item/gun/ballistic/cell_loaded/medical(src)
+	new /obj/item/gun/projectile/ballistic/cell_loaded/medical(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)
 	new /obj/item/ammo_casing/microbattery/medical/burn(src)
@@ -60,7 +60,7 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo/legacy_spawn_contents()
-	new /obj/item/gun/ballistic/cell_loaded/medical/cmo(src)
+	new /obj/item/gun/projectile/ballistic/cell_loaded/medical/cmo(src)
 	new /obj/item/ammo_magazine/cell_mag/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)
 	new /obj/item/ammo_casing/microbattery/medical/burn(src)

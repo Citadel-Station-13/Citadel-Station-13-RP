@@ -173,9 +173,9 @@
 		/obj/item/cell/device,
 		/obj/item/reagent_containers/food/snacks/donut/,
 		/obj/item/melee/baton,
-		/obj/item/gun/energy/taser,
-		/obj/item/gun/energy/stunrevolver,
-		/obj/item/gun/energy/gun,
+		/obj/item/gun/projectile/energy/taser,
+		/obj/item/gun/projectile/energy/stunrevolver,
+		/obj/item/gun/projectile/energy/gun,
 		/obj/item/flame/lighter,
 		/obj/item/flashlight,
 		/obj/item/tape_recorder,
@@ -187,10 +187,10 @@
 		/obj/item/megaphone,
 		/obj/item/melee,
 		/obj/item/clothing/accessory/badge,
-		/obj/item/gun/ballistic/sec,
-		/obj/item/gun/ballistic/p92x,
+		/obj/item/gun/projectile/ballistic/sec,
+		/obj/item/gun/projectile/ballistic/p92x,
 		/obj/item/barrier_tape_roll,
-		/obj/item/gun/ballistic/colt/detective,
+		/obj/item/gun/projectile/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -233,7 +233,7 @@
 		/obj/item/flame/lighter,
 		/obj/item/reagent_containers/food/snacks/donut/,
 		/obj/item/ammo_magazine,
-		/obj/item/gun/ballistic/colt/detective,
+		/obj/item/gun/projectile/ballistic/colt/detective,
 		/obj/item/holowarrant
 		)
 
@@ -554,44 +554,11 @@
 	name = "dual holster gunbelt"
 	desc = "Belts like these were popular on old Earth, but were largely supplanted by modular holsters. This gunbelt is too bulky to be comfortably anchored to clothes without support."
 	icon_state = "dual_holster"
-	max_items = 2
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	insertion_whitelist = list(
-		/obj/item/gun/energy/alien,
-		/obj/item/gun/energy/captain,
-		/obj/item/gun/energy/crossbow,
-		/obj/item/gun/energy/decloner,
-		/obj/item/gun/energy/floragun,
-		/obj/item/gun/energy/gun,
-		/obj/item/gun/energy/gun/nuclear,
-		/obj/item/gun/energy/ionrifle/pistol,
-		/obj/item/gun/energy/lasertag,
-		/obj/item/gun/energy/netgun,
-		/obj/item/gun/energy/phasegun/pistol,
-		/obj/item/gun/energy/pulse_pistol,
-		/obj/item/gun/energy/retro,
-		/obj/item/gun/energy/service,
-		/obj/item/gun/energy/stunrevolver,
-		/obj/item/gun/energy/taser,
-		/obj/item/gun/energy/toxgun,
-		/obj/item/gun/energy/zip,
-		/obj/item/gun/ballistic/colt,
-		/obj/item/gun/ballistic/contender,
-		/obj/item/gun/ballistic/dartgun,
-		/obj/item/gun/ballistic/deagle,
-		/obj/item/gun/ballistic/derringer,
-		/obj/item/gun/ballistic/gyropistol,
-		/obj/item/gun/ballistic/luger,
-		/obj/item/gun/ballistic/r9,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/gun/ballistic/sec,
-		/obj/item/gun/ballistic/shotgun/doublebarrel/sawn,
-		/obj/item/gun/ballistic/shotgun/flare,
-		/obj/item/gun/ballistic/silenced,
-		/obj/item/gun/ballistic/p92x,
-		/obj/item/gun/ballistic/pistol,
-		/obj/item/gun/ballistic/pirate
-		)
+	storage_slots = 2
+	max_w_class = WEIGHT_CLASS_NORMAL
+	can_hold = list(
+		/obj/item/gun/projectile,
+	)
 
 /obj/item/storage/belt/quiver
 	name = "leather quiver"

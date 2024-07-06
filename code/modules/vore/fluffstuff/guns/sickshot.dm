@@ -1,5 +1,5 @@
 // -------------- Sickshot -------------
-/obj/item/gun/energy/sickshot
+/obj/item/gun/projectile/energy/sickshot
 	name = "\'Discombobulator\' revolver"
 	desc = "Need to stun someone? Don't mind having to clean up the mess afterwards? The MPA6 'Discombobulator' is the answer to your prayers. \
 	Using a short-range concentrated blast of disruptive sound, the Discombobulator will nauseate and confuse the target for several seconds. NOTE: Not suitable \

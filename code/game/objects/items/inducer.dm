@@ -33,7 +33,7 @@
 
 /obj/item/inducer/Initialize(mapload)
 	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type)
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(initial_cell = cell_type)
 	cell_slot.receive_emp = TRUE
 	cell_slot.receive_inducer = TRUE
 	cell_slot.remove_yank_offhand = TRUE

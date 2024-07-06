@@ -44,7 +44,7 @@ DEFINE_ENUM(movespeed_modifier_calculation_type, list(
 //* Constants
 
 /// minimum movespeed
-#define MOVESPEED_ABSOLUTE_MINIMUM_TILES_PER_SECOND 0.25
+#define MOVESPEED_ABSOLUTE_MINIMUM_PROJECTILE_SPEED_FOR_TPS 0.25
 
 //* Priorities - Lower is applied first
 

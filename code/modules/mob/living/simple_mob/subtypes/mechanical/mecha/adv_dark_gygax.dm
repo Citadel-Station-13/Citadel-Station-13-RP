@@ -124,7 +124,7 @@
 	damage = 20
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
-	speed = 32 // 10 tiles a second
+	speed = PROJECTILE_SPEED_FOR_TPS(5)
 
 /obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	..()

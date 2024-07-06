@@ -26,9 +26,9 @@
 	nodamage = 1
 	damage_type = HALLOSS
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	hitscan_muzzle_type = /obj/effect/projectile/muzzle/lightning
+	hitscan_tracer_type = /obj/effect/projectile/tracer/lightning
+	hitscan_impact_type = /obj/effect/projectile/impact/lightning
 
 	var/power = 60				//How hard it will hit for with electrocute_act().
 

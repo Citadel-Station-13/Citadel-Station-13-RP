@@ -1,13 +1,9 @@
 //Designed for things that need precision trajectories like projectiles.
 //Don't use this for anything that you don't absolutely have to use this with (like projectiles!) because it isn't worth using a datum unless you need accuracy down to decimal places in pixels.
 
-//You might see places where it does - 16 - 1. This is intentionally 17 instead of 16, because of how byond's tiles work and how not doing it will result in rounding errors like things getting put on the wrong turf.
+#warn oh my god i hate all of this
 
-#define RETURN_PRECISE_POSITION(A) new /datum/position(A)
-#define RETURN_PRECISE_POINT(A) new /datum/point(A)
-
-#define RETURN_POINT_VECTOR(ATOM, ANGLE, SPEED) {new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED)}
-#define RETURN_POINT_VECTOR_INCREMENT(ATOM, ANGLE, SPEED, AMT) new /datum/point/vector(ATOM, null, null, null, null, ANGLE, SPEED, AMT)
+// todo: rewrite positions they're bad
 
 /**
  * Stores x/y/z and pixel_x/pixel_y
@@ -25,12 +21,12 @@
 /datum/position/New(_x = 0, _y = 0, _z = 0, _pixel_x = 0, _pixel_y = 0)	//first argument can also be a /datum/point.
 	if(istype(_x, /datum/point))
 		var/datum/point/P = _x
-		var/turf/T = P.return_turf()
+		var/turf/T = P.turf()
 		_x = T.x
 		_y = T.y
 		_z = T.z
-		_pixel_x = P.return_px()
-		_pixel_y = P.return_py()
+		_pixel_x = P.pixel_x()
+		_pixel_y = P.pixel_y()
 	else if(istype(_x, /atom))
 		var/atom/A = _x
 		_x = A.x
@@ -56,16 +52,23 @@
 /datum/position/proc/return_point()
 	return new /datum/point(src)
 
-/proc/point_midpoint_points(datum/point/a, datum/point/b)	//Obviously will not support multiZ calculations! Same for the two below.
-	var/datum/point/P = new
-	P.x = a.x + (b.x - a.x) / 2
-	P.y = a.y + (b.y - a.y) / 2
-	P.z = a.z
-	return P
+//* Points *//
 
-/proc/pixel_length_between_points(datum/point/a, datum/point/b)
+/**
+ * returns midpoint between two points as a /datum/point
+ */
+/proc/midpoint_between_points(datum/point/a, datum/point/b)	//Obviously will not support multiZ calculations! Same for the two below.
+	return new point(a.x + (b.x - a.x) / 2, a.y + (b.y - a.y) / 2, a.z)
+
+/**
+ * returns pixel distance between two points
+ */
+/proc/distance_between_points(datum/point/a, datum/point/b)
 	return sqrt(((b.x - a.x) ** 2) + ((b.y - a.y) ** 2))
 
+/**
+ * returns north-0 clockwise angle between two points
+ */
 /proc/angle_between_points(datum/point/a, datum/point/b)
 	return arctan((b.y - a.y), (b.x - a.x))
 
@@ -79,31 +82,36 @@
 	var/y = 0
 	var/z = 0
 
-/datum/point/proc/valid()
-	return x && y && z
+/datum/point/New(x, y, z)
+	if(!isnum(x))
+		switch(x:type)
+			if(/datum/position)
+				var/datum/position/casted = x
+				src.x = casted.x * WORLD_ICON_SIZE - ((WORLD_ICON_SIZE / 2) - 1) + casted.pixel_x
+				src.y = casted.y * WORLD_ICON_SIZE - ((WORLD_ICON_SIZE / 2) - 1) + casted.pixel_y
+				src.z = casted.z
+			if(/datum/point)
+				var/datum/point/casted = x
+				src.x = casted.x
+				src.y = casted.y
+				src.z = casted.z
+		if(isatom(x))
+			var/atom/casted = x
+			src.x = casted.x * WORLD_ICON_SIZE - (WORLD_ICON_SIZE / 2) + casted.pixel_x
+			src.y = casted.y * WORLD_ICON_SIZE - (WORLD_ICON_SIZE / 2) + casted.pixel_y
+			src.z = casted.z
+		if(isnull(x))
+			return
+		CRASH("unknown x value on point init")
+	src.x = x
+	src.y = y
+	src.z = z
 
-/datum/point/proc/copy_to(datum/point/p = new)
-	p.x = x
-	p.y = y
-	p.z = z
-	return p
+/datum/point/clone()
+	return new /datum/point(src)
 
-/datum/point/New(_x, _y, _z, _pixel_x = 0, _pixel_y = 0)	//first argument can also be a /datum/position or /atom.
-	if(istype(_x, /datum/position))
-		var/datum/position/P = _x
-		_x = P.x
-		_y = P.y
-		_z = P.z
-		_pixel_x = P.pixel_x
-		_pixel_y = P.pixel_y
-	else if(istype(_x, /atom))
-		var/atom/A = _x
-		_x = A.x
-		_y = A.y
-		_z = A.z
-		_pixel_x = A.pixel_x
-		_pixel_y = A.pixel_y
-	initialize_location(_x, _y, _z, _pixel_x, _pixel_y)
+/datum/point/proc/turf()
+	return locate(round(x / WORLD_ICON_SIZE) + 1, round(y / WORLD_ICON_SIZE) + 1, z)
 
 /datum/point/proc/initialize_location(tile_x, tile_y, tile_z, p_x = 0, p_y = 0)
 	if(!isnull(tile_x))
@@ -113,9 +121,8 @@
 	if(!isnull(tile_z))
 		z = tile_z
 
-/datum/point/proc/debug_out()
-	var/turf/T = return_turf()
-	return "\ref[src] aX [x] aY [y] aZ [z] pX [return_px()] pY [return_py()] mX [T.x] mY [T.y] mZ [T.z]"
+/datum/point/proc/coords()
+	return list(round(x / WORLD_ICON_SIZE) + 1, round(y / WORLD_ICON_SIZE) + 1, z)
 
 /**
  * angle is clockwise from north
