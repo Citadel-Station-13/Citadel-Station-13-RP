@@ -11,10 +11,10 @@
 	icon_state = "fireball" // WIP
 	movement_type = MOVEMENT_UNSTOPPABLE
 	plane = ABOVE_PLANE // Since projectiles are 'in the air', they might visually overlap mobs while in flight, so the projectile needs to be above their plane.
+	speed = 10 * WORLD_ICON_SIZE
 	var/fired_dir = null		// Which direction was the projectile fired towards. Needed to invert the projectile turning based on if facing left or right.
 	var/distance_to_fly = null // How far, in pixels, to fly for. Will call on_range() when this is passed.
 	var/visual_y_offset = -16 // Adjusts how high the projectile and its shadow start, visually. This is so the projectile and shadow align with the center of the tile.
-	var/projectile_speed_modifier = 0.5 // Slows it down to make the arcing more noticable, and improve pixel calculation accuracy.
 	var/obj/effect/projectile_shadow/shadow = null // Visual indicator for the projectile's 'true' position. Needed due to being bound to two dimensions in reality.
 
 /obj/projectile/arc/Bump()
@@ -60,11 +60,6 @@
 	..()
 	fired_dir = get_dir(source, target)
 	distance_to_fly = calculate_initial_pixel_distance(source, target)
-
-
-/obj/projectile/arc/fire(angle, atom/direct_target)
-	..() // The trajectory must exist for set_pixel_speed() to work.
-	set_speed(32 * projectile_speed_modifier)
 
 /obj/projectile/arc/physics_iteration(pixels)
 	// Do the other important stuff first.
