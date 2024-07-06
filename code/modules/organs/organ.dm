@@ -5,6 +5,18 @@
 	drop_sound = 'sound/items/drop/flesh.ogg'
 	pickup_sound = 'sound/items/pickup/flesh.ogg'
 
+	//* Actions *//
+	/// actions to give the owner of this organ
+	///
+	/// valid starting values include:
+	/// * list of actions / typepaths
+	/// * single action / typepath
+	var/list/datum/action/organ_actions
+	/// set to a string to initialize organ_actions with a generic action of this name
+	var/organ_action_name
+	/// description for organ action; defaults to [desc]
+	var/organ_action_desc
+
 	//* ## STRINGS VARS
 	/// Unique identifier.
 	var/organ_tag = "organ"
@@ -748,7 +760,11 @@
 		for(var/verb_path in organ_verbs)
 			if(!(verb_path in save_verbs))
 				remove_verb(owner, verb_path)
-	return
+
+	if(removed)
+		on_remove(owner)
+	else
+		on_insert(owner)
 
 /// Called when processed.
 /obj/item/organ/proc/handle_organ_proc_special()
@@ -785,7 +801,7 @@
 	return FALSE
 
 /obj/item/organ/proc/refresh_action_button()
-	return action
+	update_action_buttons()
 
 // todo: unified organ damage system
 // for now, this is how to heal internal organs
@@ -799,6 +815,48 @@
 	damage = clamp(round(damage - amount, DAMAGE_PRECISION), 0, max_damage)
 	if(dead && can_revive)
 		revive()
+
+//* Actions *//
+
+/obj/item/organ/update_action_buttons()
+	. = ..()
+	if(islist(organ_actions))
+		for(var/datum/action/action in organ_actions)
+			action.update_buttons()
+	else if(istype(organ_actions, /datum/action))
+		var/datum/action/action = organ_actions
+		action.update_buttons()
+
+/obj/item/organ/proc/ensure_organ_actions_loaded()
+	if(islist(organ_actions))
+		for(var/i in 1 to length(organ_actions))
+			var/key = organ_actions[i]
+			if(ispath(key, /datum/action))
+				organ_actions[i] = key = new key(src)
+	else if(ispath(organ_actions, /datum/action))
+		organ_actions = new organ_actions
+	else if(istype(organ_actions, /datum/action))
+	else if(organ_action_name)
+		var/datum/action/organ/creating = new(src)
+		organ_actions = creating
+		creating.name = organ_action_name
+		creating.desc = organ_action_desc || desc
+
+/obj/item/organ/proc/grant_organ_actions(mob/target)
+	if(islist(organ_actions))
+		for(var/datum/action/action in organ_actions)
+			action.regex_this_grant(target.actions_innate)
+	else if(istype(organ_actions, /datum/action))
+		var/datum/action/action = organ_actions
+		action.regex_this_grant(target.actions_innate)
+
+/obj/item/organ/proc/revoke_organ_actions(mob/target)
+	if(islist(organ_actions))
+		for(var/datum/action/action in organ_actions)
+			action.revoke(target.actions_innate)
+	else if(istype(organ_actions, /datum/action))
+		var/datum/action/action = organ_actions
+		action.revoke(target.actions_innate)
 
 //* Biologies *//
 
@@ -819,3 +877,25 @@
 			return biology_types & BIOLOGY_TYPE_SYNTH
 		if(ORGAN_LIFELIKE)
 			return biology_types & BIOLOGY_TYPE_SYNTH
+
+//* Insert / Remove *//
+
+/**
+ * called on being put into a mob
+ *
+ * @params
+ * * owner - person being inserted into
+ * * initializing - part of init for owner. set_species() counts as this too!
+ */
+/obj/item/organ/proc/on_insert(mob/owner, initializing)
+	ensure_organ_actions_loaded()
+	grant_organ_actions(owner)
+
+/**
+ * called on being removed from a mob
+ *
+ * @params
+ * * owner - person being removed from
+ */
+/obj/item/organ/proc/on_remove(mob/owner)
+	revoke_organ_actions(owner)

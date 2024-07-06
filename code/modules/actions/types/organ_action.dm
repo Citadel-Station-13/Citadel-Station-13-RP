@@ -1,15 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-/datum/action/item_action
+/datum/action/organ_action
 	target_type = /obj/item
 
 	button_icon_state = null
-	/// automatically set button_additional_overlay to the item, if button_icon_state is null
-	var/render_item_as_button = TRUE
+	/// automatically set button_additional_overlay to the organ
+	var/render_organ_as_button = TRUE
 
-/datum/action/item_action/pre_render_hook()
-	if(render_item_as_button && isnull(button_icon_state))
+/datum/action/organ_action/pre_render_hook()
+	if(render_organ_as_button && isnull(button_icon_state))
 		button_additional_only = TRUE
 		var/image/generated = new
 		generated.appearance = target
@@ -19,7 +19,4 @@
 		button_additional_overlay = generated
 	return ..()
 
-/datum/action/item_action/calculate_availability()
-	var/obj/item/item = target
-	var/mob/worn = item.worn_mob()
-	return worn? (worn.mobility_flags & check_mobility_flags? 1 : 0) : 1
+// todo: default check availability & a hook for updating it?

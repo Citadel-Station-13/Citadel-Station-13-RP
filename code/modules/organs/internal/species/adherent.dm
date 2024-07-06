@@ -29,9 +29,10 @@
 		to_chat(owner, SPAN_DANGER("Your [name] [gender == PLURAL ? "are" : "is"] out of power!"))
 		refresh_action_button()
 
-/obj/item/organ/internal/powered/refresh_action_button()
-	#warn impl
-	action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
+/obj/item/organ/internal/powered/update_action_buttons()
+	if(istype(organ_actions, /datum/action))
+		var/datum/action/action = organ_actions
+		action.button_icon_state = "[base_action_state]-[active ? "on" : "off"]"
 	return ..()
 
 /obj/item/organ/internal/powered/attack_self(mob/user)
@@ -53,7 +54,7 @@
 /obj/item/organ/internal/powered/jets
 	name = "maneuvering jets"
 	desc = "Gas jets from a Adherent chassis."
-	item_action_name = "Toggle Maneuvering Pack"
+	organ_action_name = "Toggle Maneuvering Pack"
 	use_descriptor = "adjust your vector"
 	organ_tag = O_JETS
 	parent_organ = BP_TORSO
@@ -96,7 +97,7 @@
 /obj/item/organ/internal/powered/float
 	name = "levitation plate"
 	desc = "A broad, flat disc of exotic matter. Slick to the touch."
-	item_action_name = "Toggle Antigravity"
+	organ_action_name = "Toggle Antigravity"
 	organ_tag = O_FLOAT
 	parent_organ = BP_GROIN
 	robotic = ORGAN_CRYSTAL
@@ -138,7 +139,7 @@
 	name = "cooling fins"
 	gender = PLURAL
 	desc = "A lacy filligree of heat-radiating fins."
-	item_action_name = "Toggle Cooling"
+	organ_action_name = "Toggle Cooling"
 	organ_tag = O_COOLING_FINS
 	parent_organ = BP_GROIN
 	status = ORGAN_CRYSTAL

@@ -2092,6 +2092,7 @@
 #include "code\modules\actions\action_drawer_toggle.dm"
 #include "code\modules\actions\action_holder.dm"
 #include "code\modules\actions\types\item_action.dm"
+#include "code\modules\actions\types\organ_action.dm"
 #include "code\modules\actionspeed\actionspeed_modifier.dm"
 #include "code\modules\actionspeed\mob.dm"
 #include "code\modules\actionspeed\modifiers\base.dm"

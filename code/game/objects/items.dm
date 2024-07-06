@@ -815,7 +815,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * * a list of actions
  * * an action instance
  */
-/obj/item/proc/ensure_actions_loaded()
+/obj/item/proc/ensure_item_actions_loaded()
 	if(item_actions)
 		if(islist(item_actions))
 			var/requires_init = FALSE
@@ -868,7 +868,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * handles action granting
  */
 /obj/item/proc/register_item_actions(mob/user)
-	ensure_actions_loaded()
+	ensure_item_actions_loaded()
 	if(islist(item_actions))
 		for(var/datum/action/action in item_actions)
 			action.regex_this_grant(user.inventory.actions)

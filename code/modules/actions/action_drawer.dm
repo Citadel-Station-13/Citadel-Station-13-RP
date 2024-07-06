@@ -26,7 +26,8 @@
 
 /datum/action_drawer/Destroy()
 	client = null
-	#warn unregister holders
+	for(var/datum/action_holder/holder in using_holders)
+		unregister_holder(holder)
 	using_holders = using_actions = duped_actions = null
 	QDEL_NULL(hide_toggle)
 	return ..()
@@ -37,6 +38,7 @@
 /datum/action_drawer/proc/register_holder(datum/action_holder/holder)
 	ASSERT(!(holder in using_holders))
 	LAZYADD(using_holders, holder)
+	LAZYADD(holder.drawers, src)
 
 	for(var/datum/action/action as anything in holder.actions)
 		add_action(action, holder)
@@ -47,6 +49,7 @@
 /datum/action_drawer/proc/unregister_holder(datum/action_holder/holder)
 	ASSERT(holder in using_holders)
 	LAZYREMOVE(using_holders, holder)
+	LAZYREMOVE(holder.drawers, src)
 
 	for(var/datum/action/action as anything in holder.actions)
 		remove_action(action, holder)
