@@ -41,7 +41,8 @@
  */
 /datum/action_drawer/proc/reassert_screen()
 	client.screen |= hide_toggle
-	client.screen |= all_action_buttons()
+	if(length(using_actions))
+		client.screen |= all_action_buttons()
 
 /**
  * adds a holder
@@ -85,6 +86,8 @@
 
 	if(was_empty && length(using_actions))
 		client?.screen |= hide_toggle
+	if(!hide_toggle.moved)
+		hide_toggle.request_position_reset()
 
 /**
  * propagates an action being removed from a holder
@@ -106,6 +109,8 @@
 
 	if(!length(using_actions))
 		client?.screen -= hide_toggle
+	if(!hide_toggle.moved)
+		hide_toggle.request_position_reset()
 
 /**
  * toggles if we're hiding buttons
