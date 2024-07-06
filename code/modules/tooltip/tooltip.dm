@@ -40,14 +40,14 @@ Notes:
 
 
 /datum/tooltip/New(client/C)
-	if (C)
-		owner = C
-		var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/jquery)
-		stuff.send(owner)
-		owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
+	if(!C)
+		return
+	owner = C
+	addtimer(CALLBACK(src, PROC_REF(init)), 0)
 
-	..()
-
+/datum/tooltip/proc/init()
+	SSassets.send_asset_pack(owner, /datum/asset_pack/simple/jquery)
+	owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
 
 /datum/tooltip/proc/show(atom/movable/thing, params = null, title = null, content = null, theme = "default", special = "none")
 	if (!thing || !params || (!title && !content) || !owner || !isnum(world.icon_size))
@@ -83,7 +83,6 @@ Notes:
 		hide()
 
 	return TRUE
-
 
 /datum/tooltip/proc/hide()
 	queueHide = showing ? TRUE : FALSE

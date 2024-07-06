@@ -18,7 +18,7 @@
 	// rotated
 	var/got_rotated_by_maploader
 
-/obj/turbolift_map_holder/preloading_dir(datum/map_preloader/preloader)
+/obj/turbolift_map_holder/preloading_dir(datum/dmm_preloader/preloader)
 	. = ..()
 	got_rotated_by_maploader = preloader.loading_orientation
 

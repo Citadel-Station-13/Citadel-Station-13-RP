@@ -10,14 +10,16 @@
 	preview_icon = 'icons/mob/species/krisitik/preview.dmi'
 	husk_icon    = 'icons/mob/species/krisitik/husk.dmi'
 
-	tail = "tail"
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/krisitik,
+	)
 
 	max_additional_languages = 3
 	name_language   = LANGUAGE_ID_SQUEAKISH
 	intrinsic_languages = LANGUAGE_ID_SQUEAKISH
 
 	vision_innate = /datum/vision/baseline/species_tier_2
+	vision_organ = O_EYES
 
 	color_mult = 1
 

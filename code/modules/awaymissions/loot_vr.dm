@@ -12,8 +12,9 @@
 	icon_state = "grabbed"
 	low_probability = 1
 
-/obj/landmark/loot_spawn/New()
-
+/obj/landmark/loot_spawn/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
+	atom_flags |= ATOM_INITIALIZED
 	switch(pick( \
 	low_probability * 1000;"nothing", \
 	200 - low_probability * 175;"treasure", \
@@ -272,7 +273,7 @@
 			/obj/item/reagent_containers/food/snacks/cookie, \
 			/obj/item/reagent_containers/food/snacks/meatball, \
 			/obj/item/reagent_containers/food/snacks/plump_pie, \
-			/obj/item/reagent_containers/food/snacks/liquidfood)
+			/obj/item/reagent_containers/food/snacks/liquid)
 			for(var/i=0,i<num,i++)
 				new new_type(C)
 		if("alien")
@@ -342,8 +343,7 @@
 			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
 			new /obj/item/storage/toolbox/electrical(C)
 
-	qdel(src)
-
+	return INITIALIZE_HINT_QDEL
 
 /**********************************/
 

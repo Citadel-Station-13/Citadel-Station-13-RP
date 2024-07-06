@@ -361,8 +361,12 @@
 
 	if(l_hand)
 		blob.prev_left_hand = WEAKREF(l_hand) //Won't save them if dropped above, but necessary if handdrop is disabled.
+	else
+		blob.prev_left_hand = null //make it so prommies can't just "recall" items magically if they had nothing in their hand.
 	if(r_hand)
 		blob.prev_right_hand = WEAKREF(r_hand)
+	else
+		blob.prev_right_hand = null //make it so prommies can't just "recall" items magically if they had nothing in their hand.
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.transforming = TRUE
@@ -472,8 +476,8 @@
 
 	if(!isnull(blob.mob_radio))
 		if(!equip_to_slots_if_possible(blob.mob_radio, list(
-			/datum/inventory_slot_meta/inventory/ears/left,
-			/datum/inventory_slot_meta/inventory/ears/right,
+			/datum/inventory_slot/inventory/ears/left,
+			/datum/inventory_slot/inventory/ears/right,
 		)))
 			blob.mob_radio.forceMove(reform_spot)
 		blob.mob_radio = null

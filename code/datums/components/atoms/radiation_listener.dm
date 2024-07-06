@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
 /datum/component/radiation_listener
 
 /datum/component/radiation_listener/Initialize()

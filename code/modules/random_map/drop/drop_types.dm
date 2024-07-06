@@ -181,12 +181,12 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/food/New()
 	..()
 	contents = list(
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
+		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/tastybread,
 		/obj/item/reagent_containers/food/snacks/tastybread,
 		/obj/item/reagent_containers/food/snacks/tastybread,

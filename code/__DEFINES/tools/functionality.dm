@@ -23,6 +23,31 @@
 #define TOOL_GLASS_CUT		"glasskit"
 #define TOOL_BONESET		"bonesetter"
 
+GLOBAL_REAL_VAR(all_tool_functions) = list(
+	// engineering
+	TOOL_CROWBAR,
+	TOOL_MULTITOOL,
+	TOOL_SCREWDRIVER,
+	TOOL_WIRECUTTER,
+	TOOL_WRENCH,
+	TOOL_WELDER,
+	TOOL_ANALYZER,
+	// mining
+	TOOL_MINING,
+	TOOL_SHOVEL,
+	// surgery
+	TOOL_RETRACTOR,
+	TOOL_HEMOSTAT,
+	TOOL_CAUTERY,
+	TOOL_DRILL,
+	TOOL_SCALPEL,
+	TOOL_SAW,
+	// glassworking
+	TOOL_BLOW,
+	TOOL_GLASS_CUT,
+	TOOL_BONESET,
+)
+
 /// Yes, this is a real global. No, you shouldn't touch this for no reason.
 /// Add tools to this when they get states in the default icon file for:
 /// - neutral (no append)
@@ -31,7 +56,7 @@
 GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 	null = "unknown",
 	TOOL_CROWBAR = "crowbar",
-	TOOL_SCREWDRIVER = "screwdriver"
+	TOOL_SCREWDRIVER = "screwdriver",
 )
 
 //? Tool usage flags
@@ -57,3 +82,9 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 #define TOOL_LOCKING_STATIC 2
 /// automatically, if we only have one dynamic behavior, use that
 #define TOOL_LOCKING_AUTO 3
+
+//? Tool directions - used as hints.
+
+#define TOOL_DIRECTION_FORWARDS "forwards"
+#define TOOL_DIRECTION_BACKWARDS "backwards"
+#define TOOL_DIRECTION_NEUTRAL "neutral"

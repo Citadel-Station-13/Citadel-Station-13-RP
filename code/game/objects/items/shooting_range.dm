@@ -83,7 +83,7 @@
 		hp -= Proj.damage
 		if(hp <= 0)
 			for(var/mob/O in oviewers())
-				if ((O.client && !( O.blinded )))
+				if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
 					to_chat(O, "<span class='warning'>\The [src] breaks into tiny pieces and collapses!</span>")
 			qdel(src)
 

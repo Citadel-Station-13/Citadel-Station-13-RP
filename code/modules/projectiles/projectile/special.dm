@@ -18,8 +18,8 @@
 	var/sev4_range = 1
 
 /obj/projectile/ion/on_hit(var/atom/target, var/blocked = 0)
-		empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
-		return 1
+	empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
+	return 1
 
 /obj/projectile/ion/small
 	sev1_range = -1
@@ -334,7 +334,7 @@
 	impact_sounds = 'sound/items/bikehorn.ogg'
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana"
-	range = 200
+	range = WORLD_ICON_SIZE * 200
 
 /obj/projectile/bullet/honker/Initialize(mapload)
 	. = ..()

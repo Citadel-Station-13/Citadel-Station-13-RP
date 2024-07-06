@@ -50,6 +50,7 @@
 	poison_type = null
 
 	vision_flags = SEE_SELF|SEE_MOBS
+	vision_organ = O_EYES
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
@@ -173,8 +174,10 @@
 	caste_name = "drone"
 	weeds_plasma_rate = 15
 	slowdown = 1
-	tail = "xenos_drone_tail"
-	//rarity_value = 5
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/drone,
+	)
 
 	icobase = 'icons/mob/species/xenomorph/drone.dmi'
 	deform =  'icons/mob/species/xenomorph/drone.dmi'
@@ -213,7 +216,10 @@
 	caste_name = "hunter"
 	slowdown = -2
 	total_health = 150
-	tail = "xenos_hunter_tail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/hunter,
+	)
 
 	icobase = 'icons/mob/species/xenomorph/hunter.dmi'
 	deform =  'icons/mob/species/xenomorph/hunter.dmi'
@@ -244,7 +250,10 @@
 	caste_name = "sentinel"
 	slowdown = 0
 	total_health = 200
-	tail = "xenos_sentinel_tail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/sentinel,
+	)
 
 	icobase = 'icons/mob/species/xenomorph/sentinel.dmi'
 	deform =  'icons/mob/species/xenomorph/sentinel.dmi'
@@ -278,8 +287,10 @@
 	weeds_plasma_rate = 20
 	caste_name = "queen"
 	slowdown = 4
-	tail = "xenos_queen_tail"
-	//rarity_value = 10
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenomorph/queen,
+	)
 
 	icobase = 'icons/mob/species/xenomorph/queen.dmi'
 	deform =  'icons/mob/species/xenomorph/queen.dmi'

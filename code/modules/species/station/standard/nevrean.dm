@@ -10,8 +10,10 @@
 	deform       = 'icons/mob/species/nevrean/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/nevrean/preview.dmi'
 	husk_icon    = 'icons/mob/species/nevrean/husk.dmi'
-	tail = "tail"
-	icobase_tail = 1
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/nevrean,
+	)
 
 	blurb = {"
 	Nevreans are a race of avian and dinosaur-like creatures living on Tal. They belong to a group of races that hails from Eltus,
@@ -32,6 +34,7 @@
 	//brute_mod = 1.15
 	//burn_mod =  1.15
 	//gluttonous = 1
+	vision_organ = O_EYES
 
 	color_mult = 1
 	max_age = 80

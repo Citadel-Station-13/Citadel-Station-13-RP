@@ -7,9 +7,11 @@
 	default_bodytype = BODYTYPE_SERGAL
 	icobase = 'icons/mob/species/naramadi/body.dmi'
 	deform = 'icons/mob/species/naramadi/deformed_body.dmi'
-	tail = "tail"
 
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/naramadi,
+	)
+
 	slowdown      = -0.25
 	snow_movement = -1 // Ignores light snow
 	//darksight = 8
@@ -22,6 +24,7 @@
 	intrinsic_languages = LANGUAGE_ID_NARAMADI
 	name_language = LANGUAGE_ID_NARAMADI
 	color_mult = 1
+	vision_organ = O_EYES
 
 	max_age = 120
 

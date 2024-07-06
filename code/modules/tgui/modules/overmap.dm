@@ -70,7 +70,7 @@
 	return (WEAKREF(user) in viewers)
 
 /datum/tgui_module_old/ship/check_eye(var/mob/user)
-	if(!get_dist(user, ui_host()) > 1 || user.blinded || !linked)
+	if(!get_dist(user, ui_host()) > 1 || user.has_status_effect(/datum/status_effect/sight/blindness) || !linked)
 		unlook(user)
 		return -1
 	else

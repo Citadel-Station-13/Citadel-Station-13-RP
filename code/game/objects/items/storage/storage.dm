@@ -3,6 +3,7 @@
 	icon = 'icons/obj/storage.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
 	w_class = WEIGHT_CLASS_NORMAL
+	rad_flags = NONE
 	show_messages = 1
 
 	//* Directly passed to storage system. *//

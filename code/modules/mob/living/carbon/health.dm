@@ -18,3 +18,5 @@
 	ingested.clear_reagents()
 	touching.clear_reagents()
 	// todo: organs
+	// redo graphics
+	rebuild_standing_overlays()

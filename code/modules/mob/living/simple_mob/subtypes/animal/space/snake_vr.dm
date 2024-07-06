@@ -34,7 +34,7 @@
 	attacktext = list("bitten")
 
 	say_list_type = /datum/say_list/snake
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 
 	bone_amount = 5
 	hide_amount = 1
