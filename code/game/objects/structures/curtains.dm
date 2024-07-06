@@ -39,6 +39,8 @@
 		layer = 3.3
 
 /obj/structure/curtain/attackby(obj/item/P, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You start to cut [src].</span>")
@@ -48,8 +50,6 @@
 			qdel(src)
 		return
 	else
-		if(user.a_intent == INTENT_HARM)
-			return ..()
 		src.attack_hand(user)
 	return
 

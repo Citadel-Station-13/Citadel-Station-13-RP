@@ -90,6 +90,8 @@
 	update_icon()
 
 /obj/machinery/floodlight/attackby(obj/item/W, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(W.is_screwdriver())
 		if(!open)
 			if(unlocked)
@@ -120,6 +122,3 @@
 				cell = W
 				to_chat(user, SPAN_NOTICE("You insert the power cell."))
 	update_icon()
-
-	if(user.a_intent == INTENT_HARM)
-		return ..()
