@@ -904,36 +904,6 @@
 /area/shuttle/belter)
 "cC" = (
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8;
-	pixel_y = -4
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8;
-	pixel_y = 12
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4;
-	pixel_y = 12
-	},
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
@@ -943,6 +913,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "cD" = (
@@ -3993,10 +3964,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"mg" = (
-/obj/structure/flora/pottedplant/subterranean,
-/turf/simulated/floor/carpet/purcarpet,
-/area/crew_quarters/coffee_shop)
 "mh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -11075,6 +11042,7 @@
 	},
 /obj/item/storage/box/donkpockets,
 /obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/food/condiment/enzyme,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/lounge/kitchen_freezer)
 "HC" = (
@@ -16140,6 +16108,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
+"WV" = (
+/obj/machinery/vending/cafe,
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/coffee_shop)
 "WW" = (
 /obj/structure/curtain/open/shower/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -37152,7 +37124,7 @@ PE
 BT
 BT
 BT
-mg
+WV
 UQ
 rV
 rV

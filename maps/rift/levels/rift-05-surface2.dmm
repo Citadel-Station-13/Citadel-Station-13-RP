@@ -1340,27 +1340,10 @@
 /area/maintenance/research/rnd)
 "aRq" = (
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/drinks/cup,
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8
-	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
+/obj/machinery/chemical_dispenser/catering/bar_soft,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "aRs" = (
