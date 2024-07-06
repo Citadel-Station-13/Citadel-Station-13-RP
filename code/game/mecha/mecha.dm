@@ -221,26 +221,41 @@
 
 //All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
 
-	var/datum/action/mecha/mech_eject/eject_action = new
-	var/datum/action/mecha/mech_toggle_internals/internals_action = new
-	var/datum/action/mecha/mech_toggle_lights/lights_action = new
-	var/datum/action/mecha/mech_view_stats/stats_action = new
-	var/datum/action/mecha/strafe/strafing_action = new
+	var/datum/action/mecha/mech_eject/eject_action
+	var/datum/action/mecha/mech_toggle_internals/internals_action
+	var/datum/action/mecha/mech_toggle_lights/lights_action
+	var/datum/action/mecha/mech_view_stats/stats_action
+	var/datum/action/mecha/strafe/strafing_action
 
-	var/datum/action/mecha/mech_defence_mode/defence_action = new
-	var/datum/action/mecha/mech_overload_mode/overload_action = new
-	var/datum/action/mecha/mech_smoke/smoke_action = new
-	var/datum/action/mecha/mech_zoom/zoom_action = new
-	var/datum/action/mecha/mech_toggle_thrusters/thrusters_action = new
-	var/datum/action/mecha/mech_cycle_equip/cycle_action = new
-	var/datum/action/mecha/mech_switch_damtype/switch_damtype_action = new
-	var/datum/action/mecha/mech_toggle_phasing/phasing_action = new
-	var/datum/action/mecha/mech_toggle_cloaking/cloak_action = new
+	var/datum/action/mecha/mech_defence_mode/defence_action
+	var/datum/action/mecha/mech_overload_mode/overload_action
+	var/datum/action/mecha/mech_smoke/smoke_action
+	var/datum/action/mecha/mech_zoom/zoom_action
+	var/datum/action/mecha/mech_toggle_thrusters/thrusters_action
+	var/datum/action/mecha/mech_cycle_equip/cycle_action
+	var/datum/action/mecha/mech_switch_damtype/switch_damtype_action
+	var/datum/action/mecha/mech_toggle_phasing/phasing_action
+	var/datum/action/mecha/mech_toggle_cloaking/cloak_action
 
 	/// So combat mechs don't switch to their equipment at times.
 	var/weapons_only_cycle = FALSE
 
 /obj/mecha/Initialize(mapload)
+	eject_action = new(src)
+	internals_action = new(src)
+	lights_action = new(src)
+	stats_action = new(src)
+	strafing_action = new(src)
+
+	defence_action = new(src)
+	overload_action = new(src)
+	smoke_action = new(src)
+	zoom_action = new(src)
+	thrusters_action = new(src)
+	cycle_action = new(src)
+	switch_damtype_action = new(src)
+	phasing_action = new(src)
+	cloak_action = new(src)
 	. = ..()
 	INVOKE_ASYNC(src, PROC_REF(create_components))
 	update_transform()

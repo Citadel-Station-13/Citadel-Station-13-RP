@@ -461,7 +461,7 @@
 /mob/living/silicon/pai/proc/generate_actions()
 	for(var/path in actions_to_grant)
 		var/datum/action/pai/A = new path()
-		A.regex_this_grant(actions_innate)
+		A.grant(actions_innate)
 		if(A.update_on_grant)
 			A.update_buttons()
 

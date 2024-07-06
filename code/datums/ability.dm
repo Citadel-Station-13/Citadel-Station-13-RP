@@ -235,7 +235,7 @@
 	bound = TRUE
 	generate_action()
 	if(!isnull(owner))
-		action?.regex_this_grant(owner.actions_innate)
+		action?.grant(owner.actions_innate)
 
 /datum/ability/proc/unbind()
 	bound = FALSE
@@ -249,7 +249,7 @@
 	owner = M
 	owner.register_ability(src)
 	if(bound)
-		action?.regex_this_grant(owner.actions_innate)
+		action?.grant(owner.actions_innate)
 		update_action()
 	else if(always_bind && !hidden)
 		quickbind()

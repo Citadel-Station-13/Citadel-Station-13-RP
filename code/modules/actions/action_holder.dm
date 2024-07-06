@@ -23,7 +23,7 @@
  * adds an action to us
  */
 /datum/action_holder/proc/add_action(datum/action/action)
-	return action.regex_this_grant(src)
+	return action.grant(src)
 
 /**
  * removse an action from us

@@ -11,7 +11,7 @@
 	update_on_grant = TRUE
 	update_on_chassis_change = TRUE
 
-/datum/action/pai/toggle_fold/invoke_target(mob/living/silicon/pai/targett, datum/event_args/actor/actor)
+/datum/action/pai/toggle_fold/invoke_target(mob/living/silicon/pai/target, datum/event_args/actor/actor)
 	. = ..()
 	if(target.loc == target.shell)
 		target.open_up_safe()

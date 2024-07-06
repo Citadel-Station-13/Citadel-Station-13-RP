@@ -30,7 +30,7 @@
 	if(occupant_actions[m][actiontype])
 		return TRUE
 	var/datum/action/action = generate_action_type(actiontype)
-	action.regex_this_grant(m.actions_controlled)
+	action.grant(m.actions_controlled)
 	occupant_actions[m][action.type] = action
 	return TRUE
 

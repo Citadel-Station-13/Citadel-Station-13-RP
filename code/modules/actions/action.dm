@@ -277,10 +277,10 @@
 /**
  * grant us to an action holder
  */
-/datum/action/proc/regex_this_grant(datum/action_holder/holder)
+/datum/action/proc/grant(datum/action_holder/holder)
 	ASSERT(!(src in holder.actions))
 	LAZYADD(holders, holder)
-	holder.actions += src
+	LAZYADD(holder.actions, src)
 	holder.on_action_add(src)
 
 /**
@@ -289,7 +289,7 @@
 /datum/action/proc/revoke(datum/action_holder/holder)
 	ASSERT(src in holder.actions)
 	LAZYREMOVE(holders, holder)
-	holder.actions -= src
+	LAZYREMOVE(holder.actions, src)
 	holder.on_action_remove(src)
 
 //* /datum implementation & hooks *//

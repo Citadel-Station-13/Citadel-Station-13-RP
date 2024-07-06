@@ -962,8 +962,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	remoting = user
 	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(cleanup_remote_presence))
 	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, PROC_REF(on_item_equipped))
-	action_hang_up.regex_this_grant(remoting.actions_controlled)
-	action_swap_view.regex_this_grant(remoting.actions_controlled)
+	action_hang_up.grant(remoting.actions_controlled)
+	action_swap_view.grant(remoting.actions_controlled)
 	if(isAI(user))
 		var/mob/living/silicon/ai/ai_user = user
 		hologram = destination.create_hologram(ai_user.hologram_appearance())

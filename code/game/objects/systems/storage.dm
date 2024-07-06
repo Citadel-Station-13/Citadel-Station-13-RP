@@ -281,7 +281,7 @@
 /datum/object_system/storage/proc/grant_buttons(mob/wearer)
 	ensure_buttons()
 	if(allow_mass_gather && allow_mass_gather_mode_switch)
-		action_mode_switch.regex_this_grant(wearer.inventory.actions)
+		action_mode_switch.grant(wearer.inventory.actions)
 
 /datum/object_system/storage/proc/revoke_buttons(mob/wearer)
 	action_mode_switch?.revoke(wearer.inventory.actions)

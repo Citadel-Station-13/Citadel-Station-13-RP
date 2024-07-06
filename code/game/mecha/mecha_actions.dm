@@ -29,7 +29,7 @@
 		overload_action,
 		cloak_action,
 	))
-		action.regex_this_grant(user.actions_controlled)
+		action.grant(user.actions_controlled)
 
 /obj/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
 	for(var/datum/action/action in list(

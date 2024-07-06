@@ -845,10 +845,10 @@
 /obj/item/organ/proc/grant_organ_actions(mob/target)
 	if(islist(organ_actions))
 		for(var/datum/action/action in organ_actions)
-			action.regex_this_grant(target.actions_innate)
+			action.grant(target.actions_innate)
 	else if(istype(organ_actions, /datum/action))
 		var/datum/action/action = organ_actions
-		action.regex_this_grant(target.actions_innate)
+		action.grant(target.actions_innate)
 
 /obj/item/organ/proc/revoke_organ_actions(mob/target)
 	if(islist(organ_actions))

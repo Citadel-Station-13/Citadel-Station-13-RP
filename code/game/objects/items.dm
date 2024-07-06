@@ -871,10 +871,10 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	ensure_item_actions_loaded()
 	if(islist(item_actions))
 		for(var/datum/action/action in item_actions)
-			action.regex_this_grant(user.inventory.actions)
+			action.grant(user.inventory.actions)
 	else if(istype(item_actions, /datum/action))
 		var/datum/action/action = item_actions
-		action.regex_this_grant(user.inventory.actions)
+		action.grant(user.inventory.actions)
 
 /**
  * handles action revoking
