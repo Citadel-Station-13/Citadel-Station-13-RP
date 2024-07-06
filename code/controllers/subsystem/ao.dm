@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(ao)
 	name = "Ambient Occlusion"
-	init_order = INIT_ORDER_MISC_LATE
+	init_order = INIT_ORDER_AMBIENT_OCCLUSION
 	wait = 1
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 

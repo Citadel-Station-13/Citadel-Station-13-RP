@@ -87,6 +87,7 @@
 		icon_state = "waterballoon-e"
 
 /obj/item/toy/syndicateballoon
+	prototype_id = "balloon-syndicate"
 	name = "criminal balloon"
 	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
 	throw_force = 0
@@ -98,6 +99,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/toy/nanotrasenballoon
+	prototype_id = "balloon-nanotrasen"
 	name = "criminal balloon"
 	desc = "Across the balloon the following is printed: \"Man, I love Nanotrasen soooo much. I use only NT products. You have NO idea.\""
 	throw_force = 0
@@ -112,6 +114,7 @@
  * Fake telebeacon
  */
 /obj/item/toy/blink
+	prototype_id = "toy-teleporter-beacon"
 	name = "electronic blink toy game"
 	desc = "Blink.  Blink.  Blink. Ages 8 and up."
 	icon = 'icons/obj/machines/teleporter.dmi'
@@ -126,6 +129,7 @@
  * Fake singularity
  */
 /obj/item/toy/spinningtoy
+	prototype_id = "toy-singularity"
 	name = "gravitational singularity"
 	desc = "\"Singulo\" brand spinning toy."
 	icon = 'icons/obj/singularity.dmi'
@@ -1781,3 +1785,40 @@
 	name = "giant lawn gnome"
 	icon_state = "gnome_giant"
 	desc = "A life-sized ceramic gnome statue, often used in lawn displays. For a brief while, carrying a gnome safely through hazardous areas was seen as a popular challenge."
+
+//Squishimals
+/obj/item/toy/axi
+	name = "Axiom the Axolotl Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "axi"
+	desc = "Axiom the Axolotl, a little blue squishimal axolotl with fluffy fringes on his external gills."
+
+/obj/item/toy/snek
+	name = "Sneki the Snake Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "snek"
+	desc = "Sneki the Snake, a medium sized yellow snake squishimal with velvety ventral scales."
+
+/obj/item/toy/pan
+	name = "Pandy the Red Panda Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "pan"
+	desc = "Pandy the Red Panda, a large fluffy red panda squishimal with big soft ears and silky cheek fur."
+
+/obj/item/toy/bun
+	name = "Matcha the Rabbit Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "bun"
+	desc = "Matcha the Rabbit, a large green squishimal that faintly smells of green tea and has floppy ears."
+
+/obj/item/toy/demon
+	name = "Demi the Imp Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "demon"
+	desc = "Demi the Imp, a squishimal imp with scaley glittery ears and horns."
+
+/obj/item/toy/jay
+	name = "Jaymes the Bluejay Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "jay"
+	desc = "Jaymes the Bluejay, a smaller squishimal that looks to resemble probably someone's favorite bird. Fun fact: Bluejays are corvids!"

@@ -27,15 +27,14 @@
 	alt_titles = list(
 		"Biomechanical Engineer" = /datum/prototype/struct/alt_title/biomech,
 		"Mechatronic Engineer" = /datum/prototype/struct/alt_title/mech_tech,
-		"Artificer-Biotechnicist" = /datum/prototype/struct/alt_title/artificer_biotechnicist
+		"Junior Roboticist" = /datum/prototype/struct/alt_title/junior_roboticist,
 		)
 
-/datum/prototype/struct/alt_title/artificer_biotechnicist
-	title = "Artificer-Biotechnicist"
-	background_allow = list(
-		/datum/lore/character_background/faction/naramadiguilds
-	)
-	background_enforce = TRUE
+
+/datum/prototype/struct/alt_title/junior_roboticist
+	title = "Junior Roboticist"
+	title_blurb = "A Junior Roboticist is someone still learning the field of robotics and  \
+					should seek guidance from other roboticists and the research seniors and lead."
 
 /datum/prototype/struct/alt_title/biomech
 	title = "Biomechanical Engineer"

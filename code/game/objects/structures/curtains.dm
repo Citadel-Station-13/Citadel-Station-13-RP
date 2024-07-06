@@ -6,6 +6,7 @@
 	layer = ABOVE_MOB_LAYER
 	opacity = 1
 	density = 0
+	anchored = TRUE
 
 /obj/structure/curtain/open
 	icon_state = "open"

@@ -2634,10 +2634,10 @@
 /area/awaymission/zoo/syndieship)
 "hK" = (
 /obj/structure/closet,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -8545,7 +8545,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/solar/fake,
+/obj/machinery/power/solar,
 /turf/simulated/floor/airless{
 	icon_state = "solarpanel"
 	},
@@ -8630,7 +8630,7 @@
 /area/awaymission/zoo/solars)
 "xt" = (
 /obj/structure/cable,
-/obj/machinery/power/solar/fake,
+/obj/machinery/power/solar,
 /turf/simulated/floor/airless{
 	icon_state = "solarpanel"
 	},

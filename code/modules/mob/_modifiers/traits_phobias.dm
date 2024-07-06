@@ -99,7 +99,7 @@
 		..()
 
 /datum/modifier/trait/phobia/haemophobia/should_fear()
-	if(holder.blinded)
+	if(holder.has_status_effect(/datum/status_effect/sight/blindness))
 		return 0 // Can't fear what cannot be seen.
 
 	var/fear_amount = 0
@@ -190,7 +190,7 @@
 		)
 
 /datum/modifier/trait/phobia/arachnophobe/should_fear()
-	if(holder.blinded)
+	if(holder.has_status_effect(/datum/status_effect/sight/blindness))
 		return 0 // Can't fear what cannot be seen.
 
 	var/fear_amount = 0
@@ -256,7 +256,7 @@
 		)
 
 /datum/modifier/trait/phobia/nyctophobe/should_fear()
-	if(holder.blinded)
+	if(holder.has_status_effect(/datum/status_effect/sight/blindness))
 		return 5 // Unlike most other fears coded here, being blind when afraid of darkness is pretty bad, I imagine.
 
 	if(holder.see_in_dark >= 5)
@@ -333,7 +333,7 @@
 		)
 
 /datum/modifier/trait/phobia/claustrophobe/should_fear()
-	if(holder.blinded)
+	if(holder.has_status_effect(/datum/status_effect/sight/blindness))
 		return 0 // No idea if this is accurate.
 
 	if(holder.loc && !isturf(holder.loc)) // Hiding in a locker or inside an exosuit is spooky.
@@ -396,7 +396,7 @@
 		)
 
 /datum/modifier/trait/phobia/blennophobe/should_fear()
-	if(holder.blinded)
+	if(holder.has_status_effect(/datum/status_effect/sight/blindness))
 		return 0 // Can't fear what cannot be seen.
 
 	var/fear_amount = 0
@@ -484,7 +484,7 @@
 		)
 
 /datum/modifier/trait/phobia/trypanophobe/should_fear()
-	if(holder.blinded)
+	if(holder.has_status_effect(/datum/status_effect/sight/blindness))
 		return 0 //Cannot feareth what cannot beest seen
 
 	var/fear_amount = 0

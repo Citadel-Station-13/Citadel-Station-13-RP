@@ -28,7 +28,7 @@
 	movement_cooldown = 10
 	melee_attack_delay = 0.5 SECONDS
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/pointblank
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/pointblank
 
 
 // Slimebatoning/xenotasing it just makes it mad at you (which can be good if you're heavily armored and your friends aren't).
@@ -68,7 +68,7 @@
 	damage_type = BRUTE
 	damage_flag = ARMOR_MELEE
 	armor_penetration = 30
-	speed = 2
+	speed = 7.5 * WORLD_ICON_SIZE
 	icon_scale_x = 2 // It hits like a truck.
 	icon_scale_y = 2
 	sharp = TRUE
@@ -98,6 +98,6 @@
 	if(L.get_cold_protection() < 1)
 		L.add_modifier(/datum/modifier/chilled, 5 SECONDS, src)
 
-	if(L.has_AI()) // Other AIs should react to hostile auras.
-		L.ai_holder.react_to_attack(src)
+	if(L.has_polaris_AI()) // Other AIs should react to hostile auras.
+		L.ai_holder.react_to_attack_polaris(src)
 

@@ -81,6 +81,10 @@
 	/// see_invisible
 	var/see_invisible = SEE_INVISIBLE_LIVING
 
+	//* HUDs *//
+	/// active atom HUD providers associated to a list of ids or paths of atom huds that's providing it.
+	var/list/datum/atom_hud_provider/atom_hud_providers
+
 	//? planes
 	/// planes
 	var/datum/plane_holder/mob_perspective/planes
@@ -136,6 +140,7 @@
 /datum/perspective/Destroy()
 	clear_clients()
 	clear_mobs()
+	clear_atom_hud_providers()
 	QDEL_NULL(darksight_fov_overlay)
 	QDEL_NULL(darksight_occlusion_overlay)
 	images = null
@@ -297,7 +302,6 @@
 	if(!change)
 		images = list()
 	images |= I
-	change = images.len - change
 	if(images.len != change)
 		for(var/client/C as anything in clients)
 			// |=, not +=, because we don't check dupes.
@@ -381,6 +385,77 @@
 		see_in_dark = wanted
 		for(var/mob/M as anything in mobs)
 			M.see_in_dark = clamp(see_in_dark, 0, 255)
+
+//* Atom HUDs *//
+
+/**
+ * accepts:
+ * * path
+ * * string id
+ * * instance
+ *
+ * currently will runtime if it's not a valid hud!
+ */
+/datum/perspective/proc/add_atom_hud(datum/atom_hud/hud, source)
+	ASSERT(istext(source))
+	hud = fetch_atom_hud(hud)
+	if(isnull(atom_hud_providers))
+		atom_hud_providers = list()
+	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
+	for(var/datum/atom_hud_provider/provider as anything in providers)
+		var/already_there = atom_hud_providers[provider]
+		if(already_there)
+			atom_hud_providers[provider] |= source
+		else
+			atom_hud_providers[provider] = list(source)
+			provider.add_perspective(src)
+
+/**
+ * accepts:
+ * * path
+ * * string id
+ * * instance
+ *
+ * currently will runtime if it's not a valid hud!
+ */
+/datum/perspective/proc/remove_atom_hud(datum/atom_hud/hud, source)
+	ASSERT(istext(source))
+	if(!length(atom_hud_providers))
+		return
+	if(!hud)
+		// remove all of source
+		for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
+			if(!(source in atom_hud_providers[provider]))
+				continue
+			atom_hud_providers[provider] -= source
+			if(!length(atom_hud_providers[provider]))
+				atom_hud_providers -= provider
+				provider.remove_perspective(src)
+		return
+	hud = fetch_atom_hud(hud)
+	var/list/datum/atom_hud_provider/providers = hud.resolve_providers()
+	for(var/datum/atom_hud_provider/provider as anything in providers)
+		if(!length(atom_hud_providers[provider]))
+			continue
+		atom_hud_providers[provider] -= source
+		if(!length(atom_hud_providers[provider]))
+			atom_hud_providers -= provider
+			provider.remove_perspective(src)
+
+// todo: add_atom_hud_provider, remove_atom_hud_provider
+
+/**
+ * clears all atom hud providers
+ *
+ * * seriously don't use this unless you know what you're doing
+ * * "why are huds broken" --> 9 / 10 times it's because someone used this when they shouldn't
+ * * remember that /datum/perspective does NOT state track HUD registration for you; you have to ensure things are added/removed as necessary
+ * * hint: if it's not on /silicon/robot, /simple_mob, or /dead/observer (or you don't know what those words are), you shouldn't be using this!
+ */
+/datum/perspective/proc/clear_atom_hud_providers()
+	for(var/datum/atom_hud_provider/provider as anything in atom_hud_providers)
+		provider.remove_perspective(src)
+	atom_hud_providers = null
 
 //? Eye
 

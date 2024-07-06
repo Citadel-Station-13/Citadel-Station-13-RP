@@ -1,22 +1,26 @@
 /**
- * event args for clickchain procs
+ * used to hold data about a click (melee/ranged/other) action
  *
- * clickchain is attack_x with item procs, attack hand, unarmed/ranged, etc.
+ * the click may be real or fake.
  */
 /datum/event_args/actor/clickchain
-	/// the original atom target of the action
-	var/atom/target
-	/// a_intent
+	/// optional: a_intent
 	var/intent
-	/// click params
+	/// optional: click params
 	var/list/params
 	/// hand index, if any
 	var/hand_index
 	/// with item, if any
 	var/obj/item/using
+	/// optional: target atom
+	var/atom/target
+	#warn deal with hand index lol
 
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, intent, list/params)
 	..()
 	src.target = target
 	src.intent = isnull(intent)? performer.a_intent : intent
 	src.params = isnull(params)? list() : params
+
+/datum/event_args/actor/clickchain/clone()
+	return new /datum/event_args/actor/clickchain(performer, initiator, target, intent, params)

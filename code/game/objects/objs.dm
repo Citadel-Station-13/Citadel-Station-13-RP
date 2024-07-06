@@ -31,6 +31,20 @@
 	/// nominal climb delay before modifiers
 	var/climb_delay = 3.5 SECONDS
 
+	//* Coloration
+	/// coloration mode
+	var/coloration_mode = COLORATION_MODE_NONE
+	/// coloration:
+	/// in MULTIPLY / MATRIX, this is unused as we just use color var
+	/// in RG, RB, GB, RGB, OVERLAYS, GAGS modes, this is a concat'd string of #aabbcc#112233... for the n colors in this.
+	var/coloration
+	/// coloration amount
+	///
+	/// only used in:
+	/// * overlays mode
+	/// * later, GAGS mode
+	var/coloration_amount
+
 	//? Depth
 	/// logical depth in pixels. people can freely run from high to low objects without being blocked.
 	///
@@ -127,6 +141,38 @@
 	/// storage system
 	var/datum/object_system/storage/obj_storage
 
+	//* Underfloor *//
+
+	/// do we hide underfloor?
+	///
+	/// * uses OBJ_UNDERFLOOR_* defines
+	/// * gets set_underfloor(is_underfloor = TRUE | FALSE) called on init or turf init
+	/// * we are assumed to not be underfloor when we are first made
+	/// * if you want a var to track this make one yourself; we don't have one for memory concerns.
+	var/hides_underfloor = OBJ_UNDERFLOOR_DISABLED
+	/// call update icon after update_hiding_underfloor()
+	///
+	/// * update_icon() called regardless of [hides_underfloor_defaulting] if TRUE
+	var/hides_underfloor_update_icon = FALSE
+	/// are we fully INVISIBILITY_ABSTRACT while hidden?
+	///
+	/// this has implications.
+	/// * range(), view(), and others will not target things that are abstract-invisible
+	/// * verbs don't work at all (not a bad thing necessarily)
+	/// * basically this thing acts like it's not there
+	///
+	/// this is sometimes desired for things like mostly impactless objects for performance,
+	/// but is not always desireable
+	///
+	/// as an example, if the codebase's t-ray scanners use range(), you're not going to get anything
+	/// that is abstract-invisible on a scan.
+	///
+	/// * if this is FALSE, we use [INVISIBILITY_UNDERFLOOR]
+	/// * automatic invisibility updates require [hides_underfloor_defaulting]
+	var/hides_underfloor_invisibility_abstract = FALSE
+	/// perform default behavior if hiding underfloor?
+	var/hides_underfloor_defaulting = TRUE
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -183,6 +229,8 @@
 		// init material parts only if it wasn't initialized already
 		if(!(obj_flags & OBJ_MATERIAL_INITIALIZED))
 			init_material_parts()
+	if(hides_underfloor != OBJ_UNDERFLOOR_NEVER)
+		initialize_hiding_underfloor(mapload)
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
@@ -276,12 +324,6 @@
 	var/mob/M = src.loc
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
-
-/obj/proc/hide(h)
-	return
-
-/obj/proc/hides_under_flooring()
-	return 0
 
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)
@@ -522,6 +564,114 @@
 			H.update_health()
 	*/
 
+//* Coloration *//
+
+/obj/proc/amount_coloration()
+	switch(coloration_mode)
+		if(COLORATION_MODE_NONE)
+			return 0
+		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
+			return 1
+		if(COLORATION_MODE_RB_MATRIX)
+			return 2
+		if(COLORATION_MODE_RG_MATRIX)
+			return 2
+		if(COLORATION_MODE_GB_MATRIX)
+			return 2
+		if(COLORATION_MODE_RGB_MATRIX)
+			return 3
+	return coloration_amount
+
+/obj/proc/set_coloration_matrix(list/color_matrix)
+	if(coloration_mode != COLORATION_MODE_MATRIX)
+		return
+	color = color_matrix
+	// well, we can't pack a matrix :/
+	coloration = null
+
+/obj/proc/set_coloration_parts(list/colors)
+	switch(coloration_mode)
+		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
+			ASSERT(length(colors) == 1)
+			color = colors[1]
+		if(COLORATION_MODE_RG_MATRIX)
+			ASSERT(length(colors) == 2)
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/green_decoded = ReadRGB(colors[2])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				0, 0, 0, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_GB_MATRIX)
+			ASSERT(length(colors) == 2)
+			var/list/green_decoded = ReadRGB(colors[1])
+			var/list/blue_decoded = ReadRGB(colors[2])
+			color = list(
+				0, 0, 0, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_RB_MATRIX)
+			ASSERT(length(colors) == 2)
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/blue_decoded = ReadRGB(colors[2])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				0, 0, 0, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_RGB_MATRIX)
+			ASSERT(length(colors) == 3)
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/green_decoded = ReadRGB(colors[2])
+			var/list/blue_decoded = ReadRGB(colors[3])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_OVERLAYS)
+			ASSERT(length(colors) == coloration_amount)
+			// todo: implement; we'll probably have to hook both update_overlays as well as
+			// todo: something in [code/modules/mob/inventory/rendering.dm].
+			pass()
+		if(COLORATION_MODE_NONE)
+			// why are we here?
+			ASSERT(!length(colors))
+			color = null
+	coloration = pack_coloration_string(colors)
+
+/obj/proc/set_coloration_packed(packed_colors)
+	var/list/unpacked = unpack_coloration_string(packed_colors)
+	return set_coloration_parts(unpacked)
+
+/obj/proc/get_coloration_parts()
+	if(!(coloration_mode & COLORATION_MODES_COMPLEX))
+		switch(coloration_mode)
+			if(COLORATION_MODE_MULTIPLY)
+				// matrices are unsupported
+				return list(islist(color)? "#ffffff" : color)
+			if(COLORATION_MODE_MATRIX)
+				// unsupported
+				return list("#ffffff")
+		return list()
+	return unpack_coloration_string(coloration)
+
+/obj/proc/get_coloration_packed()
+	switch(coloration_mode)
+		if(COLORATION_MODE_MULTIPLY)
+			// matrices are unsupported
+			return islist(color)? "#ffffff" : color
+		if(COLORATION_MODE_MATRIX)
+			// unsupported
+			return "#ffffff"
+	return coloration
+
 //* Context *//
 
 /obj/context_query(datum/event_args/actor/e_args)
@@ -616,14 +766,6 @@
 			for(var/atom/movable/inside in obj_storage.contents())
 				inside.emp_act(severity)
 
-//* Hiding / Underfloor *//
-
-/obj/proc/is_hidden_underfloor()
-	return FALSE
-
-/obj/proc/should_hide_underfloor()
-	return FALSE
-
 //* Inventory *//
 
 /obj/AllowDrop()
@@ -695,6 +837,8 @@
 		return
 	if(integrity == integrity_max)
 		. += SPAN_NOTICE("It looks fully intact.")
+	else if(atom_flags & ATOM_BROKEN)
+		. += SPAN_BOLDWARNING("It's broken and falling apart!")
 	else
 		var/perc = percent_integrity()
 		if(perc > 0.75)
@@ -704,7 +848,7 @@
 		else if(perc > 0.25)
 			. += SPAN_RED("It looks severely damaged.")
 		else
-			. += SPAN_BOLDWARNING("It's falling apart!")
+			. += SPAN_BOLDWARNING("It's barely able to hold itself together!")
 
 //* Movement *//
 
@@ -769,7 +913,7 @@
 		return FALSE
 	. = TRUE
 	// todo: mobility flags
-	var/extra_time = MODULUS(time, interval)
+	var/extra_time = MODULUS_F(time, interval)
 	var/i
 	for(i in 1 to round(time / interval))
 		if(!do_after(escapee, interval, mobility_flags = MOBILITY_CAN_RESIST))
@@ -848,7 +992,7 @@
 
 //* Tool System *//
 
-/obj/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
+/obj/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
 	if(isnull(obj_cell_slot) || !obj_cell_slot.remove_tool_behavior || !obj_cell_slot.interaction_active(e_args.performer))
 		return ..()
 	. = list()
@@ -880,3 +1024,92 @@
 		otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+//* Underfloor *//
+
+/**
+ * sets our hides_underfloor
+ */
+/obj/proc/set_hides_underfloor(new_value, mapload)
+	switch(new_value)
+		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
+			var/turf/where_we_are = loc
+			if(istype(where_we_are) && where_we_are.hides_underfloor_objects())
+				new_value = OBJ_UNDERFLOOR_ALWAYS
+			else
+				new_value = OBJ_UNDERFLOOR_NEVER
+	hides_underfloor = new_value
+	reconsider_hiding_underfloor()
+
+/**
+ * called to inform us we should / shouldn't be underfloor
+ *
+ * * this must be idempotent. we can get called at will by reconsider_hiding_underfloor() as we do not track if we are currently underfloor.
+ * * we are assumed to not be underfloor when we are first made
+ * * that means this is called during Initialize() if and only if we need to be hiding underfloor
+ */
+/obj/proc/update_hiding_underfloor(new_value)
+	if(hides_underfloor_defaulting)
+		invisibility = new_value? (hides_underfloor_invisibility_abstract? INVISIBILITY_ABSTRACT : INVISIBILITY_UNDERFLOOR) : 0
+	if(hides_underfloor_update_icon)
+		update_icon()
+	return TRUE
+
+/**
+ * **guesses** if we're hidden underfloor
+ * this is not the actual state!
+ */
+/obj/proc/is_probably_hidden_underfloor()
+	switch(hides_underfloor)
+		if(OBJ_UNDERFLOOR_ALWAYS)
+			var/turf/where_we_are = loc
+			return where_we_are.hides_underfloor_objects()
+		if(OBJ_UNDERFLOOR_NEVER)
+			return FALSE
+	return FALSE
+
+/**
+ * called at init
+ *
+ * todo: should this be called from obj init? we can probably shave a few centiseconds off init if it was on turf
+ *       as we wouldn't need to keep calling hides_underfloor_objects()
+ */
+/obj/proc/initialize_hiding_underfloor(mapload)
+	switch(hides_underfloor)
+		if(OBJ_UNDERFLOOR_IF_CREATED_UNCOVERED, OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
+			var/turf/where_we_are = loc
+			var/hide_anyways = (hides_underfloor == OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP) && mapload
+			var/we_are_hidden = where_we_are?.hides_underfloor_objects()
+			if(istype(where_we_are) && (hide_anyways || !we_are_hidden))
+				hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
+				if(!mapload && we_are_hidden)
+					update_hiding_underfloor(TRUE)
+			else
+				hides_underfloor = OBJ_UNDERFLOOR_NEVER
+		if(OBJ_UNDERFLOOR_ALWAYS)
+			var/turf/where_we_are = loc
+			if(!mapload && istype(where_we_are) && where_we_are.hides_underfloor_objects())
+				update_hiding_underfloor(TRUE)
+
+/**
+ * called to re-call update_hiding_underfloor
+ */
+/obj/proc/reconsider_hiding_underfloor()
+	var/turf/where_we_are = loc
+	var/turf_will_cover = istype(where_we_are) && where_we_are.hides_underfloor_objects()
+	switch(hides_underfloor)
+		if(OBJ_UNDERFLOOR_ALWAYS)
+			update_hiding_underfloor(turf_will_cover)
+		if(OBJ_UNDERFLOOR_NEVER)
+			update_hiding_underfloor(FALSE)
+		else
+			// we're way beyond initialize, so..
+			hides_underfloor = OBJ_UNDERFLOOR_DISABLED
+
+//* VV hooks *//
+
+/obj/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	. = ..()
+	switch(var_name)
+		if(NAMEOF(src, hides_underfloor))
+			set_hides_underfloor(var_value)

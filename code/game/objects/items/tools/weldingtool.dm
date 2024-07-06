@@ -311,10 +311,10 @@
 
 			if (E.damage >= E.min_broken_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.sdisabilities |= SDISABILITY_NERVOUS
+				user.remove_blindness_source( TRAIT_BLINDNESS_EYE_DMG)
 			else if (E.damage >= E.min_bruised_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.Blind(5)
+				user.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 				user.eye_blurry = 5
 				user.disabilities |= DISABILITY_NEARSIGHTED
 				spawn(100)

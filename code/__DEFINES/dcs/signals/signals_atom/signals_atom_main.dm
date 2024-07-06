@@ -46,3 +46,6 @@
 
 /// When the transform or an atom is varedited through vv topic.
 ////#define COMSIG_ATOM_VV_MODIFY_TRANSFORM "atom_vv_modify_transform"
+
+/// called when compile_overlays() is ran. args: ()
+#define COMSIG_ATOM_COMPILED_OVERLAYS "atom_compiled_overlays"

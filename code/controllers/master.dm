@@ -30,9 +30,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// Are we initialized?
 	var/initialized = FALSE
 
-	/// Are we loading in a new map?
-	var/map_loading = FALSE
-
 	/// world.time of last fire, for tracking lag outside of the mc.
 	var/last_run
 
@@ -158,6 +155,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
  * - -1 If we encountered a runtime trying to recreate it.
  */
 /proc/Recreate_MC()
+	usr = null // yeah let's not contaminate the MC call stack with our usr.
 	. = -1 // So if we runtime, things know we failed.
 	if (world.time < Master.restart_timeout)
 		return 0
@@ -275,7 +273,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// Set world options.
 
-	world.fps = config_legacy.fps
+	world.set_fps(config_legacy.fps)
 
 	var/initialized_tod = REALTIMEOFDAY
 	if(sleep_offline_after_initializations)
@@ -732,23 +730,18 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 
 /datum/controller/master/StartLoadingMap()
-	// Disallow more than one map to load at once, multithreading it will just cause race conditions.
-	while(map_loading)
-		stoplag()
-
+	// todo: this is kind of awful because this procs every subsystem unnecessarily
+	//       you might say this is microoptimizations but this is called a seriously high number of times during a load.
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StartLoadingMap()
 
-	map_loading = TRUE
-
-
 /datum/controller/master/StopLoadingMap(bounds)
-	map_loading = FALSE
+	// todo: this is kind of awful because this procs every subsystem unnecessarily
+	//       you might say this is microoptimizations but this is called a seriously high number of times during a load.
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
-
 
 /*
 /datum/controller/master/proc/UpdateTickRate()

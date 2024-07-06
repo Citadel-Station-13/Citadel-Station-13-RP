@@ -18,7 +18,7 @@
 
 /obj/item/godfig/proc/resprite_figure(mob/living/L)
 	var/obj/item/holy_icon
-	var/list/holy_icons_list = subtypesof(/obj/item/godfig) + list(HOLY_ICONS)
+	var/list/holy_icons_list = typesof(/obj/item/godfig)
 	var/list/display_names = list()
 	var/list/holy_icons = list()
 	for(var/G in holy_icons_list)

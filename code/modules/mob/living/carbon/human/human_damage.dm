@@ -266,6 +266,18 @@
 	else
 		..()
 
+/mob/living/carbon/human/adjustHallucination(amount)
+	if(species.species_flags & NO_HALLUCINATION || isSynthetic())
+		hallucination = 0
+	else
+		..(amount)
+
+/mob/living/carbon/human/setHallucination(amount)
+	if(species.species_flags & NO_HALLUCINATION || isSynthetic())
+		hallucination = 0
+	else
+		..(amount)
+
 ////////////////////////////////////////////
 
 //Returns a list of damaged organs

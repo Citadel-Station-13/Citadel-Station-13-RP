@@ -30,7 +30,7 @@
 	var/adminbus_hooking = FALSE
 
 	/// Fishing line visual for the hooked item
-	var/datum/beam/hooked_item_fishing_line
+	var/datum/beam_legacy/hooked_item_fishing_line
 
 	/// Are we currently casting
 	var/casting = FALSE
@@ -112,12 +112,12 @@
 	if(!istype(user))
 		return
 	var/beam_color = line?.line_color || default_line_color
-	var/datum/beam/fishing_line/fishing_line_beam = new(user, target, icon_state = "fishing_line", beam_color = beam_color, override_target_pixel_y = target_py)
+	var/datum/beam_legacy/fishing_line/fishing_line_beam = new(user, target, icon_state = "fishing_line", beam_color = beam_color, override_target_pixel_y = target_py)
 	fishing_line_beam.lefthand = user.get_held_index(src) % 2 == 1
-	RegisterSignal(fishing_line_beam, COMSIG_BEAM_BEFORE_DRAW, PROC_REF(check_los))
+	RegisterSignal(fishing_line_beam, COMSIG_LEGACY_BEAM_BEFORE_DRAW, PROC_REF(check_los))
 	RegisterSignal(fishing_line_beam, COMSIG_PARENT_QDELETING, PROC_REF(clear_line))
 	fishing_lines += fishing_line_beam
-	INVOKE_ASYNC(fishing_line_beam, TYPE_PROC_REF(/datum/beam/, Start))
+	INVOKE_ASYNC(fishing_line_beam, TYPE_PROC_REF(/datum/beam_legacy/, Start))
 	update_worn_icon()
 	return fishing_line_beam
 
@@ -130,7 +130,7 @@
 	. = ..()
 	if(currently_hooked_item)
 		clear_hooked_item()
-	for(var/datum/beam/fishing_line in fishing_lines)
+	for(var/datum/beam_legacy/fishing_line in fishing_lines)
 		SEND_SIGNAL(fishing_line, COMSIG_FISHING_LINE_SNAPPED)
 	QDEL_LIST(fishing_lines)
 
@@ -176,13 +176,13 @@
 	currently_hooked_item = null
 
 // Checks fishing line for interruptions and range
-/obj/item/fishing_rod/proc/check_los(datum/beam/source)
+/obj/item/fishing_rod/proc/check_los(datum/beam_legacy/source)
 	SIGNAL_HANDLER
 	. = NONE
 
 	if(!ismob(loc) || !check_fishing_reach(source.target, loc))
 		SEND_SIGNAL(source, COMSIG_FISHING_LINE_SNAPPED) //Stepped out of range or los interrupted
-		return BEAM_CANCEL_DRAW
+		return LEGACY_BEAM_CANCEL_DRAW
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
@@ -448,26 +448,26 @@
 #undef ROD_SLOT_LINE
 #undef ROD_SLOT_HOOK
 
-/datum/beam/fishing_line
+/datum/beam_legacy/fishing_line
 	// Is the fishing rod held in left side hand
 	var/lefthand = FALSE
 
-/datum/beam/fishing_line/Start()
+/datum/beam_legacy/fishing_line/Start()
 	update_offsets(origin.dir)
 	. = ..()
 	RegisterSignal(origin, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_dir_change))
 
-/datum/beam/fishing_line/Destroy()
+/datum/beam_legacy/fishing_line/Destroy()
 	SEND_SIGNAL(src, COMSIG_FISHING_LINE_SNAPPED)
 	UnregisterSignal(origin, COMSIG_ATOM_DIR_CHANGE)
 	. = ..()
 
-/datum/beam/fishing_line/proc/handle_dir_change(atom/movable/source, olddir, newdir)
+/datum/beam_legacy/fishing_line/proc/handle_dir_change(atom/movable/source, olddir, newdir)
 	SIGNAL_HANDLER
 	update_offsets(newdir)
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/beam/, redrawing))
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/beam_legacy/, redrawing))
 
-/datum/beam/fishing_line/proc/update_offsets(user_dir)
+/datum/beam_legacy/fishing_line/proc/update_offsets(user_dir)
 	switch(user_dir)
 		if(SOUTH)
 			override_origin_pixel_x = lefthand ? lefthand_s_px : righthand_s_px
@@ -483,7 +483,7 @@
 			override_origin_pixel_y = lefthand ? lefthand_n_py : righthand_n_py
 
 // Make these inline with final sprites
-/datum/beam/fishing_line
+/datum/beam_legacy/fishing_line
 	var/righthand_s_px = 13
 	var/righthand_s_py = 16
 

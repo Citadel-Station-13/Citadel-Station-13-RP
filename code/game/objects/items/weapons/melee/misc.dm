@@ -15,23 +15,6 @@
 	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
 	return (OXYLOSS)
 
-/obj/item/melee/sabre
-	name = "officer's sabre"
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
-	attack_sound = "swing_hit"
-	icon_state = "sabre"
-	attack_sound = 'sound/weapons/rapierhit.ogg'
-	damage_force = 35
-	throw_force = 15
-	w_class = WEIGHT_CLASS_NORMAL
-	origin_tech = list(TECH_COMBAT = 4)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-
-/obj/item/melee/sabre/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
-	return(BRUTELOSS)
-
 /obj/item/melee/umbrella
 	name = "umbrella"
 	desc = "To keep the rain off you. Use with caution on windy days."

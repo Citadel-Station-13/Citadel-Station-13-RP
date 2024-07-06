@@ -200,13 +200,13 @@
 				if(istype(reagent_container, /obj/item/reagent_containers/blood))
 					// speed up transfer on blood packs
 					real_transfer_amount *= 2
-				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_INJECT)
+				target_reagents.trans_to_mob(attached_victim, real_transfer_amount, type = CHEM_INJECT)
 				update_appearance()
 
 		// Take blood
 		else //? injection_mode == IV_TAKING
 			var/amount = target_reagents.maximum_volume - target_reagents.total_volume
-			amount = min(amount, 4) * delta_time * 0.5
+			amount = clamp(amount, 0, transfer_rate)
 			// If the beaker is full, ping
 			if(!amount)
 				if(prob(5))
@@ -218,7 +218,7 @@
 				visible_message(SPAN_HEAR("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
 			var/atom/movable/target = reagent_container
-			attached_victim.inject_blood(target, amount)
+			attached_victim.take_blood(target, amount)
 			update_appearance()
 
 /// Called when an IV is attached.

@@ -129,12 +129,14 @@
 	icon_state = "door_locked";
 	id_tag = "eng_north_outer";
 	locked = 1;
-	name = "Engine North Airlock Exterior"
+	name = "Engine North Airlock Exterior";
+	req_one_access = null
 	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /obj/machinery/shield_diffuser,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "au" = (
@@ -159,7 +161,8 @@
 	icon_state = "door_locked";
 	id_tag = "eng_north_inner";
 	locked = 1;
-	name = "Engine North Airlock Interior"
+	name = "Engine North Airlock Interior";
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -167,6 +170,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "aw" = (
@@ -299,8 +303,11 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/airlock/engineering{
+	req_one_access = null
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "aG" = (
@@ -587,7 +594,10 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass/engineering,
+/obj/machinery/door/airlock/glass/engineering{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "bk" = (
@@ -1173,12 +1183,14 @@
 	icon_state = "door_locked";
 	id_tag = "eng_south_outer";
 	locked = 1;
-	name = "Engine South Airlock Exterior"
+	name = "Engine South Airlock Exterior";
+	req_one_access = null
 	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
 /obj/machinery/shield_diffuser,
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "cu" = (
@@ -1205,7 +1217,8 @@
 	icon_state = "door_locked";
 	id_tag = "eng_south_inner";
 	locked = 1;
-	name = "Engine South Airlock Interior"
+	name = "Engine South Airlock Interior";
+	req_one_access = null
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1222,6 +1235,7 @@
 	pixel_y = -26;
 	req_one_access = list(10,11)
 	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "cw" = (
@@ -1324,10 +1338,13 @@
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "cH" = (
-/obj/machinery/door/airlock/glass/engineering,
+/obj/machinery/door/airlock/glass/engineering{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "cI" = (

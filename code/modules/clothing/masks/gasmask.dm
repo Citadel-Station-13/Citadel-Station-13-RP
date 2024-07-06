@@ -14,7 +14,7 @@
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE)
 
-/obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
+/obj/item/clothing/mask/gas/process_air(datum/gas_mixture/air)
 	var/datum/gas_mixture/gas_filtered = new
 
 	for(var/g in filtered_gases)

@@ -354,13 +354,13 @@
 					m_type = 1
 
 		if("ara")
-			message = "aras"
+			message = "aras."
 			var/use_sound
 			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
 			playsound(src.loc, use_sound, 50, 0)
 
 		if("uwu")
-			message = "lets out a devious noise"
+			message = "lets out a devious noise."
 			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
 
 		if ("drool")
@@ -1035,10 +1035,10 @@
 				return
 
 		if ("help")
-			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
-					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
+			to_chat(src, "nyaha, ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
+					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, pale, peep, point-atom, prbt, \
 					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
+					twitch_v, uwu, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
 					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
 
 		else
@@ -1050,7 +1050,8 @@
 
 
 
-
+/mob/living/carbon/human/proc/set_pose(new_pose)
+	pose = sanitize(new_pose)
 
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
@@ -1059,9 +1060,44 @@
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
-	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
+	var/old_pose = pose
 
-	visible_emote("adjusts [T.his] posture.")
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+
+	set_pose(new_pose)
+
+	if (length(pose)>0 && pose != old_pose)
+		visible_emote("adjusts [T.his] posture.")
+
+/mob/living/carbon/human/verb/timed_pose()
+	set name = "Set Pose (Temporary)"
+	set desc = "Sets a description which will be shown when someone examines you, expiring after a given number of seconds."
+	set category = VERB_CATEGORY_IC
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
+
+	var/old_pose = pose
+
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+
+	var/time = input(usr, "How long should the pose be visible (in seconds)?","Pose",60) as num|null
+
+	set_pose(new_pose)
+
+	if (length(pose)>0 && pose != old_pose)
+		visible_emote("adjusts [T.his] posture.")
+		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
+	
+
+/mob/living/carbon/human/verb/silent_pose()
+	set name = "Set Pose (Stealth)"
+	set desc = "Sets a description which will be shown when someone examines you, without showing an adjustment message."
+	set category = VERB_CATEGORY_IC
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
+
+	var/new_pose=input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	set_pose(new_pose)
+
+
 
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"
@@ -1161,7 +1197,7 @@
 			playsound(src.loc, 'sound/misc/prbt.ogg', 50, 1, -1)
 			m_type = 2
 		if ("mrrp")
-			message = "mrrps"
+			message = "mrrps."
 			m_type = 2
 			playsound(src.loc, "sound/voice/mrrp.ogg", 50, 1, -1)
 		if ("weh")
@@ -1172,6 +1208,10 @@
 			message = "lets out a merp."
 			m_type = 2
 			playsound(loc, 'sound/voice/merp.ogg', 50, 1, -1)
+		if ("bleat")
+			message = "bleats!"
+			m_type = 2
+			playsound(loc, pick(list('sound/voice/baa.ogg','sound/voice/baa2.ogg')), 50, 1, -1)
 		if ("bark")
 			message = "lets out a bark."
 			m_type = 2

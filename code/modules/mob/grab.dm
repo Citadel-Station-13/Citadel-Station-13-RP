@@ -231,8 +231,8 @@
 		if(O_EYES)
 			if(announce)
 				assailant.visible_message("<span class='warning'>[assailant] covers [affecting]'s eyes!</span>")
-			if(affecting.eye_blind < 3)
-				affecting.Blind(3)
+			if(!affecting.has_status_effect(/datum/status_effect/sight/blindness))
+				affecting.apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 
 /obj/item/grab/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()

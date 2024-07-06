@@ -2,7 +2,7 @@
 	name = "shoulder holster"
 	desc = "A handgun holster."
 	icon_state = "holster"
-	slot = ACCESSORY_SLOT_TORSO //Legacy/balance purposes
+	slot = ACCESSORY_SLOT_WEAPON //Legacy/balance purposes
 	concealed_holster = 1
 	var/obj/item/holstered = null
 	var/list/can_hold
@@ -137,14 +137,12 @@
 	icon_state = "holster"
 	overlay_state = "holster_low"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/hip
 	name = "hip holster"
 	desc = "A handgun holster slung low on the hip."
 	icon_state = "holster_hip"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/leg
 	name = "leg holster"
@@ -152,7 +150,6 @@
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete
 	name = "machete scabbard"
@@ -165,7 +162,6 @@
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 	holster_verb = "sheathe"
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete
@@ -189,7 +185,6 @@
 	name = "holy weapon scabbard"
 	desc = "A consecrated morphic scabbard etched with arcane runes. The device of a golden eye has been worked into the buckle."
 	icon_state = "holster_machete"
-	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
 	can_hold = list(/obj/item/nullrod)
 	sound_in = 'sound/effects/holster/sheathin.ogg'

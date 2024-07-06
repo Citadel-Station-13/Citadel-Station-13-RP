@@ -207,12 +207,13 @@
 	M.radiation = 0
 	M.heal_organ_damage(20,20)
 	M.adjustToxLoss(-20)
-	M.hallucination = 0
+	M.setHallucination(0)
+	M.setHalLoss(0)
 	M.setBrainLoss(0)
 	M.disabilities = 0
 	M.sdisabilities = 0
 	M.eye_blurry = 0
-	M.SetBlinded(0)
+	M.remove_status_effect(/datum/status_effect/sight/blindness)
 	M.set_paralyzed(0)
 	M.set_stunned(0)
 	M.set_unconscious(0)

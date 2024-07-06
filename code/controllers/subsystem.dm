@@ -406,6 +406,16 @@
 	return
 
 /**
+ * Called when world ticklag is changed
+ *
+ * @params
+ * * old_ticklag
+ * * new_ticklag
+ */
+/datum/controller/subsystem/proc/on_ticklag_changed(old_ticklag, new_ticklag)
+	return
+
+/**
  * Called when SQL is reconnected after being disconnected
  */
 /datum/controller/subsystem/proc/on_sql_reconnect()

@@ -198,7 +198,7 @@
 					if(flash_strength > 0)
 						H.Confuse(flash_strength + 5)
 						H.afflict_stagger(FLASH_TRAIT, stagger_strength, stagger_duration)
-						H.Blind(flash_strength)
+						H.apply_status_effect(/datum/status_effect/sight/blindness, flash_strength SECONDS)
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()
 						H.adjustHalLoss(halloss_per_flash * (flash_strength / 5)) // Should take four flashes to stun.
@@ -273,7 +273,7 @@
 	for(var/mob/living/carbon/C in oviewers(3, null))
 		var/safety = C.eyecheck()
 		if(!safety)
-			if(!C.blinded)
+			if(!C.has_status_effect(/datum/status_effect/sight/blindness))
 				C.flash_eyes()
 
 	return

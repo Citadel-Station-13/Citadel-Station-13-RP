@@ -278,7 +278,7 @@
 	if(!istype(L))
 		return
 	. = ..()
-	if(status && L.has_AI())
+	if(status && L.has_polaris_AI())
 		L.taunt(user)
 
 // Borg version, for the lost module.

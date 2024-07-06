@@ -161,8 +161,6 @@
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/embedded_controller
 	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/firealarm
-	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/flasher
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/keycard_auth
@@ -215,8 +213,6 @@
 /obj/machinery/door_timer
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/embedded_controller
-	layer = ABOVE_WINDOW_LAYER
-/obj/machinery/firealarm
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/flasher
 	layer = ABOVE_WINDOW_LAYER

@@ -41,7 +41,7 @@
 
 
 	say_list_type = /datum/say_list/Steve
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horror
 
 	exotic_amount = 2
 	hide_amount = 1

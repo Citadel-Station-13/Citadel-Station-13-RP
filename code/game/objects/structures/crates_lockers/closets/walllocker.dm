@@ -4,12 +4,13 @@
 /obj/structure/closet/walllocker
 	desc = "A wall mounted storage locker."
 	name = "Wall Locker"
-	icon = 'icons/obj/walllocker.dmi'
-	icon_state = "wall-locker"
+	icon = 'icons/obj/closets/bases/wall.dmi'
+	icon_state = "base"
 	density = 0
 	anchored = 1
 	icon_closed = "wall-locker"
 	icon_opened = "wall-lockeropen"
+	closet_appearance = /singleton/closet_appearance/wall
 
 //spawns endless (3 sets) amounts of breathmask, emergency oxy tank and crowbar
 
