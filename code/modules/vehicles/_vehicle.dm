@@ -42,7 +42,7 @@
 	//Defines what buttons are in the alt-click radial menu.
 	var/static/list/radial_menu = list(
 		"Close" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x"),
-		/*"Remove Cell" = image(icon = 'icons/obj/power.dmi', icon_state = "cell"),*/
+		"Remove Cell" = image(icon = 'icons/obj/power.dmi', icon_state = "cell"),
 		"Remove Key" = image(icon = 'icons/obj/vehicles.dmi', icon_state = "train_keys")
 	)
 
@@ -120,20 +120,6 @@
 
 	return TRUE
 
-/** Called by choose_action() to build radial wheel options*/
-/obj/vehicle/proc/build_radial(var/list/radial_menu)
-	if (mechanical)
-		var/list/active_radial_menu = radial_menu
-		var/static/list/battery_button = list("Remove Cell" = image(icon = 'icons/obj/power.dmi', icon_state = "cell"))
-		active_radial_menu += battery_button
-		return active_radial_menu
-
-	return radial_menu
-
-
-/** Called by choose_action to determine what to do with a radial wheel choice */
-/obj/vehicle/proc/process_radial_choice(var/choice)
-
 /**Defines what the radial wheel buttons do.*/
 /obj/vehicle/proc/choose_action()
 	set src in view()
@@ -143,7 +129,7 @@
 	if(!can_use_check(usr))
 		return
 
-	var/choice = show_radial_menu(usr, src, build_radial(radial_menu), require_near = !issilicon(usr), tooltips = TRUE)
+	var/choice = show_radial_menu(usr, src, radial_menu, require_near = !issilicon(usr), tooltips = TRUE)
 	if(!choice)
 		return
 	switch(choice)
@@ -153,7 +139,7 @@
 			if(mechanical)
 				return
 			if(obj_cell_slot.interaction_active())
-				if(obj_cell_slot.mob_remove_cell(usr))
+				if(obj_cell_slot.mob_yank_cell(usr))
 					to_chat(usr, "<span class='notice'>You pry out the cell!</span>")
 				else
 					to_chat(usr, "<span class='notice'>There is no cell to remove!</span>")

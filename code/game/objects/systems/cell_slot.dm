@@ -57,7 +57,7 @@
 /**
  * removes cell from the system and drops it in users hands
  */
-/datum/object_system/cell_slot/proc/mob_remove_cell(mob/user)
+/datum/object_system/cell_slot/proc/mob_yank_cell(mob/user)
 	if(isnull(cell))
 		return
 	. = cell
