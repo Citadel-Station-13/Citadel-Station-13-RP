@@ -25,6 +25,8 @@
 	src.client = C
 	hide_toggle = new(null, src)
 	hide_toggle.request_position_reset()
+	hide_toggle.update_icon()
+	reassert_screen()
 
 /datum/action_drawer/Destroy()
 	client = null
@@ -72,6 +74,7 @@
 			duped_actions = list()
 		duped_actions[action] = duped_actions[action] + 1
 		return
+	var/was_empty = !length(using_actions)
 	if(!using_actions)
 		using_actions = list()
 	var/atom/movable/screen/movable/action_button/button
@@ -79,6 +82,9 @@
 	if(!hiding_buttons)
 		align_button(button)
 		client?.screen += button
+
+	if(was_empty && length(using_actions))
+		client?.screen |= hide_button
 
 /**
  * propagates an action being removed from a holder
@@ -97,6 +103,9 @@
 		client?.screen -= button
 	action.destroy_button(button)
 	using_actions -= action
+
+	if(!length(using_actions))
+		client?.screen -= hide_button
 
 /**
  * toggles if we're hiding buttons
