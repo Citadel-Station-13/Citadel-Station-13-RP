@@ -166,9 +166,9 @@
 
 /mob/living/simple_mob/humanoid/merc/melee/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(prob(25))
-		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
-		if(Proj.firer)
-			ai_holder.react_to_attack_polaris(Proj.firer)
+		visible_message("<font color='red'><B>[src] blocks [proj] with its shield!</B></font>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
 		return PROJECTILE_IMPACT_BLOCKED
 	return ..()
 

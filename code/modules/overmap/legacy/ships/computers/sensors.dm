@@ -219,9 +219,9 @@
 	else if(health < max_health * 0.75)
 		. += "It shows signs of damage!"
 
-/obj/machinery/shipsensors/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/shipsensors/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
 	take_damage_legacy(Proj.get_structure_damage())
-	..()
 
 /obj/machinery/shipsensors/proc/toggle()
 	if(!use_power && (health == 0 || !in_vacuum()))

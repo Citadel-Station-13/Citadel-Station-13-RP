@@ -508,17 +508,15 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/cultist/elite/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/humanoid/cultist/elite/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(prob(50))
-		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
-		if(Proj.firer)
+		visible_message("<font color='red'><B>[proj] disappears into the mirror world as it hits the shield.</B></font>")
+		if(proj.firer)
 			if(istype(src.ai_holder, /datum/ai_holder/polaris))
 				var/datum/ai_holder/polaris/ai_holder = src.ai_holder
-				ai_holder.react_to_attack_polaris(Proj.firer)
-		return
-	else
-		..()
+				ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_DELETE
+	return ..()
 
 /mob/living/simple_mob/humanoid/cultist/elite/death()
 	new /obj/effect/decal/remains/human (src.loc)

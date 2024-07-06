@@ -231,22 +231,20 @@
 	if(!disabled_for)
 		take_damage_legacy(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
 
-
 // Fire
 /obj/effect/shield/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!disabled_for)
 		take_damage_legacy(rand(5,10), SHIELD_DAMTYPE_HEAT)
 
-
 // Projectiles
-/obj/effect/shield/bullet_act(var/obj/projectile/proj)
+/obj/effect/shield/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(proj.damage_type == BURN)
 		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
 	else if (proj.damage_type == BRUTE)
 		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_PHYSICAL)
 	else //TODO - This will never happen because of get_structure_damage() only returning values for BRUTE and BURN damage types
 		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_EM)
-
+	return PROJECTILE_IMPACT_FORCED
 
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
 /obj/effect/shield/attackby(var/obj/item/I as obj, var/mob/user as mob)

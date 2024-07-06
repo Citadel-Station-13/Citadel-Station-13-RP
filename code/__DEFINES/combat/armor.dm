@@ -59,6 +59,18 @@ GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_ACID,
 )
 
+GLOBAL_REAL_LIST(armor_types) = list(
+	ARMOR_MELEE,
+	ARMOR_BULLET,
+	ARMOR_LASER,
+	ARMOR_ENERGY,
+	ARMOR_BOMB,
+	ARMOR_BIO,
+	ARMOR_RAD,
+	ARMOR_FIRE,
+	ARMOR_ACID,
+)
+
 //? --- armor tiers ---
 
 #define ARMOR_TIER_DEFAULT 0

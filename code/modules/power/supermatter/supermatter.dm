@@ -381,15 +381,15 @@
 
 	var/added_energy
 	var/added_damage
-	var/proj_damage = Proj.get_structure_damage()
-	if(istype(Proj, /obj/projectile/beam))
+	var/proj_damage = proj.get_structure_damage()
+	if(istype(proj, /obj/projectile/beam))
 		added_energy = proj_damage * config_bullet_energy	* CHARGING_FACTOR / POWER_FACTOR
 		power += added_energy
 	else
 		added_damage = proj_damage * config_bullet_energy
 		damage += added_damage
 	if(added_energy || added_damage)
-		investigate_log("Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.", INVESTIGATE_SUPERMATTER)
+		investigate_log("Hit by \"[proj.name]\". +[added_energy] Energy, +[added_damage] Damage.", INVESTIGATE_SUPERMATTER)
 	return PROJECTILE_IMPACT_DELETE
 
 /obj/machinery/power/supermatter/attack_robot(mob/user as mob)

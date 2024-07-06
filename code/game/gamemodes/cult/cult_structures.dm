@@ -50,7 +50,8 @@
 	pylonhit(damage)
 	return damage
 
-/obj/structure/cult/pylon/bullet_act(var/obj/projectile/Proj)
+/obj/structure/cult/pylon/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
 	pylonhit(Proj.get_structure_damage())
 
 /obj/structure/cult/pylon/proc/pylonhit(var/damage)

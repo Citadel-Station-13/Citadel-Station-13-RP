@@ -113,7 +113,7 @@
 
 /mob/living/simple_mob/mechanical/mecha/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(prob(deflect_chance))
-		visible_message(SPAN_WARNING( "\The [P] is deflected by \the [src]'s armor!"))
+		visible_message(SPAN_WARNING( "\The [proj] is deflected by \the [src]'s armor!"))
 		deflect_sprite()
 		return PROJECTILE_IMPACT_BLOCKED
 	return ..()

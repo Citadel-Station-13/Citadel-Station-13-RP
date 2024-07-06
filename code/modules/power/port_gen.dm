@@ -609,8 +609,8 @@
 
 /obj/machinery/power/rtg/abductor/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	. = ..()
-	if(!going_kaboom && istype(Proj) && !Proj.nodamage && ((Proj.damage_type == BURN) || (Proj.damage_type == BRUTE)))
-		log_and_message_admins("[ADMIN_LOOKUPFLW(Proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.")
+	if(!going_kaboom && istype(proj) && !proj.nodamage && ((proj.damage_type == BURN) || (proj.damage_type == BRUTE)))
+		log_and_message_admins("[ADMIN_LOOKUPFLW(proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.")
 		asplod()
 
 /obj/machinery/power/rtg/abductor/attack_hand(mob/user, list/params)

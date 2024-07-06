@@ -4,6 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "ano00"
 	var/icon_num = 0
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	density = TRUE
 	var/datum/artifact_effect/my_effect
 	var/datum/artifact_effect/secondary_effect
@@ -274,7 +275,8 @@
 			to_chat(M, "<b>You accidentally touch [src].</b>")
 	..()
 
-/obj/machinery/artifact/bullet_act(var/obj/projectile/P)
+/obj/machinery/artifact/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
 	if(istype(P,/obj/projectile/bullet))
 		if(my_effect.trigger == TRIGGER_FORCE)
 			my_effect.ToggleActivate()

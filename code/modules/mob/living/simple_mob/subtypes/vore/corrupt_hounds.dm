@@ -154,16 +154,13 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/vore/aggressive/corrupthound/sword/bullet_act(var/obj/projectile/Proj)
-	if(!Proj)	return
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(prob(35))
-		visible_message("<span class='warning'>[src] deflects [Proj] with its sword tail!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack_polaris(Proj.firer)
-		return
-	else
-		..()
-
+		visible_message("<span class='warning'>[src] deflects [proj] with its sword tail!</span>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
+		return PROJECTILE_IMPACT_BLOCKED
+	return ..()
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/isSynthetic()
 	return TRUE
