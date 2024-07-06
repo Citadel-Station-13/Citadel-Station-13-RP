@@ -8,6 +8,7 @@
 	damage_flag = ARMOR_BULLET
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
 	sharp = 1
+	projectile_type = PROJECTILE_TYPE_KINETIC
 	var/mob_passthrough_check = 0
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet

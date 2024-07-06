@@ -90,7 +90,7 @@
 	if(has_repair_droid)
 		add_overlay(image(icon = 'icons/mecha/mecha_equipment.dmi', icon_state = "repair_droid"))
 
-/mob/living/simple_mob/mechanical/mecha/bullet_act()
+/mob/living/simple_mob/mechanical/mecha/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	. = ..()
 	sparks.start()
 
@@ -111,11 +111,11 @@
 	return ..()
 */
 
-/mob/living/simple_mob/mechanical/mecha/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/mechanical/mecha/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(prob(deflect_chance))
 		visible_message(SPAN_WARNING( "\The [P] is deflected by \the [src]'s armor!"))
 		deflect_sprite()
-		return 0
+		return PROJECTILE_IMPACT_BLOCKED
 	return ..()
 
 /mob/living/simple_mob/mechanical/mecha/proc/deflect_sprite()

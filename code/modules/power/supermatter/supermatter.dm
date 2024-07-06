@@ -371,12 +371,13 @@
 
 	return 1
 
-
-/obj/machinery/power/supermatter/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/power/supermatter/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	var/turf/L = loc
-	if(!istype(L))		// We don't run process() when we are in space
-		return 0	// This stops people from being able to really power up the supermatter
-				// Then bring it inside to explode instantly upon landing on a valid turf.
+	// We don't run process() when we are in space
+	// This stops people from being able to really power up the supermatter
+	// Then bring it inside to explode instantly upon landing on a valid turf.
+	if(!istype(L))
+		return PROJECTILE_IMPACT_DELETE
 
 	var/added_energy
 	var/added_damage
@@ -389,7 +390,7 @@
 		damage += added_damage
 	if(added_energy || added_damage)
 		investigate_log("Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.", INVESTIGATE_SUPERMATTER)
-	return 0
+	return PROJECTILE_IMPACT_DELETE
 
 /obj/machinery/power/supermatter/attack_robot(mob/user as mob)
 	if(Adjacent(user))

@@ -21,6 +21,7 @@ field_generator power level display
 	anchored = 0
 	density = 1
 	use_power = USE_POWER_OFF
+	armor = /datum/armor/object/heavy
 	var/const/num_power_levels = 6	// Total number of power level icon has
 	var/Varedit_start = 0
 	var/Varpower = 0
@@ -150,22 +151,19 @@ field_generator power level display
 		..()
 		return
 
-
 /obj/machinery/field_generator/emp_act()
 	return 0
 
-/obj/machinery/field_generator/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj, /obj/projectile/beam))
-		power += Proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
+/obj/machinery/field_generator/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	if(istype(proj, /obj/projectile/beam))
+		power += proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
-	return 0
-
+		return PROJECTILE_IMPACT_DELETE
+	return ..()
 
 /obj/machinery/field_generator/Destroy()
 	src.cleanup()
 	. = ..()
-
-
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0

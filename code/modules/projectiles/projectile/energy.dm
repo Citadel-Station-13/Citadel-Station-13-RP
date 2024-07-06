@@ -4,6 +4,7 @@
 	damage = 0
 	damage_type = BURN
 	damage_flag = ARMOR_ENERGY
+	projectile_type = PROJECTILE_TYPE_ENERGY
 	var/flash_strength = 10
 
 //releases a burst of light on impact or after travelling a distance

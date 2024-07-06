@@ -10,6 +10,7 @@
 	anchored = 0
 	density = 1
 	use_power = USE_POWER_OFF
+	armor = /datum/armor/object/heavy
 
 	var/image/material_layer	// Holds the image used for the filled overlay.
 	var/image/material_glow		// Holds the image used for the glow overlay.
@@ -127,11 +128,12 @@
 	else
 		set_light(0, 0, "#FFFFFF")
 
-/obj/machinery/particle_smasher/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj, /obj/projectile/beam))
-		if(Proj.damage >= 50)
+/obj/machinery/particle_smasher/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	if(istype(proj, /obj/projectile/beam))
+		if(proj.damage >= 50)
 			TryCraft()
-	return 0
+		return PROJECTILE_IMPACT_DELETE
+	return ..()
 
 /obj/machinery/particle_smasher/process(delta_time)
 	if(!src.anchored)	// Rapidly loses focus.

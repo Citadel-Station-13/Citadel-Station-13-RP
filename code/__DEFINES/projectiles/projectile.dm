@@ -28,8 +28,33 @@
 /// * projectile is not deleted like in PIERCING or PHASE
 /// * fires off on_reflect() instead
 #define PROJECTILE_IMPACT_REFLECT (1<<5)
+/// signifies to disallow piercing/phasing
+///
+/// * projectile will / should immediately impact without piercing/phasing and delete
+#define PROJECTILE_IMPACT_FORCED (1<<6)
+
+//* projectile_type bitfield *//
+
+//? base types; all projectiles should have one of these ?//
+
+/// kinetic matter, basically
+#define PROJECTILE_TYPE_KINETIC (1<<0)
+/// energy projectiles that aren't a beam
+#define PROJECTILE_TYPE_ENERGY (1<<1)
+/// particle beam, basically
+#define PROJECTILE_TYPE_BEAM (1<<2)
+
+//? specific types; projectiles may have one or more of these in addition to the above ?//
+
+/// photonic energy, basically (yes yes lasers are unrealistic i don't care)
+#define PROJECTILE_TYPE_PHOTONIC (1<<23)
+/// exotic energy or exotic matter
+#define PROJECTILE_TYPE_EXOTIC (1<<24)
+
+#warn projectile_type, projectile_type_cant on /obj/structure/prop/prism
+#warn projectile_type /obj/projectile
 
 //* helpers *//
 
 /// tiles per second to pixels per decisecond
-#define PROJECTILE_SPEED_FOR_TPS(tiles) (tiles * WORLD_ICON_SIZE / 10)
+#define PROJECTILE_SPEED_FOR_TPS(tiles) (tiles * WORLD_ICON_SIZE)

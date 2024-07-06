@@ -26,10 +26,9 @@
 			return 0
 	return 1
 
-/obj/machinery/door/blast/puzzle/bullet_act(var/obj/projectile/Proj)
-	if(!istype(Proj, /obj/projectile/test))
-		visible_message("<span class='cult'>\The [src] is completely unaffected by \the [Proj].</span>")
-	qdel(Proj) //No piercing. No.
+/obj/machinery/door/blast/puzzle/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+	return . | PROJECTILE_IMPACT_FORCED
 
 /obj/machinery/door/blast/puzzle/legacy_ex_act(severity)
 	visible_message("<span class='cult'>\The [src] is completely unaffected by the blast.</span>")

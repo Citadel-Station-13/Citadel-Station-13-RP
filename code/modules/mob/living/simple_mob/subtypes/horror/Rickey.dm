@@ -50,9 +50,9 @@
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Rickey/bullet_act()
+/mob/living/simple_mob/horror/Rickey/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
 /mob/living/simple_mob/horror/Rickey/attack_hand(mob/user, list/params)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)

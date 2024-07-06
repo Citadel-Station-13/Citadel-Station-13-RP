@@ -48,9 +48,9 @@
 	playsound(src, 'sound/h_sounds/shitty_tim.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/TinyTim/bullet_act()
+/mob/living/simple_mob/horror/TinyTim/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-	..()
 
 /mob/living/simple_mob/horror/TinyTim/attack_hand(mob/user, list/params)
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)

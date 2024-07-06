@@ -50,6 +50,11 @@
 	/// number of times we've pierced something. Incremented BEFORE bullet_act and similar procs run!
 	var/pierces = 0
 
+	//* Configuration *//
+
+	/// Projectile type bitfield; set all that is relevant
+	var/projectile_type = NONE
+
 	#warn impl
 
 	//* Physics - Configuration *//

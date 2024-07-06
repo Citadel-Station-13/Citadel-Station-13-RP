@@ -1,5 +1,6 @@
 //A series(?) of prisms for PoIs. The base one only works for beams.
 
+// todo: refactor to /obj/structure/reflector
 /obj/structure/prop/prism
 	name = "prismatic turret"
 	desc = "A raised, externally powered 'turret'. It seems to have a massive crystal ring around its base."
@@ -12,14 +13,18 @@
 	layer = 3.1					//Layer over projectiles.
 	plane = -10					//Layer over projectiles.
 
+	/// projectile_type's to reflect
+	/// all of these must be on a projectile
+	var/projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
+	/// can't reflect these
+	var/projectile_type_cant = NONE
+
 	var/rotation_lock = 0		// Can you rotate the prism at all?
 	var/free_rotate = 1			// Does the prism rotate in any direction, or only in the eight standard compass directions?
 	var/external_control_lock = 0	// Does the prism only rotate from the controls of an external switch?
 	var/degrees_from_north = 0	// How far is it rotated clockwise?
 	var/compass_directions = list("North" = 0, "South" = 180, "East" = 90, "West" = 270, "Northwest" = 315, "Northeast" = 45, "Southeast" = 135, "Southwest" = 225)
 	var/interaction_sound = 'sound/mecha/mechmove04.ogg'
-
-	var/redirect_type = /obj/projectile/beam
 
 	var/dialID = null
 	var/obj/structure/prop/prismcontrol/remote_dial = null
@@ -119,19 +124,16 @@
 	else
 		animate(src, transform = turn(src.transform, rotate_degrees), time = 6)
 
-/obj/structure/prop/prism/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj, redirect_type))
-		if(!silent)
-			visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
-		flick("[initial(icon_state)]+glow", src)
+/obj/structure/prop/prism/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	if(((proj.projectile_type & projectile_type) != projectile_type) || (proj.projectile_type & projectile_type_cant))
+		return ..()
+	if(!silent)
+		visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
+	flick("[initial(icon_state)]+glow", src)
 
-		var/new_x = (1 * round(10 * cos(degrees_from_north - 90))) + x //Vectors vectors vectors.
-		var/new_y = (-1 * round(10 * sin(degrees_from_north - 90))) + y
-		var/turf/curloc = get_turf(src)
-
-		Proj.penetrating += 1 // Needed for the beam to get out of the turret.
-
-		Proj.redirect(new_x, new_y, curloc, null)
+	#warn test this lol
+	proj.physics_kick_forwards(16)
+	return PROJECTILE_IMPACT_REFLECT
 
 /obj/structure/prop/prism/incremental
 	free_rotate = 0

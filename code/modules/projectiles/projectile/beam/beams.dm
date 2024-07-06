@@ -6,6 +6,7 @@
 	damage = 40
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
+	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_PHOTONIC
 	eyeblur = 4
 	var/frequency = 1
 	hitscan = TRUE
