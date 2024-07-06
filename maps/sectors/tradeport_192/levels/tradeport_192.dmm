@@ -6899,7 +6899,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
-	id_tag = ""tradeport_udang_docker"_pump"
+	id_tag = "tradeport_udang_docker_pump"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
