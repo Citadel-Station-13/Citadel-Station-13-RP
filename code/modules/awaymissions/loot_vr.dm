@@ -273,7 +273,7 @@
 			/obj/item/reagent_containers/food/snacks/cookie, \
 			/obj/item/reagent_containers/food/snacks/meatball, \
 			/obj/item/reagent_containers/food/snacks/plump_pie, \
-			/obj/item/reagent_containers/food/snacks/liquidfood)
+			/obj/item/reagent_containers/food/snacks/liquid)
 			for(var/i=0,i<num,i++)
 				new new_type(C)
 		if("alien")
