@@ -84,7 +84,7 @@
 		client?.screen += button
 
 	if(was_empty && length(using_actions))
-		client?.screen |= hide_button
+		client?.screen |= hide_toggle
 
 /**
  * propagates an action being removed from a holder
@@ -105,7 +105,7 @@
 	using_actions -= action
 
 	if(!length(using_actions))
-		client?.screen -= hide_button
+		client?.screen -= hide_toggle
 
 /**
  * toggles if we're hiding buttons
