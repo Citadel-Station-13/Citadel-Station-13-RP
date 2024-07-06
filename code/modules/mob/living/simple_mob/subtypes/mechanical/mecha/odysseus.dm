@@ -64,7 +64,7 @@
 /obj/projectile/fake_syringe
 	name = "syringe"
 	icon_state = "syringe"
-	damage = 5 // Getting hit with a launched syringe probably hurts, and makes it at least slightly relevant against synthetics.
+	damage_force = 5
 	var/piercing = FALSE // If true, ignores thick material.
 
 /obj/projectile/fake_syringe/on_hit(atom/target, blocked = 0, def_zone = null)

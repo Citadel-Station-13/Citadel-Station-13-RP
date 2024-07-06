@@ -1,20 +1,3 @@
-// Damage things. //TODO: Merge these down to reduce on defines.
-// Way to waste perfectly good damage-type names (BRUTE) on this... If you were really worried about case sensitivity, you could have just used lowertext(damagetype) in the proc.
-#define BRUTE       "brute"
-#define BURN        "fire"
-#define TOX         "tox"
-#define OXY         "oxy"
-#define CLONE       "clone"
-#define HALLOSS     "halloss"
-#define ELECTROCUTE "electrocute"
-#define BIOACID     "bioacid"
-#define SEARING     "searing"
-
-// todo: these things should be damage modes / flags
-
-#define CUT       "cut"
-#define BRUISE    "bruise"
-#define PIERCE    "pierce"
 
 #define STUN      "stun"
 #define WEAKEN    "weaken"

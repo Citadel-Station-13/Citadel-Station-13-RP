@@ -2,7 +2,7 @@
 //For projectiles that actually represent clouds of projectiles
 /obj/projectile/bullet/pellet
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
-	damage = 20
+	damage_force = 20
 	//icon_state = "bullet" //TODO: would be nice to have it's own icon state
 	var/pellets = 4			//number of pellets
 	var/range_step = 2		//projectile will lose a fragment each time it travels this distance. Can be a non-integer.
@@ -57,7 +57,7 @@
 
 //Explosive grenade projectile, borrowed from fragmentation grenade code.
 /obj/projectile/bullet/pellet/fragment
-	damage = 10
+	damage_force = 10
 	armor_penetration = 30
 	range_step = 2 //projectiles lose a fragment each time they travel this distance. Can be a non-integer.
 
@@ -69,29 +69,28 @@
 	muzzle_type = null
 
 /obj/projectile/bullet/pellet/fragment/strong
-	damage = 15
+	damage_force = 15
 	armor_penetration = 20
 
 /obj/projectile/bullet/pellet/fragment/weak
-	damage = 4
+	damage_force = 4
 	armor_penetration = 40
 
 /obj/projectile/bullet/pellet/fragment/rubber
 	name = "stingball shrapnel"
-	damage = 3
+	damage_force = 3
 	agony = 8
-	sharp = FALSE
-	edge = FALSE
+	damage_mode = NONE
 	damage_flag = ARMOR_MELEE
 
 /obj/projectile/bullet/pellet/fragment/rubber/strong
-	damage = 8
+	damage_force = 8
 	agony = 16
 
 // Tank rupture fragments
 /obj/projectile/bullet/pellet/fragment/tank
 	name = "metal fragment"
-	damage = 9  //Big chunks flying off.
+	damage_force = 9  //Big chunks flying off.
 	range_step = 2 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone
@@ -106,13 +105,13 @@
 
 /obj/projectile/bullet/pellet/fragment/tank/small
 	name = "small metal fragment"
-	damage = 6
+	damage_force = 6
 	armor_penetration = 5
 	pellets = 5
 
 /obj/projectile/bullet/pellet/fragment/tank/big
 	name = "large metal fragment"
-	damage = 17
+	damage_force = 17
 	armor_penetration = 10
 	range_step = 5 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 	pellets = 1

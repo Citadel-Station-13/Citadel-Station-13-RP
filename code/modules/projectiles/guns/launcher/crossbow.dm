@@ -10,8 +10,7 @@
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 	throw_force = 8
 	w_class = WEIGHT_CLASS_NORMAL
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_PIERCE
 
 /obj/item/arrow/proc/removed() //Helper for metal rods falling apart.
 	return
@@ -19,8 +18,7 @@
 /obj/item/spike
 	name = "alloy spike"
 	desc = "It's about a foot of weird silver metal with a wicked point."
-	sharp = 1
-	edge = 0
+	damage_mode = DAMAGE_MODE_PIERCE
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/weapons.dmi'

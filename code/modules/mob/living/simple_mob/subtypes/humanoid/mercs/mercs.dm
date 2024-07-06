@@ -161,7 +161,7 @@
 	attack_edge = 1
 	attacktext = list("slashed")
 
-	loot_list = list(/obj/item/melee/energy/sword = 100, /obj/item/shield/energy = 100)
+	loot_list = list(/obj/item/melee/transforming/sword = 100, /obj/item/shield/energy = 100)
 
 // They have a shield, so they try to block
 /mob/living/simple_mob/humanoid/merc/melee/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -683,7 +683,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 	corpse = /obj/spawner/corpse/vox/boarder_m
-	loot_list = list(/obj/item/melee/energy/sword = 100)
+	loot_list = list(/obj/item/melee/transforming/sword = 100)
 
 // They're good with the swords? I dunno. I like the idea they can deflect.
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder/attackby(var/obj/item/O, var/mob/user)

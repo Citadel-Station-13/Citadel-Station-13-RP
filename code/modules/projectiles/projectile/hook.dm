@@ -8,10 +8,10 @@
 
 	var/beam_state = "b_beam"
 
-	damage = 5
+	damage_force = 5
 	// ~5 tiles/second
 	speed = 32 / 2
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
 
@@ -45,7 +45,7 @@
 				agony = 20
 			if(INTENT_GRAB)
 				damage_flag = ARMOR_MELEE
-				damage_type = HALLOSS
+				damage_type = DAMAGE_TYPE_HALLOSS
 			if(INTENT_DISARM)
 				damage_flag = ARMOR_MELEE
 				if(prob(30))	// A chance for a successful hit to either knock someone down, or cause minor disorientation.
@@ -55,7 +55,7 @@
 					eyeblur = 3
 			if(INTENT_HELP)
 				silenced = 1
-				damage_type = HALLOSS
+				damage_type = DAMAGE_TYPE_HALLOSS
 
 	..() // Does the regular launching stuff.
 
@@ -188,4 +188,4 @@
 	name = "green orb"
 	icon_state = "green_laser"
 	beam_state = "n_beam"
-	damage = 3
+	damage_force = 3

@@ -186,7 +186,7 @@
 
 //this is largely hacky and bad :(	-Pete
 /obj/item/gun/ballistic/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/energy) || istype(A, /obj/item/pickaxe/plasmacutter))
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming) || istype(A, /obj/item/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(loaded.len)
 			var/burstsetting = burst
@@ -313,11 +313,13 @@
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	max_shells = 1
 	w_class = WEIGHT_CLASS_BULKY
+
 	damage_force = 25
+	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	damage_tier = MELEE_TIER_MEDIUM
+
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
-	sharp = 1
-	edge = 1
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/underslung

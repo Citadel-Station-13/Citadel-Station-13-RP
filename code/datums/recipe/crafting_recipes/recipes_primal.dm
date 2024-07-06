@@ -83,7 +83,7 @@
 
 /datum/crafting_recipe/bonesword_elder
 	name = "Bone Sword (Elder)"
-	result = /obj/item/melee/ashlander/elder
+	result = /obj/item/melee/transforming/ashlander_elder
 	time = 100
 	reqs = list(/obj/item/stack/material/bone = 4,
 				 /obj/item/stack/sinew = 1,

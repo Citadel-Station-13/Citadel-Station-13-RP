@@ -1357,11 +1357,11 @@
 /area/shuttle/specops/centcom)
 "cL" = (
 /obj/structure/table/rack/steel,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
+/obj/item/melee/transforming/sword,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/item/shield/energy,

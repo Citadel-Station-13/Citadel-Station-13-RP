@@ -204,8 +204,8 @@
 /obj/projectile/kinetic
 	name = "kinetic force"
 	icon_state = null
-	damage = 30
-	damage_type = BRUTE
+	damage_force = 30
+	damage_type = DAMAGE_TYPE_BRUTE
 	damage_flag = ARMOR_BOMB
 	range = WORLD_ICON_SIZE * 4
 	// log_override = TRUE
@@ -215,8 +215,8 @@
 	var/obj/item/gun/energy/kinetic_accelerator/kinetic_gun
 
 /obj/projectile/kinetic/premium
-	damage = 40
-	damage_type = BRUTE
+	damage_force = 40
+	damage_type = DAMAGE_TYPE_BRUTE
 	range = 5
 
 /obj/projectile/kinetic/Destroy()
@@ -230,14 +230,14 @@
 			M.projectile_prehit(src, target, kinetic_gun)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
-		damage = damage * pressure_decrease
+		damage_force = damage * pressure_decrease
 		pressure_decrease_active = TRUE
 	return ..()
 
 /obj/projectile/kinetic/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
-		damage = damage * pressure_decrease
+		damage_force = damage * pressure_decrease
 		pressure_decrease_active = TRUE
 	return ..()
 
@@ -252,7 +252,7 @@
 /obj/projectile/kinetic/proc/strike_thing(atom/target)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
-		damage = damage * pressure_decrease
+		damage_force = damage * pressure_decrease
 		pressure_decrease_active = TRUE
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf)

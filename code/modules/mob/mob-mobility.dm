@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
 //! Mobility: The ability of mobs to perform actions.
 //? We primarily use flags and a proc to differentiate this
 //? However, the eventual transition to traits will be done at some point.

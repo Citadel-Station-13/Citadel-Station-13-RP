@@ -3,7 +3,7 @@
 
 /datum/prototype/struct/loot_pack/weapons/melee1
 	some = list(
-		/obj/item/melee/energy/sword,
+		/obj/item/melee/transforming/sword,
 		/obj/item/shield/energy,
 		/obj/item/melee/baton,
 		/obj/item/melee/chainofcommand,

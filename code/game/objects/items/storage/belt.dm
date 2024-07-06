@@ -261,7 +261,7 @@
 		/obj/item/cell/device/weapon,
 		/obj/item/material/butterfly,
 		/obj/item/material/knife,
-		/obj/item/melee/energy/sword,
+		/obj/item/melee/transforming/sword,
 		/obj/item/shield/energy,
 		/obj/item/ammo_casing/,
 		/obj/item/ammo_magazine/,

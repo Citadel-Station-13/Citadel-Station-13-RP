@@ -405,9 +405,9 @@
 			//	/obj/item/archaeological_find
 			//),
 			prob(1);list(
-				/obj/item/melee/energy/sword,
-				/obj/item/melee/energy/sword,
-				/obj/item/melee/energy/sword,
+				/obj/item/melee/transforming/sword,
+				/obj/item/melee/transforming/sword,
+				/obj/item/melee/transforming/sword,
 				/obj/item/shield/energy,
 				/obj/item/shield/energy,
 				/obj/structure/closet/crate/science

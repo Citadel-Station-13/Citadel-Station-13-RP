@@ -3,8 +3,8 @@
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
-	damage = 40
-	damage_type = BURN
+	damage_force = 40
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	eyeblur = 4
 	var/frequency = 1
@@ -22,8 +22,8 @@
 /obj/projectile/beam/practice
 	name = "laser"
 	icon_state = "laser"
-	damage = 0
-	damage_type = BURN
+	damage_force = 0
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	eyeblur = 2
 	impact_sounds = null
@@ -32,20 +32,20 @@
 	name = "weak laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
-	damage = 15
+	damage_force = 15
 
 /obj/projectile/beam/smalllaser
-	damage = 25
+	damage_force = 25
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 
 /obj/projectile/beam/burstlaser
-	damage = 30
+	damage_force = 30
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
 
 /obj/projectile/beam/midlaser
-	damage = 40
+	damage_force = 40
 	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
@@ -53,7 +53,7 @@
 	name = "heavy laser"
 	icon_state = "heavylaser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
-	damage = 60
+	damage_force = 60
 	armor_penetration = 30
 	light_range = 3
 	light_power = 1
@@ -75,7 +75,7 @@
 	impact_type = /obj/effect/projectile/impact/emitter
 
 /obj/projectile/beam/heavylaser/cannon
-	damage = 80
+	damage_force = 80
 	armor_penetration = 50
 	light_color = "#FF0D00"
 
@@ -83,7 +83,7 @@
 	name = "xray beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
-	damage = 25
+	damage_force = 25
 	armor_penetration = 50
 	light_color = "#00CC33"
 
@@ -95,7 +95,7 @@
 	name = "gamma beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
-	damage = 10
+	damage_force = 10
 	armor_penetration = 90
 	irradiate = 20
 	light_color = "#00CC33"
@@ -108,7 +108,7 @@
 	name = "cyan beam"
 	icon_state = "cyan"
 	fire_sound = 'sound/weapons/weaponsounds_alienlaser.ogg'
-	damage = 40
+	damage_force = 40
 	light_color = "#00C6FF"
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
@@ -119,7 +119,7 @@
 	name = "pulse"
 	icon_state = "u_laser"
 	fire_sound='sound/weapons/gauss_shoot.ogg' // Needs a more meaty sound than what pulse.ogg currently is; this will be a placeholder for now.
-	damage = 100	//Badmin toy, don't care
+	damage_force = 100	//Badmin toy, don't care
 	armor_penetration = 100
 	light_color = "#0066FF"
 
@@ -133,14 +133,14 @@
 	..()
 
 /obj/projectile/beam/pulse/shotgun
-	damage = 50
+	damage_force = 50
 	armor_penetration = 25
 
 /obj/projectile/beam/emitter
 	name = "emitter beam"
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
-	damage = 0 // The actual damage is computed in /code/modules/power/singularity/emitter.dm
+	damage_force = 0 // The actual damage is computed in /code/modules/power/singularity/emitter.dm
 	light_color = "#00CC33"
 	excavation_amount = 70 // 3 shots to mine a turf
 
@@ -150,10 +150,10 @@
 
 /obj/projectile/beam/lasertag
 	name = "lasertag beam"
-	damage = 0
+	damage_force = 0
 	eyeblur = 0
 	no_attack_log = 1
-	damage_type = BURN
+	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 
 	combustion = FALSE
@@ -203,7 +203,7 @@
 	name = "sniper beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	damage = 60
+	damage_force = 60
 	armor_penetration = 10
 	light_color = "#00CC33"
 
@@ -218,7 +218,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 40
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
 	impact_sounds = null
 
@@ -246,7 +246,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 30
-	damage_type = HALLOSS
+	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#FFFFFF"
 
 	combustion = FALSE
@@ -292,13 +292,13 @@
 /obj/projectile/beam/shock
 	name = "shock beam"
 	icon_state = "lightning"
-	damage_type = ELECTROCUTE
+	damage_type = DAMAGE_TYPE_ELECTROCUTE
 
 	muzzle_type = /obj/effect/projectile/muzzle/lightning
 	tracer_type = /obj/effect/projectile/tracer/lightning
 	impact_type = /obj/effect/projectile/impact/lightning
 
-	damage = 30
+	damage_force = 30
 	agony = 15
 	eyeblur = 2
 
@@ -307,7 +307,7 @@
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	light_color = "#00CC33"
-	damage = 1 //mining tool
+	damage_force = 1 //mining tool
 	excavation_amount = 1000	// 1 shot to dig a standard rock turf. Made for mining. Should be able to consistently one hit rocks now
 
 	muzzle_type = /obj/effect/projectile/muzzle/emitter
@@ -317,8 +317,8 @@
 /obj/projectile/beam/pointdefense
 	name = "point defense salvo"
 	icon_state = "laser"
-	damage = 15
-	damage_type = ELECTROCUTE //You should be safe inside a voidsuit
+	damage_force = 15
+	damage_type = DAMAGE_TYPE_ELECTROCUTE //You should be safe inside a voidsuit
 	sharp = FALSE //"Wide" spectrum beam
 	light_color = "#A9980A"
 

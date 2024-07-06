@@ -114,12 +114,21 @@
 
 	//? Throwing
 	var/datum/thrownthing/throwing
-	/// default throw speed
+	/// nominal throw speed
+	///
+	/// * tiles / decisecond
+	/// * modulated by the force of the throw
 	var/throw_speed = 2
-	/// default throw range
+	/// nominal throw range
+	///
+	/// * in tiles
+	/// * modulated by the force of the throw
 	var/throw_range = 7
-	/// default throw damage at a "standard" speed
-	var/throw_force = 0
+	/// nominal throw damage
+	///
+	/// * defaults to [damage_force] on items
+	/// * modulated by the force of the throw
+	var/throw_force = null
 	/// default throw move force resist
 	var/throw_resist = THROW_RESIST_DEFAULT
 	/**
