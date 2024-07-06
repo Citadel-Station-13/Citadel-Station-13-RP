@@ -180,7 +180,7 @@ Pipelines + Other Objects -> Pipe network
 
 // Deconstruct into a pipe item.
 /obj/machinery/atmospherics/drop_products(method, atom/where)
-	if(construction_type)
+	if(construction_type && !circuit)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)
 		transfer_fingerprints_to(I)
