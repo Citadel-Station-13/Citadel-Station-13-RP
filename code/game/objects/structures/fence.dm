@@ -98,8 +98,7 @@
 						visible_message(SPAN_NOTICE("\The [user] completely cuts through \the [src]."))
 						to_chat(user, SPAN_NOTICE("The hole in \the [src] is now big enough to walk through."))
 				update_cut_status()
-	return TRUE
-
+		return TRUE
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
