@@ -144,6 +144,14 @@ Need to turn all of these into proper initializers like this:
 	name = "In transit"
 	landmark_tag = "nav_transit_trade"
 
+/obj/effect/shuttle_landmark/transit/rift/trade/udang
+	name = "In transit"
+	landmark_tag = "nav_transit_udang"
+
+	/obj/effect/shuttle_landmark/transit/rift/trade/scoophead
+	name = "In transit"
+	landmark_tag = "nav_transit_scoophead"
+
 /obj/effect/shuttle_landmark/transit/rift/emt
 	name = "In transit"
 	landmark_tag = "nav_transit_emt"
