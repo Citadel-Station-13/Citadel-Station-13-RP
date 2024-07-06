@@ -161,6 +161,8 @@
 /datum/action/proc/render_button_appearance()
 	var/image/generating = new
 
+	generating.name = name
+	generating.desc = desc
 	generating.icon = background_icon
 	generating.icon_state = background_icon_state
 
@@ -177,6 +179,7 @@
 		button.icon_state = button_icon_state
 		if(button_additional_overlay)
 			button.overlays += button_additional_overlay
+	generating.overlays += button
 
 	if(button_availability < 1)
 		generating.color = rgb(128, 0, 0, 128)
@@ -199,6 +202,7 @@
 	var/atom/movable/screen/movable/action_button/creating = new(null, holder, src)
 	pre_render_hook()
 	creating.appearance = render_button_appearance()
+	LAZYADD(buttons, creating)
 	return creating
 
 /**

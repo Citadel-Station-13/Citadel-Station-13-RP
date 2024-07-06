@@ -6,8 +6,15 @@
  * * much like Logout(), this is only called if we have a client.
  */
 /mob/proc/pre_logout()
-	client?.action_drawer.unregister_holder(actions_controlled)
-	client?.action_drawer.unregister_holder(actions_innate)
+	if(!client)
+		return
+	if(client.action_drawer)
+		if(actions_controlled)
+			client.action_drawer.unregister_holder(actions_controlled)
+		if(actions_innate)
+			client.action_drawer.unregister_holder(actions_innate)
+		if(inventory)
+			client.action_drawer.unregister_holder(inventory.actions)
 
 /**
  * Linter check, do not call.

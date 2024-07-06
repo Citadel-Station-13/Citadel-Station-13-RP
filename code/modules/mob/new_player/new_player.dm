@@ -14,6 +14,14 @@
 
 	anchored = 1	// Don't get pushed around
 
+/mob/new_player/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
+	mob_list_register(stat)
+	atom_flags |= ATOM_INITIALIZED
+	// we only need innate
+	actions_innate = new /datum/action_holder/mob_actor(src)
+	return INITIALIZE_HINT_NORMAL
+
 /mob/new_player/mob_list_register(for_stat)
 	GLOB.mob_list += src
 

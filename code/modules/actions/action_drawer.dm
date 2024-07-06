@@ -19,10 +19,12 @@
 	/// hiding all action buttons?
 	var/hiding_buttons = FALSE
 	/// our hide button
-	var/atom/movable/screen/movable/action_button/hide_toggle
+	var/atom/movable/screen/movable/action_drawer_toggle/hide_toggle
 
 /datum/action_drawer/New(client/C)
 	src.client = C
+	hide_toggle = new(null, src)
+	hide_toggle.request_position_reset()
 
 /datum/action_drawer/Destroy()
 	client = null
@@ -31,6 +33,13 @@
 	using_holders = using_actions = duped_actions = null
 	QDEL_NULL(hide_toggle)
 	return ..()
+
+/**
+ * makes sure everything that should be in screen is in screen
+ */
+/datum/action_drawer/proc/reassert_screen()
+	client.screen |= hide_toggle
+	client.screen |= all_action_buttons()
 
 /**
  * adds a holder
@@ -68,6 +77,7 @@
 	var/atom/movable/screen/movable/action_button/button
 	using_actions[action] = button = action.create_button(src, holder)
 	if(!hiding_buttons)
+		align_button(button)
 		client?.screen += button
 
 /**
@@ -96,8 +106,13 @@
 	var/list/atom/movable/screen/movable/action_button/buttons = all_action_buttons()
 	if(hiding_buttons)
 		client.screen -= buttons
+		if(!hide_toggle?.moved)
+			hide_toggle?.screen_loc = screen_loc_for_index(1)
 	else
+		align_buttons()
 		client.screen += buttons
+		if(!hide_toggle?.moved)
+			hide_toggle?.screen_loc = screen_loc_for_index(length(using_actions) + 1)
 	hide_toggle?.update_icon()
 
 /**
@@ -124,7 +139,7 @@
 		button.screen_loc = screen_loc_for_index(i)
 
 #define ACTION_DRAWER_WEST_OFFSET 4
-#define ACTION_DRAWER_NORTH_OFFSET 26
+#define ACTION_DRAWER_NORTH_OFFSET -4
 #define ACTION_DRAWER_MAX_COLUMNS 12
 #define ACTION_DRAWER_COLUMN_SPACING 2
 
@@ -132,10 +147,10 @@
  * generates screen location for a button at a specific index
  */
 /datum/action_drawer/proc/screen_loc_for_index(index)
-	var/row = ceil((index + 1) / ACTION_DRAWER_MAX_COLUMNS)
-	var/column = (index % ACTION_DRAWER_MAX_COLUMNS) || ACTION_DRAWER_MAX_COLUMNS
+	var/row = (ceil((index + 1) / ACTION_DRAWER_MAX_COLUMNS)) - 1
+	var/column = ((index % ACTION_DRAWER_MAX_COLUMNS) || ACTION_DRAWER_MAX_COLUMNS) - 1
 
-	return "LEFT+[column]:[ACTION_DRAWER_WEST_OFFSET + (column - 1) * ACTION_DRAWER_COLUMN_SPACING]\
+	return "LEFT+[column]:[ACTION_DRAWER_WEST_OFFSET + (column) * ACTION_DRAWER_COLUMN_SPACING]\
 			,TOP-[row]:[ACTION_DRAWER_NORTH_OFFSET]"
 
 BLOCK_BYOND_BUG_2072419

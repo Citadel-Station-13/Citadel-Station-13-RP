@@ -21,6 +21,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/movable/action_button)
 
 /atom/movable/screen/movable/action_button/Destroy()
 	holder = null
+	LAZYREMOVE(action.buttons, src)
 	action = null
 	return ..()
 
