@@ -359,7 +359,7 @@
 
 /datum/object_system/storage/proc/on_dropped(mob/user)
 	revoke_buttons(user)
-b
+
 /**
  * Called by our object when an item exits us
  */
@@ -1029,6 +1029,10 @@ b
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
 		if(transferring.loc != from_loc)
+			continue
+		// see if it can be picked up
+		if(!transferring.should_allow_pickup(actor, TRUE))
+			rejections_out += transferring
 			continue
 		// see if we can accept it
 		if(!try_insert(transferring, actor, TRUE, TRUE, TRUE))
@@ -1765,6 +1769,16 @@ b
 
 /atom/movable/storage_indirection/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return TRUE
+
+/atom/movable/storage_indirection/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(isitem(AM) && !isnull(obj_storage) && isnull(obj_storage.indirection))
+		obj_storage.on_item_exited(AM)
+
+/atom/movable/storage_indirection/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(isitem(AM) && !isnull(obj_storage) && isnull(obj_storage.indirection))
+		obj_storage.on_item_entered(AM)
 
 /atom/movable/storage_indirection/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
 	parent.on_contents_weight_class_change(item, old_weight_class, new_weight_class)

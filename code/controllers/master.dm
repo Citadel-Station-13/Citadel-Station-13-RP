@@ -155,6 +155,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
  * - -1 If we encountered a runtime trying to recreate it.
  */
 /proc/Recreate_MC()
+	usr = null // yeah let's not contaminate the MC call stack with our usr.
 	. = -1 // So if we runtime, things know we failed.
 	if (world.time < Master.restart_timeout)
 		return 0
