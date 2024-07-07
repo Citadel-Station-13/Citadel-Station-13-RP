@@ -18,7 +18,7 @@
  */
 /mob/proc/handle_abstract_slot_insertion(obj/item/I, slot, flags)
 	if(!ispath(slot, /datum/inventory_slot/abstract))
-		slot = resolve_inventory_slot_meta(slot)?.type
+		slot = resolve_inventory_slot(slot)?.type
 		if(!ispath(slot, /datum/inventory_slot/abstract))
 			stack_trace("invalid slot: [slot]")
 		else if(slot != /datum/inventory_slot/abstract/put_in_hands)
@@ -30,18 +30,27 @@
 		if(/datum/inventory_slot/abstract/hand/right)
 			return put_in_right_hand(I, flags)
 		if(/datum/inventory_slot/abstract/put_in_belt)
-			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
-			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
+			var/obj/item/held = item_by_slot_id(SLOT_ID_BELT)
+			if(flags & INV_OP_FORCE)
+				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 		if(/datum/inventory_slot/abstract/put_in_backpack)
-			var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-			return istype(S) && S.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE)
+			var/obj/item/held = item_by_slot_id(SLOT_ID_BACK)
+			if(flags & INV_OP_FORCE)
+				return held?.obj_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+			return held?.obj_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 		if(/datum/inventory_slot/abstract/put_in_hands)
 			return put_in_hands(I, flags)
 		if(/datum/inventory_slot/abstract/put_in_storage, /datum/inventory_slot/abstract/put_in_storage_try_active)
 			if(slot == /datum/inventory_slot/abstract/put_in_storage_try_active)
-				if(s_active && Adjacent(s_active) && s_active.try_insert(I, src, flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
-					return TRUE
-			for(var/obj/item/storage/S in get_equipped_items_in_slots(list(
+				// todo: redirection
+				if(flags & INV_OP_FORCE)
+					if(active_storage?.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING))
+						return TRUE
+				else
+					if(active_storage?.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND))
+						return TRUE
+			for(var/obj/item/held in get_equipped_items_in_slots(list(
 				SLOT_ID_BELT,
 				SLOT_ID_BACK,
 				SLOT_ID_UNIFORM,
@@ -49,8 +58,11 @@
 				SLOT_ID_LEFT_POCKET,
 				SLOT_ID_RIGHT_POCKET
 			)) + get_held_items())
-				if(S.try_insert(I, src, INV_OP_SUPPRESS_WARNING, flags & INV_OP_FORCE))
-					return TRUE
+				if(isnull(held?.obj_storage))
+					continue
+				if(flags & INV_OP_FORCE)
+					return held.obj_storage.insert(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_SOUND)
+				return held.obj_storage.auto_handle_interacted_insertion(I, new /datum/event_args/actor(src), flags & INV_OP_SUPPRESS_WARNING, flags & INV_OP_SUPPRESS_SOUND)
 			return FALSE
 		if(/datum/inventory_slot/abstract/attach_as_accessory)
 			for(var/obj/item/clothing/C in get_equipped_items())
