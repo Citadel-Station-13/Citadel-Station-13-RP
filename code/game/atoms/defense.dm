@@ -74,9 +74,19 @@
  * * def_zone - impacting zone; calculated by projectile side, usually
  */
 /atom/proc/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
-	P.on_hit(src, 0, def_zone)
-	. = 0
-#warn impl
+	// lower calls & can change flags before we trigger
+	// 0. fire signal
+	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, args)
+	// 1. fire shieldcalls
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		switch(shieldcall.handle_bullet_act(src, args))
+			if(SHIELDCALL_RETURN_TERMINATE)
+				break
+	// 2. check if we're still hitting
+	if(impact_flags & (PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT | PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE))
+		return impact_flags
+	// we are hitting; gather flags as needed
+	return proj.on_impact(src, impact_flags, def_zone)
 
 /atom/proc/bullet_act()
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -478,6 +488,7 @@
 /atom/proc/generate_armor()
 	return fetch_armor_struct(armor_type)
 
+// todo: rework this maybe
 /**
  * calculates the resulting damage from an attack, taking into account our armor and soak
  *
@@ -495,6 +506,7 @@
 	damage = fetch_armor().resultant_damage(damage, tier, flag)
 	return args.Copy()
 
+// todo: rework this maybe
 /**
  * runs armor against an incoming attack
  * this proc can have side effects
@@ -515,6 +527,7 @@
 
 //? shieldcalls
 
+// todo: rework this
 /**
  * checks for shields
  * not always accurate
@@ -537,9 +550,10 @@
 /atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
 	retval |= SHIELDCALL_JUST_CHECKING
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
-		calling.handle_shieldcall(src, args)
+		calling.handle_shieldcall(src, args, TRUE)
 	return args.Copy()
 
+// todo: rework this
 /**
  * runs an attack against shields
  * side effects are allowed

@@ -66,10 +66,10 @@
 	return TRUE
 
 /obj/effect/directional_shield/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT
 	. = ..()
 	adjust_health(-P.get_structure_damage())
 	playsound(src, 'sound/effects/EMPulse.ogg', 75, 1)
-	return PROJECTILE_IMPACT_FORCED
 
 // All the shields tied to their projector are one 'unit', and don't have individualized health values like most other shields.
 /obj/effect/directional_shield/proc/adjust_health(amount)

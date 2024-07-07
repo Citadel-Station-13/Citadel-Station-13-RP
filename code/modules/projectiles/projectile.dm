@@ -49,6 +49,9 @@
 	var/pass_flags_phase = NONE
 	/// number of times we've pierced something. Incremented BEFORE bullet_act and similar procs run!
 	var/pierces = 0
+	/// What we already hit
+	/// initialized on fire()
+	var/list/impacted
 
 	//* Configuration *//
 
@@ -192,7 +195,6 @@
 	var/xo = null
 	var/atom/original = null // the original target clicked
 	var/turf/starting = null // the projectile's starting turf
-	var/list/permutated = list() // we've passed through these atoms, don't try to hit them again
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
 
@@ -286,6 +288,7 @@
 	..()
 	if(isliving(AM) && !check_pass_flags(ATOM_PASS_MOB))
 		var/mob/living/L = AM
+
 		if(can_hit_target(L, permutated, (AM == original)))
 			Bump(AM)
 
@@ -308,12 +311,15 @@
 		// todo: this should make a muzzle flash
 		qdel(src)
 		return
+	impacted = list()
 	//If no angle needs to resolve it from xo/yo!
 	if(direct_target)
-		direct_target.bullet_act(src, def_zone)
-		// todo: this should make a muzzle flash
-		qdel(src)
-		return
+		if(direct_target.new_bullet_act(src, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
+			impacted[direct_target] = TRUE
+		else
+			// todo: this should make a muzzle flash
+			qdel(src)
+			return
 	if(isnum(set_angle_to))
 		set_angle(set_angle_to)
 
@@ -332,7 +338,6 @@
 		set_angle(angle + rand(-dispersion, dispersion))
 	original_angle = angle
 	forceMove(starting)
-	permutated = list()
 	fired = TRUE
 	// kickstart
 	if(hitscan)
@@ -457,6 +462,8 @@
 	return TRUE
 
 /obj/projectile/Bump(atom/A)
+	#warn ugh
+
 	if(A in permutated)
 		trajectory_ignore_forcemove = TRUE
 		forceMove(get_turf(A))
@@ -921,7 +928,41 @@
  */
 /obj/projectile/proc/impact(atom/target, impact_flags, def_zone)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn impl
+
+	if(impacted[target])
+		return impact_flags | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_DUPLICATE
+	impact_flags = pre_impact(target, impact_flags, def_zone)
+	var/keep_going
+
+	// priority 1: delete?
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
+		qdel(src)
+		return impact_flags
+	// priority 2: should we hit?
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT)
+		keep_going = TRUE
+		// phasing?
+		if(impact_flags & PROJECTILE_IMPACT_PHASE)
+			impact_flags = on_phase(target, impact_flags, def_zone)
+		// reflect?
+		else if(impact_flags & PROJECTILE_IMPACT_REFLECT)
+			impact_flags = on_reflect(target, impact_flags, def_zone)
+		// else, is passthrough. do nothing
+	else
+		impact_flags = target.new_bullet_act(src, impact_flags, def_zone)
+		// did we pierce?
+		if(impact_flags & PROJECTILE_IMPACT_PIERCE)
+			keep_going = TRUE
+			impact_flags = on_pierce(target, impact_flags, def_zone)
+
+	// did anything triggered up above trigger a delete?
+	if(impact_flags & PROJECTILE_IMPACT_DELETE)
+		qdel(src)
+		return impact_flags
+
+	#warn insert rest of behavior here
+
+	return impact_flags
 
 /**
  * Called at the start of impact.
@@ -932,15 +973,19 @@
  * @return new impact_flags
  */
 /obj/projectile/proc/pre_impact(atom/target, impact_flags, def_zone)
-	#warn impl
+	if(target.pass_flags_self & pass_flags_phase)
+		return impact_flags | PROJECTILE_IMPACT_PHASE
+	if(target.pass_flags_self & pass_flags_pierce)
+		return impact_flags | PROJECTILE_IMPACT_PIERCE
+	return impact_flags
 
 /**
  * Called after bullet_act() of the target.
  *
  * * Please take into account impact_flags.
- * * Hooks to return more flags / whatnot should happen here, like forcing a projectile to pierce.
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
  *
- * @return new impact_flags
+ * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
  */
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone)
 	#warn impl
@@ -954,11 +999,43 @@
  *
  * * You **must** use this, not just `return target.bullet_act(arglist(args))`
  * * This does book-keeping like adding the target to permutated, ensure the target can't be hit multiple times in a row, and more.
+ * * Don't be too funny about bullet_act_args, it's a directly passed in args list. Don't be stupid.
  */
 /obj/projectile/proc/impact_redirect(atom/target, list/bullet_act_args)
-	#warn impl
+	if(impacted[target])
+		return bullet_act_args[BULLET_ACT_ARG_FLAGS] | PROJECTILE_IMPACT_DUPLICATE
+	bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECITLE_IMPACT_INDIRECTED
+	return target.bullet_act(arglist(bullet_act_args))
 
-#warn impl all
+/**
+ * phasing through
+ *
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ *
+ * @return new impact flags; only PROJETILE_IMPACT_DELETE is rechecked.
+ */
+/obj/projectile/proc/on_phase(atom/target, impact_flags, def_zone)
+	return impact_flags
+
+/**
+ * reflected off of
+ *
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ *
+ * @return new impact flags; only PROJETILE_IMPACT_DELETE is rechecked.
+ */
+/obj/projectile/proc/on_reflect(atom/target, impact_flags, def_zone)
+	return impact_flags
+
+/**
+ * piercing through
+ *
+ * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ *
+ * @return new impact flags; only PROJETILE_IMPACT_DELETE is rechecked.
+ */
+/obj/projectile/proc/on_pierce(atom/target, impact_flags, def_zone)
+	return impact_flags
 
 //* Physics - Configuration *//
 

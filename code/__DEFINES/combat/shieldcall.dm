@@ -1,11 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-//? keys for list/additional in atom_shieldcall
+//* keys for list/additional in atom_shieldcall *//
 
 // None yet
 
-//? shieldcall "struct" - this *must* match up with /atom/proc/run/check_shieldcall!
+//* shieldcall "struct" - this *must* match up with /atom/proc/run/check_shieldcall! *//
 
 /// damage amount
 #define SHIELDCALL_ARG_DAMAGE 1
@@ -26,19 +26,13 @@
 /// flags returned
 #define SHIELDCALL_ARG_RETVAL 9
 
-//? shieldcall additional data keys
+//* shieldcall additional data keys *//
 
 // none yet
 
-//? shieldcall return flags
+//* shieldcall return enum *//
 
-/// abort further shieldcalls - hit is totally blocked or mitigated
-#define SHIELDCALL_FULLY_MITIGATED (1<<0)
-/// hit was partially blocked or mitigated
-#define SHIELDCALL_PARTIALLY_MITIGATED (1<<1)
-/// attack was forcefully missed e.g. by reactive teleport armor
-#define SHIELDCALL_FORCED_MISS (1<<2)
-/// fake; this is a check
-#define SHIELDCALL_JUST_CHECKING (1<<3)
-/// terminate further shieldcalls
-#define SHIELDCALL_CEASE (1<<4)
+/// keep calling
+#define SHIELDCALL_RETURN_NORMAL 0
+/// terminate; either fully mitigated or we're done here
+#define SHIELDCALL_RETURN_TERMINATE 1

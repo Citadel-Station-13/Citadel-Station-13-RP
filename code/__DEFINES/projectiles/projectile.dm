@@ -9,7 +9,7 @@
 /// piercing hit; if returned, forces pierce for current impact
 ///
 /// * projectile has the right to perform special behavior like reducing damage after the impact
-#define PROJECTILE_IMPACT_PIERCING (1<<1)
+#define PROJECTILE_IMPACT_PIERCE (1<<1)
 /// was blocked from directly hitting target
 ///
 /// * on impact probably shouldn't do direct damage, but explosive rounds will explode, etc
@@ -28,29 +28,28 @@
 /// * projectile is not deleted like in PIERCING or PHASE
 /// * fires off on_reflect()
 #define PROJECTILE_IMPACT_REFLECT (1<<5)
-/// signifies to disallow piercing/phasing
-///
-/// * projectile will / should immediately impact without piercing/phasing and delete
-#define PROJECTILE_IMPACT_FORCED (1<<6)
 /// we should pass through without interaction
 ///
 /// * bullet_act(), on_impact(), on_reflect(), and on_phase() will all be cancelled by this.
-#define PROJECTILE_IMPACT_PASSTHROUGH (1<<7)
+#define PROJECTILE_IMPACT_PASSTHROUGH (1<<6)
 /// instructs piercing projectiles that support this
 /// to not reduce damage because the impact was so trivial
 /// compared to the force of the projectile
-#define PROJECTILE_IMPACT_TRIVIAL (1<<8)
+#define PROJECTILE_IMPACT_TRIVIAL (1<<7)
+/// aborting duplicate impact due to already being in impacted list of projectile
+#define PROJECTILE_IMPACT_DUPLICATE (1<<8)
+/// passed from another bullet_act(),
+/// like from a target stake to the mounted target
+#define PROJECTILE_IMPACT_INDIRECTED (1<<9)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)
-/// any of these means the projectile should impact always
-#define PROJECTILE_IMPACT_FLAGS_SHOULD_IMPACT (PROJECTILE_IMPACT_FORCED)
-/// any of these means the projectile should pass through without impacting
-#define PROJECTILE_IMPACT_FLAGS_SHOULD_NO_HIT (PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH)
+/// any of these means the projectile should not impact
+#define PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT (PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH)
+/// any of these means don't just delete after hit
+#define PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH (PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_PIERCE)
 /// any of these means the projectile should pass through by piercing the entity
-#define PROJECTILE_IMPACT_FLAGS_SHOULD_PIERCE (PROJECTILE_IMPACT_PIERCING)
-/// any of these is a good idea to abort bullet_act / anything in progress
-#define PROJECTILE_IMPACT_FLAGS_ABORT_BULLET_ACT (PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE | PROJETILE_IMPACT_FLAGS_SHOULD_NO_HIT)
+#define PROJECTILE_IMPACT_FLAGS_SHOULD_PIERCE (PROJECTILE_IMPACT_PIERCE)
 
 //* projectile_type bitfield *//
 
