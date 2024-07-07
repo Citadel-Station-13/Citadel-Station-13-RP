@@ -494,6 +494,8 @@
 /atom/proc/generate_armor()
 	return fetch_armor_struct(armor_type)
 
+#warn rework armor / shield calls
+
 // todo: rework this maybe
 /**
  * calculates the resulting damage from an attack, taking into account our armor and soak
