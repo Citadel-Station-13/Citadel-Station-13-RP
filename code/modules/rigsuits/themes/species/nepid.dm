@@ -7,7 +7,7 @@
 	armor = /datum/armor/rigsuit/species/nepid
 
 /datum/armor/rigsuit/species/nepid
-	melee = 0.1
+	melee = 0.15
 	melee_tier = MELEE_TIER_HEAVY
 	melee_soak = 0
 	melee_deflect = 5
@@ -15,7 +15,7 @@
 	bullet_tier = BULLET_TIER_MEDIUM
 	bullet_soak = 0
 	bullet_deflect = 5
-	laser = 0.1
+	laser = 0.15
 	laser_tier = LASER_TIER_HIGH
 	laser_soak = 3
 	laser_deflect = 0

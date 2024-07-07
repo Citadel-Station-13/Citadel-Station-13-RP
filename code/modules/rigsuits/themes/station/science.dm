@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /datum/armor/rigsuit/station/science
-	melee = 0.15
+	melee = 0.25
 	melee_tier = MELEE_TIER_MEDIUM
 	melee_soak = 0
 	melee_deflect = 5
@@ -10,7 +10,7 @@
 	bullet_tier = BULLET_TIER_MEDIUM
 	bullet_soak = 0
 	bullet_deflect = 3
-	laser = 0.05
+	laser = 0.1
 	laser_tier = LASER_TIER_HIGH
 	laser_soak = 5
 	laser_deflect = 5
@@ -44,9 +44,9 @@ AUTO_RIG_THEME(/station/science/standard)
 	online_encumbrance = 40 // it's a bombsuit.
 
 /datum/armor/rigsuit/station/science/anomaly
-	melee = 0.05
+	melee = 0.1
 	melee_tier = MELEE_TIER_HEAVY
-	bullet = 0.05
+	bullet = 0.1
 	bullet_tier = BULLET_TIER_HIGH
 	laser_soak = 5
 	energy = 0.55
