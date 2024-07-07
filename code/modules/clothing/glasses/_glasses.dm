@@ -432,18 +432,21 @@ BLIND     // can't see anything
 	. = ..()
 	if(.)
 		return
-	toggle()
+	toggle(user)
 
 /obj/item/clothing/glasses/welding/update_icon_state()
 	icon_state = "[base_icon_state || initial(icon_state)][up ? "up" : ""]"
 	return ..()
 
-/obj/item/clothing/glasses/welding/verb/toggle()
+/obj/item/clothing/glasses/welding/verb/toggle_verb()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust welding goggles"
 	set src in usr
 
-	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
+	toggle(usr)
+
+/obj/item/clothing/glasses/welding/proc/toggle(mob/user)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		return
 
 	if(src.up)

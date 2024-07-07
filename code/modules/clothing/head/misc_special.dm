@@ -35,39 +35,44 @@
 	. = ..()
 	if(.)
 		return
-	toggle()
+	toggle(user)
 
 
-/obj/item/clothing/head/welding/verb/toggle()
+/obj/item/clothing/head/welding/verb/toggle_verb()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust welding mask"
 	set src in usr
 
+	toggle(usr)
+
+/obj/item/clothing/head/welding/proc/toggle(mob/user)
 	if(!base_state)
 		base_state = icon_state
 
-	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
-		if(src.up)
-			src.up = !src.up
-			body_cover_flags |= (EYES|FACE)
-			inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-			icon_state = base_state
-			flash_protection = FLASH_PROTECTION_MAJOR
-			tint = initial(tint)
-			to_chat(usr, "You flip the [src] down to protect your eyes.")
-		else
-			src.up = !src.up
-			body_cover_flags &= ~(EYES|FACE)
-			inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-			icon_state = "[base_state]up"
-			flash_protection = FLASH_PROTECTION_NONE
-			tint = TINT_NONE
-			to_chat(usr, "You push the [src] up out of your face.")
-		update_worn_icon()	//so our mob-overlays
-		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
-			var/mob/M = src.loc
-			M.update_inv_wear_mask()
-		update_action_buttons()
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
+		return
+
+	if(src.up)
+		src.up = !src.up
+		body_cover_flags |= (EYES|FACE)
+		inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+		icon_state = base_state
+		flash_protection = FLASH_PROTECTION_MAJOR
+		tint = initial(tint)
+		to_chat(usr, "You flip the [src] down to protect your eyes.")
+	else
+		src.up = !src.up
+		body_cover_flags &= ~(EYES|FACE)
+		inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+		icon_state = "[base_state]up"
+		flash_protection = FLASH_PROTECTION_NONE
+		tint = TINT_NONE
+		to_chat(usr, "You push the [src] up out of your face.")
+	update_worn_icon()	//so our mob-overlays
+	if (ismob(src.loc)) //should allow masks to update when it is opened/closed
+		var/mob/M = src.loc
+		M.update_inv_wear_mask()
+	update_action_buttons()
 
 /obj/item/clothing/head/welding/demon
 	name = "demonic welding helmet"
