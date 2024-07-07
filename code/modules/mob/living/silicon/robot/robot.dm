@@ -533,11 +533,12 @@
 /mob/living/silicon/robot/restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(var/obj/projectile/Proj)
-	..(Proj)
-	if(prob(75) && Proj.damage > 0)
+/mob/living/silicon/robot/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+	if(. & (PROJECTILE_IMPACT_FLAGS_NO_HIT))
+		return
+	if(prob(75) && proj.damage > 0)
 		spark_system.start()
-	return 2
 
 /mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do

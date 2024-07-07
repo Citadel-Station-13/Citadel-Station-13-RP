@@ -155,18 +155,18 @@
 /mob/living/silicon/IsAdvancedToolUser()
 	return 1
 
-/mob/living/silicon/bullet_act(var/obj/projectile/Proj)
-
-	if(!Proj.nodamage)
-		switch(Proj.damage_type)
+/mob/living/silicon/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+	if(!proj.nodamage)
+		switch(proj.damage_type)
 			if(BRUTE)
-				adjustBruteLoss(Proj.get_final_damage(src))
+				adjustBruteLoss(proj.get_final_damage(src))
 			if(BURN)
-				adjustFireLoss(Proj.get_final_damage(src))
+				adjustFireLoss(proj.get_final_damage(src))
 
-	Proj.on_hit(src,2)
+	#warn not this
+	proj.on_hit(src,2)
 	update_health()
-	return 2
 
 /mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0, var/check_protection = 1)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now

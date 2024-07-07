@@ -58,7 +58,15 @@
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
- * WIP
+ * Because this is the proc that calls on_impact(), handling is necessarily
+ * done in here for a lot of things.
+ *
+ * Overrides should modify proc args directly (e.g. impact_flags) and then call ..()
+ * if it needs to be taken account by default handling.
+ *
+ * Overrides can, but generally shouldn't modify the return value after ..() instead of before,
+ * as the main processing will ignore said changes. Do not edit impact_flags arg after ..(),
+ * as it won't propagate to the `.`  (default return) variable after.
  *
  * @params
  * * proj - the projectile

@@ -42,13 +42,13 @@
 	interaction_message = "<span class='notice'>The object remains inert to your touch.</span>"
 
 /obj/structure/prop/lock/projectile/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
-	if(!istype(Proj, projectile_key))
+	if(!istype(proj, projectile_key))
 		return ..()
 
 	if(timing)
 		return PROJECTILE_IMPACT_DELETE
 
-	if(istype(Proj, /obj/projectile/beam/heavylaser/cannon) || istype(Proj, /obj/projectile/beam/emitter) || (Proj.damage >= 80 && Proj.damtype == BURN))
+	if(istype(proj, /obj/projectile/beam/heavylaser/cannon) || istype(proj, /obj/projectile/beam/emitter) || (proj.damage >= 80 && proj.damtype == BURN))
 		toggle_lock()
 		visible_message("<span class='notice'>\The [src] [enabled ? "disengages" : "engages"] its locking mechanism.</span>")
 

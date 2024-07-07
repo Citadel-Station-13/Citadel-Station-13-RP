@@ -118,8 +118,8 @@
 	return
 
 /obj/machinery/power/am_control_unit/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
-	if(Proj.damage_flag != ARMOR_BULLET)
-		stability -= Proj.damage
+	if(proj.damage_flag != ARMOR_BULLET)
+		stability -= proj.damage
 	return ..()
 
 /obj/machinery/power/am_control_unit/power_change()

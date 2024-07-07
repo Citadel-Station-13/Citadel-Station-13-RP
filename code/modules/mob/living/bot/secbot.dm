@@ -226,9 +226,9 @@
 	if(health < curhealth && on == TRUE)
 		react_to_attack_polaris(user)
 
-/mob/living/bot/secbot/bullet_act(var/obj/projectile/P)
+/mob/living/bot/secbot/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	var/curhealth = health
-	var/mob/shooter = P.firer
+	var/mob/shooter = proj.firer
 	. = ..()
 	//if we already have a target just ignore to avoid lots of checking
 	if(!target && health < curhealth && shooter && (shooter in view(world.view, src)))

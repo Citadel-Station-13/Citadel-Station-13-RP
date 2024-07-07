@@ -201,26 +201,22 @@
 	check_health()
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/projectile/Proj)
-
+/obj/machinery/portable_atmospherics/hydroponics/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.get_trait(TRAIT_IMMUTABLE) > 0)
 		return
 
 	//Override for somatoray projectiles.
-	if(istype(Proj ,/obj/projectile/energy/floramut)&& prob(20))
-		if(istype(Proj, /obj/projectile/energy/floramut/gene))
-			var/obj/projectile/energy/floramut/gene/G = Proj
+	if(istype(proj ,/obj/projectile/energy/floramut)&& prob(20))
+		if(istype(proj, /obj/projectile/energy/floramut/gene))
+			var/obj/projectile/energy/floramut/gene/G = proj
 			if(seed)
 				seed = seed.diverge_mutate_gene(G.gene, get_turf(loc))	//get_turf just in case it's not in a turf.
 		else
 			mutate(1)
-			return
-	else if(istype(Proj ,/obj/projectile/energy/florayield) && prob(20))
+	else if(istype(proj ,/obj/projectile/energy/florayield) && prob(20))
 		yield_mod = min(10,yield_mod+rand(1,2))
-		return
-
-	..()
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)

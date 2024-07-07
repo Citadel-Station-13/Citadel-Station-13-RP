@@ -221,7 +221,7 @@
 
 /obj/machinery/shipsensors/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	. = ..()
-	take_damage_legacy(Proj.get_structure_damage())
+	take_damage_legacy(proj.get_structure_damage())
 
 /obj/machinery/shipsensors/proc/toggle()
 	if(!use_power && (health == 0 || !in_vacuum()))
