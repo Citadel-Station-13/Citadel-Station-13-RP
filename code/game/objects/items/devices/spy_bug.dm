@@ -109,14 +109,15 @@
 			qdel(src)
 		..()
 
-/obj/item/camerabug/bullet_act()
+/obj/item/camerabug/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	visible_message("The [src] lens shatters!")
 	new brokentype(get_turf(src))
 	if(linkedmonitor)
 		linkedmonitor.unpair(src)
 	linkedmonitor = null
-	spawn(0)
-	qdel(src)
 
 /obj/item/camerabug/Destroy()
 	if(linkedmonitor)

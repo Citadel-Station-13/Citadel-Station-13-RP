@@ -554,7 +554,6 @@
  * @return modified args as list
  */
 /atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
-	retval |= SHIELDCALL_JUST_CHECKING
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
 		calling.handle_shieldcall(src, args, TRUE)
 	return args.Copy()

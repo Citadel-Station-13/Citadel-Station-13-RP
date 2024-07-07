@@ -2538,6 +2538,7 @@
 #include "code\modules\clothing\masks\gasmask.dm"
 #include "code\modules\clothing\masks\miscellaneous.dm"
 #include "code\modules\clothing\masks\voice.dm"
+#include "code\modules\clothing\sets\armor\ablative.dm"
 #include "code\modules\clothing\shoes\_shoes.dm"
 #include "code\modules\clothing\shoes\boots.dm"
 #include "code\modules\clothing\shoes\colour.dm"
