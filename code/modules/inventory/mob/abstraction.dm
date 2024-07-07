@@ -84,13 +84,26 @@
 /**
  * checks for slot conflict
  */
-/mob/proc/inventory_slot_conflict_check(obj/item/I, slot)
-	if(_item_by_slot(slot))
-		return CAN_EQUIP_SLOT_CONFLICT_HARD
+/mob/proc/inventory_slot_conflict_check(obj/item/I, slot, flags)
+	var/obj/item/conflicting = _item_by_slot(slot)
+	if(conflicting)
+		if((flags & (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK)) == (INV_OP_CAN_DISPLACE | INV_OP_IS_FINAL_CHECK))
+			drop_item_to_ground(conflicting, INV_OP_FORCE)
+			if(_item_by_slot(slot))
+				return CAN_EQUIP_SLOT_CONFLICT_HARD
+		else
+			return CAN_EQUIP_SLOT_CONFLICT_HARD
 	switch(slot)
 		if(SLOT_ID_LEFT_EAR, SLOT_ID_RIGHT_EAR)
 			if(I.slot_flags & SLOT_TWOEARS)
 				if(_item_by_slot(SLOT_ID_LEFT_EAR) || _item_by_slot(SLOT_ID_RIGHT_EAR))
+					return CAN_EQUIP_SLOT_CONFLICT_SOFT
+			else
+				var/obj/item/left_ear = _item_by_slot(SLOT_ID_LEFT_EAR)
+				var/obj/item/right_ear = _item_by_slot(SLOT_ID_RIGHT_EAR)
+				if(left_ear && left_ear != INVENTORY_SLOT_DOES_NOT_EXIST && left_ear != I && left_ear.slot_flags & SLOT_TWOEARS)
+					return CAN_EQUIP_SLOT_CONFLICT_SOFT
+				else if(right_ear && right_ear != INVENTORY_SLOT_DOES_NOT_EXIST && right_ear != I && right_ear.slot_flags & SLOT_TWOEARS)
 					return CAN_EQUIP_SLOT_CONFLICT_SOFT
 	return CAN_EQUIP_SLOT_CONFLICT_NONE
 
@@ -108,7 +121,7 @@
  */
 /mob/proc/inventory_slot_semantic_conflict(obj/item/I, datum/inventory_slot/slot, mob/user)
 	. = FALSE
-	slot = resolve_inventory_slot_meta(slot)
+	slot = resolve_inventory_slot(slot)
 	return slot._equip_check(I, src, user)
 
 /**

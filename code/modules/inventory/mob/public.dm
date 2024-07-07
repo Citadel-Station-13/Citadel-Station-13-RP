@@ -110,7 +110,7 @@
 		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
 
-	var/datum/inventory_slot/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
 		. = FALSE
@@ -124,15 +124,11 @@
 			if(/datum/inventory_slot/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
 			if(/datum/inventory_slot/abstract/put_in_backpack)
-				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-				if(!istype(S))
-					return FALSE
-				return S.can_be_inserted(I, TRUE)
+				var/obj/item/thing = item_by_slot_id(SLOT_ID_BACK)
+				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
 			if(/datum/inventory_slot/abstract/put_in_belt)
-				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
-				if(!istype(S))
-					return FALSE
-				return S.can_be_inserted(I, TRUE)
+				var/obj/item/thing = item_by_slot_id(SLOT_ID_BACK)
+				return thing?.obj_storage?.can_be_inserted(I, new /datum/event_args/actor(user), TRUE)
 			if(/datum/inventory_slot/abstract/put_in_hands)
 				return (flags & INV_OP_FORCE) || !hands_full()
 		return TRUE
@@ -140,12 +136,12 @@
 	if(!inventory_slot_bodypart_check(I, slot, user, flags) && !(flags & INV_OP_FORCE))
 		return FALSE
 
-	var/conflict_result = inventory_slot_conflict_check(I, slot)
+	var/conflict_result = inventory_slot_conflict_check(I, slot, flags)
 	var/obj/item/to_wear_over
 
 	if((flags & INV_OP_IS_FINAL_CHECK) && conflict_result && (slot != SLOT_ID_HANDS))
 		// try to fit over
-		var/obj/item/conflicting = item_by_slot(slot)
+		var/obj/item/conflicting = item_by_slot_id(slot)
 		if(conflicting)
 			// there's something there
 			var/can_fit_over = I.equip_worn_over_check(src, slot, user, conflicting, flags)
@@ -291,7 +287,7 @@
  * @return TRUE/FALSE
  */
 /mob/proc/force_equip_to_slot(obj/item/I, slot, flags, mob/user)
-	return _equip_item(I, flags | INV_OP_FORCE, slot, user)
+	return _equip_item(I, flags | INV_OP_FORCE | INV_OP_CAN_DISPLACE, slot, user)
 
 /**
  * forcefully equips an item to a slot
@@ -336,11 +332,12 @@
 		return TRUE
 
 	if(!slot)
-		slot = slot_by_item(I)
+		slot = slot_id_by_item(I)
 
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+			var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
+			to_chat(user, SPAN_WARNING("[I] is stubbornly stuck [slot_meta.display_preposition] your [slot_meta.display_name]!"))
 		return FALSE
 
 	var/blocked_by

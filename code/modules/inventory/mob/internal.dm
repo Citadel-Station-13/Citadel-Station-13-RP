@@ -170,12 +170,17 @@
 		return FALSE
 
 	// resolve slot
-	var/datum/inventory_slot/slot_meta = resolve_inventory_slot_meta(slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// if it's abstract, we go there directly - do not use can_equip as that will just guess.
 		return handle_abstract_slot_insertion(I, slot, flags)
 
-	var/old_slot = slot_by_item(I)
+	// slots must have IDs.
+	ASSERT(!isnull(slot_meta.id))
+	// convert to ID after abstract slot checks
+	slot = slot_meta.id
+
+	var/old_slot = slot_id_by_item(I)
 
 	if(old_slot)
 		. = _handle_item_reequip(I, slot, old_slot, flags, user)
