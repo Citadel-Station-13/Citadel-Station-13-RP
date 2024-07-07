@@ -236,22 +236,6 @@
 	panel_open = panel_opened
 	update_appearance()
 
-/obj/machinery/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			if(prob(50))
-				qdel(src)
-				return
-		if(3.0)
-			if(prob(25))
-				qdel(src)
-				return
-		else
-	return
-
 /obj/machinery/vv_edit_var(var_name, new_value)
 	if(var_name == NAMEOF(src, use_power))
 		update_use_power(new_value)

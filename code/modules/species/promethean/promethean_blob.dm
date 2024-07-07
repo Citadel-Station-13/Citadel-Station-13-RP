@@ -195,11 +195,10 @@
 		set_light(max(1,min(5,rad_glow/15)), max(1,min(10,rad_glow/25)), color)
 		update_icon()
 
-/mob/living/simple_mob/slime/promethean/bullet_act(obj/projectile/P)
+/mob/living/simple_mob/slime/promethean/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(humanform)
-		return humanform.bullet_act(P)
-	else
-		return ..()
+		return proj.impact_redirect(humanform, args)
+	return ..()
 
 /mob/living/simple_mob/slime/promethean/death(gibbed, deathmessage = "rapidly loses cohesion, splattering across the ground...")
 	if(humanform)

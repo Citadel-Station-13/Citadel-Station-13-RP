@@ -101,12 +101,11 @@
 	..()
 
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
-/obj/vehicle_old/train/security/bullet_act(var/obj/projectile/Proj)
+/obj/vehicle_old/train/security/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(has_buckled_mobs() && prob(70))
-		var/mob/living/M = pick(buckled_mobs)
-		M.bullet_act(Proj)
-		return
-	..()
+		var/mob/buckled = pick(buckled_mobs)
+		return proj.impact_redirect(buckled, args)
+	return ..()
 
 /obj/vehicle_old/train/security/update_icon()
 	if(open)

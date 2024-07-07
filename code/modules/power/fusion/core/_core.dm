@@ -87,9 +87,10 @@ var/list/fusion_cores = list()
 		owned_field.AddParticles(name, quantity)
 		. = 1
 
-/obj/machinery/power/fusion_core/bullet_act(var/obj/projectile/Proj)
+/obj/machinery/power/fusion_core/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(owned_field)
-		. = owned_field.bullet_act(Proj)
+		return proj.impact_redirect(owned_field, args)
+	return ..()
 
 /obj/machinery/power/fusion_core/proc/set_strength(var/value)
 	value = clamp(value, MIN_FIELD_STR, MAX_FIELD_STR)

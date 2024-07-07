@@ -136,16 +136,6 @@
 		to_chat(user, "You short out the console's ID checking system. It's now available to everyone!")
 		return 1
 
-/obj/machinery/computer/shuttle_control/bullet_act(var/obj/projectile/Proj)
-	visible_message("\The [Proj] ricochets off \the [src]!")
-
-/obj/machinery/computer/shuttle_control/legacy_ex_act()
-	return
-
-/obj/machinery/computer/shuttle_control/emp_act()
-	return
-
-
 GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
 /hook/roundstart/proc/populate_dockingcodes()
 	for(var/paper in GLOB.papers_dockingcode)
