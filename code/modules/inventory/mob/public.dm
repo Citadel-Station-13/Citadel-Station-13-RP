@@ -11,6 +11,14 @@
 	return _item_by_slot(slot)	// why the needless indirection? so people don't override this for slots!
 
 /**
+ * get slot of item if it's equipped.
+ * null if not in inventory. SLOT_HANDS if held.
+ */
+/mob/proc/slot_id_by_item(obj/item/I)
+	return is_in_inventory(I) || null		// short circuited to that too
+									// if equipped/unequipped didn't set worn_slot well jokes on you lmfao
+
+/**
  * gets the primary item and nested items (e.g. gloves, magboots, accessories) in a slot
  * null if not in inventory, otherwise list
  * inhands do not count as inventory
@@ -38,14 +46,6 @@
 /mob/proc/is_wearing(obj/item/I)
 	var/slot = is_in_inventory(I)
 	return slot && (slot != SLOT_ID_HANDS)
-
-/**
- * get slot of item if it's equipped.
- * null if not in inventory. SLOT_HANDS if held.
- */
-/mob/proc/slot_by_item(obj/item/I)
-	return is_in_inventory(I) || null		// short circuited to that too
-									// if equipped/unequipped didn't set worn_slot well jokes on you lmfao
 
 /**
  * get all equipped items
@@ -424,6 +424,8 @@
 	if(!is_in_inventory(I))
 		return TRUE
 	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, FALSE, user)
+
+//* MasS Operations *//
 
 /**
  * drops everything in our inventory

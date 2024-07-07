@@ -225,4 +225,4 @@
 		affected = list(affected)
 	for(var/obj/item/I as anything in affected)
 		if(!inventory_slot_bodypart_check(I, I.worn_slot, null, INV_OP_SILENT))
-			drop_item_to_ground(I)
+			drop_item_to_ground(I, INV_OP_SILENT)

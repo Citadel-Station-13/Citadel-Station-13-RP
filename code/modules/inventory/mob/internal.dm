@@ -245,8 +245,8 @@
 	ASSERT(slot)
 	if(!old_slot)
 		// DO NOT USE _slot_by_item - at this point, the item has already been var-set into the new slot!
-		// slot_by_item however uses cached values still!
-		old_slot = slot_by_item(I)
+		// slot_id_by_item however uses cached values still!
+		old_slot = slot_id_by_item(I)
 		if(!old_slot)
 			// still not there, wasn't already in inv
 			return FALSE
