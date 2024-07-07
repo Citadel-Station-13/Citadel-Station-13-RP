@@ -125,8 +125,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 /obj/machinery/fire_alarm/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/fire_alarm/bullet_act()
-	return alarm()
+/obj/machinery/fire_alarm/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+	alarm()
 
 /obj/machinery/fire_alarm/emp_act(severity)
 	if(prob(50 / severity))

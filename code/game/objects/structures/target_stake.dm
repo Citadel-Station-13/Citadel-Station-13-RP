@@ -49,5 +49,5 @@
 
 /obj/structure/target_stake/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(pinned_target)
-		return pinned_target.new_bullet_act(arglist(args))
+		return proj.impact_redirect(pinned_target, args)
 	return ..()

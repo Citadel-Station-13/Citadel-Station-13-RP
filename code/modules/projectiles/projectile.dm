@@ -938,6 +938,19 @@
 /obj/projectile/proc/on_impact(atom/target, impact_flags, def_zone)
 	#warn impl
 
+/**
+ * called in bullet_act() to redirect our impact to another atom
+ *
+ * use like this:
+ *
+ * `return proj.impact_redirect(target, args)`
+ *
+ * * You **must** use this, not just `return target.bullet_act(arglist(args))`
+ * * This does book-keeping like adding the target to permutated, ensure the target can't be hit multiple times in a row, and more.
+ */
+/obj/projectile/proc/impact_redirect(atom/target, list/bullet_act_args)
+	#warn impl
+
 #warn impl all
 
 //* Physics - Configuration *//

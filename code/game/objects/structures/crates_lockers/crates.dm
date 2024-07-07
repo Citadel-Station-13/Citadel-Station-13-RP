@@ -263,9 +263,9 @@
 			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/projectile/Proj)
+/obj/structure/closet/crate/secure/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
-		return
+		return ..()
 
 	if(locked && tamper_proof && integrity <= Proj.damage)
 		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
@@ -273,7 +273,7 @@
 			var/turf/T = get_turf(src.loc)
 			explosion(T, 0, 0, 0, 1) // Non-damaging, but it'll alert security.
 			qdel(src)
-			return
+			return impact_flags
 		var/open_chance = rand(1,5)
 		switch(open_chance)
 			if(1)
@@ -289,12 +289,9 @@
 				qdel(src)
 			if(5)
 				visible_message("<font color='green'><b>The anti-tamper mechanism of [src] fails!</b></font>")
-		return
+		return impact_flags
 
-	..()
-
-	return
-
+	return ..()
 
 /obj/structure/closet/crate/plastic
 	name = "plastic crate"

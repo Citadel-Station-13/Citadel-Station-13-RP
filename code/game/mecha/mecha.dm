@@ -1120,16 +1120,15 @@
 	return
 
 
-/obj/mecha/bullet_act(var/obj/projectile/Proj) //wrapper
-	if(istype(Proj, /obj/projectile/test))
-		var/obj/projectile/test/Test = Proj
+/obj/mecha/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	if(istype(proj, /obj/projectile/test))
+		var/obj/projectile/test/Test = proj
 		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
 		return
 
-	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.damage_flag]).",1)
-	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
-	..()
-	return
+	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)
+	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(proj) //calls equipment
+	return ..()
 
 /obj/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]

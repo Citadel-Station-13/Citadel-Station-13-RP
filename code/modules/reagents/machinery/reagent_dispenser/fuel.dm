@@ -87,11 +87,11 @@
 /obj/structure/reagent_dispensers/fueltank/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	. = ..()
 	if(proj.get_structure_damage())
-		if(istype(Proj.firer))
-			message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
-			log_game("[key_name(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+		if(istype(proj.firer))
+			message_admins("[key_name_admin(proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+			log_game("[key_name(proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 
-		if(!istype(Proj ,/obj/projectile/beam/lasertag) && !istype(Proj ,/obj/projectile/beam/practice) )
+		if(!istype(proj ,/obj/projectile/beam/lasertag) && !istype(proj ,/obj/projectile/beam/practice) )
 			explode()
 
 /obj/structure/reagent_dispensers/fueltank/legacy_ex_act()

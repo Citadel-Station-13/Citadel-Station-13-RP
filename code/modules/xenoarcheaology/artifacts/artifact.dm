@@ -277,15 +277,15 @@
 
 /obj/machinery/artifact/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	. = ..()
-	if(istype(P,/obj/projectile/bullet))
+	if(istype(proj,/obj/projectile/bullet))
 		if(my_effect.trigger == TRIGGER_FORCE)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-	else if(istype(P,/obj/projectile/beam) ||\
-		istype(P,/obj/projectile/ion) ||\
-		istype(P,/obj/projectile/energy))
+	else if(istype(proj,/obj/projectile/beam) ||\
+		istype(proj,/obj/projectile/ion) ||\
+		istype(proj,/obj/projectile/energy))
 		if(my_effect.trigger == TRIGGER_ENERGY)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))

@@ -32,6 +32,14 @@
 ///
 /// * projectile will / should immediately impact without piercing/phasing and delete
 #define PROJECTILE_IMPACT_FORCED (1<<6)
+/// we should pass through without interaction
+///
+/// * bullet_act(), on_impact(), and on_phase() will all be cancelled by this.
+#define PROJECTILE_IMPACT_PASSTHROUGH (1<<7)
+/// instructs piercing projectiles that support this
+/// to not reduce damage because the impact was so trivial
+/// compared to the force of the projectile
+#define PROJECTILE_IMPACT_TRIVIAL (1<<8)
 
 //* projectile_type bitfield *//
 

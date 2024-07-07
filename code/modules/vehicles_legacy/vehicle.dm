@@ -125,7 +125,7 @@
 
 /obj/vehicle_old/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	. = ..()
-	health -= Proj.get_structure_damage()
+	health -= proj.get_structure_damage()
 	healthcheck()
 
 /obj/vehicle_old/proc/adjust_health(amount)

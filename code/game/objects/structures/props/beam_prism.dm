@@ -128,7 +128,7 @@
 	if(((proj.projectile_type & projectile_type) != projectile_type) || (proj.projectile_type & projectile_type_cant))
 		return ..()
 	if(!silent)
-		visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
+		visible_message("<span class='danger'>\The [src] redirects \the [proj]!</span>")
 	flick("[initial(icon_state)]+glow", src)
 
 	#warn test this lol

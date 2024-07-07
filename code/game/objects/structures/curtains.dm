@@ -7,19 +7,15 @@
 	opacity = 1
 	density = 0
 	anchored = TRUE
+	integrity = 40
+	integrity_failure = 30
+	integrity_max = 40
 
 /obj/structure/curtain/open
 	icon_state = "open"
 	plane = OBJ_PLANE
 	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
 	opacity = 0
-
-/obj/structure/curtain/bullet_act(obj/projectile/P, def_zone)
-	if(!P.nodamage)
-		visible_message("<span class='warning'>[P] tears [src] down!</span>")
-		qdel(src)
-	else
-		..(P, def_zone)
 
 /obj/structure/curtain/attack_hand(mob/user, list/params)
 	playsound(get_turf(loc), "rustle", 15, 1, -5)

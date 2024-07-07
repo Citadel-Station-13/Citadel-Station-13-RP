@@ -18,6 +18,8 @@
 	wires = new(src)
 
 /obj/effect/mine/proc/explode(var/mob/living/M)
+	if(QDELETED(src))
+		return
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
 	triggered = 1
 	s.set_up(3, 1, src)
@@ -27,8 +29,9 @@
 	qdel(s)
 	qdel(src)
 
-/obj/effect/mine/bullet_act()
-	if(prob(50))
+/obj/effect/mine/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+	spawn(0)
 		explode()
 
 /obj/effect/mine/legacy_ex_act(severity)
