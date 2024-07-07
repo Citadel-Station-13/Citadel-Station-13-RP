@@ -40,9 +40,9 @@
  * makes sure everything that should be in screen is in screen
  */
 /datum/action_drawer/proc/reassert_screen()
-	client.screen |= hide_toggle
+	client.screen |= all_action_buttons()
 	if(length(using_actions))
-		client.screen |= all_action_buttons()
+		client.screen |= hide_toggle
 
 /**
  * adds a holder
