@@ -7,7 +7,7 @@
  * gets the primary item in a slot
  * null if not in inventory. inhands don't count as inventory here, use held item procs.
  */
-/mob/proc/item_by_slot(slot)
+/mob/proc/item_by_slot_id(slot)
 	return _item_by_slot(slot)	// why the needless indirection? so people don't override this for slots!
 
 /**
@@ -23,7 +23,7 @@
  * null if not in inventory, otherwise list
  * inhands do not count as inventory
  */
-/mob/proc/items_by_slot(slot)
+/mob/proc/items_by_slot_id(slot)
 	var/obj/item/I = _item_by_slot(slot)
 	if(!I)
 		return list()

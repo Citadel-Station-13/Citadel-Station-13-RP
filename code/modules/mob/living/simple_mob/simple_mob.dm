@@ -14,7 +14,7 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
-	//? Attacks - Basic
+	//* Attacks - Basic *//
 	/// melee style
 	var/datum/unarmed_attack/melee_style
 
@@ -22,7 +22,7 @@
 	/// our innate darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
 
-	//? Inventory
+	//* Inventory *//
 	/// how many hands we have
 	var/hand_count = 0
 

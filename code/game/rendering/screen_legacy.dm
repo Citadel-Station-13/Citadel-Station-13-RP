@@ -1,6 +1,3 @@
-/atom/movable/screen/Destroy()
-	master = null
-	return ..()
 
 /atom/movable/screen/text
 	icon = null
