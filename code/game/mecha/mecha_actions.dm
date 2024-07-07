@@ -20,14 +20,14 @@
 		lights_action,
 		stats_action,
 		strafing_action,
-		defence_action,
-		smoke_action,
-		zoom_action,
-		thrusters_action,
-		phasing_action,
-		switch_damtype_action,
-		overload_action,
-		cloak_action,
+		defence_mode_possible && defence_action,
+		overload_possible && overload_action,
+		smoke_possible && smoke_action,
+		zoom_possible && zoom_action,
+		thrusters_possible && thrusters_action,
+		phasing_possible && phasing_action,
+		switch_dmg_type_possible && switch_damtype_action,
+		cloak_possible && cloak_action,
 	))
 		action.grant(user.actions_controlled)
 

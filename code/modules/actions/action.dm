@@ -284,7 +284,8 @@
  * grant us to an action holder
  */
 /datum/action/proc/grant(datum/action_holder/holder)
-	ASSERT(!(src in holder.actions))
+	if(src in holder.actions)
+		return
 	LAZYADD(holders, holder)
 	LAZYADD(holder.actions, src)
 	holder.on_action_add(src)
@@ -293,7 +294,8 @@
  * remove us from an action holder
  */
 /datum/action/proc/revoke(datum/action_holder/holder)
-	ASSERT(src in holder.actions)
+	if(!(src in holder.actions))
+		return
 	LAZYREMOVE(holders, holder)
 	LAZYREMOVE(holder.actions, src)
 	holder.on_action_remove(src)
