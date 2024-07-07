@@ -74,16 +74,22 @@
  * * def_zone - impacting zone; calculated by projectile side, usually
  */
 /atom/proc/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
-	// lower calls & can change flags before we trigger
+	// lower calls can change flags before we trigger
+	// check if we're still hitting
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return impact_flags
 	// 0. fire signal
 	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, args)
+	// check if we're still hitting
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return impact_flags
 	// 1. fire shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		switch(shieldcall.handle_bullet_act(src, args))
+		switch(shieldcall.handle_bullet(src, args))
 			if(SHIELDCALL_RETURN_TERMINATE)
 				break
-	// 2. check if we're still hitting
-	if(impact_flags & (PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT | PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE))
+	// check if we're still hitting
+	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return impact_flags
 	// we are hitting; gather flags as needed
 	return proj.on_impact(src, impact_flags, def_zone)
@@ -527,7 +533,7 @@
 
 //? shieldcalls
 
-// todo: rework this
+// todo: rework this maybe; this doesn't work too well for all types
 /**
  * checks for shields
  * not always accurate
@@ -553,7 +559,7 @@
 		calling.handle_shieldcall(src, args, TRUE)
 	return args.Copy()
 
-// todo: rework this
+// todo: rework this maybe; this doesn't work too well for all types
 /**
  * runs an attack against shields
  * side effects are allowed

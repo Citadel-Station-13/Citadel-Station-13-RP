@@ -38,5 +38,5 @@
  *
  * @return SHIELDCALL_STATUS_* enum
  */
-/datum/shieldcall/proc/handle_bullet_act(atom/defending, list/bullet_act_args, fake_attack)
+/datum/shieldcall/proc/handle_bullet(atom/defending, list/bullet_act_args, fake_attack)
 	return

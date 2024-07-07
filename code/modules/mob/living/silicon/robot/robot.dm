@@ -535,8 +535,9 @@
 
 /mob/living/silicon/robot/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	. = ..()
-	if(. & (PROJECTILE_IMPACT_FLAGS_NO_HIT))
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
+	// todo: why is this in bullet act and not where we take damage maybe?
 	if(prob(75) && proj.damage > 0)
 		spark_system.start()
 

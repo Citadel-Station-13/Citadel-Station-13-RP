@@ -179,9 +179,9 @@
 
 /mob/living/simple_mob/humanoid/merc/melee/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(prob(35))
-		visible_message("<span class='warning'>[src] blocks [Proj] with its shield!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack_polaris(Proj.firer)
+		visible_message("<span class='warning'>[src] blocks [proj] with its shield!</span>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
 		return PROJECTILE_IMPACT_BLOCKED
 	return ..()
 
@@ -696,9 +696,9 @@
 
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
 	if(prob(35))
-		visible_message("<span class='warning'>[src] blocks [Proj] with its sword!</span>")
-		if(Proj.firer)
-			ai_holder.react_to_attack_polaris(Proj.firer)
+		visible_message("<span class='warning'>[src] blocks [proj] with its sword!</span>")
+		if(proj.firer)
+			ai_holder.react_to_attack_polaris(proj.firer)
 		return PROJECTILE_IMPACT_BLOCKED
 	return ..()
 
