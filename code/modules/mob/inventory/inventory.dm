@@ -526,6 +526,13 @@
 			if(I.slot_flags & SLOT_TWOEARS)
 				if(_item_by_slot(SLOT_ID_LEFT_EAR) || _item_by_slot(SLOT_ID_RIGHT_EAR))
 					return CAN_EQUIP_SLOT_CONFLICT_SOFT
+			else
+				var/obj/item/left_ear = _item_by_slot(SLOT_ID_LEFT_EAR)
+				var/obj/item/right_ear = _item_by_slot(SLOT_ID_RIGHT_EAR)
+				if(left_ear && left_ear != INVENTORY_SLOT_DOES_NOT_EXIST && left_ear != I && left_ear.slot_flags & SLOT_TWOEARS)
+					return CAN_EQUIP_SLOT_CONFLICT_SOFT
+				else if(right_ear && right_ear != INVENTORY_SLOT_DOES_NOT_EXIST && right_ear != I && right_ear.slot_flags & SLOT_TWOEARS)
+					return CAN_EQUIP_SLOT_CONFLICT_SOFT
 	return CAN_EQUIP_SLOT_CONFLICT_NONE
 
 /**

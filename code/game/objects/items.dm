@@ -335,131 +335,6 @@
 		else
 			. = ""
 
-/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
-	return TRUE
-
-/obj/item/proc/attempt_pickup(mob/user)
-	. = TRUE
-	if (!user)
-		return
-
-	if(anchored)
-		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
-		return
-
-	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
-		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
-		return
-
-	if (hasorgans(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
-		if(!temp)
-			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
-
-	var/old_loc = src.loc
-	var/obj/item/actually_picked_up = src
-	var/has_to_drop_to_ground_on_fail = FALSE
-
-	if(isturf(old_loc))
-		// if picking up from floor
-		throwing?.terminate()
-	else if(item_flags & ITEM_IN_STORAGE)
-		// trying to take out of backpack
-		var/datum/object_system/storage/resolved
-		if(istype(loc, /atom/movable/storage_indirection))
-			var/atom/movable/storage_indirection/holder = loc
-			resolved = holder.parent
-		else if(isobj(loc))
-			var/obj/obj_loc = loc
-			resolved = obj_loc.obj_storage
-		if(isnull(resolved))
-			item_flags &= ~ITEM_IN_STORAGE
-			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
-		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
-		// they're in user, but not equipped now. this is so it doesn't touch the ground first.
-		has_to_drop_to_ground_on_fail = TRUE
-
-	if(isnull(actually_picked_up))
-		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
-		return
-	if(!user.put_in_hands(actually_picked_up))
-		if(has_to_drop_to_ground_on_fail)
-			actually_picked_up.forceMove(user.drop_location())
-		return
-	// success
-	if(isturf(old_loc))
-		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-		ghost.assumeform(actually_picked_up)
-		ghost.animate_towards(user)
-
-/obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
-	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
-		return
-	if(anchored)	// Don't.
-		return
-	if(user.restrained())
-		return	// don't.
-		// todo: restraint levels, e.g. handcuffs vs straightjacket
-	if(!user.is_in_inventory(src))
-		// not being held
-		if(!isturf(loc))	// yea nah
-			return ..()
-		if(user.Adjacent(src))
-			// check for equip
-			if(istype(over, /atom/movable/screen/inventory/hand))
-				var/atom/movable/screen/inventory/hand/H = over
-				user.put_in_hand(src, H.index)
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			else if(istype(over, /atom/movable/screen/inventory/slot))
-				var/atom/movable/screen/inventory/slot/S = over
-				user.equip_to_slot_if_possible(src, S.slot_id)
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-		// check for slide
-		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
-			var/turf/old = get_turf(src)
-			if(over == old)	// same tile don't bother
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			if(!Move(get_turf(over)))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
-			//! :) FUCK YOU.
-			//! this if check is all for you. FUCK YOU.
-			if(!isobserver(user))
-				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
-			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-	else
-		// being held, check for attempt unequip
-		if(istype(over, /atom/movable/screen/inventory/hand))
-			var/atom/movable/screen/inventory/hand/H = over
-			user.put_in_hand(src, H.index)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /atom/movable/screen/inventory/slot))
-			var/atom/movable/screen/inventory/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot_id)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /turf))
-			user.drop_item_to_ground(src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-
-// funny!
-/mob/proc/CanSlideItem(obj/item/I, turf/over)
-	return FALSE
-
-/mob/living/CanSlideItem(obj/item/I, turf/over)
-	return Adjacent(I) && !incapacitated() && !stat && !restrained()
-
-/mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
-	return is_spooky
-
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/robot_module))
 		//If the item is part of a cyborg module, equip it
@@ -470,9 +345,6 @@
 		R.hud_used.update_robot_modules_display()
 
 /obj/item/proc/talk_into(mob/M as mob, text)
-	return
-
-/obj/item/proc/moved(mob/user as mob, old_loc as turf)
 	return
 
 /obj/item/proc/get_volume_by_throwforce_and_or_w_class() // This is used for figuring out how loud our sounds are for throwing.
@@ -1120,7 +992,149 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		if(should_attempt_pickup(e_args) && attempt_pickup(e_args.performer))
 			return TRUE
 
+/obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(anchored)	// Don't.
+		return
+	if(user.restrained())
+		return	// don't.
+		// todo: restraint levels, e.g. handcuffs vs straightjacket
+	if(!user.is_in_inventory(src))
+		// not being held
+		if(!isturf(loc))	// yea nah
+			return ..()
+		if(user.Adjacent(src))
+			// check for equip
+			if(istype(over, /atom/movable/screen/inventory/hand))
+				var/atom/movable/screen/inventory/hand/H = over
+				user.put_in_hand(src, H.index)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			else if(istype(over, /atom/movable/screen/inventory/slot))
+				var/atom/movable/screen/inventory/slot/S = over
+				user.equip_to_slot_if_possible(src, S.slot_id)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		// check for slide
+		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
+			var/turf/old = get_turf(src)
+			if(over == old)	// same tile don't bother
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!Move(get_turf(over)))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
+			//! :) FUCK YOU.
+			//! this if check is all for you. FUCK YOU.
+			if(!isobserver(user))
+				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
+			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	else
+		// being held, check for attempt unequip
+		if(istype(over, /atom/movable/screen/inventory/hand))
+			var/atom/movable/screen/inventory/hand/H = over
+			user.put_in_hand(src, H.index)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(over, /atom/movable/screen/inventory/slot))
+			var/atom/movable/screen/inventory/slot/S = over
+			user.equip_to_slot_if_possible(src, S.slot_id)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(over, /turf))
+			user.drop_item_to_ground(src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+
+// funny!
+// todo: move to mob files
+/mob/proc/CanSlideItem(obj/item/I, turf/over)
+	return FALSE
+
+// todo: move to mob files
+/mob/living/CanSlideItem(obj/item/I, turf/over)
+	return Adjacent(I) && !incapacitated() && !stat && !restrained()
+
+// todo: move to mob files
+/mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
+	return is_spooky
+
 //* Inventory *//
+
+/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
+	return TRUE
+
+/**
+ * @params
+ * * actor - (optional) person doing it
+ * * silent - suppress feedback
+ */
+/obj/item/proc/should_allow_pickup(datum/event_args/actor/actor, silent)
+	if(anchored)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"),
+				target = src,
+			)
+		return FALSE
+	return TRUE
+
+/obj/item/proc/attempt_pickup(mob/user)
+	. = TRUE
+	if (!user)
+		return
+
+	if(!should_allow_pickup(new /datum/event_args/actor(user)))
+		return FALSE
+
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
+		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
+		return
+
+	if (hasorgans(user))
+		var/mob/living/carbon/human/H = user
+		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
+		if (H.hand)
+			temp = H.organs_by_name["l_hand"]
+		if(temp && !temp.is_usable())
+			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			return
+		if(!temp)
+			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
+			return
+
+	var/old_loc = src.loc
+	var/obj/item/actually_picked_up = src
+	var/has_to_drop_to_ground_on_fail = FALSE
+
+	if(isturf(old_loc))
+		// if picking up from floor
+		throwing?.terminate()
+	else if(item_flags & ITEM_IN_STORAGE)
+		// trying to take out of backpack
+		var/datum/object_system/storage/resolved
+		if(istype(loc, /atom/movable/storage_indirection))
+			var/atom/movable/storage_indirection/holder = loc
+			resolved = holder.parent
+		else if(isobj(loc))
+			var/obj/obj_loc = loc
+			resolved = obj_loc.obj_storage
+		if(isnull(resolved))
+			item_flags &= ~ITEM_IN_STORAGE
+			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
+		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
+		// they're in user, but not equipped now. this is so it doesn't touch the ground first.
+		has_to_drop_to_ground_on_fail = TRUE
+
+	if(isnull(actually_picked_up))
+		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
+		return
+	if(!user.put_in_hands(actually_picked_up))
+		if(has_to_drop_to_ground_on_fail)
+			actually_picked_up.forceMove(user.drop_location())
+		return
+	// success
+	if(isturf(old_loc))
+		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
+		ghost.assumeform(actually_picked_up)
+		ghost.animate_towards(user)
 
 /**
  * Called when someone clisk us on a storage, before the storage handler's
