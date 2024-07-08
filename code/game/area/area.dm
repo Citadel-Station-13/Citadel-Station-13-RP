@@ -60,6 +60,10 @@
 	var/initial_gas_mix = GAS_STRING_STP
 
 	//? nightshift
+	/// is nightshift on?
+	var/nightshift = FALSE
+	/// is nightshift currently cycling?
+	var/nightshift_mutex = FALSE
 	/// nightshift level
 	/// in general, nightshift must be at or above this level for it to proc on areas.
 	var/nightshift_level = NIGHTSHIFT_LEVEL_UNSET
@@ -75,13 +79,6 @@
 	var/list/obj/machinery/atmospherics/component/unary/vent_scrubber/vent_scrubbers
 	/// next scrubber id
 	var/vent_scrubber_next = 1
-
-
-	//? Nightshift
-	/// is nightshift on?
-	var/nightshift = FALSE
-	/// is nightshift currently cycling?
-	var/nightshift_mutex = FALSE
 
 	//? Parallax
 	/// Parallax moving?
@@ -680,7 +677,7 @@ var/list/ghostteleportlocs = list()
 /area/drop_location()
 	CRASH("Bad op: area/drop_location() called")
 
-//? Nightshift
+//* Nightshift *//
 
 /**
  * This is tick checked.

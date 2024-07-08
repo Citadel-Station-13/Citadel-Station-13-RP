@@ -1,19 +1,4 @@
-GLOBAL_LIST_EMPTY(apcs)
-
-/// EMP effect duration is divided by this number if the APC has "critical" flag
-#define CRITICAL_APC_EMP_PROTECTION 10
-
-// controls power to devices in that area
-// may be opened to change power cell
-// three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
-/// Power channel is off and will stay that way dammit
-#define POWERCHAN_OFF      0
-/// Power channel is off until power rises above a threshold
-#define POWERCHAN_OFF_AUTO 1
-/// Power channel is on until there is no power
-#define POWERCHAN_ON       2
-/// Power channel is on until power drops below a threshold
-#define POWERCHAN_ON_AUTO  3
+GLOBAL_LIST_BOILERPLATE(/obj/machinery/apc)
 
 /**
  * APCs
@@ -47,7 +32,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	armor_type = /datum/armor/object/medium
 	req_access = list(ACCESS_ENGINEERING_APC)
 
-	//? Appearance
+	//* Appearance *//
 	/// overlay caches generated
 	var/static/overlay_cache_generated = FALSE
 	/// cached images, because we have to change color so we can't use just text unless we hardcode the colors
@@ -57,77 +42,106 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	/// cached images, because we have to change color so we can't use just text unless we hardcode the colors
 	var/static/list/overlay_cache_envir
 
-	//? Area Handling
+	//* Area *//
 	#warn hook registered_area
 	/// the area we're registered to
 	var/area/registered_area
 
-	//? Nightshift Handling
+	//* Nightshift *//
 	/// nightshift setting
 	var/nightshift_setting = APC_NIGHTSHIFT_AUTO
 	/// last nightshift switch by user
 	var/nightshift_last_user_switch
 
-	//? Power Handling
-	/// breaker: on/off
-	var/load_toggled = TRUE
-	/// are we *actually* operating?
-	/// this way the apc can automatically shut off when there's
-	/// insufficient power instead of oscillating every tick
-	var/load_active = TRUE
+	//* Power - Alarm *//
+	/// alarm threshold as ratio
+	/// if no cell, this doesn't alarm as long as it has enough power.
+	var/alarm_threshold = 0.3
+
+	//* Power - Breaker *//
+	/// breaker toggled
+	var/breaker_toggled = TRUE
+	/// breaker tripped
+	var/breaker_tripped = FALSE
+	/// breaker tripping - duration center
+	var/breaker_trip_duration_center = 60 SECONDS
+	/// breaker tripping - duration deviation
+	var/breaker_trip_duration_deviation = 10 SECONDS
+	/// breaker tripped until world.time
+	/// usually we timer but just this once..
+	var/breaker_tripped_until
+	/// grid check until world.time
+	var/grid_check_until
+
+	//* Power - Buffer *//
 	/// internal capacitor capacity in joules
 	var/buffer_capacity = 25000
 	/// internal capacitor joules; this is auto-set at init based on if we have a cell / power if null.
 	var/buffer
+
+	//* Power - Cell *//
 	/// our power cell
 	var/obj/item/cell/cell
 	/// starting power cell type
 	var/cell_type = /obj/item/cell/apc
 	/// starting power cell charge in %
-	var/start_charge = 100
+	var/cell_start_percent = 100
+
+	//* Power - Charging *//
 	/// charging enabled
 	var/charging_enabled = FALSE
 	/// currently charging
 	var/charging = FALSE
+	/// charge rate limit in kw
+	var/charging_limit = 5
+
+	//* Power - Channels *//
 	/// power channels enabled
 	var/channels_enabled = POWER_BITS_ALL
 	/// power channels auto
 	var/channels_auto = POWER_BITS_ALL
 	/// power channels currently on
 	var/channels_active = POWER_BITS_ALL
-	/// last total power used, static and burst
-	var/last_load = 0
+	/// percentage (as 0.0 to 1.0) of cell remaining to turn a channel off at
+	/// if no cell, it turns off immediately upon insufficient power from mains.
+	var/list/channel_thresholds = APC_CHANNEL_THRESHOLDS_DEFAULT
+
+	//* Power - Load Balancing *//
+	/// power tier - for load balancing
+	var/load_balancing_priority = POWER_BALANCING_TIER_MEDIUM
+	/// power tier - changeable
+	var/load_balancing_modify = TRUE
+
+	//* Power - Processing *//
 	/// last channel power used, static and burst
 	var/list/last_channel_load = EMPTY_POWER_CHANNEL_LIST
 	/// burst usage for channels since last process()
 	/// this is directly deducted and will not be drained again during process().
 	var/list/current_burst_load = EMPTY_POWER_CHANNEL_LIST
-	/// percentage (as 0.0 to 1.0) of cell remaining to turn a channel off at
-	/// if no cell, it turns off immediately upon insufficient power from mains.
-	var/list/channel_thresholds = APC_CHANNEL_THRESHOLDS_DEFAULT
-	/// alarm threshold as ratio
-	/// if no cell, this doesn't alarm as long as it has enough power.
-	var/alarm_threshold = 0.3
+	/// last total power used, static and burst
+	var/last_load = 0
+
+	//* Security *//
+	/// cover locked
+	var/cover_locked = TRUE
+	/// interface locked
+	var/interface_locked = TRUE
+
+	#warn below
+
+	//? Power Handling
+	/// are we *actually* operating?
+	/// this way the apc can automatically shut off when there's
+	/// insufficient power instead of oscillating every tick
+	var/load_active = TRUE
 	/// if power alarms from this apc are visible on consoles
 	//! warning: legacy
 	var/alarms_hidden = FALSE
-	/// power tier - for load balancing
-	var/load_balancing_priority = POWER_BALANCING_TIER_MEDIUM
-	/// power tier - changeable
-	var/load_balancing_modify = TRUE
 	/// buffer-less: used to estimate how much power we'll need on average
 	/// if powered off, most burst usages won't work, but, we'll still guesstimate static load.
 	var/load_heuristic = 0
 	/// buffer-any: randomized process() ticks before we try to reinstate power
 	var/load_resume = 0
-	/// our cell charge rate in kilowatts
-	var/charge_rate = 5
-
-	//? Security
-	/// cover locked
-	var/cover_locked = TRUE
-	/// interface locked
-	var/interface_locked = TRUE
 
 	#warn rest
 
@@ -157,7 +171,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	if(!overlay_cache_generated)
 		generate_overlay_caches()
 	. = ..()
-	GLOB.apcs += src
 
 	wires = new(src)
 
@@ -179,7 +192,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		src.update_icon()
 
 /obj/machinery/apc/Destroy()
-	GLOB.apcs -= src
 
 	#warn below
 
@@ -666,127 +678,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 /obj/machinery/apc/proc/attempt_charging()
 	return (chargemode && charging == 1 && operating)
 
-/obj/machinery/apc/process(delta_time)
-
-
-	if(machine_stat & (BROKEN|MAINT))
-		return
-	if(!area.requires_power)
-		return
-	if(failure_timer)
-		update()
-		queue_icon_update()
-		failure_timer--
-		force_update = 1
-		return
-
-	#warn above
-
-	// tally up area static power + the burst power used
-	// used = already used
-	// wanting = used + powered off machines
-	// this is used for heuristic estimation reasons.
-	var/used_joules = 0
-	var/wanting_joules = 0
-	var/used_burst_joules = 0
-	for(var/channel in 1 to POWER_CHANNEL_COUNT)
-		var/channel_total = area.power_usage_static[channel]
-		last_channel_load[channel] = channel_total + current_burst_load[channel]
-		used_burst_joules += current_burst_load[channel]
-		current_burst_load[channel] = 0
-		// burst is intentionally ignored as it was already drained.
-		if(area.power_channels & power_channel_bits[channel])
-			used_joules += channel_total
-		wanting_joules += channel_total
-	last_load = wanting_joules + used_burst_joules
-	load_heuristic = SIMPLE_VALUE_SMOOTHING(0.5, load_heuristic, last_load)
-
-	// reduce load resume
-	// this should never go too high, because we want fast restore times
-	// generally, we increase this more if there's multiple failed resumes.
-	if(load_resume > 0)
-		--load_resume
-
-	// we handle celled and cell-less operation differently
-	if(isnull(cell))
-		// cell-less; use buffer.
-		// the job of the apc is not to keep the buffer as full as possible for emergencies
-		// the job of the apc is to smooth fluctuations out so that grid power doesn't spike every 2 seconds from
-		// apcs fluctuating between "can't charge any more" and "suddenly need to charge all that's missing".
-		// furthurmore, our job is to shut off / turn on based on if there's enough power to have us, well, operate with all our
-		// machinery.
-
-	else
-
-	// todo: optimize
-	var/requires_icon_update = full_update_channels(TRUE)
-	full_update_alarm()
-
-	#warn below
-
-	//store states to update icon if any change
-	var/excess = surplus()
-
-	if(!src.avail())
-		main_status = 0
-	else if(excess < 0)
-		main_status = 1
-	else
-		main_status = 2
-
-	if(cell && !shorted && !grid_check)
-		// draw power from cell as before to power the area
-		var/cellused = min(cell.charge, DYNAMIC_W_TO_CELL_UNITS(lastused_total, 1))	// clamp deduction to a max, amount left in cell
-		cell.use(cellused)
-		// TODO: the rest of this code is war crime territory
-		// TODO: rewrite APCs. entirely.
-
-		// now trickle-charge the cell
-		lastused_charging = 0 // Clear the variable for new use.
-		if(src.attempt_charging())
-			if(excess > 0)		// check to make sure we have enough to charge
-				// Max charge is capped to % per second constant
-				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
-				var/charged = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
-				cell.give(DYNAMIC_KW_TO_CELL_UNITS(charged, 1)) // actually recharge the cell
-				lastused_charging = charged * 1000
-				lastused_total += lastused_charging // Sensors need this to stop reporting APC charging as "Other" load
-			else
-				charging = 0		// stop charging
-				chargecount = 0
-
-		// show cell as fully charged if so
-		if(cell.percent() >= 99)	// TODO: apc refactor - this is the only way for now, otherrwise we'll never stop charging as we don't ever charge to full entirely
-			charging = 2
-		else if(charging == 2)		// if charging is supposedly fully charged but we're not actually fully charged, shunt back to charging
-			charging = 1
-
-		if(chargemode)
-			if(!charging)
-				var/charge_tick = cell.maxcharge * chargelevel
-				charge_tick = DYNAMIC_CELL_UNITS_TO_KW(charge_tick, 1)
-				if(excess > charge_tick)
-					chargecount++
-				else
-					chargecount = 0
-
-				if(chargecount >= 5)
-
-					chargecount = 0
-					charging = 1
-
-		else // chargemode off
-			charging = 0
-			chargecount = 0
-
-	else // no cell, switch everything off
-		charging = 0
-		chargecount = 0
-		equipment = autoset(equipment, 0)
-		lighting = autoset(lighting, 0)
-		environ = autoset(environ, 0)
-		power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
-		autoflag = 0
 
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
@@ -951,7 +842,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 #warn above
 
-/obj/machinery/apc/proc/reset()
+/obj/machinery/apc/proc/reset(includes_physical = FALSE, reset_cell = FALSE)
 	var/requires_update = FALSE
 
 	//! legacy
@@ -984,6 +875,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	requires_update = full_update_channels() || requires_update
 
+	if(includes_physical)
+		#warn cover
+	if(reset_cell)
+		QDEL_NULL(cell)
+		create_cell()
+		create_buffer()
+
 	if(requires_update)
 		update_icon()
 		registered_area?.power_change()
@@ -995,7 +893,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	longtermpower = initial(longtermpower)
 	failure_timer = initial(failure_timer)
 
-//? Alarms
+
+//* Alarms *//
 
 /obj/machinery/apc/proc/full_update_alarm()
 	if(isnull(cell))
@@ -1006,7 +905,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		else
 			power_alarm.triggerAlarm(loc, src, hidden = alarms_hidden)
 
-//? Appearance
+//* Appearance *//
 
 /obj/machinery/apc/update_icon()
 	. = ..()
@@ -1092,10 +991,12 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		cache_list[APC_CHANNEL_STATE_OFF_AUTO] = generating
 		++channel
 
-//? Breaker / Switching
+#warn above
+
+//* Breaker *//
 
 /obj/machinery/apc/proc/set_toggled(toggled, defer_update)
-	src.load_toggled = toggled
+	src.breaker_toggled = toggled
 	if(!defer_update)
 		full_update_channels()
 	push_ui_data(data = list("loadToggled" = load_toggled))
@@ -1116,7 +1017,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		full_update_channels()
 	push_ui_data(data = list("breakerTripped" = TRUE))
 
-//? Channels
+//* Channels *//
 
 /obj/machinery/apc/proc/set_channel_setting(channel, new_setting, defer_updates)
 	var/bit = power_channel_bits[channel]
@@ -1156,7 +1057,28 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 /obj/machinery/apc/proc/should_enable_channel(channel)
 	#warn impl
 
-//? Movement
+//* Init *//
+
+/obj/machinery/apc/proc/create_cell(update_icon = TRUE)
+	QDEL_NULL(cell)
+	if(!cell_type)
+		if(update_icon)
+		update_icon()
+		return
+	cell = new cell_type
+	cell.charge = cell.maxcharge * cell_start_percent * 0.01
+	if(update_icon)
+		update_icon()
+
+/obj/machinery/apc/proc/create_buffer()
+	if(cell && cell_start_percent > 0)
+		buffer = buffer_capacity
+	else if(terminal?.is_connected())
+		buffer = buffer_capacity
+	else
+		buffer = 0
+
+//* Movement *//
 
 /obj/machinery/apc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
@@ -1185,10 +1107,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		terminal.setDir(dir)
 	reset_pixel_offsets()
 
-//? Nightshift
+//* Nightshift *//
+
+/obj/machinery/apc/proc/update_nightshift(automatic)
+	set_nightshift_active(should_be_nightshift(), automatic)
 
 /obj/machinery/apc/proc/currently_considered_night()
-	return SSnightshift.nightshift_active
+	return SSnightshift.nightshift_active && (registered_area.nightshift_level & SSnightshift.nightshift_level)
 
 /obj/machinery/apc/proc/should_be_nightshift()
 	switch(nightshift_setting)
@@ -1205,15 +1130,148 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		return
 	//! end
 	nightshift_setting = new_setting
-	set_nightshift_active(should_be_nightshift())
+	update_nightshift()
 
 /obj/machinery/apc/proc/reset_nightshift_setting(forced_setting = initial(nightshift_setting))
 	set_nightshift_setting(forced_setting, TRUE)
 
 /obj/machinery/apc/proc/set_nightshift_active(active)
-	registered_area.set_nightshift(active)
+	registered_area.set_nightshift(active, automatic)
 
-//? Power Usage - General
+//* Power Solver *//
+
+/obj/machinery/apc/process()
+	if(!registered_area || !isnull(registered_area.area_power_override))
+		return
+	
+
+#warn below
+
+/obj/machinery/apc/process(delta_time)
+
+
+	if(machine_stat & (BROKEN|MAINT))
+		return
+	if(!area.requires_power)
+		return
+	if(failure_timer)
+		update()
+		queue_icon_update()
+		failure_timer--
+		force_update = 1
+		return
+
+	#warn above
+
+	// tally up area static power + the burst power used
+	// used = already used
+	// wanting = used + powered off machines
+	// this is used for heuristic estimation reasons.
+	var/used_joules = 0
+	var/wanting_joules = 0
+	var/used_burst_joules = 0
+	for(var/channel in 1 to POWER_CHANNEL_COUNT)
+		var/channel_total = area.power_usage_static[channel]
+		last_channel_load[channel] = channel_total + current_burst_load[channel]
+		used_burst_joules += current_burst_load[channel]
+		current_burst_load[channel] = 0
+		// burst is intentionally ignored as it was already drained.
+		if(area.power_channels & power_channel_bits[channel])
+			used_joules += channel_total
+		wanting_joules += channel_total
+	last_load = wanting_joules + used_burst_joules
+	load_heuristic = SIMPLE_VALUE_SMOOTHING(0.5, load_heuristic, last_load)
+
+	// reduce load resume
+	// this should never go too high, because we want fast restore times
+	// generally, we increase this more if there's multiple failed resumes.
+	if(load_resume > 0)
+		--load_resume
+
+	// we handle celled and cell-less operation differently
+	if(isnull(cell))
+		// cell-less; use buffer.
+		// the job of the apc is not to keep the buffer as full as possible for emergencies
+		// the job of the apc is to smooth fluctuations out so that grid power doesn't spike every 2 seconds from
+		// apcs fluctuating between "can't charge any more" and "suddenly need to charge all that's missing".
+		// furthurmore, our job is to shut off / turn on based on if there's enough power to have us, well, operate with all our
+		// machinery.
+
+	else
+
+	// todo: optimize
+	var/requires_icon_update = full_update_channels(TRUE)
+	full_update_alarm()
+
+	#warn below
+
+	//store states to update icon if any change
+	var/excess = surplus()
+
+	if(!src.avail())
+		main_status = 0
+	else if(excess < 0)
+		main_status = 1
+	else
+		main_status = 2
+
+	if(cell && !shorted && !grid_check)
+		// draw power from cell as before to power the area
+		var/cellused = min(cell.charge, DYNAMIC_W_TO_CELL_UNITS(lastused_total, 1))	// clamp deduction to a max, amount left in cell
+		cell.use(cellused)
+		// TODO: the rest of this code is war crime territory
+		// TODO: rewrite APCs. entirely.
+
+		// now trickle-charge the cell
+		lastused_charging = 0 // Clear the variable for new use.
+		if(src.attempt_charging())
+			if(excess > 0)		// check to make sure we have enough to charge
+				// Max charge is capped to % per second constant
+				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
+				var/charged = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
+				cell.give(DYNAMIC_KW_TO_CELL_UNITS(charged, 1)) // actually recharge the cell
+				lastused_charging = charged * 1000
+				lastused_total += lastused_charging // Sensors need this to stop reporting APC charging as "Other" load
+			else
+				charging = 0		// stop charging
+				chargecount = 0
+
+		// show cell as fully charged if so
+		if(cell.percent() >= 99)	// TODO: apc refactor - this is the only way for now, otherrwise we'll never stop charging as we don't ever charge to full entirely
+			charging = 2
+		else if(charging == 2)		// if charging is supposedly fully charged but we're not actually fully charged, shunt back to charging
+			charging = 1
+
+		if(chargemode)
+			if(!charging)
+				var/charge_tick = cell.maxcharge * chargelevel
+				charge_tick = DYNAMIC_CELL_UNITS_TO_KW(charge_tick, 1)
+				if(excess > charge_tick)
+					chargecount++
+				else
+					chargecount = 0
+
+				if(chargecount >= 5)
+
+					chargecount = 0
+					charging = 1
+
+		else // chargemode off
+			charging = 0
+			chargecount = 0
+
+	else // no cell, switch everything off
+		charging = 0
+		chargecount = 0
+		equipment = autoset(equipment, 0)
+		lighting = autoset(lighting, 0)
+		environ = autoset(environ, 0)
+		power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
+		autoflag = 0
+
+#warn above
+
+//* Power Usage - General *//
 
 /**
  * draws power from grid to ourselves
@@ -1227,7 +1285,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 /obj/machinery/apc/proc/use_grid_power(amount, balance)
 	#warn impl
 
-//? Power Usage - Burst
+//* Power Usage - Burst *//
 
 /**
  * something is trying to use a dynamic amount of burst power
