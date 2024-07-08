@@ -55,16 +55,17 @@
 	parent.object_cell_slot_removed(., src)
 
 /**
- * removes cell from the system and drops it in users hands
+ * helper to have a mob yank a cell
+ *
+ * * this does not check adjacency!
+ * * puts the cell in their hand if possible, otherwise drops it on them
  */
 /datum/object_system/cell_slot/proc/mob_yank_cell(mob/user)
-	if(isnull(cell))
+	var/obj/item/cell/removed = remove_cell(user)
+	if(!removed)
 		return
-	. = cell
-	user.put_in_hands_or_drop(cell)
-	cell = null
-	parent.object_cell_slot_removed(., src)
-	return TRUE
+	user.put_in_hands_or_drop(removed)
+	return removed
 
 /**
  * replaces the existing cell with the inserted cell, dropping the old cell
@@ -87,10 +88,7 @@
  * returns TRUE if the slot has a cell
  */
 /datum/object_system/cell_slot/proc/has_cell()
-	if (!isnull(cell))
-		return TRUE
-	else
-		return FALSE
+	return !isnull(cell)
 
 //? Hooks
 
@@ -139,78 +137,86 @@
 //+ These exist to sanely perform cell functions through the obj_cell_slot system. These break safely if no cell exists.
 
 /**
- * cell function wrapper - returns the rating of the cell inside or null
+ * cell function wrapper - returns the rating of the cell inside or 0 if null
  */
 /datum/object_system/cell_slot/proc/get_rating()
-	return cell?.get_rating()
+	return cell?.get_rating() || 0
 
 /**
- * cell function wrapper - returns the cell src or null
+ * cell function wrapper - returns the cell src or FALSE if null
  */
 /datum/object_system/cell_slot/proc/get_cell(inducer)
-	return cell?.get_cell(inducer)
+	return cell?.get_cell(inducer) || FALSE
 
 /**
  * cell function passthrough - consumes energy using *universal units*
- * returns amount used or null
+ *
+ * *Uses universal units.*
+ *
+ * @params
+ * - actor - thing draining, can be null
+ * - amount - amount to drain in kilojoules
+ * - flags
+ *
+ * @return Amount drained
  */
 /datum/object_system/cell_slot/proc/drain_energy(datum/actor, amount, flags)
-	return cell?.drain_energy(actor, amount, flags)
+	return cell?.drain_energy(actor, amount, flags) || 0
 
 /**
- * cell function wrapper - returns % charge of the cell or null
+ * cell function wrapper - returns % charge of the cell or 0 if null
  */
 /datum/object_system/cell_slot/proc/percent()
-	return cell?.percent()
+	return cell?.percent() || 0
 
 /**
  * cell function wrapper - checks if cell is fully charged
- * returns true or false, or null if no cell
+ * returns TRUE or FALSE. returns FALSE if cell is null
  */
 /datum/object_system/cell_slot/proc/fully_charged()
-	return cell?.fully_charged()
+	return cell?.fully_charged() ? TRUE : FALSE
 
 /**
  * cell function wrapper - returns true if cell can provide specified amount
- * returns null if no cell
+ * returns 0 if null
  */
 /datum/object_system/cell_slot/proc/check_charge(var/amount)
-	return cell?.check_charge(amount)
+	return cell?.check_charge(amount) || 0
 
 /**
- * cell function wrapper - returns how much charge is missing from the cell or null
+ * cell function wrapper - returns how much charge is missing from the cell or 0 if null
  */
 /datum/object_system/cell_slot/proc/amount_missing()
-	return cell?.amount_missing()
+	return cell?.amount_missing() || 0
 
 /**
- * cell function wrapper - attempts to use power from cell, returns the amount actually used or null
+ * cell function wrapper - attempts to use power from cell, returns the amount actually used or 0 if null
  */
 /datum/object_system/cell_slot/proc/use(var/amount)
-	return cell?.use(amount)
+	return cell?.use(amount) || 0
 
 /**
  * cell function wrapper - checks if the specified amount can be provided. If it can, it removes the amount from the cell and returns TRUE otherwise does nothing and returns FALSE
- * returns null if no cell
+ * returns FALSE if cell is null
  */
 /datum/object_system/cell_slot/proc/checked_use(var/amount)
-	return cell?.checked_use(amount)
+	return cell?.checked_use(amount) ? TRUE : FALSE
 
 /**
- * cell function wrapper - use x cell units, affected by GLOB.cellefficiency, returns the amount actually used or null
+ * cell function wrapper - use x cell units, affected by GLOB.cellefficiency, returns the amount actually used or 0 if null
  */
 /datum/object_system/cell_slot/proc/use_scaled(var/amount)
-	return cell?.use_scaled(amount)
+	return cell?.use_scaled(amount) || 0
 
 /**
  * cell function wrapper - checked_use() but scaled by GLOB.cellefficiency
  */
 /datum/object_system/cell_slot/proc/checked_use_scaled(var/amount)
-	return cell?.checked_use_scaled(amount)
+	return cell?.checked_use_scaled(amount) ? TRUE : FALSE
 
 /**
- * cell function wrapper - recharge the cell by x amount returns the amount consumed or null if no cell
+ * cell function wrapper - recharge the cell by x amount returns the amount consumed or 0 if cell is null
  */
 /datum/object_system/cell_slot/proc/give(var/amount)
-	return cell?.give(amount)
+	return cell?.give(amount) || 0
 //? End wrappers for cell.dm functions
