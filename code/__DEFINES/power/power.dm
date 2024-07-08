@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 //? Power channels for areas - Make sure these are in sync.
 //* Any updates to this should be reflected in [tgui/packages/tgui/constants/power.ts] *//

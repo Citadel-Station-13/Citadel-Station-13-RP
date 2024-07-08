@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 GLOBAL_LIST_EMPTY(powernets)
 
@@ -21,8 +21,6 @@ GLOBAL_LIST_EMPTY(powernets)
  * all variables are in **kilowatts** unless otherwise stated.
  */
 /datum/wirenet/power
-	#warn how to handle status
-
 	//* next tick
 	/// available power in network accumulated for the next tick
 	var/accumulated = 0
@@ -123,7 +121,7 @@ GLOBAL_LIST_EMPTY(powernets)
 	// no conversion needed, amount should be in kj
 	. = flat_draw(amount)
 	if(flags & ENERGY_DRAIN_SURGE)
-		powernet_status |= POWERNET_STATUS_SURGE_DRAIN
+		raise_fault(POWERNET_FAULT_DRAIN, 10 SECONDS)
 
 #warn impl all
 
@@ -155,7 +153,9 @@ GLOBAL_LIST_EMPTY(powernets)
 /datum/wirenet/power/proc/direct_electrocute(atom/movable/victim, atom/source, target_zone, relative_exposure = 1, suppress_fx)
 	#warn impl
 
-	powernet_status |= POWERNET_STATUS_SURGE_FAULT
+	raise_fault()
+
+	raise_fault(POWERNET_FAULT_GROUND, 10 SECONDS)
 
 /**
  * shock damage for mobs
@@ -169,7 +169,6 @@ GLOBAL_LIST_EMPTY(powernets)
 /datum/wirenet/power/proc/electrocute_obj_damage(obj/victim)
 
 /*
-
 // shock the user with probability prb
 /obj/structure/cable/proc/shock(mob/user, prb, var/siemens_coeff = 1.0)
 	if(!prob(prb))
@@ -181,5 +180,18 @@ GLOBAL_LIST_EMPTY(powernets)
 		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
-
 */
+
+/**
+ * raise a fault, or a general event
+ *
+ * * check [code/__DEFINES/power/network.dm] for fault types and args
+ *
+ * @params
+ * * type - POWERNET_FAULT_* type
+ * * ... - rest of arguments for that type of fault
+ */
+/datum/wirenet/power/proc/raise_fault(type, ...)
+	if(!comp_lookup?[COMSIG_POWERNET_RAISE_FAULT])
+		return
+	_SendSignal(COMSIG_POWERNET_RAISE_FAULT, list(src) + args)

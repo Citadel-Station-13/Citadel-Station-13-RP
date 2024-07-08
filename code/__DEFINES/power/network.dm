@@ -1,14 +1,20 @@
-/// power surge from energy being taken
-#define POWERNET_STATUS_SURGE_DRAIN (1<<0)
-/// power surge from energy being grounded somewhere
-#define POWERNET_STATUS_SURGE_FAULT (1<<1)
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
 
-DEFINE_SHARED_BITFIELD(powernet_status, list(
-	"powernet_status",
-	"last_powernet_status",
-), list(
-	BITFIELD(POWERNET_STATUS_SURGE_DRAIN),
-	BITFIELD(POWERNET_STATUS_SURGE_FAULT),
-))
+//* raise fault types *//
 
-#warn how to handle status
+/// ground fault: power is going somewhere else other than the circuit
+///
+/// args: (duration)
+///
+/// * someone is getting shocked
+/// * arc flash to other objects
+#define POWERNET_FAULT_GROUND "ground-fault"
+/// surge fault: power is being rapidly used at an unreasonable rate
+///
+/// args: (duration)
+///
+/// * unrealistic as this is, this is usually used for 'this thing is draining everything on the network, not just the powernet'
+/// * power sinks
+/// * massive machinery that blows out network, etc
+#define POWERNET_FAULT_DRAIN "drain"

@@ -168,6 +168,7 @@
 #include "code\__DEFINES\dcs\signals\signals_turf.dm"
 #include "code\__DEFINES\dcs\signals\datums\signals_beam.dm"
 #include "code\__DEFINES\dcs\signals\datums\signals_perspective.dm"
+#include "code\__DEFINES\dcs\signals\datums\signals_powernet.dm"
 #include "code\__DEFINES\dcs\signals\elements\conflict.dm"
 #include "code\__DEFINES\dcs\signals\items\signals_inducer.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\context_system.dm"

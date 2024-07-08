@@ -15,8 +15,7 @@
 		build(joint)
 
 /datum/wirenet/Destroy()
-	for(var/obj/structure/wire/segment as anything in segments)
-		#warn rebuild
+	cleanup_segments()
 	for(var/datum/wirenet_connection/connection as anything in connections)
 		connection.disconnect_network(src)
 	segments = null
@@ -97,3 +96,11 @@
  */
 /datum/wirenet/proc/remove_segments(list/obj/structure/wire/joints = segments)
 	#warn impl
+
+/**
+ * nuke all wires from ourselves
+ *
+ * triggers rebuilds too
+ */
+/datum/wirenet/proc/cleanup_segments()
+	#warn impl - subtype on /datum/wirenet/power
