@@ -1,3 +1,11 @@
+/**
+ * basically, a good way to interface with powernet
+ * without connecting to a node under yourself
+ *
+ * only works for /machinery, right now
+ *
+ * in the future, we might make this more high-level.
+ */
 /obj/machinery/power/terminal
 	name = "terminal"
 	icon_state = "term"

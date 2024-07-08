@@ -15,43 +15,6 @@ GLOBAL_LIST_EMPTY(apcs)
 /// Power channel is on until power drops below a threshold
 #define POWERCHAN_ON_AUTO  3
 
-//NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-//Critical//
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/critical, 22)
-/obj/machinery/apc/critical
-	is_critical = 1
-
-/// High capacity cell APCs
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/high, 22)
-/obj/machinery/apc/high
-	cell_type = /obj/item/cell/high
-
-/// Super capacity cell APCS
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/super, 22)
-/obj/machinery/apc/super
-	cell_type = /obj/item/cell/super
-
-/// Critical APCs with super cells
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/super/critical, 22)
-/obj/machinery/apc/super/critical
-	is_critical = 1
-
-/// APCS with hyper cells. How lewd
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/hyper, 22)
-/obj/machinery/apc/hyper
-	cell_type = /obj/item/cell/hyper
-
-/// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/alarms_hidden, 22)
-/obj/machinery/apc/alarms_hidden
-	alarms_hidden = TRUE
-
-/// APCS with hidden alarms and no power cells
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/alarms_hidden/no_cell, 22)
-/obj/machinery/apc/alarms_hidden/no_cell
-	cell_type = null
-	chargelevel = 0
-
 /**
  * APCs
  *
@@ -1281,7 +1244,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 #warn impl all
 
-//? Terminal
+//* Terminal *//
 
 /obj/machinery/apc/proc/destroy_terminal()
 	QDEL_NULL(terminal)
@@ -1295,7 +1258,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	if(terminal == src.terminal)
 		src.terminal = null
 
-//? UI
+//* UI *//
 
 /obj/machinery/apc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -1509,184 +1472,42 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 //* Subtypes
 
-// todo: codegen the directional paths with a macro
-
-/obj/machinery/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
-
-/obj/machinery/apc/direction_bump/east
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/apc/direction_bump/west
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/direction_bump/north
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/direction_bump/south
-	name = "south bump"
-	pixel_y = -28
+/// APCS no power cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/alarms_hidden/no_cell, 22)
+/obj/machinery/apc/no_cell
+	cell_type = null
 
 //Critical//
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/critical, 22)
 /obj/machinery/apc/critical
 	is_critical = 1
 
-/obj/machinery/apc/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/apc/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// High capacity cell APCs
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/high, 22)
 /obj/machinery/apc/high
 	cell_type = /obj/item/cell/high
 
-/obj/machinery/apc/high/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/apc/high/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/high/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/high/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// Super capacity cell APCS
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/super, 22)
 /obj/machinery/apc/super
 	cell_type = /obj/item/cell/super
 
-/obj/machinery/apc/super/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/apc/super/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/super/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/super/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
 /// Critical APCs with super cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/super/critical, 22)
 /obj/machinery/apc/super/critical
 	is_critical = 1
 
-/obj/machinery/apc/super/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/apc/super/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/super/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/super/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hyper cells. How lewd
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/hyper, 22)
 /obj/machinery/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
-/obj/machinery/apc/hyper/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/apc/hyper/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/hyper/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/hyper/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/alarms_hidden, 22)
 /obj/machinery/apc/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/apc/alarms_hidden/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/apc/alarms_hidden/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/alarms_hidden/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/alarms_hidden/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /// APCS with hidden alarms and no power cells
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc/alarms_hidden/no_cell, 22)
 /obj/machinery/apc/alarms_hidden/no_cell
 	cell_type = null
-	chargelevel = 0
-
-/obj/machinery/apc/alarms_hidden/no_cell/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/apc/alarms_hidden/no_cell/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/apc/alarms_hidden/no_cell/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/apc/alarms_hidden/no_cell/south_bump
-	name = "south bump"
-	pixel_y = -28
