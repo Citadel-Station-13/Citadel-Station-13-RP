@@ -6,6 +6,8 @@
 	var/deployed = TRUE
 	scan_range = 1
 	tool_speed = 1.2
+	// we do our own, sorry!
+	snowflake_dont_update_icon_state = TRUE
 
 /obj/item/cataloguer/compact/update_icon_state()
 	var/base_state = base_icon_state || initial(icon_state)
