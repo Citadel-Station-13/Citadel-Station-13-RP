@@ -43,6 +43,9 @@
 /turf/simulated/floor/is_plating()
 	return !flooring
 
+/turf/simulated/floor/hides_underfloor_objects()
+	return flooring
+
 /turf/simulated/floor/Initialize(mapload, floortype)
 	. = ..()
 	if(!floortype && initial_flooring)
@@ -51,10 +54,12 @@
 		set_flooring(get_flooring_data(floortype), TRUE)
 	else
 		footstep_sounds = base_footstep_sounds
+		update_underfloor_objects()
 	if(mapload && can_dirty && can_start_dirty)
 		if(prob(dirty_prob))
 			dirt += rand(50,100)
 			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
+	update_layer()
 
 /turf/simulated/proc/make_outdoors()
 	outdoors = TRUE
@@ -81,6 +86,8 @@
 
 /turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
 	if(flooring == newflooring)
+		if(init)
+			update_underfloor_objects()
 		return
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
@@ -105,7 +112,8 @@
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
-	levelupdate()
+	update_underfloor_objects()
+	update_layer()
 
 //This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
 //This proc auto corrects the grass tiles' siding.
@@ -133,17 +141,14 @@
 				footstep_sounds = base_footstep_sounds
 				QUEUE_SMOOTH(src)
 				QUEUE_SMOOTH_NEIGHBORS(src)
-				levelupdate()
+				update_underfloor_objects()
+				update_layer()
 
 	broken = null
 	burnt = null
 	flooring_override = null
 
-
-/turf/simulated/floor/levelupdate()
-	for(var/obj/O in src)
-		O.hide(O.hides_under_flooring() && src.flooring)
-
+/turf/simulated/floor/proc/update_layer()
 	if(flooring)
 		layer = TURF_LAYER
 	else

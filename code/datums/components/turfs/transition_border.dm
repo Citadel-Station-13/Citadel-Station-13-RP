@@ -9,6 +9,8 @@
  *
  * This way, we have *near* perfect native-like simulation with moves without
  * having to do anything too special.
+ *
+ * todo: multi-tile object support
  */
 /datum/component/transition_border
 	var/atom/movable/mirage_border/holder1
@@ -48,6 +50,8 @@
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
 	if(AM.atom_flags & ATOM_ABSTRACT)
 		return // nah.
+	if(AM.movable_flags & MOVABLE_IN_MOVED_YANK)
+		return // we're already in a yank
 	var/turf/our_turf = parent
 	var/z_index = SSmapping.level_index_in_dir(our_turf.z, dir)
 	if(isnull(z_index))
@@ -55,7 +59,9 @@
 		qdel(src)
 		return
 	// todo: this is shit but we have to yield to prevent a Moved() before Moved()
+	AM.movable_flags |= MOVABLE_IN_MOVED_YANK
 	spawn(0)
+		AM.movable_flags &= ~MOVABLE_IN_MOVED_YANK
 		if(AM.loc != our_turf)
 			return
 		var/turf/target

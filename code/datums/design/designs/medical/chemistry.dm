@@ -13,6 +13,12 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/glass/beaker/large
 
+/datum/design/medical/chemistry/spraybottle
+	id = "ChemistrySprayBottle"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/reagent_containers/spray
+
 /datum/design/medical/chemistry/vial
 	id = "ChemistryVial"
 	lathe_type = LATHE_TYPE_AUTOLATHE

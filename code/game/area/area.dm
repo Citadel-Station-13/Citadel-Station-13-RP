@@ -1,4 +1,28 @@
 /**
+ * Gets a cached area of a given type, if it's unique
+ * If it's not unique, throw a runtime
+ */
+/proc/unique_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	ASSERT(creating.unique)
+	if(!isnull(GLOB.areas_by_type[path]))
+		return GLOB.areas_by_type[path]
+	creating = new path(null)
+	GLOB.areas_by_type[path] = creating
+	return creating
+
+/**
+ * Gets the global reference to an area, or a new copy, depending on if it's unique or not
+ */
+/proc/dynamic_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	if(!creating.unique)
+		return new path(null)
+	return unique_area_of_type(path)
+
+/**
  * # area
  *
  * A grouping of tiles into a logical space, mostly used by map editors
@@ -10,7 +34,6 @@
  *     not in the area.
  */
 /area
-	level = null
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
@@ -680,7 +703,7 @@ var/list/ghostteleportlocs = list()
 	if(nightshift != on)
 		set_nightshift(nightshift, force = TRUE)
 
-//? Power
+//* Power *//
 
 /**
  * returns if the channel is being powered
@@ -737,20 +760,18 @@ var/list/ghostteleportlocs = list()
 					continue
 				power_usage_static[M.power_channel] += M.registered_power_usage
 
-//? Turf operations - add / remove
+//* Turfs *//
 
 /**
- * changes turfs to us
- *
- * @params
- * * turfs - turfs to take.
+ * take turfs into ourselves
  */
 /area/proc/take_turfs(list/turf/turfs)
-	var/list/area/old_areas = list()
-	var/turf/T
-	for(T as anything in turfs)
-		old_areas += T.loc
-	contents.Add(turfs)
-	for(var/i in 1 to length(turfs))
-		T = i
-		T.on_change_area(old_areas[i], src)
+	for(var/turf/T in turfs)
+		ChangeArea(T, src)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		ChangeArea(T, give_to)

@@ -5,7 +5,6 @@
 	density = FALSE
 	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "filter"
-	level = 1
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 150
