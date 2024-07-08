@@ -284,21 +284,20 @@
 			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
-/mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/projectile/P, var/def_zone)
-	if(istype(P,/obj/projectile/beam) || istype(P, /obj/projectile/energy))
-		visible_message(SPAN_DANGER("\The [src] reflects \the [P]!"))
+/mob/living/simple_mob/slime/xenobio/silver/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	if(istype(proj,/obj/projectile/beam) || istype(proj, /obj/projectile/energy))
+		visible_message(SPAN_DANGER("\The [src] reflects \the [proj]!"))
 
 		// Find a turf near or on the original location to bounce to
-		var/new_x = P.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
-		var/new_y = P.starting.y + pick(0, 0, 0, -1, 1, -2, 2)
+		var/new_x = proj.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
+		var/new_y = proj.starting.y + pick(0, 0, 0, -1, 1, -2, 2)
 		var/turf/curloc = get_turf(src)
 
 		// redirect the projectile
-		P.redirect(new_x, new_y, curloc, src)
-		P.reflected = TRUE
-		return PROJECTILE_CONTINUE // complete projectile permutation
-	else
-		return ..()
+		proj.legacy_redirect(new_x, new_y, curloc, src)
+		proj.reflected = TRUE
+		impact_flags |= PROJECTILE_IMPACT_REFLECT
+	return ..()
 
 // Tier 3
 

@@ -33,7 +33,7 @@
 		name = "collector [mysize] OFF"
 
 /obj/effect/fusion_particle_catcher/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
-	parent.AddEnergy(Proj.damage)
+	parent.AddEnergy(proj.damage)
 	update_icon()
 	impact_flags |= PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH
 	return ..()

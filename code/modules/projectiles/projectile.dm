@@ -418,7 +418,8 @@
 		angle = arctan(y - oy, x - ox)
 	return list(angle, p_x, p_y)
 
-/obj/projectile/proc/redirect(x, y, starting, source)
+/obj/projectile/proc/legacy_redirect(x, y, starting, source)
+	reflected = TRUE
 	old_style_target(locate(x, y, z), starting? get_turf(starting) : get_turf(source))
 
 /obj/projectile/proc/old_style_target(atom/target, atom/source)
