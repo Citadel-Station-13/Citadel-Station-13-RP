@@ -27,7 +27,7 @@
 	var/drained_this_tick = 0		// This is unfortunately necessary to ensure we process powersinks BEFORE other machinery such as APCs.
 
 	var/datum/wirenet/power/PN			// Our powernet
-	var/obj/structure/cable/power/attached		// the attached cable
+	var/obj/structure/wire/power/attached		// the attached cable
 
 /obj/item/powersink/Destroy()
 	STOP_PROCESSING(SSobj, src)

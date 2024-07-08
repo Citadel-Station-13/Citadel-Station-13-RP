@@ -2,6 +2,8 @@
 	name = "wirenet joint"
 	desc = "the abstract concept of a network cable"
 
+	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
+
 	/// our network
 	var/datum/wirenet/network
 	/// joined / attempt to have joined?
@@ -13,9 +15,6 @@
 
 /obj/structure/wire/Initialize(mapload)
 	join()
-	var/turf/T = src.loc // hide if turf is not intact
-	if(level==1 && T)
-		hide(!T.is_plating())
 	return ..()
 
 /obj/structure/wire/Destroy()
@@ -34,6 +33,10 @@
 /obj/structure/wire/setDir(dir)
 	SHOULD_CALL_PARENT(FALSE)
 	return FALSE //! No.
+	
+/obj/structure/wire/update_hiding_underfloor(new_value)
+	. = ..()
+	alpha = new_value? 127 : 255
 
 /obj/structure/wire/proc/join()
 	#warn impl
