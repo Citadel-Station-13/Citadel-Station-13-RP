@@ -27,10 +27,10 @@ AUTO_FRAME_DATUM(/datum/frame2/apc, apc, 'icons/machinery/power/apc.dmi')
 				target = entity,
 			)
 		return FALSE
-	if(!area.requires_power || area.always_unpowered)
+	if(!isnull(area.area_power_override))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[location] doesn't require power, or is externally powered."),
+				SPAN_WARNING("[location] doesn't require power, is externally controlled, or can't be powered."),
 				target = entity,
 			)
 		return FALSE

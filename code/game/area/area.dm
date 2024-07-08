@@ -152,20 +152,22 @@
 /area/Initialize(mapload)
 	icon_state = ""
 
-	if(requires_power)
+	var/should_be_lit
+
+	switch(dynamic_lighting)
+		if(DYNAMIC_LIGHTING_FORCED)
+			should_be_lit = FALSE
+		if(DYNAMIC_LIGHTING_IFSTARLIGHT)
+			should_be_lit = !CONFIG_GET(flag/starlight)
+		else
+			should_be_lit = area_power_override == TRUE
+
+	if(should_be_lit)
+		dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 		luminosity = 0
 	else
-		power_light = TRUE
-		power_equip = TRUE
-		power_environ = TRUE
-
-		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
-			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-			luminosity = 0
-		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
-			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
-		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+		dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+		luminosity = 1
 
 	. = ..()
 
@@ -423,7 +425,7 @@
 	return
 
 /area/proc/updateicon()
-	if ((fire || eject || party) && (!requires_power||power_environ) && !istype(src, /area/space))//If it doesn't require power, can still activate this proc.
+	if ((fire || eject || party) && powered(POWER_CHANNEL_ENVIR) && !istype(src, /area/space))//If it doesn't require power, can still activate this proc.
 		if(fire && !eject && !party)
 			icon_state = null // Let lights take care of it
 		/*else if(atmosalm && !fire && !eject && !party)
@@ -467,7 +469,7 @@
 		var/list/report = list()
 		report += "[src] ([type]) static power trace: was --> actual:"
 		for(var/i in 1 to POWER_CHANNEL_COUNT)
-			report += "[global.power_channel_names[i]] - [power_usage_static[i] == old[i]? "<span class='good'>" : "<span class='bad'>"][old[i]] --> [power_usage_static[i]]</span>"
+			report += "[global.power_channel_names[i]] - [power_usage_static[i] == was[i]? "<span class='good'>" : "<span class='bad'>"][was[i]] --> [power_usage_static[i]]</span>"
 		to_chat(user, jointext(report, "<br>"))
 	return was ~= power_usage_static
 
@@ -531,7 +533,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/prison_break()
 	var/obj/machinery/apc/theAPC = get_apc()
-	if(theAPC.operating)
+	if(theAPC.load_toggled)
 		for(var/obj/machinery/apc/temp_apc in src)
 			temp_apc.overload_lighting(70)
 		for(var/obj/machinery/door/airlock/temp_airlock in src)

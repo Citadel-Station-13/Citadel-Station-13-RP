@@ -145,7 +145,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 /obj/machinery/power/pointdefense/examine(mob/user, dist)
 	. = ..()
-	if(powernet)
+	if(is_connected())
 		. += "It is connected to a power cable below."
 
 /obj/machinery/power/pointdefense/get_description_interaction(mob/user)

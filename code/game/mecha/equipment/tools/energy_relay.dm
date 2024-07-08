@@ -104,7 +104,7 @@
 		var/area/A = get_area(ER.chassis)
 		if(A)
 			var/pow_chan
-			for(var/c in list(EQUIP,ENVIRON,LIGHT))
+			for(var/c in power_channels)
 				if(A.powered(c))
 					pow_chan = c
 					break

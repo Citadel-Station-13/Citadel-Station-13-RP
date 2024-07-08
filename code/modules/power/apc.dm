@@ -480,7 +480,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		if(do_after(user, 20))
 			if (C.amount >= 10 && !terminal && opened && has_electronics != 2)
-				var/obj/structure/cable/N = T.get_cable_node()
+				var/obj/structure/cable/N = T.get_power_cable_node()
 				if (prob(50) && electrocute_mob(usr, N, N))
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)

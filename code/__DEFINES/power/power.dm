@@ -17,6 +17,13 @@
 #define POWER_BITS_ALL (POWER_CHANNEL_EQUIP | POWER_CHANNEL_LIGHT | POWER_CHANNEL_ENVIR)
 
 /// length must equal POWER_CHANNEL_COUNT
+GLOBAL_REAL_LIST(power_channels) = list(
+	POWER_CHANNEL_EQUIP,
+	POWER_CHANNEL_LIGHT,
+	POWER_CHANNEL_ENVIR,
+)
+
+/// length must equal POWER_CHANNEL_COUNT
 GLOBAL_REAL_LIST(power_channel_names) = list(
 	"Equipment",
 	"Lighting",

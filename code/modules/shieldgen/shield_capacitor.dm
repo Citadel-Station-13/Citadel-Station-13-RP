@@ -107,7 +107,7 @@
 
 	//see if we can connect to a power net.
 	var/turf/T = get_turf(src)
-	var/obj/structure/wire/cable/C = T.get_cable_node()
+	var/obj/structure/wire/cable/C = T.get_power_cable_node()
 	var/datum/wirenet/power/network = C.network
 
 	if (network)

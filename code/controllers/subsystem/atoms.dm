@@ -152,9 +152,6 @@ SUBSYSTEM_DEF(atoms)
 	admin_notice("<span class='danger'>Initializing atmos pipenets and machinery in submap.</span>", R_DEBUG)
 	SSmachines.setup_atmos_machinery(atmos_machines)
 
-	admin_notice("<span class='danger'>Rebuilding powernets due to submap creation.</span>", R_DEBUG)
-	SSmachines.setup_powernets_for_cables(cables)
-
 	// Ensure all machines in loaded areas get notified of power status
 	for(var/I in areas)
 		var/area/A = I

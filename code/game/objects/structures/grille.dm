@@ -157,11 +157,12 @@
 	if(!in_range(src, user))//To prevent MUTATION_TELEKINESIS and mech users from getting shocked
 		return 0
 	var/turf/T = get_turf(src)
-	var/obj/structure/cable/C = T.get_cable_node()
+	var/obj/structure/cable/power/C = T.get_power_cable_node()
 	if(C)
 		if(electrocute_mob(user, C, src))
-			if(C.powernet)
-				C.powernet.trigger_warning()
+
+			if(C.network)
+				C.network.raise_fault(POWERNET_FAULT_GROUND, 15 SECONDS)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
