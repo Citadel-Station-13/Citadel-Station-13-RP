@@ -1,3 +1,4 @@
+INITIALIZE_IMMEDIATE(/mob/new_player)
 /mob/new_player
 	var/ready = 0
 	var/spawning = 0			// Referenced when you want to delete the new_player later on in the code.

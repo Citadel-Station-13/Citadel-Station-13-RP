@@ -109,6 +109,11 @@
 
 	if(!length(using_actions))
 		client?.screen -= hide_toggle
+	else
+		for(var/atom/movable/screen/movable/action_button/realigning as anything in all_action_buttons())
+			if(realigning.moved)
+				continue
+			align_button(realigning)
 	if(!hide_toggle.moved)
 		hide_toggle.request_position_reset()
 
