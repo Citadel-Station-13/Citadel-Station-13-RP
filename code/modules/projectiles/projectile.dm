@@ -41,6 +41,8 @@
 	  */
 	/// The "usual" flags of pass_flags is used in that can_hit_target ignores these unless they're specifically targeted/clicked on. This behavior entirely bypasses process_hit if triggered, rather than phasing which uses prehit_pierce() to check.
 	pass_flags = ATOM_PASS_TABLE
+	/// we handle our own go through
+	generic_canpass = FALSE
 	/// If FALSE, allow us to hit something directly targeted/clicked/whatnot even if we're able to phase through it
 	var/phases_through_direct_target = FALSE
 	/// anything with these pass flags are automatically pierced
@@ -156,6 +158,11 @@
 	//        optimally physics loop should handle tracking for stuff like animations, not require on hit processing to check turfs
 	var/turf/trajectory_moving_to
 
+	//* Targeting *//
+
+	/// Originally clicked target
+	var/atom/original_target
+
 	//Fired processing vars
 	var/fired = FALSE	//Have we been fired yet
 	var/ignore_source_check = FALSE
@@ -193,7 +200,6 @@
 	//Targetting
 	var/yo = null
 	var/xo = null
-	var/atom/original = null // the original target clicked
 	var/turf/starting = null // the projectile's starting turf
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
@@ -434,6 +440,43 @@
 		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
+
+#warn above
+
+/obj/projectile/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	if(impacted[blocker])
+		return TRUE
+	return blocker_opinion
+
+/**
+ * checks if we're valid to hit a target
+ */
+/obj/projectile/proc/can_hit_target(atom/target)
+
+/**
+ * this strangely named proc is basically the hit processing loop
+ *
+ * "now why the hells would you do this"
+ *
+ * well, you see, turf movement handling doesn't support what we need to do,
+ * and for good reason.
+ *
+ * most of the time, turf movement handling is more than enough for any game use case.
+ * it is not nearly accurate/comprehensive enough for projectiles
+ * and we're not going to make it that, because that's a ton of overhead for everything else
+ *
+ * so instead, projectiles handle it themselves on a Bump().
+ *
+ * when this happens, the projectile should hit everything that's going to collide it anyways
+ * in the turf, not just one thing; this way, hits are instant for a given collision.
+ *
+ * @params
+ * todo: params documentation
+ */
+/obj/projectile/proc/hit_bumped_stuff(atom/bumped)
+
+
+#warn below
 
 //Returns true if the target atom is on our current turf and above the right layer
 //If direct target is true it's the originally clicked target.
