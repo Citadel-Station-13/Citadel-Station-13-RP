@@ -31,6 +31,20 @@
 	/// nominal climb delay before modifiers
 	var/climb_delay = 3.5 SECONDS
 
+	//* Coloration
+	/// coloration mode
+	var/coloration_mode = COLORATION_MODE_NONE
+	/// coloration:
+	/// in MULTIPLY / MATRIX, this is unused as we just use color var
+	/// in RG, RB, GB, RGB, OVERLAYS, GAGS modes, this is a concat'd string of #aabbcc#112233... for the n colors in this.
+	var/coloration
+	/// coloration amount
+	///
+	/// only used in:
+	/// * overlays mode
+	/// * later, GAGS mode
+	var/coloration_amount
+
 	//? Depth
 	/// logical depth in pixels. people can freely run from high to low objects without being blocked.
 	///
@@ -550,6 +564,114 @@
 			H.update_health()
 	*/
 
+//* Coloration *//
+
+/obj/proc/amount_coloration()
+	switch(coloration_mode)
+		if(COLORATION_MODE_NONE)
+			return 0
+		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
+			return 1
+		if(COLORATION_MODE_RB_MATRIX)
+			return 2
+		if(COLORATION_MODE_RG_MATRIX)
+			return 2
+		if(COLORATION_MODE_GB_MATRIX)
+			return 2
+		if(COLORATION_MODE_RGB_MATRIX)
+			return 3
+	return coloration_amount
+
+/obj/proc/set_coloration_matrix(list/color_matrix)
+	if(coloration_mode != COLORATION_MODE_MATRIX)
+		return
+	color = color_matrix
+	// well, we can't pack a matrix :/
+	coloration = null
+
+/obj/proc/set_coloration_parts(list/colors)
+	switch(coloration_mode)
+		if(COLORATION_MODE_MATRIX, COLORATION_MODE_MULTIPLY)
+			ASSERT(length(colors) == 1)
+			color = colors[1]
+		if(COLORATION_MODE_RG_MATRIX)
+			ASSERT(length(colors) == 2)
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/green_decoded = ReadRGB(colors[2])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				0, 0, 0, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_GB_MATRIX)
+			ASSERT(length(colors) == 2)
+			var/list/green_decoded = ReadRGB(colors[1])
+			var/list/blue_decoded = ReadRGB(colors[2])
+			color = list(
+				0, 0, 0, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_RB_MATRIX)
+			ASSERT(length(colors) == 2)
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/blue_decoded = ReadRGB(colors[2])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				0, 0, 0, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_RGB_MATRIX)
+			ASSERT(length(colors) == 3)
+			var/list/red_decoded = ReadRGB(colors[1])
+			var/list/green_decoded = ReadRGB(colors[2])
+			var/list/blue_decoded = ReadRGB(colors[3])
+			color = list(
+				red_decoded[1] / 255, red_decoded[2] / 255, red_decoded[3] / 255, 0,
+				green_decoded[1] / 255, green_decoded[2] / 255, green_decoded[3] / 255, 0,
+				blue_decoded[1] / 255, blue_decoded[2] / 255, blue_decoded[3] / 255, 0,
+				0, 0, 0, 1,
+			)
+		if(COLORATION_MODE_OVERLAYS)
+			ASSERT(length(colors) == coloration_amount)
+			// todo: implement; we'll probably have to hook both update_overlays as well as
+			// todo: something in [code/modules/mob/inventory/rendering.dm].
+			pass()
+		if(COLORATION_MODE_NONE)
+			// why are we here?
+			ASSERT(!length(colors))
+			color = null
+	coloration = pack_coloration_string(colors)
+
+/obj/proc/set_coloration_packed(packed_colors)
+	var/list/unpacked = unpack_coloration_string(packed_colors)
+	return set_coloration_parts(unpacked)
+
+/obj/proc/get_coloration_parts()
+	if(!(coloration_mode & COLORATION_MODES_COMPLEX))
+		switch(coloration_mode)
+			if(COLORATION_MODE_MULTIPLY)
+				// matrices are unsupported
+				return list(islist(color)? "#ffffff" : color)
+			if(COLORATION_MODE_MATRIX)
+				// unsupported
+				return list("#ffffff")
+		return list()
+	return unpack_coloration_string(coloration)
+
+/obj/proc/get_coloration_packed()
+	switch(coloration_mode)
+		if(COLORATION_MODE_MULTIPLY)
+			// matrices are unsupported
+			return islist(color)? "#ffffff" : color
+		if(COLORATION_MODE_MATRIX)
+			// unsupported
+			return "#ffffff"
+	return coloration
+
 //* Context *//
 
 /obj/context_query(datum/event_args/actor/e_args)
@@ -715,6 +837,8 @@
 		return
 	if(integrity == integrity_max)
 		. += SPAN_NOTICE("It looks fully intact.")
+	else if(atom_flags & ATOM_BROKEN)
+		. += SPAN_BOLDWARNING("It's broken and falling apart!")
 	else
 		var/perc = percent_integrity()
 		if(perc > 0.75)
@@ -724,7 +848,7 @@
 		else if(perc > 0.25)
 			. += SPAN_RED("It looks severely damaged.")
 		else
-			. += SPAN_BOLDWARNING("It's falling apart!")
+			. += SPAN_BOLDWARNING("It's barely able to hold itself together!")
 
 //* Movement *//
 
@@ -789,7 +913,7 @@
 		return FALSE
 	. = TRUE
 	// todo: mobility flags
-	var/extra_time = MODULUS(time, interval)
+	var/extra_time = MODULUS_F(time, interval)
 	var/i
 	for(i in 1 to round(time / interval))
 		if(!do_after(escapee, interval, mobility_flags = MOBILITY_CAN_RESIST))

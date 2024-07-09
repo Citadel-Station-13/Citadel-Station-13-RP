@@ -411,7 +411,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/obj/effect/overlay/holographic/hologram = null // Reference to the hologram effect, and also used to see if component is active.
 	var/icon/holo_base = null // Uncolored holographic icon.
-//	var/datum/beam/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
+//	var/datum/beam_legacy/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
 	// It is commented out due to picking up the assembly killing the beam.
 
 /obj/item/integrated_circuit/output/holographic_projector/Destroy()

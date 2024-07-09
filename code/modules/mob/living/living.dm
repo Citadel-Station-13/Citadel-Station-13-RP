@@ -303,6 +303,18 @@ default behaviour is:
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	halloss = amount
 
+/mob/living/proc/adjustHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(hallucination + amount, 0, 400) //cap at 400, any higher is just obnoxious
+
+/mob/living/proc/setHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(amount, 0, 400) //cap at 400, any higher is just obnoxious
+
 // Use this to get a mob's max health whenever possible.  Reading maxHealth directly will give inaccurate results if any modifiers exist.
 /mob/living/proc/getMaxHealth()
 	var/result = maxHealth

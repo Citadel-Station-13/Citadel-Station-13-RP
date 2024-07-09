@@ -46,6 +46,30 @@
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "crate of bar supplies"
 
+/datum/supply_pack/hospitality/condiments
+	contains = list(
+		/obj/item/reagent_containers/food/condiment/enzyme,
+		/obj/item/reagent_containers/food/condiment/ketchup,
+		/obj/item/reagent_containers/food/condiment/ketchup,
+		/obj/item/reagent_containers/food/condiment/sugar,
+		/obj/item/reagent_containers/food/condiment/hotsauce,
+		/obj/item/reagent_containers/food/condiment/coldsauce,
+		/obj/item/reagent_containers/food/condiment/soysauce,
+		/obj/item/reagent_containers/food/condiment/small/saltshaker,
+		/obj/item/reagent_containers/food/condiment/small/saltshaker,
+		/obj/item/reagent_containers/food/condiment/small/saltshaker,
+		/obj/item/reagent_containers/food/condiment/small/peppermill,
+		/obj/item/reagent_containers/food/condiment/small/peppermill,
+		/obj/item/reagent_containers/food/condiment/small/peppermill,
+		/obj/item/reagent_containers/food/condiment/spacespice,
+		/obj/item/reagent_containers/food/condiment/spacespice,
+		/obj/item/reagent_containers/food/condiment/spacespice,
+	)
+	name = "Condiment crate"
+	cost = 20
+	container_type = /obj/structure/closet/crate/corporate/centauri
+	container_name = "Condiment crate"
+
 /datum/supply_pack/randomised/hospitality/
 	group = "Hospitality"
 
@@ -58,7 +82,7 @@
 			/obj/item/pizzabox/vegetable
 			)
 	name = "Surprise pack of five pizzas"
-	cost = 15
+	cost = 50
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Pizza crate"
 
@@ -100,7 +124,6 @@
 			/obj/item/reagent_containers/food/snacks/cherrypie,
 			/obj/item/reagent_containers/food/snacks/cookie,
 			/obj/item/reagent_containers/food/snacks/croissant,
-			/obj/item/reagent_containers/food/snacks/donut/normal,
 			/obj/item/reagent_containers/food/snacks/donut/jelly,
 			/obj/item/reagent_containers/food/snacks/donut/cherryjelly,
 			/obj/item/reagent_containers/food/snacks/muffin,
@@ -134,6 +157,18 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Cake crate"
 
+/datum/supply_pack/hospitality/donuts
+	contains = list(
+		/obj/item/storage/box/donut,
+		/obj/item/storage/box/donut,
+		/obj/item/storage/box/donut,
+	)
+	name = "Donut resupply crate"
+	cost = 25
+	container_type = /obj/structure/closet/crate/corporate/centauri
+	container_name = "Donut Resupply Crate"
+	container_desc = "For all your emergency donut resupply needs, Centauri Provision's got you."
+
 /datum/supply_pack/randomised/hospitality/mexican
 	num_contained = 5
 	contains = list(
@@ -157,9 +192,6 @@
 	cost = 50
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Chinese takeout crate"
-
-/datum/supply_pack/randomised/hospitality/pizza
-	cost = 50
 
 /datum/supply_pack/hospitality/cookingoil
 	name = "Tallow tank crate"

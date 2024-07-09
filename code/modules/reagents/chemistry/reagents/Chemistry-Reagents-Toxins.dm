@@ -946,7 +946,7 @@
 	if(alien == IS_SLIME)
 		drug_strength *= 1.2
 
-	M.hallucination = max(M.hallucination, drug_strength)
+	M.setHallucination(max(M.hallucination, drug_strength))
 
 /datum/reagent/psilocybin
 	name = "Psilocybin"
