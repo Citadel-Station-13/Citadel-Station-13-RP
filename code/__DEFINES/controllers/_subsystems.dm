@@ -215,4 +215,4 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_DEFAULT      50
 
 //* Helpers *//
-#define SUBSYSTEM_FIRE_COMPUTE_DT (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : max(world.tick_lag, wait * 0.1)
+#define SUBSYSTEM_FIRE_COMPUTE_DT ((subsystem_flags & SS_TICKER? (wait * world.tick_lag) : max(world.tick_lag, wait)) * 0.1)
