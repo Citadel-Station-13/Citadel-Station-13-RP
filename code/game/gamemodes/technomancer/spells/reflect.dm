@@ -54,7 +54,7 @@
 				var/turf/curloc = get_turf(user)
 
 				// redirect the projectile
-				P.redirect(P.starting.x, P.starting.y, curloc, user)
+				P.legacy_redirect(P.starting.x, P.starting.y, curloc, user)
 				P.reflected = 1
 				if(check_for_scepter())
 					P.damage = P.damage * 1.5

@@ -371,13 +371,14 @@
 		return TRUE
 	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 
+#warn FUCK
 
 /**
  * If you are hit: how is it handled.
  * Return TRUE if the generic fall_impact should be called.
  * Return FALSE if you handled it yourself or if there's no effect from hitting you.
  */
-/atom/proc/check_impact(atom/movable/falling_atom)
+/atom/proc/check_z_impact(atom/movable/falling_atom)
 	return TRUE
 
 

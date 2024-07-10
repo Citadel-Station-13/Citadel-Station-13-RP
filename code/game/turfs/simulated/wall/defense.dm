@@ -19,20 +19,24 @@
 	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
 	return NONE
 
-/turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
-	if(istype(Proj,/obj/projectile/beam))
+/turf/simulated/wall/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+
+	if(istype(proj,/obj/projectile/beam))
 		burn(2500)
-	else if(istype(Proj,/obj/projectile/ion))
+	else if(istype(proj,/obj/projectile/ion))
 		burn(500)
 
-	if(Proj.damage_type == BURN && Proj.damage > 0)
+	if(proj.damage_type == BURN && proj.damage > 0)
 		if(thermite)
 			thermitemelt()
 
-	if(Proj.ricochet_sounds && prob(15))
-		playsound(src, pick(Proj.ricochet_sounds), 100, 1)
+	if(proj.ricochet_sounds && prob(15))
+		playsound(src, pick(proj.ricochet_sounds), 100, 1)
 
-	inflict_atom_damage(Proj.get_structure_damage(), Proj.damage_tier, Proj.damage_flag, Proj.damage_mode, ATTACK_TYPE_PROJECTILE, Proj)
+	#warn uhh
+
+	inflict_atom_damage(proj.get_structure_damage(), proj.damage_tier, proj.damage_flag, proj.damage_mode, ATTACK_TYPE_PROJECTILE, proj)
 
 /turf/simulated/wall/break_apart(method)
 	dismantle_wall()

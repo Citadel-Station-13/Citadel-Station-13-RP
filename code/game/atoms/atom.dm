@@ -907,6 +907,7 @@
 
 	return T.has_gravity()
 
+// todo: annihilate this in favor of ATOM_PASS_INCORPOREAL
 /atom/proc/is_incorporeal()
 	return FALSE
 

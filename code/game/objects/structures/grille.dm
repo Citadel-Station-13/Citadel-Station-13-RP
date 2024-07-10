@@ -43,36 +43,41 @@
 		return TRUE
 	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/projectile/Proj)
+/obj/structure/grille/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	#warn redo all this; proj.dampen_kinetic_energy()?
+	impact_flags |= PROJECTILE_IMPACT_TRIVIAL
+	. = ..()
+
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
-	var/damage = Proj.get_structure_damage()
+	var/damage = proj.get_structure_damage()
 	var/passthrough = 0
 
-	if(!damage) return
+	if(!damage)
+		return
 
 	//20% chance that the grille provides a bit more cover than usual. Support structure for example might take up 20% of the grille's area.
 	//If they click on the grille itself then we assume they are aiming at the grille itself and the extra cover behaviour is always used.
-	switch(Proj.damage_type)
+	switch(proj.damage_type)
 		if(BRUTE)
 			//bullets
-			if(Proj.original == src || prob(20))
-				Proj.damage *= clamp( Proj.damage/60, 0,  0.5)
+			if(proj.original_target == src || prob(20))
+				proj.damage *= clamp( proj.damage/60, 0,  0.5)
 				if(prob(max((damage-10)/25, 0))*100)
 					passthrough = 1
 			else
-				Proj.damage *= clamp( Proj.damage/60, 0,  1)
+				proj.damage *= clamp( proj.damage/60, 0,  1)
 				passthrough = 1
 		if(BURN)
 			//beams and other projectiles are either blocked completely by grilles or stop half the damage.
-			if(!(Proj.original == src || prob(20)))
-				Proj.damage *= 0.5
+			if(!(proj.original == src || prob(20)))
+				proj.damage *= 0.5
 				passthrough = 1
 
 	if(passthrough)
 		. = PROJECTILE_CONTINUE
-		damage = between(0, (damage - Proj.damage)*(Proj.damage_type == BRUTE? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
+		damage = between(0, (damage - proj.damage)*(proj.damage_type == BRUTE? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
 
-	inflict_atom_damage(damage, Proj.damage_tier, Proj.damage_flag, Proj.damage_mode, ATTACK_TYPE_PROJECTILE, Proj)
+	inflict_atom_damage(damage, proj.damage_tier, proj.damage_flag, proj.damage_mode, ATTACK_TYPE_PROJECTILE, proj)
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))

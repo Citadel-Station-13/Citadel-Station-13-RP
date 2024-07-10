@@ -178,6 +178,7 @@
 #define STAIRS_LAYER       (TURF_LAYER+0.5) /// Layer for stairs.
 #define DOOR_OPEN_LAYER    (TURF_LAYER+0.7) /// Under all objects if opened. 2.7 due to tables being at 2.6.
 #define TABLE_LAYER        (TURF_LAYER+0.8) /// Just under stuff that wants to be slightly below common objects.
+/// Below this layer, projectiles won't collide with things unless it's a directly clicked target.
 #define PROJECTILE_HIT_THRESHOLD_LAYER 2.8
 #define UNDER_JUNK_LAYER   (TURF_LAYER+0.9) /// Things that want to be slightly below common objects.
 

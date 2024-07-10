@@ -41,6 +41,9 @@
 /// passed from another bullet_act(),
 /// like from a target stake to the mounted target
 #define PROJECTILE_IMPACT_INDIRECTED (1<<9)
+/// used by /impact() on projectile to signal to impact_loop()
+/// that the projectile should keep impacting everything on the turf it was trying to hit
+#define PROJECTILE_IMPACT_CONTINUE_LOOP (1<<10)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)

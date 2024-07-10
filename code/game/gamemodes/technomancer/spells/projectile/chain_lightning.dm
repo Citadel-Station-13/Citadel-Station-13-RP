@@ -70,7 +70,7 @@
 		if(new_target)
 			var/turf/curloc = get_turf(target_mob)
 			curloc.visible_message("<span class='danger'>\The [src] bounces to \the [new_target]!</span>")
-			redirect(new_target.x, new_target.y, curloc, firer)
+			legacy_redirect(new_target.x, new_target.y, curloc, firer)
 			bounces--
 
 			return 0
