@@ -60,7 +60,17 @@
 	/// Projectile type bitfield; set all that is relevant
 	var/projectile_type = NONE
 
-	#warn impl
+	//* Effects *//
+
+	/// projectile effects
+	///
+	/// * this is a static typelist on this typepath
+	/// * do not under any circumstances edit this
+	VAR_PROTECTED/list/base_projectile_effects
+	/// projectile effects
+	///
+	/// * this is configured at runtime and can be edited
+	VAR_PROTECTED/list/additional_projectile_effects
 
 	//* Physics - Configuration *//
 
@@ -276,6 +286,10 @@
 
 	var/no_attack_log = FALSE
 
+/obj/projectile/Initialize(mapload)
+	#warn projectile effects
+	return ..()
+
 /obj/projectile/Destroy()
 	// stop processing
 	STOP_PROCESSING(SSprojectiles, src)
@@ -285,6 +299,14 @@
 
 /obj/projectile/proc/legacy_on_range() //if we want there to be effects when they reach the end of their range
 	finalize_hitscan_tracers(impact_effect = FALSE, kick_forwards = 8)
+
+	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+		if(effect.hook_lifetime)
+			effect.on_lifetime(src)
+	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+		if(effect.hook_lifetime)
+			effect.on_lifetime(src)
+
 	qdel(src)
 
 /obj/projectile/proc/fire(set_angle_to, atom/direct_target)
@@ -713,6 +735,13 @@
 		return
 	// scan the turf for anything we need to hit
 	scan_moved_turf(loc)
+	// trigger effects
+	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+		if(effect.hook_moved)
+			effect.on_moved(src, old_loc)
+	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+		if(effect.hook_moved)
+			effect.on_moved(src, old_loc)
 
 // todo: should we inline this?
 /obj/projectile/proc/scan_moved_turf(turf/tile)
@@ -1075,6 +1104,21 @@
 		qdel(src)
 		return impact_flags
 
+	// trigger projectile effects
+	if(base_projectile_effects || additional_projectile_effects)
+		for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+			if(effect.hook_impact)
+				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
+		for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+			if(effect.hook_impact)
+				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
+		// did anything triggered up above trigger a delete?
+		if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE)
+			if(hitscanning)
+				finalize_hitscan_tracers()
+			qdel(src)
+			return impact_flags
+
 	#warn insert rest of behavior here
 
 	// see if we should keep going or delete
@@ -1334,6 +1378,7 @@
 			spawn(0)
 				physics_iteration(pixels_remaining, delta_time, distance_travelled_this_iteration)
 			return
+		// this is also a catch-all for deletion
 		if(!loc || paused)
 			break
 
