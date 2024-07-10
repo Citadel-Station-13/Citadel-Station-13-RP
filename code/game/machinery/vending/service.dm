@@ -92,6 +92,7 @@
 		/obj/item/reagent_containers/food/drinks/glass2/mug = 10,
 		/obj/item/reagent_containers/food/drinks/glass2/wine = 10,
 		/obj/item/reagent_containers/food/drinks/glass2/pitcher = 10,
+		/obj/item/reagent_containers/food/drinks/cup = 10,
 		/obj/item/reagent_containers/food/drinks/metaglass = 25,
 		/obj/item/reagent_containers/food/drinks/bottle/grenadine = 5,
 		/obj/item/reagent_containers/food/drinks/bottle/orangejuice = 5,
