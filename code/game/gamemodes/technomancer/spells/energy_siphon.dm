@@ -170,7 +170,7 @@
 /obj/projectile/beam/lightning/energy_siphon
 	name = "energy stream"
 	icon_state = "lightning"
-	range = 6 // Backup plan in-case the effect somehow misses the Technomancer.
+	range = WORLD_ICON_SIZE * 6
 	power = 5 // This fires really fast, so this may add up if someone keeps standing in the beam.
 	penetrating = 5
 

@@ -192,11 +192,23 @@
 // #define AO_USE_LIGHTING_OPACITY
 
 // ## Overlays
+
 /**
  * A reasonable number of maximum overlays an object needs.
  * If you think you need more, rethink it.
  */
 #define MAX_ATOM_OVERLAYS 100
+
+// ## Projectiles
+
+/**
+ * Enable raycast visuals
+ */
+// #define CF_PROJECTILE_RAYCAST_VISUALS
+
+#ifdef CF_PROJECTILE_RAYCAST_VISUALS
+	#warn Visualization of projectile raycast algorithm enabled.
+#endif
 
 // ## Timers
 

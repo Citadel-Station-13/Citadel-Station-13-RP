@@ -97,7 +97,7 @@
 
 /obj/machinery/door/Bumped(atom/AM)
 	. = ..()
-	if(panel_open || operating)
+	if(operating)
 		return
 	if(ismob(AM))
 		var/mob/M = AM

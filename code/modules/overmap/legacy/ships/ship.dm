@@ -201,11 +201,11 @@
 /obj/overmap/entity/visitable/ship/proc/ETA()
 	. = INFINITY
 	if(vel_x)
-		var/offset = MODULUS(OVERMAP_DIST_TO_PIXEL(pos_x), WORLD_ICON_SIZE)
+		var/offset = MODULUS_F(OVERMAP_DIST_TO_PIXEL(pos_x), WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_x > 0) ? (WORLD_ICON_SIZE - offset) : offset
 		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_x))) * 10)
 	if(vel_y)
-		var/offset = MODULUS(OVERMAP_DIST_TO_PIXEL(pos_y), WORLD_ICON_SIZE)
+		var/offset = MODULUS_F(OVERMAP_DIST_TO_PIXEL(pos_y), WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_y > 0) ? (WORLD_ICON_SIZE - offset) : offset
 		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_y))) * 10)
 	. = max(., 0)
