@@ -70,7 +70,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	//* Power - Buffer *//
 	/// internal capacitor capacity in joules
-	var/buffer_capacity = 25000
+	var/buffer_capacity = 50000 // 50 kilowatts for a second, or half a kilowatt for a minute and a half
 	/// internal capacitor joules; this is auto-set at init based on if we have a cell / power if null.
 	var/buffer
 
@@ -95,8 +95,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	var/channels_toggled = POWER_BITS_ALL
 	/// power channels set to auto
 	var/channels_auto = POWER_BITS_ALL
-	/// power channels currently on
-	var/channels_active = POWER_BITS_ALL
 	/// percentage (as 0.0 to 1.0) of cell remaining to turn a channel off at
 	/// if no cell, it turns off immediately upon insufficient power from mains.
 	var/list/channel_thresholds = APC_CHANNEL_THRESHOLDS_DEFAULT
@@ -109,12 +107,14 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	//* Power - Processing *//
 	/// last total power used, static and burst
-	var/last_total_used = 0
+	var/last_total_load = 0
+	/// difference between power that could be pulled from the grid, and the amount needed.
+	var/last_total_deficit = 0
 	/// last channel power used, static and burst
-	var/list/last_channel_used = EMPTY_POWER_CHANNEL_LIST
-	/// burst usage for channels since last process()
+	var/list/last_channel_load = EMPTY_POWER_CHANNEL_LIST
+	/// burst usage for channels since last process() in joules
 	/// this is directly deducted and will not be drained again during process().
-	var/list/current_burst_used = EMPTY_POWER_CHANNEL_LIST
+	var/list/current_burst_load = EMPTY_POWER_CHANNEL_LIST
 
 
 	//* Security *//
@@ -1128,35 +1128,45 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	// if we don't have an area, bail, this is an error state
 	if(!registered_area)
 		return
+
+	// prep for cycle
+
+	// total load last cycle
+	var/total_static = 0
+	// total burst used power last cycle
+	var/total_burst = 0
+	// needed to be drawn from the grid
+	var/power_requested = 0
+
 	// does the area require power?
 	if(!isnull(registered_area.area_power_override))
 		// the area uses power
-		// tally up area static power + the burst power used
-		// used = already used
-		var/used_joules = 0
-		for(var/channel in 1 to POWER_CHANNE_COUNT)
-			var/channel_total = area.power_usage_static[channel] + current_burst_used[channel]
+		for(var/channel in 1 to POWER_CHANNEL_COUNT)
+			if(!(registered_area.power_channels & POWER_CHANNEL_TO_BIT(channel)))
+				// not on
+				continue
+			var/channel_total = area.power_usage_static[channel]
 			last_channel_used[channel] = channel_total
 			current_burst_used[channel] = 0
-	else
+			total_burst += current_burst_load[channel]
+			total_static += channel_total
+	else 
 		// the area doesn't
 		// todo: the area should reset apcs last used / burst used to 0 when it's set to power override mode
-		//       remove this clause after this is done
+		//       remove this else clause after this is done
 		pass()
 
-	if(!registered_area || !isnull(registered_area.area_power_override))
-		return
+	// add static power
+	power_requested += total_static
+
+	if(cell)
+		// celled operation
+		// do we need to charge the cell?
 
 
 #warn below
 
 /obj/machinery/apc/process(delta_time)
-
-
-	if(machine_stat & (BROKEN|MAINT))
-		return
-	if(!area.requires_power)
-		return
 	if(failure_timer)
 		update()
 		queue_icon_update()
@@ -1165,25 +1175,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		return
 
 	#warn above
-
-	// tally up area static power + the burst power used
-	// used = already used
-	// wanting = used + powered off machines
-	// this is used for heuristic estimation reasons.
-	var/used_joules = 0
-	var/wanting_joules = 0
-	var/used_burst_joules = 0
-	for(var/channel in 1 to POWER_CHANNEL_COUNT)
-		var/channel_total = area.power_usage_static[channel]
-		last_channel_load[channel] = channel_total + current_burst_load[channel]
-		used_burst_joules += current_burst_load[channel]
-		current_burst_load[channel] = 0
-		// burst is intentionally ignored as it was already drained.
-		if(area.power_channels & power_channel_bits[channel])
-			used_joules += channel_total
-		wanting_joules += channel_total
-	last_load = wanting_joules + used_burst_joules
-	load_heuristic = SIMPLE_VALUE_SMOOTHING(0.5, load_heuristic, last_load)
 
 	// reduce load resume
 	// this should never go too high, because we want fast restore times
@@ -1294,7 +1285,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
  * something is trying to use a dynamic amount of burst power
  *
  * @params
- * * amount - how much
+ * * amount - how much in joules
  * * channel - power channel
  * * allow_partial - allow partial usage
  * * over_time - (optional) amount of deciseconds this is over, used for smoothing

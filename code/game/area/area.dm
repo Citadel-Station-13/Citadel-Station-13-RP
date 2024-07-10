@@ -714,7 +714,7 @@ var/list/ghostteleportlocs = list()
  * use a dynamic amount of burst power
  *
  * @params
- * * amount - how much
+ * * amount - how much in joules 
  * * channel - power channel
  * * allow_partial - allow partial usage
  * * over_time - (optional) amount of deciseconds this is over, used for smoothing
