@@ -8,7 +8,11 @@
 	range = 0
 	var/datum/global_iterator/pr_energy_relay
 	var/coeff = 100
-	var/list/use_channels = list(EQUIP,ENVIRON,LIGHT)
+	var/list/use_channels = list(
+		POWER_CHANNEL_EQUIP,
+		POWER_CHANNEL_LIGHT,
+		POWER_CHANNEL_ENVIR,
+	)
 
 	equip_type = EQUIP_UTILITY
 

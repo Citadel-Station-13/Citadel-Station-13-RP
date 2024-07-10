@@ -165,18 +165,22 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 ////////// This machine is willing to take power from cables OR APCs.  Handle NOPOWER stat specially here! ////////
 
-/obj/machinery/power/pointdefense/connect_to_network()
-	if((. = ..()))
-		machine_stat &= ~NOPOWER // We now ignore APC power
-		update_icon()
+/obj/machinery/power/pointdefense/connect()
+	. = ..()
+	if(!.)
+		return
+	machine_stat &= ~NOPOWER // We now ignore APC power
+	update_icon()
 
 /obj/machinery/power/pointdefense/disconnect_from_network()
-	if((. = ..()))
-		power_change() // We're back on APC power.
+	. = ..()
+	if(!.)
+		return
+	power_change() // We're back on APC power.
 
 /obj/machinery/power/pointdefense/power_change()
-	if(powernet)
-		return // We don't care, we are cable powered anyway
+	if(is_connected())
+		return
 	var/old_stat = machine_stat
 	..()
 	if(old_stat != machine_stat)
@@ -184,8 +188,8 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 // Decide where to get the power to fire from
 /obj/machinery/power/pointdefense/use_burst_power(amount, chan = CURRENT_CHANNEL)
-	if(powernet)
-		return draw_power(amount * 0.001) * 1000
+	if(is_connected())
+		return flat_draw(amount * 0.001) * 1000
 	// We are not connected to a powernet, so we want APC power.  Reproduce that code here since this is weird.
 	if(chan == CURRENT_CHANNEL)
 		chan = power_channel

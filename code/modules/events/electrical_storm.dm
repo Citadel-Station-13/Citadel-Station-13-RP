@@ -56,7 +56,7 @@
 
 /datum/event/electrical_storm/proc/affect_apc(var/obj/machinery/apc/T)
 	// Main breaker is turned off.  Consider this APC protected.
-	if(!T.operating)
+	if(!T.load_active)
 		return
 
 	// Decent chance to overload lighting circuit.

@@ -216,7 +216,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 			if(!A)
 				on = 0
 			else
-				on = A.powered(EQUIP) // set "on" to the power status
+				on = A.powered(POWER_CHANNEL_EQUIP) // set "on" to the power status
 
 		update_icon()
 

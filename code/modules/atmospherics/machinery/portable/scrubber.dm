@@ -105,7 +105,7 @@
 		update_connected_network()
 
 	if(power_current)
-		use_power(power_current, dt = delta_time)
+		use_burst_power(power_current, dt = delta_time)
 
 //Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge

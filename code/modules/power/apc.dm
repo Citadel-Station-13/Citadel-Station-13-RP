@@ -61,6 +61,10 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	//* Power - Breaker *//
 	/// breaker toggled
 	var/breaker_toggled = TRUE
+	/// are we *actually* operating?
+	/// this way the apc can automatically shut off when there's
+	/// insufficient power instead of oscillating every tick
+	var/load_active = TRUE
 	/// io regulators faulted until world.time
 	///
 	/// caused by things like:
@@ -85,10 +89,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	//* Power - Charging *//
 	/// charging enabled
 	var/charging_enabled = FALSE
-	/// currently charging
-	var/charging = FALSE
 	/// charge rate limit in kw
-	var/charging_limit = 5
+	var/charging_draw = 5
 
 	//* Power - Channels *//
 	/// power channels enabled
@@ -106,6 +108,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	var/load_balancing_modify = TRUE
 
 	//* Power - Processing *//
+	/// currently charging
+	var/last_charging = FALSE
 	/// last total power used, static and burst
 	var/last_total_load = 0
 	/// difference between power that could be pulled from the grid, and the amount needed.
@@ -126,10 +130,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	#warn below
 
 	//? Power Handling
-	/// are we *actually* operating?
-	/// this way the apc can automatically shut off when there's
-	/// insufficient power instead of oscillating every tick
-	var/load_active = TRUE
 	/// if power alarms from this apc are visible on consoles
 	//! warning: legacy
 	var/alarms_hidden = FALSE
@@ -1118,7 +1118,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 //* Power Solver *//
 
-/obj/machinery/apc/process()
+/obj/machinery/apc/process(delta_time)
 	//! LEGACY
 	// if we're broken, do nothing
 	if(machine_stat & (BROKEN | MAINT))
@@ -1132,10 +1132,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	// prep for cycle
 
 	// total load last cycle
+	// this is in watts
 	var/total_static = 0
 	// total burst used power last cycle
+	// this is in joules
 	var/total_burst = 0
 	// needed to be drawn from the grid
+	// this is in kilowatts
 	var/power_requested = 0
 
 	// does the area require power?
@@ -1150,18 +1153,25 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 			current_burst_used[channel] = 0
 			total_burst += current_burst_load[channel]
 			total_static += channel_total
-	else 
+	else
 		// the area doesn't
 		// todo: the area should reset apcs last used / burst used to 0 when it's set to power override mode
 		//       remove this else clause after this is done
 		pass()
 
 	// add static power
-	power_requested += total_static
+	power_requested += total_static * 0.001
 
 	if(cell)
 		// celled operation
 		// do we need to charge the cell?
+		// cell charging is always eager.
+		if(charging_enabled && cell.charge < cell.maxcharge)
+			power_requested += DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time)
+
+	// buffer
+	// the purpose of the buffer is to smooth burst loads.
+	// and to be a temporary power buffer when someone's doing grid maintenance.
 
 
 #warn below

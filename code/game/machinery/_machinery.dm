@@ -740,7 +740,7 @@
  * Use a burst amount of power.
  *
  * @params
- * * amount - watts
+ * * amount - joules
  * * channel - power channel
  * * allow_partial - allow partial power usage, aka allow brownouts to affect us
  * * over_time - (optional) - how long we draw it over.
