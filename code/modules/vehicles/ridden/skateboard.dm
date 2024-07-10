@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/skateboard
 	name = "The essence of tony hawk"
 	desc = "You shouldn't be seeing this. Contact an Admin."
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/skateboard.dmi'
 	icon_state = "skateboard"
 	density = FALSE
 	integrity = 100
@@ -123,6 +123,7 @@
 /obj/vehicle/ridden/skateboard/scooter
 	name = "scooter"
 	desc = "A fun way to get around."
+	icon = 'icons/obj/vehicles/scooter.dmi'
 	icon_state = "scooter"
 	board_item_type = /obj/item/melee/skateboard/scooter
 
@@ -130,6 +131,7 @@
 /obj/item/skate_wheels
 	name = "rubberized wheels"
 	desc = "These rubberized wheels encase ball bearings which ensure a smooth rotation. They could possibly be mounted on an appropriate frame."
+	icon = 'icons/obj/items.dmi'
 	icon_state = "skate_wheels"
 
 /obj/item/skateboard_frame

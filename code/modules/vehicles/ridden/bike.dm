@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/bike 	// TODO, make this fly @ktoma36
 	name = "space-bike"
 	desc = "Space wheelies! Woo! This one doesnt seem to fly!"
-	icon = 'icons/obj/bike.dmi'
+	icon = 'icons/obj/vehicles/bike.dmi'
 	icon_state = "bike_off"
 	dir = SOUTH
 	integrity = 100
@@ -19,9 +19,7 @@
 /obj/item/key/bike
 	name = "bike key"
 	desc = "A keyring with a small steel key."
-	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "keys"
-	w_class = WEIGHT_CLASS_TINY
 
 /datum/component/riding_handler/vehicle/bike
 	vehicle_move_delay = 0.5
@@ -212,12 +210,12 @@
 		add_overlay(overlays_to_add)
 		return
 
-	var/image/Bodypaint = new(icon = 'icons/obj/bike.dmi', icon_state = "[bike_icon]_a", layer = src.layer)
+	var/image/Bodypaint = new(icon = 'icons/obj/vehicles/bike.dmi', icon_state = "[bike_icon]_a", layer = src.layer)
 	Bodypaint.color = paint_color
 	overlays_to_add += Bodypaint
 
-	var/image/Overmob = new(icon = 'icons/obj/bike.dmi', icon_state = "[bike_icon]_overlay", layer = src.layer + 0.2) //over mobs
-	var/image/Overmob_color = new(icon = 'icons/obj/bike.dmi', icon_state = "[bike_icon]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
+	var/image/Overmob = new(icon = 'icons/obj/vehicles/bike.dmi', icon_state = "[bike_icon]_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/Overmob_color = new(icon = 'icons/obj/vehicles/bike.dmi', icon_state = "[bike_icon]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
 	Overmob.plane = FLY_LAYER
 	Overmob_color.plane = FLY_LAYER
 	Overmob_color.color = paint_color

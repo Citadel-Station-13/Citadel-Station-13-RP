@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/boat
 	name = "boat"
 	desc = "It's a wooden boat. Looks like it'll hold two people. Oars not included."
-	icon = 'icons/obj/vehicles_36x32.dmi'
+	icon = 'icons/obj/vehicles/boat_36x32.dmi'
 	icon_state = "boat"
 	integrity = 100
 	integrity_max = 100
@@ -31,7 +31,7 @@
 /obj/vehicle/ridden/boat/dragon
 	name = "dragon boat"
 	desc = "It's a large wooden boat, carved to have a nordic-looking dragon on the front. Looks like it'll hold five people. Oars not included."
-	icon = 'icons/obj/64x32.dmi'
+	icon = 'icons/obj/vehicles/boat_64x32.dmi'
 	icon_state = "dragon_boat"
 	integrity = 250
 	integrity_max = 250
@@ -52,8 +52,8 @@
 /obj/vehicle/ridden/boat/ashlander
 	name = "blessed boat"
 	desc = "This vessel has been blessed by the priesthood to grant safe passage. Lined with goliath hide and studded with elderstone, these vessels are rarely seen outside of seafaring convoys."
-	icon = 'icons/obj/vehicles_36x32.dmi'
-	icon_state = "boat_older"
+	icon = 'icons/obj/vehicles/boat_36x32.dmi'
+	icon_state = "boat_ash"
 	integrity = 150
 	integrity_max = 150
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS|BUCKLING_GROUND_HOIST
@@ -65,7 +65,7 @@
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
 	name = "oar"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/oars.dmi'
 	desc = "Used to provide propulsion to a boat."
 	icon_state = "oar"
 	item_state = "oar"

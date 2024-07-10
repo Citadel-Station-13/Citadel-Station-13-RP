@@ -6,8 +6,8 @@
 /obj/vehicle
 	name = "generic vehicle"
 	desc = "Yell at coderbus."
-	icon = 'icons/obj/vehicles.dmi'
-	icon_state = "fuckyou"
+	icon = 'icons/obj/vehicles/_vehicles.dmi'
+	icon_state = "oops"
 	// integrity_max = 300
 	// armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 60, ACID = 60)
 	density = TRUE
@@ -43,7 +43,7 @@
 	var/static/list/radial_menu = list(
 		"Close" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x"),
 		"Remove Cell" = image(icon = 'icons/obj/power.dmi', icon_state = "cell"),
-		"Remove Key" = image(icon = 'icons/obj/vehicles.dmi', icon_state = "train_keys")
+		"Remove Key" = image(icon = 'icons/obj/vehicles/keys.dmi', icon_state = "train_keys")
 	)
 
 
@@ -370,3 +370,10 @@
 
 //Build load() proc here
 
+//Skeleton key
+/obj/item/key
+	name = "key"
+	desc = "A keyring with a small steel key."
+	icon = 'icons/obj/vehicles/keys.dmi'
+	icon_state = "keys"
+	w_class = WEIGHT_CLASS_TINY

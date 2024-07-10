@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/quadbike
 	name = "electric all terrain vehicle"
 	desc = "A ridable electric ATV designed for all terrain. Except space."
-	icon = 'icons/obj/vehicles_64x64.dmi'
+	icon = 'icons/obj/vehicles/quad_64x64.dmi'
 	icon_state = "quad"
 	integrity = 200
 	integrity_max = 200
@@ -19,9 +19,7 @@
 /obj/item/key/quadbike
 	name = "key"
 	desc = "A keyring with a small steel key, and a blue fob reading \"ZOOM!\"."
-	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "quad_keys"
-	w_class = WEIGHT_CLASS_TINY
 
 
 /datum/component/riding_handler/vehicle/ridden/quadbike
@@ -78,12 +76,12 @@
 		add_overlay(overlays_to_add)
 		return
 
-	var/image/Bodypaint = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_a", layer = src.layer)
+	var/image/Bodypaint = new(icon = 'icons/obj/vehicles/quad_64x64.dmi', icon_state = "[frame_state]_a", layer = src.layer)
 	Bodypaint.color = paint_color
 	overlays_to_add += Bodypaint
 
-	var/image/Overmob = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
-	var/image/Overmob_color = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
+	var/image/Overmob = new(icon = 'icons/obj/vehicles/quad_64x64.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/Overmob_color = new(icon = 'icons/obj/vehicles/quad_64x64.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
 	Overmob.plane = FLY_LAYER
 	Overmob_color.plane = FLY_LAYER
 	Overmob_color.color = paint_color

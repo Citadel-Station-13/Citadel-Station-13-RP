@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/gokart
 	name = "go-kart"
 	desc = "Moves fast. Built for smooth, purpose-built raceways."
-	icon = 'icons/obj/gokart.dmi'
+	icon = 'icons/obj/vehicles/gokart.dmi'
 	icon_state = "orange"
 	integrity = 200
 	integrity_max = 200

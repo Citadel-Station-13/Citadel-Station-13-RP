@@ -1,6 +1,7 @@
 /obj/vehicle/trailer
 	name = "the vague concept of a trailer"
 	desc = "Yell at coderbus."
+	icon_state = "oops"
 	//Trailers will anchor when hitched and unanchor when unhitched.
 	anchored = FALSE
 	max_drivers = 0
@@ -168,6 +169,7 @@
 /obj/vehicle/trailer/cargo
 	name = "cargo train trolley"
 	desc = "A trolley designed to be pulled by a cargo train tug."
+	icon = 'icons/obj/vehicles/cargo_trailer.dmi'
 	icon_state = "cargo_trailer"
 	allowed_cargo = /obj/structure/
 	trailer_type = /obj/vehicle/trailer/cargo

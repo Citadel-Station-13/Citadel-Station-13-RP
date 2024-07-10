@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/wheelchair
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
-	icon = 'icons/obj/furniture.dmi'		//Todo, move icon for wheelchair shit into their own folder
+	icon = 'icons/obj/vehicles/wheelchair.dmi'
 	icon_state = "wheelchair"
 	integrity = 50
 	integrity_max = 50
@@ -10,7 +10,7 @@
 /obj/vehicle/ridden/wheelchair/update_icon()
 	..()
 	cut_overlays()
-	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = src.layer + 1)
+	var/image/O = image(icon = 'icons/obj/vehicles/wheelchair.dmi', icon_state = "wheelchair_overlay", layer = src.layer + 1)
 	add_overlay(O)
 	return
 
@@ -45,7 +45,7 @@
 /obj/item/wheelchair
 	name = "wheelchair"
 	desc = "A folded wheelchair that can be carried around."
-	icon = 'icons/obj/furniture.dmi'	//Todo, move icon for wheelchair shit into their own folder
+	icon = 'icons/obj/vehicles/wheelchair.dmi'
 	icon_state = "wheelchair_folded"
 	item_state = "wheelchair"
 	w_class = WEIGHT_CLASS_HUGE // Can't be put in backpacks. Oh well.
@@ -76,23 +76,17 @@
 		return
 
 
-
-
-/*
 //Dolly Below
-
-/obj/structure/bed/chair/wheelchair/dolly
+/*
+/obj/vehicle/ridden/wheelchair/dolly
 	name = "transport dolly"
 	desc = "The safest way to transport high-risk patients."
 	icon_state = "wheelchair_dolly"
 
-/obj/structure/bed/chair/wheelchair/dolly/setDir()
+/obj/vehicle/ridden/wheelchair/dolly/update_icon()
 	..()
 	cut_overlays()
-	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "d_overlay", layer = FLY_LAYER, dir = src.dir)
+	var/image/O = image(icon = 'icons/obj/vehicles/wheelchair.dmi', icon_state = "d_overlay", layer = src.layer + 1)
 	add_overlay(O)
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-			L.setDir(dir)
+	return
 */
