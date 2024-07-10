@@ -80,7 +80,7 @@
 /obj/machinery/vending/cafe
 	name = "Cafe vendor"
 	desc = "A vendor with glasses, cups, juice, pastries, and so on."
-	icon_state = "boozeomat"
+	icon_state = "cafe"
 	icon_deny = "boozeomat-deny"
 	products = list(
 		/obj/item/reagent_containers/food/drinks/glass2/square = 10,

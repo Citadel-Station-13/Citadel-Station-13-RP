@@ -1346,7 +1346,7 @@
 	pixel_y = 30
 	},
 /obj/structure/bed/chair/sofa/brown/right,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "aRs" = (
 /obj/structure/toilet{
@@ -1382,24 +1382,57 @@
 	},
 /area/shuttle/hammerhead/general)
 "aTl" = (
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/condiment/small/sugar{
+	pixel_x = -6;
+	pixel_y = 6
 	},
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
+/obj/item/reagent_containers/food/condiment/small/packet/coffee{
+	pixel_y = 9
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
+/obj/item/reagent_containers/food/condiment/small/packet/coffee{
+	pixel_y = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
+/obj/item/reagent_containers/food/condiment/small/packet/coffee{
+	pixel_y = 3
 	},
-/obj/structure/railing{
-	dir = 1
+/obj/item/reagent_containers/food/condiment/small/packet/coffee,
+/obj/item/reagent_containers/food/condiment/small/packet/tea{
+	pixel_x = 6;
+	pixel_y = 9
 	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacetwo)
+/obj/item/reagent_containers/food/condiment/small/packet/tea{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/tea{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/tea{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_x = 12;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_x = 12;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/condiment/small/packet/sugar{
+	pixel_x = 12
+	},
+/obj/item/reagent_containers/glass/rag{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/turf/simulated/floor/lino,
+/area/crew_quarters/coffee_shop)
 "aTs" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -3291,7 +3324,7 @@
 /obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "bXx" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3973,7 +4006,7 @@
 /area/hallway/primary/surfacetwo)
 "cwF" = (
 /obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "cwG" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -5177,7 +5210,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "dqp" = (
-/turf/simulated/floor/lino,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
 /area/crew_quarters/coffee_shop)
 "drb" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6040,7 +6079,7 @@
 	},
 /obj/machinery/computer/timeclock/premade/west,
 /obj/structure/ladder/up,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "dJK" = (
 /obj/structure/railing{
@@ -7061,10 +7100,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/item/toy/plushie/coffee_fox{
-	name = "Cream"
-	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "eze" = (
 /obj/effect/floor_decal/borderfloor{
@@ -8739,6 +8775,9 @@
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "fHU" = (
+/obj/structure/bed/chair/wood{
+	dir = 1
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 8
 	},
@@ -8746,14 +8785,13 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/machinery/door/window/northright,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "fIg" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "fIH" = (
 /obj/structure/railing,
@@ -9961,7 +9999,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "gts" = (
 /obj/structure/closet/secure_closet/medical3,
@@ -10677,10 +10715,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
-"gMC" = (
-/obj/item/stool/padded,
-/turf/simulated/floor/lino,
-/area/crew_quarters/coffee_shop)
 "gMG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11332,14 +11366,24 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "hoN" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 8
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain"
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "hpv" = (
 /obj/machinery/conveyor{
 	dir = 9;
@@ -12675,7 +12719,7 @@
 /area/crew_quarters/heads/hor)
 "ibd" = (
 /obj/structure/bed/chair/comfy/green,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "ibv" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -13159,7 +13203,7 @@
 /obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 1
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "ipW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -14010,7 +14054,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "iWe" = (
 /turf/simulated/open,
@@ -15606,7 +15650,7 @@
 /area/maintenance/asmaint2)
 "jYd" = (
 /obj/machinery/holopad,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "jYp" = (
 /obj/machinery/power/apc/north_mount,
@@ -17088,7 +17132,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "kUk" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -17475,6 +17519,15 @@
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker)
+"lab" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "lac" = (
 /obj/structure/grille,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -17687,7 +17740,7 @@
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "lig" = (
 /obj/machinery/fire_alarm/south_mount{
@@ -19824,7 +19877,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "mwd" = (
 /obj/structure/table/woodentable,
@@ -20048,7 +20101,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/brown/left,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "mCK" = (
 /obj/structure/closet/secure_closet/medical3,
@@ -21063,56 +21116,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "neF" = (
-/obj/structure/table/marble,
-/obj/item/reagent_containers/food/condiment/small/sugar{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/coffee{
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/coffee{
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/coffee{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/coffee,
-/obj/item/reagent_containers/food/condiment/small/packet/tea{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/tea{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/tea{
-	pixel_x = 6;
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/tea{
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/sugar{
-	pixel_x = 12;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/sugar{
-	pixel_x = 12;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/sugar{
-	pixel_x = 12;
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/food/condiment/small/packet/sugar{
-	pixel_x = 12
-	},
-/obj/item/reagent_containers/glass/rag{
-	pixel_x = -10;
-	pixel_y = 6
-	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "nfd" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -21130,7 +21134,7 @@
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 8
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "ngr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21812,7 +21816,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "nDj" = (
 /obj/effect/floor_decal/borderfloor{
@@ -23102,6 +23106,10 @@
 "oul" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
+"ouF" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/lino,
+/area/crew_quarters/coffee_shop)
 "ouI" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/research/xenobio)
@@ -23125,7 +23133,7 @@
 /obj/structure/bed/chair/sofa/brown/corner{
 	dir = 1
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "owO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24681,17 +24689,7 @@
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "pqG" = (
-/obj/structure/bed/chair/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 8
-	},
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "pqQ" = (
 /obj/effect/floor_decal/spline/plain{
@@ -25390,7 +25388,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "pRO" = (
 /obj/item/slime_extract/grey,
@@ -25493,10 +25491,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
-"pWi" = (
-/obj/structure/table/marble,
-/turf/simulated/floor/lino,
-/area/crew_quarters/coffee_shop)
 "pWj" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -26960,7 +26954,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "qRv" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -27828,7 +27822,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "rnL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -28579,7 +28573,7 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 4
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "rOF" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -29089,15 +29083,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
-"shU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/crew_quarters/coffee_shop)
 "siA" = (
 /turf/simulated/wall/prepainted/science,
 /area/rnd/research/researchdivision)
@@ -29896,7 +29881,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 30
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "sMx" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -31163,7 +31148,7 @@
 	pixel_x = 24
 	},
 /obj/structure/bed/chair/sofa/brown/corner,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "tGe" = (
 /obj/structure/railing{
@@ -31177,7 +31162,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "tGv" = (
 /obj/effect/floor_decal/spline/plain{
@@ -32714,6 +32699,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/workshop)
+"uNE" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/crew_quarters/coffee_shop)
 "uNH" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -33773,7 +33762,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/coffee_shop)
 "vpt" = (
 /obj/structure/railing,
@@ -35087,7 +35076,7 @@
 /area/rnd/workshop)
 "wlU" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "wms" = (
 /obj/effect/floor_decal/borderfloor,
@@ -35520,7 +35509,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/lino,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "wBK" = (
 /obj/machinery/oxygen_pump/mobile/anesthetic,
@@ -35703,6 +35692,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
+"wGd" = (
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 8
+	},
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/crew_quarters/coffee_shop)
 "wGI" = (
 /obj/structure/grille,
 /turf/simulated/mineral/icerock/lythios43c,
@@ -49037,13 +49037,13 @@ nxY
 nxY
 qQk
 pRF
-pqG
+fHU
 dJH
 nCx
 rnE
-fHU
-dqp
-dqp
+wGd
+pqG
+pqG
 tnj
 hJs
 hJs
@@ -49230,13 +49230,13 @@ tnj
 ovs
 rOE
 fIg
-dqp
-dqp
-dqp
-dqp
-dqp
 neF
-dqp
+neF
+neF
+pqG
+pqG
+aTl
+pqG
 lib
 tnj
 pBA
@@ -49424,13 +49424,13 @@ tnj
 mCt
 cwF
 fIg
-dqp
 wlU
 cwF
 tGt
-dqp
-pWi
-dqp
+pqG
+pqG
+ouF
+pqG
 ipQ
 tnj
 tyH
@@ -49618,13 +49618,13 @@ tnj
 aRq
 cwF
 fIg
-dqp
 wlU
 cwF
 tGt
-dqp
-pWi
-gMC
+pqG
+pqG
+ouF
+uNE
 bXk
 tnj
 tyH
@@ -50006,10 +50006,10 @@ tnj
 tnj
 ibd
 iVL
-hoN
+lab
 wHa
 jYd
-shU
+dqp
 qTL
 kvB
 sMm
@@ -50203,7 +50203,7 @@ tnj
 ptH
 obO
 tfk
-aTl
+hoN
 jcV
 tnj
 tnj
