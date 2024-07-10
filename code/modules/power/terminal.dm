@@ -2,9 +2,9 @@
  * basically, a good way to interface with powernet
  * without connecting to a node under yourself
  *
- * only works for /machinery, right now
+ * works at /obj level
  *
- * in the future, we might make this more high-level.
+ * todo: this shouldn't require adjacency to the machine for icon, we should be able to make terminal anywhere up to 2 tiles away
  */
 /obj/machinery/power/terminal
 	name = "terminal"
@@ -16,20 +16,15 @@
 	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 
 	/// host machine
-	var/obj/machinery/master
+	var/obj/master
 
-/obj/machinery/power/terminal/Initialize(mapload, newdir, obj/machinery/master)
+/obj/machinery/power/terminal/Initialize(mapload, new_dir, obj/master)
 	. = ..()
-	setDir(newdir)
-	src.master = master
-	var/turf/T = src.loc
-	if(level==1)
-		hide(!T.is_plating())
+	if(master)
+		bind(master)
 
 /obj/machinery/power/terminal/Destroy()
-	if(!isnull(master))
-		master.terminal_destroyed(src)
-		master = null
+	unbind()
 	return ..()
 
 /obj/machinery/power/terminal/update_hiding_underfloor(new_value)
@@ -43,26 +38,22 @@
 		icon_state = "term"
 	return ..()
 
-// Needed so terminals are not removed from machines list.
-// Powernet rebuilds need this to work properly.
-/obj/machinery/power/terminal/process(delta_time)
-	return 1
-
-#warn impl all
-
-/obj/machinery/power/terminal/overload(var/obj/machinery/power/source)
-	if(master)
-		master.overload(source)
-
-/obj/machinery/power/terminal/proc/bind(obj/machinery/host)
+/obj/machinery/power/terminal/proc/bind(obj/host)
 	if(!isnull(master))
 		unbind()
+	if(!host)
+		return
 	master = host
 
-/obj/machinery/power/terminal/proc/unbind(obj/machinery/host)
+/obj/machinery/power/terminal/proc/unbind()
+	if(!master)
+		return
 	master = null
 
-//? machinery-side API
+//* /obj API *//
 
-/obj/machinery/proc/terminal_destroyed(obj/machinery/power/terminal/terminal)
+/obj/proc/terminal_bound(obj/machinery/power/terminal/terminal)
+	return
+
+/obj/proc/terminal_unbound(obj/machinery/power/terminal/terminal)
 	return

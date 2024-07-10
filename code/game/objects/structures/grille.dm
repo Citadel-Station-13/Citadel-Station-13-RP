@@ -157,7 +157,7 @@
 	if(!in_range(src, user))//To prevent MUTATION_TELEKINESIS and mech users from getting shocked
 		return 0
 	var/turf/T = get_turf(src)
-	var/obj/structure/wire/power/C = T.get_power_cable_node()
+	var/obj/structure/wire/power_cable/C = T.get_power_cable_node()
 	if(C)
 		if(electrocute_mob(user, C, src))
 

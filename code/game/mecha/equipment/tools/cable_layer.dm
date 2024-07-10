@@ -2,7 +2,7 @@
 	name = "Cable Layer"
 	icon_state = "mecha_wire"
 	var/turf/old_turf
-	var/obj/structure/wire/cable/last_piece
+	var/obj/structure/wire/power_cable/last_piece
 	var/obj/item/stack/cable_coil/cable
 	var/max_cable = 1000
 	required_type = list(/obj/mecha/working)
@@ -100,13 +100,13 @@
 	if(equip_ready || !istype(new_turf, /turf/simulated/floor) || !dismantleFloor(new_turf))
 		return reset()
 	var/fdirn = turn(chassis.dir,180)
-	for(var/obj/structure/wire/cable/LC in new_turf)		// check to make sure there's not a cable there already
+	for(var/obj/structure/wire/power_cable/LC in new_turf)		// check to make sure there's not a cable there already
 		if(LC.d1 == fdirn || LC.d2 == fdirn)
 			return reset()
 	if(!use_cable(1))
 		return reset()
 
-	var/obj/structure/wire/cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
+	var/obj/structure/wire/power_cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
 	if(last_piece && last_piece.d2 != chassis.dir)
 		last_piece.reset_dirs(min(last_piece.d2, chassis.dir), max(last_piece.d2, chassis.dir))
 

@@ -3018,7 +3018,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/port)
 "ly" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -9471,7 +9471,7 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology)
 "Kq" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -11370,7 +11370,7 @@
 /obj/structure/cable{
 	icon_state = "16-0"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -12554,7 +12554,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "Wo" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -12956,7 +12956,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/telescience_lab/foyer)
 "XR" = (
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/machinery/power/pointdefense{
 	id_tag = "forward_pd"
 	},
@@ -13323,7 +13323,7 @@
 /turf/simulated/floor/reinforced/overhang,
 /area/main_map/hallway/deck4)
 "Zk" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/pointdefense{

@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
  * violations of any of the above will result in undefined behavior.
  * you have been warned. do not fuck around, or ye shall find out.
  */
-/obj/structure/wire/cable
+/obj/structure/wire/power_cable
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer. Materials science certainly has come far."
 	icon = 'icons/obj/power_cond_white.dmi'
@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	/// can we be cut with wirecutters? null for no, number for time; usually 0.
 	var/cut_time = 0
 
-/obj/structure/wire/cable/Initialize(mapload, _color, _d1, _d2)
+/obj/structure/wire/power_cable/Initialize(mapload, _color, _d1, _d2)
 	. = ..()
 
 	if(_color)
@@ -106,10 +106,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	is_junction = d1 == 0
 
-/obj/structure/wire/cable/adjacent_wires()
+/obj/structure/wire/power_cable/adjacent_wires()
 	. = list()
 
-	var/obj/structure/wire/cable/C
+	var/obj/structure/wire/power_cable/C
 
 	// we only want to handle a for loop per turf once, so, start with same turf
 	for(C in loc)
@@ -182,15 +182,15 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 								continue
 							. += C
 
-/obj/structure/wire/cable/drop_products(method, atom/where)
+/obj/structure/wire/power_cable/drop_products(method, atom/where)
 	. = ..()
 	new /obj/item/stack/cable_coil(where, d1? 2 : 1)
 
-/obj/structure/wire/cable/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+/obj/structure/wire/power_cable/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	. = ..()
 	#warn cable coil
 
-/obj/structure/wire/cable/wirecutter_act(obj/item/I, mob/user, flags, hint)
+/obj/structure/wire/power_cable/wirecutter_act(obj/item/I, mob/user, flags, hint)
 	if(!cut_time)
 		return FALSE
 	if(d2 == UP)
@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	investigate_log("[d1]-[d2] cut by [key_name(user)]", INVESTIGATE_WIRES)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
-/obj/structure/wire/cable/proc/reset_dirs(d1, d2)
+/obj/structure/wire/power_cable/proc/reset_dirs(d1, d2)
 	src.d1 = d1
 	src.d2 = d2
 	update_icon()
@@ -225,11 +225,11 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
  * this does not sanity check for if it semantically makes sense! e.g. this won't stop you from doing X-X cables, where
  * X is in the same direction - you need to check yourself!
  */
-/obj/structure/wire/cable/proc/denode(dir)
+/obj/structure/wire/power_cable/proc/denode(dir)
 	// optimizations later, for now we just are fluffed reset_dirs().
 	reset_dirs(dir, d2)
 
-/obj/structure/wire/cable/examine(mob/user, dist)
+/obj/structure/wire/power_cable/examine(mob/user, dist)
 	. = ..()
 	if(isobserver(user) && !isnull(network))
 		var/datum/wirenet/power/powernet = network
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 //! legacy: explosion handling
 
-/obj/structure/wire/cable/legacy_ex_act(severity)
+/obj/structure/wire/power_cable/legacy_ex_act(severity)
 	// no breaking if we're underfloor
 	if(invisibility)
 		return
@@ -254,26 +254,26 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
 
-/obj/structure/wire/cable/drop_products(method, atom/where)
+/obj/structure/wire/power_cable/drop_products(method, atom/where)
 	. = ..()
 	new /obj/item/stack/cable_coil(where, d1? 2 : 1, TRUE, color)
 
 /**
  * @return the user was incapacitated by the action and whatever it is should be cancelled
  */
-/obj/structure/wire/cable/proc/shock(mob/victim, relative_exposure = 1)
+/obj/structure/wire/power_cable/proc/shock(mob/victim, relative_exposure = 1)
 	var/datum/wirenet/power/network = src.network
 	network?.electrocute(victim, src, relative_exposure)
 	return !CHECK_MOBILITY(victim, MOBILITY_CAN_USE)
 
-/obj/structure/wire/cable/drain_energy(datum/actor, amount, flags)
+/obj/structure/wire/power_cable/drain_energy(datum/actor, amount, flags)
 	var/datum/wirenet/power/network = src.network
 	return isnull(network)? 0 : network.drain_energy_handler(actor, amount, flags)
 
-/obj/structure/wire/cable/can_drain_energy(datum/actor, flags)
+/obj/structure/wire/power_cable/can_drain_energy(datum/actor, flags)
 	return TRUE
 
-/obj/structure/wire/cable/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+/obj/structure/wire/power_cable/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(istype(I, /obj/item/stack/cable_coil))
@@ -291,23 +291,23 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/structure/wire/cable/yellow
+/obj/structure/wire/power_cable/yellow
 	color = COLOR_YELLOW
 
-/obj/structure/wire/cable/green
+/obj/structure/wire/power_cable/green
 	color = COLOR_LIME
 
-/obj/structure/wire/cable/blue
+/obj/structure/wire/power_cable/blue
 	color = COLOR_BLUE
 
-/obj/structure/wire/cable/pink
+/obj/structure/wire/power_cable/pink
 	color = COLOR_PINK
 
-/obj/structure/wire/cable/orange
+/obj/structure/wire/power_cable/orange
 	color = COLOR_ORANGE
 
-/obj/structure/wire/cable/cyan
+/obj/structure/wire/power_cable/cyan
 	color = COLOR_CYAN
 
-/obj/structure/wire/cable/white
+/obj/structure/wire/power_cable/white
 	color = COLOR_WHITE

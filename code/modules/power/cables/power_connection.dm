@@ -41,8 +41,5 @@
 /datum/wirenet_connection/power/proc/last_dynamic_load()
 	return network.load - network.last_flat_load
 
-/datum/wirenet_connection/power/proc/last_powernet_status()
-	return network.last_powernet_status
-
 /datum/wirenet_connection/power/lazy
 	automatic = TRUE

@@ -20,7 +20,7 @@
 		if(B == src)
 			continue
 		. += B
-	for(var/obj/structure/wire/cable/C in loc)
+	for(var/obj/structure/wire/power_cable/C in loc)
 		. += C
 
 /obj/map_helper/network_builder/power_cable/scan()
@@ -31,7 +31,7 @@
 			. |= i
 			continue
 		var/opp = turn(i, 180)
-		for(var/obj/structure/wire/cable/C in T)
+		for(var/obj/structure/wire/power_cable/C in T)
 			if((C.d1 == opp || C.d2 == opp) && C.color == cable_color)
 				. |= i
 				continue
@@ -44,7 +44,7 @@
 		for(var/i in GLOB.cardinal)
 			if(!(network_directions & i))
 				continue
-			new /obj/structure/wire/cable(loc, capitalize(cable_color), 0, i, TRUE)
+			new /obj/structure/wire/power_cable(loc, capitalize(cable_color), 0, i, TRUE)
 	else
 		var/last
 		for(var/i in GLOB.cardinal)
@@ -53,7 +53,7 @@
 			if(isnull(last))
 				last = i
 				continue
-			new /obj/structure/wire/cable(loc, capitalize(cable_color), last, i, TRUE)
+			new /obj/structure/wire/power_cable(loc, capitalize(cable_color), last, i, TRUE)
 			last = i
 
 /obj/map_helper/network_builder/power_cable/proc/detect_knot()

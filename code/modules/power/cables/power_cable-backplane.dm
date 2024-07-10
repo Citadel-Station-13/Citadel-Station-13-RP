@@ -4,7 +4,7 @@
 	icon_state = "wire"
 
 // todo: refactor
-/obj/structure/cable/heavyduty
+/obj/structure/wire/power_cable/backplane
 	icon = 'icons/obj/power_cond_heavy.dmi'
 	name = "large power cable"
 	desc = "This cable is tough. It cannot be cut with simple hand tools."
@@ -18,7 +18,7 @@
 
 	color = null
 
-/obj/structure/cable/heavyduty/attackby(obj/item/W, mob/user)
+/obj/structure/wire/power_cable/backplane/attackby(obj/item/W, mob/user)
 
 	var/turf/T = src.loc
 	if(!T.is_plating())
@@ -33,5 +33,5 @@
 	else
 		..()
 
-/obj/structure/cable/heavyduty/cableColor(var/colorC)
+/obj/structure/wire/power_cable/backplane/cableColor(var/colorC)
 	return

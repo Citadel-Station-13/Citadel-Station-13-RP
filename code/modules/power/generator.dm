@@ -328,12 +328,13 @@ GLOBAL_LIST_EMPTY(all_turbines)
 			command_announcement.Announce("Dangerous power spike detected in the power network.  Please check machinery \
 			for electrical damage.",
 			"Critical Power Overload")
-			var/i = 0
-			var/limit = rand(30, 50)
-			for(var/obj/machinery/power/P in powernet_union)
-				P.overload(src)
-				i++
-				if(i % 5)
-					sleep(1)
-				if(i >= limit)
-					break
+			// todo: readd this, but generalized; for now this is just silly and was only on thermoregulators anyways.
+			// var/i = 0
+			// var/limit = rand(30, 50)
+			// for(var/obj/machinery/power/P in powernet_union)
+			// 	P.overload(src)
+			// 	i++
+			// 	if(i % 5)
+			// 		sleep(1)
+			// 	if(i >= limit)
+			// 		break

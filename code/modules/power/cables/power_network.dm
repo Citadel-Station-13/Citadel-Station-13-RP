@@ -153,8 +153,6 @@ GLOBAL_LIST_EMPTY(powernets)
 /datum/wirenet/power/proc/direct_electrocute(atom/movable/victim, atom/source, target_zone, relative_exposure = 1, suppress_fx)
 	#warn impl
 
-	raise_fault()
-
 	raise_fault(POWERNET_FAULT_GROUND, 10 SECONDS)
 
 /**

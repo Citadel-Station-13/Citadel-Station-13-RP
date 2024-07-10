@@ -1,4 +1,4 @@
-GLOBAL_LIST_BOILERPLATE(/obj/machinery/apc)
+GLOBAL_LIST_BOILERPLATE(apcs, /obj/machinery/apc)
 
 /**
  * APCs
@@ -16,7 +16,7 @@ GLOBAL_LIST_BOILERPLATE(/obj/machinery/apc)
  *
  * ~silicons
  */
-#warn repath to /obj/machinery/apc on maps from /obj/machinery/apc.
+#warn repath to /obj/machinery/apc on maps from /obj/machinery/power/apc.
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 /obj/machinery/apc
 	name = "area power controller"
@@ -61,17 +61,12 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	//* Power - Breaker *//
 	/// breaker toggled
 	var/breaker_toggled = TRUE
-	/// breaker tripped
-	var/breaker_tripped = FALSE
-	/// breaker tripping - duration center
-	var/breaker_trip_duration_center = 60 SECONDS
-	/// breaker tripping - duration deviation
-	var/breaker_trip_duration_deviation = 10 SECONDS
-	/// breaker tripped until world.time
-	/// usually we timer but just this once..
-	var/breaker_tripped_until
-	/// grid check until world.time
-	var/grid_check_until
+	/// io regulators faulted until world.time
+	///
+	/// caused by things like:
+	/// * grid checks
+	/// * overloads
+	var/error_check_until
 
 	//* Power - Buffer *//
 	/// internal capacitor capacity in joules
@@ -97,8 +92,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	//* Power - Channels *//
 	/// power channels enabled
-	var/channels_enabled = POWER_BITS_ALL
-	/// power channels auto
+	var/channels_toggled = POWER_BITS_ALL
+	/// power channels set to auto
 	var/channels_auto = POWER_BITS_ALL
 	/// power channels currently on
 	var/channels_active = POWER_BITS_ALL
@@ -113,13 +108,14 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	var/load_balancing_modify = TRUE
 
 	//* Power - Processing *//
+	/// last total power used, static and burst
+	var/last_total_used = 0
 	/// last channel power used, static and burst
-	var/list/last_channel_load = EMPTY_POWER_CHANNEL_LIST
+	var/list/last_channel_used = EMPTY_POWER_CHANNEL_LIST
 	/// burst usage for channels since last process()
 	/// this is directly deducted and will not be drained again during process().
-	var/list/current_burst_load = EMPTY_POWER_CHANNEL_LIST
-	/// last total power used, static and burst
-	var/last_load = 0
+	var/list/current_burst_used = EMPTY_POWER_CHANNEL_LIST
+
 
 	//* Security *//
 	/// cover locked
@@ -271,9 +267,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	reset_pixel_offsets()
 
 	if(terminal)
-		terminal.disconnect_from_network()
 		terminal.setDir(turn(src.dir, 180)) // Terminal has same dir as master
-		terminal.connect_to_network() // Refresh the network the terminal is connected to.
 
 #warn what
 /obj/machinery/apc/proc/energy_fail(var/duration)
@@ -995,27 +989,11 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 //* Breaker *//
 
-/obj/machinery/apc/proc/set_toggled(toggled, defer_update)
+/obj/machinery/apc/proc/set_breaker_toggled(toggled, defer_update)
 	src.breaker_toggled = toggled
 	if(!defer_update)
 		full_update_channels()
-	push_ui_data(data = list("loadToggled" = load_toggled))
-
-/obj/machinery/apc/proc/untrip_breaker(defer_update)
-	if(!breaker_tripped)
-		return
-	breaker_tripped = FALSE
-	if(!defer_update)
-		full_update_channels()
-	push_ui_data(data = list("breakerTripped" = FALSE))
-
-/obj/machinery/apc/proc/trip_breaker(defer_update)
-	if(breaker_tripped)
-		return
-	breaker_tripped = TRUE
-	if(!defer_update)
-		full_update_channels()
-	push_ui_data(data = list("breakerTripped" = TRUE))
+	push_ui_data(data = list("breakerToggled" = breaker_toggled))
 
 //* Channels *//
 
@@ -1141,9 +1119,34 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 //* Power Solver *//
 
 /obj/machinery/apc/process()
+	//! LEGACY
+	// if we're broken, do nothing
+	if(machine_stat & (BROKEN | MAINT))
+		return
+	//! END
+
+	// if we don't have an area, bail, this is an error state
+	if(!registered_area)
+		return
+	// does the area require power?
+	if(!isnull(registered_area.area_power_override))
+		// the area uses power
+		// tally up area static power + the burst power used
+		// used = already used
+		var/used_joules = 0
+		for(var/channel in 1 to POWER_CHANNE_COUNT)
+			var/channel_total = area.power_usage_static[channel] + current_burst_used[channel]
+			last_channel_used[channel] = channel_total
+			current_burst_used[channel] = 0
+	else
+		// the area doesn't
+		// todo: the area should reset apcs last used / burst used to 0 when it's set to power override mode
+		//       remove this clause after this is done
+		pass()
+
 	if(!registered_area || !isnull(registered_area.area_power_override))
 		return
-	
+
 
 #warn below
 
@@ -1328,6 +1331,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 /obj/machinery/apc/ui_data(mob/user)
 	. = list()
+	.["breakerToggled"] = breaker_toggled
+	#warn audit below
 	.["nightshiftSetting"] = nightshift_setting
 	.["nightshiftActive"] = registered_area?.nightshift
 	.["channelsEnabled"] = channels_enabled
@@ -1338,9 +1343,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	.["chargeActive"] = charging
 	.["loadBalancePriority"] = load_balancing_priority
 	.["loadBalanceAllowed"] = load_balancing_modify
-	.["breakerTripped"] = breaker_tripped
 	.["loadActive"] = load_active
-	.["loadToggled"] = load_toggled
 
 	#warn impl below
 

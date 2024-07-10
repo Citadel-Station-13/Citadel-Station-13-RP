@@ -958,7 +958,7 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "gk" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -1289,7 +1289,7 @@
 /turf/simulated/floor,
 /area/itglight/cockpit)
 "im" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -2694,7 +2694,7 @@
 /area/itglight/shuttlebay)
 "to" = (
 /obj/machinery/power/solar_control,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor,
@@ -3353,7 +3353,7 @@
 	frequency = 1380;
 	id_tag = "itglight_port_inner"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/map_helper/airlock/door/int_door,
@@ -3490,7 +3490,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/itglightshuttle)
 "zj" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
@@ -3514,7 +3514,7 @@
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "zq" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -3525,7 +3525,7 @@
 /area/itglight/starboardengi)
 "zr" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
@@ -3958,7 +3958,7 @@
 /area/itglight/starboardhighsec)
 "CI" = (
 /obj/machinery/power/terminal,
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -4390,7 +4390,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
@@ -4453,7 +4453,7 @@
 /area/itglight/portengi)
 "Fu" = (
 /obj/machinery/power/solar_control,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor,
@@ -4568,7 +4568,7 @@
 /area/itglight/afthall)
 "Gb" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -4741,7 +4741,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "GU" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
@@ -5036,7 +5036,7 @@
 /area/itglight/portcargo)
 "Jg" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -5120,7 +5120,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "JI" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
@@ -5189,7 +5189,7 @@
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "Ka" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -6316,7 +6316,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
@@ -6410,7 +6410,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/crew1)
 "SE" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
@@ -6523,13 +6523,13 @@
 /turf/simulated/floor/tiled/white,
 /area/itglight/restrooms)
 "Td" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -6953,7 +6953,7 @@
 	id_tag = "itglight_port_outer";
 	name = "Port Solars External Airlock"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -6983,7 +6983,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "WZ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
@@ -7058,7 +7058,7 @@
 /turf/simulated/floor/tiled/eris/white/techfloor_grid,
 /area/itglight/medbay)
 "XA" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -7324,13 +7324,13 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/afthall)
 "YX" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -7467,7 +7467,7 @@
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "ZM" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable{

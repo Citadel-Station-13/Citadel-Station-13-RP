@@ -174,7 +174,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	var/list/allowed = list(
 		/mob,
 		/obj/machinery,
-		/obj/structure/wire/cable,
+		/obj/structure/wire/power_cable,
 		/obj/structure/closet,
 		/obj/structure/disposalpipe,
 		/obj/structure/frame,

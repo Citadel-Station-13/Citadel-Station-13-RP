@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	var/poison_type = "shockchem"
 	var/poison_chance = 50
 	var/datum/wirenet/power/PN            // Our powernet
-	var/obj/structure/wire/cable/attached        // the attached cable
+	var/obj/structure/wire/power_cable/attached        // the attached cable
 	var/shock_chance = 10 // Beware
 
 	// kw drain

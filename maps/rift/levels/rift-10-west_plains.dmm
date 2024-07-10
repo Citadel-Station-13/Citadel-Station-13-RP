@@ -276,7 +276,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/exterior/checkpoint/south)
 "bA" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
@@ -548,7 +548,7 @@
 /area/rnd/outpost/mixing)
 "cF" = (
 /obj/spawner/window/reinforced/full,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c/indoors,
@@ -595,7 +595,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/construction/solars)
 "cR" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing{
@@ -685,7 +685,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "de" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /obj/structure/railing{
@@ -707,7 +707,7 @@
 	output_attempt = 0;
 	outputting = 0
 	},
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /turf/simulated/floor,
 /area/construction/solarscontrol)
 "di" = (
@@ -892,7 +892,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "eg" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -1024,7 +1024,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "eK" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/lythios43c,
@@ -1260,7 +1260,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "fT" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor,
@@ -1747,7 +1747,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
 "hR" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/railing{
@@ -1791,7 +1791,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
 "hY" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small{
@@ -1991,10 +1991,10 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/railing{
@@ -2057,7 +2057,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rift/exterior/nuketown/interior)
 "je" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -2301,7 +2301,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
 "kp" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/grille,
@@ -2352,7 +2352,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/heating)
 "ku" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/white,
@@ -2548,7 +2548,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "lz" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/structure/cable{
@@ -2788,7 +2788,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "mC" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c,
@@ -2840,7 +2840,7 @@
 /turf/simulated/floor/plating,
 /area/rift/exterior/nuketown/interior)
 "mW" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -4450,7 +4450,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/lythios43c,
@@ -4816,7 +4816,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
 "vZ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -5222,7 +5222,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -5813,7 +5813,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -6598,7 +6598,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -6866,7 +6866,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Gl" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing{
@@ -7097,10 +7097,10 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "Hg" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/sensor{
@@ -7140,7 +7140,7 @@
 /turf/simulated/open/lythios43c/indoors,
 /area/rift/exterior/nuketown/interior)
 "Hy" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -7266,7 +7266,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Ib" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
@@ -7289,7 +7289,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing,
@@ -7487,7 +7487,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/lythios43c,
@@ -7718,10 +7718,10 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/lythios43c,
@@ -7987,7 +7987,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/exterior/bunker)
 "LC" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -8128,7 +8128,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/analysis)
 "Me" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -8546,7 +8546,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/lythios43c,
@@ -8584,7 +8584,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -8902,7 +8902,7 @@
 /turf/simulated/open/lythios43c/indoors,
 /area/rift/exterior/nuketown/interior)
 "PJ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -10037,7 +10037,7 @@
 /area/rnd/outpost)
 "UE" = (
 /obj/structure/catwalk,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c,
@@ -10083,7 +10083,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -10197,7 +10197,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "VE" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -10896,13 +10896,13 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
 "Zk" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/lythios43c,
@@ -10993,7 +10993,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
 "ZK" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{

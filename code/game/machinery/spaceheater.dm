@@ -312,26 +312,26 @@
 	update_icon()
 	..(severity)
 
-/obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
-	if(!anchored || !connection.network)
-		return
-	// 1.5 MW
-	var/power_avail = connection.flat_draw(1500)
-	var/datum/gas_mixture/env = loc.return_air()
-	if(env)
-		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
-		if(removed)
-			// OH BOY!
-			removed.adjust_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
-			env.merge(removed)
-	var/turf/T = get_turf(src)
-	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
-	T.assume_gas(GAS_ID_VOLATILE_FUEL, 5, T20C)
-	T.hotspot_expose(700,400)
-	var/datum/effect_system/spark_spread/s = new
-	s.set_up(5, 0, T)
-	s.start()
-	visible_message("<span class='warning'>\The [src] bursts into flame!</span>")
+// /obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
+// 	if(!anchored || !connection.network)
+// 		return
+// 	// 1.5 MW
+// 	var/power_avail = connection.flat_draw(1500)
+// 	var/datum/gas_mixture/env = loc.return_air()
+// 	if(env)
+// 		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
+// 		if(removed)
+// 			// OH BOY!
+// 			removed.adjust_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
+// 			env.merge(removed)
+// 	var/turf/T = get_turf(src)
+// 	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
+// 	T.assume_gas(GAS_ID_VOLATILE_FUEL, 5, T20C)
+// 	T.hotspot_expose(700,400)
+// 	var/datum/effect_system/spark_spread/s = new
+// 	s.set_up(5, 0, T)
+// 	s.start()
+// 	visible_message("<span class='warning'>\The [src] bursts into flame!</span>")
 
 #undef MODE_IDLE
 #undef MODE_HEATING

@@ -19,7 +19,7 @@
 	var/connection_requires_anchored = TRUE
 	#warn handling
 
-/obj/machinery/power/Initialize(mapload)
+/obj/machinery/power/Initialize(mapload, new_dir)
 	connection = new(src)
 	auto_connect()
 	return ..()
@@ -175,10 +175,6 @@
 		return
 	else
 		..()
-
-// Used for power spikes by the engine, has specific effects on different machines.
-/obj/machinery/power/proc/overload(var/obj/machinery/power/source)
-	return
 
 // Used by the grid checker upon receiving a power spike.
 /obj/machinery/power/proc/do_grid_check()

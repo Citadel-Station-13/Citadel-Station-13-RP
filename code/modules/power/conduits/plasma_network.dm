@@ -38,13 +38,13 @@
 		return
 	#warn impl
 
-/datum/wirenet/plasma/remove_segment(obj/structure/wire/conduit/joint)
+/datum/wirenet/plasma/remove_segment(obj/structure/wire/plasma_conduit/joint)
 	. = ..()
 
-/datum/wirenet/plasma/remove_segments(list/obj/structure/wire/conduit/joints)
+/datum/wirenet/plasma/remove_segments(list/obj/structure/wire/plasma_conduit/joints)
 	. = ..()
 
-/datum/wirenet/plasma/add_segment(obj/structure/wire/conduit/joint)
+/datum/wirenet/plasma/add_segment(obj/structure/wire/plasma_conduit/joint)
 	. = ..()
 
 /atom/movable/plasmanet_renderer

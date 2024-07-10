@@ -58,7 +58,7 @@
 		return 0
 	var/turf/T = src.loc
 
-	var/obj/structure/wire/cable/C = T.get_power_cable_node()
+	var/obj/structure/wire/power_cable/C = T.get_power_cable_node()
 	var/datum/wirenet/power/network = C.network
 	if(!network)
 		power = 0

@@ -11,7 +11,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
-	materials = list(MAT_STEEL = 50, MAT_GLASS = 20)
+	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
@@ -171,7 +171,7 @@
 			return
 		end_dir = DOWN
 
-	for(var/obj/structure/wire/cable/other in F)
+	for(var/obj/structure/wire/power_cable/other in F)
 		// todo: cables can only have a particular dir-dir pair be one dir, e.g. 4-8 instead of 8-4, so this can be optimized
 		if((other.d1 == dirn && other.d2 == end_dir) || (other.d2 == dirn && other.d1 == end_dir))
 			user.action_feedback(SPAN_WARNING("There's already a cable at that position."), src)
@@ -187,7 +187,7 @@
 /obj/item/stack/cable_coil/proc/put_cable(turf/simulated/F, mob/user, d1, d2)
 	if(!istype(F))
 		return
-	var/obj/structure/wire/cable/segment = new(F, color, d1, d2)
+	var/obj/structure/wire/power_cable/segment = new(F, color, d1, d2)
 	//! todo: legacy below
 	segment.add_fingerprint(user)
 	use(1)
@@ -197,7 +197,7 @@
 
 // called when cable_coil is click on an installed obj/cable
 // or click on a turf that already contains a "node" cable
-/obj/item/stack/cable_coil/proc/cable_join(obj/structure/wire/cable/C, mob/user)
+/obj/item/stack/cable_coil/proc/cable_join(obj/structure/wire/power_cable/C, mob/user)
 	var/turf/U = user.loc
 	if(!isturf(U))
 		return
@@ -228,7 +228,7 @@
 
 			var/fdirn = turn(dirn, 180)		// the opposite direction
 
-			for(var/obj/structure/wire/cable/LC in U)		// check to make sure there's not a cable there already
+			for(var/obj/structure/wire/power_cable/LC in U)		// check to make sure there's not a cable there already
 				if(LC.d1 == fdirn || LC.d2 == fdirn)
 					to_chat(user, "There's already a cable at that position.")
 					return
@@ -247,7 +247,7 @@
 			nd2 = C.d2
 
 
-		for(var/obj/structure/wire/cable/LC in T)		// check to make sure there's no matching cable
+		for(var/obj/structure/wire/power_cable/LC in T)		// check to make sure there's no matching cable
 			if(LC == C)			// skip the cable we're interacting with
 				continue
 			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) )	// make sure no cable matches either direction
