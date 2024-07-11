@@ -302,7 +302,7 @@
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
 	frequency = 1380;
-	master_tag = "tradeport_udang_docker";
+	master_tag = "tradeport_udang_dock";
 	pixel_x = -24
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -807,10 +807,10 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "cF" = (
-/obj/machinery/door/blast/regular{
-	id = "trade2"
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	id = "trade2port"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "cG" = (
@@ -4651,7 +4651,7 @@
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "tradeport_scoophead_docker";
+	id_tag = "tradeport_scoophead_dock";
 	pixel_x = 23
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -6893,7 +6893,7 @@
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "tradeport_udang_docker";
+	id_tag = "tradeport_udang_dock";
 	pixel_x = 23
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -8368,7 +8368,7 @@
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;
 	frequency = 1380;
-	master_tag = "tradeport_udang_docker";
+	master_tag = "tradeport_udang_dock";
 	pixel_x = 24
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -9821,7 +9821,7 @@
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
 	frequency = 1380;
-	master_tag = "tradeport_scoophead_docker";
+	master_tag = "tradeport_scoophead_dock";
 	pixel_x = -24
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -14025,7 +14025,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "tradeport_scoophead_docker";
+	id_tag = "tradeport_scoophead_dock";
 	pixel_x = -26;
 	pixel_y = 1
 	},
@@ -14038,7 +14038,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "tradeport_udang_docker";
+	id_tag = "tradeport_udang_dock";
 	pixel_x = -26;
 	pixel_y = 1
 	},
@@ -16335,7 +16335,7 @@
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;
 	frequency = 1380;
-	master_tag = "tradeport_scoophead_docker";
+	master_tag = "tradeport_scoophead_dock";
 	pixel_x = 24
 	},
 /obj/machinery/door/airlock/glass_external{
