@@ -645,7 +645,8 @@
 
 	// string
 	if(text[1] == "\"")
-		return text_constant_regex.Replace(text, "$1")
+		// pray that the last character is actually a ""
+		return text_constant_regex.Replace(copytext(text, 2, -1), "$1")
 
 	// list
 	if(copytext(text, 1, 6) == "list(")//6 == length("list(") + 1
