@@ -607,7 +607,7 @@
 	tesla_zap(src, 5, power_gen * 50)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), get_turf(src), 2, 3, 4, 8), 100) // Not a normal explosion.
 
-/obj/machinery/power/rtg/abductor/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/machinery/power/rtg/abductor/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(!going_kaboom && istype(proj) && !proj.nodamage && ((proj.damage_type == BURN) || (proj.damage_type == BRUTE)))
 		log_and_message_admins("[ADMIN_LOOKUPFLW(proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.")

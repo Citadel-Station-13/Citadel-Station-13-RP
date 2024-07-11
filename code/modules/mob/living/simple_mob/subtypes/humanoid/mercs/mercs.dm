@@ -177,7 +177,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/melee/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/mob/living/simple_mob/humanoid/merc/melee/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(prob(35))
 		visible_message("<span class='warning'>[src] blocks [proj] with its shield!</span>")
 		if(proj.firer)
@@ -550,7 +550,7 @@
 	else
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(prob(50))
 		visible_message("<span class='warning'>[src] blocks [proj] with its shield!</span>")
 		if(proj.firer)
@@ -694,7 +694,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/voxpirate/boarder/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/mob/living/simple_mob/humanoid/merc/voxpirate/boarder/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(prob(35))
 		visible_message("<span class='warning'>[src] blocks [proj] with its sword!</span>")
 		if(proj.firer)

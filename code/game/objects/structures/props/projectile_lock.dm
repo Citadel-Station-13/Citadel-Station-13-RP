@@ -41,7 +41,7 @@
 
 	interaction_message = "<span class='notice'>The object remains inert to your touch.</span>"
 
-/obj/structure/prop/lock/projectile/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/structure/prop/lock/projectile/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(!istype(proj, projectile_key))
 		return ..()
 

@@ -109,7 +109,7 @@
 			qdel(src)
 		..()
 
-/obj/item/camerabug/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/item/camerabug/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return

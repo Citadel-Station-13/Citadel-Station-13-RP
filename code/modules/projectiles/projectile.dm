@@ -319,7 +319,7 @@
 	impacted = list()
 	// make sure firer is in it
 	if(firer)
-		imapcted[firer] = TRUE
+		impacted[firer] = TRUE
 		if(ismob(firer))
 			var/atom/buckle_iterating = firer.buckled
 			while(buckle_iterating)
@@ -384,7 +384,7 @@
 	forceMove(get_turf(source))
 	trajectory_ignore_forcemove = FALSE
 	starting = curloc
-	original = target
+	original_target = target
 	if(targloc || !params)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
@@ -442,7 +442,7 @@
 	if(!source)
 		source = get_turf(src)
 	starting = get_turf(source)
-	original = target
+	original_target = target
 	set_angle(get_visual_angle(source, target))
 
 /obj/projectile/proc/vol_by_damage()
@@ -1162,10 +1162,18 @@
  *
  * * Please take into account impact_flags.
  * * Most impact flags returned are not re-checked for performance; pierce/phase calculations should be done in pre_impact().
+ * * please see [/atom/proc/bullet_act()] for information on the parameters.
+ *
+ * Things to keep in mind, if you ignore the above and didn't read bullet_act():
+ * * Parameters are changed directly, as a function's arguments are just a list passed down in ..() if nothing is in the ()
+ * * 'blocked' is extremely powerful
+ * * impact_flags having PROJECTILE_IMPACT_DELETE is a good sign to delete and do nothing else.
+ *
+ * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
  *
  * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
  */
-/obj/projectile/proc/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/proc/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	// legacy shit
 	if(damage && damage_type == BURN)
 		var/turf/T = get_turf(A)

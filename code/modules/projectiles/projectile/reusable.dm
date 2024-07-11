@@ -97,7 +97,7 @@
 	icon_state = "plunger"
 	ammo_type = /obj/item/ammo_casing/arrow/plunger
 
-/obj/projectile/bullet/reusable/plunger/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/reusable/plunger/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return

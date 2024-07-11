@@ -203,7 +203,7 @@
 			to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 	M.update_icons() //Just to apply matrix transform for laying asap
 
-/obj/projectile/energy/plasmastun/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/energy/plasmastun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	bang(target)
 	return . | PROJECTILE_IMPACT_DELETE

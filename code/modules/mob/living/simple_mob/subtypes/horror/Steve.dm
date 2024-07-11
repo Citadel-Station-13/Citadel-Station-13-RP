@@ -54,7 +54,7 @@
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Steve/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/mob/living/simple_mob/horror/Steve/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 

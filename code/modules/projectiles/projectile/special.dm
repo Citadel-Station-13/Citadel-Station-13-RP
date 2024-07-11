@@ -17,7 +17,7 @@
 	var/sev3_range = 1
 	var/sev4_range = 1
 
-/obj/projectile/ion/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/ion/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -44,7 +44,7 @@
 	sharp = 1
 	edge = 1
 
-/obj/projectile/bullet/gyro/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/gyro/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -194,7 +194,7 @@
 	light_power = 0.5
 	light_color = "#FFFFFF"
 
-/obj/projectile/energy/florayield/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/energy/florayield/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -210,7 +210,7 @@
 	name = "flayer ray"
 	combustion = FALSE
 
-/obj/projectile/beam/mindflayer/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/beam/mindflayer/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -280,7 +280,10 @@
 	tracer_type = /obj/effect/projectile/tungsten/tracer
 	impact_type = /obj/effect/projectile/tungsten/impact
 
-/obj/projectile/beam/tungsten/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/tungsten/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_BLOCKED)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		L.add_modifier(/datum/modifier/grievous_wounds, 30 SECONDS)
@@ -324,17 +327,13 @@
 			else if(armor_special)
 				target.visible_message("<span class='cult'>\The [src] slams into \the [target]'s [target_limb] with a low rumble!</span>")
 
-	..()
-
-/obj/projectile/beam/tungsten/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+	if(istype(target,/turf/simulated/shuttle/wall) || istype(target,/turf/simulated/wall) || (istype(target,/turf/simulated/mineral) && target.density) || istype(target,/obj/mecha) || istype(target,/obj/machinery/door))
 		var/blast_dir = src.dir
-		A.visible_message("<span class='danger'>\The [A] begins to glow!</span>")
+		target.visible_message("<span class='danger'>\The [target] begins to glow!</span>")
 		spawn(2 SECONDS)
-			var/blastloc = get_step(A, blast_dir)
+			var/blastloc = get_step(target, blast_dir)
 			if(blastloc)
 				explosion(blastloc, -1, -1, 2, 3)
-	..()
 
 /obj/projectile/bullet/honker
 	damage = 0
@@ -392,19 +391,18 @@
 	light_range = 4
 	light_power = 3
 	light_color = "#00ccff"
+	var/heavy = FALSE
 
-/obj/projectile/plasma/on_hit(var/atom/target, var/blocked = 0)
-	explosion(target, -1, 0, 1, 2)
-	..()
+/obj/projectile/plasma/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 
-/obj/projectile/plasma/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
-		var/blast_dir = src.dir
-		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
-		var/blastloc = get_step(A, blast_dir)
-		if(blastloc)
-			explosion(blastloc, -1, 0, 1, 2)
-	..()
+	var/blast_dir = src.dir
+	target.visible_message("<span class='danger'>\The [target] is engulfed in roiling plasma!</span>")
+	var/blastloc = get_step(target, blast_dir)
+	if(blastloc)
+		explosion(blastloc, -1, 0, heavy? 2 : 1, heavy? 3 : 2)
 
 /obj/projectile/plasma/hot
 	name ="heavy plasma bolt"
@@ -412,16 +410,4 @@
 	light_range = 5
 	light_power = 4
 	light_color = "#00ccff"
-
-/obj/projectile/plasma/hot/on_hit(var/atom/target, var/blocked = 0)
-	explosion(target, -1, 0, 2, 3)
-	..()
-
-/obj/projectile/plasma/hot/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
-		var/blast_dir = src.dir
-		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
-		var/blastloc = get_step(A, blast_dir)
-		if(blastloc)
-			explosion(blastloc, -1, 0, 2, 3)
-	..()
+	heavy = TRUE

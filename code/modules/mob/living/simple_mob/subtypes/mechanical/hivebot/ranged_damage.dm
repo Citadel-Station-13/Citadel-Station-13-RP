@@ -174,7 +174,7 @@
 	var/emp_med = 7
 	var/emp_light = 10
 
-/obj/projectile/arc/emp_blast/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/arc/emp_blast/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return

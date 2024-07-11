@@ -237,7 +237,7 @@
 		take_damage_legacy(rand(5,10), SHIELD_DAMTYPE_HEAT)
 
 // Projectiles
-/obj/effect/shield/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/effect/shield/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT
 	. = ..()
 	if(proj.damage_type == BURN)

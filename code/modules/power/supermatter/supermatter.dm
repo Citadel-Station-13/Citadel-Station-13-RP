@@ -371,7 +371,7 @@
 
 	return 1
 
-/obj/machinery/power/supermatter/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/machinery/power/supermatter/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	var/turf/L = loc
 	// We don't run process() when we are in space
 	// This stops people from being able to really power up the supermatter

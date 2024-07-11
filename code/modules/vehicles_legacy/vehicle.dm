@@ -123,7 +123,7 @@
 	else
 		..()
 
-/obj/vehicle_old/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/vehicle_old/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	health -= proj.get_structure_damage()
 	healthcheck()

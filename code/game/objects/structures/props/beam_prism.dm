@@ -124,7 +124,7 @@
 	else
 		animate(src, transform = turn(src.transform, rotate_degrees), time = 6)
 
-/obj/structure/prop/prism/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/structure/prop/prism/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(((proj.projectile_type & projectile_type) != projectile_type) || (proj.projectile_type & projectile_type_cant))
 		return ..()
 	if(!silent)

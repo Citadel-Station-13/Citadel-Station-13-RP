@@ -63,7 +63,7 @@
 	var/detonate_mob = 0 //Will this fuelrod explode when it hits a mob?
 	var/energetic_impact = 0 //Does this fuelrod cause a bright flash on impact with a mob?
 
-/obj/projectile/bullet/magnetic/fuelrod/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/magnetic/fuelrod/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	if(searing)
 		blocked = 0
 	. = ..()
@@ -132,7 +132,7 @@
 	detonate_mob = 1
 	energetic_impact = 1
 
-/obj/projectile/bullet/magnetic/fuelrod/supermatter/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/magnetic/fuelrod/supermatter/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -154,19 +154,21 @@
 	irradiate = 20
 	range = WORLD_ICON_SIZE * 6
 
-/obj/projectile/bullet/magnetic/bore/Bump(atom/A, forced=0)
-	if(istype(A, /turf/simulated/mineral))
-		var/turf/simulated/mineral/MI = A
-		loc = get_turf(A) // Careful.
-		permutated.Add(A)
-		MI.GetDrilled(TRUE)
-		return 0
-	else if(istype(A, /turf/simulated/wall) || istype(A, /turf/simulated/shuttle/wall))	// Cause a loud, but relatively minor explosion on the wall it hits.
-		explosion(A, -1, -1, 1, 3)
-		qdel(src)
-		return 1
-	else
-		..()
+/obj/projectile/bullet/magnetic/bore/pre_impact(atom/target, impact_flags, def_zone)
+	if(istype(target, /turf/simulated/mineral))
+		return PROJECTILE_IMPACT_PIERCE | impact_flags
+	return ..()
+
+/obj/projectile/bullet/magnetic/bore/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+	if(istype(target, /turf/simulated/mineral))
+		var/turf/simulated/mineral/MI = target
+		MI.GetDrilled(TURE)
+	else if(istype(target, /turf/simulated/wall) || istype(target, /turf/simulated/shuttle/wall))
+		explosion(target, 0, 0, 1, 3)
+		. |= PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/bullet/magnetic/bore/powerful
 	name = "energetic phorogenic blast"

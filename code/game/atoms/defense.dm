@@ -68,12 +68,22 @@
  * as the main processing will ignore said changes. Do not edit impact_flags arg after ..(),
  * as it won't propagate to the `.`  (default return) variable after.
  *
+ * Things to keep in mind
+ * * 'blocked' arg is **extremely** powerful. Please don't raise it to high values for no reason.
+ * * use PROJECTILE_IMPACT_BLOCKED instead of setting blocked to 100 if an impact is entirely blocked
+ * * semantically, blocked 100 means shield from all damaged, IMPACT_BLOCKED means it hit something else
+ *
  * @params
  * * proj - the projectile
  * * impact_flags - PROJECTILE_IMPACT_* flags
  * * def_zone - impacting zone; calculated by projectile side, usually
+ * * blocked - 0 to 100, inclusive; % block to enforce. this should affect most damage/stun/etc values
+ *
+ * todo: add PROJECTILE_IMPACT_DELETE_AFTER as opposed to DELETE? so rest of effects can still run
+ *
+ * @return new impact_flags
  */
-/atom/proc/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/atom/proc/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	// lower calls can change flags before we trigger
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
@@ -92,7 +102,7 @@
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return impact_flags
 	// we are hitting; gather flags as needed
-	return proj.on_impact_new(src, impact_flags, def_zone)
+	return proj.on_impact_new(src, impact_flags, def_zone, blocked)
 
 /atom/proc/bullet_act()
 	SHOULD_NOT_OVERRIDE(TRUE)

@@ -17,7 +17,7 @@
 							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
 	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
 
-/obj/projectile/bullet/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -247,7 +247,7 @@
 
 	combustion = FALSE
 
-/obj/projectile/bullet/shotgun/ion/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/shotgun/ion/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -259,7 +259,7 @@
 	name ="frag12 slug"
 	damage = 25
 
-/obj/projectile/bullet/shotgun/frag12/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/shotgun/frag12/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -370,7 +370,7 @@
 	embed_chance = 0
 	edge = 1
 
-/obj/projectile/bullet/burstbullet/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/burstbullet/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -387,7 +387,7 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
-/obj/projectile/bullet/burstbullet/service/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/burstbullet/service/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -446,7 +446,7 @@
 /obj/projectile/bullet/heavy_shotgun/grit
 	name = "custom heavy slug"
 
-/obj/projectile/bullet/heavy_shotgun/grit/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/heavy_shotgun/grit/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -462,7 +462,7 @@
 	name = "heavy buckshot"
 	range_step = 1
 
-/obj/projectile/bullet/pellet/heavy_shotgun/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/pellet/heavy_shotgun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
@@ -522,7 +522,7 @@
 	penetrating = 5
 	combustion = TRUE
 
-/obj/projectile/bullet/incendiary/caseless/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/bullet/incendiary/caseless/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return

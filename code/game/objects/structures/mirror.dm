@@ -39,7 +39,7 @@
 	desc = "Oh no, seven years of bad luck!"
 
 
-/obj/structure/mirror/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/structure/mirror/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(prob(proj.get_structure_damage() * 2))
 		if(!shattered)

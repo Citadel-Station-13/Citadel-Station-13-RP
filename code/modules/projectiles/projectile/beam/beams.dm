@@ -167,23 +167,27 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_blue
 	impact_type = /obj/effect/projectile/impact/laser_blue
 
-/obj/projectile/beam/lasertag/blue/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/blue/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/redtag))
-			M.afflict_paralyze(20 * 5)
-	return 1
+			M.afflict_paralyze(1.5 SECONDS)
 
 /obj/projectile/beam/lasertag/red
 	icon_state = "laser"
 	light_color = "#FF0D00"
 
-/obj/projectile/beam/lasertag/red/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/red/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/bluetag))
-			M.afflict_paralyze(20 * 5)
-	return 1
+			M.afflict_paralyze(1.5 SECONDS)
 
 /obj/projectile/beam/lasertag/omni//A laser tag bolt that stuns EVERYONE
 	icon_state = "omnilaser"
@@ -193,12 +197,14 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/lasertag/omni/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/lasertag/omni/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		if((istype(M.wear_suit, /obj/item/clothing/suit/bluetag))||(istype(M.wear_suit, /obj/item/clothing/suit/redtag)))
-			M.afflict_paralyze(20 * 5)
-	return 1
+			M.afflict_paralyze(1.5 SECONDS)
 
 /obj/projectile/beam/sniper
 	name = "sniper beam"
@@ -277,7 +283,7 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/stun/disabler/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/beam/stun/disabler/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(!(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT))
 		return

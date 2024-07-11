@@ -73,7 +73,7 @@
 	icon_scale_y = 2
 	sharp = TRUE
 
-/obj/projectile/icicle/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/icicle/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return

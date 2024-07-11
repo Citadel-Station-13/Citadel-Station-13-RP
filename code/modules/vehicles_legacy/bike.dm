@@ -174,7 +174,7 @@
 
 	..()
 
-/obj/vehicle_old/bike/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/vehicle_old/bike/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(has_buckled_mobs() && prob(protection_percent))
 		var/mob/living/L = pick(buckled_mobs)
 		return L.bullet_act(arglist(args))

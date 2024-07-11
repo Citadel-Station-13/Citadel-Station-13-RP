@@ -19,7 +19,7 @@
 	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
 	return NONE
 
-/turf/simulated/wall/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/turf/simulated/wall/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 
 	if(istype(proj,/obj/projectile/beam))

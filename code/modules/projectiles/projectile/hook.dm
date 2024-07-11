@@ -58,12 +58,11 @@
 
 	..() // Does the regular launching stuff.
 
-/obj/projectile/energy/hook/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
-	if(..())
-		perform_intent_unique(target)
-
-/obj/projectile/energy/hook/on_impact(var/atom/A)
-	perform_intent_unique(get_turf(A))
+/obj/projectile/energy/hook/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+	perform_intent_unique(target)
 
 /obj/projectile/energy/hook/proc/ranged_disarm(var/mob/living/carbon/human/H)
 	if(istype(H))
@@ -116,8 +115,8 @@
 			else if(firer)
 				var/obj/T
 
-				if(original in target.contents && istype(original, /obj))
-					T = original
+				if(original_target.loc == target && istype(original_target, /obj))
+					T = original_target
 
 				var/list/possible_targets = list()
 				for(var/obj/item/I in target.contents)

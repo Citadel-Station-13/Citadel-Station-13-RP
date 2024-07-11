@@ -67,7 +67,7 @@
 	damage = 5 // Getting hit with a launched syringe probably hurts, and makes it at least slightly relevant against synthetics.
 	var/piercing = FALSE // If true, ignores thick material.
 
-/obj/projectile/fake_syringe/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/fake_syringe/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	if(isliving(target))
 		var/mob/living/L = target
 		if(!L.can_inject(null, null, def_zone, piercing))

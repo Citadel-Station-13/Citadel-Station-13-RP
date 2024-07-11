@@ -154,7 +154,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/vore/aggressive/corrupthound/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/mob/living/simple_mob/vore/aggressive/corrupthound/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(prob(35))
 		visible_message("<span class='warning'>[src] deflects [proj] with its sword tail!</span>")
 		if(proj.firer)

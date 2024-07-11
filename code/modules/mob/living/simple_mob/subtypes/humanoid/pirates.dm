@@ -164,7 +164,7 @@
 		to_chat(user, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
-/mob/living/simple_mob/humanoid/merc/melee/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/mob/living/simple_mob/humanoid/merc/melee/sword/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(prob(25))
 		visible_message("<font color='red'><B>[src] blocks [proj] with its shield!</B></font>")
 		if(proj.firer)

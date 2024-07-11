@@ -299,7 +299,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	break_cloak()
 
@@ -435,7 +435,7 @@
 	damage = 15
 	damage_type = BRUTE
 
-/obj/projectile/arc/blue_energy/priest/on_impact_new(atom/target, impact_flags, def_zone)
+/obj/projectile/arc/blue_energy/priest/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return

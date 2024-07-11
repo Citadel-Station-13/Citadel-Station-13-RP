@@ -67,7 +67,7 @@
 		desc = "A shooting target with a threatening silhouette."
 		hp = 2350 // alium onest too kinda
 
-/obj/item/target/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/item/target/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 
 	var/p_x = proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset proj.p_x!"

@@ -201,7 +201,7 @@
 	check_health()
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/machinery/portable_atmospherics/hydroponics/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.get_trait(TRAIT_IMMUTABLE) > 0)

@@ -39,7 +39,7 @@
 			if (prob(50))
 				qdel(src)
 
-/obj/item/latexballon/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/item/latexballon/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	burst()
 

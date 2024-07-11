@@ -280,7 +280,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 					L.pixel_x = -13
 					L.pixel_y = 7
 
-/obj/structure/bed/chair/janicart/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+/obj/structure/bed/chair/janicart/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(has_buckled_mobs() && prob(85))
 		return proj.impact_redirect(pick(buckled_mobs), args)
 	return ..()
