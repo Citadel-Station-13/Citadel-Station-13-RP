@@ -20,6 +20,10 @@
 /datum/ability/species/sonar/on_trigger(mob/user, toggling)
 	. = ..()
 
+	if(SSmapping.level_trait(get_z(owner), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
+		to_chat(user, SPAN_WARNING("Sonar is being jammed on this level."))
+		return
+
 	owner.visible_message(
 		SPAN_WARNING("[owner] emits a quiet click."),
 		SPAN_WARNING("You emit a quiet click."),
