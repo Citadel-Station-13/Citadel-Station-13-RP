@@ -203,9 +203,10 @@
 			to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 	M.update_icons() //Just to apply matrix transform for laying asap
 
-/obj/projectile/energy/plasmastun/on_hit(var/atom/target)
-	bang(target)
+/obj/projectile/energy/plasmastun/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
+	bang(target)
+	return . | PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/energy/blue_pellet
 	name = "suppressive pellet"

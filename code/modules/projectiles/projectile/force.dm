@@ -10,11 +10,12 @@
 /obj/projectile/forcebolt/strong
 	name = "force bolt"
 
-/obj/projectile/forcebolt/on_hit(var/atom/movable/target, var/blocked = 0)
-	if(istype(target))
+/obj/projectile/forcebolt/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(ismovable(target))
+		var/atom/movable/movable_target = target
 		var/throwdir = get_dir(firer,target)
-		target.throw_at_old(get_edge_target_turf(target, throwdir),10,10)
-		return 1
+		movable_target.throw_at_old(get_edge_target_turf(target, throwdir),10,10)
 
 /*
 /obj/projectile/forcebolt/strong/on_hit(var/atom/target, var/blocked = 0)

@@ -250,18 +250,17 @@ var/list/blobs = list()
 	adjust_integrity_blob(-damage)
 	return
 
-/obj/structure/blob/bullet_act(var/obj/projectile/P)
-	if(!P)
+/obj/structure/blob/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+
+	if(istype(proj.firer) && proj.firer.faction == "blob")
 		return
 
-	if(istype(P.firer) && P.firer.faction == "blob")
-		return
-
-	var/damage = P.get_structure_damage() // So tasers don't hurt the blob.
+	var/damage = proj.get_structure_damage() // So tasers don't hurt the blob.
 	if(!damage)
 		return
 
-	switch(P.damage_type)
+	switch(proj.damage_type)
 		if(BRUTE)
 			if(overmind)
 				damage *= overmind.blob_type.brute_multiplier
@@ -270,11 +269,9 @@ var/list/blobs = list()
 				damage *= overmind.blob_type.burn_multiplier
 
 	if(overmind)
-		damage = overmind.blob_type.on_received_damage(src, damage, P.damage_type, P.firer)
+		damage = overmind.blob_type.on_received_damage(src, damage, proj.damage_type, proj.firer)
 
 	adjust_integrity_blob(-damage)
-
-	return ..()
 
 /obj/structure/blob/water_act(amount)
 	if(overmind)

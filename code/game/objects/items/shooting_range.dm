@@ -67,12 +67,14 @@
 		desc = "A shooting target with a threatening silhouette."
 		hp = 2350 // alium onest too kinda
 
-/obj/item/target/bullet_act(var/obj/projectile/Proj)
-	var/p_x = Proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"
-	var/p_y = Proj.p_y + pick(0,0,0,0,0,-1,1)
+/obj/item/target/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	. = ..()
+
+	var/p_x = proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset proj.p_x!"
+	var/p_y = proj.p_y + pick(0,0,0,0,0,-1,1)
 	var/decaltype = 1 // 1 - scorch, 2 - bullet
 
-	if(istype(/obj/projectile/bullet, Proj))
+	if(istype(/obj/projectile/bullet, proj))
 		decaltype = 2
 
 
@@ -80,7 +82,7 @@
 
 	if( virtualIcon.GetPixel(p_x, p_y) ) // if the located pixel isn't blank (null)
 
-		hp -= Proj.damage
+		hp -= proj.damage
 		if(hp <= 0)
 			for(var/mob/O in oviewers())
 				if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))
@@ -101,7 +103,7 @@
 			bmark.pixel_x--
 			bmark.pixel_y--
 
-			if(Proj.damage >= 20 || istype(Proj, /obj/projectile/beam/practice))
+			if(proj.damage >= 20 || istype(proj, /obj/projectile/beam/practice))
 				bmark.icon_state = "scorch"
 				bmark.setDir(pick(NORTH,SOUTH,EAST,WEST)) // random scorch design
 
@@ -113,12 +115,12 @@
 			// Bullets are hard. They make dents!
 			bmark.icon_state = "dent"
 
-		if(Proj.damage >= 10 && bulletholes.len <= 35) // maximum of 35 bullet holes
+		if(proj.damage >= 10 && bulletholes.len <= 35) // maximum of 35 bullet holes
 			if(decaltype == 2) // bullet
-				if(prob(Proj.damage+30)) // bullets make holes more commonly!
+				if(prob(proj.damage+30)) // bullets make holes more commonly!
 					new/datum/bullethole(src, bmark.pixel_x, bmark.pixel_y) // create new bullet hole
 			else // Lasers!
-				if(prob(Proj.damage-10)) // lasers make holes less commonly
+				if(prob(proj.damage-10)) // lasers make holes less commonly
 					new/datum/bullethole(src, bmark.pixel_x, bmark.pixel_y) // create new bullet hole
 
 		// draw bullet holes
@@ -133,8 +135,7 @@
 
 		return
 
-	return PROJECTILE_CONTINUE // the bullet/projectile goes through the target!
-
+	return . | PROJECTILE_IMPACT_PASSTHROUGH
 
 // Small memory holder entity for transparent bullet holes
 /datum/bullethole

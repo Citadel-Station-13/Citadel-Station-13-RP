@@ -41,9 +41,10 @@
 	sharp = 1
 	edge = 1
 
-/obj/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/gyro/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
 	explosion(target, -1, 0, 2)
-	..()
+	return . | PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/temp
 	name = "freeze beam"

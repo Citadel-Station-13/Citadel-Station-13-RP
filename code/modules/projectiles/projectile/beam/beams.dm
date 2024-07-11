@@ -277,18 +277,18 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/stun/disabler/on_hit(atom/target, blocked = 0, def_zone)
-	. = ..(target, blocked, def_zone)
-
-	if(. && istype(target, /mob/living/silicon/robot) && prob(agony))
+/obj/projectile/beam/stun/disabler/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(!(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT))
+		return
+	if(istype(target, /mob/living/silicon/robot) && prob(agony))
 		var/mob/living/silicon/robot/R = target
 		var/drainamt = agony * (rand(5, 15) / 10)
 		// 100 to 300 drain
 		R.drain_energy(DYNAMIC_CELL_UNITS_TO_KJ(drainamt * 10))
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.
 			var/mob/living/silicon/robot/A = firer
-			if(A.cell)
-				A.cell.give(drainamt * 2)
+			A.cell?.give(drainamt * 2)
 
 /obj/projectile/beam/shock
 	name = "shock beam"

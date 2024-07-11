@@ -63,46 +63,46 @@
 	. = ..()
 	AddComponent(/datum/component/horror_aura/strong)
 
-/mob/living/simple_mob/construct/juggernaut/bullet_act(var/obj/projectile/P)
-	var/reflectchance = 80 - round(P.damage/3)
+/mob/living/simple_mob/construct/juggernaut/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	var/reflectchance = 80 - round(proj.damage/3)
 	if(prob(reflectchance))
 		var/damage_mod = rand(2,4)
-		var/projectile_dam_type = P.damage_type
-		var/incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
-		var/armorcheck = run_armor_check(null, P.damage_flag)
-		var/soakedcheck = get_armor_soak(null, P.damage_flag)
-		if(!(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam)))
-			visible_message("<span class='danger'>The [P.name] bounces off of [src]'s shell!</span>", \
-						"<span class='userdanger'>The [P.name] bounces off of [src]'s shell!</span>")
+		var/projectile_dam_type = proj.damage_type
+		var/incoming_damage = (round(proj.damage / damage_mod) - (round((proj.damage / damage_mod) * 0.3)))
+		var/armorcheck = run_armor_check(null, proj.damage_flag)
+		var/soakedcheck = get_armor_soak(null, proj.damage_flag)
+		if(!(istype(proj, /obj/projectile/energy) || istype(proj, /obj/projectile/beam)))
+			visible_message("<span class='danger'>The [proj.name] bounces off of [src]'s shell!</span>", \
+						"<span class='userdanger'>The [proj.name] bounces off of [src]'s shell!</span>")
 			new /obj/item/material/shard/shrapnel(src.loc)
-			if(!(P.damage_type == BRUTE || P.damage_type == BURN))
+			if(!(proj.damage_type == BRUTE || proj.damage_type == BURN))
 				projectile_dam_type = BRUTE
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to brute for physical projectiles, though severely decreased.
-			apply_damage(incoming_damage, projectile_dam_type, null, armorcheck, soakedcheck, is_sharp(P), has_edge(P), P)
-			return -1 //Doesn't reflect non-beams or non-energy projectiles. They just smack and drop with little to no effect.
+			apply_damage(incoming_damage, projectile_dam_type, null, armorcheck, soakedcheck, is_sharp(proj), has_edge(proj), proj)
+			return ..()
 		else
-			visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \
-						"<span class='userdanger'>The [P.name] gets reflected by [src]'s shell!</span>")
+			visible_message("<span class='danger'>The [proj.name] gets reflected by [src]'s shell!</span>", \
+						"<span class='userdanger'>The [proj.name] gets reflected by [src]'s shell!</span>")
 			damage_mod = rand(3,5)
-			incoming_damage = (round(P.damage / damage_mod) - (round((P.damage / damage_mod) * 0.3)))
-			if(!(P.damage_type == BRUTE || P.damage_type == BURN))
+			incoming_damage = (round(proj.damage / damage_mod) - (round((proj.damage / damage_mod) * 0.3)))
+			if(!(proj.damage_type == BRUTE || proj.damage_type == BURN))
 				projectile_dam_type = BURN
 				incoming_damage = round(incoming_damage / 4) //Damage from strange sources is converted to burn for energy-type projectiles, though severely decreased.
-			apply_damage(incoming_damage, P.damage_type, null, armorcheck, soakedcheck, is_sharp(P), has_edge(P), P)
+			apply_damage(incoming_damage, proj.damage_type, null, armorcheck, soakedcheck, is_sharp(proj), has_edge(proj), proj)
 
 		// Find a turf near or on the original location to bounce to
-		if(P.starting)
-			var/new_x = P.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
-			var/new_y = P.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+		if(proj.starting)
+			var/new_x = proj.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+			var/new_y = proj.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
 			var/turf/curloc = get_turf(src)
 
 			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, src)
-			P.reflected = 1
+			proj.redirect(new_x, new_y, curloc, src)
+			proj.reflected = 1
 
-		return -1 // complete projectile permutation
-
-	return (..(P))
+		return PROJECTILE_IMPACT_REFLECT
+	#warn above; blocked modifier?
+	return ..()
 
 /*
  * The Behemoth. Admin-allowance only, still try to keep it in some guideline of 'Balanced', even if it means Security has to be fully geared to be so.
@@ -138,22 +138,21 @@
 							/spell/targeted/construct_advanced/slam
 							)
 
-/mob/living/simple_mob/construct/juggernaut/behemoth/bullet_act(var/obj/projectile/P)
-	var/reflectchance = 80 - round(P.damage/3)
+/mob/living/simple_mob/construct/juggernaut/behemoth/new_bullet_act(obj/projectile/proj, impact_flags, def_zone)
+	var/reflectchance = 80 - round(proj.damage/3)
 	if(prob(reflectchance))
-		visible_message("<span class='danger'>The [P.name] gets reflected by [src]'s shell!</span>", \
-						"<span class='userdanger'>The [P.name] gets reflected by [src]'s shell!</span>")
+		visible_message("<span class='danger'>The [proj.name] gets reflected by [src]'s shell!</span>", \
+						"<span class='userdanger'>The [proj.name] gets reflected by [src]'s shell!</span>")
 
 		// Find a turf near or on the original location to bounce to
-		if(P.starting)
-			var/new_x = P.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
-			var/new_y = P.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+		if(proj.starting)
+			var/new_x = proj.starting.x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+			var/new_y = proj.starting.y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
 			var/turf/curloc = get_turf(src)
 
 			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, src)
-			P.reflected = 1
+			proj.redirect(new_x, new_y, curloc, src)
+			proj.reflected = 1
 
-		return -1 // complete projectile permutation
-
-	return (..(P))
+		return PROJECTILE_IMPACT_REFLECT
+	return ..()

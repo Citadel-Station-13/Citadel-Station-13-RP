@@ -17,10 +17,14 @@
 							'sound/weapons/guns/ricochet3.ogg', 'sound/weapons/guns/ricochet4.ogg')
 	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
 
-/obj/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
-	if (..(target, blocked))
-		var/mob/living/L = target
-		shake_camera(L, 3, 2)
+/obj/projectile/bullet/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	shake_camera(L, 3, 2)
 
 /obj/projectile/bullet/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
 	if(penetrating > 0 && damage > 20 && prob(damage))
@@ -243,20 +247,24 @@
 
 	combustion = FALSE
 
-/obj/projectile/bullet/shotgun/ion/on_hit(var/atom/target, var/blocked = 0)
-	..()
+/obj/projectile/bullet/shotgun/ion/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	empulse(target, 0, 0, 2, 0)	//Only affects what it hits
-	return 1
+	. |= PROJECTILE_IMPACT_DELETE
 
 //Frag shot
 /obj/projectile/bullet/shotgun/frag12
 	name ="frag12 slug"
 	damage = 25
 
-/obj/projectile/bullet/shotgun/frag12/on_hit(atom/target, blocked = FALSE)
-	..()
+/obj/projectile/bullet/shotgun/frag12/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	explosion(target, -1, 0, 1)
-	return 1
+	. |= PROJECTILE_IMPACT_DELETE
 
 /* "Rifle" rounds */
 
@@ -362,10 +370,12 @@
 	embed_chance = 0
 	edge = 1
 
-/obj/projectile/bullet/burstbullet/on_hit(var/atom/target, var/blocked = 0)
-	if(isturf(target))
-		explosion(target, -1, 0, 2)
-	..()
+/obj/projectile/bullet/burstbullet/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+	explosion(target, -1, 0, 2)
+	. |= PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/bullet/burstbullet/service
 	name = "charge bullet"
@@ -377,10 +387,13 @@
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
 	holy = TRUE
 
-/obj/projectile/bullet/burstbullet/service/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/burstbullet/service/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(isturf(target))
 		explosion(target, 0, 1, 2)
-	..()
+	return . | PROJECTILE_IMPACT_DELETE
 
 /* Black Powder */
 
@@ -433,7 +446,10 @@
 /obj/projectile/bullet/heavy_shotgun/grit
 	name = "custom heavy slug"
 
-/obj/projectile/bullet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/heavy_shotgun/grit/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
@@ -441,14 +457,15 @@
 			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
-
-		return 1
 
 /obj/projectile/bullet/pellet/heavy_shotgun/grit
 	name = "heavy buckshot"
 	range_step = 1
 
-/obj/projectile/bullet/pellet/heavy_shotgun/grit/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/pellet/heavy_shotgun/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
@@ -456,8 +473,6 @@
 			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
-
-		return 1
 
 /* Incendiary */
 
@@ -507,7 +522,11 @@
 	penetrating = 5
 	combustion = TRUE
 
-/obj/projectile/bullet/incendiary/caseless/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/bullet/incendiary/caseless/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+	// todo: burn this to the ground
 	if(isliving(target))
 		var/mob/living/L = target
 		L.adjustFireLoss(10)

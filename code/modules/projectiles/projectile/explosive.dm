@@ -8,26 +8,16 @@
 	damage = 30	//Meaty whack. *Chuckles*
 	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
 
-/obj/projectile/bullet/srmrocket/on_hit(atom/target, blocked=0)
-	..()
+/obj/projectile/bullet/srmrocket/on_impact_new(atom/target, impact_flags, def_zone)
 	if(!isliving(target)) //if the target isn't alive, so is a wall or something
 		explosion(target, 0, 1, 2, 4)
 	else
 		explosion(target, 0, 0, 2, 4)
-	return 1
-
+	return PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/bullet/srmrocket/weak	//Used in the jury rigged one.
 	damage = 10
 
-/obj/projectile/bullet/srmrocket/weak/on_hit(atom/target, blocked=0)
-	..()
+/obj/projectile/bullet/srmrocket/weak/on_impact_new(atom/target, impact_flags, def_zone)
 	explosion(target, 0, 0, 2, 4)//No need to have a question.
-	return 1
-
-/*Old vars here for reference.
-	var/devastation = 0
-	var/heavy_blast = 1
-	var/light_blast = 2
-	var/flash_blast = 4
-*/
+	return PROJECTILE_IMPACT_DELETE

@@ -92,7 +92,7 @@
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return impact_flags
 	// we are hitting; gather flags as needed
-	return proj.on_impact(src, impact_flags, def_zone)
+	return proj.on_impact_new(src, impact_flags, def_zone)
 
 /atom/proc/bullet_act()
 	SHOULD_NOT_OVERRIDE(TRUE)

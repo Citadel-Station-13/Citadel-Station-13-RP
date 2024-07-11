@@ -25,7 +25,11 @@
 	reagents = null
 	..()
 
-/obj/projectile/energy/blob/on_impact(var/atom/A)
+/obj/projectile/energy/blob/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
 	if(splatter)
 		var/turf/location = get_turf(src)
 		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
@@ -34,7 +38,6 @@
 		playsound(location, 'sound/effects/slime_squish.ogg', 30, 1, -3)
 		spawn(0)
 			S.start()
-	..()
 
 /obj/projectile/energy/blob/proc/ready_chemicals()
 	if(reagents)
