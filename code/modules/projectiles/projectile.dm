@@ -307,7 +307,7 @@
 		if(effect.hook_lifetime)
 			effect.on_lifetime(src)
 
-	qdel(src)
+	expire()
 
 /obj/projectile/proc/fire(set_angle_to, atom/direct_target)
 	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
@@ -699,6 +699,8 @@
 //* Collision Handling *//
 
 /obj/projectile/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	// performance
+	SHOULD_CALL_PARENT(FALSE)
 	// always can go through already impacted things
 	if(impacted[blocker])
 		return TRUE
@@ -1053,6 +1055,20 @@
 	render_hitscan_tracers()
 	cleanup_hitscan_tracers()
 
+//* Lifetime & Deletion *//
+
+/**
+ * Called to delete if:
+ *
+ * * ran out of range
+ * * hit something and shouldn't pass through
+ *
+ * @params
+ * * impacting - we're deleting from impact, rather than range
+ */
+/obj/projectile/proc/expire(impacting)
+	qdel(src)
+
 //* Impact Processing *//
 
 /**
@@ -1138,7 +1154,7 @@
 				finalize_hitscan_tracers(visual_impact_point, impact_effect = TRUE)
 			else
 				finalize_hitscan_tracers(impact_effect = TRUE, kick_forwards = 32)
-		qdel(src)
+		expire(TRUE)
 
 	return impact_flags
 

@@ -16,12 +16,12 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
-	if(ismob(target))
-		var/mob/M = target
+	if(isliving(target))
+		var/mob/living/L = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
 			return blocked
-		M.death(0)
+		L.death(0)
 
 /obj/projectile/magic/resurrection
 	name = "bolt of resurrection"
@@ -35,14 +35,15 @@
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
 	if(isliving(target))
-		if(target.anti_magic_check())
-			target.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+		var/mob/living/L = target
+		if(L.anti_magic_check())
+			L.visible_message("<span class='warning'>[src] vanishes on contact with [L]!</span>")
 			return blocked
-		if(target.revive(full_heal = TRUE))
-			to_chat(target, "<span class='notice'>You rise with a start, you're alive!!!</span>")
-		else if(target.stat != DEAD)
-			to_chat(target, "<span class='notice'>You feel great!</span>")
-			target.rejuvenate(fix_missing = TRUE)
+		if(L.revive(full_heal = TRUE))
+			to_chat(L, "<span class='notice'>You rise with a start, you're alive!!!</span>")
+		else if(L.stat != DEAD)
+			to_chat(L, "<span class='notice'>You feel great!</span>")
+			L.rejuvenate(fix_missing = TRUE)
 
 /obj/projectile/magic/teleport
 	name = "bolt of teleportation"
@@ -58,9 +59,9 @@
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
 	if(ismob(target))
-		var/mob/M = target
+		var/mob/L = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
 			return blocked
 	var/teleammount = 0
 	var/teleloc = target
@@ -314,9 +315,9 @@
 		return
 
 	if(ismob(target))
-		var/mob/M = target
+		var/mob/L = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
 			qdel(src)
 			return
 
@@ -336,9 +337,9 @@
 		return
 
 	if(ismob(target))
-		var/mob/M = target
+		var/mob/L = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
 			qdel(src)
 			return
 
@@ -451,9 +452,9 @@
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
 	if(ismob(target))
-		var/mob/M = target
+		var/mob/L = target
 		if(L.anti_magic_check())
-			M.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
+			L.visible_message("<span class='warning'>[src] fizzles on contact with [target]!</span>")
 			return . | PROJECTILE_IMPACT_DELETE
 	tesla_zap(src, zap_range, zap_power)
 	return . | PROJECTILE_IMPACT_DELETE

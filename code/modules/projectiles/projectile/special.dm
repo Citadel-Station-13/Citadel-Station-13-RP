@@ -67,8 +67,10 @@
 
 	combustion = FALSE
 
-/obj/projectile/temp/on_hit(atom/target, blocked = FALSE)
-	..()
+/obj/projectile/temp/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 
@@ -89,8 +91,6 @@
 
 		new_temperature = round(new_temperature * temp_factor)
 		L.bodytemperature = new_temperature
-
-	return 1
 
 /obj/projectile/temp/hot
 	name = "heat beam"
@@ -139,7 +139,11 @@
 
 	combustion = FALSE
 
-/obj/projectile/energy/floramut/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/floramut/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
 	var/mob/living/M = target
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M
@@ -169,8 +173,6 @@
 	//	for (var/mob/V in viewers(src))
 	//		V.show_message("The radiation beam dissipates harmlessly through [M]", 3)
 		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
-	else
-		return 1
 
 /obj/projectile/energy/floramut/gene
 	name = "gamma somatoray"
@@ -237,14 +239,16 @@
 
 	combustion = FALSE
 
-/obj/projectile/bola/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bola/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		var/obj/item/handcuffs/legcuffs/bola/B = new(src.loc)
 		if(!B.place_legcuffs(M,firer))
-			if(B)
-				qdel(B)
-	..()
+			qdel(B)
 
 /obj/projectile/webball
 	name = "ball of web"
@@ -256,13 +260,16 @@
 
 	combustion = FALSE
 
-/obj/projectile/webball/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/webball/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
 	if(isturf(target.loc))
 		var/obj/effect/spider/stickyweb/W = locate() in get_turf(target)
 		if(!W && prob(75))
 			visible_message("<span class='danger'>\The [src] splatters a layer of web on \the [target]!</span>")
 			new /obj/effect/spider/stickyweb(target.loc)
-	..()
 
 /obj/projectile/beam/tungsten
 	name = "core of molten tungsten"

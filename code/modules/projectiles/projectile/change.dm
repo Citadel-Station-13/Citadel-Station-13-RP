@@ -12,7 +12,7 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
-	wabbajack(change)
+	wabbajack(target)
 
 /obj/projectile/change/proc/wabbajack(var/mob/M)
 	if(istype(M, /mob/living) && M.stat != DEAD)

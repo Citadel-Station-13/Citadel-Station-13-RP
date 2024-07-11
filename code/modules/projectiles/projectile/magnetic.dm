@@ -165,7 +165,7 @@
 		return
 	if(istype(target, /turf/simulated/mineral))
 		var/turf/simulated/mineral/MI = target
-		MI.GetDrilled(TURE)
+		MI.GetDrilled(TRUE)
 	else if(istype(target, /turf/simulated/wall) || istype(target, /turf/simulated/shuttle/wall))
 		explosion(target, 0, 0, 1, 3)
 		. |= PROJECTILE_IMPACT_DELETE

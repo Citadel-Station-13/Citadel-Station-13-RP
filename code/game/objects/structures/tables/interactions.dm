@@ -33,10 +33,10 @@
 		return 1
 	if (get_dist(P.starting, loc) <= 1) //Tables won't help you if people are THIS close
 		return 1
-	if (get_turf(P.original) == cover)
+	if (get_turf(P.original_target) == cover)
 		var/chance = 20
-		if (ismob(P.original))
-			var/mob/M = P.original
+		if (ismob(P.original_target))
+			var/mob/M = P.original_target
 			if (M.lying)
 				chance += 20				//Lying down lets you catch less bullets
 		if(flipped==1)

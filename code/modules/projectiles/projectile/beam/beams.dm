@@ -128,10 +128,12 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_pulse
 	impact_type = /obj/effect/projectile/impact/laser_pulse
 
-/obj/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/pulse/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(isturf(target))
 		LEGACY_EX_ACT(target, 2, null)
-	..()
 
 /obj/projectile/beam/pulse/shotgun
 	damage = 50

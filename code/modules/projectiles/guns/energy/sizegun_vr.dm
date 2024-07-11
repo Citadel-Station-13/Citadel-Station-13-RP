@@ -73,7 +73,11 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-/obj/projectile/beam/sizelaser/on_hit(var/atom/target)
+/obj/projectile/beam/sizelaser/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
 	var/mob/living/M = target
 	if(!M.permit_sizegun)
 		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
@@ -87,17 +91,12 @@
 		var/mob/living/H = M
 		H.resize(set_size, TRUE)
 		H.updateicon()
-	else
-		return 1
-
 
 /obj/projectile/beam/sizelaser/shrink
 	set_size = 0.5 //50% of current size
 
-
 /obj/projectile/beam/sizelaser/grow
 	set_size = 2.0 //200% of current size
-
 
 /obj/item/gun/energy/stripper//Because it can be fun
 	name = "stripper gun"

@@ -91,7 +91,11 @@
 /obj/projectile/beam/stun/xeno/weak //Weaker variant for non-research equipment, turrets, or rapid fire types.
 	agony = 3
 
-/obj/projectile/beam/stun/xeno/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+/obj/projectile/beam/stun/xeno/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
 	if(istype(target, /mob/living))
 		var/mob/living/L = target
 		if(L.mob_class & MOB_CLASS_SLIME)
@@ -106,5 +110,3 @@
 			if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 				if(agony == initial(agony)) // ??????
 					agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.
-
-	..()

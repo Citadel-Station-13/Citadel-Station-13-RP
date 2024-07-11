@@ -67,14 +67,17 @@
 	sharp = 0
 	damage_flag = ARMOR_MELEE
 
-/obj/projectile/bullet/stripper/on_hit(var/atom/stripped)
-	if(ishuman(stripped))
-		var/mob/living/carbon/human/H = stripped
+/obj/projectile/bullet/stripper/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
 		if(!H.permit_stripped)
 			return
 		H.drop_slots_to_ground(list(SLOT_ID_SUIT, SLOT_ID_UNIFORM, SLOT_ID_BACK, SLOT_ID_SHOES, SLOT_ID_GLOVES))
 		//Hats can stay! Most other things fall off with removing these.
-	..()
 
 /obj/item/ammo_casing/microbattery/combat/final
 	name = "\'Hydra\' microbattery - FINAL OPTION"
@@ -94,7 +97,11 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/final_option/on_hit(var/atom/impacted)
+/obj/projectile/beam/final_option/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+
 	if(isliving(impacted))
 		var/mob/living/L = impacted
 		if(L.mind)
@@ -104,5 +111,3 @@
 				nif = H.nif
 			SStranscore.m_backup(L.mind,nif,one_time = TRUE)
 		L.gib()
-
-	..()

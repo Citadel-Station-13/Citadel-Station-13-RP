@@ -4,54 +4,19 @@
 	name = "reusable bullet"
 	desc = "How do you even reuse a bullet?"
 	var/ammo_type = /obj/item/ammo_casing/arrow
-	var/dropped = FALSE
 
 	//var/fragile = FALSE
 	//var/durable = FALSE
 	//var/shattered = 0
 	//var/broken_type = null
 
-/obj/projectile/bullet/reusable/on_hit(atom/target, blocked = FALSE)
-	. = ..()
+/obj/projectile/bullet/reusable/expire(impacting)
 	handle_drop()
-	//handle_shatter()
-
-/obj/projectile/bullet/reusable/legacy_on_range()
-	handle_drop()
-	..()
+	return ..()
 
 /obj/projectile/bullet/reusable/proc/handle_drop()
-	if(!dropped)
-		var/turf/T = get_turf(src)
-		new ammo_type(T)
-		dropped = TRUE
-/*
-	else
-		var/turf/T = get_turf(src)
-		new broken_type(T)
-		dropped = TRUE
-
-/obj/projectile/bullet/reusable/proc/handle_shatter()
-	if(fragile)
-		switch(rand(1,100))
-			if(1 to 50)
-				src.shattered = 1
-			if(31 to 100)
-				return
-	if(durable)
-		switch(rand(1,100))
-			if(1 to 5)
-				src.shattered = 1
-			if(6 to 100)
-				return
-	else
-		switch(rand(1,100))
-			if(1 to 25)
-				src.shattered = 1
-			if(16 to 100)
-				return
-		return
-*/
+	var/turf/T = get_turf(src)
+	new ammo_type(T)
 
 //Arrows
 /obj/projectile/bullet/reusable/arrow

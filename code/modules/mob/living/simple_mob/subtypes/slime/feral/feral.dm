@@ -77,7 +77,7 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
-	playsound(get_turf(A), "shatter", 70, 1)
+	playsound(get_turf(target), "shatter", 70, 1)
 
 /obj/projectile/icicle/get_structure_damage()
 	return damage / 2 // They're really deadly against mobs, but less effective against solid things.

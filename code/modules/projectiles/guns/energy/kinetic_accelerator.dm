@@ -245,9 +245,11 @@
 	strike_thing()
 	..()
 
-/obj/projectile/kinetic/on_hit(atom/target)
-	strike_thing(target)
+/obj/projectile/kinetic/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+	strike_thing(target)
 
 /obj/projectile/kinetic/proc/strike_thing(atom/target)
 	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))

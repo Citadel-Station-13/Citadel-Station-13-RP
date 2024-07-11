@@ -128,9 +128,11 @@
 	icon_state = "shell"
 	damage = 1000 // In order to 1-hit any other mech and royally fuck anyone unfortunate enough to get in the way.
 
-/obj/projectile/bullet/cannon/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/bullet/cannon/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	explosion(target, 0, 0, 2, 4)
-	return 1
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/cannon/weak
 	name = "8.8 cm KwK 36"

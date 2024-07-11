@@ -36,7 +36,10 @@
 	vacuum_traversal = 0
 	range = WORLD_ICON_SIZE * 6 //Scary name, but just deletes the projectile after this range
 
-/obj/projectile/pummel/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/pummel/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
@@ -44,5 +47,3 @@
 			L.afflict_stun(20 * 1)
 			L.Confuse(1)
 		L.throw_at_old(get_edge_target_turf(L, throwdir), rand(3,6), 10)
-
-		return 1

@@ -319,7 +319,10 @@
 	hammer_synced = null
 	return ..()
 
-/obj/projectile/destabilizer/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/destabilizer/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(isliving(target))
 		var/mob/living/L = target
 		if(hammer_synced.can_mark(L))
@@ -341,7 +344,6 @@
 		var/turf/simulated/mineral/M = target_turf
 		new /obj/effect/temp_visual/kinetic_blast(M)
 		M.GetDrilled(firer)
-	..()
 
 /*
 //trophies
