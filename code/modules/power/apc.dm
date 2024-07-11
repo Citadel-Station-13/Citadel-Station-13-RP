@@ -1137,9 +1137,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	// total burst used power last cycle
 	// this is in joules
 	var/total_burst = 0
-	// needed to be drawn from the grid
-	// this is in kilowatts
-	var/power_requested = 0
 
 	// does the area require power?
 	if(!isnull(registered_area.area_power_override))
@@ -1149,8 +1146,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 				// not on
 				continue
 			var/channel_total = area.power_usage_static[channel]
-			last_channel_used[channel] = channel_total
-			current_burst_used[channel] = 0
+			last_channel_load[channel] = channel_total
+			current_burst_load[channel] = 0
 			total_burst += current_burst_load[channel]
 			total_static += channel_total
 	else
@@ -1159,19 +1156,40 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		//       remove this else clause after this is done
 		pass()
 
-	// add static power
-	power_requested += total_static * 0.001
+	// start power_requested, the amount of kilowatts we want to draw from grid
+	// add static power to requested draw; we always try to draw that much if we can
+	var/power_requested = floor(total_static * 0.001)
+	// get the amount of static power that doesn't fit a whole kilowatt
+	var/remainder_static = total_static - power_requested
 
 	if(cell)
 		// celled operation
 		// do we need to charge the cell?
 		// cell charging is always eager.
 		if(charging_enabled && cell.charge < cell.maxcharge)
-			power_requested += DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time)
+			// we charge slower the closer we are to full to prevent oscillation.
+			var/charging_draw = floor(min(max(DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time) / 100, 1), charging_draw))
+			power_requested += charging_draw
+
+	// now, an assumption made here is that drawing from the powernet
+	// is more expensive than drawing from buffer,
+	// as powernet ops are a function call and some indirection
+	// while buffer is just a number stored on ourselves.
+
+	// therefore, we process buffer first.
 
 	// buffer
 	// the purpose of the buffer is to smooth burst loads.
 	// and to be a temporary power buffer when someone's doing grid maintenance.
+
+	// calculate secondary draw in joules
+	// this is burst power used plus leftover static power
+	// we multiply remainder_static by delta_time to get joules (remainder static is in watts)
+	// anything less than 1 joule can be safely thrown out / considered a rounding error
+	var/secondary_draw = floor(total_burst + remainder_static * delta_time)
+
+	
+
 
 
 #warn below
