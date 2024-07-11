@@ -45,7 +45,7 @@
 /obj/overmap/entity/visitable/ship/landable/trade/udang
 	name = "Udang Transport Shuttle"
 	desc = "A shuttle linked to the Nebula Gas Station. Its a cargo ship refitted to carry passengers. It seems that civilian pilot may also pilot it."
-	color = "#dd7827" //Orange Brownish
+	color = "#a67145" //Orange Brownish
 	fore_dir = EAST
 	vessel_mass = 12000
 	vessel_size = SHIP_SIZE_SMALL
