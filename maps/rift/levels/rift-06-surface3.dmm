@@ -22497,6 +22497,20 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
+"kQT" = (
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "bridge";
+	layer = 3.1;
+	name = "Bridge Lockdown Shutters";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/commandblue,
+/turf/simulated/floor/plating,
+/area/bridge)
 "kQV" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
@@ -48229,7 +48243,7 @@ tAo
 tAo
 hMC
 mCE
-cQV
+kQT
 kfS
 hMC
 tAo
