@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /// from base of /atom/proc/context_query: (list/options, datum/event_args/actor/e_args)
 /// options list is the same format as /atom/proc/context_query, insert directly to it.

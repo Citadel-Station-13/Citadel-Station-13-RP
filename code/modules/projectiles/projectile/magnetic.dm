@@ -63,7 +63,13 @@
 	var/detonate_mob = 0 //Will this fuelrod explode when it hits a mob?
 	var/energetic_impact = 0 //Does this fuelrod cause a bright flash on impact with a mob?
 
-/obj/projectile/bullet/magnetic/fuelrod/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null) //Future-proofing. Special effects for impact.
+/obj/projectile/bullet/magnetic/fuelrod/on_impact_new(atom/target, impact_flags, def_zone)
+	if(searing)
+		blocked = 0
+	. = ..()
+	if(. & PROJECTILE_IMPACT_BLOCKED)
+		return
+
 	if(istype(target,/mob/living))
 		var/mob/living/V = target
 		if(detonate_mob)
@@ -81,21 +87,16 @@
 					M.afflict_stun(20 * 2)
 					M.afflict_paralyze(20 * 10)
 
-		if(searing)
-			if(blocked)
-				blocked = 0
-
-	return ..(target, blocked, def_zone)
-
-/obj/projectile/bullet/magnetic/fuelrod/on_impact(var/atom/A) //Future-proofing, again. In the event new fuel rods are introduced, and have special effects for when they stop flying.
+	// what the fuck??
 	if(src.loc)
 		if(detonate_travel && detonate_mob)
 			visible_message("<span class='warning'>\The [src] shatters in a violent explosion!</span>")
-			explosion(src.loc, 1, 1, 3, 4)
+			explosion(src.loc, 0, 1, 3, 4)
+			. |= PROJECTILE_IMPACT_DELETE
 		else if(detonate_travel)
 			visible_message("<span class='warning'>\The [src] explodes in a shower of embers!</span>")
-			explosion(src.loc, -1, 1, 2, 3)
-	..(A)
+			explosion(src.loc, 0, 1, 2, 3)
+			. |= PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/bullet/magnetic/fuelrod/tritium
 	icon_state = "fuel-tritium"
@@ -131,11 +132,13 @@
 	detonate_mob = 1
 	energetic_impact = 1
 
-/obj/projectile/bullet/magnetic/fuelrod/supermatter/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null) //You cannot touch the supermatter without disentigrating. Assumedly, this is true for condensed rods of it flying at relativistic speeds.
+/obj/projectile/bullet/magnetic/fuelrod/supermatter/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(istype(target,/turf/simulated/wall) || istype(target,/mob/living))
 		target.visible_message("<span class='danger'>The [src] burns a perfect hole through \the [target] with a blinding flash!</span>")
 		playsound(target.loc, 'sound/effects/teleport.ogg', 40, 0)
-	return ..(target, blocked, def_zone)
 
 /obj/projectile/bullet/magnetic/fuelrod/supermatter/check_penetrate()
 	return 1

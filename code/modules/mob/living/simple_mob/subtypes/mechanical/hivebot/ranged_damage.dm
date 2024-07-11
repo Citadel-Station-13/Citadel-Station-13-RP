@@ -169,15 +169,23 @@
 /obj/projectile/arc/emp_blast
 	name = "emp blast"
 	icon_state = "bluespace"
+	var/emp_dev = 2
+	var/emp_heavy = 4
+	var/emp_med = 7
+	var/emp_light = 10
 
-/obj/projectile/arc/emp_blast/on_impact(turf/T)
-	empulse(T, 2, 4, 7, 10) // Normal EMP grenade.
-	return ..()
+/obj/projectile/arc/emp_blast/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
+	empulse(T, emp_dev, emp_heavy, emp_med, emp_light) // Normal EMP grenade.
+	return . | PROJECTILE_IMPACT_DELETE
 
-/obj/projectile/arc/emp_blast/weak/on_impact(turf/T)
-	empulse(T, 1, 2, 3, 4) // Sec EMP grenade.
-	return ..()
-
+/obj/projectile/arc/emp_blast/weak
+	emp_dev = 1
+	emp_heavy = 2
+	emp_med = 3
+	emp_light = 4
 
 // Fires shots that irradiate the tile hit.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/radiation

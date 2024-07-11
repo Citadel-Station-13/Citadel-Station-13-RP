@@ -1172,6 +1172,7 @@
 		if(T)
 			T.hotspot_expose(700, 5)
 	// end
+	return impact_flags
 
 /**
  * called in bullet_act() to redirect our impact to another atom

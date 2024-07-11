@@ -17,9 +17,12 @@
 	var/sev3_range = 1
 	var/sev4_range = 1
 
-/obj/projectile/ion/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/ion/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
-	return 1
+	return . | PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/ion/small
 	sev1_range = -1
@@ -43,6 +46,8 @@
 
 /obj/projectile/bullet/gyro/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	explosion(target, -1, 0, 2)
 	return . | PROJECTILE_IMPACT_DELETE
 
@@ -189,7 +194,10 @@
 	light_power = 0.5
 	light_color = "#FFFFFF"
 
-/obj/projectile/energy/florayield/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/energy/florayield/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	var/mob/M = target
 	if(ishuman(target)) //These rays make plantmen fat.
 		var/mob/living/carbon/human/H = M
@@ -197,16 +205,15 @@
 			M.nutrition += 30
 	else if (istype(target, /mob/living/carbon/))
 		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
-	else
-		return 1
-
 
 /obj/projectile/beam/mindflayer
 	name = "flayer ray"
-
 	combustion = FALSE
 
-/obj/projectile/beam/mindflayer/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/beam/mindflayer/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(5,8))

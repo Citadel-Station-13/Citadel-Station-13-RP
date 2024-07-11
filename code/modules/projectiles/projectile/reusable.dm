@@ -97,14 +97,17 @@
 	icon_state = "plunger"
 	ammo_type = /obj/item/ammo_casing/arrow/plunger
 
-/obj/projectile/bullet/reusable/plunger/on_hit(atom/hit_atom)
+/obj/projectile/bullet/reusable/plunger/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	var/mob/living/carbon/H = hit_atom
 	var/obj/item/plunger/P
 	if(!H.wear_mask)
 		H.equip_to_slot_if_possible(P, SLOT_MASK)
 	else
 		handle_drop()
+	return . | PROJECTILE_IMPACT_DELETE
 
 //Foam Darts
 /obj/projectile/bullet/reusable/foam

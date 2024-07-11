@@ -435,7 +435,10 @@
 	damage = 15
 	damage_type = BRUTE
 
-/obj/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
+/obj/projectile/arc/blue_energy/priest/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(3,5))

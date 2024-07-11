@@ -73,9 +73,11 @@
 	icon_scale_y = 2
 	sharp = TRUE
 
-/obj/projectile/icicle/on_impact(atom/A)
+/obj/projectile/icicle/on_impact_new(atom/target, impact_flags, def_zone)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+		return
 	playsound(get_turf(A), "shatter", 70, 1)
-	return ..()
 
 /obj/projectile/icicle/get_structure_damage()
 	return damage / 2 // They're really deadly against mobs, but less effective against solid things.
