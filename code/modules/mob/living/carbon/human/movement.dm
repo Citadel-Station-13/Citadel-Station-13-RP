@@ -44,7 +44,7 @@
 		if(shock_stage >= 10)
 			tally -= 1.5 //this gets a +3 later, feral critters take reduced penalty
 
-	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
+	if(istype(buckled, /obj/vehicle/ridden/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
 			var/obj/item/organ/external/E = get_organ(organ_name)
 			if(!E || E.is_stump())

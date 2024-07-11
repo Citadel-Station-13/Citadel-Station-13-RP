@@ -264,7 +264,7 @@
 				S.OnSpawn(H, H.client)
 
 		// Moving wheelchair if they have one
-		if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
+		if(H.buckled && istype(H.buckled, /obj/vehicle/ridden/wheelchair))
 			H.buckled.forceMove(H.loc)
 			H.buckled.setDir(H.dir)
 
@@ -336,8 +336,8 @@
 		if(S)
 			R = locate() in S.contents
 		if(!l_foot || !r_foot || R)
-			var/wheelchair_type = R?.unfolded_type || /obj/structure/bed/chair/wheelchair
-			var/obj/structure/bed/chair/wheelchair/W = new wheelchair_type(H.loc)
+			var/wheelchair_type = R?.unfolded_type || /obj/vehicle/ridden/wheelchair
+			var/obj/vehicle/ridden/wheelchair/W = new wheelchair_type(H.loc)
 			W.buckle_mob(H)
 			W.setDir(H.dir)
 			W.add_fingerprint(H)

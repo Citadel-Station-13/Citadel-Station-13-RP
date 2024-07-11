@@ -465,7 +465,7 @@
 	//character.apply_traits()
 
 	// Moving wheelchair if they have one
-	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
+	if(character.buckled && istype(character.buckled, /obj/vehicle/ridden/wheelchair))
 		character.buckled.forceMove(character.loc)
 		character.buckled.setDir(character.dir)
 

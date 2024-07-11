@@ -614,7 +614,7 @@
 		if(ishuman(usr) && applies_stasis)
 			var/mob/living/carbon/human/H = occupant
 			H.Stasis(1000)
-		if(usr.buckled && istype(usr.buckled, /obj/structure/bed/chair/wheelchair))
+		if(usr.buckled && istype(usr.buckled, /obj/vehicle/ridden/wheelchair))
 			usr.buckled.loc = usr.loc
 
 		icon_state = occupied_icon_state
@@ -694,7 +694,7 @@
 		if(ishuman(M) && applies_stasis)
 			var/mob/living/carbon/human/H = M
 			H.Stasis(1000)
-		if(M.buckled && istype(M.buckled, /obj/structure/bed/chair/wheelchair))
+		if(M.buckled && istype(M.buckled, /obj/vehicle/ridden/wheelchair))
 			M.buckled.loc = M.loc
 
 		// Book keeping!

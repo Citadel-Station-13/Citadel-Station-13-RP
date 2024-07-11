@@ -255,9 +255,9 @@
 	if(mob.pulledby || mob.buckled) // Wheelchair driving!		//this is shitcode
 		if(istype(mob.loc, /turf/space))
 			return // No wheelchair driving in space
-		if(istype(mob.pulledby, /obj/structure/bed/chair/wheelchair))
+		if(istype(mob.pulledby, /obj/vehicle/ridden/wheelchair))
 			return mob.pulledby.relaymove(mob, direct)
-		else if(istype(mob.buckled, /obj/structure/bed/chair/wheelchair))
+		else if(istype(mob.buckled, /obj/vehicle/ridden/wheelchair))
 			if(ishuman(mob))
 				var/mob/living/carbon/human/driver = mob
 				var/obj/item/organ/external/l_hand = driver.get_organ("l_hand")

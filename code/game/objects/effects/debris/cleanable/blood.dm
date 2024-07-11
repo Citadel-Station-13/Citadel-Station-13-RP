@@ -119,9 +119,6 @@ var/global/list/image/splatter_cache=list()
 		LAZYINITLIST(perp.feet_blood_DNA)
 		perp.feet_blood_DNA |= blood_DNA.Copy()
 		perp.update_bloodied()
-	else if (perp.buckled && istype(perp.buckled, /obj/structure/bed/chair/wheelchair))
-		var/obj/structure/bed/chair/wheelchair/W = perp.buckled
-		W.bloodiness = 4
 
 	amount--
 

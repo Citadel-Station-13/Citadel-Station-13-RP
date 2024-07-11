@@ -436,7 +436,7 @@
 
 /datum/crafting_recipe/wheelchair
 	name = "Wheelchair"
-	result = /obj/structure/bed/chair/wheelchair
+	result = /obj/vehicle/ridden/wheelchair
 	reqs = list(/obj/item/stack/material/plasteel = 2,
 				/obj/item/stack/rods = 8)
 	time = 100
