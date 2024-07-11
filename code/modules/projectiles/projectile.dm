@@ -297,6 +297,117 @@
 	cleanup_hitscan_tracers()
 	return ..()
 
+//Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
+#warn get rid of
+/obj/projectile/proc/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!istype(target_mob))
+		return
+
+	//roll to-hit
+	miss_modifier = max(15*(distance-2) - accuracy + miss_modifier + target_mob.get_evasion(), 0)
+	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
+
+	var/result = PROJECTILE_FORCE_MISS
+	if(hit_zone)
+		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
+		result = target_mob.bullet_act(src, def_zone)
+
+	if(result == PROJECTILE_FORCE_MISS)
+		if(!silenced)
+			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
+			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
+		return FALSE
+
+	//hit messages
+	if(silenced)
+		to_chat(target_mob, "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>")
+	else
+		visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
+
+	//admin logs
+	if(!no_attack_log)
+		if(istype(firer, /mob) && istype(target_mob))
+			add_attack_logs(firer,target_mob,"Shot with \a [src.type] projectile")
+
+	//sometimes bullet_act() will want the projectile to continue flying
+	if (result == PROJECTILE_CONTINUE)
+		return FALSE
+
+	return TRUE
+
+/obj/projectile/Bump(atom/A)
+	impact_loop(A.loc, A)
+	#warn ugh
+
+
+	var/distance = get_dist(starting, get_turf(src))
+	var/turf/target_turf = get_turf(A)
+	var/passthrough = FALSE
+
+	if(ismob(A))
+		var/mob/M = A
+		if(istype(A, /mob/living))
+			//if they have a neck grab on someone, that person gets hit instead
+			var/obj/item/grab/G = locate() in M
+			if(G && G.state >= GRAB_NECK)
+				if(G.affecting.stat == DEAD)
+					var/shield_chance = min(80, (30 * (M.mob_size / 10)))	//Small mobs have a harder time keeping a dead body as a shield than a human-sized one. Unathi would have an easier job, if they are made to be SIZE_LARGE in the future. -Mech
+					if(prob(shield_chance))
+						visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
+						if(Bump(G.affecting))
+							return
+					else
+						visible_message("<span class='danger'>\The [M] tries to use [G.affecting] as a shield, but fails!</span>")
+				else
+					visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
+					if(Bump(G.affecting))
+						return //If Bump() returns 0 (keep going) then we continue on to attack M.
+
+			passthrough = !projectile_attack_mob(M, distance)
+		else
+			passthrough = 1 //so ghosts don't stop bullets
+	else
+		passthrough = (A.bullet_act(src, def_zone) == PROJECTILE_CONTINUE) //backwards compatibility
+		if(isturf(A))
+			for(var/obj/O in A)
+				O.bullet_act(src)
+			for(var/mob/living/M in A)
+				projectile_attack_mob(M, distance)
+
+	//penetrating projectiles can pass through things that otherwise would not let them
+	if(!passthrough && penetrating > 0)
+		if(check_penetrate(A))
+			passthrough = TRUE
+		penetrating--
+
+	if(passthrough)
+		trajectory_ignore_forcemove = TRUE
+		forceMove(target_turf)
+		permutated.Add(A)
+		trajectory_ignore_forcemove = FALSE
+		return FALSE
+
+	if(A)
+		on_impact(A)
+
+	return TRUE
+
+//TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
+/obj/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn kill
+	if(blocked >= 100)
+		return 0//Full block
+	if(!isliving(target))
+		return 0
+//	if(isanimal(target))	return 0
+	var/mob/living/L = target
+	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability) // add in AGONY!
+	if(modifier_type_to_apply)
+		L.add_modifier(modifier_type_to_apply, modifier_duration)
+	return 1
+
 /obj/projectile/proc/legacy_on_range() //if we want there to be effects when they reach the end of their range
 	finalize_hitscan_tracers(impact_effect = FALSE, kick_forwards = 8)
 
@@ -451,80 +562,6 @@
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 
-#warn above
-
-/obj/projectile/Bump(atom/A)
-	impact_loop(A.loc, A)
-	#warn ugh
-
-
-	var/distance = get_dist(starting, get_turf(src))
-	var/turf/target_turf = get_turf(A)
-	var/passthrough = FALSE
-
-	if(ismob(A))
-		var/mob/M = A
-		if(istype(A, /mob/living))
-			//if they have a neck grab on someone, that person gets hit instead
-			var/obj/item/grab/G = locate() in M
-			if(G && G.state >= GRAB_NECK)
-				if(G.affecting.stat == DEAD)
-					var/shield_chance = min(80, (30 * (M.mob_size / 10)))	//Small mobs have a harder time keeping a dead body as a shield than a human-sized one. Unathi would have an easier job, if they are made to be SIZE_LARGE in the future. -Mech
-					if(prob(shield_chance))
-						visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
-						if(Bump(G.affecting))
-							return
-					else
-						visible_message("<span class='danger'>\The [M] tries to use [G.affecting] as a shield, but fails!</span>")
-				else
-					visible_message("<span class='danger'>\The [M] uses [G.affecting] as a shield!</span>")
-					if(Bump(G.affecting))
-						return //If Bump() returns 0 (keep going) then we continue on to attack M.
-
-			passthrough = !projectile_attack_mob(M, distance)
-		else
-			passthrough = 1 //so ghosts don't stop bullets
-	else
-		passthrough = (A.bullet_act(src, def_zone) == PROJECTILE_CONTINUE) //backwards compatibility
-		if(isturf(A))
-			for(var/obj/O in A)
-				O.bullet_act(src)
-			for(var/mob/living/M in A)
-				projectile_attack_mob(M, distance)
-
-	//penetrating projectiles can pass through things that otherwise would not let them
-	if(!passthrough && penetrating > 0)
-		if(check_penetrate(A))
-			passthrough = TRUE
-		penetrating--
-
-	if(passthrough)
-		trajectory_ignore_forcemove = TRUE
-		forceMove(target_turf)
-		permutated.Add(A)
-		trajectory_ignore_forcemove = FALSE
-		return FALSE
-
-	if(A)
-		on_impact(A)
-
-	return TRUE
-
-//TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
-/obj/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn kill
-	if(blocked >= 100)
-		return 0//Full block
-	if(!isliving(target))
-		return 0
-//	if(isanimal(target))	return 0
-	var/mob/living/L = target
-	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability) // add in AGONY!
-	if(modifier_type_to_apply)
-		L.add_modifier(modifier_type_to_apply, modifier_duration)
-	return 1
-
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/projectile/proc/can_embed()
 	//embed must be enabled and damage type must be brute
@@ -539,53 +576,12 @@
 
 //return 1 if the projectile should be allowed to pass through after all, 0 if not.
 /obj/projectile/proc/check_penetrate(atom/A)
+#warn rid OFF
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return 1
 
 /obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, atom_flags)
-
-/obj/projectile/CanAllowThrough()
-	. = ..()
-	return TRUE
-
-//Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
-#warn get rid of
-/obj/projectile/proc/projectile_attack_mob(mob/living/target_mob, distance, miss_modifier = 0)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(!istype(target_mob))
-		return
-
-	//roll to-hit
-	miss_modifier = max(15*(distance-2) - accuracy + miss_modifier + target_mob.get_evasion(), 0)
-	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
-
-	var/result = PROJECTILE_FORCE_MISS
-	if(hit_zone)
-		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
-		result = target_mob.bullet_act(src, def_zone)
-
-	if(result == PROJECTILE_FORCE_MISS)
-		if(!silenced)
-			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
-			playsound(target_mob.loc, pick(miss_sounds), 60, 1)
-		return FALSE
-
-	//hit messages
-	if(silenced)
-		to_chat(target_mob, "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>")
-	else
-		visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
-
-	//admin logs
-	if(!no_attack_log)
-		if(istype(firer, /mob) && istype(target_mob))
-			add_attack_logs(firer,target_mob,"Shot with \a [src.type] projectile")
-
-	//sometimes bullet_act() will want the projectile to continue flying
-	if (result == PROJECTILE_CONTINUE)
-		return FALSE
-
-	return TRUE
 
 /**
  * i hate everything
@@ -697,6 +693,10 @@
 // !legacy code above!
 
 //* Collision Handling *//
+
+/obj/projectile/CanAllowThrough()
+	SHOULD_CALL_PARENT(FALSE)
+	return TRUE
 
 /obj/projectile/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
 	// performance
@@ -1244,6 +1244,13 @@
  */
 /obj/projectile/proc/on_pierce(atom/target, impact_flags, def_zone)
 	return impact_flags
+
+//* Impact Processing - Combat *//
+
+/**
+ * processes default
+ */
+#warn FUCK
 
 //* Physics - Configuration *//
 

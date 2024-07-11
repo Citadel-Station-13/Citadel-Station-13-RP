@@ -174,17 +174,6 @@
 	power = 5 // This fires really fast, so this may add up if someone keeps standing in the beam.
 	penetrating = 5
 
-/obj/projectile/beam/lightning/energy_siphon/Bump(atom/A as mob|obj|turf|area, forced=0)
-	if(A == firer) // For this, you CAN shoot yourself.
-		on_impact(A)
-
-		density = 0
-		invisibility = 101
-
-		qdel(src)
-		return 1
-	..()
-
 /obj/projectile/beam/lightning/energy_siphon/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
 	if(target_mob == firer) // This shouldn't actually occur due to Bump(), but just in-case.
 		return 1
