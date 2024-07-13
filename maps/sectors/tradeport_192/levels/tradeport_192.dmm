@@ -15496,7 +15496,7 @@
 "WJ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
-	id_tag = "nebula_pump3c";
+	id_tag = "nebula_pump3d";
 	name = "Nebula Pump Controller";
 	pixel_x = 25
 	},
