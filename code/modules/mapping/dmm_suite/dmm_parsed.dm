@@ -279,11 +279,12 @@
 	loading = TRUE
 	Master.StartLoadingMap()
 
-	context.loaded_orientation = orientation
-	context.loaded_dmm = src
+	_populate_orientation(context, orientation)
+
+	ASSERT(!isnull(context))
 
 	global.dmm_preloader.loading_context = context
-	var/list/loaded_bounds = _load_impl(arglist(args))
+	var/list/loaded_bounds = _load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, area_cache, context)
 	global.dmm_preloader.loading_orientation = null
 
 	context.loaded_bounds = loaded_bounds
@@ -292,24 +293,33 @@
 	Master.StopLoadingMap()
 	loading = FALSE
 
+/datum/dmm_parsed/proc/_populate_orientation(datum/dmm_context/context,orientation)
+	var/datum/dmm_orientation/orientation_pattern = GLOB.dmm_orientations["[orientation]"]
+
+	context.loaded_orientation = orientation
+	context.loaded_orientation_invert_x = orientation_pattern.invert_x
+	context.loaded_orientation_invert_y = orientation_pattern.invert_y
+	context.loaded_orientation_swap_xy = orientation_pattern.swap_xy
+	context.loaded_orientation_xi = orientation_pattern.xi
+	context.loaded_orientation_yi = orientation_pattern.yi
+	context.loaded_orientation_turn_angle = round(SIMPLIFY_DEGREES(orientation_pattern.turn_angle), 90)
+
 // todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
 //       as opposed to rotating to somewhere else
-/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list(), mangling_id)
+/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, list/area_cache = list(), datum/dmm_context/context)
+	ASSERT(!isnull(context))
+
 	var/list/model_cache = build_cache(no_changeturf)
 	var/space_key = model_cache[SPACE_KEY]
 
 	var/list/loaded_bounds = list(INFINITY, INFINITY, INFINITY, -INFINITY, -INFINITY, -INFINITY)
 
-	var/datum/dmm_orientation/orientation_pattern = GLOB.dmm_orientations["[orientation]"]
-
-	var/invert_y = orientation_pattern.invert_y
-	var/invert_x = orientation_pattern.invert_x
-	var/swap_xy = orientation_pattern.swap_xy
-	var/xi = orientation_pattern.xi
-	var/yi = orientation_pattern.yi
-	var/turn_angle = round(SIMPLIFY_DEGREES(orientation_pattern.turn_angle), 90)
-	var/delta_swap = x - y
-
+	var/invert_x = context.loaded_orientation_invert_x
+	var/invert_y = context.loaded_orientation_invert_y
+	var/swap_xy = context.loaded_orientation_swap_xy
+	var/xi = context.loaded_orientation_xi
+	var/yi = context.loaded_orientation_yi
+	var delta_swap = x - y
 	// less checks later
 	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || y_lower > -INFINITY || y_upper < INFINITY
 	// did we try to run out of bounds?
@@ -364,7 +374,7 @@
 					var/list/cache = model_cache[model_key]
 					if(!cache)
 						CRASH("Undefined model key in DMM: [model_key]")
-					build_coordinate(area_cache, cache, locate(placement_x, placement_y, load_z), no_changeturf, place_on_top, turn_angle, swap_xy, invert_y, invert_x)
+					build_coordinate(area_cache, cache, locate(placement_x, placement_y, load_z), no_changeturf, place_on_top)
 
 					// only bother with bounds that actually exist
 					loaded_bounds[MAP_MINX] = min(loaded_bounds[MAP_MINX], placement_x)
@@ -482,7 +492,7 @@
 
 		.[model_key] = list(members, members_attributes)
 
-/datum/dmm_parsed/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf, placeOnTop, turn_angle, swap_xy, invert_y, invert_x)
+/datum/dmm_parsed/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf, placeOnTop)
 	var/index
 	var/list/members = model[1]
 	var/list/members_attributes = model[2]
@@ -516,7 +526,7 @@
 				// create it
 				// preloader / loading only done if we're making the instance.
 				// warranty void if a map has varedited areas; you should know better, linter already checks against it.
-				world.preloader_setup(members_attributes[index], atype, turn_angle, invert_x, invert_y, swap_xy)
+				world.preloader_setup(members_attributes[index], atype)
 				instance = new atype(null)
 				if(global.dmm_preloader_active)
 					world.preloader_load(instance)
@@ -531,20 +541,20 @@
 	//instanciate the first /turf
 	var/turf/T
 	if(members[first_turf_index] != /turf/template_noop)
-		T = instance_atom(members[first_turf_index],members_attributes[first_turf_index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)
+		T = instance_atom(members[first_turf_index],members_attributes[first_turf_index],crds,no_changeturf,placeOnTop)
 
 	if(T)
 		//if others /turf are presents, simulates the underlays piling effect
 		index = first_turf_index + 1
 		while(index <= members.len - 1) // Last item is an /area
 			var/underlay = T.appearance
-			T = instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)//instance new turf
+			T = instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop)//instance new turf
 			T.underlays += underlay
 			index++
 
-	//finally instance all remainings objects/mobs
+	//finally instance all remainings objects/mobsinvert_x
 	for(index in 1 to first_turf_index-1)
-		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)
+		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop)
 
 	//Restore initialization to the previous value
 	SSatoms.map_loader_stop()
@@ -554,8 +564,8 @@
 ////////////////
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
-/datum/dmm_parsed/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
-	world.preloader_setup(attributes, path, turn_angle, invert_x, invert_y, swap_xy)
+/datum/dmm_parsed/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop)
+	world.preloader_setup(attributes, path)
 
 	if(ispath(path, /turf))
 		if(placeOnTop)
