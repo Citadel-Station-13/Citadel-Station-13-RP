@@ -60,9 +60,9 @@ GLOBAL_REAL_VAR(dmm_preloader_target)
 	var/turn_angle = loading_context_local.loaded_orientation_turn_angle
 	if(turn_angle != 0 && what.preloading_dir(preloader_local))
 		var/multi_tile = ismovable(what) && ((what:bound_width > WORLD_ICON_SIZE) || (what:bound_height > WORLD_ICON_SIZE)) && (what.appearance_flags & TILE_MOVER)
-		var/invert_x=loading_context_local.loaded_orientation_invert_x
-		var/invert_y=loading_context_local.loaded_orientation_invert_y
-		var/swap_xy=loading_context_local.loaded_orientation_swap_xy
+		var/invert_x = loading_context_local.loaded_orientation_invert_x
+		var/invert_y = loading_context_local.loaded_orientation_invert_y
+		var/swap_xy = loading_context_local.loaded_orientation_swap_xy
 
 		if(multi_tile)
 			// normal multi tile rotation can only handle things that are 'centered' on their bound width/height
