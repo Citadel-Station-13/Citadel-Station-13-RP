@@ -281,8 +281,6 @@
 
 	_populate_orientation(context, orientation)
 
-	ASSERT(!isnull(context))
-
 	global.dmm_preloader.loading_context = context
 	var/list/loaded_bounds = _load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, area_cache, context)
 	global.dmm_preloader.loading_orientation = null
@@ -307,8 +305,6 @@
 // todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
 //       as opposed to rotating to somewhere else
 /datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, list/area_cache = list(), datum/dmm_context/context)
-	ASSERT(!isnull(context))
-
 	var/list/model_cache = build_cache(no_changeturf)
 	var/space_key = model_cache[SPACE_KEY]
 

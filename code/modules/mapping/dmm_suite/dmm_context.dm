@@ -46,6 +46,8 @@
 	///
 	/// * natural orientation is SOUTH
 	var/loaded_orientation
+
+	//* reexports of dmm_orientation variables *//
 	var/loaded_orientation_invert_x
 	var/loaded_orientation_invert_y
 	var/loaded_orientation_swap_xy
