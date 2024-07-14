@@ -280,6 +280,7 @@
 	Master.StartLoadingMap()
 
 	_populate_orientation(context, orientation)
+	context.loaded_dmm = src
 
 	global.dmm_preloader.loading_context = context
 	var/list/loaded_bounds = _load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, area_cache, context)
