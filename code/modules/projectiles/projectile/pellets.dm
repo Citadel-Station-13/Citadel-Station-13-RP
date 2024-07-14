@@ -9,6 +9,19 @@
 	var/base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
 	var/spread_step = 10	//higher means the pellets spread more across body parts with distance
 
+/obj/projectile/bullet/pellet/scan_moved_turf(turf/tile)
+	..()
+	if(QDELETED(src))
+		return
+	for(var/mob/victim in tile)
+		if(victim.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+			continue
+		if(impacted[victim])
+			continue
+		impact(victim)
+
+#warn below; prone mobs, rework accuracy, etc
+
 /obj/projectile/bullet/pellet/proc/get_pellets(var/distance)
 	var/pellet_loss = round((distance - 1)/range_step) //pellets lost due to distance
 	return max(pellets - pellet_loss, 1)
@@ -45,16 +58,6 @@
 	var/distance = get_dist(loc, starting)
 	return ..() * get_pellets(distance)
 
-/obj/projectile/bullet/pellet/Move()
-	. = ..()
-
-	//If this is a shrapnel explosion, allow mobs that are prone to get hit, too
-	if(. && !base_spread && isturf(loc))
-		for(var/mob/living/M in loc)
-			if(M.lying || !M.CanPass(src, loc)) //Bump if lying or if we would normally Bump.
-				if(Bump(M)) //Bump will make sure we don't hit a mob multiple times
-					return
-
 //Explosive grenade projectile, borrowed from fragmentation grenade code.
 /obj/projectile/bullet/pellet/fragment
 	damage = 10
@@ -65,7 +68,6 @@
 	spread_step = 20
 
 	silenced = 1 //embedding messages are still produced so it's kind of weird when enabled.
-	no_attack_log = 1
 	muzzle_type = null
 
 /obj/projectile/bullet/pellet/fragment/strong
@@ -100,7 +102,6 @@
 	armor_penetration = 20
 
 	silenced = 1
-	no_attack_log = 1
 	muzzle_type = null
 	pellets = 3
 

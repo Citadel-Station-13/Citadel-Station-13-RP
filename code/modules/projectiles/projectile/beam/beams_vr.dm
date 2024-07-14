@@ -51,7 +51,6 @@
 	icon_state = "healbeam"
 	damage = 0 //stops it damaging walls
 	nodamage = TRUE
-	no_attack_log = TRUE
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
 	light_color = "#80F5FF"

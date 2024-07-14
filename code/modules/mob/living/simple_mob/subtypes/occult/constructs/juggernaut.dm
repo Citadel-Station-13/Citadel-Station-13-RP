@@ -151,7 +151,7 @@
 			var/turf/curloc = get_turf(src)
 
 			// redirect the projectile
-			proj.redirect(new_x, new_y, curloc, src)
+			proj.legacy_redirect(new_x, new_y, curloc, src)
 			proj.reflected = 1
 
 		return PROJECTILE_IMPACT_REFLECT

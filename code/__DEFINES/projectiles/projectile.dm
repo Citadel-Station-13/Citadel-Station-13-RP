@@ -46,6 +46,8 @@
 #define PROJECTILE_IMPACT_CONTINUE_LOOP (1<<10)
 /// target was deleted, stop processing on target side but not projectile side
 #define PROJECTILE_IMPACT_TARGET_DELETED (1<<11)
+/// this is an impact (usually on the ground) from a projectile expiring
+#define PROJECTILE_IMPACT_IS_EXPIRING (1<<12)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)
