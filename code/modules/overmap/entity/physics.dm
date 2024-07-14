@@ -31,8 +31,8 @@
 	var/new_turf_x = CEILING(new_pos_pix_x / WORLD_ICON_SIZE, 1)
 	var/new_turf_y = CEILING(new_pos_pix_y / WORLD_ICON_SIZE, 1)
 
-	var/new_pixel_x = MODULUS(new_pos_pix_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
-	var/new_pixel_y = MODULUS(new_pos_pix_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
+	var/new_pixel_x = MODULUS_F(new_pos_pix_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
+	var/new_pixel_y = MODULUS_F(new_pos_pix_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
 
 	var/new_loc = locate(new_turf_x, new_turf_y, z)
 
@@ -53,10 +53,12 @@
 			forceMove(new_loc)
 			is_forced_moving = FALSE
 		else if(get_dist(loc, new_loc) == 1)
-			Move(new_loc, NORTH, dt * 10)
+			if(!Move(new_loc, NORTH, dt * 10))
+				initialize_physics()
+				return
 		else
-			to_chat(world, SPAN_DANGER("overmap caught illegal move by a shuttle; please check logs. halting movement of affected entity."))
-			set_velocity(0, 0)
+			message_admins(SPAN_DANGER("overmap entity attempted to perform an illegal move ([src]); please check logs. halting movement of affected entity."))
+			initialize_physics()
 			CRASH("attempted to move not one tile but also while not jumping")
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x

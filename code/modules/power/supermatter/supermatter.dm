@@ -181,7 +181,7 @@
 				var/mob/living/carbon/human/H = mob
 				if(H.isSynthetic())
 					continue
-				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
+				H.adjustHallucination(DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)))
 	spawn(pull_time)
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
 		sleep(5) //to allow the explosion to finish
@@ -351,7 +351,7 @@
 		if(l.isSynthetic())
 			continue
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
-			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
+			l.adjustHallucination(power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) )
 
 	//! uh oh!
 	radiation_pulse(src, clamp(power * 4, 0, 50000), RAD_FALLOFF_ENGINE_SUPERMATTER)

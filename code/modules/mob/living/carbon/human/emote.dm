@@ -1053,7 +1053,8 @@
 
 
 
-
+/mob/living/carbon/human/proc/set_pose(new_pose)
+	pose = sanitize(new_pose)
 
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
@@ -1064,10 +1065,42 @@
 
 	var/old_pose = pose
 
-	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+
+	set_pose(new_pose)
 
 	if (length(pose)>0 && pose != old_pose)
 		visible_emote("adjusts [T.his] posture.")
+
+/mob/living/carbon/human/verb/timed_pose()
+	set name = "Set Pose (Temporary)"
+	set desc = "Sets a description which will be shown when someone examines you, expiring after a given number of seconds."
+	set category = VERB_CATEGORY_IC
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
+
+	var/old_pose = pose
+
+	var/new_pose =  input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+
+	var/time = input(usr, "How long should the pose be visible (in seconds)?","Pose",60) as num|null
+
+	set_pose(new_pose)
+
+	if (length(pose)>0 && pose != old_pose)
+		visible_emote("adjusts [T.his] posture.")
+		addtimer(CALLBACK(src,PROC_REF(set_pose),""),time SECONDS)
+	
+
+/mob/living/carbon/human/verb/silent_pose()
+	set name = "Set Pose (Stealth)"
+	set desc = "Sets a description which will be shown when someone examines you, without showing an adjustment message."
+	set category = VERB_CATEGORY_IC
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
+
+	var/new_pose=input(usr, "This is [src]. [T.he]...", "Pose", null)  as text|null
+	set_pose(new_pose)
+
+
 
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"

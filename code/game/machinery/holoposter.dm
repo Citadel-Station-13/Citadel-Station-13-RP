@@ -100,6 +100,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 		machine_stat &= ~BROKEN
 		update_icon()
 		return
+	. = ..()
 
 /obj/machinery/holoposter/attack_ai(mob/user)
 	return attack_hand(user)

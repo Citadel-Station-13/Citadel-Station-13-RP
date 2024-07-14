@@ -427,7 +427,7 @@
 /area/submap/cave/cultmine)
 "bG" = (
 /obj/structure/table/steel,
-/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquid,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)

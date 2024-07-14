@@ -411,6 +411,18 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_PIRATE, faction/pirate, "Pirate")
 #define ACCESS_FACTION_TRADER 160//General Beruang Trader Access
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_TRADER, faction/trader, "Trader")
 
+//? Gaia Station
+
+#define ACCESS_GAIA_GUEST 250//Gaia Station Basic Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_GUEST, faction/trader, "Gaia Station Guest")
+
+#define ACCESS_GAIA_VIP 251//Gaia Station Premium Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_VIP, faction/trader, "Gaia Station VIP")
+
+#define ACCESS_GAIA_STAFF 252//Gaia Staff Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_STAFF, faction/trader, "Gaia Station Staff")
+
+
 //? Alien
 
 #define ACCESS_FACTION_ALIEN 300 // For things like crashed ships.

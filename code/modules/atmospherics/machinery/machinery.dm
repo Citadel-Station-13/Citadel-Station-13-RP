@@ -22,7 +22,7 @@ Pipelines + Other Objects -> Pipe network
 	atom_colouration_system = FALSE
 	climb_allowed = FALSE
 	depth_projected = FALSE
-	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_CREATED_ONTOP
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 	hides_underfloor_defaulting = FALSE
 
 	//* Underfloor *//
@@ -180,10 +180,12 @@ Pipelines + Other Objects -> Pipe network
 
 // Deconstruct into a pipe item.
 /obj/machinery/atmospherics/drop_products(method, atom/where)
-	if(construction_type)
+	if(construction_type && !circuit)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)
 		transfer_fingerprints_to(I)
+		return
+	return ..()
 
 // Return a list of nodes which we should call atmos_init() and build_network() during on_construction()
 /obj/machinery/atmospherics/proc/get_neighbor_nodes_for_init()

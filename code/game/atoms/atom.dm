@@ -8,9 +8,13 @@
 	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
-	//? Core
+	//* Core *//
 	/// Atom flags.
 	var/atom_flags = NONE
+	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
+	///
+	/// * this is very much a 'set this on type and all subtypes or don't set it at all' situation.
+	var/prototype_id
 
 	//? Interaction
 	/// Intearaction flags.
@@ -479,6 +483,8 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[desc]"
+	if(get_description_info() || get_description_fluff() || length(get_description_interaction(user)))
+		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
 /*
