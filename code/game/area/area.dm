@@ -553,7 +553,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/prison_break()
 	var/obj/machinery/apc/theAPC = get_apc()
-	if(theAPC.load_toggled)
+	if(theAPC.load_active)
 		for(var/obj/machinery/apc/temp_apc in src)
 			temp_apc.overload_lighting(70)
 		for(var/obj/machinery/door/airlock/temp_airlock in src)
@@ -568,7 +568,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/shuttle_departed()
 	return TRUE
-
 
 /area/proc/get_apc()
 	return apc
@@ -714,7 +713,7 @@ var/list/ghostteleportlocs = list()
  * use a dynamic amount of burst power
  *
  * @params
- * * amount - how much in joules 
+ * * amount - how much in joules
  * * channel - power channel
  * * allow_partial - allow partial usage
  * * over_time - (optional) amount of deciseconds this is over, used for smoothing

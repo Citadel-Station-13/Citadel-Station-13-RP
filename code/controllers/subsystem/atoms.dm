@@ -125,7 +125,6 @@ SUBSYSTEM_DEF(atoms)
 
 	var/list/atom/atoms = list()
 	var/list/area/areas = list()
-	var/list/obj/structure/cable/cables = list()
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/turf/turfs = block(
 		locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
@@ -140,9 +139,7 @@ SUBSYSTEM_DEF(atoms)
 		areas |= B.loc
 		for(var/A in B)
 			atoms += A
-			if(istype(A, /obj/structure/cable))
-				cables += A
-			else if(istype(A, /obj/machinery/atmospherics))
+			if(istype(A, /obj/machinery/atmospherics))
 				atmos_machines += A
 	atoms |= areas
 

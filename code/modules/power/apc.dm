@@ -61,10 +61,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	//* Power - Breaker *//
 	/// breaker toggled
 	var/breaker_toggled = TRUE
+	/// last time
 	/// are we *actually* operating?
+	///
+	/// * requires [breaker_toggled] to be TRUE
+	/// * requires [load_auto_online] to be TRUE (updated by process loop)
+	/// * reqiures [error_check_until] to be null or lower than world.time
+	var/load_active = TRUE
+	/// are we allowed to turn on [load_active]?
 	/// this way the apc can automatically shut off when there's
 	/// insufficient power instead of oscillating every tick
-	var/load_active = TRUE
+	var/load_auto_online = TRUE
 	/// io regulators faulted until world.time
 	///
 	/// caused by things like:
@@ -74,9 +81,15 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	//* Power - Buffer *//
 	/// internal capacitor capacity in joules
+	///
+	/// * DO NOT SET THIS BELOW 50,000. the buffer is massive for anti-oscillation purposes.
 	var/buffer_capacity = 50000 // 50 kilowatts for a second, or half a kilowatt for a minute and a half
 	/// internal capacitor joules; this is auto-set at init based on if we have a cell / power if null.
 	var/buffer
+	/// internal tuning variable
+	///
+	/// * do not mess with this unless you know what you are doing
+	var/buffer_recharge_heuristic = 0.3
 
 	//* Power - Cell *//
 	/// our power cell
@@ -93,12 +106,20 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	var/charging_draw = 5
 
 	//* Power - Channels *//
+	/// power channels that are active
+	var/channels_active = POWER_BITS_ALL
 	/// power channels enabled
 	var/channels_toggled = POWER_BITS_ALL
 	/// power channels set to auto
 	var/channels_auto = POWER_BITS_ALL
+	/// power channels that should be offline if they're on auto; updated by processing loop
+	var/channels_auto_online = POWER_BITS_ALL
 	/// percentage (as 0.0 to 1.0) of cell remaining to turn a channel off at
 	/// if no cell, it turns off immediately upon insufficient power from mains.
+	///
+	/// * the actual on/off thresholds are implementation-defined; this is just a suggestion.
+	/// * this is because smoothing / anti-oscillation doesn't play nicely with thresholds
+	/// * as a rule of thumb, restoration takes a full minute after it's off.
 	var/list/channel_thresholds = APC_CHANNEL_THRESHOLDS_DEFAULT
 
 	//* Power - Load Balancing *//
@@ -119,6 +140,16 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	/// burst usage for channels since last process() in joules
 	/// this is directly deducted and will not be drained again during process().
 	var/list/current_burst_load = EMPTY_POWER_CHANNEL_LIST
+	/// last time a channel had to be kicked offline
+	var/last_channel_drop = 0
+	/// last time we had to be kicked offline entirely
+	var/last_full_drop = 0
+	/// heuristic: next world.time we can attempt to re-online
+	///
+	/// * this is for both full drop and channel drops
+	/// * this will actively suppress load_active!
+	/// * this will actively suppress any attempts at re-enabling channels!
+	var/next_online_pulse = 0
 
 
 	//* Security *//
@@ -220,25 +251,24 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		cell = null
 	new /obj/item/stack/material/steel(where, method == ATOM_DECONSTRUCT_DISASSEMBLED? 2 : 1)
 
-#warn what
 /obj/machinery/apc/drain_energy(datum/actor, amount, flags)
-	charging = FALSE
-	// makes sure fully draining apc cell won't break cell charging
+	var/amount_initial = amount
 
-	var/drained = 0
+	if(terminal?.is_connected())
+		amount -= terminal.drain_energy(arglist(args))
 
-	if(terminal?.powernet)
-		terminal.powernet.trigger_warning()
-		// no conversion - amount = kj, draw_power is in kw
-		drained += terminal.powernet.draw_power(amount)
+	// if there isn't enough, hit cell
+	if(amount > 0 && cell)
+		amount -= cell.drain_energy(arglist(args))
 
-	//The grid rarely gives the full amount requested, or perhaps the grid
-	//isn't connected (wire cut), in either case we draw what we didn't get
-	//from the cell instead.
-	if((drained < amount) && cell)
-		drained += cell.drain_energy(actor, amount, flags)
+	// if there isn't enough, do we have buffer?
+	if(buffer > 1000) // buffer is in joules
+		var/kj_available = floor(buffer / 1000)
+		var/kj_used = min(amount, kj_available)
+		buffer -= kj_available * 1000
+		amount -= kj_used
 
-	return drained
+	return amount_initial - amount
 
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/apc/setDir(new_dir)
@@ -268,6 +298,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	if(terminal)
 		terminal.setDir(turn(src.dir, 180)) // Terminal has same dir as master
+
+#warn below
 
 #warn what
 /obj/machinery/apc/proc/energy_fail(var/duration)
@@ -992,51 +1024,121 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 /obj/machinery/apc/proc/set_breaker_toggled(toggled, defer_update)
 	src.breaker_toggled = toggled
 	if(!defer_update)
-		full_update_channels()
+		reconsider_active()
 	push_ui_data(data = list("breakerToggled" = breaker_toggled))
+
+/obj/machinery/apc/proc/set_load_active(value, defer_update)
+	load_active = value
+	if(!defer_update)
+		full_update_channels()
+
+/obj/machinery/apc/proc/reconsider_active(defer_update)
+	var/can_be_active = TRUE
+	if(!load_auto_online)
+		can_be_active = FALSE
+	else if(!breaker_toggled)
+		can_be_active = FALSE
+	else if(error_check_until > world.time)
+		can_be_active = FALSE
+
+	if(can_be_active == load_active)
+		return
+	if(!defer_update)
+		set_load_active(can_be_active)
+
+/**
+ * checks if we're online / emitting at all
+ *
+ * @return TRUE / FALSE
+ */
+/obj/machinery/apc/proc/is_online()
+	return load_active
 
 //* Channels *//
 
+/**
+ * checks if a channel is online
+ *
+ * @return TRUE / FALSE
+ */
+/obj/machinery/apc/proc/is_channel_online(channel)
+	return !!(channels_active & POWER_CHANNEL_TO_BIT(channel))
+
+/**
+ * sets a channel to a specific mode
+ */
 /obj/machinery/apc/proc/set_channel_setting(channel, new_setting, defer_updates)
 	var/bit = power_channel_bits[channel]
 	switch(new_setting)
 		if(APC_CHANNEL_AUTO)
 			channels_auto |= bit
+			channels_enabled |= bit
 		if(APC_CHANNEL_ON)
 			channels_enabled |= bit
 			channels_auto &= ~bit
 		if(APC_CHANNEL_OFF)
 			channels_enabled &= ~bit
 			channels_auto &= ~bit
-	update_channel_setting(channel, defer_updates)
+	update_channel_status(channel, defer_updates)
 
 /obj/machinery/apc/proc/set_channel_threshold(channel, new_threshold, defer_updates)
 	channel_thresholds[channel] = clamp(new_threshold, 0, 1)
-	update_channel_setting(channel, defer_updates)
+	update_channel_status(channel, defer_updates)
 
 /**
  * @return true/false based on if any channel was changed
  */
-/obj/machinery/apc/proc/full_update_channels(defer_updates)
+/obj/machinery/apc/proc/full_update_channels(defer_updates, reconsider_active = TRUE)
 	. = FALSE
+	if(reconsider_active)
+		update_load_active(TRUE)
 	for(var/i in 1 to POWER_CHANNEL_COUNT)
-		. = update_channel_setting(i, TRUE) || .
+		. = update_channel_status(i, TRUE, FALSE) || .
 	if(. && !defer_updates)
 		update_icon()
 		// todo: optimize
 		registered_area?.power_change()
 
 /**
- * @return true/false based on if the channel was changed
+ * @return TRUE / FALSE based on if the channel was changed
  */
-/obj/machinery/apc/proc/update_channel_setting(channel, defer_updates)
-	#warn impl + deal with [load_active] var, which has to modify area as opposed to us because enabled != working
+/obj/machinery/apc/proc/update_channel_status(channel, defer_updates, reconsider_active)
+	if(reconsider_active)
+		update_load_active()
+	var/channel_bit = POWER_CHANNEL_TO_BIT(channel)
+	// the ! is to boolean-coerce
+	var/should_be_inactive = compute_channel_status(channel, defer_updates)
+	var/is_inactive = !(channels_active & channel_bit)
+	// this only works if it's boolean-coerced
+	if(should_be_inactive != is_inactive)
+		return
+	if(should_be_inactive)
+		channels_active &= ~channel_bit
+	else
+		channels_active |= channel_bit
+	if(!defer_updates)
+		registered_area?.power_change()
 
-/obj/machinery/apc/proc/should_enable_channel(channel)
-	#warn impl
+/**
+ * check if the channel should be active
+ */
+/obj/machinery/apc/proc/compute_channel_status(channel, defer_updates)
+	var/channel_bit = POWER_CHANNEL_TO_BIT(channel)
+	if(!load_active)
+		return FALSE
+	if(!(channels_toggled & channel_bit))
+		return FALSE
+	if((channels_auto & channel_bit) && !(channels_auto_online & channel_bit))
+		return FALSE
+	return TRUE
 
 //* Init *//
 
+/**
+ * inits cell to what it should be at creation
+ *
+ * * do not call this if this is an APC being constructed.
+ */
 /obj/machinery/apc/proc/create_cell(update_icon = TRUE)
 	QDEL_NULL(cell)
 	if(!cell_type)
@@ -1048,6 +1150,11 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	if(update_icon)
 		update_icon()
 
+/**
+ * inits power buffer to what it should be at creation
+ *
+ * * do not call this if this is an APC being constructed.
+ */
 /obj/machinery/apc/proc/create_buffer()
 	if(cell && cell_start_percent > 0)
 		buffer = buffer_capacity
@@ -1131,12 +1238,18 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	// prep for cycle
 
+	// do we need to update channels?
+	var/should_update_channels = FALSE
+	// deficit below 0, in joules
+	var/drain_deficit_joules = 0
+	// do we need to update icon?
+	var/should_update_icon = FALSE
 	// total load last cycle
 	// this is in watts
-	var/total_static = 0
+	var/total_static_watts = 0
 	// total burst used power last cycle
 	// this is in joules
-	var/total_burst = 0
+	var/total_burst_j = 0
 
 	// does the area require power?
 	if(!isnull(registered_area.area_power_override))
@@ -1148,19 +1261,19 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 			var/channel_total = area.power_usage_static[channel]
 			last_channel_load[channel] = channel_total
 			current_burst_load[channel] = 0
-			total_burst += current_burst_load[channel]
-			total_static += channel_total
+			total_burst_j += current_burst_load[channel]
+			total_static_watts += channel_total
 	else
 		// the area doesn't
 		// todo: the area should reset apcs last used / burst used to 0 when it's set to power override mode
 		//       remove this else clause after this is done
 		pass()
 
-	// start power_requested, the amount of kilowatts we want to draw from grid
+	// start power_requested_kilowatts, the amount of kilowatts we want to draw from grid
 	// add static power to requested draw; we always try to draw that much if we can
-	var/power_requested = floor(total_static * 0.001)
+	var/power_requested_kilowatts = floor(total_static_watts * 0.001)
 	// get the amount of static power that doesn't fit a whole kilowatt
-	var/remainder_static = total_static - power_requested
+	var/remainder_static_watts = total_static_watts - power_requested_kilowatts * 1000
 
 	if(cell)
 		// celled operation
@@ -1169,7 +1282,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		if(charging_enabled && cell.charge < cell.maxcharge)
 			// we charge slower the closer we are to full to prevent oscillation.
 			var/charging_draw = floor(min(max(DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time) / 100, 1), charging_draw))
-			power_requested += charging_draw
+			power_requested_kilowatts += charging_draw
 
 	// now, an assumption made here is that drawing from the powernet
 	// is more expensive than drawing from buffer,
@@ -1184,114 +1297,141 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	// calculate secondary draw in joules
 	// this is burst power used plus leftover static power
-	// we multiply remainder_static by delta_time to get joules (remainder static is in watts)
+	// we multiply remainder_static_watts by delta_time to get joules (remainder static is in watts)
 	// anything less than 1 joule can be safely thrown out / considered a rounding error
-	var/secondary_draw = floor(total_burst + remainder_static * delta_time)
+	var/secondary_draw_joules = floor(total_burst_j + remainder_static_watts * delta_time)
 
-	
+	// we hate oscillation
+	// if we just directly shunt all of this to the powernet, what we're
+	// going to end up with is an oscillation from the buffer
+	// filling to max, draining a bit, and then
+	// draining max power from the powernet
 
-
-
-#warn below
-
-/obj/machinery/apc/process(delta_time)
-	if(failure_timer)
-		update()
-		queue_icon_update()
-		failure_timer--
-		force_update = 1
-		return
-
-	#warn above
-
-	// reduce load resume
-	// this should never go too high, because we want fast restore times
-	// generally, we increase this more if there's multiple failed resumes.
-	if(load_resume > 0)
-		--load_resume
-
-	// we handle celled and cell-less operation differently
-	if(isnull(cell))
-		// cell-less; use buffer.
-		// the job of the apc is not to keep the buffer as full as possible for emergencies
-		// the job of the apc is to smooth fluctuations out so that grid power doesn't spike every 2 seconds from
-		// apcs fluctuating between "can't charge any more" and "suddenly need to charge all that's missing".
-		// furthurmore, our job is to shut off / turn on based on if there's enough power to have us, well, operate with all our
-		// machinery.
-
+	// instead what we're going to do is use the massive 50kj buffer to smooth operations
+	var/buffer_after = buffer - secondary_draw_joules
+	// if we're below what we can do
+	// here have some hellish math
+	// remember; use delta_time so 2kj is actually a 1kw draw, because powernets
+	// are tick-synced but burst draws are not necessarily so.
+	var/buffer_requested_kilowatts
+	if(buffer_after < 0)
+		// recharge a certain ratio plus whatever is needed to get it above 0, ceil'd
+		// -buffer_after because buffer_active is negative.
+		buffer_requested_kilowatts = ceil((buffer_capacity * buffer_recharge_heuristic - buffer_after) * 0.001 / delta_time)
 	else
+		// recharge only a certain ratio
+		buffer_requested_kilowatts = max(0, floor((buffer_capacity - buffer_after) * buffer_recharge_heuristic * 0.001 / delta_time))
+	power_requested_kilowatt += buffer_requested_kilowatts
 
-	// todo: optimize
-	var/requires_icon_update = full_update_channels(TRUE)
-	full_update_alarm()
+	//* DRAW STEP *//
 
-	#warn below
+	// perform grid draw step, expanding it to watts
+	var/grid_acquired_watts = use_grid_power(power_requested_kilowatt, TRUE) * 1000
 
-	//store states to update icon if any change
-	var/excess = surplus()
-
-	if(!src.avail())
-		main_status = 0
-	else if(excess < 0)
-		main_status = 1
+	// priority 1: do we have enough to power static power?
+	if(total_static_watts > grid_acquired_watts)
+		// anything missing will be drained from cell
+		var/missing_static_watts = total_static_watts - grid_acquired_watts
+		var/cell_to_static = DYNAMIC_CELL_UNITS_TO_W(cell.use(DYNAMIC_W_TO_CELL_UNITS(missing_static_watts, delta_time)))
+		missing_static_watts -= cell_to_static
+		if(missing_static_watts > 0)
+			// not enough to cover
+			drain_deficit_joules += missing_static_watts
+		grid_acquired_watts = 0
 	else
-		main_status = 2
+		grid_acquired_watts -= total_static_watts
 
-	if(cell && !shorted && !grid_check)
-		// draw power from cell as before to power the area
-		var/cellused = min(cell.charge, DYNAMIC_W_TO_CELL_UNITS(lastused_total, 1))	// clamp deduction to a max, amount left in cell
-		cell.use(cellused)
-		// TODO: the rest of this code is war crime territory
-		// TODO: rewrite APCs. entirely.
+	// priority 2: anything remaining goes into buffer
+	var/buffer_recharge_watts = min(grid_acquired_watts, buffer_requested_kilowatts * 1000)
+	// watts is multiplied by time, as buffer is in joules
+	buffer_after += buffer_recharge_watts * delta_time
+	grid_acquired_watts -= buffer_recharge_watts
 
-		// now trickle-charge the cell
-		lastused_charging = 0 // Clear the variable for new use.
-		if(src.attempt_charging())
-			if(excess > 0)		// check to make sure we have enough to charge
-				// Max charge is capped to % per second constant
-				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
-				var/charged = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
-				cell.give(DYNAMIC_KW_TO_CELL_UNITS(charged, 1)) // actually recharge the cell
-				lastused_charging = charged * 1000
-				lastused_total += lastused_charging // Sensors need this to stop reporting APC charging as "Other" load
+	// if buffer is near or empty, we're in big trouble
+	if(buffer_after < 500)
+		// can we drain from cell?
+		var/cell_to_buffer = DYNAMIC_CELL_UNITS_TO_J(cell.use(DYNAMIC_J_TO_CELL_UNITS(500 - buffer_after)))
+		buffer_after += cell_to_buffer
+		if(buffer_after < 500)
+			// welp, we're empty!
+			drain_deficit_joules += 500 - buffer_after
+	// update buffer
+	buffer = max(0, buffer_after)
+
+	// priority 3: anything remaining goes into cell
+	if(grid_acquired_watts > 0)
+		// if there's more power than there should be the cell might be overcharged
+		// but surely my math works.
+		cell.give(DYNAMIC_W_TO_CELL_UNITS(grid_acquired_watts, delta_time))
+
+	//* END *//
+
+	// if we're in a grid check, check if we shouldn't be
+	if(error_check_until && error_check_until < world.time)
+		error_check_until = null
+		should_update_channels = TRUE
+
+	// if active, check if we need to not be active
+	if(drain_deficit_joules)
+		// we hit 0, penalize the area longer the more we went below 0
+		// we don't need to process anything else, everything is offline
+		should_update_channels = TRUE
+		load_auto_online = FALSE
+		channels_auto_online = NONE
+		// todo: adjust penalty based on how long it's been oscillating
+		// todo: add a manual IO reboot button to be able to bypass this if power is detected to be sufficient
+		// drain_deficit_joules is in J, so if you blow out an APC with a worst-case load of:
+		// 1,000 = 3 seconds
+		// 10,000 = 10 seconds
+		// 100,000 = 30 seconds
+		// 1,000,000 = 60 seconds (it hit cap earlier)
+		var/penalize_for = 15 SECONDS + min(60 SECONDS, sqrt(drain_deficit_joules))
+		next_online_pulse = world.time + penalize_for
+	// not fully empty, but check if we need to auto-disable any channels
+	else if(load_auto_online && channels_auto_online && channels_auto && cell)
+		// this only works if there's a cell, buffer is too volatile to be used for %-based heuristics
+		var/cell_ratio = cell.charge / cell.maxcharge
+		for(var/i in 1 to POWER_CHANNEL_COUNT)
+			var/channel_bit = POWER_CHANNEL_TO_BIT(i)
+			var/currently_auto_online = channels_auto_online & channel_bit
+			if(!currently_auto_online)
+				continue
+			var/should_be_online = channel_thresholds[i] <= cell_ratio
+			if(should_be_online)
+				continue
+			channels_auto_online &= ~channel_bit
+			should_update_channels = TRUE
+			// no oscillating please
+			next_online_pulse = world.time + 15 SECONDS
+	// if anything is inactive, see if we can reboot things
+	if(world.time >= next_online_pulse && (!load_auto_online || (channels_auto_online != POWER_BITS_ALL)))
+		// ..but at a maximum of once per 5 seconds
+		next_online_pulse = world.time = 5 SECONDS
+		if(buffer > 500 && !load_auto_online)
+			should_update_channels = TRUE
+			load_auto_online = TRUE
+		// only update channels if load_auto_online is on, otherwise we can't even operate
+		if(!load_auto_online)
+			if(cell)
+				// use ratio if cell
+				var/cell_ratio = cell.charge / cell.maxcharge
+				channels_auto_online = NONE
+				for(var/i in 1 to POWER_CHANNEL_COUNT)
+					if(channel_thresholds[i] > cell_ratio)
+						continue
+					var/channel_bit = POWER_CHANNEL_TO_BIT(i)
+					should_update_channels = TRUE
+					channels_auto_online |= channel_bit
 			else
-				charging = 0		// stop charging
-				chargecount = 0
+				// no automation allowed without cell
+				channels_auto_online = POWER_BITS_ALL
+				should_update_channels = TRUE
 
-		// show cell as fully charged if so
-		if(cell.percent() >= 99)	// TODO: apc refactor - this is the only way for now, otherrwise we'll never stop charging as we don't ever charge to full entirely
-			charging = 2
-		else if(charging == 2)		// if charging is supposedly fully charged but we're not actually fully charged, shunt back to charging
-			charging = 1
+	if(should_update_channels)
+		full_update_channels()
+	else if(should_update_icon)
+		update_icon()
 
-		if(chargemode)
-			if(!charging)
-				var/charge_tick = cell.maxcharge * chargelevel
-				charge_tick = DYNAMIC_CELL_UNITS_TO_KW(charge_tick, 1)
-				if(excess > charge_tick)
-					chargecount++
-				else
-					chargecount = 0
-
-				if(chargecount >= 5)
-
-					chargecount = 0
-					charging = 1
-
-		else // chargemode off
-			charging = 0
-			chargecount = 0
-
-	else // no cell, switch everything off
-		charging = 0
-		chargecount = 0
-		equipment = autoset(equipment, 0)
-		lighting = autoset(lighting, 0)
-		environ = autoset(environ, 0)
-		power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
-		autoflag = 0
-
-#warn above
 
 //* Power Usage - General *//
 
