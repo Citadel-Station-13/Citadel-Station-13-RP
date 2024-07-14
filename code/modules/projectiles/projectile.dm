@@ -1045,7 +1045,7 @@
 
 
 /obj/projectile/proc/cleanup_hitscan_tracers()
-	QDEL_NULL(tracer_vertices)
+	tracer_vertices=null
 
 /obj/projectile/proc/finalize_hitscan_tracers(datum/point/end_point, impact_effect, kick_forwards)
 	// if end wasn't recorded yet and we're still on a turf, record end

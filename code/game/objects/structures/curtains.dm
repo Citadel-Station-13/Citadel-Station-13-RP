@@ -11,6 +11,8 @@
 	integrity_failure = 30
 	integrity_max = 40
 
+	var/obj/item/stack/mat = /obj/item/stack/material/plastic
+
 /obj/structure/curtain/open
 	icon_state = "open"
 	plane = OBJ_PLANE
@@ -34,13 +36,14 @@
 		layer = 3.3
 
 /obj/structure/curtain/attackby(obj/item/P, mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You start to cut the shower curtains.</span>")
+		to_chat(user, "<span class='notice'>You start to cut [src].</span>")
 		if(do_after(user, 10))
-			to_chat(user, "<span class='notice'>You cut the shower curtains.</span>")
-			var/obj/item/stack/material/plastic/A = new /obj/item/stack/material/plastic( src.loc )
-			A.amount = 3
+			to_chat(user, "<span class='notice'>You cut [src].</span>")
+			new mat(src.loc, 3)
 			qdel(src)
 		return
 	else
@@ -93,6 +96,7 @@
 	desc = "A curtain fasioned out of Goliath hide - frequently used to keep flying ash out of a building."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "goliath_closed"
+	mat = /obj/item/stack/animalhide/goliath_hide
 
 /obj/structure/curtain/ashlander/toggle()
 	set_opacity(!opacity)
@@ -104,18 +108,4 @@
 		icon_state = "goliath_open"
 		plane = OBJ_PLANE
 		layer = 3.3
-
-/obj/structure/curtain/ashlander/attackby(obj/item/P, mob/user)
-	if(P.is_wirecutter())
-		playsound(src, P.tool_sound, 50, 1)
-		to_chat(user, "<span class='notice'>You start to cut the hide curtain.</span>")
-		if(do_after(user, 10))
-			to_chat(user, "<span class='notice'>You cut the hide curtain.</span>")
-			var/obj/item/stack/animalhide/goliath_hide/A = new /obj/item/stack/animalhide/goliath_hide( src.loc )
-			A.amount = 3
-			qdel(src)
-		return
-	else
-		src.attack_hand(user)
-	return
 
