@@ -14,7 +14,7 @@
 	blood_overlay_type = "armor"
 	weight = ITEM_WEIGHT_BASELINE
 	armor_type = /datum/armor/none
-	action_button_name = "Toggle Tesla Armor"
+	item_action_name = "Toggle Tesla Armor"
 	var/active = 1	//Determines if the armor will zap or block
 	var/ready = 1 //Determines if the next attack will be blocked, as well if a strong lightning bolt is sent out at the attacker.
 	var/ready_icon_state = "tesla_armor_1" //also wip
@@ -58,9 +58,7 @@
 		return
 	active = !active
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
-	update_icon()
-	user.update_inv_wear_suit()
-	user.update_action_buttons()
+	update_full_icon()
 
 /obj/item/clothing/suit/armor/tesla/update_icon()
 	if(active && ready)
@@ -72,10 +70,8 @@
 		item_state = normal_icon_state
 		set_light(0, 0, l_color = "#000000")
 
-	if(ishuman(loc))
-		var/mob/living/carbon/human/H = loc
-		H.update_inv_wear_suit(0)
-		H.update_action_buttons()
+	update_worn_icon()
+	update_action_buttons()
 	..()
 
 /obj/item/clothing/suit/armor/tesla/proc/shoot_lightning(mob/target, power)

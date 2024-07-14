@@ -6,6 +6,10 @@
 	/// owning mob
 	var/mob/owner
 
+	//* Actions *//
+	/// our action holder
+	var/datum/action_holder/actions
+
 	//* Inventory *//
 
 	//* Caches *//
@@ -19,8 +23,12 @@
 	if(!istype(M))
 		CRASH("no mob")
 	owner = M
+	/// no lazy-init for actions for now since items with actions are so common
+	actions = new
+	M.client?.action_drawer.register_holder(actions)
 
 /datum/inventory/Destroy()
+	QDEL_NULL(actions)
 	owner = null
 	return ..()
 
@@ -123,6 +131,14 @@
 	for(var/obj/item/I as anything in owner.get_equipped_items())
 		if(I.body_cover_flags & cover_flags)
 			. += I
+
+//* Update Hooks *//
+
+/datum/inventory/proc/on_mobility_update()
+	for(var/datum/action/action in actions.actions)
+		action.update_button_availability()
+
+// todo: redo things below, slowly
 
 /**
  * handles the insertion
@@ -247,8 +263,6 @@
 					I.forceMove(newloc)
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
-
-	update_action_buttons()
 
 /mob/proc/handle_item_denesting(obj/item/I, old_slot, flags, mob/user)
 	// if the item was inside something,
@@ -512,6 +526,13 @@
 			if(I.slot_flags & SLOT_TWOEARS)
 				if(_item_by_slot(SLOT_ID_LEFT_EAR) || _item_by_slot(SLOT_ID_RIGHT_EAR))
 					return CAN_EQUIP_SLOT_CONFLICT_SOFT
+			else
+				var/obj/item/left_ear = _item_by_slot(SLOT_ID_LEFT_EAR)
+				var/obj/item/right_ear = _item_by_slot(SLOT_ID_RIGHT_EAR)
+				if(left_ear && left_ear != INVENTORY_SLOT_DOES_NOT_EXIST && left_ear != I && left_ear.slot_flags & SLOT_TWOEARS)
+					return CAN_EQUIP_SLOT_CONFLICT_SOFT
+				else if(right_ear && right_ear != INVENTORY_SLOT_DOES_NOT_EXIST && right_ear != I && right_ear.slot_flags & SLOT_TWOEARS)
+					return CAN_EQUIP_SLOT_CONFLICT_SOFT
 	return CAN_EQUIP_SLOT_CONFLICT_NONE
 
 /**
@@ -589,8 +610,6 @@
 		I.equipped(src, slot, flags)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")
-
-	update_action_buttons()
 
 	if(I.zoom)
 		I.zoom()

@@ -596,9 +596,6 @@
 				if("socket_talk")
 					socket_talk = text2num(value)
 
-				if("tickcomp")
-					Tickcomp = 1
-
 				if("humans_need_surnames")
 					humans_need_surnames = 1
 

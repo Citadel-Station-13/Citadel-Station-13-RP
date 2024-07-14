@@ -37,7 +37,7 @@
 	var/mob/living/simple_mob/animal/borer/B = owner.has_brain_worms()
 	if(B)
 		B.leave_host()
-		B.ckey = owner.ckey
+		owner.transfer_client_to(B)
 
 	spawn(0)
 		qdel(src)

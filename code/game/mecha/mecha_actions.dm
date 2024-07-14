@@ -13,177 +13,187 @@
 //
 
 /obj/mecha/proc/GrantActions(mob/living/user, human_occupant = 0)
-	if(human_occupant)
-		eject_action.grant(user, src)
-	internals_action.grant(user, src)
-	cycle_action.grant(user, src)
-	lights_action.grant(user, src)
-	stats_action.grant(user, src)
-	strafing_action.grant(user, src)//The defaults.
-
-	if(defence_mode_possible)
-		defence_action.grant(user, src)
-	if(overload_possible)
-		overload_action.grant(user, src)
-	if(smoke_possible)
-		smoke_action.grant(user, src)
-	if(zoom_possible)
-		zoom_action.grant(user, src)
-	if(thrusters_possible)
-		thrusters_action.grant(user, src)
-	if(phasing_possible)
-		phasing_action.grant(user, src)
-	if(switch_dmg_type_possible)
-		switch_damtype_action.grant(user, src)
-	if(cloak_possible)
-		cloak_action.grant(user, src)
+	for(var/datum/action/action in list(
+		human_occupant && eject_action,
+		internals_action,
+		cycle_action,
+		lights_action,
+		stats_action,
+		strafing_action,
+		defence_mode_possible && defence_action,
+		overload_possible && overload_action,
+		smoke_possible && smoke_action,
+		zoom_possible && zoom_action,
+		thrusters_possible && thrusters_action,
+		phasing_possible && phasing_action,
+		switch_dmg_type_possible && switch_damtype_action,
+		cloak_possible && cloak_action,
+	))
+		action.grant(user.actions_controlled)
 
 /obj/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
-	if(human_occupant)
-		eject_action.remove(user, src)
-	internals_action.remove(user, src)
-	cycle_action.remove(user, src)
-	lights_action.remove(user, src)
-	stats_action.remove(user, src)
-	strafing_action.remove(user, src)
-
-	defence_action.remove(user, src)
-	smoke_action.remove(user, src)
-	zoom_action.remove(user, src)
-	thrusters_action.remove(user, src)
-	phasing_action.remove(user, src)
-	switch_damtype_action.remove(user, src)
-	overload_action.remove(user, src)
-	cloak_action.remove(user, src)
+	for(var/datum/action/action in list(
+		eject_action,
+		internals_action,
+		cycle_action,
+		lights_action,
+		stats_action,
+		strafing_action,
+		defence_action,
+		smoke_action,
+		zoom_action,
+		thrusters_action,
+		phasing_action,
+		switch_damtype_action,
+		overload_action,
+		cloak_action,
+	))
+		action.revoke(user.actions_controlled)
 
 
 //
 ////BUTTONS STUFF
 //
 
-/datum/action/innate/mecha
-	check_flags = ACTION_CHECK_RESTRAINED | ACTION_CHECK_STUNNED | ACTION_CHECK_ALIVE
-	button_icon = 'icons/effects/actions_mecha.dmi'
-	var/obj/mecha/chassis
+/datum/action/mecha
+	check_mobility_flags = MOBILITY_CAN_USE
+	button_icon = 'icons/screen/actions/mecha.dmi'
+	target_type = /obj/mecha
 
-// todo: this is shitcode
-/datum/action/innate/mecha/grant(mob/living/T, obj/mecha/M)
-	if(M)
-		chassis = M
-	..()
-
-
-/datum/action/innate/mecha/mech_toggle_lights
+/datum/action/mecha/mech_toggle_lights
 	name = "Toggle Lights"
 	button_icon_state = "mech_lights_off"
 
-/datum/action/innate/mecha/mech_toggle_lights/Activate()
-	button_icon_state = "mech_lights_[chassis.lights ? "off" : "on"]"
-	button.UpdateIcon()
+/datum/action/mecha/mech_toggle_lights/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.lights()
+	button_icon_state = "mech_lights_[chassis.lights ? "off" : "on"]"
+	update_buttons()
 
-
-
-/datum/action/innate/mecha/mech_toggle_internals
+/datum/action/mecha/mech_toggle_internals
 	name = "Toggle Internal Airtank Usage"
 	button_icon_state = "mech_internals_off"
 
-/datum/action/innate/mecha/mech_toggle_internals/Activate()
+/datum/action/mecha/mech_toggle_internals/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "off" : "on"]"
-	button.UpdateIcon()
+	update_buttons()
 	chassis.internal_tank()
 
-
-
-/datum/action/innate/mecha/mech_view_stats
+/datum/action/mecha/mech_view_stats
 	name = "View stats"
 	button_icon_state = "mech_view_stats"
 
-/datum/action/innate/mecha/mech_view_stats/Activate()
+/datum/action/mecha/mech_view_stats/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.view_stats()
 
-
-
-/datum/action/innate/mecha/mech_eject
+/datum/action/mecha/mech_eject
 	name = "Eject From Mech"
 	button_icon_state = "mech_eject"
 
-/datum/action/innate/mecha/mech_eject/Activate()
+/datum/action/mecha/mech_eject/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.go_out()
 
-
-
-/datum/action/innate/mecha/strafe
+/datum/action/mecha/strafe
 	name = "Toggle Mech Strafing"
 	button_icon_state = "mech_strafe_off"
 
-/datum/action/innate/mecha/strafe/Activate()
-	button_icon_state = "mech_strafe_[chassis.strafing ? "off" : "on"]"
-	button.UpdateIcon()
+/datum/action/mecha/strafe/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.strafing()
+	button_icon_state = "mech_strafe_[chassis.strafing ? "off" : "on"]"
+	update_buttons()
 
-
-
-/datum/action/innate/mecha/mech_defence_mode
+/datum/action/mecha/mech_defence_mode
 	name = "Toggle Mech defence mode"
 	button_icon_state = "mech_defense_mode_off"
 
-/datum/action/innate/mecha/mech_defence_mode/Activate()
-	button_icon_state = "mech_defense_mode_[chassis.defence_mode ? "off" : "on"]"
-	button.UpdateIcon()
+/datum/action/mecha/mech_defence_mode/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.defence_mode()
+	button_icon_state = "mech_defense_mode_[chassis.defence_mode ? "off" : "on"]"
+	update_buttons()
 
-
-
-/datum/action/innate/mecha/mech_overload_mode
+/datum/action/mecha/mech_overload_mode
 	name = "Toggle Mech Leg Overload"
 	button_icon_state = "mech_overload_off"
 
-/datum/action/innate/mecha/mech_overload_mode/Activate()
-	button_icon_state = "mech_overload_[chassis.overload ? "off" : "on"]"
-	button.UpdateIcon()
+/datum/action/mecha/mech_overload_mode/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.overload()
+	button_icon_state = "mech_overload_[chassis.overload ? "off" : "on"]"
+	update_buttons()
 
-
-
-/datum/action/innate/mecha/mech_smoke
+/datum/action/mecha/mech_smoke
 	name = "Toggle Mech Smoke"
 	button_icon_state = "mech_smoke_off"
 
-/datum/action/innate/mecha/mech_smoke/Activate()
-	//button_icon_state = "mech_smoke_[chassis.smoke ? "off" : "on"]"
-	//button.UpdateIcon()	//Dual colors notneeded ATM
+/datum/action/mecha/mech_smoke/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.smoke()
 
-
-
-/datum/action/innate/mecha/mech_zoom
+/datum/action/mecha/mech_zoom
 	name = "Toggle Mech Zoom"
 	button_icon_state = "mech_zoom_off"
 
-/datum/action/innate/mecha/mech_zoom/Activate()
-	button_icon_state = "mech_zoom_[chassis.zoom ? "off" : "on"]"
-	button.UpdateIcon()
+/datum/action/mecha/mech_zoom/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.zoom()
+	button_icon_state = "mech_zoom_[chassis.zoom ? "off" : "on"]"
+	update_buttons()
 
-
-
-/datum/action/innate/mecha/mech_toggle_thrusters
+/datum/action/mecha/mech_toggle_thrusters
 	name = "Toggle Mech thrusters"
 	button_icon_state = "mech_thrusters_off"
 
-/datum/action/innate/mecha/mech_toggle_thrusters/Activate()
-	button_icon_state = "mech_thrusters_[chassis.thrusters ? "off" : "on"]"
-	button.UpdateIcon()
+/datum/action/mecha/mech_toggle_thrusters/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	chassis.thrusters()
+	button_icon_state = "mech_thrusters_[chassis.thrusters ? "off" : "on"]"
+	update_buttons()
 
-
-
-/datum/action/innate/mecha/mech_cycle_equip	//I'll be honest, i don't understand this part, buuuuuut it works!
+/datum/action/mecha/mech_cycle_equip	//I'll be honest, i don't understand this part, buuuuuut it works!
 	name = "Cycle Equipment"
 	button_icon_state = "mech_cycle_equip_off"
 
-/datum/action/innate/mecha/mech_cycle_equip/Activate()
+/datum/action/mecha/mech_cycle_equip/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+
+	var/obj/mecha/chassis = target
 
 	var/list/available_equipment = list()
 	available_equipment = chassis.equipment
@@ -199,7 +209,7 @@
 		chassis.occupant_message("You select [chassis.selected]")
 		send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())
 		button_icon_state = "mech_cycle_equip_on"
-		button.UpdateIcon()
+		update_buttons()
 		return
 	var/number = 0
 	for(var/A in available_equipment)
@@ -214,47 +224,52 @@
 				chassis.occupant_message("You switch to [chassis.selected]")
 				button_icon_state = "mech_cycle_equip_on"
 			send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())
-			button.UpdateIcon()
+			update_buttons()
 			return
 
 
 
-/datum/action/innate/mecha/mech_switch_damtype
+/datum/action/mecha/mech_switch_damtype
 	name = "Reconfigure arm microtool arrays"
 	button_icon_state = "mech_damtype_brute"
 
 
-/datum/action/innate/mecha/mech_switch_damtype/Activate()
+/datum/action/mecha/mech_switch_damtype/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
 
-
+	var/obj/mecha/chassis = target
 	button_icon_state = "mech_damtype_[chassis.damtype]"
 	playsound(src, 'sound/mecha/mechmove01.ogg', 50, 1)
-	button.UpdateIcon()
+	update_buttons()
 	chassis.query_damtype()
 
-
-
-/datum/action/innate/mecha/mech_toggle_phasing
+/datum/action/mecha/mech_toggle_phasing
 	name = "Toggle Mech phasing"
 	button_icon_state = "mech_phasing_off"
 
-/datum/action/innate/mecha/mech_toggle_phasing/Activate()
+/datum/action/mecha/mech_toggle_phasing/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	button_icon_state = "mech_phasing_[chassis.phasing ? "off" : "on"]"
-	button.UpdateIcon()
+	update_buttons()
 	chassis.phasing()
 
-
-
-/datum/action/innate/mecha/mech_toggle_cloaking
+/datum/action/mecha/mech_toggle_cloaking
 	name = "Toggle Mech phasing"
 	button_icon_state = "mech_phasing_off"
 
-/datum/action/innate/mecha/mech_toggle_cloaking/Activate()
+/datum/action/mecha/mech_toggle_cloaking/invoke_target(obj/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	var/obj/mecha/chassis = target
 	button_icon_state = "mech_phasing_[chassis.cloaked ? "off" : "on"]"
-	button.UpdateIcon()
+	update_buttons()
 	chassis.toggle_cloaking()
-
-
 
 /////
 /////
@@ -262,7 +277,6 @@
 /////		OVERLOAD, DEFENCE, SMOKE
 /////
 /////
-
 
 /obj/mecha/verb/toggle_defence_mode()
 	set category = "Exosuit Interface"
