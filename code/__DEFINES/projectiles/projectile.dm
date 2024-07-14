@@ -44,6 +44,8 @@
 /// used by /impact() on projectile to signal to impact_loop()
 /// that the projectile should keep impacting everything on the turf it was trying to hit
 #define PROJECTILE_IMPACT_CONTINUE_LOOP (1<<10)
+/// this is an impact (usually on the ground) from a projectile expiring
+#define PROJECTILE_IMPACT_IS_EXPIRING (1<<11)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)

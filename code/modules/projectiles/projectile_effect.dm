@@ -20,7 +20,16 @@
 /datum/projectile_effect/proc/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
 	return impact_flags
 
-/datum/projectile_effect/proc/on_lifetime(obj/projectile/proj)
+/**
+ * Do not delete the projectile, the projectile does that.
+ *
+ * todo: add way to delete projectile so it doesn't drop stuff i guess for foam and whatnot
+ *
+ * @params
+ * * proj - the projectile
+ * * impact_ground_on_expiry - we should impact the ground on expiry; a projectile var, but relay'd in for override capability later
+ */
+/datum/projectile_effect/proc/on_lifetime(obj/projectile/proj, impact_ground_on_expiry)
 	return
 
 /datum/projectile_effect/proc/on_moved(obj/projectile/proj, atom/old_loc)

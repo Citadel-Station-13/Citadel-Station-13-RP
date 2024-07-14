@@ -66,7 +66,7 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
 		return
-	var/mob/living/carbon/H = hit_atom
+	var/mob/living/carbon/H = target
 	var/obj/item/plunger/P
 	if(!H.wear_mask)
 		H.equip_to_slot_if_possible(P, SLOT_MASK)

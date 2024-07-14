@@ -55,12 +55,32 @@
 	/// initialized on fire()
 	var/list/impacted
 
-	//* Configuration *//
+	//*         -- Combat - Accuracy --              *//
+	//* https://www.desmos.com/calculator/ofz29ttxlw *//
 
-	/// Projectile type bitfield; set all that is relevant
-	var/projectile_type = NONE
+	/// if enabled, baymiss is entirely disabled
+	var/accuracy_disabled = FALSE
+	/// perfect accuracy below this range (in pixels)
+	/// see desmos
+	///
+	/// * this means the projectile doesn't enforce inaccuracy; not the target!
+	/// * remember that even if a projectile clips a single pixel on a target turf, it hits.
+	var/accuracy_perfect_range = WORLD_ICON_SIZE * 5
+	/// +- tweak to calculated probability
+	/// see desmos
+	var/accuracy_curve_y_adjust = 15
+	/// this is really hard to explain, but it basically controls how steep the sigmoid
+	/// curve used for accuracy is
+	/// see desmos
+	var/accuracy_curve_factor = 11
+	/// x-shift
+	/// see desmos
+	var/accuracy_curve_x_shift = -8.4
+	/// accuracy range floor; accuracy doesn't decrease past this
+	/// see desmos
+	var/accuracy_floor_range = WORLD_ICON_SIZE * 30
 
-	//* Effects *//
+	//* Combat - Effects *//
 
 	/// projectile effects
 	///
@@ -71,6 +91,13 @@
 	///
 	/// * this is configured at runtime and can be edited
 	VAR_PROTECTED/list/additional_projectile_effects
+
+	//* Configuration *//
+
+	/// Projectile type bitfield; set all that is relevant
+	var/projectile_type = NONE
+	/// Impact ground on expiry (range, or lifetime)
+	var/impact_ground_on_expiry = FALSE
 
 	//* Physics - Configuration *//
 
@@ -218,7 +245,6 @@
 	var/silenced = 0	//Attack message
 	var/shot_from = "" // name of the object which shot us
 
-	var/accuracy = 0
 	var/dispersion = 0.0
 
 	// Sub-munitions. Basically, multi-projectile shotgun, rather than pellets.
@@ -325,10 +351,8 @@
 	else
 		visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
 
-	//admin logs
-	if(!no_attack_log)
-		if(istype(firer, /mob) && istype(target_mob))
-			add_attack_logs(firer,target_mob,"Shot with \a [src.type] projectile")
+	if(istype(firer, /mob) && istype(target_mob))
+		add_attack_logs(firer,target_mob,"Shot with \a [src.type] projectile")
 
 	//sometimes bullet_act() will want the projectile to continue flying
 	if (result == PROJECTILE_CONTINUE)
@@ -413,10 +437,13 @@
 
 	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
 		if(effect.hook_lifetime)
-			effect.on_lifetime(src)
+			effect.on_lifetime(src, impact_ground_on_expiry)
 	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
 		if(effect.hook_lifetime)
-			effect.on_lifetime(src)
+			effect.on_lifetime(src, impact_ground_on_expiry)
+
+	if(impact_ground_on_expiry)
+		impact(loc, PROJECTILE_IMPACT_IS_EXPIRING)
 
 	expire()
 
@@ -1248,9 +1275,25 @@
 //* Impact Processing - Combat *//
 
 /**
- * processes default
+ * processes default hit probability for baymiss
+ *
+ * @params
+ * * target - what we're hitting
+ * * target_opinion - the return from processing hit chance on their side
+ * * distance - distance in pixels
+ *
+ * @return hit probability
  */
-#warn FUCK
+/obj/projectile/proc/process_accuracy(atom/target, target_opinion = 100, distance = distance_travelled)
+	if(accuracy_disabled)
+		return 100
+	. = target_opinion
+	// perform accuracy curving
+	if(distance > accuracy_perfect_range)
+		// the 'd' stands for 'go to desmos'; link at the top of the file in 'Combat - Accuracy'.
+		var/d = (min(distance, accuracy_floor_range) - accuracy_curve_x_shift - accuracy_curve_factor * 2) / accuracy_curve_factor
+		var/curved_percent = min(100, (-(d / sqrt(1 + d ** 2)) * 50) + 50 + accuracy_curve_y_adjust)
+		. *= curved_percent / 100
 
 //* Physics - Configuration *//
 

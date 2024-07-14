@@ -34,7 +34,15 @@
 	var/list/hit_mobs = list() 	//Mobs which were already hit.
 	var/power = 35				//How hard it will hit for with electrocute_act(), decreases with each bounce.
 
-/obj/projectile/beam/chain_lightning/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+// todo: rework this shit :/
+
+/obj/projectile/beam/chain_lightning/on_impact_new(atom/target, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & (PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT | PROJECTILE_IMPACT_BLOCKED))
+		return
+	var/mob/target_mob = target
+	if(!ismob(target_mob))
+		return
 	//First we shock the guy we just hit.
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/H = target_mob
@@ -72,9 +80,7 @@
 			curloc.visible_message("<span class='danger'>\The [src] bounces to \the [new_target]!</span>")
 			legacy_redirect(new_target.x, new_target.y, curloc, firer)
 			bounces--
-
-			return 0
-	return 1
+			return PROJECTILE_IMPACT_PIERCE
 
 
 

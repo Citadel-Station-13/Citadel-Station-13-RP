@@ -155,7 +155,6 @@
 	name = "lasertag beam"
 	damage = 0
 	eyeblur = 0
-	no_attack_log = 1
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
 

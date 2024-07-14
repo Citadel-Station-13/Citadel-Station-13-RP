@@ -92,11 +92,9 @@
 		if(detonate_travel && detonate_mob)
 			visible_message("<span class='warning'>\The [src] shatters in a violent explosion!</span>")
 			explosion(src.loc, 0, 1, 3, 4)
-			. |= PROJECTILE_IMPACT_DELETE
 		else if(detonate_travel)
 			visible_message("<span class='warning'>\The [src] explodes in a shower of embers!</span>")
 			explosion(src.loc, 0, 1, 2, 3)
-			. |= PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/bullet/magnetic/fuelrod/tritium
 	icon_state = "fuel-tritium"
@@ -140,8 +138,8 @@
 		target.visible_message("<span class='danger'>The [src] burns a perfect hole through \the [target] with a blinding flash!</span>")
 		playsound(target.loc, 'sound/effects/teleport.ogg', 40, 0)
 
-/obj/projectile/bullet/magnetic/fuelrod/supermatter/check_penetrate()
-	return 1
+/obj/projectile/bullet/magnetic/fuelrod/supermatter/pre_impact(atom/target, impact_flags, def_zone)
+	return ..() | PROJECTILE_IMPACT_PIERCE
 
 /obj/projectile/bullet/magnetic/bore
 	name = "phorogenic blast"

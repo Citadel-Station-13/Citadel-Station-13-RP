@@ -47,11 +47,6 @@
 	. = ..()
 	if(.)
 		return
-	// projectiles always can hit us kinda
-	// todo: what if they didn't..?
-	if(istype(mover, /obj/projectile))
-		var/obj/projectile/P = mover
-		return !P.should_impact(src, TRUE)
 	// thrown things still hit us even when nondense
 	if(can_cross_under(mover))
 		return TRUE
