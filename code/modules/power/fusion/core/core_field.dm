@@ -44,11 +44,10 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		/obj/effect,
 		/obj/projectile,
 		/atom/movable/fire,
-		/obj/structure/cable,
+		/obj/structure/wire,
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,
 		/mob/observer,
-		/obj/machinery/power/hydromagnetic_trap,
 		/obj/machinery/camera
 	))
 

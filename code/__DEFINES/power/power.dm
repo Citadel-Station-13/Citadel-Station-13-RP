@@ -51,6 +51,8 @@ GLOBAL_REAL_LIST(power_channel_bits) = list(
 
 /// length must equal POWER_CHANNEL_COUNT
 #define EMPTY_POWER_CHANNEL_LIST list(0, 0, 0)
+/// length must equal POWER_CHANNEL_COUNT
+#define EMPTY_POWER_USAGE_LIST list(0, 0, 0)
 
 //? Powernet - Load Balancing - lower number is higher priority, lower priorities only get power if higher priority is satisfied.
 //* Any updates to this should be reflected in [tgui/packages/tgui/constants/power.ts] *//

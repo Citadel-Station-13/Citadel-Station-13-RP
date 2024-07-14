@@ -23,7 +23,7 @@
 	var/datum/wires/breakerbox/wires
 
 /obj/machinery/power/breakerbox/Destroy()
-	for(var/obj/structure/cable/C in loc)
+	for(var/obj/structure/wire/power_cable/C in loc)
 		qdel(C)
 	. = ..()
 	for(var/datum/tgui_module_old/rcon/R in world)
@@ -70,7 +70,6 @@
 		spawn(600)
 			update_locked = 0
 	busy = 0
-
 
 /obj/machinery/power/breakerbox/attack_hand(mob/user, list/params)
 	if(update_locked)
@@ -119,16 +118,15 @@
 		icon_state = icon_state_on
 		var/list/connection_dirs = list()
 		for(var/direction in directions)
-			for(var/obj/structure/cable/C in get_step(src,direction))
+			for(var/obj/structure/wire/power_cable/C in get_step(src,direction))
 				if(C.d1 == turn(direction, 180) || C.d2 == turn(direction, 180))
 					connection_dirs += direction
 					break
 		for(var/direction in connection_dirs)
-			var/obj/structure/cable/C = new/obj/structure/cable(loc, null, 0, direction)
-			C.breaker_box = src
+			var/obj/structure/wire/power_cable/C = new(src, null, NONE, direction)
 	else
 		icon_state = icon_state_off
-		for(var/obj/structure/cable/C in src.loc)
+		for(var/obj/structure/wire/power_cable/C in src.loc)
 			qdel(C)
 
 // Used by RCON to toggle the breaker box.
@@ -136,7 +134,7 @@
 	if(!update_locked)
 		set_state(!on)
 		update_locked = 1
-		spawn(600)
+		spawn(15 SECONDS)
 			update_locked = 0
 
 /obj/machinery/power/breakerbox/process(delta_time)

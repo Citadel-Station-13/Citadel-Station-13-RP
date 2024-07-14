@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	layer = EXPOSED_WIRE_LAYER
 	color = COLOR_RED
 
-	level = 1
+	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	anchored = TRUE
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
@@ -186,10 +186,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	. = ..()
 	new /obj/item/stack/cable_coil(where, d1? 2 : 1)
 
-/obj/structure/wire/power_cable/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	. = ..()
-	#warn cable coil
-
 /obj/structure/wire/power_cable/wirecutter_act(obj/item/I, mob/user, flags, hint)
 	if(!cut_time)
 		return FALSE
@@ -278,7 +274,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return ..()
 	if(istype(I, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = I
-		var/success = C.cable_join(src, user)
+		var/success = coil.cable_join(src, user)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | (success? CLICKCHAIN_DID_SOMETHING : NONE)
 	else if(istype(I, /obj/item/multitool))
 		if(isnull(network))

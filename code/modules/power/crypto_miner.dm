@@ -58,7 +58,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     power_drawn += new_power_drawn
     heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
     process_thermal_properties()//calculates damage and efficiency
-    var/new_power_drawn = draw_power(power_level * 0.001 * efficiency) * 1000
+    var/new_power_drawn = flat_draw(power_level * 0.001 * efficiency) * 1000
     power_drawn += new_power_drawn*efficiency
     heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
 

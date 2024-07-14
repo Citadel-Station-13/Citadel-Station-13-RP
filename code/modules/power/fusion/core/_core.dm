@@ -20,6 +20,7 @@ var/list/fusion_cores = list()
 	anchored = 0
 
 	circuit = /obj/item/circuitboard/fusion_core
+	connection_requires_anchored = TRUE
 
 	var/obj/effect/fusion_em_field/owned_field
 	var/field_strength = 1//0.01
@@ -31,8 +32,6 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/Initialize(mapload)
 	. = ..()
 	fusion_cores += src
-	if(anchored)
-		connect_to_network()
 
 /obj/machinery/power/fusion_core/Destroy()
 	for(var/obj/machinery/computer/fusion_core_control/FCC in GLOB.machines)
@@ -43,7 +42,7 @@ var/list/fusion_cores = list()
 	return ..()
 
 /obj/machinery/power/fusion_core/process(delta_time)
-	if((machine_stat & BROKEN) || !powernet || !owned_field)
+	if((machine_stat & BROKEN) || !is_connected() || !owned_field)
 		Shutdown()
 	if(owned_field)
 		spawn(1)

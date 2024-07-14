@@ -314,7 +314,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 //		return
 
 	var/list/powernet_union = connection?.network?.get_hosts()
-	for(var/obj/machinery/power/terminal/T in powernet.nodes)
+	for(var/obj/machinery/power/terminal/T in powernet_union)
 		if(T.master && istype(T.master, /obj/machinery/power/smes))
 			var/obj/machinery/power/smes/S = T.master
 			powernet_union |= S.connection?.network?.get_hosts() || list()

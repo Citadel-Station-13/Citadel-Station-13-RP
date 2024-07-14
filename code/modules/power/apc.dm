@@ -151,12 +151,16 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	/// * this will actively suppress any attempts at re-enabling channels!
 	var/next_online_pulse = 0
 
-
 	//* Security *//
 	/// cover locked
 	var/cover_locked = TRUE
+	/// cover can be locked
+	var/cover_lockable = TRUE
+	#warn hook
 	/// interface locked
 	var/interface_locked = TRUE
+	/// interface can be locked
+	var/interface_lockable = TRUE
 
 	#warn below
 
@@ -172,23 +176,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	#warn rest
 
-	var/area/area
-	var/areastring = null
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
-	var/grid_check = FALSE
 	var/aidisabled = 0
 	var/obj/machinery/power/terminal/terminal = null
 	var/main_status = 0
 	var/mob/living/silicon/ai/hacker = null // Malfunction var. If set AI hacked the APC and has full control.
 	var/wiresexposed = 0
 	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
-	var/beenhit = 0 // used for counting how many times it has been hit, used for Aliens at the moment
 	var/datum/wires/apc/wires = null
 	var/emergency_lights = FALSE
 	var/is_critical = 0
-	var/failure_timer = 0
-	var/force_update = 0
 
 	//Used for shuttles, workaround for broken mounting
 	//TODO: Remove when legacy walls are nuked
@@ -695,32 +693,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 	return ui_interact(user)
 
-/obj/machinery/apc/proc/toggle_breaker()
-	operating = !operating
-	src.update()
-	update_icon()
-
-//Returns 1 if the APC should attempt to charge
-/obj/machinery/apc/proc/attempt_charging()
-	return (chargemode && charging == 1 && operating)
-
-
-// val 0=off, 1=off(auto) 2=on 3=on(auto)
-// on 0=off, 1=on, 2=autooff
-// defines a state machine, returns the new state
-/obj/machinery/apc/proc/autoset(cur_state, on)
-	switch(cur_state)
-		if(POWERCHAN_OFF_AUTO)
-			if(on == 1)
-				return POWERCHAN_ON_AUTO
-		if(POWERCHAN_ON)
-			if(on == 0)
-				return POWERCHAN_OFF
-		if(POWERCHAN_ON_AUTO)
-			if(on == 0 || on == 2)
-				return POWERCHAN_OFF_AUTO
-
-	return cur_state //leave unchanged
 
 // damage and destruction acts
 /obj/machinery/apc/emp_act(severity)
@@ -868,7 +840,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 
 #warn above
 
-/obj/machinery/apc/proc/reset(includes_physical = FALSE, reset_cell = FALSE)
+/obj/machinery/apc/proc/reset(includes_physical = FALSE, includes_config = FALSE, reset_cell = FALSE)
 	var/requires_update = FALSE
 
 	//! legacy
@@ -886,20 +858,30 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	power_alarm.clearAlarm(loc, src)
 	//! end
 
-	// bit cheaty, but reset power usage lists
-	last_load = 0
-	load_heuristic = 0
+	channels_active = POWER_BITS_ALL
+	channels_auto_online = POWER_BITS_ALL
+
+	if(includes_config)
+		channels_toggled = POWER_BITS_ALL
+		channels_auto = POWER_BITS_ALL
+		breaker_toggled = TRUE
+		channel_thresholds = APC_CHANNEL_THRESHOLDS_DEFAULT
+
+	load_active = TRUE
+	load_auto_online = TRUE
+	error_check_until = null
+
+	channels_active = POWER_BITS_ALL
+	channels_auto_online = POWER_BITS_ALL
+
+	last_charging = FALSE
+	last_total_deficit = 0
+	last_total_load = 0
 	last_channel_load = EMPTY_POWER_USAGE_LIST
 	current_burst_load = EMPTY_POWER_USAGE_LIST
-
-	channels_enabled = POWER_BITS_ALL
-	channels_auto = POWER_BITS_ALL
-	charging_enabled = TRUE
-	charging = FALSE
-	load_toggled = FALSE
-	breaker_tripped = FALSE
-
-	requires_update = full_update_channels() || requires_update
+	last_channel_drop = 0
+	last_full_drop = 0
+	next_online_pulse = 0
 
 	if(includes_physical)
 		#warn cover
@@ -908,17 +890,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 		create_cell()
 		create_buffer()
 
-	if(requires_update)
-		update_icon()
-		registered_area?.power_change()
-
 	#warn impl
-	//reset various counters so that process() will start fresh
-	chargecount = initial(chargecount)
-	autoflag = initial(autoflag)
-	longtermpower = initial(longtermpower)
-	failure_timer = initial(failure_timer)
-
+	full_update_channels()
 
 //* Alarms *//
 
