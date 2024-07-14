@@ -68,7 +68,7 @@
 /obj/effect/directional_shield/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	impact_flags &= ~PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	adjust_health(-proj.get_structure_damage())
 	playsound(src, 'sound/effects/EMPulse.ogg', 75, 1)

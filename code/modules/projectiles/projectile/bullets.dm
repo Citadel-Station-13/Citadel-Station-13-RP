@@ -19,7 +19,7 @@
 
 /obj/projectile/bullet/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	var/mob/living/L = target
 	if(!istype(L))
@@ -249,7 +249,7 @@
 
 /obj/projectile/bullet/shotgun/ion/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	empulse(target, 0, 0, 2, 0)	//Only affects what it hits
 	. |= PROJECTILE_IMPACT_DELETE
@@ -261,7 +261,7 @@
 
 /obj/projectile/bullet/shotgun/frag12/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	explosion(target, -1, 0, 1)
 	. |= PROJECTILE_IMPACT_DELETE
@@ -372,7 +372,7 @@
 
 /obj/projectile/bullet/burstbullet/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	explosion(target, -1, 0, 2)
 	. |= PROJECTILE_IMPACT_DELETE
@@ -389,7 +389,7 @@
 
 /obj/projectile/bullet/burstbullet/service/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isturf(target))
 		explosion(target, 0, 1, 2)
@@ -448,7 +448,7 @@
 
 /obj/projectile/bullet/heavy_shotgun/grit/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isliving(target))
 		var/mob/living/L = target
@@ -464,7 +464,7 @@
 
 /obj/projectile/bullet/pellet/heavy_shotgun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isliving(target))
 		var/mob/living/L = target
@@ -524,7 +524,7 @@
 
 /obj/projectile/bullet/incendiary/caseless/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	// todo: burn this to the ground
 	if(isliving(target))

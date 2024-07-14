@@ -13,7 +13,7 @@
 
 /obj/projectile/bullet/chemdart/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if((. & PROJECTILE_IMPACT_BLOCKED) || blocked > 5)
 		return

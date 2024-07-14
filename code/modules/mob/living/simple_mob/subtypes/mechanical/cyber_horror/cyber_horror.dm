@@ -437,7 +437,7 @@
 
 /obj/projectile/arc/blue_energy/priest/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target

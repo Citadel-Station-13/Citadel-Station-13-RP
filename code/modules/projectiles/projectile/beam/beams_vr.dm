@@ -28,7 +28,7 @@
 
 /obj/projectile/beam/energy_net/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(!ismob(target))
 		return
@@ -64,7 +64,7 @@
 
 /obj/projectile/beam/medigun/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	if(istype(target, /mob/living/carbon/human))

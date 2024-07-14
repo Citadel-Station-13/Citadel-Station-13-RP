@@ -38,7 +38,7 @@
 
 /obj/projectile/pummel/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isliving(target))
 		var/mob/living/L = target

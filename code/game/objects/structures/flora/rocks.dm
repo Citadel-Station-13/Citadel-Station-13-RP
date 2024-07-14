@@ -38,11 +38,12 @@
 		return
 	. = ..()
 
-/obj/structure/flora/rock/bullet_act(obj/projectile/P, def_zone)
-	if(P.damage_flag == ARMOR_BOMB) //Intended for kinetic accelerators/daggers to just get rid of this stuff quickly. They're rocks.
-		GetDrilled()
-		return
+/obj/structure/flora/rock/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
+		return
+	if(proj.damage_flag == ARMOR_BOMB) //Intended for kinetic accelerators/daggers to just get rid of this stuff quickly. They're rocks.
+		GetDrilled()
 
 /obj/structure/flora/rock/proc/GetDrilled()
 	new outcropdrop(get_turf(src),rand(mindrop,upperdrop))

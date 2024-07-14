@@ -19,7 +19,7 @@
 
 /obj/projectile/ion/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
 	return . | PROJECTILE_IMPACT_DELETE
@@ -46,7 +46,7 @@
 
 /obj/projectile/bullet/gyro/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	explosion(target, -1, 0, 2)
 	return . | PROJECTILE_IMPACT_DELETE
@@ -69,7 +69,7 @@
 
 /obj/projectile/temp/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isliving(target))
 		var/mob/living/L = target
@@ -141,7 +141,7 @@
 
 /obj/projectile/energy/floramut/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	var/mob/living/M = target
@@ -198,7 +198,7 @@
 
 /obj/projectile/energy/florayield/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	var/mob/M = target
 	if(ishuman(target)) //These rays make plantmen fat.
@@ -214,7 +214,7 @@
 
 /obj/projectile/beam/mindflayer/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
@@ -241,7 +241,7 @@
 
 /obj/projectile/bola/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	if(ishuman(target))
@@ -262,7 +262,7 @@
 
 /obj/projectile/webball/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	if(isturf(target.loc))
@@ -402,7 +402,7 @@
 
 /obj/projectile/plasma/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	var/blast_dir = src.dir

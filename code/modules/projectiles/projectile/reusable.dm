@@ -64,9 +64,12 @@
 
 /obj/projectile/bullet/reusable/plunger/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	// use target abort as this is a target effect.
+	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return
-	var/mob/living/carbon/H = hit_atom
+	var/mob/living/carbon/H = target
+	if(!istype(H))
+		return
 	var/obj/item/plunger/P
 	if(!H.wear_mask)
 		H.equip_to_slot_if_possible(P, SLOT_MASK)

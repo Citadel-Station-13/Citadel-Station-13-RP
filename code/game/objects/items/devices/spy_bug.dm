@@ -111,7 +111,7 @@
 
 /obj/item/camerabug/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	visible_message("The [src] lens shatters!")
 	new brokentype(get_turf(src))

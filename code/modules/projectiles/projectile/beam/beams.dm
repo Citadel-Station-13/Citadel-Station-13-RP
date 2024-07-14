@@ -130,7 +130,7 @@
 
 /obj/projectile/beam/pulse/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isturf(target))
 		LEGACY_EX_ACT(target, 2, null)
@@ -171,7 +171,7 @@
 
 /obj/projectile/beam/lasertag/blue/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
@@ -184,7 +184,7 @@
 
 /obj/projectile/beam/lasertag/red/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
@@ -201,7 +201,7 @@
 
 /obj/projectile/beam/lasertag/omni/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
@@ -287,7 +287,7 @@
 
 /obj/projectile/beam/stun/disabler/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(!(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT))
+	if(!(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT))
 		return
 	if(istype(target, /mob/living/silicon/robot) && prob(agony))
 		var/mob/living/silicon/robot/R = target

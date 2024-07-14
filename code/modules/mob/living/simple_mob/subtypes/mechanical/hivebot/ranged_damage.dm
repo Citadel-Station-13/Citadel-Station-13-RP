@@ -176,7 +176,7 @@
 
 /obj/projectile/arc/emp_blast/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	empulse(T, emp_dev, emp_heavy, emp_med, emp_light) // Normal EMP grenade.
 	return . | PROJECTILE_IMPACT_DELETE

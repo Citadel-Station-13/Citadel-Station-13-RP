@@ -44,6 +44,8 @@
 /// used by /impact() on projectile to signal to impact_loop()
 /// that the projectile should keep impacting everything on the turf it was trying to hit
 #define PROJECTILE_IMPACT_CONTINUE_LOOP (1<<10)
+/// target was deleted, stop processing on target side but not projectile side
+#define PROJECTILE_IMPACT_TARGET_DELETED (1<<11)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)
@@ -51,10 +53,10 @@
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_NOT_HIT (PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH)
 /// any of these means don't just delete after hit
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH (PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_PIERCE)
-/// any of these means the projectile should pass through by piercing the entity
-#define PROJECTILE_IMPACT_FLAGS_SHOULD_PIERCE (PROJECTILE_IMPACT_PIERCE)
 /// any of these means the projectile should abort bullet_act
-#define PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT (PROJECTILE_IMPACT_DELETE | PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH)
+#define PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT (PROJECTILE_IMPACT_DELETE | PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH)
+/// any of these means the projectile should abort bullet_act, but not on_impact() for the projectile
+#define PROJECTILE_IMPACT_FLAGS_TARGET_ABORT (PROJECTILE_IMPACT_DELETE | PROJECTILE_IMPACT_REFLECT | PROJECTILE_IMPACT_PHASE | PROJECTILE_IMPACT_PASSTHROUGH | PROJECTILE_IMPACT_TARGET_DELETED)
 
 //* projectile_type bitfield *//
 

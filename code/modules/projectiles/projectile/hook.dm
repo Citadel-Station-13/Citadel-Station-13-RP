@@ -60,7 +60,7 @@
 
 /obj/projectile/energy/hook/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	perform_intent_unique(target)
 

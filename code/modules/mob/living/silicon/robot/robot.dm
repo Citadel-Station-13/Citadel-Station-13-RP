@@ -535,7 +535,7 @@
 
 /mob/living/silicon/robot/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	// todo: why is this in bullet act and not where we take damage maybe?
 	if(prob(75) && proj.damage > 0)

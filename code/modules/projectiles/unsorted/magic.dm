@@ -14,7 +14,7 @@
 
 /obj/projectile/magic/death/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isliving(target))
 		var/mob/living/L = target
@@ -32,7 +32,7 @@
 
 /obj/projectile/magic/resurrection/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(isliving(target))
 		var/mob/living/L = target
@@ -56,7 +56,7 @@
 
 /obj/projectile/magic/teleport/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ismob(target))
 		var/mob/L = target
@@ -85,7 +85,7 @@
 
 /obj/projectile/magic/door/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(istype(target, /obj/machinery/door))
 		OpenDoor(target)
@@ -311,7 +311,7 @@
 
 /obj/projectile/magic/spellblade/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	if(ismob(target))
@@ -333,7 +333,7 @@
 
 /obj/projectile/magic/arcane_barrage/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 
 	if(ismob(target))
@@ -370,7 +370,7 @@
 
 /obj/projectile/magic/locker/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(!created)
 		var/obj/structure/closet/decay/C = new(src)
@@ -449,7 +449,7 @@
 
 /obj/projectile/magic/aoe/lightning/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ismob(target))
 		var/mob/L = target
@@ -478,7 +478,7 @@
 
 /obj/projectile/magic/aoe/fireball/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(ismob(target))
 		var/mob/living/M = target
@@ -500,7 +500,7 @@
 
 /obj/projectile/magic/aoe/fireball/infernal/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	var/turf/T = get_turf(target)
 	for(var/i=0, i<50, i+=10)
@@ -516,7 +516,7 @@
 
 /obj/projectile/magic/nuclear/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(used)
 		return
@@ -557,7 +557,7 @@
 
 /obj/projectile/magic/spellcard/book/spark/on_impact_new(atom/target, impact_flags, def_zone)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	var/mob/living/carbon/M = target
 	if(ismob(target))

@@ -134,7 +134,7 @@
 
 /obj/projectile/bullet/magnetic/fuelrod/supermatter/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(istype(target,/turf/simulated/wall) || istype(target,/mob/living))
 		target.visible_message("<span class='danger'>The [src] burns a perfect hole through \the [target] with a blinding flash!</span>")
@@ -161,7 +161,7 @@
 
 /obj/projectile/bullet/magnetic/bore/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
 	if(istype(target, /turf/simulated/mineral))
 		var/turf/simulated/mineral/MI = target
