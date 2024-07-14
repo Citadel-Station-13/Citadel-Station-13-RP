@@ -793,7 +793,7 @@ var/global/list/light_type_cache = list()
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
 	var/area/A = get_area(src)
-	return !A.lightswitch && A.power_light || flickering
+	return !A.lightswitch && (A.power_channels & POWER_BIT_LIGHT) || flickering
 
 // returns whether this light has power
 // true if area has power and lightswitch is on

@@ -89,7 +89,7 @@
 					spawn(20)
 						to_chat(src, "Backup battery online. Scanners, camera, and radio interface offline. Beginning fault-detection.")
 						sleep(50)
-						if (loc.power_channels & POWER_CHANNEL_EQUIP)
+						if (loc.power_channels & POWER_BIT_EQUIP)
 							if (!istype(T, /turf/space))
 								to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
 								aiRestorePowerRoutine = 0

@@ -81,6 +81,7 @@
 			var/obj/machinery/apc/A = T.master
 			if(A.is_critical)
 				continue
+			// todo: start_grid_check()
 			A.do_grid_check()
 
 	for(var/obj/machinery/power/smes/smes in hosts) // These are "upstream"
@@ -107,7 +108,8 @@
 			var/obj/machinery/apc/A = T.master
 			if(A.is_critical)
 				continue
-			A.grid_check = FALSE
+			// todo: reset_grid_check()
+			A.error_check_until = null
 
 	for(var/obj/machinery/power/smes/smes in hosts) // These are "upstream"
 		smes.grid_check = FALSE

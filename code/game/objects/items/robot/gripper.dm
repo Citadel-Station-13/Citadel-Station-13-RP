@@ -145,7 +145,6 @@
 				A.cell.update_icon()
 				A.cell = null
 
-				A.charging = 0
 				A.update_icon()
 
 				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")

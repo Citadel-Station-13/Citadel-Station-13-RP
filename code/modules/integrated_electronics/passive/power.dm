@@ -170,8 +170,8 @@
 		return
 	var/area/A = get_area(src)
 	if(A)
-		if(A.powered(EQUIP) && assembly.give_power(power_amount))
-			A.use_burst_power(power_amount, EQUIP)
+		if(A.powered(POWER_CHANNEL_EQUIP) && assembly.give_power(power_amount))
+			A.use_burst_power(power_amount, POWER_CHANNEL_EQUIP)
 			// give_power() handles CELLRATE on its own.
 
 // Interacts with the powernet.

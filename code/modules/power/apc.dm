@@ -820,13 +820,11 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	if(prob(5)) // APC completely ruined.
 		set_broken()
 
-/obj/machinery/apc/do_grid_check()
+// todo: start_grid_check, reconsider this proc
+/obj/machinery/apc/proc/do_grid_check()
 	if(is_critical)
 		return
-	grid_check = TRUE
-	spawn(15 MINUTES) // Protection against someone deconning the grid checker after a grid check happens, preventing infinte blackout.
-		if(src && grid_check == TRUE)
-			grid_check = FALSE
+	error_check_until = world.time + 15 MINUTES
 
 /obj/machinery/apc/proc/update_area()//From apc_vr.dm
 	var/area/NA = get_area(src)
@@ -1035,7 +1033,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
  * @return TRUE / FALSE
  */
 /obj/machinery/apc/proc/is_channel_online(channel)
-	return !!(channels_active & POWER_CHANNEL_TO_BIT(channel))
+	return !!(channels_active & POWER_BIT_TO_BIT(channel))
 
 /**
  * sets a channel to a specific mode
@@ -1228,7 +1226,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/apc, 22)
 	if(!isnull(registered_area.area_power_override))
 		// the area uses power
 		for(var/channel in 1 to POWER_CHANNEL_COUNT)
-			if(!(registered_area.power_channels & POWER_CHANNEL_TO_BIT(channel)))
+			if(!(registered_area.power_channels & POWER_BIT_TO_BIT(channel)))
 				// not on
 				continue
 			var/channel_total = area.power_usage_static[channel]
