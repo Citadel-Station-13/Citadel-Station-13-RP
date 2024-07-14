@@ -24,7 +24,7 @@
 	sharp = TRUE
 	edge = TRUE
 	// sharpness = SHARP_EDGED
-	action_button_name = "Toggle Light"
+	item_action_name = "Toggle Light"
 	light_wedge = LIGHT_WIDE
 	// actions_types = list(/datum/action/item_action/toggle_light)
 	// var/list/trophies = list()
@@ -208,10 +208,10 @@
 		update_icon()
 		playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 
-/obj/item/kinetic_crusher/ui_action_click(mob/user, actiontype)
+/obj/item/kinetic_crusher/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	light_on = !light_on
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
-	update_brightness(user)
+	update_brightness(actor.performer)
 	update_icon()
 
 /obj/item/kinetic_crusher/proc/update_brightness(mob/user = null)

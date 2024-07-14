@@ -532,9 +532,6 @@
 		var/mob/observer/dead/newghost = to_despawn.ghostize()
 		newghost.timeofdeath = world.time
 
-	//This should guarantee that ghosts don't spawn.
-	to_despawn.ckey = null
-
 	// Delete the mob.
 	qdel(to_despawn)
 	set_occupant(null)

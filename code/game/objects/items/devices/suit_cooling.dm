@@ -11,7 +11,7 @@
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
-	action_button_name = "Toggle Heatsink"
+	item_action_name = "Toggle Heatsink"
 
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
@@ -28,7 +28,7 @@
 /obj/item/suit_cooling_unit/empty
 	cell = null
 
-/obj/item/suit_cooling_unit/ui_action_click()
+/obj/item/suit_cooling_unit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle(usr)
 
 /obj/item/suit_cooling_unit/Initialize(mapload)
