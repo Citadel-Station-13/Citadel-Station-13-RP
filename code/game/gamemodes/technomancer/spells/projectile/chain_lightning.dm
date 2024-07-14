@@ -40,8 +40,8 @@
 	. = ..()
 	if(. & (PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT | PROJECTILE_IMPACT_BLOCKED))
 		return
-	var/mob/target_mob = target
-	if(!ismob(target_mob))
+	var/mob/living/target_mob = target
+	if(!isliving(target_mob))
 		return
 	//First we shock the guy we just hit.
 	if(ishuman(target_mob))
