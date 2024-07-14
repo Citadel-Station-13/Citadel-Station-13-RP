@@ -178,7 +178,7 @@
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
-	empulse(T, emp_dev, emp_heavy, emp_med, emp_light) // Normal EMP grenade.
+	empulse(target, emp_dev, emp_heavy, emp_med, emp_light) // Normal EMP grenade.
 	return . | PROJECTILE_IMPACT_DELETE
 
 /obj/projectile/arc/emp_blast/weak

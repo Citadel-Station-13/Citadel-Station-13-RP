@@ -176,10 +176,10 @@
 
 /obj/projectile/beam/lightning/energy_siphon/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT)
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return
-	var/mob/target_mob = target
-	if(!ismob(target_mob))
+	var/mob/living/target_mob = target
+	if(!isliving(target_mob))
 		return
 	if(ishuman(target_mob)) // Otherwise someone else stood in the beam and is going to pay for it.
 		var/mob/living/carbon/human/H = target_mob

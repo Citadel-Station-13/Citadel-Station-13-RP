@@ -38,7 +38,7 @@
 
 /obj/projectile/beam/chain_lightning/on_impact_new(atom/target, impact_flags, def_zone, blocked)
 	. = ..()
-	if(. & (PROJECTILE_IMPACT_FLAGS_SHOULD_ABORT | PROJECTILE_IMPACT_BLOCKED))
+	if(. & (PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT | PROJECTILE_IMPACT_BLOCKED))
 		return
 	var/mob/target_mob = target
 	if(!ismob(target_mob))
