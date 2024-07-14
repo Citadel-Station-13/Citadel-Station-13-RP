@@ -58,7 +58,7 @@ GLOBAL_REAL_VAR(dmm_preloader_target)
 	// only do everything if necessary.
 	var/datum/dmm_context/loading_context_local = preloader_local.loading_context
 	var/turn_angle = loading_context_local.loaded_orientation_turn_angle
-	if(turn_angle != 0 && what.preloading_dir(loading_context_local))
+	if(turn_angle && what.preloading_dir(loading_context_local))
 		var/multi_tile = ismovable(what) && ((what:bound_width > WORLD_ICON_SIZE) || (what:bound_height > WORLD_ICON_SIZE)) && (what.appearance_flags & TILE_MOVER)
 		var/invert_x = loading_context_local.loaded_orientation_invert_x
 		var/invert_y = loading_context_local.loaded_orientation_invert_y

@@ -316,7 +316,7 @@
 	var/swap_xy = context.loaded_orientation_swap_xy
 	var/xi = context.loaded_orientation_xi
 	var/yi = context.loaded_orientation_yi
-	var delta_swap = x - y
+	var/delta_swap = x - y
 	// less checks later
 	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || y_lower > -INFINITY || y_upper < INFINITY
 	// did we try to run out of bounds?
