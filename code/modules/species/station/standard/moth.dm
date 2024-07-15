@@ -18,8 +18,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
-	icobase = 'icons/mob/species/moth/body.dmi'
-	deform  = 'icons/mob/species/moth/body.dmi'
+	bodyset = /datum/bodyset/organic/moth
 
 	sprite_accessory_defaults = list(
 		SPRITE_ACCESSORY_SLOT_EARS = /datum/sprite_accessory/ears/bodyset/moth,

@@ -79,6 +79,8 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	var/extra_overlay2
 	var/can_be_hidden = TRUE
 
+#warn emissives support
+
 /**
  * todo: with_base_state completely tramples extra_overlay, extra_overlay2
  * we need to redo this at some point.

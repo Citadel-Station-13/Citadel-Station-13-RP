@@ -42,6 +42,13 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
+	//* Appearance *//
+	/// bodyset to use by default
+	var/datum/bodyset/bodyset = /datum/bodyset/organic/human
+	/// bodysets that can be chosen. automatically includes [bodyset] but you should include it anyways.
+	var/list/datum/bodyset/bodysets
+	#warn hook in new
+
 	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
@@ -85,14 +92,6 @@
 	var/species_statpanel = FALSE
 
 	//? Icons
-	/// Normal icon set.
-	var/icobase      = 'icons/mob/species/human/body.dmi'
-	/// Mutated icon set.
-	var/deform       = 'icons/mob/species/human/deformed_body.dmi'
-	/// Preview icon used in species selection.
-	var/preview_icon = 'icons/mob/species/human/preview.dmi'
-	/// Species-specific husk sprite if applicable.
-	var/husk_icon    = 'icons/mob/species/default_husk.dmi'
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon_template = 'icons/mob/species/template.dmi'
 	/// Makes the icon wider/thinner.
@@ -111,8 +110,6 @@
 	var/color_mult = 0
 	/// force non greyscale icons to greyscale before multiplying? WARNING :CITADEL JANK, REPLACE ASAP
 	var/color_force_greyscale = FALSE
-	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
-	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
 	var/blood_mask      = 'icons/mob/species/human/blood_mask.dmi'
 	/// The icon_state used inside OnFire.dmi for when on fire.
 	var/fire_icon_state = "humanoid"

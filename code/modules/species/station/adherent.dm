@@ -5,6 +5,18 @@
 	name_plural = "Adherents"
 	default_bodytype = BODYTYPE_ADHERENT
 
+	bodyset = /datum/bodyset/special/adherent/default
+	bodysets = list(
+		/datum/bodyset/special/adherent/default,
+		/datum/bodyset/special/adherent/red,
+		/datum/bodyset/special/adherent/blue,
+		/datum/bodyset/special/adherent/black,
+		/datum/bodyset/special/adherent/green,
+		/datum/bodyset/special/adherent/purple,
+		/datum/bodyset/special/adherent/yellow,
+		/datum/bodyset/special/adherent/white,
+	)
+
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \
 	built by an extinct culture. They are devoted to the memory of their long-dead creators, \
 	whose home system and burgeoning stellar empire was scoured to bedrock by a solar flare. \
@@ -20,11 +32,6 @@
 //	cyborg_noun = null
 
 	icon_template   = 'icons/mob/species/adherent/template.dmi'
-	icobase         = 'icons/mob/species/adherent/body.dmi'
-	deform          = 'icons/mob/species/adherent/body.dmi'
-	preview_icon    = 'icons/mob/species/adherent/preview.dmi'
-	damage_overlays = 'icons/mob/species/adherent/damage_overlay.dmi'
-	damage_mask     = 'icons/mob/species/adherent/damage_mask.dmi'
 	blood_mask      = 'icons/mob/species/adherent/blood_mask.dmi'
 
 	siemens_coefficient  = 0
