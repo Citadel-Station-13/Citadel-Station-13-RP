@@ -29,7 +29,15 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
 	var/priority = 0
 	/// goes to mob when in inventory - whether equipped to slot or in hand
 	/// do not modify while applied. it will not un/register properly.
+	///
+	/// * Turn this off if you're doing your own handling.
 	var/shields_in_inventory = TRUE
+	/// Allow interception of `atom_shieldcall`.
+	///
+	/// * "Yes, I read and understand the terms and conditions"
+	/// * "Yes, I will handle SHIELDCALL_RETURN_SECOND_CALL to prevent a double-block scenario"
+	/// * "Yes, I understand that atom_shieldcall is low level and is called in addition to other shieldcall handling procs"
+	var/low_level_intercept = FALSE
 
 /**
  * sent over from the atom
@@ -39,10 +47,12 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * shieldcall_args - indexed list of shieldcall args.
  * * fake_attack - just checking!
  *
- * @return SHIELDCALL_STATUS_* enum
+ * @return nothing, because you should be modifying the return flags via shieldcall_args list!
  */
 /datum/shieldcall/proc/handle_shieldcall(atom/defending, list/shieldcall_args, fake_attack)
 	return
+
+//* Projectile Handling *//
 
 /**
  * sent over from the atom
@@ -50,13 +60,15 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * this is pre-intercept for projectiles; please keep this cheap.
  * * for stuff like reactive teleport armor, use this because it will stop the hit entirely.
  * * passed in bullet act args is mutable.
+ * * we DO NOT process SHIELDCALL_RETURN flags other than _TERMINATE, because we have direct access to impact_flags of the bullet!
  *
  * @params
  * * defending - the atom in question
  * * bullet_act_args - indexed list of bullet_act args.
+ * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
  *
- * @return SHIELDCALL_STATUS_* enum
+ * @return SHIELDCALL_TERMINATE or NONE
  */
-/datum/shieldcall/proc/handle_bullet(atom/defending, list/bullet_act_args, fake_attack)
-	return
+/datum/shieldcall/proc/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
+	return NONE

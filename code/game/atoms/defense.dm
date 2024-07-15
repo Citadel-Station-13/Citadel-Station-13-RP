@@ -96,10 +96,11 @@
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
 	// 1. fire shieldcalls
+	var/shieldcall_returns = NONE
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		switch(shieldcall.handle_bullet(src, args))
-			if(SHIELDCALL_RETURN_TERMINATE)
-				break
+		shieldcall_returns |= shieldcall.handle_bullet(src, args, shieldcall_returns)
+		if(shieldcall_returns & SHIELDCALL_RETURNS_SHOULD_TERMINATE)
+			break
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return impact_flags
@@ -545,40 +546,23 @@
 	damage = fetch_armor().resultant_damage(damage, tier, flag)
 	return args.Copy()
 
-//? shieldcalls
+//* Shieldcalls *//
 
-// todo: rework this maybe; this doesn't work too well for all types
-/**
- * checks for shields
- * not always accurate
- *
- * params are modified and then returned as a list.
- *
- * @params
- * * damage - raw damage
- * * damtype - damage type
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
- * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
- * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
- * * retval - shieldcall flags passed through components. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
- *
- * @return modified args as list
- */
-/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
-	for(var/datum/shieldcall/calling as anything in shieldcalls)
-		calling.handle_shieldcall(src, args, TRUE)
-	return args.Copy()
-
-// todo: rework this maybe; this doesn't work too well for all types
 /**
  * runs an attack against shields
- * side effects are allowed
+ *
+ * * side effects are **not** allowed
+ * * this is the 'just checking' version.
  *
  * params are modified and then returned as a list
  *
+ * * This is the dynamic shieldcall system. It's best to do what you want in specific shieldcall hooks if possible.
+ * * What this means is that this can't, say, redirect or delete a projectile, because bullet act handling is where that happens.
+ * * This more or less just lets you modify incoming damage instances sometimes.
+ * * The args are not copied! They're passed back directly. This has implications.
+ * * Make sure you pass in SHIELDCALL_RETURN_SECOND_CALL if **any** kind of shieldcall invocation has happened during this attack.
+ * * SECOND_CALL is required to tell things that something is not the first time, so you don't get doubled blocking efficiency.
+ *
  * @params
  * * damage - raw damage
  * * damtype - damage type
@@ -587,15 +571,56 @@
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
- * * retval - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  *
- * @return modified args as list
+ * @return args, modified, as list.
  */
-/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
+/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, list/additional)
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
+		if(!calling.low_level_intercept)
+			continue
+		calling.handle_shieldcall(src, args, TRUE)
+		if(flags & SHIELDCALL_RETURN_TERMINATE)
+			break
+	return args
+
+/**
+ * runs an attack against shields
+ *
+ * * side effects are allowed
+ * * this is run during an actual attack
+ *
+ * params are modified and then returned as a list
+ *
+ * * This is the dynamic shieldcall system. It's best to do what you want in specific shieldcall hooks if possible.
+ * * What this means is that this can't, say, redirect or delete a projectile, because bullet act handling is where that happens.
+ * * This more or less just lets you modify incoming damage instances sometimes.
+ * * The args are not copied! They're passed back directly. This has implications.
+ * * Make sure you pass in SHIELDCALL_RETURN_SECOND_CALL if **any** kind of shieldcall invocation has happened during this attack.
+ * * SECOND_CALL is required to tell things that something is not the first time, so you don't get doubled blocking efficiency.
+ *
+ * @params
+ * * damage - raw damage
+ * * damtype - damage type
+ * * tier - penetration / attack tier
+ * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * mode - damage_mode
+ * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
+ * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
+ * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
+ *
+ * @return args, modified, as list.
+ */
+/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, list/additional)
+	for(var/datum/shieldcall/calling as anything in shieldcalls)
+		if(!calling.low_level_intercept)
+			continue
 		calling.handle_shieldcall(src, args)
-	return args.Copy()
+		if(flags & SHIELDCALL_RETURN_TERMINATE)
+			break
+	return args
 
 /atom/proc/register_shieldcall(datum/shieldcall/delegate)
 	LAZYINITLIST(shieldcalls)
