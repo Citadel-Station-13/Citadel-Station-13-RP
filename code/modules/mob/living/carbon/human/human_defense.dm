@@ -377,16 +377,28 @@ meteor_act
 		miss_chance = max(5 * (distance - 2), 0)
 		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
 
-		if(zone && TT.thrower != src)
-			var/shield_check = check_shields(throw_damage, O, TT.thrower, zone, "[O]")
-			if(shield_check == PROJECTILE_FORCE_MISS)
-				zone = null
-			else if(shield_check)
-				return
+		var/force_pierce = FALSE
+		var/no_attack = FALSE
+		if(zone)
+			// perform shieldcall
+			// todo: reconcile all the way down to /atom, or at least a higher level than /human.
+			var/retval
+			for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+				retval |= shieldcall.handle_throw_impact(src, TT)
+				if(retval & SHIELDCALL_RETURNS_SHOULD_TERMINATE)
+					break
+			if(retval & SHIELDCALL_RETURNS_SHOULD_PROCESS)
+				if(retval & SHIELDCALL_RETURNS_PIERCE_ATTACK)
+					force_pierce = TRUE
+				if(retval & SHIELDCALL_RETURNS_ABORT_ATTACK)
+					no_attack = TRUE
 
 		if(!zone)
 			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
 			return COMPONENT_THROW_HIT_NEVERMIND | COMPONENT_THROW_HIT_PIERCE
+
+		if(no_attack)
+			return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
 		var/obj/item/organ/external/affecting = get_organ(zone)
 		var/hit_area = affecting.name
@@ -405,7 +417,6 @@ meteor_act
 		var/armor = run_armor_check(affecting, "melee", O.armor_penetration, "Your armor has protected your [hit_area].", "Your armor has softened hit to your [hit_area].") //I guess "melee" is the best fit here
 		if(armor < 100)
 			apply_damage(throw_damage, dtype, zone, armor, soaked, is_sharp(O), has_edge(O), O)
-
 
 		//thrown weapon embedded object code.
 		if(dtype == BRUTE && istype(O,/obj/item))
@@ -449,6 +460,8 @@ meteor_act
 					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
 					anchored = TRUE
 					pinned += O
+
+		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)

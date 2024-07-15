@@ -283,6 +283,25 @@
 			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
 			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
 
+		var/force_pierce = FALSE
+		var/no_attack = FALSE
+		if(zone)
+			// perform shieldcall
+			// todo: reconcile all the way down to /atom, or at least a higher level than /human.
+			var/retval
+			for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+				retval |= shieldcall.handle_throw_impact(src, TT)
+				if(retval & SHIELDCALL_RETURNS_SHOULD_TERMINATE)
+					break
+			if(retval & SHIELDCALL_RETURNS_SHOULD_PROCESS)
+				if(retval & SHIELDCALL_RETURNS_PIERCE_ATTACK)
+					force_pierce = TRUE
+				if(retval & SHIELDCALL_RETURNS_ABORT_ATTACK)
+					no_attack = TRUE
+
+		if(no_attack)
+			return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
+
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
 		var/armor = run_armor_check(null, "melee")
 		var/soaked = get_armor_soak(null, "melee")
@@ -328,6 +347,8 @@
 					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
 					src.anchored = 1
 					src.pinned += O
+
+		return force_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
 /mob/living/proc/embed(var/obj/O, var/def_zone=null)
 	O.loc = src

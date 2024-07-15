@@ -52,6 +52,8 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
 /datum/shieldcall/proc/handle_shieldcall(atom/defending, list/shieldcall_args, fake_attack)
 	return
 
+//* Melee Handling *//
+
 //* Projectile Handling *//
 
 /**
@@ -68,7 +70,27 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
  *
- * @return SHIELDCALL_TERMINATE or NONE
+ * @return SHIELDCALL_RETURN_TERMINATE or NONE
  */
 /datum/shieldcall/proc/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
 	return NONE
+
+//* Throw Handling *//
+
+/**
+ * sent over from the atom
+ *
+ * * this is pre-intercept for throwns
+ * * for stuff like reactive teleport armor, use this because it will stop the hit entirely
+ *
+ * todo: implement for turf
+ * todo: implement for obj
+ *
+ * @params
+ * * defending - the thing being hit
+ * * thrown - the thrown object's data
+ *
+ * @return SHIELDCALL_RETURN_* flags
+ */
+/datum/shieldcall/proc/handle_throw_impact(atom/defending, datum/thrownthing/thrown)
+	return
