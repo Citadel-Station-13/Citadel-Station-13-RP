@@ -18,6 +18,16 @@
 	/// mobs use ids as ref tags instead of actual refs.
 	var/static/next_mob_id = 0
 
+	//* Actions *//
+	/// our innate action holder; actions here aren't bound to what we're controlling / touching, but instead ourselves
+	///
+	/// * control and sight of these requires mindjacking, basically
+	var/datum/action_holder/actions_innate
+	/// our controlled action holder; actions here are bound to physical control, not our own body
+	///
+	/// * control and sight of these requires only control over motion / actions
+	var/datum/action_holder/actions_controlled
+
 	//? Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()

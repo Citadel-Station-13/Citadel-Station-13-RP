@@ -22,7 +22,7 @@
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
 	rad_flags = NONE
-	action_button_name = "Toggle Heatsink"
+	item_action_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
 	armor_type = /datum/armor/hardsuit
@@ -540,7 +540,7 @@
 		else
 			update_airtight(piece, 1) // Seal
 
-/obj/item/hardsuit/ui_action_click()
+/obj/item/hardsuit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_cooling(usr)
 
 /obj/item/hardsuit/proc/toggle_cooling(var/mob/user)

@@ -314,8 +314,8 @@
 	if(handcuffed)
 		drop_all_held_items()
 		stop_pulling()
-	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()
+	update_mobility()
 
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)
