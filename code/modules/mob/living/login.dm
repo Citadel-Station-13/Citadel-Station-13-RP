@@ -6,7 +6,6 @@
 	mind.active = 1		//indicates that the mind is currently synced with a client
 
 	update_antag_icons(mind)
-	update_action_buttons()
 
 	if(istype(src.ai_holder, /datum/ai_holder/polaris))
 		var/datum/ai_holder/polaris/ai_holder = src.ai_holder

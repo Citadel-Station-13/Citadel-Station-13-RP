@@ -71,7 +71,7 @@
 	message_admins(msg)
 	log_game(msg)
 	new_voice.mind = candidate.mind			//Transfer the mind, if any.
-	new_voice.ckey = candidate.ckey			//Finally, bring the client over.
+	candidate.transfer_client_to(new_voice)
 	voice_mobs.Add(new_voice)
 	listening_objects |= src
 
