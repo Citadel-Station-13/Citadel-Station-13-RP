@@ -10,5 +10,8 @@
 
 	controller_linking = TRUE
 
+	/// can access config
+	var/allow_configuration = TRUE
+
 #warn impl
 

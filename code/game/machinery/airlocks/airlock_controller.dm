@@ -16,6 +16,9 @@
 	//* Access
 	/// we can access the airlock from the controller
 	var/control_panel = TRUE
+	/// security lockdown mode - all buttons and docking requests are ignored
+	/// panels can still be used to control it.
+	var/security_lockdown = FALSE
 
 	//* Configuration
 	/// mode
@@ -55,6 +58,8 @@
 	var/exterior_environment_mode = AIRLOCK_ENVIRONMENT_ADAPTIVE
 
 	//* Peripherals
+	/// our link id
+	var/airlock_id
 	/// panels
 	var/list/obj/machinery/airlock_peripheral/panel/panels
 	/// cyclers
@@ -72,16 +77,11 @@
 	/// exterior doors
 	var/list/obj/machinery/door/exterior
 
-	//* Shuttles
-	/// linked dock, if any
-	var/obj/shuttle_dock/dock
-
 	//* State
 	/// interior door state
 	var/interior_state = AIRLOCK_STATE_UNLOCKED
 	/// exterior door state
 	var/exterior_state = AIRLOCK_STATE_UNLOCKED
-
 	/// cycle state
 	var/cycle_state = AIRLOCK_CYCLE_INACTIVE
 	/// last state we were cycling towards; this allows for resumes
@@ -93,18 +93,6 @@
 	var/last_cycle_temperature
 	/// gas contents on last cycle pressure
 	var/list/last_cycle_gases
-
-	#warn below
-	/// dock state
-	var/dock_state = AIRLOCK_DOCK_NONE
-	/// docking overridden
-	var/dock_override = FALSE
-
-	/// security lockdown mode - all buttons and docking requests are ignored
-	/// panels can still be used to control it.
-	var/security_lockdown = FALSE
-	#warn above
-
 	/// operation cycle; used for things like asyncs to be able to verify behavior.
 	var/op_cycle
 	/// next operation cycle
@@ -144,6 +132,11 @@
 			exterior_environment = null
 		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
 			exterior_environment = new /datum/airlock_environment(probe_outdoors_gas())
+
+/obj/machinery/airlock_controller/preloading_instance(with_id)
+	. = ..()
+	if(airlock_id)
+		airlock_id = SSmapping.mangled_round_local_id(airlock_id, with_id)
 
 /obj/machinery/airlock_controller/proc/set_interior_state(state)
 	src.interior_state = state
