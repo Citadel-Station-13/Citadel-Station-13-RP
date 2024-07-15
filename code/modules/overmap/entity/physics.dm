@@ -7,11 +7,9 @@
 	deactivate_physics()
 	vel_x = 0
 	vel_y = 0
-	// todo: proper overmaps physics, take diff from overmap south/west
-	pos_x = (((loc.x - 1) * WORLD_ICON_SIZE) * OVERMAP_DISTANCE_PIXEL) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_DISTANCE_PIXEL)
-	pos_y = (((loc.y - 1) * WORLD_ICON_SIZE) * OVERMAP_DISTANCE_PIXEL) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_DISTANCE_PIXEL)
-	pixel_x = 0
-	pixel_y = 0
+	step_x = step_y = 0
+	pos_x = OVERMAP_PIXEL_TO_DIST(1 + (x - 1) * WORLD_ICON_SIZE + (bound_x + step_x))
+	pos_y = OVERMAP_PIYEL_TO_DIST(1 + (y - 1) * WORLD_ICON_SIZE + (bound_y + step_y))
 
 // legacy ticking hook
 /obj/overmap/entity/process(delta_time)
@@ -20,52 +18,22 @@
 /obj/overmap/entity/proc/physics_tick(dt)
 	if(!overmap)
 		return // what are we doing
-	// todo: proper overmaps physics, take diff from overmap south/west
-	var/new_position_x = pos_x + vel_x * dt
-	var/new_position_y = pos_y + vel_y * dt
-
-	var/new_pos_pix_x = OVERMAP_DIST_TO_PIXEL(new_position_x)
-	var/new_pos_pix_y = OVERMAP_DIST_TO_PIXEL(new_position_y)
-
-	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
-	var/new_turf_x = CEILING(new_pos_pix_x / WORLD_ICON_SIZE, 1)
-	var/new_turf_y = CEILING(new_pos_pix_y / WORLD_ICON_SIZE, 1)
-
-	var/new_pixel_x = MODULUS_F(new_pos_pix_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
-	var/new_pixel_y = MODULUS_F(new_pos_pix_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
-
-	var/new_loc = locate(new_turf_x, new_turf_y, z)
-
-	pos_x = new_position_x
-	pos_y = new_position_y
-
-	if(new_loc != loc)
-		var/turf/old_loc = loc
-		var/jumping = FALSE
-		if(istype(new_loc, /turf/overmap/edge))
-			var/turf/overmap/edge/edge = new_loc
-			new_loc = edge.get_wrap_counterpart()
-			jumping = TRUE
-			pos_x += edge.wrap_sign_x * OVERMAP_DISTANCE_TILE * overmap.width
-			pos_y += edge.wrap_sign_y * OVERMAP_DISTANCE_TILE * overmap.height
-		if(jumping)
-			is_forced_moving = TRUE
-			forceMove(new_loc)
-			is_forced_moving = FALSE
-		else if(get_dist(loc, new_loc) == 1)
-			if(!Move(new_loc, NORTH, dt * 10))
-				initialize_physics()
-				return
-		else
-			message_admins(SPAN_DANGER("overmap entity attempted to perform an illegal move ([src]); please check logs. halting movement of affected entity."))
-			initialize_physics()
-			CRASH("attempted to move not one tile but also while not jumping")
-		if(get_dist(old_loc, loc) > 1)
-			pixel_x = new_pixel_x
-			pixel_y = new_pixel_y
-			return
-	// todo: actual animations
-	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = 8, flags = ANIMATION_END_NOW)
+	// amount should move
+	var/ddx = vel_x * dt
+	var/ddy = vel_y * dt
+	// new phys step loc
+	pos_x += ddx
+	pos_y += ddy
+	// where to move to
+	var/nsx = floor(OVERMAP_DIST_TO_PIXEL(pos_x))
+	var/nsy = floor(OVERMAP_DIST_TO_PIXEL(pos_y))
+	// move
+	var/old_loc = loc
+	if(!Move(locate(1, 1, z), dir, ndx - (WORLD_ICON_SIZE * 0.5), ndy - (WORLD_ICON_SIZE * 0.5)))
+		initialize_physics()
+		stack_trace("failed to move")
+	else if(old_loc != loc)
+		Moved(old_loc, NONE)
 
 /obj/overmap/entity/proc/adjust_velocity(vx, vy)
 	if(!isnull(vx))
@@ -96,15 +64,13 @@
 	if(is_moving)
 		return
 	is_moving = TRUE
-	// todo: proper overmaps ticking
-	START_PROCESSING(SSprocessing, src)
+	SSovermap_physics.moving += src
 
 /obj/overmap/entity/proc/deactivate_physics()
 	if(!is_moving)
 		return
 	is_moving = FALSE
-	// todo: proper overmaps ticking
-	STOP_PROCESSING(SSprocessing, src)
+	SSovermap_physics.moving -= src
 
 /**
  * check if we're moving, used to determine if we need to start ticking

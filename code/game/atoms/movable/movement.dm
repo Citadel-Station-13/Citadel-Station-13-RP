@@ -3,6 +3,8 @@
  * This rewrites how we handle movement to avoid some BYOND-isms.
  */
 /atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	if(pixel_movement)
+		return ..()
 	. = FALSE
 	if(newloc == loc)
 		return
@@ -182,6 +184,8 @@
  * Only supports moves up to range 1, in any direction including diagonals.
  */
 /atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	if(pixel_movement)
+		return ..()
 	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
 	if(is_multi_tile && isturf(newloc))
 		newloc = locate(newloc.x + round(step_x / WORLD_ICON_SIZE), newloc.y + round(step_y / WORLD_ICON_SIZE), newloc.z)

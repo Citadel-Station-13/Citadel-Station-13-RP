@@ -2,8 +2,20 @@
  * entities
  *
  * overmap objects capable of motion
+ *
+ * * overmap objects use pixel movement
+ * * overmap objects call Moved() at very, very weird times.
+ * * overmap objects do not respond to normal Enter/Exit checks, overmap turfs and objects must use Cross()/Uncross() and their -ed versions.
  */
 /obj/overmap/entity
+	// pixel movement gaming
+	appearance_flags = KEEP_TOGETHER
+	pixel_movement = TRUE
+	animate_movement = NONE
+	glide_size = 0
+	step_size = INFINITY
+	uses_bounds_overlay = TRUE
+
 	//* identity *//
 	/// id
 	var/id
@@ -20,9 +32,14 @@
 	/// velocity y in overmap units per second
 	var/vel_y
 	/// position x in overmap units
+	///
+	/// * this is our lower-leftmost 'pixel'
 	var/pos_x
 	/// position y in overmap units
+	///
+	/// * this is our lower-leftmost 'pixel'
 	var/pos_y
+
 	/// max speed in overmap units per second
 	var/max_speed = OVERMAP_DISTANCE_TILE
 	/// is moving
@@ -64,6 +81,9 @@
 			set_velocity(vy = var_value)
 			return TRUE
 	return ..()
+
+/obj/overmap/entity/get_bounds_overlay()
+	return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
 
 /**
  * called when we join an overmap
