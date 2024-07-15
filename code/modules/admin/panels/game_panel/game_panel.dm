@@ -3,9 +3,8 @@
 
 /datum/admin_panel/game_panel
 	name = "Game Panel"
-	panes = list(
-		/datum/admin_pane/game/shuttle,
-		/datum/admin_pane/game/control,
-	)
+
+	var/list/panes = list()
+	#warn impl
 
 #warn *SCREAM

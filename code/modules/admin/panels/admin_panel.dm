@@ -14,7 +14,5 @@ GLOBAL_LIST_INIT(admin_panels, init_admin_panels())
 /datum/admin_panel
 	/// our name
 	var/name = "Admin Panel"
-	/// panes; set to list of typepaths to init.
-	var/list/datum/admin_pane/panes = list()
 
 #warn *SCREAM

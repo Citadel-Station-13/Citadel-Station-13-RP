@@ -20,6 +20,9 @@ GLOBAL_PROTECT(href_token)
 
 	var/datum/filter_editor/filteriffic
 
+	/// our game panel
+	var/datum/admin_panel/game_panel/game_panel = new
+
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
 		log_world("Admin datum created without a ckey argument. Datum has been deleted")
