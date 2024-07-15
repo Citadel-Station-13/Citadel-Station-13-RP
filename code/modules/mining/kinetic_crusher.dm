@@ -311,7 +311,7 @@
 	damage_type = BRUTE
 	damage_flag = ARMOR_BOMB
 	range = WORLD_ICON_SIZE * 6
-	accuracy = INFINITY	// NO.
+	accuracy_disabled = TRUE
 	// log_override = TRUE
 	var/obj/item/kinetic_crusher/hammer_synced
 

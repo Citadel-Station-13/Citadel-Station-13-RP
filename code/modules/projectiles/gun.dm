@@ -53,6 +53,15 @@
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 
+	//* Accuracy, Dispersion, Instability *//
+
+	/// entirely disable baymiss on fired projectiles
+	///
+	/// * this is a default value; set to null by default to have the projectile's say.
+	var/accuracy_disabled = null
+
+	// legacy below //
+
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
@@ -644,22 +653,24 @@
 			disp_mod += one_handed_penalty*0.5 //dispersion per point of two-handedness
 
 	//Accuracy modifiers
-	P.accuracy = accuracy + acc_mod
-	P.dispersion = disp_mod
+	if(!isnull(accuracy_disabled))
+		P.accuracy_disabled = accuracy_disabled
 
-	P.accuracy -= user.get_accuracy_penalty()
+	P.accuracy_overall_modify *= 1 + (acc_mod / 100)
+	P.accuracy_overall_modify *= 1 - (user.get_accuracy_penalty() / 100)
+	P.dispersion = disp_mod
 
 	//accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
-		P.accuracy += 30
+		P.accuracy_overall_modify *= 1.3
 
 	// Some modifiers make it harder or easier to hit things.
 	for(var/datum/modifier/M in user.modifiers)
 		if(!isnull(M.accuracy))
-			P.accuracy += M.accuracy
+			P.accuracy_overall_modify += 1 + (M.accuracy / 100)
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 

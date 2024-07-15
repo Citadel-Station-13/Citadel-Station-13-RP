@@ -19,10 +19,13 @@
 	inflict_atom_damage(style.get_unarmed_damage(attacker, src), style.damage_tier, style.damage_flag, style.damage_mode, ATTACK_TYPE_UNARMED, attacker)
 	return NONE
 
-/obj/bullet_act(obj/projectile/P, def_zone)
+/obj/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	// todo: should this really be here?
-	inflict_atom_damage(P.get_structure_damage(), P.damage_tier, P.damage_flag, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
+	// todo: projectile-side should do this maybe (?)
+	inflict_atom_damage(proj.get_structure_damage(), proj.damage_tier, proj.damage_flag, proj.damage_mode, ATTACK_TYPE_PROJECTILE, proj)
+	if(QDELETED(src))
+		return PROJECTILE_IMPACT_TARGET_DELETED
 
 /obj/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()

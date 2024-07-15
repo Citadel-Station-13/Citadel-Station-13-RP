@@ -78,8 +78,21 @@
 /// exotic energy or exotic matter
 #define PROJECTILE_TYPE_EXOTIC (1<<24)
 
-#warn projectile_type, projectile_type_cant on /obj/structure/prop/prism
-#warn projectile_type /obj/projectile
+DEFINE_BITFIELD_NEW(projectile_types, list(
+	/obj/projectile = list(
+		"projectile_type",
+	),
+	/obj/structure/prop/prism = list(
+		"projectile_type",
+		"projectile_type_cant",
+	),
+), list(
+	BITFIELD_NEW("Base - Kinetic", PROJECTILE_TYPE_KINETIC),
+	BITFIELD_NEW("Base - Energy", PROJECTILE_TYPE_ENERGY),
+	BITFIELD_NEW("Base - Beam", PROJECTILE_TYPE_BEAM),
+	BITFIELD_NEW("Flag - Photonic Energy", PROJECTILE_TYPE_PHOTONIC),
+	BITFIELD_NEW("Flag - Exotic Energy / Matter", PROJECTILE_TYPE_EXOTIC),
+))
 
 //* helpers *//
 

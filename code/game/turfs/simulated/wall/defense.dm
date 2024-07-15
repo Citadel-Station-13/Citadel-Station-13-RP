@@ -34,10 +34,12 @@
 	if(proj.ricochet_sounds && prob(15))
 		playsound(src, pick(proj.ricochet_sounds), 100, 1)
 
-	#warn uhh
-
+	// todo: should this really be here?
+	// todo: projectile-side should do this maybe (?)
 	inflict_atom_damage(proj.get_structure_damage(), proj.damage_tier, proj.damage_flag, proj.damage_mode, ATTACK_TYPE_PROJECTILE, proj)
-
+	if(QDELETED(src))
+		return PROJECTILE_IMPACT_TARGET_DELETED
+		
 /turf/simulated/wall/break_apart(method)
 	dismantle_wall()
 

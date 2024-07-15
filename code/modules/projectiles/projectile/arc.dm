@@ -6,6 +6,7 @@
 // Besides the visuals, arcing projectiles do not collide with anything until they reach the target, as they fly over them.
 // For best effect, use this only when it makes sense to do so, IE on the Surface. The projectiles don't care about ceilings or gravity.
 
+#warn test these
 /obj/projectile/arc
 	name = "arcing shot"
 	icon_state = "fireball" // WIP
@@ -43,12 +44,6 @@
 	var/datum/point/current_point = new(src)
 	var/datum/point/starting_point = new(starting)
 	return pixel_length_between_points(current_point, starting_point)
-
-/obj/projectile/arc/legacy_on_range()
-	if(loc)
-		on_impact(loc)
-	return ..()
-
 
 /obj/projectile/arc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	fired_dir = get_dir(user, target) // Used to determine if the projectile should turn in the air.

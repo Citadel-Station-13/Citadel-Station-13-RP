@@ -79,6 +79,14 @@
 	/// accuracy range floor; accuracy doesn't decrease past this
 	/// see desmos
 	var/accuracy_floor_range = WORLD_ICON_SIZE * 30
+	/// alter end result hit probability by this value
+	///
+	/// * this is a multiplier for hit chance if less than 1
+	/// * this is a divisor for miss chance if more than 1
+	/// * 0.5 will turn a 80% hit to a 40%
+	/// * 2 will turn a 80% hit to a 90%
+	/// * 2 will turn a 40% hit to a 70%
+	var/accuracy_overall_modify = 1
 
 	//* Combat - Effects *//
 
@@ -1294,6 +1302,13 @@
 		var/d = (min(distance, accuracy_floor_range) - accuracy_curve_x_shift - accuracy_curve_factor * 2) / accuracy_curve_factor
 		var/curved_percent = min(100, (-(d / sqrt(1 + d ** 2)) * 50) + 50 + accuracy_curve_y_adjust)
 		. *= curved_percent / 100
+	if(accuracy_overall_modify != 1)
+		if(accuracy_overall_modify < 1)
+			// below 1: multiplier for hit chance
+			. *= accuracy_overall_modify
+		else
+			// above 1: divisor for miss chance
+			. = 1 - ((1 - .) / accuracy_overall_modify)
 
 //* Physics - Configuration *//
 
