@@ -14,9 +14,7 @@
 	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
-	//var/blood_type = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
-	//var/fingerprint_hash = "\[UNSET\]"
 	var/pronouns = "\[UNSET\]"
 	var/species = "\[UNSET\]"
 	var/icon/front
@@ -119,7 +117,7 @@
 	popup.open()
 	return
 
-/obj/item/card/id/proc/set_id_photo(var/mob/M, nudist)
+/obj/item/card/id/proc/set_id_photo(var/mob/M)
 	if(!photoupdatequeued)
 		addtimer(CALLBACK(src, PROC_REF(_set_id_photo)), 1)
 	photoupdatequeued = M
@@ -149,12 +147,10 @@
 		id_card.extra_info["dnahash"] = "<b>DNA Hash:</b> [dna.unique_enzymes]"
 		id_card.extra_info["fingerprint"] = "<b>Fingerprint:</b> [md5(dna.uni_identity)]"
 		id_card.dna_hash		= dna.unique_enzymes
-	var/nude = FALSE
 	if(C && C.prefs)
 		id_card.extra_info += C.prefs.get_trait_id_info()
-		nude = C.prefs.nude_id
 	id_card.update_name()
-	id_card.set_id_photo(src, nude)
+	id_card.set_id_photo(src)
 
 /mob/living/carbon/human/set_id_info(obj/item/card/id/id_card, client/C)
 	..()

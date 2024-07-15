@@ -90,8 +90,6 @@
 
 	if(I)
 		medical.fields["b_dna"]		= I.dna_hash
-		/*general.fields["fingerprint"] 	= I.fingerprint_hash
-		medical.fields["b_type"]	= I.blood_type*/
 
 	AnnounceArrivalSimple(general.fields["name"], general.fields["rank"])
 	return 1

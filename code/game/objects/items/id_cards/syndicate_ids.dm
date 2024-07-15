@@ -51,9 +51,7 @@
 	entries[++entries.len] = list("name" = "Age", 				"value" = age)
 	entries[++entries.len] = list("name" = "Appearance",		"value" = "Set")
 	entries[++entries.len] = list("name" = "Assignment",		"value" = assignment)
-	//entries[++entries.len] = list("name" = "Blood Type",		"value" = blood_type)
 	entries[++entries.len] = list("name" = "DNA Hash", 			"value" = dna_hash)
-	//entries[++entries.len] = list("name" = "Fingerprint Hash",	"value" = fingerprint_hash)
 	entries[++entries.len] = list("name" = "Name", 				"value" = registered_name)
 	entries[++entries.len] = list("name" = "Photo", 			"value" = "Update")
 	entries[++entries.len] = list("name" = "Pronouns", 				"value" = pronouns)
@@ -122,17 +120,6 @@
 					to_chat(user, "<span class='notice'>Occupation changed to '[new_job]'.</span>")
 					update_name()
 					. = 1
-			/*if("Blood Type")
-				var/default = blood_type
-				if(default == initial(blood_type) && ishuman(user))
-					var/mob/living/carbon/human/H = user
-					if(H.dna)
-						default = H.dna.b_type
-				var/new_blood_type = sanitize(input(user,"What blood type would you like to be written on this card?","Agent Card Blood Type",default) as null|text)
-				if(!isnull(new_blood_type) && CanUseTopic(user, state))
-					src.blood_type = new_blood_type
-					to_chat(user, "<span class='notice'>Blood type changed to '[new_blood_type]'.</span>")
-					. = 1*/
 			if("DNA Hash")
 				var/default = dna_hash
 				if(default == initial(dna_hash) && ishuman(user))
@@ -144,17 +131,6 @@
 					src.dna_hash = new_dna_hash
 					to_chat(user, "<span class='notice'>DNA hash changed to '[new_dna_hash]'.</span>")
 					. = 1
-			/*if("Fingerprint Hash")
-				var/default = fingerprint_hash
-				if(default == initial(fingerprint_hash) && ishuman(user))
-					var/mob/living/carbon/human/H = user
-					if(H.dna)
-						default = md5(H.dna.uni_identity)
-				var/new_fingerprint_hash = sanitize(input(user,"What fingerprint hash would you like to be written on this card?","Agent Card Fingerprint Hash",default) as null|text)
-				if(!isnull(new_fingerprint_hash) && CanUseTopic(user, state))
-					src.fingerprint_hash = new_fingerprint_hash
-					to_chat(user, "<span class='notice'>Fingerprint hash changed to '[new_fingerprint_hash]'.</span>")
-					. = 1*/
 			if("Name")
 				var/new_name = sanitizeName(input(user,"What name would you like to put on this card?","Agent Card Name", registered_name) as null|text)
 				if(!isnull(new_name) && CanUseTopic(user, state))
