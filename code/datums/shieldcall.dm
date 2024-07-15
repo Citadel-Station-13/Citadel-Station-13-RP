@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
 
@@ -53,6 +53,42 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
 	return
 
 //* Melee Handling *//
+
+/**
+ * sent over from the atom
+ *
+ * * this is generic pre-intercept for melee; please keep this cheap
+ * * for stuff like reactive teleport armor, use this because it will stop the hit entirely.
+ * * for damage modification, inject directly into e_args
+ *
+ * @params
+ * * defending - the atom being attacked
+ * * weapon - the item being used to swing with
+ * * e_args - (optional) the clickchain event, if any; **This is mutable.**
+ * * fake_attack - just checking!
+ *
+ * @return SHIELDCALL_RETURN_* flags
+ */
+/datum/shieldcall/proc/handle_item_melee(atom/defending, obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack)
+	return NONE
+
+/**
+ * sent over from the atom
+ *
+ * * this is generic pre-intercept for melee; please keep this cheap
+ * * for stuff like reactive teleport armor, use this because it will stop the hit entirely.
+ * * for damage modification, inject directly into e_args
+ *
+ * @params
+ * * defending - the atom in question
+ * * style - the unarmed_attack datum being used
+ * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * fake_attack - just checking!
+ *
+ * @return SHIELDCALL_RETURN_* flags
+ */
+/datum/shieldcall/proc/handle_unarmed_melee(atom/defending, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack)
+	return NONE
 
 //* Projectile Handling *//
 
