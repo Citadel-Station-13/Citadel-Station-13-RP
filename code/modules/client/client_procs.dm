@@ -234,6 +234,11 @@
 		init_cutscene_system()
 	// instantiate tooltips
 	tooltips = new(src)
+	// start action drawer
+	action_drawer = new(src)
+	// make action holder
+	action_holder = new /datum/action_holder/client_actor(src)
+	action_drawer.register_holder(action_holder)
 
 	//* Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
@@ -452,6 +457,12 @@
 	QDEL_NULL(tgui_panel)
 	// cleanup tooltips
 	QDEL_NULL(tooltips)
+	// cleanup actions
+	QDEL_NULL(action_holder)
+	QDEL_NULL(action_drawer)
+
+	//* logout
+	mob?.pre_logout(src)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW

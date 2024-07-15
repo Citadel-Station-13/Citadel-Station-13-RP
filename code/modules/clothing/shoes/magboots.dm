@@ -12,7 +12,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS
 	var/magpulse = 0
 	var/icon_base = "magboots"
-	action_button_name = "Toggle Magboots"
+	item_action_name = "Toggle Magboots"
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
@@ -40,8 +40,8 @@
 		damage_force = 5
 		if(icon_base) icon_state = "[icon_base]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
-	user.update_inv_shoes()	//so our mob-overlays update
-	user.update_action_buttons()
+	update_worn_icon()
+	update_action_buttons()
 
 /obj/item/clothing/shoes/magboots/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
 	if(slot != SLOT_ID_SHOES)
@@ -77,7 +77,7 @@
 	atom_flags = PHORONGUARD
 	species_restricted = list(SPECIES_VOX)
 
-	action_button_name = "Toggle the magclaws"
+	item_action_name = "Toggle the magclaws"
 
 /obj/item/clothing/shoes/magboots/vox/attack_self(mob/user)
 	if(src.magpulse)
@@ -98,7 +98,7 @@
 		magpulse = 1
 		ADD_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
-	user.update_action_buttons()
+	update_action_buttons()
 
 //In case they somehow come off while enabled.
 /obj/item/clothing/shoes/magboots/vox/dropped(mob/user, flags, atom/newLoc)

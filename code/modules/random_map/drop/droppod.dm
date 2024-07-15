@@ -213,7 +213,7 @@
 		if(selected_player.mob.mind)
 			selected_player.mob.mind.transfer(spawned_mob)
 		else
-			spawned_mob.ckey = selected_player.mob.ckey
+			selected_player.mob.transfer_client_to(spawned_mob)
 		spawned_mobs = list(spawned_mob)
 		message_admins("[key_name(usr)] dropped a pod containing \the [spawned_mob] ([spawned_mob.key]) at ([usr.x],[usr.y],[usr.z])")
 		log_admin("[key_name(usr)] dropped a pod containing \the [spawned_mob] ([spawned_mob.key]) at ([usr.x],[usr.y],[usr.z])")

@@ -131,7 +131,7 @@
 		if(brainmob.mind)
 			brainmob.mind.transfer(target)
 		else
-			target.ckey = brainmob.ckey
+			brainmob.transfer_client_to(target)
 	..()
 
 /obj/item/organ/internal/brain/proc/get_control_efficiency()

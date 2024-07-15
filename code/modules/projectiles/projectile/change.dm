@@ -86,7 +86,7 @@
 			if(M.mind)
 				M.mind.transfer(new_mob)
 			else
-				new_mob.key = M.key
+				M.transfer_client_to(new_mob)
 
 			to_chat(new_mob, "<span class='warning'>Your form morphs into that of \a [lowertext(randomize)].</span>")
 

@@ -12,7 +12,7 @@
 
 /datum/event_args/actor/New(mob/performer, mob/initiator)
 	src.performer = performer
-	src.initiator = isnull(initiator)? performer : initiator
+	src.initiator = initiator || performer
 
 /datum/event_args/actor/clone(include_contents)
 	return new /datum/event_args/actor(performer, initiator)

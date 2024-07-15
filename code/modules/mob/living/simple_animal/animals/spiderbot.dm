@@ -168,7 +168,7 @@
 
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
-		src.ckey = M.brainmob.ckey
+		set_ckey(M.brainmob.ckey)
 		src.name = "spider-bot ([M.brainmob.name])"
 		src.languages = M.brainmob.languages
 
