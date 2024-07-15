@@ -133,7 +133,7 @@
 	damage = 10 // high rof kinda fucked up lets be real
 	agony = 10 // brute easily heals, agony not so much
 	armor_penetration = 30 // reduces shield blockchance
-	accuracy = -20 // he do miss actually
+	accuracy_overall_modify = 0.8 // heehoo
 	speed = 25 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // spicy boys

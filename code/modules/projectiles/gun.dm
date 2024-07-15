@@ -491,7 +491,7 @@
 			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
 			var/disp = dispersion[min(i, dispersion.len)]
 
-			P.accuracy = accuracy + acc
+			P.accuracy_overall_modify *= 1 + acc / 100
 			P.dispersion = disp
 
 			P.shot_from = src.name
