@@ -443,7 +443,7 @@
 	dna_hash = "\[REDACTED]";
 	name = "Aaron Presley's ID Card(Delivery Service) ";
 	registered_name = "Aaron Presley";
-	sex = "\\Male"
+	pronouns = "\\He/him"
 	},
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
