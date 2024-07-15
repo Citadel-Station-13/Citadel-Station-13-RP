@@ -36,17 +36,6 @@
 	// we have parallax and don't need this anymore
 	// icon_state = SPACE_ICON_STATE(x, y, z)
 
-	// We might be an edge
-	if(y == world.maxy || forced_dirs & NORTH)
-		edge |= NORTH
-	else if(y == 1 || forced_dirs & SOUTH)
-		edge |= SOUTH
-
-	if(x == 1 || forced_dirs & WEST)
-		edge |= WEST
-	else if(x == world.maxx || forced_dirs & EAST)
-		edge |= EAST
-
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
 
@@ -162,20 +151,6 @@
 		// Space shouldn't have weather of the sort planets with atmospheres do.
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
-
-/turf/space/Entered(var/atom/movable/A)
-	. = ..()
-
-	if(edge)
-		addtimer(CALLBACK(src, PROC_REF(on_atom_edge_touch), A), 0)
-
-/turf/space/proc/on_atom_edge_touch(atom/movable/AM)
-	if(!QDELETED(AM) && (AM.loc == src))
-		AM.touch_map_edge()
-
-/turf/space/grid_collect(grid_flags, turf/new_turf, baseturf_boundary, area_opinion)
-	// never move stuff
-	return area_opinion
 
 
 //// Special variants used in various maps ////

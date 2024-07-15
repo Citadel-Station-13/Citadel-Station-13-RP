@@ -49,6 +49,15 @@
 	///
 	/// * natural orientation is SOUTH
 	var/loaded_orientation
+
+	//* reexports of dmm_orientation variables *//
+	var/loaded_orientation_invert_x
+	var/loaded_orientation_invert_y
+	var/loaded_orientation_swap_xy
+	var/loaded_orientation_xi
+	var/loaded_orientation_yi
+	var/loaded_orientation_turn_angle
+
 	/// the dmm_parsed we loaded from
 	///
 	/// * null is allowed, if we either unloaded it or we were never a 'real' dmm load!

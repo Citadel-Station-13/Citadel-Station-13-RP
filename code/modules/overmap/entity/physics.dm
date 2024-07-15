@@ -1,5 +1,7 @@
 /**
  * (re)initialize physics
+ *
+ * always sets us back to a non-ticking state
  */
 /obj/overmap/entity/proc/initialize_physics()
 	deactivate_physics()
@@ -16,6 +18,8 @@
 	physics_tick(delta_time)
 
 /obj/overmap/entity/proc/physics_tick(dt)
+	if(!overmap)
+		return // what are we doing
 	// todo: proper overmaps physics, take diff from overmap south/west
 	var/new_position_x = pos_x + vel_x * dt
 	var/new_position_y = pos_y + vel_y * dt
@@ -37,9 +41,25 @@
 
 	if(new_loc != loc)
 		var/turf/old_loc = loc
-		if(!Move(new_loc, NORTH, dt * 10))
-			initialize_physics() // for athena's event
-			return
+		var/jumping = FALSE
+		if(istype(new_loc, /turf/overmap/edge))
+			var/turf/overmap/edge/edge = new_loc
+			new_loc = edge.get_wrap_counterpart()
+			jumping = TRUE
+			pos_x += edge.wrap_sign_x * OVERMAP_DISTANCE_TILE * overmap.width
+			pos_y += edge.wrap_sign_y * OVERMAP_DISTANCE_TILE * overmap.height
+		if(jumping)
+			is_forced_moving = TRUE
+			forceMove(new_loc)
+			is_forced_moving = FALSE
+		else if(get_dist(loc, new_loc) == 1)
+			if(!Move(new_loc, NORTH, dt * 10))
+				initialize_physics()
+				return
+		else
+			message_admins(SPAN_DANGER("overmap entity attempted to perform an illegal move ([src]); please check logs. halting movement of affected entity."))
+			initialize_physics()
+			CRASH("attempted to move not one tile but also while not jumping")
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
@@ -59,7 +79,7 @@
 /obj/overmap/entity/proc/set_velocity(vx, vy)
 	if(!isnull(vx))
 		vel_x = vx
-	if(isnull(vy))
+	if(!isnull(vy))
 		vel_y = vy
 
 	if(!is_moving && (QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)))
@@ -92,8 +112,30 @@
 /obj/overmap/entity/proc/is_moving()
 	return QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)
 
+//* Getters *//
+
 /**
- * gets our movement (non-angular) speed
+ * gets our tile X on overmap
+ *
+ * @return 0 if not on overmap
+ */
+/obj/overmap/entity/proc/get_tile_x()
+	if(!overmap)
+		return 0
+	return x - overmap.lower_left_x + 1
+
+/**
+ * gets our tile Y on overmap
+ *
+ * @return 0 if not on overmap
+ */
+/obj/overmap/entity/proc/get_tile_y()
+	if(!overmap)
+		return 0
+	return y - overmap.lower_left_y + 1
+
+/**
+ * gets our movement (non-angular) speed in overmaps units per second
  */
 /obj/overmap/entity/proc/get_speed()
 	return sqrt(vel_x ** 2 + vel_y ** 2)

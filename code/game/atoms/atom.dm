@@ -267,7 +267,7 @@
  *
  * return FALSE to override maploader automatic rotation
  */
-/atom/proc/preloading_dir(datum/dmm_preloader/preloader)
+/atom/proc/preloading_dir(datum/dmm_context/context)
 	return TRUE
 
 /**
