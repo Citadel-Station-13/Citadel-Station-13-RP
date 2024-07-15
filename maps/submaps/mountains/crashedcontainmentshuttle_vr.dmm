@@ -386,10 +386,8 @@
 /obj/effect/decal/remains/human,
 /obj/item/card/id/syndicate{
 	age = "\\42";
-	blood_type = "\\O+";
 	desc = "A strange ID card.";
 	dna_hash = "\[REDACTED]";
-	fingerprint_hash = "\\------";
 	name = "Aaron Presley's ID Card(Delivery Service) ";
 	registered_name = "Aaron Presley";
 	sex = "\\Male"
