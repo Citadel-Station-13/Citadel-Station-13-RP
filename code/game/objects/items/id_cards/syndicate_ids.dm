@@ -51,12 +51,12 @@
 	entries[++entries.len] = list("name" = "Age", 				"value" = age)
 	entries[++entries.len] = list("name" = "Appearance",		"value" = "Set")
 	entries[++entries.len] = list("name" = "Assignment",		"value" = assignment)
-	entries[++entries.len] = list("name" = "Blood Type",		"value" = blood_type)
+	//entries[++entries.len] = list("name" = "Blood Type",		"value" = blood_type)
 	entries[++entries.len] = list("name" = "DNA Hash", 			"value" = dna_hash)
-	entries[++entries.len] = list("name" = "Fingerprint Hash",	"value" = fingerprint_hash)
+	//entries[++entries.len] = list("name" = "Fingerprint Hash",	"value" = fingerprint_hash)
 	entries[++entries.len] = list("name" = "Name", 				"value" = registered_name)
 	entries[++entries.len] = list("name" = "Photo", 			"value" = "Update")
-	entries[++entries.len] = list("name" = "Sex", 				"value" = sex)
+	entries[++entries.len] = list("name" = "Pronouns", 				"value" = pronouns)
 	entries[++entries.len] = list("name" = "Factory Reset",		"value" = "Use With Care")
 	data["electronic_warfare"] = electronic_warfare
 	data["entries"] = entries
@@ -122,7 +122,7 @@
 					to_chat(user, "<span class='notice'>Occupation changed to '[new_job]'.</span>")
 					update_name()
 					. = 1
-			if("Blood Type")
+			/*if("Blood Type")
 				var/default = blood_type
 				if(default == initial(blood_type) && ishuman(user))
 					var/mob/living/carbon/human/H = user
@@ -132,7 +132,7 @@
 				if(!isnull(new_blood_type) && CanUseTopic(user, state))
 					src.blood_type = new_blood_type
 					to_chat(user, "<span class='notice'>Blood type changed to '[new_blood_type]'.</span>")
-					. = 1
+					. = 1*/
 			if("DNA Hash")
 				var/default = dna_hash
 				if(default == initial(dna_hash) && ishuman(user))
@@ -144,7 +144,7 @@
 					src.dna_hash = new_dna_hash
 					to_chat(user, "<span class='notice'>DNA hash changed to '[new_dna_hash]'.</span>")
 					. = 1
-			if("Fingerprint Hash")
+			/*if("Fingerprint Hash")
 				var/default = fingerprint_hash
 				if(default == initial(fingerprint_hash) && ishuman(user))
 					var/mob/living/carbon/human/H = user
@@ -154,7 +154,7 @@
 				if(!isnull(new_fingerprint_hash) && CanUseTopic(user, state))
 					src.fingerprint_hash = new_fingerprint_hash
 					to_chat(user, "<span class='notice'>Fingerprint hash changed to '[new_fingerprint_hash]'.</span>")
-					. = 1
+					. = 1*/
 			if("Name")
 				var/new_name = sanitizeName(input(user,"What name would you like to put on this card?","Agent Card Name", registered_name) as null|text)
 				if(!isnull(new_name) && CanUseTopic(user, state))
@@ -166,28 +166,28 @@
 				set_id_photo(user)
 				to_chat(user, "<span class='notice'>Photo changed.</span>")
 				. = 1
-			if("Sex")
-				var/new_sex = sanitize(input(user,"What sex would you like to put on this card?","Agent Card Sex", sex) as null|text)
-				if(!isnull(new_sex) && CanUseTopic(user, state))
-					src.sex = new_sex
-					to_chat(user, "<span class='notice'>Sex changed to '[new_sex]'.</span>")
+			if("Pronouns")
+				var/new_pronouns = sanitize(input(user,"What pronouns would you like to put on this card?","Agent Card Sex", pronouns) as null|text)
+				if(!isnull(new_pronouns) && CanUseTopic(user, state))
+					src.pronouns = new_pronouns
+					to_chat(user, "<span class='notice'>Sex changed to '[new_pronouns]'.</span>")
 					. = 1
 			if("Factory Reset")
 				if(alert("This will factory reset the card, including access and owner. Continue?", "Factory Reset", "No", "Yes") == "Yes" && CanUseTopic(user, state))
 					age = initial(age)
 					access = syndicate_access.Copy()
 					assignment = initial(assignment)
-					blood_type = initial(blood_type)
+					//blood_type = initial(blood_type)
 					dna_hash = initial(dna_hash)
 					electronic_warfare = initial(electronic_warfare)
-					fingerprint_hash = initial(fingerprint_hash)
+					//fingerprint_hash = initial(fingerprint_hash)
 					icon_state = initial(icon_state)
 					sprite_stack = list("")
 					update_icon()
 					name = initial(name)
 					registered_name = initial(registered_name)
 					unset_registered_user()
-					sex = initial(sex)
+					pronouns = initial(pronouns)
 					to_chat(user, "<span class='notice'>All information has been deleted from \the [src].</span>")
 					. = 1
 

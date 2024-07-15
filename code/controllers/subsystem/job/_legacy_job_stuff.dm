@@ -392,6 +392,10 @@
 	H.update_hud_sec_implants()
 	H.update_hud_antag()
 	H.reset_perspective(no_optimizations = TRUE)
+	//H.regenerate_icons()
+	//var/obj/item/card/id/id = locate() in H.contents
+	//if(istype(id))
+		//H.set_id_info(id)
 	return H
 
 /datum/controller/subsystem/job/proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
