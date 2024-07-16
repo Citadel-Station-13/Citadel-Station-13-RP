@@ -364,7 +364,7 @@
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.transforming = TRUE
-	blob.ckey = ckey
+	transfer_client_to(blob)
 	blob.ooc_notes = ooc_notes
 	blob.transforming = FALSE
 	blob.name = name
@@ -432,7 +432,7 @@
 	//Put our owner in it (don't transfer var/mind)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
-	ckey = blob.ckey
+	blob.transfer_client_to(src)
 	ooc_notes = blob.ooc_notes // Updating notes incase they change them in blob form.
 	transforming = FALSE
 	blob.name = "Promethean Blob"

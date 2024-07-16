@@ -8,6 +8,25 @@
 	depth_level = 0
 	climb_allowed = FALSE
 
+	//* Actions *//
+
+	/// cached action descriptors
+	///
+	/// this can be:
+	/// * a /datum/action instance
+	/// * a /datum/action typepath
+	/// * a list of /datum/action instancse
+	/// * a list of /datum/action typepaths
+	///
+	/// typepaths get instanced on us entering inventory
+	var/item_actions
+	/// if [item_actions] is not set, and this is, we make a single action rendering ourselves
+	/// and set its name to this
+	var/item_action_name
+	/// if [item_actions] is not set, and [action_name] is set, this is the mobility flags
+	/// the action will check for
+	var/item_action_mobility_flags = MOBILITY_CAN_HOLD | MOBILITY_CAN_USE
+
 	//* Combat
 	/// Amount of damage we do on melee.
 	var/damage_force = 0
@@ -101,17 +120,6 @@
 	/// This affects multiplicative movespeed.
 	var/slowdown = 0
 
-	//? Combat
-	/// Amount of damage we do on melee.
-	var/damage_force = 0
-	/// armor flag for melee attacks
-	var/damage_flag = ARMOR_MELEE
-	/// damage tier
-	var/damage_tier = MELEE_TIER_MEDIUM
-	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
-	var/damage_mode = NONE
-	// todo: port over damtype
-
 	//* Storage *//
 	/// storage cost for volumetric storage
 	/// null to default to weight class
@@ -130,13 +138,6 @@
 	 * Either a list() with equal chances or a single verb.
 	 */
 	var/list/attack_verb = "attacked"
-
-	//? todo: more advanced handling, multi actions, etc
-	var/datum/action/item_action/action = null
-	/// It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
-	var/action_button_name
-	/// If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
-	var/action_button_is_hands_free = 0
 
 	/// 0 prevents all transfers, 1 is invisible
 	//var/heat_transfer_coefficient = 1
@@ -426,7 +427,7 @@
  *This proc is executed when someone clicks the on-screen UI button.
  *The default action is attack_self().
  */
-/obj/item/ui_action_click(datum/action/action, mob/user)
+/obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)
 
 //RETURN VALUES
@@ -673,9 +674,97 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	add_fingerprint(user)
 	ui_interact(user)
 
-// /obj/item/update_filters()
-// 	. = ..()
-// 	update_action_buttons()
+//* Actions *//
+
+/**
+ * instructs all our action buttons to re-render
+ */
+/obj/item/proc/update_action_buttons()
+	if(islist(item_actions))
+		for(var/datum/action/action in item_actions)
+			action.update_buttons()
+	else if(istype(item_actions, /datum/action))
+		var/datum/action/action = item_actions
+		action.update_buttons()
+
+/**
+ * ensures our [item_actions] variable is set to:
+ *
+ * * null
+ * * a list of actions
+ * * an action instance
+ */
+/obj/item/proc/ensure_item_actions_loaded()
+	if(item_actions)
+		if(islist(item_actions))
+			var/requires_init = FALSE
+			for(var/i in 1 to length(item_actions))
+				if(ispath(item_actions[i]))
+					requires_init = TRUE
+					break
+			if(requires_init)
+				set_actions_to(item_actions)
+		else if(ispath(item_actions))
+			set_actions_to(item_actions)
+	else if(item_action_name)
+		var/datum/action/item_action/created = new(src)
+		created.name = item_action_name
+		created.check_mobility_flags = item_action_mobility_flags
+		set_actions_to(created)
+
+/**
+ * setter for [item_actions]
+ *
+ * accepts:
+ *
+ * * an instance of /datum/action
+ * * a typepath of /datum/action
+ * * a list of /datum/action instances and typepaths
+ * * null
+ */
+/obj/item/proc/set_actions_to(descriptor)
+	var/mob/worn_mob = worn_mob()
+
+	if(worn_mob)
+		unregister_item_actions(worn_mob)
+
+	if(ispath(descriptor, /datum/action))
+		descriptor = new descriptor(src)
+	else if(islist(descriptor))
+		var/list/transforming = descriptor:Copy()
+		for(var/i in 1 to length(transforming))
+			if(ispath(transforming[i], /datum/action))
+				var/path = transforming[i]
+				transforming[i] = new path(src)
+		descriptor = transforming
+	else
+		item_actions = descriptor
+
+	if(worn_mob)
+		register_item_actions(worn_mob)
+
+/**
+ * handles action granting
+ */
+/obj/item/proc/register_item_actions(mob/user)
+	ensure_item_actions_loaded()
+	if(islist(item_actions))
+		for(var/datum/action/action in item_actions)
+			action.grant(user.inventory.actions)
+	else if(istype(item_actions, /datum/action))
+		var/datum/action/action = item_actions
+		action.grant(user.inventory.actions)
+
+/**
+ * handles action revoking
+ */
+/obj/item/proc/unregister_item_actions(mob/user)
+	if(islist(item_actions))
+		for(var/datum/action/action in item_actions)
+			action.revoke(user.inventory.actions)
+	else if(istype(item_actions, /datum/action))
+		var/datum/action/action = item_actions
+		action.revoke(user.inventory.actions)
 
 //* Armor *//
 
@@ -1091,6 +1180,22 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/MouseExited(location, control, params)
 	..()
 	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_EXITED, usr)
+
+//* Rendering *//
+
+/**
+ * invokes
+ *
+ * * update_icon()
+ * * update_worn_icon()
+ * * update_action_buttons()
+ *
+ * please be very delicate with this, this is expensive
+ */
+/obj/item/proc/update_full_icon()
+	update_icon()
+	update_worn_icon()
+	update_action_buttons()
 
 //* Storage *//
 

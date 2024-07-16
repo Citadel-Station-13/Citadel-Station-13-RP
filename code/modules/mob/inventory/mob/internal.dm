@@ -134,8 +134,6 @@
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
-	update_action_buttons()
-
 /mob/proc/_unequip_slot(slot, flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = _set_inv_slot(slot, null, flags) != INVENTORY_SLOT_DOES_NOT_EXIST
@@ -210,8 +208,6 @@
 		I.equipped(src, slot, flags)
 
 		log_inventory("[key_name(src)] equipped [I] to [slot].")
-
-	update_action_buttons()
 
 	if(I.zoom)
 		I.zoom()

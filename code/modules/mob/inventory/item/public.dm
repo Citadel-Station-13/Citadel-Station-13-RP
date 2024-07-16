@@ -77,18 +77,9 @@
  */
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
-/*
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.Remove(user)
-*/
-	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
-		qdel(src)
 
 	hud_unlayerise()
 	item_flags &= ~ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
@@ -98,6 +89,9 @@
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
+
+	// unload actions
+	unregister_item_actions(user)
 
 	// clear carry
 	if(isliving(user))
@@ -117,6 +111,10 @@
 			continue
 		user.unregister_shieldcall(shieldcall)
 
+	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
+		qdel(src)
+		. |= ITEM_RELOCATED_BY_DROPPED
+
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
 /**
@@ -131,8 +129,6 @@
 	reset_pixel_offsets()
 	hud_layerise()
 	item_flags |= ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
 	// todo: should this be here
 	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
@@ -147,11 +143,14 @@
 	// storage stuff
 	obj_storage?.on_pickup(user)
 
-	// get rid of shieldcalls
+	// register shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
 			continue
 		user.register_shieldcall(shieldcall)
+
+	// load action buttons
+	register_item_actions(user)
 
 //* Access *//
 

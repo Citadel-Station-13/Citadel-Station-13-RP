@@ -155,7 +155,7 @@
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
 	if(!QDELETED(humanform))
 		humanform.forceMove(loc)
-		humanform.ckey = ckey
+		transfer_client_to(humanform)
 		humanform.gib()
 	humanform = null
 	. = ..()
@@ -328,7 +328,7 @@
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)
 	//Put our owner in it (don't transfer var/mind)
-	blob.ckey = ckey
+	transfer_client_to(blob)
 	temporary_form = blob
 
 	//Mail them to nullspace
@@ -470,7 +470,7 @@
 	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
-	ckey = blob.ckey
+	blob.transfer_client_to(src)
 	temporary_form = null
 
 	if(client && panel_selected)

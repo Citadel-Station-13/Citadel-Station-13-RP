@@ -423,6 +423,3 @@ var/bomb_set
 		log_game("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
 	nuke_disks -= src
 	return ..()
-
-/obj/item/disk/nuclear/touch_map_edge()
-	qdel(src)

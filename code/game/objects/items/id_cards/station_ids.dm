@@ -651,3 +651,22 @@
 	assignment = "Pathfinder"
 	rank = "Pathfinder"
 	job_access_type = /datum/role/job/station/pathfinder
+
+/obj/item/card/id/external/gaia
+	name = "Happy Trails Resort Company Day Pass"
+	desc = "A pass giving one access to the normal facilties at Happy Trails Resort stations."
+	icon_state = "gaia_normal"
+	job_access_type = null
+	access = list(250)
+
+/obj/item/card/id/external/gaia/vip
+	name = "Happy Trails Resort Company VIP Day Pass"
+	desc = "A premium day pass for accessing the most luxurious parts of the Happy Trails Resorts."
+	icon_state = "gaia_vip"
+	access = list(250,251)
+
+/obj/item/card/id/external/gaia/staff//created so that when assigning the outfit of merchant, it assigns a working ID
+	name = "Happy Trails Resort Company Staff ID"
+	desc = "Issued to staff of the Happy Trails Company."
+	icon_state = "gaia_staff"
+	access = list(250,251,252)

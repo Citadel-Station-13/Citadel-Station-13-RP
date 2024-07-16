@@ -83,7 +83,7 @@
 	var/obj/item/tank/tank = null              // Deployable tank, if any.
 	var/obj/item/suit_cooling_unit/cooler = null// Cooling unit, for FBPs.  Cannot be installed alongside a tank.
 
-	action_button_name = "Toggle Helmet"
+	item_action_name = "Toggle Helmet"
 
 /obj/item/clothing/suit/space/void/get_weight()
 	. = ..()

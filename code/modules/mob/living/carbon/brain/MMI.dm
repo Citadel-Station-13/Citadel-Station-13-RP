@@ -284,7 +284,7 @@
 	if(candidate.mind)
 		brainmob.mind = candidate.mind
 		brainmob.mind.reset()
-	brainmob.ckey = candidate.ckey
+	candidate.transfer_client_to(src.brainmob)
 	src.name = "[name] ([brainmob.name])"
 	to_chat(brainmob, "<b>You are [src.name], brought into existence on [station_name()].</b>")
 	to_chat(brainmob, "<b>As a synthetic intelligence, you are designed with organic values in mind.</b>")

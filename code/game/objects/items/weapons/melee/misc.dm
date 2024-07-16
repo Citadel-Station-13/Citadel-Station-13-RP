@@ -81,7 +81,7 @@
 	var/mob/living/voice/new_voice = new /mob/living/voice(src) 	//Make the voice mob the ghost is going to be.
 	new_voice.transfer_identity(candidate) 	//Now make the voice mob load from the ghost's active character in preferences.
 	new_voice.mind = candidate.mind			//Transfer the mind, if any.
-	new_voice.ckey = candidate.ckey			//Finally, bring the client over.
+	candidate.transfer_client_to(new_voice)
 	new_voice.name = "cursed sword"			//Cursed swords shouldn't be known characters.
 	new_voice.real_name = "cursed sword"
 	voice_mobs.Add(new_voice)

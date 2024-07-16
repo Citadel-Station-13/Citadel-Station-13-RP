@@ -252,7 +252,7 @@
 			if(src.mind)
 				src.mind.transfer(new_slime)
 			else
-				new_slime.key = src.key
+				transfer_client_to(new_slime)
 			qdel(src)
 		else
 			to_chat(src, SPAN_WARNING( "I am not ready to reproduce yet..."))

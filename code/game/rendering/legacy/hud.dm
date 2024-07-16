@@ -120,8 +120,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/list/miniobjs
 	var/list/atom/movable/screen/hotkeybuttons
 
-	var/atom/movable/screen/movable/action_button/hide_toggle/hide_actions_toggle
-	var/action_buttons_hidden = 0
 	/// screen_loc's of slots, by slot id. hands are not slots.
 	var/list/slot_info = list()
 	/// screen_loc's of hands, by index - index is associative NUMBER AS TEXT.
@@ -357,7 +355,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 	hud_used.hidden_inventory_update()
 	hud_used.persistant_inventory_update()
-	update_action_buttons()
 
 //Similar to button_pressed_F12() but keeps zone_sel, gun_setting_icon, and healths.
 /mob/proc/toggle_zoom_hud()
@@ -398,4 +395,3 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 	hud_used.hidden_inventory_update()
 	hud_used.persistant_inventory_update()
-	update_action_buttons()

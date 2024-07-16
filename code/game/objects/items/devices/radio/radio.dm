@@ -798,7 +798,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	throw_force = 6
 	preserve_item = 1
 	w_class = WEIGHT_CLASS_BULKY
-	action_button_name = "Remove/Replace Handset"
+	item_action_name = "Remove/Replace Handset"
 
 	var/obj/item/radio/bluespace_handset/linked/handset = /obj/item/radio/bluespace_handset/linked
 
@@ -810,7 +810,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	. = ..()
 	QDEL_NULL(handset)
 
-/obj/item/bluespace_radio/ui_action_click()
+/obj/item/bluespace_radio/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_handset()
 
 /obj/item/bluespace_radio/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
