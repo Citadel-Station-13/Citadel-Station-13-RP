@@ -105,10 +105,13 @@
 	if(wrap_sign_x != 0)
 		if(wrap_sign_y != 0)
 			entity.set_velocity(-entity.vel_x, -entity.vel_y)
+			entity.bump_handled = TRUE
 		else
 			entity.set_velocity(-entity.vel_x, null)
+			entity.bump_handled = TRUE
 	else if(wrap_sign_y != 0)
 		entity.set_velocity(null, -entity.vel_y)
+		entity.bump_handled = TRUE
 
 //! LEGACY BELOW
 

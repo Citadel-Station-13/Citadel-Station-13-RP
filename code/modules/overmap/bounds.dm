@@ -19,11 +19,20 @@
 		entity_bounds_overlay_cache[key] = I
 	var/mutable_appearance/MA = new
 	. = MA
+	MA.appearance_flags = KEEP_APART | RESET_TRANSFORM
 	MA.icon = I
 	MA.color = color
 	MA.alpha = 160
 	MA.pixel_x = bound_x
 	MA.pixel_y = bound_y
+	MA.filters = filter(
+		type = "drop_shadow",
+		color = color + "99",
+		size = 1,
+		offset = 0,
+		x = 0,
+		y = 0,
+	)
 
 /**
  * smooth_directions is directions to **not** show the overlay border
@@ -49,8 +58,17 @@
 		tiled_bounds_overlay_cache[key] = I
 	var/mutable_appearance/MA = new
 	. = MA
+	MA.appearance_flags = KEEP_APART | RESET_TRANSFORM
 	MA.icon = I
 	MA.alpha = 160
+	MA.filters = filter(
+		type = "drop_shadow",
+		color = color + "99",
+		size = 1,
+		offset = 0,
+		x = 0,
+		y = 0,
+	)
 
 /obj/overmap/proc/get_bounds_overlay()
 	return
