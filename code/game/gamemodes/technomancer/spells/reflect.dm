@@ -48,6 +48,7 @@
 	if(user.incapacitated())
 		return
 
+	var/mob/attacker
 	var/damage_to_energy_cost = (damage_to_energy_multiplier * shieldcall_args[SHIELDCALL_ARG_DAMAGE])
 	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 
@@ -58,13 +59,14 @@
 
 	//block as long as they are not directly behind us
 	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
-	if(check_shield_arc(user, bad_arc, damage_source, attacker))
+	if(check_shield_arc(user, bad_arc, damage_source, ismob(damage_source)? damage_source : null))
 
 		if(istype(damage_source, /obj/projectile))
 			var/obj/projectile/P = damage_source
+			attacker = P.firer
 
 			if(P.starting && !P.reflected)
-				visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
+				visible_message("<span class='danger'>\The [user]'s [src.name] reflects [P]!</span>")
 
 				var/turf/curloc = get_turf(user)
 
@@ -77,7 +79,8 @@
 				spark_system.start()
 				playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
 				// now send a log so that admins don't think they're shooting themselves on purpose.
-				log_and_message_admins("[user] reflected [attacker]'s attack back at them.")
+				if(attacker)
+					log_and_message_admins("[user] reflected [attacker]'s attack back at them.")
 
 				if(!reflecting)
 					reflecting = 1
@@ -89,6 +92,8 @@
 
 		else if(istype(damage_source, /obj/item))
 			var/obj/item/W = damage_source
+			var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
+			attacker = clickchain.performer
 			if(attacker)
 				W.melee_interaction_chain(attacker, attacker)
 				to_chat(attacker, "<span class='danger'>Your [damage_source.name] goes through \the [src] in one location, comes out \

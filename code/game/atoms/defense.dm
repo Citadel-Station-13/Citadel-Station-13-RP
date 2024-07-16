@@ -533,14 +533,15 @@
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * weapon - (optional) the attacking weapon datum; see [code/__DEFINES/combat/shieldcall.dm]
  * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
+ * * clickchain - the clickchain for melee attacks.
  *
  * @return args, modified, as list.
  */
-/atom/proc/check_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/atom/proc/check_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	run_armorcalls(args, TRUE)
 	return args
 
@@ -561,14 +562,15 @@
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * weapon - (optional) the attacking weapon datum; see [code/__DEFINES/combat/shieldcall.dm]
  * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
+ * * clickchain - the clickchain for melee attacks.
  *
  * @return args, modified, as list.
  */
-/atom/proc/run_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/atom/proc/run_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	run_armorcalls(args, FALSE)
 	return args
 
@@ -596,14 +598,15 @@
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * weapon - (optional) the attacking weapon datum; see [code/__DEFINES/combat/shieldcall.dm]
  * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
+ * * clickchain - the clickchain for melee attacks.
  *
  * @return args, modified, as list.
  */
-/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	run_shieldcalls(args, TRUE)
 	return args
 
@@ -629,14 +632,15 @@
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * weapon - (optional) the attacking weapon datum; see [code/__DEFINES/combat/shieldcall.dm]
  * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
+ * * clickchain - the clickchain for melee attacks.
  *
  * @return args, modified, as list.
  */
-/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	run_shieldcalls(args, FALSE)
 	return args
 
@@ -653,7 +657,7 @@
 		if(!calling.low_level_intercept)
 			continue
 		calling.handle_shieldcall(src, args, fake_attack)
-		if(shieldcall_args[SHIELDCALL_ARG_FL] & SHIELDCALL_RETURN_TERMINATE)
+		if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
 			break
 
 /**

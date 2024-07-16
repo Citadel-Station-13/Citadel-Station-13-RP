@@ -32,19 +32,19 @@
 		if(P.reflected) // Can't reflect twice
 			return
 
-		var/reflectchance = 40 - round(damage/3)
+		var/reflectchance = 50 - round(shieldcall_args[SHIELDCALL_ARG_DAMAGE]/3)
 		if(!(def_zone in list(BP_TORSO, BP_GROIN)))
 			reflectchance /= 2
 		if(P.starting && prob(reflectchance))
-			visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
+			visible_message("<span class='danger'>\The [defending]'s [src.name] reflects [P]!</span>")
 
 			// Find a turf near or on the original location to bounce to
 			var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
 			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/turf/curloc = get_turf(user)
+			var/turf/curloc = get_turf(defending)
 
 			// redirect the projectile
-			P.legacy_redirect(new_x, new_y, curloc, user)
+			P.legacy_redirect(new_x, new_y, curloc, defending)
 			P.reflected = 1
 			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_PASSTHROUGH | SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_TERMINATE
 

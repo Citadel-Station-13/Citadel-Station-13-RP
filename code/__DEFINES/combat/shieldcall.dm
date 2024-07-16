@@ -35,6 +35,11 @@
 /// these flags means that the attack should keep going after us, regardless of if we're hit
 #define SHIELDCALL_RETURNS_PIERCE_ATTACK (SHIELDCALL_RETURN_ATTACK_PASSTHROUGH)
 
+/// flags set in a projectile reflect
+///
+/// * you should be using /datum/shieldcall's bullet intercept / bullet signals if possible but this works too
+#define SHIELDCALL_RETURNS_FOR_PROJECTILE_DEFLECT (SHIELDCALL_RETURN_TERMINATE | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_PASSTHROUGH)
+
 //*                               Atom Shieldcall Args                            *//
 //*                                                                               *//
 //* The shieldcall system is a very low-level 'damage instance' interception API. *//
@@ -44,6 +49,8 @@
 //* For speed reasons, shieldcalls pass a single argument list down instead of    *//
 //* returning new lists every call, as shieldcalls need to be able to edit many   *//
 //* facets of a damage instance.                                                  *//
+//*                                                                               *//
+//* Many of these are optional.                                                   *//
 
 /// damage amount
 #define SHIELDCALL_ARG_DAMAGE 1
@@ -57,7 +64,12 @@
 #define SHIELDCALL_ARG_DAMAGE_MODE 5
 /// attack type
 #define SHIELDCALL_ARG_ATTACK_TYPE 6
-/// attacking weapon datum - same as used in armor
+/// attacking weapon datum
+///
+/// * /obj/projectile if projectile
+/// * /datum/unarmed_attack if unarmed melee
+/// * /obj/item if item melee
+/// * /datum/thrownthing if thrown
 #define SHIELDCALL_ARG_WEAPON 7
 /// flags returned from other shieldcalls
 #define SHIELDCALL_ARG_FLAGS 8
@@ -65,6 +77,11 @@
 #define SHIELDCALL_ARG_HIT_ZONE 9
 /// additional list returns; usually empty, but may exist
 #define SHIELDCALL_ARG_ADDITIONAL 10
+/// the clickchain of a melee attack
+///
+/// * this is passed in so you can grab data like who is doing it / who started the attack.
+/// * filled in sometimes but not always if unarmed or item melee.
+#define SHIELDCALL_ARG_CLICKCHAIN 11
 
 //* list keys for list/additional in atom shieldcalls *//
 

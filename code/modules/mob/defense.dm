@@ -26,7 +26,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/check_mob_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/check_mob_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE, hit_zone) // by default, use atom/var/armor on ourselves
 
@@ -38,7 +38,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/run_mob_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/run_mob_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE, hit_zone) // by default, use atom/var/armor on ourselves
 
@@ -50,7 +50,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/check_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/check_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
 
@@ -62,7 +62,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/run_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/run_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE) // by default, use atom/var/armor on ourselves
 
@@ -76,7 +76,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/check_mob_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/check_mob_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE, hit_zone) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, TRUE)
@@ -89,7 +89,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/run_mob_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/run_mob_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE, hit_zone) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, FALSE)
@@ -102,7 +102,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/check_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/check_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, TRUE)
@@ -115,7 +115,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/run_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/run_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, FALSE) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, FALSE)
