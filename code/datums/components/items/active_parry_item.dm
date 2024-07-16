@@ -7,4 +7,4 @@
 /datum/component/active_parry_item
 	registered_type = /datum/component/active_parry_item
 
-#warn impl
+// todo: this requires a hotkey to be fully implemented; default implementation is bad

@@ -757,8 +757,6 @@
 #include "code\datums\components\atoms\radioactive.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\guncrafting.dm"
-#include "code\datums\components\items\active_block_item.dm"
-#include "code\datums\components\items\active_parry_item.dm"
 #include "code\datums\components\items\wielding.dm"
 #include "code\datums\components\mobs\active_block.dm"
 #include "code\datums\components\mobs\active_parry.dm"

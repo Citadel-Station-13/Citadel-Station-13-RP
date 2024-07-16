@@ -1,6 +1,20 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+//*         run_armor() and check_armor() arg indices        *//
+//* We do this to save the speed of copying lists every call *//
+//*              Instead, we pass one down.                  *//
+//* run_armor() and check_armor() use SHIELDCALL_RETURN_*'s. *//
+
+#define ARMOR_ARG_DAMAGE 1
+#define ARMOR_ARG_DAMAGE_TYPE 2
+#define ARMOR_ARG_DAMAGE_TIER 3
+#define ARMOR_ARG_DAMAGE_FLAG 4
+#define ARMOR_ARG_DAMAGE_MODE 5
+#define ARMOR_ARG_ATTACK_TYPE 6
+
+#warn combine armor / shieldcall
+
 //? --- armor defines ---
 //* Want to add more?
 //* Update [code/__HELPERS/datastructs/armor.dm]

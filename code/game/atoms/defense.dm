@@ -212,7 +212,7 @@
 	// todo: way to override this from style side? we don't just want hitsound brute/burn.
 	. = (style.damage_type == BURN? hit_sound_burn : hit_sound_brute) || style.attack_sound
 
-//? Direct Integrity
+//* Integrity - Direct Manipulation *//
 
 /**
  * damages integrity directly, ignoring armor / shields
@@ -384,7 +384,7 @@
 /atom/proc/is_integrity_damaged()
 	return integrity < integrity_max
 
-//? Thresholds & Events
+//* Integrity - Events *//
 
 /**
  * called when integrity reaches 0 from a non 0 value
@@ -419,7 +419,7 @@
 		heal_integrity(integrity_failure - integrity + 1, do_not_fix = TRUE)
 	atom_flags &= ~ATOM_BROKEN
 
-//? Deconstruction
+//* Deconstruction *//
 
 /**
  * called to semantically deconstruct an atom
@@ -477,7 +477,7 @@
 /atom/proc/drop_product(method, atom/movable/dropping, atom/where)
 	dropping.forceMove(where || drop_location())
 
-//? Armor
+//* Armor *//
 
 /**
  * resets our armor to initial values
@@ -507,7 +507,7 @@
 /atom/proc/generate_armor()
 	return fetch_armor_struct(armor_type)
 
-#warn rework armor / shield calls
+#warn combine armor / shieldcall
 
 // todo: rework this maybe
 /**
