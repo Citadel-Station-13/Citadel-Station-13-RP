@@ -9,7 +9,7 @@
 	vel_y = 0
 	step_x = step_y = 0
 	pos_x = OVERMAP_PIXEL_TO_DIST(1 + (x - 1) * WORLD_ICON_SIZE + (bound_x + step_x))
-	pos_y = OVERMAP_PIYEL_TO_DIST(1 + (y - 1) * WORLD_ICON_SIZE + (bound_y + step_y))
+	pos_y = OVERMAP_PIXEL_TO_DIST(1 + (y - 1) * WORLD_ICON_SIZE + (bound_y + step_y))
 
 // legacy ticking hook
 /obj/overmap/entity/process(delta_time)
@@ -29,7 +29,7 @@
 	var/nsy = floor(OVERMAP_DIST_TO_PIXEL(pos_y))
 	// move
 	var/old_loc = loc
-	if(!Move(locate(1, 1, z), dir, ndx - (WORLD_ICON_SIZE * 0.5), ndy - (WORLD_ICON_SIZE * 0.5)))
+	if(!Move(locate(1, 1, z), dir, nsx - (WORLD_ICON_SIZE * 0.5), nsy - (WORLD_ICON_SIZE * 0.5)))
 		initialize_physics()
 		stack_trace("failed to move")
 	else if(old_loc != loc)
