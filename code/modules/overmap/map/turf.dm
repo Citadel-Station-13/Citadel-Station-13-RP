@@ -101,7 +101,7 @@
 		// bounce them off
 		elastic_collision(entity)
 
-/turf/overmap/edge/proc/elastic_collision(obj/overmap/entity)
+/turf/overmap/edge/proc/elastic_collision(obj/overmap/entity/entity)
 	if(wrap_sign_x != 0)
 		if(wrap_sign_y != 0)
 			entity.set_velocity(-entity.vel_x, -entity.vel_y)
