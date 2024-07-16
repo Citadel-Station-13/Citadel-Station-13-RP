@@ -135,6 +135,8 @@
 
 //* Raw Damage *//
 
+#warn how do we want to do this
+
 /**
  * @params
  * * brute - brute damage to take

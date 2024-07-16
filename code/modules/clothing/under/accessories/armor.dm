@@ -200,7 +200,7 @@
 		var/obj/projectile/P = damage_source
 
 		if(P.reflected)
-			return ..()
+			return
 
 		var/reflectchance = 20 - round(shieldcall_args[SHIELDCALL_ARG_DAMAGE]/3)
 		if(!(def_zone in list(BP_TORSO, BP_GROIN)))
@@ -213,7 +213,7 @@
 			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
 			var/turf/curloc = get_turf(defending)
 
-			P.redirect(new_x, new_y, curloc, user)
+			P.legacy_redirect(new_x, new_y, curloc, user)
 			P.reflected = 1
 			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURNS_FOR_PROJECTILE_DEFLECT
 
