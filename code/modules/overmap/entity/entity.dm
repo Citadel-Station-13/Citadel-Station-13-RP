@@ -12,7 +12,7 @@
 	appearance_flags = KEEP_TOGETHER
 	pixel_movement = TRUE
 	animate_movement = NONE
-	glide_size = 0
+	glide_size = 128
 	step_size = INFINITY
 	uses_bounds_overlay = TRUE
 
@@ -31,14 +31,12 @@
 	var/vel_x
 	/// velocity y in overmap units per second
 	var/vel_y
-	/// position x in overmap units
-	///
-	/// * this is our lower-leftmost 'pixel'
+	/// cached, read-only cached center x in overmap dist
 	var/pos_x
-	/// position y in overmap units
-	///
-	/// * this is our lower-leftmost 'pixel'
+	/// cached, read-only cached center y in overmap dist
 	var/pos_y
+	/// bump was handled
+	var/bump_handled = FALSE
 
 	/// max speed in overmap units per second
 	var/max_speed = OVERMAP_DISTANCE_TILE
@@ -66,6 +64,9 @@
 	// stop physics
 	deactivate_physics()
 	return ..()
+
+/obj/overmap/entity/set_glide_size(new_glide_size, recursive)
+	return
 
 /obj/overmap/entity/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
