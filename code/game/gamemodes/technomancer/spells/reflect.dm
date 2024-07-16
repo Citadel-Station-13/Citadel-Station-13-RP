@@ -30,16 +30,31 @@
 	spark_system = null
 	return ..()
 
-/obj/item/spell/reflect/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(user.incapacitated())
-		return 0
+/obj/item/spell/reflect/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
 
-	var/damage_to_energy_cost = (damage_to_energy_multiplier * damage)
+/obj/item/spell/reflect/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/spell/reflect/proc/shieldcall(datum/source, list/shieldcall_args, fake_attack)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
+		return
+	var/mob/user = source
+	if(user.incapacitated())
+		return
+
+	var/damage_to_energy_cost = (damage_to_energy_multiplier * shieldcall_args[SHIELDCALL_ARG_DAMAGE])
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 
 	if(!pay_energy(damage_to_energy_cost))
 		to_chat(owner, "<span class='danger'>Your shield fades due to lack of energy!</span>")
 		qdel(src)
-		return 0
+		return
 
 	//block as long as they are not directly behind us
 	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
@@ -70,12 +85,12 @@
 						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
 						qdel(src)
 
-				return PROJECTILE_CONTINUE // complete projectile permutation
+				shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_PASSTHROUGH | SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_TERMINATE
 
 		else if(istype(damage_source, /obj/item))
 			var/obj/item/W = damage_source
 			if(attacker)
-				W.melee_interaction_chain(attacker)
+				W.melee_interaction_chain(attacker, attacker)
 				to_chat(attacker, "<span class='danger'>Your [damage_source.name] goes through \the [src] in one location, comes out \
 				on the same side, and hits you!</span>")
 
@@ -89,5 +104,4 @@
 					spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
 						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
 						qdel(src)
-		return 1
-	return 0
+			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_TERMINATE

@@ -39,6 +39,8 @@
  *
  * @return clickchain flags to append
  */
+#warn run shieldcalls at obj/turf level manually because inflict_atom_damage doesn't
+#warn mob-level shieldcalls
 /atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
@@ -53,6 +55,8 @@
  *
  * @return clickchain flags to append
  */
+#warn run shieldcalls at obj/turf level manually because inflict_atom_damage doesn't
+#warn mob-level shieldcalls
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
@@ -84,6 +88,8 @@
  *
  * @return new impact_flags
  */
+#warn run shieldcalls at obj/turf level manually because inflict_atom_damage doesn't
+#warn mob-level shieldcalls
 /atom/proc/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	// lower calls can change flags before we trigger
 	// check if we're still hitting
@@ -117,6 +123,9 @@
  * this does not handle playing sounds / anything, this is strictly generic damage handling
  * usable by anything.
  *
+ * * This does **not** invoke the shieldcall API!
+ * * This is because this is low level enough we don't want to invoke shieldcalls.
+ *
  * @params
  * * damage - raw damage
  * * tier - (optional) penetration / attack tier
@@ -134,10 +143,9 @@
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		return 0
 	if(flag)
-		var/list/returned = run_armor(arglist(args))
-		#warn Hell.
-		damage = returned[1]
-		mode = returned[4]
+		var/list/returned = run_armor(damage, null, tier, flag, mode, attack_type, weapon)
+		damage = returned[SHIELDCALL_ARG_DAMAGE]
+		mode = returned[SHIELDCALL_ARG_DAMAGE_MODE]
 	if(!damage)
 		return
 	. = integrity
@@ -638,11 +646,14 @@
  * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
  */
 /atom/proc/run_shieldcalls(list/shieldcall_args, fake_attack)
+	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, shieldcall_args, fake_attack)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
+		return
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
 		if(!calling.low_level_intercept)
 			continue
 		calling.handle_shieldcall(src, args, fake_attack)
-		if(flags & SHIELDCALL_RETURN_TERMINATE)
+		if(shieldcall_args[SHIELDCALL_ARG_FL] & SHIELDCALL_RETURN_TERMINATE)
 			break
 
 /**
@@ -651,6 +662,9 @@
  * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
  */
 /atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
+	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
+		return
 	var/datum/armor/our_armor = fetch_armor()
 	our_armor.handle_shieldcall(src, shieldcall_args, fake_attack)
 

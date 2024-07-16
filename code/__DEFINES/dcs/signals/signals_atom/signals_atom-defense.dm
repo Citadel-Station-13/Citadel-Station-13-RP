@@ -9,3 +9,8 @@
 	#define BULLET_ACT_ARG_FLAGS 2
 	#define BULLET_ACT_ARG_ZONE 3
 	#define BULLET_ACT_ARG_BLOCKED 4
+
+/// called from run_armorcalls(): (list/shieldcall_args, fake_attack)
+#define COMSIG_ATOM_ARMORCALL "atom-armorcalls"
+/// called from run_shieldcalls(): (list/shieldcall_args, fake_attack)
+#define COMSIG_ATOM_SHIELDCALL "atom-shieldcalls"

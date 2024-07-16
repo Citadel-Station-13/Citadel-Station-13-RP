@@ -8,12 +8,29 @@
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 
-/obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/suit/armor/laserproof/equipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
+
+/obj/item/clothing/suit/armor/laserproof/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/clothing/suit/armor/laserproof/proc/shieldcall(mob/defending, list/shieldcall_args, fake_attack)
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
 	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
 		var/obj/projectile/P = damage_source
 
 		if(P.reflected) // Can't reflect twice
-			return ..()
+			return
 
 		var/reflectchance = 40 - round(damage/3)
 		if(!(def_zone in list(BP_TORSO, BP_GROIN)))
@@ -27,10 +44,9 @@
 			var/turf/curloc = get_turf(user)
 
 			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, user)
+			P.legacy_redirect(new_x, new_y, curloc, user)
 			P.reflected = 1
-
-			return PROJECTILE_CONTINUE // complete projectile permutation
+			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_PASSTHROUGH | SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_TERMINATE
 
 /obj/item/clothing/gloves/arm_guard/laserproof
 	name = "ablative arm guards"

@@ -50,7 +50,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/run_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/check_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
 
@@ -102,7 +102,7 @@
  *
  * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/run_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+/mob/proc/check_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
 	run_shieldcalls(args, TRUE)

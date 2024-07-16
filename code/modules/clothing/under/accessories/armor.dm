@@ -178,7 +178,24 @@
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.2
 
-/obj/item/clothing/accessory/armor/armorplate/ablative/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/clothing/accessory/armor/armorplate/ablative/equipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	// if you're reading this: this is not the right way to do shieldcalls
+	// this is just a lazy implementation
+	// signals have highest priority, this as a piece of armor shouldn't have that.
+	RegisterSignal(user, COMSIG_ATOM_SHIELDCALL, PROC_REF(shieldcall))
+
+/obj/item/clothing/accessory/armor/armorplate/ablative/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDS)
+		return
+	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
+
+/obj/item/clothing/accessory/armor/armorplate/ablative/proc/shieldcall(mob/defending, list/shieldcall_args, fake_attack)
+	var/damage_source = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+	var/def_zone = shieldcall_args[SHIELDCALL_ARG_HIT_ZONE]
 	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
 		var/obj/projectile/P = damage_source
 

@@ -17,9 +17,10 @@
 
 	/// Overall damage multiplier
 	///
+	/// todo: implement; needs slight clickchain/melee overhaul
+	///
 	/// * Allowed to be changed by shieldcalls and other intercepts
 	var/damage_multiplier = 1
-	#warn impl
 
 /datum/event_args/actor/clickchain/New(mob/performer, mob/initiator, atom/target, list/params, intent)
 	..()

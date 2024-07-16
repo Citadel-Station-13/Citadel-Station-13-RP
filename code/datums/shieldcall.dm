@@ -130,3 +130,17 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  */
 /datum/shieldcall/proc/handle_throw_impact(atom/defending, datum/thrownthing/thrown)
 	return
+
+//* Bound Variant *//
+
+/datum/shieldcall/bound
+	var/expected_type
+	var/datum/bound
+
+/datum/shieldcall/bound/New(datum/binding)
+	ASSERT(expected_type && istype(binding, expected_type))
+	src.bound = binding
+
+/datum/shieldcall/bound/Destroy()
+	src.bound = null
+	return ..()

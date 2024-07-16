@@ -11,6 +11,7 @@
 			I.mob_armorcall(shieldcall_args, fake_attack)
 		return
 
+	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
 	// all zones, uh oh, this is about to get very ugly
 	var/total = 0
 	var/total_size = 0
