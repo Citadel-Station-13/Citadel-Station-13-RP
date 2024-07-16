@@ -75,7 +75,7 @@
 
 /obj/overmap/proc/cut_bounds_overlay()
 	if(bounds_overlay)
-		cut_overlay(bounds_overlay)
+		underlays -= bounds_overlay
 		bounds_overlay = null
 
 /obj/overmap/proc/add_bounds_overlay()
@@ -83,7 +83,7 @@
 		cut_bounds_overlay()
 	bounds_overlay = get_bounds_overlay()
 	if(bounds_overlay)
-		add_overlay(bounds_overlay)
+		underlays += bounds_overlay
 
 /obj/overmap/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	. = ..()
