@@ -206,7 +206,7 @@
 	var/list/obj/item/affected
 	switch(bodypart)
 		if(BP_HEAD)
-			affected = items_by_slot(
+			affected = items_by(
 				SLOT_ID_HEAD,
 				SLOT_ID_LEFT_EAR,
 				SLOT_ID_RIGHT_EAR,
@@ -214,7 +214,7 @@
 				SLOT_ID_GLASSES
 			)
 		if(BP_GROIN, BP_TORSO)
-			affected = items_by_slot(
+			affected = items_by_slot_id(
 				SLOT_ID_BACK,
 				SLOT_ID_BELT,
 				SLOT_ID_SUIT,
@@ -224,12 +224,12 @@
 				SLOT_ID_UNIFORM
 			)
 		if(BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND)
-			affected = items_by_slot(
+			affected = items_by_slot_id(
 				SLOT_ID_HANDCUFFED,
 				SLOT_ID_GLOVES
 			)
 		if(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
-			affected = items_by_slot(
+			affected = items_by_slot_id(
 				SLOT_ID_LEGCUFFED,
 				SLOT_ID_SHOES
 			)

@@ -307,7 +307,7 @@
  * that nominally have hands.
  */
 /mob/proc/get_nominal_hand_count()
-	#warn impl
+	return length(held_items)
 
 /**
  * get number of usable hands / arms / whatever that we have and should check for
@@ -320,14 +320,14 @@
  * basically if a red deny symbol is in the hand it is not usable, otherwise it's usable.
  */
 /mob/proc/get_usable_hand_count()
-	#warn impl
+	#warn impl + subtypes
 
 /**
  * get indices of usable hands
  */
 /mob/proc/get_usable_hand_indices()
 	RETURN_TYPE(/list)
-	#warn impl
+	#warn impl + subtypes
 
 //* Internals *//
 

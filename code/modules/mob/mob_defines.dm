@@ -117,7 +117,7 @@
 	/// our abilities - set to list of paths to init to intrinsic abilities.
 	var/list/datum/ability/abilities
 
-	//? Inventory
+	//* Inventory *//
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory
 	/// inventory hud used

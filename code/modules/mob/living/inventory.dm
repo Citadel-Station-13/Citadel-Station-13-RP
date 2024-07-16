@@ -148,7 +148,7 @@
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/mob_inventory_carry)
 
-//* hard movespeed slowdown
+//* Movespeed *//
 
 /mob/living/update_item_slowdown()
 	var/tally = get_item_slowdown()

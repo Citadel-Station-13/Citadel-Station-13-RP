@@ -454,7 +454,7 @@ meteor_act
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
 	if(!get_active_held_item())	// If active hand is empty
 		var/obj/item/organ/external/temp = organs_by_name["r_hand"]
-		if (hand)
+		if (active_hand % 2)
 			temp = organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			return FALSE	// The hand isn't working in the first place

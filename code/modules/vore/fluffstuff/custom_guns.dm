@@ -57,7 +57,7 @@
 
 /obj/item/gun/ballistic/automatic/battlerifle/update_icon()
 	. = ..()
-	update_held_icon()
+	update_worn_icon()
 
 /obj/item/gun/ballistic/automatic/battlerifle/update_icon_state()
 	. = ..()
