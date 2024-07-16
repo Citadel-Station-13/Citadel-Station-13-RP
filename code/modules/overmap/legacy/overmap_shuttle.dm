@@ -61,7 +61,10 @@
 	if(!our_sector && myship?.landmark)
 		res["Perform Test Jump"] = myship.landmark
 		return res //We're not on the overmap, maybe an admin spawned us on a non-sector map. We're broken until we connect to our space z-level.
-	for (var/obj/overmap/entity/visitable/S in bounds(src, range))
+	var/obj/overmap/entity/top_ship = myship
+	while(!isturf(top_ship.loc) && istype(top_ship.loc, /obj/overmap/entity))
+		top_ship = top_ship.loc
+	for (var/obj/overmap/entity/visitable/S in bounds(top_ship, range))
 		var/list/waypoints = S.get_waypoints(name)
 		for(var/obj/effect/shuttle_landmark/LZ in waypoints)
 			if(LZ.is_valid(src))

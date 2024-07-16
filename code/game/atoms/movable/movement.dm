@@ -569,7 +569,7 @@
 	++in_move
 
 	var/atom/oldloc = loc
-	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size || pixel_movement
+	var/is_multi_tile = pixel_movement || bound_width > world.icon_size || bound_height > world.icon_size
 
 	if(buckled_mobs)
 		unbuckle_all_mobs(BUCKLE_OP_FORCE)
@@ -586,19 +586,12 @@
 
 		if(!same_loc)
 			if(is_multi_tile && isturf(destination))
-				// gather
+				// gather old
 				var/list/old_locs = locs // implicit Copy() due to locs being special byond list
-				var/list/new_locs = block(
-					destination,
-					locate(
-						min(world.maxx, destination.x + ROUND_UP(bound_width / 32)),
-						min(world.maxy, destination.y + ROUND_UP(bound_height / 32)),
-						destination.z
-					)
-				)
-
 				// move
 				loc = destination
+				// gather new
+				var/list/new_locs = locs
 
 				// exit
 				if(old_area && old_area != destarea)

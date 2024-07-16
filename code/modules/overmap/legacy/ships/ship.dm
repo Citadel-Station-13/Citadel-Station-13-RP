@@ -127,7 +127,6 @@
 			// fuck you we're extra brutal today, decelration kills you too!
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, fore_dir)
 	else
-		glide_size = WORLD_ICON_SIZE/max(DS2TICKS(SSprocessing.wait), 1)	// Down to whatever decimal
 		for(var/zz in map_z)
 			SSparallax.update_z_motion(zz)
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, global.reverse_dir[fore_dir])
