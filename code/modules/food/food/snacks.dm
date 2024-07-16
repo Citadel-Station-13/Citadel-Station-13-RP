@@ -5014,6 +5014,13 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("egg", 4)
 
+//for spawning in by admins, or loadout, since blood isn't added into the reagents otherwise.
+/obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood
+
+/obj/item/reagent_containers/food/snacks/riztizkzi_sea/include_blood/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blood", 15)
+
 /obj/item/reagent_containers/food/snacks/father_breakfast
 	name = "breakfast of champions"
 	desc = "A sausage and an omelette on top of a grilled steak."

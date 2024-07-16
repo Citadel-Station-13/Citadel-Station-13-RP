@@ -766,9 +766,13 @@ About the new airlock wires panel:
 		open()
 
 /obj/machinery/door/airlock/proc/can_remove_electronics()
+	if(is_integrity_broken())
+		return TRUE
 	return src.panel_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user as mob)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	//TO_WORLD("airlock attackby src [src] obj [C] mob [user]")
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())

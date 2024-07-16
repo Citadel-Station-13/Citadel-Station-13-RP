@@ -9,12 +9,6 @@
 	. = ..()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/climb_out)
 
-/obj/vehicle/sealed/generate_action_type()
-	var/datum/action/vehicle/sealed/E = ..()
-	. = E
-	if(istype(E))
-		E.vehicle_entered_target = src
-
 /obj/vehicle/sealed/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(!istype(dropping) || !isliving(user))
 		return ..()

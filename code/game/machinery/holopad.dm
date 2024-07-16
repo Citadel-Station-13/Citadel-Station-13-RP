@@ -962,8 +962,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	remoting = user
 	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(cleanup_remote_presence))
 	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, PROC_REF(on_item_equipped))
-	action_hang_up.grant(remoting)
-	action_swap_view.grant(remoting)
+	action_hang_up.grant(remoting.actions_controlled)
+	action_swap_view.grant(remoting.actions_controlled)
 	if(isAI(user))
 		var/mob/living/silicon/ai/ai_user = user
 		hologram = destination.create_hologram(ai_user.hologram_appearance())
@@ -994,8 +994,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	UnregisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED)
 	remoting.unshunt_perspective()
 	remoting.clear_movement_intercept()
-	action_hang_up.remove(remoting)
-	action_swap_view.remove(remoting)
+	action_hang_up.revoke(remoting.actions_controlled)
+	action_swap_view.revoke(remoting.actions_controlled)
 	remoting = null
 	if(hologram)
 		qdel(hologram)
@@ -1067,7 +1067,6 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /datum/action/holocall
 	abstract_type = /datum/action/holocall
 	target_type = /datum/holocall
-	action_type = ACTION_TYPE_DEFAULT
 
 /datum/action/holocall/hang_up
 	name = "Hang Up"
@@ -1076,9 +1075,12 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	background_icon = 'icons/screen/actions/backgrounds.dmi'
 	background_icon_state = "default"
 
-/datum/action/holocall/hang_up/on_trigger(mob/user, datum/holocall/receiver)
+/datum/action/holocall/hang_up/invoke_target(datum/holocall/target, datum/event_args/actor/actor)
 	. = ..()
-	receiver.disconnect(receiver.source)
+	if(.)
+		return
+	target.disconnect(target.source)
+	return TRUE
 
 /datum/action/holocall/swap_view
 	name = "Stop View"
@@ -1087,9 +1089,12 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	background_icon = 'icons/screen/actions/backgrounds.dmi'
 	background_icon_state = "default"
 
-/datum/action/holocall/swap_view/on_trigger(mob/user, datum/holocall/receiver)
+/datum/action/holocall/swap_view/invoke_target(datum/holocall/target, datum/event_args/actor/actor)
 	. = ..()
-	receiver.cleanup_remote_presence()
+	if(.)
+		return
+	target.cleanup_remote_presence(target.source)
+	return TRUE
 
 /**
  * obj used for holograms

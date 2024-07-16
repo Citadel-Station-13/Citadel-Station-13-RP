@@ -50,6 +50,8 @@
 			return TryToSwitchState(user)
 
 /obj/structure/simple_door/attack_hand(mob/user, list/params)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	return TryToSwitchState(user)
 
 /obj/structure/simple_door/CanAllowThrough(atom/movable/mover, turf/target)
@@ -122,10 +124,10 @@
 
 /obj/structure/simple_door/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.a_intent == INTENT_HARM)
-		return
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	var/datum/material/material = get_primary_material()
+		return ..()
 	if(istype(W,/obj/item/pickaxe))
+		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+		var/datum/material/material = get_primary_material()
 		var/obj/item/pickaxe/digTool = W
 		visible_message("<span class='danger'>[user] starts digging [src]!</span>")
 		if(do_after(user, digTool.digspeed * material.relative_integrity, src))

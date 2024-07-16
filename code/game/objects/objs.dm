@@ -837,6 +837,8 @@
 		return
 	if(integrity == integrity_max)
 		. += SPAN_NOTICE("It looks fully intact.")
+	else if(atom_flags & ATOM_BROKEN)
+		. += SPAN_BOLDWARNING("It's broken and falling apart!")
 	else
 		var/perc = percent_integrity()
 		if(perc > 0.75)
@@ -846,7 +848,7 @@
 		else if(perc > 0.25)
 			. += SPAN_RED("It looks severely damaged.")
 		else
-			. += SPAN_BOLDWARNING("It's falling apart!")
+			. += SPAN_BOLDWARNING("It's barely able to hold itself together!")
 
 //* Movement *//
 

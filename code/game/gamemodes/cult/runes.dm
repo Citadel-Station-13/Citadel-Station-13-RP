@@ -477,7 +477,7 @@ var/list/sacrificed = list()
 	D.g_eyes = 200
 	D.update_eyes()
 	D.all_underwear.Cut()
-	D.key = ghost.key
+	ghost.transfer_client_to(D)
 	cult.add_antagonist(D.mind)
 
 	if(!chose_name)

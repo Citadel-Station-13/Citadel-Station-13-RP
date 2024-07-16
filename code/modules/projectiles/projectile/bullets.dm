@@ -129,13 +129,10 @@
 	agony = 10 // brute easily heals, agony not so much
 	armor_penetration = 30 // reduces shield blockchance
 	accuracy = -20 // he do miss actually
-	// if the pathfinder gets a funny burst rifle, they deserve a rival
-	// ~25 tiles/second
-	speed = 32 / 0.4
+	speed = 25 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // spicy boys
-	// ~50 tiles/second
-	speed = 32 / 0.2
+	speed = 50 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
@@ -302,8 +299,7 @@
 	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
-	// ~25 tiles/second
-	speed = 32 / 0.4
+	speed = 25 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20
@@ -390,8 +386,7 @@
 /obj/projectile/bullet/musket // Big Slow and bad against armor.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage = 60
-	// ~8.3 tiles/second
-	speed = 32 / 1.2
+	speed = 8.3 * WORLD_ICON_SIZE
 	armor_penetration = -50
 
 /obj/projectile/bullet/musket/silver // What its a classic

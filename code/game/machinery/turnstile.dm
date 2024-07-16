@@ -4,6 +4,7 @@
 	icon = 'icons/obj/turnstile.dmi'
 	icon_state = "turnstile_map"
 	power_channel = POWER_CHANNEL_ENVIR
+	armor_type = /datum/armor/door/airlock
 	density = FALSE
 	anchored = TRUE
 	use_power = FALSE
@@ -93,3 +94,16 @@
 /obj/machinery/turnstile/exit
 	name = "\improper Exit"
 	req_one_access = list(112)
+
+
+/obj/machinery/turnstile/resort
+	name = "\improper Park Entrance"
+	req_one_access = list(250)
+
+/obj/machinery/turnstile/resort/premium
+	name = "\improper VIPs Only"
+	req_one_access = list(251)
+
+/obj/machinery/turnstile/resort/exit
+	name = "\improper Exit"
+	req_one_access = list()

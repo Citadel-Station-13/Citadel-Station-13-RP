@@ -48,7 +48,7 @@
 
 /obj/item/reagent_containers/food/drinks/bludboxmax
 	name = "Bludbox MAX carton"
-	desc = "A vampire's best friend! This Bludbox contains only the most delicious of organic, free-range O-Negatives. For all your dietry needs!"
+	desc = "A vampire's best friend! This Bludbox contains only the most delicious of organic, free-range O-Negatives. For all your dietary needs!"
 	volume = 30
 	icon_state = "bludboxmax"
 	center_of_mass = list("x"=16, "y"=9)
@@ -68,7 +68,7 @@
 
 /obj/item/reagent_containers/food/drinks/bludbox
 	name = "Bludbox carton"
-	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietry requirements for your undead friends."
+	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietary requirements for your undead friends."
 	volume = 30
 	icon_state = "bludbox"
 	center_of_mass = list("x"=16, "y"=9)
@@ -78,7 +78,7 @@
 
 /obj/item/reagent_containers/food/drinks/bludboxlight
 	name = "Bludbox Light carton"
-	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietry requirements for your undead friends. This one has less sweeteners, gross!"
+	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietary requirements for your undead friends. This one has less sweeteners, gross!"
 	volume = 30
 	icon_state = "bludboxlight"
 	center_of_mass = list("x"=16, "y"=9)
