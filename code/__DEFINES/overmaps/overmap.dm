@@ -13,7 +13,7 @@
 /// units of overmap distance
 #define OVERMAP_DISTANCE_UNIT "l-s"
 /// overmap distance units per pixel
-#define OVERMAP_DISTANCE_PIXEL 3
+#define OVERMAP_DISTANCE_PIXEL 2.5
 /// overmap distance quantization
 #define OVERMAP_DISTANCE_ACCURACY 0.0001
 /// duplicate of world icon size. don't lie to yourself, we aren't getting 64x64 ss13.

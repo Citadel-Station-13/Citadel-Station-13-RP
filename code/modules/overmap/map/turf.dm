@@ -89,8 +89,8 @@
 	if(number)
 		maptext = MAPTEXT_CENTER("[number]")
 
-/turf/overmap/edge/Cross(atom/movable/O)
-	if(istype(O, /obj/overmap))
+/turf/overmap/edge/Enter(atom/movable/mover, atom/oldloc)
+	if(istype(mover, /obj/overmap))
 		return FALSE
 	return ..()
 
