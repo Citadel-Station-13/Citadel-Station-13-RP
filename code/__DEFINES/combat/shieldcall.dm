@@ -31,7 +31,15 @@
 /// these flags means that the attack should keep going after us, regardless of if we're hit
 #define SHIELDCALL_RETURNS_PIERCE_ATTACK (SHIELDCALL_RETURN_ATTACK_PASSTHROUGH)
 
-//* atom shieldcall args - this *must* match up with /atom/proc/atom_shieldcheck and /atom/proc/atom_shieldcall! *//
+//*                               Atom Shieldcall Args                            *//
+//*                                                                               *//
+//* The shieldcall system is a very low-level 'damage instance' interception API. *//
+//* It's used by the shieldcalls list in atoms to perform low-level intercepts,   *//
+//* as well as by default features like armor to perform their damage intercepts. *//
+//*                                                                               *//
+//* For speed reasons, shieldcalls pass a single argument list down instead of    *//
+//* returning new lists every call, as shieldcalls need to be able to edit many   *//
+//* facets of a damage instance.                                                  *//
 
 /// damage amount
 #define SHIELDCALL_ARG_DAMAGE 1
@@ -49,8 +57,10 @@
 #define SHIELDCALL_ARG_WEAPON 7
 /// flags returned from other shieldcalls
 #define SHIELDCALL_ARG_FLAGS 8
+/// hit zone; this is usually a bodypart but this is also optional
+#define SHIELDCALL_ARG_HIT_ZONE 9
 /// additional list returns; usually empty, but may exist
-#define SHIELDCALL_ARG_ADDITIONAL 9
+#define SHIELDCALL_ARG_ADDITIONAL 10
 
 //* list keys for list/additional in atom shieldcalls *//
 

@@ -1,8 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
-//! Welcome to the atom damage module.
-//! Enjoy the bitfield and #define vomit.
+//! Welcome to hell.
 
 // todo: everything needs comsigs comsigs comsigs
 
@@ -111,7 +110,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 #warn just here to spot the old ones
 
-//? Damage API
+//* Damage Processing API *//
 
 /**
  * takes damage from a generic attack, taking into account armor but not shields.
@@ -136,6 +135,7 @@
 		return 0
 	if(flag)
 		var/list/returned = run_armor(arglist(args))
+		#warn Hell.
 		damage = returned[1]
 		mode = returned[4]
 	if(!damage)
@@ -507,44 +507,62 @@
 /atom/proc/generate_armor()
 	return fetch_armor_struct(armor_type)
 
-#warn combine armor / shieldcall
-
-// todo: rework this maybe
 /**
- * calculates the resulting damage from an attack, taking into account our armor and soak
+ * runs an attack against armor
+ *
+ * * side effects are **not** allowed
+ * * this is the 'just checking' version.
+ *
+ * params are modified and then returned as a list
+ *
+ * * See [atom_shieldcall()] for what is going on here.
+ * * SHIELDCALL_ARG_* are used as the return list's indices.
  *
  * @params
  * * damage - raw damage
+ * * damtype - damage type
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
+ * * hit_zone - where were they hit?
+ * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
  *
- * @return args as list.
+ * @return args, modified, as list.
  */
-/atom/proc/check_armor(damage, tier, flag, mode, attack_type, datum/weapon)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
+/atom/proc/check_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	run_armorcalls(args, TRUE)
+	return args
 
-// todo: rework this maybe
 /**
- * runs armor against an incoming attack
- * this proc can have side effects
+ * runs an attack against armor
+ *
+ * * side effects are allowed
+ *
+ * params are modified and then returned as a list
+ *
+ * * See [atom_shieldcall()] for what is going on here.
+ * * SHIELDCALL_ARG_* are used as the return list's indices.
  *
  * @params
  * * damage - raw damage
+ * * damtype - damage type
  * * tier - penetration / attack tier
  * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
+ * * hit_zone - where were they hit?
+ * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
  *
- * @return args as list.
+ * @return args, modified, as list.
  */
-/atom/proc/run_armor(damage, tier, flag, mode, attack_type, datum/weapon)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
+/atom/proc/run_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	run_armorcalls(args, FALSE)
+	return args
 
 //* Shieldcalls *//
 
@@ -572,17 +590,13 @@
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
  * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
+ * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
  *
  * @return args, modified, as list.
  */
-/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, list/additional)
-	for(var/datum/shieldcall/calling as anything in shieldcalls)
-		if(!calling.low_level_intercept)
-			continue
-		calling.handle_shieldcall(src, args, TRUE)
-		if(flags & SHIELDCALL_RETURN_TERMINATE)
-			break
+/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	run_shieldcalls(args, TRUE)
 	return args
 
 /**
@@ -609,18 +623,36 @@
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
  * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
+ * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
  *
  * @return args, modified, as list.
  */
-/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, list/additional)
+/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	run_shieldcalls(args, FALSE)
+	return args
+
+/**
+ * Runs a damage instance against shieldcalls
+ *
+ * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ */
+/atom/proc/run_shieldcalls(list/shieldcall_args, fake_attack)
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
 		if(!calling.low_level_intercept)
 			continue
-		calling.handle_shieldcall(src, args)
+		calling.handle_shieldcall(src, args, fake_attack)
 		if(flags & SHIELDCALL_RETURN_TERMINATE)
 			break
-	return args
+
+/**
+ * Runs a damage instance against armor
+ *
+ * * This is a low level proc. Make sure you undersatnd how shieldcalls work [__DEFINES/combat/shieldcall.dm].
+ */
+/atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
+	var/datum/armor/our_armor = fetch_armor()
+	our_armor.handle_shieldcall(src, shieldcall_args, fake_attack)
 
 /atom/proc/register_shieldcall(datum/shieldcall/delegate)
 	LAZYINITLIST(shieldcalls)

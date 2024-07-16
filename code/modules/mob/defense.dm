@@ -1,83 +1,121 @@
-/**
- * calculates the resulting damage from an attack, taking into account our armor and soak
- *
- * @params
- * * damage - raw damage
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
- * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
- * * target_zone - where it's impacting
- *
- * @return args as list.
- */
-/mob/proc/check_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	var/list/returned = check_armor(damage, tier, flag, mode, attack_type, weapon)
-	damage = returned[1]
-	mode = returned[4]
-	return args.Copy()
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
+//* Armor - Only run against armor. *//
 
 /**
- * runs armor against an incoming attack
- * this proc can have side effects
+ * An override of /atom/proc/run_armorcalls(), with zone filter capability.
+ *
+ * This is what you should override, instead of the check/run procs.
+ *
+ * * At current moment, due to expensiveness reasons, not providing filter_zone will result in only SHIELDCALL_ARG_DAMAGE being modified.
  *
  * @params
- * * damage - raw damage
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
- * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
- * * target_zone - where it's impacting
- *
- * @return args as list.
+ * * shieldcall_args - passed in shieldcall args list to modify
+ * * fake_attack - are we just checking armor?
+ * * filter_zone - confine to a certain hit zone. this is **required** for full processing, otherwise we just check overall damage.
  */
-/mob/proc/run_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	var/list/returned = run_armor(damage, tier, flag, mode, attack_type, weapon)
-	damage = returned[1]
-	mode = returned[4]
-	return args.Copy()
+/mob/run_armorcalls(list/shieldcall_args, fake_attack, filter_zone)
+	..() // perform default /atom level
 
 /**
- * check overall armor
- * does not support modifying damage modes.
+ * Generic, low-level armor check for inbound attacks
  *
- * @params
- * * damage - raw damage
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
- * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
- * * target_zone - where it's impacting
+ * * This will filter armor by zone.
+ * * This operates like [atom_shieldcall()].
  *
- * @return args as list.
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/check_overall_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	var/list/returned = check_armor(damage, tier, flag, mode, attack_type, weapon)
-	damage = returned[1]
-	mode = returned[4]
-	return args.Copy()
+/mob/proc/check_mob_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, TRUE, hit_zone) // by default, use atom/var/armor on ourselves
 
 /**
- * runs overall armor against an incoming attack
- * this proc can have side effects
- * does not support modifying damage modes.
+ * Generic, low-level armor processing for inbound attacks
  *
- * @params
- * * damage - raw damage
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
- * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
- * * target_zone - where it's impacting
+ * * This will filter armor by zone.
+ * * This operates like [atom_shieldcall()].
  *
- * @return args as list.
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
  */
-/mob/proc/run_overall_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	var/list/returned = run_armor(damage, tier, flag, mode, attack_type, weapon)
-	damage = returned[1]
-	mode = returned[4]
-	return args.Copy()
+/mob/proc/run_mob_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, FALSE, hit_zone) // by default, use atom/var/armor on ourselves
+
+/**
+ * Checks the average armor for a full-body attack.
+ *
+ * * this is used for lazy-sim's like explosion where we're not simulating every limb's individual damage tick.
+ * * This operates like [atom_shieldcall()].
+ *
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
+ */
+/mob/proc/run_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
+
+/**
+ * Checks the average armor for a full-body attack.
+ *
+ * * this is used for lazy-sim's like explosion where we're not simulating every limb's individual damage tick.
+ * * This operates like [atom_shieldcall()].
+ *
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
+ */
+/mob/proc/run_mob_overall_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, FALSE) // by default, use atom/var/armor on ourselves
+
+//* Defense - Run against armor, as well as shieldcalls *//
+
+/**
+ * Generic, low-level defense check for inbound attacks
+ *
+ * * This will filter defense by zone.
+ * * This operates like [atom_shieldcall()].
+ *
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
+ */
+/mob/proc/check_mob_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, TRUE, hit_zone) // by default, use atom/var/armor on ourselves
+	run_shieldcalls(args, TRUE)
+
+/**
+ * Generic, low-level defense processing for inbound attacks
+ *
+ * * This will filter defense by zone.
+ * * This operates like [atom_shieldcall()].
+ *
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
+ */
+/mob/proc/run_mob_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, FALSE, hit_zone) // by default, use atom/var/armor on ourselves
+	run_shieldcalls(args, FALSE)
+
+/**
+ * Checks the average defense for a full-body attack.
+ *
+ * * this is used for lazy-sim's like explosion where we're not simulating every limb's individual damage tick.
+ * * This operates like [atom_shieldcall()].
+ *
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
+ */
+/mob/proc/run_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, TRUE) // by default, use atom/var/armor on ourselves
+	run_shieldcalls(args, TRUE)
+
+/**
+ * Checks the average defense for a full-body attack.
+ *
+ * * this is used for lazy-sim's like explosion where we're not simulating every limb's individual damage tick.
+ * * This operates like [atom_shieldcall()].
+ *
+ * @return modified argument list, with SHIELDCALL_ARG_* defines as indices.
+ */
+/mob/proc/run_mob_overall_defense(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	run_armorcalls(args, FALSE) // by default, use atom/var/armor on ourselves
+	run_shieldcalls(args, FALSE)

@@ -184,6 +184,16 @@
 		else
 			return 0
 
+/**
+ * The big, bad proc that deals with inbound shieldcalls.
+ */
+/datum/armor/proc/handle_shieldcall(list/shieldcall_args)
+	shieldcall_args[SHIELDCALL_ARG_DAMAGE] = resultant_damage(
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE],
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER],
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG],
+	)
+
 /datum/armor/proc/resultant_damage(damage, tier, flag)
 	switch(flag)
 		if(ARMOR_MELEE)

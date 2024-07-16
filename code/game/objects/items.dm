@@ -423,14 +423,6 @@
 /obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)
 
-//RETURN VALUES
-//handle_shield should return a positive value to indicate that the attack is blocked and should be prevented.
-//If a negative value is returned, it should be treated as a special return value for bullet_act() and handled appropriately.
-//For non-projectile attacks this usually means the attack is blocked.
-//Otherwise should return 0 to indicate that the attack is not affected in any way.
-/obj/item/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	return 0
-
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc
 	while(L && !istype(L, /turf/))
@@ -762,23 +754,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //* Armor *//
 
 /**
- * called to be checked for mob armor
- *
- * @returns copy of args with modified values
+ * Called during a mob armor call cycle
  */
-/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
-
-/**
- * called to be used as mob armor
- * side effects are allowed
- *
- * @returns copy of args with modified values
- */
-/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
-	damage = fetch_armor().resultant_damage(damage, tier, flag)
-	return args.Copy()
+/obj/item/proc/mob_armorcall(mob/defending, list/shieldcall_args, fake_attack)
+	// use our own armor
+	var/datum/armor/our_armor = fetch_armor()
+	our_armor.handle_shieldcall(shieldcall_args)
 
 //* Attack *//
 
