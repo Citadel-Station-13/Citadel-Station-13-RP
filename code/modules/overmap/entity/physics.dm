@@ -51,6 +51,8 @@
 	else
 		deactivate_physics()
 
+	update_icon() // legacy
+
 /obj/overmap/entity/proc/set_velocity(vx, vy)
 	if(!isnull(vx))
 		vel_x = vx
@@ -61,6 +63,8 @@
 		activate_physics()
 	else
 		deactivate_physics()
+
+	update_icon() // legacy
 
 /obj/overmap/entity/proc/update_velocity_ticking()
 	var/should_be_moving = is_moving()
