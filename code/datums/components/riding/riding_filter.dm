@@ -210,7 +210,7 @@
 	ASSERT(islist(offhands))
 	var/amount_needed = rider_offhands_needed(rider, semantic)
 	if(!offhand_requirements_are_rigid)
-		amount_needed = min(amount_needed, rider.get_number_of_hands())
+		amount_needed = min(amount_needed, rider.get_nominal_hand_count())
 	if(!amount_needed)
 		return TRUE
 	for(var/i in 1 to amount_needed)

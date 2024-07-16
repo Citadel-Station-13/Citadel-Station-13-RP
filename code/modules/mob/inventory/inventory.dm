@@ -206,7 +206,7 @@
 	var/list/obj/item/affected
 	switch(bodypart)
 		if(BP_HEAD)
-			affected = items_by(
+			affected = items_by_slot_id(
 				SLOT_ID_HEAD,
 				SLOT_ID_LEFT_EAR,
 				SLOT_ID_RIGHT_EAR,

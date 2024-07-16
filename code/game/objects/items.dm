@@ -1098,7 +1098,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
+		if (H.active_hand % 2)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")

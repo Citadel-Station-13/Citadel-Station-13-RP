@@ -1,7 +1,7 @@
 // todo: can element this by usign 3 signals instead of 2, one to receive a keybind signal.
 /datum/component/wielding
 	registered_type = /datum/component/wielding
-	
+
 	/// hands needed
 	var/hands
 	/// lazylist
@@ -45,7 +45,7 @@
 /datum/component/wielding/proc/wield(mob/wielder)
 	if(src.wielder)
 		return
-	var/possible = wielder.get_number_of_hands()
+	var/possible = wielder.get_nominal_hand_count()
 	var/wanted = hands - 1
 	if(possible < wanted)
 		return
