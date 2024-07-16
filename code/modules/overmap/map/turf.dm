@@ -112,6 +112,11 @@
 
 //! LEGACY BELOW
 
+/turf/overmap/Destroy()
+	for(var/obj/overmap/entity/visitable/ship/entity in loc)
+		Exited(entity)
+	return ..()
+
 /turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()
 	if(istype(O, /obj/overmap/entity/visitable/ship))

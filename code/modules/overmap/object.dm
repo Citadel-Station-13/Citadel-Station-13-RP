@@ -138,5 +138,5 @@
 		for(var/z in other.map_z)
 			SSparallax.queue_z_vis_update(z)
 
-/obj/overmap/update_icon()
-	filters = filter(type="drop_shadow", color = color + "F0", size = 2, offset = 1,x = 0, y = 0)
+// /obj/overmap/update_icon()
+// 	filters = filter(type="drop_shadow", color = color + "F0", size = 2, offset = 1,x = 0, y = 0)

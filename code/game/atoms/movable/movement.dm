@@ -550,6 +550,7 @@
 	. = TRUE
 	forceMove(destination)
 
+// todo: step x, step y support
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
 	pulledby?.stop_pulling()
@@ -561,13 +562,14 @@
 /atom/movable/proc/moveToNullspace()
 	return doMove(null)
 
+// todo: step x, step y support
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 
 	++in_move
 
 	var/atom/oldloc = loc
-	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
+	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size || pixel_movement
 
 	if(buckled_mobs)
 		unbuckle_all_mobs(BUCKLE_OP_FORCE)
