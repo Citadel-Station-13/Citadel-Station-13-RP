@@ -164,5 +164,3 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_INDUSTRIAL_LIFT              S_OBJ(30) // /obj/structure/industrial_lift
 
 #define SMOOTH_GROUP_GAS_TANK                     S_OBJ(31)
-
-#define SMOOTH_GROUP_OVERMAP_HAZARD               S_OBJ(32)

@@ -8,7 +8,6 @@
 /obj/overmap/tiled
 	icon = 'icons/modules/overmap/tiled.dmi'
 	uses_bounds_overlay = TRUE
-	smoothing_groups = list(SMOOTH_GROUP_OVERMAP_HAZARD)
 	smoothing_flags = SMOOTH_CUSTOM
 
 	var/adjacency_dirs
