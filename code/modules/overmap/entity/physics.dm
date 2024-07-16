@@ -34,8 +34,9 @@
 	// move
 	var/old_loc = loc
 	if(!Move(loc, dir, step_x + msx, step_y + msy))
-		initialize_physics()
-		stack_trace("failed to move")
+		if(!bump_handled)
+			initialize_physics()
+			stack_trace("failed to move")
 	else if(old_loc != loc)
 		Moved(old_loc, NONE)
 

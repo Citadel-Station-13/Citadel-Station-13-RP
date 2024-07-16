@@ -35,6 +35,8 @@
 	var/pos_x
 	/// cached, read-only cached center y in overmap dist
 	var/pos_y
+	/// bump was handled
+	var/bump_handled = FALSE
 
 	/// max speed in overmap units per second
 	var/max_speed = OVERMAP_DISTANCE_TILE
