@@ -96,6 +96,7 @@
 	desc = "You take 15% less oxygen damge and require 12.5% less air (14kpa minimum)."
 	cost = 2
 	var_changes = list("minimum_breath_pressure" = 14, "oxy_mod" = 0.85)
+	extra_id_info = "Employee only requires an atmospheric pressure of <b>14kPa</b> to breathe."
 
 /datum/trait/positive/oxy_resist_plus
 	name = "Breathe Resist"
@@ -103,6 +104,7 @@
 	cost = 3
 	var_changes = list("minimum_breath_pressure" = 12, "oxy_mod" = 0.75)
 	excludes = list(/datum/trait/positive/oxy_resist,/datum/trait/positive/oxy_resist_plus)
+	extra_id_info = "Employee only requires an atmospheric pressure of <b>12kPa</b> to breathe."
 
 /datum/trait/positive/rad_resist
 	name = "Minor Radiation Resist"
@@ -156,6 +158,7 @@
 	name = "Antiseptic Saliva"
 	desc = "Your saliva has especially strong antiseptic properties that can be used to heal small wounds."
 	cost = 1
+	extra_id_info = "Employee's saliva carries antiseptic properties."
 
 /datum/trait/positive/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()

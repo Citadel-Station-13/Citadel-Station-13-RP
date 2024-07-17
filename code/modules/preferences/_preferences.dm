@@ -426,3 +426,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(dat)
 	panel.open()
+
+
+/datum/preferences/proc/get_trait_id_info()
+	. = list()
+	for (var/path in (pos_traits + neg_traits + neu_traits) - id_hidden_traits)
+		var/datum/trait/trait = all_traits[path]
+		if(istype(trait))
+			if(trait.extra_id_info)
+				.["[ckey(trait.name)]"] = trait.extra_id_info
+	return .

@@ -4,6 +4,7 @@
 	cost = 0
 	var_changes = list("metabolic_rate" = 1.2, "hunger_factor" = 0.2, "metabolism" = 0.06) // +20% rate and 4x hunger (Teshari level)
 	excludes = list(/datum/trait/neutral/metabolism_down, /datum/trait/neutral/metabolism_apex)
+	extra_id_info = "Employee has a faster-than-average metabolism."
 
 /datum/trait/neutral/metabolism_down
 	name = "Slow Metabolism"
@@ -11,6 +12,7 @@
 	cost = 0
 	var_changes = list("metabolic_rate" = 0.8, "hunger_factor" = 0.04, "metabolism" = 0.0012) // -20% of default.
 	excludes = list(/datum/trait/neutral/metabolism_up, /datum/trait/neutral/metabolism_apex)
+	extra_id_info = "Employee has a slower-than-average metabolism."
 
 /datum/trait/neutral/metabolism_apex
 	name = "Apex Metabolism"
@@ -18,6 +20,7 @@
 	cost = 0
 	var_changes = list("metabolic_rate" = 1.4, "hunger_factor" = 0.4, "metabolism" = 0.012) // +40% rate and 8x hunger (Double Teshari)
 	excludes = list(/datum/trait/neutral/metabolism_up, /datum/trait/neutral/metabolism_down)
+	extra_id_info = "Employee has an unusually fast metabolism."
 
 /datum/trait/neutral/cold_discomfort
 	name = "Hot-Blooded"
@@ -25,6 +28,7 @@
 	cost = 0
 	var_changes = list("heat_discomfort_level" = T0C+19)
 	excludes = list(/datum/trait/neutral/hot_discomfort)
+	extra_id_info = "Employee is acclimated to colder temperatures."
 
 /datum/trait/neutral/hot_discomfort
 	name = "Cold-Blooded"
@@ -32,6 +36,7 @@
 	cost = 0
 	var_changes = list("cold_discomfort_level" = T0C+21)
 	excludes = list(/datum/trait/neutral/cold_discomfort)
+	extra_id_info = "Employee is acclimated to warmer temperatures."
 
 /datum/trait/neutral/autohiss_unathi
 	name = "Autohiss (Unathi)"
@@ -67,6 +72,7 @@
 	cost = 0
 	var_changes = list("is_vampire" = TRUE) //The verb is given in human.dm
 	custom_only = FALSE
+	extra_id_info = "Employee's diet is exclusively <b>blood</b>. Employee has tested negative for vetalism."
 
 /datum/trait/neutral/bloodsucker/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
@@ -87,6 +93,7 @@
 	name = "Vetalan / Vampiric"
 	desc = "Vampires, officially known as the Vetalan, are weaker to burns, bright lights, and must consume blood to survive. To this end, they can see near-perfectly in the darkness, possess sharp, numbing fangs, and anti-septic saliva."
 	cost = 0
+	extra_id_info = "Employee is a carrier of <b>Vetalism</b>, and needs to consume blood to survive. Additionally, employee's saliva carries antiseptic properties."
 	custom_only = FALSE
 	var_changes = list(
 		"is_vampire" = TRUE,
@@ -243,6 +250,7 @@
 	desc = "Your saliva has especially strong antiseptic properties that can be used to heal small wounds."
 	cost = 0
 	custom_only = FALSE
+	extra_id_info = "Employee's saliva carries antiseptic properties."
 
 /datum/trait/neutral/antiseptic_saliva/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
@@ -265,6 +273,7 @@
 	var_changes = list(
 		"breath_type" = GAS_ID_NITROGEN
 	)
+	extra_id_info = "Employee requires <b>Nitrogen</b> to breathe."
 
 /datum/trait/neutral/cyberpsycho
 	name = "Cybernetic Rejection Syndrome"
@@ -274,6 +283,7 @@
 	var_changes = list(
 		"is_cyberpsycho" = TRUE
 	)
+	extra_id_info = "Employee's body exhibits violent rejection of cybernetics."
 
 /datum/trait/neutral/cyberpsycho/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
@@ -285,3 +295,4 @@
 	cost = 0
 	custom_only = FALSE
 	traits = list(TRAIT_ALCOHOL_INTOLERANT)
+	extra_id_info = "Employee's body is violently intolerant of alcohol."
