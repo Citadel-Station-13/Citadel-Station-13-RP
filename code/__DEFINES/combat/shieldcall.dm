@@ -4,41 +4,45 @@
 //* shieldcall return status *//
 
 /// terminate; either fully mitigated or we're done here
-#define SHIELDCALL_RETURN_TERMINATE (1<<0)
+#define SHIELDCALL_FLAG_TERMINATE (1<<0)
 /// terminate attacker swing entirely
 ///
 /// * usually you don't want this
-#define SHIELDCALL_RETURN_CANCEL_SWING (1<<1)
+#define SHIELDCALL_FLAG_CANCEL_SWING (1<<1)
 /// stop attack effects
 ///
 /// * this is basically the [PROJECTILE_IMPACT_BLOCKED] for shieldcalls
 /// * the thing hitting won't do direct damage but aftereffects like exploding rounds still explode
-#define SHIELDCALL_RETURN_ATTACK_CANCEL (1<<2)
+#define SHIELDCALL_FLAG_ATTACK_BLOCKED (1<<2)
 /// attack redirected entirely
-#define SHIELDCALL_RETURN_ATTACK_REDIRECT (1<<3)
+#define SHIELDCALL_FLAG_ATTACK_REDIRECT (1<<3)
 /// attack goes through
 ///
 /// * both this and REDIRECT should be used if the original attack should keep going
-/// * also use SHIELDCALL_RETURN_ATTACK_CANCEL if original attack shouldn't process! otherwise it might be a pierce.
+/// * also use SHIELDCALL_FLAG_ATTACK_BLOCKED if original attack shouldn't process! otherwise it might be a pierce.
 /// * example: reflecting a bullet
-#define SHIELDCALL_RETURN_ATTACK_PASSTHROUGH (1<<4)
+#define SHIELDCALL_FLAG_ATTACK_PASSTHROUGH (1<<4)
 /// this attack already invoked a 'specialized' shieldcall proc, and is now invoking
 /// the generalized atom_shieldcall() proc.
-#define SHIELDCALL_RETURN_SECOND_CALL (1<<5)
+#define SHIELDCALL_FLAG_SECOND_CALL (1<<5)
+/// asks the shieldcall nicely to not make a message
+#define SHIELDCALL_FLAG_SUPPRESS_MESSAGE (1<<6)
+/// asks the shieldcall nicely to not make a sound
+#define SHIELDCALL_FLAG_SUPPRESS_SOUND (1<<7)
 
-/// stop shieldcall chain
-#define SHIELDCALL_RETURNS_SHOULD_TERMINATE (SHIELDCALL_RETURN_TERMINATE)
-/// these flags means something happens / should happen
-#define SHIELDCALL_RETURNS_SHOULD_PROCESS (SHIELDCALL_RETURNS_ABORT_ATTACK | SHIELDCALL_RETURNS_PIERCE_ATTACK)
 /// these flags mean to stop processing the attack
-#define SHIELDCALL_RETURNS_ABORT_ATTACK (SHIELDCALL_RETURN_ATTACK_CANCEL)
+#define SHIELDCALL_FLAGS_BLOCK_ATTACK (SHIELDCALL_FLAG_ATTACK_BLOCKED)
 /// these flags means that the attack should keep going after us, regardless of if we're hit
-#define SHIELDCALL_RETURNS_PIERCE_ATTACK (SHIELDCALL_RETURN_ATTACK_PASSTHROUGH)
+#define SHIELDCALL_FLAGS_PIERCE_ATTACK (SHIELDCALL_FLAG_ATTACK_PASSTHROUGH)
+/// stop shieldcall chain
+#define SHIELDCALL_FLAGS_SHOULD_TERMINATE (SHIELDCALL_FLAG_TERMINATE)
+/// these flags means something happens / should happen
+#define SHIELDCALL_FLAGS_SHOULD_PROCESS (SHIELDCALL_FLAGS_BLOCK_ATTACK | SHIELDCALL_FLAGS_PIERCE_ATTACK)
 
 /// flags set in a projectile reflect
 ///
 /// * you should be using /datum/shieldcall's bullet intercept / bullet signals if possible but this works too
-#define SHIELDCALL_RETURNS_FOR_PROJECTILE_DEFLECT (SHIELDCALL_RETURN_TERMINATE | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_PASSTHROUGH)
+#define SHIELDCALL_FLAGS_FOR_PROJECTILE_DEFLECT (SHIELDCALL_FLAG_TERMINATE | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH)
 
 //*                               Atom Shieldcall Args                            *//
 //*                                                                               *//

@@ -1157,6 +1157,7 @@
 
 	// trigger projectile effects
 	if(base_projectile_effects || additional_projectile_effects)
+		// todo: can we move this to on_impact_new and have 'blocked' passed in? hrm.
 		for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
 			if(effect.hook_impact)
 				impact_flags = effect.on_impact(src, target, impact_flags, def_zone)
@@ -1309,6 +1310,60 @@
 		else
 			// above 1: divisor for miss chance
 			. = 1 - ((1 - .) / accuracy_overall_modify)
+
+/**
+ * Applies the standard damage instance to a mob.
+ *
+ * @params
+ * * target - thing to attack
+ * * blocked - 0 to 100+ blocked percent
+ * * impact_flags - impact flags passed in
+ * * hit_zone - zone to hit
+ */
+/obj/projectile/proc/process_damage_instance(mob/target, blocked, impact_flags, hit_zone)
+	#warn this currently doesn't actually hit armor/shieldcalls...
+	//! LEGACY COMBAT CODE
+	if(isliving(target))
+		var/mob/living/L = target
+		//Armor
+		var/soaked = L.get_armor_soak(hit_zone, src.damage_flag, src.armor_penetration)
+		var/absorb = L.run_armor_check(hit_zone, src.damage_flag, src.armor_penetration)
+		var/proj_sharp = is_sharp(src)
+		var/proj_edge = has_edge(src)
+		var/final_damage = src.get_final_damage(src)
+
+		if ((proj_sharp || proj_edge) && (soaked >= round(src.damage*0.8)))
+			proj_sharp = 0
+			proj_edge = 0
+
+		if ((proj_sharp || proj_edge) && prob(L.legacy_mob_armor(hit_zone, src.damage_flag)))
+			proj_sharp = 0
+			proj_edge = 0
+
+		var/list/impact_sounds = islist(src.impact_sounds)? LAZYACCESS(src.impact_sounds, L.get_bullet_impact_effect_type(hit_zone)) : src.impact_sounds
+		if(length(impact_sounds))
+			playsound(L, pick(impact_sounds), 75)
+		else if(!isnull(impact_sounds))
+			playsound(L, impact_sounds, 75)
+
+		//Stun Beams
+		if(src.taser_effect)
+			L.stun_effect_act(0, src.agony, hit_zone, src)
+			to_chat(L, "<font color='red'>You have been hit by [src]!</font>")
+			if(!src.nodamage)
+				L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
+			return
+
+		if(!src.nodamage)
+			L.apply_damage(final_damage, src.damage_type, hit_zone, absorb, soaked, 0, src, sharp=proj_sharp, edge=proj_edge)
+	//! END
+
+	for(var/datum/projectile_effect/effect as anything in base_projectile_effects)
+		if(effect.hook_damage)
+			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
+	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
+		if(effect.hook_damage)
+			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
 
 //* Physics - Configuration *//
 

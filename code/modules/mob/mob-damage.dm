@@ -11,13 +11,13 @@
  * * additional args past the normal shieldcall args are allowed, but not before!
  * * the entire args list is extracted via return, allowing for handling by caller.
  * * damage is assumed to be zone'd if def_zone is set; otherwise it's overall
- * * please note that overall damage doesn't check armor properly a lot of the time!
+ * * please note that overall damage generally doesn't check armor properly for speed reasons!
  *
  * @return modified args
  */
 /mob/proc/run_damage_instance(SHIELDCALL_PROC_HEADER)
 	process_damage_instance(args, hit_zone)
-	if(shieldcall_flags & SHIELDCALL_RETURNS_ABORT_ATTACK)
+	if(shieldcall_flags & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return args
 	inflict_damage_instance(arglist(args))
 	return args
@@ -27,7 +27,7 @@
  */
 /mob/proc/process_damage_instance(list/shieldcall_args, filter_zone)
 	run_shieldcalls(shieldcall_args, FALSE)
-	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & (SHIELDCALL_RETURNS_SHOULD_TERMINATE | SHIELDCALL_RETURNS_ABORT_ATTACK))
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & (SHIELDCALL_FLAGS_SHOULD_TERMINATE | SHIELDCALL_FLAGS_BLOCK_ATTACK))
 		return
 	run_armorcalls(shieldcall_args, FALSE, filter_zone)
 
@@ -39,6 +39,8 @@
  * * for things like limb damage and armor handling, check the armor/etc in process_damage_instance
  * * this is pretty much the handoff point where defense processing hands off to medical code for wound creation.
  * * for this reason, we do not allow any returns.
+ * * if hit_zone is not specified, this is considered overall damage.
+ * * overall damage is implementation-defined, so it's recommended to, ironically, not try to standardize that too much.
  */
 /mob/proc/inflict_damage_instance(SHIELDCALL_PROC_HEADER)
 	return

@@ -42,7 +42,7 @@
 	UnregisterSignal(user, COMSIG_ATOM_SHIELDCALL)
 
 /obj/item/spell/reflect/proc/shieldcall(datum/source, list/shieldcall_args, fake_attack)
-	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
 	var/mob/user = source
 	if(user.incapacitated())
@@ -88,7 +88,7 @@
 						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
 						qdel(src)
 
-				shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_PASSTHROUGH | SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_TERMINATE
+				shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_TERMINATE
 
 		else if(istype(damage_source, /obj/item))
 			var/obj/item/W = damage_source
@@ -109,4 +109,4 @@
 					spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
 						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
 						qdel(src)
-			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_TERMINATE
+			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_TERMINATE

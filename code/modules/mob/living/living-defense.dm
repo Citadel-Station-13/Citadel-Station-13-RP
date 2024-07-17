@@ -233,12 +233,12 @@
 			var/retval
 			for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 				retval |= shieldcall.handle_throw_impact(src, TT)
-				if(retval & SHIELDCALL_RETURNS_SHOULD_TERMINATE)
+				if(retval & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
 					break
-			if(retval & SHIELDCALL_RETURNS_SHOULD_PROCESS)
-				if(retval & SHIELDCALL_RETURNS_PIERCE_ATTACK)
+			if(retval & SHIELDCALL_FLAGS_SHOULD_PROCESS)
+				if(retval & SHIELDCALL_FLAGS_PIERCE_ATTACK)
 					force_pierce = TRUE
-				if(retval & SHIELDCALL_RETURNS_ABORT_ATTACK)
+				if(retval & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 					no_attack = TRUE
 
 		if(no_attack)
@@ -490,55 +490,7 @@
 
 	//! END
 
-/**
- * Takes damage from getting hit by a bullet
- */
-/mob/living/proc/process_bullet_hit
-
-/mob/living/bullet_act(var/obj/projectile/P, var/def_zone)
-
-	//Armor
-	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
-	var/absorb = run_armor_check(def_zone, P.damage_flag, P.armor_penetration)
-	var/proj_sharp = is_sharp(P)
-	var/proj_edge = has_edge(P)
-	var/final_damage = P.get_final_damage(src)
-
-	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
-		proj_sharp = 0
-		proj_edge = 0
-
-	if ((proj_sharp || proj_edge) && prob(legacy_mob_armor(def_zone, P.damage_flag)))
-		proj_sharp = 0
-		proj_edge = 0
-
-	var/list/impact_sounds = islist(P.impact_sounds)? LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone)) : P.impact_sounds
-	if(length(impact_sounds))
-		playsound(src, pick(impact_sounds), 75)
-	else if(!isnull(impact_sounds))
-		playsound(src, impact_sounds, 75)
-
-	//Stun Beams
-	if(P.taser_effect)
-		stun_effect_act(0, P.agony, def_zone, P)
-		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
-		if(!P.nodamage)
-			apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
-		qdel(P)
-		return
-
-	if(!P.nodamage)
-		apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
-	P.on_hit(src, absorb, soaked, def_zone)
-
-	if(absorb == 100)
-		return 2
-	else if (absorb >= 0)
-		return 1
-	else
-		return 0
-
-//	return absorb
+	proj.process_damage_instance(src, blocked, impact_flags, def_zone)
 
 /mob/living/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_MEAT

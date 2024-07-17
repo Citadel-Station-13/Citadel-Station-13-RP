@@ -62,10 +62,10 @@
 			playsound(src, 'sound/weapons/punchmiss.ogg', 75, 1)
 			return FALSE // We missed.
 
-		if(ishuman(L))
-			var/mob/living/carbon/human/H = L
-			if(H.check_shields(damage = damage_to_do, damage_source = src, attacker = src, def_zone = null, attack_text = "the attack"))
-				return FALSE // We were blocked.
+		var/datum/event_args/actor/clickchain/simulated_clickchain = new(src, target = L)
+		var/list/shieldcall_result = L.atom_shieldcall(damage_to_do, BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE, clickchain = simulated_clickchain)
+		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
+			return FALSE
 
 	if(apply_attack(A, damage_to_do))
 		apply_melee_effects(A)

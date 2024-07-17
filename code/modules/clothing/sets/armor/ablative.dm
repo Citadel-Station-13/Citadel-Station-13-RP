@@ -46,7 +46,7 @@
 			// redirect the projectile
 			P.legacy_redirect(new_x, new_y, curloc, defending)
 			P.reflected = 1
-			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_PASSTHROUGH | SHIELDCALL_RETURN_ATTACK_REDIRECT | SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_TERMINATE
+			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_PASSTHROUGH | SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_TERMINATE
 
 /obj/item/clothing/gloves/arm_guard/laserproof
 	name = "ablative arm guards"

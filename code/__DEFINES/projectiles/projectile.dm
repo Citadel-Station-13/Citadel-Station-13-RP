@@ -48,6 +48,16 @@
 #define PROJECTILE_IMPACT_TARGET_DELETED (1<<11)
 /// this is an impact (usually on the ground) from a projectile expiring
 #define PROJECTILE_IMPACT_IS_EXPIRING (1<<12)
+/// requests that no sound is made
+///
+/// * this is separate from suppression / silencing projectile-side!
+/// * notably, this is an absolute that should be always obeyed; while things like special round effects can ignore normal suppression.
+#define PROJECTILE_IMPACT_SUPPRESS_SOUND (1<<13)
+/// requests that no message is made
+///
+/// * this is separate from suppression / silencing projectile-side!
+/// * notably, this is an absolute that should be always obeyed; while things like special round effects can ignore normal suppression.
+#define PROJECTILE_IMPACT_SUPPRESS_MESSAGE (1<<14)
 
 /// any of these means the projectile should delete immediately
 #define PROJECTILE_IMPACT_FLAGS_SHOULD_DELETE (PROJECTILE_IMPACT_DELETE)

@@ -104,7 +104,7 @@
 	var/shieldcall_returns = NONE
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		shieldcall_returns |= shieldcall.handle_bullet(src, args, shieldcall_returns)
-		if(shieldcall_returns & SHIELDCALL_RETURNS_SHOULD_TERMINATE)
+		if(shieldcall_returns & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
 			break
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
@@ -588,7 +588,7 @@
  * * What this means is that this can't, say, redirect or delete a projectile, because bullet act handling is where that happens.
  * * This more or less just lets you modify incoming damage instances sometimes.
  * * The args are not copied! They're passed back directly. This has implications.
- * * Make sure you pass in SHIELDCALL_RETURN_SECOND_CALL if **any** kind of shieldcall invocation has happened during this attack.
+ * * Make sure you pass in SHIELDCALL_FLAG_SECOND_CALL if **any** kind of shieldcall invocation has happened during this attack.
  * * SECOND_CALL is required to tell things that something is not the first time, so you don't get doubled blocking efficiency.
  *
  * @params
@@ -622,7 +622,7 @@
  * * What this means is that this can't, say, redirect or delete a projectile, because bullet act handling is where that happens.
  * * This more or less just lets you modify incoming damage instances sometimes.
  * * The args are not copied! They're passed back directly. This has implications.
- * * Make sure you pass in SHIELDCALL_RETURN_SECOND_CALL if **any** kind of shieldcall invocation has happened during this attack.
+ * * Make sure you pass in SHIELDCALL_FLAG_SECOND_CALL if **any** kind of shieldcall invocation has happened during this attack.
  * * SECOND_CALL is required to tell things that something is not the first time, so you don't get doubled blocking efficiency.
  *
  * @params
@@ -651,13 +651,13 @@
  */
 /atom/proc/run_shieldcalls(list/shieldcall_args, fake_attack)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, shieldcall_args, fake_attack)
-	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
 	for(var/datum/shieldcall/calling as anything in shieldcalls)
 		if(!calling.low_level_intercept)
 			continue
 		calling.handle_shieldcall(src, args, fake_attack)
-		if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
+		if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 			break
 
 /**
@@ -667,7 +667,7 @@
  */
 /atom/proc/run_armorcalls(list/shieldcall_args, fake_attack)
 	SEND_SIGNAL(src, COMSIG_ATOM_ARMORCALL, shieldcall_args, fake_attack)
-	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_RETURN_TERMINATE)
+	if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
 		return
 	var/datum/armor/our_armor = fetch_armor()
 	our_armor.handle_shieldcall(src, shieldcall_args, fake_attack)

@@ -215,7 +215,7 @@
 
 			P.legacy_redirect(new_x, new_y, curloc, defending)
 			P.reflected = 1
-			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURNS_FOR_PROJECTILE_DEFLECT
+			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAGS_FOR_PROJECTILE_DEFLECT
 
 //////////////
 //Arm guards

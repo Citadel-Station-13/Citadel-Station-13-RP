@@ -196,7 +196,7 @@
 		spark_system.start()
 		playsound(user.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 		user.forceMove(picked)
-		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURN_ATTACK_CANCEL | SHIELDCALL_RETURN_ATTACK_PASSTHROUGH
+		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH
 
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
 	. = ..()

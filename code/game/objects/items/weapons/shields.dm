@@ -41,6 +41,9 @@
 				SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 				)
 
+/obj/proc/handle_shield()
+	SHOULD_NOT_OVERRIDE(TRUE)
+#warn FUCK
 /obj/item/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(user.incapacitated())
 		return 0

@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
 	/// Allow interception of `atom_shieldcall`.
 	///
 	/// * "Yes, I read and understand the terms and conditions"
-	/// * "Yes, I will handle SHIELDCALL_RETURN_SECOND_CALL to prevent a double-block scenario"
+	/// * "Yes, I will handle SHIELDCALL_FLAG_SECOND_CALL to prevent a double-block scenario"
 	/// * "Yes, I understand that atom_shieldcall is low level and is called in addition to other shieldcall handling procs"
 	var/low_level_intercept = FALSE
 
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * e_args - (optional) the clickchain event, if any; **This is mutable.**
  * * fake_attack - just checking!
  *
- * @return SHIELDCALL_RETURN_* flags
+ * @return SHIELDCALL_FLAG_* flags
  */
 /datum/shieldcall/proc/handle_item_melee(atom/defending, obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack)
 	return NONE
@@ -85,10 +85,28 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * e_args (optional) the clickchain event, if any; **This is mutable.**
  * * fake_attack - just checking!
  *
- * @return SHIELDCALL_RETURN_* flags
+ * @return SHIELDCALL_FLAG_* flags
  */
 /datum/shieldcall/proc/handle_unarmed_melee(atom/defending, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack)
 	return NONE
+
+//* Interaction Handling *//
+
+/**
+ * sent over from the atom
+ *
+ * * for generic 'tried to touch' things
+ * * this is really funny because it lets us do things like teleport the RD on a hug
+ *
+ * @params
+ * * defending - the atom in question
+ * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * fake_attack - just checking!
+ *
+ * @return SHIELDCALL_FLAG_* flags
+ */
+/datum/shieldcall/proc/handle_touch(atom/defending, datum/event_args/actor/clickchain/e_args, fake_attack)
+#warn screaming - this needs more args!!
 
 //* Projectile Handling *//
 
@@ -98,7 +116,7 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * this is pre-intercept for projectiles; please keep this cheap.
  * * for stuff like reactive teleport armor, use this because it will stop the hit entirely.
  * * passed in bullet act args is mutable.
- * * we DO NOT process SHIELDCALL_RETURN flags other than _TERMINATE, because we have direct access to impact_flags of the bullet!
+ * * we DO NOT process SHIELDCALL_FLAG flags other than _TERMINATE, because we have direct access to impact_flags of the bullet!
  *
  * @params
  * * defending - the atom in question
@@ -106,7 +124,7 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
  *
- * @return SHIELDCALL_RETURN_TERMINATE or NONE
+ * @return SHIELDCALL_FLAG_TERMINATE or NONE
  */
 /datum/shieldcall/proc/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
 	return NONE
@@ -126,7 +144,7 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * defending - the thing being hit
  * * thrown - the thrown object's data
  *
- * @return SHIELDCALL_RETURN_* flags
+ * @return SHIELDCALL_FLAG_* flags
  */
 /datum/shieldcall/proc/handle_throw_impact(atom/defending, datum/thrownthing/thrown)
 	return

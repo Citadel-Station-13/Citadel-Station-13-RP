@@ -425,3 +425,9 @@ This function restores all organs.
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	update_health()
 	return 1
+
+//* Damage Instance Handling *//
+
+/mob/living/carbon/human/inflict_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, datum/weapon, shieldcall_flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+
+#warn impl

@@ -1,44 +1,3 @@
-/*
-Contains most of the procs that are called when a mob is attacked by something
-
-bullet_act
-legacy_ex_act
-meteor_act
-
-*/
-
-/mob/living/carbon/human/bullet_act(var/obj/projectile/P, var/def_zone)
-	def_zone = check_zone(def_zone)
-	if(!has_organ(def_zone))
-		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
-
-	var/obj/item/organ/external/organ = get_organ()
-
-	//Shields
-	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
-	if(shield_check) // If the block roll succeeded, this is true.
-		if(shield_check < 0) // The shield did something weird and the bullet needs to keep doing things (e.g. it was reflected).
-			return shield_check // Likely equal to PROJECTILE_FORCE_MISS or PROJECTILE_CONTINUE.
-		else // Otherwise we blocked normally and stopped all the damage.
-			return 0
-
-	if(!P.nodamage)
-		organ.add_autopsy_data("[P.name]", P.damage)
-
-	//Shrapnel
-	if(P.can_embed())
-		var/armor = getarmor_organ(organ, "bullet")
-		if(!prob(armor/2))		//Even if the armor doesn't stop the bullet from hurting you, it might stop it from embedding.
-			var/hit_embed_chance = P.embed_chance + (P.damage - armor)	//More damage equals more chance to embed
-			if(prob(max(hit_embed_chance, 0)))
-				var/obj/item/material/shard/shrapnel/SP = new()
-				SP.name = (P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel"
-				SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
-				SP.loc = organ
-				organ.embed(SP)
-
-	return ..()
-
 /mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
 	var/siemens_coeff = get_siemens_coefficient_organ(affected)
@@ -378,12 +337,12 @@ meteor_act
 			var/retval
 			for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 				retval |= shieldcall.handle_throw_impact(src, TT)
-				if(retval & SHIELDCALL_RETURNS_SHOULD_TERMINATE)
+				if(retval & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
 					break
-			if(retval & SHIELDCALL_RETURNS_SHOULD_PROCESS)
-				if(retval & SHIELDCALL_RETURNS_PIERCE_ATTACK)
+			if(retval & SHIELDCALL_FLAGS_SHOULD_PROCESS)
+				if(retval & SHIELDCALL_FLAGS_PIERCE_ATTACK)
 					force_pierce = TRUE
-				if(retval & SHIELDCALL_RETURNS_ABORT_ATTACK)
+				if(retval & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 					no_attack = TRUE
 
 		if(!zone)
@@ -610,3 +569,45 @@ meteor_act
 			flick(G.hud.icon_state, G.hud)
 			add_attack_logs(user,src,"shanked")
 	return 1
+
+//* Projectile Handling *//
+
+#warn impl
+
+/mob/living/carbon/human/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
+		return
+
+/mob/living/carbon/human/bullet_act(var/obj/projectile/P, var/def_zone)
+	def_zone = check_zone(def_zone)
+	if(!has_organ(def_zone))
+		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
+
+	var/obj/item/organ/external/organ = get_organ()
+
+	//Shields
+	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
+	if(shield_check) // If the block roll succeeded, this is true.
+		if(shield_check < 0) // The shield did something weird and the bullet needs to keep doing things (e.g. it was reflected).
+			return shield_check // Likely equal to PROJECTILE_FORCE_MISS or PROJECTILE_CONTINUE.
+		else // Otherwise we blocked normally and stopped all the damage.
+			return 0
+
+	if(!P.nodamage)
+		organ.add_autopsy_data("[P.name]", P.damage)
+
+	//Shrapnel
+	if(P.can_embed())
+		var/armor = getarmor_organ(organ, "bullet")
+		if(!prob(armor/2))		//Even if the armor doesn't stop the bullet from hurting you, it might stop it from embedding.
+			var/hit_embed_chance = P.embed_chance + (P.damage - armor)	//More damage equals more chance to embed
+			if(prob(max(hit_embed_chance, 0)))
+				var/obj/item/material/shard/shrapnel/SP = new()
+				SP.name = (P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel"
+				SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
+				SP.loc = organ
+				organ.embed(SP)
+
+	return ..()
+

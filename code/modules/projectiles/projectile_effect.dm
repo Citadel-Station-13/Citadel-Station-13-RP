@@ -13,11 +13,26 @@
 	var/hook_moved = FALSE
 	/// has on-range / lifetime expired effect
 	var/hook_lifetime = FALSE
+	/// has damage effect
+	var/hook_damage = FALSE
 
 /**
+ * * you'll note that [blocked] is not a thing here
+ * * this is because this runs regardless of target's opinion
+ * * this means you should probably be careful and check impact_flags!
+ *
  * @return new impact flags
  */
 /datum/projectile_effect/proc/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
+	return impact_flags
+
+/**
+ * * you'll note that [blocked] **is** a thing here
+ * * this only runs if we're able to damage the target
+ *
+ * @return new impact flags
+ */
+/datum/projectile_effect/proc/on_damage(obj/projectile/proj, atom/target, impact_flags, def_zone, blocked)
 	return impact_flags
 
 /**
