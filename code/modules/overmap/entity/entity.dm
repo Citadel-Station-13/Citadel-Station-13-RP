@@ -39,7 +39,7 @@
 	var/bump_handled = FALSE
 
 	/// max speed in overmap units per second
-	var/max_speed = OVERMAP_DISTANCE_TILE
+	var/max_speed = OVERMAP_DISTANCE_TILE * 2
 	/// is moving
 	var/tmp/is_moving = FALSE
 	/// is forced moving

@@ -102,14 +102,14 @@
 		elastic_collision(entity)
 
 /turf/overmap/edge/proc/elastic_collision(obj/overmap/entity/entity)
-	if(wrap_sign_x != 0)
-		if(wrap_sign_y != 0)
+	if(wrap_sign_x != 0 && (wrap_sign_x > 0 != entity.vel_x > 0))
+		if(wrap_sign_y != 0 && (wrap_sign_y > 0 != entity.vel_y > 0))
 			entity.set_velocity(-entity.vel_x, -entity.vel_y)
 			entity.bump_handled = TRUE
 		else
 			entity.set_velocity(-entity.vel_x, null)
 			entity.bump_handled = TRUE
-	else if(wrap_sign_y != 0)
+	else if(wrap_sign_y != 0 && (wrap_sign_y > 0 != entity.vel_y > 0))
 		entity.set_velocity(null, -entity.vel_y)
 		entity.bump_handled = TRUE
 

@@ -94,7 +94,7 @@
  * get speed in tiles / decisecond
  */
 /obj/overmap/entity/visitable/ship/proc/get_speed_legacy()
-	return OVERMAP_DIST_TO_PIXEL(get_speed()) / WORLD_ICON_SIZE / 10
+	return OVERMAP_DIST_TO_PIXEL(get_speed()) / (WORLD_ICON_SIZE * 10)
 
 // Get heading in BYOND dir bits
 /obj/overmap/entity/visitable/ship/proc/get_heading_direction()
@@ -184,11 +184,11 @@
 
 /obj/overmap/entity/visitable/ship/proc/burn()
 	for(var/datum/ship_engine/E in engines)
-		. += E.burn()
+		. += E.burn() * SSovermaps.global_thrust_multiplier
 
 /obj/overmap/entity/visitable/ship/proc/get_total_thrust()
 	for(var/datum/ship_engine/E in engines)
-		. += E.get_thrust()
+		. += E.get_thrust() * SSovermaps.global_thrust_multiplier
 
 /obj/overmap/entity/visitable/ship/proc/can_burn()
 	if(halted)
