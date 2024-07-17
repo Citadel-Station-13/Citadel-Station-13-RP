@@ -172,6 +172,7 @@
 	var/datum/shuttle/autodock/auto = given_shuttle
 	if(into == auto.landmark_transition)
 		status = SHIP_STATUS_TRANSIT
+		initialize_physics() // don't move during transition
 		on_takeoff(from, into)
 		return
 	if(into == landmark)

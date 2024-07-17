@@ -20,7 +20,8 @@
 	physics_tick(delta_time)
 
 /obj/overmap/entity/proc/physics_tick(dt)
-	if(!overmap)
+	if(!overmap || !isturf(loc))
+		initialize_physics()
 		return // what are we doing
 	// amount should move
 	var/ddx = vel_x * dt

@@ -210,7 +210,7 @@
 	. = max(., 0)
 
 /obj/overmap/entity/visitable/ship/proc/halt()
-	adjust_speed(-vel_x, -vel_y)
+	initialize_physics()
 	halted = 1
 
 /obj/overmap/entity/visitable/ship/proc/unhalt()
