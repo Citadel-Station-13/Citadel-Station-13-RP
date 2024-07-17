@@ -9,9 +9,8 @@
 	icon_state_closing = "pdoorc1"
 	icon_state = "pdoor1"
 
-	explosion_resistance = 100
-
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	explosion_block_exp = 0
 
 	var/list/locks = list()
 	var/lockID = null

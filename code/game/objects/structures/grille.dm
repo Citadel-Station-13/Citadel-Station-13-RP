@@ -10,7 +10,6 @@
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	rad_flags = RAD_BLOCK_CONTENTS
 	layer = GRILLE_LAYER
-	explosion_resistance = 1
 	color = COLOR_GRAY
 	armor_type = /datum/armor/none
 	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE | OBJ_ALLOW_THROW_THROUGH
