@@ -4,7 +4,7 @@
 /**
  * generic parry provider on items
  */
-/datum/component/active_parry_item
-	registered_type = /datum/component/active_parry_item
+/datum/component/active_parry
+	registered_type = /datum/component/active_parry
 
 // todo: this requires a hotkey to be fully implemented; default implementation is bad

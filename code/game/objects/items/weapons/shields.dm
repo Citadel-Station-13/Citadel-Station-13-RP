@@ -30,6 +30,7 @@
 	return 1
 
 /obj/item/proc/unique_parry_check(mob/user, mob/attacker, atom/damage_source)	// An overrideable version of the above proc.
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return default_parry_check(user, attacker, damage_source)
 
 /obj/item/shield
@@ -57,6 +58,7 @@
 	return 0
 
 /obj/item/shield/proc/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return base_block_chance
 
 /obj/item/shield/riot

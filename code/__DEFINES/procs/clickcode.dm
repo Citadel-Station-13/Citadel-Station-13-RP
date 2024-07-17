@@ -38,6 +38,10 @@
 #define CLICKCHAIN_DO_NOT_ATTACK			(1<<7)
 /// intercepted by component
 #define CLICKCHAIN_COMPONENT_SIGNAL_HANDLED	(1<<8)
+/// this is a reflex counterattack by something
+///
+/// * used to prevent loops where both parties reactively attack each other instantly.
+#define CLICKCHAIN_REFLEX_COUTEr			(1<<9)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth
