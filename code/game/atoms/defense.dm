@@ -541,7 +541,7 @@
  *
  * @return args, modified, as list.
  */
-/atom/proc/check_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/check_armor(SHIELDCALL_PROC_HEADER)
 	run_armorcalls(args, TRUE)
 	return args
 
@@ -570,7 +570,7 @@
  *
  * @return args, modified, as list.
  */
-/atom/proc/run_armor(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/run_armor(SHIELDCALL_PROC_HEADER)
 	run_armorcalls(args, FALSE)
 	return args
 
@@ -606,7 +606,7 @@
  *
  * @return args, modified, as list.
  */
-/atom/proc/atom_shieldcheck(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/atom_shieldcheck(SHIELDCALL_PROC_HEADER)
 	run_shieldcalls(args, TRUE)
 	return args
 
@@ -640,7 +640,7 @@
  *
  * @return args, modified, as list.
  */
-/atom/proc/atom_shieldcall(damage, damtype, tier, flag, mode, attack_type, datum/weapon, flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+/atom/proc/atom_shieldcall(SHIELDCALL_PROC_HEADER)
 	run_shieldcalls(args, FALSE)
 	return args
 

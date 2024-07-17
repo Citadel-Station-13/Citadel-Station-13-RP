@@ -51,6 +51,10 @@
 //* facets of a damage instance.                                                  *//
 //*                                                                               *//
 //* Many of these are optional.                                                   *//
+//*
+//* Adding new arguments should be done sparingly.
+//* Removing arguments requires every single proc with SHIELDCALL_PROC_HEADER     *//
+//* to be audited.                                                                *//
 
 /// damage amount
 #define SHIELDCALL_ARG_DAMAGE 1
@@ -82,6 +86,11 @@
 /// * this is passed in so you can grab data like who is doing it / who started the attack.
 /// * filled in sometimes but not always if unarmed or item melee.
 #define SHIELDCALL_ARG_CLICKCHAIN 11
+
+/// A proc header with all the shieldcall args.
+///
+/// * We use this so it's easy to check where shieldcall args are being used if shieldcalls need to be refactored.
+#define SHIELDCALL_PROC_HEADER damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, datum/weapon, shieldcall_flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain
 
 //* list keys for list/additional in atom shieldcalls *//
 

@@ -110,64 +110,6 @@
 	else
 		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
-/mob/living/bullet_act(var/obj/projectile/P, var/def_zone)
-
-	//Being hit while using a deadman switch
-	for(var/obj/item/assembly/signaler/signaler in get_held_items())
-		if(signaler.deadman && prob(80))
-			log_and_message_admins("has triggered a signaler deadman's switch")
-			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
-			signaler.signal()
-
-	if(ai_holder && P.firer)
-		ai_holder.react_to_attack_polaris(P.firer)
-
-	//Armor
-	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
-	var/absorb = run_armor_check(def_zone, P.damage_flag, P.armor_penetration)
-	var/proj_sharp = is_sharp(P)
-	var/proj_edge = has_edge(P)
-	var/final_damage = P.get_final_damage(src)
-
-	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
-		proj_sharp = 0
-		proj_edge = 0
-
-	if ((proj_sharp || proj_edge) && prob(legacy_mob_armor(def_zone, P.damage_flag)))
-		proj_sharp = 0
-		proj_edge = 0
-
-	var/list/impact_sounds = islist(P.impact_sounds)? LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone)) : P.impact_sounds
-	if(length(impact_sounds))
-		playsound(src, pick(impact_sounds), 75)
-	else if(!isnull(impact_sounds))
-		playsound(src, impact_sounds, 75)
-
-	//Stun Beams
-	if(P.taser_effect)
-		stun_effect_act(0, P.agony, def_zone, P)
-		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
-		if(!P.nodamage)
-			apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
-		qdel(P)
-		return
-
-	if(!P.nodamage)
-		apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
-	P.on_hit(src, absorb, soaked, def_zone)
-
-	if(absorb == 100)
-		return 2
-	else if (absorb >= 0)
-		return 1
-	else
-		return 0
-
-//	return absorb
-
-/mob/living/get_bullet_impact_effect_type(var/def_zone)
-	return BULLET_IMPACT_MEAT
-
 //Handles the effects of "stun" weapons
 /mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
 	flash_pain()
@@ -526,3 +468,78 @@
 		accuracy_penalty += 45
 
 	return accuracy_penalty
+
+
+//* Projectile Handling *//
+
+/mob/living/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
+		return
+
+	//! LEGACY
+
+	//Being hit while using a deadman switch
+	for(var/obj/item/assembly/signaler/signaler in get_held_items())
+		if(signaler.deadman && prob(80))
+			log_and_message_admins("has triggered a signaler deadman's switch")
+			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
+			signaler.signal()
+
+	if(ai_holder && P.firer)
+		ai_holder.react_to_attack_polaris(P.firer)
+
+	//! END
+
+/**
+ * Takes damage from getting hit by a bullet
+ */
+/mob/living/proc/process_bullet_hit
+
+/mob/living/bullet_act(var/obj/projectile/P, var/def_zone)
+
+	//Armor
+	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
+	var/absorb = run_armor_check(def_zone, P.damage_flag, P.armor_penetration)
+	var/proj_sharp = is_sharp(P)
+	var/proj_edge = has_edge(P)
+	var/final_damage = P.get_final_damage(src)
+
+	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
+		proj_sharp = 0
+		proj_edge = 0
+
+	if ((proj_sharp || proj_edge) && prob(legacy_mob_armor(def_zone, P.damage_flag)))
+		proj_sharp = 0
+		proj_edge = 0
+
+	var/list/impact_sounds = islist(P.impact_sounds)? LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone)) : P.impact_sounds
+	if(length(impact_sounds))
+		playsound(src, pick(impact_sounds), 75)
+	else if(!isnull(impact_sounds))
+		playsound(src, impact_sounds, 75)
+
+	//Stun Beams
+	if(P.taser_effect)
+		stun_effect_act(0, P.agony, def_zone, P)
+		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
+		if(!P.nodamage)
+			apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+		qdel(P)
+		return
+
+	if(!P.nodamage)
+		apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+	P.on_hit(src, absorb, soaked, def_zone)
+
+	if(absorb == 100)
+		return 2
+	else if (absorb >= 0)
+		return 1
+	else
+		return 0
+
+//	return absorb
+
+/mob/living/get_bullet_impact_effect_type(var/def_zone)
+	return BULLET_IMPACT_MEAT

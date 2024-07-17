@@ -1225,12 +1225,12 @@
  * @return new impact_flags; only PROJECTILE_IMPACT_DELETE is rechecked.
  */
 /obj/projectile/proc/on_impact_new(atom/target, impact_flags, def_zone, blocked)
-	// legacy shit
+	//! legacy shit
 	if(damage && damage_type == BURN)
-		var/turf/T = get_turf(A)
+		var/turf/T = get_turf(target)
 		if(T)
 			T.hotspot_expose(700, 5)
-	// end
+	//! end
 	return impact_flags
 
 /**
@@ -1247,7 +1247,7 @@
 /obj/projectile/proc/impact_redirect(atom/target, list/bullet_act_args)
 	if(impacted[target])
 		return bullet_act_args[BULLET_ACT_ARG_FLAGS] | PROJECTILE_IMPACT_DUPLICATE
-	bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECITLE_IMPACT_INDIRECTED
+	bullet_act_args[BULLET_ACT_ARG_FLAGS] |= PROJECTILE_IMPACT_INDIRECTED
 	return target.bullet_act(arglist(bullet_act_args))
 
 /**
