@@ -213,7 +213,7 @@
 			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
 			var/turf/curloc = get_turf(defending)
 
-			P.legacy_redirect(new_x, new_y, curloc, user)
+			P.legacy_redirect(new_x, new_y, curloc, defending)
 			P.reflected = 1
 			shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_RETURNS_FOR_PROJECTILE_DEFLECT
 
