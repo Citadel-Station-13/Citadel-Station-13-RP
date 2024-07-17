@@ -6,7 +6,7 @@
  */
 /obj/machinery/airlock_peripheral
 	/// connected controller
-	var/obj/machinery/airlock_controller/controller
+	var/obj/machinery/airlock_component/controller/controller
 	/// airlock ID to link to; will be automatically mangled
 	var/airlock_id
 	/// do we link to a controller?

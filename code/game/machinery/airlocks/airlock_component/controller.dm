@@ -8,7 +8,7 @@
  *
  * * Uses a state-reconcile pattern where we attempt to change the chamber to match the wanted state.
  */
-/obj/machinery/airlock_controller
+/obj/machinery/airlock_component/controller
 	name = "airlock controller"
 	desc = "A self-contained controller for an airlock."
 	#warn sprite
@@ -57,25 +57,9 @@
 	/// exterior environment mode
 	var/exterior_environment_mode = AIRLOCK_ENVIRONMENT_ADAPTIVE
 
-	//* Peripherals
-	/// our link id
-	var/airlock_id
-	/// panels
-	var/list/obj/machinery/airlock_peripheral/panel/panels
-	/// cyclers
-	var/list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers
-	/// sensors
-	var/list/obj/machinery/airlock_peripheral/sensor/sensors
-	/// authoritative indoors sensor
-	var/obj/machinery/airlock_peripheral/sensor/interior_sensor
-	/// authoritative outdoors sensor
-	var/obj/machinery/airlock_peripheral/sensor/exterior_sensor
-
-	//* Doors
-	/// interior doors
-	var/list/obj/machinery/door/interior
-	/// exterior doors
-	var/list/obj/machinery/door/exterior
+	//* Network
+	/// our connected gasnet
+	var/datum/airlock_gasnet/network
 
 	//* State
 	/// interior door state
@@ -100,7 +84,7 @@
 	/// what to call on finish with (status: AIRLOCK_OP_STATUS_* define, why: short string reason)
 	var/datum/callback/op_on_finish
 
-/obj/machinery/airlock_controller/Initialize(mapload)
+/obj/machinery/airlock_component/controller/Initialize(mapload)
 	..()
 	#warn stuff
 	// todo: we need proper tick bracket machine support & fastmos
@@ -108,11 +92,11 @@
 	START_PROCESSING(SSfastprocess, src)
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/airlock_controller/Destroy()
+/obj/machinery/airlock_component/controller/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
 	return ..()
 
-/obj/machinery/airlock_controller/LateInitialize()
+/obj/machinery/airlock_component/controller/LateInitialize()
 	. = ..()
 	switch(interior_environment_mode)
 		if(AIRLOCK_ENVIRONMENT_MANUAL)
@@ -133,12 +117,12 @@
 		if(AIRLOCK_ENVIRONMENT_AUTODETECT)
 			exterior_environment = new /datum/airlock_environment(probe_outdoors_gas())
 
-/obj/machinery/airlock_controller/preloading_instance(with_id)
+/obj/machinery/airlock_component/controller/preloading_instance(with_id)
 	. = ..()
 	if(airlock_id)
 		airlock_id = SSmapping.mangled_round_local_id(airlock_id, with_id)
 
-/obj/machinery/airlock_controller/proc/set_interior_state(state)
+/obj/machinery/airlock_component/controller/proc/set_interior_state(state)
 	src.interior_state = state
 
 	switch(state)
@@ -152,7 +136,7 @@
 			for(var/obj/machinery/door/door as anything in interior)
 				door.airlock_set(null, FALSE)
 
-/obj/machinery/airlock_controller/proc/set_exterior_state(state)
+/obj/machinery/airlock_component/controller/proc/set_exterior_state(state)
 	src.exterior_state = state
 	switch(state)
 		if(AIRLOCK_STATE_LOCKED_OPEN)
@@ -165,7 +149,7 @@
 			for(var/obj/machinery/door/door as anything in exterior)
 				door.airlock_set(null, FALSE)
 
-/obj/machinery/airlock_controller/proc/handle_cycle()
+/obj/machinery/airlock_component/controller/proc/handle_cycle()
 	var/datum/gas_mixture/effective_indoors = probe_indoors_gas()
 	var/datum/gas_mixture/effective_outdoors = probe_outdoors_gas()
 
@@ -192,15 +176,15 @@
  * @params
  * * why - string reason
  */
-/obj/machinery/airlock_controller/proc/fail_cycle(why)
+/obj/machinery/airlock_component/controller/proc/fail_cycle(why)
 
-/obj/machinery/airlock_controller/proc/finish_cycle(success)
+/obj/machinery/airlock_component/controller/proc/finish_cycle(success)
 	last_cycle_pressure = last_cycle_temperature = last_cycle_gases = null
 
-/obj/machinery/airlock_controller/proc/probe_indoors_gas()
+/obj/machinery/airlock_component/controller/proc/probe_indoors_gas()
 	return interior_sensor?.probe_gas()
 
-/obj/machinery/airlock_controller/proc/probe_outdoors_gas()
+/obj/machinery/airlock_component/controller/proc/probe_outdoors_gas()
 	return exterior_sensor?.probe_gas()
 
 /**
@@ -209,7 +193,7 @@
  * * An /obj/map_helper/airlock_interior must be placed on the interior airlock set.
  * * Defaults to being indestructible, as there's no in-game way to build new airlocks right now.
  */
-/obj/machinery/airlock_controller/autodetect
+/obj/machinery/airlock_component/controller/autodetect
 
 #warn impl - set indestructible on everything
 
@@ -220,7 +204,7 @@
  * * Links to an /obj/shuttle_dock if one is detected on sitting next to its border.
  * * Defaults to being indestructible, as there's no in-game way to interact with a dock right now.
  */
-/obj/machinery/airlock_controller/autodetect/docking
+/obj/machinery/airlock_component/controller/autodetect/docking
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 #warn impl

@@ -13,20 +13,20 @@
  * * config_toggles - AIRLOCK_CONFIG_X; specifies what we need to care about
  * * minimum_tolerable_pressure - do not siphon airlock below this value
  * * power_limit - how much available power there is
- * * time - time passed in deciseconds
+ * * dt - time passed in seconds
  *
  * @return power used
  */
 /proc/airlock_adaptive_reconcile(
-	list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers,
-	list/obj/machinery/airlock_peripheral/gasnet/vent/vents,
+	list/obj/machinery/airlock_comopnent/cycler/cyclers,
+	list/obj/machinery/airlock_comopnent/vent/vents,
 	datum/gas_mixture/target,
 	datum/gas_mixture/supply,
 	datum/gas_mixture/waste,
 	config_toggles,
 	minimum_tolerable_pressure,
 	power_limit = INFINITY,
-	time = 1 SECONDS,
+	dt = 1,
 )
 
 
@@ -43,20 +43,20 @@
  * * config_toggles - AIRLOCK_CONFIG_X; specifies what we need to care about
  * * minimum_tolerable_pressure - do not siphon airlock below this value
  * * power_limit - how much available power there is
- * * time - time passed in deciseconds
+ * * dt - time passed in seconds
  *
  * @return power used
  */
 /proc/airlock_fixed_reconcile(
-	list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers,
-	list/obj/machinery/airlock_peripheral/gasnet/vent/vents,
+	list/obj/machinery/airlock_comopnent/cycler/cyclers,
+	list/obj/machinery/airlock_comopnent/vent/vents,
 	datum/airlock_environment/target,
 	datum/gas_mixture/supply,
 	datum/gas_mixture/waste,
 	config_toggles,
 	minimum_tolerable_pressure,
 	power_limit = INFINITY,
-	time = 1 SECONDS,
+	dt = 1,
 )
 
 #warn impl all

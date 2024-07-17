@@ -7,7 +7,7 @@
  * interface nodes of airlock networks
  * they handle the buffering of gas and power.
  */
-/obj/machinery/airlock_peripheral/gasnet/handler
+/obj/machinery/airlock_comopnent/handler
 	name = "airlock handler"
 	desc = "A set of underfloor machinery used to interface with an atmospherics and power network."
 	#warn sprite
@@ -36,30 +36,30 @@
 	/// our gas mixture; only exists if we're not on a network
 	var/datum/gas_mixture/air_contents
 
-/obj/machinery/airlock_peripheral/gasnet/handler/Initialize(mapload)
+/obj/machinery/airlock_comopnent/handler/Initialize(mapload)
 	. = ..()
 	air_contents = new(air_storage)
 
 #warn impl
 
-/obj/machinery/airlock_peripheral/gasnet/handler/process(delta_time)
+/obj/machinery/airlock_comopnent/handler/process(delta_time)
 	. = ..()
 	#warn impl - power, atmos
 
-/obj/machinery/airlock_peripheral/gasnet/handler/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/airlock_comopnent/handler/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
 
 	#warn impl
 
-/obj/machinery/airlock_peripheral/gasnet/handler/ui_static_data(mob/user, datum/tgui/ui)
+/obj/machinery/airlock_comopnent/handler/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/obj/machinery/airlock_peripheral/gasnet/handler/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/airlock_comopnent/handler/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/obj/machinery/airlock_peripheral/gasnet/handler/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/obj/machinery/airlock_comopnent/handler/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AirlockHandler")

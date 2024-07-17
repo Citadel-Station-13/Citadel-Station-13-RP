@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /**
- * the simplified gasnet used for airlock handling
+ * the simplified gasnet / control plane used for airlock handling and control
  *
  * for modularity / sake of not bloating things, this system is intentionally
  * separate from the wirenet and pipenet APIs, which are
@@ -13,14 +13,23 @@
  * * airlock_handler will draw power from grid, and also handle gas operations on standalone buffers independently
  */
 /datum/airlock_gasnet
-	/// interconnects
+	/// all interconnects
 	var/list/obj/structure/airlock_interconnect/interconnects = list()
+	/// all components
+	var/list/obj/machinery/airlock_component/components = list()
+
+	/// controller; there can only be one, otherwise things won't operate properly
+	var/obj/machinery/airlock_component/controller/controller
+
 	/// handlers
-	var/list/obj/machinery/airlock_peripheral/gasnet/handler/handlers = list()
+	var/list/obj/machinery/airlock_comopnent/handler/handlers = list()
 	/// cyclers
-	var/list/obj/machinery/airlock_peripheral/gasnet/cycler/cyclers = list()
+	var/list/obj/machinery/airlock_comopnent/cycler/cyclers = list()
 	/// vents
-	var/list/obj/machinery/airlock_peripheral/gasnet/vent/vents = list()
+	var/list/obj/machinery/airlock_comopnent/vent/vents = list()
+	/// doors
+	var/list/obj/machinery/airlock_component/door_link/doors = list()
+	#warn hook
 
 	/// total power storage in kj
 	var/power_capacity = 0

@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 silicons                             *//
 
-//* /obj/machinery/airlock_controller/config_cycle_mode
+//* /obj/machinery/airlock_component/controller/config_cycle_mode
 
 /// 'classic' airlock behavior; siphon all air and replace as needed
 ///
@@ -18,7 +18,7 @@
 
 #warn DEFINE_ENUM
 
-//* /obj/machinery/airlock_controller/(interior|exterior)_environment_mode
+//* /obj/machinery/airlock_component/controller/(interior|exterior)_environment_mode
 
 /// detect atmos on tile; autodetects and sets to manual after
 #define AIRLOCK_ENVIRONMENT_AUTODETECT "detect"
@@ -31,7 +31,7 @@
 
 #warn DEFINE_ENUM
 
-//* /obj/machinery/airlock_controller/config_dynamic_(interior|exterior)_toggles
+//* /obj/machinery/airlock_component/controller/config_dynamic_(interior|exterior)_toggles
 
 /// cycle gas ratios; implies EXPEL_UNWANTED_GAS
 #define AIRLOCK_CONFIG_TOGGLE_MATCH_GAS_RATIOS (1<<0)
@@ -48,7 +48,7 @@
 
 #warn DEFINE_BITFIELD
 
-//* /obj/machinery/airlock_controller/(interior|exterior)_state
+//* /obj/machinery/airlock_component/controller/(interior|exterior)_state
 
 /// locked open
 #define AIRLOCK_STATE_LOCKED_OPEN 1
@@ -64,7 +64,7 @@
 #define AIRLOCK_SIDE_INTERIOR "interior"
 #define AIRLOCK_SIDE_EXTERIOR "exterior"
 
-//* /obj/machinery/airlock_controller/(cycle_state|aborted_state)
+//* /obj/machinery/airlock_component/controller/(cycle_state|aborted_state)
 
 #define AIRLOCK_CYCLE_INACTIVE "inactive"
 
@@ -82,7 +82,7 @@
 
 #warn DEFINE_ENUM
 
-//* callback inputs for /obj/machinery/airlock_controller/var/datum/callback/on_finish
+//* callback inputs for /obj/machinery/airlock_component/controller/var/datum/callback/on_finish
 
 #define AIRLOCK_OP_STATUS_FINISHED 1
 #define AIRLOCK_OP_STATUS_ABORTED 2
@@ -105,7 +105,7 @@
 
 #warn eval below
 
-//* /obj/machinery/airlock_controller/dock_state
+//* /obj/machinery/airlock_component/controller/dock_state
 
 /// we don't have a dock
 #define AIRLOCK_DOCK_NONE 0
