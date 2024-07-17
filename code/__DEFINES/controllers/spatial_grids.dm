@@ -19,3 +19,7 @@
 	} \
 	AddComponent(/datum/component/spatial_grid, GRID); \
 }
+
+//* init flags to determine behavior *//
+
+#define SPATIAL_GRID_INIT_OPTIMIZE_ALL_Z (1<<0)

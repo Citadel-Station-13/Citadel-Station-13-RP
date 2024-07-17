@@ -129,11 +129,10 @@
 	agony = 10 // brute easily heals, agony not so much
 	armor_penetration = 30 // reduces shield blockchance
 	accuracy = -20 // he do miss actually
-	speed = 0.4 // if the pathfinder gets a funny burst rifle, they deserve a rival
-	// that's 2x projectile speed btw
+	speed = 25 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pistol/medium/ap/suppressor/turbo // spicy boys
-	speed = 0.2 // this is 4x projectile speed
+	speed = 50 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
@@ -300,7 +299,7 @@
 	SA_bonus_damage = 45 // 70 total on animals.
 	SA_vulnerability = MOB_CLASS_ANIMAL
 	embed_chance = -1
-	speed = 0.4
+	speed = 25 * WORLD_ICON_SIZE
 
 /obj/projectile/bullet/rifle/a762/silver // Hunting Demons with bolt action rifles.
 	damage = 20
@@ -387,7 +386,7 @@
 /obj/projectile/bullet/musket // Big Slow and bad against armor.
 	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage = 60
-	speed = 1.2
+	speed = 8.3 * WORLD_ICON_SIZE
 	armor_penetration = -50
 
 /obj/projectile/bullet/musket/silver // What its a classic
@@ -486,7 +485,7 @@
 	//incendiary = 2 //The Trail of Fire doesn't work.
 	flammability = 4
 	agony = 30
-	range = 4
+	range = WORLD_ICON_SIZE * 4
 	vacuum_traversal = 0
 
 /obj/projectile/bullet/incendiary/flamethrower/weak
@@ -494,7 +493,7 @@
 
 /obj/projectile/bullet/incendiary/flamethrower/large
 	damage = 15
-	range = 6
+	range = WORLD_ICON_SIZE * 6
 
 /obj/projectile/bullet/incendiary/caseless
 	name = "12.7mm phoron slug"

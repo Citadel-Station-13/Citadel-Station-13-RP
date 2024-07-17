@@ -6,8 +6,6 @@
 	desc = "An endcap for pipes"
 	icon = 'icons/atmos/pipes.dmi'
 	icon_state = ""
-	level = 2
-
 	volume = 35
 
 	dir = SOUTH
@@ -61,12 +59,10 @@
 			node = target
 			break
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
 /obj/machinery/atmospherics/pipe/cap/visible
-	level = 2
+	hides_underfloor = OBJ_UNDERFLOOR_NEVER
 	icon_state = "cap"
 
 /obj/machinery/atmospherics/pipe/cap/visible/scrubbers
@@ -109,10 +105,7 @@
 	icon_connect_type = "-aux"
 	color = PIPE_COLOR_CYAN
 
-
-
 /obj/machinery/atmospherics/pipe/cap/hidden
-	level = 1
 	icon_state = "cap"
 
 /obj/machinery/atmospherics/pipe/cap/hidden/scrubbers

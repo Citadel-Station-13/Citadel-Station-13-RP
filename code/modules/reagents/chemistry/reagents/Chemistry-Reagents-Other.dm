@@ -207,7 +207,8 @@
 	M.radiation = 0
 	M.heal_organ_damage(20,20)
 	M.adjustToxLoss(-20)
-	M.hallucination = 0
+	M.setHallucination(0)
+	M.setHalLoss(0)
 	M.setBrainLoss(0)
 	M.disabilities = 0
 	M.sdisabilities = 0

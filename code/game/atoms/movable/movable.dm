@@ -1,7 +1,7 @@
 /atom/movable
 	layer = OBJ_LAYER
 	// todo: evaluate if we need TILE_BOUND
-	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE | TILE_MOVER)
+	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE)
 
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
@@ -230,52 +230,6 @@
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)
 			. = TRUE
-
-/atom/movable/proc/touch_map_edge()
-	if(z in (LEGACY_MAP_DATUM).sealed_levels)
-		return
-
-	if((LEGACY_MAP_DATUM).use_overmap)
-		overmap_spacetravel(get_turf(src), src)
-		return
-
-	var/move_to_z = src.get_transit_zlevel()
-	if(move_to_z)
-		var/new_z = move_to_z
-		var/new_x
-		var/new_y
-
-		if(x <= TRANSITIONEDGE)
-			new_x = world.maxx - TRANSITIONEDGE - 2
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (x >= (world.maxx - TRANSITIONEDGE + 1))
-			new_x = TRANSITIONEDGE + 1
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (y <= TRANSITIONEDGE)
-			new_y = world.maxy - TRANSITIONEDGE -2
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		else if (y >= (world.maxy - TRANSITIONEDGE + 1))
-			new_y = TRANSITIONEDGE + 1
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		if(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear))	// Only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = SSticker.mode
-			G.check_nuke_disks()
-
-		var/turf/T = locate(new_x, new_y, new_z)
-		if(istype(T))
-			forceMove(T)
-
-//by default, transition randomly to another zlevel
-/atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = SSmapping.crosslinked_levels()
-	candidates -= z
-	if(!length(candidates))
-		return
-	return pick(candidates)
 
 // Returns the current scaling of the sprite.
 // Note this DOES NOT measure the height or width of the icon, but returns what number is being multiplied with to scale the icons, if any.
@@ -526,13 +480,12 @@
 	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
+	if(full_copy)
+		ensure_render_target()
 	if(em_block)
 		em_block.render_source = full_copy? render_target : null
 		update_emissive_blocker()
 		return
-	if(render_target && render_target != REF(src))
-		CRASH("already had render target; refusing to overwrite.")
-	render_target = REF(src)
 	em_block = new(src, full_copy? render_target : null)
 	vis_contents += em_block
 	update_emissive_blocker()
@@ -551,13 +504,12 @@
 	em_block = null
 
 /atom/movable/proc/add_emissive_render(full_copy = TRUE)
+	if(full_copy)
+		ensure_render_target()
 	if(em_render)
 		em_render.render_source = full_copy? render_target : null
 		update_emissive_render()
 		return
-	if(render_target && render_target != REF(src))
-		CRASH("already had render target; refusing to overwrite.")
-	render_target = REF(src)
 	em_render = new(src, full_copy? render_target : null)
 	vis_contents += em_render
 	update_emissive_render()
@@ -661,3 +613,13 @@
 		else if(C)
 			color = C
 			return
+
+//* Rendering *//
+
+/**
+ * for the love of god don't call this unnecessarily this fucks people's GPUs up if spammed
+ */
+/atom/movable/proc/ensure_render_target(make_us_invisible)
+	if(!isnull(render_target))
+		return
+	render_target = "[make_us_invisible? "*":""][REF(src)]-[rand(1,1000)]-[world.time]"
