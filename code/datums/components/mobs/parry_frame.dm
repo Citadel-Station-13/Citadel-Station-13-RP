@@ -129,17 +129,3 @@
 	var/parry_cooldown_user = 0 SECONDS
 	/// is the parry cooldown ignored if a successful parry was made
 	var/parry_cooldown_on_success = FALSE
-
-	//* Passive Parrying *//
-
-	/// parry chance for harmful melee: [0, 100]
-	var/passive_parry_chance_melee = 0
-	/// parry chance for (seemingly) benign melee: [0, 100]
-	var/passive_parry_chance_touch = 0
-	/// parry chance for inbound projectile: [0, 100]
-	var/passive_parry_chance_projectile = 0
-	/// parry chance for inbound throw
-	var/passive_parry_chance_thrown = 0
-
-	/// projectile types we autoparry on
-	var/passive_parry_projectile_types = ALL

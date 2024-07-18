@@ -1,7 +1,7 @@
 // todo: can element this by usign 3 signals instead of 2, one to receive a keybind signal.
 /datum/component/wielding
 	registered_type = /datum/component/wielding
-	
+
 	/// hands needed
 	var/hands
 	/// lazylist
@@ -16,7 +16,7 @@
 /datum/component/wielding/Initialize(hands = 2, datum/callback/on_wield, datum/callback/on_unwield)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
-	if((. = ..()) & COMPONENT_INCOMPATIBLE)
+	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
 	src.hands = hands
 	src.on_wield = on_wield

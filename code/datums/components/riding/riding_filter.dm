@@ -43,7 +43,7 @@
 
 /datum/component/riding_filter/Initialize(handler_typepath)
 	. = ..()
-	if(. & COMPONENT_INCOMPATIBLE)
+	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	if(!istype(parent, expected_typepath))
 		return COMPONENT_INCOMPATIBLE

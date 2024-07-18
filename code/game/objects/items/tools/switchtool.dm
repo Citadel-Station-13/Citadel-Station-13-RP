@@ -169,11 +169,6 @@
 /obj/item/switchtool/proc/get_switchtool_enum(obj/item/I)
 	return tools[I]
 
-/obj/item/switchtool/handle_shield(mob/user)
-	if(get_switchtool_enum(deployed) == SWITCHTOOL_SHIELD)
-		return TRUE
-	return FALSE
-
 /obj/item/switchtool/update_overlays()
 	. = ..()
 	if(!deployed)
@@ -345,7 +340,7 @@
 		/obj/item/flashlight/holoswitch = SWITCHTOOL_LIGHT,
 		/obj/item/soap/holoswitch = SWITCHTOOL_SOAP,
 		/obj/item/melee/energy/sword/holoswitch = SWITCHTOOL_SWORD,
-		/obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
+		// /obj/item/shield/holoswitch = SWITCHTOOL_SHIELD
 	)
 	tool_functions = list(
 		TOOL_SCALPEL,
