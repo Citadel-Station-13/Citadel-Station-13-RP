@@ -41,8 +41,8 @@
 	/// divisor to projectile damage before we drop the hit
 	var/legacy_projectile_damage_drop_divisor = 1.3
 
-	activation_soud = 'sound/weapons/saberon.ogg'
-	deactivation_soud = 'sound/weapons/saberoff.ogg'
+	activation_sound = 'sound/weapons/saberon.ogg'
+	deactivation_sound = 'sound/weapons/saberoff.ogg'
 
 /obj/item/shield/toggle/energy/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	var/weapon = shieldcall_args[SHIELDCALL_ARG_WEAPON]
@@ -56,7 +56,7 @@
 	if(!.)
 		return
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-	spark_system.set_up(3, 0, user.loc)
+	spark_system.set_up(3, 0, defending.loc)
 	spark_system.start()
 
 #warn parse
