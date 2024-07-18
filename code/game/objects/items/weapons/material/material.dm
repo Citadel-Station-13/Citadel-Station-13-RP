@@ -36,6 +36,16 @@
 	// var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	// var/drops_debris = 1
 
+	/// passive parry data / frame
+	///
+	/// * anonymous typepath is allowed
+	/// * typepath is allowed
+	/// * instance is allowed
+	///
+	/// note that the component will not be modified while held;
+	/// if this is changed, the component needs to be remade.
+	var/passive_parry
+
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
 		material_parts = material
@@ -77,6 +87,20 @@
 	// 	var/obj/item/material/sharpeningkit/SK = I
 	// 	repair(SK.repair_amount, SK.repair_time, user)
 	return ..()
+
+/obj/item/material/pickup(mob/user, flags, atom/oldLoc)
+	// we load the component here as it hooks equipped,
+	// so loading it here means it can still handle the equipped signal.
+	if(passive_parry)
+		LoadComponent(/datum/component/passive_parry, passive_parry)
+	return ..()
+
+/obj/item/material/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	// get rid of the passive parry component to save memory
+	DelComponent(/datum/component/passive_parry)
+
+#warn vv / chance passive_parry type hook
 
 // /obj/item/material/proc/check_health(var/consumed)
 // 	if(health<=0)

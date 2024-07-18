@@ -68,13 +68,10 @@
 	can_speak = 1
 	var/list/voice_mobs = list() //The curse of the sword is that it has someone trapped inside.
 
-
-/obj/item/melee/cursedblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_projectile = 15;
+		parry_chance_default = 50;
+	}
 
 /obj/item/melee/cursedblade/proc/ghost_inhabit(var/mob/candidate)
 	if(!isobserver(candidate))
@@ -329,19 +326,14 @@
 	var/wieldsound = null
 	var/unwieldsound = null
 
-//Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
-/obj/item/melee/twohanded/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(wielded && default_parry_check(user, attacker, damage_source) && prob(15))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_melee = 15;
+	}
 
 /obj/item/melee/twohanded/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
-	. = ..()
 	if(!wielded)
 		wielded = 1
 	else if(wielded)

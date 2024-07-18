@@ -74,4 +74,4 @@
 	set_weight_volume(VALUE_OR_DEFAULT(inactive_weight_volume, initial(weight_volume)))
 
 	if(!silent && (activation_sound || deactivation_sound))
-		playsound(src, deactivation_sound || activation_soud, toggle_sound_volume, TRUE)
+		playsound(src, deactivation_sound || activation_sound, toggle_sound_volume, TRUE)

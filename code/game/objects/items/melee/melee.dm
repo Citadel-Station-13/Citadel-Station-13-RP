@@ -1,4 +1,6 @@
 /datum/passive_parry/melee
+	parry_arc = 165
+	parry_arc_round_down = TRUE
 
 /**
  * this is like /device and /weapon but a little less dumb
