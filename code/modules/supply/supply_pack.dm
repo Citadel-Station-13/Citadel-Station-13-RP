@@ -20,18 +20,42 @@
 	/// * if null, it will be autodetected.
 	var/worth
 
+	//* Container *//
+
 	/// type of the container
 	var/container_type = /obj/structure/closet/crate/plastic
 	/// override name of container
 	var/container_name
 	/// override desc of container
 	var/container_desc
+
 	/// set access of container
 	var/list/container_access
 	/// set req one access of container
 	var/list/container_one_access
 
+	//* Contents *//
+
+	/// contains these entity descriptors
+	///
+	/// * a descriptor associated to amount
+	/// * a list of list("descriptor" = ..., "amount" = number, "descriptor_hint" (optional), "container_hint" (optional)), associated to amount
+	var/list/contains
+	/// contains some amount of these entity descriptor groups
+	///
+	/// * this should be a list of lists with "entities", "amount" as keys
+	/// * "entities" should be associated to a list of entities as per [contains]
+	/// * "amount" should be associated to a random amount of them to spawn
+	/// * amount will be distrbuted randomly as needed, evenly, across the entities.
+	var/list/contains_some
+	/// a list of custom 'contains' lines that get printed to the manifest/interface
+	var/list/contains_custom_text
+
 	#warn contains, contains_some_of
+
+	//* legacy *//
+	var/legacy_cost = 5
+	var/legacy_contraband = FALSE
 
 /datum/supply_pack2/New(name, category, worth, flags)
 	if(!isnull(name))

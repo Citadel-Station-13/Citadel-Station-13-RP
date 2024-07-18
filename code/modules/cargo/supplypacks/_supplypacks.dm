@@ -14,46 +14,6 @@
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 //NOTE NOTE: Hidden var is now deprecated, whoever removed support for it should've removed the var altogether
 
-var/list/all_supply_groups = list("Atmospherics",
-								  "Costumes",
-								  "Engineering",
-								  "Hospitality",
-								  "Hydroponics",
-								  "Materials",
-								  "Medical",
-								  "Miscellaneous",
-								  "Munitions",
-								  "Reagents",
-								  "Reagent Cartridges",
-								  "Recreation",
-								  "Robotics",
-								  "Science",
-								  "Security",
-								  "Supplies",
-								  "Voidsuits",
-								  "Vehicles")
-
-/datum/supply_pack
-	var/name
-	var/cost
-
-	// the container
-	/// the type of the containier we spawn at - our contained objects will spawn in this.
-	var/container_type = /obj/structure/closet/crate/plastic
-	/// the name to set on our container, if any
-	var/container_name
-	/// the desc to set on our container, if any
-	var/container_desc
-
-	// the contained
-	/// what we contain - list of typepaths associated to count. if no count is associated, it's assumed to be one.
-	var/list/contains
-
-	var/access
-	var/one_access = FALSE
-	var/contraband = 0
-	var/group = "Miscellaneous"
-
 /**
  * instance the supply pack at a location. returns the container used.
  */

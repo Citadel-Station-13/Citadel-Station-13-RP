@@ -2,10 +2,6 @@ SUBSYSTEM_DEF(supply)
 	name = "Supply"
 	wait = 300
 
-	//* Supply System *//
-
-	/// active supply factions by id
-	var/static/list/supply_faction_lookup
 
 	// Supply Points
 	var/points = 50
@@ -16,7 +12,8 @@ SUBSYSTEM_DEF(supply)
 	// Control
 	var/ordernum
 	var/list/shoppinglist = list()			// Approved orders
-	var/list/supply_pack = list()			// All supply packs
+	var/list/legacy_supply_packs = list()			// All supply packs
+	var/static/list/legacy_supply_categories = list()
 	var/list/exported_crates = list()		// Crates sent from the station
 	var/list/order_history = list()			// History of orders, showing edits made by users
 	var/list/adm_order_history = list()		// Complete history of all orders, for admin use
@@ -60,7 +57,8 @@ SUBSYSTEM_DEF(supply)
 
 	for(var/typepath in subtypesof(/datum/supply_pack))
 		var/datum/supply_pack/P = new typepath()
-		supply_pack[P.name] = P
+		legacy_supply_packs[P.name] = P
+		legacy_supply_categories[P.category] = TRUE
 	return ..()
 
 // Supply shuttle SSticker - handles supply point regeneration
@@ -366,18 +364,6 @@ SUBSYSTEM_DEF(supply)
 			"value" = new_value
 		)
 
-/datum/controller/subsystem/supply/Initialize()
-	init_supply_factions()
-	return ..()
-
-/datum/controller/subsystem/supply/proc/init_supply_factions()
-	#warn impl
-
-/datum/controller/subsystem/supply/proc/register_supply_faction(datum/supply_faction2/faction)
-	ASSERT(!supply_faction_lookup[faction.id])
-	supply_faction_lookup[faction.id] = faction
-	faction.prime()
-
 //* Estimation *//
 
 /**
@@ -398,3 +384,49 @@ SUBSYSTEM_DEF(supply)
 	else
 		CRASH("what?")
 	#warn impl
+
+//* Instantiation *//
+
+/**
+ * Resolves an entity descriptor, and instantiates it
+ *
+ * directly instantiated:
+ * * typepath
+ * * anonymous typepath
+ *
+ * clone(include_contents = TRUE)'d
+ * * an /atom/movable
+ *
+ * instantiated with special handling
+ * * /datum/material typepath or instance
+ * * /obj/item/stack typepath or instance
+ * * /datum/gas typepath or instance - container_hint can be:
+ * ** /obj/machinery/portable_atmospherics/canister
+ * ** /obj/item/tank
+ *
+ * translated in order, unless `descriptor_hint` is specified.
+ * * material id
+ * * gas id - container_hint can be:
+ * ** /obj/machinery/portable_atmospherics/canister
+ * ** /obj/item/tank
+ * * entity id as string (SSpersistence entity IDs)
+ *
+ * @params
+ * * location - where to spawn it. null is valid!
+ * * descriptor - the descriptor
+ * * amount - amount to spawn
+ * * descriptor_hint - SUPPLY_DESCRIPTOR_HINT_* to tell us what to translate the descriptor as
+ * * container_hint - container hint, if allowed; using an invalid one will runtime.
+ *
+ * @return spawned entity
+ */
+/datum/contrller/subsystem/supply/proc/instantiate_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint, atom/location)
+
+/**
+ * Resolves an entity descriptor, and describes it with a string
+ *
+ * @return string
+ */
+/datum/contrller/subsystem/supply/proc/describe_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
+
+#warn impl

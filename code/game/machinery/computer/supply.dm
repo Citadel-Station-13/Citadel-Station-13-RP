@@ -111,8 +111,8 @@
 	else
 		shuttle["mode"] = SUP_SHUTTLE_ERROR
 
-	for(var/pack_name in SSsupply.supply_pack)
-		var/datum/supply_pack/P = SSsupply.supply_pack[pack_name]
+	for(var/pack_name in SSsupply.legacy_supply_packs)
+		var/datum/supply_pack/P = SSsupply.legacy_supply_packs[pack_name]
 		if(P.group == active_category)
 			var/list/pack = list(
 					"name" = P.name,
@@ -167,7 +167,7 @@
 	data["order_auth"] = (authorization & SUP_ACCEPT_ORDERS)   // Whether this ui is permitted to accept/deny requested orders
 	data["shuttle"] = shuttle_status
 	data["supply_points"] = SSsupply.points
-	data["categories"] = all_supply_groups
+	data["categories"] = SSsupply.legacy_supply_categories
 	data["active_category"] = active_category
 	data["supply_packs"] = pack_list
 	data["orders"] = orders
