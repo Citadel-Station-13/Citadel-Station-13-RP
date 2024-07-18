@@ -9,7 +9,7 @@
 	. = ..()
 	reagents.add_reagent("coolant", 1000)
 
-/obj/structure/reagent_dispensers/coolanttank/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/reagent_dispensers/coolanttank/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(proj.get_structure_damage())
 		if(!istype(proj ,/obj/projectile/beam/lasertag) && !istype(proj ,/obj/projectile/beam/practice) ) // TODO: make this not terrible

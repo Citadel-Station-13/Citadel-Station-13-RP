@@ -48,7 +48,7 @@
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Eddy/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/horror/Eddy/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 

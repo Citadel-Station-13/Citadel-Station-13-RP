@@ -533,7 +533,7 @@
 /mob/living/silicon/robot/restrained()
 	return 0
 
-/mob/living/silicon/robot/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/silicon/robot/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

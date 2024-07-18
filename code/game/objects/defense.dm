@@ -19,7 +19,7 @@
 	inflict_atom_damage(style.get_unarmed_damage(attacker, src), style.damage_tier, style.damage_flag, style.damage_mode, ATTACK_TYPE_UNARMED, attacker)
 	return NONE
 
-/obj/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	// todo: should this really be here?
 	// todo: projectile-side should do this maybe (?)

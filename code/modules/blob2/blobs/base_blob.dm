@@ -250,7 +250,7 @@ var/list/blobs = list()
 	adjust_integrity_blob(-damage)
 	return
 
-/obj/structure/blob/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/blob/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 
 	if(istype(proj.firer) && proj.firer.faction == "blob")

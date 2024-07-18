@@ -29,7 +29,7 @@
 	qdel(s)
 	qdel(src)
 
-/obj/effect/mine/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/effect/mine/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	spawn(0)
 		explode()

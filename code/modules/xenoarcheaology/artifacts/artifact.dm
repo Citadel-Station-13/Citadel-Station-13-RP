@@ -275,7 +275,7 @@
 			to_chat(M, "<b>You accidentally touch [src].</b>")
 	..()
 
-/obj/machinery/artifact/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/machinery/artifact/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(istype(proj,/obj/projectile/bullet))
 		if(my_effect.trigger == TRIGGER_FORCE)

@@ -43,7 +43,7 @@
 		return TRUE
 	return ..()
 
-/obj/structure/grille/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/grille/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	#warn redo all this; proj.dampen_kinetic_energy()?
 	impact_flags |= PROJECTILE_IMPACT_TRIVIAL
 	. = ..()

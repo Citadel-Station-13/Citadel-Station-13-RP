@@ -574,7 +574,7 @@
 
 #warn impl
 
-/mob/living/carbon/human/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/carbon/human/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return

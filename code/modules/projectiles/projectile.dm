@@ -482,7 +482,7 @@
 		set_angle(set_angle_to)
 	// handle direct hit
 	if(direct_target)
-		if(direct_target.new_bullet_act(src, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
+		if(direct_target.bullet_act(src, PROJECTILE_IMPACT_POINT_BLANK, def_zone) & PROJECTILE_IMPACT_FLAGS_SHOULD_GO_THROUGH)
 			impacted[direct_target] = TRUE
 		else
 			// todo: this should make a muzzle flash
@@ -1142,7 +1142,7 @@
 			impact_flags = on_reflect(target, impact_flags, def_zone)
 		// else, is passthrough. do nothing
 	else
-		impact_flags = target.new_bullet_act(src, impact_flags, def_zone)
+		impact_flags = target.bullet_act(src, impact_flags, def_zone)
 		// did we pierce?
 		if(impact_flags & PROJECTILE_IMPACT_PIERCE)
 			keep_going = TRUE

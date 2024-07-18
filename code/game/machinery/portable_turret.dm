@@ -213,7 +213,7 @@
 	integrity_max = 200
 	turret_type = "industrial"
 
-/obj/machinery/porta_turret/industrial/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/machinery/porta_turret/industrial/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(enabled)
 		if(!attacked && !emagged)
@@ -616,7 +616,7 @@
 	if(!gradual && prob(45) && amount > 5)
 		spark_system.start()
 
-/obj/machinery/porta_turret/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/machinery/porta_turret/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	aggro_for(6 SECONDS)
 

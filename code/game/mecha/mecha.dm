@@ -1135,7 +1135,7 @@
 	return
 
 
-/obj/mecha/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(istype(proj, /obj/projectile/test))
 		var/obj/projectile/test/Test = proj
 		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.

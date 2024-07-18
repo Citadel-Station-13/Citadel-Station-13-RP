@@ -212,7 +212,7 @@
 	src.cleanup(8)
 	..()
 
-/obj/machinery/shieldwallgen/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/machinery/shieldwallgen/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	storedpower -= 400 * proj.get_structure_damage()
 
@@ -274,7 +274,7 @@
 		else
 			gen_secondary.storedpower -= power_usage
 
-/obj/machinery/shieldwall/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/machinery/shieldwall/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G

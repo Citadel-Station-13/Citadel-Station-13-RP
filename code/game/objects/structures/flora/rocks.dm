@@ -38,7 +38,7 @@
 		return
 	. = ..()
 
-/obj/structure/flora/rock/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/structure/flora/rock/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return

@@ -199,7 +199,7 @@
 	log_and_message_admins("[src] ignited due to exposure to fire.")
 	ignite()
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(proj.damage_type && proj.damage_type == BURN && proj.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")
@@ -284,7 +284,7 @@
 			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
-/mob/living/simple_mob/slime/xenobio/silver/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/slime/xenobio/silver/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(istype(proj,/obj/projectile/beam) || istype(proj, /obj/projectile/energy))
 		visible_message(SPAN_DANGER("\The [src] reflects \the [proj]!"))
 
@@ -652,7 +652,7 @@
 	log_and_message_admins("[src] exploded due to exposure to fire.")
 	explode()
 
-/mob/living/simple_mob/slime/xenobio/oil/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/slime/xenobio/oil/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(proj.damage_type && proj.damage_type == BURN && proj.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[proj.firer ? " by [key_name(proj.firer)]" : ""].")

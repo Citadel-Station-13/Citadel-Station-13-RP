@@ -49,7 +49,7 @@
 	playsound(src, 'sound/h_sounds/imbeciles.ogg', 50, 1)
 	..()
 
-/mob/living/simple_mob/horror/Master/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/horror/Master/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 

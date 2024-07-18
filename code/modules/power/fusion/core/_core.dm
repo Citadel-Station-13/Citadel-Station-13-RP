@@ -87,7 +87,7 @@ var/list/fusion_cores = list()
 		owned_field.AddParticles(name, quantity)
 		. = 1
 
-/obj/machinery/power/fusion_core/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/obj/machinery/power/fusion_core/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(owned_field)
 		return proj.impact_redirect(owned_field, args)
 	return ..()

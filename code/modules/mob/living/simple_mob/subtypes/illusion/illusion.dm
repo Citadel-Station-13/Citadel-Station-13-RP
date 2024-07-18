@@ -45,7 +45,7 @@
 		return
 
 
-/mob/living/simple_mob/illusion/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/illusion/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(realistic)
 		return ..()
 	return PROJECTILE_IMPACT_PHASE

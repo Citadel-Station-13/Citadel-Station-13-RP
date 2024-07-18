@@ -19,7 +19,7 @@
 	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
 	return NONE
 
-/turf/simulated/wall/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/turf/simulated/wall/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 
 	if(istype(proj,/obj/projectile/beam))
@@ -39,7 +39,7 @@
 	inflict_atom_damage(proj.get_structure_damage(), proj.damage_tier, proj.damage_flag, proj.damage_mode, ATTACK_TYPE_PROJECTILE, proj)
 	if(QDELETED(src))
 		return PROJECTILE_IMPACT_TARGET_DELETED
-		
+
 /turf/simulated/wall/break_apart(method)
 	dismantle_wall()
 

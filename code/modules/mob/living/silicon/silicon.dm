@@ -155,7 +155,7 @@
 /mob/living/silicon/IsAdvancedToolUser()
 	return 1
 
-/mob/living/silicon/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/silicon/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(!proj.nodamage)
 		switch(proj.damage_type)

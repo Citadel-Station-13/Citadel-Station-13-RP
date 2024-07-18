@@ -417,7 +417,7 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
 		return

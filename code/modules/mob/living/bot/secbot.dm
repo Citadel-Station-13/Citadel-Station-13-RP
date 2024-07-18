@@ -226,7 +226,7 @@
 	if(health < curhealth && on == TRUE)
 		react_to_attack_polaris(user)
 
-/mob/living/bot/secbot/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/mob/living/bot/secbot/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	var/curhealth = health
 	var/mob/shooter = proj.firer
 	. = ..()

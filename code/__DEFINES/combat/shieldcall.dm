@@ -44,7 +44,7 @@
 /// * you should be using /datum/shieldcall's bullet intercept / bullet signals if possible but this works too
 #define SHIELDCALL_FLAGS_FOR_PROJECTILE_DEFLECT (SHIELDCALL_FLAG_TERMINATE | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH)
 /// flags set in a full block
-#define SHIELDCALL_FLAGS_FOR_PROJECTILE_DEFLECT (SHIELDCALL_FLAG_TERMINATE | SHIELDCALL_FLAG_ATTACK_BLOCKED)
+#define SHIELDCALL_FLAGS_FOR_COMPLETE_BLOCK (SHIELDCALL_FLAG_TERMINATE | SHIELDCALL_FLAG_ATTACK_BLOCKED)
 
 //*                               Atom Shieldcall Args                            *//
 //*                                                                               *//

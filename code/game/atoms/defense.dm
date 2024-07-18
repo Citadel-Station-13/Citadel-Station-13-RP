@@ -90,7 +90,7 @@
  */
 #warn run shieldcalls at obj/turf level manually because inflict_atom_damage doesn't
 #warn mob-level shieldcalls
-/atom/proc/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	// lower calls can change flags before we trigger
 	// check if we're still hitting
 	if(impact_flags & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
@@ -111,10 +111,6 @@
 		return impact_flags
 	// we are hitting; gather flags as needed
 	return proj.on_impact_new(src, impact_flags, def_zone, blocked)
-
-/atom/proc/bullet_act()
-	SHOULD_NOT_OVERRIDE(TRUE)
-#warn just here to spot the old ones
 
 //* Damage Processing API *//
 

@@ -187,7 +187,7 @@
 	light_power = 1
 	light_color = "#CCFFFF"
 
-/turf/simulated/mineral/new_bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
+/turf/simulated/mineral/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()
 	if(istype(proj, /obj/projectile/bullet/particle))
 		if(prob(proj.damage))
