@@ -492,8 +492,8 @@
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
 			signaler.signal()
 
-	if(ai_holder && P.firer)
-		ai_holder.react_to_attack_polaris(P.firer)
+	if(ai_holder && proj.firer)
+		ai_holder.react_to_attack_polaris(proj.firer)
 
 	//! END
 
