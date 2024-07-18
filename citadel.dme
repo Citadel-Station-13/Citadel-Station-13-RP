@@ -1697,7 +1697,6 @@
 #include "code\game\objects\items\id_cards\sprite_stacks_cit.dm"
 #include "code\game\objects\items\id_cards\station_ids.dm"
 #include "code\game\objects\items\id_cards\syndicate_ids.dm"
-#include "code\game\objects\items\melee\deflect.dm"
 #include "code\game\objects\items\melee\energy.dm"
 #include "code\game\objects\items\melee\melee.dm"
 #include "code\game\objects\items\melee\misc.dm"

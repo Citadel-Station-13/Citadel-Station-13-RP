@@ -6,7 +6,7 @@
 	icon_state = "teleriot0"
 	slot_flags = null
 
-	damage = 5
+	damage_force = 5
 	active_damage_force = 10
 	inactive_damage_force = 5
 

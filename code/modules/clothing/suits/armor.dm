@@ -232,6 +232,13 @@
 	valid_accessory_slots = null
 	var/block_chance = 20
 
+/obj/item/clothing/suit/armor/alien/mob_armorcall(mob/defending, list/shieldcall_args, fake_attack)
+	if(prob(block_chance))
+		defending.visible_message(SPAN_DANGER("[src] completely absorbs [RESOLVE_SHIELDCALL_ATTACK_TEXT(shieldcall_args)]!"))
+		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAGS_FOR_COMPLETE_BLOCK
+		return
+	return ..()
+
 /obj/item/clothing/suit/armor/alien/tank
 	name = "alien protection suit"
 	desc = "It's really resilient yet lightweight, so it's probably meant to be armor. Strangely enough it seems to have been designed for a humanoid shape."
@@ -241,12 +248,6 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor_type = /datum/armor/alien/heavy
 	block_chance = 40
-
-/obj/item/clothing/suit/armor/alien/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(prob(block_chance))
-		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
-		return TRUE
-	return FALSE
 
 //Non-hardsuit ERT armor.
 /obj/item/clothing/suit/armor/vest/ert

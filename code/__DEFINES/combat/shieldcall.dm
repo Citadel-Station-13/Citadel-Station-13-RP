@@ -43,6 +43,8 @@
 ///
 /// * you should be using /datum/shieldcall's bullet intercept / bullet signals if possible but this works too
 #define SHIELDCALL_FLAGS_FOR_PROJECTILE_DEFLECT (SHIELDCALL_FLAG_TERMINATE | SHIELDCALL_FLAG_ATTACK_BLOCKED | SHIELDCALL_FLAG_ATTACK_REDIRECT | SHIELDCALL_FLAG_ATTACK_PASSTHROUGH)
+/// flags set in a full block
+#define SHIELDCALL_FLAGS_FOR_PROJECTILE_DEFLECT (SHIELDCALL_FLAG_TERMINATE | SHIELDCALL_FLAG_ATTACK_BLOCKED)
 
 //*                               Atom Shieldcall Args                            *//
 //*                                                                               *//
@@ -99,3 +101,21 @@
 //* list keys for list/additional in atom shieldcalls *//
 
 // none yet
+
+//* Helpers to manipulate shieldcall args *//
+
+#define RESOLVE_SHIELDCALL_ATTACK_TEXT(SHIELDCALL) resolve_shieldcall_attack_text(SHIELDCALL)
+
+/proc/resolve_shieldcall_attack_text(list/shieldcall_args)
+	switch(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE])
+		if(ATTACK_TYPE_PROJECTILE)
+			. = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+		if(ATTACK_TYPE_THROWN)
+			var/datum/thrownthing/thrown = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			if(thrown)
+				. = "the impact from [thrown.thrownthing]"
+		if(ATTACK_TYPE_MELEE, ATTACK_TYPE_UNARMED)
+			. = "the force of the blow"
+
+	if(!.)
+		. = "the attack"

@@ -9,6 +9,8 @@
 		var/obj/item/organ/external/part = get_organ(filter_zone)
 		for(var/obj/item/I as anything in inventory?.items_that_cover(part.body_part_flags))
 			I.mob_armorcall(shieldcall_args, fake_attack)
+			if(shieldcall_args[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_TERMINATE)
+				break
 		return
 
 	var/damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
