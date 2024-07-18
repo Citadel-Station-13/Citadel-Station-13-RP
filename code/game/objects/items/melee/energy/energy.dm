@@ -4,6 +4,7 @@
 /datum/parry_frame/passive_block/energy
 	parry_sfx = 'sound/weapons/blade1.ogg'
 
+#warn icon state --> _active
 /obj/item/melee/transforming/energy
 	icon = 'icons/obj/weapons.dmi'
 	armor_penetration = 50
@@ -25,6 +26,9 @@
 
 	passive_parry = /datum/passive_parry/melee/energy
 
+	activation_sound = 'sound/weapons/saberon.ogg'
+	deactivation_sound = 'sound/weapons/saberoff.ogg'
+
 /obj/item/melee/transforming/energy/proc/activate(mob/living/user)
 	if(active)
 		return
@@ -33,19 +37,14 @@
 		item_state = "[icon_state]_blade_rainbow"
 	else
 		item_state = "[icon_state]_blade"
-	embed_chance = active_embed_chance
 	throw_force = active_throw_force
-	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
-	update_icon()
 	set_light(lrange, lpower, lcolor)
 	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 /obj/item/melee/transforming/energy/proc/deactivate(mob/living/user)
 	if(!active)
 		return
-	playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 	item_state = "[icon_state]"
-	active = 0
 	embed_chance = initial(embed_chance)
 	throw_force = initial(throw_force)
 	update_icon()
@@ -213,11 +212,6 @@
 	damtype = BRUTE
 	to_chat(user, "<span class='notice'>\The [src] is de-energised. It's just a regular axe now.</span>")
 
-/obj/item/melee/transforming/energy/axe/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	visible_message("<span class='warning'>\The [user] swings \the [src] towards [TU.his] head! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	return (BRUTELOSS|FIRELOSS)
-
 /obj/item/melee/transforming/energy/axe/charge
 	name = "charge axe"
 	desc = "An energised axe."
@@ -234,6 +228,7 @@
 /*
  * Energy Sword
  */
+#warn icon state --> _active
 /obj/item/melee/transforming/energy/sword
 	name = "energy sword"
 	desc = "May the damage_force be within you."
@@ -519,37 +514,6 @@
 			host._handle_inventory_hud_remove(src)
 		qdel(src)
 
-/obj/item/melee/transforming/energy/blade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_parry_check(user, attacker, damage_source) && prob(60))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
-		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-		return 1
-	if(unique_parry_check(user, attacker, damage_source) && prob(projectile_parry_chance))
-		user.visible_message("<span class='danger'>\The [user] deflects [attack_text] with \the [src]!</span>")
-
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
-		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-		return 1
-
-	return 0
-
-/obj/item/melee/transforming/energy/blade/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
-
-	if(user.incapacitated() || !istype(damage_source, /obj/projectile/))
-		return 0
-
-	var/bad_arc = global.reverse_dir[user.dir]
-	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
-
-	return 1
-
 //Energy Spear
 
 /obj/item/melee/transforming/energy/spear
@@ -590,6 +554,7 @@
 	attack_verb = list("whacked", "beat", "slapped", "thonked")
 	DelComponent(/datum/component/jousting)
 
+#warn icon state --> _active
 /obj/item/melee/transforming/energy/hfmachete // ported from /vg/station - vgstation-coders/vgstation13#13913, fucked up by hatterhat
 	name = "high-frequency machete"
 	desc = "A high-frequency broad blade used either as an implement or in combat like a short sword."
@@ -655,14 +620,10 @@
 			var/obj/effect/plant/P = target
 			P.die_off()
 
-
+#warn icon state --> _active
 /obj/item/melee/transforming/energy/sword/imperial
 	name = "energy gladius"
 	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
 	icon_state = "sword0"
 	icon = 'icons/obj/weapons_vr.dmi'
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
-
-/obj/item/melee/transforming/energy/sword/imperial/activate(mob/living/user)
-	..()
-	icon_state = "sword1"

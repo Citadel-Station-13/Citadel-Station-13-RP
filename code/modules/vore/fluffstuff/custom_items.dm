@@ -1146,6 +1146,10 @@
 	attack_verb = list("beaten")
 	lightcolor = "#CC33FF"
 
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_melee = 30;
+	}
+
 	//Two Handed
 	var/wielded = 0
 	var/base_name = "stunstaff"
@@ -1169,13 +1173,6 @@
 		name = "[base_name]"
 	update_icon()
 	..()
-
-/obj/item/melee/baton/fluff/stunstaff/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(wielded && default_parry_check(user, attacker, damage_source) && prob(30))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
 
 /obj/item/melee/baton/fluff/stunstaff/update_icon()
 	icon_state = "[base_icon][wielded][status]"

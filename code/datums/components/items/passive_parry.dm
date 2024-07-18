@@ -52,9 +52,17 @@
 
 /datum/component/passive_parry/RegisterWithParent()
 	. = ..()
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equipped))
+	if(!hooked)
+		var/obj/item/item = parent
+		if(item.worn_mob())
+			on_equipped(item, item.worn_mob(), item.worn_slot)
 
 /datum/component/passive_parry/UnregisterFromParent()
 	. = ..()
+	UnregisterSignal(parent, COMSIG_ITEM_EQUIPPED)
+	if(hooked)
+		on_unequipped(parent)
 
 /datum/component/passive_parry/proc/on_equipped(obj/item/source, mob/user, slot, accessory)
 	if(!check_slot(slot))
@@ -62,13 +70,17 @@
 	if(hooked)
 		return
 	hooked = TRUE
-	if(parry_data.parry_chance_melee)
+
+	if(!user)
+		user = source.worn_mob()
+
+	if(VALUE_OR_DEFAULT(parry_data.parry_chance_touch, parry_data.parry_chance_default))
 		#warn impl
-	if(parry_data.parry_chance_touch)
+	if(VALUE_OR_DEFAULT(parry_data.parry_chance_melee, parry_data.parry_chance_default))
 		#warn impl
-	if(parry_data.parry_chance_projectile)
-		#warn impl
-	if(parry_data.parry_chance_thrown)
+	if(VALUE_OR_DEFAULT(parry_data.parry_chance_projectile, parry_data.parry_chance_default))
+		RegisterSignal(user, COMSIG_ATOM_BULLET_ACT, PROC_REF(on_bullet))
+	if(VALUE_OR_DEFAULT(parry_data.parry_chance_thrown, parry_data.parry_chance_default))
 		#warn impl
 
 /datum/component/passive_parry/proc/on_unequipped(obj/item/source, mob/user, slot, accessory)
@@ -76,11 +88,15 @@
 		return
 	hooked = FALSE
 
+	if(!user)
+		user = source.worn_mob()
+
 	UnregisterSignal(user, list(
 		COMSIG_ATOM_BULLET_ACT,
 	))
 
 /datum/component/passive_parry/proc/on_bullet(mob/source, list/bullet_act_args)
+	#warn impl
 
 /datum/component/passive_parry/proc/
 

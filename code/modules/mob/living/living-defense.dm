@@ -227,6 +227,13 @@
 
 		var/force_pierce = FALSE
 		var/no_attack = FALSE
+
+		var/zone
+		if (istype(TT.thrower, /mob/living))
+			zone = check_zone(TT.target_zone)
+		else
+			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
+
 		if(zone)
 			// perform shieldcall
 			// todo: reconcile all the way down to /atom, or at least a higher level than /human.
