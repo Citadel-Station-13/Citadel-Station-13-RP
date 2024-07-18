@@ -1,3 +1,4 @@
+// todo: /transforming/energy
 /obj/item/melee/energy
 	var/active = 0
 	var/active_force

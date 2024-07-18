@@ -47,6 +47,11 @@
 			return 1
 		return 0
 
+// todo: full rework of all of this; changeling weapons are balanced by a numbskull holy shit fuck bay
+//       - block chances are way, way too high
+//       - insufficient armor penetration (ironically) for citrp combat balancing directives
+//       - need to rethink changeling defensives in general, they shouldn't be reliant on parrying
+
 /obj/item/melee/changeling
 	name = "arm weapon"
 	desc = "A grotesque weapon made out of bone and flesh that cleaves through people as a hot knife through butter."
@@ -62,8 +67,13 @@
 	var/weapType = "weapon"
 	var/weapLocation = "arm"
 
-	defend_chance = 40	// The base chance for the weapon to parry.
-	projectile_parry_chance = 15	// The base chance for a projectile to be deflected.
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 40;
+		parry_chance_projectile = 15;
+		parry_frame = /datum/parry_frame/passive_block{
+			parry_sfx = 'sound/weapons/slash.ogg';
+		};
+	}
 
 /obj/item/melee/changeling/Initialize(mapload)
 	. = ..()
@@ -106,28 +116,6 @@
 			host.embedded -= src
 		qdel(src)
 
-/obj/item/melee/changeling/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_parry_check(user, attacker, damage_source) && prob(defend_chance))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/slash.ogg', 50, 1)
-		return 1
-	if(unique_parry_check(user, attacker, damage_source) && prob(projectile_parry_chance))
-		user.visible_message("<span class='danger'>\The [user] deflects [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/slash.ogg', 50, 1)
-		return 1
-
-	return 0
-
-/obj/item/melee/changeling/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
-	if(user.incapacitated() || !istype(damage_source, /obj/projectile))
-		return 0
-
-	var/bad_arc = global.reverse_dir[user.dir]
-	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
-
-	return 1
-
 /obj/item/melee/changeling/arm_blade
 	name = "arm blade"
 	desc = "A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter."
@@ -138,15 +126,27 @@
 	edge = 1
 	pry = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	defend_chance = 60
-	projectile_parry_chance = 25
+
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 60;
+		parry_chance_projectile = 25;
+		parry_frame = /datum/parry_frame/passive_block{
+			parry_sfx = 'sound/weapons/slash.ogg';
+		};
+	}
 
 /obj/item/melee/changeling/arm_blade/greater
 	name = "arm greatblade"
 	desc = "A grotesque blade made out of bone and flesh that cleaves through people and armor as a hot knife through butter."
 	armor_penetration = 30
-	defend_chance = 70
-	projectile_parry_chance = 35
+
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 70;
+		parry_chance_projectile = 35;
+		parry_frame = /datum/parry_frame/passive_block{
+			parry_sfx = 'sound/weapons/slash.ogg';
+		};
+	}
 
 /obj/item/melee/changeling/claw
 	name = "hand claw"
@@ -156,13 +156,25 @@
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	defend_chance = 50
-	projectile_parry_chance = 15
+
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 50;
+		parry_chance_projectile = 15;
+		parry_frame = /datum/parry_frame/passive_block{
+			parry_sfx = 'sound/weapons/slash.ogg';
+		};
+	}
 
 /obj/item/melee/changeling/claw/greater
 	name = "hand greatclaw"
 	damage_force = 20
 	armor_penetration = 20
 	pry = 1
-	defend_chance = 60
-	projectile_parry_chance = 25
+
+	passive_parry = /datum/passive_parry/melee{
+		parry_chance_default = 60;
+		parry_chance_projectile = 25;
+		parry_frame = /datum/parry_frame/passive_block{
+			parry_sfx = 'sound/weapons/slash.ogg';
+		};
+	}

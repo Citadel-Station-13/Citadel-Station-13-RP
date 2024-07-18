@@ -37,3 +37,5 @@
 	DelComponent(/datum/component/passive_parry)
 
 #warn vv / chance passive_parry type hook
+
+#warn how do we do output text
