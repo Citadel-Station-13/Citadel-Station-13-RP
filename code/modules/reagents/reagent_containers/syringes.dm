@@ -246,8 +246,10 @@
 
 		var/hit_area = affecting.name
 
-		if((user != target) && H.check_shields(7, src, user, "\the [src]"))
-			return
+		if(user != target)
+			var/list/shieldcall_results = target.run_mob_defense(7, attack_type = ATTACK_TYPE_MELEE, weapon = src, hit_zone = hit_area, clickchain = new /datum/event_args/actor/clickchain(user))
+			if(shieldcall_results[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAG_ATTACK_BLOCKED)
+				return
 
 		if (target != user && H.legacy_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))

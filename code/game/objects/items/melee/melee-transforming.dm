@@ -5,6 +5,8 @@
  * toggleable shields, like energy combat shields and telescoping shields
  */
 /obj/item/melee/transforming
+	damage_mode = NONE
+
 	var/active = FALSE
 
 	var/active_weight_class
@@ -14,8 +16,19 @@
 
 	var/active_damage_force
 	var/inactive_damage_force
+	var/active_damage_mode
+	var/inactive_damage_mode
 	var/active_damage_tier
 	var/inactive_damage_tier
+
+	var/active_throw_force
+	var/inactive_throw_force
+	var/active_throw_resist
+	var/inactive_throw_resist
+	var/active_throw_range
+	var/inactive_throw_range
+	var/active_throw_speed
+	var/inactive_throw_speed
 
 	/// activation sound; also deactivation if it's not specified
 	var/activation_sound = 'sound/weapons/empty.ogg'
@@ -61,6 +74,12 @@
 
 	damage_force = VALUE_OR_DEFAULT(active_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(active_damage_tier, initial(damage_tier))
+	damage_mode = VALUE_OR_DEFAULT(active_damage_mode, initial(damage_mode))
+
+	throw_force = VALUE_OR_DEFAULT(active_throw_force, initial(throw_force))
+	throw_resist = VALUE_OR_DEFAULT(active_throw_resist, initial(throw_resist))
+	throw_range = VALUE_OR_DEFAULT(active_throw_range, initial(throw_range))
+	throw_speed = VALUE_OR_DEFAULT(active_throw_speed, initial(throw_speed))
 
 	set_weight_class(VALUE_OR_DEFAULT(active_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(active_weight_volume, initial(weight_volume)))
@@ -76,6 +95,12 @@
 
 	damage_force = VALUE_OR_DEFAULT(inactive_damage_force, initial(damage_force))
 	damage_tier = VALUE_OR_DEFAULT(inactive_damage_tier, initial(damage_tier))
+	damage_mode = VALUE_OR_DEFAULT(inactive_damage_mode, initial(damage_mode))
+
+	throw_force = VALUE_OR_DEFAULT(inactive_throw_force, initial(throw_force))
+	throw_resist = VALUE_OR_DEFAULT(inactive_throw_resist, initial(throw_resist))
+	throw_range = VALUE_OR_DEFAULT(inactive_throw_range, initial(throw_range))
+	throw_speed = VALUE_OR_DEFAULT(inactive_throw_speed, initial(throw_speed))
 
 	set_weight_class(VALUE_OR_DEFAULT(inactive_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(inactive_weight_volume, initial(weight_volume)))

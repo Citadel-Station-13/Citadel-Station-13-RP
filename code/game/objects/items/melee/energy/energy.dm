@@ -6,8 +6,6 @@
 
 /obj/item/melee/transforming/energy
 	icon = 'icons/obj/weapons.dmi'
-	sharp = 0
-	edge = 0
 	armor_penetration = 50
 	atom_flags = NOCONDUCT | NOBLOODY
 	var/lrange = 2
@@ -36,11 +34,7 @@
 	else
 		item_state = "[icon_state]_blade"
 	embed_chance = active_embed_chance
-	damage_force = active_force
-	throw_force = active_throwforce
-	sharp = 1
-	edge = 1
-	set_weight_class(active_w_class)
+	throw_force = active_throw_force
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
@@ -53,11 +47,7 @@
 	item_state = "[icon_state]"
 	active = 0
 	embed_chance = initial(embed_chance)
-	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
-	sharp = initial(sharp)
-	edge = initial(edge)
-	set_weight_class(initial(w_class))
 	update_icon()
 	set_light(0,0)
 
@@ -197,10 +187,9 @@
 	desc = "An energised battle axe."
 	icon_state = "eaxe"
 	item_state = "eaxe"
-	//active_force = 150 //holy...
-	active_force = 60
-	active_throwforce = 35
-	active_w_class = WEIGHT_CLASS_HUGE
+	active_damage_force = 60
+	active_throw_force = 35
+	active_weight_class = WEIGHT_CLASS_HUGE
 	//damage_force = 40
 	//throw_force = 25
 	damage_force = 20
@@ -232,8 +221,8 @@
 /obj/item/melee/transforming/energy/axe/charge
 	name = "charge axe"
 	desc = "An energised axe."
-	active_force = 35
-	active_throwforce = 20
+	active_damage_force = 35
+	active_throw_force = 20
 	damage_force = 15
 	use_cell = TRUE
 	hitcost = 120
@@ -250,9 +239,9 @@
 	desc = "May the damage_force be within you."
 	icon_state = "esword"
 	item_state = "esword"
-	active_force = 30
-	active_throwforce = 20
-	active_w_class = WEIGHT_CLASS_BULKY
+	active_damage_force = 30
+	active_throw_force = 20
+	active_weight_class = WEIGHT_CLASS_BULKY
 	damage_force = 3
 	throw_force = 5
 	throw_speed = 1
@@ -338,7 +327,7 @@
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
 	damage_force = 3
-	active_force = 60
+	active_damage_force = 60
 	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 35
@@ -362,8 +351,8 @@
 	very little damage to purely organic targets."
 	icon_state = "ionrapier"
 	item_state = "ionrapier"
-	active_force = 10
-	active_throwforce = 3
+	active_damage_force = 10
+	active_throw_force = 3
 	active_embed_chance = 0
 	sharp = 1
 	edge = 1
@@ -408,7 +397,7 @@
 /obj/item/melee/transforming/energy/sword/ionic_rapier/lance
 	name = "zero-point lance"
 	desc = "Designed specifically for disrupting electronics at relatively close range, however it is still capable of dealing some damage to living beings."
-	active_force = 20
+	active_damage_force = 20
 	armor_penetration = 15
 	reach = 2
 
@@ -420,7 +409,7 @@
 	name = "charge sword"
 	desc = "A small, handheld device which emits a high-energy 'blade'."
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
-	active_force = 25
+	active_damage_force = 25
 	armor_penetration = 25
 	projectile_parry_chance = 40
 	colorable = TRUE
@@ -451,7 +440,7 @@
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
 	damage_force = 3
-	active_force = 50
+	active_damage_force = 50
 	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 30
@@ -576,11 +565,15 @@
 	throw_range = 11
 	reach = 2
 	w_class = WEIGHT_CLASS_BULKY
-	active_force = 25
-	active_throwforce = 30
-	active_w_class = WEIGHT_CLASS_HUGE
+	active_damage_force = 25
+	active_throw_force = 30
+	active_weight_class = WEIGHT_CLASS_HUGE
 	colorable = TRUE
 	lcolor = "#800080"
+
+	passive_parry = /datum/passive_parry/melee/energy{
+		parry_chance_default = 50
+	}
 
 /obj/item/melee/transforming/energy/spear/activate(mob/living/user)
 	if(!active)
@@ -596,16 +589,6 @@
 	..()
 	attack_verb = list("whacked", "beat", "slapped", "thonked")
 	DelComponent(/datum/component/jousting)
-
-/obj/item/melee/transforming/energy/spear/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
-		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-		return 1
-	return 0
 
 /obj/item/melee/transforming/energy/hfmachete // ported from /vg/station - vgstation-coders/vgstation13#13913, fucked up by hatterhat
 	name = "high-frequency machete"

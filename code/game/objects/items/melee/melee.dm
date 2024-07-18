@@ -44,3 +44,13 @@
 	DelComponent(/datum/component/passive_parry)
 
 #warn vv / chance passive_parry type hook
+
+/obj/item/melee/proc/load_passive_parry()
+	passive_parry = resolve_passive_parry_data(passive_parry)
+
+/obj/item/melee/vv_get_var(var_name, resolve)
+	switch(var_name)
+		if(NAMEOF(src, passive_parry))
+			if(resolve)
+				load_passive_parry()
+	return ..()

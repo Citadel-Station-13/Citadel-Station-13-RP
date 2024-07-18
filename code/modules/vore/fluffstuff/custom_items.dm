@@ -66,50 +66,6 @@
 	if(!parts)
 		qdel(src)
 
-/*
-//JoanRisu:Joan Risu
-/obj/item/flame/lighter/zippo/fluff/joan
-	name = "Federation Zippo Lighter"
-	desc = "A red zippo lighter with the United Federation Logo on it."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "joanzip"
-
-//JoanRisu:Joan Risu
-/obj/item/sword/fluff/joanaria
-	name = "Aria"
-	desc = "A beautifully crafted rapier owned by Joan Risu. It has a thin blade and is used for quick attacks."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "joanaria"
-	icon_override = 'icons/vore/custom_items_vr.dmi'
-	item_state = "joanariamob"
-	origin_tech = "materials=7"
-	damage_force = 15
-	sharp = 1
-	edge = 1
-	attack_sound = 'sound/weapons/bladeslice.ogg'
-
-
-/obj/item/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-
-	if(default_parry_check(user, attacker, damage_source) && prob(75))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
-
-//joanrisu:Katarina Eine
-/obj/item/material/knife/tacknife/combatknife/fluff/katarina
-	name = "tactical Knife"
-	desc = "A tactical knife with a small butterly engraved on the blade."
-*/
-
-/obj/item/material/knife/tacknife/combatknife/fluff/katarina/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-
-	if(default_parry_check(user, attacker, damage_source) && prob(75))
-		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
-		return 1
-	return 0
 
 //For General use
 /obj/item/sword/fluff/joanaria/scisword
@@ -118,87 +74,6 @@
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "scisword"
 	origin_tech = "materials=7"
-
-/*
-//john.wayne9392:Harmony Prechtl
-/obj/item/twohanded/fireaxe/fluff/mjollnir
-	name = "Mjollnir"
-	desc = "Large hammer that looks like it can do a great deal of damage if properly used."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "harmonymjollnir"
-	origin_tech = "materials=7"
-	attack_verb = list("attacked", "hammered", "smashed", "slammed", "crushed")
-
-//JoanRisu:Joan Risu
-/obj/item/card/id/centcom/station/fluff/joanbadge
-	name = "Faded Badge"
-	desc = "A faded badge, backed with leather, that reads 'NT Security Force' across the front."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "joanbadge"
-	registered_name = "Joan Risu"
-	assignment = "Centcom Officer"
-
-
-/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] flashes their golden security badge.\nIt reads:NT Security.</span>","<span class='warning'>You display the faded badge.\nIt reads: NT Security.</span>")
-
-/obj/item/card/id/centcom/station/fluff/joanbadge/attack(mob/living/carbon/human/M, mob/living/user)
-	if(isliving(user))
-		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
-
-//JoanRisu:Joan Risu
-/obj/item/pda/heads/hos/joanpda
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "pda-joan"
-
-//Vorrarkul:Lucina Dakarim
-/obj/item/pda/heads/cmo/fluff/lucinapda
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "pda-lucina"
-
-//john.wayne9392:Harmony Prechtl
-/obj/item/modkit_conversion/fluff/harmonyspace
-	name = "Harmony's captain space suit modkit"
-	desc = "A kit containing all the needed tools and parts to modify a Captain's hardsuit. It has green and yellow parts inside."
-
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "harmony_kit"
-
-	from_helmet = /obj/item/clothing/head/helmet/space/capspace
-	from_suit = /obj/item/clothing/suit/armor/captain
-	to_helmet = /obj/item/clothing/head/helmet/space/capspace/fluff/harmhelm
-	to_suit = /obj/item/clothing/suit/armor/captain/fluff/harmsuit
-
-//john.wayne9392:Harmony Prechtl
-/obj/item/modkit_conversion/fluff/harmonysuit
-	name = "Harmony's captain suit modkit"
-	desc = "A sewing kit containing all the needed tools and fabric to modify a Captain's suit and hat. It has green and yellow fabrics inside."
-
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "harmony_kit"
-
-	from_helmet = /obj/item/clothing/head/caphat
-	from_suit = /obj/item/clothing/under/rank/captain
-	to_helmet = /obj/item/clothing/head/centhat/fluff/harmhat
-	to_suit = /obj/item/clothing/under/rank/captain/fluff/harmuniform
-
-//scree:Scree
-/obj/item/modkit_conversion/fluff/screekit
-	name = "Scree's hardsuit modification kit"
-	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
-
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "modkit"
-
-	from_helmet = /obj/item/clothing/head/helmet/space/void
-	from_suit = /obj/item/clothing/suit/space/void
-	to_helmet = /obj/item/clothing/head/helmet/space/void/engineering/hazmat/fluff/screehelm
-	to_suit = /obj/item/clothing/suit/space/void/engineering/hazmat/fluff/screespess
-*/
 
 //General Use
 /obj/item/flag
@@ -1254,6 +1129,7 @@
 		..()
 
 //jacknoir413:Areax Third
+// todo: check sprite, if it matches citmain just integrate this to citrp proper.
 /obj/item/melee/baton/fluff/stunstaff
 	name = "Electrostaff"
 	desc = "Six-foot long staff from dull, rugged metal, with two thin spikes protruding from each end. Small etching near to the middle of it reads 'Children Of Nyx Facilities: Product No. 12'."
