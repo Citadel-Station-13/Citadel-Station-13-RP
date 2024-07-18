@@ -90,7 +90,7 @@
 		return
 	if(embedded_flash.broken)
 		return
-	if(!shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE] & (ATTACK_TYPE_MELEE | ATTACK_TYPE_UNARMED))
+	if(!(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE] & (ATTACK_TYPE_MELEE | ATTACK_TYPE_UNARMED)))
 		return
 	var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
 	var/mob/attacker = clickchain?.performer

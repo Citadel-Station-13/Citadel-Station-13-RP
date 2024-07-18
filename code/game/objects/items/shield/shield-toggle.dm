@@ -52,7 +52,7 @@
  * actor can be /datum/event_args/actor or a single mob.
  */
 /obj/item/shield/toggle/proc/on_activate(datum/event_args/actor/actor, silent)
-	E_ARGS_WRAP_MOB_TO_ACTOR(actor)
+	E_ARGS_WRAP_USER_TO_ACTOR(actor)
 
 	damage_force = VALUE_OR_DEFAULT(active_damage_force, initial(damage_force))
 
@@ -66,7 +66,7 @@
  * actor can be /datum/event_args/actor or a single mob.
  */
 /obj/item/shield/toggle/proc/on_deactivate(datum/event_args/actor/actor, silent)
-	E_ARGS_WRAP_MOB_TO_ACTOR(actor)
+	E_ARGS_WRAP_USER_TO_ACTOR(actor)
 
 	damage_force = VALUE_OR_DEFAULT(inactive_damage_force, initial(damage_force))
 
