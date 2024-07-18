@@ -10,6 +10,9 @@
 /**
  * Called when trying to click something that the user can Reachability() to.
  *
+ * todo: this should allow passing in a clickchain datum instead.
+ * todo: lazy_melee_attack() for when you don't want to.
+ *
  * @params
  * - target - thing hitting
  * - user - user using us
@@ -44,6 +47,9 @@
 
 /**
  * Called when trying to click something that the user can't Reachability() to.
+ *
+ * todo: this should allow passing in a clickchain datum instead.
+ * todo: lazy_ranged_attack() for when you don't want to.
  *
  * @params
  * - target - thing hitting

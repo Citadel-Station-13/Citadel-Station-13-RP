@@ -889,7 +889,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eR" = (
-/obj/item/shield/energy,
+/obj/item/shield/toggle/energy,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eT" = (

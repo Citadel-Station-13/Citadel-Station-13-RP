@@ -262,7 +262,7 @@
 		/obj/item/material/butterfly,
 		/obj/item/material/knife,
 		/obj/item/melee/energy/sword,
-		/obj/item/shield/energy,
+		/obj/item/shield/toggle/energy,
 		/obj/item/ammo_casing/,
 		/obj/item/ammo_magazine/,
 		/obj/item/storage/box/beanbags,

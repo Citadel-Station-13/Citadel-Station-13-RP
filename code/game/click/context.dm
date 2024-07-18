@@ -25,10 +25,14 @@
 		return TRUE
 	return FALSE
 
+/**
+ * @params
+ * * e_args - the actor data or a single mob
+ */
 /atom/proc/context_menu(datum/event_args/actor/e_args)
 	set waitfor = FALSE
 	// admin proccall support
-	WRAP_MOB_TO_ACTOR_EVENT_ARGS(e_args)
+	WRAP_E_ARGS_MOB_TO_ACTOR(e_args)
 	// todo: dynamically rebuild menu based on distance?
 	var/client/receiving = e_args.initiator.client
 	if(isnull(receiving))

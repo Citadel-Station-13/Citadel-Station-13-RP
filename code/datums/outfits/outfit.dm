@@ -264,7 +264,7 @@
 	l_pocket = /obj/item/cell/device/weapon
 	r_pocket = /obj/item/cell/device/weapon
 	r_hand = /obj/item/melee/energy/sword/imperial
-	l_hand = /obj/item/shield/energy/imperial
+	l_hand = /obj/item/shield/toggle/energy/imperial
 	suit_store = /obj/item/gun/energy/imperial
 
 /datum/outfit/imperial/officer
@@ -280,5 +280,5 @@
 	l_pocket = /obj/item/cell/device/weapon
 	r_pocket = /obj/item/cell/device/weapon
 	r_hand = /obj/item/melee/energy/sword/imperial
-	l_hand = /obj/item/shield/energy/imperial
+	l_hand = /obj/item/shield/toggle/energy/imperial
 	suit_store = /obj/item/gun/energy/imperial

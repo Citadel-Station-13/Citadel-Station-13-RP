@@ -9345,12 +9345,12 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/bridge)
 "VF" = (
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,

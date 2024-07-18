@@ -161,7 +161,7 @@
 	attack_edge = 1
 	attacktext = list("slashed")
 
-	loot_list = list(/obj/item/melee/energy/sword = 100, /obj/item/shield/energy = 100)
+	loot_list = list(/obj/item/melee/energy/sword = 100, /obj/item/shield/toggle/energy = 100)
 
 // They have a shield, so they try to block
 /mob/living/simple_mob/humanoid/merc/melee/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)

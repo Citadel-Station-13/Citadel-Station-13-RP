@@ -408,8 +408,8 @@
 				/obj/item/melee/energy/sword,
 				/obj/item/melee/energy/sword,
 				/obj/item/melee/energy/sword,
-				/obj/item/shield/energy,
-				/obj/item/shield/energy,
+				/obj/item/shield/toggle/energy,
+				/obj/item/shield/toggle/energy,
 				/obj/structure/closet/crate/science
 			),
 			prob(1);list(

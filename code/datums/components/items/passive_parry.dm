@@ -85,9 +85,25 @@
 /datum/component/passive_parry/proc/
 
 /datum/component/passive_parry/proc/check_slot(slot_id)
-	return islist(parry_data.parry_slot_id)? (slotid in parry_data.parry_slot_id) : (!parry_data.parry_slot_id || (parry_data.parry_slot_id == slot_id))
+	return islist(parry_data.parry_slot_id)? (slot_id in parry_data.parry_slot_id) : (!parry_data.parry_slot_id || (parry_data.parry_slot_id == slot_id))
 
 #warn impl
+
+//* Item *//
+
+#warn impl
+/**
+ * Called by /datum/component/passive_parry when we're about to start up the parry frame
+ * Called if parry intercept callback isn't set.
+ *
+ * @return parry frame datum to use, or null to cancel
+ */
+/obj/item/proc/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
+	return parry_data.parry_frame
+
+#warn impl
+
+//* Data *//
 
 GLOBAL_LIST_EMPTY(passive_parry_data)
 /**
@@ -105,13 +121,20 @@ GLOBAL_LIST_EMPTY(passive_parry_data)
  */
 /datum/passive_parry
 	/// parry chance for harmful melee: [0, 100]
-	var/parry_chance_melee = 0
+	var/parry_chance_melee
 	/// parry chance for (seemingly) benign melee: [0, 100]
-	var/parry_chance_touch = 0
+	var/parry_chance_touch
 	/// parry chance for inbound projectile: [0, 100]
-	var/parry_chance_projectile = 0
+	var/parry_chance_projectile
 	/// parry chance for inbound throw
-	var/parry_chance_thrown = 0
+	var/parry_chance_thrown
+	/// default parry chance if one of the above is null
+	var/parry_chance_default = 0
+
+	/// passive parry arc
+	var/parry_arc = 180
+	/// passive parry arc should round down for non-projectiles
+	var/parry_arc_round_down = TRUE
 
 	/// valid slot ids; null for all, list for multiple, singular for single
 	var/parry_slot_id = SLOT_ID_HANDS
@@ -131,6 +154,8 @@ GLOBAL_LIST_EMPTY(passive_parry_data)
 	var/parry_frame_efficiency = 1
 	/// if simulated, how far in do we start? [0, infinity]
 	var/parry_frame_timing = 0
+	/// override the parry arc on our parry frame
+	var/parry_frame_set_arc = TRUE
 
 /datum/parry_frame/passive_block
 	parry_can_prevent_contact = TRUE

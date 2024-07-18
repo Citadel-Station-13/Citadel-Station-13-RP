@@ -1362,11 +1362,11 @@
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cM" = (

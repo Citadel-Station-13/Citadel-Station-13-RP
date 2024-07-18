@@ -1842,11 +1842,11 @@
 /area/centcom/specops)
 "fK" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
@@ -4345,11 +4345,11 @@
 /area/centcom/security)
 "nz" = (
 /obj/structure/table/rack,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
-/obj/item/shield/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
+/obj/item/shield/toggle/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,

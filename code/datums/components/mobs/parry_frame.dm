@@ -36,6 +36,11 @@
 	/// * given RP doesn't have combat mode, you should really just keep this at 180
 	/// * realistically the cutoffs are 45, 90, 135, and 180 for anything that's not a projectile as only those sim physics
 	var/parry_arc = 180
+	/// should we round parry arc down for non-projectiles?
+	///
+	/// * this means 179 can't cover behind us
+	/// * this is needed because non-projectiles don't have exact angles
+	var/parry_arc_round_down = TRUE
 
 	/// spinup time
 	///
@@ -129,3 +134,8 @@
 	var/parry_cooldown_user = 0 SECONDS
 	/// is the parry cooldown ignored if a successful parry was made
 	var/parry_cooldown_on_success = FALSE
+
+	/// a sound, or a list of sounds that can be played when we're hit
+	/// list can be weighted by associated number for relative chance
+	var/list/parry_sfx
+	#warn default

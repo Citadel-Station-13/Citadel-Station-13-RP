@@ -47,7 +47,7 @@
 	name = "Weapons - Experimental weapons crate"
 	contains = list(
 			/obj/item/gun/energy/xray = 2,
-			/obj/item/shield/energy = 2)
+			/obj/item/shield/toggle/energy = 2)
 	cost = 100
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Experimental weapons crate"
