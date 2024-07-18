@@ -162,7 +162,8 @@
 		if(electrocute_mob(user, C, src))
 
 			if(C.network)
-				C.network.raise_fault(POWERNET_FAULT_GROUND, 15 SECONDS)
+				var/datum/powernet/powernet = C.network
+				powernet.raise_fault(POWERNET_FAULT_GROUND, 15 SECONDS)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
