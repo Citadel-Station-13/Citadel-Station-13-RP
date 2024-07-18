@@ -91,6 +91,7 @@
 /obj/item/proc/attempt_dynamic_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data = list(), silent, visual_range = 7)
 	. = PAYMENT_NOT_CURRENCY
 	var/list/iterating  = list()
+	// todo: this is all bad. notice how we are calling on the component and not ourselves?
 	SEND_SIGNAL(src, COMSIG_ITEM_DYNAMIC_CURRENCY_QUERY, iterating)
 	if(length(iterating))
 		for(var/datum/D in iterating)

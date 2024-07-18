@@ -1,6 +1,12 @@
 SUBSYSTEM_DEF(supply)
 	name = "Supply"
 	wait = 300
+
+	//* Supply System *//
+
+	/// active supply factions by id
+	var/static/list/supply_faction_lookup
+
 	// Supply Points
 	var/points = 50
 	var/points_per_second = 1.5 / 30
@@ -359,3 +365,36 @@ SUBSYSTEM_DEF(supply)
 			"quantity" = new_quantity,
 			"value" = new_value
 		)
+
+/datum/controller/subsystem/supply/Initialize()
+	init_supply_factions()
+	return ..()
+
+/datum/controller/subsystem/supply/proc/init_supply_factions()
+	#warn impl
+
+/datum/controller/subsystem/supply/proc/register_supply_faction(datum/supply_faction2/faction)
+	ASSERT(!supply_faction_lookup[faction.id])
+	supply_faction_lookup[faction.id] = faction
+	faction.prime()
+
+//* Estimation *//
+
+/**
+ * estimates the value of a typepath or instance
+ *
+ * * /datum/material returns cost per sheet
+ * * /obj/item/stack returns cost per sheet; /obj/item/stack/material can be handled too
+ * * if you put in an instance, it'll have its current worth snapshotted.
+ */
+/datum/controller/subsystem/supply/proc/estimate_worth_of_product(product)
+	if(istype(product, /atom))
+		var/atom/casted_atom = product
+		return casted_atom.worth(GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING)
+	if(ispath(product, /datum/material))
+	else if(ispath(product, /obj/item/stack))
+	else if(ispath(product, /atom/movable))
+		var/atom/movable/default_
+	else
+		CRASH("what?")
+	#warn impl
