@@ -5314,14 +5314,14 @@
 /area/piratebase/captain)
 "Wc" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/melee/energy/sword/pirate{
+/obj/item/melee/transforming/energy/sword/pirate{
 	pixel_x = 5
 	},
-/obj/item/melee/energy/sword/pirate{
+/obj/item/melee/transforming/energy/sword/pirate{
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/melee/energy/sword/pirate{
+/obj/item/melee/transforming/energy/sword/pirate{
 	pixel_x = 5;
 	pixel_y = 10
 	},

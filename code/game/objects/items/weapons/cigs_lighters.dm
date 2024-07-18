@@ -289,8 +289,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-	if(istype(W, /obj/item/melee/energy/sword))
-		var/obj/item/melee/energy/sword/S = W
+	if(istype(W, /obj/item/melee/transforming/energy/sword))
+		var/obj/item/melee/transforming/energy/sword/S = W
 		if(S.active)
 			light("<span class='warning'>[user] swings their [W], barely missing their nose. They light their [name] in the process.</span>")
 
@@ -454,7 +454,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 
 /obj/item/clothing/mask/smokable/pipe/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/melee/energy/sword))
+	if(istype(W, /obj/item/melee/transforming/energy/sword))
 		return
 
 	..()

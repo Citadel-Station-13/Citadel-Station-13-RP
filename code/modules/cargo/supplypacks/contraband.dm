@@ -89,7 +89,7 @@
 	name = "sapper's kit"
 
 /obj/item/storage/box/cargo_null_entry_kit/sapper/legacy_spawn_contents()
-	new /obj/item/melee/energy/sword/ionic_rapier(src)
+	new /obj/item/melee/transforming/energy/sword/ionic_rapier(src)
 	new /obj/item/storage/box/syndie_kit/space(src)
 	new /obj/item/storage/box/syndie_kit/demolitions(src)
 	new /obj/item/multitool/ai_detector(src)

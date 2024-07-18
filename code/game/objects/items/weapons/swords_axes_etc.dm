@@ -38,7 +38,9 @@
 	icon_state = "tonfa"
 	item_state = "tonfa"
 	atom_flags = NOBLOODY
-	defend_chance = 15
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 15;
+	}
 
 //Telescopic baton
 /obj/item/melee/telebaton
@@ -145,11 +147,14 @@
 			)
 	item_state = "armblade"
 	damage_force = 15 // same damage_force as a drill
-	defend_chance = 20 // did you know melee weapons have a default 5% chance to block frontal melee?
 	sharp = TRUE
 	edge = TRUE
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
+
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 20;
+	}
 
 /obj/item/melee/disruptor/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()

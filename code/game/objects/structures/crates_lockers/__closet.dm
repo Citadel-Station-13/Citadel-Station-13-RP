@@ -312,7 +312,7 @@
 			return
 		if(!user.attempt_insert_item_for_installation(I, opened? loc : src))
 			return
-	else if(istype(I, /obj/item/melee/energy/blade))
+	else if(istype(I, /obj/item/melee/transforming/energy/blade))
 		if(emag_act(INFINITY, user, "<span class='danger'>The locker has been sliced open by [user] with \an [I]</span>!", "<span class='danger'>You hear metal being sliced and sparks flying.</span>"))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, loc)

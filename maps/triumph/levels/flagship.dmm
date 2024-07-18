@@ -1390,7 +1390,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1842,17 +1842,17 @@
 /area/centcom/specops)
 "fK" = (
 /obj/structure/table/rack,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4345,17 +4345,17 @@
 /area/centcom/security)
 "nz" = (
 /obj/structure/table/rack,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
-/obj/item/shield/toggle/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
+/obj/item/shield/transforming/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -7450,7 +7450,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8089,7 +8089,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/green,
 /obj/item/clothing/shoes/brown,
-/obj/item/melee/energy/axe,
+/obj/item/melee/transforming/energy/axe,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -10693,7 +10693,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

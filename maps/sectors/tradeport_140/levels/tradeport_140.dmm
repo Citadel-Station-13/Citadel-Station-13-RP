@@ -471,7 +471,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/melee/energy/hfmachete,
+/obj/item/melee/transforming/energy/hfmachete,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "bU" = (

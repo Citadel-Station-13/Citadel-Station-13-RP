@@ -271,7 +271,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "bw" = (
 /obj/structure/table/reinforced,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate1)
 "bx" = (
@@ -889,7 +889,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eR" = (
-/obj/item/shield/toggle/energy,
+/obj/item/shield/transforming/energy,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eT" = (
@@ -930,7 +930,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fa" = (
 /obj/spawner/corpse/syndicatesoldier,
-/obj/item/melee/energy/sword,
+/obj/item/melee/transforming/energy/sword,
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)

@@ -331,14 +331,14 @@
 	id = "chargesword"
 	req_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 4, TECH_ENGINEERING = 5, TECH_ILLEGAL = 4, TECH_ARCANE = 1)
 	materials_base = list(MAT_PLASTEEL = 3500, MAT_GLASS = 1000, MAT_LEAD = 2250, MAT_METALHYDROGEN = 500)
-	build_path = /obj/item/melee/energy/sword/charge
+	build_path = /obj/item/melee/transforming/energy/sword/charge
 
 /datum/design/science/weapon/melee/eaxe
 	design_name = "Energy Axe"
 	id = "chargeaxe"
 	req_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 5, TECH_ENGINEERING = 4, TECH_ILLEGAL = 4)
 	materials_base = list(MAT_PLASTEEL = 3500, MAT_OSMIUM = 2000, MAT_LEAD = 2000, MAT_METALHYDROGEN = 500)
-	build_path = /obj/item/melee/energy/axe/charge
+	build_path = /obj/item/melee/transforming/energy/axe/charge
 
 /datum/design/science/weapon/grenade
 	abstract_type = /datum/design/science/weapon/grenade

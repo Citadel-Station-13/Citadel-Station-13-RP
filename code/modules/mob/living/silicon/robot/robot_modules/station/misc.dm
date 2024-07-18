@@ -37,7 +37,7 @@
 
 /obj/item/robot_module/robot/standard/handle_special_module_init(mob/living/silicon/robot/R)
 	. = ..()
-	src.emag = new /obj/item/melee/energy/sword(src)
+	src.emag = new /obj/item/melee/transforming/energy/sword(src)
 
 /obj/item/robot_module/robot/quad/basic
 	name = "Standard Quadruped module"
@@ -59,4 +59,4 @@
 	. = ..()
 	// These get a larger water synth.
 	synths_by_kind[MATSYN_WATER]:max_energy = 1000
-	src.emag = new /obj/item/melee/energy/sword(src)
+	src.emag = new /obj/item/melee/transforming/energy/sword(src)

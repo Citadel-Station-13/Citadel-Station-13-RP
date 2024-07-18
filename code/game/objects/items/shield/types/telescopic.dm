@@ -1,5 +1,5 @@
 #warn redo sprite; active sprite as _active
-/obj/item/shield/toggle/telescopic
+/obj/item/shield/transforming/telescopic
 	name = "telescopic shield"
 	desc = "An advanced riot shield made of lightweight materials that collapses for easy storage."
 	icon = 'icons/obj/weapons.dmi'
@@ -21,7 +21,7 @@
 	throw_range = 5
 
 #warn parse
-/obj/item/shield/toggle/telescopic/attack_self(mob/user)
+/obj/item/shield/transforming/telescopic/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

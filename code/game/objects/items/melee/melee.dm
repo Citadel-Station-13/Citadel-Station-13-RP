@@ -26,7 +26,10 @@
 	///
 	/// note that the component will not be modified while held;
 	/// if this is changed, the component needs to be remade.
-	var/passive_parry
+	var/passive_parry = /datum/passive_parry{
+		parry_chance_melee = 5;
+	}
+
 
 /obj/item/melee/pickup(mob/user, flags, atom/oldLoc)
 	// we load the component here as it hooks equipped,

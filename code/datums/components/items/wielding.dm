@@ -91,6 +91,9 @@
 
 /datum/component/wielding/proc/offhand_destroyed(obj/item/offhand/wielding/I)
 	unwield()
+
+//* Offhands *//
+
 /obj/item/offhand/wielding
 	name = "wielding offhand"
 	desc = "You shouldn't be able to see this."
@@ -103,7 +106,8 @@
 		host = null
 	return ..()
 
-// item procs
+//* Item Hooks *//
+
 /obj/item/proc/on_wield(mob/user, hands)
 	return
 

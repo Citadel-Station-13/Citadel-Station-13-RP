@@ -15,7 +15,7 @@
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
 		/obj/item/melee/baton,
-		/obj/item/melee/energy/sword,
+		/obj/item/melee/transforming/energy/sword,
 		/obj/item/handcuffs
 	)
 	species_restricted = list(SPECIES_TAJ)
@@ -46,7 +46,7 @@
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
 		/obj/item/melee/baton,
-		/obj/item/melee/energy/sword,
+		/obj/item/melee/transforming/energy/sword,
 		/obj/item/handcuffs
 	)
 	species_restricted = list(SPECIES_TAJ)

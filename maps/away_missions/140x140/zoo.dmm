@@ -73,7 +73,7 @@
 /obj/item/stolenpackage,
 /obj/item/plastique,
 /obj/item/plastique,
-/obj/item/melee/energy/sword/pirate,
+/obj/item/melee/transforming/energy/sword/pirate,
 /turf/space,
 /area/awaymission/zoo)
 "aj" = (

@@ -16,7 +16,7 @@
 		/obj/item/cell/high,
 		/obj/item/card/id/syndicate,
 		/obj/item/multitool,
-		/obj/item/shield/toggle/energy,
+		/obj/item/shield/transforming/energy,
 		/obj/item/clothing/shoes/magboots)
 
 

@@ -1,5 +1,5 @@
 #warn redo sprite; active sprite as _active
-/obj/item/shield/toggle/energy
+/obj/item/shield/transforming/energy
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
 	icon = 'icons/obj/weapons.dmi'
@@ -44,7 +44,7 @@
 	activation_sound = 'sound/weapons/saberon.ogg'
 	deactivation_sound = 'sound/weapons/saberoff.ogg'
 
-/obj/item/shield/toggle/energy/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
+/obj/item/shield/transforming/energy/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	var/weapon = shieldcall_args[SHIELDCALL_ARG_WEAPON]
 	if(istype(weapon, /obj/projectile))
 		var/obj/projectile/casted_projectile = weapon
@@ -60,7 +60,7 @@
 	spark_system.start()
 
 #warn parse
-/obj/item/shield/toggle/energy/attack_self(mob/user)
+/obj/item/shield/transforming/energy/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -72,7 +72,7 @@
 		slot_flags = SLOT_EARS
 		to_chat(user, "<span class='notice'>\The [src] can now be concealed.</span>")
 
-/obj/item/shield/toggle/energy/update_icon()
+/obj/item/shield/transforming/energy/update_icon()
 	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
 	if(lcolor)
 		blade_overlay.color = lcolor
@@ -85,7 +85,7 @@
 		set_light(0)
 		item_state = "[icon_state]"
 
-/obj/item/shield/toggle/energy/AltClick(mob/living/user)
+/obj/item/shield/transforming/energy/AltClick(mob/living/user)
 	if(!in_range(src, user))	//Basic checks to prevent abuse
 		return
 	if(user.incapacitated() || !istype(user))
@@ -97,11 +97,11 @@
 			lcolor = sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1)
 		update_icon()
 
-/obj/item/shield/toggle/energy/examine(mob/user, dist)
+/obj/item/shield/transforming/energy/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
-/obj/item/shield/toggle/energy/imperial
+/obj/item/shield/transforming/energy/imperial
 	name = "energy scutum"
 	desc = "It's really easy to mispronounce the name of this shield if you've only read it in books."
 	icon = 'icons/obj/weapons_vr.dmi'
