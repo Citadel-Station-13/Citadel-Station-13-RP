@@ -51,10 +51,6 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Udang Transport Shuttle"
 
-/area/shuttle/udang
-	name = "Udang Transport Shuttle"
-	icon_state = "shuttle"
-
 /obj/machinery/computer/shuttle_control/explore/trade/udang
 	name = "short jump console"
 	shuttle_tag = "Udang Transport Shuttle"
@@ -78,10 +74,6 @@
 	vessel_mass = 12000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Scoophead trade Shuttle"
-
-/area/shuttle/scoophead
-	name = "Scoophead trade Shuttle"
-	icon_state = "shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/trade/scoophead
 	name = "short jump console"
