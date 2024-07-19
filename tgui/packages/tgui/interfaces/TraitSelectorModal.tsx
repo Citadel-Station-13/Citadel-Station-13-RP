@@ -203,17 +203,19 @@ export const TraitSelectorModal = (_, context) => {
         }
 
         // -- build the actual button. whew! --
-        let selectButton=<Button
-          fluid
-          color="transparent-with-disabling"
-          selected={isSelected}
-          disabled={isDisabled}
-          tooltip={disabledReason}
-          tooltipPosition={"left"}
-          onClick={addRemover(item.internal_name)}
-        >
-          {isDisabled ? (item.forbidden_reason ? "Species" : "Conflict") : (isSelected ? "Deselect" : "Select")}
-        </Button>;
+        let selectButton = (
+          <Button
+            fluid
+            color="transparent-with-disabling"
+            selected={isSelected}
+            disabled={isDisabled}
+            tooltip={disabledReason}
+            tooltipPosition={"left"}
+            onClick={addRemover(item.internal_name)}
+          >
+            {isDisabled ? (item.forbidden_reason ? "Species" : "Conflict") : (isSelected ? "Deselect" : "Select")}
+          </Button>
+        );
 
         itemCards.push(
           <Table.Row>
