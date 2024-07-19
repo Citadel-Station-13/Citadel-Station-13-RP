@@ -5,14 +5,14 @@
 
 //PROSTHETICS
 
-/datum/supply_pack/robotics
+/datum/supply_pack2/robotics
 	group = "Robotics"
 
-/datum/supply_pack/randomised/robotics
+/datum/supply_pack2/randomised/robotics
 	group = "Robotics"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robotics_assembly
+/datum/supply_pack2/robotics/robotics_assembly
 	name = "Robotics assembly crate"
 	contains = list(
 			/obj/item/assembly/prox_sensor = 3,
@@ -25,7 +25,7 @@
 	container_name = "Robotics assembly"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/*/datum/supply_pack/robotics/robolimbs_basic
+/*/datum/supply_pack2/robotics/robolimbs_basic
 	name = "Basic robolimb blueprints"
 	contains = list(
 			/obj/item/disk/limb/morpheus,
@@ -36,7 +36,7 @@
 	container_name = "Robolimb blueprints (basic)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs_adv
+/datum/supply_pack2/robotics/robolimbs_adv
 	name = "All robolimb blueprints"
 	contains = list(
 	/obj/item/disk/limb/bishop,
@@ -53,7 +53,7 @@
 	access = ACCESS_SCIENCE_ROBOTICS
 */
 
-/datum/supply_pack/robotics/robolimbs/morpheus
+/datum/supply_pack2/robotics/robolimbs/morpheus
 	name = "Morpheus robolimb blueprints"
 	contains = list(/obj/item/disk/limb/morpheus)
 	cost = 20
@@ -61,7 +61,7 @@
 	container_name = "Robolimb blueprints (Morpheus)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/antares
+/datum/supply_pack2/robotics/robolimbs/antares
 	name = "Antares robolimb blueprints"
 	contains = list(/obj/item/disk/limb/antares)
 	cost = 20
@@ -69,7 +69,7 @@
 	container_name = "Robolimb blueprints (Antares)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/cybersolutions
+/datum/supply_pack2/robotics/robolimbs/cybersolutions
 	name = "Cyber Solutions robolimb blueprints"
 	contains = list(/obj/item/disk/limb/cybersolutions)
 	cost = 20
@@ -77,7 +77,7 @@
 	container_name = "Robolimb blueprints (Cyber Solutions)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/xion
+/datum/supply_pack2/robotics/robolimbs/xion
 	name = "Xion robolimb blueprints"
 	contains = list(/obj/item/disk/limb/xion)
 	cost = 20
@@ -85,7 +85,7 @@
 	container_name = "Robolimb blueprints (Xion)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/grayson
+/datum/supply_pack2/robotics/robolimbs/grayson
 	name = "Grayson robolimb blueprints"
 	contains = list(/obj/item/disk/limb/grayson)
 	cost = 30
@@ -93,7 +93,7 @@
 	container_name = "Robolimb blueprints (Grayson)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/hephaestus
+/datum/supply_pack2/robotics/robolimbs/hephaestus
 	name = "Hephaestus robolimb blueprints"
 	contains = list(/obj/item/disk/limb/hephaestus)
 	cost = 35
@@ -101,7 +101,7 @@
 	container_name = "Robolimb blueprints (Hephaestus)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/wardtakahashi
+/datum/supply_pack2/robotics/robolimbs/wardtakahashi
 	name = "Ward-Takahashi robolimb blueprints"
 	contains = list(/obj/item/disk/limb/wardtakahashi)
 	cost = 35
@@ -109,7 +109,7 @@
 	container_name = "Robolimb blueprints (Ward-Takahashi)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/zenghu
+/datum/supply_pack2/robotics/robolimbs/zenghu
 	name = "Zeng Hu robolimb blueprints"
 	contains = list(/obj/item/disk/limb/zenghu)
 	cost = 35
@@ -117,7 +117,7 @@
 	container_name = "Robolimb blueprints (Zeng Hu)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/bishop
+/datum/supply_pack2/robotics/robolimbs/bishop
 	name = "Bishop robolimb blueprints"
 	contains = list(/obj/item/disk/limb/bishop)
 	cost = 70
@@ -125,7 +125,7 @@
 	container_name = "Robolimb blueprints (Bishop)"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/robolimbs/cenilimicybernetics
+/datum/supply_pack2/robotics/robolimbs/cenilimicybernetics
 	name = "Cenilimi Cybernetics robolimb blueprints"
 	contains = list(/obj/item/disk/limb/cenilimicybernetics)
 	cost = 45
@@ -135,7 +135,7 @@
 
 //MECHS
 
-/datum/supply_pack/robotics/mecha_ripley
+/datum/supply_pack2/robotics/mecha_ripley
 	name = "Circuit Crate (\"Ripley\" APLU)"
 	contains = list(
 			/obj/item/book/manual/ripley_build_and_repair,
@@ -147,7 +147,7 @@
 	container_name = "APLU \"Ripley\" Circuit Crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/mecha_odysseus
+/datum/supply_pack2/robotics/mecha_odysseus
 	name = "Circuit Crate (\"Odysseus\")"
 	contains = list(
 			/obj/item/circuitboard/mecha/odysseus/peripherals,
@@ -158,7 +158,7 @@
 	container_name = "\"Odysseus\" Circuit Crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/randomised/robotics/exosuit_mod
+/datum/supply_pack2/randomised/robotics/exosuit_mod
 	num_contained = 1
 	contains = list(
 			/obj/random/paintkit,
@@ -171,7 +171,7 @@
 	container_type = /obj/structure/closet/crate/science
 	container_name = "heavy crate"
 
-/datum/supply_pack/randomised/robotics/exosuit_mod/durand
+/datum/supply_pack2/randomised/robotics/exosuit_mod/durand
 	contains = list(
 			/obj/random/paintkit/durand,
 			/obj/random/paintkit/durand,
@@ -179,7 +179,7 @@
 			)
 	name = "Random Durand exosuit modkit"
 
-/datum/supply_pack/randomised/robotics/exosuit_mod/gygax
+/datum/supply_pack2/randomised/robotics/exosuit_mod/gygax
 	contains = list(
 			/obj/random/paintkit/gygax,
 			/obj/random/paintkit/gygax,
@@ -187,7 +187,7 @@
 			)
 	name = "Random Gygax exosuit modkit"
 
-/datum/supply_pack/robotics/jumper_cables
+/datum/supply_pack2/robotics/jumper_cables
 	name = "Jumper kit crate"
 	contains = list(
 			/obj/item/defib_kit/jumper_kit = 2
@@ -197,7 +197,7 @@
 	container_name = "Jumper kit crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/restrainingbolt
+/datum/supply_pack2/robotics/restrainingbolt
 	name = "Restraining bolt crate"
 	contains = list(
 			/obj/item/implanter = 1,
@@ -209,7 +209,7 @@
 	access = ACCESS_SCIENCE_ROBOTICS
 
 
-/datum/supply_pack/robotics/mecha_gopher
+/datum/supply_pack2/robotics/mecha_gopher
 	name = "Circuit Crate (\"Gopher\" APLU)"
 	contains = list(
 			/obj/item/circuitboard/mecha/gopher/main,
@@ -220,7 +220,7 @@
 	container_name = "APLU \"Gopher\" Circuit Crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/mecha_polecat
+/datum/supply_pack2/robotics/mecha_polecat
 	name = "Circuit Crate (\"Polecat\" APLU)"
 	contains = list(
 			/obj/item/circuitboard/mecha/polecat/main,
@@ -232,7 +232,7 @@
 	container_name = "APLU \"Polecat\" Circuit Crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/mecha_weasel
+/datum/supply_pack2/robotics/mecha_weasel
 	name = "Circuit Crate (\"Weasel\" APLU)"
 	contains = list(
 			/obj/item/circuitboard/mecha/weasel/main,
@@ -244,7 +244,7 @@
 	container_name = "APLU \"Weasel\" Circuit Crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/some_robolimbs
+/datum/supply_pack2/robotics/some_robolimbs
 	name = "Basic Robolimb Blueprints"
 	contains = list(
 			/obj/item/disk/limb/morpheus,
@@ -256,7 +256,7 @@
 	container_name = "Basic Robolimb Blueprint Crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack/robotics/all_robolimbs
+/datum/supply_pack2/robotics/all_robolimbs
 	name = "Advanced Robolimb Blueprints"
 	contains = list(
 			/obj/item/disk/limb/bishop,

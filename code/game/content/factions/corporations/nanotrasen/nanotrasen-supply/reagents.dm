@@ -1,57 +1,51 @@
-/datum/supply_pack/chemical_dispenser
-	name = "Reagent dispenser (Empty)"
+/datum/supply_pack2/chemical_dispenser
+	name = "Reagent Synthesizer"
 	contains = list(
-			/obj/item/circuitboard/machine/chemical_dispenser
+			/obj/machinery/chemical_dispenser/full,
 		)
-	cost = 10
 	container_type = /obj/structure/largecrate
 	container_name = "reagent dispenser crate"
 	group = "Reagents"
 
-/datum/supply_pack/beer_dispenser
-	name = "Booze dispenser"
+/datum/supply_pack2/beer_dispenser
+	name = "Booze Synthesizer"
 	contains = list(
-			/obj/machinery/chemical_dispenser/catering/bar_alc/unanchored
-		)
-	cost = 20
+		/obj/machinery/chemical_dispenser/catering/bar_alc/unanchored,
+	)
 	container_type = /obj/structure/largecrate
 	container_name = "booze dispenser crate"
 	group = "Reagents"
 
-/datum/supply_pack/soda_dispenser
-	name = "Soda dispenser"
+/datum/supply_pack2/soda_dispenser
+	name = "Soda Synthesizer"
 	contains = list(
-			/obj/machinery/chemical_dispenser/catering/bar_soft/unanchored
-		)
-	cost = 20
+		/obj/machinery/chemical_dispenser/catering/bar_soft/unanchored,
+	)
 	container_type = /obj/structure/largecrate
 	container_name = "soda dispenser crate"
 	group = "Reagents"
 
-/datum/supply_pack/coffee_dispenser
-	name = "Coffee dispenser"
+/datum/supply_pack2/coffee_dispenser
+	name = "Coffee Synthesizer"
 	contains = list(
-			/obj/machinery/chemical_dispenser/catering/bar_coffee/unanchored
-		)
-	cost = 20
+		/obj/machinery/chemical_dispenser/catering/bar_coffee/unanchored,
+	)
 	container_type = /obj/structure/largecrate
 	container_name = "coffee dispenser crate"
 	group = "Reagents"
 
-/datum/supply_pack/reagent_synth_chemistry
+/datum/supply_pack2/reagent_synth_chemistry
 	name = "Reagent Synthesis Module - Chemistry"
 	contains = list(
 		/obj/item/reagent_synth/chemistry,
 	)
-	cost = 20
 	group = "Reagents"
 
-/datum/supply_pack/dispenser_cartridges
+/datum/supply_pack2/dispenser_cartridges
 	name = "Large Chemical Dispenser Cartridges"
 	contains = list(
 		/obj/item/reagent_containers/cartridge/dispenser/large = 10,
-		)
-	cost = 15
+	)
 	container_type = /obj/structure/closet/crate
 	container_name = "dispenser cartridge crate"
 	group = "Reagents"

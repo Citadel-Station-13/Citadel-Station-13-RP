@@ -4,10 +4,10 @@
 */
 
 
-/datum/supply_pack/hospitality
+/datum/supply_pack2/hospitality
 	group = "Hospitality"
 
-/datum/supply_pack/hospitality/party
+/datum/supply_pack2/hospitality/party
 	name = "Party equipment"
 	contains = list(
 			/obj/item/storage/box/mixedglasses = 2,
@@ -26,7 +26,7 @@
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "Party equipment"
 
-/datum/supply_pack/hospitality/barsupplies
+/datum/supply_pack2/hospitality/barsupplies
 	name = "Bar supplies"
 	contains = list(
 			/obj/item/storage/box/glasses/cocktail,
@@ -46,10 +46,10 @@
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "crate of bar supplies"
 
-/datum/supply_pack/randomised/hospitality/
+/datum/supply_pack2/randomised/hospitality/
 	group = "Hospitality"
 
-/datum/supply_pack/randomised/hospitality/pizza
+/datum/supply_pack2/randomised/hospitality/pizza
 	num_contained = 5
 	contains = list(
 			/obj/item/pizzabox/margherita,
@@ -62,7 +62,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Pizza crate"
 
-/datum/supply_pack/hospitality/gifts
+/datum/supply_pack2/hospitality/gifts
 	name = "Gift crate"
 	contains = list(
 		/obj/item/toy/bouquet = 3,
@@ -76,7 +76,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "crate of gifts"
 
-/datum/supply_pack/randomised/hospitality/burgers
+/datum/supply_pack2/randomised/hospitality/burgers
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/bigbiteburger,
@@ -90,7 +90,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Burger crate"
 
-/datum/supply_pack/randomised/hospitality/bakery
+/datum/supply_pack2/randomised/hospitality/bakery
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/baguette,
@@ -116,7 +116,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Bakery products crate"
 
-/datum/supply_pack/randomised/hospitality/cakes
+/datum/supply_pack2/randomised/hospitality/cakes
 	num_contained = 2
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/sliceable/applecake,
@@ -134,7 +134,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Cake crate"
 
-/datum/supply_pack/randomised/hospitality/mexican
+/datum/supply_pack2/randomised/hospitality/mexican
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/cheeseburrito,
@@ -147,7 +147,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Mexican takeout crate"
 
-/datum/supply_pack/randomised/hospitality/asian
+/datum/supply_pack2/randomised/hospitality/asian
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/generalschicken,
@@ -158,17 +158,17 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Chinese takeout crate"
 
-/datum/supply_pack/randomised/hospitality/pizza
+/datum/supply_pack2/randomised/hospitality/pizza
 	cost = 50
 
-/datum/supply_pack/hospitality/cookingoil
+/datum/supply_pack2/hospitality/cookingoil
 	name = "Tallow tank crate"
 	contains = list(/obj/structure/reagent_dispensers/tallow)
 	cost = 10
 	container_type = /obj/structure/largecrate
 	container_name = "Tallow tank crate"
 
-/datum/supply_pack/hospitality/vampcarepackage
+/datum/supply_pack2/hospitality/vampcarepackage
 	name = "Vetalan Care package"
 	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
 					/obj/item/clothing/under/suit_jacket)
@@ -176,7 +176,7 @@
 	container_type = /obj/structure/closet/coffin/comfy
 	container_name = "Extra comfortable coffin"
 
-/datum/supply_pack/hospitality/moghes
+/datum/supply_pack2/hospitality/moghes
 	name = "Moghes Foodstuffs"
 	contains = list(
 			/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew = 2,

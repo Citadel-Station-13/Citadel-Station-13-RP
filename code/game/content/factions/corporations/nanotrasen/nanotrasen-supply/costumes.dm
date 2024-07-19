@@ -4,33 +4,31 @@
 */
 
 
-/datum/supply_pack/costumes
+/datum/supply_pack2/costumes
 	group = "Costumes"
 
-/datum/supply_pack/randomised/costumes
-	group = "Costumes"
-
-/datum/supply_pack/costumes/wizard
+/datum/supply_pack2/costumes/wizard
 	name = "Wizard costume"
 	contains = list(
-			/obj/item/staff,
-			/obj/item/clothing/suit/wizrobe/fake,
-			/obj/item/clothing/shoes/sandal,
-			/obj/item/clothing/head/wizard/fake
-			)
-	cost = 20
+		/obj/item/staff,
+		/obj/item/clothing/suit/wizrobe/fake,
+		/obj/item/clothing/shoes/sandal,
+		/obj/item/clothing/head/wizard/fake,
+	)
+	worth = 200
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Wizard costume crate"
 
-/datum/supply_pack/costumes/techpriest
+/datum/supply_pack2/costumes/techpriest
 	name = "Tech Priest robes"
 	contains = list(
-		/obj/item/clothing/suit/storage/hooded/techpriest = 2)
-	cost = 150
+		/obj/item/clothing/suit/storage/hooded/techpriest = 2,
+	)
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Tech Priest crate"
 
-/datum/supply_pack/randomised/costumes/hats
+/datum/supply_pack2/randomised/costumes/hats
 	num_contained = 4
 	contains = list(
 			/obj/item/clothing/head/collectable/chef,
@@ -59,7 +57,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Collectable hats crate! Brought to you by Bass.inc!"
 
-/datum/supply_pack/randomised/costumes/costume
+/datum/supply_pack2/randomised/costumes/costume
 	num_contained = 3
 	contains = list(
 			/obj/item/clothing/suit/pirate,
@@ -96,7 +94,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Actor Costumes"
 
-/datum/supply_pack/costumes/formal_wear
+/datum/supply_pack2/costumes/formal_wear
 	contains = list(
 			/obj/item/clothing/head/bowler,
 			/obj/item/clothing/head/that,
@@ -118,7 +116,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Formalwear for the best occasions."
 
-/datum/supply_pack/costumes/witch
+/datum/supply_pack2/costumes/witch
 	name = "Witch costume"
 	container_name = "Witch costume"
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
@@ -130,7 +128,7 @@
 		/obj/item/staff/broom,
 	)
 
-/datum/supply_pack/randomised/costumes/costume_hats
+/datum/supply_pack2/randomised/costumes/costume_hats
 	name = "Costume hats"
 	container_name = "Actor hats crate"
 	container_type = /obj/structure/closet/crate
@@ -155,7 +153,7 @@
 			/obj/item/clothing/head/ushanka
 			)
 
-/datum/supply_pack/randomised/costumes/dresses
+/datum/supply_pack2/randomised/costumes/dresses
 	name = "Womens formal dress locker"
 	container_name = "Pretty dress locker"
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
@@ -175,7 +173,7 @@
 			/obj/item/clothing/under/dress/dress_saloon
 			)
 
-/datum/supply_pack/costumes/xenowear
+/datum/supply_pack2/costumes/xenowear
 	name = "Xenowear crate"
 	contains = list(
 			/obj/item/clothing/shoes/footwraps,
@@ -196,7 +194,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Xenowear crate"
 
-/datum/supply_pack/costumes/tesh_smocks
+/datum/supply_pack2/costumes/tesh_smocks
 	name = "Teshari smocks"
 	contains = list(
 			/obj/item/clothing/under/teshari/smock,
@@ -209,7 +207,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari smocks crate"
 
-/datum/supply_pack/randomised/costumes/tesh_coats
+/datum/supply_pack2/randomised/costumes/tesh_coats
 	name = "Teshari undercoats"
 	num_contained = 4
 	contains = list(
@@ -230,7 +228,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari undercoats crate"
 
-/datum/supply_pack/randomised/costumes/tesh_coats_b
+/datum/supply_pack2/randomised/costumes/tesh_coats_b
 	name = "Teshari undercoats (black)"
 	num_contained = 4
 	contains = list(
@@ -250,7 +248,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari undercoats crate"
 
-/datum/supply_pack/randomised/costumes/tesh_cloaks
+/datum/supply_pack2/randomised/costumes/tesh_cloaks
 	name = "Teshari cloaks"
 	num_contained = 4
 	contains = list(
@@ -270,7 +268,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari cloaks crate"
 
-/datum/supply_pack/randomised/costumes/tesh_cloaks_b
+/datum/supply_pack2/randomised/costumes/tesh_cloaks_b
 	name = "Teshari cloaks (black)"
 	num_contained = 4
 	contains = list(
@@ -290,7 +288,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari cloaks crate"
 
-/datum/supply_pack/costumes/utility
+/datum/supply_pack2/costumes/utility
 	name = "Utility uniforms"
 	contains = list(
 			/obj/item/clothing/under/utility,
@@ -301,7 +299,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Utility uniforms crate"
 
-/datum/supply_pack/costumes/skirts
+/datum/supply_pack2/costumes/skirts
 	name = "Skirts crate"
 	contains = list(
 			/obj/item/clothing/under/skirt,
@@ -320,7 +318,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Skirts crate"
 
-/datum/supply_pack/costumes/varsity
+/datum/supply_pack2/costumes/varsity
 	name = "Varsity jackets"
 	contains = list(
 			/obj/item/clothing/suit/varsity,
@@ -334,7 +332,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Varsity jackets crate"
 
-/datum/supply_pack/randomised/costumes/leathergear
+/datum/supply_pack2/randomised/costumes/leathergear
 	name = "Leather gear"
 	num_contained = 5
 	contains = list(
@@ -365,7 +363,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Leather gear crate"
 
-/datum/supply_pack/costumes/eyewear
+/datum/supply_pack2/costumes/eyewear
 	name = "Eyewear crate"
 	contains = list(
 			/obj/item/clothing/glasses/eyepatch,
@@ -384,7 +382,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Eyewear crate"
 
-/datum/supply_pack/randomised/costumes/gloves
+/datum/supply_pack2/randomised/costumes/gloves
 	name = "Gloves crate"
 	num_contained = 4
 	contains = list(
@@ -408,7 +406,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Gloves crate"
 
-/datum/supply_pack/randomised/costumes/boots
+/datum/supply_pack2/randomised/costumes/boots
 	name = "Boots crate"
 	num_contained = 3
 	contains = list(
@@ -425,7 +423,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Boots crate"
 
-/datum/supply_pack/costumes/taurbags
+/datum/supply_pack2/costumes/taurbags
 	name = "Saddlebags crate"
 	contains = list(
 			/obj/item/storage/backpack/saddlebag_common,
@@ -436,7 +434,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Saddlebags crate"
 
-/datum/supply_pack/costumes/larp
+/datum/supply_pack2/costumes/larp
 	name = "Knight cosplay crate"
 	contains = list(
 			/obj/item/clothing/head/medievalfake/red = 1,
@@ -459,7 +457,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "knight cosplay crate"
 
-/datum/supply_pack/costumes/situlavult_templar
+/datum/supply_pack2/costumes/situlavult_templar
 	name = "Templar cosplay crate"
 	contains = list(
 			/obj/item/clothing/head/medievalfake/crusader/templar,
@@ -470,7 +468,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "templar cosplay crate"
 
-/datum/supply_pack/costumes/situlavult_hospitaller
+/datum/supply_pack2/costumes/situlavult_hospitaller
 	name = "Hospitaller cosplay crate"
 	contains = list(
 			/obj/item/clothing/head/medievalfake/crusader,
@@ -481,7 +479,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "hospitaller cosplay crate"
 
-/datum/supply_pack/costumes/situlavult_teutonic
+/datum/supply_pack2/costumes/situlavult_teutonic
 	name = "Teutonic cosplay crate"
 	contains = list(
 			/obj/item/clothing/head/medievalfake/crusader/horned,

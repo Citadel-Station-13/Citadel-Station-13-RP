@@ -2,10 +2,10 @@
 *	Here is where any supply packs
 *	related to science tasks live
 */
-/datum/supply_pack/sci
+/datum/supply_pack2/sci
 	group = "Science"
 
-/datum/supply_pack/sci/virus
+/datum/supply_pack2/sci/virus
 	name = "Virus sample crate"
 	contains = list(/obj/item/virusdish/random = 4)
 	cost = 25
@@ -13,14 +13,14 @@
 	container_name = "Virus sample crate"
 	access = ACCESS_MEDICAL_CMO
 
-/datum/supply_pack/sci/coolanttank
+/datum/supply_pack2/sci/coolanttank
 	name = "Coolant tank crate"
 	contains = list(/obj/structure/reagent_dispensers/coolanttank)
 	cost = 15
 	container_type = /obj/structure/largecrate
 	container_name = "coolant tank crate"
 
-/datum/supply_pack/sci/phoron
+/datum/supply_pack2/sci/phoron
 	name = "Phoron research crate"
 	contains = list(
 			/obj/item/tank/phoron = 3,
@@ -36,7 +36,7 @@
 	container_name = "Phoron assembly crate"
 	access = ACCESS_SCIENCE_TOXINS
 
-/datum/supply_pack/sci/exoticseeds
+/datum/supply_pack2/sci/exoticseeds
 	name = "Exotic seeds crate"
 	contains = list(
 			/obj/item/seeds/replicapod = 2,
@@ -51,21 +51,21 @@
 	container_name = "Exotic Seeds crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack/sci/integrated_circuit_printer
+/datum/supply_pack2/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"
 	contains = list(/obj/item/integrated_circuit_printer = 2)
 	cost = 15
 	container_type = /obj/structure/closet/crate
 	container_name = "Integrated circuit crate"
 
-/datum/supply_pack/sci/integrated_circuit_printer_upgrade
+/datum/supply_pack2/sci/integrated_circuit_printer_upgrade
 	name = "Integrated circuit printer upgrade - advanced designs"
 	contains = list(/obj/item/disk/integrated_circuit/upgrade/advanced)
 	cost = 30
 	container_type = /obj/structure/closet/crate
 	container_name = "Integrated circuit crate"
 
-/datum/supply_pack/sci/xenoarch
+/datum/supply_pack2/sci/xenoarch
 	name = "Xenoarchaeology Tech crate"
 	contains = list(
 				/obj/item/pickaxe/excavationdrill,
@@ -87,7 +87,7 @@
 	container_name = "Xenoarchaeology Tech crate"
 	access = ACCESS_SCIENCE_MAIN
 
-/datum/supply_pack/sci/jukebox_circuitboard
+/datum/supply_pack2/sci/jukebox_circuitboard
 	name = "Jukebox Circuit Board crate"
 	contains = list(/obj/item/circuitboard/jukebox = 2)
 	cost = 25
@@ -95,14 +95,14 @@
 	container_name = "Jukebox Circuit Board crate"
 
 
-/datum/supply_pack/sci/pred
+/datum/supply_pack2/sci/pred
 	name = "Dangerous Predator crate"
 	cost = 40
 	container_type = /obj/structure/largecrate/animal/pred
 	container_name = "Dangerous Predator crate"
 	access = ACCESS_SCIENCE_XENOBIO
 
-/datum/supply_pack/sci/pred_doom
+/datum/supply_pack2/sci/pred_doom
 	name = "EXTREMELY Dangerous Predator crate"
 	cost = 200
 	container_type = /obj/structure/largecrate/animal/dangerous

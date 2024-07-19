@@ -61,6 +61,10 @@
 	var/worth_intrinsic = 0
 	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
 	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
+	/// default worth flags to use when buying
+	var/worth_buy_flags = GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING
+	/// default worth flags to use when selling
+	var/worth_sell_flags = GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING
 	/**
 	 * * DANGER * - do not touch this variable unless you know what you are doing.
 	 *
