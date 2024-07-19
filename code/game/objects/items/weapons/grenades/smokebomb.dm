@@ -6,6 +6,7 @@
 	det_time = 20
 	item_state = "flashbang"
 	slot_flags = SLOT_BELT
+	worth_intrinsic = 50
 	var/datum/effect_system/smoke_spread/bad/smoke
 	var/smoke_color
 	var/smoke_strength = 8

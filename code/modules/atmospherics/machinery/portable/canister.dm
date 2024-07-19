@@ -10,6 +10,9 @@
 	integrity_max = 300
 	integrity_failure = 100
 	w_class = WEIGHT_CLASS_HUGE
+	materials_base = list(
+		/datum/material/steel::id = 5 * /datum/material/steel::sheet_amount,
+	)
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
 
@@ -41,6 +44,13 @@
 	volume = 1000
 	use_power = USE_POWER_OFF
 	var/update_flag = 0
+
+/obj/machinery/portable_atmospherics/canister/get_containing_worth(flags)
+	. = ..()
+	var/list/gas = air_contents.gas
+	for(var/id in gas)
+		var/datum/gas/gas_datum = global.gas_data.gases[id]
+		. += gas_datum.worth * gas[id]
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
 	name = "Canister: \[N2O\]"

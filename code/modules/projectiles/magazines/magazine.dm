@@ -61,6 +61,11 @@
 	for(var/key in adding)
 		.[key] += adding[key] * shell_amount
 
+/obj/item/ammo_magazine/get_containing_worth(flags)
+	. = ..()
+	var/obj/item/ammo_casing/ammo_casted = ammo_type
+	. += (isnull(initial_ammo)? max_ammo : initial_ammo) * initial(ammo_casted.worth_intrinsic)
+
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = W

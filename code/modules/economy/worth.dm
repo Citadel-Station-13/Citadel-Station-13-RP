@@ -24,11 +24,17 @@
 /atom/proc/get_worth(flags)
 	. = 0
 	if(flags & GET_WORTH_INTRINSIC)
-		. = worth_intrinsic
+		. = get_intrinsic_worth(flags)
 	if(flags & GET_WORTH_MATERIALS)
 		. += get_materials_worth(flags)
 	if(flags & GET_WORTH_CONTAINING)
 		. += get_containing_worth(flags)
+
+/**
+ * estimate our intrinsic worth
+ */
+/atom/proc/get_intrinsic_worth(flags)
+	return worth_intrinsic
 
 /**
  * estimate our raw materials worth
@@ -51,13 +57,13 @@
  */
 /atom/proc/get_containing_worth(flags)
 	. = 0
-	for(var/atom/target as anything in worth_containing(flags))
+	for(var/atom/target as anything in worth_contents(flags))
 		. += target.worth(flags)
 
 /**
  * gets relevant atoms inside us to be checked for containing worth
  */
-/atom/proc/worth_containing(flags)
+/atom/proc/worth_contents(flags)
 	return list()
 
 /**
@@ -68,46 +74,3 @@
 /atom/proc/worth_provider()
 	RETURN_TYPE(/atom)
 	return src
-
-/**
- * estimate a typepath's worth
- *
- * @params
- * * path - typepath to estimate
- * * flags - see [code/__DEFINES/economy/worth.dm]
- *
- * @return worth as number or null if unable
- */
-/proc/get_worth_static(path, flags = GET_WORTH_DEFAULT)
-	var/atom/fetching = path
-	if(initial(fetching.worth_dynamic))
-		return null
-	. = initial(fetching.worth_intrinsic)
-	. += get_materials_worth_static(path, flags)
-	. += get_containing_worth_static(path, flags)
-
-/**
- * estimates a typepath's raw materials worth
- *
- * @params
- * * path - typepath to estimate
- * * flags - see [code/__DEFINES/economy/worth.dm]
- *
- * @return worth as number or null if unable
- */
-/proc/get_materials_worth_static(path, flags)
-	var/atom/fetching = path
-	return initial(fetching.worth_materials)
-
-/**
- * estimates a typepath's contents worth
- *
- * @params
- * * path - typepath to estimate
- * * flags - see [code/__DEFINES/economy/worth.dm]
- *
- * @return worth as number or null if unable
- */
-/proc/get_containing_worth_static(path, flags)
-	var/atom/fetching = path
-	return initial(fetching.worth_containing)

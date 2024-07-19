@@ -176,19 +176,23 @@
 	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
-	//* Economy
+	//* Stacking *//
+	/// amount per sheet / whatever
+	var/sheet_amount = SHEET_MATERIAL_AMOUNT
+
+	//* Economy *//
 	/// Raw worth per cm3
 	var/worth = 0
 	/// economic category for this
 	var/economic_category_material = ECONOMIC_CATEGORY_MATERIAL_DEFAULT
 
-	//* Sounds
+	//* Sounds *//
 	/// melee sound on blunt force - getsfx compatible
 	var/sound_melee_brute = 'sound/weapons/smash.ogg'
 	/// melee sound on burn damage - getsfx compatible
 	var/sound_melee_burn = 'sound/items/Welder.ogg'
 
-	//* TGUI
+	//* TGUI *//
 	/// tgui icon key in icons/interface/materials.dm
 	var/tgui_icon_key = "unknown"
 

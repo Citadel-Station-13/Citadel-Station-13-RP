@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
@@ -11,8 +9,8 @@
 	use_old_icon_update = TRUE
 	depth_level = 8
 	armor_type = /datum/armor/object/medium
+	worth_intrinsic = 100
 	var/points_per_crate = 5
-//	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
 
 /obj/structure/closet/crate/CanPass(atom/movable/AM, turf/T)
@@ -520,6 +518,7 @@
 	icon_state = "largemetalsecure"
 	redlight = "largemetalr"
 	greenlight = "largemetalg"
+	worth_intrinsic = 200
 	//closet_appearance = /singleton/closet_appearance/large_crate/secure
 
 

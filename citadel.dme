@@ -1049,7 +1049,6 @@
 #include "code\game\content\enigmas\unsorted\deadringer.dm"
 #include "code\game\content\enigmas\unsorted\telecube.dm"
 #include "code\game\content\factions\corporations\corporation.dm"
-#include "code\game\content\factions\corporations\nanotrasen\faction.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\recreation.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\robotics.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\science.dm"

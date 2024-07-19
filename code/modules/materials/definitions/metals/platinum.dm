@@ -8,6 +8,8 @@
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "ingots"
 
+	worth = 5
+
 	relative_integrity = 0.8
 	weight_multiplier = 1
 	density = 8 * 1.75

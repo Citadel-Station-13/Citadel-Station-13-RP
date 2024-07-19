@@ -8,6 +8,8 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "metal"
 
+	worth = 1.5
+
 	// the true neutral material
 
 	relative_integrity = 1
@@ -90,7 +92,7 @@
 	. += create_stack_recipe_datum(
 		name = "canister",
 		product = /obj/machinery/portable_atmospherics/canister,
-		cost = 10,
+		cost = 5,
 		time = 1 SECONDS,
 	)
 	. += create_stack_recipe_datum(

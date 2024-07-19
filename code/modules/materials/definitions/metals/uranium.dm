@@ -10,6 +10,8 @@
 	door_icon_base = "stone"
 	tgui_icon_key = "uranium"
 
+	worth = 3
+
 	relative_integrity = 1.2
 	weight_multiplier = 1
 	density = 8 * 2.25

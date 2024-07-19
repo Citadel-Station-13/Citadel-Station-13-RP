@@ -29,6 +29,7 @@
 	max_combined_volume = STORAGE_VOLUME_BOX
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+	worth_intrinsic = 25
 
 	/// dynamic state support
 	var/dynamic_state = TRUE

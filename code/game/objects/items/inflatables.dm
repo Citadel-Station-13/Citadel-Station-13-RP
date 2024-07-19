@@ -4,6 +4,7 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_wall"
 	w_class = WEIGHT_CLASS_NORMAL
+	worth_intrinsic = 35
 	var/deploy_path = /obj/structure/inflatable
 
 /obj/item/inflatable/attack_self(mob/user)
@@ -38,6 +39,7 @@
 	desc = "A folded membrane which rapidly expands into a simple door on activation."
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_door"
+	worth_intrinsic = 50
 	deploy_path = /obj/structure/inflatable/door
 
 /obj/item/inflatable/torn
@@ -70,12 +72,8 @@
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 	insertion_whitelist = list(/obj/item/inflatable)
 
-/obj/item/storage/briefcase/inflatable/legacy_spawn_contents()
-	. = ..()
-	new /obj/item/inflatable/door(src)
-	new /obj/item/inflatable/door(src)
-	new /obj/item/inflatable/door(src)
-	new /obj/item/inflatable(src)
-	new /obj/item/inflatable(src)
-	new /obj/item/inflatable(src)
-	new /obj/item/inflatable(src)
+	starts_with = list(
+		/obj/item/inflatable = 4,
+		/obj/item/inflatable/door = 3,
+	)
+

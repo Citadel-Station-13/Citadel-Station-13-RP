@@ -7,6 +7,8 @@
 
 	gas_flags = GAS_FLAG_FUEL
 
+	worth = 2
+
 //The following is partially stolen from Nebula
 //I am not rewriting our handling of air for this, at least for now.
 /datum/gas/helium
@@ -16,6 +18,8 @@
 	molar_mass = 1000 * 0.004
 
 	gas_flags = GAS_FLAG_FUSION_FUEL
+
+	worth = 2
 
 /datum/gas/carbon_monoxide
 	id = GAS_ID_CARBON_MONOXIDE
@@ -28,6 +32,8 @@
 	//gas_symbol = "CO"
 	//taste_description = "stale air"
 	//metabolism = 0.05 // As with helium.
+
+	worth = 2
 
 /datum/gas/methyl_bromide
 	id = GAS_ID_METHYL_BROMIDE
@@ -43,6 +49,8 @@
 	)
 	value = 0.25*/
 
+	worth = 2
+
 /datum/gas/nitrodioxide
 	id = GAS_ID_NITROGEN_DIOXIDE
 	name = "Nitrogen Dioxide"
@@ -53,6 +61,8 @@
 	//gas_symbol_html = "NO<sub>2</sub>"
 	//gas_symbol = "NO2"
 
+	worth = 2
+
 /datum/gas/nitricoxide
 	id = GAS_ID_NITRIC_OXIDE
 	name = "Nitric Oxide"
@@ -62,6 +72,8 @@
 	//gas_symbol_html = "NO"
 	//gas_symbol = "NO"
 
+	worth = 2
+
 /datum/gas/methane
 	id = GAS_ID_METHANE
 	name = "Methane"
@@ -70,6 +82,8 @@
 	gas_flags = GAS_FLAG_FUEL
 	//gas_symbol_html = "CH<sub>4</sub>"
 	//gas_symbol = "CH4"
+
+	worth = 2
 
 /datum/gas/argon
 	id = GAS_ID_ARGON
@@ -81,6 +95,8 @@
 	//gas_symbol = "Ar"
 	//value = 0.25
 
+	worth = 2
+
 // If narcosis is ever simulated, krypton has a narcotic potency seven times greater than regular airmix.
 /datum/gas/krypton
 	id = GAS_ID_KRYPTON
@@ -91,6 +107,8 @@
 	//gas_symbol = "Kr"
 	//value = 0.25
 
+	worth = 2
+
 /datum/gas/neon
 	id = GAS_ID_NEON
 	name = "Neon"
@@ -99,6 +117,8 @@
 	//gas_symbol_html = "Ne"
 	//gas_symbol = "Ne"
 	//value = 0.25
+
+	worth = 2
 
 /datum/gas/ammonia
 	id = GAS_ID_AMMONIA
@@ -115,6 +135,8 @@
 	//metabolism = REM * 0.5
 	//overdose = 5
 
+	worth = 2
+
 /datum/gas/xenon
 	id = GAS_ID_XENON
 	name = "Xenon"
@@ -123,6 +145,8 @@
 	//gas_symbol_html = "Xe"
 	//gas_symbol = "Xe"
 	//value = 0.25
+
+	worth = 2
 
 /datum/gas/chlorine
 	id = GAS_ID_CHLORINE
@@ -146,6 +170,8 @@
 	gas_reagent_amount = 1
 	gas_reagent_threshold = 0.5
 
+	worth = 2
+
 /datum/gas/sulfur_dioxide
 	id = GAS_ID_SULFUR_DIOXIDE
 	name = "Sulfur Dioxide"
@@ -158,6 +184,8 @@
 		/singleton/material/gas/oxygen = 0.5
 	)*/
 
+	worth = 2
+
 /datum/gas/tritium
 	id = GAS_ID_TRITIUM
 	name = "Tritium"
@@ -168,6 +196,8 @@
 	value = 0.45
 	gas_symbol_html = "T"
 	gas_symbol = "T"*/
+
+	worth = 2
 
 /datum/gas/deuterium
 	id = GAS_ID_DEUTERIUM
@@ -190,6 +220,8 @@
 	neutron_absorption = 5
 	neutron_cross_section = 3*/
 
+	worth = 2
+
 //Special gas type that are very powerful and shouldnt be avaiable in large portions
 /datum/gas/vimur
 	id = GAS_ID_VIMUR
@@ -199,3 +231,5 @@
 
 	visual_overlay = "vimur"
 	visual_threshold = 0.1
+
+	worth = 3

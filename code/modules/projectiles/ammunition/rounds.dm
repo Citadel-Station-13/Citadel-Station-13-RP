@@ -385,11 +385,13 @@
 	icon_state = "rifle-casing"
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	materials_base = list(MAT_STEEL = 200)
+	worth_intrinsic = 20
 
 /obj/item/ammo_casing/a762/ap
 	desc = "A 7.62mm armor-piercing bullet casing."
 	projectile_type = /obj/projectile/bullet/rifle/a762/ap
 	materials_base = list(MAT_STEEL = 300)
+	worth_intrinsic = 30
 
 /obj/item/ammo_casing/a762/practice
 	desc = "A 7.62mm practice bullet casing."
@@ -401,6 +403,7 @@
 	desc = "A blank 7.62mm bullet casing."
 	projectile_type = /obj/projectile/bullet/blank
 	materials_base = list(MAT_STEEL = 90)
+	worth_intrinsic = 5
 
 /obj/item/ammo_casing/a762/hp
 	desc = "A 7.62mm hollow-point bullet casing."

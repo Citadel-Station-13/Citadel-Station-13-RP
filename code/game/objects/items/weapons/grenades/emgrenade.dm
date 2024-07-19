@@ -3,6 +3,7 @@
 	icon_state = "emp"
 	item_state = "empgrenade"
 	origin_tech = list(TECH_MATERIAL = 2, TECH_MAGNET = 3)
+	worth_intrinsic = 100
 	var/emp_heavy = 2
 	var/emp_med = 4
 	var/emp_light = 7
@@ -18,6 +19,7 @@
 	name = "low yield emp grenade"
 	desc = "A weaker variant of the EMP grenade"
 	icon_state = "lyemp"
+	worth_intrinsic = 50
 	origin_tech = list(TECH_MATERIAL = 2, TECH_MAGNET = 3)
 	emp_heavy = 1
 	emp_med = 2

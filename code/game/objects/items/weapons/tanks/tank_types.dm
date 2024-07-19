@@ -142,6 +142,7 @@
 	damage_force = 4
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	volume = 2 //Tiny. Real life equivalents only have 21 breaths of oxygen in them. They're EMERGENCY tanks anyway -errorage (dangercon 2011)
+	worth_intrinsic = 25
 
 /obj/item/tank/emergency/oxygen
 	name = "emergency oxygen tank"
@@ -167,6 +168,7 @@
 	icon_state = "emergency_engi"
 	volume = 6
 	gauge_cap = 3
+	worth_intrinsic = 50
 
 /obj/item/tank/emergency/oxygen/double
 	name = "double emergency oxygen tank"
@@ -175,6 +177,7 @@
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
 	gauge_cap = 3
+	worth_intrinsic = 75
 
 /obj/item/tank/stasis/oxygen // Stasis bags need to have initial pressure within safe bounds for human atmospheric pressure (NOT breath pressure)
 	name = "stasis oxygen tank"

@@ -5,6 +5,8 @@
 	stack_type = /obj/item/stack/material/copper
 	tgui_icon_key = "copper"
 
+	worth = 2
+
 	relative_integrity = 0.8
 	density = 8 * 0.9
 	relative_conductivity = 0.9

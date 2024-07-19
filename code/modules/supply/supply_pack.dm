@@ -15,10 +15,14 @@
 	/// flags
 	var/supply_pack_flags = NONE
 
-	/// raw worth of everything in container
+	/// raw worth of everything in pack
 	///
 	/// * if null, it will be autodetected.
 	var/worth
+	/// raw worth of non-deterministic parts of pack
+	///
+	/// * required for non-deterministic packs if you don't want to hard-set worth
+	var/worth_additional
 
 	//* Container *//
 
@@ -44,7 +48,7 @@
 	/// contains some amount of these entity descriptor groups
 	///
 	/// * this should be a list of lists with "entities", "amount" as keys
-	/// * "entities" should be associated to a list of entities as per [contains]
+	/// * "entities" should be associated to a list of entities as per [contains]; the entity can be associated to a number for weight
 	/// * "amount" should be associated to a random amount of them to spawn
 	/// * amount will be distrbuted randomly as needed, evenly, across the entities.
 	var/list/contains_some
@@ -54,18 +58,11 @@
 	#warn contains, contains_some_of
 
 	//* legacy *//
-	var/legacy_cost = 5
+	/// if null, it will be auto-converted from worth
+	var/legacy_cost
 	var/legacy_contraband = FALSE
-
-/datum/supply_pack2/New(name, category, worth, flags)
-	if(!isnull(name))
-		src.name = name
-	if(!isnull(category))
-		src.category = category
-	if(!isnull(worth))
-		src.worth = worth
-	if(!isnull(flags))
-		src.supply_pack_flags = flags
+	/// literally just a flag so the subsystem picks it up
+	var/legacy = FALSE
 
 /**
  * **Always call this before using it!**
@@ -78,32 +75,33 @@
 		worth = detect_worth()
 		if(!worth)
 			stack_trace("pack [src] ([type]) failed to detect worth.")
+	// legacy
+	if(isnull(legacy_cost))
+		legacy_cost = ceil(worth * 0.02)
 
 /datum/supply_pack2/proc/detect_worth()
-	CRASH("abstract proc called")
-
-// todo: instantiation
-
-/**
- * standard supply pack
- *
- * has a list of things to spawn, and spawns it.
- */
-/datum/supply_pack2/standard
-	/// list of typepaths associated to count
-	///
-	/// * if, /datum/material, count is handled as stack amount
-	/// * if, /obj/item/stack, count is handled as stack amount
-	/// * if an instance, count will be number of times to clone it with clone(TRUE).
-	var/list/contains = list()
-
-/datum/supply_pack2/standard/New(name, worth, list/contains)
-	if(!isnull(contains))
-		src.contains = contains.Copy()
-	..()
-
-/datum/supply_pack2/standard/detect_worth()
 	. = 0
-	for(var/path in contains)
-		var/amount = contains[path]
-		. += SSsupply.estimate_worth_of_product(path) * amount
+
+	// if non-deterministic, must need that
+	if(length(contains_some) || length(contains_custom_text))
+		if(isnull(worth_additional))
+			. = INFINITY
+			CRASH("attempted to generate worth on a non-deterministic crate (has contains_some or contains_custom_text); fix this.")
+		. += worth_additional
+
+	// container
+	if(container_type)
+		. += SSsupply.value_entity_via_descriptor(container_type)
+
+	// deterministic contents
+	for(var/descriptor as anything in contains)
+		var/amount = contains[descriptor]
+		var/worth
+		if(islist(descriptor))
+			var/list/descriptor_list = descriptor
+			#warn impl
+		else
+			worth = SSsupply.value_entity_via_descriptor(descriptor)
+		. += worth * amount
+
+#warn instantiation

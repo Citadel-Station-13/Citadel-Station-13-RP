@@ -9,6 +9,8 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "titanium"
 
+	worth = 3
+
 	relative_integrity = 1
 	density = 8 * 0.5
 	relative_conductivity = 1.27

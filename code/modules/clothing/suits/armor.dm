@@ -316,6 +316,7 @@
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
+	worth_intrinsic = 100
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"

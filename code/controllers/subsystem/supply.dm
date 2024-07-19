@@ -57,6 +57,8 @@ SUBSYSTEM_DEF(supply)
 
 	for(var/typepath in subtypesof(/datum/supply_pack))
 		var/datum/supply_pack/P = new typepath()
+		if(!P.legacy)
+			continue
 		legacy_supply_packs[P.name] = P
 		legacy_supply_categories[P.category] = TRUE
 	return ..()
@@ -366,26 +368,7 @@ SUBSYSTEM_DEF(supply)
 
 //* Estimation *//
 
-/**
- * estimates the value of a typepath or instance
- *
- * * /datum/material returns cost per sheet
- * * /obj/item/stack returns cost per sheet; /obj/item/stack/material can be handled too
- * * if you put in an instance, it'll have its current worth snapshotted.
- */
-/datum/controller/subsystem/supply/proc/estimate_worth_of_product(product)
-	if(istype(product, /atom))
-		var/atom/casted_atom = product
-		return casted_atom.worth(GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING)
-	if(ispath(product, /datum/material))
-	else if(ispath(product, /obj/item/stack))
-	else if(ispath(product, /atom/movable))
-		var/atom/movable/default_
-	else
-		CRASH("what?")
-	#warn impl
-
-//* Instantiation *//
+//* Entity Descriptors *//
 
 /**
  * Resolves an entity descriptor, and instantiates it
@@ -428,5 +411,12 @@ SUBSYSTEM_DEF(supply)
  * @return string
  */
 /datum/contrller/subsystem/supply/proc/describe_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
+
+/**
+ * Resolves an entity descriptor, and estimates its worth
+ *
+ * @return number (thalers)
+ */
+/datum/contrller/subsystem/supply/proc/value_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
 
 #warn impl

@@ -12,6 +12,8 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "durasteel"
 
+	worth = 10
+
 	relative_integrity = 2
 	density = 8 * 2.5
 	relative_conductivity = 0.3

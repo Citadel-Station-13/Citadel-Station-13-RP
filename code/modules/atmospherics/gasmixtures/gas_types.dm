@@ -12,6 +12,10 @@
 	/// gas group - flag
 	var/gas_groups = GAS_GROUP_OTHER
 
+	//* Economy *//
+	/// cost in thaler per mol
+	var/worth = 0
+
 	//* physics
 	/// Specific heat in J/(mol*K).
 	/// For chemicals that exist in real life this is the specific heat value under constant volume.
