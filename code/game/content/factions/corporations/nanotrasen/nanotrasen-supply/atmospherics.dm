@@ -59,7 +59,7 @@
 	name = "Phoron gas canister"
 	container_name = "Phoron gas canister crate"
 	container_type = /obj/structure/closet/crate/secure/large
-	access = ACCESS_ENGINEERING_ATMOS
+	container_access = ACCESS_ENGINEERING_ATMOS
 	contains = list(
 		/obj/machinery/portable_atmospherics/canister/phoron,
 	)

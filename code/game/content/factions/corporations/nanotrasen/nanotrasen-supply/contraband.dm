@@ -5,8 +5,6 @@
 
 // todo: wow this sucks
 /datum/supply_pack2/contraband
-	num_contained = 5
-	#warn uh
 	contains_some = list(
 		list(
 			"amount" = 5,
@@ -26,7 +24,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Unlabeled crate"
 	legacy_contraband = 1
-	group = "Supplies"
+	cateogry = "Supplies"
 
 /datum/supply_pack2/security/specialops
 	name = "Special Ops supplies"
@@ -48,7 +46,7 @@
     legacy_contraband = 1
     container_type = /obj/structure/closet/crate/secure/weapon
     container_name = "Ballistic weapons crate"
-    access = ACCESS_SECURITY_ARMORY
+    container_access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack2/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
@@ -152,7 +150,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "shadier crate"
 	legacy_contraband = 1
-	group = "Supplies"
+	category = "Supplies"
 
 /datum/supply_pack2/supply/medieval
 	name = "Knight set crate"
@@ -237,4 +235,4 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "dented mining crate"
 	legacy_contraband = 1
-	group = "Materials"
+	category = "Materials"
