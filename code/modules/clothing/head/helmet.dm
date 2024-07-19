@@ -335,6 +335,7 @@
 	desc = "Safety gear designed to protect the head from impacts. It's a bit dorky."
 	icon_state = "sport"
 	armor_type = /datum/armor/head/hardhat
+	worth_intrinsic = 75
 
 	color = "#ffffff"
 

@@ -5,6 +5,8 @@
 #define GET_WORTH_MATERIALS (1<<1)
 /// consider value of what's inside the item
 #define GET_WORTH_CONTAINING (1<<2)
+/// currently using get worth to detect entity buy price for something like supply
+#define GET_WORTH_DETECTING_PRICE (1<<3)
 
 /// default flags for /atom/proc/get_worth
 #define GET_WORTH_DEFAULT (GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING)

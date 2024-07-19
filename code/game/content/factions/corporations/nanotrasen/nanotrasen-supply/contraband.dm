@@ -4,7 +4,7 @@
 */
 
 // todo: wow this sucks
-/datum/supply_pack2/contraband
+/datum/supply_pack2/nanotrasen/contraband
 	contains_some = list(
 		list(
 			"amount" = 5,
@@ -24,9 +24,9 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Unlabeled crate"
 	legacy_contraband = 1
-	cateogry = "Supplies"
+	category = "Supplies"
 
-/datum/supply_pack2/security/specialops
+/datum/supply_pack2/nanotrasen/security/specialops
 	name = "Special Ops supplies"
 	contains = list(
 			/obj/item/storage/box/emps,
@@ -37,7 +37,7 @@
 	container_name = "Special Ops crate"
 	legacy_contraband = 1
 
-/datum/supply_pack2/munitions/bolt_rifles_militia
+/datum/supply_pack2/nanotrasen/munitions/bolt_rifles_militia
     name = "Weapon - Misplaced militia rifles"
     contains = list(
 		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
@@ -48,7 +48,7 @@
     container_name = "Ballistic weapons crate"
     container_access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
+/datum/supply_pack2/nanotrasen/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
 	contains_some = list(
 		list(
@@ -126,7 +126,7 @@
 	new /obj/item/material/knife/tacknife/combatknife(src)
 	new /obj/item/clothing/mask/balaclava(src)
 
-/datum/supply_pack2/supply/stolen
+/datum/supply_pack2/nanotrasen/supply/stolen
 	name = "Stolen Supply Crate"
 	contains = list(
 		/obj/item/stolenpackage = 1,
@@ -135,7 +135,7 @@
 	container_name = "shady crate"
 	legacy_contraband = 1
 
-/datum/supply_pack2/stolenplus
+/datum/supply_pack2/nanotrasen/stolenplus
 	name = "Bulk Stolen Supply Crate"
 	contains_some = list(
 		list(
@@ -152,7 +152,7 @@
 	legacy_contraband = 1
 	category = "Supplies"
 
-/datum/supply_pack2/supply/medieval
+/datum/supply_pack2/nanotrasen/supply/medieval
 	name = "Knight set crate"
 	contains = list(
 		/obj/item/clothing/head/helmet/medieval/red = 1,
@@ -168,7 +168,7 @@
 	container_name = "knight set crate"
 	legacy_contraband = 1
 
-/datum/supply_pack2/supply/deusvult_templar
+/datum/supply_pack2/nanotrasen/supply/deusvult_templar
 	name = "Templar set crate"
 	contains = list(
 		/obj/item/clothing/head/helmet/medieval/crusader/templar,
@@ -179,7 +179,7 @@
 	container_name = "templar armor crate"
 	legacy_contraband = 1
 
-/datum/supply_pack2/supply/deusvult_hospitaller
+/datum/supply_pack2/nanotrasen/supply/deusvult_hospitaller
 	name = "Hospitaller set crate"
 	contains = list(
 		/obj/item/clothing/head/helmet/medieval/crusader,
@@ -190,7 +190,7 @@
 	container_name = "hospitaller armor crate"
 	legacy_contraband = 1
 
-/datum/supply_pack2/supply/deusvult_teutonic
+/datum/supply_pack2/nanotrasen/supply/deusvult_teutonic
 	name = "Teutonic set crate"
 	contains = list(
 		/obj/item/clothing/head/helmet/medieval/crusader/horned,
@@ -204,7 +204,7 @@
 	container_name = "teutonic armor crate"
 	legacy_contraband = 1
 
-/datum/supply_pack2/robotics/salvage
+/datum/supply_pack2/nanotrasen/robotics/salvage
 	name = "Redirected Mech Salvage"
 	contains = list(
 		/obj/item/mechasalvage = 6,
@@ -213,7 +213,7 @@
 	container_name = "oil-stained crate"
 	legacy_contraband = 1
 
-/datum/supply_pack2/material/rareores
+/datum/supply_pack2/nanotrasen/material/rareores
 	name = "Smuggled Ores and Materials"
 	contains_some = list(
 		list(

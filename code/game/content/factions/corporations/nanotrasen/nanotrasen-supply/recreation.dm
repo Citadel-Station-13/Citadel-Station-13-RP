@@ -4,14 +4,10 @@
 */
 
 
-/datum/supply_pack2/recreation
+/datum/supply_pack2/nanotrasen/recreation
 	group = "Recreation"
 
-/datum/supply_pack2/randomised/recreation
-	group = "Recreation"
-	access = ACCESS_SECURITY_EQUIPMENT
-
-/datum/supply_pack2/recreation/foam_weapons
+/datum/supply_pack2/nanotrasen/recreation/foam_weapons
 	name = "Foam Weapon Crate"
 	contains = list(
 			/obj/item/material/sword/foam = 2,
@@ -23,7 +19,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "foam weapon crate"
 
-/datum/supply_pack2/recreation/lasertag
+/datum/supply_pack2/nanotrasen/recreation/lasertag
 	name = "Lasertag equipment"
 	contains = list(
 			/obj/item/gun/energy/lasertag/red,
@@ -35,7 +31,7 @@
 	container_name = "Lasertag Closet"
 	cost = 10
 
-/datum/supply_pack2/recreation/artscrafts
+/datum/supply_pack2/nanotrasen/recreation/artscrafts
 	name = "Arts and Crafts supplies"
 	contains = list(
 			/obj/item/storage/fancy/crayons,
@@ -58,7 +54,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Arts and Crafts crate"
 
-/datum/supply_pack2/recreation/painters
+/datum/supply_pack2/nanotrasen/recreation/painters
 	name = "Station Painting Supplies"
 	cost = 10
 	container_name = "station painting supplies crate"
@@ -68,7 +64,7 @@
 			/obj/item/floor_painter = 2
 			)
 
-/datum/supply_pack2/recreation/cheapbait
+/datum/supply_pack2/nanotrasen/recreation/cheapbait
 	name = "Cheap Fishing Bait"
 	cost = 10
 	container_name = "cheap bait crate"
@@ -77,7 +73,7 @@
 			/obj/item/storage/box/wormcan/sickly = 5
 			)
 
-/datum/supply_pack2/randomised/recreation/cheapbait
+/datum/supply_pack2/nanotrasen/randomised/recreation/cheapbait
 	name = "Deluxe Fishing Bait"
 	cost = 40
 	container_name = "deluxe bait crate"
@@ -88,7 +84,7 @@
 			/obj/item/storage/box/wormcan/deluxe
 			)
 
-/datum/supply_pack2/recreation/ltagturrets
+/datum/supply_pack2/nanotrasen/recreation/ltagturrets
 	name = "Laser Tag Turrets"
 	cost = 40
 	container_name = "laser tag turret crate"
@@ -98,7 +94,7 @@
 			/obj/machinery/porta_turret/lasertag/red
 			)
 
-/datum/supply_pack2/recreation/jukebox
+/datum/supply_pack2/nanotrasen/recreation/jukebox
 	name = "Jukebox crate"
 	cost = 50
 	container_name = "Jukebox crate"
@@ -106,7 +102,7 @@
 	contains = list (/obj/machinery/media/jukebox = 1)
 
 
-/datum/supply_pack2/recreation/restraints
+/datum/supply_pack2/nanotrasen/recreation/restraints
 	name = "Recreational Restraints"
 	contains = list(
 			/obj/item/clothing/mask/muzzle,
@@ -125,7 +121,7 @@
 	container_name = "Restraints crate"
 	cost = 30
 
-/datum/supply_pack2/recreation/wolfgirl_cosplay_crate
+/datum/supply_pack2/nanotrasen/recreation/wolfgirl_cosplay_crate
 	name = "Wolfgirl Cosplay Crate"
 	contains = list(
 			/obj/item/clothing/head/fluff/wolfgirl = 1,
@@ -138,7 +134,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "wolfgirl cosplay crate"
 
-/datum/supply_pack2/randomised/recreation/figures
+/datum/supply_pack2/nanotrasen/randomised/recreation/figures
 	name = "Action figures crate"
 	num_contained = 5
 	contains = list(
@@ -148,7 +144,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Action figures crate"
 
-/datum/supply_pack2/recreation/characters
+/datum/supply_pack2/nanotrasen/recreation/characters
 	name = "Tabletop miniatures"
 	contains = list(
 			/obj/item/storage/box/characters
@@ -157,7 +153,7 @@
 	container_name = "Tabletop miniatures crate"
 	cost = 50
 
-/datum/supply_pack2/randomised/recreation/plushies
+/datum/supply_pack2/nanotrasen/randomised/recreation/plushies
 	name = "Plushies crate"
 	num_contained = 3
 	contains = list(
@@ -167,7 +163,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Plushies crate"
 
-/datum/supply_pack2/recreation/collars
+/datum/supply_pack2/nanotrasen/recreation/collars
 	name = "Collar bundle"
 	contains = list(
 			/obj/item/clothing/accessory/collar/shock = 1,
@@ -183,7 +179,7 @@
 	container_name = "collar crate"
 
 //DONKsoft
-/datum/supply_pack2/recreation/donksoft
+/datum/supply_pack2/nanotrasen/recreation/donksoft
 	name = "DONKsoft Skirmish Bundle"
 	contains = list(
 			/obj/item/gunbox/donksoft = 2,
@@ -196,7 +192,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "DONKsoft Skirmish crate"
 
-/datum/supply_pack2/recreation/donksoft_exotic
+/datum/supply_pack2/nanotrasen/recreation/donksoft_exotic
 	name = "DONKsoft Exotic Weaponry Bundle"
 	contains = list(
 			/obj/item/gun/ballistic/automatic/c20r/foam = 2,
@@ -210,7 +206,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "DONKsoft Exotic Weaponry crate"
 
-/datum/supply_pack2/recreation/donksoft_ammo
+/datum/supply_pack2/nanotrasen/recreation/donksoft_ammo
 	name = "DONKsoft Resupply Bundle"
 	contains = list(
 			/obj/item/storage/box/foamdart= 4

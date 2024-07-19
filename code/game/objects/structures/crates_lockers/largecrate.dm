@@ -108,12 +108,6 @@
 	desc = "It comes in a box for the consumer's sake. ..How is this lighter?"
 	icon_state = "vehiclecrate"
 
-/obj/structure/largecrate/vehicle/Initialize(mapload)
-	. = ..()
-	spawn(1)
-		for(var/obj/O in contents)
-			O.update_icon()
-
 /obj/structure/largecrate/vehicle/bike
 	name = "spacebike crate"
 	starts_with = list(/obj/structure/vehiclecage/spacebike)

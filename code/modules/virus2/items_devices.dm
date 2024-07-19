@@ -41,6 +41,7 @@
 	name = "virus dish"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-b"
+	worth_intrinsic = 35
 	var/datum/disease2/disease/virus2 = null
 	var/growth = 0
 	var/basic_info = null
@@ -50,11 +51,19 @@
 /obj/item/virusdish/random
 	name = "virus sample"
 
+	/// the worth of the contained random virus
+	var/worth_contained_virus = 500
+
 /obj/item/virusdish/random/Initialize(mapload)
 	. = ..()
 	virus2 = new /datum/disease2/disease
 	virus2.makerandom()
 	growth = rand(5, 50)
+
+/obj/item/virusdish/random/get_containing_worth(flags)
+	. = ..()
+	if(flags & GET_WORTH_DETECTING_PRICE)
+		. += worth_contained_virus
 
 /obj/item/virusdish/attackby(var/obj/item/W as obj,var/mob/living/carbon/user as mob)
 	if(istype(W,/obj/item/hand_labeler) || istype(W,/obj/item/reagent_containers/syringe))

@@ -17,6 +17,7 @@
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
+	worth_intrinsic = 85
 	var/lightcolor = "#FF6A00"
 	var/stunforce = 0
 	var/agonyforce = 60
@@ -29,6 +30,11 @@
 /obj/item/melee/baton/Initialize(mapload)
 	. = ..()
 	update_icon()
+
+/obj/item/melee/baton/worth_contents(flags)
+	. = ..()
+	if(bcell)
+		. += bcell
 
 /obj/item/melee/baton/get_cell(inducer)
 	return bcell

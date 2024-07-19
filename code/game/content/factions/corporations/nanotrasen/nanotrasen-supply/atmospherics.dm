@@ -4,10 +4,10 @@
 */
 
 
-/datum/supply_pack2/atmospherics
+/datum/supply_pack2/nanotrasen/atmospherics
 	category = "Atmospherics"
 
-/datum/supply_pack2/atmospherics/inflatable
+/datum/supply_pack2/nanotrasen/atmospherics/inflatable
 	name = "Inflatable barriers"
 	contains = list(
 		/obj/item/storage/briefcase/inflatable = 3,
@@ -15,7 +15,7 @@
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "Inflatable Barrier Crate"
 
-/datum/supply_pack2/atmospherics/canister_empty
+/datum/supply_pack2/nanotrasen/atmospherics/canister_empty
 	name = "Empty gas canister"
 	container_name = "Empty gas canister crate"
 	container_type = /obj/structure/largecrate
@@ -23,7 +23,7 @@
 		/obj/machinery/portable_atmospherics/canister = 1,
 	)
 
-/datum/supply_pack2/atmospherics/canister_air
+/datum/supply_pack2/nanotrasen/atmospherics/canister_air
 	name = "Air canister"
 	container_name = "Air canister crate"
 	container_type = /obj/structure/largecrate
@@ -31,7 +31,7 @@
 		/obj/machinery/portable_atmospherics/canister/air,
 	)
 
-/datum/supply_pack2/atmospherics/canister_helium
+/datum/supply_pack2/nanotrasen/atmospherics/canister_helium
 	name = "Helium canister"
 	container_name = "Helium canister crate"
 	container_type = /obj/structure/largecrate
@@ -39,7 +39,7 @@
 		/obj/machinery/portable_atmospherics/canister/helium,
 	)
 
-/datum/supply_pack2/atmospherics/canister_oxygen
+/datum/supply_pack2/nanotrasen/atmospherics/canister_oxygen
 	name = "Oxygen canister"
 	container_name = "Oxygen canister crate"
 	container_type = /obj/structure/largecrate
@@ -47,7 +47,7 @@
 		/obj/machinery/portable_atmospherics/canister/oxygen,
 	)
 
-/datum/supply_pack2/atmospherics/canister_nitrogen
+/datum/supply_pack2/nanotrasen/atmospherics/canister_nitrogen
 	name = "Nitrogen canister"
 	container_name = "Nitrogen canister crate"
 	container_type = /obj/structure/largecrate
@@ -55,16 +55,18 @@
 		/obj/machinery/portable_atmospherics/canister/nitrogen,
 	)
 
-/datum/supply_pack2/atmospherics/canister_phoron
+/datum/supply_pack2/nanotrasen/atmospherics/canister_phoron
 	name = "Phoron gas canister"
 	container_name = "Phoron gas canister crate"
 	container_type = /obj/structure/closet/crate/secure/large
-	container_access = ACCESS_ENGINEERING_ATMOS
+	container_access = list(
+		ACCESS_ENGINEERING_ATMOS,
+	)
 	contains = list(
 		/obj/machinery/portable_atmospherics/canister/phoron,
 	)
 
-/datum/supply_pack2/atmospherics/canister_nitrous_oxide
+/datum/supply_pack2/nanotrasen/atmospherics/canister_nitrous_oxide
 	name = "N2O gas canister"
 	container_name = "N2O gas canister crate"
 	container_type = /obj/structure/closet/crate/secure/large
@@ -72,7 +74,7 @@
 		/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 	)
 
-/datum/supply_pack2/atmospherics/canister_carbon_dioxide
+/datum/supply_pack2/nanotrasen/atmospherics/canister_carbon_dioxide
 	name = "Carbon dioxide gas canister"
 	container_name = "CO2 canister crate"
 	container_type = /obj/structure/closet/crate/secure/large
@@ -80,7 +82,7 @@
 		/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 	)
 
-/datum/supply_pack2/atmospherics/air_dispenser
+/datum/supply_pack2/nanotrasen/atmospherics/air_dispenser
 	name = "Pipe Dispenser"
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Pipe Dispenser Crate"
@@ -88,7 +90,7 @@
 		/obj/machinery/pipedispenser/orderable,
 	)
 
-/datum/supply_pack2/atmospherics/disposals_dispenser
+/datum/supply_pack2/nanotrasen/atmospherics/disposals_dispenser
 	name = "Disposals Pipe Dispenser"
 	container_type = /obj/structure/closet/crate/secure/large
 	container_name = "Disposal Dispenser Crate"
@@ -96,7 +98,7 @@
 		/obj/machinery/pipedispenser/disposal/orderable,
 	)
 
-/datum/supply_pack2/atmospherics/internals
+/datum/supply_pack2/nanotrasen/atmospherics/internals
 	name = "Internals crate"
 	contains = list(
 		/obj/item/clothing/mask/gas = 3,
@@ -105,7 +107,7 @@
 	container_type = /obj/structure/closet/crate/internals
 	container_name = "Internals crate"
 
-/datum/supply_pack2/atmospherics/evacuation
+/datum/supply_pack2/nanotrasen/atmospherics/evacuation
 	name = "Emergency equipment"
 	contains = list(
 		/obj/item/storage/toolbox/emergency = 2,

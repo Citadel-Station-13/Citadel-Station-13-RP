@@ -1,90 +1,87 @@
-/datum/supply_pack2/vehicles
+/datum/supply_pack2/nanotrasen/vehicles
 	group = "Vehicles"
 
 
-/datum/supply_pack2/vehicles/dune_buggy
+/datum/supply_pack2/nanotrasen/vehicles/dune_buggy
 	name = "Exploration Dune Buggy"
 	contains = list(
-			/obj/vehicle_old/train/rover/engine/dunebuggy
-			)
-	cost = 100
+		/obj/vehicle_old/train/rover/engine/dunebuggy,
+	)
+	worth = 1250
 	container_type = /obj/structure/largecrate
 	container_name = "Exploration Dune Buggy Crate"
 
 
-/datum/supply_pack2/vehicles/bike
+/datum/supply_pack2/nanotrasen/vehicles/bike
 	name = "Spacebike Crate"
-	contains = list()
-	cost = 200
-	container_type = /obj/structure/largecrate/vehicle/bike
-	container_name = "Spacebike Crate"
+	contains = list(
+		/obj/structure/vehiclecage/spacebike,
+	)
+	worth = 1250
+	container_type = /obj/structure/largecrate/vehicle
+	container_name = "spacebike crate"
 
-/datum/supply_pack2/vehicles/quadbike
+/datum/supply_pack2/nanotrasen/vehicles/quadbike
 	name = "ATV Crate"
-	contains = list()
-	cost = 30
-	container_type = /obj/structure/largecrate/vehicle/quadbike
-	container_name = "ATV Crate"
+	contains = list(
+		/obj/vehicle/ridden/quadbike/random,
+		/obj/item/key/quadbike,
+	)
+	worth = 1250
+	container_type = /obj/structure/largecrate/vehicle
+	container_name = "ATV crate"
 
-/*
-/datum/supply_pack2/vehicles/quadtrailer
-	name = "ATV Trailer Crate"
-	contains = list()
-	cost = 50
-	container_type = /obj/structure/largecrate/vehicle/quadtrailer
-	container_name = "ATV Trailer Crate"
-*/
-
-/datum/supply_pack2/vehicles/skatepack1
+/datum/supply_pack2/nanotrasen/vehicles/skatepack1
 	name = "Beginner Skateboard Pack"
 	contains = list(
-			/obj/vehicle_old/skateboard/beginner = 3,
-			/obj/item/clothing/head/helmet/bike_helmet/random = 3
-			)
-	cost = 100
+		/obj/vehicle_old/skateboard/beginner = 3,
+		/obj/item/clothing/head/helmet/bike_helmet/random = 3,
+	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Skateboard Crate - Beginner"
 
-/datum/supply_pack2/vehicles/skatepack2
+/datum/supply_pack2/nanotrasen/vehicles/skatepack2
 	name = "Professional Skateboard Pack"
 	contains = list(
-			/obj/vehicle_old/skateboard/pro = 2,
-			/obj/item/clothing/head/helmet/bike_helmet/random = 2
-			)
-	cost = 200
+		/obj/vehicle_old/skateboard/pro = 2,
+		/obj/item/clothing/head/helmet/bike_helmet/random = 2,
+	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Skateboard Crate - Professional"
 
-/datum/supply_pack2/vehicles/skatepack3
+/datum/supply_pack2/nanotrasen/vehicles/skatepack3
 	name = "Hoverboard Pack"
 	contains = list(
-			/obj/vehicle_old/skateboard/hoverboard = 2,
-			/obj/item/clothing/head/helmet/bike_helmet/random = 2
-			)
-	cost = 300
+		/obj/vehicle_old/skateboard/hoverboard = 2,
+		/obj/item/clothing/head/helmet/bike_helmet/random = 2,
+	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Hoverboard Crate"
 
-/datum/supply_pack2/vehicles/rover
+/datum/supply_pack2/nanotrasen/vehicles/rover
 	name = "NT Humvee"
 	contains = list(
-			/obj/vehicle_old/train/rover/engine
-			)
+		/obj/vehicle_old/train/rover/engine,
+	)
+	worth = 1500
 	container_type = /obj/structure/largecrate
 	container_name = "NT Humvee Crate"
-	cost = 500
 
 
-/datum/supply_pack2/vehicles/cargotrain
+/datum/supply_pack2/nanotrasen/vehicles/cargotrain
 	name = "Cargo Train Tug"
-	contains = list(/obj/vehicle_old/train/engine)
-	cost = 35
+	contains = list(
+		/obj/vehicle_old/train/engine,
+	)
+	worth = 1500
 	container_type = /obj/structure/largecrate
 	container_name = "Cargo Train Tug Crate"
 
-/datum/supply_pack2/vehicles/cargotrailer
+/datum/supply_pack2/nanotrasen/vehicles/cargotrailer
 	name = "Cargo Train Trolley"
-	contains = list(/obj/vehicle_old/train/trolley)
-	cost = 15
+	contains = list(
+		/obj/vehicle_old/train/trolley,
+	)
+	cost = 500
 	container_type = /obj/structure/largecrate
 	container_name = "Cargo Train Trolley Crate"

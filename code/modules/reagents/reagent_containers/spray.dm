@@ -123,6 +123,7 @@
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
 	volume = 40
+	worth_intrinsic = 85
 	var/safety = TRUE
 	materials_base = list(MAT_STEEL = 1000)
 

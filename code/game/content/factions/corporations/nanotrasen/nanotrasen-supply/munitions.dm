@@ -3,28 +3,25 @@
 *	related to weapons live.
 */
 
-/datum/supply_pack2/munitions
+/datum/supply_pack2/nanotrasen/munitions
 	group = "Munitions"
+	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS
 
-/datum/supply_pack2/randomised/munitions
-	group = "Munitions"
-
-/datum/supply_pack2/munitions/weapons
+/datum/supply_pack2/nanotrasen/munitions/weapons
 	name = "Weapons - Security basic equipment"
 	contains = list(
-			/obj/item/flash = 2,
-			/obj/item/reagent_containers/spray/pepper = 2,
-			/obj/item/melee/baton/loaded = 2,
-			/obj/item/gun/energy/taser = 2,
-			/obj/item/gunbox = 2,
-			/obj/item/storage/box/flashbangs = 2
-			)
-	cost = 40
+		/obj/item/flash = 2,
+		/obj/item/reagent_containers/spray/pepper = 2,
+		/obj/item/melee/baton/loaded = 2,
+		/obj/item/gun/energy/taser = 2,
+		/obj/item/gunbox = 2,
+		/obj/item/storage/box/flashbangs = 2,
+	)
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security equipment crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 
-/datum/supply_pack2/munitions/egunpistol
+/datum/supply_pack2/nanotrasen/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
 	contains = list(/obj/item/gun/energy/gun = 2)
 	cost = 50
@@ -32,7 +29,7 @@
 	container_name = "Energy sidearms crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/flareguns
+/datum/supply_pack2/nanotrasen/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(
 			/obj/item/gun/ballistic/shotgun/flare = 2,
@@ -43,7 +40,7 @@
 	container_name = "Flare gun crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/eweapons
+/datum/supply_pack2/nanotrasen/munitions/eweapons
 	name = "Weapons - Experimental weapons crate"
 	contains = list(
 			/obj/item/gun/energy/xray = 2,
@@ -53,7 +50,7 @@
 	container_name = "Experimental weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/energyweapons
+/datum/supply_pack2/nanotrasen/munitions/energyweapons
 	name = "Weapons - Laser rifle crate"
 	contains = list(/obj/item/gun/energy/laser = 2)
 	cost = 50
@@ -61,7 +58,7 @@
 	container_name = "Energy weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/shotgun
+/datum/supply_pack2/nanotrasen/munitions/shotgun
 	name = "Weapons - Shotgun crate"
 	contains = list(
 			/obj/item/storage/box/shotgunammo,
@@ -73,7 +70,7 @@
 	container_name = "Shotgun crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/erifle
+/datum/supply_pack2/nanotrasen/munitions/erifle
 	name = "Weapons - Energy marksman"
 	contains = list(/obj/item/gun/energy/sniperrifle = 2)
 	cost = 100
@@ -81,7 +78,7 @@
 	container_name = "Energy marksman crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/burstlaser
+/datum/supply_pack2/nanotrasen/munitions/burstlaser
 	name = "Weapons - Burst laser"
 	contains = list(/obj/item/gun/energy/gun/burst = 2)
 	cost = 50
@@ -89,7 +86,7 @@
 	container_name = "Burst laser crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/ionweapons
+/datum/supply_pack2/nanotrasen/munitions/ionweapons
 	name = "Weapons - Electromagnetic Rifles"
 	contains = list(
 			/obj/item/gun/energy/ionrifle = 2,
@@ -100,7 +97,7 @@
 	container_name = "Electromagnetic weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/ionpistols
+/datum/supply_pack2/nanotrasen/munitions/ionpistols
 	name = "Weapons - Electromagnetic pistols"
 	contains = list(
 			/obj/item/gun/energy/ionrifle/pistol = 2,
@@ -111,7 +108,7 @@
 	container_name = "Electromagnetic weapons crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/bsmg
+/datum/supply_pack2/nanotrasen/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
 	contains = list(/obj/item/gun/ballistic/automatic/wt550 = 2)
 	cost = 50
@@ -119,7 +116,7 @@
 	container_name = "Ballistic weapon crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/brifle
+/datum/supply_pack2/nanotrasen/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
 	contains = list(/obj/item/gun/ballistic/automatic/z8 = 2)
 	cost = 80
@@ -127,7 +124,7 @@
 	container_name = "Ballistic weapon crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/bolt_rifles_competitive
+/datum/supply_pack2/nanotrasen/munitions/bolt_rifles_competitive
  	name = "Weapons - Competitive shooting rifles"
  	contains = list(
  			/obj/item/assembly/timer,
@@ -142,7 +139,7 @@
  	container_name = "Ballistic Weapons crate"
  	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/mrifle
+/datum/supply_pack2/nanotrasen/munitions/mrifle
 	name = "Weapons - Magnetic Rifles"
 	contains = list(/obj/item/gun/magnetic/railgun/heater = 2)
 	cost = 120
@@ -150,7 +147,7 @@
 	container_name = "Magnetic weapon crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/mpistol
+/datum/supply_pack2/nanotrasen/munitions/mpistol
 	name = "Weapons - Magnetic Pistols"
 	contains = list(/obj/item/gun/magnetic/railgun/heater/pistol = 2)
 	cost = 200
@@ -158,7 +155,7 @@
 	container_name = "Magnetic weapon crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/mcarbine
+/datum/supply_pack2/nanotrasen/munitions/mcarbine
 	name = "Weapons - Magnetic Carbines"
 	contains = list(/obj/item/gun/magnetic/railgun/flechette/sif = 2)
 	cost = 130
@@ -166,7 +163,7 @@
 	container_name = "Magnetic weapon crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/shotgunammo
+/datum/supply_pack2/nanotrasen/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
 	contains = list(
 			/obj/item/storage/box/shotgunammo = 2,
@@ -177,7 +174,7 @@
 	container_name = "Ballistic ammunition crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/beanbagammo
+/datum/supply_pack2/nanotrasen/munitions/beanbagammo
 	name = "Ammunition - Beanbag shells"
 	contains = list(/obj/item/storage/box/beanbags = 3)
 	cost = 25
@@ -185,7 +182,7 @@
 	container_name = "Ballistic ammunition crate"
 	access = ACCESS_SECURITY_ARMORY // Guns are for the armory.
 
-/datum/supply_pack2/munitions/bsmgammo
+/datum/supply_pack2/nanotrasen/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"
 	contains = list(/obj/item/ammo_magazine/m9mmt = 6)
 	cost = 25
@@ -193,7 +190,7 @@
 	container_name = "Ballistic ammunition crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/bsmgammorubber
+/datum/supply_pack2/nanotrasen/munitions/bsmgammorubber
 	name = "Ammunition - 9mm top mounted rubber"
 	contains = list(/obj/item/ammo_magazine/m9mmt/rubber = 6)
 	cost = 25
@@ -201,7 +198,7 @@
 	container_name = "Ballistic ammunition crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 
-/datum/supply_pack2/munitions/brifleammo
+/datum/supply_pack2/nanotrasen/munitions/brifleammo
 	name = "Ammunition - 7.62mm lethal"
 	contains = list(/obj/item/ammo_magazine/m762 = 6)
 	cost = 25
@@ -209,7 +206,7 @@
 	container_name = "Ballistic ammunition crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/pcellammo
+/datum/supply_pack2/nanotrasen/munitions/pcellammo
 	name = "Ammunition - Power cell"
 	contains = list(/obj/item/cell/device/weapon = 3)
 	cost = 50
@@ -217,7 +214,7 @@
 	container_name = "Energy ammunition crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 
-/datum/supply_pack2/munitions/firingpins
+/datum/supply_pack2/nanotrasen/munitions/firingpins
 	name = "Weapons - Standard firing pins"
 	contains = list(/obj/item/storage/box/firingpins = 3)
 	cost = 10
@@ -225,7 +222,7 @@
 	container_name = "Firing pin crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/munitions/expeditionguns
+/datum/supply_pack2/nanotrasen/munitions/expeditionguns
 	name = "Frontier phaser (station-locked) crate"
 	contains = list(
 			/obj/item/gun/energy/frontier/locked = 2,
@@ -237,7 +234,7 @@
 	access = ACCESS_GENERAL_EXPLORER
 
 //Culture Update
-/datum/supply_pack2/munitions/weaponry_apidean
+/datum/supply_pack2/nanotrasen/munitions/weaponry_apidean
 	name = "Apidean Weaponry Crate"
 	contains = list(
 			/obj/item/gun/ballistic/apinae_stinger = 1,
@@ -249,7 +246,7 @@
 	container_name = "Apidean Weaponry crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 
-/datum/supply_pack2/misc/weaponry_tyrmalin
+/datum/supply_pack2/nanotrasen/misc/weaponry_tyrmalin
 	name = "Tyrmalin Weaponry Crate"
 	contains = list(
 			/obj/item/gun/energy/ermitter = 1,

@@ -3,10 +3,10 @@
 *	related to civilian tasks live
 */
 
-/datum/supply_pack2/supply
+/datum/supply_pack2/nanotrasen/supply
 	group = "Supplies"
 
-/datum/supply_pack2/supply/food
+/datum/supply_pack2/nanotrasen/supply/food
 	name = "Kitchen supply crate"
 	contains = list(
 			/obj/item/reagent_containers/food/condiment/flour = 6,
@@ -20,14 +20,14 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Food crate"
 
-/datum/supply_pack2/supply/toner
+/datum/supply_pack2/nanotrasen/supply/toner
 	name = "Toner cartridges"
 	contains = list(/obj/item/toner = 6)
 	cost = 10
 	container_type = /obj/structure/closet/crate
 	container_name = "Toner cartridges"
 
-/datum/supply_pack2/supply/janitor
+/datum/supply_pack2/nanotrasen/supply/janitor
 	name = "Janitorial supplies"
 	contains = list(
 			/obj/item/reagent_containers/glass/bucket,
@@ -51,7 +51,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Janitorial supplies"
 
-/datum/supply_pack2/supply/shipping
+/datum/supply_pack2/nanotrasen/supply/shipping
 	name = "Shipping supplies"
 	contains = list(
 				/obj/fiftyspawner/cardboard,
@@ -65,7 +65,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Shipping supplies crate"
 
-/datum/supply_pack2/supply/bureaucracy
+/datum/supply_pack2/nanotrasen/supply/bureaucracy
 	contains = list(
 			/obj/item/clipboard = 2,
 			/obj/item/pen/red,
@@ -85,14 +85,14 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Office supplies crate"
 
-/datum/supply_pack2/supply/spare_pda
+/datum/supply_pack2/nanotrasen/supply/spare_pda
 	name = "Spare PDAs"
 	cost = 10
 	container_type = /obj/structure/closet/crate/corporate/thinktronic
 	container_name = "Spare PDA crate"
 	contains = list(/obj/item/pda = 3)
 
-/datum/supply_pack2/supply/minergear
+/datum/supply_pack2/nanotrasen/supply/minergear
 	name = "Shaft miner equipment"
 	contains = list(
 			/obj/item/storage/backpack/industrial,
@@ -116,18 +116,15 @@
 	container_name = "Shaft miner equipment"
 	access = ACCESS_SUPPLY_MINE
 
-/* //MULE Bots can't traverse the Tether.
-/datum/supply_pack2/supply/mule
+/datum/supply_pack2/nanotrasen/supply/mule
 	name = "Mulebot Crate"
 	contains = list()
 	cost = 20
 	container_type = /obj/structure/largecrate/animal/mulebot
 	container_name = "Mulebot Crate"
-*/
-
 
 //Culture Update
-/datum/supply_pack2/misc/mining_tyrmalin
+/datum/supply_pack2/nanotrasen/misc/mining_tyrmalin
 	name = "Tyrmalin Mining Crate"
 	contains = list(
 			/obj/item/melee/thermalcutter = 1,
@@ -139,7 +136,7 @@
 	container_name = "Tyrmalin Mining crate"
 	access = ACCESS_SUPPLY_MINE
 
-/datum/supply_pack2/misc/breathing_nitrogen
+/datum/supply_pack2/nanotrasen/misc/breathing_nitrogen
 	name = "Emergency Nitrogen Supplies"
 	contains = list(
 			/obj/item/tank/emergency/nitrogen = 2,

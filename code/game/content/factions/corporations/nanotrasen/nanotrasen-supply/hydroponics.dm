@@ -4,52 +4,52 @@
 */
 
 
-/datum/supply_pack2/hydro
+/datum/supply_pack2/nanotrasen/hydro
 	group = "Hydroponics"
 
-/datum/supply_pack2/hydro/monkey
+/datum/supply_pack2/nanotrasen/hydro/monkey
 	name = "Monkey crate"
 	contains = list (/obj/item/storage/box/monkeycubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Monkey crate"
 
-/datum/supply_pack2/hydro/farwa
+/datum/supply_pack2/nanotrasen/hydro/farwa
 	name = "Farwa crate"
 	contains = list (/obj/item/storage/box/monkeycubes/farwacubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Farwa crate"
 
-/datum/supply_pack2/hydro/neara
+/datum/supply_pack2/nanotrasen/hydro/neara
 	name = "Neaera crate"
 	contains = list (/obj/item/storage/box/monkeycubes/neaeracubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Neaera crate"
 
-/datum/supply_pack2/hydro/stok
+/datum/supply_pack2/nanotrasen/hydro/stok
 	name = "Stok crate"
 	contains = list (/obj/item/storage/box/monkeycubes/stokcubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Stok crate"
 
-/datum/supply_pack2/hydro/lisa
+/datum/supply_pack2/nanotrasen/hydro/lisa
 	name = "Corgi Crate"
 	contains = list()
 	cost = 50
 	container_type = /obj/structure/largecrate/animal/corgi
 	container_name = "Corgi Crate"
 
-/datum/supply_pack2/hydro/cat
+/datum/supply_pack2/nanotrasen/hydro/cat
 	name = "Cat Crate"
 	contains = list()
 	cost = 45
 	container_type = /obj/structure/largecrate/animal/cat
 	container_name = "Cat Crate"
 
-/datum/supply_pack2/hydro/hydroponics
+/datum/supply_pack2/nanotrasen/hydro/hydroponics
 	name = "Hydroponics Supply Crate"
 	contains = list(
 			/obj/item/reagent_containers/spray/plantbgone = 4,
@@ -67,28 +67,28 @@
 	container_name = "Hydroponics crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/cow
+/datum/supply_pack2/nanotrasen/hydro/cow
 	name = "Cow crate"
 	cost = 25
 	container_type = /obj/structure/largecrate/animal/cow
 	container_name = "Cow crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/goat
+/datum/supply_pack2/nanotrasen/hydro/goat
 	name = "Goat crate"
 	cost = 25
 	container_type = /obj/structure/largecrate/animal/goat
 	container_name = "Goat crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/chicken
+/datum/supply_pack2/nanotrasen/hydro/chicken
 	name = "Chicken crate"
 	cost = 25
 	container_type = /obj/structure/largecrate/animal/chick
 	container_name = "Chicken crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/seeds
+/datum/supply_pack2/nanotrasen/hydro/seeds
 	name = "Seeds crate"
 	contains = list(
 			/obj/item/seeds/chiliseed,
@@ -114,7 +114,7 @@
 	container_name = "Seeds crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/weedcontrol
+/datum/supply_pack2/nanotrasen/hydro/weedcontrol
 	name = "Weed control crate"
 	contains = list(
 			/obj/item/material/knife/machete/hatchet = 2,
@@ -128,14 +128,14 @@
 	container_name = "Weed control crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/watertank
+/datum/supply_pack2/nanotrasen/hydro/watertank
 	name = "Water tank crate"
 	contains = list(/obj/structure/reagent_dispensers/watertank)
 	cost = 10
 	container_type = /obj/structure/largecrate
 	container_name = "water tank crate"
 
-/datum/supply_pack2/hydro/bee_keeper
+/datum/supply_pack2/nanotrasen/hydro/bee_keeper
 	name = "Beekeeping crate"
 	contains = list(
 			/obj/item/clothing/head/beekeeper,
@@ -150,7 +150,7 @@
 	container_name = "Beekeeping crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/tray
+/datum/supply_pack2/nanotrasen/hydro/tray
 	name = "Empty hydroponics trays"
 	cost = 50
 	container_type = /obj/structure/closet/crate/hydroponics
@@ -159,60 +159,60 @@
 	access = ACCESS_GENERAL_BOTANY
 
 
-/datum/supply_pack2/hydro/diycarpotox
+/datum/supply_pack2/nanotrasen/hydro/diycarpotox
 	name = "Gather-It-Yourself Carpotoxin"
 	cost = 30
 	container_type = /obj/structure/largecrate/animal/carp
 	container_name = "DIY carpotoxin crate"
 
-/datum/supply_pack2/hydro/diyspidertox
+/datum/supply_pack2/nanotrasen/hydro/diyspidertox
 	name = "Gather-It-Yourself Spider Toxin"
 	cost = 30
 	container_type = /obj/structure/largecrate/animal/spiders
 	container_name = "DIY spider toxin crate"
 
-/datum/supply_pack2/hydro/birds
+/datum/supply_pack2/nanotrasen/hydro/birds
 	name = "Birds Crate"
 	cost = 200 //You're getting 22 birds. Of course it's going to be a lot!
 	container_type = /obj/structure/largecrate/birds
 	container_name = "Bird crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/sobaka
+/datum/supply_pack2/nanotrasen/hydro/sobaka
 	name = "Sobaka crate"
 	contains = list (/obj/item/storage/box/monkeycubes/sobakacubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Sobaka crate"
 
-/datum/supply_pack2/hydro/saru
+/datum/supply_pack2/nanotrasen/hydro/saru
 	name = "Saru crate"
 	contains = list (/obj/item/storage/box/monkeycubes/sarucubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Saru crate"
 
-/datum/supply_pack2/hydro/sparra
+/datum/supply_pack2/nanotrasen/hydro/sparra
 	name = "Sparra crate"
 	contains = list (/obj/item/storage/box/monkeycubes/sparracubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Sparra crate"
 
-/datum/supply_pack2/hydro/wolpin
+/datum/supply_pack2/nanotrasen/hydro/wolpin
 	name = "Wolpin crate"
 	contains = list (/obj/item/storage/box/monkeycubes/wolpincubes)
 	cost = 20
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Wolpin crate"
 
-/datum/supply_pack2/hydro/fennec
+/datum/supply_pack2/nanotrasen/hydro/fennec
 	name = "Fennec crate"
 	cost = 60 //considering a corgi crate is 50, and you get two fennecs
 	container_type = /obj/structure/largecrate/animal/fennec
 	container_name = "Fennec crate"
 
-/datum/supply_pack2/hydro/fish
+/datum/supply_pack2/nanotrasen/hydro/fish
 	name = "Fish supply crate"
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/lobster = 6,
@@ -224,21 +224,21 @@
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "Fish crate"
 
-/datum/supply_pack2/hydro/woolie
+/datum/supply_pack2/nanotrasen/hydro/woolie
 	name = "Woolie crate"
 	cost = 50
 	container_type = /obj/structure/largecrate/animal/woolie
 	container_name = "Woolie crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/icegoat
+/datum/supply_pack2/nanotrasen/hydro/icegoat
 	name = "Glacicorn crate"
 	cost = 50
 	container_type = /obj/structure/largecrate/animal/icegoat
 	container_name = "Glacicorn crate"
 	access = ACCESS_GENERAL_BOTANY
 
-/datum/supply_pack2/hydro/furnacegrub
+/datum/supply_pack2/nanotrasen/hydro/furnacegrub
 	name = "Furnace Grub crate"
 	cost = 40
 	container_type = /obj/structure/largecrate/animal/furnacegrub

@@ -16,6 +16,7 @@
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
+	worth_intrinsic = 250
 
 	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE
 

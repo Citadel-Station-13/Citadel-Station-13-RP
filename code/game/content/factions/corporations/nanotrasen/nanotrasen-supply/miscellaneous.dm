@@ -3,13 +3,13 @@
 *	that don't belong elsewhere live.
 */
 
-/datum/supply_pack2/misc
+/datum/supply_pack2/nanotrasen/misc
 	group = "Miscellaneous"
 
-/datum/supply_pack2/randomised/misc
+/datum/supply_pack2/nanotrasen/randomised/misc
 	group = "Miscellaneous"
 
-/datum/supply_pack2/randomised/misc/card_packs
+/datum/supply_pack2/nanotrasen/randomised/misc/card_packs
 	num_contained = 5
 	contains = list(
 			/obj/item/pack/cardemon,
@@ -21,7 +21,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "cards crate"
 
-/datum/supply_pack2/randomised/misc/dnd
+/datum/supply_pack2/nanotrasen/randomised/misc/dnd
 	num_contained = 4
 	contains = list(
 			/obj/item/toy/character/alien,
@@ -37,7 +37,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Miniature Crate"
 
-/datum/supply_pack2/randomised/misc/plushies
+/datum/supply_pack2/nanotrasen/randomised/misc/plushies
 	num_contained = 5
 	contains = list(
 			/obj/item/toy/plushie/nymph,
@@ -79,14 +79,14 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Plushies Crate"
 
-/datum/supply_pack2/misc/eftpos
+/datum/supply_pack2/nanotrasen/misc/eftpos
 	contains = list(/obj/item/eftpos)
 	name = "EFTPOS scanner"
 	cost = 10
 	container_type = /obj/structure/closet/crate
 	container_name = "EFTPOS crate"
 
-/datum/supply_pack2/misc/chaplaingear
+/datum/supply_pack2/nanotrasen/misc/chaplaingear
 	name = "Chaplain equipment"
 	contains = list(
 			/obj/item/clothing/under/rank/chaplain,
@@ -105,14 +105,14 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Chaplain equipment crate"
 
-/datum/supply_pack2/misc/hoverpod
+/datum/supply_pack2/nanotrasen/misc/hoverpod
 	name = "Hoverpod Shipment"
 	contains = list()
 	cost = 80
 	container_type = /obj/structure/largecrate/hoverpod
 	container_name = "Hoverpod Crate"
 
-/datum/supply_pack2/randomised/misc/webbing
+/datum/supply_pack2/nanotrasen/randomised/misc/webbing
 	name = "Webbing crate"
 	num_contained = 4
 	contains = list(
@@ -128,14 +128,14 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Webbing crate"
 
-/datum/supply_pack2/misc/holoplant
+/datum/supply_pack2/nanotrasen/misc/holoplant
 	name = "Holoplant Pot"
 	contains = list(/obj/machinery/holoplant/shipped)
 	cost = 15
 	container_type = /obj/structure/closet/crate
 	container_name = "Holoplant crate"
 
-/datum/supply_pack2/misc/glucose_hypos
+/datum/supply_pack2/nanotrasen/misc/glucose_hypos
 	name = "Glucose Hypoinjectors"
 	contains = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5
@@ -144,7 +144,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Glucose Hypo Crate"
 
-/datum/supply_pack2/misc/mre_rations
+/datum/supply_pack2/nanotrasen/misc/mre_rations
 	// num_contained = 6		i'm just commenting this out because whoever made this should have looked and seen that this doesn't work for non randomized crates
 	// screw you for causing me a compile error
 	name = "Emergency - MREs"
@@ -164,7 +164,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "ready to eat rations"
 
-/datum/supply_pack2/misc/paste_rations
+/datum/supply_pack2/nanotrasen/misc/paste_rations
 	name = "Emergency - Paste"
 	contains = list(
 		/obj/item/storage/single_use/mre/menu11 = 2,
@@ -173,7 +173,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "emergency rations"
 
-/datum/supply_pack2/misc/medical_rations
+/datum/supply_pack2/nanotrasen/misc/medical_rations
 	name = "Emergency - VitaPaste"
 	contains = list(
 		/obj/item/storage/single_use/mre/menu13 = 2,
@@ -182,7 +182,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "emergency rations"
 
-/datum/supply_pack2/misc/beltminer
+/datum/supply_pack2/nanotrasen/misc/beltminer
 	name = "Belt-miner gear crate"
 	contains = list(
 			/obj/item/gun/energy/particle = 2,
@@ -196,7 +196,7 @@
 	container_name = "Belt-miner gear crate"
 	access = ACCESS_SUPPLY_MINE
 
-/datum/supply_pack2/misc/eva_rig
+/datum/supply_pack2/nanotrasen/misc/eva_rig
 	name = "eva hardsuit (empty)"
 	contains = list(
 			/obj/item/hardsuit/eva = 1
@@ -210,7 +210,7 @@
 				  ACCESS_GENERAL_PILOT)
 	one_access = TRUE
 
-/datum/supply_pack2/misc/mining_rig
+/datum/supply_pack2/nanotrasen/misc/mining_rig
 	name = "industrial hardsuit (empty)"
 	contains = list(
 			/obj/item/hardsuit/industrial = 1
@@ -222,7 +222,7 @@
 				  ACCESS_COMMAND_EVA)
 	one_access = TRUE
 
-/datum/supply_pack2/misc/medical_rig
+/datum/supply_pack2/nanotrasen/misc/medical_rig
 	name = "medical hardsuit (empty)"
 	contains = list(
 			/obj/item/hardsuit/medical = 1
@@ -232,7 +232,7 @@
 	container_name = "medical hardsuit crate"
 	access = ACCESS_MEDICAL_MAIN
 
-/datum/supply_pack2/misc/phoronoid
+/datum/supply_pack2/nanotrasen/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
 	contains = list(
 	/obj/item/clothing/suit/space/plasman = 3,
@@ -243,7 +243,7 @@
 	cost = 40
 	container_name = "spare phoronoid suits"
 
-/datum/supply_pack2/misc/security_rig
+/datum/supply_pack2/nanotrasen/misc/security_rig
 	name = "hazard hardsuit (empty)"
 	contains = list(
 			/obj/item/hardsuit/hazard = 1
@@ -253,7 +253,7 @@
 	container_name = "hazard hardsuit crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack2/misc/science_rig
+/datum/supply_pack2/nanotrasen/misc/science_rig
 	name = "ami hardsuit (empty)"
 	contains = list(
 			/obj/item/hardsuit/hazmat = 1
@@ -263,7 +263,7 @@
 	container_name = "ami hardsuit crate"
 	access = ACCESS_SCIENCE_RD
 
-/datum/supply_pack2/misc/ce_rig
+/datum/supply_pack2/nanotrasen/misc/ce_rig
 	name = "advanced hardsuit (empty)"
 	contains = list(
 			/obj/item/hardsuit/ce = 1
@@ -274,7 +274,7 @@
 	access = ACCESS_ENGINEERING_CE
 
 
-/datum/supply_pack2/misc/colored_lights
+/datum/supply_pack2/nanotrasen/misc/colored_lights
 	name = "Colored Lights Bundle"
 	contains = list(
 			/obj/item/storage/box/lights/bulbs_colored = 2,
@@ -285,7 +285,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Colored Lights crate"
 
-/datum/supply_pack2/misc/neon_lights
+/datum/supply_pack2/nanotrasen/misc/neon_lights
 	name = "Neon Lights Bundle"
 	contains = list(
 			/obj/item/storage/box/lights/bulbs_neon = 2,
@@ -297,7 +297,7 @@
 	container_name = "Neon Lights crate"
 
 //Culture Crates
-/datum/supply_pack2/misc/culture_apidean
+/datum/supply_pack2/nanotrasen/misc/culture_apidean
 	name = "Apidean Culture Crate"
 	contains = list(
 			/obj/fiftyspawner/wax = 2,
@@ -312,7 +312,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Apidean Culture crate"
 
-/datum/supply_pack2/misc/culture_tyrmalin
+/datum/supply_pack2/nanotrasen/misc/culture_tyrmalin
 	name = "Tyrmalin Culture Crate"
 	contains = list(
 			/obj/item/tool/wrench/goblin = 2,
@@ -329,7 +329,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Tyrmalin Culture crate"
 
-/datum/supply_pack2/misc/culture_alraune
+/datum/supply_pack2/nanotrasen/misc/culture_alraune
 	name = "Alraune Culture Crate"
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/wrapped/alraune_bar = 3,
@@ -340,7 +340,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Alraune Culture crate"
 
-/datum/supply_pack2/misc/music_players
+/datum/supply_pack2/nanotrasen/misc/music_players
 	name = "Music players"
 	contains = list(
 		/obj/item/device/walkpod = 3
