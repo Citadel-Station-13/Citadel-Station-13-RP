@@ -114,6 +114,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
+	helmet_type = /obj/item/clothing/head/helmet/space/void/odst
 
 /obj/item/clothing/head/helmet/space/void/odst_med
 	name = "hephaestus icarus medic helmet"
@@ -133,6 +134,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
+	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_med
 
 /obj/item/clothing/head/helmet/space/void/odst_eng
 	name = "hephaestus icarus engineer helmet"
@@ -152,6 +154,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
+	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_eng
 
 /obj/item/clothing/head/helmet/space/void/odst_exp
 	name = "hephaestus icarus frontier helmet"
@@ -171,6 +174,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
+	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_exp
 
 // Admin spawn only, Necropolis Industries event gear
 
@@ -194,6 +198,7 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
+	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_necro
 
 /obj/item/clothing/suit/space/void/odst_necromed
 	icon_state = "odst_red_mil"

@@ -74,6 +74,7 @@
 	icon_state = "cryo_sec"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	RENDER_LEGACY_PATCH_NO_CYCLING
+	helmet_type = /obj/item/clothing/head/helmet/space/void/security/cryo
 
 //Engi
 /obj/item/clothing/head/helmet/space/void/engineering/cryo
@@ -91,6 +92,7 @@
 	icon_state = "cryo_engi"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	RENDER_LEGACY_PATCH_NO_CYCLING
+	helmet_type = /obj/item/clothing/head/helmet/space/void/engineering/cryo
 
 //Atmospherics
 /obj/item/clothing/head/helmet/space/void/atmos/cryo
@@ -108,6 +110,7 @@
 	icon_state = "cryo_atmos"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	RENDER_LEGACY_PATCH_NO_CYCLING
+	helmet_type = /obj/item/clothing/head/helmet/space/void/atmos/cryo
 
 //Mining
 /obj/item/clothing/head/helmet/space/void/mining/cryo
@@ -125,3 +128,4 @@
 	icon_state = "cryo_mining"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	RENDER_LEGACY_PATCH_NO_CYCLING
+	helmet_type = /obj/item/clothing/head/helmet/space/void/mining/cryo
