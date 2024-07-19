@@ -42,18 +42,22 @@
 
 	/// contains these entity descriptors
 	///
+	/// * don't be fooled; this **is** a lazy list! this means it's null while empty.
 	/// * a descriptor associated to amount
 	/// * a list of list("descriptor" = ..., "amount" = number, "descriptor_hint" (optional), "container_hint" (optional)), associated to amount
-	var/list/contains
+	var/list/contains = list()
 	/// contains some amount of these entity descriptor groups
 	///
+	/// * don't be fooled; this **is** a lazy list! this means it's null while empty.
 	/// * this should be a list of lists with "entities", "amount" as keys
 	/// * "entities" should be associated to a list of entities as per [contains]; the entity can be associated to a number for weight
 	/// * "amount" should be associated to a random amount of them to spawn
 	/// * amount will be distrbuted randomly as needed, evenly, across the entities.
-	var/list/contains_some
+	var/list/contains_some = list()
 	/// a list of custom 'contains' lines that get printed to the manifest/interface
-	var/list/contains_custom_text
+	///
+	/// * don't be fooled; this **is** a lazy list! this means it's null while empty.
+	var/list/contains_custom_text = list()
 
 	#warn contains, contains_some_of
 
@@ -68,7 +72,15 @@
  * **Always call this before using it!**
  */
 /datum/supply_pack2/proc/initialize()
+	populate()
 	generate()
+	compact()
+
+/**
+ * use this to manipulate our contents before generation.
+ */
+/datum/supply_pack2/proc/populate()
+	return
 
 /datum/supply_pack2/proc/generate()
 	if(isnull(worth))
@@ -78,6 +90,11 @@
 	// legacy
 	if(isnull(legacy_cost))
 		legacy_cost = ceil(worth * 0.02)
+
+/datum/supply_pack2/proc/clean()
+	LAZYCLEARLIST(contains)
+	LAZYCLEARLIST(contains_some)
+	LAZYCLEARLIST(contains_custom_text)
 
 /datum/supply_pack2/proc/detect_worth()
 	. = 0

@@ -14,7 +14,19 @@
 	return worth_provider().get_worth(flags)
 
 /**
+ * used to change the "real" target of what we're checking the worth of.
+ *
+ * useful for things like skateboards and roller beds.
+ */
+/atom/proc/worth_provider()
+	RETURN_TYPE(/atom)
+	return src
+
+/**
  * estimate our total worth
+ *
+ * todo: a way to get itemized worth
+ * todo: the way must respect obfuscation (e.g. not accessing real names of undiscovered gases)
  *
  * @params
  * * flags - see [code/__DEFINES/economy/worth.dm]
@@ -22,18 +34,26 @@
  * @return worth as number
  */
 /atom/proc/get_worth(flags)
+	return 0
+
+//* Objs *//
+
+/obj/get_worth(flags)
 	. = 0
 	if(flags & GET_WORTH_INTRINSIC)
-		. = get_intrinsic_worth(flags)
+		var/intrinsic = get_intrinsic_worth(flags)
+		. += intrinsic
 	if(flags & GET_WORTH_MATERIALS)
-		. += get_materials_worth(flags)
+		var/materials = get_materials_worth(flags)
+		. += materials
 	if(flags & GET_WORTH_CONTAINING)
-		. += get_containing_worth(flags)
+		var/containing = get_containing_worth(flags, itemized_out)
+		. += containing
 
 /**
  * estimate our intrinsic worth
  */
-/atom/proc/get_intrinsic_worth(flags)
+/obj/proc/get_intrinsic_worth(flags)
 	return worth_intrinsic
 
 /**
@@ -44,7 +64,7 @@
  *
  * @return worth as number
  */
-/atom/proc/get_materials_worth(flags)
+/obj/proc/get_materials_worth(flags)
 	return 0
 
 /**
@@ -55,22 +75,13 @@
  *
  * @return worth as number
  */
-/atom/proc/get_containing_worth(flags)
+/obj/proc/get_containing_worth(flags)
 	. = 0
-	for(var/atom/target as anything in worth_contents(flags))
+	for(var/obj/target as anything in worth_contents(flags))
 		. += target.worth(flags)
 
 /**
  * gets relevant atoms inside us to be checked for containing worth
  */
-/atom/proc/worth_contents(flags)
+/obj/proc/worth_contents(flags)
 	return list()
-
-/**
- * used to change the "real" target of what we're checking the worth of.
- *
- * useful for things like skateboards and roller beds.
- */
-/atom/proc/worth_provider()
-	RETURN_TYPE(/atom)
-	return src
