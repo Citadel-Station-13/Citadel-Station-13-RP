@@ -22,6 +22,7 @@
 	name = "Low Endurance"
 	desc = "75 hitpoints."
 	cost = -2
+	extra_id_info = "Employee is unusually susceptible to all forms of harm."
 	var_changes = list("total_health" = 75)
 
 	group = /datum/trait_group/health
@@ -36,6 +37,7 @@
 	name = "Extremely Low Endurance"
 	desc = "50 hitpoints."
 	cost = -3 //Teshari HP. This makes the person a lot more suseptable to getting stunned, killed, etc.
+	extra_id_info = "Employee is extremely susceptible to all forms of harm."
 	var_changes = list("total_health" = 50)
 
 	group = /datum/trait_group/health
@@ -70,6 +72,7 @@
 	name = "Major Brute Weakness"
 	desc = "50% more."
 	cost = -3
+	extra_id_info = "Employee is unusually susceptible to blunt trauma."
 	var_changes = list("brute_mod" = 1.5)
 
 	group = /datum/trait_group/brute
@@ -100,6 +103,7 @@
 	name = "Major Burn Weakness"
 	desc = "50% more."
 	cost = -3
+	extra_id_info = "Employee is unusually sensitive to heat."
 	var_changes = list("burn_mod" = 1.5)
 
 	group = /datum/trait_group/burn
@@ -120,6 +124,7 @@
 	name = "Major Toxin Weakness"
 	desc = "50% more."
 	cost = -2
+	extra_id_info = "Employee's organs are ineffective at filtering toxins."
 	var_changes = list("toxins_mod" = 1.5)
 
 	group = /datum/trait_group/toxin
@@ -130,6 +135,7 @@
 	name = "Breathe Weakness"
 	desc = "25% more damage, 25% more air. (20kpa min)"
 	cost = -1
+	extra_id_info = "Employee requires a minimum atmospheric pressure of 20kPa to breathe."
 	var_changes = list("minimum_breath_pressure" = 20, "oxy_mod" = 1.25)
 
 	group = /datum/trait_group/oxy
@@ -150,6 +156,7 @@
 	name = "Major Radiation Weakness"
 	desc = "50% more."
 	cost = -2
+	extra_id_info = "Employee is extremely susceptible to radiation."
 	var_changes = list("radiation_mod" = 1.50)
 
 	group = /datum/trait_group/rad
@@ -170,6 +177,7 @@
 	name = "Major Conductive"
 	desc = "100% more susceptible."
 	cost = -2
+	extra_id_info = "Employee is exceptionally conductive."
 	var_changes = list("siemens_coefficient" = 2.0) //This makes you extremely weak to tasers.
 
 	group = /datum/trait_group/electro
@@ -195,6 +203,7 @@
 	name = "Hollow Bones/Brittle Alloy"
 	desc = "Significantly easier to break."
 	cost = -4 //I feel like this should be higher, but let's see where it goes
+	extra_id_info = "Employee's bones are unusually fragile."
 
 	group = /datum/trait_group/bones
 	group_short_name = "Hollow/Brittle"
@@ -217,6 +226,7 @@
 	desc = "No colors. 100% colorblind."
 	cost = -1
 	custom_only = FALSE
+	extra_id_info = "Employee is only capable of perceiving luminance, and cannot perceive hues or saturation."
 
 	group = /datum/trait_group/colorblindness
 	group_short_name = "Monochromancy"
@@ -230,6 +240,7 @@
 	name = "Colorblindness (Para Vulp)"
 	desc = "Severe red/green difficulty."
 	cost = -1
+	extra_id_info = "Employee has a form of red/green colorblindness."
 
 	group = /datum/trait_group/colorblindness
 	group_short_name = "Para Vulp"
@@ -243,6 +254,7 @@
 	name = "Colorblindness (Para Taj)"
 	desc = "Minor red/blue difficulty."
 	cost = -1
+	extra_id_info = "Employee has a form of blue/red colorblindness."
 
 	group = /datum/trait_group/colorblindness
 	group_short_name = "Para Taj"
@@ -256,16 +268,23 @@
 	name = "Photosensitive"
 	desc = "You are incredibly vulnerable to bright lights. You are blinded for longer and your skin burns under extreme light."
 	cost = -1
+<<<<<<< HEAD
 	var_changes = list("flash_mod" = 2, "flash_burn" = 5)
 
 	group = /datum/trait_group/photosensitivity
 	group_short_name = "Photosensitive"
 	sort_key = "4-Photosensitive"
+=======
+	extra_id_info = "Employee is exceptionally sensitive to bright lights."
+	var_changes = list("flash_mod" = 2)
+	var_changes = list("flash_burn" = 5)
+>>>>>>> master
 
 /datum/trait/negative/hemophilia
 	name = "Hemophilia"
 	desc = "You bleed twice as fast as normal."
 	cost = -1
+	extra_id_info = "Employee is exceptionally prone to bleeding."
 	var_changes = list("bloodloss_rate" = 2)
 
 	group = /datum/trait_group/blood
@@ -277,6 +296,7 @@
 	name = "Blind"
 	desc = "You're blind. Permanently."
 	cost = -3
+	extra_id_info = "Employee has <b>extremely limited vision</b>."
 	custom_only = FALSE
 	excludes = list(
 		/datum/trait/negative/deaf
@@ -294,6 +314,7 @@
 	name = "Deaf"
 	desc = "You're deaf. Permanently."
 	cost = -2
+	extra_id_info = "Employee <b>cannot perceive sound</b>."
 	custom_only = FALSE
 	traits = list(
 		TRAIT_DEAF
@@ -314,6 +335,7 @@
 	name = "Mute"
 	desc = "You're mute. Permanently."
 	cost = 0			// TTS bypasses this instantly, no powergaming mute ass explo characters
+	extra_id_info = "Employee is <b>incapable of vocalizing</b>."
 	custom_only = FALSE
 	traits = list(
 		TRAIT_MUTE

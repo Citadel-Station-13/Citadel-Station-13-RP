@@ -16,6 +16,10 @@
 	/// If this trait creates its own group (group = null), then this is the sort key of
 	/// the created group.
 	var/sort_key
+	/// Extra IC information about this trait that gets placed within the confidential flap of ID cards
+	var/extra_id_info
+	/// Whether or not this trait can have extra info opted out of
+	var/extra_id_info_optional = TRUE
 
 	/// 0 is neutral, negative cost means negative, positive cost means positive.
 	var/cost = 0

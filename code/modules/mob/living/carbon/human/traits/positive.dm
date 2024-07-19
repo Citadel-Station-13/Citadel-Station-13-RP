@@ -148,6 +148,7 @@
 	desc = "15% less damage, 12.5% less air. (14kpa min)"
 	cost = 2
 	var_changes = list("minimum_breath_pressure" = 14, "oxy_mod" = 0.85)
+	extra_id_info = "Employee only requires an atmospheric pressure of <b>14kPa</b> to breathe."
 
 	group = /datum/trait_group/oxy
 	group_short_name = "Minor Resist"
@@ -159,6 +160,7 @@
 	cost = 3
 	var_changes = list("minimum_breath_pressure" = 12, "oxy_mod" = 0.75)
 	excludes = list(/datum/trait/positive/oxy_resist,/datum/trait/positive/oxy_resist_plus)
+	extra_id_info = "Employee only requires an atmospheric pressure of <b>12kPa</b> to breathe."
 
 	group = /datum/trait_group/oxy
 	group_short_name = "Resist"
@@ -232,6 +234,7 @@
 	name = "Antiseptic Saliva"
 	desc = "Does the same thing, costs more. Weird."
 	cost = 1
+	extra_id_info = "Employee's saliva carries antiseptic properties."
 
 	group = /datum/trait_group/vampirism
 	group_short_name = "Saliva"
