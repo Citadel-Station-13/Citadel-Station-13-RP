@@ -279,18 +279,8 @@
 		return
 
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-	spark_system.set_up(5, 0, user.loc)
+	spark_system.set_up(5, 0, defending.loc)
 	spark_system.start()
-
-/obj/item/melee/transforming/energy/sword/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
-	if(user.incapacitated() || !istype(damage_source, /obj/projectile/))
-		return 0
-
-	var/bad_arc = global.reverse_dir[user.dir]
-	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
-		return 0
-
-	return 1
 
 /obj/item/melee/transforming/energy/sword/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/transforming/energy/sword))

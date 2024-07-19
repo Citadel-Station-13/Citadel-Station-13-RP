@@ -102,11 +102,13 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  * * defending - the atom in question
  * * e_args (optional) the clickchain event, if any; **This is mutable.**
  * * fake_attack - just checking!
+ * * contact_flags - SHIELDCALL_CONTACT_FLAG_*
+ * * contact_specific - SHIELDCALL_CONTACT_SPECIFIC_*
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_touch(atom/defending, datum/event_args/actor/clickchain/e_args, fake_attack)
-#warn screaming - this needs more args!!
+/datum/shieldcall/proc/handle_touch(atom/defending, datum/event_args/actor/clickchain/e_args, fake_attack, contact_flags, contact_specific)
+	return NONE
 
 //* Projectile Handling *//
 

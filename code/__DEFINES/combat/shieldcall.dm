@@ -119,3 +119,32 @@
 
 	if(!.)
 		. = "the attack"
+
+//* handle_touch - contact_flags *//.
+
+// broad descriptors
+
+/// generally helpful actions (shake up, etc)
+#define SHIELDCALL_CONTACT_FLAG_HELPFUL (1<<0)
+/// potentially helpful but also potentially harmful actions
+#define SHIELDCALL_CONTACT_FLAG_NEUTRAL (1<<1)
+/// harmful actions
+#define SHIELDCALL_CONTACT_FLAG_HARMFUL (1<<2)
+
+// categories
+
+/// medical items/techniques
+#define SHIELDCALL_CONTACT_FLAG_MEDICAL (1<<23)
+
+//* handle_touch - contact_specific *//
+
+/// trying to inject someone
+#define SHIELDCALL_CONTACT_SPECIFIC_SYRINGE_INJECTION "inject"
+/// trying to shake someone up
+#define SHIELDCALL_CONTACT_SPECIFIC_SHAKE_UP "help"
+/// trying to drag someone
+#define SHIELDCALL_CONTACT_SPECIFIC_PULL "pull"
+/// trying to grab someone, **or** intensify a grab
+#define SHIELDCALL_CONTACT_SPECIFIC_GRAB "grab"
+/// trying to perform a surgery step - generic
+#define SHIELDCALL_CONTACT_SPECIFIC_SURGERY "surgery"

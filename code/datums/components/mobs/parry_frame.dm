@@ -20,6 +20,11 @@
 	var/start_time
 	/// applied visual
 	var/appearance/overlay_applied
+	/// registered shieldcall
+	var/datum/shieldcall/bound/shieldcall
+
+/datum/shieldcall/bound/parry_frame
+	expected_type = /datum/component/parry_frame
 
 #warn impl
 
@@ -139,3 +144,42 @@
 	/// list can be weighted by associated number for relative chance
 	var/list/parry_sfx
 	#warn default
+
+#warn impl all
+
+//* Bindings - Bullet *//
+
+/datum/shieldcall/bound/parry_frame/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
+	. = ..()
+
+/datum/parry_frame/proc/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
+	#warn impl
+
+//* Bindings - Melee *//
+
+/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack)
+	. = ..()
+
+/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack)
+	. = ..()
+
+/datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, datum/event_args/actor/clickchain/e_args, fake_attack, contact_flags, contact_specific)
+	. = ..()
+
+/datum/parry_frame/proc/handle_
+
+#warn handle_touch
+
+
+
+//* Bindings - Thrown *//
+
+/datum/shieldcall/bound/parry_frame/handle_throw_impact(atom/defending, datum/thrownthing/thrown)
+	. = ..()
+
+/**
+ * @params
+ * * defending - the thing being hit
+ * 
+ */
+/datum/parry_frame/proc/handle_throw_impact(atom/defending, efficiency, datum/thrownthing/thrown)
