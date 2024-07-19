@@ -144,7 +144,7 @@ export const TraitSelectorModal = (_, context) => {
     );
 
     // == Build cards from groups ==
-    let groupCards: Section[] = [];
+    let groupCards: any[] = [];
     for (let group of orderedGroups) {
       // -- can this group be shown? --
       let canBeShown = (() => {
