@@ -268,17 +268,13 @@
 	name = "Photosensitive"
 	desc = "You are incredibly vulnerable to bright lights. You are blinded for longer and your skin burns under extreme light."
 	cost = -1
-<<<<<<< HEAD
 	var_changes = list("flash_mod" = 2, "flash_burn" = 5)
 
 	group = /datum/trait_group/photosensitivity
 	group_short_name = "Photosensitive"
 	sort_key = "4-Photosensitive"
-=======
+
 	extra_id_info = "Employee is exceptionally sensitive to bright lights."
-	var_changes = list("flash_mod" = 2)
-	var_changes = list("flash_burn" = 5)
->>>>>>> master
 
 /datum/trait/negative/hemophilia
 	name = "Hemophilia"

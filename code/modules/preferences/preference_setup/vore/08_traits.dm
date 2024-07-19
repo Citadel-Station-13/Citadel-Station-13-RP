@@ -77,7 +77,6 @@
 	S["custom_exclaim"]	<< pref.custom_exclaim
 
 /datum/category_item/player_setup_item/vore/traits/sanitize_character()
-	// TODO: Call into the new traits code
 	if(!pref.pos_traits) pref.pos_traits = list()
 	if(!pref.neu_traits) pref.neu_traits = list()
 	if(!pref.neg_traits) pref.neg_traits = list()
