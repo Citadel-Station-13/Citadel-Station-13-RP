@@ -3324,7 +3324,7 @@
 /obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "bXx" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -7100,7 +7100,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "eze" = (
 /obj/effect/floor_decal/borderfloor{
@@ -13203,7 +13203,7 @@
 /obj/machinery/chemical_dispenser/catering/bar_coffee{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "ipW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -17132,7 +17132,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "kUk" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -17740,7 +17740,7 @@
 /obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "lig" = (
 /obj/machinery/fire_alarm/south_mount{
@@ -19877,7 +19877,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "mwd" = (
 /obj/structure/table/woodentable,
@@ -21816,7 +21816,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "nDj" = (
 /obj/effect/floor_decal/borderfloor{
@@ -24689,7 +24689,7 @@
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "pqG" = (
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "pqQ" = (
 /obj/effect/floor_decal/spline/plain{
@@ -27822,7 +27822,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "rnL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -29881,7 +29881,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 30
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "sMx" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -32701,7 +32701,7 @@
 /area/rnd/workshop)
 "uNE" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "uNH" = (
 /obj/structure/cable/green{
@@ -33762,7 +33762,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "vpt" = (
 /obj/structure/railing,
@@ -35701,7 +35701,7 @@
 	pixel_x = -32
 	},
 /obj/machinery/door/window/northright,
-/turf/simulated/floor/tiled/eris/cafe,
+/turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
 "wGI" = (
 /obj/structure/grille,
@@ -49233,8 +49233,8 @@ fIg
 neF
 neF
 neF
-pqG
-pqG
+neF
+neF
 aTl
 pqG
 lib
@@ -49427,8 +49427,8 @@ fIg
 wlU
 cwF
 tGt
-pqG
-pqG
+neF
+neF
 ouF
 pqG
 ipQ
@@ -49621,8 +49621,8 @@ fIg
 wlU
 cwF
 tGt
-pqG
-pqG
+neF
+neF
 ouF
 uNE
 bXk
