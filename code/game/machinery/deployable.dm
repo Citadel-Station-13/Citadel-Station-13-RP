@@ -14,6 +14,7 @@
 	pass_flags_self = ATOM_PASS_TABLE
 	integrity = 200
 	integrity_max = 200
+	worth_intrinsic = 150
 	var/locked = FALSE
 //	req_access = list(ACCESS_ENGINEERING_MAINT)
 

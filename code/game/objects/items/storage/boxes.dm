@@ -122,6 +122,8 @@
 		/obj/item/dnainjector/m2h = 3
 	)
 
+// todo: all this should be special ammo magazines or something i hate abusing box-code lmao
+
 /obj/item/storage/box/blanks
 	name = "box of blank shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."

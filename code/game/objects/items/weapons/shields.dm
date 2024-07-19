@@ -70,6 +70,7 @@
 	origin_tech = list(TECH_MATERIAL = 2)
 	materials_base = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
+	worth_intrinsic = 300
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
 /obj/item/shield/riot/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")

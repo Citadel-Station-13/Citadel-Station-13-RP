@@ -246,7 +246,7 @@
 	container_name = "Apidean Weaponry crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 
-/datum/supply_pack2/nanotrasen/misc/weaponry_tyrmalin
+/datum/supply_pack2/nanotrasen/munitions/weaponry_tyrmalin
 	name = "Tyrmalin Weaponry Crate"
 	contains = list(
 			/obj/item/gun/energy/ermitter = 1,
@@ -259,3 +259,24 @@
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Weaponry crate"
 	access = ACCESS_SECURITY_EQUIPMENT
+
+/datum/supply_pack2/nanotrasen/munitions/battlerifle
+	name = "Battle Rifle Pack"
+	contains = list(
+			/obj/item/gun/ballistic/automatic/battlerifle = 2,
+			/obj/item/ammo_magazine/m95 = 4
+			)
+	cost = 60
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
+	access = ACCESS_SECURITY_ARMORY
+
+/datum/supply_pack2/nanotrasen/munitions/quadshot
+	name = "Quad Shotgun Pack"
+	contains = list(
+			/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 2,
+			/obj/item/storage/box/shotgunshells = 2,
+			/obj/item/storage/belt/security/tactical/bandolier = 2,
+			)
+	cost = 70
+	container_type = /obj/structure/closet/crate/secure/corporate/heph
+	access = ACCESS_SECURITY_ARMORY

@@ -82,7 +82,7 @@
 	rad = 0.1
 
 /datum/armor/station/combat
-	melee = 0.15
+	melee = 0.35
 	bullet = 0.5
 	bullet_soak = 2
 	laser = 0.5

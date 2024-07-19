@@ -4,38 +4,38 @@
 */
 
 
-/datum/supply_pack2/nanotrasen/eng
+/datum/supply_pack2/nanotrasen/engineering
 	group = "Engineering"
 
-/datum/supply_pack2/nanotrasen/eng/lightbulbs
+/datum/supply_pack2/nanotrasen/engineering/lightbulbs
 	name = "Replacement lights"
 	contains = list(/obj/item/storage/box/lights/mixed = 3)
 	cost = 10
 	container_type = /obj/structure/closet/crate
 	container_name = "Replacement lights"
 
-/datum/supply_pack2/nanotrasen/eng/smescoil
+/datum/supply_pack2/nanotrasen/engineering/smescoil
 	name = "Superconducting Magnetic Coil"
 	contains = list(/obj/item/smes_coil)
 	cost = 20
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "Superconducting Magnetic Coil crate"
 
-/datum/supply_pack2/nanotrasen/eng/smescoil/super_capacity
+/datum/supply_pack2/nanotrasen/engineering/smescoil/super_capacity
 	name = "Superconducting Capacitance Coil"
 	contains = list(/obj/item/smes_coil/super_capacity)
 	cost = 25
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "Superconducting Capacitance Coil crate"
 
-/datum/supply_pack2/nanotrasen/eng/smescoil/super_io
+/datum/supply_pack2/nanotrasen/engineering/smescoil/super_io
 	name = "Superconducting Transmission Coil"
 	contains = list(/obj/item/smes_coil/super_io)
 	cost = 25
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "Superconducting Transmission Coil crate"
 
-/datum/supply_pack2/nanotrasen/eng/electrical
+/datum/supply_pack2/nanotrasen/engineering/electrical
 	name = "Electrical maintenance crate"
 	contains = list(
 			/obj/item/storage/toolbox/electrical = 2,
@@ -47,7 +47,7 @@
 	container_type = /obj/structure/closet/crate/engineering/electrical
 	container_name = "Electrical maintenance crate"
 
-/datum/supply_pack2/nanotrasen/eng/e_welders
+/datum/supply_pack2/nanotrasen/engineering/e_welders
 	name = "Electric welder crate"
 	contains = list(
 			/obj/item/weldingtool/electric = 3
@@ -56,7 +56,7 @@
 	container_type = /obj/structure/closet/crate/engineering/electrical
 	container_name = "Electric welder crate"
 
-/datum/supply_pack2/nanotrasen/eng/mechanical
+/datum/supply_pack2/nanotrasen/engineering/mechanical
 	name = "Mechanical maintenance crate"
 	contains = list(
 			/obj/item/storage/belt/utility/full = 3,
@@ -68,14 +68,14 @@
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "Mechanical maintenance crate"
 
-/datum/supply_pack2/nanotrasen/eng/fueltank
+/datum/supply_pack2/nanotrasen/engineering/fueltank
 	name = "Fuel tank crate"
 	contains = list(/obj/structure/reagent_dispensers/fueltank)
 	cost = 10
 	container_type = /obj/structure/largecrate
 	container_name = "fuel tank crate"
 
-/datum/supply_pack2/nanotrasen/eng/solar
+/datum/supply_pack2/nanotrasen/engineering/solar
 	name = "Solar Pack crate"
 	contains  = list(
 			/obj/item/frame2/solar_panel = 21,
@@ -87,7 +87,7 @@
 	container_type = /obj/structure/closet/crate/corporate/focalpoint
 	container_name = "Solar pack crate"
 
-/datum/supply_pack2/nanotrasen/eng/engine
+/datum/supply_pack2/nanotrasen/engineering/engine
 	name = "Emitter crate"
 	contains = list(/obj/machinery/power/emitter = 2)
 	cost = 10
@@ -95,28 +95,28 @@
 	container_name = "Emitter crate"
 	access = ACCESS_ENGINEERING_MAIN
 
-/datum/supply_pack2/nanotrasen/eng/engine/field_gen
+/datum/supply_pack2/nanotrasen/engineering/engine/field_gen
 	name = "Field Generator crate"
 	contains = list(/obj/machinery/field_generator = 2)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Field Generator crate"
 	access = ACCESS_ENGINEERING_CE
 
-/datum/supply_pack2/nanotrasen/eng/engine/sing_gen
+/datum/supply_pack2/nanotrasen/engineering/engine/sing_gen
 	name = "Singularity Generator crate"
 	contains = list(/obj/machinery/the_singularitygen)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Singularity Generator crate"
 	access = ACCESS_ENGINEERING_CE
 
-/datum/supply_pack2/nanotrasen/eng/engine/collector
+/datum/supply_pack2/nanotrasen/engineering/engine/collector
 	name = "Collector crate"
 	contains = list(/obj/machinery/power/rad_collector = 3)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "collector crate"
 	access = ACCESS_ENGINEERING_MAIN
 
-/datum/supply_pack2/nanotrasen/eng/engine/PA
+/datum/supply_pack2/nanotrasen/engineering/engine/PA
 	name = "Particle Accelerator crate"
 	cost = 40
 	contains = list(
@@ -133,7 +133,7 @@
 	container_name = "Particle Accelerator crate"
 	access = ACCESS_ENGINEERING_CE
 
-/datum/supply_pack2/nanotrasen/eng/shield_generator
+/datum/supply_pack2/nanotrasen/engineering/shield_generator
 	name = "Shield Generator Construction Kit"
 	contains = list(
 		/obj/item/circuitboard/shield_generator,
@@ -147,7 +147,7 @@
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "shield generator construction kit crate"
 
-/datum/supply_pack2/nanotrasen/eng/smbig
+/datum/supply_pack2/nanotrasen/engineering/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
 	cost = 150
@@ -155,7 +155,7 @@
 	container_name = "Supermatter crate (CAUTION)"
 	access = ACCESS_ENGINEERING_CE
 
-/datum/supply_pack2/nanotrasen/eng/teg
+/datum/supply_pack2/nanotrasen/engineering/teg
 	contains = list(
 		/obj/machinery/power/generator,
 		/obj/machinery/atmospherics/component/binary/circulator = 2)
@@ -165,7 +165,7 @@
 	container_name = "Mk1 TEG crate"
 	access = ACCESS_ENGINEERING_MAIN
 /*
-/datum/supply_pack2/nanotrasen/eng/circulator
+/datum/supply_pack2/nanotrasen/engineering/circulator
 	contains = list(/obj/machinery/atmospherics/component/binary/circulator = 2)
 	name = "Binary atmospheric circulators"
 	cost = 15
@@ -173,7 +173,7 @@
 	container_name = "Atmospheric circulators crate"
 	access = ACCESS_ENGINEERING_MAIN
 */
-/datum/supply_pack2/nanotrasen/eng/radsuit
+/datum/supply_pack2/nanotrasen/engineering/radsuit
 	contains = list(
 			/obj/item/clothing/suit/radiation = 3,
 			/obj/item/clothing/head/radiation = 3
@@ -183,7 +183,7 @@
 	container_type = /obj/structure/closet/radiation
 	container_name = "Radiation suit locker"
 
-/datum/supply_pack2/nanotrasen/eng/pacman_parts
+/datum/supply_pack2/nanotrasen/engineering/pacman_parts
 	name = "P.A.C.M.A.N. portable generator parts"
 	cost = 25
 	container_name = "P.A.C.M.A.N. Portable Generator Construction Kit"
@@ -196,7 +196,7 @@
 			/obj/item/circuitboard/pacman
 			)
 
-/datum/supply_pack2/nanotrasen/eng/super_pacman_parts
+/datum/supply_pack2/nanotrasen/engineering/super_pacman_parts
 	name = "Super P.A.C.M.A.N. portable generator parts"
 	cost = 35
 	container_name = "Super P.A.C.M.A.N. portable generator construction kit"
@@ -209,7 +209,7 @@
 			/obj/item/circuitboard/pacman/super
 			)
 
-/datum/supply_pack2/nanotrasen/eng/fusion_core
+/datum/supply_pack2/nanotrasen/engineering/fusion_core
 	name = "R-UST Mk. 8 Tokamak fusion core crate"
 	cost = 50
 	container_name = "R-UST Mk. 8 Tokamak Fusion Core crate"
@@ -221,7 +221,7 @@
 			/obj/item/circuitboard/fusion_core_control
 			)
 
-/datum/supply_pack2/nanotrasen/eng/fusion_fuel_injector
+/datum/supply_pack2/nanotrasen/engineering/fusion_fuel_injector
 	name = "R-UST Mk. 8 fuel injector crate"
 	cost = 30
 	container_name = "R-UST Mk. 8 fuel injector crate"
@@ -233,7 +233,7 @@
 			/obj/item/circuitboard/fusion_fuel_control
 			)
 
-/datum/supply_pack2/nanotrasen/eng/gyrotron
+/datum/supply_pack2/nanotrasen/engineering/gyrotron
 	name = "Gyrotron crate"
 	cost = 15
 	container_name = "Gyrotron Crate"
@@ -244,7 +244,7 @@
 			/obj/item/circuitboard/gyrotron_control
 			)
 
-/datum/supply_pack2/nanotrasen/eng/fusion_fuel_compressor
+/datum/supply_pack2/nanotrasen/engineering/fusion_fuel_compressor
 	name = "Fusion Fuel Compressor circuitry crate"
 	cost = 10
 	container_name = "Fusion Fuel Compressor circuitry crate"
@@ -257,7 +257,7 @@
 			/obj/item/stack/cable_coil = 5
 			)
 
-/datum/supply_pack2/nanotrasen/eng/reflector
+/datum/supply_pack2/nanotrasen/engineering/reflector
 	name = "Reflector crate"
 	cost = 60
 	container_name = "Reflector crate"
@@ -266,14 +266,14 @@
 			/obj/structure/prop/prism/reflector = 1
 			)
 
-/datum/supply_pack2/nanotrasen/eng/tritium
+/datum/supply_pack2/nanotrasen/engineering/tritium
 	name = "Tritium crate"
 	cost = 75
 	container_name = "Tritium crate"
 	container_type = /obj/structure/closet/crate/engineering
 	contains = list(/obj/fiftyspawner/tritium)
 
-/datum/supply_pack2/nanotrasen/eng/engine/fission
+/datum/supply_pack2/nanotrasen/engineering/engine/fission
 	name = "Fission Starter crate"
 	contains = list(/obj/machinery/power/fission,
 			/obj/item/circuitboard/fission_monitor,
@@ -285,7 +285,7 @@
 	container_name = "fission core crate"
 	access = ACCESS_ENGINEERING_CE
 
-/datum/supply_pack2/nanotrasen/eng/engine/fission/expansion
+/datum/supply_pack2/nanotrasen/engineering/engine/fission/expansion
 	name = "Fission Expansion crate"
 	contains = list(/obj/item/circuitboard/fission_monitor,
 			/obj/item/storage/briefcase/fission/uranium,
@@ -296,51 +296,59 @@
 	container_name = "fission expansion crate"
 	access = ACCESS_ENGINEERING_CE
 
-/datum/supply_pack2/nanotrasen/eng/thermoregulator
+/datum/supply_pack2/nanotrasen/engineering/thermoregulator
 	contains = list(/obj/machinery/power/thermoregulator)
 	name = "Thermal Regulator"
 	cost = 30
 	container_type = /obj/structure/closet/crate/large
 	container_name = "thermal regulator crate"
 
-/datum/supply_pack2/nanotrasen/eng/radsuit
+/datum/supply_pack2/nanotrasen/engineering/radsuit
 	contains = list(
 			/obj/item/clothing/suit/radiation = 3,
 			/obj/item/clothing/head/radiation = 3
 			)
 
-/datum/supply_pack2/nanotrasen/eng/algae
+/datum/supply_pack2/nanotrasen/engineering/algae
 	contains = list(/obj/item/stack/material/algae/ten)
 	name = "Algae Sheets (10)"
 	cost = 20
 	container_type = /obj/structure/closet/crate
 	container_name = "algae sheets crate"
 
-/datum/supply_pack2/nanotrasen/eng/engine/tesla_gen
+/datum/supply_pack2/nanotrasen/engineering/engine/tesla_gen
 	name = "Tesla Generator crate"
 	contains = list(/obj/machinery/the_singularitygen/tesla)
 	container_type = /obj/structure/closet/crate/secure/engineering
 	container_name = "Tesla Generator crate"
 	access = ACCESS_ENGINEERING_CE
 
-/datum/supply_pack2/nanotrasen/eng/point_defense_cannon_circuit
+/datum/supply_pack2/nanotrasen/engineering/point_defense_cannon_circuit
 	name = "Point Defense Turret Circuit"
 	contains = list(/obj/item/circuitboard/pointdefense = 2)
 	cost = 20
 	container_type = /obj/structure/closet/crate/corporate/heph
 	container_name = "point defense turret circuit crate"
 
-/datum/supply_pack2/nanotrasen/eng/point_defense_control_circuit
+/datum/supply_pack2/nanotrasen/engineering/point_defense_control_circuit
 	name = "Point Defense Controller Circuit"
 	contains = list(/obj/item/circuitboard/pointdefense_control = 1)
 	cost = 30
 	container_type = /obj/structure/closet/crate/corporate/heph
 	container_name = "point defense mainframe circuit crate"
 
-/datum/supply_pack2/nanotrasen/eng/portable_pump
+/datum/supply_pack2/nanotrasen/engineering/portable_pump
 	name = "Portable Pump (2x)"
 	contains = list(
 		/obj/machinery/portable_atmospherics/powered/pump = 2
 	)
 	cost = 10
 	container_name = "portable pumps crate"
+
+/datum/supply_pack2/nanotrasen/engineering/securityshieldgen
+	name = "Misc - Wall shield generators"
+	contains = list(/obj/machinery/shieldwallgen = 4)
+	cost = 20
+	container_type = /obj/structure/closet/crate/secure
+	container_name = "Wall shield generators crate"
+	access = ACCESS_COMMAND_TELEPORTER

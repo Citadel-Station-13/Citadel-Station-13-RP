@@ -182,49 +182,49 @@
 	name = "Thermo-Electric Generator voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Thermo-Electric Generator"
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/teg
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/teg
 
 /obj/item/engineering_voucher/collectors
 	name = "Radiation Collector voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of crate of radiation collectors"
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/engine/collector
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/engine/collector
 
 /obj/item/engineering_voucher/smcore
 	name = "Supermatter Core voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Supermatter core"
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/smbig
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/smbig
 
 /obj/item/engineering_voucher/fusion_core
 	name = "Fusion Core voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a fusion core"
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/fusion_core
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/fusion_core
 
 /obj/item/engineering_voucher/fusion_fuel_injector
 	name = "Fuel Injector voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a fusion fuel injector"
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/fusion_fuel_injector
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/fusion_fuel_injector
 
 /obj/item/engineering_voucher/gyrotrons
 	name = "Gyrotron voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of Gyrotrons"
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/gyrotron
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/gyrotron
 
 /obj/item/engineering_voucher/fuel_compressor
 	name = "Fuel compressor voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Fuel rod compressor"
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/fusion_fuel_compressor
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/fusion_fuel_compressor
 
 /obj/item/engineering_voucher/reflector
 	name = "Laser reflector voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for a single laser reflector."
 	icon_state = "engineering_voucher"
-	redeemable_for = new /datum/supply_pack2/nanotrasen/eng/fusion_fuel_compressor
+	redeemable_for = new /datum/supply_pack2/nanotrasen/engineering/fusion_fuel_compressor
 
 /obj/item/engineering_mystical_tech
 	name = "XYE"

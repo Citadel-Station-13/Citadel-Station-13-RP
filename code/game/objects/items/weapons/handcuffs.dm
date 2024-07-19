@@ -13,6 +13,7 @@
 	materials_base = list(MAT_STEEL = 500)
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	worth_intrinsic = 25
 	var/elastic
 	var/dispenser = 0
 	var/breakouttime = 1200 //Deciseconds = 120s = 2 minutes
@@ -153,6 +154,8 @@ var/last_chew = 0
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_type = "cable restraints"
 	elastic = 0 //citadel change, why would cable be better than actual handcuffs? who knows.
+	worth_intrinsic = 10
+	economic_category_obj = ECONOMIC_CATEGORY_OBJ_SCRAP
 
 /obj/item/handcuffs/cable/red
 	color = "#DD0000"

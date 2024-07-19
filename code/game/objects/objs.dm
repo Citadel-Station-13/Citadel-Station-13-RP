@@ -60,6 +60,8 @@
 	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
 	var/worth_intrinsic = 0
 	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
+	///
+	/// * set this to a multiple of WORTH_ELASTICITY_DEFAULT if possible.
 	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
 	/// default worth flags to use when buying
 	var/worth_buy_flags = GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING
