@@ -2,6 +2,11 @@
 	var/name
 	var/desc = "Contact a developer if you see this trait."
 
+	/// Extra IC information about this trait that gets placed within the confidential flap of ID cards
+	var/extra_id_info
+	/// Whether or not this trait can have extra info opted out of
+	var/extra_id_info_optional = TRUE
+
 	/// 0 is neutral, negative cost means negative, positive cost means positive.
 	var/cost = 0
 	/// A list to apply to the custom species vars.
