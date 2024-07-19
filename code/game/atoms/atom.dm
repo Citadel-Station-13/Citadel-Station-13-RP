@@ -60,8 +60,6 @@
 	var/worth_containing = 0
 	/// static worth of raw materials - only read if getting a static worth from typepath.
 	var/worth_materials = 0
-	/// intrinsic worth default markup when buying as factor (2 for 2x)
-	var/worth_buy_factor = WORTH_BUY_FACTOR_DEFAULT
 	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
 	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
 	/**
