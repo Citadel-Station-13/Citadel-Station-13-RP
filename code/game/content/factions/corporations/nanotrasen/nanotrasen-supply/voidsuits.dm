@@ -1,5 +1,5 @@
 /datum/supply_pack2/nanotrasen/voidsuit
-	group = "Voidsuits"
+	category = "Voidsuits"
 
 /**
  * for single types of voidsuits

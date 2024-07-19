@@ -4,10 +4,7 @@
 */
 
 /datum/supply_pack2/nanotrasen/misc
-	group = "Miscellaneous"
-
-/datum/supply_pack2/nanotrasen/randomised/misc
-	group = "Miscellaneous"
+	category = "Miscellaneous"
 
 /datum/supply_pack2/nanotrasen/randomised/misc/card_packs
 	num_contained = 5

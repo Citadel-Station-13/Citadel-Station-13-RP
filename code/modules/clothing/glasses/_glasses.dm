@@ -152,6 +152,7 @@ BLIND     // can't see anything
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
 	vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
+	worth_intrinsic = 125
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription mesons"

@@ -26,6 +26,7 @@
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 500)
+	worth_intrinsic = 40
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"

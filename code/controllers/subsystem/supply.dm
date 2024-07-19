@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(supply)
 /datum/supply_order
 	var/ordernum							// Unfabricatable index
 	var/index								// Fabricatable index
-	var/datum/supply_pack/object = null
+	var/datum/supply_pack2/object = null
 	var/cost								// Cost of the supply pack (Fabricatable) (Changes not reflected when purchasing supply packs, this is cosmetic only)
 	var/name								// Name of the supply pack datum (Fabricatable)
 	var/ordered_by = null					// Who requested the order
@@ -55,8 +55,8 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/Initialize()
 	ordernum = rand(1,9000)
 
-	for(var/typepath in subtypesof(/datum/supply_pack))
-		var/datum/supply_pack/P = new typepath()
+	for(var/typepath in subtypesof(/datum/supply_pack2))
+		var/datum/supply_pack2/P = new typepath()
 		if(!P.legacy)
 			continue
 		legacy_supply_packs[P.name] = P

@@ -59,7 +59,12 @@
 	/// * don't be fooled; this **is** a lazy list! this means it's null while empty.
 	var/list/contains_custom_text = list()
 
-	#warn contains, contains_some_of
+	// * For Lazy People *//
+
+	/// amount contained
+	var/lazy_gacha_amount = 1
+	/// list of entities
+	var/list/lazy_gacha_contained
 
 	//* legacy *//
 	/// if null, it will be auto-converted from worth

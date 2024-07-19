@@ -9,6 +9,7 @@
 	min_pressure_protection = 0.4 * ONE_ATMOSPHERE
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_ANOMALY
 	weight = ITEM_WEIGHT_ARMOR_ANOMALY
+	worth_intrinsic = 75
 
 /obj/item/clothing/head/bio_hood/anomaly
 	name = "Anomaly hood"
@@ -20,6 +21,7 @@
 	min_pressure_protection = 0.4 * ONE_ATMOSPHERE
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_ANOMALY_HELMET
 	weight = ITEM_WEIGHT_ARMOR_ANOMALY_HELMET
+	worth_intrinsic = 375
 
 /obj/item/clothing/suit/space/anomaly
 	name = "Excavation suit"
@@ -31,6 +33,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_ANOMALY
 	weight = ITEM_WEIGHT_VOIDSUIT_ANOMALY
 	// Pressure protection inherited from space suits
+	worth_intrinsic = 450
 
 /obj/item/clothing/head/helmet/space/anomaly
 	name = "Excavation hood"
@@ -40,3 +43,4 @@
 	armor_type = /datum/armor/general/biosuit/anomaly
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_ANOMALY_HELMET
 	weight = ITEM_WEIGHT_VOIDSUIT_ANOMALY_HELMET
+	worth_intrinsic = 100

@@ -10,104 +10,105 @@
 	contains = list(
 		/obj/item/virusdish/random = 4,
 	)
-	cost = 25
 	container_type = "/obj/structure/closet/crate/secure"
 	container_name = "Virus sample crate"
-	access = ACCESS_MEDICAL_CMO
+	container_access = list(
+		/datum/access/station/medical/virology::access_value,
+	)
 
 /datum/supply_pack2/nanotrasen/science/coolanttank
 	name = "Coolant tank crate"
 	contains = list(/obj/structure/reagent_dispensers/coolanttank)
-	cost = 15
+	worth = 350 // reagent worth unimplemented
 	container_type = /obj/structure/largecrate
 	container_name = "coolant tank crate"
 
 /datum/supply_pack2/nanotrasen/science/phoron
 	name = "Phoron research crate"
 	contains = list(
-			/obj/item/tank/phoron = 3,
-			/obj/item/tank/oxygen = 3,
-			/obj/item/assembly/igniter = 3,
-			/obj/item/assembly/prox_sensor = 3,
-			/obj/item/assembly/timer = 3,
-			/obj/item/assembly/signaler = 3,
-			/obj/item/transfer_valve = 3
-			)
-	cost = 10
+		/obj/item/tank/phoron = 3,
+		/obj/item/tank/oxygen = 3,
+		/obj/item/assembly/igniter = 3,
+		/obj/item/assembly/prox_sensor = 3,
+		/obj/item/assembly/timer = 3,
+		/obj/item/assembly/signaler = 3,
+		/obj/item/transfer_valve = 3,
+	)
 	container_type = /obj/structure/closet/crate/secure/phoron
 	container_name = "Phoron assembly crate"
-	access = ACCESS_SCIENCE_TOXINS
+	container_access = list(
+		/datum/access/station/science/toxins::access_value,
+	)
 
 /datum/supply_pack2/nanotrasen/science/exoticseeds
 	name = "Exotic seeds crate"
 	contains = list(
-			/obj/item/seeds/replicapod = 2,
-			/obj/item/seeds/ambrosiavulgarisseed = 2,
-			/obj/item/seeds/libertymycelium,
-			/obj/item/seeds/reishimycelium,
-			/obj/item/seeds/random = 6,
-			/obj/item/seeds/kudzuseed
-			)
-	cost = 15
+		/obj/item/seeds/replicapod = 2,
+		/obj/item/seeds/ambrosiavulgarisseed = 2,
+		/obj/item/seeds/libertymycelium,
+		/obj/item/seeds/reishimycelium,
+		/obj/item/seeds/random = 6,
+		/obj/item/seeds/kudzuseed,
+	)
+	worth = 650
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Exotic Seeds crate"
-	access = ACCESS_GENERAL_BOTANY
 
 /datum/supply_pack2/nanotrasen/science/integrated_circuit_printer
 	name = "Integrated circuit printer"
-	contains = list(/obj/item/integrated_circuit_printer = 2)
-	cost = 15
+	contains = list(
+		/obj/item/integrated_circuit_printer = 2,
+	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Integrated circuit crate"
 
 /datum/supply_pack2/nanotrasen/science/integrated_circuit_printer_upgrade
 	name = "Integrated circuit printer upgrade - advanced designs"
-	contains = list(/obj/item/disk/integrated_circuit/upgrade/advanced)
-	cost = 30
+	contains = list(
+		/obj/item/disk/integrated_circuit/upgrade/advanced,
+	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Integrated circuit crate"
 
 /datum/supply_pack2/nanotrasen/science/xenoarch
 	name = "Xenoarchaeology Tech crate"
 	contains = list(
-				/obj/item/pickaxe/excavationdrill,
-				/obj/item/xenoarch_multi_tool,
-				/obj/item/clothing/suit/space/anomaly,
-				/obj/item/clothing/head/helmet/space/anomaly,
-				/obj/item/storage/belt/archaeology,
-				/obj/item/flashlight/lantern,
-				/obj/item/core_sampler,
-				/obj/item/gps,
-				/obj/item/beacon_locator,
-				/obj/item/radio/beacon,
-				/obj/item/clothing/glasses/meson,
-				/obj/item/pickaxe,
-				/obj/item/storage/bag/fossils,
-				/obj/item/hand_labeler)
-	cost = 100
+		/obj/item/pickaxe/excavationdrill,
+		/obj/item/xenoarch_multi_tool,
+		/obj/item/clothing/suit/space/anomaly,
+		/obj/item/clothing/head/helmet/space/anomaly,
+		/obj/item/storage/belt/archaeology,
+		/obj/item/flashlight/lantern,
+		/obj/item/core_sampler,
+		/obj/item/gps,
+		/obj/item/beacon_locator,
+		/obj/item/radio/beacon,
+		/obj/item/clothing/glasses/meson,
+		/obj/item/pickaxe,
+		/obj/item/storage/bag/fossils,
+		/obj/item/hand_labeler,
+	)
 	container_type = /obj/structure/closet/crate/secure/science
 	container_name = "Xenoarchaeology Tech crate"
-	access = ACCESS_SCIENCE_MAIN
 
 /datum/supply_pack2/nanotrasen/science/jukebox_circuitboard
 	name = "Jukebox Circuit Board crate"
-	contains = list(/obj/item/circuitboard/jukebox = 2)
-	cost = 25
+	contains = list(
+		/obj/item/circuitboard/jukebox = 2,
+	)
 	container_type = /obj/structure/closet/crate
 	container_name = "Jukebox Circuit Board crate"
 
 
 /datum/supply_pack2/nanotrasen/science/pred
 	name = "Dangerous Predator crate"
-	cost = 40
 	container_type = /obj/structure/largecrate/animal/pred
 	container_name = "Dangerous Predator crate"
-	access = ACCESS_SCIENCE_XENOBIO
+	worth = 350
 
 /datum/supply_pack2/nanotrasen/science/pred_doom
 	name = "EXTREMELY Dangerous Predator crate"
-	cost = 200
 	container_type = /obj/structure/largecrate/animal/dangerous
 	container_name = "EXTREMELY Dangerous Predator crate"
-	access = ACCESS_SCIENCE_XENOBIO
-	contraband = 1
+	legacy_contraband = 1
+	worth = 550

@@ -26,6 +26,8 @@
 	allow_quick_empty = TRUE
 	allow_quick_empty_via_attack_self = TRUE
 
+	worth_intrinsic = 75
+
 	var/auto_fit_weight_class_to_largest_contained = TRUE
 
 /obj/item/storage/bag/Entered(atom/movable/AM, atom/oldLoc)

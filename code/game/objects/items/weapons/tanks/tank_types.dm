@@ -84,6 +84,7 @@
 	icon_state = "phoron"
 	gauge_icon = null
 	slot_flags = null	//they have no straps!
+	worth_intrinsic = 75 // heavy duty
 
 /obj/item/tank/phoron/Initialize(mapload)
 	. = ..()
