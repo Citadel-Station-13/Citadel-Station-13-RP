@@ -326,7 +326,6 @@
 		var/tgui_data = compute_tgui_data(mode, available_traits, constraints)
 		var/traits_submission = tgui_trait_select(user, tgui_data)
 		if (traits_submission != null)
-			to_chat(world, "traits " + json_encode(traits_submission))
 			apply_traits(FALSE, traits_submission, available_traits, constraints)
 
 		return PREFERENCES_REFRESH
@@ -343,7 +342,6 @@
 				var_exclude_groups[v] = list()
 			var_exclude_groups[v] += trait_path
 
-	to_chat(world, "var exclude groups: " + json_encode(var_exclude_groups))
 	var/list/explicit_excludes = list()
 	for (var/trait_path in possible_traits)
 		explicit_excludes[trait_path] = list()
@@ -357,7 +355,6 @@
 				explicit_excludes[trait_path] += list(other_path)
 				explicit_excludes[other_path] += list(trait_path)
 
-	to_chat(world, "explicit excludes: " + json_encode(explicit_excludes))
 	var/list/total_excludes = list()
 	for (var/trait_path in possible_traits)
 		var/datum/trait/trait = possible_traits[trait_path]
@@ -373,7 +370,6 @@
 
 				total_excludes[trait_path][other_path] = TRUE
 
-	to_chat(world, "total excludes: " + json_encode(total_excludes))
 	return total_excludes
 
 /datum/category_item/player_setup_item/vore/traits/proc/compute_available_traits()
@@ -474,23 +470,18 @@
 	var/input_was_invalid = FALSE
 
 	for (var/new_trait_path in new_trait_paths)
-		to_chat(world, "deciding whether to add: [new_trait_path]")
-
 		var/datum/traits_available_trait/new_trait_record = available_traits[new_trait_path]
 		if (!new_trait_record)
-			to_chat(world, "unrecognized")
 			input_was_invalid = TRUE
 			continue
 
 		if(new_trait_record.forbidden_reason)
 			// skip forbidden traits
-			to_chat(world, "forbidden: [new_trait_record.forbidden_reason]")
 			input_was_invalid = TRUE
 			continue
 
 		if(excluded[new_trait_path])
 			// and excluded traits
-			to_chat(world, "excluded: [new_trait_path]")
 			input_was_invalid = TRUE
 			continue
 
@@ -501,7 +492,6 @@
 
 		traits_to_apply += list(new_trait_path)
 
-	to_chat(world, "traits to apply: [traits_to_apply]")
 	var/n_traits = 0
 	var/total_cost = 0
 	for (var/new_trait_path in traits_to_apply)
@@ -515,7 +505,6 @@
 		var/datum/traits_available_trait/new_trait_record = available_traits[new_trait_path]
 		total_cost += new_trait_record.cost
 
-	to_chat(world, "n traits: [traits_to_apply]")
 	if (n_traits > constraints.max_traits)
 		input_was_invalid = TRUE
 
@@ -539,7 +528,7 @@
 		else if (negative_traits[trait])
 			pref.neg_traits += trait
 		else
-			to_chat(world, "couldn't figure out how to add: [trait]")
+			// ???: Should this alert somehow?
 
 /datum/category_item/player_setup_item/vore/traits/proc/tgui_trait_select(mob/user, trait_data)
 	var/datum/tgui_trait_selector/selector = new(user, trait_data)
@@ -606,23 +595,19 @@
 	// Validate basic format: actual validity of choices is up to our host
 	var/possible_submission = json_decode(submission_text)
 	if (!islist(possible_submission))
-		to_chat(world, "not list: [submission_text]")
 		return
 
 	var/traits = possible_submission["traits"]
 	if (traits == null)  // distinguish null from empty list
-		to_chat(world, "no traits: [submission_text]")
 		return
 
 	var/trait_paths = list()
 	for (var/trait_text in traits)  // list must be all text
 		if (!istext(trait_text))
-			to_chat(world, "not text: [trait_text]")
 			return
 
 		var/trait_path = text2path(trait_text)
 		if (!trait_path)
-			to_chat(world, "not path: [trait_path]")
 			return
 		trait_paths += trait_path
 
