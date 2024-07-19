@@ -1,10 +1,7 @@
-import { Loader } from './common/Loader';
 import { InputButtons } from './common/InputButtons';
-import { Box, Button, Input, LabeledList, Section, Stack, Table, Tooltip } from '../components';
+import { Box, Button, Input, LabeledList, Section, Stack, Table } from '../components';
 import { useBackend, useLocalState } from '../backend';
-import { KEY_A, KEY_DOWN, KEY_ESCAPE, KEY_ENTER, KEY_UP, KEY_Z } from '../../common/keycodes';
 import { Window } from '../layouts';
-import { TableRow } from '../components/Table';
 
 type TraitSelectorInputData = {
   initial_traits: string[],
@@ -55,14 +52,14 @@ type AvailableTraitData = {
 export const TraitSelectorModal = (_, context) => {
   const { act, data } = useBackend<TraitSelectorInputData>(context);
 
-  const containsLoosely = function(needle: string, haystack: string): boolean {
-    if (needle == "") { return true; }
+  const containsLoosely = function (needle: string, haystack: string): boolean {
+    if (needle === "") { return true; }
 
-    return haystack.toLowerCase().indexOf(needle.toLowerCase().trim()) != -1;
-  }
+    return haystack.toLowerCase().indexOf(needle.toLowerCase().trim()) !== -1;
+  };
 
   const [submission, setSubmission] = useLocalState<TraitSelectorSubmissionData>(
-    context, "submission", {traits: data.initial_traits}
+    context, "submission", { traits: data.initial_traits }
   );
 
   const [searchQuery, setSearchQuery] = useLocalState<string>(
@@ -77,24 +74,24 @@ export const TraitSelectorModal = (_, context) => {
       let newTraits = [...submission.traits];
       let ixExisting = newTraits.indexOf(trait);
       if (ixExisting !== -1) {
-        newTraits.splice(ixExisting, 1)
+        newTraits.splice(ixExisting, 1);
       } else {
         newTraits.push(trait);
       }
-      setSubmission({traits: newTraits})
+      setSubmission({ traits: newTraits });
     };
   };
 
 
   const generateTraitCards = () => {
     // == Build groups ==
-    let groups = {}
+    let groups = {};
     for (let traitPath in data.available_traits) {
       let trait = data.available_traits[traitPath];
 
       // -- is the trait even showable? --
       if (trait.forbidden_reason && !trait.show_when_forbidden) {
-        continue
+        continue;
       }
 
       // -- it is: find or make its group --
@@ -106,17 +103,27 @@ export const TraitSelectorModal = (_, context) => {
             name: desired_group.name,
             description: desired_group.description,
             sort_key: desired_group.sort_key ?? desired_group.name,
-            items: []
+            items: [],
           });
         }
-        existing.items.push({...trait, display_name: trait.group_short_name ?? trait.name, sort_key: trait.sort_key ?? trait.name, show_name: true});
+        existing.items.push({
+          ...trait, 
+          display_name: trait.group_short_name ?? trait.name, 
+          sort_key: trait.sort_key ?? trait.name, 
+          show_name: true,
+        });
       } else {
         groups[trait.internal_name] = {
           name: trait.name,
           description: "",
           sort_key: trait.sort_key ?? trait.name,
-          items: [{...trait, display_name: trait.name, sort_key: trait.sort_key ?? trait.name, show_name: false}]
-        }
+          items: [{
+            ...trait, 
+            display_name: trait.name, 
+            sort_key: trait.sort_key ?? trait.name, 
+            show_name: false,
+          }],
+        };
       }
     }
 
@@ -128,24 +135,24 @@ export const TraitSelectorModal = (_, context) => {
     }
 
     // == Sort the groups ==
-    let orderedGroups: TraitGroupData[] = []
+    let orderedGroups: TraitGroupData[] = [];
     for (let groupName in groups) {
       orderedGroups.push(groups[groupName]);
     }
     orderedGroups.sort(
       (x, y) => (x.sort_key ?? "").localeCompare(y.sort_key ?? "")
-    )
+    );
 
     // == Build cards from groups ==
     let groupCards: Section[] = [];
-    for (var group of orderedGroups) {
+    for (let group of orderedGroups) {
       // -- can this group be shown? --
       let canBeShown = (() => {
         if (containsLoosely(searchQuery, group.name)) {
           return true;
         }
 
-        for (var i of group.items ?? []) {
+        for (let i of group.items ?? []) {
           if (containsLoosely(searchQuery, i.name)) {
             return true;
 
@@ -164,20 +171,22 @@ export const TraitSelectorModal = (_, context) => {
       // -- OK, it can be shown --
       let itemCards: any[] = [];
 
-      for (var item of group.items ?? []) {
+      for (let item of group.items ?? []) {
         // -- our full description --
-        let description = <>
-          {item.show_name && <Box inline bold>{item.display_name}:</Box>} {" "}
-          {item.description}
-        </>
+        let description = (
+          <>
+            {item.show_name && <Box inline bold>{item.display_name}:</Box>} {" "}
+            {item.description}
+          </>
+        );
 
         // -- whether we're selected --
         let isSelected = submission.traits.indexOf(item.internal_name) !== -1;
 
         // -- whether we're disabled --
         let disabledReason = item.forbidden_reason;
-        if (disabledReason == undefined) {
-          for (var selectedTrait of submission.traits) {
+        if (!disabledReason) {
+          for (let selectedTrait of submission.traits) {
             let rec = data.available_traits[selectedTrait];
             if (rec.exclusive_with[item.internal_name]) {
               disabledReason = "This trait is exclusive with " + rec.name + ".";
@@ -187,7 +196,7 @@ export const TraitSelectorModal = (_, context) => {
         }
 
         // -- we can always drop a trait --
-        let isDisabled = disabledReason != null;
+        let isDisabled = !!disabledReason;
         if (isSelected) {
           isDisabled = false;
           disabledReason = undefined;
@@ -204,35 +213,39 @@ export const TraitSelectorModal = (_, context) => {
           onClick={addRemover(item.internal_name)}
         >
           {isDisabled ? (item.forbidden_reason ? "Species" : "Conflict") : (isSelected ? "Deselect" : "Select")}
-        </Button>
+        </Button>;
 
-        itemCards.push(<Table.Row>
-          <Table.Cell>
-            {description}
-          </Table.Cell>
-          <Table.Cell bold width="2rem" textAlign="right">
-            {item.cost.toString()}
-          </Table.Cell>
-          <Table.Cell width="7rem" textAlign="center">
-            {selectButton}
-          </Table.Cell>
-        </Table.Row>);
+        itemCards.push(
+          <Table.Row>
+            <Table.Cell>
+              {description}
+            </Table.Cell>
+            <Table.Cell bold width="2rem" textAlign="right">
+              {item.cost.toString()}
+            </Table.Cell>
+            <Table.Cell width="7rem" textAlign="center">
+              {selectButton}
+            </Table.Cell>
+          </Table.Row>
+        );
       }
 
-      let groupCard = <Section title={group.name}>
-        {group.description && <Box mb={2}>{group.description}</Box>}
-        <Table width="100%">
-          {itemCards}
-        </Table>
-      </Section>
+      let groupCard = (
+        <Section title={group.name}>
+          {group.description && <Box mb={2}>{group.description}</Box>}
+          <Table width="100%">
+            {itemCards}
+          </Table>
+        </Section>
+      );
       groupCards.push(groupCard);
     }
     return groupCards;
-  }
+  };
 
   let n_traits = 0;
   let n_points = 0;
-  for (var t of submission.traits) {
+  for (let t of submission.traits) {
     let rec = data.available_traits[t];
     if (rec.cost !== 0) { n_traits += 1; }
     n_points += rec.cost;
@@ -284,5 +297,5 @@ export const TraitSelectorModal = (_, context) => {
         </Section>
       </Window.Content>
     </Window>
-  )
-}
+  );
+};
