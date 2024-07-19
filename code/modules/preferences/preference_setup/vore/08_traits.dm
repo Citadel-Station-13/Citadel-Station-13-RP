@@ -21,6 +21,18 @@
 	var/starting_trait_points = STARTING_SPECIES_POINTS
 	var/max_traits = MAX_SPECIES_TRAITS
 
+/datum/traits_available_trait
+	var/internal_name
+	var/datum/trait/real_record
+	var/cost
+	var/forbidden_reason
+	var/list/exclusive_with
+
+/datum/traits_constraints
+	var/max_traits
+	var/max_points
+
+
 // Definition of the stuff for Ears
 /datum/category_item/player_setup_item/vore/traits
 	name = "Traits"
@@ -61,6 +73,7 @@
 	S["custom_exclaim"]	<< pref.custom_exclaim
 
 /datum/category_item/player_setup_item/vore/traits/sanitize_character()
+	// TODO: Call into the new traits code
 	if(!pref.pos_traits) pref.pos_traits = list()
 	if(!pref.neu_traits) pref.neu_traits = list()
 	if(!pref.neg_traits) pref.neg_traits = list()
@@ -71,25 +84,11 @@
 		pref.starting_trait_points = STARTING_SPECIES_POINTS
 		pref.max_traits = MAX_SPECIES_TRAITS
 
-	if(pref.real_species_id() != SPECIES_ID_CUSTOM)
-		pref.pos_traits.Cut()
+	// sanitize traits
+	var/available_traits = compute_available_traits()
+	var/constraints = compute_constraints()
 
-	// Clean up positive traits
-	for(var/path in pref.pos_traits)
-		if(!(path in positive_traits))
-			pref.pos_traits -= path
-	//Neutral traits
-	for(var/path in pref.neu_traits)
-		if(!(path in neutral_traits))
-			pref.neu_traits -= path
-		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
-			pref.neu_traits -= path
-	//Negative traits
-	for(var/path in pref.neg_traits)
-		if(!(path in negative_traits))
-			pref.neg_traits -= path
-		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
-			pref.neg_traits -= path
+	apply_traits(TRUE, pref.pos_traits.Copy() + pref.neu_traits.Copy() + pref.neg_traits.Copy(), available_traits, constraints)
 
 	var/datum/species/selected_species = pref.real_species_datum()
 	if(selected_species.selects_bodytype)
@@ -138,16 +137,15 @@
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"
 
 	var/traits_left = pref.max_traits - length(pref.pos_traits) - length(pref.neg_traits)
-	. += "<b>Traits Left:</b> [traits_left > 0? traits_left : "<font color='red'>[traits_left]</font>"]<br>"
+	. += "<b>Traits Left:</b> [traits_left >= 0? traits_left : "<font color='red'>[traits_left]</font>"]<br>"
 	if(pref.real_species_id() == SPECIES_ID_CUSTOM)
 		var/points_left = pref.starting_trait_points
 		for(var/T in pref.pos_traits + pref.neg_traits)
 			points_left -= traits_costs[T]
-			traits_left--
 
-		. += "<b>Points Left:</b> [points_left]<br>"
+		. += "<b>Points Left:</b> [points_left >= 0 ? points_left : "<font color='red'>[points_left]</font>"]<br>"
 		if(points_left < 0 || traits_left < 0 || !pref.custom_species)
-			. += "<span style='color:red;'><b>^ Fix things! ^</b></span><br>"
+			. += "<span style='color:red;'><b>^ Fix things! [points_left] [traits_left] [pref.custom_species] ^</b></span><br>"
 
 		. += "<a href='?src=\ref[src];add_trait=[POSITIVE_MODE]'>Positive Trait +</a><br>"
 		. += "<ul>"
@@ -279,107 +277,314 @@
 
 	else if(href_list["add_trait"])
 		var/mode = text2num(href_list["add_trait"])
-		var/list/picklist
-		var/list/mylist
-		switch(mode)
-			if(POSITIVE_MODE)
-				picklist = positive_traits.Copy() - pref.pos_traits
-				mylist = pref.pos_traits
-			if(NEUTRAL_MODE)
-				if(pref.real_species_id() == SPECIES_ID_CUSTOM)
-					picklist = neutral_traits.Copy() - pref.neu_traits
-					mylist = pref.neu_traits
-				else
-					picklist = everyone_traits.Copy() - pref.neu_traits
-					mylist = pref.neu_traits
-			if(NEGATIVE_MODE)
-				picklist = negative_traits.Copy() - pref.neg_traits
-				mylist = pref.neg_traits
-			if(ALL_MODE)
-				picklist = everyone_traits.Copy() - pref.neu_traits - pref.neg_traits
-				mylist = pref.neg_traits.Copy() + pref.neu_traits.Copy()
 
-		if(isnull(picklist))
-			return PREFERENCES_REFRESH
+		var/available_traits = compute_available_traits()
+		var/constraints = compute_constraints()
+		var/tgui_data = compute_tgui_data(mode, available_traits, constraints)
+		var/traits_submission = tgui_trait_select(user, tgui_data)
+		if (traits_submission != null)
+			to_chat(world, "traits " + json_encode(traits_submission))
+			apply_traits(FALSE, traits_submission, available_traits, constraints)
 
-		if(isnull(mylist))
-			return PREFERENCES_REFRESH
-
-		var/list/nicelist = list()
-		var/species = pref.real_species_name()
-		for(var/P in picklist)
-			var/datum/trait/T = picklist[P]
-			if(LAZYLEN(T.allowed_species) && !(species in T.allowed_species))
-				picklist -= P
-				continue
-			nicelist[T.name] = P
-
-		var/points_left = pref.starting_trait_points
-		for(var/T in pref.pos_traits + pref.neu_traits + pref.neg_traits)
-			points_left -= traits_costs[T]
-
-		var/traits_left = pref.max_traits - (pref.pos_traits.len + pref.neg_traits.len)
-
-		var/trait_choice
-		var/done = FALSE
-		while(!done)
-			var/message = "\[Remaining: [points_left] points, [traits_left] traits\] Select a trait to read the description and see the cost."
-			trait_choice = tgui_input_list(user, message,"Pick a trait", nicelist)
-			if(!trait_choice)
-				done = TRUE
-			if(trait_choice in nicelist)
-				var/datum/trait/path = nicelist[trait_choice]
-				var/choice = alert("\[Cost:[initial(path.cost)]\] [initial(path.desc)]",initial(path.name),"Take Trait","Cancel","Go Back")
-				if(choice == "Cancel")
-					trait_choice = null
-				if(choice != "Go Back")
-					done = TRUE
-
-		if(!trait_choice)
-			return PREFERENCES_REFRESH
-		else if(trait_choice in nicelist)
-			var/datum/trait/path = nicelist[trait_choice]
-			var/datum/trait/instance = all_traits[path]
-
-			var/conflict = FALSE
-
-			// if(pref.species in instance.banned_species)
-			// 	tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
-			// 	return PREFERENCES_REFRESH
-
-			if( LAZYLEN(instance.allowed_species) && !(pref.real_species_name() in instance.allowed_species))
-				tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
-				return PREFERENCES_REFRESH
-			if(trait_choice in pref.pos_traits + pref.neu_traits + pref.neg_traits)
-				conflict = instance.name
-
-			varconflict:
-				for(var/P in pref.pos_traits + pref.neu_traits + pref.neg_traits)
-					var/datum/trait/instance_test = all_traits[P]
-					if(path in instance_test.excludes)
-						conflict = instance_test.name
-						break varconflict
-
-					for(var/V in instance.var_changes)
-						if(V in instance_test.var_changes)
-							conflict = instance_test.name
-							break varconflict
-
-			if(conflict)
-				alert("You cannot take this trait and [conflict] at the same time. \
-				Please remove that trait, or pick another trait to add.","Error")
-				return PREFERENCES_REFRESH
-
-			if(mode == ALL_MODE)
-				if(instance.cost < 0)
-					mylist = pref.neg_traits
-				else
-					mylist = pref.neu_traits
-
-			mylist += path
-			return PREFERENCES_REFRESH
+		return PREFERENCES_REFRESH
 
 	return ..()
+
+/datum/category_item/player_setup_item/vore/traits/proc/trait_exclusions(var/possible_traits)
+	// NOTE: This should ideally be cached
+	var/list/var_exclude_groups = list()
+	for (var/trait_path in possible_traits)
+		var/datum/trait/trait = possible_traits[trait_path]
+		for(var/v in trait.var_changes)
+			if (!var_exclude_groups[v])
+				var_exclude_groups[v] = list()
+			var_exclude_groups[v] += trait_path
+
+	to_chat(world, "var exclude groups: " + json_encode(var_exclude_groups))
+	var/list/explicit_excludes = list()
+	for (var/trait_path in possible_traits)
+		explicit_excludes[trait_path] = list()
+
+	for (var/trait_path in possible_traits)
+		var/datum/trait/trait = possible_traits[trait_path]
+		for(var/other_path in trait.excludes)
+			var other = possible_traits[other_path]
+
+			if (other)
+				explicit_excludes[trait_path] += list(other_path)
+				explicit_excludes[other_path] += list(trait_path)
+
+	to_chat(world, "explicit excludes: " + json_encode(explicit_excludes))
+	var/list/total_excludes = list()
+	for (var/trait_path in possible_traits)
+		var/datum/trait/trait = possible_traits[trait_path]
+		total_excludes[trait_path] = list()
+
+		for (var/other_path in explicit_excludes[trait_path])
+			total_excludes[trait_path][other_path] = TRUE
+
+		for (var/v in trait.var_changes)
+			for (var/other_path in var_exclude_groups[v])
+				if (other_path == trait_path)
+					continue
+
+				total_excludes[trait_path][other_path] = TRUE
+
+	to_chat(world, "total excludes: " + json_encode(total_excludes))
+	return total_excludes
+
+/datum/category_item/player_setup_item/vore/traits/proc/compute_available_traits()
+	var/species = pref.real_species_name()
+	var/species_id = pref.real_species_id()
+	var/possible_traits = positive_traits.Copy() + neutral_traits.Copy() + negative_traits.Copy()
+
+	var/list/available_traits = list()
+
+	var/exclusions = trait_exclusions(possible_traits)
+
+	for (var/trait_path in possible_traits)
+		var/datum/trait/trait = possible_traits[trait_path]
+		var/datum/traits_available_trait/available_trait = new
+
+		available_trait.internal_name = trait_path
+		available_trait.real_record = trait
+		available_trait.cost = trait.cost
+
+		if (LAZYLEN(trait.allowed_species) && !(species in trait.allowed_species))
+			available_trait.forbidden_reason = "This trait is not allowed for your species."
+
+		// NOTE: For some reason, this is only actually used for neutral traits??? Weird.
+		if (species_id != SPECIES_ID_CUSTOM)
+			if (trait_path in positive_traits || (trait_path in neutral_traits && trait.custom_only))
+				available_trait.forbidden_reason = "This trait is only allowed for custom species."
+
+		available_trait.exclusive_with = exclusions[trait_path]
+
+		available_traits[trait_path] = available_trait
+
+	return available_traits
+
+/datum/category_item/player_setup_item/vore/traits/proc/compute_constraints()
+	var/datum/traits_constraints/constraints = new
+
+	constraints.max_traits = pref.max_traits
+	constraints.max_points = pref.starting_trait_points
+
+	return constraints
+
+/datum/category_item/player_setup_item/vore/traits/proc/compute_tgui_data(mode, list/available_traits, datum/traits_constraints/constraints)
+	var/initial_traits_json = list()
+	var/list/trait_groups_json = list()
+	var/list/available_traits_json = list()
+	var/constraints_json = list()
+
+	initial_traits_json = pref.neg_traits.Copy() + pref.neu_traits.Copy() + pref.pos_traits.Copy()
+
+	for (var/trait_group_path in all_trait_groups)
+		var/datum/trait_group/trait_group = all_trait_groups[trait_group_path]
+		var/list/trait_group_json = list()
+
+		trait_group_json["internal_name"] = trait_group_path
+		trait_group_json["name"] = trait_group.name
+		trait_group_json["description"] = trait_group.desc
+		trait_group_json["sort_key"] = trait_group.sort_key
+
+		trait_groups_json[trait_group_path] = trait_group_json
+
+	for (var/trait_path in available_traits)
+		var/datum/traits_available_trait/trait = available_traits[trait_path]
+		var/list/available_trait_json = list()
+
+		available_trait_json["internal_name"] = trait.internal_name
+		available_trait_json["name"] = trait.real_record.name
+		available_trait_json["group"] = trait.real_record.group
+		available_trait_json["group_short_name"] = trait.real_record.group_short_name
+		available_trait_json["sort_key"] = trait.real_record.sort_key
+		available_trait_json["description"] = trait.real_record.desc
+		available_trait_json["cost"] = trait.cost
+		available_trait_json["forbidden_reason"] = trait.forbidden_reason
+		available_trait_json["show_when_forbidden"] = trait.real_record.show_when_forbidden
+		available_trait_json["exclusive_with"] = trait.exclusive_with
+
+		available_traits_json[trait_path] = available_trait_json
+
+	// NOTE: Confusingly, only positive or negative traits are counted towards pref.max_traits
+	constraints_json["max_traits"] = constraints.max_traits
+	constraints_json["max_points"] = constraints.max_points
+
+	. = list()
+	.["initial_traits"] = initial_traits_json
+	.["trait_groups"] = trait_groups_json
+	.["available_traits"] = available_traits_json
+	.["constraints"] = constraints_json
+
+/datum/category_item/player_setup_item/vore/traits/proc/apply_traits(allow_invalid, new_trait_paths, available_traits, datum/traits_constraints/constraints)
+	// allow_invalid: used by sanitize_character()
+	// if true, try as hard as possible to fix the traits rather than rejecting the update if it's bad
+
+	// dedupe traits and deal with exclusion, forbiddenness, and so on
+	// new traits
+	var/list/traits_to_apply = list()
+	var/list/excluded = list()
+
+	// set to true if the input is invalid
+	var/input_was_invalid = FALSE
+
+	for (var/new_trait_path in new_trait_paths)
+		to_chat(world, "deciding whether to add: [new_trait_path]")
+
+		var/datum/traits_available_trait/new_trait_record = available_traits[new_trait_path]
+		if (!new_trait_record)
+			to_chat(world, "unrecognized")
+			input_was_invalid = TRUE
+			continue
+
+		if(new_trait_record.forbidden_reason)
+			// skip forbidden traits
+			to_chat(world, "forbidden: [new_trait_record.forbidden_reason]")
+			input_was_invalid = TRUE
+			continue
+
+		if(excluded[new_trait_path])
+			// and excluded traits
+			to_chat(world, "excluded: [new_trait_path]")
+			input_was_invalid = TRUE
+			continue
+
+		// each trait excludes itself (to deduplicate)
+		excluded[new_trait_path] = TRUE
+		for(var/i in new_trait_record.exclusive_with)
+			excluded[i] = TRUE
+
+		traits_to_apply += list(new_trait_path)
+
+	to_chat(world, "traits to apply: [traits_to_apply]")
+	var/n_traits = 0
+	var/total_cost = 0
+	for (var/new_trait_path in traits_to_apply)
+		// neutral traits don't count towards number
+		if (new_trait_path in neutral_traits)
+			continue
+
+		n_traits += 1
+
+	for (var/new_trait_path in traits_to_apply)
+		var/datum/traits_available_trait/new_trait_record = available_traits[new_trait_path]
+		total_cost += new_trait_record.cost
+
+	to_chat(world, "n traits: [traits_to_apply]")
+	if (n_traits > constraints.max_traits)
+		input_was_invalid = TRUE
+
+	if (total_cost > constraints.max_points)
+		input_was_invalid = TRUE
+
+	// TODO: Do this conditionally: we don't care if the input is invalid in sanitize
+	// but do care if it is invalid after a user update
+	if (input_was_invalid)
+		if (!allow_invalid)
+			return
+
+	pref.pos_traits = list()
+	pref.neu_traits = list()
+	pref.neg_traits = list()
+	for (var/trait in traits_to_apply)
+		if (positive_traits[trait])
+			pref.pos_traits += trait
+		else if (neutral_traits[trait])
+			pref.neu_traits += trait
+		else if (negative_traits[trait])
+			pref.neg_traits += trait
+		else
+			to_chat(world, "couldn't figure out how to add: [trait]")
+
+/datum/category_item/player_setup_item/vore/traits/proc/tgui_trait_select(mob/user, trait_data)
+	var/datum/tgui_trait_selector/selector = new(user, trait_data)
+
+	selector.ui_interact(user)
+	selector.wait()
+	if (selector)
+		. = selector.submission
+		qdel(selector)
+
+
+/datum/tgui_trait_selector
+	/// The selector input data
+	var/list/input_data
+	/// The user's submitted trait choices
+	var/submission
+	/// Boolean field describing if the tgui_trait-selector was closed by the user.
+	var/closed
+
+/datum/tgui_trait_selector/New(mob/user, input_data)
+	src.input_data = input_data
+
+/datum/tgui_trait_selector/Destroy()
+	SStgui.close_uis(src)
+	. = ..()
+
+/datum/tgui_trait_selector/proc/wait()
+	while (!submission && !closed)
+		stoplag(1)
+
+/datum/tgui_trait_selector/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new (user, src, "TraitSelectorModal")
+		ui.open()
+
+/datum/tgui_trait_selector/on_ui_close(mob/user, datum/tgui/ui, embedded)
+	. = ..()
+	closed = TRUE
+
+/datum/tgui_trait_selector/ui_state()
+	return GLOB.always_state
+
+/datum/tgui_trait_selector/ui_static_data(mob/user, datum/tgui/ui)
+	. = src.input_data
+
+/datum/tgui_trait_selector/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if (.)
+		return
+	switch(action)
+		if("submit")
+			if (!validate_and_use_submission(params["entry"]))
+				return
+			closed = TRUE
+			SStgui.close_uis(src)
+			return TRUE
+		if("cancel")
+			closed = TRUE
+			SStgui.close_uis(src)
+			return TRUE
+
+/datum/tgui_trait_selector/proc/validate_and_use_submission(submission_text)
+	// Validate basic format: actual validity of choices is up to our host
+	var/possible_submission = json_decode(submission_text)
+	if (!islist(possible_submission))
+		to_chat(world, "not list: [submission_text]")
+		return
+
+	var/traits = possible_submission["traits"]
+	if (traits == null)  // distinguish null from empty list
+		to_chat(world, "no traits: [submission_text]")
+		return
+
+	var/trait_paths = list()
+	for (var/trait_text in traits)  // list must be all text
+		if (!istext(trait_text))
+			to_chat(world, "not text: [trait_text]")
+			return
+
+		var/trait_path = text2path(trait_text)
+		if (!trait_path)
+			to_chat(world, "not path: [trait_path]")
+			return
+		trait_paths += trait_path
+
+	submission = trait_paths
+	return TRUE
 
 #undef POSITIVE_MODE
 #undef NEUTRAL_MODE

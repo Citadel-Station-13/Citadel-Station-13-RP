@@ -2,6 +2,21 @@
 	var/name
 	var/desc = "Contact a developer if you see this trait."
 
+	/// Path of the group this trait is affiliated with in TGUI
+	/// If unspecified, create a group named after this trait
+	/// where this trait is the only member
+	var/group = null
+
+	/// If this trait is affiliated with a group, use a shorter name for it in the group UI
+	/// Name must still be set (it's used on the overall trait summary page)
+	/// For instance, Autohiss (Tajaran) becomes Tajaran
+	var/group_short_name = null
+
+	/// String key for sorting this trait in the UI
+	/// If this trait creates its own group (group = null), then this is the sort key of
+	/// the created group.
+	var/sort_key
+
 	/// 0 is neutral, negative cost means negative, positive cost means positive.
 	var/cost = 0
 	/// A list to apply to the custom species vars.
@@ -12,6 +27,10 @@
 	var/list/allowed_species
 	/// Trait only available for custom species.
 	var/custom_only = TRUE
+
+	/// If TRUE, show this trait even if it is forbidden.
+	/// We use this to blacklist species-level customization that most users would have genuinely no reason to care about.
+	var/show_when_forbidden = TRUE
 
 	/// list of TRAIT_*'s to apply, using QUIRK_TRAIT
 	var/list/traits
