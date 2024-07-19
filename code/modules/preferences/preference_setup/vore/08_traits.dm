@@ -93,27 +93,7 @@
 	var/available_traits = compute_available_traits()
 	var/constraints = compute_constraints()
 
-<<<<<<< HEAD
 	apply_traits(TRUE, pref.pos_traits.Copy() + pref.neu_traits.Copy() + pref.neg_traits.Copy(), available_traits, constraints)
-=======
-	// Clean up positive traits
-	for(var/path in pref.pos_traits)
-		if(!(path in positive_traits))
-			pref.pos_traits -= path
-	//Neutral traits
-	for(var/path in pref.neu_traits)
-		if(!(path in neutral_traits))
-			pref.neu_traits -= path
-			continue
-		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
-			pref.neu_traits -= path
-	//Negative traits
-	for(var/path in pref.neg_traits)
-		if(!(path in negative_traits))
-			pref.neg_traits -= path
-			continue
-		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
-			pref.neg_traits -= path
 	
 	for(var/path in pref.id_hidden_traits)
 		var/datum/trait/T = all_traits[path]
@@ -122,7 +102,6 @@
 			continue
 		if(!(path in pref.pos_traits + pref.neu_traits + pref.neg_traits))
 			pref.id_hidden_traits -= path
->>>>>>> master
 
 	var/datum/species/selected_species = pref.real_species_datum()
 	if(selected_species.selects_bodytype)
