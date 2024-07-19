@@ -5,7 +5,7 @@
 	icon_state = "rover"
 	pixel_x = -8
 	pixel_y = -8
-	mechanical = FALSE
+	is_mechanical = FALSE
 	key_type = /obj/item/key/rover
 
 //Key for the NT Humvee

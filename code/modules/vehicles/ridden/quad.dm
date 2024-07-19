@@ -6,18 +6,27 @@
 	integrity = 200
 	integrity_max = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/quadbike
+	is_mechanical = FALSE
+	cell_type = /obj/item/cell
+	power_cost_to_move = 5
 	key_type = /obj/item/key/quadbike
-	var/paint_color = "#666666" // Todo, put on _vehicle.dm
-	var/frame_state = "quad" //Custom-item proofing!
-	var/custom_frame = FALSE
+	can_paint = TRUE
+	custom_icon_path = 'icons/obj/custom_items_vehicle.dmi'
+	frame_state_name = "quad"
 
-
+/obj/vehicle/ridden/quadbike/random_color/Initialize(mapload)
+	. = ..()
+	paint_color = rgb(rand(1,255),rand(1,255),rand(1,255))
+	update_icon()
 
 /obj/vehicle/ridden/quadbike/nokey
 	key_type = null
 
+/obj/vehicle/ridden/quadbike/random_color/nokey
+	key_type = null
+
 /obj/item/key/quadbike
-	name = "key"
+	name = "quadbike key"
 	desc = "A keyring with a small steel key, and a blue fob reading \"ZOOM!\"."
 	icon_state = "quad_keys"
 
@@ -35,9 +44,6 @@
 	CF_RIDING_CHECK_INCAPACITATED
 	)
 
-/datum/component/riding_handler/vehicle/ridden/quadbike/
-
-/datum/component/riding_handler/vehicle/ridden/quadbike
 	rider_offsets = list(
 		list(
 			list(0, 7, 0.1, null),
@@ -50,43 +56,7 @@
 	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
 	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
-		// Overlay shenanagens, WIP @ktoma36
-/obj/vehicle/ridden/quadbike/random/Initialize(mapload)
-	. = ..()
-	paint_color = rgb(rand(1,255),rand(1,255),rand(1,255))
-	update_icon()
-
 /obj/vehicle/ridden/quadbike/update_icon()
 	..()
-	cut_overlays()
-	var/list/overlays_to_add = list()
-	if(custom_frame)
-		var/image/Bodypaint = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_a", layer = src.layer)
-		Bodypaint.color = paint_color
-		overlays_to_add += Bodypaint
-
-		var/image/Overmob = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
-		var/image/Overmob_color = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
-		Overmob.plane = FLY_LAYER
-		Overmob_color.plane = FLY_LAYER
-		Overmob_color.color = paint_color
-
-		overlays_to_add += Overmob
-		overlays_to_add += Overmob_color
-		add_overlay(overlays_to_add)
-		return
-
-	var/image/Bodypaint = new(icon = 'icons/obj/vehicles/quad_64x64.dmi', icon_state = "[frame_state]_a", layer = src.layer)
-	Bodypaint.color = paint_color
-	overlays_to_add += Bodypaint
-
-	var/image/Overmob = new(icon = 'icons/obj/vehicles/quad_64x64.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
-	var/image/Overmob_color = new(icon = 'icons/obj/vehicles/quad_64x64.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
-	Overmob.plane = FLY_LAYER
-	Overmob_color.plane = FLY_LAYER
-	Overmob_color.color = paint_color
-
-	overlays_to_add += Overmob
-	overlays_to_add += Overmob_color
-
-	add_overlay(overlays_to_add)
+	update_overlay()
+	return

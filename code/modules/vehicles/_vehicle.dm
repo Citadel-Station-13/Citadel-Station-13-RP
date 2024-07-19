@@ -18,32 +18,43 @@
 	var/max_occupants = 1
 	var/max_drivers = 1
 	var/movedelay = 2
-	var/lastmove = 0
+
 	var/key_type
 	var/obj/item/key/inserted_key
 	var/key_type_exact = TRUE		//can subtypes work
-	var/canmove = TRUE
+
 	var/emulate_door_bumps = TRUE	//when bumping a door try to make occupants bump them to open them.
 	var/default_driver_move = TRUE	//handle driver movement instead of letting something else do it like riding datums.
 	var/enclosed = FALSE	// is the rider protected from bullets? assume no
+
 	var/list/autogrant_actions_passenger	//plain list of typepaths
 	var/list/autogrant_actions_controller	//assoc list "[bitflag]" = list(typepaths)
 	var/list/mob/occupant_actions			//assoc list mob = list(type = action datum assigned to mob)
+
 	var/obj/vehicle/trailer				//what trailer is hitched to this vehicle
 	var/obj/vehicle/trailer_type		//what trailer is allowed to hitch to this vehicle
-	var/is_tugged = FALSE				//is this vehicle attached to another
+	var/is_being_towed = FALSE			//is this vehicle attached to another
+
 	var/mouse_pointer //do we have a special mouse
-	var/mechanical = TRUE			//if true the vehicle will not initialize a cell power system
+	var/is_engine_on = FALSE
+	var/is_mechanical = TRUE		//if true the vehicle will not initialize a cell power system
 	var/obj/item/cell/cell_type 	//default cell to spawn inside
-	var/power_move_cost = 0		//how much power it costs to move in cell units
-	//*var/obj_cell_slot 				//defined at mapload if mechanical is false. Use to access cell subsystem
-	var/maint_panel_open = FALSE	//is the maintenance panel open?
+	var/power_cost_to_move = 0		//how much power it costs to move in cell units
+	//*var/obj_cell_slot 			//defined at mapload if is_mechanical is false. Use to access cell subsystem
+	var/is_maint_panel_open = FALSE	//is the maintenance panel open?
+
+	var/paint_color = "#ffffffff"	//for vehicles that can be painted
+	var/can_paint = FALSE			//can this vehicle change colors?
+	var/using_custom_frame = FALSE	//for handling custom frames
+	var/frame_state_name	//name of the custom frame e.g. coolicon_[frame_state_name]_a
+	var/custom_icon_path 	//file path for custom frame icons dmi
 
 	//Defines what buttons are in the alt-click radial menu.
 	var/static/list/radial_menu = list(
 		"Close" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x"),
 		"Remove Cell" = image(icon = 'icons/obj/power.dmi', icon_state = "cell"),
-		"Remove Key" = image(icon = 'icons/obj/vehicles/keys.dmi', icon_state = "train_keys")
+		"Remove Key" = image(icon = 'icons/obj/vehicles/keys.dmi', icon_state = "train_keys"),
+		"Power" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_power")
 	)
 
 
@@ -54,7 +65,7 @@
 	autogrant_actions_controller = list()
 	occupant_actions = list()
 	generate_actions()
-	if(!mechanical)
+	if(!is_mechanical)
 		var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type) //Enables the generic cell system
 		cell_slot.receive_emp = TRUE
 		cell_slot.receive_inducer = TRUE
@@ -71,7 +82,7 @@
 				. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
 			else
 				. += "<span class='notice'>There is a key in the ignition!.</span>"
-		if(!mechanical)
+		if(!is_mechanical)
 			if(obj_cell_slot.has_cell())
 				. += "<br><span class='notice'>Its charge meter reads: [obj_cell_slot.percent()]%.</span>"
 	//Range check to make people interact with the world
@@ -81,12 +92,12 @@
 				. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
 			else
 				. += "<span class='notice'>There is a key in the ignition!.</span>"
-		if(!mechanical)
+		if(!is_mechanical)
 			if(obj_cell_slot.has_cell())
 				. += "<br><span class='notice'>Its charge meter reads: [obj_cell_slot.percent()]%.</span>"
 
 
-	if(maint_panel_open)
+	if(is_maint_panel_open)
 		. += "<br><span class='notice'>Its maintenance panel is open!</span>"
 	. += "<br><span class='notice'>Alt-click on \the [src] to open the menu!</span>"
 	/*
@@ -136,7 +147,7 @@
 		if("Close")
 			return
 		if("Remove Cell")
-			if(mechanical)
+			if(is_mechanical)
 				return
 			if(obj_cell_slot.interaction_active())
 				if(obj_cell_slot.mob_yank_cell(usr))
@@ -148,6 +159,9 @@
 			return
 		if("Remove Key")
 			remove_key(usr)
+			return
+		if("Power")
+			power_cycle()
 			return
 
 /obj/vehicle/AltClick(mob/user)
@@ -231,6 +245,12 @@
 
 
 /obj/vehicle/proc/vehicle_move(direction)
+	if(!is_mechanical)
+		if(!is_engine_on)
+			return FALSE
+		else if(!obj_cell_slot.checked_use(power_cost_to_move))
+			return FALSE
+
 	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
 		return FALSE
 	COOLDOWN_START(src, cooldown_vehicle_move, movedelay)
@@ -273,27 +293,11 @@
 				M.Bumped(m)
 
 /obj/vehicle/Move(newloc, new_dir)
-
-	//if(new_dir & (new_dir-1)) //Dark magic sigil which determines diagonal movement
-		//Cool code that slows down diagonal movement to match horizontal/vertical movement.
-	if(!TryUsePower())
-		return
 	var/old_loc = src.loc
 	. = ..()
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, old_loc)
 		step(trailer, dir_to_move)
-
-/**
- * Checks if the vehicle has enough power to move and consumes it if it does.
- * Returns TRUE on success.
- */
-/obj/vehicle/proc/TryUsePower()
-	if(mechanical)
-		return TRUE
-	else if(obj_cell_slot.checked_use(power_move_cost))
-		return TRUE
-	return FALSE
 
 /**Key removal proc to override for different effects*/
 /obj/vehicle/proc/remove_key(mob/user)
@@ -304,12 +308,26 @@
 		to_chat(user, "<span class='notice'>You remove \the [inserted_key] from \the [src].</span>")
 		user.put_in_hands_or_drop(inserted_key)
 		inserted_key = null
+		if(is_engine_on)
+			power_cycle()
+
+/** Handles turning on and turning off the vehicle, flips from previous state */
+/obj/vehicle/proc/power_cycle()
+	if(is_mechanical)
+		return
+
+	if(!is_engine_on && obj_cell_slot.check_charge(power_cost_to_move) && (inserted_key == key_type || key_type == null))
+		src.visible_message("\The [src] rumbles to life.", "You hear something rumble deeply.")
+		is_engine_on = TRUE
+	else
+		src.visible_message("\The [src] putters before turning off.", "You hear something putter slowly.")
+		is_engine_on = FALSE
 
 /obj/vehicle/attackby(obj/item/I as obj, mob/user as mob)
 	//Flipflop maint panel status if screwed.
-	if(istype(I, /obj/item/tool/screwdriver) && !mechanical)
-		maint_panel_open = !maint_panel_open
-		to_chat(user, "<span class='warning'>You [maint_panel_open ? "open" : "close"] the maintenance panel!</span>")
+	if(istype(I, /obj/item/tool/screwdriver) && !is_mechanical)
+		is_maint_panel_open = !is_maint_panel_open
+		to_chat(user, "<span class='warning'>You [is_maint_panel_open ? "open" : "close"] the maintenance panel!</span>")
 		return
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		if(user.transfer_item_to_loc(I, src))
@@ -320,10 +338,20 @@
 		else
 			to_chat(user, "<span class='notice'>[I] seems to be stuck to your hand!</span>")
 		return
+	if(istype(I, /obj/item/multitool) && is_maint_panel_open && can_paint)
+		var/new_paint = input("Please select paint color.", "Paint Color", paint_color) as color|null
+		if(new_paint)
+			paint_color = new_paint
+			update_icon()
+			return
 	return ..()
 
 /obj/vehicle/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
-	return maint_panel_open && ..()
+	return is_maint_panel_open && ..()
+
+/obj/vehicle/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	if(is_engine_on)
+		power_cycle()
 
 //Take DroppedOn atoms and determine if they are a trailer to be attached, or pass on for passenger procs.
 /obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -347,14 +375,14 @@
 	//Is this already THE trailer? Let it go.
 	if (dropping == trailer)
 		trailer = null
-		dropping.is_tugged = FALSE
+		dropping.is_being_towed = FALSE
 		dropping.anchored = FALSE
 		to_chat(user, "<span class='warning'>You unhitch the [src]!</span>")
 		return TRUE
 	//If there is not already a trailer, and the trailer isn't getting pulled already. Tug it.
-	if (trailer == null && dropping.is_tugged == FALSE)
+	if (trailer == null && dropping.is_being_towed == FALSE)
 		trailer = dropping
-		dropping.is_tugged = TRUE
+		dropping.is_being_towed = TRUE
 		dropping.anchored = TRUE
 		to_chat(user, "<span class='notice'>You hitch the [src]!</span>")
 		return TRUE
@@ -363,16 +391,40 @@
 		to_chat(user, "<span class='warning'>Another trailer is already hitched here!</span>")
 		return TRUE
 	//If the trailer is already hitched to something else, we can't unhitch it.
-	if (dropping.is_tugged != FALSE)
+	if (dropping.is_being_towed != FALSE)
 		to_chat(user, "<span class='warning'>The [src] is already hitched to another vehicle!</span>")
 		return TRUE
 	return FALSE
 
-//Build load() proc here
+/** Call in update_icon() for vehicles which support custom body sprites and painting */
+/obj/vehicle/proc/update_overlay()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+	var/icon_path = (using_custom_frame && custom_icon_path) ? custom_icon_path : icon
+
+	//color alpha sprite for the body
+	if(can_paint && "[frame_state_name]_a" in icon_states(icon_path))
+		var/image/bodypaint = new(icon = icon_path, icon_state = "[frame_state_name]_a", layer = OBJ_LAYER)
+		bodypaint.color = paint_color
+		overlays_to_add += bodypaint
+
+	//mob overlay sprite
+	if ("[frame_state_name]_overlay" in icon_states(icon_path))
+		var/image/overmob = new(icon = icon_path, icon_state = "[frame_state_name]_overlay", layer = ABOVE_MOB_LAYER + 0.1) //over mobs
+		overlays_to_add += overmob
+
+		//color alpha sprite for the overlay
+		if(can_paint && "[frame_state_name]_overlay_a" in icon_states(icon_path))
+			var/image/overmob_color = new(icon = icon_path, icon_state = "[frame_state_name]_overlay_a", layer = ABOVE_MOB_LAYER + 0.2) //over the over mobs, gives the color.
+			overmob_color.color = paint_color
+			overlays_to_add += overmob_color
+
+	add_overlay(overlays_to_add)
+	return
 
 //Skeleton key
 /obj/item/key
-	name = "key"
+	name = "metal key"
 	desc = "A keyring with a small steel key."
 	icon = 'icons/obj/vehicles/keys.dmi'
 	icon_state = "keys"

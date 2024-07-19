@@ -70,7 +70,7 @@
 	if(!inserted_key)
 		to_chat(user, "<span class='notice'>There is no key in [src]!</span>")
 		return
-	if(!is_occupant(user) || !(occupants[user] & VEHICLE_CONTROL_DRIVE))
+	if(!is_occupant(user) || !(occupants[user] && VEHICLE_CONTROL_DRIVE))
 		to_chat(user, "<span class='notice'>You must be driving [src] to remove [src]'s key!</span>")
 		return
 	to_chat(user, "<span class='notice'>You remove [inserted_key] from [src].</span>")

@@ -21,8 +21,6 @@
 	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
 	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
-
-/datum/component/riding_handler/vehicle/gokart
 	rider_offsets = list(
 		list(
 			list(0, 0, -0.1, null),
