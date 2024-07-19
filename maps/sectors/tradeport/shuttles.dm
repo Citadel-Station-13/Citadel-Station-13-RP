@@ -55,6 +55,10 @@
 	name = "short jump console"
 	shuttle_tag = "Udang Transport Shuttle"
 
+/area/shuttle/udang
+	name = "Udang Transport Shuttle"
+	icon_state = "shuttle"
+
 //Scoophead trade Shuttle
 
 /datum/shuttle/autodock/overmap/trade/scoophead
@@ -78,3 +82,8 @@
 /obj/machinery/computer/shuttle_control/explore/trade/scoophead
 	name = "short jump console"
 	shuttle_tag = "Scoophead trade Shuttle"
+
+/area/shuttle/scoophead
+	name = "Scoophead trade Shuttle"
+	icon_state = "shuttle"
+
