@@ -157,7 +157,7 @@
 
 		. += "<b>Points Left:</b> [points_left >= 0 ? points_left : "<font color='red'>[points_left]</font>"]<br>"
 		if(points_left < 0 || traits_left < 0 || !pref.custom_species)
-			. += "<span style='color:red;'><b>^ Fix things! [points_left] [traits_left] [pref.custom_species] ^</b></span><br>"
+			. += "<span style='color:red;'><b>^ Fix things! ^</b></span><br>"
 
 		. += "<a href='?src=\ref[src];add_trait=[POSITIVE_MODE]'>Positive Trait +</a><br>"
 		. += "<ul>"
@@ -510,8 +510,6 @@
 	if (total_cost > constraints.max_points)
 		input_was_invalid = TRUE
 
-	// TODO: Do this conditionally: we don't care if the input is invalid in sanitize
-	// but do care if it is invalid after a user update
 	if (input_was_invalid)
 		if (!allow_invalid)
 			return
