@@ -605,6 +605,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)
+		if(return_air_immutable()?.moles_by_flag(GAS_FLAG_OXIDIZER)<0.01)
+			user.visible_message("<span class='notice'>The [name] fails to light.")
+			return
 		lit = 1
 		icon_state = "[base_state]on"
 		item_state = "[base_state]on"
@@ -660,6 +663,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/flame/lighter/process(delta_time)
 	var/turf/location = get_turf(src)
 	if(location)
+		var/datum/gas_mixture/env=location.return_air_immutable()
+		if(env?.moles_by_flag(GAS_FLAG_OXIDIZER)<0.01)
+			visible_message("<span class='notice'>The [name] suddenly goes out.")
+			lit=0
+			icon_state = "[base_state]"
+			item_state = "[base_state]"
+			set_light(0)
+			STOP_PROCESSING(SSobj, src)
+			return
 		location.hotspot_expose(700, 5)
 	return
 

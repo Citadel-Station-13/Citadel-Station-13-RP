@@ -1,6 +1,6 @@
 /datum/atmosphere/planet/classg
 	base = list(
-		/datum/gas/oxygen = 10,
+		/datum/gas/carbon_dioxide = 10,
 		/datum/gas/nitrogen = 10,
 		/datum/gas/phoron = 80,
 	)
