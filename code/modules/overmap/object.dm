@@ -1,8 +1,27 @@
+/**
+ * the supertype of all viablely interacting overmap objects
+ *
+ * there are two main types
+ * /entity - these have heavier simulation. anything requiring ticking or physics should be under this
+ * /tiled - these have Crossed/Uncrossed hooked, obviously, but they shouldn't require ticking/physics
+ *
+ * anything that the player can interact with beyond "crashing through a meteor field" should probably
+ * be an entity!
+ *
+ * anything else should be tiled, because tiled has very little simulation and are practically free
+ *
+ * entities, however, incur cost to keep on the map due to our makeshift physicis backend in /datum/overmap.
+ */
 /obj/overmap
 	name = "map object"
 	icon = 'icons/modules/overmap/entity.dmi'
 	icon_state = "object"
 	color = "#fffffe"
+
+	/// curernt bounds overlay, if any
+	var/bounds_overlay
+	/// should we use bounds overlays?
+	var/uses_bounds_overlay = FALSE
 
 	/// Does this show up on nav computers automatically.
 	var/known = TRUE
@@ -29,6 +48,23 @@
 
 	/// parallax vis contents object if any
 	var/atom/movable/overmap_skybox_holder/parallax_image_holder
+
+/obj/overmap/Initialize(mapload)
+	. = ..()
+
+	if(uses_bounds_overlay)
+		add_bounds_overlay()
+
+	if(!(LEGACY_MAP_DATUM).use_overmap)
+		return INITIALIZE_HINT_QDEL
+
+	if(known && !mapload)
+		SSovermaps.queue_helm_computer_rebuild()
+	update_icon()
+
+/obj/overmap/Destroy()
+	cut_bounds_overlay()
+	return ..()
 
 /atom/movable/overmap_skybox_holder
 	plane = PARALLAX_PLANE
@@ -90,15 +126,6 @@
 
 	return dat
 
-/obj/overmap/Initialize(mapload)
-	. = ..()
-	if(!(LEGACY_MAP_DATUM).use_overmap)
-		return INITIALIZE_HINT_QDEL
-
-	if(known && !mapload)
-		SSovermaps.queue_helm_computer_rebuild()
-	update_icon()
-
 /obj/overmap/Crossed(var/obj/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
@@ -112,4 +139,4 @@
 			SSparallax.queue_z_vis_update(z)
 
 /obj/overmap/update_icon()
-	filters = filter(type="drop_shadow", color = color + "F0", size = 2, offset = 1,x = 0, y = 0)
+	filters = filter(type="drop_shadow", color = color + "F0", size = 1, offset = 1,x = 0, y = 0)

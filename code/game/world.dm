@@ -15,6 +15,7 @@ GLOBAL_LIST(topic_status_cache)
 	name = "Citadel Station 13 - Roleplay"
 	status = "ERROR: Default status"
 	visibility = TRUE
+	movement_mode = PIXEL_MOVEMENT_MODE
 	fps = 20
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
