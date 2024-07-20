@@ -35,6 +35,9 @@
 	layer = MOB_LAYER
 	/// Byond implementation is bugged.
 	infra_luminosity = 15
+
+	emulate_door_bumps = TRUE
+
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
 	var/initial_icon = null
 	var/can_move = null

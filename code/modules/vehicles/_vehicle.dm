@@ -26,6 +26,7 @@
 	var/obj/item/key/inserted_key
 	var/key_type_exact = TRUE		//can subtypes work
 	var/canmove = TRUE
+	// todo: emulate_door_bumps is shitcode please change it
 	var/emulate_door_bumps = TRUE	//when bumping a door try to make occupants bump them to open them.
 	var/default_driver_move = TRUE	//handle driver movement instead of letting something else do it like riding datums.
 	var/enclosed = FALSE	// is the rider protected from bullets? assume no

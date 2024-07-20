@@ -163,8 +163,8 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 		return ..()
 	if(istype(AM, /obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/mecha = AM
-		if(mecha.occupant)
-			var/mob/M = mecha.occupant
+		if(mecha.occupant_legacy)
+			var/mob/M = mecha.occupant_legacy
 			if(world.time - M.last_bumped <= 10) return //Can bump-open one airlock per second. This is to prevent popup message spam.
 			M.last_bumped = world.time
 			attack_hand(M)

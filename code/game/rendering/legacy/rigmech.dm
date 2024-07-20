@@ -238,7 +238,7 @@
 	if(!istype(user) || user.stat || user.incapacitated())
 		return
 	var/obj/vehicle/sealed/mecha/owner_mech = master
-	if(user != owner_mech.occupant)
+	if(user != owner_mech.occupant_legacy)
 		return
 	owner_mech.toggle_internal_tank()
 

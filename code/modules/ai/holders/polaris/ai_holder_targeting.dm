@@ -135,8 +135,8 @@
 
 	if(istype(the_target, /obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/M = the_target
-		if(M.occupant)
-			return can_attack(M.occupant)
+		if(M.occupant_legacy)
+			return can_attack(M.occupant_legacy)
 		return destructive // Empty mechs are 'neutral'.
 
 	if(istype(the_target, /obj/machinery/porta_turret))

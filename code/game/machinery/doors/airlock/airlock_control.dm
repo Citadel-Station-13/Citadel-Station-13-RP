@@ -118,11 +118,12 @@
 	if(!surpress_send) send_status()
 
 
+// some legacy shitcode to let mecha automatically open an airlock on bump
 /obj/machinery/door/airlock/Bumped(atom/AM)
 	..(AM)
 	if(istype(AM, /obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/mecha = AM
-		if(density && radio_connection && mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
+		if(density && radio_connection && mecha.occupant_legacy && (src.allowed(mecha.occupant_legacy) || src.check_access_list(mecha.operation_req_access)))
 			send_status(1)
 	return
 

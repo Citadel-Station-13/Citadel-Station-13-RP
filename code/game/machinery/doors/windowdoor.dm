@@ -70,7 +70,7 @@
 		else if(istype(AM, /obj/vehicle/sealed/mecha))
 			var/obj/vehicle/sealed/mecha/mecha = AM
 			if(density)
-				if(mecha.occupant && src.allowed(mecha.occupant))
+				if(mecha.occupant_legacy && src.allowed(mecha.occupant_legacy))
 					open()
 					addtimer(CALLBACK(src, PROC_REF(close)), 50)
 		return
