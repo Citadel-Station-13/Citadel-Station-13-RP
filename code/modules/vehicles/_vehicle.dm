@@ -54,7 +54,7 @@
 		"Close" = image(icon = 'icons/mob/radial.dmi', icon_state = "red_x"),
 		"Remove Cell" = image(icon = 'icons/obj/power.dmi', icon_state = "cell"),
 		"Remove Key" = image(icon = 'icons/obj/vehicles/keys.dmi', icon_state = "train_keys"),
-		"Power" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_power")
+		"Power Button" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_power")
 	)
 
 
@@ -160,8 +160,10 @@
 		if("Remove Key")
 			remove_key(usr)
 			return
-		if("Power")
-			power_cycle()
+		if("Power Button")
+			to_chat(world, "AHHHHHHHHHH")
+			if(!is_mechanical)
+				is_engine_on ? turn_off() : turn_on()
 			return
 
 /obj/vehicle/AltClick(mob/user)
@@ -230,6 +232,7 @@
 
 /obj/vehicle/proc/after_remove_occupant(mob/M)
 
+//Catches all occupant moves
 /obj/vehicle/relaymove(mob/user, direction)
 	if(is_driver(user))
 		return driver_move(user, direction)
@@ -245,15 +248,11 @@
 
 
 /obj/vehicle/proc/vehicle_move(direction)
-	if(!is_mechanical)
-		if(!is_engine_on)
-			return FALSE
-		else if(!obj_cell_slot.checked_use(power_cost_to_move))
-			return FALSE
-
 	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
 		return FALSE
 	COOLDOWN_START(src, cooldown_vehicle_move, movedelay)
+	if(!is_mechanical)
+		obj_cell_slot.use(power_cost_to_move)
 	if(trailer)
 		var/dir_to_move = get_dir(trailer.loc, loc)
 		var/did_move = step(src, direction)
@@ -293,6 +292,17 @@
 				M.Bumped(m)
 
 /obj/vehicle/Move(newloc, new_dir)
+	if(!is_mechanical)
+		if(!is_engine_on)
+			src.visible_message("\The [src] is off.",)
+			return
+		if(!obj_cell_slot.check_charge(power_cost_to_move))
+			if(is_engine_on)
+				turn_off()
+			else
+				src.visible_message("\The [src] is out of power.",)
+			return
+
 	var/old_loc = src.loc
 	. = ..()
 	if(trailer && .)
@@ -308,20 +318,18 @@
 		to_chat(user, "<span class='notice'>You remove \the [inserted_key] from \the [src].</span>")
 		user.put_in_hands_or_drop(inserted_key)
 		inserted_key = null
-		if(is_engine_on)
-			power_cycle()
+		turn_off()
 
-/** Handles turning on and turning off the vehicle, flips from previous state */
-/obj/vehicle/proc/power_cycle()
-	if(is_mechanical)
-		return
-
-	if(!is_engine_on && obj_cell_slot.check_charge(power_cost_to_move) && (inserted_key == key_type || key_type == null))
+/obj/vehicle/proc/turn_on()
+	if(!is_mechanical && !is_engine_on && obj_cell_slot.check_charge(power_cost_to_move) && ((key_type && is_key(inserted_key)) || !key_type))
 		src.visible_message("\The [src] rumbles to life.", "You hear something rumble deeply.")
 		is_engine_on = TRUE
-	else
-		src.visible_message("\The [src] putters before turning off.", "You hear something putter slowly.")
-		is_engine_on = FALSE
+		update_icon()
+
+/obj/vehicle/proc/turn_off()
+	src.visible_message("\The [src] putters before turning off.", "You hear something putter slowly.")
+	is_engine_on = FALSE
+	update_icon()
 
 /obj/vehicle/attackby(obj/item/I as obj, mob/user as mob)
 	//Flipflop maint panel status if screwed.
@@ -350,8 +358,7 @@
 	return is_maint_panel_open && ..()
 
 /obj/vehicle/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
-	if(is_engine_on)
-		power_cycle()
+	turn_off()
 
 //Take DroppedOn atoms and determine if they are a trailer to be attached, or pass on for passenger procs.
 /obj/vehicle/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
@@ -396,28 +403,56 @@
 		return TRUE
 	return FALSE
 
-/** Call in update_icon() for vehicles which support custom body sprites and painting */
+/** Call in update_icon() for vehicles which support custom body sprites and painting
+ * !THIS IS ONLY FOR OVERLAYS ONLY. THE BASE SPRITE IS SET IN UPDATE_ICON()!
+ * icon names follow this standard: [name][_on/_off][_a/_overlay/_overlay_a]
+ * you can leave out _on and _off sprites if there is no visible difference.
+ * [name]_a is for changing the paint color of the vehicle
+ * [name]_overlay is for a sprite that covers the mobs on it
+ * [name]_overlay_a is for changing the paint color of the overlay
+ * if you have [_on/_off] states for any overlay the base sprite must have [name]_on. Only overlays with a difference need to have _on and _off appended to their names.
+ * if you do not have bodypaint, an overlay, or bodypaint for an overlay you do not need to make them.
+ */
 /obj/vehicle/proc/update_overlay()
 	cut_overlays()
 	var/list/overlays_to_add = list()
 	var/icon_path = (using_custom_frame && custom_icon_path) ? custom_icon_path : icon
+	var/modifier_text = ""
+	//var/maint_sprite = ""
+	//check for power on/off sprites and set correct text
+	if("[frame_state_name]_on" in icon_states(icon_path))
+		modifier_text = is_engine_on ? "_on" : "_off"
+	////check for maintenance panel sprites and set correct text
+	//if("[frame_state_name][modifier_text]_open" in icon_states(icon_path) && is_maint_panel_open)
+	//	maint_sprite = "-open"
 
 	//color alpha sprite for the body
-	if(can_paint && "[frame_state_name]_a" in icon_states(icon_path))
+	if (can_paint && "[frame_state_name][modifier_text]_a" in icon_states(icon_path))
+		var/image/bodypaint = new(icon = icon_path, icon_state = "[frame_state_name][modifier_text]_a", layer = OBJ_LAYER)
+		bodypaint.color = paint_color
+		overlays_to_add += bodypaint
+	else if (can_paint && "[frame_state_name]_a" in icon_states(icon_path))
 		var/image/bodypaint = new(icon = icon_path, icon_state = "[frame_state_name]_a", layer = OBJ_LAYER)
 		bodypaint.color = paint_color
 		overlays_to_add += bodypaint
 
 	//mob overlay sprite
-	if ("[frame_state_name]_overlay" in icon_states(icon_path))
+	if ("[frame_state_name][modifier_text]_overlay" in icon_states(icon_path))
+		var/image/overmob = new(icon = icon_path, icon_state = "[frame_state_name][modifier_text]_overlay", layer = ABOVE_MOB_LAYER + 0.1) //over mobs
+		overlays_to_add += overmob
+	else if ("[frame_state_name]_overlay" in icon_states(icon_path))
 		var/image/overmob = new(icon = icon_path, icon_state = "[frame_state_name]_overlay", layer = ABOVE_MOB_LAYER + 0.1) //over mobs
 		overlays_to_add += overmob
 
-		//color alpha sprite for the overlay
-		if(can_paint && "[frame_state_name]_overlay_a" in icon_states(icon_path))
-			var/image/overmob_color = new(icon = icon_path, icon_state = "[frame_state_name]_overlay_a", layer = ABOVE_MOB_LAYER + 0.2) //over the over mobs, gives the color.
-			overmob_color.color = paint_color
-			overlays_to_add += overmob_color
+	//color alpha sprite for the overlay
+	if(can_paint && "[frame_state_name][modifier_text]_overlay_a" in icon_states(icon_path))
+		var/image/overmob_color = new(icon = icon_path, icon_state = "[frame_state_name][modifier_text]_overlay_a", layer = ABOVE_MOB_LAYER + 0.2) //over the over mobs, gives the color.
+		overmob_color.color = paint_color
+		overlays_to_add += overmob_color
+	else if (can_paint && "[frame_state_name]_overlay_a" in icon_states(icon_path))
+		var/image/overmob_color = new(icon = icon_path, icon_state = "[frame_state_name]_overlay_a", layer = ABOVE_MOB_LAYER + 0.2) //over the over mobs, gives the color.
+		overmob_color.color = paint_color
+		overlays_to_add += overmob_color
 
 	add_overlay(overlays_to_add)
 	return

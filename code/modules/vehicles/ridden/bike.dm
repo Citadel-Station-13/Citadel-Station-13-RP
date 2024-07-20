@@ -55,12 +55,14 @@
 	. = ..()
 	paint_color = rgb(rand(1,255),rand(1,255),rand(1,255))
 
-/obj/vehicle/ridden/bike/power_cycle()
+/obj/vehicle/ridden/bike/turn_on()
 	..()
-	if(is_engine_on)
-		ion.start()
-	else
-		ion.stop()
+	icon_state = "bike_on"
+	ion.start()
+/obj/vehicle/ridden/bike/turn_off()
+	..()
+	icon_state = "bike_off"
+	ion.stop()
 
 /obj/vehicle/ridden/bike/update_icon()
 	..()
@@ -70,6 +72,5 @@
 //Make sure to cleanup when done.
 /obj/vehicle/ridden/bike/Destroy()
 	qdel(ion)
-
 	..()
 

@@ -50,13 +50,13 @@
 		H.throw_at_random(FALSE, 2, 2)
 
 		//Surface injuries
-		H.adjustBruteLoss(rand(3, 5))
-		//Check if victim is wearing a helmet. If not 5% chance for severe drain bamage, 95% for minor brain bramage.
+		H.adjustBruteLoss(rand(1, 3))
+		//Check if victim is wearing a helmet. If not 1% chance for severe drain bamage, 99% for minor brain bramage.
 		if(!SLOT_HEAD || !(istype(SLOT_HEAD,/obj/item/clothing/head/helmet) || istype(SLOT_HEAD,/obj/item/clothing/head/hardhat)))
-			if(prob(5))
+			if(prob(1))
 				var/obj/item/organ/external/egg = H.get_organ(BP_HEAD)
 				egg?.fracture()
-				H.adjustBrainLoss(rand(5, 10))
+				H.adjustBrainLoss(rand(10, 15))
 				H.afflict_paralyze(20 * 10)
 				visible_message("<span class='danger'>[src] crashes into [A], sending [H] flying! They land on their head, that doesn't look good...</span>")
 			else
