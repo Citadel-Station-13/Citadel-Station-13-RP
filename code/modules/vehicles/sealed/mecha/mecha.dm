@@ -37,7 +37,7 @@
 	infra_luminosity = 15
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
 	var/initial_icon = null
-	var/can_move = 1null
+	var/can_move = null
 
 	/// Make a step in step_in/10 sec.
 	var/step_in = 10
