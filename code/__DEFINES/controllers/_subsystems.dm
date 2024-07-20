@@ -155,14 +155,16 @@ DEFINE_BITFIELD(runlevels, list(
 // Any ../subsystem/.. is here unless it doesn't have SS_BACKGROUND in subsystem_flags!
 // This means by default, ../subsystem/processing/.. is here!
 
-#define FIRE_PRIORITY_RADIATION    10  //! laggy as hell, bottom barrel until optimizations are done.
-#define FIRE_PRIORITY_GARBAGE      15
-#define FIRE_PRIORITY_CHARACTERS   25
-#define FIRE_PRIORITY_PARALLAX     30
-#define FIRE_PRIORITY_AIR          35
-#define FIRE_PRIORITY_PROCESS      45
-// DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_PLANETS      75
+#define FIRE_PRIORITY_RADIATION        10  //! laggy as hell, bottom barrel until optimizations are done.
+#define FIRE_PRIORITY_GARBAGE          15
+#define FIRE_PRIORITY_CHARACTERS       20
+#define FIRE_PRIORITY_PARALLAX         20
+#define FIRE_PRIORITY_AIR              25
+#define FIRE_PRIORITY_AIRFLOW          25
+#define FIRE_PRIORITY_ASSET_LOADING    25
+#define FIRE_PRIORITY_PLANETS          25
+#define FIRE_PRIORITY_PROCESS          50
+// DEFAULT PRIORITY IS HERE (50)
 
 //? Normal Subsystems - Above background, below ticker
 // Any ../subsystem/.. without SS_TICKER or SS_BACKGROUND in subsystem_flags is here!
@@ -177,26 +179,24 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_ZMIMIC       10
 #define FIRE_PRIORITY_ALARMS       20
 #define FIRE_PRIORITY_SPACEDRIFT   25
-#define FIRE_PRIORITY_AIRFLOW      30
 #define FIRE_PRIORITY_OBJ          40
-// DEFAULT PRIORITY IS HERE
+// DEFAULT PRIORITY IS HERE (50)
 #define FIRE_PRIORITY_LIGHTING         50
-#define FIRE_PRIORITY_INSTRUMENTS      90
-#define FIRE_PRIORITY_ASSET_LOADING    100
-#define FIRE_PRIORITY_MACHINES         100
-#define FIRE_PRIORITY_AI_MOVEMENT      150
-#define FIRE_PRIORITY_AI_SCHEDULING    150
-#define FIRE_PRIORITY_AI_HOLDERS       150
-#define FIRE_PRIORITY_NANO             150
-#define FIRE_PRIORITY_AI               200
-#define FIRE_PRIORITY_TGUI             200
-#define FIRE_PRIORITY_PROJECTILES      200
-#define FIRE_PRIORITY_THROWING         200
-#define FIRE_PRIORITY_STATPANELS       400
-#define FIRE_PRIORITY_OVERLAYS         500
-#define FIRE_PRIORITY_SMOOTHING        500
-#define FIRE_PRIORITY_CHAT             500
-#define FIRE_PRIORITY_INPUT            1000
+#define FIRE_PRIORITY_INSTRUMENTS      50
+#define FIRE_PRIORITY_MACHINES         50
+#define FIRE_PRIORITY_AI               65
+#define FIRE_PRIORITY_AI_HOLDERS       65
+#define FIRE_PRIORITY_AI_MOVEMENT      75
+#define FIRE_PRIORITY_AI_SCHEDULING    75
+#define FIRE_PRIORITY_NANO             80
+#define FIRE_PRIORITY_TGUI             80
+#define FIRE_PRIORITY_PROJECTILES      90
+#define FIRE_PRIORITY_THROWING         90
+#define FIRE_PRIORITY_STATPANELS       100
+#define FIRE_PRIORITY_OVERLAYS         100
+#define FIRE_PRIORITY_SMOOTHING        100
+#define FIRE_PRIORITY_CHAT             100
+#define FIRE_PRIORITY_INPUT            100
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!
@@ -204,9 +204,9 @@ DEFINE_BITFIELD(runlevels, list(
 // Is your feature as important as movement, chat, or timers?
 // Probably not! Go to normal bracket instead!
 
-// DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_DPC          700
-#define FIRE_PRIORITY_TIMER        700
+// DEFAULT PRIORITY IS HERE (50)
+#define FIRE_PRIORITY_DPC          100
+#define FIRE_PRIORITY_TIMER        100
 
 //? Special
 

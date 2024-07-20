@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(asset_loading)
 	name = "Asset Loading"
 	priority = FIRE_PRIORITY_ASSET_LOADING
 	// todo: hibernation
-	subsystem_flags = SS_NO_INIT
+	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	/// things waiting to be loaded
