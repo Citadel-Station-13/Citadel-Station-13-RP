@@ -94,7 +94,7 @@ SUBSYSTEM_DEF(machines)
 		src.current_run = global.pipe_networks.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/current_run = src.current_run
-	var/dt = noimnal_dt_s
+	var/dt = nominal_dt_s
 	while(current_run.len)
 		var/datum/pipe_network/PN = current_run[current_run.len]
 		current_run.len--
@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(machines)
 		src.current_run = global.processing_machines.Copy()
 
 	var/list/current_run = src.current_run
-	var/dt = noimnal_dt_s
+	var/dt = nominal_dt_s
 	while(current_run.len)
 		var/obj/machinery/M = current_run[current_run.len]
 		current_run.len--

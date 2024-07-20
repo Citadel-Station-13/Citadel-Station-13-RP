@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(planets)
 			return
 
 	var/list/currentrun = src.currentrun
-	var/dt = noimnal_dt_s
+	var/dt = nominal_dt_s
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
 		currentrun.len--

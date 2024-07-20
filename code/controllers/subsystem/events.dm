@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(events)
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = noimnal_dt_s
+	var/dt = nominal_dt_s
 	while (currentrun.len)
 		var/datum/event/E = currentrun[currentrun.len]
 		currentrun.len--

@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(radiation)
 		if(length(currentrun))
 			var/i
 			var/datum/component/radioactive/source
-	var/dt = noimnal_dt_s
+			var/dt = nominal_dt_s
 			for(i in 1 to length(currentrun))
 				source = currentrun[i]
 				source.emit(dt)

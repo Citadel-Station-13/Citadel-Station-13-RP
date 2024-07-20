@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(materials)
 		src.currentrun = ticking.Copy()
 	var/list/currentrun = src.currentrun
 	var/atom/A
-	var/dt = noimnal_dt_s
+	var/dt = nominal_dt_s
 	var/i
 	var/datum/material_trait/trait
 	for(i in length(currentrun) to 1 step -1)

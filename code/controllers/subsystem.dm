@@ -204,7 +204,7 @@
 		// track time between runs
 		var/full_run_took = world.time - last_completed_run
 		var/new_tick_dilation = (full_run_took / nominal_dt_ds) * 100 - 100
-		tick_dilation = MC_AVERAGE_FAST(tick_dilation, new_tick_dilation)
+		tick_dilation_avg = MC_AVERAGE_FAST(tick_dilation_avg, new_tick_dilation)
 		last_completed_run = world.time
 
 /**
@@ -342,7 +342,7 @@
  */
 /datum/controller/subsystem/stat_entry()
 	if(can_fire && !(SS_NO_FIRE & subsystem_flags))
-		. = "[round(cost,1)]ms | D:[round(tick_dilation,1)]% | U:[round(tick_usage,1)]% | O:[round(tick_overrun,1)]% | T:[round(ticks,0.1)]&emsp;"
+		. = "[round(cost,1)]ms | D:[round(tick_dilation_avg,1)]% | U:[round(tick_usage,1)]% | O:[round(tick_overrun,1)]% | T:[round(ticks,0.1)]&emsp;"
 	else
 		. = "OFFLINE&emsp;"
 

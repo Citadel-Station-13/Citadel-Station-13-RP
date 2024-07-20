@@ -499,7 +499,7 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	var/dt = noimnal_dt_s
+	var/dt = nominal_dt_s
 	mode.process(dt)
 
 	var/game_finished = 0
