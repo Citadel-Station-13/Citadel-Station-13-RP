@@ -5400,22 +5400,13 @@
 /turf/simulated/wall/prepainted,
 /area/maintenance/lower/solars)
 "cNH" = (
-/obj/structure/table/marble,
 /obj/machinery/floor_light/prebuilt{
 	on = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/item/storage/box/glasses/meta{
-	pixel_x = 8
-	},
-/obj/item/storage/box/glasses/meta{
-	pixel_x = -8
-	},
-/obj/item/storage/box/glasses/meta{
-	pixel_y = 8
-	},
+/obj/machinery/vending/cafe,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_dining)
 "cNN" = (
@@ -22531,40 +22522,13 @@
 /area/tether/surfacebase/tram)
 "lYn" = (
 /obj/structure/table/marble,
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8;
-	pixel_y = -4
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 8;
-	pixel_y = 12
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -4;
-	pixel_y = 12
-	},
 /obj/machinery/floor_light/prebuilt{
 	on = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/chemical_dispenser/catering/bar_soft{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
