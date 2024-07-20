@@ -2322,7 +2322,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck3)
 "cuN" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -2347,7 +2347,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "cwQ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -2605,7 +2605,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/entrance)
 "cRm" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/machinery/power/pointdefense{
@@ -6387,7 +6387,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/tcommsat/chamber)
 "gOE" = (
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/machinery/power/pointdefense{
 	id_tag = "forward_pd"
 	},
@@ -7379,7 +7379,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck3)
 "hNn" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -8015,7 +8015,7 @@
 /obj/structure/cable{
 	icon_state = "32-2"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/structure/lattice,
@@ -10051,7 +10051,7 @@
 /obj/structure/cable{
 	icon_state = "32-1"
 	},
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/space)
@@ -10361,10 +10361,10 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "kZG" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -10545,10 +10545,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/hallway/deck3)
 "lkb" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -12227,7 +12227,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "naq" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -12802,7 +12802,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_three/port)
 "nDF" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -15049,7 +15049,7 @@
 /area/rnd/xenobiology)
 "pNf" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -16603,10 +16603,10 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_three/aft/port)
 "rDh" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/structure/cable,
@@ -17926,10 +17926,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
 "teR" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
@@ -18744,7 +18744,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/engineering/deck2/power_line)
 "uak" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -19562,7 +19562,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "uNO" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/pointdefense{
@@ -20386,7 +20386,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck2)
 "vHY" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -21505,7 +21505,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "wSj" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/structure/cable{

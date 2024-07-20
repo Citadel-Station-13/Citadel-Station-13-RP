@@ -176,6 +176,6 @@
 /area/tether_away/alienship
 	name = "\improper Away Mission - Unknown Vessel"
 	icon_state = "away"
-	requires_power = FALSE
+	area_power_override = TRUE
 
 /area/tether_away/alienship/equip_dump

@@ -1,188 +1,80 @@
-/**
- * **MASTER POWER/BALANCING FILE**
- *
- * floating point only goes up to 16 million for precision
- *
- * hence, everything uses its own units and converts around
- * mostly, anyways
- * there is a standard use power proc that is "universal"-ish, which uses kJ, as that's the best "center" for one-off uses, or ticked uses.
- *
- * WARNING:
- * You CANNOT JUST CHANGE THE UNITS.
- * Math is usually hardcoded for performance, and because things like storage units require a "time" factor for conversion.
- *
- * FAQ:
- * - "Why is there parentheses vomit everywhere?"
- *     Because order of operations is important and we want our macros to not mess up when someone does, say, capacity - charge in SMES.
- */
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
 
-// DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU ARE DOING
-#define ENUM_POWER_UNIT_GENERIC			0
-#define ENUM_POWER_UNIT_JOULE			1
-#define ENUM_POWER_UNIT_WATT			2
-#define ENUM_POWER_UNIT_WATT_HOUR		3
+//? Power channels for areas - Make sure these are in sync.
+//* Any updates to this should be reflected in [tgui/packages/tgui/constants/power.ts] *//
 
-// DO NOT TOUCH THESE UNLESS YOU KNOW WHAT YOU ARE DOING
-#define ENUM_POWER_SCALE_NONE			0
-#define ENUM_POWER_SCALE_KILO			1
-#define ENUM_POWER_SCALE_MEGA			2
-#define ENUM_POWER_SCALE_GIGA			3
-#define ENUM_POWER_SCALE_TERA			4
-#define ENUM_POWER_SCALE_PETA			5
+//* THIS MUST BE IN ORDER WITH POWER_BIT_* DEFINES *//
 
-#define POWER_SCALE_POWER_OF_TEN(S)		((S)*3)
+#define POWER_CHANNEL_EQUIP 1
+#define POWER_CHANNEL_LIGHT 2
+#define POWER_CHANNEL_ENVIR 3
 
-#define POWER_ACCURACY					0.001
-#define POWER_QUANTIZE(P)				(round(P, POWER_ACCURACY))
+#define POWER_CHANNEL_COUNT 3
 
-/* CONVERSION HELPERS */
-#define WH_TO_J(WH)				(60*60*(WH))
-#define KWH_TO_KJ(KWH)			(60*60*(KWH))
-#define WH_TO_KJ(WH)			(60*60*((WH)*0.001))
-#define KWH_TO_J(KWH)			(60*60*1000*(KWH))	// WARNING: LOSS OF PRECISION LIKELY
-#define J_TO_WH(J)				((J)*(1/(60*60)))
-#define KJ_TO_WH(KJ)			((KJ)*(1000/(60*60)))
-#define KJ_TO_KWH(KJ)			((KJ)*(1/(60*60)))
-#define J_TO_KWH(J)				((J)*(1/(60*60*1000)))
-#define KW_TO_KWH(KW, T)		((KW*T)*(1/(60*60)))
-#define W_TO_WH(W, T)			(((W)*(T))*(1/(60*60)))
-#define W_TO_KWH(W, T)			(((W)*(T)*0.001)*(1/(60*60)))
-#define KW_TO_WH(KW, T)			(((KW)*(T)*1000)*(1/(60*60)))
-// watt minutes - why you'd do this is beyond me
-#define WH_TO_WM(WH)			((WH)*60)
-#define KWH_TO_WM(KWH)			((KWH)*60*1000)
-#define KWH_TO_KWM(KWH)			((KWH)*60)
-#define WWH_TO_KWM(WH)			((WH)*60*0.001)
-#define W_TO_WM(W, T)			(((W)*(T))*(1/60))
-#define KW_TO_WM(KW, T)			(((KW)*(T)*1000)*(1/60))
-#define W_TO_KWM(W, T)			(((W)*(T)*0.001)*(1/60))
-#define KW_TO_KWM(KW, T)		(((KW)*(T))*(1/60))
-#define KJ_TO_KWM(KJ)			((KJ)*(1/60))
-#define J_TO_KWM(J)				(((J)*0.001)*(1/60))
-#define KJ_TO_WM(KJ)			((KJ)*(1000/60))
-#define J_TO_WM(J)				((J)*(1/60))
-#define KWM_TO_J(KWM)			((KWM)*(60*1000))
-#define KWM_TO_KJ(KWM)			((KWM)*60)
-#define WM_TO_J(WM)				((WM)*60)
-#define WM_TO_KJ(WM)			((WM)*(60*0.001))
-#define KWM_TO_KW(KWM, T)		(((KWM)*60)/(T))
-#define KWM_TO_W(KWM, T)		(((KWM)*60)*(1000/(T)))
-#define WM_TO_W(WM, T)			(((WM)*60)/(T))
-#define WM_TO_KW(WM, T)			(((WM)*(60*0.001))/(T))
+//* THIS MUST BE IN ORDER WITH POWER_CHANNEL_* DEFINES *//
 
-/proc/render_power_unit(unit)
-	switch(unit)
-		if(ENUM_POWER_UNIT_GENERIC)
-			return "u"
-		if(ENUM_POWER_UNIT_JOULE)
-			return "J"
-		if(ENUM_POWER_UNIT_WATT)
-			return "W"
-		if(ENUM_POWER_UNIT_WATT_HOUR)
-			return "Wh"
+#define POWER_BIT_EQUIP (1<<0)
+#define POWER_BIT_LIGHT (1<<1)
+#define POWER_BIT_ENVIR (1<<2)
 
-/proc/render_power_scale(scale)
-	switch(scale)
-		if(ENUM_POWER_SCALE_NONE)
-			return ""
-		if(ENUM_POWER_SCALE_KILO)
-			return "k"
-		if(ENUM_POWER_SCALE_MEGA)
-			return "M"
-		if(ENUM_POWER_SCALE_GIGA)
-			return "G"
-		if(ENUM_POWER_SCALE_TERA)
-			return "T"
-		if(ENUM_POWER_SCALE_PETA)
-			return "P"
+#define POWER_BITS_ALL (POWER_CHANNEL_EQUIP | POWER_CHANNEL_LIGHT | POWER_CHANNEL_ENVIR)
 
-/**
- * renders power unit
- * expensive!
- */
-/proc/render_power(amount, power_scale = ENUM_POWER_SCALE_NONE, unit = ENUM_POWER_UNIT_GENERIC, accuracy = POWER_ACCURACY, conversion = TRUE)
-	if(!conversion)
-		return "[round(amount, accuracy)] [render_power_scale(power_scale)][render_power_unit(unit)]"
-	if(amount <= 0)
-		return "0 [render_power_unit(unit)]"
-	if(amount > 1000)
-		while(amount > 1000)
-			amount *= 0.001
-			++power_scale
-	else if(amount < 0)
-		while(amount < 0)
-			amount *= 1000
-			--power_scale
-	return "[round(amount, accuracy)] [render_power_scale(power_scale)][render_power_unit(unit)]"
+/// relies on the fact that channels and their bits are in order
+#define POWER_CHANNEL_TO_BIT(CHANNEL) (1 << (CHANNEL - 1))
+/// relies on the fact that channels and their bits are in order
+#define POWER_BIT_TO_CHANNEL(BIT) log(2, BIT)
 
-/* universal */
-/// used in drain_energy, use_energy
-#define POWER_UNIT_UNIVERSAL_ENERGY			ENUM_POWER_UNIT_JOULE
-/// used in use_power
-#define POWER_UNIT_UNIVERSAL_FLOW			ENUM_POWER_UNIT_WATT
+/// length must equal POWER_CHANNEL_COUNT
+/// must be in order
+GLOBAL_REAL_LIST(power_channels) = list(
+	POWER_CHANNEL_EQUIP,
+	POWER_CHANNEL_LIGHT,
+	POWER_CHANNEL_ENVIR,
+)
 
-/* power grid aka /datum/powernet */
-#define POWER_UNIT_GRID_FLOW				ENUM_POWER_UNIT_WATT
-#define POWER_SCALE_GRID_FLOW				ENUM_POWER_SCALE_KILO
+/// length must equal POWER_CHANNEL_COUNT
+/// must be in order
+GLOBAL_REAL_LIST(power_channel_names) = list(
+	"Equipment",
+	"Lighting",
+	"Environmental",
+)
 
-/* SMES */
-#define POWER_UNIT_GRID_STORAGE				ENUM_POWER_UNIT_WATT_HOUR
-#define POWER_SCALE_GRID_STORAGE			ENUM_POWER_SCALE_KILO
+/// length must equal POWER_CHANNEL_COUNT
+/// must be in order
+GLOBAL_REAL_LIST(power_channel_bits) = list(
+	POWER_BIT_EQUIP,
+	POWER_BIT_LIGHT,
+	POWER_BIT_ENVIR,
+)
 
-// coil values are at grid storage scales
-#define SMES_COIL_STORAGE_BASIC				(100)
-#define SMES_COIL_FLOW_BASIC				(250)
-#define SMES_COIL_STORAGE_WEAK				(20)
-#define SMES_COIL_FLOW_WEAK					(150)
-#define SMES_COIL_STORAGE_TRANSMISSION		(10)
-#define SMES_COIL_FLOW_TRANSMISSION			(1000)
-#define SMES_COIL_STORAGE_CAPACITANCE		(1000)
-#define SMES_COIL_FLOW_CAPACITANCE			(50)
+/// length must equal POWER_CHANNEL_COUNT
+#define EMPTY_POWER_CHANNEL_LIST list(0, 0, 0)
+/// length must equal POWER_CHANNEL_COUNT
+#define EMPTY_POWER_USAGE_LIST list(0, 0, 0)
 
-/**
- * OLD CALCS
- * translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
- * #define SMESRATE 0.03333
- * #define SMESMAXCHARGELEVEL 250000
- * #define SMESMAXOUTPUT 250000
- */
+//? Powernet - Load Balancing - lower number is higher priority, lower priorities only get power if higher priority is satisfied.
+//* Any updates to this should be reflected in [tgui/packages/tgui/constants/power.ts] *//
 
-/* cells */
-// Cells practically use their own power systems
-// "Use power from cell" for **handheld/portable devices**, semantically, should always use cell units and not a "real unit"
-// This way we can tweak balance with just cellrate.
+#define POWER_BALANCING_TIER_LOW 3
+#define POWER_BALANCING_TIER_MEDIUM 2
+#define POWER_BALANCING_TIER_HIGH 1
 
-// dynamic indicates this isn't constant
+#define POWER_BALANCING_TIER_TOTAL 3
 
-#define DYNAMIC_KJ_TO_CELL_UNITS(KJ)		((KJ) / GLOB.cellrate)
-#define DYNAMIC_J_TO_CELL_UNITS(J)			(((J) * 0.001) / GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_KJ(U)			((U) * GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_J(U)			((U) * (1000 * GLOB.cellrate))
-/// dt in seconds
-#define DYNAMIC_W_TO_CELL_UNITS(W, DT)		(DYNAMIC_J_TO_CELL_UNITS(W) * (DT))
-/// dt in seconds
-#define DYNAMIC_KW_TO_CELL_UNITS(KW, DT)	(DYNAMIC_KJ_TO_CELL_UNITS(KW) * (DT))
-/// dt in "seconds this will be drained over" - usually 1
-#define DYNAMIC_CELL_UNITS_TO_W(U, DT)		(DYNAMIC_CELL_UNITS_TO_J(U) / (DT))
-/// dt in "seconds this will sbe drained over" - usually 1
-#define DYNAMIC_CELL_UNITS_TO_KW(U, DT)		(DYNAMIC_CELL_UNITS_TO_KJ(U) / (DT))
-#define DYNAMIC_WH_TO_CELL_UNITS(WH)		((3.6 * (WH)) / GLOB.cellrate)
-#define DYNAMIC_KWH_TO_CELL_UNITS(KWH)		((3600 * (KWH)) / GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_KWH(U)		(((U) * GLOB.cellrate) / (60 * 60))
-#define DYNAMIC_CELL_UNITS_TO_WH(U)			(((U) * GLOB.cellrate) / ((60 * 60) / 1000))
-#define DYNAMIC_KWM_TO_CELL_UNITS(KWM)		(((KWM) * 60) / GLOB.cellrate)
-#define DYNAMIC_WM_TO_CELL_UNITS(WM)		(((WM) * (60 / 1000)) / GLOB.cellrate)
-#define DYNAMIC_CELL_UNITS_TO_KWM(U)		(((U) * GLOB.cellrate) / (60))
-#define DYNAMIC_CELL_UNITS_TO_WM(U)			(((U) * GLOB.cellrate) / (60 / 1000))
 
-/**
- * LEGACY ENUMS
- *
- * D O N O T U S E T H E S E
- *
- * The only exception is kilowatts, since machines/apcs opeate on units scale, meaning 1 to 16 million are reasonable!
- * However when you get to "MEGAWATTS" you are cutting it way too close to comfort
- * If something uses more than 1 MW it shouldn't be APC wired at all!
- */
-#define KILOWATTS			* 1000
-#define MEGAWATTS			* 1000000
+/// length must equal POWER_BALANCING_TIER_TOTAL
+GLOBAL_REAL_LIST(power_balancing_tier_names) = list(
+	"Low Priority",
+	"Medium Priority",
+	"High Priority",
+)
+
+/// length must equal POWER_BALANCING_TIER_TOTAL
+#define EMPTY_POWER_BALANCING_LIST list(0, 0, 0)
+
+//? APCs - this is in here because it depends on power channel amount
+
+/// length must equal POWER_BALANCING_TIER_TOTAL
+#define APC_CHANNEL_THRESHOLDS_DEFAULT list(0.2, 0.5, 0)

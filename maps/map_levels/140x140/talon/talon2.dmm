@@ -40,7 +40,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/pilot_room)
 "aA" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
@@ -133,7 +133,7 @@
 /area/talon/decktwo/bar)
 "db" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/hull/airless,
@@ -167,7 +167,7 @@
 /turf/simulated/open,
 /area/talon/decktwo/central_hallway)
 "dB" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
@@ -203,10 +203,10 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "eh" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/hull/airless,
@@ -260,7 +260,7 @@
 /turf/simulated/floor/plating,
 /area/talon/decktwo/kitchen)
 "eO" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -279,7 +279,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "eW" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
@@ -300,7 +300,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/decktwo_starboard)
 "fj" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -309,7 +309,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "fq" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -365,7 +365,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "fY" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green{
@@ -395,7 +395,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_starboard)
 "gj" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -445,7 +445,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "gH" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -644,7 +644,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/decktwo/tech)
 "ij" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -874,7 +874,7 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "kw" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
@@ -921,7 +921,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "kO" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/hull/airless,
@@ -1013,7 +1013,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_port)
 "lR" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/structure/cable/green{
@@ -1087,7 +1087,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "ng" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
@@ -1152,7 +1152,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "nE" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -1174,7 +1174,7 @@
 /area/talon/decktwo/kitchen)
 "nO" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/hull/airless,
@@ -1194,7 +1194,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "nZ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
@@ -1493,8 +1493,8 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_aft)
 "rM" = (
-/obj/structure/cable/heavyduty,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane,
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green{
@@ -1584,7 +1584,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "sE" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
@@ -1920,7 +1920,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/decktwo/eng_room)
 "xk" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
@@ -2015,7 +2015,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "yf" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
@@ -2102,13 +2102,13 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "zj" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "zk" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /obj/structure/cable/green{
@@ -2148,7 +2148,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "zF" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -2515,8 +2515,8 @@
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "DK" = (
-/obj/structure/cable/heavyduty,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane,
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/green{
@@ -2577,7 +2577,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/decktwo/med_room)
 "DX" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/hull/airless,
@@ -2823,7 +2823,7 @@
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "GK" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
@@ -2986,7 +2986,7 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "Jj" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/structure/cable/yellow{
@@ -3018,7 +3018,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_port)
 "JB" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/cable/green{
@@ -3068,7 +3068,7 @@
 /turf/simulated/floor/airless,
 /area/talon/maintenance/decktwo_solars)
 "JY" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -3149,7 +3149,7 @@
 /turf/simulated/open,
 /area/talon/decktwo/central_hallway)
 "KQ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/hull/airless,
@@ -3226,7 +3226,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/hull/airless,
@@ -3238,7 +3238,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "Ma" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
@@ -3377,7 +3377,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_starboard)
 "MY" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -3433,7 +3433,7 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "NC" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/structure/cable/green{
@@ -3508,7 +3508,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "NV" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -3520,7 +3520,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "Ol" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/hull/airless,
@@ -3622,7 +3622,7 @@
 /area/talon/maintenance/decktwo_aft)
 "Pn" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/hull/airless,
@@ -3651,7 +3651,7 @@
 /turf/simulated/wall,
 /area/talon/decktwo/kitchen)
 "PH" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/hull/airless,
@@ -3836,7 +3836,7 @@
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "SH" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -3877,7 +3877,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_port)
 "Tv" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -3936,7 +3936,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/pilot_room)
 "TX" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -4333,7 +4333,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
 "YB" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -4357,10 +4357,10 @@
 /area/talon/maintenance/decktwo_starboard)
 "YR" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/hull/airless,
@@ -4433,7 +4433,7 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "Zy" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green{
@@ -4463,7 +4463,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "ZI" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/yellow{

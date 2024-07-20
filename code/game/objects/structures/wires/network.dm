@@ -1,0 +1,106 @@
+/datum/wirenet
+	/// cables
+	var/list/obj/structure/wire/segments
+	/// connections
+	var/list/datum/wirenet_connection/connections
+
+/datum/wirenet/New(obj/structure/wire/joint, subdividing)
+	if(isnull(joint))
+		return
+	segments = list()
+	connections = list()
+	if(subdividing)
+		propagate(joint)
+	else
+		build(joint)
+
+/datum/wirenet/Destroy()
+	cleanup_segments()
+	for(var/datum/wirenet_connection/connection as anything in connections)
+		connection.disconnect_network(src)
+	segments = null
+	connections = null
+	return ..()
+
+/**
+ * merge one wirenet into another, deleting it in the process (it = ourselves)
+ *
+ * override on subtypes of /datum/wirenet with the correct typecasting for "into".
+ */
+/datum/wirenet/proc/merge_into(datum/wirenet/into)
+	for(var/datum/wirenet_connection/connection as anything in connections)
+		//* CURSED COLON OPERATOR - /wirenet_connection must always have a var named network, so we assume it's there. *//
+		connection:network = into
+		connection.host?.wirenet_switched(connection, src, into)
+	for(var/obj/structure/wire/segment as anything in segments)
+		segment.network = into
+	segments = null
+	connections = null
+	qdel(src)
+
+/**
+ * returns wires
+ */
+/datum/wirenet/proc/get_wires()
+	return segments.Copy()
+
+/**
+ * returns connections
+ */
+/datum/wirenet/proc/get_connections()
+	return connections.Copy()
+
+/**
+ * returns connected hosts without nulls
+ */
+/datum/wirenet/proc/get_hosts()
+	. = list()
+	for(var/datum/wirenet_connection/connection as anything in connections)
+		if(isnull(connection.host))
+			continue
+		. += connection.host
+
+/**
+ * construction propagation from a specific wire - use for initial network builds
+ */
+/datum/wirenet/proc/build(obj/structure/wire/joint)
+
+/**
+ * overwrite propagation from a specific wire - use for when you know a network needs to be severed in a specific way
+ * and don't want to unnecessarily build the other side
+ */
+/datum/wirenet/proc/propagate(obj/structure/wire/joint)
+
+#warn impl all
+
+/**
+ * add a wire into ourselves
+ */
+/datum/wirenet/proc/add_segment(obj/structure/wire/joint)
+	joint.network = src
+	for(var/datum/wirenet_connection/connection as anything in joint.connections)
+		connection.connect_network(src)
+
+/**
+ * removes a wire from ourselves
+ */
+/datum/wirenet/proc/remove_segment(obj/structure/wire/joint)
+	joint.network = null
+	for(var/datum/wirenet_connection/connection as anything in joint.connections)
+		connection.disconnect_network(src)
+
+/**
+ * removes all wires from ourselves
+ *
+ * cheaper than remove_segment when segments are removed en masse.
+ */
+/datum/wirenet/proc/remove_segments(list/obj/structure/wire/joints = segments)
+	#warn impl
+
+/**
+ * nuke all wires from ourselves
+ *
+ * triggers rebuilds too
+ */
+/datum/wirenet/proc/cleanup_segments()
+	#warn impl - subtype on /datum/wirenet/power

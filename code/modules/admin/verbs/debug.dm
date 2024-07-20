@@ -210,15 +210,6 @@
 			message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.", 0)
 	feedback_add_details("admin_verb","CLRM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
-/client/proc/cmd_debug_make_powernets()
-	set category = "Debug"
-	set name = "Make Powernets"
-	SSmachines.makepowernets()
-	log_admin("[key_name(src)] has remade the powernet. SSmachines.makepowernets() called.")
-	message_admins("[key_name_admin(src)] has remade the powernets. SSmachines.makepowernets() called.", 0)
-	feedback_add_details("admin_verb","MPWN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /client/proc/cmd_debug_tog_aliens()
 	set category = "Server"
 	set name = "Toggle Aliens"
@@ -372,7 +363,7 @@
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 
-	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
+	for(var/obj/machinery/apc/apc in GLOB.apcs)
 		var/area/A = get_area(apc)
 		if(A && !(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
@@ -485,9 +476,8 @@
 
 	for(var/obj/machinery/power/emitter/E in GLOB.machines)
 		if(istype(get_area(E), /area/space))
-			E.anchored = TRUE
+			E.set_anchored(TRUE)
 			E.state = 2
-			E.connect_to_network()
 			E.active = TRUE
 	for(var/obj/machinery/field_generator/F in GLOB.machines)
 		if(istype(get_area(F), /area/space))
@@ -545,8 +535,7 @@
 		if(istype(M.loc.loc,/area/engineering/engine_room))
 			if(istype(M,/obj/machinery/power/rad_collector))
 				var/obj/machinery/power/rad_collector/Rad = M
-				Rad.anchored = 1
-				Rad.connect_to_network()
+				Rad.set_anchored(TRUE)
 
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
@@ -566,7 +555,7 @@
 					Pump.air2.gas[GAS_ID_NITROGEN] = 3750	//The contents of 2 canisters.
 					Pump.air2.temperature = 50
 					Pump.air2.update_values()
-				Pump.update_use_power(USE_POWER_IDLE)
+				Pump.set_use_power(USE_POWER_IDLE)
 				Pump.target_pressure = 4500
 				Pump.update_icon()
 

@@ -339,7 +339,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "aom" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/structure/catwalk,
@@ -359,7 +359,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/research/lower)
 "aoF" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -7829,7 +7829,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
 "fjP" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -18169,7 +18169,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "lEW" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -19119,7 +19119,7 @@
 /turf/simulated/floor/plating,
 /area/rift/turbolift/maint)
 "mjO" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -20918,7 +20918,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "nkZ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/lythios43c,
@@ -21001,7 +21001,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "nog" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -21149,7 +21149,7 @@
 /turf/simulated/floor/reinforced,
 /area/maintenance/maint_bar)
 "ntZ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/railing{
@@ -21422,7 +21422,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "nBB" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
@@ -24041,7 +24041,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "oZM" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -24082,7 +24082,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "pbf" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -25495,7 +25495,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
 "pRO" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing{
@@ -26703,7 +26703,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_emt_bay)
 "qDG" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/structure/railing{
@@ -31089,7 +31089,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
 "tcZ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -32582,7 +32582,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "tTn" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -34419,7 +34419,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_one)
 "uQi" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -34900,7 +34900,7 @@
 /turf/simulated/floor/plating,
 /area/security/prison)
 "vgp" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -36334,7 +36334,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "wdE" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -38207,7 +38207,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "xhZ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{

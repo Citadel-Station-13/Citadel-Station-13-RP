@@ -11,17 +11,13 @@
 
 /area/awaymission/snowfield
 	icon_state = "blank"
-//	requires_power = 0
+//	area_power_override = TRUE
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
 
 /area/awaymission/snowfield/outside
 	icon_state = "green"
-	requires_power = 1
-	always_unpowered = 1
-	dynamic_lighting = 1
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
+	area_power_override = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	mobcountmax = 40
 	floracountmax = 2000
 

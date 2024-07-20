@@ -45,7 +45,7 @@ var/list/gyrotrons = list()
 	return E
 
 /obj/machinery/power/emitter/gyrotron/update_icon()
-	if (active && powernet && avail(active_power_usage * 0.001))
+	if (active && get_powernet_surplus(active_power_usage * 0.001))
 		icon_state = "emitter-on"
 	else
 		icon_state = "emitter-off"

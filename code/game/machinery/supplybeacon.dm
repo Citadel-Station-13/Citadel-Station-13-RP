@@ -48,7 +48,7 @@
 
 /obj/machinery/power/supply_beacon/attackby(obj/item/W, mob/user)
 	if(!use_power && W.is_wrench())
-		if(!anchored && !connect_to_network())
+		if(!anchored && !connection.network)
 			to_chat(user, "<span class='warning'>This device must be placed over an exposed cable.</span>")
 			return
 		anchored = !anchored
@@ -60,7 +60,7 @@
 /obj/machinery/power/supply_beacon/attack_hand(mob/user, list/params)
 
 	if(expended)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 		to_chat (user, "<span class='warning'>\The [src] has used up its charge.</span>")
 		return
 
@@ -78,7 +78,7 @@
 	if(expended)
 		return
 	// 0.5 kw
-	if(surplus() < 0.5)
+	if(get_powernet_supply() < 0.5)
 		if(user) to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
 		return
 	set_light(3, 3, "#00CCAA")
@@ -107,7 +107,7 @@
 		return PROCESS_KILL
 	if(!use_power)
 		return
-	if(draw_power(0.5) < 0.5)
+	if(connection.flat_draw(0.5) < 0.5)
 		deactivate()
 		return
 	if(!target_drop_time)

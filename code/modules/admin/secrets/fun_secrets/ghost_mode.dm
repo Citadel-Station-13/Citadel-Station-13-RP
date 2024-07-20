@@ -30,16 +30,16 @@
 					step_rand(W)
 
 			var/area/A = get_area(M)
-			if(A.requires_power && !A.always_unpowered && A.power_light && (A.z in (LEGACY_MAP_DATUM).player_levels))
+			if(A.area_power_override == null && A.power_light && (A.z in (LEGACY_MAP_DATUM).player_levels))
 				affected_areas |= get_area(M)
 
 	affected_mobs |= user
 	for(var/area/AffectedArea in affected_areas)
-		AffectedArea.power_light = 0
-		AffectedArea.power_change()
+		if(!AffectedArea.apc)
+			continue
+		AffectedArea.apc.set_channel_setting(POWER_CHANNEL_LIGHT, FALSE)
 		spawn(rand(25,50))
-			AffectedArea.power_light = 1
-			AffectedArea.power_change()
+			AffectedArea.apc.set_channel_setting(POWER_CHANNEL_LIGHT, TRUE)
 
 	sleep(100)
 	for(var/mob/M in affected_mobs)

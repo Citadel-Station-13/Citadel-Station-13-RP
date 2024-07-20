@@ -420,8 +420,8 @@
  * * dropping - movable in question
  * * where - where to move to
  */
-/atom/proc/drop_product(method, atom/movable/dropping, atom/where)
-	dropping.forceMove(where || drop_location())
+/atom/proc/drop_product(method, atom/movable/dropping, atom/where = drop_location())
+	dropping.forceMove(where)
 
 //? Armor
 

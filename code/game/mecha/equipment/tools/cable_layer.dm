@@ -2,7 +2,7 @@
 	name = "Cable Layer"
 	icon_state = "mecha_wire"
 	var/turf/old_turf
-	var/obj/structure/cable/last_piece
+	var/obj/structure/wire/power_cable/last_piece
 	var/obj/item/stack/cable_coil/cable
 	var/max_cable = 1000
 	required_type = list(/obj/mecha/working)
@@ -100,29 +100,15 @@
 	if(equip_ready || !istype(new_turf, /turf/simulated/floor) || !dismantleFloor(new_turf))
 		return reset()
 	var/fdirn = turn(chassis.dir,180)
-	for(var/obj/structure/cable/LC in new_turf)		// check to make sure there's not a cable there already
+	for(var/obj/structure/wire/power_cable/LC in new_turf)		// check to make sure there's not a cable there already
 		if(LC.d1 == fdirn || LC.d2 == fdirn)
 			return reset()
 	if(!use_cable(1))
 		return reset()
-	var/obj/structure/cable/NC = new(new_turf)
-	NC.cableColor("red")
-	NC.d1 = 0
-	NC.d2 = fdirn
-	NC.update_icon()
 
-	var/datum/powernet/PN
+	var/obj/structure/wire/power_cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
 	if(last_piece && last_piece.d2 != chassis.dir)
-		last_piece.d1 = min(last_piece.d2, chassis.dir)
-		last_piece.d2 = max(last_piece.d2, chassis.dir)
-		last_piece.update_icon()
-		PN = last_piece.powernet
+		last_piece.reset_dirs(min(last_piece.d2, chassis.dir), max(last_piece.d2, chassis.dir))
 
-	if(!PN)
-		PN = new()
-	PN.add_cable(NC)
-	NC.mergeConnectedNetworks(NC.d2)
-
-	//NC.mergeConnectedNetworksOnTurf()
 	last_piece = NC
 	return 1

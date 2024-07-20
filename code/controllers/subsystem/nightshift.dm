@@ -67,9 +67,9 @@ SUBSYSTEM_DEF(nightshift)
 
 	SSlighting.pause_instant()
 
-	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
+	for(var/obj/machinery/apc/apc in GLOB.apcs)
 		if(apc.z in (LEGACY_MAP_DATUM).station_levels)
-			apc.set_nightshift(active && (apc.area.nightshift_level & nightshift_level), TRUE)
+			apc.update_nightshift(TRUE)
 			CHECK_TICK
 
 	SSlighting.resume_instant()

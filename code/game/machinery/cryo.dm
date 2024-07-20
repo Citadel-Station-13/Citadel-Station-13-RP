@@ -293,7 +293,7 @@
 	occupant.update_mobility() // make them rest again if needed
 
 	current_heat_capacity = initial(current_heat_capacity)
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	return
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
@@ -329,7 +329,7 @@
 	occupant.set_resting(FALSE)
 
 	current_heat_capacity = HEAT_CAPACITY_HUMAN
-	update_use_power(USE_POWER_ACTIVE)
+	set_use_power(USE_POWER_ACTIVE)
 //	M.metabslow = 1
 	add_fingerprint(usr)
 	update_icon()

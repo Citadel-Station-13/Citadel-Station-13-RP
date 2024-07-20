@@ -145,7 +145,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 /obj/machinery/power/pointdefense/examine(mob/user, dist)
 	. = ..()
-	if(powernet)
+	if(is_connected())
 		. += "It is connected to a power cable below."
 
 /obj/machinery/power/pointdefense/get_description_interaction(mob/user)
@@ -165,34 +165,32 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 
 ////////// This machine is willing to take power from cables OR APCs.  Handle NOPOWER stat specially here! ////////
 
-/obj/machinery/power/pointdefense/connect_to_network()
-	if((. = ..()))
-		machine_stat &= ~NOPOWER // We now ignore APC power
-		update_icon()
+/obj/machinery/power/pointdefense/connect()
+	. = ..()
+	if(!.)
+		return
+	machine_stat &= ~NOPOWER // We now ignore APC power
+	update_icon()
 
 /obj/machinery/power/pointdefense/disconnect_from_network()
-	if((. = ..()))
-		power_change() // We're back on APC power.
+	. = ..()
+	if(!.)
+		return
+	power_change() // We're back on APC power.
 
 /obj/machinery/power/pointdefense/power_change()
-	if(powernet)
-		return // We don't care, we are cable powered anyway
+	if(is_connected())
+		return
 	var/old_stat = machine_stat
 	..()
 	if(old_stat != machine_stat)
 		update_icon()
 
 // Decide where to get the power to fire from
-/obj/machinery/power/pointdefense/use_power_oneoff(amount, chan = CURRENT_CHANNEL)
-	if(powernet)
-		return draw_power(amount * 0.001) * 1000
-	// We are not connected to a powernet, so we want APC power.  Reproduce that code here since this is weird.
-	if(chan == CURRENT_CHANNEL)
-		chan = power_channel
-	var/area/A = get_area(src)	// make sure it's in an area
-	if(!A || !A.powered(chan))	// and that the area is powered
-		return 0				// if not, then not powered
-	return A.use_power_oneoff(amount, chan)
+/obj/machinery/power/pointdefense/use_burst_power(amount, channel = power_channel, allow_partial, over_time)
+	if(is_connected())
+		return flat_draw(amount * 0.001) * 1000
+	return ..()
 
 // Find controller with the same tag on connected z levels (if any)
 /obj/machinery/power/pointdefense/proc/get_controller()
@@ -257,7 +255,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	var/obj/effect/meteor/M = target.resolve()
 	if(!istype(M))
 		return
-	if(use_power_oneoff(active_power_usage) < active_power_usage)
+	if(use_burst_power(active_power_usage) < active_power_usage)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
@@ -354,7 +352,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		return FALSE
 
 	playsound(src, 'sound/weapons/flash.ogg', 100, FALSE)
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	active = TRUE
 	update_icon()
 	return TRUE
@@ -363,7 +361,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!active)
 		return FALSE
 	playsound(src, 'sound/machines/apc_nopower.ogg', 50, FALSE)
-	update_use_power(USE_POWER_OFF)
+	set_use_power(USE_POWER_OFF)
 	active = FALSE
 	update_icon()
 	return TRUE

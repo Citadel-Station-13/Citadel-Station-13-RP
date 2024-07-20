@@ -430,7 +430,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/solars)
 "apD" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -2222,7 +2222,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced,
@@ -3325,7 +3325,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/security/hallway)
 "dDF" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -3479,7 +3479,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "dTl" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -3555,10 +3555,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "dYM" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /obj/structure/catwalk,
@@ -4061,7 +4061,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "ewo" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
@@ -5178,7 +5178,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "fIK" = (
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -5731,7 +5731,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
 "giU" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -6220,7 +6220,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "gLe" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -6962,7 +6962,7 @@
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/hallway)
 "hJi" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/machinery/power/pointdefense{
@@ -7176,7 +7176,7 @@
 /turf/simulated/wall,
 /area/security/forensics)
 "hXH" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/green{
@@ -8460,7 +8460,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "jDH" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -9072,7 +9072,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "knG" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
@@ -10029,7 +10029,7 @@
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
 "lrl" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -10744,7 +10744,7 @@
 /obj/machinery/power/pointdefense{
 	id_tag = "forward_pd"
 	},
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "mpd" = (
@@ -11053,7 +11053,7 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/bridge/bunker)
 "mFI" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
@@ -11628,7 +11628,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/starboard)
 "noA" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -11808,7 +11808,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "nyN" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable/green{
@@ -12122,7 +12122,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "nQB" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -14825,10 +14825,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck1/a)
 "rit" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/structure/catwalk,
@@ -18416,7 +18416,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one)
 "vpq" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -18801,7 +18801,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/reinforced,
@@ -19211,7 +19211,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1)
 "weS" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -19621,13 +19621,13 @@
 /obj/machinery/power/pointdefense{
 	id_tag = "forward_pd"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/reinforced/outdoors,
 /area/space)
 "wCG" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
@@ -20270,7 +20270,7 @@
 /turf/simulated/open,
 /area/maintenance/security/port)
 "xnC" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2-4-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,

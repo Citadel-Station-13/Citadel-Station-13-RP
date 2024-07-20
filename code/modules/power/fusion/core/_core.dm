@@ -20,6 +20,7 @@ var/list/fusion_cores = list()
 	anchored = 0
 
 	circuit = /obj/item/circuitboard/fusion_core
+	connection_requires_anchored = TRUE
 
 	var/obj/effect/fusion_em_field/owned_field
 	var/field_strength = 1//0.01
@@ -31,8 +32,6 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/Initialize(mapload)
 	. = ..()
 	fusion_cores += src
-	if(anchored)
-		connect_to_network()
 
 /obj/machinery/power/fusion_core/Destroy()
 	for(var/obj/machinery/computer/fusion_core_control/FCC in GLOB.machines)
@@ -43,7 +42,7 @@ var/list/fusion_cores = list()
 	return ..()
 
 /obj/machinery/power/fusion_core/process(delta_time)
-	if((machine_stat & BROKEN) || !powernet || !owned_field)
+	if((machine_stat & BROKEN) || !is_connected() || !owned_field)
 		Shutdown()
 	if(owned_field)
 		spawn(1)
@@ -68,7 +67,7 @@ var/list/fusion_cores = list()
 	owned_field = new(loc, src)
 	owned_field.ChangeFieldStrength(field_strength)
 	icon_state = "core1"
-	update_use_power(USE_POWER_ACTIVE)
+	set_use_power(USE_POWER_ACTIVE)
 	. = 1
 
 /obj/machinery/power/fusion_core/proc/Shutdown(var/force_rupture)
@@ -80,7 +79,7 @@ var/list/fusion_cores = list()
 			owned_field.RadiateAll()
 		qdel(owned_field)
 		owned_field = null
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 
 /obj/machinery/power/fusion_core/proc/AddParticles(var/name, var/quantity = 1)
 	if(owned_field)

@@ -1332,10 +1332,10 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/forward/port)
 "aQU" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -1966,7 +1966,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "boK" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
@@ -2322,7 +2322,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck2)
 "byF" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small{
@@ -2978,7 +2978,7 @@
 /obj/structure/cable{
 	icon_state = "32-2"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/structure/lattice,
@@ -3023,7 +3023,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/aft/starboard)
 "ccq" = (
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/machinery/power/pointdefense{
 	id_tag = "forward_pd"
 	},
@@ -5243,7 +5243,7 @@
 /turf/simulated/floor/reinforced,
 /area/main_map/Hangar_bay/deck2/a)
 "dPl" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -5630,7 +5630,7 @@
 /turf/simulated/open,
 /area/quartermaster/warehouse)
 "ebT" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -5734,7 +5734,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "efw" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced/outdoors,
@@ -7719,7 +7719,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "fIL" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-8"
 	},
 /obj/machinery/power/pointdefense{
@@ -10597,7 +10597,7 @@
 /area/engineering/engine_eva)
 "igf" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/reinforced,
@@ -13025,7 +13025,7 @@
 /area/main_map/maintenance/deck_two/starboard)
 "jXj" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
@@ -15456,7 +15456,7 @@
 /turf/simulated/open,
 /area/security/brig)
 "lMM" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
@@ -18605,7 +18605,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/processing)
 "oee" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/pointdefense{
@@ -19512,10 +19512,10 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/atmos)
 "oNf" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced,
@@ -21292,10 +21292,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck2)
 "qdu" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
-/obj/structure/cable/heavyduty,
+/obj/structure/wire/power_cable/backplane,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -21457,7 +21457,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/hallway/deck2)
 "qkD" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -21529,11 +21529,11 @@
 /turf/simulated/open,
 /area/quartermaster/hallway)
 "qoK" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/cable,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -28106,7 +28106,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area_hallway)
 "vwu" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft{
@@ -30086,7 +30086,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_two/starboard)
 "wKT" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,

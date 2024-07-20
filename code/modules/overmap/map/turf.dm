@@ -1,4 +1,10 @@
 
+/area/overmap
+	name = "System Map"
+	icon_state = "start"
+	area_power_override = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+
 /turf/overmap
 	name = "--init--"
 	desc = "If you see this, it means coders didn't update the description but did allow perspective-relayed examine. Yell at them."

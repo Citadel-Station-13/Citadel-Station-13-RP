@@ -30,8 +30,8 @@
 	return
 
 /obj/machinery/power/port_gen/process(delta_time)
-	if(active && HasFuel() && !IsBroken() && anchored && powernet)
-		add_avail(power_gen * power_output * 0.001)
+	if(active && HasFuel() && !IsBroken() && anchored && connection.is_connected())
+		supply(power_gen * power_output * 0.001)
 		UseFuel()
 		src.updateDialog()
 	else
@@ -131,8 +131,6 @@
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	component_parts += new /obj/item/stock_parts/capacitor(src)
 	RefreshParts()
-	if(anchored)
-		connect_to_network()
 
 /obj/machinery/power/port_gen/pacman/Destroy()
 	DropFuel()
@@ -286,13 +284,11 @@
 	else if(!active)
 		if(O.is_wrench())
 			if(!anchored)
-				connect_to_network()
 				to_chat(user, "<span class='notice'>You secure the generator to the floor.</span>")
 			else
-				disconnect_from_network()
 				to_chat(user, "<span class='notice'>You unsecure the generator from the floor.</span>")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-			anchored = !anchored
+			set_anchored(!anchored)
 			return
 		else if(default_deconstruction_screwdriver(user, O))
 			return
@@ -336,12 +332,12 @@
 	data["fuel_usage"] = active ? round((power_output / time_per_sheet) * 1000) : 0
 
 	data["anchored"] = anchored
-	data["connected"] = (powernet == null ? 0 : 1)
+	data["connected"] = (is_connected() ? 0 : 1)
 	data["ready_to_boot"] = anchored && HasFuel()
 	data["power_generated"] = render_power(power_gen, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
 	data["power_output"] = render_power(power_gen * power_output, ENUM_POWER_SCALE_NONE, ENUM_POWER_UNIT_WATT, 0.01, FALSE)
 	data["unsafe_output"] = power_output > max_safe_output
-	data["power_available"] = (powernet == null ? 0 : render_power(avail(), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE))
+	data["power_available"] = (is_connected() ? 0 : render_power(get_powernet_supply(), ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT, 0.01, FALSE))
 	data["temperature_current"] = temperature
 	data["temperature_max"] = max_temperature
 	data["temperature_overheat"] = overheating
@@ -528,11 +524,10 @@
 	. = ..()
 	if(ispath(circuit))
 		circuit = new circuit(src)
-	connect_to_network()
 
 /obj/machinery/power/rtg/process()
 	..()
-	add_avail(power_gen)
+	supply(power_gen)
 	if(panel_open && irradiate)
 		radiation_pulse(src, RAD_INTENSITY_RADIOISOTOPE_GEN)
 

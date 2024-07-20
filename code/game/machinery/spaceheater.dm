@@ -212,14 +212,9 @@
 		if(default_deconstruction_crowbar(user,I))
 			return
 	if(I.is_wrench())
-		anchored = !anchored
+		set_anchored(!anchored)
 		visible_message("<span class='notice'>\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</span>")
 		playsound(src, I.tool_sound, 75, 1)
-		if(anchored)
-			connect_to_network()
-		else
-			disconnect_from_network()
-			turn_off()
 		return
 	if(istype(I, /obj/item/multitool))
 		var/new_temp = input("Input a new target temperature, in degrees C.","Target Temperature", 20) as num
@@ -229,6 +224,10 @@
 		target_temp = max(new_temp, TCMB)
 		return
 	..()
+
+/obj/machinery/power/thermoregulator/disconnect()
+	. = ..()
+	turn_off()
 
 /obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
@@ -246,11 +245,11 @@
 /obj/machinery/power/thermoregulator/process()
 	if(!on)
 		return
-	if(!powernet)
+	if(!connection.network)
 		turn_off()
 		return
 
-	if((draw_power(idle_power_usage * 0.001) * 1000) < idle_power_usage)
+	if((connection.flat_draw(idle_power_usage * 0.001) * 1000) < idle_power_usage)
 		visible_message("<span class='notice'>\The [src] shuts down.</span>")
 		turn_off()
 		return
@@ -271,7 +270,7 @@
 		change_mode(MODE_IDLE)
 	else if(heat_transfer > 0)
 		change_mode(MODE_HEATING)
-		power_avail = draw_power(min(heat_transfer, active_power_usage) * 0.001) * 1000
+		power_avail = flat_draw(min(heat_transfer, active_power_usage) * 0.001) * 1000
 		removed.adjust_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
 	else
 		change_mode(MODE_COOLING)
@@ -279,7 +278,7 @@
 		var/cop = removed.temperature / TN60C
 		var/actual_heat_transfer = heat_transfer
 		heat_transfer = min(heat_transfer, active_power_usage * cop)
-		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
+		power_avail = flat_draw((heat_transfer/cop) * 0.001) * 1000
 		removed.adjust_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
 	env.merge(removed)
 
@@ -313,26 +312,26 @@
 	update_icon()
 	..(severity)
 
-/obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
-	if(!anchored || !powernet)
-		return
-	// 1.5 MW
-	var/power_avail = draw_power(1500)
-	var/datum/gas_mixture/env = loc.return_air()
-	if(env)
-		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
-		if(removed)
-			// OH BOY!
-			removed.adjust_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
-			env.merge(removed)
-	var/turf/T = get_turf(src)
-	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
-	T.assume_gas(GAS_ID_VOLATILE_FUEL, 5, T20C)
-	T.hotspot_expose(700,400)
-	var/datum/effect_system/spark_spread/s = new
-	s.set_up(5, 0, T)
-	s.start()
-	visible_message("<span class='warning'>\The [src] bursts into flame!</span>")
+// /obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
+// 	if(!anchored || !connection.network)
+// 		return
+// 	// 1.5 MW
+// 	var/power_avail = connection.flat_draw(1500)
+// 	var/datum/gas_mixture/env = loc.return_air()
+// 	if(env)
+// 		var/datum/gas_mixture/removed = env.remove_ratio(0.99)
+// 		if(removed)
+// 			// OH BOY!
+// 			removed.adjust_thermal_energy(power_avail * 1000 * THERMOREGULATOR_CHEAT_FACTOR)
+// 			env.merge(removed)
+// 	var/turf/T = get_turf(src)
+// 	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
+// 	T.assume_gas(GAS_ID_VOLATILE_FUEL, 5, T20C)
+// 	T.hotspot_expose(700,400)
+// 	var/datum/effect_system/spark_spread/s = new
+// 	s.set_up(5, 0, T)
+// 	s.start()
+// 	visible_message("<span class='warning'>\The [src] bursts into flame!</span>")
 
 #undef MODE_IDLE
 #undef MODE_HEATING

@@ -390,7 +390,7 @@
 	if(active)
 		my_tool.set_ready_state(0)
 		if(my_mecha.has_charge(my_tool.energy_drain * 50)) //Stops at around 1000 charge.
-			my_mecha.use_power(my_tool.energy_drain)
+			my_mecha.use_burst_power(my_tool.energy_drain)
 		else
 			destroy_shields()
 			my_tool.set_ready_state(1)
@@ -415,7 +415,7 @@
 
 /obj/item/shield_projector/line/exosuit/adjust_health(amount)
 	..()
-	my_mecha.use_power(my_tool.energy_drain)
+	my_mecha.use_burst_power(my_tool.energy_drain)
 	if(!active && shield_health < shield_regen_amount)
 		my_tool.log_message("Shield overloaded.")
-		my_mecha.use_power(my_tool.energy_drain * 4)
+		my_mecha.use_burst_power(my_tool.energy_drain * 4)

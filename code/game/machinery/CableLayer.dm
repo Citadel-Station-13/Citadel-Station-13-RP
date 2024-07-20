@@ -3,7 +3,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "pipe_d"
 	density = TRUE
-	var/obj/structure/cable/last_piece
+	var/obj/structure/wire/power_cable/last_piece
 	var/obj/item/stack/cable_coil/cable
 	var/max_cable = 100
 	var/on = FALSE
@@ -95,29 +95,15 @@
 	if(!istype(new_turf) || !dismantleFloor(new_turf))
 		return reset()
 	var/fdirn = turn(M_Dir,180)
-	for(var/obj/structure/cable/LC in new_turf) // Check to make sure there's not a cable there already.
+	for(var/obj/structure/wire/power_cable/LC in new_turf) // Check to make sure there's not a cable there already.
 		if(LC.d1 == fdirn || LC.d2 == fdirn)
 			return reset()
 	if(!use_cable(1))
 		return reset()
-	var/obj/structure/cable/NC = new(new_turf)
-	NC.cableColor("red")
-	NC.d1 = 0
-	NC.d2 = fdirn
-	NC.update_icon()
 
-	var/datum/powernet/PN
+	var/obj/structure/wire/power_cable/NC = new(new_turf, COLOR_RED, 0, fdirn)
 	if(last_piece && last_piece.d2 != M_Dir)
-		last_piece.d1 = min(last_piece.d2, M_Dir)
-		last_piece.d2 = max(last_piece.d2, M_Dir)
-		last_piece.update_icon()
-		PN = last_piece.powernet
+		last_piece.reset_dirs(min(last_piece.d2, M_Dir), max(last_piece.d2, M_Dir))
 
-	if(!PN)
-		PN = new()
-	PN.add_cable(NC)
-	NC.mergeConnectedNetworks(NC.d2)
-
-	//NC.mergeConnectedNetworksOnTurf()
 	last_piece = NC
 	return TRUE

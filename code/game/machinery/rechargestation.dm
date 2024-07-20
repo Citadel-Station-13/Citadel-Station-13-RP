@@ -62,7 +62,7 @@
 		recharge_amount = (occupant ? restore_power_active : restore_power_passive)
 		recharge_amount = DYNAMIC_W_TO_CELL_UNITS(recharge_amount, 1)
 		recharge_amount = cell.give(recharge_amount)
-		use_power(DYNAMIC_CELL_UNITS_TO_W(recharge_amount, 1))
+		use_burst_power(DYNAMIC_CELL_UNITS_TO_W(recharge_amount, 1))
 
 	if(icon_update_tick >= 10)
 		icon_update_tick = 0

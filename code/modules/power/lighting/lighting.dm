@@ -238,7 +238,7 @@ var/global/list/light_type_cache = list()
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 10
-	power_channel = LIGHT // Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT // Lights are calc'd via area so they dont need to be in the machine list
 
 	light_range = 8
 	light_power = 0.8
@@ -594,14 +594,14 @@ var/global/list/light_type_cache = list()
 					on = 0
 					set_light(0)
 			else
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 				set_light(correct_range, correct_power, correct_color)
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 		emergency_mode = TRUE
 		START_PROCESSING(SSobj, src)
 	else
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 		set_light(0)
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
@@ -793,20 +793,17 @@ var/global/list/light_type_cache = list()
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
 	var/area/A = get_area(src)
-	return !A.lightswitch && A.power_light || flickering
+	return !A.lightswitch && (A.power_channels & POWER_BIT_LIGHT) || flickering
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/A = get_area(src)
-	return A && A.lightswitch && (!A.requires_power || A.power_light)
+	return A && A.lightswitch && A.powered(POWER_CHANNEL_LIGHT)
 
 /obj/machinery/light/flamp/has_power()
 	var/area/A = get_area(src)
-	if(lamp_shade)
-		return A && (!A.requires_power || A.power_light)
-	else
-		return A && A.lightswitch && (!A.requires_power || A.power_light)
+	return A && (lamp_shade || A.lightswitch) && A.powered(POWER_CHANNEL_LIGHT)
 
 // returns whether this light has emergency power
 // can also return if it has access to a certain amount of that power

@@ -95,7 +95,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "dp" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "2-8"
 	},
 /obj/structure/railing{
@@ -204,7 +204,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "gG" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
@@ -421,7 +421,7 @@
 /turf/simulated/mineral/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "km" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing{
@@ -846,7 +846,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "vO" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing,
@@ -856,7 +856,7 @@
 /turf/simulated/floor/virgo3b,
 /area/mine/explored)
 "vQ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/railing{
@@ -872,7 +872,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "wJ" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "0-2"
 	},
 /obj/structure/cable,
@@ -1124,7 +1124,7 @@
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/outpost/mining_main/airlock)
 "Ca" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/virgo3b,
@@ -1479,7 +1479,7 @@
 /area/outpost/mining_main/hangar)
 "LW" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-2"
 	},
 /obj/spawner/window/low_wall/borosillicate/full,
@@ -1798,7 +1798,7 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
 "Vx" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
@@ -1867,7 +1867,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "Xo" = (
-/obj/structure/cable/heavyduty{
+/obj/structure/wire/power_cable/backplane{
 	icon_state = "1-4"
 	},
 /obj/structure/railing,

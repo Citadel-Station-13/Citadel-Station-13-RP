@@ -78,7 +78,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw_legacy = power_draw
-		use_power(power_draw)
+		use_burst_power(power_draw)
 		network?.update = 1
 
 /obj/machinery/atmospherics/component/unary/env_heat_pump/receive_signal(datum/signal/signal, receive_method, receive_param)

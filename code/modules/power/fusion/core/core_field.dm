@@ -44,11 +44,10 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		/obj/effect,
 		/obj/projectile,
 		/atom/movable/fire,
-		/obj/structure/cable,
+		/obj/structure/wire,
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,
 		/mob/observer,
-		/obj/machinery/power/hydromagnetic_trap,
 		/obj/machinery/camera
 	))
 
@@ -145,7 +144,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	React()
 
 	// Dump power to our powernet.
-	owned_core.add_avail(FUSION_ENERGY_KW_PER_K * plasma_temperature)
+	owned_core.supply(FUSION_ENERGY_KW_PER_K * plasma_temperature)
 
 	// Energy decay.
 	if(plasma_temperature >= 1)

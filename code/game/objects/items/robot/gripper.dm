@@ -135,8 +135,8 @@
 		else
 			to_chat(user, "<span class='danger'>Your gripper cannot hold \the [target].</span>")
 
-	else if(istype(target,/obj/machinery/power/apc))
-		var/obj/machinery/power/apc/A = target
+	else if(istype(target,/obj/machinery/apc))
+		var/obj/machinery/apc/A = target
 		if(A.opened)
 			if(A.cell)
 
@@ -145,7 +145,6 @@
 				A.cell.update_icon()
 				A.cell = null
 
-				A.charging = 0
 				A.update_icon()
 
 				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
