@@ -3,6 +3,10 @@
 // Multiz shuttles currently not supported. Non-autodock shuttles currently not supported.
 
 /obj/overmap/entity/visitable/ship/landable
+	bound_width = 12
+	bound_height = 12
+	bound_x = 10
+	bound_y = 10
 	var/shuttle                                         // Name of associated shuttle. Must be autodock.
 	var/obj/effect/shuttle_landmark/ship/landmark       // Record our open space landmark for easy reference.
 	var/status = SHIP_STATUS_LANDED
@@ -168,6 +172,7 @@
 	var/datum/shuttle/autodock/auto = given_shuttle
 	if(into == auto.landmark_transition)
 		status = SHIP_STATUS_TRANSIT
+		initialize_physics() // don't move during transition
 		on_takeoff(from, into)
 		return
 	if(into == landmark)

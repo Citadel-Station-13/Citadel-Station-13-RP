@@ -93,7 +93,7 @@
 	post_equip(H)
 
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
-		H.set_id_info(W)
+		H.set_id_info(W, H.client)
 	return 1
 
 /datum/outfit/proc/equip_base(mob/living/carbon/human/H)

@@ -17,6 +17,8 @@
 	var/list/neu_traits = list()
 	var/list/neg_traits = list()
 
+	var/list/id_hidden_traits = list()
+
 	var/traits_cheating = 0 //Varedit by admins allows saving new maximums on people who apply/etc
 	var/starting_trait_points = STARTING_SPECIES_POINTS
 	var/max_traits = MAX_SPECIES_TRAITS
@@ -32,6 +34,7 @@
 	S["pos_traits"]		>> pref.pos_traits
 	S["neu_traits"]		>> pref.neu_traits
 	S["neg_traits"]		>> pref.neg_traits
+	S["hidden_traits"]	>> pref.id_hidden_traits
 	S["blood_color"]	>> pref.blood_color
 
 	S["traits_cheating"]>> pref.traits_cheating
@@ -49,6 +52,7 @@
 	S["pos_traits"]		<< pref.pos_traits
 	S["neu_traits"]		<< pref.neu_traits
 	S["neg_traits"]		<< pref.neg_traits
+	S["hidden_traits"]	<< pref.id_hidden_traits
 	S["blood_color"]	<< pref.blood_color
 
 	S["traits_cheating"]<< pref.traits_cheating
@@ -64,6 +68,7 @@
 	if(!pref.pos_traits) pref.pos_traits = list()
 	if(!pref.neu_traits) pref.neu_traits = list()
 	if(!pref.neg_traits) pref.neg_traits = list()
+	if(!pref.id_hidden_traits) pref.id_hidden_traits = list()
 
 	pref.blood_color = sanitize_hexcolor(pref.blood_color, 6, TRUE, default = "#A10808")
 
@@ -82,14 +87,24 @@
 	for(var/path in pref.neu_traits)
 		if(!(path in neutral_traits))
 			pref.neu_traits -= path
+			continue
 		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
 			pref.neu_traits -= path
 	//Negative traits
 	for(var/path in pref.neg_traits)
 		if(!(path in negative_traits))
 			pref.neg_traits -= path
+			continue
 		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
 			pref.neg_traits -= path
+	
+	for(var/path in pref.id_hidden_traits)
+		var/datum/trait/T = all_traits[path]
+		if(!istype(T) || !T.extra_id_info_optional)
+			pref.id_hidden_traits -= path
+			continue
+		if(!(path in pref.pos_traits + pref.neu_traits + pref.neg_traits))
+			pref.id_hidden_traits -= path
 
 	var/datum/species/selected_species = pref.real_species_datum()
 	if(selected_species.selects_bodytype)
@@ -180,6 +195,23 @@
 			. += "<li>- <a href='?src=\ref[src];clicked_neg_trait=[T]'>[trait.name]</a></li>"
 		. += "</ul>"
 
+	var/list/id_traits = list()
+	for(var/path in pref.pos_traits + pref.neg_traits + pref.neu_traits)
+		var/datum/trait/T = all_traits[path] 
+		if(istype(T) && T.extra_id_info)
+			id_traits |= T
+
+	if(length(id_traits))
+		. += "<b>ID-visible Traits</b>"
+		. += "<ul>"
+		for(var/datum/trait/T in id_traits)
+			if(T.extra_id_info_optional)
+				. += "<li>- <a href='?src=\ref[src];id_info_toggle=[T.type]'>[T.name][(T.type in pref.id_hidden_traits) ? " (HIDDEN)" : ""]</a></li>"
+			else
+				. += "<li>- [T.name]</li>"
+		. += "</ul>"
+		. += "<br>"
+
 	. += "<b>Blood Color: </b>" //People that want to use a certain species to have that species traits (xenochimera/promethean/spider) should be able to set their own blood color.
 	. += "<a href='?src=\ref[src];blood_color=1'>Set Color</a>"
 	. += "<a href='?src=\ref[src];blood_reset=1'>R</a><br>"
@@ -251,6 +283,19 @@
 		var/choice = alert("Remove [initial(trait.name)] and lose [initial(trait.cost)] points?","Remove Trait","Remove","Cancel")
 		if(choice == "Remove")
 			pref.neg_traits -= trait
+		return PREFERENCES_REFRESH
+
+	else if(href_list["id_info_toggle"])
+		var/datum/trait/trait = all_traits[text2path(href_list["id_info_toggle"])]
+		if(!istype(trait))
+			to_chat(user, SPAN_WARNING("???"))
+			return PREFERENCES_REFRESH
+		if(!(trait.type in pref.id_hidden_traits))
+			pref.id_hidden_traits |= trait.type
+			to_chat(user, SPAN_NOTICE("[trait.name] is now hidden from your ID."))
+		else
+			pref.id_hidden_traits -= trait.type
+			to_chat(user, "<span class='notice'>[trait.name] will now be shown on your ID. It will read as: \"</span>[trait.extra_id_info]<span class='notice'>\"</span>")
 		return PREFERENCES_REFRESH
 
 	else if(href_list["custom_say"])

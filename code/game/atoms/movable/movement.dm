@@ -3,6 +3,8 @@
  * This rewrites how we handle movement to avoid some BYOND-isms.
  */
 /atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	if(pixel_movement)
+		return ..()
 	. = FALSE
 	if(newloc == loc)
 		return
@@ -182,6 +184,8 @@
  * Only supports moves up to range 1, in any direction including diagonals.
  */
 /atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	if(pixel_movement)
+		return ..()
 	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
 	if(is_multi_tile && isturf(newloc))
 		newloc = locate(newloc.x + round(step_x / WORLD_ICON_SIZE), newloc.y + round(step_y / WORLD_ICON_SIZE), newloc.z)
@@ -546,6 +550,7 @@
 	. = TRUE
 	forceMove(destination)
 
+// todo: step x, step y support
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
 	pulledby?.stop_pulling()
@@ -557,13 +562,14 @@
 /atom/movable/proc/moveToNullspace()
 	return doMove(null)
 
+// todo: step x, step y support
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 
 	++in_move
 
 	var/atom/oldloc = loc
-	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
+	var/is_multi_tile = pixel_movement || bound_width > world.icon_size || bound_height > world.icon_size
 
 	if(buckled_mobs)
 		unbuckle_all_mobs(BUCKLE_OP_FORCE)
@@ -580,19 +586,12 @@
 
 		if(!same_loc)
 			if(is_multi_tile && isturf(destination))
-				// gather
+				// gather old
 				var/list/old_locs = locs // implicit Copy() due to locs being special byond list
-				var/list/new_locs = block(
-					destination,
-					locate(
-						min(world.maxx, destination.x + ROUND_UP(bound_width / 32)),
-						min(world.maxy, destination.y + ROUND_UP(bound_height / 32)),
-						destination.z
-					)
-				)
-
 				// move
 				loc = destination
+				// gather new
+				var/list/new_locs = locs
 
 				// exit
 				if(old_area && old_area != destarea)
@@ -836,6 +835,9 @@
   * Sets our glide size
   */
 /atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
+	if(pixel_movement)	 // shoo
+		return
+
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
 	glide_size = new_glide_size
 
