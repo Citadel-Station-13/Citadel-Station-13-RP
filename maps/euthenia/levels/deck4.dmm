@@ -231,6 +231,12 @@
 /obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/main_map/maintenance/deck_four/aft/port)
+"aR" = (
+/obj/machinery/atmospherics/pipe/zpipe/up{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "aS" = (
 /obj/structure/cable/green{
 	icon_state = "16-0"
@@ -822,6 +828,15 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/forward/starboard)
+"df" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 10
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "dg" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -2034,6 +2049,18 @@
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck4)
+"hs" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "N-S-Pass"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "hu" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "auto"
@@ -2092,6 +2119,13 @@
 	},
 /obj/structure/lattice,
 /turf/space/basic,
+/area/space)
+"hE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced/overhang,
 /area/space)
 "hF" = (
 /obj/structure/table/standard,
@@ -2269,6 +2303,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"ig" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "ii" = (
 /obj/structure/table/reinforced,
 /obj/item/multitool/triumph_buffered,
@@ -2332,7 +2373,6 @@
 /area/quartermaster/miningdock)
 "iv" = (
 /obj/structure/curtain/black{
-	anchored = 1;
 	icon_state = "open"
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -3319,6 +3359,15 @@
 /obj/machinery/atmospherics/mains_pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck4)
+"lN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 6
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "lO" = (
 /obj/structure/ladder{
 	pixel_y = 8
@@ -3618,6 +3667,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
+"mM" = (
+/obj/machinery/atmospherics/pipe/zpipe/up/aux{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "mN" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -4289,6 +4344,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_two)
+"pf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 10
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "pg" = (
 /obj/structure/bookcase{
 	name = "bookcase (Non-Fiction)"
@@ -4535,6 +4599,15 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/main_map/maintenance/deck_four/aft/port)
+"qd" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "N-S-Pass"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "qe" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	frequency = 1379;
@@ -5624,6 +5697,13 @@
 /obj/machinery/door/airlock/maintenance/cargo,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
+"tU" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "tV" = (
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 9
@@ -7086,6 +7166,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/lower)
+"yN" = (
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/engineering/aft_hallway)
 "yO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -7432,6 +7518,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/port)
+"zS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "zV" = (
 /obj/machinery/atmospherics/component/binary/pump/on,
 /turf/simulated/floor/plating,
@@ -8524,6 +8619,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"Dr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "Ds" = (
 /obj/structure/table/reinforced,
 /obj/item/binoculars,
@@ -8625,6 +8726,15 @@
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating,
 /area/main_map/hallway/deck4/fore)
+"DH" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/aft_hallway)
+"DI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "DJ" = (
 /obj/machinery/atmospherics/mains_pipe/simple/hidden{
 	dir = 4
@@ -9511,6 +9621,12 @@
 	name = "Cold Room Base"
 	},
 /area/rnd/xenobiology)
+"GS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "GU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -9814,6 +9930,12 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/main_map/maintenance/deck_four/starboard)
+"HW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "HX" = (
 /obj/machinery/power/apc/north_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
@@ -10464,6 +10586,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"Kd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "Kf" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
@@ -10480,7 +10611,7 @@
 /area/main_map/maintenance/deck_four/starboard)
 "Ki" = (
 /obj/machinery/door/airlock/glass/engineering,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/engineering/aft_hallway)
 "Kj" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
@@ -12449,6 +12580,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"QZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "Ra" = (
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/quartermaster/miningdock)
@@ -12482,6 +12617,12 @@
 "Rh" = (
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/miningdock)
+"Ri" = (
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "Rk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -12686,6 +12827,12 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_four/aft/port)
+"RV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced/overhang,
+/area/space)
 "RX" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /obj/map_helper/network_builder/power_cable/green/auto,
@@ -21527,15 +21674,15 @@ ZI
 ZI
 TY
 TY
-TY
-TY
-TY
-TY
-TY
-TY
-TY
-TY
-TY
+DI
+QZ
+GS
+lN
+hE
+QZ
+QZ
+QZ
+Dr
 TY
 TY
 Ir
@@ -21723,8 +21870,8 @@ ZI
 zs
 ZI
 ZI
-TY
-TY
+HW
+Kd
 Ir
 Ir
 Ir
@@ -21917,8 +22064,8 @@ RT
 YA
 ZI
 ZI
-TY
-TY
+HW
+Kd
 Ir
 tv
 dJ
@@ -22111,8 +22258,8 @@ yi
 oZ
 ZI
 ZI
-TY
-TY
+HW
+Kd
 Ir
 tv
 dJ
@@ -22305,8 +22452,8 @@ ZI
 RK
 ZI
 ZI
-TY
-TY
+HW
+Kd
 Ir
 Ir
 Ir
@@ -22499,8 +22646,8 @@ dA
 oZ
 ZI
 ZI
-TY
-ho
+HW
+Kd
 ho
 ho
 ho
@@ -22693,9 +22840,9 @@ Jr
 Mk
 hW
 py
-TY
+HW
+Kd
 ho
-Dz
 Dz
 Dz
 py
@@ -22887,9 +23034,9 @@ gr
 EI
 vL
 Hr
-EE
+qd
+hs
 hD
-EB
 EB
 EB
 Hr
@@ -23081,9 +23228,9 @@ DD
 Dp
 hW
 py
-TY
+RV
+Kd
 ho
-Dz
 Dz
 Dz
 py
@@ -23275,9 +23422,9 @@ Dc
 zR
 ZI
 ZI
-TY
+RV
+Kd
 ho
-Dz
 Dz
 Dz
 ho
@@ -23469,9 +23616,9 @@ Dc
 nU
 ZI
 ZI
-TY
+RV
+Kd
 ho
-Dz
 Dz
 Dz
 ho
@@ -23663,9 +23810,9 @@ ZI
 Fm
 ZI
 ZI
-TY
+RV
+Kd
 ho
-Dz
 Dz
 Dz
 ho
@@ -23857,10 +24004,10 @@ KV
 WP
 jy
 TY
-TY
+RV
+Kd
 ho
-Dz
-Dz
+ho
 Dz
 ho
 ho
@@ -24050,10 +24197,10 @@ kV
 Iz
 WP
 jy
-ho
-ho
-ho
-ho
+TY
+RV
+pf
+zS
 ho
 ho
 ho
@@ -24245,10 +24392,10 @@ fP
 Ot
 jy
 TY
-TY
-TY
-TY
-TY
+DI
+GS
+df
+Ri
 TY
 TY
 TY
@@ -24440,9 +24587,9 @@ Yh
 Bj
 Bj
 Bj
-Bj
-Bj
-Bj
+ig
+ig
+tU
 Bj
 TY
 ho
@@ -24634,9 +24781,9 @@ Yh
 Bj
 nN
 aY
-vv
-vv
-vv
+aR
+aR
+mM
 Bj
 TY
 ho
@@ -24830,7 +24977,7 @@ xX
 Ms
 vv
 vv
-vv
+yN
 Bj
 TY
 ho
@@ -25020,8 +25167,8 @@ AU
 Wy
 Yh
 Bj
-vv
-vv
+DH
+DH
 vv
 vv
 vv
@@ -25214,8 +25361,8 @@ AU
 Wy
 Yh
 Bj
-vv
-vv
+DH
+DH
 vv
 vv
 vv
