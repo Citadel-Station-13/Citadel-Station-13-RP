@@ -349,6 +349,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		SS.queue_next = null
 		SS.queue_prev = null
 		SS.state = SS_IDLE
+
+		// Set precomputed variables
+		SS.recompute_wait_dt()
+
 		if (SS.subsystem_flags & SS_TICKER)
 			SStickersubsystems += SS
 			// Timer subsystems aren't allowed to bunch up, so we offset them a bit.
