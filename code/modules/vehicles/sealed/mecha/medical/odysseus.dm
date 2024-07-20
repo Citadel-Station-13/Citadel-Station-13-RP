@@ -35,96 +35,20 @@
 	else
 		return 0
 
-/obj/vehicle/sealed/mecha/medical/odysseus/go_out()
-	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
+/obj/vehicle/sealed/mecha/medical/odysseus/mob_exit(mob/exiting, silent, randomstep)
+	. = ..()
+	if(!.)
+		return
+	if(ishuman(exiting))
+		var/mob/living/carbon/human/H = exiting
 		if(H.glasses == hud)
 			H.glasses = null
 			H.recalculate_vis()
-	..()
-	return
-/*
-	verb/set_perspective()
-		set name = "Set client perspective."
-		set category = "Exosuit Interface"
-		set src = usr.loc
-		var/perspective = input("Select a perspective type.",
-                      "Client perspective",
-                      occupant.client.perspective) in list(MOB_PERSPECTIVE,EYE_PERSPECTIVE)
-		TO_WORLD("[perspective]")
-		occupant.client.perspective = perspective
-		return
-
-	verb/toggle_eye()
-		set name = "Toggle eye."
-		set category = "Exosuit Interface"
-		set src = usr.loc
-		if(occupant.client.eye == occupant)
-			occupant.client.eye = src
-		else
-			occupant.client.eye = occupant
-		TO_WORLD("[occupant.client.eye]")
-		return
-*/
 
 //TODO - Check documentation for client.eye and client.perspective...
 /obj/item/clothing/glasses/hud/integrity/mech
 	name = "Integrated Medical Hud"
 
-
-//	process_hud(var/mob/M) //TODO VIS
-/*
-		TO_WORLD("view(M)")
-		for(var/mob/mob in view(M))
-			TO_WORLD("[mob]")
-		TO_WORLD("view(M.client)")
-		for(var/mob/mob in view(M.client))
-			TO_WORLD("[mob]")
-		TO_WORLD("view(M.loc)")
-		for(var/mob/mob in view(M.loc))
-			TO_WORLD("[mob]")
-
-
-		if(!M || M.stat || !(M in view(M)))	return
-		if(!M.client)	return
-		var/client/C = M.client
-		var/image/holder
-		for(var/mob/living/carbon/human/patient in view(M.loc))
-			if(M.see_invisible < patient.invisibility)
-				continue
-			var/foundVirus = 0
-
-			for (var/ID in patient.virus2)
-				if (ID in virusDB)
-					foundVirus = 1
-					break
-
-			holder = patient.hud_list[HEALTH_HUD]
-			if(patient.stat == DEAD)
-				holder.icon_state = "hudhealth-100"
-				C.images += holder
-			else
-				holder.icon_state = RoundHealth((patient.integrity-config.health_threshold_crit)/(patient.getMaxHealth()-config.health_threshold_crit)*100)
-				C.images += holder
-
-			holder = patient.hud_list[BIOLOGY_HUD]
-			if(patient.isSynthetic())
-				holder.icon_state = "hudrobo"
-			else if(patient.stat == DEAD)
-				holder.icon_state = "huddead"
-			else if(foundVirus)
-				holder.icon_state = "hudill"
-			else if(patient.has_brain_worms())
-				var/mob/living/simple_mob/animal/borer/B = patient.has_brain_worms()
-				if(B.controlling)
-					holder.icon_state = "hudbrainworm"
-				else
-					holder.icon_state = "hudhealthy"
-			else
-				holder.icon_state = "hudhealthy"
-
-			C.images += holder
-*/
 /obj/vehicle/sealed/mecha/medical/odysseus/loaded/Initialize(mapload)
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/sleeper

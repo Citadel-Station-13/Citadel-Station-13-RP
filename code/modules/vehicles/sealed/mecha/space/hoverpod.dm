@@ -36,9 +36,11 @@
 	if(.)
 		ion_trail.start()
 
-/obj/vehicle/sealed/mecha/working/hoverpod/go_out()
+/obj/vehicle/sealed/mecha/working/hoverpod/mob_exit(mob/exiting, silent, randomstep)
 	. = ..()
-	if(!occupant)
+	if(!.)
+		return
+	if(!length(occupants))
 		ion_trail.stop()
 
 //Modified phazon code

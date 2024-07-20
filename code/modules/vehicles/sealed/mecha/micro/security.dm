@@ -6,11 +6,12 @@
 	else
 		return 0
 
-/obj/vehicle/sealed/mecha/micro/sec/go_out()
-	if(src.occupant && src.occupant.client)
-		src.occupant.client.mouse_pointer_icon = initial(src.occupant.client.mouse_pointer_icon)
-	..()
-	return
+/obj/vehicle/sealed/mecha/micro/sec/mob_exit(mob/exiting, silent, randomstep)
+	. = ..()
+	if(!.)
+		return
+	if(exiting?.client)
+		exiting.client.mouse_pointer_icon = initial(src.occupant.client.mouse_pointer_icon)
 
 /obj/vehicle/sealed/mecha/micro/sec/polecat //figured give 'em the names of small predatory critters
 	desc = "A hardened security vehicle for micro crewmembers. To them, it's a superheavy tank. To everyone else, it's kinda cute."

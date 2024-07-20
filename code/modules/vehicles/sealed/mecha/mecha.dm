@@ -37,8 +37,7 @@
 	infra_luminosity = 15
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
 	var/initial_icon = null
-	var/can_move = 1
-	var/mob/living/carbon/occupant = null
+	var/can_move = 1null
 
 	/// Make a step in step_in/10 sec.
 	var/step_in = 10
@@ -1617,7 +1616,6 @@
 		brainmob.reset_perspective(src)
 		brainmob.mobility_flags = MOBILITY_FLAGS_DEFAULT
 		mmi_as_oc.mecha = src
-		add_obj_verb(src, /obj/vehicle/sealed/mecha/verb/eject)
 		src.Entered(mmi_as_oc)
 		src.forceMove(src.loc)
 		update_icon()
@@ -1955,65 +1953,40 @@
 	src.occupant << browse(src.get_stats_html(), "window=exosuit")
 	return
 
-/*
-/obj/vehicle/sealed/mecha/verb/force_eject()
-	set category = VERB_CATEGORY_OBJECT
-	set name = "Force Eject"
-	set src in view(5)
-	src.go_out()
-	return
-*/
-
-/obj/vehicle/sealed/mecha/verb/eject()
-	set name = "Eject"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	if(usr!=src.occupant)
+/obj/vehicle/sealed/mecha/mob_try_exit(mob/exiting, mob/user, silent = FALSE, randomstep = FALSE)
+	if(!ishuman(M))
 		return
-	src.go_out()
-	add_fingerprint(usr)
-	return
-
-
-/obj/vehicle/sealed/mecha/proc/go_out() //Eject/Exit the mech. Yes this is for easier searching.
-	if(!src.occupant) return
-	var/atom/movable/mob_container
+	. = ..()
+	if(!.)
+		return
 	QDEL_NULL(minihud)
-	if(ishuman(occupant))
-		mob_container = src.occupant
-		RemoveActions(occupant, human_occupant=1)//AEIOU
-	else if(istype(occupant, /mob/living/carbon/brain))
-		var/mob/living/carbon/brain/brain = occupant
-		mob_container = brain.container
-	else
-		return
-	if(mob_container.forceMove(src.loc))//ejecting mob container
-		log_message("[mob_container] moved out.")
-		occupant << browse(null, "window=exosuit")
-		if(occupant.client && cloaked_selfimage)
-			occupant.client.images -= cloaked_selfimage
-		if(istype(mob_container, /obj/item/mmi))
-			var/obj/item/mmi/mmi = mob_container
-			if(mmi.brainmob)
-				occupant.forceMove(mmi)
-			mmi.mecha = null
-			occupant.mobility_flags = NONE
-		occupant.clear_alert("charge")
-		occupant.clear_alert("mech damage")
-		occupant.in_enclosed_vehicle = 0
-		occupant.reset_perspective()
-		occupant = null
-		update_appearance()
-		setDir(dir_in)
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/eject)
+	RemoveActions(exiting, human_exiting=1)
 
-		// Doesn't seem needed.
-		if(src.occupant && src.occupant.client)
-			src.occupant.client.view = world.view
-			src.zoom = 0
+	log_message("[exiting] moved out.")
+	exiting << browse(null, "window=exosuit")
+	if(exiting.client && cloaked_selfimage)
+		exiting.client.images -= cloaked_selfimage
+	// if(istype(mob_container, /obj/item/mmi))
+	// 	var/obj/item/mmi/mmi = mob_container
+	// 	if(mmi.brainmob)
+	// 		exiting.forceMove(mmi)
+	// 	mmi.mecha = null
+	// 	exiting.mobility_flags = NONE
+	exiting.clear_alert("charge")
+	exiting.clear_alert("mech damage")
+	exiting.in_enclosed_vehicle = 0
+	exiting.reset_perspective()
+	exiting = null
+	update_appearance()
+	setDir(dir_in)
+	remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/eject)
 
-		strafing = 0
+	// Doesn't seem needed.
+	if(src.exiting && src.exiting.client)
+		src.exiting.client.view = world.view
+		src.zoom = 0
+
+	strafing = 0
 
 /////////////////////////
 ////// Access stuff /////

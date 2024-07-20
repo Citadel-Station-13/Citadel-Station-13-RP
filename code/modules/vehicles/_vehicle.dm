@@ -14,7 +14,10 @@
 	anchored = FALSE
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
 	COOLDOWN_DECLARE(cooldown_vehicle_move)
-	var/list/mob/occupants				//mob = bitflags of their control level.
+
+	/// list of mobs associated to their control flags
+	var/list/mob/occupants
+	
 	var/max_occupants = 1
 	var/max_drivers = 1
 	var/movedelay = 2

@@ -14,7 +14,6 @@
 
 /obj/vehicle/sealed/mecha/proc/GrantActions(mob/living/user, human_occupant = 0)
 	for(var/datum/action/action in list(
-		human_occupant && eject_action,
 		internals_action,
 		cycle_action,
 		lights_action,
@@ -33,7 +32,6 @@
 
 /obj/vehicle/sealed/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
 	for(var/datum/action/action in list(
-		eject_action,
 		internals_action,
 		cycle_action,
 		lights_action,
@@ -96,17 +94,6 @@
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
 	chassis.view_stats()
-
-/datum/action/mecha/mech_eject
-	name = "Eject From Mech"
-	button_icon_state = "mech_eject"
-
-/datum/action/mecha/mech_eject/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	var/obj/vehicle/sealed/mecha/chassis = target
-	chassis.go_out()
 
 /datum/action/mecha/strafe
 	name = "Toggle Mech Strafing"

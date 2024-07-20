@@ -1,10 +1,11 @@
+/**
+ * Vehicles where ocucpants are inside / in contents, rather than buckled
+ */
 /obj/vehicle/sealed
 	enclosed = TRUE // you're in a sealed vehicle dont get dinked idiot
 	var/enter_delay = 20
 	var/explode_on_death = TRUE
-	//? ??? what was this for ???
-	// flags = BLOCK_FACE_ATOM
-
+	
 /obj/vehicle/sealed/generate_actions()
 	. = ..()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/climb_out)
@@ -39,22 +40,22 @@
 	add_occupant(M)
 	return TRUE
 
-/obj/vehicle/sealed/proc/mob_try_exit(mob/M, mob/user, silent = FALSE, randomstep = FALSE)
-	mob_exit(M, silent, randomstep)
+/obj/vehicle/sealed/proc/mob_try_exit(mob/exiting, mob/user, silent = FALSE, randomstep = FALSE)
+	mob_exit(exiting, silent, randomstep)
 
-/obj/vehicle/sealed/proc/mob_exit(mob/M, silent = FALSE, randomstep = FALSE)
+/obj/vehicle/sealed/proc/mob_exit(mob/exiting, silent = FALSE, randomstep = FALSE)
 	SIGNAL_HANDLER
-	if(!istype(M))
+	if(!istype(exiting))
 		return FALSE
-	remove_occupant(M)
-	if(!isAI(M))//This is the ONE mob we dont want to be moved to the vehicle that should be handeled when used
-		M.forceMove(exit_location(M))
+	remove_occupant(exiting)
+	if(!isAI(exiting))//This is the ONE mob we dont want to be moved to the vehicle that should be handeled when used
+		exiting.forceMove(exit_location(exiting))
 	if(randomstep)
-		var/turf/target_turf = get_step(exit_location(M), pick(GLOB.cardinal))
-		M.throw_at(target_turf, 5, 10)
+		var/turf/target_turf = get_step(exit_location(exiting), pick(GLOB.cardinal))
+		exiting.throw_at(target_turf, 5, 10)
 
 	if(!silent)
-		M.visible_message("<span class='notice'>[M] drops out of \the [src]!</span>")
+		exiting.visible_message("<span class='notice'>[exiting] drops out of \the [src]!</span>")
 	return TRUE
 
 /obj/vehicle/sealed/proc/exit_location(M)
