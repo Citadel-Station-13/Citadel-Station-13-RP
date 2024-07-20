@@ -76,6 +76,7 @@
  * this allows us to micro-optimize accesses without activating zones.
  */
 /atom/proc/return_air_immutable()
+	RETURN_TYPE(/datum/gas_mixture)
 	return return_air()
 
 /**
@@ -84,4 +85,5 @@
  * this should always trigger updates/checks like making a zone active
  */
 /atom/proc/return_air_mutable()
+	RETURN_TYPE(/datum/gas_mixture)
 	return return_air()
