@@ -324,15 +324,9 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	for (var/mob/M in viewers(T))
 		M.show_message("<span class='notice'>\The [src] flashes a message across its screen, \"Additional personalities available for download.\"</span>", 3, "<span class='notice'>\The [src] bleeps electronically.</span>", 2)
 
-/obj/item/paicard/emp_act(severity)
+/obj/item/paicard/emp_act_legacy(severity)
 	for(var/mob/M in src)
-		M.emp_act(severity)
-
-/obj/item/paicard/legacy_ex_act(severity)
-	if(pai)
-		LEGACY_EX_ACT(pai, severity, null)
-	else
-		qdel(src)
+		M.emp_act_legacy(severity)
 
 /obj/item/paicard/show_message(msg, type, alt, alt_type)
 	if(pai && pai.client)

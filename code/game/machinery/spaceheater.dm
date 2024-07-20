@@ -39,12 +39,12 @@
 /obj/machinery/space_heater/powered()
 	return !!cell?.charge
 
-/obj/machinery/space_heater/emp_act(severity)
+/obj/machinery/space_heater/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	if(cell)
-		cell.emp_act(severity)
+		cell.emp_act_legacy(severity)
 	..(severity)
 
 /obj/machinery/space_heater/attackby(obj/item/I, mob/user)
@@ -306,7 +306,7 @@
 	mode = new_mode
 	update_icon()
 
-/obj/machinery/power/thermoregulator/emp_act(severity)
+/obj/machinery/power/thermoregulator/emp_act_legacy(severity)
 	if(!on)
 		on = 1
 	target_temp += rand(0, 1000)

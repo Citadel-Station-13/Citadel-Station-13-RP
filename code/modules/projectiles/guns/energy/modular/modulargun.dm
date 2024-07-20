@@ -155,7 +155,7 @@
 		else
 			return FALSE
 
-/obj/item/gun/energy/modular/emp_act(severity)
+/obj/item/gun/energy/modular/emp_act_legacy(severity)
 	if(!emp_vuln)
 		return FALSE
 	return ..()

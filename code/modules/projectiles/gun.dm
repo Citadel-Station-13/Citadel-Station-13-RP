@@ -233,9 +233,9 @@
 		return 0
 	return 1
 
-/obj/item/gun/emp_act(severity)
+/obj/item/gun/emp_act_legacy(severity)
 	for(var/obj/O in contents)
-		O.emp_act(severity)
+		O.emp_act_legacy(severity)
 
 /obj/item/gun/dropped(mob/user, flags, atom/newLoc)
 	. = ..()

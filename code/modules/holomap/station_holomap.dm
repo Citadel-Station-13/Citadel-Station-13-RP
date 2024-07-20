@@ -207,19 +207,6 @@
 		return
 	return ..()
 
-/obj/machinery/station_map/legacy_ex_act(severity)
-	switch(severity)
-		if(1)
-			qdel(src)
-		if(2)
-			if (prob(50))
-				qdel(src)
-			else
-				set_broken()
-		if(3)
-			if (prob(25))
-				set_broken()
-
 /datum/frame/frame_types/station_map
 	name = "Station Map Frame"
 	frame_class = "display"

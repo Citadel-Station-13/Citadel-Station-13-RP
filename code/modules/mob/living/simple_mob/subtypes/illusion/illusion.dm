@@ -93,8 +93,9 @@
 	visible_message(SPAN_WARNING( "\The [user]'s [I] goes through \the [src]!"))
 	return FALSE
 
-/mob/living/simple_mob/illusion/legacy_ex_act()
-	return
+/mob/living/simple_mob/illusion/ex_act(power, list/damage_multipliers, effective_damage_multiplier)
+	effective_damage_multiplier = 0
+	return ..()
 
 // Try to have the same tooltip, or else it becomes really obvious which one is fake.
 /mob/living/simple_mob/illusion/get_nametag_name(mob/user)

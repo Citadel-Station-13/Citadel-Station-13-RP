@@ -43,7 +43,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	ordinary cloth, allowing us to make ourselves appear to wear almost anything."
 	origin_tech = list() //The base chameleon items have origin technology, which we will inherit if we don't null out this variable.
 
-/obj/item/clothing/under/chameleon/changeling/emp_act(severity) //As these are purely organic, EMP does nothing to them.
+/obj/item/clothing/under/chameleon/changeling/emp_act_legacy(severity) //As these are purely organic, EMP does nothing to them.
 	return
 
 /obj/item/clothing/under/chameleon/changeling/verb/shred() //Remove individual pieces if needed.
@@ -63,7 +63,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	helmets that biologicals are so fond of wearing."
 	origin_tech = list()
 
-/obj/item/clothing/head/chameleon/changeling/emp_act(severity)
+/obj/item/clothing/head/chameleon/changeling/emp_act_legacy(severity)
 	return
 
 /obj/item/clothing/head/chameleon/changeling/verb/shred() //The copypasta is real.
@@ -87,7 +87,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	desc = "The cells in our chest are rapidly shifting, ready to reform into material that can resemble most pieces of clothing."
 	origin_tech = list()
 
-/obj/item/clothing/suit/chameleon/changeling/emp_act(severity)
+/obj/item/clothing/suit/chameleon/changeling/emp_act_legacy(severity)
 	return
 
 /obj/item/clothing/suit/chameleon/changeling/verb/shred()
@@ -111,7 +111,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	desc = "Our feet are overlayed with another layer of flesh and bone on top.  We can reform our feet to resemble various boots and shoes."
 	origin_tech = list()
 
-/obj/item/clothing/shoes/chameleon/changeling/emp_act()
+/obj/item/clothing/shoes/chameleon/changeling/emp_act_legacy()
 	return
 
 /obj/item/clothing/shoes/chameleon/changeling/verb/shred()
@@ -135,7 +135,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	desc = "A large pouch imbedded in our back, it can shift form to resemble many common backpacks that other biologicals are fond of using."
 	origin_tech = list()
 
-/obj/item/storage/backpack/chameleon/changeling/emp_act()
+/obj/item/storage/backpack/chameleon/changeling/emp_act_legacy()
 	return
 
 /obj/item/storage/backpack/chameleon/changeling/verb/shred()
@@ -162,7 +162,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	tend to wear on their hands.  Remember that these won't protect your hands from harm."
 	origin_tech = list()
 
-/obj/item/clothing/gloves/chameleon/changeling/emp_act()
+/obj/item/clothing/gloves/chameleon/changeling/emp_act_legacy()
 	return
 
 /obj/item/clothing/gloves/chameleon/changeling/verb/shred()
@@ -187,7 +187,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	tanks.."
 	origin_tech = list()
 
-/obj/item/clothing/mask/chameleon/changeling/emp_act()
+/obj/item/clothing/mask/chameleon/changeling/emp_act_legacy()
 	return
 
 /obj/item/clothing/mask/chameleon/changeling/verb/shred()
@@ -207,7 +207,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	desc = "A transparent piece of eyewear made out of brittle chitin.  We can reform it to resemble various glasses and goggles."
 	origin_tech = list()
 
-/obj/item/clothing/glasses/chameleon/changeling/emp_act()
+/obj/item/clothing/glasses/chameleon/changeling/emp_act_legacy()
 	return
 
 /obj/item/clothing/glasses/chameleon/changeling/verb/shred()
@@ -231,7 +231,7 @@ var/global/list/changeling_fabricated_clothing = list(
 	item_state = "utility"
 	origin_tech = list()
 
-/obj/item/storage/belt/chameleon/changeling/emp_act()
+/obj/item/storage/belt/chameleon/changeling/emp_act_legacy()
 	return
 
 /obj/item/storage/belt/chameleon/changeling/verb/shred()

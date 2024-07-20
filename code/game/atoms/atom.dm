@@ -16,6 +16,10 @@
 	/// * this is very much a 'set this on type and all subtypes or don't set it at all' situation.
 	var/prototype_id
 
+	//* Damage *//
+	/// our damage classifier
+	var/damage_classifier = DAMAGE_CLASSIFIER_DEFAULT
+
 	//? Interaction
 	/// Intearaction flags.
 	var/interaction_flags_atom = NONE

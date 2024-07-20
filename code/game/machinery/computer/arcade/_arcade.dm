@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			SPAN_NOTICE("[src] dispenses [the_prize]!"), \
 			SPAN_NOTICE("You hear a chime and a clunk."))
 
-/obj/machinery/computer/arcade/emp_act(severity)
+/obj/machinery/computer/arcade/emp_act_legacy(severity)
 	. = ..()
 	var/override = FALSE
 	if(prize_override)

@@ -50,7 +50,7 @@
 	flick("mass_driver1", src)
 	return
 
-/obj/machinery/mass_driver/emp_act(severity)
+/obj/machinery/mass_driver/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	drive()

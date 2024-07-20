@@ -625,7 +625,7 @@
 	if(. > 0)
 		aggro_for(6 SECONDS, user)
 
-/obj/machinery/porta_turret/emp_act(severity)
+/obj/machinery/porta_turret/emp_act_legacy(severity)
 	if(enabled)
 		//if the turret is on, the EMP no matter how severe disables the turret for a while
 		//and scrambles its settings, with a slight chance of having an emag effect
@@ -644,12 +644,12 @@
 
 	..()
 
-/obj/machinery/porta_turret/ai_defense/emp_act(severity)
+/obj/machinery/porta_turret/ai_defense/emp_act_legacy(severity)
 	if(prob(33)) // One in three chance to resist an EMP.  This is significant if an AoE EMP is involved against multiple turrets.
 		return
 	..()
 
-/obj/machinery/porta_turret/alien/emp_act(severity) // This is overrided to give an EMP resistance as well as avoid scambling the turret settings.
+/obj/machinery/porta_turret/alien/emp_act_legacy(severity) // This is overrided to give an EMP resistance as well as avoid scambling the turret settings.
 	if(prob(75)) // Superior alien technology, I guess.
 		return
 	enabled = FALSE

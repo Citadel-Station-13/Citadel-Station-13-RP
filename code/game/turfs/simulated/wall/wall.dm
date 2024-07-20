@@ -17,6 +17,7 @@
 	integrity_failure = 0
 
 	armor_type = /datum/armor/object/heavy
+	damage_classifier = DAMAGE_CLASSIFIER_WALL
 
 	#ifdef IN_MAP_EDITOR // Display disposal pipes etc. above walls in map editors.
 	layer = PLATING_LAYER
@@ -96,6 +97,9 @@
 /// do not change this without permission ~silicons
 /turf/simulated/wall/hides_underfloor_objects()
 	return FALSE
+
+/turf/simulated/wall/covers_underfloor_objects()
+	return TRUE
 
 /turf/simulated/wall/proc/clear_plants()
 	for(var/obj/effect/overlay/wallrot/WR in src)

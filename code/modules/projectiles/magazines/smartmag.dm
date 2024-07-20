@@ -122,11 +122,11 @@
 				return
 	..()
 
-// Classic emp_act, just drains the battery
-/obj/item/ammo_magazine/smart/emp_act(severity)
+// Classic emp_act_legacy, just drains the battery
+/obj/item/ammo_magazine/smart/emp_act_legacy(severity)
 	..()
 	if(attached_cell)
-		attached_cell.emp_act(severity)
+		attached_cell.emp_act_legacy(severity)
 
 // Finds the cell for the magazine, used by rechargers
 /obj/item/ammo_magazine/smart/get_cell(inducer)

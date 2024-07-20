@@ -19,7 +19,6 @@
 	rad_flags = RAD_NO_CONTAMINATE
 	rad_insulation = RAD_INSULATION_SUPER
 	dir = NORTH
-	explosion_resistance = 25
 	closed_layer = ON_WINDOW_LAYER // Above airlocks when closed
 
 	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,

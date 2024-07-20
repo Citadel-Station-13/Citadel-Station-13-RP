@@ -212,7 +212,7 @@
 	if(panel_open && panel_icon_state)
 		. += panel_icon_state
 
-/obj/machinery/emp_act(severity)
+/obj/machinery/emp_act_legacy(severity)
 	if(use_power && machine_stat == NONE)
 		use_power(7500/severity)
 

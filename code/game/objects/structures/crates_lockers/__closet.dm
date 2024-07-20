@@ -560,9 +560,9 @@
 /obj/structure/closet/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
-/obj/structure/closet/emp_act(severity)
+/obj/structure/closet/emp_act_legacy(severity)
 	for(var/obj/O in src)
-		O.emp_act(severity)
+		O.emp_act_legacy(severity)
 	if(!broken && secure)
 		if(prob(50/severity))
 			locked = !locked

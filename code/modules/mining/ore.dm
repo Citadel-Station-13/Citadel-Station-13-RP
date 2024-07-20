@@ -2,6 +2,7 @@
 	name = "small rock"
 	icon = 'icons/obj/stacks_ore.dmi'
 	icon_state = "ore"
+	armor_type = /datum/armor/object/ore_chunk
 	no_variants = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE // uh let's like, not? it'd be funny but fields usually have like 400 pieces of ore in just a few tiles.
@@ -28,9 +29,6 @@
 			if(27 to INFINITY)
 				icon_state = "[initial(icon_state)]_7"
 		item_state = initial(icon_state)
-
-/obj/item/stack/ore/legacy_ex_act(severity)
-	return
 
 /obj/item/stack/ore/Initialize(mapload)
 	. = ..()

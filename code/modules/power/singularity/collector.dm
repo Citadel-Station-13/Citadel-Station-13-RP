@@ -107,12 +107,6 @@
 	else
 		. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Phoron</b>.\"</span>"
 
-/obj/machinery/power/rad_collector/legacy_ex_act(severity)
-	switch(severity)
-		if(2, 3)
-			eject()
-	return ..()
-
 /obj/machinery/power/rad_collector/proc/eject()
 	locked = 0
 	var/obj/item/tank/phoron/Z = src.P

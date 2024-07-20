@@ -12,7 +12,7 @@
 	projectile_type = /obj/projectile/ion
 	one_handed_penalty = 15
 
-/obj/item/gun/energy/ionrifle/emp_act(severity)
+/obj/item/gun/energy/ionrifle/emp_act_legacy(severity)
 	..(max(severity, 4)) //so it doesn't EMP itself, I guess
 
 /obj/item/gun/energy/ionrifle/pistol
@@ -504,7 +504,7 @@
 				spawn(rand(2 SECONDS,5 SECONDS))
 					if(src)
 						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
+						explosion_shockwave(src, /datum/explosion_preset/item_backfire_1)
 						qdel(chambered)
 						qdel(src)
 				return ..()
@@ -542,7 +542,7 @@
 					spawn(rand(2 SECONDS,5 SECONDS))
 						if(src)
 							visible_message("<span class='critical'>\The [src] detonates!</span>")
-							explosion(get_turf(src), -1, 0, 2, 3)
+							explosion(src, /datum/explosion_preset/item_backfire_1)
 							qdel(chambered)
 							qdel(src)
 					return ..()

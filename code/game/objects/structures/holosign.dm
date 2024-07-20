@@ -13,8 +13,6 @@
 
 	var/obj/item/holosign_creator/projector
 
-	explosion_resistance = 1
-
 /obj/structure/holosign/Initialize(mapload, source_projector)
 	. = ..()
 	if(source_projector)

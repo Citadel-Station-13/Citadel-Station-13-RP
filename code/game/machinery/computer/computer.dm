@@ -32,7 +32,7 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/computer/emp_act(severity)
+/obj/machinery/computer/emp_act_legacy(severity)
 	if(prob(20/severity))
 		set_broken()
 	..()

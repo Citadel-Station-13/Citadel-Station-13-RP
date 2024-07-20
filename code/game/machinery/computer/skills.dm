@@ -340,7 +340,7 @@
 	if(update_now)
 		SStgui.update_uis(src)
 
-/obj/machinery/computer/skills/emp_act(severity)
+/obj/machinery/computer/skills/emp_act_legacy(severity)
 	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return

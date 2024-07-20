@@ -42,6 +42,12 @@
 /turf/unsimulated/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	return FALSE
 
+/**
+ * unsim'd dense turfs block 100% of explosions.
+ */
+/turf/unsimulated/ex_act(power, list/damage_multiplier)
+	return density? 0 : ..()
+
 //? Sector API
 
 /turf/unsimulated/sector_set_temperature(temperature)

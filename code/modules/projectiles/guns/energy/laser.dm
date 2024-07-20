@@ -315,7 +315,7 @@
 				spawn(rand(2 SECONDS,5 SECONDS))
 					if(src)
 						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
+						explosion_shockwave(src, /datum/explosion_preset/item_backfire_1)
 						qdel(chambered)
 						qdel(src)
 				return ..()

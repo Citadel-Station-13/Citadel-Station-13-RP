@@ -119,6 +119,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	use_power = USE_POWER_OFF
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	armor_type = /datum/armor/object/medium
+	integrity = 300
+	integrity_max = 300
+	integrity_failure = 100
 	var/area/area
 	var/areastring = null
 	var/obj/item/cell/cell
@@ -1265,7 +1268,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 
 // damage and destruction acts
-/obj/machinery/power/apc/emp_act(severity)
+/obj/machinery/power/apc/emp_act_legacy(severity)
 	// Fail for 8-12 minutes (divided by severity)
 	// Division by 2 is required, because machinery ticks are every two seconds. Without it we would fail for 16-24 minutes.
 	if(is_critical)
@@ -1273,42 +1276,16 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		// Critical APCs are also more resilient to cell corruption/power drain.
 		energy_fail(rand(240, 360) / severity / CRITICAL_APC_EMP_PROTECTION)
 		if(cell)
-			cell.emp_act(severity+2)
+			cell.emp_act_legacy(severity+2)
 	else
 		// Regular APCs fail for normal time.
 		energy_fail(rand(240, 360) / severity)
 		//Cells are partially shielded by the APC frame.
 		if(cell)
-			cell.emp_act(severity+1)
+			cell.emp_act_legacy(severity+1)
 
 	update_icon()
 	..()
-
-/obj/machinery/power/apc/legacy_ex_act(severity)
-
-	switch(severity)
-		if(1)
-			//set_broken() //now qdel() do what we need
-			if (cell)
-				LEGACY_EX_ACT(cell, 1, null) // more lags woohoo
-			qdel(src)
-			return
-		if(2)
-			if (prob(75))
-				set_broken()
-				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 2, null)
-		if(3)
-			if (prob(50))
-				set_broken()
-				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 3, null)
-		if(4)
-			if (prob(25))
-				set_broken()
-				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 3, null)
-	return
 
 /obj/machinery/power/apc/disconnect_terminal()
 	if(terminal)

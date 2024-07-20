@@ -1,3 +1,4 @@
+// todo: rework to generic plastic explosives
 /obj/item/plastique
 	name = "plastic explosives"
 	desc = "Used to put holes in specific areas without too much extra hole."
@@ -8,15 +9,16 @@
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ILLEGAL = 2)
+	/// explosion preset for the splash; instance or path
+	var/datum/explosion_preset/explosion_parameters = /datum/explosion_preset/grenade_2
+	/// explosive power to apply to target
+	var/target_explosive_power = EXPLOSION_POWER_APPROXIMATE_HEAVY
+
 	var/datum/wires/explosive/c4/wires = null
 	var/timer = 10
 	var/atom/target = null
 	var/open_panel = 0
 	var/image_overlay = null
-	var/blast_dev = -1
-	var/blast_heavy = -1
-	var/blast_light = 2
-	var/blast_flash = 3
 
 /obj/item/plastique/Initialize(mapload)
 	. = ..()
@@ -79,16 +81,13 @@
 	if(!target)
 		target = src
 	if(location)
-		explosion(location, blast_dev, blast_heavy, blast_light, blast_flash)
+		explosion_shockwave(location, explosion_parameters)
 
 	if(target)
 		if (istype(target, /turf/simulated/wall))
 			var/turf/simulated/wall/W = target
 			W.dismantle_wall(1,1,1)
-		else if(istype(target, /mob/living))
-			LEGACY_EX_ACT(target, 2, null) // c4 can't gib mobs anymore.
-		else
-			LEGACY_EX_ACT(target, 1, null)
+		target.ex_act(target_explosive_power)
 	if(target)
 		target.cut_overlay(image_overlay)
 	qdel(src)
@@ -97,23 +96,18 @@
 	name = "seismic charge"
 	desc = "Used to dig holes in specific areas without too much extra hole."
 
-	blast_heavy = 2
-	blast_light = 4
-	blast_flash = 7
+	explosion_parameters = /datum/explosive_preset/seismic_charge
 
 /obj/item/plastique/seismic/attackby(var/obj/item/I, var/mob/user)
 	. = ..()
 	if(open_panel)
 		if(istype(I, /obj/item/stock_parts/micro_laser))
 			var/obj/item/stock_parts/SP = I
-			var/new_blast_power = max(1, round(SP.rating / 2) + 1)
-			if(new_blast_power > blast_heavy)
+			if(SP.rating > 2 && explosion_parameters = /datum/explosion_preset/seismic_charge)
 				if(!user.attempt_consume_item_for_construction(I))
 					return
 				to_chat(user, "<span class='notice'>You install \the [I] into \the [src].</span>")
-				blast_heavy = new_blast_power
-				blast_light = blast_heavy + round(new_blast_power * 0.5)
-				blast_flash = blast_light + round(new_blast_power * 0.75)
+				explosion_parameters = /datum/explosion_preset/seismic_charge/boosted
 			else
 				to_chat(user, "<span class='notice'>The [I] is not any better than the component already installed into this charge!</span>")
 	return .

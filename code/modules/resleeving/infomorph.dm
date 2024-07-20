@@ -145,7 +145,7 @@ var/list/infomorph_emotions = list(
 	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /////////// DAMAGES
-/mob/living/silicon/infomorph/emp_act(severity)
+/mob/living/silicon/infomorph/emp_act_legacy(severity)
 	// Silence for 2 minutes
 	// 20% chance to kill
 

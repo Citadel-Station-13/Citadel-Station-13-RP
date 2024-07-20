@@ -467,7 +467,7 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/restrained()
 	return 0
 
-/mob/living/silicon/ai/emp_act(severity)
+/mob/living/silicon/ai/emp_act_legacy(severity)
 	disconnect_shell("Disconnected from remote shell due to ionic interfe%*@$^___")
 	if (prob(30))
 		view_core()
@@ -711,13 +711,6 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/proc/is_in_chassis()
 	return istype(loc, /turf)
-
-
-/mob/living/silicon/ai/legacy_ex_act(var/severity)
-	if(severity == 1.0)
-		qdel(src)
-		return
-	..()
 
 /mob/living/silicon/ai/updateicon()
 	if(!selected_sprite) selected_sprite = default_ai_icon

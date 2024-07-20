@@ -492,7 +492,7 @@
 		update_icon()
 		return 1
 
-/obj/item/shockpaddles/emp_act(severity)
+/obj/item/shockpaddles/emp_act_legacy(severity)
 	var/new_safety = rand(0, 1)
 	if(safety != new_safety)
 		safety = new_safety
@@ -591,7 +591,7 @@
 	else
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/shockpaddles/standalone/emp_act(severity)
+/obj/item/shockpaddles/standalone/emp_act_legacy(severity)
 	..()
 	var/new_fail = 0
 	switch(severity)
@@ -652,7 +652,7 @@
 /obj/item/shockpaddles/standalone/hardsuit/checked_use(var/charge_amt)
 	return 1
 
-/obj/item/shockpaddles/standalone/hardsuit/emp_act(severity)
+/obj/item/shockpaddles/standalone/hardsuit/emp_act_legacy(severity)
 	return
 
 /obj/item/shockpaddles/standalone/hardsuit/can_use(mob/user, mob/M)

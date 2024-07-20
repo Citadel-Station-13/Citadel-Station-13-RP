@@ -26,6 +26,11 @@
 			I.loc = src
 	update_icon()
 
+/obj/structure/bookcase/drop_products(method, atom/where)
+	. = ..()
+	for(var/obj/item/item in contents)
+		drop_product(method, item, where)
+
 /obj/structure/bookcase/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/book))
 		if(!user.attempt_insert_item_for_installation(O, src))
@@ -67,34 +72,11 @@
 				choice.loc = get_turf(src)
 			update_icon()
 
-/obj/structure/bookcase/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			for(var/obj/item/book/b in contents)
-				qdel(b)
-			qdel(src)
-			return
-		if(2.0)
-			for(var/obj/item/book/b in contents)
-				if (prob(50)) b.loc = (get_turf(src))
-				else qdel(b)
-			qdel(src)
-			return
-		if(3.0)
-			if (prob(50))
-				for(var/obj/item/book/b in contents)
-					b.loc = (get_turf(src))
-				qdel(src)
-			return
-		else
-	return
-
 /obj/structure/bookcase/update_icon()
 	if(contents.len < 5)
 		icon_state = "book-[contents.len]"
 	else
 		icon_state = "book-5"
-
 
 
 /obj/structure/bookcase/manuals/medical
@@ -107,7 +89,6 @@
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
 	update_icon()
-
 
 /obj/structure/bookcase/manuals/engineering
 	name = "Engineering Manuals bookcase"

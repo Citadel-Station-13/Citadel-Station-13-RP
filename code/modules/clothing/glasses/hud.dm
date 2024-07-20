@@ -87,7 +87,7 @@
 		SStgui.close_uis(src)
 	..()
 
-/obj/item/clothing/glasses/omnihud/emp_act(var/severity)
+/obj/item/clothing/glasses/omnihud/emp_act_legacy(var/severity)
 	var/disconnect_ar = arscreen
 	arscreen = null
 	var/disconnect_tgar = tgarscreen

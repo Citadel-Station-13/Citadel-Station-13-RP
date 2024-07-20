@@ -180,7 +180,7 @@
 
 	return ..()
 
-/obj/item/organ/external/emp_act(severity)
+/obj/item/organ/external/emp_act_legacy(severity)
 	if(!(robotic >= ORGAN_ROBOT))
 		return
 	var/burn_damage = 0

@@ -526,12 +526,12 @@
 	else
 		return ..()
 
-/obj/item/electronic_assembly/emp_act(severity)
+/obj/item/electronic_assembly/emp_act_legacy(severity)
 	. = ..()
 //	if(. & EMP_PROTECT_CONTENTS)
 //		return
 	for(var/atom/movable/AM in contents)
-		AM.emp_act(severity)
+		AM.emp_act_legacy(severity)
 
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power(amount)

@@ -46,25 +46,6 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 	RefreshParts()
 
-/obj/machinery/magma_pump/legacy_ex_act(severity)
-	switch(severity)
-		if(1)
-			//SN src = null
-			qdel(src)
-			return
-		if(2)
-			if(prob(50))
-				//SN src = null
-				qdel(src)
-				new /obj/structure/broken_pump(src)
-				return
-		if(3)
-			if(prob(25))
-				qdel(src)
-				new /obj/structure/broken_pump(src)
-		else
-	return
-
 /obj/machinery/magma_pump/attack_hand(mob/user, list/params)
 	interact(user)
 
@@ -191,25 +172,6 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	component_parts += new /obj/item/stack/material/durasteel(src, 5)
 
 	RefreshParts()
-
-/obj/machinery/magma_reservoir/legacy_ex_act(severity)
-	switch(severity)
-		if(1)
-			//SN src = null
-			qdel(src)
-			return
-		if(2)
-			if(prob(50))
-				//SN src = null
-				qdel(src)
-				new /obj/structure/broken_reservoir(src)
-				return
-		if(3)
-			if(prob(25))
-				qdel(src)
-				new /obj/structure/broken_reservoir(src)
-		else
-	return
 
 /obj/machinery/magma_reservoir/attack_hand(mob/user, list/params)
 	interact(user)

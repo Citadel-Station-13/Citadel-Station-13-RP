@@ -121,12 +121,12 @@
 	else if (severity <= 150) // 10% chance of exploding
 		user.visible_message("<span class='danger'>\The [user] pulls the trigger, but \the [src] explodes!</span>", "<span class='danger'>The [src] explodes!</span>")
 		log_and_message_admins("blew themself up with a particle gun.", user)
-		explosion(T, -1, -1, 1, 1)
+		explosion_shockwave(src, /datum/explosion_preset/item_backfire_2)
 		qdel(src)
 	else //can only possibly happen if you're dumb enough to fire it in an OVER pressure environment, over 150kPa
 		user.visible_message("<span class='danger'>\The [user] pulls the trigger, but \the [src] explodes!</span>", "<span class='danger'>The [src] explodes catastrophically!</span>")
 		log_and_message_admins("blew their dumb ass up with a particle gun.", user)
-		explosion(T, -1, 1, 2, 2)
+		explosion_shockwave(src, /datum/explosion_preset/item_backfire_2)
 		qdel(src)
 
 /obj/item/gun/energy/particle/cannon/pressuremalfunction(severity, user, T)

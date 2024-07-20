@@ -143,7 +143,7 @@
 		transfer_to.push_waypoint_data()
 	return ..()
 
-/obj/item/gps/emp_act(severity)
+/obj/item/gps/emp_act_legacy(severity)
 	emped = TRUE
 	update_emit()
 	update_icon()

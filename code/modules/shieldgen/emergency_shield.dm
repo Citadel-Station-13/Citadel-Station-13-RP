@@ -29,7 +29,7 @@
 	update_nearby_tiles()
 	return ..()
 
-/obj/machinery/shield/emp_act(severity)
+/obj/machinery/shield/emp_act_legacy(severity)
 	switch(severity)
 		if(1)
 			qdel(src)

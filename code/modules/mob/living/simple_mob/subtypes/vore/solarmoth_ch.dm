@@ -82,7 +82,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(shock_chance))
-			A.emp_act(4) //The weakest strength of EMP
+			A.emp_act_legacy(4) //The weakest strength of EMP
 			playsound(src, 'sound/weapons/Egloves.ogg', 75, 1)
 			L.afflict_paralyze(20 * 4)
 			L.afflict_stun(20 * 4)

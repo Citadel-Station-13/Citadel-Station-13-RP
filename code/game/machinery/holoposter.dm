@@ -111,6 +111,6 @@ GLOBAL_LIST_EMPTY(holoposters)
 	if(wasUnpowered != (machine_stat & NOPOWER))
 		update_icon()
 
-/obj/machinery/holoposter/emp_act()
+/obj/machinery/holoposter/emp_act_legacy()
 	machine_stat |= BROKEN
 	update_icon()

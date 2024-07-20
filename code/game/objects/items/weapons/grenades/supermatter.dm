@@ -29,5 +29,5 @@
 	playsound(src, 'sound/effects/supermatter.ogg', 100)
 	supermatter_pull(src, world.view, STAGE_THREE)
 	if(world.time > implode_at)
-		explosion(loc, 1, 3, 5, 4)
+		explosion_shockwave(src, /datum/explosion_preset/grenade_5)
 		qdel(src)

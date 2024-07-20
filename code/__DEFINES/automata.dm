@@ -1,6 +1,4 @@
-// automata stuff
-
-// automata/automata_flags
+// todo: deprecated file
 
 // automata/wave/wave_spread
 /// the dumbest spread - cardinals go their dir, diagonals go their dir and spread 45. do not use this unless you aren't using blocking of any kind, or it'll be ugly.
