@@ -370,7 +370,6 @@
 	if(next_fire - world.time < wait)
 		next_fire += (wait*cycles)
 
-
 /**
  * Usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash).
  * Should attempt to salvage what it can from the old instance of subsystem.
@@ -385,6 +384,7 @@
 			// This is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
 			if (var_value)
 				next_fire = world.time + wait
+				last_completed_run = world.time - wait // dont' fuck up the tick dilation calculation
 
 		if (NAMEOF(src, queued_priority)) // Editing this breaks things.
 			return FALSE

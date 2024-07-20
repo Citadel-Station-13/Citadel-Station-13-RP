@@ -302,6 +302,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(current_runlevel < 1)
 		CRASH("Attempted to set invalid runlevel: [new_runlevel]")
 
+	for(var/datum/controller/subsystem/SS in subsystems)
+		SS.last_completed_run = world.time // reset that so we don't get massive dilations at roundstart/when things unpause
+
 
 /**
  * Starts the mc, and sticks around to restart it if the loop ever ends.
@@ -660,7 +663,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				queue_node.next_fire = world.time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
 
 			else if (queue_node_flags & SS_KEEP_TIMING)
-				queue_node.next_fire += queue_node.wait
+				// **experimental**: do not keep timing past last 10 seconds, if something is running behind that much don't permanently accelerate it.
+				queue_node.next_fire = max(world.time - 10 SECONDS, queue_node.next_fire + queue_node.wait)
 
 			else
 				queue_node.next_fire = queue_node.queued_time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))

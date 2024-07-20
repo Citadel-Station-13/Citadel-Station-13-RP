@@ -49,6 +49,8 @@
 
 /** keep the subsystem's timing on point by firing early if it fired late last fire because of lag */
 /// ie: if a 20ds subsystem fires say 5 ds late due to lag or what not, its next fire would be in 15ds, not 20ds.
+///
+/// * This will only keep timing past the last 10 seconds, it will not attempt to catch the subsystem up without bounds.
 #define SS_KEEP_TIMING (1<<5)
 
 /** Calculate its next fire after its fired. */
