@@ -28,7 +28,7 @@
 /datum/ai_holder/polaris/proc/list_targets()
 	. = hearers(vision_range, holder) - holder // Remove ourselves to prevent suicidal decisions. ~ SRC is the ai_holder.
 
-	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
+	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/vehicle/sealed/mecha))
 	var/static/list/ignore = typecacheof(list(/mob/observer))
 
 	for(var/HM in typecache_filter_list(range(vision_range, holder), hostile_machines))
@@ -133,8 +133,8 @@
 					return FALSE
 		return TRUE
 
-	if(istype(the_target, /obj/mecha))
-		var/obj/mecha/M = the_target
+	if(istype(the_target, /obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/M = the_target
 		if(M.occupant)
 			return can_attack(M.occupant)
 		return destructive // Empty mechs are 'neutral'.

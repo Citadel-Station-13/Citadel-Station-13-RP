@@ -1,7 +1,7 @@
 /atom/movable/proc/get_mob()
 	return
 
-/obj/mecha/get_mob()
+/obj/vehicle/sealed/mecha/get_mob()
 	return occupant
 
 /obj/vehicle_old/train/get_mob()

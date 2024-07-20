@@ -119,8 +119,8 @@
 				open()
 		return
 
-	if(istype(AM, /obj/mecha))
-		var/obj/mecha/mecha = AM
+	if(istype(AM, /obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/mecha = AM
 		if(density)
 			if(mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
 				open()

@@ -211,7 +211,7 @@
 	desc = "A kit containing all the needed tools and parts to repaint a mech."
 	var/removable = null
 
-/obj/item/kit/paint/can_customize(var/obj/mecha/M)
+/obj/item/kit/paint/can_customize(var/obj/vehicle/sealed/mecha/M)
 	if(!istype(M))
 		return 0
 
@@ -232,7 +232,7 @@
 	for(var/exotype in allowed_types)
 		. += "- [capitalize(exotype)]"
 
-/obj/item/kit/paint/customize(var/obj/mecha/M, var/mob/user)
+/obj/item/kit/paint/customize(var/obj/vehicle/sealed/mecha/M, var/mob/user)
 	if(!can_customize(M))
 		to_chat(user, "That kit isn't meant for use on this class of exosuit.")
 		return
@@ -251,7 +251,7 @@
 	M.update_icon()
 	use(1, user)
 
-/obj/mecha/attackby(var/obj/item/W, var/mob/user)
+/obj/vehicle/sealed/mecha/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/kit/paint))
 		var/obj/item/kit/paint/P = W
 		P.customize(src, user)

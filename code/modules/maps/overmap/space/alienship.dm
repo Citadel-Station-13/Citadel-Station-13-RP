@@ -144,8 +144,8 @@
 		//Situations to get the mob out of
 		if(L.buckled)
 			L.buckled.unbuckle_mob()
-		if(istype(L.loc,/obj/mecha))
-			var/obj/mecha/M = L.loc
+		if(istype(L.loc,/obj/vehicle/sealed/mecha))
+			var/obj/vehicle/sealed/mecha/M = L.loc
 			M.go_out()
 		else if(istype(L.loc,/obj/machinery/sleeper))
 			var/obj/machinery/sleeper/SL = L.loc
