@@ -1,10 +1,11 @@
 /atom/movable/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	var/static/list/banned_edits = list("step_x", "step_y", "step_size", "bounds")
+	var/static/list/pixel_movement_edits = list("step_x", "step_y", "step_size", "bounds")
 	var/static/list/careful_edits = list("bound_x", "bound_y", "bound_width", "bound_height")
-	if(var_name in banned_edits)
-		return FALSE	//PLEASE no.
-	if((var_name in careful_edits) && (var_value % world.icon_size) != 0)
-		return FALSE
+	if(!pixel_movement)
+		if(var_name in pixel_movement_edits)
+			return FALSE	//PLEASE no.
+		if((var_name in careful_edits) && (var_value % world.icon_size) != 0)
+			return FALSE
 	switch(var_name)
 		if("x")
 			var/turf/T = locate(var_value, y, z)

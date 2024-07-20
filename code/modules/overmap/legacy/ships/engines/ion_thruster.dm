@@ -50,7 +50,7 @@
 	var/thrust_limit = 1
 	var/on = 1
 	var/burn_cost = 7500
-	var/generated_thrust = 2.5
+	var/generated_thrust = OVERMAP_DISTANCE_TILE * 1/70
 	var/linked = FALSE
 
 /obj/machinery/ion_engine/Initialize(mapload)
