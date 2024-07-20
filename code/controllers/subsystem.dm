@@ -204,7 +204,7 @@
 		// track time between runs
 		var/full_run_took = world.time - last_completed_run
 		var/new_tick_dilation = (full_run_took / nominal_dt_ds) * 100 - 100
-		tick_dilation_avg = MC_AVERAGE_FAST(tick_dilation_avg, new_tick_dilation)
+		tick_dilation_avg = max(0, MC_AVERAGE_SLOW(tick_dilation_avg, new_tick_dilation))
 		last_completed_run = world.time
 
 /**
@@ -448,7 +448,8 @@
 	ASSERT(isnum(new_wait))
 	src.wait = new_wait
 	recompute_wait_dt()
+	return TRUE
 
 /datum/controller/subsystem/proc/recompute_wait_dt()
-	nominal_dt_ds = min(world.tick_lag, (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : (wait))
+	nominal_dt_ds = max(world.tick_lag, (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : (wait))
 	nominal_dt_s = nominal_dt_ds * 0.1
