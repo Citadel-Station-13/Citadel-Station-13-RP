@@ -8,3 +8,6 @@
 #define ATOM_HUD_SOURCE_OBSERVER "observer"
 #define ATOM_HUD_SOURCE_NIF "nif"
 #define ATOM_HUD_SOURCE_AUTOGRANT "autogrant"
+
+/// pass in atom ref to mech
+#define ATOM_HUD_SOURCE_MECH(MECH) "mech-[ref(MECH)]"

@@ -15,8 +15,14 @@
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
 	COOLDOWN_DECLARE(cooldown_vehicle_move)
 
+	//* Occupants *//
 	/// list of mobs associated to their control flags
 	var/list/mob/occupants
+
+	//* Occupants - HUDs *//
+	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
+	var/list/occupant_hud_providers
+	#warn impl via VEHICLE_CONTROL_USE_HUDS
 	
 	var/max_occupants = 1
 	var/max_drivers = 1
@@ -94,32 +100,30 @@
 	return !isnull(occupants[M])
 
 /obj/vehicle/proc/add_occupant(mob/M, control_flags)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!istype(M) || occupants[M])
 		return FALSE
 	occupants[M] = NONE
 	add_control_flags(M, control_flags)
-	after_add_occupant(M)
+	occupant_added(M, new /datum/event_args/actor(M), occupants[M], FALSE)
 	grant_passenger_actions(M)
 	return TRUE
-
-/obj/vehicle/proc/after_add_occupant(mob/M)
-	auto_assign_occupant_flags(M)
 
 /obj/vehicle/proc/auto_assign_occupant_flags(mob/M) //override for each type that needs it. Default is assign driver if drivers is not at max.
 	if(driver_amount() < max_drivers)
 		add_control_flags(M, VEHICLE_CONTROL_DRIVE)
 
 /obj/vehicle/proc/remove_occupant(mob/M)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!istype(M))
 		return FALSE
 	remove_control_flags(M, ALL)
 	remove_passenger_actions(M)
+	var/old_flags = occupants[M]
 	occupants -= M
 	cleanup_actions_for_mob(M)
-	after_remove_occupant(M)
+	occupant_removed(M, new /datum/event_args/actor(M), old_flags, FALSE)
 	return TRUE
-
-/obj/vehicle/proc/after_remove_occupant(mob/M)
 
 /obj/vehicle/relaymove(mob/user, direction)
 	if(is_driver(user))
@@ -181,3 +185,33 @@
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, newloc)
 		step(trailer, dir_to_move)
+
+//* Occupants *//
+
+/**
+ * Called when an occupant is removed.
+ * 
+ * This should be where physicality-agnostic hooks are made, like removing custom actions / handling
+ * 
+ * @params
+ * * removing - the mob
+ * * actor - the person removing the mob, usually the mob themselves
+ * * control_flags - the old control flags of the mob
+ * * silent - suppress visible messages to others
+ */
+/obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+
+/**
+ * Called when an occupant is removed.
+ * 
+ * This should be where physicality-agnostic hooks are made, like removing custom actions / handling
+ * 
+ * @params
+ * * removing - the mob
+ * * actor - the person removing the mob, usually the mob themselves
+ * * control_flags - the old control flags of the mob
+ * * silent - suppress visible messages to others
+ */
+/obj/vehicle/proc/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
+	// todo: this shoudln't be here
+	auto_assign_occupant_flags(adding)

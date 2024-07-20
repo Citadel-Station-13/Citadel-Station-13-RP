@@ -2,3 +2,5 @@
 
 /// controls the vehicles movement
 #define VEHICLE_CONTROL_DRIVE (1<<0)
+/// has access to default HUDs that everyone has
+#define VEHICLE_CONTROL_USE_HUDS (1<<1)

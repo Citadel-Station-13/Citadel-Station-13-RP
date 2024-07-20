@@ -4,7 +4,6 @@
 /obj/vehicle/sealed
 	enclosed = TRUE // you're in a sealed vehicle dont get dinked idiot
 	var/enter_delay = 20
-	var/explode_on_death = TRUE
 	
 /obj/vehicle/sealed/generate_actions()
 	. = ..()
@@ -91,7 +90,7 @@
 		return FALSE
 	if(occupant_amount() >= max_occupants)
 		return FALSE
-	if(do_after(entering, get_enter_delay(M), src, FALSE, TRUE))
+	if(do_after(entering, enter_delay, src, FALSE, TRUE))
 		mob_enter(entering)
 		return TRUE
 	return FALSE
@@ -109,53 +108,68 @@
  */
 /obj/vehicle/sealed/proc/mob_enter(mob/entering, datum/event_args/actor/actor, silent, use_control_flags)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(!istype(entering))
-		return FALSE
 	if(!silent)
 		entering.visible_message("<span class='notice'>[entering] climbs into \the [src]!</span>")
 	entering.forceMove(src)
-	add_occupant(entering)
-	#warn change
-	mob_entered(entering, uesr, silent, occupants[entering])
+	// todo: update
+	add_occupant(entering, control_flags = use_control_flags)
+	mob_entered(entering, entering, silent, occupants[entering])
 	return TRUE
 
 /**
  * At this point, the entry has already happened.
  * 
+ * * Use this for physicality hooks, so refactoring later is easy.
+ * 
  * @params
  * * entering - the person who entered
- * * actor - the person who put them in us; usually the same as entering, but not always
+ * * actor - the person who put them in us; usually the same as the entering mob, but not always
  * * silent - suppress external messages
- * * control_flags - override the normal control flags and use these instead
+ * * control_flags - control flags given to them
  */
 /obj/vehicle/sealed/proc/mob_entered(mob/entering, datum/event_args/actor/actor, silent, control_flags)
 	return
 
-#warn below
-
 /**
- * Called when someone attempts to eject from us
+ * Called when someone tries to eject from us
+ * 
+ * @params
+ * * exiting - the person attempting to exit
+ * * actor - the person trying to eject them; usually the same as exiting, but not always
+ * * new_loc - where to put them after
+ * * silent - suppress external messages
  */
 /obj/vehicle/sealed/proc/mob_try_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc = drop_location(), silent)
-	mob_exit(exiting, silent, randomstep)
+	mob_exit(exiting, actor, new_loc, silent)
 
+/**
+ * Called to eject someone from us
+ * 
+ * This cannot be overridden
+ * 
+ * @params
+ * * exiting - the person attempting to exit
+ * * actor - the person trying to eject them; usually the same as exiting, but not always
+ * * new_loc - where to put them after
+ * * silent - suppress external messages
+ */
 /obj/vehicle/sealed/proc/mob_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc, silent)
-	SIGNAL_HANDLER
-	if(!istype(exiting))
-		return FALSE
 	remove_occupant(exiting)
-	if(!isAI(exiting))//This is the ONE mob we dont want to be moved to the vehicle that should be handeled when used
-		exiting.forceMove(exit_location(exiting))
-	if(randomstep)
-		var/turf/target_turf = get_step(exit_location(exiting), pick(GLOB.cardinal))
-		exiting.throw_at(target_turf, 5, 10)
-
+	exiting.forceMove(new_loc)
 	if(!silent)
 		exiting.visible_message("<span class='notice'>[exiting] drops out of \the [src]!</span>")
 	return TRUE
 
 /**
- * at this point, they have already exited
+ * At this point, the exit has already happened.
+ * 
+ * * Use this for physicality hooks, so refactoring later is easy.
+ * 
+ * @params
+ * * exiting - the person who exited
+ * * actor - the person who took them out of us; usually the same as the exiting mob, but not always
+ * * silent - suppress external messages
+ * * control_flags - control flags they had before exit
  */
 /obj/vehicle/sealed/proc/mob_exited(mob/exiting, datum/event_args/actor/actor, silent, control_flags)
 	return

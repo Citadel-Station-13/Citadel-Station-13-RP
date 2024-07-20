@@ -7,6 +7,12 @@
 		)
 	icon_state = "odysseus"
 	initial_icon = "odysseus"
+
+	occupant_hud_providers = list(
+		/datum/atom_hud_provider/medical_health,
+		/datum/atom_hud_provider/medical_biology,
+	)
+
 	step_in = 2
 	max_temperature = 15000
 	integrity = 70
@@ -20,34 +26,6 @@
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
-/obj/vehicle/sealed/mecha/medical/odysseus/Initialize(mapload)
-	. = ..()
-	hud = new /obj/item/clothing/glasses/hud/integrity/mech(src)
-
-/obj/vehicle/sealed/mecha/medical/odysseus/moved_inside(var/mob/living/carbon/human/H as mob)
-	if(..())
-		if(H.glasses)
-			occupant_message("<font color='red'>[H.glasses] prevent you from using [src] [hud]</font>")
-		else
-			H.glasses = hud
-			H.recalculate_vis()
-		return 1
-	else
-		return 0
-
-/obj/vehicle/sealed/mecha/medical/odysseus/mob_exit(mob/exiting, silent, randomstep)
-	. = ..()
-	if(!.)
-		return
-	if(ishuman(exiting))
-		var/mob/living/carbon/human/H = exiting
-		if(H.glasses == hud)
-			H.glasses = null
-			H.recalculate_vis()
-
-//TODO - Check documentation for client.eye and client.perspective...
-/obj/item/clothing/glasses/hud/integrity/mech
-	name = "Integrated Medical Hud"
 
 /obj/vehicle/sealed/mecha/medical/odysseus/loaded/Initialize(mapload)
 	. = ..()

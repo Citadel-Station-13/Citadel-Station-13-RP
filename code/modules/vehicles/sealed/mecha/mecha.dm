@@ -37,6 +37,8 @@
 	infra_luminosity = 15
 
 	emulate_door_bumps = TRUE
+	
+	//* legacy below
 
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
 	var/initial_icon = null
@@ -265,28 +267,6 @@
 	INVOKE_ASYNC(src, PROC_REF(create_components))
 	update_transform()
 
-//! shitcode
-// VEHICLE MECHS WHEN?
-/obj/vehicle/sealed/mecha/proc/create_components()
-	for(var/path in starting_components)
-		var/obj/item/mecha_parts/component/C = new path(src)
-		C.attach(src)
-
-	if(starting_equipment && LAZYLEN(starting_equipment))
-		for(var/path in starting_equipment)
-			var/obj/item/mecha_parts/mecha_equipment/ME = new path(src)
-			ME.attach(src)
-
-/obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
-	if(!cell)
-		return 0
-	return cell.drain_energy(actor, amount, flags)
-
-/obj/vehicle/sealed/mecha/can_drain_energy(datum/actor, amount)
-	return TRUE
-
-/obj/vehicle/sealed/mecha/Initialize(mapload)
-	. = ..()
 	events = new
 
 	icon_state += "-open"
@@ -311,11 +291,6 @@
 	loc.Entered(src)
 	mechas_list += src //global mech list
 
-/obj/vehicle/sealed/mecha/Exit(atom/movable/O)
-	if(O in cargo)
-		return 0
-	return ..()
-
 /obj/vehicle/sealed/mecha/Destroy()
 	src.go_out()
 	for(var/mob/M in src) //Be Extra Sure
@@ -330,8 +305,6 @@
 			T.Entered(A)
 		step_rand(A)
 
-	if(loc)
-		loc.Exited(src)
 
 	if(prob(30))
 		explosion(get_turf(loc), 0, 0, 1, 3)
@@ -396,6 +369,26 @@
 
 	mechas_list -= src //global mech list
 	. = ..()
+
+//! shitcode
+// VEHICLE MECHS WHEN?
+/obj/vehicle/sealed/mecha/proc/create_components()
+	for(var/path in starting_components)
+		var/obj/item/mecha_parts/component/C = new path(src)
+		C.attach(src)
+
+	if(starting_equipment && LAZYLEN(starting_equipment))
+		for(var/path in starting_equipment)
+			var/obj/item/mecha_parts/mecha_equipment/ME = new path(src)
+			ME.attach(src)
+
+/obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
+	if(!cell)
+		return 0
+	return cell.drain_energy(actor, amount, flags)
+
+/obj/vehicle/sealed/mecha/can_drain_energy(datum/actor, amount)
+	return TRUE
 
 ////////////////////////
 ////// Helpers /////////
@@ -1959,10 +1952,6 @@
 	src.occupant_legacy << browse(src.get_stats_html(), "window=exosuit")
 	return
 
-/////////////////////////
-////// Access stuff /////
-/////////////////////////
-
 /obj/vehicle/sealed/mecha/proc/operation_allowed(mob/living/carbon/human/H)
 	for(var/ID in list(H.get_active_held_item(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.operation_req_access))
@@ -2152,7 +2141,7 @@
 						</div>
 						<div id='equipment_menu'>[get_equipment_menu()]</div>
 						<hr>
-						[(/obj/vehicle/sealed/mecha/verb/eject in src.verbs)?"<a href='?src=\ref[src];eject=1'>Eject</a><br>":null]
+						<a href='?src=\ref[src];eject=1'>Eject</a><br>
 						"}
 	return output_text
 
@@ -2814,21 +2803,12 @@
 
 //* Entry / Exit *//
 
-/obj/vehicle/sealed/mecha/mob_enter(mob/M, silent)
-	. = ..()
-
-/obj/vehicle/sealed/mecha/mob_exit(mob/exiting, silent, randomstep)
-	. = ..()
-	
-
-/obj/vehicle/sealed/mecha/mob_try_exit(mob/exiting, mob/user, silent = FALSE, randomstep = FALSE)
-	if(!ishuman(M))
-		return
+/obj/vehicle/sealed/mecha/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	if(!.)
 		return
 	QDEL_NULL(minihud)
-	RemoveActions(exiting, human_exiting=1)
+	RemoveActions(exiting, human_occupant=1)
 
 	log_message("[exiting] moved out.")
 	exiting << browse(null, "window=exosuit")
@@ -2849,9 +2829,8 @@
 	setDir(dir_in)
 	remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/eject)
 
-	// Doesn't seem needed.
-	if(src.exiting && src.exiting.client)
-		src.exiting.client.view = world.view
+	if(exiting.client)
+		exiting.client.view = world.view
 		src.zoom = 0
 
 	strafing = 0

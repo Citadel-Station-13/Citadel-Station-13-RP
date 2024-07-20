@@ -94,6 +94,12 @@
 	integrity_max = 150
 	deflect_chance = 20
 	step_in = 2
+
+	occupant_hud_providers = list(
+		/datum/atom_hud_provider/medical_health,
+		/datum/atom_hud_provider/medical_biology,
+	)
+
 	damage_absorption = list("brute"=0.9,"fire"=1,"bullet"=0.9,"laser"=0.8,"energy"=0.9,"bomb"=1)
 	max_temperature = 20000
 	overload_coeff = 1
@@ -114,32 +120,6 @@
 		/obj/item/mecha_parts/component/gas,
 		/obj/item/mecha_parts/component/electrical
 		)
-
-	var/obj/item/clothing/glasses/hud/integrity/mech/hud
-
-/obj/vehicle/sealed/mecha/combat/gygax/serenity/Initialize(mapload)
-	. = ..()
-	hud = new /obj/item/clothing/glasses/hud/integrity/mech(src)
-
-/obj/vehicle/sealed/mecha/combat/gygax/serenity/moved_inside(var/mob/living/carbon/human/H as mob)
-	if(..())
-		if(H.glasses)
-			occupant_message("<font color='red'>[H.glasses] prevent you from using [src] [hud]</font>")
-		else
-			H.glasses = hud
-			H.recalculate_vis()
-		return 1
-	else
-		return 0
-
-/obj/vehicle/sealed/mecha/combat/gygax/serenity/go_out()
-	if(ishuman(occupant_legacy))
-		var/mob/living/carbon/human/H = occupant_legacy
-		if(H.glasses == hud)
-			H.glasses = null
-			H.recalculate_vis()
-	..()
-	return
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/gygax/old

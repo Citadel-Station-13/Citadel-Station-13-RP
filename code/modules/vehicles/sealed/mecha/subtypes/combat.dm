@@ -145,11 +145,10 @@
 	else
 		return 0
 
-/obj/vehicle/sealed/mecha/combat/go_out()
-	if(src.occupant_legacy && src.occupant_legacy.client)
-		src.occupant_legacy.client.mouse_pointer_icon = initial(src.occupant_legacy.client.mouse_pointer_icon)
-	..()
-	return
+/obj/vehicle/sealed/mecha/combat/mob_exited(mob/exiting, datum/event_args/actor/actor, silent, control_flags)
+	. = ..()
+	if(exiting.client)
+		exiting.client.mouse_pointer_icon = initial(src.occupant_legacy.client.mouse_pointer_icon)
 
 /obj/vehicle/sealed/mecha/combat/Topic(href,href_list)
 	..()

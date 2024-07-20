@@ -650,14 +650,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
-/area/proc/shuttle_arrived()
-	for(var/obj/machinery/power/apc/A in contents)
-		A.update_area()
-	return TRUE
-
-/area/proc/shuttle_departed()
-	return TRUE
-
 /area/AllowDrop()
 	CRASH("Bad op: area/AllowDrop() called")
 

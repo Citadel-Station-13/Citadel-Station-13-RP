@@ -38,6 +38,14 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
+	starting_components = list(
+		/obj/item/mecha_parts/component/hull/lightweight,
+		/obj/item/mecha_parts/component/actuator,
+		/obj/item/mecha_parts/component/armor,
+		/obj/item/mecha_parts/component/gas,
+		/obj/item/mecha_parts/component/electrical
+		)
+
 /obj/vehicle/sealed/mecha/combat/fighter/Initialize(mapload)
 	. = ..()
 	ion_trail = new /datum/effect_system/ion_trail_follow()
@@ -57,7 +65,7 @@
 	. = ..()
 	consider_gravity()
 
-/obj/vehicle/sealed/mecha/combat/fighter/go_out()
+/obj/vehicle/sealed/mecha/combat/fighter/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	consider_gravity()
 
