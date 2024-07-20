@@ -1597,6 +1597,13 @@
 			if(!isRemoteObserve && remoteview_target)
 				remoteview_target = null
 				reset_perspective()
+
+		//! shitcode ahead
+		if(get_z(src))
+			if(SSmapping.level_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
+				RemoveSightSelf(SEE_OBJS | SEE_MOBS | SEE_TURFS)
+		//! end
+
 	return 1
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
