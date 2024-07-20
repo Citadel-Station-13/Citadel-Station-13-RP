@@ -18,49 +18,6 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
-/obj/vehicle/sealed/proc/mob_try_enter(mob/M)
-	if(!istype(M))
-		return FALSE
-	if(occupant_amount() >= max_occupants)
-		return FALSE
-	if(do_after(M, get_enter_delay(M), src, FALSE, TRUE))
-		mob_enter(M)
-		return TRUE
-	return FALSE
-
-/obj/vehicle/sealed/proc/get_enter_delay(mob/M)
-	return enter_delay
-
-/obj/vehicle/sealed/proc/mob_enter(mob/M, silent = FALSE)
-	if(!istype(M))
-		return FALSE
-	if(!silent)
-		M.visible_message("<span class='notice'>[M] climbs into \the [src]!</span>")
-	M.forceMove(src)
-	add_occupant(M)
-	return TRUE
-
-/obj/vehicle/sealed/proc/mob_try_exit(mob/exiting, mob/user, silent = FALSE, randomstep = FALSE)
-	mob_exit(exiting, silent, randomstep)
-
-/obj/vehicle/sealed/proc/mob_exit(mob/exiting, silent = FALSE, randomstep = FALSE)
-	SIGNAL_HANDLER
-	if(!istype(exiting))
-		return FALSE
-	remove_occupant(exiting)
-	if(!isAI(exiting))//This is the ONE mob we dont want to be moved to the vehicle that should be handeled when used
-		exiting.forceMove(exit_location(exiting))
-	if(randomstep)
-		var/turf/target_turf = get_step(exit_location(exiting), pick(GLOB.cardinal))
-		exiting.throw_at(target_turf, 5, 10)
-
-	if(!silent)
-		exiting.visible_message("<span class='notice'>[exiting] drops out of \the [src]!</span>")
-	return TRUE
-
-/obj/vehicle/sealed/proc/exit_location(M)
-	return drop_location()
-
 /obj/vehicle/sealed/attackby(obj/item/I, mob/user, params)
 	if(key_type && !is_key(inserted_key) && is_key(I))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
@@ -114,3 +71,91 @@
 	for(var/k in occupants)
 		var/mob/M = k
 		M.setDir(newdir)
+
+//* Entry / Exit *//
+
+/**
+ * Called when someone tries to climb into us.
+ * 
+ * @params
+ * * entering - the person attempting to enter
+ * * actor - the person trying to put them in us; usually the same as entering, but not always
+ * * silent - suppress external messages
+ * * enter_delay - the delay for the entry (they have to stay still relative to us)
+ * * use_control_flags - override the normal control flags and use these instead
+ */
+/obj/vehicle/sealed/proc/mob_try_enter(mob/entering, datum/event_args/actor/actor, silent, enter_delay = enter_delay, use_control_flags)
+	if(isnull(actor))
+		actor = new /datum/event_args/actor(entering)
+	if(!istype(entering))
+		return FALSE
+	if(occupant_amount() >= max_occupants)
+		return FALSE
+	if(do_after(entering, get_enter_delay(M), src, FALSE, TRUE))
+		mob_enter(entering)
+		return TRUE
+	return FALSE
+
+/**
+ * Called to put someone into us.
+ * 
+ * This should not be overridden; use [mob_entered()] for that
+ * 
+ * @params
+ * * entering - the person attempting to enter
+ * * actor - the person trying to put them in us; usually the same as entering, but not always
+ * * silent - suppress external messages
+ * * use_control_flags - override the normal control flags and use these instead
+ */
+/obj/vehicle/sealed/proc/mob_enter(mob/entering, datum/event_args/actor/actor, silent, use_control_flags)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!istype(entering))
+		return FALSE
+	if(!silent)
+		entering.visible_message("<span class='notice'>[entering] climbs into \the [src]!</span>")
+	entering.forceMove(src)
+	add_occupant(entering)
+	#warn change
+	mob_entered(entering, uesr, silent, occupants[entering])
+	return TRUE
+
+/**
+ * At this point, the entry has already happened.
+ * 
+ * @params
+ * * entering - the person who entered
+ * * actor - the person who put them in us; usually the same as entering, but not always
+ * * silent - suppress external messages
+ * * control_flags - override the normal control flags and use these instead
+ */
+/obj/vehicle/sealed/proc/mob_entered(mob/entering, datum/event_args/actor/actor, silent, control_flags)
+	return
+
+#warn below
+
+/**
+ * Called when someone attempts to eject from us
+ */
+/obj/vehicle/sealed/proc/mob_try_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc = drop_location(), silent)
+	mob_exit(exiting, silent, randomstep)
+
+/obj/vehicle/sealed/proc/mob_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc, silent)
+	SIGNAL_HANDLER
+	if(!istype(exiting))
+		return FALSE
+	remove_occupant(exiting)
+	if(!isAI(exiting))//This is the ONE mob we dont want to be moved to the vehicle that should be handeled when used
+		exiting.forceMove(exit_location(exiting))
+	if(randomstep)
+		var/turf/target_turf = get_step(exit_location(exiting), pick(GLOB.cardinal))
+		exiting.throw_at(target_turf, 5, 10)
+
+	if(!silent)
+		exiting.visible_message("<span class='notice'>[exiting] drops out of \the [src]!</span>")
+	return TRUE
+
+/**
+ * at this point, they have already exited
+ */
+/obj/vehicle/sealed/proc/mob_exited(mob/exiting, datum/event_args/actor/actor, silent, control_flags)
+	return

@@ -32,7 +32,7 @@
 					var/obj/machinery/door/firedoor/FD = O
 					if(FD.blocked)
 						FD.visible_message("<span class='danger'>\The [chassis] begins prying on \the [FD]!</span>")
-						if(do_after(chassis.occupant,10 SECONDS,FD))
+						if(do_after(chassis.occupant_legacy,10 SECONDS,FD))
 							playsound(FD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
 							FD.blocked = 0
 							FD.update_icon()
@@ -40,7 +40,7 @@
 							FD.visible_message("<span class='warning'>\The [chassis] tears \the [FD] open!</span>")
 					else if(FD.density)
 						FD.visible_message("<span class='warning'>\The [chassis] begins forcing \the [FD] open!</span>")
-						if(do_after(chassis.occupant, 5 SECONDS,FD))
+						if(do_after(chassis.occupant_legacy, 5 SECONDS,FD))
 							playsound(FD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
 							FD.visible_message("<span class='danger'>\The [chassis] forces \the [FD] open!</span>")
 							FD.open(1)
@@ -54,7 +54,7 @@
 					else if(!AD.operating)
 						if(AD.welded)
 							AD.visible_message("<span class='warning'>\The [chassis] begins prying on \the [AD]!</span>")
-							if(do_after(chassis.occupant, 15 SECONDS,AD) && chassis.Adjacent(AD))
+							if(do_after(chassis.occupant_legacy, 15 SECONDS,AD) && chassis.Adjacent(AD))
 								AD.welded = FALSE
 								AD.update_icon()
 								playsound(AD, 'sound/machines/door/airlock_creaking.ogg', 100, 1)
@@ -95,14 +95,14 @@
 	else if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == INTENT_HARM || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
+		if(chassis.occupant_legacy.a_intent == INTENT_HARM || istype(chassis.occupant_legacy,/mob/living/carbon/brain)) //No tactile feedback for brains
 			M.take_overall_damage(dam_force)
 			M.adjustOxyLoss(round(dam_force/2))
 			M.update_health()
 			occupant_message("<span class='warning'>You squeeze [target] with [src.name]. Something cracks.</span>")
 			playsound(src, "fracture", 5, 1, -2) //CRACK
 			chassis.visible_message("<span class='warning'>[chassis] squeezes [target].</span>")
-		else if(chassis.occupant.a_intent == INTENT_DISARM && enable_special)
+		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM && enable_special)
 			playsound(src, 'sound/mecha/hydraulic.ogg', 10, 1, -2)
 			M.take_overall_damage(dam_force/2)
 			M.adjustOxyLoss(round(dam_force/3))
@@ -159,10 +159,10 @@
 	else if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == INTENT_HARM)
+		if(chassis.occupant_legacy.a_intent == INTENT_HARM)
 			chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
 			chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>")
-		if(chassis.occupant.a_intent == INTENT_DISARM)
+		if(chassis.occupant_legacy.a_intent == INTENT_DISARM)
 			chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
 			chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
 		else

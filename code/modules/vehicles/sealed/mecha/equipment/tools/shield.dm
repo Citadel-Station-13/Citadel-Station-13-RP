@@ -69,7 +69,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/proc/toggle_shield()
 	if(chassis)
-		my_shield.attack_self(chassis.occupant)
+		my_shield.attack_self(chassis.occupant_legacy)
 		if(my_shield.active)
 			set_ready_state(0)
 			step_delay = 4

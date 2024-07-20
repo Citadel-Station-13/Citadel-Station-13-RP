@@ -91,7 +91,7 @@
 		data["cellCharge"] = M.cell.charge
 		data["cellMaxCharge"] = M.cell.charge
 	data["airtank"] = M.return_pressure()
-	data["pilot"] = M.occupant
+	data["pilot"] = M.occupant_legacy
 	data["location"] = get_area(M)
 	data["active"] = M.selected
 	if(istype(M, /obj/vehicle/sealed/mecha/working/ripley))

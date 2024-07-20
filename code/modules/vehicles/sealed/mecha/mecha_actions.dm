@@ -194,7 +194,7 @@
 	if(!chassis.selected)
 		chassis.selected = available_equipment[1]
 		chassis.occupant_message("You select [chassis.selected]")
-		send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())
+		send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
 		button_icon_state = "mech_cycle_equip_on"
 		update_buttons()
 		return
@@ -210,7 +210,7 @@
 				chassis.selected = available_equipment[number+1]
 				chassis.occupant_message("You switch to [chassis.selected]")
 				button_icon_state = "mech_cycle_equip_on"
-			send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())
+			send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
 			update_buttons()
 			return
 
@@ -273,7 +273,7 @@
 	defence_mode()
 
 /obj/vehicle/sealed/mecha/proc/defence_mode()
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
 	playsound(src, 'sound/mecha/duranddefencemode.ogg', 50, 1)
 	defence_mode = !defence_mode
@@ -298,7 +298,7 @@
 /obj/vehicle/sealed/mecha/proc/overload()
 	if(usr.stat == 1)//No manipulating things while unconcious.
 		return
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
 	if(integrity < initial(integrity) - initial(integrity)/3)//Same formula as in movement, just beforehand.
 		src.occupant_message("<font color='red'>Leg actuators damage critical, unable to engage overload.</font>")
@@ -325,7 +325,7 @@
 	smoke()
 
 /obj/vehicle/sealed/mecha/proc/smoke()
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
 
 	if(smoke_reserve < 1)
@@ -357,16 +357,16 @@
 	zoom()
 
 /obj/vehicle/sealed/mecha/proc/zoom()//This could use improvements but maybe later.
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
-	if(src.occupant.client)
-		var/client/myclient = src.occupant.client
+	if(src.occupant_legacy.client)
+		var/client/myclient = src.occupant_legacy.client
 		src.zoom = !src.zoom
 		src.log_message("Toggled zoom mode.")
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
 			myclient.set_temporary_view(GLOB.max_client_view_x + 5, GLOB.max_client_view_y + 5)
-			src.occupant << sound('sound/mecha/imag_enh.ogg',volume=50)
+			src.occupant_legacy << sound('sound/mecha/imag_enh.ogg',volume=50)
 		else
 			myclient.reset_temporary_view()
 	return
@@ -381,9 +381,9 @@
 	thrusters()
 
 /obj/vehicle/sealed/mecha/proc/thrusters()
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
-	if(src.occupant)
+	if(src.occupant_legacy)
 		if(get_charge() > 0)
 			thrusters = !thrusters
 			src.log_message("Toggled thrusters.")
@@ -400,9 +400,9 @@
 	query_damtype()
 
 /obj/vehicle/sealed/mecha/proc/query_damtype()
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
-	var/new_damtype = alert(src.occupant,"Melee Damage Type",null,"Brute","Fire","Toxic")
+	var/new_damtype = alert(src.occupant_legacy,"Melee Damage Type",null,"Brute","Fire","Toxic")
 	switch(new_damtype)
 		if("Brute")
 			damtype = "brute"
@@ -426,10 +426,10 @@
 	phasing()
 
 /obj/vehicle/sealed/mecha/proc/phasing()
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
 	phasing = !phasing
-	send_byjax(src.occupant,"exosuit.browser","phasing_command","[phasing?"Dis":"En"]able phasing")
+	send_byjax(src.occupant_legacy,"exosuit.browser","phasing_command","[phasing?"Dis":"En"]able phasing")
 	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
 	return
 
@@ -442,7 +442,7 @@
 	toggle_cloaking()
 
 /obj/vehicle/sealed/mecha/proc/toggle_cloaking()
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
 
 	if(cloaked)
@@ -461,7 +461,7 @@
 	set_weapons_only_cycle()
 
 /obj/vehicle/sealed/mecha/proc/set_weapons_only_cycle()
-	if(usr!=src.occupant)
+	if(usr!=src.occupant_legacy)
 		return
 	weapons_only_cycle = !weapons_only_cycle
 	src.occupant_message("<font color=\"[weapons_only_cycle?"#00f\">En":"#f00\">Dis"]abled weapons only cycling.</font>")

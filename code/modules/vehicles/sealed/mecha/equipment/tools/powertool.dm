@@ -29,9 +29,9 @@
 		return FALSE
 
 	if(isliving(target))
-		my_tool.melee_interaction_chain(target, chassis.occupant, BP_TORSO)
+		my_tool.melee_interaction_chain(target, chassis.occupant_legacy, BP_TORSO)
 
-	target.attackby(my_tool,chassis.occupant)
+	target.attackby(my_tool,chassis.occupant_legacy)
 
 /obj/item/mecha_parts/mecha_equipment/tool/powertool/prybar
 	name = "pneumatic prybar"

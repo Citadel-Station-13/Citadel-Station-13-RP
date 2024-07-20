@@ -129,7 +129,7 @@
 			log_message("Reagent processing started.")
 		return
 	if(top_filter.get("show_reagents"))
-		chassis.occupant << browse(get_reagents_page(),"window=msyringegun")
+		chassis.occupant_legacy << browse(get_reagents_page(),"window=msyringegun")
 	if(top_filter.get("purge_reagent"))
 		var/reagent = top_filter.get("purge_reagent")
 		if(reagent)
@@ -234,7 +234,7 @@
 			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
 		else if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))
 			occupant_message("Reagent analyzed, identified as [R.name] and added to database.")
-			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
+			send_byjax(chassis.occupant_legacy,"msyringegun.browser","reagents_form",get_reagents_form())
 		else
 			occupant_message("Reagent \"[R.name]\" unable to be scanned, skipping.")
 	occupant_message("Analysis complete.")
@@ -252,8 +252,8 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/update_equip_info()
 	if(..())
-		send_byjax(chassis.occupant,"msyringegun.browser","reagents",get_current_reagents())
-		send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
+		send_byjax(chassis.occupant_legacy,"msyringegun.browser","reagents",get_current_reagents())
+		send_byjax(chassis.occupant_legacy,"msyringegun.browser","reagents_form",get_reagents_form())
 		return 1
 	return
 
@@ -337,12 +337,12 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 	shut_down()
-	if(chassis && chassis.occupant)
-		to_chat(chassis.occupant, "<span class='notice'>\The [chassis] shudders as something jams!</span>")
+	if(chassis && chassis.occupant_legacy)
+		to_chat(chassis.occupant_legacy, "<span class='notice'>\The [chassis] shudders as something jams!</span>")
 		log_message("[src.name] has malfunctioned. Maintenance required.")
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/process()	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
-	if(chassis && enabled && chassis.has_charge(energy_drain) && (chassis.occupant || enable_special))
+	if(chassis && enabled && chassis.has_charge(energy_drain) && (chassis.occupant_legacy || enable_special))
 		var/mob/living/Targ = Target
 		var/TargDamage = 0
 

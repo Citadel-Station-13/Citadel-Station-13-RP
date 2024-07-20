@@ -26,7 +26,7 @@
 		message = "Reel is full."
 	else
 		message = "[result] meters of cable successfully loaded."
-		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
+		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 	occupant_message(message)
 	return
 
@@ -39,7 +39,7 @@
 		return
 	if(href_list["cut"])
 		if(cable && cable.amount)
-			var/m = round(input(chassis.occupant,"Please specify the length of cable to cut","Cut cable",min(cable.amount,30)) as num, 1)
+			var/m = round(input(chassis.occupant_legacy,"Please specify the length of cable to cut","Cut cable",min(cable.amount,30)) as num, 1)
 			m = min(m, cable.amount)
 			if(m)
 				use_cable(m)

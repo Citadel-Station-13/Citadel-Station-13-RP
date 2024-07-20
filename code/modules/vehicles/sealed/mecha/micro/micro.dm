@@ -37,7 +37,7 @@
 	if(!melee_can_hit || !istype(target, /atom)) return
 	if(istype(target, /mob/living))
 		var/mob/living/M = target
-		if(src.occupant.a_intent == INTENT_HARM)
+		if(src.occupant_legacy.a_intent == INTENT_HARM)
 			playsound(src, 'sound/weapons/punch4.ogg', 50, 1)
 			if(damtype == "brute")
 				step_away(M,src,15)
@@ -104,7 +104,7 @@
 					src.occupant_message("You hit [target].")
 					src.visible_message("<font color='red'><b>[src.name] hits [target]</b></font>")
 					if(!istype(target, /turf/simulated/wall))
-						target:attackby(src,src.occupant)
+						target:attackby(src,src.occupant_legacy)
 					else
 						playsound(src, 'sound/weapons/smash.ogg', 50, 1)
 					melee_can_hit = 0

@@ -22,7 +22,7 @@
 	if(!action_checks(target) || get_dist(chassis, target) > 3)
 		return FALSE
 
-	my_rcd.use_rcd(target, chassis.occupant)
+	my_rcd.use_rcd(target, chassis.occupant_legacy)
 
 /obj/item/mecha_parts/mecha_equipment/tool/rcd/Topic(href,href_list)
 	..()

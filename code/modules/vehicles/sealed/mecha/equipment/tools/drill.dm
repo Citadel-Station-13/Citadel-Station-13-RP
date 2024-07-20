@@ -48,7 +48,7 @@
 							if(get_dir(chassis,ore)&chassis.dir)
 								ore.forceMove(ore_box)
 			else if(isliving(target))
-				drill_mob(target, chassis.occupant)
+				drill_mob(target, chassis.occupant_legacy)
 				return 1
 			else if(target.loc == C)
 				log_message("Drilled through [target]")

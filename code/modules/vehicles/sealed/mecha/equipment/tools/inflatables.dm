@@ -37,9 +37,9 @@
 		return
 
 	if(istype(target, /turf))
-		my_deployer.try_deploy_inflatable(target, chassis.occupant)
+		my_deployer.try_deploy_inflatable(target, chassis.occupant_legacy)
 	if(istype(target, /obj/item/inflatable) || istype(target, /obj/structure/inflatable))
-		my_deployer.pick_up(target, chassis.occupant)
+		my_deployer.pick_up(target, chassis.occupant_legacy)
 
 	set_ready_state(0)
 	chassis.use_power(energy_drain)

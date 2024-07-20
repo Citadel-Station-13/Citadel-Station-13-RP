@@ -20,7 +20,7 @@
 		var/atom/movable/beam_origin = chassis
 		weld_beam = beam_origin.Beam(target, icon_state = "solar_beam", time = 0.3 SECONDS)
 
-	if(!do_after(chassis.occupant, 0.3 SECONDS, target))
+	if(!do_after(chassis.occupant_legacy, 0.3 SECONDS, target))
 		qdel(weld_beam)
 
 /obj/item/mecha_parts/mecha_equipment/tool/powertool/welding/attach(obj/vehicle/sealed/mecha/M as obj)

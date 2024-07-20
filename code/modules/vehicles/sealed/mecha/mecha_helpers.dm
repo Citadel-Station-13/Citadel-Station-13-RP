@@ -5,7 +5,7 @@
 // Returns, at least, a usable target body position, for things like guns.
 
 /obj/vehicle/sealed/mecha/proc/get_pilot_zone_sel()
-	if(!occupant || !occupant.zone_sel || occupant.stat)
+	if(!occupant_legacy || !occupant_legacy.zone_sel || occupant_legacy.stat)
 		return BP_TORSO
 
-	return occupant.zone_sel.selecting
+	return occupant_legacy.zone_sel.selecting

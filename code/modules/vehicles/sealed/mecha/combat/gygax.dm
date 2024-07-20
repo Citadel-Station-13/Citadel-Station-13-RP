@@ -133,8 +133,8 @@
 		return 0
 
 /obj/vehicle/sealed/mecha/combat/gygax/serenity/go_out()
-	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
+	if(ishuman(occupant_legacy))
+		var/mob/living/carbon/human/H = occupant_legacy
 		if(H.glasses == hud)
 			H.glasses = null
 			H.recalculate_vis()

@@ -140,7 +140,7 @@
 	..()
 
 /obj/vehicle/sealed/mecha/combat/phazon/janus/query_damtype()
-	var/new_damtype = alert(src.occupant,"Gauntlet Phase Emitter Mode",null,"Force","Energy","Stun")
+	var/new_damtype = alert(src.occupant_legacy,"Gauntlet Phase Emitter Mode",null,"Force","Energy","Stun")
 	switch(new_damtype)
 		if("Force")
 			damtype = "brute"

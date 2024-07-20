@@ -81,7 +81,7 @@
 
 //I'll break this down later
 /obj/vehicle/sealed/mecha/combat/marauder/relaymove(mob/user,direction)
-	if(user != src.occupant) //While not "realistic", this piece is player friendly.
+	if(user != src.occupant_legacy) //While not "realistic", this piece is player friendly.
 		user.loc = get_turf(src)
 		to_chat(user, "You climb out from [src]")
 		return 0

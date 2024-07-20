@@ -15,14 +15,14 @@
 	if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == INTENT_HARM || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
+		if(chassis.occupant_legacy.a_intent == INTENT_HARM || istype(chassis.occupant_legacy,/mob/living/carbon/brain)) //No tactile feedback for brains
 			M.apply_damage(dam_force, BRUTE)
 			M.adjustOxyLoss(round(dam_force/2))
 			M.update_health()
 			occupant_message("<span class='warning'>You pierce [target] with [src.name]. The blade goes all the way through.</span>")
 			playsound(src, 'sound/weapons/slice.ogg', 5, 1, -2) //Whisper quiet.
 			chassis.visible_message("<span class='warning'>[chassis] stabs [target].</span>")
-		else if(chassis.occupant.a_intent == INTENT_DISARM && enable_special)
+		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM && enable_special)
 			playsound(src, 'sound/weapons/punchmiss.ogg', 10, 1, -2)
 			M.apply_damage(dam_force/2, BRUTE)
 			M.adjustOxyLoss(round(dam_force/3))
@@ -80,14 +80,14 @@
 	if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == INTENT_HARM || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
+		if(chassis.occupant_legacy.a_intent == INTENT_HARM || istype(chassis.occupant_legacy,/mob/living/carbon/brain)) //No tactile feedback for brains
 			M.apply_damage(dam_force, BURN)
 			M.adjust_fire_stacks(1)
 			M.update_health()
 			occupant_message("<span class='warning'>You pierce [target] with [src.name]. The blade goes all the way through.</span>")
 			playsound(src, 'sound/weapons/blade1.ogg', 5, 1, -2) //Whisper quiet.
 			chassis.visible_message("<span class='warning'>[chassis] stabs [target].</span>")
-		else if(chassis.occupant.a_intent == INTENT_DISARM && enable_special)
+		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM && enable_special)
 			playsound(src, 'sound/weapons/punchmiss.ogg', 10, 1, -2)
 			M.apply_damage(dam_force/2, BRUTE)
 			M.adjustOxyLoss(round(dam_force/3))

@@ -37,7 +37,7 @@
 		target_for_log = target
 	else if(target)
 		target_for_log = "[target.name]"
-	add_attack_logs(chassis.occupant,target_for_log,"Fired exosuit weapon [src.name] (MANUAL)")
+	add_attack_logs(chassis.occupant_legacy,target_for_log,"Fired exosuit weapon [src.name] (MANUAL)")
 
 	for(var/i = 1 to min(projectiles, projectiles_per_shot))
 		var/turf/aimloc = targloc
@@ -72,8 +72,8 @@
 	if(istype(A, /obj/projectile))	// Sanity.
 		var/obj/projectile/P = A
 		P.dispersion = deviation
-		process_accuracy(P, chassis.occupant, target)
-		P.launch_projectile_from_turf(target, chassis.get_pilot_zone_sel(), chassis.occupant, params)
+		process_accuracy(P, chassis.occupant_legacy, target)
+		P.launch_projectile_from_turf(target, chassis.get_pilot_zone_sel(), chassis.occupant_legacy, params)
 	else if(istype(A, /atom/movable))
 		var/atom/movable/AM = A
 		AM.throw_at_old(target, 7, 1, chassis)

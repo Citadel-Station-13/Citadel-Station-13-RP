@@ -25,7 +25,7 @@
 	if(!initial_icon)
 		initial_icon = initial(icon_state)
 
-	if(occupant)
+	if(occupant_legacy)
 		icon_state = initial_icon
 	else
 		icon_state = "[initial_icon]-open"
@@ -33,10 +33,10 @@
 	cut_overlays()
 
 	if(show_pilot)
-		if(occupant)
-			pilot_image = get_compound_icon(occupant)
+		if(occupant_legacy)
+			pilot_image = get_compound_icon(occupant_legacy)
 
-			if(!istype(occupant, /mob/living/carbon/brain))
+			if(!istype(occupant_legacy, /mob/living/carbon/brain))
 
 				var/icon/Cutter
 

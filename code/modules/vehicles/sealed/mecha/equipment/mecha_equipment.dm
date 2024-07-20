@@ -53,14 +53,14 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/update_chassis_page()
 	if(chassis)
-		send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())
-		send_byjax(chassis.occupant,"exosuit.browser","equipment_menu",chassis.get_equipment_menu(),"dropdowns")
+		send_byjax(chassis.occupant_legacy,"exosuit.browser","eq_list",chassis.get_equipment_list())
+		send_byjax(chassis.occupant_legacy,"exosuit.browser","equipment_menu",chassis.get_equipment_menu(),"dropdowns")
 		return TRUE
 	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/update_equip_info()
 	if(chassis)
-		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
+		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",get_equip_info())
 		return TRUE
 	return
 
@@ -97,19 +97,19 @@
 		if(istype(src, /obj/item/mecha_parts/mecha_equipment/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					src.chassis.occupant << sound('sound/mecha/weapdestrnano.ogg',volume=70)
+					src.chassis.occupant_legacy << sound('sound/mecha/weapdestrnano.ogg',volume=70)
 				if(MECH_FACTION_SYNDI)
-					src.chassis.occupant  << sound('sound/mecha/weapdestrsyndi.ogg',volume=60)
+					src.chassis.occupant_legacy  << sound('sound/mecha/weapdestrsyndi.ogg',volume=60)
 				else
-					src.chassis.occupant  << sound('sound/mecha/weapdestr.ogg',volume=50)
+					src.chassis.occupant_legacy  << sound('sound/mecha/weapdestr.ogg',volume=50)
 		else //Not a gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					src.chassis.occupant  << sound('sound/mecha/critdestrnano.ogg',volume=70)
+					src.chassis.occupant_legacy  << sound('sound/mecha/critdestrnano.ogg',volume=70)
 				if(MECH_FACTION_SYNDI)
-					src.chassis.occupant  << sound('sound/mecha/critdestrsyndi.ogg',volume=70)
+					src.chassis.occupant_legacy  << sound('sound/mecha/critdestrsyndi.ogg',volume=70)
 				else
-					src.chassis.occupant  << sound('sound/mecha/critdestr.ogg',volume=50)
+					src.chassis.occupant_legacy  << sound('sound/mecha/critdestr.ogg',volume=50)
 	spawn
 		qdel(src)
 	return
@@ -256,7 +256,7 @@
 /obj/item/mecha_parts/mecha_equipment/proc/set_ready_state(state)
 	equip_ready = state
 	if(chassis)
-		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
+		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/occupant_message(message)

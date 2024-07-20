@@ -66,7 +66,7 @@
 	..()
 	if (href_list["toggle_landing_gear"])
 		landing_gear_raised = !landing_gear_raised
-		send_byjax(src.occupant,"exosuit.browser","landing_gear_command","[landing_gear_raised?"Lower":"Raise"] landing gear")
+		send_byjax(src.occupant_legacy,"exosuit.browser","landing_gear_command","[landing_gear_raised?"Lower":"Raise"] landing gear")
 		src.occupant_message("<span class='notice'>Landing gear [landing_gear_raised? "raised" : "lowered"].</span>")
 		return
 
@@ -104,9 +104,9 @@
 	var/gravity = has_gravity()
 	if (gravity && !landing_gear_raised)
 		playsound(src, 'sound/effects/roll.ogg', 50, 1)
-	else if(gravity && ground_capable && occupant)
+	else if(gravity && ground_capable && occupant_legacy)
 		start_hover()
-	else if((!gravity && ground_capable) || !occupant)
+	else if((!gravity && ground_capable) || !occupant_legacy)
 		stop_hover()
 	else if(moved && gravity && !ground_capable)
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")

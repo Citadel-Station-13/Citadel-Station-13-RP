@@ -30,7 +30,7 @@
 		var/obj/vehicle/sealed/mecha/M = AM
 		if(istype(M, /obj/vehicle/sealed/mecha/medical/odysseus))
 			for(var/obj/item/mecha_parts/mecha_equipment/tool/sleeper/S in M.equipment)
-				if(S.occupant)
+				if(S.occupant_legacy)
 					return FALSE
 		return TRUE
 	if(isvehicle(AM))
@@ -45,8 +45,8 @@
 
 	if(istype(O, /obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/R = O
-		if(R && R.occupant)
-			to_chat(R.occupant,block_message)
+		if(R && R.occupant_legacy)
+			to_chat(R.occupant_legacy,block_message)
 	else if(istype(O, /obj/vehicle_old/train/engine))
 		var/obj/vehicle_old/train/engine/E = O
 		if(E && E.load && E.is_train_head())

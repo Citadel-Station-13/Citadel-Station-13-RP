@@ -6,7 +6,7 @@
 	energy_drain = 10
 	range = MELEE
 	equip_cooldown = 20
-	var/mob/living/carbon/occupant = null
+	var/mob/living/carbon/occupant_legacy = null
 	var/door_locked = 1
 	salvageable = 0
 	allow_duplicate = TRUE
@@ -27,7 +27,7 @@
 		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
 
 	if(do_after(user, 40, chassis, DO_AFTER_IGNORE_ACTIVE_ITEM))
-		if(!src.occupant)
+		if(!src.occupant_legacy)
 			//? WARNING WARNING SHITCODE ALERT
 			//? BYOND WILL REFUSE TO PROPERLY UPDATE STUFF IF WE MOVE IN IMMEDIATELY
 			//? THUS, SLEEP A SINGLE TICK.
@@ -35,11 +35,11 @@
 				user.forceMove(src)
 				user.update_perspective()
 			add_verb(user, /mob/proc/verb_eject_mech_passenger)
-			occupant = user
+			occupant_legacy = user
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
-		else if(src.occupant != user)
-			to_chat(user, "<span class='warning'>[src.occupant] was faster. Try harder next time, loser.</span>")
+		else if(src.occupant_legacy != user)
+			to_chat(user, "<span class='warning'>[src.occupant_legacy] was faster. Try harder next time, loser.</span>")
 	else
 		to_chat(user, "You stop entering the exosuit.")
 
@@ -53,23 +53,23 @@
 	if(!istype(pod))
 		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
-	if(src != pod.occupant)
+	if(src != pod.occupant_legacy)
 		forceMove(get_turf(pod))
 		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
 	to_chat(src, "You climb out from \the [src].")
 	pod.go_out()
-	pod.occupant_message("[pod.occupant] disembarked.")
-	pod.log_message("[pod.occupant] disembarked.")
+	pod.occupant_message("[pod.occupant_legacy] disembarked.")
+	pod.log_message("[pod.occupant_legacy] disembarked.")
 	pod.add_fingerprint(src)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/go_out()
-	if(!occupant)
+	if(!occupant_legacy)
 		return
-	remove_verb(occupant, /mob/proc/verb_eject_mech_passenger)
-	occupant.forceMove(get_turf(src))
-	occupant.update_perspective()
-	occupant = null
+	remove_verb(occupant_legacy, /mob/proc/verb_eject_mech_passenger)
+	occupant_legacy.forceMove(get_turf(src))
+	occupant_legacy.update_perspective()
+	occupant_legacy = null
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/attach()
@@ -78,7 +78,7 @@
 		add_obj_verb(chassis, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/detach()
-	if(occupant)
+	if(occupant_legacy)
 		occupant_message("Unable to detach [src] - equipment occupied.")
 		return
 
@@ -88,7 +88,7 @@
 		remove_verb(M, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/get_equip_info()
-	return "[..()] <br />[occupant? "\[Occupant: [occupant]\]|" : ""]Exterior Hatch: <a href='?src=\ref[src];toggle_lock=1'>Toggle Lock</a>"
+	return "[..()] <br />[occupant_legacy? "\[Occupant: [occupant_legacy]\]|" : ""]Exterior Hatch: <a href='?src=\ref[src];toggle_lock=1'>Toggle Lock</a>"
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/Topic(href,href_list)
 	..()
@@ -133,7 +133,7 @@
 	//search for a valid passenger compartment
 	var/feedback = 0 //for nicer user feedback
 	for(var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P in src)
-		if (P.occupant)
+		if (P.occupant_legacy)
 			feedback |= OCCUPIED
 			continue
 		if (P.door_locked)

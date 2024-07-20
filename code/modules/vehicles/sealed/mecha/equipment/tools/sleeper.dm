@@ -8,7 +8,7 @@
 	range = MELEE
 	equip_cooldown = 30
 	mech_flags = EXOSUIT_MODULE_MEDICAL
-	var/mob/living/carbon/human/occupant = null
+	var/mob/living/carbon/human/occupant_legacy = null
 	var/datum/global_iterator/pr_mech_sleeper
 	var/inject_amount = 5
 	required_type = list(/obj/vehicle/sealed/mecha/medical)
@@ -38,7 +38,7 @@
 	if(target.buckled)
 		occupant_message("[target] will not fit into the sleeper because they are buckled to [target.buckled].")
 		return
-	if(occupant)
+	if(occupant_legacy)
 		occupant_message("The sleeper is already occupied")
 		return
 	if(target.has_buckled_mobs())
@@ -51,13 +51,13 @@
 	if(do_after_cooldown(target))
 		if(chassis.loc!=C || target.loc!=T)
 			return
-		if(occupant)
+		if(occupant_legacy)
 			occupant_message(SPAN_DANGER("<B>The sleeper is already occupied!</B>"))
 			return
 		target.forceMove(src)
 		target.update_perspective()
-		occupant = target
-		occupant.Stasis(3)
+		occupant_legacy = target
+		occupant_legacy.Stasis(3)
 		/*
 		if(target.client)
 			target.client.perspective = EYE_PERSPECTIVE
@@ -71,24 +71,24 @@
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/go_out()
-	if(!occupant)
+	if(!occupant_legacy)
 		return
-	occupant.forceMove(get_turf(src))
-	occupant.update_perspective()
-	occupant_message("[occupant] ejected. Life support functions disabled.")
-	log_message("[occupant] ejected. Life support functions disabled.")
+	occupant_legacy.forceMove(get_turf(src))
+	occupant_legacy.update_perspective()
+	occupant_message("[occupant_legacy] ejected. Life support functions disabled.")
+	log_message("[occupant_legacy] ejected. Life support functions disabled.")
 	/*
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
+	if(occupant_legacy.client)
+		occupant_legacy.client.eye = occupant_legacy.client.mob
+		occupant_legacy.client.perspective = MOB_PERSPECTIVE
 	*/
-	occupant.Stasis(0)
-	occupant = null
+	occupant_legacy.Stasis(0)
+	occupant_legacy = null
 	pr_mech_sleeper.stop()
 	set_ready_state(1)
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/detach()
-	if(occupant)
+	if(occupant_legacy)
 		occupant_message("Unable to detach [src] - equipment occupied.")
 		return
 	pr_mech_sleeper.stop()
@@ -98,8 +98,8 @@
 	var/output = ..()
 	if(output)
 		var/temp = ""
-		if(occupant)
-			temp = "<br />\[Occupant: [occupant] (Health: [occupant.integrity]%)\]<br /><a href='?src=\ref[src];view_stats=1'>View stats</a>|<a href='?src=\ref[src];eject=1'>Eject</a>"
+		if(occupant_legacy)
+			temp = "<br />\[Occupant: [occupant_legacy] (Health: [occupant_legacy.integrity]%)\]<br /><a href='?src=\ref[src];view_stats=1'>View stats</a>|<a href='?src=\ref[src];eject=1'>Eject</a>"
 		return "[output] [temp]"
 	return
 
@@ -109,19 +109,19 @@
 	if(top_filter.get("eject"))
 		go_out()
 	if(top_filter.get("view_stats"))
-		chassis.occupant << browse(get_occupant_stats(),"window=msleeper")
-		onclose(chassis.occupant, "msleeper")
+		chassis.occupant_legacy << browse(get_occupant_stats(),"window=msleeper")
+		onclose(chassis.occupant_legacy, "msleeper")
 		return
 	if(top_filter.get("inject"))
 		inject_reagent(top_filter.getType("inject",/datum/reagent),top_filter.getObj("source"))
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_occupant_stats()
-	if(!occupant)
+	if(!occupant_legacy)
 		return
 	return {"<html>
 				<head>
-				<title>[occupant] statistics</title>
+				<title>[occupant_legacy] statistics</title>
 				<script language='javascript' type='text/javascript'>
 				[js_byjax]
 				</script>
@@ -147,7 +147,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_occupant_dam()
 	var/t1
-	switch(occupant.stat)
+	switch(occupant_legacy.stat)
 		if(0)
 			t1 = "Conscious"
 		if(1)
@@ -156,17 +156,17 @@
 			t1 = "*dead*"
 		else
 			t1 = "Unknown"
-	return {"<font color="[occupant.integrity > 50 ? "blue" : "red"]"><b>Health:</b> [occupant.integrity]% ([t1])</font><br />
-				<font color="[occupant.bodytemperature > 50 ? "blue" : "red"]"><b>Core Temperature:</b> [src.occupant.bodytemperature-T0C]&deg;C ([src.occupant.bodytemperature*1.8-459.67]&deg;F)</font><br />
-				<font color="[occupant.getBruteLoss() < 60 ? "blue" : "red"]"><b>Brute Damage:</b> [occupant.getBruteLoss()]%</font><br />
-				<font color="[occupant.getOxyLoss() < 60 ? "blue" : "red"]"><b>Respiratory Damage:</b> [occupant.getOxyLoss()]%</font><br />
-				<font color="[occupant.getToxLoss() < 60 ? "blue" : "red"]"><b>Toxin Content:</b> [occupant.getToxLoss()]%</font><br />
-				<font color="[occupant.getFireLoss() < 60 ? "blue" : "red"]"><b>Burn Severity:</b> [occupant.getFireLoss()]%</font><br />
+	return {"<font color="[occupant_legacy.integrity > 50 ? "blue" : "red"]"><b>Health:</b> [occupant_legacy.integrity]% ([t1])</font><br />
+				<font color="[occupant_legacy.bodytemperature > 50 ? "blue" : "red"]"><b>Core Temperature:</b> [src.occupant_legacy.bodytemperature-T0C]&deg;C ([src.occupant_legacy.bodytemperature*1.8-459.67]&deg;F)</font><br />
+				<font color="[occupant_legacy.getBruteLoss() < 60 ? "blue" : "red"]"><b>Brute Damage:</b> [occupant_legacy.getBruteLoss()]%</font><br />
+				<font color="[occupant_legacy.getOxyLoss() < 60 ? "blue" : "red"]"><b>Respiratory Damage:</b> [occupant_legacy.getOxyLoss()]%</font><br />
+				<font color="[occupant_legacy.getToxLoss() < 60 ? "blue" : "red"]"><b>Toxin Content:</b> [occupant_legacy.getToxLoss()]%</font><br />
+				<font color="[occupant_legacy.getFireLoss() < 60 ? "blue" : "red"]"><b>Burn Severity:</b> [occupant_legacy.getFireLoss()]%</font><br />
 				"}
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/get_occupant_reagents()
-	if(occupant.reagents)
-		for(var/datum/reagent/R in occupant.reagents.reagent_list)
+	if(occupant_legacy.reagents)
+		for(var/datum/reagent/R in occupant_legacy.reagents.reagent_list)
 			if(R.volume > 0)
 				. += "[R]: [round(R.volume,0.01)]<br />"
 	return . || "None"
@@ -182,25 +182,25 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/inject_reagent(var/datum/reagent/R,var/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/SG)
-	if(!R || !occupant || !SG || !(SG in chassis.equipment))
+	if(!R || !occupant_legacy || !SG || !(SG in chassis.equipment))
 		return 0
 	var/to_inject = min(R.volume, inject_amount)
-	if(to_inject && occupant.reagents.get_reagent_amount(R.id) + to_inject > inject_amount*4)
+	if(to_inject && occupant_legacy.reagents.get_reagent_amount(R.id) + to_inject > inject_amount*4)
 		occupant_message("Sleeper safeties prohibit you from injecting more than [inject_amount*4] units of [R.name].")
 	else
-		occupant_message("Injecting [occupant] with [to_inject] units of [R.name].")
-		log_message("Injecting [occupant] with [to_inject] units of [R.name].")
-		//SG.reagents.trans_id_to(occupant,R.id,to_inject)
+		occupant_message("Injecting [occupant_legacy] with [to_inject] units of [R.name].")
+		log_message("Injecting [occupant_legacy] with [to_inject] units of [R.name].")
+		//SG.reagents.trans_id_to(occupant_legacy,R.id,to_inject)
 		SG.reagents.remove_reagent(R.id,to_inject)
-		occupant.reagents.add_reagent(R.id,to_inject)
+		occupant_legacy.reagents.add_reagent(R.id,to_inject)
 		update_equip_info()
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/update_equip_info()
 	if(..())
-		send_byjax(chassis.occupant,"msleeper.browser","lossinfo",get_occupant_dam())
-		send_byjax(chassis.occupant,"msleeper.browser","reagents",get_occupant_reagents())
-		send_byjax(chassis.occupant,"msleeper.browser","injectwith",get_available_reagents())
+		send_byjax(chassis.occupant_legacy,"msleeper.browser","lossinfo",get_occupant_dam())
+		send_byjax(chassis.occupant_legacy,"msleeper.browser","reagents",get_occupant_reagents())
+		send_byjax(chassis.occupant_legacy,"msleeper.browser","injectwith",get_available_reagents())
 		return 1
 	return
 
@@ -209,11 +209,11 @@
 	set category = "Exosuit Interface"
 	set src = usr.loc
 	set popup_menu = 0
-	if(usr!=src.occupant || usr.stat == 2)
+	if(usr!=src.occupant_legacy || usr.stat == 2)
 		return
 	to_chat(usr,"<span class='notice'>Release sequence activated. This will take one minute.</span>")
 	sleep(600)
-	if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
+	if(!src || !usr || !occupant_legacy || (occupant_legacy != usr)) //Check if someone's released/replaced/bombed him already
 		return
 	go_out()//and release him from the eternal prison.
 
@@ -228,7 +228,7 @@
 		S.log_message("Deactivated.")
 		S.occupant_message("[src] deactivated - no power.")
 		return stop()
-	var/mob/living/carbon/M = S.occupant
+	var/mob/living/carbon/M = S.occupant_legacy
 	if(!M)
 		return
 	if(M.integrity > 0)

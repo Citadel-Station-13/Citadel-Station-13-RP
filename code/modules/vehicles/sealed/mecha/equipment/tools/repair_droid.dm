@@ -61,7 +61,7 @@
 			log_message("Deactivated.")
 			set_ready_state(1)
 		chassis.add_overlay(droid_overlay)
-		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
+		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 	return
 
 
