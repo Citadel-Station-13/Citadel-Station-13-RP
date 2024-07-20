@@ -557,7 +557,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/ran = TRUE // This is right.
 	var/ran_non_SSticker = FALSE
 	var/bg_calc // Have we swtiched current_tick_budget to background mode yet?
-	var/tick_usage
+
+	// the % of tick used by the current running subsystem
+	var/head_tick_usage
 
 	/**
 	 * Keep running while we have stuff to run and we haven't gone over a tick
@@ -616,9 +618,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			queue_node.state = SS_RUNNING
 
-			tick_usage = TICK_USAGE
+			// ignite / fire the head node
+			head_tick_usage = TICK_USAGE
 			var/state = queue_node.ignite(queue_node_paused)
-			tick_usage = TICK_USAGE - tick_usage
+			head_tick_usage = TICK_USAGE - head_tick_usage
 
 			if (state == SS_RUNNING)
 				state = SS_IDLE
@@ -632,16 +635,19 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, tick_usage-tick_precentage))
 			queue_node.state = state
 
+			// if it paused mid-run, track that
 			if (state == SS_PAUSED)
 				queue_node.paused_ticks++
 				queue_node.paused_tick_usage += tick_usage
 				queue_node = queue_node.queue_next
 				continue
 
-			queue_node.ticks = MC_AVERAGE(queue_node.ticks, queue_node.paused_ticks)
-			tick_usage += queue_node.paused_tick_usage
+			// it did not pause; this is a complete run
 
-			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, tick_usage)
+			queue_node.ticks = MC_AVERAGE(queue_node.ticks, queue_node.paused_ticks)
+			head_tick_usage += queue_node.paused_tick_usage
+
+			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, head_tick_usage)
 
 			queue_node.cost = MC_AVERAGE_FAST(queue_node.cost, TICK_DELTA_TO_MS(tick_usage))
 			queue_node.paused_ticks = 0

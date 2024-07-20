@@ -67,9 +67,15 @@
 
 	//# The following variables are managed by the MC and should not be modified directly.
 
-	/// Last world.time we were ignite()'d
+	/// Last world.time we did a full ignite()/fire() without pausing
+	///
+	/// * this is set by the MC's processing loop
+	/// * this is a heuristic; subsystems that have weird pausing behaviors won't work right with this.
+	/// * this is why it's crucial subsystems call pause() if they didn't finish a run!
 	var/last_fire = 0
 	/// Scheduled world.time for next ignite().
+	///
+	/// * this is set by the MC's processing loop
 	var/next_fire = 0
 
 	/// Running average of the amount of milliseconds it takes the subsystem to complete a run (including all resumes but not the time spent paused).
@@ -135,12 +141,6 @@
 	var/tick_allocation_last = 0
 	/// How much of a tick (in percents of a tick) do we get allocated by the mc on avg.
 	var/tick_allocation_avg = 0
-	/// last time we had a completed run
-	///
-	/// * ignite() sets this when we fire() without pausing in between.
-	/// * this is a heuristic; subsystems that have weird pausing behaviors won't work right with this.
-	/// * this is why it's crucial subsystems call pause() if they didn't finish a run!
-	var/last_completed_run
 
 	/**
 	 * # Do not blindly add vars here to the bottom, put it where it goes above.
@@ -202,10 +202,10 @@
 		queued_time = QT
 	else
 		// track time between runs
-		var/full_run_took = world.time - last_completed_run
+		var/full_run_took = world.time - last_fire
 		var/new_tick_dilation = (full_run_took / nominal_dt_ds) * 100 - 100
 		tick_dilation_avg = max(0, MC_AVERAGE_SLOW(tick_dilation_avg, new_tick_dilation))
-		last_completed_run = world.time
+		last_fire = world.time
 
 /**
  * previously, this would have been named 'process()' but that name is used everywhere for different things!
@@ -384,8 +384,6 @@
 			// This is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
 			if (var_value)
 				next_fire = world.time + wait
-				last_completed_run = world.time - wait // dont' fuck up the tick dilation calculation
-
 		if (NAMEOF(src, queued_priority)) // Editing this breaks things.
 			return FALSE
 		if (NAMEOF(src, wait))
