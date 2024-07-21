@@ -1853,6 +1853,7 @@
 	though it remains popular among the Alraune who see it as far more ethical then traditional steel. This miniature Ironwood Bonsai was specifically bred by the Alraune \
 	to create an ironwood tree capable of growing in hydroponics trays, resulting in a 'Ironwood Bonsai' Despite small yields it still provides more than enough material to \
 	use in ironwood crafts."
+	value = CATALOGUER_REWARD_TRIVIAL
 
 /datum/seed/creepermoss
 	name = "creepermoss"
@@ -1882,3 +1883,4 @@
 	to find a mysterious new 'gunpowder moss' growing in pirate vessels and hideouts. It did not take long to link the new moss to the now bankrupt company but how \
 	the moss fell into pirate hands remains a mystery to this day. What is certain though is that Creeper Sphagnum is now grown across the frontier whether to make ammo \
 	for a Frontiersman's primitive homemade firearm or for explosives used in pirate raids."
+	value = CATALOGUER_REWARD_TRIVIAL
