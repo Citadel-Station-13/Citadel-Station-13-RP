@@ -265,12 +265,14 @@
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
-			ui_circuit_props.Cut(params["index"], 1 + params["index"])
+			var/index = assembly_components.Find(C)
+			ui_circuit_props.Cut(index, 1 + index)
 			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
-			assembly_components.Cut(params["index"], 1 + params["index"])
+			assembly_components.Cut(index, 1 + index)
 			assembly_components.Add(C)
 			C.loc = null
 			C.loc = src
+			return TRUE
 
 		if("input_selection")
 			var/obj/item/integrated_circuit/input/C = locate(params["ref"]) in assembly_components
