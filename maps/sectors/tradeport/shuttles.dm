@@ -47,7 +47,7 @@
 	desc = "A shuttle linked to the Nebula Gas Station. Its a cargo ship refitted to carry passengers. It seems that civilian pilot may also pilot it."
 	color = "#a67145" //Orange Brownish
 	fore_dir = EAST
-	vessel_mass = 12000
+	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Udang Transport Shuttle"
 
@@ -75,7 +75,7 @@
 	desc = "A shuttle linked to the Nebula Gas Station. Its a cargo ship refitted to be a smaller trade ship, easier to land than the Beruang. The Free Trade Union will always deliver."
 	color = "#ff9f50" //Orange
 	fore_dir = WEST
-	vessel_mass = 12000
+	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Scoophead trade Shuttle"
 
