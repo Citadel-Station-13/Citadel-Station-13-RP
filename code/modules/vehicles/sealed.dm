@@ -3,6 +3,12 @@
  */
 /obj/vehicle/sealed
 	enclosed = TRUE // you're in a sealed vehicle dont get dinked idiot
+
+	//* Occupants - Actions *//
+	/// eject action type; this is specially handled because it's so common
+	var/eject_action_type = /datum/action/vehicle/sealed/climb_out
+	#warn impl; handle action crap
+
 	var/enter_delay = 20
 	
 /obj/vehicle/sealed/generate_actions()
@@ -108,6 +114,7 @@
 	if(!silent)
 		entering.visible_message("<span class='notice'>[entering] climbs into \the [src]!</span>")
 	entering.forceMove(src)
+	entering.update_perspective()
 	// todo: update
 	add_occupant(entering, control_flags = use_control_flags)
 	mob_entered(entering, entering, silent, occupants[entering])
@@ -154,6 +161,7 @@
 	var/old_control_flags = occupants[exiting]
 	remove_occupant(exiting)
 	exiting.forceMove(new_loc)
+	exiting.update_perspective()
 	mob_exited(exiting, actor, silent, old_control_flags)
 	if(!silent)
 		exiting.visible_message("<span class='notice'>[exiting] drops out of \the [src]!</span>")

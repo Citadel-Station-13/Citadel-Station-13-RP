@@ -1,3 +1,4 @@
+
 #define MECHA_INT_FIRE 1
 #define MECHA_INT_TEMP_CONTROL 2
 #define MECHA_INT_SHORT_CIRCUIT 4
@@ -37,6 +38,9 @@
 	infra_luminosity = 15
 
 	emulate_door_bumps = TRUE
+
+	//* Vehicle - Core *//
+	eject_action_type = /datum/action/vehicle/mecha/eject
 	
 	//* legacy below
 
@@ -2809,8 +2813,6 @@
 
 /obj/vehicle/sealed/mecha/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
-	if(!.)
-		return
 	QDEL_NULL(minihud)
 	RemoveActions(removing, human_occupant=1)
 
@@ -2837,3 +2839,17 @@
 		src.zoom = 0
 
 	strafing = 0
+
+//* Basic Actions *//
+
+/datum/action/vehicle/mecha/eject
+	target_type = /obj/vehicle/sealed/mecha
+	background_icon_state = "mecha"
+	button_icon = 'icons/screen/actions/mecha.dmi'
+	button_icon_state = "eject"
+
+/datum/action/vehicle/mecha/eject/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.mob_try_exit(actor.performer, actor)

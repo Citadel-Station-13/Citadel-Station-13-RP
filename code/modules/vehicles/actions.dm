@@ -111,7 +111,7 @@
 	. = ..()
 	if(.)
 		return
-	target.mob_try_exit(actor.performer, actor.performer)
+	target.mob_try_exit(actor.performer, actor)
 
 /datum/action/vehicle/sealed/remove_key
 	name = "Remove key"
