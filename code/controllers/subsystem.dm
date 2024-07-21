@@ -118,9 +118,12 @@
 	var/static/list/failure_strikes
 
 	/// Next subsystem in the queue of subsystems to run this tick.
+	///
+	/// * the queue is a doubly-linked non-circular linked list
 	var/datum/controller/subsystem/queue_next
-
 	/// Previous subsystem in the queue of subsystems to run this tick.
+	///
+	/// * the queue is a doubly-linked non-circular linked list
 	var/datum/controller/subsystem/queue_prev
 
 	//* Recomputed at start of Loop(), as well as on changes *//
@@ -268,7 +271,9 @@
 	queued_time = world.time
 	queued_priority = SS_priority
 	state = SS_QUEUED
-	if (SS_flags & SS_BACKGROUND) // Update our running total.
+
+	/// update the running total of priorities in the queue of the MC
+	if (SS_flags & SS_BACKGROUND)
 		Master.queue_priority_count_bg += SS_priority
 	else
 		Master.queue_priority_count += SS_priority
@@ -295,15 +300,14 @@
 		queue_node.queue_prev = src
 
 /datum/controller/subsystem/proc/dequeue()
+	// eject from doubly linked list
 	if (queue_next)
 		queue_next.queue_prev = queue_prev
-
 	if (queue_prev)
 		queue_prev.queue_next = queue_next
-
+	// ensure MC's references aren't us
 	if (src == Master.queue_tail)
 		Master.queue_tail = queue_prev
-
 	if (src == Master.queue_head)
 		Master.queue_head = queue_next
 

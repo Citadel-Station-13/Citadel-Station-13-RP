@@ -52,18 +52,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// The type of the last subsystem to be process()'d.
 	var/last_type_processed
 
-	/// Start of queue linked list.
-	var/datum/controller/subsystem/queue_head
-
-	/// End of queue linked list (used for appending to the list).
-	var/datum/controller/subsystem/queue_tail
-
-	/// Running total so that we don't have to loop thru the queue each run to split up the tick.
-	var/queue_priority_count = 0
-
-	/// Total background subsystems in the queue.
-	var/queue_priority_count_bg = 0
-
 	/// For scheduling different subsystems for different stages of the round.
 	var/current_runlevel
 
@@ -75,12 +63,23 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/static/random_seed
 
+	//* Processing Variables *//
+
+	/// total fire_priority of all non-background subsystems in the queue
+	var/queue_priority_count = 0
+	/// total fire_priority of all background subsystems in the queue
+	var/queue_priority_count_bg = 0
+
+	/// Start of queue linked list.
+	var/datum/controller/subsystem/queue_head
+	/// End of queue linked list (used for appending to the list).
+	var/datum/controller/subsystem/queue_tail
+
 	/**
 	 * current tick limit, assigned before running a subsystem.
 	 * used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits.
 	 */
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
-
 
 /datum/controller/master/New()
 	//# 1. load configs
@@ -436,28 +435,24 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			new/datum/controller/failsafe() // (re)Start the failsafe.
 
 		//# Now do the actual stuff.
-		if (!queue_head)
-			var/checking_runlevel = current_runlevel
-			if(cached_runlevel != checking_runlevel)
-				// Resechedule subsystems.
-				var/list/old_subsystems = current_runlevel_subsystems
-				cached_runlevel = checking_runlevel
-				current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 
-				// Now we'll go through all the subsystems we want to offset and give them a next_fire.
-				for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
-					// We only want to offset it if it's new and also behind.
-					if(SS.next_fire > world.time || (SS in old_subsystems))
-						continue
+		//* **Experimental**: Check every tick.
+		if(cached_runlevel != current_runlevel)
+			// Resechedule subsystems.
+			var/list/old_subsystems = current_runlevel_subsystems
+			cached_runlevel = current_runlevel
+			current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 
-					SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
+			// Now we'll go through all the subsystems we want to offset and give them a next_fire.
+			for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
+				// We only want to offset it if it's new and also behind.
+				if(SS.next_fire > world.time || (SS in old_subsystems))
+					continue
 
-			subsystems_to_check = current_runlevel_subsystems
+				SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
-		else
-			subsystems_to_check = SStickersubsystems
-
-		if (CheckQueue(subsystems_to_check) <= 0)
+		//* **Experimental**: Check every queue, every tick.
+		if (CheckQueue(current_runlevel_subsystems) <= 0 || CheckQueue(SStickersubsystems) <= 0)
 			if (!SoftReset(SStickersubsystems, runlevel_sorted_subsystems))
 				log_world("MC: SoftReset() failed, crashing")
 				return
@@ -651,7 +646,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			if (queue_node_flags & SS_BACKGROUND) // Update our running total.
 				queue_priority_count_bg -= queue_node_priority
-
 			else
 				queue_priority_count -= queue_node_priority
 
@@ -677,7 +671,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			// Remove from queue.
 			queue_node.dequeue()
-
+			// move to next
 			queue_node = queue_node.queue_next
 
 	. = TRUE
