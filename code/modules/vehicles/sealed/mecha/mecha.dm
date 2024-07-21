@@ -46,7 +46,7 @@
 
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
 	var/initial_icon = null
-	var/can_move = null
+	var/can_move = TRUE
 
 	/// Make a step in step_in/10 sec.
 	var/step_in = 10
@@ -2830,7 +2830,10 @@
 	removing.clear_alert("mech damage")
 	removing.in_enclosed_vehicle = 0
 	removing.reset_perspective()
-	removing = null
+
+	if(occupant_legacy == removing)
+		occupant_legacy = null
+
 	update_appearance()
 	setDir(dir_in)
 
