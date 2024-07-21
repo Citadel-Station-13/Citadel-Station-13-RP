@@ -392,7 +392,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	iteration = 1
 	var/error_level = 0
 	var/sleep_delta = 1
-	var/list/subsystems_to_check
 
 	//# The actual loop.
 	while (1)
