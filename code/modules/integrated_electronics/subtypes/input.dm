@@ -1186,12 +1186,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 20
 
-/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/obj_scanner/attackby_react(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/attackby_react(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I) || a_intent!=INTENT_HELP || !check_then_do_work())
 		return FALSE
 	var/pu = get_pin_data(IC_INPUT, 1)
@@ -1372,12 +1372,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
-/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/living/user, intent)
+/obj/item/integrated_circuit/input/data_card_reader/attackby_react(mob/living/user, obj/item/I,  intent)
 	var/obj/item/card/data/card = I
 	var/write_mode = get_pin_data(IC_INPUT, 3)
 	if(card)
