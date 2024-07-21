@@ -5,9 +5,9 @@
 	enclosed = TRUE // you're in a sealed vehicle dont get dinked idiot
 
 	//* Occupants - Actions *//
-	/// eject action type; this is specially handled because it's so common
-	var/eject_action_type = /datum/action/vehicle/sealed/climb_out
-	#warn impl; handle action crap
+	occupant_actions = list(
+		/datum/action/vehicle/sealed/climb_out,
+	)
 
 	var/enter_delay = 20
 	

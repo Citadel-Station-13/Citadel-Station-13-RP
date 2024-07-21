@@ -19,6 +19,13 @@
 	/// list of mobs associated to their control flags
 	var/list/mob/occupants
 
+	//* Occupants - Actions *//
+	/// actions to give everyone; set to typepaths to init
+	///
+	/// * all of these must be /datum/action/vehicle's
+	var/list/occupant_actions
+	#warn impl
+
 	//* Occupants - HUDs *//
 	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
 	var/list/occupant_huds
@@ -111,7 +118,7 @@
 
 /obj/vehicle/proc/auto_assign_occupant_flags(mob/M) //override for each type that needs it. Default is assign driver if drivers is not at max.
 	if(driver_amount() < max_drivers)
-		add_control_flags(M, VEHICLE_CONTROL_DRIVE | VEHICLE_CONTROL_USE_HUDS)
+		add_control_flags(M, VEHICLE_CONTROL_DRIVE | VEHICLE_CONTROL_USE_HUDS | VEHICLE_CONTROL_EXIT)
 
 /obj/vehicle/relaymove(mob/user, direction)
 	if(is_driver(user))

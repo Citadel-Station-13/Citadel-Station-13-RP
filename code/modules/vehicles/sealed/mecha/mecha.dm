@@ -39,8 +39,10 @@
 
 	emulate_door_bumps = TRUE
 
-	//* Vehicle - Core *//
-	eject_action_type = /datum/action/vehicle/mecha/eject
+	//* Vehicle - Occupant Actions *//
+	occupant_actions = list(
+		/datum/action/vehicle/mecha/eject,
+	)
 	
 	//* legacy below
 
@@ -2843,13 +2845,19 @@
 
 	strafing = 0
 
-//* Basic Actions *//
+//* Action Datums - /datum/action/vehicle/mecha *//
 
-/datum/action/vehicle/mecha/eject
+/datum/action/vehicle/mecha
 	target_type = /obj/vehicle/sealed/mecha
 	background_icon_state = "mecha"
 	button_icon = 'icons/screen/actions/mecha.dmi'
+
+	required_control_flags = NONE
+
+/datum/action/vehicle/mecha/eject
 	button_icon_state = "eject"
+
+	required_control_flags = VEHICLE_CONTROL_EXIT
 
 /datum/action/vehicle/mecha/eject/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()

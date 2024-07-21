@@ -99,6 +99,9 @@
 	button_icon = 'icons/screen/actions/vehicles.dmi'
 	button_icon_state = "vehicle_eject"
 
+	/// required control flags
+	var/required_control_flags = NONE
+
 /datum/action/vehicle/sealed
 	target_type = /obj/vehicle/sealed
 
@@ -106,6 +109,8 @@
 	name = "Climb Out"
 	desc = "Climb out of your vehicle!"
 	button_icon_state = "car_eject"
+
+	required_control_flags = VEHICLE_CONTROL_EXIT
 
 /datum/action/vehicle/sealed/climb_out/invoke_target(obj/vehicle/sealed/target, datum/event_args/actor/actor)
 	. = ..()
