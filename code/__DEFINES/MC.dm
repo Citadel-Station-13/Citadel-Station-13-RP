@@ -45,12 +45,16 @@
 /// (implies all runlevels because of how it works)
 /// (overrides SS_BACKGROUND)
 /// This is designed for basically anything that works as a mini-mc (like SStimer)
+///
+/// * Ticker is its own priority bucket. The highest one. Be careful.
+/// * Ticker disables tick overrun punishment.
 #define SS_TICKER (1<<4)
 
 /** keep the subsystem's timing on point by firing early if it fired late last fire because of lag */
 /// ie: if a 20ds subsystem fires say 5 ds late due to lag or what not, its next fire would be in 15ds, not 20ds.
 ///
 /// * This will only keep timing past the last 10 seconds, it will not attempt to catch the subsystem up without bounds.
+/// * This disables tick overrun punishment.
 #define SS_KEEP_TIMING (1<<5)
 
 /** Calculate its next fire after its fired. */

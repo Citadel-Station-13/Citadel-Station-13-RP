@@ -302,10 +302,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(current_runlevel < 1)
 		CRASH("Attempted to set invalid runlevel: [new_runlevel]")
 
-	for(var/datum/controller/subsystem/SS in subsystems)
-		SS.last_completed_run = world.time // reset that so we don't get massive dilations at roundstart/when things unpause
-
-
 /**
  * Starts the mc, and sticks around to restart it if the loop ever ends.
  */
@@ -440,7 +436,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			new/datum/controller/failsafe() // (re)Start the failsafe.
 
 		//# Now do the actual stuff.
-		if (!queue_head || !(iteration % 3))
+		if (!queue_head)
 			var/checking_runlevel = current_runlevel
 			if(cached_runlevel != checking_runlevel)
 				// Resechedule subsystems.
@@ -559,7 +555,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/bg_calc // Have we swtiched current_tick_budget to background mode yet?
 
 	// the % of tick used by the current running subsystem
-	var/head_tick_usage
+	var/queue_node_tick_usage
 
 	/**
 	 * Keep running while we have stuff to run and we haven't gone over a tick
@@ -619,9 +615,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.state = SS_RUNNING
 
 			// ignite / fire the head node
-			head_tick_usage = TICK_USAGE
+			queue_node_tick_usage = TICK_USAGE
 			var/state = queue_node.ignite(queue_node_paused)
-			head_tick_usage = TICK_USAGE - head_tick_usage
+			queue_node_tick_usage = TICK_USAGE - queue_node_tick_usage
 
 			if (state == SS_RUNNING)
 				state = SS_IDLE
@@ -629,27 +625,27 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			current_tick_budget -= queue_node_priority
 
 
-			if (tick_usage < 0)
-				tick_usage = 0
+			if (queue_node_tick_usage < 0)
+				queue_node_tick_usage = 0
 
-			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, tick_usage-tick_precentage))
+			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, queue_node_tick_usage-tick_precentage))
 			queue_node.state = state
 
 			// if it paused mid-run, track that
 			if (state == SS_PAUSED)
 				queue_node.paused_ticks++
-				queue_node.paused_tick_usage += tick_usage
+				queue_node.paused_tick_usage += queue_node_tick_usage
 				queue_node = queue_node.queue_next
 				continue
 
 			// it did not pause; this is a complete run
 
 			queue_node.ticks = MC_AVERAGE(queue_node.ticks, queue_node.paused_ticks)
-			head_tick_usage += queue_node.paused_tick_usage
+			queue_node_tick_usage += queue_node.paused_tick_usage
 
-			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, head_tick_usage)
+			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, queue_node_tick_usage)
 
-			queue_node.cost = MC_AVERAGE_FAST(queue_node.cost, TICK_DELTA_TO_MS(tick_usage))
+			queue_node.cost = MC_AVERAGE_FAST(queue_node.cost, TICK_DELTA_TO_MS(queue_node_tick_usage))
 			queue_node.paused_ticks = 0
 			queue_node.paused_tick_usage = 0
 
@@ -662,17 +658,19 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.last_fire = world.time
 			queue_node.times_fired++
 
+			// schedule next run
 			if (queue_node_flags & SS_TICKER)
+				// ticker: run this many ticks after always
 				queue_node.next_fire = world.time + (world.tick_lag * queue_node.wait)
-
 			else if (queue_node_flags & SS_POST_FIRE_TIMING)
+				// post fire timing: fire this much wait after current time, with tick overrun punishment
 				queue_node.next_fire = world.time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
-
 			else if (queue_node_flags & SS_KEEP_TIMING)
+				// keep timing: fire this much wait after *the last time we should have fired*, without tick overrun punishment
 				// **experimental**: do not keep timing past last 10 seconds, if something is running behind that much don't permanently accelerate it.
 				queue_node.next_fire = max(world.time - 10 SECONDS, queue_node.next_fire + queue_node.wait)
-
 			else
+				// normal: fire this much wait after when we were queued, with tick overrun punishment
 				queue_node.next_fire = queue_node.queued_time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
 
 			queue_node.queued_time = 0
