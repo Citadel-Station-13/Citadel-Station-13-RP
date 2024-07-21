@@ -292,7 +292,7 @@
 	mechas_list += src //global mech list
 
 /obj/vehicle/sealed/mecha/Destroy()
-	src.go_out()
+	src.legacy_eject_occupant()
 	for(var/mob/M in src) //Be Extra Sure
 		M.forceMove(get_turf(src))
 		M.loc.Entered(M)
@@ -393,6 +393,11 @@
 ////////////////////////
 ////// Helpers /////////
 ////////////////////////
+
+/obj/vehicle/sealed/mecha/proc/legacy_eject_occupant()
+	if(!occupant_legacy)
+		return
+	mob_exit(occupant_legacy)
 
 /obj/vehicle/sealed/mecha/proc/removeVerb(verb_path)
 	remove_obj_verb(src, verb_path)
@@ -529,7 +534,7 @@
 		return
 	switch(choice)
 		if("Eject")
-			go_out()
+			legacy_eject_occupant()
 			add_fingerprint(usr)
 		if("Toggle Airtank")
 			use_internal_tank = !use_internal_tank
@@ -1467,7 +1472,7 @@
 		if(state>=MECHA_CELL_OPEN && src.occupant_legacy)
 			to_chat(user, "You attempt to eject the pilot using the maintenance controls.")
 			if(src.occupant_legacy.stat)
-				src.go_out()
+				src.legacy_eject_occupant()
 				src.log_message("[src.occupant_legacy] was ejected using the maintenance controls.")
 			else
 				to_chat(user, "<span class='warning'>Your attempt is rejected.</span>")
@@ -2432,7 +2437,7 @@
 			return
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant_legacy]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant_legacy]!</span>")
-		P.go_out()
+		P.legacy_eject_occupant()
 		P.log_message("[occupant_legacy] was removed.")
 		return
 	if(href_list["add_req_access"] && add_req_access && top_filter.getObj("id_card"))
@@ -2808,29 +2813,28 @@
 	if(!.)
 		return
 	QDEL_NULL(minihud)
-	RemoveActions(exiting, human_occupant=1)
+	RemoveActions(removing, human_occupant=1)
 
-	log_message("[exiting] moved out.")
-	exiting << browse(null, "window=exosuit")
-	if(exiting.client && cloaked_selfimage)
-		exiting.client.images -= cloaked_selfimage
+	log_message("[removing] moved out.")
+	removing << browse(null, "window=exosuit")
+	if(removing.client && cloaked_selfimage)
+		removing.client.images -= cloaked_selfimage
 	// if(istype(mob_container, /obj/item/mmi))
 	// 	var/obj/item/mmi/mmi = mob_container
 	// 	if(mmi.brainmob)
-	// 		exiting.forceMove(mmi)
+	// 		removing.forceMove(mmi)
 	// 	mmi.mecha = null
-	// 	exiting.mobility_flags = NONE
-	exiting.clear_alert("charge")
-	exiting.clear_alert("mech damage")
-	exiting.in_enclosed_vehicle = 0
-	exiting.reset_perspective()
-	exiting = null
+	// 	removing.mobility_flags = NONE
+	removing.clear_alert("charge")
+	removing.clear_alert("mech damage")
+	removing.in_enclosed_vehicle = 0
+	removing.reset_perspective()
+	removing = null
 	update_appearance()
 	setDir(dir_in)
-	remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/eject)
 
-	if(exiting.client)
-		exiting.client.view = world.view
+	if(removing.client)
+		removing.client.view = world.view
 		src.zoom = 0
 
 	strafing = 0

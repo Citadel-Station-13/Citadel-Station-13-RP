@@ -21,7 +21,6 @@
 	internal_damage_threshold = 35
 	deflect_chance = 15
 	step_energy_drain = 6
-	var/obj/item/clothing/glasses/hud/integrity/mech/hud
 
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2

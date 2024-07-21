@@ -43,13 +43,11 @@
 
 /obj/vehicle/sealed/Destroy()
 	DumpMobs()
-	if(explode_on_death)
-		explosion(loc, 0, 1, 2, 3, 0)
 	return ..()
 
 /obj/vehicle/sealed/proc/DumpMobs(randomstep = TRUE)
 	for(var/i in occupants)
-		mob_exit(i, null, randomstep)
+		mob_exit(i)
 		if(iscarbon(i))
 			var/mob/living/carbon/Carbon = i
 			Carbon.default_combat_knockdown(40)
@@ -91,8 +89,7 @@
 	if(occupant_amount() >= max_occupants)
 		return FALSE
 	if(do_after(entering, enter_delay, src, FALSE, TRUE))
-		mob_enter(entering)
-		return TRUE
+		return mob_enter(entering)
 	return FALSE
 
 /**
@@ -140,7 +137,7 @@
  * * silent - suppress external messages
  */
 /obj/vehicle/sealed/proc/mob_try_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc = drop_location(), silent)
-	mob_exit(exiting, actor, new_loc, silent)
+	return mob_exit(exiting, actor, new_loc, silent)
 
 /**
  * Called to eject someone from us
@@ -154,8 +151,10 @@
  * * silent - suppress external messages
  */
 /obj/vehicle/sealed/proc/mob_exit(mob/exiting, datum/event_args/actor/actor, atom/new_loc, silent)
+	var/old_control_flags = occupants[exiting]
 	remove_occupant(exiting)
 	exiting.forceMove(new_loc)
+	mob_exited(exiting, actor, silent, old_control_flags)
 	if(!silent)
 		exiting.visible_message("<span class='notice'>[exiting] drops out of \the [src]!</span>")
 	return TRUE

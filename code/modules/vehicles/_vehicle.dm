@@ -21,7 +21,7 @@
 
 	//* Occupants - HUDs *//
 	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
-	var/list/occupant_hud_providers
+	var/list/occupant_huds
 	#warn impl via VEHICLE_CONTROL_USE_HUDS
 	
 	var/max_occupants = 1
@@ -49,6 +49,20 @@
 	autogrant_actions_controller = list()
 	occupant_actions = list()
 	generate_actions()
+
+/obj/vehicle/Destroy()
+	// remove all occupants if any are left
+	if(length(occupants))
+		stack_trace("still had occupants on Destroy. how?")
+		for(var/mob/occupant in occupants)
+			remove_occupant(occupant)
+	// null out hud providers
+	occupant_huds = null // null them out
+	// delete our key
+	QDEL_NULL(insreted_key)
+	// legacy: get rid of trailer
+	trailer = null
+	return ..()
 
 /obj/vehicle/examine(mob/user, dist)
 	. = ..()
@@ -96,34 +110,9 @@
 /obj/vehicle/proc/is_driver(mob/M)
 	return is_occupant(M) && occupants[M] & VEHICLE_CONTROL_DRIVE
 
-/obj/vehicle/proc/is_occupant(mob/M)
-	return !isnull(occupants[M])
-
-/obj/vehicle/proc/add_occupant(mob/M, control_flags)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(!istype(M) || occupants[M])
-		return FALSE
-	occupants[M] = NONE
-	add_control_flags(M, control_flags)
-	occupant_added(M, new /datum/event_args/actor(M), occupants[M], FALSE)
-	grant_passenger_actions(M)
-	return TRUE
-
 /obj/vehicle/proc/auto_assign_occupant_flags(mob/M) //override for each type that needs it. Default is assign driver if drivers is not at max.
 	if(driver_amount() < max_drivers)
 		add_control_flags(M, VEHICLE_CONTROL_DRIVE)
-
-/obj/vehicle/proc/remove_occupant(mob/M)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(!istype(M))
-		return FALSE
-	remove_control_flags(M, ALL)
-	remove_passenger_actions(M)
-	var/old_flags = occupants[M]
-	occupants -= M
-	cleanup_actions_for_mob(M)
-	occupant_removed(M, new /datum/event_args/actor(M), old_flags, FALSE)
-	return TRUE
 
 /obj/vehicle/relaymove(mob/user, direction)
 	if(is_driver(user))
@@ -155,24 +144,6 @@
 /obj/vehicle/proc/after_move(direction)
 	return
 
-/obj/vehicle/proc/add_control_flags(mob/controller, flags)
-	if(!istype(controller) || !flags)
-		return FALSE
-	occupants[controller] |= flags
-	for(var/i in GLOB.bitflags)
-		if(flags & i)
-			grant_controller_actions_by_flag(controller, i)
-	return TRUE
-
-/obj/vehicle/proc/remove_control_flags(mob/controller, flags)
-	if(!istype(controller) || !flags)
-		return FALSE
-	occupants[controller] &= ~flags
-	for(var/i in GLOB.bitflags)
-		if(flags & i)
-			remove_controller_actions_by_flag(controller, i)
-	return TRUE
-
 /obj/vehicle/Bump(atom/movable/M)
 	. = ..()
 	if(emulate_door_bumps)
@@ -186,20 +157,73 @@
 		var/dir_to_move = get_dir(trailer.loc, newloc)
 		step(trailer, dir_to_move)
 
-//* Occupants *//
+//* HUDs *//
+
+// todo: clear_occupant_huds()
+// todo: add_occupant_hud(datum/atom_hud/hud_like)
+// todo: remove_occupant_hud(datum/atom_hud/hud_like)
+// todo: resolve_occupant_huds() - make sure list is instances, not ids; needed to dedupe and resolve for add/remove
+
+//* Control Flags *//
 
 /**
- * Called when an occupant is removed.
- * 
- * This should be where physicality-agnostic hooks are made, like removing custom actions / handling
- * 
- * @params
- * * removing - the mob
- * * actor - the person removing the mob, usually the mob themselves
- * * control_flags - the old control flags of the mob
- * * silent - suppress visible messages to others
+ * called when someone is added to the vehicle as well; all additional flags are added then
  */
-/obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+/obj/vehicle/proc/add_control_flags(mob/controller, flags)
+	if(!istype(controller) || !flags)
+		return FALSE
+	occupants[controller] |= flags
+	for(var/i in GLOB.bitflags)
+		if(flags & i)
+			grant_controller_actions_by_flag(controller, i)
+	on_change_control_flags(controller, flags_added = flags)
+	return TRUE
+
+/**
+ * called when someone exits the vehicle as well; all remaining flags are removed then
+ */
+/obj/vehicle/proc/remove_control_flags(mob/controller, flags)
+	if(!istype(controller) || !flags)
+		return FALSE
+	occupants[controller] &= ~flags
+	for(var/i in GLOB.bitflags)
+		if(flags & i)
+			remove_controller_actions_by_flag(controller, i)
+	on_change_control_flags(controller, flags_removed = flags)
+	return TRUE
+
+/**
+ * called to hook control flag changes
+ */
+/obj/vehicle/proc/on_change_control_flags(mob/controller, flags_added, flags_removed)
+	if(flags_added & VEHICLE_CONTROL_USE_HUDS)
+		var/datum/perspective/their_perspective = controller.get_perspective()
+		for(var/provider in occupant_huds)
+			their_perspective.add_atom_hud(provider, ATOM_HUD_SOURCE_VEHICLE(src))
+	if(flags_removed & VEHICLE_CONTROL_USE_HUDS)
+		var/datum/perspective/their_perspective = controller.get_perspective()
+		for(var/provider in occupant_huds)
+			their_perspective.remove_atom_hud(provider, ATOM_HUD_SOURCE_VEHICLE(src))
+
+//* Occupants *//
+
+/obj/vehicle/proc/is_occupant(mob/M)
+	return !isnull(occupants[M])
+
+/**
+ * Call to add a mob to occupants
+ * 
+ * * this should usually be internally called by the specific abstraction of vehicles underneath our path
+ */
+/obj/vehicle/proc/add_occupant(mob/adding, control_flags)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!istype(adding) || occupants[adding])
+		return FALSE
+	occupants[adding] = NONE
+	add_control_flags(adding, control_flags)
+	occupant_added(adding, new /datum/event_args/actor(adding), occupants[adding], FALSE)
+	grant_passenger_actions(M)
+	return TRUE
 
 /**
  * Called when an occupant is removed.
@@ -215,3 +239,34 @@
 /obj/vehicle/proc/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	// todo: this shoudln't be here
 	auto_assign_occupant_flags(adding)
+
+/**
+ * Call to remove a mob from occupants
+ * 
+ * * this should usually be internally called by the specific abstraction of vehicles underneath our path
+ */
+/obj/vehicle/proc/remove_occupant(mob/removing)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!istype(removing))
+		return FALSE
+	remove_control_flags(removing, ALL)
+	remove_passenger_actions(removing)
+	var/old_flags = occupants[removing]
+	occupants -= removing
+	cleanup_actions_for_mob(removing)
+	occupant_removed(removing, new /datum/event_args/actor(removing), old_flags, FALSE)
+	return TRUE
+
+/**
+ * Called when an occupant is removed.
+ * 
+ * This should be where physicality-agnostic hooks are made, like removing custom actions / handling
+ * 
+ * @params
+ * * removing - the mob
+ * * actor - the person removing the mob, usually the mob themselves
+ * * control_flags - the old control flags of the mob
+ * * silent - suppress visible messages to others
+ */
+/obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+	return
