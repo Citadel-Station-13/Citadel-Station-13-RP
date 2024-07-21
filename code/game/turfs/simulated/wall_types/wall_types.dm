@@ -250,6 +250,13 @@
 	material_reinf  = null
 	material_girder = /datum/material/wood_plank/hardwood
 
+/turf/simulated/wall/wood/ironwood
+	color = "#666666"
+
+	material_outer  = /datum/material/wood_plank/ironwood
+	material_reinf  = null
+	material_girder = /datum/material/wood_plank/ironwood
+
 /turf/simulated/wall/log
 	icon = 'icons/turf/walls/log.dmi'
 	color = "#9c5930"
@@ -265,6 +272,14 @@
 	material_outer  = /datum/material/wood_log/sif
 	material_reinf  = null
 	material_girder = /datum/material/wood_log/sif
+
+/turf/simulated/wall/log_ironwood
+	icon = 'icons/turf/walls/log.dmi'
+	color = "#5C5454"
+
+	material_outer  = /datum/material/wood_log/ironwood
+	material_reinf  = null
+	material_girder = /datum/material/wood_log/ironwood
 
 // TODO: Nuke. @Zandario
 // Shuttle Walls

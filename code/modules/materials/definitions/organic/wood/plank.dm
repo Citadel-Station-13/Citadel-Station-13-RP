@@ -238,3 +238,23 @@
 		time = 5 SECONDS,
 	)
 	return recipes
+
+/datum/material/wood_plank/ironwood
+	id = "ironwood"
+	name = MAT_IRONWOOD
+	icon_colour = "#666666"
+	stack_type = /obj/item/stack/material/wood/ironwood
+
+	relative_integrity = 0.9
+	weight_multiplier = 0.8
+	density = 8 * 0.8
+	relative_conductivity = 0.1
+	relative_permeability = 0.05
+	relative_reactivity = 1 //Not quite as reactive as regular wood
+	hardness = MATERIAL_RESISTANCE_MODERATE
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_NONE
+
+

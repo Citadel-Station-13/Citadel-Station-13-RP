@@ -244,3 +244,34 @@
 	container_type = /obj/structure/largecrate/animal/furnacegrub
 	container_name = "Furnace Grub crate"
 	access = ACCESS_GENERAL_BOTANY
+
+/datum/supply_pack/hydro/ironwood
+	name = "Ironwood Saplings"
+	contains = list(
+			/obj/item/seeds/ironwood = 6
+			)
+	cost = 25
+	container_type = /obj/structure/closet/crate/hydroponics
+	container_name = "Ironwood Sapling Samples"
+	access = ACCESS_GENERAL_BOTANY
+
+/datum/supply_pack/hydro/creeper
+	name = "Creeper Sanghum"
+	contains = list(
+			/obj/item/seeds/creepermoss = 6
+			)
+	cost = 25
+	container_type = /obj/structure/closet/crate/hydroponics
+	container_name = "Creeper Sanghum Seeds"
+	access = ACCESS_GENERAL_BOTANY
+
+/datum/supply_pack/hydro/fungiwheat
+	name = "Fungiwheat"
+	contains = list(
+		/obj/item/seeds/fungiwheat = 6
+			)
+	cost = 25
+	container_type = /obj/structure/closet/crate/hydroponics
+	container_name = "Fungiwheat Spores"
+	access = ACCESS_GENERAL_BOTANY
+
