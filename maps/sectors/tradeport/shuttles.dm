@@ -33,7 +33,7 @@
 
 //Udang Shuttle
 
-/datum/shuttle/autodock/overmap/trade/udang
+/datum/shuttle/autodock/overmap/udang
 	name = "Udang Transport Shuttle"
 	warmup_time = 6
 	shuttle_area = list(/area/shuttle/udang)
@@ -42,7 +42,7 @@
 	fuel_consumption = 6
 	move_time = 10
 
-/obj/overmap/entity/visitable/ship/landable/trade/udang
+/obj/overmap/entity/visitable/ship/landable/udang
 	name = "Udang Transport Shuttle"
 	desc = "A shuttle linked to the Nebula Gas Station. Its a cargo ship refitted to carry passengers. It seems that civilian pilot may also pilot it."
 	color = "#a67145" //Orange Brownish
@@ -51,7 +51,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Udang Transport Shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/trade/udang
+/obj/machinery/computer/shuttle_control/explore/udang
 	name = "short jump console"
 	shuttle_tag = "Udang Transport Shuttle"
 
@@ -61,7 +61,7 @@
 
 //Scoophead trade Shuttle
 
-/datum/shuttle/autodock/overmap/trade/scoophead
+/datum/shuttle/autodock/overmap/scoophead
 	name = "Scoophead trade Shuttle"
 	warmup_time = 5
 	shuttle_area = list(/area/shuttle/scoophead)
@@ -70,7 +70,7 @@
 	fuel_consumption = 6
 	move_time = 10
 
-/obj/overmap/entity/visitable/ship/landable/trade/scoophead
+/obj/overmap/entity/visitable/ship/landable/scoophead
 	name = "Scoophead trade Shuttle"
 	desc = "A shuttle linked to the Nebula Gas Station. Its a cargo ship refitted to be a smaller trade ship, easier to land than the Beruang. The Free Trade Union will always deliver."
 	color = "#ff9f50" //Orange
@@ -79,7 +79,7 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Scoophead trade Shuttle"
 
-/obj/machinery/computer/shuttle_control/explore/trade/scoophead
+/obj/machinery/computer/shuttle_control/explore/scoophead
 	name = "short jump console"
 	shuttle_tag = "Scoophead trade Shuttle"
 
