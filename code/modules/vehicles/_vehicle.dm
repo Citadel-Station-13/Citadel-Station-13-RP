@@ -22,7 +22,6 @@
 	//* Occupants - HUDs *//
 	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
 	var/list/occupant_huds
-	#warn impl via VEHICLE_CONTROL_USE_HUDS
 	
 	var/max_occupants = 1
 	var/max_drivers = 1
@@ -59,7 +58,7 @@
 	// null out hud providers
 	occupant_huds = null // null them out
 	// delete our key
-	QDEL_NULL(insreted_key)
+	QDEL_NULL(inserted_key)
 	// legacy: get rid of trailer
 	trailer = null
 	return ..()
@@ -112,7 +111,7 @@
 
 /obj/vehicle/proc/auto_assign_occupant_flags(mob/M) //override for each type that needs it. Default is assign driver if drivers is not at max.
 	if(driver_amount() < max_drivers)
-		add_control_flags(M, VEHICLE_CONTROL_DRIVE)
+		add_control_flags(M, VEHICLE_CONTROL_DRIVE | VEHICLE_CONTROL_USE_HUDS)
 
 /obj/vehicle/relaymove(mob/user, direction)
 	if(is_driver(user))
@@ -222,7 +221,7 @@
 	occupants[adding] = NONE
 	add_control_flags(adding, control_flags)
 	occupant_added(adding, new /datum/event_args/actor(adding), occupants[adding], FALSE)
-	grant_passenger_actions(M)
+	grant_passenger_actions(adding)
 	return TRUE
 
 /**

@@ -1886,7 +1886,6 @@
 		H.update_perspective()
 		occupant_legacy = H
 		add_fingerprint(H)
-		add_obj_verb(src, /obj/vehicle/sealed/mecha/verb/eject)
 		log_append_to_last("[H] moved in as pilot.")
 		update_icon()
 		if(occupant_legacy.hud_used)
@@ -2308,7 +2307,7 @@
 		return
 	if(href_list["eject"])
 		if(usr != src.occupant_legacy)	return
-		src.eject()
+		mob_try_exit(usr)
 		return
 	if(href_list["toggle_lights"])
 		if(usr != src.occupant_legacy)	return
@@ -2437,7 +2436,7 @@
 			return
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant_legacy]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant_legacy]!</span>")
-		P.legacy_eject_occupant()
+		P.go_out()
 		P.log_message("[occupant_legacy] was removed.")
 		return
 	if(href_list["add_req_access"] && add_req_access && top_filter.getObj("id_card"))

@@ -8,9 +8,8 @@
 	icon_state = "odysseus"
 	initial_icon = "odysseus"
 
-	occupant_hud_providers = list(
-		/datum/atom_hud_provider/medical_health,
-		/datum/atom_hud_provider/medical_biology,
+	occupant_huds = list(
+		/datum/atom_hud/data/human/medical,
 	)
 
 	step_in = 2

@@ -95,9 +95,8 @@
 	deflect_chance = 20
 	step_in = 2
 
-	occupant_hud_providers = list(
-		/datum/atom_hud_provider/medical_health,
-		/datum/atom_hud_provider/medical_biology,
+	occupant_huds = list(
+		/datum/atom_hud/data/human/medical,
 	)
 
 	damage_absorption = list("brute"=0.9,"fire"=1,"bullet"=0.9,"laser"=0.8,"energy"=0.9,"bomb"=1)
