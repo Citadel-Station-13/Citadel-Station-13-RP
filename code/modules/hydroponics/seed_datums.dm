@@ -1818,7 +1818,7 @@
 /datum/category_item/catalogue/flora/fungiwheat
 	name = "Flora - Black Fungiwheat"
 	desc = "A genetically engineered fungus created by the Department of Genetics Research on the Krisitik homeworld of Murith. It is a staple crop for the \
-	subterranian Krisitik and its coarse fungal flour is mold and pest resistant, dramatically increasing the shelf life of its products. \
+	subterranean Krisitik and its coarse fungal flour is mold and pest resistant, dramatically increasing the shelf life of its products. \
 	The specific breeds of fungus used by the Krisitik are 'copyrighted' by the Department of Genetics Research and are grown exclusively \
 	at their hydroponic facilities however, recently lesser breeds of the fungus have been licensed to the wider galaxy as trade relations \
 	with the Krisitik improve."

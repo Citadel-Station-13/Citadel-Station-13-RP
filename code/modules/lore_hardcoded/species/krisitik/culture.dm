@@ -3,7 +3,7 @@
 	id = "culture_krisitik_hive"
 	desc = "Hailing from the densely packed cities of Murith. Hivers live a life constantly surrounded by others. Within hives, space is exspensive, and competition for \
 	jobs is stiff. In order to make it in these cities Hivers have learned to take advantage of every leg up they have on their competition and aren't above resorting to underhanded tactics \
-	to ensure they get ahead of their peers. Unemployment is high and, even with welfare the conditions, often lead many to resort to crime to try and claw for any scrap of the good life the \
+	to ensure they get ahead of their peers. Unemployment is high and, even with welfare, the conditions lead many to resort to crime to try and claw for any scrap of the good life the \
 	can manage."
 
 /datum/lore/character_background/culture/species/krisitik/clan
