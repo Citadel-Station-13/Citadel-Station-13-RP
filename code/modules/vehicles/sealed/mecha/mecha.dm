@@ -38,12 +38,13 @@
 	infra_luminosity = 15
 
 	emulate_door_bumps = TRUE
+	temporary_legacy_dont_auto_handle_obj_damage_for_mechs = TRUE
 
 	//* Vehicle - Occupant Actions *//
 	occupant_actions = list(
 		/datum/action/vehicle/mecha/eject,
 	)
-	
+
 	//* legacy below
 
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
@@ -248,7 +249,7 @@
 
 	/// So combat mechs don't switch to their equipment at times.
 	var/weapons_only_cycle = FALSE
-	
+
 	//* Legacy *//
 
 	/// the first controller in us
@@ -957,6 +958,10 @@
 ////////  Health related procs  ////////
 ////////////////////////////////////////
 
+/obj/vehicle/sealed/mecha/bullet_act(obj/projectile/Proj)
+	. = ..()
+
+
 /obj/vehicle/sealed/mecha/proc/take_damage_legacy(amount, type="brute")
 	update_damage_alerts()
 	if(amount)
@@ -1144,6 +1149,7 @@
 	return
 
 
+// todo: MAKE INFLICT_DAMAGE_INSTANCE() A THING ON HIT HANDLING PR!!
 /obj/vehicle/sealed/mecha/bullet_act(var/obj/projectile/Proj) //wrapper
 	if(istype(Proj, /obj/projectile/test))
 		var/obj/projectile/test/Test = Proj
