@@ -142,15 +142,15 @@
 	if(assembly)
 		for(var/I in fuel)
 			if(DYNAMIC_CELL_UNITS_TO_W(assembly.battery.maxcharge - assembly.battery.charge, 1) > fuel[I])
-				var/power = fuel[I]
+				var/power = 1
 				if(I == "blood")
 					var/list/data = reagents.get_data(I)
 					if(data && istype(data["donor"], /mob/living/carbon/human))
 						var/mob/living/carbon/human/H = data["donor"]
 						if(H.mind && H.mind.ckey)
-							power *= 10
+							power = 10
 				if(reagents.remove_reagent(I, 1))
-					assembly.give_power(fuel[I])
+					assembly.give_power(fuel[I]*power)
 
 // For really fat machines.
 /obj/item/integrated_circuit/passive/power/relay/large
