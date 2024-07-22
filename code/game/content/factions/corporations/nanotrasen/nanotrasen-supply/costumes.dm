@@ -29,90 +29,90 @@
 	container_name = "Tech Priest crate"
 
 /datum/supply_pack2/nanotrasen/randomised/costumes/hats
-	num_contained = 4
-	contains = list(
-			/obj/item/clothing/head/collectable/chef,
-			/obj/item/clothing/head/collectable/paper,
-			/obj/item/clothing/head/collectable/tophat,
-			/obj/item/clothing/head/collectable/captain,
-			/obj/item/clothing/head/collectable/beret,
-			/obj/item/clothing/head/collectable/welding,
-			/obj/item/clothing/head/collectable/flatcap,
-			/obj/item/clothing/head/collectable/pirate,
-			/obj/item/clothing/head/collectable/kitty,
-			/obj/item/clothing/head/collectable/rabbitears,
-			/obj/item/clothing/head/collectable/wizard,
-			/obj/item/clothing/head/collectable/hardhat,
-			/obj/item/clothing/head/collectable/HoS,
-			/obj/item/clothing/head/collectable/thunderdome,
-			/obj/item/clothing/head/collectable/swat,
-			/obj/item/clothing/head/collectable/slime,
-			/obj/item/clothing/head/collectable/police,
-			/obj/item/clothing/head/collectable/slime,
-			/obj/item/clothing/head/collectable/xenom,
-			/obj/item/clothing/head/collectable/petehat
-			)
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
+		/obj/item/clothing/head/collectable/chef,
+		/obj/item/clothing/head/collectable/paper,
+		/obj/item/clothing/head/collectable/tophat,
+		/obj/item/clothing/head/collectable/captain,
+		/obj/item/clothing/head/collectable/beret,
+		/obj/item/clothing/head/collectable/welding,
+		/obj/item/clothing/head/collectable/flatcap,
+		/obj/item/clothing/head/collectable/pirate,
+		/obj/item/clothing/head/collectable/kitty,
+		/obj/item/clothing/head/collectable/rabbitears,
+		/obj/item/clothing/head/collectable/wizard,
+		/obj/item/clothing/head/collectable/hardhat,
+		/obj/item/clothing/head/collectable/HoS,
+		/obj/item/clothing/head/collectable/thunderdome,
+		/obj/item/clothing/head/collectable/swat,
+		/obj/item/clothing/head/collectable/slime,
+		/obj/item/clothing/head/collectable/police,
+		/obj/item/clothing/head/collectable/slime,
+		/obj/item/clothing/head/collectable/xenom,
+		/obj/item/clothing/head/collectable/petehat,
+	)
 	name = "Collectable hat crate!"
-	cost = 200
+	worth = 1500
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Collectable hats crate! Brought to you by Bass.inc!"
 
 /datum/supply_pack2/nanotrasen/randomised/costumes/costume
-	num_contained = 3
-	contains = list(
-			/obj/item/clothing/suit/pirate,
-			/obj/item/clothing/suit/judgerobe,
-			/obj/item/clothing/accessory/wcoat,
-			/obj/item/clothing/suit/hastur,
-			/obj/item/clothing/suit/holidaypriest,
-			/obj/item/clothing/suit/nun,
-			/obj/item/clothing/suit/imperium_monk,
-			/obj/item/clothing/suit/ianshirt,
-			/obj/item/clothing/under/gimmick/rank/captain/suit,
-			/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit,
-			/obj/item/clothing/under/lawyer/purpsuit,
-			/obj/item/clothing/under/rank/mailman,
-			/obj/item/clothing/under/dress/dress_saloon,
-			/obj/item/clothing/suit/suspenders,
-			/obj/item/clothing/suit/storage/toggle/labcoat/mad,
-			/obj/item/clothing/suit/bio_suit/plaguedoctorsuit,
-			/obj/item/clothing/under/schoolgirl,
-			/obj/item/clothing/under/owl,
-			/obj/item/clothing/under/waiter,
-			/obj/item/clothing/under/gladiator,
-			/obj/item/clothing/under/soviet,
-			/obj/item/clothing/under/scratch,
-			/obj/item/clothing/under/wedding/bride_white,
-			/obj/item/clothing/suit/chef,
-			/obj/item/clothing/suit/storage/apron/overalls,
-			/obj/item/clothing/under/redcoat,
-			/obj/item/clothing/under/kilt,
-			/obj/item/clothing/suit/storage/hooded/techpriest
-			)
+	lazy_gacha_amount = 3
+	lazy_gacha_contained = list(
+		/obj/item/clothing/suit/pirate,
+		/obj/item/clothing/suit/judgerobe,
+		/obj/item/clothing/accessory/wcoat,
+		/obj/item/clothing/suit/hastur,
+		/obj/item/clothing/suit/holidaypriest,
+		/obj/item/clothing/suit/nun,
+		/obj/item/clothing/suit/imperium_monk,
+		/obj/item/clothing/suit/ianshirt,
+		/obj/item/clothing/under/gimmick/rank/captain/suit,
+		/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit,
+		/obj/item/clothing/under/lawyer/purpsuit,
+		/obj/item/clothing/under/rank/mailman,
+		/obj/item/clothing/under/dress/dress_saloon,
+		/obj/item/clothing/suit/suspenders,
+		/obj/item/clothing/suit/storage/toggle/labcoat/mad,
+		/obj/item/clothing/suit/bio_suit/plaguedoctorsuit,
+		/obj/item/clothing/under/schoolgirl,
+		/obj/item/clothing/under/owl,
+		/obj/item/clothing/under/waiter,
+		/obj/item/clothing/under/gladiator,
+		/obj/item/clothing/under/soviet,
+		/obj/item/clothing/under/scratch,
+		/obj/item/clothing/under/wedding/bride_white,
+		/obj/item/clothing/suit/chef,
+		/obj/item/clothing/suit/storage/apron/overalls,
+		/obj/item/clothing/under/redcoat,
+		/obj/item/clothing/under/kilt,
+		/obj/item/clothing/suit/storage/hooded/techpriest,
+	)
 	name = "Costumes crate"
-	cost = 10
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Actor Costumes"
 
 /datum/supply_pack2/nanotrasen/costumes/formal_wear
 	contains = list(
-			/obj/item/clothing/head/bowler,
-			/obj/item/clothing/head/that,
-			/obj/item/clothing/suit/storage/toggle/internalaffairs,
-			/obj/item/clothing/suit/storage/toggle/lawyer/bluejacket,
-			/obj/item/clothing/suit/storage/toggle/lawyer/purpjacket,
-			/obj/item/clothing/under/suit_jacket,
-			/obj/item/clothing/under/suit_jacket/female,
-			/obj/item/clothing/under/suit_jacket/really_black,
-			/obj/item/clothing/under/suit_jacket/red,
-			/obj/item/clothing/under/lawyer/bluesuit,
-			/obj/item/clothing/under/lawyer/purpsuit,
-			/obj/item/clothing/shoes/black = 2,
-			/obj/item/clothing/shoes/laceup/brown,
-			/obj/item/clothing/accessory/wcoat
-			)
+		/obj/item/clothing/head/bowler,
+		/obj/item/clothing/head/that,
+		/obj/item/clothing/suit/storage/toggle/internalaffairs,
+		/obj/item/clothing/suit/storage/toggle/lawyer/bluejacket,
+		/obj/item/clothing/suit/storage/toggle/lawyer/purpjacket,
+		/obj/item/clothing/under/suit_jacket,
+		/obj/item/clothing/under/suit_jacket/female,
+		/obj/item/clothing/under/suit_jacket/really_black,
+		/obj/item/clothing/under/suit_jacket/red,
+		/obj/item/clothing/under/lawyer/bluesuit,
+		/obj/item/clothing/under/lawyer/purpsuit,
+		/obj/item/clothing/shoes/black = 2,
+		/obj/item/clothing/shoes/laceup/brown,
+		/obj/item/clothing/accessory/wcoat,
+	)
 	name = "Formalwear closet"
-	cost = 30
+	worth = 400
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Formalwear for the best occasions."
 
@@ -120,7 +120,7 @@
 	name = "Witch costume"
 	container_name = "Witch costume"
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
-	cost = 20
+	worth = 350
 	contains = list(
 		/obj/item/clothing/head/wizard/marisa/fake,
 		/obj/item/clothing/shoes/sandal,
@@ -132,119 +132,119 @@
 	name = "Costume hats"
 	container_name = "Actor hats crate"
 	container_type = /obj/structure/closet/crate
-	cost = 10
-	num_contained = 3
-	contains = list(
-			/obj/item/clothing/head/redcoat,
-			/obj/item/clothing/head/mailman,
-			/obj/item/clothing/head/plaguedoctorhat,
-			/obj/item/clothing/head/pirate,
-			/obj/item/clothing/head/hasturhood,
-			/obj/item/clothing/head/powdered_wig,
-			/obj/item/clothing/head/pin/flower,
-			/obj/item/clothing/head/pin/flower/yellow,
-			/obj/item/clothing/head/pin/flower/blue,
-			/obj/item/clothing/head/pin/flower/pink,
-			/obj/item/clothing/head/pin/clover,
-			/obj/item/clothing/head/pin/butterfly,
-			/obj/item/clothing/mask/gas/owl_mask,
-			/obj/item/clothing/mask/gas/monkeymask,
-			/obj/item/clothing/head/helmet/gladiator,
-			/obj/item/clothing/head/ushanka
-			)
+	worth = 350
+	lazy_gacha_amount = 3
+	lazy_gacha_contained = list(
+		/obj/item/clothing/head/redcoat,
+		/obj/item/clothing/head/mailman,
+		/obj/item/clothing/head/plaguedoctorhat,
+		/obj/item/clothing/head/pirate,
+		/obj/item/clothing/head/hasturhood,
+		/obj/item/clothing/head/powdered_wig,
+		/obj/item/clothing/head/pin/flower,
+		/obj/item/clothing/head/pin/flower/yellow,
+		/obj/item/clothing/head/pin/flower/blue,
+		/obj/item/clothing/head/pin/flower/pink,
+		/obj/item/clothing/head/pin/clover,
+		/obj/item/clothing/head/pin/butterfly,
+		/obj/item/clothing/mask/gas/owl_mask,
+		/obj/item/clothing/mask/gas/monkeymask,
+		/obj/item/clothing/head/helmet/gladiator,
+		/obj/item/clothing/head/ushanka,
+	)
 
 /datum/supply_pack2/nanotrasen/randomised/costumes/dresses
 	name = "Womens formal dress locker"
 	container_name = "Pretty dress locker"
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
-	cost = 15
-	num_contained = 3
-	contains = list(
-			/obj/item/clothing/under/wedding/bride_orange,
-			/obj/item/clothing/under/wedding/bride_purple,
-			/obj/item/clothing/under/wedding/bride_blue,
-			/obj/item/clothing/under/wedding/bride_red,
-			/obj/item/clothing/under/wedding/bride_white,
-			/obj/item/clothing/under/sundress,
-			/obj/item/clothing/under/dress/dress_green,
-			/obj/item/clothing/under/dress/dress_pink,
-			/obj/item/clothing/under/dress/dress_orange,
-			/obj/item/clothing/under/dress/dress_yellow,
-			/obj/item/clothing/under/dress/dress_saloon
-			)
+	worth = 350
+	lazy_gacha_amount = 3
+	lazy_gacha_contained = list(
+		/obj/item/clothing/under/wedding/bride_orange,
+		/obj/item/clothing/under/wedding/bride_purple,
+		/obj/item/clothing/under/wedding/bride_blue,
+		/obj/item/clothing/under/wedding/bride_red,
+		/obj/item/clothing/under/wedding/bride_white,
+		/obj/item/clothing/under/sundress,
+		/obj/item/clothing/under/dress/dress_green,
+		/obj/item/clothing/under/dress/dress_pink,
+		/obj/item/clothing/under/dress/dress_orange,
+		/obj/item/clothing/under/dress/dress_yellow,
+		/obj/item/clothing/under/dress/dress_saloon,
+	)
 
 /datum/supply_pack2/nanotrasen/costumes/xenowear
 	name = "Xenowear crate"
 	contains = list(
-			/obj/item/clothing/shoes/footwraps,
-			/obj/item/clothing/shoes/boots/jackboots/toeless,
-			/obj/item/clothing/shoes/boots/workboots/toeless,
-			/obj/item/clothing/suit/tajaran/furs,
-			/obj/item/clothing/head/tajaranold/scarf,
-			/obj/item/clothing/suit/unathi/robe,
-			/obj/item/clothing/suit/unathi/mantle,
-			/obj/item/clothing/under/permit,
-			/obj/item/clothing/under/vox/vox_casual,
-			/obj/item/clothing/under/vox/vox_robes,
-			/obj/item/clothing/under/harness,
-			/obj/item/clothing/under/skirt/loincloth,
-			/obj/item/clothing/gloves/vox
-			)
-	cost = 100
+		/obj/item/clothing/shoes/footwraps,
+		/obj/item/clothing/shoes/boots/jackboots/toeless,
+		/obj/item/clothing/shoes/boots/workboots/toeless,
+		/obj/item/clothing/suit/tajaran/furs,
+		/obj/item/clothing/head/tajaranold/scarf,
+		/obj/item/clothing/suit/unathi/robe,
+		/obj/item/clothing/suit/unathi/mantle,
+		/obj/item/clothing/under/permit,
+		/obj/item/clothing/under/vox/vox_casual,
+		/obj/item/clothing/under/vox/vox_robes,
+		/obj/item/clothing/under/harness,
+		/obj/item/clothing/under/skirt/loincloth,
+		/obj/item/clothing/gloves/vox,
+	)
+	worth = 450
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Xenowear crate"
 
 /datum/supply_pack2/nanotrasen/costumes/tesh_smocks
 	name = "Teshari smocks"
 	contains = list(
-			/obj/item/clothing/under/teshari/smock,
-			/obj/item/clothing/under/teshari/smock/rainbow,
-			/obj/item/clothing/under/teshari/smock/red,
-			/obj/item/clothing/under/teshari/smock/white,
-			/obj/item/clothing/under/teshari/smock/yellow
-			)
-	cost = 25
+		/obj/item/clothing/under/teshari/smock,
+		/obj/item/clothing/under/teshari/smock/rainbow,
+		/obj/item/clothing/under/teshari/smock/red,
+		/obj/item/clothing/under/teshari/smock/white,
+		/obj/item/clothing/under/teshari/smock/yellow,
+	)
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari smocks crate"
 
 /datum/supply_pack2/nanotrasen/randomised/costumes/tesh_coats
 	name = "Teshari undercoats"
-	num_contained = 4
-	contains = list(
-			/obj/item/clothing/under/teshari/undercoat/standard/blue_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/brown_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/green_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/lightgrey_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/orange,
-			/obj/item/clothing/under/teshari/undercoat/standard/orange_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/pink_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/purple_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/rainbow,
-			/obj/item/clothing/under/teshari/undercoat/standard/red_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/white_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/yellow_grey
-			)
-	cost = 20
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
+		/obj/item/clothing/under/teshari/undercoat/standard/blue_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/brown_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/green_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/lightgrey_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/orange,
+		/obj/item/clothing/under/teshari/undercoat/standard/orange_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/pink_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/purple_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/rainbow,
+		/obj/item/clothing/under/teshari/undercoat/standard/red_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/white_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/yellow_grey,
+	)
+	worth = 300
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari undercoats crate"
 
 /datum/supply_pack2/nanotrasen/randomised/costumes/tesh_coats_b
 	name = "Teshari undercoats (black)"
-	num_contained = 4
-	contains = list(
-			/obj/item/clothing/under/teshari/undercoat/standard/black,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_blue,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_brown,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_green,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_grey,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_orange,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_pink,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_purple,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_red,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_white,
-			/obj/item/clothing/under/teshari/undercoat/standard/black_yellow
-			)
-	cost = 20
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
+		/obj/item/clothing/under/teshari/undercoat/standard/black,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_blue,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_brown,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_green,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_grey,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_orange,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_pink,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_purple,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_red,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_white,
+		/obj/item/clothing/under/teshari/undercoat/standard/black_yellow,
+	)
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari undercoats crate"
 
