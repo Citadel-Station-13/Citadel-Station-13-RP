@@ -172,7 +172,7 @@
 		var/datum/action/vehicle/actionlike = occupant_actions[i]
 		if(istype(actionlike))
 		else if(ispath(actionlike))
-			occupant_actions[i] = new actionlike
+			occupant_actions[i] = new actionlike(src)
 
 /obj/vehicle/proc/add_occupant_action(datum/action/vehicle/action)
 	if(action in occupant_actions)

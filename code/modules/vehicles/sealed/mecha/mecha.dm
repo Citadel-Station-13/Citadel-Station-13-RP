@@ -2861,6 +2861,8 @@
 	required_control_flags = NONE
 
 /datum/action/vehicle/mecha/eject
+	name = "Eject"
+	desc = "Eject from your mecha."
 	button_icon_state = "eject"
 
 	required_control_flags = VEHICLE_CONTROL_EXIT
