@@ -135,3 +135,36 @@
 		return
 	else
 		return ..()
+
+/obj/item/gun/ballistic/contender/pellet
+	name = "pellet gun"
+	desc = "An air powered rifle that shoots near harmless pellets. Used for recreation in enviroments where firearm ownership is restricted."
+	icon_stated = "pellet"
+	icon_retracted = "pellet_empty"
+	item_state = "pellet"
+	wielded_item_state = "pellet-wielded"
+	caliber = "pellet"
+	fire_sound = 'sound/weapons/tap.ogg'
+
+
+/obj/item/gun/ballistic/contender/pellet/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(chambered)
+		chambered.loc = get_turf(src)
+		chambered = null
+		var/obj/item/ammo_casing/C = loaded[1]
+		loaded -= C
+
+	if(!retracted_bolt)
+		to_chat(user, "<span class='notice'>Pull the lever on the  [src], the loaded pellet falls to the floor.</span>")
+		icon_state = icon_retracted
+		retracted_bolt = 1
+		return 1
+	else if(retracted_bolt && loaded.len)
+		to_chat(user, "<span class='notice'>You slide the pellet into the chamber and close the bolt.</span>")
+	else
+		to_chat(user, "<span class='notice'>You close the bolt, leaving the gun empty.</span>")
+	icon_state = initial(icon_state)
+	retracted_bolt = 0
