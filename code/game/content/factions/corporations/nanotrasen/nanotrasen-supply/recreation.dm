@@ -119,6 +119,7 @@
 			)
 	container_type = /obj/structure/closet/crate
 	container_name = "Restraints crate"
+	legacy_contraband = TRUE
 	cost = 30
 
 /datum/supply_pack2/nanotrasen/recreation/wolfgirl_cosplay_crate
