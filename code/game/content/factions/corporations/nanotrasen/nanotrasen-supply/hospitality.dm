@@ -185,3 +185,14 @@
 	cost = 50 //same cost as the others
 	container_type = /obj/structure/closet/crate/corporate/unathi
 	container_name = "Moghes Foodstuffs"
+
+/datum/supply_pack2/nanotrasen/hospitality/fish
+	name = "Fish supply crate"
+	contains = list(
+			/obj/item/reagent_containers/food/snacks/lobster = 6,
+			/obj/item/reagent_containers/food/snacks/shrimp = 6,
+			/obj/item/reagent_containers/food/snacks/cuttlefish = 8,
+			/obj/item/reagent_containers/food/snacks/sliceable/monkfish = 1
+			)
+	cost = 20
+	container_name = "Fish crate"
