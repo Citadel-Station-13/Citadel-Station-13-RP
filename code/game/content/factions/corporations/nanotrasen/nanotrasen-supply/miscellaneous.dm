@@ -35,79 +35,75 @@
 	container_name = "Miniature Crate"
 
 /datum/supply_pack2/nanotrasen/misc/plushies
-	num_contained = 5
-	contains = list(
-			/obj/item/toy/plushie/nymph,
-			/obj/item/toy/plushie/mouse,
-			/obj/item/toy/plushie/kitten,
-			/obj/item/toy/plushie/lizard,
-			/obj/item/toy/plushie/spider,
-			/obj/item/toy/plushie/farwa,
-			/obj/item/toy/plushie/corgi,
-			/obj/item/toy/plushie/girly_corgi,
-			/obj/item/toy/plushie/robo_corgi,
-			/obj/item/toy/plushie/octopus,
-			/obj/item/toy/plushie/face_hugger,
-			/obj/item/toy/plushie/red_fox,
-			/obj/item/toy/plushie/black_fox,
-			/obj/item/toy/plushie/marble_fox,
-			/obj/item/toy/plushie/blue_fox,
-			/obj/item/toy/plushie/coffee_fox,
-			/obj/item/toy/plushie/pink_fox,
-			/obj/item/toy/plushie/purple_fox,
-			/obj/item/toy/plushie/crimson_fox,
-			/obj/item/toy/plushie/deer,
-			/obj/item/toy/plushie/black_cat,
-			/obj/item/toy/plushie/grey_cat,
-			/obj/item/toy/plushie/white_cat,
-			/obj/item/toy/plushie/orange_cat,
-			/obj/item/toy/plushie/siamese_cat,
-			/obj/item/toy/plushie/tabby_cat,
-			/obj/item/toy/plushie/tuxedo_cat,
-			/obj/item/toy/plushie/squid/green,
-			/obj/item/toy/plushie/squid/mint,
-			/obj/item/toy/plushie/squid/blue,
-			/obj/item/toy/plushie/squid/orange,
-			/obj/item/toy/plushie/squid/yellow,
-			/obj/item/toy/plushie/squid/pink
-			)
 	name = "Plushies Crate"
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
+		/obj/item/toy/plushie/nymph,
+		/obj/item/toy/plushie/mouse,
+		/obj/item/toy/plushie/kitten,
+		/obj/item/toy/plushie/lizard,
+		/obj/item/toy/plushie/spider,
+		/obj/item/toy/plushie/farwa,
+		/obj/item/toy/plushie/corgi,
+		/obj/item/toy/plushie/girly_corgi,
+		/obj/item/toy/plushie/robo_corgi,
+		/obj/item/toy/plushie/octopus,
+		/obj/item/toy/plushie/face_hugger,
+		/obj/item/toy/plushie/red_fox,
+		/obj/item/toy/plushie/black_fox,
+		/obj/item/toy/plushie/marble_fox,
+		/obj/item/toy/plushie/blue_fox,
+		/obj/item/toy/plushie/coffee_fox,
+		/obj/item/toy/plushie/pink_fox,
+		/obj/item/toy/plushie/purple_fox,
+		/obj/item/toy/plushie/crimson_fox,
+		/obj/item/toy/plushie/deer,
+		/obj/item/toy/plushie/black_cat,
+		/obj/item/toy/plushie/grey_cat,
+		/obj/item/toy/plushie/white_cat,
+		/obj/item/toy/plushie/orange_cat,
+		/obj/item/toy/plushie/siamese_cat,
+		/obj/item/toy/plushie/tabby_cat,
+		/obj/item/toy/plushie/tuxedo_cat,
+		/obj/item/toy/plushie/squid/green,
+		/obj/item/toy/plushie/squid/mint,
+		/obj/item/toy/plushie/squid/blue,
+		/obj/item/toy/plushie/squid/orange,
+		/obj/item/toy/plushie/squid/yellow,
+		/obj/item/toy/plushie/squid/pink,
+	)
 	cost = 15
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Plushies Crate"
 
 /datum/supply_pack2/nanotrasen/misc/eftpos
-	contains = list(/obj/item/eftpos)
 	name = "EFTPOS scanner"
-	cost = 10
-	container_type = /obj/structure/closet/crate
-	container_name = "EFTPOS crate"
+	contains = list(
+		/obj/item/eftpos,
+	)
+	worth = 150
 
 /datum/supply_pack2/nanotrasen/misc/chaplaingear
 	name = "Chaplain equipment"
 	contains = list(
-			/obj/item/clothing/under/rank/chaplain,
-			/obj/item/clothing/shoes/black,
-			/obj/item/clothing/suit/nun,
-			/obj/item/clothing/head/nun_hood,
-			/obj/item/clothing/suit/storage/hooded/chaplain_hoodie,
-			/obj/item/clothing/suit/storage/hooded/chaplain_hoodie/whiteout,
-			/obj/item/clothing/suit/holidaypriest,
-			/obj/item/clothing/under/wedding/bride_white,
-			/obj/item/storage/backpack/cultpack,
-			/obj/item/storage/fancy/candle_box = 3,
-			/obj/item/reagent_containers/food/drinks/bottle/holywater
-			)
-	cost = 10
-	container_type = /obj/structure/closet/crate
-	container_name = "Chaplain equipment crate"
+		/obj/item/clothing/under/rank/chaplain,
+		/obj/item/clothing/shoes/black,
+		/obj/item/clothing/suit/nun,
+		/obj/item/clothing/head/nun_hood,
+		/obj/item/clothing/suit/storage/hooded/chaplain_hoodie,
+		/obj/item/clothing/suit/storage/hooded/chaplain_hoodie/whiteout,
+		/obj/item/clothing/suit/holidaypriest,
+		/obj/item/clothing/under/wedding/bride_white,
+		/obj/item/storage/backpack/cultpack,
+		/obj/item/storage/fancy/candle_box = 3,
+		/obj/item/reagent_containers/food/drinks/bottle/holywater,
+	)
+	worth = 850 // lmao larper tax
 
 /datum/supply_pack2/nanotrasen/misc/hoverpod
 	name = "Hoverpod Shipment"
-	contains = list()
-	cost = 80
 	container_type = /obj/structure/largecrate/hoverpod
-	container_name = "Hoverpod Crate"
+	worth = 1000
 
 /datum/supply_pack2/nanotrasen/misc/webbing
 	name = "Webbing crate"
@@ -127,23 +123,19 @@
 
 /datum/supply_pack2/nanotrasen/misc/holoplant
 	name = "Holoplant Pot"
-	contains = list(/obj/machinery/holoplant/shipped)
-	cost = 15
-	container_type = /obj/structure/closet/crate
-	container_name = "Holoplant crate"
+	contains = list(
+		/obj/machinery/holoplant/shipped,
+	)
+	worth = 50
 
 /datum/supply_pack2/nanotrasen/misc/glucose_hypos
 	name = "Glucose Hypoinjectors"
 	contains = list(
-			/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5
-			)
-	cost = 25
-	container_type = /obj/structure/closet/crate
-	container_name = "Glucose Hypo Crate"
+		/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,
+	)
+	worth = 100
 
 /datum/supply_pack2/nanotrasen/misc/mre_rations
-	// num_contained = 6		i'm just commenting this out because whoever made this should have looked and seen that this doesn't work for non randomized crates
-	// screw you for causing me a compile error
 	name = "Emergency - MREs"
 	contains = list(
 		/obj/item/storage/single_use/mre,
@@ -157,119 +149,96 @@
 		/obj/item/storage/single_use/mre/menu9,
 		/obj/item/storage/single_use/mre/menu10,
 	)
-	cost = 50
+	worth = 300
 	container_type = /obj/structure/closet/crate/corporate/centauri
-	container_name = "ready to eat rations"
 
 /datum/supply_pack2/nanotrasen/misc/paste_rations
 	name = "Emergency - Paste"
 	contains = list(
 		/obj/item/storage/single_use/mre/menu11 = 2,
 	)
-	cost = 25
+	worth = 75
 	container_type = /obj/structure/closet/crate/corporate/centauri
-	container_name = "emergency rations"
 
 /datum/supply_pack2/nanotrasen/misc/medical_rations
 	name = "Emergency - VitaPaste"
 	contains = list(
 		/obj/item/storage/single_use/mre/menu13 = 2,
 	)
-	cost = 40
+	worth = 100
 	container_type = /obj/structure/closet/crate/corporate/centauri
-	container_name = "emergency rations"
 
 /datum/supply_pack2/nanotrasen/misc/beltminer
 	name = "Belt-miner gear crate"
 	contains = list(
-			/obj/item/gun/energy/particle = 2,
-			/obj/item/cell/device/weapon = 2,
-			/obj/item/storage/firstaid/regular = 1,
-			/obj/item/gps = 2,
-			/obj/item/storage/box/traumainjectors = 1
-			)
-	cost = 50
+		/obj/item/gun/energy/particle = 2,
+		/obj/item/cell/device/weapon = 2,
+		/obj/item/storage/firstaid/regular = 1,
+		/obj/item/gps = 2,
+		/obj/item/storage/box/traumainjectors = 1,
+	)
+	worth = 500
 	container_type = /obj/structure/closet/crate/secure/corporate/grayson
-	container_name = "Belt-miner gear crate"
-	access = ACCESS_SUPPLY_MINE
 
 /datum/supply_pack2/nanotrasen/misc/eva_rig
 	name = "eva hardsuit (empty)"
 	contains = list(
-			/obj/item/hardsuit/eva = 1
-			)
-	cost = 150
+		/obj/item/hardsuit/eva = 1,
+	)
+	worth = 750
 	container_type = /obj/structure/closet/crate/secure/gear
-	container_name = "eva hardsuit crate"
-	access = list(ACCESS_SUPPLY_MINE,
-				  ACCESS_COMMAND_EVA,
-				  ACCESS_GENERAL_EXPLORER,
-				  ACCESS_GENERAL_PILOT)
-	one_access = TRUE
 
 /datum/supply_pack2/nanotrasen/misc/mining_rig
 	name = "industrial hardsuit (empty)"
 	contains = list(
-			/obj/item/hardsuit/industrial = 1
-			)
-	cost = 150
+		/obj/item/hardsuit/industrial = 1,
+	)
+	worth = 750
 	container_type = /obj/structure/closet/crate/secure/corporate/grayson
-	container_name = "industrial hardsuit crate"
-	access = list(ACCESS_SUPPLY_MINE,
-				  ACCESS_COMMAND_EVA)
-	one_access = TRUE
 
 /datum/supply_pack2/nanotrasen/misc/medical_rig
 	name = "medical hardsuit (empty)"
 	contains = list(
-			/obj/item/hardsuit/medical = 1
-			)
+		/obj/item/hardsuit/medical = 1,
+	)
+	worth = 750
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/corporate/veymed
-	container_name = "medical hardsuit crate"
-	access = ACCESS_MEDICAL_MAIN
 
 /datum/supply_pack2/nanotrasen/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
 	contains = list(
-	/obj/item/clothing/suit/space/plasman = 3,
-	/obj/item/clothing/head/helmet/space/plasman = 3,
-	/obj/item/clothing/mask/breath = 3,
-	/obj/item/tank/vox = 3,
+		/obj/item/clothing/suit/space/plasman = 3,
+		/obj/item/clothing/head/helmet/space/plasman = 3,
+		/obj/item/clothing/mask/breath = 3,
+		/obj/item/tank/vox = 3,
 	)
-	cost = 40
-	container_name = "spare phoronoid suits"
+	worth = 500
 
 /datum/supply_pack2/nanotrasen/misc/security_rig
 	name = "hazard hardsuit (empty)"
 	contains = list(
-			/obj/item/hardsuit/hazard = 1
-			)
-	cost = 150
+		/obj/item/hardsuit/hazard = 1,
+	)
+	worth = 750
 	container_type = /obj/structure/closet/crate/secure/gear
-	container_name = "hazard hardsuit crate"
-	access = ACCESS_SECURITY_ARMORY
+	container_access = list(
+		/datum/access/station/security/equipment,
+	)
 
 /datum/supply_pack2/nanotrasen/misc/science_rig
 	name = "ami hardsuit (empty)"
 	contains = list(
-			/obj/item/hardsuit/hazmat = 1
-			)
-	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear
-	container_name = "ami hardsuit crate"
-	access = ACCESS_SCIENCE_RD
+		/obj/item/hardsuit/hazmat = 1,
+	)
+	worth = 750
 
 /datum/supply_pack2/nanotrasen/misc/ce_rig
 	name = "advanced hardsuit (empty)"
 	contains = list(
-			/obj/item/hardsuit/ce = 1
-			)
-	cost = 150
+		/obj/item/hardsuit/ce = 1,
+	)
+	worth = 750
 	container_type = /obj/structure/closet/crate/secure/corporate/aether
-	container_name = "advanced hardsuit crate"
-	access = ACCESS_ENGINEERING_CE
-
 
 /datum/supply_pack2/nanotrasen/misc/colored_lights
 	name = "Colored Lights Bundle"
