@@ -5,7 +5,7 @@
 
 // todo: everything needs comsigs comsigs comsigs
 
-//? Hooks / External
+//* External API / Damage Receiving *//
 
 /**
  * todo: implement on most atoms/generic damage system
@@ -31,6 +31,8 @@
 /**
  * called on melee hit
  *
+ * todo: add clickchain datum, instead of multiplier
+ *
  * @params
  * * user - person attacking
  * * weapon - weapon used
@@ -39,13 +41,14 @@
  *
  * @return clickchain flags to append
  */
-#warn run shieldcalls at obj/turf level manually because inflict_atom_damage doesn't
 #warn mob-level shieldcalls
 /atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
 	return CLICKCHAIN_DO_NOT_ATTACK
 
 /**
  * called on unarmed melee hit
+ *
+ * todo: add clickchain datum, instead of multiplier
  *
  * @params
  * * user - person attacking
@@ -55,7 +58,6 @@
  *
  * @return clickchain flags to append
  */
-#warn run shieldcalls at obj/turf level manually because inflict_atom_damage doesn't
 #warn mob-level shieldcalls
 /atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
 	return CLICKCHAIN_DO_NOT_ATTACK
@@ -88,7 +90,6 @@
  *
  * @return new impact_flags
  */
-#warn run shieldcalls at obj/turf level manually because inflict_atom_damage doesn't
 #warn mob-level shieldcalls
 /atom/proc/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	// lower calls can change flags before we trigger
@@ -112,7 +113,8 @@
 	// we are hitting; gather flags as needed
 	return proj.on_impact_new(src, impact_flags, def_zone, blocked)
 
-//? Hitsound API
+
+//* Hitsound API *//
 
 // todo: stuff like metal limbs punching walls making special sounds
 // todo: this probably needs a rework
