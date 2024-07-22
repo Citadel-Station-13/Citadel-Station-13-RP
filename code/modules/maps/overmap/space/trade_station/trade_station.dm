@@ -32,8 +32,8 @@
 
 	initial_restricted_waypoints = list(
 		"Beruang Trade Ship" = list("tradeport_hangar"),
-		"Udang Transport Shuttle" = list("tradeport_udang"),
-		"Scoophead trade Shuttle" = list("tradeport_scoophead")
+		"Udang Transport Shuttle" = list("tradeport_hangar_udang"),
+		"Scoophead trade Shuttle" = list("tradeport_hangar_scoophead")
 		)
 /* // Old Restricted list. Leaving commented out for reference - Bloop
 	initial_restricted_waypoints = list(
