@@ -148,7 +148,7 @@
 /obj/vehicle/sealed/mecha/combat/mob_exited(mob/exiting, datum/event_args/actor/actor, silent, control_flags)
 	. = ..()
 	if(exiting.client)
-		exiting.client.mouse_pointer_icon = initial(src.occupant_legacy.client.mouse_pointer_icon)
+		exiting.client.mouse_pointer_icon = initial(exiting.client.mouse_pointer_icon)
 
 /obj/vehicle/sealed/mecha/combat/Topic(href,href_list)
 	..()

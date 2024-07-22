@@ -37,6 +37,8 @@
 	/// Byond implementation is bugged.
 	infra_luminosity = 15
 
+	enter_delay = 4 SECONDS
+
 	emulate_door_bumps = TRUE
 	temporary_legacy_dont_auto_handle_obj_damage_for_mechs = TRUE
 
@@ -1806,23 +1808,6 @@
 	src.log_message("Toggled strafing mode [strafing?"on":"off"].")
 	return
 
-/obj/vehicle/sealed/mecha/MouseDroppedOnLegacy(mob/O, mob/user as mob)
-	//Humans can pilot mechs.
-	if(!ishuman(O))
-		return
-
-	//Can't put other people into mechs (can comment this out if you want that to be possible)
-	if(O != user)
-		return
-
-	move_inside()
-
-/obj/vehicle/sealed/mecha/verb/enter()
-	set category = VERB_CATEGORY_OBJECT
-	set name = "Enter Exosuit"
-	set src in oview(1)
-	move_inside()
-
 //returns an equipment object if we have one of that type, useful since is_type_in_list won't return the object
 //since is_type_in_list uses caching, this is a slower operation, so only use it if needed
 /obj/vehicle/sealed/mecha/proc/get_equipment(var/equip_type)
@@ -1831,107 +1816,25 @@
 			return ME
 	return null
 
-/obj/vehicle/sealed/mecha/proc/move_inside()
-	if (usr.stat || !ishuman(usr))
-		return
-
-	if (usr.buckled)
-		to_chat(usr, "<span class='warning'>You can't climb into the exosuit while buckled!</span>")
-		return
-
-	src.log_message("[usr] tries to move in.")
-	if(iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		if(C.handcuffed)
-			to_chat(usr, "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>")
-			return
+/obj/vehicle/sealed/mecha/mob_can_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed)
 	if (src.occupant_legacy)
-		to_chat(usr, "<span class='danger'>The [src.name] is already occupied!</span>")
-		src.log_append_to_last("Permission denied.")
-		return
-/*
-	if (usr.abiotic())
-		to_chat(usr, "<span class='notice'>Subject cannot have abiotic items on.</span>")
-		return
-*/
+		to_chat(actor.initiator, "<span class='danger'>The [src.name] is already occupied!</span>")
+		return FALSE
 	var/passed
 	if(src.dna)
-		if(usr.dna.unique_enzymes==src.dna)
+		if(entering.dna.unique_enzymes==src.dna)
 			passed = 1
-	else if(src.operation_allowed(usr))
+	else if(src.operation_allowed(entering))
 		passed = 1
 	if(!passed)
-		to_chat(usr, "<span class='warning'>Access denied</span>")
+		to_chat(actor.initiator, "<span class='warning'>Access denied</span>")
 		src.log_append_to_last("Permission denied.")
-		return
-	if(isliving(usr))
-		var/mob/living/L = usr
-		if(L.has_buckled_mobs())
-			to_chat(L, SPAN_WARNING( "You have other entities attached to yourself. Remove them first."))
-			return
+		return FALSE
+	return ..()
 
-//	to_chat(usr, "You start climbing into [src.name]")
-	if(get_equipment(/obj/item/mecha_parts/mecha_equipment/runningboard))
-		visible_message("<span class='notice'>\The [usr] is instantly lifted into [src.name] by the running board!</span>")
-		moved_inside(usr)
-		if(ishuman(occupant_legacy))
-			GrantActions(occupant_legacy, 1)
-	else
-		visible_message("<span class='notice'>\The [usr] starts to climb into [src.name]</span>")
-		if(enter_after(40,usr))
-			if(!src.occupant_legacy)
-				moved_inside(usr)
-				if(ishuman(occupant_legacy)) //Aeiou
-					GrantActions(occupant_legacy, 1)
-			else if(src.occupant_legacy!=usr)
-				to_chat(usr, "[src.occupant_legacy] was faster. Try better next time, loser.")
-		else
-			to_chat(usr, "You stop entering the exosuit.")
-	return
-
-/obj/vehicle/sealed/mecha/proc/moved_inside(var/mob/living/carbon/human/H as mob)
-	if(H && H.client && (H in range(1)))
-		H.stop_pulling()
-		H.forceMove(src)
-		H.update_perspective()
-		occupant_legacy = H
-		add_fingerprint(H)
-		log_append_to_last("[H] moved in as pilot.")
-		update_icon()
-		if(occupant_legacy.hud_used)
-			minihud = new (occupant_legacy.hud_used, src)
-
-//This part removes all the verbs if you don't have them the _possible on your mech. This is a little clunky, but it lets you just add that to any mech.
-//And it's not like this 10yo code wasn't clunky before.
-
-		if(!smoke_possible)			//Can't use smoke? No verb for you.
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_smoke)
-		if(!thrusters_possible)		//Can't use thrusters? No verb for you.
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_thrusters)
-		if(!defence_mode_possible)	//Do i need to explain everything?
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_defence_mode)
-		if(!overload_possible)
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_overload)
-		if(!zoom_possible)
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_zoom)
-		if(!phasing_possible)
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_phasing)
-		if(!switch_dmg_type_possible)
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/switch_damtype)
-		if(!cloak_possible)
-			remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_cloak)
-
-		occupant_legacy.in_enclosed_vehicle = 1	//Useful for when you need to know if someone is in a mecho.
-		update_cell_alerts()
-		update_damage_alerts()
-		setDir(dir_in)
-		playsound(src, 'sound/machines/door/windowdoor.ogg', 50, 1)
-		if(occupant_legacy.client && cloaked_selfimage)
-			occupant_legacy.client.images += cloaked_selfimage
-		play_entered_noise(occupant_legacy)
-		return 1
-	else
-		return 0
+/obj/vehicle/sealed/mecha/mob_try_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed, enter_delay, use_control_flags)
+	src.log_message("[usr] tries to move in.")
+	return ..()
 
 /obj/vehicle/sealed/mecha/proc/play_entered_noise(var/mob/who)
 	if(!hasInternalDamage()) //Otherwise it's not nominal!
@@ -2817,6 +2720,54 @@
 
 //* Entry / Exit *//
 
+/obj/vehicle/sealed/mecha/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
+	. = ..()
+	if(occupant_legacy)
+		stack_trace("how did we get another?")
+		return
+
+	var/mob/living/carbon/human/H = adding
+
+	if(istype(H) && H.client && (H in range(1)))
+		H.stop_pulling()
+		H.forceMove(src)
+		H.update_perspective()
+		occupant_legacy = H
+		add_fingerprint(H)
+		log_append_to_last("[H] moved in as pilot.")
+		update_icon()
+		if(occupant_legacy.hud_used)
+			minihud = new (occupant_legacy.hud_used, src)
+
+	GrantActions(occupant_legacy, 1)
+
+	//This part removes all the verbs if you don't have them the _possible on your mech. This is a little clunky, but it lets you just add that to any mech.
+	//And it's not like this 10yo code wasn't clunky before.
+	if(!smoke_possible)			//Can't use smoke? No verb for you.
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_smoke)
+	if(!thrusters_possible)		//Can't use thrusters? No verb for you.
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_thrusters)
+	if(!defence_mode_possible)	//Do i need to explain everything?
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_defence_mode)
+	if(!overload_possible)
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_overload)
+	if(!zoom_possible)
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_zoom)
+	if(!phasing_possible)
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_phasing)
+	if(!switch_dmg_type_possible)
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/switch_damtype)
+	if(!cloak_possible)
+		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/toggle_cloak)
+
+	update_cell_alerts()
+	update_damage_alerts()
+	setDir(dir_in)
+	playsound(src, 'sound/machines/door/windowdoor.ogg', 50, 1)
+	if(occupant_legacy.client && cloaked_selfimage)
+		occupant_legacy.client.images += cloaked_selfimage
+	play_entered_noise(occupant_legacy)
+
 /obj/vehicle/sealed/mecha/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	QDEL_NULL(minihud)
@@ -2834,7 +2785,6 @@
 	// 	removing.mobility_flags = NONE
 	removing.clear_alert("charge")
 	removing.clear_alert("mech damage")
-	removing.in_enclosed_vehicle = 0
 	removing.reset_perspective()
 
 	if(occupant_legacy == removing)

@@ -281,9 +281,10 @@
  * * removing - the mob
  * * actor - the person removing the mob, usually the mob themselves
  * * control_flags - the old control flags of the mob
- * * silent - suppress visible messages to others
+ * * silent - suppress messages to user
+ * * suppressed - suppress visible messages to others
  */
-/obj/vehicle/proc/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
+/obj/vehicle/proc/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 	// todo: this shoudln't be here
 	auto_assign_occupant_flags(adding)
@@ -320,7 +321,8 @@
  * * removing - the mob
  * * actor - the person removing the mob, usually the mob themselves
  * * control_flags - the old control flags of the mob
- * * silent - suppress visible messages to others
+ * * silent - suppress messages to user
+ * * suppressed - suppress visible messages to others
  */
-/obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+/obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
