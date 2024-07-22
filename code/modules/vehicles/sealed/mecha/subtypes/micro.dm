@@ -123,13 +123,13 @@
 
 // override move_inside() so only micro crew can use them
 
-/obj/vehicle/sealed/mecha/micro/move_inside()
-	var/mob/living/carbon/C = usr
+/obj/vehicle/sealed/mecha/micro/mob_can_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed)
+	var/mob/living/carbon/C = entering
 	if (C.size_multiplier >= 0.5)
 		to_chat(C, "<span class='warning'>You can't fit in this suit!</span>")
-		return
+		return FALSE
 	else
-		..()
+		return ..()
 
 /obj/vehicle/sealed/mecha/micro/move_inside_passenger()
 	var/mob/living/carbon/C = usr

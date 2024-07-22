@@ -1,17 +1,12 @@
-/obj/vehicle/sealed/mecha/micro/sec/moved_inside(var/mob/living/carbon/human/H as mob)
-	if(..())
-		if(H.client)
-			H.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
-		return 1
-	else
-		return 0
-
-/obj/vehicle/sealed/mecha/micro/sec/mob_exit(mob/exiting, silent, randomstep)
+/obj/vehicle/sealed/mecha/micro/sec/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
-	if(!.)
-		return
-	if(exiting?.client)
-		exiting.client.mouse_pointer_icon = initial(src.occupant_legacy.client.mouse_pointer_icon)
+	if(adding.client)
+		adding.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
+
+/obj/vehicle/sealed/mecha/micro/sec/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+	. = ..()
+	if(removing.client)
+		removing.client.mouse_pointer_icon = initial(src.occupant_legacy.client.mouse_pointer_icon)
 
 /obj/vehicle/sealed/mecha/micro/sec/polecat //figured give 'em the names of small predatory critters
 	desc = "A hardened security vehicle for micro crewmembers. To them, it's a superheavy tank. To everyone else, it's kinda cute."

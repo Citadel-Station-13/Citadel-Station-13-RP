@@ -1374,14 +1374,6 @@
 //////////////////////
 
 /obj/vehicle/sealed/mecha/attackby(obj/item/W as obj, mob/user as mob)
-
-	if(istype(W, /obj/item/mmi))
-		if(mmi_move_inside(W,user))
-			to_chat(user, "[src]-MMI interface initialized successfuly")
-		else
-			to_chat(user, "[src]-MMI interface initialization failed.")
-		return
-
 	if(istype(W, /obj/item/robotanalyzer))
 		var/obj/item/robotanalyzer/RA = W
 		RA.do_scan(src, user)
@@ -1580,70 +1572,6 @@
 	user << browse(output, "window=mecha_attack_ai")
 	return
 */
-
-///////////////////////////////
-////////  Brain Stuff  ////////
-///////////////////////////////
-
-/obj/vehicle/sealed/mecha/proc/mmi_move_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
-	if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
-		to_chat(user, "Consciousness matrix not detected.")
-		return 0
-	else if(mmi_as_oc.brainmob.stat)
-		to_chat(user, "Brain activity below acceptable level.")
-		return 0
-	else if(occupant_legacy)
-		to_chat(user, "Occupant detected.")
-		return 0
-	else if(dna && dna!=mmi_as_oc.brainmob.dna.unique_enzymes)
-		to_chat(user, "Genetic sequence or serial number incompatible with locking mechanism.")
-		return 0
-	//Added a message here since people assume their first click failed or something./N
-//	to_chat(user, "Installing MMI, please stand by.")
-
-	visible_message("<span class='notice'>[usr] starts to insert a brain into [src.name]</span>")
-
-	if(enter_after(40,user))
-		if(!occupant_legacy)
-			return mmi_moved_inside(mmi_as_oc,user)
-		else
-			to_chat(user, "Occupant detected.")
-	else
-		to_chat(user, "You stop attempting to install the brain.")
-	return 0
-
-/obj/vehicle/sealed/mecha/proc/mmi_moved_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
-	if(mmi_as_oc && (user in range(1)))
-		if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
-			to_chat(user, "Consciousness matrix not detected.")
-			return 0
-		else if(mmi_as_oc.brainmob.stat == DEAD)
-			to_chat(user, "Beta-rhythm below acceptable level.")
-			return 0
-		if(!user.attempt_insert_item_for_installation(mmi_as_oc, src))
-			return FALSE
-		var/mob/brainmob = mmi_as_oc.brainmob
-	/*
-		brainmob.client.eye = src
-		brainmob.client.perspective = EYE_PERSPECTIVE
-	*/
-		occupant_legacy = brainmob
-		brainmob.forceMove(src)
-		brainmob.reset_perspective(src)
-		brainmob.mobility_flags = MOBILITY_FLAGS_DEFAULT
-		mmi_as_oc.mecha = src
-		src.Entered(mmi_as_oc)
-		src.forceMove(src.loc)
-		update_icon()
-		setDir(dir_in)
-		src.log_message("[mmi_as_oc] moved in as pilot.")
-		if(!hasInternalDamage())
-			src.occupant_legacy << sound('sound/mecha/nominal.ogg',volume=50)
-		update_icon()
-		return 1
-	else
-		return 0
-
 
 /////////////////////////////////////
 ////////  Atmospheric stuff  ////////

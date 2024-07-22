@@ -129,26 +129,15 @@
 					melee_can_hit = 1
 	return
 
-/obj/vehicle/sealed/mecha/combat/moved_inside(var/mob/living/carbon/human/H as mob)
-	if(..())
-		if(H.client)
-			H.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
-		return 1
-	else
-		return 0
-
-/obj/vehicle/sealed/mecha/combat/mmi_moved_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
-	if(..())
-		if(occupant_legacy.client)
-			occupant_legacy.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
-		return 1
-	else
-		return 0
-
-/obj/vehicle/sealed/mecha/combat/mob_exited(mob/exiting, datum/event_args/actor/actor, silent, control_flags)
+/obj/vehicle/sealed/mecha/combat/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
-	if(exiting.client)
-		exiting.client.mouse_pointer_icon = initial(exiting.client.mouse_pointer_icon)
+	if(adding.client)
+		adding.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
+
+/obj/vehicle/sealed/mecha/combat/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+	. = ..()
+	if(removing.client)
+		removing.client.mouse_pointer_icon = initial(exiting.client.mouse_pointer_icon)
 
 /obj/vehicle/sealed/mecha/combat/Topic(href,href_list)
 	..()

@@ -31,15 +31,12 @@
 	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 
-/obj/vehicle/sealed/mecha/working/hoverpod/moved_inside(var/mob/living/carbon/human/H as mob)
-	. = ..(H)
-	if(.)
-		ion_trail.start()
-
-/obj/vehicle/sealed/mecha/working/hoverpod/mob_exit(mob/exiting, silent, randomstep)
+/obj/vehicle/sealed/mecha/working/hoverpod/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
-	if(!.)
-		return
+	ion_trail.start()
+
+/obj/vehicle/sealed/mecha/working/hoverpod/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+	. = ..()
 	if(!length(occupants))
 		ion_trail.stop()
 
