@@ -149,7 +149,7 @@
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	burn(adj_temp)
 	if(adj_temp > material_outer.melting_point)
-		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), flag = ARMOR_FIRE, damage_mode = DAMAGE_MODE_GRADUAL)
+		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), damage_flag = ARMOR_FIRE, damage_mode = DAMAGE_MODE_GRADUAL)
 
 	return ..()
 
@@ -181,11 +181,11 @@
 			ScrapeAway()
 		if(2.0)
 			if(prob(75))
-				inflict_atom_damage(rand(150, 250), flag = ARMOR_BOMB)
+				inflict_atom_damage(rand(150, 250), damage_flag = ARMOR_BOMB)
 			else
 				dismantle_wall(1,1)
 		if(3.0)
-			inflict_atom_damage(rand(0, 150), flag = ARMOR_BOMB)
+			inflict_atom_damage(rand(0, 150), damage_flag = ARMOR_BOMB)
 
 /turf/simulated/wall/proc/can_melt()
 	return material_outer?.material_flags & MATERIAL_FLAG_UNMELTABLE

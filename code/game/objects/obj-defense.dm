@@ -84,7 +84,7 @@
 
 /obj/blob_act(obj/structure/blob/blob)
 	. = ..()
-	inflict_atom_damage(100, flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)
+	inflict_atom_damage(100, damage_flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)
 
 /obj/hitsound_melee(obj/item/I)
 	if(!isnull(material_primary))

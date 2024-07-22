@@ -909,7 +909,7 @@ About the new airlock wires panel:
 	for(var/turf/turf in locs)
 		for(var/atom/movable/AM in turf)
 			if(AM.airlock_crush(DOOR_CRUSH_DAMAGE))
-				inflict_atom_damage(DOOR_CRUSH_DAMAGE, flag = ARMOR_MELEE)
+				inflict_atom_damage(DOOR_CRUSH_DAMAGE, damage_flag = ARMOR_MELEE)
 
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	has_beeped = 0

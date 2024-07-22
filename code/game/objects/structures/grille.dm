@@ -179,7 +179,7 @@
 /obj/structure/grille/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!destroyed)
 		if(exposed_temperature > T0C + 1500)
-			inflict_atom_damage(1, flag = ARMOR_FIRE)
+			inflict_atom_damage(1, damage_flag = ARMOR_FIRE)
 	..()
 
 /obj/structure/grille/proc/is_on_frame()

@@ -291,7 +291,7 @@
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	. = ..()
 	if (exposed_temperature > maximal_heat)
-		inflict_atom_damage(damage_per_fire_tick, flag = ARMOR_FIRE, damage_mode = DAMAGE_MODE_GRADUAL)
+		inflict_atom_damage(damage_per_fire_tick, damage_flag = ARMOR_FIRE, damage_mode = DAMAGE_MODE_GRADUAL)
 
 /obj/structure/window/drop_products(method, atom/where)
 	. = ..()

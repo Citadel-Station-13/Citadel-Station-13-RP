@@ -301,4 +301,4 @@ var/list/blobs = list()
 	qdel(src)
 
 /turf/simulated/wall/blob_act()
-	inflict_atom_damage(100, flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)
+	inflict_atom_damage(100, damage_flag = ARMOR_MELEE, attack_type = ATTACK_TYPE_MELEE)

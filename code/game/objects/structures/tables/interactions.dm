@@ -71,7 +71,7 @@
 					else
 						playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
 					var/turf/old_loc = loc
-					inflict_atom_damage(40, flag = ARMOR_MELEE)
+					inflict_atom_damage(40, damage_flag = ARMOR_MELEE)
 					if(QDELETED(src))
 						// got broken
 						visible_message(SPAN_DANGER("[src] shatters under the impact!"))

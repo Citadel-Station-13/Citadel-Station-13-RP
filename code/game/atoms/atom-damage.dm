@@ -39,10 +39,11 @@
  * * this happens after shieldcalls, armor checks, etc, all resolve.
  * * at this point, nothing should modify damage
  * * for things like limb damage and armor handling, check the armor/etc in process_damage_instance
- * * this is pretty much the handoff point where defense processing hands off to medical code for wound creation.
  * * for this reason, we do not allow any returns.
  * * if hit_zone is not specified, this is considered overall damage.
  * * overall damage is implementation-defined, so it's recommended to, ironically, not try to standardize that too much.
+ * * this is pretty much the hand-off proc where damage goes from hit processing / defense checks to the damage system for an entity
+ * * the damage system can be a medical system or just the atom integrity system.
  */
 /atom/proc/inflict_damage_instance(SHIELDCALL_PROC_HEADER)
 	// default atom damage handling
