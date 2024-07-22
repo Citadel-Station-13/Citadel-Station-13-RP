@@ -46,10 +46,10 @@
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "crate of bar supplies"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/
+/datum/supply_pack2/nanotrasen/hospitality/
 	group = "Hospitality"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/pizza
+/datum/supply_pack2/nanotrasen/hospitality/pizza
 	num_contained = 5
 	contains = list(
 			/obj/item/pizzabox/margherita,
@@ -76,7 +76,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "crate of gifts"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/burgers
+/datum/supply_pack2/nanotrasen/hospitality/burgers
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/bigbiteburger,
@@ -90,7 +90,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Burger crate"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/bakery
+/datum/supply_pack2/nanotrasen/hospitality/bakery
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/baguette,
@@ -116,7 +116,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Bakery products crate"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/cakes
+/datum/supply_pack2/nanotrasen/hospitality/cakes
 	num_contained = 2
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/sliceable/applecake,
@@ -134,7 +134,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Cake crate"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/mexican
+/datum/supply_pack2/nanotrasen/hospitality/mexican
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/cheeseburrito,
@@ -147,7 +147,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Mexican takeout crate"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/asian
+/datum/supply_pack2/nanotrasen/hospitality/asian
 	num_contained = 5
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/generalschicken,
@@ -158,7 +158,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Chinese takeout crate"
 
-/datum/supply_pack2/nanotrasen/randomised/hospitality/pizza
+/datum/supply_pack2/nanotrasen/hospitality/pizza
 	cost = 50
 
 /datum/supply_pack2/nanotrasen/hospitality/cookingoil

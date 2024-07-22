@@ -73,7 +73,7 @@
 			/obj/item/storage/box/wormcan/sickly = 5
 			)
 
-/datum/supply_pack2/nanotrasen/randomised/recreation/cheapbait
+/datum/supply_pack2/nanotrasen/recreation/cheapbait
 	name = "Deluxe Fishing Bait"
 	cost = 40
 	container_name = "deluxe bait crate"
@@ -134,7 +134,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "wolfgirl cosplay crate"
 
-/datum/supply_pack2/nanotrasen/randomised/recreation/figures
+/datum/supply_pack2/nanotrasen/recreation/figures
 	name = "Action figures crate"
 	num_contained = 5
 	contains = list(
@@ -153,7 +153,7 @@
 	container_name = "Tabletop miniatures crate"
 	cost = 50
 
-/datum/supply_pack2/nanotrasen/randomised/recreation/plushies
+/datum/supply_pack2/nanotrasen/recreation/plushies
 	name = "Plushies crate"
 	num_contained = 3
 	contains = list(

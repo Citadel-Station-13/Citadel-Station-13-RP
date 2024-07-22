@@ -28,7 +28,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Tech Priest crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/hats
+/datum/supply_pack2/nanotrasen/costumes/hats
 	lazy_gacha_amount = 4
 	lazy_gacha_contained = list(
 		/obj/item/clothing/head/collectable/chef,
@@ -57,7 +57,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Collectable hats crate! Brought to you by Bass.inc!"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/costume
+/datum/supply_pack2/nanotrasen/costumes/costume
 	lazy_gacha_amount = 3
 	lazy_gacha_contained = list(
 		/obj/item/clothing/suit/pirate,
@@ -128,7 +128,7 @@
 		/obj/item/staff/broom,
 	)
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/costume_hats
+/datum/supply_pack2/nanotrasen/costumes/costume_hats
 	name = "Costume hats"
 	container_name = "Actor hats crate"
 	container_type = /obj/structure/closet/crate
@@ -153,7 +153,7 @@
 		/obj/item/clothing/head/ushanka,
 	)
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/dresses
+/datum/supply_pack2/nanotrasen/costumes/dresses
 	name = "Womens formal dress locker"
 	container_name = "Pretty dress locker"
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
@@ -207,7 +207,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari smocks crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/tesh_coats
+/datum/supply_pack2/nanotrasen/costumes/tesh_coats
 	name = "Teshari undercoats"
 	lazy_gacha_amount = 4
 	lazy_gacha_contained = list(
@@ -228,7 +228,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari undercoats crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/tesh_coats_b
+/datum/supply_pack2/nanotrasen/costumes/tesh_coats_b
 	name = "Teshari undercoats (black)"
 	lazy_gacha_amount = 4
 	lazy_gacha_contained = list(
@@ -248,7 +248,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari undercoats crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/tesh_cloaks
+/datum/supply_pack2/nanotrasen/costumes/tesh_cloaks
 	name = "Teshari cloaks"
 	num_contained = 4
 	contains = list(
@@ -268,7 +268,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari cloaks crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/tesh_cloaks_b
+/datum/supply_pack2/nanotrasen/costumes/tesh_cloaks_b
 	name = "Teshari cloaks (black)"
 	num_contained = 4
 	contains = list(
@@ -332,7 +332,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Varsity jackets crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/leathergear
+/datum/supply_pack2/nanotrasen/costumes/leathergear
 	name = "Leather gear"
 	num_contained = 5
 	contains = list(
@@ -382,7 +382,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Eyewear crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/gloves
+/datum/supply_pack2/nanotrasen/costumes/gloves
 	name = "Gloves crate"
 	num_contained = 4
 	contains = list(
@@ -406,7 +406,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Gloves crate"
 
-/datum/supply_pack2/nanotrasen/randomised/costumes/boots
+/datum/supply_pack2/nanotrasen/costumes/boots
 	name = "Boots crate"
 	num_contained = 3
 	contains = list(

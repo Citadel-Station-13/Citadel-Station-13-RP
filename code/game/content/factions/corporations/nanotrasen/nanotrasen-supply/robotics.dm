@@ -8,7 +8,7 @@
 /datum/supply_pack2/nanotrasen/robotics
 	group = "Robotics"
 
-/datum/supply_pack2/nanotrasen/randomised/robotics
+/datum/supply_pack2/nanotrasen/robotics
 	group = "Robotics"
 	access = ACCESS_SCIENCE_ROBOTICS
 
@@ -158,7 +158,7 @@
 	container_name = "\"Odysseus\" Circuit Crate"
 	access = ACCESS_SCIENCE_ROBOTICS
 
-/datum/supply_pack2/nanotrasen/randomised/robotics/exosuit_mod
+/datum/supply_pack2/nanotrasen/robotics/exosuit_mod
 	num_contained = 1
 	contains = list(
 			/obj/random/paintkit,
@@ -171,7 +171,7 @@
 	container_type = /obj/structure/closet/crate/science
 	container_name = "heavy crate"
 
-/datum/supply_pack2/nanotrasen/randomised/robotics/exosuit_mod/durand
+/datum/supply_pack2/nanotrasen/robotics/exosuit_mod/durand
 	contains = list(
 			/obj/random/paintkit/durand,
 			/obj/random/paintkit/durand,
@@ -179,7 +179,7 @@
 			)
 	name = "Random Durand exosuit modkit"
 
-/datum/supply_pack2/nanotrasen/randomised/robotics/exosuit_mod/gygax
+/datum/supply_pack2/nanotrasen/robotics/exosuit_mod/gygax
 	contains = list(
 			/obj/random/paintkit/gygax,
 			/obj/random/paintkit/gygax,

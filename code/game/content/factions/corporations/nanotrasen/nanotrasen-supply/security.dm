@@ -94,7 +94,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 
-/datum/supply_pack2/nanotrasen/randomised/security/carrierarms
+/datum/supply_pack2/nanotrasen/security/carrierarms
 	name = "Armor - Security armguard attachments"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -112,7 +112,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 
-/datum/supply_pack2/nanotrasen/randomised/security/carrierlegs
+/datum/supply_pack2/nanotrasen/security/carrierlegs
 	name = "Armor - Security legguard attachments"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -129,7 +129,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 
-/datum/supply_pack2/nanotrasen/randomised/security/carrierbags
+/datum/supply_pack2/nanotrasen/security/carrierbags
 	name = "Armor - Security p-carrier pouch attachments"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(

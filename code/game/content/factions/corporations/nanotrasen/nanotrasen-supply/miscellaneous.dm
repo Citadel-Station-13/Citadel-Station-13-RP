@@ -6,7 +6,7 @@
 /datum/supply_pack2/nanotrasen/misc
 	category = "Miscellaneous"
 
-/datum/supply_pack2/nanotrasen/randomised/misc/card_packs
+/datum/supply_pack2/nanotrasen/misc/card_packs
 	num_contained = 5
 	contains = list(
 			/obj/item/pack/cardemon,
@@ -18,7 +18,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "cards crate"
 
-/datum/supply_pack2/nanotrasen/randomised/misc/dnd
+/datum/supply_pack2/nanotrasen/misc/dnd
 	num_contained = 4
 	contains = list(
 			/obj/item/toy/character/alien,
@@ -34,7 +34,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Miniature Crate"
 
-/datum/supply_pack2/nanotrasen/randomised/misc/plushies
+/datum/supply_pack2/nanotrasen/misc/plushies
 	num_contained = 5
 	contains = list(
 			/obj/item/toy/plushie/nymph,
@@ -109,7 +109,7 @@
 	container_type = /obj/structure/largecrate/hoverpod
 	container_name = "Hoverpod Crate"
 
-/datum/supply_pack2/nanotrasen/randomised/misc/webbing
+/datum/supply_pack2/nanotrasen/misc/webbing
 	name = "Webbing crate"
 	num_contained = 4
 	contains = list(
