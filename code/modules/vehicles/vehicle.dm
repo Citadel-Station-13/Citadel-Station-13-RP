@@ -53,7 +53,7 @@
 	occupants = list()
 	autogrant_actions_passenger = list()
 	autogrant_actions_controller = list()
-	occupant_actions = list()
+	occupant_actions_legacy = list()
 	generate_actions()
 
 /obj/vehicle/Destroy()

@@ -10,13 +10,9 @@
 	)
 
 	var/enter_delay = 20
-	
-/obj/vehicle/sealed/generate_actions()
-	. = ..()
-	initialize_passenger_action_type(/datum/action/vehicle/sealed/climb_out)
 
 /obj/vehicle/sealed/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
-	if(!istype(dropping) || !isliving(user))
+	if(!istype(dropping) || !isliving(user) || !user.Reachability(src) || !Adjacent(dropping))
 		return ..()
 	if(user == dropping)
 		mob_try_enter(user)
@@ -79,7 +75,7 @@
 
 /**
  * Called when someone tries to climb into us.
- * 
+ *
  * @params
  * * entering - the person attempting to enter
  * * actor - the person trying to put them in us; usually the same as entering, but not always
@@ -87,22 +83,22 @@
  * * enter_delay - the delay for the entry (they have to stay still relative to us)
  * * use_control_flags - override the normal control flags and use these instead
  */
-/obj/vehicle/sealed/proc/mob_try_enter(mob/entering, datum/event_args/actor/actor, silent, enter_delay = enter_delay, use_control_flags)
+/obj/vehicle/sealed/proc/mob_try_enter(mob/entering, datum/event_args/actor/actor, silent, enter_delay = src.enter_delay, use_control_flags)
 	if(isnull(actor))
 		actor = new /datum/event_args/actor(entering)
 	if(!istype(entering))
 		return FALSE
 	if(occupant_amount() >= max_occupants)
 		return FALSE
-	if(do_after(entering, enter_delay, src, FALSE, TRUE))
+	if(do_after(entering, enter_delay, src, NONE, MOBILITY_CAN_USE))
 		return mob_enter(entering)
 	return FALSE
 
 /**
  * Called to put someone into us.
- * 
+ *
  * This should not be overridden; use [mob_entered()] for that
- * 
+ *
  * @params
  * * entering - the person attempting to enter
  * * actor - the person trying to put them in us; usually the same as entering, but not always
@@ -122,9 +118,9 @@
 
 /**
  * At this point, the entry has already happened.
- * 
+ *
  * * Use this for physicality hooks, so refactoring later is easy.
- * 
+ *
  * @params
  * * entering - the person who entered
  * * actor - the person who put them in us; usually the same as the entering mob, but not always
@@ -136,7 +132,7 @@
 
 /**
  * Called when someone tries to eject from us
- * 
+ *
  * @params
  * * exiting - the person attempting to exit
  * * actor - the person trying to eject them; usually the same as exiting, but not always
@@ -148,9 +144,9 @@
 
 /**
  * Called to eject someone from us
- * 
+ *
  * This cannot be overridden
- * 
+ *
  * @params
  * * exiting - the person attempting to exit
  * * actor - the person trying to eject them; usually the same as exiting, but not always
@@ -169,9 +165,9 @@
 
 /**
  * At this point, the exit has already happened.
- * 
+ *
  * * Use this for physicality hooks, so refactoring later is easy.
- * 
+ *
  * @params
  * * exiting - the person who exited
  * * actor - the person who took them out of us; usually the same as the exiting mob, but not always
