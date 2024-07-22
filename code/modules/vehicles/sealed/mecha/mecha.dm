@@ -857,7 +857,8 @@
 /obj/vehicle/sealed/mecha/proc/mechstep(direction)
 	var/current_dir = dir	//For strafing
 	var/result = get_step(src,direction)
-	if(result && Move(result, direction))
+	var/atom/oldloc = loc
+	if(result && (Move(result, direction) || loc != oldloc))
 		if(stomp_sound)
 			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()
