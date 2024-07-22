@@ -403,20 +403,20 @@ SUBSYSTEM_DEF(supply)
  *
  * @return spawned entity
  */
-/datum/contrller/subsystem/supply/proc/instantiate_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint, atom/location)
+/datum/controller/subsystem/supply/proc/instantiate_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint, atom/location)
 
 /**
  * Resolves an entity descriptor, and describes it with a string
  *
  * @return string
  */
-/datum/contrller/subsystem/supply/proc/describe_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
+/datum/controller/subsystem/supply/proc/describe_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
 
 /**
  * Resolves an entity descriptor, and estimates its worth
  *
  * @return number (thalers)
  */
-/datum/contrller/subsystem/supply/proc/value_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
+/datum/controller/subsystem/supply/proc/value_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
 
 #warn impl

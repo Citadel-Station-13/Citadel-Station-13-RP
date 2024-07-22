@@ -109,7 +109,6 @@
 		/obj/item/clothing/accessory/armor/armguards/ballistic,
 	)
 	worth = 750
-	cost = 30
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 

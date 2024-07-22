@@ -33,7 +33,6 @@
 	icon_state = "rig0-medical_bio"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "medical_helm_bio", SLOT_ID_LEFT_HAND = "medical_helm_bio")
 	armor_type = /datum/armor/medical/space
-	helmet_type = /obj/item/clothing/head/helmet/space/void/medical/bio
 
 /obj/item/clothing/suit/space/void/medical/bio
 	name = "biohazard voidsuit"
@@ -41,6 +40,7 @@
 	icon_state = "rig-medical_bio"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "medical_voidsuit_bio", SLOT_ID_LEFT_HAND = "medical_voidsuit_bio")
 	armor_type = /datum/armor/medical/space
+	helmet_type = /obj/item/clothing/head/helmet/space/void/medical/bio
 
 /obj/item/clothing/head/helmet/space/void/medical/alt
 	name = "streamlined medical voidsuit helmet"
