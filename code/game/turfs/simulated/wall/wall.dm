@@ -149,7 +149,7 @@
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	burn(adj_temp)
 	if(adj_temp > material_outer.melting_point)
-		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), flag = ARMOR_FIRE, gradual = TRUE)
+		inflict_atom_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_outer.melting_point)), flag = ARMOR_FIRE, damage_mode = DAMAGE_MODE_GRADUAL)
 
 	return ..()
 
