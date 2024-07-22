@@ -88,6 +88,13 @@
 	return
 
 /datum/supply_pack2/proc/generate()
+	// resolve accesses
+	for(var/i in 1 to length(container_access))
+		var/key = container_access[i]
+		if(ispath(key, /datum/access))
+			var/datum/access/resolved_access = SSjob.access_path_lookup[key]
+			container_access[i] = resolved_access.access_value
+	// auto-detect worth
 	if(isnull(worth))
 		worth = detect_worth()
 		if(!worth)
@@ -96,7 +103,7 @@
 	if(isnull(legacy_cost))
 		legacy_cost = ceil(worth * 0.02)
 
-/datum/supply_pack2/proc/clean()
+/datum/supply_pack2/proc/compact()
 	LAZYCLEARLIST(contains)
 	LAZYCLEARLIST(contains_some)
 	LAZYCLEARLIST(contains_custom_text)
@@ -109,7 +116,8 @@
 		if(isnull(worth_additional))
 			. = INFINITY
 			CRASH("attempted to generate worth on a non-deterministic crate (has contains_some or contains_custom_text); fix this.")
-		. += worth_additional
+	// add worth additional
+	. += worth_additional
 
 	// container
 	if(container_type)

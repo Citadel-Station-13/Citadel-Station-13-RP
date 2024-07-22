@@ -4,8 +4,12 @@
 */
 
 /datum/supply_pack2/nanotrasen/munitions
-	group = "Munitions"
+	abstract_type = /datum/supply_pack2/nanotrasen/munitions
+	category = "Munitions"
 	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS
+	container_access = list(
+		/datum/access/station/security/armory,
+	)
 
 /datum/supply_pack2/nanotrasen/munitions/weapons
 	name = "Weapons - Security basic equipment"

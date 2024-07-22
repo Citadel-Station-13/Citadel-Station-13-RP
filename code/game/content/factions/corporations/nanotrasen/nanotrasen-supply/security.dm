@@ -5,7 +5,8 @@
 
 
 /datum/supply_pack2/nanotrasen/security
-	group = "Security"
+	abstract_type = /datum/supply_pack2/nanotrasen/security
+	category = "Security"
 	container_access = list(
 		/datum/access/station/security/equipment::access_value,
 	)
@@ -149,6 +150,7 @@
 	container_name = "Armor plate crate"
 
 /datum/supply_pack2/nanotrasen/security/armory
+	abstract_type = /datum/supply_pack2/nanotrasen/security/armory
 	container_access = list(
 		/datum/access/station/security/armory::access_value,
 	)
