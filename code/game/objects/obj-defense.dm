@@ -4,11 +4,14 @@
 /obj/ex_act(power, dir, datum/automata/wave/explosion/E)
 	. = ..()
 	// todo: wave explosions
-	inflict_atom_damage(power * (1 / 2.5), flag = ARMOR_BOMB)
+	// no named arguments for speed reasons
+	run_damage_instance(power * (1 / 2.5) * (0.01 * rand(80, 120)), BRUTE, null, ARMOR_BOMB)
 
 /obj/legacy_ex_act(severity, target)
 	. = ..()
-	inflict_atom_damage(global._legacy_ex_atom_damage[severity], flag = ARMOR_BOMB)
+	// todo: wave explosions
+	// no named arguments for speed reasons
+	run_damage_instance(global._legacy_ex_atom_damage[severity] * (0.01 * rand(80, 120)), BRUTE, null, ARMOR_BOMB)
 
 /obj/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
 	// todo: maybe the item side should handle this?
@@ -56,7 +59,7 @@
 		proj.damage_flag,
 		proj.damage_mode,
 		ATTACK_TYPE_PROJECTILE,
-		projectile,
+		proj,
 		NONE,
 		def_zone,
 		null,

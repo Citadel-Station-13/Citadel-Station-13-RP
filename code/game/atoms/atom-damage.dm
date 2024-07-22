@@ -57,29 +57,28 @@
  * usable by anything.
  *
  * * This does **not** invoke the shieldcall API!
- * * This is because this is low level enough we don't want to invoke shieldcalls.
+ * * This does **not** invoke the armor API!
+ * * This is because damage instance processing should be processing that.
  *
  * @params
  * * damage - raw damage
- * * tier - (optional) penetration / attack tier
- * * flag - (optional) armor flag as seen in [code/__DEFINES/combat/armor.dm]; leave out to not run armor.
- * * mode - (optional) damage_mode
+ * * damage_type - (optional) damage type to inflict
+ * * damage_tier - (optional) resulting damage tier
+ * * damage_flag - (optional) resulting damage armor flag from [code/__DEFINES/combat/armor.dm]
+ * * damage_mode - (optional) DAMAGE_MODE_* flags
+ * * hit_zone - (optional) the zone being hit
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
- * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * weapon - (optional) attacking datum; same format as shieldcall API. See shieldcalls for more information.
  *
  * @return raw damage taken
  */
-/atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon)
+/atom/proc/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
 	if(!integrity_enabled)
 		return 0
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		return 0
-	if(flag)
-		var/list/returned = run_armor(damage, null, tier, flag, mode, attack_type, weapon)
-		damage = returned[SHIELDCALL_ARG_DAMAGE]
-		mode = returned[SHIELDCALL_ARG_DAMAGE_MODE]
 	if(!damage)
-		return
+		return 0
 	. = integrity
 	damage_integrity(damage)
 	. = . - integrity

@@ -58,7 +58,7 @@
 		user.do_attack_animation(src)
 		user.setClickCooldown(user.get_attack_speed())
 
-/obj/effect/energy_field/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon)
+/obj/effect/energy_field/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
 	adjust_strength(damage / 20)
 	return damage
 

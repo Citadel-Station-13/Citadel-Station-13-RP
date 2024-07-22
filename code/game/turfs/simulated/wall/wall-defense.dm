@@ -69,7 +69,7 @@
 		proj.damage_flag,
 		proj.damage_mode,
 		ATTACK_TYPE_PROJECTILE,
-		projectile,
+		proj,
 		NONE,
 		def_zone,
 		null,
