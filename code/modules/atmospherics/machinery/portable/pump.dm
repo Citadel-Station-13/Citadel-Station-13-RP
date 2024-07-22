@@ -5,6 +5,8 @@
 	density = 1
 	w_class = WEIGHT_CLASS_NORMAL
 
+	worth_intrinsic = 275
+
 	var/direction_out = 0 //0 = siphoning, 1 = releasing
 	var/target_pressure = ONE_ATMOSPHERE
 

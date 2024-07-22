@@ -485,8 +485,8 @@
 	icon_state = "lightmixed"
 	starts_with = list(
 		/obj/item/light/tube = 16,
-		/obj/item/light/bulb = 8
-		)
+		/obj/item/light/bulb = 8,
+	)
 
 /obj/item/storage/box/lights/fairy
 	name = "box of replacement fairy bulbs"

@@ -9,6 +9,8 @@ var/list/gyrotrons = list()
 	use_power = USE_POWER_IDLE
 	active_power_usage = 50000
 
+	worth_intrinsic = 700
+
 	circuit = /obj/item/circuitboard/gyrotron
 
 	var/id_tag

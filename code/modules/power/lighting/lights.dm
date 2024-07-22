@@ -48,11 +48,15 @@
 	nightshift_range = 6
 	nightshift_power = 0.5
 
+	worth_intrinsic = 10
+
 /obj/item/light/tube/large
 	w_class = WEIGHT_CLASS_SMALL
 	name = "large light tube"
 	brightness_range = 8
 	brightness_power = 1
+
+	worth_intrinsic = 20
 
 //! ## Colored Light Tubes
 
@@ -120,6 +124,8 @@
 	nightshift_color = null
 	nightshift_range = null
 	nightshift_power = null
+
+	worth_intrinsic = 5
 
 /obj/item/light/bulb/strong
 	name = "light bulb"

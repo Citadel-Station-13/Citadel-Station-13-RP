@@ -6,7 +6,7 @@
 /datum/supply_pack2/nanotrasen/munitions
 	abstract_type = /datum/supply_pack2/nanotrasen/munitions
 	category = "Munitions"
-	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS
+	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS | SUPPLY_PACK_RESTRICT_PRIVATE_ORDERS
 	container_access = list(
 		/datum/access/station/security/armory,
 	)

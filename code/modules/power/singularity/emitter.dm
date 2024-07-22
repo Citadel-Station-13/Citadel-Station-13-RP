@@ -9,6 +9,8 @@
 	density = 1
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 	armor_type = /datum/armor/object/medium
+
+	worth_intrinsic = 350
 	var/id = null
 
 	use_power = USE_POWER_OFF	//uses powernet power, not APC power

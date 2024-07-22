@@ -99,6 +99,9 @@
 		worth = detect_worth()
 		if(!worth)
 			stack_trace("pack [src] ([type]) failed to detect worth.")
+	// autoset container name
+	if(isnull(container_name))
+		container_name = name
 	// legacy
 	if(isnull(legacy_cost))
 		legacy_cost = ceil(worth * 0.02)
