@@ -284,6 +284,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/flare
 	projectile_type = /obj/projectile/energy/flash
 	one_handed_penalty = 0
+	worth_intrinsic = 150
 
 /obj/item/gun/ballistic/shotgun/flare/paramed
 	name = "Paramedic Flare Gun"

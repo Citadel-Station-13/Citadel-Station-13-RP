@@ -306,6 +306,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
+	worth_intrinsic = 500 // op as balls
 
 /obj/item/shield/energy/handle_shield(mob/user)
 	if(!active)

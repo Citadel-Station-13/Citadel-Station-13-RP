@@ -6,6 +6,7 @@
 	item_state = "pen"
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb = list("poked")
+	worth_intrinsic = 25
 	var/fail_message = "<span class='warning'>INVALID USER.</span>"
 	var/selfdestruct = 0 // Explode when user check is failed.
 	var/pin_irremovable = 0 // Cannot be replaced by any pin.

@@ -252,14 +252,14 @@
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
-	worth_intrinsic = 25
+	worth_intrinsic = 18
 
 /obj/item/ammo_casing/a12g/pellet
 	name = "shotgun shell"
 	desc = "A 12 gauge shell."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun
-	worth_intrinsic = 25
+	worth_intrinsic = 18
 
 /obj/item/ammo_casing/a12g/blank
 	name = "shotgun shell"
@@ -267,7 +267,7 @@
 	icon_state = "blshell"
 	projectile_type = /obj/projectile/bullet/blank
 	materials_base = list(MAT_STEEL = 90)
-	worth_intrinsic = 10
+	worth_intrinsic = 5
 
 /obj/item/ammo_casing/a12g/practice
 	name = "shotgun shell"
@@ -275,7 +275,7 @@
 	icon_state = "pshell"
 	projectile_type = /obj/projectile/bullet/practice
 	materials_base = list(MAT_STEEL = 90)
-	worth_intrinsic = 10
+	worth_intrinsic = 5
 
 /obj/item/ammo_casing/a12g/beanbag
 	name = "beanbag shell"
@@ -283,7 +283,7 @@
 	icon_state = "bshell"
 	projectile_type = /obj/projectile/bullet/shotgun/beanbag
 	materials_base = list(MAT_STEEL = 180)
-	worth_intrinsic = 25
+	worth_intrinsic = 12
 
 /obj/item/ammo_casing/a12g/improvised
 	name = "improvised shell"
@@ -300,7 +300,7 @@
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/energy/electrode/stunshot
 	materials_base = list(MAT_STEEL = 360, MAT_GLASS = 720)
-	worth_intrinsic = 25
+	worth_intrinsic = 15
 
 //Does not stun, only blinds, but has area of effect.
 /obj/item/ammo_casing/a12g/flare
@@ -309,7 +309,7 @@
 	icon_state = "fshell"
 	projectile_type = /obj/projectile/energy/flash/flare
 	materials_base = list(MAT_STEEL = 90, MAT_GLASS = 90)
-	worth_intrinsic = 25
+	worth_intrinsic = 10
 
 //Silver 12g
 /obj/item/ammo_casing/a12g/silver
@@ -319,7 +319,7 @@
 	caliber = "12g"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
-	worth_intrinsic = 50
+	worth_intrinsic = 35
 
 //Wooden Stake 12g
 /obj/item/ammo_casing/a12g/stake
@@ -329,7 +329,7 @@
 	caliber = "12g"
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
-	worth_intrinsic = 75
+	worth_intrinsic = 65
 
 //Techshell & Derivatives
 /obj/item/ammo_casing/a12g/techshell
@@ -339,7 +339,7 @@
 	caliber = "12g"
 	projectile_type = null
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
-	worth_intrinsic = 50
+	worth_intrinsic = 35
 
 /obj/item/ammo_casing/a12g/techshell/meteorslug
 	name = "meteorslug shell"

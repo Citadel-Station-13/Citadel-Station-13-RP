@@ -9,7 +9,7 @@
 	use_old_icon_update = TRUE
 	depth_level = 8
 	armor_type = /datum/armor/object/medium
-	worth_intrinsic = 100
+	worth_intrinsic = 75
 	var/points_per_crate = 5
 	var/rigged = 0
 

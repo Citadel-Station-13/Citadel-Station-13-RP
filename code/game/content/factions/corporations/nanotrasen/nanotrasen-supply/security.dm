@@ -7,10 +7,24 @@
 /datum/supply_pack2/nanotrasen/security
 	abstract_type = /datum/supply_pack2/nanotrasen/security
 	category = "Security"
+	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_access = list(
 		/datum/access/station/security/equipment,
 	)
 	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS
+
+/datum/supply_pack2/nanotrasen/security/weapons
+	name = "Weapons - Security basic equipment"
+	contains = list(
+		/obj/item/flash = 2,
+		/obj/item/reagent_containers/spray/pepper = 2,
+		/obj/item/melee/baton/loaded = 2,
+		/obj/item/gun/energy/taser = 2,
+		/obj/item/gunbox = 2,
+		/obj/item/storage/box/flashbangs = 2,
+	)
+	worth = 400
+	container_name = "Security equipment crate"
 
 /datum/supply_pack2/nanotrasen/security/armor
 	name = "Armor - Security armor"
