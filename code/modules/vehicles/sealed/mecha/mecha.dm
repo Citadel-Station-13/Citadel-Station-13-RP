@@ -1192,8 +1192,6 @@
 
 	if(!(Proj.nodamage))
 		var/ignore_threshold
-		if(istype(Proj, /obj/projectile/beam/pulse))	//ATM, this is literally only for the pulse rifles used mostly by deathsquads.
-			ignore_threshold = 1
 
 		var/pass_damage = Proj.damage
 		var/pass_damage_reduc_mod
@@ -1208,7 +1206,7 @@
 		else if(Proj.armor_penetration < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
 			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
-			pass_damage_reduc_mod = temp_fail_penetration_value	//This will apply to reduce damage to 2/3 or 66% by default
+			pass_damage_reduc_mod = temp_fail_penetration_value / 1.5	//This will apply to reduce damage to 2/3 or 66% by default
 
 		else	//You go through completely because you use AP. Nice.
 			src.occupant_message("<span class='notice'>\The [Proj] manages to pierce \the [src] armor.</span>")
