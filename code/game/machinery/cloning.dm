@@ -120,7 +120,6 @@
 	H.update_health()
 
 	clonemind.transfer(H)
-	H.ckey = R.ckey
 	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
 
 	// -- Mode/mind specific stuff goes here
@@ -495,7 +494,8 @@
 	name = "data disk - 'God Emperor of Mankind'"
 	read_only = 1
 
-/obj/item/disk/data/demo/New()
+/obj/item/disk/data/demo/Initialize(mapload)
+	. = ..()
 	initializeDisk()
 	buf.types=DNA2_BUF_UE|DNA2_BUF_UI
 	//data = "066000033000000000AF00330660FF4DB002690"

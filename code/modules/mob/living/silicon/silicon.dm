@@ -267,17 +267,14 @@
 	var/sensor_type = input("Please select sensor type.", "Sensor Integration", null) as null|anything in list("Security","Medical","Disable")
 	if(isnull(sensor_type))
 		return
-	switch(hudmode)
-		if("Security")
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(src)
-		if("Medical")
-			get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
+
+	self_perspective.remove_atom_hud(source = ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 	switch(sensor_type)
 		if ("Security")
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(src)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/security/advanced, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Security records overlay enabled.</span>")
 		if ("Medical")
-			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Life signs monitor overlay enabled.</span>")
 		if ("Disable")
 			to_chat(src,"Sensor augmentations disabled.")
@@ -304,7 +301,7 @@
 	return 1
 
 /mob/living/silicon/legacy_ex_act(severity)
-	if(!blinded)
+	if(!has_status_effect(/datum/status_effect/sight/blindness))
 		flash_eyes()
 
 	switch(severity)

@@ -107,6 +107,32 @@
 
 // todo: refactor above
 
+//* Damage *//
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_brute_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_fire_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_tox_loss(amount)
+	return 0
+
+/**
+ * @return amount healed
+ */
+/mob/living/proc/heal_oxy_loss(amount)
+	return 0
+
 //* Raw Damage *//
 
 /**

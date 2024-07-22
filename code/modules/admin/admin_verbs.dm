@@ -155,6 +155,7 @@ var/list/admin_verbs_spawn = list(
 	/client/proc/virus2_editor,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
+	// /client/proc/overmap_upload,
 	/client/proc/map_template_load_on_new_z
 	)
 

@@ -21,7 +21,8 @@
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
-	action_button_name = "Toggle Heatsink"
+	rad_flags = NONE
+	item_action_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
 	armor_type = /datum/armor/hardsuit
@@ -75,7 +76,7 @@
 	var/obj/item/hardsuit_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
 	var/obj/item/hardsuit_module/voice/speech                      // As above.
 	var/mob/living/carbon/human/wearer                        // The person currently wearing the hardsuit.
-	var/image/mob_icon                                        // Holder for on-mob icon.
+	var/mutable_appearance/mob_icon                                        // Holder for on-mob icon.
 	var/list/installed_modules = list()                       // Power consumption/use bookkeeping.
 
 	// Cooling system vars.
@@ -288,9 +289,11 @@
 	switch(slot_id_or_hand_index)
 		if(SLOT_ID_BACK)
 			if(mob_icon)
+				mob_icon.color = color
 				return mob_icon
 		if(SLOT_ID_BELT)
 			if(mob_icon)
+				mob_icon.color = color
 				return mob_icon
 	return ..()
 
@@ -445,6 +448,7 @@
 					if(seal_delay && !instant && !do_self(M, seal_delay, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 						failed_to_seal = 1
 
+					piece.copy_atom_colour(src)
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
 					piece.update_worn_icon()
 					switch(msg_type)
@@ -480,6 +484,7 @@
 			if(!piece)
 				continue
 			piece.icon_state = "[suit_state][is_activated() ? "_sealed" : ""]"
+			piece.copy_atom_colour(src)
 			piece.update_worn_icon()
 
 		if(is_activated())
@@ -535,7 +540,7 @@
 		else
 			update_airtight(piece, 1) // Seal
 
-/obj/item/hardsuit/ui_action_click()
+/obj/item/hardsuit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_cooling(usr)
 
 /obj/item/hardsuit/proc/toggle_cooling(var/mob/user)
@@ -793,7 +798,8 @@
 		// update_inv_wear_suit(), handle species checks here.
 		if(wearer && sprite_sheets && sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)])
 			species_icon =  sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)]
-		mob_icon = icon(icon = species_icon, icon_state = "[icon_state]")
+		mob_icon = mutable_appearance(icon = species_icon, icon_state = "[icon_state]")
+		mob_icon.color = color
 
 	if(installed_modules.len)
 		for(var/obj/item/hardsuit_module/module in installed_modules)
@@ -950,6 +956,7 @@
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)
 				return
+			use_obj.copy_atom_colour(src)
 			if(!H.equip_to_slot_if_possible(use_obj, equip_to, null, INV_OP_FORCE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")

@@ -19,14 +19,14 @@ SUBSYSTEM_DEF(mapping)
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
-	TO_WORLD("Loading with Map: [src.loaded_station]")//This is just for IntTest logs
-
 	// load data
 	// todo: refactor
 	load_map_templates()
 	// todo: refactor
 	preloadShelterTemplates()
 
+	// init obfuscation
+	init_obfuscation_data()
 	// init maps
 	init_maps()
 	// load the map to use
@@ -35,10 +35,6 @@ SUBSYSTEM_DEF(mapping)
 	// load world - this also initializes our first reserved level, which is compiled in.
 	load_station()
 
-	// perform snowflake legacy init stuff
-	// todo: refactor
-	if(!(LEGACY_MAP_DATUM).overmap_z)
-		build_overmap()
 	// todo: refactor - Set up antagonists.
 	populate_antag_type_list()
 	// todo: refactor - Set up spawn points.

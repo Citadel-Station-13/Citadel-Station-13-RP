@@ -59,18 +59,18 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 
 	/// our score
 	var/score
-	/// our inherent cost
-	var/weight
+	/// our self-heuristic
+	var/heuristic
 	/// node depth to get to here
 	var/depth
 	/// cost to get here from prev - built off of prev
 	var/cost
 
-/datum/astar_node/New(turf/pos, datum/astar_node/prev, score, weight, depth, cost)
+/datum/astar_node/New(turf/pos, datum/astar_node/prev, score, heuristic, depth, cost)
 	src.pos = pos
 	src.prev = prev
 	src.score = score
-	src.weight = weight
+	src.heuristic = heuristic
 	src.depth = depth
 	src.cost = cost
 
@@ -85,10 +85,11 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 		if(!isnull(TURF)) { \
 			if(ASTAR_ADJACENCY_CALL(current, considering)) { \
 				considering_cost = top.cost + considering.path_weight; \
-				considering_score = ASTAR_HEURISTIC_CALL(considering) * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
+				considering_heuristic = ASTAR_HEURISTIC_CALL(considering); \
+				considering_score = considering_heuristic * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
 				considering_node = node_by_turf[considering]; \
 				if(isnull(considering_node)) { \
-					considering_node = new /datum/astar_node(considering, top, considering_score, considering_cost, top.depth + 1, considering_cost); \
+					considering_node = new /datum/astar_node(considering, top, considering_score, considering_heuristic, top.depth + 1, considering_cost); \
 					open.enqueue(considering_node); \
 					node_by_turf[considering] = considering_node; \
 					turfs_got_colored[considering] = TRUE; \
@@ -112,10 +113,11 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 		if(!isnull(TURF)) { \
 			if(ASTAR_ADJACENCY_CALL(current, considering)) { \
 				considering_cost = top.cost + considering.path_weight; \
-				considering_score = ASTAR_HEURISTIC_CALL(considering) * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
+				considering_heuristic = ASTAR_HEURISTIC_CALL(considering); \
+				considering_score = considering_heuristic * ASTAR_HEURISTIC_WEIGHT + considering_cost; \
 				considering_node = node_by_turf[considering]; \
 				if(isnull(considering_node)) { \
-					considering_node = new /datum/astar_node(considering, top, considering_score, considering_cost, top.depth + 1, considering_cost); \
+					considering_node = new /datum/astar_node(considering, top, considering_score, considering_heuristic, top.depth + 1, considering_cost); \
 					open.enqueue(considering_node); \
 					node_by_turf[considering] = considering_node; \
 				} \
@@ -162,12 +164,22 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 	var/turf/considering
 	var/considering_score
 	var/considering_cost
+	var/considering_heuristic
 	var/datum/astar_node/considering_node
 	var/list/node_by_turf = list()
+
+	// experimental: slack
+	// tracks the current best node so we can return it if it's within slack distance.
+	var/datum/astar_node/best_node_so_far
+	// cost of best node so far
+	var/best_cost_so_far = INFINITY
+	// end
+
 	// make queue
 	var/datum/priority_queue/open = new /datum/priority_queue(/proc/cmp_astar_node)
 	// add initial node
-	var/datum/astar_node/initial_node = new(start, null, ASTAR_HEURISTIC_CALL(start), 0, 0, 0)
+	var/start_heuristic = ASTAR_HEURISTIC_CALL(start)
+	var/datum/astar_node/initial_node = new(start, null, start_heuristic * ASTAR_HEURISTIC_WEIGHT, start_heuristic, 0, 0)
 	open.enqueue(initial_node)
 	node_by_turf[start] = initial_node
 
@@ -180,6 +192,13 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 		// get best node
 		var/datum/astar_node/top = open.dequeue()
 		current = top.pos
+
+		// experimental: slack
+		if(top.heuristic < best_cost_so_far)
+			best_node_so_far = top
+			best_cost_so_far = top.heuristic
+		// end
+
 		#ifdef ASTAR_DEBUGGING
 		top.pos.color = ASTAR_VISUAL_COLOR_CURRENT
 		turfs_got_colored[top.pos] = TRUE
@@ -190,24 +209,11 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 
 		// get distance and check completion
 		if(get_dist(current, goal) <= target_distance && (target_distance != 1 || !require_adjacency_when_going_adjacent || current.TurfAdjacency(goal)))
-			// found; build path end to start of nodes
-			var/list/path_built = list()
-			while(top)
-				path_built += top.pos
-				#ifdef ASTAR_DEBUGGING
-				top.pos.color = ASTAR_VISUAL_COLOR_FOUND
-				turfs_got_colored[top] = TRUE
-				#endif
-				top = top.prev
-			// reverse
-			var/head = 1
-			var/tail = length(path_built)
-			while(head < tail)
-				path_built.Swap(head++, tail--)
 			#ifdef ASTAR_DEBUGGING
-			astar_wipe_colors_after(turfs_got_colored, GLOB.astar_visualization_persist)
+			return astar_unwind_path(top, turfs_got_colored)
+			#else
+			return astar_unwind_path(top)
 			#endif
-			return path_built
 
 		// too deep, abort
 		if(top.depth + get_dist(current, goal) > max_depth)
@@ -237,9 +243,47 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 			#endif
 			CRASH("A* hit node limit - something went horribly wrong! args: [json_encode(args)]; vars: [json_encode(vars)]")
 
+	// experimental: slack
+	if(!isnull(slack) && best_node_so_far.heuristic <= slack)
+		#ifdef ASTAR_DEBUGGING
+		return astar_unwind_path(best_node_so_far, turfs_got_colored)
+		#else
+		return astar_unwind_path(best_node_so_far)
+		#endif
+	// end
+	#ifdef ASTAR_DEBUGGING
+	else
+		astar_wipe_colors_after(turfs_got_colored, GLOB.astar_visualization_persist)
+	#endif
+
+/**
+ * The proc used to grab the nodes back in order from start to finish after the algorithm runs.
+ *
+ * todo: ASTAR_DEBUGGING cleanup shouldn't happen in here, it should happen in or after main proc.
+ */
+#ifdef ASTAR_DEBUGGING
+/datum/pathfinding/astar/proc/astar_unwind_path(datum/astar_node/top, list/turfs_got_colored)
+#else
+/datum/pathfinding/astar/proc/astar_unwind_path(datum/astar_node/top)
+#endif
+	// found; build path end to start of nodes
+	var/list/path_built = list()
+	while(top)
+		path_built += top.pos
+		#ifdef ASTAR_DEBUGGING
+		top.pos.color = ASTAR_VISUAL_COLOR_FOUND
+		turfs_got_colored[top] = TRUE
+		#endif
+		top = top.prev
+	// reverse
+	var/head = 1
+	var/tail = length(path_built)
+	while(head < tail)
+		path_built.Swap(head++, tail--)
 	#ifdef ASTAR_DEBUGGING
 	astar_wipe_colors_after(turfs_got_colored, GLOB.astar_visualization_persist)
 	#endif
+	return path_built
 
 #undef ASTAR_HELL_DEFINE
 #undef ASTAR_HEURISTIC_CALL
@@ -252,7 +296,10 @@ GLOBAL_VAR_INIT(astar_visualization_persist, 3 SECONDS)
 	#undef ASTAR_DEBUGGING
 
 	#undef ASTAR_VISUAL_COLOR_CLOSED
+	#undef ASTAR_VISUAL_COLOR_OUT_OF_BOUNDS
 	#undef ASTAR_VISUAL_COLOR_OPEN
 	#undef ASTAR_VISUAL_COLOR_CURRENT
 	#undef ASTAR_VISUAL_COLOR_FOUND
+
+	#undef ASTAR_TRACE_COLOR_REDIRECTED
 #endif

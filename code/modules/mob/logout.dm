@@ -1,5 +1,22 @@
 
 /**
+ * called before logout, because by the time logout happens client is no longer in us
+ *
+ * * anything changing a mob's ckey must call this!
+ * * much like Logout(), this is only called if we have a client.
+ */
+/mob/proc/pre_logout()
+	if(!client)
+		return
+	if(client.action_drawer)
+		if(actions_controlled)
+			client.action_drawer.unregister_holder(actions_controlled)
+		if(actions_innate)
+			client.action_drawer.unregister_holder(actions_innate)
+		if(inventory)
+			client.action_drawer.unregister_holder(inventory.actions)
+
+/**
  * Linter check, do not call.
  */
 /proc/lint__check_mob_logout_doesnt_sleep()

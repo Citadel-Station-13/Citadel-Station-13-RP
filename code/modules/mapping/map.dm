@@ -8,6 +8,11 @@
 	abstract_type = /datum/map
 	/// id - must be unique
 	var/id
+	/// mangling id override
+	var/mangling_id
+	/// force mangling ids of levels to be the same
+	/// you usually want this to be on!
+	var/levels_match_mangling_id = TRUE
 	/// override map id for persistence so two maps are considered the same
 	/// two maps should **never** be loaded at the same time with the same persistence ID!
 	var/persistence_id
@@ -127,6 +132,8 @@
 			var/datum/map_level/level_instance = new level_path
 			level_instance.hardcoded = TRUE
 			levels[i] = level_instance
+			if(levels_match_mangling_id)
+				level_instance.mangling_id = mangling_id || id
 
 /**
  * anything to do immediately on load
@@ -161,6 +168,23 @@
 	/// allow random picking if no map set
 	/// used to exclude indev maps
 	var/allow_random_draw = TRUE
+
+	//* Game World *//
+	/// world_location's this is considered
+	/// set to id, or typepath to parse into id in New()
+	///
+	/// * if null, the storyteller system will be inactive.
+	/// * if null, many game systems might be inoperational, including things like supply factions.
+	var/list/world_location_ids = list(
+		/datum/world_location/frontier::id,
+	)
+	/// world faction this is primarily under the control of
+	/// set to id, or typepath to parse into id in New()
+	/// this is considered the primary, player-facing faction of the round, with other factions being 'off'-maps.
+	///
+	/// * if null, the storyteller system will be inactive.
+	/// * seriously you don't want this to be null.
+	var/world_faction_id = /datum/world_faction/corporation/nanotrasen::id
 
 	//! legacy below
 
@@ -228,7 +252,6 @@
 
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
-	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
 	/// list of title cutscreens by path to display. for legacy support, tuples of list(icon, state) work too. associate to % chance, defaulting to 1.
@@ -361,8 +384,7 @@
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
-		var/turf/T = get_turf(O)
-		for(var/obj/overmap/entity/visitable/V in range(om_range, T))
+		for(var/obj/overmap/entity/visitable/V in bounds(O, om_range))
 			connections |= V.map_z	// Adding list to list adds contents
 		return connections
 

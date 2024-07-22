@@ -78,6 +78,10 @@
 	insertion_whitelist = list() // any
 	insertion_blacklist = list(/obj/item/disk/nuclear)
 
+/obj/item/storage/bag/trash/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
+
 /obj/item/storage/bag/trash/update_icon_state()
 	switch(w_class)
 		if(3)

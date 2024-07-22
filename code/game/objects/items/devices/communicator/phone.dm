@@ -71,7 +71,7 @@
 	message_admins(msg)
 	log_game(msg)
 	new_voice.mind = candidate.mind			//Transfer the mind, if any.
-	new_voice.ckey = candidate.ckey			//Finally, bring the client over.
+	candidate.transfer_client_to(new_voice)
 	voice_mobs.Add(new_voice)
 	listening_objects |= src
 
@@ -328,14 +328,14 @@
 // Proc: connect_video()
 // Parameters: user - the mob doing the viewing of video, comm - the communicator at the far end
 // Description: Sets up a videocall and puts the first view into it using watch_video, and updates the icon
-/obj/item/communicator/proc/connect_video(mob/user,obj/item/communicator/comm)
+/obj/item/communicator/proc/connect_video(mob/living/user,obj/item/communicator/comm)
 	if((!user) || (!comm) || user.stat) return //KO or dead, or already in a video
 
 	if(video_source) //Already in a video
 		to_chat(user, "<span class='danger'>You are already connected to a video call!</span>")
 		return
 
-	if(user.blinded) //User is blinded
+	if(user.has_status_effect(/datum/status_effect/sight/blindness)) //User is blinded
 		to_chat(user, "<span class='danger'>You cannot see well enough to do that!</span>")
 		return
 

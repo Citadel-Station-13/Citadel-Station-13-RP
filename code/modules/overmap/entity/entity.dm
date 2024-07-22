@@ -2,27 +2,50 @@
  * entities
  *
  * overmap objects capable of motion
+ *
+ * * overmap objects use pixel movement
+ * * overmap objects call Moved() at very, very weird times.
+ * * overmap objects do not respond to normal Enter/Exit checks, overmap turfs and objects must use Cross()/Uncross() and their -ed versions.
  */
 /obj/overmap/entity
-	//* identity
+	// pixel movement gaming
+	appearance_flags = KEEP_TOGETHER
+	pixel_movement = TRUE
+	animate_movement = NONE
+	glide_size = 128
+	step_size = INFINITY
+	uses_bounds_overlay = TRUE
+
+	//* identity *//
 	/// id
 	var/id
 	/// next id
 	var/static/id_next = 0
 
-	//* physics
+	//* overmap *//
+	/// if we're currently in an overmap; if so, which?
+	var/datum/overmap/overmap
+
+	//* physics *//
 	/// velocity x in overmap units per second
 	var/vel_x
 	/// velocity y in overmap units per second
 	var/vel_y
-	/// position x in overmap units
+	/// cached, read-only cached center x in overmap dist
 	var/pos_x
-	/// position y in overmap units
+	/// cached, read-only cached center y in overmap dist
 	var/pos_y
+	/// bump was handled
+	var/bump_handled = FALSE
+
 	/// max speed in overmap units per second
-	var/max_speed = OVERMAP_DISTANCE_TILE
+	var/max_speed = OVERMAP_DISTANCE_TILE * 2
 	/// is moving
 	var/tmp/is_moving = FALSE
+	/// is forced moving
+	///
+	/// todo: reevaluate if this is the right way to perform forced movements like wrapping.
+	var/tmp/is_forced_moving = FALSE
 
 /obj/overmap/entity/New()
 	// assign id immediately
@@ -31,16 +54,23 @@
 
 /obj/overmap/entity/Initialize(mapload)
 	. = ..()
+	// init physics
 	initialize_physics()
 	update_velocity_ticking()
+	// add to spatial grid
+	AddComponent(/datum/component/spatial_grid, SSspatial_grids.overmap_entities)
 
 /obj/overmap/entity/Destroy()
+	// stop physics
 	deactivate_physics()
 	return ..()
 
+/obj/overmap/entity/set_glide_size(new_glide_size, recursive)
+	return
+
 /obj/overmap/entity/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
-	if(!isturf(old_loc) || forced)
+	if(!isturf(old_loc) || (forced && !is_forced_moving))
 		initialize_physics()
 
 /obj/overmap/entity/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
@@ -52,3 +82,18 @@
 			set_velocity(vy = var_value)
 			return TRUE
 	return ..()
+
+/obj/overmap/entity/get_bounds_overlay()
+	return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
+
+/**
+ * called when we join an overmap
+ */
+/obj/overmap/entity/proc/on_overmap_join(datum/overmap/map)
+	src.overmap = map
+
+/**
+ * called when we leave an overmap
+ */
+/obj/overmap/entity/proc/on_overmap_leave(datum/overmap/map)
+	src.overmap = map

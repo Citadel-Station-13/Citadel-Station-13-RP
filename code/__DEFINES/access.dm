@@ -162,6 +162,7 @@ STANDARD_ACCESS_DATUM(ACCESS_COMMAND_UPLOAD, station/command/upload, "AI Upload"
 #define ACCESS_COMMAND_TELEPORTER 17
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_TELEPORTER, station/command/teleporter, "Teleporter")
 
+// todo: rename / repath to general high-security storage for command
 #define ACCESS_COMMAND_EVA 18
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_EVA, station/command/eva, "EVA")
 
@@ -409,6 +410,18 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_PIRATE, faction/pirate, "Pirate")
 
 #define ACCESS_FACTION_TRADER 160//General Beruang Trader Access
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_TRADER, faction/trader, "Trader")
+
+//? Gaia Station
+
+#define ACCESS_GAIA_GUEST 250//Gaia Station Basic Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_GUEST, faction/resort/guest, "Gaia Station Guest")
+
+#define ACCESS_GAIA_VIP 251//Gaia Station Premium Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_VIP, faction/resort/vip, "Gaia Station VIP")
+
+#define ACCESS_GAIA_STAFF 252//Gaia Staff Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_STAFF, faction/resort/staff, "Gaia Station Staff")
+
 
 //? Alien
 

@@ -20,7 +20,11 @@
 /// Materials have been initialized
 #define OBJ_MATERIAL_INITIALIZED    (1<<9)
 /// no sculpting
-#define OBJ_NO_SCULPTING		(1<<10)
+#define OBJ_NO_SCULPTING			(1<<10)
+/// wall-mounted; facing *towards* the wall we're mounted on (e.g. be NORTH if we're shifted north)
+#define OBJ_WALL_MOUNTED			(1<<11)
+/// Allow throwing stuff through us if we get destroyed by a throw
+#define OBJ_ALLOW_THROW_THROUGH     (1<<3)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_EMAGGED),
@@ -34,6 +38,8 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_MATERIAL_PARTS_MODIFIED),
 	BITFIELD(OBJ_MATERIAL_INITIALIZED),
 	BITFIELD(OBJ_NO_SCULPTING),
+	BITFIELD_NAMED("Wall Mounted", OBJ_WALL_MOUNTED),
+	BITFIELD_NAMED("Allow Thrown to Pass if Devastated", OBJ_ALLOW_THROW_THROUGH), // dumb, rename later
 ))
 
 //* /obj/var/obj_rotation_flags

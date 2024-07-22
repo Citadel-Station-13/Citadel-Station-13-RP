@@ -149,14 +149,14 @@ var/list/sacrificed = list()
 					//broken mind - 5000 may seem like a lot I wanted the effect to really stand out for maxiumum losing-your-mind-spooky
 					//hallucination is reduced when the step off as well, provided they haven't hit the last stage...
 
-					//5000 is waaaay too much, in practice.
-					target.hallucination = min(target.hallucination + 100, 500)
+					//5000 is waaaay too much, in practice. (what the actual fuck were these coders thinking?!)
+					target.adjustHallucination(100)
 					target.apply_effect(10, STUTTER)
 					target.adjustBrainLoss(1)
 				if(100 to INFINITY)
 					to_chat(target, "<span class='cult'>Your entire broken soul and being is engulfed in corruption and flames as your mind shatters away into nothing.</span>")
 					//5000 is waaaay too much, in practice.
-					target.hallucination = min(target.hallucination + 100, 500)
+					target.adjustHallucination(100)
 					target.apply_effect(15, STUTTER)
 					target.adjustBrainLoss(1)
 
@@ -181,7 +181,7 @@ var/list/sacrificed = list()
 				if(choice == "Submit") //choosing 'Resist' does nothing of course.
 					cult.add_antagonist(target.mind)
 					converting -= target
-					target.hallucination = 0 //sudden clarity
+					target.setHallucination(0) //sudden clarity
 
 		sleep(100) //proc once every 10 seconds
 	return 1
@@ -278,7 +278,7 @@ var/list/sacrificed = list()
 				if(I.damage > 0)
 					I.damage = max(I.damage - 5, 0)		//Heals 5 damage per organ per use
 				if(I.damage <= 5 && I.organ_tag == O_EYES)
-					H.sdisabilities &= ~SDISABILITY_NERVOUS
+					H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 			// check their limbs
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E
@@ -477,7 +477,7 @@ var/list/sacrificed = list()
 	D.g_eyes = 200
 	D.update_eyes()
 	D.all_underwear.Cut()
-	D.key = ghost.key
+	ghost.transfer_client_to(D)
 	cult.add_antagonist(D.mind)
 
 	if(!chose_name)
@@ -944,11 +944,9 @@ var/list/sacrificed = list()
 			if(N)
 				continue
 			C.eye_blurry += 50
-			C.Blind(20)
+			C.apply_status_effect(/datum/status_effect/sight/blindness, 20 SECONDS)
 			if(prob(5))
 				C.disabilities |= DISABILITY_NEARSIGHTED
-				if(prob(10))
-					C.sdisabilities |= SDISABILITY_NERVOUS
 			C.show_message("<span class='warning'>Suddenly you see a red flash that blinds you.</span>", 3)
 			affected += C
 		if(affected.len)
@@ -967,7 +965,7 @@ var/list/sacrificed = list()
 			if(N)
 				continue
 			C.eye_blurry += 30
-			C.Blind(10)
+			C.apply_status_effect(/datum/status_effect/sight/blindness, 10 SECONDS)
 			//talismans is weaker.
 			affected += C
 			C.show_message("<span class='warning'>You feel a sharp pain in your eyes, and the world disappears into darkness..</span>", 3)

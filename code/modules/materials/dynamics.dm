@@ -1,7 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-//* Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor
+//? Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor ?//
+//? Prefix subsystem procs with 'dynamic_', please!                                                         ?//
+
+//* Armor *//
 
 /**
  * creates an armor datum based off of our stats
@@ -187,6 +190,25 @@
 	resolved = fetch_armor_struct(combined)
 	wall_armor_cache[cache_key] = resolved
 	return resolved
+
+//* Integrity *//
+
+/**
+ * gets overall integrity multiplier from a list of materials associated to significances
+ */
+/datum/controller/subsystem/materials/proc/dynamic_calculate_relative_integrity(list/datum/material/materials)
+	var/total = 0
+	var/pieces = 0
+
+	for(var/datum/material/material as anything in materials)
+		var/significance = materials[material]
+
+		pieces += significance
+		total += material.relative_integrity * significance
+
+	return total / pieces
+
+//* Melee *//
 
 /**
  * get melee stats

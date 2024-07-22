@@ -8,6 +8,25 @@
 	depth_level = 0
 	climb_allowed = FALSE
 
+	//* Actions *//
+
+	/// cached action descriptors
+	///
+	/// this can be:
+	/// * a /datum/action instance
+	/// * a /datum/action typepath
+	/// * a list of /datum/action instancse
+	/// * a list of /datum/action typepaths
+	///
+	/// typepaths get instanced on us entering inventory
+	var/item_actions
+	/// if [item_actions] is not set, and this is, we make a single action rendering ourselves
+	/// and set its name to this
+	var/item_action_name
+	/// if [item_actions] is not set, and [action_name] is set, this is the mobility flags
+	/// the action will check for
+	var/item_action_mobility_flags = MOBILITY_CAN_HOLD | MOBILITY_CAN_USE
+
 	//? Flags
 	/// Item flags.
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
@@ -101,13 +120,6 @@
 	 * Either a list() with equal chances or a single verb.
 	 */
 	var/list/attack_verb = "attacked"
-
-	//? todo: more advanced handling, multi actions, etc
-	var/datum/action/item_action/action = null
-	/// It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
-	var/action_button_name
-	/// If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
-	var/action_button_is_hands_free = 0
 
 	/// 0 prevents all transfers, 1 is invisible
 	//var/heat_transfer_coefficient = 1
@@ -323,131 +335,6 @@
 		else
 			. = ""
 
-/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
-	return TRUE
-
-/obj/item/proc/attempt_pickup(mob/user)
-	. = TRUE
-	if (!user)
-		return
-
-	if(anchored)
-		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
-		return
-
-	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
-		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
-		return
-
-	if (hasorgans(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (H.hand)
-			temp = H.organs_by_name["l_hand"]
-		if(temp && !temp.is_usable())
-			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
-		if(!temp)
-			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
-
-	var/old_loc = src.loc
-	var/obj/item/actually_picked_up = src
-	var/has_to_drop_to_ground_on_fail = FALSE
-
-	if(isturf(old_loc))
-		// if picking up from floor
-		throwing?.terminate()
-	else if(item_flags & ITEM_IN_STORAGE)
-		// trying to take out of backpack
-		var/datum/object_system/storage/resolved
-		if(istype(loc, /atom/movable/storage_indirection))
-			var/atom/movable/storage_indirection/holder = loc
-			resolved = holder.parent
-		else if(isobj(loc))
-			var/obj/obj_loc = loc
-			resolved = obj_loc.obj_storage
-		if(isnull(resolved))
-			item_flags &= ~ITEM_IN_STORAGE
-			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
-		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
-		// they're in user, but not equipped now. this is so it doesn't touch the ground first.
-		has_to_drop_to_ground_on_fail = TRUE
-
-	if(isnull(actually_picked_up))
-		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
-		return
-	if(!user.put_in_hands(actually_picked_up))
-		if(has_to_drop_to_ground_on_fail)
-			actually_picked_up.forceMove(user.drop_location())
-		return
-	// success
-	if(isturf(old_loc))
-		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
-		ghost.assumeform(actually_picked_up)
-		ghost.animate_towards(user)
-
-/obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
-	. = ..()
-	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
-		return
-	if(anchored)	// Don't.
-		return
-	if(user.restrained())
-		return	// don't.
-		// todo: restraint levels, e.g. handcuffs vs straightjacket
-	if(!user.is_in_inventory(src))
-		// not being held
-		if(!isturf(loc))	// yea nah
-			return ..()
-		if(user.Adjacent(src))
-			// check for equip
-			if(istype(over, /atom/movable/screen/inventory/hand))
-				var/atom/movable/screen/inventory/hand/H = over
-				user.put_in_hand(src, H.index)
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			else if(istype(over, /atom/movable/screen/inventory/slot))
-				var/atom/movable/screen/inventory/slot/S = over
-				user.equip_to_slot_if_possible(src, S.slot_id)
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-		// check for slide
-		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
-			var/turf/old = get_turf(src)
-			if(over == old)	// same tile don't bother
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			if(!Move(get_turf(over)))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
-			//! :) FUCK YOU.
-			//! this if check is all for you. FUCK YOU.
-			if(!isobserver(user))
-				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
-			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-	else
-		// being held, check for attempt unequip
-		if(istype(over, /atom/movable/screen/inventory/hand))
-			var/atom/movable/screen/inventory/hand/H = over
-			user.put_in_hand(src, H.index)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /atom/movable/screen/inventory/slot))
-			var/atom/movable/screen/inventory/slot/S = over
-			user.equip_to_slot_if_possible(src, S.slot_id)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else if(istype(over, /turf))
-			user.drop_item_to_ground(src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-
-// funny!
-/mob/proc/CanSlideItem(obj/item/I, turf/over)
-	return FALSE
-
-/mob/living/CanSlideItem(obj/item/I, turf/over)
-	return Adjacent(I) && !incapacitated() && !stat && !restrained()
-
-/mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
-	return is_spooky
-
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/robot_module))
 		//If the item is part of a cyborg module, equip it
@@ -458,9 +345,6 @@
 		R.hud_used.update_robot_modules_display()
 
 /obj/item/proc/talk_into(mob/M as mob, text)
-	return
-
-/obj/item/proc/moved(mob/user as mob, old_loc as turf)
 	return
 
 /obj/item/proc/get_volume_by_throwforce_and_or_w_class() // This is used for figuring out how loud our sounds are for throwing.
@@ -536,7 +420,7 @@
  *This proc is executed when someone clicks the on-screen UI button.
  *The default action is attack_self().
  */
-/obj/item/ui_action_click(datum/action/action, mob/user)
+/obj/item/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	attack_self(usr)
 
 //RETURN VALUES
@@ -584,15 +468,6 @@
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
-	//if((MUTATION_CLUMSY in user.mutations) && prob(50))
-	//	M = user
-		/*
-		to_chat(M, "<span class='warning'>You stab yourself in the eye.</span>")
-		M.sdisabilities |= SDISABILITY_NERVOUS
-		M.weakened += 4
-		M.adjustBruteLoss(10)
-		*/
-
 	if(istype(H))
 
 		var/obj/item/organ/internal/eyes/eyes = H.internal_organs_by_name[O_EYES]
@@ -792,9 +667,97 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	add_fingerprint(user)
 	ui_interact(user)
 
-// /obj/item/update_filters()
-// 	. = ..()
-// 	update_action_buttons()
+//* Actions *//
+
+/**
+ * instructs all our action buttons to re-render
+ */
+/obj/item/proc/update_action_buttons()
+	if(islist(item_actions))
+		for(var/datum/action/action in item_actions)
+			action.update_buttons()
+	else if(istype(item_actions, /datum/action))
+		var/datum/action/action = item_actions
+		action.update_buttons()
+
+/**
+ * ensures our [item_actions] variable is set to:
+ *
+ * * null
+ * * a list of actions
+ * * an action instance
+ */
+/obj/item/proc/ensure_item_actions_loaded()
+	if(item_actions)
+		if(islist(item_actions))
+			var/requires_init = FALSE
+			for(var/i in 1 to length(item_actions))
+				if(ispath(item_actions[i]))
+					requires_init = TRUE
+					break
+			if(requires_init)
+				set_actions_to(item_actions)
+		else if(ispath(item_actions))
+			set_actions_to(item_actions)
+	else if(item_action_name)
+		var/datum/action/item_action/created = new(src)
+		created.name = item_action_name
+		created.check_mobility_flags = item_action_mobility_flags
+		set_actions_to(created)
+
+/**
+ * setter for [item_actions]
+ *
+ * accepts:
+ *
+ * * an instance of /datum/action
+ * * a typepath of /datum/action
+ * * a list of /datum/action instances and typepaths
+ * * null
+ */
+/obj/item/proc/set_actions_to(descriptor)
+	var/mob/worn_mob = worn_mob()
+
+	if(worn_mob)
+		unregister_item_actions(worn_mob)
+
+	if(ispath(descriptor, /datum/action))
+		descriptor = new descriptor(src)
+	else if(islist(descriptor))
+		var/list/transforming = descriptor:Copy()
+		for(var/i in 1 to length(transforming))
+			if(ispath(transforming[i], /datum/action))
+				var/path = transforming[i]
+				transforming[i] = new path(src)
+		descriptor = transforming
+	else
+		item_actions = descriptor
+
+	if(worn_mob)
+		register_item_actions(worn_mob)
+
+/**
+ * handles action granting
+ */
+/obj/item/proc/register_item_actions(mob/user)
+	ensure_item_actions_loaded()
+	if(islist(item_actions))
+		for(var/datum/action/action in item_actions)
+			action.grant(user.inventory.actions)
+	else if(istype(item_actions, /datum/action))
+		var/datum/action/action = item_actions
+		action.grant(user.inventory.actions)
+
+/**
+ * handles action revoking
+ */
+/obj/item/proc/unregister_item_actions(mob/user)
+	if(islist(item_actions))
+		for(var/datum/action/action in item_actions)
+			action.revoke(user.inventory.actions)
+	else if(istype(item_actions, /datum/action))
+		var/datum/action/action = item_actions
+		action.revoke(user.inventory.actions)
 
 //* Armor *//
 
@@ -931,7 +894,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(!isnull(obj_storage) && obj_storage.allow_quick_empty && obj_storage.allow_quick_empty_via_attack_self)
 		var/turf/turf = get_turf(e_args.performer)
 		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
-		return CLICKCHAIN_DO_NOT_PROPAGATE
+		return TRUE
 	return FALSE
 
 /**
@@ -1029,7 +992,149 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		if(should_attempt_pickup(e_args) && attempt_pickup(e_args.performer))
 			return TRUE
 
+/obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(anchored)	// Don't.
+		return
+	if(user.restrained())
+		return	// don't.
+		// todo: restraint levels, e.g. handcuffs vs straightjacket
+	if(!user.is_in_inventory(src))
+		// not being held
+		if(!isturf(loc))	// yea nah
+			return ..()
+		if(user.Adjacent(src))
+			// check for equip
+			if(istype(over, /atom/movable/screen/inventory/hand))
+				var/atom/movable/screen/inventory/hand/H = over
+				user.put_in_hand(src, H.index)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			else if(istype(over, /atom/movable/screen/inventory/slot))
+				var/atom/movable/screen/inventory/slot/S = over
+				user.equip_to_slot_if_possible(src, S.slot_id)
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+		// check for slide
+		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
+			var/turf/old = get_turf(src)
+			if(over == old)	// same tile don't bother
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!Move(get_turf(over)))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
+			//! :) FUCK YOU.
+			//! this if check is all for you. FUCK YOU.
+			if(!isobserver(user))
+				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
+			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	else
+		// being held, check for attempt unequip
+		if(istype(over, /atom/movable/screen/inventory/hand))
+			var/atom/movable/screen/inventory/hand/H = over
+			user.put_in_hand(src, H.index)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(over, /atom/movable/screen/inventory/slot))
+			var/atom/movable/screen/inventory/slot/S = over
+			user.equip_to_slot_if_possible(src, S.slot_id)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else if(istype(over, /turf))
+			user.drop_item_to_ground(src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+
+// funny!
+// todo: move to mob files
+/mob/proc/CanSlideItem(obj/item/I, turf/over)
+	return FALSE
+
+// todo: move to mob files
+/mob/living/CanSlideItem(obj/item/I, turf/over)
+	return Adjacent(I) && !incapacitated() && !stat && !restrained()
+
+// todo: move to mob files
+/mob/observer/dead/CanSlideItem(obj/item/I, turf/over)
+	return is_spooky
+
 //* Inventory *//
+
+/obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
+	return TRUE
+
+/**
+ * @params
+ * * actor - (optional) person doing it
+ * * silent - suppress feedback
+ */
+/obj/item/proc/should_allow_pickup(datum/event_args/actor/actor, silent)
+	if(anchored)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"),
+				target = src,
+			)
+		return FALSE
+	return TRUE
+
+/obj/item/proc/attempt_pickup(mob/user)
+	. = TRUE
+	if (!user)
+		return
+
+	if(!should_allow_pickup(new /datum/event_args/actor(user)))
+		return FALSE
+
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
+		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
+		return
+
+	if (hasorgans(user))
+		var/mob/living/carbon/human/H = user
+		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
+		if (H.hand)
+			temp = H.organs_by_name["l_hand"]
+		if(temp && !temp.is_usable())
+			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
+			return
+		if(!temp)
+			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
+			return
+
+	var/old_loc = src.loc
+	var/obj/item/actually_picked_up = src
+	var/has_to_drop_to_ground_on_fail = FALSE
+
+	if(isturf(old_loc))
+		// if picking up from floor
+		throwing?.terminate()
+	else if(item_flags & ITEM_IN_STORAGE)
+		// trying to take out of backpack
+		var/datum/object_system/storage/resolved
+		if(istype(loc, /atom/movable/storage_indirection))
+			var/atom/movable/storage_indirection/holder = loc
+			resolved = holder.parent
+		else if(isobj(loc))
+			var/obj/obj_loc = loc
+			resolved = obj_loc.obj_storage
+		if(isnull(resolved))
+			item_flags &= ~ITEM_IN_STORAGE
+			CRASH("in storage at [loc] ([REF(loc)]) ([loc?.type || "NULL"]) but cannot resolve storage system")
+		actually_picked_up = resolved.try_remove(src, user, new /datum/event_args/actor(user))
+		// they're in user, but not equipped now. this is so it doesn't touch the ground first.
+		has_to_drop_to_ground_on_fail = TRUE
+
+	if(isnull(actually_picked_up))
+		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
+		return
+	if(!user.put_in_hands(actually_picked_up))
+		if(has_to_drop_to_ground_on_fail)
+			actually_picked_up.forceMove(user.drop_location())
+		return
+	// success
+	if(isturf(old_loc))
+		var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
+		ghost.assumeform(actually_picked_up)
+		ghost.animate_towards(user)
 
 /**
  * Called when someone clisk us on a storage, before the storage handler's
@@ -1068,6 +1173,22 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/MouseExited(location, control, params)
 	..()
 	SEND_SIGNAL(src, COMSIG_ITEM_MOUSE_EXITED, usr)
+
+//* Rendering *//
+
+/**
+ * invokes
+ *
+ * * update_icon()
+ * * update_worn_icon()
+ * * update_action_buttons()
+ *
+ * please be very delicate with this, this is expensive
+ */
+/obj/item/proc/update_full_icon()
+	update_icon()
+	update_worn_icon()
+	update_action_buttons()
 
 //* Storage *//
 

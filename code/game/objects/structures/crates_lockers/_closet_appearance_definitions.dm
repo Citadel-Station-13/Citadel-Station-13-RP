@@ -610,6 +610,13 @@
 /singleton/closet_appearance/secure_closet/sol/two/dark
 	color = COLOR_DARK_BLUE_GRAY
 
+/singleton/closet_appearance/secure_closet/freezer //boring.
+	can_lock = TRUE
+	color = COLOR_WHITE
+	decals = null
+	extra_decals = null
+	base_icon =  'icons/obj/closets/bases/fridge.dmi'
+
 // Crates.
 /singleton/closet_appearance/crate
 	decals = null

@@ -14,6 +14,7 @@
 	name = "Low Endurance"
 	desc = "Reduces your maximum total hitpoints to 75."
 	cost = -2
+	extra_id_info = "Employee is unusually susceptible to all forms of harm."
 	var_changes = list("total_health" = 75)
 
 /datum/trait/negative/endurance_low/apply(datum/species/S, mob/living/carbon/human/H)
@@ -24,6 +25,7 @@
 	name = "Extremely Low Endurance"
 	desc = "Reduces your maximum total hitpoints to 50."
 	cost = -3 //Teshari HP. This makes the person a lot more suseptable to getting stunned, killed, etc.
+	extra_id_info = "Employee is extremely susceptible to all forms of harm."
 	var_changes = list("total_health" = 50)
 
 /datum/trait/negative/endurance_very_low/apply(datum/species/S, mob/living/carbon/human/H)
@@ -46,6 +48,7 @@
 	name = "Major Brute Weakness"
 	desc = "You take 50% more brute damage"
 	cost = -3
+	extra_id_info = "Employee is unusually susceptible to blunt trauma."
 	var_changes = list("brute_mod" = 1.5)
 
 /datum/trait/negative/minor_burn_weak
@@ -64,6 +67,7 @@
 	name = "Major Burn Weakness"
 	desc = "You take 50% more burn damage"
 	cost = -3
+	extra_id_info = "Employee is unusually sensitive to heat."
 	var_changes = list("burn_mod" = 1.5)
 
 /datum/trait/negative/toxin_weak
@@ -76,12 +80,14 @@
 	name = "Major Toxin Weaness"
 	desc = "You take 50% more toxin damage"
 	cost = -2
+	extra_id_info = "Employee's organs are ineffective at filtering toxins."
 	var_changes = list("toxins_mod" = 1.5)
 
 /datum/trait/negative/oxy_weak
 	name = "Breathe Weakness"
 	desc = "You take 25% more breathe damage and require 25% more air (20kpa minimum). Make sure to adjust your emergency EVA tanks."
 	cost = -1
+	extra_id_info = "Employee requires a minimum atmospheric pressure of 20kPa to breathe."
 	var_changes = list("minimum_breath_pressure" = 20, "oxy_mod" = 1.25)
 
 /datum/trait/negative/rad_weak
@@ -94,6 +100,7 @@
 	name = "Major Radiation Weakness"
 	desc = "You take 50% more radition damage"
 	cost = -2
+	extra_id_info = "Employee is extremely susceptible to radiation."
 	var_changes = list("radiation_mod" = 1.50)
 
 /datum/trait/negative/conductive
@@ -106,6 +113,7 @@
 	name = "Major Conductive"
 	desc = "Increases your susceptibility to electric shocks by 100%"
 	cost = -2
+	extra_id_info = "Employee is exceptionally conductive."
 	var_changes = list("siemens_coefficient" = 2.0) //This makes you extremely weak to tasers.
 
 /datum/trait/negative/hollow
@@ -123,6 +131,7 @@
 	name = "Hollow Bones/Brittle Alloy"
 	desc = "Your bones and robot limbs are significantly easier to break."
 	cost = -4 //I feel like this should be higher, but let's see where it goes
+	extra_id_info = "Employee's bones are unusually fragile."
 
 /datum/trait/negative/hollow_plus/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -141,6 +150,7 @@
 	desc = "You simply can't see colors at all, period. You are 100% colorblind."
 	cost = -1
 	custom_only = FALSE
+	extra_id_info = "Employee is only capable of perceiving luminance, and cannot perceive hues or saturation."
 
 /datum/trait/negative/colorblind/mono/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -150,6 +160,7 @@
 	name = "Colorblindness (Para Vulp)"
 	desc = "You have a severe issue with green colors and have difficulty recognizing them from red colors."
 	cost = -1
+	extra_id_info = "Employee has a form of red/green colorblindness."
 
 /datum/trait/negative/colorblind/para_vulp/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -159,6 +170,7 @@
 	name = "Colorblindness (Para Taj)"
 	desc = "You have a minor issue with blue colors and have difficulty recognizing them from red colors."
 	cost = -1
+	extra_id_info = "Employee has a form of blue/red colorblindness."
 
 /datum/trait/negative/colorblind/para_taj/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
@@ -168,6 +180,7 @@
 	name = "Photosensitive"
 	desc = "You are incredibly vulnerable to bright lights. You are blinded for longer and your skin burns under extreme light."
 	cost = -1
+	extra_id_info = "Employee is exceptionally sensitive to bright lights."
 	var_changes = list("flash_mod" = 2)
 	var_changes = list("flash_burn" = 5)
 
@@ -175,6 +188,7 @@
 	name = "Hemophilia"
 	desc = "You bleed twice as fast as normal."
 	cost = -1
+	extra_id_info = "Employee is exceptionally prone to bleeding."
 	var_changes = list("bloodloss_rate" = 2)
 
 // todo: use it as a disability? kinda silly this applies forever
@@ -182,19 +196,22 @@
 	name = "Blind"
 	desc = "You're blind. Permanently."
 	cost = -3
+	extra_id_info = "Employee has <b>extremely limited vision</b>."
 	custom_only = FALSE
-	traits = list(
-		TRAIT_BLIND
-	)
 	excludes = list(
 		/datum/trait/negative/deaf
 	)
+
+/datum/trait/negative/blind/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	.=..()
+	H.add_blindness_source(TRAIT_BLINDNESS_NEGATIV)
 
 // todo: use it as a disability to vocal ears? organs? same as above? please?
 /datum/trait/negative/deaf
 	name = "Deaf"
 	desc = "You're deaf. Permanently."
 	cost = -2
+	extra_id_info = "Employee <b>cannot perceive sound</b>."
 	custom_only = FALSE
 	traits = list(
 		TRAIT_DEAF
@@ -212,6 +229,7 @@
 	name = "Mute"
 	desc = "You're mute. Permanently."
 	cost = 0			// TTS bypasses this instantly, no powergaming mute ass explo characters
+	extra_id_info = "Employee is <b>incapable of vocalizing</b>."
 	custom_only = FALSE
 	traits = list(
 		TRAIT_MUTE

@@ -15,23 +15,19 @@
  */
 /mob/Initialize(mapload)
 	// mob lists
-	GLOB.mob_list += src
-	if(stat == DEAD)
-		dead_mob_list += src
-	else
-		living_mob_list += src
+	mob_list_register(stat)
+	// actions
+	actions_controlled = new /datum/action_holder/mob_actor(src)
+	actions_innate = new /datum/action_holder/mob_actor(src)
 	// physiology
 	init_physiology()
 	// atom HUDs
-	set_key_focus(src)
 	prepare_huds()
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
+	set_key_focus(src)
 	// todo: remove hooks
 	hook_vr("mob_new",list(src))
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
 	// abilities
 	init_abilities()
 	// inventory
@@ -81,8 +77,13 @@
 		else
 			// mind is not ours, null it out
 			mind = null
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
+	// actions
+	QDEL_NULL(actions_controlled)
+	QDEL_NULL(actions_innate)
 	// this kicks out client
 	ghostize()
 	// get rid of our shit and nullspace everything first..
@@ -91,10 +92,8 @@
 	if(hud_used)
 		QDEL_NULL(hud_used)
 	dispose_rendering()
-	// perspective
-	using_perspective?.remove_mobs(src, TRUE)
-	if(self_perspective)
-		QDEL_NULL(self_perspective)
+	// perspective; it might be gone now because self perspective is destroyed in ..()
+	using_perspective?.remove_mob(src, TRUE)
 	// physiology
 	QDEL_NULL(physiology)
 	physiology_modifiers = null
@@ -103,6 +102,8 @@
 	// actionspeed
 	actionspeed_modification = null
 	return QDEL_HINT_HARDDEL
+
+//* Mob List Registration *//
 
 /mob/proc/mob_list_register(for_stat)
 	GLOB.mob_list += src
@@ -127,7 +128,7 @@
  *
  * This is simply "mob_"+ a global incrementing counter that goes up for every mob
  */
-/mob/GenerateTag()
+/mob/generate_tag()
 	tag = "mob_[++next_mob_id]"
 
 /**
@@ -135,20 +136,15 @@
  *
  * Goes through hud_possible list and adds the images to the hud_list variable (if not already
  * cached)
+ *
+ * todo: this should be atom level but uhh lmao lol
  */
-/atom/proc/prepare_huds()
-	hud_list = list()
-	for(var/hud in hud_possible)
-		var/hint = hud_possible[hud]
-		switch(hint)
-			if(HUD_LIST_LIST)
-				hud_list[hud] = list()
-			else
-				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
-				I.plane = FLOAT_PLANE
-				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
-				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM|KEEP_APART
-				hud_list[hud] = I
+/mob/proc/prepare_huds()
+	if(!atom_huds_to_initialize)
+		return
+	for(var/hud in atom_huds_to_initialize)
+		update_atom_hud_provider(src, hud)
+	atom_huds_to_initialize = null
 
 /mob/proc/remove_screen_obj_references()
 	hands = null
@@ -262,7 +258,7 @@
 	return restrained() ? FULLY_BUCKLED : PARTIALLY_BUCKLED
 
 /mob/proc/is_blind()
-	return ((sdisabilities & SDISABILITY_NERVOUS) || blinded || incapacitated(INCAPACITATION_KNOCKOUT))
+	return (has_status_effect(/datum/status_effect/sight/blindness) || incapacitated(INCAPACITATION_KNOCKOUT))
 
 /mob/proc/is_deaf()
 	return ((sdisabilities & SDISABILITY_DEAF) || ear_deaf || incapacitated(INCAPACITATION_KNOCKOUT))
@@ -598,7 +594,7 @@
 		qdel(M)
 		return
 
-	M.key = key
+	transfer_client_to(M)
 	if(M.mind)
 		M.mind.reset()
 	return
