@@ -104,7 +104,7 @@ const ICAssemblyCircuits = (props, context) => {
         {circuits.map((circuit, i) => (
           <LabeledList.Item key={circuit.ref} label={circuit.name} >
             <Button icon="eye" onClick={() => act("open_circuit", { ref: circuit.ref })}>View</Button>
-            <Button icon="eye" onClick={() => act("rename_circuit", { ref: circuit.ref, index: ++i })}>Rename</Button>
+            <Button icon="eye" onClick={() => act("rename_circuit", { ref: circuit.ref })}>Rename</Button>
             <Button icon="eye" onClick={() => act("scan_circuit", { ref: circuit.ref })}>Debugger Scan</Button>
             <Button icon="eye" disabled={!circuit.removable} onClick={() => act("remove_circuit", { ref: circuit.ref, index: ++i })}>Remove</Button>
             <Button icon="eye" onClick={() => act("bottom_circuit", { ref: circuit.ref, index: ++i })}>Move to Bottom</Button>
