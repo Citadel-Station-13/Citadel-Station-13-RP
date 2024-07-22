@@ -137,7 +137,7 @@
 /obj/vehicle/sealed/mecha/combat/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	if(removing.client)
-		removing.client.mouse_pointer_icon = initial(exiting.client.mouse_pointer_icon)
+		removing.client.mouse_pointer_icon = initial(removing.client.mouse_pointer_icon)
 
 /obj/vehicle/sealed/mecha/combat/Topic(href,href_list)
 	..()

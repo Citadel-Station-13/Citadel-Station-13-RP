@@ -761,6 +761,8 @@
 	if(!has_charge(step_energy_drain))
 		return 0
 
+	var/atom/oldloc = loc
+
 	//Can we even move, below is if yes.
 
 	if(defence_mode)//Check if we are currently locked down
@@ -795,7 +797,7 @@
 
 	var/move_result = 0
 
-	if(hasInternalDamage(MECHA_INT_CONTROL_LOST))
+	if(hasInternalDamage(MECHA_INT_CONTROL_LOST) && prob(35))
 		move_result = mechsteprand()
 	//Up/down zmove
 	else if(direction & UP || direction & DOWN)
@@ -835,7 +837,7 @@
 			if(!src.check_for_support())
 				src.pr_inertial_movement.start(list(src,direction))
 				src.log_message("<span class='warning'>Movement control lost. Inertial movement started.</span>")
-		sleep(get_step_delay())
+		sleep(get_step_delay() * ((ISDIAGONALDIR(direction) && (get_dir(oldloc, loc) == direction))? SQRT_2 : 1))
 		can_move = 1
 		return 1
 	return 0
