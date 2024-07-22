@@ -11977,7 +11977,7 @@
 /area/tradeport/exterior)
 "TE" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/working/ripley/mining,
+/obj/vehicle/sealed/mecha/working/ripley/mining,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "TF" = (

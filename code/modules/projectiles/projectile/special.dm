@@ -319,7 +319,7 @@
 	..()
 
 /obj/projectile/beam/tungsten/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] begins to glow!</span>")
 		spawn(2 SECONDS)
@@ -390,7 +390,7 @@
 	..()
 
 /obj/projectile/plasma/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
 		var/blastloc = get_step(A, blast_dir)
@@ -410,7 +410,7 @@
 	..()
 
 /obj/projectile/plasma/hot/on_impact(var/atom/A)
-	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/vehicle/sealed/mecha) || istype(A,/obj/machinery/door))
 		var/blast_dir = src.dir
 		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
 		var/blastloc = get_step(A, blast_dir)
