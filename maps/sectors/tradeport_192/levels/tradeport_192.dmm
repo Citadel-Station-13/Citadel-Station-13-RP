@@ -3559,6 +3559,9 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/west_mount,
+/obj/machinery/computer/shuttle_control/explore/trade/udang{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
 "kT" = (
@@ -5042,6 +5045,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 9
 	},
+/obj/machinery/computer/shuttle_control/explore/trade/scoophead,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead)
 "pM" = (
@@ -5711,6 +5715,10 @@
 "rT" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 8
+	},
+/obj/item/gps/internal/base{
+	name = "scoophead beacon";
+	gps_tag = "SCOOP"
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
@@ -15203,6 +15211,10 @@
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 10
+	},
+/obj/item/gps/internal/base{
+	name = "scoophead beacon";
+	gps_tag = "SCOOP"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead)
