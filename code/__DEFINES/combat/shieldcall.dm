@@ -29,6 +29,10 @@
 #define SHIELDCALL_FLAG_SUPPRESS_MESSAGE (1<<6)
 /// asks the shieldcall nicely to not make a sound
 #define SHIELDCALL_FLAG_SUPPRESS_SOUND (1<<7)
+/// do not call armorcalls
+#define SHIELDCALL_FLAG_SKIP_ARMORCALLS (1<<8)
+/// do not call shieldcalls
+#define SHIELDCALL_FLAG_SKIP_SHIELDCALLS (1<<9)
 
 /// these flags mean to stop processing the attack
 #define SHIELDCALL_FLAGS_BLOCK_ATTACK (SHIELDCALL_FLAG_ATTACK_BLOCKED)

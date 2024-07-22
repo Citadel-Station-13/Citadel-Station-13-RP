@@ -46,7 +46,7 @@
 /obj/structure/cult/pylon/attackby(obj/item/W as obj, mob/user as mob)
 	attackpylon(user, W.damage_force)
 
-/obj/structure/cult/pylon/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+/obj/structure/cult/pylon/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon)
 	pylonhit(damage)
 	return damage
 
