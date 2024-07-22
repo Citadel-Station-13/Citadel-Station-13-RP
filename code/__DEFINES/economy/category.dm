@@ -34,7 +34,7 @@ GLOBAL_REAL_LIST(economic_category_obj_names) = list(
 #define ECONOMIC_CATEGORY_OBJ_BIT_TO_NAME(CAT) economic_category_obj_to_name(CAT)
 /proc/economic_category_obj_bit_to_name(bit)
 	var/index = log(2, bit)
-	if(index > length(global.economic_category_obj))
+	if(index > length(global.economic_category_obj_names))
 		return "Miscellaneous"
 	return global.economic_category_obj_names[index]
 
@@ -47,6 +47,8 @@ DEFINE_BITFIELD(economic_category_obj, list(
 	BITFIELD_NEW(ECONOMIC_CATEGORY_OBJ_MAKESHIFT, "Makeshift Equipment"),
 	BITFIELD_NEW(ECONOMIC_CATEGORY_OBJ_SCRAP, "Junk"),
 ))
+
+// todo: everything below shoudl follow the above example of structure (replace switch with global list and log, etc)
 
 //? categories for items
 
@@ -124,24 +126,6 @@ DEFINE_BITFIELD(economic_category_item, list(
 	BITFIELD(ECONOMIC_CATEGORY_ITEM_COLLECTABLE),
 	BITFIELD(ECONOMIC_CATEGORY_ITEM_PAPERWORK),
 	BITFIELD(ECONOMIC_CATEGORY_ITEM_ELECTRONICS),
-))
-
-//? categories for mobs
-
-#define ECONOMIC_CATEGORY_MOB_DEFAULT (NONE)
-
-/// "normal" livestock
-#define ECONOMIC_CATEGORY_MOB_LIVESTOCK (1<<0)
-
-/proc/economic_category_mob_name(cat)
-	switch(cat)
-		if(ECONOMIC_CATEGORY_MOB_LIVESTOCK)
-			return "Livestock"
-		else
-			return "Miscellaneous"
-
-DEFINE_BITFIELD(economic_category_mob, list(
-	BITFIELD(ECONOMIC_CATEGORY_MOB_LIVESTOCK),
 ))
 
 //? categories for materials
