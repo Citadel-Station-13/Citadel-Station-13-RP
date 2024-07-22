@@ -3704,6 +3704,8 @@
 #include "code\modules\mob\living\silicon\offense.dm"
 #include "code\modules\mob\living\silicon\perspective.dm"
 #include "code\modules\mob\living\silicon\say.dm"
+#include "code\modules\mob\living\silicon\silicon-damage.dm"
+#include "code\modules\mob\living\silicon\silicon-defense-legacy.dm"
 #include "code\modules\mob\living\silicon\silicon.dm"
 #include "code\modules\mob\living\silicon\subystems.dm"
 #include "code\modules\mob\living\silicon\translation.dm"
