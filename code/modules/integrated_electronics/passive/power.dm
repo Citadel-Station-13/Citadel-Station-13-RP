@@ -113,9 +113,9 @@
 	 a source of organic fuel; blood from sapient creatures is more efficient."
 	atom_flags = OPENCONTAINER
 	complexity = 4
-	inputs = list("push ref" = IC_PINTYPE_PULSE_IN)
+	inputs = list()
 	outputs = list("volume used" = IC_PINTYPE_NUMBER,"self reference" = IC_PINTYPE_REF)
-	activators = list()
+	activators = list("push ref" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 	var/volume = 60
