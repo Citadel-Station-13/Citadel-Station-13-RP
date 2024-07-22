@@ -7912,8 +7912,6 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/overmap/entity/visitable/ship/landable/trade/scoophead,
-/obj/effect/shuttle_landmark/triumph/trade/scoophead,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "yG" = (
@@ -11188,8 +11186,6 @@
 /obj/structure/cable/pink{
 	icon_state = "2-4"
 	},
-/obj/overmap/entity/visitable/ship/landable/trade/udang,
-/obj/effect/shuttle_landmark/triumph/trade/udang,
 /turf/simulated/floor/plating,
 /area/shuttle/udang)
 "Jb" = (
@@ -11627,6 +11623,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
+/obj/effect/shuttle_landmark/triumph/trade/scoophead,
+/obj/overmap/entity/visitable/ship/landable/trade/scoophead,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "KE" = (
@@ -13345,6 +13343,8 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/effect/shuttle_landmark/triumph/trade/udang,
+/obj/overmap/entity/visitable/ship/landable/trade/udang,
 /turf/simulated/floor/plating,
 /area/shuttle/udang)
 "PW" = (
