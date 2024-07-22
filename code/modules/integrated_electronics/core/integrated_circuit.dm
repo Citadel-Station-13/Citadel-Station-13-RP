@@ -121,8 +121,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		if(assembly)
 			var/index = assembly.assembly_components.Find(src)
 			assembly.ui_circuit_props.Cut(index, 1 + index)
-			for(var/i in assembly.ui_circuit_props)
-				to_chat(user, "[index] - [1+index] : [i]")
 			assembly.ui_circuit_props.Insert(index, list(list("name" = displayed_name,"ref" = REF(src),"removable" = removable,"input" = can_be_asked_input)))
 
 /obj/item/integrated_circuit/ui_state()
