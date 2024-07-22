@@ -1044,6 +1044,7 @@
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\engineering.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\hospitality.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\hydroponics.dm"
+#include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\materials.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\medical.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\miscellaneous.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply\munitions.dm"
