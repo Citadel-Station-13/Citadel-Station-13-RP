@@ -8,7 +8,7 @@
 	abstract_type = /datum/supply_pack2/nanotrasen/security
 	category = "Security"
 	container_access = list(
-		/datum/access/station/security/equipment::access_value,
+		/datum/access/station/security/equipment,
 	)
 	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS
 
@@ -152,7 +152,7 @@
 /datum/supply_pack2/nanotrasen/security/armory
 	abstract_type = /datum/supply_pack2/nanotrasen/security/armory
 	container_access = list(
-		/datum/access/station/security/armory::access_value,
+		/datum/access/station/security/armory,
 	)
 
 /datum/supply_pack2/nanotrasen/security/armory/riot_gear
@@ -433,7 +433,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Warden equipment"
 	container_access = list(
-		/datum/access/station/security/armory::access_value,
+		/datum/access/station/security/armory,
 	)
 
 /datum/supply_pack2/nanotrasen/security/headofsecgear
@@ -461,7 +461,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Head of security equipment"
 	container_access = list(
-		/datum/access/station/security/hos::access_value,
+		/datum/access/station/security/hos,
 	)
 
 /datum/supply_pack2/nanotrasen/security/securityclothing

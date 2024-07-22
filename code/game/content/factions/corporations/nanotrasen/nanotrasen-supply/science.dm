@@ -13,7 +13,7 @@
 	container_type = "/obj/structure/closet/crate/secure"
 	container_name = "Virus sample crate"
 	container_access = list(
-		/datum/access/station/medical/virology::access_value,
+		/datum/access/station/medical/virology,
 	)
 
 /datum/supply_pack2/nanotrasen/science/coolanttank
@@ -37,7 +37,7 @@
 	container_type = /obj/structure/closet/crate/secure/phoron
 	container_name = "Phoron assembly crate"
 	container_access = list(
-		/datum/access/station/science/toxins::access_value,
+		/datum/access/station/science/toxins,
 	)
 
 /datum/supply_pack2/nanotrasen/science/exoticseeds
