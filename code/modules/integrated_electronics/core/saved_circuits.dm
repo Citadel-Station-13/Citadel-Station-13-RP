@@ -53,7 +53,7 @@
 /obj/item/integrated_circuit/proc/verify_save(list/component_params)
 	var/init_name = initial(name)
 	// Validate name
-	if(component_params["name"] && component_params["name"] != sanitizeName(component_params["name"]))
+	if(component_params["name"] && component_params["name"] != sanitizeSafe(component_params["name"], MAX_MESSAGE_LEN, 0, 0))
 		return "Bad component name at [init_name]."
 
 	// Validate input values
@@ -140,7 +140,7 @@
 // Returns null on success, error name on failure
 /obj/item/electronic_assembly/proc/verify_save(list/assembly_params)
 	// Validate name and color
-	if(assembly_params["name"] && assembly_params["name"] != sanitizeName(assembly_params["name"]))
+	if(assembly_params["name"] && assembly_params["name"] != sanitizeSafe(assembly_params["name"], MAX_MESSAGE_LEN, 0, 0))
 		return "Bad assembly name."
 	if(assembly_params["desc"] && !reject_bad_text(assembly_params["desc"]))
 		return "Bad assembly description."
