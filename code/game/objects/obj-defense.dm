@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /obj/ex_act(power, dir, datum/automata/wave/explosion/E)
 	. = ..()
@@ -9,6 +9,8 @@
 /obj/legacy_ex_act(severity, target)
 	. = ..()
 	inflict_atom_damage(global._legacy_ex_atom_damage[severity], flag = ARMOR_BOMB)
+
+#warn everything should be run damage instance
 
 /obj/melee_act(mob/user, obj/item/weapon, target_zone, mult)
 	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
