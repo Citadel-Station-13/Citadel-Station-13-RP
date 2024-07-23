@@ -76,6 +76,10 @@
 
 /obj/item/integrated_circuit/converter/refcode/do_work()
 	var/result = null
+	var/datum/data = get_pin_data(IC_INPUT, 1)
+
+	if(!istype(data)) return
+
 	var/atom/A = get_pin_data(IC_INPUT, 1)
 	if(A && istype(A))
 		result = add_data_signature("\ref[A]")
@@ -94,8 +98,11 @@
 	var/dec
 
 /obj/item/integrated_circuit/converter/refdecode/do_work()
+	var/data = get_pin_data(IC_INPUT, 1)
 
-	var/list/signature_and_data = splittext(get_pin_data(IC_INPUT, 1), ":")
+	if(!istext(data)) return
+
+	var/list/signature_and_data = splittext(data, ":")
 	var/signature = signature_and_data[1]
 	var/dec = signature_and_data[2]
 
