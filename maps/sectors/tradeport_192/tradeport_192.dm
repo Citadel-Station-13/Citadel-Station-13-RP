@@ -8,6 +8,8 @@
 	)
 	legacy_assert_shuttle_datums = list(
 		/datum/shuttle/autodock/overmap/trade,
+		/datum/shuttle/autodock/overmap/trade/udang,
+		/datum/shuttle/autodock/overmap/trade/scoophead,
 	)
 
 /datum/map_level/sector/tradeport_192

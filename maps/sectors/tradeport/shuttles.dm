@@ -37,7 +37,7 @@
 	name = "Udang Transport Shuttle"
 	warmup_time = 6
 	shuttle_area = list(/area/shuttle/udang)
-	current_location = "tradeport_hangar_udang"
+	current_location = "tradeport_udang"
 	docking_controller_tag = "tradeport_udang_docker"
 	fuel_consumption = 6
 	move_time = 10
@@ -65,7 +65,7 @@
 	name = "Scoophead trade Shuttle"
 	warmup_time = 5
 	shuttle_area = list(/area/shuttle/scoophead)
-	current_location = "tradeport_hangar_scoophead"
+	current_location = "tradeport_scoophead"
 	docking_controller_tag = "tradeport_scoophead_docker"
 	fuel_consumption = 6
 	move_time = 10

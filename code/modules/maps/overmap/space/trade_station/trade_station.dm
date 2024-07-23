@@ -120,14 +120,14 @@
 
 /obj/effect/shuttle_landmark/triumph/trade/udang
 	name = "Udang Underconstruction Docking bay"
-	landmark_tag = "tradeport_hangar_udang"
+	landmark_tag = "tradeport_udang"
 	docking_controller = "tradeport_udang_dock"
 	base_turf = /turf/space
 	base_area = /area/space
 
 /obj/effect/shuttle_landmark/triumph/trade/scoophead
 	name = "Scoophead Docking bay"
-	landmark_tag = "tradeport_hangar_scoophead"
+	landmark_tag = "tradeport_scoophead"
 	docking_controller = "tradeport_scoophead_dock"
 	base_turf = /turf/space
 	base_area = /area/space
