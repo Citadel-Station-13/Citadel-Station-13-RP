@@ -824,6 +824,7 @@
 /obj/machinery/door/blast/regular{
 	id = "trade2port"
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "cG" = (
@@ -1689,6 +1690,7 @@
 	id = "trade2port"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "fm" = (
@@ -1774,7 +1776,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "courser_docker_pump";
+	id_tag = "scoophead_docker_pump";
 	power_rating = 20000
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -1809,6 +1811,11 @@
 /obj/structure/table/bench/wooden,
 /obj/structure/flora/pottedplant/tall{
 	pixel_y = 14
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 4;
+	id = "udang_cabin2";
+	pixel_x = 5
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang)
@@ -4608,15 +4615,15 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/structure/window/reinforced/polarized{
-	id = "sauna_tint"
-	},
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 32;
 	pixel_y = -3
+	},
+/obj/structure/window/reinforced/polarized{
+	id = "udang_cargo"
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
@@ -4720,7 +4727,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "deck4_dockarm1_pump"
+	id_tag = "tradeport_scoophead_dock_pump"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -4729,6 +4736,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
+"oH" = (
+/obj/structure/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/obj/item/pen,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead)
 "oJ" = (
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
@@ -5903,14 +5917,31 @@
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 4
 	},
+/obj/structure/window/reinforced/polarized{
+	id = "udang_cabin2"
+	},
+/obj/machinery/button/windowtint{
+	pixel_y = -12;
+	pixel_x = 13;
+	id = "udang_cabin2"
+	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang)
 "sG" = (
-/obj/structure/window/wooden{
-	dir = 8
-	},
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 4
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 8;
+	id = "udang_cabin1"
+	},
+/obj/structure/window/reinforced/polarized{
+	id = "udang_cabin1"
+	},
+/obj/machinery/button/windowtint{
+	pixel_y = -12;
+	pixel_x = 13;
+	id = "udang_cabin1"
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang)
@@ -5996,6 +6027,9 @@
 	},
 /obj/structure/bed/chair/sofa/beige/corner{
 	dir = 1
+	},
+/obj/structure/sign/poster{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang)
@@ -7094,11 +7128,11 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/structure/window/reinforced/polarized{
-	id = "sauna_tint"
-	},
 /obj/structure/bed/chair/shuttle{
 	dir = 4
+	},
+/obj/structure/window/reinforced/polarized{
+	id = "udang_cargo"
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
@@ -7709,11 +7743,11 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/structure/window/reinforced/polarized{
-	id = "sauna_tint"
-	},
 /obj/structure/bed/chair/shuttle{
 	dir = 4
+	},
+/obj/structure/window/reinforced/polarized{
+	id = "udang_cargo"
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
@@ -7907,11 +7941,13 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "courser_docker_pump";
+	id_tag = "scoophead_docker_pump";
 	power_rating = 20000
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/shuttle_landmark/triumph/trade/scoophead,
+/obj/overmap/entity/visitable/ship/landable/trade/scoophead,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "yG" = (
@@ -8515,6 +8551,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
 	},
+/obj/structure/sign/poster{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang)
 "At" = (
@@ -8978,6 +9017,11 @@
 	dir = 8;
 	light_range = 12
 	},
+/obj/machinery/button/windowtint{
+	pixel_y = 10;
+	pixel_x = -22;
+	id = "udang_cargo"
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
 "BP" = (
@@ -9202,6 +9246,11 @@
 /area/shuttle/trade_ship/general)
 "Cv" = (
 /obj/structure/bed/chair/sofa/beige/left,
+/obj/structure/window/reinforced/polarized{
+	dir = 4;
+	id = "udang_cabin2";
+	pixel_x = 5
+	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang)
 "Cw" = (
@@ -9278,11 +9327,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
-	},
-/obj/structure/closet/secure_closet/guncabinet{
-	anchored = 1;
-	req_access = list(160);
-	req_one_access = null
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
@@ -9420,6 +9464,12 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
+"Dp" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/tradeport)
 "Dq" = (
 /obj/machinery/camera{
 	dir = 1
@@ -11108,11 +11158,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/window/wooden{
-	dir = 8
-	},
 /obj/structure/bed/chair/sofa/beige/corner{
 	dir = 1
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 8;
+	id = "udang_cabin1"
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang)
@@ -11623,8 +11674,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/obj/effect/shuttle_landmark/triumph/trade/scoophead,
-/obj/overmap/entity/visitable/ship/landable/trade/scoophead,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "KE" = (
@@ -11742,6 +11791,12 @@
 /obj/structure/catwalk,
 /turf/simulated/mineral/floor/vacuum,
 /area/tradeport/pads)
+"KT" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile/gray,
+/area/tradeport)
 "KU" = (
 /obj/item/material/ashtray/plastic,
 /obj/structure/table/hardwoodtable,
@@ -13343,8 +13398,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/obj/effect/shuttle_landmark/triumph/trade/udang,
-/obj/overmap/entity/visitable/ship/landable/trade/udang,
 /turf/simulated/floor/plating,
 /area/shuttle/udang)
 "PW" = (
@@ -13389,7 +13442,7 @@
 "Qd" = (
 /obj/structure/railing/grey,
 /obj/structure/window/reinforced/polarized{
-	id = "sauna_tint"
+	id = "udang_cargo"
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -13442,6 +13495,7 @@
 	id = "trade2starboard"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
 "Qp" = (
@@ -14309,7 +14363,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "tradeport_udang_docker";
+	id_tag = "tradeport_udang_docker_pump";
 	power_rating = 20000
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -14865,12 +14919,14 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "tradeport_udang_docker";
+	id_tag = "tradeport_udang_docker_pump";
 	power_rating = 20000
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/floor_decal/rust,
+/obj/effect/shuttle_landmark/triumph/trade/udang,
+/obj/overmap/entity/visitable/ship/landable/trade/udang,
 /turf/simulated/floor/plating,
 /area/shuttle/udang)
 "Ux" = (
@@ -15757,6 +15813,9 @@
 /obj/machinery/shower{
 	dir = 8
 	},
+/obj/structure/sign/poster{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
 "Xv" = (
@@ -16054,6 +16113,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
+"Yq" = (
+/obj/machinery/floodlight{
+	on = 1
+	},
+/turf/simulated/floor/tiled/old_tile/green,
+/area/tradeport)
 "Ys" = (
 /obj/structure/cable/yellow,
 /obj/structure/cable/yellow{
@@ -16623,11 +16688,11 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/structure/window/reinforced/polarized{
-	id = "sauna_tint"
-	},
 /obj/structure/bed/chair/shuttle{
 	dir = 4
+	},
+/obj/structure/window/reinforced/polarized{
+	id = "udang_cargo"
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
@@ -42058,7 +42123,7 @@ tG
 xS
 oz
 Pk
-Pk
+oH
 rA
 tG
 Dh
@@ -43304,7 +43369,7 @@ ia
 vP
 bY
 eD
-kY
+KT
 eY
 ot
 Tu
@@ -43886,7 +43951,7 @@ tb
 tb
 vW
 eD
-tA
+Dp
 VM
 kf
 kf
@@ -45631,7 +45696,7 @@ eD
 Re
 uM
 eD
-tA
+Yq
 kY
 eD
 kf
