@@ -215,8 +215,9 @@
 /obj/item/melee/transforming/energy/axe/charge
 	name = "charge axe"
 	desc = "An energised axe."
-	active_damage_force = 35
+	active_damage_force = 30
 	active_throw_force = 20
+	armor_penetration = 25
 	damage_force = 15
 	use_cell = TRUE
 	hitcost = 120
