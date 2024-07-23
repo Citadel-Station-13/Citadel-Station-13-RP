@@ -271,7 +271,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 					examined.ui_interact(usr)
 
 		if("remove")
-			remove(usr, index = params["index"])
+			remove(usr, FALSE, index = params["index"])
 			return
 	return FALSE
 
