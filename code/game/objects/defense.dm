@@ -4,29 +4,41 @@
 /obj/ex_act(power, dir, datum/automata/wave/explosion/E)
 	. = ..()
 	// todo: wave explosions
+	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
+		return
 	inflict_atom_damage(power * (1 / 2.5), flag = ARMOR_BOMB)
 
 /obj/legacy_ex_act(severity, target)
 	. = ..()
+	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
+		return
 	inflict_atom_damage(global._legacy_ex_atom_damage[severity], flag = ARMOR_BOMB)
 
 /obj/melee_act(mob/user, obj/item/weapon, target_zone, mult)
+	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
+		return
 	inflict_atom_damage(weapon.damage_force, weapon.damage_tier, weapon.damage_flag, weapon.damage_mode, ATTACK_TYPE_MELEE, weapon)
 	return NONE
 
 /obj/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult)
 	// todo: this should just be style.attack(attacker, src)
+	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
+		return
 	inflict_atom_damage(style.get_unarmed_damage(attacker, src), style.damage_tier, style.damage_flag, style.damage_mode, ATTACK_TYPE_UNARMED, attacker)
 	return NONE
 
 /obj/bullet_act(obj/projectile/P, def_zone)
 	. = ..()
 	// todo: should this really be here?
+	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
+		return
 	inflict_atom_damage(P.get_structure_damage(), P.damage_tier, P.damage_flag, P.damage_mode, ATTACK_TYPE_PROJECTILE, P)
 
 /obj/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
+	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
+		return
 	if(isitem(AM))
 		var/obj/item/I = AM
 		inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)

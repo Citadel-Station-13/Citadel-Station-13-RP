@@ -3040,7 +3040,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
 "cde" = (
-/obj/mecha/combat/fighter/pinnace/loaded,
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
@@ -6524,7 +6524,7 @@
 /area/main_map/maintenance/deck_two/starboard)
 "eKD" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
 	dir = 1
 	},
 /obj/machinery/camera/network/civilian{
@@ -13164,7 +13164,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -27409,7 +27409,7 @@
 /area/bridge/bunker)
 "uVj" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -28474,7 +28474,7 @@
 /area/engineering/engine_eva)
 "vKf" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
 	dir = 1
 	},
 /obj/machinery/atmospherics/portables_connector{

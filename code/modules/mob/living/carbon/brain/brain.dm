@@ -59,7 +59,7 @@
 	return ..()
 
 /mob/living/carbon/brain/update_mobility(blocked, forced)
-	if(in_contents_of(/obj/mecha) || istype(loc, /obj/item/mmi))
+	if(in_contents_of(/obj/vehicle/sealed/mecha) || istype(loc, /obj/item/mmi))
 		. = ..(blocked, forced)
 	else
 		. = ..(MOBILITY_FLAGS_REAL, forced)
