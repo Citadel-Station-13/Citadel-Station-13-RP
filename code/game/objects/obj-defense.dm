@@ -73,6 +73,8 @@
 	if(TT.throw_flags & THROW_AT_IS_GENTLE)
 		return
 	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
+	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
+		return
 	if(isitem(AM))
 		var/obj/item/I = AM
 		inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)

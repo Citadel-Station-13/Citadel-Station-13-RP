@@ -1022,7 +1022,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/obj/mecha/working/ripley/mining,
+/obj/vehicle/sealed/mecha/working/ripley/mining,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cB" = (
@@ -1133,7 +1133,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/obj/mecha/working/ripley/firefighter,
+/obj/vehicle/sealed/mecha/working/ripley/firefighter,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cP" = (

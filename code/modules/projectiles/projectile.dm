@@ -372,7 +372,6 @@
 	impact_loop(A.loc, A)
 	#warn ugh
 
-
 	var/distance = get_dist(starting, get_turf(src))
 	var/turf/target_turf = get_turf(A)
 	var/passthrough = FALSE

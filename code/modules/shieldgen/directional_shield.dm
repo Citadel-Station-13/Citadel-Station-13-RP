@@ -382,7 +382,7 @@
 	offset_from_center = 1 //Snug against the exosuit.
 	max_shield_health = 200
 
-	var/obj/mecha/my_mecha = null
+	var/obj/vehicle/sealed/mecha/my_mecha = null
 	var/obj/item/mecha_parts/mecha_equipment/combat_shield/my_tool = null
 
 /obj/item/shield_projector/line/exosuit/process()
@@ -408,7 +408,7 @@
 
 		destroy_shields()
 	else
-		if(istype(user.loc, /obj/mecha))
+		if(istype(user.loc, /obj/vehicle/sealed/mecha))
 			setDir(user.loc.dir)
 		else
 			setDir(user.dir)

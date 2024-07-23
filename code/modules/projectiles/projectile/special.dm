@@ -334,7 +334,7 @@
 			else if(armor_special)
 				target.visible_message("<span class='cult'>\The [src] slams into \the [target]'s [target_limb] with a low rumble!</span>")
 
-	if(istype(target,/turf/simulated/shuttle/wall) || istype(target,/turf/simulated/wall) || (istype(target,/turf/simulated/mineral) && target.density) || istype(target,/obj/mecha) || istype(target,/obj/machinery/door))
+	if(istype(target,/turf/simulated/shuttle/wall) || istype(target,/turf/simulated/wall) || (istype(target,/turf/simulated/mineral) && target.density) || istype(target,/obj/vehicle/sealed/mecha) || istype(target,/obj/machinery/door))
 		var/blast_dir = src.dir
 		target.visible_message("<span class='danger'>\The [target] begins to glow!</span>")
 		spawn(2 SECONDS)

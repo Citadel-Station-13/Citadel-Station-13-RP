@@ -87,7 +87,7 @@
 	airtoggle.icon_state = "airon[air_on]"
 
 /datum/mini_hud/mech
-	var/obj/mecha/owner_mech
+	var/obj/vehicle/sealed/mecha/owner_mech
 	var/atom/movable/screen/mech/power/power
 	var/atom/movable/screen/mech/health/health
 	var/atom/movable/screen/mech/air/air
@@ -95,7 +95,7 @@
 
 	needs_processing = TRUE
 
-/datum/mini_hud/mech/New(var/datum/hud/other, var/obj/mecha/owner)
+/datum/mini_hud/mech/New(var/datum/hud/other, var/obj/vehicle/sealed/mecha/owner)
 	owner_mech = owner
 	power = new ()
 	health = new ()
@@ -237,8 +237,8 @@
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user) || user.stat || user.incapacitated())
 		return
-	var/obj/mecha/owner_mech = master
-	if(user != owner_mech.occupant)
+	var/obj/vehicle/sealed/mecha/owner_mech = master
+	if(user != owner_mech.occupant_legacy)
 		return
 	owner_mech.toggle_internal_tank()
 
