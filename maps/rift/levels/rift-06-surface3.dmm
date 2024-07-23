@@ -17696,6 +17696,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/blueshield)
+"bRz" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "bRP" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
@@ -18649,6 +18656,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
+"dSb" = (
+/obj/structure/railing,
+/obj/structure/flora/tree/pine{
+	pixel_x = -19
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "dSD" = (
 /obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloor{
@@ -20723,6 +20737,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"hCB" = (
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "hCM" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -21117,6 +21135,16 @@
 /obj/item/storage/firstaid/o2,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"ind" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "inQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -21609,6 +21637,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
+"jqt" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "jrG" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -22171,6 +22206,16 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/shuttle/oldcentury)
+"kcC" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "kfS" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -22559,6 +22604,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
+"kXH" = (
+/obj/structure/flora/tree/pine{
+	pixel_x = -19
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "kZg" = (
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
@@ -22824,6 +22875,14 @@
 	},
 /turf/simulated/open,
 /area/exploration)
+"lIW" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "lJb" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -22956,6 +23015,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
+"lOF" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "lPF" = (
 /obj/structure/railing,
 /turf/simulated/open,
@@ -23623,6 +23689,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
+"mZr" = (
+/obj/structure/lattice,
+/obj/structure/metal_edge,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "naw" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 1
@@ -23786,6 +23857,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
+"nmb" = (
+/obj/structure/railing,
+/obj/structure/flora/tree/pine,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "nms" = (
 /obj/structure/table/rack/steel,
 /obj/random/maintenance/medical,
@@ -23942,6 +24018,10 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
+"nJW" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "nKj" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Surface 3";
@@ -25054,6 +25134,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/oldcentury)
+"qcK" = (
+/obj/effect/shuttle_landmark/rift/deck3/udang,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "qcL" = (
 /obj/landmark/spawnpoint/job/pilot,
 /obj/item/stool/padded,
@@ -26426,6 +26510,10 @@
 /obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
+"tcu" = (
+/obj/effect/shuttle_landmark/rift/deck3/scoophead,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "tdn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -26682,6 +26770,10 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/maintenance/commandmaint)
+"tHz" = (
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "tHH" = (
 /obj/machinery/air_alarm{
 	dir = 4;
@@ -27034,6 +27126,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
+"usx" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uuE" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -27149,6 +27248,11 @@
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"uFK" = (
+/obj/structure/railing,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uGZ" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 1;
@@ -27913,6 +28017,13 @@
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/rnd/telescience_lab/chamber)
+"vLC" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/reinforced/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "vLJ" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -27999,6 +28110,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
+"vSV" = (
+/obj/structure/metal_edge,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "vUc" = (
 /obj/machinery/suit_storage_unit/exploration,
 /obj/effect/floor_decal/corner/mauve/border{
@@ -30473,6 +30588,7 @@ aOC
 aOi
 aOi
 aaC
+tHz
 aus
 aus
 aus
@@ -30500,8 +30616,7 @@ aus
 aus
 aus
 aus
-aus
-aus
+tHz
 afQ
 anp
 aOi
@@ -31478,6 +31593,7 @@ aOi
 aOi
 aOi
 aaC
+tHz
 aus
 aus
 aus
@@ -31505,8 +31621,7 @@ aus
 aus
 aus
 aus
-aus
-aus
+tHz
 afQ
 anp
 aOi
@@ -34026,7 +34141,7 @@ aus
 aus
 aus
 aus
-aus
+tcu
 aus
 aus
 aus
@@ -34611,8 +34726,8 @@ aus
 aus
 aus
 aus
-jWp
-abI
+aus
+apa
 aIA
 aIA
 ahS
@@ -34805,8 +34920,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+apa
 aIA
 aIA
 ahS
@@ -34973,12 +35088,6 @@ aBK
 aus
 aus
 aus
-aus
-aus
-aus
-aus
-aus
-aus
 aNd
 aus
 aus
@@ -34999,8 +35108,14 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+apa
 aIA
 aIA
 ahS
@@ -35193,8 +35308,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+apa
 aIA
 aIA
 ahS
@@ -35387,8 +35502,8 @@ aus
 aus
 aus
 aus
-amn
-avM
+aus
+apa
 aIA
 aIA
 ahS
@@ -35581,8 +35696,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+aus
+apa
 aIA
 aIA
 ahS
@@ -35775,8 +35890,8 @@ aus
 aus
 aus
 aus
-amn
-aZo
+jWp
+abI
 aIA
 aIA
 ahS
@@ -35905,6 +36020,7 @@ aOC
 aOi
 aOi
 afo
+tHz
 aus
 aus
 aus
@@ -35932,8 +36048,7 @@ aus
 aus
 aus
 aus
-aus
-aus
+tHz
 atI
 avM
 aIA
@@ -35969,7 +36084,7 @@ aus
 aus
 aus
 aus
-jWp
+amn
 aZo
 aIA
 aIA
@@ -36910,6 +37025,7 @@ aIA
 fkw
 aOP
 afo
+tHz
 aus
 aus
 aus
@@ -36937,8 +37053,7 @@ aus
 aus
 aus
 aus
-aus
-aus
+tHz
 atI
 avM
 aIA
@@ -37886,13 +38001,13 @@ aDY
 aDY
 aDY
 aDY
+usx
 aDY
 aDY
 aDY
 aDY
 aDY
-aDY
-aDY
+usx
 aDY
 aDY
 dwo
@@ -38080,13 +38195,13 @@ aOi
 aOi
 aOi
 aOi
+nJW
 aOi
 aOi
 aOi
 aOi
 aOi
-aOi
-aOi
+nJW
 aOi
 aOi
 aKW
@@ -38272,15 +38387,15 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+nJW
+aaC
+aUZ
+aUZ
+aUZ
+aUZ
+hCB
+nJW
+nJW
 aOi
 aOi
 aKW
@@ -38466,16 +38581,16 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+ind
+aus
+aus
+aus
+aus
+aus
+aus
+nJW
+aus
+anp
 aOi
 aKW
 fkw
@@ -38659,18 +38774,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+ind
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+uFK
+anp
 aKW
 fkw
 aIA
@@ -38853,19 +38968,19 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aKW
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+mZr
+aGz
 fkw
 aIA
 ahS
@@ -39047,18 +39162,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+anp
 aKW
 fkw
 aIA
@@ -39241,18 +39356,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+qcK
+aus
+aus
+amn
+anp
 aKW
 fkw
 aIA
@@ -39435,18 +39550,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+anp
 aKW
 fkw
 aIA
@@ -39629,18 +39744,18 @@ aOi
 aOi
 aOi
 aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+anp
 aKW
 fkw
 aIA
@@ -39823,19 +39938,19 @@ acH
 acH
 acH
 acH
-acH
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aKW
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+mZr
+aGz
 fkw
 aIA
 ahS
@@ -40007,28 +40122,28 @@ aus
 amn
 aej
 aQK
+jUD
 aQK
-aQK
 acH
 acH
 acH
 acH
 acH
+xbv
 acH
 acH
-acH
-acH
-acH
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+anp
 aKW
 fkw
 aIA
@@ -40204,25 +40319,25 @@ aQK
 aQK
 aQK
 acH
-acH
+xbv
 acH
 acH
 acH
 acH
 vmQ
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-aOi
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+anp
 aKW
 fFk
 dSP
@@ -40400,23 +40515,23 @@ acH
 acH
 acH
 acH
-acH
+xbv
 acH
 qhn
 acH
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vSV
 aNk
 auz
 auz
@@ -40589,6 +40704,8 @@ aus
 amn
 aej
 acH
+xbv
+qgy
 acH
 acH
 acH
@@ -40597,25 +40714,23 @@ acH
 acH
 acH
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vSV
+qgy
 aAd
 aAd
 acH
-acH
+gFD
 afk
 aPZ
 aUZ
@@ -40783,7 +40898,7 @@ aus
 amn
 aej
 acH
-acH
+cLb
 acH
 fRp
 fRp
@@ -40793,18 +40908,18 @@ fRp
 fRp
 aej
 acH
-acH
-acH
-xbv
-acH
-sGC
-acH
-acH
-xbv
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vSV
 acH
 aAd
 aAd
@@ -40987,22 +41102,22 @@ jTt
 fRp
 aej
 lVJ
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+jWp
 acH
-acH
-acH
-acH
-acH
-mUB
-acH
-acH
-mUB
-acH
-acH
+aAd
+aAd
 xbv
-acH
-aAd
-aAd
-acH
 adx
 aus
 aus
@@ -41181,19 +41296,19 @@ aHG
 fRp
 aej
 acH
-acH
-acH
-acH
-acH
-sGC
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+jqt
+aAd
 aAd
 aAd
 acH
@@ -41375,19 +41490,19 @@ dWj
 fRp
 aej
 acH
-acH
-mUB
-acH
-acH
-acH
-acH
-acH
-acH
-xbv
-acH
-mUB
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+lOF
+aAd
 aAd
 aAd
 acH
@@ -41569,22 +41684,22 @@ dWj
 fRp
 aej
 acH
-acH
-acH
-acH
-acH
-acH
-xbv
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vSV
+gFD
 aAd
 aAd
-acH
+qgy
 adx
 aus
 aus
@@ -41763,18 +41878,18 @@ xak
 fRp
 aej
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+aBK
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+amn
+vSV
 acH
 aAd
 aAd
@@ -41956,19 +42071,19 @@ fRp
 fRp
 fRp
 aej
-acH
-mUB
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-xbv
-acH
+qgy
+vLC
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+aus
+lIW
+vSV
 acH
 aAd
 aAd
@@ -42152,21 +42267,21 @@ fRp
 aej
 acH
 acH
+kcC
+aTN
+aTN
+aTN
+aTN
+aTN
+aTN
+aTN
+bRz
+vSV
 acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
-acH
+xbv
 aAd
 aAd
-acH
+gFD
 adx
 aus
 aus
@@ -42555,7 +42670,7 @@ aAd
 aAd
 aAd
 aAd
-adx
+nmb
 aus
 aus
 aus
@@ -43703,7 +43818,7 @@ qgy
 acH
 acH
 acH
-aQK
+kXH
 aBK
 aus
 aus
@@ -44089,7 +44204,7 @@ acH
 acH
 acH
 acH
-acH
+gFD
 acH
 aQK
 aBK
@@ -44107,7 +44222,7 @@ amn
 aej
 aAd
 aAd
-adx
+dSb
 aUu
 aUu
 aUu

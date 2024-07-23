@@ -37,6 +37,13 @@ right now its not a big priority - Bloop 2022
 	base_turf = /turf/space
 	base_area = /area/space
 
+/obj/effect/shuttle_landmark/triumph/deck4/udang
+	name = "NSV Triumph secondary civilian Dock"
+	landmark_tag = "triumph_udang_dock"
+	docking_controller = "triumph_udang_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
 /obj/effect/shuttle_landmark/triumph/deck3/emt
 	name = "NSV Triumph - EMT Shuttle Dock"
 	landmark_tag = "triumph_emt_dock"
