@@ -158,11 +158,11 @@ right now its not a big priority - Bloop 2022
 
 /obj/effect/shuttle_landmark/transit/triumph/trade/udang
 	name = "In transit"
-	landmark_tag = "nav_transit_trade"
+	landmark_tag = "nav_transit_trade_udang"
 
 /obj/effect/shuttle_landmark/transit/triumph/trade/scoophead
 	name = "In transit"
-	landmark_tag = "nav_transit_trade"
+	landmark_tag = "nav_transit_trade_scoophead"
 
 /obj/effect/shuttle_landmark/transit/triumph/emt
 	name = "In transit"
