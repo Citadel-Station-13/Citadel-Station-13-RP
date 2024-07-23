@@ -469,6 +469,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/hand_labeler,
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead)
 "by" = (
@@ -2298,7 +2299,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "hl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -2515,7 +2516,7 @@
 	volume = 20000;
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "ic" = (
 /obj/structure/cable/green{
@@ -2537,7 +2538,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating,
+/obj/item/tank/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "ie" = (
 /obj/structure/sink{
@@ -3239,7 +3241,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "ka" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3354,6 +3356,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 1
 	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead)
 "kt" = (
@@ -3483,7 +3486,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "kJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3837,7 +3840,7 @@
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "lN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -5829,6 +5832,7 @@
 	pixel_y = 9;
 	pixel_x = -7
 	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead)
 "sn" = (
@@ -6086,6 +6090,7 @@
 	},
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead)
 "td" = (
@@ -9221,7 +9226,7 @@
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "Cp" = (
 /turf/simulated/mineral/vacuum,
@@ -10127,7 +10132,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "Fu" = (
 /obj/machinery/light{
@@ -11067,12 +11072,6 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
-	},
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	frequency = 1380;
-	master_tag = "courser_docker";
-	pixel_y = -22
 	},
 /obj/structure/cable/pink{
 	icon_state = "4-8"
@@ -12422,7 +12421,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "MV" = (
 /obj/structure/table/hardwoodtable,
@@ -12529,7 +12528,7 @@
 	icon_state = "2-4";
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "Ni" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -13140,7 +13139,7 @@
 	dir = 8
 	},
 /obj/item/storage/toolbox/mechanical,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "Pk" = (
 /obj/structure/table/woodentable,
@@ -14695,7 +14694,7 @@
 	icon_state = "0-8";
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "TZ" = (
 /obj/machinery/door/airlock/glass/engineering{
@@ -15142,13 +15141,13 @@
 "Ve" = (
 /obj/machinery/shield_diffuser,
 /obj/map_helper/airlock/door/ext_door,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "Vf" = (
@@ -15483,6 +15482,7 @@
 	light_range = 12
 	},
 /obj/effect/floor_decal/rust,
+/obj/item/tank/phoron,
 /turf/simulated/floor/plating,
 /area/shuttle/udang)
 "Wn" = (
@@ -15521,7 +15521,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/scoophead)
 "Wv" = (
 /obj/structure/railing,
@@ -16026,6 +16026,9 @@
 "Yd" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/structure/sign/poster{
+	pixel_x = 32
 	},
 /turf/simulated/floor/wood,
 /area/shuttle/scoophead)
