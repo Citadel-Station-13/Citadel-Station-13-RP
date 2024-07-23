@@ -17,6 +17,7 @@ import { toggleKitchenSink } from '../debug/actions';
 import { dragStartHandler, recallWindowGeometry, resizeStartHandler, setWindowKey } from '../drag';
 import { createLogger } from '../logging';
 import { Layout } from './Layout';
+import { WindowTheme } from '../styles/themes/typedef';
 
 const logger = createLogger('Window');
 
@@ -24,7 +25,7 @@ const DEFAULT_SIZE = [400, 600];
 
 export interface WindowProps extends BoxProps{
   className?: string,
-  theme?: string,
+  theme?: WindowTheme | null,
   title?: string,
   width?: number,
   height?: number,
