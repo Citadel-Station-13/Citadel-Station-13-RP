@@ -9261,6 +9261,9 @@
 	name_tag = "Cargo Subgrid"
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "BE" = (
