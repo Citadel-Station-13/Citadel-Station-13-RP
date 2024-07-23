@@ -13,12 +13,12 @@
 /obj/item/integrated_circuit/passive/power/solar_cell
 	name = "tiny photovoltaic cell"
 	desc = "It's a very tiny solar cell, generally used in calculators."
-	extended_desc = "The cell generates 1W of energy per second in optimal lighting conditions.  Less light will result in less power being generated."
+	extended_desc = "The cell generates 30W of energy per second in optimal lighting conditions.  Less light will result in less power being generated."
 	icon_state = "solar_cell"
 	complexity = 8
 	origin_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 3, TECH_DATA = 2)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
-	var/max_power = 1
+	var/max_power = 30
 
 /obj/item/integrated_circuit/passive/power/solar_cell/make_energy()
 	var/turf/T = get_turf(src)
@@ -94,7 +94,7 @@
 /obj/item/integrated_circuit/passive/power/relay
 	name = "tesla power relay"
 	desc = "A seemingly enigmatic device which connects to nearby APCs wirelessly and draws power from them."
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	extended_desc = "The siphon generates 250W of energy, so long as an APC is in the same room, with a cell that has energy.  It will always drain \
 	from the 'equipment' power channel."
 	icon_state = "power_relay"
@@ -156,7 +156,7 @@
 /obj/item/integrated_circuit/passive/power/relay/large
 	name = "large tesla power relay"
 	desc = "A seemingly enigmatic device which connects to nearby APCs wirelessly and draws power from them, now in industiral size!"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	extended_desc = "The siphon generates 2 kW of energy, so long as an APC is in the same room, with a cell that has energy.  It will always drain \
 	from the 'equipment' power channel."
 	icon_state = "power_relay"
