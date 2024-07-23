@@ -235,6 +235,7 @@
 		)
 	icon_state = "addition"
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	cooldown_per_use = 1
 
 /obj/item/integrated_circuit/lists/delete/do_work()
 	var/list/input_list = get_pin_data(IC_INPUT, 1)
