@@ -9935,7 +9935,7 @@
 /area/security/hallway)
 "grT" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -14571,7 +14571,7 @@
 /area/security/tactical)
 "jmy" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/baron/sec/loaded{
+/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
