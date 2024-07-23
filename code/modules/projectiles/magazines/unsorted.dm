@@ -1104,10 +1104,11 @@
 
 /obj/item/ammo_magazine/pellets
 	name = "box of pellets"
+	desc = "A box containing small pellets for a pellet gun."
 	icon_state = "pelletbox"
 	caliber = "pellet"
 	mag_type = MAGAZINE
-	ammo_type = /obj/item/ammo_casing/pellet
+	ammo_type = /obj/item/ammo_casing/p_pellet
 	materials_base = list(MAT_PLASTIC = 600)
 	max_ammo = 50
 	multiple_sprites = 1

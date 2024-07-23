@@ -577,7 +577,7 @@
 	projectile_type = /obj/projectile/bullet/organic/wax
 	materials_base = list("wax" = 100)
 
-/obj/item/ammo_casing/pellet
+/obj/item/ammo_casing/p_pellet
 	name = "pellet"
 	desc = "Also know as a BB, it is shot from airguns for recreational shooting."
 	caliber = "pellet"
