@@ -147,10 +147,6 @@ list[](
 */
 
 /datum/integrated_io/proc/write_data_to_pin(datum/new_data)
-	if(islist(new_data))
-		for(var/i in 1 to length(new_data))
-			if (istype(new_data) && !isweakref(new_data))
-				new_data[i] = WEAKREF(new_data[i])
 	if (istype(new_data) && !isweakref(new_data))
 		new_data = WEAKREF(new_data)
 	if(isnull(new_data) || isnum(new_data) || istext(new_data) || isweakref(new_data)) // Anything else is a type we don't want.
@@ -161,6 +157,9 @@ list[](
 	else if(islist(new_data))
 		var/list/new_list = new_data
 		data = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
+		for(var/i in 1 to length(data))
+			if (istype(data[i]) && !isweakref(data[i]))
+				data[i] = WEAKREF(data[i])
 		holder.on_data_written()
 
 /datum/integrated_io/proc/push_data()
