@@ -4777,7 +4777,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/tradeport/facility)
 "oH" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
@@ -9106,11 +9106,6 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/machinery/button/windowtint{
-	pixel_y = 10;
-	pixel_x = -22;
-	id = "udang_cargo"
-	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang)
 "BP" = (
@@ -10073,7 +10068,7 @@
 	},
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/tradeport/facility)
 "EX" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
@@ -10953,6 +10948,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
 	},
+/obj/machinery/button/windowtint{
+	pixel_y = -22;
+	id = "udang_cargo"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang)
 "HN" = (
@@ -11040,12 +11039,6 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "Ic" = (
-/obj/machinery/door/airlock/external/glass{
-	req_access = list(160)
-	},
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -13774,15 +13767,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
-"QO" = (
-/obj/machinery/door/airlock/external/glass{
-	req_access = list(160)
-	},
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/neutral,
-/area/tradeport/facility)
 "QP" = (
 /obj/machinery/camera,
 /obj/effect/floor_decal/spline/plain{
@@ -14346,7 +14330,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
-/area/tradeport/exterior)
+/area/tradeport/facility)
 "Sx" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
@@ -15303,7 +15287,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/tradeport/facility)
 "Vf" = (
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead)
@@ -16199,9 +16183,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
-"Yf" = (
-/turf/simulated/wall/r_wall,
-/area/tradeport/exterior)
 "Yg" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -42882,8 +42863,8 @@ ud
 Vf
 WE
 WE
-Vi
-Yf
+sP
+sP
 sP
 KZ
 Yv
@@ -43464,8 +43445,8 @@ uT
 Hk
 Fp
 La
-Vi
-Vi
+sP
+sP
 Zc
 sS
 XK
@@ -44049,7 +44030,7 @@ cF
 Dh
 wV
 sP
-QO
+Yv
 Ic
 sP
 Rz
