@@ -11918,6 +11918,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
+"aJU" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "rift_udang_dock";
+	req_one_access = list(67)
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/rift/surfacebase/outside/outside3)
 "aJV" = (
 /obj/random/humanoidremains,
 /obj/random/multiple/voidsuit/vintage,
@@ -18360,6 +18368,10 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
+"dik" = (
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "din" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
@@ -27071,6 +27083,14 @@
 "ung" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/exploration)
+"unh" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "rift_scoophead_dock";
+	req_one_access = list(67)
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/rift/surfacebase/outside/outside3)
 "uoa" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -33721,7 +33741,7 @@ aus
 aus
 aus
 aus
-wyl
+unh
 abI
 chB
 xBA
@@ -33950,7 +33970,7 @@ aus
 aus
 aus
 aus
-jWp
+wyl
 aQh
 aIA
 aIA
@@ -34144,7 +34164,7 @@ aus
 tcu
 aus
 aus
-aus
+hCB
 apa
 aIA
 aIA
@@ -41113,8 +41133,8 @@ aus
 aus
 aus
 amn
-jWp
-acH
+aJU
+dik
 aAd
 aAd
 xbv
