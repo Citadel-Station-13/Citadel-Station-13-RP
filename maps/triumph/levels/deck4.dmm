@@ -16000,6 +16000,7 @@
 	name = "Powernet Sensor - Security Subgrid";
 	name_tag = "Surfsec Subgrid"
 	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "kPt" = (
@@ -26532,6 +26533,9 @@
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Command Subgrid";
 	name_tag = "Command Subgrid"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)

@@ -523,6 +523,20 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/exam_room)
+"atU" = (
+/obj/machinery/door/blast/regular/open{
+	id = "virolockdown";
+	name = "Virology Blast Door"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/black,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock{
+	name = "Private Dormitory"
+	},
+/turf/simulated/floor/tiled,
+/area/medical/virology)
 "atV" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -24453,6 +24467,10 @@
 	use_power = 1;
 	volume_rate = 700
 	},
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "pjT" = (
@@ -33667,10 +33685,6 @@
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/prison/upper)
 "uvA" = (
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 6
@@ -63139,7 +63153,7 @@ jYF
 abM
 kfg
 uvA
-xzD
+atU
 jUa
 oBu
 jUa

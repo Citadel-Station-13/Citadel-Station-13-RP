@@ -168,10 +168,10 @@ var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 var/global/list/negative_traits = list()
 /// Neutral custom species traits, indexed by path.
 var/global/list/neutral_traits = list()
-/// Neutral traits available to all species, indexed by path.
-var/global/list/everyone_traits = list()
 /// Positive custom species traits, indexed by path.
 var/global/list/positive_traits = list()
+/// Trait groups, indexed by path
+var/global/list/all_trait_groups = list()
 /// Just path = cost list, saves time in char setup.
 var/global/list/traits_costs = list()
 /// All of 'em at once. (same instances)
@@ -601,8 +601,6 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 		var/cost = instance.cost
 		traits_costs[path] = cost
 		all_traits[path] = instance
-		if(!instance.custom_only && instance.cost <= 0)
-			everyone_traits[path] = instance
 		switch(cost)
 			if(-INFINITY to -0.1)
 				negative_traits[path] = instance
@@ -610,6 +608,14 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 				neutral_traits[path] = instance
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
+
+	// Trait groups
+	paths = typesof(/datum/trait_group) - /datum/trait_group
+	for(var/path in paths)
+		var/datum/trait_group/instance = new path()
+		if(!instance.name)
+			continue  // Should never happen but worth checking for
+		all_trait_groups[path] = instance
 
 	// Weaver recipe stuff
 	paths = subtypesof(/datum/weaver_recipe/structure)

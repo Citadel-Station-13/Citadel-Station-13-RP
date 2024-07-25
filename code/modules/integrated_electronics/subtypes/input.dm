@@ -764,31 +764,25 @@
 	name = "advanced integrated signaler"
 	icon_state = "signal_advanced"
 	desc = "Signals from a signaler can be received with this, allowing for remote control.  Additionally, it can send signals as well."
-	extended_desc = "When a signal is received from another signaler with the right id tag, the 'on signal received' activator pin will be pulsed and the command output is updated.  \
+	extended_desc = "When a signal is received from another signaler with the right code, the 'on signal received' activator pin will be pulsed and the command output is updated.  \
 	The two input pins are to configure the integrated signaler's settings.  Note that the frequency should not have a decimal in it.  \
 	Meaning the default frequency is expressed as 1457, not 145.7.  To send a signal, pulse the 'send signal' activator pin. Set the command output to set the message received."
 	complexity = 8
-	inputs = list("frequency" = IC_PINTYPE_NUMBER, "id tag" = IC_PINTYPE_STRING, "command" = IC_PINTYPE_STRING)
+	inputs = list("frequency" = IC_PINTYPE_NUMBER, "code" = IC_PINTYPE_NUMBER, "command" = IC_PINTYPE_STRING)
 	outputs = list("received command" = IC_PINTYPE_STRING)
 	var/command
-	code = "Integrated_Circuits"
+	code = 30
 	simple = 0
 
 /obj/item/integrated_circuit/input/signaler/advanced/on_data_written()
 	..()
 	command = get_pin_data(IC_INPUT,3)
 
-/obj/item/integrated_circuit/input/signaler/advanced/signal_good(datum/signal/signal)
-	if(!..() || signal.data["tag"] != code)
-		return FALSE
-	return TRUE
-
 /obj/item/integrated_circuit/input/signaler/advanced/create_signal()
 	var/datum/signal/signal = new()
 	signal.transmission_method = 1
-	signal.data["tag"] = code
 	signal.data["command"] = command
-	signal.encryption = 0
+	signal.encryption = code
 	return signal
 
 /obj/item/integrated_circuit/input/signaler/advanced/treat_signal(datum/signal/signal)
@@ -1186,12 +1180,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 20
 
-/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/obj_scanner/attackby_react(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/attackby_react(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I) || a_intent!=INTENT_HELP || !check_then_do_work())
 		return FALSE
 	var/pu = get_pin_data(IC_INPUT, 1)
@@ -1372,12 +1366,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
-/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/living/user, intent)
+/obj/item/integrated_circuit/input/data_card_reader/attackby_react(mob/living/user, obj/item/I,  intent)
 	var/obj/item/card/data/card = I
 	var/write_mode = get_pin_data(IC_INPUT, 3)
 	if(card)
