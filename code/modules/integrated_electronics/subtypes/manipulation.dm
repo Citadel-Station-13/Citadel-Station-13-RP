@@ -835,10 +835,13 @@
 	installed_gun = null // It will be qdel'd by ..() if still in our contents
 	return ..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/proc/ask_for_input(obj/item/I, mob/living/user, a_intent)
-	if(!isobj(I))
-		return FALSE
-	attackby_react(I, user, a_intent)
+/obj/item/integrated_circuit/manipulation/weapon_firing/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
+	if(!installed_gun)
+		if(!isobj(I))
+			return FALSE
+		attackby_react(I, user, a_intent)
+	else
+		attack_self(user)
 
 /obj/item/integrated_circuit/manipulation/weapon_firing/attackby_react(var/obj/O, var/mob/user)
 	if(istype(O, /obj/item/gun))
@@ -946,7 +949,7 @@
 	detach_grenade()
 	. =..()
 
-/obj/item/integrated_circuit/manipulation/grenade/proc/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/manipulation/grenade/proc/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
