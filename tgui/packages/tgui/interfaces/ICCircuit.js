@@ -83,7 +83,7 @@ export const ICCircuit = (props, context) => {
           </Flex>
           <Section title="Triggers">
             {activators.map(activator => (
-              <LabeledList.Item key={activator.name} label={activator.name}>
+              <LabeledList.Item key={activator.name} label={activator.displayed_name}>
                 <Button
                   onClick={() => act("pin_name", { pin: activator.ref })}>
                   {activator.pulse_out ? "<PULSE OUT>" : "<PULSE IN>"}
