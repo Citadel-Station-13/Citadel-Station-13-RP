@@ -1849,9 +1849,9 @@
 /datum/category_item/catalogue/flora/ironwood
 	name = "Flora - Ironwood Bonsais"
 	desc = "The Ironwood tree is a type of tree native to the Alraune homeworld of Loam whose wood is known to be exceptionally strong rivalling many metals in terms \
-	of durability. The intense amount of nutriest Ironwood Trees consume and their slow overall growth has preented widescale adoption by the galaxy as a building material \
-	though it remains popular among the Alraune who see it as far more ethical then traditional steel. This miniature Ironwood Bonsai was specifically bred by the Alraune \
-	to create an ironwood tree capable of growing in hydroponics trays, resulting in a 'Ironwood Bonsai' Despite small yields it still provides more than enough material to \
+	of durability. The intense amount of nutrients Ironwood Trees consume and their slow overall growth has prevented widescale adoption by the galaxy as a building material \
+	though it remains popular among the Alraune who see it as far more ethical then traditional steel. This miniature Ironwood tree was specifically bred by the Alraune \
+	to create an ironwood tree capable of growing in hydroponics trays, resulting in a 'Ironwood Bonsai'. Despite small yields it still provides more than enough material to \
 	use in ironwood crafts."
 	value = CATALOGUER_REWARD_TRIVIAL
 
