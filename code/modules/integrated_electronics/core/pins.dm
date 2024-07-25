@@ -158,14 +158,15 @@ list[](
 		var/list/new_list = new_data
 		data = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
 		for(var/i in 1 to length(data))
-			if (istype(data[i]) && !isweakref(data[i]))
-				data[i] = WEAKREF(data[i])
+			var/datum/dataRef = data[i]
+			if(istype(dataRef) && !isweakref(dataRef))
+				data[i] = WEAKREF(dataRef)
 		holder.on_data_written()
 
 /datum/integrated_io/proc/push_data()
 	for(var/k in 1 to linked.len)
 		var/datum/integrated_io/io = linked[k]
-		io.write_data_to_pin(data)
+		io.write_data_to_pin(get_data())
 
 /datum/integrated_io/activate/push_data()
 	for(var/k in 1 to linked.len)

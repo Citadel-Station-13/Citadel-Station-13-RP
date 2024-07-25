@@ -113,6 +113,10 @@
 	if(islist(new_data))
 		var/list/new_list = new_data
 		data = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
+		for(var/i in 1 to length(data))
+			var/datum/dataRef = data[i]
+			if(istype(dataRef) && !isweakref(dataRef))
+				data[i] = WEAKREF(dataRef)
 		holder.on_data_written()
 	else if(isnull(new_data))	// Clear the list
 		var/list/my_list = data

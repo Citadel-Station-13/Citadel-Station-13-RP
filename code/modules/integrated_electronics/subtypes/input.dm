@@ -490,13 +490,11 @@
 
 /obj/item/integrated_circuit/input/local_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		set_pin_data(IC_OUTPUT, 1, null)
 		if(!get_pin_data(IC_INPUT, 1)) // Check toggle.  We can just grab ref if false.
-			O.data = WEAKREF(assembly.loc)
-		else if(get_pin_data(IC_INPUT, 1) && istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
-			O.data = WEAKREF(assembly.loc)
-		istype(O.data, /obj/item/electronic_assembly/clothing) ? (O.data = WEAKREF(O.data)) : null
+			set_pin_data(IC_OUTPUT, 1, assembly.loc)
+		else if(istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
+			set_pin_data(IC_OUTPUT, 1, assembly.loc)
 		set_pin_data(IC_OUTPUT, 2, isturf(assembly.loc))
 		set_pin_data(IC_OUTPUT, 3, ismob(assembly.loc))
 		push_data()
@@ -519,16 +517,13 @@
 
 /obj/item/integrated_circuit/input/adjacent_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/atom/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 
-		if(!isweakref(I.data))
+		if(!istype(I))
 			return
-		var/atom/A = I.data.resolve()
-		if(!A)
-			return
-		var/desired_type = A.type
+
+		var/desired_type = I.type
 
 		var/list/nearby_things = range(1, get_turf(src))
 		var/list/valid_things = list()
@@ -537,11 +532,12 @@
 				continue
 			valid_things.Add(thing)
 		if(valid_things.len)
-			O.data = WEAKREF(pick(valid_things))
+			set_pin_data(IC_OUTPUT, 1, pick(valid_things))
+			push_data()
 			activate_pin(2)
 		else
+			push_data()
 			activate_pin(3)
-		O.push_data()
 
 /obj/item/integrated_circuit/input/advanced_locator
 	complexity = 6
@@ -567,32 +563,31 @@
 
 /obj/item/integrated_circuit/input/advanced_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/datum/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 		var/turf/T = get_turf(src)
 		var/list/nearby_things = view(radius,T)
 		var/list/valid_things = list()
-		if(isweakref(I.data))
-			var/atom/A = I.data.resolve()
+		if(istype(I))
+			var/atom/A = I
 			var/desired_type = A.type
 			if(desired_type)
 				for(var/i in nearby_things)
 					var/atom/thing = i
 					if(thing.type == desired_type)
 						valid_things.Add(thing)
-		else if(istext(I.data))
-			var/DT = I.data
+		else if(istext(I))
+			var/DT = I
 			for(var/i in nearby_things)
 				var/atom/thing = i
 				if(findtext(addtext(thing.name," ",thing.desc), DT, 1, 0) )
 					valid_things.Add(thing)
 		if(valid_things.len)
-			O.data = WEAKREF(pick(valid_things))
-			O.push_data()
+			set_pin_data(IC_OUTPUT, 1, pick(valid_things))
+			push_data()
 			activate_pin(2)
 		else
-			O.push_data()
+			push_data()
 			activate_pin(3)
 
 
@@ -621,11 +616,10 @@
 
 /obj/item/integrated_circuit/input/advanced_locator_list/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/datum/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 		var/list/input_list = list()
-		input_list = I.data
+		input_list = I
 		if(length(input_list))	//if there is no input don't do anything.
 			var/turf/T = get_turf(src)
 			var/list/nearby_things = view(radius,T)
@@ -650,14 +644,14 @@
 								continue
 							valid_things.Add(WEAKREF(thing))
 			if(valid_things.len)
-				O.data = valid_things
-				O.push_data()
+				set_pin_data(IC_OUTPUT, 1, valid_things)
+				push_data()
 				activate_pin(2)
 			else
-				O.push_data()
+				push_data()
 				activate_pin(3)
 		else
-			O.push_data()
+			push_data()
 			activate_pin(3)
 
 
@@ -713,17 +707,16 @@
 	activate_pin(2)
 
 /obj/item/integrated_circuit/input/signaler/proc/signal_good(datum/signal/signal)
-	if(!signal || signal.source == src)
+	if(!signal)
 		return FALSE
-	if(code)
-		var/real_code = 0
-		if(isnum(code))
-			real_code = code
-		var/rec = 0
-		if(signal.encryption)
-			rec = signal.encryption
-		if(real_code != rec)
-			return FALSE
+	if(!code)
+		return FALSE
+	if(!isnum(code))
+		return FALSE
+	if(!signal.encryption)
+		return FALSE
+	if(code != signal.encryption)
+		return FALSE
 	return TRUE
 
 /obj/item/integrated_circuit/input/signaler/proc/create_signal()
