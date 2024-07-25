@@ -68,7 +68,7 @@
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_ITEM_NODROP, CLOTHING_TRAIT)
-				icon_state = "[toggleicon]-t"
+				icon_state = ("[toggleicon]-t" in icon_states(icon)) ? "[toggleicon]-t" : toggleicon
 				update_worn_icon()
 	else
 		RemoveHood()
