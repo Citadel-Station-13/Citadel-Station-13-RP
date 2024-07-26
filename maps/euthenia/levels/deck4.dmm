@@ -6190,7 +6190,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "xW" = (
-/obj/mecha/combat/fighter/cludge{
+/obj/vehicle/sealed/mecha/combat/fighter/cludge{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced/overhang,
@@ -11268,7 +11268,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "Rf" = (
-/obj/mecha/combat/fighter/cludge{
+/obj/vehicle/sealed/mecha/combat/fighter/cludge{
 	dir = 4;
 	name = "\improper Titan Class Fighter"
 	},

@@ -169,8 +169,8 @@
 				if(L && L.has_polaris_AI()) // Some mobs delete themselves when dying.
 					L.ai_holder.react_to_attack_polaris(src)
 
-			else if(istype(thing, /obj/mecha))
-				var/obj/mecha/M = thing
+			else if(istype(thing, /obj/vehicle/sealed/mecha))
+				var/obj/vehicle/sealed/mecha/M = thing
 				M.take_damage_legacy(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
 
 		sleep(1 SECOND)

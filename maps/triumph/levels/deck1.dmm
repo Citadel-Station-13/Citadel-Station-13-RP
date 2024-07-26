@@ -1688,7 +1688,7 @@
 	},
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Engine Output";
-	name_tag = "Engine Output"
+	name_tag = "Engine Circuit"
 	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"

@@ -693,7 +693,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		to_chat(user, "You can't lay cable at a place that far away.")
 		return
 
-	if(!F.is_plating())		// Ff floor is intact, complain
+	if(F.hides_underfloor_objects())		// Ff floor is intact, complain
 		to_chat(user, "You can't lay cable there unless the floor tiles are removed.")
 		return
 

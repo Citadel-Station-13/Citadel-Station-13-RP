@@ -525,7 +525,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bM" = (
-/obj/mecha/working/hoverpod/combatpod,
+/obj/vehicle/sealed/mecha/working/hoverpod/combatpod,
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
