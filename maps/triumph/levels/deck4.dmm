@@ -818,7 +818,7 @@
 /obj/machinery/access_button/airlock_exterior{
 	dir = 1;
 	frequency = 1380;
-	master_tag = "deck4_dockarm3";
+	master_tag = "triumph_udang_dock";
 	pixel_x = -24
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -6363,7 +6363,7 @@
 /obj/machinery/access_button/airlock_interior{
 	dir = 1;
 	frequency = 1380;
-	master_tag = "deck4_dockarm3";
+	master_tag = "triumph_udang_dock";
 	pixel_x = 24
 	},
 /obj/machinery/door/airlock/glass_external{
@@ -7783,13 +7783,13 @@
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "deck4_dockarm3";
+	id_tag = "triumph_udang_dock";
 	pixel_x = 23
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "deck4_dockarm3_pump"
+	id_tag = "triumph_udang_dock_pump"
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
@@ -15483,7 +15483,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "deck4_dockarm3";
+	id_tag = "triumph_udang_dock";
 	pixel_x = -26;
 	pixel_y = 1
 	},
