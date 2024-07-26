@@ -12,13 +12,16 @@ SUBSYSTEM_DEF(spatial_grids)
 
 	/// /living mobs. they don't have to be alive, just a subtype of /living.
 	var/datum/spatial_grid/living
+	/// /obj/overmap/entity's
+	var/datum/spatial_grid/overmap_entities
 
 /datum/controller/subsystem/spatial_grids/Initialize()
 	make_grids()
 	return ..()
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
-	living = new /datum/spatial_grid(/mob/living, 16)
+	living = new /datum/spatial_grid(/mob/living)
+	overmap_entities = new /datum/spatial_grid(/obj/overmap/entity)
 
 /datum/controller/subsystem/spatial_grids/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
@@ -138,6 +141,19 @@ SUBSYSTEM_DEF(spatial_grids)
 							. += AM
 				else if(get_dist(entry, epicenter) <= distance)
 					. += entry
+
+/**
+ * pixel movement query
+ *
+ * * distance is in chebyshev distance, which is the same as bounds_dist()
+ *
+ * @return list() of atoms
+ */
+/datum/spatial_grid/proc/pixel_query(atom/epicenter, distance)
+	. = list()
+	for(var/atom/movable/AM as anything in range_query(get_turf(epicenter), ceil(distance / WORLD_ICON_SIZE)))
+		if(bounds_dist(epicenter, AM) <= distance)
+			. += AM
 
 /**
  * gets all registered movables

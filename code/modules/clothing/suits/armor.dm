@@ -768,7 +768,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Armor Sigils"
+	item_action_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
@@ -797,7 +797,7 @@
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Coat Sigils"
+	item_action_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/vest/wolftaur

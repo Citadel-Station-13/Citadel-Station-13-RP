@@ -676,7 +676,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/mecha/combat/gygax/serenity,
+/obj/vehicle/sealed/mecha/combat/gygax/serenity,
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/button/remote/blast_door{
 	description_fluff = "\\(OOC) DO NOT TOUCH THIS BUTTON WITHOUT THE EXPLICIT PERMISSION OF AN ADMINISTRATOR.";
@@ -757,7 +757,7 @@
 /area/ship/ert/atmos)
 "gF" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/gygax,
+/obj/vehicle/sealed/mecha/combat/gygax,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
@@ -2207,7 +2207,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/ert/mech_bay)
 "qz" = (
-/obj/mecha/working/ripley/firefighter,
+/obj/vehicle/sealed/mecha/working/ripley/firefighter,
 /obj/machinery/mech_recharger,
 /obj/machinery/light{
 	dir = 8
@@ -2263,7 +2263,7 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/mecha/combat/durand,
+/obj/vehicle/sealed/mecha/combat/durand,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)

@@ -5490,7 +5490,7 @@
 /obj/machinery/floor_light/prebuilt{
 	on = 1
 	},
-/obj/machinery/vending/boozeomat,
+/obj/machinery/vending/cafe,
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
 "lf" = (

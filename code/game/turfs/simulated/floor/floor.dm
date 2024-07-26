@@ -124,6 +124,7 @@
 		var/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
+		color = null
 
 		if(place_product)
 			flooring.drop_product(src)

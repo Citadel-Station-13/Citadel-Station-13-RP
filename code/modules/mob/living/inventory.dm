@@ -229,7 +229,7 @@
 
 	next_click = world.time + 1
 
-	if(istype(loc,/obj/mecha))
+	if(istype(loc,/obj/vehicle/sealed/mecha))
 		return
 
 	get_active_held_item()?.attack_self(src)

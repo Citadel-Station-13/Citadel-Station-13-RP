@@ -74,6 +74,15 @@
 	reset_perspective(no_optimizations = TRUE)
 	// load rendering onto client's screen
 	reload_rendering()
+	// bind actions
+	if(actions_controlled)
+		client.action_drawer.register_holder(actions_controlled)
+	if(actions_innate)
+		client.action_drawer.register_holder(actions_innate)
+	if(inventory)
+		client.action_drawer.register_holder(inventory.actions)
+	// we really hate that this is needed but it is until the screens/images reset isn't there
+	client.action_drawer.reassert_screen()
 	// reset statpanel of any verbs/whatnot
 	client.statpanel_reload()
 	// update ssd overlay

@@ -364,7 +364,7 @@
 			add_verb(user, V)
 
 	ghost.mind.transfer(user)
-	user.key = ghost.key
+	ghost.transfer_client_to(user)
 	user.spell_list = ghost.spell_list
 
 	if(user.mind.special_verbs.len)
