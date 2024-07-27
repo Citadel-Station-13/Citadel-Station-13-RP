@@ -40,6 +40,7 @@
 
 //	requires_two_hands = 1
 	one_handed_penalty = 30
+	worth_intrinsic = 450
 
 	firemodes = list(
 		list(mode_name="stun", burst=1, projectile_type=/obj/projectile/beam/stun/weak, modifystate="fm-2tstun", charge_cost = 100),

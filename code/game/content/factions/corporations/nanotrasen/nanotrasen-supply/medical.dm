@@ -316,7 +316,9 @@
 	)
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Virus sample crate"
-	access = ACCESS_MEDICAL_CMO
+	container_access = list(
+		/datum/access/station/medical/cmo,
+	)
 
 /datum/supply_pack2/nanotrasen/medical/defib
 	name = "Defibrillator crate"
@@ -331,7 +333,6 @@
 	contains = list(
 		/obj/machinery/portable_atmospherics/powered/reagent_distillery = 1,
 	)
-	cost = 175
 	container_type = /obj/structure/largecrate
 
 /datum/supply_pack2/nanotrasen/medical/advdistillery
@@ -378,7 +379,6 @@
 		/obj/item/ammo_magazine/cell_mag/medical = 1,
 	)
 	worth = 1500
-	cost = 250
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed
 	container_name = "Cell-Loaded Medigun crate"
 

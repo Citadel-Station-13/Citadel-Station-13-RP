@@ -52,7 +52,6 @@
 		/obj/item/storage/box/shotgunshells,
 		/obj/item/gun/ballistic/shotgun/pump/combat = 2,
 	)
-	cost = 50
 	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Shotgun crate"
 
@@ -66,8 +65,9 @@
 
 /datum/supply_pack2/nanotrasen/munitions/burstlaser
 	name = "Weapons - Burst laser"
-	contains = list(/obj/item/gun/energy/gun/burst = 2)
-	cost = 50
+	contains = list(
+		/obj/item/gun/energy/gun/burst = 2,
+	)
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Burst laser crate"
 
@@ -77,7 +77,6 @@
 		/obj/item/gun/energy/ionrifle = 2,
 		/obj/item/storage/box/empslite,
 	)
-	cost = 50
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 
@@ -87,7 +86,6 @@
 		/obj/item/gun/energy/ionrifle/pistol = 2,
 		/obj/item/storage/box/empslite,
 	)
-	cost = 30
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 
@@ -96,7 +94,6 @@
 	contains = list(
 		/obj/item/gun/ballistic/automatic/wt550 = 2,
 	)
-	cost = 50
 	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Ballistic weapon crate"
 
@@ -105,80 +102,80 @@
 	contains = list(
 		/obj/item/gun/ballistic/automatic/z8 = 2,
 	)
-	cost = 80
-	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Ballistic weapon crate"
 
 /datum/supply_pack2/nanotrasen/munitions/bolt_rifles_competitive
- 	name = "Weapons - Competitive shooting rifles"
- 	contains = list(
- 			/obj/item/assembly/timer,
- 			/obj/item/gun/ballistic/shotgun/pump/rifle/practice = 2,
- 			/obj/item/ammo_magazine/clip/c762/practice = 4,
- 			/obj/item/target = 2,
- 			/obj/item/target/alien = 2,
- 			/obj/item/target/syndicate = 2
- 			)
- 	cost = 40
- 	container_type = /obj/structure/closet/crate/secure/weapon
- 	container_name = "Ballistic Weapons crate"
+	name = "Weapons - Competitive shooting rifles"
+	contains = list(
+		/obj/item/assembly/timer,
+		/obj/item/gun/ballistic/shotgun/pump/rifle/practice = 2,
+		/obj/item/ammo_magazine/clip/c762/practice = 4,
+		/obj/item/target = 2,
+		/obj/item/target/alien = 2,
+		/obj/item/target/syndicate = 2,
+	)
+	worth = 500
+	container_name = "Ballistic Weapons crate"
 
 /datum/supply_pack2/nanotrasen/munitions/mrifle
 	name = "Weapons - Magnetic Rifles"
-	contains = list(/obj/item/gun/magnetic/railgun/heater = 2)
-	cost = 120
-	container_type = /obj/structure/closet/crate/secure/weapon
+	contains = list(
+		/obj/item/gun/magnetic/railgun/heater = 2,
+	)
 	container_name = "Magnetic weapon crate"
 
 /datum/supply_pack2/nanotrasen/munitions/mpistol
 	name = "Weapons - Magnetic Pistols"
-	contains = list(/obj/item/gun/magnetic/railgun/heater/pistol = 2)
-	cost = 200
-	container_type = /obj/structure/closet/crate/secure/weapon
+	contains = list(
+		/obj/item/gun/magnetic/railgun/heater/pistol = 2,
+	)
 	container_name = "Magnetic weapon crate"
 
 /datum/supply_pack2/nanotrasen/munitions/mcarbine
 	name = "Weapons - Magnetic Carbines"
-	contains = list(/obj/item/gun/magnetic/railgun/flechette/sif = 2)
-	cost = 130
-	container_type = /obj/structure/closet/crate/secure/weapon
+	contains = list(
+		/obj/item/gun/magnetic/railgun/flechette/sif = 2,
+	)
 	container_name = "Magnetic weapon crate"
 
 /datum/supply_pack2/nanotrasen/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
 	contains = list(
-			/obj/item/storage/box/shotgunammo = 2,
-			/obj/item/storage/box/shotgunshells = 2
-			)
-	cost = 25
-	container_type = /obj/structure/closet/crate/secure
+		/obj/item/storage/box/shotgunammo = 2,
+		/obj/item/storage/box/shotgunshells = 2,
+	)
 	container_name = "Ballistic ammunition crate"
 
 /datum/supply_pack2/nanotrasen/munitions/beanbagammo
 	name = "Ammunition - Beanbag shells"
-	contains = list(/obj/item/storage/box/beanbags = 3)
-	cost = 25
-	container_type = /obj/structure/closet/crate
+	contains = list(
+		/obj/item/storage/box/beanbags = 3,
+	)
 	container_name = "Ballistic ammunition crate"
 
 /datum/supply_pack2/nanotrasen/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"
-	contains = list(/obj/item/ammo_magazine/m9mmt = 6)
-	cost = 25
-	container_type = /obj/structure/closet/crate/secure
+	contains = list(
+		/obj/item/ammo_magazine/m9mmt = 6,
+	)
+	worth = 250
 	container_name = "Ballistic ammunition crate"
 
 /datum/supply_pack2/nanotrasen/munitions/bsmgammorubber
 	name = "Ammunition - 9mm top mounted rubber"
-	contains = list(/obj/item/ammo_magazine/m9mmt/rubber = 6)
-	cost = 25
+	contains = list(
+		/obj/item/ammo_magazine/m9mmt/rubber = 6,
+	)
+	worth = 250
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
 
 /datum/supply_pack2/nanotrasen/munitions/brifleammo
 	name = "Ammunition - 7.62mm lethal"
-	contains = list(/obj/item/ammo_magazine/m762 = 6)
-	cost = 25
+	contains = list(
+		/obj/item/ammo_magazine/m762 = 6,
+	)
+	worth = 250
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
 
@@ -210,42 +207,42 @@
 /datum/supply_pack2/nanotrasen/munitions/weaponry_apidean
 	name = "Apidean Weaponry Crate"
 	contains = list(
-			/obj/item/gun/ballistic/apinae_stinger = 1,
-			/obj/item/gun/ballistic/apinae_pistol = 2,
-			/obj/item/grenade/spawnergrenade/manhacks/apidean = 3
-			)
-	cost = 150
+		/obj/item/gun/ballistic/apinae_stinger = 1,
+		/obj/item/gun/ballistic/apinae_pistol = 2,
+		/obj/item/grenade/spawnergrenade/manhacks/apidean = 3,
+	)
+	worth = 750
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Apidean Weaponry crate"
 
 /datum/supply_pack2/nanotrasen/munitions/weaponry_tyrmalin
 	name = "Tyrmalin Weaponry Crate"
 	contains = list(
-			/obj/item/gun/energy/ermitter = 1,
-			/obj/item/gun/ballistic/rocket/tyrmalin = 1,
-			/obj/item/ammo_casing/rocket/weak = 2,
-			/obj/item/gun/ballistic/pirate/junker_pistol = 2,
-			/obj/item/gun/energy/ionrifle/pistol/tyrmalin = 1
-			)
-	cost = 175
+		/obj/item/gun/energy/ermitter = 1,
+		/obj/item/gun/ballistic/rocket/tyrmalin = 1,
+		/obj/item/ammo_casing/rocket/weak = 2,
+		/obj/item/gun/ballistic/pirate/junker_pistol = 2,
+		/obj/item/gun/energy/ionrifle/pistol/tyrmalin = 1,
+	)
+	worth = 1500
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Weaponry crate"
 
 /datum/supply_pack2/nanotrasen/munitions/battlerifle
 	name = "Battle Rifle Pack"
 	contains = list(
-			/obj/item/gun/ballistic/automatic/battlerifle = 2,
-			/obj/item/ammo_magazine/m95 = 4
-			)
-	cost = 60
+		/obj/item/gun/ballistic/automatic/battlerifle = 2,
+		/obj/item/ammo_magazine/m95 = 4,
+	)
+	worth = 1500
 	container_type = /obj/structure/closet/crate/secure/corporate/heph
 
 /datum/supply_pack2/nanotrasen/munitions/quadshot
 	name = "Quad Shotgun Pack"
 	contains = list(
-			/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 2,
-			/obj/item/storage/box/shotgunshells = 2,
-			/obj/item/storage/belt/security/tactical/bandolier = 2,
-			)
-	cost = 70
+		/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 2,
+		/obj/item/storage/box/shotgunshells = 2,
+		/obj/item/storage/belt/security/tactical/bandolier = 2,
+	)
+	worth = 1250
 	container_type = /obj/structure/closet/crate/secure/corporate/heph

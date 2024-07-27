@@ -136,7 +136,9 @@
 	worth = 250
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining crate"
-	access = ACCESS_SUPPLY_MINE
+	container_access = list(
+		/datum/access/station/supply/mining,
+	)
 
 /datum/supply_pack2/nanotrasen/misc/breathing_nitrogen
 	name = "Emergency Nitrogen Supplies"
