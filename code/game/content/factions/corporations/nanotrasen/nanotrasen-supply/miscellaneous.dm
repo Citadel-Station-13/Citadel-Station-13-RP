@@ -7,8 +7,8 @@
 	category = "Miscellaneous"
 
 /datum/supply_pack2/nanotrasen/misc/card_packs
-	num_contained = 5
-	contains = list(
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
 			/obj/item/pack/cardemon,
 			/obj/item/pack/spaceball,
 			/obj/item/deck/holder
@@ -19,8 +19,8 @@
 	container_name = "cards crate"
 
 /datum/supply_pack2/nanotrasen/misc/dnd
-	num_contained = 4
-	contains = list(
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
 			/obj/item/toy/character/alien,
 			/obj/item/toy/character/warrior,
 			/obj/item/toy/character/cleric,
@@ -107,8 +107,8 @@
 
 /datum/supply_pack2/nanotrasen/misc/webbing
 	name = "Webbing crate"
-	num_contained = 4
-	contains = list(
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
 			/obj/item/clothing/accessory/storage/black_vest,
 			/obj/item/clothing/accessory/storage/brown_vest,
 			/obj/item/clothing/accessory/storage/white_vest,

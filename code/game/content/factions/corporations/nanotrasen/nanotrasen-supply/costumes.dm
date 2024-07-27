@@ -251,8 +251,8 @@
 
 /datum/supply_pack2/nanotrasen/costume/tesh_cloaks
 	name = "Teshari cloaks"
-	num_contained = 4
-	contains = list(
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/blue_grey,
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/brown_grey,
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/green_grey,
@@ -265,14 +265,14 @@
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey,
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/yellow_grey
 			)
-	cost = 40
+	worth = 250
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari cloaks crate"
 
 /datum/supply_pack2/nanotrasen/costume/tesh_cloaks_b
 	name = "Teshari cloaks (black)"
-	num_contained = 4
-	contains = list(
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
 			/obj/item/clothing/suit/storage/teshari/cloak,
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/black_blue,
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/black_brown,
@@ -285,7 +285,7 @@
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/black_white,
 			/obj/item/clothing/suit/storage/teshari/cloak/standard/black_yellow
 			)
-	cost = 40
+	worth = 250
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Teshari cloaks crate"
 
@@ -296,7 +296,7 @@
 			/obj/item/clothing/under/utility/blue,
 			/obj/item/clothing/under/utility/grey
 			)
-	cost = 30
+	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Utility uniforms crate"
 
@@ -315,7 +315,7 @@
 			/obj/item/clothing/under/skirt/outfit/plaid_red,
 			/obj/item/clothing/under/skirt/outfit/plaid_green
 			)
-	cost = 40
+	worth = 300
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Skirts crate"
 
@@ -329,14 +329,14 @@
 			/obj/item/clothing/suit/varsity/purple,
 			/obj/item/clothing/suit/varsity/red
 			)
-	cost = 60
+	worth = 400
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Varsity jackets crate"
 
 /datum/supply_pack2/nanotrasen/costume/leathergear
 	name = "Leather gear"
-	num_contained = 5
-	contains = list(
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
 			/obj/item/clothing/suit/leathercoat,
 			/obj/item/clothing/suit/storage/leather_jacket_alt,
 			/obj/item/clothing/suit/storage/toggle/leather_jacket,
@@ -360,7 +360,7 @@
 			/obj/item/clothing/head/cowboy_hat,
 			/obj/item/clothing/head/cowboy_hat/black
 			)
-	cost = 50
+	worth = 400
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Leather gear crate"
 
@@ -379,14 +379,14 @@
 			/obj/item/clothing/glasses/regular/scanners,
 			/obj/item/clothing/glasses/threedglasses
 			)
-	cost = 50
+	worth = 400
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Eyewear crate"
 
 /datum/supply_pack2/nanotrasen/costume/gloves
 	name = "Gloves crate"
-	num_contained = 4
-	contains = list(
+	lazy_gacha_amount = 4
+	lazy_gacha_contained = list(
 			/obj/item/clothing/gloves/black,
 			/obj/item/clothing/gloves/blue,
 			/obj/item/clothing/gloves/botanic_leather,
@@ -403,14 +403,14 @@
 			/obj/item/clothing/gloves/red,
 			/obj/item/clothing/gloves/white
 			)
-	cost = 40
+	worth = 400
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Gloves crate"
 
 /datum/supply_pack2/nanotrasen/costume/boots
 	name = "Boots crate"
-	num_contained = 3
-	contains = list(
+	lazy_gacha_amount = 3
+	lazy_gacha_contained = list(
 			/obj/item/clothing/shoes/boots/workboots,
 			/obj/item/clothing/shoes/boots/cowboy,
 			/obj/item/clothing/shoes/boots/cowboy/classic,
@@ -420,7 +420,7 @@
 			/obj/item/clothing/shoes/boots/jungle,
 			/obj/item/clothing/shoes/boots/winter
 			)
-	cost = 60
+	worth = 400
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Boots crate"
 
@@ -431,7 +431,7 @@
 			/obj/item/storage/backpack/saddlebag_common/robust,
 			/obj/item/storage/backpack/saddlebag_common/vest
 			)
-	cost = 60
+	worth = 400
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "Saddlebags crate"
 
@@ -454,7 +454,7 @@
 			/obj/item/clothing/suit/medievalfake/paladin = 1,
 			/obj/item/clothing/shoes/boots/paladin_fake = 1
 			)
-	cost = 80
+	worth = 1000
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "knight cosplay crate"
 
@@ -465,7 +465,7 @@
 			/obj/item/clothing/suit/medievalfake/crusader/cross/templar,
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar
 			)
-	cost = 15
+	worth = 500
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "templar cosplay crate"
 
@@ -476,7 +476,7 @@
 			/obj/item/clothing/suit/medievalfake/crusader/cross/hospitaller,
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/hospitaller
 			)
-	cost = 15
+	worth = 500
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "hospitaller cosplay crate"
 
@@ -490,6 +490,6 @@
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade,
 			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic
 			)
-	cost = 30
+	worth = 500
 	container_type = /obj/structure/closet/crate/corporate/nanothreads
 	container_name = "teutonic cosplay crate"

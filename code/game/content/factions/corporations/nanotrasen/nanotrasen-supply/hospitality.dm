@@ -22,7 +22,7 @@
 			/obj/item/reagent_containers/food/drinks/bottle/small/ale = 2,
 			/obj/item/reagent_containers/food/drinks/bottle/small/beer = 4,
 			)
-	cost = 10
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "Party equipment"
 
@@ -42,7 +42,7 @@
 			/obj/item/storage/box/glass_extras/straws,
 			/obj/item/storage/box/glass_extras/sticks
 			)
-	cost = 10
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "crate of bar supplies"
 
@@ -50,15 +50,15 @@
 	group = "Hospitality"
 
 /datum/supply_pack2/nanotrasen/hospitality/pizza
-	num_contained = 5
-	contains = list(
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
 			/obj/item/pizzabox/margherita,
 			/obj/item/pizzabox/mushroom,
 			/obj/item/pizzabox/meat,
 			/obj/item/pizzabox/vegetable
 			)
 	name = "Surprise pack of five pizzas"
-	cost = 15
+	worth = 250
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Pizza crate"
 
@@ -72,13 +72,13 @@
 		/obj/item/paper/card/cat,
 		/obj/item/paper/card/flower
 		)
-	cost = 10
+	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "crate of gifts"
 
 /datum/supply_pack2/nanotrasen/hospitality/burgers
-	num_contained = 5
-	contains = list(
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/bigbiteburger,
 			/obj/item/reagent_containers/food/snacks/cheeseburger,
 			/obj/item/reagent_containers/food/snacks/jellyburger,
@@ -86,13 +86,13 @@
 			/obj/item/reagent_containers/food/snacks/fries
 			)
 	name = "Burger crate"
-	cost = 25
+	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Burger crate"
 
 /datum/supply_pack2/nanotrasen/hospitality/bakery
-	num_contained = 5
-	contains = list(
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/baguette,
 			/obj/item/reagent_containers/food/snacks/appletart,
 			/obj/item/reagent_containers/food/snacks/berrymuffin,
@@ -112,13 +112,13 @@
 			/obj/item/reagent_containers/food/snacks/waffles
 			)
 	name = "Bakery products crate"
-	cost = 25
+	worth = 75
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Bakery products crate"
 
 /datum/supply_pack2/nanotrasen/hospitality/cakes
-	num_contained = 2
-	contains = list(
+	lazy_gacha_amount = 2
+	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/sliceable/applecake,
 			/obj/item/reagent_containers/food/snacks/sliceable/birthdaycake,
 			/obj/item/reagent_containers/food/snacks/sliceable/carrotcake,
@@ -130,41 +130,38 @@
 			/obj/item/reagent_containers/food/snacks/sliceable/plaincake
 			)
 	name = "Cake crate"
-	cost = 100
+	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Cake crate"
 
 /datum/supply_pack2/nanotrasen/hospitality/mexican
-	num_contained = 5
-	contains = list(
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/cheeseburrito,
 			/obj/item/reagent_containers/food/snacks/enchiladas,
 			/obj/item/reagent_containers/food/snacks/meatburrito,
 			/obj/item/reagent_containers/food/snacks/taco
 			)
 	name = "Mexican takeout crate"
-	cost = 50
+	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Mexican takeout crate"
 
 /datum/supply_pack2/nanotrasen/hospitality/asian
-	num_contained = 5
-	contains = list(
+	lazy_gacha_amount = 5
+	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/generalschicken,
 			/obj/item/reagent_containers/food/snacks/hotandsoursoup
 			)
 	name = "Chinese takeout crate"
-	cost = 50
+	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Chinese takeout crate"
-
-/datum/supply_pack2/nanotrasen/hospitality/pizza
-	cost = 50
 
 /datum/supply_pack2/nanotrasen/hospitality/cookingoil
 	name = "Tallow tank crate"
 	contains = list(/obj/structure/reagent_dispensers/tallow)
-	cost = 10
+	worth = 350
 	container_type = /obj/structure/largecrate
 	container_name = "Tallow tank crate"
 
@@ -172,7 +169,7 @@
 	name = "Vetalan Care package"
 	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
 					/obj/item/clothing/under/suit_jacket)
-	cost = 50
+	worth = 500
 	container_type = /obj/structure/closet/coffin/comfy
 	container_name = "Extra comfortable coffin"
 
@@ -182,7 +179,7 @@
 			/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew = 2,
 			/obj/item/reagent_containers/food/snacks/boxed/unajerky = 4
 			)
-	cost = 50 //same cost as the others
+	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/unathi
 	container_name = "Moghes Foodstuffs"
 
@@ -194,5 +191,5 @@
 			/obj/item/reagent_containers/food/snacks/cuttlefish = 8,
 			/obj/item/reagent_containers/food/snacks/sliceable/monkfish = 1
 			)
-	cost = 20
+	worth = 150
 	container_name = "Fish crate"
