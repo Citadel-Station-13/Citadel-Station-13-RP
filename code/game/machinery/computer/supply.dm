@@ -113,11 +113,11 @@
 
 	for(var/pack_name in SSsupply.legacy_supply_packs)
 		var/datum/supply_pack2/P = SSsupply.legacy_supply_packs[pack_name]
-		if(P.group == active_category)
+		if(P.category == active_category)
 			var/list/pack = list(
 					"name" = P.name,
-					"cost" = P.cost,
-					"contraband" = P.contraband,
+					"cost" = P.legacy_cost,
+					"contraband" = P.legacy_contraband,
 					"manifest" = P.nanoui_manifest_list(),
 					"random" = P.nanoui_is_random(),
 					"expand" = 0,
@@ -262,7 +262,7 @@
 			reqform.info += "RANK: [idrank]<br>"
 			reqform.info += "REASON: [reason]<br>"
 			reqform.info += "SUPPLY CRATE TYPE: [S.name]<br>"
-			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.access)]<br>"
+			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.container_access | S.container_one_access)]<br>"
 			reqform.info +=  S.get_html_manifest().Join("")
 			reqform.info += "<hr>"
 			reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"

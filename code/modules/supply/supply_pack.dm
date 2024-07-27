@@ -210,8 +210,8 @@
 				for(var/i in 1 to amount)
 					var/chosen = rand(1, total_weight)
 					var/remaining = chosen
-					for(var/i in 1 to length(entities))
-						var/entity = entities[i]
+					for(var/j in 1 to length(entities))
+						var/entity = entities[j]
 						var/weight = entities[entity]
 						remaining -= weight
 						if(remaining <= 0)
@@ -224,7 +224,7 @@
  *
  * argument is provided for container incase you want to modify based on what actually spawned
  */
-/datum/supply_pack2/proc/get_html_mainfest(atom/movable/container)
+/datum/supply_pack2/proc/get_html_manifest(atom/movable/container)
 	RETURN_TYPE(/list)
 	var/list/lines = list()
 	lines += "Contents:<br>"
@@ -239,7 +239,7 @@
 	for(var/i in 1 to length(assembled))
 		var/key = assembled[i]
 		var/value = assembled[key]
-		assembled[i] = "<li>[amount > 1? "[value] [key](s)" : "[key]"]</li>"
+		assembled[i] = "<li>[value > 1? "[value] [key](s)" : "[key]"]</li>"
 	lines += assembled
 	if(truncated)
 		lines += "<li>... (truncated)</li>"
