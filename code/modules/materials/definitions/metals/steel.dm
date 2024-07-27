@@ -8,7 +8,7 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "metal"
 
-	worth = 1.5
+	worth = 2
 
 	// the true neutral material
 

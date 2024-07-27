@@ -14,7 +14,7 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "plasteel"
 
-	worth = 4
+	worth = 6
 
 	relative_integrity = 1.5
 	weight_multiplier = 1

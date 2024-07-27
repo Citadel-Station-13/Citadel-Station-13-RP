@@ -23,6 +23,8 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
+	worth = 75
+
 /datum/material/morphium/hull
 	name = MAT_MORPHIUMHULL
 	id = "morphium_hull"

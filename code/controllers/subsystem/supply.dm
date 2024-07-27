@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(supply)
 	var/points = 50
 	var/points_per_second = 1.5 / 30
 	var/points_per_slip = 2
-	var/points_per_money = 0.04 // 1 point for $50
+	var/points_per_money = 0.06 // 1 point for $50
 	var/points_per_trash = 0.1 // Weighted value, tentative.
 	// Control
 	var/ordernum
@@ -21,14 +21,7 @@ SUBSYSTEM_DEF(supply)
 	// Shuttle Movement
 	var/movetime = 1200
 	var/datum/shuttle/autodock/ferry/supply/shuttle
-	var/list/material_points_conversion = list(	// Any materials not named in this list are worth 0 points
-			MAT_PHORON = 5,
-			MAT_PLATINUM = 5,
-			MAT_GOLD = 2,		// CIT CHANGE: Gold is now worth 2 cargo points per sheet
-			MAT_SILVER = 2,	// CIT CHANGE: Silver is now worth 2 cargo points per sheet
-			MAT_URANIUM = 1	// CIT CHANGE: Uranium is now worth 1 cargo point per sheet
-		)
-
+	
 // TODO - Refactor to use the Supply Subsystem (SSsupply)
 
 // Supply packs are in /code/datums/supplypacks
@@ -129,10 +122,14 @@ SUBSYSTEM_DEF(supply)
 					// Sell phoron and platinum
 					if(istype(A, /obj/item/stack/material))
 						var/obj/item/stack/material/P = A
-						if(material_points_conversion[P.material.name])
-							EC.contents[EC.contents.len]["value"] = P.get_amount() * material_points_conversion[P.material.name]
-						EC.contents[EC.contents.len]["quantity"] = P.get_amount()
-						EC.value += EC.contents[EC.contents.len]["value"]
+						if(istype(P.material))
+							var/thaler_per_sheet = P.material.worth * 0.75
+							var/total_thaler = thaler_per_sheet * P.amount
+							var/total_points = total_thaler * points_per_money
+							if(material_points_conversion[P.material.name])
+								EC.contents[EC.contents.len]["value"] = total_points
+							EC.contents[EC.contents.len]["quantity"] = P.amount
+							EC.value += EC.contents[EC.contents.len]["value"]
 
 					// Sell spacebucks
 					if(istype(A, /obj/item/spacecash))

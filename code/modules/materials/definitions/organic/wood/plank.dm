@@ -33,6 +33,8 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
+	worth = 2.5
+
 /datum/material/wood_plank/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(

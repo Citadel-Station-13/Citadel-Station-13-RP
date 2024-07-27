@@ -12,7 +12,7 @@
 	table_icon_base = "metal"
 	tgui_icon_key = "durasteel"
 
-	worth = 10
+	worth = 17.5
 
 	relative_integrity = 2
 	density = 8 * 2.5

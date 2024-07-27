@@ -2375,7 +2375,6 @@
 #include "code\modules\bodysets\synthetic\oss_tajaran.dm"
 #include "code\modules\bodysets\synthetic\oss_vulpkanin.dm"
 #include "code\modules\busy_space\organizations.dm"
-#include "code\modules\cargo\supplypacks\_supplypacks.dm"
 #include "code\modules\catalogue\atoms.dm"
 #include "code\modules\catalogue\catalogue_data.dm"
 #include "code\modules\catalogue\cataloguer.dm"
