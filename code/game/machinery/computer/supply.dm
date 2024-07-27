@@ -118,8 +118,8 @@
 					"name" = P.name,
 					"cost" = P.cost,
 					"contraband" = P.contraband,
-					"manifest" = P.flattened_nanoui_manifest(),
-					"random" = P.is_random(),
+					"manifest" = P.nanoui_manifest_list(),
+					"random" = P.nanoui_is_random(),
 					"expand" = 0,
 					"ref" = "\ref[P]"
 				)

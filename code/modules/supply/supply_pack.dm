@@ -44,7 +44,7 @@
 	///
 	/// * don't be fooled; this **is** a lazy list! this means it's null while empty.
 	/// * a descriptor associated to amount
-	/// * a list of list("descriptor" = ..., "amount" = number, "descriptor_hint" (optional), "container_hint" (optional)), associated to amount
+	/// * a list of list("entity" = ..., "amount" = number, "entity_hint" (optional), "container_hint" (optional)), associated to amount
 	var/list/contains = list()
 	/// contains some amount of these entity descriptor groups
 	///
@@ -94,6 +94,11 @@
 		if(ispath(key, /datum/access))
 			var/datum/access/resolved_access = SSjob.access_path_lookup[key]
 			container_access[i] = resolved_access.access_value
+	for(var/i in 1 to length(container_one_access))
+		var/key = container_one_access[i]
+		if(ispath(key, /datum/access))
+			var/datum/access/resolved_access = SSjob.access_path_lookup[key]
+			container_one_access[i] = resolved_access.access_value
 	// auto-detect worth
 	if(isnull(worth))
 		worth = detect_worth()
@@ -102,6 +107,12 @@
 	// autoset container name
 	if(isnull(container_name))
 		container_name = name
+	// gacha
+	if(length(lazy_gacha_contained) && lazy_gacha_amount)
+		contains_some[++contains_some.len] = list(
+			"entities" = lazy_gacha_contained,
+			"amount" = lazy_gacha_amount,
+		)
 	// legacy
 	if(isnull(legacy_cost))
 		legacy_cost = ceil(worth * 0.06)
@@ -132,9 +143,112 @@
 		var/worth
 		if(islist(descriptor))
 			var/list/descriptor_list = descriptor
-			#warn impl
+			worth = SSsupply.value_entity_via_descriptor(
+				descriptor_list["entityr"],
+				descriptor_list["amount"],
+				descriptor_list["entity_hint"],
+				descriptor_list["container_hint"],
+			)
 		else
 			worth = SSsupply.value_entity_via_descriptor(descriptor)
 		. += worth * amount
 
-#warn instantiation
+/**
+ * @return container spawned, or null (which can also mean we don't use a container for some reason)
+ */
+/datum/supply_pack2/proc/instantiate_pack_at(atom/where)
+	return instantiate_contents(instantiate_container(where) || where)
+
+/datum/supply_pack2/proc/instantiate_container(atom/where)
+	RETURN_TYPE(/atom/movable)
+
+	if(container_type)
+		return
+
+	var/atom/movable/container = new container_type(where)
+	. = container
+	
+	container.name = container_name
+	container.desc = container_desc
+	
+	if(isobj(container))
+		var/obj/obj_container = container
+		if(container_access)
+			//  todo: getter / setter for req-accesses, enforced cached & deduped lists 
+			obj_container.req_access = container_access.Copy()
+		if(container_one_access)
+			//  todo: getter / setter for req-accesses, enforced cached & deduped lists 
+			obj_container.req_one_access = container_one_access.Copy()
+
+/datum/supply_pack2/proc/instantiate_contents(atom/where)
+	var/list/descriptors_to_spawn = resolve_contents_descriptors()
+	for(var/descriptor in descriptors_to_spawn)
+		var/amount = descriptors_to_spawn[descriptor] || 1
+		SSsupply.instantiate_entity_via_descriptor(descriptor, amount, null, null, where)
+
+/**
+ * @return list of descriptor associated to amount
+ */
+/datum/supply_pack2/proc/resolve_contents_descriptors()
+	. = contains.Copy()
+
+	if(length(contains_some))
+		for(var/list/entry as anything in contains_some)
+			var/list/entities = entry["entities"]
+			var/amount = entry["amount"]
+			
+			// this is basically an inlined pickweight()
+
+			var/total_weight = 0
+			for(var/key in entities)
+				total_weight += entities[key] || 1
+			
+			if(total_weight == length(entities))
+				for(var/i in 1 to amount)
+					.[pick(entities)] += 1
+			else
+				for(var/i in 1 to amount)
+					var/chosen = rand(1, total_weight)
+					var/remaining = chosen
+					for(var/i in 1 to length(entities))
+						var/entity = entities[i]
+						var/weight = entities[entity]
+						remaining -= weight
+						if(remaining <= 0)
+							.[entity] += 1
+
+//* LEGACY CRAP *//
+
+/**
+ * generates our HTML manifest as a **list**
+ *
+ * argument is provided for container incase you want to modify based on what actually spawned
+ */
+/datum/supply_pack2/proc/get_html_mainfest(atom/movable/container)
+	RETURN_TYPE(/list)
+	var/list/lines = list()
+	lines += "Contents:<br>"
+	lines += "<ul>"
+	var/list/assembled = list()
+	var/truncated = FALSE
+	for(var/atom/movable/thing in container)
+		assembled["[thing]"] += 1
+		if(length(assembled) > 100)
+			truncated = TRUE
+			break
+	for(var/i in 1 to length(assembled))
+		var/key = assembled[i]
+		var/value = assembled[key]
+		assembled[i] = "<li>[amount > 1? "[value] [key](s)" : "[key]"]</li>"
+	lines += assembled
+	if(truncated)
+		lines += "<li>... (truncated)</li>"
+	lines += "</ul>"
+	return lines
+
+
+/datum/supply_pack2/proc/nanoui_manifest_list()
+	#warn impl
+
+/datum/supply_pack2/proc/nanoui_is_random()
+	return !!length(contains_some)
