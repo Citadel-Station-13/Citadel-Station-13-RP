@@ -504,8 +504,8 @@
 		/obj/item/light/bulb/yellow = 4,
 		/obj/item/light/bulb/green = 4,
 		/obj/item/light/bulb/blue = 4,
-		/obj/item/light/bulb/purple = 4
-		)
+		/obj/item/light/bulb/purple = 4,
+	)
 
 /obj/item/storage/box/lights/bulbs_neon
 	name = "box of neon bulbs"
@@ -516,8 +516,8 @@
 		/obj/item/light/bulb/neon_blue = 6,
 		/obj/item/light/bulb/neon_green = 6,
 		/obj/item/light/bulb/neon_yellow = 6,
-		/obj/item/light/bulb/neon_white = 6
-		)
+		/obj/item/light/bulb/neon_white = 6,
+	)
 
 /obj/item/storage/box/lights/tubes_colored
 	name = "box of colored tubes"
@@ -528,8 +528,8 @@
 		/obj/item/light/tube/yellow = 4,
 		/obj/item/light/tube/green = 4,
 		/obj/item/light/tube/blue = 4,
-		/obj/item/light/tube/purple = 4
-		)
+		/obj/item/light/tube/purple = 4,
+	)
 
 /obj/item/storage/box/lights/tubes_neon
 	name = "box of neon tubes"
@@ -540,8 +540,8 @@
 		/obj/item/light/tube/neon_blue = 6,
 		/obj/item/light/tube/neon_green = 6,
 		/obj/item/light/tube/neon_yellow = 6,
-		/obj/item/light/tube/neon_white = 6
-		)
+		/obj/item/light/tube/neon_white = 6,
+	)
 
 /obj/item/storage/box/lights/mixed_colored
 	name = "box of colored lights"
@@ -558,8 +558,8 @@
 		/obj/item/light/bulb/yellow = 2,
 		/obj/item/light/bulb/green = 2,
 		/obj/item/light/bulb/blue = 2,
-		/obj/item/light/bulb/purple = 2
-		)
+		/obj/item/light/bulb/purple = 2,
+	)
 
 /obj/item/storage/box/lights/mixed_neon
 	name = "box of neon lights"
@@ -575,8 +575,8 @@
 		/obj/item/light/bulb/neon_blue = 3,
 		/obj/item/light/bulb/neon_green = 3,
 		/obj/item/light/bulb/neon_yellow = 3,
-		/obj/item/light/bulb/neon_white = 3
-		)
+		/obj/item/light/bulb/neon_white = 3,
+	)
 
 /obj/item/storage/box/freezer
 	name = "portable freezer"

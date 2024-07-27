@@ -14,7 +14,7 @@
 			/obj/item/deck/holder
 			)
 	name = "Trading Card Crate"
-	cost = 10
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "cards crate"
 
@@ -30,7 +30,7 @@
 			/obj/item/toy/character/lich
 			)
 	name = "Miniatures Crate"
-	cost = 200
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Miniature Crate"
 
@@ -72,7 +72,7 @@
 		/obj/item/toy/plushie/squid/yellow,
 		/obj/item/toy/plushie/squid/pink,
 	)
-	cost = 15
+	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Plushies Crate"
 
@@ -117,7 +117,7 @@
 			/obj/item/clothing/accessory/storage/white_drop_pouches,
 			/obj/item/clothing/accessory/storage/webbing
 			)
-	cost = 10
+	worth = 150
 	container_type = /obj/structure/closet/crate
 	container_name = "Webbing crate"
 
@@ -202,7 +202,6 @@
 		/obj/item/hardsuit/medical = 1,
 	)
 	worth = 750
-	cost = 150
 
 /datum/supply_pack2/nanotrasen/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
@@ -243,74 +242,60 @@
 /datum/supply_pack2/nanotrasen/misc/colored_lights
 	name = "Colored Lights Bundle"
 	contains = list(
-			/obj/item/storage/box/lights/bulbs_colored = 2,
-			/obj/item/storage/box/lights/tubes_colored = 2,
-			/obj/item/storage/box/lights/mixed_colored = 1
-			)
-	cost = 50
-	container_type = /obj/structure/closet/crate
-	container_name = "Colored Lights crate"
+		/obj/item/storage/box/lights/bulbs_colored = 2,
+		/obj/item/storage/box/lights/tubes_colored = 2,
+		/obj/item/storage/box/lights/mixed_colored = 1,
+	)
 
 /datum/supply_pack2/nanotrasen/misc/neon_lights
 	name = "Neon Lights Bundle"
 	contains = list(
-			/obj/item/storage/box/lights/bulbs_neon = 2,
-			/obj/item/storage/box/lights/tubes_neon = 2,
-			/obj/item/storage/box/lights/mixed_neon = 1
-			)
-	cost = 50
-	container_type = /obj/structure/closet/crate
-	container_name = "Neon Lights crate"
+		/obj/item/storage/box/lights/bulbs_neon = 2,
+		/obj/item/storage/box/lights/tubes_neon = 2,
+		/obj/item/storage/box/lights/mixed_neon = 1,
+	)
 
 //Culture Crates
 /datum/supply_pack2/nanotrasen/misc/culture_apidean
 	name = "Apidean Culture Crate"
 	contains = list(
-			/obj/fiftyspawner/wax = 2,
-			/obj/item/healthanalyzer/apidean = 1,
-			/obj/item/atmos_analyzer/apidean = 1,
-			/obj/item/reagent_scanner/apidean = 1,
-			/mob/living/bot/medibot/apidean = 1,
-			/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead = 2,
-			/obj/item/reagent_containers/food/drinks/bottle/royaljelly = 1
-			)
-	cost = 50
-	container_type = /obj/structure/closet/crate
-	container_name = "Apidean Culture crate"
+		/obj/fiftyspawner/wax = 2,
+		/obj/item/healthanalyzer/apidean = 1,
+		/obj/item/atmos_analyzer/apidean = 1,
+		/obj/item/reagent_scanner/apidean = 1,
+		/mob/living/bot/medibot/apidean = 1,
+		/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead = 2,
+		/obj/item/reagent_containers/food/drinks/bottle/royaljelly = 1,
+	)
+	worth = 1000
 
 /datum/supply_pack2/nanotrasen/misc/culture_tyrmalin
 	name = "Tyrmalin Culture Crate"
 	contains = list(
-			/obj/item/tool/wrench/goblin = 2,
-			/obj/item/weldingtool/welder_spear = 2,
-			/obj/item/clothing/accessory/skullcodpiece = 2,
-			/obj/item/reagent_containers/food/snacks/cavemoss_can = 2,
-			/obj/item/reagent_containers/food/snacks/diggerstew_can = 2,
-			/obj/item/reagent_containers/food/snacks/canned_bettles = 2,
-			/obj/item/reagent_containers/food/snacks/rust_can = 2,
-			/obj/item/reagent_containers/food/drinks/bottle/phobos = 1,
-			/obj/item/reagent_containers/food/drinks/bottle/greenstuff = 1
-			)
-	cost = 50
-	container_type = /obj/structure/closet/crate
-	container_name = "Tyrmalin Culture crate"
+		/obj/item/tool/wrench/goblin = 2,
+		/obj/item/weldingtool/welder_spear = 2,
+		/obj/item/clothing/accessory/skullcodpiece = 2,
+		/obj/item/reagent_containers/food/snacks/cavemoss_can = 2,
+		/obj/item/reagent_containers/food/snacks/diggerstew_can = 2,
+		/obj/item/reagent_containers/food/snacks/canned_bettles = 2,
+		/obj/item/reagent_containers/food/snacks/rust_can = 2,
+		/obj/item/reagent_containers/food/drinks/bottle/phobos = 1,
+		/obj/item/reagent_containers/food/drinks/bottle/greenstuff = 1,
+	)
+	worth = 1000
 
 /datum/supply_pack2/nanotrasen/misc/culture_alraune
 	name = "Alraune Culture Crate"
 	contains = list(
-			/obj/item/reagent_containers/food/snacks/wrapped/alraune_bar = 3,
-			/obj/item/reagent_containers/food/snacks/boxed/bugsnacks = 3,
-			/obj/item/reagent_containers/food/drinks/cans/alraune = 3
-			)
-	cost = 50
-	container_type = /obj/structure/closet/crate
-	container_name = "Alraune Culture crate"
+		/obj/item/reagent_containers/food/snacks/wrapped/alraune_bar = 3,
+		/obj/item/reagent_containers/food/snacks/boxed/bugsnacks = 3,
+		/obj/item/reagent_containers/food/drinks/cans/alraune = 3,
+	)
+	worth = 1000
 
 /datum/supply_pack2/nanotrasen/misc/music_players
-	name = "Music players"
+	name = "Portable Music Players"
 	contains = list(
-		/obj/item/device/walkpod = 3
+		/obj/item/device/walkpod = 3,
 	)
-	cost = 150
-	container_type = /obj/structure/closet/crate
-	container_name = "Portable music players crate"
+	worth = 75
