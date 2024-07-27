@@ -5,7 +5,8 @@
 
 
 /datum/supply_pack2/nanotrasen/hospitality
-	group = "Hospitality"
+	abstract_type = /datum/supply_pack2/nanotrasen/hospitality
+	category = "Hospitality"
 
 /datum/supply_pack2/nanotrasen/hospitality/party
 	name = "Party equipment"
@@ -45,9 +46,6 @@
 	worth = 350
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "crate of bar supplies"
-
-/datum/supply_pack2/nanotrasen/hospitality/
-	group = "Hospitality"
 
 /datum/supply_pack2/nanotrasen/hospitality/pizza
 	lazy_gacha_amount = 5

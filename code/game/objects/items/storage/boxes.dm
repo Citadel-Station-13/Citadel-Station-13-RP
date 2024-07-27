@@ -589,6 +589,7 @@
 	insertion_whitelist = list(/obj/item/organ)
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5 // Formally 21.  Odd numbers are bad.
 	allow_mass_gather = TRUE // for picking up broken bulbs, not that most people will try
+	worth_intrinsic = 150
 
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))

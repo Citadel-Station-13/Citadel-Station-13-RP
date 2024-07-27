@@ -52,7 +52,7 @@
 	name = "virus sample"
 
 	/// the worth of the contained random virus
-	var/worth_contained_virus = 500
+	var/worth_contained_virus = 250
 
 /obj/item/virusdish/random/Initialize(mapload)
 	. = ..()

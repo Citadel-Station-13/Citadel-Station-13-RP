@@ -5,6 +5,7 @@
 
 
 /datum/supply_pack2/nanotrasen/recreation
+	abstract_type = /datum/supply_pack2/nanotrasen/recreation
 	category = "Recreation"
 
 /datum/supply_pack2/nanotrasen/recreation/foam_weapons
@@ -165,35 +166,29 @@
 /datum/supply_pack2/nanotrasen/recreation/donksoft
 	name = "DONKsoft Skirmish Bundle"
 	contains = list(
-			/obj/item/gunbox/donksoft = 2,
-			/obj/item/gunbox/donksoft/shotgun = 2,
-			/obj/item/gunbox/donksoft/smg = 2,
-			/obj/item/material/sword/foam = 2,
-			/obj/item/shield/riot/foam = 2
-			)
-	cost = 40
-	container_type = /obj/structure/closet/crate
-	container_name = "DONKsoft Skirmish crate"
+		/obj/item/gunbox/donksoft = 2,
+		/obj/item/gunbox/donksoft/shotgun = 2,
+		/obj/item/gunbox/donksoft/smg = 2,
+		/obj/item/material/sword/foam = 2,
+		/obj/item/shield/riot/foam = 2,
+	)
+	worth = 750
 
 /datum/supply_pack2/nanotrasen/recreation/donksoft_exotic
 	name = "DONKsoft Exotic Weaponry Bundle"
 	contains = list(
-			/obj/item/gun/ballistic/automatic/c20r/foam = 2,
-			/obj/item/gun/ballistic/automatic/lmg/foam = 1,
-			/obj/item/ammo_magazine/mfoam/c20 = 4,
-			/obj/item/ammo_magazine/mfoam/lmg = 2,
-			/obj/item/material/twohanded/spear/foam = 2,
-			/obj/item/material/twohanded/fireaxe/foam = 1
-			)
-	cost = 80
-	container_type = /obj/structure/closet/crate
-	container_name = "DONKsoft Exotic Weaponry crate"
+		/obj/item/gun/ballistic/automatic/c20r/foam = 2,
+		/obj/item/gun/ballistic/automatic/lmg/foam = 1,
+		/obj/item/ammo_magazine/mfoam/c20 = 4,
+		/obj/item/ammo_magazine/mfoam/lmg = 2,
+		/obj/item/material/twohanded/spear/foam = 2,
+		/obj/item/material/twohanded/fireaxe/foam = 1,
+	)
+	worth = 1500
 
 /datum/supply_pack2/nanotrasen/recreation/donksoft_ammo
 	name = "DONKsoft Resupply Bundle"
 	contains = list(
-			/obj/item/storage/box/foamdart= 4
-			)
-	cost = 20
-	container_type = /obj/structure/closet/crate
-	container_name = "DONKsoft Resupply crate"
+		/obj/item/storage/box/foamdart= 4,
+	)
+	worth = 250
