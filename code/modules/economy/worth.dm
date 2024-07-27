@@ -47,7 +47,7 @@
 		var/materials = get_materials_worth(flags)
 		. += materials
 	if(flags & GET_WORTH_CONTAINING)
-		var/containing = get_containing_worth(flags, itemized_out)
+		var/containing = get_containing_worth(flags)
 		. += containing
 
 /**

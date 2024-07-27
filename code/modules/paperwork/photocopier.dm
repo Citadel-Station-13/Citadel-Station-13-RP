@@ -380,4 +380,4 @@
 
 /obj/item/toner/get_containing_worth(flags)
 	. = ..()
-	. += clamp(toner_amount, 0, max_amount) * 1.75 // printer companies are still scams in 2656
+	. += clamp(amount, 0, max_amount) * 1.75 // printer companies are still scams in 2656

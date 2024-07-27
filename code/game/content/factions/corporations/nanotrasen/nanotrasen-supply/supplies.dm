@@ -5,7 +5,7 @@
 
 /datum/supply_pack2/nanotrasen/supply
 	abstract_type = /datum/supply_pack2/nanotrasen/supply
-	group = "Supplies"
+	category = "Supplies"
 
 /datum/supply_pack2/nanotrasen/supply/food
 	name = "Kitchen supply crate"

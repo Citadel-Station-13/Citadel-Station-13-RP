@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(supply)
 	var/points = 50
 	var/points_per_second = 1.5 / 30
 	var/points_per_slip = 2
-	var/points_per_money = 0.02 // 1 point for $50
+	var/points_per_money = 0.04 // 1 point for $50
 	var/points_per_trash = 0.1 // Weighted value, tentative.
 	// Control
 	var/ordernum
@@ -202,14 +202,14 @@ SUBSYSTEM_DEF(supply)
 			break
 
 		SO.status = SUP_ORDER_SHIPPED
-		var/datum/supply_pack/SP = SO.object
+		var/datum/supply_pack2/SP = SO.object
 		var/atom/movable/container = SP.Instantiate(T)
 		if(SO.comment)
 			container.name += " [SO.comment]"
 
 		// Supply manifest generation begin
 		var/obj/item/paper/manifest/slip
-		if(!SP.contraband)
+		if(!SP.legacy_contraband)
 			slip = new /obj/item/paper/manifest(container)
 			slip.is_copy = 0
 			// save the trip to the string tree
@@ -231,7 +231,7 @@ SUBSYSTEM_DEF(supply)
 	if(O.status != SUP_ORDER_REQUESTED)
 		return FALSE
 	// Not enough points to purchase the crate
-	if(SSsupply.points <= O.object.cost)
+	if(SSsupply.points <= O.object.legacy_cost)
 		return FALSE
 
 	// Based on the current model, there shouldn't be any entries in order_history, requestlist, or shoppinglist, that aren't matched in adm_order_history
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(supply)
 	adm_order.approved_at = stationdate2text() + " - " + stationtime2text()
 
 	// Deduct cost
-	SSsupply.points -= O.object.cost
+	SSsupply.points -= O.object.legacy_cost
 	return TRUE
 
 // Will deny the specified order. Only useful if the order is currently requested, but available at any status
@@ -303,7 +303,7 @@ SUBSYSTEM_DEF(supply)
 	return
 
 // Will generate a new, requested order, for the given supply pack type
-/datum/controller/subsystem/supply/proc/create_order(var/datum/supply_pack/S, var/mob/user, var/reason)
+/datum/controller/subsystem/supply/proc/create_order(var/datum/supply_pack2/S, var/mob/user, var/reason)
 	var/datum/supply_order/new_order = new()
 	var/datum/supply_order/adm_order = new()	// Admin-recorded order must be a separate copy in memory, or user-made edits will corrupt it
 

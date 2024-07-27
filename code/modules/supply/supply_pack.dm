@@ -104,7 +104,7 @@
 		container_name = name
 	// legacy
 	if(isnull(legacy_cost))
-		legacy_cost = ceil(worth * 0.02)
+		legacy_cost = ceil(worth * 0.06)
 
 /datum/supply_pack2/proc/compact()
 	LAZYCLEARLIST(contains)

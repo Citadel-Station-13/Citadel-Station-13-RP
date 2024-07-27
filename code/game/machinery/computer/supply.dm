@@ -112,7 +112,7 @@
 		shuttle["mode"] = SUP_SHUTTLE_ERROR
 
 	for(var/pack_name in SSsupply.legacy_supply_packs)
-		var/datum/supply_pack/P = SSsupply.legacy_supply_packs[pack_name]
+		var/datum/supply_pack2/P = SSsupply.legacy_supply_packs[pack_name]
 		if(P.group == active_category)
 			var/list/pack = list(
 					"name" = P.name,
@@ -214,7 +214,7 @@
 		active_category = href_list["active_category"]
 
 	if(href_list["pack_ref"])
-		var/datum/supply_pack/S = locate(href_list["pack_ref"])
+		var/datum/supply_pack2/S = locate(href_list["pack_ref"])
 
 		// Invalid ref
 		if(!istype(S))

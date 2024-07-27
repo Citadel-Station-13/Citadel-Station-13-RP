@@ -12,10 +12,15 @@
 /// * for things that are too dangerous to allow random ordering
 #define SUPPLY_PACK_RESTRICT_PRIVATE_ORDERS (1<<1)
 
-#warn new define bitfield; update
-DEFINE_BITFIELD(supply_pack_flags, list(
-	BITFIELD_NEW(SUPPLY_PACK_LOCK_PRIVATE_ORDERS, "Always Access Restricted"),
-	BITFIELD_NEW(SUPPLY_PACK_RESTRICT_PRIVATE_ORDERS, "No Private Orders"),
+#warn new define bitfield; 
+
+DEFINE_BITFIELD_NEW(supply_pack_flags, list(
+	/datum/supply_pack = list(
+		"supply_pack_flags",
+	),
+), list(
+	BITFIELD_NEW("Always Access Restricted", SUPPLY_PACK_LOCK_PRIVATE_ORDERS),
+	BITFIELD_NEW("Restricted Private Orders", SUPPLY_PACK_RESTRICT_PRIVATE_ORDERS),
 ))
 
 //* Supply Entity Descriptors *//
