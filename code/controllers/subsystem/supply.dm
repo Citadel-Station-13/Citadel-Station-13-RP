@@ -411,6 +411,7 @@ SUBSYSTEM_DEF(supply)
  * @return string
  */
 /datum/controller/subsystem/supply/proc/describe_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
+	#warn handle plurals
 
 /**
  * Resolves an entity descriptor, and estimates its worth

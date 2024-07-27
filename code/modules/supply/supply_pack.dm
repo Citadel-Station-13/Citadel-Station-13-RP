@@ -246,9 +246,17 @@
 	lines += "</ul>"
 	return lines
 
-
 /datum/supply_pack2/proc/nanoui_manifest_list()
-	#warn impl
+	. = list()
+	for(var/descriptor in contains)
+		var/amount = contains[descriptor]
+		var/described = SSsupply.describe_entity_via_descriptor(descriptor, amount)
+		. += described
+	for(var/list/gacha_list as anything in contains_some)
+		var/list/entities = gacha_list["entities"]
+		for(var/entity in entities)
+			var/described = SSsupply.describe_entity_via_descriptor(entity)
+			. += described
 
 /datum/supply_pack2/proc/nanoui_is_random()
 	return !!length(contains_some)
