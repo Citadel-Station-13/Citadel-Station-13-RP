@@ -126,8 +126,7 @@ SUBSYSTEM_DEF(supply)
 							var/thaler_per_sheet = P.material.worth * 0.75
 							var/total_thaler = thaler_per_sheet * P.amount
 							var/total_points = total_thaler * points_per_money
-							if(material_points_conversion[P.material.name])
-								EC.contents[EC.contents.len]["value"] = total_points
+							EC.contents[EC.contents.len]["value"] = total_points
 							EC.contents[EC.contents.len]["quantity"] = P.amount
 							EC.value += EC.contents[EC.contents.len]["value"]
 
@@ -315,7 +314,7 @@ SUBSYSTEM_DEF(supply)
 	new_order.index = new_order.ordernum	// Index can be fabricated, or falsified. Ordernum is a permanent marker used to track the order
 	new_order.object = S
 	new_order.name = S.name
-	new_order.cost = S.cost
+	new_order.cost = S.legacy_cost
 	new_order.ordered_by = idname
 	new_order.comment = reason
 	new_order.ordered_at = stationdate2text() + " - " + stationtime2text()

@@ -12,8 +12,6 @@
 /// * for things that are too dangerous to allow random ordering
 #define SUPPLY_PACK_RESTRICT_PRIVATE_ORDERS (1<<1)
 
-#warn new define bitfield; 
-
 DEFINE_BITFIELD_NEW(supply_pack_flags, list(
 	/datum/supply_pack = list(
 		"supply_pack_flags",
