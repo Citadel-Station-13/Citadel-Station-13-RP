@@ -192,3 +192,11 @@
 		/obj/item/storage/box/foamdart= 4,
 	)
 	worth = 250
+
+/datum/supply_pack/nanotrasen/recreation/pelletgun
+	name = "Recreational Pellet Gun"
+	contains = list(
+		/obj/item/gun/ballistic/caseless/pellet,
+		/obj/item/ammo_magazine/pellets,
+	)
+	worth = 75
