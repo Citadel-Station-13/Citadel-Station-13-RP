@@ -10,5 +10,5 @@
 
 	// todo: sprite
 
-	worth_intrinsic = 35
+	worth_intrinsic = 20
 	volume = 250

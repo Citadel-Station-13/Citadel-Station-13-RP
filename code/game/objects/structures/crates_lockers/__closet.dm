@@ -9,7 +9,7 @@
 	layer = UNDER_JUNK_LAYER
 	armor_type = /datum/armor/object/medium
 
-	worth_intrinsic = 50
+	worth_intrinsic = 25
 
 	integrity = 200
 	integrity_max = 200

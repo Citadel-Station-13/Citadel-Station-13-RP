@@ -13,7 +13,7 @@
 	materials_base = list(
 		/datum/material/steel::id = 5 * /datum/material/steel::sheet_amount,
 	)
-	worth_intrinsic = 75
+	worth_intrinsic = 50
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
 
