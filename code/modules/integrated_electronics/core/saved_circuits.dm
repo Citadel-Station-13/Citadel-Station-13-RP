@@ -376,8 +376,8 @@
 		if(!initial(component_path.removable))
 			continue
 		var/obj/item/integrated_circuit/component = new component_path(assembly)
-		assembly.add_component(component)
 		component.load(component_params)
+		assembly.add_component(component)
 
 
 	// Block 3.  Wires.

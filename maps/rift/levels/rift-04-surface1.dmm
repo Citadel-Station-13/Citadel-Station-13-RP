@@ -2443,6 +2443,9 @@
 /obj/machinery/door/airlock{
 	name = "Medbay Restroom"
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/medical_restroom)
 "bIs" = (
@@ -4186,6 +4189,9 @@
 /obj/machinery/fire_alarm/east_mount,
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/medical)
@@ -7626,6 +7632,9 @@
 "eXL" = (
 /obj/machinery/washing_machine,
 /obj/machinery/power/apc/east_mount,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/medical_restroom)
 "eYJ" = (
@@ -8080,6 +8089,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
@@ -13564,6 +13576,9 @@
 /area/maintenance/library)
 "iHL" = (
 /obj/machinery/power/apc/east_mount,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor,
 /area/maintenance/substation/medical)
 "iHQ" = (
@@ -16451,6 +16466,9 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "kwW" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/medical_restroom)
 "kxj" = (
@@ -25403,6 +25421,9 @@
 	},
 /obj/machinery/computer/security/telescreen{
 	pixel_x = 32
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)

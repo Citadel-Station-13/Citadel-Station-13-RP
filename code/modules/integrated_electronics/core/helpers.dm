@@ -61,9 +61,13 @@
 
 /datum/integrated_io/proc/get_data()
 	if(islist(data))
-		for(var/i in 1 to length(data))
-			if(isweakref(data[i]))
-				data[i] = data[i].resolve()
+		var/list/d = data
+		var/list/new_data = d.Copy(max(1,d.len - IC_MAX_LIST_LENGTH+1),0)
+		for(var/i in 1 to length(new_data))
+			var/datum/dataRef = new_data[i]
+			if(istype(dataRef) && !isweakref(dataRef))
+				new_data[i] = WEAKREF(dataRef)
+		return new_data
 	if(isweakref(data))
 		return data.resolve()
 	return data
