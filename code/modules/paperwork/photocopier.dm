@@ -373,11 +373,11 @@
 	name = "toner cartridge"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "tonercartridge"
-	worth_intrinsic = 10
-	
+	worth_intrinsic = 5
+
 	var/max_amount = 30
 	var/amount = 30
 
 /obj/item/toner/get_containing_worth(flags)
 	. = ..()
-	. += clamp(amount, 0, max_amount) * 1.75 // printer companies are still scams in 2656
+	. += clamp(amount, 0, max_amount) * 1 // printer companies are still scams in 2656
