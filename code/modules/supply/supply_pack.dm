@@ -160,7 +160,9 @@
  * @return container spawned, or null (which can also mean we don't use a container for some reason)
  */
 /datum/supply_pack/proc/instantiate_pack_at(atom/where)
-	return instantiate_contents(instantiate_container(where) || where)
+	. = instantiate_container(where)
+	ASSERT(.)
+	instantiate_contents(.)
 
 /datum/supply_pack/proc/instantiate_container(atom/where)
 	RETURN_TYPE(/atom/movable)
@@ -193,7 +195,7 @@
  * @return list of descriptor associated to amount
  */
 /datum/supply_pack/proc/resolve_contents_descriptors()
-	. = contains.Copy()
+	. = contains? contains.Copy() : list()
 
 	if(length(contains_some))
 		for(var/list/entry as anything in contains_some)
