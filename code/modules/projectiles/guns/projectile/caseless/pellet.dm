@@ -21,14 +21,16 @@
 /obj/item/ammo_casing/p_pellet
 	name = "pellet"
 	desc = "Also know as a BB, it is shot from airguns for recreational shooting."
+	icon = 'icons/obj/gun/ballistic/caseless/pellet.dmi'
 	caliber = "pellet"
-	icon_state = "pellet"
+	icon_state = "pellet_single"
 	projectile_type = /obj/projectile/bullet/practice
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_magazine/pellets
 	name = "box of pellets"
 	desc = "A box containing small pellets for a pellet gun."
+	icon = 'icons/obj/gun/ballistic/caseless/pellet.dmi'
 	icon_state = "pelletbox"
 	caliber = "pellet"
 	mag_type = MAGAZINE
