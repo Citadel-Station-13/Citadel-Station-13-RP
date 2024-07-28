@@ -536,7 +536,7 @@ SUBSYSTEM_DEF(supply)
 			// lol no
 			descriptor = cloning_instance.type
 		else
-			return amount * cloning_instance.worth(GET_WORTH_DETECTING_PRICE)
+			return amount * cloning_instance.worth(GET_WORTH_FLAGS_SUPPLY_DETECTION)
 	// handle material stack
 	if(ispath(descriptor, /obj/item/stack/material))
 		var/obj/item/stack/material/casted_material_stack = descriptor
@@ -572,5 +572,5 @@ SUBSYSTEM_DEF(supply)
 		var/obj/item/stack/casted_stack_path = descriptor
 		return amount * initial(casted_stack_path.worth_intrinsic)
 	var/atom/movable/creating = new descriptor(null)
-	. = creating.worth(GET_WORTH_DETECTING_PRICE) * amount
+	. = creating.worth(GET_WORTH_FLAGS_SUPPLY_DETECTION) * amount
 	qdel(creating)

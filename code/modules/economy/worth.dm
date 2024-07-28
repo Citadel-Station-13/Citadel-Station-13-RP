@@ -10,7 +10,7 @@
 /**
  * gets our worth
  */
-/atom/proc/worth(flags = GET_WORTH_DEFAULT)
+/atom/proc/worth(flags = GET_WORTH_FLAGS_DEFAULT)
 	return worth_provider().get_worth(flags)
 
 /**

@@ -13,7 +13,9 @@
 #define GET_WORTH_DETECTING_PRICE (1<<3)
 
 /// default flags for /atom/proc/get_worth
-#define GET_WORTH_DEFAULT (GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING)
+#define GET_WORTH_FLAGS_DEFAULT (GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING)
+/// flags for get worth for supply detection
+#define GET_WORTH_FLAGS_SUPPLY_DETECTION (GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING | GET_W)
 
 //* elasticities for worth_elasticity - arbitrary multipliers *//
 
