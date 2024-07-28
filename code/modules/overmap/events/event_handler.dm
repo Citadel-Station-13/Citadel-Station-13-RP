@@ -3,6 +3,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 /singleton/overmap_event_handler
 	var/list/hazard_by_turf
 	var/list/ship_events
+	var/list/hazard_by_ship
 
 /singleton/overmap_event_handler/New()
 	..()

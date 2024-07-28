@@ -144,6 +144,9 @@
 		if(QDELETED(real_src))
 			return
 
+	if(href_list["month"] && !(player.player_flags & PLAYER_FLAG_AGE_VERIFIED))
+		handle_age_gate(href_list["month"], href_list["year"])
+
 	..()	//redirect to hsrc.Topic()
 
 
@@ -463,6 +466,9 @@
 
 	//* logout
 	mob?.pre_logout(src)
+
+	//* cleanup from SSinput
+	SSinput.currentrun -= src
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW

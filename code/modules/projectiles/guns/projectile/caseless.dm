@@ -105,3 +105,16 @@
 	. = ..()
 	var/fluff_date = rand(2501,2543)
 	desc += "\nYou see a stamp on the side: GORLEX MARAUDERS, MANUFACTURED IN [fluff_date]."
+
+
+/obj/item/gun/ballistic/caseless/pellet
+	name = "pellet gun"
+	desc = "An air powered rifle that shoots near harmless pellets. Used for recreation in enviroments where firearm ownership is restricted."
+	icon_state = "pellet"
+	item_state = "pellet"
+	wielded_item_state = "pellet-wielded"
+	caliber = "pellet"
+	fire_sound = 'sound/weapons/tap.ogg'
+	max_shells = 1
+	ammo_type = /obj/item/ammo_casing/p_pellet
+	load_method = SINGLE_CASING

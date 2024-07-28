@@ -2421,7 +2421,7 @@
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/canteen)
 "ta" = (
-/obj/mecha/working/ripley/mining/old,
+/obj/vehicle/sealed/mecha/working/ripley/mining/old,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},

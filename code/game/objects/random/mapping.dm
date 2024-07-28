@@ -304,10 +304,10 @@
 				/obj/structure/closet/crate/plastic
 			),
 			prob(2);list(
-				/obj/mecha/working/ripley/mining
+				/obj/vehicle/sealed/mecha/working/ripley/mining
 			),
 			prob(2);list(
-				/obj/mecha/working/hoverpod/combatpod
+				/obj/vehicle/sealed/mecha/working/hoverpod/combatpod
 			),
 			prob(2);list(
 				/obj/item/pickaxe/silver,

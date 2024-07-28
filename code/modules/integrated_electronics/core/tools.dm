@@ -133,6 +133,7 @@
 			if(istext(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to \"[new_data]\".</span>")
+
 		if("number")
 			accepting_refs = FALSE
 			copy_values = FALSE
@@ -140,16 +141,59 @@
 			if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [new_data].</span>")
+
 		if("ref")
 			accepting_refs = TRUE
 			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You turn \the [src]'s ref scanner on.  Slide it across \
 			an object for a ref of that object to save it in memory.</span>")
+
 		if("copy")
 			accepting_refs = FALSE
 			copy_values = TRUE
 			to_chat(user, "<span class='notice'>You turn \the [src]'s value copier on.  Use it on a pin \
 			to save its current value in memory.</span>")
+
+		if("list")
+			accepting_refs = FALSE
+			copy_values = FALSE
+			var/listLen = input(usr, "Type in a number to be the length of the list (between 1 and 16.)","[src] list len") as null|num
+			if(!listLen)
+				return
+			listLen = clamp(1, listLen, 16)
+
+			var/list/L = list()
+			L.len = listLen
+
+			var/list/names = list()
+
+			var/valueToChange = 1
+			while(valueToChange)
+				names.Cut()
+				for (var/i in 1 to L.len)
+					var/key = L[i]
+					if (key == null)
+						key = "null"
+					names["#[i] [key]"] = i
+				valueToChange = tgui_input_list(usr, "Please choose a value to change.","List Value Setting", names)
+				if(!valueToChange) break
+				valueToChange = names[valueToChange]
+				var/type_to_change = tgui_input_list(usr, "Please choose a type to use.","List [src] type setting", list("string","number","null"))
+				switch(type_to_change)
+					if("string")
+						new_data = input(usr, "Now type in a string.","[src] string writing") as null|text
+						new_data = sanitizeSafe(new_data, MAX_MESSAGE_LEN, 0, 0)
+						if(istext(new_data) && CanInteract(user, GLOB.physical_state))
+							L[valueToChange] = new_data
+					if("number")
+						new_data = input(usr, "Now type in a number.","[src] number writing") as null|num
+						if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
+							L[valueToChange] = new_data
+					if("null")
+						L[valueToChange] = null
+			data_to_write = L
+			to_chat(user, "<span class='notice'>You set \the [src]'s memory to a list of length [L.len].</span>")
+
 		if("null")
 			data_to_write = null
 			accepting_refs = FALSE

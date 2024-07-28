@@ -32,13 +32,14 @@
 	///
 	/// todo: is this a good method? it works for now but i hate storing turf vars...
 	var/datum/overmap/overmap
-	/// sign of wrap, x
+
+	/// used for collisions
 	var/wrap_sign_x
-	/// sign of wrap, y
+	/// used for collisions
 	var/wrap_sign_y
 
 /turf/overmap/edge/initialize_overmap(datum/overmap/map)
-	name = "border (warp-enabled)"
+	name = "border"
 	overmap = map
 	return ..()
 
@@ -88,30 +89,36 @@
 	if(number)
 		maptext = MAPTEXT_CENTER("[number]")
 
-/**
- * get where a ship wraps to when it touches us
- *
- * supports diagonals.
- */
-/turf/overmap/edge/proc/get_wrap_counterpart()
-	if(x == overmap.lower_left_x - 1)
-		if(y == overmap.lower_left_y - 1)
-			return locate(overmap.upper_right_x, overmap.upper_right_y, z)
-		return locate(overmap.upper_right_x, y, z)
-	else if(x == overmap.upper_right_x + 1)
-		if(y == overmap.upper_right_y + 1)
-			return locate(overmap.lower_left_x, overmap.lower_left_y, z)
-		return locate(overmap.lower_left_x, y, z)
-	if(y == overmap.lower_left_y - 1)
-		if(x == overmap.upper_right_x + 1)
-			return locate(overmap.lower_left_x, overmap.upper_right_y, z)
-		return locate(x, overmap.upper_right_y, z)
-	else if(y == overmap.upper_right_y + 1)
-		if(x == overmap.lower_left_x - 1)
-			return locate(overmap.upper_right_x, overmap.lower_left_y, z)
-		return locate(x, overmap.lower_left_y, z)
+/turf/overmap/edge/Enter(atom/movable/mover, atom/oldloc)
+	if(istype(mover, /obj/overmap))
+		return FALSE
+	return ..()
+
+/turf/overmap/edge/Bumped(atom/movable/bumped_atom)
+	. = ..()
+	if(istype(bumped_atom, /obj/overmap/entity))
+		var/obj/overmap/entity/entity = bumped_atom
+		// bounce them off
+		elastic_collision(entity)
+
+/turf/overmap/edge/proc/elastic_collision(obj/overmap/entity/entity)
+	if(wrap_sign_x != 0 && (wrap_sign_x > 0 != entity.vel_x > 0))
+		if(wrap_sign_y != 0 && (wrap_sign_y > 0 != entity.vel_y > 0))
+			entity.set_velocity(-entity.vel_x, -entity.vel_y)
+			entity.bump_handled = TRUE
+		else
+			entity.set_velocity(-entity.vel_x, null)
+			entity.bump_handled = TRUE
+	else if(wrap_sign_y != 0 && (wrap_sign_y > 0 != entity.vel_y > 0))
+		entity.set_velocity(null, -entity.vel_y)
+		entity.bump_handled = TRUE
 
 //! LEGACY BELOW
+
+/turf/overmap/Destroy()
+	for(var/obj/overmap/entity/visitable/ship/entity in loc)
+		Exited(entity)
+	return ..()
 
 /turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()

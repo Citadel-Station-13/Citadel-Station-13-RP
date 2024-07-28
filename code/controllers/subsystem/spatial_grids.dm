@@ -143,6 +143,19 @@ SUBSYSTEM_DEF(spatial_grids)
 					. += entry
 
 /**
+ * pixel movement query
+ *
+ * * distance is in chebyshev distance, which is the same as bounds_dist()
+ *
+ * @return list() of atoms
+ */
+/datum/spatial_grid/proc/pixel_query(atom/epicenter, distance)
+	. = list()
+	for(var/atom/movable/AM as anything in range_query(get_turf(epicenter), ceil(distance / WORLD_ICON_SIZE)))
+		if(bounds_dist(epicenter, AM) <= distance)
+			. += AM
+
+/**
  * gets all registered movables
  *
  * * somewhat inefficient, why are you doing this?

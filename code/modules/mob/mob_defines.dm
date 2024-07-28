@@ -366,11 +366,7 @@
 
 	var/registered_z
 
-	/// For mechs and fighters ambiance. Can be used in other cases.
-	var/in_enclosed_vehicle = 0
-
 	var/last_radio_sound = -INFINITY
-
 
 	//? vorestation legacy
 	/// Allows flight.

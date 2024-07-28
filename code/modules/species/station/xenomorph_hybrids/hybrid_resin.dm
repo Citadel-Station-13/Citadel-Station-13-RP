@@ -90,7 +90,7 @@
 		O.color = "#321D37"
 
 /obj/structure/simple_door/hybrid_resin/Initialize(mapload, material_name)
-	return ..(mapload, "resin compound")
+	return ..(mapload, "xenoresin_hybrid")
 
 /obj/structure/bed/hybrid_nest
 	name = "alien nest"
@@ -98,8 +98,8 @@
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
 	color = "#321a49"
-	material = "resin compound"
-	padding_material = "resin compound"
+	material = "xenoresin_hybrid"
+	padding_material = "xenoresin_hybrid"
 	hit_sound_brute = 'sound/effects/attackblob.ogg'
 
 	integrity = 100

@@ -38,7 +38,7 @@
 /obj/structure/portal_subtle/proc/teleport(atom/movable/M as mob|obj)
 	if(istype(M, /obj/effect)) //sparks don't teleport
 		return
-	if (M.anchored&&istype(M, /obj/mecha))
+	if (M.anchored&&istype(M, /obj/vehicle/sealed/mecha))
 		return
 	if (icon_state == "portal1")
 		return

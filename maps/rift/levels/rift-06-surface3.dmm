@@ -11798,7 +11798,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/structure/flora/pottedplant/large,
+/obj/structure/ladder,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aJD" = (

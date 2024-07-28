@@ -218,3 +218,13 @@
 	cost = 20
 	container_type = /obj/structure/closet/crate
 	container_name = "DONKsoft Resupply crate"
+
+//Civilian Pellet
+/datum/supply_pack/recreation/pelletgun
+	name = "Recreational Pellet Gun"
+	contains = list(
+			/obj/item/gun/ballistic/caseless/pellet,
+			/obj/item/ammo_magazine/pellets
+			)
+	cost = 20
+	container_type = /obj/structure/closet/crate

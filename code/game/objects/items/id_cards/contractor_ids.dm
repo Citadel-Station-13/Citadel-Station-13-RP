@@ -5,10 +5,10 @@
 	icon_state = "chit"
 
 /obj/item/card/id/contractor/dat()
+	. += "<b>Employing Company:</b> [employing_coperation]"
+	. += "<b>External Job Title:</b> [extern_title]"
+	// . += "<b>Expiration Date:</b> [expiry_date]"
 	. = ..()
-	. += "Employing Company: [employing_coperation]"
-	. += "External Job Title: [extern_title]"
-	// . += "Expiration Date: [expiry_date]"
 
 /obj/item/card/id/contractor/update_icon()
 	return 0

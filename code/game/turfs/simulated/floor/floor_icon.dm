@@ -25,7 +25,7 @@ var/list/flooring_cache = list()
 
 	. = ..()
 
-/turf/simulated/floor/custom_smooth()
+/turf/simulated/floor/custom_smooth(junctions)
 	if(flooring)
 		// Set initial icon and strings.
 		name = flooring.name

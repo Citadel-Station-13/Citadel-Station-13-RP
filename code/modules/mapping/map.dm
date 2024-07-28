@@ -384,8 +384,7 @@
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
-		var/turf/T = get_turf(O)
-		for(var/obj/overmap/entity/visitable/V in range(om_range, T))
+		for(var/obj/overmap/entity/visitable/V in bounds(O, om_range))
 			connections |= V.map_z	// Adding list to list adds contents
 		return connections
 

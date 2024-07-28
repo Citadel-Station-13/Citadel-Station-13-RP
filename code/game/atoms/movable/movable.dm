@@ -30,7 +30,11 @@
 	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
 	var/movable_flags = NONE
 
-	//? Movement
+	//* Movement *//
+
+	/// DING DING DING BE CAREFUL WITH THIS
+	/// Set this to TRUE if we are not a [TILE_MOVER]!
+	var/pixel_movement = FALSE
 	/// Whatever we're pulling.
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/atom/movable/pulling
