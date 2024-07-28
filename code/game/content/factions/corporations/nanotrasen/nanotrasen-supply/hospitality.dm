@@ -53,7 +53,7 @@
 			/obj/item/pizzabox/margherita,
 			/obj/item/pizzabox/mushroom,
 			/obj/item/pizzabox/meat,
-			/obj/item/pizzabox/vegetable
+			/obj/item/pizzabox/vegetable,
 			)
 	name = "Surprise pack of five pizzas"
 	worth = 250
