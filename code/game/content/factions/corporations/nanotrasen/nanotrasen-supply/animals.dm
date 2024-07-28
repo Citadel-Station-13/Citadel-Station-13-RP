@@ -8,7 +8,7 @@
 	contains = list(
 		/obj/item/storage/box/monkeycubes,
 	)
-	worth = 400
+	worth = 200
 	container_type = /obj/structure/closet/crate/freezer
 
 /datum/supply_pack/nanotrasen/animals/farwa
@@ -38,27 +38,27 @@
 
 /datum/supply_pack/nanotrasen/animals/lisa
 	name = "Corgi Crate"
-	worth = 700 // DOGGIE :D
+	worth = 350 // DOGGIE :D
 	container_type = /obj/structure/largecrate/animal/corgi
 
 /datum/supply_pack/nanotrasen/animals/cat
 	name = "Cat Crate"
-	worth = 700 // KIBBY :D
+	worth = 350 // KIBBY :D
 	container_type = /obj/structure/largecrate/animal/cat
 
 /datum/supply_pack/nanotrasen/animals/cow
 	name = "Cow crate"
-	worth = 700
+	worth = 350
 	container_type = /obj/structure/largecrate/animal/cow
 
 /datum/supply_pack/nanotrasen/animals/goat
 	name = "Goat crate"
-	worth = 700
+	worth = 350
 	container_type = /obj/structure/largecrate/animal/goat
 
 /datum/supply_pack/nanotrasen/animals/chicken
 	name = "Chicken crate"
-	worth = 700
+	worth = 350
 	container_type = /obj/structure/largecrate/animal/chick
 
 /datum/supply_pack/nanotrasen/animals/diycarpotox
@@ -106,7 +106,7 @@
 
 /datum/supply_pack/nanotrasen/animals/fennec
 	name = "Fennec crate"
-	worth = 750 // FOX :D
+	worth = 500 // FOX :D
 	container_type = /obj/structure/largecrate/animal/fennec
 
 /datum/supply_pack/nanotrasen/animals/woolie

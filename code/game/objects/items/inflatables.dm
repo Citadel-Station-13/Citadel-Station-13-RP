@@ -4,7 +4,7 @@
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_wall"
 	w_class = WEIGHT_CLASS_NORMAL
-	worth_intrinsic = 35
+	worth_intrinsic = 15
 	var/deploy_path = /obj/structure/inflatable
 
 /obj/item/inflatable/attack_self(mob/user)
@@ -39,7 +39,7 @@
 	desc = "A folded membrane which rapidly expands into a simple door on activation."
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "folded_door"
-	worth_intrinsic = 50
+	worth_intrinsic = 25
 	deploy_path = /obj/structure/inflatable/door
 
 /obj/item/inflatable/torn

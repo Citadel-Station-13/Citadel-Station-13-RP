@@ -7,7 +7,7 @@
 
 	gas_flags = GAS_FLAG_FUEL
 
-	worth = 2
+	worth = 1
 
 //The following is partially stolen from Nebula
 //I am not rewriting our handling of air for this, at least for now.
@@ -19,7 +19,7 @@
 
 	gas_flags = GAS_FLAG_FUSION_FUEL
 
-	worth = 2
+	worth = 1
 
 /datum/gas/carbon_monoxide
 	id = GAS_ID_CARBON_MONOXIDE
@@ -33,7 +33,7 @@
 	//taste_description = "stale air"
 	//metabolism = 0.05 // As with helium.
 
-	worth = 2
+	worth = 1
 
 /datum/gas/methyl_bromide
 	id = GAS_ID_METHYL_BROMIDE
@@ -49,7 +49,7 @@
 	)
 	value = 0.25*/
 
-	worth = 2
+	worth = 1
 
 /datum/gas/nitrodioxide
 	id = GAS_ID_NITROGEN_DIOXIDE
@@ -61,7 +61,7 @@
 	//gas_symbol_html = "NO<sub>2</sub>"
 	//gas_symbol = "NO2"
 
-	worth = 2
+	worth = 1
 
 /datum/gas/nitricoxide
 	id = GAS_ID_NITRIC_OXIDE
@@ -72,7 +72,7 @@
 	//gas_symbol_html = "NO"
 	//gas_symbol = "NO"
 
-	worth = 2
+	worth = 1
 
 /datum/gas/methane
 	id = GAS_ID_METHANE
@@ -83,7 +83,7 @@
 	//gas_symbol_html = "CH<sub>4</sub>"
 	//gas_symbol = "CH4"
 
-	worth = 2
+	worth = 1
 
 /datum/gas/argon
 	id = GAS_ID_ARGON
@@ -95,7 +95,7 @@
 	//gas_symbol = "Ar"
 	//value = 0.25
 
-	worth = 2
+	worth = 1
 
 // If narcosis is ever simulated, krypton has a narcotic potency seven times greater than regular airmix.
 /datum/gas/krypton
@@ -107,7 +107,7 @@
 	//gas_symbol = "Kr"
 	//value = 0.25
 
-	worth = 2
+	worth = 1
 
 /datum/gas/neon
 	id = GAS_ID_NEON
@@ -118,7 +118,7 @@
 	//gas_symbol = "Ne"
 	//value = 0.25
 
-	worth = 2
+	worth = 1
 
 /datum/gas/ammonia
 	id = GAS_ID_AMMONIA
@@ -135,7 +135,7 @@
 	//metabolism = REM * 0.5
 	//overdose = 5
 
-	worth = 2
+	worth = 1
 
 /datum/gas/xenon
 	id = GAS_ID_XENON
@@ -146,7 +146,7 @@
 	//gas_symbol = "Xe"
 	//value = 0.25
 
-	worth = 2
+	worth = 1
 
 /datum/gas/chlorine
 	id = GAS_ID_CHLORINE
@@ -170,7 +170,7 @@
 	gas_reagent_amount = 1
 	gas_reagent_threshold = 0.5
 
-	worth = 2
+	worth = 1
 
 /datum/gas/sulfur_dioxide
 	id = GAS_ID_SULFUR_DIOXIDE
@@ -184,7 +184,7 @@
 		/singleton/material/gas/oxygen = 0.5
 	)*/
 
-	worth = 2
+	worth = 1
 
 /datum/gas/tritium
 	id = GAS_ID_TRITIUM
@@ -197,7 +197,7 @@
 	gas_symbol_html = "T"
 	gas_symbol = "T"*/
 
-	worth = 2
+	worth = 1
 
 /datum/gas/deuterium
 	id = GAS_ID_DEUTERIUM
@@ -220,7 +220,7 @@
 	neutron_absorption = 5
 	neutron_cross_section = 3*/
 
-	worth = 2
+	worth = 1
 
 //Special gas type that are very powerful and shouldnt be avaiable in large portions
 /datum/gas/vimur
