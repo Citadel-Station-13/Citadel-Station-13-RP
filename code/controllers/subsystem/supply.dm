@@ -126,7 +126,7 @@ SUBSYSTEM_DEF(supply)
 					if(istype(A, /obj/item/stack/material))
 						var/obj/item/stack/material/P = A
 						if(istype(P.material))
-							var/thaler_per_sheet = P.material.worth * 0.75
+							var/thaler_per_sheet = P.material.worth
 							var/total_thaler = thaler_per_sheet * P.amount
 							var/total_points = total_thaler * points_per_money
 							EC.contents[EC.contents.len]["value"] = total_points

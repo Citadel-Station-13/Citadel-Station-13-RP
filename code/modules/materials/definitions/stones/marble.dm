@@ -25,7 +25,7 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
-	worth = 0.75
+	worth = 2
 
 /datum/material/marble/generate_recipes()
 	. = ..()
