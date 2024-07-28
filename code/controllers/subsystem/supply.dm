@@ -432,7 +432,21 @@ SUBSYSTEM_DEF(supply)
 			resolved_gas = global.gas_data.gases[initial(casted_gas.id)]
 		else
 			resolved_gas = global.gas_data.gases[resolved_gas]
-		#warn impl
+		// todo: temperature support, for now everything ships at 273.15K
+		switch(container_hint)
+			if(/obj/item/tank)
+				// tank, if possible
+				var/obj/item/tank/tank_type = /obj/item/tank/shipment
+				var/tank_pressure = initial(tank_type.volume)
+				var/estimated_pressure = (R_IDEAL_GAS_EQUATION * 273.15 * amount) / tank_pressure
+				if(estimated_pressure > TANK_LEAK_PRESSURE)
+					stack_trace("tried to shove [amount] mols of [resolved_gas] into a shipment tank, which would result in a detonation")
+				else
+					var/obj/item/tank/created_tank = new /obj/item/tank/shipment(location)
+					created_tank.air_contents.adjust_gas_temp(resolved_gas.id, amount, 273.15)
+					return
+		var/obj/machinery/portable_atmospherics/canister/created_canister = new(location)
+		created_canister.air_contents.adjust_gas_temp(resolved_gas.id, amount, 273.15)
 		return
 	// translate to path
 	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_PROTOTYPE)
@@ -534,6 +548,15 @@ SUBSYSTEM_DEF(supply)
 			resolved_gas = global.gas_data.gases[initial(casted_gas.id)]
 		else
 			resolved_gas = global.gas_data.gases[resolved_gas]
+		// todo: temperature support, for now everything ships at 273.15K
+		switch(container_hint)
+			if(/obj/item/tank)
+				// tank, if possible
+				var/obj/item/tank/tank_type = /obj/item/tank/shipment
+				var/tank_pressure = initial(tank_type.volume)
+				var/estimated_pressure = (R_IDEAL_GAS_EQUATION * 273.15 * amount) / tank_pressure
+				if(estimated_pressure > TANK_LEAK_PRESSURE)
+					stack_trace("tried to shove [amount] mols of [resolved_gas] into a shipment tank, which would result in a detonation")
 		return amount * resolved_gas.worth
 	// translate to path
 	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_PROTOTYPE)
