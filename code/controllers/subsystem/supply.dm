@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(supply)
 	// Shuttle Movement
 	var/movetime = 1200
 	var/datum/shuttle/autodock/ferry/supply/shuttle
-	
+
 // TODO - Refactor to use the Supply Subsystem (SSsupply)
 
 // Supply packs are in /code/datums/supplypacks
@@ -371,7 +371,7 @@ SUBSYSTEM_DEF(supply)
  *
  * directly instantiated:
  * * typepath
- * * anonymous typepath
+ * * ~~anonymous typepath~~ Waiting on BYOND fix.
  *
  * clone(include_contents = TRUE)'d
  * * an /atom/movable
@@ -383,7 +383,7 @@ SUBSYSTEM_DEF(supply)
  * ** /obj/machinery/portable_atmospherics/canister
  * ** /obj/item/tank
  *
- * translated in order, unless `descriptor_hint` is specified.
+ * translated, when `descriptor_hint` is specified.
  * * material id
  * * gas id - container_hint can be:
  * ** /obj/machinery/portable_atmospherics/canister
@@ -394,12 +394,64 @@ SUBSYSTEM_DEF(supply)
  * * location - where to spawn it. null is valid!
  * * descriptor - the descriptor
  * * amount - amount to spawn
- * * descriptor_hint - SUPPLY_DESCRIPTOR_HINT_* to tell us what to translate the descriptor as
+ * * descriptor_hint - SUPPLY_DESCRIPTOR_HINT_* to tell us what to translate the descriptor as; this forces the descriptor to be processed as text id lookup!
  * * container_hint - container hint, if allowed; using an invalid one will runtime.
- *
- * @return spawned entity
  */
 /datum/controller/subsystem/supply/proc/instantiate_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint, atom/location)
+	RETURN_TYPE(/atom/movable)
+	if(!location || isarea(location))
+		CRASH("invalid location")
+	// todo: byond cannot introspect anonymous typepaths so just ignore it
+	if(IS_ANONYMOUS_TYPEPATH(descriptor))
+		return
+	// handle instance
+	if(istype(descriptor, /atom/movable))
+		var/atom/movable/cloning_instance = descriptor
+		if(istype(cloning_instance, /obj/item/stack))
+			// lol no
+			descriptor = cloning_instance.type
+		else
+			// actually clone
+			for(var/i in 1 to min(amount, 50))
+				cloning_instance.clone(location, TRUE)
+			return
+	// handle material stack
+	if(ispath(descriptor, /obj/item/stack/material))
+		var/obj/item/stack/material/casted_material_stack = descriptor
+		descriptor = initial(casted_material_stack.material)
+	// handle material
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/material))
+		var/datum/material/resolved_material = SSmaterials.resolve_material(descriptor)
+		resolved_material.place_sheet(location, amount)
+		return
+	// handle gas
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_GAS || ispath(descriptor, /datum/gas))
+		var/datum/gas/resolved_gas
+		if(ispath(descriptor))
+			var/datum/gas/casted_gas = descriptor
+			resolved_gas = global.gas_data.gases[initial(casted_gas.id)]
+		else
+			resolved_gas = global.gas_data.gases[resolved_gas]
+		#warn impl
+		return
+	// translate to path
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_PROTOTYPE)
+		var/entity_type = SSpersistence.prototype_id_to_path[descriptor]
+		descriptor = entity_type
+	// this point onwards: handle path
+	if(ispath(descriptor, /obj/item/stack))
+		var/obj/item/stack/casted_stack_path = descriptor
+		var/stack_safety = 50
+		var/amount_per_stack = initial(casted_stack_path.max_amount)
+		while(amount > 0)
+			var/amount_to_make = min(amount_per_stack, amount)
+			new casted_stack_path(location, amount_to_make)
+			amount -= amount_to_make
+			if(--stack_safety < 0)
+				break
+		return
+	for(var/i in 1 to min(amount, 50))
+		new descriptor(location, i)
 
 /**
  * Resolves an entity descriptor, and describes it with a string
@@ -407,7 +459,48 @@ SUBSYSTEM_DEF(supply)
  * @return string
  */
 /datum/controller/subsystem/supply/proc/describe_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
-	#warn handle plurals
+	RETURN_TYPE(/atom/movable)
+	if(!location || isarea(location))
+		CRASH("invalid location")
+	// todo: byond cannot introspect anonymous typepaths so just ignore it
+	if(IS_ANONYMOUS_TYPEPATH(descriptor))
+		return
+	// handle instance
+	if(istype(descriptor, /atom/movable))
+		var/atom/movable/cloning_instance = descriptor
+		if(istype(cloning_instance, /obj/item/stack))
+			// lol no
+			descriptor = cloning_instance.type
+		else
+			return "[amount] [cloning_instance](s)"
+	// handle material stack
+	if(ispath(descriptor, /obj/item/stack/material))
+		var/obj/item/stack/material/casted_material_stack = descriptor
+		descriptor = initial(casted_material_stack.material)
+	// handle material
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/material))
+		var/datum/material/resolved_material = SSmaterials.resolve_material(descriptor)
+		return "[amount] [resolved_material.sheet_plural_name] of [resolved_material.display_name]"
+	// handle gas
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_GAS || ispath(descriptor, /datum/gas))
+		var/datum/gas/resolved_gas
+		if(ispath(descriptor))
+			var/datum/gas/casted_gas = descriptor
+			resolved_gas = global.gas_data.gases[initial(casted_gas.id)]
+		else
+			resolved_gas = global.gas_data.gases[resolved_gas]
+		// todo: display_name for gas
+		return "[amount] mol(s) of [resolved_gas]"
+	// translate to path
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_PROTOTYPE)
+		var/entity_type = SSpersistence.prototype_id_to_path[descriptor]
+		descriptor = entity_type
+	// this point onwards: handle path
+	if(ispath(descriptor, /obj/item/stack))
+		var/obj/item/stack/casted_stack_path = descriptor
+		return "[amount] [initial(casted_stack_path.name)]"
+	var/atom/movable/casted_movable_path = descriptor
+	return "[amount] [initial(casted_movable_path.name)](s)"
 
 /**
  * Resolves an entity descriptor, and estimates its worth
@@ -415,5 +508,45 @@ SUBSYSTEM_DEF(supply)
  * @return number (thalers)
  */
 /datum/controller/subsystem/supply/proc/value_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
-
-#warn impl
+	RETURN_TYPE(/atom/movable)
+	if(!location || isarea(location))
+		CRASH("invalid location")
+	// todo: byond cannot introspect anonymous typepaths so just ignore it
+	if(IS_ANONYMOUS_TYPEPATH(descriptor))
+		return
+	// handle instance
+	if(istype(descriptor, /atom/movable))
+		var/atom/movable/cloning_instance = descriptor
+		if(istype(cloning_instance, /obj/item/stack))
+			// lol no
+			descriptor = cloning_instance.type
+		else
+			return amount * cloning_instance.get_worth(GET_WORTH_DETECTING_PRICE)
+	// handle material stack
+	if(ispath(descriptor, /obj/item/stack/material))
+		var/obj/item/stack/material/casted_material_stack = descriptor
+		descriptor = initial(casted_material_stack.material)
+	// handle material
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_MATERIAL || ispath(descriptor, /datum/material))
+		var/datum/material/resolved_material = SSmaterials.resolve_material(descriptor)
+		return amount * resolved_material.worth
+	// handle gas
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_GAS || ispath(descriptor, /datum/gas))
+		var/datum/gas/resolved_gas
+		if(ispath(descriptor))
+			var/datum/gas/casted_gas = descriptor
+			resolved_gas = global.gas_data.gases[initial(casted_gas.id)]
+		else
+			resolved_gas = global.gas_data.gases[resolved_gas]
+		return amount * resolved_gas.worth
+	// translate to path
+	if(descriptor_hint == SUPPLY_DESCRIPTOR_HINT_PROTOTYPE)
+		var/entity_type = SSpersistence.prototype_id_to_path[descriptor]
+		descriptor = entity_type
+	// this point onwards: handle path
+	if(ispath(descriptor, /obj/item/stack))
+		var/obj/item/stack/casted_stack_path = descriptor
+		return amount * initial(casted_stack_path.worth_intrinsic)
+	var/atom/movable/creating = new descriptor(null)
+	. = creating.get_worth(GET_WORTH_DETECTING_PRICE)
+	qdel(creating)

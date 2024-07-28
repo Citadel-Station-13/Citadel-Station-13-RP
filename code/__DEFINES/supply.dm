@@ -27,5 +27,5 @@ DEFINE_BITFIELD_NEW(supply_pack_flags, list(
 #define SUPPLY_DESCRIPTOR_HINT_MATERIAL "material"
 /// decode as gas
 #define SUPPLY_DESCRIPTOR_HINT_GAS "gas"
-/// decode as entity (SSpersistence entity descriptors
-#define SUPPLY_DESCRIPTOR_HINT_ENTITY "entity"
+/// decode as prototype (SSpersistence prototype descriptors)
+#define SUPPLY_DESCRIPTOR_HINT_PROTOTYPE "prototype"
