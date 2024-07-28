@@ -158,17 +158,18 @@
 		. += worth
 
 /**
+ * todo: return list of entities?
+ * 
  * @return container spawned, or null (which can also mean we don't use a container for some reason)
  */
 /datum/supply_pack/proc/instantiate_pack_at(atom/where)
 	. = instantiate_container(where)
-	ASSERT(.)
 	instantiate_contents(.)
 
 /datum/supply_pack/proc/instantiate_container(atom/where)
 	RETURN_TYPE(/atom/movable)
 
-	if(container_type)
+	if(!container_type)
 		return
 
 	var/atom/movable/container = new container_type(where)
@@ -186,6 +187,9 @@
 			//  todo: getter / setter for req-accesses, enforced cached & deduped lists
 			obj_container.req_one_access = container_one_access.Copy()
 
+/**
+ * todo: return list of entities?
+ */
 /datum/supply_pack/proc/instantiate_contents(atom/where)
 	var/list/descriptors_to_spawn = resolve_contents_descriptors()
 	for(var/descriptor in descriptors_to_spawn)

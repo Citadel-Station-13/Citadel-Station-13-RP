@@ -203,8 +203,8 @@ SUBSYSTEM_DEF(supply)
 		SO.status = SUP_ORDER_SHIPPED
 		var/datum/supply_pack/SP = SO.object
 		var/atom/movable/container = SP.instantiate_pack_at(T)
+		// todo: containerless support
 		if(!container)
-			stack_trace("how")
 			continue
 		if(SO.comment)
 			container.name += " [SO.comment]"
