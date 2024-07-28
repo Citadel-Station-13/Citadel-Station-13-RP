@@ -3,10 +3,10 @@
 *	that don't belong elsewhere live.
 */
 
-/datum/supply_pack2/nanotrasen/misc
+/datum/supply_pack/nanotrasen/misc
 	category = "Miscellaneous"
 
-/datum/supply_pack2/nanotrasen/misc/card_packs
+/datum/supply_pack/nanotrasen/misc/card_packs
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
 			/obj/item/pack/cardemon,
@@ -18,7 +18,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "cards crate"
 
-/datum/supply_pack2/nanotrasen/misc/dnd
+/datum/supply_pack/nanotrasen/misc/dnd
 	lazy_gacha_amount = 4
 	lazy_gacha_contained = list(
 			/obj/item/toy/character/alien,
@@ -34,7 +34,7 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Miniature Crate"
 
-/datum/supply_pack2/nanotrasen/misc/plushies
+/datum/supply_pack/nanotrasen/misc/plushies
 	name = "Plushies Crate"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -76,14 +76,14 @@
 	container_type = /obj/structure/closet/crate/corporate/allico
 	container_name = "Plushies Crate"
 
-/datum/supply_pack2/nanotrasen/misc/eftpos
+/datum/supply_pack/nanotrasen/misc/eftpos
 	name = "EFTPOS scanner"
 	contains = list(
 		/obj/item/eftpos,
 	)
 	worth = 150
 
-/datum/supply_pack2/nanotrasen/misc/chaplaingear
+/datum/supply_pack/nanotrasen/misc/chaplaingear
 	name = "Chaplain equipment"
 	contains = list(
 		/obj/item/clothing/under/rank/chaplain,
@@ -100,12 +100,12 @@
 	)
 	worth = 850 // lmao larper tax
 
-/datum/supply_pack2/nanotrasen/misc/hoverpod
+/datum/supply_pack/nanotrasen/misc/hoverpod
 	name = "Hoverpod Shipment"
 	container_type = /obj/structure/largecrate/hoverpod
 	worth = 1000
 
-/datum/supply_pack2/nanotrasen/misc/webbing
+/datum/supply_pack/nanotrasen/misc/webbing
 	name = "Webbing crate"
 	lazy_gacha_amount = 4
 	lazy_gacha_contained = list(
@@ -121,21 +121,21 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Webbing crate"
 
-/datum/supply_pack2/nanotrasen/misc/holoplant
+/datum/supply_pack/nanotrasen/misc/holoplant
 	name = "Holoplant Pot"
 	contains = list(
 		/obj/machinery/holoplant/shipped,
 	)
 	worth = 50
 
-/datum/supply_pack2/nanotrasen/misc/glucose_hypos
+/datum/supply_pack/nanotrasen/misc/glucose_hypos
 	name = "Glucose Hypoinjectors"
 	contains = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 5,
 	)
 	worth = 100
 
-/datum/supply_pack2/nanotrasen/misc/mre_rations
+/datum/supply_pack/nanotrasen/misc/mre_rations
 	name = "Emergency - MREs"
 	contains = list(
 		/obj/item/storage/single_use/mre,
@@ -152,7 +152,7 @@
 	worth = 300
 	container_type = /obj/structure/closet/crate/corporate/centauri
 
-/datum/supply_pack2/nanotrasen/misc/paste_rations
+/datum/supply_pack/nanotrasen/misc/paste_rations
 	name = "Emergency - Paste"
 	contains = list(
 		/obj/item/storage/single_use/mre/menu11 = 2,
@@ -160,7 +160,7 @@
 	worth = 75
 	container_type = /obj/structure/closet/crate/corporate/centauri
 
-/datum/supply_pack2/nanotrasen/misc/medical_rations
+/datum/supply_pack/nanotrasen/misc/medical_rations
 	name = "Emergency - VitaPaste"
 	contains = list(
 		/obj/item/storage/single_use/mre/menu13 = 2,
@@ -168,7 +168,7 @@
 	worth = 100
 	container_type = /obj/structure/closet/crate/corporate/centauri
 
-/datum/supply_pack2/nanotrasen/misc/beltminer
+/datum/supply_pack/nanotrasen/misc/beltminer
 	name = "Belt-miner gear crate"
 	contains = list(
 		/obj/item/gun/energy/particle = 2,
@@ -180,7 +180,7 @@
 	worth = 500
 	container_type = /obj/structure/closet/crate/secure/corporate/grayson
 
-/datum/supply_pack2/nanotrasen/misc/eva_rig
+/datum/supply_pack/nanotrasen/misc/eva_rig
 	name = "eva hardsuit (empty)"
 	contains = list(
 		/obj/item/hardsuit/eva = 1,
@@ -188,7 +188,7 @@
 	worth = 750
 	container_type = /obj/structure/closet/crate/secure/gear
 
-/datum/supply_pack2/nanotrasen/misc/mining_rig
+/datum/supply_pack/nanotrasen/misc/mining_rig
 	name = "industrial hardsuit (empty)"
 	contains = list(
 		/obj/item/hardsuit/industrial = 1,
@@ -196,14 +196,14 @@
 	worth = 750
 	container_type = /obj/structure/closet/crate/secure/corporate/grayson
 
-/datum/supply_pack2/nanotrasen/misc/medical_rig
+/datum/supply_pack/nanotrasen/misc/medical_rig
 	name = "medical hardsuit (empty)"
 	contains = list(
 		/obj/item/hardsuit/medical = 1,
 	)
 	worth = 750
 
-/datum/supply_pack2/nanotrasen/misc/phoronoid
+/datum/supply_pack/nanotrasen/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
 	contains = list(
 		/obj/item/clothing/suit/space/plasman = 3,
@@ -213,7 +213,7 @@
 	)
 	worth = 500
 
-/datum/supply_pack2/nanotrasen/misc/security_rig
+/datum/supply_pack/nanotrasen/misc/security_rig
 	name = "hazard hardsuit (empty)"
 	contains = list(
 		/obj/item/hardsuit/hazard = 1,
@@ -224,14 +224,14 @@
 		/datum/access/station/security/equipment,
 	)
 
-/datum/supply_pack2/nanotrasen/misc/science_rig
+/datum/supply_pack/nanotrasen/misc/science_rig
 	name = "ami hardsuit (empty)"
 	contains = list(
 		/obj/item/hardsuit/hazmat = 1,
 	)
 	worth = 750
 
-/datum/supply_pack2/nanotrasen/misc/ce_rig
+/datum/supply_pack/nanotrasen/misc/ce_rig
 	name = "advanced hardsuit (empty)"
 	contains = list(
 		/obj/item/hardsuit/ce = 1,
@@ -239,7 +239,7 @@
 	worth = 750
 	container_type = /obj/structure/closet/crate/secure/corporate/aether
 
-/datum/supply_pack2/nanotrasen/misc/colored_lights
+/datum/supply_pack/nanotrasen/misc/colored_lights
 	name = "Colored Lights Bundle"
 	contains = list(
 		/obj/item/storage/box/lights/bulbs_colored = 2,
@@ -247,7 +247,7 @@
 		/obj/item/storage/box/lights/mixed_colored = 1,
 	)
 
-/datum/supply_pack2/nanotrasen/misc/neon_lights
+/datum/supply_pack/nanotrasen/misc/neon_lights
 	name = "Neon Lights Bundle"
 	contains = list(
 		/obj/item/storage/box/lights/bulbs_neon = 2,
@@ -256,7 +256,7 @@
 	)
 
 //Culture Crates
-/datum/supply_pack2/nanotrasen/misc/culture_apidean
+/datum/supply_pack/nanotrasen/misc/culture_apidean
 	name = "Apidean Culture Crate"
 	contains = list(
 		/obj/fiftyspawner/wax = 2,
@@ -269,7 +269,7 @@
 	)
 	worth = 1000
 
-/datum/supply_pack2/nanotrasen/misc/culture_tyrmalin
+/datum/supply_pack/nanotrasen/misc/culture_tyrmalin
 	name = "Tyrmalin Culture Crate"
 	contains = list(
 		/obj/item/tool/wrench/goblin = 2,
@@ -284,7 +284,7 @@
 	)
 	worth = 1000
 
-/datum/supply_pack2/nanotrasen/misc/culture_alraune
+/datum/supply_pack/nanotrasen/misc/culture_alraune
 	name = "Alraune Culture Crate"
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/wrapped/alraune_bar = 3,
@@ -293,7 +293,7 @@
 	)
 	worth = 1000
 
-/datum/supply_pack2/nanotrasen/misc/music_players
+/datum/supply_pack/nanotrasen/misc/music_players
 	name = "Portable Music Players"
 	contains = list(
 		/obj/item/device/walkpod = 3,

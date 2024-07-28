@@ -3,11 +3,11 @@
 *	related to civilian tasks live
 */
 
-/datum/supply_pack2/nanotrasen/supply
-	abstract_type = /datum/supply_pack2/nanotrasen/supply
+/datum/supply_pack/nanotrasen/supply
+	abstract_type = /datum/supply_pack/nanotrasen/supply
 	category = "Supplies"
 
-/datum/supply_pack2/nanotrasen/supply/food
+/datum/supply_pack/nanotrasen/supply/food
 	name = "Kitchen supply crate"
 	contains = list(
 		/obj/item/reagent_containers/food/condiment/flour = 6,
@@ -21,7 +21,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Food crate"
 
-/datum/supply_pack2/nanotrasen/supply/toner
+/datum/supply_pack/nanotrasen/supply/toner
 	name = "Toner cartridges"
 	contains = list(
 		/obj/item/toner = 6,
@@ -29,7 +29,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Toner cartridges"
 
-/datum/supply_pack2/nanotrasen/supply/janitor
+/datum/supply_pack/nanotrasen/supply/janitor
 	name = "Janitorial supplies"
 	contains = list(
 		/obj/item/reagent_containers/glass/bucket,
@@ -53,7 +53,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Janitorial supplies"
 
-/datum/supply_pack2/nanotrasen/supply/shipping
+/datum/supply_pack/nanotrasen/supply/shipping
 	name = "Shipping supplies"
 	contains = list(
 		/obj/fiftyspawner/cardboard,
@@ -68,7 +68,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Shipping supplies crate"
 
-/datum/supply_pack2/nanotrasen/supply/bureaucracy
+/datum/supply_pack/nanotrasen/supply/bureaucracy
 	contains = list(
 		/obj/item/clipboard = 2,
 		/obj/item/pen/red,
@@ -88,7 +88,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Office supplies crate"
 
-/datum/supply_pack2/nanotrasen/supply/spare_pda
+/datum/supply_pack/nanotrasen/supply/spare_pda
 	name = "Spare PDAs"
 	contains = list(
 		/obj/item/pda = 3,
@@ -96,7 +96,7 @@
 	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/thinktronic
 
-/datum/supply_pack2/nanotrasen/supply/minergear
+/datum/supply_pack/nanotrasen/supply/minergear
 	name = "Shaft miner equipment"
 	contains = list(
 		/obj/item/storage/backpack/industrial,
@@ -118,7 +118,7 @@
 	worth = 350
 	container_type = /obj/structure/closet/crate/secure/corporate/grayson
 
-/datum/supply_pack2/nanotrasen/supply/mule
+/datum/supply_pack/nanotrasen/supply/mule
 	name = "Mulebot Crate"
 	contains = list()
 	worth = 500
@@ -126,7 +126,7 @@
 	container_name = "Mulebot Crate"
 
 //Culture Update
-/datum/supply_pack2/nanotrasen/misc/mining_tyrmalin
+/datum/supply_pack/nanotrasen/misc/mining_tyrmalin
 	name = "Tyrmalin Mining Crate"
 	contains = list(
 		/obj/item/melee/thermalcutter = 1,
@@ -140,7 +140,7 @@
 		/datum/access/station/supply/mining,
 	)
 
-/datum/supply_pack2/nanotrasen/misc/breathing_nitrogen
+/datum/supply_pack/nanotrasen/misc/breathing_nitrogen
 	name = "Emergency Nitrogen Supplies"
 	contains = list(
 		/obj/item/tank/emergency/nitrogen = 2,

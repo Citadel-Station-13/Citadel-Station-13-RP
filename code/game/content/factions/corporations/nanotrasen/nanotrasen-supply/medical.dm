@@ -4,11 +4,11 @@
 */
 
 
-/datum/supply_pack2/nanotrasen/medical
-	abstract_type = /datum/supply_pack2/nanotrasen/medical
+/datum/supply_pack/nanotrasen/medical
+	abstract_type = /datum/supply_pack/nanotrasen/medical
 	category = "Medical"
 
-/datum/supply_pack2/nanotrasen/medical/supplies
+/datum/supply_pack/nanotrasen/medical/supplies
 	name = "Medical Supplies crate"
 	contains = list(
 		/obj/item/storage/firstaid/regular,
@@ -26,7 +26,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 	container_name = "Medical crate"
 
-/datum/supply_pack2/nanotrasen/medical/bloodpack
+/datum/supply_pack/nanotrasen/medical/bloodpack
 	name = "BloodPack crate"
 	contains = list(
 		/obj/item/storage/box/bloodpacks = 3,
@@ -35,7 +35,7 @@
 	container_type = /obj/structure/closet/crate/medical/blood
 	container_name = "BloodPack crate"
 
-/datum/supply_pack2/nanotrasen/medical/bodybag
+/datum/supply_pack/nanotrasen/medical/bodybag
 	name = "Body bag crate"
 	contains = list(
 		/obj/item/storage/box/bodybags = 3,
@@ -44,7 +44,7 @@
 	container_type = /obj/structure/closet/crate/medical
 	container_name = "Body bag crate"
 
-/datum/supply_pack2/nanotrasen/medical/cryobag
+/datum/supply_pack/nanotrasen/medical/cryobag
 	name = "Stasis bag crate"
 	contains = list(
 		/obj/item/bodybag/cryobag = 3,
@@ -53,7 +53,7 @@
 	container_type = /obj/structure/closet/crate/medical
 	container_name = "Stasis bag crate"
 
-/datum/supply_pack2/nanotrasen/medical/surgery
+/datum/supply_pack/nanotrasen/medical/surgery
 	name = "Surgery crate"
 	contains = list(
 		/obj/item/surgical/cautery,
@@ -72,7 +72,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 	container_name = "Surgery crate"
 
-/datum/supply_pack2/nanotrasen/medical/deathalarm
+/datum/supply_pack/nanotrasen/medical/deathalarm
 	name = "Death Alarm crate"
 	contains = list(
 		/obj/item/storage/box/cdeathalarm_kit,
@@ -81,7 +81,7 @@
 	worth = 750
 	container_type = /obj/structure/closet/crate/corporate/veymed
 
-/datum/supply_pack2/nanotrasen/medical/clotting
+/datum/supply_pack/nanotrasen/medical/clotting
 	name = "Clotting Medicine crate"
 	contains = list(
 		/obj/item/storage/firstaid/clotting,
@@ -89,7 +89,7 @@
 	worth = 750 // "it's too high" go rebalance IB to not be a 5 minute death sentence, don't add chemicals to nullify it then
 	container_type = /obj/structure/closet/crate/corporate/zenghu
 
-/datum/supply_pack2/nanotrasen/medical/sterile
+/datum/supply_pack/nanotrasen/medical/sterile
 	name = "Sterile equipment crate"
 	contains = list(
 		/obj/item/clothing/under/rank/medical/scrubs/green = 2,
@@ -100,7 +100,7 @@
 	)
 	worth = 150
 
-/datum/supply_pack2/nanotrasen/medical/extragear
+/datum/supply_pack/nanotrasen/medical/extragear
 	name = "Medical surplus equipment"
 	contains = list(
 		/obj/item/storage/belt/medical = 3,
@@ -111,7 +111,7 @@
 	worth = 150
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 
-/datum/supply_pack2/nanotrasen/medical/cmogear
+/datum/supply_pack/nanotrasen/medical/cmogear
 	name = "Chief medical officer equipment"
 	contains = list(
 		/obj/item/storage/belt/medical,
@@ -137,7 +137,7 @@
 		/datum/access/station/medical/cmo,
 	)
 
-/datum/supply_pack2/nanotrasen/medical/doctorgear
+/datum/supply_pack/nanotrasen/medical/doctorgear
 	name = "Medical Doctor Equipment"
 	contains = list(
 		/obj/item/storage/belt/medical,
@@ -158,7 +158,7 @@
 	worth = 450
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 
-/datum/supply_pack2/nanotrasen/medical/chemistgear
+/datum/supply_pack/nanotrasen/medical/chemistgear
 	name = "Chemist equipment"
 	contains = list(
 		/obj/item/storage/box/beakers,
@@ -180,7 +180,7 @@
 	worth = 450
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 
-/datum/supply_pack2/nanotrasen/medical/paramedicgear
+/datum/supply_pack/nanotrasen/medical/paramedicgear
 	name = "Paramedic equipment"
 	contains = list(
 		/obj/item/storage/belt/medical/emt,
@@ -206,7 +206,7 @@
 	worth = 450
 	container_type = /obj/structure/closet/crate/secure/corporate/nanomed
 
-/datum/supply_pack2/nanotrasen/medical/psychiatristgear
+/datum/supply_pack/nanotrasen/medical/psychiatristgear
 	name = "Psychiatrist equipment"
 	contains = list(
 		/obj/item/clothing/under/rank/psych,
@@ -223,7 +223,7 @@
 	worth = 450
 	container_type = /obj/structure/closet/crate/secure/corporate/nanomed
 
-/datum/supply_pack2/nanotrasen/medical/medicalscrubs
+/datum/supply_pack/nanotrasen/medical/medicalscrubs
 	name = "Medical scrubs"
 	contains = list(
 		/obj/item/clothing/shoes/white = 3,,
@@ -242,7 +242,7 @@
 	worth = 500 // item spam
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 
-/datum/supply_pack2/nanotrasen/medical/autopsy
+/datum/supply_pack/nanotrasen/medical/autopsy
 	name = "Autopsy equipment"
 	contains = list(
 		/obj/item/folder/white,
@@ -258,7 +258,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 	container_name = "Autopsy equipment crate"
 
-/datum/supply_pack2/nanotrasen/medical/medicaluniforms
+/datum/supply_pack/nanotrasen/medical/medicaluniforms
 	name = "Medical uniforms"
 	contains = list(
 		/obj/item/clothing/shoes/white = 3,
@@ -283,7 +283,7 @@
 	worth = 500 // item spam + CMO coat
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 
-/datum/supply_pack2/nanotrasen/medical/medicalbiosuits
+/datum/supply_pack/nanotrasen/medical/medicalbiosuits
 	name = "Medical biohazard gear"
 	contains = list(
 		/obj/item/clothing/head/bio_hood = 2,
@@ -301,7 +301,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanomed
 	container_name = "Medical biohazard equipment"
 
-/datum/supply_pack2/nanotrasen/medical/portablefreezers
+/datum/supply_pack/nanotrasen/medical/portablefreezers
 	name = "Portable freezers crate"
 	contains = list(
 		/obj/item/storage/box/freezer = 7,
@@ -309,7 +309,7 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Portable freezers"
 
-/datum/supply_pack2/nanotrasen/medical/virus
+/datum/supply_pack/nanotrasen/medical/virus
 	name = "Virus sample crate"
 	contains = list(
 		/obj/item/virusdish/random = 4,
@@ -320,7 +320,7 @@
 		/datum/access/station/medical/cmo,
 	)
 
-/datum/supply_pack2/nanotrasen/medical/defib
+/datum/supply_pack/nanotrasen/medical/defib
 	name = "Defibrillator crate"
 	contains = list(
 		/obj/item/defib_kit = 2,
@@ -328,35 +328,35 @@
 	container_type = /obj/structure/closet/crate/medical
 	container_name = "Defibrillator crate"
 
-/datum/supply_pack2/nanotrasen/medical/distillery
+/datum/supply_pack/nanotrasen/medical/distillery
 	name = "Chemical distiller crate"
 	contains = list(
 		/obj/machinery/portable_atmospherics/powered/reagent_distillery = 1,
 	)
 	container_type = /obj/structure/largecrate
 
-/datum/supply_pack2/nanotrasen/medical/advdistillery
+/datum/supply_pack/nanotrasen/medical/advdistillery
 	name = "Industrial Chemical distiller crate"
 	contains = list(
 		/obj/machinery/portable_atmospherics/powered/reagent_distillery/industrial = 1,
 	)
 	container_type = /obj/structure/largecrate
 
-/datum/supply_pack2/nanotrasen/medical/oxypump
+/datum/supply_pack/nanotrasen/medical/oxypump
 	name = "Oxygen pump crate"
 	contains = list(
 		/obj/machinery/oxygen_pump/mobile = 1,
 	)
 	container_type = /obj/structure/largecrate
 
-/datum/supply_pack2/nanotrasen/medical/anestheticpump
+/datum/supply_pack/nanotrasen/medical/anestheticpump
 	name = "Anesthetic pump crate"
 	contains = list(
 		/obj/machinery/oxygen_pump/mobile/anesthetic = 1,
 	)
 	container_type = /obj/structure/largecrate
 
-/datum/supply_pack2/nanotrasen/medical/stablepump
+/datum/supply_pack/nanotrasen/medical/stablepump
 	name = "Portable stabilizer crate"
 	contains = list(
 		/obj/machinery/oxygen_pump/mobile/stabilizer = 1,
@@ -364,7 +364,7 @@
 	container_type = /obj/structure/largecrate
 
 
-/datum/supply_pack2/nanotrasen/medical/compactdefib
+/datum/supply_pack/nanotrasen/medical/compactdefib
 	name = "Compact Defibrillator crate"
 	contains = list(
 		/obj/item/defib_kit/compact = 1,
@@ -372,7 +372,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanomed
 	container_name = "Compact Defibrillator crate"
 
-/datum/supply_pack2/nanotrasen/medical/medigun
+/datum/supply_pack/nanotrasen/medical/medigun
 	name = "Cell-Loaded Medigun crate"
 	contains = list(
 		/obj/item/gun/ballistic/cell_loaded/medical = 1,
@@ -382,7 +382,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/veymed
 	container_name = "Cell-Loaded Medigun crate"
 
-/datum/supply_pack2/nanotrasen/medical/medigun_cells
+/datum/supply_pack/nanotrasen/medical/medigun_cells
 	name = "Cell-Loaded Medigun Cell Pack crate"
 	contains = list(
 		/obj/item/ammo_casing/microbattery/medical/brute = 3,

@@ -4,8 +4,8 @@
 */
 
 
-/datum/supply_pack2/nanotrasen/security
-	abstract_type = /datum/supply_pack2/nanotrasen/security
+/datum/supply_pack/nanotrasen/security
+	abstract_type = /datum/supply_pack/nanotrasen/security
 	category = "Security"
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_access = list(
@@ -13,7 +13,7 @@
 	)
 	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS
 
-/datum/supply_pack2/nanotrasen/security/weapons
+/datum/supply_pack/nanotrasen/security/weapons
 	name = "Weapons - Security basic equipment"
 	contains = list(
 		/obj/item/flash = 2,
@@ -26,7 +26,7 @@
 	worth = 400
 	container_name = "Security equipment crate"
 
-/datum/supply_pack2/nanotrasen/security/armor
+/datum/supply_pack/nanotrasen/security/armor
 	name = "Armor - Security armor"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -44,7 +44,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor crate"
 
-/datum/supply_pack2/nanotrasen/security/carriers
+/datum/supply_pack/nanotrasen/security/carriers
 	name = "Armor - Plate carriers"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -60,7 +60,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Plate Carrier crate"
 
-/datum/supply_pack2/nanotrasen/security/carriertags
+/datum/supply_pack/nanotrasen/security/carriertags
 	name = "Armor - Plate carrier tags"
 	// todo: just do fucking holotags WHY ARE WE SPAMMING THESE??
 	contains = list(
@@ -80,7 +80,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Plate Carrier crate"
 
-/datum/supply_pack2/nanotrasen/security/helmcovers
+/datum/supply_pack/nanotrasen/security/helmcovers
 	name = "Armor - Helmet covers"
 	// todo: just do fucking holocovers WHY ARE WE SPAMMING THESE??
 	contains = list(
@@ -93,7 +93,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Helmet Covers crate"
 
-/datum/supply_pack2/nanotrasen/security/armorplates
+/datum/supply_pack/nanotrasen/security/armorplates
 	name = "Armor - Security p-carrier armor plates"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -109,7 +109,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 
-/datum/supply_pack2/nanotrasen/security/carrierarms
+/datum/supply_pack/nanotrasen/security/carrierarms
 	name = "Armor - Security armguard attachments"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -126,7 +126,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 
-/datum/supply_pack2/nanotrasen/security/carrierlegs
+/datum/supply_pack/nanotrasen/security/carrierlegs
 	name = "Armor - Security legguard attachments"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -143,7 +143,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 
-/datum/supply_pack2/nanotrasen/security/carrierbags
+/datum/supply_pack/nanotrasen/security/carrierbags
 	name = "Armor - Security p-carrier pouch attachments"
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
@@ -162,13 +162,13 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Armor plate crate"
 
-/datum/supply_pack2/nanotrasen/security/armory
-	abstract_type = /datum/supply_pack2/nanotrasen/security/armory
+/datum/supply_pack/nanotrasen/security/armory
+	abstract_type = /datum/supply_pack/nanotrasen/security/armory
 	container_access = list(
 		/datum/access/station/security/armory,
 	)
 
-/datum/supply_pack2/nanotrasen/security/armory/riot_gear
+/datum/supply_pack/nanotrasen/security/armory/riot_gear
 	name = "Gear - Riot"
 	contains = list(
 		/obj/item/melee/baton = 3,
@@ -181,7 +181,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Riot gear crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/riot_armor
+/datum/supply_pack/nanotrasen/security/armory/riot_armor
 	name = "Armor Set - Riot"
 	contains = list(
 		/obj/item/clothing/head/helmet/riot,
@@ -193,7 +193,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Riot armor crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/riot_plates
+/datum/supply_pack/nanotrasen/security/armory/riot_plates
 	name = "Armor Set - Riot (P-Carrier)"
 	contains = list(
 		/obj/item/clothing/head/helmet/riot,
@@ -205,7 +205,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Riot armor crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/ablative_armor
+/datum/supply_pack/nanotrasen/security/armory/ablative_armor
 	name = "Armor Set - Ablative"
 	contains = list(
 		/obj/item/clothing/head/helmet/ablative,
@@ -217,7 +217,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Ablative armor crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/ablative_plates
+/datum/supply_pack/nanotrasen/security/armory/ablative_plates
 	name = "Armor Set - Ablative (P-Carrier)"
 	contains = list(
 		/obj/item/clothing/head/helmet/ablative,
@@ -229,7 +229,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Ablative armor crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/bullet_resistant_armor
+/datum/supply_pack/nanotrasen/security/armory/bullet_resistant_armor
 	name = "Armor Set - Ballistic"
 	contains = list(
 		/obj/item/clothing/head/helmet/ballistic,
@@ -241,7 +241,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Ballistic armor crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/bullet_resistant_plates
+/datum/supply_pack/nanotrasen/security/armory/bullet_resistant_plates
 	name = "Armor Set - Ballistic (P-Carrier)"
 	contains = list(
 		/obj/item/clothing/head/helmet/ballistic,
@@ -253,7 +253,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Ballistic armor crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/combat_armor
+/datum/supply_pack/nanotrasen/security/armory/combat_armor
 	name = "Armor - Combat"
 	contains = list(
 		/obj/item/clothing/head/helmet/combat,
@@ -265,7 +265,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Combat armor crate"
 
-/datum/supply_pack2/nanotrasen/security/armory/tactical
+/datum/supply_pack/nanotrasen/security/armory/tactical
 	name = "Armor - NT Tactical"
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "NT Tactical armor crate"
@@ -282,7 +282,7 @@
 		/obj/item/clothing/gloves/black,
 	)
 
-/datum/supply_pack2/nanotrasen/security/armory/flexitac
+/datum/supply_pack/nanotrasen/security/armory/flexitac
 	name = "Armor - Tactical Light"
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Tactical Light armor crate"
@@ -297,7 +297,7 @@
 		/obj/item/storage/belt/security/tactical,
 	)
 
-/datum/supply_pack2/nanotrasen/security/securitybarriers
+/datum/supply_pack/nanotrasen/security/securitybarriers
 	name = "Misc - Security Barriers"
 	contains = list(
 		/obj/machinery/deployable/barrier = 4,
@@ -305,7 +305,7 @@
 	container_type = /obj/structure/largecrate
 	container_name = "Security barrier crate"
 
-/datum/supply_pack2/nanotrasen/security/holster
+/datum/supply_pack/nanotrasen/security/holster
 	name = "Gear - Holsters"
 	lazy_gacha_amount = 4
 	lazy_gacha_contained = list(
@@ -317,7 +317,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanotrasen
 	container_name = "Holster crate"
 
-/datum/supply_pack2/nanotrasen/security/extragear
+/datum/supply_pack/nanotrasen/security/extragear
 	name = "Gear - Security surplus equipment"
 	contains = list(
 		/obj/item/storage/belt/security = 3,
@@ -330,7 +330,7 @@
 	container_type = /obj/structure/closet/crate/corporate/nanotrasen
 	container_name = "Security surplus equipment"
 
-/datum/supply_pack2/nanotrasen/security/detectivegear
+/datum/supply_pack/nanotrasen/security/detectivegear
 	name = "Forensic - Investigation equipment"
 	contains = list(
 		/obj/item/storage/box/evidence = 2,
@@ -357,7 +357,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Forensic equipment"
 
-/datum/supply_pack2/nanotrasen/security/detectivescan
+/datum/supply_pack/nanotrasen/security/detectivescan
 	name = "Forensic - Scanning Equipment"
 	contains = list(
 		/obj/item/mass_spectrometer,
@@ -369,7 +369,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Forensic equipment"
 
-/datum/supply_pack2/nanotrasen/security/detectiveclothes
+/datum/supply_pack/nanotrasen/security/detectiveclothes
 	name = "Forensic - Investigation apparel"
 	contains = list(
 		/obj/item/clothing/under/det/black = 2,
@@ -390,7 +390,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Investigation clothing"
 
-/datum/supply_pack2/nanotrasen/security/officergear
+/datum/supply_pack/nanotrasen/security/officergear
 	name = "Gear - Officer equipment"
 	contains = list(
 		/obj/item/clothing/suit/storage/vest/officer,
@@ -419,7 +419,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Officer equipment"
 
-/datum/supply_pack2/nanotrasen/security/wardengear
+/datum/supply_pack/nanotrasen/security/wardengear
 	name = "Gear - Warden equipment"
 	contains = list(
 		/obj/item/clothing/suit/storage/vest/warden,
@@ -449,7 +449,7 @@
 		/datum/access/station/security/armory,
 	)
 
-/datum/supply_pack2/nanotrasen/security/headofsecgear
+/datum/supply_pack/nanotrasen/security/headofsecgear
 	name = "Gear - Head of security equipment"
 	contains = list(
 		/obj/item/clothing/head/helmet/HoS,
@@ -477,7 +477,7 @@
 		/datum/access/station/security/hos,
 	)
 
-/datum/supply_pack2/nanotrasen/security/securityclothing
+/datum/supply_pack/nanotrasen/security/securityclothing
 	name = "Misc - Security uniform red"
 	contains = list(
 		/obj/item/storage/backpack/satchel/sec = 2,
@@ -495,7 +495,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security uniform crate"
 
-/datum/supply_pack2/nanotrasen/security/navybluesecurityclothing
+/datum/supply_pack/nanotrasen/security/navybluesecurityclothing
 	name = "Misc - Security uniform navy blue"
 	contains = list(
 		/obj/item/storage/backpack/satchel/sec = 2,
@@ -516,7 +516,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Navy blue security uniform crate"
 
-/datum/supply_pack2/nanotrasen/security/corporatesecurityclothing
+/datum/supply_pack/nanotrasen/security/corporatesecurityclothing
 	name = "Misc - Security uniform corporate"
 	contains = list(
 		/obj/item/storage/backpack/satchel/sec = 2,
@@ -536,7 +536,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Corporate security uniform crate"
 
-/datum/supply_pack2/nanotrasen/security/biosuit
+/datum/supply_pack/nanotrasen/security/biosuit
 	name = "Gear - Security biohazard gear"
 	contains = list(
 		/obj/item/clothing/head/bio_hood/security = 3,
@@ -552,7 +552,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Security biohazard gear"
 
-/datum/supply_pack2/nanotrasen/security/posters
+/datum/supply_pack/nanotrasen/security/posters
 	name = "Gear - Morale Posters"
 	contains = list(
 		/obj/item/contraband/poster/nanotrasen = 6,
@@ -561,7 +561,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Morale Posters"
 
-/datum/supply_pack2/nanotrasen/security/kevlarkit
+/datum/supply_pack/nanotrasen/security/kevlarkit
 	name = "Misc - Kevlar Upgrade Kits"
 	contains = list(
 		/obj/item/kevlarupgrade = 5,
@@ -577,7 +577,7 @@
 	// if you're going to add stuff like this, it's not going to be security-only.
 	container_access = null
 
-/datum/supply_pack2/nanotrasen/security/pcarriers/combat
+/datum/supply_pack/nanotrasen/security/pcarriers/combat
 	name = "Armor - Combat Armor (P-Carrier)"
 	contains = list(
 		/obj/item/clothing/suit/armor/pcarrier = 3,
@@ -590,7 +590,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Combat Armor crate"
 
-/datum/supply_pack2/nanotrasen/security/helmets
+/datum/supply_pack/nanotrasen/security/helmets
 	name = "Armor - Helmet Pack"
 	contains = list(
 		/obj/item/clothing/head/helmet = 3,
@@ -598,7 +598,7 @@
 	worth = 125 * 3 // it's just helmets, 125 a piece is fine
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 
-/datum/supply_pack2/nanotrasen/security/wardengear
+/datum/supply_pack/nanotrasen/security/wardengear
 	name = "Tracking Implants"
 	contains = list(
 		/obj/item/storage/box/trackimp = 1,

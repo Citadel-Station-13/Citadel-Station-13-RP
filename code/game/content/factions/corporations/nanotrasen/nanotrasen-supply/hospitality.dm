@@ -4,11 +4,11 @@
 */
 
 
-/datum/supply_pack2/nanotrasen/hospitality
-	abstract_type = /datum/supply_pack2/nanotrasen/hospitality
+/datum/supply_pack/nanotrasen/hospitality
+	abstract_type = /datum/supply_pack/nanotrasen/hospitality
 	category = "Hospitality"
 
-/datum/supply_pack2/nanotrasen/hospitality/party
+/datum/supply_pack/nanotrasen/hospitality/party
 	name = "Party equipment"
 	contains = list(
 			/obj/item/storage/box/mixedglasses = 2,
@@ -27,7 +27,7 @@
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "Party equipment"
 
-/datum/supply_pack2/nanotrasen/hospitality/barsupplies
+/datum/supply_pack/nanotrasen/hospitality/barsupplies
 	name = "Bar supplies"
 	contains = list(
 			/obj/item/storage/box/glasses/cocktail,
@@ -47,7 +47,7 @@
 	container_type = /obj/structure/closet/crate/corporate/gilthari
 	container_name = "crate of bar supplies"
 
-/datum/supply_pack2/nanotrasen/hospitality/pizza
+/datum/supply_pack/nanotrasen/hospitality/pizza
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
 			/obj/item/pizzabox/margherita,
@@ -60,7 +60,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Pizza crate"
 
-/datum/supply_pack2/nanotrasen/hospitality/gifts
+/datum/supply_pack/nanotrasen/hospitality/gifts
 	name = "Gift crate"
 	contains = list(
 		/obj/item/toy/bouquet = 3,
@@ -74,7 +74,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "crate of gifts"
 
-/datum/supply_pack2/nanotrasen/hospitality/burgers
+/datum/supply_pack/nanotrasen/hospitality/burgers
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/bigbiteburger,
@@ -88,7 +88,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Burger crate"
 
-/datum/supply_pack2/nanotrasen/hospitality/bakery
+/datum/supply_pack/nanotrasen/hospitality/bakery
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/baguette,
@@ -114,7 +114,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Bakery products crate"
 
-/datum/supply_pack2/nanotrasen/hospitality/cakes
+/datum/supply_pack/nanotrasen/hospitality/cakes
 	lazy_gacha_amount = 2
 	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/sliceable/applecake,
@@ -132,7 +132,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Cake crate"
 
-/datum/supply_pack2/nanotrasen/hospitality/mexican
+/datum/supply_pack/nanotrasen/hospitality/mexican
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/cheeseburrito,
@@ -145,7 +145,7 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Mexican takeout crate"
 
-/datum/supply_pack2/nanotrasen/hospitality/asian
+/datum/supply_pack/nanotrasen/hospitality/asian
 	lazy_gacha_amount = 5
 	lazy_gacha_contained = list(
 			/obj/item/reagent_containers/food/snacks/generalschicken,
@@ -156,14 +156,14 @@
 	container_type = /obj/structure/closet/crate/corporate/centauri
 	container_name = "Chinese takeout crate"
 
-/datum/supply_pack2/nanotrasen/hospitality/cookingoil
+/datum/supply_pack/nanotrasen/hospitality/cookingoil
 	name = "Tallow tank crate"
 	contains = list(/obj/structure/reagent_dispensers/tallow)
 	worth = 350
 	container_type = /obj/structure/largecrate
 	container_name = "Tallow tank crate"
 
-/datum/supply_pack2/nanotrasen/hospitality/vampcarepackage
+/datum/supply_pack/nanotrasen/hospitality/vampcarepackage
 	name = "Vetalan Care package"
 	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
 					/obj/item/clothing/under/suit_jacket)
@@ -171,7 +171,7 @@
 	container_type = /obj/structure/closet/coffin/comfy
 	container_name = "Extra comfortable coffin"
 
-/datum/supply_pack2/nanotrasen/hospitality/moghes
+/datum/supply_pack/nanotrasen/hospitality/moghes
 	name = "Moghes Foodstuffs"
 	contains = list(
 			/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew = 2,
@@ -181,7 +181,7 @@
 	container_type = /obj/structure/closet/crate/corporate/unathi
 	container_name = "Moghes Foodstuffs"
 
-/datum/supply_pack2/nanotrasen/hospitality/fish
+/datum/supply_pack/nanotrasen/hospitality/fish
 	name = "Fish supply crate"
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/lobster = 6,

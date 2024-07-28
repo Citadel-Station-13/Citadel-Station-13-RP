@@ -6,7 +6,7 @@
  *
  * todo: rename to supply_pack
  */
-/datum/supply_pack2
+/datum/supply_pack
 	/// name of pack
 	var/name = "Supply Pack"
 	/// arbitrary category to group under
@@ -76,7 +76,7 @@
 /**
  * **Always call this before using it!**
  */
-/datum/supply_pack2/proc/initialize()
+/datum/supply_pack/proc/initialize()
 	populate()
 	generate()
 	compact()
@@ -84,10 +84,10 @@
 /**
  * use this to manipulate our contents before generation.
  */
-/datum/supply_pack2/proc/populate()
+/datum/supply_pack/proc/populate()
 	return
 
-/datum/supply_pack2/proc/generate()
+/datum/supply_pack/proc/generate()
 	// resolve accesses
 	for(var/i in 1 to length(container_access))
 		var/key = container_access[i]
@@ -117,12 +117,12 @@
 	if(isnull(legacy_cost))
 		legacy_cost = ceil(worth * 0.06)
 
-/datum/supply_pack2/proc/compact()
+/datum/supply_pack/proc/compact()
 	LAZYCLEARLIST(contains)
 	LAZYCLEARLIST(contains_some)
 	LAZYCLEARLIST(contains_custom_text)
 
-/datum/supply_pack2/proc/detect_worth()
+/datum/supply_pack/proc/detect_worth()
 	. = 0
 
 	// if non-deterministic, must need that
@@ -156,10 +156,10 @@
 /**
  * @return container spawned, or null (which can also mean we don't use a container for some reason)
  */
-/datum/supply_pack2/proc/instantiate_pack_at(atom/where)
+/datum/supply_pack/proc/instantiate_pack_at(atom/where)
 	return instantiate_contents(instantiate_container(where) || where)
 
-/datum/supply_pack2/proc/instantiate_container(atom/where)
+/datum/supply_pack/proc/instantiate_container(atom/where)
 	RETURN_TYPE(/atom/movable)
 
 	if(container_type)
@@ -167,20 +167,20 @@
 
 	var/atom/movable/container = new container_type(where)
 	. = container
-	
+
 	container.name = container_name
 	container.desc = container_desc
-	
+
 	if(isobj(container))
 		var/obj/obj_container = container
 		if(container_access)
-			//  todo: getter / setter for req-accesses, enforced cached & deduped lists 
+			//  todo: getter / setter for req-accesses, enforced cached & deduped lists
 			obj_container.req_access = container_access.Copy()
 		if(container_one_access)
-			//  todo: getter / setter for req-accesses, enforced cached & deduped lists 
+			//  todo: getter / setter for req-accesses, enforced cached & deduped lists
 			obj_container.req_one_access = container_one_access.Copy()
 
-/datum/supply_pack2/proc/instantiate_contents(atom/where)
+/datum/supply_pack/proc/instantiate_contents(atom/where)
 	var/list/descriptors_to_spawn = resolve_contents_descriptors()
 	for(var/descriptor in descriptors_to_spawn)
 		var/amount = descriptors_to_spawn[descriptor] || 1
@@ -189,20 +189,20 @@
 /**
  * @return list of descriptor associated to amount
  */
-/datum/supply_pack2/proc/resolve_contents_descriptors()
+/datum/supply_pack/proc/resolve_contents_descriptors()
 	. = contains.Copy()
 
 	if(length(contains_some))
 		for(var/list/entry as anything in contains_some)
 			var/list/entities = entry["entities"]
 			var/amount = entry["amount"]
-			
+
 			// this is basically an inlined pickweight()
 
 			var/total_weight = 0
 			for(var/key in entities)
 				total_weight += entities[key] || 1
-			
+
 			if(total_weight == length(entities))
 				for(var/i in 1 to amount)
 					.[pick(entities)] += 1
@@ -224,7 +224,7 @@
  *
  * argument is provided for container incase you want to modify based on what actually spawned
  */
-/datum/supply_pack2/proc/get_html_manifest(atom/movable/container)
+/datum/supply_pack/proc/get_html_manifest(atom/movable/container)
 	RETURN_TYPE(/list)
 	var/list/lines = list()
 	lines += "Contents:<br>"
@@ -246,7 +246,7 @@
 	lines += "</ul>"
 	return lines
 
-/datum/supply_pack2/proc/nanoui_manifest_list()
+/datum/supply_pack/proc/nanoui_manifest_list()
 	. = list()
 	for(var/descriptor in contains)
 		var/amount = contains[descriptor]
@@ -258,5 +258,5 @@
 			var/described = SSsupply.describe_entity_via_descriptor(entity)
 			. += described
 
-/datum/supply_pack2/proc/nanoui_is_random()
+/datum/supply_pack/proc/nanoui_is_random()
 	return !!length(contains_some)

@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(supply)
 /datum/supply_order
 	var/ordernum							// Unfabricatable index
 	var/index								// Fabricatable index
-	var/datum/supply_pack2/object = null
+	var/datum/supply_pack/object = null
 	var/cost								// Cost of the supply pack (Fabricatable) (Changes not reflected when purchasing supply packs, this is cosmetic only)
 	var/name								// Name of the supply pack datum (Fabricatable)
 	var/ordered_by = null					// Who requested the order
@@ -48,8 +48,8 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/Initialize()
 	ordernum = rand(1,9000)
 
-	for(var/typepath in subtypesof(/datum/supply_pack2))
-		var/datum/supply_pack2/P = new typepath()
+	for(var/typepath in subtypesof(/datum/supply_pack))
+		var/datum/supply_pack/P = new typepath()
 		if(!P.legacy)
 			continue
 		legacy_supply_packs[P.name] = P
@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(supply)
 			break
 
 		SO.status = SUP_ORDER_SHIPPED
-		var/datum/supply_pack2/SP = SO.object
+		var/datum/supply_pack/SP = SO.object
 		var/atom/movable/container = SP.instantiate_pack_at(T)
 		if(SO.comment)
 			container.name += " [SO.comment]"
@@ -299,7 +299,7 @@ SUBSYSTEM_DEF(supply)
 	return
 
 // Will generate a new, requested order, for the given supply pack type
-/datum/controller/subsystem/supply/proc/create_order(var/datum/supply_pack2/S, var/mob/user, var/reason)
+/datum/controller/subsystem/supply/proc/create_order(var/datum/supply_pack/S, var/mob/user, var/reason)
 	var/datum/supply_order/new_order = new()
 	var/datum/supply_order/adm_order = new()	// Admin-recorded order must be a separate copy in memory, or user-made edits will corrupt it
 

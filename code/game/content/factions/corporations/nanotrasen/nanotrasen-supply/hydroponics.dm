@@ -4,11 +4,11 @@
 */
 
 
-/datum/supply_pack2/nanotrasen/hydroponics
+/datum/supply_pack/nanotrasen/hydroponics
 	category = "Hydroponics"
 	container_type = /obj/structure/closet/crate/hydroponics
 
-/datum/supply_pack2/nanotrasen/hydroponics/hydroponics
+/datum/supply_pack/nanotrasen/hydroponics/hydroponics
 	name = "Hydroponics Supply Crate"
 	contains = list(
 		/obj/item/reagent_containers/spray/plantbgone = 4,
@@ -25,7 +25,7 @@
 	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Hydroponics crate"
 
-/datum/supply_pack2/nanotrasen/hydroponics/seeds
+/datum/supply_pack/nanotrasen/hydroponics/seeds
 	name = "Seeds crate"
 	contains = list(
 		/obj/item/seeds/chiliseed,
@@ -48,7 +48,7 @@
 	)
 	worth = 125
 
-/datum/supply_pack2/nanotrasen/hydroponics/weedcontrol
+/datum/supply_pack/nanotrasen/hydroponics/weedcontrol
 	name = "Weed control crate"
 	contains = list(
 		/obj/item/material/knife/machete/hatchet = 2,
@@ -59,7 +59,7 @@
 	)
 	worth = 125
 
-/datum/supply_pack2/nanotrasen/hydroponics/watertank
+/datum/supply_pack/nanotrasen/hydroponics/watertank
 	name = "Water tank crate"
 	contains = list(
 		/obj/structure/reagent_dispensers/watertank,
@@ -67,7 +67,7 @@
 	worth = 75
 	container_type = /obj/structure/largecrate
 
-/datum/supply_pack2/nanotrasen/hydroponics/bee_keeper
+/datum/supply_pack/nanotrasen/hydroponics/bee_keeper
 	name = "Beekeeping crate"
 	contains = list(
 		/obj/item/clothing/head/beekeeper,
@@ -80,7 +80,7 @@
 	worth = 300
 	container_name = "Beekeeping crate"
 
-/datum/supply_pack2/nanotrasen/hydroponics/tray
+/datum/supply_pack/nanotrasen/hydroponics/tray
 	name = "Empty hydroponics trays"
 	worth = 75
 	container_name = "Hydroponics tray crate"

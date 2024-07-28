@@ -3,8 +3,8 @@
 *	related to weapons live.
 */
 
-/datum/supply_pack2/nanotrasen/munitions
-	abstract_type = /datum/supply_pack2/nanotrasen/munitions
+/datum/supply_pack/nanotrasen/munitions
+	abstract_type = /datum/supply_pack/nanotrasen/munitions
 	category = "Munitions"
 	supply_pack_flags = SUPPLY_PACK_LOCK_PRIVATE_ORDERS | SUPPLY_PACK_RESTRICT_PRIVATE_ORDERS
 	container_type = /obj/structure/closet/crate/secure/weapon
@@ -12,14 +12,14 @@
 		/datum/access/station/security/armory,
 	)
 
-/datum/supply_pack2/nanotrasen/munitions/egunpistol
+/datum/supply_pack/nanotrasen/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
 	contains = list(
 		/obj/item/gun/energy/gun = 2,
 	)
 	container_name = "Energy sidearms crate"
 
-/datum/supply_pack2/nanotrasen/munitions/flareguns
+/datum/supply_pack/nanotrasen/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(
 		/obj/item/gun/ballistic/shotgun/flare = 2,
@@ -28,7 +28,7 @@
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Flare gun crate"
 
-/datum/supply_pack2/nanotrasen/munitions/eweapons
+/datum/supply_pack/nanotrasen/munitions/eweapons
 	name = "Weapons - Experimental weapons crate"
 	contains = list(
 		/obj/item/gun/energy/xray = 2,
@@ -37,7 +37,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Experimental weapons crate"
 
-/datum/supply_pack2/nanotrasen/munitions/energyweapons
+/datum/supply_pack/nanotrasen/munitions/energyweapons
 	name = "Weapons - Laser rifle crate"
 	contains = list(
 		/obj/item/gun/energy/laser = 2,
@@ -45,7 +45,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Energy weapons crate"
 
-/datum/supply_pack2/nanotrasen/munitions/shotgun
+/datum/supply_pack/nanotrasen/munitions/shotgun
 	name = "Weapons - Shotgun crate"
 	contains = list(
 		/obj/item/storage/box/shotgunammo,
@@ -55,7 +55,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Shotgun crate"
 
-/datum/supply_pack2/nanotrasen/munitions/erifle
+/datum/supply_pack/nanotrasen/munitions/erifle
 	name = "Weapons - Energy marksman"
 	contains = list(
 		/obj/item/gun/energy/sniperrifle = 2,
@@ -63,7 +63,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/heph
 	container_name = "Energy marksman crate"
 
-/datum/supply_pack2/nanotrasen/munitions/burstlaser
+/datum/supply_pack/nanotrasen/munitions/burstlaser
 	name = "Weapons - Burst laser"
 	contains = list(
 		/obj/item/gun/energy/gun/burst = 2,
@@ -71,7 +71,7 @@
 	container_type = /obj/structure/closet/crate/secure/weapon
 	container_name = "Burst laser crate"
 
-/datum/supply_pack2/nanotrasen/munitions/ionweapons
+/datum/supply_pack/nanotrasen/munitions/ionweapons
 	name = "Weapons - Electromagnetic Rifles"
 	contains = list(
 		/obj/item/gun/energy/ionrifle = 2,
@@ -80,7 +80,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 
-/datum/supply_pack2/nanotrasen/munitions/ionpistols
+/datum/supply_pack/nanotrasen/munitions/ionpistols
 	name = "Weapons - Electromagnetic pistols"
 	contains = list(
 		/obj/item/gun/energy/ionrifle/pistol = 2,
@@ -89,7 +89,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Electromagnetic weapons crate"
 
-/datum/supply_pack2/nanotrasen/munitions/bsmg
+/datum/supply_pack/nanotrasen/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
 	contains = list(
 		/obj/item/gun/ballistic/automatic/wt550 = 2,
@@ -97,14 +97,14 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/ward
 	container_name = "Ballistic weapon crate"
 
-/datum/supply_pack2/nanotrasen/munitions/brifle
+/datum/supply_pack/nanotrasen/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
 	contains = list(
 		/obj/item/gun/ballistic/automatic/z8 = 2,
 	)
 	container_name = "Ballistic weapon crate"
 
-/datum/supply_pack2/nanotrasen/munitions/bolt_rifles_competitive
+/datum/supply_pack/nanotrasen/munitions/bolt_rifles_competitive
 	name = "Weapons - Competitive shooting rifles"
 	contains = list(
 		/obj/item/assembly/timer,
@@ -117,28 +117,28 @@
 	worth = 500
 	container_name = "Ballistic Weapons crate"
 
-/datum/supply_pack2/nanotrasen/munitions/mrifle
+/datum/supply_pack/nanotrasen/munitions/mrifle
 	name = "Weapons - Magnetic Rifles"
 	contains = list(
 		/obj/item/gun/magnetic/railgun/heater = 2,
 	)
 	container_name = "Magnetic weapon crate"
 
-/datum/supply_pack2/nanotrasen/munitions/mpistol
+/datum/supply_pack/nanotrasen/munitions/mpistol
 	name = "Weapons - Magnetic Pistols"
 	contains = list(
 		/obj/item/gun/magnetic/railgun/heater/pistol = 2,
 	)
 	container_name = "Magnetic weapon crate"
 
-/datum/supply_pack2/nanotrasen/munitions/mcarbine
+/datum/supply_pack/nanotrasen/munitions/mcarbine
 	name = "Weapons - Magnetic Carbines"
 	contains = list(
 		/obj/item/gun/magnetic/railgun/flechette/sif = 2,
 	)
 	container_name = "Magnetic weapon crate"
 
-/datum/supply_pack2/nanotrasen/munitions/shotgunammo
+/datum/supply_pack/nanotrasen/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
 	contains = list(
 		/obj/item/storage/box/shotgunammo = 2,
@@ -146,14 +146,14 @@
 	)
 	container_name = "Ballistic ammunition crate"
 
-/datum/supply_pack2/nanotrasen/munitions/beanbagammo
+/datum/supply_pack/nanotrasen/munitions/beanbagammo
 	name = "Ammunition - Beanbag shells"
 	contains = list(
 		/obj/item/storage/box/beanbags = 3,
 	)
 	container_name = "Ballistic ammunition crate"
 
-/datum/supply_pack2/nanotrasen/munitions/bsmgammo
+/datum/supply_pack/nanotrasen/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"
 	contains = list(
 		/obj/item/ammo_magazine/m9mmt = 6,
@@ -161,7 +161,7 @@
 	worth = 250
 	container_name = "Ballistic ammunition crate"
 
-/datum/supply_pack2/nanotrasen/munitions/bsmgammorubber
+/datum/supply_pack/nanotrasen/munitions/bsmgammorubber
 	name = "Ammunition - 9mm top mounted rubber"
 	contains = list(
 		/obj/item/ammo_magazine/m9mmt/rubber = 6,
@@ -170,7 +170,7 @@
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
 
-/datum/supply_pack2/nanotrasen/munitions/brifleammo
+/datum/supply_pack/nanotrasen/munitions/brifleammo
 	name = "Ammunition - 7.62mm lethal"
 	contains = list(
 		/obj/item/ammo_magazine/m762 = 6,
@@ -179,14 +179,14 @@
 	container_type = /obj/structure/closet/crate/secure
 	container_name = "Ballistic ammunition crate"
 
-/datum/supply_pack2/nanotrasen/munitions/pcellammo
+/datum/supply_pack/nanotrasen/munitions/pcellammo
 	name = "Ammunition - Power cell"
 	contains = list(
 		/obj/item/cell/device/weapon = 3,
 	)
 	container_access = list()
 
-/datum/supply_pack2/nanotrasen/munitions/firingpins
+/datum/supply_pack/nanotrasen/munitions/firingpins
 	name = "Weapons - Standard firing pins"
 	contains = list(
 		/obj/item/storage/box/firingpins = 3,
@@ -194,7 +194,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 	container_name = "Firing pin crate"
 
-/datum/supply_pack2/nanotrasen/munitions/expeditionguns
+/datum/supply_pack/nanotrasen/munitions/expeditionguns
 	name = "frontier phasers (station-locked)"
 	contains = list(
 		/obj/item/gun/energy/frontier/locked = 2,
@@ -204,7 +204,7 @@
 	container_type = /obj/structure/closet/crate/secure/corporate/nanotrasen
 
 //Culture Update
-/datum/supply_pack2/nanotrasen/munitions/weaponry_apidean
+/datum/supply_pack/nanotrasen/munitions/weaponry_apidean
 	name = "Apidean Weaponry Crate"
 	contains = list(
 		/obj/item/gun/ballistic/apinae_stinger = 1,
@@ -215,7 +215,7 @@
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Apidean Weaponry crate"
 
-/datum/supply_pack2/nanotrasen/munitions/weaponry_tyrmalin
+/datum/supply_pack/nanotrasen/munitions/weaponry_tyrmalin
 	name = "Tyrmalin Weaponry Crate"
 	contains = list(
 		/obj/item/gun/energy/ermitter = 1,
@@ -228,7 +228,7 @@
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Weaponry crate"
 
-/datum/supply_pack2/nanotrasen/munitions/battlerifle
+/datum/supply_pack/nanotrasen/munitions/battlerifle
 	name = "Battle Rifle Pack"
 	contains = list(
 		/obj/item/gun/ballistic/automatic/battlerifle = 2,
@@ -237,7 +237,7 @@
 	worth = 1500
 	container_type = /obj/structure/closet/crate/secure/corporate/heph
 
-/datum/supply_pack2/nanotrasen/munitions/quadshot
+/datum/supply_pack/nanotrasen/munitions/quadshot
 	name = "Quad Shotgun Pack"
 	contains = list(
 		/obj/item/gun/ballistic/shotgun/doublebarrel/quad = 2,

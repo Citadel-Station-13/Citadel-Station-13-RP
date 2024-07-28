@@ -5,11 +5,11 @@
 
 //PROSTHETICS
 
-/datum/supply_pack2/nanotrasen/robotics
+/datum/supply_pack/nanotrasen/robotics
 	category = "Robotics"
 	container_type = /obj/structure/closet/crate/science
 
-/datum/supply_pack2/nanotrasen/robotics/robotics_assembly
+/datum/supply_pack/nanotrasen/robotics/robotics_assembly
 	name = "Robotics assembly crate"
 	contains = list(
 		/obj/item/assembly/prox_sensor = 3,
@@ -19,14 +19,14 @@
 	)
 	worth = 250 // literally only because of the flashes; nerf flashes when?
 
-/datum/supply_pack2/nanotrasen/robotics/jumper_cables
+/datum/supply_pack/nanotrasen/robotics/jumper_cables
 	name = "Jumper kit crate"
 	contains = list(
 		/obj/item/defib_kit/jumper_kit = 2,
 	)
 	worth = 250
 
-/datum/supply_pack2/nanotrasen/robotics/restrainingbolt
+/datum/supply_pack/nanotrasen/robotics/restrainingbolt
 	name = "Restraining bolt crate"
 	contains = list(
 		/obj/item/implanter = 1,
@@ -34,7 +34,7 @@
 	)
 	worth = 1000 // stun combat tax intensifies
 
-/datum/supply_pack2/nanotrasen/robotics/some_robolimbs
+/datum/supply_pack/nanotrasen/robotics/some_robolimbs
 	name = "Basic Robolimb Blueprints"
 	contains = list(
 		/obj/item/disk/limb/morpheus,
@@ -43,7 +43,7 @@
 	)
 	worth = 500
 
-/datum/supply_pack2/nanotrasen/robotics/all_robolimbs
+/datum/supply_pack/nanotrasen/robotics/all_robolimbs
 	name = "Advanced Robolimb Blueprints (No Basic)"
 	contains = list(
 		/obj/item/disk/limb/bishop,
@@ -71,7 +71,7 @@
 
 //* Mechs *//
 
-/datum/supply_pack2/nanotrasen/robotics/mecha_ripley
+/datum/supply_pack/nanotrasen/robotics/mecha_ripley
 	name = "Circuit Crate (\"Ripley\" APLU)"
 	contains = list(
 		/obj/item/book/manual/ripley_build_and_repair,
@@ -81,7 +81,7 @@
 	worth = 350
 	container_name = "APLU \"Ripley\" Circuit Crate"
 
-/datum/supply_pack2/nanotrasen/robotics/mecha_odysseus
+/datum/supply_pack/nanotrasen/robotics/mecha_odysseus
 	name = "Circuit Crate (\"Odysseus\")"
 	contains = list(
 		/obj/item/circuitboard/mecha/odysseus/peripherals,
@@ -90,7 +90,7 @@
 	worth = 350
 	container_name = "\"Odysseus\" Circuit Crate"
 
-/datum/supply_pack2/nanotrasen/robotics/mecha_gopher
+/datum/supply_pack/nanotrasen/robotics/mecha_gopher
 	name = "Circuit Crate (\"Gopher\" APLU)"
 	contains = list(
 		/obj/item/circuitboard/mecha/gopher/main,
@@ -99,7 +99,7 @@
 	worth = 350
 	container_name = "APLU \"Gopher\" Circuit Crate"
 
-/datum/supply_pack2/nanotrasen/robotics/mecha_polecat
+/datum/supply_pack/nanotrasen/robotics/mecha_polecat
 	name = "Circuit Crate (\"Polecat\" APLU)"
 	contains = list(
 		/obj/item/circuitboard/mecha/polecat/main,
@@ -109,7 +109,7 @@
 	worth = 350
 	container_name = "APLU \"Polecat\" Circuit Crate"
 
-/datum/supply_pack2/nanotrasen/robotics/mecha_weasel
+/datum/supply_pack/nanotrasen/robotics/mecha_weasel
 	name = "Circuit Crate (\"Weasel\" APLU)"
 	contains = list(
 		/obj/item/circuitboard/mecha/weasel/main,
@@ -121,7 +121,7 @@
 
 //* Mechs - Paintkits *//
 
-/datum/supply_pack2/nanotrasen/robotics/exosuit_mod
+/datum/supply_pack/nanotrasen/robotics/exosuit_mod
 	name = "Random APLU modkit"
 	contains = list(
 		/obj/random/paintkit,
@@ -129,13 +129,13 @@
 	worth = 750
 	container_name = "heavy crate"
 
-/datum/supply_pack2/nanotrasen/robotics/exosuit_mod/durand
+/datum/supply_pack/nanotrasen/robotics/exosuit_mod/durand
 	name = "Random Durand exosuit modkit"
 	contains = list(
 		/obj/random/paintkit,
 	)
 
-/datum/supply_pack2/nanotrasen/robotics/exosuit_mod/gygax
+/datum/supply_pack/nanotrasen/robotics/exosuit_mod/gygax
 	name = "Random Gygax exosuit modkit"
 	contains = list(
 		/obj/random/paintkit/gygax,
