@@ -66,7 +66,7 @@
 		/obj/item/disk/limb/cybersolutions,
 		/obj/item/disk/limb/cenilimicybernetics,
 	)
-	worth = 3000
+	worth = 2500
 	container_type = /obj/structure/closet/crate/secure
 
 //* Mechs *//
@@ -78,7 +78,7 @@
 		/obj/item/circuitboard/mecha/ripley/main,
 		/obj/item/circuitboard/mecha/ripley/peripherals,
 	)
-	worth = 350
+	worth = 275
 	container_name = "APLU \"Ripley\" Circuit Crate"
 
 /datum/supply_pack/nanotrasen/robotics/mecha_odysseus
@@ -87,7 +87,7 @@
 		/obj/item/circuitboard/mecha/odysseus/peripherals,
 		/obj/item/circuitboard/mecha/odysseus/main,
 	)
-	worth = 350
+	worth = 275
 	container_name = "\"Odysseus\" Circuit Crate"
 
 /datum/supply_pack/nanotrasen/robotics/mecha_gopher
@@ -96,7 +96,7 @@
 		/obj/item/circuitboard/mecha/gopher/main,
 		/obj/item/circuitboard/mecha/gopher/peripherals,
 	)
-	worth = 350
+	worth = 275
 	container_name = "APLU \"Gopher\" Circuit Crate"
 
 /datum/supply_pack/nanotrasen/robotics/mecha_polecat
@@ -106,7 +106,7 @@
 		/obj/item/circuitboard/mecha/polecat/peripherals,
 		/obj/item/circuitboard/mecha/polecat/targeting,
 	)
-	worth = 350
+	worth = 275
 	container_name = "APLU \"Polecat\" Circuit Crate"
 
 /datum/supply_pack/nanotrasen/robotics/mecha_weasel
@@ -116,7 +116,7 @@
 		/obj/item/circuitboard/mecha/weasel/peripherals,
 		/obj/item/circuitboard/mecha/weasel/targeting,
 	)
-	worth = 350
+	worth = 275
 	container_name = "APLU \"Weasel\" Circuit Crate"
 
 //* Mechs - Paintkits *//
