@@ -103,9 +103,7 @@ SUBSYSTEM_DEF(supply)
 				var/obj/structure/closet/crate/CR = MA
 				callHook("sell_crate", list(CR, subarea))
 
-				points += CR.points_per_crate
-				if(CR.points_per_crate)
-					base_value = CR.points_per_crate
+				points += points_per_money * CR.get_worth(GET_WORTH_FLAGS_SUPPLY_DETECTION)
 				var/find_slip = 1
 
 				for(var/atom/A in CR)
