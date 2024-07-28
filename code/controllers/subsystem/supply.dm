@@ -207,7 +207,7 @@ SUBSYSTEM_DEF(supply)
 		if(!container)
 			continue
 		if(SO.comment)
-			container.name += " [SO.comment]"
+			container.name += " ([SO.comment])"
 
 		// Supply manifest generation begin
 		var/obj/item/paper/manifest/slip
@@ -471,7 +471,7 @@ SUBSYSTEM_DEF(supply)
 				break
 		return
 	for(var/i in 1 to min(amount, 50))
-		new descriptor(location, i)
+		new descriptor(location)
 
 /**
  * Resolves an entity descriptor, and describes it with a string
