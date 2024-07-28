@@ -94,7 +94,6 @@
 		/obj/item/seeds/ironwood = 6,
 	)
 	worth = 100
-	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Ironwood Sapling Samples"
 
 /datum/supply_pack/nanotrasen/hydroponics/creeper
@@ -103,7 +102,6 @@
 		/obj/item/seeds/creepermoss = 6,
 	)
 	worth = 100
-	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Creeper Sanghum Seeds"
 
 /datum/supply_pack/nanotrasen/hydroponics/fungiwheat
@@ -112,5 +110,4 @@
 		/obj/item/seeds/fungiwheat = 6,
 	)
 	worth = 100
-	container_type = /obj/structure/closet/crate/hydroponics
 	container_name = "Fungiwheat Spores"
