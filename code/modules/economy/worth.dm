@@ -25,6 +25,8 @@
 /**
  * estimate our total worth
  *
+ * * Do not call this directly, call worth()
+ *
  * todo: a way to get itemized worth
  * todo: the way must respect obfuscation (e.g. not accessing real names of undiscovered gases)
  *

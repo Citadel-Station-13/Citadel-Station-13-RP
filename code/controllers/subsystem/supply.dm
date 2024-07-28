@@ -54,6 +54,11 @@ SUBSYSTEM_DEF(supply)
 			continue
 		legacy_supply_packs[P.name] = P
 		legacy_supply_categories[P.category] = TRUE
+		P.initialize()
+	var/list/flattened = list()
+	for(var/key in legacy_supply_categories)
+		flattened += key
+	legacy_supply_categories = flattened
 	return ..()
 
 // Supply shuttle SSticker - handles supply point regeneration
@@ -531,7 +536,7 @@ SUBSYSTEM_DEF(supply)
 			// lol no
 			descriptor = cloning_instance.type
 		else
-			return amount * cloning_instance.get_worth(GET_WORTH_DETECTING_PRICE)
+			return amount * cloning_instance.worth(GET_WORTH_DETECTING_PRICE)
 	// handle material stack
 	if(ispath(descriptor, /obj/item/stack/material))
 		var/obj/item/stack/material/casted_material_stack = descriptor
@@ -567,5 +572,5 @@ SUBSYSTEM_DEF(supply)
 		var/obj/item/stack/casted_stack_path = descriptor
 		return amount * initial(casted_stack_path.worth_intrinsic)
 	var/atom/movable/creating = new descriptor(null)
-	. = creating.get_worth(GET_WORTH_DETECTING_PRICE)
+	. = creating.worth(GET_WORTH_DETECTING_PRICE) * amount
 	qdel(creating)

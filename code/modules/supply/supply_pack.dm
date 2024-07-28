@@ -118,9 +118,12 @@
 		legacy_cost = ceil(worth * 0.06)
 
 /datum/supply_pack/proc/compact()
-	LAZYCLEARLIST(contains)
-	LAZYCLEARLIST(contains_some)
-	LAZYCLEARLIST(contains_custom_text)
+	if(!length(contains))
+		contains = null
+	if(!length(contains_some))
+		contains_some = null
+	if(!length(contains_custom_text))
+		contains_custom_text = null
 
 /datum/supply_pack/proc/detect_worth()
 	. = 0
@@ -139,19 +142,19 @@
 
 	// deterministic contents
 	for(var/descriptor as anything in contains)
-		var/amount = contains[descriptor]
+		var/amount = contains[descriptor] || 1
 		var/worth
 		if(islist(descriptor))
 			var/list/descriptor_list = descriptor
 			worth = SSsupply.value_entity_via_descriptor(
-				descriptor_list["entityr"],
+				descriptor_list["entity"],
 				descriptor_list["amount"],
 				descriptor_list["entity_hint"],
 				descriptor_list["container_hint"],
 			)
 		else
-			worth = SSsupply.value_entity_via_descriptor(descriptor)
-		. += worth * amount
+			worth = SSsupply.value_entity_via_descriptor(descriptor, amount)
+		. += worth
 
 /**
  * @return container spawned, or null (which can also mean we don't use a container for some reason)
