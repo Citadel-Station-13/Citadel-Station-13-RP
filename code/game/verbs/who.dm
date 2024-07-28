@@ -81,7 +81,7 @@
 			if(!C.initialized)
 				continue
 
-			if(C.holder.is_under_stealthmin() && !((R_ADMIN|R_MOD) & holder.rights))
+			if(C.is_under_stealthmin() && !((R_ADMIN|R_MOD) & holder.rights))
 				continue
 
 			msg += "\t[C.get_revealed_key()] is a [C.holder.rank]"
