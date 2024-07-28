@@ -11,7 +11,7 @@
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.get_public_key()]"
+			var/entry = "\t[C.get_revealed_key()]"
 			if(!C.initialized)
 				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
 				Lines += entry
@@ -62,7 +62,7 @@
 			Lines += entry
 	else
 		for(var/client/C in GLOB.clients)
-			Lines += C.get_public_key()
+			Lines += (C == src)? C.get_revealed_key() : C.get_public_key()
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"

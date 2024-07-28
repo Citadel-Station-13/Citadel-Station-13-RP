@@ -62,7 +62,10 @@
 				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
 				Lines += entry
 				continue
-			entry += "[C.get_public_key()]"
+			if(C == src)
+				entry += "[C.get_revealed_key()]"
+			else
+				entry += "[C.get_public_key()]"
 			if(C.get_preference_toggle(/datum/game_preference_toggle/presence/show_advanced_who))
 				if(isobserver(C.mob))
 					entry += " - <font color='gray'>Observing</font>"

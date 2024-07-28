@@ -150,7 +150,7 @@
 			if(target.is_key_ignored(key)) // If we're ignored by this person, then do nothing.
 				continue
 			var/display_name
-			if(target.holder)
+			if(target.holder || target == src)
 				display_name = get_revealed_key()
 			else
 				display_name = get_public_key()
