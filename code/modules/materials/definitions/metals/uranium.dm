@@ -10,7 +10,7 @@
 	door_icon_base = "stone"
 	tgui_icon_key = "uranium"
 
-	worth = 7.5
+	worth = 17.5
 
 	relative_integrity = 1.2
 	weight_multiplier = 1

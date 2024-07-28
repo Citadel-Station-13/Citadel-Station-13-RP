@@ -21,7 +21,7 @@
 	density = 8 * 0.8
 	relative_conductivity = 0
 
-	worth = 20
+	worth = 37.5
 
 /datum/material/diamond/generate_recipes()
 	. = ..()

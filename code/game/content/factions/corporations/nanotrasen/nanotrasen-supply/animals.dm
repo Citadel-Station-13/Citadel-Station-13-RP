@@ -16,7 +16,7 @@
 	contains = list(
 		/obj/item/storage/box/monkeycubes/farwacubes,
 	)
-	worth = 600
+	worth = 350
 	container_name = "Farwa crate"
 	container_type = /obj/structure/closet/crate/freezer
 
@@ -25,7 +25,7 @@
 	contains = list(
 		/obj/item/storage/box/monkeycubes/neaeracubes,
 	)
-	worth = 600
+	worth = 350
 	container_type = /obj/structure/closet/crate/freezer
 
 /datum/supply_pack/nanotrasen/animals/stok
@@ -33,7 +33,7 @@
 	contains = list(
 		/obj/item/storage/box/monkeycubes/stokcubes,
 	)
-	worth = 600
+	worth = 350
 	container_type = /obj/structure/closet/crate/freezer
 
 /datum/supply_pack/nanotrasen/animals/lisa
@@ -81,32 +81,32 @@
 	contains = list(
 		/obj/item/storage/box/monkeycubes/sobakacubes,
 	)
-	worth = 600
+	worth = 350
 
 /datum/supply_pack/nanotrasen/animals/saru
 	name = "Saru crate"
 	contains = list(
 		/obj/item/storage/box/monkeycubes/sarucubes,
 	)
-	worth = 600
+	worth = 350
 
 /datum/supply_pack/nanotrasen/animals/sparra
 	name = "Sparra crate"
 	contains = list(
 		/obj/item/storage/box/monkeycubes/sparracubes,
 	)
-	worth = 600
+	worth = 350
 
 /datum/supply_pack/nanotrasen/animals/wolpin
 	name = "Wolpin crate"
 	contains = list(
 		/obj/item/storage/box/monkeycubes/wolpincubes,
 	)
-	worth = 600
+	worth = 350
 
 /datum/supply_pack/nanotrasen/animals/fennec
 	name = "Fennec crate"
-	worth = 1200 // FOX :D
+	worth = 750 // FOX :D
 	container_type = /obj/structure/largecrate/animal/fennec
 
 /datum/supply_pack/nanotrasen/animals/woolie
