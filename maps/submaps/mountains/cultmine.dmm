@@ -682,7 +682,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "cG" = (
-/obj/mecha/working/ripley{
+/obj/vehicle/sealed/mecha/working/ripley{
 	desc = "The zealous martyr is praised for his valour: the craven and the unready are justly abhorred.";
 	icon_state = "deathripley";
 	initial_icon = "deathripley";
