@@ -119,7 +119,7 @@
 					"cost" = P.legacy_cost,
 					"contraband" = P.legacy_contraband,
 					"manifest" = P.nanoui_manifest_list(),
-					"random" = P.nanoui_is_random(),
+					"random" = P.nanoui_is_random() && P.lazy_gacha_amount,
 					"expand" = 0,
 					"ref" = "\ref[P]"
 				)

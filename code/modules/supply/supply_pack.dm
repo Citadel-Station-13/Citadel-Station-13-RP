@@ -113,6 +113,7 @@
 			"entities" = lazy_gacha_contained,
 			"amount" = lazy_gacha_amount,
 		)
+		lazy_gacha_contained = null
 	// legacy
 	if(isnull(legacy_cost))
 		legacy_cost = ceil(worth * 0.06)
