@@ -135,6 +135,17 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"fH" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -25;
+	frequency = 1437
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "fU" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power{
 	dir = 1
@@ -194,9 +205,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "ho" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -571,15 +580,15 @@
 	dir = 8
 	},
 /obj/machinery/air_sensor{
-	frequency = 1438;
+	frequency = 1437;
 	id_tag = "engine_sensor";
 	output = 63
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "Cy" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -657,7 +666,9 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Gg" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 5
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "Hh" = (
@@ -1517,7 +1528,7 @@ QG
 HU
 Nz
 uE
-iV
+fH
 Yg
 pt
 JM
@@ -1531,7 +1542,7 @@ Bu
 xQ
 Bu
 Bu
-ho
+HF
 Zn
 "}
 (18,1,1) = {"
@@ -1604,7 +1615,7 @@ Ng
 Ng
 Ng
 Iz
-Bu
+fU
 Bu
 tB
 Zn
@@ -1627,10 +1638,10 @@ rW
 iv
 iv
 iv
-iv
-fU
+ho
 ZN
 iv
+Bu
 cm
 Zn
 "}
