@@ -460,8 +460,6 @@ SUBSYSTEM_DEF(supply)
  */
 /datum/controller/subsystem/supply/proc/describe_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
 	RETURN_TYPE(/atom/movable)
-	if(!location || isarea(location))
-		CRASH("invalid location")
 	// todo: byond cannot introspect anonymous typepaths so just ignore it
 	if(IS_ANONYMOUS_TYPEPATH(descriptor))
 		return
@@ -509,8 +507,6 @@ SUBSYSTEM_DEF(supply)
  */
 /datum/controller/subsystem/supply/proc/value_entity_via_descriptor(descriptor, amount = 1, descriptor_hint, container_hint)
 	RETURN_TYPE(/atom/movable)
-	if(!location || isarea(location))
-		CRASH("invalid location")
 	// todo: byond cannot introspect anonymous typepaths so just ignore it
 	if(IS_ANONYMOUS_TYPEPATH(descriptor))
 		return

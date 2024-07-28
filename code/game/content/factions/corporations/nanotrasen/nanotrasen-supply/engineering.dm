@@ -287,6 +287,37 @@
 	container_type = /obj/structure/closet/crate/secure/phoron
 	container_name = "Supermatter crate (CAUTION)"
 
+/datum/supply_pack2/nanotrasen/engineering/engine/fusion_core
+	name = "R-UST Mk. 8 Tokamak fusion core crate"
+	worth = 1250
+	container_name = "R-UST Mk. 8 Tokamak Fusion Core crate"
+	contains = list(
+		/obj/item/book/manual/rust_engine,
+		/obj/machinery/power/fusion_core,
+		/obj/item/circuitboard/fusion_core_control,
+	)
+
+/datum/supply_pack2/nanotrasen/engineering/engine/fusion_fuel_injector
+	name = "R-UST Mk. 8 fuel injector crate"
+	worth = 1250
+	container_name = "R-UST Mk. 8 fuel injector crate"
+	contains = list(
+		/obj/machinery/fusion_fuel_injector,
+		/obj/machinery/fusion_fuel_injector,
+		/obj/item/circuitboard/fusion_fuel_control,
+	)
+
+/datum/supply_pack2/nanotrasen/engineering/engine/fusion_fuel_compressor
+	name = "fusion fuel compressor parts crate"
+	contains = list(
+		/obj/item/circuitboard/fusion_fuel_compressor,
+		/obj/item/stock_parts/manipulator/nano = 2,
+		/obj/item/stock_parts/matter_bin/super = 2,
+		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/stack/cable_coil = 5,
+	)
+	worth = 500
+
 //* SMES Coils *//
 /datum/supply_pack2/nanotrasen/engineering/smescoil
 	abstract_type = /datum/supply_pack2/nanotrasen/engineering/smescoil
@@ -308,34 +339,3 @@
 	contains = list(
 		/obj/item/smes_coil/super_io,
 	)
-
-/datum/supply_pack2/nanotrasen/engineering/fusion_core
-	name = "R-UST Mk. 8 Tokamak fusion core crate"
-	worth = 1250
-	container_name = "R-UST Mk. 8 Tokamak Fusion Core crate"
-	contains = list(
-		/obj/item/book/manual/rust_engine,
-		/obj/machinery/power/fusion_core,
-		/obj/item/circuitboard/fusion_core_control,
-	)
-
-/datum/supply_pack2/nanotrasen/engineering/fusion_fuel_injector
-	name = "R-UST Mk. 8 fuel injector crate"
-	worth = 1250
-	container_name = "R-UST Mk. 8 fuel injector crate"
-	contains = list(
-		/obj/machinery/fusion_fuel_injector,
-		/obj/machinery/fusion_fuel_injector,
-		/obj/item/circuitboard/fusion_fuel_control,
-	)
-
-/datum/supply_pack2/nanotrasen/engineering/fusion_fuel_compressor
-	name = "fusion fuel compressor parts crate"
-	contains = list(
-		/obj/item/circuitboard/fusion_fuel_compressor,
-		/obj/item/stock_parts/manipulator/nano = 2,
-		/obj/item/stock_parts/matter_bin/super = 2,
-		/obj/item/stock_parts/console_screen = 1,
-		/obj/item/stack/cable_coil = 5,
-	)
-	worth = 500
