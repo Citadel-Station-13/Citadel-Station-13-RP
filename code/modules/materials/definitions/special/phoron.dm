@@ -24,7 +24,7 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
-	worth = 15
+	worth = 20
 
 // Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
 /*

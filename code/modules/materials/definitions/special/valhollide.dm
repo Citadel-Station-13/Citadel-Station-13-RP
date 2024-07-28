@@ -25,4 +25,4 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
-	worth = 75
+	worth = 100
