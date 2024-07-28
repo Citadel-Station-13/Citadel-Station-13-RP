@@ -55,3 +55,22 @@
 	name = MAT_HARDLOG
 	icon_colour = "#6f432a"
 	stack_type = /obj/item/stack/material/log/hard
+
+/datum/material/wood_log/ironwood
+	id = "log_ironwood"
+	name = MAT_IRONLOG
+	icon_colour = "#5C5454"
+	sheet_singular_name = "log"
+	stack_type = /obj/item/stack/material/log/ironwood
+
+	relative_integrity = 0.9
+	weight_multiplier = 0.8
+	density = 8 * 0.8
+	relative_conductivity = 0.1
+	relative_permeability = 0.05
+	relative_reactivity = 1 //Not quite as reactive as regular wood
+	hardness = MATERIAL_RESISTANCE_MODERATE
+	toughness = MATERIAL_RESISTANCE_HIGH
+	refraction = MATERIAL_RESISTANCE_NONE
+	absorption = MATERIAL_RESISTANCE_MODERATE
+	nullification = MATERIAL_RESISTANCE_NONE

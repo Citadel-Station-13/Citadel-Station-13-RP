@@ -875,41 +875,41 @@
 	if(!installed_gun)
 		return
 
-	var/datum/integrated_io/target_x = inputs[1]
-	var/datum/integrated_io/target_y = inputs[2]
+	var/target_x = get_pin_data(IC_INPUT, 1)
+	var/target_y = get_pin_data(IC_INPUT, 2)
 
 	if(src.assembly)
-		if(isnum(target_x.data))
-			target_x.data = round(target_x.data)
-		if(isnum(target_y.data))
-			target_y.data = round(target_y.data)
+		if(isnum(target_x))
+			set_pin_data(IC_INPUT, 1, round(target_x))
+		if(isnum(target_y))
+			set_pin_data(IC_INPUT, 2, round(target_y))
 
 		var/turf/T = get_turf(src.assembly)
 
-		if(target_x.data == 0 && target_y.data == 0) // Don't shoot ourselves.
+		if(target_x == 0 && target_y == 0) // Don't shoot ourselves.
 			return
 
 		// We need to do this in order to enable relative coordinates, as locate() only works for absolute coordinates.
 		var/i
-		if(target_x.data > 0)
-			i = abs(target_x.data)
+		if(target_x > 0)
+			i = abs(target_x)
 			while(i > 0)
 				T = get_step(T, EAST)
 				i--
 		else
-			i = abs(target_x.data)
+			i = abs(target_x)
 			while(i > 0)
 				T = get_step(T, WEST)
 				i--
 
 		i = 0
-		if(target_y.data > 0)
-			i = abs(target_y.data)
+		if(target_y > 0)
+			i = abs(target_y)
 			while(i > 0)
 				T = get_step(T, NORTH)
 				i--
-		else if(target_y.data < 0)
-			i = abs(target_y.data)
+		else if(target_y < 0)
+			i = abs(target_y)
 			while(i > 0)
 				T = get_step(T, SOUTH)
 				i--
