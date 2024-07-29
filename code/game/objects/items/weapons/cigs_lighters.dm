@@ -322,7 +322,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/import
 	name = "cigarette"
-	desc = "A roll of tobacco and blended herbs."
+	desc = "A roll of exotic blended herbs."
 	icon_state = "cigimp"
 	item_state = "cigimp"
 	throw_speed = 0.5
@@ -333,7 +333,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 15
 	max_smoketime = 300
 	smoketime = 300
-	nicotine_amt = 2
+	var/nicotine_amt = 0
 
 ////////////
 // CIGARS //
