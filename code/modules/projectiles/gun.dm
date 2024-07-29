@@ -127,9 +127,31 @@
 	var/unstable = 0
 	var/destroyed = 0
 
+	                    //* THIS IS A WIP SYSTEM!! *//
+	                    // todo: well, finish this.
+	//*                      Modular Components                           *//
+	//* Generalized, and efficient modular component support at base /gun *//
+	//* level.                                                            *//
+
+	/// System flag for using modular component system
+	///
+	/// * Firing cycles are more expensive when modular components are invoked.
+	/// * This is because modular components use signal and API hooks that are not necessary for most guns.
+	/// * Thus, keep this off if it's not a modular weapon. It won't break it, but it's needless overhead.
+	var/modular_system = FALSE
+	/// currently installed components.
+	///
+	/// * This is a lazy list.
+	var/list/obj/item/gun_component/modular_components
+	/// allowed component slots, associated to amount
+	///
+	/// * this is typelist()'d; if you want to change it later, make a copy!
+	var/list/modular_component_slots
+
 	//*                            Power                                  *//
 	//* Because the use of power is such a common case on /gun, it's been *//
 	//* hoisted to the base /obj/item/gun level for handling.             *//
+
 	/// do we use a cell slot?
 	var/cell_system = FALSE
 	/// cell type to start with

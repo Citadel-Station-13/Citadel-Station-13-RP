@@ -248,7 +248,7 @@
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 	if(beameffect)
 		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
-	if(power_supply && power_supply.charge >= charge_cost) //Do a delay for pointblanking too.
+	if(obj_cell_slot.cell && obj_cell_slot.cell.charge >= charge_cost) //Do a delay for pointblanking too.
 		power_cycle = TRUE
 		if(do_after(user, 30))
 			if(A.loc == target_turf)

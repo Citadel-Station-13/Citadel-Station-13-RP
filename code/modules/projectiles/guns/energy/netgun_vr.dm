@@ -21,10 +21,10 @@
 	cut_overlays()
 	var/list/overlays_to_add = list()
 
-	if(power_supply)
-		var/ratio = power_supply.charge / power_supply.maxcharge
+	if(obj_cell_slot.cell)
+		var/ratio = obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge
 
-		if(power_supply.charge < charge_cost)
+		if(obj_cell_slot.cell.charge < charge_cost)
 			ratio = 0
 		else
 			ratio = max(round(ratio, 0.25) * 100, 25)
