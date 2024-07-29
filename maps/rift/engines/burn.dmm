@@ -257,15 +257,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"mb" = (
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "mv" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
@@ -1499,7 +1490,7 @@ iV
 Bu
 Bu
 Bu
-mb
+JK
 JK
 dH
 gB

@@ -66,6 +66,14 @@
 		icon_state = "target_q"
 		desc = "A shooting target with a threatening silhouette."
 		hp = 2350 // alium onest too kinda
+/obj/item/target/basic
+		icon_state = "target_a"
+		desc = "A plain square shooting target."
+		hp = 1500 // i guess syndie targets are sturdier?
+/obj/item/target/humanoid
+		icon_state = "target_b"
+		desc = "A shooting target that looks vaguely human shaped but not enough to cause controversy."
+		hp = 1800 // alium onest too kinda
 
 /obj/item/target/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	. = ..()

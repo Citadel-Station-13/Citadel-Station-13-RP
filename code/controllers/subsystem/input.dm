@@ -18,6 +18,9 @@ SUBSYSTEM_DEF(input)
 	/// Macro set for classic.
 	var/list/input_mode_macros
 
+	/// currentrun list of clients
+	var/list/client/currentrun
+
 /datum/controller/subsystem/input/Initialize()
 	setup_macrosets()
 	// set init early so refresh macrosets works
@@ -110,11 +113,18 @@ SUBSYSTEM_DEF(input)
 		user.set_macros()
 		user.update_movement_keys()
 
-/datum/controller/subsystem/input/fire()
-	for(var/client/C as anything in GLOB.clients)
+/datum/controller/subsystem/input/fire(resumed)
+	if(!resumed)
+		currentrun = GLOB.clients.Copy()
+	var/i
+	for(i in length(currentrun) to 1 step -1)
+		var/client/C = currentrun[i]
 		if(!C.initialized)
 			continue
 		C.keyLoop()
+		if(MC_TICK_CHECK)
+			break
+	currentrun.len -= length(currentrun) - i + 1
 
 /// *sigh
 /client/verb/NONSENSICAL_VERB_THAT_DOES_NOTHING()
