@@ -96,9 +96,6 @@
 	/// whether or not we have safeties and if safeties are on
 	var/safety_state = GUN_SAFETY_ON
 
-	var/dna_lock = 0				//whether or not the gun is locked to dna
-	var/obj/item/dnalockingchip/attached_lock
-
 	var/last_shot = 0			//records the last shot fired
 
 	var/charge_sections = 4
@@ -145,8 +142,6 @@
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
 
-	if(dna_lock)
-		attached_lock = new /obj/item/dnalockingchip(src)
 	if(!dna_lock)
 		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
 		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
@@ -280,20 +275,6 @@
 	return ..() //Pistolwhippin'
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
-	if(istype(A, /obj/item/dnalockingchip))
-		if(dna_lock)
-			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(A, src))
-			return
-		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		attached_lock = A
-		dna_lock = 1
-		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		add_obj_verb(src, /obj/item/gun/verb/give_dna)
-		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
-		return
-
 	if(A.is_screwdriver())
 		if(dna_lock && attached_lock && !attached_lock.controller_lock)
 			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
