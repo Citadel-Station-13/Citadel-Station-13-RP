@@ -19,7 +19,7 @@
 	This is a pack of Temperamento Menthols, the main product of the company.  They taste like menthol, surprisingly enough."
 
 /obj/item/storage/fancy/cigarettes/carcinomas
-	description_fluff = "The CarcinoCo was originally destined to fail, as the company blatantly advertized themselves as creating the 'most cancerous cigarette'. The cigarettes became a hit among those rich enough to afford regular lung replacements."
+	description_fluff = "The CarcinoCo was originally destined to fail, as the company's cigarettes were found to be the 'most carcinogenic cigarette ever made'. Yet, the cigarettes became a hit among those rich enough to afford regular lung replacements, leading to a complete rebranding which embraced the new motto."
 
 /obj/item/storage/fancy/cigarettes/professionals
 	description_fluff = "Decades ago, probably before you were born, Gilthari Exports created the Professional 120s.  They wanted to make a fancy cigarette that would be considered a luxury.  Nowadays, they are generally concidered an emblem of the nouveau riche and the elderly.  They are, however, very high-quality and made from the very best Solar tobacco."
