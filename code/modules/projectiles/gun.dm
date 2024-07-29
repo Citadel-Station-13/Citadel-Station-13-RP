@@ -163,16 +163,21 @@
 	. = ..()
 
 	// instantiate & dedupe renderers
+	var/requires_icon_update
 	if(item_renderer)
 		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
 			item_renderer = new item_renderer
 		var/item_renderer_key = item_renderer.dedupe_key()
 		item_renderer = item_renderer_store[item_renderer_key] || (item_renderer_store[item_renderer_key] = item_renderer)
+		requires_icon_update = TRUE
 	if(mob_renderer)
 		if(ispath(mob_renderer) || IS_ANONYMOUS_TYPEPATH(mob_renderer))
 			mob_renderer = new mob_renderer
 		var/mob_renderer_key = mob_renderer.dedupe_key()
 		mob_renderer = mob_renderer_store[mob_renderer_key] || (mob_renderer_store[mob_renderer_key] = mob_renderer)
+		requires_icon_update = TRUE
+	if(requires_icon_update)
+		update_icon()
 
 	//! LEGACY: if neither of these are here, we are using legacy render.
 	if(!item_renderer && !mob_renderer && !render_use_legacy_by_default)
@@ -922,6 +927,10 @@
 /obj/item/gun/proc/check_safety()
 	return (safety_state == GUN_SAFETY_ON)
 
+// PENDING FIREMODE REWORK
+/obj/item/gun/proc/legacy_get_firemode()
+	return firemodes[sel_mode]
+
 //* Ammo *//
 
 /**
@@ -941,8 +950,9 @@
 		return ..()
 	cut_overlays()
 	var/ratio_left = get_ammo_ratio()
-	item_renderer?.render(src, ratio_left, null)
-	var/needs_worn_update = mob_renderer?.render(src, ratio_left, null)
+	var/datum/firemode/using_firemode = legacy_get_firemode()
+	item_renderer?.render(src, ratio_left, using_firemode?.render_key)
+	var/needs_worn_update = mob_renderer?.render(src, ratio_left, using_firemode?.render_key)
 	// todo: render_mob_wielded
 	if(needs_worn_update)
 		update_worn_icon()

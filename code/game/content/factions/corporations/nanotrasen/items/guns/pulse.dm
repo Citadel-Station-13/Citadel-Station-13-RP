@@ -34,6 +34,19 @@
 		/datum/firemode/energy/pulse_rifle/pulse,
 	)
 
+	item_renderer = /datum/gun_item_renderer/segments{
+		count = 4;
+		offset_x = 2;
+		independent_firemode = TRUE;
+		use_firemode = TRUE;
+		use_empty = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/states{
+		use_firemode = TRUE;
+		count = 4;
+		empty_state = TRUE;
+	}
+
 /obj/item/gun/energy/pulse_carbine
 	name = "pulse carbine"
 	desc = "Compact NT-PS-4 pulse pistols are only issued to trained Central Command Officers for personal defense. They are sometimes selected by ERT or DDO operatives as a fallback sidearm."
@@ -47,3 +60,16 @@
 		/datum/firemode/energy/pulse_carbine/laser,
 		/datum/firemode/energy/pulse_carbine/pulse,
 	)
+
+	item_renderer = /datum/gun_item_renderer/segments{
+		count = 4;
+		offset_x = 2;
+		independent_firemode = TRUE;
+		use_firemode = TRUE;
+		use_empty = TRUE;
+	}
+	mob_renderer = /datum/gun_mob_renderer/states{
+		use_firemode = TRUE;
+		count = 4;
+		empty_state = TRUE;
+	}

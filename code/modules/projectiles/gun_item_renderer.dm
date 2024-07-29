@@ -34,26 +34,27 @@
  * empty state is "[gun.base_icon_state]-empty"
  *
  * * you probably don't need both use_firemode and independent_firemode.
+ * * firemode is not taken into account for empty state.
  */
 /datum/gun_item_renderer/segments
 	var/count = 0
 	var/initial_x = 0
 	var/initial_y = 0
-	var/offset_x
-	var/offset_y
+	var/offset_x = 0
+	var/offset_y = 0
 	var/use_empty = FALSE
 	var/independent_firemode = FALSE
 
 /datum/gun_item_renderer/segments/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
+	if(independent_firemode && firemode_key)
+		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	if(!ammo_ratio)
 		if(use_empty)
-			gun.add_overlay("[base_icon_state][firemode_key && use_firemode && "-[firemode_key]"]-empty")
+			gun.add_overlay("[base_icon_state]-empty")
 		return
 	var/x = initial_x
 	var/y = initial_y
-	if(independent_firemode && firemode_key)
-		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	var/append = "[use_firemode && firemode_key && "-[firemode_key]"]"
 	for(var/i in 1 to ceil(count * ammo_ratio))
 		var/image/creating = image(gun.icon, "[base_icon_state][append]-ammo", null, null, x, y)
@@ -75,6 +76,8 @@
  *
  * if use_single_overlay is set, we only render the -n'th state,
  * otherwise we render -1 to -n, or -empty if empty (and use empty state is on)
+ *
+ * * firemode is not taken into account for empty state.
  */
 /datum/gun_item_renderer/overlays
 	var/count
@@ -84,12 +87,12 @@
 
 /datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
-	if(!ammo_ratio)
-		if(use_empty)
-			gun.add_overlay("[base_icon_state][firemode_key && use_firemode && "-[firemode_key]"]-empty")
-		return
 	if(independent_firemode && firemode_key)
 		gun.add_overlay("[base_icon_state]-[firemode_key]")
+	if(!ammo_ratio)
+		if(use_empty)
+			gun.add_overlay("[base_icon_state]-empty")
+		return
 	var/append = "[use_firemode && firemode_key && "-[firemode_key]"]"
 	if(use_single)
 		gun.add_overlay("[base_icon_state]-[append]-[ceil(count * ammo_ratio)]")
@@ -110,20 +113,21 @@
  */
 /datum/gun_item_renderer/states
 	var/use_empty
+	var/use_firemode_empty
 	var/count
 
 /datum/gun_item_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
 	if(!ammo_ratio)
 		if(use_empty)
-			gun.icon_state = "[base_icon_state][firemode_key && use_firemode && "-[firemode_key]"]-empty"
+			gun.icon_state = "[base_icon_state][firemode_key && use_firemode_empty && "-[firemode_key]"]-empty"
 		else
 			gun.icon_state = base_icon_state
 		return
 	gun.icon_state = "[base_icon_state]-[use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
 
 /datum/gun_item_renderer/states/dedupe_key()
-	return "states-[use_firemode]-[count]-[use_empty]"
+	return "states-[use_firemode]-[count]-[use_empty]-[use_firemode_empty]"
 
 /**
  * standard "full or empty" renderer
