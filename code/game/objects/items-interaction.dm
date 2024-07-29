@@ -68,7 +68,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(ismob(actor))
-		actor = new /datum/event_args/actor/actor
+		actor = new /datum/event_args/actor(actor)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, actor)
 	if(on_unique_action(actor))
 		return TRUE
@@ -94,7 +94,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(ismob(actor))
-		actor = new /datum/event_args/actor/actor
+		actor = new /datum/event_args/actor(actor)
 	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TOGGLE, actor)
 	if(on_defensive_toggle(actor))
 		return TRUE
@@ -120,7 +120,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(ismob(actor))
-		actor = new /datum/event_args/actor/actor
+		actor = new /datum/event_args/actor(actor)
 	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TRIGGER, actor)
 	if(on_defensive_trigger(actor))
 		return TRUE

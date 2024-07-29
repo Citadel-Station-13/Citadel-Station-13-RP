@@ -31,7 +31,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/melee/umbrella/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/melee/umbrella/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -253,7 +253,7 @@
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
-/obj/item/melee/ashlander/elder/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/melee/ashlander/elder/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -337,7 +337,7 @@
 		return 1
 	return 0
 
-/obj/item/melee/twohanded/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/melee/twohanded/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -473,7 +473,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/melee/thermalcutter/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/melee/thermalcutter/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

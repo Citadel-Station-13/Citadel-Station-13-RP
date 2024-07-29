@@ -33,7 +33,7 @@
 		if(istype(ghost))
 			question(ghost)
 
-/obj/item/mmi/digital/posibrain/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/mmi/digital/posibrain/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

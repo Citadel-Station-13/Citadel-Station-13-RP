@@ -124,7 +124,7 @@
 		return ..()
 	return embedded_flash.attack_mob(arglist(args))
 
-/obj/item/shield/riot/flash/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/shield/riot/flash/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -324,7 +324,7 @@
 			return (base_block_chance - round(damage / 3)) //block bullets and beams using the old block chance
 	return base_block_chance
 
-/obj/item/shield/energy/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/shield/energy/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -405,7 +405,7 @@
 	else
 		return 0
 */
-/obj/item/shield/riot/tele/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/shield/riot/tele/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

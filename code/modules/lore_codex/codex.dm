@@ -12,7 +12,7 @@
 	tree = new(src, root_type)
 	. = ..()
 
-/obj/item/book/codex/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/book/codex/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -139,7 +139,7 @@
 	assignment = "Centcom Officer"
 
 
-/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/card/id/centcom/station/fluff/joanbadge/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -211,7 +211,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "Flag_Nanotrasen_mob"
 
-/obj/item/flag/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/flag/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -332,7 +332,7 @@
 	assignment = "CC Medical"
 	var/configured = 0
 
-/obj/item/card/id/centcom/station/fluff/aronai/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -446,7 +446,7 @@
     var/last_use = 0
     var/cooldown = 30
 
-/obj/item/cane/wand/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/cane/wand/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -570,7 +570,7 @@
 	icon_state = "dragor_dot"
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/fluff/dragor_dot/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/fluff/dragor_dot/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -601,7 +601,7 @@
 	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
 	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
 
-/obj/item/card/id/fluff/amaya/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/card/id/fluff/amaya/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -731,7 +731,7 @@
 	else
 		return ..()
 
-/obj/item/perfect_tele/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/perfect_tele/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -996,7 +996,7 @@
 
 	..()
 
-/obj/item/perfect_tele_beacon/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/perfect_tele_beacon/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1090,7 +1090,7 @@
 		user.do_attack_animation(target)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
-/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/clothing/accessory/badge/holo/detective/ruda/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1316,7 +1316,7 @@
 		spawn(0)
 			update_held_icon()
 
-/obj/item/melee/baton/fluff/stunstaff/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1388,7 +1388,7 @@
 	edge = initial(edge)
 	set_weight_class(initial(w_class))
 
-/obj/item/melee/fluffstuff/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/melee/fluffstuff/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -250,7 +250,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/holo/esword/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/holo/esword/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -129,7 +129,7 @@
 	var/nameset = 0
 	var/tag_x
 
-/obj/item/smallDelivery/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/smallDelivery/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -346,7 +346,7 @@
 
 	return data
 
-/obj/item/destTagger/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/destTagger/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

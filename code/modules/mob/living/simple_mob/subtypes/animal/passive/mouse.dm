@@ -154,7 +154,7 @@
 	else
 		..()
 
-/obj/item/holder/mouse/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/holder/mouse/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

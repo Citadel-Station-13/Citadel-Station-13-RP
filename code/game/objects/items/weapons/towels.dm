@@ -23,7 +23,7 @@
 		if(SLOT_ID_BELT)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi')
 
-/obj/item/towel/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/towel/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

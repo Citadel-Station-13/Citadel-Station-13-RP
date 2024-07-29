@@ -13,7 +13,7 @@
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 
-/obj/item/disk/botany/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/disk/botany/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

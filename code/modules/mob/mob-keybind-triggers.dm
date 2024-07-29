@@ -35,7 +35,7 @@
  * * Sent from keybinds or a verb
  */
 /mob/proc/unique_inhand(datum/event_args/actor/actor = new /datum/event_args/actor(src))
-	#warn impl
+	get_active_held_item()?.unique_action(actor)
 
 /mob/verb/verb_defensive_toggle()
 	set name = "Unique Action"
@@ -53,7 +53,7 @@
  * * Sent from keybinds or a verb
  */
 /mob/proc/defensive_toggle(datum/event_args/actor/actor = new /datum/event_args/actor(src))
-	#warn impl
+	get_active_held_item()?.defensive_toggle(actor)
 
 /mob/verb/verb_defensive_trigger()
 	set name = "Unique Action"
@@ -71,4 +71,4 @@
  * * Sent from keybinds or a verb
  */
 /mob/proc/defensive_trigger(datum/event_args/actor/actor = new /datum/event_args/actor(src))
-	#warn impl
+	get_active_held_item()?.defensive_trigger(actor)

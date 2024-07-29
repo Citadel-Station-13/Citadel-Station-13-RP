@@ -183,7 +183,7 @@
 
 	var/blessed = FALSE
 
-/obj/item/clothing/gloves/swat/para/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/clothing/gloves/swat/para/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

@@ -31,7 +31,7 @@
 	icon_state = "paladinhelm"
 	item_action_name = "Toggle Visor"
 
-/obj/item/clothing/head/helmet/medieval/paladin/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -176,7 +176,7 @@
 	icon_state = "paladinhelm"
 	item_action_name = "Toggle Visor"
 
-/obj/item/clothing/head/medievalfake/paladin/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

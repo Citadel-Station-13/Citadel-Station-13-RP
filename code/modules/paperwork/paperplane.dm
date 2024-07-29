@@ -45,7 +45,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/item/paperplane/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/paperplane/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

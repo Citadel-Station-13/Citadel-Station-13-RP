@@ -133,7 +133,7 @@
 		dat += P.html(user)
 		user << browse(dat, "window=[name]")
 
-/obj/item/paper_bundle/attack_self(datum/event_args/actor/actor, mob/user)
+/obj/item/paper_bundle/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
