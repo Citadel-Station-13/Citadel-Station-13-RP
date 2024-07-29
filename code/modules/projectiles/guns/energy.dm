@@ -244,3 +244,10 @@
 	if(inducer_flags & INDUCER_NO_GUNS)
 		return
 	return ..()
+
+//* Ammo *//
+
+/obj/item/gun/energy/get_ammo_ratio()
+	if(!power_supply)
+		return 0
+	return power_supply.charge / power_supply.maxcharge

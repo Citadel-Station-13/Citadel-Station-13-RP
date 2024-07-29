@@ -138,26 +138,16 @@
 	var/datum/gun_mob_renderer/mob_renderer
 	/// for de-duping
 	var/static/list/mob_renderer_store = list()
-	/// if set, flick()s this state on this gun while firing.
-	//  todo: impl; is there even a good way to do this?
-	var/render_flick_firing
 	/// base onmob state override so we don't use [base_icon_state] if overridden
 	var/render_mob_base
-	/// a special state, interpreted by the [mob_renderer]
-	///
-	/// * on state mode, it is appended to the end of the base state, before firemode or the count
-	var/render_mob_special
-	/// only use the append, ignoring count and firemode while this is enabled; use this for mag-out states for energy weapons & similar
-	var/render_mob_exclusive
 	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
 	///
 	/// * ignores [mob_renderer]
 	/// * ignores [render_mob_exclusive]
+	//  todo: impl
 	var/render_mob_wielded = FALSE
 	/// use the old render system, if item_renderer and mob_renderer are not set
 	var/render_use_legacy_by_default = TRUE
-
-	#warn impl above
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
