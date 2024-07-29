@@ -27,7 +27,14 @@
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
 
-//Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
+/**
+ * Guns
+ *
+ * A gun is a weapon that can be aimed and fired at someone or something over a distance.
+ *
+ *
+ * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher
+ */
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."

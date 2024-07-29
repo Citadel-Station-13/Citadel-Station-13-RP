@@ -1,3 +1,8 @@
+/**
+ * Energy Guns
+ *
+ * These are guns that generally will only utilize energy to generate their ammunition.
+ */
 /obj/item/gun/energy
 	name = "energy gun"
 	desc = "A basic energy-based gun. Nanotrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."

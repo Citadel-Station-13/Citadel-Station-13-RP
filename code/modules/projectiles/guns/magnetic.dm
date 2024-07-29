@@ -1,3 +1,11 @@
+/**
+ * Magnetic Guns
+ *
+ * Not to be confused with /obj/item/gun/ballistic/magnetic,
+ * these guns are generally special and use special ammo,
+ * like fuel rods and RCDs. They also **optionally** consume energy to fire,
+ * and have an inbuilt capacitor charge system.
+ */
 /obj/item/gun/magnetic
 	name = "improvised coilgun"
 	desc = "A coilgun hastily thrown together out of a basic frame and advanced power storage components. Is it safe for it to be duct-taped together like that?"
