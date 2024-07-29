@@ -93,7 +93,7 @@
 	else
 		return ..()
 
-/obj/item/gun/ballistic/rocket/collapsible/attack_self(mob/user)
+/obj/item/gun/ballistic/rocket/collapsible/attack_self(mob/user, obj/item/gun/G)
 	if(collapsed)
 		to_chat(user, "<span class='notice'>You pull out the tube on the [src], readying the weapon to be fired.</span>")
 		icon_state = "[initial(icon_state)]-extended"
