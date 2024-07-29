@@ -1,26 +1,29 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
+
 /datum/firemode/energy/pulse_rifle
 
 /datum/firemode/energy/pulse_rifle/laser
 	name = "laser"
 	render_key = "kill"
-	settings = list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_delay=null, charge_cost = 80)
+	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 80)
 
 /datum/firemode/energy/pulse_rifle/pulse
 	name = "pulse"
 	render_key = "destroy"
-	settings = list(mode_name="destroy", projectile_type=/obj/projectile/beam/pulse, fire_delay=null, charge_cost = 180)
+	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 180)
 
 /datum/firemode/energy/pulse_carbine
 
 /datum/firemode/energy/pulse_carbine/laser
 	name = "laser"
 	render_key = "kill"
-	settings = list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_delay=null, charge_cost = 120)
+	settings = list(mode_name = "lethal", projectile_type = /obj/projectile/beam, charge_cost = 120)
 
 /datum/firemode/energy/pulse_carbine/pulse
 	name = "pulse"
 	render_key = "destroy"
-	settings = list(mode_name="destroy", projectile_type=/obj/projectile/beam/pulse, fire_delay=null, charge_cost = 240)
+	settings = list(mode_name = "destroy", projectile_type = /obj/projectile/beam/pulse, charge_cost = 240)
 
 /obj/item/gun/energy/pulse_rifle
 	name = "pulse rifle"
@@ -36,8 +39,12 @@
 	base_icon_state = "rifle"
 	render_mob_base = "pulse"
 	slot_flags = SLOT_BACK
+	// todo: firemode this
 	one_handed_penalty = 10
+	// todo: firemode this
 	heavy = TRUE
+	// todo: firemode this
+	fire_delay = 5 // might need to nerf this to 8 later, this is a very powerful weapon.
 
 	firemodes = list(
 		/datum/firemode/energy/pulse_rifle/laser,
@@ -71,6 +78,8 @@
 	base_icon_state = "carbine"
 	render_mob_base = "pulse"
 	slot_flags = SLOT_BELT
+	// todo: firemode this
+	fire_delay = 5 // might need to nerf this to 8 later, this is a very powerful weapon.
 
 	firemodes = list(
 		/datum/firemode/energy/pulse_carbine/laser,
@@ -89,3 +98,20 @@
 		count = 4;
 		empty_state = TRUE;
 	}
+
+/obj/projectile/beam/pulse
+	name = "pulse"
+	icon_state = "u_laser"
+	fire_sound = 'sound/weapons/gauss_shoot.ogg'
+	damage = 60
+	damage_tier = LASER_TIER_EXTREME
+	armor_penetration = 75
+	light_color = "#0066FF"
+
+	muzzle_type = /obj/effect/projectile/muzzle/laser_pulse
+	tracer_type = /obj/effect/projectile/tracer/laser_pulse
+	impact_type = /obj/effect/projectile/impact/laser_pulse
+
+/obj/projectile/beam/pulse/shotgun
+	damage = 50
+	armor_penetration = 25

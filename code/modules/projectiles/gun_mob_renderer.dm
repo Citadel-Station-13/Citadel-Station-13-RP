@@ -51,7 +51,7 @@
 		if(render_slots)
 			gun.worn_state = gun.inhand_state
 		return
-	gun.inhand_state = "[base_icon_state]-[use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
+	gun.inhand_state = "[base_icon_state][use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
 	if(render_slots)
 		gun.worn_state = gun.inhand_state
 	return TRUE
