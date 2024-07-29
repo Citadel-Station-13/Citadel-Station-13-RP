@@ -38,7 +38,7 @@
 	get_active_held_item()?.unique_action(actor)
 
 /mob/verb/verb_defensive_toggle()
-	set name = "Unique Action"
+	set name = "Defend Using Inhand"
 	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 
@@ -56,7 +56,7 @@
 	get_active_held_item()?.defensive_toggle(actor)
 
 /mob/verb/verb_defensive_trigger()
-	set name = "Unique Action"
+	set name = "Counter With Inhand"
 	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 
