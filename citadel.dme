@@ -188,6 +188,7 @@
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_throwing.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_tool_system.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_x_act.dm"
+#include "code\__DEFINES\dcs\signals\signals_item\signals_item-interaction.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_economy.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_inventory.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_mouse.dm"

@@ -40,7 +40,7 @@
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
-/obj/item/nullrod/attack_self(mob/user)
+/obj/item/nullrod/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return
@@ -352,7 +352,7 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
 
-/obj/item/nullrod/carp/attack_self(mob/user)
+/obj/item/nullrod/carp/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

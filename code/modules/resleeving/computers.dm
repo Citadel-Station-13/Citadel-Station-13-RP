@@ -431,7 +431,7 @@
 	icon_state = "cmoemergency"
 	item_state = "card-id"
 
-/obj/item/cmo_disk_holder/attack_self(mob/user)
+/obj/item/cmo_disk_holder/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

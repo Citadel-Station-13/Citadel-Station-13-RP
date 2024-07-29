@@ -8,16 +8,22 @@
  *
  * You should do . = ..() and check ., if it's TRUE, it means a parent proc requested the call chain to stop.
  *
+ * todo: please stop overriding this, use on_attack_self.
+ * todo: nuke mob/user.
+ * todo: rename this to like /activate_inhand, /on_activate_inhand
+ *
  * @params
- * * user - The person using us in hand
+ * * actor - the event_args that spawned this call
+ * * user - The person using us in hand; stop using this, this is deprecated
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/attack_self(mob/user)
-	// SHOULD_CALL_PARENT(TRUE)
+/obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor = new /datum/event_args/actor(user))
+	// SHOULD_NOT_OVERRIDE(TRUE)
+	// SHOULD_NOT_SLEEP(TRUE)
 	// attack_self isn't really part of the item attack chain.
-	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
-	if(on_attack_self(new /datum/event_args/actor(user)))
+	SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
+	if(on_attack_self(actor))
 		return TRUE
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
@@ -47,4 +53,82 @@
 		var/turf/turf = get_turf(e_args.performer)
 		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
 		return TRUE
+	return FALSE
+
+/**
+ * Called when a mob uses our unique aciton.
+ *
+ * @params
+ * * actor - the event_args that spawned this call
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/unique_action(datum/event_args/actor/actor)
+	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	if(ismob(actor))
+		actor = new /datum/event_args/actor/actor
+	SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, actor)
+	if(on_unique_action(actor))
+		return TRUE
+
+/**
+ * Called when an unique action is triggered.
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/on_unique_action(datum/event_args/actor/e_args)
+	return FALSE
+
+/**
+ * Called when a mob uses our defensive toggle action.
+ *
+ * @params
+ * * actor - the event_args that spawned this call
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/defensive_toggle(datum/event_args/actor/actor)
+	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	if(ismob(actor))
+		actor = new /datum/event_args/actor/actor
+	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TOGGLE, actor)
+	if(on_defensive_toggle(actor))
+		return TRUE
+
+/**
+ * Called on defensive toggle
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/on_defensive_toggle(datum/event_args/actor/e_args)
+	return FALSE
+
+/**
+ * Called when a mob uses our defensive trigger action.
+ *
+ * @params
+ * * actor - the event_args that spawned this call
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/defensive_trigger(datum/event_args/actor/actor)
+	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	if(ismob(actor))
+		actor = new /datum/event_args/actor/actor
+	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TRIGGER, actor)
+	if(on_defensive_trigger(actor))
+		return TRUE
+
+/**
+ * Called on defensive trigger.
+ *
+ * @return TRUE to signal to overrides to stop the chain and do nothing.
+ */
+/obj/item/proc/on_defensive_trigger(datum/event_args/actor/e_args)
 	return FALSE

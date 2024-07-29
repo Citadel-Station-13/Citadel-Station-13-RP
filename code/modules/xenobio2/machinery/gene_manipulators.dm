@@ -20,7 +20,7 @@
 	var/list/genes = list()
 	var/genesource = "unknown"
 
-/obj/item/disk/xenobio/attack_self(mob/user)
+/obj/item/disk/xenobio/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

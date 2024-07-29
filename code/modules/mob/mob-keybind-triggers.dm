@@ -17,8 +17,7 @@
  * * Sent from keybinds or a verb
  */
 /mob/proc/activate_inhand(datum/event_args/actor/actor = new /datum/event_args/actor(src))
-	get_active_held_item()?.attack_self(src)
-	#warn impl
+	get_active_held_item()?.attack_self(src, actor)
 
 /mob/verb/verb_unique_inhand()
 	set name = "Unique Action"

@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/blood/attack_self(mob/user)
+/obj/item/reagent_containers/blood/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

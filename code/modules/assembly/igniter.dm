@@ -32,7 +32,7 @@
 	return TRUE
 
 
-/obj/item/assembly/igniter/attack_self(mob/user)
+/obj/item/assembly/igniter/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

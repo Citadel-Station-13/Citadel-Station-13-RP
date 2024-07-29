@@ -106,7 +106,7 @@
 //	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 //	return ..()
 
-/obj/item/pipe_dispenser/attack_self(mob/user)
+/obj/item/pipe_dispenser/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

@@ -38,7 +38,7 @@
 
 	return atmosanalyzer_scan(src, air, user)
 
-/obj/item/atmos_analyzer/attack_self(mob/user)
+/obj/item/atmos_analyzer/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

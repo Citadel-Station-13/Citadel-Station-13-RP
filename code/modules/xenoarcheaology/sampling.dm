@@ -81,7 +81,7 @@
 	else
 		to_chat(user, "<span class='warning'>You are unable to take a sample of [item_to_sample].</span>")
 
-/obj/item/core_sampler/attack_self(mob/user)
+/obj/item/core_sampler/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

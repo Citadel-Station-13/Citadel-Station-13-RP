@@ -223,7 +223,7 @@
 	var/obj/item/book/book	 //  Currently scanned book
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
 
-/obj/item/barcodescanner/attack_self(mob/user)
+/obj/item/barcodescanner/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

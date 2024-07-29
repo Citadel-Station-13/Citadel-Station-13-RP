@@ -386,7 +386,7 @@
 	slot = ACCESSORY_SLOT_DECOR
 	item_action_name = "Adjust Gaiter"
 
-/obj/item/clothing/accessory/gaiter/attack_self(mob/user)
+/obj/item/clothing/accessory/gaiter/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return
@@ -497,7 +497,7 @@
 	overlay_state = "choker_cst_overlay"
 	var/customized = 0
 
-/obj/item/clothing/accessory/choker/attack_self(mob/user)
+/obj/item/clothing/accessory/choker/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return
@@ -694,7 +694,7 @@
 		M.afflict_paralyze(20 * 10)
 	return
 
-/obj/item/clothing/accessory/collar/shock/attack_self(mob/user as mob, flag1)
+/obj/item/clothing/accessory/collar/shock/attack_self(datum/event_args/actor/actor, mob/user)
 	if(!istype(user, /mob/living/carbon/human))
 		return
 	user.set_machine(src)
@@ -767,7 +767,7 @@
 /obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/clothing/accessory/collar/attack_self(mob/user)
+/obj/item/clothing/accessory/collar/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

@@ -264,7 +264,7 @@
 				set_weight_class(WEIGHT_CLASS_SMALL)
 				update_icon()
 
-/obj/item/gun/ballistic/attack_self(mob/user)
+/obj/item/gun/ballistic/attack_self(datum/event_args/actor/actor, mob/user)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
 	else if(ammo_magazine)

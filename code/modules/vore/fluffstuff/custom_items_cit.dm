@@ -27,7 +27,7 @@
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/accessory/collar/lifecrystal/attack_self(mob/user)
+/obj/item/clothing/accessory/collar/lifecrystal/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

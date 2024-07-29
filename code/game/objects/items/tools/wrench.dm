@@ -156,7 +156,7 @@
 		QDEL_NULL(counterpart)
 	return ..()
 
-/obj/item/tool/wrench/power/attack_self(mob/user)
+/obj/item/tool/wrench/power/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

@@ -71,7 +71,7 @@
 		return
 	. = ..()
 
-/obj/item/vertibore/attack_self(mob/user)
+/obj/item/vertibore/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return

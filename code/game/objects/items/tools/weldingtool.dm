@@ -149,7 +149,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/weldingtool/attack_self(mob/user)
+/obj/item/weldingtool/attack_self(datum/event_args/actor/actor, mob/user)
 	. = ..()
 	if(.)
 		return
@@ -750,7 +750,7 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
+/obj/item/weldingtool/electric/crystal/attack_self(datum/event_args/actor/actor, mob/user)
 	if(user.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
