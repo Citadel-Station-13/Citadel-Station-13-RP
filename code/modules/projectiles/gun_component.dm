@@ -2,5 +2,9 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /obj/item/gun_component
+    name = "gun component"
+    desc = "A thing, that probably goes in a gun."
+
+    ///
 
 #warn impl all
