@@ -189,7 +189,7 @@
 
 /obj/item/gun/energy/update_icon(ignore_inhands)
 	. = ..()
-	if(item_renderer || mob_renderer)
+	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
 		return // using new system
 	if(power_supply == null)
 		if(modifystate)

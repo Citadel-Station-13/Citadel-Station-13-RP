@@ -32,10 +32,6 @@
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
 	icon = 'icons/obj/gun/ballistic.dmi'
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
-		)
 	icon_state = "detective"
 	item_state = "gun"
 	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
@@ -155,6 +151,8 @@
 	/// * ignores [mob_renderer]
 	/// * ignores [render_mob_exclusive]
 	var/render_mob_wielded = FALSE
+	/// use the old render system, if item_renderer and mob_renderer are not set
+	var/render_use_legacy_by_default = TRUE
 
 	#warn impl above
 
@@ -172,6 +170,13 @@
 			mob_renderer = new mob_renderer
 		var/mob_renderer_key = mob_renderer.dedupe_key()
 		mob_renderer = mob_renderer_store[mob_renderer_key] || (mob_renderer_store[mob_renderer_key] = mob_renderer)
+
+	//! LEGACY: if neither of these are here, we are using legacy render.
+	if(!item_renderer && !mob_renderer && !render_use_legacy_by_default)
+		item_icons = list(
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
+			)
 
 	for(var/i in 1 to firemodes.len)
 		firemodes[i] = new /datum/firemode(src, firemodes[i])

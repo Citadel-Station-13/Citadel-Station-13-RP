@@ -1,4 +1,3 @@
-//NT Pulse Weapon Pinnacle Technology
 /obj/item/gun/energy/pulse_rifle
 	name = "\improper pulse rifle"
 	desc = "The absolute pinnacle of Nanotrasen's beam weaponry, the NT-PR2 pulse rifle uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
