@@ -97,7 +97,7 @@
 /obj/item/cassette_tape/fire_act()
 	ruin()
 
-/obj/item/cassette_tape/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/cassette_tape/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

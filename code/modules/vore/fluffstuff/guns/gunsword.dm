@@ -93,7 +93,7 @@
 	attack_verb = list()
 
 
-/obj/item/cell/device/weapon/gunsword/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/cell/device/weapon/gunsword/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

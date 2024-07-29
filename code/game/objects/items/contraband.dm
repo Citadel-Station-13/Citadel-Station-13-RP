@@ -49,7 +49,7 @@
 	item_state = "table_parts"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackage/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/stolenpackage/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -177,7 +177,7 @@
 	item_state = "table_parts"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/stolenpackageplus/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/stolenpackageplus/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -242,7 +242,7 @@
 	item_state = "table_parts"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/mechasalvage/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/mechasalvage/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

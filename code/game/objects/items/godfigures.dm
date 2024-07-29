@@ -10,7 +10,7 @@
 	throw_force = 10
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/godfig/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/godfig/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

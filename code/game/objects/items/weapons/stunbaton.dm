@@ -108,7 +108,7 @@
 	else
 		return ..()
 
-/obj/item/melee/baton/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/melee/baton/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

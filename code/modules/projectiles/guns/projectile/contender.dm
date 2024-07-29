@@ -13,7 +13,7 @@
 	load_method = SINGLE_CASING
 	heavy = TRUE
 
-/obj/item/gun/ballistic/contender/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/ballistic/contender/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

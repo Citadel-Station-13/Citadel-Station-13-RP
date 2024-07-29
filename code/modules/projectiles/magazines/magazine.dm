@@ -94,7 +94,7 @@
 	update_icon()
 
 // This dumps all the bullets right on the floor
-/obj/item/ammo_magazine/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/ammo_magazine/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

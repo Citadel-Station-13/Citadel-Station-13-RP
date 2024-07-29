@@ -90,7 +90,7 @@
 	pred_ckey = pred.ckey
 	pred_name = pred.name
 
-/obj/item/digestion_remains/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/digestion_remains/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

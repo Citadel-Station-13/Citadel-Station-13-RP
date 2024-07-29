@@ -108,7 +108,7 @@
 	else
 		..()
 
-/obj/item/assembly_holder/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/assembly_holder/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

@@ -52,7 +52,7 @@
 	/// What we unfold to
 	var/unfolded_type = /obj/vehicle/ridden/wheelchair
 
-/obj/item/wheelchair/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/wheelchair/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

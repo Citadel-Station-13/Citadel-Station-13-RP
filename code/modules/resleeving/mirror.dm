@@ -170,7 +170,7 @@
 		to_chat(usr, "You must target the torso.")
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/mirrortool/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/mirrortool/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

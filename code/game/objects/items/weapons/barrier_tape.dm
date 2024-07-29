@@ -137,7 +137,7 @@ var/list/tape_roll_applications = list()
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/barrier_tape_roll/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

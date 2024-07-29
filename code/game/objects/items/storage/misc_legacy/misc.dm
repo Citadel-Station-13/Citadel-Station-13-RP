@@ -99,7 +99,7 @@
 		)
 	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
 
-/obj/item/storage/box/survival_knife/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/storage/box/survival_knife/attack_self(mob/user)
 	return
 
 /obj/item/storage/box/papersack

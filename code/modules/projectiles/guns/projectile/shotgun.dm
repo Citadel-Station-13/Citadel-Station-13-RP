@@ -26,7 +26,7 @@
 		return chambered.get_projectile()
 	return null
 
-/obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/ballistic/shotgun/pump/attack_self(mob/user)
 	// todo: this breaks other attack self interactions :(
 	if(world.time >= recentpump + 10)
 		pump(user)

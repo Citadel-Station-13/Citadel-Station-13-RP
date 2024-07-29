@@ -41,7 +41,7 @@
 	QDEL_NULL(radio)
 	return ..()
 
-/obj/item/sleevecard/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/sleevecard/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

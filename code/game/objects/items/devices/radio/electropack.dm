@@ -104,7 +104,7 @@
 		master.receive_signal()
 	return
 
-/obj/item/radio/electropack/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/radio/electropack/attack_self(mob/user)
 
 	if(!istype(user, /mob/living/carbon/human))
 		return

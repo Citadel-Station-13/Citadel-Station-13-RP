@@ -6,7 +6,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	var/deploy_path = /obj/structure/inflatable
 
-/obj/item/inflatable/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/inflatable/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

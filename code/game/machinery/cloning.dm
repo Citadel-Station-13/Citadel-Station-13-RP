@@ -525,7 +525,7 @@
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
-/obj/item/disk/data/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/disk/data/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

@@ -53,7 +53,7 @@
 		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
 
 
-/obj/item/grenade/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/grenade/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

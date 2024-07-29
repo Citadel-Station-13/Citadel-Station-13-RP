@@ -398,7 +398,7 @@
 
 	icon_state = "[initial(icon_state)]_used"
 
-/obj/item/reagent_containers/hypospray/glukoz/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/reagent_containers/hypospray/glukoz/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

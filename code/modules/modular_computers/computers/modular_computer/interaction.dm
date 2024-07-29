@@ -115,7 +115,7 @@
 	return ..()
 
 /// On-click handling. Turns on the computer if it's off and opens the GUI.
-/obj/item/modular_computer/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/modular_computer/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

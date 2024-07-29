@@ -784,7 +784,7 @@
 	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
-/obj/item/gun/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

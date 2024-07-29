@@ -453,7 +453,7 @@
 	else
 		icon_state = "ntles-empty"
 
-/obj/item/gun/ballistic/ntles/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/ballistic/ntles/attack_self(mob/user)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
 		set_weight_class(WEIGHT_CLASS_BULKY)

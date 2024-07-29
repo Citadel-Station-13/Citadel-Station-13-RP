@@ -43,7 +43,7 @@
 	radio.hear_talk(M,msg,verb,speaking)
 	..()
 
-/obj/item/tvcamera/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/tvcamera/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

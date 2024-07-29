@@ -113,7 +113,7 @@
 	icon_state = "orange"
 	chained = null
 
-/obj/item/clothing/shoes/orange/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/clothing/shoes/orange/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

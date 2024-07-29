@@ -211,7 +211,7 @@ var/list/global/tank_gauge_cache = list()
 
 
 
-/obj/item/tank/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/tank/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

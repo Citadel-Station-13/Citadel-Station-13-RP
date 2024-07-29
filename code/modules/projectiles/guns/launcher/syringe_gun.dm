@@ -27,7 +27,7 @@
 		name = "syringe dart"
 		update_icon()
 
-/obj/item/syringe_cartridge/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/syringe_cartridge/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -95,7 +95,7 @@
 	darts -= next
 	next = null
 
-/obj/item/gun/launcher/syringe/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/gun/launcher/syringe/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

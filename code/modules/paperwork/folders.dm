@@ -75,7 +75,7 @@
 	else
 		return ..()
 
-/obj/item/folder/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/folder/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

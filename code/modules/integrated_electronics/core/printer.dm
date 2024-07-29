@@ -171,7 +171,7 @@
 		dirty_items = TRUE
 	return ..()
 
-/obj/item/integrated_circuit_printer/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/integrated_circuit_printer/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

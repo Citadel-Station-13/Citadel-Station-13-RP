@@ -62,7 +62,7 @@
 			update_icon()
 			return TRUE
 
-/obj/item/integrated_electronics/detailer/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/integrated_electronics/detailer/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

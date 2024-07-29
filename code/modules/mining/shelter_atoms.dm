@@ -35,7 +35,7 @@
 	. += "This capsule has the [template.name] stored."
 	. += template.description
 
-/obj/item/survivalcapsule/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/survivalcapsule/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

@@ -45,7 +45,7 @@
 	else
 		..()
 
-/obj/item/implant/integrated_circuit/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/implant/integrated_circuit/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

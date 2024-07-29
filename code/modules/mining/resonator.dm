@@ -33,7 +33,7 @@
 		spawn(burst_time)
 			fieldsactive--
 
-/obj/item/resonator/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/resonator/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

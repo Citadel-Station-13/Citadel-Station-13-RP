@@ -151,7 +151,7 @@
 	w_class = 2
 	attack_verb = list("drilled")
 
-/obj/item/pickaxe/excavationdrill/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/pickaxe/excavationdrill/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

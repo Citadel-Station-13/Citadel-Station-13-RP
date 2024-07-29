@@ -130,7 +130,7 @@
 		add_fingerprint(usr)
 	return
 
-/obj/item/paper/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/paper/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

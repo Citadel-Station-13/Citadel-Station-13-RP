@@ -104,7 +104,7 @@
 	else
 		return ..()
 
-/obj/item/clothing/shoes/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/clothing/shoes/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return //gtfo my shoe

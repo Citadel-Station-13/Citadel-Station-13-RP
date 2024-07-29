@@ -56,7 +56,7 @@
 						 "<span class='notice'>You label [target] as [label].</span>")
 	target.name = "[target.name] ([label])"
 
-/obj/item/hand_labeler/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/hand_labeler/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return

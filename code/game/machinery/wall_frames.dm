@@ -23,7 +23,7 @@
 		return
 	..()
 
-/obj/item/frame/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/frame/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
