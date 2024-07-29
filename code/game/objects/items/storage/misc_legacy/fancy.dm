@@ -323,7 +323,7 @@
 
 /obj/item/storage/fancy/cigarettes/carcinomas
 	name = "\improper pack of Carcinoma Angels"
-	desc = "This ancient terran brand was slated for the chopping block, until they were publicly endorsed by an old Earthling gonzo journalist. The rest is history."
+	desc = "This neptunian brand was slated for the chopping block, until they were publicly endorsed by an old Earthling gonzo journalist. The rest is history."
 	icon_state = "CApacket"
 	brand = "\improper Carcinoma Angel"
 
