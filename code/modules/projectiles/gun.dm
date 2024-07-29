@@ -9,6 +9,9 @@
 	var/name = "default"
 	var/list/settings = list()
 
+	/// state key for rendering, if any
+	var/render_key
+
 /datum/firemode/New(obj/item/gun/gun, list/properties = null)
 	..()
 	if(!properties) return
@@ -179,7 +182,16 @@
 			)
 
 	for(var/i in 1 to firemodes.len)
-		firemodes[i] = new /datum/firemode(src, firemodes[i])
+		var/key = firemodes[i]
+		if(islist(key))
+			firemodes[i] = new /datum/firemode(src, key)
+		else if(IS_ANONYMOUS_TYPEPATH(key))
+			firemodes[i] = new key
+		else if(ispath(key))
+			firemodes[i] = new key
+	if(length(firemodes))
+		sel_mode = 0
+		switch_firemodes()
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
@@ -836,8 +848,9 @@
 		sel_mode = 1
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
-	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-	playsound(loc, selector_sound, 50, 1)
+	if(user)
+		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
+		playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
