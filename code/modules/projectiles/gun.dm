@@ -156,6 +156,8 @@
 	var/cell_system = FALSE
 	/// cell type to start with
 	var/cell_type = /obj/item/cell/device/weapon
+	/// -_-
+	var/cell_system_legacy_use_device = TRUE
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
@@ -178,7 +180,7 @@
 	// cell system
 	if(cell_system)
 		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
-		slot.legacy_use_device_cells = TRUE
+		slot.legacy_use_device_cells = cell_system_legacy_use_device
 		slot.remove_yank_offhand = TRUE
 		slot.remove_yank_context = TRUE
 

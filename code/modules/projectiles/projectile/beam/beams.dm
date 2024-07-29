@@ -83,7 +83,7 @@
 	name = "xray beam"
 	icon_state = "xray"
 	fire_sound = 'sound/weapons/eluger.ogg'
-	damage = 25
+	damage = 30
 	armor_penetration = 50
 	light_color = "#00CC33"
 
@@ -140,7 +140,8 @@
 	name = "emitter beam"
 	icon_state = "emitter"
 	fire_sound = 'sound/weapons/emitter.ogg'
-	damage = 0 // The actual damage is computed in /code/modules/power/singularity/emitter.dm
+	damage = 50
+	armor_penetration = 25
 	light_color = "#00CC33"
 	excavation_amount = 70 // 3 shots to mine a turf
 

@@ -14,7 +14,7 @@
 	dispersion = list(0)
 
 	cell_system = TRUE
-	cell_Type = /obj/item/cell/device/weapon
+	cell_type = /obj/item/cell/device/weapon
 
 	var/charge_cost = 240 //How much energy is needed to fire.
 
@@ -60,7 +60,7 @@
 			var/rechargeamt = obj_cell_slot.cell.maxcharge*0.2
 
 			if(use_external_power)
-				var/obj/item/cell/external = get_external_obj_cell_slot.cell()
+				var/obj/item/cell/external = get_external_power_supply()
 				if(!external || !external.use(rechargeamt)) //Take power from the borg...
 					return 0
 
@@ -110,16 +110,6 @@
 	if(!obj_cell_slot.cell.checked_use(charge_cost))
 		return null
 	return new projectile_type(src)
-
-/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
-	..()
-	load_ammo(A, user)
-
-/obj/item/gun/energy/attack_hand(mob/user, list/params)
-	if(user.get_inactive_held_item() == src)
-		unload_ammo(user)
-	else
-		return ..()
 
 /obj/item/gun/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))

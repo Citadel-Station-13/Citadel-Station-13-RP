@@ -7,10 +7,10 @@
  * * This is **not** an attachment system. This is for things integral to gun operation.
  */
 /obj/item/gun_component
-    name = "gun component"
-    desc = "A thing, that probably goes in a gun."
+	name = "gun component"
+	desc = "A thing, that probably goes in a gun."
 
-    /// component slot
+	/// component slot
 	///
 	/// * This is just a suggestion.
 	/// * The actual APIs used are agnostic of this value.

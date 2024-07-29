@@ -220,7 +220,7 @@
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/projectile/beam/tungsten
 	cell_type = /obj/item/cell/high
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 
 	accuracy = 75
 	charge_meter = 0
@@ -315,7 +315,7 @@
 
 	projectile_type = /obj/projectile/beam/medigun
 
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
@@ -427,10 +427,10 @@
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
+	fire_delay = 2 SECONDS
 	charge_cost = 900
 	cell_type = /obj/item/cell
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
