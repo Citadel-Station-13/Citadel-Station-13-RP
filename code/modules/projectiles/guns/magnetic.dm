@@ -16,7 +16,6 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_MAGNET = 4)
 	w_class = WEIGHT_CLASS_BULKY
 
-	var/obj/item/cell/cell                              // Currently installed powercell.
 	var/obj/item/stock_parts/capacitor/capacitor        // Installed capacitor. Higher rating == faster charge between shots.
 	var/obj/item/stock_parts/manipulator/manipulator    // Installed manipulator. Mostly for Phoron Bore, higher rating == less mats consumed upon firing
 	var/removable_components = TRUE                            // Whether or not the gun can be dismantled.
@@ -34,22 +33,19 @@
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
 	update_icon()
-	return ..()
+	. = ..()
+	obj_cell_slot.legacy_use_device_cells = FALSE
 
 /obj/item/gun/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	QDEL_NULL(cell)
 	QDEL_NULL(loaded)
 	QDEL_NULL(capacitor)
 	. = ..()
 
-/obj/item/gun/magnetic/get_cell(inducer)
-	return cell
-
 /obj/item/gun/magnetic/process(delta_time)
 	if(capacitor)
-		if(cell)
-			if(capacitor.charge < capacitor.max_charge && cell.checked_use(power_per_tick))
+		if(obj_cell_slot.cell)
+			if(capacitor.charge < capacitor.max_charge && obj_cell_slot.cell.checked_use(power_per_tick))
 				capacitor.charge(power_per_tick)
 		else
 			capacitor.use(capacitor.charge * 0.05)
@@ -59,11 +55,11 @@
 	var/list/overlays_to_add = list()
 	cut_overlays()
 	if(removable_components)
-		if(cell)
+		if(obj_cell_slot.cell)
 			overlays_to_add += image(icon, "[icon_state]_cell")
 		if(capacitor)
 			overlays_to_add += image(icon, "[icon_state]_capacitor")
-	if(!cell || !capacitor)
+	if(!obj_cell_slot.cell || !capacitor)
 		overlays_to_add += image(icon, "[icon_state]_red")
 	else if(capacitor.charge < power_cost)
 		overlays_to_add += image(icon, "[icon_state]_amber")
@@ -83,12 +79,12 @@
 	. = ..()
 	show_ammo(user)
 
-	if(cell)
-		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
+	if(obj_cell_slot.cell)
+		. += "<span class='notice'>The installed [obj_cell_slot.cell.name] has a charge level of [round((obj_cell_slot.cell.charge/obj_cell_slot.cell.maxcharge)*100)]%.</span>"
 	if(capacitor)
 		. += "<span class='notice'>The installed [capacitor.name] has a charge level of [round((capacitor.charge/capacitor.max_charge)*100)]%.</span>"
 
-	if(!cell || !capacitor)
+	if(!obj_cell_slot.cell || !capacitor)
 		. += "<span class='notice'>The capacitor charge indicator is blinking <font color ='[COLOR_RED]'>red</font>. Maybe you should check the cell or capacitor.</span>"
 	else
 		if(capacitor.charge < power_cost)
@@ -97,20 +93,7 @@
 			. += "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>"
 
 /obj/item/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
-
 	if(removable_components)
-		if(istype(thing, /obj/item/cell))
-			if(cell)
-				to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
-				return
-			if(!user.attempt_insert_item_for_installation(thing, src))
-				return
-			cell = thing
-			playsound(src, 'sound/machines/click.ogg', 10, 1)
-			user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
-			update_icon()
-			return
-
 		if(thing.is_screwdriver())
 			if(!capacitor)
 				to_chat(user, "<span class='warning'>\The [src] has no capacitor installed.</span>")
@@ -165,9 +148,6 @@
 		if(loaded)
 			removing = loaded
 			loaded = null
-		else if(cell && removable_components)
-			removing = cell
-			cell = null
 
 		if(removing)
 			removing.forceMove(get_turf(src))
@@ -221,6 +201,12 @@
 
 	power_cost = 500
 
+	cell_type = /obj/item/cell/high
+
+/obj/item/gun/magnetic/fuelrod/Initialize(mapload)
+	capacitor = new /obj/item/stock_parts/capacitor
+	return ..()
+
 /obj/item/gun/magnetic/fuelrod/consume_next_projectile()
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
@@ -259,8 +245,3 @@
 	update_icon()
 
 	return new projectile_type(src)
-
-/obj/item/gun/magnetic/fuelrod/Initialize(mapload)
-	cell = new /obj/item/cell/high
-	capacitor = new /obj/item/stock_parts/capacitor
-	return ..()

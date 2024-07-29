@@ -13,11 +13,11 @@
 	accuracy = 100
 	dispersion = list(0)
 
-	var/obj/item/cell/power_supply //What type of power cell this uses
+	cell_system = TRUE
+	cell_Type = /obj/item/cell/device/weapon
+
 	var/charge_cost = 240 //How much energy is needed to fire.
 
-	var/accept_cell_type = /obj/item/cell/device
-	var/cell_type = /obj/item/cell/device/weapon
 	projectile_type = /obj/projectile/beam/practice
 
 	var/modifystate
@@ -32,18 +32,14 @@
 	var/charge_delay = 75	//delay between firing and charging
 
 	var/battery_lock = 0	//If set, weapon cannot switch batteries
+	#warn dela with this
 
 /obj/item/gun/energy/Initialize(mapload)
-	. = ..()
 	if(self_recharge)
-		power_supply = new /obj/item/cell/device/weapon(src)
+		cell_system = TRUE
+		cell_type = cell_type || /obj/item/cell/device/weapon
 		START_PROCESSING(SSobj, src)
-	else
-		if(cell_type)
-			power_supply = new cell_type(src)
-		else
-			power_supply = null
-
+	. = ..()
 	update_icon()
 
 /obj/item/gun/energy/Destroy()
@@ -51,23 +47,20 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/energy/get_cell(inducer)
-	return power_supply
-
 /obj/item/gun/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
-			if(!power_supply || power_supply.charge >= power_supply.maxcharge)
+			if(!obj_cell_slot.cell || obj_cell_slot.cell.charge >= obj_cell_slot.cell.maxcharge)
 				return 0 // check if we actually need to recharge
 
 			charge_tick++
 			if(charge_tick < recharge_time) return 0
 			charge_tick = 0
 
-			var/rechargeamt = power_supply.maxcharge*0.2
+			var/rechargeamt = obj_cell_slot.cell.maxcharge*0.2
 
 			if(use_external_power)
-				var/obj/item/cell/external = get_external_power_supply()
+				var/obj/item/cell/external = get_external_obj_cell_slot.cell()
 				if(!external || !external.use(rechargeamt)) //Take power from the borg...
 					return 0
 
@@ -92,7 +85,7 @@
 					if(start_nutrition - max(0, end_nutrition) < rechargeamt / 10)
 						H.remove_blood((rechargeamt / 10) - (start_nutrition - max(0, end_nutrition)))
 
-			power_supply.give(rechargeamt) //... to recharge 1/5th the battery
+			obj_cell_slot.cell.give(rechargeamt) //... to recharge 1/5th the battery
 			update_icon()
 		else
 			charge_tick = 0
@@ -110,51 +103,13 @@
 	update_icon()
 
 /obj/item/gun/energy/consume_next_projectile()
-	if(!power_supply)
+	if(!obj_cell_slot?.cell)
 		return null
 	if(!ispath(projectile_type))
 		return null
-	if(!power_supply.checked_use(charge_cost))
+	if(!obj_cell_slot.cell.checked_use(charge_cost))
 		return null
 	return new projectile_type(src)
-
-/obj/item/gun/energy/proc/load_ammo(var/obj/item/C, mob/user)
-	if(istype(C, /obj/item/cell))
-		if(self_recharge || battery_lock)
-			to_chat(user, "<span class='notice'>[src] does not have a battery port.</span>")
-			return
-		if(istype(C, accept_cell_type))
-			var/obj/item/cell/P = C
-			if(power_supply)
-				to_chat(user, "<span class='notice'>[src] already has a power cell.</span>")
-			else
-				user.visible_message("[user] is reloading [src].", "<span class='notice'>You start to insert [P] into [src].</span>")
-				if(do_after(user, 5 * P.w_class))
-					if(!user.attempt_insert_item_for_installation(P, src))
-						return
-					power_supply = P
-					user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
-					playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
-					update_icon()
-					update_held_icon()
-		else
-			to_chat(user, "<span class='notice'>This cell is not fitted for [src].</span>")
-	return
-
-/obj/item/gun/energy/proc/unload_ammo(mob/user)
-	if(self_recharge || battery_lock)
-		to_chat(user, "<span class='notice'>[src] does not have a battery port.</span>")
-		return
-	if(power_supply)
-		user.put_in_hands(power_supply)
-		power_supply.update_icon()
-		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")
-		power_supply = null
-		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
-		update_icon()
-		update_held_icon()
-	else
-		to_chat(user, "<span class='notice'>[src] does not have a power cell.</span>")
 
 /obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
@@ -182,9 +137,9 @@
 
 /obj/item/gun/energy/examine(mob/user, dist)
 	. = ..()
-	if(power_supply)
+	if(obj_cell_slot.cell)
 		if(charge_cost)
-			var/shots_remaining = round(power_supply.charge / max(1, charge_cost))	// Paranoia
+			var/shots_remaining = round(obj_cell_slot.cell.charge / max(1, charge_cost))	// Paranoia
 			. += "Has [shots_remaining] shot\s remaining."
 		else
 			. += "Has infinite shots remaining."
@@ -194,17 +149,17 @@
 
 /obj/item/gun/energy/update_icon(ignore_inhands)
 	. = ..()
-	if(power_supply == null)
+	if(obj_cell_slot.cell == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
 		else
 			icon_state = "[initial(icon_state)]_open"
 		return
 	else if(charge_meter)
-		var/ratio = power_supply.percent() * 0.01
+		var/ratio = obj_cell_slot.cell.percent() * 0.01
 
 		//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
-		if(power_supply.charge < charge_cost)
+		if(obj_cell_slot.cell.charge < charge_cost)
 			ratio = 0
 		else
 			ratio = max(round(ratio, 0.25) * 100, 25)
@@ -214,7 +169,7 @@
 		else
 			icon_state = "[initial(icon_state)][ratio]"
 
-	else if(power_supply)
+	else if(obj_cell_slot.cell)
 		if(modifystate)
 			icon_state = "[modifystate]"
 		else
@@ -222,28 +177,3 @@
 
 	if(!ignore_inhands)
 		update_held_icon()
-
-/obj/item/gun/energy/proc/start_recharge()
-	if(power_supply == null)
-		power_supply = new /obj/item/cell/device/weapon(src)
-	self_recharge = 1
-	START_PROCESSING(SSobj, src)
-	update_icon()
-
-/obj/item/gun/energy/get_description_interaction(mob/user)
-	var/list/results = list()
-
-	if(!battery_lock && !self_recharge)
-		if(power_supply)
-			results += "[desc_panel_image("offhand", user)]to remove the weapon cell."
-		else
-			results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
-
-	results += ..()
-
-	return results
-
-/obj/item/gun/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
-	if(inducer_flags & INDUCER_NO_GUNS)
-		return
-	return ..()

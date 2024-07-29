@@ -127,22 +127,13 @@
 	var/unstable = 0
 	var/destroyed = 0
 
-/obj/item/gun/CtrlClick(mob/user)
-	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
-		toggle_flashlight()
-	else
-		return ..()
-
-/obj/item/gun/proc/toggle_flashlight()
-	if(gun_light)
-		set_light(0)
-		gun_light = FALSE
-	else
-		set_light(light_brightness)
-		gun_light = TRUE
-
-	playsound(src, 'sound/machines/button.ogg', 25)
-	update_icon()
+	//*                            Power                                  *//
+	//* Because the use of power is such a common case on /gun, it's been *//
+	//* hoisted to the base /obj/item/gun level for handling.             *//
+	/// do we use a cell slot?
+	var/cell_system = FALSE
+	/// cell type to start with
+	var/cell_type = /obj/item/cell/device/weapon
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
@@ -161,6 +152,30 @@
 
 	if(pin)
 		pin = new pin(src)
+
+	// cell system
+	if(cell_system)
+		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
+		slot.legacy_use_device_cells = TRUE
+		slot.remove_yank_offhand = TRUE
+		slot.remove_yank_context = TRUE
+
+/obj/item/gun/CtrlClick(mob/user)
+	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
+		toggle_flashlight()
+	else
+		return ..()
+
+/obj/item/gun/proc/toggle_flashlight()
+	if(gun_light)
+		set_light(0)
+		gun_light = FALSE
+	else
+		set_light(light_brightness)
+		gun_light = TRUE
+
+	playsound(src, 'sound/machines/button.ogg', 25)
+	update_icon()
 
 /obj/item/gun/update_twohanding()
 	if(one_handed_penalty)
@@ -187,7 +202,6 @@
 				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
 				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 	..()
-
 
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
