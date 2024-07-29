@@ -189,6 +189,8 @@
 
 /obj/item/gun/energy/update_icon(ignore_inhands)
 	. = ..()
+	if(item_renderer || mob_renderer)
+		return // using new system
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"

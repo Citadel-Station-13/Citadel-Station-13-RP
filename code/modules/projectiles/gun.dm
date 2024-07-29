@@ -120,6 +120,75 @@
 	var/unstable = 0
 	var/destroyed = 0
 
+	//* Rendering
+	/// renderer datum we use for world rendering of the gun item itself
+	/// set this in prototype to a path
+	/// if null, we will not perform default rendering/updating of item states.
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_item_renderer/item_renderer
+	/// for de-duping
+	var/static/list/item_renderer_store = list()
+	/// renderer datum we use for mob rendering of the gun when held / worn
+	/// set this in prototype to a path
+	/// if null, we will not perform default rendering/updating of onmob states
+	///
+	/// * anonymous types are allowed and encouraged.
+	/// * the renderer defaults to [base_icon_state || render_mob_base || initial(icon_state)] for the base icon state to append to.
+	var/datum/gun_mob_renderer/mob_renderer
+	/// for de-duping
+	var/static/list/mob_renderer_store = list()
+	/// if set, flick()s this state on this gun while firing.
+	//  todo: impl; is there even a good way to do this?
+	var/render_flick_firing
+	/// base onmob state override so we don't use [base_icon_state] if overridden
+	var/render_mob_base
+	/// a special state, interpreted by the [mob_renderer]
+	///
+	/// * on state mode, it is appended to the end of the base state, before firemode or the count
+	var/render_mob_special
+	/// only use the append, ignoring count and firemode while this is enabled; use this for mag-out states for energy weapons & similar
+	var/render_mob_exclusive
+	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
+	///
+	/// * ignores [mob_renderer]
+	/// * ignores [render_mob_exclusive]
+	var/render_mob_wielded = FALSE
+
+	#warn impl above
+
+/obj/item/gun/Initialize(mapload)
+	. = ..()
+
+	// instantiate & dedupe renderers
+	if(item_renderer)
+		if(ispath(item_renderer) || IS_ANONYMOUS_TYPEPATH(item_renderer))
+			item_renderer = new item_renderer
+		var/item_renderer_key = item_renderer.dedupe_key()
+		item_renderer = item_renderer_store[item_renderer_key] || (item_renderer_store[item_renderer_key] = item_renderer)
+	if(mob_renderer)
+		if(ispath(mob_renderer) || IS_ANONYMOUS_TYPEPATH(mob_renderer))
+			mob_renderer = new mob_renderer
+		var/mob_renderer_key = mob_renderer.dedupe_key()
+		mob_renderer = mob_renderer_store[mob_renderer_key] || (mob_renderer_store[mob_renderer_key] = mob_renderer)
+
+	for(var/i in 1 to firemodes.len)
+		firemodes[i] = new /datum/firemode(src, firemodes[i])
+
+	if(isnull(scoped_accuracy))
+		scoped_accuracy = accuracy
+
+	if(dna_lock)
+		attached_lock = new /obj/item/dnalockingchip(src)
+	if(!dna_lock)
+		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
+
+	if(pin)
+		pin = new pin(src)
+
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
@@ -136,24 +205,6 @@
 
 	playsound(src, 'sound/machines/button.ogg', 25)
 	update_icon()
-
-/obj/item/gun/Initialize(mapload)
-	. = ..()
-	for(var/i in 1 to firemodes.len)
-		firemodes[i] = new /datum/firemode(src, firemodes[i])
-
-	if(isnull(scoped_accuracy))
-		scoped_accuracy = accuracy
-
-	if(dna_lock)
-		attached_lock = new /obj/item/dnalockingchip(src)
-	if(!dna_lock)
-		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
-
-	if(pin)
-		pin = new pin(src)
 
 /obj/item/gun/update_twohanding()
 	if(one_handed_penalty)
@@ -852,3 +903,29 @@
  */
 /obj/item/gun/proc/check_safety()
 	return (safety_state == GUN_SAFETY_ON)
+
+//* Ammo *//
+
+/**
+ * Gets the ratio of our ammo left
+ *
+ * * Used by rendering
+ *
+ * @return number as 0 to 1, inclusive
+ */
+/obj/item/gun/proc/get_ammo_ratio()
+	return 0
+
+//* Rendering *//
+
+/obj/item/gun/update_icon(updates)
+	if(!item_renderer && !mob_renderer)
+		return ..()
+	cut_overlays()
+	var/ratio_left = get_ammo_ratio()
+	item_renderer?.render(src, ratio_left, null)
+	var/needs_worn_update = mob_renderer?.render(src, ratio_left, null)
+	// todo: render_mob_wielded
+	if(needs_worn_update)
+		update_worn_icon()
+	return ..()
