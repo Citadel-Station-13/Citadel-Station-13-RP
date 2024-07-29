@@ -1157,7 +1157,7 @@
 /obj/vehicle/sealed/mecha/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	if(istype(proj, /obj/projectile/test))
 		var/obj/projectile/test/Test = proj
-		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
+		Test.hit |= occupant_legacy // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
 		return ..()
 
 	src.log_message("Hit by projectile. Type: [proj.name]([proj.damage_flag]).",1)

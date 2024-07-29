@@ -180,6 +180,6 @@
 /**
  * @params
  * * defending - the thing being hit
- * 
+ *
  */
 /datum/parry_frame/proc/handle_throw_impact(atom/defending, efficiency, datum/thrownthing/thrown)
