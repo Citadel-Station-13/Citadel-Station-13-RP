@@ -27,10 +27,10 @@
 /obj/item/storage/fancy/cigarettes/blackstars
 	description_fluff = "Originally developed as an upscale alternative to tobacco-based cigarettes, Black Stars use a proprietary blend of chemically treated herbs. They produce a thicker, more richly scented smoke than those using tobacco. Their iconic black filters and papering distinguish them almost as much as the exotic way their cherries glow green."
 
-/obj/item/storage/fancy/cigarettes/light
+/obj/item/storage/fancy/cigarettes/kingsilvers
 	description_fluff = "Kyningc Tobacco Co. is among the oldest and most popular cigarette brands of Epsilon Eridani. Grown from domestic, gene-tailored strains. Silvers are considered a 'light' variant with reduced nicotine content, making them more easily exported to foreign markets."
 
-/obj/item/storage/fancy/cigarettes/herbal
+/obj/item/storage/fancy/cigarettes/subrosas
 	description_fluff = "The flagship product of it's namesake Eridanian company, Subrosa cigarettes contain no tobacco or nicotine and are instead made with a selection of dried aromatic herbs and extracts including, presumably, roses. Each sepia-colored roll smells faintly of cloves and cinnamon."
 
 /obj/item/clothing/mask/smokable/cigarette/cigar
