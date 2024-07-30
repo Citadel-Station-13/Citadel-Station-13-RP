@@ -333,7 +333,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 15
 	max_smoketime = 300
 	smoketime = 300
-	var/nicotine_amt = 0
+	nicotine_amt = 0
+
+	name = "cigarette"
+	desc = "A roll of tobacco and nicotine."
+	icon_state = "ciglite"
+	item_state = "ciglite"
+	type_butt = /obj/item/ciglitebutt
+
+	/obj/item/clothing/mask/smokable/cigarette/herbal
+	name = "cigarette"
+	desc = "A roll of aromatic blended herbs."
+	icon_state = "cigherbal"
+	item_state = "cigherbal"
+	type_butt = /obj/item/cigherbalbutt
+	nicotine_amt = 0
 
 ////////////
 // CIGARS //
