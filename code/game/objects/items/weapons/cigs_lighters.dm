@@ -341,6 +341,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "ciglite"
 	item_state = "ciglite"
 	type_butt = /obj/item/ciglitebutt
+	nicotine_amt = 1
+
 
 /obj/item/clothing/mask/smokable/cigarette/herbal
 	name = "cigarette"
