@@ -107,7 +107,7 @@
 	. = ..()
 	if(isnull(ammo_type))
 		return
-	var/shell_amount = isnull(initial_ammo)? max_ammo : initial_ammo
+	var/shell_amount = isnull(ammo_current)? ammo_max : ammo_current
 	if(!shell_amount)
 		return
 	var/obj/item/ammo_casing/casing = new ammo_type
@@ -239,7 +239,7 @@
  * @return null for success, a string describing why not otherwise.
  */
 /obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
-	if(casing.caliber != ammo_caliber)
+	if(casing.regex_this_caliber != ammo_caliber)
 		return "mismatched caliber"
 
 /obj/item/ammo_magazine/on_attack_self(datum/event_args/actor/e_args)

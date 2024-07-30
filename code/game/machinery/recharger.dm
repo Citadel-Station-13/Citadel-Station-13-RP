@@ -1,3 +1,4 @@
+// todo: dynamic recharger API on item for cell chargers, wall chargers, and device rechargers.
 /obj/machinery/recharger
 	name = "recharger"
 	desc = "A standard recharger for all devices that use power."
@@ -66,14 +67,14 @@
 				return
 		else if(istype(G, /obj/item/ammo_magazine/cell_mag))
 			var/obj/item/ammo_magazine/cell_mag/maggy = G
-			if(maggy.stored_ammo.len < 1)
+			if(!maggy.amount_remaining())
 				to_chat(user, "\The [G] does not have any cells installed.")
 				return
 		else if(istype(G, /obj/item/gun/ballistic/cell_loaded))
 			var/obj/item/gun/ballistic/cell_loaded/gunny = G
 			if(gunny.ammo_magazine)
 				var/obj/item/ammo_magazine/cell_mag/maggy = gunny.ammo_magazine
-				if(maggy.stored_ammo.len < 1)
+				if(!maggy.amount_remaining())
 					to_chat(user, "\The [G] does not have any cell in its magazine installed.")
 					return
 			else
@@ -184,7 +185,7 @@
 			charge_mag(gunny.ammo_magazine)
 
 /obj/machinery/recharger/proc/charge_mag(obj/item/ammo_magazine/cell_mag/maggy)
-	var/tally = maggy.stored_ammo.len
+	var/tally = maggy.amount_remaining()
 	for(var/obj/item/ammo_casing/microbattery/batt in maggy)
 		if(batt.shots_left < initial(batt.shots_left))
 			icon_state = icon_state_charging

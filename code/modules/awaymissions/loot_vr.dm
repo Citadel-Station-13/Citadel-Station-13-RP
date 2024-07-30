@@ -195,7 +195,7 @@
 					prob(4);/obj/item/ammo_magazine/m45uzi,\
 					prob(4);/obj/item/ammo_magazine/m556/ext,\
 					prob(4);/obj/item/ammo_magazine/m9mm,\
-					prob(4);/obj/item/ammo_magazine/m9mml,\
+					prob(4);/obj/item/ammo_magazine/m9mmR,\
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
 					prob(4);/obj/item/ammo_magazine/m9mmt/rubber,\
 					prob(4);/obj/item/ammo_magazine/m10mm,\

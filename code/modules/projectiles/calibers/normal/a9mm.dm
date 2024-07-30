@@ -202,10 +202,10 @@
 	materials_base = list(MAT_STEEL = 700)
 	ammo_max = 21
 
+/obj/item/ammo_magazine/m9mmAdvanced/empty
+	icon_state = "advsmg-0"
+	ammo_current = 0
+
 /obj/item/ammo_magazine/m9mmAdvanced/ap
 	desc = "A high capacity double stack magazine made specially for the Advanced SMG. Filled with 21 9mm armor piercing bullets."
 	ammo_preload = /obj/item/ammo_casing/a9mm/ap
-
-/obj/item/ammo_magazine/m9mmR/saber/empty
-	icon_state = "advsmg-0"
-	ammo_current = 0
