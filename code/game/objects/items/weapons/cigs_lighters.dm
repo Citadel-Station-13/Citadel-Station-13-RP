@@ -340,7 +340,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A roll of tobacco and nicotine."
 	icon_state = "ciglite"
 	item_state = "ciglite"
-	type_butt = /obj/item/ciglitebutt
+	type_butt = /obj/item/cigbutt/light
 	nicotine_amt = 1
 
 
@@ -349,7 +349,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A roll of aromatic blended herbs."
 	icon_state = "cigherbal"
 	item_state = "cigherbal"
-	type_butt = /obj/item/cigherbalbutt
+	type_butt = /obj/item/cigbutt/herbal
 	nicotine_amt = 0
 
 ////////////
@@ -439,6 +439,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
 	icon_state = "cigimpbutt"
+
+/obj/item/cigbutt/light
+	name = "cigarette butt"
+	desc = "A manky old cigarette butt."
+	icon_state = "ciglitebutt"
+
+/obj/item/cigbutt/herbal
+	name = "cigarette butt"
+	desc = "A manky old cigarette butt."
+	icon_state = "cigherbalbutt"
 
 /////////////////
 //SMOKING PIPES//
