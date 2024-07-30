@@ -71,6 +71,30 @@
 	/// if set, doesn't allow subtypes
 	var/ammo_picky = FALSE
 
+	//* Rendering
+	/// use default rendering system
+	/// in state moide, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
+	/// in segements mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
+	/// overlay mode is not supported
+	var/rendering_system = GUN_RENDERING_DISABLED
+	/// number of states
+	var/rendering_count = 0
+	/// used internally to avoid appearance churn
+	VAR_PRIVATE/rendering_count_current
+	/// for offset mode: initial x offset
+	var/rendering_segment_x_start = 0
+	/// for offset mode: initial y offset
+	var/rendering_segment_y_start = 0
+	/// for offset mode: x offset
+	var/rendering_segment_x_offset = 0
+	/// for offset mode: y offset
+	var/rendering_segment_y_offset = 0
+	/// display special "[base_icon_state]-empty" if count == 0
+	var/rendering_segment_use_empty = FALSE
+	/// add a specific overlay as "[base_icon_state]-[state]", useful for denoting different magazines
+	/// that look similar with a stripe
+	var/rendering_static_overlay
+
 /obj/item/ammo_magazine/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-5, 5)
