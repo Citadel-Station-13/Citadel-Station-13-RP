@@ -340,6 +340,20 @@
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/import = 6)
 	brand = "\improper Black Star"
 
+/obj/item/storage/fancy/cigarettes/kingsilvers
+	name = "\improper pack of Kyningc Silvers"
+	desc = "A brand of imported cigarettes. A homegrown favourite to many a pretentious Eridanian businessman."
+	icon_state = "KSpacket"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/light = 6)
+	brand = "\improper Kyningc Silver"
+
+/obj/item/storage/fancy/cigarettes/subrosas
+	name = "\improper pack of Subrosas"
+	desc = "A brand of imported cigarettes. These ones contain a proprietary herbal blend, 100% nicotine free. Made in Epsilon Eridani."
+	icon_state = "SRpacket"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/herbal = 6)
+	brand = "\improper Subrosa"
+
 /obj/item/storage/fancy/cigar
 	name = "cigar case"
 	desc = "A case for holding your cigars when you are not smoking them."
