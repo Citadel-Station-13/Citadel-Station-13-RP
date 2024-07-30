@@ -181,7 +181,7 @@
 	name = "\"The Judge\""
 	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand (if you don't break your wrist). Uses 12g rounds."
 	icon_state = "judge"
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 	max_shells = 5
 	recoil = 2 // ow my fucking hand
@@ -202,7 +202,7 @@
 	ammo_type = /obj/item/ammo_casing/a38
 	projectile_type = /obj/projectile/bullet/pistol
 	var/secondary_max_shells = 1
-	var/secondary_caliber = "12g"
+	var/secondary_regex_this_caliber = /datum/caliber/a12g
 	var/secondary_ammo_type = /obj/item/ammo_casing/a12g
 	var/flipped_firing = 0
 	var/list/secondary_loaded = list()

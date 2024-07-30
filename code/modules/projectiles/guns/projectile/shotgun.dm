@@ -8,7 +8,7 @@
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	load_method = SINGLE_CASING|SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
@@ -123,7 +123,7 @@
 	desc = "This exotic ten gauge shotgun sports a custom paint job and a cylinder choke. At close ranges, it packs quite the punch."
 	icon_state = "grit"
 	item_state = "grit"
-	caliber = "10g"
+	regex_this_caliber = /datum/caliber/a10g
 	ammo_type = /obj/item/ammo_casing/a10g/pellet/grit
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
@@ -157,7 +157,7 @@
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
@@ -243,7 +243,7 @@
 	accuracy = 40
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
@@ -258,7 +258,7 @@
 	desc = "Rip and tear, until it is done."
 	icon_state = "supershotgun"
 	item_state = "supershotgun"
-	caliber = "10g"
+	regex_this_caliber = /datum/caliber/a10g
 	recoil = 0
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
@@ -279,7 +279,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	slot_flags = SLOT_BELT
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	accuracy = -15 //Its a flaregun and you expected accuracy?
 	ammo_type = /obj/item/ammo_casing/a12g/flare
 	projectile_type = /obj/projectile/energy/flash
@@ -329,7 +329,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
 	w_class = WEIGHT_CLASS_TINY
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	ammo_type = /obj/item/ammo_casing/a12g
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF

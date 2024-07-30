@@ -20,7 +20,7 @@
 	icon_state = "advanced_smg"
 	w_class = WEIGHT_CLASS_NORMAL
 	load_method = MAGAZINE
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	magazine_type = null // R&D builds this. Starts unloaded.
@@ -103,7 +103,7 @@
 	icon_state = "wt550"
 	item_state = "wt550"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	ammo_type = "/obj/item/ammo_casing/a9mmr"
@@ -332,7 +332,7 @@
 	item_state = "ashot"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -416,7 +416,7 @@
 	icon_state = "p90smg"
 	item_state = "p90"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = "5.7x28mm"
+	regex_this_caliber = /datum/caliber/a5_7mm
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
@@ -567,7 +567,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -654,7 +654,7 @@
 	icon_state = "combatsmg"
 	item_state = "combatsmg"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = "5.7x28mm"
+	regex_this_caliber = /datum/caliber/a5_7mm
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT

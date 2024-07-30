@@ -84,7 +84,7 @@
 	icon_state = "pdw"
 	item_state = "c20r" // Placeholder
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	load_method = MAGAZINE
@@ -268,7 +268,7 @@
 	item_state = "wt550"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BELT
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	magazine_type = /obj/item/ammo_magazine/m9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
 	load_method = MAGAZINE

@@ -99,7 +99,7 @@
 	icon_state = "pipegun"
 	icon_retracted = "pipegun-empty"
 	item_state = "revolver"
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	ammo_type = /obj/item/ammo_casing/a12g/improvised
 	projectile_type = /obj/projectile/bullet/shotgun
 	unstable = 1

@@ -167,7 +167,7 @@
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	max_shells = 5
-	caliber = "12g"
+	regex_this_caliber = /datum/caliber/a12g
 	load_method = SINGLE_CASING
 	action_sound = 'sound/weapons/riflebolt.ogg'
 

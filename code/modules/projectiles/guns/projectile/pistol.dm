@@ -191,7 +191,7 @@
 	icon_state = "pistol"
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	suppressible = TRUE
 	silenced_icon = "pistol_silencer"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
@@ -298,7 +298,7 @@
 	desc = "Not some cheap scheisse Martian knockoff! This Luger is an authentic reproduction by RauMauser. Accuracy, easy handling, and its signature appearance make it popular among historic gun collectors. Uses 9mm rounds."
 	icon_state = "p08"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
@@ -312,7 +312,7 @@
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. Uses 9mm rounds."
 	icon_state = "p92x"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm) // Can accept illegal large capacity magazines, or compact magazines.
@@ -343,7 +343,7 @@
 	desc = "A variation on the Mauser C-96, remade for a modern day. A Glithari Exports product, for gun collectors and private militaries alike. Uses 9mm stripper clips."
 	icon_state = "r9"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	load_method = SPEEDLOADER
 	max_shells = 10
 	ammo_type = /obj/item/ammo_casing/a9mm
@@ -375,7 +375,7 @@
 	icon_state = "konigin"
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
-	caliber = "9mm"
+	regex_this_caliber = /datum/caliber/a9mm
 	suppressible = TRUE
 	silenced_icon = "konigin_silencer"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
@@ -433,7 +433,7 @@
 	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
 	icon_state = "ntles"
 	item_state = "pistol"
-	caliber = "5.7x28mm"
+	regex_this_caliber = /datum/caliber/a5_7mm
 	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m57x28mm/ntles
@@ -479,7 +479,7 @@
 	desc = "This classic sidearm design utilizes an adaptable round considered by some to be superior to 9mm parabellum. Favored amongst sheild bearers in tactical units for its stability in one-handed use, and high capacity magazines."
 	icon_state = "fiveseven"
 	item_state = "pistol"
-	caliber = "5.7x28mm"
+	regex_this_caliber = /datum/caliber/a5_7mm
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
