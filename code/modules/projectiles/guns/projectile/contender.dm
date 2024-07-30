@@ -4,7 +4,7 @@
 	icon_state = "pockrifle"
 	var/icon_retracted = "pockrifle-empty"
 	item_state = "revolver"
-	caliber = ".357"
+	regex_this_caliber = /datum/caliber/a357
 	handle_casings = HOLD_CASINGS
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a357
@@ -42,11 +42,11 @@
 	..()
 
 /obj/item/gun/ballistic/contender/a44
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
 /obj/item/gun/ballistic/contender/a762
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a762
 
 /obj/item/gun/ballistic/contender/tacticool
@@ -55,11 +55,11 @@
 	icon_retracted = "pockrifle_b-empty"
 
 /obj/item/gun/ballistic/contender/tacticool/a44
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
 /obj/item/gun/ballistic/contender/tacticool/a762
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a762
 
 /obj/item/gun/ballistic/contender/holy
@@ -72,11 +72,11 @@
 	holy = TRUE
 
 /obj/item/gun/ballistic/contender/holy/a44
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44/silver
 
 /obj/item/gun/ballistic/contender/holy/a762
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a762/silver
 
 /obj/item/gun/ballistic/contender/taj
@@ -86,11 +86,11 @@
 	icon_retracted = "pockrifle_d-empty"
 
 /obj/item/gun/ballistic/contender/taj/a44
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44
 
 /obj/item/gun/ballistic/contender/taj/a762
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	ammo_type = /obj/item/ammo_casing/a762
 
 /obj/item/gun/ballistic/contender/pipegun

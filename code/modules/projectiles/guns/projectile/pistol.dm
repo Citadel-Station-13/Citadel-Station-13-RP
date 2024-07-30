@@ -6,7 +6,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m45)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	icon_state = "colt"
-	caliber = ".45"
+	regex_this_caliber = /datum/caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
@@ -88,7 +88,7 @@
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
 	projectile_type = /obj/projectile/bullet/pistol/medium
-	caliber = ".45"
+	regex_this_caliber = /datum/caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
@@ -106,7 +106,7 @@
 	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
 	icon_state = "silenced_pistol"
 	w_class = WEIGHT_CLASS_NORMAL
-	caliber = ".45"
+	regex_this_caliber = /datum/caliber/a45
 	silenced = 1
 	fire_delay = 1
 	recoil = 0
@@ -122,7 +122,7 @@
 	icon_state = "deagle"
 	item_state = "deagle"
 	damage_force = 14.0
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m44
@@ -148,7 +148,7 @@
 	desc = "Speak softly, and carry a big gun. Fires rare .75 caliber self-propelled exploding bolts--because fuck you and everything around you."
 	icon_state = "gyropistol"
 	max_shells = 8
-	caliber = ".75"
+	regex_this_caliber = /datum/caliber/a75
 	fire_sound = 'sound/weapons/railgun.ogg'
 	origin_tech = list(TECH_COMBAT = 3)
 	ammo_type = "/obj/item/ammo_casing/a75"
@@ -173,7 +173,7 @@
 
 /obj/item/gun/ballistic/gyropistol/bolter/update_icon_state()
 	. = ..()
-	icon_state = "bolt_pistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+	icon_state = "bolt_pistol-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/ballistic/gyropistol/bolter/black
 	desc = "A boxy sidearm seemingly designed for a larger hand. This one is painted black."
@@ -182,7 +182,7 @@
 
 /obj/item/gun/ballistic/gyropistol/bolter/black/update_icon_state()
 	. = ..()
-	icon_state = "bolt_pistolblack-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "empty"]"
+	icon_state = "bolt_pistolblack-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "empty"]"
 
 /obj/item/gun/ballistic/pistol
 	name = "compact pistol"
@@ -223,29 +223,30 @@
 	max_shells = 1 //literally just a barrel
 	unstable = 1
 
+	// todo: caliber types?
 	var/global/list/ammo_types = list(
-		/obj/item/ammo_casing/a357              = ".357",
-		/obj/item/ammo_casing/a9mm		        = "9mm",
-		/obj/item/ammo_casing/a45				= ".45",
-		/obj/item/ammo_casing/a10mm             = "10mm",
-		/obj/item/ammo_casing/a12g              = "12g",
-		/obj/item/ammo_casing/a12g              = "12g",
-		/obj/item/ammo_casing/a12g/pellet       = "12g",
-		/obj/item/ammo_casing/a12g/pellet       = "12g",
-		/obj/item/ammo_casing/a12g/pellet       = "12g",
-		/obj/item/ammo_casing/a12g/beanbag      = "12g",
-		/obj/item/ammo_casing/a12g/stunshell    = "12g",
-		/obj/item/ammo_casing/a12g/flare        = "12g",
-		/obj/item/ammo_casing/a762              = "7.62mm",
-		/obj/item/ammo_casing/a556              = "5.56mm"
-		)
+		/obj/item/ammo_casing/a357,
+		/obj/item/ammo_casing/a9mm,
+		/obj/item/ammo_casing/a45,
+		/obj/item/ammo_casing/a10mm,
+		/obj/item/ammo_casing/a12g,
+		/obj/item/ammo_casing/a12g,
+		/obj/item/ammo_casing/a12g/pellet,
+		/obj/item/ammo_casing/a12g/pellet,
+		/obj/item/ammo_casing/a12g/pellet,
+		/obj/item/ammo_casing/a12g/beanbag,
+		/obj/item/ammo_casing/a12g/stunshell,
+		/obj/item/ammo_casing/a12g/flare,
+		/obj/item/ammo_casing/a762,
+		/obj/item/ammo_casing/a556,
+	)
 
 /obj/item/gun/ballistic/pirate/Initialize(mapload)
 	ammo_type = pick(ammo_types)
 	desc += " Uses [ammo_types[ammo_type]] rounds."
 
 	var/obj/item/ammo_casing/ammo = ammo_type
-	caliber = initial(ammo.caliber)
+	regex_this_caliber = initial(ammo.regex_this_caliber)
 	return ..()
 
 /obj/item/gun/ballistic/pirate/consume_next_projectile(mob/user as mob)
@@ -507,7 +508,7 @@
 
 /obj/item/gun/ballistic/apinae_pistol/update_icon_state()
 	. = ..()
-	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"
+	icon_state = "apipistol-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "e"]"
 
 //Tyrmalin Weapons
 /obj/item/gun/ballistic/pirate/junker_pistol

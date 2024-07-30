@@ -5,7 +5,7 @@
 	item_state = "boltaction"
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BACK
 	//fire_sound = 'sound/weapons/rifleshot.ogg'
@@ -59,4 +59,4 @@
 
 /obj/item/gun/ballistic/apinae_stinger/update_icon_state()
 	. = ..()
-	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.stored_ammo.len, 2) : "e"]"
+	icon_state = "apigun-[ammo_magazine ? round(ammo_magazine.amount_remaining(), 2) : "e"]"

@@ -84,12 +84,12 @@
 		icon_state = "[base_state]-empty"
 		return 1
 	if(track_magazine)
-		if(!ammo_magazine.stored_ammo || ammo_magazine.stored_ammo.len == 0)
+		if(!ammo_magazine.stored_ammo || ammo_magazine.amount_remaining() == 0)
 			icon_state = "[base_state]-0"
-		else if(ammo_magazine.stored_ammo.len > default_magazine_casing_count)
+		else if(ammo_magazine.amount_remaining() > default_magazine_casing_count)
 			icon_state = "[base_state]-[default_magazine_casing_count]"
 		else
-			icon_state = "[base_state]-[ammo_magazine.stored_ammo.len]"
+			icon_state = "[base_state]-[ammo_magazine.amount_remaining()]"
 		return 1
 	else
 		icon_state = "[base_state]"
@@ -162,8 +162,8 @@
 		dat += "There are no beakers inserted!<br><br>"
 
 	if(ammo_magazine)
-		if(ammo_magazine.stored_ammo && ammo_magazine.stored_ammo.len)
-			dat += "The dart cartridge has [ammo_magazine.stored_ammo.len] shots remaining."
+		if(ammo_magazine.stored_ammo && ammo_magazine.amount_remaining())
+			dat += "The dart cartridge has [ammo_magazine.amount_remaining()] shots remaining."
 		else
 			dat += "<font color='red'>The dart cartridge is empty!</font>"
 		dat += " \[<A href='?src=\ref[src];eject_cart=1'>Eject</A>\]"

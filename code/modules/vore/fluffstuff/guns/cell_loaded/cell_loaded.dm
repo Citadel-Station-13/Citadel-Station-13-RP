@@ -99,7 +99,7 @@
 */
 /obj/item/gun/ballistic/cell_loaded/load_ammo(var/obj/item/A, mob/user)
 	. = ..()
-	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+	if(ammo_magazine && ammo_magazine.amount_remaining())
 		switch_to(ammo_magazine.stored_ammo[1])
 
 /obj/item/gun/ballistic/cell_loaded/unload_ammo(mob/user, var/allow_dump=1)

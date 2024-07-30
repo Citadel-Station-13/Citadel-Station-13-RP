@@ -1,6 +1,9 @@
 /obj/item/gun/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."
+	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  To reload, click the weapon in your hand to unload (if needed), then add the appropriate ammo.  The description \
+	will tell you what caliber you need."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -9,7 +12,7 @@
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
-	var/caliber = ".357"		//determines which casings will fit
+	var/regex_this_caliber = /datum/caliber/a357		//determines which casings will fit
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
 	var/load_method = SINGLE_CASING|SPEEDLOADER //1 = Single shells, 2 = box or quick loader, 3 = magazine
 
@@ -57,8 +60,8 @@
 		chambered = loaded[1] //load next casing.
 		if(handle_casings != HOLD_CASINGS)
 			loaded -= chambered
-	else if(ammo_magazine && ammo_magazine.stored_ammo.len)
-		chambered = ammo_magazine.stored_ammo[ammo_magazine.stored_ammo.len]
+	else if(ammo_magazine && ammo_magazine.amount_remaining())
+		chambered = ammo_magazine.stored_ammo[ammo_magazine.amount_remaining()]
 		if(handle_casings != HOLD_CASINGS)
 			ammo_magazine.stored_ammo -= chambered
 
@@ -285,7 +288,7 @@
 
 /obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
-	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
+	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.amount_remaining())
 		ammo_magazine.loc = get_turf(src.loc)
 		user.visible_message(
 			"[ammo_magazine] falls out and clatters on the floor!",
@@ -309,7 +312,7 @@
 	if(loaded)
 		bullets += loaded.len
 	if(ammo_magazine && ammo_magazine.stored_ammo)
-		bullets += ammo_magazine.stored_ammo.len
+		bullets += ammo_magazine.amount_remaining()
 	if(chambered)
 		bullets += 1
 	return bullets

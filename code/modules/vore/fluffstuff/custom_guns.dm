@@ -122,109 +122,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/imperial
-/* CITADEL CHANGE - Removes Virgo Fluff
-// jertheace : Jeremiah 'Ace' Acacius
-/obj/item/gun/ballistic/shotgun/pump/USDF/fluff/ace
-	name = "Ace's tactical shotgun" // D-model holds half as many shells as the normal version so as not OP as shit. Better than normal shotgun, worse than combat shotgun.
-	desc = "Owned by the respected (or feared?) veteran Captain of the original NSS Adephagia. Inscribed on the barrel are the words \"Speak softly, and carry a big stick.\""
-	ammo_type = /obj/item/ammo_casing/a12g/stunshell
-	max_shells = 6
 
-// bwoincognito:Tasald Corlethian
-/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian //Now that it is actually Single-Action and not hacky broken SA, I see no reason to nerf this down to .38. --Joan Risu
-	name = "\improper \"Big Iron\" revolver"
-	desc = "A .357 revolver for veteran rangers on the planet Orta. The right side of the handle has a logo for Quarion industries, and the left is the Rangers. The primary ammo for this gun is .357 rubber. According to the CentCom Chief of Security, this revolver was more controversial than it needed to be."
-	icon = 'icons/vore/custom_guns_vr.dmi'
-	icon_state = "tasaldrevolver"
-	item_state = "revolver"
-	fire_sound = 'sound/weapons/pistol.ogg'
-	ammo_type = /obj/item/ammo_casing/a357/rubber //Like I said, no reason to nerf. --Joan Risu
-	var/recentpump = 0
-	var/cocksound = 'sound/weapons/revolvercock.ogg'
-	consume_next_projectile()
-		if(chambered)
-			return chambered.BB
-		to_chat(usr, "<span class='warning'>It's a single action revolver, pull the hammer back!</span>")
-		return null
-	attack_self(mob/living/user as mob)
-		if(world.time >= recentpump + 10)
-			pump(user)
-			recentpump = world.time
-	proc/pump(mob/M as mob)
-		playsound(M, cocksound, 60, 1)
-		if(chambered)//We have a shell in the chamber
-			chambered.loc = get_turf(src)//Eject casing
-			chambered = null
-		if(loaded.len)
-			var/obj/item/ammo_casing/AC = loaded[1] //load next casing.
-			loaded -= AC //Remove casing from loaded list.
-			chambered = AC
-		update_icon()
-
-/obj/item/gun/ballistic/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user, list/params)
-	if(user.get_inactive_held_item() == src)
-		unload_ammo(user, allow_dump = 1)
-	else
-		..()
-
-// wankersonofjerkin : Glenn Pink
-/obj/item/gun/ballistic/revolver/fluff/admiral_pink_revolver
-	name = "Admiral Pink's 'Devilgun'"
-	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red rosewood grip. Uses .357 rounds." //Edgy, but based on real guns the player owns.
-	icon = 'icons/vore/custom_guns_vr.dmi'
-	icon_state = "ryan_winz"
-	item_state = "revolver"
-
-/obj/item/gun/ballistic/revolver/fluff/admiral_pink_revolver/redemption
-	name = "Admiral Pink's 'Redeemer'"
-	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 rounds." //Edgy, but based on real guns the player owns.
-
-// sasoperative : Joseph Skinner
-/obj/item/gun/ballistic/revolver/judge/fluff/sasoperative
-	name = "\"The Jury\""
-	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner. Uses 12g shells."
-	icon = 'icons/vore/custom_guns_vr.dmi'
-	icon_state = "jury"
-	item_state = "gun"
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag
-
-// Dhaeleena : Dhaeleena M'iar
-/obj/item/gun/ballistic/revolver/mateba/fluff/dhael
-	name = "Dhaeleena's engraved mateba"
-	desc = "This unique looking handgun is engraved with roses along the barrel and the cylinder as well as the initials DM under the grip. Along the middle of the barrel an engraving shows the words 'Mateba Unica 6'. Uses .357 rounds."
-	icon_state = "mateba"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a357/stun
-
-// SilencedMP5A5 : Serdykov Antoz
-/obj/item/gun/ballistic/colt/fluff/serdy
-	name = "Raikov PPS/45"
-	desc = "An expertly crafted and reliable .45 sidearm with a 7 round single-stack magazine, originally built and in 2369 for frontier men and peacekeepers. The frame and slide are nickel plated, and it has a synthetic black ivory grip. The words 'Krasnaya Raketa' are engraved on the slide near the muzzle. It's relatively thin, but heavy. It also has an ambidextrous mag release and safety lever, making it grippable in either hand comfortably."
-	icon = 'icons/vore/custom_guns_vr.dmi'
-	item_state = "raikov"
-	icon_state = "raikov"
-	fire_sound = 'sound/weapons/45pistol_vr.ogg'
-	magazine_type = /obj/item/ammo_magazine/m45/rubber
-
-/* //Commented out due to weapon change.
-/obj/item/gun/ballistic/revolver/detective/fluff/serdy //This forces it to be .38 bullets only
-	name = "Vintage S&W Model 10"
-	desc = "It's a classic S&W Model 10 revolver. This one in particular is beautifully restored with a chromed black frame and cylinder, and a nice redwood grip. The name 'Serdykov A.' is engraved into the base of the grip."
-	icon = 'icons/vore/custom_guns_vr.dmi'
-	item_state = "model10"
-	icon_state = "model10"
-	fire_sound = 'sound/weapons/deagle.ogg'
-	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	ammo_type = /obj/item/ammo_casing/a38r //Rubber rounds.
-*/
-
-// LuminescentRing : Briana Moore
-/obj/item/gun/ballistic/derringer/fluff/briana
-	name = "second-hand derringer"
-	desc = "It's a palm sized gun. One of the few things that won't break an angel's wrists. Uses 10mm rounds."
-	caliber = "10mm"
-	ammo_type = /obj/item/ammo_casing/a10mm
-END OF CITADEL CHANGES */
 // For general use
 /obj/item/gun/ballistic/automatic/stg
 	name = "\improper Sturmgewehr"
@@ -265,99 +163,6 @@ END OF CITADEL CHANGES */
 	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
 	auto_eject = 0
 
-// Removed because gun64_vr.dmi guns don't work.
-/*//-----------------------UF-ARC----------------------------------
-/obj/item/gun/ballistic/automatic/carbine/fluff/ufarc
-	name = "UF-ARC"
-	desc = "The UF-ARC is a lightweight assault rifle manufactured by the National Armory of Gaia and sold almost exclusively to the United Federation's standing army, the Military Assault Command Operations Department (MACOs)."
-	icon = 'icons/obj/gun64_vr.dmi'
-	icon_state = "ufarc"
-	icon_override = 'icons/obj/gun_vr.dmi'
-	item_state = "battlerifle_i"
-	item_icons = null
-	pixel_x = -16
-
-/obj/item/gun/ballistic/automatic/carbine/fluff/ufarc/update_icon(var/ignore_inhands)
-	..()
-	// TODO - Fix this for spriting different size magazines
-	icon_state = (ammo_magazine)? "ufarc" : "ufarc-empty"
-	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
-	if(!ignore_inhands) update_held_icon()
-
-
-
-//-----------------------G44----------------------------------
-/obj/item/gun/ballistic/automatic/carbine/fluff/g44
-	name = "G44 Rifle"
-	desc = "The G44 is a lightweight assault rifle manufactured by the National Armory of Gaia and sold almost exclusively to the United Federation's standing army, the Military Assault Command Operations Department (MACOs)."
-	icon = 'icons/obj/gun64_vr.dmi'
-	icon_state = "g44"
-	item_state = "bullpup"
-	pixel_x = -16
-
-/obj/item/gun/ballistic/automatic/carbine/fluff/g44/update_icon(var/ignore_inhands)
-	..()
-	// TODO - Fix this for spriting different size magazines
-	icon_state = (ammo_magazine)? "g44" : "g44-empty"
-	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
-	if(!ignore_inhands) update_held_icon()
-
-//-----------------------G44 Energy Variant--------------------
-/obj/item/gun/energy/gun/burst/g44e
-	name = "G44 Energy Rifle"
-	desc = "The G44 Energy is a laser variant of the G44 lightweight assault rifle manufactured by the National Armory of Gaia. Though almost exclusively to the United Federation's Military Assault Command Operations Department (MACOs) and Starfleet, it is occassionally sold to security departments for their stun capabilities."
-	icon = 'icons/obj/gun64_vr.dmi'
-	icon_state = "g44estun100"
-	item_state = "energystun100" //This is temporary.
-	fire_sound = 'sound/weapons/Taser.ogg'
-	charge_cost = 100
-	damage_force = 8
-	w_class = WEIGHT_CLASS_BULKY
-	fire_delay = 6
-	pixel_x = -16
-
-	projectile_type = /obj/projectile/beam/stun/weak
-	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
-	modifystate = "g44estun"
-
-	one_handed_penalty = 60
-
-	firemodes = list(
-		list(mode_name="stun", burst=1, projectile_type=/obj/projectile/beam/stun/weak, modifystate="g44estun", fire_sound='sound/weapons/Taser.ogg', charge_cost = 100),
-		list(mode_name="stun burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/stun/weak, modifystate="g44estun", fire_sound='sound/weapons/Taser.ogg'),
-		list(mode_name="lethal", burst=1, projectile_type=/obj/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg', charge_cost = 200),
-		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg'),
-		)*/
-
-/* CITADEL CHANGE - Removes Virgo Fluff
-// molenar:Kari Akiren
-/obj/item/gun/ballistic/shotgun/pump/rifle/fluff/kari_akiren
-	name = "clockwork rifle"
-	desc = "Brass, copper, and lots of gears. Well lubricated for fluid movement as each round is loaded, locked, and fired. Just like clockwork."
-	icon = 'icons/vore/custom_guns_vr.dmi'
-	icon_state = "clockworkrifle_icon"
-	icon_override = 'icons/vore/custom_guns_vr.dmi'
-	item_state = "clockworkrifle"
-	item_icons = null
-
-/* Permit Expired
-//Razerwing:Archer Maximus
-/obj/item/gun/ballistic/colt/fluff/archercolt
-	name = "\improper MEUSOC .45"
-	desc = "Some serious drywall work, coming up!"
-*/
-//hzdonut:Jesse Soemmer
-/obj/item/gun/ballistic/revolver/fluff/jesselemat
-	name = "Modified LeMat"
-	desc = "The LeMat Revolver is a 9 shot revolver with a secondary firing barrel for loading shotgun shells. Uses .38-Special and 12g rounds depending on the barrel. This one appears to have had it's secondary barrel sealed off and looks to be in pristine condition. Either it's brand new, or its owner takes very good care of it."
-	icon_state = "lemat"
-	max_shells = 9
-	caliber = ".38"
-	ammo_type = /obj/item/ammo_casing/a38
-	preserve_item = FALSE
-END OF CITADEL CHANGES */
-//////////////////// Energy Weapons ////////////////////
-
 // ------------ Energy Luger ------------
 /obj/item/gun/energy/gun/eluger
 	name = "energy Luger"
@@ -383,7 +188,7 @@ END OF CITADEL CHANGES */
 	icon_state = "Headdeagle"
 	item_state = "revolver"
 	fire_sound = 'sound/weapons/Gunshot.ogg'
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	magazine_type = /obj/item/ammo_magazine/m44/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m44,/obj/item/ammo_magazine/m44/rubber)
 	load_method = MAGAZINE
@@ -395,7 +200,7 @@ END OF CITADEL CHANGES */
 	cut_overlay()
 	if(!ammo_magazine)
 		return
-	var/ratio = ammo_magazine.stored_ammo.len * 100 / ammo_magazine.max_ammo
+	var/ratio = ammo_magazine.amount_remaining() * 100 / ammo_magazine.max_ammo
 	ratio = round(ratio, 33)
 	add_overlay("deagle_[ratio]")*/ // Fugly.
 
@@ -415,7 +220,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/ballistic/giskard/update_icon_state()
 	. = ..()
-	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+	if(ammo_magazine && ammo_magazine.amount_remaining())
 		icon_state = "giskardcivil"
 	else
 		icon_state = "giskardcivil_empty"
@@ -432,7 +237,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/ballistic/giskard/olivaw/update_icon_state()
 	. = ..()
-	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+	if(ammo_magazine && ammo_magazine.amount_remaining())
 		icon_state = "olivawcivil"
 	else
 		icon_state = "olivawcivil_empty"
@@ -443,7 +248,7 @@ END OF CITADEL CHANGES */
 	desc = "Are you feeling lucky, punk? Uses .44 rounds."
 	icon_state = "inspector"
 	item_state = "revolver"
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44/rubber
 	handle_casings = CYCLE_CASINGS
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
@@ -478,7 +283,7 @@ END OF CITADEL CHANGES */
 /obj/item/gun/ballistic/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
-	var/ratio = ammo_magazine.stored_ammo.len / ammo_magazine.max_ammo
+	var/ratio = ammo_magazine.amount_remaining() / ammo_magazine.max_ammo
 	if(ratio < 0.25 && ratio != 0)
 		ratio = 0.25
 	ratio = round(ratio, 0.25) * 100

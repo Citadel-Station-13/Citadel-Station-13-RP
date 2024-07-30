@@ -894,7 +894,7 @@
 		prob(4);/obj/item/ammo_magazine/clip/c45,
 		prob(4);/obj/item/ammo_magazine/clip/c9mm,
 		prob(4);/obj/item/ammo_magazine/m45uzi,
-		prob(4);/obj/item/ammo_magazine/m45uzi/wt274,
+		prob(4);/obj/item/ammo_magazine/wt274,
 		prob(4);/obj/item/ammo_magazine/m9mml,
 		prob(4);/obj/item/ammo_magazine/m9mmt,
 		prob(4);/obj/item/ammo_magazine/m57x28mmp90,

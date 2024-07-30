@@ -7,7 +7,7 @@
 	icon_state = "boltaction"
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
 	max_shells = 5
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
 	ammo_type = /obj/item/ammo_casing/a762
@@ -77,7 +77,7 @@
 	item_state = "leveraction"
 	icon_state = "leveraction"
 	max_shells = 10
-	caliber = ".357"
+	regex_this_caliber = /datum/caliber/a357
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a357
 	action_sound = 'sound/weapons/riflebolt.ogg'
@@ -100,7 +100,7 @@
 			item_state = "mareleg"
 			icon_state = "mareleg"
 			set_weight_class(WEIGHT_CLASS_NORMAL)
-			caliber = ".357"
+			regex_this_caliber = /datum/caliber/a357
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a357
 			recoil = 1 // Less Ouch
@@ -121,7 +121,7 @@
 	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
 	icon_state = "levercarabine"
 	max_shells = 10
-	caliber = ".44"
+	regex_this_caliber = /datum/caliber/a44
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a44
 	animated_pump = 1
@@ -144,7 +144,7 @@
 			item_state = "mareleg"
 			icon_state = "mareleg"
 			set_weight_class(WEIGHT_CLASS_NORMAL)
-			caliber = ".44"
+			regex_this_caliber = /datum/caliber/a44
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a44
 			recoil = 1 // Less Ouch
@@ -185,7 +185,7 @@
 	ammo_type = /obj/item/ammo_casing/a762
 	load_method = SINGLE_CASING|SPEEDLOADER
 	max_shells = 5
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	animated_pump = 1
 
@@ -201,7 +201,7 @@
 	icon_state = "boltaction-scoped"
 	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg'
 	max_shells = 5
-	caliber = "7.62mm"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)
 	load_method = SINGLE_CASING|SPEEDLOADER
