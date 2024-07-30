@@ -41,7 +41,7 @@
 	item_state = "c20r"
 	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 10
-	caliber = "10mm"
+	regex_this_caliber = /datum/caliber/a10mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	load_method = MAGAZINE
@@ -724,7 +724,7 @@
 	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from Nanotrasen."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
-	caliber = "foamdart"
+	regex_this_caliber = /datum/caliber/foam
 	magazine_type = /obj/item/ammo_magazine/mfoam/smg
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/smg)
 	fire_sound = 'sound/items/syringeproj.ogg'
@@ -751,7 +751,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_c20"
 	damage_force = 5
-	caliber = "foamdart"
+	regex_this_caliber = /datum/caliber/foam
 	magazine_type = /obj/item/ammo_magazine/mfoam/c20
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
 	projectile_type = /obj/projectile/bullet/reusable/foam
@@ -776,7 +776,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_lmgclosed100"
 	damage_force = 5
-	caliber = "foamdart"
+	regex_this_caliber = /datum/caliber/foam
 	magazine_type = /obj/item/ammo_magazine/mfoam/lmg
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
 	projectile_type = /obj/projectile/bullet/reusable/foam

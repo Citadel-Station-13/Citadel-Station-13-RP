@@ -531,7 +531,7 @@
 	icon_state = "toy_pistol"
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
-	caliber = "foamdart"
+	regex_this_caliber = /datum/caliber/foam
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)

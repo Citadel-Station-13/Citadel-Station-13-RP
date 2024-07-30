@@ -46,7 +46,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 2 // The battlerifle was known for its nasty recoil.
 	max_shells = 36
-	caliber = "9.5x40mm"
+	caliber = /datum/caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m95
 	allowed_magazines = list(/obj/item/ammo_magazine/m95)

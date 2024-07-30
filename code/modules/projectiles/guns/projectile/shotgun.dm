@@ -342,7 +342,7 @@
 	icon_state = "toy_shotgun"
 	max_shells = 8
 	damage_force = 5
-	caliber = "foamdart"
+	regex_this_caliber = /datum/caliber/foam
 	ammo_type = /obj/item/ammo_casing/foam
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
