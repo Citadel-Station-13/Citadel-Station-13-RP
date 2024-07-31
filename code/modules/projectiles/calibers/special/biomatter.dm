@@ -4,7 +4,7 @@
 /obj/item/ammo_casing/organic
 	name = "biomatter globule"
 	desc = "Globular biomatter rendered and ready for compression."
-	caliber = "organic"
+	regex_this_caliber = /datum/caliber/biomatter
 	icon_state = "globule"
 	color = "#FFE0E2"
 	projectile_type = /obj/projectile/bullet/organic
@@ -43,16 +43,19 @@
 	color = "#E6E685"
 	projectile_type = /obj/projectile/bullet/organic/wax
 	regex_this_caliber = /datum/caliber/biomatter/wax
-	materials_base = list("wax" = 100)
+	materials_base = list(
+		/datum/material/wax::id = 100,
+	)
 
 /obj/item/ammo_magazine/biovial
 	name = "bio-vial (Liquid Wax)"
 	desc = "Biological Munitions Vials, commonly referred to as bio-vials, contain liquid biomatter of some form, for use in exotic weapons systems. This one accepts wax globules."
 	icon_state = "bio_vial"
-	mag_type = MAGAZINE
-	caliber = /datum/caliber/biomatter/wax
+	ammo_caliber = /datum/caliber/biomatter/wax
 	ammo_preload = /obj/item/ammo_casing/organic/wax
-	materials_base = list("wax" = 1000)
+	materials_base = list(
+		/datum/material/wax::id = 100,
+	)
 	ammo_max = 10
 	multiple_sprites = 1
 
