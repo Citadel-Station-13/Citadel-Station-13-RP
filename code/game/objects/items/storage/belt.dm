@@ -12,6 +12,7 @@
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
+	worth_intrinsic = 50
 	var/show_above_suit = 0
 
 /obj/item/storage/belt/verb/toggle_layer()
@@ -409,6 +410,7 @@
 	icon_state = "janitor"
 	max_items = 7
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	worth_intrinsic = 35
 	insertion_whitelist = list(
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
@@ -432,6 +434,7 @@
 	name = "excavation gear-belt"
 	desc = "Can hold various excavation gear."
 	icon_state = "gear"
+	worth_intrinsic = 65
 	insertion_whitelist = list(
 		/obj/item/storage/box/samplebags,
 		/obj/item/core_sampler,

@@ -25,6 +25,8 @@
 	absorption = MATERIAL_RESISTANCE_MODERATE
 	nullification = MATERIAL_RESISTANCE_VULNERABLE
 
+	worth = 1.25
+
 /datum/material/sandstone/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "assistant statue", product = /obj/structure/statue/sandstone/assistant, amount = 10)

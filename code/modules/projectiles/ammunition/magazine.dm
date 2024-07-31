@@ -103,6 +103,11 @@
 		add_overlay(rendering_static_overlay, TRUE)
 	update_icon()
 
+/obj/item/ammo_magazine/get_containing_worth(flags)
+	. = ..()
+	var/obj/item/ammo_casing/ammo_casted = ammo_type
+	. += (isnull(initial_ammo)? max_ammo : initial_ammo) * initial(ammo_casted.worth_intrinsic)
+
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()
 	if(isnull(ammo_type))

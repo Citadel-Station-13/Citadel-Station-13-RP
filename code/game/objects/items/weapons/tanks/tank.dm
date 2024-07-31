@@ -42,6 +42,8 @@ var/list/global/tank_gauge_cache = list()
 	var/leaking = 0
 	var/wired = 0
 
+	worth_intrinsic = 50
+
 	description_info = "These tanks are utilised to store any of the various types of gaseous substances. \
 	They can be attached to various portable atmospheric devices to be filled or emptied. <br>\
 	<br>\
@@ -83,6 +85,13 @@ var/list/global/tank_gauge_cache = list()
 		qdel(TTV)
 
 	. = ..()
+
+/obj/item/tank/get_containing_worth(flags)
+	. = ..()
+	var/list/gas = air_contents.gas
+	for(var/id in gas)
+		var/datum/gas/gas_datum = global.gas_data.gases[id]
+		. += gas_datum.worth * gas[id]
 
 /obj/item/tank/examine(mob/user, dist)
 	. = ..()

@@ -132,6 +132,8 @@
 	loaded = null
 	empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
+	worth_intrinsic = 500
+
 	firemodes = list(
 		list(mode_name="high power", power_cost = 400, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=15),
 		list(mode_name="low power", power_cost = 150, projectile_type = /obj/projectile/bullet/magnetic/heated/weak, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=15),
@@ -151,6 +153,8 @@
 	initial_capacitor_type = /obj/item/stock_parts/capacitor
 
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
+
+	worth_intrinsic = 350
 
 	firemodes = list(
 		list(mode_name="lethal", power_cost = 2000, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=0),
@@ -183,6 +187,8 @@
 
 	weight = ITEM_WEIGHT_GUN_NORMAL
 	encumbrance = ITEM_ENCUMBRANCE_GUN_NORMAL
+
+	worth_intrinsic = 500
 
 	power_cost = 200
 	projectile_type = /obj/projectile/bullet/magnetic/flechette/hunting

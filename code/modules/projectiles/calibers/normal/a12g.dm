@@ -13,12 +13,14 @@
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
+	worth_intrinsic = 5
 
 /obj/item/ammo_casing/a12g/pellet
 	name = "buckshot shell"
 	desc = "A 12 gauge shell."
 	icon_state = "red"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun
+	worth_intrinsic = 5
 
 /obj/item/ammo_casing/a12g/blank
 	name = "blank shell"
@@ -26,6 +28,7 @@
 	icon_state = "white"
 	projectile_type = /obj/projectile/bullet/blank
 	materials_base = list(MAT_STEEL = 90)
+	worth_intrinsic = 1.5
 
 /obj/item/ammo_casing/a12g/practice
 	name = "practice shell"
@@ -33,6 +36,7 @@
 	icon_state = "white"
 	projectile_type = /obj/projectile/bullet/practice
 	materials_base = list(MAT_STEEL = 90)
+	worth_intrinsic = 1.5
 
 /obj/item/ammo_casing/a12g/beanbag
 	name = "beanbag shell"
@@ -40,6 +44,7 @@
 	icon_state = "green"
 	projectile_type = /obj/projectile/bullet/shotgun/beanbag
 	materials_base = list(MAT_STEEL = 180)
+	worth_intrinsic = 3.5
 
 /obj/item/ammo_casing/a12g/improvised
 	name = "improvised shell"
@@ -47,6 +52,7 @@
 	icon_state = "improv"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_improvised
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
+	worth_intrinsic = 3.5
 
 /obj/item/ammo_casing/a12g/stunshell
 	name = "stun shell"
@@ -54,6 +60,7 @@
 	icon_state = "stun"
 	projectile_type = /obj/projectile/energy/electrode/stunshot
 	materials_base = list(MAT_STEEL = 360, MAT_GLASS = 720)
+	worth_intrinsic = 7.5
 
 /obj/item/ammo_casing/a12g/flare
 	name = "flare shell"
@@ -61,6 +68,7 @@
 	icon_state = "flare"
 	projectile_type = /obj/projectile/energy/flash/flare
 	materials_base = list(MAT_STEEL = 90, MAT_GLASS = 90)
+	worth_intrinsic = 3.5
 
 /obj/item/ammo_casing/a12g/techshell
 	name = "unloaded technological shell"
@@ -68,6 +76,7 @@
 	icon_state = "tech"
 	projectile_type = null
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
+	worth_intrinsic = 30
 
 /obj/item/ammo_casing/a12g/techshell/meteorslug
 	name = "meteorslug shell"
@@ -75,6 +84,7 @@
 	icon_state = "meteor"
 	projectile_type = /obj/projectile/meteor/slug
 	materials_base = list(MAT_STEEL = 500, MAT_GOLD = 200)
+	worth_intrinsic = 150
 
 /obj/item/ammo_casing/a12g/techshell/emp
 	name = "ion shell"
@@ -82,6 +92,7 @@
 	icon_state = "emp"
 	projectile_type = /obj/projectile/scatter/ion
 	materials_base = list(MAT_STEEL = 360, MAT_URANIUM = 240)
+	worth_intrinsic = 50
 
 /obj/item/ammo_casing/a12g/techshell/pulseslug
 	name = "pulse slug"
@@ -91,12 +102,14 @@
 	icon_state = "pulse"
 	projectile_type = /obj/projectile/beam/pulse/shotgun
 	materials_base = list(MAT_STEEL = 500, MAT_SILVER = 200)
+	worth_intrinsic = 75
 
 /obj/item/ammo_casing/a12g/techshell/dragonsbreath
 	name = "dragonsbreath shell"
 	desc = "A shotgun shell which fires a spread of incendiary pellets."
 	icon_state = "dragon"
 	projectile_type = /obj/projectile/bullet/incendiary/shotgun
+	worth_intrinsic = 75
 
 /obj/item/ammo_casing/a12g/techshell/frag12
 	name = "FRAG-12 slug"
@@ -104,6 +117,7 @@
 	icon_state = "explosive"
 	projectile_type = /obj/projectile/bullet/shotgun/frag12
 	materials_base = list(MAT_STEEL = 500, MAT_PHORON = 200)
+	worth_intrinsic = 75
 
 /obj/item/ammo_casing/a12g/techshell/laserslug
 	name = "scatter laser shell"
@@ -111,6 +125,7 @@
 	icon_state = "laser"
 	projectile_type = /obj/projectile/scatter/laser
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
+	worth_intrinsic = 50
 
 /obj/item/ammo_casing/a12g/silver
 	name = "Silver shotgun shell"
@@ -118,6 +133,7 @@
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silver
 	materials_base = list(MAT_STEEL = 360, MAT_SILVER = 240)
+	worth_intrinsic = 75
 
 /obj/item/ammo_casing/a12g/stake
 	name = "Wooden stake shell"
@@ -125,6 +141,7 @@
 	icon_state = "stake"
 	projectile_type = /obj/projectile/bullet/shotgun/stake
 	materials_base = list(MAT_STEEL = 500)
+	worth_intrinsic = 30
 
 //* Magazines - Drums
 

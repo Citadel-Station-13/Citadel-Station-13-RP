@@ -4,6 +4,7 @@
 	icon_state = "holster"
 	slot = ACCESSORY_SLOT_WEAPON //Legacy/balance purposes
 	concealed_holster = 1
+	worth_intrinsic = 75 // milrp tax is real
 	var/obj/item/holstered = null
 	var/list/can_hold
 	var/list/cant_hold
