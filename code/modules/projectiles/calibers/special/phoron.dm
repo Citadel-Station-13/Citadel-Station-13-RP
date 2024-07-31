@@ -1,6 +1,16 @@
 /datum/caliber/phoron_shard
 	caliber = "phoron-shrapnel"
 
+//* Ammunition *//
+
+/obj/item/ammo_casing/phoron_shrap
+	name = "phoron shrapnel"
+	desc = "Should you really be holding this?"
+	caliber = "phoron shrapnel"
+	icon_state = "phoronshrap"
+	projectile_type = /obj/projectile/bullet/incendiary/phoronshrap
+	casing_flags = CASING_DELETE
+
 //* Magazine *//
 
 /obj/item/ammo_magazine/mphoronshot
