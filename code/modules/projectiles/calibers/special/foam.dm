@@ -24,9 +24,8 @@
 	name = "abstract toy magazine"
 	desc = "You shouldn't be seeing this, contact a Maintainer!"
 	icon_state = "toy_pistol"
-	mag_type = MAGAZINE
 	materials_base = list(MAT_PLASTIC = 480)
-	caliber = "foamdart"
+	ammo_caliber = /datum/caliber/foam
 	ammo_preload = /obj/item/ammo_casing/foam
 	ammo_max = 8
 	multiple_sprites = 1

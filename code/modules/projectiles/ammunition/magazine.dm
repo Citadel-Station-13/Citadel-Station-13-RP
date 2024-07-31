@@ -24,6 +24,10 @@
 	/// is this a speedloader / supports being a speedloader?
 	/// speedloader can only be used with internal ammo guns, and only if they allow speedloaders
 	var/is_speedloader = FALSE
+	/// is this a magazine by default?
+	///
+	/// * overridden by is_speedloader; if that's TRUE and [is_magazine_regardless] isn't, we can't be used as one.
+	var/is_magazine = TRUE
 	/// is this a magazine despite being a speedloader? if set to TRUE, this still works with
 	/// guns that accept magazines, even if it's a speedloader
 	var/is_magazine_regardless = FALSE
