@@ -110,7 +110,7 @@
 /obj/item/ammo_magazine/get_containing_worth(flags)
 	. = ..()
 	var/obj/item/ammo_casing/ammo_casted = ammo_type
-	. += (isnull(initial_ammo)? max_ammo : initial_ammo) * initial(ammo_casted.worth_intrinsic)
+	. += (isnull(ammo_current)? ammo_max : ammo_current) * initial(ammo_casted.worth_intrinsic)
 
 /obj/item/ammo_magazine/detect_material_base_costs()
 	. = ..()

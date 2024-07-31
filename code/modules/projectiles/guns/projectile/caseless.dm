@@ -4,6 +4,7 @@
 	icon_state = "caseless"
 	item_state = "caseless"
 	w_class = WEIGHT_CLASS_BULKY
+	regex_this_caliber = /datum/caliber/
 	caliber = "5mm caseless"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
