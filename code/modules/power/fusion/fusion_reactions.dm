@@ -125,7 +125,7 @@ var/list/fusion_reactions
 		if(T && (holder.z == T.z))
 			if(istype(mob, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = mob
-				H.hallucination += rand(100,150)
+				H.adjustHallucination(rand(100,150))
 
 	for(var/obj/machinery/fusion_fuel_injector/I in range(world.view, origin))
 		if(I.cur_assembly && I.cur_assembly.fuel_type == "supermatter")

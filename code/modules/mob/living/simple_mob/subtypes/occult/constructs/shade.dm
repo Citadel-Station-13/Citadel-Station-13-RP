@@ -52,7 +52,7 @@
 /mob/living/simple_mob/construct/shade/death()
 	..()
 	for(var/mob/M in viewers(src, null))
-		if((M.client && !( M.blinded )))
+		if((M.client && !( M.has_status_effect(/datum/status_effect/sight/blindness) )))
 			M.show_message("<font color='red'>[src] lets out a contented sigh as their form unwinds.</font>")
 
 	ghostize()

@@ -36,17 +36,6 @@
 	// we have parallax and don't need this anymore
 	// icon_state = SPACE_ICON_STATE(x, y, z)
 
-	// We might be an edge
-	if(y == world.maxy || forced_dirs & NORTH)
-		edge |= NORTH
-	else if(y == 1 || forced_dirs & SOUTH)
-		edge |= SOUTH
-
-	if(x == 1 || forced_dirs & WEST)
-		edge |= WEST
-	else if(x == world.maxx || forced_dirs & EAST)
-		edge |= EAST
-
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
 
@@ -84,10 +73,11 @@
 /turf/space/is_open()
 	return TRUE
 
-// Override for space turfs, since they should never hide anything
-/turf/space/levelupdate()
-	for(var/obj/O in src)
-		O.hide(0)
+/turf/space/is_plating()
+	return FALSE
+
+/turf/space/hides_underfloor_objects()
+	return FALSE
 
 /turf/space/is_solid_structure()
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
@@ -161,16 +151,6 @@
 		// Space shouldn't have weather of the sort planets with atmospheres do.
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
-
-/turf/space/Entered(var/atom/movable/A)
-	. = ..()
-
-	if(edge)
-		addtimer(CALLBACK(src, PROC_REF(on_atom_edge_touch), A), 0)
-
-/turf/space/proc/on_atom_edge_touch(atom/movable/AM)
-	if(!QDELETED(AM) && (AM.loc == src))
-		AM.touch_map_edge()
 
 
 //// Special variants used in various maps ////

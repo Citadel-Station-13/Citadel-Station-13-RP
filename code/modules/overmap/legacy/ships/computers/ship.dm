@@ -115,7 +115,7 @@
 	unlook(user)
 
 /obj/machinery/computer/ship/check_eye(mob/user, vis_update)
-	if(!get_dist(user, src) > 1 || user.blinded || !linked)
+	if(!get_dist(user, src) > 1 || user.has_status_effect(/datum/status_effect/sight/blindness) || !linked)
 		unlook(user, vis_update)
 		return -1
 	else

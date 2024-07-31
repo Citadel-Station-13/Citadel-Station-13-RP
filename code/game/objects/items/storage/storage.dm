@@ -3,6 +3,7 @@
 	icon = 'icons/obj/storage.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
 	w_class = WEIGHT_CLASS_NORMAL
+	rad_flags = NONE
 	show_messages = 1
 
 	//* Directly passed to storage system. *//
@@ -45,11 +46,14 @@
 	/// set to prevent us from spawning starts_with
 	var/empty = FALSE
 
-/obj/item/storage/Initialize(mapload)
+/obj/item/storage/Initialize(mapload, empty)
 	. = ..()
 	initialize_storage()
-	spawn_contents()
-	legacy_spawn_contents()
+	if(!empty)
+		spawn_contents()
+		legacy_spawn_contents()
+	else
+		starts_with = null
 
 /**
  * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.

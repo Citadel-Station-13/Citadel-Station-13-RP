@@ -571,3 +571,12 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	if(prob(75))
 		new /obj/item/storage/backpack/dufflebag/sec(src)
 	return ..()
+
+/obj/structure/closet/secure_closet/pelletguns
+	name = "pellet gun lockers"
+	desc = "Contains some pellet guns and pellets for recreational shooting. Can be issued to civilians without worry."
+	closet_appearance = /singleton/closet_appearance/secure_closet/security
+	req_access = list(ACCESS_SECURITY_BRIG)
+	starts_with = list(
+		/obj/item/gun/ballistic/caseless/pellet = 4,
+		/obj/item/ammo_magazine/pellets = 4)

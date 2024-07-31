@@ -50,6 +50,7 @@
 	poison_type = null
 
 	vision_flags = SEE_SELF|SEE_MOBS
+	vision_organ = O_EYES
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,

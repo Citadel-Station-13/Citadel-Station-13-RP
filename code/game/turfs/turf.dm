@@ -6,7 +6,6 @@
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	luminosity = 1
-	level = 1
 
 	//* Atmospherics
 	/**
@@ -362,10 +361,6 @@
 /turf/proc/is_plating()
 	return 0
 
-/turf/proc/levelupdate()
-	for(var/obj/O in src)
-		O.hide(O.hides_under_flooring() && !is_plating())
-
 /turf/proc/AdjacentTurfs(var/check_blockage = TRUE)
 	. = list()
 	for(var/t in (trange(1,src) - src))
@@ -645,3 +640,31 @@
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1
+
+//* Underfloor *//
+
+/**
+ * returns if we should hide underfloor objects
+ *
+ * * override this on child types for speed!
+ * * if the turf has an is_plating() override, it probably needs an override for this!
+ *
+ * @return a truthy value. Do not use this value for anything else; all we care is whether or not it's truthy.
+ */
+/turf/proc/hides_underfloor_objects()
+	return !is_plating()
+
+/**
+ * tell all objects on us to reconsider their underfloor status
+ *
+ * we are always called at mapload by turfs that can hide underfloor objects,
+ * because objs are configured to only check themselves outside of mapload.
+ */
+/turf/proc/update_underfloor_objects()
+	var/we_should_cover = hides_underfloor_objects()
+	for(var/obj/thing in contents)
+		if(thing.hides_underfloor == OBJ_UNDERFLOOR_DISABLED)
+			continue
+		thing.update_hiding_underfloor(
+			(thing.hides_underfloor != OBJ_UNDERFLOOR_NEVER) && we_should_cover,
+		)

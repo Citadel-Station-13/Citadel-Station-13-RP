@@ -614,7 +614,7 @@
 	else if(eyes_covered)
 		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperspray!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
-		M.Blind(effective_strength)
+		M.apply_status_effect(/datum/status_effect/sight/blindness, effective_strength )
 		M.afflict_stun(20 * 5)
 		M.afflict_paralyze(20 * 5)
 		if(alien != IS_SLIME)
@@ -627,7 +627,7 @@
 	else// Oh dear :D
 		to_chat(M, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
-		M.Blind(effective_strength * 2)
+		M.apply_status_effect(/datum/status_effect/sight/blindness, effective_strength * 2 )
 		M.afflict_stun(20 * 5)
 		M.afflict_paralyze(20 * 5)
 		if(alien != IS_SLIME)

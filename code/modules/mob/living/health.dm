@@ -75,9 +75,7 @@
 	//! WARNING: LEGACY CODE
 	sdisabilities = 0 // ???
 	disabilities = 0 // ???
-	blinded = 0
-	SetBlinded(0)
-	eye_blind = 0
+	remove_status_effect(/datum/status_effect/sight/blindness)
 	ear_deaf = 0
 	ear_damage = 0
 	failed_last_breath = 0

@@ -168,7 +168,7 @@
 // Call this to add a modifier to a mob. First argument is the modifier type you want, second is how long it should last, in ticks.
 // Third argument is the 'source' of the modifier, if it's from someone else.  If null, it will default to the mob being applied to.
 // The SECONDS/MINUTES macro is very helpful for this.  E.g. M.add_modifier(/datum/modifier/example, 5 MINUTES)
-/mob/living/proc/add_modifier(var/modifier_type, var/expire_at = null, var/mob/living/origin = null)
+/mob/living/proc/add_modifier(var/modifier_type, var/duration = null, var/mob/living/origin = null, silent = FALSE)
 	// First, check if the mob already has this modifier.
 	for(var/datum/modifier/M in modifiers)
 		if(ispath(modifier_type, M))
@@ -179,8 +179,8 @@
 					break // No point checking anymore.
 				if(MODIFIER_STACK_EXTEND)
 					// Not allow to add a second instance, but we can try to prolong the first instance.
-					if(expire_at && world.time + expire_at > M.expire_at)
-						M.expire_at = world.time + expire_at
+					if(duration && world.time + duration > M.expire_at)
+						M.expire_at = world.time + duration
 					return
 
 	// If we're at this point, the mob doesn't already have it, or it does but stacking is allowed.
@@ -188,9 +188,9 @@
 	if(!mod.can_apply(src))
 		qdel(mod)
 		return
-	if(expire_at)
-		mod.expire_at = world.time + expire_at
-	if(mod.on_created_text)
+	if(duration)
+		mod.expire_at = world.time + duration
+	if(mod.on_created_text && !silent)
 		to_chat(src, mod.on_created_text)
 	modifiers.Add(mod)
 	mod.on_applied()
@@ -226,8 +226,12 @@
 		M.expire(silent)
 
 // Checks if the mob has a modifier type.
-/mob/living/proc/has_modifier_of_type(var/modifier_type)
+/mob/living/has_modifier_of_type(var/modifier_type)
 	return get_modifier_of_type(modifier_type) ? TRUE : FALSE
+
+// Always False, just so I can replace blinded checks with modifier checks
+/mob/proc/has_modifier_of_type(var/modifier_type)
+	return FALSE
 
 // Gets the first instance of a specific modifier type or subtype.
 /mob/living/proc/get_modifier_of_type(var/modifier_type)

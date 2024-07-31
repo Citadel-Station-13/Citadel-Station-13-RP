@@ -25,6 +25,8 @@
 	absorption = MATERIAL_RESISTANCE_EXTREME
 	nullification = MATERIAL_RESISTANCE_HIGH
 
+	worth = 200 // holy moly!
+
 	// you didn't think you were getting the stats for free now did you
 	material_traits = list(
 		/datum/material_trait/radioactive = RAD_INTENSITY_MAT_SUPERMATTER,

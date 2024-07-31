@@ -1102,6 +1102,17 @@
 	max_ammo = 10
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/pellets
+	name = "box of pellets"
+	desc = "A box containing small pellets for a pellet gun."
+	icon_state = "pelletbox"
+	caliber = "pellet"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/p_pellet
+	materials_base = list(MAT_PLASTIC = 600)
+	max_ammo = 50
+	multiple_sprites = 1
+
 /obj/item/ammo_magazine/mcompressedbio/compact
 	max_ammo = 10
 

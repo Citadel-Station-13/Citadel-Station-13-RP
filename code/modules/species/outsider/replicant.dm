@@ -36,6 +36,8 @@
 	siemens_coefficient = 0.9
 	heal_rate = 0
 
+	vision_organ = O_EYES
+
 	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR
 

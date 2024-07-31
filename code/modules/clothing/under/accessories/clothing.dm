@@ -57,6 +57,7 @@
 	siemens_coefficient = 0.9
 	w_class = WEIGHT_CLASS_NORMAL
 	slot = ACCESSORY_SLOT_OVER
+	worth_intrinsic = 150
 
 /obj/item/clothing/accessory/poncho/equipped(mob/user, slot, flags) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
@@ -133,7 +134,7 @@
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
 	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
-	action_button_name = "Adjust Cloak"
+	item_action_name = "Adjust Cloak"
 
 /obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user)
 	. = ..()
@@ -208,7 +209,7 @@
 		/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone,
 		/obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/material/knife/tacknife/survival/bone, /obj/item/melee/ashlander,
 		/obj/item/gun/ballistic/musket/pistol)
-	action_button_name = "Adjust Cloak"
+	item_action_name = "Adjust Cloak"
 
 /*
  * Cloak

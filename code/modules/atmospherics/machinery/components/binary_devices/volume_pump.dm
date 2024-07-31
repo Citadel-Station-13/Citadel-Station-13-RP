@@ -3,7 +3,6 @@
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "volumepump"
-	level = 1
 
 	name = "high power gas pump"
 	desc = "A pump. Has double the power rating of the standard gas pump."

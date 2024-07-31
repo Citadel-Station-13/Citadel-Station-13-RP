@@ -1037,6 +1037,28 @@ blockquote.brass {
   color: #FF9100;
 }
 
+/*pay attention to the votes.*/
+.votenotification {
+  color: #490049;
+  font-size: 125%;
+  font-weight: bold;
+  animation: votenotification 3000ms infinite;
+}
+
+@keyframes votenotification {
+  0% {
+    color: #490049;
+  }
+
+  50% {
+    color: #ff00ff;
+  }
+
+  100% {
+    color: #490049;
+  }
+}
+
 .hypnophrase {
   color: #0d0d0d;
   font-weight: bold;

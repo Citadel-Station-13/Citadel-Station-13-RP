@@ -51,6 +51,10 @@
 	regenerate_icons()
 	update_transform()
 
+	//Permanent blindness due to stupidly setup vision organs
+	if(!species.vision_organ)
+		add_blindness_source(TRAIT_BLINDNESS_SPECIES)
+
 //! WARNING SHITCODE REMOVE LATER
 /mob/living/carbon/human/LateInitialize()
 	. = ..()
@@ -104,7 +108,7 @@
 		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
 /mob/living/carbon/human/legacy_ex_act(severity)
-	if(!blinded)
+	if(!has_status_effect(/datum/status_effect/sight/blindness))
 		flash_eyes()
 
 	var/shielded = 0

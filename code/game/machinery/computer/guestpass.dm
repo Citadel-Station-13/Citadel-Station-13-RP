@@ -210,8 +210,12 @@
 				usr.action_feedback(SPAN_NOTICE("You insert [the_card] into [src]."), src)
 				return TRUE
 			var/obj/item/card/id/the_card = usr.get_active_held_item()
-			if(istype(the_card) && !usr.attempt_void_item_for_installation(the_card))
-				return FALSE
+			if(istype(the_card))
+				if(istype(the_card, /obj/item/card/id/guest))
+					usr.action_feedback(SPAN_NOTICE("You try to swap [the_card] into \the [src], but it won't accept guest passes."))
+					return FALSE
+				if(!usr.attempt_void_item_for_installation(the_card))
+					return FALSE
 			usr.grab_item_from_interacted_with(giver, src)
 			eject_id()
 			if(istype(the_card))

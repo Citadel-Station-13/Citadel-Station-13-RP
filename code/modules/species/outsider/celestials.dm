@@ -31,6 +31,7 @@
 
 	//Angels glow in the dark.
 	has_glowing_eyes = TRUE
+	vision_organ = O_EYES
 
 	//Physical resistances and Weaknesses.
 	flash_mod = 0.5
@@ -137,6 +138,7 @@
 
 	//Demons glow in the dark.
 	has_glowing_eyes = TRUE
+	vision_organ = O_EYES
 
 	//Physical resistances and Weaknesses.
 	flash_mod = 3.0

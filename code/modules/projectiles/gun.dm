@@ -31,6 +31,8 @@
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
+	description_info = "This is a gun.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+		then click where you want to fire."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
@@ -566,7 +568,7 @@
 		for(var/mob/living/L in oview(2,user))
 			if(L.stat)
 				continue
-			if(L.blinded)
+			if(L.has_status_effect(/datum/status_effect/sight/blindness))
 				to_chat(L, "You hear a [fire_sound_text]!")
 				continue
 			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")

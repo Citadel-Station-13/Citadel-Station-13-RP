@@ -70,7 +70,7 @@
 	if(!R.key)
 		for(var/mob/observer/dead/ghost in GLOB.player_list)
 			if(ghost.mind && ghost.mind.current == R)
-				R.key = ghost.key
+				ghost.transfer_client_to(R)
 
 	R.set_stat(CONSCIOUS)
 	dead_mob_list -= R

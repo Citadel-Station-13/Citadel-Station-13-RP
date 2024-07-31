@@ -3,18 +3,26 @@
 /// Controls how many buckets should be kept, each representing a tick. (1 minutes worth)
 #define BUCKET_LEN (world.fps * BUCKET_AMOUNT_SECONDS)
 /// Helper for getting the correct bucket for a given timer
-#define BUCKET_POS(timer) ((round(DS2TICKS(timer.timeToRun - SStimer.head_offset)) % BUCKET_LEN) + 1)
-// #define BUCKET_POS(timer) (((round((timer.timeToRun - SStimer.head_offset) / world.tick_lag)+1) % BUCKET_LEN)||BUCKET_LEN) - OLD FROM /tg/
+#define BUCKET_POS(timer) ((ceil(DS2TICKS(timer.timeToRun - SStimer.head_offset)) % BUCKET_LEN) + 1)
 /// Gets the maximum time at which timers will be invoked from buckets, used for deferring to secondary queue.
-#define TIMER_MAX (SStimer.head_offset + (BUCKET_AMOUNT_SECONDS SECONDS) - world.tick_lag + TICKS2DS(SStimer.practical_offset - 1))
+#define TIMER_MAX (SStimer.head_offset + TICKS2DS(BUCKET_LEN + SStimer.practical_offset - 1))
 // Explanation of the above:
 // Head offset is front of timer queue
 // We then store BUCKET_AMOUNT_SECONDS seconds of timers after that, **minus** world.tick_lag because buckets[1] is actually the 0th tick, not the 1st tick,
 // so buckets[buckets.len] is the second to last tick, while the last tick rolls over
 // Then, practical offset is added to it, because we can roll timers over from the "next" set of timers marked by head_offset as long as we don't insert to the same or a forward bucket from practical offset.
 // #define TIMER_MAX (world.time + TICKS2DS(min(BUCKET_LEN-(SStimer.practical_offset-DS2TICKS(world.time - SStimer.head_offset))-1, BUCKET_LEN-1))) - OLD FROM /tg/
+
 /// Max float with integer precision
 #define TIMER_ID_MAX (2**24)
+/// sanitize a timer's wait
+#define SANITIZE_TIMER_WAIT(WAIT) max(CEILING(WAIT, world.tick_lag), world.tick_lag)
+
+// todo: while this subsystem generally works, it is not at all guarded against when world.time or world.tick_lag
+//       is an imprecise value, like a repeating decimal.
+//       at some point, we need to audit the math in here for ourselves
+// todo: there is a lot of micro-optimizations that can still be done here, anywhere from not generating name eagerly (string ops bad),
+//       to touching up and re-verifying the math.
 
 /**
  * # Timer Subsystem
@@ -192,6 +200,9 @@ SUBSYSTEM_DEF(timer)
 				var/bucketNew = timer.bucketJoin()
 				if(log_all_loop_flagged-- > 0)
 					subsystem_log("TIMER DEBUG: Looping timer reinserted from buckets [bucketOld] --> [bucketNew]: [get_timer_debug_string(timer)] at head offset [head_offset], practical offset [practical_offset], world time [world.time]")
+				else if(bucketOld == bucketNew)
+					subsystem_log("TIMER LOOP GUARD: Looping timer reinserted from buckets [bucketOld] --> [bucketNew]: [get_timer_debug_string(timer)] at head offset [head_offset], practical offset [practical_offset], world time [world.time]")
+					timer.bucketEject() // gtfo
 #else
 				timer.bucketJoin()
 #endif
@@ -249,7 +260,7 @@ SUBSYSTEM_DEF(timer)
  */
 /datum/controller/subsystem/timer/proc/reset_buckets()
 	var/list/bucket_list = src.bucket_list // Store local reference to datum var, this is faster
-	var/list/alltimers = list()
+	var/list/datum/timedevent/alltimers = list()
 
 	// Get all timers currently in the buckets
 	for (var/bucket_head in bucket_list)
@@ -312,6 +323,9 @@ SUBSYSTEM_DEF(timer)
 			if (timer.callBack)
 				qdel(timer)
 			continue
+
+		// Sanitize wait, if ticklag changed
+		timer.wait = SANITIZE_TIMER_WAIT(timer.wait)
 
 		// Insert the timer into the bucket, and perform necessary circular doubly-linked list operations
 		new_bucket_count++
@@ -669,7 +683,7 @@ SUBSYSTEM_DEF(timer)
 		SSdpc.queued_calls += callback
 		return
 
-	wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
+	wait = SANITIZE_TIMER_WAIT(wait)
 
 	if(wait >= INFINITY)
 		CRASH("Attempted to create timer with INFINITY delay")
@@ -745,3 +759,4 @@ SUBSYSTEM_DEF(timer)
 #undef BUCKET_POS
 #undef TIMER_MAX
 #undef TIMER_ID_MAX
+#undef SANITIZE_TIMER_WAIT

@@ -18,7 +18,7 @@
 	blood_overlay_type = "armor"
 	weight = ITEM_WEIGHT_BASELINE
 	armor_type = /datum/armor/none
-	action_button_name = "Toggle Shield Projector"
+	item_action_name = "Toggle Shield Projector"
 	var/active = 0
 	var/damage_to_energy_multiplier = 50.0 //Determines how much energy to charge for blocking, e.g. 20 damage attack = 750 energy cost
 	var/datum/effect_system/spark_spread/spark_system = null
@@ -79,9 +79,7 @@
 		return
 	active = !active
 	to_chat(user, "<span class='notice'>You [active ? "" : "de"]activate \the [src].</span>")
-	update_icon()
-	user.update_inv_wear_suit()
-	user.update_action_buttons()
+	update_full_icon()
 
 /obj/item/clothing/suit/armor/shield/update_icon()
 	icon_state = "shield_armor_[active]"

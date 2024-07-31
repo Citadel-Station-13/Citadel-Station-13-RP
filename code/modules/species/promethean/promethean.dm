@@ -95,6 +95,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 		O_REGOXY   = /obj/item/organ/internal/regennetwork/oxy,
 		O_REGTOX   = /obj/item/organ/internal/regennetwork/tox,
 	)
+	vision_organ = O_BRAIN //THey only really have the brain as neural point
 
 	dispersed_eyes = TRUE
 

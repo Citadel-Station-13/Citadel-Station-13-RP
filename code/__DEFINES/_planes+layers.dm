@@ -323,6 +323,13 @@
 #define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
+ *! -- Debug Plane
+ *? For things like map landmarks
+ */
+#define DEBUG_PLANE 23
+#define DEBUG_LAYER_AREA_OVERLAYS 100
+
+/**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~

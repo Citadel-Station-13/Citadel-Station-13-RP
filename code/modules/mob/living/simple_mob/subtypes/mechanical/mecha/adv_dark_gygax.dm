@@ -124,15 +124,13 @@
 	damage = 20
 	damage_type = BURN
 	damage_flag = ARMOR_LASER
+	speed = 5 * WORLD_ICON_SIZE
+	homing_turn_speed = 85
 
 /obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	..()
 	if(target)
 		set_homing_target(target)
-
-/obj/projectile/energy/homing_bolt/fire(angle, atom/direct_target)
-	..()
-	set_pixel_speed(0.5)
 
 #define ELECTRIC_ZAP_POWER 20000
 
@@ -171,8 +169,8 @@
 				if(L && L.has_polaris_AI()) // Some mobs delete themselves when dying.
 					L.ai_holder.react_to_attack_polaris(src)
 
-			else if(istype(thing, /obj/mecha))
-				var/obj/mecha/M = thing
+			else if(istype(thing, /obj/vehicle/sealed/mecha))
+				var/obj/vehicle/sealed/mecha/M = thing
 				M.take_damage_legacy(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
 
 		sleep(1 SECOND)

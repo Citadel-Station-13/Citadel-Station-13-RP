@@ -34,7 +34,7 @@
 	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0
-	range = 6 //Scary name, but just deletes the projectile after this range
+	range = WORLD_ICON_SIZE * 6 //Scary name, but just deletes the projectile after this range
 
 /obj/projectile/pummel/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(isliving(target))

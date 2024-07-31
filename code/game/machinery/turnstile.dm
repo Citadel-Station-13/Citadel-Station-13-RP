@@ -3,6 +3,7 @@
 	desc = "A mechanical door that permits one-way access and prevents tailgating."
 	icon = 'icons/obj/turnstile.dmi'
 	icon_state = "turnstile_map"
+	armor_type = /datum/armor/door/airlock
 	power_channel = ENVIRON
 	density = FALSE
 	anchored = TRUE
@@ -93,3 +94,16 @@
 /obj/machinery/turnstile/exit
 	name = "\improper Exit"
 	req_one_access = list(112)
+
+
+/obj/machinery/turnstile/resort
+	name = "\improper Park Entrance"
+	req_one_access = list(250)
+
+/obj/machinery/turnstile/resort/premium
+	name = "\improper VIPs Only"
+	req_one_access = list(251)
+
+/obj/machinery/turnstile/resort/exit
+	name = "\improper Exit"
+	req_one_access = list()

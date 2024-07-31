@@ -13,6 +13,7 @@
 	use_power = USE_POWER_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 15000	//15000 W ~ 20 HP
+	hides_underfloor_underlays = TRUE
 
 	var/injecting = 0
 
@@ -21,8 +22,6 @@
 	var/frequency = 0
 	var/id = null
 	var/datum/radio_frequency/radio_connection
-
-	level = 1
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/Initialize(mapload)
 	. = ..()
@@ -193,9 +192,6 @@
 	spawn(2)
 		broadcast_status()
 	update_icon()
-
-/obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, list/params)
 	ui_interact(user)

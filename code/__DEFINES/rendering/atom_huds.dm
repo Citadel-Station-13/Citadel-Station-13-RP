@@ -8,3 +8,6 @@
 #define ATOM_HUD_SOURCE_OBSERVER "observer"
 #define ATOM_HUD_SOURCE_NIF "nif"
 #define ATOM_HUD_SOURCE_AUTOGRANT "autogrant"
+
+/// pass in atom ref to vehicle
+#define ATOM_HUD_SOURCE_VEHICLE(ENTITY) "mech-[ref(ENTITY)]"
