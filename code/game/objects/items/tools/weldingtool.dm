@@ -17,6 +17,8 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 
+	worth_intrinsic = 35
+
 	//Cost to make in the autolathe
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 30)
 
@@ -575,6 +577,7 @@
 	icon_state = "arcwelder"
 	max_fuel = 0	//We'll handle the consumption later.
 	item_state = "ewelder"
+	worth_intrinsic = 70
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
 	var/cell_type = /obj/item/cell/device
