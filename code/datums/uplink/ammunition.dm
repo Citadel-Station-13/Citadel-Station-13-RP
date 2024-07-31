@@ -8,53 +8,53 @@
 
 /datum/uplink_item/item/ammo/a357
 	name = ".357 Speedloader"
-	path = /obj/item/ammo_magazine/s357
+	path = /obj/item/ammo_magazine/a357/speedloader
 
 /datum/uplink_item/item/ammo/mc9mm_compact
 	name = "Compact Pistol Magazine (9mm)"
-	path = /obj/item/ammo_magazine/m9mm/compact
+	path = /obj/item/ammo_magazine/a9mm/compact
 
 /datum/uplink_item/item/ammo/mc9mm
 	name = "Pistol Magazine (9mm)"
-	path = /obj/item/ammo_magazine/m9mm
+	path = /obj/item/ammo_magazine/a9mm
 
 /datum/uplink_item/item/ammo/mc9mm_large
 	name = "Large Capacity Pistol Magazine (9mm)"
-	path = /obj/item/ammo_magazine/m9mm/large
+	path = /obj/item/ammo_magazine/a9mm/large
 	item_cost = 40
 
 /datum/uplink_item/item/ammo/c45m
 	name = "Pistol Magazine (.45)"
-	path = /obj/item/ammo_magazine/m45
+	path = /obj/item/ammo_magazine/a45
 
 /datum/uplink_item/item/ammo/c45map
 	name = "Pistol Magazine (.45 AP)"
-	path = /obj/item/ammo_magazine/m45/ap
+	path = /obj/item/ammo_magazine/a45/ap
 
 /datum/uplink_item/item/ammo/s45m
 	name = "Speedloader (.45)"
-	path = /obj/item/ammo_magazine/s45
+	path = /obj/item/ammo_magazine/a45/speedloader
 
 /datum/uplink_item/item/ammo/s45map
 	name = "Speedloader  (.45 AP)"
-	path = /obj/item/ammo_magazine/s45/ap
+	path = /obj/item/ammo_magazine/a45/speedloader/ap
 
 /datum/uplink_item/item/ammo/tommymag
 	name = "Tommy Gun Magazine (.45)"
-	path = /obj/item/ammo_magazine/m45tommy
+	path = /obj/item/ammo_magazine/a45/tommy
 
 /datum/uplink_item/item/ammo/tommymagap
 	name = "Tommy Gun Magazine (.45 AP)"
-	path = /obj/item/ammo_magazine/m45tommy/ap
+	path = /obj/item/ammo_magazine/a45/tommy/ap
 
 /datum/uplink_item/item/ammo/tommydrum
 	name = "Tommy Gun Drum Magazine (.45)"
-	path = /obj/item/ammo_magazine/m45tommydrum
+	path = /obj/item/ammo_magazine/a45/tommy/drum
 	item_cost = 40
 
 /datum/uplink_item/item/ammo/tommydrumap
 	name = "Tommy Gun Drum Magazine (.45 AP)"
-	path = /obj/item/ammo_magazine/m45tommydrum/ap
+	path = /obj/item/ammo_magazine/a45/tommy/drum/ap
 
 /datum/uplink_item/item/ammo/darts
 	name = "Darts"
@@ -91,7 +91,7 @@
 
 /datum/uplink_item/item/ammo/a10mm
 	name = "SMG Magazine (10mm)"
-	path = /obj/item/ammo_magazine/m10mm
+	path = /obj/item/ammo_magazine/a10mm
 
 /datum/uplink_item/item/ammo/a556
 	name = "Machinegun Magazine (5.56mm)"

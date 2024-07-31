@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 //* /obj/item/ammo_casing casing_flags
 /// delete after fire (usually for caseless)

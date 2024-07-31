@@ -48,8 +48,7 @@
 /obj/item/ammo_magazine/a9mm
 	ammo_caliber = /datum/caliber/a9mm
 
-#warn a9mm/
-/obj/item/ammo_magazine/m9mm
+/obj/item/ammo_magazine/a9mm
 	name = "magazine (9mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "9x19-big-1"
@@ -60,35 +59,33 @@
 	ammo_preload = /obj/item/ammo_casing/a9mm
 	ammo_max = 10
 
-/obj/item/ammo_magazine/m9mm/large
+/obj/item/ammo_magazine/a9mm/large
 	icon_state = "9x19-ext-1"
 	base_icon_state = "9x19-ext"
 	ammo_max = 17
 
-#warn nuke /licensed
-/obj/item/ammo_magazine/m9mm/large/licensed
-/obj/item/ammo_magazine/m9mm/large/licensed/hp
+/obj/item/ammo_magazine/a9mm/large/hp
 	name = "magazine (9mm hollow-point)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/hp
 
-/obj/item/ammo_magazine/m9mm/empty
+/obj/item/ammo_magazine/a9mm/empty
 	icon_state = "9x19-big-0"
 	ammo_current = 0
 
-/obj/item/ammo_magazine/m9mm/flash
+/obj/item/ammo_magazine/a9mm/flash
 	name = "magazine (9mm flash)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/flash
 
-/obj/item/ammo_magazine/m9mm/rubber
+/obj/item/ammo_magazine/a9mm/rubber
 	name = "magazine (9mm rubber)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/rubber
 
-/obj/item/ammo_magazine/m9mm/practice
+/obj/item/ammo_magazine/a9mm/practice
 	name = "magazine (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
 
 // Compact
-/obj/item/ammo_magazine/m9mm/compact
+/obj/item/ammo_magazine/a9mm/compact
 	name = "compact magazine (9mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "9x19-small-1"
@@ -99,30 +96,30 @@
 	ammo_preload = /obj/item/ammo_casing/a9mm
 	ammo_max = 8
 
-/obj/item/ammo_magazine/m9mm/compact/empty
+/obj/item/ammo_magazine/a9mm/compact/empty
 	icon_state = "9x19-small-0"
 	ammo_current = 0
 
-/obj/item/ammo_magazine/m9mm/compact/flash
+/obj/item/ammo_magazine/a9mm/compact/flash
 	name = "compact magazine (9mm flash)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/flash
 
-/obj/item/ammo_magazine/m9mm/compact/rubber
+/obj/item/ammo_magazine/a9mm/compact/rubber
 	name = "compact magazine (9mm rubber)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/rubber
 
-/obj/item/ammo_magazine/m9mm/compact/practice
+/obj/item/ammo_magazine/a9mm/compact/practice
 	name = "compact magazine (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
 
-/obj/item/ammo_magazine/m9mm/compact/double
+/obj/item/ammo_magazine/a9mm/compact/double
 	name = "compact magazine (9mm double stack)"
 	materials_base = list(MAT_STEEL = 900)
 	ammo_max = 16
 
 // SMG
 #warn a9mm/
-/obj/item/ammo_magazine/m9mmt
+/obj/item/ammo_magazine/a9mmt
 	name = "top mounted magazine (9mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "9mmt-5"
@@ -133,65 +130,62 @@
 	materials_base = list(MAT_STEEL = 1200)
 	ammo_max = 20
 
-/obj/item/ammo_magazine/m9mmt/empty
+/obj/item/ammo_magazine/a9mmt/empty
 	icon_state = "9mmt-0"
 	ammo_current = 0
 
-/obj/item/ammo_magazine/m9mmt/hunter
+/obj/item/ammo_magazine/a9mmt/hunter
 	name = "top mounted magazine (9mm hunter)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/hunter
 
-/obj/item/ammo_magazine/m9mmt/rubber
+/obj/item/ammo_magazine/a9mmt/rubber
 	name = "top mounted magazine (9mm rubber)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/rubber
 
-/obj/item/ammo_magazine/m9mmt/flash
+/obj/item/ammo_magazine/a9mmt/flash
 	name = "top mounted magazine (9mm flash)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/flash
 
-/obj/item/ammo_magazine/m9mmt/practice
+/obj/item/ammo_magazine/a9mmt/practice
 	name = "top mounted magazine (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
 
-#warn a9mm/
-/obj/item/ammo_magazine/clip/c9mm
+/obj/item/ammo_magazine/a9mm/clip
 	name = "ammo clip (9mm)"
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
 	icon_state = "pistol-10"
 	base_icon_state = "pistol"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 10
-	is_speedloader = TRUE
+	magazine_type = MAGAZINE_TYPE_CLIP
 	desc = "A stripper clip for reloading 9mm rounds into magazines."
 	ammo_preload = /obj/item/ammo_casing/a9mm
 	materials_base = list(MAT_STEEL = 200)
 	ammo_max = 10
 
-/obj/item/ammo_magazine/clip/c9mm/hunter
+/obj/item/ammo_magazine/a9mm/clip/hunter
 	name = "ammo clip (9mm hunter)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/hunter
 
-/obj/item/ammo_magazine/clip/c9mm/rubber
+/obj/item/ammo_magazine/a9mm/clip/rubber
 	name = "ammo clip (9mm rubber)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/rubber
 
-/obj/item/ammo_magazine/clip/c9mm/practice
+/obj/item/ammo_magazine/a9mm/clip/practice
 	name = "ammo clip (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
 
-/obj/item/ammo_magazine/clip/c9mm/flash
+/obj/item/ammo_magazine/a9mm/clip/flash
 	name = "ammo clip (9mm flash)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/flash
 
-/obj/item/ammo_magazine/clip/c9mm/silver
+/obj/item/ammo_magazine/a9mm/clip/silver
 	name = "ammo clip (9mm silver)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/silver
 	icon_state = "pistol-silver-10"
 	base_icon_state = "pistol-silver"
 
-
-#warn a9mm/
-/obj/item/ammo_magazine/m9mmAdvanced
+/obj/item/ammo_magazine/a9mm/advanced_smg
 	desc = "A very high capacity double stack magazine made specially for the Advanced SMG. Filled with 21 9mm bullets."
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "advsmg-1"
@@ -202,10 +196,10 @@
 	materials_base = list(MAT_STEEL = 700)
 	ammo_max = 21
 
-/obj/item/ammo_magazine/m9mmAdvanced/empty
+/obj/item/ammo_magazine/a9mm/advanced_smg/empty
 	icon_state = "advsmg-0"
 	ammo_current = 0
 
-/obj/item/ammo_magazine/m9mmAdvanced/ap
+/obj/item/ammo_magazine/a9mm/advanced_smg/ap
 	desc = "A high capacity double stack magazine made specially for the Advanced SMG. Filled with 21 9mm armor piercing bullets."
 	ammo_preload = /obj/item/ammo_casing/a9mm/ap

@@ -181,34 +181,34 @@
 				var/new_ammo = pick( // Copied from Random.dm
 					prob(5);/obj/item/storage/box/shotgunammo,\
 					prob(5);/obj/item/storage/box/shotgunshells,\
-					prob(5);/obj/item/ammo_magazine/s357,\
+					prob(5);/obj/item/ammo_magazine/a357/speedloader,\
 					prob(5);/obj/item/ammo_magazine/clip/c762,\
-					prob(5);/obj/item/ammo_magazine/m45,\
-					prob(5);/obj/item/ammo_magazine/m45/rubber,\
-					prob(5);/obj/item/ammo_magazine/s38,\
-					prob(5);/obj/item/ammo_magazine/s38/rubber,\
+					prob(5);/obj/item/ammo_magazine/a45,\
+					prob(5);/obj/item/ammo_magazine/a45/rubber,\
+					prob(5);/obj/item/ammo_magazine/s38/speedloader,\
+					prob(5);/obj/item/ammo_magazine/s38/speedloader/rubber,\
 					prob(5);/obj/item/storage/box/flashbangs,\
 					prob(5);/obj/item/ammo_magazine/m556,\
 					prob(4);/obj/item/ammo_magazine/clip/c545,\
-					prob(4);/obj/item/ammo_magazine/clip/c45,\
-					prob(4);/obj/item/ammo_magazine/clip/c9mm,\
-					prob(4);/obj/item/ammo_magazine/m45uzi,\
+					prob(4);/obj/item/ammo_magazine/a45/clip,\
+					prob(4);/obj/item/ammo_magazine/a9mm/clip,\
+					prob(4);/obj/item/ammo_magazine/a45/uzi,\
 					prob(4);/obj/item/ammo_magazine/m556/ext,\
-					prob(4);/obj/item/ammo_magazine/m9mm,\
-					prob(4);/obj/item/ammo_magazine/m9mmAdvanced,\
-					prob(4);/obj/item/ammo_magazine/m9mmt,\
-					prob(4);/obj/item/ammo_magazine/m9mmt/rubber,\
-					prob(4);/obj/item/ammo_magazine/m10mm,\
+					prob(4);/obj/item/ammo_magazine/a9mm,\
+					prob(4);/obj/item/ammo_magazine/a9mm/advanced_smg,\
+					prob(4);/obj/item/ammo_magazine/a9mmt,\
+					prob(4);/obj/item/ammo_magazine/a9mmt/rubber,\
+					prob(4);/obj/item/ammo_magazine/a10mm,\
 					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
 				/*	prob(4);/obj/item/ammo_magazine/m14,\
 					prob(4);/obj/item/ammo_magazine/m14/large,\*/
 					prob(4);/obj/item/ammo_magazine/m556/ext,
 					prob(4);/obj/item/ammo_magazine/m762,\
 					prob(4);/obj/item/ammo_magazine/m556/ext,\
-					prob(3);/obj/item/ammo_magazine/clip/c10mm,\
-					prob(3);/obj/item/ammo_magazine/clip/c44,\
+					prob(3);/obj/item/ammo_magazine/a10mm/clip,\
+					prob(3);/obj/item/ammo_magazine/a44/clip,\
 					prob(3);/obj/item/ammo_magazine/m556,\
-					prob(2);/obj/item/ammo_magazine/m44,\
+					prob(2);/obj/item/ammo_magazine/a44,\
 					prob(2);/obj/item/ammo_magazine/m556,\
 					prob(1);/obj/item/storage/box/frags,\
 				/*	prob(1);/obj/item/ammo_magazine/m95,\ */
@@ -220,8 +220,8 @@
 					prob(1);/obj/item/storage/box/stunshells,\
 					prob(1);/obj/item/storage/box/blanks,\
 					prob(1);/obj/item/ammo_magazine/mtg,\
-					prob(1);/obj/item/ammo_magazine/m45tommydrum,\
-					prob(1);/obj/item/ammo_magazine/m45tommy)
+					prob(1);/obj/item/ammo_magazine/a45/tommy/drum,\
+					prob(1);/obj/item/ammo_magazine/a45/tommy)
 				new new_ammo(C)
 		if("spacesuit")
 			var/obj/structure/closet/syndicate/C = new(src.loc)

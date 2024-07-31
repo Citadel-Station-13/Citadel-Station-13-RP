@@ -13492,8 +13492,8 @@
 	req_access = list(1)
 	},
 /obj/item/gun/ballistic/revolver/consul,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "Br" = (

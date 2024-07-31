@@ -156,7 +156,7 @@
 /datum/supply_pack/nanotrasen/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"
 	contains = list(
-		/obj/item/ammo_magazine/m9mmt = 6,
+		/obj/item/ammo_magazine/a9mmt = 6,
 	)
 	worth = 250
 	container_name = "Ballistic ammunition crate"
@@ -164,7 +164,7 @@
 /datum/supply_pack/nanotrasen/munitions/bsmgammorubber
 	name = "Ammunition - 9mm top mounted rubber"
 	contains = list(
-		/obj/item/ammo_magazine/m9mmt/rubber = 6,
+		/obj/item/ammo_magazine/a9mmt/rubber = 6,
 	)
 	worth = 250
 	container_type = /obj/structure/closet/crate/secure

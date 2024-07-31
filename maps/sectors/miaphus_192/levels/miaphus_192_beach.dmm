@@ -4727,14 +4727,14 @@
 /area/tether_away/beach/station/tram)
 "NW" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/ammo_magazine/s357,
+/obj/item/ammo_magazine/a357/speedloader,
 /obj/item/ammo_magazine/clip/c545,
 /obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c45,
-/obj/item/ammo_magazine/clip/c9mm,
-/obj/item/ammo_magazine/clip/c10mm,
-/obj/item/ammo_magazine/clip/c12g,
-/obj/item/ammo_magazine/clip/c12g,
+/obj/item/ammo_magazine/a45/clip,
+/obj/item/ammo_magazine/a9mm/clip,
+/obj/item/ammo_magazine/a10mm/clip,
+/obj/item/ammo_magazine/a12g/clip,
+/obj/item/ammo_magazine/a12g/clip,
 /turf/simulated/mineral/floor/cave{
 	name = "dirt"
 	},

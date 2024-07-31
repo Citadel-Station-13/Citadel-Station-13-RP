@@ -27,8 +27,7 @@
 	projectile_type = /obj/projectile/bullet/pistol/silver
 	materials_base = list(MAT_STEEL = 130, MAT_SILVER = 100)
 
-#warn a38/
-/obj/item/ammo_magazine/s38
+/obj/item/ammo_magazine/s38/speedloader
 	name = "speedloader (.38)"
 	desc = "A speedloader for .38 revolvers."
 	icon = 'icons/modules/projectiles/magazines/old_speedloader_6.dmi'
@@ -41,19 +40,19 @@
 	ammo_preload = /obj/item/ammo_casing/a38
 	ammo_max = 6
 
-/obj/item/ammo_magazine/s38/rubber
+/obj/item/ammo_magazine/s38/speedloader/rubber
 	name = "speedloader (.38 rubber)"
 	icon_state = "blue-6"
 	base_icon_state = "blue"
 	ammo_preload = /obj/item/ammo_casing/a38/rubber
 
-/obj/item/ammo_magazine/s38/emp
+/obj/item/ammo_magazine/s38/speedloader/emp
 	name = "speedloader (.38 haywire)"
 	icon_state = "bluetip-6"
 	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a38/emp
 
-/obj/item/ammo_magazine/s38/silver
+/obj/item/ammo_magazine/s38/speedloader/silver
 	name = "speedloader (.38 silver)"
 	icon_state = "holy-6"
 	base_icon_state = "holy"

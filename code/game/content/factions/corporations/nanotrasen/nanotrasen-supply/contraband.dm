@@ -78,8 +78,8 @@
 	new /obj/item/clothing/suit/storage/vest/heavy/merc(src)
 	new /obj/item/clothing/glasses/night(src)
 	new /obj/item/storage/box/anti_photons(src)
-	new /obj/item/ammo_magazine/clip/c12g/pellet(src)
-	new /obj/item/ammo_magazine/clip/c12g(src)
+	new /obj/item/ammo_magazine/a12g/clip/pellet(src)
+	new /obj/item/ammo_magazine/a12g/clip(src)
 
 /obj/item/storage/box/cargo_null_entry_kit/doctor
 	name = "doctor's kit"
@@ -122,7 +122,7 @@
 	new /obj/item/gun/energy/ionrifle/pistol(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/emag(src)
-	new /obj/item/ammo_magazine/m45/ap(src)
+	new /obj/item/ammo_magazine/a45/ap(src)
 	new /obj/item/material/knife/tacknife/combatknife(src)
 	new /obj/item/clothing/mask/balaclava(src)
 

@@ -174,7 +174,7 @@
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 7
-	ammo_type = /obj/item/ammo_casing/cap
+	ammo_type = /obj/item/ammo_casing/cap_gun
 	projectile_type = /obj/projectile/bullet/pistol/strong
 
 /obj/item/gun/ballistic/revolver/judge

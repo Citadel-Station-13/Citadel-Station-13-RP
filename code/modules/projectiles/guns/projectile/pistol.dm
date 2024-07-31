@@ -2,8 +2,8 @@
 	var/unique_reskin
 	name = ".45 pistol"
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/m45
-	allowed_magazines = list(/obj/item/ammo_magazine/m45)
+	magazine_type = /obj/item/ammo_magazine/a45
+	allowed_magazines = list(/obj/item/ammo_magazine/a45)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	icon_state = "colt"
 	regex_this_caliber = /datum/caliber/a45
@@ -25,7 +25,7 @@
 
 /obj/item/gun/ballistic/colt/detective
 	desc = "A Martian recreation of an old pistol. Uses .45 rounds."
-	magazine_type = /obj/item/ammo_magazine/m45/rubber
+	magazine_type = /obj/item/ammo_magazine/a45/rubber
 
 /obj/item/gun/ballistic/colt/detective/verb/rename_gun()
 	set name = "Name Gun"
@@ -85,8 +85,8 @@
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
-	magazine_type = /obj/item/ammo_magazine/m45/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
+	magazine_type = /obj/item/ammo_magazine/a45/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	regex_this_caliber = /datum/caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -94,7 +94,7 @@
 
 /obj/item/gun/ballistic/sec/flash
 	name = ".45 signal pistol"
-	magazine_type = /obj/item/ammo_magazine/m45/flash
+	magazine_type = /obj/item/ammo_magazine/a45/flash
 
 /obj/item/gun/ballistic/sec/wood
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a Nanotrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
@@ -112,8 +112,8 @@
 	recoil = 0
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m45
-	allowed_magazines = list(/obj/item/ammo_magazine/m45)
+	magazine_type = /obj/item/ammo_magazine/a45
+	allowed_magazines = list(/obj/item/ammo_magazine/a45)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 
 /obj/item/gun/ballistic/deagle
@@ -125,8 +125,8 @@
 	regex_this_caliber = /datum/caliber/a44
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m44
-	allowed_magazines = list(/obj/item/ammo_magazine/m44)
+	magazine_type = /obj/item/ammo_magazine/a44
+	allowed_magazines = list(/obj/item/ammo_magazine/a44)
 
 /obj/item/gun/ballistic/deagle/gold
 	desc = "A gold plated gun folded over a million times by superior martian gunsmiths. Uses .44 rounds."
@@ -153,8 +153,8 @@
 	origin_tech = list(TECH_COMBAT = 3)
 	ammo_type = "/obj/item/ammo_casing/a75"
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m75
-	allowed_magazines = list(/obj/item/ammo_magazine/m75)
+	magazine_type = /obj/item/ammo_magazine/a75
+	allowed_magazines = list(/obj/item/ammo_magazine/a75)
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -167,8 +167,8 @@
 	max_shells = 10
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 3)
-	magazine_type = /obj/item/ammo_magazine/m75/pistol
-	allowed_magazines = list(/obj/item/ammo_magazine/m75/pistol)
+	magazine_type = /obj/item/ammo_magazine/a75/pistol
+	allowed_magazines = list(/obj/item/ammo_magazine/a75/pistol)
 	auto_eject = 0
 
 /obj/item/gun/ballistic/gyropistol/bolter/update_icon_state()
@@ -196,13 +196,13 @@
 	silenced_icon = "pistol_silencer"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mm/compact
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
+	magazine_type = /obj/item/ammo_magazine/a9mm/compact
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
 /obj/item/gun/ballistic/pistol/flash
 	name = "compact signal pistol"
-	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
+	magazine_type = /obj/item/ammo_magazine/a9mm/compact/flash
 
 /obj/item/silencer
 	name = "silencer"
@@ -300,8 +300,8 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	regex_this_caliber = /datum/caliber/a9mm
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mm/compact
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
+	magazine_type = /obj/item/ammo_magazine/a9mm/compact
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
 /obj/item/gun/ballistic/luger/brown
@@ -314,29 +314,29 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	regex_this_caliber = /datum/caliber/a9mm
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mm
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm) // Can accept illegal large capacity magazines, or compact magazines.
+	magazine_type = /obj/item/ammo_magazine/a9mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm) // Can accept illegal large capacity magazines, or compact magazines.
 
 /obj/item/gun/ballistic/p92x/sec
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
-	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
+	magazine_type = /obj/item/ammo_magazine/a9mm/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash)
 
 //Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
 /*
 /obj/item/gun/ballistic/p92x/large/licensed
 	icon_state = "p92x-brown"
-	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed // Spawns with big magazines that are legal.
+	magazine_type = /obj/item/ammo_magazine/a9mm/large // Spawns with big magazines that are legal.
 
 /obj/item/gun/ballistic/p92x/large/licensed/hp
-	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed/hp // Spawns with legal hollow-point mag
+	magazine_type = /obj/item/ammo_magazine/a9mm/large/hp // Spawns with legal hollow-point mag
 */
 
 /obj/item/gun/ballistic/p92x/brown
 	icon_state = "p92x-brown"
 
 /obj/item/gun/ballistic/p92x/large
-	magazine_type = /obj/item/ammo_magazine/m9mm/large // Spawns with illegal magazines.
+	magazine_type = /obj/item/ammo_magazine/a9mm/large // Spawns with illegal magazines.
 
 /obj/item/gun/ballistic/r9
 	name = "C96-Red 9"
@@ -380,8 +380,8 @@
 	silenced_icon = "konigin_silencer"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mm/compact/double
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/compact)
+	magazine_type = /obj/item/ammo_magazine/a9mm/compact/double
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/compact)
 	projectile_type = /obj/projectile/bullet/pistol
 
 /obj/item/gun/ballistic/konigin

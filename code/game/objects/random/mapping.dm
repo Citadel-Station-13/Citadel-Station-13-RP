@@ -282,10 +282,10 @@
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
 				/obj/item/gun/ballistic/automatic/mini_uzi,
 				/obj/item/gun/ballistic/automatic/mini_uzi,
-				/obj/item/ammo_magazine/m45uzi,
-				/obj/item/ammo_magazine/m45uzi,
-				/obj/item/ammo_magazine/m45uzi/empty,
-				/obj/item/ammo_magazine/m45uzi/empty,
+				/obj/item/ammo_magazine/a45/uzi,
+				/obj/item/ammo_magazine/a45/uzi,
+				/obj/item/ammo_magazine/a45/uzi/empty,
+				/obj/item/ammo_magazine/a45/uzi/empty,
 				/obj/structure/closet/crate/plastic
 			),
 			prob(2);list(

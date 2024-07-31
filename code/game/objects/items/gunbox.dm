@@ -7,9 +7,9 @@
 
 /obj/item/gunbox/attack_self(mob/user)
 	var/list/options = list()
-	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
-	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
-	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x/sec, /obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
+	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash)
+	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/a45/speedloader/rubber, /obj/item/ammo_magazine/a45/speedloader/rubber)
+	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x/sec, /obj/item/ammo_magazine/a9mm/rubber, /obj/item/ammo_magazine/a9mm/flash)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -28,9 +28,9 @@
 
 /obj/item/gunbox/lethal/attack_self(mob/user)
 	var/list/options = list()
-	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/ballistic/colt, /obj/item/ammo_magazine/m45, /obj/item/ammo_magazine/m45)
-	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45, /obj/item/ammo_magazine/s45)
-	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x, /obj/item/ammo_magazine/m9mm, /obj/item/ammo_magazine/m9mm)
+	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/ballistic/colt, /obj/item/ammo_magazine/a45, /obj/item/ammo_magazine/a45)
+	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/a45/speedloader, /obj/item/ammo_magazine/a45/speedloader)
+	options["P92X (9mm)"] = list(/obj/item/gun/ballistic/p92x, /obj/item/ammo_magazine/a9mm, /obj/item/ammo_magazine/a9mm)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -50,8 +50,8 @@
 
 /obj/item/gunbox/attack_self(mob/user)
 	var/list/options = list()
-	options[".45 Pistol"] = list(/obj/item/gun/ballistic/colt/detective, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/rubber)
-	options[".45 Revolver"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
+	options[".45 Pistol"] = list(/obj/item/gun/ballistic/colt/detective, /obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/rubber)
+	options[".45 Revolver"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/a45/speedloader/rubber, /obj/item/ammo_magazine/a45/speedloader/rubber)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]

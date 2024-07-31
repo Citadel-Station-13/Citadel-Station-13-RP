@@ -123,7 +123,7 @@
 		/obj/item/gun/ballistic/automatic/p90 = 2,
 		/obj/item/ammo_magazine/m57x28mmp90 = 4,
 		/obj/item/gun/ballistic/p92x = 1,
-		/obj/item/ammo_magazine/m9mm = 2,
+		/obj/item/ammo_magazine/a9mm = 2,
 	)
 
 /obj/item/storage/lockbox/cowboy
@@ -135,7 +135,7 @@
 		/obj/item/clothing/shoes/boots/cowboy/classic = 4,
 		/obj/item/clothing/head/cowboy_hat = 4,
 		/obj/item/gun/ballistic/revolver/dirty_harry = 2,
-		/obj/item/ammo_magazine/s44 = 4,
+		/obj/item/ammo_magazine/a44/speedloader = 4,
 		/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895 = 1,
 		/obj/item/ammo_magazine/clip/c762 = 2,
 		/obj/item/gun/ballistic/shotgun/doublebarrel/pellet = 1,
@@ -156,7 +156,7 @@
 		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
 		/obj/item/ammo_magazine/clip/c762 = 3,
 		/obj/item/gun/ballistic/pistol = 1,
-		/obj/item/ammo_magazine/m9mm/compact = 1,
+		/obj/item/ammo_magazine/a9mm/compact = 1,
 		/obj/item/reagent_containers/food/drinks/bottle/vodka = 1,
 	)
 

@@ -1,7 +1,6 @@
 /datum/caliber/blunderbuss
 	caliber = "blunderbuss"
 
-#warn get rid of /musket/
 /obj/item/ammo_casing/blunderbuss
 	name = "shot"
 	desc = "A bundle of lead balls and other assorted shrapnel."

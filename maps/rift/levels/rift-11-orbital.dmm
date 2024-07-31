@@ -8559,14 +8559,14 @@
 "Lh" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Lk" = (
@@ -9426,8 +9426,8 @@
 "UL" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
 /obj/item/gun/ballistic/deagle,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)

@@ -29,8 +29,7 @@
 /obj/item/ammo_magazine/a44
 	ammo_caliber = /datum/caliber/a44
 
-#warn a44/
-/obj/item/ammo_magazine/m44
+/obj/item/ammo_magazine/a44
 	name = "magazine (.44)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "m44-7"
@@ -41,12 +40,11 @@
 	ammo_preload = /obj/item/ammo_casing/a44
 	ammo_max = 7
 
-/obj/item/ammo_magazine/m44/empty
+/obj/item/ammo_magazine/a44/empty
 	icon_state = "m44-0"
 	ammo_current = 0
 
-#warn a44/
-/obj/item/ammo_magazine/clip/c44
+/obj/item/ammo_magazine/a44/clip
 	name = "ammo clip (.44)"
 	desc = "A stripper clip for reloading .44 rounds into magazines."
 	ammo_preload = /obj/item/ammo_casing/a44
@@ -55,11 +53,11 @@
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
 	icon_state = "pistol-9"
 	base_icon_state = "pistol"
+	magazine_type = MAGAZINE_TYPE_CLIP
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 9
 
-#warn a44/
-/obj/item/ammo_magazine/s44
+/obj/item/ammo_magazine/a44/speedloader
 	name = "speedloader (.44)"
 	ammo_preload = /obj/item/ammo_casing/a44
 	materials_base = list(MAT_STEEL = 250)
@@ -70,16 +68,16 @@
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 6
 
-/obj/item/ammo_magazine/s44/empty
+/obj/item/ammo_magazine/a44/speedloader/empty
 	ammo_current = 0
 
-/obj/item/ammo_magazine/s44/rubber
+/obj/item/ammo_magazine/a44/speedloader/rubber
 	name = "speedloader (.44 rubber)"
 	icon_state = "blue-6"
 	base_icon_state = "blue"
 	ammo_preload = /obj/item/ammo_casing/a44/rubber
 
-/obj/item/ammo_magazine/s44/silver
+/obj/item/ammo_magazine/a44/speedloader/silver
 	name = "speedloader (.44 silver)"
 	icon_state = "holy-6"
 	base_icon_state = "holy"

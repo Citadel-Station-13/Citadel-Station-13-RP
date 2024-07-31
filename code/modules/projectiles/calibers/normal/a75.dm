@@ -12,8 +12,7 @@
 	projectile_type = /obj/projectile/bullet/gyro
 	materials_base = list(MAT_STEEL = 2000)
 
-#warn a75/
-/obj/item/ammo_magazine/m75
+/obj/item/ammo_magazine/a75
 	name = "magazine (.75 Gyrojet)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "m75-1"
@@ -24,6 +23,6 @@
 	ammo_preload = /obj/item/ammo_casing/a75
 	ammo_max = 8
 
-/obj/item/ammo_magazine/m75/empty
+/obj/item/ammo_magazine/a75/empty
 	icon_state = "m75-0"
 	ammo_current = 0

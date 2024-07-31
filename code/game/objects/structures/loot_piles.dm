@@ -1082,7 +1082,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/ammo_magazine/m75,
+		/obj/item/ammo_magazine/a75,
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mortar
 		)
 

@@ -22,7 +22,7 @@
 	icon_state = "pelletbox"
 	ammo_caliber = /datum/caliber/pellet
 	ammo_type = /obj/item/ammo_casing/p_pellet
-	is_magazine = FALSE
+	magazine_type = MAGAZINE_TYPE_BOX
 	materials_base = list(
 		/datum/material/steel::id = 100,
 	)

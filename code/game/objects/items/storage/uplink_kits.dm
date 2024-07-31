@@ -22,7 +22,7 @@
 
 		if("guns")
 			new /obj/item/gun/ballistic/revolver(src)
-			new /obj/item/ammo_magazine/s357(src)
+			new /obj/item/ammo_magazine/a357/speedloader(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/plastique(src)
 			new /obj/item/plastique(src)

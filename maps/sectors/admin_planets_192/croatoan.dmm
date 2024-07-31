@@ -5517,8 +5517,8 @@
 /area/admin_planet/croatoan/med_storage)
 "ti" = (
 /obj/structure/table/borosilicate,
-/obj/item/ammo_magazine/s357,
-/obj/item/ammo_magazine/s357,
+/obj/item/ammo_magazine/a357/speedloader,
+/obj/item/ammo_magazine/a357/speedloader,
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/admin_planet/croatoan/sec_hos_office)
 "tn" = (
@@ -12326,35 +12326,35 @@
 /obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
 /obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
 /obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
@@ -12363,16 +12363,16 @@
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m45,
-/obj/item/ammo_magazine/m45,
-/obj/item/ammo_magazine/m12gdrum,
-/obj/item/ammo_magazine/m12gdrum,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a45,
+/obj/item/ammo_magazine/a45,
+/obj/item/ammo_magazine/a12g/drum,
+/obj/item/ammo_magazine/a12g/drum,
 /obj/item/ammo_magazine/m556,
 /obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m45uzi,
-/obj/item/ammo_magazine/m45uzi,
+/obj/item/ammo_magazine/a45/uzi,
+/obj/item/ammo_magazine/a45/uzi,
 /obj/item/ammo_magazine/m57x28mm/fiveseven,
 /obj/item/ammo_magazine/m57x28mm/fiveseven,
 /obj/item/ammo_magazine/m57x28mm/ntles,
@@ -12381,8 +12381,8 @@
 /obj/item/ammo_magazine/m57x28mm/smg,
 /obj/item/ammo_magazine/m5mmcaseless,
 /obj/item/ammo_magazine/m5mmcaseless,
-/obj/item/ammo_magazine/m75,
-/obj/item/ammo_magazine/m75,
+/obj/item/ammo_magazine/a75,
+/obj/item/ammo_magazine/a75,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762,
 /obj/item/ammo_magazine/m762garand,
@@ -12395,12 +12395,12 @@
 /obj/item/ammo_magazine/m792,
 /obj/item/ammo_magazine/m95,
 /obj/item/ammo_magazine/m95,
-/obj/item/ammo_magazine/m9mm,
-/obj/item/ammo_magazine/m9mm,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
-/obj/item/ammo_magazine/m9mmt,
+/obj/item/ammo_magazine/a9mm,
+/obj/item/ammo_magazine/a9mm,
+/obj/item/ammo_magazine/a9mmt,
+/obj/item/ammo_magazine/a9mmt,
+/obj/item/ammo_magazine/a9mmt,
+/obj/item/ammo_magazine/a9mmt,
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},

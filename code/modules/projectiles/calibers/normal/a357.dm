@@ -41,8 +41,7 @@
 
 //* Magazines - Speedloaders
 
-#warn a357/
-/obj/item/ammo_magazine/s357
+/obj/item/ammo_magazine/a357/speedloader
 	name = "speedloader (.357)"
 	desc = "A speedloader for .357 revolvers."
 	icon = 'icons/modules/projectiles/magazines/old_speedloader_6.dmi'
@@ -54,14 +53,14 @@
 	ammo_max = 6
 	materials_base = list(MAT_STEEL = 500)
 
-/obj/item/ammo_magazine/s357/silver
+/obj/item/ammo_magazine/a357/speedloader/silver
 	name = "speedloader (.357 silver)"
 	icon_state = "holy-6"
 	base_icon_state = "holy"
 	ammo_preload = /obj/item/ammo_casing/a357/silver
 	ammo_type = /obj/item/ammo_casing/a357/silver
 
-/obj/item/ammo_magazine/s357/stun
+/obj/item/ammo_magazine/a357/speedloader/stun
 	name = "speedloader (.357 stun)"
 	desc = "A speedloader for .357 revolvers."
 	icon_state = "redtip-6"
@@ -69,7 +68,7 @@
 	ammo_preload = /obj/item/ammo_casing/a357/stun
 	ammo_type = /obj/item/ammo_casing/a357/stun
 
-/obj/item/ammo_magazine/s357/rubber
+/obj/item/ammo_magazine/a357/speedloader/rubber
 	name = "speedloader (.357 rubber)"
 	desc = "A speedloader for .357 revolvers."
 	icon_state = "bluetip-6"
@@ -77,7 +76,7 @@
 	ammo_preload = /obj/item/ammo_casing/a357/rubber
 	ammo_type = /obj/item/ammo_casing/a357/rubber
 
-/obj/item/ammo_magazine/s357/flash
+/obj/item/ammo_magazine/a357/speedloader/flash
 	name = "speedloader (.357 flash)"
 	desc = "A speedloader for .357 revolvers."
 	icon_state = "white-6"

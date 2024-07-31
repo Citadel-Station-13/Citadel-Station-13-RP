@@ -88,8 +88,8 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mml
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm, /obj/item/ammo_magazine/m9mml)
+	magazine_type = /obj/item/ammo_magazine/a9mml
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm, /obj/item/ammo_magazine/a9mml)
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -102,7 +102,7 @@
 
 /obj/item/gun/ballistic/automatic/pdw/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m9mm))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/a9mm))
 		icon_state = "pdw-short"
 	else
 		icon_state = (ammo_magazine)? "pdw" : "pdw-empty"
@@ -189,8 +189,8 @@
 	item_state = "revolver"
 	fire_sound = 'sound/weapons/Gunshot.ogg'
 	regex_this_caliber = /datum/caliber/a44
-	magazine_type = /obj/item/ammo_magazine/m44/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m44,/obj/item/ammo_magazine/m44/rubber)
+	magazine_type = /obj/item/ammo_magazine/a44/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/a44,/obj/item/ammo_magazine/a44/rubber)
 	load_method = MAGAZINE
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
@@ -269,8 +269,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BELT
 	regex_this_caliber = /datum/caliber/a9mm
-	magazine_type = /obj/item/ammo_magazine/m9mm
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
+	magazine_type = /obj/item/ammo_magazine/a9mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm)
 	load_method = MAGAZINE
 	multi_aim = 1
 	burst_delay = 2
@@ -387,7 +387,7 @@
 	max_ammo = 8
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/m44/rubber
+/obj/item/ammo_magazine/a44/rubber
 	desc = "A magazine for .44 less-than-lethal ammo."
 	ammo_type = /obj/item/ammo_casing/a44/rubber
 

@@ -19,8 +19,7 @@
 /obj/item/ammo_magazine/a10mm
 	ammo_caliber = /datum/caliber/a10mm
 
-#warn a10mm/
-/obj/item/ammo_magazine/m10mm
+/obj/item/ammo_magazine/a10mm
 	name = "magazine (10mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "10mm-5"
@@ -31,12 +30,11 @@
 	ammo_preload = /obj/item/ammo_casing/a10mm
 	ammo_max = 20
 
-/obj/item/ammo_magazine/m10mm/empty
+/obj/item/ammo_magazine/a10mm/empty
 	icon_state = "10mm-0"
 	ammo_current = 0
 
-#warn a10mm/
-/obj/item/ammo_magazine/clip/c10mm
+/obj/item/ammo_magazine/a10mm/clip
 	name = "ammo clip (10mm)"
 	desc = "A stripper clip for reloading 5mm rounds into magazines."
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
@@ -44,12 +42,7 @@
 	base_icon_state = "pistol"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 9
-	is_speedloader = TRUE
+	magazine_type = MAGAZINE_TYPE_CLIP
 	ammo_preload = /obj/item/ammo_casing/a10mm
 	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 9
-
-#warn what the fuck is this
-/obj/item/ammo_magazine/box/emp/b10
-	name = "ammunition box (10mm haywire)"
-	ammo_preload = /obj/item/ammo_casing/a10mm/emp

@@ -65,7 +65,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/ammo_magazine/m762/ap,
 		/obj/item/ammo_magazine/m762/ap,
 		/obj/item/gun/ballistic/colt,
-		/obj/item/ammo_magazine/m45,
+		/obj/item/ammo_magazine/a45,
 		/obj/item/material/knife/tacknife/combatknife)
 
 /datum/supply_drop_loot/heavy_warfare

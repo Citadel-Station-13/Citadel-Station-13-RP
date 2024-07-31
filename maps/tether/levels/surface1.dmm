@@ -35674,14 +35674,14 @@
 	pixel_x = 4;
 	pixel_y = -28
 	},
-/obj/item/ammo_magazine/m45/practice,
-/obj/item/ammo_magazine/m45/practice,
-/obj/item/ammo_magazine/m45/practice,
-/obj/item/ammo_magazine/m45/practice,
-/obj/item/ammo_magazine/m45/practice,
-/obj/item/ammo_magazine/m45/practice,
-/obj/item/ammo_magazine/m9mmt/practice,
-/obj/item/ammo_magazine/m9mmt/practice,
+/obj/item/ammo_magazine/a45/practice,
+/obj/item/ammo_magazine/a45/practice,
+/obj/item/ammo_magazine/a45/practice,
+/obj/item/ammo_magazine/a45/practice,
+/obj/item/ammo_magazine/a45/practice,
+/obj/item/ammo_magazine/a45/practice,
+/obj/item/ammo_magazine/a9mmt/practice,
+/obj/item/ammo_magazine/a9mmt/practice,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/weaponsrange)
 "tbR" = (

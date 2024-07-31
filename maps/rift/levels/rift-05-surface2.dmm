@@ -2852,34 +2852,34 @@
 	pixel_y = 32
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = -2;
 	pixel_y = -8
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = -2;
 	pixel_y = -8
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_y = 5
 	},
-/obj/item/ammo_magazine/m9mmt{
+/obj/item/ammo_magazine/a9mmt{
 	pixel_y = 5
 	},
 /obj/structure/cable/green{
@@ -20787,8 +20787,8 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack/cee,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
 /obj/item/gun/ballistic/deagle/taj,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)

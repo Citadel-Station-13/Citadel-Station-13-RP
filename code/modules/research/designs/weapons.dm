@@ -92,7 +92,7 @@
 	desc = "A 21 round magazine for an advanced 9mm SMG."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 3750, MAT_SILVER = 100) // Requires silver for proprietary magazines! Or something.
-	build_path = /obj/item/ammo_magazine/m9mmAdvanced
+	build_path = /obj/item/ammo_magazine/a9mm/advanced_smg
 
 /datum/design/science/weapon/ballistic/ammo/techshell
 	design_name = "unloaded tech shell"

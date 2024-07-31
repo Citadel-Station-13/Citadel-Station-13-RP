@@ -63,9 +63,6 @@
 
 /obj/item/ammo_magazine/a45
 	ammo_caliber = /datum/caliber/a45
-
-#warn a45/
-/obj/item/ammo_magazine/m45
 	name = "pistol magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "45-7"
@@ -76,37 +73,31 @@
 	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 7
 
-/obj/item/ammo_magazine/m45/empty
+/obj/item/ammo_magazine/a45/empty
 	icon_state = "45-0"
 	ammo_current = 0
 
-/obj/item/ammo_magazine/m45/hunter
+/obj/item/ammo_magazine/a45/hunter
 	name = "magazine (.45 hunter)"
 	ammo_preload = /obj/item/ammo_casing/a45/hunter
 
-/obj/item/ammo_magazine/m45/rubber
+/obj/item/ammo_magazine/a45/rubber
 	name = "magazine (.45 rubber)"
 	ammo_preload = /obj/item/ammo_casing/a45/rubber
 
-/obj/item/ammo_magazine/m45/practice
+/obj/item/ammo_magazine/a45/practice
 	name = "magazine (.45 practice)"
 	ammo_preload = /obj/item/ammo_casing/a45/practice
 
-/obj/item/ammo_magazine/m45/flash
+/obj/item/ammo_magazine/a45/flash
 	name = "magazine (.45 flash)"
 	ammo_preload = /obj/item/ammo_casing/a45/flash
 
-/obj/item/ammo_magazine/m45/ap
+/obj/item/ammo_magazine/a45/ap
 	name = "magazine (.45 AP)"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
 
-#warn what the fuck is this
-/obj/item/ammo_magazine/box/emp/b45
-	name = "ammunition box (.45 haywire)"
-	ammo_preload = /obj/item/ammo_casing/a45/emp
-
-#warn a45/
-/obj/item/ammo_magazine/m45uzi
+/obj/item/ammo_magazine/a45/uzi
 	name = "stick magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "uzi45-8"
@@ -117,12 +108,11 @@
 	materials_base = list(MAT_STEEL = 1200)
 	ammo_max = 16
 
-/obj/item/ammo_magazine/m45uzi/empty
+/obj/item/ammo_magazine/a45/uzi/empty
 	icon_state = "uzi45-0"
 	ammo_current = 0
 
-#warn a45/
-/obj/item/ammo_magazine/wt274
+/obj/item/ammo_magazine/a45/wt274
 	name = "double-stack magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "wt-274-1"
@@ -133,8 +123,7 @@
 	materials_base = list(MAT_STEEL = 500)
 	ammo_max = 32
 
-#warn a45/
-/obj/item/ammo_magazine/m45tommy
+/obj/item/ammo_magazine/a45/tommy
 	name = "Tommy Gun magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "tommy-mag"
@@ -143,15 +132,14 @@
 	materials_base = list(MAT_STEEL = 350)
 	ammo_max = 20
 
-/obj/item/ammo_magazine/m45tommy/ap
+/obj/item/ammo_magazine/a45/tommy/ap
 	name = "Tommy Gun magazine (.45 AP)"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
 
-/obj/item/ammo_magazine/m45tommy/empty
+/obj/item/ammo_magazine/a45/tommy/empty
 	ammo_current = 0
 
-#warn a45/
-/obj/item/ammo_magazine/m45tommydrum
+/obj/item/ammo_magazine/a45/tommy/drum
 	name = "Tommy Gun drum magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_drum.dmi'
 	icon_state = "tommy-drum"
@@ -161,15 +149,14 @@
 	materials_base = list(MAT_STEEL = 500)
 	ammo_max = 50
 
-/obj/item/ammo_magazine/m45tommydrum/ap
+/obj/item/ammo_magazine/a45/tommy/drum/ap
 	name = "Tommy Gun drum magazine (.45 AP)"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
 
-/obj/item/ammo_magazine/m45tommydrum/empty
+/obj/item/ammo_magazine/a45/tommy/drum/empty
 	ammo_current = 0
 
-#warn a45/
-/obj/item/ammo_magazine/clip/c45
+/obj/item/ammo_magazine/a45/clip
 	name = "ammo clip (.45)"
 	desc = "A stripper clip for reloading .45 rounds into magazines."
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
@@ -181,24 +168,23 @@
 	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 9
 
-/obj/item/ammo_magazine/clip/c45/rubber
+/obj/item/ammo_magazine/a45/clip/rubber
 	name = "ammo clip (.45 rubber)"
 	ammo_preload = /obj/item/ammo_casing/a45/rubber
 
-/obj/item/ammo_magazine/clip/c45/hunter
+/obj/item/ammo_magazine/a45/clip/hunter
 	name = "ammo clip (.45 hunter)"
 	ammo_preload = /obj/item/ammo_casing/a45/hunter
 
-/obj/item/ammo_magazine/clip/c45/practice
+/obj/item/ammo_magazine/a45/clip/practice
 	name = "ammo clip (.45 practice)"
 	ammo_preload = /obj/item/ammo_casing/a45/practice
 
-/obj/item/ammo_magazine/clip/c45/flash
+/obj/item/ammo_magazine/a45/clip/flash
 	name = "ammo clip (.45 flash)"
 	ammo_preload = /obj/item/ammo_casing/a45/flash
 
-#warn a45/
-/obj/item/ammo_magazine/s45
+/obj/item/ammo_magazine/a45/speedloader
 	name = "speedloader (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_speedloader_7.dmi'
 	icon_state = "normal-7"
@@ -209,32 +195,32 @@
 	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 7
 
-/obj/item/ammo_magazine/s45/empty
+/obj/item/ammo_magazine/a45/speedloader/empty
 	ammo_current = 0
 
-/obj/item/ammo_magazine/s45/rubber
+/obj/item/ammo_magazine/a45/speedloader/rubber
 	name = "speedloader (.45 rubber)"
 	icon_state = "bluetip-7"
 	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a45/rubber
 
-/obj/item/ammo_magazine/s45/practice
+/obj/item/ammo_magazine/a45/speedloader/practice
 	name = "speedloader (.45 practice)"
 	ammo_preload = /obj/item/ammo_casing/a45/practice
 
-/obj/item/ammo_magazine/s45/flash
+/obj/item/ammo_magazine/a45/speedloader/flash
 	name = "speedloader (.45 flash)"
 	icon_state = "bluetip-7"
 	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a45/flash
 
-/obj/item/ammo_magazine/s45/ap
+/obj/item/ammo_magazine/a45/speedloader/ap
 	name = "speedloader (.45 AP)"
 	icon_state = "bluetip-7"
 	base_icon_state = "bluetip"
 	ammo_preload = /obj/item/ammo_casing/a45/ap
 
-/obj/item/ammo_magazine/s45/silver
+/obj/item/ammo_magazine/a45/speedloader/silver
 	name = "speedloader (.45 silver)"
 	icon_state = "holy-7"
 	base_icon_state = "holy"

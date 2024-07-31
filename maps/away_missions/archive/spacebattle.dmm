@@ -1070,7 +1070,7 @@
 /area/awaymission/spacebattle/cruiser)
 "gt" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_magazine/s357,
+/obj/item/ammo_magazine/a357/speedloader,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "gu" = (

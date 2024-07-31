@@ -12150,8 +12150,8 @@
 	name = "gun safe";
 	req_access = list(1)
 	},
-/obj/item/ammo_magazine/s357,
-/obj/item/ammo_magazine/s357,
+/obj/item/ammo_magazine/a357/speedloader,
+/obj/item/ammo_magazine/a357/speedloader,
 /obj/item/gun/ballistic/revolver/mateba,
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/outline,

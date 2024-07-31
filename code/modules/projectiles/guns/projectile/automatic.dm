@@ -24,7 +24,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	magazine_type = null // R&D builds this. Starts unloaded.
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mmAdvanced, /obj/item/ammo_magazine/m9mm)
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/advanced_smg, /obj/item/ammo_magazine/a9mm)
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -32,7 +32,7 @@
 	)
 
 /obj/item/gun/ballistic/automatic/advanced_smg/loaded
-	magazine_type = /obj/item/ammo_magazine/m9mmAdvanced
+	magazine_type = /obj/item/ammo_magazine/a9mm/advanced_smg
 
 /obj/item/gun/ballistic/automatic/c20r
 	name = "submachine gun"
@@ -45,8 +45,8 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m10mm
-	allowed_magazines = list(/obj/item/ammo_magazine/m10mm)
+	magazine_type = /obj/item/ammo_magazine/a10mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a10mm)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
@@ -108,8 +108,8 @@
 	slot_flags = SLOT_BELT
 	ammo_type = "/obj/item/ammo_casing/a9mmr"
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
+	magazine_type = /obj/item/ammo_magazine/a9mmt/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/a9mmt)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	worth_intrinsic = 450
 
@@ -121,7 +121,7 @@
 		icon_state = "wt550"
 
 /obj/item/gun/ballistic/automatic/wt550/lethal
-	magazine_type = /obj/item/ammo_magazine/m9mmt
+	magazine_type = /obj/item/ammo_magazine/a9mmt
 
 /obj/item/gun/ballistic/automatic/z8
 	name = "designated marksman rifle"
@@ -338,8 +338,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m12gdrum
-	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
+	magazine_type = /obj/item/ammo_magazine/a12g/drum
+	allowed_magazines = list(/obj/item/ammo_magazine/a12g/drum)
 	projectile_type = /obj/projectile/bullet/shotgun
 	heavy = TRUE
 	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
@@ -369,8 +369,8 @@
 	load_method = MAGAZINE
 	regex_this_caliber = /datum/caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
-	magazine_type = /obj/item/ammo_magazine/m45uzi
-	allowed_magazines = list(/obj/item/ammo_magazine/m45uzi)
+	magazine_type = /obj/item/ammo_magazine/a45/uzi
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/uzi)
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -456,8 +456,8 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m45tommy
-	allowed_magazines = list(/obj/item/ammo_magazine/m45tommy, /obj/item/ammo_magazine/m45tommydrum)
+	magazine_type = /obj/item/ammo_magazine/a45/tommy
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/tommy, /obj/item/ammo_magazine/a45/tommy/drum)
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -573,8 +573,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/holyshot_mag
-	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
+	magazine_type = /obj/item/ammo_magazine/a12g/drum/holy
+	allowed_magazines = list(/obj/item/ammo_magazine/a12g/drum/holy, /obj/item/ammo_magazine/a12g/drum/holy/stake)
 	projectile_type = /obj/projectile/bullet/shotgun
 
 	one_handed_penalty = 40
@@ -633,8 +633,8 @@
 	load_method = MAGAZINE
 	regex_this_caliber = /datum/caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
-	magazine_type = /obj/item/ammo_magazine/m45uzi/wt274
-	allowed_magazines = list(/obj/item/ammo_magazine/m45uzi/wt274)
+	magazine_type = /obj/item/ammo_magazine/a45/uzi/wt274
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/uzi/wt274)
 	one_handed_penalty = 10
 
 	firemodes = list(
@@ -686,8 +686,8 @@
 	load_method = MAGAZINE
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	max_shells = 30
-	magazine_type = /obj/item/ammo_magazine/m75/sickle
-	allowed_magazines = list(/obj/item/ammo_magazine/m75/sickle)
+	magazine_type = /obj/item/ammo_magazine/a75/sickle
+	allowed_magazines = list(/obj/item/ammo_magazine/a75/sickle)
 	heavy = TRUE
 	one_handed_penalty = 80
 
@@ -707,8 +707,8 @@
 	icon_state = "stormbolter"
 	item_state = "stormbolter"
 	max_shells = 50
-	magazine_type = /obj/item/ammo_magazine/m75/box
-	allowed_magazines = list(/obj/item/ammo_magazine/m75/box)
+	magazine_type = /obj/item/ammo_magazine/a75/box
+	allowed_magazines = list(/obj/item/ammo_magazine/a75/box)
 	one_handed_penalty = 100
 
 	firemodes = list(
