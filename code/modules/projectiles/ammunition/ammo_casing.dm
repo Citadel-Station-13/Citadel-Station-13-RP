@@ -16,6 +16,10 @@
 	/// projectile type
 	var/projectile_type
 	/// caliber - set to typepath of datum for compile checking
+	///
+	/// * may be typepath of caliber (recommended)
+	/// * may be instance of caliber (not recommended, but allowable for special cases)
+	/// * may NOT be string of caliber, currently
 	var/regex_this_caliber
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
 	VAR_PRIVATE/obj/projectile/stored
@@ -132,3 +136,12 @@
 		mag.quick_gather(get_turf(src), user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
+
+//* Caliber *//
+
+/obj/item/ammo_casing/proc/get_caliber_string()
+	return get_caliber()?.caliber
+
+/obj/item/ammo_casing/proc/get_caliber()
+	RETURN_TYPE(/datum/caliber)
+	#warn impl

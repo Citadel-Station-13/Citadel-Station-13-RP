@@ -16,6 +16,8 @@
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
 	var/load_method = SINGLE_CASING|SPEEDLOADER //1 = Single shells, 2 = box or quick loader, 3 = magazine
 
+	// todo: rework mag handling, internal magazine?
+
 	//For SINGLE_CASING or SPEEDLOADER guns
 	var/max_shells = 0			//the number of casings that will fit inside
 	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
@@ -60,9 +62,7 @@
 		if(handle_casings != HOLD_CASINGS)
 			loaded -= chambered
 	else if(ammo_magazine && ammo_magazine.amount_remaining())
-		chambered = ammo_magazine.stored_ammo[ammo_magazine.amount_remaining()]
-		if(handle_casings != HOLD_CASINGS)
-			ammo_magazine.stored_ammo -= chambered
+		chambered = ammo_magazine.pop()
 
 	if (chambered)
 		return chambered.get_projectile()
@@ -86,10 +86,10 @@
 		var/mob/living/carbon/human/H = loc
 		if(istype(H))
 			if(!H.gloves)
-				H.gunshot_residue = chambered.caliber
+				H.gunshot_residue = chambered.get_caliber_string()
 			else
 				var/obj/item/clothing/G = H.gloves
-				G.gunshot_residue = chambered.caliber
+				G.gunshot_residue = chambered.get_caliber_string()
 
 	switch(handle_casings)
 		if(EJECT_CASINGS) //eject casing onto ground.
@@ -101,9 +101,8 @@
 				playsound(src.loc, "casing", 50, 1)
 		if(CYCLE_CASINGS) //cycle the casing back to the end.
 			if(ammo_magazine)
-				ammo_magazine.stored_ammo += chambered
-			else
-				loaded += chambered
+				CRASH("attempted to cycle casing with a mag in; guncode doesn't support this use case, this is for revolver-likes only currently!")
+			loaded += chambered
 
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
@@ -177,7 +176,7 @@
 		AM.update_icon()
 	else if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
-		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
+		if(!(load_method & SINGLE_CASING) || !accepts_caliber(C.regex_this_caliber))
 			return //incompatible
 		if(loaded.len >= max_shells)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
@@ -196,7 +195,7 @@
 		to_chat(user, "<span class='notice'>You start loading \the [src].</span>")
 		sleep(1 SECOND)
 		for(var/obj/item/ammo_casing/ammo in storage.contents)
-			if(caliber != ammo.caliber)
+			if(!accepts_caliber(ammo.regex_this_caliber))
 				continue
 
 			load_ammo(ammo, user)
@@ -287,7 +286,7 @@
 
 /obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
-	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.amount_remaining())
+	if(auto_eject && ammo_magazine && !ammo_magazine.amount_remaining())
 		ammo_magazine.loc = get_turf(src.loc)
 		user.visible_message(
 			"[ammo_magazine] falls out and clatters on the floor!",
@@ -327,3 +326,17 @@
 
 	unload_ammo(usr)
 */
+
+//* Caliber *//
+
+/**
+ * Accepts:
+ *
+ * * Text caliber string
+ * * Caliber path
+ * * Caliber instance
+ *
+ * @return TRUE / FALSE
+ */
+/obj/item/gun/ballistic/proc/accepts_caliber(datum/caliber/caliberlike)
+	#warn impl

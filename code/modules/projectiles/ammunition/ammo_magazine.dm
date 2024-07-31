@@ -128,73 +128,6 @@
 	. += "There [(amount_left == 1)? "is" : "are"] [amount_left] round\s left!"
 
 /**
- * peek top ammo casing
- */
-/obj/item/ammo_magazine/proc/peek_top()
-	if(!length(ammo_internal))
-		// list empty, see if we have one to inject
-		if(!ammo_current)
-			// we're empty
-			return
-		var/obj/item/ammo_casing/created = instantiate_casing()
-		if(isnull(ammo_internal))
-			ammo_internal = list(created)
-		else
-			ammo_internal += created
-		--ammo_current
-		return created
-	return ammo_internal[length(ammo_internal)]
-
-/**
- * get and eject top casing
- */
-/obj/item/ammo_magazine/proc/draw_top()
-	if(length(ammo_internal))
-		// list filled
-		. = ammo_internal[length(ammo_internal)]
-		--ammo_internal.len
-		update_icon()
-		return
-	// list empty
-	if(!ammo_current)
-		return
-	. = instantiate_casing()
-	--ammo_current
-	update_icon()
-
-/**
- * put a casing into top
- *
- * @return TRUE/FALSE on success/failure
- */
-/obj/item/ammo_magazine/proc/insert_top(obj/item/ammo_casing/casing, update_icon)
-	if(amount_remaining() >= ammo_max)
-		return FALSE
-	LAZYADD(ammo_internal, casing)
-	if(casing.loc != src)
-		casing.forceMove(src)
-	return TRUE
-
-/**
- * replace the first spent casing from the top or insert top depending on if there's room
- *
- * @return TRUE/FALSE on success/failure
- */
-/obj/item/ammo_magazine/proc/resupply_top(obj/item/ammo_casing/casing, update_icon, atom/transfer_old_to)
-	// try to resupply
-	for(var/i in length(ammo_internal) to 1 step -1)
-		var/obj/item/ammo_casing/loaded = ammo_internal[i]
-		if(loaded.loaded())
-			continue
-		loaded.forceMove(transfer_old_to || drop_location())
-		ammo_internal[i] = casing
-		if(casing.loc != src)
-			casing.forceMove(src)
-		return TRUE
-	// try to insert
-	return insert_top(casing, update_icon)
-
-/**
  * transfer as many rounds to another magazine as possible
  *
  * @params
@@ -363,6 +296,78 @@
 					px += rendering_segment_x_offset
 					py += rendering_segment_y_offset
 	return ..()
+
+//*                 Accessors - Top of Mag                   *//
+//* This is the preferred way to interact with a magazine.   *//
+
+/**
+ * peek top ammo casing
+ */
+/obj/item/ammo_magazine/proc/peek()
+	RETURN_TYPE(/obj/item/ammo_casing)
+	if(!length(ammo_internal))
+		// list empty, see if we have one to inject
+		if(!ammo_current)
+			// we're empty
+			return
+		var/obj/item/ammo_casing/created = instantiate_casing()
+		if(isnull(ammo_internal))
+			ammo_internal = list(created)
+		else
+			ammo_internal += created
+		--ammo_current
+		return created
+	return ammo_internal[length(ammo_internal)]
+
+/**
+ * get and eject top casing
+ */
+/obj/item/ammo_magazine/proc/pop()
+	RETURN_TYPE(/obj/item/ammo_casing)
+	if(length(ammo_internal))
+		// list filled
+		. = ammo_internal[length(ammo_internal)]
+		--ammo_internal.len
+		update_icon()
+		return
+	// list empty
+	if(!ammo_current)
+		return
+	. = instantiate_casing()
+	--ammo_current
+	update_icon()
+
+/**
+ * put a casing into top
+ *
+ * @return TRUE/FALSE on success/failure
+ */
+/obj/item/ammo_magazine/proc/push(obj/item/ammo_casing/casing, update_icon)
+	if(amount_remaining() >= ammo_max)
+		return FALSE
+	LAZYADD(ammo_internal, casing)
+	if(casing.loc != src)
+		casing.forceMove(src)
+	return TRUE
+
+/**
+ * replace the first spent casing from the top or insert top depending on if there's room
+ *
+ * @return TRUE/FALSE on success/failure
+ */
+/obj/item/ammo_magazine/proc/push_resupply(obj/item/ammo_casing/casing, update_icon, atom/transfer_old_to)
+	// try to resupply
+	for(var/i in length(ammo_internal) to 1 step -1)
+		var/obj/item/ammo_casing/loaded = ammo_internal[i]
+		if(loaded.loaded())
+			continue
+		loaded.forceMove(transfer_old_to || drop_location())
+		ammo_internal[i] = casing
+		if(casing.loc != src)
+			casing.forceMove(src)
+		return TRUE
+	// try to insert
+	return insert_top(casing, update_icon)
 
 //* Ammo - Getters *//
 

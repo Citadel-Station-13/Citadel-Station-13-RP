@@ -4299,7 +4299,7 @@
 #include "code\modules\projectiles\pins.dm"
 #include "code\modules\projectiles\projectile.dm"
 #include "code\modules\projectiles\ammunition\ammo_casing.dm"
-#include "code\modules\projectiles\ammunition\magazine.dm"
+#include "code\modules\projectiles\ammunition\ammo_magazine.dm"
 #include "code\modules\projectiles\calibers\caliber.dm"
 #include "code\modules\projectiles\calibers\normal\a10g.dm"
 #include "code\modules\projectiles\calibers\normal\a10mm.dm"
