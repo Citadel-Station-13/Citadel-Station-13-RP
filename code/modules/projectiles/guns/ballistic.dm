@@ -172,6 +172,7 @@
 			if(loaded.len >= max_shells)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
+			var/count = 0
 			while(length(loaded) < max_shells)
 				var/obj/item/ammo_casing/inserting = AM.peek()
 				if(!accepts_casing(inserting))
@@ -320,7 +321,7 @@
 	var/bullets = 0
 	if(loaded)
 		bullets += loaded.len
-	if(ammo_magazine && ammo_magazine.stored_ammo)
+	if(ammo_magazine)
 		bullets += ammo_magazine.amount_remaining()
 	if(chambered)
 		bullets += 1

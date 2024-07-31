@@ -189,7 +189,7 @@
 		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
 		return
 	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
-	var/obj/item/ammo_casing/casing = draw_top()
+	var/obj/item/ammo_casing/casing = pop()
 	e_args.performer.put_in_hands_or_drop(casing)
 
 /obj/item/ammo_magazine/on_attack_hand(datum/event_args/actor/clickchain/e_args)
@@ -205,7 +205,7 @@
 		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
 		return
 	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
-	var/obj/item/ammo_casing/casing = draw_top()
+	var/obj/item/ammo_casing/casing = pop()
 	e_args.performer.put_in_hands_or_drop(casing)
 
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
@@ -220,7 +220,7 @@
 		if(!user.temporarily_remove_from_inventory(casing, user = user))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(!insert_top(casing, update_icon = TRUE))
+		if(!push(casing, update_icon = TRUE))
 			to_chat(user, SPAN_WARNING("You fail to insert [I] into [src]!"))
 			return
 		// todo: variable load sounds
@@ -262,7 +262,7 @@
 			continue
 		if(!isnull(why_cant_load_casing(casing)))
 			continue
-		if(!insert_top(casing, FALSE))
+		if(!push(casing, FALSE))
 			continue
 		++.
 	if(.)
@@ -367,7 +367,7 @@
 			casing.forceMove(src)
 		return TRUE
 	// try to insert
-	return insert_top(casing, update_icon)
+	return push(casing, update_icon)
 
 //* Ammo - Getters *//
 

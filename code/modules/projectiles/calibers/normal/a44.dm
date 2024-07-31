@@ -44,6 +44,10 @@
 	icon_state = "m44-0"
 	ammo_current = 0
 
+/obj/item/ammo_magazine/a44/rubber
+	desc = "A magazine for .44 less-than-lethal ammo."
+	ammo_type = /obj/item/ammo_casing/a44/rubber
+
 /obj/item/ammo_magazine/a44/clip
 	name = "ammo clip (.44)"
 	desc = "A stripper clip for reloading .44 rounds into magazines."

@@ -306,7 +306,7 @@
 	id = "dartgun_ammo_s"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
 	materials_base = list(MAT_STEEL = 50, MAT_GOLD = 30, MAT_SILVER = 30, MAT_GLASS = 50)
-	build_path = /obj/item/ammo_casing/chemdart/small
+	build_path = /obj/item/ammo_casing/dart/chemdart/small
 
 /datum/design/science/weapon/ammo/dartgunmag_med
 	id = "dartgun_mag_m"
@@ -318,7 +318,7 @@
 	id = "dartgun_ammo_m"
 	req_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_MAGNET = 1, TECH_ILLEGAL = 1)
 	materials_base = list(MAT_STEEL = 80, MAT_GOLD = 40, MAT_SILVER = 40, MAT_GLASS = 60)
-	build_path = /obj/item/ammo_casing/chemdart
+	build_path = /obj/item/ammo_casing/dart/chemdart
 
 /datum/design/science/weapon/melee
 	abstract_type = /datum/design/science/weapon/melee
