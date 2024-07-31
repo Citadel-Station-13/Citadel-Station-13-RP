@@ -12,9 +12,16 @@
 	recoil = 0
 	projectile_type = /obj/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
-	var/regex_this_caliber = /datum/caliber/a357		//determines which casings will fit
+	//* Configuration *//
+
+	/// If set, accepts ammo and magazines of this caliber.
+	var/regex_this_caliber = /datum/caliber/a357
+
+	//! LEGACY BELOW
+
 	var/handle_casings = EJECT_CASINGS	//determines how spent casings should be handled
 	var/load_method = SINGLE_CASING|SPEEDLOADER //1 = Single shells, 2 = box or quick loader, 3 = magazine
+	var/load_method_converted = TRUE
 
 	// todo: rework mag handling, internal magazine?
 
@@ -47,6 +54,11 @@
 		if(ispath(magazine_type) && (load_method & MAGAZINE))
 			ammo_magazine = new magazine_type(src)
 	update_icon()
+
+	if(load_method & SPEEDLOADER)
+		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER
+	else if(load_method & MAGAZINE)
+		load_method_converted |= MAGAZINE_TYPE_NORMAL
 
 /obj/item/gun/ballistic/update_icon_state()
 	. = ..()
@@ -116,63 +128,62 @@
 /obj/item/gun/ballistic/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
-		if(!(load_method & AM.mag_type) || caliber != AM.caliber || allowed_magazines && !is_type_in_list(A, allowed_magazines))
+		if(!(load_method_converted & AM.magazine_type) || !accepts_caliber(AM.ammo_caliber) || allowed_magazines && !is_type_in_list(A, allowed_magazines))
 			to_chat(user, SPAN_WARNING("[AM] won't load into [src]!"))
 			return
-		switch(AM.mag_type)
-			if(MAGAZINE)
-				if(ammo_magazine)
-					if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
-						to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
-						return
-					else
-						if(user.a_intent == INTENT_GRAB) //Tactical reloading
-							if(!can_special_reload)
-								to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
-								return
-							if(do_after(user, TACTICAL_RELOAD_SPEED, src))
-								if(!user.attempt_insert_item_for_installation(AM, src))
-									return
-								ammo_magazine.update_icon()
-								user.put_in_hands_or_drop(ammo_magazine)
-								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													 SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
-						else //Speed reloading
-							if(!can_special_reload)
-								to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
-								return
-							if(do_after(user, SPEED_RELOAD_SPEED, src))
-								if(!user.attempt_insert_item_for_installation(AM, src))
-									return
-								ammo_magazine.update_icon()
-								ammo_magazine.dropInto(user.loc)
-								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
-													 SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
-					ammo_magazine = AM
-					playsound(loc, mag_insert_sound, 75, 1)
-					update_icon()
-					AM.update_icon()
-				if(!user.attempt_insert_item_for_installation(AM, src))
+		if(AM.magazine_type & MAGAZINE_TYPE_NORMAL)
+			if(ammo_magazine)
+				if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
+					to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
 					return
+				else
+					if(user.a_intent == INTENT_GRAB) //Tactical reloading
+						if(!can_special_reload)
+							to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
+							return
+						if(do_after(user, TACTICAL_RELOAD_SPEED, src))
+							if(!user.attempt_insert_item_for_installation(AM, src))
+								return
+							ammo_magazine.update_icon()
+							user.put_in_hands_or_drop(ammo_magazine)
+							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
+					else //Speed reloading
+						if(!can_special_reload)
+							to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
+							return
+						if(do_after(user, SPEED_RELOAD_SPEED, src))
+							if(!user.attempt_insert_item_for_installation(AM, src))
+								return
+							ammo_magazine.update_icon()
+							ammo_magazine.dropInto(user.loc)
+							user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
 				ammo_magazine = AM
-				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
-				playsound(src.loc, mag_insert_sound, 50, 1)
-			if(SPEEDLOADER)
-				if(loaded.len >= max_shells)
-					to_chat(user, "<span class='warning'>[src] is full!</span>")
-					return
-				var/count = 0
-				for(var/obj/item/ammo_casing/C in AM.stored_ammo)
-					if(loaded.len >= max_shells)
-						break
-					if(C.caliber == caliber)
-						C.loc = src
-						loaded += C
-						AM.stored_ammo -= C //should probably go inside an ammo_magazine proc, but I guess less proc calls this way...
-						count++
-				if(count)
-					user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
-					playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1) //Kind of the opposite of empty but the "click" sound fits a speedloader nicely.
+				playsound(loc, mag_insert_sound, 75, 1)
+				update_icon()
+				AM.update_icon()
+			if(!user.attempt_insert_item_for_installation(AM, src))
+				return
+			ammo_magazine = AM
+			user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
+			playsound(src.loc, mag_insert_sound, 50, 1)
+		else if(AM.magazine_type & MAGAZINE_TYPE_SPEEDLOADER)
+			if(loaded.len >= max_shells)
+				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				return
+			while(length(loaded) < max_shells)
+				var/obj/item/ammo_casing/inserting = AM.peek()
+				if(!accepts_casing(inserting))
+					break
+				inserting = AM.pop()
+				if(inserting.loc != src)
+					inserting.forceMove(src)
+				loaded += inserting
+				count++
+			if(count)
+				user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
+				playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1) //Kind of the opposite of empty but the "click" sound fits a speedloader nicely.
 		AM.update_icon()
 	else if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
@@ -326,6 +337,16 @@
 
 	unload_ammo(usr)
 */
+
+//* Ammo *//
+
+/**
+ * Can accept an ammo casing
+ */
+/obj/item/gun/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
+	if(!accepts_caliber(casing.regex_this_caliber))
+		return FALSE
+	return TRUE
 
 //* Caliber *//
 

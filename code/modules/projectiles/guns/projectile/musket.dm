@@ -138,6 +138,6 @@
 	icon_state = "blunderbuss"
 	item_state = "blunderbuss"
 	wielded_item_state = "blunderbuss-wielded"
-	caliber = /datum/caliber/blunderbuss
+	regex_this_caliber = /datum/caliber/blunderbuss
 
 	ammo_type = /obj/item/ammo_casing/blunderbuss
