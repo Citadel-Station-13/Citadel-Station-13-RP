@@ -321,23 +321,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 
 /obj/item/clothing/mask/smokable/cigarette/import
-	name = "cigarette"
 	desc = "A roll of exotic blended herbs."
 	icon_state = "cigimp"
 	item_state = "cigimp"
-	throw_speed = 0.5
-	w_class = WEIGHT_CLASS_TINY
-	slot_flags = SLOT_EARS | SLOT_MASK
-	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt/imp
-	chem_volume = 15
-	max_smoketime = 300
-	smoketime = 300
 	nicotine_amt = 0
 
 /obj/item/clothing/mask/smokable/cigarette/light
-	name = "cigarette"
-	desc = "A roll of tobacco and nicotine."
 	icon_state = "ciglite"
 	item_state = "ciglite"
 	type_butt = /obj/item/cigbutt/light
@@ -345,7 +335,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 
 /obj/item/clothing/mask/smokable/cigarette/herbal
-	name = "cigarette"
 	desc = "A roll of aromatic blended herbs."
 	icon_state = "cigherbal"
 	item_state = "cigherbal"
@@ -436,18 +425,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	user.update_inv_r_hand(1)
 
 /obj/item/cigbutt/imp
-	name = "cigarette butt"
-	desc = "A manky old cigarette butt."
 	icon_state = "cigimpbutt"
 
 /obj/item/cigbutt/light
-	name = "cigarette butt"
-	desc = "A manky old cigarette butt."
 	icon_state = "ciglitebutt"
 
 /obj/item/cigbutt/herbal
-	name = "cigarette butt"
-	desc = "A manky old cigarette butt."
 	icon_state = "cigherbalbutt"
 
 /////////////////
