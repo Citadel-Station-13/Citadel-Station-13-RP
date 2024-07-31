@@ -8,6 +8,8 @@
 	melting_point = T0C+300
 	pass_stack_colors = TRUE
 
+	worth = 2
+
 	relative_integrity = 0.25
 	density = 8 * 0.2
 	relative_conductivity = 0

@@ -442,7 +442,6 @@
 		GLOB.admins -= src //delete them on the managed one too
 
 	active_mousedown_item = null
-	SSping.currentrun -= src
 
 	//* cleanup rendering
 	// clear perspective
@@ -468,7 +467,9 @@
 	mob?.pre_logout(src)
 
 	//* cleanup from SSinput
-	SSinput.currentrun -= src
+	SSinput.currentrun?.Remove(src)
+	//* cleanup from SSping
+	SSping.currentrun?.Remove(src)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW

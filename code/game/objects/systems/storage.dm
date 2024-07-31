@@ -33,21 +33,26 @@
 	/// carry weight mitigation, multiplicative.
 	var/weight_multiply = 1
 
-	//* Deconstruction & Integrity
+	//* Deconstruction & Integrity *//
 
 	/// on deconstruct(method), drop on these method flags
 	var/drop_on_deconstruction_methods = ALL
 	/// locks don't work if atom is broken
 	var/lock_nullified_by_atom_break = FALSE
 
-	//* Defense
+	//* Defense *//
 
 	/// pass EMPs in
 	var/pass_emp_inside = TRUE
 	/// pass EMPs in but weaken them
 	var/pass_emp_weaken = TRUE
 
-	//* Filters
+	//* Economy *//
+
+	/// allow selling stuff in worth intrinsic
+	var/use_worth_containing = TRUE
+
+	//* Filters *//
 
 	/// protected var because we want to cache.
 	/// set to a list of typepaths to initialize it at New().
@@ -69,7 +74,7 @@
 	/// this is so overriding things can be easier.
 	VAR_PROTECTED/list/insertion_allow_typecache
 
-	//* Interaction
+	//* Interaction *//
 
 	/// insert proposition: 'on', 'in', etc
 	var/insert_preposition = "in"
@@ -109,7 +114,7 @@
 	/// ghosts can always see inside
 	var/always_allow_observer_view = TRUE
 
-	//* Limits
+	//* Limits *//
 
 	/// if set, limit to a certain volume
 	var/max_combined_volume
@@ -122,19 +127,19 @@
 	/// disallow nesting storage items of same or bigger weight class
 	var/disallow_equal_weight_class_storage_nesting = TRUE
 
-	//* Locking
+	//* Locking *//
 
 	/// locked storage can't be accessed, unless show() is called with force
 	/// however, you can continue viewing even if it's locked.
 	/// use set_locked() to modify.
 	var/locked = FALSE
 
-	//* Mass Operations
+	//* Mass Operations *//
 
 	/// mutex to prevent mass operation spam
 	var/mass_operation_interaction_mutex = FALSE
 
-	//* Redirection
+	//* Redirection *//
 
 	/// When set, we treat this as the real parent object.
 	/// **Warning**: This is an advanced feature.
@@ -147,26 +152,29 @@
 	/// That, however, is too complex and awful, so, we just have a single redirection var now
 	/// if you mess it up, it is not my fault. ~silicons
 	///
+	/// * If you use this, you should probably set [use_worth_containing] to FALSE if it isn't logically in here.
+	/// * If you don't, double (or even infinite) selling can happen.
+	///
 	/// todo: this literally doesn't work due to no Reachability hooks. please implement this properly later via reachability signal hooks.
 	var/atom/movable/storage_indirection/indirection
 
-	//* Radiation
+	//* Radiation *//
 	/// pass clean radiation calls inside?
 	var/pass_clean_radiation_inside = FALSE
 
-	//* Rendering
+	//* Rendering *//
 
 	/// update icon on item change
 	var/update_icon_on_item_change = FALSE
 
-	//* State Caches
+	//* State Caches *//
 
 	/// cached combined w class
 	var/tmp/cached_combined_weight_class
 	/// cached combined volume
 	var/tmp/cached_combined_volume
 
-	//* Sound Effects
+	//* Sound Effects *//
 
 	/// open / access sound passed into playsound
 	var/sfx_open = "rustle"

@@ -1,9 +1,13 @@
 /obj/item/gun/energy/gun
 	name = "energy gun"
 	desc = "Another bestseller of Lawson Arms and "+TSC_HEPH+", the LAEP90 Perun is a versatile energy based sidearm, capable of switching between low and high capacity projectile settings. In other words: Stun or Kill."
+	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+		then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger."
 	icon_state = "energystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_delay = 10 // Handguns should be inferior to two-handed weapons.
+
+	worth_intrinsic = 250
 
 	projectile_type = /obj/projectile/beam/stun/med
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
@@ -36,6 +40,7 @@
 
 //	requires_two_hands = 1
 	one_handed_penalty = 30
+	worth_intrinsic = 450
 
 	firemodes = list(
 		list(mode_name="stun", burst=1, projectile_type=/obj/projectile/beam/stun/weak, modifystate="fm-2tstun", charge_cost = 100),

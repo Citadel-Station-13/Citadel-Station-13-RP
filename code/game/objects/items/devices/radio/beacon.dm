@@ -9,6 +9,7 @@
 	var/functioning = TRUE
 	var/identifier
 	origin_tech = list(TECH_BLUESPACE = 1)
+	worth_intrinsic = 50
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 
