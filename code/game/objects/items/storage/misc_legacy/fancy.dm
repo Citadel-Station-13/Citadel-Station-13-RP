@@ -349,7 +349,7 @@
 
 /obj/item/storage/fancy/cigarettes/subrosas
 	name = "\improper pack of Subrosas"
-	desc = "A brand of imported cigarettes. These ones contain a proprietary herbal blend, 100% nicotine free. Made in Epsilon Eridani."
+	desc = "A brand of imported cigarettes. These ones contain a proprietary herbal blend, 100% nicotine free."
 	icon_state = "SRpacket"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/herbal = 6)
 	brand = "\improper Subrosa"
