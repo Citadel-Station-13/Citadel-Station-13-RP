@@ -167,8 +167,8 @@
 				prob(2);/obj/item/ammo_magazine/a45,
 				prob(4);/obj/item/ammo_magazine/a45/rubber,
 				prob(4);/obj/item/ammo_magazine/a45/flash,
-				prob(2);/obj/item/ammo_magazine/a9mmt,
-				prob(6);/obj/item/ammo_magazine/a9mmt/rubber)
+				prob(2);/obj/item/ammo_magazine/a9mm/top_mount,
+				prob(6);/obj/item/ammo_magazine/a9mm/top_mount/rubber)
 
 /obj/random/projectile/random
 	name = "Random Projectile Weapon"
@@ -192,8 +192,8 @@
 	return pick(
 			prob(6);list(
 				/obj/item/gun/ballistic/automatic/wt550,
-				/obj/item/ammo_magazine/a9mmt,
-				/obj/item/ammo_magazine/a9mmt
+				/obj/item/ammo_magazine/a9mm/top_mount,
+				/obj/item/ammo_magazine/a9mm/top_mount
 			),
 			prob(6);list(
 				/obj/item/gun/ballistic/automatic/wt274,
@@ -217,7 +217,7 @@
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/p90,
-				/obj/item/ammo_magazine/m57x28mmp90
+				/obj/item/ammo_magazine/a5_7mm/p90
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/mini_uzi/taj,
@@ -242,33 +242,33 @@
 	return pick(
 			prob(4);list(
 				/obj/item/gun/ballistic/automatic/sts35,
-				/obj/item/ammo_magazine/m556,
-				/obj/item/ammo_magazine/m556
+				/obj/item/ammo_magazine/a5_56mm,
+				/obj/item/ammo_magazine/a5_56mm
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/automatic/z8,
-				/obj/item/ammo_magazine/m762,
-				/obj/item/ammo_magazine/m762
+				/obj/item/ammo_magazine/a7_62mm,
+				/obj/item/ammo_magazine/a7_62mm
 			),
 			prob(8);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle,
-				/obj/item/ammo_magazine/clip/c762,
-				/obj/item/ammo_magazine/clip/c762
+				/obj/item/ammo_magazine/a7_62mm/clip,
+				/obj/item/ammo_magazine/a7_62mm/clip
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895,
-				/obj/item/ammo_magazine/clip/c762,
-				/obj/item/ammo_magazine/clip/c762
+				/obj/item/ammo_magazine/a7_62mm/clip,
+				/obj/item/ammo_magazine/a7_62mm/clip
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/bullpup,
-				/obj/item/ammo_magazine/m762,
-				/obj/item/ammo_magazine/m762
+				/obj/item/ammo_magazine/a7_62mm,
+				/obj/item/ammo_magazine/a7_62mm
 			),
 			prob(8);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle/taj,
-				/obj/item/ammo_magazine/clip/c762,
-				/obj/item/ammo_magazine/clip/c762
+				/obj/item/ammo_magazine/a7_62mm/clip,
+				/obj/item/ammo_magazine/a7_62mm/clip
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/caseless/wild_hunt,

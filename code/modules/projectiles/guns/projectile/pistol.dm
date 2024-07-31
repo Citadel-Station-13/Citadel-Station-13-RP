@@ -237,8 +237,8 @@
 		/obj/item/ammo_casing/a12g/beanbag,
 		/obj/item/ammo_casing/a12g/stunshell,
 		/obj/item/ammo_casing/a12g/flare,
-		/obj/item/ammo_casing/a762,
-		/obj/item/ammo_casing/a556,
+		/obj/item/ammo_casing/a7_62mm,
+		/obj/item/ammo_casing/a5_56mm,
 	)
 
 /obj/item/gun/ballistic/pirate/Initialize(mapload)
@@ -436,8 +436,8 @@
 	regex_this_caliber = /datum/caliber/a5_7mm
 	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m57x28mm/ntles
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/ntles)
+	magazine_type = /obj/item/ammo_magazine/a5_7mm/nt_les
+	allowed_magazines = list(/obj/item/ammo_magazine/a5_7mm/nt_les)
 	projectile_type = /obj/projectile/bullet/pistol/lap
 	one_handed_penalty = 30
 	var/collapsible = 1
@@ -483,13 +483,13 @@
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m57x28mm/fiveseven
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/fiveseven)
+	magazine_type = /obj/item/ammo_magazine/a5_7mm/five_seven
+	allowed_magazines = list(/obj/item/ammo_magazine/a5_7mm/five_seven)
 	one_handed_penalty = 0
 
 /obj/item/gun/ballistic/fiveseven/update_icon_state()
 	. = ..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap))
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/a5_7mm/five_seven/highcap))
 		icon_state = "fiveseven-extended"
 
 //Apidean Weapons

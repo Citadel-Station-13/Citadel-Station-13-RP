@@ -276,7 +276,7 @@
 /area/submap/DJOutpost1)
 "P" = (
 /obj/structure/table/rack,
-/obj/item/ammo_magazine/clip/c762/hunter,
+/obj/item/ammo_magazine/a7_62mm/clip/hunter,
 /obj/item/gun/ballistic/shotgun/pump/rifle,
 /turf/simulated/floor/wood,
 /area/submap/DJOutpost1)

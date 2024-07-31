@@ -189,7 +189,6 @@
 
 //* Magazines - Clips
 
-#warn a12g_clip
 /obj/item/ammo_magazine/a12g/clip
 	name = "ammo clip (12g slug)"
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
@@ -232,7 +231,6 @@
 
 //* Magazines - Pouches
 
-#warn a12g_pouch
 /obj/item/ammo_magazine/a12g/pouch
 	name = "shotgun slug holder"
 	desc = "A convenient pouch that holds 12 gauge shells."

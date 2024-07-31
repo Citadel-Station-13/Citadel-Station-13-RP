@@ -641,8 +641,8 @@
 
 	corpse = /obj/spawner/corpse/vox/pirate
 	loot_list = list(/obj/item/gun/ballistic/shotgun/pump/rifle/vox_hunting = 100,
-					/obj/item/ammo_magazine/clip/c762 = 30,
-					/obj/item/ammo_magazine/clip/c762 = 30
+					/obj/item/ammo_magazine/a7_62mm/clip = 30,
+					/obj/item/ammo_magazine/a7_62mm/clip = 30
 					)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc

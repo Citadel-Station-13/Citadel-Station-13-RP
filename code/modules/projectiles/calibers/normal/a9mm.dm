@@ -119,7 +119,7 @@
 
 // SMG
 #warn a9mm/
-/obj/item/ammo_magazine/a9mmt
+/obj/item/ammo_magazine/a9mm/top_mount
 	name = "top mounted magazine (9mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "9mmt-5"
@@ -130,23 +130,23 @@
 	materials_base = list(MAT_STEEL = 1200)
 	ammo_max = 20
 
-/obj/item/ammo_magazine/a9mmt/empty
+/obj/item/ammo_magazine/a9mm/top_mount/empty
 	icon_state = "9mmt-0"
 	ammo_current = 0
 
-/obj/item/ammo_magazine/a9mmt/hunter
+/obj/item/ammo_magazine/a9mm/top_mount/hunter
 	name = "top mounted magazine (9mm hunter)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/hunter
 
-/obj/item/ammo_magazine/a9mmt/rubber
+/obj/item/ammo_magazine/a9mm/top_mount/rubber
 	name = "top mounted magazine (9mm rubber)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/rubber
 
-/obj/item/ammo_magazine/a9mmt/flash
+/obj/item/ammo_magazine/a9mm/top_mount/flash
 	name = "top mounted magazine (9mm flash)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/flash
 
-/obj/item/ammo_magazine/a9mmt/practice
+/obj/item/ammo_magazine/a9mm/top_mount/practice
 	name = "top mounted magazine (9mm practice)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/practice
 

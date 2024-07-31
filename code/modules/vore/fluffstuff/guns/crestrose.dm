@@ -18,8 +18,8 @@
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	attack_sound = null
 	regex_this_caliber = /datum/caliber/a7_62mm
-	magazine_type = /obj/item/ammo_magazine/m762
-	allowed_magazines = list(/obj/item/ammo_magazine/m762)
+	magazine_type = /obj/item/ammo_magazine/a7_62mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm)
 
 	firemodes = list(
 	list(mode_name="fold", icon_state="crestrose_fold",item_state = "laser",damage_force=3),

@@ -34,8 +34,8 @@
 "aaW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/ammo_magazine/m762,
-/obj/item/ammo_magazine/m762,
+/obj/item/ammo_magazine/a7_62mm,
+/obj/item/ammo_magazine/a7_62mm,
 /obj/machinery/camera/motion/security{
 	dir = 8
 	},
@@ -2852,34 +2852,34 @@
 	pixel_y = 32
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_x = -2;
 	pixel_y = -8
 	},
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_x = -2;
 	pixel_y = -8
 	},
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_x = 1;
 	pixel_y = -5
 	},
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_y = 5
 	},
-/obj/item/ammo_magazine/a9mmt{
+/obj/item/ammo_magazine/a9mm/top_mount{
 	pixel_y = 5
 	},
 /obj/structure/cable/green{
@@ -16245,10 +16245,10 @@
 /obj/structure/table/steel,
 /obj/item/gun/ballistic/shotgun/pump/rifle/practice,
 /obj/item/gun/ballistic/shotgun/pump/rifle/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -34563,18 +34563,18 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
-/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
+/obj/item/ammo_magazine/a5_7mm/five_seven/ap,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vSw" = (

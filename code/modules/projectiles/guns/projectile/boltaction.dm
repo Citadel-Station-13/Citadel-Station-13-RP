@@ -10,26 +10,26 @@
 	regex_this_caliber = /datum/caliber/a7_62mm
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
-	ammo_type = /obj/item/ammo_casing/a762
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 	load_method = SINGLE_CASING|SPEEDLOADER
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	worth_intrinsic = 300
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/practice // For target practice
 	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with practice rounds pre-loaded into the gun. Popular among professional marksmen. Uses 7.62mm rounds."
-	ammo_type = /obj/item/ammo_casing/a762/practice
+	ammo_type = /obj/item/ammo_casing/a7_62mm/practice
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial
 	name = "ceremonial bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
 	icon_state = "boltaction_c"
 	item_state = "boltaction_c"
-	ammo_type = /obj/item/ammo_casing/a762/blank
+	ammo_type = /obj/item/ammo_casing/a7_62mm/blank
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial/holy
 	name = "blessed bolt-action rifle"
 	desc = "A bolt-action rifle with a heavy, high-quality wood stock that has a beautiful finish. Clearly not intended to be used in combat. Uses 7.62mm rounds."
-	ammo_type = /obj/item/ammo_casing/a762/silver
+	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/taj
@@ -44,7 +44,7 @@
 	desc = "This ancient rifle bears traces of an assembly meant to house power cells, implying it used to fire energy beams. It has since been crudely modified to fire standard 7.62mm rounds."
 	icon_state = "vox_hunting"
 	item_state = "vox_hunting"
-	ammo_type = /obj/item/ammo_casing/a762
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 	throw_force = 10
 	damage_force = 20
 
@@ -183,7 +183,7 @@
 	item_state = "win1895"
 	icon_state = "win1895"
 	slot_flags = SLOT_BACK
-	ammo_type = /obj/item/ammo_casing/a762
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 	load_method = SINGLE_CASING|SPEEDLOADER
 	max_shells = 5
 	regex_this_caliber = /datum/caliber/a7_62mm
@@ -192,7 +192,7 @@
 
 /obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895/holy
 	name = "blessed lever-action"
-	ammo_type = /obj/item/ammo_casing/a762/silver
+	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 	holy = TRUE
 
 /obj/item/gun/ballistic/shotgun/pump/scopedrifle
@@ -209,7 +209,7 @@
 	action_sound = 'sound/weapons/riflebolt.ogg'
 	pin = /obj/item/firing_pin/explorer
 	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
-	ammo_type = /obj/item/ammo_casing/a762/sniperhunter
+	ammo_type = /obj/item/ammo_casing/a7_62mm/sniperhunter
 	accuracy = 50 //Forced missing fucking sucks ass
 	scoped_accuracy = 100
 

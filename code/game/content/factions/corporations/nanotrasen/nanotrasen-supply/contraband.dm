@@ -41,7 +41,7 @@
     name = "Weapon - Misplaced militia rifles"
     contains = list(
 		/obj/item/gun/ballistic/shotgun/pump/rifle = 3,
-		/obj/item/ammo_magazine/clip/c762 = 6,
+		/obj/item/ammo_magazine/a7_62mm/clip = 6,
 	)
     legacy_contraband = 1
     container_type = /obj/structure/closet/crate/secure/weapon

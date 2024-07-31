@@ -47,7 +47,7 @@
 
 /obj/item/gun/ballistic/contender/a762
 	regex_this_caliber = /datum/caliber/a7_62mm
-	ammo_type = /obj/item/ammo_casing/a762
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 
 /obj/item/gun/ballistic/contender/tacticool
 	desc = "A modified replica of an ancient one-shot hand-cannon, reinvented with a tactical look. For when you really want to make a hole. This one has been modified to work almost like a bolt-action."
@@ -60,7 +60,7 @@
 
 /obj/item/gun/ballistic/contender/tacticool/a762
 	regex_this_caliber = /datum/caliber/a7_62mm
-	ammo_type = /obj/item/ammo_casing/a762
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 
 /obj/item/gun/ballistic/contender/holy
 	name = "Divine Challenger"
@@ -77,7 +77,7 @@
 
 /obj/item/gun/ballistic/contender/holy/a762
 	regex_this_caliber = /datum/caliber/a7_62mm
-	ammo_type = /obj/item/ammo_casing/a762/silver
+	ammo_type = /obj/item/ammo_casing/a7_62mm/silver
 
 /obj/item/gun/ballistic/contender/taj
 	name = "Adhomai pocket rifle"
@@ -91,7 +91,7 @@
 
 /obj/item/gun/ballistic/contender/taj/a762
 	regex_this_caliber = /datum/caliber/a7_62mm
-	ammo_type = /obj/item/ammo_casing/a762
+	ammo_type = /obj/item/ammo_casing/a7_62mm
 
 /obj/item/gun/ballistic/contender/pipegun
 	name = "improvised pipe rifle"

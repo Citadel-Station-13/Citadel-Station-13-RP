@@ -7923,8 +7923,8 @@
 /obj/structure/table/reinforced,
 /obj/item/gun/energy/laser/practice,
 /obj/item/gun/ballistic/shotgun/pump/rifle/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
 "eff" = (
@@ -35668,8 +35668,8 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/item/ammo_magazine/clip/c762/practice,
-/obj/item/ammo_magazine/clip/c762/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = -28
@@ -35680,8 +35680,8 @@
 /obj/item/ammo_magazine/a45/practice,
 /obj/item/ammo_magazine/a45/practice,
 /obj/item/ammo_magazine/a45/practice,
-/obj/item/ammo_magazine/a9mmt/practice,
-/obj/item/ammo_magazine/a9mmt/practice,
+/obj/item/ammo_magazine/a9mm/top_mount/practice,
+/obj/item/ammo_magazine/a9mm/top_mount/practice,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/weaponsrange)
 "tbR" = (

@@ -1,7 +1,6 @@
 /datum/caliber/cap_gun
 	caliber = "capgun"
 
-#warn cap_gun/
 /obj/item/ammo_casing/cap_gun
 	name = "cap"
 	desc = "A cap for children toys."
@@ -12,7 +11,6 @@
 	projectile_type = /obj/projectile/bullet/pistol/cap
 	materials_base = list(MAT_STEEL = 85)
 
-#warn cap_gun/
 /obj/item/ammo_magazine/cap_gun
 	name = "speedloader (caps)"
 	icon = 'icons/modules/projectiles/magazines/old_speedloader_7.dmi'

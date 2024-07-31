@@ -182,34 +182,34 @@
 					prob(5);/obj/item/storage/box/shotgunammo,\
 					prob(5);/obj/item/storage/box/shotgunshells,\
 					prob(5);/obj/item/ammo_magazine/a357/speedloader,\
-					prob(5);/obj/item/ammo_magazine/clip/c762,\
+					prob(5);/obj/item/ammo_magazine/a7_62mm/clip,\
 					prob(5);/obj/item/ammo_magazine/a45,\
 					prob(5);/obj/item/ammo_magazine/a45/rubber,\
 					prob(5);/obj/item/ammo_magazine/s38/speedloader,\
 					prob(5);/obj/item/ammo_magazine/s38/speedloader/rubber,\
 					prob(5);/obj/item/storage/box/flashbangs,\
-					prob(5);/obj/item/ammo_magazine/m556,\
-					prob(4);/obj/item/ammo_magazine/clip/c545,\
+					prob(5);/obj/item/ammo_magazine/a5_56mm,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/clip,\
 					prob(4);/obj/item/ammo_magazine/a45/clip,\
 					prob(4);/obj/item/ammo_magazine/a9mm/clip,\
 					prob(4);/obj/item/ammo_magazine/a45/uzi,\
-					prob(4);/obj/item/ammo_magazine/m556/ext,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/ext,\
 					prob(4);/obj/item/ammo_magazine/a9mm,\
 					prob(4);/obj/item/ammo_magazine/a9mm/advanced_smg,\
-					prob(4);/obj/item/ammo_magazine/a9mmt,\
-					prob(4);/obj/item/ammo_magazine/a9mmt/rubber,\
+					prob(4);/obj/item/ammo_magazine/a9mm/top_mount,\
+					prob(4);/obj/item/ammo_magazine/a9mm/top_mount/rubber,\
 					prob(4);/obj/item/ammo_magazine/a10mm,\
-					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
+					prob(4);/obj/item/ammo_magazine/a5_7mm/p90,\
 				/*	prob(4);/obj/item/ammo_magazine/m14,\
 					prob(4);/obj/item/ammo_magazine/m14/large,\*/
-					prob(4);/obj/item/ammo_magazine/m556/ext,
-					prob(4);/obj/item/ammo_magazine/m762,\
-					prob(4);/obj/item/ammo_magazine/m556/ext,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/ext,
+					prob(4);/obj/item/ammo_magazine/a7_62mm,\
+					prob(4);/obj/item/ammo_magazine/a5_56mm/ext,\
 					prob(3);/obj/item/ammo_magazine/a10mm/clip,\
 					prob(3);/obj/item/ammo_magazine/a44/clip,\
-					prob(3);/obj/item/ammo_magazine/m556,\
+					prob(3);/obj/item/ammo_magazine/a5_56mm,\
 					prob(2);/obj/item/ammo_magazine/a44,\
-					prob(2);/obj/item/ammo_magazine/m556,\
+					prob(2);/obj/item/ammo_magazine/a5_56mm,\
 					prob(1);/obj/item/storage/box/frags,\
 				/*	prob(1);/obj/item/ammo_magazine/m95,\ */
 					prob(1);/obj/item/ammo_casing/rocket,\

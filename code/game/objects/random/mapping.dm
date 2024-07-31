@@ -299,8 +299,8 @@
 				/obj/item/clothing/suit/armor/vest,
 				/obj/item/gun/ballistic/garand,
 				/obj/item/gun/ballistic/garand,
-				/obj/item/ammo_magazine/m762garand,
-				/obj/item/ammo_magazine/m762garand,
+				/obj/item/ammo_magazine/a7_62mm/garand,
+				/obj/item/ammo_magazine/a7_62mm/garand,
 				/obj/structure/closet/crate/plastic
 			),
 			prob(2);list(
