@@ -21,6 +21,8 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_NONE
 
+	worth = 2.5
+
 /datum/material/leather/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(

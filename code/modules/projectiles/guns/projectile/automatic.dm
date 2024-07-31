@@ -111,6 +111,7 @@
 	magazine_type = /obj/item/ammo_magazine/m9mmt/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mmt)
 	projectile_type = /obj/projectile/bullet/pistol/medium
+	worth_intrinsic = 450
 
 /obj/item/gun/ballistic/automatic/wt550/update_icon_state()
 	. = ..()
@@ -143,6 +144,7 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/batrifle_magout.ogg'
 	heavy = TRUE
 	one_handed_penalty = 60
+	worth_intrinsic = 650 // milrp time
 
 	burst_delay = 4
 	firemodes = list(

@@ -24,3 +24,5 @@
 	refraction = MATERIAL_RESISTANCE_HIGH
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_MODERATE
+
+	worth = 100
