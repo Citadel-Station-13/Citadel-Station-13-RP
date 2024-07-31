@@ -44,7 +44,6 @@
 				loaded += new ammo_type(src)
 		if(ispath(magazine_type) && (load_method & MAGAZINE))
 			ammo_magazine = new magazine_type(src)
-			allowed_magazines += /obj/item/ammo_magazine/smart
 	update_icon()
 
 /obj/item/gun/ballistic/update_icon_state()
