@@ -15,8 +15,7 @@
 	name = "magazine (Compressed Biomatter)"
 	desc = "An advanced matter compression unit, used to feed biomass into a Rapid On-board Fabricator. Accepts biomass globules."
 	icon_state = "bio"
-	mag_type = MAGAZINE
-	caliber = "organic"
+	ammo_caliber = /datum/caliber/biomatter
 	ammo_preload = /obj/item/ammo_casing/organic
 	materials_base = list("flesh" = 1000)
 	ammo_max = 10
@@ -40,10 +39,10 @@
 /obj/item/ammo_casing/organic/wax
 	name = "wax globule"
 	desc = "Tacky wax rendered semi-solid and ready for compression."
-	caliber = /datum/caliber/biomatter/wax
 	icon_state = "globule"
 	color = "#E6E685"
 	projectile_type = /obj/projectile/bullet/organic/wax
+	regex_this_caliber = /datum/caliber/biomatter/wax
 	materials_base = list("wax" = 100)
 
 /obj/item/ammo_magazine/biovial

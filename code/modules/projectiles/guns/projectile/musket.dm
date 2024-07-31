@@ -140,4 +140,4 @@
 	wielded_item_state = "blunderbuss-wielded"
 	caliber = /datum/caliber/musket
 
-	ammo_type = /obj/item/ammo_casing/musket/blunderbuss
+	ammo_type = /obj/item/ammo_casing/blunderbuss

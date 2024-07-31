@@ -17,7 +17,7 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	attack_sound = null
-	caliber = "s762"
+	regex_this_caliber = /datum/caliber/a7_62mm
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)
 

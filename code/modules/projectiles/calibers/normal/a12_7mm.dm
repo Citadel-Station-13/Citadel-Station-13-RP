@@ -11,9 +11,9 @@
 
 /obj/item/ammo_magazine/mfiftycalcaseless
 	name = "Wild Hunt magazine (12.7mm caseless)"
-	ammo_type = /obj/item/ammo_casing/fiftycalcaseless
 	icon_state = "caseless-127"
-	caliber = "12.7mm caseless"
-	mag_type = MAGAZINE
-	max_ammo = 20
+	ammo_caliber = /datum/caliber/a12_7mm
+	ammo_max = 20
+	ammo_type = /obj/item/ammo_casing/fiftycalcaseless
 	multiple_sprites = 1
+	#warn ughh
