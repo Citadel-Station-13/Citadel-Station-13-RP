@@ -8,7 +8,6 @@
 	desc = "A soft projectile made out of orange foam with a blue plastic tip."
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	regex_this_caliber = /datum/caliber/foam
-	caliber = "foamdart"
 	icon_state = "foamdart"
 	throw_force = 0 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3

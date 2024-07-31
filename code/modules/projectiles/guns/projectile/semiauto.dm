@@ -47,7 +47,7 @@
 	item_state = "speargun"
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
-	caliber = /datum/caliber/biomatter/wax
+	regex_this_caliber = /datum/caliber/biomatter/wax
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)
 	slot_flags = SLOT_BACK
 	fire_sound = 'sound/weapons/rifleshot.ogg'

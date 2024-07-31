@@ -11,7 +11,7 @@
 	load_method = SINGLE_CASING
 
 	max_shells = 1
-	caliber = /datum/caliber/musket
+	regex_this_caliber = /datum/caliber/musket
 
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
@@ -138,6 +138,6 @@
 	icon_state = "blunderbuss"
 	item_state = "blunderbuss"
 	wielded_item_state = "blunderbuss-wielded"
-	caliber = /datum/caliber/musket
+	caliber = /datum/caliber/blunderbuss
 
 	ammo_type = /obj/item/ammo_casing/blunderbuss

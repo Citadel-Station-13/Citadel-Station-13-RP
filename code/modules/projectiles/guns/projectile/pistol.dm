@@ -359,7 +359,7 @@
 	desc = "This curious weapon feeds from a compressed biomatter cartridge, and seems to fabricate its ammunition from that supply."
 	icon_state = "clownpistol"
 	item_state = "revolver"
-	caliber = "organic"
+	regex_this_caliber = /datum/caliber/biomatter
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
@@ -498,7 +498,7 @@
 	desc = "Used by Hive-guards to detain deviants."
 	icon_state = "apipistol"
 	item_state = "florayield"
-	caliber = "apidean"
+	regex_this_caliber = /datum/caliber/biomatter/wax
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)

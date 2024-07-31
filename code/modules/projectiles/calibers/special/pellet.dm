@@ -1,8 +1,6 @@
 /datum/caliber/pellet
 	caliber = "pellet"
 
-#warn this
-
 //* Ammunition *//
 
 /obj/item/ammo_casing/p_pellet
