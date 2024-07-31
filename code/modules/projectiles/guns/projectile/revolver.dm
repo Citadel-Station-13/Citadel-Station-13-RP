@@ -170,7 +170,7 @@
 	desc = "Looks almost like the real thing! Ages 8 and up."
 	icon_state = "revolver"
 	item_state = "revolver"
-	caliber = "caps"
+	regex_this_caliber = /datum/caliber/cap_gun
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 7
@@ -227,8 +227,8 @@
 		if(max_shells && secondary_max_shells)
 			max_shells = secondary_max_shells
 
-		if(caliber && secondary_caliber)
-			caliber = secondary_caliber
+		if(regex_this_caliber && secondary_regex_this_caliber)
+			regex_this_caliber = secondary_regex_this_caliber
 
 		if(ammo_type && secondary_ammo_type)
 			ammo_type = secondary_ammo_type
@@ -243,8 +243,8 @@
 		if(max_shells)
 			max_shells = initial(max_shells)
 
-		if(caliber && secondary_caliber)
-			caliber = initial(caliber)
+		if(regex_this_caliber && secondary_regex_this_caliber)
+			regex_this_caliber = initial(regex_this_caliber)
 
 		if(ammo_type && secondary_ammo_type)
 			ammo_type = initial(ammo_type)
