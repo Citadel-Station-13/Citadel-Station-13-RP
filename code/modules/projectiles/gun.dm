@@ -97,9 +97,6 @@
 	/// whether or not we have safeties and if safeties are on
 	var/safety_state = GUN_SAFETY_ON
 
-	var/dna_lock = 0				//whether or not the gun is locked to dna
-	var/obj/item/dnalockingchip/attached_lock
-
 	var/last_shot = 0			//records the last shot fired
 
 	var/charge_sections = 4
@@ -193,13 +190,6 @@
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
 
-	if(dna_lock)
-		attached_lock = new /obj/item/dnalockingchip(src)
-	if(!dna_lock)
-		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
-		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
-
 	if(pin)
 		pin = new pin(src)
 
@@ -264,21 +254,6 @@
 		return 0
 
 	var/mob/living/M = user
-	if(dna_lock && attached_lock.stored_dna)
-		if(!authorized_user(user))
-			if(attached_lock.safety_level == 0)
-				to_chat(M, "<span class='danger'>\The [src] buzzes in dissapointment and displays an invalid DNA symbol.</span>")
-				return 0
-			if(!attached_lock.exploding)
-				if(attached_lock.safety_level == 1)
-					to_chat(M, "<span class='danger'>\The [src] hisses in dissapointment.</span>")
-					visible_message("<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>", "<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>")
-					attached_lock.exploding = 1
-					spawn(100)
-						explosion(src, 0, 0, 3, 4)
-						sleep(1)
-						qdel(src)
-					return 0
 	if(MUTATION_HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
@@ -345,35 +320,6 @@
 	return ..() //Pistolwhippin'
 
 /obj/item/gun/attackby(obj/item/A, mob/user)
-	if(istype(A, /obj/item/dnalockingchip))
-		if(dna_lock)
-			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(A, src))
-			return
-		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		attached_lock = A
-		dna_lock = 1
-		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
-		add_obj_verb(src, /obj/item/gun/verb/give_dna)
-		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
-		return
-
-	if(A.is_screwdriver())
-		if(dna_lock && attached_lock && !attached_lock.controller_lock)
-			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
-			playsound(src, A.tool_sound, 50, 1)
-			if(do_after(user, 25 * A.tool_speed))
-				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
-				user.put_in_hands(attached_lock)
-				dna_lock = 0
-				attached_lock = null
-				remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
-				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
-				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
-		else
-			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
-
 	if(A.is_multitool())
 		if(!scrambled)
 			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
@@ -420,12 +366,6 @@
 	..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
-	if(dna_lock && attached_lock.controller_lock)
-		to_chat(user, "<span class='notice'>You short circuit the internal locking mechanisms of \the [src]!</span>")
-		attached_lock.controller_dna = null
-		attached_lock.controller_lock = 0
-		attached_lock.stored_dna = list()
-		return 1
 	if(pin)
 		pin.emag_act(remaining_charges, user)
 

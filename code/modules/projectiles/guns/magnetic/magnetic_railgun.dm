@@ -164,8 +164,6 @@
 /obj/item/gun/magnetic/railgun/heater/pistol/hos
 	name = "prototype peacemaker"
 
-	dna_lock = TRUE
-
 	description_antag = "This weapon starts with a DNA locking chip attached. Using an EMAG on the weapon will disarm it, and allow you to use the chip as your own."
 
 	firemodes = list(
