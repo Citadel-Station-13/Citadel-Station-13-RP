@@ -33,11 +33,10 @@
 	name = "magazine (.38)"
 	icon_state = "9x19p"
 	origin_tech = list(TECH_COMBAT = 2)
-	mag_type = MAGAZINE
 	materials_base = list(MAT_STEEL = 480)
 	ammo_caliber = /datum/ammo_caliber/a38
 	ammo_preload = /obj/item/ammo_casing/a380
-	max_ammo = 8
+	ammo_max = 8
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/a38/speedloader
