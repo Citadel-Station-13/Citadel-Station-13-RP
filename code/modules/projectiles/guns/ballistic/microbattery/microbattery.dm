@@ -1,4 +1,5 @@
-/obj/item/gun/ballistic/microbattery//this one can load both medical and security cells! for ERT/admin use.
+// todo: rework all of this shit, jfc
+/obj/item/gun/ballistic/microbattery
 	name = "multipurpose cell-loaded revolver"
 	desc = "Variety is the spice of life! This weapon is a hybrid of the NT-102b 'Nanotech Selectable-Fire Weapon' and the Vey-Med ML-3 'Medigun', dubbed the 'NSFW-ML3M'. \
 	It can fire both harmful and healing cells with an internal nanite fabricator and energy weapon cell loader. Up to three combinations of \
@@ -30,7 +31,7 @@
 		if(batt.shots_left)
 			return new chambered.projectile_type()
 		else
-			for(var/B in ammo_magazine.stored_ammo)
+			for(var/B in ammo_magazine.ammo_internal)
 				var/obj/item/ammo_casing/microbattery/other_batt = B
 				if(istype(other_batt,chambered.type) && other_batt.shots_left)
 					switch_to(other_batt)
@@ -48,7 +49,7 @@
 	charge_left = batt.shots_left
 	max_charge = initial(batt.shots_left)
 	if(ammo_magazine) //Crawl to find more
-		for(var/B in ammo_magazine.stored_ammo)
+		for(var/B in ammo_magazine.ammo_internal)
 			var/obj/item/ammo_casing/microbattery/bullet = B
 			if(istype(bullet,batt.type))
 				charge_left += bullet.shots_left
@@ -69,17 +70,17 @@
 	if(!chambered)
 		return
 
-	var/list/stored_ammo = ammo_magazine.stored_ammo
+	var/list/ammo_internal = ammo_magazine.ammo_internal
 
-	if(stored_ammo.len == 1)
+	if(ammo_internal.len == 1)
 		return //silly you.
 
 	//Find an ammotype that ISN'T the same, or exhaust the list and don't change.
-	var/our_slot = stored_ammo.Find(chambered)
+	var/our_slot = ammo_internal.Find(chambered)
 
-	for(var/index in 1 to stored_ammo.len)
-		var/true_index = ((our_slot + index - 1) % stored_ammo.len) + 1 // Stupid ONE BASED lists!
-		var/obj/item/ammo_casing/microbattery/next_batt = stored_ammo[true_index]
+	for(var/index in 1 to ammo_internal.len)
+		var/true_index = ((our_slot + index - 1) % ammo_internal.len) + 1 // Stupid ONE BASED lists!
+		var/obj/item/ammo_casing/microbattery/next_batt = ammo_internal[true_index]
 		if(chambered != next_batt && !istype(next_batt, chambered.type))
 			switch_to(next_batt)
 			break
@@ -87,7 +88,7 @@
 /obj/item/gun/ballistic/microbattery/load_ammo(var/obj/item/A, mob/user)
 	. = ..()
 	if(ammo_magazine && ammo_magazine.amount_remaining())
-		switch_to(ammo_magazine.stored_ammo[1])
+		switch_to(ammo_magazine.ammo_internal[1])
 
 /obj/item/gun/ballistic/microbattery/unload_ammo(mob/user, var/allow_dump=1)
 	chambered = null
