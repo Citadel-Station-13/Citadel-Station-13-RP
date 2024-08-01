@@ -19,6 +19,7 @@
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
 /obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor = new /datum/event_args/actor(user))
+	// at some point these should be uncommented but for now there's too many overrides to parse in one PR
 	// SHOULD_NOT_OVERRIDE(TRUE)
 	// SHOULD_NOT_SLEEP(TRUE)
 	// attack_self isn't really part of the item attack chain.
