@@ -185,8 +185,8 @@
 					prob(5);/obj/item/ammo_magazine/a7_62mm/clip,\
 					prob(5);/obj/item/ammo_magazine/a45,\
 					prob(5);/obj/item/ammo_magazine/a45/rubber,\
-					prob(5);/obj/item/ammo_magazine/s38/speedloader,\
-					prob(5);/obj/item/ammo_magazine/s38/speedloader/rubber,\
+					prob(5);/obj/item/ammo_magazine/a38/speedloader,\
+					prob(5);/obj/item/ammo_magazine/a38/speedloader/rubber,\
 					prob(5);/obj/item/storage/box/flashbangs,\
 					prob(5);/obj/item/ammo_magazine/a5_56mm,\
 					prob(4);/obj/item/ammo_magazine/a5_56mm/clip,\
@@ -219,7 +219,7 @@
 					prob(1);/obj/item/storage/box/practiceshells,\
 					prob(1);/obj/item/storage/box/stunshells,\
 					prob(1);/obj/item/storage/box/blanks,\
-					prob(1);/obj/item/ammo_magazine/mtg,\
+					prob(1);/obj/item/ammo_magazine/a7_92mm,\
 					prob(1);/obj/item/ammo_magazine/a45/tommy/drum,\
 					prob(1);/obj/item/ammo_magazine/a45/tommy)
 				new new_ammo(C)

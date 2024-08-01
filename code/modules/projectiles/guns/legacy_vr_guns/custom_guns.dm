@@ -94,10 +94,10 @@
 	item_state = "arifle"
 	w_class = WEIGHT_CLASS_BULKY
 	max_shells = 30
-	caliber = "7.92x33mm"
+	regex_this_caliber = /datum/caliber/a7_92mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
-	magazine_type = /obj/item/ammo_magazine/mtg
-	allowed_magazines = list(/obj/item/ammo_magazine/mtg)
+	magazine_type = /obj/item/ammo_magazine/a7_92mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_92mm)
 	load_method = MAGAZINE
 
 /obj/item/gun/ballistic/automatic/stg/update_icon()
@@ -130,9 +130,9 @@
 	name = "\improper \"Giskard\" holdout pistol"
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
 	icon_state = "giskardcivil"
-	caliber = ".380"
-	magazine_type = /obj/item/ammo_magazine/m380
-	allowed_magazines = list(/obj/item/ammo_magazine/m380)
+	regex_this_caliber = /datum/caliber/a38
+	magazine_type = /obj/item/ammo_magazine/a38
+	allowed_magazines = list(/obj/item/ammo_magazine/a38)
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
@@ -203,7 +203,7 @@
 /obj/item/gun/ballistic/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
-	var/ratio = ammo_magazine.amount_remaining() / ammo_magazine.max_ammo
+	var/ratio = ammo_magazine.amount_remaining() / ammo_magazine.ammo_max
 	if(ratio < 0.25 && ratio != 0)
 		ratio = 0.25
 	ratio = round(ratio, 0.25) * 100
@@ -270,39 +270,3 @@
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
-
-//--------------- StG-60 ----------------
-/obj/item/ammo_magazine/m792
-	name = "box mag (7.92x33mm Kurz)"
-	icon = 'icons/obj/ammo_vr.dmi'
-	icon_state = "stg_30rnd"
-	caliber = "7.92x33mm"
-	ammo_type = /obj/item/ammo_casing/a792
-	max_ammo = 30
-	mag_type = MAGAZINE
-
-/obj/item/ammo_casing/a792
-	desc = "A 7.92x33mm Kurz casing."
-	icon_state = "rifle-casing"
-	caliber = "7.92x33mm"
-	projectile_type = /obj/projectile/bullet/rifle/a762
-
-/obj/item/ammo_magazine/mtg/empty
-	initial_ammo = 0
-
-//.380
-/obj/item/ammo_casing/a380
-	desc = "A .380 bullet casing."
-	caliber = ".380"
-	projectile_type = /obj/projectile/bullet/pistol
-
-/obj/item/ammo_magazine/m380
-	name = "magazine (.380)"
-	icon_state = "9x19p"
-	origin_tech = list(TECH_COMBAT = 2)
-	mag_type = MAGAZINE
-	materials_base = list(MAT_STEEL = 480)
-	caliber = ".380"
-	ammo_type = /obj/item/ammo_casing/a380
-	max_ammo = 8
-	multiple_sprites = 1

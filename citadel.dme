@@ -4313,6 +4313,7 @@
 #include "code\modules\projectiles\ammunition\calibers\normal\a5mm.dm"
 #include "code\modules\projectiles\ammunition\calibers\normal\a75.dm"
 #include "code\modules\projectiles\ammunition\calibers\normal\a7_62mm.dm"
+#include "code\modules\projectiles\ammunition\calibers\normal\a7_92mm.dm"
 #include "code\modules\projectiles\ammunition\calibers\normal\a9_5mm.dm"
 #include "code\modules\projectiles\ammunition\calibers\normal\a9mm.dm"
 #include "code\modules\projectiles\ammunition\calibers\special\arrow.dm"

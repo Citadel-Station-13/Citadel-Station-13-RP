@@ -3346,11 +3346,11 @@
 /area/shuttle/mercenary)
 "fO" = (
 /obj/structure/table/rack,
-/obj/item/ammo_magazine/m380,
-/obj/item/ammo_magazine/m380,
-/obj/item/ammo_magazine/m380,
-/obj/item/ammo_magazine/m380,
-/obj/item/ammo_magazine/m380,
+/obj/item/ammo_magazine/a38,
+/obj/item/ammo_magazine/a38,
+/obj/item/ammo_magazine/a38,
+/obj/item/ammo_magazine/a38,
+/obj/item/ammo_magazine/a38,
 /obj/item/gun/ballistic/giskard,
 /obj/item/clothing/accessory/holster,
 /turf/simulated/shuttle/floor{

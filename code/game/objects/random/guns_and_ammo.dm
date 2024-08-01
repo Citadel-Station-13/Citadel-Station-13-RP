@@ -387,13 +387,13 @@
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/revolver/deckard,
-				/obj/item/ammo_magazine/s38/speedloader,
-				/obj/item/ammo_magazine/s38/speedloader
+				/obj/item/ammo_magazine/a38/speedloader,
+				/obj/item/ammo_magazine/a38/speedloader
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/revolver/detective,
-				/obj/item/ammo_magazine/s38/speedloader,
-				/obj/item/ammo_magazine/s38/speedloader
+				/obj/item/ammo_magazine/a38/speedloader,
+				/obj/item/ammo_magazine/a38/speedloader
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/revolver/judge,
@@ -403,8 +403,8 @@
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/revolver/lemat,
-				/obj/item/ammo_magazine/s38/speedloader,
-				/obj/item/ammo_magazine/s38/speedloader,
+				/obj/item/ammo_magazine/a38/speedloader,
+				/obj/item/ammo_magazine/a38/speedloader,
 				/obj/item/ammo_magazine/a12g/clip
 			),
 			prob(2);list(

@@ -29,13 +29,13 @@
 	id = "AmmoSpeedloader38"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/s38/speedloader
+	build_path = /obj/item/ammo_magazine/a38/speedloader
 
 /datum/design/ammo/revolver/a38_rubber
 	id = "AmmoSpeedloader38Rubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/s38/speedloader/rubber
+	build_path = /obj/item/ammo_magazine/a38/speedloader/rubber
 
 /datum/design/ammo/revolver/a44
 	id = "AmmoSpeedloader44"
