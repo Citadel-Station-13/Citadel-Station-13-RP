@@ -1,4 +1,4 @@
-/datum/caliber/a5mm
+/datum/ammo_caliber/a5mm
 	caliber = "5mm"
 	diameter = 5
 
@@ -8,7 +8,7 @@
 	name = "prototype rifle magazine (5mm caseless)"
 	icon_state = "caseless-mag"
 	ammo_type = /obj/item/ammo_casing/a5mmcaseless
-	ammo_caliber = /datum/caliber/a5_mm
+	ammo_caliber = /datum/ammo_caliber/a5_mm
 	ammo_max = 30
 	multiple_sprites = 1
 
@@ -21,7 +21,7 @@
 /obj/item/ammo_casing/a5mmcaseless
 	desc = "A 5mm solid phoron caseless round."
 	icon_state = "p-casing"
-	regex_this_caliber = /datum/caliber/a5_mm
+	regex_this_caliber = /datum/ammo_caliber/a5_mm
 	projectile_type = /obj/projectile/bullet/pistol // Close enough to be comparable.
 	materials_base = list(MAT_STEEL = 180)
 	casing_flags = CASING_DELETE

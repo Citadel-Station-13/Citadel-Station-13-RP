@@ -17,6 +17,8 @@
 	var/type_name = null
 	projectile_type = /obj/projectile/beam
 
+	casing_primer = CASING_PRIMER_MICROBATTERY
+
 /obj/item/ammo_casing/microbattery/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-10, 10)

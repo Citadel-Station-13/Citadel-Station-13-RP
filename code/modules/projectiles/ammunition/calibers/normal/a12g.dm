@@ -1,4 +1,4 @@
-/datum/caliber/a12g
+/datum/ammo_caliber/a12g
 	caliber = "12g"
 	diameter = 18.53
 	length = 69.85
@@ -9,7 +9,7 @@
 	desc = "A 12 gauge slug."
 	icon = 'icons/modules/projectiles/casings/a12g.dmi'
 	icon_state = "grey"
-	regex_this_caliber = /datum/caliber/a12g
+	regex_this_caliber = /datum/ammo_caliber/a12g
 	projectile_type = /obj/projectile/bullet/shotgun
 	materials_base = list(MAT_STEEL = 360)
 	fall_sounds = list('sound/weapons/guns/shotgun_fall.ogg')
@@ -151,7 +151,7 @@
 	icon_state = "autoshotgun"
 	base_icon_state = "autoshotgun"
 	materials_base = list(MAT_STEEL = 13000)
-	ammo_caliber = /datum/caliber/a12g
+	ammo_caliber = /datum/ammo_caliber/a12g
 	ammo_preload = /obj/item/ammo_casing/a12g
 	ammo_max = 24
 	rendering_system = GUN_RENDERING_STATES
@@ -195,7 +195,7 @@
 	icon_state = "a12-slug-2"
 	base_icon_state = "a12-slug"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with slugs."
-	ammo_caliber = /datum/caliber/a12g
+	ammo_caliber = /datum/ammo_caliber/a12g
 	ammo_preload = /obj/item/ammo_casing/a12g
 	materials_base = list(MAT_STEEL = 350) // slugs shells x2 + 350 metal for the clip itself.
 	ammo_max = 2
@@ -237,7 +237,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_pouch.dmi'
 	icon_state = "shotgun-clip-4"
 	base_icon_state = "shotgun-clip"
-	ammo_caliber = /datum/caliber/a12g
+	ammo_caliber = /datum/ammo_caliber/a12g
 	materials_base = list(MAT_STEEL = 1440)
 	magazine_type = MAGAZINE_TYPE_POUCH
 	ammo_preload = /obj/item/ammo_casing/a12g

@@ -6,7 +6,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 5
 	load_method = SINGLE_CASING
-	regex_this_caliber = /datum/caliber/arrow
+	regex_this_caliber = /datum/ammo_caliber/arrow
 	max_shells = 1
 	fire_sound = 'sound/weapons/bowfire.wav'
 	slot_flags = SLOT_BACK

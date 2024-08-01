@@ -1,4 +1,4 @@
-/datum/caliber/foam
+/datum/ammo_caliber/foam
 	caliber = "donksoft"
 
 //* Ammunition *//
@@ -7,7 +7,7 @@
 	name = "foam dart"
 	desc = "A soft projectile made out of orange foam with a blue plastic tip."
 	projectile_type = /obj/projectile/bullet/reusable/foam
-	regex_this_caliber = /datum/caliber/foam
+	regex_this_caliber = /datum/ammo_caliber/foam
 	icon_state = "foamdart"
 	throw_force = 0 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
@@ -30,7 +30,7 @@
 	desc = "You shouldn't be seeing this, contact a Maintainer!"
 	icon_state = "toy_pistol"
 	materials_base = list(MAT_PLASTIC = 480)
-	ammo_caliber = /datum/caliber/foam
+	ammo_caliber = /datum/ammo_caliber/foam
 	ammo_preload = /obj/item/ammo_casing/foam
 	ammo_max = 8
 	multiple_sprites = 1

@@ -1,4 +1,4 @@
-/datum/caliber/cap_gun
+/datum/ammo_caliber/cap_gun
 	caliber = "capgun"
 
 /obj/item/ammo_casing/cap_gun
@@ -6,7 +6,7 @@
 	desc = "A cap for children toys."
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
-	regex_this_caliber = /datum/caliber/cap_gun
+	regex_this_caliber = /datum/ammo_caliber/cap_gun
 	color = "#FF0000"
 	projectile_type = /obj/projectile/bullet/pistol/cap
 	materials_base = list(MAT_STEEL = 85)
@@ -17,7 +17,7 @@
 	icon_state = "normal-7"
 	base_icon_state = "normal"
 	rendering_system = GUN_RENDERING_STATES
-	ammo_caliber = /datum/caliber/cap_gun
+	ammo_caliber = /datum/ammo_caliber/cap_gun
 	ammo_preload = /obj/item/ammo_casing/cap_gun
 	materials_base = list(MAT_STEEL = 50)
 	ammo_max = 7

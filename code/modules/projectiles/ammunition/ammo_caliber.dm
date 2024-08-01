@@ -6,15 +6,15 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
 /proc/init_calibers()
 	. = list()
 	GLOB.calibers = .
-	for(var/datum/caliber/path as anything in subtypesof(/datum/caliber))
+	for(var/datum/ammo_caliber/path as anything in subtypesof(/datum/ammo_caliber))
 		if(initial(path.abstract_type) == path)
 			continue
-		var/datum/caliber/created = new path
+		var/datum/ammo_caliber/created = new path
 		.[created.type] = created
 		.[created.caliber] = created
 
-/proc/resolve_caliber(datum/caliber/caliberlike)
-	RETURN_TYPE(/datum/caliber)
+/proc/resolve_caliber(datum/ammo_caliber/caliberlike)
+	RETURN_TYPE(/datum/ammo_caliber)
 	if(istext(caliberlike))
 		return GLOB.calibers[caliberlike]
 	if(ispath(caliberlike))
@@ -29,11 +29,11 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
  *
  * naming convention: c[whatever] for the caliber, subtype to a[whatever] for different ammo lengths
  *
- * direct subtypes of /datum/caliber should be for diameter, usually,
+ * direct subtypes of /datum/ammo_caliber should be for diameter, usually,
  * and length subtypes go from the diameter subtype.
  */
-/datum/caliber
-	abstract_type = /datum/caliber
+/datum/ammo_caliber
+	abstract_type = /datum/ammo_caliber
 	/// caliber string
 	var/caliber
 	/// does dynamic measurements
@@ -43,24 +43,24 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
 	/// length in millimeters, if known; if not known / unbounded, this is null
 	var/length
 
-/datum/caliber/New()
+/datum/ammo_caliber/New()
 	if(isnull(measured))
 		measured = !isnull(diameter) && !isnull(length)
 
 /**
  * checks if other caliber is smaller or equal to this one
  */
-/datum/caliber/proc/smaller_or_equal(datum/caliber/other)
+/datum/ammo_caliber/proc/smaller_or_equal(datum/ammo_caliber/other)
 	return other.caliber == caliber || (measured && other.measured && ((other.diameter <= diameter) && (other.length <= length)))
 
 /**
  * checks if other caliber is same diameter as this one
  */
-/datum/caliber/proc/equivalent_diameter(datum/caliber/other)
+/datum/ammo_caliber/proc/equivalent_diameter(datum/ammo_caliber/other)
 	return other.caliber == caliber || (measured && other.measured && (other.diameter == diameter))
 
 /**
  * checks if other caliber is equivalent to us
  */
-/datum/caliber/proc/equivalent(datum/caliber/other)
+/datum/ammo_caliber/proc/equivalent(datum/ammo_caliber/other)
 	return other.caliber == caliber || (measured && other.measured && (other.diameter == diameter) && (other.length == length))

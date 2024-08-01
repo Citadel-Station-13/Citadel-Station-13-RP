@@ -394,7 +394,7 @@
 
 //* Caliber *//
 
-/obj/item/ammo_magazine/proc/loads_caliber(datum/caliber/caliberlike)
-	var/datum/caliber/ours = resolve_caliber(ammo_caliber)
-	var/datum/caliber/theirs = resolve_caliber(caliberlike)
+/obj/item/ammo_magazine/proc/loads_caliber(datum/ammo_caliber/caliberlike)
+	var/datum/ammo_caliber/ours = resolve_caliber(ammo_caliber)
+	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)

@@ -15,7 +15,7 @@
 	//* Configuration *//
 
 	/// If set, accepts ammo and magazines of this caliber.
-	var/regex_this_caliber = /datum/caliber/a357
+	var/regex_this_caliber = /datum/ammo_caliber/a357
 
 	//! LEGACY BELOW
 
@@ -360,7 +360,7 @@
  *
  * @return TRUE / FALSE
  */
-/obj/item/gun/ballistic/proc/accepts_caliber(datum/caliber/caliberlike)
-	var/datum/caliber/ours = resolve_caliber(regex_this_caliber)
-	var/datum/caliber/theirs = resolve_caliber(caliberlike)
+/obj/item/gun/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
+	var/datum/ammo_caliber/ours = resolve_caliber(regex_this_caliber)
+	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)

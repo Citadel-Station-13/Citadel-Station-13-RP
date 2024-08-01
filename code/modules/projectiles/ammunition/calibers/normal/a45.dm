@@ -1,11 +1,11 @@
-/datum/caliber/a45
+/datum/ammo_caliber/a45
 	caliber = ".45"
 
 //* Casings
 
 /obj/item/ammo_casing/a45
 	desc = "A .45 bullet casing."
-	regex_this_caliber = /datum/caliber/a45
+	regex_this_caliber = /datum/ammo_caliber/a45
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/medium
@@ -62,7 +62,7 @@
 //* Magazines
 
 /obj/item/ammo_magazine/a45
-	ammo_caliber = /datum/caliber/a45
+	ammo_caliber = /datum/ammo_caliber/a45
 	name = "pistol magazine (.45)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "45-7"

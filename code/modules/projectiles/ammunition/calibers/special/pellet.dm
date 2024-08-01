@@ -1,4 +1,4 @@
-/datum/caliber/pellet
+/datum/ammo_caliber/pellet
 	caliber = "pellet"
 
 //* Ammunition *//
@@ -6,7 +6,7 @@
 /obj/item/ammo_casing/p_pellet
 	name = "pellet"
 	desc = "Also know as a BB, it is shot from airguns for recreational shooting."
-	regex_this_caliber = /datum/caliber/pellet
+	regex_this_caliber = /datum/ammo_caliber/pellet
 	icon_state = "pellet"
 	projectile_type = /obj/projectile/bullet/practice
 	casing_flags = CASING_DELETE
@@ -20,7 +20,7 @@
 	name = "box of pellets"
 	desc = "A box containing small pellets for a pellet gun."
 	icon_state = "pelletbox"
-	ammo_caliber = /datum/caliber/pellet
+	ammo_caliber = /datum/ammo_caliber/pellet
 	ammo_type = /obj/item/ammo_casing/p_pellet
 	magazine_type = MAGAZINE_TYPE_BOX
 	materials_base = list(

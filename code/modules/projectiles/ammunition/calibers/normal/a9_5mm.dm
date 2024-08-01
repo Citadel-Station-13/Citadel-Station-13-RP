@@ -1,4 +1,4 @@
-/datum/caliber/a9_5mm
+/datum/ammo_caliber/a9_5mm
 	caliber = "9.5x40mm"
 	diameter = 9.5
 	length = 40
@@ -8,7 +8,7 @@
 /obj/item/ammo_casing/a95
 	desc = "A 9.5x40mm bullet casing."
 	icon_state = "rifle-casing"
-	regex_this_caliber = /datum/caliber/a9_5mm
+	regex_this_caliber = /datum/ammo_caliber/a9_5mm
 	projectile_type = /obj/projectile/bullet/rifle/a95
 
 //* Magazines *//
@@ -18,7 +18,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "battlerifle-20"
 	base_icon_state = "battlerifle"
-	ammo_caliber = /datum/caliber/a9_5mm
+	ammo_caliber = /datum/ammo_caliber/a9_5mm
 	ammo_preload = /obj/item/ammo_casing/a95
 	ammo_max = 36
 	rendering_count = 1

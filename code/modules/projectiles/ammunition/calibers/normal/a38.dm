@@ -1,9 +1,9 @@
-/datum/caliber/a38
+/datum/ammo_caliber/a38
 	caliber = ".38"
 
 /obj/item/ammo_casing/a38
 	desc = "A .38 bullet casing."
-	regex_this_caliber = /datum/caliber/a38
+	regex_this_caliber = /datum/ammo_caliber/a38
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	projectile_type = /obj/projectile/bullet/pistol
@@ -35,7 +35,7 @@
 	base_icon_state = "normal"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 6
-	ammo_caliber = /datum/caliber/a38
+	ammo_caliber = /datum/ammo_caliber/a38
 	materials_base = list(MAT_STEEL = 360)
 	ammo_preload = /obj/item/ammo_casing/a38
 	ammo_max = 6

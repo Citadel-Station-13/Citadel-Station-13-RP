@@ -1,4 +1,4 @@
-/datum/caliber/a357
+/datum/ammo_caliber/a357
 	caliber = ".357"
 	diameter = 9.1
 	length = 40
@@ -13,7 +13,7 @@
 	base_icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/strong
 	materials_base = list(MAT_STEEL = 210)
-	regex_this_caliber = /datum/caliber/a357
+	regex_this_caliber = /datum/ammo_caliber/a357
 
 /obj/item/ammo_casing/a357/silver
 	desc = "A .357 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."
@@ -47,7 +47,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_speedloader_6.dmi'
 	icon_state = "normal-6"
 	base_icon_state = "normal"
-	ammo_caliber = /datum/caliber/a357
+	ammo_caliber = /datum/ammo_caliber/a357
 	ammo_preload = /obj/item/ammo_casing/a357
 	ammo_type = /obj/item/ammo_casing/a357
 	ammo_max = 6

@@ -1,4 +1,4 @@
-/datum/caliber/dart
+/datum/ammo_caliber/dart
 	caliber = "dart"
 
 //* Casings *//
@@ -7,7 +7,7 @@
 	name = "chemical dart"
 	desc = "A casing containing a small hardened, hollow dart."
 	icon_state = "dartcasing"
-	regex_this_caliber = /datum/caliber/dart
+	regex_this_caliber = /datum/ammo_caliber/dart
 	projectile_type = /obj/projectile/bullet/chemdart
 
 /obj/item/ammo_casing/dart/chemdart/small
@@ -24,7 +24,7 @@
 	item_state = "rcdammo"
 	origin_tech = list(TECH_MATERIAL = 2)
 	magazine_type = MAGAZINE_TYPE_NORMAL
-	ammo_caliber = /datum/caliber/dart
+	ammo_caliber = /datum/ammo_caliber/dart
 	ammo_type = /obj/item/ammo_casing/dart/chemdart
 	ammo_max = 5
 	multiple_sprites = 1

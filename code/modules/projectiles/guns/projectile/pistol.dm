@@ -6,7 +6,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/a45)
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	icon_state = "colt"
-	regex_this_caliber = /datum/caliber/a45
+	regex_this_caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
@@ -88,7 +88,7 @@
 	magazine_type = /obj/item/ammo_magazine/a45/rubber
 	allowed_magazines = list(/obj/item/ammo_magazine/a45/rubber, /obj/item/ammo_magazine/a45/flash, /obj/item/ammo_magazine/a45/practice)
 	projectile_type = /obj/projectile/bullet/pistol/medium
-	regex_this_caliber = /datum/caliber/a45
+	regex_this_caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
@@ -106,7 +106,7 @@
 	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
 	icon_state = "silenced_pistol"
 	w_class = WEIGHT_CLASS_NORMAL
-	regex_this_caliber = /datum/caliber/a45
+	regex_this_caliber = /datum/ammo_caliber/a45
 	silenced = 1
 	fire_delay = 1
 	recoil = 0
@@ -122,7 +122,7 @@
 	icon_state = "deagle"
 	item_state = "deagle"
 	damage_force = 14.0
-	regex_this_caliber = /datum/caliber/a44
+	regex_this_caliber = /datum/ammo_caliber/a44
 	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a44
@@ -148,7 +148,7 @@
 	desc = "Speak softly, and carry a big gun. Fires rare .75 caliber self-propelled exploding bolts--because fuck you and everything around you."
 	icon_state = "gyropistol"
 	max_shells = 8
-	regex_this_caliber = /datum/caliber/a75
+	regex_this_caliber = /datum/ammo_caliber/a75
 	fire_sound = 'sound/weapons/railgun.ogg'
 	origin_tech = list(TECH_COMBAT = 3)
 	ammo_type = "/obj/item/ammo_casing/a75"
@@ -191,7 +191,7 @@
 	icon_state = "pistol"
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
-	regex_this_caliber = /datum/caliber/a9mm
+	regex_this_caliber = /datum/ammo_caliber/a9mm
 	suppressible = TRUE
 	silenced_icon = "pistol_silencer"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
@@ -298,7 +298,7 @@
 	desc = "Not some cheap scheisse Martian knockoff! This Luger is an authentic reproduction by RauMauser. Accuracy, easy handling, and its signature appearance make it popular among historic gun collectors. Uses 9mm rounds."
 	icon_state = "p08"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	regex_this_caliber = /datum/caliber/a9mm
+	regex_this_caliber = /datum/ammo_caliber/a9mm
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a9mm/compact
 	allowed_magazines = list(/obj/item/ammo_magazine/a9mm/compact)
@@ -312,7 +312,7 @@
 	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. Uses 9mm rounds."
 	icon_state = "p92x"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	regex_this_caliber = /datum/caliber/a9mm
+	regex_this_caliber = /datum/ammo_caliber/a9mm
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/a9mm) // Can accept illegal large capacity magazines, or compact magazines.
@@ -343,7 +343,7 @@
 	desc = "A variation on the Mauser C-96, remade for a modern day. A Glithari Exports product, for gun collectors and private militaries alike. Uses 9mm stripper clips."
 	icon_state = "r9"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL =1) //VERY OLD
-	regex_this_caliber = /datum/caliber/a9mm
+	regex_this_caliber = /datum/ammo_caliber/a9mm
 	load_method = SPEEDLOADER
 	max_shells = 10
 	ammo_type = /obj/item/ammo_casing/a9mm
@@ -359,7 +359,7 @@
 	desc = "This curious weapon feeds from a compressed biomatter cartridge, and seems to fabricate its ammunition from that supply."
 	icon_state = "clownpistol"
 	item_state = "revolver"
-	regex_this_caliber = /datum/caliber/biomatter
+	regex_this_caliber = /datum/ammo_caliber/biomatter
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
@@ -375,7 +375,7 @@
 	icon_state = "konigin"
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
-	regex_this_caliber = /datum/caliber/a9mm
+	regex_this_caliber = /datum/ammo_caliber/a9mm
 	suppressible = TRUE
 	silenced_icon = "konigin_silencer"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
@@ -433,7 +433,7 @@
 	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
 	icon_state = "ntles"
 	item_state = "pistol"
-	regex_this_caliber = /datum/caliber/a5_7mm
+	regex_this_caliber = /datum/ammo_caliber/a5_7mm
 	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/a5_7mm/nt_les
@@ -479,7 +479,7 @@
 	desc = "This classic sidearm design utilizes an adaptable round considered by some to be superior to 9mm parabellum. Favored amongst sheild bearers in tactical units for its stability in one-handed use, and high capacity magazines."
 	icon_state = "fiveseven"
 	item_state = "pistol"
-	regex_this_caliber = /datum/caliber/a5_7mm
+	regex_this_caliber = /datum/ammo_caliber/a5_7mm
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
@@ -498,7 +498,7 @@
 	desc = "Used by Hive-guards to detain deviants."
 	icon_state = "apipistol"
 	item_state = "florayield"
-	regex_this_caliber = /datum/caliber/biomatter/wax
+	regex_this_caliber = /datum/ammo_caliber/biomatter/wax
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_BIO = 5)
@@ -531,7 +531,7 @@
 	icon_state = "toy_pistol"
 	item_state = null
 	w_class = WEIGHT_CLASS_SMALL
-	regex_this_caliber = /datum/caliber/foam
+	regex_this_caliber = /datum/ammo_caliber/foam
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
 	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)

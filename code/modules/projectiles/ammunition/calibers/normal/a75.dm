@@ -1,14 +1,14 @@
 /**
  * oh god oh fuck-
  */
-/datum/caliber/a75
+/datum/ammo_caliber/a75
 	caliber = ".75"
 
 /obj/item/ammo_casing/a75
 	desc = "A .75 gyrojet rocket sheathe."
 	icon = 'icons/modules/projectiles/casings/misc.dmi'
 	icon_state = "shell"
-	regex_this_caliber = /datum/caliber/a75
+	regex_this_caliber = /datum/ammo_caliber/a75
 	projectile_type = /obj/projectile/bullet/gyro
 	materials_base = list(MAT_STEEL = 2000)
 
@@ -19,7 +19,7 @@
 	base_icon_state = "m75"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
-	ammo_caliber = /datum/caliber/a75
+	ammo_caliber = /datum/ammo_caliber/a75
 	ammo_preload = /obj/item/ammo_casing/a75
 	ammo_max = 8
 

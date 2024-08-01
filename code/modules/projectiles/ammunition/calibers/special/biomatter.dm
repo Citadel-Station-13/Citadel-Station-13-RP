@@ -1,10 +1,10 @@
-/datum/caliber/biomatter
+/datum/ammo_caliber/biomatter
 	caliber = "biomatter"
 
 /obj/item/ammo_casing/organic
 	name = "biomatter globule"
 	desc = "Globular biomatter rendered and ready for compression."
-	regex_this_caliber = /datum/caliber/biomatter
+	regex_this_caliber = /datum/ammo_caliber/biomatter
 	icon_state = "globule"
 	color = "#FFE0E2"
 	projectile_type = /obj/projectile/bullet/organic
@@ -15,7 +15,7 @@
 	name = "magazine (Compressed Biomatter)"
 	desc = "An advanced matter compression unit, used to feed biomass into a Rapid On-board Fabricator. Accepts biomass globules."
 	icon_state = "bio"
-	ammo_caliber = /datum/caliber/biomatter
+	ammo_caliber = /datum/ammo_caliber/biomatter
 	ammo_preload = /obj/item/ammo_casing/organic
 	materials_base = list("flesh" = 1000)
 	ammo_max = 10
@@ -33,7 +33,7 @@
 	icon_state = "bio_large_banana"
 
 
-/datum/caliber/biomatter/wax
+/datum/ammo_caliber/biomatter/wax
 	caliber = "wax"
 
 /obj/item/ammo_casing/organic/wax
@@ -42,7 +42,7 @@
 	icon_state = "globule"
 	color = "#E6E685"
 	projectile_type = /obj/projectile/bullet/organic/wax
-	regex_this_caliber = /datum/caliber/biomatter/wax
+	regex_this_caliber = /datum/ammo_caliber/biomatter/wax
 	materials_base = list(
 		/datum/material/wax::id = 100,
 	)
@@ -51,7 +51,7 @@
 	name = "bio-vial (Liquid Wax)"
 	desc = "Biological Munitions Vials, commonly referred to as bio-vials, contain liquid biomatter of some form, for use in exotic weapons systems. This one accepts wax globules."
 	icon_state = "bio_vial"
-	ammo_caliber = /datum/caliber/biomatter/wax
+	ammo_caliber = /datum/ammo_caliber/biomatter/wax
 	ammo_preload = /obj/item/ammo_casing/organic/wax
 	materials_base = list(
 		/datum/material/wax::id = 100,

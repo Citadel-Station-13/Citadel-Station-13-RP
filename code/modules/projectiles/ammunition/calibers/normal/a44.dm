@@ -1,11 +1,11 @@
-/datum/caliber/a44
+/datum/ammo_caliber/a44
 	caliber = ".44"
 
 //* Casings
 
 /obj/item/ammo_casing/a44
 	desc = "A .44 bullet casing."
-	regex_this_caliber = /datum/caliber/a44
+	regex_this_caliber = /datum/ammo_caliber/a44
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/strong
@@ -27,7 +27,7 @@
 //* Magazines
 
 /obj/item/ammo_magazine/a44
-	ammo_caliber = /datum/caliber/a44
+	ammo_caliber = /datum/ammo_caliber/a44
 
 /obj/item/ammo_magazine/a44
 	name = "magazine (.44)"

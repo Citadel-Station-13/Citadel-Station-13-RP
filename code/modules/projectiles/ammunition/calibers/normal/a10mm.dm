@@ -1,11 +1,11 @@
-/datum/caliber/a10mm
+/datum/ammo_caliber/a10mm
 	caliber = "10mm"
 
 /obj/item/ammo_casing/a10mm
 	desc = "A 10mm bullet casing."
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
-	regex_this_caliber = /datum/caliber/a10mm
+	regex_this_caliber = /datum/ammo_caliber/a10mm
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	materials_base = list(MAT_STEEL = 75)
 
@@ -17,7 +17,7 @@
 	materials_base = list(MAT_STEEL = 130, MAT_URANIUM = 100)
 
 /obj/item/ammo_magazine/a10mm
-	ammo_caliber = /datum/caliber/a10mm
+	ammo_caliber = /datum/ammo_caliber/a10mm
 
 /obj/item/ammo_magazine/a10mm
 	name = "magazine (10mm)"

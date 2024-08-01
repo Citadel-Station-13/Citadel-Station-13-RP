@@ -1,4 +1,4 @@
-/datum/caliber/a5_7mm
+/datum/ammo_caliber/a5_7mm
 	caliber = "5.7x28mm"
 
 //* Casings
@@ -7,7 +7,7 @@
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
 	desc = "A 5.7x28mm bullet casing."
-	regex_this_caliber = /datum/caliber/a5_7mm
+	regex_this_caliber = /datum/ammo_caliber/a5_7mm
 	projectile_type = /obj/projectile/bullet/pistol/lap
 	materials_base = list(MAT_STEEL = 30, MAT_COPPER = 30)
 
@@ -32,7 +32,7 @@
 //* Magazines
 
 /obj/item/ammo_magazine/a5_7mm
-	ammo_caliber = /datum/caliber/a5_7mm
+	ammo_caliber = /datum/ammo_caliber/a5_7mm
 
 /obj/item/ammo_magazine/a5_7mm/nt_les
 	name = "magazine (5.7x28mm)"
@@ -111,7 +111,7 @@
 	materials_base = list(MAT_STEEL = 300)
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
-	ammo_caliber = /datum/caliber/a5_7mm
+	ammo_caliber = /datum/ammo_caliber/a5_7mm
 	ammo_preload = /obj/item/ammo_casing/a5_7mm
 	ammo_max = 20
 

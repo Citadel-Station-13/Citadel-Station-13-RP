@@ -5,7 +5,7 @@
 	item_state = "boltaction"
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
-	regex_this_caliber = /datum/caliber/a7_62mm
+	regex_this_caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BACK
 	//fire_sound = 'sound/weapons/rifleshot.ogg'
@@ -47,7 +47,7 @@
 	item_state = "speargun"
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
-	regex_this_caliber = /datum/caliber/biomatter/wax
+	regex_this_caliber = /datum/ammo_caliber/biomatter/wax
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_BIO = 7)
 	slot_flags = SLOT_BACK
 	fire_sound = 'sound/weapons/rifleshot.ogg'

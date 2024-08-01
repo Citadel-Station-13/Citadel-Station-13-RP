@@ -1,11 +1,11 @@
-/datum/caliber/a5_56mm
+/datum/ammo_caliber/a5_56mm
 	caliber = "5.56mm"
 
 //* Casings
 
 /obj/item/ammo_casing/a5_56mm
 	desc = "A 5.56mm bullet casing."
-	regex_this_caliber = /datum/caliber/a5_56mm
+	regex_this_caliber = /datum/ammo_caliber/a5_56mm
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/rifle/a556
@@ -46,7 +46,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "m556-1"
 	base_icon_state = "m556"
-	ammo_caliber = /datum/caliber/a5_56mm
+	ammo_caliber = /datum/ammo_caliber/a5_56mm
 	materials_base = list(MAT_STEEL = 1800)
 	ammo_preload = /obj/item/ammo_casing/a5_56mm
 	ammo_max = 20
@@ -118,7 +118,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
 	icon_state = "rifle-5"
 	base_icon_state = "rifle"
-	ammo_caliber = /datum/caliber/a5_56mm
+	ammo_caliber = /datum/ammo_caliber/a5_56mm
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 5
 	magazine_type = MAGAZINE_TYPE_CLIP
@@ -145,7 +145,7 @@
 	base_icon_state = "a556"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 5
-	ammo_caliber = /datum/caliber/a5_56mm
+	ammo_caliber = /datum/ammo_caliber/a5_56mm
 	materials_base = list(MAT_STEEL = 1000)
 	ammo_preload = /obj/item/ammo_casing/a5_56mm
 	w_class = WEIGHT_CLASS_NORMAL // This should NOT fit in your pocket!!

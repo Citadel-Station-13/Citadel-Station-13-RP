@@ -13,6 +13,8 @@
 	//* Casing
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
 	var/casing_flags = NONE
+	/// what types of primer we react to
+	var/casing_primer = CASING_PRIMER_CHEMICAL
 	/// projectile type
 	var/projectile_type
 	/// caliber - set to typepath of datum for compile checking
@@ -141,7 +143,7 @@
 
 /obj/item/ammo_casing/proc/get_caliber_string()
 	return resolve_caliber(regex_this_caliber)?.caliber
-	
+
 /obj/item/ammo_casing/proc/get_caliber()
-	RETURN_TYPE(/datum/caliber)
+	RETURN_TYPE(/datum/ammo_caliber)
 	return resolve_caliber(regex_this_caliber)
