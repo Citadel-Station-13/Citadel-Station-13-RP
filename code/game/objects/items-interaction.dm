@@ -19,9 +19,8 @@
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
 /obj/item/proc/attack_self(mob/user, datum/event_args/actor/actor = new /datum/event_args/actor(user))
-	// SHOULD_NOT_OVERRIDE(TRUE)
-	// SHOULD_NOT_SLEEP(TRUE)
-	// attack_self isn't really part of the item attack chain.
+	// todo: this should realistically be SHOULD_NOT_OVERRIDE but there's a massive number of overrides (some unnecessary), so this is for a later date
+	// SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
 	SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
 	if(on_attack_self(actor))
 		return TRUE
@@ -65,8 +64,6 @@
  */
 /obj/item/proc/unique_action(datum/event_args/actor/actor)
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, actor)
@@ -91,8 +88,6 @@
  */
 /obj/item/proc/defensive_toggle(datum/event_args/actor/actor)
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
 	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TOGGLE, actor)
@@ -117,8 +112,6 @@
  */
 /obj/item/proc/defensive_trigger(datum/event_args/actor/actor)
 	SHOULD_NOT_OVERRIDE(TRUE) // may be re-evaluated later
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
 	if(ismob(actor))
 		actor = new /datum/event_args/actor(actor)
 	SEND_SIGNAL(src, COMSIG_ITEM_DEFENSIVE_TRIGGER, actor)
