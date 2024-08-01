@@ -8,6 +8,8 @@
 	sheet_plural_name = "ingots"
 	tgui_icon_key = "gold"
 
+	worth = 15
+
 	relative_integrity = 0.8
 	density = 8 * 1.75
 	relative_conductivity = 2

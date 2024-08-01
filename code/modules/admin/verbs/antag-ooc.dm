@@ -21,10 +21,7 @@
 		return
 
 	// Name shown to admins.
-	var/display_name = src.key
-	if(holder)
-		if(holder.fakekey)
-			display_name = usr.client.holder.fakekey
+	var/display_name = get_public_key()
 
 	// Name shown to other players.  Admins whom are not also antags have their rank displayed.
 	var/player_display = (is_admin && !is_antag) ? "[display_name]([usr.client.holder.rank])" : display_name

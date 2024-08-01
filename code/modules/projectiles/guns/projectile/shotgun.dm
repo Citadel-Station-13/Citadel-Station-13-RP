@@ -67,6 +67,7 @@
 	icon_state = "shotgun_c"
 	item_state = "cshotgun"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
+	worth_intrinsic = 500
 	max_shells = 7 //match the ammo box capacity, also it can hold a round in the chamber anyways, for a total of 8.
 	ammo_type = /obj/item/ammo_casing/a12g
 	load_method = SINGLE_CASING|SPEEDLOADER
@@ -284,6 +285,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/flare
 	projectile_type = /obj/projectile/energy/flash
 	one_handed_penalty = 0
+	worth_intrinsic = 150
 
 /obj/item/gun/ballistic/shotgun/flare/paramed
 	name = "Paramedic Flare Gun"
