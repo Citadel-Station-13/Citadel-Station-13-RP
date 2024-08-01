@@ -182,7 +182,7 @@
  * @return null for success, a string describing why not otherwise.
  */
 /obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
-	if(casing.regex_this_caliber != ammo_caliber)
+	if(!loads_caliber(casing.regex_this_caliber))
 		return "mismatched caliber"
 
 /obj/item/ammo_magazine/on_attack_self(datum/event_args/actor/e_args)

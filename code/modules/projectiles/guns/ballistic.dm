@@ -361,4 +361,6 @@
  * @return TRUE / FALSE
  */
 /obj/item/gun/ballistic/proc/accepts_caliber(datum/caliber/caliberlike)
-	#warn impl
+	var/datum/caliber/ours = resolve_caliber(regex_this_caliber)
+	var/datum/caliber/theirs = resolve_caliber(caliberlike)
+	return ours.equivalent(theirs)
