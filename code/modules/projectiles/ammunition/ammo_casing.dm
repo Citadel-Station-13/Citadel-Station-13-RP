@@ -40,6 +40,9 @@
 		QDEL_NULL(stored)
 	return ..()
 
+/obj/item/ammo_casing/get_intrinsic_worth(flags)
+	return loaded()? ..() : 0
+
 //removes the projectile from the ammo casing
 // todo: refactor for actual on-shot or whatever
 /obj/item/ammo_casing/proc/expend()

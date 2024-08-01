@@ -5581,7 +5581,7 @@
 /area/awaymission/labs/command)
 "pQ" = (
 /obj/structure/closet/cabinet,
-/obj/item/gun/energy/pulse_pistol,
+/obj/item/gun/energy/pulse_carbine,
 /obj/item/clothing/accessory/medal/gold/heroism,
 /obj/item/clothing/under/rank/head_of_security/navyblue,
 /obj/item/clothing/accessory/holster/armpit,

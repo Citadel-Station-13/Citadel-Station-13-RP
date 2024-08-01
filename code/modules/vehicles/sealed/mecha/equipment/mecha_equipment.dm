@@ -276,3 +276,14 @@
 ///Equipment returns its slowdown or speedboost.
 /obj/item/mecha_parts/mecha_equipment/proc/get_step_delay()
 	return step_delay
+
+//* Chassis - Physicality *//
+
+/**
+ * Returns if our mount is sufficiently close to something to be considered adjacent.
+ *
+ * * This is usually our mech.
+ * * If we are not mounted, this always fails.
+ */
+/obj/item/mecha_parts/mecha_equipment/proc/sufficiently_adjacent(atom/entity)
+	return chassis?.sufficiently_adjacent(entity)

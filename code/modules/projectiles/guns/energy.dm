@@ -139,6 +139,8 @@
 
 /obj/item/gun/energy/update_icon(ignore_inhands)
 	. = ..()
+	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
+		return // using new system
 	if(obj_cell_slot.cell == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -167,3 +169,11 @@
 
 	if(!ignore_inhands)
 		update_held_icon()
+
+//* Ammo *//
+
+/obj/item/gun/energy/get_ammo_ratio()
+	var/obj/item/cell/cell = obj_cell_slot.cell
+	if(!cell)
+		return 0
+	return cell.charge / cell.maxcharge

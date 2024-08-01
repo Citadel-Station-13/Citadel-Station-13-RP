@@ -115,27 +115,6 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
-/obj/projectile/beam/pulse
-	name = "pulse"
-	icon_state = "u_laser"
-	fire_sound='sound/weapons/gauss_shoot.ogg' // Needs a more meaty sound than what pulse.ogg currently is; this will be a placeholder for now.
-	damage = 100	//Badmin toy, don't care
-	armor_penetration = 100
-	light_color = "#0066FF"
-
-	muzzle_type = /obj/effect/projectile/muzzle/laser_pulse
-	tracer_type = /obj/effect/projectile/tracer/laser_pulse
-	impact_type = /obj/effect/projectile/impact/laser_pulse
-
-/obj/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
-	if(isturf(target))
-		LEGACY_EX_ACT(target, 2, null)
-	..()
-
-/obj/projectile/beam/pulse/shotgun
-	damage = 50
-	armor_penetration = 25
-
 /obj/projectile/beam/emitter
 	name = "emitter beam"
 	icon_state = "emitter"
