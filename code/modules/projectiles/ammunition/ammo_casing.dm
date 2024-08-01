@@ -140,8 +140,8 @@
 //* Caliber *//
 
 /obj/item/ammo_casing/proc/get_caliber_string()
-	return get_caliber()?.caliber
-
+	return resolve_caliber(regex_this_caliber)?.caliber
+	
 /obj/item/ammo_casing/proc/get_caliber()
 	RETURN_TYPE(/datum/caliber)
-	#warn impl
+	return resolve_caliber(regex_this_caliber)

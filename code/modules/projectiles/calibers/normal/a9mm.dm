@@ -118,7 +118,6 @@
 	ammo_max = 16
 
 // SMG
-#warn a9mm/
 /obj/item/ammo_magazine/a9mm/top_mount
 	name = "top mounted magazine (9mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'

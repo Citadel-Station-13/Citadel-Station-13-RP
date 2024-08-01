@@ -3,7 +3,6 @@
 
 //* Casings
 
-#warn a5_56mm/
 /obj/item/ammo_casing/a5_56mm
 	desc = "A 5.56mm bullet casing."
 	regex_this_caliber = /datum/caliber/a5_56mm

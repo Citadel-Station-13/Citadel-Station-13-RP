@@ -130,16 +130,23 @@
 /**
  * transfer as many rounds to another magazine as possible
  *
+ * * This proc must do safety checks like caliber. The receiving side does not!
+ *
  * @params
  * * receiver - receiving mag
- * * force - ignore insertion checks
  * * update_icon - update icons for both us and receiver
  *
  * @return rounds transferred
  */
-/obj/item/ammo_magazine/proc/transfer_rounds_to(obj/item/ammo_magazine/receiver, force, update_icon)
+/obj/item/ammo_magazine/proc/transfer_rounds_to(obj/item/ammo_magazine/receiver, update_icon)
 	. = 0
-	#warn impl
+	var/amount_missing = receiver.amount_missing()
+	// todo: mixed caliber support
+	if(receiver.loads_caliber(ammo_caliber))
+		return
+	for(var/i in 1 to min(amount_missing, amount_remaining()))
+		receiver.push(pop())
+		++.
 	update_icon()
 	receiver.update_icon()
 
@@ -384,3 +391,10 @@
 
 /obj/item/ammo_magazine/proc/amount_missing(live_only)
 	return ammo_max - amount_remaining(live_only)
+
+//* Caliber *//
+
+/obj/item/ammo_magazine/proc/loads_caliber(datum/caliber/caliberlike)
+	var/datum/caliber/ours = resolve_caliber(ammo_caliber)
+	var/datum/caliber/theirs = resolve_caliber(caliberlike)
+	return ours.equivalent(theirs)
