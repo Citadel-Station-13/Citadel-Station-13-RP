@@ -11,7 +11,10 @@ GLOBAL_LIST_INIT(calibers, init_calibers())
 			continue
 		var/datum/ammo_caliber/created = new path
 		.[created.type] = created
-		.[created.caliber] = created
+		if(created.caliber)
+			if(.[created.caliber])
+				stack_trace("collision between [path] and [.[created.caliber]:type] for caliber [created.caliber]")
+			.[created.caliber] = created
 
 /proc/resolve_caliber(datum/ammo_caliber/caliberlike)
 	RETURN_TYPE(/datum/ammo_caliber)

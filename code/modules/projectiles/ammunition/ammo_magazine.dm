@@ -32,12 +32,22 @@
 	var/magazine_type
 	/// considered an extended magazine for guns that support rendering extended magazines?
 	var/magazine_extended = FALSE
+	// todo: magazine_insert_delay
+	// todo: magazine_remove_delay
 
 	//* for speedloaders
 	/// inherent speedloader delay, added to gun's speedloaders_delay
 	var/speedloader_delay = 0
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set
 	var/speedloader_type
+
+	//* for stripper clips / usage as single loader
+	// todo: clip_load_delay
+	// todo: clip_type
+
+	//* loading *//
+	/// sound for loading a piece of ammo
+	var/load_sound = 'sound/weapons/flipblade.ogg'
 
 	//* ammo storage *//
 	/// max ammo in us
@@ -68,6 +78,10 @@
 	var/ammo_type
 	/// if set, doesn't allow subtypes
 	var/ammo_picky = FALSE
+	/// init all contents on initialize instead of lazy-drawing
+	///
+	/// * used for things like microbatteries / legacy content
+	var/ammo_legacy_init_everything = FALSE
 
 	//* Rendering
 	/// use default rendering system
@@ -100,6 +114,8 @@
 	if(!isnull(rendering_static_overlay))
 		add_overlay(rendering_static_overlay, TRUE)
 	update_icon()
+	if(ammo_legacy_init_everything)
+		instantiate_internal_list()
 
 /obj/item/ammo_magazine/get_containing_worth(flags)
 	. = ..()
@@ -159,8 +175,9 @@
 /**
  * instantiate the entire internal ammo list
  *
- * DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
- *
+ * * DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
+ *	caliber = "nsfw"
+
  * @return rounds created
  */
 /obj/item/ammo_magazine/proc/instantiate_internal_list()
@@ -184,6 +201,8 @@
 /obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
 	if(!loads_caliber(casing.regex_this_caliber))
 		return "mismatched caliber"
+	if(ammo_type && (ammo_picky ? casing.type != ammo_type : !istype(casing, ammo_type)))
+		return "mismatched ammo"
 
 /obj/item/ammo_magazine/on_attack_self(datum/event_args/actor/e_args)
 	. = ..()
@@ -231,7 +250,7 @@
 			to_chat(user, SPAN_WARNING("You fail to insert [I] into [src]!"))
 			return
 		// todo: variable load sounds
-		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
+		playsound(src, load_sound, 50, 1)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/enemy = I

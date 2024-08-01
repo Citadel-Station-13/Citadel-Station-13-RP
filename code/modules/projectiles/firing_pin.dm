@@ -34,7 +34,7 @@
 			if(G.pin && !(G.pin.pin_irremovable))
 				G.pin.forceMove(get_turf(G))
 				G.pin.gun_remove(G)
-				to_chat(user, "<span class ='notice'>You remove [G]'s old pin. Rendering it unuseable in the process.</span>")
+				to_chat(user, "<span class ='notice'>You remove [G]'s old pin, rendering it unuseable in the process.</span>")
 				gun_insert(user, G)
 				return
 			if(!G.pin)

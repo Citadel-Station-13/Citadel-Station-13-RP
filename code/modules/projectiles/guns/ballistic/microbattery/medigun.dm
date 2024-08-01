@@ -1,5 +1,5 @@
 // The Gun //
-/obj/item/gun/ballistic/cell_loaded/medical
+/obj/item/gun/ballistic/microbattery/medical
 	name = "cell-loaded medigun"
 	desc = "The Nanotrasen-VayMed Adaptive Medical Laser, or the NT-V 'AML', is a powerful cell-based ranged healing device designed by Nanotrasen with a partnership with Vey-Med. It uses an internal nanite fabricator, powered and controlled by discrete cells, to deliver a variety of effects at range. Up to six combinations of healing beams can be configured at once, depending on cartridge used. Ammo not included."
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
@@ -9,10 +9,10 @@
 	description_fluff = "The Vey-Med AML 'Medigun' allows one to customize their loadout in the field, or before deploying, to allow emergency response personnel to deliver a variety of ranged healing options."
 	description_antag = ""
 	origin_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_BIO = 5)
-	allowed_magazines = list(/obj/item/ammo_magazine/cell_mag/medical)
+	allowed_magazines = list(/obj/item/ammo_magazine/microbattery/medical)
 	no_pin_required = 1
 
-/obj/item/gun/ballistic/cell_loaded/medical/cmo
+/obj/item/gun/ballistic/microbattery/medical/cmo
 	name = "advanced cell-loaded medigun"
 	desc = "This is a variation on the AML 'Medigun', a powerful cell-based ranged healing device based on the same model made by Nanotrasen and Vey-Med \
 	It has an extended sight for increased accuracy, and much more comfortable grip. Ammo not included."
@@ -21,7 +21,7 @@
 
 
 // The Magazine //
-/obj/item/ammo_magazine/cell_mag/medical //medical
+/obj/item/ammo_magazine/microbattery/medical //medical
 	name = "nanite magazine"
 	desc = "A nanite fabrication magazine for the \'AML'"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/vey_med)
@@ -30,7 +30,7 @@
 	icon_state = "ml3m_mag"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_BIO = 3)
 
-/obj/item/ammo_magazine/cell_mag/medical/advanced
+/obj/item/ammo_magazine/microbattery/medical/advanced
 	name = "advanced nanite magazine"
 	desc = "A nanite discharge cell for the \'AML\'. This one is a more advanced version which can hold six individual nanite discharge cells."
 	ammo_max = 6
@@ -47,8 +47,8 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/ml3m_pack_med/legacy_spawn_contents()
-	new /obj/item/gun/ballistic/cell_loaded/medical(src)
-	new /obj/item/ammo_magazine/cell_mag/medical(src)
+	new /obj/item/gun/ballistic/microbattery/medical(src)
+	new /obj/item/ammo_magazine/microbattery/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)
 	new /obj/item/ammo_casing/microbattery/medical/burn(src)
 	new /obj/item/ammo_casing/microbattery/medical/stabilize(src)
@@ -60,8 +60,8 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo/legacy_spawn_contents()
-	new /obj/item/gun/ballistic/cell_loaded/medical/cmo(src)
-	new /obj/item/ammo_magazine/cell_mag/medical(src)
+	new /obj/item/gun/ballistic/microbattery/medical/cmo(src)
+	new /obj/item/ammo_magazine/microbattery/medical(src)
 	new /obj/item/ammo_casing/microbattery/medical/brute(src)
 	new /obj/item/ammo_casing/microbattery/medical/burn(src)
 	new /obj/item/ammo_casing/microbattery/medical/stabilize(src)

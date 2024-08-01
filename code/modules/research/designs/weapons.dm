@@ -411,14 +411,14 @@
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
-	build_path = /obj/item/gun/ballistic/cell_loaded/combat/prototype
+	build_path = /obj/item/gun/ballistic/microbattery/combat/prototype
 
 /datum/design/science/weapon/cell_based/prototype_nsfw_mag
 	design_name = "combat cell magazine"
 	id = "nsfw_mag_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
-	build_path = /obj/item/ammo_magazine/cell_mag/combat/prototype
+	build_path = /obj/item/ammo_magazine/microbattery/combat/prototype
 
 /datum/design/science/nsfw_cell
 	abstract_type = /datum/design/science/nsfw_cell

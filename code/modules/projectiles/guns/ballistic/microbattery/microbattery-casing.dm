@@ -1,9 +1,6 @@
-// todo: /ammo_casing/microbattery
-
 /obj/item/ammo_casing/microbattery
 	name = "\'NSFW\' microbattery - UNKNOWN"
 	desc = "A miniature battery for an energy weapon."
-	//catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_batt"
 	slot_flags = SLOT_BELT | SLOT_EARS
@@ -12,7 +9,7 @@
 	var/shots_left = 4
 
 	leaves_residue = 0
-	caliber = "nsfw"
+	regex_this_caliber = /datum/caliber/microbattery
 	var/type_color = null
 	var/type_name = null
 	projectile_type = /obj/projectile/beam

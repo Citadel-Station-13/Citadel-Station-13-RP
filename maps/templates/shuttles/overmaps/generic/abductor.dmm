@@ -882,12 +882,12 @@
 /obj/item/ammo_casing/microbattery/medical/omni3,
 /obj/item/ammo_casing/microbattery/medical/omni3,
 /obj/structure/closet/alien,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/gun/ballistic/cell_loaded,
-/obj/item/gun/ballistic/cell_loaded,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/gun/ballistic/microbattery,
+/obj/item/gun/ballistic/microbattery,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Zk" = (

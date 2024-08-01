@@ -74,6 +74,7 @@
 	var/mode_name = null
 	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
+	// todo: this should be on /ballistic, and be `internal_chambered`.
 	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
