@@ -16,12 +16,11 @@
 	ammo_max = 20
 	ammo_type = /obj/item/ammo_casing/fiftycalcaseless
 	multiple_sprites = 1
-	#warn ughh
 
 /obj/item/ammo_casing/fiftycalcaseless
 	name = "caseless phoron round"
 	desc = "A 12.7mm caseless round."
-	caliber = "12.7mm caseless"
+	regex_this_caliber = /datum/caliber/a12_7mm
 	icon_state = "p-casing"
 	projectile_type = /obj/projectile/bullet/incendiary/caseless
 	casing_flags = CASING_DELETE

@@ -323,7 +323,7 @@
 
 			//33% chance to be able to reload the gun with human ammunition
 			if(prob(66))
-				new_gun.caliber = null
+				new_gun.regex_this_caliber = null
 
 			//33% chance to fill it with a random amount of bullets
 			new_gun.max_shells = rand(1,12)

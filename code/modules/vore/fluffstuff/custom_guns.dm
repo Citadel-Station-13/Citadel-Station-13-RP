@@ -146,8 +146,6 @@
 	icon_state = (ammo_magazine)? "stg60" : "stg60-e"
 	item_state = (ammo_magazine)? "arifle" : "arifle-e"
 
-//-----------------------Tranq Gun----------------------------------
-
 // ------------ Energy Luger ------------
 /obj/item/gun/energy/gun/eluger
 	name = "energy Luger"
