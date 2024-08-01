@@ -15,8 +15,8 @@
 	weight = ITEM_WEIGHT_GUN_BULKY
 	encumbrance = ITEM_ENCUMBRANCE_GUN_BULKY
 	fire_delay = 1
+	cell_type = /obj/item/cell/hyper
 
-	var/initial_cell_type = /obj/item/cell/hyper
 	var/initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
 	var/empty_sound = 'sound/machines/twobeep.ogg'
 
@@ -24,7 +24,6 @@
 	capacitor = new initial_capacitor_type(src)
 	capacitor.charge = capacitor.max_charge
 
-	cell = new initial_cell_type(src)
 	if (ispath(loaded))
 		loaded = new loaded
 	return ..()

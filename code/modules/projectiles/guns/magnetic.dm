@@ -245,3 +245,8 @@
 	update_icon()
 
 	return new projectile_type(src)
+
+//* Object System - Cell *//
+
+/obj/item/gun/magnetic/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return removable_components && ..()

@@ -35,11 +35,11 @@
 /obj/item/gun/magnetic/matfed/update_overlays()
 	. = ..()
 	if(removable_components)
-		if(cell)
+		if(obj_cell_slot.cell)
 			. += image(icon, "[icon_state]_cell")
 		if(capacitor)
 			. += image(icon, "[icon_state]_capacitor")
-	if(!cell || !capacitor)
+	if(!obj_cell_slot.cell || !capacitor)
 		. += image(icon, "[icon_state]_red")
 	else if(capacitor.charge < power_cost)
 		. += image(icon, "[icon_state]_amber")
@@ -47,23 +47,6 @@
 		. += image(icon, "[icon_state]_green")
 	if(mat_storage)
 		. += image(icon, "[icon_state]_loaded")
-
-/obj/item/gun/magnetic/matfed/attack_hand(mob/user, list/params) // It doesn't keep a loaded item inside.
-	if(user.get_inactive_held_item() == src)
-		var/obj/item/removing
-
-		if(cell && removable_components)
-			removing = cell
-			cell = null
-
-		if(removing)
-			removing.forceMove(get_turf(src))
-			user.put_in_hands(removing)
-			user.visible_message("<span class='notice'>\The [user] removes \the [removing] from \the [src].</span>")
-			playsound(src, 'sound/machines/click.ogg', 10, 1)
-			update_icon()
-			return
-	. = ..()
 
 /obj/item/gun/magnetic/matfed/check_ammo()
 	if(mat_storage - mat_cost >= 0)
@@ -75,17 +58,6 @@
 
 /obj/item/gun/magnetic/matfed/attackby(var/obj/item/thing, var/mob/user)
 	if(removable_components)
-		if(istype(thing, /obj/item/cell))
-			if(cell)
-				to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
-				return
-			if(!user.attempt_insert_item_for_installation(thing, src))
-				return
-			cell = thing
-			playsound(src, 'sound/machines/click.ogg', 10, 1)
-			user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
-			update_icon()
-			return
 		if(thing.is_crowbar())
 			if(!manipulator)
 				to_chat(user, "<span class='warning'>\The [src] has no manipulator installed.</span>")
