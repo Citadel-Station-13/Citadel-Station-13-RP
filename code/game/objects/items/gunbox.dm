@@ -111,8 +111,8 @@
 
 /obj/item/gunbox/donksoft/shotgun/attack_self(mob/user)
 	var/list/options = list()
-	options["Classic DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
-	options["Blue DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam/blue, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
+	options["Classic DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam, /obj/item/ammo_magazine/foam/box, /obj/item/ammo_magazine/foam/box)
+	options["Blue DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam/blue, /obj/item/ammo_magazine/foam/box, /obj/item/ammo_magazine/foam/box)
 	var/choice = input(user,"What toy is in this box?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]

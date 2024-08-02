@@ -6,10 +6,14 @@
 	desc = "You shouldn't be seeing this arrow."
 	projectile_type = /obj/projectile/bullet/reusable/arrow
 	regex_this_caliber = /datum/ammo_caliber/arrow
+
 	icon = 'icons/modules/projectiles/casings/arrow.dmi'
 	icon_state = "arrow"
+	icon_spent = FALSE
+
 	throw_force = 3 //good luck hitting someone with the pointy end of the arrow
 	throw_speed = 3
+
 	casing_flags = CASING_DELETE
 
 /obj/item/ammo_casing/arrow/wood

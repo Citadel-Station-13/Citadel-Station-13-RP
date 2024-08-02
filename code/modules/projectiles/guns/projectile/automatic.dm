@@ -481,7 +481,7 @@
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a7_62mm
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mmm)
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm)
 	projectile_type = /obj/projectile/bullet/rifle/a762
 	heavy = TRUE
 	one_handed_penalty = 45
@@ -511,8 +511,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/a7_62mmm
-	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mmm)
+	magazine_type = /obj/item/ammo_magazine/a7_62mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm, /obj/item/ammo_magazine/a7_62mm)
 	heavy = TRUE
 	projectile_type = /obj/projectile/bullet/rifle/a762
 
@@ -633,8 +633,8 @@
 	load_method = MAGAZINE
 	regex_this_caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
-	magazine_type = /obj/item/ammo_magazine/a45/uzi/wt274
-	allowed_magazines = list(/obj/item/ammo_magazine/a45/uzi/wt274)
+	magazine_type = /obj/item/ammo_magazine/a45/wt274
+	allowed_magazines = list(/obj/item/ammo_magazine/a45/wt274)
 	one_handed_penalty = 10
 
 	firemodes = list(

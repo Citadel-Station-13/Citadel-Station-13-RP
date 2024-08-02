@@ -28,11 +28,35 @@
 /obj/item/ammo_magazine/foam
 	name = "abstract toy magazine"
 	desc = "You shouldn't be seeing this, contact a Maintainer!"
-	icon_state = "toy_pistol"
+
+	icon = 'icons/modules/projectiles/magazines/foam.dmi'
+
 	materials_base = list(MAT_PLASTIC = 480)
 	ammo_caliber = /datum/ammo_caliber/foam
 	ammo_preload = /obj/item/ammo_casing/foam
 	ammo_max = 8
+
+/obj/item/ammo_magazine/foam/box
+	name = "box of foam darts"
+	desc = "It has a picture of some foam darts on it."
+
+	icon_state = "box"
+	base_icon_state = "box"
+	inhand_state = "box"
+
+	ammo_max = 30
+
+	drop_sound = 'sound/items/drop/ammobox.ogg'
+	pickup_sound = 'sound/items/pickup/ammobox.ogg'
+
+/obj/item/ammo_magazine/foam/box/riot
+	name = "box of riot darts"
+	desc = "It has a picture of some angry looking foam darts on it."
+
+	icon_state = "box-riot"
+	base_icon_state = "box-riot"
+
+	ammo_preload = /obj/item/ammo_casing/foam/riot
 
 /obj/item/ammo_magazine/foam/pistol
 	name = "toy pistol magazine"

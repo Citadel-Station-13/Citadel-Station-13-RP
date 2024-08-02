@@ -689,7 +689,7 @@
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 
 //Foam Darts
-/obj/item/storage/box/foamdart
+/obj/item/ammo_magazine/foam/box
 	name = "box of foam darts"
 	desc = "It has a picture of some foam darts on it."
 	icon = 'icons/obj/ammo.dmi'
@@ -699,7 +699,7 @@
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
-/obj/item/storage/box/foamdart/riot
+/obj/item/ammo_magazine/foam/box/riot
 	name = "box of riot darts"
 	desc = "It has a picture of some angry looking foam darts on it."
 	icon_state = "foambox_riot"

@@ -8,10 +8,13 @@
 
 	icon = 'icons/modules/projectiles/casings/bio.dmi'
 	icon_state = "globule"
+	icon_spent = FALSE
 
 	color = "#FFE0E2"
 	projectile_type = /obj/projectile/bullet/organic
 	materials_base = list("flesh" = 100)
+
+	casing_flags = CASING_DELETE
 
 /obj/item/ammo_magazine/biomatter
 	name = "magazine (Compressed Biomatter)"

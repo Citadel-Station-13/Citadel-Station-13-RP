@@ -189,7 +189,7 @@
 /datum/supply_pack/nanotrasen/recreation/donksoft_ammo
 	name = "DONKsoft Resupply Bundle"
 	contains = list(
-		/obj/item/storage/box/foamdart= 4,
+		/obj/item/ammo_magazine/foam/box= 4,
 	)
 	worth = 250
 
