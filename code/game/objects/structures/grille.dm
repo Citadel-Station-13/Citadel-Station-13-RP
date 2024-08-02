@@ -69,7 +69,7 @@
 				passthrough = 1
 		if(BURN)
 			//beams and other projectiles are either blocked completely by grilles or stop half the damage.
-			if(!(proj.original == src || prob(20)))
+			if(!(proj.original_target == src || prob(20)))
 				proj.damage *= 0.5
 				passthrough = 1
 

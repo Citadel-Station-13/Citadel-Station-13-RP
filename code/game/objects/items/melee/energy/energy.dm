@@ -339,7 +339,6 @@
 	item_state = "ionrapier"
 	active_damage_force = 10
 	active_throw_force = 3
-	active_embed_chance = 0
 	sharp = 1
 	edge = 1
 	armor_penetration = 0
@@ -397,7 +396,6 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 3, TECH_ILLEGAL = 4)
 	active_damage_force = 25
 	armor_penetration = 25
-	projectile_parry_chance = 40
 	colorable = TRUE
 	use_cell = TRUE
 	hitcost = 75

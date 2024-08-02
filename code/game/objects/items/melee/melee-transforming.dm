@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 silicons                             *//
 
 /**
- * toggleable shields, like energy combat shields and telescoping shields
+ * single-toggle weapons
  */
 /obj/item/melee/transforming
 	damage_mode = NONE

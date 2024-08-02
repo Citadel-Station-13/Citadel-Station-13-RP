@@ -68,7 +68,7 @@
 /obj/structure/flora/tree/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
 	. = ..()
 	// ruins some of the wood if you use high power modes or types
-	if(. > 5 && ((mode & (DAMAGE_MODE_ABLATING | DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHRED)) || (flag == ARMOR_BOMB)))
+	if(. > 5 && ((damage_mode & (DAMAGE_MODE_ABLATING | DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHRED)) || (damage_flag == ARMOR_BOMB)))
 		product_amount -= round((. * 0.5) / integrity_max * initial(product_amount))
 
 /obj/structure/flora/tree/atom_break()
