@@ -8,8 +8,6 @@
 	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
-	#warn error sprite
-
 	//* Core *//
 	/// Atom flags.
 	var/atom_flags = NONE

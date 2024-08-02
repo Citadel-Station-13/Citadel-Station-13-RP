@@ -239,6 +239,20 @@
 		slot.remove_yank_offhand = TRUE
 		slot.remove_yank_context = TRUE
 
+/obj/item/gun/examine(mob/user, dist)
+	. = ..()
+	if(!no_pin_required)
+		if(pin)
+			. += "It has \a [pin] installed."
+		else
+			. += "It doesn't have a firing pin installed, and won't fire."
+	if(firemodes.len > 1)
+		var/datum/firemode/current_mode = firemodes[sel_mode]
+		. += "The fire selector is set to [current_mode.name]."
+	if(safety_state != GUN_NO_SAFETY)
+		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
+	#warn component examine
+
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
@@ -807,19 +821,6 @@
 	if(!zoom)
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
-
-/obj/item/gun/examine(mob/user, dist)
-	. = ..()
-	if(!no_pin_required)
-		if(pin)
-			. += "It has \a [pin] installed."
-		else
-			. += "It doesn't have a firing pin installed, and won't fire."
-	if(firemodes.len > 1)
-		var/datum/firemode/current_mode = firemodes[sel_mode]
-		. += "The fire selector is set to [current_mode.name]."
-	if(safety_state != GUN_NO_SAFETY)
-		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)

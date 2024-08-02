@@ -15,6 +15,10 @@
 	/// * This is just a suggestion.
 	/// * The actual APIs used are agnostic of this value.
 	var/component_slot
+	/// should we be hidden from examine?
+	var/show_on_examine = TRUE
+
+//* Attach / Detach *//
 
 /**
  * returns if we should fit on a gun
@@ -35,3 +39,13 @@
  */
 /obj/item/gun_component/proc/on_detach(obj/item/gun/gun)
 	SHOULD_CALL_PARENT(TRUE)
+
+//* Information *//
+
+/**
+ * Called to query the stat bullet points of this component
+ *
+ * @return a list of data about us to put in bullet points, in raw HTML
+ */
+/obj/item/gun_component/proc/summarize_bullet_points(datum/event_args/actor/actor)
+	return list()
