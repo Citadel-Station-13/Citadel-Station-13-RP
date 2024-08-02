@@ -32,7 +32,7 @@
 		of an initiated recharging cycle for optimal performance.
 	"}
 
-/obj/item/gun_component/energy_handler/active_reload/summarize_bullet_points(datum/event_args/actor/actor, range)
+/obj/item/gun_component/energy_handler/active_reload/perfect/summarize_bullet_points(datum/event_args/actor/actor, range)
 	. = list()
 	#warn hotkey hook
 	. += "Requires racking the weapon via Unique Action (<b>[]</b>) between shots. This will initiate an 'active reload', with a <b>ranndomized</b> reload interval where you can finish the action early."
