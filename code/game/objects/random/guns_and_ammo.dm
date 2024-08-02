@@ -226,7 +226,7 @@
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/caseless/phoron_spitter,
-				/obj/item/ammo_magazine/mphoronshot
+				/obj/item/ammo_magazine/phoron_shrap
 			)
 		)
 
