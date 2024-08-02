@@ -123,12 +123,12 @@
 	if(!isnull(rendering_static_overlay))
 		add_overlay(rendering_static_overlay, TRUE)
 
-	update_icon()
-
 	if(ammo_legacy_init_everything)
 		instantiate_internal_list()
 	if(isnull(ammo_current))
 		ammo_current = ammo_max
+
+	update_icon()
 
 /obj/item/ammo_magazine/get_containing_worth(flags)
 	. = ..()
