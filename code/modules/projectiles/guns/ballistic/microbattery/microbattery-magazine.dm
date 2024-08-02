@@ -3,7 +3,7 @@
 /obj/item/ammo_magazine/microbattery
 	name = "microbattery magazine"
 	desc = "A microbattery holder for a cell-based variable weapon."
-	icon = 'icons/obj/ammo_vr.dmi'
+	icon = 'icons/modules/projectiles/legacy/microbattery_old.dmi'
 	icon_state = "cell_mag"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_MAGNETS = 3)
 	ammo_caliber = /datum/ammo_caliber/microbattery

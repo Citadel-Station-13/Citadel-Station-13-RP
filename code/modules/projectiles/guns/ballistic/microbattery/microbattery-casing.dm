@@ -1,7 +1,7 @@
 /obj/item/ammo_casing/microbattery
 	name = "\'NSFW\' microbattery - UNKNOWN"
 	desc = "A miniature battery for an energy weapon."
-	icon = 'icons/obj/ammo_vr.dmi'
+	icon = 'icons/modules/projectiles/legacy/microbattery_old.dmi'
 	icon_state = "nsfw_batt"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throw_force = 1
