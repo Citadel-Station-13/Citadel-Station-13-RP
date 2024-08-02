@@ -24,7 +24,7 @@
 	/// * may NOT be string of caliber, currently
 	var/regex_this_caliber
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
-	VAR_PRIVATE/obj/projectile/stored
+	VAR_PROTECTED/obj/projectile/stored
 
 	//* Icon
 	/// switch to "[initial(state)]-spent" after expenditure
