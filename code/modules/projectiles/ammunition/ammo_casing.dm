@@ -147,3 +147,9 @@
 /obj/item/ammo_casing/proc/get_caliber()
 	RETURN_TYPE(/datum/ammo_caliber)
 	return resolve_caliber(regex_this_caliber)
+
+//* Generic - Spent Subtype *//
+
+/obj/item/ammo_casing/spent
+	icon_state = /obj/item/ammo_casing::icon_state + "-spent"
+	stored = FALSE

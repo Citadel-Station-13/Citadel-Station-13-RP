@@ -65,7 +65,6 @@
 /area/awaymission/spacebattle/syndicate2)
 "at" = (
 /obj/structure/table/reinforced,
-/obj/item/ammo_magazine/m10x24mm,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/syndicate2)
 "au" = (
