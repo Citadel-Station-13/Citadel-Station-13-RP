@@ -76,7 +76,7 @@
 		if(handle_casings != HOLD_CASINGS)
 			loaded -= chambered
 	else if(ammo_magazine && ammo_magazine.amount_remaining())
-		chambered = ammo_magazine.pop()
+		chambered = ammo_magazine.pop(src)
 
 	if (chambered)
 		return chambered.get_projectile()
@@ -179,7 +179,7 @@
 				var/obj/item/ammo_casing/inserting = AM.peek()
 				if(!accepts_casing(inserting))
 					break
-				inserting = AM.pop()
+				inserting = AM.pop(src)
 				if(inserting.loc != src)
 					inserting.forceMove(src)
 				loaded += inserting

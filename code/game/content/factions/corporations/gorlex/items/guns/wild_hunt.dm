@@ -3,6 +3,7 @@
 	desc = "An ancient rifle of the Phoron Wars. For when you want to kill something with no negotiation. The Wild Hunt is a beast that kicks like a mule and fires experimental caseless phoron rounds. It has, obviously, horrific results, setting targets on fire after giving them a golf-ball sized hole. Now generally disused due to the extreme maintenance cost and impracticality. Nobody makes these, anymore."
 	icon_state = "rifle"
 	inhand_state = "rifle"
+	icon = 'icons/content/factions/corporations/gorlex/items/guns/wild_hunt.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	regex_this_caliber = /datum/ammo_caliber/a12_7mm
@@ -39,6 +40,7 @@
 
 /obj/item/ammo_magazine/a12_7mm/wild_hunt
 	name = "Wild Hunt magazine (12.7mm caseless)"
+	icon = 'icons/content/factions/corporations/gorlex/items/guns/wild_hunt.dmi'
 	icon_state = "mag-1"
 	base_icon_state = "mag"
 	ammo_caliber = /datum/ammo_caliber/a12_7mm

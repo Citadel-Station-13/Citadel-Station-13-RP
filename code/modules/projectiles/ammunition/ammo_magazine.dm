@@ -116,13 +116,19 @@
 
 /obj/item/ammo_magazine/Initialize(mapload)
 	. = ..()
+
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
+
 	if(!isnull(rendering_static_overlay))
 		add_overlay(rendering_static_overlay, TRUE)
+
 	update_icon()
+
 	if(ammo_legacy_init_everything)
 		instantiate_internal_list()
+	if(isnull(ammo_current))
+		ammo_current = ammo_max
 
 /obj/item/ammo_magazine/get_containing_worth(flags)
 	. = ..()
@@ -165,10 +171,10 @@
 	. = 0
 	var/amount_missing = receiver.amount_missing()
 	// todo: mixed caliber support
-	if(receiver.loads_caliber(ammo_caliber))
+	if(!receiver.loads_caliber(ammo_caliber))
 		return
 	for(var/i in 1 to min(amount_missing, amount_remaining()))
-		receiver.push(pop())
+		receiver.push(pop(receiver))
 		++.
 	update_icon()
 	receiver.update_icon()
@@ -176,8 +182,8 @@
 /**
  * create casing when we draw into non-instantiated part of the mag
  */
-/obj/item/ammo_magazine/proc/instantiate_casing()
-	return new ammo_preload
+/obj/item/ammo_magazine/proc/instantiate_casing(atom/newloc)
+	return new ammo_preload(newloc)
 
 /**
  * instantiate the entire internal ammo list
@@ -189,7 +195,7 @@
  */
 /obj/item/ammo_magazine/proc/instantiate_internal_list()
 	var/existing = length(ammo_internal)
-	if(existing > ammo_max)
+	if(existing > ammo_max || !ammo_preload)
 		ammo_current = 0
 		return
 	LAZYINITLIST(ammo_internal)
@@ -222,7 +228,7 @@
 		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
 		return
 	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
-	var/obj/item/ammo_casing/casing = pop()
+	var/obj/item/ammo_casing/casing = pop(src)
 	e_args.performer.put_in_hands_or_drop(casing)
 
 /obj/item/ammo_magazine/on_attack_hand(datum/event_args/actor/clickchain/e_args)
@@ -238,7 +244,7 @@
 		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
 		return
 	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
-	var/obj/item/ammo_casing/casing = pop()
+	var/obj/item/ammo_casing/casing = pop(src)
 	e_args.performer.put_in_hands_or_drop(casing)
 
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
@@ -309,7 +315,7 @@
 		return ..()
 	cut_overlays()
 	var/count = CEILING(amount_remaining() / ammo_max * rendering_count, 1)
-	if(count != rendering_count_current)
+	if(count == rendering_count_current)
 		return
 	rendering_count_current = count
 	switch(rendering_system)
@@ -340,7 +346,7 @@
 	RETURN_TYPE(/obj/item/ammo_casing)
 	if(!length(ammo_internal))
 		// list empty, see if we have one to inject
-		if(!ammo_current)
+		if(!ammo_current || !ammo_preload)
 			// we're empty
 			return
 		var/obj/item/ammo_casing/created = instantiate_casing()
@@ -355,7 +361,7 @@
 /**
  * get and eject top casing
  */
-/obj/item/ammo_magazine/proc/pop()
+/obj/item/ammo_magazine/proc/pop(atom/newloc)
 	RETURN_TYPE(/obj/item/ammo_casing)
 	if(length(ammo_internal))
 		// list filled
@@ -364,9 +370,9 @@
 		update_icon()
 		return
 	// list empty
-	if(!ammo_current)
+	if(!ammo_current || !ammo_preload)
 		return
-	. = instantiate_casing()
+	. = instantiate_casing(newloc)
 	--ammo_current
 	update_icon()
 

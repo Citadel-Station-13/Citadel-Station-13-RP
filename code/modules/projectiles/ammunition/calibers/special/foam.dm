@@ -8,7 +8,8 @@
 	desc = "A soft projectile made out of orange foam with a blue plastic tip."
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	regex_this_caliber = /datum/ammo_caliber/foam
-	icon_state = "foamdart"
+	icon = 'icons/modules/projectiles/casings/foam.dmi'
+	icon_state = "dart"
 	throw_force = 0
 	throw_speed = 3
 	casing_flags = CASING_DELETE
@@ -19,7 +20,7 @@
 	name = "riot dart"
 	desc = "A flexible projectile made out of hardened orange foam with a red plastic tip."
 	projectile_type = /obj/projectile/bullet/reusable/foam/riot
-	icon_state = "foamdart_riot"
+	icon_state = "dart-riot"
 
 //* Magazines *//
 
