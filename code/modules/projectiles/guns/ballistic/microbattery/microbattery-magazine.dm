@@ -10,6 +10,7 @@
 	ammo_type = /obj/item/ammo_casing/microbattery
 	ammo_max = 3
 	ammo_current = 0
+	ammo_legacy_init_everything = TRUE
 	var/x_offset = 5  //for update_icon() shenanigans- moved here so it can be adjusted for bigger mags
 	var/capname = "nsfw_mag" //as above
 	var/chargename = "nsfw_mag" //as above
