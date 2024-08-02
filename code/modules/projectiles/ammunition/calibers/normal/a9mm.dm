@@ -64,6 +64,10 @@
 	base_icon_state = "9x19-ext"
 	ammo_max = 17
 
+/obj/item/ammo_magazine/a9mm/large/ap
+	name = "magazine (9mm armor-piercing)"
+	ammo_preload = /obj/item/ammo_casing/a9mm/ap
+
 /obj/item/ammo_magazine/a9mm/large/hp
 	name = "magazine (9mm hollow-point)"
 	ammo_preload = /obj/item/ammo_casing/a9mm/hp
