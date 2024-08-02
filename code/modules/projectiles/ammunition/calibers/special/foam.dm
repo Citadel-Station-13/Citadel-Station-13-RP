@@ -9,7 +9,7 @@
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	regex_this_caliber = /datum/ammo_caliber/foam
 	icon_state = "foamdart"
-	throw_force = 0 //good luck hitting someone with the pointy end of the arrow
+	throw_force = 0
 	throw_speed = 3
 	casing_flags = CASING_DELETE
 	drop_sound = 'sound/items/drop/accessory.ogg'
