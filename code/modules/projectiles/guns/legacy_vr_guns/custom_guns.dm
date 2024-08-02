@@ -94,7 +94,7 @@
 	item_state = "arifle"
 	w_class = WEIGHT_CLASS_BULKY
 	max_shells = 30
-	regex_this_caliber = /datum/caliber/a7_92mm
+	regex_this_caliber = /datum/ammo_caliber/a7_92mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
 	magazine_type = /obj/item/ammo_magazine/a7_92mm
 	allowed_magazines = list(/obj/item/ammo_magazine/a7_92mm)
@@ -130,7 +130,7 @@
 	name = "\improper \"Giskard\" holdout pistol"
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
 	icon_state = "giskardcivil"
-	regex_this_caliber = /datum/caliber/a38
+	regex_this_caliber = /datum/ammo_caliber/a38
 	magazine_type = /obj/item/ammo_magazine/a38
 	allowed_magazines = list(/obj/item/ammo_magazine/a38)
 	load_method = MAGAZINE

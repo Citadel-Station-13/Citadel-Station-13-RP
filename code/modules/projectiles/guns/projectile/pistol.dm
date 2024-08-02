@@ -167,8 +167,8 @@
 	max_shells = 10
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 3)
-	magazine_type = /obj/item/ammo_magazine/a75/pistol
-	allowed_magazines = list(/obj/item/ammo_magazine/a75/pistol)
+	magazine_type = /obj/item/ammo_magazine/a75
+	allowed_magazines = list(/obj/item/ammo_magazine/a75)
 	auto_eject = 0
 
 /obj/item/gun/ballistic/gyropistol/bolter/update_icon_state()

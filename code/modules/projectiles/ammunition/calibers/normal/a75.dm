@@ -26,3 +26,26 @@
 /obj/item/ammo_magazine/a75/empty
 	icon_state = "m75-0"
 	ammo_current = 0
+
+/obj/item/ammo_magazine/a75/rifle
+	ammo_max = 30
+
+/obj/item/ammo_magazine/a75/rifle/empty
+	icon_state = "m75-0"
+	ammo_current = 0
+
+/obj/item/ammo_magazine/a75/box
+	name = "box magazine (.75 Gyrojet)"
+
+	icon = 'icons/modules/projectiles/magazines/old_magazine_box.dmi'
+	icon_state = "m75-1"
+	base_icon_state = "m75"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
+	ammo_max = 50
+
+/obj/item/ammo_magazine/a75/box/empty
+	icon_state = "m75-0"
+
+	ammo_current = 0

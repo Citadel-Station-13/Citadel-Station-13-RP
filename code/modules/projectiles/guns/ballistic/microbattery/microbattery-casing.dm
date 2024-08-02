@@ -9,7 +9,7 @@
 	var/shots_left = 4
 
 	leaves_residue = 0
-	regex_this_caliber = /datum/caliber/microbattery
+	regex_this_caliber = /datum/ammo_caliber/microbattery
 	var/type_color = null
 	var/type_name = null
 	projectile_type = /obj/projectile/beam

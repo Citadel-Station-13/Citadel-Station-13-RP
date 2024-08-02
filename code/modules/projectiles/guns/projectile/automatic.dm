@@ -686,8 +686,8 @@
 	load_method = MAGAZINE
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
 	max_shells = 30
-	magazine_type = /obj/item/ammo_magazine/a75/sickle
-	allowed_magazines = list(/obj/item/ammo_magazine/a75/sickle)
+	magazine_type = /obj/item/ammo_magazine/a75/rifle
+	allowed_magazines = list(/obj/item/ammo_magazine/a75/rifle)
 	heavy = TRUE
 	one_handed_penalty = 80
 
