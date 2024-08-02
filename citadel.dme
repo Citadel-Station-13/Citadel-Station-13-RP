@@ -4321,6 +4321,7 @@
 #include "code\modules\projectiles\ammunition\calibers\normal\a9_5mm.dm"
 #include "code\modules\projectiles\ammunition\calibers\normal\a9mm.dm"
 #include "code\modules\projectiles\ammunition\calibers\special\arrow.dm"
+#include "code\modules\projectiles\ammunition\calibers\special\biomatter-wax.dm"
 #include "code\modules\projectiles\ammunition\calibers\special\biomatter.dm"
 #include "code\modules\projectiles\ammunition\calibers\special\blunderbuss.dm"
 #include "code\modules\projectiles\ammunition\calibers\special\cap.dm"

@@ -31,13 +31,15 @@
 
 /obj/item/ammo_magazine/a38
 	name = "magazine (.38)"
-	icon_state = "9x19p"
+	icon_state = "9x19-small"
+	base_icon_state = "9x19-small"
 	origin_tech = list(TECH_COMBAT = 2)
 	materials_base = list(MAT_STEEL = 480)
 	ammo_caliber = /datum/ammo_caliber/a38
 	ammo_preload = /obj/item/ammo_casing/a380
 	ammo_max = 8
-	multiple_sprites = 1
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 
 /obj/item/ammo_magazine/a38/speedloader
 	name = "speedloader (.38)"

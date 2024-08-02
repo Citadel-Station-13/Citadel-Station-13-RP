@@ -605,8 +605,8 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/mcompressedbio/large/banana
-	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/large/banana)
+	magazine_type = /obj/item/ammo_magazine/biomatter/large/banana
+	allowed_magazines = list(/obj/item/ammo_magazine/biomatter/large/banana)
 	projectile_type = /obj/projectile/bullet/organic
 
 	one_handed_penalty = 30

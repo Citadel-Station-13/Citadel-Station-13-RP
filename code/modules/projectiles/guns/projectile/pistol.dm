@@ -363,8 +363,8 @@
 	load_method = MAGAZINE
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
-	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
-	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
+	magazine_type = /obj/item/ammo_magazine/biomatter
+	allowed_magazines = list(/obj/item/ammo_magazine/biomatter)
 	projectile_type = /obj/projectile/bullet/organic
 
 //Hey did you ever see Kingsman? Well, you know this gun then.
