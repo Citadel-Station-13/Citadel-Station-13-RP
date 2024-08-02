@@ -21,7 +21,7 @@
 
 /obj/item/gun/ballistic/magnetic/modular/nt_protomag/sidearm
 	name = "protomag sidearm"
-	desc = "A modular ferromagnetic-boosted weapon. Uses experimental ammunition."
+	desc = "A modular ferromagnetic-boosted weapon. Uses experimental ferromagnetic ammunition."
 
 //* Rifle *//
 
@@ -29,7 +29,7 @@
 
 /obj/item/gun/ballistic/magnetic/modular/nt_protomag/rifle
 	name = "protomag rifle"
-	desc = "A modular ferromagnetic-boosted weapon. Uses experimental ammunition"
+	desc = "A modular ferromagnetic-boosted weapon. Uses experimental ferromagnetic ammunition"
 
 //* Caliber *//
 
@@ -56,9 +56,10 @@
 	name = "protomag round (sabot)"
 	desc = "A slender bullet. While lacking in stopping power, this round is designed to punch through thicker than usual armor."
 
-/obj/item/ammo_casing/nt_protomag/magboosted/shredding
-	name = "protomag round (shredder)"
-	desc = "A slender bullet. While lacking in penetration, this round is designed to shred soft targets with ease."
+// todo: this is currently disabled as medcode is not verbose enough for this to work
+// /obj/item/ammo_casing/nt_protomag/magboosted/shredding
+// 	name = "protomag round (shredder)"
+// 	desc = "A slender bullet. While lacking in penetration, this round is designed to shred soft targets with ease."
 
 /obj/item/ammo_casing/nt_protomag/magboosted/impact
 	name = "protomag round (impact)"
