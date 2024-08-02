@@ -694,7 +694,7 @@
 		M.afflict_paralyze(20 * 10)
 	return
 
-/obj/item/clothing/accessory/collar/shock/attack_self(mob/user as mob, flag1)
+/obj/item/clothing/accessory/collar/shock/attack_self(mob/user)
 	if(!istype(user, /mob/living/carbon/human))
 		return
 	user.set_machine(src)
