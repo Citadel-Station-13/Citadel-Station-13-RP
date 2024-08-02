@@ -13,7 +13,7 @@
 	registered_type = /datum/component/parry_frame
 
 	/// active defensive data
-	var/datum/active_parry/active_parry
+	var/datum/parry_frame/active_parry
 	/// current number of processed hits
 	var/hit_count = 0
 	/// world.time of start
@@ -180,6 +180,8 @@
 /**
  * @params
  * * defending - the thing being hit
- *
+ * * efficiency
  */
 /datum/parry_frame/proc/handle_throw_impact(atom/defending, efficiency, datum/thrownthing/thrown)
+
+

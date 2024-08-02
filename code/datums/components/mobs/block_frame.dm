@@ -13,6 +13,14 @@
 	registered_type = /datum/component/block_frame
 
 	/// active defensive data
+	var/datum/block_frame/active_block
+	/// current number of processed hits
+	var/hit_count = 0
+	/// world.time of start
+	var/start_time
+
+/datum/shieldcall/bound/block_frame
+	expected_type = /datum/component/parry_frame
 
 #warn impl
 
