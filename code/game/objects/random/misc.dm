@@ -879,8 +879,9 @@
 /obj/random/ammo_all
 	name = "Random Ammunition (All)"
 	desc = "This is random ammunition. Spawns all ammo types."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "666"
+
+	icon = 'icons/modules/projectiles/legacy/ammo_box.dmi'
+	icon_state = "orange"
 
 /obj/random/ammo_all/item_to_spawn()
 	return pick(

@@ -35,7 +35,7 @@
 	id = "AmmoSMG9mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/a9mml
+	build_path = /obj/item/ammo_magazine/a9mm/large
 
 /datum/design/ammo/smg/a10mm
 	id = "AmmoSMG10mm"

@@ -64,7 +64,7 @@
 /obj/item/reagent_containers/glass/powder_horn
 	name = "powder horn"
 	desc = "An ivory container for gunpowder."
-	icon = 'icons/obj/ammo.dmi'
+	icon = 'icons/modules/projectiles/rp_ammo_unused.dmi'
 	icon_state = "powderhorn"
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT

@@ -147,7 +147,7 @@
 
 /obj/item/ammo_magazine/a12g/drum
 	name = "magazine (12 gauge)"
-	icon = 'icons/modules/projectile/magazines/old_magazine_drum.dmi'
+	icon = 'icons/modules/projectiles/magazines/old_magazine_drum.dmi'
 	icon_state = "autoshotgun"
 	base_icon_state = "autoshotgun"
 	materials_base = list(MAT_STEEL = 13000)

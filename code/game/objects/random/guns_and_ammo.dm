@@ -156,8 +156,9 @@
 /obj/random/ammo
 	name = "Random Ammunition"
 	desc = "This is random security ammunition."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "45-10"
+
+	icon = 'icons/modules/projectiles/legacy/ammo_box.dmi'
+	icon_state = "green"
 
 /obj/random/ammo/item_to_spawn()
 	return pick(prob(6);/obj/item/storage/box/beanbags,

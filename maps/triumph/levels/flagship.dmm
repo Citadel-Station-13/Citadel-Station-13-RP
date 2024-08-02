@@ -4760,16 +4760,16 @@
 "pc" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/a9mml,
-/obj/item/ammo_magazine/a9mml,
-/obj/item/ammo_magazine/a9mml,
-/obj/item/ammo_magazine/a9mml,
-/obj/item/ammo_magazine/a9mml,
-/obj/item/ammo_magazine/a9mml,
-/obj/item/ammo_magazine/a9mml/ap,
-/obj/item/ammo_magazine/a9mml/ap,
-/obj/item/ammo_magazine/a9mml/ap,
-/obj/item/ammo_magazine/a9mml/ap,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
+/obj/item/ammo_magazine/a9mm/large/ap,
 /obj/machinery/button/remote/blast_door{
 	id = "ArmouryC4";
 	name = "Armoury Access";

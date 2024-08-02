@@ -8,11 +8,14 @@
 /obj/item/ammo_magazine
 	name = "magazine"
 	desc = "A magazine for some kind of gun."
-	icon_state = ".357"
-	icon = 'icons/obj/ammo.dmi'
 	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
-	item_state = "syringe_kit"
+
+	icon = 'icons/system/error_32x32.dmi'
+	inhand_state = "syringe_kit"
+	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
+	worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT
+
 	materials_base = list(MAT_STEEL = 500)
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
@@ -29,21 +32,25 @@
 	//* for magazines
 	/// magazine type - must match gun's to be fitted into it, if gun's is
 	/// setting this to a gun's typepath is allowed, this is an arbitrary field.
-	var/magazine_type
+	//  todo: impl
+	var/magazine_restrict
 	/// considered an extended magazine for guns that support rendering extended magazines?
+	//  todo: impl
 	var/magazine_extended = FALSE
 	// todo: magazine_insert_delay
 	// todo: magazine_remove_delay
 
 	//* for speedloaders
 	/// inherent speedloader delay, added to gun's speedloaders_delay
+	//  todo: impl
 	var/speedloader_delay = 0
 	/// speedloader type - must match gun's to fit ammo in, if gun's is set
-	var/speedloader_type
+	//  todo: impl
+	var/speedloader_restrict
 
 	//* for stripper clips / usage as single loader
 	// todo: clip_load_delay
-	// todo: clip_type
+	// todo: clip_restrict
 
 	//* loading *//
 	/// sound for loading a piece of ammo

@@ -36,7 +36,7 @@
 	origin_tech = list(TECH_COMBAT = 2)
 	materials_base = list(MAT_STEEL = 480)
 	ammo_caliber = /datum/ammo_caliber/a38
-	ammo_preload = /obj/item/ammo_casing/a380
+	ammo_preload = /obj/item/ammo_casing/a38
 	ammo_max = 8
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1

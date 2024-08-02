@@ -3,7 +3,7 @@
 
 /obj/item/ammo_casing/a12_7mm
 	desc = "A 12.7mm shell."
-	icon = 'icons/modules/projectiles/casings/12_7mm.dmi'
+	icon = 'icons/modules/projectiles/casings/a12_7mm.dmi'
 	icon_state = "casing"
 	icon_spent = TRUE
 	regex_this_caliber = /datum/ammo_caliber/a12_7mm
