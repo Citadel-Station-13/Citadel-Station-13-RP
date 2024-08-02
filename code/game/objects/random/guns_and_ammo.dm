@@ -272,8 +272,8 @@
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/caseless/wild_hunt,
-				/obj/item/ammo_magazine/mfiftycalcaseless,
-				/obj/item/ammo_magazine/mfiftycalcaseless
+				/obj/item/ammo_magazine/a12_7mm/wild_hunt,
+				/obj/item/ammo_magazine/a12_7mm/wild_hunt
 			),
 		)
 

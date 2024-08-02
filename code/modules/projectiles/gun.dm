@@ -139,14 +139,26 @@
 	/// for de-duping
 	var/static/list/mob_renderer_store = list()
 	/// base onmob state override so we don't use [base_icon_state] if overridden
+	//  todo: impl
 	var/render_mob_base
 	/// render as -wield if we're wielded? applied at the end of our worn state no matter what
 	///
 	/// * ignores [mob_renderer]
-	/// * ignores [render_mob_exclusive]
+	/// * ignores [render_additional_exclusive] / [render_additional_worn]
 	//  todo: impl
 	var/render_mob_wielded = FALSE
+	/// state to add as an append
+	///
+	/// * segment and overlay renders add [base_icon_state]-[append]
+	/// * state renders set state to [base_icon_state]-[append]-[...rest]
+	var/render_additional_state
+	/// only render [render_additional_state]
+	var/render_additional_exclusive = FALSE
+	/// [render_additional_state] and [render_additional_exclusive] apply to worn sprites
+	//  todo: impl
+	var/render_additional_worn = FALSE
 	/// use the old render system, if item_renderer and mob_renderer are not set
+	//  todo: remove
 	var/render_use_legacy_by_default = TRUE
 
 /obj/item/gun/Initialize(mapload)

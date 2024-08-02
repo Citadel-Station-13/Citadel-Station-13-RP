@@ -16,8 +16,8 @@
 	handle_casings = HOLD_CASINGS
 	load_method = SINGLE_CASING
 	max_shells = 1
-	ammo_type = /obj/item/ammo_casing/a127
-	projectile_type = /obj/projectile/bullet/rifle/a127
+	ammo_type = /obj/item/ammo_casing/a12_7mm
+	projectile_type = /obj/projectile/bullet/rifle/a12_7mm
 	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
 	scoped_accuracy = 95

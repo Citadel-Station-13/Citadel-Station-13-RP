@@ -179,10 +179,10 @@
 	max_beakers = 2
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_BIO = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 1)
 
-#warn verify sprite exists
 /obj/item/gun/ballistic/dartgun/tranq
 	name = "tranquilizer gun"
 	desc = "A gas-powered dart gun designed by the National Armory of Gaia. This gun is used primarily by United Federation special forces for Tactical Espionage missions. Don't forget your bandana."
+	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "tranqgun"
 	item_state = null
 

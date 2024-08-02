@@ -62,6 +62,8 @@
 
 /obj/item/gun/ballistic/update_icon_state()
 	. = ..()
+	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
+		return // using new system
 	var/silenced_state = silenced ? silenced_icon : initial(icon_state)
 	var/magazine_state = ammo_magazine ? "" : "-empty"
 	if(magazine_type)

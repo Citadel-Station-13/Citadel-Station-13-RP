@@ -85,7 +85,7 @@
 
 	//* Rendering
 	/// use default rendering system
-	/// in state moide, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
+	/// in state mode, we will be "[base_icon_state]-[count]", from 0 to count (0 for empty)
 	/// in segements mode, we will repeatedly add "[base_icon_state]-ammo" with given offsets.
 	/// overlay mode is not supported
 	var/rendering_system = GUN_RENDERING_DISABLED
