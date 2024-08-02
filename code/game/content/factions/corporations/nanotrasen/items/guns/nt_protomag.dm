@@ -15,6 +15,8 @@
 		a large amount of energy to discharge, in contrast to more normal hybrid rounds.
 	"}
 
+#warn sounds for everything
+
 //* Sidearm *//
 
 #warn impl all
@@ -47,6 +49,8 @@
 /obj/projectile/bullet/nt_protomag
 	#warn impl all
 
+#warn impl all, with boxes, and colors. how?
+
 /obj/item/ammo_casing/nt_protomag/magboosted
 	name = "protomag round"
 	desc = "A slender bullet. It seems to have less propellant than usual."
@@ -64,6 +68,10 @@
 /obj/item/ammo_casing/nt_protomag/magboosted/impact
 	name = "protomag round (impact)"
 	desc = "A slender bullet. This round is the magnetic equivalent of a beanbag. That said, it would be a bad idea to detain someone with a railgun, beanbag or not."
+
+/obj/item/ammo_casing/nt_protomag/magboosted/practice
+	name = "protomag round (practice)"
+	desc = "A slender bullet. This round is just a practice round. While it is made out of relatively soft materials, you should still try to not get shot by this."
 
 /obj/item/ammo_casing/nt_protomag/magnetic
 	name = "protomag slug"
@@ -85,7 +93,7 @@
 
 /obj/item/ammo_casing/nt_protomag/magnetic/penetrator
 	name = "protomag slug (penetrator)"
-	desc = "A slender ferromagnetic slug. This one is made out of dense alloys, and is designed to punch through materials with ease."
+	desc = "A slender ferromagnetic slug. This one is made out of dense alloys, and is designed to punch through materials with ease. This round has very high recoil, as well as power draw."
 
 /obj/item/ammo_casing/nt_protomag/magnetic/shock
 	name = "protomag slug (shock)"
@@ -95,16 +103,51 @@
 	name = "protomag slug (flare)"
 	desc = "A slender ferromagnetic slug. Shatters into a lingering chemical illuminant on impact."
 
+// todo: fuck no, rework fire stacks / fire first, holy crap; even then this should take multiple hits to ignite.
+// /obj/item/ammo_casing/nt_protomag/magnetic/incendiary
+// 	name = "protomag slug (incendiary)"
+// 	desc = "A slender ferromagnetic slug. With almost no penetrating power whatsoever, this round is designed to explode into an incendiary material on impact"
+
+// todo: fuck no, not until chloral and chemicals are reworked; this round is meant to take like 2-3 units maximum, on that note.
+// /obj/item/ammo_casing/nt_protomag/magnetic/reagent
+// 	name = "protomag slug (chemical)"
+// 	desc = "A slender ferromagnetic slug. Can be laced with a small amount of reagents, which will then splash onto and be injected into a hit target."
+
+/obj/item/ammo_casing/nt_protomag/magnetic/flare
+
 #warn impl all
 
 //* Magazine *//
 
 /obj/item/ammo_magazine/nt_protomag
-	#warn name?
+	desc = "A magazine for a magnetic weapon of some kind."
 	ammo_caliber = /datum/caliber/nt_protomag
 
+#warn first two should fit in webbing, but not boxes
+
 /obj/item/ammo_magazine/nt_protomag/sidearm
+	name = "protomag sidearm magazine"
+	ammo_max = 8
+
+	w_class = WEIGHT_CLASS_NORMAL // no boxes
+	weight_volume = WEIGHT_VOLUME_TINY
+	slot_flags = SLOT_POCKET
 
 /obj/item/ammo_magazine/nt_protomag/rifle
+	name = "protomag rifle magazine"
+	ammo_max = 16
+
+	w_class = WEIGHT_CLASS_NORMAL // no boxes
+	weight_volume = WEIGHT_VOLUME_SMALL
+	slot_flags = SLOT_POCKET
+
+/obj/item/ammo_magazine/nt_protomag/box
+	name = "protomag ammo box"
+	desc = "A box of experimental magnetic ammunition."
+	ammo_max = 32
+
+	w_class = WEIGHT_CLASS_NORMAL // no boxes
+	weight_volume = WEIGHT_VOLUME_NORMAL
+	slot_flags = SLOT_POCKET
 
 #warn impl all
