@@ -533,8 +533,8 @@
 	w_class = WEIGHT_CLASS_SMALL
 	regex_this_caliber = /datum/ammo_caliber/foam
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/mfoam/pistol
-	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/pistol)
+	magazine_type = /obj/item/ammo_magazine/foam/pistol
+	allowed_magazines = list(/obj/item/ammo_magazine/foam/pistol)
 	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/ballistic/pistol/foam/handle_suicide(mob/living/user)

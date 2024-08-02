@@ -25,7 +25,7 @@
 
 // todo: should the type filtering be on the gun or on the magazine? probably the magazine tbh.
 
-/obj/item/ammo_magazine/mfoam
+/obj/item/ammo_magazine/foam
 	name = "abstract toy magazine"
 	desc = "You shouldn't be seeing this, contact a Maintainer!"
 	icon_state = "toy_pistol"
@@ -33,58 +33,80 @@
 	ammo_caliber = /datum/ammo_caliber/foam
 	ammo_preload = /obj/item/ammo_casing/foam
 	ammo_max = 8
-	multiple_sprites = 1
 
-/obj/item/ammo_magazine/mfoam/pistol
+/obj/item/ammo_magazine/foam/pistol
 	name = "toy pistol magazine"
 	desc = "A plastic pistol magazine for foam darts!"
 
-/obj/item/ammo_magazine/mfoam/pistol/empty
+	icon_state = "pistol-1"
+	base_icon_state = "pistol"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
+/obj/item/ammo_magazine/foam/pistol/empty
+	icon_state = "pistol-0"
+
 	ammo_current = 0
 
-/obj/item/ammo_magazine/mfoam/pistol/riot
+/obj/item/ammo_magazine/foam/pistol/riot
 	name = "toy pistol magazine (riot)"
+
+	icon_state = "pistol-riot-1"
+	base_icon_state = "pistol-riot"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
 	ammo_preload = /obj/item/ammo_casing/foam/riot
 
-/obj/item/ammo_magazine/mfoam/c20
-	name = "toy c20r magazine"
-	desc = "A plastic recreation of the classic c20r submachine gun."
-	icon_state = "toy_c20"
-	materials_base = list(MAT_PLASTIC = 1500)
-	ammo_max = 20
-
-/obj/item/ammo_magazine/mfoam/c20/empty
-	ammo_current = 0
-
-/obj/item/ammo_magazine/mfoam/c20/riot
-	name = "toy c20r magazine (riot)"
-	ammo_preload = /obj/item/ammo_casing/foam/riot
-
-/obj/item/ammo_magazine/mfoam/lmg
+/obj/item/ammo_magazine/foam/lmg
 	name = "toy magazine box"
 	desc = "A heavy plastic box designed to hold belts of foam darts! Wow!"
-	icon_state = "toy_lmg"
+
+	icon_state = "lmg-1"
+	base_icon_state = "lmg"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
 	materials_base = list(MAT_PLASTIC = 10000)
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_max = 50
 
-/obj/item/ammo_magazine/mfoam/lmg/empty
+/obj/item/ammo_magazine/foam/lmg/empty
 	ammo_current = 0
 
-/obj/item/ammo_magazine/mfoam/lmg/riot
+/obj/item/ammo_magazine/foam/lmg/riot
 	name = "toy magazine box (riot)"
+
+	icon_state = "lmg-riot-1"
+	base_icon_state = "lmg-riot"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
 	ammo_preload = /obj/item/ammo_casing/foam/riot
 
-/obj/item/ammo_magazine/mfoam/smg
+/obj/item/ammo_magazine/foam/smg
 	name = "toy submachine gun magazine"
 	desc = "A plastic recreation of a double-stack submachine gun magazine."
-	icon_state = "toy_smg"
+
+	icon_state = "smg-1"
+	base_icon_state = "smg"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
 	materials_base = list(MAT_PLASTIC = 1200)
 	ammo_max = 20
 
-/obj/item/ammo_magazine/mfoam/smg/empty
+/obj/item/ammo_magazine/foam/smg/empty
+	icon_state = "smg-0"
+
 	ammo_current = 0
 
-/obj/item/ammo_magazine/mfoam/smg/riot
+/obj/item/ammo_magazine/foam/smg/riot
 	name = "toy submachine gun magazine (riot)"
+
+	icon_state = "smg-riot-1"
+	base_icon_state = "smg-riot"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+
 	ammo_preload = /obj/item/ammo_casing/foam/riot

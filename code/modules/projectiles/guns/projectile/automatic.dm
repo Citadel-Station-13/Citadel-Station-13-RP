@@ -727,8 +727,8 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
 	regex_this_caliber = /datum/ammo_caliber/foam
-	magazine_type = /obj/item/ammo_magazine/mfoam/smg
-	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/smg)
+	magazine_type = /obj/item/ammo_magazine/foam/smg
+	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
 	fire_sound = 'sound/items/syringeproj.ogg'
 
 /obj/item/gun/ballistic/automatic/advanced_smg/foam/update_icon_state()
@@ -754,8 +754,8 @@
 	icon_state = "toy_c20"
 	damage_force = 5
 	regex_this_caliber = /datum/ammo_caliber/foam
-	magazine_type = /obj/item/ammo_magazine/mfoam/c20
-	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/c20)
+	magazine_type = /obj/item/ammo_magazine/foam/smg
+	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 5
 	fire_sound = 'sound/items/syringeproj.ogg'
@@ -779,8 +779,8 @@
 	icon_state = "toy_lmgclosed100"
 	damage_force = 5
 	regex_this_caliber = /datum/ammo_caliber/foam
-	magazine_type = /obj/item/ammo_magazine/mfoam/lmg
-	allowed_magazines = list(/obj/item/ammo_magazine/mfoam/lmg)
+	magazine_type = /obj/item/ammo_magazine/foam/lmg
+	allowed_magazines = list(/obj/item/ammo_magazine/foam/lmg)
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 45 //It's plastic.
 	fire_sound = 'sound/items/syringeproj.ogg'

@@ -91,9 +91,9 @@
 
 /obj/item/gunbox/donksoft/attack_self(mob/user)
 	var/list/options = list()
-	options["Classic DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
-	options["Blue DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam/blue, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
-	options["DONKsoft Automag"] = list(/obj/item/gun/ballistic/pistol/foam/magnum, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
+	options["Classic DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam, /obj/item/ammo_magazine/foam/pistol, /obj/item/ammo_magazine/foam/pistol)
+	options["Blue DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam/blue, /obj/item/ammo_magazine/foam/pistol, /obj/item/ammo_magazine/foam/pistol)
+	options["DONKsoft Automag"] = list(/obj/item/gun/ballistic/pistol/foam/magnum, /obj/item/ammo_magazine/foam/pistol, /obj/item/ammo_magazine/foam/pistol)
 	var/choice = input(user,"What toy is in this box?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
@@ -130,8 +130,8 @@
 
 /obj/item/gunbox/donksoft/smg/attack_self(mob/user)
 	var/list/options = list()
-	options["Classic DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
-	options["Blue DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
+	options["Classic DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam, /obj/item/ammo_magazine/foam/smg, /obj/item/ammo_magazine/foam/smg)
+	options["Blue DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/foam/smg, /obj/item/ammo_magazine/foam/smg)
 	var/choice = input(user,"What toy is in this box?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]

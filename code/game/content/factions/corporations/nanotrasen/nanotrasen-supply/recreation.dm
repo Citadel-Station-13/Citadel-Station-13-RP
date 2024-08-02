@@ -179,8 +179,8 @@
 	contains = list(
 		/obj/item/gun/ballistic/automatic/c20r/foam = 2,
 		/obj/item/gun/ballistic/automatic/lmg/foam = 1,
-		/obj/item/ammo_magazine/mfoam/c20 = 4,
-		/obj/item/ammo_magazine/mfoam/lmg = 2,
+		/obj/item/ammo_magazine/foam/smg = 4,
+		/obj/item/ammo_magazine/foam/lmg = 2,
 		/obj/item/material/twohanded/spear/foam = 2,
 		/obj/item/material/twohanded/fireaxe/foam = 1,
 	)
