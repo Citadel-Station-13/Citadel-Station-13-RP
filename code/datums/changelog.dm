@@ -18,6 +18,7 @@
 		var/datum/asset_pack/changelog_item/changelog_item = changelog_items[params["date"]]
 		if (!changelog_item)
 			changelog_item = new /datum/asset_pack/changelog_item(params["date"])
+			SSassets.register_asset_pack(changelog_item)
 			changelog_items[params["date"]] = changelog_item
 		ui.send_asset(changelog_item)
 		return TRUE
