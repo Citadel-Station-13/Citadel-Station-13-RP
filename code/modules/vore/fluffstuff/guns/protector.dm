@@ -72,10 +72,10 @@
 		if(itemState)
 			itemState += "[modifystate]"
 		*/
-	if(power_supply)
-		ratio = CEILING(((power_supply.charge / power_supply.maxcharge) * charge_sections), 1)
+	if(obj_cell_slot.cell)
+		ratio = CEILING(((obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge) * charge_sections), 1)
 
-		if(power_supply.charge < charge_cost)
+		if(obj_cell_slot.cell.charge < charge_cost)
 			overlays_to_add += "[icon_state]_empty"
 		else
 			if(!shaded_charge)

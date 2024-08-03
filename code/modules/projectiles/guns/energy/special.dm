@@ -221,7 +221,7 @@
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
 	projectile_type = /obj/projectile/beam/tungsten
 	cell_type = /obj/item/cell/high
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 
 	accuracy = 75
 	charge_meter = 0
@@ -249,7 +249,7 @@
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 	if(beameffect)
 		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
-	if(power_supply && power_supply.charge >= charge_cost) //Do a delay for pointblanking too.
+	if(obj_cell_slot.cell && obj_cell_slot.cell.charge >= charge_cost) //Do a delay for pointblanking too.
 		power_cycle = TRUE
 		if(do_after(user, 30))
 			if(A.loc == target_turf)
@@ -316,7 +316,7 @@
 
 	projectile_type = /obj/projectile/beam/medigun
 
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
@@ -428,10 +428,10 @@
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
-	fire_delay = 10
+	fire_delay = 2 SECONDS
 	charge_cost = 900
 	cell_type = /obj/item/cell
-	accept_cell_type = /obj/item/cell
+	cell_system_legacy_use_device = FALSE
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE

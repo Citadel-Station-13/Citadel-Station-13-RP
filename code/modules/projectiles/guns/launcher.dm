@@ -1,3 +1,6 @@
+/**
+ * A gun that throws things instead of, well, firing them.
+ */
 /obj/item/gun/launcher
 	name = "launcher"
 	desc = "A device that launches things."

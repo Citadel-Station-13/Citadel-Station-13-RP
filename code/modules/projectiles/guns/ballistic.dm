@@ -1,3 +1,11 @@
+/**
+ * Ballistic Guns
+ *
+ * These are guns that fire primarily ammo casings.
+ * 
+ * They have simulation / support for both direct-load / internal magazines, as well as
+ * attached / inserted external magazines.
+ */
 /obj/item/gun/ballistic
 	name = "gun"
 	desc = "A gun that fires bullets."

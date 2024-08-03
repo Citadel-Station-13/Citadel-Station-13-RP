@@ -30,7 +30,14 @@
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
 
-//Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
+/**
+ * Guns
+ *
+ * A gun is a weapon that can be aimed and fired at someone or something over a distance.
+ *
+ *
+ * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher
+ */
 /obj/item/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
@@ -118,6 +125,38 @@
 	var/unstable = 0
 	var/destroyed = 0
 
+	                    //* THIS IS A WIP SYSTEM!! *//
+	                    // todo: well, finish this.
+	//*                      Modular Components                           *//
+	//* Generalized, and efficient modular component support at base /gun *//
+	//* level.                                                            *//
+
+	/// System flag for using modular component system
+	///
+	/// * Firing cycles are more expensive when modular components are invoked.
+	/// * This is because modular components use signal and API hooks that are not necessary for most guns.
+	/// * Thus, keep this off if it's not a modular weapon. It won't break it, but it's needless overhead.
+	var/modular_system = FALSE
+	/// currently installed components.
+	///
+	/// * This is a lazy list.
+	var/list/obj/item/gun_component/modular_components
+	/// allowed component slots, associated to amount
+	///
+	/// * this is typelist()'d; if you want to change it later, make a copy!
+	var/list/modular_component_slots
+
+	//*                            Power                                  *//
+	//* Because the use of power is such a common case on /gun, it's been *//
+	//* hoisted to the base /obj/item/gun level for handling.             *//
+
+	/// do we use a cell slot?
+	var/cell_system = FALSE
+	/// cell type to start with
+	var/cell_type = /obj/item/cell/device/weapon
+	/// -_-
+	var/cell_system_legacy_use_device = TRUE
+
 	//* Rendering
 	/// renderer datum we use for world rendering of the gun item itself
 	/// set this in prototype to a path
@@ -193,6 +232,13 @@
 	if(pin)
 		pin = new pin(src)
 
+	// cell system
+	if(cell_system)
+		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type)
+		slot.legacy_use_device_cells = cell_system_legacy_use_device
+		slot.remove_yank_offhand = TRUE
+		slot.remove_yank_context = TRUE
+
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
@@ -235,7 +281,6 @@
 				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
 				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 	..()
-
 
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.

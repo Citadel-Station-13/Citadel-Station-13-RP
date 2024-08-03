@@ -546,7 +546,7 @@
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
 					if(installation)
 						var/obj/item/gun/energy/Gun = new installation(loc)
-						Gun.power_supply.charge = gun_charge
+						Gun.obj_cell_slot.cell.charge = gun_charge
 						Gun.update_icon()
 					if(prob(50))
 						new /obj/item/stack/material/steel(loc, rand(1,4))
@@ -1001,7 +1001,7 @@
 					return
 				var/obj/item/gun/energy/E = I //typecasts the item to an energy gun
 				installation = I.type //installation becomes I.type
-				gun_charge = E.power_supply.charge //the gun's charge is stored in gun_charge
+				gun_charge = E.obj_cell_slot.cell.charge //the gun's charge is stored in gun_charge
 				to_chat(user, "<span class='notice'>You add [I] to the turret.</span>")
 				target_type = /obj/machinery/porta_turret
 
@@ -1101,7 +1101,7 @@
 			build_step = 3
 
 			var/obj/item/gun/energy/Gun = new installation(loc)
-			Gun.power_supply.charge = gun_charge
+			Gun.obj_cell_slot.cell.charge = gun_charge
 			Gun.update_icon()
 			installation = null
 			gun_charge = 0
