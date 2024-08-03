@@ -19,7 +19,6 @@
 	var/cooldown = 20 SECONDS
 	var/wallhack = TRUE
 	var/range = 8
-	var/failchance = 5
 	var/failrange = 24
 
 /obj/item/bluespace_harpoon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -70,7 +69,7 @@
 			continue
 		if(AM.anchored)
 			continue
-		var/turf/real_target = prob(failchance)? pick(trange(failrange, user)) : ToTurf
+		var/turf/real_target = ToTurf
 		AM.locationTransitForceMove(real_target, allow_pulled = FALSE, allow_grabbed = GRAB_AGGRESSIVE)
 
 /obj/item/bluespace_harpoon/attack_self(mob/user)
