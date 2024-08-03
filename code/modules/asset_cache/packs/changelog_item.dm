@@ -4,9 +4,10 @@
 	var/item_name
 	var/item_filename
 
-/datum/asset_pack/changelog_item/New(date)
-	item_name = "[date].yml"
-	item_filename = SANITIZE_FILENAME("[date].yml")
+/datum/asset_pack/changelog_item/New(id)
+	..()
+	item_name = "[id].yml"
+	item_filename = SANITIZE_FILENAME("[id].yml")
 
 /datum/asset_pack/changelog_item/register()
 	return list(

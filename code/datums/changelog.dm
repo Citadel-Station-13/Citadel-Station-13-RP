@@ -15,6 +15,8 @@
 	if(.)
 		return
 	if(action == "get_month")
+		if(!params["date"] || !fexists("html/changelogs/archive/[params["date"]].yml"))
+			return TRUE
 		var/datum/asset_pack/changelog_item/changelog_item = changelog_items[params["date"]]
 		if (!changelog_item)
 			changelog_item = new /datum/asset_pack/changelog_item(params["date"])
