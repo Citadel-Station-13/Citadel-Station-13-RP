@@ -31,6 +31,7 @@
 
 /obj/item/ammo_magazine/a38
 	name = "magazine (.38)"
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
 	icon_state = "9x19-small"
 	base_icon_state = "9x19-small"
 	origin_tech = list(TECH_COMBAT = 2)

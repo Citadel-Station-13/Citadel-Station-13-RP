@@ -53,6 +53,7 @@
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
+	inhand_default_type = INHAND_DEFAULT_ICON_GUNS
 
 	var/burst = 1
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
@@ -182,7 +183,7 @@
 		update_icon()
 
 	//! LEGACY: if neither of these are here, we are using legacy render.
-	if(!item_renderer && !mob_renderer && !render_use_legacy_by_default)
+	if(!item_renderer && !mob_renderer && render_use_legacy_by_default)
 		item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',

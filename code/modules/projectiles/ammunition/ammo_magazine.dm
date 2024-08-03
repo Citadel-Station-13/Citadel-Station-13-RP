@@ -194,11 +194,11 @@
  * @return rounds created
  */
 /obj/item/ammo_magazine/proc/instantiate_internal_list()
+	LAZYINITLIST(ammo_internal)
 	var/existing = length(ammo_internal)
 	if(existing > ammo_max || !ammo_preload)
 		ammo_current = 0
-		return
-	LAZYINITLIST(ammo_internal)
+		return 0
 	var/list/adding = list()
 	for(var/i in 1 to min(ammo_current, ammo_max - existing))
 		adding += instantiate_casing()
