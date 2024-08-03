@@ -15,6 +15,11 @@ GLOBAL_VAR_INIT(cellrate, 0.5)
 /// the closest thing we'll get to a cvar - affects cell use_scaled - higher = things use less energy. handheld devices usually use this.
 GLOBAL_VAR_INIT(cellefficiency, 1)
 
+#define POWER_CELL_BASELINE_SMALL 1200
+#define POWER_CELL_BASELINE_MEDIUM 6000
+#define POWER_CELL_BASELINE_LARGE 30000
+#define POWER_CELL_BASLIENE_WEAPON 3000
+
 //* Computers
 
 /// Idle usage of a mid-range control computer in watts
