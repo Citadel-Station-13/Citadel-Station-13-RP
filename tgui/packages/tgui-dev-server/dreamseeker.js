@@ -28,6 +28,9 @@ export class DreamSeeker {
       .map(key => encodeURIComponent(key)
         + '=' + encodeURIComponent(params[key]))
       .join('&');
+    logger.log(
+      `topic call at ${this.client.defaults.baseURL + '/dummy?' + query}`,
+    );
     return this.client.get('/dummy?' + query);
   }
 }
@@ -76,7 +79,7 @@ DreamSeeker.getInstancesByPids = async pids => {
         }
       }
       const len = entries.length;
-      logger.log('found', len, plural('instance', len));
+      logger.log('found', len, plural('instance', len), ": ", JSON.stringify(entries));
       for (let entry of entries) {
         const { pid, addr } = entry;
         const instance = new DreamSeeker(pid, addr);
