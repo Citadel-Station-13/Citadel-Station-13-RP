@@ -152,3 +152,25 @@
 #define SHIELDCALL_CONTACT_SPECIFIC_GRAB "grab"
 /// trying to perform a surgery step - generic
 #define SHIELDCALL_CONTACT_SPECIFIC_SURGERY "surgery"
+/// being sprayed with chemicals
+#define SHIELDCALL_CONTACT_SPECIFIC_CHEMICAL_SPRAY "spray"
+
+//* handle_touch - helpers *//
+
+/**
+ * Gets text to put in say, "blocks \the [text]" when someone has a blocked touch.
+ */
+#define RESOLVE_SHIELDCALL_TOUCH_TEXT(CONTACT_FLAGS, CONTACT_SPECIFIC) resolve_shieldcall_touch_text(CONTACT_FLAGS, CONTACT_SPECIFIC)
+
+/proc/resolve_shieldcall_touch_text(flags, specific)
+	switch(specific)
+		if(SHIELDCALL_CONTACT_SPECIFIC_SYRINGE_INJECTION)
+			return "syringe"
+		if(SHIELDCALL_CONTACT_SPECIFIC_SHAKE_UP)
+			return "help-up"
+		if(SHIELDCALL_CONTACT_SPECIFIC_GRAB)
+			return "grab"
+		if(SHIELDCALL_CONTACT_SPECIFIC_SURGERY)
+			return "operation"
+		if(SHIELDCALL_CONTACT_SPECIFIC_CHEMICAL_SPRAY)
+			return "spray"

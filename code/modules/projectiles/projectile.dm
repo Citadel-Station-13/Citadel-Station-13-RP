@@ -1311,15 +1311,15 @@
 			. = 1 - ((1 - .) / accuracy_overall_modify)
 
 /**
- * Applies the standard damage instance to a mob.
+ * Applies the standard damage instance to an entity.
  *
  * @params
- * * target - thing to attack
+ * * target - thing being hit
  * * blocked - 0 to 100+ blocked percent
  * * impact_flags - impact flags passed in
  * * hit_zone - zone to hit
  */
-/obj/projectile/proc/process_damage_instance(mob/target, blocked, impact_flags, hit_zone)
+/obj/projectile/proc/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
 	#warn this currently doesn't actually hit armor/shieldcalls...
 	//! LEGACY COMBAT CODE
 	if(isliving(target))
@@ -1363,6 +1363,19 @@
 	for(var/datum/projectile_effect/effect as anything in additional_projectile_effects)
 		if(effect.hook_damage)
 			effect.on_damage(src, target, impact_flags, hit_zone, blocked)
+
+/**
+ * wip algorithm to dampen a projectile when it pierces
+ *
+ * * entity - thing hit
+ * * force - nominal force to resist the damping; generally, projectiles at this lose a moderate chunk of energy, while 2x loses minimal, 0.5x loses a lot.
+ * * tier - effective armor tier of object; modulates actual energy lost
+ */
+/obj/projectile/proc/dampen_on_pierce_experimental(atom/entity, force, tier)
+	var/tdiff = damage_tier - tier
+	var/dmult = damage_force / force
+	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
+	damage_force = clamp(damage_force - malus, damage_force * 0.5, damage_force)
 
 //* Physics - Configuration *//
 

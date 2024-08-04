@@ -147,23 +147,28 @@
 
 #warn impl all
 
+/datum/parry_frame/proc/calculate_parry_efficiency(start_time, current_time)
+
+
+
+
 //* Bindings - Bullet *//
 
-/datum/shieldcall/bound/parry_frame/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
+/datum/shieldcall/bound/parry_frame/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
 	. = ..()
 
-/datum/parry_frame/proc/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
+/datum/parry_frame/proc/handle_bullet(atom/defending, list/bullet_act_args)
 	#warn impl
 
 //* Bindings - Melee *//
 
-/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack)
+/datum/shieldcall/bound/parry_frame/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 
-/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack)
+/datum/shieldcall/bound/parry_frame/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 	. = ..()
 
-/datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, datum/event_args/actor/clickchain/e_args, fake_attack, contact_flags, contact_specific)
+/datum/shieldcall/bound/parry_frame/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 	. = ..()
 
 /datum/parry_frame/proc/handle_
@@ -174,7 +179,7 @@
 
 //* Bindings - Thrown *//
 
-/datum/shieldcall/bound/parry_frame/handle_throw_impact(atom/defending, datum/thrownthing/thrown)
+/datum/shieldcall/bound/parry_frame/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
 	. = ..()
 
 /**

@@ -45,39 +45,11 @@
 
 /obj/structure/grille/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
 	#warn redo all this; proj.dampen_kinetic_energy()?
-	impact_flags |= PROJECTILE_IMPACT_TRIVIAL
+	if(proj.original_target == src)
+		impact_flags |= PROJECTILE_IMPACT_TRIVIAL
+	else
+		impact_flags |= PROJECTILE_IMPACT_TRIVIAL | PROJECTILE_IMPACT_PIERCE
 	. = ..()
-
-	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
-	var/damage = proj.get_structure_damage()
-	var/passthrough = 0
-
-	if(!damage)
-		return
-
-	//20% chance that the grille provides a bit more cover than usual. Support structure for example might take up 20% of the grille's area.
-	//If they click on the grille itself then we assume they are aiming at the grille itself and the extra cover behaviour is always used.
-	switch(proj.damage_type)
-		if(BRUTE)
-			//bullets
-			if(proj.original_target == src || prob(20))
-				proj.damage *= clamp( proj.damage/60, 0,  0.5)
-				if(prob(max((damage-10)/25, 0))*100)
-					passthrough = 1
-			else
-				proj.damage *= clamp( proj.damage/60, 0,  1)
-				passthrough = 1
-		if(BURN)
-			//beams and other projectiles are either blocked completely by grilles or stop half the damage.
-			if(!(proj.original_target == src || prob(20)))
-				proj.damage *= 0.5
-				passthrough = 1
-
-	if(passthrough)
-		. = PROJECTILE_CONTINUE
-		damage = between(0, (damage - proj.damage)*(proj.damage_type == BRUTE? 0.4 : 1), 10) //if the bullet passes through then the grille avoids most of the damage
-
-	inflict_atom_damage(damage, proj.damage_tier, proj.damage_flag, proj.damage_mode, ATTACK_TYPE_PROJECTILE, proj)
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))

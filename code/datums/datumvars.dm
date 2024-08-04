@@ -11,7 +11,12 @@
 	datum_flags |= DF_VAR_EDITED
 	return TRUE
 
-/datum/proc/vv_get_var(var_name)
+/**
+ * @params
+ * * var_name - name of the variable
+ * * resolve - automatically resolve the variable if it's lazy loaded?
+ */
+/datum/proc/vv_get_var(var_name, resolve)
 	switch(var_name)
 		if ("vars")
 			return debug_variable(var_name, list(), 0, src)

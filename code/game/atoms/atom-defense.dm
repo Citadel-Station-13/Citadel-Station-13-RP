@@ -104,7 +104,7 @@
 	// 1. fire shieldcalls
 	var/shieldcall_returns = NONE
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
-		shieldcall_returns |= shieldcall.handle_bullet(src, args, shieldcall_returns)
+		shieldcall_returns |= shieldcall.handle_bullet(src, shieldcall_returns, FALSE, args)
 		if(shieldcall_returns & SHIELDCALL_FLAGS_SHOULD_TERMINATE)
 			break
 	// check if we're still hitting
@@ -292,12 +292,12 @@
  * @params
  * * damage - raw damage
  * * damtype - damage type
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
+ * * damage_tier - penetration / attack tier
+ * * damage_flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * damage_mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) the attacking weapon datum; see [code/__DEFINES/combat/shieldcall.dm]
- * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
+ * * shieldcall_flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
  * * clickchain - the clickchain for melee attacks.
@@ -326,12 +326,12 @@
  * @params
  * * damage - raw damage
  * * damtype - damage type
- * * tier - penetration / attack tier
- * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
- * * mode - damage_mode
+ * * damage_tier - penetration / attack tier
+ * * damage_flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * damage_mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) the attacking weapon datum; see [code/__DEFINES/combat/shieldcall.dm]
- * * flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
+ * * shieldcall_flags - shieldcall flags passed through components. [code/__DEFINES/combat/shieldcall.dm]
  * * hit_zone - where were they hit?
  * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/combat/shieldcall.dm]
  * * clickchain - the clickchain for melee attacks.
@@ -376,3 +376,85 @@
 
 /atom/proc/unregister_shieldcall(datum/shieldcall/delegate)
 	LAZYREMOVE(shieldcalls, delegate)
+
+//* Shieldcalls - Focused / High-Level *//
+
+/**
+ * Runs shieldcalls for handle_touch
+ *
+ * @params
+ * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * contact_flags - SHIELDCALL_CONTACT_FLAG_*
+ * * contact_specific - SHIELDCALL_CONTACT_SPECIFIC_*
+ * * fake_attack - just checking!
+ * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ *
+ * @return SHIELDCALL_FLAG_* flags
+ */
+/atom/proc/atom_shieldcall_handle_touch(datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific, fake_attack, shieldcall_flags)
+	. = shieldcall_flags
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		. |= shieldcall.handle_touch(src, ., fake_attack, e_args, contact_flags, contact_specific)
+
+/**
+ * Runs shieldcalls for handle_unarmed_melee
+ *
+ * @params
+ * * style - the unarmed_attack datum being used
+ * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * fake_attack - just checking!
+ * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ *
+ * @return SHIELDCALL_FLAG_* flags
+ */
+/atom/proc/atom_shieldcall_handle_unarmed_melee(datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags)
+	. = shieldcall_flags
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		. |= shieldcall.handle_unarmed_melee(src, ., fake_attack, style, e_args)
+
+/**
+ * Runs shieldcalls for handle_item_melee
+ *
+ * @params
+ * * weapon - the item being used to swing with
+ * * e_args - (optional) the clickchain event, if any; **This is mutable.**
+ * * fake_attack - just checking!
+ * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ *
+ * @return SHIELDCALL_FLAG_* flags
+ */
+/atom/proc/atom_shieldcall_handle_item_melee(obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack, shieldcall_flags)
+	. = shieldcall_flags
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		. |= shieldcall.handle_item_melee(src, ., fake_attack, weapon, e_args)
+
+/**
+ * Runs shieldcalls for handle_bullet
+ *
+ * @params
+ * * bullet_act_args - indexed list of bullet_act args.
+ * * shieldcall_returns - existing returns from other shieldcalls
+ * * fake_attack - just checking!
+ * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ *
+ * @return SHIELDCALL_FLAG_TERMINATE or NONE
+ */
+/atom/proc/atom_shieldcall_handle_bullet(list/bullet_act_args, fake_attack, shieldcall_flags)
+	. = shieldcall_flags
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		. |= shieldcall.handle_bullet(src, ., fake_attack, bullet_act_args)
+
+/**
+ * Runs shieldcalls for handle_throw_impact
+ *
+ * @params
+ * * thrown - the thrown object's data
+ * * fake_attack - just checking!
+ * * shieldcall_flags - shieldcall flags. [code/__DEFINES/combat/shieldcall.dm]
+ *
+ * @return SHIELDCALL_FLAG_* flags
+ */
+/atom/proc/handle_throw_impact(datum/thrownthing/thrown, fake_attack, shieldcall_flags)
+	. = shieldcall_flags
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		. |= shieldcall.handle_throw_impact(src, ., fake_attack, thrown)

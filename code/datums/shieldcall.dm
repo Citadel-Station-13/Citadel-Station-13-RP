@@ -63,13 +63,14 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  *
  * @params
  * * defending - the atom being attacked
+ * * shieldcall_returns - existing returns from other shieldcalls
+ * * fake_attack - just checking!
  * * weapon - the item being used to swing with
  * * e_args - (optional) the clickchain event, if any; **This is mutable.**
- * * fake_attack - just checking!
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_item_melee(atom/defending, obj/item/weapon, datum/event_args/actor/clickchain/e_args, fake_attack)
+/datum/shieldcall/proc/handle_item_melee(atom/defending, shieldcall_returns, fake_attack, obj/item/weapon, datum/event_args/actor/clickchain/e_args)
 	return NONE
 
 /**
@@ -81,13 +82,14 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  *
  * @params
  * * defending - the atom in question
+ * * shieldcall_returns - existing returns from other shieldcalls
+ * * fake_attack - just checking!
  * * style - the unarmed_attack datum being used
  * * e_args (optional) the clickchain event, if any; **This is mutable.**
- * * fake_attack - just checking!
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_unarmed_melee(atom/defending, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args, fake_attack)
+/datum/shieldcall/proc/handle_unarmed_melee(atom/defending, shieldcall_returns, fake_attack, datum/unarmed_attack/style, datum/event_args/actor/clickchain/e_args)
 	return NONE
 
 //* Interaction Handling *//
@@ -100,14 +102,15 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  *
  * @params
  * * defending - the atom in question
- * * e_args (optional) the clickchain event, if any; **This is mutable.**
+ * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
+ * * e_args (optional) the clickchain event, if any; **This is mutable.**
  * * contact_flags - SHIELDCALL_CONTACT_FLAG_*
  * * contact_specific - SHIELDCALL_CONTACT_SPECIFIC_*
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_touch(atom/defending, datum/event_args/actor/clickchain/e_args, fake_attack, contact_flags, contact_specific)
+/datum/shieldcall/proc/handle_touch(atom/defending, shieldcall_returns, fake_attack, datum/event_args/actor/clickchain/e_args, contact_flags, contact_specific)
 	return NONE
 
 //* Projectile Handling *//
@@ -122,13 +125,13 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  *
  * @params
  * * defending - the atom in question
- * * bullet_act_args - indexed list of bullet_act args.
  * * shieldcall_returns - existing returns from other shieldcalls
  * * fake_attack - just checking!
+ * * bullet_act_args - indexed list of bullet_act args.
  *
  * @return SHIELDCALL_FLAG_TERMINATE or NONE
  */
-/datum/shieldcall/proc/handle_bullet(atom/defending, list/bullet_act_args, shieldcall_returns, fake_attack)
+/datum/shieldcall/proc/handle_bullet(atom/defending, shieldcall_returns, fake_attack, list/bullet_act_args)
 	return NONE
 
 //* Throw Handling *//
@@ -144,11 +147,13 @@ GLOBAL_LIST_EMPTY(cached_shieldcall_datums)
  *
  * @params
  * * defending - the thing being hit
+ * * shieldcall_returns - existing returns from other shieldcalls
+ * * fake_attack - just checking!
  * * thrown - the thrown object's data
  *
  * @return SHIELDCALL_FLAG_* flags
  */
-/datum/shieldcall/proc/handle_throw_impact(atom/defending, datum/thrownthing/thrown)
+/datum/shieldcall/proc/handle_throw_impact(atom/defending, shieldcall_returns, fake_attack, datum/thrownthing/thrown)
 	return
 
 //* Bound Variant *//
