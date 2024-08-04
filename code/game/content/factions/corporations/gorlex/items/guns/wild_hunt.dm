@@ -23,8 +23,6 @@
 		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
 		)
 
-	item_renderer = /datum/gun_item_renderer
-
 // todo: gun rendering system
 /obj/item/gun/ballistic/caseless/wild_hunt/update_icon_state()
 	. = ..()
