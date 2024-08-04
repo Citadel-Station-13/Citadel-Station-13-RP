@@ -331,7 +331,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "ba" = (
 /obj/effect/floor_decal/corner_oldtile/red/diagonal,
@@ -1811,7 +1811,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "fB" = (
 /obj/effect/floormimic/plating/guaranteed,
@@ -2622,7 +2622,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "iJ" = (
 /obj/machinery/light{
@@ -5057,7 +5057,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "rJ" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -8528,7 +8528,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "Ez" = (
 /obj/machinery/light{
@@ -8949,7 +8949,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "FJ" = (
 /obj/machinery/porta_turret{
@@ -9470,7 +9470,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "HO" = (
 /obj/structure/cable{
@@ -10291,7 +10291,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "KB" = (
 /obj/effect/floor_decal/corner/red/border{
@@ -10306,7 +10306,7 @@
 /obj/machinery/holoposter{
 	pixel_y = -32
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "KD" = (
 /obj/effect/floor_decal/corner/lightorange/border{
@@ -13342,7 +13342,7 @@
 /turf/simulated/wall/dungeon,
 /area/admin_planet/croatoan/mountain)
 "Us" = (
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "Uu" = (
 /obj/structure/table/reinforced,
@@ -13810,7 +13810,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "VW" = (
 /obj/structure/table/rack/shelf/steel,
@@ -14056,7 +14056,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/turf/simulated/floor/plating/outdoors,
+/turf/simulated/floor/tiled/external,
 /area/admin_planet/croatoan/civilian/dorms)
 "WS" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{

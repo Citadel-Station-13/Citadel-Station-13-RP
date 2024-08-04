@@ -3436,6 +3436,13 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -3451,6 +3458,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj{
+	name = "---Merge conflict marker---"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
@@ -3484,6 +3498,13 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj{
+	name = "---Merge conflict marker---"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 8
@@ -3520,8 +3541,17 @@
 /area/ship/mercenary/air)
 "sM" = (
 /obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hangar)
 "tv" = (
@@ -3534,6 +3564,13 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "mercblast"
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj{
+	name = "---Merge conflict marker---"
 	},
 /obj/structure/table/reinforced,
 /obj/machinery/light{
@@ -3609,6 +3646,13 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -3619,7 +3663,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall1)
 "Gh" = (
@@ -3627,11 +3673,20 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med)
 "Go" = (
@@ -3666,16 +3721,32 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/fighter)
 "Kj" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/obj{
+	name = "---Merge conflict marker---"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3720,8 +3791,15 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
 /obj/fiftyspawner/uranium,
 /obj/fiftyspawner/uranium,
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/structure/closet/crate,
 /obj/machinery/light{
 	dir = 8
@@ -3766,11 +3844,20 @@
 	dir = 9
 	},
 /obj/machinery/meter,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /obj/machinery/meter,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/atmos)
 "PR" = (
@@ -3795,6 +3882,13 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -3802,7 +3896,9 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/white,
 /area/ship/mercenary/armoury)
 "Uh" = (
@@ -3815,6 +3911,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
@@ -3824,7 +3927,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine)
 "UJ" = (
@@ -3849,8 +3954,17 @@
 /area/ship/mercenary/hall1)
 "Vf" = (
 /obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/fire_alarm/alarms_hidden/south_mount,
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/med1)
 "VC" = (
