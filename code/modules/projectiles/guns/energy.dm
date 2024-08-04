@@ -1,6 +1,6 @@
 /obj/item/gun/energy
 	name = "energy gun"
-	desc = "A basic energy-based gun. NanoTrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
+	desc = "A basic energy-based gun. Nanotrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energy"
 	fire_sound_text = "laser blast"
@@ -189,6 +189,8 @@
 
 /obj/item/gun/energy/update_icon(ignore_inhands)
 	. = ..()
+	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
+		return // using new system
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -242,3 +244,10 @@
 	if(inducer_flags & INDUCER_NO_GUNS)
 		return
 	return ..()
+
+//* Ammo *//
+
+/obj/item/gun/energy/get_ammo_ratio()
+	if(!power_supply)
+		return 0
+	return power_supply.charge / power_supply.maxcharge

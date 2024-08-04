@@ -410,7 +410,7 @@
 	icon_state = "beanie"
 	body_cover_flags = 0
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /obj/item/clothing/head/beanie_loose
 	name = "loose beanie"
@@ -419,7 +419,7 @@
 	addblends = "beanie_hang_a"
 	body_cover_flags = 0
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /obj/item/clothing/head/beretg
 	name = "beret"
@@ -550,7 +550,7 @@
 	name = "reindeer antlers"
 	desc = "A set of costume antlers with a glowing red nose, an Old Earth favorite."
 	icon_state = "reindeer0"
-	action_button_name = "Toggle Nose"
+	item_action_name = "Toggle Nose"
 
 /obj/item/clothing/head/reindeer/attack_self(mob/user)
 	. = ..()
@@ -692,7 +692,7 @@
 	icon = 'icons/clothing/head/cowl.dmi'
 	icon_state = "golhood"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	action_button_name = "Toggle Hood"
+	item_action_name = "Toggle Hood"
 
 /obj/item/clothing/head/cowl/attack_self(mob/user)
 	. = ..()
@@ -714,7 +714,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	body_cover_flags = HEAD|FACE
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
-	action_button_name = "Toggle Hood"
+	item_action_name = "Toggle Hood"
 
 /obj/item/clothing/head/fishingcap
 	name = "Fishing Cap"
@@ -734,3 +734,10 @@
 	desc = "A simple wedge cap with red accents, highly popular within Tri-Star Compact space."
 	icon_state = "eulrhat"
 	body_cover_flags = 0
+
+/obj/item/clothing/head/onestar
+	name = "one star hat"
+	desc = "It's a maroon-ish hat with an odd logo.."
+	icon = 'icons/clothing/head/onestar.dmi'
+	icon_state = "os_cap"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

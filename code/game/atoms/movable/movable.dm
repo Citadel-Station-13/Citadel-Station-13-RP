@@ -1,7 +1,7 @@
 /atom/movable
 	layer = OBJ_LAYER
 	// todo: evaluate if we need TILE_BOUND
-	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE | TILE_MOVER)
+	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE)
 
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
@@ -22,32 +22,50 @@
 	///Used for the calculate_adjacencies proc for icon smoothing.
 	var/can_be_unanchored = FALSE
 
+	//* AI Holders
+	/// AI holder bound to us
+	var/datum/ai_holder/ai_holder
+
 	//? Intrinsics
 	/// movable flags - see [code/__DEFINES/_flags/atoms.dm]
 	var/movable_flags = NONE
 
-	//? Movement
+	//* Movement *//
+
+	/// DING DING DING BE CAREFUL WITH THIS
+	/// Set this to TRUE if we are not a [TILE_MOVER]!
+	var/pixel_movement = FALSE
 	/// Whatever we're pulling.
-	var/atom/movable/pulling
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/pulling
 	/// Who's currently pulling us
-	var/atom/movable/pulledby
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/pulledby
 	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
-	var/generic_canpass = TRUE
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/generic_canpass = TRUE
 	/// Pass flags.
 	var/pass_flags = NONE
 	/// movement calls we're in
-	var/in_move = 0
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/in_move = 0
 	/// a direction, or null
-	var/moving_diagonally = NOT_IN_DIAG_STEP
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/moving_diagonally = NOT_IN_DIAG_STEP
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
-	var/atom/movable/moving_from_pull
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/moving_from_pull
 	/// Direction of our last move.
-	var/last_move_dir = NONE
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/last_move_dir = NONE
 	/// Our default glide_size. Null to use global default.
 	var/default_glide_size
 	/// Movement types, see [code/__DEFINES/flags/movement.dm]
 	/// Do *not* manually edit this variable in most cases. Use the helpers in [code/game/atoms/atoms_movement.dm].
-	var/movement_type = MOVEMENT_GROUND
+	/// todo: is there a better way to do this? what if we want to force something to be a movement type on map editor?
+	/// * this variable is a cache variable generated from movement type traits.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/movement_type = MOVEMENT_GROUND
 
 	//? Spacedrift
 	/// Which direction we're drifting
@@ -63,7 +81,8 @@
 
 	//? Perspectives
 	/// our default perspective - if none, a temporary one will be generated when a mob requires it
-	var/datum/perspective/self_perspective
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/datum/perspective/self_perspective
 
 	//? Buckling
 	/// do we support the buckling system - if not, none of the default interactions will work, but comsigs will still fire!
@@ -77,7 +96,8 @@
 	/// direction to set buckled mobs to. null to not do that.
 	var/buckle_dir
 	/// buckled mobs, associated to their semantic mode if necessary
-	var/list/mob/buckled_mobs
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/mob/buckled_mobs
 	/// restrained default unbuckle time (NOT TIME TO UN-RESTRAIN, this is time to UNBUCKLE from us)
 	var/buckle_restrained_resist_time = 2 MINUTES
 
@@ -134,9 +154,11 @@
 	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
 	var/blocks_emissive = FALSE
 	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
-	var/atom/movable/emissive_blocker/em_block
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/emissive_blocker/em_block
 	/// Internal holder for emissives. Definitely don't directly use, this is absolutely an insane Citadel Moment(tm).
-	var/atom/movable/emissive_render/em_render
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/atom/movable/emissive_render/em_render
 
 	//? Icon Scale
 	/// Used to scale icons up or down horizonally in update_transform().
@@ -157,8 +179,11 @@
 	//atom color stuff
 	if(!isnull(color) && atom_colouration_system)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-	if (!mapload && loc)
-		loc.Entered(src, null)
+	// WARNING WARNING SHITCODE THIS MEANS THAT ONLY TURFS RECEIVE MAPLOAD ENTERED
+	// DO NOT RELY ON ENTERED
+	// TODO: what would tg do (but maybe not that much component signal abuse?)
+	if(!mapload)
+		loc?.Entered(src, null)
 	switch(blocks_emissive)
 		if(EMISSIVE_BLOCK_GENERIC)
 			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
@@ -175,6 +200,10 @@
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
+	/*
+	if(loc)
+		loc.handle_contents_del(src)
+	*/
 	var/turf/un_opaque
 	if(opacity && isturf(loc))
 		un_opaque = loc
@@ -189,6 +218,9 @@
 	if (bound_overlay)
 		QDEL_NULL(bound_overlay)
 
+	if(ai_holder)
+		QDEL_NULL(ai_holder)
+
 	. = ..()
 
 	moveToNullspace()
@@ -202,52 +234,6 @@
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)
 			. = TRUE
-
-/atom/movable/proc/touch_map_edge()
-	if(z in (LEGACY_MAP_DATUM).sealed_levels)
-		return
-
-	if((LEGACY_MAP_DATUM).use_overmap)
-		overmap_spacetravel(get_turf(src), src)
-		return
-
-	var/move_to_z = src.get_transit_zlevel()
-	if(move_to_z)
-		var/new_z = move_to_z
-		var/new_x
-		var/new_y
-
-		if(x <= TRANSITIONEDGE)
-			new_x = world.maxx - TRANSITIONEDGE - 2
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (x >= (world.maxx - TRANSITIONEDGE + 1))
-			new_x = TRANSITIONEDGE + 1
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (y <= TRANSITIONEDGE)
-			new_y = world.maxy - TRANSITIONEDGE -2
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		else if (y >= (world.maxy - TRANSITIONEDGE + 1))
-			new_y = TRANSITIONEDGE + 1
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		if(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear))	// Only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = SSticker.mode
-			G.check_nuke_disks()
-
-		var/turf/T = locate(new_x, new_y, new_z)
-		if(istype(T))
-			forceMove(T)
-
-//by default, transition randomly to another zlevel
-/atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = SSmapping.crosslinked_levels()
-	candidates -= z
-	if(!length(candidates))
-		return
-	return pick(candidates)
 
 // Returns the current scaling of the sprite.
 // Note this DOES NOT measure the height or width of the icon, but returns what number is being multiplied with to scale the icons, if any.
@@ -426,6 +412,18 @@
 /atom/movable/proc/is_avoiding_ground()
     return ((movement_type & MOVEMENT_TYPES) != MOVEMENT_GROUND) || throwing
 
+//* Duplication *//
+
+/**
+ * makes a clone of this movable
+ *
+ * @params
+ * * location - where to clone us
+ * * include_contents - include semantic contents; ergo 'what we are hosting' vs 'what we are'
+ */
+/atom/movable/clone(atom/location, include_contents)
+	return ..(include_contents)
+
 //? Perspectives
 /**
  * get perspective to use when shifting eye to us,
@@ -486,13 +484,12 @@
 	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
+	if(full_copy)
+		ensure_render_target()
 	if(em_block)
 		em_block.render_source = full_copy? render_target : null
 		update_emissive_blocker()
 		return
-	if(render_target && render_target != REF(src))
-		CRASH("already had render target; refusing to overwrite.")
-	render_target = REF(src)
 	em_block = new(src, full_copy? render_target : null)
 	vis_contents += em_block
 	update_emissive_blocker()
@@ -511,13 +508,12 @@
 	em_block = null
 
 /atom/movable/proc/add_emissive_render(full_copy = TRUE)
+	if(full_copy)
+		ensure_render_target()
 	if(em_render)
 		em_render.render_source = full_copy? render_target : null
 		update_emissive_render()
 		return
-	if(render_target && render_target != REF(src))
-		CRASH("already had render target; refusing to overwrite.")
-	render_target = REF(src)
 	em_render = new(src, full_copy? render_target : null)
 	vis_contents += em_render
 	update_emissive_render()
@@ -621,3 +617,13 @@
 		else if(C)
 			color = C
 			return
+
+//* Rendering *//
+
+/**
+ * for the love of god don't call this unnecessarily this fucks people's GPUs up if spammed
+ */
+/atom/movable/proc/ensure_render_target(make_us_invisible)
+	if(!isnull(render_target))
+		return
+	render_target = "[make_us_invisible? "*":""][REF(src)]-[rand(1,1000)]-[world.time]"

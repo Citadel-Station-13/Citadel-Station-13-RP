@@ -6,12 +6,7 @@
 /obj/item/proc/digest_act(var/atom/movable/item_storage = null)
 	if(istype(item_storage,/obj/item/dogborg/sleeper))
 		for(var/obj/item/O in contents)
-			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
-				for(var/obj/item/SO in O)
-					if(item_storage)
-						SO.forceMove(item_storage)
-					qdel(O)
-			else if(item_storage)
+			if(item_storage)
 				O.forceMove(item_storage)
 		qdel(src)
 		return w_class
@@ -27,12 +22,7 @@
 		digest_stage -= g_damage
 	else
 		for(var/obj/item/O in contents)
-			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
-				for(var/obj/item/SO in O)
-					if(item_storage)
-						SO.forceMove(item_storage)
-					qdel(O)
-			else if(item_storage)
+			if(item_storage)
 				O.forceMove(item_storage)
 		qdel(src)
 	return g_damage

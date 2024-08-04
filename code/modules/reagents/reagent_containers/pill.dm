@@ -13,7 +13,7 @@
 	rad_flags = RAD_NO_CONTAMINATE
 
 	possible_transfer_amounts = null
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	volume = 60
 
@@ -21,11 +21,23 @@
 	var/rename_with_volume = FALSE
 
 /obj/item/reagent_containers/pill/Initialize(mapload)
+	randomize_pixel_offsets()
 	. = ..()
 	if(!icon_state)
 		icon_state = "pill[rand(1,20)]"
 	if(reagents.total_volume && rename_with_volume)
 		name += " ([reagents.total_volume]u)"
+
+/obj/item/reagent_containers/pill/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	if(. != NONE)
+		return
+	randomize_pixel_offsets()
+
+// todo: generic /obj/item pixel randomization
+// todo: randomization must be called **before** ..() on initialize.
+/obj/item/reagent_containers/pill/proc/randomize_pixel_offsets()
+	set_pixel_offsets(rand(-10, 10), rand(-10, 10))
 
 /obj/item/reagent_containers/pill/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user)

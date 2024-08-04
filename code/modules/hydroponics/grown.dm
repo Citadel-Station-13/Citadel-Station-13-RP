@@ -184,14 +184,14 @@
 				pocell.charge = pocell.maxcharge
 				qdel(src)
 				return
-		else if(W.sharp)
+		else if(W.is_sharp())
 			if(seed.kitchen_tag == "pumpkin") // Ugggh these checks are awful.
 				user.show_message("<span class='notice'>You carve a face into [src]!</span>", 1)
 				new /obj/item/clothing/head/pumpkinhead (user.loc)
 				qdel(src)
 				return
 			else if(seed.chems)
-				if(((W.sharp && W.edge) || CHECK_MULTIPLE_BITFIELDS(W.damage_mode, DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE)) && !isnull(seed.chems["woodpulp"]))
+				if((W.is_sharp() && W.is_edge()) && !isnull(seed.chems["woodpulp"]))
 					user.show_message("<span class='notice'>You make planks out of \the [src]!</span>", 1)
 					playsound(loc, 'sound/effects/woodcutting.ogg', 50, 1)
 					var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)

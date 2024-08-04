@@ -4,7 +4,7 @@
 	desc = "This handy device appears to translate the languages it hears into onscreen text for a user."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "translator"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	/// our translation context; set to path to start as path
 	var/datum/translation_context/context = /datum/translation_context/simple/universal_translator
@@ -138,7 +138,7 @@
 	if (language && (language.language_flags & LANGUAGE_NONVERBAL))
 		return //Not gonna translate sign language
 
-	if (visual && ((L.sdisabilities & SDISABILITY_NERVOUS) || L.eye_blind))
+	if (visual && L.has_status_effect(/datum/status_effect/sight/blindness))
 		return //Can't see the screen, don't get the message
 
 	if (audio && ((L.sdisabilities & SDISABILITY_DEAF) || L.ear_deaf))
@@ -158,7 +158,7 @@
 	name = "translator earpiece"
 	desc = "This handy device appears to translate the languages it hears into another language for a user."
 	icon_state = "earpiece"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	visual = 0
 	audio = 1

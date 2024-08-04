@@ -97,7 +97,7 @@
 	var/dancing //determines if assailant and affecting keep looking at each other. Basically a wrestling position
 
 	item_state = "nothing"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/grab/Initialize(mapload, mob/victim)
 	. = ..()
@@ -219,8 +219,8 @@
 		if(O_EYES)
 			if(announce)
 				assailant.visible_message("<span class='warning'>[assailant] covers [affecting]'s eyes!</span>")
-			if(affecting.eye_blind < 3)
-				affecting.Blind(3)
+			if(!affecting.has_status_effect(/datum/status_effect/sight/blindness))
+				affecting.apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 
 /obj/item/grab/attack_self(mob/user)
 	. = ..()
@@ -250,7 +250,7 @@
 				range = MESSAGE_RANGE_COMBAT_LOUD,
 				visible = SPAN_DANGER("[clickchain.performer] shoves [affecting] against \the [target]!")
 			)
-			affecting.take_organ_damage(10)
+			affecting.take_random_targeted_damage(brute = 10)
 			affecting.afflict_knockdown(0.5 SECONDS)
 			qdel(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -260,7 +260,7 @@
 				range = MESSAGE_RANGE_COMBAT_LOUD,
 				visible = SPAN_DANGER("[clickchain.performer] slams [affecting] against \the [target]!")
 			)
-			affecting.take_organ_damage(20)
+			affecting.take_random_targeted_damage(brute = 20)
 			affecting.afflict_paralyze(1 SECONDS)
 			affecting.afflict_knockdown(2 SECONDS)
 			qdel(src)
@@ -271,7 +271,7 @@
 				range = MESSAGE_RANGE_COMBAT_LOUD,
 				visible = SPAN_DANGER("[clickchain.performer] smashes [affecting] against \the [target]!")
 			)
-			affecting.take_organ_damage(30)
+			affecting.take_random_targeted_damage(brute = 30)
 			affecting.afflict_paralyze(3 SECONDS)
 			affecting.afflict_knockdown(4.5 SECONDS)
 			qdel(src)

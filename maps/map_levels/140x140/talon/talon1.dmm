@@ -1,7 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/lathe/autolathe,
@@ -242,10 +241,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "ct" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/structure/handrail{
 	dir = 8
 	},
@@ -384,8 +380,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port)
 "dx" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
@@ -412,9 +407,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
 "dO" = (
@@ -502,8 +495,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
@@ -656,18 +648,14 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 29
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng)
 "ge" = (
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -732,8 +720,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -984,8 +971,7 @@
 	dir = 1;
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -1319,10 +1305,7 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/deckone_port)
 "lr" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 29
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8;
@@ -1782,8 +1765,7 @@
 /area/talon/deckone/brig)
 "pN" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24;
 	req_access = list(301)
 	},
@@ -2117,8 +2099,7 @@
 	name = "Talon Starboard SMES Connection";
 	name_tag = "TLN-SBD-SMES"
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
@@ -2521,8 +2502,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -2577,8 +2557,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -2603,9 +2582,7 @@
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "wG" = (
@@ -2780,7 +2757,7 @@
 	pixel_x = 22
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "talon_port";
 	name = "interior access button";
@@ -2861,8 +2838,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -2901,8 +2877,7 @@
 /turf/space,
 /area/space)
 "yl" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -29
 	},
 /obj/machinery/atmospherics/portables_connector{
@@ -2952,8 +2927,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
 "yR" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
@@ -3358,10 +3332,7 @@
 	name = "Talon Port SMES Connection";
 	name_tag = "TLN-PRT-SMES"
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/port_solar)
 "BU" = (
@@ -3532,11 +3503,7 @@
 /turf/simulated/wall,
 /area/talon/deckone/bridge_hallway)
 "CR" = (
-/obj/machinery/firealarm/alarms_hidden{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/eris/steel,
@@ -3545,7 +3512,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "talon_port";
 	name = "exterior access button";
@@ -3879,8 +3846,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -3934,8 +3900,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
@@ -4179,10 +4144,7 @@
 /area/talon/deckone/armory)
 "Hp" = (
 /obj/structure/closet/crate/solar,
-/obj/machinery/firealarm/alarms_hidden{
-	layer = 3.3;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/starboard_eng_store)
 "Hr" = (
@@ -4364,8 +4326,7 @@
 /area/talon/deckone/port_engine)
 "IU" = (
 /obj/structure/catwalk,
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -4409,8 +4370,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/structure/disposalpipe/segment{
@@ -4524,13 +4484,11 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -25
 	},
 /obj/machinery/recharger,
-/obj/machinery/power/apc/talon{
-	dir = 8;
+/obj/machinery/air_alarm/talon/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
@@ -4635,9 +4593,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "KW" = (
@@ -4673,8 +4629,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "Ls" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
@@ -4835,8 +4790,7 @@
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/brig)
 "Nf" = (
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/light_switch{
@@ -5382,15 +5336,12 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/power/apc/talon{
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/talon,
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/port_solar)
 "St" = (
 /obj/structure/catwalk,
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -5547,8 +5498,7 @@
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "TG" = (
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24
 	},
 /obj/structure/cable/green,
@@ -5607,8 +5557,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_engine)
 "Up" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 8;
+/obj/machinery/fire_alarm/alarms_hidden/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
@@ -5772,8 +5721,7 @@
 /obj/structure/mopbucket,
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
-/obj/machinery/power/apc/talon{
-	dir = 1;
+/obj/machinery/air_alarm/talon/north_mount{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
@@ -5802,8 +5750,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 4;
+/obj/machinery/air_alarm/talon/east_mount{
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,

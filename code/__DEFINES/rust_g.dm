@@ -146,6 +146,16 @@
 	#define text2file(text, fname) rustg_file_append(text, "[fname]")
 #endif
 
+/**
+ * Please see code/datums/math/vec2.dm.
+ */
+#define rustg_geometry_delaunay_triangulate_to_graph(point_json) RUSTG_CALL(RUST_G, "geometry_delaunay_triangulate_to_graph")(point_json)
+
+/**
+ * Please see code/datums/math/vec2.dm.
+ */
+#define rustg_geometry_delaunay_voronoi_graph(packed) RUSTG_CALL(RUST_G, "geometry_delaunay_voronoi_graph")(packed)
+
 #define rustg_git_revparse(rev) RUSTG_CALL(RUST_G, "rg_git_revparse")(rev)
 #define rustg_git_commit_date(rev) RUSTG_CALL(RUST_G, "rg_git_commit_date")(rev)
 

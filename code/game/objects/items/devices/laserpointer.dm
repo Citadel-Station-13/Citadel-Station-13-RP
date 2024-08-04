@@ -104,7 +104,7 @@
 
 				//eye target check, will return -1 to 2
 				var/eye_prot = C.eyecheck()
-				if(C.blinded)
+				if(C.has_status_effect(/datum/status_effect/sight/blindness))
 					eye_prot = 4
 				var/severity = (rand(0, 1) + diode.rating - eye_prot)
 				var/mob/living/carbon/human/H = C

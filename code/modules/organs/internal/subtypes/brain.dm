@@ -7,7 +7,7 @@
 	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN
 	icon_state = "brain2"
 	damage_force = 1.0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 1.0
 	throw_speed = 3
 	throw_range = 5
@@ -131,7 +131,7 @@
 		if(brainmob.mind)
 			brainmob.mind.transfer(target)
 		else
-			target.ckey = brainmob.ckey
+			brainmob.transfer_client_to(target)
 	..()
 
 /obj/item/organ/internal/brain/proc/get_control_efficiency()

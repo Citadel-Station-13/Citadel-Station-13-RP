@@ -32,10 +32,10 @@
 	var/bite_sound = 'sound/items/eatfood.ogg'
 
 /obj/item/reagent_containers/food/Initialize(mapload, cooked)
-	. = ..()
-	if (center_of_mass.len && !pixel_x && !pixel_y)
+	if(length(center_of_mass) && !pixel_x && !pixel_y)
 		src.pixel_x = rand(-6.0, 6) //Randomizes postion
 		src.pixel_y = rand(-6.0, 6)
+	. = ..()
 	// prefill depending on if we were cooked or an actual spawn.
 	for(var/key in cooked? inherent_reagents : inherent_reagents | prefill_reagents)
 		reagents.add_reagent(key, inherent_reagents[key])

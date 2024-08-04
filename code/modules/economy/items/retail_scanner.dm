@@ -6,7 +6,7 @@
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 	req_access = list(ACCESS_COMMAND_BRIDGE)
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 1)
 
 	var/locked = 1
@@ -394,7 +394,7 @@
 /obj/item/retail_scanner/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		to_chat(user, "<span class='danger'>You stealthily swipe the cryptographic sequencer through \the [src].</span>")
-		playsound(src, "sparks", 50, 1)
+		playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
 		req_access = list()
 		emagged = 1
 

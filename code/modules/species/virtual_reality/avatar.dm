@@ -16,6 +16,7 @@
 	species_spawn_flags =		SPECIES_SPAWN_SPECIAL
 
 	speech_bubble_appearance = "cyber"
+	vision_organ = O_EYES
 
 	assisted_langs = list()
 
@@ -44,7 +45,7 @@
 /datum/species/shapeshifter/promethean/avatar/handle_death(var/mob/living/carbon/human/H)
 	return
 
-/datum/species/shapeshifter/promethean/avatar/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/promethean/avatar/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 /* NO. YOU CAN HAVE THIS BACK WHEN THIS DOESNT SWAP SPECIES TO CHANGE OPACITY

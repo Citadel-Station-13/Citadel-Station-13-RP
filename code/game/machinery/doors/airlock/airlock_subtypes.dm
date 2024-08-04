@@ -477,7 +477,13 @@
 	name = "alien airlock"
 	desc = "You're fairly sure this is a door."
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_airlock)
-	icon = 'icons/obj/doors/Dooralien.dmi'
+	door_color = "none"
+	icon = 'icons/obj/doors/alien/door.dmi'
+	bolts_file = 'icons/obj/doors/alien/lights_bolts.dmi'
+	lights_file = 'icons/obj/doors/alien/lights_green.dmi'
+	sparks_damaged_file = 'icons/obj/doors/alien/sparks_damaged.dmi'
+	sparks_broken_file = 'icons/obj/doors/alien/sparks_broken.dmi'
+	welded_file = 'icons/obj/doors/alien/welded.dmi'
 	explosion_resistance = 20
 	secured_wires = TRUE
 	hackProof = TRUE
@@ -485,7 +491,6 @@
 	req_one_access = list(ACCESS_FACTION_ALIEN)
 
 /obj/machinery/door/airlock/alien/locked
-	icon_state = "door_locked"
 	locked = TRUE
 
 /obj/machinery/door/airlock/alien/public // Entry to UFO.

@@ -157,3 +157,26 @@
 /datum/unarmed_attack/bite/sharp/shadekin/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	..()
 	user.shadekin_adjust_energy(energy_gain)
+
+//Traits attack
+/datum/unarmed_attack/bite/sharp/good
+	damage = 10
+	damage_tier = MELEE_TIER_LIGHT
+
+/datum/unarmed_attack/claws/good
+	damage = 10
+	damage_tier = MELEE_TIER_LIGHT
+
+/datum/unarmed_attack/bite/sharp/good/venom
+
+/datum/unarmed_attack/bite/sharp/good/venom/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+	..()
+	if(target.can_inject(null,FALSE,zone,FALSE))
+		target.bloodstr.add_reagent("toxin",2) //8 extra damage per hit over time
+
+/datum/unarmed_attack/claws/good/venom
+
+/datum/unarmed_attack/claws/good/venom/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
+	..()
+	if(target.can_inject(null,FALSE,zone,FALSE))
+		target.bloodstr.add_reagent("toxin",2)

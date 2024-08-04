@@ -120,7 +120,6 @@
 	H.update_health()
 
 	clonemind.transfer(H)
-	H.ckey = R.ckey
 	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
 
 	// -- Mode/mind specific stuff goes here
@@ -305,7 +304,7 @@
 
 /obj/machinery/clonepod/verb/eject()
 	set name = "Eject Cloner"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0)
@@ -377,7 +376,7 @@
 // Empties all of the beakers from the cloning pod, used to refill it
 /obj/machinery/clonepod/verb/empty_beakers()
 	set name = "Eject Beakers"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(usr.stat != 0)
@@ -483,7 +482,7 @@
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/datum/dna2/record/buf = null
 	var/read_only = 0 //Well,it's still a floppy disk
 
@@ -495,7 +494,8 @@
 	name = "data disk - 'God Emperor of Mankind'"
 	read_only = 1
 
-/obj/item/disk/data/demo/New()
+/obj/item/disk/data/demo/Initialize(mapload)
+	. = ..()
 	initializeDisk()
 	buf.types=DNA2_BUF_UE|DNA2_BUF_UI
 	//data = "066000033000000000AF00330660FF4DB002690"
@@ -544,7 +544,7 @@
 	name = "Diskette Box"
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/disks/PopulateContents()
+/obj/item/storage/box/disks/legacy_spawn_contents()
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)

@@ -8,9 +8,13 @@
 	SET_APPEARANCE_FLAGS(TILE_MOVER)
 	layer = TURF_LAYER
 
-	//? Core
+	//* Core *//
 	/// Atom flags.
 	var/atom_flags = NONE
+	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
+	///
+	/// * this is very much a 'set this on type and all subtypes or don't set it at all' situation.
+	var/prototype_id
 
 	//? Interaction
 	/// Intearaction flags.
@@ -21,7 +25,6 @@
 	var/pass_flags_self = NONE
 
 	//? Unsorted / Legacy
-	var/level = 2
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
 	/// Holder for the last time we have been bumped.
@@ -34,41 +37,19 @@
 	var/bubble_icon = "normal"
 
 	//? Armor
-	/// armor datm - this armor mitigates damage
-	/// damage is reduced to 1 / (armor / 100 + 1), so 100 armor = 2x effective hp, 200 = 3x
-	/// if negative, you receive that % more damage, -100 = 0.5x effective hp, -200 = 0.33x, so on and so forth.
+	/// armor datum - holds armor values
+	/// this is lazy initialized, only init'd when armor is fetched
+	/// [armor_type] specifies the typepath to fetch if this is null during a fetch
 	var/datum/armor/armor
 	/// armor datum type
+	/// this is the type to init if armor is unset when armor is fetched
+	/// * anonymous typepaths are not allowed here
 	var/armor_type = /datum/armor/none
 
 	//? Context
 	/// open context menus by mob
-	var/list/context_menus
-
-	//? Economy
-	// todo: move all this to obj level, you aren't going to sell a fucking turf.
-	//       the procs can however stay.
-	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
-	var/worth_intrinsic = 0
-	/// static worth of contents - only read if getting a static worth from typepath.
-	var/worth_containing = 0
-	/// static worth of raw materials - only read if getting a static worth from typepath.
-	var/worth_materials = 0
-	/// intrinsic worth default markup when buying as factor (2 for 2x)
-	var/worth_buy_factor = WORTH_BUY_FACTOR_DEFAULT
-	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
-	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
-	/**
-	 * * DANGER * - do not touch this variable unless you know what you are doing.
-	 *
-	 * This signifies that procs have a non-negligible randomization on a *freshly-spawned* instance of this object.
-	 * This is not the case for most closets / lockers / crates / storage that spawn with items.
-	 * In those cases, use the other variables to control its static worth.
-	 *
-	 * This means that things like cargo should avoid "intuiting" the value of this object
-	 * through initial()'s alone.
-	 */
-	var/worth_dynamic = FALSE
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/context_menus
 
 	//? Integrity
 	/// max health
@@ -83,11 +64,9 @@
 	/// flags for resistances
 	var/integrity_flags = NONE
 
-	//? HUDs
-	/// This atom's HUD (med/sec, etc) images. Associative list.
-	var/list/image/hud_list = null
-	/// HUD images that this atom can provide.
-	var/list/hud_possible
+	//* HUDs (Atom)
+	/// atom hud typepath to image
+	var/list/image/atom_huds
 
 	//? Icon Smoothing
 	/// Icon-smoothing behavior.
@@ -141,16 +120,24 @@
 	//? Materials
 	/// combined material trait flags
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/material_trait_flags = NONE
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_trait_flags = NONE
 	/// material traits on us, associated to metadata
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
-	var/list/datum/material_trait/material_traits
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/material_trait/material_traits
 	/// material trait metadata when [material_traits] is a single trait. null otherwise.
-	var/material_traits_data
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_traits_data
 	/// 'stacks' of ticking
 	/// this synchronizes the system so removing one ticking material trait doesn't fully de-tick the entity
 	//! DO NOT FUCK WITH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
-	var/material_ticking_counter = 0
+	/// * this variable is a cache variable and is generated from the materials on an entity.
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/material_ticking_counter = 0
 	/// material trait relative strength
 	/// applies to all traits globally as opposed to just one material parts,
 	/// because this is at /atom level.
@@ -168,13 +155,16 @@
 	/// sorted priority list of datums for handling shieldcalls with
 	/// we use this instead of signals so we can enforce priorities
 	/// this is horrifying.
-	var/list/datum/shieldcall/shieldcalls
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/datum/shieldcall/shieldcalls
 
 	//? Overlays
 	/// vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays.
-	var/list/managed_vis_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_vis_overlays
 	/// overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc. Single items are stored on their own, not in a list.
-	var/list/managed_overlays
+	/// * this variable is not visible and should not be edited in the map editor.
+	var/tmp/list/managed_overlays
 
 	//? Layers
 	/// Base layer - defaults to layer.
@@ -208,6 +198,10 @@
 	/// Default sound played on a burn type impact. This is usually null for default.
 	var/hit_sound_burn
 
+/proc/lint__check_atom_new_doesnt_sleep()
+	SHOULD_NOT_SLEEP(TRUE)
+	var/atom/target
+	target.New()
 
 /**
  * Called when an atom is created in byond (built in engine proc)
@@ -220,12 +214,13 @@
  * We also generate a tag here if the DF_USE_TAG flag is set on the atom
  */
 /atom/New(loc, ...)
-	//atom creation method that preloads variables at creation
-	if(global.use_preloader && (src.type == global.preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	// atom creation method that preloads variables at creation
+	// todo: we shouldn't need a type check here.
+	if(global.dmm_preloader_active && global.dmm_preloader_target == type)
 		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
-		GenerateTag()
+		generate_tag()
 
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -233,6 +228,20 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
+
+/**
+ * Called by the maploader if a dmm_context is set
+ */
+/atom/proc/preloading_instance(datum/dmm_context/context)
+	return
+
+/**
+ * hook for abstract direction sets from the maploader
+ *
+ * return FALSE to override maploader automatic rotation
+ */
+/atom/proc/preloading_dir(datum/dmm_context/context)
+	return TRUE
 
 /**
  * The primary method that objects are setup in SS13 with
@@ -322,10 +331,8 @@
  * * clears the light object
  */
 /atom/Destroy(force)
-	if(alternate_appearances)
-		for(var/current_alternate_appearance in alternate_appearances)
-			var/datum/atom_hud/alternate_appearance/selected_alternate_appearance = alternate_appearances[current_alternate_appearance]
-			selected_alternate_appearance.remove_from_hud(src)
+	for(var/hud_provider in atom_huds)
+		remove_atom_hud_provider(src, hud_provider)
 
 	if(reagents)
 		QDEL_NULL(reagents)
@@ -451,6 +458,8 @@
 	. += get_name_chaser(user)
 	if(desc)
 		. += "<hr>[desc]"
+	if(get_description_info() || get_description_fluff() || length(get_description_interaction(user)))
+		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
 		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
 /*
@@ -837,7 +846,23 @@
 /atom/proc/get_nametag_desc(mob/user)
 	return "" //Desc itself is often too long to use
 
-/atom/proc/GenerateTag()
+/**
+ * generates our locate() tag
+ *
+ * why would we use tags?
+ * i'm glad you asked!
+ *
+ * some atoms / datums have special needs of 'too critical to allow shared text refs to wreak havoc'
+ * yes, usually, people need to be gc-aware and not allow text ref reuse to break things
+ * unfortunately this is still going to be an issue for legacy code
+ *
+ * so we don't allow things like /mobs to ever share the same reference used for REF(),
+ * because the chances of a collision is just too high
+ *
+ * not only that, this is currently the way things like mobs can generate things like their render source/target UIDs
+ * in the future we'll need to change that to a better UID system for each system, but, for now, this is why.
+ */
+/atom/proc/generate_tag()
 	return
 
 /**
@@ -883,8 +908,10 @@
 /**
  * called when we're hit by a radiation wave
  *
- * this is only called on the top level atoms directly on a turf
- * for nested atoms, you need /datum/component/radiation_listener
+ * * this is only called directly on turfs
+ * * this is also called directly if an outgoing pulse is shielded by something, so it hits everything inside it instead
+ * * for any other atom on turf, you need /datum/component/radiation_listener
+ * * /datum/element/z_radiation_listener is needed if you want to listen to z-wide and other high-gain rad pulses
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
 	SHOULD_CALL_PARENT(TRUE)
@@ -940,6 +967,14 @@
 /// Resets the atom's color to null, and then sets it to the highest priority colour available
 /atom/proc/update_atom_colour()
 	CRASH("base proc hit")
+
+//* Deletions *//
+
+// /**
+//  * Called when something in our contents is being Destroy()'d, before they get moved.
+//  */
+// /atom/proc/handle_contents_del(atom/movable/deleting)
+// 	return
 
 //? Filters
 
@@ -1006,6 +1041,23 @@
 	filter_data = null
 	filters = null
 
+//* Inventory *//
+
+/atom/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	return
+
+/atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	return
+
+/atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	return
+
+/**
+ * called when an /obj/item Initialize()s in us.
+ */
+/atom/proc/on_contents_item_new(obj/item/item)
+	return
+
 //? Layers
 
 /// Sets our plane
@@ -1043,7 +1095,21 @@
 	plane = initial(plane)
 	set_base_layer(initial(layer))
 
+//* Persistence *//
+
+/**
+ * Triggered by SSpersistence to decay persisted atoms on load.
+ *
+ * @params
+ * * rounds_since_saved - rounds since we were saved
+ * * hours_since_saved - hours since we were saved
+ */
+/atom/proc/decay_persisted(rounds_since_saved, hours_since_saved)
+	return
+
 //? Pixel Offsets
+
+// todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
@@ -1051,6 +1117,11 @@
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/atom/proc/set_pixel_offsets(x, y)
+	pixel_x = x + get_managed_pixel_x()
+	pixel_y = y + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()

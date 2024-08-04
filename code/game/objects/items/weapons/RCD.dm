@@ -16,7 +16,7 @@
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
 	materials_base = list(MAT_STEEL = 24000)
 	preserve_item = TRUE // RCDs are pretty important.
@@ -207,7 +207,7 @@
 
 	var/true_delay = rcd_results[RCD_VALUE_DELAY] * tool_speed
 
-	var/datum/beam/rcd_beam = null
+	var/datum/beam_legacy/rcd_beam = null
 	if(ranged)
 		var/atom/movable/beam_origin = user // This is needed because mecha pilots are inside an object and the beam won't be made if it tries to attach to them..
 		if(!isturf(beam_origin.loc))
@@ -421,7 +421,7 @@
 	)
 
 
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 4000)
 	var/remaining = RCD_MAX_CAPACITY / 3

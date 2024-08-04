@@ -36,7 +36,7 @@
 	icon = 'icons/obj/trash.dmi'
 	icon_state = "corncob"
 	atom_flags = NOCONDUCT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
@@ -55,7 +55,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana_peel"
 	atom_flags = NOCONDUCT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20

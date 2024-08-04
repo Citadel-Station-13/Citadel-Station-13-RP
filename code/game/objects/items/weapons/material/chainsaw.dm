@@ -6,9 +6,9 @@
 	item_state = "chainsaw0"
 	var/on = 0
 	var/max_fuel = 100
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	var/active_force = 55
 	var/inactive_force = 10
@@ -124,7 +124,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")

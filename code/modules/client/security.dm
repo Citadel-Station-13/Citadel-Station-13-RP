@@ -31,7 +31,7 @@
  * queues a security kick
  * ensures the client's around for atleast delay or after current proc chain is over
  */
-/client/proc/queue_security_kick(delay)
+/client/proc/queue_security_kick(delay = 0)
 	var/left = isnull(queued_security_kick)? null : timeleft(queued_security_kick)
 	if(isnull(left) || left < delay)
 		deltimer(queued_security_kick)

@@ -13,7 +13,7 @@
 	item_state = "tennis_classic"
 	slot_flags = SLOT_MASK
 	throw_range = 14
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/toy/tennis/rainbow
 	name = "pseudo-euclidean interdimensional tennis sphere"

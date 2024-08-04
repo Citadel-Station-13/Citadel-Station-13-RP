@@ -5,7 +5,7 @@
 	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
 	gauge_icon = null
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
@@ -16,7 +16,7 @@
 	var/on = 0.0
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
-	action_button_name = "Toggle Jetpack"
+	item_action_name = "Toggle Jetpack"
 
 /obj/item/tank/jetpack/Initialize(mapload)
 	. = ..()
@@ -33,28 +33,27 @@
 		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of gas!</span>"
 		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
+/obj/item/tank/jetpack/update_icon_state()
+	icon_state = "[base_icon_state || initial(icon_state)][on ? "-on" : ""]"
+	return ..()
+
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	stabilization_on = !( stabilization_on )
 	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
 /obj/item/tank/jetpack/verb/toggle()
 	set name = "Toggle Jetpack"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	on = !on
 	if(on)
-		icon_state = "[icon_state]-on"
 		ion_trail.start()
 	else
-		icon_state = initial(icon_state)
 		ion_trail.stop()
 
-	if (ismob(usr))
-		var/mob/M = usr
-		M.update_inv_back()
-		M.update_action_buttons()
+	update_full_icon()
 
 	to_chat(usr, "You toggle the thrusters [on? "on":"off"].")
 
@@ -74,7 +73,7 @@
 	qdel(G)
 	return
 
-/obj/item/tank/jetpack/ui_action_click()
+/obj/item/tank/jetpack/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle()
 
 /obj/item/tank/jetpack/void

@@ -54,9 +54,11 @@
 				src.visible_message("<span class='danger'>[src] stabs [T] with the proboscis!</span>")
 				to_chat(T, "<span class='danger'>You feel a sharp stabbing pain!</span>")
 				add_attack_logs(src,T,"Absorbed (changeling)")
-				var/obj/item/organ/external/affecting = T.get_organ(src.zone_sel.selecting)
-				if(affecting.take_damage(39,0,1,0,"large organic needle"))
-					T:UpdateDamageIcon()
+				T.take_targeted_damage(
+					brute = 39,
+					damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_REDIRECT,
+					weapon_descriptor = "large biological needle",
+				)
 
 		feedback_add_details("changeling_powers","A[stage]")
 		if(!do_mob(src, T, 150) || G.state != GRAB_KILL)

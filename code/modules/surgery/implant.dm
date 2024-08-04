@@ -16,11 +16,11 @@
 /datum/surgery_step/cavity/proc/get_max_wclass(obj/item/organ/external/affected)
 	switch (affected.organ_tag)
 		if (BP_HEAD)
-			return ITEMSIZE_TINY
+			return WEIGHT_CLASS_TINY
 		if (BP_TORSO)
-			return ITEMSIZE_NORMAL
+			return WEIGHT_CLASS_NORMAL
 		if (BP_GROIN)
-			return ITEMSIZE_SMALL
+			return WEIGHT_CLASS_SMALL
 	return 0
 
 /datum/surgery_step/cavity/proc/get_cavity(obj/item/organ/external/affected)

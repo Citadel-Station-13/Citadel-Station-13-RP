@@ -4,7 +4,7 @@
 	desc = "A small power cell designed to power handheld devices."
 	icon_state = "dcell"
 	item_state = "egg6"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 0
 	throw_speed = 5
 	throw_range = 7
@@ -12,6 +12,8 @@
 	charge_amount = 5
 	materials_base = list("metal" = 350, MAT_GLASS = 50)
 	preserve_item = 1
+
+	worth_intrinsic = 25
 
 /obj/item/cell/device/empty
 	charge = 0
@@ -22,6 +24,8 @@
 	icon_state = "wcell"
 	maxcharge = 2400
 	charge_amount = 20
+
+	worth_intrinsic = 50
 
 /obj/item/cell/device/weapon/empty
 	charge = 0

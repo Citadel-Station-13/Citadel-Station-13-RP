@@ -25,10 +25,11 @@
 	icon_state = "box"
 	item_state = "syringe_kit"
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = INVENTORY_BOX_SPACE
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = STORAGE_VOLUME_BOX
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+	worth_intrinsic = 25
 
 	/// dynamic state support
 	var/dynamic_state = TRUE
@@ -53,15 +54,6 @@
 		return
 
 	if ( !ispath(foldable) )
-		return
-	var/found = 0
-	// Close any open UI windows first
-	for(var/mob/M in range(1))
-		if (M.s_active == src)
-			close(M)
-		if ( M == user )
-			found = 1
-	if ( !found )	// User is too far away
 		return
 	// Now make the cardboard
 	to_chat(user, "<span class='notice'>You fold [src] flat.</span>")
@@ -130,6 +122,8 @@
 		/obj/item/dnainjector/m2h = 3
 	)
 
+// todo: all this should be special ammo magazines or something i hate abusing box-code lmao
+
 /obj/item/storage/box/blanks
 	name = "box of blank shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."
@@ -150,11 +144,11 @@
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
-/obj/item/storage/box/beanbags/PopulateContents()
+/obj/item/storage/box/beanbags/legacy_spawn_contents()
 	for(var/i in 1 to 8)
 		new /obj/item/ammo_casing/a12g/beanbag(src)
 
-/obj/item/storage/box/beanbags/large/PopulateContents()
+/obj/item/storage/box/beanbags/large/legacy_spawn_contents()
 	for(var/i in 1 to 16)
 		new /obj/item/ammo_casing/a12g/beanbag(src)
 
@@ -384,7 +378,7 @@
 	desc = "Drymate brand monkey cubes. Just add water!"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "monkeycubebox"
-	can_hold = list(/obj/item/reagent_containers/food/snacks/monkeycube)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/snacks/monkeycube)
 	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 4)
 
 /obj/item/storage/box/monkeycubes/farwacubes
@@ -437,7 +431,7 @@
 	desc = "Eight wrappers of fun! Ages 8 and up. Not suitable for children."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "spbox"
-	can_hold = list(/obj/item/toy/snappop)
+	insertion_whitelist = list(/obj/item/toy/snappop)
 	starts_with = list(/obj/item/toy/snappop = 8)
 
 /obj/item/storage/box/matches
@@ -445,9 +439,9 @@
 	desc = "A small box of 'Space-Proof' premium matches."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "matchbox"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
-	can_hold = list(/obj/item/flame/match)
+	insertion_whitelist = list(/obj/item/flame/match)
 	starts_with = list(/obj/item/flame/match = 10)
 	drop_sound = 'sound/items/drop/matchbox.ogg'
 	pickup_sound =  'sound/items/pickup/matchbox.ogg'
@@ -473,10 +467,10 @@
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	storage_slots = 24
-	can_hold = list(/obj/item/light/tube, /obj/item/light/bulb)
-	max_storage_space = ITEMSIZE_COST_SMALL * 24 //holds 24 items of w_class 2
-	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
+	max_items = 24
+	insertion_whitelist = list(/obj/item/light/tube, /obj/item/light/bulb)
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 24 //holds 24 items of w_class 2
+	allow_mass_gather = TRUE // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/lights/bulbs
 	starts_with = list(/obj/item/light/bulb = 24)
@@ -491,13 +485,13 @@
 	icon_state = "lightmixed"
 	starts_with = list(
 		/obj/item/light/tube = 16,
-		/obj/item/light/bulb = 8
-		)
+		/obj/item/light/bulb = 8,
+	)
 
 /obj/item/storage/box/lights/fairy
 	name = "box of replacement fairy bulbs"
 	icon_state = "lightfairy"
-	can_hold = list(/obj/item/light/bulb/fairy)
+	insertion_whitelist = list(/obj/item/light/bulb/fairy)
 	starts_with = list(/obj/item/light/bulb/fairy = 24)
 
 //Colored Lights
@@ -510,20 +504,20 @@
 		/obj/item/light/bulb/yellow = 4,
 		/obj/item/light/bulb/green = 4,
 		/obj/item/light/bulb/blue = 4,
-		/obj/item/light/bulb/purple = 4
-		)
+		/obj/item/light/bulb/purple = 4,
+	)
 
 /obj/item/storage/box/lights/bulbs_neon
 	name = "box of neon bulbs"
 	icon_state = "light_color"
-	storage_slots = 30
+	max_items = 30
 	starts_with = list(
 		/obj/item/light/bulb/neon_pink = 6,
 		/obj/item/light/bulb/neon_blue = 6,
 		/obj/item/light/bulb/neon_green = 6,
 		/obj/item/light/bulb/neon_yellow = 6,
-		/obj/item/light/bulb/neon_white = 6
-		)
+		/obj/item/light/bulb/neon_white = 6,
+	)
 
 /obj/item/storage/box/lights/tubes_colored
 	name = "box of colored tubes"
@@ -534,20 +528,20 @@
 		/obj/item/light/tube/yellow = 4,
 		/obj/item/light/tube/green = 4,
 		/obj/item/light/tube/blue = 4,
-		/obj/item/light/tube/purple = 4
-		)
+		/obj/item/light/tube/purple = 4,
+	)
 
 /obj/item/storage/box/lights/tubes_neon
 	name = "box of neon tubes"
 	icon_state = "lighttube_color"
-	storage_slots = 30
+	max_items = 30
 	starts_with = list(
 		/obj/item/light/tube/neon_pink = 6,
 		/obj/item/light/tube/neon_blue = 6,
 		/obj/item/light/tube/neon_green = 6,
 		/obj/item/light/tube/neon_yellow = 6,
-		/obj/item/light/tube/neon_white = 6
-		)
+		/obj/item/light/tube/neon_white = 6,
+	)
 
 /obj/item/storage/box/lights/mixed_colored
 	name = "box of colored lights"
@@ -564,13 +558,13 @@
 		/obj/item/light/bulb/yellow = 2,
 		/obj/item/light/bulb/green = 2,
 		/obj/item/light/bulb/blue = 2,
-		/obj/item/light/bulb/purple = 2
-		)
+		/obj/item/light/bulb/purple = 2,
+	)
 
 /obj/item/storage/box/lights/mixed_neon
 	name = "box of neon lights"
 	icon_state = "lightmixed_color"
-	storage_slots = 30
+	max_items = 30
 	starts_with = list(
 		/obj/item/light/tube/neon_pink = 3,
 		/obj/item/light/tube/neon_blue = 3,
@@ -581,8 +575,8 @@
 		/obj/item/light/bulb/neon_blue = 3,
 		/obj/item/light/bulb/neon_green = 3,
 		/obj/item/light/bulb/neon_yellow = 3,
-		/obj/item/light/bulb/neon_white = 3
-		)
+		/obj/item/light/bulb/neon_white = 3,
+	)
 
 /obj/item/storage/box/freezer
 	name = "portable freezer"
@@ -591,10 +585,11 @@
 	icon_state = "portafreezer"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "medicalpack", SLOT_ID_LEFT_HAND = "medicalpack")
 	foldable = null
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(/obj/item/organ)
-	max_storage_space = ITEMSIZE_COST_NORMAL * 5 // Formally 21.  Odd numbers are bad.
-	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(/obj/item/organ)
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5 // Formally 21.  Odd numbers are bad.
+	allow_mass_gather = TRUE // for picking up broken bulbs, not that most people will try
+	worth_intrinsic = 150
 
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
@@ -689,8 +684,8 @@
 	name = "foil raincoat pouch"
 	icon_state = "rainponcho"
 	foldable = null
-	storage_slots = 1
-	can_hold = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+	max_items = 1
+	insertion_whitelist = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 
 //Foam Darts

@@ -333,8 +333,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 		if(istype(R.module_active,/obj/item/pickaxe))
 			attackby(R.module_active,R)
 
-	else if(istype(AM,/obj/mecha))
-		var/obj/mecha/M = AM
+	else if(istype(AM,/obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/M = AM
 		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
 			M.selected.action(src)
 
@@ -411,20 +411,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 
 			// to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			GetDrilled()
-
-		else if(istype(W,/obj/item/storage/bag/ore))
-			var/obj/item/storage/bag/ore/S = W
-			if(S.collection_mode)
-				for(var/obj/item/stack/ore/O in contents)
-					O.attackby(W,user)
-					return
-
-		else if(istype(W,/obj/item/storage/bag/fossils))
-			var/obj/item/storage/bag/fossils/S = W
-			if(S.collection_mode)
-				for(var/obj/item/fossil/F in contents)
-					F.attackby(W,user)
-					return
 
 		else if(istype(W, /obj/item/stack/rods))
 			var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
@@ -586,7 +572,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 			else
 				return
 
-	return attack_hand(user)
+	return ..()
 
 /turf/simulated/mineral/proc/wreckfinds(var/destroy = FALSE)
 	if(!destroy && prob(90)) //nondestructive methods have a chance of letting you step away to not trash things

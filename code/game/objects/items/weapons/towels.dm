@@ -5,7 +5,7 @@
 	slot_flags = SLOT_HEAD | SLOT_BELT | SLOT_OCLOTHING
 	damage_force = 3.0
 	clothing_flags = CLOTHING_IGNORE_BELTLINK
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("whipped")
 	attack_sound = 'sound/weapons/towelwhip.ogg'
 	desc = "A soft cotton towel."

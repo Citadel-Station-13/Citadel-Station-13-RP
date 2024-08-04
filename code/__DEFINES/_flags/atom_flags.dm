@@ -29,21 +29,6 @@
 /// Does not leave user's fingerprints/fibers when used on things?
 #define NOPRINT             (1<<12) // TODO: item flag
 
-///CITMAIN FLAG BITMASKS - Completely unused.
-/*
-/// Early returns mob.face_atom()
-#define BLOCK_FACE_ATOM				(1<<16)
-/// Prevents mobs from getting chainshocked by teslas and the supermatter.
-#define SHOCKED						(1<<17)
-/// Projectiles will use default chance-based ricochet handling on things with this.
-#define DEFAULT_RICOCHET			(1<<18)
-/// For machines and structures that should not break into parts, eg, holodeck stuff.
-#define NODECONSTRUCT				(1<<19)
-/// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
-#define PREVENT_CLICK_UNDER			(1<<20)
-/// should not get harmed if this gets caught by an explosion?
-#define PREVENT_CONTENTS_EXPLOSION	(1<<22)
-*/
 /// We are ticking in materials
 #define ATOM_MATERIALS_TICKING		(1<<22)
 /// Use initial icon/icon state for HTML renders in things like VV
@@ -74,11 +59,16 @@ DEFINE_BITFIELD(atom_flags, list(
 #define MOVABLE_NO_THROW_DAMAGE_SCALING (1<<1)
 /// Do not spin when thrown.
 #define MOVABLE_NO_THROW_SPIN           (1<<2)
+/// We are currently about to be yanked by a Moved() triggering a Move()
+///
+/// * used so things like projectile hitscans know to yield
+#define MOVABLE_IN_MOVED_YANK		(1<<3)
 
 DEFINE_BITFIELD(movable_flags, list(
 	BITFIELD(MOVABLE_NO_THROW_SPEED_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_DAMAGE_SCALING),
 	BITFIELD(MOVABLE_NO_THROW_SPIN),
+	BITFIELD(MOVABLE_IN_MOVED_YANK),
 ))
 
 // Flags for pass_flags. - Used in /atom/movable/var/pass_flags, and /atom/var/pass_flags_self

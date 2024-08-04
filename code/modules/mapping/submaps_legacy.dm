@@ -83,7 +83,10 @@
 					// to_chat(world, "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z]).")
 					break
 				CHECK_TICK
-
+				if(LAZYLEN(check.contents))//The default space tile has no contents, so if there is something there, we shouldnt overwrite it
+					valid = FALSE
+					break
+				CHECK_TICK
 			CHECK_TICK
 
 			if(!valid)

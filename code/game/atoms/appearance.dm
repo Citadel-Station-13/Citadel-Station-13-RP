@@ -1,3 +1,5 @@
+// todo: rethink everything about how to do signals for these.
+
 /**
  * Updates the appearence of the icon
  *

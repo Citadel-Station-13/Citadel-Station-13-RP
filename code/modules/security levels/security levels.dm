@@ -69,7 +69,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 				GLOB.security_level = SEC_LEVEL_DELTA
 
 		var/newlevel = get_security_level()
-		for(var/obj/machinery/firealarm/FA in GLOB.machines)
+		for(var/obj/machinery/fire_alarm/FA in GLOB.machines)
 			if(FA.z in (LEGACY_MAP_DATUM).contact_levels)
 				FA.set_security_level(newlevel)
 		for(var/obj/machinery/status_display/FA in GLOB.machines)

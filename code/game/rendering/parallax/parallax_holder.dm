@@ -164,7 +164,7 @@
 	if(QDELETED(C))
 		return
 	. = list()
-	if(C.is_preference_enabled(/datum/client_preference/parallax))
+	if(C.get_preference_entry(/datum/game_preference_entry/toggle/parallax))
 		for(var/atom/movable/screen/parallax_layer/L in layers)
 			// if(L.parallax_intensity > owner.prefs.parallax)
 			// 	continue

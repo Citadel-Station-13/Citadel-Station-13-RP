@@ -15,3 +15,8 @@
 #define MESSAGE_RANGE_INVENTORY_SOFT 3
 /// hard-ish inv ops like taking things out of backpacks
 #define MESSAGE_RANGE_INVENTORY_HARD 7
+
+/// item fiddling
+#define MESSAGE_RANGE_ITEM_SOFT 2
+/// item fiddling
+#define MESSAGE_RANGE_ITEM_HARD 5

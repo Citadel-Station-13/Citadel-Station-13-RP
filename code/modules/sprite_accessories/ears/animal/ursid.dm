@@ -14,11 +14,11 @@
 	id = "ears_bear_colorable"
 	icon_state = "bear"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/smallbear
 	name = "small bear"
 	id = "ears_bear_small"
 	icon_state = "smallbear"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

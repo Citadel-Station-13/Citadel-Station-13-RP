@@ -8,11 +8,11 @@ import { BooleanLike, classes, pureComponentHooks } from 'common/react';
 import { BoxProps, computeBoxClassName, computeBoxProps, unit } from './Box';
 
 export type FlexProps = BoxProps & {
-  direction?: CSSWideKeyword | "column" | "row" | "row-reverse" | "column-reverse" | undefined;
-  wrap?: CSSWideKeyword | "wrap" | "nowrap" | "wrap-reverse" | boolean | undefined;
-  align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | undefined;
-  justify?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
-  inline?: BooleanLike;
+  readonly direction?: CSSWideKeyword | "column" | "row" | "row-reverse" | "column-reverse" | undefined;
+  readonly wrap?: CSSWideKeyword | "wrap" | "nowrap" | "wrap-reverse" | boolean | undefined;
+  readonly align?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "baseline" | "stretch" | undefined;
+  readonly justify?: CSSWideKeyword | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
+  readonly inline?: BooleanLike;
 };
 
 export const computeFlexClassName = (props: FlexProps) => {
@@ -43,7 +43,7 @@ export const computeFlexProps = (props: FlexProps) => {
   });
 };
 
-export const Flex = props => {
+export const Flex = (props: FlexProps) => {
   const { className, ...rest } = props;
   return (
     <div

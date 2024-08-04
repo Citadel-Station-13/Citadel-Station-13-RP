@@ -64,6 +64,7 @@
 		O_BRAIN   = /obj/item/organ/internal/brain,
 		O_EYES    = /obj/item/organ/internal/eyes,
 	)
+	vision_organ = O_EYES
 
 	cold_level_1 = 200
 	cold_level_2 = 180
@@ -79,11 +80,7 @@
 
 	body_temperature = T20C
 
-/datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H)
-	var/turf/T = H.loc
-	if(!T)
-		return
-	var/datum/gas_mixture/environment = T.copy_cell_volume()
+/datum/species/phoronoid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	if(!environment)
 		return
 

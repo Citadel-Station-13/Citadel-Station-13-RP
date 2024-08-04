@@ -2,7 +2,7 @@
 
 /datum/category_item/catalogue/technology/phazon
 	name = "Exosuit - Phazon"
-	desc = "The Phazon exosuit is the result of a heavily classified NanoTrasen research initiative. \
+	desc = "The Phazon exosuit is the result of a heavily classified Nanotrasen research initiative. \
 	Designed to serve as a reconnaissance, infiltration, and flanking mecha, the Phazon possesses an \
 	array of complex and expensive phasing and cloaking systems which allow it to change its matter state \
 	and move through solid materials. Although initial field tests were positive, the raw cost of manufacturing \

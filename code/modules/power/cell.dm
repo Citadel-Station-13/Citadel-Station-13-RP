@@ -13,7 +13,7 @@
 	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	/// Are we EMP immune?
 	var/emp_proof = FALSE
 	var/charge
@@ -228,7 +228,7 @@
 		var/mob/living/silicon/robot/R = loc
 		severity *= R.cell_emp_mult
 
-	charge -= charge / severity
+	charge -= charge / (severity + 1)
 	if (charge < 0)
 		charge = 0
 

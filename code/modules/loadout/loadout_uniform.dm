@@ -310,6 +310,10 @@
 		brandjumpsuit_selection[initial(brandjumpsuit_type.name)] = brandjumpsuit_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(brandjumpsuit_selection, GLOBAL_PROC_REF(cmp_text_asc)))
 
+/datum/loadout_entry/uniform/onestar
+	name = "One Star Jumpsuit"
+	path = /obj/item/clothing/under/onestar
+
 /datum/loadout_entry/uniform/yogapants
 	name = "Yoga Pants"
 	path = /obj/item/clothing/under/pants/yogapants

@@ -20,10 +20,25 @@
 	. = ..()
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
-	if(w_class > 0 && w_class < ITEMSIZE_LARGE)
+	if(w_class > 0 && w_class < WEIGHT_CLASS_BULKY)
 		icon_state = "gift[w_class]"
 	else
 		icon_state = "gift[pick(1, 2, 3)]"
+
+/obj/item/gift
+	name = "gift"
+	desc = "A wrapped item."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "gift3"
+	var/size = 3.0
+	var/obj/item/gift = null
+	item_state = "gift"
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/gift/return_inventory()
+	. = list()
+	if(!isnull(gift))
+		. += gift
 
 /obj/item/gift/attack_self(mob/user)
 	. = ..()
@@ -220,7 +235,7 @@
 	..()
 	if (!( locate(/obj/structure/table, loc) ))
 		to_chat(user, "<span class='warning'>You must put the paper on a table first!</span>")
-	if (W.w_class < ITEMSIZE_LARGE)
+	if (W.w_class < WEIGHT_CLASS_BULKY)
 		var/obj/item/I = user.get_inactive_held_item()
 		if(I.is_wirecutter())
 			var/a_used = 2 ** (src.w_class - 1)
@@ -236,7 +251,7 @@
 				amount -= a_used
 				var/obj/item/gift/G = new /obj/item/gift( src.loc )
 				G.size = W.w_class
-				G.w_class = G.size + 1
+				G.set_weight_class(G.size + 1)
 				G.icon_state = "gift[G.size]"
 				G.gift = W
 				W.forceMove(G)

@@ -5,7 +5,7 @@
 	name = "Virgo-3B"
 	desc = "A mid-sized moon of the Virgo 3 gas giant, this planet has an atmosphere mainly comprised of phoron, with trace \
 	amounts of both oxygen and nitrogen. Fortunately, the oxygen is not enough to be combustible in any meaningful way, however \
-	the phoron is desirable by many corporations, including NanoTrasen."
+	the phoron is desirable by many corporations, including Nanotrasen."
 	current_time = new /datum/time/virgo3b()
 	planetary_wall_type = /turf/unsimulated/wall/planetary/virgo3b
 

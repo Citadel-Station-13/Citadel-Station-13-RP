@@ -121,11 +121,11 @@
 
 /obj/overmap/entity/visitable/ship/cruiser
 	name = "spacecraft"
-	desc = "Spacefaring vessel. NanoTrasen IFF detected."
+	desc = "Spacefaring vessel. Nanotrasen IFF detected."
 	scanner_name = "NDV Daedalus"
 	scanner_desc = @{"[i]Registration[/i]: NDV Daedalus
 [i]Class[/i]: Light Cruiser
-[i]Transponder[/i]: Transmitting (MIL), NanoTrasen IFF
+[i]Transponder[/i]: Transmitting (MIL), Nanotrasen IFF
 [b]Notice[/b]: Military vessel, do not approach"}
 	color = "#0033ff" //Bluey
 	vessel_mass = 15000

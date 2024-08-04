@@ -3,7 +3,7 @@
 	icon = 'icons/obj/stacks_ore.dmi'
 	icon_state = "ore"
 	no_variants = FALSE
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE // uh let's like, not? it'd be funny but fields usually have like 400 pieces of ore in just a few tiles.
 	//^ not as horrible now that it's stacked but I'm keeping this. <3
 	singular_name = "ore"
@@ -82,7 +82,7 @@
 	var/mob/living/carbon/human/H = hit_atom
 	if(istype(H) && H.has_eyes() && prob(85))
 		to_chat(H, "<span class='danger'>Some of \the [src] gets in your eyes!</span>")
-		H.Blind(5)
+		H.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 		H.eye_blurry += 10
 		spawn(1)
 			if(isturf(loc))
@@ -142,7 +142,7 @@
 	var/mob/living/carbon/human/H = hit_atom
 	if(istype(H) && H.has_eyes() && prob(85))
 		to_chat(H, "<span class='danger'>Some of \the [src] gets in your eyes!</span>")
-		H.Blind(10)
+		H.apply_status_effect(/datum/status_effect/sight/blindness, 10 SECONDS)
 		H.eye_blurry += 15
 		spawn(1)
 			if(isturf(loc))

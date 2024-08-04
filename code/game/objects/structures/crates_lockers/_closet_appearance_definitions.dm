@@ -543,6 +543,17 @@
 		"research" = COLOR_PURPLE
 	)
 
+/singleton/closet_appearance/secure_closet/pilot
+	color = COLOR_CYAN_DARK
+	decals = list(
+		"lower_side_vent"
+	)
+	extra_decals = list(
+		"stripe_vertical_left_full" = COLOR_BLUE_LIGHT,
+		"stripe_vertical_right_full" = COLOR_BLUE_LIGHT,
+		"pilot" = COLOR_SUN
+	)
+
 /singleton/closet_appearance/secure_closet/rd
 	extra_decals = list(
 		"stripe_vertical_mid_full" = COLOR_CLOSET_GOLD,
@@ -598,6 +609,13 @@
 
 /singleton/closet_appearance/secure_closet/sol/two/dark
 	color = COLOR_DARK_BLUE_GRAY
+
+/singleton/closet_appearance/secure_closet/freezer //boring.
+	can_lock = TRUE
+	color = COLOR_WHITE
+	decals = null
+	extra_decals = null
+	base_icon =  'icons/obj/closets/bases/fridge.dmi'
 
 // Crates.
 /singleton/closet_appearance/crate

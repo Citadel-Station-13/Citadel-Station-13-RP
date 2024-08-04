@@ -40,6 +40,6 @@
 	name = "Daedalus Pocket Newscaster"
 	desc = "A occasionally-updated compendium of articles on current events. Useful for keeping on the news in the vastness of the the Sigmar Concord."
 	icon_state = "newscodex"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	root_type = /datum/lore/codex/category/main_news
 	libcategory = "Reference"

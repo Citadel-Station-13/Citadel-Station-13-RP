@@ -20,8 +20,8 @@
 
 /mob/living/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
-	if(s_active && !CheapReachability(s_active))
-		s_active.close(src)
+	if(active_storage)
+		addtimer(CALLBACK(active_storage, TYPE_PROC_REF(/datum/object_system/storage, reconsider_mob_viewable), src), 0)
 	if(forced && isnull(depth_staged) && isturf(loc))
 		var/turf/T = loc
 		depth_staged = T.depth_level()
@@ -351,10 +351,12 @@
 	var/their_dir = isliving(pushing) && pushing.dir
 
 	// push them
-	if(pushing.Move(get_step(pushing.loc, dir_to_target), dir_to_target, glide_size))
+	if(pushing.Move(get_step(pushing.loc, dir_to_target), dir_to_target))
 		pushing.add_fingerprint(src)
 		// follow through on success
 		Move(get_step(loc, dir_to_target), dir_to_target)
+		// set their glide size to match us as we change during Move()
+		pushing.glide_size = glide_size
 
 	// restore dir if needed
 	if(their_dir)
@@ -381,14 +383,26 @@
 //? passthrough / allowthrough
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(.)
+		return
 	if(ismob(mover))
-		var/mob/M = mover
-		if(buckled && M.buckled == buckled)
+		var/mob/moving_mob = mover
+		if ((other_mobs && moving_mob.other_mobs))
+			return TRUE
+		if((wallflowering != NONE) && (ISDIAGONALDIR(wallflowering) || (loc == target? (wallflowering != turn(get_dir(mover, target), 180)) : (wallflowering != get_dir(mover, target)))))
+			return TRUE
+		if(buckled && moving_mob.buckled == buckled)
 			// riding same thing, don't block each other
 			return TRUE
 	// can't throw blob stuff through blob stuff
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
+
+/mob/living/CheckExit(atom/movable/AM, atom/newLoc)
+	// clip their ass if they're in us and we're wallflowering, and we wouldn't otherwise let them through
+	if(isturf(newLoc) && (wallflowering != NONE) && !ISDIAGONALDIR(wallflowering) && (wallflowering == get_dir(AM, newLoc)))
+		return CanAllowThrough(AM, newLoc)
 	return ..()
 
 /mob/living/CanPassThrough(atom/blocker, turf/target, blocker_opinion)

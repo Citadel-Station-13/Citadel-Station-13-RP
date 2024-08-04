@@ -6,7 +6,7 @@
 
 /obj/item/biology_analyzer/proc/print_report_verb()
 	set name = "Print Plant Report"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src = usr
 
 	if(usr.stat || usr.restrained() || usr.lying)

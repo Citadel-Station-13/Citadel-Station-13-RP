@@ -39,7 +39,7 @@
 	desc = "A keyring with a small steel key, and a blue fob reading \"ZOOM!\"."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "quad_keys"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/vehicle_old/train/engine/quadbike/Move(var/turf/destination)
 	var/turf/T = get_turf(src)

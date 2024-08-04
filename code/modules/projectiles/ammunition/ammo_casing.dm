@@ -6,7 +6,7 @@
 	slot_flags = SLOT_BELT | SLOT_EARS
 	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 1
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	preserve_item = 1
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
@@ -39,6 +39,9 @@
 	if(stored)
 		QDEL_NULL(stored)
 	return ..()
+
+/obj/item/ammo_casing/get_intrinsic_worth(flags)
+	return loaded()? ..() : 0
 
 //removes the projectile from the ammo casing
 // todo: refactor for actual on-shot or whatever
@@ -108,7 +111,7 @@
 /obj/item/ammo_casing/proc/init_projectile()
 	if(istype(stored))
 		CRASH("double init?")
-	stored = new projectile_type
+	stored = new projectile_type(src)
 	return stored
 
 /obj/item/ammo_casing/update_icon_state()

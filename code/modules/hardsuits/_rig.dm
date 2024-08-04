@@ -20,8 +20,9 @@
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_HUGE
-	action_button_name = "Toggle Heatsink"
+	w_class = WEIGHT_CLASS_HUGE
+	rad_flags = NONE
+	item_action_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
 	armor_type = /datum/armor/hardsuit
@@ -75,7 +76,7 @@
 	var/obj/item/hardsuit_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
 	var/obj/item/hardsuit_module/voice/speech                      // As above.
 	var/mob/living/carbon/human/wearer                        // The person currently wearing the hardsuit.
-	var/image/mob_icon                                        // Holder for on-mob icon.
+	var/mutable_appearance/mob_icon                                        // Holder for on-mob icon.
 	var/list/installed_modules = list()                       // Power consumption/use bookkeeping.
 
 	// Cooling system vars.
@@ -121,6 +122,37 @@
 
 	var/sprint_slowdown_modifier = 0					      // Sprinter module modifier.
 
+	//* Storage *//
+	var/list/storage_insertion_whitelist
+	var/list/storage_insertion_blacklist
+	var/list/storage_insertion_allow
+
+	var/storage_max_single_weight_class = WEIGHT_CLASS_NORMAL
+	var/storage_max_combined_weight_class
+	var/storage_max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
+	var/storage_max_items
+
+	var/storage_weight_subtract = 0
+	var/storage_weight_multiply = 1
+
+	var/storage_allow_quick_empty = TRUE
+	var/storage_allow_quick_empty_via_clickdrag = TRUE
+	var/storage_allow_quick_empty_via_attack_self = FALSE
+
+	var/storage_sfx_open = "rustle"
+	var/storage_sfx_insert = "rustle"
+	var/storage_sfx_remove = "rustle"
+
+	var/storage_ui_numerical_mode = FALSE
+
+	/// storage datum path
+	var/storage_datum_path = /datum/object_system/storage
+	/// Cleared after Initialize().
+	/// List of types associated to amounts.
+	var/list/storage_starts_with
+	/// set to prevent us from spawning starts_with
+	var/storage_empty = FALSE
+
 /obj/item/hardsuit/get_cell(inducer)
 	return cell
 
@@ -143,6 +175,8 @@
 
 /obj/item/hardsuit/Initialize(mapload)
 	. = ..()
+	initialize_storage()
+	spawn_storage_contents()
 
 	suit_state = icon_state
 	item_state = icon_state
@@ -200,6 +234,45 @@
 
 	update_icon(1)
 
+/obj/item/hardsuit/proc/spawn_storage_contents()
+	if(length(storage_starts_with) && !storage_empty)
+		// this is way too permissive already
+		var/safety = 256
+		var/atom/where_real_contents = obj_storage.real_contents_loc()
+		for(var/path in storage_starts_with)
+			var/amount = storage_starts_with[path] || 1
+			for(var/i in 1 to amount)
+				if(!--safety)
+					CRASH("tried to spawn too many objects")
+				new path(where_real_contents)
+	storage_starts_with = null
+
+/obj/item/hardsuit/proc/initialize_storage()
+	ASSERT(isnull(obj_storage))
+	init_storage(indirected = TRUE)
+
+	obj_storage.set_insertion_allow(storage_insertion_allow)
+	obj_storage.set_insertion_whitelist(storage_insertion_whitelist)
+	obj_storage.set_insertion_blacklist(storage_insertion_blacklist)
+
+	obj_storage.max_single_weight_class = storage_max_single_weight_class
+	obj_storage.max_combined_weight_class = storage_max_combined_weight_class
+	obj_storage.max_combined_volume = storage_max_combined_volume
+	obj_storage.max_items = storage_max_items
+
+	obj_storage.weight_subtract = storage_weight_subtract
+	obj_storage.weight_multiply = storage_weight_multiply
+
+	obj_storage.allow_quick_empty = storage_allow_quick_empty
+	obj_storage.allow_quick_empty_via_clickdrag = storage_allow_quick_empty_via_clickdrag
+	obj_storage.allow_quick_empty_via_attack_self = storage_allow_quick_empty_via_attack_self
+
+	obj_storage.sfx_open = storage_sfx_open
+	obj_storage.sfx_insert = storage_sfx_insert
+	obj_storage.sfx_remove = storage_sfx_remove
+
+	obj_storage.ui_numerical_mode = storage_ui_numerical_mode
+
 /obj/item/hardsuit/Destroy()
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		qdel(piece)
@@ -216,9 +289,11 @@
 	switch(slot_id_or_hand_index)
 		if(SLOT_ID_BACK)
 			if(mob_icon)
+				mob_icon.color = color
 				return mob_icon
 		if(SLOT_ID_BELT)
 			if(mob_icon)
+				mob_icon.color = color
 				return mob_icon
 	return ..()
 
@@ -289,7 +364,11 @@
 		toggle_piece("chest", M, ONLY_DEPLOY)
 		toggle_piece("boots", M, ONLY_DEPLOY)
 		if(suit_is_deployed())
-			M.adjustBruteLossByPart(70, BP_TORSO)
+			M.take_targeted_damage(
+				brute = 70,
+				damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE | DAMAGE_MODE_SHRED,
+				body_zone = BP_TORSO,
+			)
 			for(var/harm = 8; harm > 0; harm--)
 				M.adjustBruteLoss(10)
 			playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
@@ -369,6 +448,7 @@
 					if(seal_delay && !instant && !do_self(M, seal_delay, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 						failed_to_seal = 1
 
+					piece.copy_atom_colour(src)
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
 					piece.update_worn_icon()
 					switch(msg_type)
@@ -404,6 +484,7 @@
 			if(!piece)
 				continue
 			piece.icon_state = "[suit_state][is_activated() ? "_sealed" : ""]"
+			piece.copy_atom_colour(src)
 			piece.update_worn_icon()
 
 		if(is_activated())
@@ -459,7 +540,7 @@
 		else
 			update_airtight(piece, 1) // Seal
 
-/obj/item/hardsuit/ui_action_click()
+/obj/item/hardsuit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_cooling(usr)
 
 /obj/item/hardsuit/proc/toggle_cooling(var/mob/user)
@@ -492,8 +573,8 @@
 /obj/item/hardsuit/proc/get_environment_temperature()
 	if (ishuman(loc))
 		var/mob/living/carbon/human/H = loc
-		if(istype(H.loc, /obj/mecha))
-			var/obj/mecha/M = H.loc
+		if(istype(H.loc, /obj/vehicle/sealed/mecha))
+			var/obj/vehicle/sealed/mecha/M = H.loc
 			return M.return_temperature()
 		else if(istype(H.loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/obj/machinery/atmospherics/component/unary/cryo_cell/cryo = H.loc
@@ -717,7 +798,8 @@
 		// update_inv_wear_suit(), handle species checks here.
 		if(wearer && sprite_sheets && sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)])
 			species_icon =  sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)]
-		mob_icon = icon(icon = species_icon, icon_state = "[icon_state]")
+		mob_icon = mutable_appearance(icon = species_icon, icon_state = "[icon_state]")
+		mob_icon.color = color
 
 	if(installed_modules.len)
 		for(var/obj/item/hardsuit_module/module in installed_modules)
@@ -874,6 +956,7 @@
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)
 				return
+			use_obj.copy_atom_colour(src)
 			if(!H.equip_to_slot_if_possible(use_obj, equip_to, null, INV_OP_FORCE))
 				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")

@@ -5,7 +5,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pai"
 	item_state = "electronic"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_DATA = 2)
 	show_messages = FALSE
@@ -292,9 +292,10 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	setEmotion("null")
 	src.forceMove(get_turf(src))
 	pai.open_up()
-	pai.update_action_buttons()
 
 /obj/item/paicard/proc/removePersonality()
+	if(pai)
+		pai.delete_all_holograms()
 	QDEL_NULL(pai)
 	pai = null
 	cached_holo_image = null

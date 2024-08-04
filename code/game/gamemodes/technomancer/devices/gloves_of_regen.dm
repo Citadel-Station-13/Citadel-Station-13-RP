@@ -15,9 +15,9 @@
 	icon_state = "regen"
 	item_state = "graygloves"
 	siemens_coefficient = 0
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/regen/equipped(mob/user, slot, flags)

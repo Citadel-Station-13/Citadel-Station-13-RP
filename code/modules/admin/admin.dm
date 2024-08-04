@@ -12,12 +12,13 @@ var/global/floorIsLava = 0
 		confidential = TRUE)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
-	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
-			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
-				var/msg = rendered
-				to_chat(C, msg)
+	return
+	// var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
+	// for(var/client/C in GLOB.admins)
+	// 	if((R_ADMIN|R_MOD) & C.holder.rights)
+	// 		if(C.get_preference_toggle(/datum/client_preference/mod/show_attack_logs))
+	// 			var/msg = rendered
+	// 			to_chat(C, msg)
 
 /proc/admin_notice(var/message, var/rights)
 	for(var/mob/M in GLOB.mob_list)
@@ -66,7 +67,6 @@ var/global/floorIsLava = 0
 		<b>Mob type:</b> [M.type]<br>
 		<b>Inactivity time:</b> [M.client ? "[M.client.inactivity/600] minutes" : "Logged out"]<br/><br/>
 		<A href='?src=\ref[src];boot2=\ref[M]'>Kick</A> |
-		<A href='?_src_=holder;warn=[M.ckey]'>Warn</A> |
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
 		<A href='?src=\ref[src];oocban=[M.ckey]'>[is_role_banned_ckey(M.ckey, role = BAN_ROLE_OOC)? "<font color='red'>OOC Ban</font>" : "OOC Ban"]</A> |
@@ -223,7 +223,15 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins))
 		to_chat(usr, "Error: you are not an admin!")
 		return
-	PlayerNotesPage(1)
+	//PlayerNotesPage(1)
+	tgui_notes()
+
+/datum/admins/proc/tgui_notes()
+	var/savefile/S=new("data/player_notes.sav")
+	var/list/note_keys
+	S >> note_keys
+	var/selected_ckey = tgui_input_list(usr, "Select the ckey you want the notes off:", "Ckey Select",sortList(note_keys))
+	show_player_info(selected_ckey)
 
 /datum/admins/proc/PlayerNotesPage(page)
 	var/dat = "<B>Player notes</B><HR>"
@@ -645,7 +653,7 @@ var/global/floorIsLava = 0
 		if(!check_rights(R_SERVER,0))
 			message = sanitize(message, 500, extra = 0)
 		message = replacetext(message, "\n", "<br>") // required since we're putting it in a <p> tag
-		to_chat(world, "<span class=notice><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
+		to_chat(world, "<span class=notice><b>[usr.client.is_under_stealthmin() ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1364,7 +1372,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has put [frommob.ckey] in control of [tomob.name].</span>")
 	log_admin("[key_name(usr)] stuffed [frommob.ckey] into [tomob.name].")
 	feedback_add_details("admin_verb","CGD")
-	tomob.ckey = frommob.ckey
+	frommob.transfer_client_to(tomob)
 	qdel(frommob)
 	return 1
 
@@ -1526,7 +1534,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 
 		if(!P.stamped)
 			P.stamped = new
-		P.stamped += /obj/item/stamp/centcomm
+		P.stamped += /obj/item/stamp/centcom
 		P.add_overlay(stampoverlay)
 
 	var/obj/item/rcvdcopy
@@ -1561,7 +1569,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 	if(!isobserver(owner.mob))
 		return
 	var/mob/observer/dead/dead = owner.mob
-	var/stealthghost = owner.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode)
+	var/stealthghost = owner.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost)
 	if(!stealthghost || !fakekey)
 		dead.invisibility = initial(dead.invisibility)
 		dead.alpha = initial(dead.alpha)

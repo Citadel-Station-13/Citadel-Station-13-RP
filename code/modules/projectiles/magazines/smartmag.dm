@@ -201,7 +201,7 @@
 // This verb clears out the smart mag's copied data, but only if it's empty
 /obj/item/ammo_magazine/smart/verb/clear_ammo_data()
 	set name = "Clear Ammo Data"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!istype(src.loc, /mob/living))	// Needs to be in your hands to reset

@@ -3,7 +3,7 @@
 	icon_state = "chemg"
 	item_state = "grenade"
 	desc = "A hand made chemical grenade."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 2.0
 	det_time = 50
 
@@ -215,6 +215,7 @@
 	desc = "Used for clearing rooms of living things."
 	path = 1
 	stage = 2
+	worth_intrinsic = 150
 
 /obj/item/grenade/chem_grenade/incendiary/Initialize(mapload)
 	. = ..()

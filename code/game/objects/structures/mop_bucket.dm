@@ -6,7 +6,7 @@
 	density = 1
 	climb_allowed = TRUE
 	depth_level = 8
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	pressure_resistance = 5
 	atom_flags = OPENCONTAINER
 	var/amount_per_transfer_from_this = 5	//shit I dunno, adding this so syringes stop runtime erroring. --NeoFite

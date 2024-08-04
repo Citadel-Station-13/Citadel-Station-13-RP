@@ -35,7 +35,7 @@
 				if(O.damage > 0) // Fix internal damage
 					O.heal_damage_i(heal_power / 2)
 				if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
-					H.sdisabilities &= ~SDISABILITY_NERVOUS
+					H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 			for(var/obj/item/organ/external/O in H.organs) // Fix limbs
 				if(!O.robotic < ORGAN_ROBOT) // No robot parts for this.
@@ -47,7 +47,7 @@
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				// Fix bones
 				var/obj/item/organ/external/affected = E
-				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
+				if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
 
 				// fix IB

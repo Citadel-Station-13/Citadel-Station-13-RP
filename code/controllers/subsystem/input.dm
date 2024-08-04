@@ -18,6 +18,9 @@ SUBSYSTEM_DEF(input)
 	/// Macro set for classic.
 	var/list/input_mode_macros
 
+	/// currentrun list of clients
+	var/list/client/currentrun
+
 /datum/controller/subsystem/input/Initialize()
 	setup_macrosets()
 	// set init early so refresh macrosets works
@@ -104,18 +107,24 @@ SUBSYSTEM_DEF(input)
 
 // Badmins just wanna have fun ♪
 /datum/controller/subsystem/input/proc/refresh_client_macro_sets()
-	var/list/clients = GLOB.clients
-	for(var/i in 1 to clients.len)
-		var/client/user = clients[i]
+	for(var/client/user as anything in GLOB.clients)
+		if(!user.initialized)
+			continue
 		user.set_macros()
 		user.update_movement_keys()
 
-/datum/controller/subsystem/input/fire()
-	var/list/clients = GLOB.clients // Let's sing the list cache song
-	for(var/client/C as anything in clients)
+/datum/controller/subsystem/input/fire(resumed)
+	if(!resumed)
+		currentrun = GLOB.clients.Copy()
+	var/i
+	for(i in length(currentrun) to 1 step -1)
+		var/client/C = currentrun[i]
 		if(!C.initialized)
 			continue
 		C.keyLoop()
+		if(MC_TICK_CHECK)
+			break
+	currentrun.len -= length(currentrun) - i + 1
 
 /// *sigh
 /client/verb/NONSENSICAL_VERB_THAT_DOES_NOTHING()

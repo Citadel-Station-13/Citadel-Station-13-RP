@@ -1,0 +1,368 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"f" = (
+/obj/structure/bed,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"g" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"j" = (
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"o" = (
+/obj/random/trash,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"p" = (
+/obj/random/junk,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"r" = (
+/obj/random/junk,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"t" = (
+/obj/effect/debris/cleanable/blood/gibs,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"u" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"x" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"y" = (
+/obj/item/flame/lighter/zippo/taj,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"z" = (
+/obj/structure/table/standard,
+/obj/item/material/knife/butch,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"B" = (
+/obj/structure/closet/crate/freezer/rations,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"D" = (
+/obj/structure/bonfire,
+/obj/item/reagent_containers/cooking_container/grill,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"I" = (
+/obj/structure/table/rack,
+/obj/fiftyspawner/log,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"K" = (
+/obj/structure/kitchenspike,
+/obj/effect/debris/cleanable/blood/gibs,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"L" = (
+/obj/structure/table/woodentable,
+/obj/random/firstaid,
+/obj/item/beartrap,
+/obj/item/beartrap,
+/obj/item/beartrap,
+/obj/item/material/twohanded/spear,
+/obj/item/material/twohanded/spear,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"P" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"R" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/huntercamp)
+"V" = (
+/turf/simulated/wall/wood,
+/area/tether_away/beach/desert/poi/huntercamp)
+"W" = (
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lantern,
+/obj/item/material/knife/tacknife/survival,
+/obj/item/material/knife/tacknife/survival,
+/obj/item/gun/ballistic/bow,
+/obj/item/storage/belt/quiver/full,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+"Z" = (
+/obj/structure/table/woodentable,
+/obj/item/gun/ballistic/contender/taj/a762,
+/obj/item/ammo_magazine/clip/c762/hunter,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/fancy/cigar/taj,
+/obj/random/junk,
+/obj/item/ammo_magazine/clip/c762/hunter,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/huntercamp)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+a
+"}
+(3,1,1) = {"
+a
+g
+V
+V
+V
+V
+V
+V
+V
+g
+P
+P
+P
+g
+a
+"}
+(4,1,1) = {"
+a
+g
+V
+L
+f
+p
+f
+u
+V
+g
+o
+I
+P
+g
+a
+"}
+(5,1,1) = {"
+a
+g
+V
+W
+j
+j
+j
+j
+x
+g
+r
+g
+P
+g
+a
+"}
+(6,1,1) = {"
+a
+g
+V
+Z
+f
+j
+f
+B
+V
+g
+g
+g
+P
+g
+a
+"}
+(7,1,1) = {"
+a
+g
+V
+V
+V
+V
+V
+V
+V
+g
+g
+g
+P
+g
+a
+"}
+(8,1,1) = {"
+a
+g
+g
+P
+K
+z
+K
+t
+g
+o
+g
+o
+g
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+g
+P
+t
+g
+g
+g
+r
+g
+g
+r
+g
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+g
+g
+g
+g
+g
+g
+g
+g
+R
+g
+P
+g
+a
+"}
+(11,1,1) = {"
+a
+a
+g
+P
+g
+o
+g
+o
+g
+R
+D
+R
+P
+g
+a
+"}
+(12,1,1) = {"
+a
+a
+g
+P
+r
+g
+g
+g
+g
+r
+R
+y
+P
+g
+a
+"}
+(13,1,1) = {"
+a
+a
+g
+P
+P
+P
+P
+g
+g
+P
+P
+P
+P
+g
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

@@ -9,6 +9,8 @@
  *
  * This way, we have *near* perfect native-like simulation with moves without
  * having to do anything too special.
+ *
+ * todo: multi-tile object support
  */
 /datum/component/transition_border
 	var/atom/movable/mirage_border/holder1
@@ -48,31 +50,39 @@
 /datum/component/transition_border/proc/transit(datum/source, atom/movable/AM)
 	if(AM.atom_flags & ATOM_ABSTRACT)
 		return // nah.
+	if(AM.movable_flags & MOVABLE_IN_MOVED_YANK)
+		return // we're already in a yank
 	var/turf/our_turf = parent
 	var/z_index = SSmapping.level_index_in_dir(our_turf.z, dir)
 	if(isnull(z_index))
 		STACK_TRACE("no z index?! deleting self.")
 		qdel(src)
 		return
-	var/turf/target
-	switch(dir)
-		if(NORTH)
-			target = locate(our_turf.x, 2, z_index)
-		if(SOUTH)
-			target = locate(our_turf.x, world.maxy - 1, z_index)
-		if(EAST)
-			target = locate(2, our_turf.y, z_index)
-		if(WEST)
-			target = locate(world.maxx - 1, our_turf.y, z_index)
-		if(NORTHEAST)
-			target = locate(2, 2, z_index)
-		if(NORTHWEST)
-			target = locate(world.maxx - 1, 2, z_index)
-		if(SOUTHEAST)
-			target = locate(2, world.maxy - 1, z_index)
-		if(SOUTHWEST)
-			target = locate(world.maxx - 1, world.maxy - 1, z_index)
-	AM.locationTransitForceMove(target, recurse_levels = 2)
+	// todo: this is shit but we have to yield to prevent a Moved() before Moved()
+	AM.movable_flags |= MOVABLE_IN_MOVED_YANK
+	spawn(0)
+		AM.movable_flags &= ~MOVABLE_IN_MOVED_YANK
+		if(AM.loc != our_turf)
+			return
+		var/turf/target
+		switch(dir)
+			if(NORTH)
+				target = locate(our_turf.x, 2, z_index)
+			if(SOUTH)
+				target = locate(our_turf.x, world.maxy - 1, z_index)
+			if(EAST)
+				target = locate(2, our_turf.y, z_index)
+			if(WEST)
+				target = locate(world.maxx - 1, our_turf.y, z_index)
+			if(NORTHEAST)
+				target = locate(2, 2, z_index)
+			if(NORTHWEST)
+				target = locate(world.maxx - 1, 2, z_index)
+			if(SOUTHEAST)
+				target = locate(2, world.maxy - 1, z_index)
+			if(SOUTHWEST)
+				target = locate(world.maxx - 1, world.maxy - 1, z_index)
+		AM.locationTransitForceMove(target, recurse_levels = 2)
 
 /datum/component/transition_border/proc/rebuild()
 	// reset first

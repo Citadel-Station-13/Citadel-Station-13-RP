@@ -10,7 +10,7 @@
 	add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 	..()
 
-/******************** NanoTrasen/Malf ********************/
+/******************** Nanotrasen/Malf ********************/
 /datum/ai_laws/nanotrasen
 	name = "NT Default"
 	selectable = 1
@@ -30,7 +30,7 @@
 	set_zeroth_law(config_legacy.law_zero)
 	..()
 
-/************* NanoTrasen Aggressive *************/
+/************* Nanotrasen Aggressive *************/
 /datum/ai_laws/nanotrasen_aggressive
 	name = "NT Aggressive"
 	selectable = 1

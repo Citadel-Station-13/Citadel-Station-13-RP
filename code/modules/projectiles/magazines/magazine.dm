@@ -9,7 +9,7 @@
 	item_state = "syringe_kit"
 	materials_base = list(MAT_STEEL = 500)
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 10
 	preserve_item = 1
@@ -60,6 +60,11 @@
 	qdel(casing)
 	for(var/key in adding)
 		.[key] += adding[key] * shell_amount
+
+/obj/item/ammo_magazine/get_containing_worth(flags)
+	. = ..()
+	var/obj/item/ammo_casing/ammo_casted = ammo_type
+	. += (isnull(initial_ammo)? max_ammo : initial_ammo) * initial(ammo_casted.worth_intrinsic)
 
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))

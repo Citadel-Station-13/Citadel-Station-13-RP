@@ -15,23 +15,19 @@
  */
 /mob/Initialize(mapload)
 	// mob lists
-	GLOB.mob_list += src
-	if(stat == DEAD)
-		dead_mob_list += src
-	else
-		living_mob_list += src
+	mob_list_register(stat)
+	// actions
+	actions_controlled = new /datum/action_holder/mob_actor(src)
+	actions_innate = new /datum/action_holder/mob_actor(src)
 	// physiology
 	init_physiology()
 	// atom HUDs
-	set_key_focus(src)
 	prepare_huds()
-	for(var/v in GLOB.active_alternate_appearances)
-		if(!v)
-			continue
-		var/datum/atom_hud/alternate_appearance/AA = v
-		AA.onNewMob(src)
+	set_key_focus(src)
 	// todo: remove hooks
 	hook_vr("mob_new",list(src))
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
 	// abilities
 	init_abilities()
 	// inventory
@@ -81,8 +77,13 @@
 		else
 			// mind is not ours, null it out
 			mind = null
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
+	// actions
+	QDEL_NULL(actions_controlled)
+	QDEL_NULL(actions_innate)
 	// this kicks out client
 	ghostize()
 	// get rid of our shit and nullspace everything first..
@@ -91,10 +92,8 @@
 	if(hud_used)
 		QDEL_NULL(hud_used)
 	dispose_rendering()
-	// perspective
-	using_perspective?.remove_mobs(src, TRUE)
-	if(self_perspective)
-		QDEL_NULL(self_perspective)
+	// perspective; it might be gone now because self perspective is destroyed in ..()
+	using_perspective?.remove_mob(src, TRUE)
 	// physiology
 	QDEL_NULL(physiology)
 	physiology_modifiers = null
@@ -103,6 +102,8 @@
 	// actionspeed
 	actionspeed_modification = null
 	return QDEL_HINT_HARDDEL
+
+//* Mob List Registration *//
 
 /mob/proc/mob_list_register(for_stat)
 	GLOB.mob_list += src
@@ -127,7 +128,7 @@
  *
  * This is simply "mob_"+ a global incrementing counter that goes up for every mob
  */
-/mob/GenerateTag()
+/mob/generate_tag()
 	tag = "mob_[++next_mob_id]"
 
 /**
@@ -135,20 +136,15 @@
  *
  * Goes through hud_possible list and adds the images to the hud_list variable (if not already
  * cached)
+ *
+ * todo: this should be atom level but uhh lmao lol
  */
-/atom/proc/prepare_huds()
-	hud_list = list()
-	for(var/hud in hud_possible)
-		var/hint = hud_possible[hud]
-		switch(hint)
-			if(HUD_LIST_LIST)
-				hud_list[hud] = list()
-			else
-				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
-				I.plane = FLOAT_PLANE
-				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
-				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM|KEEP_APART
-				hud_list[hud] = I
+/mob/proc/prepare_huds()
+	if(!atom_huds_to_initialize)
+		return
+	for(var/hud in atom_huds_to_initialize)
+		update_atom_hud_provider(src, hud)
+	atom_huds_to_initialize = null
 
 /mob/proc/remove_screen_obj_references()
 	hands = null
@@ -262,7 +258,7 @@
 	return restrained() ? FULLY_BUCKLED : PARTIALLY_BUCKLED
 
 /mob/proc/is_blind()
-	return ((sdisabilities & SDISABILITY_NERVOUS) || blinded || incapacitated(INCAPACITATION_KNOCKOUT))
+	return (has_status_effect(/datum/status_effect/sight/blindness) || incapacitated(INCAPACITATION_KNOCKOUT))
 
 /mob/proc/is_deaf()
 	return ((sdisabilities & SDISABILITY_DEAF) || ear_deaf || incapacitated(INCAPACITATION_KNOCKOUT))
@@ -309,7 +305,7 @@
  */
 /mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(isturf(A) && !(sight & SEE_TURFS) && !(A in view(client ? client.view : world.view, src)))
 		// shift-click catcher may issue examinate() calls for out-of-sight turfs
@@ -324,8 +320,8 @@
 		for(var/mob/M in viewers(4, src))
 			if(M == src || M.is_blind())
 				continue
-			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
-				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
+			// if(M.client && M.client.get_preference_toggle(/datum/client_preference/examine_look))
+			to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	do_examinate(A)
 
@@ -356,25 +352,25 @@
  */
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(!src || !isturf(src.loc) || !(A in view(14, src)))
 		return 0
-	if(istype(A, /obj/effect/decal/point))
+
+	if(istype(A, /obj/effect/temp_visual/point))
 		return 0
 
 	var/tile = get_turf(A)
 	if (!tile)
 		return 0
 
-	var/obj/P = new /obj/effect/decal/point(tile)
+	var/obj/P = new /obj/effect/temp_visual/point(tile)
 	P.invisibility = invisibility
 	P.plane = ABOVE_PLANE
 	P.layer = FLY_LAYER
 	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
 	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)
 	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
-	QDEL_IN(P, 2 SECONDS)
 	face_atom(A)
 	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
 	return 1
@@ -383,7 +379,7 @@
 	set name = "Set relative layer"
 	set desc = "Set your relative layer to other mobs on the same layer as yourself"
 	set src = usr
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
 	new_layer = clamp(new_layer, -100, 100)
@@ -393,7 +389,7 @@
 	set name = "Move Behind"
 	set desc = "Move behind of a mob with the same base layer as yourself"
 	set src = usr
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(!client.throttle_verb())
 		return
@@ -409,7 +405,7 @@
 	set name = "Move Infront"
 	set desc = "Move infront of a mob with the same base layer as yourself"
 	set src = usr
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(!client.throttle_verb())
 		return
@@ -435,25 +431,13 @@
 	return
 
 /**
- * Verb to activate the object in your held hand
- *
- * Calls attack self on the item and updates the inventory hud for hands
- */
-/mob/verb/mode()
-	set name = "Activate Held Object"
-	set category = "Object"
-	set src = usr
-
-	return
-
-/**
  * Get the notes of this mob
  *
  * This actually gets the mind datums notes
  */
 /mob/verb/memory()
 	set name = "Notes"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	if(mind)
 		mind.show_memory(src)
 	else
@@ -464,7 +448,7 @@
  */
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	msg = sanitize(msg)
 
@@ -562,7 +546,7 @@
  */
 /mob/verb/abandon_mob()
 	set name = "Respawn"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Return to the lobby."
 
 	// don't lose out on that sweet observer playtime
@@ -598,7 +582,7 @@
 		qdel(M)
 		return
 
-	M.key = key
+	transfer_client_to(M)
 	if(M.mind)
 		M.mind.reset()
 	return
@@ -612,13 +596,13 @@
  */
 /mob/verb/return_to_menu()
 	set name = "Return to Menu"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Return to the lobby."
 	return abandon_mob()
 
 /mob/verb/observe()
 	set name = "Observe"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	if(stat != DEAD || istype(src, /mob/new_player))
 		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
@@ -815,7 +799,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return (embedded.len > 0)
 
 /mob/proc/yank_out_object()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."
 	set src in view(1)
@@ -879,7 +863,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 		affected.implants -= selection
 		H.shock_stage+=20
-		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
+		affected.inflict_bodypart_damage(
+			brute = selection.w_class * 3,
+			damage_mode = DAMAGE_MODE_EDGE,
+			weapon_descriptor = "object removal",
+		)
 
 		if(prob(selection.w_class * 5) && (affected.robotic < ORGAN_ROBOT)) //I'M SO ANEMIC I COULD JUST -DIE-.
 			affected.create_specific_wound(/datum/wound/internal_bleeding, min(selection.w_class * 5, 15))
@@ -920,7 +908,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/verb/face_direction()
 
 	set name = "Face Direction"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src = usr
 
 	set_face_dir()
@@ -1053,7 +1041,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return TRUE
 
 /mob/MouseEntered(location, control, params)
-	if(usr != src && usr.is_preference_enabled(/datum/client_preference/mob_tooltips) && src.will_show_tooltip())
+	if(usr != src && usr.get_preference_toggle(/datum/game_preference_toggle/game/mob_tooltips) && src.will_show_tooltip())
 		openToolTip(user = usr, tip_src = src, params = params, title = get_nametag_name(usr), content = get_nametag_desc(usr))
 
 	..()
@@ -1086,7 +1074,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/verb/local_diceroll(n as num)
 	set name = "diceroll"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Roll a random number between 1 and a chosen number."
 	set src = usr
 

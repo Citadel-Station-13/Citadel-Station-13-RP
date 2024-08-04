@@ -18,8 +18,10 @@
 		"Alternate" = "alt",
 	)
 
-	tail = "tail"
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/xenohybrid,
+	)
+
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	max_additional_languages = 2
 
@@ -133,7 +135,7 @@
 
 	return healing_factor // highest value is 6,336
 
-/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/xenohybrid/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	var/heal_amount = heal_rate * handle_healing_conditions(H)
 
 	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)//Heal rate and not heal_amount, since we want to reward taking the modifiers

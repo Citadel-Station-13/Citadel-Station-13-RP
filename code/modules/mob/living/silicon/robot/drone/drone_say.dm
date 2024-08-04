@@ -32,7 +32,7 @@
 		for (var/mob/M in GLOB.player_list)
 			if (istype(M, /mob/new_player))
 				continue
-			else if(M.stat == DEAD &&  M.is_preference_enabled(/datum/client_preference/ghost_ears))
+			else if(M.stat == DEAD &&  M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
 				if(M.client) to_chat(M, "<b>[src]</b> transmits, \"[message]\"")
 		return 1
 	return ..(message, 0)

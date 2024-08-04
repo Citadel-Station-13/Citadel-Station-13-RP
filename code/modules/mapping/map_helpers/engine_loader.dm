@@ -6,14 +6,13 @@
 	// override for map, otherwise defaults to loaded station as we have no way of detecting what's being loaded right now
 	var/for_map
 
-/obj/map_helper/engine_loader/New()
-	return ..()
-
-/obj/map_helper/engine_loader/Initialize(mapload)
-	return ..()
-
-/obj/map_helper/engine_loader/map_initializations(list/bounds, lx, ly, lz, ldir)
+/obj/map_helper/engine_loader/map_initializations(datum/dmm_context/context)
 	. = ..()
+	var/list/bounds = context.loaded_bounds
+	var/lx = bounds[MAP_MINX]
+	var/ly = bounds[MAP_MINY]
+	var/lz = bounds[MAP_MINZ]
+	var/ldir = context.loaded_orientation
 	if(istext(clean_turfs))
 		clean_turfs = safe_json_decode(clean_turfs)
 	if(ispath(for_map))

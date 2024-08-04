@@ -38,7 +38,7 @@
 			if("supply")
 				supply()
 		var/mob/living/carbon/human/H = ishuman(user)? user : null
-		H?.take_organ_damage(5, 0)
+		H?.take_random_targeted_damage(brute = 5, burn = 0)
 		if(src && src.imbue!="supply" && src.imbue!="runestun")
 			if(delete)
 				qdel(src)
@@ -50,7 +50,7 @@
 	if(isliving(user) && iscultist(user))
 		var/mob/living/L = user
 		if(imbue == "runestun")
-			L.take_organ_damage(5, 0)
+			L.take_random_targeted_damage(brute = 5, burn = 0)
 			call(TYPE_PROC_REF(/obj/effect/rune, runestun))(target)
 			qdel(src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE

@@ -4,7 +4,7 @@
 	var/back_icon = "card_back"
 
 /obj/item/deck
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/playing_cards.dmi'
 	var/list/cards = list()
 	var/cooldown = 0 // to prevent spam shuffle
@@ -76,7 +76,7 @@
 
 /obj/item/deck/verb/draw_card()
 
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Draw"
 	set desc = "Draw a card from a deck."
 	set src in view(1)
@@ -118,7 +118,7 @@
 
 /obj/item/deck/verb/deal_card()
 
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Deal"
 	set desc = "Deal a card from a deck."
 	set src in view(1)
@@ -142,7 +142,7 @@
 
 /obj/item/deck/verb/deal_card_multi()
 
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Deal Multiple Cards"
 	set desc = "Deal multiple cards from a deck."
 	set src in view(1)
@@ -220,7 +220,7 @@
 
 
 /obj/item/deck/verb/verb_shuffle()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Shuffle"
 	set desc = "Shuffle the cards in the deck."
 	set src in view(1)
@@ -280,7 +280,7 @@
 
 	icon_state = "card_pack"
 	icon = 'icons/obj/playing_cards.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/list/cards = list()
 	var/parentdeck = null // This variable is added here so that card pack dependent card can be mixed together by defining a "parentdeck" for them
 	drop_sound = 'sound/items/drop/paper.ogg'
@@ -308,7 +308,7 @@
 	icon_state = "empty"
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	var/concealed = 0
 	var/list/cards = list()
@@ -316,7 +316,7 @@
 
 /obj/item/hand/verb/discard()
 
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Discard"
 	set desc = "Place (a) card(s) from your hand in front of you."
 
@@ -366,7 +366,7 @@
 
 /obj/item/hand/verb/Removecard()
 
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove card"
 	set desc = "Remove a card from the hand."
 	set src in view(1)

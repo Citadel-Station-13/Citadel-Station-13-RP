@@ -2,8 +2,9 @@
 	name = "shoulder holster"
 	desc = "A handgun holster."
 	icon_state = "holster"
-	slot = ACCESSORY_SLOT_TORSO //Legacy/balance purposes
+	slot = ACCESSORY_SLOT_WEAPON //Legacy/balance purposes
 	concealed_holster = 1
+	worth_intrinsic = 75 // milrp tax is real
 	var/obj/item/holstered = null
 	var/list/can_hold
 	var/list/cant_hold
@@ -32,7 +33,7 @@
 
 	holstered = I
 	holstered.add_fingerprint(user)
-	w_class = max(w_class, holstered.w_class)
+	set_weight_class(max(w_class, holstered.w_class))
 	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
 	name = "occupied [initial(name)]"
 	playsound(user, "[sound_in]", 75, 0)
@@ -63,7 +64,7 @@
 		user.put_in_hands(holstered)
 		playsound(user, "[sound_out]", 75, 0)
 		holstered.add_fingerprint(user)
-		w_class = initial(w_class)
+		set_weight_class(initial(w_class))
 		clear_holster()
 
 /obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)
@@ -100,7 +101,7 @@
 //For the holster hotkey
 /obj/item/clothing/accessory/holster/verb/holster_verb()
 	set name = "Holster"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
@@ -137,14 +138,12 @@
 	icon_state = "holster"
 	overlay_state = "holster_low"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/hip
 	name = "hip holster"
 	desc = "A handgun holster slung low on the hip."
 	icon_state = "holster_hip"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/leg
 	name = "leg holster"
@@ -152,7 +151,6 @@
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete
 	name = "machete scabbard"
@@ -165,7 +163,6 @@
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 	holster_verb = "sheathe"
-	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete
@@ -189,7 +186,6 @@
 	name = "holy weapon scabbard"
 	desc = "A consecrated morphic scabbard etched with arcane runes. The device of a golden eye has been worked into the buckle."
 	icon_state = "holster_machete"
-	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
 	can_hold = list(/obj/item/nullrod)
 	sound_in = 'sound/effects/holster/sheathin.ogg'

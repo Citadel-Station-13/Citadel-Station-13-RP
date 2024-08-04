@@ -20,8 +20,6 @@
 	#define EXAMINE_POSITION_BEFORE (1<<1)
 	//*End positions
 	#define COMPONENT_EXNAME_CHANGED (1<<0)
-/// From base of atom/handle_atom_del(): (atom/deleted)
-////#define COMSIG_ATOM_CONTENTS_DEL "atom_contents_del"
 /// From base of atom/has_gravity(): (turf/location, list/forced_gravities)
 ////#define COMSIG_ATOM_HAS_GRAVITY "atom_has_gravity"
 /// For when an atom has been created through processing (atom/original_atom, list/chosen_processing_option)
@@ -48,3 +46,6 @@
 
 /// When the transform or an atom is varedited through vv topic.
 ////#define COMSIG_ATOM_VV_MODIFY_TRANSFORM "atom_vv_modify_transform"
+
+/// called when compile_overlays() is ran. args: ()
+#define COMSIG_ATOM_COMPILED_OVERLAYS "atom_compiled_overlays"

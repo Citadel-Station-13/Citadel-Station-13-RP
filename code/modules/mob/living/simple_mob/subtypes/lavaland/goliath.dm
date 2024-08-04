@@ -1,7 +1,7 @@
 /datum/category_item/catalogue/fauna/goliath/goliaths
 	name = "Goliaths"
 	desc = "The Goliath is native to KT-943, known commonly as Surt. Powerful and long-lived, early \
-	NanoTrasen mining operations struggled to contend with these hardy beasts. Due to overhunting and \
+	Nanotrasen mining operations struggled to contend with these hardy beasts. Due to overhunting and \
 	a presumed ecological disaster resulting from off-world exposure to contaminants, Goliaths were \
 	classified as extinct. Recent seismic activity has since opened up fissures in the surface of \
 	KT-943 which have provided fresh insights into the Goliath life cycle. Archaeological records \
@@ -26,7 +26,7 @@
 /datum/category_item/catalogue/fauna/goliath
 	name = "Goliath"
 	desc = "The common Goliath is easily recognizable. As KT-943's only known apex predator, it has left a \
-	lasting impression on NanoTrasen miners and engineers. Goliaths are bulky quadrupeds with thick, leathery \
+	lasting impression on Nanotrasen miners and engineers. Goliaths are bulky quadrupeds with thick, leathery \
 	hides which protect them from KT-943's volcanic atmosphere. At some point they evolved ambulatory tendrils \
 	which are used primarly for hunting and mating. These tendrils are able to regenerate if severed, although \
 	this process takes some time. Due to the way they employ their tendrils as weapons, it is difficult to \
@@ -77,7 +77,7 @@
 	faction = "lavaland"
 	speak_emote = list("bellows")
 	say_list_type = /datum/say_list/goliath
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/goliath
 
 	var/datum/reagents/goliath_sac = null
 	var/pre_attack = 0
@@ -87,12 +87,12 @@
 	var/pregnant = 0
 	var/child_type = /mob/living/simple_mob/animal/goliath/calf
 
-/datum/ai_holder/simple_mob/melee/goliath
+/datum/ai_holder/polaris/simple_mob/melee/goliath
 	hostile = TRUE
 	retaliate = TRUE
 	mauling = TRUE
 
-/datum/ai_holder/simple_mob/melee/goliath/calf
+/datum/ai_holder/polaris/simple_mob/melee/goliath/calf
 	hostile = TRUE
 	retaliate = TRUE
 	mauling = FALSE
@@ -272,7 +272,7 @@
 		C.afflict_stun(20 * 2)
 		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
-	for(var/obj/mecha/M in loc)
+	for(var/obj/vehicle/sealed/mecha/M in loc)
 		M.take_damage_legacy(20, BRUTE, null, null, null, 25)
 	if(!latched)
 		retract()
@@ -338,7 +338,7 @@
 	hide_amount = 2
 	exotic_amount = 2
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath/calf
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/goliath/calf
 
 	var/amount_grown = 1
 	var/spawn_delay = 300

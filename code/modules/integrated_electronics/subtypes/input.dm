@@ -224,7 +224,10 @@
 		"clone damage"			= IC_PINTYPE_NUMBER,
 		"blood loss"			= IC_PINTYPE_NUMBER,
 		"pain level"			= IC_PINTYPE_NUMBER,
-		"radiation"				= IC_PINTYPE_NUMBER
+		"radiation"				= IC_PINTYPE_NUMBER,
+		"nutrition"				= IC_PINTYPE_NUMBER,
+		"list of reagents"		= IC_PINTYPE_LIST,
+		"quantity of reagents"	= IC_PINTYPE_LIST
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -254,7 +257,41 @@
 			set_pin_data(IC_OUTPUT, 10, round((H.vessel.get_reagent_amount("blood") / H.species.blood_volume)*100))
 			set_pin_data(IC_OUTPUT, 11, H.traumatic_shock)
 			set_pin_data(IC_OUTPUT, 12, H.radiation)
+			set_pin_data(IC_OUTPUT, 13, H.nutrition)
+			var/cont[0]
+			var/amt[0]
+			for(var/datum/reagent/RE in H.reagents.reagent_list)
+				if(RE.scannable)
+					cont += RE.id
+					amt	+= round(H.reagents.get_reagent_amount(RE.id), 1)
+			set_pin_data(IC_OUTPUT, 14, cont)
+			set_pin_data(IC_OUTPUT, 15, amt)
 
+		push_data()
+		activate_pin(2)
+
+/obj/item/integrated_circuit/input/view_filter
+	name = "view filter"
+	desc = "This circuit will filter every object in assembly view."
+	extended_desc = "The first pin is ref to filter, to see avaliable filters go to Filter category. The output will contents everything with filtering type"
+	inputs = list(
+		"filter" = IC_PINTYPE_REF
+	)
+	outputs = list(
+		"objects" = IC_PINTYPE_LIST
+	)
+	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 30
+
+/obj/item/integrated_circuit/input/view_filter/do_work(ord)
+	var/list/objects = list()
+	var/obj/item/integrated_circuit/filter/ref/filter = get_pin_data(IC_INPUT, 1)
+	if(istype(filter) && assembly && (filter in assembly.assembly_components))
+		for(var/atom/A in view(get_turf(assembly)))
+			if(istype(A, filter.filter_type))
+				objects.Add(WEAKREF(A))
+		set_pin_data(IC_OUTPUT, 1, objects)
 		push_data()
 		activate_pin(2)
 
@@ -453,13 +490,11 @@
 
 /obj/item/integrated_circuit/input/local_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		set_pin_data(IC_OUTPUT, 1, null)
 		if(!get_pin_data(IC_INPUT, 1)) // Check toggle.  We can just grab ref if false.
-			O.data = WEAKREF(assembly.loc)
-		else if(get_pin_data(IC_INPUT, 1) && istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
-			O.data = WEAKREF(assembly.loc)
-		istype(O.data, /obj/item/electronic_assembly/clothing) ? (O.data = WEAKREF(O.data)) : null
+			set_pin_data(IC_OUTPUT, 1, assembly.loc)
+		else if(istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
+			set_pin_data(IC_OUTPUT, 1, assembly.loc)
 		set_pin_data(IC_OUTPUT, 2, isturf(assembly.loc))
 		set_pin_data(IC_OUTPUT, 3, ismob(assembly.loc))
 		push_data()
@@ -482,16 +517,13 @@
 
 /obj/item/integrated_circuit/input/adjacent_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/atom/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 
-		if(!isweakref(I.data))
+		if(!istype(I))
 			return
-		var/atom/A = I.data.resolve()
-		if(!A)
-			return
-		var/desired_type = A.type
+
+		var/desired_type = I.type
 
 		var/list/nearby_things = range(1, get_turf(src))
 		var/list/valid_things = list()
@@ -500,11 +532,12 @@
 				continue
 			valid_things.Add(thing)
 		if(valid_things.len)
-			O.data = WEAKREF(pick(valid_things))
+			set_pin_data(IC_OUTPUT, 1, pick(valid_things))
+			push_data()
 			activate_pin(2)
 		else
+			push_data()
 			activate_pin(3)
-		O.push_data()
 
 /obj/item/integrated_circuit/input/advanced_locator
 	complexity = 6
@@ -530,32 +563,31 @@
 
 /obj/item/integrated_circuit/input/advanced_locator/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/datum/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 		var/turf/T = get_turf(src)
 		var/list/nearby_things = view(radius,T)
 		var/list/valid_things = list()
-		if(isweakref(I.data))
-			var/atom/A = I.data.resolve()
+		if(istype(I))
+			var/atom/A = I
 			var/desired_type = A.type
 			if(desired_type)
 				for(var/i in nearby_things)
 					var/atom/thing = i
 					if(thing.type == desired_type)
 						valid_things.Add(thing)
-		else if(istext(I.data))
-			var/DT = I.data
+		else if(istext(I))
+			var/DT = I
 			for(var/i in nearby_things)
 				var/atom/thing = i
 				if(findtext(addtext(thing.name," ",thing.desc), DT, 1, 0) )
 					valid_things.Add(thing)
 		if(valid_things.len)
-			O.data = WEAKREF(pick(valid_things))
-			O.push_data()
+			set_pin_data(IC_OUTPUT, 1, pick(valid_things))
+			push_data()
 			activate_pin(2)
 		else
-			O.push_data()
+			push_data()
 			activate_pin(3)
 
 
@@ -584,11 +616,10 @@
 
 /obj/item/integrated_circuit/input/advanced_locator_list/do_work(ord)
 	if(ord == 1)
-		var/datum/integrated_io/I = inputs[1]
-		var/datum/integrated_io/O = outputs[1]
-		O.data = null
+		var/datum/I = get_pin_data(IC_INPUT, 1)
+		set_pin_data(IC_OUTPUT, 1, null)
 		var/list/input_list = list()
-		input_list = I.data
+		input_list = I
 		if(length(input_list))	//if there is no input don't do anything.
 			var/turf/T = get_turf(src)
 			var/list/nearby_things = view(radius,T)
@@ -613,14 +644,14 @@
 								continue
 							valid_things.Add(WEAKREF(thing))
 			if(valid_things.len)
-				O.data = valid_things
-				O.push_data()
+				set_pin_data(IC_OUTPUT, 1, valid_things)
+				push_data()
 				activate_pin(2)
 			else
-				O.push_data()
+				push_data()
 				activate_pin(3)
 		else
-			O.push_data()
+			push_data()
 			activate_pin(3)
 
 
@@ -676,17 +707,16 @@
 	activate_pin(2)
 
 /obj/item/integrated_circuit/input/signaler/proc/signal_good(datum/signal/signal)
-	if(!signal || signal.source == src)
+	if(!signal)
 		return FALSE
-	if(code)
-		var/real_code = 0
-		if(isnum(code))
-			real_code = code
-		var/rec = 0
-		if(signal.encryption)
-			rec = signal.encryption
-		if(real_code != rec)
-			return FALSE
+	if(!code)
+		return FALSE
+	if(!isnum(code))
+		return FALSE
+	if(!signal.encryption)
+		return FALSE
+	if(code != signal.encryption)
+		return FALSE
 	return TRUE
 
 /obj/item/integrated_circuit/input/signaler/proc/create_signal()
@@ -727,31 +757,25 @@
 	name = "advanced integrated signaler"
 	icon_state = "signal_advanced"
 	desc = "Signals from a signaler can be received with this, allowing for remote control.  Additionally, it can send signals as well."
-	extended_desc = "When a signal is received from another signaler with the right id tag, the 'on signal received' activator pin will be pulsed and the command output is updated.  \
+	extended_desc = "When a signal is received from another signaler with the right code, the 'on signal received' activator pin will be pulsed and the command output is updated.  \
 	The two input pins are to configure the integrated signaler's settings.  Note that the frequency should not have a decimal in it.  \
 	Meaning the default frequency is expressed as 1457, not 145.7.  To send a signal, pulse the 'send signal' activator pin. Set the command output to set the message received."
 	complexity = 8
-	inputs = list("frequency" = IC_PINTYPE_NUMBER, "id tag" = IC_PINTYPE_STRING, "command" = IC_PINTYPE_STRING)
+	inputs = list("frequency" = IC_PINTYPE_NUMBER, "code" = IC_PINTYPE_NUMBER, "command" = IC_PINTYPE_STRING)
 	outputs = list("received command" = IC_PINTYPE_STRING)
 	var/command
-	code = "Integrated_Circuits"
+	code = 30
 	simple = 0
 
 /obj/item/integrated_circuit/input/signaler/advanced/on_data_written()
 	..()
 	command = get_pin_data(IC_INPUT,3)
 
-/obj/item/integrated_circuit/input/signaler/advanced/signal_good(datum/signal/signal)
-	if(!..() || signal.data["tag"] != code)
-		return FALSE
-	return TRUE
-
 /obj/item/integrated_circuit/input/signaler/advanced/create_signal()
 	var/datum/signal/signal = new()
 	signal.transmission_method = 1
-	signal.data["tag"] = code
 	signal.data["command"] = command
-	signal.encryption = 0
+	signal.encryption = code
 	return signal
 
 /obj/item/integrated_circuit/input/signaler/advanced/treat_signal(datum/signal/signal)
@@ -1149,12 +1173,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 20
 
-/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/ask_for_input(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/obj_scanner/attackby_react(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/obj_scanner/attackby_react(mob/living/user, obj/item/I, a_intent)
 	if(!isobj(I) || a_intent!=INTENT_HELP || !check_then_do_work())
 		return FALSE
 	var/pu = get_pin_data(IC_INPUT, 1)
@@ -1171,7 +1195,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	desc = "This monitors the charge level of an internal battery."
 	icon_state = "internalbm"
 	extended_desc = "This circuit will give you the values of charge, max charge and the current percentage of the internal battery on demand."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	complexity = 1
 	inputs = list()
 	outputs = list(
@@ -1208,7 +1232,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	desc = "This can read the battery state of any device in view."
 	icon_state = "externalbm"
 	extended_desc = "This circuit will give you the charge, max charge and the current percentage values of any device or battery in view."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	complexity = 2
 	inputs = list("target" = IC_PINTYPE_REF)
 	outputs = list(
@@ -1242,7 +1266,8 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 			if(cell)
 
 				var/turf/A = get_turf(src)
-				if(AM in view(A))
+				var/turf/B = get_turf(AM)
+				if(A.Adjacent(B) || (AM in view(A)))
 					push_data()
 					set_pin_data(IC_OUTPUT, 1, cell.charge)
 					set_pin_data(IC_OUTPUT, 2, cell.maxcharge)
@@ -1295,7 +1320,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	extended_desc = "This chip contains an esoteric mix of sensors with spurious claims.  Proponents claim it facilitates communication \
 	with beings from other dimensions.  A larger majority believe it to be a sophisticated hacking device.  The designers simply state\
 	that \"more testing is required\"."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	complexity = 4
 	inputs = list("toggle on" = IC_PINTYPE_BOOLEAN)
 //	outputs = list("" = )
@@ -1334,12 +1359,12 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
-/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(obj/item/I, mob/living/user, a_intent)
+/obj/item/integrated_circuit/input/data_card_reader/ask_for_input(mob/living/user, obj/item/I,  a_intent)
 	if(!isobj(I))
 		return FALSE
 	attackby_react(I, user, a_intent)
 
-/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/living/user, intent)
+/obj/item/integrated_circuit/input/data_card_reader/attackby_react(mob/living/user, obj/item/I,  intent)
 	var/obj/item/card/data/card = I
 	var/write_mode = get_pin_data(IC_INPUT, 3)
 	if(card)

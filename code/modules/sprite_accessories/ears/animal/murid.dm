@@ -4,7 +4,7 @@
 	id = "ears_mouse"
 	icon_state = "mouse"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "mouseinner"
 
 /datum/sprite_accessory/ears/mousehcno
@@ -12,7 +12,7 @@
 	id = "ears_mouse_outer"
 	icon_state = "mouse"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/mouse_grey
 	name = "mouse, grey"

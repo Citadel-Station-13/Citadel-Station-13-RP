@@ -952,7 +952,6 @@
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
 "kH" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
@@ -2468,7 +2467,6 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "FV" = (
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "Gb" = (

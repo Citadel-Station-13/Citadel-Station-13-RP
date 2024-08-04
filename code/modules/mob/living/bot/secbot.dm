@@ -6,7 +6,7 @@
 #define SECBOT_THREAT_ATTACK 8
 /datum/category_item/catalogue/technology/bot/secbot
 	name = "Bot - Securitron"
-	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \
+	desc = "The Securitron is a proprietary support bot designed by Nanotrasen. \
 	Utilizing the standard Security department helmet, this wheeled automaton moves \
 	over floors at high speed to intercept flagged personnel. It is capable of pacifying \
 	suspects with its stun baton, and may assist in the arrest process by cuffing disabled \
@@ -69,10 +69,10 @@
 /datum/category_item/catalogue/technology/bot/secbot/beepsky
 	name = "Bot - Officer Beepsky"
 	desc = "Officer Beepsky was designed to be the mascot for \
-	NanoTrasen's unveiling of the Securitron line. A favorite among \
-	NanoTrasen workers due to its iconic profile and tendency to break out into \
+	Nanotrasen's unveiling of the Securitron line. A favorite among \
+	Nanotrasen workers due to its iconic profile and tendency to break out into \
 	wild bouts of profanity, the Beepsky pattern chassis is often replicated \
-	on individual NanoTrasen facilities as a form of morale booster. \
+	on individual Nanotrasen facilities as a form of morale booster. \
 	The model's increased durability ensures Officer Beepsky stands wheels and visors \
 	above its inferior peers."
 	value = CATALOGUER_REWARD_TRIVIAL
@@ -87,7 +87,7 @@
 
 /datum/category_item/catalogue/technology/bot/secbot/slime
 	name = "Bot - Slime Securitron"
-	desc = "A rare NanoTrasen variant of their Securitron designs, \
+	desc = "A rare Nanotrasen variant of their Securitron designs, \
 	Slime Securitrons utilize the same technology and programming as \
 	the standard model, but with equipment and parameters designed to \
 	pacify Slimes. Prometheans often view these bots with suspicion."
@@ -224,7 +224,7 @@
 	var/curhealth = health
 	. = ..()
 	if(health < curhealth && on == TRUE)
-		react_to_attack(user)
+		react_to_attack_polaris(user)
 
 /mob/living/bot/secbot/bullet_act(var/obj/projectile/P)
 	var/curhealth = health
@@ -232,14 +232,14 @@
 	. = ..()
 	//if we already have a target just ignore to avoid lots of checking
 	if(!target && health < curhealth && shooter && (shooter in view(world.view, src)))
-		react_to_attack(shooter)
+		react_to_attack_polaris(shooter)
 
 /mob/living/bot/secbot/attack_generic(var/mob/attacker)
 	if(attacker)
-		react_to_attack(attacker)
+		react_to_attack_polaris(attacker)
 	..()
 
-/mob/living/bot/secbot/proc/react_to_attack(mob/attacker)
+/mob/living/bot/secbot/proc/react_to_attack_polaris(mob/attacker)
 	if(!on)		// We don't want it to react if it's off
 		return
 
@@ -393,7 +393,7 @@
 		var/mob/living/L = M
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/S = L
-			var/datum/ai_holder/simple_mob/xenobio_slime/sai = S.ai_holder
+			var/datum/ai_holder/polaris/simple_mob/xenobio_slime/sai = S.ai_holder
 			if(!S.is_justified_to_discipline() && !sai?.rabid) //will kill angry slimes.
 				attacked = FALSE //quit abusing the damn slimes. I don't care if they're hurting you.
 				return

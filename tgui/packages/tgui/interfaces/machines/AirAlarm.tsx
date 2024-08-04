@@ -252,7 +252,7 @@ const AirAlarmControlHome = (props, context) => {
         icon={atmos_alarm
           ? 'exclamation-triangle'
           : 'exclamation'}
-        color={atmos_alarm && 'caution'}
+        color={!!atmos_alarm && 'caution'}
         content="Area Atmosphere Alarm"
         onClick={() => act(atmos_alarm ? 'reset' : 'alarm')} />
       <Box mt={1} />

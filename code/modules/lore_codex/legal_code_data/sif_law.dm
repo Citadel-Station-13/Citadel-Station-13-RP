@@ -56,7 +56,7 @@
 	name = "Theft"
 	definition = "To knowingly take items without the consent of the owner."
 	suggested_punishments = "Brig time of 20 minutes.  Demotion at discretion of Superior.  Confiscation of tools used at discretion of arresting officer."
-	notes = "It is assumed that persons inside a department using departmental equipment have the consent of NanoTrasen to take those items. \
+	notes = "It is assumed that persons inside a department using departmental equipment have the consent of Nanotrasen to take those items. \
 	Security does not commit theft when taking contraband away from a detainee.  Stolen items are to be confiscated and returned to \
 	their original owner or location."
 	mandated = TRUE

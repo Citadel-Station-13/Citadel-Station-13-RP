@@ -30,7 +30,6 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "mining_planet";
-	layer = 3.3;
 	name = "Mining Dock Controller";
 	pixel_y = 30
 	},

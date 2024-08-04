@@ -4,7 +4,7 @@
 	networks = list(NETWORK_ENGINEERING)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	sprites = list(
-		"M-USE NanoTrasen" = "robotEngi",
+		"M-USE Nanotrasen" = "robotEngi",
 		"Cabeiri" = "eyebot-engineering",
 		"Haruka" = "marinaENG",
 		"Usagi" = "tallyellow",

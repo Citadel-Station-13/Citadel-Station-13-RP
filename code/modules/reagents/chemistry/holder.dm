@@ -586,15 +586,18 @@
 	else
 		var/total_transferable = 0
 		var/list/reagents_transferring = list()
-		// preprocess
+		// preprocess to IDs
 		for(var/i in 1 to length(reagents))
-			reagents[i] = SSchemistry.fetch_reagent(reagents[i])
+			var/datum/reagent/resolved = SSchemistry.fetch_reagent(reagents[i])
+			reagents[i] = resolved.id
 		// filter & gather
 		for(var/datum/reagent/R as anything in reagent_list)
 			if(!(R.id in reagents))
 				continue
 			total_transferable += R.volume
 			reagents_transferring += R
+		if(!total_transferable)
+			return 0
 		var/ratio = min(1, (target.maximum_volume - target.total_volume) / total_transferable)
 		. = total_transferable * ratio
 		if(!copy)

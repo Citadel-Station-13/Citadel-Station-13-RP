@@ -151,10 +151,9 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 		ui = new(user, src, "OrionGame", name)
 		ui.open()
 
-/obj/machinery/computer/arcade/orion_trail/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/moods),
-	)
+/obj/machinery/computer/arcade/orion_trail/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/moods
+	return ..()
 
 /obj/machinery/computer/arcade/orion_trail/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
@@ -497,7 +496,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	desc = "A model spaceship, it looks like those used back in the day when travelling to Orion! It even has a miniature FX-293 reactor, which was renowned for its instability and tendency to explode..."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "ship"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/active = FALSE //if the ship is on
 
 /obj/item/orion_ship/examine(mob/user, dist)

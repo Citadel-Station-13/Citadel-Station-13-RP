@@ -181,12 +181,17 @@
 				for(var/obj/item/organ/external/child in E.children)
 					if(nopain && nopain < 2 && !(child.robotic >= ORGAN_ROBOT))
 						nopain = 0
-					child.take_damage(0, damage)
+					child.inflict_bodypart_damage(
+						burn = damage,
+					)
 					damage -= (damage*0.5)//IF someone's arm is plunged in, the hand should take most of it
 
 			E.take_damage(0, damage)
 		else
-			victim.apply_damage(damage, BURN, user.zone_sel.selecting)
+			victim.take_targeted_damage(
+				burn = damage,
+				body_zone = user.zone_sel.selecting,
+			)
 
 
 		if(!nopain)

@@ -3,4 +3,4 @@
 	id = "tail_snake"
 	icon_state = "snaketail"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

@@ -42,7 +42,7 @@
 
 /obj/item/gun/energy/sizegun/proc/select_size()
 	set name = "Select Size"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	var/size_select = input("Put the desired size (25-200%)", "Set Size", size_set_to*100) as num

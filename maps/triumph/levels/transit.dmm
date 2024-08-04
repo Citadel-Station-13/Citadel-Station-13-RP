@@ -31,7 +31,6 @@
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)
 "eu" = (
-/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)
 "fg" = (
@@ -244,7 +243,6 @@
 /turf/unsimulated/wall,
 /area/space)
 "yv" = (
-/obj/effect/debris/cleanable/dirt,
 /obj/structure/holostool,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)

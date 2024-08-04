@@ -165,13 +165,13 @@
 
 /obj/item/clothing/head/beret/centcom/officer
 	name = "officers beret"
-	desc = "A dark blue beret adorned with a silver patch. Worn by NanoTrasen Officials."
+	desc = "A dark blue beret adorned with a silver patch. Worn by Nanotrasen Officials."
 	icon_state = "beret_centcom_officer"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
 
 /obj/item/clothing/head/beret/centcom/captain
 	name = "captains beret"
-	desc = "A white beret adorned with a blue patch. Worn by NanoTrasen command staff."
+	desc = "A white beret adorned with a blue patch. Worn by Nanotrasen command staff."
 	icon_state = "beret_centcom_captain"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
 

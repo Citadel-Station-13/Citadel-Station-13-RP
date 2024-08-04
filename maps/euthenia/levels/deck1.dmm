@@ -600,7 +600,6 @@
 /area/crew_quarters/bar)
 "azB" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = -27
 	},
 /turf/simulated/floor/carpet/oracarpet,
@@ -667,7 +666,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -916,7 +914,7 @@
 	pixel_y = -26;
 	specialfunctions = 4
 	},
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -958,7 +956,6 @@
 /area/crew_quarters/captain)
 "aWt" = (
 /obj/machinery/newscaster{
-	layer = 3.3;
 	pixel_x = 27
 	},
 /turf/simulated/floor/carpet/purcarpet,
@@ -1090,9 +1087,6 @@
 	dir = 5
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
 "bia" = (
@@ -1833,9 +1827,7 @@
 /area/crew_quarters/bar)
 "bTF" = (
 /obj/structure/catwalk,
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one)
@@ -1877,15 +1869,12 @@
 /area/maintenance/security/port)
 "bWL" = (
 /obj/structure/sign/directions/security{
-	dir = 2;
 	pixel_y = -4
 	},
 /obj/structure/sign/directions/medical{
-	dir = 2;
 	pixel_y = 8
 	},
 /obj/structure/sign/directions/science{
-	dir = 2;
 	pixel_y = 3
 	},
 /turf/simulated/wall/r_wall,
@@ -1982,7 +1971,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "cbf" = (
@@ -2002,7 +1991,7 @@
 /turf/simulated/floor/plating,
 /area/medical/medbay)
 "cdY" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -2075,7 +2064,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
 "chW" = (
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -2220,20 +2209,13 @@
 "cmR" = (
 /turf/simulated/floor/crystal,
 /area/space)
-"cnb" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
 "cnv" = (
 /obj/machinery/door/window/eastleft{
 	dir = 1
 	},
 /obj/structure/cable/green,
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/security/forensics)
 "cnB" = (
@@ -2266,7 +2248,7 @@
 "cnV" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
@@ -2401,7 +2383,7 @@
 /turf/simulated/floor/glass/reinforced,
 /area/crew_quarters/bar)
 "cvu" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -2477,9 +2459,6 @@
 /area/crew_quarters/bar)
 "cyF" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "cyI" = (
@@ -2873,7 +2852,7 @@
 	dir = 4
 	},
 /obj/structure/closet/l3closet/scientist/double,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -3333,7 +3312,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "dCH" = (
@@ -3569,7 +3548,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "dYv" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -3818,9 +3797,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
 "ekO" = (
@@ -3952,7 +3928,7 @@
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/aft/starboard)
 "epA" = (
-/obj/machinery/power/apc/critical/east_bump,
+/obj/machinery/power/apc/critical/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -4004,7 +3980,7 @@
 /area/medical/reception)
 "eri" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/security/port)
 "erm" = (
@@ -4063,13 +4039,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
-"etO" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/security/briefingroom)
 "euS" = (
 /obj/structure/bed/chair/comfy/purp,
 /obj/item/radio/intercom{
@@ -4179,7 +4148,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/security/lobby)
@@ -4213,13 +4182,6 @@
 /obj/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
-"eBW" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/main_map/maintenance/deck_one/aft/starboard)
 "eCl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -4592,7 +4554,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/aft/port)
 "eVW" = (
@@ -4635,7 +4597,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -4959,7 +4921,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -5856,19 +5818,6 @@
 	},
 /turf/simulated/floor,
 /area/holodeck_control)
-"glF" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
 "glV" = (
 /obj/structure/closet/bombclosetsecurity,
 /obj/effect/floor_decal/corner/blue{
@@ -6012,9 +5961,6 @@
 /area/medical/medbay)
 "gue" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/forward/starboard)
 "gul" = (
@@ -6160,7 +6106,6 @@
 "gDQ" = (
 /obj/machinery/door/window{
 	desc = "Electric Hazard Behind. Enter at own risk";
-	dir = 2;
 	name = "Electron Reservoir";
 	req_one_access = list()
 	},
@@ -6171,9 +6116,6 @@
 	dir = 10
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "gDV" = (
@@ -6650,7 +6592,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/critical/north_bump,
+/obj/machinery/power/apc/critical/north_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/Hangar_bay/deck1/a)
 "hlh" = (
@@ -6782,9 +6724,6 @@
 	dir = 1
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "hrh" = (
@@ -6970,13 +6909,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
-"hBJ" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_one/forward/port)
 "hBV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7488,13 +7420,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1)
-"ijP" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_one/aft/port)
 "ijT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7651,12 +7576,9 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "iuu" = (
@@ -7670,14 +7592,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/forward/starboard)
-"iuI" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/tether/surfacebase/security/iaa/officecommon)
 "iuK" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -7839,7 +7753,7 @@
 /area/main_map/Hangar_bay/deck1)
 "iDo" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/captain)
 "iDV" = (
@@ -7881,8 +7795,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 10
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/white,
@@ -8196,12 +8109,9 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "iXF" = (
@@ -8233,10 +8143,7 @@
 /area/medical/surgery_hallway)
 "iYM" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officeb)
 "iYZ" = (
@@ -8519,8 +8426,7 @@
 /area/security/warden)
 "jAs" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -8810,9 +8716,6 @@
 /area/space)
 "jSR" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/crystal,
 /area/space)
 "jSV" = (
@@ -8880,7 +8783,7 @@
 "jWO" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "jXb" = (
@@ -9014,14 +8917,10 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -25
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "kgz" = (
@@ -10002,10 +9901,7 @@
 /area/medical/surgery_hallway)
 "lhu" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officea)
 "liV" = (
@@ -10075,7 +9971,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -10091,7 +9987,6 @@
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
 /turf/simulated/floor/plating,
@@ -10109,7 +10004,7 @@
 /turf/simulated/wall,
 /area/security/detectives_office)
 "lph" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -10123,16 +10018,6 @@
 /obj/structure/table/glass,
 /turf/simulated/floor/crystal,
 /area/space)
-"lqe" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/main_map/maintenance/deck_one/aft/port)
 "lqo" = (
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
@@ -10166,7 +10051,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "lsH" = (
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -10317,7 +10202,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officecommon)
 "lDd" = (
@@ -10327,9 +10212,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "lDo" = (
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one)
@@ -10441,7 +10324,7 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1379;
 	master_tag = "solar_dock";
 	name = "interior access button";
@@ -10494,7 +10377,7 @@
 /area/main_map/maintenance/atmospheric_substation/medical)
 "lOT" = (
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1379;
 	master_tag = "solar_dock";
 	name = "exterior access button";
@@ -10556,9 +10439,6 @@
 /obj/machinery/door/airlock/glass,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/iaa/officecommon)
 "lVy" = (
@@ -10571,7 +10451,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -10623,7 +10503,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "lYx" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -10830,8 +10710,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
 "mnb" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/structure/table/glass,
@@ -10848,7 +10727,7 @@
 	},
 /obj/item/hand_labeler,
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "moz" = (
@@ -11060,9 +10939,6 @@
 /area/tether/surfacebase/security/lobby)
 "myV" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay/hangar)
 "mzs" = (
@@ -11202,12 +11078,9 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "kitchen-c";
-	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
@@ -11639,17 +11512,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1/fore)
-"ncf" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/tether/surfacebase/security/iaa/officecommon)
 "nch" = (
 /obj/structure/catwalk,
 /obj/structure/handrail,
@@ -11710,13 +11572,6 @@
 "niL" = (
 /turf/simulated/wall,
 /area/main_map/maintenance/deck_one)
-"njl" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/research_foyer)
 "njr" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -11833,13 +11688,10 @@
 "nsv" = (
 /obj/landmark/spawnpoint/job/xenobotanist,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "nsF" = (
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -11849,7 +11701,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "ntk" = (
@@ -11889,7 +11741,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/bar)
 "nvx" = (
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12163,7 +12015,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_9)
 "nIK" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12201,7 +12053,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "nLk" = (
@@ -12238,7 +12090,7 @@
 /area/main_map/Hangar_bay/deck1/a)
 "nMo" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/solars)
 "nOk" = (
@@ -12316,7 +12168,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "nUG" = (
@@ -12367,7 +12219,7 @@
 	dir = 5
 	},
 /obj/machinery/holoplant,
-/obj/machinery/power/apc/high/north_bump,
+/obj/machinery/power/apc/high/north_mount,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -12793,7 +12645,7 @@
 /turf/simulated/floor/reinforced,
 /area/security/tactical)
 "owq" = (
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/dark,
 /area/medical/surgery_hallway)
@@ -12911,7 +12763,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1/fore)
 "oHh" = (
-/obj/machinery/power/apc/critical/east_bump,
+/obj/machinery/power/apc/critical/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/main_map/Hangar_bay/deck1)
@@ -13070,9 +12922,6 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/lab)
 "oPS" = (
@@ -13264,7 +13113,7 @@
 /turf/simulated/floor/tiled,
 /area/main_map/hallway/deck1/fore)
 "pat" = (
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -13948,11 +13797,7 @@
 /obj/structure/table/reinforced,
 /obj/item/book/manual/legal/sop_vol2,
 /obj/item/book/manual/legal/sop_vol1,
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_x = 4;
-	pixel_y = 26
-	},
+/obj/machinery/fire_alarm/north_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
 "pQm" = (
@@ -14157,7 +14002,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/main_map/maintenance/deck_one)
 "qci" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -14267,13 +14112,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"qju" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/security/hallway)
 "qjL" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -14307,7 +14145,7 @@
 /area/crew_quarters/sleep/Dorm_1)
 "qlB" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/heads/hos)
 "qlJ" = (
@@ -14720,13 +14558,6 @@
 "qPR" = (
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
-"qQe" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/security/hallway)
 "qQh" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -14758,7 +14589,6 @@
 	pixel_y = 8
 	},
 /obj/structure/sign/directions/science{
-	dir = 2;
 	pixel_y = 3
 	},
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -14907,7 +14737,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)
 "rat" = (
@@ -15005,7 +14835,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "riy" = (
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -15056,16 +14886,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
-"rkO" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/lino,
-/area/security/detectives_office)
 "rlz" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -15231,12 +15051,9 @@
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bar";
-	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/machinery/door/firedoor{
-	dir = 2
-	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "ryY" = (
@@ -15297,10 +15114,7 @@
 	},
 /obj/item/storage/firstaid/adv,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "rBZ" = (
@@ -15315,7 +15129,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/main_map/maintenance/deck_one/port)
 "rEB" = (
@@ -16174,7 +15988,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hor)
 "sQu" = (
@@ -16185,8 +15999,7 @@
 /obj/machinery/computer/secure_data{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled/dark,
@@ -16214,13 +16027,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
-"sSM" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/lab)
 "sTr" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -16234,7 +16040,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/main_map/maintenance/deck_one/starboard)
 "sVE" = (
@@ -16250,7 +16056,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/power/apc/direction_bump/south,
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -16281,9 +16087,6 @@
 	req_one_access = list(38,63);
 	name = "Security";
 	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lobby)
@@ -16662,7 +16465,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/hallway)
 "toK" = (
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -16867,7 +16670,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/carpet/tealcarpet,
 /area/crew_quarters/heads/cmo)
 "tBJ" = (
@@ -17345,7 +17148,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "uaF" = (
@@ -17381,7 +17184,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
 "ubn" = (
@@ -17841,7 +17644,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "utn" = (
-/obj/machinery/power/apc/critical/south_bump,
+/obj/machinery/power/apc/critical/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -18008,13 +17811,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
-"uDN" = (
-/obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/main_map/hallway/deck1)
 "uDX" = (
 /turf/simulated/wall/prepainted/civilian,
 /area/crew_quarters/sleep/Dorm_9)
@@ -18156,7 +17952,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/green,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "uMf" = (
@@ -18180,8 +17976,7 @@
 /area/main_map/maintenance/deck_one/port)
 "uQj" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /obj/item/defib_kit/loaded,
@@ -18349,8 +18144,7 @@
 /area/crew_quarters/bar_backroom)
 "vbU" = (
 /obj/structure/closet/secure_closet/security,
-/obj/machinery/firealarm{
-	dir = 8;
+/obj/machinery/fire_alarm/west_mount{
 	pixel_x = -26
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -18401,7 +18195,7 @@
 	},
 /area/holodeck_control)
 "vfz" = (
-/obj/machinery/power/apc/critical/west_bump,
+/obj/machinery/power/apc/critical/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -18991,7 +18785,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/security/hallway)
 "vJA" = (
-/obj/machinery/power/apc/direction_bump/north,
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -19051,8 +18845,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -19433,11 +19226,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/map_helper/network_builder/power_cable/green/auto,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -19622,7 +19411,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/monotile,
 /area/main_map/hallway/deck1/fore)
 "wpA" = (
@@ -19735,7 +19524,7 @@
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay/hangar)
 "wwS" = (
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -19925,7 +19714,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/power/apc/direction_bump/west,
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -19938,8 +19727,7 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "wKE" = (
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/machinery/power/apc/direction_bump/south,
-/obj/structure/cable/green,
+/obj/machinery/power/apc/south_mount,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "wKM" = (
@@ -19975,7 +19763,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "wLg" = (
@@ -20184,7 +19972,7 @@
 /area/crew_quarters/heads/chief)
 "wUy" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc/direction_bump/east,
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
@@ -20443,9 +20231,6 @@
 	name = "Port to Isolation"
 	},
 /obj/map_helper/network_builder/power_cable/green/auto,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
 "xmr" = (
@@ -20569,10 +20354,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 6
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "xvp" = (
@@ -20871,8 +20653,7 @@
 /turf/simulated/floor/tiled/red,
 /area/tether/surfacebase/security/hallway)
 "xMN" = (
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/crystal,
@@ -21048,9 +20829,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/lino,
@@ -29744,7 +29523,7 @@ jxY
 nUG
 utf
 wmH
-etO
+wmH
 cnV
 ogl
 vJv
@@ -30102,7 +29881,7 @@ uYz
 uYz
 wyy
 uYz
-ijP
+kyq
 oPU
 udV
 rlz
@@ -30279,8 +30058,8 @@ lNy
 woI
 nwT
 lZM
-iuI
-ncf
+lZM
+lZM
 lTE
 dzd
 vjr
@@ -30296,7 +30075,7 @@ tzX
 uYz
 wyy
 eVK
-lqe
+kyq
 oPU
 udV
 rlz
@@ -30317,7 +30096,7 @@ noW
 noW
 xGQ
 vJv
-qju
+lQr
 vJv
 vJv
 vJv
@@ -30490,7 +30269,7 @@ uYz
 uYz
 wyy
 uYz
-ijP
+kyq
 oPU
 udV
 rlz
@@ -30512,7 +30291,7 @@ noW
 xGQ
 nIK
 tZG
-qQe
+lQr
 lQr
 lQr
 lQr
@@ -31062,7 +30841,7 @@ pnj
 wlt
 iUL
 ksA
-rkO
+hCZ
 fZn
 sft
 hqk
@@ -31256,7 +31035,7 @@ pnj
 jwH
 iUL
 nLj
-glF
+hCZ
 dhu
 dhu
 dqF
@@ -31450,7 +31229,7 @@ pnj
 jwH
 iUL
 xYN
-cnb
+gqK
 boO
 xdn
 xdn
@@ -32080,7 +31859,7 @@ nxa
 fXo
 kij
 kij
-eBW
+iTi
 hRN
 nRO
 mXs
@@ -32662,7 +32441,7 @@ ybO
 fXo
 kij
 kij
-eBW
+iTi
 hRN
 fgQ
 vgu
@@ -34604,7 +34383,7 @@ gwD
 gwD
 gwD
 gwD
-sSM
+ric
 vpO
 xXS
 xdy
@@ -36160,7 +35939,7 @@ jBS
 dOS
 gbT
 ncr
-njl
+ncr
 wUy
 usR
 psH
@@ -36527,7 +36306,7 @@ rFf
 rFf
 heZ
 qci
-uDN
+dzd
 dzd
 heZ
 qAV
@@ -44246,7 +44025,7 @@ hso
 hso
 emW
 wtd
-hBJ
+kUQ
 sCK
 sCK
 sCK

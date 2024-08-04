@@ -213,7 +213,7 @@
 
 /obj/item/reagent_containers/food/drinks/cans/gingerale
 	name = "\improper Classic Ginger Ale"
-	desc = "For when you need to be more retro than NanoTrasen already pays you for."
+	desc = "For when you need to be more retro than Nanotrasen already pays you for."
 	icon_state = "gingerale"
 	center_of_mass = list("x"=16, "y"=10)
 
@@ -244,7 +244,7 @@
 
 /obj/item/reagent_containers/food/drinks/cans/geometer
 	name = "Geometer Energy"
-	desc = "This popular energy drink was banned by NanoTrasen shortly after the Galactic Awakening, although no statement has ever been issued to explain why."
+	desc = "This popular energy drink was banned by Nanotrasen shortly after the Galactic Awakening, although no statement has ever been issued to explain why."
 	icon_state = "geometer"
 	center_of_mass = list("x"=16, "y"=10)
 

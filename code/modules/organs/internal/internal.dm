@@ -67,3 +67,16 @@
 	if(. >= 3 && antibiotics < ANTIBIO_OD)	//INFECTION_LEVEL_THREE
 		if (prob(50))
 			take_damage(1,silent=prob(15))
+
+/obj/item/organ/internal/emp_act(severity)
+	if(!(robotic >= ORGAN_ASSISTED))
+		return
+	switch (severity)
+		if (1)
+			take_damage(rand(3, 7))
+		if (2)
+			take_damage(rand(2, 6))
+		if (3)
+			take_damage(rand(1, 4))
+		if (4)
+			take_damage(rand(0, 2))

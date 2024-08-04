@@ -4,7 +4,7 @@
 	singular_name = "arcade ticket"
 	icon_state = "arcade-ticket"
 	item_state = "tickets"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	max_amount = 30
 
 /obj/item/stack/arcadeticket/Initialize(mapload)

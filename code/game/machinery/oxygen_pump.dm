@@ -173,7 +173,7 @@
 //Create rightclick to view tank settings
 /obj/machinery/oxygen_pump/verb/settings()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Show Tank Settings"
 	nano_ui_interact(usr)
 
@@ -250,6 +250,8 @@
 	anchored = FALSE
 	density = TRUE
 
+	worth_intrinsic = 250
+
 	mask_type = /obj/item/clothing/mask/gas/clear
 
 	var/last_area = null
@@ -277,6 +279,8 @@
 /obj/machinery/oxygen_pump/mobile/stabilizer
 	name = "portable patient stabilizer"
 	desc = "A portable oxygen pump with a retractable mask used for stabilizing patients in the field."
+
+	worth_intrinsic = 500
 
 /obj/machinery/oxygen_pump/mobile/stabilizer/process(delta_time)
 	if(breather)

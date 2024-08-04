@@ -24,6 +24,8 @@
 	absorption = MATERIAL_RESISTANCE_LOW
 	nullification = MATERIAL_RESISTANCE_MODERATE
 
+	worth = 20
+
 // Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
 /*
 /datum/material/phoron/combustion_effect(var/turf/T, var/temperature, var/effect_multiplier)

@@ -78,7 +78,7 @@
 /obj/machinery/appliance/cooker/oven/choose_output()
 	set src in view()
 	set name = "Choose output"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(!can_use_check(usr))
 		return
@@ -104,7 +104,7 @@
 
 /obj/machinery/appliance/cooker/oven/verb/toggle_door()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Open/close oven door"
 
 	try_toggle_door(usr)

@@ -1,3 +1,4 @@
+INITIALIZE_IMMEDIATE(/mob/new_player)
 /mob/new_player
 	var/ready = 0
 	var/spawning = 0			// Referenced when you want to delete the new_player later on in the code.
@@ -18,6 +19,8 @@
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
 	mob_list_register(stat)
 	atom_flags |= ATOM_INITIALIZED
+	// we only need innate
+	actions_innate = new /datum/action_holder/mob_actor(src)
 	return INITIALIZE_HINT_NORMAL
 
 /mob/new_player/mob_list_register(for_stat)
@@ -35,6 +38,7 @@
 	var/output = "<div align='center'>"
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];game_preferences=1'>Game Preferences</A></p>"
 
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
@@ -75,7 +79,7 @@
 
 	output += "</div>"
 
-	panel = new(src, "Welcome","Welcome", 210, 280, src)
+	panel = new(src, "Welcome","Welcome", 210, 325, src)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
@@ -120,6 +124,14 @@
 		if(!client.reject_on_initialization_block())
 			return
 		client.prefs.ShowChoices(src)
+		return 1
+
+	if(href_list["game_preferences"])
+		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
+			return
+		client.preferences.ui_interact(src)
 		return 1
 
 	if(href_list["ready"])
@@ -193,7 +205,7 @@
 			observer.name = observer.real_name
 			if(!client.holder && !config_legacy.antag_hud_allowed)			// For new ghosts we remove the verb from even showing up if it's not allowed.
 				remove_verb(observer, /mob/observer/dead/verb/toggle_antagHUD)	// Poor guys, don't know what they are missing!
-			observer.key = key
+			transfer_client_to(observer)
 			observer.client?.holder?.update_stealth_ghost()
 			observer.set_respawn_timer(time_till_respawn())	// Will keep their existing time if any, or return 0 and pass 0 into set_respawn_timer which will use the defaults
 			qdel(src)
@@ -349,8 +361,6 @@
 		return
 	var/savefile/F = get_server_news()
 	if(F)
-		client.prefs.lastnews = md5(F["body"])
-		SScharacters.queue_preferences_save(client.prefs)
 
 		var/dat = "<html><body><center>"
 		dat += "<h1>[F["title"]]</h1>"
@@ -362,6 +372,10 @@
 		var/datum/browser/popup = new(src, "Server News", "Server News", 450, 300, src)
 		popup.set_content(dat)
 		popup.open()
+
+		if(client.player.block_on_available())
+			client.player.player_misc["lastnews"] = md5(F["body"])
+			client.player.save()
 
 /mob/new_player/proc/time_till_respawn()
 	if(!ckey)
@@ -450,7 +464,7 @@
 		var/obj/structure/AIcore/deactivated/C = GLOB.empty_playable_ai_cores[1]
 		GLOB.empty_playable_ai_cores -= C
 
-		character.loc = C.loc
+		character.forceMove(C.loc)
 
 		AnnounceCyborg(character, rank, "has been transferred to the empty core in \the [character.loc.loc]")
 		SSticker.mode.latespawn(character)
@@ -466,8 +480,7 @@
 
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
-		character.buckled.loc = character.loc
-		character.buckled.setDir(character.dir)
+		character.buckled.forceMove(character.loc)
 
 	SSticker.mode.latespawn(character)
 
@@ -568,7 +581,7 @@
 	new_character.update_icons_body()
 	new_character.update_eyes()
 
-	new_character.key = key		//Manually transfer the key to log them in
+	transfer_client_to(new_character)
 
 	return new_character
 

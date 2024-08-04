@@ -1,4 +1,4 @@
-/datum/asset/simple/notes
+/datum/asset_pack/simple/notes
 	assets = list(
 		"high_button.png" = 'icons/ui_icons/notes/high_button.png',
 		"medium_button.png" = 'icons/ui_icons/notes/medium_button.png',

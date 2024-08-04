@@ -13,9 +13,10 @@
 	damage_force = 5
 	throw_force = 6
 	preserve_item = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)
-	action_button_name = "Remove/Replace Paddles"
+	item_action_name = "Remove/Replace Paddles"
+	worth_intrinsic = 300
 
 	var/obj/item/shockpaddles/linked/paddles
 	var/obj/item/cell/bcell = null
@@ -63,7 +64,7 @@
 
 	add_overlay(new_overlays)
 
-/obj/item/defib_kit/ui_action_click()
+/obj/item/defib_kit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle_paddles()
 
 /obj/item/defib_kit/attack_hand(mob/user, list/params)
@@ -109,7 +110,7 @@
 
 /obj/item/defib_kit/verb/toggle_paddles()
 	set name = "Toggle Paddles"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	var/mob/living/carbon/human/user = usr
 	if(!paddles)
@@ -133,9 +134,9 @@
 	if(!istype(M))
 		return 0 //not equipped
 
-	if((slot_flags & SLOT_BACK) && M.item_by_slot(SLOT_ID_BACK) == src)
+	if((slot_flags & SLOT_BACK) && M.item_by_slot_id(SLOT_ID_BACK) == src)
 		return 1
-	if((slot_flags & SLOT_BELT) && M.item_by_slot(SLOT_ID_BELT) == src)
+	if((slot_flags & SLOT_BELT) && M.item_by_slot_id(SLOT_ID_BELT) == src)
 		return 1
 
 	return 0
@@ -162,9 +163,10 @@
 	desc = "A belt-equipped defibrillator that can be rapidly deployed."
 	icon_state = "defibcompact"
 	item_state = "defibcompact"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_BIO = 5, TECH_POWER = 3)
+	worth_intrinsic = 500
 
 /obj/item/defib_kit/compact/loaded
 	bcell = /obj/item/cell/high
@@ -195,7 +197,7 @@
 	gender = PLURAL
 	damage_force = 2
 	throw_force = 6
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 	var/safety = 1 //if you can zap people with the paddles on harm mode
 	var/combat = 0 //If it can be used to revive people wearing thick clothing (e.g. spacesuits)
@@ -627,6 +629,7 @@
 	item_state = "defibunit"
 //	item_state = "jumperunit"
 	paddles = /obj/item/shockpaddles/linked/jumper
+	worth_intrinsic = 150
 
 /obj/item/defib_kit/jumper_kit/loaded
 	bcell = /obj/item/cell/high

@@ -333,7 +333,7 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 			qdel(O)
 
 /datum/category_item/catalogue/information/organization/nanotrasen
-	name = "TSC - NanoTrasen Incorporated"
+	name = "TSC - Nanotrasen Incorporated"
 	datum_to_copy = /datum/lore/organization/tsc/nanotrasen
 
 /datum/category_item/catalogue/information/organization/hephaestus
@@ -451,7 +451,7 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/anomalous/scorian_religion
 	name = "Scorian Religion"
-	desc = "To date, anthropologists and NanoTrasen researchers have been unable to fully decipher \
+	desc = "To date, anthropologists and Nanotrasen researchers have been unable to fully decipher \
 	the Scorian language. A fusion of pictographs and script, much of the modern conception of Ashlander \
 	religious practices comes from diagrams and depictions found on carved sandstone monuments and cave \
 	paintings. The Scorian people appear to be monotheistic, with different tribes worshipping members of \

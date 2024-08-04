@@ -1,7 +1,7 @@
 /obj/item/suit_cooling_unit
 	name = "portable suit cooling unit"
 	desc = "A portable heat sink and liquid cooled radiator that can be hooked up to a space suit's existing temperature controls to provide industrial levels of cooling."
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/device.dmi'
 	icon_state = "suitcooler0"
 	slot_flags = SLOT_BACK
@@ -11,7 +11,7 @@
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
-	action_button_name = "Toggle Heatsink"
+	item_action_name = "Toggle Heatsink"
 
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
@@ -28,7 +28,7 @@
 /obj/item/suit_cooling_unit/empty
 	cell = null
 
-/obj/item/suit_cooling_unit/ui_action_click()
+/obj/item/suit_cooling_unit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle(usr)
 
 /obj/item/suit_cooling_unit/Initialize(mapload)
@@ -79,8 +79,8 @@
 /obj/item/suit_cooling_unit/proc/get_environment_temperature()
 	if (ishuman(loc))
 		var/mob/living/carbon/human/H = loc
-		if(istype(H.loc, /obj/mecha))
-			var/obj/mecha/M = H.loc
+		if(istype(H.loc, /obj/vehicle/sealed/mecha))
+			var/obj/vehicle/sealed/mecha/M = H.loc
 			return M.return_temperature()
 		else if(istype(H.loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
 			var/obj/machinery/atmospherics/component/unary/cryo_cell/C = H.loc
@@ -212,7 +212,7 @@
 /obj/item/suit_cooling_unit/emergency
 	icon_state = "esuitcooler"
 	cell = /obj/item/cell
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/suit_cooling_unit/emergency/updateicon()
 	return

@@ -15,8 +15,14 @@
 	color = "#ffd300" //Sandy
 	in_space = 0
 	initial_generic_waypoints = list("beach_e", "beach_c", "beach_nw")
+	initial_restricted_waypoints = list("Pirate Skiff" = list("pirate_hideout"))
+
 	start_x	= 35
 	start_y	= 40
+
+/obj/effect/shuttle_landmark/premade/miaphus/piratehideout
+	name = "Pirate Hideout"
+	landmark_tag = "pirate_hideout"
 
 
 //This is a special subtype of the thing that generates ores on a map
@@ -338,3 +344,27 @@
 
 /area/tether_away/beach/desert/poi/covert_post
 	name = "Miaphus'irra - Clown Listening Post"
+
+/area/tether_away/beach/desert/poi/oilwell
+	name = "Miaphus'irra - Oil Spring"
+
+/area/tether_away/beach/desert/poi/huntercamp
+	name = "Miaphus'irra - Hunter's Camp"
+
+/area/tether_away/beach/desert/poi/refinery
+	name = "Miaphus'irra - Fuel Refinery"
+
+/area/tether_away/beach/desert/poi/minecamp
+	name = "Miaphus'irra - Mining Camp"
+
+/area/tether_away/beach/desert/poi/wastedump
+	name = "Miaphus'irra - Hazardous Waste Dump"
+
+/area/tether_away/beach/desert/poi/snipernest
+	name = "Miaphus'irra - Sniper Nest"
+
+/area/tether_away/beach/desert/poi/turretnest
+	name = "Miaphus'irra - Automated Defense Battery"
+
+/area/tether_away/beach/desert/poi/piratehideout
+	name = "Miaphus'irra - Pirate Hideout"

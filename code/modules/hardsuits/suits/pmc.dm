@@ -40,7 +40,6 @@
 		/obj/item/storage/firstaid,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/roller,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 

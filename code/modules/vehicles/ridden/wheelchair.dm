@@ -48,7 +48,7 @@
 	icon = 'icons/obj/furniture.dmi'	//Todo, move icon for wheelchair shit into their own folder
 	icon_state = "wheelchair_folded"
 	item_state = "wheelchair"
-	w_class = ITEMSIZE_HUGE // Can't be put in backpacks. Oh well.
+	w_class = WEIGHT_CLASS_HUGE // Can't be put in backpacks. Oh well.
 	/// What we unfold to
 	var/unfolded_type = /obj/vehicle/ridden/wheelchair
 

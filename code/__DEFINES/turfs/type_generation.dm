@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /// create the standard 4 types of turfs for a given turf type.
 #define CREATE_STANDARD_TURFS(type) \
 ##type/indoors { \

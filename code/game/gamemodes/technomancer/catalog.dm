@@ -23,7 +23,7 @@
 	requisition various things from.. where ever they came from."
 	icon = 'icons/obj/storage.dmi'
 	icon_state ="scientology" //placeholder
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	var/budget = 1000
 	var/max_budget = 1000

@@ -6,7 +6,7 @@
 	name = "implant"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "implant"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/implanted = null
 	var/mob/imp_in = null
 	var/obj/item/organ/external/part
@@ -55,7 +55,10 @@
 /obj/item/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
 	to_chat(imp_in, "<span class='warning'>You feel something melting inside [part ? "your [part.name]" : "you"]!</span>")
 	if (part)
-		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
+		part.inflict_bodypart_damage(
+			burn = 15,
+			weapon_descriptor = "component meltdown",
+		)
 	else
 		var/mob/living/M = imp_in
 		M.apply_damage(15,BURN)

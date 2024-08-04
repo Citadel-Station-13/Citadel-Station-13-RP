@@ -87,6 +87,7 @@
 		icon_state = "waterballoon-e"
 
 /obj/item/toy/syndicateballoon
+	prototype_id = "balloon-syndicate"
 	name = "criminal balloon"
 	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
 	throw_force = 0
@@ -95,23 +96,25 @@
 	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "syndballoon"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/toy/nanotrasenballoon
+	prototype_id = "balloon-nanotrasen"
 	name = "criminal balloon"
-	desc = "Across the balloon the following is printed: \"Man, I love NanoTrasen soooo much. I use only NT products. You have NO idea.\""
+	desc = "Across the balloon the following is printed: \"Man, I love Nanotrasen soooo much. I use only NT products. You have NO idea.\""
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ntballoon"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 /*
  * Fake telebeacon
  */
 /obj/item/toy/blink
+	prototype_id = "toy-teleporter-beacon"
 	name = "electronic blink toy game"
 	desc = "Blink.  Blink.  Blink. Ages 8 and up."
 	icon = 'icons/obj/machines/teleporter.dmi'
@@ -126,6 +129,7 @@
  * Fake singularity
  */
 /obj/item/toy/spinningtoy
+	prototype_id = "toy-singularity"
 	name = "gravitational singularity"
 	desc = "\"Singulo\" brand spinning toy."
 	icon = 'icons/obj/singularity.dmi'
@@ -145,7 +149,7 @@
 		icon_r_hand = 'icons/mob/items/righthand_guns.dmi',
 		)
 	slot_flags = SLOT_HOLSTER
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 	var/bullets = 5
 
@@ -238,7 +242,7 @@
 	desc = "It's nerf or nothing! Ages 8 and up."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "foamdart"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 
 /obj/effect/foam_dart_dummy
@@ -262,7 +266,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
 	var/active = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 	color = "#0099FF"
 	var/colorable = TRUE
@@ -293,7 +297,7 @@
 		item_state = "[icon_state]_blade_rainbow"
 	else
 		item_state = "[icon_state]_blade"
-	w_class = ITEMSIZE_LARGE
+	set_weight_class(WEIGHT_CLASS_BULKY)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
@@ -305,7 +309,7 @@
 	to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
 	item_state = "[icon_state]"
 	active = 0
-	w_class = initial(w_class)
+	set_weight_class(initial(w_class))
 	update_icon()
 
 /obj/item/toy/sword/attackby(obj/item/W, mob/user)
@@ -364,7 +368,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damage_force = 5
 	throw_force = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 
 /*
@@ -375,7 +379,7 @@
 	desc = "Wow!"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "snappop"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/toy/snappop/throw_impact(atom/hit_atom)
 	..()
@@ -484,7 +488,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "bosunwhistle"
 	var/cooldown = 0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS | SLOT_HOLSTER
 
 /obj/item/toy/bosunwhistle/attack_self(mob/user)
@@ -965,7 +969,7 @@
 	desc = "A small toy plushie. It's very cute."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "nymphplushie"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/last_message = 0
 	var/pokephrase = "Uww!"
 
@@ -988,7 +992,7 @@
 
 /obj/item/toy/plushie/verb/rename_plushie()
 	set name = "Name Plushie"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Give your plushie a cute name!"
 	var/mob/M = usr
 	if(!M.mind)
@@ -1399,7 +1403,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	attack_verb = list("attacked", "slashed", "stabbed", "poked")
 
 //Flowers fake & real
@@ -1409,7 +1413,7 @@
 	desc = "A lovely bouquet of flowers. Smells nice!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "bouquet"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/toy/bouquet/fake
 	name = "plastic bouquet"
@@ -1420,7 +1424,7 @@
 	desc = "A pretend horse on a stick for any aspiring little cowboy to ride."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "stickhorse"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 
 //////////////////////////////////////////////////////
 //				Magic 8-Ball / Conch				//
@@ -1457,7 +1461,7 @@
 // DND Character minis. Use the naming convention (type)character for the icon states.
 /obj/item/toy/character
 	icon = 'icons/obj/toy.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	pixel_z = 5
 
 /obj/item/toy/character/alien
@@ -1507,7 +1511,7 @@
 	desc = "A little toy model AI core!"// with real law announcing action!" //Alas, requires a rewrite of how ion laws work.
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "AI"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 /*
 /obj/item/toy/AI/attack_self(mob/user)
@@ -1529,7 +1533,7 @@
 	desc = "An action figure modeled after 'The Owl', defender of justice."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "owlprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/owl/attack_self(mob/user)
@@ -1550,7 +1554,7 @@
 	desc = "An action figure modeled after 'The Griffin', criminal mastermind."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "griffinprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/griffin/attack_self(mob/user)
@@ -1571,7 +1575,7 @@
 	desc = "A detailed miniature figure based on the 'Cyan Cowgirl', fastest gun on the Frontier."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "cowgirlprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/cowgirlprize/attack_self(mob/user)
@@ -1592,7 +1596,7 @@
 	desc = "A detailed miniature figure based on the 'Snake Oil Salesman', villain and cheat, scourge of the Frontier."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "snakeoilprize"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
 /obj/item/toy/snakeoilprize/attack_self(mob/user)
@@ -1622,7 +1626,7 @@
 	desc = "Tiny cute Christmas tree."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "tinyxmastree"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	damage_force = 1
 	throw_force = 1
 
@@ -1636,10 +1640,11 @@
 	slot_flags = SLOT_BACK
 	var/cooldowntime = 20
 	var/static/list/dakimakura_options = list("Callie","Casca","Chaika","Elisabeth","Foxy Grandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BACK
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = INVENTORY_BOX_SPACE
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = STORAGE_VOLUME_BOX
+	var/last_message = 0
 
 /obj/item/storage/daki/attack_self(mob/user)
 	. = ..()
@@ -1785,3 +1790,40 @@
 	name = "giant lawn gnome"
 	icon_state = "gnome_giant"
 	desc = "A life-sized ceramic gnome statue, often used in lawn displays. For a brief while, carrying a gnome safely through hazardous areas was seen as a popular challenge."
+
+//Squishimals
+/obj/item/toy/axi
+	name = "Axiom the Axolotl Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "axi"
+	desc = "Axiom the Axolotl, a little blue squishimal axolotl with fluffy fringes on his external gills."
+
+/obj/item/toy/snek
+	name = "Sneki the Snake Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "snek"
+	desc = "Sneki the Snake, a medium sized yellow snake squishimal with velvety ventral scales."
+
+/obj/item/toy/pan
+	name = "Pandy the Red Panda Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "pan"
+	desc = "Pandy the Red Panda, a large fluffy red panda squishimal with big soft ears and silky cheek fur."
+
+/obj/item/toy/bun
+	name = "Matcha the Rabbit Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "bun"
+	desc = "Matcha the Rabbit, a large green squishimal that faintly smells of green tea and has floppy ears."
+
+/obj/item/toy/demon
+	name = "Demi the Imp Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "demon"
+	desc = "Demi the Imp, a squishimal imp with scaley glittery ears and horns."
+
+/obj/item/toy/jay
+	name = "Jaymes the Bluejay Squishimal"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "jay"
+	desc = "Jaymes the Bluejay, a smaller squishimal that looks to resemble probably someone's favorite bird. Fun fact: Bluejays are corvids!"

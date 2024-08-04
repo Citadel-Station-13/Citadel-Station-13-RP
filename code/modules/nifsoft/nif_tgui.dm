@@ -86,7 +86,7 @@
  */
 /mob/living/carbon/human/proc/nif_menu()
 	set name = "NIF Menu"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Open the NIF user interface."
 
 	var/obj/item/nif/N = nif

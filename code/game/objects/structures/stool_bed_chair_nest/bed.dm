@@ -256,7 +256,7 @@
 	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "folded_rollerbed"
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/rollertype = /obj/item/roller
 	var/bedtype = /obj/structure/bed/roller
 	drop_sound = 'sound/items/drop/axe.ogg'
@@ -286,7 +286,7 @@
 	name = "advanced roller bed"
 	desc = "A high-tech, compact version of the regular roller bed."
 	icon_state = "folded_rollerbedadv"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	rollertype = /obj/item/roller/adv
 	bedtype = /obj/structure/bed/roller/adv
 

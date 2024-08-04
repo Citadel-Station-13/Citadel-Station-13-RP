@@ -14,24 +14,32 @@
 		stack_trace("Attempted to spawn base /obj/random.")
 		return INITIALIZE_HINT_QDEL
 	if(!prob(spawn_nothing_percentage))
-		spawn_item()
+		spawn_item(mapload)
 	return INITIALIZE_HINT_QDEL
 
 // this function should return a specific item to spawn
 /obj/random/proc/item_to_spawn()
 	return
 
+/obj/random/proc/create_obj(obj_path, location)
+	var/obj/created = new obj_path(location)
+	ASSERT(istype(created))
+
+	// todo: shitcode but w/e
+	created.obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
+
+	if(pixel_x || pixel_y)
+		created.pixel_x = pixel_x
+		created.pixel_y = pixel_y
+
 /obj/random/drop_location()
 	return drop_get_turf? get_turf(src) : ..()
 
 // creates the random item
-/obj/random/proc/spawn_item()
+/obj/random/proc/spawn_item(mapload)
 	var/build_path = item_to_spawn()
 
-	var/atom/A = new build_path(drop_location())
-	if(pixel_x || pixel_y)
-		A.pixel_x = pixel_x
-		A.pixel_y = pixel_y
+	create_obj(build_path, drop_location())
 
 var/list/random_junk_
 var/list/random_useful_
@@ -87,7 +95,7 @@ var/list/random_useful_
 /obj/random/multiple/spawn_item()
 	var/list/things_to_make = item_to_spawn()
 	for(var/new_type in things_to_make)
-		new new_type(src.loc)
+		create_obj(new_type, src.loc)
 
 /*
 //	Multi Point Spawn

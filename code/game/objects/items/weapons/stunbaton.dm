@@ -12,11 +12,12 @@
 	edge = 0
 	throw_force = 7
 	atom_flags = NOCONDUCT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
+	worth_intrinsic = 75
 	var/lightcolor = "#FF6A00"
 	var/stunforce = 0
 	var/agonyforce = 60
@@ -29,6 +30,11 @@
 /obj/item/melee/baton/Initialize(mapload)
 	. = ..()
 	update_icon()
+
+/obj/item/melee/baton/worth_contents(flags)
+	. = ..()
+	if(bcell)
+		. += bcell
 
 /obj/item/melee/baton/get_cell(inducer)
 	return bcell
@@ -120,7 +126,7 @@
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
-		playsound(loc, "sparks", 75, 1, -1)
+		playsound(loc, /datum/soundbyte/grouped/sparks, 75, 1, -1)
 		update_icon()
 	else
 		status = 0
@@ -278,7 +284,7 @@
 	if(!istype(L))
 		return
 	. = ..()
-	if(status && L.has_AI())
+	if(status && L.has_polaris_AI())
 		L.taunt(user)
 
 // Borg version, for the lost module.
@@ -293,9 +299,9 @@
 
 /obj/item/melee/baton/stunlance
 	name = "stun lance"
-	desc = "Designed by NanoTrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
+	desc = "Designed by Nanotrasen for mounted expeditions, the stun lance is useful for running down and incapacitating wildlife for study. Its efficacy on fugitives is tacitly implied."
 	icon_state = "stunlance"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	reach = 2
 
 /obj/item/melee/baton/stunlance/Initialize(mapload)
@@ -307,7 +313,7 @@
 	desc = "A smaller, more potent version of a hand-held tazer, one zap and the target is sure to be on the ground, and the <b>integrated</b> cell empty. Standard issue to Command staff, indentured sex workers and anyone else who might get mobbed by dissatisfied clientele. Do not lick."
 	icon_state = "mini_baton"
 	item_state = "mini_baton"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	stunforce = 5
 	throw_force = 2

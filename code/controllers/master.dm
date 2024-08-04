@@ -30,9 +30,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// Are we initialized?
 	var/initialized = FALSE
 
-	/// Are we loading in a new map?
-	var/map_loading = FALSE
-
 	/// world.time of last fire, for tracking lag outside of the mc.
 	var/last_run
 
@@ -55,18 +52,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	/// The type of the last subsystem to be process()'d.
 	var/last_type_processed
 
-	/// Start of queue linked list.
-	var/datum/controller/subsystem/queue_head
-
-	/// End of queue linked list (used for appending to the list).
-	var/datum/controller/subsystem/queue_tail
-
-	/// Running total so that we don't have to loop thru the queue each run to split up the tick.
-	var/queue_priority_count = 0
-
-	/// Total background subsystems in the queue.
-	var/queue_priority_count_bg = 0
-
 	/// For scheduling different subsystems for different stages of the round.
 	var/current_runlevel
 
@@ -78,12 +63,23 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/static/random_seed
 
+	//* Processing Variables *//
+
+	/// total fire_priority of all non-background subsystems in the queue
+	var/queue_priority_count = 0
+	/// total fire_priority of all background subsystems in the queue
+	var/queue_priority_count_bg = 0
+
+	/// Start of queue linked list.
+	var/datum/controller/subsystem/queue_head
+	/// End of queue linked list (used for appending to the list).
+	var/datum/controller/subsystem/queue_tail
+
 	/**
 	 * current tick limit, assigned before running a subsystem.
 	 * used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits.
 	 */
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
-
 
 /datum/controller/master/New()
 	//# 1. load configs
@@ -158,6 +154,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
  * - -1 If we encountered a runtime trying to recreate it.
  */
 /proc/Recreate_MC()
+	usr = null // yeah let's not contaminate the MC call stack with our usr.
 	. = -1 // So if we runtime, things know we failed.
 	if (world.time < Master.restart_timeout)
 		return 0
@@ -275,7 +272,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// Set world options.
 
-	world.fps = config_legacy.fps
+	world.set_fps(config_legacy.fps)
 
 	var/initialized_tod = REALTIMEOFDAY
 	if(sleep_offline_after_initializations)
@@ -303,7 +300,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	current_runlevel = log(2, new_runlevel) + 1
 	if(current_runlevel < 1)
 		CRASH("Attempted to set invalid runlevel: [new_runlevel]")
-
 
 /**
  * Starts the mc, and sticks around to restart it if the loop ever ends.
@@ -351,6 +347,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		SS.queue_next = null
 		SS.queue_prev = null
 		SS.state = SS_IDLE
+
+		// Set precomputed variables
+		SS.recompute_wait_dt()
+
 		if (SS.subsystem_flags & SS_TICKER)
 			SStickersubsystems += SS
 			// Timer subsystems aren't allowed to bunch up, so we offset them a bit.
@@ -392,7 +392,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	iteration = 1
 	var/error_level = 0
 	var/sleep_delta = 1
-	var/list/subsystems_to_check
 
 	//# The actual loop.
 	while (1)
@@ -435,28 +434,24 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			new/datum/controller/failsafe() // (re)Start the failsafe.
 
 		//# Now do the actual stuff.
-		if (!queue_head || !(iteration % 3))
-			var/checking_runlevel = current_runlevel
-			if(cached_runlevel != checking_runlevel)
-				// Resechedule subsystems.
-				var/list/old_subsystems = current_runlevel_subsystems
-				cached_runlevel = checking_runlevel
-				current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 
-				// Now we'll go through all the subsystems we want to offset and give them a next_fire.
-				for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
-					// We only want to offset it if it's new and also behind.
-					if(SS.next_fire > world.time || (SS in old_subsystems))
-						continue
+		//* **Experimental**: Check every tick.
+		if(cached_runlevel != current_runlevel)
+			// Resechedule subsystems.
+			var/list/old_subsystems = current_runlevel_subsystems
+			cached_runlevel = current_runlevel
+			current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 
-					SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
+			// Now we'll go through all the subsystems we want to offset and give them a next_fire.
+			for(var/datum/controller/subsystem/SS as anything in current_runlevel_subsystems)
+				// We only want to offset it if it's new and also behind.
+				if(SS.next_fire > world.time || (SS in old_subsystems))
+					continue
 
-			subsystems_to_check = current_runlevel_subsystems
+				SS.next_fire = world.time + world.tick_lag * rand(0, DS2TICKS(min(SS.wait, 2 SECONDS)))
 
-		else
-			subsystems_to_check = SStickersubsystems
-
-		if (CheckQueue(subsystems_to_check) <= 0)
+		//* **Experimental**: Check every queue, every tick.
+		if (CheckQueue(current_runlevel_subsystems) <= 0 || CheckQueue(SStickersubsystems) <= 0)
 			if (!SoftReset(SStickersubsystems, runlevel_sorted_subsystems))
 				log_world("MC: SoftReset() failed, crashing")
 				return
@@ -552,7 +547,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/ran = TRUE // This is right.
 	var/ran_non_SSticker = FALSE
 	var/bg_calc // Have we swtiched current_tick_budget to background mode yet?
-	var/tick_usage
+
+	// the % of tick used by the current running subsystem
+	var/queue_node_tick_usage
 
 	/**
 	 * Keep running while we have stuff to run and we haven't gone over a tick
@@ -611,9 +608,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			queue_node.state = SS_RUNNING
 
-			tick_usage = TICK_USAGE
+			// ignite / fire the head node
+			queue_node_tick_usage = TICK_USAGE
 			var/state = queue_node.ignite(queue_node_paused)
-			tick_usage = TICK_USAGE - tick_usage
+			queue_node_tick_usage = TICK_USAGE - queue_node_tick_usage
 
 			if (state == SS_RUNNING)
 				state = SS_IDLE
@@ -621,53 +619,58 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			current_tick_budget -= queue_node_priority
 
 
-			if (tick_usage < 0)
-				tick_usage = 0
+			if (queue_node_tick_usage < 0)
+				queue_node_tick_usage = 0
 
-			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, tick_usage-tick_precentage))
+			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, queue_node_tick_usage-tick_precentage))
 			queue_node.state = state
 
+			// if it paused mid-run, track that
 			if (state == SS_PAUSED)
 				queue_node.paused_ticks++
-				queue_node.paused_tick_usage += tick_usage
+				queue_node.paused_tick_usage += queue_node_tick_usage
 				queue_node = queue_node.queue_next
 				continue
 
+			// it did not pause; this is a complete run
+
 			queue_node.ticks = MC_AVERAGE(queue_node.ticks, queue_node.paused_ticks)
-			tick_usage += queue_node.paused_tick_usage
+			queue_node_tick_usage += queue_node.paused_tick_usage
 
-			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, tick_usage)
+			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, queue_node_tick_usage)
 
-			queue_node.cost = MC_AVERAGE_FAST(queue_node.cost, TICK_DELTA_TO_MS(tick_usage))
+			queue_node.cost = MC_AVERAGE_FAST(queue_node.cost, TICK_DELTA_TO_MS(queue_node_tick_usage))
 			queue_node.paused_ticks = 0
 			queue_node.paused_tick_usage = 0
 
 			if (queue_node_flags & SS_BACKGROUND) // Update our running total.
 				queue_priority_count_bg -= queue_node_priority
-
 			else
 				queue_priority_count -= queue_node_priority
 
 			queue_node.last_fire = world.time
 			queue_node.times_fired++
 
+			// schedule next run
 			if (queue_node_flags & SS_TICKER)
+				// ticker: run this many ticks after always
 				queue_node.next_fire = world.time + (world.tick_lag * queue_node.wait)
-
 			else if (queue_node_flags & SS_POST_FIRE_TIMING)
+				// post fire timing: fire this much wait after current time, with tick overrun punishment
 				queue_node.next_fire = world.time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
-
 			else if (queue_node_flags & SS_KEEP_TIMING)
-				queue_node.next_fire += queue_node.wait
-
+				// keep timing: fire this much wait after *the last time we should have fired*, without tick overrun punishment
+				// **experimental**: do not keep timing past last 10 seconds, if something is running behind that much don't permanently accelerate it.
+				queue_node.next_fire = max(world.time - 10 SECONDS, queue_node.next_fire + queue_node.wait)
 			else
+				// normal: fire this much wait after when we were queued, with tick overrun punishment
 				queue_node.next_fire = queue_node.queued_time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
 
 			queue_node.queued_time = 0
 
 			// Remove from queue.
 			queue_node.dequeue()
-
+			// move to next
 			queue_node = queue_node.queue_next
 
 	. = TRUE
@@ -732,23 +735,18 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 
 /datum/controller/master/StartLoadingMap()
-	// Disallow more than one map to load at once, multithreading it will just cause race conditions.
-	while(map_loading)
-		stoplag()
-
+	// todo: this is kind of awful because this procs every subsystem unnecessarily
+	//       you might say this is microoptimizations but this is called a seriously high number of times during a load.
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StartLoadingMap()
 
-	map_loading = TRUE
-
-
 /datum/controller/master/StopLoadingMap(bounds)
-	map_loading = FALSE
+	// todo: this is kind of awful because this procs every subsystem unnecessarily
+	//       you might say this is microoptimizations but this is called a seriously high number of times during a load.
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
-
 
 /*
 /datum/controller/master/proc/UpdateTickRate()

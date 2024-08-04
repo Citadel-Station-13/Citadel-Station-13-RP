@@ -2,11 +2,11 @@
 
 /datum/category_item/catalogue/technology/marauder
 	name = "Exosuit - Marauder"
-	desc = "Developed by NanoTrasen, the Marauder is the modern descendant of the Durand. Stronger, faster, and more resilient, \
-	the Marauder has fully supplanted its predecessor. Deployed by NanoTrasen to the fiercest conflict zones during the Phoron War, \
+	desc = "Developed by Nanotrasen, the Marauder is the modern descendant of the Durand. Stronger, faster, and more resilient, \
+	the Marauder has fully supplanted its predecessor. Deployed by Nanotrasen to the fiercest conflict zones during the Phoron War, \
 	Marauders quickly gained a reputation for brutal efficiency. Marauders are fielded by the megacorporation to hot zones across \
 	the Frontier to this day. Thanks to its status as a military grade weapons platform and its highly proprietary equipment, \
-	the Marauder is generally unavailable to civilians - including low-level NanoTrasen duty stations and allied corporations. \
+	the Marauder is generally unavailable to civilians - including low-level Nanotrasen duty stations and allied corporations. \
 	Standing at 12'(3m) tall, the Marauder cockpit is complex and spacious enough to grant the pilot a full range of movement \
 	within its spherical shell."
 	value = CATALOGUER_REWARD_HARD
@@ -42,7 +42,7 @@
 	name = "Exosuit - Seraph"
 	desc = "Essentially a Marauder with minor imrprovements, the Seraph combat exosuit is a slight upgrade to its predecessor. \
 	Due to the relatively small impact of these changes, the Seraph has not made the Marauder obsolete. Instead Seraph units are \
-	generally issued to NanoTrasen paramilitary commanders, where they fill a specialized communications role courtesy of their \
+	generally issued to Nanotrasen paramilitary commanders, where they fill a specialized communications role courtesy of their \
 	next-generation communications and electronic warfare suites. Due to the tactical nature of the Seraph's battlefield role, \
 	the exosuit is not expected to see combat frequently. In spite of this, the Seraph still fields a combat loadout that enables \
 	it to protect itself if attacked unexpectedly."
@@ -62,7 +62,7 @@
 
 /datum/category_item/catalogue/technology/mauler
 	name = "Exosuit - Mauler"
-	desc = "In spite of their technological advancement and heavily restricted deployments, NanoTrasen \
+	desc = "In spite of their technological advancement and heavily restricted deployments, Nanotrasen \
 	Marauders may sometimes be stolen, salvaged, or illictly purchased from corrupt company officials. These \
 	repurposed models are designated Maulers - after the first line produced by the Syndicate during the Phoron \
 	War. Functionally identical in terms of armor and armament, Maulers are considerably more rare than the \

@@ -56,7 +56,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -193,7 +192,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -278,8 +276,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
+/obj/machinery/fire_alarm/south_mount{
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
@@ -303,6 +300,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "lS" = (
@@ -470,9 +468,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "sY" = (
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/machinery/fire_alarm/north_mount,
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
 	},
@@ -623,7 +619,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -684,7 +679,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -791,11 +785,7 @@
 	output_tag = "cooling_out";
 	sensors = list("engine_sensor"="Engine Core")
 	},
-/obj/machinery/firealarm{
-	dir = 4;
-	layer = 3.3;
-	pixel_x = 26
-	},
+/obj/machinery/fire_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Dv" = (
@@ -846,10 +836,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ev" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
@@ -896,8 +883,9 @@
 	icon_state = "door_locked";
 	id_tag = "engine_access_hatch";
 	locked = 1;
-	req_access = list(11)
+	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
 "FV" = (
@@ -1021,6 +1009,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "MW" = (
@@ -1051,7 +1040,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /turf/simulated/floor,
@@ -1071,7 +1059,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "SupermatterPort";
-	layer = 3.3;
 	name = "Reactor Blast Door"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red,
@@ -1112,6 +1099,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ry" = (
@@ -1260,6 +1248,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "VH" = (
@@ -1285,14 +1274,15 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "VK" = (
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/door/airlock/vault{
+	name = "REACTOR ROOM";
+	req_one_access = list(10)
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "VS" = (
@@ -1410,6 +1400,7 @@
 	name = "REACTOR ROOM";
 	req_one_access = list(10)
 	},
+/obj/map_helper/access_helper/airlock/station/engineering/engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Yr" = (

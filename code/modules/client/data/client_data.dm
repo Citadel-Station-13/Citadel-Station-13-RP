@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 GLOBAL_LIST_EMPTY(client_data)
 
 /proc/resolve_client_data(ckey, key)
@@ -21,9 +24,9 @@ GLOBAL_LIST_EMPTY(client_data)
 	var/key
 	/// absolutely, positively annihilated
 	var/ligma = FALSE
-	/// byond account join date
+	/// byond account join date; null = not loaded
 	var/account_join
-	/// byond account age
+	/// byond account age; null = not loaded
 	var/account_age
 	/// is guest
 	var/is_guest
@@ -47,7 +50,7 @@ GLOBAL_LIST_EMPTY(client_data)
 
 	is_guest = IsGuestKey(key)
 
-	load_account_age()
+	INVOKE_ASYNC(src, PROC_REF(load_account_age))
 
 	var/list/the_cheese_touch = CONFIG_GET(keyed_list/shadowban)
 	var/client/C = GLOB.directory[src.ckey]
@@ -65,7 +68,7 @@ GLOBAL_LIST_EMPTY(client_data)
 		log_shadowban("[ckey] autobanned based on [why].")
 		message_admins(SPAN_DANGER("Automatically shadowbanning [ckey] based on configuration (matched on [why]). Varedit client.persistent.ligma to change this."))
 
-/datum/client_data/proc/block_on_account_age_loaded(timeout = INFINITY)
+/datum/client_data/proc/block_on_account_age_loaded(timeout = 10 SECONDS)
 	var/timed_out = world.time + timeout
 	UNTIL(!isnull(account_age) || world.time > timed_out)
 	return account_age
@@ -143,7 +146,8 @@ GLOBAL_LIST_EMPTY(client_data)
 	playtime_loaded = TRUE
 	playtime_mutex = FALSE
 
-/datum/client_data/proc/block_on_playtime_loaded(timeout = INFINITY)
+/datum/client_data/proc/block_on_playtime_loaded(timeout = 10 SECONDS)
 	var/timed_out = world.time + timeout
 	load_playtime()
 	UNTIL(playtime_loaded || world.time > timed_out)
+	return playtime_loaded

@@ -81,7 +81,7 @@
 /obj/structure/table/verb/do_flip()
 	set name = "Flip table"
 	set desc = "Flips a non-reinforced table"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (!can_touch(usr) || ismouse(usr))
@@ -97,7 +97,7 @@
 /obj/structure/table/proc/do_put()
 	set name = "Put table back"
 	set desc = "Puts flipped table back"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (!can_touch(usr))
@@ -123,8 +123,8 @@
 				break
 	if(failed)
 		to_chat(usr, SPAN_WARNING("[blocking? "[blocking] is in the way!" : "It won't budge."]"))
-
-	unflip()
+	else
+		unflip()
 
 /obj/structure/table/proc/flip(var/direction)
 	var/list/obj/structure/table/tables = tableflip_closure(direction)

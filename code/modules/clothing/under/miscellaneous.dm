@@ -83,11 +83,11 @@
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
 	icon_state = "black"
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/under/acj
@@ -99,7 +99,7 @@
 	permeability_coefficient = 0.01
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	armor_type = /datum/armor/invulnerable
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 
@@ -394,6 +394,13 @@
 	name = "sexy maid costume"
 	desc = "You must be a bit risque teasing all of them in a maid uniform!"
 	icon_state = "sexymaid"
+
+/obj/item/clothing/under/dress/maid/neko
+	name = "neko maid uniform"
+	desc = "A tailored maid uniform that takes many cues from Old Earth Bavarian commonwear. It seems airy and breathable."
+	icon = 'icons/clothing/uniform/misc/neko.dmi'
+	icon_state = "neko"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/under/dress/dress_fire
 	name = "flame dress"
@@ -1873,7 +1880,7 @@
 	var/original_size
 
 /obj/item/clothing/under/bluespace/verb/toggle_fibers()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust fibers"
 	set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
 	set src in usr
@@ -1890,7 +1897,7 @@
 
 /obj/item/clothing/under/bluespace/verb/resize()
 	set name = "Adjust Size"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	bluespace_size(usr)
 
@@ -1988,12 +1995,12 @@
 	item_state = "antediluvian"
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	//action_button_name = "Reconfigure Suit"
+	//item_action_name = "Reconfigure Suit"
 
 /*
 /obj/item/clothing/under/antediluvian/verb/switchsprite()
     set name = "Reconfigure Suit"
-    set category = "Object"
+    set category = VERB_CATEGORY_OBJECT
     set src in usr
     if(!istype(usr, /mob/living))
         return

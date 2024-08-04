@@ -1369,7 +1369,7 @@
 				and then is turned to face the front and sealed. There is a small button on the right side of the helmet that activates the helmet light.
 				The tanks that fasten onto the side slot are emergency tanks, as well as full-sized oxygen tanks, leaving your back free for a backpack or satchel.<BR><BR>
 
-				These suits generally only fit one species. NanoTrasen's are usually human-fitting by default, but there's equipment that can make modifications to the hardsuits to fit them to other species.<BR><BR>
+				These suits generally only fit one species. Nanotrasen's are usually human-fitting by default, but there's equipment that can make modifications to the hardsuits to fit them to other species.<BR><BR>
 
 				Later-model voidsuits can have magboots and helmets installed into the suit and deployed when needed. Check the operator's manual for individual suits to see how the helmets are installed.
 				If a helmet is installed, you can skip it while putting the suit on, obviously. When deployed, it will deploy from the back of your neck, covering the head and sealing at the front.<BR><BR>
@@ -1431,7 +1431,7 @@
 	name = "Standard Operating Procedure"
 	desc = "A set of corporate guidelines for keeping space stations running smoothly."
 	icon_state = "sop"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "Standard Operating Procedure"
 
 /obj/item/book/manual/standard_operating_procedure/Initialize(mapload)
@@ -1451,7 +1451,7 @@
 
 /obj/item/book/manual/command_guide
 	name = "The Chain of Command"
-	desc = "A set of corporate guidelines outlining the entire command structure of NanoTrasen from top to bottom."
+	desc = "A set of corporate guidelines outlining the entire command structure of Nanotrasen from top to bottom."
 	icon_state = "commandGuide"
 	author = "Jeremiah Acacius"
 	title = "Corporate Regulations"
@@ -1535,7 +1535,7 @@
 /obj/item/book/manual/legal/sop_vol1
 	name = "SOP Volume 1: Alert Levels"
 	icon_state = "sop_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 1: Alert Levels"
 
 /obj/item/book/manual/legal/sop_vol1/Initialize(mapload)
@@ -1644,7 +1644,7 @@
 /obj/item/book/manual/legal/sop_vol2
 	name = "SOP Volume 2: Emergency Situations Protocol"
 	icon_state = "sop_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 2: Emergency Situations Protocol"
 
 /obj/item/book/manual/legal/sop_vol2/Initialize(mapload)
@@ -1826,7 +1826,7 @@
 /obj/item/book/manual/legal/sop_vol3
 	name = "SOP Volume 3: Legal Clauses"
 	icon_state = "sop_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 3: Legal Clauses"
 
 /obj/item/book/manual/legal/sop_vol3/Initialize(mapload)
@@ -1874,18 +1874,18 @@
 
 				Under normal station operation, the invasion of private areas such as locked dorms, bathrooms, personal offices, personal belongings, personal lockers, or other personal space is highly illegal without consent of the owner or a search warrant. Furthermore, the use of thermal imaging goggles or other artificial means of observing crew in private areas such as tracking devices is also strictly forbidden without explicit consent or warrant, and the tools used to conduct such crimes are considered contraband. If your right to privacy is violated by security or other members of the crew, contact the Colony Director or Central Command to submit an official complaint. If this violation of privacy results in the conviction of a crime, you may be eligible to have the incident voided by order of Central Command and be compensated for wrongful arrest.
 
-				This privacy policy may at times be suspended for the greater security of the station crew. If heightened security alertness is abused by the command staff, such as failing to lower the alert level after an incident, or raising the alert level when there is no incident, please contract your NanoTrasen Representative as soon as possible.
+				This privacy policy may at times be suspended for the greater security of the station crew. If heightened security alertness is abused by the command staff, such as failing to lower the alert level after an incident, or raising the alert level when there is no incident, please contract your Nanotrasen Representative as soon as possible.
 
 				Violation of employee privacy is punishable under Corporate Regulations c.221.<BR><BR>
 				<hr>
 				<h2>Hazardous Area Operations</h2>
 
-				It is the duty of every member of the crew to safeguard their life and ensure their own physical wellbeing, first and foremost. However, in the process of performing the duties of their assigned roles, crewmembers are sometimes expected to enter or operate in hazardous environments. When such hazards cannot be avoided, NanoTrasen has allocated the appropriate resources to the crew to mitigate risk.
-				However, in the course of exploration, or for the purposes of recreation, some crew may encounter hazardous environments outside the bounds of standard NanoTrasen protocol. It is the duty of NanoTrasen’s Central Command authorities to ensure that such environments cannot be accessed accidentally by uninformed parties. Should a NanoTrasen employee expressly and of their own will demonstrate their desire to enter a marked hazardous zone, they automatically accept the following provisions:
+				It is the duty of every member of the crew to safeguard their life and ensure their own physical wellbeing, first and foremost. However, in the process of performing the duties of their assigned roles, crewmembers are sometimes expected to enter or operate in hazardous environments. When such hazards cannot be avoided, Nanotrasen has allocated the appropriate resources to the crew to mitigate risk.
+				However, in the course of exploration, or for the purposes of recreation, some crew may encounter hazardous environments outside the bounds of standard Nanotrasen protocol. It is the duty of Nanotrasen’s Central Command authorities to ensure that such environments cannot be accessed accidentally by uninformed parties. Should a Nanotrasen employee expressly and of their own will demonstrate their desire to enter a marked hazardous zone, they automatically accept the following provisions:
 				<ul>
-					<li>Entering a hazardous zone outside of the line of assigned duties waives NanoTrasen Security and Medical forces of any obligation to render aid, up to and including corpse recovery.
+					<li>Entering a hazardous zone outside of the line of assigned duties waives Nanotrasen Security and Medical forces of any obligation to render aid, up to and including corpse recovery.
 					<li>Many hazardous areas have little to no Communications Hub or Suit Sensor Report coverage. As such, there may be no mechanism by which crew wellbeing or position may be tracked, and usual expectations regarding emergency responses are void.
-					<li>Hazardous areas are considered to be outside of NanoTrasen’s contraband enforcement regulations. However, returning to a NanoTrasen owned environment with contraband retrieved from hazardous areas is a violation of Corporate Regulations. Any retrieved contraband must be secured and delivered directly to a steward of the Research or Security departments as soon as the crewmember returns from the hazardous area.</li><BR>
+					<li>Hazardous areas are considered to be outside of Nanotrasen’s contraband enforcement regulations. However, returning to a Nanotrasen owned environment with contraband retrieved from hazardous areas is a violation of Corporate Regulations. Any retrieved contraband must be secured and delivered directly to a steward of the Research or Security departments as soon as the crewmember returns from the hazardous area.</li><BR>
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
@@ -1897,7 +1897,7 @@
 /obj/item/book/manual/legal/sop_vol4
 	name = "SOP Volume 4: Courtesy Procedures"
 	icon_state = "sop_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 4: Courtesy Procedures"
 
 /obj/item/book/manual/legal/sop_vol4/Initialize(mapload)
@@ -1936,7 +1936,7 @@
 
 				Those in a department are expected to wear clothes appropriate to protect against common risks for the department.  Off duty personnel, visitors, and those engaging in certain recreational areas such as the Pool (if one is available on your facility) have less strict dress code, however clothing of some form must still be worn in public with the exception of a nudity permit, nudity permits are only handed out to species whose genitalia is not visible under normal circumstances or those with acceptable animalistic heritage such as Quadrapeds commonly known as "Taurs", this means for example human "Nudists" are not permitted and cannot legally hold a nudity permit, if someone who does not meet nudity permit criteria holds a nudity permit, the permit is considered nullified and the subject must agree to dress themselves or face a charge of indecent exposure.<BR><BR>
 
-				Certain positions within NanoTrasen are expected to maintain a specific dress code. The strictness of these codes are ''Enforced'', ''Recommended'', and ''Suggested''. They are defined as follows:<BR><BR>
+				Certain positions within Nanotrasen are expected to maintain a specific dress code. The strictness of these codes are ''Enforced'', ''Recommended'', and ''Suggested''. They are defined as follows:<BR><BR>
 				<ul>
 					<li>Failure or refusal to adhere to an enforced dress code may result in suspension or termination.</li>
 						<ul><li>Security staff are enforced to wear Security clothing, or any clothing with dominant colors of red and black, or red and blue. If an individual has a nudity permit, they must at least wear a red security armband, appropriate security-issue outerwear, or a security hat. This is to ensure security is easily identifiable.</li>
@@ -1963,7 +1963,7 @@
 /obj/item/book/manual/legal/sop_vol5_1
 	name = "SOP Volume 5.1: Department Regulations (Cargo)"
 	icon_state = "sop_se_vol5"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 5.1: Department Regulations (Cargo)"
 
 /obj/item/book/manual/legal/sop_vol5_1/Initialize(mapload)
@@ -1986,7 +1986,7 @@
 				<hr>
 				<h2>Cargo and Logistics</h2>
 
-				NanoTrasen provides a collection of Example Paperwork for Cargo that can be used during a shift. Keep several copies available at all times.<BR><BR>
+				Nanotrasen provides a collection of Example Paperwork for Cargo that can be used during a shift. Keep several copies available at all times.<BR><BR>
 				<hr>
 				<h2>Ordering Cargo</h2>
 
@@ -2023,7 +2023,7 @@
 				<hr>
 				<h2>Mining Weapon Permits</h2>
 
-				It has been ruled that all relevant employees be issued weapon permits to allow for personal protection in the course of carrying out the duties assigned to NanoTrasen’s specialized departments. As such, weaponry and permits have been distributed to those departments affected by this provision. The ownership of a Mining weapon permit represents the employee’s entitlement to carry any weapon conducive to maintaining a safe environment when engaged in EVA activities, or during transit to engage in such activities. The Mining weapon permit does not grant its bearer the right to bear or display arms inside a NanoTrasen facility, unless for the purposes of transportation to or from the Research or Security departments. Secure lockers have been provided for the express storage of these weapons. The on-station carrying of assigned melee weaponry, including but not limited to survival knives, outside of the Mining department is equally unlawful. Failure to properly secure all weaponry within the relevant department may result in penalties, up to and including the revocation of this Departmental weapon permit or the revocation of Departmental certification for an unstated period of time.<BR><BR>
+				It has been ruled that all relevant employees be issued weapon permits to allow for personal protection in the course of carrying out the duties assigned to Nanotrasen’s specialized departments. As such, weaponry and permits have been distributed to those departments affected by this provision. The ownership of a Mining weapon permit represents the employee’s entitlement to carry any weapon conducive to maintaining a safe environment when engaged in EVA activities, or during transit to engage in such activities. The Mining weapon permit does not grant its bearer the right to bear or display arms inside a Nanotrasen facility, unless for the purposes of transportation to or from the Research or Security departments. Secure lockers have been provided for the express storage of these weapons. The on-station carrying of assigned melee weaponry, including but not limited to survival knives, outside of the Mining department is equally unlawful. Failure to properly secure all weaponry within the relevant department may result in penalties, up to and including the revocation of this Departmental weapon permit or the revocation of Departmental certification for an unstated period of time.<BR><BR>
 				<ul>Under specific circumstances, namely the announcement of Codes: Red or Delta, the restrictions barring the carry or usage of assigned or recovered weaponry may be waived by an acting member of the on-site Command Staff. In the event that no Security crewmembers are available – either by incapacitation or other condition – these restrictions may also be lifted on Code: Yellow.</ul>
 				<hr>
 				<h2>Mining Mechanized Suit Equipment: Utility and Weapon Storage</h2>
@@ -2039,7 +2039,7 @@
 /obj/item/book/manual/legal/sop_vol5_2
 	name = "SOP Volume 5.2: Department Regulations (Engineering)"
 	icon_state = "sop_se_vol5"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 5.2: Department Regulations (Engineering)"
 
 /obj/item/book/manual/legal/sop_vol5_2/Initialize(mapload)
@@ -2120,7 +2120,7 @@
 /obj/item/book/manual/legal/sop_vol5_3
 	name = "SOP Volume 5.3: Department Regulations (Medical)"
 	icon_state = "sop_se_vol5"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 5.3: Department Regulations (Medical)"
 
 /obj/item/book/manual/legal/sop_vol5_3/Initialize(mapload)
@@ -2143,7 +2143,7 @@
 				<hr>
 				<h2>Medical Oath</h2>
 
-				The Medical Oath sworn by recognized medical doctors in the employ of NanoTrasen.<BR><BR>
+				The Medical Oath sworn by recognized medical doctors in the employ of Nanotrasen.<BR><BR>
 				<ul>
 					<i><li> Now, as a new doctor, I solemnly promise that I will, to the best of my ability, serve sentient life-caring for the sick, promoting good health, and alleviating pain and suffering.</li>
 					<li>I recognise that the practice of medicine is a privilege with which comes considerable responsibility and #I will not abuse my position.</li>
@@ -2275,7 +2275,7 @@
 				<hr>
 				<h2>Paramedic Weapon Permits</h2>
 
-				It has been ruled that all relevant employees be issued weapon permits to allow for personal protection in the course of carrying out the duties assigned to NanoTrasen’s specialized departments. As such, weaponry and permits have been distributed to those departments affected by this provision. The ownership of a Paramedic weapon permit represents the employee’s entitlement to carry any weapon conducive to maintaining a safe environment when engaged in Hazardous Area recovery activities, or during transit to engage in such activities. The Paramedic weapon permit does not grant its bearer the right to bear or display arms inside a NanoTrasen facility, unless for the purposes of transportation to or from the Research or Security departments. Secure lockers have been provided for the express storage of these weapons. The on-station carrying of assigned melee weaponry, including but not limited to survival knives, outside of the Paramedic Triage Bay is equally unlawful. Failure to properly secure all weaponry within the relevant department may result in penalties, up to and including the revocation of this Departmental weapon permit or the revocation of Departmental certification for an unstated period of time.<BR><BR>
+				It has been ruled that all relevant employees be issued weapon permits to allow for personal protection in the course of carrying out the duties assigned to Nanotrasen’s specialized departments. As such, weaponry and permits have been distributed to those departments affected by this provision. The ownership of a Paramedic weapon permit represents the employee’s entitlement to carry any weapon conducive to maintaining a safe environment when engaged in Hazardous Area recovery activities, or during transit to engage in such activities. The Paramedic weapon permit does not grant its bearer the right to bear or display arms inside a Nanotrasen facility, unless for the purposes of transportation to or from the Research or Security departments. Secure lockers have been provided for the express storage of these weapons. The on-station carrying of assigned melee weaponry, including but not limited to survival knives, outside of the Paramedic Triage Bay is equally unlawful. Failure to properly secure all weaponry within the relevant department may result in penalties, up to and including the revocation of this Departmental weapon permit or the revocation of Departmental certification for an unstated period of time.<BR><BR>
 					<ul>Under specific circumstances, namely the announcement of Codes: Red or Delta, the restrictions barring the carry or usage of assigned or recovered weaponry may be waived by an acting member of the on-site Command Staff. In the event that no Security crewmembers are available – either by incapacitation or other condition – these restrictions may also be lifted on Code: Yellow.<BR><BR>
 				</ul>
 				<hr>
@@ -2293,7 +2293,7 @@
 /obj/item/book/manual/legal/sop_vol5_4
 	name = "SOP Volume 5.4: Department Regulations (Research)"
 	icon_state = "sop_se_vol5"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 5.4: Department Regulations (Research)"
 
 /obj/item/book/manual/legal/sop_vol5_4/Initialize(mapload)
@@ -2316,7 +2316,7 @@
 				<hr>
 				<h2>Contraband Policy</h2>
 				<ul>
-					<li>Any items (including weapons) handled by the Research Department, even those normally deemed illegal by NanoTrasen, are completely legal within the confines of the research department. The moment these weapons leave the department, security is permitted to arrest for contraband as per Corporate Regulations c.212. This includes combat mechs. Combat mechs that don't have weapons equipped are still considered combat mechs for the purposes of this restriction.</li>
+					<li>Any items (including weapons) handled by the Research Department, even those normally deemed illegal by Nanotrasen, are completely legal within the confines of the research department. The moment these weapons leave the department, security is permitted to arrest for contraband as per Corporate Regulations c.212. This includes combat mechs. Combat mechs that don't have weapons equipped are still considered combat mechs for the purposes of this restriction.</li>
 					<ul><li>All weapons handled by the research department should be for explicitly scientific purposes. The Research Director may selectively suspend this right at any time for any scientist for any reason.</li>
 						<li>The surface exterior is considered within the Research Department's weapon allowance zone.</li>
 						<li>If one or more of these weapons are used in a crime within the Research Department, this weapons policy is null and the weapons are treated as contraband upon arrest.</ul></li>
@@ -2337,7 +2337,7 @@
 				<hr>
 				<h2>Scientific Expeditions</h2>
 				<ul>
-					<li>Gateway/Shuttle expeditions are to be organized by the Pathfinder unless CentComm commands otherwise. Failing the presence of a Pathfinder, a Research Director may organize an expedition. If two or more Explorer crewmembers wish to embark on an expedition when no Pathfinder or Research Director is available, they may do so after faxing notice of their intent to Central Command. The Colony Director should not be starting expeditions on their own without orders directly from Central Command.</li>
+					<li>Gateway/Shuttle expeditions are to be organized by the Pathfinder unless Centcom commands otherwise. Failing the presence of a Pathfinder, a Research Director may organize an expedition. If two or more Explorer crewmembers wish to embark on an expedition when no Pathfinder or Research Director is available, they may do so after faxing notice of their intent to Central Command. The Colony Director should not be starting expeditions on their own without orders directly from Central Command.</li>
 					<li>The Research Director has the ability to prevent an expedition from leaving, only if they have a valid reason for preventing it. Any research director that is found to be preventing an organized and equipped expedition from leaving, provided the minimum requirements for leaving, as listed under the next section are met, shall be considered as exceeding official authority.</li>
 					<li>If the Pathfinder insists on bringing the Colony Director along, the Director should assign an Acting Director in their place.</li>
 					<li>Heads of staff excluding the Research Director should <b>not</b> be participating in gateway missions or expeditions without explicit consent of the Colony Director.</li>
@@ -2390,15 +2390,15 @@
 				<hr>
 				<h2>Exploration Weapon Permits</h2>
 
-				It has been ruled that all relevant employees be issued weapon permits to allow for personal protection in the course of carrying out the duties assigned to NanoTrasen’s specialized departments. As such, weaponry and permits have been distributed to those departments affected by this provision. The ownership of an Exploration weapon permit represents the employee’s entitlement to carry any weapon conducive to maintaining a safe environment when engaged in off-station activities, or during transit to engage in such activities. The Exploration weapon permit does not grant its bearer the right to bear or display arms inside a NanoTrasen facility, unless for the purposes of transportation to or from the Research or Security departments. Secure lockers have been provided for the express storage of these weapons. The on-station carrying of assigned melee weaponry, including but not limited to survival knives and machetes, outside of the Exploration department is equally unlawful. Failure to properly secure all weaponry within the relevant department may result in penalties, up to and including the revocation of this Departmental weapon permit or the revocation of Departmental certification for an unstated period of time.<BR><BR>
+				It has been ruled that all relevant employees be issued weapon permits to allow for personal protection in the course of carrying out the duties assigned to Nanotrasen’s specialized departments. As such, weaponry and permits have been distributed to those departments affected by this provision. The ownership of an Exploration weapon permit represents the employee’s entitlement to carry any weapon conducive to maintaining a safe environment when engaged in off-station activities, or during transit to engage in such activities. The Exploration weapon permit does not grant its bearer the right to bear or display arms inside a Nanotrasen facility, unless for the purposes of transportation to or from the Research or Security departments. Secure lockers have been provided for the express storage of these weapons. The on-station carrying of assigned melee weaponry, including but not limited to survival knives and machetes, outside of the Exploration department is equally unlawful. Failure to properly secure all weaponry within the relevant department may result in penalties, up to and including the revocation of this Departmental weapon permit or the revocation of Departmental certification for an unstated period of time.<BR><BR>
 				<ul>Under specific circumstances, namely the announcement of Codes: Red or Delta, the restrictions barring the carry or usage of assigned or recovered weaponry may be waived by an acting member of the on-site Command Staff. In the event that no Security crewmembers are available – either by incapacitation or other condition – these restrictions may also be lifted on Code: Yellow.<BR><BR>
 				</ul>
 				<hr>
 				<h2>Crew Restrictions: Special Concerns</h2>
 
-				Due to concerns regarding the physical demands expected of Exploration, including but not limited to resilience and physical strength, Central Command has determined that any NanoTrasen employee under <u>2'6"/76.2cm</u> may not be employed on any NanoTrasen facility Exploration team. Transfer to the Exploration department after the assignment of another Departmental role is equally unlawful. However, employees matching (disqualifying criteria <u>2'6"/76.2cm</u>) may volunteer for, and be selected to go on, scientific expeditions as auxiliaries. This ruling may be appealed in the future.<BR><BR>
+				Due to concerns regarding the physical demands expected of Exploration, including but not limited to resilience and physical strength, Central Command has determined that any Nanotrasen employee under <u>2'6"/76.2cm</u> may not be employed on any Nanotrasen facility Exploration team. Transfer to the Exploration department after the assignment of another Departmental role is equally unlawful. However, employees matching (disqualifying criteria <u>2'6"/76.2cm</u>) may volunteer for, and be selected to go on, scientific expeditions as auxiliaries. This ruling may be appealed in the future.<BR><BR>
 				<ul>
-					<li>This policy has the following exceptions: NanoTrasen employees may be employed by the Exploration department if fulfilling the role of <u>Pilot/Aviator</u>. All other provisions apply.</li><BR>
+					<li>This policy has the following exceptions: Nanotrasen employees may be employed by the Exploration department if fulfilling the role of <u>Pilot/Aviator</u>. All other provisions apply.</li><BR>
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
@@ -2410,7 +2410,7 @@
 /obj/item/book/manual/legal/sop_vol5_5
 	name = "SOP Volume 5.5: Department Regulations (Security)"
 	icon_state = "sop_se_vol5"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 5.5: Department Regulations (Security)"
 
 /obj/item/book/manual/legal/sop_vol5_5/Initialize(mapload)
@@ -2512,7 +2512,7 @@
 					<li> Bring the suspect to Security Processing. If paying a fine will replace jail time, offer them the chance to pay the fine before proceeding. This is assuming they have not paid the fine already and had to be handcuffed in the first place. If the fine is paid, skip to the final step. Otherwise, continue.
 					<li> Read Corporate Regulations out loud for every valid charge, and update their security record accordingly.</li>
 					<li> After you have read the charges you should state the following word-for-word: </li>
-					<ul><b>"According to NanoTrasen Criminal Processing Policy, you are entitled to appeal your case to an Internal Affairs Agent at this time, if such is available. Should you accept this offer, be advised your criminal processing may be delayed until your agent is satisfied with the case. If they rule in favor, they will contact the Head of Security on your behalf. If accepted, you will be released or your sentence will be reduced. If at any time, the Internal Affairs agent, the Head of Security, or the Colony Director rejects your appeal, your sentence will be unaffected."</b></li>
+					<ul><b>"According to Nanotrasen Criminal Processing Policy, you are entitled to appeal your case to an Internal Affairs Agent at this time, if such is available. Should you accept this offer, be advised your criminal processing may be delayed until your agent is satisfied with the case. If they rule in favor, they will contact the Head of Security on your behalf. If accepted, you will be released or your sentence will be reduced. If at any time, the Internal Affairs agent, the Head of Security, or the Colony Director rejects your appeal, your sentence will be unaffected."</b></li>
 					</ul>
 					<li> If they either do not want to bother with an appeal, or their appeal is not sufficient enough to be alleviated of all charges, proceed to next step. If their appeal is sufficient for immediate release, proceed to final step. Otherwise, continue.</li>
 					<li> Search the individual for contraband and question them as necessary. Empty pockets, remove accessories such as webbing off their uniform, check their PDA for stolen/illegal cartridges, check their headset for illegal/stolen encryption cards, check their shoes for knives, check anything and everything that could contain items. If contraband or stolen property is found, charge them accordingly. See Corporate Regulations for details. Anything else <i>not</i> considered contraband but still may compromise the security of the cell (such as a chef's kitchen knife, or an engineer's tools) should also be temporarily confiscated and returned after the sentence is served.</li>
@@ -2651,8 +2651,8 @@
 				<hr>
 				<h2>Crew Restrictions: Special Concerns</h2>
 
-				Due to concerns regarding the physical demands expected of Security, including but not limited to resilience and physical strength, Central Command has determined that any NanoTrasen employee under <u>2'6"/76.2cm</u> may not be employed on any NanoTrasen facility Security team. Transfer to the Security department after the assignment of another Departmental role is equally unlawful. This ruling may be appealed in the future.<BR><BR>
-					<ul><li>This policy has the following exceptions: NanoTrasen employees may be employed by the Security department if fulfilling the role of <u>Detective/Forensic Technician</u>. All other provisions apply.</li><BR>
+				Due to concerns regarding the physical demands expected of Security, including but not limited to resilience and physical strength, Central Command has determined that any Nanotrasen employee under <u>2'6"/76.2cm</u> may not be employed on any Nanotrasen facility Security team. Transfer to the Security department after the assignment of another Departmental role is equally unlawful. This ruling may be appealed in the future.<BR><BR>
+					<ul><li>This policy has the following exceptions: Nanotrasen employees may be employed by the Security department if fulfilling the role of <u>Detective/Forensic Technician</u>. All other provisions apply.</li><BR>
 					</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
@@ -2664,7 +2664,7 @@
 /obj/item/book/manual/legal/sop_vol5_6
 	name = "SOP Volume 5.6: Department Regulations (Command)"
 	icon_state = "sop_se_vol5"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 5.6: Department Regulations (Command)"
 
 /obj/item/book/manual/legal/sop_vol5_6/Initialize(mapload)
@@ -2720,7 +2720,7 @@
 				Hybrid roles should not be used to replace duties that are already covered by other staff. For example, a scientist should not be given mining access when there's perfectly good miners already present. Hybrid roles are meant to make current duties easier to fulfill, such as a Security Officer being given access to engineering because they are assigned to the security detail for a construction site.<BR><BR>
 				<hr>
 				<h2>Crew Restrictions: Special Concerns</h2>
-				Due to concerns regarding the hazardous nature of Command duties and the volatile nature of Vox biology, Central Command has determined that the following race – Vox – may not be employed on any NanoTrasen facility Command team, barring the following provisions: Vox may be employed as Chief Engineer, Chief Medical Officer, or Research Director. Prohibited Vox Command positions follow: Colony Director, Head of Security, or Head of Personnel. Transfer to the proscribed Command departments after the assignment of another Departmental role is equally unlawful. This ruling may be appealed in the future.<BR><BR>
+				Due to concerns regarding the hazardous nature of Command duties and the volatile nature of Vox biology, Central Command has determined that the following race – Vox – may not be employed on any Nanotrasen facility Command team, barring the following provisions: Vox may be employed as Chief Engineer, Chief Medical Officer, or Research Director. Prohibited Vox Command positions follow: Colony Director, Head of Security, or Head of Personnel. Transfer to the proscribed Command departments after the assignment of another Departmental role is equally unlawful. This ruling may be appealed in the future.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
@@ -2731,7 +2731,7 @@
 /obj/item/book/manual/legal/sop_vol5_7
 	name = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
 	icon_state = "sop_se_vol5"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
 
 /obj/item/book/manual/legal/sop_vol5_7/Initialize(mapload)
@@ -2754,11 +2754,11 @@
 				<hr>
 				<h2>Impartiality Clause</h2>
 
-				An Internal Affairs Agent is not to serve the interests of any group or individual, including their own superiors up to and including NanoTrasen at the corporate level. Their only loyalty is to the rules as they are written, and to the party that follows them. Their job is only to ensure that those rules are being obeyed, and that if they are not, they make it known to those who can enact changes.<BR><BR>
+				An Internal Affairs Agent is not to serve the interests of any group or individual, including their own superiors up to and including Nanotrasen at the corporate level. Their only loyalty is to the rules as they are written, and to the party that follows them. Their job is only to ensure that those rules are being obeyed, and that if they are not, they make it known to those who can enact changes.<BR><BR>
 
 				An Internal Affairs Agent is not a lawyer, though many may come from a background in practicing law. They will only defend and protect a party who is following the rules of the company, and any laws that the company is supposed to follow.<BR><BR>
 
-				Any faults in those rules such as inconsistencies or oversights should be brought to the attention of NanoTrasen.<BR><BR>
+				Any faults in those rules such as inconsistencies or oversights should be brought to the attention of Nanotrasen.<BR><BR>
 
 				An Internal Affairs Agent should never make assumptions of anyone's intentions, nor include speculation of intentions in any given report. The Internal Affairs Agent is to summarize the facts and <i>only</i> the facts in their report.<BR><BR>
 				<hr>
@@ -2772,7 +2772,7 @@
 
 				Prisoner comments and concerns will be handled in the same way as employee comments and concerns except in that a prisoner cannot come to the Internal Affairs Office. Instead, Security must arrange for the Internal Affairs Agent to meet with the prisoner in safety, but privacy.<BR><BR>
 
-				All NanoTrasen holding facilities are equipped with at least one visitor booth wherein an Internal Affairs Agent and a prisoner may meet face-to-face without having to be in direct physical contact. If such a facility is not available, and the Internal Affairs Agent does not feel comfortable conducting the interview elsewhere, the condition of safety has not been met. If a third party not participant in the interview is able to listen in, then the condition of privacy has not been met. Note that there is no reason for Security to require that a guard be kept directly in the room, as the prisoner's visitation facility already ensures safety of the Internal Affairs Agent.<BR><BR>
+				All Nanotrasen holding facilities are equipped with at least one visitor booth wherein an Internal Affairs Agent and a prisoner may meet face-to-face without having to be in direct physical contact. If such a facility is not available, and the Internal Affairs Agent does not feel comfortable conducting the interview elsewhere, the condition of safety has not been met. If a third party not participant in the interview is able to listen in, then the condition of privacy has not been met. Note that there is no reason for Security to require that a guard be kept directly in the room, as the prisoner's visitation facility already ensures safety of the Internal Affairs Agent.<BR><BR>
 
 				If safety or privacy cannot <b>both</b> be reasonably accommodated, the interview cannot proceed, and the reason why should be noted in your report.<BR><BR>
 
@@ -2786,7 +2786,7 @@
 				<ul>
 					<li><b>Harassment</b></li>
 
-					<ul>Harassment is unwelcome conduct that is based on species, race, color, religion, sex (including pregnancy), national origin, age, disability, or genetic information. Harassment is against NanoTrasen's corporate policies, and it is therefore Central Command's obligation to address and investigate any harrassment report.<BR><BR>
+					<ul>Harassment is unwelcome conduct that is based on species, race, color, religion, sex (including pregnancy), national origin, age, disability, or genetic information. Harassment is against Nanotrasen's corporate policies, and it is therefore Central Command's obligation to address and investigate any harrassment report.<BR><BR>
 
 					Harassment is against Corporate Regulations already, but becomes <b>unlawful</b> to Central Command when enduring the offensive conduct becomes a condition of continued employment, and the conduct is severe or pervasive enough to create a work environment that a reasonable person would consider intimidating, hostile, or abusive. Anti-discrimination laws also prohibit harassment against individuals in retaliation for filing a discrimination charge, testifying, or participating in any way in an investigation, proceeding, or lawsuit under these laws; or opposing employment practices that they reasonably believe discriminate against individuals, in violation of these laws.<BR><BR>
 
@@ -2797,20 +2797,20 @@
 							<li>The victim does not have to be the person harassed, but can be anyone affected by the offensive conduct.</li>
 							<li>Unlawful harassment may occur without economic injury to, or discharge of, the victim.</ul></li><BR>
 						</ul>
-					Prevention is the best tool to eliminate harassment in the workplace. NanoTrasen encourages all employees to take appropriate steps to prevent and correct harassment. Employees should feel free to raise concerns and be confident that those concerns will be addressed.<BR><BR>
+					Prevention is the best tool to eliminate harassment in the workplace. Nanotrasen encourages all employees to take appropriate steps to prevent and correct harassment. Employees should feel free to raise concerns and be confident that those concerns will be addressed.<BR><BR>
 
-					Employees are encouraged to inform the harasser directly that the conduct is unwelcome and must stop. Employees should also report harassment to Internal Affairs at an early stage to prevent its escalation. Remember that Internal Affairs is not hired to protect the company, and that if someone within the company is complicit in harassment, it is in the long-term benefit of NanoTrasen to take corrective measures up to and including termination of the harasser.</ul><BR>
+					Employees are encouraged to inform the harasser directly that the conduct is unwelcome and must stop. Employees should also report harassment to Internal Affairs at an early stage to prevent its escalation. Remember that Internal Affairs is not hired to protect the company, and that if someone within the company is complicit in harassment, it is in the long-term benefit of Nanotrasen to take corrective measures up to and including termination of the harasser.</ul><BR>
 				</ul>
 				<hr>
 				<h2>Violations of Standard Operating Procedure</h2>
 
-				If Standard Operating Procedure is being ignored by an individual or group of individuals, it should be brought to the attention of that party's superior. For example, if there are medical staff are not compliant with the NanoTrasen Dress Code, then the Chief Medical Officer should be informed.<BR><BR>
+				If Standard Operating Procedure is being ignored by an individual or group of individuals, it should be brought to the attention of that party's superior. For example, if there are medical staff are not compliant with the Nanotrasen Dress Code, then the Chief Medical Officer should be informed.<BR><BR>
 
 				If a head of staff is involved with the violation, or fails to take corrective action against subordinates, the Colony Director should be alerted to the infraction, noting that the relevant head of staff had already been contacted.<BR><BR>
 
 				If the Colony Director is involved with the violation, or fails to take corrective action against subordinates, Central Command should be informed when possible, noting any previous efforts to bring the problem to the attention of command staff already present.<BR><BR>
 
-				Note that there may be extenuating circumstances in which Standard Operating Procedure is ignored. An Internal Affairs agent should still make note of such an incident, but they should also provide full context as to <i>why</i> Standard Operating Procedure was not followed, whether deliberately or not. The reason for this is that Standard Operating Procedure may be updated to lend guidance on future incidents if NanoTrasen deems it worthwhile to do so.<BR><BR>
+				Note that there may be extenuating circumstances in which Standard Operating Procedure is ignored. An Internal Affairs agent should still make note of such an incident, but they should also provide full context as to <i>why</i> Standard Operating Procedure was not followed, whether deliberately or not. The reason for this is that Standard Operating Procedure may be updated to lend guidance on future incidents if Nanotrasen deems it worthwhile to do so.<BR><BR>
 
 				An Internal Affairs Agent may personally recommend additions, edits, and removals to Standard Operating Procedure based on the findings of their investigation.<BR><BR>
 				<hr>
@@ -2826,7 +2826,7 @@
 
 				Note that there may be extenuating circumstances in which Corporate Regulation is ignored, and note that the Colony Director is allowed to issue pardons. If a pardon is issued, an Internal Affairs agent should still report the incident to CentCom, but the urgency of doing so is greatly reduced. Any pardons issued should be mentioned in the report, as well as why they were issued.<BR><BR>
 
-				The reason for this is that Corporate Regulations may be updated to account for future incidents if NanoTrasen deems it worthwhile to do so.<BR><BR>
+				The reason for this is that Corporate Regulations may be updated to account for future incidents if Nanotrasen deems it worthwhile to do so.<BR><BR>
 
 				An Internal Affairs Agent may personally recommend additions, edits, and removals to Corporate Regulations based on the findings of their investigation.<BR><BR>
 				<hr>
@@ -2838,7 +2838,7 @@
 
 				Bring these problems to the attention of Central Command, and offer your suggestions as to how the wording of these documents can be improved.<BR><BR>
 
-				Note that suggested changes should <b>not</b> be based on one specific post; they should account for stations and facilities all across NanoTrasen's corporate network. Site-specific rules may be employed for a particular location based on the needs and circumstances of that location. Internal Affairs Agents should ask and make note of any such rules that may contradict or add to these otherwise company-wide procedures.<BR><BR>
+				Note that suggested changes should <b>not</b> be based on one specific post; they should account for stations and facilities all across Nanotrasen's corporate network. Site-specific rules may be employed for a particular location based on the needs and circumstances of that location. Internal Affairs Agents should ask and make note of any such rules that may contradict or add to these otherwise company-wide procedures.<BR><BR>
 
 				For one extreme example, the NSB Adephagia is equipped with state of the art experimental cloning facilities, and so the edition of Corporate Regulations issued to them is written with more lenient punishments for crew fatalities. Be aware of site-specific changes to the company's usual rules.<BR><BR>
 				<hr>
@@ -2847,7 +2847,7 @@
 				Any permits that the crew wishes to apply for can be done through an Internal Affairs Agent, who will guide you through the application process, and then forward the application to the department responsible for processing that application.<BR><BR>
 				<ul>
 					<li><b>Weapon Permits</b></li>
-					<ul>There are two kinds of weapon permits. Temporary permits are issued at the discretion of the Head of Security, and are good for up to one shift. Long-term permits are issued by NanoTrasen, and require both fingerprinting and a background check.</ul><BR>
+					<ul>There are two kinds of weapon permits. Temporary permits are issued at the discretion of the Head of Security, and are good for up to one shift. Long-term permits are issued by Nanotrasen, and require both fingerprinting and a background check.</ul><BR>
 					<li><b>Medical Prescriptions</b></li>
 					<ul>The Chief Medical Officer is in charge of medical prescriptions. Internal Affairs is not a medically qualified entity, and may not play any role in <i>obtaining</i> a medical prescription. Anyone seeking to obtain a prescription should make an appointment with the medical department for an evaluation. However, in the event that an already valid prescription is being denied treatment, then an employee's labor rights are being violated. The Chief Medical Officer, the Colony Director, <i>and</i> Central Command should be contacted immediately and simultaneously, as failure to provide treatment could result in a medical emergency.</ul><BR>
 				</ul>
@@ -2856,7 +2856,7 @@
 
 				Internal Affairs will often be involved in the planning and execution of company events including (but not limited to) awards ceremonies, training seminars, employee cookouts, weddings, birthday parties, and other special functions.<BR><BR>
 
-				If an employee wishes to reserve company property, or to invite employees to an event that does not take place on company property, Internal Affairs should help plan and coordinate with the heads of staff and Central Command in order to ensure these events run smoothly. Often times, events that have been approved by Central Command will be broadcast on the channel of the NanoTrasen Chatroom App specific to your site of employment.<BR><BR>
+				If an employee wishes to reserve company property, or to invite employees to an event that does not take place on company property, Internal Affairs should help plan and coordinate with the heads of staff and Central Command in order to ensure these events run smoothly. Often times, events that have been approved by Central Command will be broadcast on the channel of the Nanotrasen Chatroom App specific to your site of employment.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
@@ -2867,7 +2867,7 @@
 /obj/item/book/manual/legal/cr_vol1
 	name = "Corporate Regulations Volume 1: Introduction"
 	icon_state = "corpreg_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "Corporate Regulations Volume 1: Introduction"
 
 /obj/item/book/manual/legal/cr_vol1/Initialize(mapload)
@@ -2928,7 +2928,7 @@
 
 				The Colony Director is not above Corporate Regulations, and can be arrested by Security for breaking it. The only time that the Corporate Regulations can be overridden is when there is an imminent and overwhelming threat to the station, such as during Code Delta evacuations.<BR><BR>
 
-				Pardons are only legitimate if they come from a NanoTrasen higher-up (that is, someone who ranks above the Colony Director). Despite his high ranking, the Colony Director cannot spit in the face of Corporate Regulations, and any attempts to do so are infractions.<BR><BR>
+				Pardons are only legitimate if they come from a Nanotrasen higher-up (that is, someone who ranks above the Colony Director). Despite his high ranking, the Colony Director cannot spit in the face of Corporate Regulations, and any attempts to do so are infractions.<BR><BR>
 
 				The time you took for bringing the suspect in and the time you spend questioning are NOT to be calculated into this. This is the pure time someone spends in a cell staring at the wall.<BR><BR>
 
@@ -2947,7 +2947,7 @@
 					<li><b>Cyborgification</b> The removal of a person's brain for transplanting into a Cyborg Chassis as an alternative to execution. A prisoner who is sentenced to execution must request or consent to this.</li>
 					<li><b>Dismissal</b>: Changing ID title to "Dismissed", which has zero access. Requires the judgment of the convicted party's head of staff or the Colony Director to be valid.</li>
 					<li><b>Demotion</b>: Can be demoted down to and including Assistant position. Requires the judgment of the convicted party's head of staff or the Colony Director to be valid.</li>
-					<li><b>Employee</b>: Employee of NanoTrasen, as defined by the station's commanding officer. All non-employee subjects are not protected by these laws.</li>
+					<li><b>Employee</b>: Employee of Nanotrasen, as defined by the station's commanding officer. All non-employee subjects are not protected by these laws.</li>
 					<li><b>Empowering</b>: Illegal acquiring (not via Head of Personnel or Colony Director) of access.</li>
 					<li><b>Execution</b>: Prisoner is killed via means of firing squad, lethal injection, or some other means. It is required for the Colony Director to be present (and not an Acting Colony Director), or an execution may not proceed. It is required to offer the prisoner the option of how they prefer to die. They should also be offered a last meal. It is not required to follow these preferences if they are deemed unreasonable or impossible. In all cases of execution, Central Command should be informed of the execution and the crimes leading up to it. (( A PK - aka Permanent Death - may be applicable in this situation.))</li>
 					<li><b>Head of Staff</b>: Crew members occupying one of the following positions: Colony Director, Chief Engineer, Head of Personnel, Head of Security, Chief Medical Officer, Research Director.</li>
@@ -2990,7 +2990,7 @@
 					</ul>
 				</ul>
 				<hr>
-				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the NanoTrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
+				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
 				</body>
 			</html>
@@ -3000,7 +3000,7 @@
 /obj/item/book/manual/legal/cr_vol2
 	name = "Corporate Regulations Volume 2: Infractions (Low)"
 	icon_state = "corpreg_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "Corporate Regulations Volume 2: Infractions (Low)"
 
 /obj/item/book/manual/legal/cr_vol2/Initialize(mapload)
@@ -3065,7 +3065,7 @@
 					</ul>
 					<li>&sect;105</li>
 					<ul><li><b>Disturbing the Peace</b></li>
-						<li><b>Description:</b> Intentionally and publicly engaging in erotic acts, yelling at people for no reason (though don't arrest someone because they are arguing), throwing around stuff where it could hit someone, harassing a person or department without provocation and following them around / refusing to leave, yelling about how terrible NanoTrasen is, etc.</li>
+						<li><b>Description:</b> Intentionally and publicly engaging in erotic acts, yelling at people for no reason (though don't arrest someone because they are arguing), throwing around stuff where it could hit someone, harassing a person or department without provocation and following them around / refusing to leave, yelling about how terrible Nanotrasen is, etc.</li>
 						<li><b>Notes:</b> Running around the station naked (without a nudity permit) while yelling obscenities, openly having sex in a public area while ignoring requests to take it someplace private, or other such degrading displays and activities all count toward this. In the case of drunken crew members, only charge them if they are actually being a nuisance. If absolutely necessary, they can be detained until they sober up.</li>
 						<li><b>Suggested Penalty:</b> 5 minutes.</li>
 						<li><b>Maximum:</b> Up to 8 minutes. Demotion.</li>
@@ -3249,7 +3249,7 @@
 					</ul>
 				</ul>
 				<hr>
-				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the NanoTrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
+				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
 				</body>
 			</html>
@@ -3258,7 +3258,7 @@
 /obj/item/book/manual/legal/cr_vol3
 	name = "Corporate Regulations Volume 3: Infractions (Moderate)"
 	icon_state = "corpreg_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "Corporate Regulations Volume 3: Infractions (Moderate)"
 
 /obj/item/book/manual/legal/cr_vol3/Initialize(mapload)
@@ -3357,7 +3357,7 @@
 					<li>&sect;210.1</li>
 					<ul><li><b>Unauthorized Transfer of AI/Cyborg Hardware</b></li>
 						<li><b>Description:</b> To remove the "brain" - MMI, Positronic, or otherwise - with intent to alter its function.</li>
-						<li><b>Notes:</b> This is not only a direct cousin of <b>Unlawful Modification of AI/Cyborg Laws (&sect;210)</b>, but of <b>Grand Theft (&sect;215)</b> as well. Cyborgs and the Stationbound AI are the private property of NanoTrasen. Illegally removing the cogitation hardware of a Cyborg or AI and placing it into a Full Body Prosthetic or other "body" - including surgery to revert the MMI process and implant the wetware into a living body - is to be treated as equivalent to grand theft and illegal modification of laws.</li>
+						<li><b>Notes:</b> This is not only a direct cousin of <b>Unlawful Modification of AI/Cyborg Laws (&sect;210)</b>, but of <b>Grand Theft (&sect;215)</b> as well. Cyborgs and the Stationbound AI are the private property of Nanotrasen. Illegally removing the cogitation hardware of a Cyborg or AI and placing it into a Full Body Prosthetic or other "body" - including surgery to revert the MMI process and implant the wetware into a living body - is to be treated as equivalent to grand theft and illegal modification of laws.</li>
 						<li><b>Suggested Penalty:</b> 20 minutes and the return of any disassembled Silicon components.</li>
 						<li><b>Maximum:</b> Demotion. Hold until judgement.</li><br>
 					</ul>
@@ -3447,7 +3447,7 @@
 					</ul>
 				</ul>
 				<hr>
-				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the NanoTrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
+				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
 				</body>
 			</html>
@@ -3456,7 +3456,7 @@
 /obj/item/book/manual/legal/cr_vol4
 	name = "Corporate Regulations Volume 4: Infractions (Severe)"
 	icon_state = "corpreg_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "Corporate Regulations Volume 4: Infractions (Severe)"
 
 /obj/item/book/manual/legal/cr_vol4/Initialize(mapload)
@@ -3561,7 +3561,7 @@
 					<li>&sect;402</li>
 					<ul><li><b>Piracy</b></li>
 						<li><b>Description:</b> To rob a visiting vessel of goods and/or injure its crew while aboard said vessel.</li>
-						<li><b>Notes:</b> NanoTrasen, although not the official governing body in this region of space, is required to punish acts of piracy in accordance to Admiralty law.</li>
+						<li><b>Notes:</b> Nanotrasen, although not the official governing body in this region of space, is required to punish acts of piracy in accordance to Admiralty law.</li>
 						<li><b>Suggested Penalty:</b> In addition to the same charges you'd normally give for a criminal act against the station or its crew, a fax must also be sent to Central Command, who will review the infraction to determine further punishment, up to and including termination of the offending employee's contract.</li><br>
 					</ul>
 					<li>&sect;403</li>
@@ -3572,7 +3572,7 @@
 					</ul>
 				</ul>
 				<hr>
-				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the NanoTrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
+				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
 				</body>
 			</html>
@@ -3581,7 +3581,7 @@
 /obj/item/book/manual/legal/cr_vol5
 	name = "Corporate Regulations Volume 5: Supplementals"
 	icon_state = "corpreg_se"
-	author = "NanoTrasen"
+	author = "Nanotrasen"
 	title = "Corporate Regulations Volume 5: Supplementals"
 
 /obj/item/book/manual/legal/cr_vol5/Initialize(mapload)
@@ -3656,7 +3656,7 @@
 
 				These infractions carry substandard punishment of no more than 5 minutes detention and 100 Thalers, as they were once included for tightly-run stations but quickly fell ignored due to their vague content and alphabetical section header. <small>(If an infraction has a V, you know what it's for.)</small> Some interpretations of these laws may call for a 'search' or a 'minor punishment' that is so loosely defined it has to be an employee violation somewhere, but maybe that's the point. There's a large number of these that have been swapped in and out of officiality over the years and may be subject to abuse and miscommunication. Listed below are some printed examples in the index of the old version of Corporate Regulations, in case your nosy HoS asks.<BR><BR>
 
-				The <b>Maximum Sentence</b> can be requested from the Head of Security, Colony Director, or (Acting Colony Director), though why you would do this over a few Thalers is beyond NanoTrasen's caring capacity.<BR><BR>
+				The <b>Maximum Sentence</b> can be requested from the Head of Security, Colony Director, or (Acting Colony Director), though why you would do this over a few Thalers is beyond Nanotrasen's caring capacity.<BR><BR>
 
 				<i>(This is obviously a scene law to be abused by security to initiate scenes. If you seriously bust someone's balls over this for non-scene reasons we will jobban you. If they are not interested, just give them a warning. Don't push it, buddy.)</i><BR><BR>
 				<i>(This goes for HoS too, no demoting people for obvious scenes as this is scene-breaking.)</i><BR><BR>
@@ -3698,7 +3698,7 @@
 				</ul>
 				<i>*(The above table is merely a few examples to get your brain turning. Feel free to use your imagination and 'expand' the regulations. Nobody's going to care to look up juvenile infractions. There's no shame in being creative or communicative with your partner!)</i><BR><BR>
 				<hr>
-				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the NanoTrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
+				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
 				</body>
 			</html>

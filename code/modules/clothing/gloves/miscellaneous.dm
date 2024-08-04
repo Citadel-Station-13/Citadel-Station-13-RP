@@ -18,9 +18,9 @@
 	item_state = "black"
 	permeability_coefficient = 0.05
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/swat
@@ -30,9 +30,9 @@
 	item_state = "swat"
 	siemens_coefficient = 0.50
 	permeability_coefficient = 0.05
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/combat //Combined effect of SWAT gloves and insulated gloves
@@ -42,9 +42,9 @@
 	item_state = "swat"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 	armor_type = /datum/armor/gloves/combat
 
@@ -65,6 +65,7 @@
 	fingerprint_chance = 25
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
+	materials_base = list(MAT_PLASTIC = 100)
 //	var/balloonPath = /obj/item/latexballon
 
 //TODO: Make inflating gloves a thing
@@ -122,9 +123,9 @@
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/knuckledusters
@@ -178,7 +179,7 @@
 	name = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_gloves"
 	item_state = "para_ert_gloves"
-	action_button_name = "Enable Glove Sigils"
+	item_action_name = "Enable Glove Sigils"
 
 	var/blessed = FALSE
 
@@ -218,7 +219,7 @@
 	desc = "A series of armwraps. Makes you pretty keen to start punching people."
 	icon_state = "armwraps"
 	body_cover_flags = ARMS
-	cold_protection = ARMS
+	cold_protection_cover = ARMS
 	strip_delay = 300 //you can't just yank them off
 	obj_flags = UNIQUE_RENAME
 	/// did you ever get around to wearing these or no
@@ -447,7 +448,7 @@
 	item_state = "mauler_gauntlets"
 	transfer_prints = FALSE
 	body_cover_flags = ARMS|HANDS
-	cold_protection = ARMS|HANDS
+	cold_protection_cover = ARMS|HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 10, "energy" = 10, "bomb" = 55, "bio" = 15, "rad" = 15, "fire" = 80, "acid" = 50)
@@ -490,7 +491,7 @@
 	icon_state = "tackle"
 	item_state = "tackle"
 	transfer_prints = TRUE
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	resistance_flags = NONE
 	//custom_premium_price = PRICE_EXPENSIVE
@@ -549,9 +550,9 @@
 	tackle_range = 5
 	skill_mod = 3
 
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
-	heat_protection = HANDS
+	heat_protection_cover = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 	strip_mod = 1.2 // because apparently black gloves had this
@@ -634,8 +635,8 @@
 	desc = "For when you're expecting to get slapped on the wrist. Offers modest protection to your arms."
 	icon_state = "bracers"
 	body_cover_flags = ARMS
-	cold_protection = HANDS
-	heat_protection = HANDS
+	cold_protection_cover = HANDS
+	heat_protection_cover = HANDS
 	armor_type = /datum/armor/general/bone
 
 /obj/item/clothing/gloves/hasie
@@ -648,7 +649,7 @@
 	name = "Utility Fur Gloves"
 	desc = "Warm fur gloves to match the Utility Fur coat."
 	icon_state = "furug"
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/gloves/darkcleric
@@ -671,3 +672,38 @@
 	icon = 'icons/clothing/gloves/ante_gloves.dmi'
 	icon_state = "ante_gloves"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/gloves/size
+	name = "size standardization bracelet"
+	desc = "A somewhat bulky metal bracelet featuring a crystal, glowing blue. The outer side of the bracelet has an elongated case that one might imagine contains electronic components. This bracelet is used to standardize the size of crewmembers who may need a non-permanent size assist."
+	icon_state = "bs_bracelet"
+	var/original_size
+	var/last_activated
+
+/obj/item/clothing/gloves/size/equipped(mob/user, slot, flags)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(slot != SLOT_ID_GLOVES)
+		return
+	if(last_activated && world.time - last_activated < 10 SECONDS)
+		to_chat(user, "<span class ='warning'>\The [src] flickers. It seems to be recharging.</span>")
+		return
+	last_activated = world.time
+	original_size = user.size_multiplier
+	H.resize(1, TRUE, TRUE)
+	user.visible_message("<span class='warning'>The space around [user] distorts as they change size!</span>","<span class='notice'>The space around you distorts as you change size!</span>")
+
+/obj/item/clothing/gloves/size/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(!original_size)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	last_activated = world.time
+	H.resize(original_size, TRUE, TRUE)
+	original_size = null
+	user.visible_message("<span class='warning'>The space around [user] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
+	to_chat(user, "<span class ='warning'>\The [src] flickers. It is now recharging and will be ready again in ten seconds.</span>")

@@ -5,10 +5,11 @@
 	icon_state = "candle1"
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	light_color = "#E09D37"
 	var/wax = 2000
 	var/icon_type = "candle"
+	var/light_range_lit = 3
 
 /obj/item/flame/candle/Initialize(mapload)
 	. = ..()
@@ -42,12 +43,11 @@
 		if(C.lit)
 			light()
 
-
 /obj/item/flame/candle/proc/light(var/flavor_text = "<span class='notice'>\The [usr] lights the [src].</span>")
 	if(!lit)
 		lit = TRUE
 		visible_message(flavor_text)
-		set_light(CANDLE_LUM)
+		set_light(light_range_lit)
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flame/candle/process(delta_time)
@@ -76,7 +76,7 @@
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "smallcandle"
 	icon_type = "smallcandle"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/flame/candle/white
 	name = "white candle"
@@ -84,7 +84,7 @@
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "whitecandle"
 	icon_type = "whitecandle"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/flame/candle/black
 	name = "black candle"
@@ -92,14 +92,14 @@
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "blackcandle"
 	icon_type = "blackcandle"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/flame/candle/candelabra
 	name = "candelabra"
 	desc = "a small gold candelabra. The cups that hold the candles save some of the wax from dripping off, allowing the candles to burn longer."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candelabra"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	wax = 20000
 
 /obj/item/flame/candle/candelabra/update_icon()
@@ -116,10 +116,13 @@
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")
 
 /obj/item/flame/candle/everburn/white
+	name = "white candle"
 	desc = "a white pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
 	icon_state = "whitecandle"
 	icon_type = "whitecandle"
+
 /obj/item/flame/candle/everburn/black
+	name = "black candle"
 	desc = "a black pillar candle. Ominous."
 	icon_state = "blackcandle"
 	icon_type = "blackcandle"

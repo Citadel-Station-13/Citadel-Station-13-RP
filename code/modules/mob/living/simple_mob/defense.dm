@@ -89,7 +89,7 @@
 
 // Exploding.
 /mob/living/simple_mob/legacy_ex_act(severity)
-	if(!blinded)
+	if(!has_status_effect(/datum/status_effect/sight/blindness))
 		flash_eyes()
 	var/armor = run_armor_check(def_zone = null, attack_flag = "bomb")
 	var/bombdam = 500
@@ -153,7 +153,7 @@
 		return 0
 
 	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
-	playsound(loc, "sparks", 50, 1, -1)
+	playsound(loc, /datum/soundbyte/grouped/sparks, 50, 1, -1)
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, loc)

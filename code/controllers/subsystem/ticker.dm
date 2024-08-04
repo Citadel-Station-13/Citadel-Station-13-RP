@@ -120,6 +120,8 @@ SUBSYSTEM_DEF(ticker)
 
 				SSdbcore.SetRoundEnd()
 				SSpersistence.SavePersistence()
+				if(!SSpersistence.world_saved_count && CONFIG_GET(flag/persistence) && !SSpersistence.world_non_canon)
+					SSpersistence.save_the_world()
 
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
@@ -497,7 +499,7 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = nominal_dt_s
 	mode.process(dt)
 
 	var/game_finished = 0

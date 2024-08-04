@@ -8,7 +8,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	icon = 'icons/obj/seeds.dmi'
 	icon_state = "blank"
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	var/seed_type
 	var/datum/seed/seed
@@ -362,3 +362,13 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/ashlander/pokalea
 	seed_type = "pokalea"
+
+//Alien Plants
+/obj/item/seeds/fungiwheat
+	seed_type = "fungiwheat"
+
+/obj/item/seeds/ironwood
+	seed_type = "ironwood"
+
+/obj/item/seeds/creepermoss
+	seed_type = "creepermoss"

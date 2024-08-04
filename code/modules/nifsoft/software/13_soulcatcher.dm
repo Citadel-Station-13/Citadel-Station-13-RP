@@ -407,11 +407,11 @@
 
 	//If they're blinded
 	if(ext_blind)
-		eye_blind = 5
+		apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 		client.screen.Remove(GLOB.global_hud.whitense)
 		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 	else
-		eye_blind = 0
+		remove_status_effect(/datum/status_effect/sight/blindness)
 		clear_fullscreen("blind")
 		client.screen.Add(GLOB.global_hud.whitense)
 
@@ -498,7 +498,7 @@
 
 /mob/living/carbon/brain/caught_soul/resist()
 	set name = "Resist"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	to_chat(src,SPAN_WARNING("There's no way out! You're stuck in VR."))
 
@@ -544,8 +544,6 @@
 		dummy.compile_overlays()
 		dummy.alpha = 192
 
-		// remove hudlist
-		dummy.cut_overlay(dummy.hud_list)
 		// appearance clone immediately
 		appearance = dummy.appearance
 		plane = AUGMENTED_PLANE
@@ -603,7 +601,7 @@
 /mob/living/carbon/human/proc/nsay(message as text)
 	set name = "NSay"
 	set desc = "Speak into your NIF's Soulcatcher."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	src.nsay_act(message)
 
@@ -633,7 +631,7 @@
 /mob/living/carbon/human/proc/nme(message as message|null)
 	set name = "NMe"
 	set desc = "Emote into your NIF's Soulcatcher."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	src.nme_act(message)
 

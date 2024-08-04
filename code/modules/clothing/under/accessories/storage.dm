@@ -5,97 +5,161 @@
 	slot = ACCESSORY_SLOT_UTILITY
 	show_messages = 1
 
-	var/slots = 5
-	var/obj/item/storage/internal/hold
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	on_rolled = list("down" = "none")
 	var/hide_on_roll = FALSE
 
+	//* Directly passed to storage system. *//
+
+	var/list/insertion_whitelist
+	var/list/insertion_blacklist
+	var/list/insertion_allow
+
+	var/max_single_weight_class = WEIGHT_CLASS_SMALL
+	var/max_combined_weight_class
+	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	var/max_items
+
+	var/weight_subtract = 0
+	var/weight_multiply = 1
+
+	var/allow_mass_gather = FALSE
+	var/allow_mass_gather_mode_switch = TRUE
+	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
+
+	var/allow_quick_empty = FALSE
+	var/allow_quick_empty_via_clickdrag = TRUE
+	var/allow_quick_empty_via_attack_self = TRUE
+
+	var/sfx_open = "rustle"
+	var/sfx_insert = "rustle"
+	var/sfx_remove = "rustle"
+
+	var/ui_numerical_mode = FALSE
+
+	//* Initialization *//
+
+	/// storage datum path
+	var/storage_datum_path = /datum/object_system/storage
+	/// Cleared after Initialize().
+	/// List of types associated to amounts.
+	var/list/starts_with
+	/// set to prevent us from spawning starts_with
+	var/empty = FALSE
+
 /obj/item/clothing/accessory/storage/Initialize(mapload)
 	. = ..()
-	hold = new/obj/item/storage/internal(src)
-	hold.max_storage_space = slots * 2
-	hold.max_w_class = ITEMSIZE_SMALL
+	initialize_storage()
+	spawn_contents()
+
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
-	if (accessory_host)	//if we are part of a suit
-		hold.open(user)
-		return
+/**
+ * Make sure to set [worth_dynamic] to TRUE if this does more than spawning what's in starts_with.
+ */
+/obj/item/clothing/accessory/storage/proc/spawn_contents()
+	if(length(starts_with) && !empty)
+		// this is way too permissive already
+		var/safety = 256
+		var/atom/where_real_contents = obj_storage.real_contents_loc()
+		for(var/path in starts_with)
+			var/amount = starts_with[path] || 1
+			for(var/i in 1 to amount)
+				if(!--safety)
+					CRASH("tried to spawn too many objects")
+				new path(where_real_contents)
+	starts_with = null
 
-	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
-		..(user)
+/obj/item/clothing/accessory/storage/proc/initialize_storage()
+	ASSERT(isnull(obj_storage))
+	init_storage(storage_datum_path, TRUE)
+	obj_storage.set_insertion_allow(insertion_allow)
+	obj_storage.set_insertion_whitelist(insertion_whitelist)
+	obj_storage.set_insertion_blacklist(insertion_blacklist)
 
-/obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
-	if (accessory_host)
-		return
+	obj_storage.max_single_weight_class = max_single_weight_class
+	obj_storage.max_combined_weight_class = max_combined_weight_class
+	obj_storage.max_combined_volume = max_combined_volume
+	obj_storage.max_items = max_items
 
-	if (hold.handle_mousedrop(usr, over_object))
-		..(over_object)
+	obj_storage.weight_subtract = weight_subtract
+	obj_storage.weight_multiply = weight_multiply
 
-/obj/item/clothing/accessory/storage/attackby(obj/item/W as obj, mob/user as mob)
-	return hold.attackby(W, user)
+	obj_storage.allow_mass_gather = allow_mass_gather
+	obj_storage.allow_mass_gather_mode_switch = allow_mass_gather_mode_switch
+	obj_storage.mass_gather_mode = mass_gather_mode
 
-/obj/item/clothing/accessory/storage/emp_act(severity)
-	hold.emp_act(severity)
-	..()
+	obj_storage.allow_quick_empty = allow_quick_empty
+	obj_storage.allow_quick_empty_via_clickdrag = allow_quick_empty_via_clickdrag
+	obj_storage.allow_quick_empty_via_attack_self = allow_quick_empty_via_attack_self
 
-/obj/item/clothing/accessory/storage/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	to_chat(user, "<span class='notice'>You empty [src].</span>")
-	var/turf/T = get_turf(src)
-	hold.hide_from(usr)
-	for(var/obj/item/I in hold.contents)
-		hold.remove_from_storage(I, T)
-	add_fingerprint(user)
+	obj_storage.sfx_open = sfx_open
+	obj_storage.sfx_insert = sfx_insert
+	obj_storage.sfx_remove = sfx_remove
+
+	obj_storage.ui_numerical_mode = ui_numerical_mode
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"
 	desc = "Sturdy mess of synthcotton belts and buckles, ready to share your burden."
 	icon_state = "webbing"
-	slots = 3
+	// nah fuck off we don't like aesthetics making dumb storage powercreep different per type.
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
 	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."
 	icon_state = "vest_black"
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/brown_vest
 	name = "brown webbing vest"
 	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
 	icon_state = "vest_brown"
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/white_vest
 	name = "white webbing vest"
 	desc = "Durable white synthcotton vest with lots of pockets to carry essentials."
 	icon_state = "vest_white"
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/black_drop_pouches
 	name = "black drop pouches"
 	gender = PLURAL
 	desc = "Robust black synthcotton bags to hold whatever you need, but cannot hold in hands."
 	icon_state = "thigh_black"
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/brown_drop_pouches
 	name = "brown drop pouches"
 	gender = PLURAL
 	desc = "Worn brownish synthcotton bags to hold whatever you need, but cannot hold in hands."
 	icon_state = "thigh_brown"
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/white_drop_pouches
 	name = "white drop pouches"
 	gender = PLURAL
 	desc = "Durable white synthcotton bags to hold whatever you need, but cannot hold in hands."
 	icon_state = "thigh_white"
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "decorated harness"
 	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
 	icon_state = "unathiharness2"
-	slots = 2
+	max_combined_volume = null
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_items = 2
+	max_combined_weight_class = null
+	insertion_whitelist = list(
+		/obj/item/material/knife,
+	)
+	starts_with = list(
+		/obj/item/material/knife/machete/hatchet/unathiknife = 2,
+	)
 
 /obj/item/clothing/accessory/storage/voyager
 	name = "voyager harness"
@@ -116,36 +180,24 @@
 			BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 			)
 
-/obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)
-	. = ..()
-	hold.max_storage_space = ITEMSIZE_COST_SMALL * 2
-	hold.can_hold = list(/obj/item/material/knife/machete/hatchet/unathiknife,\
-	/obj/item/material/knife,\
-	/obj/item/material/knife/plastic)
-
-	new /obj/item/material/knife/machete/hatchet/unathiknife(hold)
-	new /obj/item/material/knife/machete/hatchet/unathiknife(hold)
-
 /obj/item/clothing/accessory/storage/laconic
 	name = "laconic field pouch system"
 	desc = "This lightweight webbing system supports a hardened leather case designed to sit comfortably on the wearer's hip."
 	icon_state = "laconic"
 	slot = ACCESSORY_SLOT_UTILITY
-	slots = 5
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
 
 //Ashlander Potion Bandolier
 /obj/item/clothing/accessory/storage/ashlander_alchemy
 	name = "hide bandolier"
 	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
 	icon_state = "bandolier_ash"
-	slots = 5
-
-/obj/item/clothing/accessory/storage/ashlander_alchemy/Initialize(mapload)
-	. = ..()
-	hold.can_hold = list(
-		/obj/item/reagent_containers/glass/stone,\
-		/obj/item/stack/medical/poultice_brute,\
-		/obj/item/stack/medical/poultice_burn,\
-		/obj/item/grenade/explosive/ashlander,\
-		/obj/item/bitterash,\
-		/obj/item/flame/lighter)
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 5
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/glass/stone,
+		/obj/item/stack/medical/poultice_brute,
+		/obj/item/stack/medical/poultice_burn,
+		/obj/item/grenade/explosive/ashlander,
+		/obj/item/bitterash,
+		/obj/item/flame/lighter,
+	)

@@ -7,7 +7,7 @@
 /obj/item/material/kitchen/utensil
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("attacked", "stabbed", "poked")
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
@@ -103,7 +103,7 @@
 /obj/item/material/knife/attack(target as mob, mob/living/user as mob)
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You accidentally cut yourself with \the [src].</span>")
-		user.take_organ_damage(20)
+		user.take_random_targeted_damage(brute = 20)
 		return
 	return ..()
 */
@@ -130,7 +130,7 @@
 		return ..()
 	if ((MUTATION_CLUMSY in L.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
-		L.take_organ_damage(10)
+		L.take_random_targeted_damage(brute = 10)
 		L.afflict_unconscious(20 * 2)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

@@ -45,7 +45,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/solar/fake{
+/obj/machinery/power/solar{
 	adir = 135
 	},
 /turf/simulated/floor/airless,
@@ -57,7 +57,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/solar/fake{
+/obj/machinery/power/solar{
 	adir = 135
 	},
 /turf/simulated/floor/airless,
@@ -97,7 +97,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/solar/fake,
+/obj/machinery/power/solar,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/old_sat)
 "n" = (

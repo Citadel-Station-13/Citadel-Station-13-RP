@@ -16,7 +16,7 @@
 	var/active = 0
 	var/orecount = 0 //current amount of ores it's holding
 	var/list/resource_field = list()
-	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
+	var/obj/item/radio/intercom/faultreporter
 	var/drill_id = 0
 	var/datum/component/gps_signal/gps_component
 	var/list/ore_types = list(
@@ -46,6 +46,7 @@
 	var/need_player_check = 0
 
 /obj/machinery/mining/drill/Initialize(mapload)
+	faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
 	gps_component = AddComponent(/datum/component/gps_signal, "DRILL#[drill_id]")
 	change_id(drill_id) //yes, this means mappers can assign it their own ID number on roundstart
 	. = ..()
@@ -302,7 +303,7 @@
 
 /obj/machinery/mining/drill/verb/unload_drill()
 	set name = "Unload Drill"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	unload(usr)
@@ -323,7 +324,7 @@
 	else if(S)
 		var/tookall = TRUE
 		for(var/obj/item/stack/ore/O in contents)
-			if(!S.take(O))
+			if(!S.obj_storage.try_insert(O))
 				tookall = FALSE
 				break
 		to_chat(user, "<span class='notice'>You unload [tookall ? "all" : "some"] of the drill's storage cache into [S].</span>")
@@ -420,7 +421,7 @@
 
 /obj/machinery/mining/brace/verb/rotate_clockwise()
 	set name = "Rotate Brace Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	rotating_clockwise(usr)

@@ -235,11 +235,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aP" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/hyper;
-	dir = 4;
-	name = "Unknown APC";
-	pixel_x = -24
+	name = "Unknown APC"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)

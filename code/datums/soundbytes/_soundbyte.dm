@@ -56,6 +56,8 @@
 /**
  * managed sound file groups holding filenames
  * has no runtime load detection
+ *
+ * todo: obliterate grouped so we can have proper domain'd paths and whatnot.
  */
 /datum/soundbyte/grouped
 	path = list()

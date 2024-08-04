@@ -15,7 +15,6 @@
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
 		/obj/item/melee/baton,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 /datum/armor/hardsuit/hazard

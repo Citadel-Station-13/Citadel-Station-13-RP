@@ -443,3 +443,12 @@
 /datum/category_item/underwear/socks/pantyhose_rip_stirrup
 	name = "Ripped Pantyhose (Stirrup)"
 	icon_state = "pantyhose_ripped-stir"
+
+/datum/category_item/underwear/socks/asymmetrical_thigh_stirrups
+	name = "Asymmetrical Thigh (Stirrup)"
+	icon_state = "socks_thigh_asym_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/asymmetrical_thigh_stirrups/reversed
+	name = "Asymmetrical Thigh (Stirrup) (Reversed)"
+	icon_state = "socks_thigh_asym_stirrup_r"

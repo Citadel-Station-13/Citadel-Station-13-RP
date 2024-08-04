@@ -13,7 +13,6 @@
 		/obj/item/flashlight,
 		/obj/item/tank,
 		/obj/item/suit_cooling_unit,
-		/obj/item/storage/backpack,
 		/obj/item/storage/briefcase,
 		/obj/item/storage/secure/briefcase
 		)

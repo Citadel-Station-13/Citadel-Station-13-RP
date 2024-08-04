@@ -42,7 +42,7 @@
 	scanner_name = "Experimental Dropship"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
 [i]Class[/i]: Assault Dropship
-[i]Transponder[/i]: Transmitting (MIL), NanoTrasen
+[i]Transponder[/i]: Transmitting (MIL), Nanotrasen
 [b]Notice[/b]: Experimental vessel"}
 	color = "#8800ff" //Indigo
 	vessel_mass = 3000

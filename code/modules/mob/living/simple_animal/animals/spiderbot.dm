@@ -168,7 +168,7 @@
 
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
-		src.ckey = M.brainmob.ckey
+		set_ckey(M.brainmob.ckey)
 		src.name = "spider-bot ([M.brainmob.name])"
 		src.languages = M.brainmob.languages
 
@@ -276,7 +276,7 @@
 
 	var/list/items = list()
 	for(var/obj/item/I in view(1,src))
-		if(I.loc != src && I.w_class <= ITEMSIZE_SMALL && I.Adjacent(src) )
+		if(I.loc != src && I.w_class <= WEIGHT_CLASS_SMALL && I.Adjacent(src) )
 			items.Add(I)
 
 	var/obj/selection = input("Select an item.", "Pickup") in items

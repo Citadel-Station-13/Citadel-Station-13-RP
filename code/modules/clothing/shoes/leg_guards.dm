@@ -5,7 +5,7 @@
 	weight = ITEM_WEIGHT_ARMOR_MEDIUM_BOOTS
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM_BOOTS
 	species_restricted = null	//Unathi and Taj can wear leg armor now
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	step_volume_mod = 1.3
 	can_hold_knife = TRUE
 	drop_sound = 'sound/items/drop/boots.ogg'
@@ -73,4 +73,4 @@
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_LIGHT_BOOTS
 	armor_type = /datum/armor/station/tactical
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = LEGS
+	cold_protection_cover = LEGS

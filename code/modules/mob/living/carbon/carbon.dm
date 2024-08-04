@@ -32,7 +32,7 @@
 	for(var/mob/M in src)
 		if(M in src.stomach_contents)
 			src.stomach_contents.Remove(M)
-		M.loc = src.loc
+		M.forceMove(loc)
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
 				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
@@ -235,7 +235,7 @@
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 
 	if(is_sleeping())
@@ -314,8 +314,8 @@
 	if(handcuffed)
 		drop_all_held_items()
 		stop_pulling()
-	update_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()
+	update_mobility()
 
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)

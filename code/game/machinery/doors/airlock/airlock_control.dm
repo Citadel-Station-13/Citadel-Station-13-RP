@@ -118,11 +118,12 @@
 	if(!surpress_send) send_status()
 
 
+// some legacy shitcode to let mecha automatically open an airlock on bump
 /obj/machinery/door/airlock/Bumped(atom/AM)
 	..(AM)
-	if(istype(AM, /obj/mecha))
-		var/obj/mecha/mecha = AM
-		if(density && radio_connection && mecha.occupant && (src.allowed(mecha.occupant) || src.check_access_list(mecha.operation_req_access)))
+	if(istype(AM, /obj/vehicle/sealed/mecha))
+		var/obj/vehicle/sealed/mecha/mecha = AM
+		if(density && radio_connection && mecha.occupant_legacy && (src.allowed(mecha.occupant_legacy) || src.check_access_list(mecha.operation_req_access)))
 			send_status(1)
 	return
 
@@ -238,10 +239,10 @@
 	return ..()
 
 /obj/machinery/airlock_sensor/airlock_interior
-	command = "cycle_interior"
+	command = "cycle_int"
 
 /obj/machinery/airlock_sensor/airlock_exterior
-	command = "cycle_exterior"
+	command = "cycle_ext"
 
 // Return the air from the turf in "front" of us (Used in shuttles, so it can be in the shuttle area but sense outside it)
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle/return_air()
@@ -312,8 +313,8 @@
 
 /obj/machinery/access_button/airlock_interior
 	frequency = 1379
-	command = "cycle_interior"
+	command = "cycle_int"
 
 /obj/machinery/access_button/airlock_exterior
 	frequency = 1379
-	command = "cycle_exterior"
+	command = "cycle_ext"

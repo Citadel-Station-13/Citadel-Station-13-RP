@@ -53,7 +53,7 @@
 	inhand_state = "black"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_armor
 	display_name = "Sneaksuit Armor"
@@ -67,7 +67,7 @@
 	inhand_state = "armor"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_gloves
 	display_name = "Sneaksuit Gloves"
@@ -81,7 +81,7 @@
 	inhand_state = "black"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = HANDS
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_helmet
 	display_name = "Sneaksuit Helmet"
@@ -96,7 +96,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_shoes
 	display_name = "Sneaksuit Boots"
@@ -110,7 +110,7 @@
 	inhand_state = "cult"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = FEET
-	cold_protection = FEET
+	cold_protection_cover = FEET
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/sneaksuit_mask
 	display_name = "Sneaksuit Mask"
@@ -125,7 +125,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/contractor_helmet
 	display_name = "Contractor Helmet"
@@ -140,7 +140,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/contractor_suit
 	display_name = "Contractor Suit"
@@ -154,7 +154,7 @@
 	inhand_state = "armor"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
 /datum/loadout_entry/seasonal/masquarade/syndicate/esword
 	display_name = "Energy Sword (toy)"
@@ -188,7 +188,7 @@
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /datum/loadout_entry/seasonal/masquarade/changeling/chitin_suit
 	display_name = "Chitin Suit"
@@ -200,7 +200,7 @@
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
 /datum/loadout_entry/seasonal/masquarade/changeling/flesh_hood
 	display_name = "Flesh Hood"
@@ -213,7 +213,7 @@
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /datum/loadout_entry/seasonal/masquarade/changeling/flesh_suit
 	display_name = "Flesh Suit"
@@ -225,7 +225,7 @@
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
 /datum/loadout_entry/seasonal/masquarade/changeling/arm_blade
 	display_name = "Arm Blade"
@@ -294,7 +294,7 @@
 	icon_state = "clockwork_helmet"
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /datum/loadout_entry/seasonal/masquarade/clockcult/suit
 	display_name = "Armor"
@@ -306,7 +306,7 @@
 	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_cuirass"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /datum/loadout_entry/seasonal/masquarade/clockcult/boots
 	display_name = "Boots"
@@ -318,7 +318,7 @@
 	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_treads"
 	body_cover_flags = FEET
-	cold_protection = FEET
+	cold_protection_cover = FEET
 
 /datum/loadout_entry/seasonal/masquarade/clockcult/gloves
 	display_name = "Gloves"
@@ -330,7 +330,7 @@
 	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_gauntlets"
 	body_cover_flags = HANDS
-	cold_protection = HANDS
+	cold_protection_cover = HANDS
 
 /datum/loadout_entry/seasonal/masquarade/clockcult/slab
 	display_name = "Slab"
@@ -447,7 +447,7 @@
 	icon_state = "cult"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_hardsuit
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET|HANDS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_hardsuit
@@ -456,7 +456,7 @@
 	icon_state = "culthelm"
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/robes_new
@@ -469,7 +469,7 @@
 	icon_state = "cultrobesalt"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_new
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_robes_new
@@ -477,7 +477,7 @@
 	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "culthoodalt"
 	body_cover_flags = HEAD
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/robes_old
@@ -490,7 +490,7 @@
 	icon_state = "cultrobes"
 	hoodtype = /obj/item/clothing/head/hood/fake_cult_robes_old
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_cult_robes_old
@@ -498,7 +498,7 @@
 	icon = 'icons/clothing/suit/antag/cult.dmi'
 	icon_state = "culthood"
 	body_cover_flags = HEAD
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/cult/sword
@@ -522,7 +522,7 @@
 	icon_state = "eldritcharmor"
 	hoodtype = /obj/item/clothing/head/hood/fake_heretic
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_heretic
@@ -530,7 +530,7 @@
 	icon = 'icons/clothing/suit/antag/heretic.dmi'
 	icon_state = "eldritchhood"
 	body_cover_flags = HEAD
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /datum/loadout_entry/seasonal/masquarade/heretic/void_cloak
@@ -543,7 +543,7 @@
 	icon_state = "voidcloak"
 	hoodtype = /obj/item/clothing/head/hood/fake_void
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/hood/fake_void
@@ -552,7 +552,7 @@
 	icon_state = "voidhood"
 	body_cover_flags = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /*

@@ -1,5 +1,35 @@
 /**
+ * automatically splitting stack spawns
+ *
+ * supports /datum/material as well
+ *
+ * @return **amount of objects created** (not total stack/sheet amount made!)
+ */
+/proc/spawn_stacks_at(atom/location, stack_path, amount)
+	. = 0
+	var/safety = 50
+	if(ispath(stack_path, /datum/material))
+		var/datum/material/resolved = SSmaterials.resolve_material(stack_path)
+		// todo: ugh
+		resolved.place_sheet(location, amount)
+		return 1
+	else if(istype(stack_path, /obj/item/stack))
+		stack_path = stack_path:type
+	var/obj/item/stack/casted_path = stack_path
+	var/max_amount = initial(casted_path.max_amount)
+	while(amount > 0)
+		var/creating = min(amount, max_amount)
+		new stack_path(location, creating)
+		.++
+		amount -= creating
+		--safety
+		if(!safety)
+			CRASH("ran out of safety")
+
+/**
  * Items that can stack, tracking the number of which is in it
+ *
+ * * [worth_intrinsic] is the only thing used on this path for detecting economic value. Normal get_worth() is not considered.
  */
 /obj/item/stack
 	gender = PLURAL
@@ -173,9 +203,9 @@
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
 		return TRUE
 
-/obj/item/stack/proc/add(extra)
+/obj/item/stack/proc/add(extra, force)
 	if(!uses_charge)
-		if(amount + extra > get_max_amount())
+		if((amount + extra > get_max_amount()) && !force)
 			return FALSE
 		else
 			amount += extra
@@ -218,18 +248,18 @@
 
 /// Creates a new stack with the specified amount.
 // todo: refactor and combine /change_stack into here
-/obj/item/stack/proc/split(tamount)
+/obj/item/stack/proc/split(tamount, atom/where, force)
 	if (!amount)
 		return null
 	if (uses_charge)
 		return null
 
-	var/transfer = max(min(tamount, src.amount, initial(max_amount)), 0)
+	var/transfer = max(min(tamount, src.amount, force? INFINITY : initial(max_amount)), 0)
 
 	var/orig_amount = src.amount
 	if (transfer && src.use(transfer))
 		var/make_type = isnull(split_type)? type : split_type
-		var/obj/item/stack/newstack = new make_type(loc, transfer, FALSE)
+		var/obj/item/stack/newstack = new make_type(where, transfer, FALSE)
 		newstack.color = color
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(newstack)

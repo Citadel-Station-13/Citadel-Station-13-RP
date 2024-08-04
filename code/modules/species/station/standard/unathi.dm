@@ -18,8 +18,10 @@
 	deform        = 'icons/mob/species/unathi/deformed_body_greyscale.dmi'
 	husk_icon     = 'icons/mob/species/unathi/husk.dmi'
 	preview_icon  = 'icons/mob/species/unathi/preview.dmi'
-	tail = "sogtail"
-	tail_animation = 'icons/mob/species/unathi/tail_greyscale.dmi'
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,
+	)
 
 	blurb = {"
 	A heavily reptillian species, Unathi hail from the Uuosa-Eso system, which roughly translates to 'burning mother'.
@@ -110,6 +112,7 @@
 		O_STOMACH   = /obj/item/organ/internal/stomach/unathi,
 		O_INTESTINE = /obj/item/organ/internal/intestine/unathi,
 	)
+	vision_organ = O_EYES
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,

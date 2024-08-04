@@ -57,7 +57,7 @@
 	desc = "A vicious alien beam weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
 	icon_state = "darkcannon"
 	item_state = "darkcannon"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	charge_cost = 300
 	projectile_type = /obj/projectile/beam/stun/darkmatter
@@ -121,7 +121,7 @@
 	desc = "A vicious alien sound weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
 	icon_state = "noise"
 	item_state = "noise"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1

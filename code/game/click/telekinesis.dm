@@ -67,7 +67,7 @@ var/const/tk_maxrange = 15
 	icon_state = "2"
 	item_flags = ITEM_DROPDEL | ITEM_NOBLUDGEON
 	//item_state = null
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	layer = HUD_LAYER_BASE
 
 	var/last_throw = 0

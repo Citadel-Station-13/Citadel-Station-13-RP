@@ -178,16 +178,14 @@
 "B" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/east_mount{
 	cell_type = /obj/item/cell/hyper;
-	dir = 4;
 	environ = 1;
 	equipment = 1;
 	lighting = 1;
 	locked = 0;
 	name = "Sif Free Radio APC";
-	operating = 0;
-	pixel_x = 24
+	operating = 0
 	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/wood,

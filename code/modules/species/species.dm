@@ -4,6 +4,8 @@
  * They are **not** singletons, however, they are globally cached as a static set
  * for use in preferences to determine default properties/whatever
  *
+ * todo: make them singletons
+ *
  * ? Someday we'll rework this. Someday. I believe.
  *
  * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
@@ -40,11 +42,18 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
-	//? Traits / Physiology
+	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
 	/// physiology modifier to add - path or instance
 	var/datum/physiology_modifier/mob_physiology_modifier
+
+	//* Sprite Accessories *//
+	/// default sprite accessories for each slot; will render onto mobs if they don't have one specifically set.
+	/// set to id/typepath to have it resolved during init.
+	var/list/sprite_accessory_defaults = list()
+
+	// todo: old code below
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -114,20 +123,6 @@
 	/// The basic skin colours this species uses.
 	var/list/base_skin_colours
 
-	//? Tail
-	/// Name of tail state in species effects icon file.
-	var/tail
-	/// If set, the icon to obtain tail animation states from.
-	var/tail_animation
-	var/tail_hair
-	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
-	var/icobase_tail = 0
-
-	//? Wing
-	var/wing_hair
-	var/wing
-	var/wing_animation
-	var/icobase_wing
 
 	//? Organs
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
@@ -335,6 +330,11 @@
 	var/snow_movement = 0
 	/// How affected by item slowdown the species is.
 	var/item_slowdown_mod = 1
+	/// How affected by light the species is. Positive values slow down, negative speed up.
+	/// Values are a maximum slowdown / speedup based on amount of light or lack thereof.
+	var/light_slowdown = 0
+	var/dark_slowdown = 0
+
 
 	//? Special condition
 	/// Multiplier for 'Regenerate' power speed, in human_powers.dm
@@ -355,8 +355,11 @@
 	var/exhale_type = GAS_ID_CARBON_DIOXIDE
 
 	/// Species will try to stabilize at this temperature. (also affects temperature processing)
+	/// Null to disable natural stabilization.
+	//  todo: shoo, needs to be organ/biology based
 	var/body_temperature = 310.15
 	/// Species will gain this much temperature every second
+	//  todo: shoo, needs to be organ/biology based
 	var/passive_temp_gain = 0
 
 	//? Cold Air
@@ -436,6 +439,7 @@
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
+	var/custom_ability_handler
 
 	//? on death drops
 	/// The color of the species flesh.
@@ -483,10 +487,6 @@
 			descriptor_datums[descriptor.name] = descriptor
 		descriptors = descriptor_datums
 
-	//If the species has eyes, they are the default vision organ
-	if(!vision_organ && has_organ[O_EYES])
-		vision_organ = O_EYES
-
 	unarmed_attacks = list()
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
@@ -505,6 +505,8 @@
 				continue
 			built += new path
 		abilities = built
+
+	sprite_accessory_defaults = resolve_sprite_accessory_key_list_inplace(sprite_accessory_defaults)
 
 /**
  * called when we apply to a mob
@@ -618,12 +620,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else if(synth)
 		new /obj/item/fbp_backup_cell(box)
 
-	box.calibrate_size()
+	box.obj_storage.fit_to_contents(no_shrink = TRUE)
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
 
 /**
  * called to ensure organs are consistent with our species's
@@ -776,7 +778,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
-/datum/species/proc/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/proc/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	return
 
 // Used to update alien icons for aliens.
@@ -871,9 +873,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * clones us into a new datum
  */
-/datum/species/proc/clone()
+/datum/species/clone(include_contents)
 	var/datum/species/created = new type
 	created.copy_from(src)
+	return created
 
 /**
  * completely clones us from another species, updating the provided human in the process
@@ -895,9 +898,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	base_species = to_copy.name
 	icobase = to_copy.icobase
 	deform = to_copy.deform
-	tail = to_copy.tail
-	tail_animation = to_copy.tail_animation
-	icobase_tail = to_copy.icobase_tail
+	sprite_accessory_defaults = to_copy.sprite_accessory_defaults.Copy()
 	color_mult = to_copy.color_mult
 	primitive_form = to_copy.primitive_form
 	species_appearance_flags = to_copy.species_appearance_flags

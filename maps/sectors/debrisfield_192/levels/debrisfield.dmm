@@ -110,9 +110,7 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/space/debrisfield/explored)
 "Bk" = (
-/obj/machinery/power/apc/alarms_hidden{
-	pixel_y = 30
-	},
+/obj/machinery/power/apc/alarms_hidden,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

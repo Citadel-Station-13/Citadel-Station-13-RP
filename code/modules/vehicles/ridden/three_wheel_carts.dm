@@ -47,7 +47,7 @@
 	desc = "The Security Cart Key used to start it."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "securikey"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 
 /obj/vehicle/ridden/cart/medical
@@ -61,4 +61,4 @@
 	desc = "The Medical Cart Key used to start it."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "medikey"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY

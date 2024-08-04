@@ -22,10 +22,11 @@
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network."
 	icon = 'icons/obj/gps.dmi'
 	icon_state = "gps-gen"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 500)
+	worth_intrinsic = 40
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
@@ -412,7 +413,7 @@
 			if(!tag_as)
 				return FALSE
 			var/turf/T = get_turf(src)
-			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_id(T.z))
+			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.fluff_level_id(T.z))
 			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.
@@ -576,7 +577,7 @@
 
 /obj/item/gps/internal/base
 	gps_tag = "NT_BASE"
-	desc = "A homing signal from NanoTrasen's outpost."
+	desc = "A homing signal from Nanotrasen's outpost."
 
 /obj/item/gps/internal/poi
 	gps_tag = "Unidentified Signal"
@@ -601,7 +602,7 @@
 	throw_force = 10
 	sharp = 1
 	edge = 1
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 4)
 	attack_verb = list("sliced", "chopped", "stabbed", "pierced")
 	tool_speed = 2 // Use a real axe if you want to chop logs.

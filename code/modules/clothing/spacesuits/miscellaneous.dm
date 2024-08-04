@@ -19,7 +19,7 @@
 	name = "Facility Director's armor"
 	desc = "A bulky, heavy-duty piece of exclusive corporate armor. YOU are in charge!"
 	icon_state = "caparmor"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	clothing_flags = 0
@@ -29,7 +29,7 @@
 	weight = ITEM_WEIGHT_VOIDSUIT
 	armor_type = /datum/armor/station/tactical
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
@@ -91,7 +91,7 @@
 	name = "pirate coat"
 	desc = "Yarr."
 	icon_state = "pirate"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen)
 	weight = ITEM_WEIGHT_BASELINE
 	encumbrance = ITEM_ENCUMBRANCE_BASELINE
@@ -108,6 +108,7 @@
 	flash_protection = FLASH_PROTECTION_NONE
 	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT_HELMET
 	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT_HELMET
+	worth_intrinsic = 75
 
 /obj/item/clothing/suit/space/emergency
 	name = "Emergency Softsuit"
@@ -115,6 +116,7 @@
 	desc = "A thin, ungainly softsuit colored in blaze orange for rescuers to easily locate, looks pretty fragile."
 	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT
 	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT
+	worth_intrinsic = 200
 
 //Russian Emergency Suit
 /obj/item/clothing/head/helmet/space/emergency/russian

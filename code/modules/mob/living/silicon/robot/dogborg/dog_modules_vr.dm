@@ -7,7 +7,7 @@
 	throw_force = 0
 	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/dogborg/jaws/small
 	name = "puppy jaws"
@@ -18,7 +18,7 @@
 	throw_force = 0
 	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/emagged = 0
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
@@ -37,7 +37,6 @@
 			throw_force = 0
 			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
-			w_class = ITEMSIZE_NORMAL
 		else
 			name = "puppy jaws"
 			icon = 'icons/mob/dogborg_vr.dmi'
@@ -47,7 +46,6 @@
 			throw_force = 0
 			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
-			w_class = ITEMSIZE_NORMAL
 		update_icon()
 
 //Boop //Newer and better, can sniff reagents, tanks, and boop people!
@@ -60,7 +58,7 @@
 	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
 	. = ..()
@@ -127,10 +125,10 @@
 	desc = "Fetch the thing!"
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "dbag"
-	w_class = ITEMSIZE_HUGE
-	max_w_class = ITEMSIZE_SMALL
-	max_combined_w_class = ITEMSIZE_SMALL
-	storage_slots = 1
+	w_class = WEIGHT_CLASS_HUGE
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_w_class = WEIGHT_CLASS_SMALL
+	max_items = 1
 	collection_mode = 0
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
@@ -342,7 +340,7 @@
 	throw_force = 0 //This shouldn't be thrown in the first place.
 	attack_sound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/lightreplacer/dogborg
 	name = "light replacer"
@@ -459,7 +457,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate"
 	item_state = "healthanalyzer"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/implant/mirror/imp = null
 
 /obj/item/dogborg/mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)

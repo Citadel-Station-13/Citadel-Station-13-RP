@@ -28,3 +28,7 @@ GLOBAL_LIST_INIT(clothing_belt, generate_chameleon_choices(/obj/item/storage/bel
 // accessories
 GLOBAL_LIST_INIT(clothing_accessory, generate_chameleon_choices(/obj/item/clothing/accessory,
 	list(/obj/item/clothing/accessory/chameleon)))
+
+GLOBAL_LIST_INIT(clothing_ears, generate_chameleon_choices(/obj/item/clothing/ears))
+
+GLOBAL_LIST_INIT(clothing_headsets, generate_chameleon_choices(/obj/item/radio/headset))

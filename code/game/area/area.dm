@@ -1,10 +1,33 @@
 /**
+ * Gets a cached area of a given type, if it's unique
+ * If it's not unique, throw a runtime
+ */
+/proc/unique_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	ASSERT(creating.unique)
+	if(!isnull(GLOB.areas_by_type[path]))
+		return GLOB.areas_by_type[path]
+	creating = new path(null)
+	GLOB.areas_by_type[path] = creating
+	return creating
+
+/**
+ * Gets the global reference to an area, or a new copy, depending on if it's unique or not
+ */
+/proc/dynamic_area_of_type(path)
+	ASSERT(ispath(path, /area))
+	var/area/creating = path
+	if(!creating.unique)
+		return new path(null)
+	return unique_area_of_type(path)
+
+/**
  * # area
  *
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
-	level = null
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
@@ -329,6 +352,8 @@
 				else if(!E.density)
 					spawn(0)
 						E.close()
+		for(var/obj/machinery/floor_inflatables/i in all_doors)
+			i.trigger()
 
 /// Open all firedoors in the area
 /area/proc/firedoors_open()
@@ -361,8 +386,9 @@
 		if(!all_arfgs)
 			return
 		for(var/obj/machinery/atmospheric_field_generator/E in all_arfgs)
-			E.disable_field()
-			E.wasactive = FALSE
+			if(!E.alwaysactive)
+				E.disable_field()
+				E.wasactive = FALSE
 
 
 /area/proc/fire_alert()
@@ -562,7 +588,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/play_ambience(var/mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!L?.is_preference_enabled(/datum/client_preference/play_ambiance))
+	if(!L?.get_preference_toggle(/datum/game_preference_toggle/ambience/area_ambience))
 		return
 
 	// If we previously were in an area with force-played ambiance, stop it.
@@ -624,14 +650,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
-/area/proc/shuttle_arrived()
-	for(var/obj/machinery/power/apc/A in contents)
-		A.update_area()
-	return TRUE
-
-/area/proc/shuttle_departed()
-	return TRUE
-
 /area/AllowDrop()
 	CRASH("Bad op: area/AllowDrop() called")
 
@@ -639,6 +657,9 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	CRASH("Bad op: area/drop_location() called")
 
 // A hook so areas can modify the incoming args
+/**
+ * * THIS CANNOT CALL ANY 'new' BECAUSE WE ARE POTENTIALLY BEING PRELOADED!
+ */
 /area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	return flags
 
@@ -731,3 +752,19 @@ var/list/ghostteleportlocs = list()
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
 		if(scrubber.id_tag == id)
 			return scrubber
+
+//* Turfs *//
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs(list/turf/turfs)
+	for(var/turf/T in turfs)
+		ChangeArea(T, src)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		ChangeArea(T, give_to)

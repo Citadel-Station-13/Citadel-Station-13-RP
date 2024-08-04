@@ -17,7 +17,7 @@
 	integrated_light_power = 3
 	local_transmit = 1
 
-	can_pull_size = ITEMSIZE_NO_CONTAINER
+	can_pull_size = WEIGHT_CLASS_HUGE
 	can_pull_mobs = MOB_PULL_SMALLER
 	can_enter_vent_with = list(
 		/obj)
@@ -339,10 +339,10 @@
 			C.prefs.be_special ^= BE_PAI
 
 /mob/living/silicon/robot/drone/proc/transfer_personality(var/client/player)
+	if(!player)
+		return
 
-	if(!player) return
-
-	src.ckey = player.ckey
+	player.transfer_to(src)
 
 	if(player.mob && player.mob.mind)
 		player.mob.mind.transfer(src)

@@ -51,7 +51,7 @@ var/list/floor_decals = list()
 		var/image/I = floor_decals[cache_key]
 		if(!I)
 			I = image(icon = icon, icon_state = icon_state, dir = dir)
-			I.layer = T.layer
+			I.layer = (T.layer > src.layer ? T.layer : src.layer)
 			I.color = color
 			I.alpha = alpha
 			floor_decals[cache_key] = I

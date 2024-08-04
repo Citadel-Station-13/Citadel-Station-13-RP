@@ -111,7 +111,7 @@
 	name = "hypo belt"
 	desc = "A medical belt designed to carry autoinjectors and other medical equipment."
 
-/obj/item/storage/belt/medical/technomancer/PopulateContents()
+/obj/item/storage/belt/medical/technomancer/legacy_spawn_contents()
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/burn(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/toxin(src)
@@ -133,9 +133,9 @@
 	name = "Belt of Holding"
 	desc = "Can hold more than you'd expect."
 	icon_state = "ems"
-	max_w_class = ITEMSIZE_NORMAL // Can hold normal sized items.
-	storage_slots = 14	// Twice the capacity of a typical belt.
-	max_storage_space = ITEMSIZE_COST_NORMAL * 14
+	max_single_weight_class = WEIGHT_CLASS_NORMAL // Can hold normal sized items.
+	max_items = 14	// Twice the capacity of a typical belt.
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14
 
 /datum/technomancer/equipment/thermals
 	name = "Thermoncle"
@@ -162,7 +162,7 @@
 	capabilities.  The lens appear to be multiple optical matrices layered together, allowing the wearer to see almost anything \
 	across physical barriers."
 	icon_state = "uzenwa_sissra_1"
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
 	toggleable = 1
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS

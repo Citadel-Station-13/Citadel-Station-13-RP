@@ -16,8 +16,7 @@
 	default_multitool_hijack = TRUE
 	tgui_interface = "AtmosVentPump"
 	atmos_component_ui_flags = NONE
-
-	level = 1
+	hides_underfloor_underlays = TRUE
 
 	/// registered area
 	var/area/registered_area
@@ -101,7 +100,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(is_probably_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		vent_icon += "h"
 
 	if(welded)
@@ -119,7 +118,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(is_probably_hidden_underfloor() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 			return
 		else
 			if(node)
@@ -127,9 +126,9 @@
 			else
 				add_underlay(T,, dir)
 
-/obj/machinery/atmospherics/component/unary/vent_pump/hide()
+/obj/machinery/atmospherics/component/unary/vent_pump/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/vent_pump/proc/can_pump()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -161,7 +160,7 @@
 	var/pressure_delta = get_pressure_delta(environment)
 	//src.visible_message("DEBUG >>> [src]: pressure_delta = [pressure_delta]")
 
-	if((environment.temperature || air_contents.temperature) && pressure_delta > 0.5)
+	if((environment.temperature || air_contents.temperature) && pressure_delta > 0.05)
 		if(pump_direction) //internal -> external
 			var/transfer_moles = calculate_transfer_moles(air_contents, environment, pressure_delta)
 			power_draw = pump_gas(src, air_contents, environment, transfer_moles, power_rating)
@@ -277,8 +276,7 @@
 	if (!(machine_stat & NOPOWER) && on)
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], turn it off first.</span>")
 		return 1
-	var/turf/T = src.loc
-	if (node && node.level==1 && isturf(T) && !T.is_plating())
+	if(is_probably_hidden_underfloor() && node?.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())
@@ -499,7 +497,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(T.hides_underfloor_objects() && istype(node, /obj/machinery/atmospherics/pipe) && node.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		vent_icon += "h"
 
 	if(welded)

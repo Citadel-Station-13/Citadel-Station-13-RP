@@ -4,7 +4,7 @@
 // EXCURSION SHUTTLE DATA
 /obj/overmap/entity/visitable/ship/landable/excursion/triumph
 	name = "Excursion Shuttle"
-	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of NanoTrasen."
+	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of Nanotrasen."
 	color = "#72388d" //Purple
 	fore_dir = WEST
 	vessel_mass = 10000

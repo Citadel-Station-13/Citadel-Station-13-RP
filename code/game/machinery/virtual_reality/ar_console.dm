@@ -40,7 +40,7 @@
 
 /obj/machinery/vr_sleeper/alien/eject()
 	set src in view(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(usr.incapacitated())
 		return

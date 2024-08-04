@@ -166,11 +166,11 @@
 // Synthmorph bag / Corporation badges. Primarily used on the robobag, but can be worn. Default is NT.
 
 /obj/item/clothing/accessory/badge/corporate_tag
-	name = "NanoTrasen Badge"
-	desc = "A plain metallic plate that might denote the wearer as a member of NanoTrasen."
+	name = "Nanotrasen Badge"
+	desc = "A plain metallic plate that might denote the wearer as a member of Nanotrasen."
 	icon_state = "tag_nt"
 	item_state = "badge"
-	badge_string = "NanoTrasen"
+	badge_string = "Nanotrasen"
 
 /obj/item/clothing/accessory/badge/corporate_tag/morpheus
 	name = "Morpheus Badge"

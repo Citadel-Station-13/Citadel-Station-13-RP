@@ -116,13 +116,6 @@
 /turf/check_impact(atom/movable/falling_atom)
 	return TRUE
 
-/turf/smooth_icon()
-	. = ..()
-	if(SSzmimic.initialized)
-		var/turf/simulated/open/above = above()
-		if(istype(above))
-			above.queue()
-
 //* lookups
 
 /turf/proc/above()

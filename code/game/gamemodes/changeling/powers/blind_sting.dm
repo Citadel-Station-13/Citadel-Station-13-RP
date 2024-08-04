@@ -17,14 +17,11 @@
 		return 0
 	add_attack_logs(src,T,"Blind sting (changeling)")
 	to_chat(T, "<span class='danger'>Your eyes burn horrificly!</span>")
-	T.disabilities |= DISABILITY_NEARSIGHTED
 	var/duration = 300
 	if(src.mind.changeling.recursive_enhancement)
 		duration = duration + 150
 		to_chat(src, "<span class='notice'>They will be deprived of sight for longer.</span>")
-	spawn(duration)
-		T.disabilities &= ~DISABILITY_NEARSIGHTED
-	T.Blind(10)
-	T.eye_blurry = 20
+	T.apply_status_effect(/datum/status_effect/sight/blindness, duration)
+	T.eye_blurry = duration * 1.2
 	feedback_add_details("changeling_powers","BS")
 	return 1

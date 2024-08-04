@@ -4,6 +4,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "densecrate"
 	density = 1
+	worth_intrinsic = 200
 	var/list/starts_with
 	var/storage_capacity = 2 * MOB_LARGE //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -14,7 +15,7 @@
 	. = ..()
 	if(mapload)
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
-	PopulateContents()
+	legacy_spawn_contents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
 
@@ -44,7 +45,7 @@
 /**
  * The proc that fills the closet with its initial contents.
  */
-/obj/structure/largecrate/proc/PopulateContents()
+/obj/structure/largecrate/proc/legacy_spawn_contents()
 	return
 
 /*	/// Doesnt work but im gonna leave this here commented out in case I broke something with the shameless copy pasta from above -Bloop
@@ -94,7 +95,7 @@
 /obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		var/obj/item/mecha_parts/mecha_equipment/ME
-		var/obj/mecha/working/hoverpod/H = new (loc)
+		var/obj/vehicle/sealed/mecha/working/hoverpod/H = new (loc)
 
 		ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
 		ME.attach(H)
@@ -106,12 +107,6 @@
 	name = "vehicle crate"
 	desc = "It comes in a box for the consumer's sake. ..How is this lighter?"
 	icon_state = "vehiclecrate"
-
-/obj/structure/largecrate/vehicle/Initialize(mapload)
-	. = ..()
-	spawn(1)
-		for(var/obj/O in contents)
-			O.update_icon()
 
 /obj/structure/largecrate/vehicle/bike
 	name = "spacebike crate"
@@ -274,7 +269,7 @@
 	icon_closed = "eelarge"
 
 /obj/structure/closet/crate/large/corporate/nanotrasen
-	desc = "A hefty metal crate, painted in standard NanoTrasen livery."
+	desc = "A hefty metal crate, painted in standard Nanotrasen livery."
 	icon_state = "ntlarge"
 	icon_opened = "ntlargeopen"
 	icon_closed = "ntlarge"

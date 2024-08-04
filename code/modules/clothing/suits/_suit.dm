@@ -10,7 +10,7 @@
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	preserve_item = 1
 
 	var/taurized = FALSE //Easier than trying to 'compare icons' to see if it's a taur suit
@@ -27,8 +27,8 @@
 	if(!taurized && slot == SLOT_ID_SUIT && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(isTaurTail(H.tail_style))
-			var/datum/sprite_accessory/tail/taur/taurtail = H.tail_style
-			var/list/resolved = resolve_worn_assets(user, resolve_inventory_slot_meta(/datum/inventory_slot_meta/inventory/suit), FALSE, H.species.get_effective_bodytype(user, src, SLOT_ID_SUIT))
+			var/datum/sprite_accessory/tail/legacy_taur/taurtail = H.tail_style
+			var/list/resolved = resolve_worn_assets(user, resolve_inventory_slot(/datum/inventory_slot/inventory/suit), FALSE, H.species.get_effective_bodytype(user, src, SLOT_ID_SUIT))
 			if(taurtail.suit_sprites && (resolved[2] in icon_states(taurtail.suit_sprites)))
 				icon_override = taurtail.suit_sprites
 				normalize = FALSE
@@ -39,8 +39,8 @@
 		icon_override = initial(icon_override)
 		taurized = FALSE
 
-/obj/item/clothing/suit/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used, align_y)
+/obj/item/clothing/suit/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used, align_y)
 	. = ..()
 	if(taurized)
 		MA.pixel_x = -16
-		MA.layer = TAIL_LAYER + 1	// kick it over tail
+		MA.layer = HUMAN_LAYER_SPRITEACC_TAIL_FRONT + 1	// kick it over tail

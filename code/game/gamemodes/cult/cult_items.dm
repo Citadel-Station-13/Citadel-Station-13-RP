@@ -3,7 +3,7 @@
 	desc = "An arcane weapon wielded by the followers of Nar-Sie."
 	icon_state = "cultblade"
 	origin_tech = list(TECH_COMBAT = 1, TECH_ARCANE = 1)
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 30
 	throw_force = 10
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -61,7 +61,7 @@
 	inv_hide_flags = HIDEFACE
 	body_cover_flags = HEAD
 	armor_type = /datum/armor/cult/robes
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -132,7 +132,7 @@
 	icon_state = "cult"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ARCANE = 1)
 	desc = "A bulky suit of armour, bristling with spikes. It looks space-worthy."
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/book/tome,/obj/item/melee/cultblade,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	weight = ITEM_WEIGHT_CULT_VOIDSUIT
 	encumbrance = ITEM_ENCUMBRANCE_CULT_VOIDSUIT

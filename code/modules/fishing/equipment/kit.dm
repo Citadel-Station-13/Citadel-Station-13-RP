@@ -6,7 +6,7 @@
 	// todo: properly port tg sprite
 	// todo: allow it to hold fishing rods properly
 
-/obj/item/storage/toolbox/fishing/PopulateContents()
+/obj/item/storage/toolbox/fishing/legacy_spawn_contents()
 	new /obj/item/bait_can/worm(src)
 	new /obj/item/fishing_rod(src)
 	new /obj/item/fishing_hook(src)
@@ -16,7 +16,7 @@
 	name = "fishing hook set"
 	// todo: dynamic state with fish
 
-/obj/item/storage/box/fishing_hooks/PopulateContents()
+/obj/item/storage/box/fishing_hooks/legacy_spawn_contents()
 	. = ..()
 	new /obj/item/fishing_hook/magnet(src)
 	new /obj/item/fishing_hook/shiny(src)
@@ -26,7 +26,7 @@
 	name = "fishing line set"
 	// todo: dynamic state with fish
 
-/obj/item/storage/box/fishing_lines/PopulateContents()
+/obj/item/storage/box/fishing_lines/legacy_spawn_contents()
 	. = ..()
 	new /obj/item/fishing_line/bouncy(src)
 	new /obj/item/fishing_line/reinforced(src)
@@ -36,6 +36,6 @@
 	name = "aquarium props box"
 	// todo: dynamic state with fish
 
-/obj/item/storage/box/aquarium_props/PopulateContents()
+/obj/item/storage/box/aquarium_props/legacy_spawn_contents()
 	for(var/prop_type in subtypesof(/obj/item/aquarium_prop))
 		new prop_type(src)

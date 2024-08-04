@@ -3,7 +3,7 @@
 	name = "life crystal"
 	desc = "A small crystal with four little dots in it. It feels slightly warm to the touch. \
 	Read manual before use! Can be worn, held, or attached to uniform. NOTE: Device contains antimatter."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_items_vr.dmi'
@@ -41,8 +41,8 @@
 		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
 		return 0
 
-	owner = user	//We're paired to this guy
-	owner_c = user.client	//This is his client
+	owner = user	//We're paired to this person
+	owner_c = user.client	//This is their client
 	update_state(1)
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
 	START_PROCESSING(SSobj, src)
@@ -51,9 +51,10 @@
 	//He's dead, jim
 	if(state < 1)
 		return
-	if(!owner)//How did we get here?
+	if(!owner && !owner_c) //How did we get here?
+		//It's likely because the owner got gibbed. But if it truly bugged out, there'd be no client.
 		return
-	if((owner.stat == DEAD) || (get_turf(owner) != get_turf(src)))
+	if((!owner && owner_c) || (owner.stat == DEAD) || (get_turf(owner) != get_turf(src)))
 		if(state == 1)
 			become_alert()
 		if((state == 2) && (last_vitals < world.time - 1 MINUTE))
@@ -145,10 +146,10 @@
 	icon_state = "khlifebox"
 	desc = "This case can only hold the VM-LC91-1 and a manual."
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	storage_slots = 2
-	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
-	max_storage_space = ITEMSIZE_COST_SMALL * 2
-	w_class = ITEMSIZE_SMALL
+	max_items = 2
+	insertion_whitelist = list(/obj/item/clothing/accessory/collar/vmcrystal)
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 2
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/storage/box/vmcrystal/Initialize(mapload)
 	. = ..()

@@ -8,7 +8,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_MAGNET = 4)
 	projectile_type = /obj/projectile/bullet/magnetic/slug
 	power_cost = 300
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	slot_flags = SLOT_BELT
 	loaded = /obj/item/rcd_ammo/large
@@ -67,7 +67,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_GUN_RIDICULOUS
 
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0, move_delay=null, one_handed_penalty=15, burst_accuracy=null, dispersion=null),
@@ -132,6 +132,8 @@
 	loaded = null
 	empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
+	worth_intrinsic = 500
+
 	firemodes = list(
 		list(mode_name="high power", power_cost = 400, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=15),
 		list(mode_name="low power", power_cost = 150, projectile_type = /obj/projectile/bullet/magnetic/heated/weak, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=15),
@@ -145,12 +147,14 @@
 	icon_state = "peacemaker"
 	item_state = "revolver"
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	initial_cell_type = /obj/item/cell/high
 	initial_capacitor_type = /obj/item/stock_parts/capacitor
 
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
+
+	worth_intrinsic = 350
 
 	firemodes = list(
 		list(mode_name="lethal", power_cost = 2000, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=0),
@@ -159,8 +163,6 @@
 
 /obj/item/gun/magnetic/railgun/heater/pistol/hos
 	name = "prototype peacemaker"
-
-	dna_lock = TRUE
 
 	description_antag = "This weapon starts with a DNA locking chip attached. Using an EMAG on the weapon will disarm it, and allow you to use the chip as your own."
 
@@ -183,6 +185,8 @@
 
 	weight = ITEM_WEIGHT_GUN_NORMAL
 	encumbrance = ITEM_ENCUMBRANCE_GUN_NORMAL
+
+	worth_intrinsic = 500
 
 	power_cost = 200
 	projectile_type = /obj/projectile/bullet/magnetic/flechette/hunting

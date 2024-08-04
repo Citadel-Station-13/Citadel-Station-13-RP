@@ -6,13 +6,14 @@
 	icon_state = "handcuff"
 	slot_flags = SLOT_BELT
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1)
 	materials_base = list(MAT_STEEL = 500)
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	worth_intrinsic = 10
 	var/elastic
 	var/dispenser = 0
 	var/breakouttime = 1200 //Deciseconds = 120s = 2 minutes
@@ -105,6 +106,7 @@
 		user.drop_all_held_items()
 		user.stop_pulling()
 
+/* grimdark code that's disabled for code quality reasons - readd later if we care
 var/last_chew = 0
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	if (A != src) return ..()
@@ -127,9 +129,10 @@ var/last_chew = 0
 	add_attack_logs(H,H,"chewed own [O.name]")
 
 	if(O.take_damage(3,0,1,1,"teeth marks"))
-		H:UpdateDamageIcon()
+		H:update_damage_overlay()
 
 	last_chew = world.time
+*/
 
 /obj/item/handcuffs/fuzzy
 	name = "fuzzy cuffs"
@@ -151,6 +154,8 @@ var/last_chew = 0
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_type = "cable restraints"
 	elastic = 0 //citadel change, why would cable be better than actual handcuffs? who knows.
+	worth_intrinsic = 10
+	economic_category_obj = ECONOMIC_CATEGORY_OBJ_SCRAP
 
 /obj/item/handcuffs/cable/red
 	color = "#DD0000"
@@ -220,7 +225,7 @@ var/last_chew = 0
 	icon = 'icons/obj/items.dmi'
 	icon_state = "legcuff"
 	throw_force = 0
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 	cuff_type = "legcuffs"

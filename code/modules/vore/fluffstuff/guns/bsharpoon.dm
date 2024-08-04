@@ -6,7 +6,7 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "harpoon-2"
 
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	throw_speed = 4
 	throw_range = 20
@@ -19,7 +19,6 @@
 	var/cooldown = 20 SECONDS
 	var/wallhack = TRUE
 	var/range = 8
-	var/failchance = 5
 	var/failrange = 24
 
 /obj/item/bluespace_harpoon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -70,7 +69,7 @@
 			continue
 		if(AM.anchored)
 			continue
-		var/turf/real_target = prob(failchance)? pick(trange(failrange, user)) : ToTurf
+		var/turf/real_target = ToTurf
 		AM.locationTransitForceMove(real_target, allow_pulled = FALSE, allow_grabbed = GRAB_AGGRESSIVE)
 
 /obj/item/bluespace_harpoon/attack_self(mob/user)
@@ -81,7 +80,7 @@
 
 /obj/item/bluespace_harpoon/verb/chande_fire_mode(mob/user as mob)
 	set name = "Change fire mode"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(transforming) return
 	mode = !mode

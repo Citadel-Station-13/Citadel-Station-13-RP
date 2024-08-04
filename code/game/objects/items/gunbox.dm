@@ -3,6 +3,7 @@
 	desc = "A secure box containing a security LTL sidearm."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
+	worth_intrinsic = 350
 
 /obj/item/gunbox/attack_self(mob/user)
 	var/list/options = list()
@@ -23,6 +24,7 @@
 	desc = "A secure box containing a lethal security sidearm."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
+	worth_intrinsic = 450
 
 /obj/item/gunbox/lethal/attack_self(mob/user)
 	var/list/options = list()
@@ -44,7 +46,7 @@
 	desc = "A secure box containing a Detective's sidearm."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/gunbox/attack_self(mob/user)
 	var/list/options = list()
@@ -65,7 +67,7 @@
 	desc = "A secure box containing a marksman rifle."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/gunbox/marksman/attack_self(mob/user)
 	var/list/options = list()

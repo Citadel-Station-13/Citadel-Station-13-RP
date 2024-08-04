@@ -11,7 +11,7 @@
 	item_state = "radio"
 	name = "normal-sized package"
 	desc = "A small wrapped package."
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	var/devastate = 1
 	var/heavy_impact = 2

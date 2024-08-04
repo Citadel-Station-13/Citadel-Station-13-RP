@@ -1723,7 +1723,7 @@
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two)
 "Ev" = (
-/obj/machinery/power/apc/hyper/east_bump{
+/obj/machinery/power/apc/hyper/east_mount{
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -2105,10 +2105,7 @@
 /area/killhouse/two)
 "Nu" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/fire_alarm/east_mount,
 /obj/structure/filingcabinet/medical,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
@@ -2721,7 +2718,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/killhouse/two)
 "Wi" = (
-/obj/machinery/power/apc/hyper/south_bump{
+/obj/machinery/power/apc/hyper/south_mount{
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,

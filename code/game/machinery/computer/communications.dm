@@ -17,7 +17,7 @@
 	var/state = STATE_DEFAULT
 	var/aistate = STATE_DEFAULT
 	var/message_cooldown = 0
-	var/centcomm_message_cooldown = 0
+	var/centcom_message_cooldown = 0
 	var/tmp_alertlevel = 0
 	var/const/STATE_DEFAULT = 1
 	var/const/STATE_CALLSHUTTLE = 2
@@ -185,10 +185,10 @@
 			stat_msg2 = reject_bad_text(sanitize(input("Line 2", "Enter Message Text", stat_msg2) as text|null, 40), 40)
 			src.updateDialog()
 
-		// OMG CENTCOMM LETTERHEAD
+		// OMG CENTCOM LETTERHEAD
 		if("MessageCentCom")
 			if(src.authenticated==2)
-				if(centcomm_message_cooldown)
+				if(centcom_message_cooldown)
 					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
 					return
 				var/input = sanitize(input("Please choose a message to transmit to [(LEGACY_MAP_DATUM).boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
@@ -197,15 +197,15 @@
 				message_centcom(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an IA [(LEGACY_MAP_DATUM).boss_short] announcement: [input]")
-				centcomm_message_cooldown = 1
+				centcom_message_cooldown = 1
 				spawn(300)//10 minute cooldown
-					centcomm_message_cooldown = 0
+					centcom_message_cooldown = 0
 
 
 		// OMG SYNDICATE ...LETTERHEAD
 		if("MessageSyndicate")
 			if((src.authenticated==2) && (src.emagged))
-				if(centcomm_message_cooldown)
+				if(centcom_message_cooldown)
 					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
 					return
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
@@ -214,9 +214,9 @@
 				message_syndicate(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
-				centcomm_message_cooldown = 1
+				centcom_message_cooldown = 1
 				spawn(300)//10 minute cooldown
-					centcomm_message_cooldown = 0
+					centcom_message_cooldown = 0
 
 		if("RestoreBackup")
 			to_chat(usr, "Backup routing data restored!")
@@ -599,5 +599,5 @@
 /// Used in places such as CentCom messaging back so that the crew can answer right away
 /obj/machinery/computer/communications/proc/override_cooldown()
 	// COOLDOWN_RESET(src, important_action_cooldown)
-	centcomm_message_cooldown = 0
+	centcom_message_cooldown = 0
 	message_cooldown = 0

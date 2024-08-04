@@ -1,0 +1,349 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/closet/crate/freezer/rations,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"b" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"d" = (
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lantern,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/minecamp)
+"e" = (
+/obj/item/flame/lighter/zippo/taj,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"g" = (
+/turf/template_noop,
+/area/template_noop)
+"h" = (
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/minecamp)
+"j" = (
+/obj/structure/bonfire,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"m" = (
+/turf/simulated/wall/wood,
+/area/tether_away/beach/desert/poi/minecamp)
+"p" = (
+/obj/structure/table/rack,
+/obj/fiftyspawner/log,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"q" = (
+/obj/random/junk,
+/obj/random/trash,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"r" = (
+/obj/random/trash,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/template_noop)
+"w" = (
+/obj/random/junk,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"y" = (
+/obj/structure/table/rack,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"A" = (
+/obj/structure/bed/padded,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/minecamp)
+"B" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"L" = (
+/obj/random/trash,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"P" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"S" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/minecamp)
+"T" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/minecamp)
+"U" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/template_noop)
+"W" = (
+/obj/random/junk,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/minecamp)
+"Y" = (
+/obj/random/trash,
+/turf/simulated/mineral/floor/cave,
+/area/tether_away/beach/desert/poi/minecamp)
+
+(1,1,1) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+(2,1,1) = {"
+g
+g
+g
+g
+U
+U
+U
+U
+U
+g
+g
+g
+g
+g
+g
+"}
+(3,1,1) = {"
+g
+g
+U
+U
+r
+m
+m
+m
+m
+m
+U
+U
+U
+g
+g
+"}
+(4,1,1) = {"
+g
+g
+U
+U
+U
+m
+A
+d
+A
+m
+S
+S
+S
+g
+g
+"}
+(5,1,1) = {"
+g
+S
+S
+b
+S
+m
+Y
+h
+W
+m
+P
+p
+S
+U
+g
+"}
+(6,1,1) = {"
+g
+S
+w
+b
+b
+m
+m
+T
+m
+m
+b
+b
+S
+U
+g
+"}
+(7,1,1) = {"
+g
+S
+b
+L
+w
+b
+b
+b
+b
+b
+b
+w
+b
+U
+g
+"}
+(8,1,1) = {"
+g
+S
+b
+b
+b
+b
+b
+b
+b
+L
+b
+b
+b
+U
+g
+"}
+(9,1,1) = {"
+g
+S
+y
+m
+m
+T
+m
+m
+B
+B
+b
+L
+S
+U
+g
+"}
+(10,1,1) = {"
+g
+S
+S
+m
+h
+W
+Y
+m
+e
+q
+B
+a
+S
+U
+g
+"}
+(11,1,1) = {"
+g
+g
+U
+m
+A
+d
+A
+m
+j
+b
+B
+S
+S
+g
+g
+"}
+(12,1,1) = {"
+g
+g
+U
+m
+m
+m
+m
+m
+S
+S
+S
+S
+g
+g
+g
+"}
+(13,1,1) = {"
+g
+g
+g
+U
+U
+U
+U
+U
+U
+U
+U
+U
+g
+g
+g
+"}
+(14,1,1) = {"
+g
+g
+g
+g
+U
+U
+U
+U
+U
+U
+g
+g
+g
+g
+g
+"}
+(15,1,1) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}

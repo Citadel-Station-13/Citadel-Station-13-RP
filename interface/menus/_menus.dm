@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //! skin menus
 /**
  * dynamic in-code menu system with blackjack and hookers

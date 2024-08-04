@@ -23,3 +23,10 @@
 	name = "special ops fatigues"
 	desc = "These worn fatigues match the pattern known to be used by JSDF Marine Corps special forces."
 	icon_state = "russobluecamo"
+
+/obj/item/clothing/under/onestar
+	name = "one star jumpsuit"
+	desc = "A jumpsuit in One Star colours."
+	icon = 'icons/clothing/uniform/misc/onestar.dmi'
+	icon_state = "os_jumpsuit"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

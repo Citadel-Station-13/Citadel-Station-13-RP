@@ -16,7 +16,6 @@
 	. = ..()
 	icon_state = ""
 	ASSERT(!isnull(below()))
-	queue()
 
 /turf/simulated/open/Entered(atom/movable/mover)
 	..()
@@ -29,19 +28,9 @@
 	if(AM.movement_type & MOVEMENT_GROUND)
 		AM.fall()
 
-/turf/simulated/open/proc/queue()
-	if(smoothing_flags & SMOOTH_QUEUED)
-		return
-	smoothing_flags |= SMOOTH_QUEUED
-
 //! We hijack smoothing flags.
 /turf/simulated/open/smooth_icon()
 	return // Nope.amv
-
-// Override to make sure nothing is hidden
-/turf/simulated/open/levelupdate()
-	for(var/obj/O in src)
-		O.hide(0)
 
 /turf/simulated/open/examine(mob/user, distance, infix, suffix)
 	. = ..()
@@ -51,9 +40,11 @@
 			depth += 1
 		to_chat(user, "It is about [depth] level\s deep.")
 
-// Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()
-	return TRUE
+	return FALSE
+
+/turf/simulated/open/hides_underfloor_objects()
+	return FALSE
 
 /turf/simulated/open/is_space()
 	return below()?.is_space()

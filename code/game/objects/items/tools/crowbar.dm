@@ -14,7 +14,7 @@
 	throw_force = 7
 	pry = 1
 	item_state = "crowbar"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
@@ -149,7 +149,7 @@
 	throw_force = 5
 	pry = 1
 	item_state = "crowbar"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_ENGINEERING = 1)
 	materials_base = list(MAT_STEEL = 30)
 	attack_verb = list("whapped", "smacked", "swatted", "thwacked", "hit")

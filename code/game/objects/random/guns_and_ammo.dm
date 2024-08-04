@@ -95,6 +95,8 @@
 				prob(1);/obj/item/gun/ballistic/shotgun/pump/rifle/taj,
 				prob(1);/obj/item/gun/ballistic/shotgun/pump/rifle/lever,
 				prob(1);/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895,
+				prob(1);/obj/item/gun/ballistic/caseless/phoron_spitter,
+				prob(1);/obj/item/gun/ballistic/caseless/wild_hunt,
 				prob(2);/obj/item/gun/ballistic/silenced)
 
 /obj/random/projectile/sec
@@ -188,39 +190,43 @@
 
 /obj/random/multiple/gun/projectile/smg/item_to_spawn()
 	return pick(
-			prob(3);list(
+			prob(6);list(
 				/obj/item/gun/ballistic/automatic/wt550,
 				/obj/item/ammo_magazine/m9mmt,
 				/obj/item/ammo_magazine/m9mmt
 			),
-			prob(3);list(
+			prob(6);list(
 				/obj/item/gun/ballistic/automatic/wt274,
 				/obj/item/ammo_magazine/m45uzi/wt274,
 				/obj/item/ammo_magazine/m45uzi/wt274
 			),
-			prob(1);list(
+			prob(2);list(
 				/obj/item/gun/ballistic/automatic/mini_uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi
 			),
-			prob(1);list(
+			prob(2);list(
 				/obj/item/gun/ballistic/automatic/tommygun,
 				/obj/item/ammo_magazine/m45tommy,
 				/obj/item/ammo_magazine/m45tommy
 			),
-			prob(2);list(
+			prob(4);list(
 				/obj/item/gun/ballistic/automatic/c20r,
 				/obj/item/ammo_magazine/m10mm,
 				/obj/item/ammo_magazine/m10mm
 			),
-			prob(1);list(
+			prob(2);list(
 				/obj/item/gun/ballistic/automatic/p90,
 				/obj/item/ammo_magazine/m57x28mmp90
 			),
-			prob(1);list(
+			prob(2);list(
 				/obj/item/gun/ballistic/automatic/mini_uzi/taj,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi
+			),
+			prob(1);list(
+				/obj/item/gun/ballistic/caseless/phoron_spitter,
+				/obj/item/ammo_magazine/mphoronshot
 			)
 		)
 
@@ -234,36 +240,41 @@
 
 /obj/random/multiple/gun/projectile/rifle/item_to_spawn()
 	return pick(
-			prob(2);list(
+			prob(4);list(
 				/obj/item/gun/ballistic/automatic/sts35,
 				/obj/item/ammo_magazine/m556,
 				/obj/item/ammo_magazine/m556
 			),
-			prob(2);list(
+			prob(4);list(
 				/obj/item/gun/ballistic/automatic/z8,
 				/obj/item/ammo_magazine/m762,
 				/obj/item/ammo_magazine/m762
 			),
-			prob(4);list(
+			prob(8);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle,
 				/obj/item/ammo_magazine/clip/c762,
 				/obj/item/ammo_magazine/clip/c762
 			),
-			prob(1);list(
+			prob(2);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895,
 				/obj/item/ammo_magazine/clip/c762,
 				/obj/item/ammo_magazine/clip/c762
 			),
-			prob(1);list(
+			prob(2);list(
 				/obj/item/gun/ballistic/automatic/bullpup,
 				/obj/item/ammo_magazine/m762,
 				/obj/item/ammo_magazine/m762
 			),
-			prob(4);list(
+			prob(8);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle/taj,
 				/obj/item/ammo_magazine/clip/c762,
 				/obj/item/ammo_magazine/clip/c762
-			)
+			),
+			prob(1);list(
+				/obj/item/gun/ballistic/caseless/wild_hunt,
+				/obj/item/ammo_magazine/mfiftycalcaseless,
+				/obj/item/ammo_magazine/mfiftycalcaseless
+			),
 		)
 
 /obj/random/multiple/gun/projectile/handgun

@@ -4,7 +4,7 @@
 	desc = "A high-tech dark red space suit helmet. Used for AI satellite maintenance."
 	icon_state = "void"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate", SLOT_ID_LEFT_HAND = "syndicate")
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	armor_type = /datum/armor/general/space/armored
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
@@ -44,7 +44,7 @@
 	weight = ITEM_WEIGHT_VOIDSUIT
 	armor_type = /datum/armor/general/space/armored
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
@@ -77,13 +77,60 @@
 	breach_threshold = 12
 	can_breach = 1
 
+	/// nominal helmet type
+	var/helmet_type = /obj/item/clothing/head/helmet/space/void
+	/// do we contain helmet by default?
+	var/starts_with_helmet = FALSE
+	/// nominal magboots type
+	var/boots_type = /obj/item/clothing/shoes/magboots
+	/// do we contain boots by default?
+	var/starts_with_boots = FALSE
+	// todo: support for having both tank and cooler so anyone can use it
+	/// nominal tank type
+	var/tank_type = /obj/item/tank/oxygen/yellow
+	/// nominal suit cooler type
+	var/cooler_type = /obj/item/suit_cooling_unit
+	/// do we have a tank or cooler by default?
+	var/starts_with_life_support = FALSE
+	/// default to cooler instead of tank
+	var/starts_with_cooler_instead = FALSE
+
 	//Inbuilt devices.
 	var/obj/item/clothing/shoes/magboots/boots = null // Deployable boots, if any.
 	var/obj/item/clothing/head/helmet/helmet = null   // Deployable helmet, if any.
 	var/obj/item/tank/tank = null              // Deployable tank, if any.
 	var/obj/item/suit_cooling_unit/cooler = null// Cooling unit, for FBPs.  Cannot be installed alongside a tank.
 
-	action_button_name = "Toggle Helmet"
+	item_action_name = "Toggle Helmet"
+
+/**
+ * @params
+ * * mapload - mapload as usual
+ * * override_start_equipped - if TRUE / FALSE, we will start with all equipment populated
+ * * spawn_cooler_instead - spawn cooler instead of tank
+ */
+/obj/item/clothing/suit/space/void/Initialize(mapload, override_start_equipped, spawn_cooler_instead)
+	. = ..()
+	if(isnull(override_start_equipped)? starts_with_helmet : override_start_equipped)
+		helmet = new helmet_type
+	if(isnull(override_start_equipped)? starts_with_boots : override_start_equipped)
+		boots = new boots_type
+	if(isnull(override_start_equipped)? starts_with_life_support : override_start_equipped)
+		if(isnull(spawn_cooler_instead)? starts_with_cooler_instead : spawn_cooler_instead)
+			cooler = new cooler_type
+		else
+			tank = new tank_type
+
+/obj/item/clothing/suit/space/void/worth_contents(flags)
+	. = ..()
+	if(boots)
+		. += boots
+	if(helmet)
+		. += helmet
+	if(tank)
+		. += tank
+	if(cooler)
+		. += cooler
 
 /obj/item/clothing/suit/space/void/get_weight()
 	. = ..()
@@ -174,7 +221,7 @@
 /obj/item/clothing/suit/space/void/verb/toggle_helmet()
 
 	set name = "Toggle Helmet"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!istype(src.loc,/mob/living)) return
@@ -209,7 +256,7 @@
 
 /obj/item/clothing/suit/space/void/verb/toggle_magboots()
 	set name = "Toggle Magboots"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!istype(src.loc,/mob/living))
@@ -247,7 +294,7 @@
 /obj/item/clothing/suit/space/void/verb/eject_tank()
 
 	set name = "Eject Voidsuit Tank/Cooler"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if(!istype(src.loc,/mob/living))

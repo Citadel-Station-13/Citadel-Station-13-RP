@@ -20,9 +20,9 @@
 	desc = "A green colored banner."
 
 /obj/item/banner/nt
-	name = "\improper NanoTrasen banner"
+	name = "\improper Nanotrasen banner"
 	icon_state = "banner-nt"
-	desc = "A banner with NanoTrasen's logo on it."
+	desc = "A banner with Nanotrasen's logo on it."
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 
 /obj/item/banner/oricon
@@ -42,7 +42,7 @@
 /obj/item/banner/command
 	name = "\improper Command Banner"
 	icon_state = "banner"
-	desc = "A banner embroidered with the logo of NanoTrasen."
+	desc = "A banner embroidered with the logo of Nanotrasen."
 
 /obj/item/banner/engineering
 	name = "\improper Engitopia Banner"

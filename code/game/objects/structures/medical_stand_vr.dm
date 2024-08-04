@@ -221,7 +221,7 @@
 				update_icon()
 
 /obj/structure/medical_stand/verb/toggle_mode()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Toggle IV Mode"
 	set src in view(1)
 
@@ -237,7 +237,7 @@
 
 /obj/structure/medical_stand/verb/set_APTFT()
 	set name = "Set IV transfer amount"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in range(1)
 	var/N = input("Amount per transfer from this:","[src]") as null|anything in transfer_amounts
 	if(N)

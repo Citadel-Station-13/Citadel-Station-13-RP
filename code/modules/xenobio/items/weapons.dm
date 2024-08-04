@@ -53,7 +53,7 @@
 	projectile_type = /obj/projectile/beam/stun/xeno
 	accuracy = 30 // Make it a bit easier to hit the slimes.
 	description_info = "This gun will stun a slime or other lesser slimy lifeform for about two seconds, if hit with the projectile it fires."
-	description_fluff = "An easy to use weapon designed by NanoTrasen, for NanoTrasen.  This weapon is designed to subdue lesser \
+	description_fluff = "An easy to use weapon designed by Nanotrasen, for Nanotrasen.  This weapon is designed to subdue lesser \
 	slime-based xeno lifeforms at a distance.  It is ineffective at stunning non-slimy lifeforms such as humanoids."
 	firemodes = list()
 

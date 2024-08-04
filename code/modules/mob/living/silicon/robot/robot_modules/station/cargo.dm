@@ -3,7 +3,7 @@
 	channels = list("Supply" = 1)
 	networks = list(NETWORK_MINE)
 	sprites = list(
-		"NM-USE NanoTrasen" = "robotMine",
+		"NM-USE Nanotrasen" = "robotMine",
 		"Cabeiri" = "eyebot-miner",
 		"Haruka" = "marinaMN",
 		"Telemachus" = "toiletbotminer",

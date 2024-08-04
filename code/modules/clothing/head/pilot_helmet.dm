@@ -8,11 +8,11 @@
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	armor_type = /datum/armor/exploration/space/pilot
 	inv_hide_flags = HIDEEARS
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 	var/obj/machinery/computer/shuttle_control/shuttle_comp
 	var/atom/movable/screen/pilot_hud
@@ -153,7 +153,7 @@
 /obj/item/clothing/head/pilot/verb/hud_colors()
 	set name = "Alter HUD color"
 	set desc = "Change the color of the piloting HUD."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	var/newcolor = input(usr,"Pick a color!","HUD Color") as null|color
@@ -186,7 +186,7 @@
 	name = "pilot helmet"
 	desc = "Standard pilot gear. Protects the head from impacts. This one has a retractable visor"
 	icon_state = "pilot_helmet2"
-	action_button_name = "Toggle Visor"
+	item_action_name = "Toggle Visor"
 
 /obj/item/clothing/head/pilot/alt/attack_self(mob/user)
 	. = ..()

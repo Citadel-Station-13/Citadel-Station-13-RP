@@ -109,12 +109,10 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "ar" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	alarms_hidden = 1;
-	dir = 8;
 	name = "west bump-derelict";
-	operating = 0;
-	pixel_x = -24
+	operating = 0
 	},
 /obj/structure/cable{
 	icon_state = "0-4"

@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	climb_allowed = TRUE
 	climb_delay = 2.0 SECONDS
 	plane = OBJ_PLANE
+	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE | OBJ_ALLOW_THROW_THROUGH
 	material_parts = /datum/material/steel
 	material_primary = MATERIAL_PART_DEFAULT
 	material_costs = SHEET_MATERIAL_AMOUNT * 2
@@ -77,7 +78,9 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 		var/obj/structure/wall_frame/neighbor = locate() in step_turf
 		if(neighbor)
 			continue
-		if(!can_area_smooth(step_turf))
+		var/can_area_smooth
+		CAN_AREAS_SMOOTH(src, step_turf, can_area_smooth)
+		if(isnull(can_area_smooth))
 			continue
 		for(var/atom/movable/movable_thing as anything in step_turf)
 			if(GLOB.wallframe_typecache[movable_thing.type])

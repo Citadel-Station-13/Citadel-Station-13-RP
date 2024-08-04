@@ -15,7 +15,9 @@
 	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
+
+	worth_intrinsic = 35
 
 	//Cost to make in the autolathe
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 30)
@@ -157,7 +159,7 @@
 
 //Returns the amount of fuel in the welder
 /obj/item/weldingtool/proc/get_fuel()
-	return reagents.get_reagent_amount("fuel")
+	return reagents.get_reagent_amount(/datum/reagent/fuel)
 
 /obj/item/weldingtool/proc/get_max_fuel()
 	return max_fuel
@@ -252,7 +254,7 @@
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
 			src.damtype = "fire"
-			src.w_class = ITEMSIZE_LARGE
+			src.set_weight_class(WEIGHT_CLASS_BULKY)
 			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
 			update_icon()
@@ -274,7 +276,7 @@
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
 		src.damtype = "brute"
-		src.w_class = initial(src.w_class)
+		src.set_weight_class(initial(src.w_class))
 		src.welding = 0
 		src.attack_sound = initial(src.attack_sound)
 		update_icon()
@@ -315,10 +317,10 @@
 
 			if (E.damage >= E.min_broken_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.sdisabilities |= SDISABILITY_NERVOUS
+				user.remove_blindness_source( TRAIT_BLINDNESS_EYE_DMG)
 			else if (E.damage >= E.min_bruised_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.Blind(5)
+				user.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 				user.eye_blurry = 5
 				user.disabilities |= DISABILITY_NEARSIGHTED
 				spawn(100)
@@ -346,7 +348,7 @@
 	desc = "A much larger welder with a huge tank."
 	icon_state = "indwelder"
 	max_fuel = 80
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 120)
 
@@ -355,7 +357,7 @@
 	desc = "A miniature welder used during emergencies."
 	icon_state = "miniwelder"
 	max_fuel = 10
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	materials_base = list(MAT_METAL = 30, MAT_GLASS = 10)
 	change_icons = 0
 	tool_speed = 2
@@ -432,7 +434,7 @@
 	desc = "An experimental welder capable of synthesizing its own fuel from waste compounds. It can output a flame hotter than regular welders."
 	icon_state = "exwelder"
 	max_fuel = 40
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3)
 	materials_base = list(MAT_STEEL = 70, MAT_GLASS = 120)
 	tool_speed = 0.5
@@ -481,7 +483,7 @@
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
 	weight = ITEM_WEIGHT_HYBRID_TOOLS
 	tool_speed = 0.25
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	flame_intensity = 5
 	origin_tech = list(TECH_ENGINEERING = 5, TECH_PHORON = 4, TECH_PRECURSOR = 1)
 	reach = 2
@@ -495,7 +497,7 @@
 	desc = "A bulky, cooler-burning welding tool that draws from a worn welding tank."
 	icon_state = "tubewelder"
 	max_fuel = 10
-	w_class = ITEMSIZE_NO_CONTAINER
+	w_class = WEIGHT_CLASS_HUGE
 	materials_base = null
 	tool_speed = 1.25
 	change_icons = 0
@@ -555,7 +557,7 @@
 	desc = "A miniature welder attached to a spear, providing more reach. Typically used by Tyrmalin workers."
 	icon_state = "welderspear"
 	max_fuel = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	materials_base = list(MAT_METAL = 50, MAT_GLASS = 10)
 	tool_speed = 1.5
 	eye_safety_modifier = 1 // Safer on eyes.
@@ -575,13 +577,14 @@
 	icon_state = "arcwelder"
 	max_fuel = 0	//We'll handle the consumption later.
 	item_state = "ewelder"
+	worth_intrinsic = 70
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
 	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
-	acti_sound = 'sound/effects/sparks4.ogg'
-	deac_sound = 'sound/effects/sparks4.ogg'
+	acti_sound = /datum/soundbyte/grouped/sparks
+	deac_sound = /datum/soundbyte/grouped/sparks
 
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null
@@ -719,11 +722,11 @@
 	..()
 
 	if(equip_mount && equip_mount.chassis)
-		var/obj/mecha/M = equip_mount.chassis
+		var/obj/vehicle/sealed/mecha/M = equip_mount.chassis
 		if(M.selected == equip_mount && get_fuel())
-			setWelding(TRUE, M.occupant)
+			setWelding(TRUE, M.occupant_legacy)
 		else
-			setWelding(FALSE, M.occupant)
+			setWelding(FALSE, M.occupant_legacy)
 
 #undef WELDER_FUEL_BURN_INTERVAL
 
@@ -750,8 +753,11 @@
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
-	if(user.species.name == SPECIES_ADHERENT)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(H.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
 		else

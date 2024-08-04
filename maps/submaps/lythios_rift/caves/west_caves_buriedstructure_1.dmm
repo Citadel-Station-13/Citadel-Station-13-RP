@@ -73,7 +73,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "nK" = (
-/obj/machinery/power/apc/alarms_hidden/north_bump{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	start_charge = 0
 	},
 /obj/structure/cable{

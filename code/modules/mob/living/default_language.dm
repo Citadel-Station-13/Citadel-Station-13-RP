@@ -3,7 +3,7 @@
 
 /mob/living/verb/set_default_language(language as anything in languages)
 	set name = "Set Default Language"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if (only_species_language && language != SScharacters.resolve_language_name(species_language))
 		to_chat(src, "<span class='notice'>You can only speak your species language, [src.species_language].</span>")
@@ -28,7 +28,7 @@
 
 /mob/living/verb/check_default_language()
 	set name = "Check Default Language"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(default_language)
 		to_chat(src, "<span class='notice'>You are currently speaking [default_language] by default.</span>")

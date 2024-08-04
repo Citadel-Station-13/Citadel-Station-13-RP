@@ -20,6 +20,9 @@
 
 // End obsolete
 
+/mob/proc/update_damage_overlay()
+	return
+
 /mob/proc/update_hud()
 	return
 

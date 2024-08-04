@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(photography)
 	if(!is_persistent())
 		// just assign it a temporary id; if it collides we don't really care we did our best
 		var/static/temporary_id_next = 0
-		photograph.id = "[GLOB.round_id]_[num2text(temporary_id_next++, 99999999)]"
+		photograph.id = "[GLOB.round_number]-[num2text(temporary_id_next++, 99999999)]"
 	else
 		__sql_save_photograph(photograph)
 	photograph_cache[photograph.id] = photograph

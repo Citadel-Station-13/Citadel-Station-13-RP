@@ -8,7 +8,7 @@
 		)
 	body_cover_flags = HEAD
 	slot_flags = SLOT_HEAD
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	blood_sprite_state = "helmetblood"
 
 	var/light_overlay = "helmet_light"
@@ -45,7 +45,7 @@
 		light_applied = 0
 	update_icon()
 	update_worn_icon()
-	user.update_action_buttons()
+	update_action_buttons()
 
 /obj/item/clothing/head/attack_ai(var/mob/user)
 	if(!mob_wear_hat(user))

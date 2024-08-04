@@ -13,10 +13,26 @@
 /obj/item/clothing/shoes/
 	var/track_blood = 0
 
+/obj/item/reagent_containers/glass/rag/sponge
+	name = "sponge"
+	desc = "Scrub scrub scrub!"
+	icon = 'icons/obj/sponge.dmi'
+	icon_state = "sponge"
+
+/obj/item/reagent_containers/glass/rag/sponge/update_icon()
+	if(on_fire)
+		icon_state = "spongelit"
+	else
+		icon_state = "sponge"
+
+	var/obj/item/reagent_containers/food/drinks/bottle/B = loc
+	if(istype(B))
+		B.update_icon()
+
 /obj/item/reagent_containers/glass/rag
 	name = "rag"
 	desc = "For cleaning up messes, you suppose."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "rag"
 	amount_per_transfer_from_this = 3

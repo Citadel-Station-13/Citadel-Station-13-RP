@@ -276,8 +276,8 @@
 		tape.language_lookup["[LANGUAGE_ID_COMMON]"] = common_index
 	for(var/i in 1 to reel.len)
 		var/read = reel[i]
-		if(isnum(read) && read > 0)
-			var/mdstr = metadata[read]
+		if(isnum(read) && read < 0)
+			var/mdstr = metadata[-read]
 			if(mdstr == common_str)
 				translating = FALSE
 				continue

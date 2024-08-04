@@ -15,7 +15,7 @@
 	desc = "A small disk used for carrying data on genetics."
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "disk"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	var/list/genes = list()
 	var/genesource = "unknown"
@@ -37,7 +37,7 @@
 	name = "biological disk box"
 	desc = "A box of biological data disks, apparently."
 
-/obj/item/storage/box/xenobiodisk/PopulateContents()
+/obj/item/storage/box/xenobiodisk/legacy_spawn_contents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/xenobio(src)
 

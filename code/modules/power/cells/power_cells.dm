@@ -99,7 +99,7 @@
 	desc = "A small one-time-use chemical battery for synthetic crew when they are low on power in emergency situations."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "fbp_cell"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/amount = 100
 	var/used = FALSE
 
@@ -138,7 +138,7 @@
 	desc = "A tiny power cell with a very low power capacity. Used in light fixtures to power them in the event of an outage."
 	maxcharge = 120 //Emergency lights use 0.2 W per tick, meaning ~10 minutes of emergency power from a cell
 	materials_base = list(MAT_GLASS = 20)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/cell/emergency_light/Initialize(mapload)
 	. = ..()

@@ -169,14 +169,17 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	output_level = output_level_max
 	input_attempt = TRUE
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/talon, 28)
 /obj/machinery/power/apc/talon
 	req_access = list()
 	req_one_access = list(ACCESS_FACTION_TALON)
 	alarms_hidden = 1
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/talon/hyper, 28)
 /obj/machinery/power/apc/talon/hyper
 	cell_type = /obj/item/cell/hyper
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 /obj/machinery/air_alarm/talon
 	req_access = list()
 	req_one_access = list(ACCESS_FACTION_TALON)
@@ -344,7 +347,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/clothing/under/rank/pilot1,
 		/obj/item/clothing/suit/storage/toggle/bomber/pilot,
 		/obj/item/clothing/gloves/fingerless,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
+		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 		/obj/item/radio,
 		/obj/item/clothing/under/utility/blue,

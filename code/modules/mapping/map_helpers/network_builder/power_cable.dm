@@ -14,7 +14,6 @@
 	/// cable color as from GLOB.cable_colors
 	var/cable_color = "red"
 
-
 /obj/map_helper/network_builder/power_cable/duplicates()
 	. = list()
 	for(var/obj/map_helper/network_builder/power_cable/B in loc)
@@ -76,10 +75,12 @@
 /obj/map_helper/network_builder/power_cable/##p/auto{			\
 	color = v;													\
 	cable_color = c;											\
+	knot = KNOT_AUTO;											\
 }																\
 /obj/map_helper/network_builder/power_cable/##p/knot{			\
 	color = v;													\
 	cable_color = c;											\
+	knot = KNOT_FORCED;											\
 }
 
 #define WORK_HARDER_NOT_SMARTER									\

@@ -27,7 +27,6 @@
 		/obj/item/radio/beacon,
 		/obj/item/pickaxe/hand,
 		/obj/item/storage/bag/fossils,
-		/obj/item/storage/backpack,
 		/obj/item/bluespace_radio,
 	)
 

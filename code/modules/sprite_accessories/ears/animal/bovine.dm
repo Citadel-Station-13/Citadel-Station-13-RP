@@ -9,14 +9,14 @@
 	id = "ears_cow_colorable"
 	icon_state = "cow-c"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/ears/cow_nohorns
 	name = "cow, no horns"
 	id = "ears_cow_nohorns"
 	icon_state = "cow-nohorns"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 //? sheep
 /datum/sprite_accessory/ears/ram
@@ -24,4 +24,4 @@
 	id = "ears_ram"
 	icon_state = "ram"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE

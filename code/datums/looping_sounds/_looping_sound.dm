@@ -22,7 +22,7 @@
 	var/mid_sounds
 	var/mid_length
 	var/start_sound
-	var/start_length
+	var/start_length = 0
 	var/end_sound
 	var/chance
 	var/volume = 100
@@ -91,7 +91,7 @@
 		if(direct)
 			if(ismob(thing))
 				var/mob/M = thing
-				if(!M.is_preference_enabled(pref_check))
+				if(!M.get_preference_toggle(pref_check))
 					continue
 			SEND_SOUND(thing, S)
 		else

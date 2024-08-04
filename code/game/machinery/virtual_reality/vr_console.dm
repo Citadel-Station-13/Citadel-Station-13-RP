@@ -120,7 +120,7 @@
 
 /obj/machinery/vr_sleeper/verb/eject()
 	set src in view(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject VR Capsule"
 
 	if(usr.incapacitated())
@@ -136,7 +136,7 @@
 
 /obj/machinery/vr_sleeper/verb/climb_in()
 	set src in oview(1)
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Enter VR Capsule"
 
 	if(usr.incapacitated())

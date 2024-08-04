@@ -90,23 +90,6 @@ var/list/gurgled_overlays = list(
 	else
 		..()
 
-//////////////
-// Special things that happen when wet
-//////////////
-/obj/item/storage/box/open(mob/user as mob)
-	if(gurgled)
-		to_chat(usr, "The soggy box falls apart in your hands.")
-		var/turf/T = get_turf(src)
-		for(var/obj/item/I in contents)
-			remove_from_storage(I, T)
-		new/obj/effect/debris/cleanable/molten_item(T)
-		qdel(src)
-		return
-	..()
-
-//////////////
-// Special handling of gurgle_contaminate
-//////////////
 /obj/item/card/id/gurgle_contaminate(var/atom/movable/item_storage = null)
 	digest_act(item_storage) //Digesting these anyway
 	return TRUE
@@ -133,33 +116,4 @@ var/list/gurgled_overlays = list(
 		C.charge = 0
 	return TRUE
 
-/obj/item/storage/box/gurgle_contaminate(var/atom/movable/item_storage = null)
-	if((. = ..()))
-		name = "soggy [cleanname]"
-		desc = "This soggy box is about to fall apart any time."
-
-//Storages that contaminate contents
-/obj/item/storage/backpack/gurgle_contaminate(var/atom/movable/item_storage = null, var/contamination_flavor = "Generic", var/contamination_color = "green")
-	if(contents)
-		for(var/obj/item/O in contents)
-			O.gurgle_contaminate(item_storage, contamination_flavor, contamination_color)
-	..()
-
-/obj/item/storage/belt/gurgle_contaminate(var/atom/movable/item_storage = null, var/contamination_flavor = "Generic", var/contamination_color = "green")
-	if(contents)
-		for(var/obj/item/O in contents)
-			O.gurgle_contaminate(item_storage, contamination_flavor, contamination_color)
-	..()
-
-/obj/item/storage/belt/gurgle_contaminate(var/atom/movable/item_storage = null, var/contamination_flavor = "Generic", var/contamination_color = "green")
-	if(contents)
-		for(var/obj/item/O in contents)
-			O.gurgle_contaminate(item_storage, contamination_flavor, contamination_color)
-	..()
-
-/obj/item/clothing/suit/storage/gurgle_contaminate(var/atom/movable/item_storage = null, var/contamination_flavor = "Generic", var/contamination_color = "green")
-	if(pockets)
-		if(pockets.contents)
-			for(var/obj/item/O in pockets.contents)
-				O.gurgle_contaminate(item_storage, contamination_flavor, contamination_color)
-	..()
+// todo: i just backspaced out backpack handling on storage refactor because frankly i'm not a vore coder and this isn't my problem ~silicons

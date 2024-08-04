@@ -8,7 +8,7 @@
 	icon_state = "soulstone"
 	item_state = "electronic"
 	desc = "A fragment of the legendary treasure known simply as the 'Soul Stone'. The shard still flickers with a fraction of the full artefacts power."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 4, TECH_ARCANE = 1)
 	var/imprinted = "empty"
@@ -183,7 +183,7 @@
 	switch(construct_class)
 		if("Juggernaut")
 			var/mob/living/simple_mob/construct/juggernaut/Z = new /mob/living/simple_mob/construct/juggernaut (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -193,7 +193,7 @@
 			qdel(src)
 		if("Wraith")
 			var/mob/living/simple_mob/construct/wraith/Z = new /mob/living/simple_mob/construct/wraith (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -203,7 +203,7 @@
 			qdel(src)
 		if("Artificer")
 			var/mob/living/simple_mob/construct/artificer/Z = new /mob/living/simple_mob/construct/artificer (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -213,7 +213,7 @@
 			qdel(src)
 		if("Harvester")
 			var/mob/living/simple_mob/construct/harvester/Z = new /mob/living/simple_mob/construct/harvester (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)
@@ -223,7 +223,7 @@
 			qdel(src)
 		if("Behemoth")
 			var/mob/living/simple_mob/construct/juggernaut/behemoth/Z = new /mob/living/simple_mob/construct/juggernaut/behemoth (get_turf(T.loc))
-			Z.key = A.key
+			A.transfer_client_to(Z)
 			if(iscultist(U))
 				cult.add_antagonist(Z.mind)
 			qdel(T)

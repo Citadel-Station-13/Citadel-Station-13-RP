@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(legacy_atc)
 /datum/controller/subsystem/legacy_atc/proc/random_convo()
 	/// Resolve to the instances
 	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
-	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
+	// The first, [1], is for Nanotrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
 	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
 	// I'm restoring this to unweighted: with further local tests NT is still *outrageously* common, far more common than the weighting implies
 	// With a small list of ship names/identifiers, this can lead to situations like seemingly-identical ships landing multiple times without taking off again.

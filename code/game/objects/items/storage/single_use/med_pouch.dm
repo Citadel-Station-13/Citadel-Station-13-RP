@@ -5,12 +5,12 @@
 	name = "emergency medical pouch"
 	desc = "For use in emergency situations only."
 	icon = 'icons/obj/single_use/med_pouch.dmi'
-	storage_slots = 7
-	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_SMALL
+	max_items = 7
+	w_class = WEIGHT_CLASS_SMALL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	base_icon_state = "pack"
 	icon_state = "pack0"
-	opened = FALSE
-	tear_sound = 'sound/effects/rip1.ogg'
+	sfx_tear = 'sound/effects/rip1.ogg'
 	//material = /decl/material/solid/plastic
 	var/injury_type = "generic"
 	var/static/image/cross_overlay
@@ -30,37 +30,19 @@
 	name = "emergency [injury_type] pouch"
 	update_desc()
 	if(length(contents))
-		make_exact_fit()
+		obj_storage.fit_to_contents(no_shrink = TRUE)
 	update_icon()
 
-
 /obj/item/storage/single_use/med_pouch/update_icon()
+	cut_overlays()
 	. = ..()
 	if(!cross_overlay)
 		cross_overlay = overlay_image(icon, "cross", flags = RESET_COLOR)
 	add_overlay(cross_overlay)
-	icon_state = "pack[opened]"
-
-/* /obj/item/storage/single_use/med_pouch/examine(mob/user, dist)
-	. = ..()
-	. += instructions
-*/
 
 /obj/item/storage/single_use/med_pouch/update_desc(updates)
 	. = ..()
 	desc += instructions
-
-/obj/item/storage/single_use/med_pouch/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	open(user)
-
-/*handled by single_use
-/obj/item/storage/single_use/med_pouch/open(mob/user)
-	if(!opened)
-		user.visible_message("<span class='notice'></span>", "<span class='notice'></span>")
-	. = ..()*/
 
 /obj/item/storage/single_use/med_pouch/trauma
 	name = "Trauma Pouch"

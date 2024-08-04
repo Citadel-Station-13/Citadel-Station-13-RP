@@ -16,7 +16,7 @@
 	. = ..()
 	SwitchSprite()
 
-/obj/item/clothing/under/donator/ui_action_click()
+/obj/item/clothing/under/donator/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	SwitchSprite()
 
 /obj/item/clothing/under/donator/proc/SwitchSprite()
@@ -67,7 +67,7 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	alt_sprite = TRUE
-	action_button_name = "Adjust Bodysuit"
+	item_action_name = "Adjust Bodysuit"
 	close_message = "You activate the suit's lightweight mode."
 	open_message = "You activate the suit's active mode."
 
@@ -83,7 +83,7 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	alt_sprite = TRUE
-	action_button_name = "Adjust Kimono"
+	item_action_name = "Adjust Kimono"
 	close_message = "You straighten out the kimono and tighten the wraps."
 	open_message = "You loosen the wraps on the kimono, letting it fall around your shoulders."
 
@@ -98,7 +98,7 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	alt_sprite = TRUE
-	action_button_name = "Adjust Kimono"
+	item_action_name = "Adjust Kimono"
 	close_message = "You straighten out the kimono and tighten the wraps."
 	open_message = "You loosen the wraps of the kimono."
 
@@ -173,7 +173,7 @@
 	item_state = "noah_cloak"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = TN60C
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/donatornoahcloak
 	icon = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
@@ -185,7 +185,7 @@
 	item_state = "noah_cloakhood"
 	body_cover_flags = HEAD
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = TN60C
 	icon = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
@@ -219,7 +219,7 @@
 	. = ..()
 	SwitchSprite()
 
-/obj/item/clothing/mask/donator/ui_action_click()
+/obj/item/clothing/mask/donator/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	SwitchSprite()
 
 /obj/item/clothing/mask/donator/proc/SwitchSprite()
@@ -316,7 +316,7 @@
 	icon_state = "dancer_veil"
 	inv_hide_flags = HIDEFACE
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	action_button_name = "Adjust Veil"
+	item_action_name = "Adjust Veil"
 	close_message = "You drape the veil over your face."
 	open_message = "You unclasp the veil and let it fall."
 
@@ -337,7 +337,7 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	alt_sprite = TRUE
-	action_button_name = "Adjust Outfit"
+	item_action_name = "Adjust Outfit"
 	close_message = "You adjust the outfit to show more skin."
 	open_message = "You adjust the outfit to cover up some skin."
 

@@ -155,7 +155,7 @@
 	set src in usr
 	set name = "Threaten to push the button!"
 	set desc = "BOOOOM!"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	deadman = TRUE
 	START_PROCESSING(SSobj, src)
 	log_and_message_admins("is threatening to trigger a signaler deadman's switch")

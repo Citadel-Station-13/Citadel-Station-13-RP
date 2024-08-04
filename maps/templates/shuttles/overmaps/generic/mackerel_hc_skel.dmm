@@ -122,7 +122,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_hc_skel_eng)
 "fI" = (
@@ -384,8 +384,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/mackerel_hc_skel)
 "ut" = (
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 1;
+/obj/machinery/fire_alarm/alarms_hidden/south_mount{
 	pixel_y = -26
 	},
 /obj/machinery/light,
@@ -514,7 +513,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
 "Dl" = (
@@ -706,8 +705,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/machinery/firealarm/alarms_hidden{
-	dir = 4;
+/obj/machinery/fire_alarm/alarms_hidden/east_mount{
 	pixel_x = -26
 	},
 /obj/structure/railing/grey,
@@ -1014,7 +1012,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel_cockpit)
 "ZJ" = (

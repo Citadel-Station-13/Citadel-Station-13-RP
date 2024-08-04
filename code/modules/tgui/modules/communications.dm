@@ -24,7 +24,7 @@
 	var/aicurrmsg
 
 	var/message_cooldown
-	var/centcomm_message_cooldown
+	var/centcom_message_cooldown
 	var/tmp_alertlevel = 0
 
 	var/stat_msg1
@@ -141,7 +141,7 @@
 
 	// data["lastCallLoc"]     = SSshuttle.emergencyLastCallLoc ? format_text(SSshuttle.emergencyLastCallLoc.name) : null
 	data["msg_cooldown"] = message_cooldown ? (round((message_cooldown - world.time) / 10)) : 0
-	data["cc_cooldown"] = centcomm_message_cooldown ? (round((centcomm_message_cooldown - world.time) / 10)) : 0
+	data["cc_cooldown"] = centcom_message_cooldown ? (round((centcom_message_cooldown - world.time) / 10)) : 0
 
 	data["esc_callable"] = SSemergencyshuttle.location() && !SSemergencyshuttle.online() ? TRUE : FALSE
 	data["esc_recallable"] = SSemergencyshuttle.location() && SSemergencyshuttle.online() ? TRUE : FALSE
@@ -328,10 +328,10 @@
 			stat_msg2 = reject_bad_text(sanitize(input(usr, "Line 2", "Enter Message Text", stat_msg2) as text|null, 40), 40)
 			setMenuState(usr, COMM_SCREEN_STAT)
 
-		// OMG CENTCOMM LETTERHEAD
+		// OMG CENTCOM LETTERHEAD
 		if("MessageCentCom")
 			if(is_authenticated(usr) == COMM_AUTHENTICATION_MAX)
-				if(centcomm_message_cooldown > world.time)
+				if(centcom_message_cooldown > world.time)
 					to_chat(usr, SPAN_WARNING("Arrays recycling. Please stand by."))
 					return
 				var/input = sanitize(input(usr, "Please choose a message to transmit to [(LEGACY_MAP_DATUM).boss_short] via quantum entanglement. \
@@ -346,13 +346,13 @@
 				message_centcom(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
 				log_game("[key_name(usr)] has made an IA [(LEGACY_MAP_DATUM).boss_short] announcement: [input]")
-				centcomm_message_cooldown = world.time + 300 // 30 seconds
+				centcom_message_cooldown = world.time + 300 // 30 seconds
 			setMenuState(usr, COMM_SCREEN_MAIN)
 
 		// OMG SYNDICATE ...LETTERHEAD
 		if("MessageSyndicate")
 			if((is_authenticated(usr) == COMM_AUTHENTICATION_MAX) && (emagged))
-				if(centcomm_message_cooldown > world.time)
+				if(centcom_message_cooldown > world.time)
 					to_chat(usr, "Arrays recycling.  Please stand by.")
 					return
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
@@ -364,7 +364,7 @@
 				message_syndicate(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
-				centcomm_message_cooldown = world.time + 300 // 30 seconds
+				centcom_message_cooldown = world.time + 300 // 30 seconds
 
 		if("RestoreBackup")
 			to_chat(usr, "Backup routing data restored!")

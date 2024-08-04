@@ -1,6 +1,6 @@
 /// Used by players to ask badmins to do things for them, but ICly.
 /mob/verb/pray(msg as text)
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set name = "Pray"
 
 	msg = sanitize(msg)
@@ -49,9 +49,8 @@
 
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
-			if(C.is_preference_enabled(/datum/client_preference/admin/show_chat_prayers))
-				to_chat(C, msg)
-				SEND_SOUND(C, sound('sound/effects/ding.ogg'))
+			to_chat(C, msg)
+			SEND_SOUND(C, sound('sound/effects/ding.ogg'))
 
 	to_chat(usr, SPAN_INFO("You pray to the gods: \"[msg_tmp]\""), confidential = TRUE)
 

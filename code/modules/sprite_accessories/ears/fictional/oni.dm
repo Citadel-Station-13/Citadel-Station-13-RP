@@ -7,5 +7,5 @@
 	name = "oni horns, colorable"
 	id = "ears_oni_color"
 	icon_state = "oni-h1_c"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE

@@ -8,7 +8,7 @@
 /obj/item/robot_module/robot/medical/surgeon
 	name = "medical robot module"
 	sprites = list(
-		"M-USE NanoTrasen" = "robotMedi",
+		"M-USE Nanotrasen" = "robotMedi",
 		"Cabeiri" = "eyebot-medical",
 		"Haruka" = "marinaMD",
 		"Minako" = "arachne",

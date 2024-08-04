@@ -8,7 +8,7 @@
 	id = "tail_bug_abdomen"
 	icon_state = "buggo_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/buggowag
 	name = "Bug abdomen, colorable, vwag change"
@@ -16,14 +16,14 @@
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/buggo_bee
 	name = "Bug abdomen, bee top, dual-colorable"
 	id = "tail_bug_abdomen_bee"
 	icon_state = "buggo_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobee_markings"
 
 /datum/sprite_accessory/tail/buggo_beefull
@@ -31,7 +31,7 @@
 	id = "tail_bug_abdomen_bee2"
 	icon_state = "buggo_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobeefull_markings"
 
 /datum/sprite_accessory/tail/buggo_beefullwag
@@ -40,7 +40,7 @@
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobeefull_markings"
 	extra_overlay_w = "buggofatbeefull_markings"
 
@@ -50,7 +50,7 @@
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobee_markings"
 	extra_overlay_w = "buggofatbee_markings"
 
@@ -59,7 +59,7 @@
 	id = "tail_bug_abdomen_firefly"
 	icon_state = "buggo_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofirefly_markings"
 
 /datum/sprite_accessory/tail/buggo_fireflywag
@@ -68,7 +68,7 @@
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofirefly_markings"
 	extra_overlay_w = "buggofatfirefly_markings"
 
@@ -77,7 +77,7 @@
 	id = "tail_bug_abdomen_under"
 	icon_state = "buggo_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggounder_markings"
 
 /datum/sprite_accessory/tail/buggo_underwag
@@ -86,7 +86,7 @@
 	icon_state = "buggo_s"
 	ani_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggounder_markings"
 	extra_overlay_w = "buggofatunder_markings"
 
@@ -95,14 +95,14 @@
 	id = "tail_bug_abdomen_fat"
 	icon_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/buggofat_bee
 	name = "Fat bug abdomen, bee top, dual-colorable"
 	id = "tail_bug_abdomen_fat_bee"
 	icon_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatbee_markings"
 
 /datum/sprite_accessory/tail/buggofat_beefull
@@ -110,7 +110,7 @@
 	id = "tail_bug_abdomen_fat_bee2"
 	icon_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatbeefull_markings"
 
 /datum/sprite_accessory/tail/buggofat_firefly
@@ -118,7 +118,7 @@
 	id = "tail_bug_abdomen_fat_firefly"
 	icon_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatfirefly_markings"
 
 /datum/sprite_accessory/tail/buggofat_under
@@ -126,7 +126,7 @@
 	id = "tail_bug_abdomen_fat_under"
 	icon_state = "buggofat_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatunder_markings"
 
 /datum/sprite_accessory/tail/buggovass
@@ -134,7 +134,7 @@
 	id = "tail_bug_vass"
 	icon_state = "buggo_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/buggovass_wag
 	name = "Bug abdomen, vass, colorable, vwag change"
@@ -142,14 +142,14 @@
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/buggovass_bee
 	name = "Bug abdomen, bee top, dc, vass"
 	id = "tail_bug_vass_bee"
 	icon_state = "buggo_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobee_vass_markings"
 
 /datum/sprite_accessory/tail/buggovass_beewag
@@ -158,7 +158,7 @@
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobee_vass_markings"
 	extra_overlay_w = "buggofatbee_vass_markings"
 
@@ -167,7 +167,7 @@
 	id = "tail_bug_vass_bee3"
 	icon_state = "buggo_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobeefull_vass_markings"
 
 /datum/sprite_accessory/tail/buggovass_beefullwag
@@ -176,7 +176,7 @@
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggobeefull_vass_markings"
 	extra_overlay_w = "buggofatbeefull_vass_markings"
 
@@ -185,7 +185,7 @@
 	id = "tail_bug_vass_firefly"
 	icon_state = "buggo_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofirefly_vass_markings"
 
 /datum/sprite_accessory/tail/buggovass_fireflywag
@@ -194,7 +194,7 @@
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofirefly_vass_markings"
 	extra_overlay_w = "buggofatfirefly_vass_markings"
 
@@ -203,7 +203,7 @@
 	id = "tail_bug_vass_under"
 	icon_state = "buggo_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggounder_vass_markings"
 
 /datum/sprite_accessory/tail/buggovass_underwag
@@ -212,7 +212,7 @@
 	icon_state = "buggo_vass_s"
 	ani_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggounder_vass_markings"
 	extra_overlay_w = "buggofatunder_vass_markings"
 
@@ -221,14 +221,14 @@
 	id = "tail_bug_vass_fat"
 	icon_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 
 /datum/sprite_accessory/tail/buggovassfat_bee
 	name = "Fat bug abdomen, bee top, dc, vass"
 	id = "tail_bug_vass_fat_bee"
 	icon_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatbee_vass_markings"
 
 /datum/sprite_accessory/tail/buggovassfat_beefull
@@ -236,7 +236,7 @@
 	id = "tail_bug_vass_fat_bee2"
 	icon_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatbeefull_vass_markings"
 
 /datum/sprite_accessory/tail/buggovassfat_firefly
@@ -244,7 +244,7 @@
 	id = "tail_bug_vass_fat_firefly"
 	icon_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatfirefly_vass_markings"
 
 /datum/sprite_accessory/tail/buggovassfat_under
@@ -252,5 +252,5 @@
 	id = "tail_bug_vass_fat_under"
 	icon_state = "buggofat_vass_s"
 	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	extra_overlay = "buggofatunder_vass_markings"

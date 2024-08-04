@@ -36,11 +36,8 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/ashlander_village)
 "az" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/infinite;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+/obj/machinery/power/apc/north_mount{
+	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/east/transit)
@@ -345,7 +342,6 @@
 "gK" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
-	layer = 3.3;
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -2529,13 +2525,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/ashlander_village)
 "YY" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/west_mount{
 	cell_type = /obj/item/cell/high/empty;
 	chargelevel = 0;
 	chargemode = 0;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28;
 	start_charge = 0
 	},
 /obj/structure/table/standard,

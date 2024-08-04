@@ -8,7 +8,7 @@
 	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/accessory/armor/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(ishuman(user))
@@ -37,10 +37,10 @@
 	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	gender = PLURAL
 	slot = ACCESSORY_SLOT_ARMOR_S
-	slots = 2
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 2
 
 /obj/item/clothing/accessory/storage/pouches/blue
 	desc = "A collection of blue pouches that can be attached to a plate carrier. Carries up to two items."
@@ -62,7 +62,7 @@
 	name = "large storage pouches"
 	desc = "A collection of black pouches that can be attached to a plate carrier. Carries up to four items."
 	icon_state = "lpouches"
-	slots = 4
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 	weight = ITEM_WEIGHT_STORAGE_POUCH_LARGE
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_POUCH_LARGE
 
@@ -93,21 +93,14 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "shotholder"
 	slot = ACCESSORY_SLOT_ARMOR_S
-	slots = 4
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	insertion_whitelist = list(
+		/obj/item/ammo_casing/a12g,
+	)
 
-/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon(updates)
-	. = ..()
-	var/amt = length(hold.contents)
-	icon_state = "shotholder-[amt]"
-
-/obj/item/clothing/accessory/storage/shotgun_shell_holder/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/ammo_casing/a12g))
-		. = hold.attackby(W, user)
-		update_icon()
-		accessory_host?.update_icon()
-		return
-	else
-		to_chat(user, SPAN_WARNING("The [src] can only hold 12-gauge shells!"))
+/obj/item/clothing/accessory/storage/shotgun_shell_holder/update_icon_state()
+	icon_state = "shotholder-[length(contents)]"
+	return ..()
 
 ////////////////
 //Armor plates
@@ -335,7 +328,7 @@
 //	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIt = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 //Nanotrasen
 /obj/item/clothing/accessory/armor/tag/nts
@@ -345,7 +338,7 @@
 
 /obj/item/clothing/accessory/armor/tag/ntbs
 	name = "\improper BLUESHIELD tag"
-	desc = "An armor tag with the words BLUESHIELD printed in red lettering."
+	desc = "An armor tag with the words BLUESHIELD printed in blue lettering."
 	icon_state = "ntbstag"
 
 /obj/item/clothing/accessory/armor/tag/ntc
@@ -457,8 +450,8 @@
 	icon_state = "helmcover_tan"
 
 /obj/item/clothing/accessory/armor/helmcover/nt
-	name = "\improper NanoTrasen helmet cover"
-	desc = "A fabric cover for armored helmets. This one has NanoTrasen's colors."
+	name = "\improper Nanotrasen helmet cover"
+	desc = "A fabric cover for armored helmets. This one has Nanotrasen's colors."
 	icon_state = "helmcover_nt"
 
 /obj/item/clothing/accessory/armor/helmcover/pcrc

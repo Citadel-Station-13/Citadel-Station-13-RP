@@ -4,7 +4,7 @@
 	abstract_type = /obj/item/stack/material
 	damage_force = 5
 	throw_force = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 3
 	throw_range = 3
 	max_amount = 50
@@ -291,7 +291,7 @@
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
-	w_class = min(5, round(amount / 10) + 1)
+	set_weight_class(min(5, round(amount / 10) + 1))
 	throw_range = round(amount / 7) + 1
 
 /obj/item/stack/material/supermatter/use(var/used)
@@ -357,6 +357,14 @@
 	material = /datum/material/wood_plank/hardwood
 	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
 
+/obj/item/stack/material/wood/ironwood
+	name = "ironwood plank"
+	color = "#666666"
+	material = /datum/material/wood_plank/ironwood
+	description_info = "A especially dense wood said to be stronger than iron. Grown from ironwood trees native to the Alraune homeworld of Loam."
+	catalogue_delay = 2 SECONDS
+	catalogue_data = list(/datum/category_item/catalogue/flora/ironwood)
+
 /obj/item/stack/material/log
 	name = "log"
 	icon_state = "sheet-log"
@@ -364,7 +372,7 @@
 	no_variants = FALSE
 	color = "#824B28"
 	max_amount = 25
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	description_info = "Use inhand to craft things, or use a sharp and edged object on this to convert it into two wooden planks."
 	var/plank_type = /obj/item/stack/material/wood
 	drop_sound = 'sound/items/drop/wooden.ogg'
@@ -404,6 +412,37 @@
 	else
 		return ..()
 
+/obj/item/stack/material/log/ironwood
+	material = /datum/material/wood_log/ironwood
+	color = "#666666"
+	plank_type = /obj/item/stack/material/wood/ironwood
+	description_info = "Use inhand to craft things. You will need something very sharp to cut it into planks though"
+	catalogue_delay = 2 SECONDS
+	catalogue_data = list(/datum/category_item/catalogue/flora/ironwood)
+
+
+/obj/item/stack/material/log/ironwood/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(!istype(I) || I.damage_force <= 20) //You will need at least PLASTEEL Tools to cut this.
+		return ..()
+	if(CHECK_MULTIPLE_BITFIELDS(I.damage_mode, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP) || (I.edge && I.sharp))
+		var/time = (3 SECONDS / max(I.damage_force / 10, 1)) * I.tool_speed
+		user.setClickCooldown(time)
+		if(do_after(user, time, src) && use(1))
+			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
+			playsound(get_turf(src), 'sound/effects/woodcutting.ogg', 50, 1)
+			var/obj/item/stack/material/wood/existing_wood = null
+			for(var/obj/item/stack/material/wood/M in user.loc)
+				if(M.material.name == src.material.name)
+					existing_wood = M
+					break
+
+			var/obj/item/stack/material/wood/new_wood = new plank_type(user.loc)
+			new_wood.amount = 2
+			if(existing_wood && new_wood.transfer_to(existing_wood))
+				to_chat(user, "<span class='notice'>You add the newly-formed wood to the stack. It now contains [existing_wood.amount] planks.</span>")
+	else
+		to_chat(user, "<span class='notice'>You will need a stronger cut to cut this wood into planks.</span>")
+		return ..()
 
 /obj/item/stack/material/cloth
 	name = "cloth"

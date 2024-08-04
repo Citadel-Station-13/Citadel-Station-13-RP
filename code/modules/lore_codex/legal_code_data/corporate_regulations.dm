@@ -1,10 +1,10 @@
 /datum/lore/codex/category/corporate_regulations
 	name = "Corporate Regulations"
-	data = "Corporate Regulations are rules set by us, NanoTrasen, that all visitors and employees must follow while working at \
-	or otherwise on-board a NanoTrasen installation, which if you are reading this, you likely are at one.  Corporate Regulations, \
-	commonly shortened to Corp Regs by employees, is common throughout NanoTrasen's other holdings.  Offenses against Corp Regs can \
+	data = "Corporate Regulations are rules set by us, Nanotrasen, that all visitors and employees must follow while working at \
+	or otherwise on-board a Nanotrasen installation, which if you are reading this, you likely are at one.  Corporate Regulations, \
+	commonly shortened to Corp Regs by employees, is common throughout Nanotrasen's other holdings.  Offenses against Corp Regs can \
 	range from things like littering, to disrespecting a Head of Staff, to failing to follow a valid order from a superior.  \
-	All NanoTrasen employees must follow these regulations, no one is above them, not even the Station Director.  \
+	All Nanotrasen employees must follow these regulations, no one is above them, not even the Station Director.  \
 	The only exception for this is Asset Protection."
 	children = list(
 		/datum/lore/codex/page/corporate_punishments,
@@ -24,7 +24,7 @@
 
 /datum/lore/codex/page/not_contraband
 	name = "Not Contraband"
-	data = "Here is a list of objects which are not actually contraband onboard NanoTrasen facilities in Vir, despite popular belief.\
+	data = "Here is a list of objects which are not actually contraband onboard Nanotrasen facilities in Vir, despite popular belief.\
 	<ul>\
 	<li><b>Blades or other Equipment</b> which the possessor needs in order to fulfil their role onboard the facility, \
 	such as a kitchen knife for culinary personnel.</li>\
@@ -34,7 +34,7 @@
 
 /datum/lore/codex/page/contraband_controlled
 	name = "Controlled Objects"
-	data = "A 'controlled' object is contraband that NanoTrasen has deemed harmful, or otherwise undesired for the \
+	data = "A 'controlled' object is contraband that Nanotrasen has deemed harmful, or otherwise undesired for the \
 	facility, but which is not illegal by Law or dangerous to possess.  Vessels docking with the facility which possess these \
 	objects are required to keep them onboard their vessel.  Visitors who board the facility with these objects are required to \
 	surrender them, or otherwise have them confiscated, however they may have them back upon leaving.\
@@ -84,7 +84,7 @@
 	Janitor, Miner, Cook, Gardener.  This punishment can be especially fitting for certain violations such as someone who made graffiti being reassigned to janitorial duties.</li><br>\
 	<li><b>Demotions</b> may be done by the offender's Superior, at their discretion.  The Station Director may also do this, \
 	however the Director is recommended to defer to the offender's direct Superior if one exists.</li><br>\
-	<li><b>Terminations of employment</b> from NanoTrasen can only be issued by the Station Director.  This is the most severe corporate punishment available. \
+	<li><b>Terminations of employment</b> from Nanotrasen can only be issued by the Station Director.  This is the most severe corporate punishment available. \
 	It should be noted that visitors and other non-employees cannot be terminated, obviously.  Central Command must be informed of the termination, if one is applied.</li>\
 	<li><b>Hold until Transfer</b> is an option reserved for the Station Director only for repeat offenders, for serious violations of Regulations, or it the offender poses a \
 	credible threat to the station or crew.</li>\
@@ -131,7 +131,7 @@
 	suggested_brig_time = 20 MINUTES
 	suggested_fine = 200
 	notes = "This is for theft of company belongings which are of a relatively low value, such as low-end medical equipment, tools, clothing, \
-	not paying for food/drink, and such.  It is assumed that persons inside a department using departmental equipment have the consent of NanoTrasen to take those items.  \
+	not paying for food/drink, and such.  It is assumed that persons inside a department using departmental equipment have the consent of Nanotrasen to take those items.  \
 	Theft from a person, or if stolen objects were not of a trivial worth, falls under [quick_link("Theft")] instead.  \
 	[quick_link("Grand Theft")] is reserved for extremely valuable or dangerous objects being stolen."
 	..()
@@ -147,7 +147,7 @@
 
 /datum/lore/codex/page/law/failure_to_execute_order
 	name = "Failure to Execute an Order"
-	definition = "Refusing to follow a valid, lawful order of a Superior, when able to do so, as an employee of NanoTrasen."
+	definition = "Refusing to follow a valid, lawful order of a Superior, when able to do so, as an employee of Nanotrasen."
 	suggested_punishments = "50 thaler fine. Demotion at discretion of Superior."
 	suggested_fine = 50
 	notes = "For this charge to apply, the order must be lawful, reasonable, and the person being ordered to do it must have been able to do so.  \
@@ -192,7 +192,7 @@
 
 /datum/lore/codex/page/law/control_contraband
 	name = "Possession of a Controlled Item (Contraband)"
-	definition = "Carrying an object which NanoTrasen has deemed harmful, or otherwise undesired for the \
+	definition = "Carrying an object which Nanotrasen has deemed harmful, or otherwise undesired for the \
 	station, but which is not illegal by Law or dangerous to possess."
 	suggested_punishments = "Confiscation of the controlled items if brought onboard. The owner may have the items back when they leave the station."
 	notes = "Visitors boarding the station with controlled items must leave the item outside the station (e.g. their vessel), or surrender \
@@ -200,8 +200,8 @@
 
 /datum/lore/codex/page/law/disrespecting_head
 	name = "Disrespecting a Head of Staff"
-	definition = "Knowingly insulting, belittling, offending, or otherwise disrespecting a Head of Staff of NanoTrasen, while also \
-	an employee of NanoTrasen."
+	definition = "Knowingly insulting, belittling, offending, or otherwise disrespecting a Head of Staff of Nanotrasen, while also \
+	an employee of Nanotrasen."
 	suggested_punishments = "Fine of up to 100 thaler. Demotion at discretion of Superior."
 	suggested_fine = 100
 	notes = "Accidential cases resulting from, for example, ignorance of a species' culture, invalidates this charge."

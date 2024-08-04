@@ -3,11 +3,12 @@
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
-	action_button_name = "Toggle Flashlight"
+	item_action_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
+	worth_intrinsic = 25
 
 	var/on = FALSE
 	/// Luminosity when on
@@ -52,7 +53,7 @@
 		if(cell.use(power_usage) != power_usage) //We weren't able to use our full power_usage amount!
 			visible_message(SPAN_WARNING("\The [src] flickers before going dull."))
 			set_light(FALSE)
-			playsound(src.loc, 'sound/effects/sparks3.ogg', 10, 1, -3) //Small cue that your light went dull in your pocket.
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 10, 1, -3) //Small cue that your light went dull in your pocket.
 			on = FALSE
 			update_appearance()
 			return PROCESS_KILL
@@ -62,7 +63,7 @@
 
 /obj/item/flashlight/verb/toggle()
 	set name = "Toggle Flashlight Brightness"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	set_brightness(usr)
 
@@ -88,10 +89,6 @@
 			set_light(flashlight_range, flashlight_power, light_color)
 	else
 		set_light(0)
-
-/obj/item/flashlight/update_appearance(updates)
-	. = ..()
-	set_flashlight()
 
 /obj/item/flashlight/update_icon_state()
 	. = ..()
@@ -133,8 +130,8 @@
 	else if(power_use)
 		STOP_PROCESSING(SSobj, src)
 	playsound(src.loc, 'sound/weapons/empty.ogg', 15, TRUE, -3)
-	update_appearance()
-	user.update_action_buttons()
+	set_flashlight()
+	update_full_icon()
 	return TRUE
 
 /obj/item/flashlight/emp_act(severity)
@@ -166,7 +163,7 @@
 			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [L]'s eyes."), \
 							 	 SPAN_NOTICE("You direct [src] to [L]'s eyes."))
 			if(H != user)	//can't look into your own eyes buster
-				if(L.stat == DEAD || L.blinded)	//mob is dead or fully blind
+				if(L.stat == DEAD || L.has_status_effect(/datum/status_effect/sight/blindness))	//mob is dead or fully blind
 					to_chat(user, SPAN_WARNING("\The [L]'s pupils do not react to the light!"))
 					return
 				if(MUTATION_XRAY in L.mutations)
@@ -234,7 +231,7 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	slot_flags = SLOT_EARS
 	brightness_on = 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	power_use = 0
 	flashlight_range = 2
 	light_wedge = LIGHT_OMNI
@@ -265,7 +262,7 @@
 	icon_state = "maglight"
 	damage_force = 10
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
 	attack_sound = "swing_hit"
 	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 50)
@@ -279,7 +276,7 @@
 	item_state = null
 	brightness_on = 2
 	flashlight_range = 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	power_use = 0
 
 // the desk lamps are a bit special
@@ -289,7 +286,7 @@
 	icon_state = "lamp"
 	damage_force = 10
 	brightness_on = 5
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	power_use = 0
 	on = 1
 	light_wedge = LIGHT_OMNI
@@ -306,7 +303,7 @@
 
 /obj/item/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if(!usr.stat)
@@ -319,7 +316,7 @@
 	desc = "A red standard-issue flare. There are instructions on the side reading 'pull cord, make light'."
 	icon_state = "flare"
 	item_state = "flare"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	brightness_on = 8 // Pretty bright.
 	flashlight_power = 0.8
@@ -327,7 +324,7 @@
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FLARE
 
-	action_button_name = null //just pull it manually, neckbeard.
+	item_action_name = null //just pull it manually, neckbeard.
 	power_use = 0
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
@@ -387,7 +384,7 @@
 /obj/item/flashlight/glowstick
 	name = "green glowstick"
 	desc = "A green military-grade glowstick."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	brightness_on = 4
 	icon_state = "glowstick"
 	item_state = "glowstick"

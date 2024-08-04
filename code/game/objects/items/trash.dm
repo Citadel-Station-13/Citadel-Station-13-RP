@@ -4,11 +4,16 @@
 //Added by Jack Rost
 /obj/item/trash
 	icon = 'icons/obj/trash.dmi'
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 0
 	desc = "This is rubbish."
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
+
+/obj/item/trash/Initialize(mapload)
+	. = ..()
+	if(mapload)
+		obj_persist_status |= OBJ_PERSIST_STATUS_NO_THANK_YOU
 
 /obj/item/trash/raisins
 	name = "\improper 4no raisins"

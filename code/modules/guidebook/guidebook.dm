@@ -65,6 +65,6 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 
 /client/verb/access_guidebook()
 	set name = "Access Guidebook"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	GLOB.guidebook.ui_interact(src)

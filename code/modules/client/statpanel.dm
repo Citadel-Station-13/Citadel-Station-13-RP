@@ -31,7 +31,7 @@
 /client/proc/statpanel_boot_impl()
 	PRIVATE_PROC(TRUE)
 	// give client a second to load
-	sleep(2 SECONDS)
+	sleep(world.tick_lag)
 	// loads statbrowser if it isn't there
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	// if it is there and we can't tell because byond is byond, send it a signal to reload
@@ -349,6 +349,15 @@
 
 	statpanel_tab = tab
 
+/**
+ * This cleanly and gracefully attempts to go to a specific tab via , for the hyperspecific purpose of interacting with the statpanel from other HTML UI
+ */
+/client/verb/hook_statpanel_goto_tab(tab as text)
+	set name = ".statpanel_goto_tab"
+	set hidden = TRUE
+	set instant = TRUE
+	src << output(tab, "statbrowser:change_tab")
+
 //! verb hooks - byond stat
 
 //! verb hooks - tab switcher
@@ -364,6 +373,6 @@
 
 /client/verb/fix_stat_panel()
 	set name = "Fix Stat Panel"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	statpanel_reset()

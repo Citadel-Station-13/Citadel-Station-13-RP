@@ -22,7 +22,7 @@
 	icon_state = "hatchet"
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	attack_verb = list("chopped", "torn", "cut")
 	material_color = 0
@@ -69,7 +69,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
 /obj/item/material/minihoe/plasteel
@@ -92,7 +92,7 @@
 	material_parts = /datum/material/snow
 	material_significance = MATERIAL_SIGNIFICANCE_SHARD
 	force_multiplier = 0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
 /obj/item/material/snow/snowball/attack_self(mob/user)
@@ -132,7 +132,7 @@
 	active = 0
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	damage_mode = DAMAGE_MODE_EDGE | DAMAGE_MODE_SHARP
 

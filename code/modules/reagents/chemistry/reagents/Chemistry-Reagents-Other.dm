@@ -207,12 +207,13 @@
 	M.radiation = 0
 	M.heal_organ_damage(20,20)
 	M.adjustToxLoss(-20)
-	M.hallucination = 0
+	M.setHallucination(0)
+	M.setHalLoss(0)
 	M.setBrainLoss(0)
 	M.disabilities = 0
 	M.sdisabilities = 0
 	M.eye_blurry = 0
-	M.SetBlinded(0)
+	M.remove_status_effect(/datum/status_effect/sight/blindness)
 	M.set_paralyzed(0)
 	M.set_stunned(0)
 	M.set_unconscious(0)
@@ -495,7 +496,7 @@
 	scannable = 1
 
 /datum/reagent/defective_nanites/affect_blood(mob/living/carbon/M, alien, removed)
-	M.take_organ_damage(2 * removed, 2 * removed)
+	M.take_random_targeted_damage(brute = 2 * removed, brute = 2 * removed)
 	M.adjustOxyLoss(4 * removed)
 	M.adjustToxLoss(2 * removed)
 	M.adjustCloneLoss(2 * removed)

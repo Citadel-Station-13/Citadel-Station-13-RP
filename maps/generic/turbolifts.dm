@@ -94,6 +94,17 @@
 		/area/turbolift/t_station/level2
 		)
 
+/obj/turbolift_map_holder/tether/two
+	dir = WEST
+	areas_to_use = list(
+		/area/turbolift/t_surface/elevator_two/level1,
+		/area/turbolift/t_surface/elevator_two/level2,
+		/area/turbolift/t_surface/elevator_two/level3,
+		/area/turbolift/tether/elevator_two/transit,
+		/area/turbolift/t_station/elevator_two/level1,
+		/area/turbolift/t_station/elevator_two/level2
+		)
+
 /**Euthenia Lifts
  */
 

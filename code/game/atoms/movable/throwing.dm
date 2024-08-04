@@ -17,7 +17,7 @@
 	return NONE
 
 /atom/movable/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	if(!anchored && (TT?.force >= (move_resist * MOVE_FORCE_PUSH_RATIO)) && !(TT.throw_flags & THROW_AT_OVERHAND))
+	if(!anchored && (TT?.force >= (move_resist * MOVE_FORCE_PUSH_RATIO)) && !(TT.throw_flags & (THROW_AT_OVERHAND | THROW_AT_IS_NEAT)))
 		step(src, AM.dir)
 	return ..()
 
@@ -77,7 +77,7 @@
 	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
 		return
 	// then ours
-	. = SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_IMPACT, A, TT)
+	. |= SEND_SIGNAL(src, COMSIG_MOVABLE_THROW_IMPACT, A, TT)
 	if(. & (COMPONENT_THROW_HIT_TERMINATE | COMPONENT_THROW_HIT_NEVERMIND))
 		return
 	. |= throw_impact(A, TT)

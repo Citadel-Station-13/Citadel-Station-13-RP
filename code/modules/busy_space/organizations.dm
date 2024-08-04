@@ -2,9 +2,9 @@
 /datum/lore/organization
 	/// Organization's name
 	var/name = ""
-	/// Organization's shortname (NanoTrasen for "NanoTrasen Incorporated")
+	/// Organization's shortname (Nanotrasen for "Nanotrasen Incorporated")
 	var/short_name = ""
-	/// Organization's acronym, e.g. 'NT' for NanoTrasen'.
+	/// Organization's acronym, e.g. 'NT' for Nanotrasen'.
 	var/acronym = ""
 	/// One or two paragraph description of the organization, but only current stuff.  Currently unused.
 	var/desc = ""
@@ -17,7 +17,7 @@
 	/// A motto/jingle/whatever, if they have one.  Currently unused.
 	var/motto = ""
 
-	/// Some might have more than one! Like NanoTrasen. Value is the mission they perform, e.g. ("ABC" = "mission desc")
+	/// Some might have more than one! Like Nanotrasen. Value is the mission they perform, e.g. ("ABC" = "mission desc")
 	var/list/ship_prefixes = list()
 	/// Enables complex task generation
 	var/complex_tasks = FALSE
@@ -268,12 +268,12 @@
 
 // TSCs
 /datum/lore/organization/tsc/nanotrasen
-	name = "NanoTrasen Incorporated"
-	short_name = "NanoTrasen "
+	name = "Nanotrasen Incorporated"
+	short_name = "Nanotrasen "
 	acronym = "NT"
-	desc = "NanoTrasen is one of the foremost research and development companies in the galaxy. \
+	desc = "Nanotrasen is one of the foremost research and development companies in the galaxy. \
 	Originally focused on consumer products, their swift move into the field of Phoron has lead to \
-	them being the foremost experts on the substance and its uses. In the modern day, NanoTrasen prides \
+	them being the foremost experts on the substance and its uses. In the modern day, Nanotrasen prides \
 	itself on being an early adopter to as many new technologies as possible, often offering the newest \
 	products to their employees. In an effort to combat complaints about being 'guinea pigs', Nanotrasen \
 	also offers one of the most comprehensive medical plans in Frontier space, up to and including cloning, \
@@ -323,7 +323,7 @@
 	acronym = "HI"
 	desc = "Hephaestus Industries is the largest supplier of arms, ammunition, and small millitary vehicles on the Frontier. \
 	Hephaestus products have a reputation for reliability, and the corporation itself has a notable trade and research pact \
-	with NanoTrasen. They otherwise enforce pacts and trade arrangements with the help of a fairly large asset-protection contingent which \
+	with Nanotrasen. They otherwise enforce pacts and trade arrangements with the help of a fairly large asset-protection contingent which \
 	prevents any contracting polities from using their own materiel against them. The Orion Confederation itself is one of Hephaestus' largest \
 	non-corporate bulk contractors."
 	work = "arms manufacturer"
@@ -363,8 +363,8 @@
 	of their medical equipment-- from surgical tools to large medical devices to the Oddyseus trauma response mecha \
 	and everything in between. Their equipment tends to be top-of-the-line, most obviously shown by their incredibly \
 	human-like FBP designs. Vey's rise to stardom came from their introduction of cosmetic resleeving, although in \
-	recent years they've been forced to diversify as their patents expired and NanoTrasen-made medications became \
-	essential to modern sleeving. Vey-Medical possesses a number of trade agreements and research pacts with NanoTrasen, \
+	recent years they've been forced to diversify as their patents expired and Nanotrasen-made medications became \
+	essential to modern sleeving. Vey-Medical possesses a number of trade agreements and research pacts with Nanotrasen, \
 	resulting in what is functionally considered an alliance."
 	work = "medical equipment supplier"
 	headquarters = "Toledo, New Ohio"
@@ -617,7 +617,7 @@
 	 and brand recognition. Major Bill's was known, perhaps unfavorably, for its mascot, Major Bill, a cartoonish military figure that spouted \
 	 quotable slogans. Their motto: \"With Major Bill's, you won't pay major bills!\", was an earworm much of the galaxy has since forgotten. \
 	 Their ships, named after some of Earth's greatest rivers, now drift in scrapyards across the Frontier. An early casualty of the Bluespace Race \
-	 and NanoTrasen's emergent dominance on the Galactic Plane, Major Bill's made a valiant effort to compete, before they ultimately dissolved in \
+	 and Nanotrasen's emergent dominance on the Galactic Plane, Major Bill's made a valiant effort to compete, before they ultimately dissolved in \
 	 April of 2436."
 	history = ""
 	work = "courier and passenger transit"
@@ -929,7 +929,7 @@
 	acronym = "EEN"
 	desc = "Einstein is an old company that has survived through rampant respecialization. In the age of phoron-powered exotic engines and ubiquitous solar power, \
 	Einstein makes its living through the sale of engine designs for power sources it has no access to, and emergency fission or hydrocarbon power supplies. \
-	Accusations of corporate espionage against research-heavy corporations like NanoTrasen and its former rival Focal Point are probably unfounded."
+	Accusations of corporate espionage against research-heavy corporations like Nanotrasen and its former rival Focal Point are probably unfounded."
 	history = ""
 	work = "catering, food, drinks"
 	headquarters = ""

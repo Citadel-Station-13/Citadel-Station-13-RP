@@ -18,7 +18,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wiz_voidsuit", SLOT_ID_LEFT_HAND = "wiz_voidsuit")
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_LIGHT
 	weight = ITEM_WEIGHT_VOIDSUIT_LIGHT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	integrity_flags = INTEGRITY_ACIDPROOF
 	armor_type = /datum/armor/wizard
 	siemens_coefficient = 0.7

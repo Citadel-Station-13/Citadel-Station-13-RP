@@ -8,6 +8,7 @@
 	body_cover_flags = HEAD|FACE|EYES
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worth_intrinsic = 175
 
 /obj/item/clothing/head/helmet/medieval/red
 	icon_state = "knighthelm_red"
@@ -29,7 +30,7 @@
 	desc = "This tarnished helmet has clearly done its job well for many years of service."
 	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
 	icon_state = "paladinhelm"
-	action_button_name = "Toggle Visor"
+	item_action_name = "Toggle Visor"
 
 /obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user)
 	. = ..()
@@ -55,6 +56,7 @@
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS|FEET
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worth_intrinsic = 325
 
 /obj/item/clothing/suit/armor/medieval/red
 	icon_state = "knight_red"
@@ -174,7 +176,7 @@
 	desc = "This tarnished helmet has clearly done its job well for many years of service."
 	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
 	icon_state = "paladinhelm"
-	action_button_name = "Toggle Visor"
+	item_action_name = "Toggle Visor"
 
 /obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user)
 	. = ..()

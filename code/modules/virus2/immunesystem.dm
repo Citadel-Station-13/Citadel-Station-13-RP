@@ -78,7 +78,7 @@
 /datum/immune_system/proc/Overload()
 	body.adjustToxLoss(100)
 	body.afflict_radiation(50, 0, 0) //don't check for armor since Overload is only called when someone has taken Radium
-	body.bodytemperature = max(body.bodytemperature, BODYTEMP_HEAT_DAMAGE_LIMIT)
+	body.bodytemperature = max(body.bodytemperature, LEGACY_BODYTEMP_HEAT_DAMAGE_THRESHOLD)
 	to_chat(body, "<span class='danger'>A terrible fever assails your body, you feel ill as your immune system kicks into overdrive to drive away your infections.</span>")
 	if (ishuman(body))
 		var/mob/living/carbon/human/H = body

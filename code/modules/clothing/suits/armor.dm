@@ -7,9 +7,9 @@
 		|ACCESSORY_SLOT_MEDAL\
 		|ACCESSORY_SLOT_INSIGNIA)
 
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = UPPER_TORSO|LOWER_TORSO
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.7
 
@@ -41,7 +41,7 @@
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"
-	desc = "An armored vest that protects against some damage. This one has a NanoTrasen corporate badge."
+	desc = "An armored vest that protects against some damage. This one has a Nanotrasen corporate badge."
 	icon_state = "armoralt"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 
@@ -145,10 +145,10 @@
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY + ITEM_ENCUMBRANCE_ARMOR_HEAVY_BOOTS + ITEM_ENCUMBRANCE_ARMOR_HEAVY_GLOVES
 	weight = ITEM_WEIGHT_ARMOR_HEAVY + ITEM_WEIGHT_ARMOR_HEAVY_BOOTS + ITEM_WEIGHT_ARMOR_HEAVY_GLOVES
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 20* ONE_ATMOSPHERE
@@ -210,7 +210,7 @@
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
-		playsound(user.loc, "sparks", 50, 1)
+		playsound(user.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 
 		user.loc = picked
 		return PROJECTILE_FORCE_MISS
@@ -311,11 +311,12 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = UPPER_TORSO|LOWER_TORSO
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
+	worth_intrinsic = 100
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"
@@ -433,7 +434,7 @@
 	desc = "An armored vest made from advanced flexible ceramic plates. It's surprisingly mobile, if a little unfashionable."
 	icon_state = "flexitac"
 	item_state = "flexitac"
-	cold_protection = UPPER_TORSO|LOWER_TORSO
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = T0C - 20
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM
 	weight = ITEM_WEIGHT_ARMOR_MEDIUM
@@ -461,6 +462,7 @@
 	armor_type = /datum/armor/station/heavy
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY
 	weight = ITEM_WEIGHT_ARMOR_HEAVY
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
 	name = "officer heavy armor vest"
@@ -515,7 +517,7 @@
 	desc = "this doesn't exist"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS			//big coats keep you big warm
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS			//big coats keep you big warm
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	icon = 'icons/clothing/suit/coats/dept_overcoats.dmi'
 	armor_type = /datum/armor/security/light_formalwear
@@ -552,16 +554,16 @@
 
 //All of the armor below is mostly unused
 
-/obj/item/clothing/suit/armor/centcomm
+/obj/item/clothing/suit/armor/centcom
 	name = "CentCom armor"
 	desc = "A suit that protects against some damage."
 	icon_state = "centcom"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	w_class = ITEMSIZE_LARGE//bulky item
+	w_class = WEIGHT_CLASS_BULKY//bulky item
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
+	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
 
@@ -571,7 +573,7 @@
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor_type = /datum/armor/security/bulky_kinetic
-	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
+	w_class = WEIGHT_CLASS_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
@@ -602,7 +604,7 @@
 	icon_state = "samurai"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "leather_coat", SLOT_ID_LEFT_HAND = "leather_coat")
 	armor_type = /datum/armor/general/samurai
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.6
@@ -767,7 +769,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Armor Sigils"
+	item_action_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
@@ -796,7 +798,7 @@
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Coat Sigils"
+	item_action_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
 
 /obj/item/clothing/suit/armor/vest/wolftaur
@@ -813,7 +815,7 @@
 	if(!.)
 		return FALSE
 	var/mob/living/carbon/human/H
-	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
+	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/legacy_taur/wolf))
 		return
 	else
 		to_chat(H,"<span class='warning'>You need to have a wolf-taur half to wear this.</span>")

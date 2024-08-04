@@ -43,7 +43,7 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_caves)
 "A" = (
-/obj/machinery/power/apc/alarms_hidden/north_bump{
+/obj/machinery/power/apc/alarms_hidden/north_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/lythios43c/indoors,

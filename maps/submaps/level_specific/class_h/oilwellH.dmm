@@ -1,0 +1,429 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/fence,
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_x = -2
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"b" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"c" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
+/obj/effect/debris/cleanable/liquid_fuel,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"d" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"e" = (
+/obj/effect/debris/cleanable/liquid_fuel,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"f" = (
+/obj/structure/sink/oil_well,
+/obj/effect/debris/cleanable/liquid_fuel,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"g" = (
+/obj/structure/fence{
+	dir = 1
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"j" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/template_noop)
+"k" = (
+/obj/structure/closet/firecloset/full,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"l" = (
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/desert/poi/oilwell)
+"n" = (
+/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"o" = (
+/obj/structure/sign/signnew/flammables,
+/turf/simulated/wall/sandstone/classh,
+/area/tether_away/beach/desert/poi/oilwell)
+"p" = (
+/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/desert/poi/oilwell)
+"q" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"r" = (
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"u" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"v" = (
+/obj/structure/fence,
+/obj/machinery/light/small,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"w" = (
+/obj/effect/debris/cleanable/liquid_fuel,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"x" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"C" = (
+/obj/structure/fence/door/locked{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/desert/poi/oilwell)
+"E" = (
+/obj/structure/table/rack/shelf,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"F" = (
+/turf/simulated/wall,
+/area/tether_away/beach/desert/poi/oilwell)
+"L" = (
+/obj/effect/debris/cleanable/liquid_fuel,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/desert/poi/oilwell)
+"N" = (
+/obj/structure/fence{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"O" = (
+/turf/template_noop,
+/area/template_noop)
+"P" = (
+/obj/structure/table/standard,
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_x = -2
+	},
+/obj/item/shovel,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/tether_away/beach/desert/poi/oilwell)
+"S" = (
+/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+"V" = (
+/obj/structure/fence/door/locked,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/desert/poi/oilwell)
+"X" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/poi/oilwell)
+
+(1,1,1) = {"
+O
+O
+O
+O
+O
+O
+j
+O
+O
+O
+O
+j
+j
+j
+O
+"}
+(2,1,1) = {"
+O
+O
+O
+O
+j
+j
+j
+j
+j
+j
+j
+j
+j
+j
+O
+"}
+(3,1,1) = {"
+O
+j
+o
+a
+r
+r
+r
+C
+N
+N
+g
+o
+j
+j
+O
+"}
+(4,1,1) = {"
+j
+j
+u
+S
+w
+S
+b
+l
+S
+w
+S
+u
+j
+j
+O
+"}
+(5,1,1) = {"
+O
+j
+X
+w
+f
+w
+w
+L
+f
+w
+w
+X
+j
+O
+O
+"}
+(6,1,1) = {"
+O
+j
+V
+l
+L
+l
+L
+l
+w
+S
+w
+X
+j
+O
+O
+"}
+(7,1,1) = {"
+j
+j
+X
+S
+w
+w
+f
+l
+L
+w
+f
+X
+j
+O
+O
+"}
+(8,1,1) = {"
+O
+j
+F
+F
+F
+F
+w
+S
+l
+L
+p
+V
+j
+j
+O
+"}
+(9,1,1) = {"
+O
+j
+F
+d
+n
+F
+w
+b
+l
+w
+b
+X
+j
+j
+O
+"}
+(10,1,1) = {"
+O
+j
+F
+P
+e
+c
+L
+l
+l
+f
+S
+X
+j
+O
+O
+"}
+(11,1,1) = {"
+j
+j
+F
+E
+n
+F
+w
+L
+w
+w
+w
+X
+j
+O
+O
+"}
+(12,1,1) = {"
+O
+j
+F
+k
+q
+F
+f
+p
+b
+S
+f
+x
+j
+O
+O
+"}
+(13,1,1) = {"
+O
+j
+F
+F
+F
+F
+r
+C
+r
+r
+v
+o
+j
+O
+O
+"}
+(14,1,1) = {"
+O
+O
+O
+O
+O
+j
+j
+j
+j
+j
+j
+j
+j
+O
+O
+"}
+(15,1,1) = {"
+O
+O
+O
+O
+O
+O
+j
+j
+j
+j
+O
+O
+O
+O
+O
+"}

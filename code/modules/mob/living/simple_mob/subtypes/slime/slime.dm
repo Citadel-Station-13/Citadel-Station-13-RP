@@ -3,7 +3,7 @@
 /datum/category_item/catalogue/fauna/slime
 	name = "Slime"
 	desc = "Often referred to as Slimes, this mysterious alien \
-	species represents a larger biological curiosity to NanoTrasen. \
+	species represents a larger biological curiosity to Nanotrasen. \
 	Highly mutable, these carnivorous blobs of gelatinous tissue may \
 	be trained and farmed, but their temperament makes them a constant danger."
 	value = CATALOGUER_REWARD_EASY
@@ -59,7 +59,7 @@
 	speak_emote = list("chirps")
 	friendly = list("pokes")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 	say_list_type = /datum/say_list/slime
 
 	var/cores = 1 // How many cores you get when placed in a Processor.

@@ -295,12 +295,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/east_mount{
 	alarms_hidden = 1;
 	cell_type = /obj/item/cell/high/empty;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28;
 	req_access = list()
 	},
 /turf/simulated/floor/bluegrid/virgo2,

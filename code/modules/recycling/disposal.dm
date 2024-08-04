@@ -109,7 +109,7 @@
 		var/obj/item/storage/bag/trash/T = I
 		to_chat(user, "<font color=#4F49AF>You empty the bag.</font>")
 		for(var/obj/item/O in T.contents)
-			T.remove_from_storage(O,src)
+			T.obj_storage.remove(O, src)
 		T.update_icon()
 		update()
 		return
@@ -134,7 +134,7 @@
 				GM.forceMove(src)
 				GM.update_perspective()
 				for (var/mob/C in viewers(src))
-					C.show_message("<font color='red'>[GM.name] has been placed in the [src] by [user].</font>", 3)
+					C.show_message("<font color='red'>[GM.name] has been placed in \the [src] by [user].</font>", 3)
 				qdel(G)
 
 				add_attack_logs(user,GM,"Disposals dunked")
@@ -143,11 +143,11 @@
 	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
-	to_chat(user, "You place \the [I] into the [src].")
+	to_chat(user, "You place \the [I] into \the [src].")
 	for(var/mob/M in viewers(src))
 		if(M == user)
 			continue
-		M.show_message("[user.name] places \the [I] into the [src].", 3)
+		M.show_message("[user.name] places \the [I] into \the [src].", 3)
 
 	update()
 
@@ -178,11 +178,11 @@
 		return
 	if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))	// if drop self, then climbed in
 											// must be awake, not stunned or whatever
-		msg = "[user.name] climbs into the [src]."
-		to_chat(user, "You climb into the [src].")
+		msg = "[user.name] climbs into \the [src]."
+		to_chat(user, "You climb into \the [src].")
 	else if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
-		msg = "[user.name] stuffs [target.name] into the [src]!"
-		to_chat(user, "You stuff [target.name] into the [src]!")
+		msg = "[user.name] stuffs [target.name] into \the [src]!"
+		to_chat(user, "You stuff [target.name] into \the [src]!")
 
 		add_attack_logs(user,target,"Disposals dunked")
 	else
@@ -467,33 +467,20 @@
 		qdel(H)
 
 /obj/machinery/disposal/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
 	if(istype(AM, /obj/item) && !istype(AM, /obj/projectile))
 		if(prob(75))
 			AM.forceMove(src)
 			visible_message("\The [AM] lands in \the [src].")
+			return COMPONENT_THROW_HIT_TERMINATE
 		else
 			visible_message("\The [AM] bounces off of \the [src]'s rim!")
+			return ..()
+	return ..()
 
 /obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/projectile))
-		return 1
-	if (istype(mover,/obj/item) && mover.throwing)
-		var/obj/item/I = mover
-		if(istype(I, /obj/projectile))
-			return
-		if(prob(75))
-			I.forceMove(src)
-			for(var/mob/M in viewers(src))
-				M.show_message("\The [I] lands in \the [src].", 3)
-		else
-			for(var/mob/M in viewers(src))
-				M.show_message("\The [I] bounces off of \the [src]'s rim!", 3)
-		return 0
-	else
-		return ..(mover, target)
-
-
+		return TRUE
+	return ..()
 
 /obj/machinery/disposal/wall
 	name = "inset disposal unit"
@@ -595,6 +582,7 @@
 // movement process, persists while holder is moving through pipes
 /obj/structure/disposalholder/proc/move()
 	var/obj/structure/disposalpipe/last
+	// todo: while this is fucking awful?
 	while(active)
 		sleep(1)		// was 1
 		if(!loc) return // check if we got GC'd
@@ -602,7 +590,7 @@
 		if(hasmob && prob(3))
 			for(var/mob/living/H in src)
 				if(!istype(H,/mob/living/silicon/robot/drone)) //Drones use the mailing code to move through the disposal system,
-					H.take_overall_damage(20, 0, "Blunt Trauma")//horribly maim any living creature jumping down disposals.  c'est la vie
+					H.take_overall_damage(20, 0, weapon_descriptor = "blunt trauma")//horribly maim any living creature jumping down disposals.  c'est la vie
 
 		var/obj/structure/disposalpipe/curr = loc
 		last = curr
@@ -697,7 +685,7 @@
 	desc = "An underfloor disposal pipe."
 	anchored = 1
 	density = 0
-	level = 1 // underfloor only
+	hides_underfloor = OBJ_UNDERFLOOR_ALWAYS
 	dir = 0 // dir will contain dominant direction for junction pipes
 	plane = TURF_PLANE
 	layer = DISPOSAL_LAYER // slightly lower than wires and other pipes.
@@ -771,18 +759,6 @@
 		return null
 
 	return P
-
-
-// update the icon_state to reflect hidden status
-/obj/structure/disposalpipe/proc/update()
-	var/turf/T = src.loc
-	hide(!T.is_plating() && !istype(T,/turf/space))	// space never hides pipes
-
-// hide called by levelupdate if turf intact status changes
-// change visibility status and force update of icon
-/obj/structure/disposalpipe/hide(var/intact)
-	invisibility = intact ? 101: 0	// hide if floor is intact
-	updateicon()
 
 // update actual icon_state depending on visibility
 // if invisible, append "f" to icon_state to show faded version
@@ -974,14 +950,6 @@
 			expel(H, T, 0)
 	..()
 
-/obj/structure/disposalpipe/hides_under_flooring()
-	return 1
-
-// *** TEST verb
-//client/verb/dispstop()
-//	for(var/obj/structure/disposalholder/H in world)
-//		H.active = 0
-
 // a straight or bent segment
 /obj/structure/disposalpipe/segment
 	icon_state = "pipe-s"
@@ -992,8 +960,6 @@
 		dpdir = dir | turn(dir, 180)
 	else
 		dpdir = dir | turn(dir, -90)
-
-	update()
 	return
 
 ///// Z-Level stuff
@@ -1003,7 +969,6 @@
 /obj/structure/disposalpipe/up/New()
 	..()
 	dpdir = dir
-	update()
 	return
 
 /obj/structure/disposalpipe/up/nextdir(fromdir)
@@ -1053,7 +1018,6 @@
 /obj/structure/disposalpipe/down/New()
 	..()
 	dpdir = dir
-	update()
 	return
 
 /obj/structure/disposalpipe/down/nextdir(fromdir)
@@ -1113,7 +1077,6 @@
 		dpdir = dir | turn(dir, 90) | turn(dir,180)
 	else // pipe-y
 		dpdir = dir | turn(dir,90) | turn(dir, -90)
-	update()
 	return
 
 
@@ -1170,7 +1133,6 @@
 	if(sort_tag) GLOB.tagger_locations |= sort_tag
 	updatename()
 	updatedesc()
-	update()
 
 /obj/structure/disposalpipe/tagger/attackby(obj/item/I, mob/user)
 	if(..())
@@ -1238,7 +1200,6 @@
 	updatedir()
 	updatename()
 	updatedesc()
-	update()
 
 /obj/structure/disposalpipe/sortjunction/attackby(obj/item/I, mob/user)
 	if(..())
@@ -1330,8 +1291,6 @@
 /obj/structure/disposalpipe/trunk/LateInitialize()
 	. = ..()
 	getlinked()
-	update()
-
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null
 	var/obj/machinery/disposal/D = locate() in src.loc
@@ -1343,8 +1302,6 @@
 	var/obj/structure/disposaloutlet/O = locate() in src.loc
 	if(O)
 		linked = O
-
-	update()
 	return
 
 	// Override attackby so we disallow trunkremoval when somethings ontop
@@ -1427,11 +1384,6 @@
 	dpdir = 0		// broken pipes have dpdir=0 so they're not found as 'real' pipes
 					// i.e. will be treated as an empty turf
 	desc = "A broken piece of disposal pipe."
-
-/obj/structure/disposalpipe/broken/New()
-	..()
-	update()
-	return
 
 // called when welded
 // for broken pipe, remove and turn into scrap

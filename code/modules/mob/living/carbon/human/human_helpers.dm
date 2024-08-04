@@ -172,7 +172,7 @@
 
 	for(var/slot in slots)
 		// Change this type if you move the vision stuff to item or something.
-		var/obj/item/clothing/O = item_by_slot(slot)
+		var/obj/item/clothing/O = item_by_slot_id(slot)
 		if(istype(O) && O.enables_planes && (slot in O.active_slots))
 			compiled_vis |= O.enables_planes
 

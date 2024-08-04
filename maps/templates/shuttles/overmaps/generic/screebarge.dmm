@@ -158,7 +158,7 @@
 /area/shuttle/screebarge/fore)
 "aw" = (
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/reinforced,
 /area/shuttle/screebarge/fore)
 "ax" = (
@@ -396,7 +396,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_bump,
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/screebarge/mid)
 "bg" = (
@@ -459,7 +459,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/screebarge/aft)
 "bo" = (

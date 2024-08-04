@@ -39,7 +39,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "QShuttlePoIDoors";
-	layer = 3.3;
 	name = "Emergency Lockdown Shutters"
 	},
 /obj/item/barrier_tape_segment/medical{

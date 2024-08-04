@@ -46,7 +46,8 @@
 			var/datum/computer_file/F = HDD.find_file_by_name(params["name"])
 			if(!F || !istype(F))
 				return
-			var/datum/computer_file/C = F.clone(1)
+			var/datum/computer_file/C = F.clone()
+			C.filename = F.filename + "(Copy)"
 			HDD.store_file(C)
 			return TRUE
 		if("PRG_edit")

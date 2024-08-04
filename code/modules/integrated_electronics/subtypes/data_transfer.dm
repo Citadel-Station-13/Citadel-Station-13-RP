@@ -41,13 +41,13 @@
 /obj/item/integrated_circuit/transfer/multiplexer/large
 	name = "eight multiplexer"
 	number_of_inputs = 8
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "mux8"
 
 /obj/item/integrated_circuit/transfer/multiplexer/huge
 	name = "sixteen multiplexer"
 	icon_state = "mux16"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	number_of_inputs = 16
 
 /obj/item/integrated_circuit/transfer/demultiplexer
@@ -76,9 +76,8 @@
 /obj/item/integrated_circuit/transfer/demultiplexer/do_work()
 	var/output_index = get_pin_data(IC_INPUT, 1)
 	if(!isnull(output_index) && (output_index >= 1 && output_index <= outputs.len))
-		var/datum/integrated_io/O = outputs[output_index]
-		O.data = get_pin_data(IC_INPUT, 2)
-		O.push_data()
+		set_pin_data(IC_OUTPUT,output_index,get_pin_data(IC_INPUT, 2))
+		push_data()
 
 	activate_pin(2)
 
@@ -90,13 +89,13 @@
 /obj/item/integrated_circuit/transfer/demultiplexer/large
 	name = "eight demultiplexer"
 	icon_state = "dmux8"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	number_of_outputs = 8
 
 /obj/item/integrated_circuit/transfer/demultiplexer/huge
 	name = "sixteen demultiplexer"
 	icon_state = "dmux16"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	number_of_outputs = 16
 
 /obj/item/integrated_circuit/transfer/pulsedemultiplexer
@@ -136,13 +135,13 @@
 /obj/item/integrated_circuit/transfer/pulsedemultiplexer/large
 	name = "eight pulse demultiplexer"
 	icon_state = "dmux8"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	number_of_outputs = 8
 
 /obj/item/integrated_circuit/transfer/pulsedemultiplexer/huge
 	name = "sixteen pulse demultiplexer"
 	icon_state = "dmux16"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	number_of_outputs = 16
 
 /obj/item/integrated_circuit/transfer/pulsemultiplexer

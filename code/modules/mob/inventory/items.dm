@@ -98,18 +98,9 @@
  */
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
-/*
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.Remove(user)
-*/
-	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
-		qdel(src)
 
 	hud_unlayerise()
 	item_flags &= ~ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
@@ -120,6 +111,9 @@
 	if(zoom)
 		zoom() //binoculars, scope, etc
 
+	// unload actions
+	unregister_item_actions(user)
+
 	// clear carry
 	if(isliving(user))
 		var/mob/living/L = user
@@ -129,11 +123,18 @@
 	// close context menus
 	context_close()
 
+	// storage stuff
+	obj_storage?.on_dropped(user)
+
 	// get rid of shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
 			continue
 		user.unregister_shieldcall(shieldcall)
+
+	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
+		qdel(src)
+		. |= ITEM_RELOCATED_BY_DROPPED
 
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
@@ -149,8 +150,8 @@
 	reset_pixel_offsets()
 	hud_layerise()
 	item_flags |= ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
+	// todo: should this be here
+	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
@@ -160,11 +161,17 @@
 		var/mob/living/L = user
 		L.adjust_current_carry_weight(weight_registered)
 
-	// get rid of shieldcalls
+	// storage stuff
+	obj_storage?.on_pickup(user)
+
+	// register shieldcalls
 	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
 		if(!shieldcall.shields_in_inventory)
 			continue
 		user.register_shieldcall(shieldcall)
+
+	// load action buttons
+	register_item_actions(user)
 
 /**
  * update our worn icon if we can
@@ -261,22 +268,22 @@
 
 	switch(slot)
 		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_WORN_ID)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_BELT)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_SUIT_STORAGE)
-			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot(SLOT_ID_SUIT))
+			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot_id(SLOT_ID_SUIT))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a suit before you can attach [src]."))
 				return FALSE
@@ -379,7 +386,7 @@
 /obj/item/proc/is_being_worn()
 	if(!worn_slot)
 		return FALSE
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(worn_slot)
 	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
 
 /**

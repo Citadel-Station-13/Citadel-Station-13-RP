@@ -26,6 +26,8 @@
 
 /obj/structure/catwalk/Initialize(mapload)
 	. = ..()
+	if(istype(loc, /turf/simulated/floor/water))
+		layer = ABOVE_TURF_LAYER
 	for(var/obj/structure/catwalk/O in range(1))
 		O.update_icon()
 	for(var/obj/structure/catwalk/C in get_turf(src))

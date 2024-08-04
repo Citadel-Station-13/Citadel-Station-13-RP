@@ -52,7 +52,7 @@
 	var/glass_addition
 	var/glass_desc
 	var/glass_color
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/pdrink.dmi'
 
 /obj/item/glass_extra/stick

@@ -84,6 +84,7 @@
 	icon_state = "phoron"
 	gauge_icon = null
 	slot_flags = null	//they have no straps!
+	worth_intrinsic = 75 // heavy duty
 
 /obj/item/tank/phoron/Initialize(mapload)
 	. = ..()
@@ -106,7 +107,7 @@
 /obj/item/tank/phoron/pressurized
 	name = "fuel can"
 	icon_state = "phoron_vox"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/tank/phoron/pressurized/Initialize(mapload)
 	. = ..()
@@ -138,10 +139,11 @@
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 3
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 4
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	volume = 2 //Tiny. Real life equivalents only have 21 breaths of oxygen in them. They're EMERGENCY tanks anyway -errorage (dangercon 2011)
+	worth_intrinsic = 25
 
 /obj/item/tank/emergency/oxygen
 	name = "emergency oxygen tank"
@@ -167,6 +169,7 @@
 	icon_state = "emergency_engi"
 	volume = 6
 	gauge_cap = 3
+	worth_intrinsic = 50
 
 /obj/item/tank/emergency/oxygen/double
 	name = "double emergency oxygen tank"
@@ -175,6 +178,7 @@
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
 	gauge_cap = 3
+	worth_intrinsic = 75
 
 /obj/item/tank/stasis/oxygen // Stasis bags need to have initial pressure within safe bounds for human atmospheric pressure (NOT breath pressure)
 	name = "stasis oxygen tank"

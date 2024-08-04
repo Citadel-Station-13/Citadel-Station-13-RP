@@ -28,10 +28,10 @@
 	Cyber Solutions prosthetics are only recommended for the truly destitute and dedicated tinkers."
 
 /datum/lore/codex/page/robo_nt
-	name = "NanoTrasen"
-	data = "A fairly unremarkable prosthetic design, NanoTrasen health plans provide these as part of their famous corporate medical insurance. These are also provided to NanoTrasen-produced positronics at the end of their indenture and are considered fairly high quality for entry-level prosthesis. Outside of NanoTrasen facilities, NanoTrasen-brand prosthetics are fairly rare and not often sought out-- NanoTrasen's grey-black prosthetics are a visual sign of association with the company itself.\
+	name = "Nanotrasen"
+	data = "A fairly unremarkable prosthetic design, Nanotrasen health plans provide these as part of their famous corporate medical insurance. These are also provided to Nanotrasen-produced positronics at the end of their indenture and are considered fairly high quality for entry-level prosthesis. Outside of Nanotrasen facilities, Nanotrasen-brand prosthetics are fairly rare and not often sought out-- Nanotrasen's grey-black prosthetics are a visual sign of association with the company itself.\
 	<br><br>\
-	NanoTrasen prosthetics are a solid choice for any NanoTrasen employee. They're easy to come across in the event of a workplace accident and comfortable enough that many never feel the need to upgrade."
+	Nanotrasen prosthetics are a solid choice for any Nanotrasen employee. They're easy to come across in the event of a workplace accident and comfortable enough that many never feel the need to upgrade."
 
 /datum/lore/codex/page/robo_wt
 	name = "Ward-Takahashi GMB"
@@ -67,7 +67,7 @@
 	name = "Bishop Cybernetics"
 	data = "Bishop is the other big-name prosthesis manufacturer. Despite their obviously mechanical appearance, Bishop products have a range of sensation rivaling that of Vey Medical, with proponents calling it even more comfortable and responsive. Simply occupying a Bishop chassis gives some the same sort of sensation one would get from a fast, well-maintained car or aircraft. Bishop products are most commonly sold in \"boutiques\" found throughout the richer regions of human space, and are custom-fit for the end-user's specifications.Externally, Bishop prosthetics have a distinctive chrome or airbrushed aluminum design, with carefully fitted blue lighting.\
 	<br><br>\
-	Bishop's exclusivity leads to them being most common among the wealthy, although upper-middle class technophiles have been known to invest in a high-quality prosthetic. \"Knock-offs\", usually chrome-plated NanoTrasen prosthetics with painted-on lines, are sometimes worn by poseurs."
+	Bishop's exclusivity leads to them being most common among the wealthy, although upper-middle class technophiles have been known to invest in a high-quality prosthetic. \"Knock-offs\", usually chrome-plated Nanotrasen prosthetics with painted-on lines, are sometimes worn by poseurs."
 
 /datum/lore/codex/page/robo_zh
 	name = "Zeng-Hu Pharmaceuticals"

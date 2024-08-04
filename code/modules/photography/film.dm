@@ -8,7 +8,7 @@
 	worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT
 	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
 	inhand_state = "camera"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	// amount left
 	var/amount = 10
