@@ -21,6 +21,8 @@
 	density = 8 * 0.8
 	relative_conductivity = 0
 
+	worth = 37.5
+
 /datum/material/diamond/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(category = "statues", name = "ai hologram statue", product = /obj/structure/statue/diamond/ai1, cost = 10, time = 2 SECONDS)

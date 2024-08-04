@@ -11,13 +11,11 @@
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.key]"
+			var/entry = "\t[C.get_revealed_key()]"
 			if(!C.initialized)
 				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
 				Lines += entry
 				continue
-			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
 			if(!C.initialized)
 				entry += " - [SPAN_BOLDANNOUNCE("UNINITIALIZED!")]"
 				continue
@@ -64,10 +62,7 @@
 			Lines += entry
 	else
 		for(var/client/C in GLOB.clients)
-			if(C.holder && C.holder.fakekey)
-				Lines += C.holder.fakekey
-			else
-				Lines += C.key
+			Lines += (C == src)? C.get_revealed_key() : C.get_public_key()
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
@@ -86,13 +81,10 @@
 			if(!C.initialized)
 				continue
 
-			if(C.holder.fakekey && !((R_ADMIN|R_MOD) & holder.rights))
+			if(C.is_under_stealthmin() && !((R_ADMIN|R_MOD) & holder.rights))
 				continue
 
-			msg += "\t[C] is a [C.holder.rank]"
-
-			if(C.holder.fakekey)
-				msg += " <i>(as [C.holder.fakekey])</i>"
+			msg += "\t[C.get_revealed_key()] is a [C.holder.rank]"
 
 			if(isobserver(C.mob))
 				msg += " - Observing"
@@ -113,7 +105,7 @@
 		for(var/client/C in GLOB.admins)
 			if(!C.initialized)
 				continue
-			if(C.holder.fakekey)
+			if(C.is_under_stealthmin())
 				continue	// hidden
 			msg += "\t[C] is a [C.holder.rank]"
 			num_admins_online++

@@ -276,7 +276,7 @@
 
 	// pass attack self on to the card regardless of our shell
 	if(!istype(new_shell, /obj/item/paicard))
-		RegisterSignal(shell, COMSIG_ITEM_ATTACK_SELF, PROC_REF(pass_attack_self_to_card))
+		RegisterSignal(shell, COMSIG_ITEM_ACTIVATE_INHAND, PROC_REF(pass_attack_self_to_card))
 
 	update_chassis_actions()
 

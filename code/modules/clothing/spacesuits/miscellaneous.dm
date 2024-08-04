@@ -108,6 +108,7 @@
 	flash_protection = FLASH_PROTECTION_NONE
 	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT_HELMET
 	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT_HELMET
+	worth_intrinsic = 75
 
 /obj/item/clothing/suit/space/emergency
 	name = "Emergency Softsuit"
@@ -115,6 +116,7 @@
 	desc = "A thin, ungainly softsuit colored in blaze orange for rescuers to easily locate, looks pretty fragile."
 	encumbrance = ITEM_ENCUMBRANCE_EMERGENCY_SOFTSUIT
 	weight = ITEM_WEIGHT_EMERGENCY_SOFTSUIT
+	worth_intrinsic = 200
 
 //Russian Emergency Suit
 /obj/item/clothing/head/helmet/space/emergency/russian
