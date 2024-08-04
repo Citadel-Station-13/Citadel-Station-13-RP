@@ -96,7 +96,7 @@
 /area/space)
 "y" = (
 /obj/structure/cable/pink,
-/obj/machinery/power/apc/alarms_hidden/west_bump,
+/obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/plating,
 /area/space)
 "z" = (
@@ -191,8 +191,8 @@
 /turf/simulated/floor/plating/outdoors,
 /area/space)
 "Z" = (
-/turf/space,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
 Z

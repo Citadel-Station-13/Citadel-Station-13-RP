@@ -1,15 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_desert)
-"k" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_desert)
-"W" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_desert)
+/turf/simulated/floor/holofloor/space,
+/area/holodeck/source_space)
+"m" = (
+/obj/landmark{
+	name = "Holocarp Spawn Random"
+	},
+/turf/simulated/floor/holofloor/space,
+/area/holodeck/source_space)
 
 (1,1,1) = {"
 a
@@ -21,18 +19,18 @@ a
 a
 a
 a
-k
+a
 "}
 (2,1,1) = {"
 a
 a
-W
+a
+m
 a
 a
 a
 a
-a
-a
+m
 a
 "}
 (3,1,1) = {"
@@ -40,21 +38,21 @@ a
 a
 a
 a
-k
 a
 a
-W
+a
+a
 a
 a
 "}
 (4,1,1) = {"
-k
+a
+m
 a
 a
 a
 a
-a
-a
+m
 a
 a
 a
@@ -69,16 +67,16 @@ a
 a
 a
 a
-W
+a
 "}
 (6,1,1) = {"
 a
 a
 a
-k
 a
 a
-W
+a
+a
 a
 a
 a
@@ -87,12 +85,12 @@ a
 a
 a
 a
-a
-k
-a
+m
 a
 a
 a
+a
+m
 a
 "}
 (8,1,1) = {"
@@ -109,12 +107,12 @@ a
 "}
 (9,1,1) = {"
 a
-W
+m
 a
 a
 a
 a
-a
+m
 a
 a
 a
@@ -126,8 +124,8 @@ a
 a
 a
 a
-k
 a
 a
-W
+a
+a
 "}

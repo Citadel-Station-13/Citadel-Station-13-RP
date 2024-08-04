@@ -1,15 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_desert)
-"k" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_desert)
-"W" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/source_desert)
+/turf/simulated/floor/holofloor/reinforced,
+/area/holodeck/source_plating)
 
 (1,1,1) = {"
 a
@@ -21,12 +13,12 @@ a
 a
 a
 a
-k
+a
 "}
 (2,1,1) = {"
 a
 a
-W
+a
 a
 a
 a
@@ -40,15 +32,15 @@ a
 a
 a
 a
-k
 a
 a
-W
+a
+a
 a
 a
 "}
 (4,1,1) = {"
-k
+a
 a
 a
 a
@@ -69,16 +61,16 @@ a
 a
 a
 a
-W
+a
 "}
 (6,1,1) = {"
 a
 a
 a
-k
 a
 a
-W
+a
+a
 a
 a
 a
@@ -88,7 +80,7 @@ a
 a
 a
 a
-k
+a
 a
 a
 a
@@ -109,7 +101,7 @@ a
 "}
 (9,1,1) = {"
 a
-W
+a
 a
 a
 a
@@ -126,8 +118,8 @@ a
 a
 a
 a
-k
 a
 a
-W
+a
+a
 "}
