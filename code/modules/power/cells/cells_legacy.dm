@@ -2,7 +2,7 @@
 	name = "\improper rechargable AA battery"
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
 	origin_tech = list(TECH_POWER = 0)
-	maxcharge = 500
+	max_charge = 500
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 40)
 
 /obj/item/cell/crap/empty
@@ -11,7 +11,7 @@
 /obj/item/cell/secborg
 	name = "security borg rechargable D battery"
 	origin_tech = list(TECH_POWER = 0)
-	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
+	max_charge = 600	//600 max charge / 100 charge per shot = six shots
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 40)
 
 /obj/item/cell/secborg/empty
@@ -20,14 +20,14 @@
 /obj/item/cell/apc
 	name = "heavy-duty power cell"
 	origin_tech = list(TECH_POWER = 1)
-	maxcharge = 5000
+	max_charge = 5000
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 50)
 
 /obj/item/cell/high
 	name = "high-capacity power cell"
 	origin_tech = list(TECH_POWER = 2)
 	icon_state = "hcell"
-	maxcharge = 10000
+	max_charge = 10000
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 60)
 	rating = 2
 
@@ -38,7 +38,7 @@
 	name = "super-capacity power cell"
 	origin_tech = list(TECH_POWER = 5)
 	icon_state = "scell"
-	maxcharge = 20000
+	max_charge = 20000
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 70)
 	rating = 3
 
@@ -49,7 +49,7 @@
 	name = "hyper-capacity power cell"
 	origin_tech = list(TECH_POWER = 6)
 	icon_state = "hpcell"
-	maxcharge = 30000
+	max_charge = 30000
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 80)
 	rating = 4
 
@@ -60,7 +60,7 @@
 	name = "infinite-capacity power cell!"
 	icon_state = "icell"
 	origin_tech =  null
-	maxcharge = 30000 //determines how badly mobs get shocked
+	max_charge = 30000 //determines how badly mobs get shocked
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 80)
 	rating = 6
 
@@ -77,7 +77,7 @@
 	icon = 'icons/obj/power.dmi' //'icons/obj/harvest.dmi'
 	icon_state = "potato_cell" //"potato_battery"
 	charge = 100
-	maxcharge = 300
+	max_charge = 300
 	minor_fault = 1
 
 /obj/item/cell/slime
@@ -87,7 +87,7 @@
 	icon = 'icons/mob/slimes.dmi' //'icons/obj/harvest.dmi'
 	icon_state = "yellow slime extract" //"potato_battery"
 	description_info = "This 'cell' holds a max charge of 10k and self recharges over time."
-	maxcharge = 10000
+	max_charge = 10000
 	materials_base = null
 	rating = 5
 	self_recharge = TRUE
@@ -136,7 +136,7 @@
 /obj/item/cell/emergency_light
 	name = "miniature power cell"
 	desc = "A tiny power cell with a very low power capacity. Used in light fixtures to power them in the event of an outage."
-	maxcharge = 120 //Emergency lights use 0.2 W per tick, meaning ~10 minutes of emergency power from a cell
+	max_charge = 120 //Emergency lights use 0.2 W per tick, meaning ~10 minutes of emergency power from a cell
 	materials_base = list(MAT_GLASS = 20)
 	w_class = WEIGHT_CLASS_TINY
 

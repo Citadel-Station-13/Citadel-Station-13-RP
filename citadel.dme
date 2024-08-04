@@ -4198,6 +4198,7 @@
 #include "code\modules\power\cells\cells_device_legacy.dm"
 #include "code\modules\power\cells\cells_legacy.dm"
 #include "code\modules\power\cells\types\basic.dm"
+#include "code\modules\power\cells\types\microfission.dm"
 #include "code\modules\power\fission\carry.dm"
 #include "code\modules\power\fission\computer.dm"
 #include "code\modules\power\fission\engine.dm"

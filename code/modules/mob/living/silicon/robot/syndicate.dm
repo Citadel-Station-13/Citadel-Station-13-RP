@@ -9,7 +9,7 @@
 /mob/living/silicon/robot/syndicate/Initialize(mapload)
 	if(!cell)
 		cell = new /obj/item/cell(src)
-		cell.maxcharge = 25000
+		cell.max_charge = 25000
 		cell.charge = 25000
 	. = ..()
 

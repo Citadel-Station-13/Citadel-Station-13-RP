@@ -59,13 +59,13 @@
 
 /obj/item/computer_hardware/battery_module/diagnostics(var/mob/user)
 	..()
-	to_chat(user, "Internal battery charge: [battery.charge]/[battery.maxcharge] CU")
+	to_chat(user, "Internal battery charge: [battery.charge]/[battery.max_charge] CU")
 
 /obj/item/computer_hardware/battery_module/Initialize(mapload)
 	if(ispath(battery))
 		battery = new battery
 	if(battery)
-		battery.maxcharge = battery_rating
+		battery.max_charge = battery_rating
 		battery.charge = 0
 	return ..()
 
@@ -76,4 +76,4 @@
 
 /obj/item/computer_hardware/battery_module/proc/charge_to_full()
 	if(battery)//nolonger checks for a valid path, instead checks if battery is set.
-		battery.charge = battery.maxcharge
+		battery.charge = battery.max_charge

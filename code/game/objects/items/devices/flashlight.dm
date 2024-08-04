@@ -104,13 +104,13 @@
 		. += "\The [src] is set to [brightness_level]. "
 		if(cell)
 			. += "\The [src] has a \the [cell] attached. "
-			if(cell.charge <= cell.maxcharge*0.25)
+			if(cell.charge <= cell.max_charge*0.25)
 				. += "It appears to have a low amount of power remaining."
-			else if(cell.charge > cell.maxcharge*0.25 && cell.charge <= cell.maxcharge*0.5)
+			else if(cell.charge > cell.max_charge*0.25 && cell.charge <= cell.max_charge*0.5)
 				. += "It appears to have an average amount of power remaining."
-			else if(cell.charge > cell.maxcharge*0.5 && cell.charge <= cell.maxcharge*0.75)
+			else if(cell.charge > cell.max_charge*0.5 && cell.charge <= cell.max_charge*0.75)
 				. += "It appears to have an above average amount of power remaining."
-			else if(cell.charge > cell.maxcharge*0.75 && cell.charge <= cell.maxcharge)
+			else if(cell.charge > cell.max_charge*0.75 && cell.charge <= cell.max_charge)
 				. += "It appears to have a high amount of power remaining."
 
 /obj/item/flashlight/AltClick(mob/user)

@@ -56,10 +56,10 @@
 	if(istype(target, /obj/item/cell/))
 		var/obj/item/cell/C = target
 		if(prob(80))
-			C.maxcharge -= 200
-			if(C.maxcharge <= 1) //Div by 0 protection
-				C.maxcharge = 1
-			C.charge = C.maxcharge
+			C.max_charge -= 200
+			if(C.max_charge <= 1) //Div by 0 protection
+				C.max_charge = 1
+			C.charge = C.max_charge
 			charged_item = C
 
 	if(!charged_item)

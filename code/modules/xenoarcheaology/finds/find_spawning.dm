@@ -305,10 +305,10 @@
 				if(prob(5))
 					new_gun.power_supply.rigged = 1
 				if(prob(10))
-					new_gun.power_supply.maxcharge = 0
+					new_gun.power_supply.max_charge = 0
 					LAZYSET(new_gun.origin_tech, TECH_ARCANE, rand(0, 1))
 				if(prob(15))
-					new_gun.power_supply.charge = rand(0, new_gun.power_supply.maxcharge)
+					new_gun.power_supply.charge = rand(0, new_gun.power_supply.max_charge)
 					LAZYSET(new_gun.origin_tech, TECH_ARCANE, 1)
 				else
 					new_gun.power_supply.charge = 0
