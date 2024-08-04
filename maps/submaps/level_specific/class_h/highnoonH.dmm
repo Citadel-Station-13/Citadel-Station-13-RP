@@ -5,9 +5,9 @@
 /area/class_h/POIs/WW_Town)
 "aN" = (
 /obj/structure/table/rack/shelf,
-/obj/item/ammo_magazine/clip/c762/hunter,
-/obj/item/ammo_magazine/clip/c762/hunter,
-/obj/item/ammo_magazine/clip/c762/hunter,
+/obj/item/ammo_magazine/a7_62mm/clip/hunter,
+/obj/item/ammo_magazine/a7_62mm/clip/hunter,
+/obj/item/ammo_magazine/a7_62mm/clip/hunter,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "bT" = (
@@ -149,9 +149,9 @@
 /area/class_h/POIs/WW_Town)
 "xz" = (
 /obj/structure/table/rack/shelf,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "yT" = (
@@ -274,7 +274,7 @@
 /area/class_h/POIs/WW_Town)
 "SU" = (
 /obj/structure/table/rack/shelf,
-/obj/item/ammo_magazine/clip/c762/ap,
+/obj/item/ammo_magazine/a7_62mm/clip/ap,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "SX" = (

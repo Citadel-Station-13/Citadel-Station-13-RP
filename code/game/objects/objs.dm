@@ -19,10 +19,10 @@
 
 	//? Access - see [modules/jobs/access.dm]
 	/// If set, all of these accesses are needed to access this object.
-	//  todo: getter / setter, enforced cached & deduped lists 
+	//  todo: getter / setter, enforced cached & deduped lists
 	var/list/req_access
 	/// If set, at least one of these accesses are needed to access this object.
-	//  todo: getter / setter, enforced cached & deduped lists 
+	//  todo: getter / setter, enforced cached & deduped lists
 	var/list/req_one_access
 
 	//? Climbing
