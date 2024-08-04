@@ -614,7 +614,7 @@
 	if(istype(target, /obj/machinery))
 		if (src.interface_action(target))
 			return
-	if(!target.Adjacent(src))
+	if(!sufficiently_adjacent(target))
 		if(selected && selected.is_ranged())
 			selected.action(target)
 	else if(selected && selected.is_melee())

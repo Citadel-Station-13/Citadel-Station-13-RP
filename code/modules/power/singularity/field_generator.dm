@@ -22,6 +22,7 @@ field_generator power level display
 	density = 1
 	use_power = USE_POWER_OFF
 	armor = /datum/armor/object/heavy
+	worth_intrinsic = 350
 	var/const/num_power_levels = 6	// Total number of power level icon has
 	var/Varedit_start = 0
 	var/Varpower = 0

@@ -6,21 +6,25 @@
 	abstract_type = /datum/material
 
 	//* Core
-
 	/**
 	 * ID.
 	 * Must be unique.
 	 * Hardcoded materials can be looked up by typepath too and must never have their ids changed under the current implementation.
 	 */
 	var/id
-	/// Unique name for use in indexing the list.
+	/// Name for debugging purposes; not player-facing.
 	var/name
-	/// Prettier name for display.
+
+	//* Identification *//
+	/// Player-facing name. Always used.
 	var/display_name
+
+	// todo: reevaluate
 	var/use_name
+	// todo: reevaluate
 	var/sheet_singular_name = "sheet"
+	// todo: reevaluate
 	var/sheet_plural_name = "sheets"
-	var/is_fusion_fuel
 
 	//! Shards/tables/structures
 	/// Path of debris object.
@@ -157,6 +161,7 @@
 	var/spatial_instability = 0
 	/// If set, object matter var will be a list containing these values.
 	var/list/composite_material
+	var/is_fusion_fuel
 
 	//! Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
 	var/created_window
@@ -176,19 +181,23 @@
 	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
-	//* Economy
+	//* Stacking *//
+	/// amount per sheet / whatever
+	var/sheet_amount = SHEET_MATERIAL_AMOUNT
+
+	//* Economy *//
 	/// Raw worth per cm3
 	var/worth = 0
 	/// economic category for this
 	var/economic_category_material = ECONOMIC_CATEGORY_MATERIAL_DEFAULT
 
-	//* Sounds
+	//* Sounds *//
 	/// melee sound on blunt force - getsfx compatible
 	var/sound_melee_brute = 'sound/weapons/smash.ogg'
 	/// melee sound on burn damage - getsfx compatible
 	var/sound_melee_burn = 'sound/items/Welder.ogg'
 
-	//* TGUI
+	//* TGUI *//
 	/// tgui icon key in icons/interface/materials.dm
 	var/tgui_icon_key = "unknown"
 
@@ -300,7 +309,7 @@
 /datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return
 
-//* traits & trait hooks
+//* traits & trait hooks *//
 
 /datum/material/proc/init_traits()
 	for(var/i in 1 to length(material_traits))

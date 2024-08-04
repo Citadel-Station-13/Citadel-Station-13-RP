@@ -22,7 +22,7 @@
 
 		if("guns")
 			new /obj/item/gun/ballistic/revolver(src)
-			new /obj/item/ammo_magazine/s357(src)
+			new /obj/item/ammo_magazine/a357/speedloader(src)
 			new /obj/item/card/emag(src)
 			new /obj/item/plastique(src)
 			new /obj/item/plastique(src)
@@ -280,7 +280,7 @@
 		/obj/item/sniper_rifle_part/barrel,
 		/obj/item/sniper_rifle_part/stock,
 		/obj/item/sniper_rifle_part/trigger_group,
-		/obj/item/ammo_casing/a127 = 4
+		/obj/item/ammo_casing/a12_7mm = 4
 	)
 
 /obj/item/storage/secure/briefcase/fuelrod

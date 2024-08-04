@@ -35,7 +35,7 @@
 	desc = "It's a storage unit for nuclear-operative gear."
 
 	starts_with = list(
-	/obj/item/ammo_magazine/m10mm = 5,
+	/obj/item/ammo_magazine/a10mm = 5,
 	/obj/item/storage/box/handcuffs,
 	/obj/item/storage/box/flashbangs,
 	/obj/item/gun/energy/gun = 5,

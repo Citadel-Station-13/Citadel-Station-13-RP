@@ -7,13 +7,6 @@
 //******
 
 //This contains a lot of copypasta but I'm told it's better then a lot of New()s appending the var.
-/obj/item/gun
-	description_info = "This is a gun.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
-	then click where you want to fire."
-
-/obj/item/gun/energy
-	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
-	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger."
 
 /obj/item/gun/energy/crossbow
 	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
@@ -42,16 +35,6 @@
 /obj/item/gun/energy/captain
 	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
 	then click where you want to fire.  Most energy weapons can fire through windows harmlessly. Unlike most weapons, this weapon recharges itself."
-
-/obj/item/gun/energy/sniperrifle
-	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
-	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger. \
-	To use the scope, use the appropriate verb in the object tab."
-
-/obj/item/gun/ballistic
-	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
-	then click where you want to fire.  To reload, click the weapon in your hand to unload (if needed), then add the appropriate ammo.  The description \
-	will tell you what caliber you need."
 
 /obj/item/gun/energy/chameleon
 	description_info = null //The chameleon gun adopts the description_info of the weapon it is impersonating as, to make meta-ing harder.

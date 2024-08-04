@@ -229,9 +229,9 @@
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
-/obj/item/ammo_magazine/m10mm,
-/obj/item/ammo_magazine/m10mm,
-/obj/item/ammo_magazine/m10mm,
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm,
+/obj/item/ammo_magazine/a10mm,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aS" = (

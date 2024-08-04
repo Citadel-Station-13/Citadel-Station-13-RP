@@ -218,8 +218,8 @@
 	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/ballistic/revolver/consul
-	l_pocket = /obj/item/ammo_magazine/s44
-	r_pocket = /obj/item/ammo_magazine/s44
+	l_pocket = /obj/item/ammo_magazine/a44/speedloader
+	r_pocket = /obj/item/ammo_magazine/a44/speedloader
 	r_hand = /obj/item/clothing/accessory/holster/hip
 	l_hand = /obj/item/clothing/accessory/tie/black
 

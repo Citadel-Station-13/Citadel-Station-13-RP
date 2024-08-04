@@ -19,8 +19,10 @@
 
 	//? Access - see [modules/jobs/access.dm]
 	/// If set, all of these accesses are needed to access this object.
+	//  todo: getter / setter, enforced cached & deduped lists
 	var/list/req_access
 	/// If set, at least one of these accesses are needed to access this object.
+	//  todo: getter / setter, enforced cached & deduped lists
 	var/list/req_one_access
 
 	//? Climbing
@@ -57,9 +59,30 @@
 	/// contributes to depth when we're on a turf
 	var/depth_projected = FALSE
 
-	//? Economy
+	//* Economy *//
 	/// economic category for objects
 	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
+	/// intrinsic worth without accounting containing reagents / materials - applies in static and dynamic mode.
+	var/worth_intrinsic = 0
+	/// intrinsic elasticity as factor, 2 = 2x easy to inflate market
+	///
+	/// * set this to a multiple of WORTH_ELASTICITY_DEFAULT if possible.
+	var/worth_elasticity = WORTH_ELASTICITY_DEFAULT
+	/// default worth flags to use when buying
+	var/worth_buy_flags = GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING
+	/// default worth flags to use when selling
+	var/worth_sell_flags = GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING
+	/**
+	 * * DANGER * - do not touch this variable unless you know what you are doing.
+	 *
+	 * This signifies that procs have a non-negligible randomization on a *freshly-spawned* instance of this object.
+	 * This is not the case for most closets / lockers / crates / storage that spawn with items.
+	 * In those cases, use the other variables to control its static worth.
+	 *
+	 * This means that things like cargo should avoid "intuiting" the value of this object
+	 * through initial()'s alone.
+	 */
+	var/worth_dynamic = FALSE
 
 	//? Integrity
 	integrity = 200
@@ -268,7 +291,11 @@
 			old_turf.unregister_dangerous_object(src)
 			new_turf.register_dangerous_object(src)
 
-/obj/item/proc/is_used_on(obj/O, mob/user)
+/obj/worth_contents(flags)
+	. = ..()
+	if(obj_storage?.use_worth_containing)
+		for(var/obj/item/item in obj_storage.contents())
+			. += item
 
 /obj/proc/updateUsrDialog()
 	if(in_use)

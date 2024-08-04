@@ -29,6 +29,7 @@
 	max_combined_volume = STORAGE_VOLUME_BOX
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+	worth_intrinsic = 25
 
 	/// dynamic state support
 	var/dynamic_state = TRUE
@@ -120,6 +121,8 @@
 		/obj/item/dnainjector/h2m = 3,
 		/obj/item/dnainjector/m2h = 3
 	)
+
+// todo: all this should be special ammo magazines or something i hate abusing box-code lmao
 
 /obj/item/storage/box/blanks
 	name = "box of blank shells"
@@ -225,7 +228,7 @@
 /obj/item/storage/box/sniperammo
 	name = "box of 12.7mm shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	starts_with = list(/obj/item/ammo_casing/a127 = 7)
+	starts_with = list(/obj/item/ammo_casing/a12_7mm = 7)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -482,8 +485,8 @@
 	icon_state = "lightmixed"
 	starts_with = list(
 		/obj/item/light/tube = 16,
-		/obj/item/light/bulb = 8
-		)
+		/obj/item/light/bulb = 8,
+	)
 
 /obj/item/storage/box/lights/fairy
 	name = "box of replacement fairy bulbs"
@@ -501,8 +504,8 @@
 		/obj/item/light/bulb/yellow = 4,
 		/obj/item/light/bulb/green = 4,
 		/obj/item/light/bulb/blue = 4,
-		/obj/item/light/bulb/purple = 4
-		)
+		/obj/item/light/bulb/purple = 4,
+	)
 
 /obj/item/storage/box/lights/bulbs_neon
 	name = "box of neon bulbs"
@@ -513,8 +516,8 @@
 		/obj/item/light/bulb/neon_blue = 6,
 		/obj/item/light/bulb/neon_green = 6,
 		/obj/item/light/bulb/neon_yellow = 6,
-		/obj/item/light/bulb/neon_white = 6
-		)
+		/obj/item/light/bulb/neon_white = 6,
+	)
 
 /obj/item/storage/box/lights/tubes_colored
 	name = "box of colored tubes"
@@ -525,8 +528,8 @@
 		/obj/item/light/tube/yellow = 4,
 		/obj/item/light/tube/green = 4,
 		/obj/item/light/tube/blue = 4,
-		/obj/item/light/tube/purple = 4
-		)
+		/obj/item/light/tube/purple = 4,
+	)
 
 /obj/item/storage/box/lights/tubes_neon
 	name = "box of neon tubes"
@@ -537,8 +540,8 @@
 		/obj/item/light/tube/neon_blue = 6,
 		/obj/item/light/tube/neon_green = 6,
 		/obj/item/light/tube/neon_yellow = 6,
-		/obj/item/light/tube/neon_white = 6
-		)
+		/obj/item/light/tube/neon_white = 6,
+	)
 
 /obj/item/storage/box/lights/mixed_colored
 	name = "box of colored lights"
@@ -555,8 +558,8 @@
 		/obj/item/light/bulb/yellow = 2,
 		/obj/item/light/bulb/green = 2,
 		/obj/item/light/bulb/blue = 2,
-		/obj/item/light/bulb/purple = 2
-		)
+		/obj/item/light/bulb/purple = 2,
+	)
 
 /obj/item/storage/box/lights/mixed_neon
 	name = "box of neon lights"
@@ -572,8 +575,8 @@
 		/obj/item/light/bulb/neon_blue = 3,
 		/obj/item/light/bulb/neon_green = 3,
 		/obj/item/light/bulb/neon_yellow = 3,
-		/obj/item/light/bulb/neon_white = 3
-		)
+		/obj/item/light/bulb/neon_white = 3,
+	)
 
 /obj/item/storage/box/freezer
 	name = "portable freezer"
@@ -586,6 +589,7 @@
 	insertion_whitelist = list(/obj/item/organ)
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 5 // Formally 21.  Odd numbers are bad.
 	allow_mass_gather = TRUE // for picking up broken bulbs, not that most people will try
+	worth_intrinsic = 150
 
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
@@ -683,20 +687,3 @@
 	max_items = 1
 	insertion_whitelist = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
-
-//Foam Darts
-/obj/item/storage/box/foamdart
-	name = "box of foam darts"
-	desc = "It has a picture of some foam darts on it."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "foambox"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
-	starts_with = list(/obj/item/ammo_casing/foam = 20)
-	drop_sound = 'sound/items/drop/ammobox.ogg'
-	pickup_sound = 'sound/items/pickup/ammobox.ogg'
-
-/obj/item/storage/box/foamdart/riot
-	name = "box of riot darts"
-	desc = "It has a picture of some angry looking foam darts on it."
-	icon_state = "foambox_riot"
-	starts_with = list(/obj/item/ammo_casing/foam/riot = 20)
