@@ -14,6 +14,25 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL
+
+	//* Identity *//
+	/// base name; set on subtypes so [POWER_CELL_GENERATE_TYPES] works properly
+	var/cell_name = "unknown"
+	/// description appended to basic description by [POWER_CELL_GENERATE_TYPES].
+	var/cell_desc = "You don't know what this one does."
+
+	//* Rendering *//
+	/// perform default rendering
+	var/rendering_system = FALSE
+	/// total states; 0 to disable auto render
+	var/indicator_count
+	/// our indicator color
+	var/indicator_color = "#00aa00"
+	/// our stripe color; null for no stripe
+	var/stripe_color
+
+
+	//* legacy below *//
 	/// Are we EMP immune?
 	var/emp_proof = FALSE
 	var/charge
@@ -30,7 +49,6 @@
 	// Overlay stuff.
 	var/overlay_half_state = "cell-o1" // Overlay used when not fully charged but not empty.
 	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
-	var/last_overlay_state = null // Used to optimize update_icon() calls.
 
 /obj/item/cell/Initialize(mapload)
 	. = ..()
@@ -65,39 +83,6 @@
 
 /obj/item/cell/can_drain_energy(datum/actor, flags)
 	return TRUE
-
-#define OVERLAY_FULL	2
-#define OVERLAY_PARTIAL	1
-#define OVERLAY_EMPTY	0
-
-/obj/item/cell/update_icon()
-	var/new_overlay = null // The overlay that is needed.
-	// If it's different than the current overlay, then it'll get changed.
-	// Otherwise nothing happens, to save on CPU.
-
-	if(charge < 0.01) // Empty.
-		new_overlay = OVERLAY_EMPTY
-		if(last_overlay_state != new_overlay)
-			cut_overlays()
-
-	else if(charge/maxcharge >= 0.995) // Full
-		new_overlay = OVERLAY_FULL
-		if(last_overlay_state != new_overlay)
-			cut_overlay(overlay_half_state)
-			add_overlay(overlay_full_state)
-
-
-	else // Inbetween.
-		new_overlay = OVERLAY_PARTIAL
-		if(last_overlay_state != new_overlay)
-			cut_overlay(overlay_full_state)
-			add_overlay(overlay_half_state)
-
-	last_overlay_state = new_overlay
-
-#undef OVERLAY_FULL
-#undef OVERLAY_PARTIAL
-#undef OVERLAY_EMPTY
 
 /obj/item/cell/proc/percent()		// return % charge of cell
 	if(!maxcharge)
@@ -274,3 +259,29 @@
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)
+
+//* Rendering *//
+
+/obj/item/cell/update_icon()
+	if(rendering_system)
+		cut_overlays()
+
+		if(stripe_color)
+			var/image/stripe = image(icon, "cell-stripe")
+			stripe.color = stripe_color
+			add_overlay(stripe)
+
+		if(indicator_count)
+			var/image/indicator = image(icon, "cell-[charge <= 1? "empty" : "[ceil(charge / maxcharge * 5)]"]")
+			indicator.color = indicator_color
+			add_overlay(indicator)
+	else
+		//! LEGACY CODE !//
+		cut_overlays()
+		if(charge < 0.01) // Empty.
+		else if(charge/maxcharge >= 0.995) // Full
+			add_overlay(overlay_full_state)
+		else // Inbetween.
+			add_overlay(overlay_half_state)
+		//! END !//
+	return ..()
