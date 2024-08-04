@@ -320,7 +320,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "NU" = (
 /obj/structure/table/rack/steel,
@@ -339,7 +339,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "OI" = (
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "QY" = (
 /obj/random/trash,

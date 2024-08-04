@@ -150,7 +150,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/north_mount,
 /turf/simulated/floor/plating/indoors,
 /area/submap/generic/inside_breath_mix)
 "W" = (
