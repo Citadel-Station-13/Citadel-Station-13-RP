@@ -19,6 +19,7 @@
 	origin_tech = list(TECH_MATERIAL = 2)
 	materials_base = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
+	worth_intrinsic = 300
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
 /obj/item/shield/riot/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
