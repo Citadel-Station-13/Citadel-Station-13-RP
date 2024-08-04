@@ -160,7 +160,6 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paper_clipper)
 "ir" = (
@@ -498,13 +497,6 @@
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/paper_clipper)
-"tn" = (
-/obj/mecha/combat/fighter/gunpod/recon{
-	dir = 4
-	},
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/reinforced,
-/area/shuttle/paper_clipper)
 "tw" = (
 /obj/structure/closet/secure_closet/freezer,
 /turf/simulated/floor/tiled/freezer,
@@ -644,13 +636,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/paper_clipper)
 "BP" = (
-/obj/machinery/power/apc/alarms_hidden/east_bump,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/paper_clipper)
 "CS" = (
@@ -1007,6 +999,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/light/poi,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paper_clipper)
 "SW" = (
@@ -2589,7 +2582,7 @@ we
 hL
 hL
 lq
-tn
+lq
 Id
 Rz
 hL
