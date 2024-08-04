@@ -10,8 +10,20 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/card/id/security/detective
 	pto_type = PTO_SECURITY
-	additional_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SECURITY_BRIG)
-	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_FORENSICS, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_MAINT, ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_AIRLOCK)
+	additional_access = list(
+		ACCESS_COMMAND_EVA,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_SECURITY_BRIG,
+	)
+	minimal_access = list(
+		ACCESS_SECURITY_EQUIPMENT,
+		ACCESS_SECURITY_FORENSICS,
+		ACCESS_SECURITY_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_ENGINEERING_AIRLOCK,
+	)
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/detective
@@ -19,21 +31,12 @@
 						For crimes only witnessed after the fact, or those with no survivors, they attempt to piece together what they can from pure evidence."
 	alt_titles = list(
 		"Forensic Technician" = /datum/prototype/struct/alt_title/detective/forensics_tech,
-		"Crime Scene Investigator" = /datum/prototype/struct/alt_title/detective/csi,
-		"Investigatory Specialist" = /datum/prototype/struct/alt_title/detective/inv_spec
+		"Crime Scene Investigator" = /datum/prototype/struct/alt_title/detective/csi
 		)
-
-/datum/prototype/struct/alt_title/detective/inv_spec
-	title = "Investigatory Specialist"
-	background_allow = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
-	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/detective/csi
 	title = "Crime Scene Investigator"
 
-/// Detective Alt Titles
 /datum/prototype/struct/alt_title/detective/forensics_tech
 	title = "Forensic Technician"
 	title_blurb = "A Forensic Technician works more with hard evidence and labwork than a Detective, but they share the purpose of solving crimes."
@@ -64,9 +67,3 @@
 	name = OUTFIT_JOB_NAME("Forensic technician")
 	head = null
 	suit = /obj/item/clothing/suit/storage/forensics/blue
-
-/datum/outfit/job/station/detective/vice
-	name = OUTFIT_JOB_NAME("Vice Investigator")
-	head = null
-	uniform = /obj/item/clothing/under/hawaiian
-	suit = null

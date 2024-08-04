@@ -21,8 +21,8 @@
 	icon_living = "harvester"
 	maxHealth = 100
 	health = 100
-	melee_damage_lower = 20
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 25
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("violently stabbed")
@@ -30,7 +30,7 @@
 	movement_cooldown = 0
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/harvester)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	//	environment_smash = 1	// Whatever this gets renamed to, Harvesters need to break things
 
@@ -69,8 +69,8 @@
 	icon_living = "chosen"
 	maxHealth = 100
 	health = 100
-	melee_damage_lower = 40 //Glass Cannon Mini-Boss/Semi-Boss large. Few hits is enough to end you.
-	melee_damage_upper = 50
+	legacy_melee_damage_lower = 40 //Glass Cannon Mini-Boss/Semi-Boss large. Few hits is enough to end you.
+	legacy_melee_damage_upper = 50
 	attack_armor_pen = 60 //No Armor Shall Save you
 	attack_sharp = 1
 	attack_edge = 1
@@ -78,7 +78,7 @@
 	friendly = list("caresses")
 	movement_cooldown = 0
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	//	environment_smash = 1	// Whatever this gets renamed to, Harvesters need to break things
 

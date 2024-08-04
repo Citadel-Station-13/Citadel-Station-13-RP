@@ -9,8 +9,8 @@
 	if(spawn_reagent)
 		reagents.add_reagent(spawn_reagent, spawn_amount || volume)
 
-/obj/item/reagent_containers/cartridge/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if (!is_open_container() || !proximity_flag)
+/obj/item/reagent_containers/cartridge/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if (!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.

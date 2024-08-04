@@ -91,7 +91,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/structure/particle_accelerator/verb/rotate_clockwise()
 	set name = "Rotate Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
@@ -102,7 +102,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/structure/particle_accelerator/verb/rotate_counterclockwise()
 	set name = "Rotate Counter Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
@@ -111,7 +111,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	src.setDir(turn(src.dir, 90))
 	return 1
 
-/obj/structure/particle_accelerator/examine(mob/user)
+/obj/structure/particle_accelerator/examine(mob/user, dist)
 	. = ..()
 	switch(src.construction_state)
 		if(0)
@@ -266,7 +266,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/machinery/particle_accelerator/verb/rotate_clockwise()
 	set name = "Rotate Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
@@ -277,7 +277,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/machinery/particle_accelerator/verb/rotate_counterclockwise()
 	set name = "Rotate Counter-Clockwise"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
@@ -289,7 +289,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 /obj/machinery/particle_accelerator/update_icon()
 	return
 
-/obj/machinery/particle_accelerator/examine(mob/user)
+/obj/machinery/particle_accelerator/examine(mob/user, dist)
 	. = ..()
 	switch(src.construction_state)
 		if(0)

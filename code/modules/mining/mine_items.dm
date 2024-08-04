@@ -7,6 +7,7 @@
 	brightness_on = 6			// luminosity when on
 	light_color = "#ff9933" // A slight yellow/orange color.
 	light_wedge = LIGHT_OMNI
+	worth_intrinsic = 45
 
 /*****************************Pickaxe********************************/
 
@@ -19,8 +20,9 @@
 	throw_force = 4.0
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
-	w_class = ITEMSIZE_LARGE
-	matter = list(MAT_STEEL = 3750)
+	w_class = WEIGHT_CLASS_BULKY
+	materials_base = list(MAT_STEEL = 3750)
+	worth_intrinsic = 75
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -58,6 +60,7 @@
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
 	sand_dig = TRUE
+	worth_intrinsic = 125
 
 /obj/item/pickaxe/jackhammer
 	name = "sonic jackhammer"
@@ -67,6 +70,7 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
+	worth_intrinsic = 250
 
 /obj/item/pickaxe/gold
 	name = "golden pickaxe"
@@ -81,7 +85,7 @@
 	name = "plasma cutter"
 	icon_state = "plasmacutter"
 	item_state = "gun"
-	w_class = ITEMSIZE_NORMAL //it is smaller than the pickaxe
+	w_class = WEIGHT_CLASS_NORMAL //it is smaller than the pickaxe
 	damtype = "fire"
 	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
 	origin_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
@@ -90,6 +94,7 @@
 	drill_sound = 'sound/items/Welder.ogg'
 	sharp = 1
 	edge = 1
+	worth_intrinsic = 175
 
 /obj/item/pickaxe/diamond
 	name = "diamond pickaxe"
@@ -109,6 +114,7 @@
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"
 	sand_dig = TRUE
+	worth_intrinsic = 350
 
 /obj/item/pickaxe/borgdrill
 	name = "enhanced sonic jackhammer"
@@ -127,13 +133,14 @@
 	throw_force = 15 //Discount shuriken.
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
-	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_STEEL = 2750, MAT_TITANIUM = 2000)
 	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("mined", "pierced", "stabbed", "attacked")
 	drill_verb = "picking"
 	sharp = 1
+	worth_intrinsic = 75
 
 //Snowflake drill that works like a chainsaw! How fun. Honestly they should probably all work like this or something. I dunno. Might be a fun mining overhaul later.
 /obj/item/pickaxe/tyrmalin
@@ -145,6 +152,7 @@
 	var/max_fuel = 100
 	active = 0
 	var/jam_chance = TRUE
+	worth_intrinsic = 75
 
 /obj/item/pickaxe/tyrmalin/Initialize(mapload)
 	. = ..()
@@ -177,8 +185,10 @@
 			attack_verb = list("shredded", "ripped", "torn")
 			playsound(src, 'sound/weapons/chainsaw_startup.ogg',40,1)
 			damage_force = 15
-			sharp = 1
-			active = 1
+			damage_mode |= DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+			edge = TRUE
+			sharp = TRUE
+			active = TRUE
 			update_icon()
 		else
 			to_chat(user, "You fumble with the string.")
@@ -189,9 +199,10 @@
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(user, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
 	damage_force = 3
-	edge = 0
-	sharp = 0
-	active = 0
+	damage_mode = initial(damage_mode)
+	edge = FALSE
+	sharp = FALSE
+	active = FALSE
 	update_icon()
 
 /obj/item/pickaxe/tyrmalin/attack_self(mob/user)
@@ -203,31 +214,26 @@
 	else
 		turnOff(user)
 
-/obj/item/pickaxe/tyrmalin/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pickaxe/tyrmalin/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
 	if(active)
 		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)
-	if(A && active)
+	if(target && active)
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
-			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			new /obj/structure/grille/broken(A.loc)
-			new /obj/item/stack/rods(A.loc)
-			qdel(A)
+		if(istype(target, /obj/structure/window) || istype(target, /obj/structure/grille))
+			target.atom_destruction()
 	if(jam_chance && active)
 		switch(rand(1,100))
 			if(1 to 30)
 				turnOff()
 			if(31 to 100)
 				return
-	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,target) <= 1)
 		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
 		if(do_after(usr, 15))
-			A.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			to_chat(usr, "<span class='notice'>[src] succesfully refueled.</span>")
 		else
@@ -247,7 +253,7 @@
 /obj/item/pickaxe/tyrmalin/proc/get_fuel()
 	return reagents.get_reagent_amount("fuel")
 
-/obj/item/pickaxe/tyrmalin/examine(mob/user)
+/obj/item/pickaxe/tyrmalin/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "<span class = 'notice'>The [src] feels like it contains roughtly [get_fuel()] units of fuel left.</span>"
@@ -272,12 +278,13 @@
 	damage_force = 8.0
 	throw_force = 4.0
 	item_state = "shovel"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(MAT_STEEL = 50)
+	materials_base = list(MAT_STEEL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1
+	worth_intrinsic = 50
 	var/digspeed = 40
 
 /obj/item/shovel/bone
@@ -298,7 +305,7 @@
 	item_state = "spade"
 	damage_force = 5.0
 	throw_force = 7.0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/shovel/spade/bone
 	name = "primitive spade"
@@ -311,11 +318,14 @@
 /obj/structure/closet/crate/miningcar
 	desc = "A mining car. This one doesn't work on rails, but has to be dragged."
 	name = "Mining car (not for rails)"
+	closet_appearance = null
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "miningcar"
 	density = 1
 	icon_opened = "miningcaropen"
 	icon_closed = "miningcar"
+
+/obj/structure/closet/crate/miningcar/update_icon()
 
 // Flags.
 

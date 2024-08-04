@@ -1,11 +1,6 @@
 /obj/structure/closet/secure_closet/captains
 	name = "Facility Director's locker"
-	icon_state = "capsecure1"
-	icon_closed = "capsecure"
-	icon_locked = "capsecure1"
-	icon_opened = "capsecureopen"
-	icon_broken = "capsecurebroken"
-	icon_off = "capsecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/command
 	req_access = list(ACCESS_COMMAND_CAPTAIN)
 
 	starts_with = list(
@@ -28,12 +23,7 @@
 
 /obj/structure/closet/secure_closet/hop
 	name = "head of personnel's locker"
-	icon_state = "hopsecure1"
-	icon_closed = "hopsecure"
-	icon_locked = "hopsecure1"
-	icon_opened = "hopsecureopen"
-	icon_broken = "hopsecurebroken"
-	icon_off = "hopsecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/command/hop
 	req_access = list(ACCESS_COMMAND_HOP)
 
 	starts_with = list(
@@ -52,12 +42,7 @@
 
 /obj/structure/closet/secure_closet/hop2
 	name = "head of personnel's attire"
-	icon_state = "hopsecure1"
-	icon_closed = "hopsecure"
-	icon_locked = "hopsecure1"
-	icon_opened = "hopsecureopen"
-	icon_broken = "hopsecurebroken"
-	icon_off = "hopsecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/command/hop
 	req_access = list(ACCESS_COMMAND_HOP)
 
 	starts_with = list(
@@ -146,12 +131,7 @@
 //_vr file contents:
 /obj/structure/closet/secure_closet/hos
 	name = "head of security's attire"
-	icon_state = "hossecure1"
-	icon_closed = "hossecure"
-	icon_locked = "hossecure1"
-	icon_opened = "hossecureopen"
-	icon_broken = "hossecurebroken"
-	icon_off = "hossecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/security/hos
 	req_access = list(ACCESS_SECURITY_HOS)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
@@ -168,56 +148,51 @@
 		/obj/item/clothing/under/rank/head_of_security/turtleneck,
 		/obj/item/clothing/under/oricon/mildress/marine/command,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
+		/obj/item/clothing/suit/storage/vest/hoscoat/combatcoat,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
 		/obj/item/clothing/suit/storage/vest/hos_overcoat,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/clothing/suit/dress/marine/command/hos,
 		/obj/item/clothing/head/helmet/dermal,
-		/obj/item/radio/headset/heads/hos,
-		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud,
-		/obj/item/storage/belt/security,
-		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/under/bodysuit/bodysuitseccom)
 
 /obj/structure/closet/secure_closet/hos2
 	name = "head of security's gear"
-	icon_state = "hossecure1"
-	icon_closed = "hossecure"
-	icon_locked = "hossecure1"
-	icon_opened = "hossecureopen"
-	icon_broken = "hossecurebroken"
-	icon_off = "hossecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/security/hos
 	req_access = list(ACCESS_SECURITY_HOS)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
 	// citadel edit NSFW > Multiphase
 	starts_with = list(
 		/obj/item/cartridge/hos,
-		/obj/item/barrier_tape_roll/police,
+		/obj/item/storage/belt/security,
+		/obj/item/radio/headset/heads/hos,
+		/obj/item/radio/headset/heads/hos/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/shield/riot/tele,
 		/obj/item/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/tool/crowbar/red,
-		/obj/item/storage/box/flashbangs,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
+		/obj/item/storage/box/survival_knife,
 		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/storage/box/flashbangs,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/megaphone,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
-	icon_state = "secC1"
-	icon_closed = "secC"
-	icon_locked = "secC1"
-	icon_opened = "secCopen"
-	icon_broken = "secCbroken"
-	icon_off = "secCoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/blueshield
 	req_access = list(ACCESS_COMMAND_BLUESHIELD)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
@@ -225,6 +200,8 @@
 		/obj/item/disk/nifsoft/blueshield,
 		/obj/item/radio/headset/heads/blueshield,
 		/obj/item/radio/headset/heads/blueshield/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/medhud,
 		/obj/item/clothing/head/beret/sec/corporate/blueshield,
 		/obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield,
@@ -237,14 +214,14 @@
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/flash,
 		/obj/item/gun/ballistic/revolver/consul,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44,
-		/obj/item/ammo_magazine/s44/rubber,
-		/obj/item/ammo_magazine/s44/rubber,
-		/obj/item/ammo_magazine/s44/rubber,
-		/obj/item/ammo_magazine/s44/empty,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader,
+		/obj/item/ammo_magazine/a44/speedloader/rubber,
+		/obj/item/ammo_magazine/a44/speedloader/rubber,
+		/obj/item/ammo_magazine/a44/speedloader/rubber,
+		/obj/item/ammo_magazine/a44/speedloader/empty,
 		/obj/item/melee/telebaton,
 
 		/obj/item/gps/command/blueshield,
@@ -258,12 +235,7 @@
 
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
-	icon_state = "wardensecure1"
-	icon_closed = "wardensecure"
-	icon_locked = "wardensecure1"
-	icon_opened = "wardensecureopen"
-	icon_broken = "wardensecurebroken"
-	icon_off = "wardensecureoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/security/warden
 	req_access = list(ACCESS_SECURITY_ARMORY)
 
 	starts_with = list(
@@ -279,6 +251,8 @@
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/clothing/accessory/badge/holo/warden,
@@ -297,7 +271,8 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/gas/half,
-		/obj/item/gun/ballistic/shotgun/pump/combat/warden)
+		/obj/item/gun/ballistic/shotgun/pump/combat/warden,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/warden/Initialize(mapload)
 	if(prob(50))
@@ -310,18 +285,16 @@
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
-	icon_state = "sec1"
-	icon_closed = "sec"
-	icon_locked = "sec1"
-	icon_opened = "secopen"
-	icon_broken = "secbroken"
-	icon_off = "secoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/security
 	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
+		/obj/item/modular_computer/tablet/preset/custom_loadout/standard/security,
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/storage/belt/security,
 		/obj/item/flash,
 		/obj/item/reagent_containers/spray/pepper,
@@ -331,16 +304,20 @@
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/hailer,
 		/obj/item/flashlight/glowstick,
+		/obj/item/clothing/suit/armor/vest/alt,
 		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/head/helmet,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
 		/obj/item/gun/energy/secutor,
 		/obj/item/cell/device/weapon,
 		/obj/item/gps/security,
+		/obj/item/holowarrant,
 		/obj/item/clothing/under/bodysuit/bodysuitsec,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/holowarrant)
 
 /obj/structure/closet/secure_closet/security/Initialize(mapload)
 	if(prob(50))
@@ -376,25 +353,21 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "detective's cabinet"
-	icon_state = "cabinetdetective_locked"
-	icon_closed = "cabinetdetective"
-	icon_locked = "cabinetdetective_locked"
-	icon_opened = "cabinetdetective_open"
-	icon_broken = "cabinetdetective_broken"
-	icon_off = "cabinetdetective_broken"
+	closet_appearance = /singleton/closet_appearance/cabinet/secure
 	req_access = list(ACCESS_SECURITY_FORENSICS)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/forensic,
 		/obj/item/gun/ballistic/revolver/detective45,
-		/obj/item/ammo_magazine/s45/rubber,
-		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/ammo_magazine/a45/speedloader/rubber,
+		/obj/item/ammo_magazine/a45/speedloader/rubber,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/suit/storage/vest/,
 		/obj/item/clothing/suit/storage/vest/detective,
 		/obj/item/barrier_tape_roll/police,
@@ -404,21 +377,10 @@
 		/obj/item/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/storage/briefcase/crimekit,
 		/obj/item/tape_recorder,
+		/obj/item/camera,
+		/obj/item/camera_film = 2,
 		/obj/item/storage/bag/detective,
 		/obj/item/cassette_tape/random = 3)
-
-/obj/structure/closet/secure_closet/detective/update_icon()
-	if(broken)
-		icon_state = icon_broken
-	else
-		if(!opened)
-			if(locked)
-				icon_state = icon_locked
-			else
-				icon_state = icon_closed
-		else
-			icon_state = icon_opened
-
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections locker"
@@ -466,40 +428,15 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/wall
 	name = "wall locker"
-	icon_state = "wall-locker1"
-	icon_closed = "wall-locker"
-	icon_locked = "wall-locker1"
-	icon_opened = "wall-lockeropen"
-	icon_broken = "wall-lockerbroken"
-	icon_off = "wall-lockeroff"
+	closet_appearance = /singleton/closet_appearance/wall/secure
 	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	density = 1
 
-	//too small to put a man in
-	large = 0
-
-/obj/structure/closet/secure_closet/wall/update_icon()
-	if(broken)
-		icon_state = icon_broken
-	else
-		if(!opened)
-			if(locked)
-				icon_state = icon_locked
-			else
-				icon_state = icon_closed
-		else
-			icon_state = icon_opened
-
 //Custom NT Security Lockers, Only found at central command
 /obj/structure/closet/secure_closet/nanotrasen_security
-	name = "NanoTrasen security officer's locker"
+	name = "Nanotrasen security officer's locker"
 	icon = 'icons/obj/closet.dmi'
-	icon_state = "secC1"
-	icon_closed = "secC"
-	icon_locked = "secC1"
-	icon_opened = "secCopen"
-	icon_broken = "secCbroken"
-	icon_off = "secCoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/sol
 	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
@@ -510,6 +447,8 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/storage/belt/security,
 		/obj/item/flash,
 		/obj/item/reagent_containers/spray/pepper,
@@ -540,14 +479,9 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_commander
-	name = "NanoTrasen commander's locker"
+	name = "Nanotrasen commander's locker"
 	icon = 'icons/obj/closet.dmi'
-	icon_state = "secC1"
-	icon_closed = "secC"
-	icon_locked = "secC1"
-	icon_opened = "secCopen"
-	icon_broken = "secCbroken"
-	icon_off = "secCoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/sol/two/dark
 	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
@@ -561,6 +495,8 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 		/obj/item/cartridge/hos,
 		/obj/item/radio/headset/heads/hos,
 		/obj/item/radio/headset/heads/hos/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/shield/riot,
@@ -594,14 +530,9 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	return ..()
 
 /obj/structure/closet/secure_closet/nanotrasen_warden
-	name = "NanoTrasen warden's locker"
+	name = "Nanotrasen warden's locker"
 	icon = 'icons/obj/closet.dmi'
-	icon_state = "secC1"
-	icon_closed = "secC"
-	icon_locked = "secC1"
-	icon_opened = "secCopen"
-	icon_broken = "secCbroken"
-	icon_off = "secCoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/sol/two
 	req_access = list(ACCESS_SECURITY_BRIG)
 	storage_capacity = 3.5 * MOB_MEDIUM
 
@@ -613,6 +544,8 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/accessory/armor/helmetcamera/security,
+		/obj/item/clothing/accessory/armor/helmetcamera/security/body,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/clothing/accessory/badge/holo/warden,
@@ -638,3 +571,12 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	if(prob(75))
 		new /obj/item/storage/backpack/dufflebag/sec(src)
 	return ..()
+
+/obj/structure/closet/secure_closet/pelletguns
+	name = "pellet gun lockers"
+	desc = "Contains some pellet guns and pellets for recreational shooting. Can be issued to civilians without worry."
+	closet_appearance = /singleton/closet_appearance/secure_closet/security
+	req_access = list(ACCESS_SECURITY_BRIG)
+	starts_with = list(
+		/obj/item/gun/ballistic/caseless/pellet = 4,
+		/obj/item/ammo_magazine/pellets = 4)

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/gokart.dmi'
 	icon_state = "orange"
 	integrity = 200
-	max_integrity = 200
+	integrity_max = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/gokart
 
 /obj/vehicle/ridden/gokart/random/Initialize(mapload)

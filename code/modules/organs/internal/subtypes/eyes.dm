@@ -25,7 +25,7 @@
 
 /obj/item/organ/internal/eyes/grey/colormatch/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/sync_color), 15)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 15)
 
 /obj/item/organ/internal/eyes/grey/colormatch/proc/sync_color()
 	if(ishuman(owner))
@@ -35,7 +35,7 @@
 /obj/item/organ/internal/eyes/proc/change_eye_color()
 	set name = "Change Eye Color"
 	set desc = "Changes your robotic eye color instantly."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src in usr
 
 	var/current_color = rgb(eye_colour[1],eye_colour[2],eye_colour[3])
@@ -76,15 +76,13 @@
 	..()
 	if(is_broken() && !oldbroken && owner && !owner.stat)
 		to_chat(owner, "<span class='danger'>You go blind!</span>")
+		owner.add_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 /obj/item/organ/internal/eyes/tick_life(dt)
 	. = ..()
 
 	if(is_bruised())
 		owner.eye_blurry = 4
-
-	if(is_broken())
-		owner.Blind(4)
 
 /obj/item/organ/internal/eyes/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer

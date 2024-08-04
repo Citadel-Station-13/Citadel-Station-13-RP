@@ -5,7 +5,7 @@
 /datum/category_item/catalogue/fauna/construct
 	name = "Constructs"
 	desc = "Although much of the information behind these occult constructs \
-	is presumably still classified, NanoTrasen's general briefings have confirmed \
+	is presumably still classified, Nanotrasen's general briefings have confirmed \
 	several key facts. Constructs are animate obsidian statues imbued with strong \
 	paracausal energies. They are considered extremely dangerous, and evidence of \
 	constructs necessitates immediate notification of the PMD."
@@ -89,7 +89,7 @@
 	var/list/construct_spells = list()
 //	var/do_glow = TRUE
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/construct/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
@@ -128,7 +128,7 @@
 
 /mob/living/simple_mob/construct/Initialize(mapload)
 	. = ..()
-	name = text("[initial(name)] ([rand(1, 1000)])")
+	name = "[initial(name)] ([rand(1, 1000)])"
 	real_name = name
 	for(var/spell in construct_spells)
 		src.add_spell(new spell, "const_spell_ready")
@@ -151,8 +151,8 @@
 	if(istype(user, /mob/living/simple_mob/construct/artificer))
 		var/mob/living/simple_mob/construct/artificer/A = user
 		if(health < getMaxHealth())
-			var/repair_lower_bound = A.melee_damage_lower * -1
-			var/repair_upper_bound = A.melee_damage_upper * -1
+			var/repair_lower_bound = A.legacy_melee_damage_lower * -1
+			var/repair_upper_bound = A.legacy_melee_damage_upper * -1
 			adjustBruteLoss(rand(repair_lower_bound, repair_upper_bound))
 			adjustFireLoss(rand(repair_lower_bound, repair_upper_bound))
 			user.visible_message("<span class='notice'>\The [user] mends some of \the [src]'s wounds.</span>")
@@ -161,7 +161,7 @@
 		return
 	return ..()
 
-/mob/living/simple_mob/construct/examine(mob/user)
+/mob/living/simple_mob/construct/examine(mob/user, dist)
 	..(user)
 	var/msg = "<span cass='info'>This is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())

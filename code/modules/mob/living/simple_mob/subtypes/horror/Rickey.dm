@@ -22,8 +22,8 @@
 	maxHealth = 175
 	health = 175
 
-	melee_damage_lower = 25
-	melee_damage_upper = 35
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 35
 	grab_resist = 100
 
 	response_help = "pets the"
@@ -34,7 +34,7 @@
 
 
 	say_list_type = /datum/say_list/Rickey
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/horror
 
 	meat_amount = 4
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/human

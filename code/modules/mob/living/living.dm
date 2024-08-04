@@ -1,31 +1,16 @@
+TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 /mob/living/Initialize(mapload)
 	. = ..()
+	// make radiation sensitive
 	AddComponent(/datum/component/radiation_listener)
 	AddElement(/datum/element/z_radiation_listener)
 
-	//I'll just hang my coat up over here
-	// TODO: REFACTOR
-	if(!isAI(src))
-		dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
-		var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
-		dsma.alpha = 0
-		dsma.plane = LIGHTING_PLANE
-		dsma.blend_mode = BLEND_ADD
-		dsoverlay.appearance = dsma
+	if(ai_holder_type && !ai_holder)
+		ai_holder = new ai_holder_type(src)
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
-/mob/living/prepare_huds()
-	..()
-	prepare_data_huds()
-
-/mob/living/proc/prepare_data_huds()
-	update_hud_med_all()
-
 /mob/living/Destroy()
-	if(dsoverlay)
-		dsoverlay.loc = null
-		dsoverlay = null
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
 			var/obj/structure/prop/nest/N = nest
@@ -52,13 +37,14 @@
 		if(!QDELETED(O))
 			qdel(O)
 	internal_organs.Cut()
+	profile = null
 
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
 	set name = "Pull"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(AM.Adjacent(src))
 		start_pulling(AM)
@@ -124,9 +110,9 @@ default behaviour is:
 		var/divided_damage = (burn_amount)/(H.organs.len)
 		var/extradam = 0	//added to when organ is at max dam
 		for(var/obj/item/organ/external/affecting in H.organs)
-			if(!affecting)	continue
-			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
-				H.UpdateDamageIcon()
+			affecting.inflict_bodypart_damage(
+				burn = divided_damage + extradam,
+			)
 		H.update_health()
 		return 1
 	else if(istype(src, /mob/living/silicon/ai))
@@ -317,6 +303,18 @@ default behaviour is:
 	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	halloss = amount
 
+/mob/living/proc/adjustHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(hallucination + amount, 0, 400) //cap at 400, any higher is just obnoxious
+
+/mob/living/proc/setHallucination(amount)
+	if(status_flags & STATUS_GODMODE)
+		hallucination = 0
+		return 0	//godmode
+	hallucination = clamp(amount, 0, 400) //cap at 400, any higher is just obnoxious
+
 // Use this to get a mob's max health whenever possible.  Reading maxHealth directly will give inaccurate results if any modifiers exist.
 /mob/living/proc/getMaxHealth()
 	var/result = maxHealth
@@ -341,19 +339,6 @@ default behaviour is:
 	..(amount)
 
 /mob/living/AdjustConfused(amount)
-	if(amount > 0)
-		for(var/datum/modifier/M in modifiers)
-			if(!isnull(M.disable_duration_percent))
-				amount = round(amount * M.disable_duration_percent)
-	..(amount)
-
-/mob/living/Blind(amount)
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.disable_duration_percent))
-			amount = round(amount * M.disable_duration_percent)
-	..(amount)
-
-/mob/living/AdjustBlinded(amount)
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.disable_duration_percent))
@@ -393,55 +378,18 @@ default behaviour is:
 		adjustToxLoss(amount)
 
 /mob/proc/get_contents()
-
-
-//Recursive function to find everything a mob is holding.
-/mob/living/get_contents(var/obj/item/storage/Storage = null)
-	var/list/L = list()
-
-	if(Storage) //If it called itself
-		L += Storage.return_inv()
-
-		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
-		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
-		//	L += get_contents(S)
-
-		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/storage))
-				L += get_contents(G.gift)
-
-		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
-
-	else
-
-		L += src.contents
-		for(var/obj/item/storage/S in src.contents)	//Check for storage items
-			L += get_contents(S)
-
-		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/storage))
-				L += get_contents(G.gift)
-
-		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
-				L += get_contents(D.wrapped)
-		return L
-
-/mob/living/proc/check_contents_for(A)
-	var/list/L = src.get_contents()
-
-	for(var/obj/B in L)
-		if(B.type == A)
-			return 1
-	return 0
-
+	. = list()
+	var/list/obj/processing = get_equipped_items(TRUE, TRUE)
+	var/i = 1
+	var/safety = 100000
+	while(i <= length(processing))
+		// safety check becuase unlike [contents], byond doens't isn't correctness here.
+		if(!--safety)
+			CRASH("RED ALERT RED ALERT SOMEONE FUCKED UP")
+		var/obj/iterating = processing[i++]
+		. += iterating
+		var/list/returned = iterating.return_inventory()
+		. += returned
 
 /mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
@@ -461,101 +409,18 @@ default behaviour is:
 	adjustFireLoss(-burn)
 	src.update_health()
 
-// damage ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-	adjustBruteLoss(brute)
-	adjustFireLoss(burn)
-	src.update_health()
-
 // heal MANY external organs, in random order
 /mob/living/proc/heal_overall_damage(var/brute, var/burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
 	src.update_health()
 
-// damage MANY external organs, in random order
-/mob/living/proc/take_overall_damage(var/brute, var/burn, var/used_weapon = null)
-	if(status_flags & STATUS_GODMODE)	return 0	//godmode
-	adjustBruteLoss(brute)
-	adjustFireLoss(burn)
-	src.update_health()
-
 /mob/living/proc/restore_all_organs()
-	return
-
-
-
-/mob/living/proc/revive()
-	rejuvenate()
-
-//	if(buckled)			// Throws an error when you try to rejuvinate someone riding a vehicle @ktoma36
-//		buckled.unbuckle_mob()
-
-	if(iscarbon(src))
-		var/mob/living/carbon/C = src
-		C.drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), INV_OP_FORCE)
-
-	ExtinguishMob()
-	fire_stacks = 0
-	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
-		ai_holder.go_wake()
-
-/mob/living/proc/rejuvenate()
-	if(reagents)
-		reagents.clear_reagents()
-
-	// shut down various types of badness
-	setToxLoss(0)
-	setOxyLoss(0)
-	setCloneLoss(0)
-	setBrainLoss(0)
-	set_unconscious(0)
-	set_stunned(0)
-	set_paralyzed(0)
-
-	// shut down ongoing problems
-	radiation = 0
-	nutrition = 400
-	bodytemperature = T20C
-	sdisabilities = 0
-	disabilities = 0
-
-	// fix blindness and deafness
-	blinded = 0
-	SetBlinded(0)
-	eye_blurry = 0
-	ear_deaf = 0
-	ear_damage = 0
-	heal_overall_damage(getBruteLoss(), getFireLoss())
-
-	// fix all of our organs
-	restore_all_organs()
-
-	// remove the character from the list of the dead
-	if(stat == DEAD)
-		dead_mob_list -= src
-		living_mob_list += src
-		tod = null
-		timeofdeath = 0
-
-	// restore us to conciousness
-	set_stat(CONSCIOUS)
-
-	// make the icons look correct
-	regenerate_icons()
-
-	update_hud_med_all()
-
-	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
-	reload_fullscreen()
-
-/mob/living/proc/UpdateDamageIcon()
 	return
 
 /mob/living/proc/Examine_OOC()
 	set name = "Examine Meta-Info (OOC)"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set src in view()
 
 	// Making it so SSD people have prefs with fallback to original style.
@@ -571,7 +436,7 @@ default behaviour is:
 
 //called when the mob receives a bright flash
 /mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
-	if(override_blindness_check || !(disabilities & SDISABILITY_NERVOUS))
+	if(override_blindness_check || has_status_effect(/datum/status_effect/sight/blindness))
 		overlay_fullscreen("flash", type)
 		spawn(25)
 			if(src)
@@ -832,28 +697,13 @@ default behaviour is:
 		return ..()
 
 /mob/living/proc/has_vision()
-	return !(eye_blind || (disabilities & SDISABILITY_NERVOUS) || stat || blinded)
+	return !(has_status_effect(/datum/status_effect/sight/blindness))
 
 /mob/living/proc/dirties_floor()	// If we ever decide to add fancy conditionals for making dirty floors (floating, etc), here's the proc.
 	return makes_dirt
 
 /mob/living/proc/needs_to_breathe()
 	return !isSynthetic()
-
-/mob/living/vv_get_header()
-	. = ..()
-	. += {"
-		<a href='?_src_=vars;rename=\ref[src]'><b>[src]</b></a><font size='1'>
-		<br><a href='?_src_=vars;datumedit=\ref[src];varnameedit=ckey'>[ckey ? ckey : "No ckey"]</a> / <a href='?_src_=vars;datumedit=\ref[src];varnameedit=real_name'>[real_name ? real_name : "No real name"]</a>
-		<br>
-		BRUTE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=brute'>[getBruteLoss()]</a>
-		FIRE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=fire'>[getFireLoss()]</a>
-		TOXIN:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=toxin'>[getToxLoss()]</a>
-		OXY:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=oxygen'>[getOxyLoss()]</a>
-		CLONE:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=clone'>[getCloneLoss()]</a>
-		BRAIN:<a href='?_src_=vars;mobToDamage=\ref[src];adjustDamage=brain'>[getBrainLoss()]</a>
-		</font>
-		"}
 
 /**
  *! Enable this one if you're enabling the butchering component. Otherwise it's useless.
@@ -871,11 +721,6 @@ default behaviour is:
 		throw_alert("weightless", /obj/screen/alert/weightless)
 */
 
-/mob/living/get_centering_pixel_y_offset(dir, atom/aligning)
-	. = ..()
-	// since we're shifted up by transforms..
-	. += ((size_multiplier * icon_scale_y) - 1) * 16
-
 /mob/living/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(incapacitated())
 		to_chat(src, SPAN_WARNING("You can't do that right now!"))
@@ -887,3 +732,31 @@ default behaviour is:
 		to_chat(src, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return FALSE
 	return TRUE
+
+//* Pixel Offsets
+
+/mob/living/get_centering_pixel_y_offset(dir)
+	. = ..()
+	// since we're shifted up by transforms..
+	. -= ((size_multiplier * icon_scale_y) - 1) * 16
+
+/mob/living/get_managed_pixel_y()
+	. = ..()
+	. += depth_current
+
+//TODO: maybe expand this system to be in the VV menu for event managers to mess with - provided they trust the observers enough...
+/**
+ * Allows an observer to take control of the mob at any time. Must use the "existing" ghostrole subtype.
+ * R: the ghostrole datum to use
+ */
+/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R = /datum/role/ghostrole/existing/)
+	var/list/L = list()
+	L["mob"] += src
+	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)
+
+/mob/living/proc/get_ghostrole() //! currently not using GetComponent because that seems bugged right now. :^) @silicons
+	. = datum_components?[/datum/component/ghostrole_spawnpoint]
+	return . && (length(.) ? .[1] : .)
+
+/mob/living/proc/remove_ghostrole()
+	return DelComponent(/datum/component/ghostrole_spawnpoint)

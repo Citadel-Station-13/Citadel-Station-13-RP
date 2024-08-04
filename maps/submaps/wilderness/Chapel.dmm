@@ -300,11 +300,6 @@
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
-"bk" = (
-/obj/structure/table/sifwoodentable,
-/obj/item/material/fishing_net,
-/turf/simulated/floor/wood/sif,
-/area/submap/Chapel1)
 "bl" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/outdoors/grass/sif,
@@ -334,20 +329,20 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "bs" = (
-/obj/item/ore,
-/obj/item/ore,
-/obj/item/ore,
-/obj/item/ore,
-/obj/item/ore/gold,
-/obj/item/ore/diamond,
-/obj/item/ore/silver,
-/obj/item/ore/uranium,
-/obj/item/ore,
-/obj/item/ore,
-/obj/item/ore,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
-/obj/item/ore/coal,
+/obj/item/stack/ore,
+/obj/item/stack/ore,
+/obj/item/stack/ore,
+/obj/item/stack/ore,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/diamond,
+/obj/item/stack/ore/silver,
+/obj/item/stack/ore/uranium,
+/obj/item/stack/ore,
+/obj/item/stack/ore,
+/obj/item/stack/ore,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
+/obj/item/stack/ore/coal,
 /obj/item/pickaxe/hand,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
@@ -1335,7 +1330,7 @@ aX
 ba
 bd
 bh
-bk
+av
 ac
 ac
 ab

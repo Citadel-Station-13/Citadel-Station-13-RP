@@ -67,8 +67,10 @@
  * * mobility_flags - required mobility flags
  * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
  * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ * * progress_anchor - override progressbar anchor location
+ * * progress_instance - override progressbar instance
  */
-/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks)
+/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_CAN_USE, max_distance, datum/callback/additional_checks, atom/progress_anchor, datum/progressbar/progress_instance)
 	if(isnull(user))
 		return FALSE
 	if(!delay)
@@ -96,11 +98,11 @@
 
 	var/obj/item/active_held_item = user.get_active_held_item()
 
-	var/datum/progressbar/progress
+	var/datum/progressbar/progress = progress_instance
 	var/original_delay = delay
 	var/delay_factor = 1
-	if(!(flags & DO_AFTER_NO_PROGRESS))
-		progress = new(user, delay, target)
+	if(isnull(progress) && !(flags & DO_AFTER_NO_PROGRESS) && (!isnull(progress_anchor || !isnull(target))))
+		progress = new(user, delay, progress_anchor || target)
 	var/start_time = world.time
 
 	//* loop

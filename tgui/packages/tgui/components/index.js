@@ -24,7 +24,7 @@ export { Grid } from './Grid';
 export { Icon } from './Icon';
 export { InfinitePlane } from './InfinitePlane';
 export { Input } from './Input';
-export { KeyListener } from './KeyListener';
+export { KeyListener } from './keyboard/KeyListener';
 export { Knob } from './Knob';
 export { LabeledControls } from './LabeledControls';
 export { LabeledList } from './LabeledList';

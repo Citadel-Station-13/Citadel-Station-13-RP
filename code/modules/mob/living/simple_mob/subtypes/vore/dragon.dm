@@ -12,8 +12,8 @@
 	health = 500
 	randomized = TRUE
 
-	melee_damage_lower = 5
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 30
 	attack_sound = 'sound/weapons/bite.ogg'
 
 	//Space dragons aren't affected by atmos.
@@ -30,7 +30,7 @@
 
 	base_pixel_x = -16
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 	say_list_type = /datum/say_list/dragonboss
 
 /mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(var/check_drift = 0)

@@ -7,8 +7,11 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	icon_state = "cart"
 	anchored = 0
 	density = 1
-	climbable = 1
+	climb_allowed = TRUE
+	depth_level = 20
 	atom_flags = OPENCONTAINER
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null
@@ -21,11 +24,10 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	. = ..()
 	create_reagents(300)
 
-/obj/structure/janitorialcart/examine(mob/user)
+/obj/structure/janitorialcart/examine(mob/user, dist)
 	. = ..()
 	. += "[src] [icon2html(thing = src, target = user)] contains [reagents.total_volume] unit\s of liquid!"
 	//everything else is visible, so doesn't need to be mentioned
-
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
@@ -185,7 +187,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	create_reagents(300)
 	update_layer()
 
-/obj/structure/bed/chair/janicart/examine(mob/user)
+/obj/structure/bed/chair/janicart/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = user)] This [callme] contains [reagents.total_volume] unit\s of water!"
 	if(mybag)
@@ -290,4 +292,4 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	desc = "A keyring with a small steel key, and a pink fob reading \"Pussy Wagon\"."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "keys"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY

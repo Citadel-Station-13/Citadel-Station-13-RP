@@ -21,8 +21,8 @@
 	response_disarm = "flails at"
 	response_harm   = "punches"
 
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 15
 	attack_armor_pen = 100	//It's a ghost/horror from beyond, I ain't gotta explain 100 AP
 	attacktext = list("drained the life from")
 
@@ -36,7 +36,7 @@
 
 	loot_list = list(/obj/item/ectoplasm = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/construct/shade/Initialize(mapload)
 	. = ..()
@@ -52,7 +52,7 @@
 /mob/living/simple_mob/construct/shade/death()
 	..()
 	for(var/mob/M in viewers(src, null))
-		if((M.client && !( M.blinded )))
+		if((M.client && !( M.has_status_effect(/datum/status_effect/sight/blindness) )))
 			M.show_message("<font color='red'>[src] lets out a contented sigh as their form unwinds.</font>")
 
 	ghostize()

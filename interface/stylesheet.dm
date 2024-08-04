@@ -81,7 +81,7 @@ em						{font-style: normal;font-weight: bold;}
 .sciradio				{color: #993399;}
 .suppradio				{color: #5F4519;}
 .servradio				{color: #6eaa2c;}
-.expradio				{color: #555555;}
+.expradio				{color: #c240a1;}
 
 .redteamradio			{color: #ff0000;}
 .blueteamradio			{color: #0000ff;}
@@ -193,6 +193,12 @@ h1.alert, h2.alert		{color: #000000;}
 .clown					{color: #FF69Bf;	font-size: 3;	font-family: "Comic Sans MS", cursive, sans-serif;	font-weight: bold;}
 .singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
 .his_grace				{color: #15D512;	font-family: "Courier New", cursive, sans-serif;	font-style: italic;}
+.votenotification 		{color: #490049;	font-size: 3; 	font-weight: bold;		animation: votenotification 3000ms infinite;	}
+	@keyframes votenotification {
+		0% 		{color: #490049;}
+		50% 	{color: #ff00ff;}
+		100% 	{color: #490049;}
+}
 .hypnophrase			{color: #3bb5d3;	font-weight: bold;	animation: hypnocolor 1500ms infinite; animation-direction: alternate;}
 	@keyframes hypnocolor {
 		0%		{color: #0d0d0d;}
@@ -240,7 +246,7 @@ h1.alert, h2.alert		{color: #000000;}
 .birdsongc				{color: #CC9900;}
 .vulpkanin				{color: #B97A57;}
 .enochian				{color: #848A33; letter-spacing:-1pt; word-spacing:4pt; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
-.daemon					{color: #5E339E; letter-spacing:-1pt; word-spacing:0pt; font-family: "Courier New", Courier, monospace;}
+.daemon					{color: #68008B; letter-spacing:-1pt; word-spacing:0pt; font-family: "Courier New", Courier, monospace;}
 .luinimma				{color: #d4bd11; font-family: "Trebuchet MS", cursive, sans-serif;}
 .keisani				{color: #AF7751;}
 .bug					{color: #9e9e39;}

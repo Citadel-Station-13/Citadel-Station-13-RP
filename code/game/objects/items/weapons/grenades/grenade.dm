@@ -1,7 +1,7 @@
 /obj/item/grenade
 	name = "grenade"
 	desc = "A hand held grenade, with an adjustable timer."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "grenade"
@@ -26,7 +26,7 @@
 	return 1
 
 
-/*/obj/item/grenade/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
+/*/obj/item/grenade/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (istype(target, /obj/item/storage)) return ..() // Trying to put it in a full container
 	if (istype(target, /obj/item/gun/grenadelauncher)) return ..()
 	if((user.get_active_held_item() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)
@@ -44,7 +44,7 @@
 	return*/
 
 
-/obj/item/grenade/examine(mob/user)
+/obj/item/grenade/examine(mob/user, dist)
 	. = ..()
 	if(det_time > 1)
 		. += "<span class = 'notice'>The timer is set to [det_time/10] seconds.</span>"

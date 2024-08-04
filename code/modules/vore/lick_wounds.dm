@@ -74,5 +74,5 @@
 					W.salve()
 					W.bandage()
 					W.disinfect()
-					H.UpdateDamageIcon()
+					H.update_damage_overlay()
 					playsound(src, 'sound/effects/ointment.ogg', 25)

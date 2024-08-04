@@ -60,6 +60,8 @@
 #define ADMIN_LOOKUP(user)           ("[key_name_admin(user)][ADMIN_QUE(user)]")
 #define ADMIN_LOOKUPFLW(user)        ("[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]")
 #define COORD(src)                   ("[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]")
+// todo: this should be made faster/better, and support stuff like inventory / storage awareness
+#define AUDIT_COORD(src)             ("[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]")
 #define AREACOORD(src)               ("[src ? src.Admin_Coordinates_Readable(TRUE) : "nonexistent location"]")
 #define ADMIN_COORDJMP(src)          ("[src ? src.Admin_Coordinates_Readable(FALSE, TRUE) : "nonexistent location"]")
 #define ADMIN_VERBOSEJMP(src)        ("[src ? src.Admin_Coordinates_Readable(TRUE, TRUE) : "nonexistent location"]")

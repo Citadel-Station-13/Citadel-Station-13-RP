@@ -19,7 +19,7 @@
 
 /obj/item/reagent_containers/cartridge/dispenser/verb/set_label_verb()
 	set name = "Set Label"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	var/new_label = input(usr, "Enter a new label.", "Label Cartridge", label) as text|null
@@ -31,7 +31,7 @@
 
 	set_label(new_label)
 
-/obj/item/reagent_containers/cartridge/dispenser/examine(mob/user)
+/obj/item/reagent_containers/cartridge/dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "It has a capacity of [volume] units."
 	if(reagents.total_volume <= 0)
@@ -56,11 +56,23 @@
 /obj/item/reagent_containers/cartridge/dispenser/large
 	name = "large dispenser cartridge"
 	volume = 1000
+	materials_base = list(
+		/datum/material/plastic::id = 5 * /datum/material/plastic::sheet_amount,
+	)
+	worth_intrinsic = 100
 
 /obj/item/reagent_containers/cartridge/dispenser/medium
 	name = "medium dispenser cartridge"
 	volume = 500
+	materials_base = list(
+		/datum/material/plastic::id = 3 * /datum/material/plastic::sheet_amount,
+	)
+	worth_intrinsic = 75
 
 /obj/item/reagent_containers/cartridge/dispenser/small
 	name = "small dispenser cartridge"
 	volume = 250
+	materials_base = list(
+		/datum/material/plastic::id = 1 * /datum/material/plastic::sheet_amount,
+	)
+	worth_intrinsic = 50

@@ -11,9 +11,9 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
-	matter = list(MAT_PLASTIC = 3)
+	materials_base = list(MAT_PLASTIC = 3)
 	var/mopping = 0
 	var/mopcount = 0
 	var/mopspeed = 23
@@ -38,13 +38,13 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		mopmode = MOPMODE_TILE
 		to_chat(user, "<span class='warning'>You will now thoroughly clean a single tile at a time</span>")
 
-/obj/item/mop/afterattack(atom/A, mob/user, proximity)
-	if(!proximity) return
-	if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
+/obj/item/mop/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if(istype(target, /turf) || istype(target, /obj/effect/debris/cleanable) || istype(target, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 			return
-		var/turf/T = get_turf(A)
+		var/turf/T = get_turf(target)
 		if(!T)
 			return
 		spawn()
@@ -60,7 +60,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		else if (mopmode == MOPMODE_SWEEP)
 			sweep(user, T)
 	else
-		makeWet(A, user)
+		makeWet(target, user)
 
 // TO DO : MAKE SWEEPING WORK
 
@@ -106,7 +106,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 
 		//Get out of the way, ankles!
 		for (var/mob/living/L in T)
-			melee_attack_chain(L, user)
+			melee_interaction_chain(L, user)
 
 		if (!is_blocked_turf(T))
 			T.clean(src, user, 1)
@@ -169,7 +169,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	if(reagents.total_volume < 30)
 		reagents.add_reagent(refill_reagent, refill_rate)
 
-/obj/item/mop/advanced/examine(mob/user)
+/obj/item/mop/advanced/examine(mob/user, dist)
 	. = ..()
 	. += "The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>."
 

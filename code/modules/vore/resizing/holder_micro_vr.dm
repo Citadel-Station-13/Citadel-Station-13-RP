@@ -5,11 +5,11 @@
 	desc = "Another crewmember, small enough to fit in your hand."
 	icon_state = "micro"
 	slot_flags = SLOT_FEET | SLOT_HEAD | SLOT_ID
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_icons = list() // No in-hand sprites (for now, anyway, we could totally add some)
 	pixel_y = 0			// Override value from parent.
 
-/obj/item/holder/micro/examine(mob/user)
+/obj/item/holder/micro/examine(mob/user, dist)
 	for(var/mob/living/M in contents)
 		M.examine(user)
 

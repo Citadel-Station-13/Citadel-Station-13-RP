@@ -1,5 +1,7 @@
 // A thing you can fish in
 /datum/component/fishing_spot
+	registered_type = /datum/component/fishing_spot
+	
 	/// Defines the probabilities and fish availibilty
 	var/datum/fish_source/fish_source
 

@@ -33,7 +33,7 @@
 	hotkey_keys = list("1")
 	name = "select_help_intent"
 	full_name = "Select help intent"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_CARBON
 
 /datum/keybinding/carbon/select_help_intent/down(client/user)
@@ -44,7 +44,7 @@
 	hotkey_keys = list("2")
 	name = "select_disarm_intent"
 	full_name = "Select disarm intent"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_CARBON
 
 /datum/keybinding/carbon/select_disarm_intent/down(client/user)
@@ -55,7 +55,7 @@
 	hotkey_keys = list("3")
 	name = "select_grab_intent"
 	full_name = "Select grab intent"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_CARBON
 
 /datum/keybinding/carbon/select_grab_intent/down(client/user)
@@ -66,7 +66,7 @@
 	hotkey_keys = list("4")
 	name = "select_harm_intent"
 	full_name = "Select harm intent"
-	description = ""
+	description = "No description provided."
 	category = CATEGORY_CARBON
 
 /datum/keybinding/carbon/select_harm_intent/down(client/user)

@@ -117,6 +117,7 @@
 	name = "fleet coveralls"
 	desc = "The utility uniform of the JSDF Fleet, made from an insulated material."
 	icon_state = "navy"
+	worn_rolldown_state = "navy_down"
 	siemens_coefficient = 0.7
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
@@ -125,6 +126,7 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/fleet)
 	name = "fleet command coveralls"
 	icon_state = "navy_command"
+	worn_rolldown_state = null
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
@@ -132,6 +134,7 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/specialty/pilot)
 	name = "fleet pilot coveralls"
 	icon_state = "navy_officer"
+	worn_rolldown_state = null
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
@@ -139,34 +142,27 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering/fleet)
 	name = "fleet engineer coveralls"
 	icon_state = "navy_engi"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/fleet)
 	name = "fleet security coveralls"
 	icon_state = "navy_sec"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/fleet)
 	name = "fleet medical coveralls"
 	icon_state = "navy_med"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply/fleet)
 	name = "fleet logistics coveralls"
 	icon_state = "navy_sup"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration/fleet)
 	name = "fleet explorer coveralls"
 	icon_state = "navy_combat"
+	worn_rolldown_state = null
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 

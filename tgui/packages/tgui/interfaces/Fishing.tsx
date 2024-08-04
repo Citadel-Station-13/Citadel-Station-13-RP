@@ -29,12 +29,12 @@ enum ReelingState {
 }
 
 type FishingMinigameProps = {
-  difficulty: number;
-  fish_ai: FishAI;
-  special_rules: SpecialRule[];
-  background: string;
-  win: (perfect: boolean) => void;
-  lose: () => void;
+  readonly difficulty: number;
+  readonly fish_ai: FishAI;
+  readonly special_rules: SpecialRule[];
+  readonly background: string;
+  readonly win: (perfect: boolean) => void;
+  readonly lose: () => void;
 };
 
 type FishingMinigameState = {

@@ -41,18 +41,11 @@
 		else
 			pref.all_underwear -= underwear_category_name
 
-	// TODO - Looks like this is duplicating the work of sanitize_character() if so, remove
-	if(pref.backbag > 7 || pref.backbag < 1)
-		pref.backbag = 1 //Same as above
 	character.backbag = pref.backbag
-
-	if(pref.pdachoice > 7 || pref.pdachoice < 1)
-		pref.pdachoice = 1
 	character.pdachoice = pref.pdachoice
 	return TRUE
 
 /datum/category_item/player_setup_item/general/equipment/sanitize_character()
-	if(!islist(pref.gear)) pref.gear = list()
 
 	if(!istype(pref.all_underwear))
 		pref.all_underwear = list()
@@ -90,7 +83,7 @@
 		. += "[UWC.name]: <a href='?src=\ref[src];change_underwear=[UWC.name]'><b>[item_name]</b></a>"
 		var/datum/category_item/underwear/UWI = UWC.items_by_name[item_name]
 		if(UWI)
-			for(var/datum/gear_tweak/gt in UWI.tweaks)
+			for(var/datum/loadout_tweak/gt in UWI.tweaks)
 				. += " <a href='?src=\ref[src];underwear=[UWC.name];tweak=\ref[gt]'>[gt.get_contents(get_metadata(UWC.name, gt))]</a>"
 
 		. += "<br>"
@@ -101,7 +94,7 @@
 
 	return jointext(.,null)
 
-/datum/category_item/player_setup_item/general/equipment/proc/get_metadata(var/underwear_category, var/datum/gear_tweak/gt)
+/datum/category_item/player_setup_item/general/equipment/proc/get_metadata(var/underwear_category, var/datum/loadout_tweak/gt)
 	var/metadata = pref.all_underwear_metadata[underwear_category]
 	if(!metadata)
 		metadata = list()
@@ -113,7 +106,7 @@
 		metadata["[gt]"] = tweak_data
 	return tweak_data
 
-/datum/category_item/player_setup_item/general/equipment/proc/set_metadata(var/underwear_category, var/datum/gear_tweak/gt, var/new_metadata)
+/datum/category_item/player_setup_item/general/equipment/proc/set_metadata(var/underwear_category, var/datum/loadout_tweak/gt, var/new_metadata)
 	var/list/metadata = pref.all_underwear_metadata[underwear_category]
 	metadata["[gt]"] = new_metadata
 
@@ -144,7 +137,7 @@
 		var/underwear = href_list["underwear"]
 		if(!(underwear in pref.all_underwear))
 			return PREFERENCES_NOACTION
-		var/datum/gear_tweak/gt = locate(href_list["tweak"])
+		var/datum/loadout_tweak/gt = locate(href_list["tweak"])
 		if(!gt)
 			return PREFERENCES_NOACTION
 		var/new_metadata = gt.get_metadata(usr, get_metadata(underwear, gt))

@@ -1,0 +1,9 @@
+## uncomment to enable persistent pictures
+# PICTURE_PERSISTENT
+
+## where pictures are stored.
+# PICTURE_STORAGE data/pictures/
+
+## the url for pictures to be retrieved. has to be accessible from the internet,
+## and hae the same structure as PICTURE_STORAGE otherwise.
+# PICTURE_WEBROOT

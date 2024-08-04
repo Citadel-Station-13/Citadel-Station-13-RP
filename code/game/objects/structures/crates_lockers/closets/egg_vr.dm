@@ -6,17 +6,18 @@
 	density = 0 //Just in case there's a lot of eggs, so it doesn't block hallways/areas.
 	icon_closed = "egg"
 	icon_opened = "egg_open"
-	icon_locked = "egg"
 	open_sound = 'sound/vore/schlorp.ogg'
 	close_sound = 'sound/vore/schlorp.ogg'
 	opened = 0
 	sealed = 0 //Don't touch this.
-	health = 100
+	integrity_max = 100
 
 /obj/structure/closet/secure_closet/egg/attackby(obj/item/W, mob/user as mob) //This also prevents crew from welding the eggs and making them unable to be opened.
 	if(istype(W, /obj/item/weldingtool))
 		src.dump_contents()
 		qdel(src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 /obj/structure/closet/secure_closet/egg/unathi
 	name = "unathi egg"

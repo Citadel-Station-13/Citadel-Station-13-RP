@@ -49,3 +49,10 @@ Apply regexes in this order:
 `\td1 = 16;\n\td2 = 0;\n\ticon_state = "16-0"`-`\ticon_state = "16-0"`
 // 32-x (side-going-down)
 `\td1 = 32;\n\td2 = (1|2|4|8);\n\ticon_state = "32-\1"`-`\ticon_state = "32-$1"`
+
+## Selective
+
+// Map portals have been replaced with transition border components
+// Only do this to map portals that are actually borders.
+// Maps can use them for other purposes, too.
+`\(\n/obj/effect/map_effect/portal[a-z_A-Z/]*\{\n(\t*[a-zA-Z0-9 \t=_";]+\n)*\t*\},`-`(`

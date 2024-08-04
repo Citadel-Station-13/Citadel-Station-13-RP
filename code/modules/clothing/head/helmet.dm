@@ -2,20 +2,23 @@
 	name = "helmet"
 	desc = "Standard headgear. Protects well enough against a wide range of attacks."
 	icon_state = "helmet"
-	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
+	restricted_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	armor_type = /datum/armor/station/medium
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
-	heat_protection = HEAD
+	heat_protection_cover = HEAD
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.7
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ear_protection = 1
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM_HELMET
+	weight = ITEM_WEIGHT_ARMOR_MEDIUM_HELMET
+	material_factoring = 0.000075
 
 /obj/item/clothing/head/helmet/ntsec
 	name = "corpsec helmet"
@@ -26,7 +29,7 @@
 	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
 	icon_state = "helmet_sol"
 	armor_type = /datum/armor/oricon/peacekeeper
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/oricon/command
 	name = "command helmet"
@@ -39,7 +42,7 @@
 	icon_state = "helmet_security"
 
 /obj/item/clothing/head/helmet/nt
-	name = "\improper NanoTrasen helmet"
+	name = "\improper Nanotrasen helmet"
 	desc = "A helmet with 'CORPORATE SECURITY' printed on the back in red lettering."
 	icon_state = "helmet_nt"
 
@@ -61,8 +64,8 @@
 	armor_type = /datum/armor/station/riot
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.5
-	valid_accessory_slots = null
-	action_button_name = "Toggle Visor"
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
+	item_action_name = "Toggle Visor"
 
 /obj/item/clothing/head/helmet/riot/attack_self(mob/user)
 	. = ..()
@@ -83,7 +86,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.2
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/ballistic
 	name = "ballistic helmet"
@@ -92,7 +95,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/combat
 	name = "combat helmet"
@@ -102,7 +105,7 @@
 	armor_type = /datum/armor/station/combat
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.6
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/redcombat
 	name = "combat helmet"
@@ -117,9 +120,9 @@
 	armor_type = /datum/armor/station/tactical
 	brightness_on = 6
 	light_overlay = "helmet_light_dual_green"
-	action_button_name = "Toggle Head-light"
+	item_action_name = "Toggle Head-light"
 	min_cold_protection_temperature = T0C - 20
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"
@@ -127,9 +130,11 @@
 	icon_state = "swat"
 	armor_type = /datum/armor/centcom/deathsquad
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY_HELMET
+	weight = ITEM_WEIGHT_ARMOR_HEAVY_HELMET
 
 /obj/item/clothing/head/helmet/alien
 	name = "alien helmet"
@@ -148,7 +153,7 @@
 	desc = "<i>'Let the battle commence!'</i>"
 	icon_state = "thunderdome"
 	armor_type = /datum/armor/thunderdome
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 1
 
@@ -177,6 +182,12 @@
 	armor_type = /datum/armor/lavaland/ashlander
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
+/obj/item/clothing/head/helmet/ashlander/xeno
+	name = "wyrm chitin helmet"
+	desc = "A helmet forged from the head of an invading monster from the stars. These relic suits are now prized symbols of Scorian victory over the invaders."
+	icon_state = "surtxenoh"
+	armor_type = /datum/armor/lavaland/xeno
+
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."
@@ -185,7 +196,7 @@
 	armor_type = /datum/armor/station/tactical
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
 	siemens_coefficient = 0.7
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/augment
 	name = "Augment Array"
@@ -194,7 +205,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "head_m", SLOT_ID_LEFT_HAND = "head_m")
 	armor_type = /datum/armor/head/augment_helmet
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.5
 	valid_accessory_slots = null
@@ -228,33 +239,33 @@
 //Non-hardsuit ERT helmets.
 /obj/item/clothing/head/helmet/ert
 	name = "emergency response team helmet"
-	desc = "An in-atmosphere helmet worn by members of the NanoTrasen Emergency Response Team. Protects the head from impacts."
+	desc = "An in-atmosphere helmet worn by members of the Nanotrasen Emergency Response Team. Protects the head from impacts."
 	icon_state = "erthelmet_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor_type = /datum/armor/centcom/ert
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 //Commander
 /obj/item/clothing/head/helmet/ert/command
 	name = "emergency response team commander helmet"
-	desc = "An in-atmosphere helmet worn by the commander of a NanoTrasen Emergency Response Team. Has blue highlights."
+	desc = "An in-atmosphere helmet worn by the commander of a Nanotrasen Emergency Response Team. Has blue highlights."
 
 //Security
 /obj/item/clothing/head/helmet/ert/security
 	name = "emergency response team security helmet"
-	desc = "An in-atmosphere helmet worn by security members of the NanoTrasen Emergency Response Team. Has red highlights."
+	desc = "An in-atmosphere helmet worn by security members of the Nanotrasen Emergency Response Team. Has red highlights."
 	icon_state = "erthelmet_sec"
 
 //Engineer
 /obj/item/clothing/head/helmet/ert/engineer
 	name = "emergency response team engineer helmet"
-	desc = "An in-atmosphere helmet worn by engineering members of the NanoTrasen Emergency Response Team. Has orange highlights."
+	desc = "An in-atmosphere helmet worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights."
 	icon_state = "erthelmet_eng"
 
 //Medical
 /obj/item/clothing/head/helmet/ert/medical
 	name = "emergency response team medical helmet"
-	desc = "A set of armor worn by medical members of the NanoTrasen Emergency Response Team. Has red and white highlights."
+	desc = "A set of armor worn by medical members of the Nanotrasen Emergency Response Team. Has red and white highlights."
 	icon_state = "erthelmet_med"
 
 
@@ -266,7 +277,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor_type = /datum/armor/centcom/ert/paracausal
 	valid_accessory_slots = null
-	action_button_name = "Cycle MAW"
+	item_action_name = "Cycle MAW"
 
 	flash_protection = FLASH_PROTECTION_MAJOR
 
@@ -299,7 +310,7 @@
 	icon_state = "witchhunterhat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Wards"
+	item_action_name = "Enable Wards"
 
 /obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user)
 	. = ..()
@@ -324,6 +335,7 @@
 	desc = "Safety gear designed to protect the head from impacts. It's a bit dorky."
 	icon_state = "sport"
 	armor_type = /datum/armor/head/hardhat
+	worth_intrinsic = 75
 
 	color = "#ffffff"
 
@@ -380,6 +392,14 @@
 /obj/item/clothing/head/helmet/kettle/eyes
 	icon_state = "kettle_eyes"
 
+//Dredd
+/obj/item/clothing/head/helmet/aquiline
+	name = "aquiline enforcer helmet"
+	desc = "Prior to the Final War, issues with law enforcement on Old Earth became so bad that in many countries the police became little more than roving executioners. This striking helmet was designed to help law enforcement officers easily identify themselves in crowds."
+	icon = 'icons/clothing/uniform/costume/aquiline.dmi'
+	icon_state = "dreddhelm"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
 //More Warhammer Fun
 /obj/item/clothing/head/helmet/utilitarian
 	name = "utilitarian military helmet"
@@ -388,6 +408,14 @@
 	icon_state = "tauhelm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor_type = /datum/armor/general/utilitarian_military
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/helmet/baroque
+	name = "baroque military helmet"
+	desc = "This sturdy helmet's ornate design belies its technological sophistication."
+	icon = 'icons/clothing/suit/armor/baroque.dmi'
+	icon_state = "sisterhelm"
+	armor_type = /datum/armor/general/baroque_military
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/head/helmet/duraskull

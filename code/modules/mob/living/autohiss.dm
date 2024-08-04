@@ -85,7 +85,7 @@
 
 /mob/living/carbon/human/verb/toggle_autohiss()
 	set name = "Toggle Autohiss"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Toggle your autohiss configuration between disabled, basic, and full."
 
 	switch(autohiss_mode)
@@ -102,7 +102,7 @@
 
 /mob/living/carbon/human/verb/toggle_autohiss_type()
 	set name = "Toggle Autohiss Type"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Set the type of autohissing you will do."
 
 	var/new_autohiss_type = input(usr, "Select your new autohiss type.", "Autohiss Type") in list("None", SPECIES_UNATHI, "Tajaran")

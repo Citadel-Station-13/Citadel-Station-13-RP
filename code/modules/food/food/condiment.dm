@@ -30,7 +30,7 @@
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	standard_feed_mob(user, target)
 
-/obj/item/reagent_containers/food/condiment/afterattack(var/obj/target, var/mob/user, var/flag)
+/obj/item/reagent_containers/food/condiment/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(standard_dispenser_refill(user, target))
 		return
 	if(standard_pour_into(user, target))
@@ -203,7 +203,7 @@
 
 /obj/item/reagent_containers/food/condiment/small/packet
 	icon_state = "packet_small"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	possible_transfer_amounts = "1;5;10"
 	amount_per_transfer_from_this = 1
 	volume = 5

@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(events)
 	return ..()
 
 /datum/controller/subsystem/events/Initialize()
-	SSticker.OnRoundstart(CALLBACK(src, .proc/HolidayRoundstart))
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(HolidayRoundstart)))
 	allEvents = typesof(/datum/event) - /datum/event
 	event_containers = list(
 			EVENT_LEVEL_MUNDANE 	= new/datum/event_container/mundane,
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(events)
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	var/dt = nominal_dt_s
 	while (currentrun.len)
 		var/datum/event/E = currentrun[currentrun.len]
 		currentrun.len--
@@ -146,7 +146,7 @@ SUBSYSTEM_DEF(events)
 		else
 			qdel(holiday)
 
-	tim_sort(holidays, /proc/cmp_holiday_priority)
+	tim_sort(holidays, GLOBAL_PROC_REF(cmp_holiday_priority))
 	// // regenerate station name because holiday prefixes.
 	// set_station_name(new_station_name())
 	// world.update_status()

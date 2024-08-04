@@ -1,33 +1,24 @@
 
 /obj/item/storage/single_use
-	var/opened = FALSE
-	var/tear_sound = "rip"
+	var/sfx_tear = "rip"
+	var/torn_open = FALSE
 
-/obj/item/storage/single_use/open(mob/user)
-	if(!opened)
-		playsound(src.loc, src.tear_sound, 50, FALSE, -5)
-		user.visible_message(
-			SPAN_NOTICE("\The [user] tears open [src], breaking the vacuum seal!"),
-			SPAN_NOTICE("You tear open [src], breaking the vacuum seal!"),
-			SPAN_HEAR("You hear something being torn open."),
-		)
-		opened = TRUE
-		update_icon()
-	if (src.use_sound)
-		playsound(src.loc, src.use_sound, 50, FALSE, -5)
-	if (isrobot(user) && user.hud_used)
-		var/mob/living/silicon/robot/robot = user
-		if(robot.shown_robot_modules) //The robot's inventory is open, need to close it first.
-			robot.hud_used.toggle_show_robot_modules()
-	return ..(user, TRUE)
-
-/obj/item/storage/single_use/attack_self(mob/user)
-	. = ..()
-	if(.)
+/obj/item/storage/single_use/object_storage_opened(mob/user)
+	if(torn_open)
 		return
-	open(user)
+	torn_open = TRUE
 
-/obj/item/storage/single_use/update_icon()
-	if(opened)
-		icon_state = "[initial(icon_state)][opened]"
-	. = ..()
+	if(sfx_tear)
+		playsound(src, sfx_tear, 50, TRUE, -5)
+
+	user.visible_message(
+		SPAN_NOTICE("[user] tears open [src]'s seal."),
+		SPAN_NOTICE("You tear open [src]'s seals."),
+		SPAN_HEAR("You hear something being torn open."),
+	)
+
+	update_icon()
+
+/obj/item/storage/single_use/update_icon_state()
+	icon_state = "[base_icon_state || initial(icon_state)][torn_open]"
+	return ..()

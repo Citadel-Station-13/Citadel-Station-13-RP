@@ -13,9 +13,9 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	atom_flags = OPENCONTAINER | NOCONDUCT
-	unacidable = 1 //glass doesn't dissolve in acid
+	integrity_flags = INTEGRITY_ACIDPROOF
 	drop_sound = 'sound/items/drop/bottle.ogg'
 	pickup_sound = 'sound/items/pickup/bottle.ogg'
 
@@ -90,8 +90,8 @@
 /obj/item/reagent_containers/glass/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
-/obj/item/reagent_containers/glass/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
+/obj/item/reagent_containers/glass/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) //Is the container open & are they next to whatever they're clicking?
 		return 1 //If not, do nothing.
 	for(var/type in can_be_placed_into) //Is it something it can be placed into?
 		if(istype(target, type))
@@ -122,11 +122,11 @@
 			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_name_label()
-	if(istype(W,/obj/item/storage/bag))
+	if(istype(W,/obj/item/storage/bag) || istype(W,/obj/item/storage/part_replacer))
 		..()
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return
-	if(W && W.w_class <= w_class && (atom_flags & OPENCONTAINER))
+	if(W && W.get_weight_class() <= get_weight_class() && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
 		reagents.touch_obj(W, reagents.total_volume)
 
@@ -140,6 +140,10 @@
 		name = "[base_name] ([label_text])"
 	desc = "[base_desc] It is labeled \"[label_text]\"."
 
+/obj/item/reagent_containers/glass/on_reagent_change()
+	. = ..()
+	update_icon()
+
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
 	desc = "A beaker."
@@ -147,16 +151,18 @@
 	icon_state = "beaker"
 	base_icon_state = "beaker"
 	item_state = "beaker"
-	matter = list(MAT_GLASS = 500)
+	materials_base = list(MAT_GLASS = 500)
+	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
+	/// rped rating
+	var/rped_rating = 0
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+
 
 /obj/item/reagent_containers/glass/beaker/Initialize(mapload)
 	. = ..()
 	desc += " Can hold up to [volume] units."
-
-/obj/item/reagent_containers/glass/beaker/on_reagent_change()
-	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
@@ -169,6 +175,9 @@
 /obj/item/reagent_containers/glass/beaker/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
+
+/obj/item/reagent_containers/glass/beaker/rped_rating()
+	return rped_rating
 
 /obj/item/reagent_containers/glass/beaker/update_icon()
 	cut_overlays()
@@ -201,18 +210,21 @@
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
 	base_icon_state = "beakerlarge"
-	matter = list(MAT_GLASS = 1000)
+	materials_base = list(MAT_GLASS = 1000)
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 120
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)
 	atom_flags = OPENCONTAINER
+	rped_rating = 1
 
 /obj/item/reagent_containers/glass/beaker/noreact
 	name = "cryostasis beaker"
 	desc = "A cryostasis beaker that allows for chemical storage without reactions."
 	icon_state = "beakernoreact"
 	base_icon_state = "beakernoreact"
-	matter = list(MAT_GLASS = 500)
+	materials_base = list(MAT_GLASS = 500)
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 60
 	amount_per_transfer_from_this = 10
 	atom_flags = OPENCONTAINER | NOREACT
@@ -222,20 +234,22 @@
 	desc = "A bluespace beaker, powered by experimental bluespace technology."
 	icon_state = "beakerbluespace"
 	base_icon_state = "beakerbluespace"
-	matter = list(MAT_GLASS = 5000)
+	materials_base = list(MAT_GLASS = 5000)
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,300)
 	atom_flags = OPENCONTAINER
+	rped_rating = 3
 
 /obj/item/reagent_containers/glass/beaker/vial
 	name = "vial"
 	desc = "A small glass vial."
 	icon_state = "vial0"
 	base_icon_state = "vial"
-	matter = list(MAT_GLASS = 250)
+	materials_base = list(MAT_GLASS = 250)
 	volume = 30
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,30)
 	atom_flags = OPENCONTAINER
@@ -256,16 +270,15 @@
 	icon_state = "bucket"
 	base_icon_state = "bucket"
 	item_state = "bucket"
-	matter = list(MAT_STEEL = 200)
-	w_class = ITEMSIZE_NORMAL
+	materials_base = list(MAT_STEEL = 200)
+	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
 	atom_flags = OPENCONTAINER
-	unacidable = 0
+	integrity_flags = NONE
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
-
 
 /obj/item/reagent_containers/glass/bucket/attackby(var/obj/item/D, mob/user as mob)
 	if(isprox(D))
@@ -279,7 +292,7 @@
 		user.put_in_hands_or_drop(new /obj/item/clothing/head/helmet/bucket)
 		qdel(src)
 		return
-	else if(istype(D, /obj/item/stack/material) && D.get_material_name() == MAT_STEEL)
+	else if(D.is_material_stack_of(/datum/material/steel))
 		var/obj/item/stack/material/M = D
 		if (M.use(1))
 			var/obj/item/secbot_assembly/edCLN_assembly/B = new /obj/item/secbot_assembly/edCLN_assembly(get_turf(src))
@@ -299,7 +312,7 @@
 	else
 		return ..()
 
-/obj/item/reagent_containers/glass/bucket/afterattack()
+/obj/item/reagent_containers/glass/bucket/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	.=..()
 	update_icon()
 
@@ -319,13 +332,13 @@
 	icon_state = "woodbucket"
 	base_icon_state = "woodbucket"
 	item_state = "woodbucket"
-	matter = list(MAT_WOOD = 50)
-	w_class = ITEMSIZE_LARGE
+	materials_base = list(MAT_WOOD = 50)
+	w_class = WEIGHT_CLASS_BULKY
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
 	atom_flags = OPENCONTAINER
-	unacidable = 0
+	integrity_flags = INTEGRITY_FLAMMABLE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
@@ -356,11 +369,11 @@
 	icon_state = "sandbucket"
 	base_icon_state = "sandbucket"
 	item_state = "woodbucket"
-	matter = list("sandstone" = 50)
-	w_class = ITEMSIZE_LARGE
-	unacidable = 1
+	materials_base = list("sandstone" = 50)
+	w_class = WEIGHT_CLASS_BULKY
+	integrity_flags = INTEGRITY_ACIDPROOF
 
-/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user)
+/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -389,8 +402,8 @@
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler_bottle"
 	base_icon_state = "water_cooler_bottle"
-	matter = list(MAT_GLASS = 2000)
-	w_class = ITEMSIZE_NORMAL
+	materials_base = list(MAT_GLASS = 2000)
+	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
@@ -402,22 +415,23 @@
 	icon = 'icons/obj/tank.dmi'
 	icon_state = "portable_fuelcan"
 	base_icon_state = "portable_fuelcan"
-	matter = list("metal" = 2000)
-	w_class = ITEMSIZE_SMALL
+	materials_base = list("metal" = 2000)
+	w_class = WEIGHT_CLASS_SMALL
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,50,100)
 	volume = 60
+	start_reagent = /datum/reagent/fuel
 
-/obj/item/reagent_containers/portable_fuelcan/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/reagent_containers/portable_fuelcan/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
-		O.reagents.trans_to_obj(src, volume)
+	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
+		target.reagents.trans_to_obj(src, volume)
 		to_chat(user, "<span class='notice'>You refill [src].</span>")
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 		return
 
-/obj/item/reagent_containers/portable_fuelcan/examine(mob/user)
+/obj/item/reagent_containers/portable_fuelcan/examine(mob/user, dist)
 	. = ..()
 	if(volume)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.volume] units of fuel!"
@@ -430,8 +444,8 @@
 	desc = "A tiny fuel canister used to refuel tools and gear in the field. Useful for single recharges."
 	icon_state = "portable_fuelcan_tiny"
 	base_icon_state = "portable_fuelcan_tiny"
-	matter = list("metal" = 500)
-	w_class = ITEMSIZE_TINY
+	materials_base = list("metal" = 500)
+	w_class = WEIGHT_CLASS_TINY
 	volume = 20
 
 /obj/item/reagent_containers/glass/stone
@@ -446,7 +460,7 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		add_overlay(lid)
 
-/obj/item/reagent_containers/glass/stone/examine(mob/user)
+/obj/item/reagent_containers/glass/stone/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)

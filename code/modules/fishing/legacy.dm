@@ -1,25 +1,25 @@
 GLOBAL_LIST_INIT(generic_fishing_rare_list, list(
-		/mob/living/simple_mob/animal/passive/fish/solarfish = 0, // was 1, sif meat
-		/mob/living/simple_mob/animal/passive/fish/icebass = 0, // was 5, sif meat
-		/mob/living/simple_mob/animal/passive/fish/koi = 3,
-		/obj/item/reagent_containers/food/snacks/lobster = 2
+		/obj/item/fish/solarfin = 1,
+		/obj/item/fish/bass/glitter = 5,
+		/obj/item/fish/koi = 3,
+		/obj/item/reagent_containers/food/snacks/lobster = 2,
+		/obj/item/fish/crab/evil = 1
 		))
 
 GLOBAL_LIST_INIT(generic_fishing_uncommon_list, list(
-		/mob/living/simple_mob/animal/passive/fish/salmon = 6,
-		/mob/living/simple_mob/animal/passive/fish/pike = 10,
-		/mob/living/simple_mob/animal/passive/fish/javelin = 0, //was 3, sif meat
-		/mob/living/simple_mob/animal/passive/crab/sif = 1
+		/obj/item/fish/salmon = 6,
+		/obj/item/fish/pike = 10,
+		/obj/item/fish/javelin = 3
 		))
 
 GLOBAL_LIST_INIT(generic_fishing_common_list, list(
-		/mob/living/simple_mob/animal/passive/fish/bass = 10,
-		/mob/living/simple_mob/animal/passive/fish/trout = 8,
-		/mob/living/simple_mob/animal/passive/fish/perch = 6,
+		/obj/item/fish/bass = 10,
+		/obj/item/fish/trout = 8,
+		/obj/item/fish/perch = 6,
 		/obj/item/reagent_containers/food/snacks/shrimp = 5,
-		/mob/living/simple_mob/animal/passive/fish/murkin = 0, // was 8, sif meat
-		/mob/living/simple_mob/animal/passive/fish/rockfish = 0, //was 5, contains sif meat which cannot be used to cook
-		/mob/living/simple_mob/animal/passive/crab = 1
+		/obj/item/fish/murkin = 8,
+		/obj/item/fish/rockfish = 5,
+		/obj/item/fish/crab = 1
 		))
 
 GLOBAL_LIST_INIT(generic_fishing_junk_list, list(

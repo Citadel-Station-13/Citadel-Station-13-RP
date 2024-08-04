@@ -1,4 +1,3 @@
-#define SHEET_MATERIAL_AMOUNT 2000
 
 #define TECH_MATERIAL "materials"
 #define TECH_ENGINEERING "engineering"
@@ -12,14 +11,3 @@
 #define TECH_ILLEGAL "syndicate"
 #define TECH_ARCANE "arcane"
 #define TECH_PRECURSOR "precursor"
-
-///For circuits. Uses glass/chemicals.
-#define IMPRINTER	0x0001
-///New stuff. Uses glass/metal/chemicals
-#define PROTOLATHE	0x0002
-///Mechfab
-#define MECHFAB		0x0004
-///For protolathe, but differently
-#define CHASSIS		0x0008
-///For prosthetics fab
-#define PROSFAB		0x0010

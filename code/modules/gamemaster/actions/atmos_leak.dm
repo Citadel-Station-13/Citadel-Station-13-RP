@@ -22,11 +22,11 @@
 	EVENT_LEVEL_MAJOR = 3
 	)
 
-	var/gas_choices = list(/datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide) // Annoying
+	var/gas_choices = list(GAS_ID_CARBON_DIOXIDE, GAS_ID_NITROUS_OXIDE) // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
-		gas_choices += /datum/gas/phoron // Dangerous
+		gas_choices += GAS_ID_PHORON // Dangerous
 	if(severity >= EVENT_LEVEL_MAJOR)
-		gas_choices += /datum/gas/volatile_fuel // Dangerous and no default atmos setup!
+		gas_choices += GAS_ID_VOLATILE_FUEL // Dangerous and no default atmos setup!
 	gas_type = pick(gas_choices)
 
 	var/list/area/grand_list_of_areas = get_station_areas(excluded)
@@ -55,7 +55,7 @@
 
 /datum/gm_action/atmos_leak/announce()
 	if(target_area)
-		command_announcement.Announce("Warning, hazardous [GLOB.meta_gas_names[gas_type]] gas leak detected in \the [target_area], evacuate the area.", "Hazard Alert")
+		command_announcement.Announce("Warning, hazardous [global.gas_data.names[gas_type]] gas leak detected in \the [target_area], evacuate the area.", "Hazard Alert")
 
 /datum/gm_action/atmos_leak/start()
 	if(!target_turf)
@@ -69,7 +69,7 @@
 		// Fow now just add a bunch of it to the air
 		var/datum/gas_mixture/air_contents = new
 		air_contents.temperature = T20C + ((severity - 1) * rand(-50, 50))
-		air_contents.gas[gas_type] = 10 * MOLES_CELLSTANDARD
+		air_contents.gas[gas_type] = 10 * CELL_MOLES
 		target_turf.assume_air(air_contents)
 		playsound(target_turf, 'sound/effects/smoke.ogg', 50, 1)
 

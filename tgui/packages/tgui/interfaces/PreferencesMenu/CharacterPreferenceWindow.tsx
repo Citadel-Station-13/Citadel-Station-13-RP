@@ -19,9 +19,9 @@ enum Page {
 }
 
 const CharacterProfiles = (props: {
-  activeSlot: number,
-  onClick: (index: number) => void,
-  profiles: (string | null)[],
+  readonly activeSlot: number,
+  readonly onClick: (index: number) => void,
+  readonly profiles: (string | null)[],
 }) => {
   const { profiles } = props;
 

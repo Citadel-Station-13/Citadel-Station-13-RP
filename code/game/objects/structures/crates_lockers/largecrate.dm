@@ -4,6 +4,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "densecrate"
 	density = 1
+	worth_intrinsic = 200
 	var/list/starts_with
 	var/storage_capacity = 2 * MOB_LARGE //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -13,8 +14,8 @@
 /obj/structure/largecrate/Initialize(mapload)	//Shamelessly copied from closets.dm since the old Initializer didnt seem to function properly - Bloop
 	. = ..()
 	if(mapload)
-		addtimer(CALLBACK(src, .proc/take_contents), 0)
-	PopulateContents()
+		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
+	legacy_spawn_contents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
 
@@ -44,7 +45,7 @@
 /**
  * The proc that fills the closet with its initial contents.
  */
-/obj/structure/largecrate/proc/PopulateContents()
+/obj/structure/largecrate/proc/legacy_spawn_contents()
 	return
 
 /*	/// Doesnt work but im gonna leave this here commented out in case I broke something with the shameless copy pasta from above -Bloop
@@ -94,7 +95,7 @@
 /obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		var/obj/item/mecha_parts/mecha_equipment/ME
-		var/obj/mecha/working/hoverpod/H = new (loc)
+		var/obj/vehicle/sealed/mecha/working/hoverpod/H = new (loc)
 
 		ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
 		ME.attach(H)
@@ -106,12 +107,6 @@
 	name = "vehicle crate"
 	desc = "It comes in a box for the consumer's sake. ..How is this lighter?"
 	icon_state = "vehiclecrate"
-
-/obj/structure/largecrate/vehicle/Initialize(mapload)
-	. = ..()
-	spawn(1)
-		for(var/obj/O in contents)
-			O.update_icon()
 
 /obj/structure/largecrate/vehicle/bike
 	name = "spacebike crate"
@@ -259,37 +254,39 @@
 						/mob/living/simple_mob/vore/fennix;0.5))
 	return ..()
 
-/obj/structure/closet/crate/large/aether
+//Corporate Largecrates
+
+/obj/structure/closet/crate/large/corporate/aether
 	desc = "A hefty metal crate, painted in Aether Atmospherics and Recycling colours."
 	icon_state = "aetherlarge"
 	icon_opened = "aetherlargeopen"
 	icon_closed = "aetherlarge"
 
-/obj/structure/closet/crate/large/einstein
+/obj/structure/closet/crate/large/corporate/einstein
 	desc = "A hefty metal crate, with an Einstien Engines sticker, the company has since been bought out by Hephaestus Industries."
 	icon_state = "eelarge"
 	icon_opened = "eelargeopen"
 	icon_closed = "eelarge"
 
-/obj/structure/closet/crate/large/nanotrasen
-	desc = "A hefty metal crate, painted in standard NanoTrasen livery."
+/obj/structure/closet/crate/large/corporate/nanotrasen
+	desc = "A hefty metal crate, painted in standard Nanotrasen livery."
 	icon_state = "ntlarge"
 	icon_opened = "ntlargeopen"
 	icon_closed = "ntlarge"
 
-/obj/structure/closet/crate/large/xion
+/obj/structure/closet/crate/large/corporate/xion
 	desc = "A hefty metal crate, painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
 	icon_state = "xionlarge"
 	icon_opened = "xionlargeopen"
 	icon_closed = "xionlarge"
 
-/obj/structure/closet/crate/large/secure/heph
+/obj/structure/closet/crate/large/secure/corporate/heph
 	desc = "A hefty metal crate with an electronic locking system, marked with Hephaestus Industries colours."
 	icon_state = "hephlarge"
 	icon_opened = "hephlargeopen"
 	icon_closed = "hephlarge"
 
-/obj/structure/closet/crate/large/secure/xion
+/obj/structure/closet/crate/large/secure/corporate/xion
 	desc = "A hefty metal crate with an electronic locking system, painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
 	icon_state = "xionlargesecure"
 	icon_opened = "xionlargesecureopen"

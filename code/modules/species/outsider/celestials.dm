@@ -31,6 +31,7 @@
 
 	//Angels glow in the dark.
 	has_glowing_eyes = TRUE
+	vision_organ = O_EYES
 
 	//Physical resistances and Weaknesses.
 	flash_mod = 0.5
@@ -48,6 +49,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color)
@@ -74,7 +78,7 @@
 	hunger_factor = 0.1 //more hungry
 	brute_mod = 0.75
 	flight_mod = 0.2
-	darksight = 5
+	vision_innate = /datum/vision/baseline/species_tier_1 //! haha only tier 1 ang*ls
 
 	abilities = list(
 		/datum/ability/species/toggle_flight/auril,
@@ -130,14 +134,18 @@
 	blood_color = "#27173D"
 	base_color  = "#580412"
 
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	//Demons glow in the dark.
 	has_glowing_eyes = TRUE
-	darksight = 7
+	vision_organ = O_EYES
 
 	//Physical resistances and Weaknesses.
 	flash_mod = 3.0
 	brute_mod = 0.85
+
+	dark_slowdown = -0.5
+	light_slowdown = 0.2
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -148,6 +156,9 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,

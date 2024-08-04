@@ -5,9 +5,9 @@
 	slot_flags = SLOT_HEAD | SLOT_BELT | SLOT_OCLOTHING
 	damage_force = 3.0
 	clothing_flags = CLOTHING_IGNORE_BELTLINK
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("whipped")
-	hitsound = 'sound/weapons/towelwhip.ogg'
+	attack_sound = 'sound/weapons/towelwhip.ogg'
 	desc = "A soft cotton towel."
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
@@ -30,7 +30,7 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	user.visible_message(text("<span class='notice'>[] uses [] to towel themselves off.</span>", user, src))
+	user.visible_message(SPAN_NOTICE("[user] uses [src] to towel themselves off."))
 	playsound(user, 'sound/weapons/towelwipe.ogg', 25, 1)
 	if(H.fire_stacks > 0)
 		H.fire_stacks = (max(0, H.fire_stacks - 1.5))

@@ -1,0 +1,7 @@
+## Cross-Server Comms ##
+
+## Our secret key - used to auth incoming messages
+# COMMS_KEY default_pwd
+
+## Our server name in cross-server communications
+# CROSS_COMM_NAME Citadel Station 13 - RP

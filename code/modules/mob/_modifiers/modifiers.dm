@@ -40,8 +40,8 @@
 	/// If set, the client will have wires replaced by the given replacement list. For colorblindness.
 	var/wire_colors_replace = null
 
-//! Now for all the different effects.
-//! Percentage modifiers are expressed as a multipler. (e.g. +25% damage should be written as 1.25)
+	//* Now for all the different effects.
+	//* Percentage modifiers are expressed as a multipler. (e.g. +25% damage should be written as 1.25)
 
 	/// Adjusts max health by a flat (e.g. +20) amount.  Note this is added to base health.
 	var/max_health_flat
@@ -93,6 +93,13 @@
 	var/pulse_modifier
 	/// Positive number. If this is non-null, it will hard-set the pulse level to this. Pulse ranges from 0 to 5 normally.
 	var/pulse_set_level
+
+
+
+	// This is multiplicative. Two 50% protection modifiers will be combined into 75% protection (assuming no base protection on the mob).
+	var/heat_protection = null			// Modifies how 'heat' protection is calculated, like wearing a firesuit. 1 = full protection.
+	var/cold_protection = null			// Ditto, but for cold, like wearing a winter coat.
+	var/siemens_coefficient = null		// Similar to above two vars but 0 = full protection, to be consistent with siemens numbers everywhere else.
 
 	/// Vision flags to add to the mob. SEE_MOB, SEE_OBJ, etc.
 	var/vision_flags
@@ -161,7 +168,7 @@
 // Call this to add a modifier to a mob. First argument is the modifier type you want, second is how long it should last, in ticks.
 // Third argument is the 'source' of the modifier, if it's from someone else.  If null, it will default to the mob being applied to.
 // The SECONDS/MINUTES macro is very helpful for this.  E.g. M.add_modifier(/datum/modifier/example, 5 MINUTES)
-/mob/living/proc/add_modifier(var/modifier_type, var/expire_at = null, var/mob/living/origin = null)
+/mob/living/proc/add_modifier(var/modifier_type, var/duration = null, var/mob/living/origin = null, silent = FALSE)
 	// First, check if the mob already has this modifier.
 	for(var/datum/modifier/M in modifiers)
 		if(ispath(modifier_type, M))
@@ -172,8 +179,8 @@
 					break // No point checking anymore.
 				if(MODIFIER_STACK_EXTEND)
 					// Not allow to add a second instance, but we can try to prolong the first instance.
-					if(expire_at && world.time + expire_at > M.expire_at)
-						M.expire_at = world.time + expire_at
+					if(duration && world.time + duration > M.expire_at)
+						M.expire_at = world.time + duration
 					return
 
 	// If we're at this point, the mob doesn't already have it, or it does but stacking is allowed.
@@ -181,9 +188,9 @@
 	if(!mod.can_apply(src))
 		qdel(mod)
 		return
-	if(expire_at)
-		mod.expire_at = world.time + expire_at
-	if(mod.on_created_text)
+	if(duration)
+		mod.expire_at = world.time + duration
+	if(mod.on_created_text && !silent)
 		to_chat(src, mod.on_created_text)
 	modifiers.Add(mod)
 	mod.on_applied()
@@ -219,11 +226,19 @@
 		M.expire(silent)
 
 // Checks if the mob has a modifier type.
-/mob/living/proc/has_modifier_of_type(var/modifier_type)
+/mob/living/has_modifier_of_type(var/modifier_type)
+	return get_modifier_of_type(modifier_type) ? TRUE : FALSE
+
+// Always False, just so I can replace blinded checks with modifier checks
+/mob/proc/has_modifier_of_type(var/modifier_type)
+	return FALSE
+
+// Gets the first instance of a specific modifier type or subtype.
+/mob/living/proc/get_modifier_of_type(var/modifier_type)
 	for(var/datum/modifier/M in modifiers)
 		if(istype(M, modifier_type))
-			return TRUE
-	return FALSE
+			return M
+	return null
 
 // This displays the actual 'numbers' that a modifier is doing.  Should only be shown in OOC contexts.
 // When adding new effects, be sure to update this as well.

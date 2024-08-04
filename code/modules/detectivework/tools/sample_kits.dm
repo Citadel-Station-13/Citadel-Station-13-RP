@@ -2,7 +2,7 @@
 	name = "forensic sample"
 	icon = 'icons/obj/forensics.dmi'
 	atom_flags = NOPRINT
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/list/evidence = list()
 
 /obj/item/sample/Initialize(mapload, atom/supplied)
@@ -129,7 +129,7 @@
 	name = "fiber collection kit"
 	desc = "A magnifying glass and tweezers. Used to lift suit fibers."
 	icon_state = "m_glass"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/evidence_type = "fiber"
 	var/evidence_path = /obj/item/sample/fibers
 
@@ -140,15 +140,15 @@
 	var/obj/item/sample/S = new evidence_path(get_turf(user), supplied)
 	to_chat(user, "<span class='notice'>You transfer [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]s" : "[evidence_type]"] to \the [S].</span>")
 
-/obj/item/forensics/sample_kit/afterattack(var/atom/A, var/mob/user, var/proximity)
-	if(!proximity)
+/obj/item/forensics/sample_kit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	add_fingerprint(user)
-	if(can_take_sample(user, A))
-		take_sample(user,A)
+	if(can_take_sample(user, target))
+		take_sample(user,target)
 		return 1
 	else
-		to_chat(user, "<span class='warning'>You are unable to locate any [evidence_type]s on \the [A].</span>")
+		to_chat(user, "<span class='warning'>You are unable to locate any [evidence_type]s on \the [target].</span>")
 		return ..()
 
 /obj/item/forensics/sample_kit/powder

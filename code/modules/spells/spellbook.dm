@@ -5,13 +5,13 @@
 	icon_state ="spellbook"
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/uses = 5
 	var/temp = null
 	var/max_uses = 5
 	var/op = 1
 
-/obj/item/spellbook/attack_self(mob/user = usr)
+/obj/item/spellbook/attack_self(mob/user)
 	if(!user)
 		return
 	if((user.mind && !wizards.is_antagonist(user.mind)))
@@ -226,9 +226,7 @@
 							new /obj/item/scrying(get_turf(H))
 							if (!(MUTATION_XRAY in H.mutations))
 								H.mutations.Add(MUTATION_XRAY)
-								H.AddSightSelf(SEE_MOBS|SEE_OBJS|SEE_TURFS)
-								H.SetSeeInDarkSelf(8)
-								H.SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+								H.add_vision_modifier(/datum/vision/augmenting/observer)
 								to_chat(H, "<span class='notice'>The walls suddenly disappear.</span>")
 							temp = "You have purchased a scrying orb, and gained x-ray vision."
 							max_uses--
@@ -273,7 +271,7 @@
 	else
 		user.add_spell(S)
 		to_chat(user, "<span class='notice'>you rapidly read through the arcane book. Suddenly you realize you understand [spellname]!</span>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[user.real_name] ([user.ckey]) learned the spell [spellname] ([S]).</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='orange'>[user.real_name] ([user.ckey]) learned the spell [spellname] ([S]).</font>"
 		onlearned(user)
 
 /obj/item/spellbook/oneuse/proc/recoil(mob/user)
@@ -317,10 +315,10 @@
 	icon_state ="bookblind"
 	desc = "This book looks blurry, no matter how you look at it."
 
-/obj/item/spellbook/oneuse/blind/recoil(mob/user)
+/obj/item/spellbook/oneuse/blind/recoil(mob/living/user)
 	..()
 	to_chat(user, "<span class='warning'>You go blind!</span>")
-	user.Blind(10)
+	user.apply_status_effect(/datum/status_effect/sight/blindness, 10 SECONDS)
 
 /obj/item/spellbook/oneuse/mindswap
 	spell = /spell/targeted/mind_transfer
@@ -366,7 +364,7 @@
 			add_verb(user, V)
 
 	ghost.mind.transfer(user)
-	user.key = ghost.key
+	ghost.transfer_client_to(user)
 	user.spell_list = ghost.spell_list
 
 	if(user.mind.special_verbs.len)

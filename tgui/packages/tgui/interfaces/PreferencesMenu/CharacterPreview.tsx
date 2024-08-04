@@ -1,8 +1,8 @@
 import { ByondUi } from "../../components";
 
 export const CharacterPreview = (props: {
-  height: string,
-  id: string,
+  readonly height: string,
+  readonly id: string,
 }) => {
   return (<ByondUi
     width="220px"

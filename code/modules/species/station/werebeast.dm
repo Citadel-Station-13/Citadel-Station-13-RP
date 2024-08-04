@@ -10,7 +10,6 @@
 	icobase       = 'icons/mob/species/werebeast/body.dmi'
 	deform        = 'icons/mob/species/werebeast/deformed_body.dmi'
 	preview_icon  = 'icons/mob/species/werebeast/preview.dmi'
-	tail = "tail"
 
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN
@@ -22,7 +21,8 @@
 	metabolic_rate = 2
 	item_slowdown_mod = 0.25
 	hunger_factor = 0.4
-	darksight = 8
+	vision_innate = /datum/vision/baseline/species_tier_3
+	vision_organ = O_EYES
 	mob_size  = MOB_LARGE
 
 	max_age = 200

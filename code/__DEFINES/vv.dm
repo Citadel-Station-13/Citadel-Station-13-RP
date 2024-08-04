@@ -96,6 +96,12 @@
 #define VV_HK_EDIT_COLOR_MATRIX "edit_color_matrix"
 #define VV_HK_EDIT_ARMOR "edit_armor"
 
+// /mob
+/// used on /mob as well as /obj/item/organ
+#define VV_HK_ADD_PHYSIOLOGY_MODIFIER "add_physiology_mod"
+/// used on /mob as well as /obj/item/organ
+#define VV_HK_REMOVE_PHYSIOLOGY_MODIFIER "remove_physiology_mod"
+
 /*
 // /obj
 #define VV_HK_OSAY "osay"

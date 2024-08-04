@@ -28,8 +28,8 @@
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
 
-	melee_damage_lower = 1
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 1
+	legacy_melee_damage_upper = 3
 	attacktext = list("shocked")
 
 	min_oxy = 0
@@ -150,7 +150,7 @@
 			return 0
 
 	else
-		O.melee_attack_chain(src, user, user.zone_sel.selecting)
+		O.melee_interaction_chain(src, user, user.zone_sel.selecting)
 
 /mob/living/simple_mob/spiderbot/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
@@ -168,7 +168,7 @@
 
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
-		src.ckey = M.brainmob.ckey
+		set_ckey(M.brainmob.ckey)
 		src.name = "spider-bot ([M.brainmob.name])"
 		src.languages = M.brainmob.languages
 
@@ -276,7 +276,7 @@
 
 	var/list/items = list()
 	for(var/obj/item/I in view(1,src))
-		if(I.loc != src && I.w_class <= ITEMSIZE_SMALL && I.Adjacent(src) )
+		if(I.loc != src && I.w_class <= WEIGHT_CLASS_SMALL && I.Adjacent(src) )
 			items.Add(I)
 
 	var/obj/selection = input("Select an item.", "Pickup") in items
@@ -296,7 +296,7 @@
 	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
 	return 0
 
-/mob/living/simple_mob/spiderbot/examine(mob/user)
+/mob/living/simple_mob/spiderbot/examine(mob/user, dist)
 	. = ..()
 	if(src.held_item)
 		. += "It is carrying [icon2html(thing = src, target = world)] \a [src.held_item]."

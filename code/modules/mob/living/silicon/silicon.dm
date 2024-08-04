@@ -63,6 +63,11 @@
 	init_id()
 	init_subsystems()
 
+	for(var/datum/language/L as anything in SScharacters.all_languages())
+		if(L.translation_class & TRANSLATION_CLASS_LEVEL_1)
+			add_language(L)
+	add_language(LANGUAGE_EAL)
+
 /mob/living/silicon/Destroy()
 	silicon_mob_list -= src
 	for(var/datum/alarm_handler/AH in SSalarms.all_handlers)
@@ -92,7 +97,6 @@
 
 /mob/living/silicon/handle_regular_hud_updates()
 	. = ..()
-	SetSeeInDarkSelf(8)
 	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 	SetSightSelf(SIGHT_FLAGS_DEFAULT)
 	if(bodytemp)
@@ -111,16 +115,16 @@
 /mob/living/silicon/emp_act(severity)
 	switch(severity)
 		if(1)
-			src.take_organ_damage(0,20,emp=1)
+			src.take_random_targeted_damage(brute = 0, burn = 20, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
 			Confuse(5)
 		if(2)
-			src.take_organ_damage(0,15,emp=1)
+			src.take_random_targeted_damage(brute = 0, burn = 15, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
 			Confuse(4)
 		if(3)
-			src.take_organ_damage(0,10,emp=1)
+			src.take_random_targeted_damage(brute = 0, burn = 10, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
 			Confuse(3)
 		if(4)
-			src.take_organ_damage(0,5,emp=1)
+			src.take_random_targeted_damage(brute = 0, burn = 5, damage_mode = DAMAGE_MODE_INTERNAL, weapon_descriptor = "electromagnetic surge")
 			Confuse(2)
 	flash_eyes(affect_silicon = 1)
 	to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
@@ -237,7 +241,7 @@
 
 /mob/living/silicon/check_languages()
 	set name = "Check Known Languages"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set src = usr
 
 	var/dat = "<b><font size = 5>Known Languages</font></b><br/><br/>"
@@ -263,17 +267,14 @@
 	var/sensor_type = input("Please select sensor type.", "Sensor Integration", null) as null|anything in list("Security","Medical","Disable")
 	if(isnull(sensor_type))
 		return
-	switch(hudmode)
-		if("Security")
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(src)
-		if("Medical")
-			get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(src)
+
+	self_perspective.remove_atom_hud(source = ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 	switch(sensor_type)
 		if ("Security")
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(src)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/security/advanced, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Security records overlay enabled.</span>")
 		if ("Medical")
-			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(src)
+			self_perspective.add_atom_hud(/datum/atom_hud/data/human/medical, ATOM_HUD_SOURCE_SILICON_SENSOR_AUGMENT)
 			to_chat(src,"<span class='notice'>Life signs monitor overlay enabled.</span>")
 		if ("Disable")
 			to_chat(src,"Sensor augmentations disabled.")
@@ -283,14 +284,16 @@
 /mob/living/silicon/verb/pose()
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	pose =  sanitize(input(usr, "This is [src]. It is...", "Pose", null)  as text)
+
+	visible_emote("adjusts its posture.")
 
 /mob/living/silicon/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	flavor_text =  sanitize(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
 
@@ -298,7 +301,7 @@
 	return 1
 
 /mob/living/silicon/legacy_ex_act(severity)
-	if(!blinded)
+	if(!has_status_effect(/datum/status_effect/sight/blindness))
 		flash_eyes()
 
 	switch(severity)
@@ -393,10 +396,6 @@
 
 /mob/living/silicon/setEarDamage()
 	return
-
-/mob/living/silicon/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
-	. = ..()
-	cameraFollow = null
 
 /mob/living/silicon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(affect_silicon)

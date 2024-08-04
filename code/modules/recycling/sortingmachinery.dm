@@ -97,7 +97,7 @@
 			I.pixel_y = -3
 		add_overlay(I)
 
-/obj/structure/bigDelivery/examine(mob/user)
+/obj/structure/bigDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -217,7 +217,7 @@
 				I.pixel_y = -3
 		add_overlay(I)
 
-/obj/item/smallDelivery/examine(mob/user)
+/obj/item/smallDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. += "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -228,12 +228,12 @@
 	name = "package wrapper"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "deliveryPaper"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/amount = 25.0
 
 
-/obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/packageWrap/afterattack(atom/movable/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
 		return
 	if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
@@ -246,7 +246,7 @@
 	if(user in target) //no wrapping closets that you are inside - it's not physically possible
 		return
 
-	user.attack_log += text("\[[time_stamp()]\] <font color=#4F49AF>Has used [src.name] on \ref[target]</font>")
+	user.attack_log += "\[[time_stamp()]\] <font color=#4F49AF>Has used [name] on \ref[target]</font>"
 
 
 	if (istype(target, /obj/item) && !(istype(target, /obj/item/storage) && !istype(target,/obj/item/storage/box)))
@@ -258,8 +258,8 @@
 					user.client.screen -= O
 			P.wrapped = O
 			O.forceMove(P)
-			P.w_class = O.w_class
-			var/i = round(O.w_class)
+			P.set_weight_class(O.w_class)
+			var/i = round(O.get_weight_class())
 			if(i in list(1,2,3,4,5))
 				P.icon_state = "deliverycrate[i]"
 				switch(i)
@@ -314,7 +314,7 @@
 		return
 	return
 
-/obj/item/packageWrap/examine(mob/user)
+/obj/item/packageWrap/examine(mob/user, dist)
 	. = ..()
 	. += "<font color=#4F49AF>There are [amount] units of package wrap left!</font>"
 
@@ -325,11 +325,11 @@
 	icon_state = "dest_tagger"
 	var/currTag = 0
 
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	slot_flags = SLOT_BELT
 
-/obj/item/destTagger/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/destTagger/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/destTagger/ui_interact(mob/user, datum/tgui/ui)
@@ -352,7 +352,7 @@
 		return
 	ui_interact(user)
 
-/obj/item/destTagger/ui_act(action, params)
+/obj/item/destTagger/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	add_fingerprint(usr)
@@ -386,7 +386,7 @@
 	return
 
 /obj/machinery/disposal/deliveryChute/Bumped(var/atom/movable/AM) //Go straight into the chute
-	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect) || istype(AM, /obj/mecha))	return
+	if(istype(AM, /obj/projectile) || istype(AM, /obj/effect) || istype(AM, /obj/vehicle/sealed/mecha))	return
 	switch(dir)
 		if(NORTH)
 			if(AM.loc.y != src.loc.y+1) return

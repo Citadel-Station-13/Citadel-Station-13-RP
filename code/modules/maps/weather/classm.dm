@@ -1,22 +1,21 @@
 /datum/atmosphere/planet/classm
-	base_gases = list(
-	/datum/gas/oxygen = 0.22,
-	/datum/gas/nitrogen = 0.78
+	base = list(
+		/datum/gas/oxygen = 0.22,
+		/datum/gas/nitrogen = 0.78,
 	)
-	base_target_pressure = 110.1
-	minimum_pressure = 110.1
-	maximum_pressure = 110.1
-	minimum_temp = 293.3
-	maximum_temp = 307.3
-
+	pressure_low = 110.1
+	pressure_high = 110.1
+	temperature_low = 293.3
+	temperature_high = 307.3
 
 /datum/time/classm
 	seconds_in_day = 10 HOURS
 
-/datum/planet/classm
+/datum/planet/classm //This is currently unused
 	name = "Class-M Gaia Planet"
 	desc = "A beautiful, lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/classm()
+	weather_holder = /datum/weather_holder/classm
 
 /datum/planet/classm/update_sun()
 	..()
@@ -27,14 +26,14 @@
 	sun_position = distance_from_noon / noon
 	sun_position = abs(sun_position - 1)
 
-	var/low_brightness = null
-	var/high_brightness = null
+	var/low_brightness = 0.9
+	var/high_brightness = 1.0
 
-	var/low_color = null
-	var/high_color = null
-	var/min = 0
+	var/low_color = "#DDDDDD"
+	var/high_color = "#FFFFFF"
+	var/min = 0.70
 
-	switch(sun_position)
+/*	switch(sun_position)
 		if(0 to 0.40) // Night
 			low_brightness = 0.35
 			low_color = "#110077"
@@ -65,7 +64,7 @@
 
 			high_brightness = 1.0
 			high_color = "#FFFFFF"
-			min = 0.70
+			min = 0.70 */
 
 	var/interpolate_weight = (abs(min - sun_position)) * 4
 	var/weather_light_modifier = 1
@@ -107,11 +106,7 @@
 		WEATHER_BLOOD_MOON	= new /datum/weather/classm/blood_moon(),
 		)
 	roundstart_weather_chances = list(
-		WEATHER_CLEAR		= 75,
-		WEATHER_OVERCAST	= 15,
-		WEATHER_RAIN		= 5,
-		WEATHER_STORM		= 4,
-		WEATHER_BLOODMOON	= 0
+		WEATHER_CLEAR		= 100
 		)
 
 /datum/weather/classm
@@ -122,8 +117,7 @@
 /datum/weather/classm/clear
 	name = "clear"
 	transition_chances = list(
-		WEATHER_CLEAR = 90,
-		WEATHER_OVERCAST = 10
+		WEATHER_CLEAR = 100
 		)
 	transition_messages = list(
 		"The sky clears up.",
@@ -137,10 +131,7 @@
 	name = "overcast"
 	light_modifier = 0.8
 	transition_chances = list(
-		WEATHER_CLEAR = 70,
-		WEATHER_OVERCAST = 10,
-		WEATHER_RAIN = 19,
-		WEATHER_BLOODMOON = 1
+		WEATHER_OVERCAST = 100
 		)
 	observed_message = "It is overcast, all you can see are clouds."
 	transition_messages = list(
@@ -161,9 +152,7 @@
 	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
 
 	transition_chances = list(
-		WEATHER_OVERCAST = 40,
-		WEATHER_RAIN = 55,
-		WEATHER_STORM = 5
+		WEATHER_RAIN = 100
 		)
 	observed_message = "The sky is dark, and rain falls down upon you."
 	transition_messages = list(
@@ -219,9 +208,7 @@
 
 
 	transition_chances = list(
-		WEATHER_RAIN = 40,
-		WEATHER_STORM = 45,
-		WEATHER_OVERCAST = 5
+		WEATHER_STORM = 100
 		)
 
 /datum/weather/classm/storm/process_effects()
@@ -269,8 +256,7 @@
 	light_color = "#FF0000"
 	flight_failure_modifier = 25
 	transition_chances = list(
-		WEATHER_BLOODMOON = 90,
-		WEATHER_OVERCAST = 10
+		WEATHER_BLOODMOON = 100
 		)
 	observed_message = "Everything is red. Something really ominous is going on."
 	transition_messages = list(

@@ -3,9 +3,9 @@ import { RandomSetting } from "./data";
 import { exhaustiveCheck } from "common/exhaustive";
 
 export const RandomizationButton = (props: {
-  dropdownProps?: Record<string, unknown>,
-  setValue: (newValue: RandomSetting) => void,
-  value: RandomSetting,
+  readonly dropdownProps?: Record<string, unknown>,
+  readonly setValue: (newValue: RandomSetting) => void,
+  readonly value: RandomSetting,
 }) => {
   const {
     dropdownProps = {},

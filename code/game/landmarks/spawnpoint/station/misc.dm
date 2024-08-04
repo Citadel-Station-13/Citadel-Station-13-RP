@@ -4,7 +4,7 @@
 
 /obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle
 	method = LATEJOIN_METHOD_ARRIVALS_SHUTTLE
-	announce_template = "%NAME%, %JOB%, has arrived on the installation."
+	announce_template = "%NAME%, %JOB%, has arrived by shuttle."
 
 /obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle/OnSpawn(mob/M, client/C)
 	. = ..()
@@ -15,11 +15,6 @@
 	// 	var/atom/movable/screen/splash/Spl = new(C, TRUE)
 	// 	Spl.Fade(TRUE)
 	// 	M.playsound_local(get_turf(M), 'sound/voice/ApproachingTG.ogg', 25)
-
-
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock
-	method = LATEJOIN_METHOD_SHUTTLE_DOCK
-	announce_template = "%NAME%, %JOB%, has arrived by shuttle."
 
 /obj/landmark/spawnpoint/latejoin/station/gateway
 	method = LATEJOIN_METHOD_GATEWAY

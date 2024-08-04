@@ -12,7 +12,7 @@
 	density = FALSE
 	anchored = TRUE
 	rad_flags = RAD_NO_CONTAMINATE
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	plane = TURF_PLANE
 
 

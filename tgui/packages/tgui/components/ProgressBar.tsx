@@ -10,12 +10,12 @@ import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { CSS_COLORS } from '../constants';
 
 interface ProgressBarProps extends BoxProps {
-  className?: string;
-  value: number;
-  minValue?: number;
-  maxValue?: number;
-  ranges?: Record<any, [number, number]>;
-  color?: any;
+  readonly className?: string;
+  readonly value: number;
+  readonly minValue?: number;
+  readonly maxValue?: number;
+  readonly ranges?: Record<any, [number, number]>;
+  readonly color?: any;
 }
 
 export const ProgressBar = (props: ProgressBarProps) => {

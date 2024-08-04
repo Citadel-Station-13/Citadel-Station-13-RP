@@ -2,6 +2,8 @@
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
+ *
+ * todo: rewrite directlyRouteComponent and other stuff? ~silicons
  */
 
 import { selectBackend, useBackend } from './backend';
@@ -18,12 +20,12 @@ const routingNotFound = (props, context) => {
   return tgui_root? (
     <Window>
       <Window.Content scrollable>
-        <div>Interface <b>{config.interface}</b> was not found.</div>
+        <div>Interface <b>{config.interface || "!!NULL!!"}</b> was not found.</div>
       </Window.Content>
     </Window>
   ) : (
     <Section>
-      <div>Module <b>{tgui_module}</b> was not found.</div>
+      <div>Module <b>{tgui_module || "!!NULL!!"}</b> was not found.</div>
     </Section>
   );
 };

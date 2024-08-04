@@ -5,7 +5,7 @@
 	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
 	gauge_icon = null
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	item_icons = list(
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
@@ -16,7 +16,7 @@
 	var/on = 0.0
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
-	action_button_name = "Toggle Jetpack"
+	item_action_name = "Toggle Jetpack"
 
 /obj/item/tank/jetpack/Initialize(mapload)
 	. = ..()
@@ -27,34 +27,33 @@
 	QDEL_NULL(ion_trail)
 	return ..()
 
-/obj/item/tank/jetpack/examine(mob/user)
+/obj/item/tank/jetpack/examine(mob/user, dist)
 	. = ..()
 	if(air_contents.total_moles < 5)
 		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of gas!</span>"
 		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
+/obj/item/tank/jetpack/update_icon_state()
+	icon_state = "[base_icon_state || initial(icon_state)][on ? "-on" : ""]"
+	return ..()
+
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	stabilization_on = !( stabilization_on )
 	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
 /obj/item/tank/jetpack/verb/toggle()
 	set name = "Toggle Jetpack"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	on = !on
 	if(on)
-		icon_state = "[icon_state]-on"
 		ion_trail.start()
 	else
-		icon_state = initial(icon_state)
 		ion_trail.stop()
 
-	if (ismob(usr))
-		var/mob/M = usr
-		M.update_inv_back()
-		M.update_action_buttons()
+	update_full_icon()
 
 	to_chat(usr, "You toggle the thrusters [on? "on":"off"].")
 
@@ -67,14 +66,14 @@
 
 	var/datum/gas_mixture/G = air_contents.remove(num)
 
-	var/allgases = G.gas[/datum/gas/carbon_dioxide] + G.gas[/datum/gas/nitrogen] + G.gas[/datum/gas/oxygen] + G.gas[/datum/gas/phoron]
+	var/allgases = G.gas[GAS_ID_CARBON_DIOXIDE] + G.gas[GAS_ID_NITROGEN] + G.gas[GAS_ID_OXYGEN] + G.gas[GAS_ID_PHORON]
 	if(allgases >= 0.005)
 		return 1
 
 	qdel(G)
 	return
 
-/obj/item/tank/jetpack/ui_action_click()
+/obj/item/tank/jetpack/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle()
 
 /obj/item/tank/jetpack/void
@@ -85,7 +84,7 @@
 
 /obj/item/tank/jetpack/void/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(GAS_ID_OXYGEN, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/oxygen
 	name = "jetpack (oxygen)"
@@ -95,7 +94,7 @@
 
 /obj/item/tank/jetpack/oxygen/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/gas/oxygen, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(GAS_ID_OXYGEN, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/carbondioxide
 	name = "jetpack (carbon dioxide)"
@@ -106,7 +105,7 @@
 
 /obj/item/tank/jetpack/carbondioxide/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/gas/carbon_dioxide, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas(GAS_ID_CARBON_DIOXIDE, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/jetpack/hardsuit
 	name = "jetpack"
@@ -129,7 +128,7 @@
 
 	var/datum/gas_mixture/G = pressure_vessel.air_contents.remove(num)
 
-	var/allgases = G.gas[/datum/gas/carbon_dioxide] + G.gas[/datum/gas/nitrogen] + G.gas[/datum/gas/oxygen] + G.gas[/datum/gas/phoron]
+	var/allgases = G.gas[GAS_ID_CARBON_DIOXIDE] + G.gas[GAS_ID_NITROGEN] + G.gas[GAS_ID_OXYGEN] + G.gas[GAS_ID_PHORON]
 	if(allgases >= 0.005)
 		return 1
 	qdel(G)

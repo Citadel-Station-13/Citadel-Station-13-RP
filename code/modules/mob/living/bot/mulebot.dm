@@ -79,7 +79,7 @@
 		ui = new(user, src, "MuleBot", "Mulebot [suffix ? "([suffix])" : ""]")
 		ui.open()
 
-/mob/living/bot/mulebot/ui_data(mob/user)
+/mob/living/bot/mulebot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"suffix" = suffix,
 		"power" = on,
@@ -93,7 +93,7 @@
 	)
 	return data
 
-/mob/living/bot/mulebot/ui_act(action, params)
+/mob/living/bot/mulebot/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -181,7 +181,7 @@
 	locked = !locked
 	to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
 	flick("mulebot-emagged", src)
-	playsound(loc, 'sound/effects/sparks1.ogg', 100, 0)
+	playsound(loc, /datum/soundbyte/grouped/sparks, 100, 0)
 	return 1
 
 /mob/living/bot/mulebot/update_icons()

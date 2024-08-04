@@ -4,6 +4,7 @@
 	icon_state = "pipe_d"
 	density = TRUE
 	anchored = TRUE
+	worth_intrinsic = 500
 	var/unwrenched = FALSE
 	var/wait = FALSE
 	///The default layer selected on the machine.
@@ -16,10 +17,9 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/pipedispenser/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/pipes),
-	)
+/obj/machinery/pipedispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/pipes
+	return ..()
 
 /obj/machinery/pipedispenser/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -27,7 +27,7 @@
 		ui = new(user, src, "PipeDispenser", name)
 		ui.open()
 
-/obj/machinery/pipedispenser/ui_data(mob/user)
+/obj/machinery/pipedispenser/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"disposals" = disposals,
 		"p_layer" = p_layer,
@@ -59,7 +59,7 @@
 
 	return data
 
-/obj/machinery/pipedispenser/ui_act(action, params)
+/obj/machinery/pipedispenser/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

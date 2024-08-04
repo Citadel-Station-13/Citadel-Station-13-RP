@@ -60,7 +60,7 @@
 		ui = new(user, src, "OperatingComputer", "Patient Monitor")
 		ui.open()
 
-/obj/machinery/computer/operating/ui_data(mob/user)
+/obj/machinery/computer/operating/ui_data(mob/user, datum/tgui/ui)
 	var/data[0]
 	var/mob/living/carbon/human/occupant
 	if(table)
@@ -132,7 +132,7 @@
 
 	return data
 
-/obj/machinery/computer/operating/ui_act(action, params)
+/obj/machinery/computer/operating/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))

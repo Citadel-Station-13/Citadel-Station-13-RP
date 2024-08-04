@@ -9,7 +9,6 @@
 	item_state = "hypo"
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
-	unacidable = 1
 	volume = 30
 	possible_transfer_amounts = null
 	atom_flags = OPENCONTAINER
@@ -75,7 +74,7 @@
 
 	if(H.reagents)
 		var/contained = reagentlist()
-		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_BLOOD)
+		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_INJECT)
 		add_attack_logs(user,H,"Injected with [src.name] containing [contained], trasferred [trans] units")
 		to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
 		return TRUE
@@ -143,6 +142,12 @@
 	filled_reagents = list("inaprovaline" = 5)
 	preserve_item = 0
 	hyposound = 'sound/effects/hypospray.ogg'
+	materials_base = list(
+		MAT_STEEL = 250,
+		MAT_GLASS = 250,
+	)
+	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+
 
 /obj/item/reagent_containers/hypospray/autoinjector/on_reagent_change()
 	..()
@@ -169,7 +174,7 @@
 	else
 		icon_state = "[initial(icon_state)]0"
 
-/obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
+/obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It is currently loaded.</span>"
@@ -188,6 +193,7 @@
 	icon_state = "autoinjector"
 	amount_per_transfer_from_this = 15
 	volume = 15
+	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 500,)
 	origin_tech = list(TECH_BIO = 4)
 	filled_reagents = list("inaprovaline" = 15)
 
@@ -431,7 +437,7 @@
 	else
 		icon_state = "[initial(icon_state)]_ready"
 
-/obj/item/reagent_containers/hypospray/glukoz/examine(mob/user)
+/obj/item/reagent_containers/hypospray/glukoz/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It is currently loaded.</span>"

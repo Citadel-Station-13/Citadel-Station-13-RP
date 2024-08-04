@@ -92,9 +92,9 @@
 
 /datum/category_item/player_setup_item/general/flavor/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	. = TRUE
-	if(!length(prefs.flavor_texts["general"]))
+	if(!length(prefs.flavor_texts["general"]) && !length(prefs.flavour_texts_robot["flavour_texts_robot_Default"]))
 		var/enforcing = CONFIG_GET(flag/enforce_flavor_text)
-		var/error = "Missing or insufficient general flavor text - See Character Setup for information."
+		var/error = "Missing or insufficient general flavor text - See Character Setup for information. You need either 'general' flavor text, or 'Default' robot flavor text set."
 		if(enforcing)
 			errors += error
 			. = FALSE

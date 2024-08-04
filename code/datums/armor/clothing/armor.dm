@@ -71,3 +71,10 @@
 	laser = 0.6
 	energy = 0.3
 	bomb = 0.2
+
+/datum/armor/general/baroque_military
+	melee = 0.4
+	bullet = 0.3
+	laser = 0.4
+	energy = 0.3
+	bomb = 0.2

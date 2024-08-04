@@ -150,7 +150,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/mask/breath,
 		/obj/item/reagent_containers/glass/rag,
-		/obj/item/reagent_containers/food/snacks/liquidfood,
+		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/storage/secure/briefcase,
 		/obj/item/storage/briefcase,
 		/obj/item/storage/backpack,
@@ -254,7 +254,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/reagent_containers/food/snacks/mysterysoup,
 		/obj/item/reagent_containers/food/snacks/hotdog,
 		/obj/item/pizzabox,
-		/obj/item/ammo_casing/spent,
 		/obj/item/stack/rods{amount = 5},
 		/obj/item/stack/material/steel{amount = 5},
 		/obj/item/stack/material/cardboard{amount = 5},
@@ -376,7 +375,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/cell/device,
 		/obj/item/circuitboard/broken,
 		/obj/item/circuitboard/arcade,
-		/obj/item/circuitboard/autolathe,
+		/obj/item/circuitboard/machine/lathe/autolathe,
 		/obj/item/circuitboard/atmos_alert,
 		/obj/item/circuitboard/airalarm,
 		/obj/item/circuitboard/fax,
@@ -386,7 +385,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/circuitboard/rcon_console,
 		/obj/item/smes_coil,
 		/obj/item/cartridge/engineering,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/healthanalyzer,
 		/obj/item/robotanalyzer,
 		/obj/item/lightreplacer,
@@ -1082,7 +1081,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/ammo_magazine/m75,
+		/obj/item/ammo_magazine/a75,
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mortar
 		)
 

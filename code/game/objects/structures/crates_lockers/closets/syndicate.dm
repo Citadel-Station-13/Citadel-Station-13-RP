@@ -1,9 +1,7 @@
 /obj/structure/closet/syndicate
 	name = "armory closet"
 	desc = "Why is this here?"
-	icon_state = "syndicate"
-	icon_closed = "syndicate"
-	icon_opened = "syndicateopen"
+	closet_appearance = /singleton/closet_appearance/tactical
 
 /obj/structure/closet/syndicate/personal
 	desc = "It's a storage unit for operative gear."
@@ -37,7 +35,7 @@
 	desc = "It's a storage unit for nuclear-operative gear."
 
 	starts_with = list(
-	/obj/item/ammo_magazine/m10mm = 5,
+	/obj/item/ammo_magazine/a10mm = 5,
 	/obj/item/storage/box/handcuffs,
 	/obj/item/storage/box/flashbangs,
 	/obj/item/gun/energy/gun = 5,

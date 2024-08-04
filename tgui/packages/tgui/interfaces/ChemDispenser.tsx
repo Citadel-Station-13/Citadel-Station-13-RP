@@ -1,4 +1,5 @@
-import { BooleanLike } from "common/react";
+
+import { BooleanLike } from "../../common/react";
 import { useBackend, useSharedState } from "../backend";
 import { Button, LabeledList, NoticeBox, NumberInput, ProgressBar, Section, Stack } from "../components";
 import { Window } from "../layouts";
@@ -161,7 +162,10 @@ export const ChemDispenser = (props, context) => {
             ))
           }
         </Section>
-        <Section title="Synthesis">
+        <Section title="Synthesis" buttons={
+          <Button icon="question"onClick={() =>
+            act('guide')} />
+        }>
           {sortedReagents.map((reagent) => (
             <Button
               icon="tint"

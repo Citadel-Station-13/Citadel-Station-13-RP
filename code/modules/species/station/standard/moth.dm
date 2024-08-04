@@ -4,6 +4,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /proc/init_moth_lore()
 	return json_decode(file2text('strings/misc/moth_species.json'))
 
+/datum/physiology_modifier/intrinsic/species/nepid
+
 /datum/species/moth
 	name = SPECIES_MOTH
 	uid = SPECIES_ID_MOTH
@@ -19,10 +21,16 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	icobase = 'icons/mob/species/moth/body.dmi'
 	deform  = 'icons/mob/species/moth/body.dmi'
 
-	wing = "moth_plain"
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_EARS = /datum/sprite_accessory/ears/bodyset/moth,
+		SPRITE_ACCESSORY_SLOT_WINGS = /datum/sprite_accessory/wing/bodyset/moth,
+	)
+
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
-	darksight = 7
+	vision_innate = /datum/vision/baseline/species_tier_2
+	vision_organ = O_EYES
+
 	// i'd like to see oyu move in water with wings
 	water_movement = 0.3
 	// TODO: slightly brittle because i can't give them brittle bones on this rotten species backend until we make species backend more Fun
@@ -129,6 +137,9 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)
 	abilities = list(
 		/datum/ability/species/toggle_flight
@@ -153,22 +164,32 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	"}
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/physiology_modifier/intrinsic/species/nepid/dark
+	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_DARK
+	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_DARK
+
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
 
 	// darksight, but weak to light
-	darksight = 7
+	vision_innate = /datum/vision/baseline/species_tier_2
 	flash_burn = 5
 	flash_mod = 1.2
+
+/datum/physiology_modifier/intrinsic/species/nepid/light
+	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_LIGHT
+	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_LIGHT
 
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
 
 	// hardy, but no darksight
-	darksight = 2
+	vision_innate = /datum/vision/baseline/species_tier_0
 	flash_mod = 0.5
 	item_slowdown_mod = 0.5

@@ -15,9 +15,11 @@
 	assisted_langs = list()
 
 	light_dam = 2
-	darksight = 8
+	vision_innate = /datum/vision/baseline/species_tier_3
 	has_organ = list()
 	siemens_coefficient = 0
+
+	vision_organ = O_EYES
 
 	blood_color = "#CCCCCC"
 	flesh_color = "#AAAAAA"

@@ -44,7 +44,16 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	uwu=cyber_uwu;\
 	question=cyber_question;\
 	lowpower=cyber_lowpower;\
-	idle=cyber_idle"
+	idle=cyber_idle;\
+	catface=cyber_catface;\
+	eyes_normal=cyber_eyes_normal;\
+	eyes_happy=cyber_eyes_happy;\
+	eyes_sad=cyber_eyes_sad;\
+	eyes_big=cyber_eyes_big;\
+	confounded=cyber_confounded;\
+	eyes_confounded=cyber_eyes_confounded;\
+	halffrown=cyber_halffrown;\
+	angry=cyber_angry"
 
 /proc/populate_robolimb_list()
 	GLOB.basic_robolimb = new()
@@ -61,6 +70,10 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 				var/species_company = R.species_alternates[species]
 				if(species_company in GLOB.all_robolimbs)
 					R.species_alternates[species] = GLOB.all_robolimbs[species_company]
+
+/datum/sprite_accessory/tail/legacy_robolimb
+	do_colouration = FALSE
+	abstract_type = /datum/sprite_accessory/tail/legacy_robolimb
 
 /datum/robolimb
 	/// Shown when selecting the limb.
@@ -99,10 +112,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/robo_brute_mod = 1
 	/// Multiplier for incoming burn damage.
 	var/robo_burn_mod = 1
-	/// Cyberlimbs dmi includes a tail sprite to wear.
-	var/includes_tail
-	/// Cyberlimbs dmi includes a wing sprite to wear.
-	var/includes_wing
 	/// If it should make the torso a species
 	var/suggested_species = SPECIES_HUMAN
 	/// Species in this list cannot take these prosthetics.
@@ -111,6 +120,16 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	var/list/species_alternates = list(SPECIES_TAJ = "Unbranded - Tajaran", SPECIES_UNATHI = "Unbranded - Unathi")
 	/// List of ckeys that are allowed to pick this in charsetup.
 	var/list/whitelisted_to
+
+	/// typepath or id of sprite accessory to default for, for tail
+	var/datum/sprite_accessory/legacy_includes_tail
+
+/datum/robolimb/New()
+	if(ispath(legacy_includes_tail))
+		var/datum/sprite_accessory/casted = legacy_includes_tail
+		legacy_includes_tail = initial(casted.id)
+	if(istext(legacy_includes_tail))
+		legacy_includes_tail = GLOB.sprite_accessory_tails[legacy_includes_tail]
 
 /datum/robolimb/unbranded_monitor
 	company = "Unbranded Monitor"
@@ -156,27 +175,38 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_teshari.dmi'
 	unavailable_to_build = TRUE
 
+/datum/robolimb/unbranded_digitigrade
+	company = "Unbranded - Generic Digitigrade"
+	desc = "A digitigrade robotic leg of a fairly generic design."
+	icon = 'icons/mob/cyberlimbs/unbranded/unbranded_digitigrade.dmi'
+	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+
 /datum/robolimb/nanotrasen
-	company = "NanoTrasen"
-	desc = "A simple but efficient robotic limb, created by NanoTrasen."
+	company = "Nanotrasen"
+	desc = "A simple but efficient robotic limb, created by Nanotrasen."
 	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_main.dmi'
-	species_alternates = list(SPECIES_TAJ = "NanoTrasen - Tajaran", SPECIES_UNATHI = "NanoTrasen - Unathi")
+	species_alternates = list(SPECIES_TAJ = "Nanotrasen - Tajaran", SPECIES_UNATHI = "Nanotrasen - Unathi")
+
+/datum/robolimb/mpc
+	company = "Moghes Prosthetics Company"
+	desc = "A simple robotic limb with a lizard-like design."
+	icon = 'icons/mob/cyberlimbs/mpc/mpc.dmi'
 
 /datum/robolimb/nanotrasen_tajaran
-	company = "NanoTrasen - Tajaran"
+	company = "Nanotrasen - Tajaran"
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_SKRELL, SPECIES_ZADDAT)
-	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
+	species_alternates = list(SPECIES_HUMAN = "Nanotrasen")
 	suggested_species = SPECIES_TAJ
-	desc = "A simple but efficient robotic limb, created by NanoTrasen."
+	desc = "A simple but efficient robotic limb, created by Nanotrasen."
 	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_tajaran.dmi'
 	unavailable_to_build = TRUE
 
 /datum/robolimb/nanotrasen_unathi
-	company = "NanoTrasen - Unathi"
+	company = "Nanotrasen - Unathi"
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
-	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
+	species_alternates = list(SPECIES_HUMAN = "Nanotrasen")
 	suggested_species = SPECIES_UNATHI
-	desc = "A simple but efficient robotic limb, created by NanoTrasen."
+	desc = "A simple but efficient robotic limb, created by Nanotrasen."
 	icon = 'icons/mob/cyberlimbs/nanotrasen/nanotrasen_unathi.dmi'
 	unavailable_to_build = TRUE
 
@@ -213,7 +243,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
 	suggested_species = SPECIES_TESHARI
 	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
-	species_alternates = list(SPECIES_HUMAN = "NanoTrasen")
+	species_alternates = list(SPECIES_HUMAN = "Nanotrasen")
 	unavailable_to_build = TRUE
 
 /datum/robolimb/gestaltframe
@@ -457,7 +487,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 
-
 /datum/robolimb/xion_monitor
 	company = "Xion Monitor"
 	desc = "Xion Mfg.'s unique spin on a popular prosthetic head model. It looks and minimalist and utilitarian."
@@ -465,8 +494,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
-
-
 
 /datum/robolimb/zenghu
 	company = "Zeng-Hu"
@@ -476,8 +503,6 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	skin_tone = TRUE
 
-
-
 /datum/robolimb/cyber_beast
 	company = "Cyber Tech"
 	desc = "Adjusted for deep space the material is durable, and heavy."
@@ -485,6 +510,10 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	unavailable_to_build = TRUE
 	parts = list(BP_HEAD)
 	monitor_styles = cyberbeast_monitor_styles
+
+/datum/robolimb/cyber_beast/flat
+	company = "Cyber Tech (Flat)"
+	icon = 'icons/mob/cyberlimbs/c-tech/c_beast_flat.dmi'
 
 /datum/robolimb/wooden
 	company = "Morgan Trading Co"
@@ -497,6 +526,14 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	company = "Replikant"
 	desc = "An advanced biomechanical prosthetic with pegs for feet."
 	icon = 'icons/mob/cyberlimbs/replikant/replikant.dmi'
+	lifelike = 1
+	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
+	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+
+/datum/robolimb/replika2
+	company = "Replikant - 2nd Gen"
+	desc = "Modern, second-generation biomechanical prosthetics with pegs for feet."
+	icon = 'icons/mob/cyberlimbs/replikant/replikant2.dmi'
 	lifelike = 1
 	modular_bodyparts = MODULAR_BODYPART_PROSTHETIC
 	parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
@@ -555,7 +592,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/zeng_hu)
 
 /obj/item/disk/limb/nanotrasen
-	company = "NanoTrasen"
+	company = "Nanotrasen"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/nanotrasen)
 
 
@@ -595,7 +632,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	desc = "This limb has a slight salvaged handicraft vibe to it. The CE-marking on it is definitely not the standardized one, it looks more like a hand-written sharpie monogram."
 	icon = 'icons/mob/cyberlimbs/_fluff_vr/rahboop.dmi'
 	blood_color = "#5e280d"
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd
 	unavailable_to_build = TRUE
 
 /obj/item/disk/limb/eggnerdltd
@@ -644,7 +681,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	desc = "A slightly more refined limb variant from Eggnerd Prototyping. Its got red plating instead of orange."
 	icon = 'icons/mob/cyberlimbs/rahboopred/rahboopred.dmi'
 	blood_color = "#5e280d"
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/eggnerd_red
 	unavailable_to_build = TRUE
 
 /obj/item/disk/limb/eggnerdltdred
@@ -661,8 +698,8 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/DSITajaran/dsi_tajaran.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_tajaran
 	unavailable_to_build = TRUE
-	includes_tail = 1
 	skin_tone = 1
 	suggested_species = SPECIES_TAJ
 	speech_bubble_appearance = "normal"
@@ -678,7 +715,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_lizard
 	skin_tone = 1
 	suggested_species = SPECIES_UNATHI
 	speech_bubble_appearance = "normal"
@@ -694,7 +731,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_naramadi
 	skin_tone = 1
 	suggested_species = SPECIES_SERGAL
 	speech_bubble_appearance = "normal"
@@ -710,7 +747,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_nevrean
 	skin_tone = 1
 	suggested_species = SPECIES_NEVREAN
 	speech_bubble_appearance = "normal"
@@ -726,7 +763,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_vulpkanin
 	skin_tone = 1
 	suggested_species = SPECIES_VULPKANIN
 	speech_bubble_appearance = "normal"
@@ -741,8 +778,8 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	icon = 'icons/mob/cyberlimbs/DSIAkula/dsi_akula.dmi'
 	blood_color = "#ffe2ff"
 	lifelike = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_akula
 	unavailable_to_build = TRUE
-	includes_tail = 1
 	skin_tone = 1
 	suggested_species = SPECIES_AKULA
 	speech_bubble_appearance = "normal"
@@ -758,7 +795,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	blood_color = "#ffe2ff"
 	lifelike = 1
 	unavailable_to_build = TRUE
-	includes_tail = 1
+	legacy_includes_tail = /datum/sprite_accessory/tail/bodyset/oss_spider
 	skin_tone = 1
 	suggested_species = SPECIES_VASILISSAN
 	speech_bubble_appearance = "normal"

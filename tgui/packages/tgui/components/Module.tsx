@@ -34,6 +34,7 @@ export class Module<T extends ModuleProps> extends Component<T, {}> {
     return {
       ...this.context,
       is_module: true,
+      m_section: this.props.section,
       m_id: id,
       m_ref: ref,
       m_tgui: ui_name,

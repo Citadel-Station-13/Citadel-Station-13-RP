@@ -1,19 +1,19 @@
 var/list/pai_emotions = list(
-		"Happy" = 1,
-		"Cat" = 2,
-		"Extremely Happy" = 3,
-		"Face" = 4,
-		"Laugh" = 5,
-		"Off" = 6,
-		"Sad" = 7,
-		"Angry" = 8,
-		"What" = 9,
-		"Neutral" = 10,
-		"Silly" = 11,
-		"Nose" = 12,
-		"Smirk" = 13,
-		"Exclamation Points" = 14,
-		"Question Mark" = 15
+		"null",
+		"what",
+		"sad",
+		"off",
+		"laugh",
+		"happy",
+		"face",
+		"estatic",
+		"cat",
+		"angry",
+		"sunglasses",
+		"woozy",
+		"bookworm",
+		"greenjary",
+		"character",
 	)
 
 
@@ -84,7 +84,6 @@ var/global/list/default_pai_software = list()
 	for(var/name in pai_emotions)
 		var/emote[0]
 		emote["name"] = name
-		emote["id"] = pai_emotions[name]
 		emotions[++emotions.len] = emote
 
 	data["emotions"] = emotions
@@ -125,7 +124,7 @@ var/global/list/default_pai_software = list()
 		return 1
 
 	else if(href_list["image"])
-		var/img = text2num(href_list["image"])
-		if(1 <= img && img <= (pai_emotions.len))
+		var/img = href_list["image"]
+		if(img in pai_emotions)
 			card.setEmotion(img)
 		return 1

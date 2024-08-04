@@ -25,20 +25,7 @@
 	return 0
 
 /proc/atmosanalyzer_scan(var/atom/target, var/datum/gas_mixture/mixture, var/mob/user)
-	var/list/results = list()
-
-	if (mixture && mixture.total_moles > 0)
-		var/pressure = mixture.return_pressure()
-		var/total_moles = mixture.total_moles
-		results += "<span class='notice'>Pressure: [QUANTIZE(pressure)] kPa</span>"
-		for(var/mix in mixture.gas)
-			results += "<span class='notice'>[GLOB.meta_gas_names[mix]]: [QUANTIZE((mixture.gas[mix] / total_moles) * 100)]%</span>"
-		results += "<span class='notice'>Temperature: [QUANTIZE(mixture.temperature-T0C)]&deg;C</span>"
-		results += "<span class='notice'>Total Moles: [QUANTIZE(total_moles)]</span>"
-	else
-		results += "<span class='notice'>\The [target] is empty!</span>"
-
-	return results
+	return mixture.chat_analyzer_scan(GAS_GROUP_UNKNOWN, TRUE, TRUE)
 
 /turf/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air, user)
@@ -66,10 +53,12 @@
 /obj/machinery/atmospherics/component/unary/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air_contents, user)
 
+// todo: components should allow each end to be analyzed separately.
+
 /obj/machinery/atmospherics/component/binary/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air1, user)
 
-/obj/machinery/atmospherics/component/trinary/atmos_filter/atmosanalyze(var/mob/user)
+/obj/machinery/atmospherics/component/trinary/filter/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air1, user)
 
 /obj/machinery/atmospherics/component/trinary/mixer/atmosanalyze(var/mob/user)

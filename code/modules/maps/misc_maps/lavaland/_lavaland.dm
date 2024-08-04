@@ -1,6 +1,6 @@
 // Shuttle Path for lava land
 // -- Datums -- //
-/*/obj/effect/overmap/visitable/sector/lavaland
+/*/obj/overmap/entity/visitable/sector/lavaland
 	name = "Mineral Rich Planet"			// The name of the destination
 	desc = "Sensors indicate that this is a world filled with minerals.  There seems to be a thin atmosphere on the planet."
 	icon_state = "globe"
@@ -34,7 +34,7 @@
 	return
 
 /obj/machinery/lavaland_entryportal/proc/move_object(atom/movable/AM, turf/T)
-	if(AM.anchored && !istype(AM, /obj/mecha))
+	if(AM.anchored && !istype(AM, /obj/vehicle/sealed/mecha))
 		return
 
 	if(isliving(AM))
@@ -68,7 +68,7 @@
 	return
 
 /obj/effect/lavaland_exitportal/proc/move_object(atom/movable/AM, turf/T)
-	if(AM.anchored && !istype(AM, /obj/mecha))
+	if(AM.anchored && !istype(AM, /obj/vehicle/sealed/mecha))
 		return
 
 	if(isliving(AM))

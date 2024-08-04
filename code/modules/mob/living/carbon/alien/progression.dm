@@ -43,7 +43,7 @@
 			else
 				adult.fully_replace_character_name(name, newname)
 	else
-		adult.key = src.key
+		transfer_client_to(adult)
 
 	drop_inventory(TRUE, TRUE, TRUE)
 

@@ -1,18 +1,45 @@
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/item/radio/intercom, 28)
 /obj/item/radio/intercom
 	name = "station intercom (General)"
 	desc = "Talk through this."
-	icon = 'icons/obj/radio.dmi'
+	icon = 'icons/obj/intercom.dmi'
 	icon_state = "intercom"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	canhear_range = 2
 	atom_flags = NOBLOODY
 	var/circuit = /obj/item/circuitboard/intercom
 	var/number = 0
 	var/last_tick //used to delay the powercheck
 	var/wiresexposed = 0
+	var/overlay_color = PIPE_COLOR_GREEN
+
+/obj/item/radio/intercom/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	switch(dir)
+		if(NORTH)
+			base_pixel_y = -28
+		if(SOUTH)
+			base_pixel_y = 28
+		if(WEST)
+			base_pixel_x = 28
+		if(EAST)
+			base_pixel_x = -28
+	reset_pixel_offsets()
+
+/obj/item/radio/intercom/update_icon(updates)
+	cut_overlays()
+	if(!on)
+		icon_state = "intercom-p"
+	else
+		icon_state = "intercom_[broadcasting][listening]"
+		var/image/I = image(icon, "intercom_overlay")
+		I.color = overlay_color
+		add_overlay(I)
 
 /obj/item/radio/intercom/custom
 	name = "station intercom (Custom)"
@@ -31,7 +58,7 @@
 	name = "\improper Spec Ops intercom"
 	frequency = ERT_FREQ
 	subspace_transmission = 1
-	centComm = 1
+	centcom = 1
 
 /obj/item/radio/intercom/department
 	canhear_range = 5
@@ -40,13 +67,13 @@
 
 /obj/item/radio/intercom/department/medbay
 	name = "station intercom (Medbay)"
-	icon_state = "medintercom"
 	frequency = MED_I_FREQ
+	overlay_color = COLOR_TEAL
 
 /obj/item/radio/intercom/department/security
 	name = "station intercom (Security)"
-	icon_state = "secintercom"
 	frequency = SEC_I_FREQ
+	overlay_color = COLOR_MAROON
 
 /obj/item/radio/intercom/entertainment
 	name = "entertainment intercom"
@@ -191,16 +218,7 @@
 			else
 				on = A.powered(EQUIP) // set "on" to the power status
 
-		if(!on)
-			if(wiresexposed)
-				icon_state = "intercom-p_open"
-			else
-				icon_state = "intercom-p"
-		else
-			if(wiresexposed)
-				icon_state = "intercom_open"
-			else
-				icon_state = initial(icon_state)
+		update_icon()
 
 /obj/item/radio/intercom/locked
     var/locked_frequency

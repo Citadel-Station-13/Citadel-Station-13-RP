@@ -14,24 +14,44 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 //define THIS_PROC_TYPE_WEIRD_STR "[THIS_PROC_TYPE_WEIRD]" //Included for completeness
 //define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])" //Ditto
 
-#define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
+/// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
+///
+/// * Invisibility is different from just hiding something via plane masters.
+/// * They're more akin to images, where we actively block the client from seeing it if they don't have it
+/// * They're not as secure as images, because invisibility is still a client-side check
+/// * Invisibility completely hides objects from view() queries, verb queries, and more.
+///
+/// That said, this is nowhere near as granular and arbitrarily controllable as planes, so,
+/// the only things we use invisibility on are
+///
+/// * Lighting (TODO: should we remove this? we use planes now)
+/// * Fullscreens (piggybacks off lighting)
+/// * Observers / Ghosts (we don't want them to be interactable at all)
+/// * Underfloor objects (we don't want them to be interactable at all)
+/// * Abstract objects (we don't want them to be interactable at all)
 
-// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
 #define INVISIBILITY_LEVEL_TWO		45
 #define INVISIBILITY_OBSERVER		60
 #define INVISIBILITY_EYE			61
 
-#define SEE_INVISIBLE_LIVING		25
+#define SEE_INVISIBLE_MINIMUM		5
 #define SEE_INVISIBLE_NOLIGHTING	15
+#define SEE_INVISIBLE_LIVING		25
 #define SEE_INVISIBLE_LEVEL_ONE		35
 #define SEE_INVISIBLE_LEVEL_TWO		45
 #define SEE_INVISIBLE_CULT			60
 #define SEE_INVISIBLE_OBSERVER		61
 
-#define SEE_INVISIBLE_MINIMUM		5
+/// Underfloor things are by default, this invisibility.
+#define INVISIBILITY_UNDERFLOOR		90
+/// Maximum invisibility without being abstract.
 #define INVISIBILITY_MAXIMUM		100
+/// At this invisibility, some weird things happen.
+///
+/// * The thing basically isn't a real object anymore for some contexts.
+/// * view(), range(), etc, won't pick the atom up.
 #define INVISIBILITY_ABSTRACT		101
 
 /// Pseudo-Invis, like Ninja, Ling, Etc.
@@ -39,7 +59,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define EFFECTIVE_INVIS				50
 
 /// default mob sight flags
-#define SIGHT_FLAGS_DEFAULT (SEE_SELF)
+#define SIGHT_FLAGS_DEFAULT (SEE_SELF | SEE_BLACKNESS)
 
 /// For the client FPS pref and anywhere else
 #define MAX_CLIENT_FPS	200
@@ -47,10 +67,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 /// Used to trigger removal from a processing list.
 #define PROCESS_KILL	26
-/// Used in chargen for accessory loadout limit.
-#define MAX_GEAR_COST					20
-/// Used in chargen for accessory loadout limit on holidays.
-#define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
 //	Shuttles.
 
@@ -90,6 +106,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHELTER_DEPLOY_BAD_AREA			"bad area"
 #define SHELTER_DEPLOY_ANCHORED_OBJECTS	"anchored objects"
 
+#define MAX_SCRIBBLE_LEN		512
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
 /// I'm not sure about "easily". It can be a lot longer.
 #define MAX_MESSAGE_LEN			4096
@@ -97,7 +114,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_BOOK_MESSAGE_LEN	24576
 #define MAX_RECORD_LENGTH		24576
 #define MAX_LNAME_LEN			64
-#define MAX_NAME_LEN			52
+#define MAX_NAME_LEN			64
+
 /// 512GQ file
 #define MAX_TEXTFILE_LENGTH		128000
 // Event defines.
@@ -129,65 +147,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define WALL_CAN_OPEN	1
 #define WALL_OPENING	2
-
-
-// Material Defines
-#define MAT_BANANIUM		"bananium"
-#define MAT_CARBON			"carbon"
-#define MAT_CHITIN			"chitin"
-#define MAT_COPPER			"copper"
-#define MAT_DIAMOND			"diamond"
-#define MAT_DURASTEEL		"durasteel"
-#define MAT_DURASTEELHULL	"durasteel hull"
-#define MAT_GLASS			"glass"
-#define MAT_GOLD			"gold"
-#define MAT_GRAPHITE		"graphite"
-#define MAT_HARDLOG			"hardwood log"
-#define MAT_HARDWOOD		"hardwood"
-#define MAT_HEMATITE		"hematite"
-#define MAT_IRON			"iron"
-#define MAT_LEAD			"lead"
-#define MAT_LEATHER			"leather"
-#define MAT_LOG				"log"
-#define MAT_MARBLE			"marble"
-#define MAT_METALHYDROGEN	"mhydrogen"
-#define MAT_MORPHIUM		"morphium"
-#define MAT_MORPHIUMHULL	"morphium hull"
-#define MAT_OSMIUM			"osmium"
-#define MAT_PHORON			"phoron"
-#define MAT_PLASTEEL		"plasteel"
-#define MAT_PLASTEELHULL	"plasteel hull"
-#define MAT_PLASTIC			"plastic"
-#define MAT_PLATINUM		"platinum"
-#define MAT_SIFLOG			"alien log"
-#define MAT_SIFWOOD			"alien wood"
-#define MAT_SILENCIUM		"silencium"
-#define MAT_SILVER			"silver"
-#define MAT_SNOW			"snow"
-#define MAT_STEEL			"steel"
-#define MAT_STEELHULL		"steel hull"
-#define MAT_SUPERMATTER		"supermatter"
-#define MAT_TITANIUM		"titanium"
-#define MAT_TITANIUMHULL	"titanium hull"
-#define MAT_URANIUM			"uranium"
-#define MAT_VALHOLLIDE		"valhollide"
-#define MAT_VAUDIUM			"vaudium"
-#define MAT_VERDANTIUM		"verdantium"
-#define MAT_WOOD			"wood"
-
-
-#define SHARD_SHARD			"shard"
-#define SHARD_SHRAPNEL		"shrapnel"
-#define SHARD_STONE_PIECE	"piece"
-#define SHARD_SPLINTER		"splinters"
-#define SHARD_NONE			""
-
-#define MATERIAL_UNMELTABLE	0x1
-#define MATERIAL_BRITTLE	0x2
-#define MATERIAL_PADDING	0x4
-
-/// Amount table damage is multiplied by if it is made of a brittle material (e.g. glass)
-#define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4
 
 #define BOMBCAP_DVSTN_RADIUS	(max_explosion_range/4)
 #define BOMBCAP_HEAVY_RADIUS	(max_explosion_range/2)
@@ -229,6 +188,10 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAX_NTNET_LOGS	500
 #define MIN_NTNET_LOGS	10
 
+#define NTOS_EMAIL_NONEWMESSAGES	0
+#define NTOS_EMAIL_NOTIFALREADY		1
+#define NTOS_EMAIL_NEWMESSAGE		2
+
 
 // Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
 /// If the projectile should continue flying after calling bullet_act()
@@ -256,6 +219,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Job groups
+// todo: nuke this from fucking orbit during job refactor
 #define DEPARTMENT_CARGO			"cargo"
 #define DEPARTMENT_CIVILIAN			"civilian"
 #define DEPARTMENT_COMMAND			"command"
@@ -284,7 +248,6 @@ var/list/economy_station_departments = list(
 	DEPARTMENT_SECURITY
 )
 
-
 // Off-duty time
 #define PTO_CARGO			"Cargo"
 #define PTO_CIVILIAN		"Civilian"
@@ -302,7 +265,7 @@ var/list/economy_station_departments = list(
 /// Because everyone misspells it
 #define TSC_HEPH	"Hephaestus"
 #define TSC_MORPH	"Morpheus"
-#define TSC_NT		"NanoTrasen"
+#define TSC_NT		"Nanotrasen"
 #define TSC_VM		"Vey Med"
 #define TSC_WT		"Ward-Takahashi"
 /// Not really needed but consistancy I guess.
@@ -316,14 +279,6 @@ var/list/economy_station_departments = list(
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
-
-// Maploader bounds indices
-#define MAP_MINX	1
-#define MAP_MINY	2
-#define MAP_MINZ	3
-#define MAP_MAXX	4
-#define MAP_MAXY	5
-#define MAP_MAXZ	6
 
 // /atom/proc/use_check flags
 #define USE_ALLOW_NONLIVING			1
@@ -426,11 +381,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 /// Embed chance unset for embed_chance var on /obj/item.
 #define EMBED_CHANCE_UNSET	-1337
 
-
-/// No hitsound define
-#define HITSOUND_UNSET	"UNSET"
-
-
 /// Herm Gender
 /// Snowflake Global that throws a fit
 #define HERM "herm"
@@ -447,10 +397,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define MR_NORMAL	0
 #define MR_UNSURE	1
 #define MR_DEAD		2
-
-//Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
-#define HOLY_WEAPONS /obj/item/nullrod
-#define HOLY_ICONS /obj/item/godfig
 
 // Used by radios to indicate that they have sent a message via something other than subspace
 #define RADIO_CONNECTION_FAIL 0

@@ -13,6 +13,7 @@
 	use_power = USE_POWER_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 15000	//15000 W ~ 20 HP
+	hides_underfloor_underlays = TRUE
 
 	var/injecting = 0
 
@@ -21,8 +22,6 @@
 	var/frequency = 0
 	var/id = null
 	var/datum/radio_frequency/radio_connection
-
-	level = 1
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/Initialize(mapload)
 	. = ..()
@@ -55,8 +54,8 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -69,7 +68,7 @@
 		power_draw = pump_gas(src, air_contents, environment, transfer_moles, power_rating)
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 		if(network)
@@ -102,14 +101,14 @@
 		ui = new(user, src, "AtmosPump", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/ui_data()
+/obj/machinery/atmospherics/component/unary/outlet_injector/ui_data(mob/user, datum/tgui/ui)
 	var/data = list()
 	data["on"] = injecting
 	data["rate"] = round(volume_rate)
 	data["max_rate"] = round(air_contents.volume)
 	return data
 
-/obj/machinery/atmospherics/component/unary/outlet_injector/ui_act(action, params)
+/obj/machinery/atmospherics/component/unary/outlet_injector/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 
@@ -193,9 +192,6 @@
 	spawn(2)
 		broadcast_status()
 	update_icon()
-
-/obj/machinery/atmospherics/component/unary/outlet_injector/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/attack_hand(mob/user, list/params)
 	ui_interact(user)

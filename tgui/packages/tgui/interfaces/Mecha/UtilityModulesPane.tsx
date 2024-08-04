@@ -39,7 +39,7 @@ const MECHA_SNOWFLAKE_ID_EJECTOR = "ejector_snowflake";
 const MECHA_SNOWFLAKE_ID_EXTINGUISHER = "extinguisher_snowflake";
 
 // Handles all the snowflake buttons and whatever
-const Snowflake = (props: {module: MechaUtility}, context) => {
+const Snowflake = (props: {readonly module: MechaUtility}, context) => {
   const {
     snowflake,
   } = props.module;
@@ -53,7 +53,7 @@ const Snowflake = (props: {module: MechaUtility}, context) => {
   }
 };
 
-const SnowflakeEjector = (props: {module: MechaUtility}, context) => {
+const SnowflakeEjector = (props: {readonly module: MechaUtility}, context) => {
   const { act, data } = useBackend<OperatorData>(context);
   const {
     cargo,
@@ -76,7 +76,7 @@ const SnowflakeEjector = (props: {module: MechaUtility}, context) => {
   );
 };
 
-const SnowflakeExtinguisher = (props: {module: MechaUtility}, context) => {
+const SnowflakeExtinguisher = (props: {readonly module: MechaUtility}, context) => {
   const { act, data } = useBackend<OperatorData>(context);
   return (
     <>

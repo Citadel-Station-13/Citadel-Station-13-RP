@@ -2,7 +2,7 @@
 	spawn()
 		var/list/pick_turfs = list()
 		var/list/Z_choices = list()
-		Z_choices |= GLOB.using_map.get_map_levels(1, FALSE)
+		Z_choices |= (LEGACY_MAP_DATUM).get_map_levels(1, FALSE)
 		for(var/turf/simulated/floor/T in world)
 			if(T.z in Z_choices)
 				if(!T.block_tele)
@@ -63,7 +63,6 @@
 	P.target = exit
 	P.creator = null
 	P.icon = 'icons/obj/objects.dmi'
-	P.failchance = 0
 	P.icon_state = "anom"
 	P.name = "wormhole"
 	spawn(rand(min_duration,max_duration))

@@ -9,7 +9,10 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	preview_icon = 'icons/mob/species/shadekin/preview_blackeyed.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-	tail = "tail"
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+	)
 
 	//TODO: Something more fitting for black-eyes
 	//TODO: CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why they're around wherever we are.
@@ -32,7 +35,9 @@
 	//rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
 	siemens_coefficient = 1 // Mirroring the shockproof removal of Shadekin
-	darksight = 10 // Best darksight around
+
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
+	vision_organ = O_EYES
 
 	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
 	item_slowdown_mod = 2 // Originally 1.5. They're not as physically fits, slowed down more by heavy gear.
@@ -138,7 +143,7 @@
 /datum/species/crew_shadekin/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
-/datum/species/crew_shadekin/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/crew_shadekin/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	handle_shade(H)
 
 /datum/species/crew_shadekin/add_inherent_verbs(mob/living/carbon/human/H)

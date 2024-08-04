@@ -17,11 +17,11 @@ const sortJobs = (
 const PRIORITY_BUTTON_SIZE = "18px";
 
 const PriorityButton = (props: {
-  name: string,
-  color: string,
-  modifier?: string,
-  enabled: boolean,
-  onClick: () => void,
+  readonly name: string,
+  readonly color: string,
+  readonly modifier?: string,
+  readonly enabled: boolean,
+  readonly onClick: () => void,
 }) => {
   const className = `PreferencesMenu__Jobs__departments__priority`;
 
@@ -107,9 +107,9 @@ const PriorityHeaders = () => {
 };
 
 const PriorityButtons = (props: {
-  createSetPriority: CreateSetPriority,
-  isOverflow: boolean,
-  priority: JobPriority,
+  readonly createSetPriority: CreateSetPriority,
+  readonly isOverflow: boolean,
+  readonly priority: JobPriority,
 }) => {
   const { createSetPriority, isOverflow, priority } = props;
 
@@ -178,9 +178,9 @@ const PriorityButtons = (props: {
 };
 
 const JobRow = (props: {
-  className?: string,
-  job: Job,
-  name: string,
+  readonly className?: string,
+  readonly job: Job,
+  readonly name: string,
 }, context) => {
   const { data } = useBackend<PreferencesMenuData>(context);
   const { className, job, name } = props;
@@ -313,7 +313,7 @@ const Department: SFC<{ department: string}> = (props) => {
 // But in order for everything to align, I also need to add the 0.2em padding.
 // But also, we can't be aligned with names that break into multiple lines!
 const Gap = (props: {
-  amount: number,
+  readonly amount: number,
 }) => {
   // 0.2em comes from the padding-bottom in the department listing
   return <Box height={`calc(${props.amount}px + 0.2em)`} />;

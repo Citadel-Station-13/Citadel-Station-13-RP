@@ -112,7 +112,7 @@
 /area/class_d/POIs/landing_pad)
 "s" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock/multi_tile,
+/obj/machinery/door/airlock,
 /turf/simulated/floor/wood,
 /area/class_d/POIs/landing_pad)
 "t" = (
@@ -134,14 +134,14 @@
 /obj/item/clothing/shoes/black,
 /obj/item/clothing/shoes/black,
 /obj/item/gun/ballistic/shotgun/pump/rifle,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
-/obj/item/ammo_magazine/clip/c762,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
 /turf/simulated/floor/wood,
 /area/class_d/POIs/landing_pad)
 "v" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock/multi_tile,
+/obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_d/POIs/landing_pad)
 "w" = (
@@ -215,15 +215,15 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
-/obj/item/reagent_containers/food/snacks/liquidvitamin,
-/obj/item/reagent_containers/food/snacks/liquidvitamin,
-/obj/item/reagent_containers/food/snacks/liquidvitamin,
-/obj/item/reagent_containers/food/snacks/liquidprotein,
-/obj/item/reagent_containers/food/snacks/liquidprotein,
-/obj/item/reagent_containers/food/snacks/liquidprotein,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+/obj/item/reagent_containers/food/snacks/liquid/protein,
+/obj/item/reagent_containers/food/snacks/liquid/protein,
+/obj/item/reagent_containers/food/snacks/liquid/protein,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "I" = (

@@ -58,18 +58,18 @@
 	taser_kill = FALSE
 	movement_cooldown = 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
-	melee_damage_lower = 5
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 10
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"
 	speak_emote = list("chatters")
 	say_list_type = /datum/say_list/gutshank
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	var/datum/reagents/shank_gland = null
 	var/growing = 0
@@ -179,19 +179,19 @@
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
 	movement_cooldown = 4
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	bone_type = /obj/item/stack/chitin
+	bone_type = /obj/item/stack/material/chitin
 	bone_amount = 5
 
 	faction = "lavaland"
 	speak_emote = list("chatters")
 	say_list_type = /datum/say_list/gutshank
 	//I changed the ai_holder from simple/melee to retaliate/coop because when riding a Shank, it would override user inputs to charge non-faction mobs. Which is annoying.
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 	buckle_lying = FALSE
 	buckle_max_mobs = 1
@@ -210,7 +210,7 @@
 	if(istype(O, /obj/item/tool/wirecutters) && rideable)
 		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
 		rideable = 0
-		DelComponent(/datum/component/riding_handler/shank)
+		DelComponent(/datum/component/riding_handler, /datum/component/riding_handler/shank)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/shank(T)
 	if(istype(O, /obj/item/pen/charcoal) && rideable)

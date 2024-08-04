@@ -13,7 +13,7 @@
 	light_strength = 3
 	max_damage = 200
 	broken_damage = 100
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/icon_state_closed = "laptop-closed"
 
 /obj/item/modular_computer/laptop/AltClick(mob/living/carbon/user)

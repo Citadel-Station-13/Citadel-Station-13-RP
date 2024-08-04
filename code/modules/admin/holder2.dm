@@ -7,7 +7,9 @@ GLOBAL_PROTECT(href_token)
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
 	var/rights = 0
-	var/fakekey			= null
+	// todo: rework
+	/// If set, we are under stealth-mode with this as our public ckey.
+	var/fakekey = null
 
 	var/datum/marked_datum
 
@@ -25,12 +27,15 @@ GLOBAL_PROTECT(href_token)
 		log_world("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "[GLOB.using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	admin_datums[ckey] = src
 	if(rights & R_DEBUG) //grant profile access
 		world.SetConfig("APP/admin", ckey, "role=admin")
+
+	spawn(-1)
+		UNTIL(SSmapping.loaded_station)
+		admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))

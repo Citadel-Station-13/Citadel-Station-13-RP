@@ -7,9 +7,11 @@
 	default_bodytype = BODYTYPE_SERGAL
 	icobase = 'icons/mob/species/naramadi/body.dmi'
 	deform = 'icons/mob/species/naramadi/deformed_body.dmi'
-	tail = "tail"
 
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/naramadi,
+	)
+
 	slowdown      = -0.25
 	snow_movement = -1 // Ignores light snow
 	//darksight = 8
@@ -22,6 +24,7 @@
 	intrinsic_languages = LANGUAGE_ID_NARAMADI
 	name_language = LANGUAGE_ID_NARAMADI
 	color_mult = 1
+	vision_organ = O_EYES
 
 	max_age = 120
 
@@ -38,7 +41,7 @@
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
-	
+
 	reagent_tag = IS_NARAMADI
 
 	flesh_color = "#AFA59E"
@@ -84,4 +87,7 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 	)

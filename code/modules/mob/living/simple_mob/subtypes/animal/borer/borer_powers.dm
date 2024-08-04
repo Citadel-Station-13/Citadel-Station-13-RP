@@ -304,7 +304,7 @@
 			qdel(host_brain)
 			host_brain = new(src)
 
-			host_brain.ckey = host.ckey
+			host.transfer_client_to(host_brain)
 
 			host_brain.name = host.name
 
@@ -320,7 +320,7 @@
 			src.computer_id = null
 			src.lastKnownIP = null
 
-			host.ckey = src.ckey
+			transfer_client_to(host)
 
 			if(!host.computer_id)
 				host.computer_id = s2h_id
@@ -348,7 +348,5 @@
 	remove_verb(src, /mob/living/carbon/human/proc/jumpstart)
 	visible_message("<span class='warning'>With a hideous, rattling moan, [src] shudders back to life!</span>")
 
-	rejuvenate()
-	restore_blood()
-	fixblood()
-	update_mobility()
+	revive(full_heal = TRUE)
+	remove_all_restraints()

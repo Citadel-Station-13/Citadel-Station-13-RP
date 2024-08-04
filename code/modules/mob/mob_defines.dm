@@ -1,3 +1,6 @@
+/**
+ * base BYOND type for an actor, if the game world is a scene.
+ */
 /mob
 	datum_flags = DF_USE_TAG
 	density = 1
@@ -15,6 +18,16 @@
 	/// mobs use ids as ref tags instead of actual refs.
 	var/static/next_mob_id = 0
 
+	//* Actions *//
+	/// our innate action holder; actions here aren't bound to what we're controlling / touching, but instead ourselves
+	///
+	/// * control and sight of these requires mindjacking, basically
+	var/datum/action_holder/actions_innate
+	/// our controlled action holder; actions here are bound to physical control, not our own body
+	///
+	/// * control and sight of these requires only control over motion / actions
+	var/datum/action_holder/actions_controlled
+
 	//? Rendering
 	/// Fullscreen objects
 	var/list/fullscreens = list()
@@ -25,13 +38,13 @@
 	/// How are we intending to act? Help / harm / etc.
 	var/a_intent = INTENT_HELP
 
-	//? Economy
-	/// This mob's economic category
-	var/economic_category_mob = ECONOMIC_CATEGORY_MOB_DEFAULT
-
 	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
+	/// current darksight modifiers.
+	var/list/datum/vision/vision_modifiers
+	/// override darksight datum - adminbus only
+	var/datum/vision/vision_override
 
 	//? Movement
 	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
@@ -43,6 +56,16 @@
 	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
 	var/atom/movable/buckling
 
+	//* HUD (Atom)
+	/// HUDs to initialize, typepaths
+	var/list/atom_huds_to_initialize
+
+	//* HUD
+	/// active, opened storage
+	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
+	//  todo: we'll eventually need a system to handle ckey transfers properly.
+	var/datum/object_system/storage/active_storage
+
 	//? Movespeed
 	/// List of movement speed modifiers applying to this mob
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
@@ -50,16 +73,21 @@
 	var/list/movespeed_mod_immunities			//Lazy list, see mob_movespeed.dm
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/cached_multiplicative_slowdown
+	/// cached legacy movespeed multiplier -_-
+	//  todo: remove
+	var/cached_movespeed_multiply
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
 	/// Last world.time we finished a normal, non relay/intercepted move
 	var/last_move_time = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
+	/// Tracks if we have gravity from environment right now.
+	var/in_gravity
 
 	//? Physiology
 	/// overall physiology - see physiology.dm
-	var/datum/physiology/physiology
+	var/datum/global_physiology/physiology
 	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
 	var/list/datum/physiology_modifier/physiology_modifiers
 
@@ -68,8 +96,6 @@
 	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
 	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
 	var/list/actionspeed_mod_immunities			//Lazy list, see mob_movespeed.dm
-	/// The calculated mob action speed slowdown based on the modifiers list
-	var/cached_multiplicative_actions_slowdown
 
 	//? Pixel Offsets
 	/// are we shifted by the user?
@@ -78,6 +104,10 @@
 	var/shift_pixel_x = 0
 	/// shifted pixel y
 	var/shift_pixel_y = 0
+	/// pixel-shifted by user enough to let people through. this is a direction flag
+	/// although set on /mob level, this is only actually used at /living level because base /mob should not have complex block
+	/// mechanics by default.
+	var/wallflowering = NONE
 
 	//? Abilities
 	/// our abilities - set to list of paths to init to intrinsic abilities.
@@ -152,12 +182,6 @@
 	var/atom/movable/screen/wizard/energy/wiz_energy_display = null
 	var/atom/movable/screen/wizard/instability/wiz_instability_display = null
 
-	var/datum/plane_holder/plane_holder = null
-	/// List of vision planes that should be graphically visible (list of their VIS_ indexes).
-	var/list/vis_enabled = null
-	/// List of atom planes that are logically visible/interactable (list of actual plane numbers).
-	var/list/planes_visible = null
-
 	/// Spells hud icons - this interacts with add_spell and remove_spell.
 	var/list/atom/movable/screen/movable/spell_master/spell_masters = null
 	/// Ability hud icons.
@@ -183,7 +207,6 @@
 	var/sdisabilities = 0	//?Carbon
 	var/disabilities = 0	//?Carbon
 	var/transforming = null	//?Carbon
-	var/eye_blind = null	//?Carbon
 	var/eye_blurry = null	//?Carbon
 	var/ear_deaf = null		//?Carbon
 	var/ear_damage = null	//?Carbon
@@ -197,7 +220,6 @@
 	var/gen_record = ""
 	var/exploit_record = ""
 	var/exploit_addons = list()		//Assorted things that show up at the end of the exploit_record list
-	var/blinded = null
 	var/bhunger = 0			//?Carbon
 	var/ajourn = 0
 	var/druggy = 0			//?Carbon
@@ -230,7 +252,8 @@
 
 	var/timeofdeath = 0 //?Living
 
-	var/bodytemperature = 310.055 //98.7 F
+	// todo: go to carbon, simple mobs don't need environmental stabilization
+	var/bodytemperature = 310.055 //98.7 F or 36,905 C
 	var/drowsyness = 0 //?Carbon
 
 	var/nutrition = 400 //?Carbon
@@ -258,7 +281,7 @@
 	var/const/muteness = 4 //?Carbon
 
 	/// Maximum w_class the mob can pull.
-	var/can_pull_size = ITEMSIZE_NO_CONTAINER
+	var/can_pull_size = WEIGHT_CLASS_HUGE
 	/// Whether or not the mob can pull other mobs.
 	var/can_pull_mobs = MOB_PULL_LARGER
 
@@ -318,9 +341,6 @@
 	// Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
 	var/forbid_seeing_deadchat = FALSE
 
-	///Determines mob's ability to see shadows. 1 = Normal vision, 0 = darkvision.
-	var/seedarkness = 1
-
 	var/get_hardsuit_stats = 0
 
 	/// Skip processing life() if there's just no players on this Z-level.
@@ -333,11 +353,7 @@
 
 	var/registered_z
 
-	/// For mechs and fighters ambiance. Can be used in other cases.
-	var/in_enclosed_vehicle = 0
-
 	var/last_radio_sound = -INFINITY
-
 
 	//? vorestation legacy
 	/// Allows flight.

@@ -73,7 +73,7 @@
 	name = lowertext("[fullname] sandwich")
 	if(length(name) > 80)
 		name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
-	w_class = CEILING(clamp((ingredients.len/2),2,4), 1)
+	set_weight_class(CEILING(clamp((ingredients.len/2),2,4), 1))
 
 	add_overlay(overlays_to_add)
 
@@ -82,7 +82,7 @@
 		qdel(O)
 	return ..()
 
-/obj/item/reagent_containers/food/snacks/csandwich/examine(mob/user)
+/obj/item/reagent_containers/food/snacks/csandwich/examine(mob/user, dist)
 	. = ..()
 	var/obj/item/O = pick(contents)
 	. += "<font color=#4F49AF>You think you can see [O.name] in there.</font>"

@@ -34,8 +34,8 @@ for (const antagKey of requireAntag.keys()) {
 }
 
 const AntagSelection = (props: {
-  antagonists: Antagonist[],
-  name: string,
+  readonly antagonists: Antagonist[],
+  readonly name: string,
 }, context) => {
   const { act, data } = useBackend<PreferencesMenuData>(context);
   const className = "PreferencesMenu__Antags__antagSelection";

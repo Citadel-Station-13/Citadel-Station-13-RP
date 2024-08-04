@@ -10,7 +10,7 @@
 
 
 /obj/machinery/computer/aiupload/verb/AccessInternals()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Access Computer's Internals"
 	set src in oview(1)
 	if(get_dist(src, usr) > 1 || usr.restrained() || usr.lying || usr.stat || istype(usr, /mob/living/silicon))
@@ -25,7 +25,7 @@
 
 
 /obj/machinery/computer/aiupload/attackby(obj/item/O, mob/user)
-	if (GLOB.using_map && !(user.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(user.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
 	if(istype(O, /obj/item/aiModule))

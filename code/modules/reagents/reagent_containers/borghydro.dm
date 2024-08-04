@@ -120,7 +120,7 @@
 			var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>")
 
-/obj/item/reagent_containers/borghypo/examine(mob/user)
+/obj/item/reagent_containers/borghypo/examine(mob/user, dist)
 	var/datum/reagent/R = SSchemistry.reagent_lookup[reagent_ids[mode]]
 	. = ..()
 	. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
@@ -136,16 +136,20 @@
 	volume = 60
 	possible_transfer_amounts = list(5, 10, 20, 30)
 	reagent_ids = list("ale",
-		"cider",
 		"beer",
 		"berryjuice",
 		"bitters",
+		"cider",
+		"coco",
+		"coconutmilk",
 		"coffee",
 		"cognac",
 		"cola",
+		"cream",
 		"dr_gibb",
 		"egg",
 		"gin",
+		"grenadine",
 		"gingerale",
 		"hot_coco",
 		"ice",
@@ -154,6 +158,7 @@
 		"lemonjuice",
 		"lemon_lime",
 		"limejuice",
+		"matchapowder",
 		"mead",
 		"milk",
 		"mint",
@@ -167,6 +172,7 @@
 		"spacespice",
 		"specialwhiskey",
 		"sugar",
+		"taropowder",
 		"tea",
 		"tequila",
 		"tomatojuice",
@@ -181,8 +187,8 @@
 /obj/item/reagent_containers/borghypo/service/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	return
 
-/obj/item/reagent_containers/borghypo/service/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!proximity)
+/obj/item/reagent_containers/borghypo/service/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(!target.is_open_container() || !target.reagents)

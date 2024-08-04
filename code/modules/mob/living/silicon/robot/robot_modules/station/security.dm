@@ -9,7 +9,7 @@
 
 /obj/item/robot_module/robot/security/general
 	sprites = list(
-		"M-USE NanoTrasen" = "robotSecy",
+		"M-USE Nanotrasen" = "robotSecy",
 		"Cabeiri" = "eyebot-security",
 		"Cerberus" = "bloodhound",
 		"Cerberus - Treaded" = "treadhound",

@@ -162,6 +162,7 @@ STANDARD_ACCESS_DATUM(ACCESS_COMMAND_UPLOAD, station/command/upload, "AI Upload"
 #define ACCESS_COMMAND_TELEPORTER 17
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_TELEPORTER, station/command/teleporter, "Teleporter")
 
+// todo: rename / repath to general high-security storage for command
 #define ACCESS_COMMAND_EVA 18
 STANDARD_ACCESS_DATUM(ACCESS_COMMAND_EVA, station/command/eva, "EVA")
 
@@ -214,6 +215,13 @@ STANDARD_ACCESS_DATUM(ACCESS_SECURITY_MAIN, station/security/main, "Security")
 
 #define ACCESS_SECURITY_HOS 58
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_HOS, station/security/hos, "Head of Security")
+
+#define ACCESS_SECURITY_GENPOP_ENTER 111
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_GENPOP_ENTER, station/security/genpop_enter, "Genpop - Enter")
+
+#define ACCESS_SECURITY_GENPOP_EXIT 112
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_GENPOP_EXIT, station/security/genpop_exit, "Genpop - Exit")
+
 
 #define ACCESS_SECURITY_EDIT 306
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_EDIT, station/security/edit, "Security - Access Edit")
@@ -403,6 +411,18 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_PIRATE, faction/pirate, "Pirate")
 #define ACCESS_FACTION_TRADER 160//General Beruang Trader Access
 STANDARD_ACCESS_DATUM(ACCESS_FACTION_TRADER, faction/trader, "Trader")
 
+//? Gaia Station
+
+#define ACCESS_GAIA_GUEST 250//Gaia Station Basic Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_GUEST, faction/resort/guest, "Gaia Station Guest")
+
+#define ACCESS_GAIA_VIP 251//Gaia Station Premium Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_VIP, faction/resort/vip, "Gaia Station VIP")
+
+#define ACCESS_GAIA_STAFF 252//Gaia Staff Access
+STANDARD_ACCESS_DATUM(ACCESS_GAIA_STAFF, faction/resort/staff, "Gaia Station Staff")
+
+
 //? Alien
 
 #define ACCESS_FACTION_ALIEN 300 // For things like crashed ships.
@@ -424,3 +444,8 @@ STANDARD_ACCESS_DATUM(ACCESS_MISC_CASHCRATE, misc/cashcrate, "Cash Crates")
 
 #define ACCESS_SPECIAL_SILICONS 199
 STANDARD_ACCESS_DATUM(ACCESS_SPECIAL_SILICONS, special/silicons, "Synthetic")
+
+// Network
+
+#define ACCESS_NETWORK 404
+STANDARD_ACCESS_DATUM(ACCESS_NETWORK, misc/network, "Network")

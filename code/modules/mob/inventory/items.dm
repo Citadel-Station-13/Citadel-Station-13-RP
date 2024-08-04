@@ -47,6 +47,16 @@
 		playsound(src, equip_sound, 30, ignore_walls = FALSE)
 	user.update_inv_hands()
 
+	// register carry
+	if(isliving(user))
+		var/mob/living/L = user
+		if((slot == SLOT_ID_HANDS)? (item_flags & ITEM_ENCUMBERS_WHILE_HELD) : !(item_flags & ITEM_ENCUMBERS_ONLY_HELD))
+			if(flat_encumbrance)
+				L.recalculate_carry()
+			else
+				encumbrance_registered = get_encumbrance()
+				L.adjust_current_carry_encumbrance(encumbrance_registered)
+
 /**
  * called when an item is unequipped from inventory or moved around in inventory
  *
@@ -69,6 +79,15 @@
 	if(!(flags & INV_OP_DIRECTLY_DROPPING) && (slot != SLOT_ID_HANDS) && unequip_sound)
 		playsound(src, unequip_sound, 30, ignore_walls = FALSE)
 
+	// clear carry
+	if(isliving(user))
+		var/mob/living/L = user
+		if(flat_encumbrance)
+			L.recalculate_carry()
+		else if(!isnull(encumbrance_registered))
+			L.adjust_current_carry_encumbrance(-encumbrance_registered)
+			encumbrance_registered = null
+
 /**
  * called when a mob drops an item
  *
@@ -79,18 +98,9 @@
  */
 /obj/item/proc/dropped(mob/user, flags, atom/newLoc)
 	SHOULD_CALL_PARENT(TRUE)
-/*
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.Remove(user)
-*/
-	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
-		qdel(src)
 
 	hud_unlayerise()
 	item_flags &= ~ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
@@ -100,6 +110,31 @@
 	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
+
+	// unload actions
+	unregister_item_actions(user)
+
+	// clear carry
+	if(isliving(user))
+		var/mob/living/L = user
+		L.adjust_current_carry_weight(-weight_registered)
+	weight_registered = null
+
+	// close context menus
+	context_close()
+
+	// storage stuff
+	obj_storage?.on_dropped(user)
+
+	// get rid of shieldcalls
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		if(!shieldcall.shields_in_inventory)
+			continue
+		user.unregister_shieldcall(shieldcall)
+
+	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
+		qdel(src)
+		. |= ITEM_RELOCATED_BY_DROPPED
 
 	return ((. & COMPONENT_ITEM_DROPPED_RELOCATE)? ITEM_RELOCATED_BY_DROPPED : NONE)
 
@@ -115,16 +150,28 @@
 	reset_pixel_offsets()
 	hud_layerise()
 	item_flags |= ITEM_IN_INVENTORY
-	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
-	user.handle_actions()
+	// todo: should this be here
+	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
-/**
- * get the slowdown we incur when we're worn
- */
-/obj/item/proc/get_equipment_speed_mod()
-	return slowdown
+	// register carry
+	weight_registered = get_weight()
+	if(isliving(user))
+		var/mob/living/L = user
+		L.adjust_current_carry_weight(weight_registered)
+
+	// storage stuff
+	obj_storage?.on_pickup(user)
+
+	// register shieldcalls
+	for(var/datum/shieldcall/shieldcall as anything in shieldcalls)
+		if(!shieldcall.shields_in_inventory)
+			continue
+		user.register_shieldcall(shieldcall)
+
+	// load action buttons
+	register_item_actions(user)
 
 /**
  * update our worn icon if we can
@@ -221,22 +268,22 @@
 
 	switch(slot)
 		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_WORN_ID)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_BELT)
-			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot(SLOT_ID_UNIFORM))
+			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_SUIT_STORAGE)
-			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot(SLOT_ID_SUIT))
+			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot_id(SLOT_ID_SUIT))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
 					to_chat(H, SPAN_WARNING("You need a suit before you can attach [src]."))
 				return FALSE
@@ -252,7 +299,7 @@
 	if(!worn_slot)
 		return
 	if(!equip_check_beltlink(M, worn_slot, null, INV_OP_SILENT))
-		M.drop_item_to_ground(src)
+		M.drop_item_to_ground(src, INV_OP_SILENT)
 		return
 
 /**
@@ -317,10 +364,19 @@
 
 /**
  * checks if we're in inventory. if so, returns mob we're in
+ *
  * **hands count**
  */
 /obj/item/proc/is_in_inventory(include_hands)
 	return (worn_slot && ((worn_slot != SLOT_ID_HANDS) || include_hands)) && worn_mob()
+
+/**
+ * checks if we're held in hand
+ *
+ * if so, returns mob we're in
+ */
+/obj/item/proc/is_held()
+	return (worn_slot == SLOT_ID_HANDS)? worn_mob() : null
 
 /**
  * checks if we're worn. if so, return mob we're in
@@ -330,7 +386,7 @@
 /obj/item/proc/is_being_worn()
 	if(!worn_slot)
 		return FALSE
-	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(worn_slot)
+	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(worn_slot)
 	return slot_meta.inventory_slot_flags & INV_SLOT_CONSIDERED_WORN
 
 /**
@@ -367,3 +423,15 @@
 	if(slot != worn_slot || M != worn_mob())
 		return
 	return TRUE
+
+//* Shieldcall registration
+
+/obj/item/register_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		worn_mob()?.register_shieldcall(delegate)
+
+/obj/item/unregister_shieldcall(datum/shieldcall/delegate)
+	. = ..()
+	if(delegate.shields_in_inventory)
+		worn_mob()?.unregister_shieldcall(delegate)

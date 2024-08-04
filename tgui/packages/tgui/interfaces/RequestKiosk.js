@@ -86,6 +86,7 @@ export const RequestKioskContent = (props, context) => {
                   title="Request Applicants">
                   {applicants?.map(applicant => (
                     applicant.request_id === request.acc_number && (
+                    // eslint-disable-next-line react/jsx-key
                       <Flex>
                         <Flex.Item
                           grow={1}

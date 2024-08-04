@@ -1,2 +1,2 @@
-/turf/simulated/wall/elevator/Initialize(mapload, material_type, rmaterial_type, girder_material)
+/turf/simulated/wall/elevator/Initialize(mapload, material_type, rmaterial_type, material_girder)
 	return ..(mapload, "elevatorium")

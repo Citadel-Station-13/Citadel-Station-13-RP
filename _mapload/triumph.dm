@@ -1,1 +1,5 @@
-#define FORCE_MAP "_mapload/triumph.json"
+#ifdef FORCE_MAP
+	#error Duplicate FORCE_MAP, what are you doing!?
+#endif
+
+#define FORCE_MAP "triumph"

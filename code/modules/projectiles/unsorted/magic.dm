@@ -34,10 +34,11 @@
 		if(target.anti_magic_check())
 			target.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
 			return blocked
-		if(target.revive()) // full_heal = TRUE
+		if(target.revive(full_heal = TRUE))
 			to_chat(target, "<span class='notice'>You rise with a start, you're alive!!!</span>")
 		else if(target.stat != DEAD)
 			to_chat(target, "<span class='notice'>You feel great!</span>")
+			target.rejuvenate(fix_missing = TRUE)
 
 /obj/projectile/magic/teleport
 	name = "bolt of teleportation"
@@ -315,7 +316,7 @@
 	nodamage = 0
 	armor_penetration = 0
 	magic = TRUE
-	hitsound = 'sound/weapons/barragespellhit.ogg'
+	impact_sounds = 'sound/weapons/barragespellhit.ogg'
 
 /obj/projectile/magic/arcane_barrage/on_hit(target, var/mob/living/L)
 	if(ismob(target))
@@ -381,7 +382,7 @@
 
 /obj/structure/closet/decay/proc/decay()
 	animate(src, alpha = 0, time = 30)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 30)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 30)
 
 /obj/structure/closet/decay/open(mob/living/user)
 	. = ..()
@@ -389,12 +390,12 @@
 		if(icon_state == magic_icon) //check if we used the magic icon at all before giving it the lesser magic icon
 			unmagify()
 		else
-			addtimer(CALLBACK(src, .proc/decay), 15 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(decay)), 15 SECONDS)
 
 /obj/structure/closet/decay/proc/unmagify()
 	icon_state = weakened_icon
 	update_icon()
-	addtimer(CALLBACK(src, .proc/decay), 15 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(decay)), 15 SECONDS)
 
 /obj/projectile/magic/aoe
 	name = "Area Bolt"
@@ -402,13 +403,12 @@
 	damage = 0
 	var/proxdet = TRUE
 
-/obj/projectile/magic/aoe/Range()
+/obj/projectile/magic/aoe/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
 	if(proxdet)
 		for(var/mob/living/L in range(1, get_turf(src)))
 			if(L.stat != DEAD && L != firer && !L.anti_magic_check())
-				return Bump(L)
-	..()
-
+				Bump(L)
 
 /obj/projectile/magic/aoe/lightning
 	name = "lightning bolt"
@@ -482,7 +482,7 @@
 			return
 	var/turf/T = get_turf(target)
 	for(var/i=0, i<50, i+=10)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, T, -1, exp_heavy, exp_light, exp_flash, FALSE, FALSE, exp_fire), i)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), T, -1, exp_heavy, exp_light, exp_flash, FALSE, FALSE, exp_fire), i)
 
 /obj/projectile/magic/nuclear
 	name = "\proper blazing manliness"

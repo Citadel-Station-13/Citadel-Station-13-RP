@@ -74,14 +74,7 @@
 
 	AdjustConfused(-1)
 
-	blinded = !!IS_DEAD(src)
-
-
 	if (src.stuttering) src.stuttering--
-
-	if (src.eye_blind || HAS_TRAIT(src, TRAIT_BLIND))
-		src.AdjustBlinded(-1)
-		src.blinded = 1
 
 	if (src.ear_deaf > 0) src.ear_deaf--
 	if (src.ear_damage < 25)
@@ -90,8 +83,6 @@
 
 	src.density = !( src.lying )
 
-	if (src.sdisabilities & SDISABILITY_NERVOUS)
-		src.blinded = 1
 	if (src.sdisabilities & SDISABILITY_DEAF)
 		src.ear_deaf = 1
 
@@ -114,36 +105,42 @@
 			radio.on = 1
 
 	if(is_component_functioning("camera"))
-		src.blinded = 0
+		remove_blindness_source(TRAIT_BLINDNESS_CAMERA)
 	else
-		src.blinded = 1
+		add_blindness_source(TRAIT_BLINDNESS_CAMERA)
 
 	return 1
 
 /mob/living/silicon/robot/handle_regular_hud_updates()
 	. = ..()
 	var/fullbright = FALSE
-	var/seemeson = FALSE
 
 	if(stat == 2)
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 	if((MUTATION_XRAY in src.mutations) || (sight_mode & BORGXRAY))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
 	if(sight_mode & BORGMESON)
 		AddSightSelf(SEE_TURFS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
-		seemeson = TRUE
 	if(sight_mode & BORGMATERIAL)
 		AddSightSelf(SEE_OBJS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
 	if(sight_mode & BORGTHERM)
 		AddSightSelf(SEE_MOBS)
+		RemoveSightSelf(SEE_BLACKNESS)
 		fullbright = TRUE
 
-	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
-	plane_holder?.set_vis(VIS_MESONS, seemeson)
+	if(fullbright)
+		// todo: legacy, remove
+		self_perspective.legacy_force_set_hard_darkvision(0)
+	else
+		self_perspective.legacy_force_set_hard_darkvision(null)
 
 	if (src.healths)
 		if (src.stat != 2)
@@ -209,10 +206,7 @@
 //	if (src.fire) src.fire.icon_state = "fire[src.fire_alert ? 1 : 0]"
 
 	if(stat != 2)
-		if(blinded)
-			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
-		else
-			clear_fullscreen("blind")
+		//Blindness is handled by the modifier, it also sets the fullscreen overlay
 		if(disabilities & DISABILITY_NEARSIGHTED)
 			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
 		else

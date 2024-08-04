@@ -10,7 +10,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/crystal2)
 "d" = (
-/obj/item/ore/diamond,
+/obj/item/stack/ore/diamond,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/crystal2)
 

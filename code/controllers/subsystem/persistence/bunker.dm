@@ -1,11 +1,7 @@
-// Persistent panic bunker passthrough
-/datum/controller/subsystem/persistence/LoadPersistence()
-	LoadPanicBunker()
-	return ..()
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
 
-/datum/controller/subsystem/persistence/SavePersistence()
-	SavePanicBunker()
-	return ..()
+// Persistent panic bunker passthrough
 
 /datum/controller/subsystem/persistence/proc/SavePanicBunker()
 	var/json_file = file(PERSISTENCE_FILE_BUNKER_PASSTHROUGH)
@@ -20,5 +16,5 @@
 		var/list/json = json_decode(file2text(bunker_path))
 		GLOB.bunker_passthrough = json["data"]
 		for(var/ckey in GLOB.bunker_passthrough)
-			if(daysSince(GLOB.bunker_passthrough[ckey]) >= CONFIG_GET(number/max_bunker_days))
+			if(daysSince(GLOB.bunker_passthrough[ckey]) >= CONFIG_GET(number/panic_bunker_bypass))
 				GLOB.bunker_passthrough -= ckey

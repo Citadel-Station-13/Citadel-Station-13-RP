@@ -10,7 +10,8 @@
 	icon_state = "mirror_implant_f"
 	var/stored_mind = null
 	var/tmp/mob/living/carbon/human/human
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+
 //holder to prevent having to find it each time
 /mob/living/carbon/human/var/obj/item/implant/mirror/mirror
 
@@ -44,10 +45,11 @@
 		human = H
 		human.mirror = src
 
-/obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
-	if (!istype(target))
+/obj/item/implant/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	var/obj/machinery/computer/transhuman/resleeving/comp = target
+	if (!istype(comp))
 		return
-	target.active_mr = stored_mind
+	comp.active_mr = stored_mind
 
 /obj/item/implant/mirror/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mirrorscanner))
@@ -100,12 +102,12 @@
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
 /obj/item/mirrortool
 	name = "Mirror Installation Tool"
@@ -115,15 +117,15 @@
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(MAT_STEEL = 200)
+	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/mirrortool/afterattack(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return

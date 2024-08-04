@@ -105,7 +105,7 @@
 /area/submap/DecoupledEngine)
 "az" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 6
 	},
 /obj/effect/floor_decal/rust,
@@ -129,13 +129,6 @@
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/submap/DecoupledEngine)
-"aC" = (
-/obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_r";
-	dir = 4
-	},
-/turf/simulated/floor/water,
 /area/submap/DecoupledEngine)
 "aD" = (
 /obj/structure/lattice,
@@ -195,7 +188,7 @@
 "aL" = (
 /obj/structure/grille/broken,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 4
 	},
 /obj/item/material/shard/phoron,
@@ -275,18 +268,18 @@
 "aV" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 8
 	},
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aW" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 5
 	},
 /obj/effect/floor_decal/rust,
@@ -314,8 +307,7 @@
 /obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 2;
-	health = 1e+006
+	dir = 2
 	},
 /turf/template_noop,
 /area/submap/DecoupledEngine)
@@ -323,15 +315,13 @@
 /obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 2;
-	health = 1e+006
+	dir = 2
 	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /turf/template_noop,
 /area/submap/DecoupledEngine)
@@ -344,7 +334,7 @@
 /obj/machinery/power/rad_collector,
 /obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
@@ -363,7 +353,7 @@
 "bg" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
@@ -404,12 +394,12 @@
 	},
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -444,11 +434,11 @@
 "br" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 8
 	},
 /obj/structure/window/phoronreinforced,
@@ -457,7 +447,7 @@
 "bs" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced,
@@ -466,11 +456,11 @@
 "bt" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced{
-	 icon_state = "phoronrwindow";
+	icon_state = "phoronrwindow";
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
@@ -1117,7 +1107,7 @@ ab
 ab
 ab
 at
-aC
+aO
 aO
 aY
 bh

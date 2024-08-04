@@ -6,7 +6,7 @@
 /turf/simulated/wall/classd/indoors,
 /area/class_d/explored)
 "c" = (
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)

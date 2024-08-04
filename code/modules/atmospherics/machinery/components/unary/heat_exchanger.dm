@@ -4,7 +4,7 @@
 	icon = 'icons/obj/atmospherics/heat_exchanger.dmi'
 	icon_state = "intact"
 	pipe_state = "heunary"
-	density = FALSE
+	density = TRUE
 
 	var/obj/machinery/atmospherics/component/unary/heat_exchanger/partner = null
 	var/update_cycle
@@ -33,11 +33,11 @@
 	if(!partner)
 		return 0
 
-	if(!air_master || air_master.current_cycle <= update_cycle)
+	if(!SSair || SSair.current_cycle <= update_cycle)
 		return 0
 
-	update_cycle = air_master.current_cycle
-	partner.update_cycle = air_master.current_cycle
+	update_cycle = SSair.current_cycle
+	partner.update_cycle = SSair.current_cycle
 
 	var/air_heat_capacity = air_contents.heat_capacity()
 	var/other_air_heat_capacity = partner.air_contents.heat_capacity()
@@ -66,8 +66,7 @@
 /obj/machinery/atmospherics/component/unary/heat_exchanger/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
-	var/turf/T = src.loc
-	if (level==1 && isturf(T) && !T.is_plating())
+	if(is_probably_hidden_underfloor())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 	if(unsafe_pressure())

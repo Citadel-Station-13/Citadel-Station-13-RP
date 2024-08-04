@@ -5,10 +5,10 @@
  */
 
 // What each index means:
-#define DNA_OFF_LOWERBOUND 0
-#define DNA_OFF_UPPERBOUND 1
-#define DNA_ON_LOWERBOUND  2
-#define DNA_ON_UPPERBOUND  3
+#define DNA_OFF_LOWERBOUND 1
+#define DNA_OFF_UPPERBOUND 2
+#define DNA_ON_LOWERBOUND  3
+#define DNA_ON_UPPERBOUND  4
 
 // Define block bounds (off-low,off-high,on-low,on-high)
 // Used in setupgame.dm
@@ -93,8 +93,8 @@ var/global/list/datum/gene/dna_genes[0]
 #define GENE_ALWAYS_ACTIVATE 1
 
 /datum/dna
-//! READ-ONLY, GETS OVERWRITTEN
-//! DO NOT FUCK WITH THESE OR BYOND WILL EAT YOUR FACE
+	// READ-ONLY, GETS OVERWRITTEN
+	// DO NOT FUCK WITH THESE OR BYOND WILL EAT YOUR FACE
 
 	/// Encoded UI.
 	var/uni_identity   = ""
@@ -107,8 +107,8 @@ var/global/list/datum/gene/dna_genes[0]
 	var/dirtyUI = 0
 	var/dirtySE = 0
 
-//! Okay to read, but you're an idiot if you do.
-//! BLOCK = VALUE
+	// Okay to read, but you're an idiot if you do.
+	// BLOCK = VALUE
 	var/list/SE[DNA_SE_LENGTH]
 	var/list/UI[DNA_UI_LENGTH]
 
@@ -298,7 +298,7 @@ var/global/list/datum/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, GLOB.legacy_facial_hair_lookup.len,1)
 
 	body_markings.Cut()
-	
+
 	for(var/obj/item/organ/external/E in character.organs)
 		E.s_base = s_base
 		if(E.markings.len)

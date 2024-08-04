@@ -56,7 +56,7 @@
 
 /obj/item/organ/internal/lungs/grey/colormatch/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/sync_color), 15)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 15)
 
 /obj/item/organ/internal/lungs/grey/colormatch/proc/sync_color()
 	if(ishuman(owner))

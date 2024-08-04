@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 //! these wrappers are used for things that still check tools on attackby()
 //! new usages are prohibited.
 

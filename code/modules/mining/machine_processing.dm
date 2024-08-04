@@ -6,7 +6,7 @@
 
 /obj/machinery/mineral/processing_unit_console
 	name = "production machine console"
-	icon = 'icons/obj/machines/mining_machines_vr.dmi'
+	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
 	density = TRUE
 	anchored = TRUE
@@ -42,112 +42,101 @@
 		if(!inserted_id)
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
+			playsound(src, 'sound/machines/terminal_insert_disc.ogg', clickvol, TRUE)
 			inserted_id = I
 			interact(user)
 		return
 	..()
 
 /obj/machinery/mineral/processing_unit_console/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MaterialProcessor", name)
+		ui.open()
 
-	user.set_machine(src)
+/obj/machinery/mineral/processing_unit_console/ui_data(mob/user, datum/tgui/ui)
+	var/list/data = list()
 
-	var/dat = "<h1>Ore processor console</h1>"
+	var/list/ores = list()
+	for(var/orename in GLOB.ore_data)
+		var/datum/ore/O = GLOB.ore_data[orename]
+		ores.Add(list(list(
+			"name" = O.name,
+			"displayName" = O.display_name,
+			"processing" = machine.ores_processing[O.name],
+			"amount" = machine.ores_stored[O.name],
+			"ref" = REF(O)
+		)))
 
-	dat += "Current unclaimed points: [machine.points]<br>"
-	if(istype(inserted_id))
-		dat += "You have [inserted_id.mining_points] mining points collected. <A href='?src=\ref[src];choice=eject'>Eject ID.</A><br>"
-		dat += "<A href='?src=\ref[src];choice=claim'>Claim points.</A><br>"
+	data["ores"] = ores
+	data["on"] = machine.active
+	data["fast"] = machine.speed_process
+	data["unclaimedPoints"] = machine.points
+	if(inserted_id)
+		data["idName"] = inserted_id.registered_name
+		data["idPoints"] = inserted_id.mining_points
 	else
-		dat += "No ID inserted.  <A href='?src=\ref[src];choice=insert'>Insert ID.</A><br>"
-	dat += "High-speed processing is <A href='?src=\ref[src];toggle_speed=1'>[(machine.speed_process ? "<font color='green'>active</font>" : "<font color='red'>inactive</font>")]."
-	dat += "<hr><table>"
+		data["idName"] = ""
+		data["idPoints"] = 0
+	return data
 
-	for(var/ore in machine.ores_processing)
-
-		if(!machine.ores_stored[ore] && !show_all_ores)
-			continue
-		var/datum/ore/O = GLOB.ore_data[ore]
-		if(!O)
-			continue
-		dat += "<tr><td width = 40><b>[capitalize(O.display_name)]</b></td><td width = 30>[machine.ores_stored[ore]]</td><td width = 100>"
-		if(machine.ores_processing[ore])
-			switch(machine.ores_processing[ore])
-				if(PROCESS_NONE)
-					dat += "<font color='red'>not processing</font>"
-				if(PROCESS_SMELT)
-					dat += "<font color='orange'>smelting</font>"
-				if(PROCESS_COMPRESS)
-					dat += "<font color=#4F49AF>compressing</font>"
-				if(PROCESS_ALLOY)
-					dat += "<font color='gray'>alloying</font>"
-		else
-			dat += "<font color='red'>not processing</font>"
-		dat += ".</td><td width = 30><a href='?src=\ref[src];toggle_smelting=[ore]'>\[change\]</a></td></tr>"
-
-	dat += "</table><hr>"
-	dat += "Currently displaying [show_all_ores ? "all ore types" : "only available ore types"]. <A href='?src=\ref[src];toggle_ores=1'>\[[show_all_ores ? "show less" : "show more"]\]</a></br>"
-	dat += "The ore processor is currently <A href='?src=\ref[src];toggle_power=1'>[(machine.active ? "<font color='green'>processing</font>" : "<font color='red'>disabled</font>")]</a>."
-	user << browse(dat, "window=processor_console;size=400x500")
-	onclose(user, "processor_console")
-	return
-
-/obj/machinery/mineral/processing_unit_console/Topic(href, href_list)
+/obj/machinery/mineral/processing_unit_console/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
-		return 1
+		return TRUE
+
+	. = TRUE
+
+	add_fingerprint(usr)
 	usr.set_machine(src)
-	src.add_fingerprint(usr)
 
-	if(href_list["toggle_smelting"])
+	if(action && !issilicon(usr))
+		playsound(ui_host(), SFX_ALIAS_TERMINAL, clickvol, TRUE)
 
-		var/choice = input("What setting do you wish to use for processing [href_list["toggle_smelting"]]?") as null|anything in list("Smelting","Compressing","Alloying","Nothing")
-		if(!choice) return
+	switch(action)
+		if("change_mode")
+			machine.ores_processing[params["ore"]] = params["mode"]
+			return TRUE
 
-		switch(choice)
-			if("Nothing") choice = PROCESS_NONE
-			if("Smelting") choice = PROCESS_SMELT
-			if("Compressing") choice = PROCESS_COMPRESS
-			if("Alloying") choice = PROCESS_ALLOY
+		if("toggle_power")
+			machine.active = !machine.active
+			playsound(src.loc, 'sound/machines/terminal_prompt_confirm.ogg', clickvol, 0)
+			return TRUE
 
-		machine.ores_processing[href_list["toggle_smelting"]] = choice
+		if("toggle_speed")
+			machine.toggle_speed()
+			return TRUE
 
-	if(href_list["toggle_power"])
-
-		machine.active = !machine.active
-
-	if(href_list["toggle_ores"])
-
-		show_all_ores = !show_all_ores
-
-	if(href_list["toggle_speed"])
-
-		machine.toggle_speed()
-
-	if(href_list["choice"])
-		if(istype(inserted_id))
-			if(href_list["choice"] == "eject")
+		if("eject_id")
+			if(istype(inserted_id))
 				usr.grab_item_from_interacted_with(inserted_id, src)
+				playsound(src, 'sound/machines/terminal_eject.ogg', clickvol, 0)
 				inserted_id = null
-			if(href_list["choice"] == "claim")
+				return TRUE
+		if("claim_points")
+			if(istype(inserted_id))
 				inserted_id.mining_points += machine.points
 				machine.points = 0
-		else if(href_list["choice"] == "insert")
+				playsound(src.loc, 'sound/machines/ping.ogg', clickvol, 0)
+				return TRUE
+		if("insert_id")
 			var/obj/item/card/id/I = usr.get_active_held_item()
 			if(istype(I))
 				if(!usr.attempt_insert_item_for_installation(I, src))
 					return
+				playsound(src, 'sound/machines/terminal_insert_disc.ogg', clickvol, 0)
 				inserted_id = I
+				return TRUE
 			else
 				to_chat(usr, "<span class='warning'>No valid ID.</span>")
 
-	src.updateUsrDialog()
+	return FALSE
 
 /**********************Mineral processing unit**************************/
 
 
 /obj/machinery/mineral/processing_unit
 	name = "material processor" //This isn't actually a goddamn furnace, we're in space and it's processing platinum and flammable phoron...
-	icon = 'icons/obj/machines/mining_machines_vr.dmi'
+	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "furnace"
 	density = TRUE
 	anchored = TRUE
@@ -158,6 +147,7 @@
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
 	var/sheets_per_tick = 20
+	var/ores_per_tick = 30
 	var/list/ores_processing = list()
 	var/list/ores_stored = list()
 	var/static/list/alloy_data
@@ -226,13 +216,17 @@
 	tick++
 
 	//Grab some more ore to process this tick.
-	for(var/i = 0,i<sheets_per_tick,i++)
-		var/obj/item/ore/O = locate() in input.loc
-		if(!O) break
+	//Takes ores_per_tick per tick from the various stacks of ores nearby. It'll likely loop at least 0-2 times per tick.
+	for(var/i = 0, i < ores_per_tick, i++)
+		var/obj/item/stack/ore/O = locate() in input.loc
+		if(!O)
+			break
+		var/taking = min(ores_per_tick - i, O.amount)
 		if(!isnull(ores_stored[O.material]))
-			ores_stored[O.material]++
-			points += ore_values[O.material] // Give Points!
-		qdel(O)
+			ores_stored[O.material] += taking
+			points += ore_values[O.material] * taking // Give Points!
+		i += taking
+		O.use(taking)
 
 	if(!active)
 		return
@@ -312,7 +306,7 @@
 			else
 				ores_stored[metal]--
 				sheets++
-				new /obj/item/ore/slag(output.loc)
+				new /obj/item/stack/ore/slag(output.loc)
 		else
 			continue
 

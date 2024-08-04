@@ -59,7 +59,7 @@
 	// chasm_detritus_type = /obj/item/chasm_detritus/restricted/objects
 
 /obj/item/fishing_hook/magnet/get_hook_bonus_multiplicative(fish_type, datum/fish_source/source)
-	if(fish_type == FISHING_DUD || ispath(fish_type, /obj/item/fish))
+	if(fish_type == FISHING_DUD || isfish(fish_type))
 		return ..()
 	// We multiply the odds by five for everything that's not a fish nor a dud
 	return MAGNET_HOOK_BONUS_MULTIPLIER
@@ -103,7 +103,7 @@
 
 /obj/item/fishing_hook/rescue/get_hook_bonus_multiplicative(fish_type, datum/fish_source/source)
 	// Sorry, you won't catch fish with this.
-	if(ispath(fish_type, /obj/item/fish))
+	if(isfish(fish_type))
 		return RESCUE_HOOK_FISH_MULTIPLIER
 	return ..()
 

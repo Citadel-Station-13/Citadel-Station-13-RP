@@ -5,6 +5,9 @@
 /datum/keybinding/admin/can_use(client/user)
 	return user.holder ? TRUE : FALSE
 
+/datum/keybinding/admin/is_visible(client/user)
+	return !!user.holder
+
 /datum/keybinding/admin/admin_say
 	hotkey_keys = list("F5")
 	name = "admin_say"
@@ -16,7 +19,7 @@
 	return TRUE
 
 /datum/keybinding/admin/admin_ghost
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "admin_ghost"
 	full_name = "Aghost"
 	description = "Go ghost"
@@ -36,7 +39,7 @@
 	return TRUE
 
 /datum/keybinding/admin/toggle_buildmode_self
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "toggle_buildmode_self"
 	full_name = "Toggle Buildmode Self"
 	description = "Toggles buildmode"
@@ -46,7 +49,7 @@
 	return TRUE
 
 /datum/keybinding/admin/stealthmode
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "stealth_mode"
 	full_name = "Stealth mode"
 	description = "Enters stealth mode"
@@ -76,7 +79,7 @@
 	return TRUE
 
 /datum/keybinding/admin/deadsay
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "dsay"
 	full_name = "deadsay"
 	description = "Allows you to send a message to dead chat"
@@ -86,7 +89,7 @@
 	return TRUE
 
 /datum/keybinding/admin/deadmin
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "deadmin"
 	full_name = "Deadmin"
 	description = "Shed your admin powers"
@@ -96,7 +99,7 @@
 	return TRUE
 
 /datum/keybinding/admin/readmin
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list()
 	name = "readmin"
 	full_name = "Readmin"
 	description = "Regain your admin powers"

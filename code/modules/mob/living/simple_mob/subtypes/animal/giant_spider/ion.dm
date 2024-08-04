@@ -12,11 +12,11 @@
 	projectilesound = 'sound/weapons/taser2.ogg'
 	projectiletype = /obj/projectile/ion/pistol
 
-	melee_damage_lower = 8
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 8
+	legacy_melee_damage_upper = 15
 
 	poison_chance = 15
 	poison_per_bite = 2
 	poison_type = "psilocybin"
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/electric_spider
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/electric_spider

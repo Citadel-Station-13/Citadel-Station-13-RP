@@ -3,19 +3,21 @@
 	desc = "Can hold various things."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
-	storage_slots = 7
-	max_storage_space = ITEMSIZE_COST_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
-	max_w_class = ITEMSIZE_NORMAL
+	max_items = 7
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	ui_force_slot_mode = TRUE
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
+	worth_intrinsic = 50
 	var/show_above_suit = 0
 
 /obj/item/storage/belt/verb/toggle_layer()
 	set name = "Switch Belt Layer"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 
 	if(show_above_suit == -1)
 		to_chat(usr, SPAN_NOTICE("\The [src] cannot be worn above your suit!"))
@@ -24,7 +26,7 @@
 	update_icon()
 
 // todo: this bad lol
-/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot/slot_meta, icon_used)
 	. = ..()
 	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
 	for(var/obj/item/I in contents)
@@ -48,7 +50,7 @@
 	desc = "Can hold various tools."
 	icon_state = "utility"
 	item_state = "utility"
-	can_hold = list(
+	insertion_whitelist = list(
 		///obj/item/combitool,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
@@ -60,7 +62,7 @@
 		/obj/item/cell/device,
 		/obj/item/stack/cable_coil,
 		/obj/item/t_scanner,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/clothing/glasses,
 		/obj/item/clothing/gloves,
 		/obj/item/pda,
@@ -70,7 +72,7 @@
 		/obj/item/robotanalyzer,
 		/obj/item/material/minihoe,
 		/obj/item/material/knife/machete/hatchet,
-		/obj/item/analyzer/plant_analyzer,
+		/obj/item/plant_analyzer,
 		/obj/item/extinguisher/mini,
 		/obj/item/duct_tape_roll,
 		/obj/item/switchtool,
@@ -111,14 +113,14 @@
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil/random_belt,
 		/obj/item/extinguisher/mini,
-		/obj/item/analyzer/longrange
+		/obj/item/atmos_analyzer/longrange
 	)
 
 /obj/item/storage/belt/medical
 	name = "medical belt"
 	desc = "Can hold various medical equipment."
 	icon_state = "medical"
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/healthanalyzer,
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
@@ -139,6 +141,8 @@
 		/obj/item/clothing/head/surgery,
 		/obj/item/clothing/gloves,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
+		/obj/item/reagent_containers/glass/hypovial,
 		/obj/item/clothing/glasses,
 		/obj/item/tool/crowbar,
 		/obj/item/flashlight,
@@ -157,8 +161,8 @@
 	name = "security belt"
 	desc = "Can hold security gear like handcuffs and flashes."
 	icon_state = "security"
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/handcuffs,
@@ -195,9 +199,9 @@
 	name = "forensic utility belt"
 	desc = "A belt for holding forensics equipment."
 	icon_state = "security"
-	storage_slots = 7
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(
+	max_items = 7
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(
 		/obj/item/tape_recorder,
 		/obj/item/barrier_tape_roll,
 		/obj/item/clothing/glasses,
@@ -238,10 +242,10 @@
 	name = "pathfinder's bandolier"
 	desc = "A versatile bandolier fitted with eight pouches that can hold a wide variety of items such as tools, small melee weapons, batteries, ammunition, and more; ideal for any pathfinder who has too much stuff and not enough pockets."
 	icon_state = "bandolier"
-	storage_slots = 7
-	max_storage_space = ITEMSIZE_COST_NORMAL * 7
+	max_items = 7
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 	show_above_suit = 1
-	can_hold = list(
+	insertion_whitelist = list(
 		/obj/item/grenade,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
@@ -252,7 +256,7 @@
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil,
 		/obj/item/t_scanner,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/flashlight,
 		/obj/item/cell/device,
 		/obj/item/cell/device/weapon,
@@ -271,6 +275,7 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
 		/obj/item/storage/pill_bottle,
 		/obj/item/stack/medical,
 		/obj/item/stack/marker_beacon,
@@ -293,8 +298,8 @@
 	name = "soul stone belt"
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"
 	icon_state = "soulstone"
-	storage_slots = 6
-	can_hold = list(
+	max_items = 6
+	insertion_whitelist = list(
 		/obj/item/soulstone
 		)
 
@@ -325,8 +330,8 @@
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "belt"
 	item_state = "security"
-	storage_slots = 8
-	can_hold = list(
+	max_items = 8
+	insertion_whitelist = list(
 		/obj/item/healthanalyzer,
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
@@ -346,6 +351,7 @@
 		/obj/item/clothing/head/surgery,
 		/obj/item/clothing/gloves,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray,
 		/obj/item/clothing/glasses,
 		/obj/item/tool/crowbar,
 		/obj/item/flashlight,
@@ -370,8 +376,8 @@
 	name = "championship belt"
 	desc = "Proves to the world that you are the strongest!"
 	icon_state = "champion"
-	storage_slots = 1
-	can_hold = list(
+	max_items = 1
+	insertion_whitelist = list(
 		"/obj/item/clothing/mask/luchador"
 		)
 
@@ -379,9 +385,9 @@
 	name = "combat belt"
 	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
 	icon_state = "swat"
-	storage_slots = 9
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_NORMAL * 7
+	max_items = 9
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 
 /obj/item/storage/belt/security/tactical/bandolier
 	name = "combat belt"
@@ -392,19 +398,20 @@
 	name = "spike bandolier"
 	desc = "A bandolier used to hold spikes, and only spikes."
 	icon_state = "bandolier"
-	storage_slots = 14
-	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_COST_SMALL * 14
-	can_hold = list(/obj/item/melee/spike)
+	max_items = 14
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 14
+	insertion_whitelist = list(/obj/item/melee/spike)
 	starts_with = list(/obj/item/melee/spike = 14)
 
 /obj/item/storage/belt/janitor
 	name = "janitorial belt"
 	desc = "A belt used to hold most janitorial supplies."
 	icon_state = "janitor"
-	storage_slots = 7
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(
+	max_items = 7
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	worth_intrinsic = 35
+	insertion_whitelist = list(
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
 		/obj/item/cell/device,
@@ -427,7 +434,8 @@
 	name = "excavation gear-belt"
 	desc = "Can hold various excavation gear."
 	icon_state = "gear"
-	can_hold = list(
+	worth_intrinsic = 65
+	insertion_whitelist = list(
 		/obj/item/storage/box/samplebags,
 		/obj/item/core_sampler,
 		/obj/item/beacon_locator,
@@ -462,9 +470,9 @@
 	desc = "A dorky fannypack for keeping small items in."
 	icon_state = "fannypack_leather"
 	item_state = "fannypack_leather"
-	max_w_class = ITEMSIZE_SMALL
-	storage_slots = null
-	max_storage_space = ITEMSIZE_COST_NORMAL * 2
+	max_single_weight_class = WEIGHT_CLASS_SMALL
+	max_items = null
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 2
 
 /obj/item/storage/belt/fannypack/black
  	name = "black fannypack"
@@ -515,14 +523,18 @@
 	name = "sabre sheath"
 	desc = "An ornate sheath designed to hold an officer's blade."
 	icon_state = "sheath-sabre"
-	storage_slots = 1
-	can_hold = list(
-		/obj/item/melee/sabre,
+	max_items = 1
+	insertion_whitelist = list(
+		/obj/item/material/sword/sabre,
 		/obj/item/melee/baton/stunsword,
 		)
 	starts_with = list(
-		/obj/item/melee/sabre,
+		/obj/item/material/sword/sabre,
 		)
+
+/obj/item/storage/belt/sheath/initialize_storage()
+	. = ..()
+	obj_storage.update_icon_on_item_change = TRUE
 
 /obj/item/storage/belt/sheath/update_icon()
 	icon_state = "sheath"
@@ -534,6 +546,7 @@
 		var/mob/living/L = loc
 		L.regenerate_icons()
 	..()
+
 /obj/item/storage/belt/ranger
 	name = "ranger belt"
 	desc = "The fancy utility-belt holding the tools, cuffs and gadgets of the Go Go ERT-Rangers. The belt buckle is not real phoron, but it is still surprisingly comfortable to wear."
@@ -544,9 +557,9 @@
 	name = "dual holster gunbelt"
 	desc = "Belts like these were popular on old Earth, but were largely supplanted by modular holsters. This gunbelt is too bulky to be comfortably anchored to clothes without support."
 	icon_state = "dual_holster"
-	storage_slots = 2
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(
+	max_items = 2
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(
 		/obj/item/gun/energy/alien,
 		/obj/item/gun/energy/captain,
 		/obj/item/gun/energy/crossbow,
@@ -558,7 +571,7 @@
 		/obj/item/gun/energy/lasertag,
 		/obj/item/gun/energy/netgun,
 		/obj/item/gun/energy/phasegun/pistol,
-		/obj/item/gun/energy/pulse_pistol,
+		/obj/item/gun/energy/pulse_carbine,
 		/obj/item/gun/energy/retro,
 		/obj/item/gun/energy/service,
 		/obj/item/gun/energy/stunrevolver,
@@ -587,9 +600,9 @@
 	name = "leather quiver"
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
-	storage_slots = 15
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(
+	max_items = 15
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(
 		/obj/item/ammo_casing/arrow
 		)
 
@@ -597,9 +610,9 @@
 	name = "leather quiver"
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
-	storage_slots = 15
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(
+	max_items = 15
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(
 		/obj/item/ammo_casing/arrow
 		)
 	starts_with = list(
@@ -610,9 +623,9 @@
 	name = "leather quiver"
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
-	storage_slots = 15
-	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(
+	max_items = 15
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	insertion_whitelist = list(
 		/obj/item/ammo_casing/arrow
 		)
 	starts_with = list(

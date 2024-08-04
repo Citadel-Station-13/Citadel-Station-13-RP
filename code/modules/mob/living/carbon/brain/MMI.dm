@@ -13,7 +13,7 @@
 	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity."
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "mmi_empty"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	can_speak = TRUE
 	origin_tech = list(TECH_BIO = 3)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
@@ -28,7 +28,7 @@
 	/// The current brain organ.
 	var/obj/item/organ/internal/brain/brainobj = null
 	/// This does not appear to be used outside of reference in mecha.dm.
-	var/obj/mecha = null
+	var/obj/vehicle/sealed/mecha = null
 	/// Let's give it a radio.
 	var/obj/item/radio/headset/mmi_radio/radio = null
 
@@ -39,7 +39,7 @@
 /obj/item/mmi/verb/toggle_radio()
 	set name = "Toggle Brain Radio"
 	set desc = "Enables or disables the integrated brain radio, which is only usable outside of a body."
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 	set popup_menu = 1
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
@@ -104,7 +104,7 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	if(brainmob)
-		O.melee_attack_chain(brainmob, user)//Oh noooeeeee
+		O.melee_interaction_chain(brainmob, user)//Oh noooeeeee
 		return
 	..()
 
@@ -213,7 +213,7 @@
 /obj/item/mmi/digital/attackby(obj/item/O as obj, mob/user as mob)
 	return //Doesn't do anything right now because none of the things that can be done to a regular MMI make any sense for these
 
-/obj/item/mmi/digital/examine(mob/user)
+/obj/item/mmi/digital/examine(mob/user, dist)
 	. = ..()
 	if(radio)
 		. += SPAN_NOTICE("There is a switch to toggle the radio system [radio.radio_enabled ? "off" : "on"].[brainobj ? " It is currently being covered by [brainobj]." : null]")
@@ -284,7 +284,7 @@
 	if(candidate.mind)
 		brainmob.mind = candidate.mind
 		brainmob.mind.reset()
-	brainmob.ckey = candidate.ckey
+	candidate.transfer_client_to(src.brainmob)
 	src.name = "[name] ([brainmob.name])"
 	to_chat(brainmob, "<b>You are [src.name], brought into existence on [station_name()].</b>")
 	to_chat(brainmob, "<b>As a synthetic intelligence, you are designed with organic values in mind.</b>")
@@ -302,7 +302,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/drones)
 	icon = 'icons/obj/module.dmi'
 	icon_state = "mainboard"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/drone_brain
 
@@ -333,7 +333,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/positronics)
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "posibrain"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/posibrain)
@@ -374,5 +374,5 @@
 	desc = "A sophisticated board which allows for an artificial intelligence to remotely control a synthetic chassis."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "mainboard"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_DATA = 3)

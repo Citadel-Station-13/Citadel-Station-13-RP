@@ -8,8 +8,10 @@
 	deform       = 'icons/mob/species/shadekin/body.dmi'
 	preview_icon = 'icons/mob/species/shadekin/preview.dmi'
 	husk_icon    = 'icons/mob/species/shadekin/husk.dmi'
-	tail = "tail"
-	icobase_tail = TRUE
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/shadekin,
+	)
 
 	//TODO: Something that's not wiki copypaste
 	blurb = {"
@@ -35,8 +37,9 @@
 	)
 
 	siemens_coefficient = 1
-	darksight = 10
-
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
+	vision_organ = O_EYES
+	
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
 
@@ -115,6 +118,8 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
+
 	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,
@@ -144,7 +149,7 @@
 /datum/species/shadekin/get_random_name()
 	return "shadekin"
 
-/datum/species/shadekin/handle_environment_special(mob/living/carbon/human/H)
+/datum/species/shadekin/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	handle_shade(H)
 
 /datum/species/shadekin/can_breathe_water()

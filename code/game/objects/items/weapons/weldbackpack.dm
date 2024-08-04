@@ -4,7 +4,7 @@
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "welderpack"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/max_fuel = 350
 	var/obj/item/nozzle = null //Attached welder, or other spray device.
 	var/nozzle_type = /obj/item/weldingtool/tubefed
@@ -98,17 +98,17 @@
 	else
 		..()
 
-/obj/item/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
+/obj/item/weldpack/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
-		O.reagents.trans_to_obj(src, max_fuel)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
+		target.reagents.trans_to_obj(src, max_fuel)
 		to_chat(user,"<span class='notice'>You crack the cap off the top of the pack and fill it back up again from the tank.</span>")
 		playsound(src, 'sound/effects/refill.ogg', 50, 1, -6)
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
+	else if (istype(target, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		to_chat(user,"<span class='warning'>The pack is already full!</span>")
 
-/obj/item/weldpack/examine(mob/user)
+/obj/item/weldpack/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = world)] [src] has [src.reagents.total_volume] units of fuel left!"
 
@@ -119,6 +119,6 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "welderpack-e"
 	item_state = "welderpack"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	max_fuel = 100
 	nozzle_type = /obj/item/weldingtool/tubefed/survival

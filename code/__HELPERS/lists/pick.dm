@@ -4,6 +4,8 @@
  * - 2. Gets a number between 1 and that total.
  * - 3. For each element in the list, subtracts its weighting from that number.
  * - 4. If that makes the number 0 or less, return that element.
+ *
+ * Warning: This *will* modify the input list.
  */
 /proc/pickweight(list/L)
 	var/total = 0
@@ -24,6 +26,8 @@
 /**
  * The original pickweight proc will sometimes pick entries with zero weight.
  * I'm not sure if changing the original will break anything, so I left it be.
+ *
+ * Warning: This *will* modify the input list.
  */
 /proc/pickweightAllowZero(list/L)
 	var/total = 0
@@ -51,3 +55,16 @@
 		. = L[picked]
 		// Cut is far more efficient that Remove()
 		L.Cut(picked,picked+1)
+
+/**
+ * choose n from list non-inplace
+ */
+/proc/pick_n_from_list(list/L, n)
+	. = list()
+	// IMPORTANT - this makes it not modify original list
+	L = L.Copy()
+	n = min(n, length(L))
+	for(var/i in 1 to n)
+		var/index = rand(1, length(L))
+		. += L[index]
+		L.Cut(index, index + 1)

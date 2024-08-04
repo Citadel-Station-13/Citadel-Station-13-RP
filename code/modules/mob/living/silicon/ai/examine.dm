@@ -1,4 +1,4 @@
-/mob/living/silicon/ai/examine(mob/user)
+/mob/living/silicon/ai/examine(mob/user, dist)
 	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!")
 
 	if (src.stat == DEAD)

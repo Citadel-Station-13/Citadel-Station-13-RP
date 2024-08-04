@@ -145,7 +145,7 @@
 	owner.lawsync()
 	return ..() // 800, is_malf(user) ? 600 : 400
 
-/datum/tgui_module_old/law_manager/ui_data(mob/user)
+/datum/tgui_module_old/law_manager/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["ion_law_nr"] = ionnum()
@@ -216,9 +216,9 @@
 	log_and_message_admins("has syncronized [AI]'s laws with its borgs.")
 
 /datum/tgui_module_old/law_manager/robot
-/datum/tgui_module_old/law_manager/robot/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/law_manager/robot/ui_state()
 	return GLOB.tgui_self_state
 
 /datum/tgui_module_old/law_manager/admin
-/datum/tgui_module_old/law_manager/admin/ui_state(mob/user, datum/tgui_module/module)
+/datum/tgui_module_old/law_manager/admin/ui_state()
 	return GLOB.tgui_admin_state

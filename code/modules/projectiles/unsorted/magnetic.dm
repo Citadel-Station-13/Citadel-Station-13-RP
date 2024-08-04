@@ -1,14 +1,15 @@
 /obj/item/magnetic_ammo
 	name = "flechette magazine"
 	desc = "A magazine containing steel flechettes."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "5.56"
-	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 1800)
+
+	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
+	icon_state = "svtmag-1"
+
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_STEEL = 1800)
 	origin_tech = list(TECH_COMBAT = 1)
 	var/remaining = 9
-	preserve_item = 1
 
-/obj/item/magnetic_ammo/examine(mob/user)
+/obj/item/magnetic_ammo/examine(mob/user, dist)
 	. = ..()
 	. += "There [(remaining == 1)? "is" : "are"] [remaining] flechette\s left!"

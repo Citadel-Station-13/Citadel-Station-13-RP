@@ -1,3 +1,5 @@
+// todo: /datum/automata/sonar this instead of /wave.
+
 /datum/automata/wave/sonar
 	wave_spread = WAVE_SPREAD_MINIMAL
 	/// global resolution
@@ -71,9 +73,9 @@
 		return
 	renderer.overlays += rendering_overlays
 	animate(renderer, alpha = 255, time = 0.1 SECONDS)
-	animate(alpha = 0, time = 0.5 SECONDS)
+	animate(alpha = 0, time = 1 SECONDS)
 	// end
-	QDEL_IN(renderer, 0.6 SECONDS)
+	QDEL_IN(renderer, 1.1 SECONDS)
 
 /datum/automata/wave/sonar/single_mob
 	var/mob/receiver

@@ -28,7 +28,7 @@
 	else
 		set_light(0)
 
-/obj/machinery/space_heater/examine(mob/user)
+/obj/machinery/space_heater/examine(mob/user, dist)
 	. = ..()
 	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
@@ -190,6 +190,8 @@
 	density = 1
 	anchored = 0
 
+	worth_intrinsic = 500
+
 	use_power = USE_POWER_OFF //is powered directly from cables
 	active_power_usage = 150 KILOWATTS  //BIG POWER
 	idle_power_usage = 500
@@ -200,7 +202,7 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/examine(mob/user)
+/obj/machinery/power/thermoregulator/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"
 
@@ -327,7 +329,7 @@
 			env.merge(removed)
 	var/turf/T = get_turf(src)
 	new /obj/effect/debris/cleanable/liquid_fuel(T, 5)
-	T.assume_gas(/datum/gas/volatile_fuel, 5, T20C)
+	T.assume_gas(GAS_ID_VOLATILE_FUEL, 5, T20C)
 	T.hotspot_expose(700,400)
 	var/datum/effect_system/spark_spread/s = new
 	s.set_up(5, 0, T)

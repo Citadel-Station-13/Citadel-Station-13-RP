@@ -84,7 +84,7 @@ var/list/trait_categories = list() // The categories available for the trait men
 		[invalid ? "<font color='#FF0000'><br>Cannot take trait.  Reason: [invalid]</font>":""]</font></td></tr>"
 //		if(ticked)
 //			. += "<tr><td colspan=3>"
-//			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
+//			for(var/datum/loadout_tweak/tweak in G.tweaks)
 //				. += " <a href='?src=\ref[src];gear=[G.display_name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
 //			. += "</td></tr>"
 	. += "</table>"

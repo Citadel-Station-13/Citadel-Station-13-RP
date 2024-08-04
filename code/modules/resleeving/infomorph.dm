@@ -25,7 +25,7 @@ var/list/infomorph_emotions = list(
 	pass_flags = 1
 	mob_size = MOB_SMALL
 
-	can_pull_size = ITEMSIZE_SMALL
+	can_pull_size = WEIGHT_CLASS_SMALL
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	idcard_type = /obj/item/card/id
@@ -110,8 +110,8 @@ var/list/infomorph_emotions = list(
 	pda = new(src)
 	spawn(5)
 		pda.ownjob = "Sleevecard"
-		pda.owner = text("[]", src)
-		pda.name = pda.owner + " (" + pda.ownjob + ")"
+		pda.owner = "[src]"
+		pda.name = "[pda.owner] ([pda.ownjob])"
 		pda.toff = 1
 
 	return ..()
@@ -139,6 +139,10 @@ var/list/infomorph_emotions = list(
 /mob/living/silicon/infomorph/default_can_use_topic(var/src_object)
 	if(src_object in src)
 		return shared_nano_interaction()
+
+/mob/living/silicon/infomorph/make_perspective()
+	. = ..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /////////// DAMAGES
 /mob/living/silicon/infomorph/emp_act(severity)
@@ -231,7 +235,10 @@ var/list/infomorph_emotions = list(
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
 				if(card in affecting.implants)
-					affecting.take_damage(rand(30,50))
+					affecting.inflict_bodypart_damage(
+						brute = rand(30, 50),
+						weapon_descriptor = "bursting",
+					)
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
@@ -318,7 +325,7 @@ var/list/infomorph_emotions = list(
 
 /mob/living/silicon/infomorph/lay_down()
 	set name = "Rest"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	resting = !resting
 	icon_state = resting ? "[chassis]_rest" : "[chassis]"
@@ -375,7 +382,7 @@ var/list/infomorph_emotions = list(
 
 /mob/living/silicon/infomorph/verb/wipe_software()
 	set name = "Suspend Self"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Wipe yourself from your hardware. This is functionally equivalent to cryo or robotic storage, freeing up your job slot."
 
 	// Make sure people don't kill themselves accidentally
@@ -532,7 +539,7 @@ var/global/list/default_infomorph_software = list()
 			card.setEmotion(img)
 		return 1
 
-/mob/living/silicon/infomorph/examine(mob/user)
+/mob/living/silicon/infomorph/examine(mob/user, dist)
 	. = ..()
 	switch(src.stat)
 		if(CONSCIOUS)
@@ -577,7 +584,7 @@ var/global/list/default_infomorph_software = list()
 			to_chat(src, "<font color=green>Communication circuit reinitialized. Speech and messaging functionality restored.</font>")
 
 	//Only every so often
-	if(air_master.current_cycle%30 == 1)
+	if(SSair.current_cycle%30 == 1)
 		SStranscore.m_backup(mind)
 
 	if(health <= 0)

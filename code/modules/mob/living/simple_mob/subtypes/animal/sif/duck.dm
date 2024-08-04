@@ -33,14 +33,14 @@
 
 	movement_cooldown = 0
 
-	melee_damage_lower = 2
-	melee_damage_upper = 10
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 10
 	base_attack_cooldown = 1 SECOND
 	attack_edge = 1		// Razor-edged wings, and 'claws' made for digging through ice.
 	attacktext = list("nipped", "bit", "cut", "clawed")
 
 	say_list_type = /datum/say_list/duck
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/cooperative
 
 /datum/say_list/duck
 	speak = list("Wack!", "Wock?", "Wack.")
@@ -51,7 +51,7 @@
 	. = ..()
 
 	var/has_food = FALSE
-	for(var/obj/item/I in L.get_contents())	// Do they have food?
+	for(var/obj/item/I in L.get_held_items())	// Do they have food?
 		if(istype(I, /obj/item/reagent_containers/food))
 			has_food = TRUE
 			break

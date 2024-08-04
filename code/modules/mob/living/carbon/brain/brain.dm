@@ -32,6 +32,8 @@
 
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
+// todo: this should be like, /mob/brain or something, this doesn't simulate /living stuff at all.
+
 /mob/living/carbon/brain
 	var/obj/item/container = null
 	var/timeofhostdeath = 0
@@ -57,7 +59,7 @@
 	return ..()
 
 /mob/living/carbon/brain/update_mobility(blocked, forced)
-	if(in_contents_of(/obj/mecha) || istype(loc, /obj/item/mmi))
+	if(in_contents_of(/obj/vehicle/sealed/mecha) || istype(loc, /obj/item/mmi))
 		. = ..(blocked, forced)
 	else
 		. = ..(MOBILITY_FLAGS_REAL, forced)

@@ -53,8 +53,9 @@
 	anchored = 0
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
+	integrity_enabled = FALSE
 
-	var/gasefficency = 0.25
+	var/gasefficiency = 0.25
 
 	base_icon_state = "darkmatter"
 
@@ -105,10 +106,20 @@
 
 	var/datum/looping_sound/supermatter/soundloop
 
+	var/list/history = list()
+	var/record_size = 60
+	var/record_interval = 20
+	var/next_record = 0
+
 /obj/machinery/power/supermatter/Initialize(mapload)
 	. = ..()
 	uid = gl_uid++
 	soundloop = new(list(src), TRUE)
+	history["integrity_history"] = list()
+	history["EER_history"] = list()
+	history["temperature_history"] = list()
+	history["pressure_history"] = list()
+	history["EPR_history"] = list()
 
 /obj/machinery/power/supermatter/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -170,7 +181,7 @@
 				var/mob/living/carbon/human/H = mob
 				if(H.isSynthetic())
 					continue
-				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
+				H.adjustHallucination(DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)))
 	spawn(pull_time)
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
 		sleep(5) //to allow the explosion to finish
@@ -229,20 +240,6 @@
 			GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
 
-
-/obj/machinery/power/supermatter/get_transit_zlevel()
-	//don't send it back to the station -- most of the time
-	if(prob(99))
-		var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
-		for(var/zlevel in GLOB.using_map.station_levels)
-			candidates.Remove("[zlevel]")
-		candidates.Remove("[src.z]")
-
-		if(candidates.len)
-			return text2num(pickweight(candidates))
-
-	return ..()
-
 /obj/machinery/power/supermatter/process(delta_time)
 
 	var/turf/L = loc
@@ -300,7 +297,7 @@
 
 	if(!istype(L, /turf/space))
 		env = L.return_air()
-		removed = env.remove(gasefficency * env.total_moles)	//Remove gas from surrounding area
+		removed = env.remove(gasefficiency * env.total_moles)	//Remove gas from surrounding area
 
 	if(!env || !removed || !removed.total_moles)
 		damage += max((power - 15*POWER_FACTOR)/10, 0)
@@ -312,7 +309,7 @@
 		damage = max( damage + min( ( (removed.temperature - CRITICAL_TEMPERATURE) / 150 ), damage_inc_limit ) , 0 )
 		//Ok, 100% oxygen atmosphere = best reaction
 		//Maxes out at 100% oxygen pressure
-		oxygen = max(min((removed.gas[/datum/gas/oxygen] - (removed.gas[/datum/gas/nitrogen] * NITROGEN_SLOWING_FACTOR)) / removed.total_moles, 1), 0)
+		oxygen = max(min((removed.gas[GAS_ID_OXYGEN] - (removed.gas[GAS_ID_NITROGEN] * NITROGEN_SLOWING_FACTOR)) / removed.total_moles, 1), 0)
 
 		//calculate power gain for oxygen reaction
 		var/temp_factor
@@ -336,8 +333,8 @@
 
 		//Release reaction gasses
 		var/heat_capacity = removed.heat_capacity()
-		removed.adjust_multi(/datum/gas/phoron, max(device_energy / PHORON_RELEASE_MODIFIER, 0), \
-		                     /datum/gas/oxygen, max((device_energy + removed.temperature - T0C) / OXYGEN_RELEASE_MODIFIER, 0))
+		removed.adjust_multi(GAS_ID_PHORON, max(device_energy / PHORON_RELEASE_MODIFIER, 0), \
+		                     GAS_ID_OXYGEN, max((device_energy + removed.temperature - T0C) / OXYGEN_RELEASE_MODIFIER, 0))
 
 		var/thermal_power = THERMAL_RELEASE_MODIFIER * device_energy
 		if (debug)
@@ -351,15 +348,16 @@
 		env.merge(removed)
 
 	for(var/mob/living/carbon/human/l in view(src, min(7, round(sqrt(power/6))))) // If they can see it without mesons on.  Bad on them.
-		if(l.isSynthetic() || (PLANE_MESONS in l.planes_visible))
+		if(l.isSynthetic())
 			continue
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
-			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
+			l.adjustHallucination(power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) )
 
 	//! uh oh!
 	radiation_pulse(src, clamp(power * 4, 0, 50000), RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 	power -= (power/DECAY_FACTOR)**3		//energy losses due to radiation
+	RecordData()
 
 	return 1
 
@@ -408,7 +406,7 @@
 		ui.open()
 
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/ui_data(mob/user)
+/obj/machinery/power/supermatter/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["integrity_percentage"] = round(get_integrity())
@@ -453,6 +451,13 @@
 */
 
 /obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)
+	// todo: rework the fucking supermatter so we don't need this
+	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
+	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
+	// so we add a sanity check here
+	if(QDELETED(W))
+		return
+
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
 		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
@@ -476,6 +481,12 @@
 	Consume(AM)
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
+	// todo: rework the fucking supermatter so we don't need this
+	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
+	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
+	// so we add a sanity check here
+	if(QDELETED(user))
+		return
 	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
 	if(istype(user))
 		user.dust()
@@ -500,6 +511,35 @@
 /obj/machinery/power/supermatter/RepelAirflowDest(n)
 	return
 
+/obj/machinery/power/supermatter/proc/RecordData()
+	if(world.time >= next_record)
+		next_record = world.time + record_interval
+		var/turf/T = get_turf(src)
+		var/datum/gas_mixture/air = T.return_air()
+		var/list/integrity_history = history["integrity_history"]
+		var/list/EER_history = history["EER_history"]
+		var/list/temperature_history = history["temperature_history"]
+		var/list/pressure_history = history["pressure_history"]
+		var/list/EPR_history = history["EPR_history"]
+
+		integrity_history += get_integrity()
+		EER_history += power
+		temperature_history += air.temperature
+		pressure_history += air.return_pressure()
+		EPR_history += get_epr()
+
+		if(integrity_history.len > record_size)
+			integrity_history.Cut(1, 2)
+		if(EER_history.len > record_size)
+			EER_history.Cut(1, 2)
+		if(temperature_history.len > record_size)
+			temperature_history.Cut(1, 2)
+		if(pressure_history.len > record_size)
+			pressure_history.Cut(1, 2)
+		if(EPR_history.len > record_size)
+			EPR_history.Cut(1, 2)
+
+
 /proc/supermatter_pull(T, radius = 20)
 	T = get_turf(T)
 	if(!T)
@@ -520,7 +560,7 @@
 	emergency_point = 400
 	explosion_point = 600
 
-	gasefficency = 0.125
+	gasefficiency = 0.125
 
 	pull_radius = 5
 	pull_time = 45

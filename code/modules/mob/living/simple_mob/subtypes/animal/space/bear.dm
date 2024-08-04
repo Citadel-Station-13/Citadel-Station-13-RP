@@ -27,8 +27,8 @@
 
 	movement_cooldown = 0.5 SECONDS
 
-	melee_damage_lower = 15
-	melee_damage_upper = 35
+	legacy_melee_damage_lower = 15
+	legacy_melee_damage_upper = 35
 	attack_armor_pen = 15
 	attack_sharp = TRUE
 	attack_edge = TRUE
@@ -49,7 +49,7 @@
 
 // Is it time to be mad?
 /mob/living/simple_mob/animal/space/bear/handle_special()
-	if((get_AI_stance() in list(STANCE_APPROACH, STANCE_FIGHT)) && !is_AI_busy() && isturf(loc))
+	if((get_polaris_AI_stance() in list(STANCE_APPROACH, STANCE_FIGHT)) && !is_AI_busy() && isturf(loc))
 		if(health <= (maxHealth * 0.5)) // At half health, and fighting someone currently.
 			berserk()
 

@@ -7,18 +7,7 @@
  * - prefs - prefs if any; if null, we're probably doing a clientless migration.
  */
 /datum/controller/subsystem/characters/proc/perform_global_migrations(savefile/S, current_version, list/errors, list/options, datum/preferences/prefs)
-	if(current_version < 13)
-		if(prefs)
-			addtimer(CALLBACK(prefs, /datum/preferences/proc/force_reset_keybindings), 5 SECONDS)
-		else
-			var/list/new_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds
-			WRITE_FILE(S["key_bindings"], new_bindings)
-	if(current_version < 15)
-		var/list/language_prefixes
-		S["language_prefixes"] >> language_prefixes
-		if(!islist(language_prefixes))
-			language_prefixes = list()
-		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
+	return
 
 /**
  * @params
@@ -204,8 +193,57 @@
 			character[CHARACTER_DATA_CHAR_SPECIES] = RS.uid
 		else
 			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
-
-
+	if(current_version < 5)
+		var/gear_slot
+		READ_FILE(S["gear_slot"], gear_slot)
+		if(isnum(gear_slot))
+			character[CHARACTER_DATA_LOADOUT_SLOT] = sanitize_integer(gear_slot, 1, LOADOUT_MAX_SLOTS, 1)
+		var/list/gear_data
+		READ_FILE(S["gear_list"], gear_data)
+		var/list/translated_slots = LAZYGETLIST(character[CHARACTER_DATA_LOADOUT])
+		if(islist(gear_data))
+			for(var/i in 1 to LOADOUT_MAX_SLOTS)
+				var/list/data = gear_data["[i]"]
+				if(!islist(data))
+					continue
+				var/list/translated_slot = LAZYGETLIST(translated_slots["[i]"])
+				var/list/translated_entries = LAZYGETLIST(translated_slot[LOADOUT_SLOTDATA_ENTRIES])
+				for(var/name in data)
+					var/list/assembled = list()
+					var/datum/loadout_entry/entry = global.gear_datums[name]
+					if(isnull(entry))
+						errors?.Add("unable to translate loadout slot-entry [i]-[name]: name not found.")
+						continue
+					var/list/old_tweaks = data[name]
+					for(var/old_tweak in old_tweaks)
+						if(!old_tweaks[old_tweak])
+							continue
+						switch(old_tweak)
+							if("/datum/gear_tweak/custom_name")
+								assembled[LOADOUT_ENTRYDATA_RENAME] = old_tweaks[old_tweak]
+							if("/datum/gear_tweak/custom_desc")
+								assembled[LOADOUT_ENTRYDATA_REDESC] = old_tweaks[old_tweak]
+							if("/datum/gear_tweak/color", "/datum/gear_tweak/matrix_recolor")
+								assembled[LOADOUT_ENTRYDATA_RECOLOR] = old_tweaks[old_tweak]
+							else
+								var/replaced = old_tweak
+								if(findtext(replaced, "gear_tweak"))
+									replaced = replacetext(replaced, "gear_tweak", "loadout_tweak")
+								LAZYSET(assembled[LOADOUT_ENTRYDATA_TWEAKS], replaced, old_tweaks[old_tweak])
+					translated_entries[entry.legacy_get_id()] = assembled
+		var/all_underwear_metadata
+		READ_FILE(S["all_underwear_metadata"], all_underwear_metadata)
+		for(var/category in all_underwear_metadata)
+			var/list/catlist = all_underwear_metadata[category]
+			if(!islist(catlist))
+				continue
+			for(var/key in catlist)
+				if(key != "/datum/gear_tweak/color")
+					continue
+				var/val = catlist[key]
+				catlist -= key
+				catlist["/datum/loadout_tweak/color"] = val
+		WRITE_FILE(S["all_underwear_metadata"], all_underwear_metadata)
 
 /**
  * clientless migration of savefiles

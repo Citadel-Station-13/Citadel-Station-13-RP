@@ -19,7 +19,7 @@
 	..()
 	stuff_to_display = null
 
-/obj/item/integrated_circuit/output/screen/any_examine(mob/user)
+/obj/item/integrated_circuit/output/screen/any_examine(mob/user, dist)
 	to_chat(user, "There is a little screen labeled '[name]', which displays [!isnull(stuff_to_display) ? "'[stuff_to_display]'" : "nothing"].")
 
 /obj/item/integrated_circuit/output/screen/do_work()
@@ -124,7 +124,7 @@
 	extended_desc = "This will emit an audible message to anyone who can hear the assembly."
 	icon_state = "speaker"
 	complexity = 12
-	cooldown_per_use = 4 SECONDS
+	cooldown_per_use = 1 SECONDS
 	inputs = list("text" = IC_PINTYPE_STRING)
 	outputs = list()
 	activators = list("to speech" = IC_PINTYPE_PULSE_IN)
@@ -141,7 +141,7 @@
 	name = "advanced text-to-speech circuit"
 	desc = "A miniature speaker is attached to this component.  It is able to transpose any valid text to speech, matching a scanned target's voice."
 	complexity = 15
-	cooldown_per_use = 6 SECONDS
+	cooldown_per_use = 1 SECONDS
 	inputs = list("text" = IC_PINTYPE_STRING, "mimic target" = IC_PINTYPE_REF)
 	power_draw_per_use = 100
 
@@ -261,7 +261,7 @@
 	desc = "This small camera allows a remote viewer to see what it sees."
 	extended_desc = "The camera is linked to the Research camera network."
 	icon_state = "video_camera"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	complexity = 10
 	inputs = list(
 		"camera name" = IC_PINTYPE_STRING,
@@ -323,7 +323,7 @@
 /obj/item/integrated_circuit/output/led/power_fail()
 	set_pin_data(IC_INPUT, 1, FALSE)
 
-/obj/item/integrated_circuit/output/led/any_examine(mob/user)
+/obj/item/integrated_circuit/output/led/any_examine(mob/user, dist)
 	var/text_output = list()
 	var/initial_name = initial(name)
 
@@ -411,7 +411,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/obj/effect/overlay/holographic/hologram = null // Reference to the hologram effect, and also used to see if component is active.
 	var/icon/holo_base = null // Uncolored holographic icon.
-//	var/datum/beam/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
+//	var/datum/beam_legacy/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
 	// It is commented out due to picking up the assembly killing the beam.
 
 /obj/item/integrated_circuit/output/holographic_projector/Destroy()
@@ -478,13 +478,18 @@
 
 	if(istype(AM) && assembly)
 		if(AM in view(get_turf(src))) // It must be able to 'see' the object it will copy.
+			var/list/output = get_flat_icon_with_offsets(AM)
+			if(isnull(output))
+				return FALSE
 			hologram = new(src)
-			var/icon/holo_icon = getHologramIcon(get_flat_icon(AM))
+			var/icon/holo_icon = getHologramIcon(output[1])
 		//	holo_icon.GrayScale() // So it looks better colored.
 			if(holo_color) // The color pin should ensure that it is a valid hex.
 				holo_icon.ColorTone(holo_color)
 			hologram.icon = holo_icon
 			hologram.name = "[AM.name] (Hologram)"
+			hologram.pixel_x = output[2]
+			hologram.pixel_y = output[3]
 			update_hologram()
 
 	//		holo_beam = assembly.Beam(hologram, icon_state = "holo_beam", time = INFINITY, maxdistance = world.view)
@@ -506,7 +511,8 @@
 	if(hologram)
 		update_hologram()
 
-/obj/item/integrated_circuit/output/holographic_projector/on_loc_moved(atom/oldloc)
+/obj/item/integrated_circuit/output/holographic_projector/ext_moved(atom/oldloc, dir)
+	. = ..()
 	if(hologram)
 		update_hologram_position()
 

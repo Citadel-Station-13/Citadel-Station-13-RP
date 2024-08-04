@@ -56,8 +56,12 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 
 	for(var/I in (vars - gvars_datum_in_built_vars))
 		var/start_tick = world.time
+		var/start_time = REALTIMEOFDAY
 		call(src, "InitGlobal[I]")()
 		var/end_tick = world.time
+		var/end_time = REALTIMEOFDAY
 		if(end_tick - start_tick)
-			warning("Global [I] slept during initialization!")
+			stack_trace("Global [I] slept during initialization!")
+		if((end_time - start_time) > 0.1 SECONDS)
+			log_world("global-variable-lag-detection: - [I] took [end_time - start_time]ds to init.")
 	QDEL_NULL(exclude_these)

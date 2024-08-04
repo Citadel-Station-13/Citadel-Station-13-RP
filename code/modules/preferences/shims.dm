@@ -10,3 +10,6 @@
 /datum/preferences/proc/preference_by_type(type)
 	RETURN_TYPE(/datum/category_item/player_setup_item)
 	return preference_by_type[type]
+
+/datum/category_group/player_setup_category/proc/override_tab_to(mob/user)
+	return FALSE

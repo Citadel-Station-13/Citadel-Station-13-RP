@@ -4,8 +4,6 @@
 	organ_tag = O_STOMACH
 	parent_organ = BP_GROIN
 
-	unacidable = TRUE	// Don't melt when holding your acid, dangit.
-
 	var/acidtype = "stomacid"	// Incase you want some stomach organ with, say, polyacid instead, or sulphuric.
 	var/max_acid_volume = 30
 

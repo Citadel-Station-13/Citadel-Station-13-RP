@@ -8,10 +8,10 @@
 	icon_state = "map"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "passivegate"
-	level = 1
 
 	name = "pressure regulator"
 	desc = "A one-way air valve that can be used to regulate input or output pressure, and flow rate. Does not require power."
+	hides_underfloor_underlays = TRUE
 
 	use_power = USE_POWER_OFF
 
@@ -48,13 +48,10 @@
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/passive_gate/hide(var/i)
-	update_underlays()
-
 /obj/machinery/atmospherics/component/binary/passive_gate/process(delta_time)
 	..()
 
-	last_flow_rate = 0
+	last_flow_rate_legacy = 0
 
 	if(!unlocked)
 		return 0
@@ -94,7 +91,7 @@
 		if(network2)
 			network2.update = 1
 
-	if (last_flow_rate)
+	if (last_flow_rate_legacy)
 		flowing = 1
 
 	update_icon()
@@ -186,7 +183,7 @@
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/component/binary/passive_gate/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data = list(
@@ -197,12 +194,12 @@
 		"output_pressure" = round(air2.return_pressure()*100),
 		"regulate_mode" = regulate_mode,
 		"set_flow_rate" = round(set_flow_rate*10),
-		"last_flow_rate" = round(last_flow_rate*10),
+		"last_flow_rate" = round(last_flow_rate_legacy*10),
 	)
 
 	return data
 
-/obj/machinery/atmospherics/component/binary/passive_gate/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/passive_gate/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

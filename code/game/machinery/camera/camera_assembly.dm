@@ -1,12 +1,12 @@
 /obj/item/camera_assembly
 	name = "camera assembly"
 	desc = "A pre-fabricated security camera kit, ready to be assembled and mounted to a surface."
-	icon = 'icons/obj/monitors_vr.dmi'
+	icon = 'icons/machinery/security_camera.dmi'
 	icon_state = "cameracase"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	anchored = 0
 
-	matter = list(MAT_STEEL = 700, MAT_GLASS = 300)
+	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 300)
 
 	//	Motion, EMP-Proof, X-Ray
 	var/list/obj/item/possible_upgrades = list(/obj/item/assembly/prox_sensor, /obj/item/stack/material/osmium, /obj/item/stock_parts/scanning_module)
@@ -35,7 +35,7 @@
 				anchored = 1
 				state = 1
 				update_icon()
-				auto_turn()
+				auto_orient_wallmount_single()
 				return
 
 		if(1)
@@ -80,7 +80,7 @@
 			if(W.is_screwdriver())
 				playsound(src.loc, W.tool_sound, 50, 1)
 
-				var/input = sanitize(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: "+GLOB.using_map.station_short+",Security,Secret ", "Set Network", camera_network ? camera_network : NETWORK_DEFAULT))
+				var/input = sanitize(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: "+(LEGACY_MAP_DATUM).station_short+",Security,Secret ", "Set Network", camera_network ? camera_network : NETWORK_DEFAULT))
 				if(!input)
 					to_chat(usr, "No input found please hang up and try your call again.")
 					return
@@ -95,14 +95,10 @@
 				input = sanitizeSafe(input(usr, "How would you like to name the camera?", "Set Camera Name", camera_name ? camera_name : temptag), MAX_NAME_LEN)
 
 				state = 4
-				var/obj/machinery/camera/C = new(src.loc)
-				src.loc = C
+				var/obj/machinery/camera/auto_mount/C = new(src.loc)
+				forceMove(C)
 				C.assembly = src
-
-				C.auto_turn()
-
 				C.replace_networks(uniqueList(tempnetwork))
-
 				C.c_tag = input
 
 				for(var/i = 5; i >= 0; i -= 1)

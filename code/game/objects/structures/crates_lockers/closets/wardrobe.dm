@@ -6,8 +6,7 @@
 
 /obj/structure/closet/wardrobe/red
 	name = "security wardrobe"
-	icon_state = "red"
-	icon_closed = "red"
+	closet_appearance = /singleton/closet_appearance/wardrobe/red
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/security = 3,
@@ -42,9 +41,7 @@
 
 /obj/structure/closet/wardrobe/detective
 	name = "detective wardrobe"
-	icon_state = "cabinet_closed"
-	icon_closed = "cabinet_closed"
-	icon_opened = "cabinet_open"
+	closet_appearance = /singleton/closet_appearance/cabinet
 
 	starts_with = list(
 		/obj/item/clothing/head/det = 2,
@@ -66,8 +63,7 @@
 
 /obj/structure/closet/wardrobe/pink
 	name = "pink wardrobe"
-	icon_state = "pink"
-	icon_closed = "pink"
+	closet_appearance = /singleton/closet_appearance/wardrobe/pink
 
 	starts_with = list(
 		/obj/item/clothing/under/color/pink = 3,
@@ -76,8 +72,7 @@
 
 /obj/structure/closet/wardrobe/black
 	name = "black wardrobe"
-	icon_state = "black"
-	icon_closed = "black"
+	closet_appearance = /singleton/closet_appearance/wardrobe/black
 
 	starts_with = list(
 		/obj/item/clothing/under/color/black = 3,
@@ -92,8 +87,7 @@
 /obj/structure/closet/wardrobe/chaplain_black
 	name = "chapel wardrobe"
 	desc = "It's a storage unit for approved religious attire."
-	icon_state = "black"
-	icon_closed = "black"
+	closet_appearance = /singleton/closet_appearance/wardrobe/black
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/chaplain,
@@ -119,8 +113,7 @@
 
 /obj/structure/closet/wardrobe/green
 	name = "green wardrobe"
-	icon_state = "green"
-	icon_closed = "green"
+	closet_appearance = /singleton/closet_appearance/wardrobe/green
 
 	starts_with = list(
 		/obj/item/clothing/under/color/green = 3,
@@ -132,8 +125,7 @@
 
 /obj/structure/closet/wardrobe/xenos
 	name = "xenos wardrobe"
-	icon_state = "green"
-	icon_closed = "green"
+	closet_appearance = /singleton/closet_appearance/wardrobe/green
 
 	starts_with = list(
 		/obj/item/clothing/suit/unathi/mantle,
@@ -147,8 +139,7 @@
 /obj/structure/closet/wardrobe/orange
 	name = "prison wardrobe"
 	desc = "It's a storage unit for regulation prisoner attire."
-	icon_state = "orange"
-	icon_closed = "orange"
+	closet_appearance = /singleton/closet_appearance/wardrobe/orange
 
 	starts_with = list(
 		/obj/item/clothing/under/color/prison = 3,
@@ -158,8 +149,7 @@
 
 /obj/structure/closet/wardrobe/yellow
 	name = "yellow wardrobe"
-	icon_state = "yellow"
-	icon_closed = "yellow"
+	closet_appearance = /singleton/closet_appearance/wardrobe/yellow
 
 	starts_with = list(
 		/obj/item/clothing/under/color/orange_skirt =3,
@@ -172,8 +162,7 @@
 
 /obj/structure/closet/wardrobe/atmospherics_yellow
 	name = "atmospherics wardrobe"
-	icon_state = "yellow"
-	icon_closed = "yellow"
+	closet_appearance = /singleton/closet_appearance/wardrobe/yellow
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/atmospheric_technician = 3,
@@ -188,8 +177,7 @@
 
 /obj/structure/closet/wardrobe/engineering_yellow
 	name = "engineering wardrobe"
-	icon_state = "yellow"
-	icon_closed = "yellow"
+	closet_appearance = /singleton/closet_appearance/wardrobe/yellow
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/engineer = 3,
@@ -207,8 +195,7 @@
 
 /obj/structure/closet/wardrobe/white
 	name = "white wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/color/white = 3,
@@ -219,8 +206,7 @@
 
 /obj/structure/closet/wardrobe/pjs
 	name = "pajama wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/pj/red = 2,
@@ -231,8 +217,7 @@
 
 /obj/structure/closet/wardrobe/science_white
 	name = "science wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist = 3,
@@ -262,8 +247,7 @@
 
 /obj/structure/closet/wardrobe/robotics_black
 	name = "robotics wardrobe"
-	icon_state = "black"
-	icon_closed = "black"
+	closet_appearance = /singleton/closet_appearance/wardrobe/black
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/roboticist = 2,
@@ -286,8 +270,7 @@
 
 /obj/structure/closet/wardrobe/chemistry_white
 	name = "chemistry wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/chemist = 2,
@@ -303,8 +286,7 @@
 
 /obj/structure/closet/wardrobe/genetics_white
 	name = "genetics wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/geneticist = 2,
@@ -319,8 +301,7 @@
 
 /obj/structure/closet/wardrobe/virology_white
 	name = "virology wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/virologist = 2,
@@ -336,8 +317,7 @@
 
 /obj/structure/closet/wardrobe/medic_white
 	name = "medical wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/medical = 2,
@@ -363,8 +343,7 @@
 
 /obj/structure/closet/wardrobe/medic_gown
 	name = "cloning wardrobe"
-	icon_state = "white"
-	icon_closed = "white"
+	closet_appearance = /singleton/closet_appearance/wardrobe/white
 
 	starts_with = list(
 		/obj/item/clothing/under/medigown = 4)
@@ -372,8 +351,7 @@
 
 /obj/structure/closet/wardrobe/grey
 	name = "grey wardrobe"
-	icon_state = "grey"
-	icon_closed = "grey"
+	closet_appearance = /singleton/closet_appearance/wardrobe/grey
 
 	starts_with = list(
 		/obj/item/clothing/under/color/grey = 3,
@@ -384,8 +362,7 @@
 
 /obj/structure/closet/wardrobe/mixed
 	name = "mixed wardrobe"
-	icon_state = "mixed"
-	icon_closed = "mixed"
+	closet_appearance = /singleton/closet_appearance/wardrobe/mixed
 
 	starts_with = list(
 		/obj/item/clothing/under/color/blue,
@@ -430,9 +407,7 @@
 
 /obj/structure/closet/wardrobe/tactical
 	name = "tactical equipment"
-	icon_state = "syndicate1"
-	icon_closed = "syndicate1"
-	icon_opened = "syndicate1open"
+	closet_appearance = /singleton/closet_appearance/tactical
 
 	starts_with = list(
 		/obj/item/clothing/under/tactical,
@@ -457,9 +432,7 @@
 
 /obj/structure/closet/wardrobe/ert
 	name = "emergency response team equipment"
-	icon_state = "syndicate1"
-	icon_closed = "syndicate1"
-	icon_opened = "syndicate1open"
+	closet_appearance = /singleton/closet_appearance/tactical
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/centcom,
@@ -476,8 +449,7 @@
 
 /obj/structure/closet/wardrobe/suit
 	name = "suit locker"
-	icon_state = "mixed"
-	icon_closed = "mixed"
+	closet_appearance = /singleton/closet_appearance/wardrobe/mixed
 
 	starts_with = list(
 		/obj/item/clothing/under/assistantformal,
@@ -505,9 +477,7 @@
 
 /obj/structure/closet/wardrobe/captain
 	name = "Facility Director's wardrobe"
-	icon_state = "cabinet_closed"
-	icon_closed = "cabinet_closed"
-	icon_opened = "cabinet_open"
+	closet_appearance = /singleton/closet_appearance/cabinet
 
 	starts_with = list(
 		/obj/item/clothing/glasses/sunglasses,

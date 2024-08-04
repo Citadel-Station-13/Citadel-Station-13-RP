@@ -1,3 +1,4 @@
+// todo: this doesn't work
 ///This component allows us to give a mob access without giving them an ID card.
 /datum/component/simple_access
 	dupe_mode = COMPONENT_DUPE_ALLOWED
@@ -9,14 +10,14 @@
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 	access = new_access
-	RegisterSignal(parent, COMSIG_MOB_TRIED_ACCESS, .proc/on_tried_access)
+	RegisterSignal(parent, COMSIG_MOB_TRIED_ACCESS, PROC_REF(on_tried_access))
 	if(!donor_atom)
 		return
 	if(istype(donor_atom, /obj/item/organ))
-		RegisterSignal(donor_atom, COMSIG_ORGAN_REMOVED, .proc/on_donor_removed)
+		RegisterSignal(donor_atom, COMSIG_ORGAN_REMOVED, PROC_REF(on_donor_removed))
 	else if(istype(donor_atom, /obj/item/implant))
-		RegisterSignal(donor_atom, COMSIG_IMPLANT_REMOVED, .proc/on_donor_removed)
-	RegisterSignal(donor_atom, COMSIG_PARENT_QDELETING, .proc/on_donor_removed)
+		RegisterSignal(donor_atom, COMSIG_IMPLANT_REMOVED, PROC_REF(on_donor_removed))
+	RegisterSignal(donor_atom, COMSIG_PARENT_QDELETING, PROC_REF(on_donor_removed))
 
 /datum/component/simple_access/proc/on_tried_access(datum/source, atom/locked_thing)
 	SIGNAL_HANDLER

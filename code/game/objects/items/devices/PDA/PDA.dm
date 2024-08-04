@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
 	item_flags = ITEM_NOBLUDGEON
@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	var/obj/item/paicard/pai = null	// A slot for a personal AI device
 
-/obj/item/pda/examine(mob/user)
+/obj/item/pda/examine(mob/user, dist)
 	. = ..()
 	. += "The time [stationtime2text()] is displayed in the corner of the screen."
 
@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "You can't send PDA messages because you are dead!")
 		return
 	var/list/plist = available_pdas()
-	tim_sort(plist, cmp = /proc/cmp_text_asc)
+	tim_sort(plist, cmp = GLOBAL_PROC_REF(cmp_text_asc))
 	if (plist)
 		var/c = input(usr, "Please select a PDA") as null|anything in plist
 		if (!c) // if the user hasn't selected a PDA file we can't send a message
@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/Initialize(mapload)
 	. = ..()
 	GLOB.PDAs += src
-	tim_sort(GLOB.PDAs, cmp = /proc/cmp_name_asc)
+	tim_sort(GLOB.PDAs, cmp = GLOBAL_PROC_REF(cmp_name_asc))
 	if(default_cartridge)
 		cartridge = new default_cartridge(src)
 	new /obj/item/pen(src)
@@ -529,7 +529,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 
 	data["idInserted"] = (id ? 1 : 0)
-	data["idLink"] = (id ? text("[id.registered_name], [id.assignment]") : "--------")
+	data["idLink"] = (id ? "[id.registered_name], [id.assignment]" : "--------")
 
 	data["cart_loaded"] = cartridge ? 1:0
 	if(cartridge)
@@ -970,7 +970,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						if("2")		// Eject pAI device
 							var/turf/T = get_turf_or_move(src.loc)
 							if(T)
-								pai.loc = T
+								pai.forceMove(T)
 								pai = null
 
 		else
@@ -1084,7 +1084,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				M.put_in_hands(O)
 				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 				return
-		O.loc = get_turf(src)
+		O.forceMove(get_turf(src))
 	else
 		to_chat(usr, "<span class='notice'>This PDA does not have a pen in it.</span>")
 
@@ -1128,7 +1128,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = "\ref[P]")))
 		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
 		for(var/mob/M in GLOB.player_list)
-			if(M.stat == DEAD && M.client && (M.is_preference_enabled(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
+			if(M.stat == DEAD && M.client && (M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
 				if(istype(M, /mob/new_player))
 					continue
 				if(M.forbid_seeing_deadchat)
@@ -1161,7 +1161,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (!beep_silent)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("[icon2html(thing = src, target = world)] *[message_tone]*"))
+			O.show_message("[icon2html(thing = src, target = world)] *[message_tone]*")
 	//Search for holder of the PDA.
 	var/mob/living/L = null
 	if(loc && isliving(loc))
@@ -1210,7 +1210,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new_message = 1
 
 /obj/item/pda/verb/verb_reset_pda()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Reset PDA"
 	set src in usr
 
@@ -1225,7 +1225,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 /obj/item/pda/verb/verb_remove_id()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove id"
 	set src in usr
 
@@ -1242,7 +1242,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 
 /obj/item/pda/verb/verb_remove_pen()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove pen"
 	set src in usr
 
@@ -1255,7 +1255,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "<span class='notice'>You cannot do this while restrained.</span>")
 
 /obj/item/pda/verb/verb_remove_cartridge()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Remove cartridge"
 	set src in usr
 
@@ -1358,36 +1358,35 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(1)
 
 				for (var/mob/O in viewers(C, null))
-					O.show_message("<span class='warning'>\The [user] has analyzed [C]'s vitals!</span>", 1)
-
-				user.show_message("<span class='notice'>Analyzing Results for [C]:</span>")
-				user.show_message("<span class='notice'>    Overall Status: [C.stat > 1 ? "dead" : "[C.health - C.halloss]% healthy"]</span>", 1)
-				user.show_message(text("<span class='notice'>    Damage Specifics:</span> <span class='[]'>[]</span>-<span class='[]'>[]</span>-<span class='[]'>[]</span>-<span class='[]'>[]</span>",
-						(C.getOxyLoss() > 50) ? "warning" : "", C.getOxyLoss(),
-						(C.getToxLoss() > 50) ? "warning" : "", C.getToxLoss(),
-						(C.getFireLoss() > 50) ? "warning" : "", C.getFireLoss(),
-						(C.getBruteLoss() > 50) ? "warning" : "", C.getBruteLoss()
-						), 1)
-				user.show_message("<span class='notice'>    Key: Suffocation/Toxin/Burns/Brute</span>", 1)
-				user.show_message("<span class='notice'>    Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)</span>", 1)
+					O.show_message(SPAN_WARNING("\The [user] has analyzed [C]'s vitals!"), SAYCODE_TYPE_VISIBLE)
+				user.show_message(SPAN_NOTICE("Analyzing Results for [C]:"))
+				user.show_message(SPAN_NOTICE("[FOURSPACES]Overall Status: [C.stat > 1 ? "dead" : "[C.health - C.halloss]% healthy"]"), SAYCODE_TYPE_VISIBLE)
+				user.show_message(
+					"<span class='notice'>[FOURSPACES]Damage Specifics:</span> <span class='[(C.getOxyLoss() > 50) ? "warning" : ""]'>[C.getOxyLoss()]</span>-<span class='[(C.getToxLoss() > 50) ? "warning" : ""]'>[C.getToxLoss()]</span>-<span class='[(C.getFireLoss() > 50) ? "warning" : ""]'>[C.getFireLoss()]</span>-<span class='[(C.getBruteLoss() > 50) ? "warning" : ""]'>[C.getBruteLoss()]</span>",
+					SAYCODE_TYPE_VISIBLE
+				)
+				user.show_message(SPAN_NOTICE("[FOURSPACES]Key: Suffocation/Toxin/Burns/Brute"), 1)
+				user.show_message(SPAN_NOTICE("[FOURSPACES]Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)"), SAYCODE_TYPE_VISIBLE)
 				if(C.tod && (C.stat == DEAD || (C.status_flags & STATUS_FAKEDEATH)))
-					user.show_message("<span class='notice'>    Time of Death: [C.tod]</span>")
+					user.show_message(SPAN_NOTICE("[FOURSPACES]Time of Death: [C.tod]"))
 				if(istype(C, /mob/living/carbon/human))
 					var/mob/living/carbon/human/H = C
 					var/list/damaged = H.get_damaged_organs(1,1)
-					user.show_message("<span class='notice'>Localized Damage, Brute/Burn:</span>",1)
+					user.show_message(SPAN_NOTICE("Localized Damage, Brute/Burn:"), SAYCODE_TYPE_VISIBLE)
 					if(length(damaged)>0)
 						for(var/obj/item/organ/external/org in damaged)
-							user.show_message(text("<span class='notice'>     []: <span class='[]'>[]</span>-<span class='[]'>[]</span></span>",
-									capitalize(org.name), (org.brute_dam > 0) ? "warning" : "notice", org.brute_dam, (org.burn_dam > 0) ? "warning" : "notice", org.burn_dam),1)
+							user.show_message(
+								SPAN_NOTICE("[FOURSPACES][capitalize(org.name)]: <span class='[(org.brute_dam > 0) ? "warning" : "notice"]'>[org.brute_dam]</span>-<span class='[(org.burn_dam > 0) ? "warning" : "notice"]'>[org.burn_dam]</span>"),
+								SAYCODE_TYPE_VISIBLE
+							)
 					else
-						user.show_message("<span class='notice'>    Limbs are OK.</span>",1)
+						user.show_message(SPAN_NOTICE("[FOURSPACES]Limbs are OK."), SAYCODE_TYPE_VISIBLE)
 
 			if(2)
 				if (!istype(C.dna, /datum/dna))
 					to_chat(user, "<span class='notice'>No fingerprints found on [C]</span>")
 				else
-					to_chat(user, text("<span class='notice'>\The [C]'s Fingerprints: [md5(C.dna.uni_identity)]</span>"))
+					to_chat(user, SPAN_NOTICE("\The [C]'s Fingerprints: [md5(C.dna.uni_identity)]"))
 				if ( !(C:blood_DNA) )
 					to_chat(user, "<span class='notice'>No blood found on [C]</span>")
 					if(C:blood_DNA)
@@ -1406,32 +1405,33 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					to_chat(user, "<span class='notice'>No radiation detected.</span>")
 
-/obj/item/pda/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/pda/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return
 	switch(scanmode)
 
 		if(3)
-			if(!isobj(A))
+			if(!isobj(target))
 				return
-			if(!isnull(A.reagents))
-				if(A.reagents.reagent_list.len > 0)
-					var/reagents_length = A.reagents.reagent_list.len
+			if(!isnull(target.reagents))
+				if(target.reagents.reagent_list.len > 0)
+					var/reagents_length = target.reagents.reagent_list.len
 					to_chat(user, "<span class='notice'>[reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.</span>")
-					for (var/re in A.reagents.reagent_list)
+					for (var/re in target.reagents.reagent_list)
 						to_chat(user,"<span class='notice'>    [re]</span>")
 				else
-					to_chat(user,"<span class='notice'>No active chemical agents found in [A].</span>")
+					to_chat(user,"<span class='notice'>No active chemical agents found in [target].</span>")
 			else
-				to_chat(user,"<span class='notice'>No significant chemical agents found in [A].</span>")
+				to_chat(user,"<span class='notice'>No significant chemical agents found in [target].</span>")
 
 		if(5)
-			analyze_gases(A, user)
+			analyze_gases(target, user)
 
-	if (!scanmode && istype(A, /obj/item/paper) && owner)
+	if (!scanmode && istype(target, /obj/item/paper) && owner)
 		// JMO 20140705: Makes scanned document show up properly in the notes. Not pretty for formatted documents,
 		// as this will clobber the HTML, but at least it lets you scan a document. You can restore the original
 		// notes by editing the note again. (Was going to allow you to edit, but scanned documents are too long.)
-		var/raw_scan = (A:info)
+		var/raw_scan = (target:info)
 		var/formatted_scan = ""
 		// Scrub out the tags (replacing a few formatting ones along the way)
 
@@ -1470,7 +1470,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
     	// Store the scanned document to the notes
 		note = "Scanned Document. Edit to restore previous notes/delete scan.<br>----------<br>" + formatted_scan + "<br>"
-		// notehtml ISN'T set to allow user to get their old notes back. A better implementation would add a "scanned documents"
+		// notehtml ISN'T set to allow user to get their old notes back. target better implementation would add a "scanned documents"
 		// feature to the PDA, which would better convey the availability of the feature, but this will work for now.
 
 		// Inform the user
@@ -1572,10 +1572,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/pressure = environment.return_pressure()
 		var/total_moles = environment.total_moles
 		if (total_moles)
-			var/o2_level = environment.gas[/datum/gas/oxygen]/total_moles
-			var/n2_level = environment.gas[/datum/gas/nitrogen]/total_moles
-			var/co2_level = environment.gas[/datum/gas/carbon_dioxide]/total_moles
-			var/phoron_level = environment.gas[/datum/gas/phoron]/total_moles
+			var/o2_level = environment.gas[GAS_ID_OXYGEN]/total_moles
+			var/n2_level = environment.gas[GAS_ID_NITROGEN]/total_moles
+			var/co2_level = environment.gas[GAS_ID_CARBON_DIOXIDE]/total_moles
+			var/phoron_level = environment.gas[GAS_ID_PHORON]/total_moles
 			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 
 			// entry is what the element is describing

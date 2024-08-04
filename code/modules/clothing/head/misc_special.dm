@@ -17,14 +17,14 @@
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	icon_state = "welding"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding", SLOT_ID_LEFT_HAND = "welding")
-	matter = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
 	var/up = 0
 	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 	body_cover_flags = HEAD|FACE|EYES
-	action_button_name = "Flip Welding Mask"
+	item_action_name = "Flip Welding Mask"
 	siemens_coefficient = 0.9
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/base_state
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -35,39 +35,44 @@
 	. = ..()
 	if(.)
 		return
-	toggle()
+	toggle(user)
 
 
-/obj/item/clothing/head/welding/verb/toggle()
-	set category = "Object"
+/obj/item/clothing/head/welding/verb/toggle_verb()
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Adjust welding mask"
 	set src in usr
 
+	toggle(usr)
+
+/obj/item/clothing/head/welding/proc/toggle(mob/user)
 	if(!base_state)
 		base_state = icon_state
 
-	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
-		if(src.up)
-			src.up = !src.up
-			body_cover_flags |= (EYES|FACE)
-			inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-			icon_state = base_state
-			flash_protection = FLASH_PROTECTION_MAJOR
-			tint = initial(tint)
-			to_chat(usr, "You flip the [src] down to protect your eyes.")
-		else
-			src.up = !src.up
-			body_cover_flags &= ~(EYES|FACE)
-			inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-			icon_state = "[base_state]up"
-			flash_protection = FLASH_PROTECTION_NONE
-			tint = TINT_NONE
-			to_chat(usr, "You push the [src] up out of your face.")
-		update_worn_icon()	//so our mob-overlays
-		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
-			var/mob/M = src.loc
-			M.update_inv_wear_mask()
-		usr.update_action_buttons()
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
+		return
+
+	if(src.up)
+		src.up = !src.up
+		body_cover_flags |= (EYES|FACE)
+		inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+		icon_state = base_state
+		flash_protection = FLASH_PROTECTION_MAJOR
+		tint = initial(tint)
+		to_chat(usr, "You flip the [src] down to protect your eyes.")
+	else
+		src.up = !src.up
+		body_cover_flags &= ~(EYES|FACE)
+		inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+		icon_state = "[base_state]up"
+		flash_protection = FLASH_PROTECTION_NONE
+		tint = TINT_NONE
+		to_chat(usr, "You push the [src] up out of your face.")
+	update_worn_icon()	//so our mob-overlays
+	if (ismob(src.loc)) //should allow masks to update when it is opened/closed
+		var/mob/M = src.loc
+		M.update_inv_wear_mask()
+	update_action_buttons()
 
 /obj/item/clothing/head/welding/demon
 	name = "demonic welding helmet"
@@ -105,6 +110,14 @@
 		SLOT_ID_RIGHT_HAND = "engiewelding",
 		)
 
+/obj/item/clothing/head/welding/arar
+	name = "replikant welding helmet"
+	desc = "A protective welding mask designed for repair-technician replikants, the visor slits are particularly difficult to see out of."
+	icon_state = "ararwelding"
+	item_state_slots = list(
+		SLOT_ID_LEFT_HAND = "ararwelding",
+		SLOT_ID_RIGHT_HAND = "ararwelding",
+		)
 
 /*
  * Cakehat
@@ -156,7 +169,7 @@
 	icon_state = "ushankadown"
 	inv_hide_flags = HIDEEARS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = HEAD
+	cold_protection_cover = HEAD
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user)
 	. = ..()
@@ -180,7 +193,7 @@
 	body_cover_flags = HEAD|FACE|EYES
 	brightness_on = 2
 	light_overlay = "helmet_light"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
 
@@ -216,6 +229,16 @@
 	icon_state = "santahatgreen"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahatgreen", SLOT_ID_LEFT_HAND = "santahatgreen")
 	body_cover_flags = 0
+
+// Ye Olde Bloodborne Cage Helmet
+/obj/item/clothing/head/cage
+	name = "scholarly cage"
+	desc = "An aged iron cage meant to be worn upon one's head. It relies largely on the shoulders for support. Small, dried flecks of blood have visibly gathered in some of the recesses."
+	icon = 'icons/clothing/head/cage_32x48.dmi'
+	icon_state = "cage"
+	body_cover_flags = HEAD
+	w_class = WEIGHT_CLASS_NORMAL
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /*
  * Xenoarch/Surface Loot Hats

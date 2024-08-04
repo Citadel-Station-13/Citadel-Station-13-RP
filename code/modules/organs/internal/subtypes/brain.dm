@@ -1,8 +1,5 @@
-GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
-
 /obj/item/organ/internal/brain
 	name = "brain"
-	health = 400 //They need to live awhile longer than other organs. Is this even used by organ code anymore?
 	desc = "A piece of juicy meat found in a person's head."
 	organ_tag = "brain"
 	parent_organ = BP_HEAD
@@ -10,12 +7,13 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	decay_rate = ORGAN_DECAY_PER_SECOND_BRAIN
 	icon_state = "brain2"
 	damage_force = 1.0
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 1.0
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_BIO = 3)
 	attack_verb = list("attacked", "slapped", "whacked")
+	var/health = 400 //They need to live awhile longer than other organs. Is this even used by organ code anymore?
 	var/clone_source = FALSE
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
@@ -23,7 +21,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
 	health = config_legacy.default_brain_health
-	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
+	addtimer(CALLBACK(src, PROC_REF(clear_brainmob_hud)), 15)
 
 /obj/item/organ/internal/brain/Destroy()
 	QDEL_NULL(brainmob)
@@ -100,7 +98,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	to_chat(brainmob, SPAN_NOTICE("You feel slightly disoriented. That's normal when you're just \a [initial(src.name)]."))
 	callHook("debrain", list(brainmob))
 
-/obj/item/organ/internal/brain/examine(mob/user) // -- TLE
+/obj/item/organ/internal/brain/examine(mob/user, dist) // -- TLE
 	. = ..()
 	if(brainmob && brainmob.client)//if thar be a brain inside... the brain.
 		. += "You can feel the small spark of life still left in this one."
@@ -133,7 +131,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		if(brainmob.mind)
 			brainmob.mind.transfer(target)
 		else
-			target.ckey = brainmob.ckey
+			brainmob.transfer_client_to(target)
 	..()
 
 /obj/item/organ/internal/brain/proc/get_control_efficiency()
@@ -177,7 +175,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	. = ..()
 	create_reagents(50)
 	set_owner_vars()
-	addtimer(CALLBACK(src, .proc/sync_color), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 10 SECONDS)
 
 /obj/item/organ/internal/brain/slime/proc/set_owner_vars()
 	if(!ishuman(owner))
@@ -279,13 +277,11 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	name = "Promethean Revival"
 	id = "prom_revival"
 	result = null
-	required_reagents = list(MAT_PHORON = 40)
+	required_reagents = list(
+		/datum/reagent/toxin/phoron = 40,
+	)
 	result_amount = 1
-
-/datum/chemical_reaction/promethean_brain_revival/can_happen(datum/reagents/holder)
-	if(holder.my_atom && istype(holder.my_atom, /obj/item/organ/internal/brain/slime))
-		return ..()
-	return FALSE
+	required_container = /obj/item/organ/internal/brain/slime
 
 /datum/chemical_reaction/promethean_brain_revival/on_reaction(datum/reagents/holder)
 	var/obj/item/organ/internal/brain/slime/brain = holder.my_atom
@@ -307,7 +303,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/grey/colormatch/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/sync_color), 15)
+	addtimer(CALLBACK(src, PROC_REF(sync_color)), 15)
 
 /obj/item/organ/internal/brain/grey/colormatch/proc/sync_color()
 	if(ishuman(owner))

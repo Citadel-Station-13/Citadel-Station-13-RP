@@ -85,8 +85,8 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "punches"
 
-	melee_damage_lower = 18
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 18
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -128,8 +128,8 @@
 	adjust_scale(icon_scale_x * 0.7, icon_scale_y * 0.7)
 	maxHealth = round(maxHealth * 0.5)
 	health = round(health * 0.5)
-	melee_damage_lower *= 0.7
-	melee_damage_upper *= 0.7
+	legacy_melee_damage_lower *= 0.7
+	legacy_melee_damage_upper *= 0.7
 
 	response_harm = "kicks"
 

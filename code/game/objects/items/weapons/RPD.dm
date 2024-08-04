@@ -17,14 +17,14 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
-	matter = list(MAT_STEEL = 50000, MAT_GLASS = 25000)
+	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	///Direction of the device we are going to spawn, set up in the UI
@@ -87,14 +87,14 @@
 	return(BRUTELOSS)
 */
 
-/obj/item/pipe_dispenser/examine(mob/user)
+/obj/item/pipe_dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "You can scroll your mouse wheel to change the piping layer."
 
 /obj/item/pipe_dispenser/equipped(mob/user, slot, flags)
 	. = ..()
 	if(slot == SLOT_ID_HANDS)
-		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
+		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, PROC_REF(mouse_wheeled))
 	else
 		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 
@@ -112,12 +112,11 @@
 		return
 	ui_interact(user)
 
-/obj/item/pipe_dispenser/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/pipes),
-	)
+/obj/item/pipe_dispenser/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/pipes
+	return ..()
 
-/obj/item/pipe_dispenser/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/pipe_dispenser/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/pipe_dispenser/ui_interact(mob/user, datum/tgui/ui)
@@ -127,11 +126,11 @@
 		ui = new(user, src, "RapidPipeDispenser", name)
 		ui.open()
 
-/obj/item/pipe_dispenser/ui_static_data(mob/user)
+/obj/item/pipe_dispenser/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = list("paint_colors" = GLOB.pipe_paint_colors)
 	return data
 
-/obj/item/pipe_dispenser/ui_data(mob/user)
+/obj/item/pipe_dispenser/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list(
 		"category" = category,
 		"piping_layer" = piping_layer,
@@ -165,7 +164,7 @@
 	data["init_directions"] = init_directions
 	return data
 
-/obj/item/pipe_dispenser/ui_act(action, params)
+/obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -220,8 +219,8 @@
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 50, FALSE)
 	return TRUE
 
-/obj/item/pipe_dispenser/afterattack(atom/A, mob/user as mob, proximity)
-	if(!user.IsAdvancedToolUser() || istype(A, /turf/space/transit) || !proximity)
+/obj/item/pipe_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!user.IsAdvancedToolUser() || istype(target, /turf/space/transit) || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 
 	//So that changing the menu settings doesn't affect the pipes already being built.
@@ -233,23 +232,23 @@
 	var/static/list/make_pipe_whitelist
 	if(!make_pipe_whitelist)
 		make_pipe_whitelist = typecacheof(list(/obj/structure/lattice, /obj/structure/girder, /obj/item/pipe))
-	var/can_make_pipe = (isturf(A) || is_type_in_typecache(A, make_pipe_whitelist))
+	var/can_make_pipe = (isturf(target) || is_type_in_typecache(target, make_pipe_whitelist))
 
-	var/can_destroy_pipe = istype(A, /obj/item/pipe) || istype(A, /obj/item/pipe_meter) || istype(A, /obj/structure/disposalconstruct)
+	var/can_destroy_pipe = istype(target, /obj/item/pipe) || istype(target, /obj/item/pipe_meter) || istype(target, /obj/structure/disposalconstruct)
 
 	. = TRUE
 	if((mode & DESTROY_MODE) && can_destroy_pipe)
 		to_chat(user, SPAN_NOTICE("You start destroying a pipe..."))
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		if(do_after(user, 2, target = A))
+		if(do_after(user, 2, target = target))
 			activate()
-			animate_deletion(A)
+			animate_deletion(target)
 		return
 
 	//Painting pipes
 	if((mode & PAINT_MODE))
-		if(istype(A, /obj/machinery/atmospherics/pipe))
-			var/obj/machinery/atmospherics/pipe/P = A
+		if(istype(target, /obj/machinery/atmospherics/pipe))
+			var/obj/machinery/atmospherics/pipe/P = target
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 			P.change_color(pipe_colors[paint_color])
 			user.visible_message(SPAN_NOTICE("[user] paints \the [P] [paint_color]."), SPAN_NOTICE("You paint \the [P] [paint_color]."))
@@ -264,9 +263,9 @@
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
 				if(istype(recipe, /datum/pipe_info/meter))
 					to_chat(user, SPAN_NOTICE("You start building a meter..."))
-					if(do_after(user, 2, target = A))
+					if(do_after(user, 2, target = target))
 						activate()
-						var/obj/item/pipe_meter/PM = new /obj/item/pipe_meter(get_turf(A))
+						var/obj/item/pipe_meter/PM = new /obj/item/pipe_meter(get_turf(target))
 						PM.setAttachLayer(queued_piping_layer)
 						if(mode & WRENCH_MODE)
 							do_wrench(PM, user)
@@ -277,14 +276,14 @@
 					else
 						var/datum/pipe_info/pipe/R = recipe
 						to_chat(user, SPAN_NOTICE("You start building a pipe..."))
-						if(do_after(user, 2, target = A))
+						if(do_after(user, 2, target = target))
 							if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))//double check to stop cheaters (and to not waste time waiting for something that can't be placed)
 								to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
 								return ..()
 							activate()
 							var/obj/machinery/atmospherics/path = R.pipe_type
 							var/pipe_item_type = initial(path.construction_type) || /obj/item/pipe
-							var/obj/item/pipe/P = new pipe_item_type(get_turf(A), path, queued_p_dir)
+							var/obj/item/pipe/P = new pipe_item_type(get_turf(target), path, queued_p_dir)
 
 							P.update()
 							P.add_fingerprint(usr)
@@ -303,14 +302,14 @@
 				var/datum/pipe_info/disposal/R = recipe
 				if(!istype(R) || !can_make_pipe)
 					return ..()
-				A = get_turf(A)
-				if(istype(A, /turf/unsimulated))
+				target = get_turf(target)
+				if(istype(target, /turf/unsimulated))
 					to_chat(user, SPAN_WARNING("[src]'s error light flickers; there's something in the way!"))
 					return
 				to_chat(user, SPAN_NOTICE("You start building a disposals pipe..."))
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
-				if(do_after(user, 4, target = A))
-					var/obj/structure/disposalconstruct/C = new(A, R.pipe_type, queued_p_dir, queued_p_flipped, R.subtype)
+				if(do_after(user, 4, target = target))
+					var/obj/structure/disposalconstruct/C = new(target, R.pipe_type, queued_p_dir, queued_p_flipped, R.subtype)
 
 					if(!C.can_place())
 						to_chat(user, SPAN_WARNING("There's not enough room to build that here!"))
@@ -352,9 +351,7 @@
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
-	var/resolved = target.attackby(tool,user)
-	if(!resolved && tool && target)
-		tool.afterattack(target,user,1)
+	tool.melee_interaction_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
 
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/user, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER

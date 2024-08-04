@@ -4,40 +4,40 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throw_force = 3
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 10
 	amount_per_transfer_from_this = 10
-	unacidable = 1 //plastic
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
 	volume = 250
+	materials_base = list(MAT_GLASS = 1500, MAT_STEEL = 250)
 
 /obj/item/reagent_containers/spray/Initialize(mapload)
 	. = ..()
 	remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
 
-/obj/item/reagent_containers/spray/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/table) || istype(A, /obj/structure/closet) || istype(A, /obj/item/reagent_containers) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart))
+/obj/item/reagent_containers/spray/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target, /obj/item/storage) || istype(target, /obj/structure/table) || istype(target, /obj/structure/closet) || istype(target, /obj/item/reagent_containers) || istype(target, /obj/structure/sink) || istype(target, /obj/structure/janitorialcart))
 		return
 
-	if(istype(A, /spell))
+	if(istype(target, /spell))
 		return
 
-	if(proximity)
-		if(standard_dispenser_refill(user, A))
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		if(standard_dispenser_refill(user, target))
 			return
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
 		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
 		return
 
-	Spray_at(A, user, proximity)
+	Spray_at(target, user, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 
 	user.setClickCooldown(4)
 
@@ -76,7 +76,7 @@
 	spray_size = next_list_item(spray_size, spray_sizes)
 	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
 
-/obj/item/reagent_containers/spray/examine(mob/user)
+/obj/item/reagent_containers/spray/examine(mob/user, dist)
 	. = ..()
 	if(loc == user)
 		. += "[round(reagents.total_volume)] units left."
@@ -84,7 +84,7 @@
 /obj/item/reagent_containers/spray/verb/empty()
 
 	set name = "Empty Tank"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in usr
 
 	if (alert(usr, "Are you sure you want to empty that?", "Empty Tank:", "Yes", "No") != "Yes")
@@ -123,13 +123,15 @@
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
 	volume = 40
+	worth_intrinsic = 85
 	var/safety = TRUE
+	materials_base = list(MAT_STEEL = 1000)
 
 /obj/item/reagent_containers/spray/pepper/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("condensedcapsaicin", 40)
+	reagents.add_reagent("condensedcapsaicin", volume)
 
-/obj/item/reagent_containers/spray/pepper/examine(mob/user)
+/obj/item/reagent_containers/spray/pepper/examine(mob/user, dist)
 	. = ..()
 	. += "The safety is [safety ? "on" : "off"]."
 
@@ -154,10 +156,11 @@
 	volume = 10
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
+	materials_base = list(MAT_PLASTIC = 500)
 
 /obj/item/reagent_containers/spray/waterflower/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("water", 10)
+	reagents.add_reagent("water", volume)
 
 /obj/item/reagent_containers/spray/chemsprayer
 	name = "chem sprayer"
@@ -166,10 +169,11 @@
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
 	throw_force = 3
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	possible_transfer_amounts = null
 	volume = 600
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
+	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 
 /obj/item/reagent_containers/spray/chemsprayer/Spray_at(atom/A as mob|obj)
 	var/direction = get_dir(src, A)
@@ -199,10 +203,11 @@
 	icon_state = "plantbgone"
 	item_state = "plantbgone"
 	volume = 100
+	materials_base = list(MAT_PLASTIC = 1000)
 
 /obj/item/reagent_containers/spray/plantbgone/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("plantbgone", 100)
+	reagents.add_reagent("plantbgone", volume)
 
 /obj/item/reagent_containers/spray/pestbgone
 	name = "Pest-B-Gone"
@@ -211,10 +216,11 @@
 	icon_state = "pestbgone"
 	item_state = "pestbgone"
 	volume = 100
+	materials_base = list(MAT_PLASTIC = 1000)
 
 /obj/item/reagent_containers/spray/pestbgone/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("pestbgone", 100)
+	reagents.add_reagent("pestbgone", volume)
 
 /obj/item/reagent_containers/spray/squirt
 	name = "HydroBlaster 4000"
@@ -222,15 +228,16 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun"
 	item_state = "squirtgun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	volume = 100
 	var/pumped = TRUE
+	materials_base = list(MAT_PLASTIC = 1500)
 
 /obj/item/reagent_containers/spray/squirt/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("water", 100)
+	reagents.add_reagent("water", volume)
 
-/obj/item/reagent_containers/spray/squirt/examine(mob/user)
+/obj/item/reagent_containers/spray/squirt/examine(mob/user, dist)
 	. = ..()
 	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
 
@@ -246,9 +253,9 @@
 
 /obj/item/reagent_containers/spray/squirt/nt
 	name = "HydroBlaster 4001"
-	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in NanoTrasen corporate colors. This is largely considered a sarcastic gesture."
+	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in Nanotrasen corporate colors. This is largely considered a sarcastic gesture."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun_nt"
 	item_state = "squirtgun_nt"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	volume = 101

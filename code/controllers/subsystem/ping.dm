@@ -27,6 +27,9 @@ SUBSYSTEM_DEF(ping)
 		var/client/client = currentrun[currentrun.len]
 		currentrun.len--
 
+		if(!client.initialized)
+			continue
+
 		if (client?.tgui_panel?.is_ready())
 			// Send a soft ping
 			client.tgui_panel.window.send_message("ping/soft", list(

@@ -26,8 +26,8 @@
 	response_harm   = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 10
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
 	attacktext = list("pecked")
 
 	has_langs = list("Bird")

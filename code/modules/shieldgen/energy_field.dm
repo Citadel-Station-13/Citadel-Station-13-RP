@@ -45,9 +45,6 @@
 /obj/effect/energy_field/legacy_ex_act(var/severity)
 	adjust_strength(-(4 - severity) * 4)
 
-/obj/effect/energy_field/bullet_act(var/obj/projectile/Proj)
-	adjust_strength(-Proj.get_structure_damage() / 10)
-
 /obj/effect/energy_field/attackby(obj/item/W, mob/user)
 	if(W.damage_force)
 		adjust_strength(-W.damage_force / 20)
@@ -61,8 +58,9 @@
 		user.do_attack_animation(src)
 		user.setClickCooldown(user.get_attack_speed())
 
-/obj/effect/energy_field/take_damage(var/damage)
-	adjust_strength(-damage / 20)
+/obj/effect/energy_field/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+	adjust_strength(damage / 20)
+	return damage
 
 /obj/effect/energy_field/attack_hand(mob/user, list/params)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.

@@ -25,7 +25,7 @@
 	//? disabled as we don't have dupe handling
 	can_transfer = FALSE
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	dupe_type = /datum/component/riding_filter
+	registered_type = /datum/component/riding_filter
 	/// filter flags
 	var/riding_filter_flags = CF_RIDING_FILTER_AUTO_BUCKLE_TOGGLE
 	/// expected typepath of what we're to be filtering for
@@ -61,12 +61,12 @@
 
 /datum/component/riding_filter/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, .proc/signal_hook_pre_buckle)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOB_BUCKLED, .proc/signal_hook_post_buckle)
-	RegisterSignal(parent, COMSIG_MOVABLE_USER_BUCKLE_MOB, .proc/signal_hook_user_buckle)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, .proc/signal_hook_mob_unbuckle)
+	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, PROC_REF(signal_hook_pre_buckle))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOB_BUCKLED, PROC_REF(signal_hook_post_buckle))
+	RegisterSignal(parent, COMSIG_MOVABLE_USER_BUCKLE_MOB, PROC_REF(signal_hook_user_buckle))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOB_UNBUCKLED, PROC_REF(signal_hook_mob_unbuckle))
 	if(implements_can_buckle_hints)
-		RegisterSignal(parent, COMSIG_MOVABLE_CAN_BUCKLE_MOB, .proc/signal_hook_can_buckle)
+		RegisterSignal(parent, COMSIG_MOVABLE_CAN_BUCKLE_MOB, PROC_REF(signal_hook_can_buckle))
 
 /datum/component/riding_filter/UnregisterFromParent()
 	. = ..()

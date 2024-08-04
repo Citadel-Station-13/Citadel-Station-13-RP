@@ -1,8 +1,8 @@
-//SolGov uniform hats
+//OriCon uniform hats
 
 //Utility
 /obj/item/clothing/head/soft/orion
-	name = "\improper SolGov cap"
+	name = "\improper OriCon cap"
 	desc = "It's a blue ballcap in Orion Confederation Government colors."
 	icon_state = "orionsoft"
 	item_state_slots = list(

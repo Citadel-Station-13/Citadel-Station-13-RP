@@ -9,16 +9,16 @@
 	throw_force = 0
 	throw_speed = 3
 	throw_range = 7
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	var/list/signs = list()
 	var/max_signs = 10
 	var/creation_time = 0 //time to create a holosign in deciseconds.
 	var/holosign_type = /obj/structure/holosign/wetsign
 	var/holocreator_busy = FALSE //to prevent placing multiple holo barriers at once
 
-/obj/item/holosign_creator/afterattack(atom/target, mob/user, flag)
+/obj/item/holosign_creator/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(flag)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		if(!check_allowed_items(target, 1))
 			return
 		var/turf/T = get_turf(target)

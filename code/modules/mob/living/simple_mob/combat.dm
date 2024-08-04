@@ -45,7 +45,7 @@
 		visible_message(SPAN_WARNING( "\The [src] misses their attack."))
 		return FALSE
 
-	var/damage_to_do = rand(melee_damage_lower, melee_damage_upper)
+	var/damage_to_do = rand(legacy_melee_damage_lower, legacy_melee_damage_upper)
 
 	damage_to_do = apply_bonus_melee_damage(A, damage_to_do)
 
@@ -77,6 +77,11 @@
 // Generally used to do the regular attack.
 // Override for doing special stuff with the direct result of the attack.
 /mob/living/simple_mob/proc/apply_attack(atom/A, damage_to_do)
+	if(!ismob(A))
+		var/nominal_damage = melee_style.get_unarmed_damage(src, A)
+		var/mult = nominal_damage? damage_to_do / nominal_damage : 0
+		melee_attack_chain(A, null, style = melee_style, mult = mult)
+		return TRUE
 	return A.attack_generic(src, damage_to_do, pick(attacktext))
 
 // Override for special effects after a successful attack, like injecting poison or stunning the target.

@@ -47,7 +47,7 @@
 	if(("name" in vars) && !isatom(src))
 		. += "<b>[vars["name"]]</b><br>"
 
-/datum/proc/on_reagent_change(changetype)
+/datum/proc/on_reagent_change()
 	return
 
 // todo: proper way to mark things immutable & provide a method to make a mutable clone for editing.

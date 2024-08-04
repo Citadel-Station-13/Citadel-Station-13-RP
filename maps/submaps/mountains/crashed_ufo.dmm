@@ -153,7 +153,7 @@
 /area/submap/cave/crashed_ufo)
 "aI" = (
 /obj/machinery/door/airlock/alien/locked{
-	p_open = 1
+	panel_open = 1
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo)

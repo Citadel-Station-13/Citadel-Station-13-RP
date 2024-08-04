@@ -109,7 +109,9 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "xj" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining/drill{
+	drill_id = 666
+	},
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "yh" = (

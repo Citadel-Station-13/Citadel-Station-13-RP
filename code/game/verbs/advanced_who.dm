@@ -1,7 +1,9 @@
+// todo: combine with advanced who wtf is this shit
+// todo: /client/proc/who_query(client/asker, admin_rights, ...) be used for building the string?
 
 /client/verb/who_advanced()
 	set name = "Advanced Who"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	var/msg = "<b>Current Players:</b>\n"
 
@@ -9,9 +11,11 @@
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.key]"
-			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
+			var/entry = "\t[C.get_revealed_key()]"
+			if(!C.initialized)
+				entry += " - <b><font color='red'>Uninitialized</font></b>"
+				Lines += entry
+				continue
 			entry += " - Playing as [C.mob.real_name]"
 			switch(C.mob.stat)
 				if(UNCONSCIOUS)
@@ -27,8 +31,8 @@
 						entry += " - <font color='black'><b>DEAD</b></font>"
 
 			var/age
-			if(isnum(C.player_age))
-				age = C.player_age
+			if(isnum(C.player.player_age))
+				age = C.player.player_age
 			else
 				age = 0
 
@@ -54,11 +58,15 @@
 	else
 		for(var/client/C in GLOB.clients)
 			var/entry = "\t"
-			if(C.holder && C.holder.fakekey)
-				entry += "[C.holder.fakekey]"
+			if(!C.initialized)
+				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
+				Lines += entry
+				continue
+			if(C == src)
+				entry += "[C.get_revealed_key()]"
 			else
-				entry += "[C.key]"
-			if(C.is_preference_enabled(/datum/client_preference/show_in_advanced_who))
+				entry += "[C.get_public_key()]"
+			if(C.get_preference_toggle(/datum/game_preference_toggle/presence/show_advanced_who))
 				if(isobserver(C.mob))
 					entry += " - <font color='gray'>Observing</font>"
 				else if(istype(C.mob, /mob/new_player))

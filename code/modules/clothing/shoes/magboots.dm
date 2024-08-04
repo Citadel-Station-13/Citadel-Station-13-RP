@@ -9,18 +9,19 @@
 	overshoes = 1
 	shoes_under_pants = -1	//These things are huge
 	preserve_item = 1
+	encumbrance = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS
 	var/magpulse = 0
-	var/slowdown_on = 3
 	var/icon_base = "magboots"
-	action_button_name = "Toggle Magboots"
+	item_action_name = "Toggle Magboots"
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
+	worth_intrinsic = 250
 
-/obj/item/clothing/shoes/magboots/proc/set_slowdown()
-	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
-	if (magpulse)
-		slowdown += slowdown_on
+	var/encumbrance_on = ITEM_ENCUMBRANCE_SHOES_MAGBOOTS_PULSE
+
+/obj/item/clothing/shoes/magboots/proc/update_magboot_encumbrance()
+	set_encumbrance(initial(encumbrance) + (magpulse? encumbrance_on : 0))
 
 /obj/item/clothing/shoes/magboots/attack_self(mob/user)
 	. = ..()
@@ -29,19 +30,19 @@
 	if(magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		set_slowdown()
+		update_magboot_encumbrance()
 		damage_force = 3
 		if(icon_base) icon_state = "[icon_base]0"
 		to_chat(user, "You disable the mag-pulse traction system.")
 	else
 		clothing_flags |= NOSLIP
 		magpulse = 1
-		set_slowdown()
+		update_magboot_encumbrance()
 		damage_force = 5
 		if(icon_base) icon_state = "[icon_base]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
-	user.update_inv_shoes()	//so our mob-overlays update
-	user.update_action_buttons()
+	update_worn_icon()
+	update_action_buttons()
 
 /obj/item/clothing/shoes/magboots/equip_worn_over_check(mob/M, slot, mob/user, obj/item/I, flags)
 	if(slot != SLOT_ID_SHOES)
@@ -56,13 +57,13 @@
 
 /obj/item/clothing/shoes/magboots/equipped(mob/user, slot, flags)
 	. = ..()
-	set_slowdown()
+	update_magboot_encumbrance()
 
 /obj/item/clothing/shoes/magboots/unequipped(mob/user, slot, flags)
 	. = ..()
-	set_slowdown()
+	update_magboot_encumbrance()
 
-/obj/item/clothing/shoes/magboots/examine(mob/user)
+/obj/item/clothing/shoes/magboots/examine(mob/user, dist)
 	. = ..()
 	var/state = "disabled"
 	if(clothing_flags & NOSLIP)
@@ -77,7 +78,7 @@
 	atom_flags = PHORONGUARD
 	species_restricted = list(SPECIES_VOX)
 
-	action_button_name = "Toggle the magclaws"
+	item_action_name = "Toggle the magclaws"
 
 /obj/item/clothing/shoes/magboots/vox/attack_self(mob/user)
 	if(src.magpulse)
@@ -98,7 +99,7 @@
 		magpulse = 1
 		ADD_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
-	user.update_action_buttons()
+	update_action_buttons()
 
 //In case they somehow come off while enabled.
 /obj/item/clothing/shoes/magboots/vox/dropped(mob/user, flags, atom/newLoc)
@@ -109,7 +110,7 @@
 		magpulse = 0
 		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 
-/obj/item/clothing/shoes/magboots/vox/examine(mob/user)
+/obj/item/clothing/shoes/magboots/vox/examine(mob/user, dist)
 	. = ..()
 	if(magpulse)
 		. += "It would be hard to take these off without relaxing your grip first."
@@ -118,12 +119,12 @@
 /obj/item/clothing/shoes/magboots/advanced
 	name = "advanced magboots"
 	icon_state = "advmag0"
-	slowdown_on = 0
+	encumbrance_on = 0
 	icon_base = "advmag"
 
 /obj/item/clothing/shoes/magboots/syndicate
 	name = "blood red magboots"
-	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing NanoTrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
+	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing Nanotrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
 	icon_state = "syndiemag0"
 	icon_base = "syndiemag"
-	slowdown_on = 0
+	encumbrance_on = 0

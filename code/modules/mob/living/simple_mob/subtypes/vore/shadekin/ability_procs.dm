@@ -103,7 +103,7 @@
 
 /mob/living/simple_mob/shadekin/zMove(direction)
 	if(ability_flags & AB_PHASE_SHIFTED)
-		var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+		var/turf/destination = get_vertical_step(src, direction)
 		if(destination)
 			forceMove(destination)
 		return TRUE

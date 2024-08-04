@@ -17,7 +17,7 @@
 	var/state = STATE_DEFAULT
 	var/aistate = STATE_DEFAULT
 	var/message_cooldown = 0
-	var/centcomm_message_cooldown = 0
+	var/centcom_message_cooldown = 0
 	var/tmp_alertlevel = 0
 	var/const/STATE_DEFAULT = 1
 	var/const/STATE_CALLSHUTTLE = 2
@@ -35,12 +35,12 @@
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/lore/atc_controller/ATC
+	var/datum/controller/subsystem/legacy_atc/ATC
 	var/datum/legacy_announcement/priority/crew_announcement = new
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
-	ATC = GLOB.lore_atc
+	ATC = SSlegacy_atc
 	crew_announcement.newscast = 1
 
 /obj/machinery/computer/communications/process(delta_time)
@@ -52,7 +52,7 @@
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..())
 		return 1
-	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(usr, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
 		return
 	usr.set_machine(src)
@@ -185,27 +185,27 @@
 			stat_msg2 = reject_bad_text(sanitize(input("Line 2", "Enter Message Text", stat_msg2) as text|null, 40), 40)
 			src.updateDialog()
 
-		// OMG CENTCOMM LETTERHEAD
+		// OMG CENTCOM LETTERHEAD
 		if("MessageCentCom")
 			if(src.authenticated==2)
-				if(centcomm_message_cooldown)
+				if(centcom_message_cooldown)
 					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+				var/input = sanitize(input("Please choose a message to transmit to [(LEGACY_MAP_DATUM).boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
 				message_centcom(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
-				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
-				centcomm_message_cooldown = 1
+				log_game("[key_name(usr)] has made an IA [(LEGACY_MAP_DATUM).boss_short] announcement: [input]")
+				centcom_message_cooldown = 1
 				spawn(300)//10 minute cooldown
-					centcomm_message_cooldown = 0
+					centcom_message_cooldown = 0
 
 
 		// OMG SYNDICATE ...LETTERHEAD
 		if("MessageSyndicate")
 			if((src.authenticated==2) && (src.emagged))
-				if(centcomm_message_cooldown)
+				if(centcom_message_cooldown)
 					to_chat(usr, "<font color='red'>Arrays recycling.  Please stand by.</font>")
 					return
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
@@ -214,9 +214,9 @@
 				message_syndicate(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
-				centcomm_message_cooldown = 1
+				centcom_message_cooldown = 1
 				spawn(300)//10 minute cooldown
-					centcomm_message_cooldown = 0
+					centcom_message_cooldown = 0
 
 		if("RestoreBackup")
 			to_chat(usr, "Backup routing data restored!")
@@ -299,7 +299,7 @@
 /obj/machinery/computer/communications/attack_hand(mob/user, list/params)
 	if(..())
 		return
-	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+	if ((LEGACY_MAP_DATUM) && !(src.z in (LEGACY_MAP_DATUM).contact_levels))
 		to_chat(user, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
 		return
 
@@ -325,7 +325,7 @@
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make An Announcement</A> \]"
 				if (src.authenticated==2)
 					if(src.emagged == 0)
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [GLOB.using_map.boss_short]</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [(LEGACY_MAP_DATUM).boss_short]</A> \]"
 					else
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageSyndicate'>Send an emergency message to \[UNKNOWN\]</A> \]"
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=RestoreBackup'>Restore Backup Routing Data</A> \]"
@@ -474,12 +474,8 @@
 	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
-	if(!universe.OnShuttleCall(usr))
-		to_chat(user, "<span class='notice'>Cannot establish a bluespace connection.</span>")
-		return
-
 	if(deathsquad.deployed)
-		to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+		to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 		return
 
 	if(SSemergencyshuttle.deny_shuttle)
@@ -491,7 +487,7 @@
 		return
 
 	if(SSemergencyshuttle.going_to_centcom())
-		to_chat(user, "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short].")
+		to_chat(user, "The emergency shuttle may not be called while returning to [(LEGACY_MAP_DATUM).boss_short].")
 		return
 
 	if(SSemergencyshuttle.online())
@@ -515,7 +511,7 @@
 		return
 
 	if(SSemergencyshuttle.going_to_centcom())
-		to_chat(user, "The shuttle may not be called while returning to [GLOB.using_map.boss_short].")
+		to_chat(user, "The shuttle may not be called while returning to [(LEGACY_MAP_DATUM).boss_short].")
 		return
 
 	if(SSemergencyshuttle.online())
@@ -525,11 +521,11 @@
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
 		if(SSemergencyshuttle.deny_shuttle)
-			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
+			to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] does not currently have a shuttle available in your sector. Please try again later.")
 			return
 
 		if(deathsquad.deployed == 1)
-			to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+			to_chat(user, "[(LEGACY_MAP_DATUM).boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 			return
 
 		if(world.time < 54000) // 30 minute grace period to let the game get going
@@ -603,5 +599,5 @@
 /// Used in places such as CentCom messaging back so that the crew can answer right away
 /obj/machinery/computer/communications/proc/override_cooldown()
 	// COOLDOWN_RESET(src, important_action_cooldown)
-	centcomm_message_cooldown = 0
+	centcom_message_cooldown = 0
 	message_cooldown = 0

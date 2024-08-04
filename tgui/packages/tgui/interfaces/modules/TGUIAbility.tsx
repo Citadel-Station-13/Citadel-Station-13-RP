@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { BooleanLike } from "../../../common/react";
 import { ModuleData, useModule } from "../../backend";
 import { Modular } from "../../layouts/Modular";

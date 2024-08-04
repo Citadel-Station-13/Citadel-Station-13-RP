@@ -120,7 +120,7 @@
 	return ..()
 
 /obj/machinery/computer/transhuman/resleeving/verb/eject_mirror()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject Mirror"
 	set src in oview(1)
 
@@ -452,5 +452,5 @@
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "harddisk"
 	item_state = "card-id"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/list/datum/transhuman/mind_record/stored = list()

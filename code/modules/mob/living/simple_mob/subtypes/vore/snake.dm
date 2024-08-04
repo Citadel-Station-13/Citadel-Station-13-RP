@@ -24,13 +24,13 @@
 	health = 200
 	randomized = TRUE
 
-	melee_damage_lower = 5
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 12
 
 	base_pixel_x = -16
 	base_pixel_y = -16
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/giant_snake

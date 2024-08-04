@@ -52,10 +52,10 @@ const notIn = function<T> (set: Set<T>) {
 };
 
 const FoodList = (props: {
-  food: Food[],
-  icon: string,
-  name: string,
-  className: string,
+  readonly food: Food[],
+  readonly icon: string,
+  readonly name: string,
+  readonly className: string,
 }) => {
   if (props.food.length === 0) {
     return null;
@@ -97,7 +97,7 @@ const FoodList = (props: {
 };
 
 const Diet = (props: {
-  diet: Species["diet"],
+  readonly diet: Species["diet"],
 }) => {
 
   if (!props.diet) {
@@ -139,8 +139,8 @@ const Diet = (props: {
 };
 
 const SpeciesPerk = (props: {
-  className: string,
-  perk: Perk,
+  readonly className: string,
+  readonly perk: Perk,
 }) => {
   const { className, perk } = props;
 
@@ -170,7 +170,7 @@ const SpeciesPerk = (props: {
 };
 
 const SpeciesPerks = (props: {
-  perks: Species["perks"],
+  readonly perks: Species["perks"],
 }) => {
 
   const { positive, negative, neutral } = props.perks;
@@ -219,8 +219,8 @@ const SpeciesPerks = (props: {
 };
 
 const SpeciesPageInner = (props: {
-  handleClose: () => void,
-  species: ServerData["species"],
+  readonly handleClose: () => void,
+  readonly species: ServerData["species"],
 }, context) => {
 
   const { act, data } = useBackend<PreferencesMenuData>(context);
@@ -344,7 +344,7 @@ const SpeciesPageInner = (props: {
 };
 
 export const SpeciesPage = (props: {
-  closeSpecies: () => void,
+  readonly closeSpecies: () => void,
 }) => {
   return (
     <ServerPreferencesFetcher

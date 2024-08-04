@@ -48,6 +48,11 @@
 		var/list/truncated = extra.Copy(extra_max + 1)
 		extra.len = clamp(extra.len, 0, extra_max)
 		errors?.Add(SPAN_WARNING("truncated [english_list(truncated)] languages - too many!"))
+	for(var/id in extra)
+		if(isnull(SScharacters.resolve_language_id(id)))
+			extra -= id
+			errors?.Add(SPAN_WARNING("removed id [id] - can't locate it."))
+			continue
 	return extra
 
 /datum/category_item/player_setup_item/background/language/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)

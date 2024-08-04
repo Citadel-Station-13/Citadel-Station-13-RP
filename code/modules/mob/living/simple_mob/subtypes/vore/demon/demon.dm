@@ -1,3 +1,6 @@
+/datum/vision/baseline/demon
+	hard_darksight = 0
+
 /mob/living/simple_mob/vore/demon
 	name = "Rift Walker"
 	desc = "A large bipedal creature, body a mix of dark fur and scales. Marks on the creatures body pulse slowly with red light"
@@ -13,8 +16,7 @@
 	health = 30
 	movement_cooldown = 0
 
-	see_in_dark = 10
-	seedarkness = FALSE
+	vision_innate = /datum/vision/baseline/demon
 
 	min_oxy = 0
 	max_oxy = 0
@@ -31,8 +33,8 @@
 	response_disarm = "pushes"
 	response_harm = "hits"
 
-	melee_damage_lower = 3
-	melee_damage_upper = 1
+	legacy_melee_damage_lower = 3
+	legacy_melee_damage_upper = 1
 	attacktext = list("clawed")
 
 	vore_active = TRUE
@@ -63,7 +65,7 @@
 
 /mob/living/simple_mob/vore/demon/zMove(direction)
 	if(shifted_out)
-		var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
+		var/turf/destination = get_vertical_step(src, direction)
 		if(destination)
 			forceMove(destination)
 		return TRUE

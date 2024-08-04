@@ -193,7 +193,7 @@
 			M.druggy = max(M.druggy, 5)
 	if(alien != IS_DIONA)
 		M.drowsyness = max(0, M.drowsyness - 6 * removed * chem_effective)//reduces drowsyness to zero
-		M.hallucination = max(0, M.hallucination - 9 * removed * chem_effective)//reduces hallucination to 0
+		M.adjustHallucination(-9 * removed * chem_effective) //reduces hallucination to 0
 		M.adjustToxLoss(-4 * removed * chem_effective)//Removes toxin damage
 		if(prob(10))
 			M.remove_a_modifier_of_type(/datum/modifier/poisoned)//Removes the poisoned effect, which is super rare of its own
@@ -298,6 +298,32 @@
 /datum/reagent/tricordrazine/affect_touch(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		affect_blood(M, alien, removed * 0.4)
+
+/datum/reagent/earthsblood
+	name = "Earthsblood"
+	id = "earthsblood"
+	description = "A rare plant extract with immense, almost magical healing capabilities. Induces a potent psychoactive state, damaging neurons with prolonged use."
+	taste_description = "the sweet highs of life"
+	reagent_state = REAGENT_LIQUID
+	color = "#ffb500"
+	overdose = REAGENTS_OVERDOSE * 0.50
+
+
+/datum/reagent/earthsblood/affect_blood(mob/living/carbon/M, alien, removed)
+	var/chem_effective = 1
+	if(alien == IS_ALRAUNE)
+		chem_effective = 1.1 //Plant to Plant Restoration
+	if(alien == IS_DIONA)
+		chem_effective = 1.1
+	if(alien == IS_SLIME)
+		chem_effective = 0.7 //It just goes right through them ... right onto the floor
+	M.heal_organ_damage (4 * removed * chem_effective, 4 * removed * chem_effective)
+	M.adjustOxyLoss(-10 * removed * chem_effective)
+	M.adjustToxLoss(-4 * removed * chem_effective)
+	M.adjustCloneLoss(-2 * removed * chem_effective)
+	M.druggy = max(M.druggy, 40)
+	M.adjustBrainLoss(1 * removed) //your life for your mind. The Earthmother's Tithe.
+	M.ceiling_chemical_effect(CE_PAINKILLER, 120 * chem_effective) //It's just a burning memory. The pain, I mean.
 /*
 /datum/reagent/tricorlidaze//Main way to obtain is destiller
 	name = "Tricorlidaze"
@@ -443,7 +469,7 @@
 	..()
 	if(alien == IS_SLIME)
 		M.add_chemical_effect(CE_SLOWDOWN, 1)
-	M.hallucination = max(M.hallucination, 2)
+	M.setHallucination(max(M.hallucination, 2))
 
 /datum/reagent/tramadol
 	name = "Tramadol"
@@ -466,7 +492,7 @@
 
 /datum/reagent/tramadol/overdose(mob/living/carbon/M, alien)
 	..()
-	M.hallucination = max(M.hallucination, 2)
+	M.setHallucination(max(M.hallucination, 2))
 
 /datum/reagent/oxycodone
 	name = "Oxycodone"
@@ -492,7 +518,7 @@
 /datum/reagent/oxycodone/overdose(mob/living/carbon/M, alien)
 	..()
 	M.druggy = max(M.druggy, 10)
-	M.hallucination = max(M.hallucination, 3)
+	M.setHallucination(max(M.hallucination, 3))
 
 /datum/reagent/numbing_enzyme//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Numbing Enzyme"//Obtained from vore bellies, and numbing bite trait custom species
@@ -526,8 +552,8 @@
 				H.losebreath = 10
 				H.adjustOxyLoss(5)
 		if(prob(2))
-			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at thee back of your head...</span>")
-			H.hallucination += 20 //It messes with your mind for some reason.
+			to_chat(H,"<span class='warning'>You feel a dull pain behind your eyes and at the back of your head...</span>")
+			H.adjustHallucination(20) //It messes with your mind for some reason.
 			H.eye_blurry += 20 //Groggy vision for a small bit.
 		if(prob(3))
 			to_chat(H,"<span class='warning'>You shiver, your body continually being assaulted by the sensation of pins and needles.</span>")
@@ -565,7 +591,7 @@
 	M.adjust_stunned(20 * -1)
 	M.adjust_paralyzed(20 * -1)
 	holder.remove_reagent("mindbreaker", 5)
-	M.hallucination = max(0, M.hallucination - 10)//Primary use
+	M.adjustHallucination(-10) //Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
 	M.ceiling_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
 
@@ -627,7 +653,6 @@
 
 /datum/reagent/imidazoline/affect_blood(mob/living/carbon/M, alien, removed)
 	M.eye_blurry = max(M.eye_blurry - 5, 0)
-	M.AdjustBlinded(-5)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
@@ -637,7 +662,7 @@
 			if(E.damage > 0)
 				E.heal_damage_i(5 * removed, can_revive = TRUE)
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 /datum/reagent/peridaxon
 	name = "Peridaxon"
@@ -660,7 +685,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -685,7 +710,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~SDISABILITY_NERVOUS
+				H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 		if(alien == IS_SLIME)
 			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -1071,7 +1096,7 @@
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
 	M.adjustToxLoss(-10 * removed)
 	if(prob(60))
-		M.take_organ_damage(4 * removed, 0)
+		M.take_random_targeted_damage(brute = 4 * removed, brute = 0)
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"
@@ -1162,7 +1187,7 @@
 	if(prob(20))
 		M.make_dizzy(5)
 	if(prob(20))
-		M.hallucination = max(M.hallucination, 10)
+		M.setHallucination(max(M.hallucination, 10))
 
 	//One of the levofloxacin side effects is 'spontaneous tendon rupture', which I'll immitate here. 1:1000 chance, so, pretty darn rare.
 	if(ishuman(M) && rand(1,10000) == 1)
@@ -1256,8 +1281,10 @@
 	if(istype(L))
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
-			S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
-			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
+			var/amt = rand(15, 25) * amount * (1-S.water_resist)
+			if(amt>0)
+				S.adjustToxLoss(rand(15, 25) * amount)	// Does more damage than water.
+				S.visible_message("<span class='warning'>[S]'s flesh sizzles where the fluid touches it!</span>", "<span class='danger'>Your flesh burns in the fluid!</span>")
 		remove_self(amount)
 
 /datum/reagent/leporazine
@@ -1393,11 +1420,11 @@
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
-			else
+			if(prob(1))
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
-				M.hallucination += 200
+				M.adjustHallucination(200)
+			else
+				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
 
 /datum/reagent/adranol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Adranol"
@@ -1495,7 +1522,7 @@
 	M.adjustHalLoss(1)
 	if(!M.confused) M.confused = 1
 	M.confused = max(M.confused, 20)
-	M.hallucination += 15
+	M.adjustHallucination(15)
 
 	for(var/belly in M.vore_organs)
 		var/obj/belly/B = belly
@@ -1570,8 +1597,10 @@
 /datum/reagent/firefighting_foam/touch_mob(mob/living/M, reac_volume)
 	if(istype(M, /mob/living/simple_mob/slime)) //I'm sure foam is water-based!
 		var/mob/living/simple_mob/slime/S = M
-		S.adjustToxLoss(15 * reac_volume)
-		S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
+		var/amt = 15 * reac_volume * (1-S.water_resist)
+		if(amt>0)
+			S.adjustToxLoss(amt)
+			S.visible_message("<span class='warning'>[S]'s flesh sizzles where the foam touches it!</span>", "<span class='danger'>Your flesh burns in the foam!</span>")
 
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()
@@ -1599,4 +1628,4 @@
 /datum/reagent/neuratrextate/overdose(mob/living/carbon/M)
 	..()
 	M.druggy += 30
-	M.hallucination += 20
+	M.adjustHallucination(20)

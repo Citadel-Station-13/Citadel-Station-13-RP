@@ -17,7 +17,7 @@ Thus, the two variables affect pump operation are set in New():
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
-	level = 1
+	hides_underfloor_underlays = TRUE
 	var/base_icon = "pump"
 
 	name = "gas pump"
@@ -116,12 +116,9 @@ Thus, the two variables affect pump operation are set in New():
 		add_underlay(T, node1, turn(dir, -180), node1?.icon_connect_type)
 		add_underlay(T, node2, dir, node2?.icon_connect_type)
 
-/obj/machinery/atmospherics/component/binary/pump/hide(var/i)
-	update_underlays()
-
 /obj/machinery/atmospherics/component/binary/pump/process(delta_time)
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
@@ -135,7 +132,7 @@ Thus, the two variables affect pump operation are set in New():
 		power_draw = pump_gas(src, air1, air2, transfer_moles, power_rating)
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 		if(network1)
@@ -183,15 +180,15 @@ Thus, the two variables affect pump operation are set in New():
 		ui.open()
 
 //This is the data which will be sent to the ui
-/obj/machinery/atmospherics/component/binary/pump/ui_data(mob/user)
+/obj/machinery/atmospherics/component/binary/pump/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data = list(
 		"on" = use_power,
 		"pressure_set" = round(target_pressure*100),
 		"max_pressure" = max_pressure_setting,
-		"last_flow_rate" = round(last_flow_rate*10),
-		"last_power_draw" = round(last_power_draw),
+		"last_flow_rate" = round(last_flow_rate_legacy*10),
+		"last_power_draw" = round(last_power_draw_legacy),
 		"max_power_draw" = power_rating,
 	)
 
@@ -240,7 +237,7 @@ Thus, the two variables affect pump operation are set in New():
 		return
 	ui_interact(user)
 
-/obj/machinery/atmospherics/component/binary/pump/ui_act(action, params)
+/obj/machinery/atmospherics/component/binary/pump/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

@@ -13,19 +13,35 @@
 /obj/item/clothing/shoes/
 	var/track_blood = 0
 
+/obj/item/reagent_containers/glass/rag/sponge
+	name = "sponge"
+	desc = "Scrub scrub scrub!"
+	icon = 'icons/obj/sponge.dmi'
+	icon_state = "sponge"
+
+/obj/item/reagent_containers/glass/rag/sponge/update_icon()
+	if(on_fire)
+		icon_state = "spongelit"
+	else
+		icon_state = "sponge"
+
+	var/obj/item/reagent_containers/food/drinks/bottle/B = loc
+	if(istype(B))
+		B.update_icon()
+
 /obj/item/reagent_containers/glass/rag
 	name = "rag"
 	desc = "For cleaning up messes, you suppose."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "rag"
 	amount_per_transfer_from_this = 3
 	possible_transfer_amounts = list(3)
 	volume = 4
 	can_be_placed_into = null
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	atom_flags = OPENCONTAINER
-	unacidable = 0
+	integrity_flags = NONE
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
@@ -135,8 +151,8 @@
 						SPAN_WARNING("You smother [L] with [src]!"),
 						"You hear some struggling and muffled cries of surprise"
 						)
-					//it's inhaled, so... maybe CHEM_BLOOD doesn't make a whole lot of sense but it's the best we can do for now
-					reagents.trans_to_mob(L, amount_per_transfer_from_this, CHEM_BLOOD)
+					//it's inhaled, so... maybe CHEM_INJECT doesn't make a whole lot of sense but it's the best we can do for now
+					reagents.trans_to_mob(L, amount_per_transfer_from_this, CHEM_INJECT)
 					update_name()
 				else
 					to_chat(user, SPAN_WARNING("You can't smother this creature."))
@@ -147,25 +163,25 @@
 	else
 		wipe_down(target, user)
 
-/obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/reagent_containers/glass/rag/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	if(istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/mopbucket))
+	if(istype(target, /obj/structure/reagent_dispensers) || istype(target, /obj/item/reagent_containers/glass/bucket) || istype(target, /obj/structure/mopbucket))
 		if(!reagents.available_volume())
 			to_chat(user, "<span class='warning'>\The [src] is already soaked.</span>")
 			return
 
-		if(A.reagents && A.reagents.trans_to_obj(src, reagents.maximum_volume))
-			user.visible_message("<span class='notice'>\The [user] soaks [src] using [A].</span>", "<span class='notice'>You soak [src] using [A].</span>")
+		if(target.reagents && target.reagents.trans_to_obj(src, reagents.maximum_volume))
+			user.visible_message("<span class='notice'>\The [user] soaks [src] using [target].</span>", "<span class='notice'>You soak [src] using [target].</span>")
 			update_name()
 		return
 
-	if(!on_fire && istype(A) && (src in user))
-		if(A.is_open_container() && !(A in user))
-			remove_contents(user, A)
-		else if(!ismob(A)) //mobs are handled in attack() - this prevents us from wiping down people while smothering them.
-			wipe_down(A, user)
+	if(!on_fire && istype(target) && (src in user))
+		if(target.is_open_container() && !(target in user))
+			remove_contents(user, target)
+		else if(!ismob(target)) //mobs are handled in attack() - this prevents us from wiping down people while smothering them.
+			wipe_down(target, user)
 		return
 
 /obj/item/reagent_containers/glass/rag/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)

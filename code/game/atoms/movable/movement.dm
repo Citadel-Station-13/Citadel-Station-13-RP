@@ -3,6 +3,8 @@
  * This rewrites how we handle movement to avoid some BYOND-isms.
  */
 /atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	if(pixel_movement)
+		return ..()
 	. = FALSE
 	if(newloc == loc)
 		return
@@ -182,6 +184,8 @@
  * Only supports moves up to range 1, in any direction including diagonals.
  */
 /atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	if(pixel_movement)
+		return ..()
 	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
 	if(is_multi_tile && isturf(newloc))
 		newloc = locate(newloc.x + round(step_x / WORLD_ICON_SIZE), newloc.y + round(step_y / WORLD_ICON_SIZE), newloc.z)
@@ -311,6 +315,31 @@
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 
+// Hooks for foreign code.
+/atom/movable/Move(...)
+	var/old_loc = loc
+	. = ..()
+	if (!.)
+		return
+
+	if (light_source_solo)
+		light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		var/thing
+		for (thing in light_source_multi)
+			L = thing
+			L.source_atom.update_light()
+
+	// Z-Mimic.
+	if (bound_overlay)
+		// The overlay will handle cleaning itself up on non-openspace turfs.
+		bound_overlay.forceMove(get_step(src, UP))
+		if (bound_overlay && bound_overlay.dir != dir)
+			bound_overlay.setDir(dir)
+	else if (isturf(loc) && (!old_loc || !TURF_IS_MIMICKING(old_loc)) && MOVABLE_SHALL_MIMIC(src))
+		SSzcopy.discover_movable(src)
+
 //! WARNING WARNING THIS IS SHITCODE
 /atom/movable/proc/handle_buckled_mob_movement(newloc, direct, glide_size_override, forcemoving)
 	for(var/mob/M as anything in buckled_mobs)
@@ -349,7 +378,6 @@
 	if (!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(movement_dir)
-
 
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(src)
@@ -522,6 +550,7 @@
 	. = TRUE
 	forceMove(destination)
 
+// todo: step x, step y support
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
 	pulledby?.stop_pulling()
@@ -533,13 +562,14 @@
 /atom/movable/proc/moveToNullspace()
 	return doMove(null)
 
+// todo: step x, step y support
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 
 	++in_move
 
 	var/atom/oldloc = loc
-	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
+	var/is_multi_tile = pixel_movement || bound_width > world.icon_size || bound_height > world.icon_size
 
 	if(buckled_mobs)
 		unbuckle_all_mobs(BUCKLE_OP_FORCE)
@@ -556,19 +586,12 @@
 
 		if(!same_loc)
 			if(is_multi_tile && isturf(destination))
-				// gather
+				// gather old
 				var/list/old_locs = locs // implicit Copy() due to locs being special byond list
-				var/list/new_locs = block(
-					destination,
-					locate(
-						min(world.maxx, destination.x + ROUND_UP(bound_width / 32)),
-						min(world.maxy, destination.y + ROUND_UP(bound_height / 32)),
-						destination.z
-					)
-				)
-
 				// move
 				loc = destination
+				// gather new
+				var/list/new_locs = locs
 
 				// exit
 				if(old_area && old_area != destarea)
@@ -718,23 +741,6 @@
 	if(!silent && .)
 		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
 
-//? Direction
-
-/**
- * Hook for running code when a dir change occurs
- */
-/atom/proc/setDir(newdir)
-	SHOULD_CALL_PARENT(TRUE)
-	if(dir == newdir)
-		return FALSE
-	if (SEND_SIGNAL(src, COMSIG_ATOM_PRE_DIR_CHANGE, dir, newdir) & COMPONENT_ATOM_BLOCK_DIR_CHANGE)
-		newdir = dir
-		return FALSE
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
-	dir = newdir
-
-	return TRUE
-
 //? Z Transit
 
 /**
@@ -745,8 +751,7 @@
  */
 /atom/movable/proc/on_changed_z_level(old_z, new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
-	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
-		var/atom/movable/AM = item
+	for(var/atom/movable/AM as anything in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		AM.on_changed_z_level(old_z, new_z)
 
 //? Anchored
@@ -830,6 +835,9 @@
   * Sets our glide size
   */
 /atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
+	if(pixel_movement)	 // shoo
+		return
+
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
 	glide_size = new_glide_size
 

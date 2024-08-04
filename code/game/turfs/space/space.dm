@@ -22,49 +22,48 @@
 /turf/space/basic
 	atom_flags = ATOM_INITIALIZED
 
-/turf/space/basic/New()	//Do not convert to Initialize
-	//This is used to optimize the map loader
-	return
+/turf/space/basic/New()
+	// Do not convert to Initialize
+	// This is used to optimize the map loader
+	SHOULD_CALL_PARENT(FALSE)
+	// turn preloader off so it doesn't hit something else
+	global.dmm_preloader_active = FALSE
 
 /turf/space/Initialize(mapload)
-
 	SHOULD_CALL_PARENT(FALSE)
 	atom_flags |= ATOM_INITIALIZED
 
-	icon_state = SPACE_ICON_STATE(x, y, z)
-
-	// We might be an edge
-	if(y == world.maxy || forced_dirs & NORTH)
-		edge |= NORTH
-	else if(y == 1 || forced_dirs & SOUTH)
-		edge |= SOUTH
-
-	if(x == 1 || forced_dirs & WEST)
-		edge |= WEST
-	else if(x == world.maxx || forced_dirs & EAST)
-		edge |= EAST
-
-	if(!HasBelow(z))
-		return INITIALIZE_HINT_NORMAL
-
-	var/turf/below = GetBelow(src)
-	if(isspaceturf(below))
-		return INITIALIZE_HINT_NORMAL
-
-	var/area/A = below.loc
-	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
-		return INITIALIZE_HINT_NORMAL
+	// we have parallax and don't need this anymore
+	// icon_state = SPACE_ICON_STATE(x, y, z)
 
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
 
-	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
+	// todo: audit all this again
+	// tl;dr given we load maps at runtime now, the maploader will do changeturfing, which means
+	// we don't need to manually check all this in initialize
+	return INITIALIZE_HINT_NORMAL
+
+	// var/turf/below = below()
+	// if(isnull(below))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// if(isspaceturf(below))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// var/area/A = below.loc
+	// if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
+	// 	return INITIALIZE_HINT_NORMAL
+
+	// return INITIALIZE_HINT_NORMAL
+	// todo: wtf happened there..?
+	// return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
 /turf/space/Destroy()
 	// Cleanup cached z_eventually_space values above us.
 	if (above)
 		var/turf/T = src
-		while ((T = GetAbove(T)))
+		while ((T = T.above()))
 			T.z_eventually_space = FALSE
 	return ..()
 
@@ -74,10 +73,11 @@
 /turf/space/is_open()
 	return TRUE
 
-// Override for space turfs, since they should never hide anything
-/turf/space/levelupdate()
-	for(var/obj/O in src)
-		O.hide(0)
+/turf/space/is_plating()
+	return FALSE
+
+/turf/space/hides_underfloor_objects()
+	return FALSE
 
 /turf/space/is_solid_structure()
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
@@ -126,7 +126,7 @@
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
 
 	if(istype(C, /obj/item/stack/tile/roofing))
-		var/turf/T = GetAbove(src)
+		var/turf/T = above()
 		var/obj/item/stack/tile/roofing/R = C
 
 		// Patch holes in the ceiling
@@ -151,16 +151,6 @@
 		// Space shouldn't have weather of the sort planets with atmospheres do.
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
-
-/turf/space/Entered(var/atom/movable/A)
-	. = ..()
-
-	if(edge)
-		addtimer(CALLBACK(src, .proc/on_atom_edge_touch, A), 0)
-
-/turf/space/proc/on_atom_edge_touch(atom/movable/AM)
-	if(!QDELETED(AM) && (AM.loc == src))
-		AM.touch_map_edge()
 
 
 //// Special variants used in various maps ////

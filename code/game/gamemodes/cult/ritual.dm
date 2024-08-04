@@ -26,7 +26,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "1"
 	var/visibility = 0
-	unacidable = 1
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF
 	layer = TURF_LAYER
 
 
@@ -83,7 +83,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	rune_list.Remove(src)
 	..()
 
-/obj/effect/rune/examine(mob/user)
+/obj/effect/rune/examine(mob/user, dist)
 	. = ..()
 	if(iscultist(user))
 		. += "This spell circle reads: <i>[word1] [word2] [word3]</i>."
@@ -183,7 +183,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	icon_state ="tome"
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	unique = 1
 	var/tomedat = ""
 	var/list/words = list("ire" = "ire", "ego" = "ego", "nahlizet" = "nahlizet", "certum" = "certum", "veri" = "veri", "jatkaa" = "jatkaa", "balaq" = "balaq", "mgar" = "mgar", "karazet" = "karazet", "geeri" = "geeri")
@@ -303,7 +303,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	if(iscultist(target))
 		return NONE
 	add_attack_logs(user, L, "Hit with [name]")
-	L.take_organ_damage(0,rand(5,20)) //really lucky - 5 hits for a crit
+	L.take_random_targeted_damage(brute = 0, burn = rand(5,20)) //really lucky - 5 hits for a crit
 	for(var/mob/O in viewers(L, null))
 		O.show_message("<span class='warning'>\The [user] beats \the [L] with \the [src]!</span>", 1)
 	to_chat(target, "<span class='danger'>You feel searing heat inside!</span>")
@@ -412,7 +412,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 		to_chat(user, "The book seems full of illegible scribbles. Is this a joke?")
 		return
 
-/obj/item/book/tome/examine(mob/user)
+/obj/item/book/tome/examine(mob/user, dist)
 	. = ..()
 	if(!iscultist(user))
 		. += "An old, dusty tome with frayed edges and a sinister looking cover."
@@ -423,7 +423,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	return
 
 /obj/item/book/tome/imbued //admin tome, spawns working runes without waiting
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/cultistsonly = 1
 
 /obj/item/book/tome/imbued/attack_self(mob/user)

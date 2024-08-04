@@ -66,6 +66,7 @@
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
 		visible_message("<b>[src]</b> [deathmessage]")
 
+	SSplaytime.queue_playtimes(client)
 	set_stat(DEAD)
 
 	update_ssd_overlay()

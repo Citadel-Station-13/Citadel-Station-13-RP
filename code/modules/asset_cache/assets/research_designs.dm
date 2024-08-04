@@ -1,8 +1,8 @@
 // Representative icons for each research design
-/datum/asset/spritesheet/research_designs
+/datum/asset_pack/spritesheet/research_designs
 	name = "design"
 
-/datum/asset/spritesheet/research_designs/create_spritesheets()
+/datum/asset_pack/spritesheet/research_designs/generate()
 	for (var/path in subtypesof(/datum/design))
 		var/datum/design/D = path
 
@@ -23,7 +23,7 @@
 			var/atom/item = initial(D.build_path)
 			if (!ispath(item, /atom))
 				// biogenerator outputs to beakers by default
-				if (initial(D.build_type) & BIOGENERATOR)
+				if (initial(D.lathe_type) & BIOGENERATOR)
 					item = /obj/item/reagent_containers/glass/beaker/large
 				else
 					continue  // shouldn't happen, but just in case

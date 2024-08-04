@@ -7,16 +7,13 @@
 	name = "electronic clothing parts"
 	icon_state = "setup_small_simple"
 	desc = "It's a collection of wires and parts, designed to fit inside of specialized electronic clothing."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	max_components = IC_COMPONENTS_BASE
 	max_complexity = IC_COMPLEXITY_BASE
 	var/obj/item/clothing/clothing = null
 
 /obj/item/electronic_assembly/clothing/ui_host()
 	return clothing.ui_host()
-
-/obj/item/electronic_assembly/clothing/ui_action_click()
-	clothing.action_circuit.do_work()
 
 // This is 'small' relative to the size of regular clothing assemblies.
 /obj/item/electronic_assembly/clothing/small
@@ -25,7 +22,7 @@
 	icon_state = "setup_device"
 	max_components = IC_COMPONENTS_BASE / 2
 	max_complexity = IC_COMPLEXITY_BASE / 2
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 // Ditto.
 /obj/item/electronic_assembly/clothing/large
@@ -34,7 +31,7 @@
 	icon_state = "setup_medium_clam"
 	max_components = IC_COMPONENTS_BASE * 2
 	max_complexity = IC_COMPLEXITY_BASE * 2
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 
 
 // This is defined higher up, in /clothing to avoid lots of copypasta.
@@ -48,7 +45,7 @@
 		EA.emp_act(severity)
 	..()
 
-/obj/item/clothing/examine(mob/user)
+/obj/item/clothing/examine(mob/user, dist)
 	if(EA)
 		EA.examine(user)
 	. = ..()
@@ -83,6 +80,11 @@
 /obj/item/clothing/on_loc_moved(oldloc)
 	EA ? EA.on_loc_moved(oldloc) : ..()
 
+/obj/item/clothing/ui_action_click(datum/action/action, datum/event_args/actor/actor)
+	. = ..()
+	if(EA && action_circuit)
+		action_circuit.do_work()
+
 // Does most of the repeatative setup.
 /obj/item/clothing/proc/setup_integrated_circuit(new_type)
 	// Set up the internal circuit holder.
@@ -94,8 +96,7 @@
 	EA.add_component(action_circuit)
 	var/obj/item/integrated_circuit/built_in/self_sensor/S = new(src.EA)
 	EA.add_component(S)
-	EA.action_button_name = "Activate [name]"
-
+	item_action_name = "Activate [name]"
 
 
 /obj/item/clothing/Destroy()

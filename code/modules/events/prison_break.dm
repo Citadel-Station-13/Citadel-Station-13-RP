@@ -28,6 +28,13 @@
 	areaNotType = list(/area/rnd/xenobiology/xenoflora, /area/rnd/xenobiology/xenoflora_storage)
 
 
+/datum/event/prison_break/station/announce()
+	var/list/namelist = list()
+	for (var/area/A in areaType)
+		namelist += A.name
+	if(areas && areas.len > 0)
+		command_announcement.Announce("Wide-spread malignant trojan detected in multiple subroutines aboard [station_name()]. Immediate compromise of [english_list(namelist)] likely in approximately five minutes.", "Malware Alert")
+
 /datum/event/prison_break/setup()
 	announceWhen = rand(75, 105)
 	releaseWhen = rand(60, 90)
@@ -38,6 +45,7 @@
 /datum/event/prison_break/announce()
 	if(areas && areas.len > 0)
 		command_announcement.Announce("[pick("Gr3y.T1d3 virus","Malignant trojan")] detected in [station_name()] [(eventDept == "Security")? "imprisonment":"containment"] subroutines. Secure any compromised areas immediately. Station AI involvement is recommended.", "[eventDept] Alert")
+
 
 
 /datum/event/prison_break/start()

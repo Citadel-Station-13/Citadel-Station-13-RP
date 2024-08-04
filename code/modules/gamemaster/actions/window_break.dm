@@ -63,12 +63,12 @@
 	if(!chosen_window)
 		return
 	..()
-	chosen_window.shatter(0)
+	chosen_window.atom_destruction()
 
 	spawn()
 		for(var/obj/structure/window/current_collateral in collateral_windows)
 			sleep(rand(1,20))
-			current_collateral.take_damage(current_collateral.health - (current_collateral.maxhealth / 5)) //set to 1/5th health
+			current_collateral.set_integrity(min(current_collateral.integrity, current_collateral.integrity_max * 0.2))
 
 /datum/gm_action/window_break/announce()
 	if(chosen_window)

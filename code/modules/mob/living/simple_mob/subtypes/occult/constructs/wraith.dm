@@ -21,8 +21,8 @@
 	icon_living = "floating"
 	maxHealth = 200
 	health = 200
-	melee_damage_lower = 25
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 25
+	legacy_melee_damage_upper = 30
 	attack_armor_pen = 15
 	attack_sharp = 1
 	attack_edge = 1
@@ -36,7 +36,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/wraith)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	var/jaunt_warning = 0.5 SECONDS	// How long the jaunt telegraphing is.
 	var/jaunt_tile_speed = 20		// How long to wait between each tile. Higher numbers result in an easier to dodge tunnel attack.

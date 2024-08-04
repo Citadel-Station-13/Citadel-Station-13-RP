@@ -5,7 +5,7 @@
 	desc = "A permit for something."
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "permit-generic"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot = ACCESSORY_SLOT_MEDAL
 	var/owner = 0	//To prevent people from just renaming the thing if they steal it
 
@@ -46,7 +46,7 @@
 
 /obj/item/clothing/accessory/permit/drone
 	name = "drone identification card"
-	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within NanoTrasen space, by law."
+	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within Nanotrasen space, by law."
 	icon_state = "permit-drone"
 
 /obj/item/clothing/accessory/permit/gun/paramedic

@@ -27,7 +27,7 @@
 		ui = new(user, src, "PrisonerManagement", name)
 		ui.open()
 
-/obj/machinery/computer/prisoner/ui_data(mob/user)
+/obj/machinery/computer/prisoner/ui_data(mob/user, datum/tgui/ui)
 	var/list/chemImplants = list()
 	var/list/trackImplants = list()
 	if(screen)
@@ -50,7 +50,7 @@
 				continue
 			var/loc_display = "Unknown"
 			var/mob/living/L = track.imp_in
-			if((get_z(L) in GLOB.using_map.station_levels) && !istype(L.loc, /turf/space))
+			if((get_z(L) in (LEGACY_MAP_DATUM).station_levels) && !istype(L.loc, /turf/space))
 				loc_display = T.loc
 			if(track.malfunction)
 				loc_display = pick(teleportlocs)
@@ -64,7 +64,7 @@
 	return list("locked" = !screen, "chemImplants" = chemImplants, "trackImplants" = trackImplants)
 
 
-/obj/machinery/computer/prisoner/ui_act(action, list/params)
+/obj/machinery/computer/prisoner/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

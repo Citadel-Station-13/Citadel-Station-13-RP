@@ -18,10 +18,10 @@ type FishingRodData = {
 };
 
 type FishingSlotProps = {
-  name: string;
-  slot: string;
-  current_item_name: string | null;
-  current_item_icon: string | null;
+  readonly name: string;
+  readonly slot: string;
+  readonly current_item_name: string | null;
+  readonly current_item_icon: string | null;
 };
 
 const FishingRodSlot = (props: FishingSlotProps, context) => {

@@ -14,7 +14,7 @@
 		ui = new(user, src, "FishCatalog", name)
 		ui.open()
 
-/obj/item/book/fish_catalog/ui_static_data(mob/user)
+/obj/item/book/fish_catalog/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/static/fish_info
 	if(!fish_info)
@@ -104,7 +104,6 @@
 	.["traits"] = trait_descriptions
 	return .
 
-/obj/item/book/fish_catalog/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/fish)
-	)
+/obj/item/book/fish_catalog/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/fish
+	return ..()

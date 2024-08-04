@@ -46,12 +46,12 @@
 		C.images += images
 	for(var/image/I as anything in images)
 		animate(I, alpha = 255, time = fadein, easing = SINE_EASING)
-	addtimer(CALLBACK(src, .proc/remove_sonar_images, images, clients, fadeout), sustain, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, PROC_REF(remove_sonar_images), images, clients, fadeout), sustain, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/sonar/proc/remove_sonar_images(list/image/images, list/client/clients, time)
 	for(var/image/I as anything in images)
 		animate(I, alpha = 0, time = time, easing = SINE_EASING)
-	addtimer(CALLBACK(src, .proc/dispose_sonar_images, images, clients), time, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, PROC_REF(dispose_sonar_images), images, clients), time, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/sonar/proc/dispose_sonar_images(list/image/images, list/client/clients)
 	for(var/client/C in clients)
@@ -141,7 +141,7 @@
 	MA.pixel_x = MA.pixel_y = round(WORLD_ICON_SIZE * (1 - scale) * 0.5, 1)
 	return MA
 
-/obj/mecha/make_sonar_shape()
+/obj/vehicle/sealed/mecha/make_sonar_shape()
 	return SSsonar.get_shape_raw(SONAR_IMAGE_HEXAGON)
 
 /obj/make_sonar_shape()

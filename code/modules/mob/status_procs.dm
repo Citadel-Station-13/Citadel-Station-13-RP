@@ -226,6 +226,23 @@
 		effect.adjust_duration(amount)
 	return TRUE
 
+/**
+ * heals all incapacitation effects
+ *
+ * @params
+ * * amount - if null, remove all immediately.
+ */
+/mob/proc/clear_all_incapacitation_effects(amount)
+	ASSERT(isnull(amount) || amount > 0)
+	for(var/datum/status_effect/incapacitation/path as anything in subtypesof(/datum/status_effect/incapacitation))
+		var/datum/status_effect/incapacitation/effect = has_status_effect(path)
+		if(isnull(effect))
+			continue
+		if(!isnull(amount))
+			effect.adjust_duration(-amount)
+		else
+			qdel(effect)
+
 //? legacy
 
 /mob/proc/Confuse(amount)
@@ -237,11 +254,16 @@
 /mob/proc/AdjustConfused(amount)
 	confused = max(confused + amount, 0)
 
-/mob/proc/Blind(amount)
-	eye_blind = max(eye_blind, amount, 0)
+/mob/proc/add_blindness_source(source)
+  ADD_TRAIT(src, TRAIT_BLIND, source)
+  overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 
-/mob/proc/SetBlinded(amount)
-	eye_blind = max(amount, 0)
+/mob/proc/remove_blindness_source(source)
+  REMOVE_TRAIT(src, TRAIT_BLIND, source)
+  if(!HAS_TRAIT(src, TRAIT_BLIND))
+    clear_fullscreen("blind")
 
-/mob/proc/AdjustBlinded(amount)
-	eye_blind = max(eye_blind + amount, 0)
+/mob/proc/blindness_handle_reconnect()
+	if(HAS_TRAIT(src, TRAIT_BLIND))
+		clear_fullscreen("blind")
+		overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)

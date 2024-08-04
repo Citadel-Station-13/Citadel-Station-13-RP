@@ -11,7 +11,7 @@
 
 	explosion_resistance = 100
 
-	maxhealth = 9999999 //No.
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/list/locks = list()
 	var/lockID = null
@@ -37,7 +37,7 @@
 
 /obj/machinery/door/blast/puzzle/Initialize(mapload)
 	. = ..()
-	implicit_material = SSmaterials.get_material(/datum/material/alienalloy/dungeonium)
+	implicit_material = SSmaterials.resolve_material(/datum/material/alienalloy/dungeonium)
 	if(locks.len)
 		return
 	var/check_range = world.view * checkrange_mult

@@ -4,7 +4,7 @@
 /mob/verb/toggle_gun_mode()
 	set name = "Toggle Gun Mode"
 	set desc = "Begin or stop aiming."
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	if(isliving(src))
 		var/mob/living/M = src
@@ -41,13 +41,14 @@
 	aimed.Cut()
 	return ..()
 
-/turf/Enter(mob/living/mover)
+/turf/Enter(atom/movable/mover, atom/oldloc)
 	. = ..()
-	if(istype(mover))
-		if(mover.aiming && mover.aiming.aiming_at)
-			mover.aiming.update_aiming()
-		if(mover.aimed.len)
-			mover.trigger_aiming(TARGET_CAN_MOVE)
+	if(isliving(mover))
+		var/mob/living/mover_living = mover
+		if(mover_living.aiming && mover_living.aiming.aiming_at)
+			mover_living.aiming.update_aiming()
+		if(mover_living.aimed.len)
+			mover_living.trigger_aiming(TARGET_CAN_MOVE)
 
 /mob/living/forceMove(atom/destination)
 	. = ..()

@@ -10,7 +10,7 @@
 	throw_force = 10
 	damtype = BURN
 	damage_force = 10
-	hitsound = 'sound/items/welder2.ogg'
+	attack_sound = 'sound/items/welder2.ogg'
 
 /obj/item/scrying/attack_self(mob/user)
 	. = ..()
@@ -40,7 +40,7 @@
 	damage_force = 15
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	var/charges = 1
 	var/spawn_type = /obj/singularity/wizard
 	var/spawn_amt = 1
@@ -149,7 +149,7 @@
 		insaneinthemembrane.sanity = 0
 		for(var/lore in typesof(/datum/brain_trauma/severe))
 			C.gain_trauma(lore)
-		addtimer(CALLBACK(src, /obj/singularity/wizard.proc/deranged, C), 100)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/singularity/wizard, deranged), C), 100)
 
 /obj/singularity/wizard/proc/deranged(mob/living/carbon/C)
 	if(!C || C.stat == DEAD)
@@ -200,7 +200,8 @@
 		return
 
 	H.set_species(/datum/species/skeleton, regen_icons=0)
-	H.revive()//full_heal = 1, admin_revive = 1)
+	H.revive(full_heal = TRUE)
+	H.remove_all_restraints()
 	spooky_scaries |= H
 	to_chat(H, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
 	to_chat(H, "<span class='userdanger'>[user] is your master now, assist [user] them even if it costs you your new life!</span>")

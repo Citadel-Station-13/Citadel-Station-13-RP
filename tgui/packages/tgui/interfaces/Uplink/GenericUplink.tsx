@@ -3,11 +3,11 @@ import { useLocalState, useSharedState } from '../../backend';
 import { Box, Button, Input, Section, Tabs, NoticeBox, Stack } from '../../components';
 
 type GenericUplinkProps = {
-  currency?: string | JSX.Element,
-  categories: string[],
-  items: Item[],
+  readonly currency?: string | JSX.Element,
+  readonly categories: string[],
+  readonly items: Item[],
 
-  handleBuy: (item: Item) => void;
+  readonly handleBuy: (item: Item) => void;
 }
 
 export const GenericUplink = (props: GenericUplinkProps, context) => {
@@ -99,10 +99,10 @@ export type Item<ItemData = {}> = {
 }
 
 export type ItemListProps = {
-  compactMode: BooleanLike,
-  items: Item[],
+  readonly compactMode: BooleanLike,
+  readonly items: Item[],
 
-  handleBuy: (item: Item) => void;
+  readonly handleBuy: (item: Item) => void;
 }
 
 const ItemList = (props: ItemListProps, context: any) => {

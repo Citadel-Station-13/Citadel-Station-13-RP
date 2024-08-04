@@ -3,10 +3,10 @@
 	desc = "Some sort of primitive projectile weapon. Used to fire arrows."
 	icon_state = "bow"
 	item_state = "bow"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 5
 	load_method = SINGLE_CASING
-	caliber = "arrow"
+	regex_this_caliber = /datum/ammo_caliber/arrow
 	max_shells = 1
 	fire_sound = 'sound/weapons/bowfire.wav'
 	slot_flags = SLOT_BACK
@@ -27,7 +27,7 @@
 /obj/item/gun/ballistic/bow/load_ammo(var/obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
-		if(!(load_method & SINGLE_CASING) || caliber != C.caliber)
+		if(!(load_method & SINGLE_CASING) || !accepts_caliber(C.regex_this_caliber))
 			return //incompatible
 		if(loaded.len >= max_shells)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
@@ -64,7 +64,7 @@
 	if (istype(A, /obj/item/ammo_casing/arrow))
 		load_ammo(A, user)
 
-/obj/item/gun/ballistic/bow/afterattack(atom/A, mob/living/user)
+/obj/item/gun/ballistic/bow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	src.ready = 0
 	update_icon()

@@ -266,22 +266,17 @@
 /area/class_d/POIs/ship)
 "bb" = (
 /obj/structure/grille,
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bc" = (
 /obj/structure/grille,
-/obj/structure/window/reinforced{
-	health = 1e+006
-	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)

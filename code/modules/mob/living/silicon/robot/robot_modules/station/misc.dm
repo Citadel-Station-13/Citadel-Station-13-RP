@@ -1,7 +1,7 @@
 /obj/item/robot_module/robot/standard
 	name = "standard robot module"
 	sprites = list(
-		"M-USE NanoTrasen" = "robot",
+		"M-USE Nanotrasen" = "robot",
 		"Cabeiri" = "eyebot-standard",
 		"Haruka" = "marinaSD",
 		"Usagi" = "tallflower",

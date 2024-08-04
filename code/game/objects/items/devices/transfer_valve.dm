@@ -8,6 +8,7 @@
 	//lefthand_file = 'icons/mob/inhands/weapons/bombs_lefthand.dmi'
 	//righthand_file = 'icons/mob/inhands/weapons/bombs_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
+	worth_intrinsic = 250
 
 	var/obj/item/tank/tank_one
 	var/obj/item/tank/tank_two
@@ -76,7 +77,7 @@
 		return
 	ui_interact(user)
 
-/obj/item/transfer_valve/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/transfer_valve/ui_state()
 	return GLOB.inventory_state
 
 /obj/item/transfer_valve/ui_interact(mob/user, datum/tgui/ui = null)
@@ -85,7 +86,7 @@
 		ui = new(user, src, "TransferValve", name) // 460, 320
 		ui.open()
 
-/obj/item/transfer_valve/ui_data(mob/user)
+/obj/item/transfer_valve/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["tank_one"] = tank_one ? tank_one.name : null
 	data["tank_two"] = tank_two ? tank_two.name : null
@@ -93,7 +94,7 @@
 	data["valve"] = valve_open
 	return data
 
-/obj/item/transfer_valve/ui_act(action, params)
+/obj/item/transfer_valve/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return
 	. = TRUE

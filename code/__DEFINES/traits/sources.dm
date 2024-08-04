@@ -17,12 +17,19 @@
 /// From a flashbulb
 #define FLASH_TRAIT "flash"
 
+//* Machinery *//
+
+/// cryotube
+#define CRYO_TUBE_TRAIT "cryotube"
+
 //? Mob Sources
 
 /// From species
 #define SPECIES_TRAIT "species"
 /// From species quirks
 #define QUIRK_TRAIT "quirk"
+/// From overall physiology (including any species modifiers)
+#define PHYSIOLOGY_TRAIT "physiology"
 /// status effect trait source
 #define STATUS_EFFECT_TRAIT(id) "status_effect_[id]"
 

@@ -208,7 +208,7 @@
 /turf/simulated/shuttle/floor/white/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aS" = (
-/obj/structure/door_assembly/door_assembly_com,
+/obj/structure/door_assembly/command,
 /turf/simulated/shuttle/floor/white/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aT" = (

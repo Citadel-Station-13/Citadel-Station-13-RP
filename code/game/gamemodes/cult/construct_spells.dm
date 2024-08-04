@@ -477,10 +477,10 @@
 			return 1
 	return 0
 
-/obj/item/spell/construct/afterattack(atom/target, mob/user, proximity_flag, click_parameters) //Not overriding it caused runtimes, because cooldown checked for core.
+/obj/item/spell/construct/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!run_checks())
 		return
-	if(!proximity_flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		if(cast_methods & CAST_RANGED)
 			on_ranged_cast(target, user)
 	else
@@ -665,7 +665,7 @@
 		var/turf/simulated/wall/W = hit_atom
 		user.visible_message("<span class='warning'>\The [user] rears its fist, preparing to hit \the [W]!</span>")
 		var/windup = cooldown
-		if(W.reinf_material)
+		if(W.material_reinf)
 			windup = cooldown * 2
 		if(do_after(user, windup))
 			W.visible_message("<span class='danger'>\The [user] [attack_message] \the [W], obliterating it!</span>")

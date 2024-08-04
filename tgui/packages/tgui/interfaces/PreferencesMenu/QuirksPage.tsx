@@ -15,10 +15,10 @@ const getValueClass = (value: number): string => {
 };
 
 const QuirkList = (props: {
-  quirks: [string, Quirk & {
+  readonly quirks: [string, Quirk & {
     failTooltip?: string;
   }][],
-  onClick: (quirkName: string, quirk: Quirk) => void,
+  readonly onClick: (quirkName: string, quirk: Quirk) => void,
 }) => {
   return (
     // Stack is not used here for a variety of IE flex bugs
@@ -97,6 +97,7 @@ const QuirkList = (props: {
 
         if (quirk.failTooltip) {
           return (
+          // eslint-disable-next-line react/jsx-key
             <Tooltip content={quirk.failTooltip}>
               {child}
             </Tooltip>

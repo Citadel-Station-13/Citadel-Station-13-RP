@@ -12,7 +12,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "wirer-wire"
 	item_state = "wirer"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/datum/integrated_io/selected_io = null
 	var/mode = WIRE
 
@@ -110,7 +110,7 @@
 	settings to specific circuits, or for debugging purposes.  It can also pulse activation pins."
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "debugger"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/data_to_write = null
 	var/accepting_refs = FALSE
 	var/copy_values = FALSE
@@ -133,6 +133,7 @@
 			if(istext(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to \"[new_data]\".</span>")
+
 		if("number")
 			accepting_refs = FALSE
 			copy_values = FALSE
@@ -140,24 +141,67 @@
 			if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [new_data].</span>")
+
 		if("ref")
 			accepting_refs = TRUE
 			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You turn \the [src]'s ref scanner on.  Slide it across \
 			an object for a ref of that object to save it in memory.</span>")
+
 		if("copy")
 			accepting_refs = FALSE
 			copy_values = TRUE
 			to_chat(user, "<span class='notice'>You turn \the [src]'s value copier on.  Use it on a pin \
 			to save its current value in memory.</span>")
+
+		if("list")
+			accepting_refs = FALSE
+			copy_values = FALSE
+			var/listLen = input(usr, "Type in a number to be the length of the list (between 1 and 16.)","[src] list len") as null|num
+			if(!listLen)
+				return
+			listLen = clamp(1, listLen, 16)
+
+			var/list/L = list()
+			L.len = listLen
+
+			var/list/names = list()
+
+			var/valueToChange = 1
+			while(valueToChange)
+				names.Cut()
+				for (var/i in 1 to L.len)
+					var/key = L[i]
+					if (key == null)
+						key = "null"
+					names["#[i] [key]"] = i
+				valueToChange = tgui_input_list(usr, "Please choose a value to change.","List Value Setting", names)
+				if(!valueToChange) break
+				valueToChange = names[valueToChange]
+				var/type_to_change = tgui_input_list(usr, "Please choose a type to use.","List [src] type setting", list("string","number","null"))
+				switch(type_to_change)
+					if("string")
+						new_data = input(usr, "Now type in a string.","[src] string writing") as null|text
+						new_data = sanitizeSafe(new_data, MAX_MESSAGE_LEN, 0, 0)
+						if(istext(new_data) && CanInteract(user, GLOB.physical_state))
+							L[valueToChange] = new_data
+					if("number")
+						new_data = input(usr, "Now type in a number.","[src] number writing") as null|num
+						if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
+							L[valueToChange] = new_data
+					if("null")
+						L[valueToChange] = null
+			data_to_write = L
+			to_chat(user, "<span class='notice'>You set \the [src]'s memory to a list of length [L.len].</span>")
+
 		if("null")
 			data_to_write = null
 			accepting_refs = FALSE
 			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
 
-/obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/living/user, proximity)
-	if(accepting_refs && proximity)
+/obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(accepting_refs && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		data_to_write = WEAKREF(target)
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
@@ -204,9 +248,6 @@
 	var/mode = 0
 
 /obj/item/multitool/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(selected_io)
 		selected_io = null
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")
@@ -276,30 +317,22 @@
 		io1.holder.interact(user) // This is to update the UI.
 		update_icon()
 
-/obj/item/multitool/afterattack(atom/target, mob/living/user, proximity)
-	if(accepting_refs && toolmode == MULTITOOL_MODE_INTCIRCUITS && proximity)
+/obj/item/multitool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(accepting_refs && toolmode == MULTITOOL_MODE_INTCIRCUITS && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		weakref_wiring = WEAKREF(target)
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
 		now off.</span>")
 		accepting_refs = 0
 
-
-
-
-
-
-
-
-
 /obj/item/storage/bag/circuits
 	name = "circuit kit"
 	desc = "This kit's essential for any circuitry projects."
 	icon = 'icons/obj/integrated_electronics/electronic_misc.dmi'
 	icon_state = "circuit_kit"
-	w_class = 3
-	display_contents_with_number = 0
-	can_hold = list(
+	w_class = WEIGHT_CLASS_NORMAL
+	ui_numerical_mode = FALSE
+	insertion_whitelist = list(
 		/obj/item/integrated_circuit,
 		/obj/item/storage/bag/circuits/mini,
 		/obj/item/electronic_assembly,
@@ -309,9 +342,9 @@
 		/obj/item/tool/wrench,
 		/obj/item/multitool
 		)
-	cant_hold = list(/obj/item/tool/screwdriver/power)
+	insertion_blacklist = list(/obj/item/tool/screwdriver/power)
 
-/obj/item/storage/bag/circuits/basic/PopulateContents()
+/obj/item/storage/bag/circuits/basic/legacy_spawn_contents()
 	new /obj/item/storage/bag/circuits/mini/arithmetic(src)
 	new /obj/item/storage/bag/circuits/mini/trig(src)
 	new /obj/item/storage/bag/circuits/mini/input(src)
@@ -331,9 +364,9 @@
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wrench(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
-/obj/item/storage/bag/circuits/all/PopulateContents()
+/obj/item/storage/bag/circuits/all/legacy_spawn_contents()
 	new /obj/item/storage/bag/circuits/mini/arithmetic/all(src)
 	new /obj/item/storage/bag/circuits/mini/trig/all(src)
 	new /obj/item/storage/bag/circuits/mini/input/all(src)
@@ -355,14 +388,14 @@
 	new /obj/item/integrated_electronics/wirer(src)
 	new /obj/item/integrated_electronics/debugger(src)
 	new /obj/item/tool/crowbar(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini
 	name = "circuit box"
 	desc = "Used to partition categories of circuits, for a neater workspace."
-	w_class = 2
-	display_contents_with_number = 1
-	can_hold = list(/obj/item/integrated_circuit)
+	w_class = WEIGHT_CLASS_SMALL
+	ui_numerical_mode = TRUE
+	insertion_whitelist = list(/obj/item/integrated_circuit)
 	var/spawn_flags_to_use = IC_SPAWN_DEFAULT
 
 /obj/item/storage/bag/circuits/mini/arithmetic
@@ -373,12 +406,12 @@
 /obj/item/storage/bag/circuits/mini/arithmetic/all // Don't believe this will ever be needed.
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/arithmetic/PopulateContents()
+/obj/item/storage/bag/circuits/mini/arithmetic/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/arithmetic/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/trig
 	name = "trig circuit box"
@@ -388,12 +421,12 @@
 /obj/item/storage/bag/circuits/mini/trig/all // Ditto
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/trig/PopulateContents()
+/obj/item/storage/bag/circuits/mini/trig/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/trig/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/input
 	name = "input circuit box"
@@ -403,12 +436,12 @@
 /obj/item/storage/bag/circuits/mini/input/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/input/PopulateContents()
+/obj/item/storage/bag/circuits/mini/input/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/input/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/output
 	name = "output circuit box"
@@ -418,12 +451,12 @@
 /obj/item/storage/bag/circuits/mini/output/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/output/PopulateContents()
+/obj/item/storage/bag/circuits/mini/output/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/output/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/memory
 	name = "memory circuit box"
@@ -433,12 +466,12 @@
 /obj/item/storage/bag/circuits/mini/memory/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/memory/PopulateContents()
+/obj/item/storage/bag/circuits/mini/memory/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/memory/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/logic
 	name = "logic circuit box"
@@ -448,12 +481,12 @@
 /obj/item/storage/bag/circuits/mini/logic/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/logic/PopulateContents()
+/obj/item/storage/bag/circuits/mini/logic/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/logic/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/time
 	name = "time circuit box"
@@ -463,12 +496,12 @@
 /obj/item/storage/bag/circuits/mini/time/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/time/PopulateContents()
+/obj/item/storage/bag/circuits/mini/time/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/time/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/reagents
 	name = "reagent circuit box"
@@ -478,13 +511,13 @@
 /obj/item/storage/bag/circuits/mini/reagents/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/reagents/PopulateContents()
+/obj/item/storage/bag/circuits/mini/reagents/legacy_spawn_contents()
 	. = ..()
 	for(var/obj/item/integrated_circuit/reagent/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/transfer
 	name = "transfer circuit box"
@@ -494,12 +527,12 @@
 /obj/item/storage/bag/circuits/mini/transfer/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/transfer/PopulateContents()
+/obj/item/storage/bag/circuits/mini/transfer/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/transfer/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/converter
 	name = "converter circuit box"
@@ -509,12 +542,12 @@
 /obj/item/storage/bag/circuits/mini/converter/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/converter/PopulateContents()
+/obj/item/storage/bag/circuits/mini/converter/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/converter/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/smart
 	name = "smart box"
@@ -524,13 +557,13 @@
 /obj/item/storage/bag/circuits/mini/smart/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/smart/PopulateContents()
+/obj/item/storage/bag/circuits/mini/smart/legacy_spawn_contents()
 	. = ..()
 	for(var/obj/item/integrated_circuit/smart/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/manipulation
 	name = "manipulation box"
@@ -540,13 +573,13 @@
 /obj/item/storage/bag/circuits/mini/manipulation/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/manipulation/PopulateContents()
+/obj/item/storage/bag/circuits/mini/manipulation/legacy_spawn_contents()
 	. = ..()
 	for(var/obj/item/integrated_circuit/manipulation/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/bag/circuits/mini/power
 	name = "power circuit box"
@@ -556,7 +589,7 @@
 /obj/item/storage/bag/circuits/mini/power/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/power/PopulateContents()
+/obj/item/storage/bag/circuits/mini/power/legacy_spawn_contents()
 	for(var/obj/item/integrated_circuit/passive/power/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
@@ -565,4 +598,4 @@
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
-	make_exact_fit()
+	obj_storage.fit_to_contents()

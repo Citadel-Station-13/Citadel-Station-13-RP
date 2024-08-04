@@ -295,7 +295,7 @@
 
 /obj/machinery/sleeper/verb/move_eject()
 	set name = "Eject occupant"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr == occupant)
 		switch(usr.stat)
@@ -420,7 +420,7 @@
 //Survival/Stasis sleepers
 /obj/machinery/sleeper/survival_pod
 	desc = "A limited functionality sleeper, all it can do is put patients into stasis. It lacks the medication and configuration of the larger units."
-	icon_state = "sleeper"
+	icon_state = "sleeper_0"
 	stasis_level = 100 //Just one setting
 
 /obj/machinery/sleeper/survival_pod/Initialize(mapload)

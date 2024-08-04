@@ -8,7 +8,7 @@
 	from rim to rim. The first to notice this font of power were those who \
 	were already the faithful devotees of esoteric religions. The rise of Blood \
 	Cultists in service to the Geometer quickly became an intergalactic incident. \
-	Although NanoTrasen and other entities have risen to combat these foes, a \
+	Although Nanotrasen and other entities have risen to combat these foes, a \
 	vast array of Hermetic Orders now command frightening power."
 	value = CATALOGUER_REWARD_TRIVIAL
 	unlocked_by_any = list(/datum/category_item/catalogue/fauna/cultist)
@@ -64,8 +64,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30	//Cult Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30	//Cult Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -73,7 +73,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/human/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -83,7 +83,7 @@
 
 /mob/living/simple_mob/humanoid/cultist/human/bloodjaunt //Teleporting Cultists
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 	var/jaunt_warning = 0.5 SECONDS	// How long the jaunt telegraphing is.
 	var/jaunt_tile_speed = 20		// How long to wait between each tile. Higher numbers result in an easier to dodge tunnel attack.
@@ -231,8 +231,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_armor_pen = 25
 	attack_sharp = 1
 	attack_edge = 1
@@ -241,7 +241,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 2
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/tesh/death()
 	new /obj/effect/debris/cleanable/ash (src.loc)
@@ -282,8 +282,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -292,7 +292,7 @@
 	movement_cooldown = 4
 	base_attack_cooldown = 7.5 //Two knives mean double stab.
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/lizard/death()
 	new /obj/effect/decal/remains/unathi (src.loc)
@@ -333,8 +333,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -344,7 +344,7 @@
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 
 /mob/living/simple_mob/humanoid/cultist/caster/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -384,8 +384,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -393,7 +393,7 @@
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 4
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/initiate/death()
 	new /obj/effect/decal/remains/human (src.loc)
@@ -432,8 +432,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 15	//Ritual Knife
-	melee_damage_upper = 15
+	legacy_melee_damage_lower = 15	//Ritual Knife
+	legacy_melee_damage_upper = 15
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -444,7 +444,7 @@
 	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/humanoid/cultist/castertesh/death()
 	new /obj/effect/debris/cleanable/ash (src.loc)
@@ -482,8 +482,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30	//Cult Sword Damage
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30	//Cult Sword Damage
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -491,14 +491,16 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	movement_cooldown = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 /mob/living/simple_mob/humanoid/cultist/elite/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(O.damage_force)
 		if(prob(30))
 			visible_message("<span class='danger'>\The [src] blocks \the [O] with its shield!</span>")
 			if(user)
-				ai_holder.react_to_attack(user)
+				if(istype(src.ai_holder, /datum/ai_holder/polaris))
+					var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+					ai_holder.react_to_attack_polaris(user)
 			return
 		else
 			..()
@@ -511,7 +513,9 @@
 	if(prob(50))
 		visible_message("<font color='red'><B>[Proj] disappears into the mirror world as it hits the shield.</B></font>")
 		if(Proj.firer)
-			ai_holder.react_to_attack(Proj.firer)
+			if(istype(src.ai_holder, /datum/ai_holder/polaris))
+				var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+				ai_holder.react_to_attack_polaris(Proj.firer)
 		return
 	else
 		..()
@@ -557,8 +561,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 30	//Ritual Knife
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30	//Ritual Knife
+	legacy_melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -571,7 +575,7 @@
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
 	var/obj/item/shield_projector/shields = null
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/humanoid/cultist/magus/death()
 	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
@@ -630,8 +634,8 @@
 	response_harm = "hits"
 
 	harm_intent_damage = 5
-	melee_damage_lower = 42	//Saw Cleaver Brutality
-	melee_damage_upper = 42
+	legacy_melee_damage_lower = 42	//Saw Cleaver Brutality
+	legacy_melee_damage_upper = 42
 	attack_sharp = 1
 	attack_edge = 1
 	attacktext = list("slashed", "stabbed")
@@ -649,7 +653,7 @@
 	reload_max = 2
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter
 
 /mob/living/simple_mob/humanoid/cultist/hunter/death()
 	new /obj/effect/debris/cleanable/blood/gibs (src.loc)
@@ -662,7 +666,7 @@
 //		Hunter AI
 ////////////////////////////
 
-/datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter //This directs the AI to charge while shooting at its victim then entering Glorious melee combat.
+/datum/ai_holder/polaris/simple_mob/ranged/aggressive/blood_hunter //This directs the AI to charge while shooting at its victim then entering Glorious melee combat.
 	pointblank = FALSE
 	closest_distance = 0
 

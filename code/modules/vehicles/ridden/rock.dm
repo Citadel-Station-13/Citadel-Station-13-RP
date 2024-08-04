@@ -4,7 +4,7 @@
 	icon = 'icons/obj/flora/rocks.dmi'
 	icon_state = "basalt3"
 	integrity = 200
-	max_integrity = 200
+	integrity_max = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/rock
 
 /obj/vehicle/ridden/rock/drive_check(mob/user)

@@ -1,0 +1,7 @@
+### ghost weight on votes
+GHOST_WEIGHT 25
+### Should the transfer vote be obfuscated?
+TRANSFER_VOTE_OBFUSCATION 1
+### What should a tie in transfer vote default to
+DEFAULT_ON_TRANSFER_TIE Extend the Shift
+

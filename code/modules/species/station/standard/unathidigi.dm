@@ -4,13 +4,14 @@
 	name = SPECIES_UNATHI_DIGI
 	name_plural = SPECIES_UNATHI_DIGI
 	default_bodytype = BODYTYPE_UNATHI_DIGI
-
 	icobase       = 'icons/mob/species/unathidigi/body.dmi'
 	deform        = 'icons/mob/species/unathidigi/deformed_body.dmi'
 	husk_icon     = 'icons/mob/species/unathidigi/husk.dmi'
 	preview_icon  = 'icons/mob/species/unathidigi/preview.dmi'
-	tail = "sogtail"
-	tail_animation = 'icons/mob/species/unathidigi/tail.dmi'
+
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/unathi,
+	)
 
 	blurb = {"
 	As a result of the many challenges of living on Moghes and other worlds, Unathi have become morphologically diverse.

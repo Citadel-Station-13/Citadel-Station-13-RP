@@ -6,7 +6,7 @@
 /obj/item/offhand
 	name = "broken offhand"
 	desc = "fire coderbus"
-	item_flags = ITEM_DROPDEL | ITEM_ABSTRACT | ITEM_NOBLUDGEON
+	item_flags = ITEM_DROPDEL | ITEM_ABSTRACT | ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	icon = 'icons/obj/item/abstract.dmi'
 	icon_state = "offhand"
 	drop_sound = null

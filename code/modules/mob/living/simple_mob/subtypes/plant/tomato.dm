@@ -25,11 +25,11 @@
 	response_harm   = "smacks"
 
 	harm_intent_damage = 5
-	melee_damage_upper = 15
-	melee_damage_lower = 10
+	legacy_melee_damage_upper = 15
+	legacy_melee_damage_lower = 10
 	attacktext = list("mauled")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/tomatomeat

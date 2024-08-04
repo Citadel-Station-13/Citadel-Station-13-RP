@@ -8,5 +8,5 @@
 import { InfernoNode } from "inferno";
 
 export type ComponentProps = {
-  chlidren?: InfernoNode;
+  children?: InfernoNode;
 }

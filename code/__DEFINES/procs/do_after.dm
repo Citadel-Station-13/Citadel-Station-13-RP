@@ -52,3 +52,7 @@
 #define INTERACTING_FOR_ALT_CLICK "alt_click"
 /// Attempting to resist out of something
 #define INTERACTING_FOR_RESIST "resist"
+/// Climbing a structure
+#define INTERACTING_FOR_CLIMB "climb"
+/// Construct/deconstruct
+#define INTERACTING_FOR_CONSTRUCTION "construction"

@@ -19,7 +19,7 @@
 
 /obj/machinery/computer/station_alert/Initialize(mapload)
 	alarm_monitor = new monitor_type(src)
-	alarm_monitor.register_alarm(src, /atom/proc/update_icon)
+	alarm_monitor.register_alarm(src, PROC_REF(on_alarm_update))
 	. = ..()
 
 /obj/machinery/computer/station_alert/Destroy()
@@ -52,3 +52,6 @@
 		else
 			icon_screen = initial(icon_screen)
 	..()
+
+/obj/machinery/computer/station_alert/proc/on_alarm_update()
+	update_icon()

@@ -14,13 +14,16 @@
 	slot_flags = SLOT_ID | SLOT_EARS
 
 	var/age = "\[UNSET\]"
-	var/blood_type = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
-	var/fingerprint_hash = "\[UNSET\]"
-	var/sex = "\[UNSET\]"
+	var/pronouns = "\[UNSET\]"
 	var/species = "\[UNSET\]"
 	var/icon/front
 	var/icon/side
+	var/photoupdatequeued
+
+	/// Keyed list containing confidential information, such as blood type, vetalism, and more
+	var/list/extra_info = list()
+	var/extra_info_visible
 
 	var/last_job_switch
 	var/lost_access = list()
@@ -40,21 +43,40 @@
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
-	var/datum/role/job/J = SSjob.get_job(rank)
-	if(J)
-		access = J.get_access()
-		job_access_type = J
+	var/datum/role/job/getting_from
+	if(ispath(job_access_type))
+		job_access_type = SSjob.job_by_type(job_access_type)
+	if(istype(job_access_type))
+		getting_from = job_access_type
+	else
+		getting_from = SSjob.get_job(rank)
+	if(!isnull(getting_from))
+		access = getting_from.get_access()
+		job_access_type = getting_from
 
-/obj/item/card/id/examine(mob/user)
-	var/list/result = dat()
-	result.Insert(1, ..())
-	return result
-	//show(user)
-
-/obj/item/card/id/examine_more(mob/user)
+/obj/item/card/id/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("<i>You examine [src] closer, and note the following...</i>")
+	. += "<div"
+	if(front || side)
+		. += " style='background: "
+		if(side)
+			. += "url([icon2html(side, world, sourceonly = TRUE)])"
+		if(front && side)
+			. += ", "
+		if(front)
+			. += "url([icon2html(front, world, sourceonly = TRUE)])"
+		. += "; background-repeat: no-repeat; background-size: 64px; background-position: right 0px top 0px, right 64px top 0px; -ms-interpolation-mode: nearest-neighbor; image-rendering: pixelated'"
+	. += ">"
+	. += dat()
+	. += "</div>"
+	if(Adjacent(user))
+		. += SPAN_NOTICE("<b>Alt-click</b> to [extra_info_visible ? "close" : "open"] the confidential information flap.")
+	return .
 
+/obj/item/card/id/get_description_info()
+	. = ..()
+	if(.)
+		. += "<br>"
 	if(mining_points)
 		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
 
@@ -96,26 +118,46 @@
 	return
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)
-	var/icon/charicon = cached_character_icon(M)
-	front = icon(charicon,dir = SOUTH)
-	side = icon(charicon,dir = WEST)
+	if(!photoupdatequeued)
+		addtimer(CALLBACK(src, PROC_REF(_set_id_photo)), 1)
+	photoupdatequeued = M
 
-/mob/proc/set_id_info(var/obj/item/card/id/id_card)
+
+/obj/item/card/id/proc/_set_id_photo()
+	var/mob/M = photoupdatequeued
+	if(istype(M))
+		UNTIL(!(M.atom_flags & ATOM_OVERLAY_QUEUED)) // this is necessary specifically because roundstart characters simply do not render their clothes, as they are waiting for overlays to compile. we are in hell we think
+		front = get_flat_icon(M, SOUTH, TRUE)
+		side = get_flat_icon(M, WEST, TRUE)
+	photoupdatequeued = null
+
+/mob/proc/set_id_info(obj/item/card/id/id_card, client/C)
+	id_card.extra_info = list()
 	id_card.age = 0
 	id_card.registered_name		= real_name
-	id_card.sex 				= capitalize(gender)
-	id_card.set_id_photo(src)
+	id_card.extra_info["sex"] = "<b>Biological Sex:</b> [capitalize(gender)]" //most people just use sex for the handful of pixels worth of difference in body model but eh why the hell not
+	var/datum/gender/G = GLOB.gender_datums[get_gender()]
+	if(istype(G))
+		id_card.pronouns = G.pronoun_preview
+	else
+		id_card.pronouns = "Unknown"
 
 	if(dna)
-		id_card.blood_type		= dna.b_type
+		id_card.extra_info["bloodtype"] = "<b>Blood Type:</b> [dna.b_type]"
+		id_card.extra_info["dnahash"] = "<b>DNA Hash:</b> [dna.unique_enzymes]"
+		id_card.extra_info["fingerprint"] = "<b>Fingerprint:</b> [md5(dna.uni_identity)]"
 		id_card.dna_hash		= dna.unique_enzymes
-		id_card.fingerprint_hash= md5(dna.uni_identity)
+	if(C && C.prefs)
+		id_card.extra_info += C.prefs.get_trait_id_info()
 	id_card.update_name()
+	id_card.set_id_photo(src)
 
-/mob/living/carbon/human/set_id_info(var/obj/item/card/id/id_card)
+/mob/living/carbon/human/set_id_info(obj/item/card/id/id_card, client/C)
 	..()
 	id_card.age = age
-	id_card.species = src.species.name
+	id_card.species = custom_species ? custom_species : species.get_examine_name()
+
+	id_card.extra_info["biospecies"] = "<b>Biological Species:</b> [species.get_examine_name()]"
 
 	if(istype(id_card,/obj/item/card/id/contractor))
 		var/obj/item/card/id/contractor/c_id = id_card
@@ -125,17 +167,20 @@
 
 /obj/item/card/id/proc/dat()
 	var/dat = list()
-	dat += "Name: [registered_name]"
-	dat += "Sex: [sex]"
-	dat += "Age: [age]"
-	dat += "Rank: [assignment]"
-	dat += "Species: [species]"
-	// dat += "Fingerprint: [fingerprint_hash]</A><BR>\n"
-	dat += "Blood Type: [blood_type]"
-	// dat += "DNA Hash: [dna_hash]<BR><BR>\n"
-	/*if(front && side)
-		dat +="<td align = center valign = top>Photo</td>"*/
-	//dat += "</tr></table>"
+	dat += "<b>Name:</b> [registered_name]"
+	dat += "<b>Pronouns:</b> [pronouns]"
+	dat += "<b>Age:</b> [age]"
+	dat += "<b>Rank:</b> [assignment]"
+	dat += "<b>Species:</b> [species]"
+	if(extra_info_visible)
+		dat += SPAN_NOTICE("<br>CONFIDENTIAL:")
+		if(length(extra_info))
+			for(var/key in extra_info) // doing a simple dat += extra_info just results in the ID displaying all the keys instead of the actual text tied to 'em
+				dat += extra_info[key]
+		else
+			dat += SPAN_NOTICE("The confidential information section is blank.")
+	else
+		dat += "The confidential information flap is closed."
 	return dat
 
 /obj/item/card/id/attack_self(mob/user)
@@ -148,21 +193,18 @@
 	src.add_fingerprint(user)
 	return
 
+/obj/item/card/id/AltClick(mob/user)
+	if(Adjacent(user))
+		extra_info_visible = !extra_info_visible
+	user.visible_message("[user] flips [src]'s confidential information flap [extra_info_visible ? "open" : "closed"].",\
+		"You flip [src]'s confidential information flap [extra_info_visible ? "open" : "closed"].")
+
+
 /obj/item/card/id/GetAccess()
 	return access.Copy()
 
 /obj/item/card/id/GetID()
 	return src
-
-/obj/item/card/id/verb/read()
-	set name = "Read ID Card"
-	set category = "Object"
-	set src in usr
-
-	to_chat(usr, "[icon2html(thing = src, target = usr)] [src.name]: The current assignment on the card is [src.assignment].")
-	to_chat(usr, "The blood type on the card is [blood_type].")
-	to_chat(usr, "The DNA hash on the card is [dna_hash].")
-	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 
 /obj/item/card/id/vv_get_dropdown()
 	. = ..()
@@ -208,21 +250,21 @@
 	preserve_item = 1
 
 /obj/item/card/id/gold/captain
-	name = "\improper Facility Director's ID"
-	assignment = "Facility Director"
-	rank = "Facility Director"
+	name = "\improper Captain's ID"
+	assignment = "Captain"
+	rank = "Captain"
 	job_access_type = /datum/role/job/station/captain
 
 /obj/item/card/id/gold/captain/spare
-	name = "\improper Facility Director's spare ID"
+	name = "\improper Captain's Spare ID"
 	desc = "The spare ID of the High Lord himself."
-	registered_name = "Facility Director"
+	registered_name = "Captain"
 	icon_state = "gold-id-alternate"
 	job_access_type = /datum/role/job/station/captain
 
 /obj/item/card/id/synthetic
 	name = "\improper Synthetic ID"
-	desc = "Access module for NanoTrasen Synthetics"
+	desc = "Access module for Nanotrasen Synthetics"
 	icon_state = "id-robot"
 	item_state = "idgreen"
 	assignment = "Synthetic"
@@ -350,6 +392,57 @@
 	assignment = "Head of Security"
 	rank = "Head of Security"
 	job_access_type = /datum/role/job/station/head_of_security
+
+
+/obj/item/card/id/prisoner
+	name = "Prisoner ID card"
+	desc = "A card representing someone's incarceration. Do not lose."
+	icon_state = "civilian-id"
+	assignment = "Prisoner"
+	primary_color = rgb(243, 97, 0)
+	secondary_color = rgb(5, 7, 3)
+	var/goal = 0 //How far from freedom?
+	var/points = 0
+
+	var/served = 0 //Time served in seconds
+	var/sentence = 0 //Sentence in minutes
+	var/crime = "\[redacted\]"
+
+	job_access_type = null
+	access = list(ACCESS_SECURITY_GENPOP_ENTER)
+
+/obj/item/card/id/prisoner/New()
+	. = ..()
+	START_PROCESSING(SSprocessing, src)
+	registered_name = "Prisoner #13-[rand(100,999)]"
+
+/obj/item/card/id/prisoner/process()
+	if (sentence > 0 && served > (sentence * 60)) //FREEDOM!
+		assignment = "Ex-Convict"
+		access = list(ACCESS_SECURITY_GENPOP_EXIT)
+		update_name(registered_name, assignment)
+		playsound(loc, 'sound/machines/ping.ogg', 50, 1)
+		if(isliving(loc))
+			to_chat(loc, "<span class='boldnotice'>\The [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+		STOP_PROCESSING(SSprocessing, src)
+	else
+		served += 1
+
+/obj/item/card/id/prisoner/examine(mob/user)
+	. = ..()
+
+	var/minutesServed = round(served / 60)
+	var/secondsServed = served - (minutesServed * 60)
+	if(sentence <= 0)
+		. += "\n<span class='notice'>You are serving a permanent sentence for [crime].</span>"
+	else if(served >= (sentence * 60))
+		. += "\n<span class='notice'>You have served your sentence for [crime].</span>"
+	else
+		. += "\n<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentence for [crime].</span>"
+	if(goal > 0)
+		. += "\n<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>"
+
+
 
 /obj/item/card/id/engineering
 	name = "engineering identification card"
@@ -527,9 +620,9 @@
 	name = "identity chit"
 	desc = "A mass-market access chit used in many non-Corporate environments as a form of identification."
 	icon_state = "chit"
-	primary_color = rgb(142,94,0)
-	secondary_color = rgb(191,159,95)
-	access = list(160, 13)
+	//primary_color = rgb(142,94,0)
+	//secondary_color = rgb(191,159,95)
+	job_access_type = /datum/role/job/trader
 	var/random_color = TRUE
 
 /obj/item/card/id/external/merchant/Initialize(mapload)
@@ -557,6 +650,7 @@
 	icon_state = "pirate"
 	primary_color = rgb(17, 1, 1)
 	secondary_color = rgb(149, 152, 153)
+	job_access_type = null
 	access = list(168)
 
 /obj/item/card/id/medical/sar
@@ -593,3 +687,22 @@
 	assignment = "Pathfinder"
 	rank = "Pathfinder"
 	job_access_type = /datum/role/job/station/pathfinder
+
+/obj/item/card/id/external/gaia
+	name = "Happy Trails Resort Company Day Pass"
+	desc = "A pass giving one access to the normal facilties at Happy Trails Resort stations."
+	icon_state = "gaia_normal"
+	job_access_type = null
+	access = list(250)
+
+/obj/item/card/id/external/gaia/vip
+	name = "Happy Trails Resort Company VIP Day Pass"
+	desc = "A premium day pass for accessing the most luxurious parts of the Happy Trails Resorts."
+	icon_state = "gaia_vip"
+	access = list(250,251)
+
+/obj/item/card/id/external/gaia/staff//created so that when assigning the outfit of merchant, it assigns a working ID
+	name = "Happy Trails Resort Company Staff ID"
+	desc = "Issued to staff of the Happy Trails Company."
+	icon_state = "gaia_staff"
+	access = list(250,251,252)

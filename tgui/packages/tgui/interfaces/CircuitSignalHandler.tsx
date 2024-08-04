@@ -189,12 +189,12 @@ export class CircuitSignalHandler
 }
 
 type EntryProps = {
-  onRemove: (e: MouseEvent) => any;
-  onEnter: (e: MouseEvent, value: string) => any;
-  onSetOption?: (type: string) => any;
-  name: string;
-  current_option: string;
-  options?: string[];
+  readonly onRemove: (e: MouseEvent) => any;
+  readonly onEnter: (e: MouseEvent, value: string) => any;
+  readonly onSetOption?: (type: string) => any;
+  readonly name: string;
+  readonly current_option: string;
+  readonly options?: string[];
 }
 
 const Entry = (props: EntryProps, context) => {

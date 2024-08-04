@@ -103,11 +103,11 @@
 
 // attach a wire to a power machine - leads from the turf you are standing on
 //almost never called, overwritten by all power machines but terminal and generator
-/obj/machinery/power/attackby(obj/item/W, mob/user)
+/obj/machinery/power/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 
-	if(istype(W, /obj/item/stack/cable_coil))
+	if(istype(I, /obj/item/stack/cable_coil))
 
-		var/obj/item/stack/cable_coil/coil = W
+		var/obj/item/stack/cable_coil/coil = I
 
 		var/turf/T = user.loc
 
@@ -288,7 +288,7 @@
 //source is an object caused electrocuting (airlock, grille, etc)
 //No animations will be performed by this proc.
 /proc/electrocute_mob(mob/living/M as mob, var/power_source, var/obj/source, var/siemens_coeff = 1.0)
-	if(istype(M.loc,/obj/mecha))	return 0	//feckin mechs are dumb
+	if(istype(M.loc,/obj/vehicle/sealed/mecha))	return 0	//feckin mechs are dumb
 	if(issilicon(M))	return 0	//No more robot shocks from machinery
 	var/area/source_area
 	if(istype(power_source,/area))

@@ -11,32 +11,32 @@
 	selection_color = "#999440"
 	pto_type = PTO_EXPLORATION
 	idtype = /obj/item/card/id/explorer/explorer
-	additional_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
-	minimal_access = list(ACCESS_GENERAL_EXPLORER, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SCIENCE_MAIN, ACCESS_GENERAL_PILOT, ACCESS_GENERAL_GATEWAY)
+	minimal_access = list(
+		ACCESS_GENERAL_EXPLORER,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_SCIENCE_MAIN,
+		ACCESS_GENERAL_PILOT,
+		ACCESS_GENERAL_GATEWAY,
+	)
 	outfit_type = /datum/outfit/job/station/explorer
 	desc = "An Explorer searches for interesting things, and returns them to the station."
 	alt_titles = list(
 		"Surveyor" = /datum/prototype/struct/alt_title/surveyor,
-		"Offsite Scout" = /datum/prototype/struct/alt_title/offsite_scout,
 		"Field Scout" = /datum/prototype/struct/alt_title/explorer/field_scout,
-		"Pioneer" = /datum/prototype/struct/alt_title/explorer/pioneer,
-		"Jr. Explorer" = /datum/prototype/struct/alt_title/explorer/junior
+		"Junior Explorer" = /datum/prototype/struct/alt_title/explorer/junior
 		)
 
 /datum/prototype/struct/alt_title/surveyor
 	title = "Surveyor"
-
-/datum/prototype/struct/alt_title/offsite_scout
-	title = "Offsite Scout"
+	title_blurb = "A Surveyor is an Explorer who specializes in measuring and mapping previously unknown areas."
 
 /datum/prototype/struct/alt_title/explorer/field_scout
 	title = "Field Scout"
-
-/datum/prototype/struct/alt_title/explorer/pioneer
-	title = "Pioneer"
+	title_blurb = "A Field Scout is an Explorer who specializes in navigating unknown environment and locating points of interest to the team."
 
 /datum/prototype/struct/alt_title/explorer/junior
-	title = "Jr. Explorer"
+	title = "Junior Explorer"
+	title_blurb = "A Junior Explorer has less experience than a full Explorer, and should listen to their direction."
 
 /datum/outfit/job/station/explorer
 	name = OUTFIT_JOB_NAME("Explorer")

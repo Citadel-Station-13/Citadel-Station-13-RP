@@ -193,6 +193,21 @@
 	else
 		icon_state = "legalbook-5"
 
+/obj/structure/bookcase/lore
+	name = "reviewed Books bookcase"
+
+/obj/structure/bookcase/lore/New()
+	..()
+	var/list/obj/item/book/lore/types = typesof(/obj/item/book/lore)
+	LAZYREMOVE(types, /obj/item/book/lore)
+	for(var/i = 5; i>= 0; i--)
+		var/t_picked = pick(types)
+		new t_picked(src)
+		LAZYREMOVE(types, t_picked)
+		if(length(types) <= 0)
+			break
+	update_icon()
+
 /*
  * Barcode Scanner
  */
@@ -203,7 +218,7 @@
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	throw_speed = 1
 	throw_range = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	var/obj/machinery/librarycomp/computer // Associated computer - Modes 1 to 3 use this
 	var/obj/item/book/book	 //  Currently scanned book
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory

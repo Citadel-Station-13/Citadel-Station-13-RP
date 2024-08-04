@@ -5,7 +5,7 @@
 	icon_state = "bike_off"
 	dir = SOUTH
 	integrity = 100
-	max_integrity = 100
+	integrity_max = 100
 	riding_handler_type = /datum/component/riding_handler/vehicle/bike/small
 
 

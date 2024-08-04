@@ -7,7 +7,7 @@
 	var/hoodtype = null //so the chaplain hoodie or other hoodies can override this
 	var/hood_up = FALSE
 	var/toggleicon
-	action_button_name = "Toggle Hood"
+	item_action_name = "Toggle Hood"
 	allowed =  list (/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
 	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
@@ -21,14 +21,14 @@
 	return ..()
 
 /obj/item/clothing/suit/storage/hooded/proc/MakeHood()
-	if(!hood)
+	if(!hood && hoodtype)
 		var/obj/item/clothing/head/hood/H = new hoodtype(src)
 		hood = H
 
 /obj/item/clothing/suit/storage/hooded/AltClick()
 	ToggleHood()
 
-/obj/item/clothing/suit/storage/hooded/ui_action_click()
+/obj/item/clothing/suit/storage/hooded/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	ToggleHood()
 
 /obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, flags)
@@ -62,13 +62,13 @@
 					hood.atom_flags |= PHORONGUARD
 				else
 					hood.atom_flags &= ~PHORONGUARD
-				hood.set_armor(armor)
+				hood.set_armor(fetch_armor())
 				hood.copy_atom_colour(src)
 				// equip after armor / color changes
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_ITEM_NODROP, CLOTHING_TRAIT)
-				icon_state = "[toggleicon]-t"
+				icon_state = ("[toggleicon]-t" in icon_states(icon)) ? "[toggleicon]-t" : toggleicon
 				update_worn_icon()
 	else
 		RemoveHood()
@@ -80,9 +80,9 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "carp_casual", SLOT_ID_LEFT_HAND = "carp_casual") //Does not exist -S2-
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE	//Space carp like space, so you should too
-	action_button_name = "Toggle Carp Hood"
+	item_action_name = "Toggle Carp Hood"
 	hoodtype = /obj/item/clothing/head/hood/carp_hood
 
 /obj/item/clothing/suit/storage/hooded/ian_costume	//It's Ian, rub his bell- oh god what happened to his inside parts?
@@ -92,7 +92,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ian", SLOT_ID_LEFT_HAND = "ian") //Does not exist -S2-
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Ian Hood"
+	item_action_name = "Toggle Ian Hood"
 	hoodtype = /obj/item/clothing/head/hood/ian_hood
 
 /obj/item/clothing/suit/storage/hooded/bee_costume
@@ -101,7 +101,7 @@
 	icon_state = "bee"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Bee Hood"
+	item_action_name = "Toggle Bee Hood"
 	hoodtype = /obj/item/clothing/head/hood/bee_hood
 
 /obj/item/clothing/suit/storage/hooded/flash_costume
@@ -110,14 +110,14 @@
 	icon_state = "flashsuit"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Flash Top"
+	item_action_name = "Toggle Flash Top"
 	hoodtype = /obj/item/clothing/head/hood/flash_hood
 
 /obj/item/clothing/suit/storage/hooded/techpriest /// TO DO - FIND A WAY TO HIDE FEET PROPERLY
 	name = "tech priest robe"
 	desc = "A robe for those that worship the Omnissiah. Also toasters.. for.. some reason."
 	icon_state = "techpriest"
-	action_button_name = "Toggle Priest Hood"
+	item_action_name = "Toggle Priest Hood"
 	body_cover_flags = LOWER_TORSO|UPPER_TORSO|ARMS|LEGS|FEET
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "techpriest", SLOT_ID_LEFT_HAND = "techpriest")
@@ -131,7 +131,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	atom_flags = PHORONGUARD
 	inv_hide_flags = HIDEHOLSTER
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor_type = /datum/armor/civilian/coat
 	hoodtype = /obj/item/clothing/head/hood/winter
@@ -196,7 +196,7 @@
 	armor_type = /datum/armor/medical/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/medical
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer,/obj/item/stack/medical,
 	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
 	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)
@@ -239,7 +239,7 @@
 	armor_type = /datum/armor/science/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/science
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer,/obj/item/stack/medical,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer,/obj/item/stack/medical,
 	/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,
 	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)
@@ -264,7 +264,7 @@
 	armor_type = /datum/armor/engineering/coat
 	hoodtype = /obj/item/clothing/head/hood/winter/engineering
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/analyzer, /obj/item/flashlight,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/atmos_analyzer, /obj/item/flashlight,
 	/obj/item/multitool, /obj/item/pipe_painter, /obj/item/radio, /obj/item/t_scanner, /obj/item/tool/crowbar, /obj/item/tool/screwdriver,
 	/obj/item/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency/oxygen, /obj/item/clothing/mask/gas,
 	/obj/item/barrier_tape_roll/engineering, /obj/item/rcd, /obj/item/pipe_dispenser)
@@ -290,7 +290,7 @@
 	hoodtype = /obj/item/clothing/head/hood/winter/hydro
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/reagent_containers/spray/plantbgone,
-	/obj/item/analyzer/plant_analyzer, /obj/item/seeds, /obj/item/reagent_containers/glass/bottle, /obj/item/material/minihoe)
+	/obj/item/plant_analyzer, /obj/item/seeds, /obj/item/reagent_containers/glass/bottle, /obj/item/material/minihoe)
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/cargo
 	name = "cargo winter coat"
@@ -430,10 +430,10 @@
 	icon_state = "explorer"
 	item_state = "explorer"
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/explorer
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/exploration/soft
@@ -456,10 +456,10 @@
 	icon_state = "miner"
 	atom_flags = PHORONGUARD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/miner
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/cargo/mining/soft
@@ -481,17 +481,19 @@
 /obj/item/clothing/suit/storage/hooded/eldritch
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
-	icon_state = "eldritch_armor"
-	clothing_flags = THICKMATERIAL
+	icon = 'icons/clothing/suit/antag/heretic.dmi'
+	icon_state = "eldritcharmor"
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	action_button_name = "Toggle Eldritch Hood"
+	item_action_name = "Toggle Eldritch Hood"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/eldritch
 	armor_type = /datum/armor/lavaland/eldritch
 	siemens_coefficient = 0.9
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 /obj/item/clothing/suit/storage/hooded/cloak/goliath
 	name = "goliath cloak"
@@ -515,7 +517,7 @@
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
 	armor_type = /datum/armor/lavaland/drake
 	hoodtype = /obj/item/clothing/head/hood/drake
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -559,18 +561,17 @@
 	icon_state = "mercy_hoodie"
 	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection_cover = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/mercy
 
 //The Covert/Overt Spec Ops Carrier - This is technically armor, but due to how it works I'm putting it here.
 /obj/item/clothing/suit/storage/hooded/covertcarrier
 	name = "advanced plate carrier"
-	desc = "The NT-COV/OV-4 plate carrier is an experimental system first utilized by covert field operatives employed by NanoTrasen. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
+	desc = "The NT-COV/OV-4 plate carrier is an experimental system first utilized by covert field operatives employed by Nanotrasen. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
-	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier
 	valid_accessory_slots = (\
@@ -626,18 +627,18 @@
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt
 	name = "experimental plate carrier"
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier_alt"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy
 	name = "experimental plate carrier"
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier_navy"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield/navy
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)

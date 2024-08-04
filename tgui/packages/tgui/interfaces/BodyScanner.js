@@ -289,6 +289,7 @@ const BodyScannerMainAbnormalities = props => {
       {abnormalities.map((a, i) => {
         if (occupant[a[0]]) {
           return (
+          // eslint-disable-next-line react/jsx-key
             <Box color={a[1]} bold={a[1] === "bad"}>
               {a[2](occupant)}
             </Box>

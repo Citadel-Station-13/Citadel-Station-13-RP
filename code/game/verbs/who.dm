@@ -1,6 +1,9 @@
+// todo: combine with advanced who wtf is this shit
+// todo: /client/proc/who_query(client/asker, admin_rights, ...) be used for building the string?
+
 /client/verb/who()
 	set name = "Who"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	var/msg = "<b>Current Players:</b>\n"
 
@@ -8,9 +11,17 @@
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.key]"
-			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
+			var/entry = "\t[C.get_revealed_key()]"
+			if(!C.initialized)
+				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
+				Lines += entry
+				continue
+			if(!C.initialized)
+				entry += " - [SPAN_BOLDANNOUNCE("UNINITIALIZED!")]"
+				continue
+			if(isnull(C.mob))
+				entry += " - [SPAN_BOLDANNOUNCE("NULL MOB!")]"
+				continue
 			entry += " - Playing as [C.mob.real_name]"
 			switch(C.mob.stat)
 				if(UNCONSCIOUS)
@@ -26,8 +37,8 @@
 						entry += " - <font color='black'><b>DEAD</b></font>"
 
 			var/age
-			if(isnum(C.player_age))
-				age = C.player_age
+			if(isnum(C.player.player_age))
+				age = C.player.player_age
 			else
 				age = 0
 
@@ -51,10 +62,7 @@
 			Lines += entry
 	else
 		for(var/client/C in GLOB.clients)
-			if(C.holder && C.holder.fakekey)
-				Lines += C.holder.fakekey
-			else
-				Lines += C.key
+			Lines += (C == src)? C.get_revealed_key() : C.get_public_key()
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
@@ -70,13 +78,13 @@
 	var/num_admins_online = 0
 	if(holder)
 		for(var/client/C in GLOB.admins)
-			if(C.holder.fakekey && !((R_ADMIN|R_MOD) & holder.rights))
+			if(!C.initialized)
 				continue
 
-			msg += "\t[C] is a [C.holder.rank]"
+			if(C.is_under_stealthmin() && !((R_ADMIN|R_MOD) & holder.rights))
+				continue
 
-			if(C.holder.fakekey)
-				msg += " <i>(as [C.holder.fakekey])</i>"
+			msg += "\t[C.get_revealed_key()] is a [C.holder.rank]"
 
 			if(isobserver(C.mob))
 				msg += " - Observing"
@@ -95,7 +103,9 @@
 
 	else
 		for(var/client/C in GLOB.admins)
-			if(C.holder.fakekey)
+			if(!C.initialized)
+				continue
+			if(C.is_under_stealthmin())
 				continue	// hidden
 			msg += "\t[C] is a [C.holder.rank]"
 			num_admins_online++

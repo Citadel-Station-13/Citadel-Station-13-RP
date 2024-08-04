@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(stealthmin_nicknames, world.file2list("[global.config.directory
 		to_chat(src, "<span class='warning'>You cannot send DSAY messages (muted).</span>")
 		return
 
-	if(!is_preference_enabled(/datum/client_preference/show_dsay))
+	if(!get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 		to_chat(src, "<span class='warning'>You have deadchat muted.</span>")
 		return
 
@@ -26,13 +26,10 @@ GLOBAL_LIST_INIT(stealthmin_nicknames, world.file2list("[global.config.directory
 		return
 
 	var/key
-	if(holder.fakekey)
-		if(is_preference_enabled(/datum/client_preference/holder/obfuscate_stealth_dsay))
-			key = pick(GLOB.stealthmin_nicknames)
-		else
-			key = holder.fakekey
+	if(is_under_stealthmin() && get_preference_toggle(/datum/game_preference_toggle/admin/obfuscate_stealth_dsay))
+		key = pick(GLOB.stealthmin_nicknames)
 	else
-		key = src.key
+		key = get_public_key()
 
 	msg = emoji_parse(msg)
 

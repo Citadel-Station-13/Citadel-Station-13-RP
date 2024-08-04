@@ -209,6 +209,9 @@
 /obj/structure/atmospheric_retention_field/Initialize(mapload)
 	. = ..()
 	update_nearby_tiles() //Force ZAS update
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/atmospheric_retention_field/LateInitialize()
 	update_connections(1)
 	update_icon()
 

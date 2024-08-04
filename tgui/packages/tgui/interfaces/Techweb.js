@@ -733,7 +733,7 @@ const TechNode = (props, context) => {
             const thisExp = experiments[k];
             if (thisExp === null || thisExp === undefined) {
               return (
-                <LockedExperiment />
+                <LockedExperiment key={k} />
               );
             }
             return (
@@ -750,7 +750,7 @@ const TechNode = (props, context) => {
             const thisExp = experiments[k];
             if (thisExp === null || thisExp === undefined) {
               return (
-                <LockedExperiment />
+                <LockedExperiment key={k} />
               );
             }
             return (

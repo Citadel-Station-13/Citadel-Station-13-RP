@@ -14,10 +14,10 @@
 	/// scan cooldown
 	var/scan_delay = 10 SECONDS
 
-/obj/machinery/computer/bioscan/Initialize(mapload)
+/obj/machinery/computer/bioscan/preloading_instance(datum/dmm_context/context)
 	. = ..()
-	if(network_key_obfuscated)
-		network_key = SSmapping.subtly_obfuscated_id(network_key_obfuscated, "bioscan_network")
+	if(network_key_obfuscated && !network_key)
+		network_key = SSmapping.obfuscated_round_local_id(network_key_obfuscated, context.mangling_id, "bioscan")
 
 /obj/machinery/computer/bioscan/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -25,7 +25,7 @@
 		ui = new(user, src, "BioscanConsole")
 		ui.open()
 
-/obj/machinery/computer/bioscan/ui_static_data(mob/user)
+/obj/machinery/computer/bioscan/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["scan"] = buffer
 	.["antennas"] = ui_antenna_data()
@@ -38,7 +38,7 @@
 		if(!T)
 			continue
 		. += list(list(
-			"level" = SSmapping.level_id(get_z(A)),
+			"level" = SSmapping.fluff_level_id(get_z(A)),
 			"id" = "[A.id]",
 			"anchor" = A.anchored,
 			"name" = A.name,
@@ -46,12 +46,12 @@
 			"y" = T.y,
 		))
 
-/obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/bioscan/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["scan_ready"] = !on_cooldown()
 	.["network"] = network_key || ""
 
-/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
 		if("scan")
@@ -102,7 +102,7 @@
 	var/list/assembled = list()
 	for(var/z_str in indices)
 		var/list/gottem = list()
-		gottem["id"] = SSmapping.level_id(text2num(z_str))
+		gottem["id"] = SSmapping.fluff_level_id(text2num(z_str))
 		var/mobs_all = 0
 		var/mobs_complex = 0
 		var/mobs_complex_alive = 0

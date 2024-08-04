@@ -5,12 +5,13 @@
 	item_state = "ionrifle"
 	wielded_item_state = "ionrifle-wielded"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 4)
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	slot_flags = SLOT_BACK
 	heavy = TRUE
 	projectile_type = /obj/projectile/ion
 	one_handed_penalty = 15
+	worth_intrinsic = 500
 
 /obj/item/gun/energy/ionrifle/emp_act(severity)
 	..(max(severity, 4)) //so it doesn't EMP itself, I guess
@@ -20,7 +21,7 @@
 	desc = "The NT Mk63 EW Pan is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. This model sacrifices capacity for portability."
 	icon_state = "ionpistol"
 	item_state = null
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	heavy = FALSE
@@ -54,9 +55,9 @@
 		list(mode_name="induce specific mutations", projectile_type=/obj/projectile/energy/floramut/gene, modifystate="floramut"),
 		)
 
-/obj/item/gun/energy/floragun/afterattack(obj/target, mob/user, adjacent_flag)
+/obj/item/gun/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//allow shooting into adjacent hydrotrays regardless of intent
-	if(adjacent_flag && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
 		Fire(target,user)
 		return
@@ -64,7 +65,7 @@
 
 /obj/item/gun/energy/floragun/verb/select_gene()
 	set name = "Select Gene"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	var/genemask = input("Choose a gene to modify.") as null|anything in SSplants.plant_gene_datums
@@ -90,7 +91,7 @@
 	icon_state = "riotgun"
 	item_state = "c20r"
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	projectile_type = /obj/projectile/meteor
 	cell_type = /obj/item/cell/potato
@@ -106,7 +107,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	item_state = "pen"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	heavy = FALSE
 	slot_flags = SLOT_BELT
 	one_handed_penalty = 0
@@ -123,7 +124,7 @@
 	name = "phoron pistol"
 	desc = "A failed experiment in anti-personnel weaponry from the onset of the Syndicate Wars. The Mk.1 NT-P uses an internal resevoir of phoron gas, excited into a photonic state with a standard weapon cell, to fire lethal bolts of phoron-based plasma."
 	icon_state = "toxgun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
 	projectile_type = /obj/projectile/energy/phoron
 
@@ -136,7 +137,7 @@
 	item_icons = null
 	icon_state = "staff"
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	charge_cost = 480
 	projectile_type = /obj/projectile/change
 	origin_tech = null
@@ -156,7 +157,7 @@
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
 		src.visible_message("*fizzle*")
-	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
+	playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, 1)
 /*
 /obj/item/gun/energy/staff/animate
 	name = "staff of animation"
@@ -189,7 +190,7 @@
 	icon_state = "dakkalaser"
 	item_state = "dakkalaser"
 	wielded_item_state = "dakkalaser-wielded"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/projectile/energy/blue_pellet
@@ -209,12 +210,12 @@
 /obj/item/gun/energy/maghowitzer
 	name = "portable MHD howitzer"
 	desc = "A massive weapon designed to destroy fortifications with a stream of molten tungsten."
-	description_fluff = "A weapon designed by joint cooperation of NanoTrasen, Hephaestus, and SCG scientists. Everything else is red tape and black highlighters."
+	description_fluff = "A weapon designed by joint cooperation of Nanotrasen, Hephaestus, and SCG scientists. Everything else is red tape and black highlighters."
 	description_info = "This weapon requires a wind-up period before being able to fire. Clicking on a target will create a beam between you and its turf, starting the timer. Upon completion, it will fire at the designated location."
 	icon_state = "mhdhowitzer"
 	item_state = "mhdhowitzer"
 	wielded_item_state = "mhdhowitzer-wielded"
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 
 	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
@@ -266,29 +267,28 @@
 	else
 		return ..()
 
-/obj/item/gun/energy/maghowitzer/afterattack(atom/A, mob/living/user, adjacent, params)
+/obj/item/gun/energy/maghowitzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(power_cycle)
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 		return 0
 
-	var/turf/target_turf = get_turf(A)
+	var/turf/target_turf = get_turf(target)
 
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 
 	if(beameffect)
-		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
+		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [target].</span>")
 
 	if(!power_cycle)
 		power_cycle = TRUE
 		if(do_after(user, 30))
-			if(A.loc == target_turf)
-				..(A, user, adjacent, params)
+			if(target.loc == target_turf)
+				return ..()
 			else
 				var/rand_target = pick_random_target(target_turf)
-				if(rand_target)
-					..(rand_target, user, adjacent, params)
-				else
-					..(target_turf, user, adjacent, params)
+				// overwrite param in argument list, which is passed through ..() by default if not overridden.
+				target = rand_target || target
+				return ..()
 		else
 			if(beameffect)
 				qdel(beameffect)
@@ -324,10 +324,10 @@
 	name = "service weapon"
 	icon_state = "service_grip"
 	item_state = "service_grip"
-	desc = "An anomalous weapon, long kept secure. It has recently been acquired by NanoTrasen's Paracausal Monitoring Division. How did it get here?"
+	desc = "An anomalous weapon, long kept secure. It has recently been acquired by Nanotrasen's Paracausal Monitoring Division. How did it get here?"
 	damage_force = 5
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/bullet/pistol/medium/silver
 	origin_tech = null
 	fire_delay = 10		//Old pistol
@@ -424,24 +424,25 @@
 
 /obj/item/gun/energy/ermitter
 	name = "Ermitter rifle"
-	desc = "A industrial energy projector turned into a crude, portable weapon. The Tyrmalin answer to armored hardsuits used by pirates, what it lacks in precision, it makes up for in firepower."
+	desc = "A industrial energy projector turned into a crude, portable weapon - the Tyrmalin answer to armored hardsuits used by pirates. What it lacks in precision, it makes up for in firepower. The 'Ermitter' rifle cell receptacle has been heavily modified."
 	icon_state = "ermitter_gun"
 	item_state = "pulse"
 	projectile_type = /obj/projectile/beam/emitter
 	fire_delay = 10
 	charge_cost = 900
 	cell_type = /obj/item/cell
+	accept_cell_type = /obj/item/cell
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_ENGINEERING = 3, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
+	materials_base = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	one_handed_penalty = 50
 
 /obj/item/gun/energy/ionrifle/pistol/tyrmalin
 	name = "botbuster pistol"
-	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing sythetic pirates or faulty machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
+	desc = "These jury-rigged pistols are sometimes fielded by Tyrmalin facing synthetic pirates or malfunctioning machinery. Capable of discharging a single ionized bolt before needing to recharge, they're often treated as holdout or ambush weapons."
 	icon_state = "botbuster"
 	charge_cost = 1300
 	projectile_type = /obj/projectile/ion/pistol
@@ -457,7 +458,7 @@
 	cell_type = /obj/item/cell/device/weapon
 	battery_lock = 1
 	slot_flags = SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	one_handed_penalty = 60
@@ -473,11 +474,11 @@
 	charge_cost = 400
 	cell_type = /obj/item/cell/device/weapon
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	matter = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
+	materials_base = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
 	one_handed_penalty = 50
 	var/overheating = 0
 
@@ -516,11 +517,11 @@
 	desc = "This scaled down NT-PLP-EX 'Wyrm' plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "ppistol"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	heavy = FALSE
 	damage_force = 5
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	matter = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
+	materials_base = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
 
 /obj/item/gun/energy/plasma/pistol/update_icon()

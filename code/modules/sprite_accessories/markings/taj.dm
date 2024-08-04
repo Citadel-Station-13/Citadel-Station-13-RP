@@ -146,7 +146,7 @@
 	name = "Nose Color, alt. (Taj)"
 	id = "marking_tajaran_nose_alt"
 	icon_state = "taj_nosealt"
-	color_blend_mode = ICON_MULTIPLY
+	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/taj/tigerface

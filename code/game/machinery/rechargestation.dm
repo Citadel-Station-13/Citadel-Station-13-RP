@@ -131,7 +131,7 @@
 				var/charge_used = cell.use(diff)
 				rigcell.give(charge_used)
 
-/obj/machinery/recharge_station/examine(mob/user)
+/obj/machinery/recharge_station/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>The charge meter reads: [round(chargepercentage())]%</span>"
 
@@ -282,7 +282,7 @@
 	update_appearance()
 
 /obj/machinery/recharge_station/verb/move_eject()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject Recharger"
 	set src in oview(1)
 
@@ -294,7 +294,7 @@
 	return
 
 /obj/machinery/recharge_station/verb/move_inside()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Enter Recharger"
 	set src in oview(1)
 

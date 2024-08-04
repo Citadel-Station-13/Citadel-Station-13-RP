@@ -7,7 +7,7 @@
 	desc = "A token to redeem a piece of equipment. Use it on a mining equipment vendor."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "mining_voucher"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /**********************Mining Point Card**********************/
 
@@ -44,7 +44,7 @@
 			to_chat(user, "<span class='info'>There's no engineering points left on [src].</span>")
 	..()
 
-/obj/item/card/mining_point_card/examine(mob/user)
+/obj/item/card/mining_point_card/examine(mob/user, dist)
 	. = ..()
 	. += "There's [mine_points] excavation points on the card."
 	. += "There's [survey_points] survey points on the card."

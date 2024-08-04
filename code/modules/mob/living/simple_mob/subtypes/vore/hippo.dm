@@ -39,8 +39,8 @@
 	response_harm = "hits the"
 	attacktext = list("bit")
 
-	melee_damage_upper = 12
-	melee_damage_lower = 7
+	legacy_melee_damage_upper = 12
+	legacy_melee_damage_lower = 7
 	attack_sharp = TRUE
 
 	base_pixel_x = -16
@@ -51,7 +51,7 @@
 	hide_type = /obj/item/stack/hairlesshide
 
 	say_list_type = /datum/say_list/hippo
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 // Activate Noms!
 /mob/living/simple_mob/vore/hippo //I don't know why it's in a seperate line but everyone does it so i do it

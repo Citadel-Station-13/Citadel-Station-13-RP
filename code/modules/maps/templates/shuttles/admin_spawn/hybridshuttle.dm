@@ -37,11 +37,11 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/hybridshuttle
+/obj/overmap/entity/visitable/ship/landable/hybridshuttle
 	scanner_name = "XN-29 Prototype Shuttle"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
 [i]Class[/i]: Shuttle
-[i]Transponder[/i]: Transmitting (MIL), NanoTrasen
+[i]Transponder[/i]: Transmitting (MIL), Nanotrasen
 [b]Notice[/b]: Experimental vessel"}
 	color = "#00aaff" //Bluey
 	vessel_mass = 3000

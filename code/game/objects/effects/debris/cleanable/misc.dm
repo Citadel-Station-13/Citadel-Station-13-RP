@@ -22,29 +22,6 @@
 		F.dirt += 4
 	qdel(src)
 
-/obj/effect/debris/cleanable/ash/attackby(obj/item/O as obj, mob/user as mob)
-	var/obj/item/reagent_containers/RG = O
-	if (istype(RG) && RG.is_open_container())
-		RG.reagents.add_reagent("ash", 10)
-		user.visible_message("<span class='notice'>[user] sweeps \the [src] into \the [RG].</span>","<span class='notice'>You collect \the [src] with \the [RG].</span>")
-		//return 1
-	qdel(src)
-
-/obj/effect/debris/cleanable/greenglow/New()
-	..()
-	spawn(1200)// 2 minutes
-		qdel(src)
-
-/obj/effect/debris/cleanable/dirt
-	name = "dirt"
-	desc = "Someone should clean that up."
-	gender = PLURAL
-	density = 0
-	anchored = 1
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "dirt"
-	mouse_opacity = 0
-
 /obj/effect/debris/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
@@ -63,6 +40,10 @@
 	light_range = 1
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
+
+/obj/effect/decal/cleanable/greenglow/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 2 MINUTES)
 
 /obj/effect/debris/cleanable/cobweb
 	name = "cobweb"

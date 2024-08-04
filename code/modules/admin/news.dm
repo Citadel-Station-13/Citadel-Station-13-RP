@@ -5,9 +5,11 @@
 
 // Returns true if news was updated since last seen.
 /client/proc/check_for_new_server_news()
+	if(!player.block_on_available())
+		return FALSE
 	var/savefile/F = get_server_news()
 	if(F)
-		if(md5(F["body"]) != prefs.lastnews)
+		if(md5(F["body"]) != player.player_misc["lastnews"])
 			return TRUE
 	return FALSE
 

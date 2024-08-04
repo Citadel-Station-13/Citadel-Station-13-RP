@@ -11,7 +11,7 @@
 	known as Ashlanders. Until recently, the Scori were believed to have gone extinct some tens of thousands of years ago \
 	when Surt underwent an as yet unknown cataclysm. Instead, the modern Scori seem to have descended from the cataclysm's \
 	survivors. Dwelling deep underground in caves, or travelling across the planet's surface in nomadic caravans, sightings \
-	of Scori tribesmen were historically treated as hoaxes. NanoTrasen pathfinding teams operating in the wake of the expedition \
+	of Scori tribesmen were historically treated as hoaxes. Nanotrasen pathfinding teams operating in the wake of the expedition \
 	to Kristen's Harmony have since confirmed the presence of a nearby Scori tribe."
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Scori"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)
@@ -40,15 +40,18 @@
 	radiation_mod = 1.5
 	toxins_mod = 1.5
 
+	vision_innate = /datum/vision/baseline/species_tier_3
+
+	vision_organ = O_EYES
+
 	//Adapted to overcast skies and caverns.
-	darksight = 10	//Funny snowflake Shadekin value. This was originally 5. Then I tested Changeling's 8. Both were insufficient. I like the feel of 10.
 	flash_mod = 3.0
 
 	siemens_coefficient = 1.5
 
 	//Adapted to Surt's hot, thin atmosphere.
-	breath_type = /datum/gas/carbon_dioxide
-	exhale_type = /datum/gas/oxygen
+	breath_type = GAS_ID_CARBON_DIOXIDE
+	exhale_type = GAS_ID_OXYGEN
 
 	heat_discomfort_level = T0C+20
 
@@ -58,7 +61,10 @@
 	minimum_breath_pressure = 11
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/tie_hair
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail
 		)
 
 /datum/species/scori/equip_survival_gear()

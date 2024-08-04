@@ -72,7 +72,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/cave/deadBeacon)
 "p" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/cave/deadBeacon)
 "q" = (

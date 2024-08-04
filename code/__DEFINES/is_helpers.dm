@@ -2,6 +2,19 @@
 
 #define in_range(source, user) (get_dist(source, user) <= 1 && (get_step(source, 0)?:z) == (get_step(user, 0)?:z))
 
+//* Datatypes *//
+
+/**
+ * used to filter nans and non-numbers from player input
+ */
+#if DM_VERSION < 515
+#define is_safe_number(N) (isnum(N) && (N == N))
+#else
+#define is_safe_number(N) (isnum(N) && !isnan(N))
+#endif
+
+//* Typepaths *//
+
 #define isatom(A) (isloc(A))
 
 #define isdatum(D) (istype(D, /datum))
@@ -14,7 +27,7 @@
 
 //Datums
 
-#define isTaurTail(A)	istype(A, /datum/sprite_accessory/tail/taur)
+#define isTaurTail(A)	istype(A, /datum/sprite_accessory/tail/legacy_taur)
 
 //Turfs
 
@@ -39,9 +52,9 @@
 
 #define ismachinery(A) (istype(A, /obj/machinery))
 
-#define ismecha(A) (istype(A, /obj/mecha))
+#define ismecha(A) (istype(A, /obj/vehicle/sealed/mecha))
 
-#define isvehicle(A) (istype(A, /obj/vehicle_old) || istype(A, /obj/vehicle) || istype(A, /obj/mecha))
+#define isvehicle(A) (istype(A, /obj/vehicle_old) || istype(A, /obj/vehicle) || istype(A, /obj/vehicle/sealed/mecha))
 
 #define isorgan(A) istype(A, /obj/item/organ/external)
 

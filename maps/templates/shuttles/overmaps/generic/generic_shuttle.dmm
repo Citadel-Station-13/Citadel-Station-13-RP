@@ -236,7 +236,7 @@
 /area/shuttle/generic_shuttle/gen)
 "az" = (
 /obj/machinery/computer/ship/helm{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -330,8 +330,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
@@ -376,7 +375,7 @@
 /area/shuttle/generic_shuttle/gen)
 "aR" = (
 /obj/machinery/computer/shuttle_control/explore/generic_shuttle{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -491,7 +490,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/south_bump,
+/obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled{
 	icon_state = "monotile"
 	},
@@ -581,7 +580,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_int";
 	frequency = 1380;
 	master_tag = "generic_shuttle_docker";
 	name = "interior access button";
@@ -627,7 +626,7 @@
 	pixel_y = 28
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/generic_shuttle,
-/obj/effect/overmap/visitable/ship/landable/generic_shuttle,
+/obj/overmap/entity/visitable/ship/landable/generic_shuttle,
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
 "br" = (
@@ -637,7 +636,7 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	command = "cycle_exterior";
+	command = "cycle_ext";
 	frequency = 1380;
 	master_tag = "generic_shuttle_docker";
 	name = "exterior access button";
@@ -701,7 +700,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/alarms_hidden/north_bump,
+/obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/eng)
 "bz" = (

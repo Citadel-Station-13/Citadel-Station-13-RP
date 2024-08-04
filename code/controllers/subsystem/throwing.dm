@@ -35,6 +35,8 @@ SUBSYSTEM_DEF(throwing)
 
 	currentrun = null
 
+// todo: the landing stack kinda sucks ass and needs to be unit tested and rewritten
+
 /datum/thrownthing
 	//! important stuff
 	/// thing we threw
@@ -197,7 +199,7 @@ SUBSYSTEM_DEF(throwing)
 		// if we have gravity we can end, else keep going
 		if(AM.has_gravity())
 			if(dist_travelled >= maxrange || AM.loc == target_turf)
-				terminate()
+				land()
 				return
 		else if(dist_travelled >= MAX_THROWING_DIST)
 			terminate()
@@ -340,6 +342,7 @@ SUBSYSTEM_DEF(throwing)
  * land on something and terminate the throw
  */
 /datum/thrownthing/proc/land(atom/A = get_turf(thrownthing))
+	// todo: need to rewrite to consider qdel's for object + us maybe?
 	// nothing to land on
 	if(!A)
 		terminate()
@@ -348,6 +351,10 @@ SUBSYSTEM_DEF(throwing)
 	// hit our target if we haven't already
 	if(!impacted[target] && (target in get_turf(A)))
 		impact(target, TRUE)
+
+	// we got terminated already
+	if(finished)
+		return
 
 	// land
 	thrownthing._throw_finalize(A, src)
@@ -361,12 +368,15 @@ SUBSYSTEM_DEF(throwing)
  * when called, immediately erases the throw from the atom and stops it.
  */
 /datum/thrownthing/proc/terminate(in_qdel)
+	// todo: shitcode, rewrite
+	if(QDELETED(src))
+		return
 	finished = TRUE
 	thrownthing.throwing = null
 	if(!QDELETED(thrownthing))
 		// move
-		addtimer(CALLBACK(thrownthing, /atom/movable/proc/newtonian_move, init_dir), 1)
-		addtimer(CALLBACK(thrownthing, /atom/movable/proc/fall), 1)
+		addtimer(CALLBACK(thrownthing, TYPE_PROC_REF(/atom/movable, newtonian_move), init_dir), 1)
+		addtimer(CALLBACK(thrownthing, TYPE_PROC_REF(/atom/movable, fall)), 1)
 	if(in_qdel)
 		return
 	qdel(src)
@@ -381,7 +391,7 @@ SUBSYSTEM_DEF(throwing)
 /**
  * get damage scaling - default handling
  */
-/datum/thrownthing/proc/get_damage_multiplier()
+/datum/thrownthing/proc/get_damage_multiplier(atom/target)
 	if(!resist)
 		return MAX_THROWING_DAMAGE_MULTIPLIER
 	. = damage_multiplier
@@ -389,10 +399,25 @@ SUBSYSTEM_DEF(throwing)
 		return
 	if(throw_flags & THROW_AT_NO_SCALE_DAMAGE)
 		return
+	// todo: this should be damage_multipliers and damage_classifier based
+	// for now, snowflake.
+	if(ismob(thrownthing) && isobj(target))
+		. *= 2.5 // :trol:
 	// multiplier = force > resist? (force / resist) ** (p * 0.1) : 1 / (force / resist) ** (p * 0.1)
 	if(isnull(force))
 		. *= speed > resist? (speed / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1) : 1 / (speed / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1)
 	. *= force > resist? (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1) : 1 / (force / resist) ** (thrownthing.throw_damage_scaling_exponential * 0.1)
+
+/**
+ * get damage tier - default handling
+ */
+/datum/thrownthing/proc/get_damage_tier(atom/target)
+	if(isitem(thrownthing))
+		var/obj/item/thing = thrownthing
+		return thing.damage_tier
+	if(iscarbon(thrownthing))
+		return MELEE_TIER_HEAVY // :trol:
+	return MELEE_TIER_LIGHT
 
 /**
  * simulated thrownthing datums

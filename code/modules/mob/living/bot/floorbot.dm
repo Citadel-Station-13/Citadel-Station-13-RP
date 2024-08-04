@@ -65,7 +65,7 @@
 		ui = new(user, src, "Floorbot", name)
 		ui.open()
 
-/mob/living/bot/floorbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/mob/living/bot/floorbot/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["on"] = on
@@ -74,7 +74,7 @@
 
 	data["amount"] = amount
 
-	data["possible_bmode"] = list("NORTH", "EAST", "SOUTH", "WEST")
+	data["possible_bmode"] = list("OFF","NORTH", "EAST", "SOUTH", "WEST")
 
 	data["improvefloors"] = null
 	data["eattiles"] = null
@@ -85,7 +85,7 @@
 		data["improvefloors"] = improvefloors
 		data["eattiles"] = eattiles
 		data["maketiles"] = maketiles
-		data["bmode"] = dir2text(targetdirection)
+		data["bmode"] = targetdirection ? dir2text(targetdirection) : "OFF"
 
 	return data
 
@@ -132,7 +132,10 @@
 			. = TRUE
 
 		if("bridgemode")
-			targetdirection = text2dir(params["dir"])
+			if(params["dir"] != "OFF")
+				targetdirection = text2dir(params["dir"])
+			else
+				targetdirection = null
 			. = TRUE
 
 /mob/living/bot/floorbot/handleRegular()
@@ -307,7 +310,7 @@
 		update_icons()
 	else if(istype(A, /obj/item/stack/material) && amount + 4 <= maxAmount)
 		var/obj/item/stack/material/M = A
-		if(M.get_material_name() == MAT_STEEL)
+		if(M.is_material_stack_of_fuzzy(MAT_STEEL))
 			visible_message("<span class='notice'>\The [src] begins to make tiles.</span>")
 			busy = 1
 			update_icons()
@@ -319,7 +322,7 @@
 /mob/living/bot/floorbot/explode()
 	turn_off()
 	visible_message("<span class='danger'>\The [src] blows apart!</span>")
-	playsound(src.loc, "sparks", 50, 1)
+	playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/storage/toolbox/mechanical/N = new /obj/item/storage/toolbox/mechanical(Tsec)
@@ -378,9 +381,6 @@
 		to_chat(user, SPAN_NOTICE("They wont fit in as there is already stuff inside."))
 		return
 
-	if(user.s_active)
-		user.s_active.close(user)
-
 	if(T.use(10))
 		var/obj/item/bot_assembly/floorbot/B = new
 		if(istype(src, /obj/item/storage/toolbox/mechanical/))
@@ -414,7 +414,7 @@
 	throw_force = 10
 	throw_speed = 2
 	throw_range = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	created_name = "Floorbot"
 	var/toolbox = /obj/item/storage/toolbox
 
@@ -429,7 +429,7 @@
 	switch(build_step)
 		if(ASSEMBLY_FIRST_STEP)
 			if(isprox(W))
-				if(!user.attempt_insert_item_for_installation(W, src))
+				if(!user.attempt_consume_item_for_construction(W))
 					return
 				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
 				name = "incomplete floorbot assembly"

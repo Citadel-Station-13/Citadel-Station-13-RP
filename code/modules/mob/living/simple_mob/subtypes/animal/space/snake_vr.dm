@@ -29,12 +29,12 @@
 	response_disarm = "shoos"
 	response_harm   = "kicks"
 
-	melee_damage_lower = 2
-	melee_damage_upper = 3
+	legacy_melee_damage_lower = 2
+	legacy_melee_damage_upper = 3
 	attacktext = list("bitten")
 
 	say_list_type = /datum/say_list/snake
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 
 	bone_amount = 5
 	hide_amount = 1
@@ -171,9 +171,9 @@
 	desc = "A box containing Noodle's special sugermouse treats."
 	icon = 'icons/mob/snake_vr.dmi'
 	icon_state = "sneksnakbox"
-	storage_slots = 7
+	max_items = 7
 
-/obj/item/storage/box/snakesnackbox/PopulateContents()
+/obj/item/storage/box/snakesnackbox/legacy_spawn_contents()
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)

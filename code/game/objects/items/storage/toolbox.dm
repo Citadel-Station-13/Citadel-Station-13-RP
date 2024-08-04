@@ -8,9 +8,9 @@
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 7
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = ITEMSIZE_COST_SMALL * 7 //enough to hold all starting contents
+	w_class = WEIGHT_CLASS_BULKY
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 7 //enough to hold all starting contents
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
 	drop_sound = 'sound/items/drop/toolbox.ogg'
@@ -41,7 +41,7 @@
 		/obj/item/tool/wrench,
 		/obj/item/weldingtool,
 		/obj/item/tool/crowbar,
-		/obj/item/analyzer,
+		/obj/item/atmos_analyzer,
 		/obj/item/tool/wirecutters
 	)
 
@@ -63,7 +63,7 @@
 		new /obj/item/clothing/gloves/yellow(src)
 	else
 		new /obj/item/stack/cable_coil/random(src,30)
-	calibrate_size()
+	obj_storage.fit_to_contents()
 
 /obj/item/storage/toolbox/syndicate
 	name = "black and red toolbox"
@@ -89,7 +89,7 @@
 		/obj/item/tool/crowbar/power,
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil/random_belt,
-		/obj/item/analyzer
+		/obj/item/atmos_analyzer
 	)
 
 /obj/item/storage/toolbox/gold_fake // used in crafting
@@ -100,13 +100,14 @@
 	throw_force = 0
 
 /obj/item/storage/toolbox/lunchbox
-	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox
+	damage_force = 7
+	throw_force = 8
 	name = "rainbow lunchbox"
 	icon_state = "lunchbox_rainbow"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_pink", SLOT_ID_LEFT_HAND = "toolbox_pink")
 	desc = "A little lunchbox. This one is the colors of the rainbow!"
-	w_class = ITEMSIZE_NORMAL
-	max_w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_SMALL
 	var/filled = FALSE
 	attack_verb = list("lunched")
 
@@ -147,10 +148,10 @@
 	filled = TRUE
 
 /obj/item/storage/toolbox/lunchbox/nt
-	name = "NanoTrasen brand lunchbox"
+	name = "Nanotrasen brand lunchbox"
 	icon_state = "lunchbox_nanotrasen"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_blue", SLOT_ID_LEFT_HAND = "toolbox_blue")
-	desc = "A little lunchbox. This one is branded with the NanoTrasen logo!"
+	desc = "A little lunchbox. This one is branded with the Nanotrasen logo!"
 
 /obj/item/storage/toolbox/lunchbox/nt/filled
 	filled = TRUE
@@ -203,10 +204,6 @@
 	icon_state = "lunchbox_survival"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_syndi", SLOT_ID_LEFT_HAND = "toolbox_syndi")
 	desc = "A little lunchbox. This one seems to be much sturdier than normal, made of a durable steel!"
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
-
-/obj/item/storage/toolbox/lunchbox/survival/zaddat
-	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 6)
 
 /obj/item/storage/toolbox/crystal
 	name = "crystalline toolbox"

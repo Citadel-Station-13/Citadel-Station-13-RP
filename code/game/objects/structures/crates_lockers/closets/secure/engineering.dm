@@ -1,11 +1,6 @@
 /obj/structure/closet/secure_closet/engineering_chief
 	name = "chief engineer's locker"
-	icon_state = "securece1"
-	icon_closed = "securece"
-	icon_locked = "securece1"
-	icon_opened = "secureceopen"
-	icon_broken = "securecebroken"
-	icon_off = "secureceoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/engineering/ce
 	req_access = list(ACCESS_ENGINEERING_CE)
 
 	starts_with = list(
@@ -52,12 +47,7 @@
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies"
-	icon_state = "secureengelec1"
-	icon_closed = "secureengelec"
-	icon_locked = "secureengelec1"
-	icon_opened = "toolclosetopen"
-	icon_broken = "secureengelecbroken"
-	icon_off = "secureengelecoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/engineering/electrical
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
@@ -71,12 +61,7 @@
 
 /obj/structure/closet/secure_closet/engineering_welding
 	name = "welding supplies"
-	icon_state = "secureengweld1"
-	icon_closed = "secureengweld"
-	icon_locked = "secureengweld1"
-	icon_opened = "toolclosetopen"
-	icon_broken = "secureengweldbroken"
-	icon_off = "secureengweldoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/engineering/welding
 	req_access = list(ACCESS_ENGINEERING_CONSTRUCTION)
 
 	starts_with = list(
@@ -87,12 +72,7 @@
 
 /obj/structure/closet/secure_closet/engineering_personal
 	name = "engineer's locker"
-	icon_state = "secureeng1"
-	icon_closed = "secureeng"
-	icon_locked = "secureeng1"
-	icon_opened = "secureengopen"
-	icon_broken = "secureengbroken"
-	icon_off = "secureengoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/engineering
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
@@ -127,12 +107,7 @@
 
 /obj/structure/closet/secure_closet/atmos_personal
 	name = "technician's locker"
-	icon_state = "secureatm1"
-	icon_closed = "secureatm"
-	icon_locked = "secureatm1"
-	icon_opened = "secureatmopen"
-	icon_broken = "secureatmbroken"
-	icon_off = "secureatmoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/engineering/atmos
 	req_access = list(ACCESS_ENGINEERING_ATMOS)
 
 	starts_with = list(
@@ -167,12 +142,7 @@
 /obj/structure/closet/secure_closet/senior_engineer
 	name = "Senior engineer's locker"
 	desc = "It looks like it has been stuffed to the brim with Space OSHA violation notices."
-	icon_state = "secureeng1"
-	icon_closed = "secureeng"
-	icon_locked = "secureeng1"
-	icon_opened = "secureengopen"
-	icon_broken = "secureengbroken"
-	icon_off = "secureengoff"
+	closet_appearance = /singleton/closet_appearance/secure_closet/engineering/senior
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(

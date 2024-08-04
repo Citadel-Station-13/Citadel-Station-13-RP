@@ -6,14 +6,14 @@
 	damage_force = 2
 	throw_force = 2
 	w_class = 2.0
-	hitsound = 'sound/effects/deskbell.ogg'
+	attack_sound = 'sound/effects/deskbell.ogg'
 	var/broken
 	attack_verb = list("annoyed")
 	var/static/radial_examine = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
 	var/static/radial_use = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
 	var/static/radial_pickup = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_pickup")
 
-/obj/item/deskbell/examine(mob/user)
+/obj/item/deskbell/examine(mob/user, dist)
 	. = ..()
 	if(broken)
 		. += "<span class = 'danger'>It looks damaged, the ringer is stuck firmly inside.</span>"

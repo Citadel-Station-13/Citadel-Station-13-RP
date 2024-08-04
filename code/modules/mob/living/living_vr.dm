@@ -1,5 +1,5 @@
 /mob/living/verb/customsay()
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set name = "Customise Speech Verbs"
 	set desc = "Customise the text which appears when you type- e.g. 'says', 'asks', 'exclaims'."
 

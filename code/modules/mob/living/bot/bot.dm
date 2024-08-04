@@ -100,7 +100,7 @@
 	access_scanner.req_access = req_access.Copy()
 	access_scanner.req_one_access = req_one_access.Copy()
 
-	if(!GLOB.using_map.bot_patrolling)
+	if(!(LEGACY_MAP_DATUM).bot_patrolling)
 		will_patrol = FALSE
 
 // Make sure mapped in units start turned on.
@@ -120,9 +120,6 @@
 	set_stunned(0)
 	set_unconscious(0)
 
-	if(on && !client && !busy)
-		spawn(0)
-			handleAI()
 	if(on && !client && !busy)
 		spawn(0)
 			handleAI()
@@ -327,7 +324,7 @@
 /mob/living/bot/proc/startPatrol()
 	var/turf/T = getPatrolTurf()
 	if(T)
-		patrol_path = AStar(get_turf(loc), T, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, max_patrol_dist, id = botcard, exclude = obstacle)
+		target_path = SSpathfinder.default_bot_pathfinding(src, T, 1)
 		if(!patrol_path)
 			patrol_path = list()
 		obstacle = null
@@ -359,7 +356,7 @@
 	return
 
 /mob/living/bot/proc/calcTargetPath()
-	target_path = AStar(get_turf(loc), get_turf(target), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, max_target_dist, id = botcard, exclude = obstacle)
+	target_path = SSpathfinder.default_bot_pathfinding(src, get_turf(target), 1)
 	if(!target_path)
 		if(target && target.loc)
 			ignore_list |= target

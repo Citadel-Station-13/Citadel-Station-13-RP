@@ -10,8 +10,17 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/chemist
-	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_SURGERY, ACCESS_MEDICAL_CHEMISTRY, ACCESS_MEDICAL_VIROLOGY, ACCESS_SCIENCE_GENETICS)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_CHEMISTRY)
+	additional_access = list(
+		ACCESS_MEDICAL_MORGUE,
+		ACCESS_MEDICAL_SURGERY,
+		ACCESS_MEDICAL_VIROLOGY,
+		ACCESS_SCIENCE_GENETICS,
+	)
+	minimal_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_CHEMISTRY,
+	)
 	minimal_player_age = 3
 
 	outfit_type = /datum/outfit/job/station/chemist
@@ -20,15 +29,8 @@
 	alt_titles = list(
 		"Pharmacist" = /datum/prototype/struct/alt_title/pharmacist,
 		"Pharmacologist" = /datum/prototype/struct/alt_title/pharmacologist,
-		"Biochemist" = /datum/prototype/struct/alt_title/biochemist
 		)
 
-/datum/prototype/struct/alt_title/biochemist
-	title = "Biochemist"
-	background_allow = list(
-		/datum/lore/character_background/faction/onkhera_necropolis
-	)
-	background_enforce = TRUE
 
 /datum/prototype/struct/alt_title/pharmacist
 	title = "Pharmacist"

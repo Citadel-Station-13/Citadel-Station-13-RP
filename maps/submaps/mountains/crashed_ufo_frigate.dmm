@@ -12,7 +12,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/crashed_ufo_frigate)
 "ae" = (
-/obj/effect/alien/egg,
+/obj/structure/alien/egg,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "af" = (
@@ -31,7 +31,7 @@
 /area/submap/cave/crashed_ufo_frigate)
 "ai" = (
 /obj/machinery/artifact,
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aj" = (
@@ -55,7 +55,7 @@
 /area/submap/cave/crashed_ufo_frigate)
 "an" = (
 /obj/structure/window/phoronreinforced,
-/obj/effect/alien/egg,
+/obj/structure/alien/egg,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "ao" = (
@@ -70,7 +70,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "ar" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/floor/outdoors/ice,
 /area/submap/cave/crashed_ufo_frigate)
 "as" = (
@@ -103,7 +103,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aA" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aB" = (
@@ -171,12 +171,12 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aQ" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /mob/living/simple_mob/animal/space/alien/drone,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aR" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "aS" = (
@@ -310,7 +310,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "bs" = (
-/obj/effect/alien/weeds/node,
+/obj/structure/alien/weeds/node,
 /mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
 /turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)

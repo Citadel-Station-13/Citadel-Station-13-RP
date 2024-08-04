@@ -21,12 +21,6 @@
 
 
 /obj/item/integrated_circuit/proc/set_pin_data(pin_type, pin_number, datum/new_data)
-	if(islist(new_data))
-		for(var/i in 1 to length(new_data))
-			if (istype(new_data) && !isweakref(new_data))
-				new_data[i] = WEAKREF(new_data[i])
-	if (istype(new_data) && !isweakref(new_data))
-		new_data = WEAKREF(new_data)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.write_data_to_pin(new_data)
 
@@ -67,9 +61,13 @@
 
 /datum/integrated_io/proc/get_data()
 	if(islist(data))
-		for(var/i in 1 to length(data))
-			if(isweakref(data[i]))
-				data[i] = data[i].resolve()
+		var/list/d = data
+		var/list/new_data = d.Copy(max(1,d.len - IC_MAX_LIST_LENGTH+1),0)
+		for(var/i in 1 to length(new_data))
+			var/datum/dataRef = new_data[i]
+			if(istype(dataRef) && !isweakref(dataRef))
+				new_data[i] = WEAKREF(dataRef)
+		return new_data
 	if(isweakref(data))
 		return data.resolve()
 	return data
@@ -134,12 +132,14 @@
 
 	return get_pin_ref(parameters[1], parameters[2], parameters[3], components)
 
-/// Used to obfuscate object refs imported/exported as strings.
-/// Not very secure, but if someone still finds a way to abuse refs, they deserve it.
-/proc/XorEncrypt(string, key)
-	if(!string || !key ||!istext(string)||!istext(key))
-		return
-	var/r
-	for(var/i = 1 to length(string))
-		r += ascii2text(text2ascii(string,i) ^ text2ascii(key,(i-1)%length(string)+1))
-	return r
+// this is for data validation of stuff like ref encodes and more importantly ID access lists
+
+/proc/compute_signature(data)
+	return md5(SScircuit.cipherkey + data)
+
+/proc/add_data_signature(data)
+	var/signature = compute_signature(data)
+	return "[signature]:[data]"
+
+/proc/check_data_signature(signature, data)
+	return (compute_signature(data) == signature)

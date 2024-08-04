@@ -1,7 +1,9 @@
 //TODO: We don't have check_reactions or something like it, so we can't prevent idiot transfers. @Zandario
+// todo: this is horrifying and needs refactored. ESPECIALLY ITS TGUI. ~silicons
+// todo: it's been like 9 months and i worked on asset cache please kill this shit with fire and rewirte it all oh my god ~silicons
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
+	desc = "Used to seperate and package chemicals in to autoinjectors, patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/medical/chemical.dmi'
@@ -19,10 +21,8 @@
 	var/obj/item/storage/pill_bottle/pill_bottle = null
 	var/useramount = 15 // Last used amount
 	var/pillamount = 10
-	var/lolliamount = 5
 	var/autoamount = 5
 	var/max_pill_count = 20
-	var/max_lolli_count = 10
 	var/max_auto_count = 5
 	var/printing = FALSE
 	var/autosprite = TRUE
@@ -178,7 +178,7 @@
 
 /obj/machinery/chem_master/proc/load_styles()
 	/// Calculate the span tags and ids fo all the available pill icons.
-	var/datum/asset/spritesheet/simple/pill_assets = get_asset_datum(/datum/asset/spritesheet/simple/pills)
+	var/datum/asset_pack/spritesheet/simple/pill_assets = SSassets.ready_asset_pack(/datum/asset_pack/spritesheet/simple/pills)
 	pill_styles = list()
 	for (var/x in 1 to PILL_STYLE_COUNT)
 		var/list/pill_style_list = list()
@@ -186,7 +186,7 @@
 		pill_style_list["className"] = pill_assets.icon_class_name("pill[x]")
 		pill_styles += list(pill_style_list)
 
-	var/datum/asset/spritesheet/simple/bottle_assets = get_asset_datum(/datum/asset/spritesheet/simple/bottles)
+	var/datum/asset_pack/spritesheet/simple/bottle_assets = SSassets.ready_asset_pack(/datum/asset_pack/spritesheet/simple/bottles)
 	bottle_styles = list()
 	for (var/x in 1 to BOTTLE_STYLE_COUNT)
 		var/list/bottle_style_list = list()
@@ -194,7 +194,7 @@
 		bottle_style_list["className"] = bottle_assets.icon_class_name("bottle[x]")
 		bottle_styles += list(bottle_style_list)
 
-	var/datum/asset/spritesheet/simple/patches_assets = get_asset_datum(/datum/asset/spritesheet/simple/patches)
+	var/datum/asset_pack/spritesheet/simple/patches_assets = SSassets.ready_asset_pack(/datum/asset_pack/spritesheet/simple/patches)
 	patch_styles = list()
 	for (var/raw_patch_style in PATCH_STYLE_LIST)
 		//adding className for use in UI
@@ -205,12 +205,11 @@
 
 	condi_styles = strip_condi_styles_to_icons(get_condi_styles())
 
-/obj/machinery/chem_master/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/simple/pills),
-		get_asset_datum(/datum/asset/spritesheet/simple/bottles),
-		get_asset_datum(/datum/asset/spritesheet/simple/patches),
-	)
+/obj/machinery/chem_master/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/spritesheet/simple/bottles
+	immediate += /datum/asset_pack/spritesheet/simple/patches
+	immediate += /datum/asset_pack/spritesheet/simple/pills
+	return ..()
 
 /obj/machinery/chem_master/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -218,7 +217,7 @@
 		ui = new(user, src, "ChemMaster", name)
 		ui.open()
 
-/obj/machinery/chem_master/ui_data(mob/user)
+/obj/machinery/chem_master/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["mode"]   = mode
@@ -236,7 +235,7 @@
 	data["is_pill_bottle_loaded"] = pill_bottle ? TRUE : FALSE
 	if(pill_bottle)
 		data["pill_bottle_current_amount"] = pill_bottle.contents.len
-		data["pill_bottle_max_amount"] = pill_bottle.max_storage_space
+		data["pill_bottle_max_amount"] = pill_bottle.max_combined_volume
 
 	data["is_beaker_loaded"]      = beaker ? TRUE : FALSE
 	data["beaker_current_volume"] = beaker ? round(beaker.reagents.total_volume, 0.01) : null
@@ -266,7 +265,7 @@
 
 	return data
 
-/obj/machinery/chem_master/ui_static_data(mob/user)
+/obj/machinery/chem_master/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/static_data = list()
 	//Calculated once since it'll never change
 	if(!pill_styles || !bottle_styles || !chosen_patch_style || !patch_styles)
@@ -278,7 +277,7 @@
 
 	return static_data
 
-/obj/machinery/chem_master/ui_act(action, params)
+/obj/machinery/chem_master/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -361,6 +360,8 @@
 				else
 					style = styles[chosen_condi_style]
 				vol_each_max = min(50, vol_each_max)
+			else if(item_type == "hypovial")
+				vol_each_max = min(vol_each_max, 60)
 			else
 				return FALSE
 			if(vol_each_text == "auto")
@@ -393,13 +394,16 @@
 				return FALSE
 
 			//! Start filling
+			var/atom/where = drop_location()
+			name = trim(name)
+
 			if(item_type == "pill")
 				var/obj/item/reagent_containers/pill/P
 				var/target_loc = drop_location()
 				var/drop_threshold = INFINITY
 				if(pill_bottle)
-					if(pill_bottle.max_storage_space)
-						drop_threshold = pill_bottle.max_storage_space - pill_bottle.contents.len
+					if(pill_bottle.max_combined_volume)
+						drop_threshold = pill_bottle.max_combined_volume - pill_bottle.contents.len
 						target_loc = pill_bottle
 				for(var/i in 1 to amount)
 					if(i-1 < drop_threshold)
@@ -446,6 +450,15 @@
 					P.icon_state = "bottle-[chosen_bottle_style]"
 					P.renamed_by_player = TRUE
 					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
+				return TRUE
+
+			if(item_type == "hypovial")
+				var/obj/item/reagent_containers/glass/hypovial/P
+				for(var/i in 1 to amount)
+					P = new(where)
+					P.name = "[initial(P.name)] ([name])"
+					P.renamed_by_player = TRUE
+					reagents.trans_to_obj(P, vol_each)
 				return TRUE
 
 			// if(item_type == "condiment_pack")
@@ -746,7 +759,7 @@
 			if (style_reagent in styles)
 				styles[style_reagent] += carton_in_hand
 
-		var/datum/asset/spritesheet/simple/assets = get_asset_datum(/datum/asset/spritesheet/simple/condiments)
+		var/datum/asset_pack/spritesheet/simple/assets = SSassets.ready_asset_pack(/datum/asset_pack/spritesheet/simple/condiments)
 		for (var/reagent in styles)
 			styles[reagent]["className"] = assets.icon_class_name(reagent)
 	return styles

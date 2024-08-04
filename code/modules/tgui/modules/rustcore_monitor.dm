@@ -4,7 +4,7 @@
 
 	var/core_tag = ""
 
-/datum/tgui_module_old/rustcore_monitor/ui_act(action, params)
+/datum/tgui_module_old/rustcore_monitor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -35,7 +35,7 @@
 			C.target_field_strength = new_strength
 			return TRUE
 
-/datum/tgui_module_old/rustcore_monitor/ui_data(mob/user)
+/datum/tgui_module_old/rustcore_monitor/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/list/cores = list()
 

@@ -29,6 +29,8 @@
  * does not set other mobility flags or update mobility.
  */
 /mob/living/proc/set_resting(value)
+	if(HAS_TRAIT(src, TRAIT_MOB_FORCED_STANDING))
+		value = FALSE
 	if(resting == value)
 		return
 	resting = value
@@ -174,7 +176,7 @@
 
 /mob/living/verb/lay_down()
 	set name = "Rest"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 
 	to_chat(src, "<span class='notice'>You are now [resting_intentionally ? "attempting to stay upright." : "resting intentionally."]</span>")
 	toggle_intentionally_resting()

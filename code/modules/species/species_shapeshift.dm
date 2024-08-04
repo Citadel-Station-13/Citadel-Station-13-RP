@@ -58,20 +58,11 @@ var/list/wrapped_species_by_ref = list()
 	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_damage_overlays(H)
 
-/datum/species/shapeshifter/get_tail(mob/living/carbon/human/H)
-	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_tail(H)
-
-/datum/species/shapeshifter/get_tail_animation(mob/living/carbon/human/H)
-	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_tail_animation(H)
-
-/datum/species/shapeshifter/get_tail_hair(mob/living/carbon/human/H)
-	if(!H) return ..()
-	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
-	return S.get_tail_hair(H)
+/datum/species/shapeshifter/get_default_sprite_accessory(mob/living/carbon/human/character, slot)
+	if(!character)
+		return ..()
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[character]"])
+	return S.get_default_sprite_accessory(arglist(args))
 
 /datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
 	if(H)
@@ -110,18 +101,16 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
 	for(var/hairstyle in GLOB.legacy_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
-		if(gender == MALE && S.gender == FEMALE)
+		if(gender == MALE && S.random_generation_gender == FEMALE)
 			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(gender == FEMALE && S.random_generation_gender == MALE)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
 		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
-		if(gender == MALE && S.gender == FEMALE)
-			continue
-		if(gender == FEMALE && S.gender == MALE)
+		if(!isnull(S.random_generation_gender) && gender != S.random_generation_gender)
 			continue
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
@@ -305,8 +294,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_ear_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
 		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_ear_styles[instance.name] = path
+		pretty_ear_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_ear_style = tgui_input_list(src, "Pick some ears!", "Character Preference", pretty_ear_styles)
@@ -345,7 +333,7 @@ var/list/wrapped_species_by_ref = list()
 			g_ears3 = new_color_rgb_list[2]
 			b_ears3 = new_color_rgb_list[3]
 
-	update_hair() //Includes Virgo ears
+	render_spriteacc_ears() //Includes Virgo ears
 
 /mob/living/carbon/human/proc/shapeshifter_select_horns()
 	set name = "Select Secondary Ears"
@@ -359,8 +347,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_horn_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_ears_lookup)
 		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_horn_styles[instance.name] = path
+		pretty_horn_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_horn_style = tgui_input_list(src, "Pick some secondary ears!", "Character Preference", pretty_horn_styles)
@@ -399,7 +386,7 @@ var/list/wrapped_species_by_ref = list()
 			g_horn3 = new_color_rgb_list[2]
 			b_horn3 = new_color_rgb_list[3]
 
-	update_hair() //Includes Virgo ears
+	render_spriteacc_ears() //Includes Virgo ears
 
 /mob/living/carbon/human/proc/shapeshifter_select_tail()
 	set name = "Select Tail"
@@ -413,8 +400,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_tail_styles = list("Normal" = null)
 	for(var/path in GLOB.legacy_tail_lookup)
 		var/datum/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_tail_styles[instance.name] = path
+		pretty_tail_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_tail_style = tgui_input_list(src, "Pick a tail!", "Character Preference", pretty_tail_styles)
@@ -453,7 +439,7 @@ var/list/wrapped_species_by_ref = list()
 			g_tail3 = new_color_rgb_list[2]
 			b_tail3 = new_color_rgb_list[3]
 
-	update_tail_showing()
+	render_spriteacc_tail()
 
 /mob/living/carbon/human/proc/shapeshifter_select_wings()
 	set name = "Select Wings"
@@ -467,8 +453,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/pretty_wing_styles = list("None" = null)
 	for(var/path in GLOB.legacy_wing_lookup)
 		var/datum/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
-		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
-			pretty_wing_styles[instance.name] = path
+		pretty_wing_styles[instance.name] = path
 
 	// Present choice to user
 	var/new_wing_style = tgui_input_list(src, "Pick some wings!", "Character Preference", pretty_wing_styles)
@@ -507,11 +492,11 @@ var/list/wrapped_species_by_ref = list()
 			g_wing3 = new_color_rgb_list[2]
 			b_wing3 = new_color_rgb_list[3]
 
-	update_wing_showing()
+	render_spriteacc_wings()
 
-/mob/living/carbon/human/proc/promethean_select_opaqueness()
+/mob/living/carbon/human/proc/promethean_toggle_body_transparency()
 
-	set name = "Toggle Transparency"
+	set name = "Toggle Body Opacity" //Opacity is a shorter word than Transparency - the latter word cuts off on the verb button.
 	set category = "Abilities"
 
 	if(stat || world.time < last_special)
@@ -522,10 +507,28 @@ var/list/wrapped_species_by_ref = list()
 	for(var/limb in src.organs)
 		var/obj/item/organ/external/L = limb
 		L.transparent = !L.transparent
-	visible_message(SPAN_NOTICE("\The [src]'s interal composition seems to change."))
+	visible_message(SPAN_NOTICE("\The [src]'s internal composition seems to change."))
 	update_icons_body()
 
-/datum/species/shapeshifter/handle_environment_special(mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/promethean_set_hair_transparency()
+
+	set name = "Set Hair Opacity"
+	set category = "Abilities"
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 50
+
+	var/new_transparency = input("Pick a number between 100 and 255, 255 being no transparency.", "Change Transparency") as num|null
+	if(new_transparency)
+		new_transparency = clamp(new_transparency,100,255)
+		var/obj/item/organ/external/head/H = src.get_organ(BP_HEAD)
+		H.hair_opacity = new_transparency
+		visible_message(SPAN_NOTICE("\The [src]'s \"hair\" composition seems to change."))
+		update_hair()
+
+/datum/species/shapeshifter/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0 && heal_rate > 0)
 		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())

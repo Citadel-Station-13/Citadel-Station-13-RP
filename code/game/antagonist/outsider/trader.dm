@@ -56,7 +56,7 @@ var/datum/antagonist/trader/traders
 	id.assignment = "Trader"
 	id.access |= ACCESS_FACTION_TRADER
 	var/obj/item/storage/wallet/W = new(player)
-	W.handle_item_insertion(id)
+	W.obj_storage.insert(id)
 	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 	spawn_money(rand(50,150)*10,W)
 

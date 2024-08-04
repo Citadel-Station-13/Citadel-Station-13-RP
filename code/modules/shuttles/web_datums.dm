@@ -119,9 +119,9 @@
 		return
 
 	if(!radio_announce)
-		command_announcement.Announce(get_departure_message(),(announcer ? announcer : "[GLOB.using_map.boss_name]"))
+		command_announcement.Announce(get_departure_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 	else
-		GLOB.global_announcer.autosay(get_departure_message(),(announcer ? announcer : "[GLOB.using_map.boss_name]"))
+		GLOB.global_announcer.autosay(get_departure_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 
 /datum/shuttle_destination/proc/get_arrival_message()
 	return null
@@ -131,9 +131,9 @@
 		return
 
 	if(!radio_announce)
-		command_announcement.Announce(get_arrival_message(),(announcer ? announcer : "[GLOB.using_map.boss_name]"))
+		command_announcement.Announce(get_arrival_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 	else
-		GLOB.global_announcer.autosay(get_arrival_message(),(announcer ? announcer : "[GLOB.using_map.boss_name]"))
+		GLOB.global_announcer.autosay(get_arrival_message(),(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 
 /datum/shuttle_destination/proc/link_destinations(var/datum/shuttle_destination/other_place, var/interim_tag, var/travel_time = 0)
 	// First, check to make sure this doesn't cause a duplicate route.
@@ -249,7 +249,7 @@
 		return FALSE
 	future_destination = R.get_other_side(current_destination)
 
-	var/travel_time = R.travel_time * my_shuttle.flight_time_modifier * 2	// Autopilot is less efficent than having someone flying manually.
+	var/travel_time = R.travel_time * my_shuttle.flight_time_modifier * 2	// Autopilot is less efficient than having someone flying manually.
 	// TODO Change this to use proccess stuff of autodock!
 	if(R.interim && R.travel_time > 0)
 		my_shuttle.long_jump(future_destination.my_landmark, R.interim, travel_time / 10)

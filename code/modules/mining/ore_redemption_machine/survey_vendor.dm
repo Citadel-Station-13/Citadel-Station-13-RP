@@ -1,7 +1,7 @@
 /obj/machinery/mineral/equipment_vendor/survey
 	name = "exploration equipment vendor"
 	desc = "An equipment vendor for explorers, points collected with a survey scanner can be spent here."
-	icon = 'icons/obj/machines/mining_machines_vr.dmi'
+	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "exploration"
 	density = TRUE
 	anchored = TRUE
@@ -61,7 +61,6 @@
 		new /datum/data/mining_equipment("Bar Shelter Capsule",			/obj/item/survivalcapsule/luxurybar,						1000),
 		new /datum/data/mining_equipment("1000 Thalers",				/obj/item/spacecash/c1000,									1000),
 		new /datum/data/mining_equipment("Defense Equipment - Marksman Box",	/obj/item/gunbox/marksman,							1000),
-		new	/datum/data/mining_equipment("Exploration Component",		/obj/item/engineering_mystical_tech,						1000),
 		)
 /obj/machinery/mineral/equipment_vendor/survey/interact(mob/user)
 	user.set_machine(src)

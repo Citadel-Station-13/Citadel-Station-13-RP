@@ -25,7 +25,7 @@
 	victim = null
 	. = ..()
 
-/obj/machinery/vitals_monitor/examine(mob/user)
+/obj/machinery/vitals_monitor/examine(mob/user, dist)
 	. = ..()
 	if(victim)
 		if(machine_stat & NOPOWER)
@@ -133,7 +133,7 @@
 
 /obj/machinery/vitals_monitor/verb/toggle_beep()
 	set name = "Toggle Monitor Beeping"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	var/mob/user = usr

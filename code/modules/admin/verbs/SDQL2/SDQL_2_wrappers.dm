@@ -261,6 +261,18 @@
 		. += T
 	return pick(.)
 
+/proc/_filter(...)
+	return filter(arglist(args))
+
+/proc/_generator(...)
+	return generator(arglist(args))
+
+/proc/_url_encode(str)
+	return url_encode(str)
+
+/proc/_url_decode(str)
+	return url_encode(str)
+
 /proc/__nan()
 	var/list/L = json_decode("{\"value\":NaN}")
 	return L["value"]
@@ -271,8 +283,8 @@
 /atom/proc/_contents()
 	return contents.Copy()
 
-/client/proc/admin_winset(control, params)
-	winset(src, control, params)
+/proc/_typesof(what)
+	return typesof(what)
 
-/client/proc/admin_winget(control, params)
-	return winget(src, control, params)
+/proc/_subtypesof(what)
+	return subtypesof(what)

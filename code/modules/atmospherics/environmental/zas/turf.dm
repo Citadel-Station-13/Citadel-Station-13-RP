@@ -25,7 +25,7 @@
 	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
-		var/turf/simulated/potential = get_step_multiz(src, d)
+		var/turf/simulated/potential = vertical_step(d)
 
 		if(!istype(potential) || !potential.has_valid_zone())
 			continue
@@ -40,7 +40,7 @@
 		if(r_block == ATMOS_PASS_AIR_BLOCKED)
 			continue
 
-		air_master.connect(potential, src, min(block, r_block), d)
+		SSair.connect(potential, src, min(block, r_block), d)
 
 //* credit to kapu/daedalus dock for some of the code below*//
 
@@ -145,7 +145,7 @@ GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST)
 	for(var/d = 1, d < 16, d *= 2)
 	#endif
 
-		var/turf/potential = get_step_multiz(src, d)
+		var/turf/potential = vertical_step(d)
 		if(!potential)
 			continue
 		var/them_to_us = potential.CanAtmosPass(src, global.reverse_dir[d])
@@ -215,7 +215,7 @@ GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST)
 						to_chat(world, "Connecting to [sim.zone]")
 					#endif
 
-					air_master.connect(src, potential, min(them_to_us, us_to_them), d)
+					SSair.connect(src, potential, min(them_to_us, us_to_them), d)
 
 			#ifdef ZAS_DEBUG_GRAPHICS
 				else if(zas_verbose)
@@ -245,7 +245,7 @@ GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST)
 	//At this point, a zone should have happened. If it hasn't, don't add more checks, fix the bug.
 
 	for(var/turf/T as anything in postponed)
-		air_master.connect(src, T, postponed[T], postponed_dirs[T])
+		SSair.connect(src, T, postponed[T], postponed_dirs[T])
 
 /turf/proc/post_update_air_properties()
 	connections?.update_all()

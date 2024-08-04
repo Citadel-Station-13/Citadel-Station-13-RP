@@ -24,8 +24,7 @@
 
 	species_flags = NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 
-	vision_flags = SEE_SELF
-	darksight = 5
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	brute_mod = 0.9
 	burn_mod = 0.9
@@ -36,6 +35,8 @@
 	sound_mod = 0.9
 	siemens_coefficient = 0.9
 	heal_rate = 0
+
+	vision_organ = O_EYES
 
 	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR

@@ -92,7 +92,7 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
-			if(!temp_vent.welded && temp_vent.network && ((temp_vent.loc.z in GLOB.using_map.station_levels) || isTalon == 1))
+			if(!temp_vent.welded && temp_vent.network && ((temp_vent.loc.z in (LEGACY_MAP_DATUM).station_levels) || isTalon == 1))
 				vents += temp_vent
 
 	var/rats = /mob/living/simple_mob/animal/passive/mouse/rat
@@ -114,7 +114,7 @@
 
 // Overmap version
 /datum/event/hostile_migration/overmap/announce()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon))
+	if(istype(victim, /obj/overmap/entity/visitable/ship/talon))
 		command_announcement.Announce("Unidentified hostile lifesigns detected migrating towards ITV Talon through the exterior pipes. Secure any exterior access, including ducting and ventilation.","Hostile Vermin Boarding Alert")
 		return
 	else
@@ -123,10 +123,10 @@
 
 // override: cancel if not main ship as this is too dumb to target the actual ship crossing it.
 /datum/event/hostile_migration/overmap/start()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
+	if(istype(victim, /obj/overmap/entity/visitable/ship/landable))
 		kill()
 		return
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon)) //Forces the location to the Talon.
+	if(istype(victim, /obj/overmap/entity/visitable/ship/talon)) //Forces the location to the Talon.
 		isTalon = 1
 		location = 8
 	return ..()

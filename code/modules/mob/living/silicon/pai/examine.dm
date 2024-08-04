@@ -1,4 +1,4 @@
-/mob/living/silicon/pai/examine(mob/user)
+/mob/living/silicon/pai/examine(mob/user, dist)
 	. = ..()
 
 	switch(src.stat)

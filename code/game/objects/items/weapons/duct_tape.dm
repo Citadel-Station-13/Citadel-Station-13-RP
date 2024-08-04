@@ -4,7 +4,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "taperoll"
 	damage_force = 0
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	var/amount = 20
@@ -160,14 +160,14 @@
 	desc = "A piece of sticky tape."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "tape"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	plane = MOB_PLANE
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	anchored = FALSE
 
 	var/obj/item/stuck = null
 
-/obj/item/duct_tape_piece/examine(mob/user)
+/obj/item/duct_tape_piece/examine(mob/user, dist)
 	if(stuck)
 		return stuck.examine(user)
 	else
@@ -206,11 +206,11 @@
 	anchored = FALSE
 	return ..() // Pick it up now that it's unanchored.
 
-/obj/item/duct_tape_piece/afterattack(var/A, mob/user, flag, params)
-	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
+/obj/item/duct_tape_piece/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!in_range(user, target) || istype(target, /obj/machinery/door) || !stuck)
 		return
 
-	var/turf/target_turf = get_turf(A)
+	var/turf/target_turf = get_turf(target)
 	var/turf/source_turf = get_turf(user)
 
 	var/dir_offset = 0

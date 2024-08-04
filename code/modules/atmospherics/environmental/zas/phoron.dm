@@ -63,7 +63,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		return
 
 	//Burn skin if exposed.
-	if(skin_burns && (species.breath_type != /datum/gas/phoron))
+	if(skin_burns && (species.breath_type != GAS_ID_PHORON))
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20))
@@ -71,7 +71,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			update_health()
 
 	//Burn eyes if exposed.
-	if(eye_burns && species.breath_type && (species.breath_type != /datum/gas/phoron))
+	if(eye_burns && species.breath_type && (species.breath_type != GAS_ID_PHORON))
 		var/burn_eyes = 1
 
 		//Check for protective glasses
@@ -95,7 +95,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			burn_eyes()
 
 	//Genetic Corruption
-	if(genetic_corruption && (species.breath_type != /datum/gas/phoron))
+	if(genetic_corruption && (species.breath_type != GAS_ID_PHORON))
 		if(rand(1,10000) < genetic_corruption)
 			randmutb(src)
 			to_chat(src, "<span class='danger'>High levels of toxins cause you to spontaneously mutate!</span>")
@@ -110,9 +110,9 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			to_chat(src, "<span class='danger'>Your eyes burn!</span>")
 		E.damage += 2.5
 		eye_blurry = min(eye_blurry+1.5,50)
-		if (prob(max(0,E.damage - 15) + 1) &&!eye_blind)
+		if (prob(max(0,E.damage - 15) + 1) && !has_status_effect(/datum/status_effect/sight/blindness))
 			to_chat(src, "<span class='danger'>You are blinded!</span>")
-			Blind(20)
+			apply_status_effect(/datum/status_effect/sight/blindness, 3 SECONDS)
 
 /mob/living/carbon/human/proc/pl_head_protected()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/phoronguard_only, phoronguard_only)
@@ -161,6 +161,6 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		if(!env)
 			return
 		for(var/g in env.gas)
-			if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && env.gas[g] > GLOB.meta_gas_visibility[g] + 1)
+			if(global.gas_data.flags[g] & GAS_FLAG_CONTAMINANT && env.gas[g] > 1)
 				I.contaminate()
 				break

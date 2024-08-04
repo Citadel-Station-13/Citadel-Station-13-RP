@@ -43,9 +43,6 @@
 	return TRUE
 
 /datum/status_effect/grouped/proc/apply_source(source, value, duration = src.duration)
-	// source can technically be any non-number value, but to enforce code durability
-	// we don't want any del'able reference types.
-	ASSERT(istext(source) && !isnull(value))
 	var/old = sources[source]
 	sources[source] = value
 	var/old_expires = expires[source]
@@ -63,9 +60,6 @@
 	on_change(source, old, value)
 
 /datum/status_effect/grouped/proc/set_source(source, value, duration = src.duration)
-	// source can technically be any non-number value, but to enforce code durability
-	// we don't want any del'able reference types.
-	ASSERT(istext(source))
 	if(isnull(value))
 		// autodetect if we're just setting duration
 		value = sources[source]
@@ -105,14 +99,14 @@
  * * source - source of application; must be text
  * * value - metadata; must be non-null
  * * duration - duration override, otherwise we use default of the path.
+ * * ... - additional args
  *
  * @return effect datum
  */
-/mob/proc/apply_grouped_effect(datum/status_effect/grouped/path, source, value, duration)
+/mob/proc/apply_grouped_effect(datum/status_effect/grouped/path, source, value, duration, ...)
 	if(!ispath(path, /datum/status_effect/grouped))
 		CRASH("[path] is not a grouped effect.")
-	ASSERT(istext(source) && !isnull(value))
-	return apply_status_effect(path, additional = list(source, value))
+	return apply_status_effect(path, additional = args.Copy(2))
 
 /**
  * removes a source from a grouped effect
@@ -124,6 +118,5 @@
 /mob/proc/remove_grouped_effect(datum/status_effect/grouped/path, source)
 	if(!ispath(path, /datum/status_effect/grouped))
 		CRASH("[path] is not a grouped effect.")
-	ASSERT(istext(source))
 	var/datum/status_effect/grouped/effect = has_status_effect(path)
 	return effect.remove_source(source)

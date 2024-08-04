@@ -7,8 +7,8 @@
 	icon_state = "t-ray0"
 	item_state = "t-ray"
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_SMALL
-	matter = list(MAT_STEEL = 150)
+	w_class = WEIGHT_CLASS_SMALL
+	materials_base = list(MAT_STEEL = 150)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
 	var/scan_range = 1
@@ -88,7 +88,8 @@
 	if(scanned in overlay_cache)
 		. = overlay_cache[scanned]
 	else
-		var/image/I = image(loc = scanned, icon = scanned.icon, icon_state = scanned.icon_state, layer = HUD_LAYER)
+		var/image/I = image(loc = scanned, icon = scanned.icon, icon_state = scanned.icon_state, layer = ABOVE_LIGHTING_LAYER_MAIN)
+		I.plane = ABOVE_LIGHTING_PLANE
 
 		//Pipes are special
 		if(istype(scanned, /obj/machinery/atmospherics/pipe))
@@ -109,14 +110,18 @@
 	. = list()
 
 	var/turf/center = get_turf(src.loc)
-	if(!center) return
+	if(!center)
+		return
 
+	// the reason we don't just obj in range is because some things
+	// will INVISIBILITY_ABSTRACt while hiding underfloor,
+	// so normal range won't pick it up
 	for(var/turf/T in range(scan_range, center))
-		if(!!T.is_plating())
+		if(!T.hides_underfloor_objects())
 			continue
 
 		for(var/obj/O in T.contents)
-			if(O.level != 1)
+			if(O.hides_underfloor == OBJ_UNDERFLOOR_NEVER)
 				continue
 			if(!O.invisibility)
 				continue //if it's already visible don't need an overlay for it
@@ -143,14 +148,14 @@
 /obj/item/t_scanner/upgraded
 	name = "Upgraded T-ray Scanner"
 	desc = "An upgraded version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(MAT_STEEL = 500, PHORON = 150)
+	materials_base = list(MAT_STEEL = 500, PHORON = 150)
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 5)
 	scan_range = 3
 
 /obj/item/t_scanner/advanced
 	name = "Advanced T-ray Scanner"
 	desc = "An advanced version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(MAT_STEEL = 1500, PHORON = 200, SILVER = 250)
+	materials_base = list(MAT_STEEL = 1500, PHORON = 200, SILVER = 250)
 	origin_tech = list(TECH_MAGNET = 7, TECH_ENGINEERING = 7, TECH_MATERIAL = 6)
 	scan_range = 7
 

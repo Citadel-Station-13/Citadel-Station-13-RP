@@ -4,7 +4,7 @@
 
 	var/fuel_tag = ""
 
-/datum/tgui_module_old/rustfuel_control/ui_act(action, params)
+/datum/tgui_module_old/rustfuel_control/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -26,7 +26,7 @@
 			if(new_ident)
 				fuel_tag = new_ident
 
-/datum/tgui_module_old/rustfuel_control/ui_data(mob/user)
+/datum/tgui_module_old/rustfuel_control/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	var/list/fuels = list()
 

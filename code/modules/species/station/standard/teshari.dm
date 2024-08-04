@@ -1,3 +1,7 @@
+/datum/physiology_modifier/intrinsic/species/teshari
+	carry_strength_add = CARRY_STRENGTH_ADD_TESHARI
+	carry_strength_factor = CARRY_FACTOR_MOD_TESHARI
+
 /datum/species/teshari
 	uid = SPECIES_ID_TESHARI
 	id = SPECIES_ID_TESHARI
@@ -6,6 +10,7 @@
 	category = "Teshari"
 	name_plural = "Tesharii"
 	uid = SPECIES_ID_TESHARI
+	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/teshari
 
 	blurb = {"
 	A race of feathered raptors who developed alongside the Skrell, inhabiting
@@ -22,16 +27,16 @@
 	suit_storage_icon = 'icons/mob/clothing/species/teshari/belt_mirror.dmi'
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
-	tail = "teshtail"
-	tail_hair = "feathers"
-	icobase_tail = 1
+	sprite_accessory_defaults = list(
+		SPRITE_ACCESSORY_SLOT_TAIL = /datum/sprite_accessory/tail/bodyset/teshari,
+	)
 
 	max_additional_languages = 3
 	name_language    = LANGUAGE_ID_TESHARI
 	intrinsic_languages = LANGUAGE_ID_TESHARI
 	whitelist_languages = list(
 		LANGUAGE_ID_TESHARI,
-		LANGUAGE_ID_SKRELL
+		LANGUAGE_ID_SKRELL,
 	)
 
 	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
@@ -86,7 +91,7 @@
 	breath_cold_level_2 = 100
 	breath_cold_level_3 = 60
 
-	heat_level_1 = 320
+	heat_level_1 = 330
 	heat_level_2 = 370
 	heat_level_3 = 600
 
@@ -136,6 +141,7 @@
 		O_STOMACH   = /obj/item/organ/internal/stomach,
 		O_INTESTINE = /obj/item/organ/internal/intestine,
 	)
+	vision_organ = O_EYES
 
 	unarmed_types = list(
 		/datum/unarmed_attack/bite/sharp,
@@ -145,14 +151,17 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/hide_horns,
+		/mob/living/carbon/human/proc/hide_wings,
+		/mob/living/carbon/human/proc/hide_tail,
 		/mob/living/proc/hide,
 		/mob/living/proc/shred_limb,
 	)
 
 	abilities = list(
+		/datum/ability/species/toggle_agility,
 		/datum/ability/species/sonar,
 	)
-
 	descriptors = list(
 		/datum/mob_descriptor/height = -3,
 		/datum/mob_descriptor/build = -3,
@@ -168,9 +177,7 @@
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/suit/straight_jacket,
 	)
-	abilities = list(
-		/datum/ability/species/toggle_agility
-	)
+
 
 /datum/species/teshari/equip_survival_gear(mob/living/carbon/human/H)
 	..()

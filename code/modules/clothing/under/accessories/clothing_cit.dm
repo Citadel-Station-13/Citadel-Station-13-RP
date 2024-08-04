@@ -28,6 +28,13 @@
 	icon_state = "cloak_crusader_hospitaller"
 	item_state = "cloak_crusader_hospitaller"
 
+// Gestalt uniform
+
+/obj/item/clothing/accessory/poncho/roles/cloak/custom/gestaltjacket
+	name = "sleek uniform jacket"
+	desc = "Barely more than a pair of long stirrup sleeves joined by a turtleneck. Has decorative red accents."
+	icon_state = "gestaltjacket"
+	item_state = "gestaltjacket"
 
 // Renames some default non-command cloaks to be more dpt. related.
 /obj/item/clothing/accessory/poncho/roles/cloak/cargo

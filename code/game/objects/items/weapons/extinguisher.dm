@@ -4,13 +4,13 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
-	hitsound = 'sound/weapons/smash.ogg'
+	attack_sound = 'sound/weapons/smash.ogg'
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	throw_speed = 2
 	throw_range = 10
+	materials_base = list(MAT_STEEL = 90)
 	damage_force = 10
-	matter = list(MAT_STEEL = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
@@ -27,9 +27,9 @@
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
 	item_state = "miniFE"
-	hitsound = null	//it is much lighter, after all.
+	attack_sound = null	//it is much lighter, after all.
 	throw_force = 2
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 3.0
 	max_water = 150
 	spray_particles = 3
@@ -45,7 +45,7 @@
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
 
-/obj/item/extinguisher/examine(mob/user)
+/obj/item/extinguisher/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 
@@ -76,10 +76,10 @@
 		O.Move(get_step(user,movementdirection), movementdirection)
 		sleep(3)
 
-/obj/item/extinguisher/afterattack(var/atom/target, var/mob/user, var/flag)
+/obj/item/extinguisher/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//TODO; Add support for reagents in water.
 
-	if( istype(target, /obj/structure/reagent_dispensers/watertank) && flag)
+	if( istype(target, /obj/structure/reagent_dispensers/watertank) && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		var/obj/o = target
 		var/amount = o.reagents.trans_to_obj(src, 50)
 		to_chat(user, "<span class='notice'>You fill [src] with [amount] units of the contents of [target].</span>")

@@ -29,17 +29,10 @@
 	name = "FORCEWALL"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "m_shield"
-	anchored = 1.0
-	opacity = 0
-	density = 1
-	unacidable = 1
-	invisibility = 101
-
-/obj/effect/forcefield/bullet_act(var/obj/projectile/Proj, var/def_zone)
-	var/turf/T = get_turf(src.loc)
-	if(T)
-		for(var/mob/M in T)
-			Proj.on_hit(M,M.bullet_act(Proj, def_zone))
+	anchored = TRUE
+	opacity = FALSE
+	density = TRUE
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF | INTEGRITY_INDESTRUCTIBLE
 
 /obj/effect/forcefield/mime
 	icon_state = "empty"

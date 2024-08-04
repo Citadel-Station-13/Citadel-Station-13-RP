@@ -55,11 +55,11 @@
 /turf/simulated/shuttle/floor/black,
 /area/submap/crashedcontainmentshuttle)
 "ao" = (
-/obj/structure/door_assembly/door_assembly_ext,
+/obj/structure/door_assembly/external,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "ap" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/floor/plating,
@@ -125,8 +125,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/template_noop,
 /area/submap/crashedcontainmentshuttle)
@@ -179,7 +178,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/crashedcontainmentshuttle)
 "aO" = (
-/obj/structure/door_assembly/door_assembly_highsecurity{
+/obj/structure/door_assembly/high_security{
 	anchored = 1
 	},
 /turf/simulated/shuttle/floor/black,
@@ -387,13 +386,11 @@
 /obj/effect/decal/remains/human,
 /obj/item/card/id/syndicate{
 	age = "\\42";
-	blood_type = "\\O+";
 	desc = "A strange ID card.";
 	dna_hash = "\[REDACTED]";
-	fingerprint_hash = "\\------";
 	name = "Aaron Presley's ID Card(Delivery Service) ";
 	registered_name = "Aaron Presley";
-	sex = "\\Male"
+	pronouns = "\\He/him"
 	},
 /turf/simulated/shuttle/floor/white,
 /area/submap/crashedcontainmentshuttle)
@@ -402,13 +399,12 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/crashedcontainmentshuttle)
 "bF" = (
-/obj/structure/door_assembly/door_assembly_ext{
+/obj/structure/door_assembly/external{
 	anchored = 1
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,

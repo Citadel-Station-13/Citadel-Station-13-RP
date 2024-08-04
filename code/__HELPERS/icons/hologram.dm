@@ -11,7 +11,7 @@
  * * scanlines - include scanlines
  * * no_anim - kill any animations.
  */
-/proc/render_hologram_icon(rendering, use_alpha, no_anim, scanlines = TRUE)
+/proc/render_hologram_icon(rendering, use_alpha, no_anim, scanlines = TRUE, extra = null)
 	var/icon/processing
 	if(!isicon(rendering))
 		// cursed : operator; see params for why.
@@ -22,7 +22,10 @@
 		else
 			processing = icon(rendering)
 	if(scanlines)
-		processing.alpha_mask(icon('icons/system/alphamask_32x32.dmi', "scanline"))
+		var/scanline_icon_state = "scanline"
+		if(extra)
+			scanline_icon_state += extra
+		processing.alpha_mask(icon('icons/system/alphamask_32x32.dmi', scanline_icon_state))
 	if(!isnull(use_alpha))
 		processing.MapColors(arglist(construct_rgba_color_matrix(aa = use_alpha / 255)))
 	return processing

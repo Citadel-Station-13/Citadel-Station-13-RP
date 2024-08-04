@@ -1,3 +1,6 @@
+/datum/vision/baseline/shadekin
+	hard_darksight = 0
+
 /mob/living/simple_mob/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
 	desc = "Some sort of fluffer. Big ears, long tail."
@@ -14,14 +17,12 @@
 	health = 200
 
 	movement_cooldown = 2
-	see_in_dark = 10 //SHADEkin
-	has_hands = TRUE //Pawbs
-	seedarkness = FALSE //SHAAAADEkin
+	vision_innate = /datum/vision/baseline/shadekin
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	has_langs = list(LANGUAGE_GALCOM,LANGUAGE_SHADEKIN)
 
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	legacy_melee_damage_lower = 10
+	legacy_melee_damage_upper = 20
 
 	min_oxy = 0
 	max_oxy = 0

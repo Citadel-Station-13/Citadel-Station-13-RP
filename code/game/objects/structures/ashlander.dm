@@ -20,20 +20,28 @@
 /obj/structure/ashlander/production/attackby(var/obj/item/I, mob/user)
 	. = ..()
 	var/msg = insert_msg_override[I.type] || default_message
-	if(istype(I, /obj/item/ore))
-		to_chat(user, "<span class='danger'>You pour the [I] into the [src]! [msg]</span>")
-		attempt_consume()
+	if(istype(I, /obj/item/stack/ore))
+		var/obj/item/stack/ore/O = I
+		if(O.amount > 1)
+			to_chat(user, "<span class='danger'>You pour all [O.amount] of [O] into [src]! [msg]</span>")
+		else
+			to_chat(user, "<span class='danger'>You pour [O] into [src]! [msg]</span>")
+		attempt_consume(O, user, O.amount)
+
+
 	if(istype(I, /obj/item/storage/bag))
 		var/obj/item/storage/bag/B = I
 		var/inserted = 0
 		for(I in B)
-			if(attempt_consume(I, user))
-				inserted++
+			if(istype(I, /obj/item/stack/ore))
+				var/obj/item/stack/ore/O = I
+				if(attempt_consume(O, user, O.amount))
+					inserted += O.amount
 		if(inserted)
 			user.action_feedback(SPAN_NOTICE("You insert [inserted] units of material from [B] into [src]. [msg]"), src)
 		else
 			user.action_feedback(SPAN_WARNING("You fail to insert anything from [B] into [src]."), src)
-	else if(attempt_consume(I, user))
+	else if(attempt_consume(I, user)) //is this really needed when attempt_consume only asks for ores???
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
@@ -47,20 +55,25 @@
  * @return TRUE / FALSE based on success / failure.
  */
 
-/obj/structure/ashlander/production/proc/attempt_consume(obj/item/ore/O, mob/user)
+/obj/structure/ashlander/production/proc/attempt_consume(obj/item/stack/ore/O, mob/user, amount = 1)
 	if (!istype(O))
 		return FALSE
 
     /// Ensure the ore is able to be put in if it's being held / in inventory
-	if(!isnull(user) && user.is_holding(O) && !user.transfer_item_to_loc(O, src))
-		user.action_feedback(SPAN_WARNING("[O] is stuck to your hand!"), src)
+	if(!isnull(user) && user.is_holding(O) && !O.use(amount))
+		user.action_feedback(SPAN_WARNING("[O] doesn't exist! Likely some stack bug. Yell at coderbus."), src)
 		return FALSE
 
 	for (var/ty in ore_mapping)
 		if (istype(O, ty))
 			var/target_type = ore_mapping[ty]
-			new target_type(get_turf(src))
-			qdel(O)
+			if(istype(target_type, /obj/item/stack))
+				var/obj/item/stack/ttstack = target_type
+				new ttstack(get_turf(src),	amount)
+			else //I sure hope nobody DOES make production machines that results in non-stackable objects.
+				var/i = 0
+				for(i = 0; i < amount, ++i)
+					new target_type(get_turf(src))
 			return TRUE
 
 	return FALSE
@@ -70,13 +83,13 @@
 	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
 	default_message = "It begins to melt in the crucible."
 	ore_mapping = list(
-		/obj/item/ore/lead = /obj/item/stack/material/lead,
-        /obj/item/ore/copper = /obj/item/stack/material/copper,
-		/obj/item/ore/iron = /obj/item/stack/rods,
-		/obj/item/ore/glass = /obj/item/ore/slag
+		/obj/item/stack/ore/lead = /obj/item/stack/material/lead,
+        /obj/item/stack/ore/copper = /obj/item/stack/material/copper,
+		/obj/item/stack/ore/iron = /obj/item/stack/rods,
+		/obj/item/stack/ore/glass = /obj/item/stack/ore/slag
     )
 	insert_msg_override = list(
-		/obj/item/ore/iron = "It slowly feeds through the extruder."
+		/obj/item/stack/ore/iron = "It slowly feeds through the extruder."
 	)
 
 /obj/structure/ashlander/production/brickmaker
@@ -85,16 +98,8 @@
 	icon_state = "brickmaker"
 	default_message = "It is slowly compacted by the press."
 	ore_mapping = list(
-		/obj/item/ore/glass = /obj/item/stack/material/sandstone
+		/obj/item/stack/ore/glass = /obj/item/stack/material/sandstone
 	)
-
-/obj/structure/ashlander/production/brickmaker/attackby(obj/item/O, mob/user)
-	. = ..()
-	if(istype(O, /obj/item/ore/glass))
-		to_chat(user, "<span class='danger'>You pour the [O] into the [src]! After some work you compress it into a sturdy brick.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/material/sandstone(T)
 
 //This is a child of the Hydroponics seed extractor, and was originally in that file. But I've moved it here since it's an Ashlander "machine".
 /obj/machinery/seed_extractor/press
@@ -160,7 +165,7 @@
 			if(!G.reagents || !G.reagents.total_volume)
 				continue
 			failed = 0
-			bag.remove_from_storage(G, src)
+			bag.obj_storage.remove(G, src)
 			holdingitems += G
 			if(holdingitems && holdingitems.len >= limit)
 				break

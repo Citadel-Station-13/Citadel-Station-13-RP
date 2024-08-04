@@ -7,7 +7,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
 import { Window } from '../layouts';
 
-const PEAK_DRAW = 500000;
+const PEAK_DRAW = 500;
 
 export const powerRank = str => {
   const unit = String(str.split(' ')[1]).toLowerCase();
@@ -130,7 +130,7 @@ export const PowerMonitorFocus = (props, context) => {
                   minValue={0}
                   maxValue={maxValue}
                   color="teal">
-                  {toFixed(supply / 1000) + ' kW'}
+                  {toFixed(supply) + ' kW'}
                 </ProgressBar>
               </LabeledList.Item>
               <LabeledList.Item label="Draw">
@@ -139,7 +139,7 @@ export const PowerMonitorFocus = (props, context) => {
                   minValue={0}
                   maxValue={maxValue}
                   color="pink">
-                  {toFixed(demand / 1000) + ' kW'}
+                  {toFixed(demand) + ' kW'}
                 </ProgressBar>
               </LabeledList.Item>
             </LabeledList>

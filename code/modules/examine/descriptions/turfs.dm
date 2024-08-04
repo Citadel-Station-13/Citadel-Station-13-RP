@@ -3,10 +3,10 @@
 
 /turf/simulated/wall/get_description_interaction(mob/user)
 	var/list/results = list()
-	if(damage)
+	if(integrity < integrity_max)
 		results += "[desc_panel_image("welder", user)]to repair."
 
-	if(isnull(construction_stage) || !reinf_material)
+	if(isnull(construction_stage) || !material_reinf)
 		results += "[desc_panel_image("welder", user)]to deconstruct if undamaged."
 	else
 		switch(construction_stage)

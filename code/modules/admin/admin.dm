@@ -12,12 +12,13 @@ var/global/floorIsLava = 0
 		confidential = TRUE)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
-	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
-			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
-				var/msg = rendered
-				to_chat(C, msg)
+	return
+	// var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
+	// for(var/client/C in GLOB.admins)
+	// 	if((R_ADMIN|R_MOD) & C.holder.rights)
+	// 		if(C.get_preference_toggle(/datum/client_preference/mod/show_attack_logs))
+	// 			var/msg = rendered
+	// 			to_chat(C, msg)
 
 /proc/admin_notice(var/message, var/rights)
 	for(var/mob/M in GLOB.mob_list)
@@ -52,9 +53,9 @@ var/global/floorIsLava = 0
 		body += " \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\] "
 
 	if(M.client)
-		body += "<br><b>First connection:</b> [M.client.player_age] days ago"
-		body += "<br><b>BYOND account created:</b> [M.client.account_join_date]"
-		body += "<br><b>BYOND account age (days):</b> [M.client.account_age]"
+		body += "<br><b>First connection:</b> [M.client.player.player_age] days ago"
+		body += "<br><b>BYOND account created:</b> [M.client.persistent.account_join]"
+		body += "<br><b>BYOND account age (days):</b> [M.client.persistent.account_age]"
 
 	body += {"
 		<br><br>\[
@@ -66,7 +67,6 @@ var/global/floorIsLava = 0
 		<b>Mob type:</b> [M.type]<br>
 		<b>Inactivity time:</b> [M.client ? "[M.client.inactivity/600] minutes" : "Logged out"]<br/><br/>
 		<A href='?src=\ref[src];boot2=\ref[M]'>Kick</A> |
-		<A href='?_src_=holder;warn=[M.ckey]'>Warn</A> |
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
 		<A href='?src=\ref[src];oocban=[M.ckey]'>[is_role_banned_ckey(M.ckey, role = BAN_ROLE_OOC)? "<font color='red'>OOC Ban</font>" : "OOC Ban"]</A> |
@@ -223,7 +223,15 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins))
 		to_chat(usr, "Error: you are not an admin!")
 		return
-	PlayerNotesPage(1)
+	//PlayerNotesPage(1)
+	tgui_notes()
+
+/datum/admins/proc/tgui_notes()
+	var/savefile/S=new("data/player_notes.sav")
+	var/list/note_keys
+	S >> note_keys
+	var/selected_ckey = tgui_input_list(usr, "Select the ckey you want the notes off:", "Ckey Select",sortList(note_keys))
+	show_player_info(selected_ckey)
 
 /datum/admins/proc/PlayerNotesPage(page)
 	var/dat = "<B>Player notes</B><HR>"
@@ -287,7 +295,7 @@ var/global/floorIsLava = 0
 	var/p_age = "unknown"
 	for(var/client/C in GLOB.clients)
 		if(C.ckey == key)
-			p_age = C.player_age
+			p_age = C.player.player_age
 			break
 	dat +="<span style='color:#000000; font-weight: bold'>Player age: [p_age]</span><br>"
 
@@ -333,7 +341,7 @@ var/global/floorIsLava = 0
 		to_chat(usr, "Error: you are not an admin!")
 		return
 	var/dat
-	dat = text("<HEAD><TITLE>Admin Newscaster</TITLE></HEAD><H3>Admin Newscaster Unit</H3>")
+	dat = "<HEAD><TITLE>Admin Newscaster</TITLE></HEAD><H3>Admin Newscaster Unit</H3>"
 
 	switch(admincaster_screen)
 		if(0)
@@ -357,7 +365,7 @@ var/global/floorIsLava = 0
 			dat+={"<HR><B>Feed Security functions:</B><BR>
 				<BR><A href='?src=\ref[src];ac_menu_wanted=1'>[(wanted_already) ? ("Manage") : ("Publish")] 'Wanted' Issue</A>
 				<BR><A href='?src=\ref[src];ac_menu_censor_story=1'>Censor Feed Stories</A>
-				<BR><A href='?src=\ref[src];ac_menu_censor_channel=1'>Mark Feed Channel with [GLOB.using_map.company_name] D-Notice (disables and locks the channel.</A>
+				<BR><A href='?src=\ref[src];ac_menu_censor_channel=1'>Mark Feed Channel with [(LEGACY_MAP_DATUM).company_name] D-Notice (disables and locks the channel.</A>
 				<BR><HR><A href='?src=\ref[src];ac_set_signature=1'>The newscaster recognises you as:<BR> <FONT COLOR='green'>[src.admincaster_signature]</FONT></A>
 			"}
 		if(1)
@@ -423,7 +431,7 @@ var/global/floorIsLava = 0
 			dat+="<B>[src.admincaster_feed_channel.channel_name]: </B><FONT SIZE=1>\[created by: <FONT COLOR='maroon'>[src.admincaster_feed_channel.author]</FONT>\]</FONT><HR>"
 			if(src.admincaster_feed_channel.censored)
 				dat+={"
-					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [GLOB.using_map.company_name] D-Notice.<BR>
+					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [(LEGACY_MAP_DATUM).company_name] D-Notice.<BR>
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
@@ -444,7 +452,7 @@ var/global/floorIsLava = 0
 			"}
 		if(10)
 			dat+={"
-				<B>[GLOB.using_map.company_name] Feed Censorship Tool</B><BR>
+				<B>[(LEGACY_MAP_DATUM).company_name] Feed Censorship Tool</B><BR>
 				<FONT SIZE=1>NOTE: Due to the nature of news Feeds, total deletion of a Feed Story is not possible.<BR>
 				Keep in mind that users attempting to view a censored feed will instead see the \[REDACTED\] tag above it.</FONT>
 				<HR>Select Feed channel to get Stories from:<BR>
@@ -457,7 +465,7 @@ var/global/floorIsLava = 0
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Cancel</A>"
 		if(11)
 			dat+={"
-				<B>[GLOB.using_map.company_name] D-Notice Handler</B><HR>
+				<B>[(LEGACY_MAP_DATUM).company_name] D-Notice Handler</B><HR>
 				<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the station's
 				morale, integrity or disciplinary behaviour. A D-Notice will render a channel unable to be updated by anyone, without deleting any feed
 				stories it might contain at the time. You can lift a D-Notice if you have the required access at any time.</FONT><HR>
@@ -490,7 +498,7 @@ var/global/floorIsLava = 0
 			"}
 			if(src.admincaster_feed_channel.censored)
 				dat+={"
-					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [GLOB.using_map.company_name] D-Notice.<BR>
+					<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a [(LEGACY_MAP_DATUM).company_name] D-Notice.<BR>
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
@@ -576,7 +584,7 @@ var/global/floorIsLava = 0
 		var/r = t
 		if( findtext(r,"##") )
 			r = copytext( r, 1, findtext(r,"##") )//removes the description
-		dat += text("<tr><td>[t] (<A href='?src=\ref[src];removejobban=[r]'>unban</A>)</td></tr>")
+		dat += "<tr><td>[t] (<A href='?src=\ref[src];removejobban=[r]'>unban</A>)</td></tr>"
 	dat += "</table>"
 	usr << browse(dat, "window=ban;size=400x400")
 
@@ -641,11 +649,11 @@ var/global/floorIsLava = 0
 	if(!check_rights(0))	return
 
 	var/message = input("Global message to send:", "Admin Announce", null, null)  as message//todo: sanitize for all?
-	if(message)
+	if(trim(message))
 		if(!check_rights(R_SERVER,0))
 			message = sanitize(message, 500, extra = 0)
 		message = replacetext(message, "\n", "<br>") // required since we're putting it in a <p> tag
-		to_chat(world, "<span class=notice><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
+		to_chat(world, "<span class=notice><b>[usr.client.is_under_stealthmin() ? "Administrator" : usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -972,14 +980,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	config_legacy.allow_admin_spawning = !(config_legacy.allow_admin_spawning)
 	message_admins("<font color=#4F49AF>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/adrev()
-	set category = "Server"
-	set desc="Toggle admin revives"
-	set name="Toggle Revive"
-	config_legacy.allow_admin_rev = !(config_legacy.allow_admin_rev)
-	message_admins("<font color=#4F49AF>Toggled reviving to [config_legacy.allow_admin_rev].</font>")
-	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
@@ -1372,7 +1372,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] has put [frommob.ckey] in control of [tomob.name].</span>")
 	log_admin("[key_name(usr)] stuffed [frommob.ckey] into [tomob.name].")
 	feedback_add_details("admin_verb","CGD")
-	tomob.ckey = frommob.ckey
+	frommob.transfer_client_to(tomob)
 	qdel(frommob)
 	return 1
 
@@ -1534,7 +1534,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 
 		if(!P.stamped)
 			P.stamped = new
-		P.stamped += /obj/item/stamp/centcomm
+		P.stamped += /obj/item/stamp/centcom
 		P.add_overlay(stampoverlay)
 
 	var/obj/item/rcvdcopy
@@ -1569,7 +1569,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 	if(!isobserver(owner.mob))
 		return
 	var/mob/observer/dead/dead = owner.mob
-	var/stealthghost = owner.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode)
+	var/stealthghost = owner.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost)
 	if(!stealthghost || !fakekey)
 		dead.invisibility = initial(dead.invisibility)
 		dead.alpha = initial(dead.alpha)

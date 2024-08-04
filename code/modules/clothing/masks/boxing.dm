@@ -5,7 +5,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 	inv_hide_flags = HIDEFACE|BLOCKHAIR
 	body_cover_flags = FACE|HEAD
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/balaclava/tactical
 	name = "green balaclava"
@@ -13,7 +13,7 @@
 	icon_state = "swatclava"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandgreen", SLOT_ID_LEFT_HAND = "bandgreen")
 	inv_hide_flags = HIDEFACE|BLOCKHAIR
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/luchador
 	name = "Luchador Mask"
@@ -21,7 +21,7 @@
 	icon_state = "luchag"
 	inv_hide_flags = HIDEFACE|BLOCKHAIR
 	body_cover_flags = HEAD|FACE
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	siemens_coefficient = 3.0
 
 /obj/item/clothing/mask/luchador/tecnicos

@@ -218,6 +218,8 @@
 	limit_b_y = POLAR_TO_CART_Y(light_range + ARBITRARY_NUMBER, limit_b_t)
 	limit_b_y = MINMAX(limit_b_y)
 
+BLOCK_BYOND_BUG_2072419
+
 #undef ARBITRARY_NUMBER
 #undef POLAR_TO_CART_X
 #undef POLAR_TO_CART_Y

@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /**
  * holds cached, invertible lists
  * allows all using null values and non-inverted
@@ -88,6 +91,8 @@
 GLOBAL_LIST_EMPTY(struct_bodytypes)
 
 /proc/fetch_bodytypes_struct(encoded)
+	if(isnull(encoded))
+		return encoded
 	if(istype(encoded, /datum/bodytypes))
 		return encoded
 	var/list/original

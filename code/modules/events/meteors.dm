@@ -21,13 +21,13 @@
 	endWhen = worst_case_end()
 
 /datum/event/meteor_wave/start()
-	affecting_z -= GLOB.using_map.sealed_levels	// Space levels only please!
+	affecting_z -= (LEGACY_MAP_DATUM).sealed_levels	// Space levels only please!
 	..()
 
 /datum/event/meteor_wave/announce()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = sound('sound/effects/meteor_storm.ogg',volume=20))
+			command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = sound('sound/effects/meteor_storm.ogg',volume=8))
 		else
 			command_announcement.Announce("\The [location_name()] is now in a meteor shower.", "Meteor Alert")
 

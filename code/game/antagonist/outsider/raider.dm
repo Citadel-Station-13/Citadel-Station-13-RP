@@ -230,7 +230,7 @@ var/datum/antagonist/raider/raiders
 	id.name = "[player.real_name]'s Passport"
 	id.assignment = "Visitor"
 	var/obj/item/storage/wallet/W = new(player)
-	W.handle_item_insertion(id)
+	W.obj_storage.insert(id)
 	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 	spawn_money(rand(50,150)*10,W)
 	create_radio(RAID_FREQ, player)

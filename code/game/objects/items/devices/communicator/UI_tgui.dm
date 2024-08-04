@@ -5,8 +5,9 @@
 	// Stuff needed to render the map
 	var/map_name
 	var/atom/movable/screen/map_view/cam_screen
-	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
+	/// plane holder
+	var/datum/plane_holder/tgui_camera/planes
 	/// parallax holder for camera
 	var/datum/parallax_holder/parallax
 
@@ -23,19 +24,15 @@
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
 
-	cam_plane_masters = get_tgui_plane_masters()
-
-	for(var/plane in cam_plane_masters)
-		var/atom/movable/screen/instance = plane
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = FALSE
-		instance.screen_loc = "[map_name]:CENTER"
-
-	parallax = new(null, map_name, src, locate(/atom/movable/screen/plane_master/parallax) in cam_plane_masters)
-
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
+
+/obj/item/communicator/proc/ensure_tgui_camera()
+	if(isnull(planes))
+		planes = new(map_name)
+	if(isnull(parallax))
+		parallax = new(secondary_map = map_name, forced_eye = src)
 
 // Proc: update_active_camera_screen()
 // Parameters: None
@@ -86,7 +83,7 @@
 // Proc: ui_state()
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
-/obj/item/communicator/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/communicator/ui_state()
 	return GLOB.inventory_state
 
 // Proc: ui_interact()
@@ -99,10 +96,10 @@
 	if(!ui)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
-		for(var/plane in cam_plane_masters)
-			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
-		parallax.Apply(user.client)
+		ensure_tgui_camera()
+		planes.apply(user.client)
+		parallax.apply(user.client)
 		// Setup UI
 		ui = new(user, src, "Communicator", name)
 		if(custom_state)
@@ -111,14 +108,17 @@
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
 
-/obj/item/communicator/ui_close(mob/user, datum/tgui_module/module)
+/obj/item/communicator/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
-	parallax.Remove(user.client)
+	if(isnull(user.client))
+		return // what???
+	parallax.remove(user.client)
+	planes.remove(user.client)
 
 // Proc: ui_data()
 // Parameters: User, UI, State
 // Description: Uses a bunch of for loops to turn lists into lists of lists, so they can be displayed in nanoUI, then displays various buttons to the user.
-/obj/item/communicator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_data(mob/user, datum/tgui/ui)
 	// this is the data which will be sent to the ui
 	var/list/data = list()						//General nanoUI information
 	var/list/communicators = list()			    //List of communicators
@@ -298,7 +298,7 @@
 // Proc: ui_static_data()
 // Parameters: User, UI, State
 // Description: Just like ui_data, except it only gets called once when the user opens the UI, not every tick.
-/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 	// Update manifest'
 	if(data_core)
@@ -373,7 +373,7 @@
 				im_list += list(list("address" = exonet.address, "to_address" = their_address, "im" = text))
 				log_pda("(COMM: [src]) sent \"[text]\" to [exonet.get_atom_from_address(their_address)]", usr)
 				for(var/mob/M in GLOB.player_list)
-					if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
+					if(M.stat == DEAD && M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
 						if(istype(M, /mob/new_player) || M.forbid_seeing_deadchat)
 							continue
 						if(exonet.get_atom_from_address(their_address) == M)

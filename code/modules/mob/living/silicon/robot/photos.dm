@@ -9,11 +9,11 @@
 	for(var/obj/item/photo/borg_photo in aiCamera.aipictures)
 		var/copied = 0
 		for(var/obj/item/photo/ai_photo in master_cam.aipictures)
-			if(borg_photo.id == ai_photo.id)
+			if(borg_photo.photograph_id == ai_photo.photograph_id)
 				copied = 1
 				break
 		if(!copied)
-			master_cam.injectaialbum(borg_photo.copy(1), " (synced from [name])")
+			master_cam.injectaialbum(borg_photo.copy(TRUE), " (synced from [name])")
 			synced = 1
 
 	if(synced)

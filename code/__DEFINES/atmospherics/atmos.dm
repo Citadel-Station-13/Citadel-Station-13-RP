@@ -1,6 +1,4 @@
 // Math constants.
-/// kPa*L/(K*mol).
-#define R_IDEAL_GAS_EQUATION       8.31
 /// kPa.
 #define ONE_ATMOSPHERE             101.325
 /// (mol^3 * s^3) / (kg^3 * L).
@@ -13,10 +11,6 @@
 #define TCMB 2.7     //! -270.3 degrees celcius
 
 // Radiation constants.
-/// W/(m^2*K^4).
-#define STEFAN_BOLTZMANN_CONSTANT    5.6704e-8
-/// K.
-#define COSMIC_RADIATION_TEMPERATURE 3.15
 /// W/m^2. Kind of arbitrary. Really this should depend on the sun position much like solars.
 #define AVERAGE_SOLAR_RADIATION      200
 /// kPa at 20 C. This should be higher as gases aren't great conductors until they are dense. Used the critical pressure for air.
@@ -27,8 +21,6 @@
 #define RADIATOR_EXPOSED_SURFACE_AREA_RATIO 0.04
 ///m^2, surface area of 1.7m (H) x 0.46m (D) cylinder
 #define HUMAN_EXPOSED_SURFACE_AREA          5.2
-/// Moles in a 2.5 m^3 cell at 101.325 kPa and 20 C.
-#define MOLES_CELLSTANDARD (ONE_ATMOSPHERE*CELL_VOLUME/(T20C*R_IDEAL_GAS_EQUATION))
 /// Percentage.
 #define O2STANDARD 0.21
 #define N2STANDARD 0.79
@@ -36,9 +28,9 @@
 /// Moles in a standard cell after which phoron is visible.
 #define MOLES_PHORON_VISIBLE 0.7
 /// O2 standard value (21%)
-#define MOLES_O2STANDARD     (MOLES_CELLSTANDARD * O2STANDARD)
+#define MOLES_O2STANDARD     (CELL_MOLES * O2STANDARD)
 /// N2 standard value (79%)
-#define MOLES_N2STANDARD     (MOLES_CELLSTANDARD * N2STANDARD)
+#define MOLES_N2STANDARD     (CELL_MOLES * N2STANDARD)
 #define MOLES_O2ATMOS (MOLES_O2STANDARD*50)
 #define MOLES_N2ATMOS (MOLES_N2STANDARD*50)
 
@@ -52,7 +44,7 @@
 #define BREATH_MOLES        (ONE_ATMOSPHERE * BREATH_VOLUME / (T20C * R_IDEAL_GAS_EQUATION))
 /// Amount of air needed before pass out/suffocation commences.
 #define BREATH_PERCENTAGE   (BREATH_VOLUME / CELL_VOLUME)
-#define HUMAN_NEEDED_OXYGEN (MOLES_CELLSTANDARD * BREATH_PERCENTAGE * 0.16)
+#define HUMAN_NEEDED_OXYGEN (CELL_MOLES * BREATH_PERCENTAGE * 0.16)
 ///J/K For 80kg person
 #define HUMAN_HEAT_CAPACITY 280000
 /// The amount of pressure damage someone takes is equal to (pressure / HAZARD_HIGH_PRESSURE)*PRESSURE_DAMAGE_COEFFICIENT, with the maximum of MAX_PRESSURE_DAMAGE.

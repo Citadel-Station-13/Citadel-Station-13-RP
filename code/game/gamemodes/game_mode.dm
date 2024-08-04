@@ -135,7 +135,6 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/announce() //to be called when round starts
 	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
-	to_chat(world, "<B>The current engine is [GLOB.used_engine]!</B>")//Actually, why not expand this....
 	if(round_description) to_chat(world, "[round_description]")
 	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
 	if(antag_templates && antag_templates.len)
@@ -540,7 +539,7 @@ var/global/list/additional_antag_types = list()
 
 /mob/verb/check_round_info()
 	set name = "Check Round Info"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	if(!SSticker || !SSticker.mode)
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")
@@ -548,7 +547,6 @@ var/global/list/additional_antag_types = list()
 
 	if(master_mode != "secret")
 		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
-		to_chat(usr, "<b>The engine is [GLOB.used_engine]</b>")
 		if(SSticker.mode.round_description)
 			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
 		if(SSticker.mode.extended_round_description)

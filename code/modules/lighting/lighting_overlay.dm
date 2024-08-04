@@ -7,7 +7,7 @@
 	icon_state = LIGHTING_BASE_ICON_STATE
 
 	plane = LIGHTING_PLANE
-	layer = LIGHTING_LAYER
+	layer = LIGHTING_LAYER_MAIN
 	color = LIGHTING_BASE_MATRIX
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -21,6 +21,8 @@
 	#endif
 
 /atom/movable/lighting_overlay/New(newloc, update_now = FALSE)
+	SHOULD_CALL_PARENT(FALSE)
+
 	atom_flags |= ATOM_INITIALIZED
 	SSlighting.total_lighting_overlays += 1
 

@@ -52,8 +52,7 @@
 						about the importance of Suit Sensors."
 	alt_titles = list (
 		"Chief Physician" = /datum/prototype/struct/alt_title/cmo/physician,
-		"Director of Medicine" = /datum/prototype/struct/alt_title/cmo/director,
-		"Chief Surgeon" = /datum/prototype/struct/alt_title/cmo/surgeon
+		"Director of Medicine" = /datum/prototype/struct/alt_title/cmo/director
 	)
 
 /datum/prototype/struct/alt_title/cmo/physician
@@ -61,9 +60,6 @@
 
 /datum/prototype/struct/alt_title/cmo/director
 	title = "Director of Medicine"
-
-/datum/prototype/struct/alt_title/cmo/surgeon
-	title = "Chief Surgeon"
 
 /datum/outfit/job/station/chief_medical_officer
 	name = OUTFIT_JOB_NAME("Chief Medical Officer")

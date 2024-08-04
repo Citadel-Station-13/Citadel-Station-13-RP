@@ -13,7 +13,8 @@
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/can_dirty = TRUE	// If false, tile never gets dirty
 	var/can_start_dirty = FALSE	// If false, cannot start dirty roundstart
-	var/dirty_prob = 2	// Chance of being dirty roundstart
+	// todo: don't do this because peresistence
+	var/dirty_prob = 0	// Chance of being dirty roundstart
 	var/dirt = 0
 	var/special_temperature //Used for Lava HE-Pipe interaction
 
@@ -26,8 +27,6 @@
 
 /turf/simulated/Initialize(mapload)
 	. = ..()
-	if(mapload)
-		levelupdate()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
@@ -80,14 +79,11 @@
 		tracks = new typepath(src)
 	tracks.AddTracks(bloodDNA,comingdir,goingdir,bloodcolor)
 
-/turf/simulated/proc/update_dirt()
+/turf/simulated/proc/update_dirt(increment = 1)
 	if(can_dirty)
-		dirt = min(dirt+1, 101)
-		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, src)
-		if (dirt > 50)
-			if (!dirtoverlay)
-				dirtoverlay = new/obj/effect/debris/cleanable/dirt(src)
-			dirtoverlay.alpha = min((dirt - 50) * 5, 255)
+		dirt += increment
+		if(dirt >= 100)
+			set_dirt_object((dirt - 50) * 5)
 
 /turf/simulated/Entered(atom/movable/AM, atom/oldLoc)
 	..()
@@ -104,7 +100,8 @@
 
 		if(M.dirties_floor())
 			// Dirt overlays.
-			update_dirt()
+			// todo: currently nerfed
+			update_dirt(0.8)
 
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
@@ -195,3 +192,25 @@
 	. = ..()
 	for(var/atom/movable/AM as anything in contents)
 		rad_insulation_contents *= AM.rad_insulation
+
+//? Shuttle Movement
+
+/turf/simulated/CopyTurf(turf/T, change_flags)
+	if(!(change_flags & CHANGETURF_INHERIT_AIR))
+		return ..()
+	// invalidate zone
+	if(has_valid_zone())
+		if(can_safely_remove_from_zone())
+			zone.remove(src)
+			queue_zone_update()
+		else
+			zone.rebuild()
+	// store air
+	var/datum/gas_mixture/old_air = remove_cell_volume()
+	. = ..()
+	// restore air
+	if(istype(., /turf/simulated))
+		var/turf/simulated/casted = .
+		if(casted.has_valid_zone())
+			stack_trace("zone rebuilt too fast")
+		casted.air = old_air

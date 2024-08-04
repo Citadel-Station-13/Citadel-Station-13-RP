@@ -194,7 +194,7 @@
 // Adminbuse things for overmap sectors
 
 // This is a stationary overmap sector, you can spawn it in any zlevel and it will pop onto the overmap to represent those zlevels. It always moves to 2,2 on the overmap and you can move it elsewhere.
-/obj/effect/overmap/visitable/admin_use
+/obj/overmap/entity/visitable/admin_use
 	name = "space destination"
 	desc = "Some space destination!"
 	scanner_name = "REPLACE ME"
@@ -207,12 +207,12 @@
 	known = 0
 
 // It notifies admins when you spawn it and gives you a 'JMP' and 'VV' link in the message so you can find it easily.
-/obj/effect/overmap/visitable/admin_use/Initialize(mapload)
+/obj/overmap/entity/visitable/admin_use/Initialize(mapload)
 	. = ..()
 	message_admins("An uploaded sector [ADMIN_JMP(src)][ADMIN_VV(src)] has been placed on the overmap. Don't forget to rename and set cool scanner info on it!")
 
 // This is the same, but makes a whole spaceship!
-/obj/effect/overmap/visitable/ship/admin_use
+/obj/overmap/entity/visitable/ship/admin_use
 	name = "spacecraft"
 	desc = "Spacefaring vessel."
 	scanner_name = "REPLACE ME"
@@ -228,7 +228,7 @@
 	known = 0
 
 // Similarly notifies you
-/obj/effect/overmap/visitable/ship/admin_use/Initialize(mapload)
+/obj/overmap/entity/visitable/ship/admin_use/Initialize(mapload)
 	. = ..()
 	message_admins("An uploaded ship [ADMIN_JMP(src)][ADMIN_VV(src)] has been placed on the overmap. Don't forget to rename and set cool scanner info on it!")
 

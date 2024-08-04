@@ -3,7 +3,7 @@
 		var/area/A = get_area(H)
 		if(!A)
 			continue
-		if(!(A.z in GLOB.using_map.station_levels))
+		if(!(A.z in (LEGACY_MAP_DATUM).station_levels))
 			continue
 		if(A.area_flags & AREA_RAD_SHIELDED)
 			continue

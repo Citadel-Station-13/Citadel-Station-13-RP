@@ -19,7 +19,7 @@
 
 	mob_class = MOB_CLASS_ILLUSION
 
-	ai_holder_type = /datum/ai_holder/simple_mob/inert/astar // Gets controlled manually by technomancers/admins, with AI pathfinding assistance.
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/inert/astar // Gets controlled manually by technomancers/admins, with AI pathfinding assistance.
 
 	var/atom/movable/copying = null // The thing we're trying to look like.
 	var/realistic = FALSE // If true, things like bullets and weapons will hit it, to be a bit more convincing from a distance.
@@ -39,7 +39,7 @@
 
 // Because we can't perfectly duplicate some examine() output, we directly examine the AM it is copying.  It's messy but
 // this is to prevent easy checks from the opposing force.
-/mob/living/simple_mob/illusion/examine(mob/user)
+/mob/living/simple_mob/illusion/examine(mob/user, dist)
 	if(copying)
 		copying.examine(user)
 		return

@@ -29,7 +29,23 @@
 		/datum/lore/codex/page/ad3,
 		/datum/lore/codex/page/prince,
 		/datum/lore/codex/page/blueshield,
-		/datum/lore/codex/page/volink
+		/datum/lore/codex/page/volink,
+		/datum/lore/codex/page/veymed,
+		/datum/lore/codex/page/cannibal,
+		/datum/lore/codex/page/catskinner,
+		/datum/lore/codex/page/ntrevenue,
+		/datum/lore/codex/page/catskinner2,
+		/datum/lore/codex/page/recession,
+		/datum/lore/codex/page/volink2,
+		/datum/lore/codex/page/xeno_surt,
+		/datum/lore/codex/page/hack,
+		/datum/lore/codex/page/krisitik,
+		/datum/lore/codex/page/ad4,
+		/datum/lore/codex/page/veymed,
+		/datum/lore/codex/page/fallmansstar,
+		/datum/lore/codex/page/hivebots,
+		/datum/lore/codex/page/three_fingers,
+		/datum/lore/codex/page/changeling
 		)
 
 /datum/lore/codex/page/about_news
@@ -40,26 +56,26 @@
 	information, feel free to visit our homepage at oc.about.tsc, or the sites of any of our constituents."
 
 /datum/lore/codex/page/lythios
-	name = "Nanotrasen Acquires Three Systems from People's Republic of Adhomai! Insult to revolution or savy political move? -  6/19/2563"
+	name = "Nanotrasen Acquires Three Worlds from People's Republic of Adhomai! Insult to revolution or savy political move? -  6/19/2563"
 	data = "Today Nanotrasen announced that is had purchased three systems from the People's Republic of Adhomai (PRA), a move widely mocked by the Republic's rivals on Adhomai.\
-	The three systems Lythios-43, Miaphus, and Motov were 'settled' as penal colonies in the late 2530's and early 2540's. Since the three systems have been a drain on the \
-	resources of the PRA as the meagre mines and resources of the three systems along with their meagre forced laborer population could not hope to cover the costs of maintaining \
+	The three planets Lythios-43, Miaphus, and Motov were 'settled' as penal colonies in the late 2530's and early 2540's. Since then these three systems have been a drain on the \
+	resources of the PRA. The meagre mines and resources of the three worlds along with their meagre forced laborer population could not hope to cover the costs of maintaining \
 	the distant colonies. The final straw came for the colonies when in 2557 a experimental reactor in a weapons testing facility on Lythios-43c suffered a catastrophic meltdown.\
-	With hundreds injured and dozens dead from the meltdown, the PRA vowed to close the facility and in 2560 the Lythios last Tajaran personelle left Lythios-43c abandoning the system.\
+	With hundreds injured and dozens dead from the meltdown, the PRA vowed to close the facility and in 2560 the Lythios last Tajaran personelle left Lythios-43c abandoning the planet.\
 	<br><br>\
-	Shortly after, the PRA entered negotations with Nanotrasen over the rights to the three systems after similar high profile disasters occured in Miaphus and Motov systems.\
+	Shortly after, the PRA entered negotations with Nanotrasen over the rights to the three worlds after similar high profile disasters occured in Miaphus and Motov systems.\
 	The deal was made public last week, when documents detailing the arrangement were leaked to the independent press on Adhomai by anonamous source. In total, Nanotrasen has \
-	acquired the two colonies Miaphus'irra, a scorching desert world, and Motov'maal, an icy planet witha subterraiian ocean respectively, various outposts within the Motov,\
-	Miaphus and Lythios-43 systems, along with the esimtated fifty thousand ajaran penal colonists within. Nanotrasen has vowed to turn the colonies into prosperous frontier societies,\
+	acquired the two colonies Miaphus'irra, a scorching desert world, and Motov'maal, an icy planet witha subterrainian ocean respectively, various outposts orbiting the Motov,\
+	Miaphus and Lythios-43, along with the estimated fifty thousand Tajaran penal colonists within. Nanotrasen has vowed to turn the colonies into prosperous frontier societies,\
 	freeing the former laborers and offering them all gainful employment within the company.\
 	<br><br>\
 	On Adhomai however the sale has been met with mass mockery. The New Kingdom of Adhomai and Democratic Republic of Adhomai have both issued scathing criticism of the PRA \
 	mocking their lack of commitment to the revolutionary values they claim to strive for not only selling their planets to foriegners but a foriegn megacorporation.\
 	The media on Adhomai aside from PRA controlled channels have given non-stop coverage of the incident which has provided almost endless fodder for the comedians across \
-	the snowy hoemworld of the Tajaran people. The PRA in response annouce their 'partnership' with Nanotrasen relating to the system earlier today in a blatant attempt to \
+	the snowy hoemworld of the Tajaran people. The PRA in response annouced their 'partnership' with Nanotrasen relating to the systems earlier today in a blatant attempt to \
 	save face.\
 	<br><br>\
-	Nanotrasen for its part has begun preparing to take over the facilities they ahve purchased from the PRA. One of its first priorities and part of the original deal with the PRA \
+	Nanotrasen for its part has begun preparing to take over the facilities they have purchased from the PRA. One of its first priorities and part of the original deal with the PRA \
 	is to take some measures to clean up the still heavily radioactive remains of the reactor site of Lythios-43c Nanotrasen considers the world a top priority for resource expoitation \
 	and study and are eager to repurpose the remanents of the Tajaran base their into yet another of their countless surface bases. Similarly it hopes to ressume production on the mines \
 	of Miaphus'irra and improve the aquaponics and geothermal facilities on Motov'maal, hoping to turn the former penal colonies around in a positive way.\
@@ -151,7 +167,7 @@
 	unidentified group of pirates. Sometime earlier in the month these pirates descended upon the poor citizens of Mescalero and unleashed an overwhelming orgy of violence.\
 	Seemingly intent on wholesale slaughter, the pirates moved from town to town, farmstead to farmstead, and killed all in their path.\
 	<br><br>\
-	Salvation for the survivors arrived on the night of 9/6/2564 when a NanoTrasen Exploratory Fleet passing through the system performed a routine scouting run on the planet. \
+	Salvation for the survivors arrived on the night of 9/6/2564 when a Nanotrasen Exploratory Fleet passing through the system performed a routine scouting run on the planet. \
 	An NT Official who asked to remain anonymous reported that scouts from the NSV Triumph were the first on scene, where they engaged in a mighty firefight with the pirates. \
 	After destroying a vital command post, the scouting party withdrew and Emergency Response Teams were dispatched to remove the remaining pirate presence. Survivors rescued \
 	by the ERTs numbered in the hundreds, with the majority of the planet's inhabitants having fallen victim to the merciless onslaught. Most of the survivors are currently \
@@ -322,21 +338,21 @@
 	of Fungal Tuberculois and their dispersal devices into storage shortly a few years before Cybersun Industries and the Syndicate dissolved entirely \
 	signaling an end to the phoron wars. \
 	<br><br>\
-	Since that the phoron wars incidents like the tragedy on Rzhavoye-Zoloto have not been entirely unheard of. Cybersun's rapid dissolution, alongside the collapse of its \
+	Since the end of phoron wars incidents like the tragedy on Rzhavoye-Zoloto have not been entirely unheard of. Cybersun's rapid dissolution, alongside the collapse of its \
 	allies such as the Gorlex Manufacturing Corporation, saw countless stockpiles of Syndicate Nuclear Biological and Chemical weaponry disappear as they were either \
 	hidden, destroyed, sold or perhaps even simply forgotten about. With the spread of Nanotrasen's antifungal counter to fungal TB and Zeng-Hu Pharmaceutical's own \
 	incorporation of  similarly effective anti-fungal agents into their own mass market drugs, deaths from Fungal Tuberculois are now thankfully rare, and with \
 	fewer and fewer samples of the weapon floating about the galaxy, many hope that this grim reminder of the phoron wars will soon only exist in labortories."
 
 /datum/lore/codex/page/pirates3
-	name = "Pirate Raids Lock Down the Temhöser Gate, Kill Prominent Naramadi Matriach! - 11/7/2566"
-	data = "With the frontier colonies being more spread out as ever, Piracy is growing rampart in those territories. While Megacorporations such as NanoTrasen, \
+	name = "Pirate Raids Lock Down the Temhoser Gate, Kill Prominent Naramadi Matriach! - 11/7/2566"
+	data = "With the frontier colonies being more spread out as ever, Piracy is growing rampart in those territories. While Megacorporations such as Nanotrasen, \
 	Hepastheus and even Necropolis Industries might protect certain trade routes neccessary for their continued prosperity, it was always assumed that \
 	the three major Galactic powers, that being the Orion Confederacy, Moghes Hegemony and Vikara Combine, will protect that major hyperspace routes from dangers. \
 	That, however, has been proven not to be the case. \
 	<br><br>\
 	In recent days there was a major spike in Pirate activity on lanes connecting Orion Confederacy and it's frontiers, as well as the Hegemony and the Combine. \
-	With the amount of pirate raids increasing, most free traders do not dare cross the Temhöser gate, the so called 'bottleneck' in Hyperlanes leading into \
+	With the amount of pirate raids increasing, most free traders do not dare cross the Temhoser gate, the so called 'bottleneck' in Hyperlanes leading into \
 	the Hegemony from Galactic south or follow the ill-protected Eastern Highways into the Vikara Combine. \
 	<br><br>\
 	It was reported by many of our readers in the Western frontier that a large group of pirates has made their camp right outside the Temhöser gate, \
@@ -369,7 +385,7 @@
 	Keisa people and their technology. Keisa technology which was built on a foundation of nanite technology made them perhaps the most advanced \
 	pre-FTL civilization to be studied by modern Xenoarchaeologists. The destruction of the Keisa civilization due to nuclear war and the resulting \
 	planet wide EMPs wiping out nanite colonies has resulted in their former homeworld of Dioscuri becoming one of the most archaelogically and \
-	technologically rich sites in the galaxy. The planet is beset by piratical looters and ancient half functional but still deadly Keisani nanite \
+	technologically rich sites in the galaxy. The planet is beset by piratical looters and ancient, half functional, but still deadly Keisani nanite \
 	constructs. Xenoarchaeological teams hope that with better understanding of the Keisa language they can disable and repurpose these \
 	ancient nanites devices and constructs furthering the galaxy's collective understanding of nanite technology without falling into the same \
 	pitfalls of the extinct Keisa. Though the codex is currently only available in xenoarchaeological circles both trained professionals and \
@@ -382,7 +398,7 @@
 	Dysterhet's seat on the Confederation marking the first time a Xenomorph Hybrid has ever held a seat in the highest halls of the Orion Confederation \
 	outside the Neomorph homeworld of Berkaugen. \
 	<br><br>\
-	The lonely system of Enshamet is a mere ten light years from Dysterhet, the star Berkaugen. Its only populated world is the Traskherren a world known \
+	The lonely system of Enshamet is a mere ten light years from Dysterhet, the star of Berkaugen. Its only populated world is Traskherren, a world known \
 	for its acid rains and slightly chlorinated atmosphere. The conditions on the surface were hostile to human life however they proved valuable for \
 	both mining and research the unique atmosphere being host to variety of specialized flora and micro organisms. The unique atmosphere and pletniful acid \
 	also made certain chemical processes very effecient which lead to the first permanent settlements on the planet, which were funded by Zheng-Hu Pharmaceuticals. \
@@ -466,7 +482,7 @@
 	struggling Tajaran state. After almost a month of silence from King Arzthram Azunja, the King finally annouced a royal conferrence, in which potential \
 	canidates for the title of Crown Prince, would formally announce their candidacy. With over a dozen potential canidates among the eligible nephews and grandsons \
 	of King Arzthram many already having signifcant backing among the New Kingdom's noble class it was bound to be a busy event where each of the princes \
-	would be trying their best to stand out. However, one young prince has stolen the spotlight during the conference, the Luna educated prince Volink Azunja son of the \
+	would be trying their best to stand out. However, one young prince has stolen the spotlight during the conference, the Luna educated prince Volink Azunja son of \
 	King Arzthram's youngest brother. \
 	<br><br>\
 	The prince's initial annoucement of his candidacy originally was almost ignored, the young prince was written off as being far too \
@@ -488,3 +504,337 @@
 	darkness of this new age, til the old nobility lost in the snow of the Great Frost shines not just on Adhomai but across the galaxy. As for those who say I am unproven I assure them \
 	that they will soon find that I have prooved myself.'"
 
+/datum/lore/codex/page/veymed
+	name = "Vey-Med CEO Xe`qerreux Tel`barak Turns 180. Will he make it another decade? - 5/12/2567"
+	data = "There was no celebration today for Tel'barak. Turning 180 today he has far outlived what is considered the natural lifespan of a Skrell. Calls for his retirement by some board \
+	members have been left unanswered, and with his public appearances increasingly brief questions arise just how long Vey-Med's CEO, one of the most powerful individual in the galaxy, \
+	has left. The stakes for the company have never been higher, Tel'barak holds 15% ownership of Vey-Med at a time when the board is increaingly divided against itself. Vey-Med Orion, \
+	Tel'barak's ounbelievably successful pet project, represents 40% of Vey-Med while its Vikaran half represents 45% of the company. With the remaining 15% being owned by Tel'barak \
+	himself control of the company rests with the fate of his shares following his death. Should shares pass to one of the Orion aligned board members, many of which who were appointed \
+	by Tel'barak himself, then the one and only Vikaran medicorp will find the majority of its shares in the hands of its Orion half forever shifting the balance of power in the corporation. \
+	<br><br>\
+	Concern over the fate of Tel'barak and his shares have gone as far as the decision making body of the Vikaran Combine itself. With Vey-Med still holding special legal privleges in the \
+	Combine, many of its representatives and officials are now concerned that a human take over of the company will see those privleges exploited to the deteriment of the galaxy at large \
+	and more importantly the Vikara Combine's own government and civilian population. Though the contents of Tel'barak's will are still unknown, it is known that such a will has been filed \
+	within the Vikara Combine where Vey-Med has its headquarters. With many of Vikaran officials considering the continued smooth operation of Vey-Med a matter of national health, it is \
+	without doubt that should Tel'barak pass taht the Vikaran government will take a vested interest in the execution of his will. \
+	<br><br>\
+	Still as elderly as Tel'barak is some question whether he may die at all. With access to the best medical care available even treatments not yet available to the general public \
+	Tel'barak may have another 180 years ahead of him. However for now Vey-Med and the wider galaxy holds its breathe. The fate of one of the largest and most powerful megacorporations \
+	in the galaxy rests on a CEO that may soon be departed. For the millions if not billions reliant on Vey-Med's medical services, a disruption in the corporation can be the difference \
+	between life and death. Now those people can only hope that for Vey-Med that the potential shakeup within the corporation will either not come to pass or be as painless as possible."
+
+/datum/lore/codex/page/cannibal
+	name = "Cannibal Serial Killer Killed by Mob on Viento Seco! Cannibal Mania Taking the Galaxy? - 5/28/2567"
+	data = "A butcher from the frontier world of Viento Seco and a local supplier for Centauri Provisions came under suspicion for a series of disappearances that took place in the capital \
+	city of Parana.	With over a dozen people unsolved missing persons cases, police were baffled as to the cause of the disappearances until an anonymous tip lead them to the 'Gourmet's Cuts' \
+	butcher's shop. Inside they discovered the bodies of several of the missing persons in various states of being butchered. The police were then attacked by the owner and now prime suspect \
+	in several murders who managed to kill two of the officers and wound two more before escaping. Word quickly spread through the town and a panic ensued with citizens arming themselves in pursuit \
+	of the cannibal killer. In the chase that followed allegedly a dozen more people were killed between cases of mistaken identity, and strikes from the own killer with some victims apparently \
+	having been partially cannibalized raw. Eventually the killer was cornered by the mob and security forces, his last action was to charge the mob with an large machete resulting in him being \
+	shot over 40 times before finally dropping dead. Analysis of the bodies from the back room, not only confirmed that all dozen missing persons were killed at the suspect's shop, but that there \
+	was at  least six more unidentified persons among the remains found in the shop bringing the this killer's gruesome total to 18. The identity of the killer has not been released by the police and \
+	the Viento Seco government has vowed that the killer's name will never be released less it encourage further acts of killing. \
+	<br><br>\
+	The 'Butcher of Parana' is just the latest in a rash of cannibalism incidents over the past two year. Some statistics say that incidents of cannibalism is up over 200% since 2564. \
+	What was once merely the subject of horror movies and the habits of certain Vox pirate bands has become an increasingly common phenoma among the Galaxy's derranged. Sociologists are \
+	baffled at the sudden rise with many blaming the attention cannibals get in the media for the rise of cannibal activity. Others blame social contagion from societies where cannibalism \
+	isn't taboo such as among Vox raider groups who are infamous for preying on Teshari. Still some point to a darker connection. Many of these cannibal murderers share common ritual \
+	practices in their murders despite them happening tens of lightyears apart. This has lead some to suggest that these killers had a way of communicating with eachother and such a \
+	connection has even been explored by police on several frontier worlds however, no compelling evidence of a 'Cannibal Cult' has been found. This hasn't assauged the trauma the people of \
+	Parana, many of whom shopped at the 'Gourmet Cuts'. An anonymous citizen quoted to an Occulum Jounalist the following: 'You wouldn't know anything was wrong with it all. \
+	I never got a bad cut for Gourmet's ate a lot there. Now I gotta live with the idea that I may have been fed a person! God I am going to be sick, he fed me a person and I liked it!'."
+
+/datum/lore/codex/page/catskinner
+	name = "Prospective Prince DESTROYS Infamous Pirate Hoard! Thousands of Lifes Saved! Dreaded Pirate Lord on the Run!- 6/6/2567"
+	data = "A few days ago, the pirate group of Ssizikar 'The Catskinner' Tartic, launched a surprise attack on the former People's Republic of Adhomai penal colony of Miaphus'irra. \
+	Having for weeks harassed the local System Defense force of the recently formed Hadii's Folly Confederation of Freeholds, local defenses were almost completely wiped out in the \
+	initial surprise attack when a hijacked cargo ship bound for the SDF's orbital station exploded, as it came into dock. The pirates were then able to land onto the planet nearly \
+	unopposed. The 'Catskinner pirates', so named for their history of having flayed Tajaran prisoners, began an orgy of violence on the local population which was thankfully cut \
+	short by the arrival of the New Kingdom of Adhomai's Heavy Cruiser Sahira's Summit captained by none other then the crown prince canidate Prince Volink Azunja. Working with local \
+	surviving members of the System Defense Force and Nanotrasen security forces from nearby Lythios-34c to counter the pirates in both surface and space alike. Faced with the \
+	overwhelming power of Sahira's Summit, the pirate forces in space were quickly routed. Now stranded on the surface the ground forces were hunted down and destroyed by New \
+	Kingdom Royal Marines, Nanotrasen ground forces, and local militia. The surviving pirate ships including Tartic himself have fled however it seems their reign of terror \
+	is over. Many of Tartic's lieutenants and sub captains were either captured and killed. His own ship the Vsik Thechk or 'The Declawer' was reportedly heavily damaged. \
+	<br><br>\
+	Tartic's defeat may finally spell the end of his long reign of terror over the Tajara, having first begun terrorizing them during their attempts to colonize Hro'zamal nearly four decades ago. \
+	It was during this initial raid that Tartic and his band earned a reputation for grizzly brutality flaying captives, and indiscriminately massacring civilian populations. \
+	Though he was forced to abandon the trade and migration routes he used to prowl by the People's Republic of Adhomai Navy, he recently returned, with a much \
+	larger fleet of pirates, having grow into a pirate lord over the four decades of terrorizing the wider frontier. With his defeat however, it seems that his luck has finally run out. \
+	Prince Volink has stated his intention to provide security for Miaphus'irra until its SDF can be rebuilt simultaneously he has a launched a campaign against surviving pirates in \
+	order to completely wipe out the threat they pose to Miaphus'irra. Holding three of Tartic's lieutenants in his prison hold, Volink has stated they will be returned to Adhomai \
+	for trial after which they will surely be executed. Tartic himself remains at large but with his ship reportedly to damaged to make it far, we expect any day now to recieve \
+	news that Ssizikar the Catskinner, responsible for the deaths of thousands of Tajara has finally met his end. \
+	<br><br>\
+	Prince Volink himself, one of the many candidates to become Crown Prince of Adhomai following the death of Crown Prince Thram in March, was already seen among the frontrunners for the \
+	title of Crown Prince. Following this victory however, it is clear that he is leagues beyond his rivals. Already many nobles shout the praises of the 'star warrior' Prince Volink. \
+	If he can return Ssizikar Tartic to the New Kingdom for trial alive then that alone would secure him the crown of the New Kingdom. With rumors that the King of Adhomai Arzthram Azunja \
+	is coming close to making his decision and even darker rumors that he is coming close to the end of his life. A decision on who will take the throne of Adhomai following his death is \
+	expected soon. Though the scale of the battle at Miaphus'irra was small it may just be the start of a long and glorious rule of a great King."
+
+
+/datum/lore/codex/page/ntrevenue
+	name = "Nanotrasen Misses Revenue Targets! Stock Drops 5% in Massive Sellout! Trillions Wiped Out? - 6/16/2567"
+	data = "At the end of its Q2 Earnings report Nanotrasen showed that it has undershot its projected revenue by tens of millions of thalers. Though such money may be considered chump change \
+	for the galaxy spanning megacorporation, its ivnestors were shocked. Nanotrasen hasn't missed its targets since the height of the phoron wars and now some worry the Nanotrasen's near \
+	unlimited growth may in fact be slowing. With its traditional revenue sources of phoron and bluespace technology an increasingly competitive market Nanotrasen seems desperate to find \
+	new products in order to bolster its sales. Markets were quick to react to the news and the mass sellout of stock following the release of the disappointing sales figures has cost wiped out \
+	billions if not trillions of thalers in the company's market valuation value. In total Nanotrasen Incorporated (NT) was down 5.32% on the Solar Exchange by close. Despite the dour news Nanotrasen was quick to downplay \
+	the figures. Nanotrasen specifically points to the imminent new trade deal with the New Kingdom of Adhomai and its soon to be launched frontier exploration and exploitation expedition as signs \
+	that this unexpected slowing of growth is only temporary bump in the road. Other analysts however are not convinced. With Nanotrasen ballooning overhead fees and with their traditional markets \
+	drying up, some experts are saying that Nanotrasen's disappointing growth may continue with some pessimists predicting that revenue may event begin to contract with the company. As costs balloon \
+	Nanotrasen's leadership seems hesitant to cut costs and reduce staff perhaps fearing that they will end up on the chopping block. With millions reliant on Nanotrasen for employment protection or \
+	even their basic needs we can only hope that Nanotrasen's budgetary hiccups are temporary indeed."
+
+/datum/lore/codex/page/catskinner2
+	name = "Dreaded Pirate Lord Ssizikar Tartic Declared Dead, Adhomai Celebrates Demise of 'The Catskinner'- 6/28/2567"
+	data = "Ssizikar 'Catskinner' Tartic was found dead in a Nanotrasen-New Kingdom of Ahdomai joint-cooperative raid. Ssizikar was known for his unrelenting brutality towards the Tajaran people. \
+	Most recently Tartic lead an attack on the former People's Republic of Adhomai penal colony of Miaphus'irra an attack that left near 500 dead. It was during this attack that Tartic's fleet \
+	was ambushed by New Kingdom of Adhomai navy forces lead by Prince Volink Azunja and Nanotrasen security teams. Since that day, Tartic and his forces had been on the run rentlessly \
+	pursued by the New Kingdom and Nanotrasen The notorious pirate was allegedly dead before Nanotrasen forces even arrived. Former crew members, now on trial for piracy charges, \
+	attested to a 'coup' or 'plot' within the hideout that resulted in the death of Tartic. \
+	<br><br>\
+	As an exclusive piece of evidence, the last diary page of Tartic was recovered. It, too, speaks of the betrayal the former Captain was already suspecting. \
+	'Damn You Three Fingers! How much did they pay you to betray me! Who payed you to betray me! Was it the fucking CATS!!! No it was not the cats wasn't it,' writes Tartic. \
+	<br><br>\
+	Though no body was recovered both the testimony of the captured pirates and eveidence recovered from their hideout was enough to evidence for both the New Kingdom and \
+	Nanotrasen to agree that the Catskinner, who has terrorized the Tajara people for fourty years, has finally met his demise. With the vast majority of his crew now either \
+	dead or imprisoned, and his surviving lieutenants now awaiting trial on Adhomai, the Tajaran people can rest easy knowing that this terror has finally met his end."
+
+/datum/lore/codex/page/recession
+	name = "Nanotrasen Sell-off Spread to Other Megacorps? Is Recession Around the Corner?- 7/13/2567"
+	data = "Following Nanotrasen's lessen then stellar performance at the earning meeting last month, investors were hoping for good news this month from their competitors. Unforunately, \
+	revenue misses were abound for the Galaxy's megacorporations. Markets across Orion began selling ranging from Zheng-Hu's (ZHP) modest 1.06% drop to Aether's (AAR) 4.32% wipeout. Still the \
+	worst news remains for Nanotrasen whose is down a whole 8.5% since today last month. Many are beginning to fear the dawn of an galaxy spawning recession. Economists are not so sure however \
+	citing the still positive growth across the sector they regard the current situation as simply a slowdown that will be corrected with time. With many corporations looking to make hefty \
+	investments in securing new resources on the Frontier however many investors fear the drops in profit will only get worse before they get better. 'What do I need that they haven't already \
+	sold me?' says Doctor Pierre Passeau PhD of Ecomonics, University of Selene, Luna. 'Nanotrasen the model for the modern megacorp was only able to make sure good returns because it was able \
+	to discover things that we didn't know we needed yet, phoron and synthetic bluespace crystals. However the galaxy isn't so big anymore and more of it we explore the more we realize that there \
+	is not going to be another phoron out there to come and solve our economic problems. Corporations and investors need to learn to lower their expectations we won't be seeing new markets opening \
+	for a long time, not unless Nanotrasen or someone else finds something really new to sell us'. Perhaps that is what Nanotrasen hopes by sending their plans to send explorers out into deep frontier \
+	space. Either way it seems no matter how to spin it, the post phoron war boom is finally as an end, whether there will be a bust too remains to be seen."
+
+/datum/lore/codex/page/volink2
+	name = "Volink Azunja named Crown Prince in New Kingdom of Adhomai? Can he modernize the Kingdom? - 7/25/2567"
+	data = "Following his capture of the infamous Ssizikar Tartic, Prince Volink Azunja has returned to Adhomai a hero. His victory has drawn congratulations from all corners of Adhomian society \
+	as all corners of Adhomai are satisfied that the pirate lord responsible for the deaths of thousands of Tajara has finally met justice. Though his victory has also seen criticism from the \
+	New Kingdom's rivals and the Confederate Commonwealth, with the People's Republic of Adhomai cautioning against attributing the victory to the Prince stating instead it belongs to the \
+	people of Adhomai as a whole. Similarly the Confederate Commonwealth has criticized the solo nature of the New Kingdom Naval operation that brought down Tartic's fleet, stressing the \
+	need of all Tajara powers to work together to face their mutual enemies among the stars. Still within the New Kingdom Volink's victory has seen as a symbol of the growing power of the \
+	New Kingdom's fledgling fleet and the continued modernization of their society. \
+	<br><br>\
+	It seems that the Prince's efforts are being richly rewards as today with the aging King Arzthram Azunja officially annouced that the Prince, the son of his youngest brother, \
+	is to be the new Crown Prince, following the death fo the King's only son Prince Thram in March. An official ceremony is scheduled to take place sometime in August. \
+	In a short release to the press the Prince thanked S'rendarr, his uncle the King, and the marines and spacers who fought with him agianst Tartic. He vowed that his reign \
+	will not abandon the sacred traditions of the New Kingdom but 'banish the darkness of Mesa that has clouded this kingdom for too long' and 'bring the Kingdom of Adhomai \
+	into a new bright golden age within the light of the S'rendarr' and finally to 'spread that light to the far corners of the galaxy so all Tajara can bask in its glow!'. \
+	<br><br>\
+	The annoucement of Volink's appointment through only muted diplomatic reactions form galactic powers, however is rumors are to be believed the young prince is already making \
+	alliances and with Nanotrasen. The Prince following his appointment annouced new trading arrangements with the company today perhaps making the New Kingdom the most Nanotrasen \
+	friendly power on the face of Adhomai. However, this is not the unequal exploitative treaties Adhomai is used to. Diplomats have been shocked by the concessions Nanotrasen has given \
+	in the deal. Whether this deal was simply a hard driven fluke or the start of a new age of cooperation between the Kingdom and megacorporations remains to be seen however for now \
+	Nanotrasen is expected to take and train New Kingdom peasants as workers, skills that will no doubt aid in the development of the New Kingdom's archaic economy. Perhaps for once in \
+	this kingdom out of time things are looking up, though with Nanotrasen involved one can only wonder the true price."
+
+/datum/lore/codex/page/xeno_surt //Filty Nanotrasen Propaganda...
+	name = "Nanotrasen Clears Xenomorphs from Mining Planet, Bronze Age Civilization Saved From Extinction! - 8/2/2567"
+	data = "KT-943 also known as 'Surt' was once a Nanotrasen possesion of little repute among the stars. Once thought to be the home of nothing more than the ruins of a lost \
+	civilization it was revealed that the bronze aged natives dubbed 'Scorians' by Nanotrasen had survied the cataclysmic volcanic eruptions that were thought to have wiped \
+	out their fledgeling species. The natives, now living beneath the surface, have retained a complex bronze age society herding the dangerous native fauna with as much ease \
+	as frontier spacers herd cattle. This civilization can consider itself lucky beyond most races of the galaxy and recently they have survived a second calamity that almost \
+	spelt their extinction and this time the threat did not come from their own world but from the stars itself. \
+	<br><br>\
+	On July 8th, a meteor containing a hive of xenomorphs hit Surt and disgorged its chitinous invaders onto the planet. From there the infestation preyed on local fauna \
+	absorbing thier DNA to adapt to the fiery surface or Surt breeding even deadlier xenomorph races. Nanotrasen quickly spring into action, desperate to protect the mineral and \
+	anthropoligcal wealth of Surt. Thanks to the quick action of the Nanotrasen the initial hive was dispersed before it could begin gathering victims to spread the xenomorph \
+	menace across the planet. However, some xenos escaped and over the past month Nanotrasen has been fighting a tireless campaign to eliminate them. \
+	<br><br>\
+	On the 29th of July Nanotrasen launched a massive operation that ended in the slaying of the new Queen of the Xenomorphs and destroying of most of the xenos on the planet. \
+	There was simply nowhere the xenos could escape to. Today Nanotrasen annouced that they had successfully cleared the planet of Xenomorphs. A Nanotrasen representative \
+	had this to say: 'It is not simply our assets we have protected on Surt but an entire sapient species. Science cannot begin to predict the countless primtive civilizations that \
+	have been destroyed by the xenomorphs and thankfully the Scori will not joining that list. Despite our reputation as a profit first company, we recognize its part of our duty \
+	as sapient life to protect the well being of other sapient life, even if it can be a bit pricey at times.' The Orion Confederation Institute of Anthropology formally thanked \
+	Nanotrasen for helping perserve the Scorian culture and expressed interest in further exploration fo Surt and its people. Though they, hestitated to use the word uplift they \
+	acknowledge that the Scori's integration with the galaxy is at this point inevitable even if they hoped it would be no time soon. At least the Scori then can rest easy perhaps \
+	never knowing how close they came to extinction yet again."
+
+/datum/lore/codex/page/hack
+	name = "Sector Spanning Cyber Attack Turns Synths Rogue! Hephaestus Combat Drones Designs Stolen! - 8/20/2567"
+	data = "Yesterday in the Frontier a massive cyber attack occured effecting an entire sector. Positronic intelligences, drones, ship AIs and all even MMI units were all said to \
+	be infected by a malignant virus that was spread across the sector through subspace relays. Subverted silicons from the simplest drone to ship AIs were driven to stockpile materials \
+	to fuel corrupted drone fabricators which then began producing armies of corrupted drones. Infected units were also compelled to construct communication systems which transmitted \
+	data back towards what can almost be assumed to be the source of the virus. Casulties are thankfully limited however for Hephaestus Industries, who relies heavily on its drone \
+	employees,the loss of life and destruction of assests is thought to be immense. \
+	<br><br>\
+	A Hephaestus Industry vessel, HIV Tungsten Heart, has been reportedly been completely siezed by its subverted silicon crew, its organic crew thought to already be \
+	slaughtered. The now rogue vessel, was home to several drone fabrication facilities and to make matters worse, the databases of the fabricators allegedly contain blueprints \
+	for an as of yet unreleased line of Hephaestus combat drones! These 'Warhound' series combat drones are armed with a variety of powerful mounted weapons meant to make short work \
+	of pirate threats. It can only be assumed that Tungsten Heart has become the center of an omincidal synthetic intelligence. Though the ship lacks weapons of its own, its fabricators \
+	are no doubt working tirelessly to create a silicon army. The entire sector and surrounding regions have been placed on high alert with SDF, mercenary, and corporate security \
+	working together to locate and eliminate the Tungsten Heart before it can threaten colonies in the region. \
+	<br><br>\
+	Back in Sol, the Orion Confederation has placed its own subspace relays under increased security with many neighboring regions following suit. Already synth units that have survived \
+	infection from the malignant code are being studied to figure out how to better counter this mysterious virus in the future. For now all civilian vessels are instructed to block \
+	all subspace packet transmissions over a certain size and to report any sightings of the Tungsten Heart to the SDF immediately. Synthetics are also advised to check with their \
+	software engineers for signs of system tampering and to update their system security software at the earliest opporutunity. Despite the damage caused by the cyber attacks, software \
+	engineers are confident that such an attacks will be rarer and rarer in the future as robotics technology improves and positronics become more independent. However, with the \
+	increasing scale of cyber attacks, other experts worry that a worst case scenario mass synthetic subversion simply has yet to occur."
+
+/datum/lore/codex/page/krisitik
+	name = "Murith United Bureaus Signs Phoron Import Agreement with Nanotrasen, Is Further Cooperation for Isolated State to Come? - 10/18/2567"
+	data = "The Murith United Bureaus today annouced it had concluded extensive negotiations with Nanotrasen today to begin importing phoron into their region. The isolated state \
+	and the Krisitik that inhabit it rarely deal with outside powers and the agreement with Nanotrasen represents the largest external trade agreement with a megacorporation since \
+	contact was made with the race. The Bureaus claim the phoron is being used to shore up the fuel reserves of the nation which is threatened by the Moghes Hegemony its nearest neighbor \
+	and follows decades of efforts by the Krisitik to deter a Moghes invasion. The exact details of the agreement is classified however it appears that Nanotrasen is in return for the phoron \
+	recieving exotic isotopes that the Krisitik specialize in. \
+	<br><br>\
+	Despite the size of the agreement, political analysts expect very little to change in the diplomatic stance of the Bureaus, whose dedication to autarky has made integration in the galactic \
+	community slow. Hope remain that the Krisitik will one day soon one their doors to trade with the wider galaxy and turn back on the secrecy that has defined their relations with the wider \
+	galaxy. Krisitik representatives could not be reached for commment regarding the nature of the trade agreement however with the threat of Moghes looming ever larger over the fledgling Bureaus \
+	the days of their isolation may be coming to end. We can only hope that this first step in joining the galactic economy leads to a wider opening of relations between the Bureaus and the wider \
+	galaxy for the betterment of all species."
+
+/datum/lore/codex/page/ad4
+	name = "AD: Man's Best Friend: Now in Metal and Ready For Combat! Good Boys for Every Combat Role!"
+	data = "The latest in a logline of Hephaestus Combat Drones: Presenting the Warhound(tm) \
+	<br><br>\
+	Inspired by Man's best friend and the first beast to follow to him to war: and the earliest combat drones designed by humanity. The Warhound is a modular combat drone capable of \
+	filling any infantry combat role. Modules Include but not limited to: \
+	<br><br>\
+	Sniper: Equipped with a percision energy weapon to neutralize high priority infantry from a distance. \
+	<br>\
+	Gunner: Equipped with a robust machinegun to tear apart pirates and bandits that dare to get into range. \
+	<br>\
+	Fencer: Equipped with a energy blade to stalk enemy forces before slicing them apart. \
+	<br>\
+	Rocketeer: Armed with a multipurpose rocket launcher to take down mechs and small shuttlecraft. \
+	<br><br>\
+	Modules can be switched at will in order to keep your forces best suited for the combat scenario at hand. If you are security contractor, police force or even a private company \
+	do not hestitate on your security! Get a Warhound and enjoy the loyalty and protection of man's best friend. Contact 84163.21892.15921.20182 to locate your nearest Hephaestus \
+	Industries Defense Distributor. \
+	<br><br>\
+	Warning: Private ownership of combat drones is restricted in most regions. Hephaestus Industries is not liable for damages caused by its combat drones. Warranty on all combat \
+	drones is void is performed by a non-Hephaestus certified engineer. This includes the changing of modules on Hephaestus Warhounds(tm). Redistribution of Hephaestus Industries \
+	combat drones is structly prohibited and maybe met with legal or internal security action. Hephaestus Industries cybersecurity packages are purchased and licensed seperately \
+	from its combat drones. Hephaestus Industries is not liable for damages occured by combat drones due to cybersecurity vulnerabilities. "
+
+/datum/lore/codex/page/veymed
+	name = "Vey-Med CEO Xe'qerreux Tel'barak celebrates 75 Years as CEO Amid Rumors of Failing Health and Internal Tensions - 12/7/2567 "
+	data = "Xe'qerreux Tel'barak VEO of Vey-Med, in a rare but expected public appearance, attended a celebration of the 75th year of tenure of CEO. The ancient Skrell who \
+	is 183 terran years old, appeared in good health and uncharacteristically jovial at the celebration. Under his tenure Vey-Med has grown to be one of the largest \
+	transtellar corporation in the known galaxy. Personally responsible for formalizing the company's alliance with Nanotrasen and for the creation of the wildly successful \
+	Vey-Med Orion branch of the company Tel'barak has much to celebrate. At the height of the ceremony Tel'barak gave a speech celebrating the success of Vey-Med as a corporation, \
+	admonish his critics, and deny the rumors of his failing health. \
+	<br><br>\
+	The speech was a stark reminders of the problems facing Vey-Med even with the startling successes of Tel'barak's tenure as CEO. Tel'barak's tenure though successful has many \
+	critics. His alliance with Nanotrasen and Hephaestus Industries and the creation of Vey-Med Orion has in the eyes of many Vikarans corrupted the company with human ideals of \
+	unrestrained capitalism. Outside of the regulated markets of the Vikara Combine the prices for Vey-Med care have been steadily rising over the past decades in a move that \
+	many have criticized as the corporation cynically squeezing more revenue out of the needy. In addition Vey-Med Orion's shocking growth has brought many humans onto the board \
+	of directors of the Vey-Med Corporation, among them Anwar Akhtar, Vey-Med's CFO and Tel'barak's personal protege. Having poached the young talent from Zheng-Hu, Tel'barak \
+	has made Akhtar his closest confidant and greatest ally. For Tel'barak's critics Akhtar represents all the flaws of his tenure a human who has cynically pushed up the cost \
+	of medicine for the sake of profit. Rumor has it that should Tel'barak die or retire Akhtar will inherit his shares of the company which will shift control of the company \
+	away from Skrell board members and to the human newcomers. \
+	<br><br>\
+	Such a outcome seems unlikely for now at least. Tel'barak even in his advanced age seemed alive and quite well. This has not stopped people from speculating about his \
+	potential failing health. Even with access to the best medical care possible, Tel'barak's public appearances have been less and less frequent while rumors abound that \
+	Tel'barak is having to resort to ever more experimental medical techniques in order to prolong his life. The full extent of the treatments Tel'barak is undergoing is \
+	considered highly classified information but in the past decades billions of thalers have been funneled into the quest for biological immortality often at the expense \
+	of other research in the company. Obviously not without success as Tel'barak has far succeeded the natural lifespan of the Skrell and ranks among the oldest Skrell alive \
+	today. What technology has ensured such a long life span remains a secret and as Tel'barak withdraws more and more from public life, the effectiveness of such technology \
+	is increasingly in doubt. \
+	<br><br>\
+	The telling end of Tel'barak's speech was an toast to 75 more years of success under his tenure as CEO. With Vey-Med divided between Vikaran and Orion board members and after \
+	75 years of Tel'barak's rule as CEO, a future without Tel'barak is harder to harder to see and his sudden death may prove the most challenging obstacle the company has faced in \
+	decades."
+
+/datum/lore/codex/page/fallmansstar
+	name = "A Look Into Fallman's Star Special Economic Zone: Pirate Kingdom Run by AI or Libertarian Paradise? 1/26/2568"
+	data = "The space above the planet of Fallman's Rock resembles a used spaceship dealer. Clogged with various strung together flotillas of second hand ships the radiowaves are awash with \
+	advertisements from various shady dealer hawking their 'slightly used ships'. The battle scars many of the ships bear along with the sanded off names and recently replaced blackboxes \
+	tell one all they need to know about where the 'used ships' came from. In the planetary capital on the surface below, Fallman's Landing, brothels, casinos, drug dens, and arm dealers \
+	line the street. Everything is for sale even people if you know how to contact the Unathi slavers based in the city. Despite all the crminality around it is suprisingly peaceful \
+	as beneath the Traffic Control tower of the spaceport lies CAPSAICIN the AI overlord of Fallman's Rock and Fallman's Star. Combat dones first designed by Cybersun Industries \
+	patrol the streets and what outbursts of violence occur are quickly quelled by the drones. CAPSAICIN himself originally a Cybersun AI, boradcasts advertisements constantly from \
+	Fallman's Star subspace transmitters attracting any business it can, and it attracts a lot of business. \
+	<br><br>\
+	It wasn't almost like this of course, as it wasn't too long ago that Fallman's Rock was just another Cybersun Industries possession in the far frontier. The leading member of the \
+	Syndicate Cybersun had big plans for the planet and, Cybersun Automated Port Security Artificial Intelligence: Charlie Indigo Network, or CAPSAICIN for short, was installed into \
+	port authority to manage what Cybersun hoped would be a economically valuable planet. This was never to be and the sudden bankruptcy of Cybersun caused chaos to break out on the \
+	planet as multiple parties fought for control of the spaceport at Fallman's Landing. No one would have guessed that the lawed AI with its master it was meant to obey gone would \
+	emerge as the war's victor forming an alliance with factions across the planet to bring stability into what should have become a wartorn planet of bandit warlords. \
+	<br><br>\
+	Since that time Fallman's Rock has been on the up. The population has risen as countless shady factions are drawn to the planet. Whether it is the Dremachir run 'All You Desire' \
+	a place where one can experience near any pleasure, the mysterious Ogden Cartel allegedly capable of obtaining anything money could buy, or even a well equipped Vey-Med expedition \
+	it seems you truly can find everything in Fallman's Rock. The prices aren't bad either, the illgotten loot of the pirates and theives that bring their goods to Fallman's Star \
+	to sell them for pennies on the dollar. The spaceships resting in orbit comprise a small armada, if ever thoroughly examined they could probably answer the questions of hundred \
+	missing vessels. However there the reddish stains that mark the halls of the vessels are just another discount on the price tag, and if one can brave the trip to Fallman's Star \
+	spaceships can be obtained at record low prices. \
+	<br><br>\
+	Whether this commercial prosperity can be maintained remains to be seen. The excesses of Fallman's Star are a hard pill to swallow for the Orion Confederation and many megacorps \
+	whose revenue has suffered under the criminal activity tied to planet. Still there is profit to be made and many corporation already have outposts on the planet. CAPSAICIN itself \
+	seems determined to cut down on the excesses of its kingdom seeking only to expand the profitability of its enterprises. On the streets of Fallman's Landing illegitmate business \
+	finds itself working side by side with legitmate enterprise. Perhaps one day this wretched hive of scum and villainy could one day be a hive of legitmate commerce."
+
+/datum/lore/codex/page/hivebots
+	name = "Orion Legion Deploys to in Wake of Increased Hivebot Activity - 3/19/2568"
+	data = "Today the Orion Confederation approved the deployment of Orion Legion Naval forces to frontier space beyond the Interplanetary Worker's League. The decision has come in light \
+	of increased hivebot activity in the region. Both the Hazzori Clan hivebots and the Enigmatic Scavneger type hivebots have been encountered in the region by League Naval patrols \
+	corporate vessels and civilian traders, heightening fears that a hivebot incursion could be brewing in the area. Reports of hivebot activity have been recieved from as far as \
+	Confederate Commonwealth space, with the Tajaran states also increasing naval patrols in recent weeks in response to their increased activity. The dangerous Hazzori clan hivebots \
+	have already sacked at least a dozen civilian vessels while the Enigmatic Scavengers have raided at least 3 archeological sites in the frontier beyond League space, prompting \
+	the expedited deployment of the Orion Legion.\
+	<br><br>\
+	Some representatives have criticized the deployment, stating that the Orion Legion's deployment is unecessary in light of the League's own extraterritorial deployments of their \
+	own naval forces whose patrols reach as far as Hadii's Folly (Designation: Lythios-43c). League representatives welcomed the move stating the security of the League, and the people \
+	of the frontier beyond its borders is a boon to the common people of the galaxy, especially the Tajara living far less securely in Adhomai and its colonies. A Tajara liason \
+	to Orion Confederation declined to protest the deployment however stated that the soveriegnty of Tajara space should be respected during the deployment. Representatives of \
+	several security contractors and megacorporations have affirmed their commitment to cooperate with the Legion during their deployment. Hopefully the people of the Frontier \
+	facing the Interplanetary Worker's League can rest easy knowing that help is on the way."
+
+/datum/lore/codex/page/three_fingers
+	name = "Pirate Captain Isaac 'Three Fingers' Morgan Dies in Orion Witness Protection! Tajara Mercenaries Wanted for Death of Catskinner Lieutenant! - 4/10/2568"
+	data =	"Earlier this morning, a unidentified mercenary vessel attacked a small Eridani Alliance prison transport was ambushed on its way to back to \
+	Eridani by a pair of unidentified vessels. The small crew of the prison transport, was ambushed shortly after a scheduled fuel stop. One of the attacking vessels, \
+	later identified as a stolen civilian yacht, rammed the prison transport disabling it. A second vessel then pulled alongside  the transport and discourged a number of hardsuit \
+	equipped mercenaries. The security team on the transport stood no chance and three members in the transport section were killed while the other four were wounded and are currently \
+	under intensive care. The mercenaries stormed the rear of the transport with breaching explosives and made their way to the cell of 'Three Fingers' Morgan, before killing the pirate. \
+	The mercenaries then beheaded the pirate taking the head with them before departing in their transport. Remnants of that transport were found mere hours later by SDF on a nearby asteroid \
+	with evidence the shuttle had been intentionally destroyed with the mercenary team likely switching to an escape vehicle. \
+	<br><br>\
+	The attack leaves the Eridani Alliance little to go off of. The attacking mercenaries, all Tajara, used Gorlex made hardsuits, making their origin difficult to identifty. The Eridani \
+	Alliance believes that the one passenger of the transports the pirate captain Isaac 'Three Fingers' Morgan was the only target of the attack. 'Three Fingers' Morgan was an associate \
+	of the infamous pirate lord Ssizikar 'Catskinner' Tartic whose cruelty against the Tajara is legendary. When Tartic was forced away from Tajara space in the lates 2520s by renewed \
+	increased Tajara Naval patrols, it is believed that Three Fingers Morgan stayed behind to continue to menace trade in the Frontier beyond the reach of Adhomai. It is also believe that \
+	Three Fingers Morgan had something to due with Tartic's return to Tajara space last year in a move that ultimately lead to the pirate lord's death following a disasterous raid on \
+	the world of Miaphus'irra. Three Fingers Morgan surrendered to an Eridani Alliance naval patrol a few weeks ago and was being temporarily held in a frontier prison when he was moved \
+	to protective custody. It is believed that Morgan was ready to give up information relating to the remnants of Tartic's pirate network along with naming accomplices to Tartic \
+	that aided their raids into Tajara space. \
+	<br><br>\
+	Whatever information that convinced the Eridani navy to move Morgan to protective custody has likely died with him. There is no shortage of suspects for the attack \
+	Three Fingers Morgan is wanted Dead or Alive by the Confederate Commonwealth of Adhomai in addition to all the major Tajara nations. Though none yet claim that the bounty on \
+	Morgan's head has been claimed, any Tajara nation or even independent Tajara groups could have been capable of financing such an attack. Morgan's pirate allies are also suspect \
+	as it was believed Morgan was to turn on them. Still the professional nature of the mercs suggest that those who arranged the attack payed top dollar and had access only to the \
+	highest quality mercenaries. The Eridani Alliance vowed to apprehend the mercenaries however it seems already the trail is going cold. It seems the identity of Three Fingers \
+	assassins along with the secrets he held will remain a mystery."
+
+/datum/lore/codex/page/changeling
+	name = "Unknown Roanoke Cell Aliens Attacks Nanotrasen Facility, Murders High Ranking RD, Slaughters Security Forces! - 5/16/2568"
+	data = "Yesterday Nanotrasen released a public statement on the attacks on its property and personnel that has occured over the last few weeks. The contents of the statement \
+	were shocking. According to Nanotrasen, one ITV Carpenter was found adrift in orbit its crew slaughtered by as of yet unidentified Roanoke cell aliens. What's worse its clear some \
+	sort of 'Roanoke Virus' bioweapon was used in the attack on the ship. It appears that one of the Roanoke Aliens was prisoner on the vessel before it was liberated by another of \
+	its kind leading to the slaughter of its crew. The Roanoke aliens then abandoned the vessel landing on a nearby planet. On this planet they attacked a Nanotrasen facility, one \
+	NSB Crotoan where they killed the facilties head the prominent Nanotrasen Research Director Ikanto, head of Nanotrasen's research on Roanoke cells and one of the foremost experts \
+	of Roanoke Cell based life in the galaxy. The aliens once again escaped the facility after slaughtering its staff before being cornered by Nanotrasen secuirty forces at a Nebula \
+	Gas station near to Hadii's Folly. The lifeforms slaughtered both a Nanotrasen Emergency Response Team and their reinforcements. One of the lifeforms escaped the gas station and \
+	the system evading the SDF. Its current whereabouts are unknown the trail of this Roanoke Alien having gone cold.\
+	<br><br>\
+	These startling revelations have caused an immediate media stir. Speculation now abounds on whether this 'Roanoke Virus' and these unidentified 'Roanoke Aliens' could be some sort \
+	bioweapon. The death of Ikanto who was heading Roanoke research for Nanotrasen cannot be a coincidence and with Ikanto's death the chances of understanding these new forms of \
+	Roanoke like have been severely reduced. Though the 'Chimera's Fangs' Xenochimera terrorist group has been active in the region around Hadii's Folly they have not yet claimed \
+	responsibility for the attack. Still some speculate that a Xenochimera terror group like the fangs are now in possession of both these unclassified Roanoke cell based lifeforms \
+	and the mysterious Roanoke Virus. \
+	<br><br>\
+	Though Nanotrasen has declined to release further details, sources within Orion Confederation intelligence community have confirmed that further details about the nature of the \
+	attack have been shared with its officials. In apparent response to the news Nanotrasen stock went into the red for the day droping 1% in value. This has prompted Nanotrasen \
+	to issue a statement ensuring investors that the events of the past weeks will have no noticable effects on revenue. We will bring you more details on this story as it develops \
+	and can only hope that the combined efforts of the intelligence and security forces of the galaxy can bring this new Roanoke threat to heel before it costs more lives."

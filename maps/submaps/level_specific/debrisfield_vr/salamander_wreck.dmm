@@ -18,7 +18,7 @@
 /area/shuttle/salamander_wreck)
 "aL" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander_wreck,
-/obj/effect/overmap/visitable/ship/landable/salamander_wreck,
+/obj/overmap/entity/visitable/ship/landable/salamander_wreck,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -43,7 +43,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_head)
 "bu" = (
@@ -68,17 +68,14 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_galley)
 "bK" = (
@@ -96,14 +93,14 @@
 /area/shuttle/salamander_wreck)
 "bN" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light/flicker{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_head)
 "bP" = (
@@ -119,7 +116,7 @@
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_head)
 "bY" = (
@@ -158,13 +155,11 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24;
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_head)
 "cC" = (
@@ -176,7 +171,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_head)
 "cX" = (
@@ -191,7 +186,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "dm" = (
@@ -226,7 +221,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_head)
 "dT" = (
@@ -254,7 +249,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/salamander_wreck_engineering)
 "eB" = (
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -266,7 +261,7 @@
 "eG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "eJ" = (
@@ -291,7 +286,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/voidcraft{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_head)
@@ -329,7 +324,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "fG" = (
@@ -350,7 +345,7 @@
 /obj/structure/railing/grey,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "fR" = (
@@ -362,7 +357,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "fX" = (
@@ -376,7 +371,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "gl" = (
@@ -390,7 +385,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "gv" = (
@@ -410,10 +405,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28;
+/obj/machinery/power/apc/west_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -425,7 +417,7 @@
 "gC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "gD" = (
@@ -547,7 +539,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "is" = (
@@ -641,7 +633,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "jT" = (
@@ -664,17 +656,17 @@
 "jV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	density = 0;
-	dir = 2;
-	icon_state = "door_open"
-	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
+	dir = 4;
+	icon_state = "open"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_cockpit)
@@ -703,7 +695,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "kU" = (
@@ -715,7 +707,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "kZ" = (
@@ -730,7 +722,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "lc" = (
@@ -742,7 +734,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "ld" = (
@@ -756,7 +748,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/voidcraft{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_q2)
@@ -764,7 +756,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -26
 	},
@@ -791,7 +783,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "lt" = (
@@ -836,14 +828,14 @@
 /obj/item/tool/crowbar/red,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "ma" = (
 /obj/structure/cable,
 /obj/structure/frame,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "mg" = (
@@ -855,7 +847,7 @@
 	},
 /obj/machinery/door/airlock/glass_external/public{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
@@ -877,7 +869,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "mJ" = (
@@ -890,7 +882,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "mO" = (
@@ -900,7 +892,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "mR" = (
@@ -909,7 +901,7 @@
 "mY" = (
 /obj/machinery/computer/ship/sensors,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "nB" = (
@@ -923,7 +915,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "nE" = (
@@ -970,7 +962,7 @@
 /obj/item/reagent_containers/food/snacks,
 /obj/item/reagent_containers/food/snacks,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_galley)
 "ot" = (
@@ -981,7 +973,7 @@
 /area/shuttle/salamander_wreck_cockpit)
 "oC" = (
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "oF" = (
@@ -992,7 +984,7 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "oI" = (
@@ -1067,7 +1059,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "qn" = (
@@ -1082,17 +1074,14 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24;
+/obj/machinery/power/apc/north_mount{
 	start_charge = 0
 	},
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "qu" = (
@@ -1103,7 +1092,7 @@
 	},
 /obj/structure/closet/walllocker_double/kitchen/south,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_galley)
 "qx" = (
@@ -1176,6 +1165,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_engineering)
 "tL" = (
@@ -1195,13 +1187,13 @@
 "vi" = (
 /obj/structure/table/steel,
 /obj/machinery/microwave,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_galley)
 "vI" = (
@@ -1257,7 +1249,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "zQ" = (
@@ -1265,7 +1257,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "AD" = (
@@ -1287,13 +1279,11 @@
 	dir = 8;
 	pixel_x = -32
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24;
+/obj/machinery/power/apc/south_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "Bf" = (
@@ -1305,14 +1295,14 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "BE" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external/public{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
@@ -1337,6 +1327,9 @@
 /area/shuttle/salamander_wreck_engineering)
 "DB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1430,7 +1423,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "IQ" = (
@@ -1454,7 +1447,7 @@
 	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "Kn" = (
@@ -1494,14 +1487,14 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "Lf" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "LJ" = (
@@ -1519,7 +1512,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_galley)
 "NR" = (
@@ -1555,7 +1548,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "OU" = (
@@ -1604,7 +1597,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/voidcraft{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_galley)
@@ -1627,18 +1620,18 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "RO" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "RU" = (
@@ -1646,7 +1639,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_galley)
 "Sb" = (
@@ -1677,7 +1670,7 @@
 /obj/machinery/light,
 /obj/item/paper/unity_notice,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_q2)
 "Td" = (
@@ -1696,7 +1689,7 @@
 	},
 /obj/item/smes_coil,
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "Tg" = (
@@ -1719,7 +1712,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "TG" = (
@@ -1736,7 +1729,7 @@
 "UT" = (
 /obj/machinery/door/airlock/glass_external/public{
 	density = 0;
-	icon_state = "door_open"
+	icon_state = "open"
 	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1748,14 +1741,11 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "Vs" = (
@@ -1801,16 +1791,16 @@
 	},
 /obj/machinery/door/airlock/multi_tile/metal{
 	density = 0;
-	dir = 2;
-	icon_state = "door_open";
+	dir = 4;
+	icon_state = "open";
 	name = "Salamander Engineering Bay";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/multi_tile{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_engineering)
@@ -1836,7 +1826,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "Xn" = (
@@ -1849,7 +1839,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 "Xr" = (
@@ -1865,7 +1855,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/alarm/alarms_hidden{
+/obj/machinery/air_alarm/alarms_hidden{
 	pixel_y = 26
 	},
 /obj/machinery/light_switch{
@@ -1873,7 +1863,7 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck_engineering)
 "XJ" = (
@@ -1902,14 +1892,11 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24;
+/obj/machinery/power/apc/east_mount{
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	initial_gas_mix = GAS_STRING_VACUUM
+	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/salamander_wreck)
 

@@ -67,7 +67,7 @@
 	last_message_count = 0
 	read_message_count = 0
 
-/datum/tgui_module_old/email_client/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/email_client/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	// Password has been changed by other client connected to this email account
@@ -228,7 +228,7 @@
 	return 1
 
 
-/datum/tgui_module_old/email_client/ui_act(action, params)
+/datum/tgui_module_old/email_client/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

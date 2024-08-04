@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(ao)
 	name = "Ambient Occlusion"
-	init_order = INIT_ORDER_MISC_LATE
+	init_order = INIT_ORDER_AMBIENT_OCCLUSION
 	wait = 1
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
@@ -43,3 +43,11 @@ SUBSYSTEM_DEF(ao)
 	if (idex > 1)
 		curr.Cut(1, idex)
 		idex = 1
+
+/datum/controller/subsystem/ao/StartLoadingMap()
+	can_fire = FALSE
+	return ..()
+
+/datum/controller/subsystem/ao/StopLoadingMap()
+	can_fire = TRUE
+	return ..()

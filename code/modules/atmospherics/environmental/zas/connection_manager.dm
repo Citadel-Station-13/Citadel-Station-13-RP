@@ -16,7 +16,7 @@ Class Procs:
 		Preferable to accessing the connection directly because it checks validity.
 
 	place(datum/zas_connection/c, d)
-		Called by air_master.connect(). Sets the connection in the specified direction to c.
+		Called by SSair.connect(). Sets the connection in the specified direction to c.
 
 	update_all()
 		Called after turf/update_air_properties(). Updates the validity of all connections on this turf.
@@ -102,5 +102,7 @@ Macros:
 	if(check(U)) U.erase()
 	if(check(D)) D.erase()
 	#endif
+
+BLOCK_BYOND_BUG_2072419
 
 #undef check

@@ -10,12 +10,11 @@
 
 	icon = 'icons/obj/machines/reagent.dmi'
 	icon_state = "distiller"
+
+	worth_intrinsic = 500
 	var/base_state	// The string var used in update icon for overlays, either set manually or initialized.
 
-	power_rating = 3000
-	power_losses = 240
-
-	var/on = FALSE
+	var/power_rating = 3000
 
 	var/target_temp = T20C
 
@@ -210,7 +209,7 @@
 	update_icon()
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery/use_power(var/amount, var/chan = -1)
-	last_power_draw = amount
+	last_power_draw_legacy = amount
 	if(use_cell && cell && cell.charge)
 		var/needed = DYNAMIC_W_TO_CELL_UNITS(amount, 1)
 		needed -= cell.use(needed)
@@ -312,3 +311,4 @@
 	desc = "A gas-operated variant of a chemical distillery. Able to reach much higher, and lower, temperatures through the use of treated gas."
 
 	use_atmos = TRUE
+	worth_intrinsic = 1000

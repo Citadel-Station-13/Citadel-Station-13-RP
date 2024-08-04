@@ -2,7 +2,7 @@
 	description_fluff = "Space Cola is the most popular soft drink in known space.  It was invented by Nikolas Fedorov, a Martian-Russian immagrant to Tau Ceti.  He then went on to create Nikolas Beverages Inc., a soft drink corporation that is now part of Centauri Provisions."
 
 /obj/item/reagent_containers/food/drinks/cans/waterbottle
-	description_fluff = "This is a generic, NanoTrasen branded bottle of water.  The company swears on the quality of the water, saying it comes from the Martian poles.  Most people disregard that and assume it's recycled from hydroponics trays."
+	description_fluff = "This is a generic, Nanotrasen branded bottle of water.  The company swears on the quality of the water, saying it comes from the Martian poles.  Most people disregard that and assume it's recycled from hydroponics trays."
 
 /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind
 	description_fluff = "This cola was allegedly made after Vasily Federov, the son of Nikolas Federov and the second CEO of Federov Beverages Inc., went on a climbing expedition to an arctic planet.  He then created this citris flavored soft drink.  Scientists claim that it can eat through styrafoam in a matter of weeks, but people drink it anyway."
@@ -20,22 +20,22 @@
 	description_fluff = "This drink is advertised as one of the most carbonated beverages on the market.  It's owned by Federov Beverages, and advertised for its carbonation, not its flavor.  Children will commonly make 'Space-Up Volcanoes' by dropping mints into a can of Space-Up and causing it to create a long stream of fizz upward."
 
 /obj/item/reagent_containers/food/drinks/cans/lemon_lime
-	description_fluff = "This is a NanoTrasen branded can of Lemon-Lime juice.  NanoTrasen swears to their 'natural' beverage, but most people think differently."
+	description_fluff = "This is a Nanotrasen branded can of Lemon-Lime juice.  Nanotrasen swears to their 'natural' beverage, but most people think differently."
 
 /obj/item/reagent_containers/food/drinks/cans/iced_tea
 	description_fluff = "Vrisk Iced Tea is named after its creator, Penelope Vrisk.  She was a canner for Federov Beverages who wanted to create an authentic-tasting Southern iced tea.  After finishing her formula and managing to get it produced, the tea became an instant hit."
 
 /obj/item/reagent_containers/food/drinks/cans/grape_juice
-	description_fluff = "This is a NanoTrasen branded can of grape juice.  NanoTrasen claims that they use the same grapes that this juice is made of to make their wine."
+	description_fluff = "This is a Nanotrasen branded can of grape juice.  Nanotrasen claims that they use the same grapes that this juice is made of to make their wine."
 
 /obj/item/reagent_containers/food/drinks/cans/tonic
 	description_fluff = "Endorsed by the popular positronic rapper, T-Borg, this drink is advertised as a 'high class' drink.  Most people just use it to mix with their gin, and not much can be said about the quality."
 
 /obj/item/reagent_containers/food/drinks/cans/sodawater
-	description_fluff = "This is a NanoTrasen branded can of soda water.  They use the same water for this that they use for the bottled water that they sell.  That may explain why the stuff isn't exactly flying off of the shelves."
+	description_fluff = "This is a Nanotrasen branded can of soda water.  They use the same water for this that they use for the bottled water that they sell.  That may explain why the stuff isn't exactly flying off of the shelves."
 
 /obj/item/reagent_containers/food/drinks/cans/gingerale
-	description_fluff = "Somehow, NanoTrasen wound up taking this ginger ale formula from Centauri Provisions, some say as payback for the DONKpocket incident. It tastes like ginger ale."
+	description_fluff = "Somehow, Nanotrasen wound up taking this ginger ale formula from Centauri Provisions, some say as payback for the DONKpocket incident. It tastes like ginger ale."
 
 /obj/item/reagent_containers/food/drinks/bottle/gin
 	description_fluff = "Griffeater Gin was originally an independent disillery in Alpha Centauri, but financial troubles obligated them to sell out to Centauri Provisions. It's said that Centauri ruined the brew, but it's pretty much impossible to tell."
@@ -44,7 +44,7 @@
 	description_fluff = "Uncle Git's is a product of Abel's Rest, supply shortages and ubiqtuous observation during the occupation giving Takeshi 'Uncle' Git a chance to perfect this refinement of the common bathtub whiskey."
 
 /obj/item/reagent_containers/food/drinks/bottle/specialwhiskey
-	description_fluff = "Nobody knows what Special Blend Whiskey really is, how it's made, or where it comes from. It's an expensive Gilthari product, for only the most luxurious, but NanoTrasen managed to secure a supply deal."
+	description_fluff = "Nobody knows what Special Blend Whiskey really is, how it's made, or where it comes from. It's an expensive Gilthari product, for only the most luxurious, but Nanotrasen managed to secure a supply deal."
 
 /obj/item/reagent_containers/food/drinks/bottle/vodka
 	description_fluff = "Centauri Provisions claims that their vodka wins in blind taste-tests against traditional mixes from Earth, but they're not fooling anyone."
@@ -74,7 +74,7 @@
 	description_fluff = "Another Gilthari product, Chataeu du Baton is one of the few brandies to still be produced using traditional methods, instead of chemical synthesizers."
 
 /obj/item/reagent_containers/food/drinks/bottle/wine
-	description_fluff = "NanoTrasen makes this wine, which is generally regarded as better used for cooking than actually drinking. Morpheus specifically names Doublebeard in their recipe for Twobread."
+	description_fluff = "Nanotrasen makes this wine, which is generally regarded as better used for cooking than actually drinking. Morpheus specifically names Doublebeard in their recipe for Twobread."
 
 /obj/item/reagent_containers/food/drinks/bottle/absinthe
 	description_fluff = "A product of the anarchists of Casini's Reach, Jailebreaker Verte is an open-source synthesized liquour that has actually managed to succeed over traditional absinthes. Gilthari is livid."

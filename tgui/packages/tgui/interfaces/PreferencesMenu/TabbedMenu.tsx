@@ -3,8 +3,8 @@ import { Button, Section, Stack } from "../../components";
 import { FlexProps } from "../../components/Flex";
 
 type TabbedMenuProps = {
-  categoryEntries: [string, InfernoNode][],
-  contentProps?: FlexProps,
+  readonly categoryEntries: [string, InfernoNode][],
+  readonly contentProps?: FlexProps,
 };
 
 export class TabbedMenu extends Component<TabbedMenuProps> {

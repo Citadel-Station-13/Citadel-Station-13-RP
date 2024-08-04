@@ -228,9 +228,9 @@ export const PersonalCrafting = (props, context) => {
 };
 
 type CraftingListProps = {
-  recipes: Recipe[];
+  readonly recipes: Recipe[];
   // eslint-disable-next-line react/no-unused-prop-types
-  compact?: boolean;
+  readonly compact?: boolean;
 };
 
 const CraftingList = (props: CraftingListProps, context) => {

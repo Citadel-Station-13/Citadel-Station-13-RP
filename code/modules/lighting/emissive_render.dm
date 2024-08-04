@@ -9,6 +9,7 @@
  */
 /atom/movable/emissive_render
 	name = "emissive render"
+	atom_flags = ATOM_ABSTRACT
 	plane = EMISSIVE_PLANE
 	layer = FLOAT_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

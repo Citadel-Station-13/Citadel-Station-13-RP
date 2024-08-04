@@ -37,8 +37,8 @@
 /obj/effect/bmode//Cleaning up the tree a bit
 	density = 1
 	anchored = 1
-	layer = LAYER_HUD_BASE
-	plane = PLANE_PLAYER_HUD
+	layer = HUD_LAYER_BASE
+	plane = HUD_PLANE
 	dir = NORTH
 	icon = 'icons/misc/buildmode.dmi'
 	var/obj/effect/bmode/buildholder/master = null
@@ -363,8 +363,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
 						WIN.setDir(WEST)
 					if(NORTHWEST)
-						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
-						WIN.setDir(NORTHWEST)
+						new /obj/spawner/window/reinforced/full(get_turf(object))
 				var/turf/TC = get_turf(object)
 				log_admin("[key_name(usr)] made a window at [COORD(TC)]")
 		if(2) // Adv. Build
@@ -480,8 +479,8 @@ GLOBAL_LIST_EMPTY(buildholders)
 					var/mob/living/L = object
 					// Reset processes.
 					if(pa.Find("ctrl"))
-						if(!isnull(L.get_AI_stance())) // Null means there's no AI datum or it has one but is player controlled w/o autopilot on.
-							var/datum/ai_holder/AI = L.ai_holder
+						if(!isnull(L.get_polaris_AI_stance())) // Null means there's no AI datum or it has one but is player controlled w/o autopilot on.
+							var/datum/ai_holder/polaris/AI = L.ai_holder
 							AI.forget_everything()
 							to_chat(user, SPAN_NOTICE("\The [L]'s AI has forgotten its target/movement destination/leader."))
 						else
@@ -490,8 +489,8 @@ GLOBAL_LIST_EMPTY(buildholders)
 
 					// Toggle hostility
 					if(pa.Find("alt"))
-						if(!isnull(L.get_AI_stance()))
-							var/datum/ai_holder/AI = L.ai_holder
+						if(!isnull(L.get_polaris_AI_stance()))
+							var/datum/ai_holder/polaris/AI = L.ai_holder
 							AI.hostile = !AI.hostile
 							to_chat(user, SPAN_NOTICE("\The [L] is now [AI.hostile ? "hostile" : "passive"]."))
 						else
@@ -499,7 +498,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 						return
 
 					// Select/Deselect
-					if(!isnull(L.get_AI_stance()))
+					if(!isnull(L.get_polaris_AI_stance()))
 						if(L in holder.selected_mobs)
 							holder.deselect_AI_mob(user.client, L)
 							to_chat(user, SPAN_NOTICE("Deselected \the [L]."))
@@ -516,7 +515,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 					if(pa.Find("alt"))
 						var/i = 0
 						for(var/mob/living/unit in holder.selected_mobs)
-							var/datum/ai_holder/AI = unit.ai_holder
+							var/datum/ai_holder/polaris/AI = unit.ai_holder
 							AI.give_target(A)
 							i++
 						to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to attack \the [A]."))
@@ -528,7 +527,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 					var/i = 0 // Attacking mobs.
 					var/j = 0 // Following mobs.
 					for(var/mob/living/unit in holder.selected_mobs)
-						var/datum/ai_holder/AI = unit.ai_holder
+						var/datum/ai_holder/polaris/AI = unit.ai_holder
 						if(L.IIsAlly(unit) || !AI.hostile || pa.Find("shift"))
 							AI.set_follow(L)
 							j++
@@ -551,7 +550,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 					var/turf/T = object
 					var/i = 0
 					for(var/mob/living/unit in holder.selected_mobs)
-						var/datum/ai_holder/AI = unit.ai_holder
+						var/datum/ai_holder/polaris/AI = unit.ai_holder
 						AI.give_destination(T, 1, pa.Find("shift")) // If shift is held, the mobs will not stop moving to attack a visible enemy.
 						i++
 					to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to move to \the [T]."))

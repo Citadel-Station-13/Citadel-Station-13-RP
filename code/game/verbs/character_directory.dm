@@ -2,7 +2,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 /client/verb/show_character_directory()
 	set name = "Character Directory"
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 	set desc = "Shows a listing of all active characters, along with their associated OOC notes, flavor text, and more."
 
 	// This is primarily to stop malicious users from trying to lag the server by spamming this verb
@@ -17,7 +17,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 // This is a global singleton. Keep in mind that all operations should occur on usr, not src.
 /datum/character_directory
-/datum/character_directory/ui_state(mob/user, datum/tgui_module/module)
+/datum/character_directory/ui_state()
 	return GLOB.always_state
 
 /datum/character_directory/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -26,7 +26,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		ui = new(user, src, "CharacterDirectory", "Character Directory")
 		ui.open()
 
-/datum/character_directory/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/character_directory/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["personalVisibility"] = user?.client?.prefs?.show_in_directory
@@ -35,13 +35,16 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 	return data
 
-/datum/character_directory/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/character_directory/ui_static_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/list/directory_mobs = list()
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
+
 		// Allow opt-out.
-		if(!C?.prefs?.show_in_directory)
+		if(!C.prefs.show_in_directory)
 			continue
 
 		// These are the three vars we're trying to find

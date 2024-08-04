@@ -146,28 +146,77 @@
 //Undef the macro, shouldn't be needed anywhere else
 #undef T_BOARD_MECHA
 
-///fighters///
+///Fighters///
+
+//Pinnace//
+
 /obj/item/circuitboard/mecha/fighter/pinnace
 
 /obj/item/circuitboard/mecha/fighter/pinnace/main
 	name = T_BOARD_FIGHTER("Pinnace central control")
-	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+	origin_tech = list(TECH_DATA = 4, TECH_BIO = 2, TECH_BLUESPACE = 2)
 	icon_state = "mainboard"
 
 /obj/item/circuitboard/mecha/fighter/pinnace/flight
 	name = T_BOARD_FIGHTER("Pinnace flight control")
 	icon_state = "mcontroller"
-	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 3)
+	origin_tech = list(TECH_DATA = 4, TECH_BLUESPACE = 2)
 
 /obj/item/circuitboard/mecha/fighter/pinnace/targeting
 	name = T_BOARD_FIGHTER("Pinnace weapon control and targeting")
 	icon_state = "mcontroller"
-	origin_tech = list(TECH_DATA = 6, TECH_COMBAT = 5)
+	origin_tech = list(TECH_DATA = 4, TECH_COMBAT = 1)
 
 /obj/item/circuitboard/mecha/fighter/pinnace/cockpitboard
 	name = T_BOARD_FIGHTER("Pinnace manual flight control instruments")
-	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+	origin_tech = list(TECH_DATA = 4, TECH_BLUESPACE = 2)
 	icon_state = "card_mod"
+
+//Baron//
+/obj/item/circuitboard/mecha/fighter/baron
+
+/obj/item/circuitboard/mecha/fighter/baron/main
+	name = T_BOARD_FIGHTER("Baron central control")
+	icon_state = "mainboard"
+	origin_tech = list(TECH_DATA = 6, TECH_BIO = 4, TECH_BLUESPACE = 5)
+
+/obj/item/circuitboard/mecha/fighter/baron/flight
+	name = T_BOARD_FIGHTER("Baron flight control")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+
+/obj/item/circuitboard/mecha/fighter/baron/targeting
+	name = T_BOARD_FIGHTER("Baron weapon control and targeting")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_BIO = 4, TECH_COMBAT = 5)
+
+/obj/item/circuitboard/mecha/fighter/baron/cockpitboard
+	name = T_BOARD_FIGHTER("Baron manual flight control instruments")
+	icon_state = "card_mod"
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+
+//Duke//
+/obj/item/circuitboard/mecha/fighter/duke
+
+/obj/item/circuitboard/mecha/fighter/duke/main
+	name = T_BOARD_FIGHTER("Duke central control")
+	icon_state = "mainboard"
+	origin_tech = list(TECH_DATA = 6, TECH_BIO = 4, TECH_BLUESPACE = 5)
+
+/obj/item/circuitboard/mecha/fighter/duke/flight
+	name = T_BOARD_FIGHTER("Duke flight control")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+
+/obj/item/circuitboard/mecha/fighter/duke/targeting
+	name = T_BOARD_FIGHTER("Duke weapon control and targeting")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_BIO = 4, TECH_COMBAT = 5)
+
+/obj/item/circuitboard/mecha/fighter/duke/cockpitboard
+	name = T_BOARD_FIGHTER("Duke manual flight control instruments")
+	icon_state = "card_mod"
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
 
 //Undef the macro, shouldn't be needed outside of fighter construction
 #undef T_BOARD_FIGHTER

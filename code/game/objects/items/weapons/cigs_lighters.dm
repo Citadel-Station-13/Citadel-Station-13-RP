@@ -30,7 +30,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "match_unlit"
 	var/burnt = 0
 	var/smoketime = 5
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = list(TECH_MATERIAL = 1)
 	slot_flags = SLOT_EARS
 	attack_verb = list("burnt", "singed")
@@ -139,7 +139,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		M.update_inv_r_hand(1)
 	..()
 
-/obj/item/clothing/mask/smokable/examine(mob/user)
+/obj/item/clothing/mask/smokable/examine(mob/user, dist)
 	. = ..()
 	if(is_pipe)
 		return
@@ -266,7 +266,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cig"
 	item_state = "cig"
 	throw_speed = 0.5
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	attack_verb = list("burnt", "singed")
@@ -296,10 +296,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	return
 
-/obj/item/clothing/mask/smokable/cigarette/afterattack(obj/item/reagent_containers/glass/glass, mob/user as mob, proximity)
+/obj/item/clothing/mask/smokable/cigarette/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
+	var/obj/item/reagent_containers/glass/glass = target
 	if(istype(glass)) //you can dip cigarettes into beakers
 		var/transfered = glass.reagents.trans_to_obj(src, chem_volume)
 		if(transfered)	//if reagents were transfered, show the message
@@ -320,19 +321,25 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			quench()
 
 /obj/item/clothing/mask/smokable/cigarette/import
-	name = "cigarette"
-	desc = "A roll of tobacco and blended herbs."
+	desc = "A roll of exotic blended herbs."
 	icon_state = "cigimp"
 	item_state = "cigimp"
-	throw_speed = 0.5
-	w_class = ITEMSIZE_TINY
-	slot_flags = SLOT_EARS | SLOT_MASK
-	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt/imp
-	chem_volume = 15
-	max_smoketime = 300
-	smoketime = 300
-	nicotine_amt = 2
+	nicotine_amt = 0
+
+/obj/item/clothing/mask/smokable/cigarette/light
+	icon_state = "ciglite"
+	item_state = "ciglite"
+	type_butt = /obj/item/cigbutt/light
+	nicotine_amt = 1
+
+
+/obj/item/clothing/mask/smokable/cigarette/herbal
+	desc = "A roll of aromatic blended herbs."
+	icon_state = "cigherbal"
+	item_state = "cigherbal"
+	type_butt = /obj/item/cigbutt/herbal
+	nicotine_amt = 0
 
 ////////////
 // CIGARS //
@@ -395,7 +402,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A manky old cigarette butt."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "cigbutt"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	throw_force = 1
 
@@ -418,9 +425,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	user.update_inv_r_hand(1)
 
 /obj/item/cigbutt/imp
-	name = "cigarette butt"
-	desc = "A manky old cigarette butt."
 	icon_state = "cigimpbutt"
+
+/obj/item/cigbutt/light
+	icon_state = "ciglitebutt"
+
+/obj/item/cigbutt/herbal
+	icon_state = "cigherbalbutt"
 
 /////////////////
 //SMOKING PIPES//
@@ -529,7 +540,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "rolling paper"
 	desc = "A small, thin piece of easily flammable paper, commonly used for rolling and smoking various dried plants."
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon_state = "cig paper"
 
 /obj/item/rollingpaper/attackby(obj/item/W as obj, mob/user as mob)
@@ -552,7 +563,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "blunt paper"
 	desc = "A small, thin piece of tobacco-based paper, commonly used for rolling and smoking various dried plants."
 	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon_state = "blunt paper"
 
 /obj/item/rollingblunt/attackby(obj/item/W as obj, mob/user as mob)
@@ -581,7 +592,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	throw_force = 4
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
@@ -604,6 +615,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)
+		if(return_air_immutable()?.moles_by_flag(GAS_FLAG_OXIDIZER)<0.01)
+			user.visible_message("<span class='notice'>The [name] fails to light.")
+			return
 		lit = 1
 		icon_state = "[base_state]on"
 		item_state = "[base_state]on"
@@ -659,6 +673,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/flame/lighter/process(delta_time)
 	var/turf/location = get_turf(src)
 	if(location)
+		var/datum/gas_mixture/env=location.return_air_immutable()
+		if(env?.moles_by_flag(GAS_FLAG_OXIDIZER)<0.01)
+			visible_message("<span class='notice'>The [name] suddenly goes out.")
+			lit=0
+			icon_state = "[base_state]"
+			item_state = "[base_state]"
+			set_light(0)
+			STOP_PROCESSING(SSobj, src)
+			return
 		location.hotspot_expose(700, 5)
 	return
 
@@ -729,8 +752,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A lighter fashioned out of an old bullet casing."
 	icon_state = "bulletlighter"
 
+//Tajaran Lighters
 /obj/item/flame/lighter/zippo/taj
-	name = "\improper Adhomai lighter"
+	name = "\improper Adhomian lighter"
 	desc = "A brass mechanical lighter made on Adhomai. Its robust design made it a staple tool for Tajara on all sides of the civil war."
 	icon_state = "tajzippo"
 

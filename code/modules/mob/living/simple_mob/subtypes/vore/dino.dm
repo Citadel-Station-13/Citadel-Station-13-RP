@@ -11,7 +11,7 @@
 	health = 20
 	randomized = TRUE
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
 	// By default, this is what most vore mobs are capable of.
 	response_help = "pets"
@@ -19,8 +19,8 @@
 	response_harm = "hits"
 	movement_cooldown = 4
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 12
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 12
 	attacktext = list("bitten")
 	attack_sound = 'sound/weapons/bite.ogg'
 	minbodytemp = 200

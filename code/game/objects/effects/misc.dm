@@ -71,7 +71,7 @@
 	icon = 'icons/effects/alphacolors.dmi'
 	icon_state = "white"
 	plane = LIGHTING_PLANE
-	layer = LIGHTING_LAYER
+	layer = LIGHTING_LAYER_MAIN
 	blend_mode = BLEND_ADD
 
 /obj/effect/dummy/lighting_obj
@@ -100,10 +100,9 @@
 	var/mark = ""
 	icon = 'icons/misc/mark.dmi'
 	icon_state = "blank"
-	anchored = 1
+	anchored = TRUE
 	layer = 99
-	mouse_opacity = 0
-	unacidable = 1//Just to be sure.
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/beam
 	name = "beam"

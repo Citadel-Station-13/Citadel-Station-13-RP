@@ -7,18 +7,13 @@
 	name = "scatter projectile"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
-	density = FALSE
-	anchored = TRUE
-	unacidable = TRUE
-	pass_flags = ATOM_PASS_TABLE
-	mouse_opacity = 0
 
 	use_submunitions = TRUE
 
 	damage = 8
 	spread_submunition_damage = TRUE
 	only_submunitions = TRUE
-	range = 0	// Immediately deletes itself after firing, as its only job is to fire other projectiles.
+	range = WORLD_ICON_SIZE * 0	// Immediately deletes itself after firing, as its only job is to fire other projectiles.
 
 	submunition_spread_max = 30
 	submunition_spread_min = 2

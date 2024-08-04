@@ -151,8 +151,8 @@ const TelecommsServerSelection = (props, context) => {
 };
 
 interface TelecommsSelectedServerProps {
-  server: TelecommsServerSelected;
-  universal_translate: BooleanLike;
+  readonly server: TelecommsServerSelected;
+  readonly universal_translate: BooleanLike;
 }
 
 const TelecommsSelectedServer = (props: TelecommsSelectedServerProps, context) => {

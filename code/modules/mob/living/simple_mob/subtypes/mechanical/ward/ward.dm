@@ -22,8 +22,8 @@
 
 	mob_bump_flag = 0
 
-	melee_damage_lower = 0
-	melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
 
 	ai_holder_type = null
 	var/mob/living/owner = null // The mob that made the ward, if any. Used to ensure the ward does not interfere with its creator.

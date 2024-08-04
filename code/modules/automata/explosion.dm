@@ -1,2 +1,4 @@
+/// literally just a stub for now pending atom damage completion
 /datum/automata/wave/explosion
-	wave_spread = WAVE_SPREAD_SHOCKWAVE
+
+// todo: just do /datum/automata/explosion instead of the weird wave stuff.

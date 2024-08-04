@@ -57,6 +57,29 @@
 				/obj/item/stack/cable_coil/alien,
 				/obj/item/multitool/alien)
 
+/obj/random/tool/clockwork
+	name = "random clockwork tool"
+	desc = "This is a random clockwork tool"
+	icon_state = "clockwelder"
+
+/obj/random/tool/clockwork/item_to_spawn()
+	return pick (/obj/item/tool/screwdriver/clockwork,
+				/obj/item/tool/wirecutters/clockwork,
+				/obj/item/weldingtool/experimental/clockwork,
+				/obj/item/tool/crowbar/clockwork,
+				/obj/item/tool/wrench/clockwork,
+				/obj/item/multitool/clockwork)
+
+/obj/random/ore_bag
+	name = "random mining satchel"
+	desc = "This is a random mining satchel."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "satchel_bspace"
+
+/obj/random/ore_bag/item_to_spawn()
+	return pick(prob(6);/obj/item/storage/bag/ore,
+				prob(1);/obj/item/storage/bag/ore/bluespace)
+
 /obj/random/technology_scanner
 	name = "random scanner"
 	desc = "This is a random technology scanner."
@@ -66,7 +89,7 @@
 /obj/random/technology_scanner/item_to_spawn()
 	return pick(prob(5);/obj/item/t_scanner,
 				prob(2);/obj/item/radio,
-				prob(5);/obj/item/analyzer)
+				prob(5);/obj/item/atmos_analyzer)
 
 /obj/random/powercell
 	name = "random powercell"
@@ -317,6 +340,21 @@
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
 				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi,
 				prob(1);/obj/item/reagent_containers/food/snacks/xenomeat)
+
+/obj/random/meat/no_sapient
+	name = "random meat"
+	desc = "This is a random slab of meat."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "meat"
+
+/obj/random/meat/no_sapient/item_to_spawn()
+	return pick(prob(60);/obj/item/reagent_containers/food/snacks/meat,
+				prob(20);/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
+				prob(10);/obj/item/reagent_containers/food/snacks/carpmeat,
+				prob(5);/obj/item/reagent_containers/food/snacks/bearmeat,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/syntiflesh,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/monkey,
+				prob(1);/obj/item/reagent_containers/food/snacks/meat/corgi)
 
 /obj/random/material //Random materials for building stuff
 	name = "random material"
@@ -643,8 +681,8 @@
 	drop_get_turf = FALSE
 
 /obj/random/mre/dessert/item_to_spawn()
-	return pick(/obj/item/reagent_containers/food/snacks/candy,
-				/obj/item/reagent_containers/food/snacks/candy/proteinbar,
+	return pick(/obj/item/reagent_containers/food/snacks/wrapped/candy,
+				/obj/item/reagent_containers/food/snacks/wrapped/proteinbar,
 				/obj/item/reagent_containers/food/snacks/donut/normal,
 				/obj/item/reagent_containers/food/snacks/donut/cherryjelly,
 				/obj/item/reagent_containers/food/snacks/chocolatebar,
@@ -655,7 +693,7 @@
 	desc = "This is a random vegan dessert for MREs."
 
 /obj/random/mre/dessert/vegan/item_to_spawn()
-	return pick(/obj/item/reagent_containers/food/snacks/candy,
+	return pick(/obj/item/reagent_containers/food/snacks/wrapped/candy,
 				/obj/item/reagent_containers/food/snacks/chocolatebar,
 				/obj/item/reagent_containers/food/snacks/donut/cherryjelly,
 				/obj/item/reagent_containers/food/snacks/plumphelmetbiscuit)
@@ -841,49 +879,50 @@
 /obj/random/ammo_all
 	name = "Random Ammunition (All)"
 	desc = "This is random ammunition. Spawns all ammo types."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "666"
+
+	icon = 'icons/modules/projectiles/legacy/ammo_box.dmi'
+	icon_state = "orange"
 
 /obj/random/ammo_all/item_to_spawn()
 	return pick(
 		prob(5);/obj/item/storage/box/shotgunammo,
 		prob(5);/obj/item/storage/box/shotgunshells,
-		prob(5);/obj/item/ammo_magazine/clip/c762,
-		prob(5);/obj/item/ammo_magazine/m380,
-		prob(5);/obj/item/ammo_magazine/m45,
-		prob(5);/obj/item/ammo_magazine/m9mm,
-		prob(5);/obj/item/ammo_magazine/s38,
-		prob(4);/obj/item/ammo_magazine/clip/c45,
-		prob(4);/obj/item/ammo_magazine/clip/c9mm,
-		prob(4);/obj/item/ammo_magazine/m45uzi,
-		prob(4);/obj/item/ammo_magazine/m45uzi/wt274,
-		prob(4);/obj/item/ammo_magazine/m9mml,
-		prob(4);/obj/item/ammo_magazine/m9mmt,
-		prob(4);/obj/item/ammo_magazine/m57x28mmp90,
-		prob(4);/obj/item/ammo_magazine/m10mm,
-		prob(4);/obj/item/ammo_magazine/m545/small,
-		prob(3);/obj/item/ammo_magazine/clip/c10mm,
-		prob(3);/obj/item/ammo_magazine/clip/c44,
-		prob(3);/obj/item/ammo_magazine/s44,
-		prob(3);/obj/item/ammo_magazine/m762,
-		prob(3);/obj/item/ammo_magazine/m545,
+		prob(5);/obj/item/ammo_magazine/a7_62mm/clip,
+		prob(5);/obj/item/ammo_magazine/a38,
+		prob(5);/obj/item/ammo_magazine/a45,
+		prob(5);/obj/item/ammo_magazine/a9mm,
+		prob(5);/obj/item/ammo_magazine/a38/speedloader,
+		prob(4);/obj/item/ammo_magazine/a45/clip,
+		prob(4);/obj/item/ammo_magazine/a9mm/clip,
+		prob(4);/obj/item/ammo_magazine/a45/uzi,
+		prob(4);/obj/item/ammo_magazine/a45/wt274,
+		prob(4);/obj/item/ammo_magazine/a9mm,
+		prob(4);/obj/item/ammo_magazine/a9mm/top_mount,
+		prob(4);/obj/item/ammo_magazine/a5_7mm/p90,
+		prob(4);/obj/item/ammo_magazine/a10mm,
+		prob(4);/obj/item/ammo_magazine/a5_56mm/small,
+		prob(3);/obj/item/ammo_magazine/a10mm/clip,
+		prob(3);/obj/item/ammo_magazine/a44/clip,
+		prob(3);/obj/item/ammo_magazine/a44/speedloader,
+		prob(3);/obj/item/ammo_magazine/a7_62mm,
+		prob(3);/obj/item/ammo_magazine/a5_56mm,
 		prob(3);/obj/item/cell/device/weapon,
-		prob(2);/obj/item/ammo_magazine/m44,
-		prob(2);/obj/item/ammo_magazine/s357,
-		prob(2);/obj/item/ammo_magazine/m762m,
-		prob(2);/obj/item/ammo_magazine/clip/c12g,
-		prob(2);/obj/item/ammo_magazine/clip/c12g/pellet,
-		prob(1);/obj/item/ammo_magazine/m45tommy,
+		prob(2);/obj/item/ammo_magazine/a44,
+		prob(2);/obj/item/ammo_magazine/a357/speedloader,
+		prob(2);/obj/item/ammo_magazine/a7_62mm,
+		prob(2);/obj/item/ammo_magazine/a12g/clip,
+		prob(2);/obj/item/ammo_magazine/a12g/clip/pellet,
+		prob(1);/obj/item/ammo_magazine/a45/tommy,
 		// prob(1);/obj/item/ammo_magazine/m95,
 		prob(1);/obj/item/ammo_casing/rocket,
 		prob(1);/obj/item/storage/box/sniperammo,
 		prob(1);/obj/item/storage/box/flashshells,
 		prob(1);/obj/item/storage/box/beanbags,
 		prob(1);/obj/item/storage/box/stunshells,
-		prob(1);/obj/item/ammo_magazine/mtg,
-		prob(1);/obj/item/ammo_magazine/m12gdrum,
-		prob(1);/obj/item/ammo_magazine/m12gdrum/pellet,
-		prob(1);/obj/item/ammo_magazine/m45tommydrum,
+		prob(1);/obj/item/ammo_magazine/a7_92mm,
+		prob(1);/obj/item/ammo_magazine/a12g/drum,
+		prob(1);/obj/item/ammo_magazine/a12g/drum/pellet,
+		prob(1);/obj/item/ammo_magazine/a45/tommy/drum,
 	)
 
 /obj/random/cargopod
@@ -960,6 +999,7 @@
 				prob(2);/obj/random/multiple/minevault,
 				prob(1);/obj/random/coin,
 				prob(1);/obj/random/drinkbottle,
+				prob(1);/obj/random/tool/clockwork,
 				prob(1);/obj/random/tool/alien)
 
 /obj/random/slimecore
@@ -1031,84 +1071,84 @@
 /obj/random/multiple/ores/item_to_spawn()
 	return pick(
 				prob(9);list(
-							/obj/item/storage/bag/ore,
+							/obj/random/ore_bag,
 							/obj/item/shovel,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/glass,
-							/obj/item/ore/hydrogen,
-							/obj/item/ore/hydrogen,
-							/obj/item/ore/hydrogen,
-							/obj/item/ore/hydrogen,
-							/obj/item/ore/hydrogen,
-							/obj/item/ore/hydrogen
+							/obj/item/stack/ore/glass, //TODO: replace this legacy loot nonsense.
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/glass,
+							/obj/item/stack/ore/hydrogen,
+							/obj/item/stack/ore/hydrogen,
+							/obj/item/stack/ore/hydrogen,
+							/obj/item/stack/ore/hydrogen,
+							/obj/item/stack/ore/hydrogen,
+							/obj/item/stack/ore/hydrogen
 							),
 				prob(7);list(
-							/obj/item/storage/bag/ore,
+							/obj/random/ore_bag,
 							/obj/item/pickaxe,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium,
-							/obj/item/ore/osmium
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium,
+							/obj/item/stack/ore/osmium
 							),
 				prob(4);list(
 							/obj/item/clothing/suit/radiation,
 							/obj/item/clothing/head/radiation,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium,
-							/obj/item/ore/uranium),
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium,
+							/obj/item/stack/ore/uranium),
 				prob(2);list(
 							/obj/item/flashlight/lantern,
 							/obj/item/clothing/glasses/material,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond,
-							/obj/item/ore/diamond
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond,
+							/obj/item/stack/ore/diamond
 							),
 				prob(1);list(
 							/obj/item/mining_scanner,
 							/obj/item/shovel/spade,
-							/obj/item/ore/verdantium,
-							/obj/item/ore/verdantium,
-							/obj/item/ore/verdantium,
-							/obj/item/ore/verdantium,
-							/obj/item/ore/verdantium
+							/obj/item/stack/ore/verdantium,
+							/obj/item/stack/ore/verdantium,
+							/obj/item/stack/ore/verdantium,
+							/obj/item/stack/ore/verdantium,
+							/obj/item/stack/ore/verdantium
 							)
 				)
 

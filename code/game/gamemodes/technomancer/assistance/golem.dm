@@ -27,8 +27,8 @@
 	unsuitable_atoms_damage = 0
 	speed = 0
 
-	melee_damage_lower = 30 // It has a built in esword.
-	melee_damage_upper = 30
+	legacy_melee_damage_lower = 30 // It has a built in esword.
+	legacy_melee_damage_upper = 30
 	attack_sound = 'sound/weapons/blade1.ogg'
 	attacktext = list("slashed")
 	friendly = "hugs"
@@ -209,7 +209,7 @@
 	master = user
 	name = "[master]'s [initial(name)]"
 
-/mob/living/simple_animal/technomancer_golem/examine(mob/user)
+/mob/living/simple_animal/technomancer_golem/examine(mob/user, dist)
 	. = ..()
 	if(user.mind && technomancers.is_antagonist(user.mind))
 		. += "Your pride and joy.  It's a very special synthetic robot, capable of using functions similar to you, and you built it \

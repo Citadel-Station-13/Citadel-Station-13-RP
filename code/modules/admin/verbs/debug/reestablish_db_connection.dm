@@ -31,3 +31,7 @@
 		message_admins("Reloading client database data...")
 		for(var/client/C in GLOB.clients)
 			C.player?.load()
+		message_admins("Asserting round ID set...")
+		if(!isnum(text2num(GLOB.round_id)))
+			SSdbcore.SetRoundID()
+			message_admins("Round ID was not set and has now been re-set. Things might be weird this round.")

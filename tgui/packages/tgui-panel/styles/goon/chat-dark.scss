@@ -1,3 +1,5 @@
+@import './chat.scss';
+
 /**
  * Copyright (c) 2020 Aleksej Komarov
  * SPDX-License-Identifier: MIT
@@ -429,6 +431,14 @@ em {
 
 .servradio {
   color: #6ca729;
+}
+
+.expradio {
+  color: #c471af;
+}
+
+.entradio {
+  color: #52b985;
 }
 
 .syndradio {
@@ -933,7 +943,7 @@ blockquote.brass {
 }
 
 .interface {
-  color: #750e75;
+  color: #891089;
 }
 
 .sans {
@@ -953,40 +963,19 @@ blockquote.brass {
   font-family: "Courier New", cursive, sans-serif;
 }
 
-.command_headset {
-  font-weight: bold;
-  font-size: 125%;
-}
-
-.small {
-  font-size: 60%;
-}
-
-.big {
-  font-size: 185%;
-}
-
-.reallybig {
-  font-size: 245%;
-}
-
-.extremelybig {
-  font-size: 310%;
-}
-
 .greentext {
+  @include size-ll;
   color: #059223;
-  font-size: 185%;
-}
-
-.redtext {
-  color: #c51e1e;
-  font-size: 185%;
 }
 
 .yellowtext	{
+  @include size-ll;
   color: #FFCC00;
-  font-size: 185%;
+}
+
+.redtext {
+  @include size-ll;
+  color: #c51e1e;
 }
 
 .clown {
@@ -1010,6 +999,28 @@ blockquote.brass {
 /*jacq */
 .spooky {
   color: #FF9100;
+}
+
+/*pay attention to the votes.*/
+.votenotification {
+  color: #ff00ff;
+  font-size: 125%;
+  font-weight: bold;
+  animation: votenotification 5000ms infinite;
+}
+
+@keyframes votenotification {
+  0% {
+    color: #ff00ff;
+  }
+
+  50% {
+    color: #490049;
+  }
+
+  100% {
+    color: #ff00ff;
+  }
 }
 
 .hypnophrase {
@@ -1163,12 +1174,12 @@ blockquote.brass {
 
 /* LANGAUGES */
 .alien {
-  color: #543354;
+  color: #9e619e;
 }
 
 
 .tajaran {
-  color: #803B56;
+  color: #8c405d;
 }
 
 
@@ -1193,7 +1204,7 @@ blockquote.brass {
 }
 
 .solcom {
-  color: #22228B;
+  color: #5555be;
 }
 
 .changeling {
@@ -1220,7 +1231,7 @@ blockquote.brass {
 }
 
 .daemon {
-  color: #5E339E;
+  color: #68008B;
 	letter-spacing:-1pt;
 	word-spacing:0pt;
 	font-family: "Courier New", Courier, monospace;
@@ -1247,6 +1258,10 @@ blockquote.brass {
   color: #941C1C;
 }
 
+.promethean {
+  color: #A5A5A5; font-family:"Comic Sans MS","Comic Sans",cursive;
+}
+
 .akula {
   color: #c51e1e;
 }
@@ -1269,7 +1284,7 @@ blockquote.brass {
 }
 
 .interface {
-  color: #330033;
+  color: #990099;
 }
 
 /* HELPER CLASSES */

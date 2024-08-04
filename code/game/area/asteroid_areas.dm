@@ -229,7 +229,7 @@
 	name = "Research Outpost Anomaly Analysis"
 
 /area/outpost/research/exp_prep
-	name = "Research Outpost Expedition Preperation"
+	name = "Research Outpost Expedition Preparation"
 
 /area/outpost/research/disposal
 	name = "Research Outpost Waste Disposal"

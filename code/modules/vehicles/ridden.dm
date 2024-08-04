@@ -14,19 +14,13 @@
 	. = ..()
 	AddComponent(riding_filter_type, riding_handler_type)
 
-/obj/vehicle/ridden/examine(mob/user)
+/obj/vehicle/ridden/examine(mob/user, dist)
 	. = ..()
 	if(key_type)
 		if(!inserted_key)
 			. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
 		else
 			. += "<span class='notice'>Alt-click [src] to remove the key.</span>"
-
-/obj/vehicle/ridden/generate_action_type(actiontype)
-	var/datum/action/vehicle/ridden/A = ..()
-	. = A
-	if(istype(A))
-		A.vehicle_ridden_target = src
 
 /obj/vehicle/ridden/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	remove_occupant(M)

@@ -45,7 +45,7 @@ var/list/sacrificed = list()
 	if(istype(src,/obj/effect/rune))
 		return	fizzle() //Use friggin manuals, Dorf, your list was of zero length.
 	else
-		call(/obj/effect/rune/proc/fizzle)()
+		call(TYPE_PROC_REF(/obj/effect/rune, fizzle))()
 		return
 
 
@@ -149,14 +149,14 @@ var/list/sacrificed = list()
 					//broken mind - 5000 may seem like a lot I wanted the effect to really stand out for maxiumum losing-your-mind-spooky
 					//hallucination is reduced when the step off as well, provided they haven't hit the last stage...
 
-					//5000 is waaaay too much, in practice.
-					target.hallucination = min(target.hallucination + 100, 500)
+					//5000 is waaaay too much, in practice. (what the actual fuck were these coders thinking?!)
+					target.adjustHallucination(100)
 					target.apply_effect(10, STUTTER)
 					target.adjustBrainLoss(1)
 				if(100 to INFINITY)
 					to_chat(target, "<span class='cult'>Your entire broken soul and being is engulfed in corruption and flames as your mind shatters away into nothing.</span>")
 					//5000 is waaaay too much, in practice.
-					target.hallucination = min(target.hallucination + 100, 500)
+					target.adjustHallucination(100)
 					target.apply_effect(15, STUTTER)
 					target.adjustBrainLoss(1)
 
@@ -181,7 +181,7 @@ var/list/sacrificed = list()
 				if(choice == "Submit") //choosing 'Resist' does nothing of course.
 					cult.add_antagonist(target.mind)
 					converting -= target
-					target.hallucination = 0 //sudden clarity
+					target.setHallucination(0) //sudden clarity
 
 		sleep(100) //proc once every 10 seconds
 	return 1
@@ -204,7 +204,6 @@ var/list/sacrificed = list()
 			to_chat(world, "<font size='15' color='red'><b>THE VEIL HAS BEEN SHATTERED!</b></font>")
 			SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
-			SetUniversalState(/datum/universal_state/hell)
 			narsie_cometh = 1
 
 			spawn(10 SECONDS)
@@ -279,12 +278,12 @@ var/list/sacrificed = list()
 				if(I.damage > 0)
 					I.damage = max(I.damage - 5, 0)		//Heals 5 damage per organ per use
 				if(I.damage <= 5 && I.organ_tag == O_EYES)
-					H.sdisabilities &= ~SDISABILITY_NERVOUS
+					H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 			// check their limbs
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E
 				// fix bones
-				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
+				if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
 				// fix IB
 				affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
@@ -368,7 +367,8 @@ var/list/sacrificed = list()
 		var/datum/gender/TT = GLOB.gender_datums[body_to_sacrifice.get_visible_gender()]
 
 		cult.add_antagonist(corpse_to_raise.mind)
-		corpse_to_raise.revive()
+		corpse_to_raise.revive(full_heal = TRUE)
+		corpse_to_raise.remove_all_restraints()
 
 		usr.say("Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!")
 		corpse_to_raise.visible_message("<span class='warning'>[corpse_to_raise]'s eyes glow with a faint red as [TU.he] stand[TU.s] up, slowly starting to breathe again.</span>", \
@@ -414,7 +414,7 @@ var/list/sacrificed = list()
 	if(istype(src,/obj/effect/rune))
 		return	fizzle()
 	else
-		call(/obj/effect/rune/proc/fizzle)()
+		call(TYPE_PROC_REF(/obj/effect/rune, fizzle))()
 		return
 
 //! TENTH RUNE
@@ -434,7 +434,7 @@ var/list/sacrificed = list()
 				L.ajourn=0
 				return
 			else
-				L.take_organ_damage(3, 0)
+				L.take_random_targeted_damage(brute = 3, burn = 0)
 			sleep(100)
 	return fizzle()
 
@@ -477,7 +477,7 @@ var/list/sacrificed = list()
 	D.g_eyes = 200
 	D.update_eyes()
 	D.all_underwear.Cut()
-	D.key = ghost.key
+	ghost.transfer_client_to(D)
 	cult.add_antagonist(D.mind)
 
 	if(!chose_name)
@@ -488,7 +488,7 @@ var/list/sacrificed = list()
 	log_and_message_admins("used a manifest rune.")
 	var/mob/living/user = usr
 	while(this_rune && user && user.stat==CONSCIOUS && user.client && user.loc==this_rune.loc)
-		user.take_organ_damage(1, 0)
+		user.take_random_targeted_damage(brute = 1)
 		sleep(30)
 	if(D)
 		D.visible_message("<span class='danger'>[D] slowly dissipates into dust and bones.</span>", \
@@ -785,7 +785,7 @@ var/list/sacrificed = list()
 	if(istype(W,/obj/effect/rune))
 		return	fizzle()
 	if(istype(W,/obj/item/paper/talisman))
-		call(/obj/effect/rune/proc/fizzle)()
+		call(TYPE_PROC_REF(/obj/effect/rune, fizzle))()
 		return
 
 //! SEVENTEENTH RUNE
@@ -793,7 +793,7 @@ var/list/sacrificed = list()
 	usr.say("Khari[pick("'","`")]d! Eske'te tannin!")
 	src.density = !src.density
 	var/mob/living/user = usr
-	user.take_organ_damage(2, 0)
+	user.take_random_targeted_damage(brute = 2)
 	if(src.density)
 		to_chat(usr, "<span class='danger'>Your blood flows into the rune, and you feel that the very space over the rune thickens.</span>")
 	else
@@ -944,11 +944,9 @@ var/list/sacrificed = list()
 			if(N)
 				continue
 			C.eye_blurry += 50
-			C.Blind(20)
+			C.apply_status_effect(/datum/status_effect/sight/blindness, 20 SECONDS)
 			if(prob(5))
 				C.disabilities |= DISABILITY_NEARSIGHTED
-				if(prob(10))
-					C.sdisabilities |= SDISABILITY_NERVOUS
 			C.show_message("<span class='warning'>Suddenly you see a red flash that blinds you.</span>", 3)
 			affected += C
 		if(affected.len)
@@ -967,7 +965,7 @@ var/list/sacrificed = list()
 			if(N)
 				continue
 			C.eye_blurry += 30
-			C.Blind(10)
+			C.apply_status_effect(/datum/status_effect/sight/blindness, 10 SECONDS)
 			//talismans is weaker.
 			affected += C
 			C.show_message("<span class='warning'>You feel a sharp pain in your eyes, and the world disappears into darkness..</span>", 3)
@@ -1072,10 +1070,10 @@ var/list/sacrificed = list()
 		var/obj/item/nullrod/N = locate() in T
 		if(N)
 			for(var/mob/O in viewers(T, null))
-				O.show_message(text("<span class='warning'><B>[] invokes a talisman at [], but they are unaffected!</B></span>", usr, T), 1)
+				O.show_message(SPAN_BOLDWARNING("[usr] invokes a talisman at [T], but they are unaffected"), 1)
 		else
 			for(var/mob/O in viewers(T, null))
-				O.show_message(text("<span class='warning'><B>[] invokes a talisman at []</B></span>", usr, T), 1)
+				O.show_message(SPAN_BOLDWARNING("[usr] invokes a talisman at [T]"), 1)
 
 			if(issilicon(T))
 				T.afflict_paralyze(20 * 15)
@@ -1100,7 +1098,7 @@ var/list/sacrificed = list()
 	usr.visible_message("<span class='warning'>The rune disappears with a flash of red light, and a set of armor appears on [usr]...</span>", \
 	"<span class='warning'>You are blinded by the flash of red light! After you're able to see again, you see that you are now wearing a set of armor.</span>")
 
-	user.equip_to_slot_or_del(new /obj/item/clothing/head/culthood/alt(user), SLOT_ID_HEAD)
+	user.equip_to_slot_or_del(new /obj/item/clothing/head/cult/alt(user), SLOT_ID_HEAD)
 	user.equip_to_slot_or_del(new /obj/item/clothing/suit/cultrobes/alt(user), SLOT_ID_SUIT)
 	user.equip_to_slot_or_del(new /obj/item/clothing/shoes/cult(user), SLOT_ID_SHOES)
 	user.equip_to_slot_or_del(new /obj/item/storage/backpack/cultpack(user), SLOT_ID_BACK)

@@ -1,9 +1,13 @@
 /obj/item/gun/energy/gun
 	name = "energy gun"
 	desc = "Another bestseller of Lawson Arms and "+TSC_HEPH+", the LAEP90 Perun is a versatile energy based sidearm, capable of switching between low and high capacity projectile settings. In other words: Stun or Kill."
+	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+		then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger."
 	icon_state = "energystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_delay = 10 // Handguns should be inferior to two-handed weapons.
+
+	worth_intrinsic = 250
 
 	projectile_type = /obj/projectile/beam/stun/med
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
@@ -27,7 +31,7 @@
 	item_state = null	//so the human update icon uses the icon_state instead.
 	charge_cost = 100
 	damage_force = 8
-	w_class = ITEMSIZE_LARGE	//Probably gonna make it a rifle sooner or later
+	w_class = WEIGHT_CLASS_BULKY	//Probably gonna make it a rifle sooner or later
 	fire_delay = 6
 	heavy = TRUE
 	projectile_type = /obj/projectile/beam/stun/weak
@@ -36,6 +40,7 @@
 
 //	requires_two_hands = 1
 	one_handed_penalty = 30
+	worth_intrinsic = 450
 
 	firemodes = list(
 		list(mode_name="stun", burst=1, projectile_type=/obj/projectile/beam/stun/weak, modifystate="fm-2tstun", charge_cost = 100),
@@ -51,7 +56,7 @@
 	item_state = null	//so the human update icon uses the icon_state instead.
 	charge_cost = 20
 	damage_force = 8
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	fire_delay = 3
 	projectile_type = /obj/projectile/beam/excavation
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
@@ -72,7 +77,7 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
 	slot_flags = SLOT_BELT
 	damage_force = 8 //looks heavier than a pistol
-	w_class = ITEMSIZE_LARGE	//Looks bigger than a pistol, too.
+	w_class = WEIGHT_CLASS_BULKY	//Looks bigger than a pistol, too.
 	heavy = TRUE
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -100,7 +105,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	damage_force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	fire_delay = 6	//standard rate
 	battery_lock = 0
 	modifystate = null
@@ -114,7 +119,7 @@
 //NT SpecOps Laser Pistol
 /obj/item/gun/energy/gun/combat
 	name = "NT-ES-2 energy pistol"
-	desc = "A purpose-built energy weapon designed to function as a sidearm for NanoTrasen special operations. This weapon is ideal for hazardous environments where both lethal and non-lethal responses may be required."
+	desc = "A purpose-built energy weapon designed to function as a sidearm for Nanotrasen special operations. This weapon is ideal for hazardous environments where both lethal and non-lethal responses may be required."
 	icon_state = "clpistolstun100"
 	fire_delay = 8
 

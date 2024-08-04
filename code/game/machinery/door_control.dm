@@ -31,7 +31,7 @@
 	if(LAZYLEN(req_access) || LAZYLEN(req_one_access.len))
 		req_access = req_access ? list() : null
 		req_one_access = req_one_access ? list() : null // if it's not set keep it not set
-		playsound(src.loc, "sparks", 100, TRUE)
+		playsound(src.loc, /datum/soundbyte/grouped/sparks, 100, TRUE)
 		return 1
 
 /obj/machinery/button/remote/attack_hand(mob/user, list/params)

@@ -7,6 +7,7 @@
 
 	spawn(5 SECONDS) //5 second timer until the AI enabled mob goes wild. this transition appears very quick due to tick lag
 		if(src && !src.client)
-			if(ai_holder)
+			if(istype(src.ai_holder, /datum/ai_holder/polaris))
+				var/datum/ai_holder/polaris/ai_holder = src.ai_holder
 				ai_holder.set_stance(STANCE_IDLE)
 				ai_holder.go_wake()

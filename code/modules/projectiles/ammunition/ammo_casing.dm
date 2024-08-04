@@ -1,30 +1,37 @@
 /obj/item/ammo_casing
 	name = "bullet casing"
 	desc = "A bullet casing."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "s-casing"
+	icon = 'icons/modules/projectiles/casings/slim.dmi'
+	icon_state = "small"
 	slot_flags = SLOT_BELT | SLOT_EARS
+	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	throw_force = 1
-	w_class = ITEMSIZE_TINY
-	preserve_item = 1
+	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 
-	//! Casing
+	//* Casing
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
 	var/casing_flags = NONE
+	/// what types of primer we react to
+	var/casing_primer = CASING_PRIMER_CHEMICAL
 	/// projectile type
 	var/projectile_type
+	/// caliber - set to typepath of datum for compile checking
+	///
+	/// * may be typepath of caliber (recommended)
+	/// * may be instance of caliber (not recommended, but allowable for special cases)
+	/// * may NOT be string of caliber, currently
+	var/regex_this_caliber
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
-	VAR_PRIVATE/obj/projectile/stored
+	VAR_PROTECTED/obj/projectile/stored
 
-	//! Icon
+	//* Icon
 	/// switch to "[initial(state)]-spent" after expenditure
 	var/icon_spent = TRUE
 
 	//! unsorted / legacy
 	var/leaves_residue = 1
-	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/fall_sounds = list('sound/weapons/guns/casingfall1.ogg','sound/weapons/guns/casingfall2.ogg','sound/weapons/guns/casingfall3.ogg')
 
 /obj/item/ammo_casing/Initialize(mapload)
@@ -39,6 +46,9 @@
 		QDEL_NULL(stored)
 	return ..()
 
+/obj/item/ammo_casing/get_intrinsic_worth(flags)
+	return loaded()? ..() : 0
+
 //removes the projectile from the ammo casing
 // todo: refactor for actual on-shot or whatever
 /obj/item/ammo_casing/proc/expend()
@@ -47,21 +57,23 @@
 	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
-/obj/item/ammo_casing/screwdriver_act(obj/item/I, mob/user, flags, hint)
+/obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!stored)
-		user.action_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)
+		e_args.chat_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)
 		return
-	var/label_text = input(user, "Inscribe some text into [initial(stored.name)]", "Inscription", stored.name)
+	var/label_text = input(e_args.initiator, "Inscribe some text into [initial(stored.name)]", "Inscription", stored.name)
+	if(!e_args.performer.Adjacent(src))
+		return
 	label_text = sanitize(label_text, MAX_NAME_LEN, extra = FALSE)
 	if(!label_text)
-		user.action_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(stored.name)]."), src)
+		e_args.chat_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(stored.name)]."), src)
 		stored.name = initial(stored.name)
 		return
-	user.action_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(stored.name)]."), src)
+	e_args.chat_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(stored.name)]."), src)
 	stored.name = "[initial(stored.name)] (\"[label_text]\")"
 
-/obj/item/ammo_casing/dynamic_tool_functions(obj/item/I, mob/user)
+/obj/item/ammo_casing/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())
 	. = list(
 		TOOL_SCREWDRIVER = list(
 			"etch"
@@ -105,7 +117,7 @@
 /obj/item/ammo_casing/proc/init_projectile()
 	if(istype(stored))
 		CRASH("double init?")
-	stored = new projectile_type
+	stored = new projectile_type(src)
 	return stored
 
 /obj/item/ammo_casing/update_icon_state()
@@ -115,7 +127,7 @@
 	else
 		icon_state = base_icon_state || icon_state
 
-/obj/item/ammo_casing/examine(mob/user)
+/obj/item/ammo_casing/examine(mob/user, dist)
 	. = ..()
 	if(!loaded())
 		. += "This one is spent."
@@ -126,3 +138,18 @@
 		mag.quick_gather(get_turf(src), user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
+
+//* Caliber *//
+
+/obj/item/ammo_casing/proc/get_caliber_string()
+	return resolve_caliber(regex_this_caliber)?.caliber
+
+/obj/item/ammo_casing/proc/get_caliber()
+	RETURN_TYPE(/datum/ammo_caliber)
+	return resolve_caliber(regex_this_caliber)
+
+//* Generic - Spent Subtype *//
+
+/obj/item/ammo_casing/spent
+	icon_state = /obj/item/ammo_casing::icon_state + "-spent"
+	stored = FALSE

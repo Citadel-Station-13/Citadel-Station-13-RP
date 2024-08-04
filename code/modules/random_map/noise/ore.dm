@@ -60,12 +60,6 @@
 				T.resources["copper"] =   rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources["uranium"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources["marble"] =   rand(RESOURCE_LOW_MIN, RESOURCE_MID_MAX)
-				T.resources["diamond"] =  0
-				T.resources["phoron"] =   0
-				T.resources["osmium"] =   0
-				T.resources["hydrogen"] = 0
-				T.resources["verdantium"] = 0
-				T.resources["lead"]     = 0
 			else if(current_cell < deep_val) // Rare metals.
 				T.resources["gold"] =     rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
 				T.resources["silver"] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
@@ -75,10 +69,6 @@
 				T.resources["osmium"] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
 				T.resources["verdantium"] = rand(RESOURCE_LOW_MIN, RESOURCE_LOW_MAX)
 				T.resources["lead"] =     rand(RESOURCE_LOW_MIN, RESOURCE_MID_MAX)
-				T.resources["hydrogen"] = 0
-				T.resources["diamond"] =  0
-				T.resources["hematite"] = 0
-				T.resources["marble"] =   0
 			else                             // Deep metals.
 				T.resources["uranium"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources["diamond"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
@@ -88,11 +78,6 @@
 				T.resources["hydrogen"] = rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
 				T.resources["marble"] =   rand(RESOURCE_MID_MIN, RESOURCE_HIGH_MAX)
 				T.resources["lead"] =     rand(RESOURCE_LOW_MIN, RESOURCE_HIGH_MAX)
-				T.resources["hematite"] = 0
-				T.resources["gold"] =     0
-				T.resources["silver"] =   0
-				T.resources["copper"] =   0
-	return
 
 /datum/random_map/noise/ore/get_map_char(var/value)
 	if(value < rare_val)

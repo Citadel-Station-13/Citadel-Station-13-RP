@@ -6,8 +6,8 @@
 
 	name = "manual valve"
 	desc = "A pipe valve"
+	hides_underfloor_underlays = TRUE
 
-	level = 1
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 
@@ -36,9 +36,6 @@
 			return
 		add_underlay(T, node1, get_dir(src, node1))
 		add_underlay(T, node2, get_dir(src, node2))
-
-/obj/machinery/atmospherics/valve/hide(var/i)
-	update_underlays()
 
 /obj/machinery/atmospherics/valve/init_dir()
 	switch(dir)
@@ -320,6 +317,6 @@
 			"You hear a ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/valve/examine(mob/user)
-	..()
+/obj/machinery/atmospherics/valve/examine(mob/user, dist)
+	. = ..()
 	. += "It is [open ? "open" : "closed"]."

@@ -7,6 +7,7 @@
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
 /// Inverts the colour of an HTML string.
+/// TODO: We can probably do this better these days. @Zandario
 /proc/invertHTML(HTMLstring)
 	if (!(istext(HTMLstring)))
 		CRASH("Given non-text argument!")
@@ -22,12 +23,12 @@
 	textg = num2hex(255 - g)
 	textb = num2hex(255 - b)
 	if (length(textr) < 2)
-		textr = text("0[]", textr)
+		textr = "0[textr]"
 	if (length(textg) < 2)
-		textr = text("0[]", textg)
+		textr = "0[textg]"
 	if (length(textb) < 2)
-		textr = text("0[]", textb)
-	return text("#[][][]", textr, textg, textb)
+		textr = "0[textb]"
+	return "#[textr][textg][textb]"
 
 /**
  * Returns location.  Returns null if no location was found.
@@ -218,9 +219,6 @@
 			return TRUE
 	return FALSE
 
-/proc/sign(x)
-	return x!=0?x/abs(x):0
-
 /// Ultra-Fast Bresenham Line-Drawing Algorithm.
 /proc/getline(atom/M,atom/N)
 	/// Starting x coordinate.
@@ -238,9 +236,9 @@
 	/// Absolute value of y distance.
 	var/dyabs = abs(dy)
 	///Sign of x distance (+ or -).
-	var/sdx = sign(dx)
+	var/sdx = SIGN(dx)
 	///Sign of y distance (+ or -).
-	var/sdy = sign(dy)
+	var/sdy = SIGN(dy)
 	/// Counters for steps taken, setting to distance/2.
 	var/x = (dxabs >> 1)
 	/// Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
@@ -429,7 +427,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isobserver(M) && ghostfollow && M.client?.holder && M.client.holder.fakekey && M.is_preference_enabled(/datum/client_preference/holder/stealth_ghost_mode))
+		if(isobserver(M) && ghostfollow && M.client.is_under_stealthmin() && M.get_preference_toggle(/datum/game_preference_toggle/admin/stealth_hides_ghost))
 			continue
 		var/name = M.name
 		if (name in names)
@@ -455,7 +453,7 @@
 /// Orders mobs by type then by name.
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
+	var/list/sortmob = sortList(GLOB.mob_list, cmp= GLOBAL_PROC_REF(cmp_name_asc))
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/observer/blob/M in sortmob)
@@ -489,13 +487,6 @@
 //	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
 //		GLOB.mob_list.Add(M)
 	return moblist
-
-/// Forces a variable to be positive.
-/proc/modulus(variable)
-	if(variable >= 0)
-		return variable
-	if(variable < 0)
-		return -variable
 
 /// Returns the turf located at the map edge in the specified direction relative to A.
 /proc/get_edge_target_turf(atom/A, direction) //Used for mass driver
@@ -835,7 +826,7 @@
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, GLOB.using_map.base_turf_by_z[B.z]))
+						if(istype(B, SSmapping.level_baseturf(B.z)))
 							continue moving
 
 					var/turf/X = B
@@ -1019,6 +1010,10 @@
 		return TRUE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_SHARP)
+			return TRUE
 	return FALSE
 
 /// Whether or not the given item counts as cutting with an edge in terms of removing limbs.
@@ -1027,6 +1022,10 @@
 		return FALSE
 	if(O.edge)
 		return TRUE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.damage_mode & DAMAGE_MODE_EDGE)
+			return TRUE
 	return FALSE
 
 /// Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
@@ -1079,10 +1078,10 @@
  * TODO - Fix this ancient list of wall items. Preferably make it dynamically populated. ~Leshana
 */
 var/list/WALLITEMS = list(
-	/obj/machinery/power/apc, /obj/machinery/alarm, /obj/item/radio/intercom, /obj/structure/frame,
+	/obj/machinery/power/apc, /obj/machinery/air_alarm, /obj/item/radio/intercom, /obj/structure/frame,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
-	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button/remote,
+	/obj/machinery/newscaster, /obj/machinery/fire_alarm, /obj/structure/noticeboard, /obj/machinery/button/remote,
 	/obj/machinery/computer/security/telescreen, /obj/machinery/embedded_controller/radio,
 	/obj/item/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
 	/obj/structure/mirror, /obj/structure/fireaxecabinet, /obj/machinery/computer/security/telescreen/entertainment,
@@ -1459,42 +1458,3 @@ var/list/WALLITEMS = list(
 		if(sender)
 			query_string += "&from=[url_encode(sender)]"
 		world.Export("[config_legacy.chat_webhook_url]?[query_string]")
-
-/// This is a helper for anything that wants to render the map in TGUI.
-/proc/get_tgui_plane_masters()
-	. = list()
-
-	//! 'Utility' planes
-	/// Lighting system (lighting_overlay objects)
-	. += new /atom/movable/screen/plane_master/fullbright
-	/// Lighting system (but different!)
-	. += new /atom/movable/screen/plane_master/lighting
-	. += new /atom/movable/screen/plane_master/emissive
-	/// Ghosts!
-	. += new /atom/movable/screen/plane_master/ghosts
-	/// AI Eye!
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}
-
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}
-
-	/// Meson-specific things like open ceilings.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_MESONS}
-	/// Things that only show up while in build mode.
-	// . += new /atom/movable/screen/plane_master{plane = PLANE_BUILDMODE}
-
-	//! Real tangible stuff planes
-	. += new /atom/movable/screen/plane_master/main{plane = TURF_PLANE}
-	. += new /atom/movable/screen/plane_master/main{plane = OBJ_PLANE}
-	. += new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
-	/// Cloaked atoms!
-	// . += new /atom/movable/screen/plane_master/cloaked
-
-	//! Random other plane masters from Virgo
-	// Augmented reality.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}
-	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}

@@ -353,7 +353,7 @@ export const TraitorObjectiveDebug = (props, context) => {
 };
 
 type ObjectiveBoxProps = {
-  objective: Objective
+  readonly objective: Objective
 }
 
 const ObjectiveBox = (props: ObjectiveBoxProps, context) => {

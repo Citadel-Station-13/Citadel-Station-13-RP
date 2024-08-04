@@ -1,7 +1,7 @@
 /obj/item/storage/box/mixedglasses
 	name = "glassware box"
 	desc = "A box of assorted glassware"
-	can_hold = list(/obj/item/reagent_containers/food/drinks/glass2)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/drinks/glass2)
 
 /obj/item/storage/box/mixedglasses/New()
 	..()
@@ -18,7 +18,7 @@
 /obj/item/storage/box/glasses
 	name = "box of glasses"
 	var/glass_type = /obj/item/reagent_containers/food/drinks/glass2
-	can_hold = list(/obj/item/reagent_containers/food/drinks/glass2)
+	insertion_whitelist = list(/obj/item/reagent_containers/food/drinks/glass2)
 
 /obj/item/storage/box/glasses/New()
 	..()
@@ -61,12 +61,13 @@
 /obj/item/storage/box/glasses/meta
 	name = "box of half-pint metamorphic glasses"
 	glass_type = /obj/item/reagent_containers/food/drinks/metaglass
+	insertion_whitelist = list(/obj/item/reagent_containers/food/drinks/metaglass)
 
 /obj/item/storage/box/glass_extras
 	name = "box of cocktail garnishings"
 	var/extra_type = /obj/item/glass_extra
-	can_hold = list(/obj/item/glass_extra)
-	storage_slots = 14
+	insertion_whitelist = list(/obj/item/glass_extra)
+	max_items = 14
 
 /obj/item/storage/box/glass_extras/New()
 	..()

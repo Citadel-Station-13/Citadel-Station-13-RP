@@ -10,16 +10,21 @@
 	selection_color = "#013D3B"
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/psychiatrist
-	additional_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_MORGUE, ACCESS_MEDICAL_PSYCH)
-	minimal_access = list(ACCESS_MEDICAL_MAIN, ACCESS_MEDICAL_EQUIPMENT, ACCESS_MEDICAL_PSYCH, ACCESS_MEDICAL_CHEMISTRY)
+	additional_access = list(
+		ACCESS_MEDICAL_CHEMISTRY,
+		ACCESS_MEDICAL_MORGUE,
+	)
+	minimal_access = list(
+		ACCESS_MEDICAL_MAIN,
+		ACCESS_MEDICAL_EQUIPMENT,
+		ACCESS_MEDICAL_PSYCH,
+	)
 	outfit_type = /datum/outfit/job/station/psychiatrist
 	desc = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."
 	alt_titles = list(
 		"Psychologist" = /datum/prototype/struct/alt_title/psychologist,
-		"Psychoanalyst" = /datum/prototype/struct/alt_title/psychologist/psychoanalyst,
-		"Counselor" = /datum/prototype/struct/alt_title/counselor,
-		"Therapist" = /datum/prototype/struct/alt_title/therapist
+		"Counselor" = /datum/prototype/struct/alt_title/counselor
 		)
 
 /datum/prototype/struct/alt_title/psychologist
@@ -28,16 +33,10 @@
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
 	title_outfit = /datum/outfit/job/station/psychiatrist/psychologist
 
-/datum/prototype/struct/alt_title/psychologist/psychoanalyst
-	title = "Psychoanalyst"
-	title_blurb =  "A Psychoanalyst provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
-					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
-
 /datum/prototype/struct/alt_title/counselor
 	title = "Counselor"
-
-/datum/prototype/struct/alt_title/therapist
-	title = "Therapist"
+	title_blurb = "A Counselor tends to the emotional needs of the crew, and usually specializes in giving advice to those struggling with interpersonal \
+				relationships, addictions, self-esteem issues, and/or grief."
 
 /datum/outfit/job/station/psychiatrist
 	name = OUTFIT_JOB_NAME("Psychiatrist")

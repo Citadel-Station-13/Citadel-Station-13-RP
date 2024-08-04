@@ -10,11 +10,11 @@
 	var/list/keys = list()
 	for(var/client/C as anything in GLOB.clients)
 		keys += C
-	var/client/selection = input("Please, select a player!", "Set ckey", null, null) as null|anything in tim_sort(keys, /proc/cmp_ckey_asc)
+	var/client/selection = input("Please, select a player!", "Set ckey", null, null) as null|anything in tim_sort(keys, GLOBAL_PROC_REF(cmp_ckey_asc))
 	if(!selection || !istype(selection))
 		return
 
 	log_admin("[key_name(usr)] set ckey of [key_name(M)] to [selection]")
 	message_admins("[key_name_admin(usr)] set ckey of [key_name_admin(M)] to [selection]", 1)
-	M.ckey = selection.ckey
+	selection.transfer_to(M)
 	feedback_add_details("admin_verb","SCK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

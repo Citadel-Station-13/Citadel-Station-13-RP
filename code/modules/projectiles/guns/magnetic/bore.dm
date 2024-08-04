@@ -27,7 +27,7 @@
 	var/ammo_material = MAT_PHORON
 	var/loading = FALSE
 
-/obj/item/gun/magnetic/matfed/examine(mob/user)
+/obj/item/gun/magnetic/matfed/examine(mob/user, dist)
 	. = ..()
 	if(mat_storage)
 		. += SPAN_NOTICE("It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.")
@@ -165,7 +165,7 @@
 //phoron bore 2
 /obj/item/gun/magnetic/matfed/advanced
 	name = "advanced phoron bore"
-	description_fluff = "A revision of an aging Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
+	description_fluff = "A revision of an aging Grayson design, the Nanotrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
 	description_antag = "This device is exceptional at breaking down walls, though it is incredibly loud when doing so."
 	description_info = "The projectile of this tool will travel twelve tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets, and can hold a maximum of ten sheets."
 	projectile_type = /obj/projectile/bullet/magnetic/bore/powerful

@@ -13,6 +13,8 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
+	// todo: temporary, as this is unbuildable
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
@@ -88,9 +90,10 @@
 				H.flash_eyes()
 				E.damage += rand(1, 5)
 		else
-			if(!O.blinded && isliving(O))
+			if(isliving(O))
 				var/mob/living/L = O
-				L.flash_eyes()
+				if(!L.has_status_effect(/datum/status_effect/sight/blindness))
+					L.flash_eyes()
 		O.afflict_paralyze(20 * flash_time)
 
 /obj/machinery/flasher/emp_act(severity)

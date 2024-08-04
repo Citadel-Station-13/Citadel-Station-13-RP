@@ -1,14 +1,14 @@
 /// Sends information needed for uplinks
-/datum/asset/json/uplink
+/datum/asset_pack/json/uplink
 	name = "uplink"
 
-/datum/asset/json/uplink/generate()
+/datum/asset_pack/json/uplink/generate()
 	var/list/data = list()
 	var/list/categories = list()
 	var/list/items = list()
 	for(var/datum/uplink_category/category as anything in subtypesof(/datum/uplink_category))
 		categories += category
-	categories = tim_sort(categories, .proc/cmp_uplink_category_desc)
+	categories = tim_sort(categories, GLOBAL_PROC_REF(uplink_category_desc))
 
 	var/list/new_categories = list()
 	for(var/datum/uplink_category/category as anything in categories)

@@ -101,7 +101,7 @@
 		return
 	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
-			ai_holder.react_to_attack(L)
+			ai_holder.react_to_attack_polaris(L)
 
 /mob/living/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
@@ -121,7 +121,7 @@
 			signaler.signal()
 
 	if(ai_holder && P.firer)
-		ai_holder.react_to_attack(P.firer)
+		ai_holder.react_to_attack_polaris(P.firer)
 
 	//Armor
 	var/soaked = get_armor_soak(def_zone, P.damage_flag, P.armor_penetration)
@@ -138,9 +138,11 @@
 		proj_sharp = 0
 		proj_edge = 0
 
-	var/list/impact_sounds = LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone))
+	var/list/impact_sounds = islist(P.impact_sounds)? LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone)) : P.impact_sounds
 	if(length(impact_sounds))
 		playsound(src, pick(impact_sounds), 75)
+	else if(!isnull(impact_sounds))
+		playsound(src, impact_sounds, 75)
 
 	//Stun Beams
 	if(P.taser_effect)
@@ -186,7 +188,7 @@
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
-	var/list/L = src.get_contents()
+	var/list/L = src.get_equipped_items(TRUE, TRUE)
 	for(var/obj/O in L)
 		O.emp_act(severity)
 	..()
@@ -234,7 +236,7 @@
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	if(ai_holder)
-		ai_holder.react_to_attack(user)
+		ai_holder.react_to_attack_polaris(user)
 
 	var/soaked = get_armor_soak(hit_zone, "melee")
 	var/blocked = run_armor_check(hit_zone, "melee")
@@ -272,7 +274,7 @@
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		var/dtype = O.damtype
-		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier(src)
 
 		var/miss_chance = 15
 		var/distance = get_dist(TT.initial_turf, loc)
@@ -295,7 +297,7 @@
 			if(!!client || !!M.client)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
 			if(ai_holder)
-				ai_holder.react_to_attack(TT.thrower)
+				ai_holder.react_to_attack_polaris(TT.thrower)
 
 		// Begin BS12 momentum-transfer code.
 		var/mass = 1.5
@@ -335,7 +337,7 @@
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
-	src.take_organ_damage(speed*5)
+	src.take_random_targeted_damage(brute = speed*5)
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
 	var/turf/T = get_step(get_turf(src),direction)
@@ -360,7 +362,7 @@
 	adjustBruteLoss(damage)
 	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_mob attacks
 	if(ai_holder)
-		ai_holder.react_to_attack(user)
+		ai_holder.react_to_attack_polaris(user)
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
 	spawn(1) update_health()
@@ -404,7 +406,7 @@
 		return 1
 
 	var/datum/gas_mixture/G = loc?.return_air() // Check if we're standing in an oxygenless environment
-	if(!G || (G.gas[/datum/gas/oxygen] < 1))
+	if(!G || (G.gas[GAS_ID_OXYGEN] < 1))
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return 1
 
@@ -485,76 +487,6 @@
 /mob/living/proc/reagent_permeability()
 	return 1
 
-/mob/proc/handle_actions()
-
-/mob/living/handle_actions()
-	// todo: kill this, move to event driven.
-	//Pretty bad, i'd use picked/dropped instead but the parent calls in these are nonexistent
-	for(var/datum/action/A in actions)
-		if(A.CheckRemoval(src))
-			A.remove(src)
-	for(var/obj/item/I in src)
-		if(I.action_button_name)
-			if(!I.action)
-				if(I.action_button_is_hands_free)
-					I.action = new/datum/action/item_action/hands_free(I)
-				else
-					I.action = new/datum/action/item_action(I)
-				I.action.name = I.action_button_name
-			I.action.grant(src)
-
-/mob/living/update_action_buttons()
-	// todo: remove this, move to event driven
-	handle_actions()
-	if(!hud_used)
-		return
-	if(!client)
-		return
-
-	if(hud_used.hud_shown != 1)	//Hud toggled to minimal
-		return
-
-	client.screen -= hud_used.hide_actions_toggle
-	for(var/datum/action/A in actions)
-		if(A.button)
-			client.screen -= A.button
-
-	if(hud_used.action_buttons_hidden)
-		if(!hud_used.hide_actions_toggle)
-			hud_used.hide_actions_toggle = new(hud_used)
-			hud_used.hide_actions_toggle.UpdateIcon()
-
-		if(!hud_used.hide_actions_toggle.moved)
-			hud_used.hide_actions_toggle.screen_loc = hud_used.ButtonNumberToScreenCoords(1)
-			//hud_used.SetButtonCoords(hud_used.hide_actions_toggle,1)
-
-		client.screen += hud_used.hide_actions_toggle
-		return
-
-	var/button_number = 0
-	for(var/datum/action/A in actions)
-		button_number++
-		var/atom/movable/screen/movable/action_button/B = A.button
-
-		B.UpdateIcon()
-
-		B.name = A.UpdateName()
-
-		client.screen += B
-
-		if(!B.moved)
-			B.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number)
-			//hud_used.SetButtonCoords(B,button_number)
-
-	if(button_number > 0)
-		if(!hud_used.hide_actions_toggle)
-			hud_used.hide_actions_toggle = new(hud_used)
-			hud_used.hide_actions_toggle.InitialiseIcon(src)
-		if(!hud_used.hide_actions_toggle.moved)
-			hud_used.hide_actions_toggle.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number+1)
-			//hud_used.SetButtonCoords(hud_used.hide_actions_toggle,button_number+1)
-		client.screen += hud_used.hide_actions_toggle
-
 // Returns a number to determine if something is harder or easier to hit than normal.
 /mob/living/proc/get_evasion()
 	var/result = evasion // First we get the 'base' evasion.  Generally this is zero.
@@ -566,7 +498,7 @@
 /mob/living/proc/get_accuracy_penalty()
 	// Certain statuses make it harder to score a hit.
 	var/accuracy_penalty = 0
-	if(blinded)
+	if(has_status_effect(/datum/status_effect/sight/blindness))
 		accuracy_penalty += 75
 	if(eye_blurry)
 		accuracy_penalty += 30

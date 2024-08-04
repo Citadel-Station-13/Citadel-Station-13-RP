@@ -73,10 +73,10 @@
 /mob/living/proc/handle_random_events()
 	return
 
-/mob/living/proc/handle_environment(var/datum/gas_mixture/environment)
-	return
-
-/mob/living/proc/handle_stomach()
+/**
+ * Handle exposure to the environment, whether atmospherics or otherwise.
+ */
+/mob/living/proc/handle_environment(datum/gas_mixture/environment)
 	return
 
 /mob/living/proc/update_pulling()
@@ -123,11 +123,13 @@
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
-	if(sdisabilities & SDISABILITY_NERVOUS || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
-		SetBlinded(1)
-	else if(eye_blind)			//blindness, heals slowly over time
-		AdjustBlinded(-1)
-	else if(eye_blurry)			//blurry eyes heal slowly
+	if(sdisabilities & SDISABILITY_NERVOUS)	//blindness from disability or unconsciousness doesn't get better on its own
+		add_blindness_source(TRAIT_BLINDNESS_DISABILITY)
+	else
+		if(HAS_TRAIT_FROM(src, TRAIT_BLIND, TRAIT_BLINDNESS_DISABILITY))
+			remove_blindness_source(TRAIT_BLINDNESS_DISABILITY)
+
+	if(eye_blurry)//blurry eyes heal slowly
 		eye_blurry = max(eye_blurry-1, 0)
 
 	//Ears
@@ -147,34 +149,22 @@
 	// mute trait shim for now
 	if(HAS_TRAIT(src, TRAIT_MUTE))
 		silent = max(silent, 1)
-	// blind trait shim for now
-	if(HAS_TRAIT(src, TRAIT_BLIND))
-		eye_blind = max(eye_blind, 1)
 
 /mob/living/handle_regular_hud_updates()
 	if(!client)
 		return FALSE
 	..()
-
-	handle_darksight()
 	handle_hud_icons()
-
 	return TRUE
 
 /mob/living/proc/update_sight()
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
-	if(!seedarkness)
-		SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
-	else
-		SetSeeInvisibleSelf(initial(see_invisible))
 
 	sight = initial(sight)
 
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.vision_flags))
 			AddSightSelf(M.vision_flags)
-
-	return
 
 /mob/living/proc/handle_hud_icons()
 	handle_hud_icons_health()
@@ -204,34 +194,3 @@
 				return FALSE//When we glow with rads this is handled in handle_mutations_and_radiation()
 		set_light(0)
 		return FALSE
-
-/mob/living/proc/handle_darksight()
-	if(!dsoverlay)
-		return
-	if(!seedarkness) //Cheap 'always darksight' var
-		dsoverlay.alpha = 255
-		return
-
-	var/darksightedness = min(see_in_dark/world.view,1.0)	//A ratio of how good your darksight is, from 'nada' to 'really darn good'
-	var/current = dsoverlay.alpha/255						//Our current adjustedness
-
-	var/brightness = 0.0 //We'll assume it's superdark if we can't find something else.
-
-	if(isturf(loc))
-		var/turf/T = loc //Will be true 99% of the time, thus avoiding the whole elif chain
-		brightness = T.get_lumcount()
-
-	//Snowflake treatment of potential locations
-	else if(istype(loc,/obj/mecha)) //I imagine there's like displays and junk in there. Use the lights!
-		brightness = 1
-	else if(istype(loc,/obj/item/holder)) //Poor carried teshari and whatnot should adjust appropriately
-		var/turf/T = get_turf(src)
-		brightness = T.get_lumcount()
-
-	var/darkness = 1-brightness					//Silly, I know, but 'alpha' and 'darkness' go the same direction on a number line
-	var/adjust_to = min(darkness,darksightedness)//Capped by how darksighted they are
-	var/distance = abs(current-adjust_to)		//Used for how long to animate for
-	if(distance < 0.01) return					//We're already all set
-
-	//to_chat(world, "[src] in B:[round(brightness,0.1)] C:[round(current,0.1)] A2:[round(adjust_to,0.1)] D:[round(distance,0.01)] T:[round(distance*10 SECONDS,0.1)]")
-	animate(dsoverlay, alpha = (adjust_to*255), time = (distance*10 SECONDS))

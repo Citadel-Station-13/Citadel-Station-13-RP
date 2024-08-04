@@ -8,7 +8,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	desc = "It's a tiny chip!  This one doesn't seem to do much, however."
 	icon = 'icons/obj/integrated_electronics/electronic_components.dmi'
 	icon_state = "template"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	/// Reference to the assembly holding this circuit, if any.
 	var/obj/item/electronic_assembly/assembly = null
 	var/extended_desc = null
@@ -47,7 +47,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	/// Allows additional multitool functionality
 	var/allow_multitool = 1
 
-/obj/item/integrated_circuit/examine(mob/user)
+/obj/item/integrated_circuit/examine(mob/user, dist)
 	. = ..()
 	external_examine(user)
 	ui_interact(user)
@@ -57,7 +57,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	attackby(I, user)
 
 /// This should be used when someone is examining while the case is opened.
-/obj/item/integrated_circuit/proc/internal_examine(mob/user)
+/obj/item/integrated_circuit/proc/internal_examine(mob/user, dist)
 	to_chat(user, "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s.")
 	for(var/datum/integrated_io/I in inputs)
 		if(I.linked.len)
@@ -72,10 +72,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	ui_interact(user)
 
 /// This should be used when someone is examining from an 'outside' perspective, e.g. reading a screen or LED.
-/obj/item/integrated_circuit/proc/external_examine(mob/user)
+/obj/item/integrated_circuit/proc/external_examine(mob/user, dist)
 	return any_examine(user)
 
-/obj/item/integrated_circuit/proc/any_examine(mob/user)
+/obj/item/integrated_circuit/proc/any_examine(mob/user, dist)
 	return
 
 /obj/item/integrated_circuit/proc/attackby_react(var/atom/movable/A,mob/user)
@@ -111,24 +111,22 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		io.scramble()
 
 /obj/item/integrated_circuit/proc/check_interactivity(mob/user)
-	return ui_status(user, GLOB.physical_state) && !assembly || assembly.opened == UI_INTERACTIVE
+	return (ui_status(user, GLOB.physical_state) == UI_INTERACTIVE) && (!assembly || assembly.opened)
 
-/obj/item/integrated_circuit/verb/rename_component()
-	set name = "Rename Circuit"
-	set category = "Object"
-	set desc = "Rename your circuit, useful to stay organized."
-	set src in usr
-
-	var/mob/M = usr
-	var/input = tgui_input_text(usr, "What do you want to name this circuit?", "Rename", src.name, MAX_NAME_LEN)
-	if(src && input)
-		to_chat(M, SPAN_NOTICE("The circuit '[src.name]' is now labeled '[input]'."))
+/obj/item/integrated_circuit/proc/rename_component(mob/user)
+	var/input = tgui_input_text(user, "What do you want to name this circuit?", "Rename", src.displayed_name, MAX_NAME_LEN)
+	if(input)
+		to_chat(user, SPAN_NOTICE("The circuit '[displayed_name] ([name])' is now labeled '[input]'."))
 		displayed_name = input
+		if(assembly)
+			var/index = assembly.assembly_components.Find(src)
+			assembly.ui_circuit_props.Cut(index, 1 + index)
+			assembly.ui_circuit_props.Insert(index, list(list("name" = displayed_name,"ref" = REF(src),"removable" = removable,"input" = can_be_asked_input)))
 
-/obj/item/integrated_circuit/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/integrated_circuit/ui_state()
 	return GLOB.physical_state
 
-/obj/item/integrated_circuit/ui_host(mob/user, datum/tgui_module/module)
+/obj/item/integrated_circuit/ui_host()
 	if(istype(loc, /obj/item/electronic_assembly))
 		return loc.ui_host()
 	return ..()
@@ -139,7 +137,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		ui = new(user, src, "ICCircuit", name, parent_ui)
 		ui.open()
 
-/obj/item/integrated_circuit/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/integrated_circuit/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	data["name"] = name
@@ -255,7 +253,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			if(istype(held_item, /obj/item/integrated_electronics/debugger))
 				var/obj/item/integrated_electronics/debugger/D = held_item
 				if(D.accepting_refs)
-					D.afterattack(src, usr, TRUE)
+					D.afterattack(src, usr, CLICKCHAIN_HAS_PROXIMITY)
 				else
 					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
 			else
@@ -271,7 +269,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 					examined.ui_interact(usr)
 
 		if("remove")
-			remove(usr, index = params["index"])
+			remove(usr, FALSE, index = params["index"])
 			return
 	return FALSE
 

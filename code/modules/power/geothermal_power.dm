@@ -23,6 +23,14 @@
 	var/active_for = -1
 	var/power_total = 0
 
+/obj/machinery/power/geothermal_controller/examine(mob/user, dist)
+	. = ..()
+	if(isrobot(user) && !scanner)
+		. += "You can connect the controller to your internal scanning array, and allow it to temporary connect to the collectors, [src] would generate power for approximately 30 Minutes."
+	if(scanner)
+		. += "With [scanner] installed, [src] is providing [power_total/power_factor] Kilowatts."
+
+
 /obj/machinery/power/geothermal_controller/can_drain_energy(datum/actor, flags)
 	return FALSE
 

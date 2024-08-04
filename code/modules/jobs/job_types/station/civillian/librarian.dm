@@ -10,8 +10,9 @@
 	supervisors = "the Head of Personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/card/id/civilian/librarian
-	additional_access = list(ACCESS_GENERAL_LIBRARY, ACCESS_ENGINEERING_MAINT)
-	minimal_access = list(ACCESS_GENERAL_LIBRARY)
+	minimal_access = list(
+		ACCESS_GENERAL_LIBRARY,
+	)
 
 	outfit_type = /datum/outfit/job/station/librarian
 	desc = "The Librarian curates the book selection in the Library, so the crew might enjoy it."
@@ -28,7 +29,7 @@
 
 /datum/prototype/struct/alt_title/librarian/librarian/reporter
 	title = "Reporter"
-	title_blurb = "Although NanoTrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
+	title_blurb = "Although Nanotrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
 	title_outfit = /datum/outfit/job/station/librarian/reporter
 
 // Librarian Alt Titles
@@ -46,11 +47,11 @@
 
 /datum/prototype/struct/alt_title/librarian/historian
 	title = "Historian"
-	title_blurb = "The Historian uses the Library as a base of operation to record any important events occuring on station."
+	title_blurb = "The Historian uses the Library as a base of operation to record any important events occurring on station."
 
 /datum/prototype/struct/alt_title/librarian/archivist
 	title = "Archivist"
-	title_blurb = "The Archivist uses the Library as a base of operation to record any important events occuring on station."
+	title_blurb = "The Archivist uses the Library as a base of operation to record any important events occurring on station."
 
 /datum/prototype/struct/alt_title/librarian/professor
 	title = "Professor"

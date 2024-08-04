@@ -265,7 +265,7 @@
 	if(ad_hoc && src_z == dst_z)
 		return TRUE
 
-	return src_z in GLOB.using_map.get_map_levels(dst_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
+	return src_z in (LEGACY_MAP_DATUM).get_map_levels(dst_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
 
 /*
 
@@ -305,7 +305,7 @@
 /obj/machinery/telecomms/attack_ai(var/mob/user as mob)
 	attack_hand(user)
 
-/obj/machinery/telecomms/ui_data(mob/user)
+/obj/machinery/telecomms/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 
 	data["temp"] = temp
@@ -357,7 +357,7 @@
 
 	return data
 
-/obj/machinery/telecomms/ui_status(mob/user)
+/obj/machinery/telecomms/ui_status(mob/user, datum/ui_state/state)
 	if(!issilicon(user))
 		if(!istype(user.get_active_held_item(), /obj/item/multitool))
 			return UI_CLOSE
@@ -539,7 +539,7 @@
 			overmap_range = clamp(new_range, overmap_range_min, overmap_range_max)
 			update_idle_power_usage(initial(idle_power_usage)**(overmap_range+1))
 
-/obj/machinery/telecomms/ui_act(action, params)
+/obj/machinery/telecomms/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

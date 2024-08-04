@@ -6,12 +6,7 @@
 /obj/item/proc/digest_act(var/atom/movable/item_storage = null)
 	if(istype(item_storage,/obj/item/dogborg/sleeper))
 		for(var/obj/item/O in contents)
-			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
-				for(var/obj/item/SO in O)
-					if(item_storage)
-						SO.forceMove(item_storage)
-					qdel(O)
-			else if(item_storage)
+			if(item_storage)
 				O.forceMove(item_storage)
 		qdel(src)
 		return w_class
@@ -27,12 +22,7 @@
 		digest_stage -= g_damage
 	else
 		for(var/obj/item/O in contents)
-			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
-				for(var/obj/item/SO in O)
-					if(item_storage)
-						SO.forceMove(item_storage)
-					qdel(O)
-			else if(item_storage)
+			if(item_storage)
 				O.forceMove(item_storage)
 		qdel(src)
 	return g_damage
@@ -45,8 +35,6 @@
 /obj/item/card/id/gold/captain/spare/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 /obj/item/aicard/digest_act(var/atom/movable/item_storage = null)
-	return FALSE
-/obj/item/paicard/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 /obj/item/gun/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
@@ -71,13 +59,7 @@
 			id = null
 	. = ..()
 
-/obj/item/card/id/digest_act(var/atom/movable/item_storage = null)
-	desc = "A partially digested card that has seen better days. The damage appears to be only cosmetic, but the access codes need to be reprogrammed at the HoP office."
-	icon = 'icons/obj/card_vr.dmi'
-	icon_state = "[initial(icon_state)]_digested"
-	if(!(LAZYLEN(lost_access)) && LAZYLEN(access))
-		lost_access = access	//Do not forget what access we lose
-	access = list()			// Then lose it
+/obj/item/card/id/digest_act(atom/item_storage)
 	return FALSE
 
 /obj/item/reagent_containers/food/digest_act(var/atom/movable/item_storage = null)

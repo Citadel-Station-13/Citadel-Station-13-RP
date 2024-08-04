@@ -4,11 +4,11 @@
 	icon_state = "shotgun"
 	item_state = "shotgun"
 	max_shells = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
-	caliber = "12g"
+	regex_this_caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	load_method = SINGLE_CASING|SPEEDLOADER
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
@@ -67,6 +67,7 @@
 	icon_state = "shotgun_c"
 	item_state = "cshotgun"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
+	worth_intrinsic = 500
 	max_shells = 7 //match the ammo box capacity, also it can hold a round in the chamber anyways, for a total of 8.
 	ammo_type = /obj/item/ammo_casing/a12g
 	load_method = SINGLE_CASING|SPEEDLOADER
@@ -76,12 +77,12 @@
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 /obj/item/gun/ballistic/shotgun/pump/combat/warden/verb/rename_gun()
 	set name = "Name Gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your gun. If you're the Warden."
 
 	var/mob/M = usr
@@ -100,7 +101,7 @@
 
 /obj/item/gun/ballistic/shotgun/pump/combat/warden/verb/reskin_gun()
 	set name = "Resprite gun"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Click to choose a sprite for your gun."
 
 	var/mob/M = usr
@@ -123,7 +124,7 @@
 	desc = "This exotic ten gauge shotgun sports a custom paint job and a cylinder choke. At close ranges, it packs quite the punch."
 	icon_state = "grit"
 	item_state = "grit"
-	caliber = "10g"
+	regex_this_caliber = /datum/ammo_caliber/a10g
 	ammo_type = /obj/item/ammo_casing/a10g/pellet/grit
 	fire_sound = 'sound/weapons/gunshot/musket.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
@@ -153,11 +154,11 @@
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 2
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
 	slot_flags = SLOT_BACK
-	caliber = "12g"
+	regex_this_caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
@@ -198,7 +199,7 @@
 		if(do_after(user, 30))	//SHIT IS STEALTHY EYYYYY
 			icon_state = "sawnshotgun"
 			item_state = "sawnshotgun"
-			w_class = ITEMSIZE_NORMAL
+			set_weight_class(WEIGHT_CLASS_NORMAL)
 			damage_force = 5
 			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
@@ -217,7 +218,7 @@
 	accuracy = 40
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 5
 	one_handed_penalty = 5
 
@@ -238,12 +239,12 @@
 	load_method = SINGLE_CASING|SPEEDLOADER
 	handle_casings = CYCLE_CASINGS
 	max_shells = 4
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 5
 	accuracy = 40
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	caliber = "12g"
+	regex_this_caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
@@ -258,12 +259,12 @@
 	desc = "Rip and tear, until it is done."
 	icon_state = "supershotgun"
 	item_state = "supershotgun"
-	caliber = "10g"
+	regex_this_caliber = /datum/ammo_caliber/a10g
 	recoil = 0
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a10g/silver
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	safety_state = GUN_SAFETY_OFF
 	damage_force = 15
 
@@ -276,14 +277,15 @@
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 5
 	slot_flags = SLOT_BELT
-	caliber = "12g"
+	regex_this_caliber = /datum/ammo_caliber/a12g
 	accuracy = -15 //Its a flaregun and you expected accuracy?
 	ammo_type = /obj/item/ammo_casing/a12g/flare
 	projectile_type = /obj/projectile/energy/flash
 	one_handed_penalty = 0
+	worth_intrinsic = 150
 
 /obj/item/gun/ballistic/shotgun/flare/paramed
 	name = "Paramedic Flare Gun"
@@ -312,7 +314,7 @@
 	handle_casings = CYCLE_CASINGS
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	max_shells = 1
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 25
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_OCCULT = 1)
@@ -328,8 +330,8 @@
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
-	w_class = ITEMSIZE_TINY
-	caliber = "12g"
+	w_class = WEIGHT_CLASS_TINY
+	regex_this_caliber = /datum/ammo_caliber/a12g
 	ammo_type = /obj/item/ammo_casing/a12g
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF
@@ -342,7 +344,7 @@
 	icon_state = "toy_shotgun"
 	max_shells = 8
 	damage_force = 5
-	caliber = "foamdart"
+	regex_this_caliber = /datum/ammo_caliber/foam
 	ammo_type = /obj/item/ammo_casing/foam
 	projectile_type = /obj/projectile/bullet/reusable/foam
 	one_handed_penalty = 5

@@ -43,7 +43,7 @@
 
 /datum/gm_action/security_screening/announce()
 	spawn(rand(1 MINUTE, 2 MINUTES))
-		command_announcement.Announce("[pick("A nearby Navy vessel", "A Solar official", "A Vir-Gov official", "A NanoTrasen board director")] has requested the screening of [pick("every other", "every", "suspicious", "willing")] [pickweight(end_weights)] personnel onboard \the [station_name()].", "Security Advisement")
+		command_announcement.Announce("[pick("A nearby Navy vessel", "A Solar official", "A Vir-Gov official", "A Nanotrasen board director")] has requested the screening of [pick("every other", "every", "suspicious", "willing")] [pickweight(end_weights)] personnel onboard \the [station_name()].", "Security Advisement")
 
 /datum/gm_action/security_screening/get_weight()
 	return max(-20, 10 + round(gm.staleness * 1.5) - (gm.danger * 2)) + (metric.count_people_in_department(DEPARTMENT_SECURITY) * 10) + (metric.count_people_in_department(DEPARTMENT_EVERYONE) * 1.5)

@@ -6,7 +6,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 10
 	throw_force = 7
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
@@ -14,23 +14,6 @@
 	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message(SPAN_DANGER("\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), SPAN_DANGER("You start to strangle yourself with \the [src]!"), SPAN_DANGER("You hear the sound of someone choking!"))
 	return (OXYLOSS)
-
-/obj/item/melee/sabre
-	name = "officer's sabre"
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
-	hitsound = "swing_hit"
-	icon_state = "sabre"
-	hitsound = 'sound/weapons/rapierhit.ogg'
-	damage_force = 35
-	throw_force = 15
-	w_class = ITEMSIZE_NORMAL
-	origin_tech = list(TECH_COMBAT = 4)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-
-/obj/item/melee/sabre/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	visible_message(SPAN_DANGER("[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), SPAN_DANGER("You slit your stomach open with \the [src.name]!"), SPAN_DANGER("You hear the sound of flesh tearing open.")) // gory, but it gets the point across
-	return(BRUTELOSS)
 
 /obj/item/melee/umbrella
 	name = "umbrella"
@@ -41,7 +24,7 @@
 	slot_flags = SLOT_BELT
 	damage_force = 5
 	throw_force = 5
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	var/open = FALSE
 
 /obj/item/melee/umbrella/Initialize(mapload)
@@ -77,11 +60,11 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	can_speak = 1
 	var/list/voice_mobs = list() //The curse of the sword is that it has someone trapped inside.
 
@@ -101,7 +84,7 @@
 	var/mob/living/voice/new_voice = new /mob/living/voice(src) 	//Make the voice mob the ghost is going to be.
 	new_voice.transfer_identity(candidate) 	//Now make the voice mob load from the ghost's active character in preferences.
 	new_voice.mind = candidate.mind			//Transfer the mind, if any.
-	new_voice.ckey = candidate.ckey			//Finally, bring the client over.
+	candidate.transfer_client_to(new_voice)
 	new_voice.name = "cursed sword"			//Cursed swords shouldn't be known characters.
 	new_voice.real_name = "cursed sword"
 	voice_mobs.Add(new_voice)
@@ -112,7 +95,7 @@
 	desc = "You shouldn't be seeing this. Contact an Admin."
 	icon_state = "skateboard"
 	icon = 'icons/obj/weapons.dmi'
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = SLOT_BELT
 	damage_force = 10
 	throw_force = 7
@@ -174,12 +157,12 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	reach = 2
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	hitsound = 'sound/items/bikehorn.ogg'
+	attack_sound = 'sound/items/bikehorn.ogg'
 
 /obj/item/melee/clownstaff/Initialize(mapload, material_key)
 	. = ..()
@@ -201,11 +184,11 @@
 	slot_flags = SLOT_BELT
 	damage_force = 30
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	sharp = 1
 	edge = 1
 	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	armor_penetration = 10
 	var/poison_chance = 100
 	var/poison_amount = 5
@@ -241,10 +224,10 @@
 	name = "bone sword"
 	desc = "A sharp sword crafted from knapped bone. In spite of its primitive appearance, it is still incredibly deadly."
 	icon_state = "bonesword"
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	damage_force = 20
 	throw_force = 10
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut", "chopped")
 	sharp = 1
@@ -264,9 +247,9 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/melee/ashlander/elder/afterattack(atom/A, mob/user)
-	if(isliving(A))
-		var/mob/living/tm = A // targeted mob
+/obj/item/melee/ashlander/elder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(isliving(target))
+		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
@@ -302,8 +285,8 @@
 	playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
 	src.damage_force = 20
 	src.damtype = "fire"
-	src.w_class = ITEMSIZE_LARGE
-	src.hitsound = 'sound/weapons/gun_flamethrower2.ogg'
+	src.set_weight_class(WEIGHT_CLASS_BULKY)
+	src.attack_sound = 'sound/weapons/gun_flamethrower2.ogg'
 	active = 1
 	update_icon()
 
@@ -312,8 +295,8 @@
 	playsound(loc, 'sound/weapons/gun_flamethrower1.ogg', 50, 1)
 	src.damage_force = 20
 	src.damtype = "brute"
-	src.w_class = initial(src.w_class)
-	src.hitsound = initial(src.hitsound)
+	src.set_weight_class(initial(src.w_class))
+	src.attack_sound = initial(src.attack_sound)
 	src.active = 0
 	update_icon()
 
@@ -328,18 +311,18 @@
 	desc = "A crude improvised weapon. Although visually frightening, shivs are usually more effective for maiming than killing."
 	icon_state = "shiv"
 	item_state = "knife"
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "sliced", "diced", "cut")
 	damage_force = 8
 	throw_force = 5
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	sharp = 1
 
 //I would like two-handed weapons that don't use our annoying material system, resulting in a "Steel Mjollnir". Drives me crazy.
 /obj/item/melee/twohanded
 	name = "Two Handed Weapon"
 	desc = "You shouldn't be seeing this. Report to a Maintainer."
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	var/wielded = 0
 	var/force_wielded = 0
 	var/force_unwielded
@@ -378,20 +361,20 @@
 	name = "Mjollnir"
 	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
 	icon_state = "mjollnir"
-	hitsound = 'sound/effects/lightningbolt.ogg'
+	attack_sound = 'sound/effects/lightningbolt.ogg'
 	damage_force = 0
 	throw_force = 30
 	force_wielded = 75
 	force_unwielded = 50
-	w_class = ITEMSIZE_HUGE
+	w_class = WEIGHT_CLASS_HUGE
 	edge = 1
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
 	armor_penetration = 50
-	slowdown = 0
+	weight = ITEM_WEIGHT_BASELINE
 
 //This currently just kills the user. lol
 /*
-/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/living/G, mob/user)
+/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 
 	if(wielded || isliving(target))
@@ -403,9 +386,9 @@
 			return
 		else
 			G.stun_effect_act(10 , 50, BP_TORSO, src)
-			G.take_organ_damage(10)
+			G.take_random_targeted_damage(brute = 10)
 			G.afflict_unconscious(20 * 20)
-			playsound(src.loc, "sparks", 50, 1)
+			playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
 			return
 */
 
@@ -441,7 +424,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/thermalcutter/examine(mob/user)
+/obj/item/melee/thermalcutter/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
@@ -462,12 +445,12 @@
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)
 
-/obj/item/melee/thermalcutter/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/melee/thermalcutter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
 		if(!active && max_fuel)
-			O.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			to_chat(user, "<span class='notice'>You refill [src].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
@@ -478,14 +461,14 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a thermal cutter.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a thermal cutter.")
 			to_chat(user, "<span class='danger'>You begin slicing into the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>")
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 			return
 	if (src.active)
 		remove_fuel(1)
 		var/turf/location = get_turf(user)
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
@@ -552,8 +535,8 @@
 			playsound(loc, acti_sound, 50, 1)
 			src.damage_force = 15
 			src.damtype = "fire"
-			src.w_class = ITEMSIZE_LARGE
-			src.hitsound = 'sound/items/welder.ogg'
+			src.set_weight_class(WEIGHT_CLASS_BULKY)
+			src.attack_sound = 'sound/items/welder.ogg'
 			src.sharp = 1
 			src.edge = 1
 			active = 1
@@ -571,11 +554,11 @@
 		playsound(loc, deac_sound, 50, 1)
 		src.damage_force = 3
 		src.damtype = "brute"
-		src.w_class = initial(src.w_class)
+		src.set_weight_class(initial(src.w_class))
 		src.active = 0
 		src.sharp = 0
 		src.edge = 0
-		src.hitsound = initial(src.hitsound)
+		src.attack_sound = initial(src.attack_sound)
 		update_icon()
 
 /obj/item/melee/thermalcutter/is_hot()

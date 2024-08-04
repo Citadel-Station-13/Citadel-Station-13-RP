@@ -18,14 +18,14 @@
 	name = "Dual Port Air Vent"
 	desc = "Has a valve and pump attached to it. There are two ports."
 
-	level = 1
-
 	use_power = USE_POWER_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 7500			//7500 W ~ 10 HP
 
 	pipe_flags = PIPING_ALL_LAYER
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY|CONNECT_TYPE_SCRUBBER //connects to regular, supply and scrubbers pipes
+
+	hides_underfloor_underlays = TRUE
 
 	var/pump_direction = 1 //0 = siphoning, 1 = releasing
 
@@ -72,7 +72,7 @@
 	if(!istype(T))
 		return
 
-	if(!T.is_plating() && node1 && node2 && node1.level == 1 && node2.level == 1 && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe))
+	if(T.hides_underfloor_objects() && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe) && node1.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS && node2.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 		vent_icon += "h"
 
 	if(!powered())
@@ -88,7 +88,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(!T.is_plating() && node1 && node2 && node1.level == 1 && node2.level == 1 && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe))
+		if(T.hides_underfloor_objects() && istype(node1, /obj/machinery/atmospherics/pipe) && istype(node2, /obj/machinery/atmospherics/pipe) && node1.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS && node2.hides_underfloor == OBJ_UNDERFLOOR_ALWAYS)
 			return
 		else
 			if (node1)
@@ -100,15 +100,15 @@
 			else
 				add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/hide(var/i)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/update_hiding_underfloor(new_value)
+	. = ..()
 	update_icon()
-	update_underlays()
 
 /obj/machinery/atmospherics/component/binary/dp_vent_pump/process(delta_time)
 	..()
 
-	last_power_draw = 0
-	last_flow_rate = 0
+	last_power_draw_legacy = 0
+	last_flow_rate_legacy = 0
 
 	if(machine_stat & (NOPOWER|BROKEN) || !use_power)
 		return 0
@@ -140,7 +140,7 @@
 					network2.update = 1
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 	return 1
@@ -199,9 +199,9 @@
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/component/binary/dp_vent_pump/examine(mob/user)
+/obj/machinery/atmospherics/component/binary/dp_vent_pump/examine(mob/user, dist)
 	. = ..()
-	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
+	. += "A small gauge in the corner reads [round(last_flow_rate_legacy, 0.1)] L/s; [round(last_power_draw_legacy)] W"
 
 
 /obj/machinery/atmospherics/component/unary/vent_pump/power_change()

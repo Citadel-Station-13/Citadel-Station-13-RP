@@ -42,7 +42,7 @@
 
 /obj/item/gun/energy/sizegun/proc/select_size()
 	set name = "Select Size"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	var/size_select = input("Put the desired size (25-200%)", "Set Size", size_set_to*100) as num
@@ -52,7 +52,7 @@
 	size_set_to = (size_select/100)
 	to_chat(usr, "<span class='notice'>You set the size to [size_select]%</span>")
 
-/obj/item/gun/energy/sizegun/examine(mob/user)
+/obj/item/gun/energy/sizegun/examine(mob/user, dist)
 	. = ..()
 	var/size_examine = (size_set_to*100)
 	. += "<span class='info'>It is currently set at [size_examine]%</span>"

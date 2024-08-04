@@ -7,9 +7,16 @@
 /// toggle interact, hot-bindable
 #define ABILITY_INTERACT_TOGGLE "toggle"
 
+//? targeting_type - exclusively used for targeted abilities
+
+#define ABILITY_TARGET_ALL "all"
+#define ABILITY_TARGET_MOB "mob"
+#define ABILITY_TARGET_TURF "turf"
+
 //? ability_check_flags - if you add new ones, make sure to modify available_check() and unavailable_reason().
 
 #define ABILITY_CHECK_CONSCIOUS (1<<0)
 #define ABILITY_CHECK_STANDING (1<<1)
 #define ABILITY_CHECK_FREE_HAND (1<<2)
 #define ABILITY_CHECK_STUNNED (1<<3)
+#define ABILITY_CHECK_RESTING (1<<4)

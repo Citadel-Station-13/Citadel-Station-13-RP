@@ -4,14 +4,9 @@
 /area/template_noop)
 "b" = (
 /obj/random/multiple/minevault,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold{
+	amount = 8
+	},
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "e" = (
@@ -25,10 +20,9 @@
 /obj/structure/closet/crate/miningcar,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold{
+	amount = 4
+	},
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "h" = (
@@ -66,11 +60,9 @@
 /obj/structure/closet/crate/miningcar,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold{
+	amount = 5
+	},
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "y" = (
@@ -112,24 +104,16 @@
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold{
+	amount = 4
+	},
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "H" = (
 /obj/random/multiple/minevault,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
-/obj/item/ore/gold,
+/obj/item/stack/ore/gold{
+	amount = 10
+	},
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "J" = (

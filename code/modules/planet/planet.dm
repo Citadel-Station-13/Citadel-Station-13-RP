@@ -24,6 +24,7 @@
 	var/sun_next_brightness
 
 	var/list/datum/lighting_corner/sunlit_corners = list()
+	// todo: KILL THIS WITH FIRE
 	var/list/expected_z_levels = list()
 
 	var/turf/unsimulated/wall/planetary/planetary_wall_type = /turf/unsimulated/wall/planetary
@@ -40,7 +41,10 @@
 
 /datum/planet/New()
 	..()
-	weather_holder = new(src)
+	if(isnull(weather_holder))
+		weather_holder = new(src)
+	else if(ispath(weather_holder))
+		weather_holder = new weather_holder(src)
 	current_time = current_time.make_random_time()
 	if(moon_name)
 		moon_phase = pick(list(

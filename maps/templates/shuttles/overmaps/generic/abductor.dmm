@@ -529,7 +529,7 @@
 /turf/simulated/shuttle/wall/alien,
 /area/abductor/interior)
 "Hv" = (
-/obj/effect/overmap/visitable/ship/abductor,
+/obj/overmap/entity/visitable/ship/abductor,
 /turf/space,
 /area/space)
 "IH" = (
@@ -811,12 +811,6 @@
 /obj/machinery/power/rtg/abductor,
 /turf/simulated/shuttle/floor/alien,
 /area/abductor/interior)
-"WC" = (
-/obj/structure/prop/alien/computer{
-
-	},
-/turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
 "WX" = (
 /turf/simulated/shuttle/wall/alien/hard_corner,
 /area/abductor/interior)
@@ -888,12 +882,12 @@
 /obj/item/ammo_casing/microbattery/medical/omni3,
 /obj/item/ammo_casing/microbattery/medical/omni3,
 /obj/structure/closet/alien,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/ammo_magazine/cell_mag/advanced,
-/obj/item/gun/ballistic/cell_loaded,
-/obj/item/gun/ballistic/cell_loaded,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/ammo_magazine/microbattery/advanced,
+/obj/item/gun/ballistic/microbattery,
+/obj/item/gun/ballistic/microbattery,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Zk" = (
@@ -9749,7 +9743,7 @@ cF
 fo
 fo
 pV
-WC
+xD
 SD
 SD
 pV
@@ -10202,13 +10196,13 @@ SD
 SD
 Qe
 Qe
-WC
+xD
 SD
 SD
 JF
 SD
 SD
-WC
+xD
 Qe
 Qe
 SD
@@ -12613,7 +12607,7 @@ pV
 pa
 pV
 pV
-WC
+xD
 SD
 JF
 pV

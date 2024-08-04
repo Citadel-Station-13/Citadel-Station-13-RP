@@ -2,7 +2,7 @@
  * InsertionSort
  * - Generally faster than merge for runs of 7 or smaller.
  */
-/proc/insertion_sort(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)
+/proc/insertion_sort(list/L, cmp= GLOBAL_PROC_REF(cmp_numeric_asc), associative, fromIndex=1, toIndex=0)
 	if(L && L.len >= 2)
 		fromIndex = fromIndex % L.len
 		toIndex = toIndex % (L.len+1)

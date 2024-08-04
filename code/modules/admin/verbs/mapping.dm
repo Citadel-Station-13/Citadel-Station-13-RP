@@ -27,10 +27,8 @@ GLOBAL_LIST_BOILERPLATE(all_debugging_effects, /obj/effect/debugging)
 /obj/effect/debugging/camera_range
 	icon = 'icons/480x480.dmi'
 	icon_state = "25percent"
-
-/obj/effect/debugging/camera_range/New()
-	src.pixel_x = -224
-	src.pixel_y = -224
+	pixel_x = -224
+	pixel_y = -224
 
 /obj/effect/debugging/marker
 	icon = 'icons/turf/areas.dmi'
@@ -138,6 +136,9 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 
 var/list/debug_verbs = list (
 	/client/proc/analyze_openturf,
+	/client/proc/zms_display_turf,
+	/client/proc/zms_display_discovery,
+	/client/proc/zms_display_mimic,
 	/client/proc/atmos_toggle_debug,
 	/client/proc/atmosscan,
 	/client/proc/camera_view,

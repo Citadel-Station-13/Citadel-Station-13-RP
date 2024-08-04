@@ -9,17 +9,15 @@
 
 /obj/item/coilgun_assembly/attackby(var/obj/item/thing, var/mob/user)
 
-	if(istype(thing, /obj/item/stack/material) && construction_stage == 1)
+	if(thing.is_material_stack_of(/datum/material/steel) && construction_stage == 1)
 		var/obj/item/stack/material/reinforcing = thing
-		var/datum/material/reinforcing_with = reinforcing.get_material()
-		if(reinforcing_with.name == MAT_STEEL) // Steel
-			if(reinforcing.get_amount() < 5)
-				to_chat(user, "<span class='warning'>You need at least 5 [reinforcing.singular_name]\s for this task.</span>")
-				return
-			reinforcing.use(5)
-			user.visible_message("<span class='notice'>\The [user] shapes some steel sheets around \the [src] to form a body.</span>")
-			increment_construction_stage()
+		if(reinforcing.get_amount() < 5)
+			to_chat(user, "<span class='warning'>You need at least 5 [reinforcing.singular_name]\s for this task.</span>")
 			return
+		reinforcing.use(5)
+		user.visible_message("<span class='notice'>\The [user] shapes some steel sheets around \the [src] to form a body.</span>")
+		increment_construction_stage()
+		return
 
 	if(istype(thing, /obj/item/duct_tape_roll) && construction_stage == 2)
 		user.visible_message("<span class='notice'>\The [user] secures \the [src] together with \the [thing].</span>")

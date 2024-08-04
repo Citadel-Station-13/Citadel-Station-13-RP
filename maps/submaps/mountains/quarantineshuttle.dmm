@@ -39,7 +39,6 @@
 /obj/machinery/door/blast/regular{
 	dir = 8;
 	id = "QShuttlePoIDoors";
-	layer = 3.3;
 	name = "Emergency Lockdown Shutters"
 	},
 /obj/item/barrier_tape_segment/medical{
@@ -121,7 +120,7 @@
 "as" = (
 /obj/machinery/vending/snack{
 	contraband = null;
-	products = list(/obj/item/reagent_containers/food/snacks/candy = 0, /obj/item/reagent_containers/food/drinks/dry_ramen = 0, /obj/item/reagent_containers/food/snacks/chips = 0, /obj/item/reagent_containers/food/snacks/sosjerky = 0, /obj/item/reagent_containers/food/snacks/no_raisin = 0, /obj/item/reagent_containers/food/snacks/spacetwinkie = 0, /obj/item/reagent_containers/food/snacks/cheesiehonkers = 0, /obj/item/reagent_containers/food/snacks/tastybread = 0, /obj/item/reagent_containers/food/snacks/skrellsnacks = 0)
+	products = list(/obj/item/reagent_containers/food/snacks/wrapped/candy=0,/obj/item/reagent_containers/food/drinks/dry_ramen=0,/obj/item/reagent_containers/food/snacks/bagged/chips=0,/obj/item/reagent_containers/food/snacks/bagged/sosjerky=0,/obj/item/reagent_containers/food/snacks/boxed/no_raisin=0,/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie=0,/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers=0,/obj/item/reagent_containers/food/snacks/tastybread=0,/obj/item/reagent_containers/food/snacks/wrapped/skrellsnacks=0)
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
@@ -130,7 +129,7 @@
 "at" = (
 /obj/machinery/vending/cola{
 	contraband = null;
-	products = list(/obj/item/reagent_containers/food/drinks/cans/cola = 0, /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 0, /obj/item/reagent_containers/food/drinks/cans/dr_gibb = 0, /obj/item/reagent_containers/food/drinks/cans/starkist = 0, /obj/item/reagent_containers/food/drinks/cans/waterbottle = 0, /obj/item/reagent_containers/food/drinks/cans/space_up = 0, /obj/item/reagent_containers/food/drinks/cans/iced_tea = 0, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 0, /obj/item/reagent_containers/food/drinks/cans/gingerale = 0)
+	products = list(/obj/item/reagent_containers/food/drinks/cans/cola=0,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind=0,/obj/item/reagent_containers/food/drinks/cans/dr_gibb=0,/obj/item/reagent_containers/food/drinks/cans/starkist=0,/obj/item/reagent_containers/food/drinks/cans/waterbottle=0,/obj/item/reagent_containers/food/drinks/cans/space_up=0,/obj/item/reagent_containers/food/drinks/cans/iced_tea=0,/obj/item/reagent_containers/food/drinks/cans/grape_juice=0,/obj/item/reagent_containers/food/drinks/cans/gingerale=0)
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
@@ -209,8 +208,7 @@
 "aF" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -227,8 +225,7 @@
 "aH" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -409,8 +406,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /turf/simulated/shuttle/plating,
 /area/submap/cave/qShuttle)
@@ -418,8 +414,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /turf/simulated/shuttle/plating,
 /area/submap/cave/qShuttle)
@@ -430,8 +425,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /turf/simulated/shuttle/plating,
 /area/submap/cave/qShuttle)

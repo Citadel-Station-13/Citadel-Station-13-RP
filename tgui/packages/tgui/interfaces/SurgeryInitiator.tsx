@@ -13,9 +13,9 @@ type Surgery = {
 };
 
 type SurgeryInitiatorData = {
-  selected_zone: BodyZone,
-  surgeries: Surgery[],
-  target_name: string,
+  readonly selected_zone: BodyZone,
+  readonly surgeries: Surgery[],
+  readonly target_name: string,
 };
 
 const sortSurgeries
@@ -31,7 +31,7 @@ class SurgeryInitiatorInner extends Component<
 > {
   state = {
     selectedSurgeryIndex: 0,
-  }
+  };
 
   componentDidMount() {
     this.updateSelectedSurgeryIndexState();

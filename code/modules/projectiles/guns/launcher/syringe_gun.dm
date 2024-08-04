@@ -1,14 +1,14 @@
 /obj/item/syringe_cartridge
 	name = "syringe gun cartridge"
 	desc = "An impact-triggered compressed gas cartridge that can be fitted to a syringe for rapid injection."
-	icon = 'icons/obj/ammo.dmi'
+	icon = 'icons/modules/projectiles/casings/syringe.dmi'
 	icon_state = "syringe-cartridge"
 	var/icon_flight = "syringe-cartridge-flight" //so it doesn't look so weird when shot
-	matter = list(MAT_STEEL = 125, MAT_GLASS = 375)
+	materials_base = list(MAT_STEEL = 125, MAT_GLASS = 375)
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throw_force = 3
 	damage_force = 3
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	var/obj/item/reagent_containers/syringe/syringe
 
 /obj/item/syringe_cartridge/update_icon()
@@ -55,7 +55,7 @@
 			//unfortuately we don't know where the dart will actually hit, since that's done by the parent.
 			if(L.can_inject() && syringe.reagents)
 				var/contained = syringe.reagents.get_reagents()
-				var/trans = syringe.reagents.trans_to_mob(L, 15, CHEM_BLOOD)
+				var/trans = syringe.reagents.trans_to_mob(L, 15, CHEM_INJECT)
 				add_attack_logs(TT.thrower,L,"Shot with [src.name] containing [contained], trasferred [trans] units")
 
 		syringe.break_syringe(iscarbon(A)? A : null)
@@ -69,9 +69,9 @@
 	desc = "A spring loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
 	icon_state = "syringegun"
 	item_state = "syringegun"
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
+	materials_base = list(MAT_STEEL = 2000)
 	damage_force = 7
-	matter = list(MAT_STEEL = 2000)
 	slot_flags = SLOT_BELT
 
 	fire_sound = 'sound/weapons/empty.ogg'

@@ -5,6 +5,11 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
+	item_flags = NONE
+
+	//? equip
+	/// Inventory slot IDs where this is active for any effects. Used by subtypes, to be potentially refactored in the future.
+	var/list/active_slots
 
 	//? legacy
 
@@ -17,8 +22,8 @@
 
 	var/flash_protection = FLASH_PROTECTION_NONE
 	var/tint = TINT_NONE
+	// todo: probably refactor these two
 	var/list/enables_planes		//Enables these planes in the wearing mob's plane_holder
-	var/list/plane_slots		//But only if it's equipped into this specific slot
 
 	// todo: kill this stupid shit lmao
 	/*
@@ -31,7 +36,6 @@
 	var/ear_protection = 0
 	var/blood_sprite_state
 
-	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
 	/// is considered wizard garb?
@@ -55,8 +59,27 @@
 	var/mutable_appearance/accessory_inv_cached
 
 	//? accessory system - attached to by accessories
-	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
+	/// full list of accessories, everything inside must be an /obj/item/clothing.
 	var/list/accessories
+
+	//* Clothing *//
+	/// Don't automatically have someone yank us off on attack hand if this is FALSE
+	var/attack_hand_auto_unequip = TRUE
+
+	//* Carry Weight
+	/// encumbrance compensation for accessories - flat.
+	var/accessory_encumbrance_mitigation = 0
+	/// encumbrance multiplier for accessories.
+	var/accessory_encumbrance_multiply = 1
+
+/obj/item/clothing/Initialize(mapload)
+	. = ..()
+	if(islist(active_slots))
+		active_slots = typelist(NAMEOF(src, active_slots), active_slots)
+	if(starting_accessories)
+		for(var/T in starting_accessories)
+			var/obj/item/clothing/accessory/tie = new T(src)
+			src.attach_accessory(null, tie)
 
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()
@@ -72,12 +95,23 @@
 	if(acc.len)
 		. += " with traces of [english_list(acc)]"
 
-/obj/item/clothing/Initialize(mapload)
-	. = ..()
-	if(starting_accessories)
-		for(var/T in starting_accessories)
-			var/obj/item/clothing/accessory/tie = new T(src)
-			src.attach_accessory(null, tie)
+/obj/item/clothing/should_attempt_pickup(datum/event_args/actor/actor)
+	// if we're currently attached as an accessory
+	if(accessory_host)
+		return FALSE
+	// either attack_hand_auto_unequip off, not being worn
+	var/equipped_by_performer = actor.performer == worn_mob()
+	. = ..() && (attack_hand_auto_unequip || !equipped_by_performer)
+	if(!.)
+		return
+	if(equipped_by_performer)
+		for(var/obj/item/clothing/accessory as anything in accessories)
+			// check if accessory has storage allowing equipped click
+			if(accessory.obj_storage?.allow_open_via_equipped_click)
+				return FALSE
+			// check if they allow pickup
+			if(!accessory.should_attempt_pickup(actor))
+				return FALSE
 
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
@@ -242,7 +276,7 @@
 
 /obj/item/clothing/verb/pick_style_verb()
 	set name = "Set Worn Style"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Wear this piece of clothing in a different style."
 	set src in usr
 

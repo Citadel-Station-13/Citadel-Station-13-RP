@@ -1,0 +1,1 @@
+GLOBAL_LIST_EMPTY(drink_recipes)

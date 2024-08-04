@@ -1,10 +1,17 @@
 // todo: this system needs reworked
 //Defaults
-#define MOVE_FORCE_DEFAULT 1000
+
+#define MOVE_RESIST_SHURIKEN 250
 #define MOVE_RESIST_DEFAULT 1000
-#define PULL_FORCE_DEFAULT 1000
+
+#define MOVE_FORCE_DEFAULT 1000
+
 #define THROW_FORCE_DEFAULT 1000
+
+#define THROW_RESIST_SHURIKEN 250
 #define THROW_RESIST_DEFAULT 1000
+
+#define PULL_FORCE_DEFAULT 1000
 
 //etc
 //? stuff that shouldn't have force, almost

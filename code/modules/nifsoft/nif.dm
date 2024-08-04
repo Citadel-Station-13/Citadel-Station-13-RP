@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "nif_0"
 
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 	/// For savefiles
 	var/id = NIF_ID_BASIC
@@ -181,6 +181,13 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 //Being removed from some mob
 /obj/item/nif/proc/unimplant(var/mob/living/carbon/human/H)
+	for(var/i in 1 to length(nifsofts))
+		var/datum/nifsoft/NS = nifsofts[i]
+		if(!NS)
+			continue
+		if(!NS.active)
+			continue
+		NS.deactivate(TRUE)
 	var/datum/nifsoft/soulcatcher/SC = imp_check(NIF_SOULCATCHER)
 	if(SC) //Clean up stored people, this is dirty but the easiest way.
 		QDEL_LIST_NULL(SC.brainmobs)
@@ -313,7 +320,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	switch(percent_done) //This is 0.0 to 1.0 kinda percent.
 		//Connecting to optical nerves
 		if(0.0 to 0.1)
-			human.eye_blind = 5
+			human.apply_status_effect(/datum/status_effect/sight/blindness, 5 SECONDS)
 
 		//Mapping brain
 		if(0.2 to 0.9)
@@ -349,6 +356,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 					comm.register_device(saved_name)
 				else if(human)
 					comm.register_device(human.name)
+				comm.initialize_exonet(human)
 			notify("Calibration complete! User data stored! Welcome to your Nanite Implant Framework!")
 
 //Called each life() tick on the mob
@@ -472,6 +480,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/datum/nifsoft/NS = nifsofts[old_soft.list_pos]
 	if(!NS || NS != old_soft)
 		return FALSE //what??
+
+	if(NS.active)
+		NS.deactivate(TRUE)
 
 	nifsofts[old_soft.list_pos] = null
 	power_usage -= old_soft.p_drain
@@ -641,7 +652,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
-	
+
 /obj/item/nif/authenticbioadap
 	name = "\improper Vey-Med bioadaptive NIF"
 	desc = "A genuine Vey-Med nanotechnology fabricator, designed for strange body types. \
@@ -683,7 +694,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /mob/living/carbon/human/proc/set_nif_examine()
 	set name = "NIF Appearance"
 	set desc = "If your NIF alters your appearance in some way, describe it here."
-	set category = "OOC"
+	set category = VERB_CATEGORY_OOC
 
 	if(!nif)
 		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)

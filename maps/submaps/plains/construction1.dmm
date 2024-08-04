@@ -72,7 +72,7 @@
 /turf/simulated/floor/plating/external,
 /area/submap/construction1)
 "t" = (
-/obj/structure/door_assembly/door_assembly_mai,
+/obj/structure/door_assembly/maint,
 /turf/simulated/floor/plating/external,
 /area/submap/construction1)
 "u" = (

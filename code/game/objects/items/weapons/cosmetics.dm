@@ -4,7 +4,7 @@
 	desc = "A generic brand of lipstick."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lipstick"
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	var/colour = "red"
 	var/open = 0
@@ -97,7 +97,7 @@
 /obj/item/haircomb //sparklysheep's comb
 	name = "purple comb"
 	desc = "A pristine purple comb made from flexible plastic."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	icon = 'icons/obj/items.dmi'
 	icon_state = "purplecomb"
@@ -125,7 +125,7 @@
 /obj/item/makeover
 	name = "makeover kit"
 	desc = "A tiny case containing a mirror and some contact lenses."
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/items.dmi'
 	icon_state = "trinketbox"
 	var/list/ui_users = list()

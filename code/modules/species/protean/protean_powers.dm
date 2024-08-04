@@ -158,7 +158,7 @@
 			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
 				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 				return
-			var/list/holder = refactory.materials
+			var/list/holder = refactory.stored_materials
 			species.create_organs(src)
 			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
 			torso.robotize() //synthetic wasn't defined here.
@@ -171,7 +171,7 @@
 			if(!new_refactory)
 				log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
 			else
-				new_refactory.materials = holder
+				new_refactory.stored_materials = holder
 			to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
 			to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
 		else

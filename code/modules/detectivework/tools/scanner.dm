@@ -4,9 +4,9 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic"
 	var/list/stored = list()
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 
 	var/reveal_fingerprints = TRUE
@@ -23,13 +23,13 @@
 		return
 
 	if(reveal_fingerprints)
-		if((!( istype(target.dna, /datum/dna) ) || target.item_by_slot(SLOT_ID_GLOVES)))
+		if((!( istype(target.dna, /datum/dna) ) || target.item_by_slot_id(SLOT_ID_GLOVES)))
 			to_chat(user, "<span class='notice'>No fingerprints found on [target]</span>")
 			flick("[icon_state]0",src)
 			return
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
-			P.melee_attack_chain(target, user)
+			P.melee_interaction_chain(target, user)
 			to_chat(user,"<span class='notice'>Done printing.</span>")
 	//		to_chat(user, "<span class='notice'>[target]'s Fingerprints: [md5(target.dna.uni_identity)]</span>")
 
@@ -39,21 +39,21 @@
 			for(var/blood in target.blood_DNA)
 				to_chat(user,"<span class='notice'>Blood type: [target.blood_DNA[blood]]\nDNA: [blood]</span>")
 
-/obj/item/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
-	if(!proximity) return
-	if(ismob(A))
+/obj/item/detective_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if(ismob(target))
 		return
 
 /*
-	if(istype(A,/obj/machinery/computer/forensic_scanning))
-		user.visible_message("[user] takes a cord out of [src] and hooks its end into [A]" ,\
-		"<span class='notice'>You download data from [src] to [A]</span>")
-		var/obj/machinery/computer/forensic_scanning/F = A
+	if(istype(target,/obj/machinery/computer/forensic_scanning))
+		user.visible_message("[user] takes a cord out of [src] and hooks its end into [target]" ,\
+		"<span class='notice'>You download data from [src] to [target]</span>")
+		var/obj/machinery/computer/forensic_scanning/F = target
 		F.sync_data(stored)
 		return
 */
 
-	if(istype(A,/obj/item/sample/print))
+	if(istype(target,/obj/item/sample/print))
 		to_chat(user,"The scanner displays on the screen: \"ERROR 43: Object on Excluded Object List.\"")
 		flick("[icon_state]0",src)
 		return
@@ -65,27 +65,27 @@
 		return FALSE
 
 	//General
-	if ((!A.fingerprints || !A.fingerprints.len) && !A.suit_fibers && !A.blood_DNA)
-		user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
-		SPAN_NOTICE("Unable to locate any fingerprints, materials, fibers, or blood on [A]!"),\
+	if ((!target.fingerprints || !target.fingerprints.len) && !target.suit_fibers && !target.blood_DNA)
+		user.visible_message("\The [user] scans \the [target] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
+		SPAN_NOTICE("Unable to locate any fingerprints, materials, fibers, or blood on [target]!"),\
 		"You hear a faint hum of electrical equipment.")
 		flick("[icon_state]0",src)
 		return FALSE
 
-	if(add_data(A))
+	if(add_data(target))
 		to_chat(user, SPAN_NOTICE("Object already in internal memory. Consolidating data..."))
 		flick("[icon_state]1",src)
 		return
 
 	//PRINTS
-	if(A.fingerprints && A.fingerprints.len)
-		to_chat(user, SPAN_NOTICE("Isolated [A.fingerprints.len] fingerprints:"))
+	if(target.fingerprints && target.fingerprints.len)
+		to_chat(user, SPAN_NOTICE("Isolated [target.fingerprints.len] fingerprints:"))
 		if(!reveal_incompletes)
 			to_chat(user, SPAN_WARNING("Rapid Analysis Imperfect: Scan samples with H.R.F.S. equipment to determine nature of incomplete prints."))
 		var/list/complete_prints = list()
 		var/list/incomplete_prints = list()
-		for(var/i in A.fingerprints)
-			var/print = A.fingerprints[i]
+		for(var/i in target.fingerprints)
+			var/print = target.fingerprints[i]
 			if(stringpercent(print) <= FINGERPRINT_COMPLETE)
 				complete_prints += print
 			else
@@ -105,24 +105,24 @@
 
 
 	//FIBERS
-	if(A.suit_fibers && A.suit_fibers.len)
+	if(target.suit_fibers && target.suit_fibers.len)
 		to_chat(user, SPAN_NOTICE("Fibers/Materials detected.[reveal_fibers ? " Analysing..." : " Acquisition of fibers for H.R.F.S. analysis advised."]"))
 		flick("[icon_state]1",src)
 		if(reveal_fibers && do_after(user, 5 SECONDS))
 			to_chat(user, SPAN_NOTICE("Apparel samples scanned:"))
-			for(var/sample in A.suit_fibers)
+			for(var/sample in target.suit_fibers)
 				to_chat(user," - <span class='notice'>[sample]</span>")
 
 	//Blood
-	if (A.blood_DNA && A.blood_DNA.len)
+	if (target.blood_DNA && target.blood_DNA.len)
 		to_chat(user, SPAN_NOTICE("Blood detected.[reveal_blood ? " Analysing..." : " Acquisition of swab for H.R.F.S. analysis advised."]"))
 		if(reveal_blood && do_after(user, 5 SECONDS))
 			flick("[icon_state]1",src)
-			for(var/blood in A.blood_DNA)
-				to_chat(user,"Blood type: <span class='warning'>[A.blood_DNA[blood]]</span> DNA: <span class='warning'>[blood]</span>")
+			for(var/blood in target.blood_DNA)
+				to_chat(user,"Blood type: <span class='warning'>[target.blood_DNA[blood]]</span> DNA: <span class='warning'>[blood]</span>")
 
-	user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
-	SPAN_NOTICE("You finish scanning \the [A]."),\
+	user.visible_message("\The [user] scans \the [target] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
+	SPAN_NOTICE("You finish scanning \the [target]."),\
 	"You hear a faint hum of electrical equipment.")
 	flick("[icon_state]1",src)
 	return FALSE
@@ -138,7 +138,7 @@
 
 /obj/item/detective_scanner/verb/examine_data()
 	set name = "Examine Forensic Data"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	display_data(usr)
@@ -188,7 +188,7 @@
 
 /obj/item/detective_scanner/verb/wipe()
 	set name = "Wipe Forensic Data"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in view(1)
 
 	if (alert("Are you sure you want to wipe all data from [src]?",,"Yes","No") == "Yes")

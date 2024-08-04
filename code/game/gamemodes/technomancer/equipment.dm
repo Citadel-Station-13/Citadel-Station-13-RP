@@ -53,7 +53,7 @@
 
 /datum/technomancer/equipment/recycling
 	name = "Recycling Core"
-	desc = "This core is optimized for energy efficency, being able to sometimes recover energy that would have been lost with other \
+	desc = "This core is optimized for energy efficiency, being able to sometimes recover energy that would have been lost with other \
 	cores.  Each time energy is spent, there is a 30% chance of recovering half of what was spent.<br>\
 	<font color='green'>Capacity: 12k</font><br>\
 	<font color='red'>Recharge: 40/s</font><br>\
@@ -91,7 +91,7 @@
 /datum/technomancer/equipment/overcharged
 	name = "Overcharged Core"
 	desc = "A core that was created in order to get the most power out of functions.  It does this by shoving the most power into \
-	those functions, so it is the opposite of energy efficent, however the enhancement of functions is second to none for other \
+	those functions, so it is the opposite of energy efficient, however the enhancement of functions is second to none for other \
 	cores.<br>\
 	<font color='red'>Capacity: 15k (effectively 7.5k)</font><br>\
 	<font color='red'>Recharge: 40/s</font><br>\
@@ -111,7 +111,7 @@
 	name = "hypo belt"
 	desc = "A medical belt designed to carry autoinjectors and other medical equipment."
 
-/obj/item/storage/belt/medical/technomancer/PopulateContents()
+/obj/item/storage/belt/medical/technomancer/legacy_spawn_contents()
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/burn(src)
 	new /obj/item/reagent_containers/hypospray/autoinjector/biginjector/toxin(src)
@@ -133,9 +133,9 @@
 	name = "Belt of Holding"
 	desc = "Can hold more than you'd expect."
 	icon_state = "ems"
-	max_w_class = ITEMSIZE_NORMAL // Can hold normal sized items.
-	storage_slots = 14	// Twice the capacity of a typical belt.
-	max_storage_space = ITEMSIZE_COST_NORMAL * 14
+	max_single_weight_class = WEIGHT_CLASS_NORMAL // Can hold normal sized items.
+	max_items = 14	// Twice the capacity of a typical belt.
+	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14
 
 /datum/technomancer/equipment/thermals
 	name = "Thermoncle"
@@ -162,10 +162,11 @@
 	capabilities.  The lens appear to be multiple optical matrices layered together, allowing the wearer to see almost anything \
 	across physical barriers."
 	icon_state = "uzenwa_sissra_1"
-	action_button_name = "Toggle Goggles"
+	item_action_name = "Toggle Goggles"
 	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
 	toggleable = 1
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS
+	vision_flags_remove = SEE_BLACKNESS
 	prescription = 1 // So two versions of these aren't needed.
 
 /datum/technomancer/equipment/med_hud
@@ -204,10 +205,10 @@
 		var/obj/item/spell/S = item_to_test
 		S.on_scepter_use_cast(user)
 
-/obj/item/scepter/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
-	if(proximity_flag)
+/obj/item/scepter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
-	var/obj/item/item_to_test = user.get_other_hand(src)
+	var/obj/item/item_to_test = user.get_inactive_held_item()
 	if(istype(item_to_test, /obj/item/spell))
 		var/obj/item/spell/S = item_to_test
 		S.on_scepter_ranged_cast(target, user)

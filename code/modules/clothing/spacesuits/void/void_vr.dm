@@ -48,6 +48,7 @@
 
 /obj/item/clothing/suit/space/void/explorer
 	desc = "A classy red voidsuit for the needs of any semi-retro-futuristic spaceperson! This one is rather loose fitting."
+	helmet_type = /obj/item/clothing/head/helmet/space/void/explorer
 	species_restricted = list(
 		SPECIES_AKULA,
 		SPECIES_ALRAUNE,
@@ -115,11 +116,13 @@
 	icon_state = "autoloksuit"
 	item_state = "autoloksuit"
 	armor_type = /datum/armor/autolok/space
-	slowdown = 0.5
+	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_LIGHT
+	weight = ITEM_WEIGHT_VOIDSUIT_LIGHT
 	siemens_coefficient = 1
 	species_restricted = list("exclude",SPECIES_DIONA,SPECIES_VOX) //this thing can autoadapt
 	breach_threshold = 6 //this thing is basically tissue paper
-	w_class = ITEMSIZE_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
+	w_class = WEIGHT_CLASS_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
+	helmet_type = /obj/item/clothing/suit/space/void/autolok
 
 /obj/item/clothing/suit/space/void/autolok/Initialize(mapload)
 	. = ..()

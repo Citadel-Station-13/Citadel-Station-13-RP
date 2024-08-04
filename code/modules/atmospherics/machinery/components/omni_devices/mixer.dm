@@ -112,7 +112,7 @@
 		power_draw = mix_gas(src, mixing_inputs, output.air, transfer_moles, power_rating)
 
 	if (power_draw >= 0)
-		last_power_draw = power_draw
+		last_power_draw_legacy = power_draw
 		use_power(power_draw)
 
 		for(var/datum/omni_port/P in inputs)
@@ -130,7 +130,7 @@
 		ui = new(user, src, "OmniMixer", name)
 		ui.open()
 
-/obj/machinery/atmospherics/component/quaternary/mixer/ui_data(mob/user)
+/obj/machinery/atmospherics/component/quaternary/mixer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = new()
 
 	data["power"] = use_power
@@ -159,11 +159,11 @@
 		data["ports"] = portData
 	if(output)
 		data["set_flow_rate"] = round(set_flow_rate*10)		//because nanoui can't handle rounded decimals.
-		data["last_flow_rate"] = round(last_flow_rate*10)
+		data["last_flow_rate"] = round(last_flow_rate_legacy*10)
 
 	return data
 
-/obj/machinery/atmospherics/component/quaternary/mixer/ui_act(action, params)
+/obj/machinery/atmospherics/component/quaternary/mixer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

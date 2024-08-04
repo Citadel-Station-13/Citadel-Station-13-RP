@@ -2,12 +2,12 @@
 // Specific subtypes are in their own folder.
 /obj/item/electronic_assembly
 	name = "electronic assembly"
-	obj_flags = CAN_BE_HIT
+	obj_flags = OBJ_RANGE_TARGETABLE | OBJ_MELEE_TARGETABLE
 	desc = "It's a case, for building small electronics with."
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
 	var/list/assembly_components = list()
@@ -55,10 +55,10 @@
 	/// Cost set to default during init if unset.
 	var/cost = 0
 
-/obj/item/electronic_assembly/GenerateTag()
+/obj/item/electronic_assembly/generate_tag()
 	tag = "assembly_[next_assembly_id++]"
 
-/obj/item/electronic_assembly/examine(mob/user)
+/obj/item/electronic_assembly/examine(mob/user, dist)
 	. = ..()
 	if(can_anchor)
 		. += "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
@@ -86,9 +86,9 @@
 /obj/item/electronic_assembly/Bump(atom/AM)
 	collw = AM
 	.=..()
-	if((istype(collw, /obj/machinery/door/airlock) ||  istype(collw, /obj/machinery/door/window)) && (!isnull(access_card)))
+	if(istype(collw, /obj/machinery/door/airlock) ||  istype(collw, /obj/machinery/door/window))
 		var/obj/machinery/door/D = collw
-		if(D.check_access(access_card))
+		if(D.check_access(src))
 			D.open()
 
 /obj/item/electronic_assembly/Initialize(mapload)
@@ -149,11 +149,11 @@
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
 	return ui_status(user, GLOB.physical_state) == UI_INTERACTIVE
 
-/obj/item/electronic_assembly/get_cell()
+/obj/item/electronic_assembly/get_cell(inducer)
 	return battery
 
 // TGUI
-/obj/item/electronic_assembly/ui_state(mob/user, datum/tgui_module/module)
+/obj/item/electronic_assembly/ui_state()
 	return GLOB.physical_state
 
 /obj/item/electronic_assembly/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -162,7 +162,7 @@
 		ui = new(user, src, "ICAssembly", name, parent_ui)
 		ui.open()
 
-/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
 
 	var/total_parts = 0
@@ -245,7 +245,7 @@
 			if(istype(held_item, /obj/item/integrated_electronics/debugger))
 				var/obj/item/integrated_electronics/debugger/D = held_item
 				if(D.accepting_refs)
-					D.afterattack(C, usr, TRUE)
+					D.afterattack(C, usr, CLICKCHAIN_HAS_PROXIMITY)
 				else
 					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
 			else
@@ -265,12 +265,14 @@
 				return
 			// Puts it at the bottom of our contents
 			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
-			ui_circuit_props.Cut(params["index"], 1 + params["index"])
+			var/index = assembly_components.Find(C)
+			ui_circuit_props.Cut(index, 1 + index)
 			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
-			assembly_components.Cut(params["index"], 1 + params["index"])
+			assembly_components.Cut(index, 1 + index)
 			assembly_components.Add(C)
 			C.loc = null
 			C.loc = src
+			return TRUE
 
 		if("input_selection")
 			var/obj/item/integrated_circuit/input/C = locate(params["ref"]) in assembly_components
@@ -306,7 +308,7 @@
 */
 /obj/item/electronic_assembly/verb/rename()
 	set name = "Rename Circuit"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set desc = "Rename your circuit, useful to stay organized."
 	set src in usr
 
@@ -411,10 +413,10 @@
 	diag_hud_set_circuittracking()
 	*/
 
-/obj/item/electronic_assembly/afterattack(atom/target, mob/user, proximity)
+/obj/item/electronic_assembly/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	for(var/obj/item/integrated_circuit/input/S in assembly_components)
-		if(S.sense(target,user,proximity))
+		if(S.sense(target,user,(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)))
 			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)

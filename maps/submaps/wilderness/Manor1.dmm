@@ -456,7 +456,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/submap/Manor1)
 "bO" = (
-/obj/machinery/icecream_vat,
+/obj/structure/icecream_cart,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bP" = (

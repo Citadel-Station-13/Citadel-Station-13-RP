@@ -618,7 +618,7 @@
 
 /obj/machinery/transhuman/resleever/verb/get_out()
 	set name = "EJECT Occupant"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr.stat != CONSCIOUS)
 		return
@@ -628,7 +628,7 @@
 
 /obj/machinery/transhuman/resleever/verb/move_inside()
 	set name = "Move INSIDE"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
 	if(usr.stat != CONSCIOUS || machine_stat & (NOPOWER|BROKEN))
 		return

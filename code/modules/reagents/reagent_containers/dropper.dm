@@ -8,22 +8,22 @@
 	icon_state = "dropper0"
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(1,2,3,4,5)
-	w_class = ITEMSIZE_TINY
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	volume = 5
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
+	integrity_flags = INTEGRITY_ACIDPROOF
 
-
-/obj/item/reagent_containers/dropper/examine(mob/user)
+/obj/item/reagent_containers/dropper/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>"
 	else
 		. += "<span class='notice'>It is empty.</span>"
 
-/obj/item/reagent_containers/dropper/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!target.reagents || !proximity) return
+/obj/item/reagent_containers/dropper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!target.reagents || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 
 	if(reagents.total_volume)
 
@@ -68,7 +68,7 @@
 			add_attack_logs(user,target,"Used [src.name] containing [contained]")
 
 			trans += reagents.trans_to_mob(target, min(amount_per_transfer_from_this, reagents.total_volume)/2, CHEM_INGEST) //Half injected, half ingested
-			trans += reagents.trans_to_mob(target, min(amount_per_transfer_from_this, reagents.total_volume), CHEM_BLOOD) //I guess it gets into the bloodstream through the eyes or something
+			trans += reagents.trans_to_mob(target, min(amount_per_transfer_from_this, reagents.total_volume), CHEM_INJECT) //I guess it gets into the bloodstream through the eyes or something
 			user.visible_message("<span class='warning'>[user] squirts something into [target]'s eyes!</span>", "<span class='notice'>You transfer [trans] units of the solution.</span>")
 
 			return
@@ -114,7 +114,6 @@
 	desc = "A hand-carved dropper. Roughly hewn out of softened volcanic stone, it still allows for precise measurement of fluids."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashdropper0"
-	unacidable = 1
 
 /obj/item/reagent_containers/dropper/ashlander/update_icon()
 	if(reagents.total_volume)

@@ -1,3 +1,6 @@
+GLOBAL_VAR_INIT(startup_year, text2num(time2text(world.time, "YYYY")))
+GLOBAL_VAR_INIT(startup_month, text2num(time2text(world.time, "MM")))
+GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 
 #define TimeOfGame (get_game_time())
 #define TimeOfTick (TICK_USAGE*0.01*world.tick_lag)
@@ -22,8 +25,10 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 /var/station_date = ""
 /var/next_station_date_change = 1 DAY
 
-#define duration2stationtime(time) time2text(station_time_in_ds + time, "hh:mm")
-#define worldtime2stationtime(time) time2text(GLOB.roundstart_hour HOURS + time, "hh:mm")
+// todo: better subsystem based way of tracking this, this is fucky.
+
+#define duration2stationtime(time) time2text(station_time_in_ds + GLOB.timezoneOffset + time, "hh:mm")
+#define worldtime2stationtime(time) time2text((GLOB.roundstart_hour HOURS) - SSticker.round_start_time + GLOB.timezoneOffset + time, "hh:mm")
 #define round_duration_in_ds (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
 #define station_time_in_ds (GLOB.roundstart_hour HOURS + round_duration_in_ds)
 
@@ -144,21 +149,21 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	if(second < 60)
 		return "[second] second[(second != 1)? "s":""]"
 	var/minute = FLOOR(second / 60, 1)
-	second = MODULUS(second, 60)
+	second = MODULUS_F(second, 60)
 	var/secondT
 	if(second)
 		secondT = " and [second] second[(second != 1)? "s":""]"
 	if(minute < 60)
 		return "[minute] minute[(minute != 1)? "s":""][secondT]"
 	var/hour = FLOOR(minute / 60, 1)
-	minute = MODULUS(minute, 60)
+	minute = MODULUS_F(minute, 60)
 	var/minuteT
 	if(minute)
 		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
 	if(hour < 24)
 		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
 	var/day = FLOOR(hour / 24, 1)
-	hour = MODULUS(hour, 24)
+	hour = MODULUS_F(hour, 24)
 	var/hourT
 	if(hour)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"

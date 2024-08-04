@@ -224,7 +224,7 @@
 				continue_check_key = ispath(new_key)
 		switch(value_mode)
 			if(VALUE_MODE_FLAG)
-				new_value = TRUE
+				new_value = text2num(key_value) != 0 && lowertext(key_value) != "false"
 				continue_check_value = TRUE
 			if(VALUE_MODE_NUM)
 				new_value = text2num(key_value)

@@ -33,10 +33,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "ag" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -483,7 +480,7 @@
 /area/awaymission/example)
 "bX" = (
 /obj/structure/table/standard,
-/obj/item/analyzer,
+/obj/item/atmos_analyzer,
 /turf/simulated/floor,
 /area/awaymission/example)
 "bY" = (

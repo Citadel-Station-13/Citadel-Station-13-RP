@@ -13,8 +13,8 @@
 
 	maxHealth = 150
 	var/maxHealth_adult = 200
-	melee_damage_lower = 5
-	melee_damage_upper = 25
+	legacy_melee_damage_lower = 5
+	legacy_melee_damage_upper = 25
 	melee_miss_chance = 0
 	gender = NEUTER
 
@@ -144,8 +144,8 @@
 		return
 
 	is_adult = TRUE
-	melee_damage_lower = 20
-	melee_damage_upper = 40
+	legacy_melee_damage_lower = 20
+	legacy_melee_damage_upper = 40
 	maxHealth = maxHealth_adult
 	amount_grown = 0
 	update_icon()
@@ -232,8 +232,8 @@
 	cooperative = FALSE
 
 	// If for whatever reason the mob AI decides to try to attack something anyways.
-	melee_damage_upper = 0
-	melee_damage_lower = 0
+	legacy_melee_damage_upper = 0
+	legacy_melee_damage_lower = 0
 
 	update_mood()
 
@@ -241,7 +241,7 @@
 	unity = TRUE
 	attack_same = FALSE
 
-/mob/living/simple_animal/slime/examine(mob/user)
+/mob/living/simple_animal/slime/examine(mob/user, dist)
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
 	if(hat)
 		. += "It is wearing \a [hat]." //slime hat. slat? hlime?
@@ -365,7 +365,7 @@
 			if(src.mind)
 				src.mind.transfer(new_slime)
 			else
-				new_slime.key = src.key
+				transfer_client_to(new_slime)
 			qdel(src)
 		else
 			to_chat(src, "<span class='notice'>I am not ready to reproduce yet...</span>")

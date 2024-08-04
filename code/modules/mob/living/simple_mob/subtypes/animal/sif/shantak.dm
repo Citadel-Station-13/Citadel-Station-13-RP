@@ -37,8 +37,8 @@
 
 	movement_cooldown = 5
 
-	melee_damage_lower = 6
-	melee_damage_upper = 14
+	legacy_melee_damage_lower = 6
+	legacy_melee_damage_upper = 14
 	base_attack_cooldown = 1 SECOND
 	melee_attack_delay = 0.5 SECONDS
 	attack_armor_pen = 5
@@ -76,7 +76,7 @@
 			continue
 		if(S.faction != src.faction)
 			continue
-		var/datum/ai_holder/AI = S.ai_holder
+		var/datum/ai_holder/polaris/AI = S.ai_holder
 		AI.set_follow(src)
 
 // Variant that automatically commands nearby allies to follow it when created.
@@ -88,10 +88,10 @@
 
 // These ones only retaliate. Used for a PoI.
 /mob/living/simple_mob/animal/sif/shantak/retaliate
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate
 
 /mob/living/simple_mob/animal/sif/shantak/scruffy
 	name = "Scruffy"
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/passive
 	makes_dirt = 0
 	faction = "neutral"

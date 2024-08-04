@@ -98,11 +98,11 @@ obj/machinery/scanner/attack_hand(mob/user, list/params)
 		G.fields["sex"] = "Female"
 	else
 		G.fields["sex"] = "Male"
-	G.fields["age"] = text("[]", age)
-	G.fields["fingerprint"] = text("[]", fingerprint)
+	G.fields["age"] = "[age]"
+	G.fields["fingerprint"] = "[fingerprint]"
 	G.fields["p_stat"] = "Active"
 	G.fields["m_stat"] = "Stable"
-	M.fields["b_type"] = text("[]", bloodtype)
+	M.fields["b_type"] = "[bloodtype]"
 	M.fields["b_dna"] = dna
 	M.fields["mi_dis"] = "None"
 	M.fields["mi_dis_d"] = "No minor disabilities have been declared."

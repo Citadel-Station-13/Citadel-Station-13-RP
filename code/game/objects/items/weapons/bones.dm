@@ -7,7 +7,7 @@
 	damage_force = 5
 	throw_force = 6
 	item_state = "bone"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked", "bonked", "boned")
 
 /obj/item/bone/skull

@@ -2,7 +2,7 @@
 /obj/item/instrument
 	name = "generic instrument"
 	damage_force = 10
-//	max_integrity = 100
+//	integrity_max = 100
 //	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
 	item_icons = list(
@@ -27,7 +27,7 @@
 	return ..()
 
 /obj/item/instrument/proc/should_stop_playing(mob/user)
-	return !Adjacent(user) && !(storage_depth(user) < 3)
+	return (loc != user) && (depth_inside_atom(user) < 3)
 
 /*
 /obj/item/instrument/process(wait)
@@ -92,7 +92,7 @@
 	desc = "A wooden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
 	icon_state = "violin"
 	item_state = "violin"
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	allowed_instrument_ids = "violin"
 
 /obj/item/instrument/violin/golden
@@ -100,8 +100,7 @@
 	desc = "A golden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
 	icon_state = "golden_violin"
 	item_state = "golden_violin"
-	unacidable = TRUE
-//	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
 
 /obj/item/instrument/piano_synth
 	name = "synthesizer"
@@ -120,7 +119,7 @@
 	icon_state = "guitar"
 	item_state = "guitar"
 	attack_verb = list("played metal on", "serenaded", "crashed", "smashed")
-	hitsound = 'sound/weapons/stringsmash.ogg'
+	attack_sound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "guitar"
 
 /obj/item/instrument/eguitar
@@ -130,7 +129,7 @@
 	item_state = "eguitar"
 	damage_force = 12
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
-	hitsound = 'sound/weapons/stringsmash.ogg'
+	attack_sound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "eguitar"
 
 /obj/item/instrument/glockenspiel
@@ -249,7 +248,7 @@
 
 /obj/item/instrument/harmonica/equipped(mob/M, slot)
 	. = ..()
-	RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
 /obj/item/instrument/harmonica/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
@@ -265,13 +264,13 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/horns_righthand.dmi'
 		)
-	attack_verb = list("beautifully honks")
+	attack_verb = list("beautifully honked")
 	allowed_instrument_ids = list("honk", "bikehorn")
 	w_class = WEIGHT_CLASS_TINY
 	damage_force = 0
 	throw_speed = 3
 	throw_range = 15
-	hitsound = 'sound/items/bikehorn.ogg'
+	attack_sound = 'sound/items/bikehorn.ogg'
 
 /obj/item/instrument/banjo
 	name = "banjo"
@@ -279,7 +278,7 @@
 	icon_state = "banjo"
 	item_state = "banjo"
 	attack_verb = list("scruggs-styled", "hum-diggitied", "shin-digged", "clawhammered")
-	hitsound = 'sound/weapons/banjoslap.ogg'
+	attack_sound = 'sound/weapons/banjoslap.ogg'
 	allowed_instrument_ids = "banjo"
 
 /*
@@ -330,5 +329,5 @@
 	icon_state = "gameboy"
 	item_state = "gameboy"
 	attack_verb = ("bitcrushed")
-	hitsound = "sound/weapons/gboy.ogg"
+	attack_sound = "sound/weapons/gboy.ogg"
 	allowed_instrument_ids = "square"

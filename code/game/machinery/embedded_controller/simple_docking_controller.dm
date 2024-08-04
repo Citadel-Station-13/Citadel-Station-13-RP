@@ -5,7 +5,7 @@
 	var/tag_door
 	valid_actions = list("force_door", "toggle_override")
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/ui_data(mob/user)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/ui_data(mob/user, datum/tgui/ui)
 	var/datum/computer/file/embedded_program/docking/simple/docking_program = program // Cast to proper type
 
 	. = list(

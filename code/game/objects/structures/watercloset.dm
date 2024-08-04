@@ -33,7 +33,7 @@
 			if(ishuman(user))
 				user.put_in_hands(I)
 			else
-				I.loc = get_turf(src)
+				I.forceMove(get_turf(src))
 			to_chat(user, "<span class='notice'>You find \an [I] in the cistern.</span>")
 			w_items -= I.w_class
 			return
@@ -131,7 +131,7 @@
 	reagents.add_reagent("chlorine", 3)
 	reagents.add_reagent("ammonia", 1)
 
-/obj/item/reagent_containers/food/urinalcake/attack_self(mob/living/user)
+/obj/item/reagent_containers/food/urinalcake/attack_self(mob/user)
 	user.visible_message("<span class='notice'>[user] squishes [src]!</span>", "<span class='notice'>You squish [src].</span>", "<i>You hear a squish.</i>")
 	icon_state = "urinalcake_squish"
 	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 8)
@@ -189,7 +189,7 @@
 		soundloop.stop()
 
 /obj/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
-	if(I.type == /obj/item/analyzer)
+	if(I.type == /obj/item/atmos_analyzer)
 		to_chat(user, "<span class='notice'>The water temperature seems to be [watertemp].</span>")
 	if(I.is_wrench())
 		var/newtemp = input(user, "What setting would you like to set the temperature valve to?", "Water Temperature Valve") in temperature_settings
@@ -351,7 +351,7 @@
 
 	var/temperature = temperature_settings[watertemp]
 	var/temp_adj = between(BODYTEMP_COOLING_MAX, temperature - M.bodytemperature, BODYTEMP_HEATING_MAX)
-	M.bodytemperature += temp_adj
+	M.adjust_bodytemperature(temp_adj)
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -554,13 +554,13 @@
 	var/plunge_mod = 1 //time*plunge_mod = total time we take to plunge an object
 	var/reinforced = FALSE //whether we do heavy duty stuff like geysers
 
-/obj/item/plunger/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!isobj(target))
-		return ..()
-	var/obj/O = target
-	if(O.plunger_act(src, user, reinforced))
-		return CLICKCHAIN_DO_NOT_PROPAGATE
-	return ..()
+// /obj/item/plunger/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
+// 	if(!isobj(target))
+// 		return ..()
+// 	var/obj/O = target
+// 	if(O.plunger_act(src, user, reinforced))
+// 		return CLICKCHAIN_DO_NOT_PROPAGATE
+// 	return ..()
 
 /obj/item/plunger/throw_impact(atom/hit_atom, mob/living/carbon/human/target, target_zone)
 	. = ..()

@@ -2,9 +2,9 @@ import { createPopper, Placement, VirtualElement } from '@popperjs/core';
 import { Component, findDOMfromVNode, InfernoNode, render } from 'inferno';
 
 type TooltipProps = {
-  children?: InfernoNode;
-  content: InfernoNode;
-  position?: Placement;
+  readonly children?: InfernoNode;
+  readonly content: InfernoNode;
+  readonly position?: Placement;
 };
 
 type TooltipState = {
@@ -20,13 +20,20 @@ const DEFAULT_OPTIONS = {
   ],
 };
 
-const NULL_RECT = {
+const NULL_RECT_INTERNAL = {
   width: 0,
   height: 0,
   top: 0,
   right: 0,
   bottom: 0,
   left: 0,
+  x: 0,
+  y: 0,
+};
+
+const NULL_RECT = {
+  ...NULL_RECT_INTERNAL,
+  toJSON: () => JSON.stringify(NULL_RECT_INTERNAL),
 };
 
 export class Tooltip extends Component<TooltipProps, TooltipState> {

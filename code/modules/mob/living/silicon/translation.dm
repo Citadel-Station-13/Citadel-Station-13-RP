@@ -24,4 +24,4 @@
 	translation_context = new path
 	if(istype(translation_context, /datum/translation_context/variable/learning/silicons))
 		var/datum/translation_context/variable/learning/silicons/CTX = translation_context
-		CTX.on_train = CALLBACK(src, .proc/translation_train_hook)
+		CTX.on_train = CALLBACK(src, PROC_REF(translation_train_hook))

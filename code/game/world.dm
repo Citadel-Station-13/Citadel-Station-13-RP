@@ -5,6 +5,22 @@ GLOBAL_VAR(restart_counter)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
+/world
+	mob = /mob/new_player
+	turf = /turf/space/basic
+	area = /area/space
+	view = "15x15"
+	hub = "Exadv1.spacestation13"
+	hub_password = "kMZy3U5jJHSiBQjr"
+	name = "Citadel Station 13 - Roleplay"
+	status = "ERROR: Default status"
+	visibility = TRUE
+	movement_mode = PIXEL_MOVEMENT_MODE
+	fps = 20
+#ifdef FIND_REF_NO_CHECK_TICK
+	loop_checks = FALSE
+#endif
+
 /**
  * World creation
  *
@@ -116,7 +132,7 @@ GLOBAL_LIST(topic_status_cache)
 	#endif
 
 	if(config_legacy.ToRban)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -141,21 +157,13 @@ GLOBAL_LIST(topic_status_cache)
 		var/realtime = world.realtime
 		var/texttime = time2text(realtime, "YYYY/MM/DD")
 		GLOB.log_directory = "data/logs/[texttime]/round-"
-		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
-		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
 		if(GLOB.round_id)
 			GLOB.log_directory += "[GLOB.round_id]"
-			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
-			GLOB.picture_log_directory += "[GLOB.round_id]"
 		else
 			var/timestamp = replacetext(TIME_STAMP("hh:mm:ss", FALSE), ":", ".")
 			GLOB.log_directory += "[timestamp]"
-			GLOB.picture_log_directory += "[timestamp]"
-			GLOB.picture_logging_prefix += "T_[timestamp]_"
 	else
 		GLOB.log_directory = "data/logs/[override_dir]"
-		GLOB.picture_logging_prefix = "O_[override_dir]_"
-		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
@@ -166,6 +174,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_reagent_log = "[GLOB.log_directory]/reagents.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
 #ifdef UNIT_TESTS
@@ -305,7 +314,7 @@ GLOBAL_LIST(topic_status_cache)
 /world/Del()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		call(debug_server, "auxtools_shutdown")()
+		call_ext(debug_server, "auxtools_shutdown")()
 	. = ..()
 
 /hook/startup/proc/loadMode()
@@ -383,7 +392,7 @@ GLOBAL_LIST(topic_status_cache)
 	// ---Hub title---
 	var/servername = config_legacy?.server_name
 	var/stationname = station_name()
-	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
+	var/defaultstation = (LEGACY_MAP_DATUM) ? (LEGACY_MAP_DATUM).station_name : stationname
 	if(servername || stationname != defaultstation)
 		. += (servername ? "<b>[servername]" : "<b>")
 		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
@@ -402,8 +411,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	// ---Hub footer---
 	. += "\["
-	if(GLOB.using_map)
-		. += "[GLOB.using_map.station_short], "
+	if((LEGACY_MAP_DATUM))
+		. += "[(LEGACY_MAP_DATUM).station_short], "
 
 	. += "[get_security_level()] alert, "
 
@@ -442,6 +451,67 @@ GLOBAL_LIST(topic_status_cache)
 /world/proc/increment_max_z()
 	. = ++maxz
 	max_z_changed(. - 1, .)
+
+//* Ticklag / FPS *//
+
+/// Set FPS
+/world/proc/set_fps(fps)
+	// This isn't just here to avoid duplicate code.
+	// Setting world.tick_lag is a lot more accurate than setting world.fps.
+	// Do not ever set FPs directly.
+	set_ticklag(10 / fps)
+	return world.fps
+
+/// Set ticklag
+/world/proc/set_ticklag(ticklag)
+	// 0.1 is 100 fps.
+	// Round to nearest 1 fps.
+	// We divide 10 by it becuase BYOND measures time in deciseconds, so each second has 10.
+	var/fps = 10 / ticklag
+	fps = clamp(round(fps, 1), 1, 100)
+
+	// FPS that result in repeating decimals for world.time not allowed.
+	// Using them results in floating point inaccuracy within high-precision timing systems.
+	// That's very bad, and causes stuff like timers to infinitely loop or worse.
+	// Not only that, world.time is, as far as I can see, internally rounded
+
+	// terminating decimals are of the form
+	//
+	// k (2**n * 5**m), where
+	//
+	// k = integer
+	// n = some power
+	// m = some power
+
+	// our conversion from FPS to ticklag is conveniently 10 / fps
+	// thus with k = 10,
+	// we try to check for termination on fps
+	if(!is_terminating_fraction(10, fps))
+		// it's not.
+		// yell at them.
+		stack_trace("someone just set ticklag to non-terminating ticklag [ticklag]. this might result in fatal imprecision.")
+
+	// Convert back into ticklag
+	ticklag = 10 / fps
+
+	set_ticklag_impl(ticklag)
+
+/// OH GOD WHAT ARE YOU DOING
+/// this is just here for debugging/admins
+/// because sometimes we want to intentionally make 'bad' ticklags to see
+/// how things react.
+/world/proc/set_ticklag_impl(ticklag)
+	PRIVATE_PROC(TRUE)
+
+	// set
+	var/old = src.tick_lag
+	src.tick_lag = ticklag
+
+	// update
+	for(var/datum/controller/subsystem/subsystem in Master.subsystems)
+		subsystem.on_ticklag_changed(old, ticklag)
+
+//* Log Shunter *//
 
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE
 /**
@@ -485,6 +555,7 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 //! END
 
+//* Byond-Tracy *//
 
 /world/proc/init_byond_tracy()
 	var/library

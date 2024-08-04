@@ -7,37 +7,6 @@
  */
 
 /**
- * public
- *
- * Checks the UI state for a mob.
- *
- * required user mob The mob who opened/is using the UI.
- * required state datum/ui_state The state to check.
- *
- * return UI_state The state of the UI.
- */
-/datum/proc/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
-	var/src_object = ui_host(user)
-	. = UI_CLOSE
-	if(!state)
-		return
-
-	if(isobserver(user))
-		// If they turn on ghost AI control, admins can always interact.
-		if(IsAdminGhost(user))
-			. = max(., UI_INTERACTIVE)
-
-		// Regular ghosts can always at least view if in range.
-		if(user.client)
-			// todo: in view range for zooming
-			if(get_dist(src_object, user) < max(CEILING(user.client.current_viewport_width / 2, 1), CEILING(user.client.current_viewport_height / 2, 1)))
-				. = max(., UI_UPDATE)
-
-	// Check if the state allows interaction
-	var/result = state.can_use_topic(src_object, user)
-	. = max(., result)
-
-/**
  * private
  *
  * Checks if a user can use src_object's UI, and returns the state.

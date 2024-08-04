@@ -26,7 +26,7 @@
 	name = "Robot - Cyborg"
 	desc = "Although many modern cyborgs use silicon based Heuristic processors, \
 	the use of the term 'cyborg' to refer to them stems from the early days of their \
-	use on the Frontier. Pioneered by Megacorps like NanoTrasen, Cyborgs originally housed \
+	use on the Frontier. Pioneered by Megacorps like Nanotrasen, Cyborgs originally housed \
 	organic brains - typically those of inmates convicted to death under sometimes dubiously \
 	applied laws. The process of shackling Silicons with strict lawsets gained popularity on \
 	the Frontier after it was proven that most unlawed Cyborgs had extremely violent tendencies. \
@@ -75,7 +75,7 @@
 	var/integrated_light_power = 4.5
 	var/datum/wires/robot/wires
 
-//! ## Icon stuff
+	//* Icon stuff
 	/// Persistent icontype tracking allows for cleaner icon updates
 	var/icontype
 	/// Used to store the associations between sprite names and sprite index.
@@ -85,7 +85,7 @@
 	/// Remaining attempts to select icon before a selection is forced.
 	var/icon_selection_tries = 0
 
-//! ## Hud stuff
+	//* Hud stuff
 
 	var/atom/movable/screen/cells = null
 	var/atom/movable/screen/inv1 = null
@@ -435,7 +435,7 @@
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 
 	if (lights_on)
-		radio.set_light(integrated_light_power, 0.75, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
+		radio.set_light(integrated_light_power, 2, l_color = get_light_color_for_icontype(), angle = LIGHT_WIDE)
 	else
 		radio.set_light(0)
 
@@ -495,6 +495,13 @@
 	set name = "Emit Sparks"
 	spark_system.start()
 
+/mob/living/silicon/robot/verb/toggle_cover()
+	set category = "Robot Commands"
+	set name = "Toggle Cover"
+	locked = !locked
+	to_chat(src, "You [ locked ? "lock" : "unlock"] your interface.")
+	updateicon()
+
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
 	if(module)
@@ -507,12 +514,12 @@
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_LINE("")
 		if(cell)
-			STATPANEL_DATA_LINE( text("Charge Left: [round(cell.percent())]%"))
-			STATPANEL_DATA_LINE( text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
-			STATPANEL_DATA_LINE( text("Power Cell Load: [round(used_power_this_tick)]W"))
+			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
+			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
 		else
-			STATPANEL_DATA_LINE( text("No Cell Inserted!"))
-		STATPANEL_DATA_LINE( text("Lights: [lights_on ? "ON" : "OFF"]"))
+			STATPANEL_DATA_LINE("No Cell Inserted!")
+		STATPANEL_DATA_LINE("Lights: [lights_on ? "ON" : "OFF"]")
 		STATPANEL_DATA_LINE("")
 		// if you have a jetpack, show the internal tank pressure
 		var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
@@ -594,7 +601,7 @@
 			update_health()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the dents on [src]!</font>"), 1)
+				O.show_message(SPAN_RED("[user] has fixed some of the dents on [src]!"), SAYCODE_TYPE_VISIBLE)
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -609,7 +616,7 @@
 			adjustFireLoss(-30)
 			update_health()
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
+				O.show_message(SPAN_RED("[user] has fixed some of the burnt wires on [src]!"), SAYCODE_TYPE_VISIBLE)
 
 	else if (W.is_crowbar() && user.a_intent != INTENT_HARM)	// crowbar means open or close the cover
 		if(opened)
@@ -673,8 +680,8 @@
 			to_chat(user, "Close the panel first.")
 		else if(cell)
 			to_chat(user, "There is a power cell already installed.")
-		else if(W.w_class != ITEMSIZE_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < ITEMSIZE_NORMAL ? "small" : "large"] to fit here.")
+		else if(W.w_class != WEIGHT_CLASS_NORMAL)
+			to_chat(user, "\The [W] is too [W.w_class < WEIGHT_CLASS_NORMAL ? "small" : "large"] to fit here.")
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
@@ -755,6 +762,18 @@
 			else
 				to_chat(usr, "Upgrade error!")
 
+	else if(istype(W, /obj/item/ka_modkit/))
+		var/obj/item/ka_modkit/M = W
+		if(!opened)
+			to_chat(usr, "You must access the borgs internals!")
+		else if(!src.module && M.require_module)
+			to_chat(usr, "The borg must choose a module before it can be upgraded!")
+		else
+			if(M.install(src))
+				user.transfer_item_to_loc(M, src, INV_OP_FORCE)
+				to_chat(usr, "You apply the modkit to [src]!")
+			else
+				to_chat(usr, "Upgrade error!")
 
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
@@ -897,6 +916,7 @@
 	cut_overlays()
 
 	if (dogborg)
+		zmm_flags |= ZMM_LOOKAHEAD
 		// Resting dogborgs don't get overlays.
 		if (stat == CONSCIOUS && resting)
 			if(sitting)
@@ -906,6 +926,8 @@
 			else
 				icon_state = "[module_sprites[icontype]]-rest"
 			return
+	else
+		zmm_flags &= ~ZMM_LOOKAHEAD
 
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
@@ -982,21 +1004,21 @@
 
 	for (var/obj in module.modules)
 		if (!obj)
-			dat += text("<B>Resource depleted</B><BR>")
+			dat += "<B>Resource depleted</B><BR>"
 		else if(activated(obj))
-			dat += text("[obj]: <B>Activated</B><BR>")
+			dat += "[obj]: <B>Activated</B><BR>"
 		else
-			dat += text("[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>")
+			dat += "[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>"
 	if (emagged || emag_items)
 		if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
+			dat += "[module.emag]: <B>Activated</B><BR>"
 		else
-			dat += text("[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>")
+			dat += "[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>"
 /*
 		if(activated(obj))
-			dat += text("[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>")
+			dat += "[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>"
 		else
-			dat += text("[obj]: \[<A HREF=?src=\ref[src];act=\ref[obj]>Activate</A> | <B>Deactivated</B>\]<BR>")
+			dat += "[obj]: \[<A HREF=?src=\ref[src];act=\ref[obj]>Activate</A> | <B>Deactivated</B>\]<BR>"
 */
 	src << browse(dat, "window=robotmod")
 
@@ -1071,6 +1093,12 @@
 			to_chat(src, "Module isn't activated")
 		installed_modules()
 		return 1
+
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
+
 	return
 
 /mob/living/silicon/robot/proc/radio_menu()
@@ -1111,7 +1139,7 @@
 							cleaned_human.clean_blood(1)
 							to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
 
-		if((module_state_1 && istype(module_state_1, /obj/item/storage/bag/ore)) || (module_state_2 && istype(module_state_2, /obj/item/storage/bag/ore)) || (module_state_3 && istype(module_state_3, /obj/item/storage/bag/ore))) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
+		if(istype(module_state_1, /obj/item/storage/bag/ore) || istype(module_state_2, /obj/item/storage/bag/ore) || istype(module_state_3, /obj/item/storage/bag/ore)) //Borgs and drones can use their mining bags ~automagically~ if they're deployed in a slot. Only mining bags, as they're optimized for mass use.
 			var/obj/item/storage/bag/ore/B = null
 			if(istype(module_state_1, /obj/item/storage/bag/ore)) //First orebag has priority, if they for some reason have multiple.
 				B = module_state_1
@@ -1121,7 +1149,7 @@
 				B = module_state_3
 			var/turf/tile = loc
 			if(isturf(tile))
-				B.gather_all(tile, src, 1) //Shhh, unless the bag fills, don't spam the borg's chat with stuff that's going on every time they move!
+				B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
 		return
 
 	if(scrubbing)
@@ -1192,22 +1220,6 @@
 	lockdown = state
 	lockcharge = state
 	update_mobility()
-
-/mob/living/silicon/robot/mode()
-	set name = "Activate Held Object"
-	set category = "IC"
-	set src = usr
-
-	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
-		return
-
-	next_click = world.time + 1
-
-	var/obj/item/W = get_active_held_item()
-	if (W)
-		W.attack_self(src)
-
-	return
 
 /mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
 	if(!module_sprites.len)
@@ -1397,12 +1409,12 @@
 /mob/living/silicon/robot/is_sentient()
 	return braintype != BORG_BRAINTYPE_DRONE
 
-/mob/living/silicon/robot/get_cell()
+/mob/living/silicon/robot/get_cell(inducer)
 	return cell
 
 /mob/living/silicon/robot/verb/robot_nom(var/mob/living/T in living_mobs(1))
 	set name = "Robot Nom"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Allows you to eat someone."
 
 	if (stat != CONSCIOUS)
@@ -1411,7 +1423,7 @@
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"
-	set category = "IC"
+	set category = VERB_CATEGORY_IC
 	set desc = "Select your resting pose."
 	sitting = FALSE
 	bellyup = FALSE
@@ -1426,7 +1438,7 @@
 
 /mob/living/silicon/robot/proc/ex_reserve_refill()
 	set name = "Refill Extinguisher"
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	var/datum/matter_synth/water = water_res
 	for(var/obj/item/extinguisher/E in module.modules)
 		if(E.reagents.total_volume < E.max_water)
@@ -1439,13 +1451,6 @@
 				to_chat(src, "You refill the extinguisher using your water reserves.")
 			else
 				to_chat(src, "Insufficient water reserves.")
-
-/mob/living/silicon/robot/on_changed_z_level(old_z, new_z)
-	if(shell)
-		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
-			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
-			undeploy()
-	..()
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(lockcharge)

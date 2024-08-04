@@ -43,7 +43,7 @@
 	if(ispath(beaker))
 		beaker = new beaker(src)
 
-/obj/machinery/reagentgrinder/examine(mob/user)
+/obj/machinery/reagentgrinder/examine(mob/user, dist)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
 		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
@@ -110,7 +110,7 @@
 			if(!G.reagents || !G.reagents.total_volume)
 				continue
 			failed = 0
-			bag.remove_from_storage(G, src)
+			bag.obj_storage.remove(G, src)
 			holdingitems += G
 			if(holdingitems && holdingitems.len >= limit)
 				break

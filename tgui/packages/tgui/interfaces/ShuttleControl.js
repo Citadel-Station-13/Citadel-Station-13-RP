@@ -415,7 +415,7 @@ const ShuttleControlConsoleWeb = (props, context) => {
               let sensor = sensors[key];
               if (sensor.reading !== -1) {
                 return (
-                  <LabeledList.Item label={key} color="bad">
+                  <LabeledList.Item key={key} label={key} color="bad">
                     Unable to get sensor air reading.
                   </LabeledList.Item>
                 );

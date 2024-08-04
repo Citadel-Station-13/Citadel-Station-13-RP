@@ -125,7 +125,7 @@
 					if(O.damage > 0) // Fix internal damage
 						O.damage = max(O.damage - 2, 0)
 					if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
-						H.sdisabilities &= ~SDISABILITY_NERVOUS
+						H.remove_blindness_source(TRAIT_BLINDNESS_EYE_DMG)
 
 				for(var/obj/item/organ/external/O in H.organs) // Fix limbs, no matter if they are Man or Machine.
 					O.heal_damage(rand(1,3), rand(1,3), internal = 1, robo_repair = 1)
@@ -134,7 +134,7 @@
 				for(var/obj/item/organ/E in H.bad_external_organs)
 					// Fix bones
 					var/obj/item/organ/external/affected = E
-					if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
+					if((affected.damage < affected.min_broken_damage) && (affected.status & ORGAN_BROKEN))
 						affected.status &= ~ORGAN_BROKEN
 					// fix IB
 					affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)

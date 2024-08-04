@@ -4,7 +4,7 @@
 /datum/computer_file/program/uav
 	filename = "rigger"
 	filedesc = "UAV Control"
-	nanomodule_path = /datum/nano_module/uav
+	tguimodule_path = /datum/tgui_module/uav
 	program_icon_state = "comm_monitor"
 	program_key_state = "generic_key"
 	program_menu_icon = "link"
@@ -12,6 +12,8 @@
 	size = 12
 	available_on_ntnet = 1
 	//requires_ntnet = 1
+<<<<<<< HEAD
+=======
 
 /datum/nano_module/uav
 	name = "UAV Control program"
@@ -171,8 +173,8 @@
 		else
 			return 0
 
-	var/list/zlevels_in_range = GLOB.using_map.get_map_levels(their_z, FALSE)
-	var/list/zlevels_in_long_range = GLOB.using_map.get_map_levels(their_z, TRUE) - zlevels_in_range
+	var/list/zlevels_in_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, FALSE)
+	var/list/zlevels_in_long_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, TRUE) - zlevels_in_range
 	var/their_signal = 0
 	for(var/relay in ntnet_global.relays)
 		var/obj/machinery/ntnet_relay/R = relay
@@ -264,3 +266,4 @@
 	M.clear_fullscreen("fishbed",0)
 	M.clear_fullscreen("scanlines",0)
 	M.clear_fullscreen("whitenoise",0)
+>>>>>>> 787c6065a7ab2843080de41ea1d62e0322e8dd9c

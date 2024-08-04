@@ -1,19 +1,21 @@
 /obj/item/gun/energy/laser
 	name = "laser rifle"
 	desc = "A Hephaestus Industries G40E rifle, designed to kill with concentrated energy blasts.  This variant has the ability to \
-	switch between standard fire and a more efficent but weaker 'suppressive' fire."
+	switch between standard fire and a more efficient but weaker 'suppressive' fire."
 	icon_state = "laser"
 	item_state = "laser"
 	wielded_item_state = "laser-wielded"
 	fire_delay = 8
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = TRUE
 	one_handed_penalty = 30
+
+	worth_intrinsic = 350
 
 	firemodes = list(
 		list(mode_name="normal", fire_delay=8, projectile_type=/obj/projectile/beam/midlaser, charge_cost = 240),
@@ -48,7 +50,7 @@
 	item_state = "retro"
 	desc = "An older model of the basic lasergun. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
 	fire_delay = 10 //old technology
 
@@ -115,7 +117,7 @@
 	desc = "A rare weapon, handcrafted by a now defunct specialty manufacturer on Luna for a small fortune. It's certainly aged well."
 	damage_force = 5
 	slot_flags = SLOT_BELT
-	w_class = ITEMSIZE_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
 	origin_tech = null
 	fire_delay = 10		//Old pistol
@@ -133,7 +135,7 @@
 	projectile_type = /obj/projectile/beam/heavylaser/cannon
 	battery_lock = 1
 	fire_delay = 20
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	one_handed_penalty = 90 // The thing's heavy and huge.
 	accuracy = 75
@@ -159,29 +161,36 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	projectile_type = /obj/projectile/beam/xray
 	charge_cost = 200
+	worth_intrinsic = 500 // op as balls
 
 /obj/item/gun/energy/sniperrifle
 	name = "marksman energy rifle"
 	desc = "The HI DMR 9E is an older design of Hephaestus Industries. A designated marksman rifle capable of shooting powerful \
 	ionized beams, this is a weapon to kill from a distance."
+	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger. \
+	To use the scope, use the appropriate verb in the object tab."
 	icon_state = "sniper"
 	item_state = "sniper"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "z8carbine", SLOT_ID_LEFT_HAND = "z8carbine") //placeholder
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 5, TECH_POWER = 4)
+
+	worth_intrinsic = 750
+
 	projectile_type = /obj/projectile/beam/sniper
 	slot_flags = SLOT_BACK
 	charge_cost = 600
 	fire_delay = 35
 	damage_force = 10
 	heavy = TRUE
-	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
+	w_class = WEIGHT_CLASS_HUGE // So it can't fit in a backpack.
 	accuracy = 25 //shooting at the hip
 	scoped_accuracy = 80
 //	requires_two_hands = 1
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 
 /obj/item/gun/energy/sniperrifle/verb/scope()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Use Scope"
 	set popup_menu = 1
 	set src in usr
@@ -211,13 +220,13 @@
 	fire_delay = 20
 	damage_force = 8
 	heavy = TRUE
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	accuracy = 70
 	scoped_accuracy = 95
 	var/scope_multiplier = 1.5
 
 /obj/item/gun/energy/monorifle/verb/sights()
-	set category = "Object"
+	set category = VERB_CATEGORY_OBJECT
 	set name = "Aim Down Sights"
 	set popup_menu = 1
 	set src in usr
@@ -242,7 +251,7 @@
 	item_state = "laser"
 	desc = "Based off an ancient model of laser gun, the NT-Tagger will make you the terror of the next workplace lasertag tournament."
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000)
+	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
@@ -280,7 +289,7 @@
 	desc = "A automatic laser weapon resembling a Tommy-Gun. Designed by Cybersun Industries to be a man portable supressive fire laser weapon."
 	icon_state = "tommylas"
 	item_state = "tommylas"
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
@@ -299,24 +308,39 @@
 	desc = "A homemade (and somehow safe) laser gun designed around shooting single powerful laser beam draining the cell entirely. Better not miss and better have spare cells."
 	icon_state = "ziplas"
 	item_state = "ziplas"
-	w_class = ITEMSIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT|SLOT_BACK
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/projectile/beam/heavylaser //But it hurts a lot
 	cell_type = /obj/item/cell/device/weapon
+	unstable = 1
+
+/obj/item/gun/energy/zip/consume_next_projectile(mob/user as mob)
+	. = ..()
+	if(.)
+		if(unstable)
+			if(prob(10))
+				to_chat(user, "<span class='danger'>The cell overcooks and ruptures!</span>")
+				spawn(rand(2 SECONDS,5 SECONDS))
+					if(src)
+						visible_message("<span class='critical'>\The [src] detonates!</span>")
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(chambered)
+						qdel(src)
+				return ..()
 
 //NT SpecOps Laser Rifle
 /obj/item/gun/energy/combat
 	name = "NT-LR-4 laser rifle"
-	desc = "A sturdy laser rifle fine tuned for NanoTrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
+	desc = "A sturdy laser rifle fine tuned for Nanotrasen special operations. More reliable than mass production models, this weapon was designed to kill, and nothing else."
 	icon_state = "clrifle"
 	item_state = "clrifle"
 	fire_delay = 6
 	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEMSIZE_LARGE
+	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 2)
-	matter = list(MAT_STEEL = 2000, "plastic" = 1000)
+	materials_base = list(MAT_STEEL = 2000, "plastic" = 1000)
 	projectile_type = /obj/projectile/beam/midlaser
 	heavy = FALSE
 	one_handed_penalty = 25

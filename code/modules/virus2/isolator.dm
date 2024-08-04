@@ -52,7 +52,7 @@
 		ui = new(user, src, "PathogenicIsolator", name)
 		ui.open()
 
-/obj/machinery/disease2/isolator/ui_data(mob/user)
+/obj/machinery/disease2/isolator/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["syringe_inserted"] = !!sample
 	data["isolating"] = isolating
@@ -100,7 +100,7 @@
 			SStgui.update_uis(src)
 			update_icon()
 
-/obj/machinery/disease2/isolator/ui_act(action, list/params)
+/obj/machinery/disease2/isolator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

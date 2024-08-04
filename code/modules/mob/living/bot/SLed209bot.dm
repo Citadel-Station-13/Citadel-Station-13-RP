@@ -30,7 +30,7 @@
 	xeno_harm_strength = 9
 	req_one_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS)
 	botcard_access = list(ACCESS_SCIENCE_MAIN, ACCESS_SCIENCE_ROBOTICS, ACCESS_SCIENCE_XENOBIO, ACCESS_SCIENCE_XENOARCH, ACCESS_SCIENCE_FABRICATION, ACCESS_SCIENCE_TOXINS, ACCESS_ENGINEERING_MAINT)
-	var/xeno_stun_strength = 6
+	xeno_stun_strength = 6
 
 /mob/living/bot/secbot/ed209/slime/update_icons()
 	if(on && busy)
@@ -55,13 +55,6 @@
 	P.firer = src
 	P.old_style_target(A)
 	P.fire()
-
-/mob/living/bot/secbot/ed209/slime/UnarmedAttack(var/mob/living/L, var/proximity)
-	..()
-
-	if(istype(L, /mob/living/simple_mob/slime/xenobio))
-		var/mob/living/simple_mob/slime/xenobio/S = L
-		S.slimebatoned(src, xeno_stun_strength)
 
 // Assembly
 

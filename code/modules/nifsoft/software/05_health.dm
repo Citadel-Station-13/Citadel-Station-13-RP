@@ -114,7 +114,7 @@
 					W.heal_damage(0.1)
 					EO.update_damages()
 					if(EO.update_icon())
-						nif.human.UpdateDamageIcon(1)
+						nif.human.update_damage_overlay(1)
 					nif.use_charge(0.1)
 					return TRUE //Return entirely, we only heal one at a time.
 				else if(mode == 1)
@@ -175,7 +175,7 @@
 	if(!active)
 		return null
 	var/datum/gas_mixture/breath = new(BREATH_VOLUME)
-	breath.adjust_gas(/datum/gas/oxygen, BREATH_MOLES)
+	breath.adjust_gas(GAS_ID_OXYGEN, BREATH_MOLES)
 	breath.temperature = T20C
 	return breath
 /*

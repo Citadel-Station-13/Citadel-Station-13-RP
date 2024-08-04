@@ -146,7 +146,7 @@ class KeybindingButton extends Component<{
 }
 
 const KeybindingName = (props: {
-  keybinding: Keybinding,
+  readonly keybinding: Keybinding,
 }) => {
   const { keybinding } = props;
 
@@ -173,7 +173,7 @@ KeybindingName.defaultHooks = {
 };
 
 const ResetToDefaultButton = (props: {
-  keybindingId: string,
+  readonly keybindingId: string,
 }, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
 

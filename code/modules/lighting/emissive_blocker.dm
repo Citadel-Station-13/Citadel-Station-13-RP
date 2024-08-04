@@ -8,6 +8,7 @@
  */
 /atom/movable/emissive_blocker
 	name = "emissive blocker"
+	atom_flags = ATOM_ABSTRACT
 	plane = EMISSIVE_PLANE
 	layer = FLOAT_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

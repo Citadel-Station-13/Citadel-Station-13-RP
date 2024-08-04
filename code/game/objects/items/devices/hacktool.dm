@@ -68,7 +68,7 @@
 		return 0
 
 	known_targets.Insert(1, target)	// Insert the newly hacked target first,
-	target.register(OBSERVER_EVENT_DESTROY, src, /obj/item/multitool/hacktool/proc/on_target_destroy)
+	target.register(OBSERVER_EVENT_DESTROY, src, TYPE_PROC_REF(/obj/item/multitool/hacktool, on_target_destroy))
 	return 1
 
 /obj/item/multitool/hacktool/proc/sanity_check()

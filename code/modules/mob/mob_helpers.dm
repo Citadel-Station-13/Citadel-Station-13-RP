@@ -16,7 +16,7 @@
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
 /mob/proc/can_wield_item(obj/item/W)
-	if(W.w_class >= ITEMSIZE_LARGE && issmall(src))
+	if(W.w_class >= WEIGHT_CLASS_BULKY && issmall(src))
 		return FALSE //M is too small to wield this
 	return TRUE
 
@@ -199,7 +199,7 @@
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[msg]"))
+		if (M.real_name == "[msg]")
 			return 1
 	return 0
 
@@ -266,7 +266,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
-		if(C.sdisabilities & SDISABILITY_NERVOUS || C.blinded)
+		if(C.has_status_effect(/datum/status_effect/sight/blindness))
 			return 1
 	return 0
 
@@ -285,7 +285,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	var/keyname
 	if(subject && subject.client)
 		var/client/C = subject.client
-		keyname = (C.holder && C.holder.fakekey) ? C.holder.fakekey : C.key
+		keyname = C.get_public_key()
 		if(C.mob) //Most of the time this is the observer/dead mob; we can totally use him if there is no better name
 			var/mindname
 			var/realname = C.mob.real_name
@@ -302,7 +302,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return // Can't talk in deadchat if you can't see it.
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -318,7 +318,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				var/mob/observer/dead/DM
 				if(istype(subject, /mob/observer/dead))
 					DM = subject
-				var/anonsay = DM?.is_preference_enabled(/datum/client_preference/anonymous_ghost_chat)
+				var/anonsay = DM?.get_preference_toggle(/datum/game_preference_toggle/presence/anonymous_ghost_chat)
 				if(M.client.holder) 							// What admins see
 					lname = "[keyname][(anonsay) ? "*" : (DM ? "" : "^")] ([name])"
 				else
@@ -333,7 +333,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in GLOB.player_list)
-		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.get_preference_toggle(/datum/game_preference_toggle/chat/dsay))
 			var/follow
 			var/lname = "Game Master"
 			if(M.forbid_seeing_deadchat && !M.client.holder)
@@ -363,7 +363,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			C = M.original.client
 
 	if(C)
-		if(!isnull(C.holder?.fakekey) || !C.is_preference_enabled(/datum/client_preference/announce_ghost_joinleave))
+		if(C.is_under_stealthmin() || !C.get_preference_toggle(/datum/game_preference_toggle/presence/announce_ghost_joinleave))
 			return
 		var/name
 		if(C.mob)
@@ -376,7 +376,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				else
 					name = M.real_name
 		if(!name)
-			name = (C.holder && C.holder.fakekey) ? C.holder.fakekey : C.key
+			name = C.get_public_key()
 		if(joined_ghosts)
 			say_dead_direct("The ghost of <span class='name'>[name]</span> now [pick("skulks","lurks","prowls","creeps","stalks")] among [pick("the dead","the spirits","the graveyard","the deceased","us")]. [message]")
 		else
@@ -402,8 +402,8 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		if(source)
 			var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
 			if(A)
-				if(O.client.prefs && O.client.prefs.UI_style)
-					A.icon = ui_style2icon(O.client.prefs.UI_style)
+				if(O.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style))
+					A.icon = ui_style2icon(O.get_preference_entry(/datum/game_preference_entry/dropdown/hud_style))
 				if (header)
 					A.name = header
 				A.desc = message
@@ -497,7 +497,10 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		return SAFE_PERP
 
 	// Otherwise Runtime gets killed.
-	if(has_AI() && ai_holder.hostile && faction != "neutral")
+	if(!istype(src.ai_holder, /datum/ai_holder/polaris))
+		return SAFE_PERP
+	var/datum/ai_holder/polaris/ai_holder = src.ai_holder
+	if(has_polaris_AI() && ai_holder.hostile && faction != "neutral")
 		threatcount += 4
 	return threatcount
 
@@ -521,8 +524,8 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	if(victim)
 		threatcount += 4
 */
-	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+	if(has_polaris_AI())
+		var/datum/ai_holder/polaris/simple_mob/xenobio_slime/AI = ai_holder
 		if(AI.rabid)
 			threatcount = 10
 
@@ -536,7 +539,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /// The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
 	BP_HEAD   = 40,
-	BP_CHEST  = 10,
+	BP_TORSO  = 10,
 	BP_GROIN  = 20,
 	BP_L_LEG  = 30,
 	BP_R_LEG  = 30,
@@ -554,7 +557,7 @@ var/list/global/base_miss_chance = list(
  */
 var/list/global/organ_rel_size = list(
 	BP_HEAD   = 25,
-	BP_CHEST  = 70,
+	BP_TORSO  = 70,
 	BP_GROIN  = 30,
 	BP_L_LEG  = 25,
 	BP_R_LEG  = 25,
@@ -565,6 +568,8 @@ var/list/global/organ_rel_size = list(
 	BP_L_FOOT = 10,
 	BP_R_FOOT = 10,
 )
+//* Keep this up to date with organ_rel_size. This is all of them added together.
+GLOBAL_VAR_INIT(organ_combined_size, 25 + 70 + 30 + 25 + 25 + 25 + 25 + 10 + 10 + 10 + 10)
 
 /mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	return
@@ -592,7 +597,7 @@ var/list/global/organ_rel_size = list(
 	var/held = is_holding(item)
 
 	if(!slot)
-		slot = slot_by_item(item)
+		slot = slot_id_by_item(item)
 
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return
@@ -603,7 +608,7 @@ var/list/global/organ_rel_size = list(
 		return
 
 	// They may have hidden the icons in the bottom left with the hide button.
-	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot_meta(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
+	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
 		item.screen_loc = null
 		return
 
@@ -635,3 +640,11 @@ var/list/global/organ_rel_size = list(
 	. = JOINTEXT(.)
 	if(re_encode)
 		. = html_encode(.)
+
+/// if sufficent nutrition is present, take it and return true, otherwise just return false
+/mob/proc/try_take_nutrition(var/amount)
+	if(nutrition >= amount)
+		nutrition = nutrition - amount
+		return TRUE
+	else
+		return FALSE
