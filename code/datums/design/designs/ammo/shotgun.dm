@@ -49,22 +49,22 @@
 	id = "ClipShotgunBeanbag2"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/clip/c12g/beanbag
+	build_path = /obj/item/ammo_magazine/a12g/clip/beanbag
 
 /datum/design/ammo/shotgun/clip/dual/slug
 	id = "ClipShotgunSlug2"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/clip/c12g
+	build_path = /obj/item/ammo_magazine/a12g/clip
 
 /datum/design/ammo/shotgun/clip/dual/buckshot
 	id = "ClipShotgunBuckshot2"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/clip/c12g/pellet
+	build_path = /obj/item/ammo_magazine/a12g/clip/pellet
 
 /datum/design/ammo/shotgun/pouch
 	id = "ShotgunShellPouch"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/ammo_magazine/shotholder
+	build_path = /obj/item/ammo_magazine/a12g/pouch
