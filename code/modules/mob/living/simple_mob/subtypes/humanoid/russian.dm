@@ -41,7 +41,6 @@
 	icon_living = "russianranged"
 
 	projectiletype = /obj/projectile/bullet
-	casingtype = /obj/item/ammo_casing/spent
 	projectilesound = 'sound/weapons/Gunshot4.ogg'
 
 	loot_list = list(/obj/item/gun/ballistic/revolver/mateba = 100)

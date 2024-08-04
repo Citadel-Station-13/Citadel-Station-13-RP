@@ -47,6 +47,10 @@
 
 /datum/gun_item_renderer/segments/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
+	if(gun.render_additional_state)
+		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
+	if(gun.render_additional_exclusive)
+		return
 	if(independent_firemode && firemode_key)
 		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	if(!ammo_ratio)
@@ -87,6 +91,10 @@
 
 /datum/gun_item_renderer/overlays/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
+	if(gun.render_additional_state)
+		gun.add_overlay("[base_icon_state]-[gun.render_additional_state]")
+	if(gun.render_additional_exclusive)
+		return
 	if(independent_firemode && firemode_key)
 		gun.add_overlay("[base_icon_state]-[firemode_key]")
 	if(!ammo_ratio)
@@ -118,13 +126,16 @@
 
 /datum/gun_item_renderer/states/render(obj/item/gun/gun, ammo_ratio, firemode_key)
 	var/base_icon_state = gun.base_icon_state || initial(gun.icon_state)
+	if(gun.render_additional_exclusive)
+		gun.icon_state = "[base_icon_state][gun.render_additional_state ? "-[gun.render_additional_state]" : ""]"
+		return
 	if(!ammo_ratio)
 		if(use_empty)
 			gun.icon_state = "[base_icon_state][firemode_key && use_firemode_empty && "-[firemode_key]"]-empty"
 		else
 			gun.icon_state = base_icon_state
 		return
-	gun.icon_state = "[base_icon_state]-[use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
+	gun.icon_state = "[base_icon_state][gun.render_additional_state ? "-[gun.render_additional_state]" : ""]-[use_firemode && firemode_key && "-[firemode_key]"]-[ceil(count * ammo_ratio)]"
 
 /datum/gun_item_renderer/states/dedupe_key()
 	return "states-[use_firemode]-[count]-[use_empty]-[use_firemode_empty]"

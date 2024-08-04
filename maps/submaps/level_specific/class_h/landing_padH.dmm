@@ -10,6 +10,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
+"ac" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
 "ad" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external/public,
@@ -17,12 +23,11 @@
 /area/class_h/POIs/landing_pad)
 "ae" = (
 /obj/effect/floor_decal/techfloor/orange{
-	dir = 6
+	dir = 8
 	},
 /turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "af" = (
-/obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "ag" = (
@@ -55,10 +60,22 @@
 	},
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_h/POIs/landing_pad)
+"aj" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
 "ak" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor/plating,
+/area/class_h/POIs/landing_pad)
+"al" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
 "am" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -73,10 +90,22 @@
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
 "ap" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 10
-	},
+/obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"aq" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"ar" = (
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
+"as" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
 "at" = (
 /obj/effect/debris/cleanable/dirt,
@@ -102,6 +131,11 @@
 /obj/item/ammo_magazine/clip/c762,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
+"av" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/kafel_full,
+/area/class_h/POIs/landing_pad)
 "aw" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/landing_pad)
@@ -113,6 +147,9 @@
 /turf/simulated/floor/plating,
 /area/class_h/POIs/landing_pad)
 "ay" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "az" = (
@@ -147,14 +184,30 @@
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
+"aE" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
 "aF" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/wall,
 /area/class_h/POIs/landing_pad)
 "aG" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock,
-/turf/simulated/floor/tiled/kafel_full,
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/shoes/black,
+/obj/item/gun/ballistic/shotgun/pump/rifle,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/obj/item/ammo_magazine/a7_62mm/clip,
+/turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
 "aH" = (
 /obj/effect/debris/cleanable/dirt,
@@ -162,6 +215,15 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
+/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+/obj/item/reagent_containers/food/snacks/liquid/vitamin,
+/obj/item/reagent_containers/food/snacks/liquid/protein,
+/obj/item/reagent_containers/food/snacks/liquid/protein,
+/obj/item/reagent_containers/food/snacks/liquid/protein,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
+/obj/item/reagent_containers/food/snacks/liquid,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
 "aI" = (
@@ -192,13 +254,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
+"aM" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/external,
+/area/class_h/POIs/landing_pad)
 "aN" = (
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/landing_pad)
 "aO" = (
 /obj/effect/floor_decal/techfloor/orange{
-	dir = 8
+	dir = 6
 	},
 /turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
@@ -209,6 +277,10 @@
 "aQ" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"aR" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
 "aS" = (
 /obj/effect/floor_decal/rust,
@@ -222,6 +294,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"aU" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/external,
 /area/class_h/POIs/landing_pad)
 "aV" = (
 /obj/machinery/light/spot{
@@ -266,34 +344,37 @@
 	},
 /turf/simulated/floor/wood,
 /area/class_h/POIs/landing_pad)
-"Cp" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
-"FP" = (
+"mM" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
-"PP" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
-"SW" = (
+"vN" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
-"Za" = (
+"Hg" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/machinery/door/airlock,
-/turf/simulated/floor/wood,
+/obj/structure/closet/crate/freezer/rations,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/turf/simulated/floor/tiled,
+/area/class_h/POIs/landing_pad)
+"NC" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/outdoors,
+/area/class_h/POIs/landing_pad)
+"Tb" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 
 (1,1,1) = {"
@@ -361,7 +442,7 @@ aa
 aa
 aa
 aa
-aG
+av
 aa
 "}
 (5,1,1) = {"
@@ -376,7 +457,7 @@ aQ
 aQ
 aD
 aQ
-Za
+as
 az
 az
 aa
@@ -384,25 +465,25 @@ aa
 (6,1,1) = {"
 an
 aw
-ay
-ay
+af
+af
 aw
 aF
 ah
-aH
+Hg
 ao
 aX
 aJ
 aa
-au
+aG
 aZ
 aa
 "}
 (7,1,1) = {"
 an
 aw
-ay
-ay
+af
+af
 aw
 aa
 am
@@ -418,8 +499,8 @@ aa
 (8,1,1) = {"
 an
 aP
-ay
-ay
+af
+af
 aw
 aV
 aw
@@ -434,120 +515,120 @@ an
 "}
 (9,1,1) = {"
 an
-Cp
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-aO
-ap
+Tb
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ay
 an
 "}
 (10,1,1) = {"
 an
-SW
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
+vN
 af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+ap
 an
 "}
 (11,1,1) = {"
 an
-SW
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
+vN
 af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+ap
 an
 "}
 (12,1,1) = {"
 an
-SW
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
+vN
 af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+ap
 an
 "}
 (13,1,1) = {"
 an
-SW
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
+vN
 af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+ap
 an
 "}
 (14,1,1) = {"
 an
-SW
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
+vN
 af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+ap
 an
 "}
 (15,1,1) = {"
 an
-FP
-PP
-PP
-PP
-PP
-PP
-PP
-PP
-PP
-PP
-PP
-PP
-ae
+mM
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+NC
+aO
 an
 "}

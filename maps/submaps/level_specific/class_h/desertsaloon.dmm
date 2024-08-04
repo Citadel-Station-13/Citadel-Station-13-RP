@@ -411,10 +411,10 @@
 "Zm" = (
 /obj/structure/closet/cabinet,
 /obj/random/projectile/shotgun,
-/obj/item/ammo_magazine/clip/c12g/pellet,
-/obj/item/ammo_magazine/clip/c12g/beanbag,
-/obj/item/ammo_magazine/clip/c12g/beanbag,
-/obj/item/ammo_magazine/clip/c12g/beanbag,
+/obj/item/ammo_magazine/a12g/clip/pellet,
+/obj/item/ammo_magazine/a12g/clip/beanbag,
+/obj/item/ammo_magazine/a12g/clip/beanbag,
+/obj/item/ammo_magazine/a12g/clip/beanbag,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "Zt" = (
