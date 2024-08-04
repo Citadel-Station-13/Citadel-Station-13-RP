@@ -163,6 +163,7 @@
 	icon_state = "pistol-9"
 	base_icon_state = "pistol"
 	rendering_system = GUN_RENDERING_STATES
+	magazine_type = MAGAZINE_TYPE_CLIP
 	rendering_count = 9
 	ammo_preload = /obj/item/ammo_casing/a45
 	materials_base = list(MAT_STEEL = 250)
@@ -193,6 +194,7 @@
 	rendering_count = 7
 	ammo_preload = /obj/item/ammo_casing/a45
 	materials_base = list(MAT_STEEL = 250)
+	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
 	ammo_max = 7
 
 /obj/item/ammo_magazine/a45/speedloader/empty

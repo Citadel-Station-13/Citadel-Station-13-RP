@@ -114,6 +114,7 @@
 	icon = 'icons/modules/projectiles/magazines/old_stripper.dmi'
 	icon_state = "rifle-5"
 	base_icon_state = "rifle"
+	magazine_type = MAGAZINE_TYPE_CLIP
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 5
 

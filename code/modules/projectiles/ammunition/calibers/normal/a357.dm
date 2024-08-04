@@ -50,6 +50,7 @@
 	ammo_caliber = /datum/ammo_caliber/a357
 	ammo_preload = /obj/item/ammo_casing/a357
 	ammo_type = /obj/item/ammo_casing/a357
+	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
 	ammo_max = 6
 	materials_base = list(MAT_STEEL = 500)
 

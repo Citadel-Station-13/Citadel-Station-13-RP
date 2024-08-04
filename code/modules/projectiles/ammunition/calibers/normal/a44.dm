@@ -66,6 +66,7 @@
 	ammo_preload = /obj/item/ammo_casing/a44
 	materials_base = list(MAT_STEEL = 250)
 	ammo_max = 6
+	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
 	icon = 'icons/modules/projectiles/magazines/old_speedloader_6.dmi'
 	icon_state = "normal-6"
 	base_icon_state = "normal"

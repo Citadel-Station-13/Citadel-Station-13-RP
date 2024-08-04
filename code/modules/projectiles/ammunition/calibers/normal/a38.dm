@@ -50,6 +50,7 @@
 	base_icon_state = "normal"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 6
+	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
 	materials_base = list(MAT_STEEL = 360)
 	ammo_preload = /obj/item/ammo_casing/a38
 	ammo_max = 6
