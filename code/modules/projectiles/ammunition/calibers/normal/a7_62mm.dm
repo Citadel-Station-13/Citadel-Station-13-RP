@@ -1,6 +1,8 @@
 /datum/ammo_caliber/a7_62mm
 	caliber = "7.62mm"
 
+//* Casings *//
+
 /obj/item/ammo_casing/a7_62mm
 	desc = "A 7.62mm bullet casing."
 	caliber = /datum/ammo_caliber/a7_62mm
@@ -58,6 +60,8 @@
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
 	materials_base = list(MAT_STEEL = 300, MAT_SILVER = 150)
 
+//* Magazines *//
+
 /obj/item/ammo_magazine/a7_62mm
 	name = "magazine (7.62mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
@@ -68,6 +72,7 @@
 
 	materials_base = list(MAT_STEEL = 1000)
 	ammo_preload = /obj/item/ammo_casing/a7_62mm
+	ammo_caliber = /datum/ammo_caliber/a7_62mm
 	ammo_max = 10
 
 /obj/item/ammo_magazine/a7_62mm/ap

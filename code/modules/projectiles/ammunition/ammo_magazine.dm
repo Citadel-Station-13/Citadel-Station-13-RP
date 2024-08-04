@@ -174,7 +174,7 @@
 	if(!receiver.loads_caliber(ammo_caliber))
 		return
 	for(var/i in 1 to min(amount_missing, amount_remaining()))
-		receiver.push(pop(receiver))
+		receiver.push(pop(receiver, TRUE), TRUE)
 		++.
 	update_icon()
 	receiver.update_icon()
@@ -259,11 +259,12 @@
 		if(!user.temporarily_remove_from_inventory(casing, user = user))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(!push(casing, update_icon = TRUE))
+		if(!push(casing))
 			to_chat(user, SPAN_WARNING("You fail to insert [I] into [src]!"))
 			return
 		// todo: variable load sounds
 		playsound(src, load_sound, 50, 1)
+		to_chat(user, SPAN_NOTICE("You put [I] into [src]"))
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/enemy = I
@@ -301,7 +302,7 @@
 			continue
 		if(!isnull(why_cant_load_casing(casing)))
 			continue
-		if(!push(casing, FALSE))
+		if(!push(casing, TRUE))
 			continue
 		++.
 	if(.)
@@ -361,7 +362,7 @@
 /**
  * get and eject top casing
  */
-/obj/item/ammo_magazine/proc/pop(atom/newloc)
+/obj/item/ammo_magazine/proc/pop(atom/newloc, no_update)
 	RETURN_TYPE(/obj/item/ammo_casing)
 	if(length(ammo_internal))
 		// list filled
@@ -374,19 +375,22 @@
 		return
 	. = instantiate_casing(newloc)
 	--ammo_current
-	update_icon()
+	if(!no_update)
+		update_icon()
 
 /**
  * put a casing into top
  *
  * @return TRUE/FALSE on success/failure
  */
-/obj/item/ammo_magazine/proc/push(obj/item/ammo_casing/casing, update_icon)
+/obj/item/ammo_magazine/proc/push(obj/item/ammo_casing/casing, no_update)
 	if(amount_remaining() >= ammo_max)
 		return FALSE
 	LAZYADD(ammo_internal, casing)
 	if(casing.loc != src)
 		casing.forceMove(src)
+	if(!no_update)
+		update_icon()
 	return TRUE
 
 /**
@@ -394,7 +398,7 @@
  *
  * @return TRUE/FALSE on success/failure
  */
-/obj/item/ammo_magazine/proc/push_resupply(obj/item/ammo_casing/casing, update_icon, atom/transfer_old_to)
+/obj/item/ammo_magazine/proc/push_resupply(obj/item/ammo_casing/casing, no_update, atom/transfer_old_to)
 	// try to resupply
 	for(var/i in length(ammo_internal) to 1 step -1)
 		var/obj/item/ammo_casing/loaded = ammo_internal[i]
@@ -405,8 +409,10 @@
 		if(casing.loc != src)
 			casing.forceMove(src)
 		return TRUE
+	if(!no_update)
+		update_icon()
 	// try to insert
-	return push(casing, update_icon)
+	return push(casing, no_update)
 
 //* Ammo - Getters *//
 

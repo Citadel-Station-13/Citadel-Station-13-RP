@@ -56,7 +56,7 @@
 	update_icon()
 
 	if(load_method & SPEEDLOADER)
-		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER
+		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP
 	else if(load_method & MAGAZINE)
 		load_method_converted |= MAGAZINE_TYPE_NORMAL
 

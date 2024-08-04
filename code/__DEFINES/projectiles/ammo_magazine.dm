@@ -7,7 +7,7 @@
 #define MAGAZINE_TYPE_NORMAL (1<<0)
 /// revolver-like speedloader
 #define MAGAZINE_TYPE_SPEEDLOADER (1<<1)
-/// stripper clip
+/// stripper clip, or otherwise meant to load one at a time but very quickly
 #define MAGAZINE_TYPE_CLIP (1<<2)
 /// loose pouch
 #define MAGAZINE_TYPE_POUCH (1<<3)
