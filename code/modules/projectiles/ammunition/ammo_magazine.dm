@@ -212,7 +212,7 @@
  * @return null for success, a string describing why not otherwise.
  */
 /obj/item/ammo_magazine/proc/why_cant_load_casing(obj/item/ammo_casing/casing)
-	if(!loads_caliber(casing.regex_this_caliber))
+	if(!loads_caliber(casing.caliber))
 		return "mismatched caliber"
 	if(ammo_type && (ammo_picky ? casing.type != ammo_type : !istype(casing, ammo_type)))
 		return "mismatched ammo"

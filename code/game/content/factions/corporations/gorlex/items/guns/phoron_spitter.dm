@@ -5,7 +5,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	regex_this_caliber = /datum/ammo_caliber/phoron_shrap
+	caliber = /datum/ammo_caliber/phoron_shrap
 	magazine_type = /obj/item/ammo_magazine/phoron_shrap
 	allowed_magazines = list(/obj/item/ammo_magazine/phoron_shrap)
 
@@ -51,7 +51,7 @@
 	icon = 'icons/content/factions/corporations/gorlex/items/guns/phoron_spitter.dmi'
 	icon_state = "shrapnel"
 
-	regex_this_caliber = /datum/ammo_caliber/phoron_shrap
+	caliber = /datum/ammo_caliber/phoron_shrap
 	projectile_type = /obj/projectile/bullet/incendiary/phoronshrap
 	casing_flags = CASING_DELETE
 

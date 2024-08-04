@@ -4,7 +4,7 @@
 	icon_state = "caseless"
 	item_state = "caseless"
 	w_class = WEIGHT_CLASS_BULKY
-	regex_this_caliber = /datum/ammo_caliber/a5mm
+	caliber = /datum/ammo_caliber/a5mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -28,7 +28,7 @@
 	icon_state = "pellet"
 	item_state = "pellet"
 	wielded_item_state = "pellet-wielded"
-	regex_this_caliber = /datum/ammo_caliber/pellet
+	caliber = /datum/ammo_caliber/pellet
 	fire_sound = 'sound/weapons/tap.ogg'
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/p_pellet

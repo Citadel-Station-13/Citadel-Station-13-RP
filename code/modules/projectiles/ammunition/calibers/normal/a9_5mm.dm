@@ -8,7 +8,7 @@
 /obj/item/ammo_casing/a95
 	desc = "A 9.5x40mm bullet casing."
 	icon_state = "rifle-casing"
-	regex_this_caliber = /datum/ammo_caliber/a9_5mm
+	caliber = /datum/ammo_caliber/a9_5mm
 	projectile_type = /obj/projectile/bullet/rifle/a95
 
 //* Magazines *//
