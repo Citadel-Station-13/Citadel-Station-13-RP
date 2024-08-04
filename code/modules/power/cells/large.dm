@@ -4,5 +4,7 @@
 /obj/item/cell/large
 	name = "large power cell"
 	desc = "A bulky power cell used in industrial equipment and power supply systems."
+	icon = 'icons/items/power/cells/large.dmi'
+	icon_state = "cell"
 
 #warn impl
