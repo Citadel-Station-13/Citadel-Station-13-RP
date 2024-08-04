@@ -308,7 +308,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "LF" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "Mc" = (
 /obj/machinery/light/small/flicker{
@@ -320,7 +320,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/tether_away/beach/desert/explored)
 "NU" = (
 /obj/structure/table/rack/steel,
@@ -339,7 +339,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/desert/explored)
 "OI" = (
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/tether_away/beach/desert/explored)
 "QY" = (
 /obj/random/trash,
