@@ -4,6 +4,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "circuit_printer"
 	w_class = WEIGHT_CLASS_BULKY
+	worth_intrinsic = 150
 	var/cur_metal = 0
 	var/max_metal = 250
 	/// One sheet equals this much metal.
@@ -24,6 +25,8 @@
 	/// Currently loaded save, in form of list
 	var/list/program
 	var/dirty_items = FALSE
+
+// todo: get_containing_worth for the metal inside
 
 /obj/item/integrated_circuit_printer/examine(mob/user, dist)
 	. = ..()
@@ -367,9 +370,11 @@
 /obj/item/disk/integrated_circuit/upgrade/advanced
 	name = "integrated circuit printer upgrade disk - advanced designs"
 	desc = "Install this into your integrated circuit printer to enhance it.  This one adds new, advanced designs to the printer."
+	worth_intrinsic = 150
 
 /obj/item/disk/integrated_circuit/upgrade/clone
 	name = "integrated circuit printer upgrade disk - circuit cloner"
 	desc = "Install this into your integrated circuit printer to enhance it.  This one allows the printer to duplicate assemblies."
 	icon_state = "upgrade_disk_clone"
 	origin_tech = list(TECH_ENGINEERING = 5, TECH_DATA = 6)
+	worth_intrinsic = 150

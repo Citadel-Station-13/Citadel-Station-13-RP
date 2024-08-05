@@ -4,6 +4,7 @@
 	icon_state = "pipe_d"
 	density = TRUE
 	anchored = TRUE
+	worth_intrinsic = 500
 	var/unwrenched = FALSE
 	var/wait = FALSE
 	///The default layer selected on the machine.

@@ -22,6 +22,7 @@
 	icon_state = "sampler0"
 	item_state = "screwdriver_brown"
 	w_class = WEIGHT_CLASS_TINY
+	worth_intrinsic = 50
 
 	var/sampled_turf = ""
 	var/num_stored_bags = 10

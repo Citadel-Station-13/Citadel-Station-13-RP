@@ -7,6 +7,7 @@
 	anchored = 0
 	density = 1
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
+	worth_intrinsic = 450
 	var/active = 0
 	var/power = 0
 	var/state = 0

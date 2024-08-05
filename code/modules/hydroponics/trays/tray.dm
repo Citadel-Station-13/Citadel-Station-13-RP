@@ -654,3 +654,8 @@
 	closed_system = !closed_system
 	to_chat(user, "You [closed_system ? "close" : "open"] the tray's lid.")
 	update_icon()
+
+//* Subtypes *//
+
+/obj/machinery/portable_atmospherics/hydroponics/unanchored
+	anchored = FALSE

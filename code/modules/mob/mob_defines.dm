@@ -38,10 +38,6 @@
 	/// How are we intending to act? Help / harm / etc.
 	var/a_intent = INTENT_HELP
 
-	//? Economy
-	/// This mob's economic category
-	var/economic_category_mob = ECONOMIC_CATEGORY_MOB_DEFAULT
-
 	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective

@@ -70,6 +70,7 @@
 	origin_tech = list(TECH_MATERIAL = 2)
 	materials_base = list(MAT_GLASS = 7500, MAT_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
+	worth_intrinsic = 300
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
 /obj/item/shield/riot/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -305,6 +306,7 @@
 			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
+	worth_intrinsic = 500 // op as balls
 
 /obj/item/shield/energy/handle_shield(mob/user)
 	if(!active)

@@ -28,6 +28,8 @@
 
 /**
  * Items that can stack, tracking the number of which is in it
+ *
+ * * [worth_intrinsic] is the only thing used on this path for detecting economic value. Normal get_worth() is not considered.
  */
 /obj/item/stack
 	gender = PLURAL

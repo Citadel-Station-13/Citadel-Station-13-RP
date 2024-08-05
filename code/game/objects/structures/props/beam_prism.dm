@@ -226,6 +226,7 @@
 	silent = TRUE
 	free_rotate = FALSE
 	anchored = FALSE
+	worth_intrinsic = 350
 
 /obj/structure/prop/prism/reflector/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	. = ..()

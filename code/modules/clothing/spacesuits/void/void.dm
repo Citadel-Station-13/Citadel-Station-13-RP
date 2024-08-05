@@ -77,6 +77,24 @@
 	breach_threshold = 12
 	can_breach = 1
 
+	/// nominal helmet type
+	var/helmet_type = /obj/item/clothing/head/helmet/space/void
+	/// do we contain helmet by default?
+	var/starts_with_helmet = FALSE
+	/// nominal magboots type
+	var/boots_type = /obj/item/clothing/shoes/magboots
+	/// do we contain boots by default?
+	var/starts_with_boots = FALSE
+	// todo: support for having both tank and cooler so anyone can use it
+	/// nominal tank type
+	var/tank_type = /obj/item/tank/oxygen/yellow
+	/// nominal suit cooler type
+	var/cooler_type = /obj/item/suit_cooling_unit
+	/// do we have a tank or cooler by default?
+	var/starts_with_life_support = FALSE
+	/// default to cooler instead of tank
+	var/starts_with_cooler_instead = FALSE
+
 	//Inbuilt devices.
 	var/obj/item/clothing/shoes/magboots/boots = null // Deployable boots, if any.
 	var/obj/item/clothing/head/helmet/helmet = null   // Deployable helmet, if any.
@@ -84,6 +102,35 @@
 	var/obj/item/suit_cooling_unit/cooler = null// Cooling unit, for FBPs.  Cannot be installed alongside a tank.
 
 	item_action_name = "Toggle Helmet"
+
+/**
+ * @params
+ * * mapload - mapload as usual
+ * * override_start_equipped - if TRUE / FALSE, we will start with all equipment populated
+ * * spawn_cooler_instead - spawn cooler instead of tank
+ */
+/obj/item/clothing/suit/space/void/Initialize(mapload, override_start_equipped, spawn_cooler_instead)
+	. = ..()
+	if(isnull(override_start_equipped)? starts_with_helmet : override_start_equipped)
+		helmet = new helmet_type
+	if(isnull(override_start_equipped)? starts_with_boots : override_start_equipped)
+		boots = new boots_type
+	if(isnull(override_start_equipped)? starts_with_life_support : override_start_equipped)
+		if(isnull(spawn_cooler_instead)? starts_with_cooler_instead : spawn_cooler_instead)
+			cooler = new cooler_type
+		else
+			tank = new tank_type
+
+/obj/item/clothing/suit/space/void/worth_contents(flags)
+	. = ..()
+	if(boots)
+		. += boots
+	if(helmet)
+		. += helmet
+	if(tank)
+		. += tank
+	if(cooler)
+		. += cooler
 
 /obj/item/clothing/suit/space/void/get_weight()
 	. = ..()

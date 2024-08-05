@@ -11,13 +11,11 @@
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.key]"
+			var/entry = "\t[C.get_revealed_key()]"
 			if(!C.initialized)
 				entry += " - <b><font color='red'>Uninitialized</font></b>"
 				Lines += entry
 				continue
-			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
 			entry += " - Playing as [C.mob.real_name]"
 			switch(C.mob.stat)
 				if(UNCONSCIOUS)
@@ -64,10 +62,10 @@
 				entry += "[C.ckey] - <b><font color='red'>Uninitialized</font></b>"
 				Lines += entry
 				continue
-			if(C.holder && C.holder.fakekey)
-				entry += "[C.holder.fakekey]"
+			if(C == src)
+				entry += "[C.get_revealed_key()]"
 			else
-				entry += "[C.key]"
+				entry += "[C.get_public_key()]"
 			if(C.get_preference_toggle(/datum/game_preference_toggle/presence/show_advanced_who))
 				if(isobserver(C.mob))
 					entry += " - <font color='gray'>Observing</font>"
