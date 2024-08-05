@@ -13,7 +13,7 @@
 	base_icon_state = "large"
 	projectile_type = /obj/projectile/bullet/pistol/strong
 	materials_base = list(MAT_STEEL = 210)
-	regex_this_caliber = /datum/ammo_caliber/a357
+	caliber = /datum/ammo_caliber/a357
 
 /obj/item/ammo_casing/a357/silver
 	desc = "A .357 silver bullet casing. Bless and Sancitfied to banish otherworlds entities."

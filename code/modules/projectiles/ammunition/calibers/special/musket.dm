@@ -6,7 +6,7 @@
 	desc = "A solid ball made of lead."
 	icon = 'icons/modules/projectiles/casings/musket.dmi'
 	icon_state = "musketball"
-	regex_this_caliber = /datum/ammo_caliber/musket
+	caliber = /datum/ammo_caliber/musket
 	projectile_type = /obj/projectile/bullet/musket
 	materials_base = list("lead" = 100)
 	casing_flags = CASING_DELETE
