@@ -5,7 +5,7 @@
 	desc = "A 10mm bullet casing."
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "small"
-	regex_this_caliber = /datum/ammo_caliber/a10mm
+	caliber = /datum/ammo_caliber/a10mm
 	projectile_type = /obj/projectile/bullet/pistol/medium
 	materials_base = list(MAT_STEEL = 75)
 

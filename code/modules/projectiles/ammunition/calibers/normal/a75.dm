@@ -8,7 +8,7 @@
 	desc = "A .75 gyrojet rocket sheathe."
 	icon = 'icons/modules/projectiles/casings/misc.dmi'
 	icon_state = "shell"
-	regex_this_caliber = /datum/ammo_caliber/a75
+	caliber = /datum/ammo_caliber/a75
 	projectile_type = /obj/projectile/bullet/gyro
 	materials_base = list(MAT_STEEL = 2000)
 

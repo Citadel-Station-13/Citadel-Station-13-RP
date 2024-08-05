@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	recoil = 2 // The battlerifle was known for its nasty recoil.
 	max_shells = 36
-	regex_this_caliber = /datum/ammo_caliber/a9_5mm
+	caliber = /datum/ammo_caliber/a9_5mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	magazine_type = /obj/item/ammo_magazine/m95
 	allowed_magazines = list(/obj/item/ammo_magazine/m95)
@@ -47,7 +47,7 @@
 	icon_state = "pdw"
 	item_state = "c20r" // Placeholder
 	w_class = WEIGHT_CLASS_NORMAL
-	regex_this_caliber = /datum/ammo_caliber/a9mm
+	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	load_method = MAGAZINE
@@ -94,7 +94,7 @@
 	item_state = "arifle"
 	w_class = WEIGHT_CLASS_BULKY
 	max_shells = 30
-	regex_this_caliber = /datum/ammo_caliber/a7_92mm
+	caliber = /datum/ammo_caliber/a7_92mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2, TECH_ILLEGAL = 6)
 	magazine_type = /obj/item/ammo_magazine/a7_92mm
 	allowed_magazines = list(/obj/item/ammo_magazine/a7_92mm)
@@ -130,7 +130,7 @@
 	name = "\improper \"Giskard\" holdout pistol"
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
 	icon_state = "giskardcivil"
-	regex_this_caliber = /datum/ammo_caliber/a38
+	caliber = /datum/ammo_caliber/a38
 	magazine_type = /obj/item/ammo_magazine/a38
 	allowed_magazines = list(/obj/item/ammo_magazine/a38)
 	load_method = MAGAZINE
@@ -168,7 +168,7 @@
 	desc = "Are you feeling lucky, punk? Uses .44 rounds."
 	icon_state = "inspector"
 	item_state = "revolver"
-	regex_this_caliber = /datum/ammo_caliber/a44
+	caliber = /datum/ammo_caliber/a44
 	ammo_type = /obj/item/ammo_casing/a44/rubber
 	handle_casings = CYCLE_CASINGS
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
@@ -188,7 +188,7 @@
 	item_state = "wt550"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BELT
-	regex_this_caliber = /datum/ammo_caliber/a9mm
+	caliber = /datum/ammo_caliber/a9mm
 	magazine_type = /obj/item/ammo_magazine/a9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/a9mm)
 	load_method = MAGAZINE

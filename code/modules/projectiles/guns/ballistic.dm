@@ -15,7 +15,7 @@
 	//* Configuration *//
 
 	/// If set, accepts ammo and magazines of this caliber.
-	var/regex_this_caliber = /datum/ammo_caliber/a357
+	var/caliber = /datum/ammo_caliber/a357
 
 	//! LEGACY BELOW
 
@@ -56,7 +56,7 @@
 	update_icon()
 
 	if(load_method & SPEEDLOADER)
-		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER
+		load_method_converted |= MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP
 	else if(load_method & MAGAZINE)
 		load_method_converted |= MAGAZINE_TYPE_NORMAL
 
@@ -170,7 +170,7 @@
 			ammo_magazine = AM
 			user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
 			playsound(src.loc, mag_insert_sound, 50, 1)
-		else if(AM.magazine_type & MAGAZINE_TYPE_SPEEDLOADER)
+		else if(AM.magazine_type & (MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP))
 			if(loaded.len >= max_shells)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
@@ -190,7 +190,7 @@
 		AM.update_icon()
 	else if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
-		if(!(load_method & SINGLE_CASING) || !accepts_caliber(C.regex_this_caliber))
+		if(!(load_method & SINGLE_CASING) || !accepts_caliber(C.caliber))
 			return //incompatible
 		if(loaded.len >= max_shells)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
@@ -209,7 +209,7 @@
 		to_chat(user, "<span class='notice'>You start loading \the [src].</span>")
 		sleep(1 SECOND)
 		for(var/obj/item/ammo_casing/ammo in storage.contents)
-			if(!accepts_caliber(ammo.regex_this_caliber))
+			if(!accepts_caliber(ammo.caliber))
 				continue
 
 			load_ammo(ammo, user)
@@ -347,7 +347,7 @@
  * Can accept an ammo casing
  */
 /obj/item/gun/ballistic/proc/accepts_casing(obj/item/ammo_casing/casing)
-	if(!accepts_caliber(casing.regex_this_caliber))
+	if(!accepts_caliber(casing.caliber))
 		return FALSE
 	return TRUE
 
@@ -363,6 +363,6 @@
  * @return TRUE / FALSE
  */
 /obj/item/gun/ballistic/proc/accepts_caliber(datum/ammo_caliber/caliberlike)
-	var/datum/ammo_caliber/ours = resolve_caliber(regex_this_caliber)
+	var/datum/ammo_caliber/ours = resolve_caliber(caliber)
 	var/datum/ammo_caliber/theirs = resolve_caliber(caliberlike)
 	return ours.equivalent(theirs)
