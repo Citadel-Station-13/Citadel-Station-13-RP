@@ -5,7 +5,7 @@
 	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR
 	atom_colouration_system = FALSE
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
-	var/datum/hud/hud = null // A reference to the owner HUD, if any.
+	var/datum/hud/hud_legacy = null // A reference to the owner HUD, if any.
 
 /**
  * called to resync to a hud_style datum

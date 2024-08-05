@@ -8,9 +8,11 @@
 	/// owning inventory
 	var/datum/inventory/host
 
-/datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
+/datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot)
 
-/datum/mob_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot_or_index)
+/datum/mob_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot)
+
+/datum/mob_hud/inventory/proc/move_item(obj/item/item, datum/inventory_slot/from_slot, datum/inventory_slot/to_slot)
 
 #warn impl all
 
@@ -31,6 +33,10 @@
 	alpha = style_alpha
 	color = style_color
 
+/atom/movable/screen/inventory/slot
+	/// our inventory slot id
+	var/inventory_slot_id
+
 /**
  * handle an inventory operation
  *
@@ -39,4 +45,4 @@
  * * slot_or_index - slot ID or numerical hand index
  * * with_item - specifically attempting to swap an inventory object with an item, or interact with it with an item.
  */
-/atom/movable/screen/inventory/proc/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)
+/atom/movable/screen/inventory/slot/proc/handle_inventory_click(mob/user, slot_or_index, obj/item/with_item)

@@ -319,7 +319,6 @@
 
 	G.state = GRAB_PASSIVE
 	G.icon_state = "grabbed1"
-	G.synch()
 
 /mob/living/carbon/human/proc/gut()
 	set category = "Abilities"

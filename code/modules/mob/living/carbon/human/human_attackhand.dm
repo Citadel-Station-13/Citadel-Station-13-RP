@@ -90,7 +90,6 @@
 			if(!G)	//the grab will delete itself in New if affecting is anchored
 				return
 			L.put_in_active_hand(G)
-			G.synch()
 			LAssailant = L
 
 			H.do_attack_animation(src)

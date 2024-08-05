@@ -137,6 +137,7 @@
 	icon_state = "grabbed"
 	hud.name = "reinforce grab"
 	hud.master = src
+	vis_contents += hud
 
 	//check if assailant is grabbed by victim as well
 	if(assailant.grabbed_by)
@@ -151,16 +152,6 @@
 		assailant.stop_pulling()
 
 	adjust_position()
-
-//This makes sure that the grab screen object is displayed in the correct hand.
-/obj/item/grab/proc/synch() //why is this needed?
-	if(QDELETED(src))
-		return
-	if(affecting)
-		if(assailant.r_hand == src)
-			hud.screen_loc = ui_rhand
-		else
-			hud.screen_loc = ui_lhand
 
 /obj/item/grab/process(delta_time)
 	if(QDELETED(src)) // GC is trying to delete us, we'll kill our processing so we can cleanly GC

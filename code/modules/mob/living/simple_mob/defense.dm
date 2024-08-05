@@ -30,7 +30,6 @@
 
 			L.put_in_active_hand(G)
 
-			G.synch()
 			G.affecting = src
 			LAssailant = L
 

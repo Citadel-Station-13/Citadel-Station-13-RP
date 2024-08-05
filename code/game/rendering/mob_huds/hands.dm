@@ -17,6 +17,10 @@
 
 /datum/mob_hud/hands/proc/move_item(obj/item/item, from_index, to_index)
 
+/datum/mob_hud/hands/proc/swap_active_hand(from_index, to_index)
+	var/atom/movable/screen/hands/old_hand = hands[from_index]
+	var/atom/movable/screen/hands/new_hand = hands[to_index]
+
 #warn impl all
 
 /atom/movable/screen/hands

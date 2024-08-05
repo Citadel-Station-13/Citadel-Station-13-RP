@@ -747,7 +747,8 @@
 	update_worn_icon()
 
 /obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/e_args)
-	if(user.species.name == SPECIES_ADHERENT)
+	var/mob/living/carbon/human/H = user
+	if(istype(H) && H.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)
 		else

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2024 silicons                             *//
 
 /// global slot meta cache - all ids must be string!
 /// initialized by SSearly_init
@@ -99,6 +99,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	//* HUD
 	/// our screen loc
 	var/hud_position
+	#warn uh oh!
+	/// our nominal 
 
 	//* Grammar
 	/// player friendly name

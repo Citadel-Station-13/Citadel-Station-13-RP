@@ -25,7 +25,6 @@
 
 			grabbed_by += G
 			G.affecting = src
-			G.synch()
 
 			LAssailant = L
 

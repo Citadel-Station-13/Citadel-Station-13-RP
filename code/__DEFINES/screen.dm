@@ -17,14 +17,23 @@
 //! BYOND will 100% allow you to.
 //! DO NOT DO THIS.
 
-//* General HUD positions
-//* These should be as widescreen-agnostic as possible.
+//*                  General HUD positions                   *//
+//* These should be as widescreen-agnostic as possible.      *//
 
 /// Fill screen
 #define SCREEN_LOC_FULLSCREEN "LEFT,BOTTOM to RIGHT,TOP"
 
-//* Mob HUD screen object positions
-//* These should be widescreen-agnostic and use anchorings to the sides of the screen / center.
+//*                     Mob HUD positions                    *//
+//* These should be widescreen-agnostic and use anchorings   *//
+//* to the sides of the screen / center.                     *//
+
+/// the bottom-left hand of hands HUD
+#define SCREEN_LOC_MOB_HANDS_HUD_ANCHOR "CENTER-1:16,BOTTOM+1:5"
+
+/// the bottom-left drawer position of inventory HUD
+#define SCREEN_LOC_MOB_INVENTORY_HUD_ANCHOR "LEFT:6,BOTTOM:5"
+
+#warn deal with this crap
 
 //Pop-up inventory
 #define ui_shoes "LEFT+1:8,BOTTOM:5"
@@ -42,6 +51,8 @@
 
 /// Hands
 #define SCREEN_LOC_INV_HAND(index) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
+#define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
+#define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
 
 //Lower left, persistant menu
 #define ui_inventory "LEFT:6,BOTTOM:5"
@@ -53,8 +64,6 @@
 #define ui_back "CENTER-2:14,BOTTOM:5"
 
 #define ui_equip "CENTER-1:16,BOTTOM+1:5"
-#define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
-#define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
 #define ui_storage1 "CENTER+1:16,BOTTOM:5"
 #define ui_storage2 "CENTER+2:16,BOTTOM:5"
 #define ui_smallquad "RIGHT-4:18,BOTTOM:4"

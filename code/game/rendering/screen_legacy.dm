@@ -147,8 +147,6 @@
 			usr.hud_used.hidden_inventory_update()
 
 		if("equip")
-			if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-				return 1
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr
 				H.quick_equip()
