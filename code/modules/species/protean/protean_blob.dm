@@ -51,7 +51,7 @@
 	var/obj/item/organ/internal/nano/refactory/refactory
 	var/datum/modifier/healing
 
-	var/datum/list/obj/item/previously_held
+	var/list/datum/weakref/previously_held
 
 	player_msg = "In this form, you can move a little faster and your health will regenerate as long as you have metal in you!"
 	holder_type = /obj/item/holder/protoblob
@@ -323,7 +323,7 @@
 		var/obj/item/held = held_items[i]
 		if(isnull(held))
 			continue
-		prev_held[i] = WEAKREF(held)
+		previously_held[i] = WEAKREF(held)
 	//languages!!
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)
