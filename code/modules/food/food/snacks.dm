@@ -7048,20 +7048,21 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/macaron
 	name = "macaron"
 	nutriment_amt = 6
-	nutriment_desc = list("sugary", "crisp")
+	bitesize = 3
+	nutriment_desc = list("sugar")
 
 /obj/item/reagent_containers/food/snacks/macaron/red
-	desc = "A macaron. This one is red!"
+	desc = "A small sugary treat. This one is red!"
 	icon_state = "macaron_red"
 
 /obj/item/reagent_containers/food/snacks/macaron/yellow
-	desc = "A macaron. This one is yellow!"
+	desc = "A small sugary treat. This one is yellow!"
 	icon_state = "macaron_yellow"
 
 /obj/item/reagent_containers/food/snacks/macaron/purple
-	desc = "A macaron. This one is purple!"
+	desc = "A small sugary treat. This one is purple!"
 	icon_state = "macaron_purple"
 
 /obj/item/reagent_containers/food/snacks/macaron/green
-	desc = "A macaron. This one is green!"
+	desc = "A small sugary treat. This one is green!"
 	icon_state = "macaron_green"
