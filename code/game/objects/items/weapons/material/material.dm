@@ -36,15 +36,6 @@
 	// var/dulled_divisor = 0.1	//Just drops the damage to a tenth
 	// var/drops_debris = 1
 
-	/// passive parry data / frame
-	///
-	/// * anonymous typepath is allowed
-	/// * typepath is allowed
-	/// * instance is allowed
-	///
-	/// note that the component will not be modified while held;
-	/// if this is changed, the component needs to be remade.
-	var/passive_parry
 
 /obj/item/material/Initialize(mapload, material)
 	if(!isnull(material))
@@ -86,40 +77,6 @@
 	// if(istype(I, /obj/item/material/sharpeningkit))
 	// 	var/obj/item/material/sharpeningkit/SK = I
 	// 	repair(SK.repair_amount, SK.repair_time, user)
-	return ..()
-
-/obj/item/material/pickup(mob/user, flags, atom/oldLoc)
-	// we load the component here as it hooks equipped,
-	// so loading it here means it can still handle the equipped signal.
-	if(passive_parry)
-		LoadComponent(/datum/component/passive_parry, passive_parry)
-	return ..()
-
-/obj/item/material/dropped(mob/user, flags, atom/newLoc)
-	. = ..()
-	// get rid of the passive parry component to save memory
-	DelComponent(/datum/component/passive_parry)
-
-/obj/item/material/proc/load_passive_parry()
-	passive_parry = resolve_passive_parry_data(passive_parry)
-	var/datum/component/passive_parry/loaded = GetComponent(/datum/component/passive_parry)
-	if(loaded)
-		loaded.parry_data = passive_parry
-
-/obj/item/material/proc/reload_passive_parry()
-	load_passive_parry()
-
-/obj/item/materialvv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	. = ..()
-	switch(var_name)
-		if(NAMEOF(src, passive_parry))
-			reload_passive_parry()
-
-/obj/item/materialvv_get_var(var_name, resolve)
-	switch(var_name)
-		if(NAMEOF(src, passive_parry))
-			if(resolve)
-				load_passive_parry()
 	return ..()
 
 // /obj/item/material/proc/check_health(var/consumed)

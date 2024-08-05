@@ -9,7 +9,7 @@
 	. = ..()
 	if(from_item)
 		assumeform(from_item)
-	if(towards_taarget)
+	if(towards_target)
 		animate_towards(towards_target)
 
 /obj/effect/temporary_effect/item_pickup_ghost/proc/assumeform(var/obj/item/picked_up)

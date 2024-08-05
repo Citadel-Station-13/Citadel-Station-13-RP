@@ -18,7 +18,7 @@
 /obj/item/shield/riot/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	if(istype(shieldcall_args[SHIELDCALL_ARG_WEAPON], /obj/projectile))
 		var/obj/projectile/proj = shieldcall_args[SHIELDCALL_ARG_WEAPON]
-		if((is_sharp(proj) && P.armor_penetration >= 10) || istype(proj, /obj/projectile/beam))
+		if((is_sharp(proj) && proj.armor_penetration >= 10) || proj.damage_tier >= ARMOR_TIER_HIGH || istype(proj, /obj/projectile/beam))
 			//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 			//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
 			//useless.  Extremely penetrating projectiles will go through the shield without less damage.
