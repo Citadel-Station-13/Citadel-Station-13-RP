@@ -124,6 +124,25 @@
 	if(!.)
 		. = "the attack"
 
+#define RESOLVE_SHIELDCALL_WEAPON_DESCRIPTOR(SHIELDCALL) resolve_shieldcall_weapon_descriptor(SHIELDCALL)
+
+/proc/resolve_shieldcall_weapon_descriptor(list/shieldcall_args)
+	switch(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE])
+		if(ATTACK_TYPE_MELEE)
+			var/obj/item/weapon = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			return "a [weapon]"
+		if(ATTACK_TYPE_PROJECTILE)
+			var/obj/projectile/proj = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			return "a [proj]"
+		if(ATTACK_TYPE_THROWN)
+			var/datum/thrownthing/thrown = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			return "a [thrown.thrownthing]"
+		if(ATTACK_TYPE_MELEE, ATTACK_TYPE_UNARMED)
+			var/datum/unarmed_attack/style = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+			return "a [style.attack_name]"
+	if(!.)
+		. = "an attack"
+
 //* handle_touch - contact_flags *//.
 
 // broad descriptors

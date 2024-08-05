@@ -2,10 +2,19 @@
 //For projectiles that actually represent clouds of projectiles
 /obj/projectile/bullet/pellet
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
+
 	damage = 20
-	//icon_state = "bullet" //TODO: would be nice to have it's own icon state
-	var/pellets = 4			//number of pellets
-	var/range_step = 2		//projectile will lose a fragment each time it travels this distance. Can be a non-integer.
+
+	/// number of pelelts
+	var/pellets = 4
+	/// distance before pellets start falling off
+	var/pellet_loss_start = WORLD_ICON_SIZE * 2
+	/// pellets lost per pixel moved
+	var/pellet_loss = 0.5 / WORLD_ICON_SIZE
+	/// last distance travelled
+	var/pellet_loss_last_distance = 0
+
+	#warn this
 	var/base_spread = 90	//lower means the pellets spread more across body parts. If zero then this is considered a shrapnel explosion instead of a shrapnel cone
 	var/spread_step = 10	//higher means the pellets spread more across body parts with distance
 
@@ -20,11 +29,24 @@
 			continue
 		impact(victim)
 
-#warn below; prone mobs, rework accuracy, etc
+/obj/projectile/bullet/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	var/travelled = pellet_loss_last_distance - distance_travelled
+	pellet_loss_last_distance = distance_travelled
+	if(pellet_loss_start > 0)
+		var/reduction = min(pellet_loss_start, travelled)
+		travelled -= reduction
+		pellet_loss_start -= reduction
+	if(travelled <= 0)
+		return
+	pellets -= pellet_loss * travelled
 
-/obj/projectile/bullet/pellet/proc/get_pellets(var/distance)
-	var/pellet_loss = round((distance - 1)/range_step) //pellets lost due to distance
-	return max(pellets - pellet_loss, 1)
+/obj/projectile/bullet/pellet/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
+	#warn how to do hit_zone?
+	for(var/i in 1 to ceil(pellets))
+		..(arglist(args))
+
+#warn below; prone mobs, rework accuracy, etc
 
 /obj/projectile/bullet/pellet/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
 	if (pellets < 0) return 1
@@ -55,8 +77,7 @@
 	return 0
 
 /obj/projectile/bullet/pellet/get_structure_damage()
-	var/distance = get_dist(loc, starting)
-	return ..() * get_pellets(distance)
+	return ..() * pellets
 
 //Explosive grenade projectile, borrowed from fragmentation grenade code.
 /obj/projectile/bullet/pellet/fragment

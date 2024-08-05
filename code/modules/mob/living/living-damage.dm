@@ -135,8 +135,6 @@
 
 //* Raw Damage *//
 
-#warn how do we want to do this
-
 /**
  * @params
  * * brute - brute damage to take
@@ -212,6 +210,15 @@
 
 //* Damage Instance Handling *//
 
-/mob/living/inflict_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, datum/weapon, shieldcall_flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+/mob/living/inflict_damage_instance(SHIELDCALL_PROC_HEADER)
+	if(inflict_damage_type_special(args))
+		return
+
+	var/weapon_descriptor = RESOLVE_SHIELDCALL_WEAPON_DESCRIPTOR(args)
+
+	if(hit_zone)
+		take_targeted_damage(brute, burn, damage_mode, hit_zone, weapon_descriptor)
+	else
+		take_overall_damage(brute, burn, damage_mode, weapon_descriptor)
 
 #warn impl

@@ -9,7 +9,6 @@
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
 	sharp = 1
 	projectile_type = PROJECTILE_TYPE_KINETIC
-	var/mob_passthrough_check = 0
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
 	miss_sounds = list('sound/weapons/guns/miss1.ogg','sound/weapons/guns/miss2.ogg','sound/weapons/guns/miss3.ogg','sound/weapons/guns/miss4.ogg')
@@ -25,51 +24,6 @@
 	if(!istype(L))
 		return
 	shake_camera(L, 3, 2)
-
-/obj/projectile/bullet/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
-	if(penetrating > 0 && damage > 20 && prob(damage))
-		mob_passthrough_check = 1
-	else
-		mob_passthrough_check = 0
-	return ..()
-
-/obj/projectile/bullet/can_embed()
-	//prevent embedding if the projectile is passing through the mob
-	if(mob_passthrough_check)
-		return 0
-	return ..()
-
-/obj/projectile/bullet/check_penetrate(var/atom/A)
-	if(!A || !A.density) return 1 //if whatever it was got destroyed when we hit it, then I guess we can just keep going
-
-	if(istype(A, /obj/vehicle/sealed/mecha))
-		return 1 //mecha have their own penetration handling
-
-	if(ismob(A))
-		if(!mob_passthrough_check)
-			return 0
-		if(iscarbon(A))
-			damage *= 0.7 //squishy mobs absorb KE
-		return 1
-
-	var/chance = damage
-	if(istype(A, /turf/simulated/wall))
-		var/turf/simulated/wall/W = A
-		chance = round(damage/W.material_outer.density*1.8)
-	else if(istype(A, /obj/machinery/door))
-		var/obj/machinery/door/D = A
-		chance = round(damage/D.integrity_max*180)
-		if(D.glass) chance *= 2
-	else if(istype(A, /obj/structure/girder))
-		chance = 100
-
-	if(prob(chance))
-		if(A.opacity)
-			//display a message so that people on the other side aren't so confused
-			A.visible_message("<span class='warning'>\The [src] pierces through \the [A]!</span>")
-		return 1
-
-	return 0
 
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 

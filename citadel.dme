@@ -4325,6 +4325,8 @@
 #include "code\modules\projectiles\gun.dm"
 #include "code\modules\projectiles\gun_item_renderer.dm"
 #include "code\modules\projectiles\gun_mob_renderer.dm"
+#include "code\modules\projectiles\projectile-hitscan_visuals.dm"
+#include "code\modules\projectiles\projectile-physics.dm"
 #include "code\modules\projectiles\projectile.dm"
 #include "code\modules\projectiles\projectile_effect.dm"
 #include "code\modules\projectiles\ammunition\ammo_caliber.dm"

@@ -46,9 +46,22 @@
  * * the damage system can be a medical system or just the atom integrity system.
  */
 /atom/proc/inflict_damage_instance(SHIELDCALL_PROC_HEADER)
+	if(!integrity_enabled)
+		return
+	if(inflict_damage_type_special(args))
+		return
 	// default atom damage handling
 	inflict_atom_damage(damage, damage_tier, damage_flag, damage_mode, attack_type, weapon)
 
+/**
+ * decodes damage type to what it should actually do
+ *
+ * * this is for hybrid / semantic damage types like bio-acid and searing damage to work
+ *
+ * @return TRUE to handle the damage type.
+ */
+/atom/proc/inflict_damage_type_special(list/shieldcall_args)
+	return FALSE
 
 //* Damage Processing API *//
 

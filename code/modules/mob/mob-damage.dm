@@ -3,5 +3,5 @@
 
 //* Damage Instance Handling *//
 
-/mob/inflict_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, datum/weapon, shieldcall_flags, hit_zone, list/additional, datum/event_args/actor/clickchain/clickchain)
+/mob/inflict_damage_instance(SHIELDCALL_PROC_HEADER)
 	return

@@ -22,7 +22,7 @@
 			//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
 			//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
 			//useless.  Extremely penetrating projectiles will go through the shield without less damage.
-			user.visible_message("<span class='danger'>\The [user]'s [src.name] is pierced by [attack_text]!</span>")
+			defending.visible_message("<span class='danger'>\The [defending]'s [src.name] is pierced by [attack_text]!</span>")
 			proj.dampen_on_pierce_experimental(src, 20, ARMOR_TIER_HIGH)
 			return null
 	return ..()
