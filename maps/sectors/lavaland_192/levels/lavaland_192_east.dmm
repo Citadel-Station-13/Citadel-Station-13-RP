@@ -129,6 +129,8 @@
 /obj/item/shovel/spade/bronze,
 /obj/item/material/knife/machete/hatchet/bronze,
 /obj/item/material/knife/machete/hatchet/bronze,
+/obj/item/tool/wirecutters/bronze,
+/obj/item/tool/wirecutters/bronze,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "tz" = (
