@@ -145,11 +145,20 @@
  */
 /obj/item/proc/pickup(mob/user, flags, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
+
+	// we load the component here as it hooks equipped,
+	// so loading it here means it can still handle the equipped signal.
+	if(passive_parry)
+		LoadComponent(/datum/component/passive_parry, passive_parry)
+
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
+
 	reset_pixel_offsets()
 	hud_layerise()
+
 	item_flags |= ITEM_IN_INVENTORY
+
 	// todo: should this be here
 	transform = null
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))

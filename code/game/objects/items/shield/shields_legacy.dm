@@ -1,10 +1,3 @@
-/obj/item/proc/unique_parry_check(mob/user, mob/attacker, atom/damage_source)	// An overrideable version of the above proc.
-	SHOULD_NOT_OVERRIDE(TRUE)
-	return default_parry_check(user, attacker, damage_source)
-
-/obj/proc/handle_shield()
-	SHOULD_NOT_OVERRIDE(TRUE)
-
 /obj/item/shield/riot
 	name = "riot shield"
 	desc = "A shield adept for close quarters engagement.  It's also capable of protecting from less powerful projectiles."
@@ -23,34 +16,16 @@
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
 /obj/item/shield/riot/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
-	. = ..()
-
-
-/obj/item/shield/riot/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(user.incapacitated())
-		return 0
-
-	//block as long as they are not directly behind us
-	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
-	if(check_shield_arc(user, bad_arc, damage_source, attacker))
-		if(prob(get_block_chance(user, damage, damage_source, attacker)))
-			//At this point, we succeeded in our roll for a block attempt, however these kinds of shields struggle to stand up
-			//to strong bullets and lasers.  They still do fine to pistol rounds of all kinds, however.
-			if(istype(damage_source, /obj/projectile))
-				var/obj/projectile/P = damage_source
-				if((is_sharp(P) && P.armor_penetration >= 10) || istype(P, /obj/projectile/beam))
-					//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
-					//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
-					//useless.  Extremely penetrating projectiles will go through the shield without less damage.
-					user.visible_message("<span class='danger'>\The [user]'s [src.name] is pierced by [attack_text]!</span>")
-					if(P.armor_penetration < 30) //PTR bullets and x-rays will bypass this entirely.
-						P.damage = P.damage / 2
-					return 0
-			//Otherwise, if we're here, we're gonna stop the attack entirely.
-			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
-			playsound(user.loc, 'sound/weapons/Genhit.ogg', 50, 1)
-			return 1
-	return 0
+	if(istype(shieldcall_args[SHIELDCALL_ARG_WEAPON], /obj/projectile))
+		var/obj/projectile/proj = shieldcall_args[SHIELDCALL_ARG_WEAPON]
+		if((is_sharp(proj) && P.armor_penetration >= 10) || istype(proj, /obj/projectile/beam))
+			//If we're at this point, the bullet/beam is going to go through the shield, however it will hit for less damage.
+			//Bullets get slowed down, while beams are diffused as they hit the shield, so these shields are not /completely/
+			//useless.  Extremely penetrating projectiles will go through the shield without less damage.
+			user.visible_message("<span class='danger'>\The [user]'s [src.name] is pierced by [attack_text]!</span>")
+			proj.dampen_on_pierce_experimental(src, 20, ARMOR_TIER_HIGH)
+			return null
+	return ..()
 
 /obj/item/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/melee/baton))
@@ -96,7 +71,11 @@
 	var/datum/event_args/actor/clickchain/clickchain = shieldcall_args[SHIELDCALL_ARG_CLICKCHAIN]
 	var/mob/attacker = clickchain?.performer
 	if(attacker)
+		log_attack(key_name(attacker), key_name(defending), "flash shield auto-invoke")
 		embedded_flash.melee_interaction_chain(attacker, defending)
+	else
+		log_attack(key_name(attacker), "none (AoE)", "flash shield auto-invoke")
+		embedded_flash.attack_self(defending)
 	update_icon()
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)

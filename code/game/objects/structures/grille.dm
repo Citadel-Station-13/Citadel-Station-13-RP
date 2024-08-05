@@ -44,12 +44,13 @@
 	return ..()
 
 /obj/structure/grille/bullet_act(obj/projectile/proj, impact_flags, def_zone, blocked)
-	#warn redo all this; proj.dampen_kinetic_energy()?
 	if(proj.original_target == src)
 		impact_flags |= PROJECTILE_IMPACT_TRIVIAL
 	else
 		impact_flags |= PROJECTILE_IMPACT_TRIVIAL | PROJECTILE_IMPACT_PIERCE
 	. = ..()
+	if(impact_flags & PROJECTILE_IMPACT_PIERCE)
+		proj.dampen_on_pierce_experimental(src, 10, ARMOR_TIER_ABOVE)
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))

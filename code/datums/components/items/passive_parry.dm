@@ -53,6 +53,7 @@
 /datum/component/passive_parry/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equipped))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_dropped))
 	if(!hooked)
 		var/obj/item/item = parent
 		if(item.worn_mob())
@@ -63,6 +64,10 @@
 	UnregisterSignal(parent, COMSIG_ITEM_EQUIPPED)
 	if(hooked)
 		on_unequipped(parent)
+
+/datum/component/passive_parry/proc/on_dropped(obj/item/source, inv_op_flags, atom/new_loc)
+	// delete on drop to save memory
+	qdel(src)
 
 /datum/component/passive_parry/proc/on_equipped(obj/item/source, mob/user, slot, accessory)
 	if(!check_slot(slot))
@@ -75,13 +80,13 @@
 		user = source.worn_mob()
 
 	if(VALUE_OR_DEFAULT(parry_data.parry_chance_touch, parry_data.parry_chance_default))
-		#warn impl
+		RegisterSignal(user, COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT, PROC_REF(on_legacy_unarmed_melee))
 	if(VALUE_OR_DEFAULT(parry_data.parry_chance_melee, parry_data.parry_chance_default))
-		#warn impl
+		RegisterSignal(user, COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK, PROC_REF(on_legacy_item_melee))
 	if(VALUE_OR_DEFAULT(parry_data.parry_chance_projectile, parry_data.parry_chance_default))
 		RegisterSignal(user, COMSIG_ATOM_BULLET_ACT, PROC_REF(on_bullet))
 	if(VALUE_OR_DEFAULT(parry_data.parry_chance_thrown, parry_data.parry_chance_default))
-		#warn impl
+		RegisterSignal(user, COMSIG_ATOM_THROW_IMPACTED, PROC_REF(on_throw))
 
 /datum/component/passive_parry/proc/on_unequipped(obj/item/source, mob/user, slot, accessory)
 	if(!hooked)
@@ -93,12 +98,22 @@
 
 	UnregisterSignal(user, list(
 		COMSIG_ATOM_BULLET_ACT,
+		COMSIG_ATOM_THROW_IMPACTED,
+		COMSIG_MOB_LEGACY_ATTACK_HAND_INTERCEPT,
+		COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK,
 	))
 
 /datum/component/passive_parry/proc/on_bullet(mob/source, list/bullet_act_args)
 	#warn impl
 
-/datum/component/passive_parry/proc/
+/datum/component/passive_parry/proc/on_throw(mob/source, atom/movable/impactor, datum/thrownthing/thrownthing)
+	#warn impl
+
+/datum/component/passive_parry/proc/on_legacy_item_melee(mob/source, obj/item/weapon, mob/attacker, hit_zone)
+	#warn impl
+
+/datum/component/passive_parry/proc/on_legacy_unarmed_melee(mob/source, mob/attacker, list/clickparams)
+	#warn impl
 
 /datum/component/passive_parry/proc/check_slot(slot_id)
 	return islist(parry_data.parry_slot_id)? (slot_id in parry_data.parry_slot_id) : (!parry_data.parry_slot_id || (parry_data.parry_slot_id == slot_id))
@@ -107,7 +122,6 @@
 
 //* Item *//
 
-#warn impl
 /**
  * Called by /datum/component/passive_parry when we're about to start up the parry frame
  * Called if parry intercept callback isn't set.
@@ -116,8 +130,6 @@
  */
 /obj/item/proc/passive_parry_intercept(mob/defending, list/shieldcall_args, datum/passive_parry/parry_data)
 	return parry_data.parry_frame
-
-#warn impl
 
 //* Data *//
 

@@ -1321,6 +1321,7 @@
  */
 /obj/projectile/proc/process_damage_instance(atom/target, blocked, impact_flags, hit_zone)
 	#warn this currently doesn't actually hit armor/shieldcalls...
+	#warn make sure SECOND_CALL is used on shieldcalls
 	//! LEGACY COMBAT CODE
 	if(isliving(target))
 		var/mob/living/L = target
@@ -1373,9 +1374,9 @@
  */
 /obj/projectile/proc/dampen_on_pierce_experimental(atom/entity, force, tier)
 	var/tdiff = damage_tier - tier
-	var/dmult = damage_force / force
+	var/dmult = src.damage / force
 	var/malus = dmult >= 1 ? ((1 / dmult) ** tdiff * 10) : (10 * ((1 / dmult) / (1 + tdiff)))
-	damage_force = clamp(damage_force - malus, damage_force * 0.5, damage_force)
+	src.damage = clamp(src.damage - malus, src.damage * 0.5, src.damage)
 
 //* Physics - Configuration *//
 

@@ -167,6 +167,7 @@
 	return null
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
+	SEND_SIGNAL(src, COMSIG_MOB_LEGACY_RESOLVE_ITEM_ATTACK, I, user, target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))
 		return null
 
@@ -178,7 +179,8 @@
 	if(!hit_zone)
 		return null
 
-	if(check_shields(I.damage_force, I, user, target_zone, "the [I.name]"))
+	// todo: clickchain should be checked for damage mult
+	if(atom_shieldcall_handle_item_melee(I, new /datum/event_args/actor/clickchain(user), FALSE, NONE) & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 		return
 
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
@@ -579,35 +581,20 @@
 	if(. & PROJECTILE_IMPACT_FLAGS_TARGET_ABORT)
 		return
 
-/mob/living/carbon/human/bullet_act(var/obj/projectile/P, var/def_zone)
-	def_zone = check_zone(def_zone)
-	if(!has_organ(def_zone))
-		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
-
+	// todo: this shit shouldn't be here
 	var/obj/item/organ/external/organ = get_organ()
 
-	//Shields
-	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
-	if(shield_check) // If the block roll succeeded, this is true.
-		if(shield_check < 0) // The shield did something weird and the bullet needs to keep doing things (e.g. it was reflected).
-			return shield_check // Likely equal to PROJECTILE_FORCE_MISS or PROJECTILE_CONTINUE.
-		else // Otherwise we blocked normally and stopped all the damage.
-			return 0
-
-	if(!P.nodamage)
-		organ.add_autopsy_data("[P.name]", P.damage)
+	if(!proj.nodamage)
+		organ.add_autopsy_data("[proj.name]", proj.damage)
 
 	//Shrapnel
-	if(P.can_embed())
+	if(proj.can_embed())
 		var/armor = getarmor_organ(organ, "bullet")
 		if(!prob(armor/2))		//Even if the armor doesn't stop the bullet from hurting you, it might stop it from embedding.
-			var/hit_embed_chance = P.embed_chance + (P.damage - armor)	//More damage equals more chance to embed
+			var/hit_embed_chance = proj.embed_chance + (proj.damage - armor)	//More damage equals more chance to embed
 			if(prob(max(hit_embed_chance, 0)))
 				var/obj/item/material/shard/shrapnel/SP = new()
-				SP.name = (P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel"
-				SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
+				SP.name = (proj.name != "shrapnel")? "[proj.name] shrapnel" : "shrapnel"
+				SP.desc = "[SP.desc] It looks like it was fired from [proj.shot_from]."
 				SP.loc = organ
 				organ.embed(SP)
-
-	return ..()
-

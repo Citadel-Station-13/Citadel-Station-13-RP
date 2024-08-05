@@ -1,8 +1,9 @@
-//! Wanna add hitpush signals? TOO BAD, DON'T. Modify the thrownthing datum these pass in!
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 silicons                             *//
 
-/// from base of /atom/proc/throw_impacted: (AM, thrownthing)
+/// from /atom/movable/proc/_throw_do_hit: (impactor, thrownthing)
 #define COMSIG_ATOM_THROW_IMPACTED				"throw_impacted"
-/// from base of /atom/movable/proc/throw_impact: (AM, thrownthing)
+/// from /atom/movable/proc/_throw_do_hit: (blocker, thrownthing)
 #define COMSIG_MOVABLE_THROW_IMPACT				"throw_impact"
 // This set of returns can be for both of the above!
 	/// cancel further actions in this hit
@@ -12,9 +13,9 @@
 	/// completely terminate throw silently immediately. Use if you're deleting the atom.
 	#define COMPONENT_THROW_HIT_TERMINATE				(1<<2)
 
-/// called on throws landing on something: (landed_on, thrownthing)
+/// from /atom/movable/proc/_throw_finalize: (landed_on, thrownthing)
 #define COMSIG_MOVABLE_THROW_LAND				"throw_land"
-/// called on something landing on us from a throw
+/// from /atom/movable/proc/_throw_finalize: (landing_movable, thrownthing)
 #define COMSIG_ATOM_THROW_LANDED				"throw_landed"
 // This set of returns can be for both of the above!
 	/// cancel further actions

@@ -100,7 +100,27 @@
 	// get rid of the passive parry component to save memory
 	DelComponent(/datum/component/passive_parry)
 
-#warn vv / chance passive_parry type hook
+/obj/item/material/proc/load_passive_parry()
+	passive_parry = resolve_passive_parry_data(passive_parry)
+	var/datum/component/passive_parry/loaded = GetComponent(/datum/component/passive_parry)
+	if(loaded)
+		loaded.parry_data = passive_parry
+
+/obj/item/material/proc/reload_passive_parry()
+	load_passive_parry()
+
+/obj/item/materialvv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	. = ..()
+	switch(var_name)
+		if(NAMEOF(src, passive_parry))
+			reload_passive_parry()
+
+/obj/item/materialvv_get_var(var_name, resolve)
+	switch(var_name)
+		if(NAMEOF(src, passive_parry))
+			if(resolve)
+				load_passive_parry()
+	return ..()
 
 // /obj/item/material/proc/check_health(var/consumed)
 // 	if(health<=0)
