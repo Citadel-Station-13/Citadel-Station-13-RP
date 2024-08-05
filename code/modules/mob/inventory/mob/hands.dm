@@ -299,6 +299,13 @@
 //* Abstraction *//
 
 /**
+ * gets if we have any hands at all
+ */
+/mob/proc/has_hands()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	return !!!get_nominal_hand_count()
+
+/**
  * get number of physical hands / arms / whatever that we have and should check for
  *
  * this is not number we can use

@@ -1,17 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
-/mob/living/get_number_of_hands()
-	return 2
-
-/mob/living/get_number_of_hands()
-	return has_hands? 2 : 0
-
-/mob/living/has_hands()
-	return has_hands
-
-#warn parse above
-
 //* Abstraction *//
 
 /mob/living/_slot_by_item(obj/item/I)

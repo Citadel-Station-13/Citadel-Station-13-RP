@@ -78,7 +78,7 @@
 
 	// now for hands
 	if(has_hands())
-		for(var/i in 1 to get_number_of_hands())
+		for(var/i in 1 to get_nominal_hand_count())
 			switch(i)
 				if(1)
 					. += "Left hand: "
@@ -136,7 +136,7 @@
 	if(!strip_interaction_prechecks(user))
 		return FALSE
 
-	if((index < 1) || (index > get_number_of_hands()))
+	if((index < 1) || (index > get_nominal_hand_count()))
 		return FALSE
 
 	var/obj/item/ours = get_held_item_of_index(index)
@@ -247,7 +247,7 @@
 			. = attempt_slot_strip(user, slot)
 		if("hand")
 			var/index = text2num(href_list["id"])
-			if(!index || (index < 1) || (index > get_number_of_hands()))
+			if(!index || (index < 1) || (index > get_nominal_hand_count()))
 				return
 			. = attempt_hand_strip(user, index)
 		// option mob

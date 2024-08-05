@@ -3,6 +3,9 @@
 
 /**
  * mob inventory data goes in here.
+ *
+ * * this does not include hands; that's handled mob-side.
+ * * this only includes inventory slots.
  */
 /datum/inventory
 	//* Basics *//

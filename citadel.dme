@@ -1930,6 +1930,7 @@
 #include "code\game\rendering\legacy\inventory\inventory.dm"
 #include "code\game\rendering\legacy\objects\waypoint_tracker.dm"
 #include "code\game\rendering\mob_huds\inventory.dm"
+#include "code\game\rendering\mob_huds\inventory_hands.dm"
 #include "code\game\rendering\mob_huds\mob_hud.dm"
 #include "code\game\rendering\parallax\parallax.dm"
 #include "code\game\rendering\parallax\parallax_holder.dm"
