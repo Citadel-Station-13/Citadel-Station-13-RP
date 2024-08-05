@@ -71,7 +71,7 @@
 
 /obj/item/cell/device/weapon/modcannon
 	charge = 4800
-	maxcharge = 4800
+	max_charge = 4800
 
 /obj/item/gun/energy/modular/nuke
 	name = "advanced modular energy gun"

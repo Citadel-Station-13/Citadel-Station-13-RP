@@ -555,10 +555,10 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/brown/full,
-/obj/item/ammo_magazine/m9mm/large,
-/obj/item/ammo_magazine/m9mm/large,
-/obj/item/ammo_magazine/m9mm/large,
-/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
+/obj/item/ammo_magazine/a9mm/large,
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "be" = (

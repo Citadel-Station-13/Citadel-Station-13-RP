@@ -262,7 +262,7 @@
 	return FALSE
 
 /obj/item/uav/proc/get_status_string()
-	return "[nickname] - [get_x(src)],[get_y(src)],[get_z(src)] - I:[health]/[initial(health)] - C:[cell ? "[cell.charge]/[cell.maxcharge]" : "Not Installed"]"
+	return "[nickname] - [get_x(src)],[get_y(src)],[get_z(src)] - I:[health]/[initial(health)] - C:[cell ? "[cell.charge]/[cell.max_charge]" : "Not Installed"]"
 
 /obj/item/uav/proc/add_master(var/mob/living/M)
 	LAZYDISTINCTADD(masters, WEAKREF(M))

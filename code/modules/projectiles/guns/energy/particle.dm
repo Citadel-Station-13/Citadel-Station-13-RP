@@ -112,7 +112,7 @@
 		sparks.set_up(2, 1, T)
 		sparks.start()
 		power_supply.charge = 0
-		power_supply.maxcharge = 1 //just to avoid div/0 runtimes
+		power_supply.max_charge = 1 //just to avoid div/0 runtimes
 		power_supply.desc += " It seems to be burnt out!"
 		desc += " The casing is covered in scorch-marks."
 		fire_delay += fire_delay // even if you swap out the cell for a good one, the gun's cluckety-clucked.

@@ -220,7 +220,7 @@
 
 	if(!cell)
 		cell = new /obj/item/cell/high(src)
-		cell.maxcharge = 15000
+		cell.max_charge = 15000
 		cell.charge = 15000
 
 	. = ..()
@@ -515,7 +515,7 @@
 		STATPANEL_DATA_LINE("")
 		if(cell)
 			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
-			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			STATPANEL_DATA_LINE("Cell Rating: [round(cell.max_charge)]") // Round just in case we somehow get crazy values
 			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
 		else
 			STATPANEL_DATA_LINE("No Cell Inserted!")
@@ -1220,22 +1220,6 @@
 	lockdown = state
 	lockcharge = state
 	update_mobility()
-
-/mob/living/silicon/robot/mode()
-	set name = "Activate Held Object"
-	set category = VERB_CATEGORY_IC
-	set src = usr
-
-	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
-		return
-
-	next_click = world.time + 1
-
-	var/obj/item/W = get_active_held_item()
-	if (W)
-		W.attack_self(src)
-
-	return
 
 /mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
 	if(!module_sprites.len)

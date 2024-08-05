@@ -305,10 +305,10 @@
 				if(prob(5))
 					new_gun.power_supply.rigged = 1
 				if(prob(10))
-					new_gun.power_supply.maxcharge = 0
+					new_gun.power_supply.max_charge = 0
 					LAZYSET(new_gun.origin_tech, TECH_ARCANE, rand(0, 1))
 				if(prob(15))
-					new_gun.power_supply.charge = rand(0, new_gun.power_supply.maxcharge)
+					new_gun.power_supply.charge = rand(0, new_gun.power_supply.max_charge)
 					LAZYSET(new_gun.origin_tech, TECH_ARCANE, 1)
 				else
 					new_gun.power_supply.charge = 0
@@ -323,7 +323,7 @@
 
 			//33% chance to be able to reload the gun with human ammunition
 			if(prob(66))
-				new_gun.caliber = "999"
+				new_gun.regex_this_caliber = null
 
 			//33% chance to fill it with a random amount of bullets
 			new_gun.max_shells = rand(1,12)

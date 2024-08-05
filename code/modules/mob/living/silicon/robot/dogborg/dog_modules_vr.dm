@@ -252,7 +252,7 @@
 				to_chat(user, "<span class='notice'>You finish off [target], and gain some charge!</span>")
 				var/mob/living/silicon/robot/R = user
 				var/obj/item/cell/C = target
-				R.cell.charge += C.maxcharge / 3
+				R.cell.charge += C.max_charge / 3
 				water.use_charge(5)
 				qdel(target)
 			return

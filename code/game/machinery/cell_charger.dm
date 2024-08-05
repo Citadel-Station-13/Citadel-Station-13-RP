@@ -37,7 +37,7 @@
 	. = ..()
 	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
-		. += SPAN_NOTICE("Current charge: [charging.charge] / [charging.maxcharge]")
+		. += SPAN_NOTICE("Current charge: [charging.charge] / [charging.max_charge]")
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(machine_stat & BROKEN)

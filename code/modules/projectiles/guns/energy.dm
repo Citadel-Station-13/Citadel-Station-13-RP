@@ -52,14 +52,14 @@
 /obj/item/gun/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
-			if(!power_supply || power_supply.charge >= power_supply.maxcharge)
+			if(!power_supply || power_supply.charge >= power_supply.max_charge)
 				return 0 // check if we actually need to recharge
 
 			charge_tick++
 			if(charge_tick < recharge_time) return 0
 			charge_tick = 0
 
-			var/rechargeamt = power_supply.maxcharge*0.2
+			var/rechargeamt = power_supply.max_charge*0.2
 
 			if(use_external_power)
 				var/obj/item/cell/external = get_external_power_supply()
@@ -189,6 +189,8 @@
 
 /obj/item/gun/energy/update_icon(ignore_inhands)
 	. = ..()
+	if((item_renderer || mob_renderer) || !render_use_legacy_by_default)
+		return // using new system
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -242,3 +244,10 @@
 	if(inducer_flags & INDUCER_NO_GUNS)
 		return
 	return ..()
+
+//* Ammo *//
+
+/obj/item/gun/energy/get_ammo_ratio()
+	if(!power_supply)
+		return 0
+	return power_supply.charge / power_supply.max_charge

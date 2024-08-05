@@ -76,7 +76,7 @@
 	show_ammo(user)
 
 	if(cell)
-		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
+		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.max_charge)*100)]%.</span>"
 	if(capacitor)
 		. += "<span class='notice'>The installed [capacitor.name] has a charge level of [round((capacitor.charge/capacitor.max_charge)*100)]%.</span>"
 

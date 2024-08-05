@@ -27,6 +27,8 @@
 
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OFFLINE_SILICON
 
+	worth_intrinsic = 150
+
 	/// reagent synthesizers in us - set to list of typepaths to init on Initialize().
 	var/list/obj/item/reagent_synth/synthesizers
 	/// synthesizers are swappable
@@ -88,6 +90,15 @@
 		component_parts -= cell
 	return ..()
 
+/obj/machinery/chemical_dispenser/worth_contents(flags)
+	. = ..()
+	if(synthesizers)
+		. += synthesizers
+	if(cartridges)
+		. += cartridges
+	if(inserted)
+		. += inserted
+
 /obj/machinery/chemical_dispenser/RefreshParts()
 	var/total_capacitor_rating = 0
 	var/total_capacitors = 0
@@ -114,7 +125,7 @@
 		return
 	if(!cell || !charging)
 		return
-	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time))
+	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.max_charge - cell.charge, delta_time))
 	if(!wanted)
 		return
 	// todo: this is shit, it doesn't update area power because our power code is primitive.
@@ -187,7 +198,7 @@
 	.["amount_max"] = dispense_amount_max
 	.["has_cell"] = !!cell
 	.["cell_charge"] = cell?.charge
-	.["cell_capacity"] = cell?.maxcharge
+	.["cell_capacity"] = cell?.max_charge
 	.["panel_open"] = panel_open
 	.["has_beaker"] = !!inserted
 	.["beaker"] = inserted?.reagents? list(
