@@ -291,7 +291,7 @@
 	set_pin_data(IC_OUTPUT, 4, contents)
 	push_data()
 
-/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/integrated_circuit/manipulation/grabber/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -858,7 +858,7 @@
 	else
 		..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -968,7 +968,7 @@
 	else
 		return ..()
 
-/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/integrated_circuit/manipulation/grenade/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

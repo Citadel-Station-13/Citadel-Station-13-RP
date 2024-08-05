@@ -811,7 +811,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-/obj/item/newspaper/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/newspaper/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

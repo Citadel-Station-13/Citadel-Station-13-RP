@@ -103,7 +103,7 @@
 		to_chat(user, "<font color=#4F49AF>You detach the string from the coin.</font>")
 	else ..()
 
-/obj/item/coin/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/coin/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

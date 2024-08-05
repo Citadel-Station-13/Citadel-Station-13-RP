@@ -117,7 +117,7 @@
 	if(I)
 		icon = I
 
-/obj/item/card_fluff/attack_self()
+/obj/item/card_fluff/attack_self(mob/user, datum/event_args/actor/e_args)
 
 	var/choice = tgui_input_list(usr, "What element would you like to customize?", "Customize Card", list("Band","Stamp","Reset"))
 	if(!choice) return

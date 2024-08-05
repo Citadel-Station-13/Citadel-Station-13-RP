@@ -9,7 +9,7 @@
 
 	var/bag_type = /obj/structure/closet/body_bag
 
-/obj/item/bodybag/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/bodybag/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

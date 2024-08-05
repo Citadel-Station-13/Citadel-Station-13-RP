@@ -642,7 +642,7 @@
 	name = "adjustable tracer bolts"
 	desc = "Causes kinetic accelerator bolts to have an adjustable-colored tracer trail and explosion. Use in-hand to change color."
 
-/obj/item/ka_modkit/tracer/adjustable/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/ka_modkit/tracer/adjustable/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

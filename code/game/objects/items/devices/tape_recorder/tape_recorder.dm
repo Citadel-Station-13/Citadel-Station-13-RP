@@ -441,7 +441,7 @@
 /obj/item/tape_recorder/proc/print_cooldown()
 	TIMER_COOLDOWN_START(src, CD_INDEX_TAPE_PRINT, 30 SECONDS)
 
-/obj/item/tape_recorder/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/tape_recorder/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

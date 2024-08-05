@@ -228,7 +228,7 @@
 	icon = 'icons/obj/apiary_bees_etc.dmi'
 	icon_state = "apiary"
 
-/obj/item/beehive_assembly/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/beehive_assembly/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

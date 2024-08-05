@@ -80,7 +80,7 @@
 	var/datum/integrated_io/O = outputs[1]
 	O.push_data()
 
-/obj/item/integrated_circuit/memory/constant/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/integrated_circuit/memory/constant/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

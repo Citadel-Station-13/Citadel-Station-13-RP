@@ -151,7 +151,7 @@
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
 
-/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/weldingtool/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -746,7 +746,7 @@
 	item_state = welding ? "crystal_tool_lit"  : "crystal_tool"
 	update_worn_icon()
 
-/obj/item/weldingtool/electric/crystal/attack_self(var/mob/living/carbon/human/user)
+/obj/item/weldingtool/electric/crystal/attack_self(mob/user, datum/event_args/actor/e_args)
 	if(user.species.name == SPECIES_ADHERENT)
 		if(user.nutrition >= 40)
 			setWelding(!welding, user)

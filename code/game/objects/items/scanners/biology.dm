@@ -31,7 +31,7 @@
 	user.visible_message("\The [src] spits out a piece of paper.")
 	return
 
-/obj/item/biology_analyzer/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/biology_analyzer/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

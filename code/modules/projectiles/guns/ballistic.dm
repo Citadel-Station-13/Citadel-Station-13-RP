@@ -264,7 +264,7 @@
 				set_weight_class(WEIGHT_CLASS_SMALL)
 				update_icon()
 
-/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gun/ballistic/attack_self(mob/user, datum/event_args/actor/e_args)
 
 	if(firemodes.len > 1)
 		switch_firemodes(user)

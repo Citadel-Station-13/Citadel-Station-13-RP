@@ -868,7 +868,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/attack_self(mob/user)
+/obj/item/proc/attack_self(mob/user, datum/event_args/actor/e_args)
 	// SHOULD_CALL_PARENT(TRUE)
 	// attack_self isn't really part of the item attack chain.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)

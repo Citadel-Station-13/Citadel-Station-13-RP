@@ -22,7 +22,7 @@
 	unequip_sound = 'sound/items/drop/hat.ogg'
 	pickup_sound = 'sound/items/pickup/hat.ogg'
 
-/obj/item/clothing/head/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/clothing/head/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

@@ -75,7 +75,7 @@
 		if(!bcell)
 			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
-/obj/item/melee/energy/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/melee/energy/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -485,7 +485,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/energy/blade/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/melee/energy/blade/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -610,7 +610,7 @@
 /obj/item/melee/energy/hfmachete/update_icon()
 	icon_state = "[base_state][active]"
 
-/obj/item/melee/energy/hfmachete/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/melee/energy/hfmachete/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

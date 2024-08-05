@@ -123,7 +123,7 @@
 	return
 
 
-/obj/item/flamethrower/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/flamethrower/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

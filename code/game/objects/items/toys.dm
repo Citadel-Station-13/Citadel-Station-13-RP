@@ -272,7 +272,7 @@
 	var/colorable = TRUE
 	var/rainbow = FALSE
 
-/obj/item/toy/sword/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/sword/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -486,7 +486,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS | SLOT_HOLSTER
 
-/obj/item/toy/bosunwhistle/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/bosunwhistle/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -504,7 +504,7 @@
 	var/cooldown = 0
 
 //all credit to skasi for toy mech fun ideas
-/obj/item/toy/prize/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/prize/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -591,7 +591,7 @@
 	. = ..()
 	desc = "A \"Space Life\" brand [name]"
 
-/obj/item/toy/figure/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/figure/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -856,7 +856,7 @@
 	playsound(src, bitesound, 20, 1)	// Play bite sound in local area
 
 // Attack self
-/obj/item/toy/plushie/carp/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/plushie/carp/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -968,7 +968,7 @@
 	var/last_message = 0
 	var/pokephrase = "Uww!"
 
-/obj/item/toy/plushie/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/plushie/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1434,7 +1434,7 @@
 	var/cooldown = 0
 	var/list/possible_answers = list("Definitely.", "All signs point to yes.", "Most likely.", "Yes.", "Ask again later.", "Better not tell you now.", "Future unclear.", "Maybe.", "Doubtful.", "No.", "Don't count on it.", "Never.")
 
-/obj/item/toy/eight_ball/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/eight_ball/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1509,7 +1509,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 /*
-/obj/item/toy/AI/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/AI/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1531,7 +1531,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/owl/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/owl/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1552,7 +1552,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/griffin/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/griffin/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1573,7 +1573,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/cowgirlprize/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/cowgirlprize/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1594,7 +1594,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/snakeoilprize/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/toy/snakeoilprize/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -1641,7 +1641,7 @@
 	max_combined_volume = STORAGE_VOLUME_BOX
 	var/last_message = 0
 
-/obj/item/storage/daki/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/storage/daki/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

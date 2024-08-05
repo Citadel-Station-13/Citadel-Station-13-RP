@@ -13,5 +13,5 @@
 
 // todo: these two shouldn't be here
 #define COMSIG_ITEM_ATTACK "item_attack"
-/// From base of obj/item/attack_self(): (/mob)
+/// From base of obj/item/attack_self(mob/user, datum/event_args/actor/e_args)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"

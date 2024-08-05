@@ -39,7 +39,7 @@
 	user.visible_message("<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
 
-/obj/item/beartrap/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/beartrap/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return

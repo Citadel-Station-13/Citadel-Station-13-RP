@@ -5,7 +5,7 @@
 	icon_state = "gunbox"
 	worth_intrinsic = 350
 
-/obj/item/gunbox/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["NT Mk58 (.45)"] = list(/obj/item/gun/ballistic/sec, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
 	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
@@ -26,7 +26,7 @@
 	icon_state = "gunbox"
 	worth_intrinsic = 450
 
-/obj/item/gunbox/lethal/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/lethal/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/ballistic/colt, /obj/item/ammo_magazine/m45, /obj/item/ammo_magazine/m45)
 	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45, /obj/item/ammo_magazine/s45)
@@ -48,7 +48,7 @@
 	icon_state = "gunbox"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/gunbox/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options[".45 Pistol"] = list(/obj/item/gun/ballistic/colt/detective, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/rubber)
 	options[".45 Revolver"] = list(/obj/item/gun/ballistic/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
@@ -69,7 +69,7 @@
 	icon_state = "gunbox"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/gunbox/marksman/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/marksman/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["Marksman Energy Rifle"] = list(/obj/item/gun/energy/sniperrifle/locked)
 	options["M1A Garand"] = list(/obj/item/gun/ballistic/garand/sniper, /obj/item/storage/belt/security/tactical/bandolier, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter, /obj/item/ammo_magazine/m762garand/sniperhunter) // 7 clips, 56 rounds
@@ -89,7 +89,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "donkbox"
 
-/obj/item/gunbox/donksoft/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/donksoft/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["Classic DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
 	options["Blue DONKsoft Pistol"] = list(/obj/item/gun/ballistic/pistol/foam/blue, /obj/item/ammo_magazine/mfoam/pistol, /obj/item/ammo_magazine/mfoam/pistol)
@@ -109,7 +109,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "donkbox2"
 
-/obj/item/gunbox/donksoft/shotgun/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/donksoft/shotgun/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["Classic DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
 	options["Blue DONKsoft Shotgun"] = list(/obj/item/gun/ballistic/shotgun/pump/foam/blue, /obj/item/storage/box/foamdart, /obj/item/storage/box/foamdart)
@@ -128,7 +128,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "donkbox3"
 
-/obj/item/gunbox/donksoft/smg/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/donksoft/smg/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["Classic DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
 	options["Blue DONKsoft SMG"] = list(/obj/item/gun/ballistic/automatic/advanced_smg/foam/blue, /obj/item/ammo_magazine/mfoam/smg, /obj/item/ammo_magazine/mfoam/smg)
@@ -147,7 +147,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
 
-/obj/item/gunbox/carrier/blueshield/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/carrier/blueshield/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["\improper Black Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield)
 	options["\improper Black-Short Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt)
@@ -167,7 +167,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "gunbox"
 
-/obj/item/gunbox/armor/security/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/gunbox/armor/security/attack_self(mob/user, datum/event_args/actor/e_args)
 	var/list/options = list()
 	options["\improper Flat Vest"] = list(/obj/item/clothing/suit/armor/vest)
 	options["\improper Security Vest"] = list(/obj/item/clothing/suit/armor/vest/alt)

@@ -129,7 +129,7 @@
 	var/nameset = 0
 	var/tag_x
 
-/obj/item/smallDelivery/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/smallDelivery/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
@@ -346,7 +346,7 @@
 
 	return data
 
-/obj/item/destTagger/attack_self(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/item/destTagger/attack_self(mob/user, datum/event_args/actor/e_args)
 	. = ..()
 	if(.)
 		return
