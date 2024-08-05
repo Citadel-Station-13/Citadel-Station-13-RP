@@ -19,6 +19,7 @@
 	load_method = MAGAZINE //Nyeh heh hehhh.
 	magazine_type = null
 	allowed_magazines = list(/obj/item/ammo_magazine/microbattery)
+	caliber = /datum/ammo_caliber/microbattery
 	handle_casings = HOLD_CASINGS //Don't eject batteries!
 	recoil = 0
 	var/charge_left = 0

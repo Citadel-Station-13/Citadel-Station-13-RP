@@ -6,7 +6,7 @@
 	icon = 'icons/content/factions/corporations/gorlex/items/guns/wild_hunt.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	regex_this_caliber = /datum/ammo_caliber/a12_7mm
+	caliber = /datum/ammo_caliber/a12_7mm
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a12_7mm/wild_hunt
 	recoil = 1

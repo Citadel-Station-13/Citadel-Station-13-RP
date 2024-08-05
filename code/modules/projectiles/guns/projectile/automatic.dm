@@ -20,7 +20,7 @@
 	icon_state = "advanced_smg"
 	w_class = WEIGHT_CLASS_NORMAL
 	load_method = MAGAZINE
-	regex_this_caliber = /datum/ammo_caliber/a9mm
+	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	magazine_type = null // R&D builds this. Starts unloaded.
@@ -41,7 +41,7 @@
 	item_state = "c20r"
 	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a10mm
+	caliber = /datum/ammo_caliber/a10mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	slot_flags = SLOT_BELT|SLOT_BACK
 	load_method = MAGAZINE
@@ -69,7 +69,7 @@
 	item_state = null
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a5_56mm
+	caliber = /datum/ammo_caliber/a5_56mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -103,7 +103,7 @@
 	icon_state = "wt550"
 	item_state = "wt550"
 	w_class = WEIGHT_CLASS_NORMAL
-	regex_this_caliber = /datum/ammo_caliber/a9mm
+	caliber = /datum/ammo_caliber/a9mm
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
 	ammo_type = "/obj/item/ammo_casing/a9mmr"
@@ -131,7 +131,7 @@
 	wielded_item_state = "z8carbine-wielded"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a7_62mm
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 3)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -207,7 +207,7 @@
 	damage_force = 10
 	slot_flags = 0
 	max_shells = 50
-	regex_this_caliber = /datum/ammo_caliber/a5_56mm
+	caliber = /datum/ammo_caliber/a5_56mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -293,7 +293,7 @@
 	icon_state = "mg42closed50"
 	item_state = "mg42closed"
 	max_shells = 50
-	regex_this_caliber = /datum/ammo_caliber/a7_62mm
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	magazine_type = /obj/item/ammo_magazine/a7_62mm/mg42
 	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/mg42)
@@ -310,7 +310,7 @@
 	icon_state = "M60closed75"
 	item_state = "M60closed"
 	max_shells = 75
-	regex_this_caliber = /datum/ammo_caliber/a7_62mm
+	caliber = /datum/ammo_caliber/a7_62mm
 	magazine_type = /obj/item/ammo_magazine/a7_62mm/m60
 	allowed_magazines = list(/obj/item/ammo_magazine/a7_62mm/m60)
 	projectile_type = /obj/projectile/bullet/rifle/a762
@@ -334,7 +334,7 @@
 	item_state = "ashot"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a12g
+	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -367,7 +367,7 @@
 	icon_state = "mini-uzi"
 	w_class = WEIGHT_CLASS_NORMAL
 	load_method = MAGAZINE
-	regex_this_caliber = /datum/ammo_caliber/a45
+	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	magazine_type = /obj/item/ammo_magazine/a45/uzi
 	allowed_magazines = list(/obj/item/ammo_magazine/a45/uzi)
@@ -418,7 +418,7 @@
 	icon_state = "p90smg"
 	item_state = "p90"
 	w_class = WEIGHT_CLASS_NORMAL
-	regex_this_caliber = /datum/ammo_caliber/a5_7mm
+	caliber = /datum/ammo_caliber/a5_7mm
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
@@ -452,7 +452,7 @@
 	desc = "This weapon was made famous by gangsters in the 20th century. Cybersun Industries is currently reproducing these for a target market of historic gun collectors and classy criminals. Uses .45 rounds."
 	icon_state = "tommygun"
 	w_class = WEIGHT_CLASS_NORMAL
-	regex_this_caliber = /datum/ammo_caliber/a45
+	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	load_method = MAGAZINE
@@ -476,7 +476,7 @@
 	item_state = "bullpup"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a7_62mm
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -507,7 +507,7 @@
 	item_state = "fal"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a7_62mm
+	caliber = /datum/ammo_caliber/a7_62mm
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -536,7 +536,7 @@
 	fire_anim = "automat_fire"
 	w_class = WEIGHT_CLASS_BULKY
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a7_62mm
+	caliber = /datum/ammo_caliber/a7_62mm
 	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3) //A real work around to a automatic rifle.
 	slot_flags = SLOT_BACK
@@ -569,7 +569,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/a12g
+	caliber = /datum/ammo_caliber/a12g
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -601,7 +601,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
 	damage_force = 10
-	regex_this_caliber = /datum/ammo_caliber/biomatter
+	caliber = /datum/ammo_caliber/biomatter
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
@@ -631,7 +631,7 @@
 	icon_state = "wt274"
 	item_state = "gun"
 	load_method = MAGAZINE
-	regex_this_caliber = /datum/ammo_caliber/a45
+	caliber = /datum/ammo_caliber/a45
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 	magazine_type = /obj/item/ammo_magazine/a45/wt274
 	allowed_magazines = list(/obj/item/ammo_magazine/a45/wt274)
@@ -656,7 +656,7 @@
 	icon_state = "combatsmg"
 	item_state = "combatsmg"
 	w_class = WEIGHT_CLASS_NORMAL
-	regex_this_caliber = /datum/ammo_caliber/a5_7mm
+	caliber = /datum/ammo_caliber/a5_7mm
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
@@ -681,7 +681,7 @@
 	description_fluff = "The HI-GP mk 8 'Ballistae' is a bulky weapon designed to fire an obscenely robust .75 caliber gyrojet round with an explosive payload. The original design was sourced from Old Earth speculative documentation, and developed to test its efficacy. Although the weapon itself is undeniably powerful, its logistical demands, the recoil of the three-stage ammunition system, and its hefty size make it untenable on the modern battlefield."
 	icon_state = "bolter"
 	item_state = "bolter"
-	regex_this_caliber = /datum/ammo_caliber/a75
+	caliber = /datum/ammo_caliber/a75
 	origin_tech = list(TECH_COMBAT = 5, TECH_ILLEGAL = 2)
 	load_method = MAGAZINE
 	fire_sound = 'sound/weapons/gunshot/gunshot_bolter.ogg'
@@ -726,7 +726,7 @@
 	desc = "The existence of this DONKsoft toy has instigated allegations of corporate espionage from Nanotrasen."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_smg"
-	regex_this_caliber = /datum/ammo_caliber/foam
+	caliber = /datum/ammo_caliber/foam
 	magazine_type = /obj/item/ammo_magazine/foam/smg
 	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
 	fire_sound = 'sound/items/syringeproj.ogg'
@@ -753,7 +753,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_c20"
 	damage_force = 5
-	regex_this_caliber = /datum/ammo_caliber/foam
+	caliber = /datum/ammo_caliber/foam
 	magazine_type = /obj/item/ammo_magazine/foam/smg
 	allowed_magazines = list(/obj/item/ammo_magazine/foam/smg)
 	projectile_type = /obj/projectile/bullet/reusable/foam
@@ -778,7 +778,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "toy_lmgclosed100"
 	damage_force = 5
-	regex_this_caliber = /datum/ammo_caliber/foam
+	caliber = /datum/ammo_caliber/foam
 	magazine_type = /obj/item/ammo_magazine/foam/lmg
 	allowed_magazines = list(/obj/item/ammo_magazine/foam/lmg)
 	projectile_type = /obj/projectile/bullet/reusable/foam

@@ -7,7 +7,7 @@
 	name = "foam dart"
 	desc = "A soft projectile made out of orange foam with a blue plastic tip."
 	projectile_type = /obj/projectile/bullet/reusable/foam
-	regex_this_caliber = /datum/ammo_caliber/foam
+	caliber = /datum/ammo_caliber/foam
 	icon = 'icons/modules/projectiles/casings/foam.dmi'
 	icon_state = "dart"
 	throw_force = 0

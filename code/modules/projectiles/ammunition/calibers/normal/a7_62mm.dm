@@ -1,9 +1,11 @@
 /datum/ammo_caliber/a7_62mm
 	caliber = "7.62mm"
 
+//* Casings *//
+
 /obj/item/ammo_casing/a7_62mm
 	desc = "A 7.62mm bullet casing."
-	regex_this_caliber = /datum/ammo_caliber/a7_62mm
+	caliber = /datum/ammo_caliber/a7_62mm
 	icon = 'icons/modules/projectiles/casings/slim.dmi'
 	icon_state = "large"
 	projectile_type = /obj/projectile/bullet/rifle/a762
@@ -58,6 +60,8 @@
 	projectile_type = /obj/projectile/bullet/rifle/a762/silver
 	materials_base = list(MAT_STEEL = 300, MAT_SILVER = 150)
 
+//* Magazines *//
+
 /obj/item/ammo_magazine/a7_62mm
 	name = "magazine (7.62mm)"
 	icon = 'icons/modules/projectiles/magazines/old_magazine_stick.dmi'
@@ -68,6 +72,7 @@
 
 	materials_base = list(MAT_STEEL = 1000)
 	ammo_preload = /obj/item/ammo_casing/a7_62mm
+	ammo_caliber = /datum/ammo_caliber/a7_62mm
 	ammo_max = 10
 
 /obj/item/ammo_magazine/a7_62mm/ap
@@ -79,10 +84,10 @@
 	ammo_current = 0
 
 /obj/item/ammo_magazine/a7_62mm/garand
-	name = "garand clip (7.62mm)" // The clip goes into the magazine, hence the name. I'm very sure this is correct.
+	name = "garand magazine (7.62mm)" // The clip goes into the magazine, hence the name. I'm very sure this is correct.
 	icon = 'icons/modules/projectiles/magazines/old_magazine_clip.dmi'
-	icon_state = "gerand-8"
-	base_icon_state = "gerand"
+	icon_state = "garand-8"
+	base_icon_state = "garand"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 8
 
