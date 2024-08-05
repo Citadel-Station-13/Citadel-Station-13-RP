@@ -170,7 +170,7 @@
 			ammo_magazine = AM
 			user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
 			playsound(src.loc, mag_insert_sound, 50, 1)
-		else if(AM.magazine_type & MAGAZINE_TYPE_SPEEDLOADER)
+		else if(AM.magazine_type & (MAGAZINE_TYPE_SPEEDLOADER | MAGAZINE_TYPE_CLIP))
 			if(loaded.len >= max_shells)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return

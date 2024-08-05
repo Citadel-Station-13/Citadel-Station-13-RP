@@ -86,8 +86,8 @@
 /obj/item/ammo_magazine/a7_62mm/garand
 	name = "garand magazine (7.62mm)" // The clip goes into the magazine, hence the name. I'm very sure this is correct.
 	icon = 'icons/modules/projectiles/magazines/old_magazine_clip.dmi'
-	icon_state = "gerand-8"
-	base_icon_state = "gerand"
+	icon_state = "garand-8"
+	base_icon_state = "garand"
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 8
 
