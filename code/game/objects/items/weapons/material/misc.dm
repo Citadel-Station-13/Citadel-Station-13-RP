@@ -35,6 +35,14 @@
 	icon_state = "hatchet_bone"
 	material_parts = /datum/material/bone
 
+/obj/item/material/knife/machete/hatchet/bronze
+	name = "bronze hatchet"
+	desc = "A bronze axe head on a bone handle. You can't make an axe much simpler."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "hatchet_bronze"
+	item_state = "hatchet_bronze"
+	material_parts = /datum/material/bronze
+
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
 	desc = "Though honor duels have fallen out of fashion in this new era, that doesn't stop some Unathi from carrying these wooden duelling blades as a status symbol. Or Vox from using these for their intended purpose in 'quill duels'."
