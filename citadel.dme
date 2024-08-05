@@ -781,6 +781,7 @@
 #include "code\datums\design\designs\ammo\shotgun.dm"
 #include "code\datums\design\designs\ammo\smg.dm"
 #include "code\datums\design\designs\devices\assemblies.dm"
+#include "code\datums\design\designs\devices\cells.dm"
 #include "code\datums\design\designs\devices\devices.dm"
 #include "code\datums\design\designs\machines\assemblies.dm"
 #include "code\datums\design\designs\machines\circuits.dm"

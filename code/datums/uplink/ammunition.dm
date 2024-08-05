@@ -126,7 +126,7 @@
 
 /datum/uplink_item/item/ammo/cell
 	name = "weapon cell"
-	path = /obj/item/cell/device/weapon
+	path = /obj/item/cell/basic/weapon
 
 /datum/uplink_item/item/ammo/highcell
 	name = "High capacity cell"
