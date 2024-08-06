@@ -94,7 +94,7 @@
 	if(announce == "Cancel")
 		return
 	else if(announce == "Yes")
-		to_chat(world, "<span class='boldnotice'>[user?.client?.holder?.fakekey? "Administrator" : user.key] applied preset [input] to [src].</span>")
+		to_chat(world, "<span class='boldnotice'>[user?.client?.is_under_stealthmin()? "Administrator" : user.key] applied preset [input] to [src].</span>")
 	message_admins(logstr)
 	log_admin(logstr)
 	if(input == initial_preset_name)

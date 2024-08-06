@@ -77,7 +77,7 @@
 					SwitchState()
 			else
 				SwitchState()
-	else if(istype(user, /obj/mecha))
+	else if(istype(user, /obj/vehicle/sealed/mecha))
 		SwitchState()
 
 /obj/structure/simple_door/proc/SwitchState()

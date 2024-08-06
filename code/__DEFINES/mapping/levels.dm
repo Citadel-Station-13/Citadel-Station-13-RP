@@ -42,5 +42,12 @@
 #define ZTRAIT_FACILITY_SAFETY "facility_safety"
 /// xenoarcheology shouldn't generate here
 #define ZTRAIT_XENOARCH_EXEMPT "xenoarch_exempt"
+/// block all wallhacks that aren't reworked for citrp standards
+///
+/// * mesons
+/// * materials
+/// * thermals
+/// * sonars
+#define ZTRAIT_BLOCK_LEGACY_WALLHACKS "block-legacy-wallhack"
 
 #define ZTRAIT_LEGACY_HOLOMAP_SMOOSH "_holomap_smoosh"

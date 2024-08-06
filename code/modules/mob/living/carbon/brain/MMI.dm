@@ -28,7 +28,7 @@
 	/// The current brain organ.
 	var/obj/item/organ/internal/brain/brainobj = null
 	/// This does not appear to be used outside of reference in mecha.dm.
-	var/obj/mecha = null
+	var/obj/vehicle/sealed/mecha = null
 	/// Let's give it a radio.
 	var/obj/item/radio/headset/mmi_radio/radio = null
 

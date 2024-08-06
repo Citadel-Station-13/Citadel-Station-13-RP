@@ -9,6 +9,7 @@
 	throw_speed = 4
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
+	worth_intrinsic = 45
 
 	var/times_used = 0 //Number of times it's been used.
 	var/broken = FALSE     //Is the flash burnt out?
@@ -242,7 +243,7 @@
 	else
 		user.visible_message("<span class='notice'>[user] fails to blind [M] with the flash!</span>")
 
-/obj/item/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
+/obj/item/flash/attack_self(mob/user)
 	if(!user || !clown_check(user))
 		return
 
@@ -311,7 +312,7 @@
 		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
 		update_icon()
 
-/obj/item/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
+/obj/item/flash/synthetic/attack_self(mob/user)
 	..()
 	if(!broken)
 		broken = 1

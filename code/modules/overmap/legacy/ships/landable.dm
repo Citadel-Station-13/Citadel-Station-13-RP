@@ -3,6 +3,10 @@
 // Multiz shuttles currently not supported. Non-autodock shuttles currently not supported.
 
 /obj/overmap/entity/visitable/ship/landable
+	bound_width = 12
+	bound_height = 12
+	bound_x = 10
+	bound_y = 10
 	icon_state = "shuttle"
 	moving_state = "shuttle_moving"
 	/// our shuttle

@@ -11798,7 +11798,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/structure/flora/pottedplant/large,
+/obj/structure/ladder,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aJD" = (
@@ -12150,8 +12150,8 @@
 	name = "gun safe";
 	req_access = list(1)
 	},
-/obj/item/ammo_magazine/s357,
-/obj/item/ammo_magazine/s357,
+/obj/item/ammo_magazine/a357/speedloader,
+/obj/item/ammo_magazine/a357/speedloader,
 /obj/item/gun/ballistic/revolver/mateba,
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/outline,
@@ -15585,8 +15585,8 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/effect/floor_decal/industrial/outline,
 /obj/item/gun/ballistic/SVD,
-/obj/item/ammo_magazine/m762svd,
-/obj/item/ammo_magazine/m762svd,
+/obj/item/ammo_magazine/a7_62mm/svd,
+/obj/item/ammo_magazine/a7_62mm/svd,
 /obj/item/clothing/suit/space/void/merc/soviet,
 /obj/item/clothing/head/helmet/space/void/merc/soviet,
 /obj/machinery/camera/motion/security{

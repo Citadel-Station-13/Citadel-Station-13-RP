@@ -60,6 +60,11 @@
  */
 #define SPACE_KEY "space"
 
+/**
+ * This is a set of turfs, basically.
+ *
+ * todo: more documentation; which way does this sweep? is x/y/z bottom left?
+ */
 /datum/dmm_gridset
 	var/xcrd
 	var/ycrd
@@ -85,22 +90,40 @@
 	var/list/model_cache
 	/// did we have no changeturf set when we made the model cache?
 	var/model_cache_is_no_changeturf
-	/// parse successful?
-	var/tmp/parsed = FALSE
 	/// parsed width - this is subject to cropping!
 	var/tmp/width
 	/// parsed height - this is subject to cropping!
 	var/tmp/height
 	/// parsed bounds - non-offset
 	var/tmp/list/bounds
-	/// last loaded bounds
-	var/tmp/list/last_loaded_bounds
 	/// template we belong to, if any - makes average case dels faster
 	var/tmp/datum/map_template/template_host
 
 	#ifdef TESTING
 	var/turfsSkipped = 0
 	#endif
+
+	//* Loading *//
+	/// last loaded bounds
+	var/tmp/list/last_loaded_bounds
+
+	//* Parsing *//
+	/// parse successful?
+	var/tmp/parsed = FALSE
+	/// if exists, parse errors are inserted here
+	///
+	/// * parsing doesn't just happen in pre-load; build_cache() is only triggered during load.
+	///
+	/// todo: implement this and dmm_report so we can have reports of map validity.
+	var/list/parse_error_out
+	/// if exists, parse errors are limited to this amount to prevent OOMs
+	var/parse_error_limit = 100
+	/// build_cache: current model key being parsed
+	///
+	/// * this is here for context purposes so we know where we're at when an error occurs
+	var/parsing_model_key
+
+	//* Parsing - Regex *//
 
 	// the actual regexes used to parse maps
 	// you should probably not touch these
@@ -109,8 +132,8 @@
 	var/static/regex/dmmRegex = new(@'"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}', "g")
 	var/static/regex/trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
 	var/static/regex/trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
-	/// used to parse out \[, \] to their unescaped forms
-	var/static/regex/textConstantProcessing = new(@'\\([\[\]])', "g")
+	/// used to parse out \[, \], \\ to their unescaped forms
+	var/static/regex/text_constant_regex = new(@{"\\([\[\]\\])"}, "g")
 
 /**
  * creates and parses a map
@@ -417,6 +440,8 @@
 	var/list/grid_models = src.grid_models
 	for(var/model_key in grid_models)
 		var/model = grid_models[model_key]
+		// record position for logging errors
+		parsing_model_key = model_key
 		var/list/members = list() //will contain all members (paths) in model (in our example : /turf/unsimulated/wall and /area/mine/explored)
 		var/list/members_attributes = list() //will contain lists filled with corresponding variables, if any (in our example : list(icon_state = "rock") and list())
 
@@ -450,7 +475,7 @@
 
 			if(variables_start)//if there's any variable
 				full_def = copytext(full_def, variables_start + length(full_def[variables_start]), -length(copytext_char(full_def, -1))) //removing the last '}'
-				fields = readlist(full_def, ";")
+				fields = parse_list(full_def, ";")
 				if(fields.len)
 					if(!trim(fields[fields.len]))
 						--fields.len
@@ -594,6 +619,112 @@
 	set waitfor = FALSE
 	. = new path(where)
 
+//* Parsing - Internal *//
+
+/**
+ * parses the value of an attribute
+ *
+ * known limitations:
+ * * text doesn't support \" and likely not most byond "text macros"
+ * * nexted list support is not tested
+ * * anonymous types: /obj{name="foo"}
+ * * new(), newlist(), icon(), matrix(), sound()
+ */
+/datum/dmm_parsed/proc/parse_constant(text)
+	// number
+	var/num = text2num(text)
+	if(isnum(num))
+		return num
+
+	// null
+	if(text == "null")
+		return null
+
+	// typepath
+	if(text[1] == "/")
+		var/path = text2path(text)
+		if(path)
+			return path
+		else
+			if(parse_error_out && length(parse_error_out) < parse_error_limit)
+				parse_error_out += "[parsing_model_key || "null"]: bad path \"[text]\""
+			return null
+
+	// string
+	if(text[1] == "\"")
+		// pray that the last character is actually a ""
+		return text_constant_regex.Replace(copytext(text, 2, -1), "$1")
+
+	// list
+	if(copytext(text, 1, 6) == "list(")//6 == length("list(") + 1
+		return parse_list(copytext(text, 6, -1))
+
+	// file
+	if(text[1] == "'")
+		var/filepath = copytext_char(text, 2, -1)
+		if(!filepath_is_safe(filepath, global.safe_content_file_access_roots))
+			if(parse_error_out && length(parse_error_out) < parse_error_limit)
+				parse_error_out += "[parsing_model_key || "null"]: unsafe filepath \"[filepath]\""
+			var/static/no_admin_spam = 0
+			if(world.time > no_admin_spam + 2 SECONDS)
+				// be extra scary because people need to not be stupid with paths!
+				message_admins("[src] ([html_encode(original_path)]) attempted to parse unsafe filepath \"[html_encode(filepath)]\"; please consult with a coder for why this happened as this might be a security issue.")
+				no_admin_spam = world.time
+			return null
+		return file(filepath)
+
+	// fallback: string
+	if(parse_error_out && length(parse_error_out) < parse_error_limit)
+		parse_error_out += "[parsing_model_key || "null"]: unrecognized value [text]"
+	return text_constant_regex.Replace(text, "$1")
+
+/**
+ * Used to parse a text-encoded list of variables into a real list.
+ *
+ * * used to grab the variable list from a model
+ * * used to build a "list()" definition inside a variable
+ *
+ * todo: comment this proc more, it probably doesn't work right with nested ;'s and "'s.
+ *
+ * @params
+ * * text - the text-encoded list
+ * * delimiter - the delimiter between list elements. for a list() def it's `,`. for a model variable list it's `;`.
+ *
+ * @return parsed list()
+ */
+/datum/dmm_parsed/proc/parse_list(text, delimiter = ",")
+	RETURN_TYPE(/list)
+	. = list()
+	if (!text)
+		return
+
+	// current position
+	var/position
+	// last position
+	var/last_position = 1
+
+	while(position != 0)
+		// find next delimiter that is not within  "..."
+		position = find_next_delimiter_position(text, last_position, delimiter)
+
+		// check if this is a simple variable (as in list(var1, var2)) or an associative one (as in list(var1="foo",var2=7))
+		var/equal_position = findtext(text,"=",last_position, position)
+
+		var/trim_left = trim_text(copytext(text, last_position, (equal_position ? equal_position : position)))
+		var/left_constant = delimiter == ";" ? trim_left : parse_constant(trim_left)
+		if(position)
+			last_position = position + length(text[position])
+
+		if(equal_position && !isnum(left_constant))
+			// Associative var, so do the association.
+			// Note that numbers cannot be keys - the RHS is dropped if so.
+			var/trim_right = trim_text(copytext(text, equal_position + length(text[equal_position]), position))
+			var/right_constant = parse_constant(trim_right)
+			.[left_constant] = right_constant
+
+		else  // simple var
+			. += list(left_constant)
+
 /**
  * i don't know what this does but the old documentation says:
  *
@@ -618,83 +749,16 @@
 
 	return next_delimiter
 
-//build a list from variables in text form (e.g {var1="derp"; var2; var3=7} => list(var1="derp", var2, var3=7))
-//return the filled list
-// todo: parse / comment ths more
-/datum/dmm_parsed/proc/readlist(text as text, delimiter=",")
-	. = list()
-	if (!text)
-		return
-
-	var/position
-	var/old_position = 1
-
-	while(position != 0)
-		// find next delimiter that is not within  "..."
-		position = find_next_delimiter_position(text,old_position,delimiter)
-
-		// check if this is a simple variable (as in list(var1, var2)) or an associative one (as in list(var1="foo",var2=7))
-		var/equal_position = findtext(text,"=",old_position, position)
-
-		var/trim_left = trim_text(copytext(text,old_position,(equal_position ? equal_position : position)))
-		var/left_constant = delimiter == ";" ? trim_left : parse_constant(trim_left)
-		if(position)
-			old_position = position + length(text[position])
-
-		if(equal_position && !isnum(left_constant))
-			// Associative var, so do the association.
-			// Note that numbers cannot be keys - the RHS is dropped if so.
-			var/trim_right = trim_text(copytext(text, equal_position + length(text[equal_position]), position))
-			var/right_constant = parse_constant(trim_right)
-			.[left_constant] = right_constant
-
-		else  // simple var
-			. += list(left_constant)
-
-/**
- * parses the value of an attribute
- *
- * known limitations:
- * * text doesn't support \" and likely not most byond "text macros"
- * * lists don't support nested lists
- * * see: not parsed
- */
-/datum/dmm_parsed/proc/parse_constant(text)
-	// number
-	var/num = text2num(text)
-	if(isnum(num))
-		return num
-
-	// string
-	if(text[1] == "\"")
-		var/str = copytext(text, length(text[1]) + 1, findtext(text, "\"", length(text[1]) + 1))
-		return textConstantProcessing.Replace(str, "$1")
-
-	// list
-	if(copytext(text, 1, 6) == "list(")//6 == length("list(") + 1
-		return readlist(copytext(text, 6, -1))
-
-	// typepath
-	var/path = text2path(text)
-	if(ispath(path))
-		return path
-
-	// file
-	if(text[1] == "'")
-		return file(copytext_char(text, 2, -1))
-
-	// null
-	if(text == "null")
-		return null
-
-	// not parsed:
-	// - pops: /obj{name="foo"}
-	// - new(), newlist(), icon(), matrix(), sound()
-
-	// fallback: string
-	return text
+//* VV hooks / Security *//
 
 /datum/dmm_parsed/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	if(var_name == NAMEOF(src, dmmRegex) || var_name == NAMEOF(src, trimQuotesRegex) || var_name == NAMEOF(src, trimRegex))
-		return FALSE
+	switch(var_name)
+		if(NAMEOF(src, dmmRegex))
+			return FALSE
+		if(NAMEOF(src, trimQuotesRegex))
+			return FALSE
+		if(NAMEOF(src, trimRegex))
+			return FALSE
+		if(NAMEOF(src, text_constant_regex))
+			return FALSE
 	return ..()

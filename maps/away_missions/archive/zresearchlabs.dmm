@@ -1755,7 +1755,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/item/ammo_magazine/clip/c45,
+/obj/item/ammo_magazine/a45/clip,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -1870,7 +1870,7 @@
 /area/awaymission/labs/militarydivision)
 "fS" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_magazine/s357,
+/obj/item/ammo_magazine/a357/speedloader,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -2847,7 +2847,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
 "iu" = (
-/obj/item/ammo_magazine/clip/c9mm{
+/obj/item/ammo_magazine/a9mm/clip{
 	pixel_x = 25;
 	pixel_y = -60
 	},
@@ -5581,7 +5581,7 @@
 /area/awaymission/labs/command)
 "pQ" = (
 /obj/structure/closet/cabinet,
-/obj/item/gun/energy/pulse_pistol,
+/obj/item/gun/energy/pulse_carbine,
 /obj/item/clothing/accessory/medal/gold/heroism,
 /obj/item/clothing/under/rank/head_of_security/navyblue,
 /obj/item/clothing/accessory/holster/armpit,
@@ -6967,13 +6967,13 @@
 	},
 /area/awaymission/labs/security)
 "uj" = (
-/obj/item/ammo_magazine/clip/c45,
+/obj/item/ammo_magazine/a45/clip,
 /turf/simulated/floor{
 	dir = 8
 	},
 /area/awaymission/labs/security)
 "uk" = (
-/obj/item/ammo_magazine/clip/c45,
+/obj/item/ammo_magazine/a45/clip,
 /obj/item/gun/ballistic/silenced{
 	desc = "A sidearm commonly favored by terrestrial security forces.";
 	icon_state = "g115 Pistol";
