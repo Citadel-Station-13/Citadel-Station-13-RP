@@ -219,8 +219,7 @@
 
 	var/self_equip = user == src
 
-	// first, check species
-	if(species?.hud?.equip_slots && !(slot in species.hud.equip_slots))
+	if(!semantically_has_slot(slot))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] have nowhere to put that!"))
 		return FALSE
@@ -266,6 +265,9 @@
 	. = ..()
 	if(!.)
 		return
+	switch(id)
+		if(SLOT_ID_HANDCUFFED)
+			return has_hands()
 	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(id)
 	if(!slot_meta)
 		return FALSE

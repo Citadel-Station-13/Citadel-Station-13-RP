@@ -336,6 +336,12 @@
 	RETURN_TYPE(/list)
 	#warn impl + subtypes
 
+/**
+ * sets number of physical hands we should account for potentialy having
+ */
+/mob/proc/set_nominal_hand_count()
+	#warn impl
+
 //* Internals *//
 
 /**

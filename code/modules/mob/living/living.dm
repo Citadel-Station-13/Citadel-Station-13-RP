@@ -639,32 +639,6 @@ default behaviour is:
 	else // No colors, so remove the client's color.
 		animate(client, color = null, time = 10)
 
-/mob/proc/activate_hand(selhand)
-
-/mob/living/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
-
-	if(istext(selhand))
-		selhand = lowertext(selhand)
-
-		if(selhand == "right" || selhand == "r")
-			selhand = 0
-		if(selhand == "left" || selhand == "l")
-			selhand = 1
-
-	if(selhand != src.hand)
-		swap_hand()
-
-// todo: multihands
-
-/mob/proc/activate_hand_of_index(index)
-
-/mob/living/activate_hand_of_index(index)
-	switch(index)
-		if(1)
-			activate_hand("l")
-		if(2)
-			activate_hand("r")
-
 /mob/living/get_sound_env(var/pressure_factor)
 	if (hallucination)
 		return PSYCHOTIC
