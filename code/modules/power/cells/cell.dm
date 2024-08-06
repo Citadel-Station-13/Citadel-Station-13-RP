@@ -52,6 +52,13 @@
 	/// our stripe color; null for no stripe
 	var/stripe_color
 
+	//* Self Recharge *//
+	/// do we self recharge?
+	var/self_recharge = FALSE
+	/// cell units to give, per second, if self-recharging
+	var/self_recharge_amount = 50
+	/// how long to wait until after the last use to start recharging
+	var/self_recharge_delay = 0 SECONDS
 
 	//* legacy below *//
 	/// Are we EMP immune?
@@ -60,8 +67,6 @@
 	var/max_charge = 1000
 	var/rigged = 0		// true if rigged to explode
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
-	var/self_recharge = FALSE // If true, the cell will recharge itself.
-	var/charge_amount = 25 // How much power to give, if self_recharge is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
 	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
 	var/rating = 1
@@ -98,13 +103,6 @@
 /obj/item/cell/get_cell(inducer)
 	return src
 
-/obj/item/cell/process(delta_time)
-	if(self_recharge)
-		if(world.time >= last_use + charge_delay)
-			give(charge_amount)
-	else
-		return PROCESS_KILL
-
 /obj/item/cell/drain_energy(datum/actor, amount, flags)
 	if(charge <= 0)
 		return 0
@@ -112,11 +110,6 @@
 
 /obj/item/cell/can_drain_energy(datum/actor, flags)
 	return TRUE
-
-/obj/item/cell/proc/percent()		// return % charge of cell
-	if(!max_charge)
-		return 0
-	return 100.0*charge/max_charge
 
 /obj/item/cell/proc/fully_charged()
 	return (charge == max_charge)
@@ -159,7 +152,6 @@
 	if(loc)
 		loc.update_icon()
 	return amount_used
-
 
 /obj/item/cell/examine(mob/user, dist)
 	. = ..()
@@ -235,7 +227,6 @@
 	update_icon()
 
 /obj/item/cell/legacy_ex_act(severity)
-
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -252,7 +243,6 @@
 				return
 			if (prob(25))
 				corrupt()
-	return
 
 /obj/item/cell/proc/get_electrocute_damage()
 	//1kW = 5
@@ -270,10 +260,28 @@
 	else
 		return 0
 
-/obj/item/cell/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
-	return (FIRELOSS)
+//* Calculations *//
+
+/**
+ * Returns percent remaining, [0, 100]
+ */
+/obj/item/cell/proc/percent()
+	return max_charge ? (100 * charge / max_charge) : 0
+
+/**
+ * Returns ratio remaining, [0, 1]
+ */
+/obj/item/cell/proc/percent()
+	return max_charge ? (charge / max_charge) : 0
+
+//* Processing *//
+
+/obj/item/cell/process(delta_time)
+	if(!self_recharge)
+		return PROCESS_KILL
+	if(world.time < last_use + self_recharge_delay)
+		return
+	give(self_Recharge_amount * delta_time)
 
 //* Rendering *//
 

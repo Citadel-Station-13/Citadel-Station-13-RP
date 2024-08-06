@@ -52,5 +52,6 @@ POWER_CELL_GENERATE_TYPES(/obj/item/cell/microfission)
 	START_PROCESSING(SSobj, start)
 
 /obj/item/cell/microfission/process(delta_time)
+	..()
 	#warn impl
 	#warn impl - leak

@@ -9,7 +9,7 @@
 	throw_speed = 5
 	throw_range = 7
 	max_charge = 480
-	charge_amount = 5
+	self_recharge_amount = 5
 	materials_base = list("metal" = 350, MAT_GLASS = 50)
 	preserve_item = 1
 
@@ -23,7 +23,7 @@
 	desc = "A small power cell designed to power handheld weaponry."
 	icon_state = "wcell"
 	max_charge = 2400
-	charge_amount = 20
+	self_recharge_amount = 20
 
 	worth_intrinsic = 50
 
@@ -38,16 +38,16 @@
 	desc = "A small power cell designed to power handheld weaponry. This one recharges itself."
 //	icon_state = "wcell" //TODO: Different sprite
 	self_recharge = TRUE
-	charge_amount = 120
-	charge_delay = 75
+	self_recharge_amount = 120
+	self_recharge_delay = 75
 
 /obj/item/cell/device/weapon/recharge/captain
-	charge_amount = 160	//Recharges a lot more quickly...
-	charge_delay = 100	//... but it takes a while to get started
+	self_recharge_amount = 160	//Recharges a lot more quickly...
+	self_recharge_delay = 100	//... but it takes a while to get started
 
 /obj/item/cell/device/weapon/recharge/sniper
-	charge_amount = 600
-	charge_delay = 100
+	self_recharge_amount = 600
+	self_recharge_delay = 100
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_void_cell
 	name = "Precursor Alpha Object - Void Cell"
@@ -69,8 +69,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_void_cell)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "cell"
-	charge_amount = 120 // 5%.
-	charge_delay = 50 // Every five seconds, bit faster than the default.
+	self_recharge_amount = 120 // 5%.
+	self_recharge_delay = 50 // Every five seconds, bit faster than the default.
 	origin_tech = list(TECH_POWER = 8, TECH_ENGINEERING = 6)
 
 /obj/item/cell/device/weapon/recharge/alien/update_icon()
