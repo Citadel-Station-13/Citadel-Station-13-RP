@@ -19,6 +19,9 @@
 	/// desired hud style - set at base of sync_client
 	var/datum/hud_style/style
 
+/datum/mob_hud/New(mob/owner)
+	src.owner = owner
+
 /datum/mob_hud/proc/screens()
 	return list()
 
@@ -26,11 +29,11 @@
 	return list()
 
 /datum/mob_hud/proc/add_user(client/C)
-	LAZYADD(users, C)
+	LAZYADD(using, C)
 	apply_client(C)
 
 /datum/mob_hud/proc/remove_user(client/C)
-	LAZYREMOVE(users, C)
+	LAZYREMOVE(using, C)
 	unapply_client(C)
 
 /datum/mob_hud/proc/sync_client(client/C)
@@ -50,17 +53,17 @@
 	C.images -= images()
 
 /datum/mob_hud/proc/add_screen(atom/movable/what)
-	for(var/client/C as anything in users)
+	for(var/client/C as anything in using)
 		C.screen += what
 
 /datum/mob_hud/proc/remove_screen(atom/movable/what)
-	for(var/client/C as anything in users)
+	for(var/client/C as anything in using)
 		C.screen -= what
 
 /datum/mob_hud/proc/add_image(image/what)
-	for(var/client/C as anything in users)
+	for(var/client/C as anything in using)
 		C.images += what
 
 /datum/mob_hud/proc/remove_image(image/what)
-	for(var/client/C as anything in users)
+	for(var/client/C as anything in using)
 		C.images -= what

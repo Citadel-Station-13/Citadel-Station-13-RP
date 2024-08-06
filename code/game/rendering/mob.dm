@@ -42,3 +42,11 @@
  */
 /mob/proc/dispose_rendering()
 	wipe_fullscreens()
+
+/**
+ * updates rendering on hud style or other appearance change
+ */
+/mob/proc/resync_rendering()
+	if(!client)
+		return
+	inventory?.hud?.sync_client(client)

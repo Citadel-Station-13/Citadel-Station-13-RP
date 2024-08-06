@@ -81,7 +81,7 @@
 		client.action_drawer.register_holder(actions_innate)
 	if(inventory)
 		client.action_drawer.register_holder(inventory.actions)
-	// we really hate that this is needed but it is until the screens/images reset isn't there
+	// todo: we really hate that this is needed but it is until the screens/images reset isn't in Login()
 	client.action_drawer.reassert_screen()
 	// reset statpanel of any verbs/whatnot
 	client.statpanel_reload()
@@ -91,6 +91,9 @@
 	login_cutscene()
 	// Make sure blindness fullscreen is applied if needed
 	blindness_handle_reconnect()
+	// load inventory HUD
+	var/datum/mob_hud/inventory/inventory_hud = inventory?.get_hud()
+	inventory_hud?.add_user(client)
 
 	//* legacy
 	// this is below reset_perspective so self perspective generates.

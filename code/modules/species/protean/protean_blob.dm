@@ -323,7 +323,7 @@
 		var/obj/item/held = held_items[i]
 		if(isnull(held))
 			continue
-		previously_held[i] = WEAKREF(held)
+		blob.previously_held[i] = WEAKREF(held)
 	//languages!!
 	for(var/datum/language/L in languages)
 		blob.add_language(L.name)

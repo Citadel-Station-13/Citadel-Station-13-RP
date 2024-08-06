@@ -8,6 +8,10 @@
 	/// owning inventory
 	var/datum/inventory/host
 
+/datum/mob_hud/inventory/New(mob/owner, datum/inventory/host)
+	src.host = host
+	..()
+
 /datum/mob_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot)
 
 /datum/mob_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot)
