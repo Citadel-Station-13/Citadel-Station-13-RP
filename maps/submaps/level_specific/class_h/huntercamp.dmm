@@ -103,11 +103,11 @@
 "Z" = (
 /obj/structure/table/woodentable,
 /obj/item/gun/ballistic/contender/taj/a762,
-/obj/item/ammo_magazine/clip/c762/hunter,
+/obj/item/ammo_magazine/a7_62mm/clip/hunter,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/fancy/cigar/taj,
 /obj/random/junk,
-/obj/item/ammo_magazine/clip/c762/hunter,
+/obj/item/ammo_magazine/a7_62mm/clip/hunter,
 /turf/simulated/mineral/floor/cave,
 /area/tether_away/beach/desert/poi/huntercamp)
 

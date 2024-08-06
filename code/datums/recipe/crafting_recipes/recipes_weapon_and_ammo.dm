@@ -351,7 +351,7 @@
 	name = "Protoype Dart Gun (Rapid)"
 	result = /obj/item/gun/ballistic/dartgun
 	reqs = list(
-		/obj/item/ammo_casing/chemdart = 1,
+		/obj/item/ammo_casing/dart/chemdart = 1,
 		/obj/item/stack/material/plastic = 5,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/reagent_containers/glass/beaker = 1
@@ -492,7 +492,7 @@
 //Munitions
 /datum/crafting_recipe/smartdart
 	name = "Chemical Dart"
-	result =  /obj/item/ammo_casing/chemdart
+	result =  /obj/item/ammo_casing/dart/chemdart
 	reqs = list(/obj/item/stack/material/steel = 1,
 				/obj/item/stack/material/glass = 1,
 				/obj/item/stack/material/plastic = 1)

@@ -156,19 +156,20 @@
 /obj/random/ammo
 	name = "Random Ammunition"
 	desc = "This is random security ammunition."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "45-10"
+
+	icon = 'icons/modules/projectiles/legacy/ammo_box.dmi'
+	icon_state = "green"
 
 /obj/random/ammo/item_to_spawn()
 	return pick(prob(6);/obj/item/storage/box/beanbags,
 				prob(2);/obj/item/storage/box/shotgunammo,
 				prob(4);/obj/item/storage/box/shotgunshells,
 				prob(1);/obj/item/storage/box/stunshells,
-				prob(2);/obj/item/ammo_magazine/m45,
-				prob(4);/obj/item/ammo_magazine/m45/rubber,
-				prob(4);/obj/item/ammo_magazine/m45/flash,
-				prob(2);/obj/item/ammo_magazine/m9mmt,
-				prob(6);/obj/item/ammo_magazine/m9mmt/rubber)
+				prob(2);/obj/item/ammo_magazine/a45,
+				prob(4);/obj/item/ammo_magazine/a45/rubber,
+				prob(4);/obj/item/ammo_magazine/a45/flash,
+				prob(2);/obj/item/ammo_magazine/a9mm/top_mount,
+				prob(6);/obj/item/ammo_magazine/a9mm/top_mount/rubber)
 
 /obj/random/projectile/random
 	name = "Random Projectile Weapon"
@@ -192,41 +193,41 @@
 	return pick(
 			prob(6);list(
 				/obj/item/gun/ballistic/automatic/wt550,
-				/obj/item/ammo_magazine/m9mmt,
-				/obj/item/ammo_magazine/m9mmt
+				/obj/item/ammo_magazine/a9mm/top_mount,
+				/obj/item/ammo_magazine/a9mm/top_mount
 			),
 			prob(6);list(
 				/obj/item/gun/ballistic/automatic/wt274,
-				/obj/item/ammo_magazine/m45uzi/wt274,
-				/obj/item/ammo_magazine/m45uzi/wt274
+				/obj/item/ammo_magazine/a45/wt274,
+				/obj/item/ammo_magazine/a45/wt274
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/mini_uzi,
-				/obj/item/ammo_magazine/m45uzi,
-				/obj/item/ammo_magazine/m45uzi
+				/obj/item/ammo_magazine/a45/uzi,
+				/obj/item/ammo_magazine/a45/uzi
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/tommygun,
-				/obj/item/ammo_magazine/m45tommy,
-				/obj/item/ammo_magazine/m45tommy
+				/obj/item/ammo_magazine/a45/tommy,
+				/obj/item/ammo_magazine/a45/tommy
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/automatic/c20r,
-				/obj/item/ammo_magazine/m10mm,
-				/obj/item/ammo_magazine/m10mm
+				/obj/item/ammo_magazine/a10mm,
+				/obj/item/ammo_magazine/a10mm
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/p90,
-				/obj/item/ammo_magazine/m57x28mmp90
+				/obj/item/ammo_magazine/a5_7mm/p90
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/mini_uzi/taj,
-				/obj/item/ammo_magazine/m45uzi,
-				/obj/item/ammo_magazine/m45uzi
+				/obj/item/ammo_magazine/a45/uzi,
+				/obj/item/ammo_magazine/a45/uzi
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/caseless/phoron_spitter,
-				/obj/item/ammo_magazine/mphoronshot
+				/obj/item/ammo_magazine/phoron_shrap
 			)
 		)
 
@@ -242,38 +243,38 @@
 	return pick(
 			prob(4);list(
 				/obj/item/gun/ballistic/automatic/sts35,
-				/obj/item/ammo_magazine/m556,
-				/obj/item/ammo_magazine/m556
+				/obj/item/ammo_magazine/a5_56mm,
+				/obj/item/ammo_magazine/a5_56mm
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/automatic/z8,
-				/obj/item/ammo_magazine/m762,
-				/obj/item/ammo_magazine/m762
+				/obj/item/ammo_magazine/a7_62mm,
+				/obj/item/ammo_magazine/a7_62mm
 			),
 			prob(8);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle,
-				/obj/item/ammo_magazine/clip/c762,
-				/obj/item/ammo_magazine/clip/c762
+				/obj/item/ammo_magazine/a7_62mm/clip,
+				/obj/item/ammo_magazine/a7_62mm/clip
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle/lever/win1895,
-				/obj/item/ammo_magazine/clip/c762,
-				/obj/item/ammo_magazine/clip/c762
+				/obj/item/ammo_magazine/a7_62mm/clip,
+				/obj/item/ammo_magazine/a7_62mm/clip
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/automatic/bullpup,
-				/obj/item/ammo_magazine/m762,
-				/obj/item/ammo_magazine/m762
+				/obj/item/ammo_magazine/a7_62mm,
+				/obj/item/ammo_magazine/a7_62mm
 			),
 			prob(8);list(
 				/obj/item/gun/ballistic/shotgun/pump/rifle/taj,
-				/obj/item/ammo_magazine/clip/c762,
-				/obj/item/ammo_magazine/clip/c762
+				/obj/item/ammo_magazine/a7_62mm/clip,
+				/obj/item/ammo_magazine/a7_62mm/clip
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/caseless/wild_hunt,
-				/obj/item/ammo_magazine/mfiftycalcaseless,
-				/obj/item/ammo_magazine/mfiftycalcaseless
+				/obj/item/ammo_magazine/a12_7mm/wild_hunt,
+				/obj/item/ammo_magazine/a12_7mm/wild_hunt
 			),
 		)
 
@@ -287,150 +288,150 @@
 	return pick(
 			prob(5);list(
 				/obj/item/gun/ballistic/colt,
-				/obj/item/ammo_magazine/m45,
-				/obj/item/ammo_magazine/m45
+				/obj/item/ammo_magazine/a45,
+				/obj/item/ammo_magazine/a45
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/contender,
-				/obj/item/ammo_magazine/s357,
-				/obj/item/ammo_magazine/s357
+				/obj/item/ammo_magazine/a357/speedloader,
+				/obj/item/ammo_magazine/a357/speedloader
 			),
 			prob(3);list(
 				/obj/item/gun/ballistic/contender/tacticool,
-				/obj/item/ammo_magazine/s357,
-				/obj/item/ammo_magazine/s357
+				/obj/item/ammo_magazine/a357/speedloader,
+				/obj/item/ammo_magazine/a357/speedloader
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/contender/taj,
-				/obj/item/ammo_magazine/s357,
-				/obj/item/ammo_magazine/s357
+				/obj/item/ammo_magazine/a357/speedloader,
+				/obj/item/ammo_magazine/a357/speedloader
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/deagle,
-				/obj/item/ammo_magazine/m44,
-				/obj/item/ammo_magazine/m44
+				/obj/item/ammo_magazine/a44,
+				/obj/item/ammo_magazine/a44
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/deagle/camo,
-				/obj/item/ammo_magazine/m44,
-				/obj/item/ammo_magazine/m44
+				/obj/item/ammo_magazine/a44,
+				/obj/item/ammo_magazine/a44
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/deagle/gold,
-				/obj/item/ammo_magazine/m44,
-				/obj/item/ammo_magazine/m44
+				/obj/item/ammo_magazine/a44,
+				/obj/item/ammo_magazine/a44
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/deagle/taj,
-				/obj/item/ammo_magazine/m44,
-				/obj/item/ammo_magazine/m44
+				/obj/item/ammo_magazine/a44,
+				/obj/item/ammo_magazine/a44
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/derringer,
-				/obj/item/ammo_magazine/s357,
-				/obj/item/ammo_magazine/s357
+				/obj/item/ammo_magazine/a357/speedloader,
+				/obj/item/ammo_magazine/a357/speedloader
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/luger,
-				/obj/item/ammo_magazine/m9mm/compact,
-				/obj/item/ammo_magazine/m9mm/compact
+				/obj/item/ammo_magazine/a9mm/compact,
+				/obj/item/ammo_magazine/a9mm/compact
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/luger/brown,
-				/obj/item/ammo_magazine/m9mm/compact,
-				/obj/item/ammo_magazine/m9mm/compact
+				/obj/item/ammo_magazine/a9mm/compact,
+				/obj/item/ammo_magazine/a9mm/compact
 			),
 			prob(5);list(
 				/obj/item/gun/ballistic/sec,
-				/obj/item/ammo_magazine/m45,
-				/obj/item/ammo_magazine/m45
+				/obj/item/ammo_magazine/a45,
+				/obj/item/ammo_magazine/a45
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/sec/wood,
-				/obj/item/ammo_magazine/m45,
-				/obj/item/ammo_magazine/m45
+				/obj/item/ammo_magazine/a45,
+				/obj/item/ammo_magazine/a45
 			),
 			prob(5);list(
 				/obj/item/gun/ballistic/p92x,
-				/obj/item/ammo_magazine/m9mm,
-				/obj/item/ammo_magazine/m9mm
+				/obj/item/ammo_magazine/a9mm,
+				/obj/item/ammo_magazine/a9mm
 			),
 			prob(5);list(
 				/obj/item/gun/ballistic/r9,
-				/obj/item/ammo_magazine/clip/c9mm,
-				/obj/item/ammo_magazine/clip/c9mm
+				/obj/item/ammo_magazine/a9mm/clip,
+				/obj/item/ammo_magazine/a9mm/clip
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/p92x/brown,
-				/obj/item/ammo_magazine/m9mm,
-				/obj/item/ammo_magazine/m9mm
+				/obj/item/ammo_magazine/a9mm,
+				/obj/item/ammo_magazine/a9mm
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/p92x/large,
-				/obj/item/ammo_magazine/m9mm/large,
-				/obj/item/ammo_magazine/m9mm/large
+				/obj/item/ammo_magazine/a9mm/large,
+				/obj/item/ammo_magazine/a9mm/large
 			),
 			prob(5);list(
 				/obj/item/gun/ballistic/pistol,
-				/obj/item/ammo_magazine/m9mm/compact,
-				/obj/item/ammo_magazine/m9mm/compact
+				/obj/item/ammo_magazine/a9mm/compact,
+				/obj/item/ammo_magazine/a9mm/compact
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/silenced,
-				/obj/item/ammo_magazine/m45,
-				/obj/item/ammo_magazine/m45
+				/obj/item/ammo_magazine/a45,
+				/obj/item/ammo_magazine/a45
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/revolver,
-				/obj/item/ammo_magazine/s357,
-				/obj/item/ammo_magazine/s357
+				/obj/item/ammo_magazine/a357/speedloader,
+				/obj/item/ammo_magazine/a357/speedloader
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/revolver/deckard,
-				/obj/item/ammo_magazine/s38,
-				/obj/item/ammo_magazine/s38
+				/obj/item/ammo_magazine/a38/speedloader,
+				/obj/item/ammo_magazine/a38/speedloader
 			),
 			prob(4);list(
 				/obj/item/gun/ballistic/revolver/detective,
-				/obj/item/ammo_magazine/s38,
-				/obj/item/ammo_magazine/s38
+				/obj/item/ammo_magazine/a38/speedloader,
+				/obj/item/ammo_magazine/a38/speedloader
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/revolver/judge,
-				/obj/item/ammo_magazine/clip/c12g,
-				/obj/item/ammo_magazine/clip/c12g,
-				/obj/item/ammo_magazine/clip/c12g
+				/obj/item/ammo_magazine/a12g/clip,
+				/obj/item/ammo_magazine/a12g/clip,
+				/obj/item/ammo_magazine/a12g/clip
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/revolver/lemat,
-				/obj/item/ammo_magazine/s38,
-				/obj/item/ammo_magazine/s38,
-				/obj/item/ammo_magazine/clip/c12g
+				/obj/item/ammo_magazine/a38/speedloader,
+				/obj/item/ammo_magazine/a38/speedloader,
+				/obj/item/ammo_magazine/a12g/clip
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/revolver/mateba,
-				/obj/item/ammo_magazine/s357,
-				/obj/item/ammo_magazine/s357
+				/obj/item/ammo_magazine/a357/speedloader,
+				/obj/item/ammo_magazine/a357/speedloader
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/revolver/webley,
-				/obj/item/ammo_magazine/s44,
-				/obj/item/ammo_magazine/s44
+				/obj/item/ammo_magazine/a44/speedloader,
+				/obj/item/ammo_magazine/a44/speedloader
 			),
 			prob(2);list(
 				/obj/item/gun/ballistic/revolver/dirty_harry,
-				/obj/item/ammo_magazine/s44,
-				/obj/item/ammo_magazine/s44
+				/obj/item/ammo_magazine/a44/speedloader,
+				/obj/item/ammo_magazine/a44/speedloader
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/revolver/webley/auto,
-				/obj/item/ammo_magazine/s44,
-				/obj/item/ammo_magazine/s44
+				/obj/item/ammo_magazine/a44/speedloader,
+				/obj/item/ammo_magazine/a44/speedloader
 			),
 			prob(1);list(
 				/obj/item/gun/ballistic/colt/taj,
-				/obj/item/ammo_magazine/m45,
-				/obj/item/ammo_magazine/m45
+				/obj/item/ammo_magazine/a45,
+				/obj/item/ammo_magazine/a45
 			)
 		)
 
@@ -444,24 +445,24 @@
 	return pick(
 			prob(4);list(
 				/obj/item/gun/ballistic/shotgun/doublebarrel/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet
 			),
 			prob(3);list(
 				/obj/item/gun/ballistic/shotgun/doublebarrel/sawn,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet
 			),
 			prob(3);list(
 				/obj/item/gun/ballistic/shotgun/doublebarrel/quad,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet,
-				/obj/item/ammo_magazine/clip/c12g/pellet
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet,
+				/obj/item/ammo_magazine/a12g/clip/pellet
 			),
 			prob(3);list(
 				/obj/item/gun/ballistic/shotgun/pump/slug,

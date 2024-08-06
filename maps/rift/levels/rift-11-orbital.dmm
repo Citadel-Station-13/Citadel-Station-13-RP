@@ -6277,6 +6277,20 @@
 "tG" = (
 /turf/unsimulated/wall,
 /area/centcom/test)
+"tR" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/table/rack,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/ammo_magazine/a5_56mm,
+/obj/item/gun/ballistic/automatic/sts35,
+/obj/item/gun/ballistic/automatic/sts35,
+/turf/unsimulated/floor/dark,
+/area/centcom/specops)
 "ud" = (
 /obj/item/clothing/glasses/welding/superior,
 /obj/item/clothing/glasses/welding/superior,
@@ -6308,10 +6322,6 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"uG" = (
-/obj/effect/shuttle_landmark/transit/rift/trade/scoophead,
-/turf/space/transit/west,
-/area/space)
 "uR" = (
 /obj/structure/sign/nanotrasen,
 /turf/unsimulated/wall,
@@ -6332,6 +6342,20 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
+"uY" = (
+/obj/structure/table/rack,
+/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/gun/ballistic/automatic/lmg,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/obj/item/ammo_magazine/a5_56mm/saw/ap,
+/turf/unsimulated/floor/dark,
+/area/centcom/specops)
 "uZ" = (
 /obj/structure/flora/pottedplant{
 	pixel_y = 8
@@ -8299,6 +8323,10 @@
 /obj/item/storage/belt/security/tactical,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Jv" = (
+/obj/effect/shuttle_landmark/transit/rift/trade/udang,
+/turf/space/transit/west,
+/area/space)
 "Jx" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/firstaid/combat,
@@ -8324,6 +8352,19 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
+"JA" = (
+/obj/structure/table/rack,
+/obj/structure/window/reinforced,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/obj/item/ammo_magazine/a44/speedloader,
+/turf/unsimulated/floor/dark,
+/area/centcom/specops)
 "JB" = (
 /obj/machinery/power/thermoregulator,
 /turf/unsimulated/floor/dark,
@@ -8560,19 +8601,6 @@
 /obj/item/stack/rods,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Lh" = (
-/obj/structure/table/rack,
-/obj/structure/window/reinforced,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/obj/item/ammo_magazine/s44,
-/turf/unsimulated/floor/dark,
-/area/centcom/specops)
 "Lk" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -8775,20 +8803,6 @@
 /obj/effect/shuttle_landmark/rift/deck4/northeast,
 /turf/simulated/sky/lythios43c/moving/south,
 /area/space)
-"NP" = (
-/obj/structure/table/rack,
-/obj/item/gun/ballistic/automatic/lmg,
-/obj/item/gun/ballistic/automatic/lmg,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw,
-/obj/item/ammo_magazine/m556saw/ap,
-/obj/item/ammo_magazine/m556saw/ap,
-/turf/unsimulated/floor/dark,
-/area/centcom/specops)
 "NU" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
@@ -8911,10 +8925,6 @@
 /obj/item/storage/firstaid/insiderepair,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Pl" = (
-/obj/effect/shuttle_landmark/transit/rift/trade/udang,
-/turf/space/transit/west,
-/area/space)
 "Pn" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -9431,14 +9441,6 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
-"UL" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/ammo_magazine/m44,
-/obj/item/ammo_magazine/m44,
-/obj/item/gun/ballistic/deagle,
-/turf/unsimulated/floor/wood,
-/area/centcom/specops)
 "UT" = (
 /obj/structure/table/reinforced,
 /obj/item/pda/ert,
@@ -9647,6 +9649,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
+"XD" = (
+/obj/structure/table/rack,
+/obj/structure/window/reinforced,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/obj/item/ammo_magazine/a5_7mm/harpy_smg/ap,
+/turf/unsimulated/floor/dark,
+/area/centcom/specops)
 "XF" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/autoinjectors,
@@ -9753,6 +9768,10 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"XR" = (
+/obj/effect/shuttle_landmark/transit/rift/trade/scoophead,
+/turf/space/transit/west,
+/area/space)
 "XU" = (
 /obj/machinery/computer/shuttle_control/explore/specops{
 	dir = 8
@@ -9804,19 +9823,6 @@
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
-"Yw" = (
-/obj/structure/table/rack,
-/obj/structure/window/reinforced,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/obj/item/ammo_magazine/m57x28mm/smg/ap,
-/turf/unsimulated/floor/dark,
-/area/centcom/specops)
 "Yy" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 10
@@ -9825,6 +9831,14 @@
 /area/centcom/specops)
 "YB" = (
 /obj/structure/closet/wardrobe/ert,
+/turf/unsimulated/floor/wood,
+/area/centcom/specops)
+"YP" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/accessory/holster/hip,
+/obj/item/ammo_magazine/a44,
+/obj/item/ammo_magazine/a44,
+/obj/item/gun/ballistic/deagle,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
 "YQ" = (
@@ -9944,20 +9958,6 @@
 /obj/item/gun/energy/gun/combat,
 /obj/item/gun/energy/gun/combat,
 /obj/item/gun/energy/gun/combat,
-/turf/unsimulated/floor/dark,
-/area/centcom/specops)
-"ZH" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/table/rack,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/ammo_magazine/m556,
-/obj/item/gun/ballistic/automatic/sts35,
-/obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "ZN" = (
@@ -26544,7 +26544,7 @@ Bv
 ss
 Mu
 Cw
-ZH
+tR
 Vv
 Cw
 YQ
@@ -26932,7 +26932,7 @@ Bv
 ss
 AN
 Cw
-Yw
+XD
 Fy
 Cw
 YQ
@@ -27126,7 +27126,7 @@ Bv
 ss
 Yp
 Cw
-Lh
+JA
 UC
 Cw
 YQ
@@ -27751,7 +27751,7 @@ HC
 HC
 HC
 HC
-Pl
+Jv
 HC
 Ii
 HC
@@ -28289,7 +28289,7 @@ Bv
 Bv
 Bv
 ss
-NP
+uY
 En
 XQ
 TK
@@ -28688,7 +28688,7 @@ Cw
 vi
 Cv
 Cv
-UL
+YP
 ss
 Bv
 Bv
@@ -33571,7 +33571,7 @@ HC
 HC
 HC
 HC
-uG
+XR
 HC
 Ii
 AP

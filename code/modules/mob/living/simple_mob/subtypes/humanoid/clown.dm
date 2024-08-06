@@ -190,8 +190,8 @@
 	reload_max = 12
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
 	loot_list = list(/obj/item/gun/ballistic/clown_pistol = 100,
-					/obj/item/ammo_magazine/mcompressedbio = 30,
-					/obj/item/ammo_magazine/mcompressedbio = 30
+					/obj/item/ammo_magazine/biomatter = 30,
+					/obj/item/ammo_magazine/biomatter = 30
 					)
 
 //Voidsuit Variants
@@ -267,8 +267,8 @@
 
 	corpse = /obj/spawner/corpse/clown/clownop/space
 	loot_list = list(/obj/item/gun/ballistic/automatic/clown_rifle = 100,
-					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30,
-					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30
+					/obj/item/ammo_magazine/biomatter/large/banana = 30,
+					/obj/item/ammo_magazine/biomatter/large/banana = 30
 					)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
