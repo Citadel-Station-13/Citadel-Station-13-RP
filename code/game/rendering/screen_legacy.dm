@@ -232,11 +232,12 @@
 								// suit storage
 								locnames += "on your suit"
 								tanks += H.s_store
-								// right/left hands
-								locnames += "in your right hand"
-								tanks += H.r_hand
-								locnames += "in your left hand"
-								tanks += H.l_hand
+								for(var/i in 1 to length(H.held_items))
+									tanks += H.held_items[i]
+									if(i <= 2)
+										locnames += "in your [i == 1? "left" : "right"] hand"
+									else
+										locnames += "in your [ceil(i / 2)](th) [i % 2? "left" : "right"] hand"
 								// pockets
 								locnames += "in your left pocket"
 								tanks += H.l_store
